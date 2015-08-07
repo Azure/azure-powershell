@@ -1352,3 +1352,64 @@ function Test-GetVMSizeFromAllLocations
         Write-Output ('Found VM Size Standard_A3 in Location: ' + $loc);
     }
 }
+
+<#
+.SYNOPSIS
+Test Virtual Machine List with Paging
+#>
+function Test-VirtualMachineListWithPaging
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName
+
+    try
+    {
+        # Common
+        $loc = 'West US';
+        New-AzureResourceGroup -Name $rgname -Location $loc -Force;
+
+        $numberOfInstances = 51;
+        $vmSize = 'Standard_A0';
+
+        $templateFile = ".\Templates\azuredeploy.json";
+        $paramFile = ".\Templates\azuredeploy-parameters-51vms.json";
+        $paramContent =
+@"
+{
+  "newStorageAccountName": {
+    "value": "${rgname}sto"
+  },
+  "adminUsername": {
+    "value": "Foo12"
+  },
+  "adminPassword": {
+    "value": "BaR@123${rgname}"
+  },
+  "numberOfInstances": {
+    "value": $numberOfInstances
+  },
+  "location": {
+    "value": "$loc"
+  },
+  "vmSize": {
+    "value": "$vmSize"
+  }
+}
+"@;
+
+        Set-Content -Path $paramFile -Value $paramContent -Force -Verbose;
+
+        New-AzureResourceGroupDeployment -Name "${rgname}dp" -ResourceGroupName $rgname -TemplateFile $templateFile -TemplateParameterFile $paramFile -Verbose;
+
+        $vms = Get-AzureVM -ResourceGroupName $rgname;
+        Assert-True { $vms.Count -eq $numberOfInstances };
+
+        $vms = Get-AzureVM;
+        Assert-True { $vms.Count -ge $numberOfInstances };
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
