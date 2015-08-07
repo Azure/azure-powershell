@@ -37,11 +37,11 @@ function Test-CreateDatabaseCopyV2
 function Test-CreateCopyInternal ($serverVersion, $location = "North Europe")
 {
 	# Setup
-	$rg = Create-ResourceGroupForTest
+	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $serverVersion $location
 	$database = Create-DatabaseForTest $rg $server
 
-	$copyRg = Create-ResourceGroupForTest
+	$copyRg = Create-ResourceGroupForTest $location
 	$copyServer = Create-ServerForTest $copyRg $serverVersion $location
 	$copyDatabaseName = Get-DatabaseName
 
@@ -99,11 +99,11 @@ function Test-CreateSecondaryDatabaseV2
 function Test-CreateSecondaryDatabaseInternal ($serverVersion, $location = "North Europe")
 {
 	# Setup
-	$rg = Create-ResourceGroupForTest
+	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $serverVersion $location
 	$database = Create-DatabaseForTest $rg $server
 
-	$partRg = Create-ResourceGroupForTest
+	$partRg = Create-ResourceGroupForTest $location
 	$partServer = Create-ServerForTest $partRg $serverVersion $location
 
 	try
@@ -196,11 +196,11 @@ function Test-GetReplicationLinkV2
 function Test-GetReplicationLinkInternal ($serverVersion, $location = "North Europe")
 {
 	# Setup
-	$rg = Create-ResourceGroupForTest
+	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $serverVersion $location
 	$database = Create-DatabaseForTest $rg $server
 
-	$partRg = Create-ResourceGroupForTest
+	$partRg = Create-ResourceGroupForTest $location
 	$partServer = Create-ServerForTest $partRg $serverVersion $location
 
 	try
@@ -257,11 +257,11 @@ function Test-RemoveSecondaryDatabaseV2
 function Test-RemoveSecondaryDatabaseInternal ($serverVersion, $location = "North Europe")
 {
 	# Setup
-	$rg = Create-ResourceGroupForTest
+	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $serverVersion $location
 	$database = Create-DatabaseForTest $rg $server
 
-	$partRg = Create-ResourceGroupForTest
+	$partRg = Create-ResourceGroupForTest $location
 	$partServer = Create-ServerForTest $partRg $serverVersion $location
 
 	try

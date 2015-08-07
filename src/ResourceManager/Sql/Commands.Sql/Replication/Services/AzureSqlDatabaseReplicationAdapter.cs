@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Sql.ElasticPool.Services;
 using Microsoft.Azure.Commands.Sql.Properties;
 using Microsoft.Azure.Commands.Sql.Replication.Model;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
+using Microsoft.Azure.Commands.Sql.Server.Services;
 using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Sql;
@@ -38,13 +39,14 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// <summary>
         /// Gets or sets the AzureSqlDatabaseCopyCommunicator which has all the needed management clients
         /// </summary>
-        private AzureSqlDatabaseReplicationCommunicator Communicator { get; set; }
+        private AzureSqlDatabaseReplicationCommunicator ReplicationCommunicator { get; set; }
 
         /// <summary>
         /// Gets or sets the AzureSqlDatabaseCopyCommunicator which has all the needed management clients
         /// </summary>
         private AzureSqlDatabaseCommunicator DatabaseCommunicator { get; set; }
 
+        private AzureSqlServerCommunicator ServerCommunicator { get; set; }
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
@@ -64,16 +66,17 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         {
             this.Profile = Profile;
             this._subscription = subscription;
-            Communicator = new AzureSqlDatabaseReplicationCommunicator(Profile, subscription);
+            ReplicationCommunicator = new AzureSqlDatabaseReplicationCommunicator(Profile, subscription);
             DatabaseCommunicator = new AzureSqlDatabaseCommunicator(Profile, subscription);
+            ServerCommunicator = new AzureSqlServerCommunicator(Profile, subscription);
         }
 
         /// <summary>
-        /// Gets the Location of the server
+        /// Gets the Location of the Azure SQL Server
         /// </summary>
-        /// <param name="resourceGroupName">The resource group the server is in</param>
-        /// <param name="serverName">The name of the server</param>
-        /// <returns></returns>
+        /// <param name="resourceGroupName">The resource group the Azure SQL Server is in</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <returns>The region hosting the Azure SQL Server</returns>
         internal string GetServerLocation(string resourceGroupName, string serverName)
         {
             AzureSqlServerAdapter serverAdapter = new AzureSqlServerAdapter(Profile, _subscription);
@@ -82,12 +85,12 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         }
 
         /// <summary>
-        /// Gets an Azure Sql Database by name
+        /// Gets an Azure SQL Database by name
         /// </summary>
         /// <param name="resourceGroupName">The name of the resource group</param>
-        /// <param name="serverName">The name of the Azure Sql Database Server</param>
-        /// <param name="databaseName">The name of the Azure Sql Database</param>
-        /// <returns>The Azure Sql Database object</returns>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL Database</param>
+        /// <returns>The Azure SQL Database object</returns>
         internal AzureSqlDatabaseModel GetDatabase(string resourceGroupName, string serverName, string databaseName)
         {
             var resp = DatabaseCommunicator.Get(resourceGroupName, serverName, databaseName, Util.GenerateTracingId());
@@ -95,15 +98,15 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         }
 
         /// <summary>
-        /// Creates an Azure Sql Database Copy
+        /// Creates an Azure SQL Database Copy
         /// </summary>
         /// <param name="copyResourceGroup">The name of the resource group</param>
-        /// <param name="copyServerName">The name of the Azure Sql Database Server</param>
+        /// <param name="copyServerName">The name of the Azure SQL Server</param>
         /// <param name="model">The input parameters for the create/update operation</param>
-        /// <returns>The Azure Sql Database Copy object</returns>
+        /// <returns>The Azure SQL Database Copy object</returns>
         internal AzureSqlDatabaseCopyModel CopyDatabase(string copyResourceGroup, string copyServerName, AzureSqlDatabaseCopyModel model)
         {
-            var resp = Communicator.CreateCopy(copyResourceGroup, copyServerName, model.CopyDatabaseName, Util.GenerateTracingId(), new DatabaseCreateOrUpdateParameters()
+            var resp = ReplicationCommunicator.CreateCopy(copyResourceGroup, copyServerName, model.CopyDatabaseName, Util.GenerateTracingId(), new DatabaseCreateOrUpdateParameters()
             {
                 Location = model.CopyLocation,
                 Properties = new DatabaseCreateOrUpdateProperties()
@@ -124,10 +127,10 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// Converts the response from the service to a powershell DatabaseCopy object
         /// </summary>
         /// <param name="copyResourceGroupName">The copy's resource group name</param>
-        /// <param name="copyServerName">The copy's server name</param>
+        /// <param name="copyServerName">The copy's Azure SQL Server name</param>
         /// <param name="copyDatabaseName">The copy's database name</param>
         /// <param name="resourceGroupName">The source's resource group name</param>
-        /// <param name="serverName">The source's server name</param>
+        /// <param name="serverName">The source's Azure SQL Server name</param>
         /// <param name="databaseName">The source database name</param>
         /// <param name="elasticPoolName">The copy's target elastic pool</param>
         /// <param name="serviceLevelObjective">The copy's nondefault service level objective</param>
@@ -136,7 +139,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         private AzureSqlDatabaseCopyModel CreateDatabaseCopyModelFromDatabaseCreateOrUpdateResponse(string copyResourceGroupName, string copyServerName, string copyDatabaseName,
             string resourceGroupName, string serverName, string databaseName, Management.Sql.Models.DatabaseCreateOrUpdateResponse response)
         {
-            // the response does not contain the majority of the information we wish to epxose to the user, so most of the data is passed from the inputs.
+            // the response does not contain the majority of the information we wish to expose to the user, so most of the data is passed from the inputs.
             AzureSqlDatabaseCopyModel model = new AzureSqlDatabaseCopyModel();
 
             model.CopyResourceGroupName = copyResourceGroupName;
@@ -153,16 +156,15 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         }
 
         /// <summary>
-        /// Creates an Azure Sql Database Secondary
+        /// Creates an Azure SQL Database Secondary
         /// </summary>
         /// <param name="resourceGroupName">The resource group name of primary database</param>
-        /// <param name="serverName">The server name of primary database</param>
+        /// <param name="serverName">The Azure SQL Server name of primary database</param>
         /// <param name="model">The input parameters for the create operation</param>
-        /// <returns>The Azure Sql Database SecondaryLink object</returns>
+        /// <returns>The Azure SQL Database ReplicationLink object</returns>
         internal AzureReplicationLinkModel CreateLink(string resourceGroupName, string serverName, AzureReplicationLinkModel model)
         {
-            // AllowConnections.ReadOnly is not yet supported
-            var resp = Communicator.CreateCopy(resourceGroupName, serverName, model.DatabaseName, Util.GenerateTracingId(), new DatabaseCreateOrUpdateParameters()
+            var resp = ReplicationCommunicator.CreateCopy(resourceGroupName, serverName, model.DatabaseName, Util.GenerateTracingId(), new DatabaseCreateOrUpdateParameters()
             {
                 Location = model.PartnerLocation,
                 Properties = new DatabaseCreateOrUpdateProperties()
@@ -182,35 +184,35 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// Gets the Secondary Link by linkId
         /// </summary>
         /// <param name="resourceGroupName">The resource group name of primary database</param>
-        /// <param name="serverName">The server name of primary database</param>
+        /// <param name="serverName">The Azure SQL Server name of primary database</param>
         /// <param name="databaseName">The name of primary database</param>
         /// <param name="partnerResourceGroupName">The resource group name of secondary database</param>
         /// <param name="linkId">The linkId of the replication link to the secondary</param>
-        /// <returns>The Azure Sql Database SecondaryLink object</returns>
+        /// <returns>The Azure SQL Database ReplicationLink object</returns>
         internal AzureReplicationLinkModel GetLink(string resourceGroupName, string serverName, string databaseName, 
             string partnerResourceGroupName, Guid linkId)
         {
             // partnerResourceGroupName is required because it is not exposed in any reponse from the service.
             
-            var resp = Communicator.GetLink(resourceGroupName, serverName, databaseName, linkId, Util.GenerateTracingId());
+            var resp = ReplicationCommunicator.GetLink(resourceGroupName, serverName, databaseName, linkId, Util.GenerateTracingId());
 
             return CreateReplicationLinkModelFromReplicationLinkResponse(resourceGroupName, serverName, databaseName, partnerResourceGroupName, resp);
         }
 
         /// <summary>
-        /// Lists Azure Sql Database Secondaries for the specified primary for the specified partner resource group
+        /// Lists Azure SQL Database Secondaries for the specified primary for the specified partner resource group
         /// </summary>
         /// <param name="resourceGroupName">The resource group name of primary database</param>
-        /// <param name="serverName">The server name of primary database</param>
+        /// <param name="serverName">The Azure SQL Server name of primary database</param>
         /// <param name="databaseName">The name of primary database</param>
         /// <param name="partnerResourceGroupName">The resource group name of secondary database</param>
-        /// <returns>The collection of Azure Sql Database SecondaryLink objects for the primary</returns>
+        /// <returns>The collection of Azure SQL Database ReplicationLink objects for the primary</returns>
         internal ICollection<AzureReplicationLinkModel> ListLinks(string resourceGroupName, string serverName, string databaseName,
             string partnerResourceGroupName)
         {
-            // partnerResourceGroupName is required because it is not exposed in any reponse from the service.
+            CheckPartnerResourceGroupValid(partnerResourceGroupName);
 
-            var resp = Communicator.ListLinks(resourceGroupName, serverName, databaseName, Util.GenerateTracingId());
+            var resp = ReplicationCommunicator.ListLinks(resourceGroupName, serverName, databaseName, Util.GenerateTracingId());
 
             return resp.Select((link) =>
             {
@@ -218,16 +220,22 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
             }).ToList();
         }
 
+        private void CheckPartnerResourceGroupValid(string partnerResourceGroupName)
+        {
+            // checking if the resource group is valid as a partner resource group
+            ServerCommunicator.List(partnerResourceGroupName, Util.GenerateTracingId());
+        }
+
         /// <summary>
         /// Converts the response from the service to a powershell Secondary Link object
         /// </summary>
         /// <param name="resourceGroupName">The resource group name of primary database</param>
-        /// <param name="serverName">The server name of primary database</param>
+        /// <param name="serverName">The Azure SQL Server name of primary database</param>
         /// <param name="databaseName">The name of primary database</param>
         /// <param name="partnerResourceGroupName">The resource group name of secondary database</param>
         /// <param name="linkId">The linkId of the replication link to the secondary</param>
         /// <param name="response">The replication link response</param>
-        /// <returns>The Azure Sql Database SecondaryLink object</returns>
+        /// <returns>The Azure SQL Database ReplicationLink object</returns>
         private AzureReplicationLinkModel CreateReplicationLinkModelFromReplicationLinkResponse(string resourceGroupName,
             string serverName, string databaseName, string partnerResourceGroupName, Management.Sql.Models.ReplicationLink resp)
         {
@@ -257,14 +265,14 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         }
 
         /// <summary>
-        /// Gets the Secondary Link by the secondary resource group and server
+        /// Gets the Secondary Link by the secondary resource group and Azure SQL Server
         /// </summary>
         /// <param name="resourceGroupName">The resource group name of primary database</param>
-        /// <param name="serverName">The server name of primary database</param>
+        /// <param name="serverName">The Azure SQL Server name of primary database</param>
         /// <param name="databaseName">The name of primary database</param>
         /// <param name="partnerResourceGroupName">The resource group name of secondary database</param>
-        /// <param name="partnerServerName">The server name of secondary database</param>
-        /// <returns>The Azure Sql Database SecondaryLink object</returns>
+        /// <param name="partnerServerName">The Azure SQL Server name of secondary database</param>
+        /// <returns>The Azure SQL Database ReplicationLink object</returns>
         internal AzureReplicationLinkModel GetLink(string resourceGroupName, string serverName, string databaseName, 
             string partnerResourceGroupName, string partnerServerName)
         {
@@ -274,18 +282,18 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         }
 
         /// <summary>
-        /// Finds and removes the Secondary Link by the secondary resource group and server
+        /// Finds and removes the Secondary Link by the secondary resource group and Azure SQL Server
         /// </summary>
         /// <param name="resourceGroupName">The resource group name of primary database</param>
-        /// <param name="serverName">The server name of primary database</param>
+        /// <param name="serverName">The Azure SQL Server name of primary database</param>
         /// <param name="databaseName">The name of primary database</param>
         /// <param name="partnerResourceGroupName">The resource group name of secondary database</param>
-        /// <param name="partnerServerName">The server name of secondary database</param>
+        /// <param name="partnerServerName">The Azure SQL Server name of secondary database</param>
         internal void RemoveLink(string resourceGroupName, string serverName, string databaseName, string partnerResourceGroupName, string partnerServerName)
         {
             AzureReplicationLinkModel link = GetLink(resourceGroupName, serverName, databaseName, partnerResourceGroupName, partnerServerName);
 
-            Communicator.RemoveLink(link.ResourceGroupName, link.ServerName, link.DatabaseName, link.LinkId, Util.GenerateTracingId());
+            ReplicationCommunicator.RemoveLink(link.ResourceGroupName, link.ServerName, link.DatabaseName, link.LinkId, Util.GenerateTracingId());
         }
     }
 }

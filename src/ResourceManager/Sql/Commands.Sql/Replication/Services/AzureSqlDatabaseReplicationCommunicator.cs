@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Resources;
@@ -20,7 +21,6 @@ using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.WindowsAzure.Management.Storage;
 using System;
 using System.Collections.Generic;
-using Microsoft.Azure.Commands.Sql.Common;
 
 namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
 {
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         public AzureProfile Profile { get; set; }
 
         /// <summary>
-        /// Creates a communicator for Azure Sql Databases
+        /// Creates a communicator for Azure SQL Databases
         /// </summary>
         /// <param name="profile"></param>
         /// <param name="subscription"></param>
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         }
 
         /// <summary>
-        /// Gets the Azure Sql Database
+        /// Gets the Azure SQL Database
         /// </summary>
         public Management.Sql.Models.ReplicationLink GetLink(string resourceGroupName, string serverName, string databaseName, Guid linkId, string clientRequestId)
         {
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         }
 
         /// <summary>
-        /// Lists Azure Sql Databases
+        /// Lists Azure SQL Databases
         /// </summary>
         public IList<Management.Sql.Models.ReplicationLink> ListLinks(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
         {
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         }
 
         /// <summary>
-        /// Creates a copy of a database
+        /// Creates a copy of a Azure SQL Database
         /// </summary>
         public Management.Sql.Models.DatabaseCreateOrUpdateResponse CreateCopy(string resourceGroupName, string serverName, string databaseName, string clientRequestId, DatabaseCreateOrUpdateParameters parameters)
         {
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         }
         
         /// <summary>
-        /// Deletes a database
+        /// Deletes a Replication Link
         /// </summary>
         public void RemoveLink(string resourceGroupName, string serverName, string databaseName, Guid linkId, string clientRequestId)
         {

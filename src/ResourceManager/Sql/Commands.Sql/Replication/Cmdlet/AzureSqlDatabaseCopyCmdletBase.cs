@@ -12,31 +12,31 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Replication.Model;
 using Microsoft.Azure.Commands.Sql.ReplicationLink.Services;
+using System.Collections.Generic;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
 {
     public abstract class AzureSqlDatabaseCopyCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlDatabaseCopyModel>, AzureSqlDatabaseReplicationAdapter>
     {
         /// <summary>
-        /// Gets or sets the name of the database server to use.
+        /// Gets or sets the name of the Azure SQL Server to use.
         /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = "The name of the Azure SQL Database Server the database to be copied is in.")]
+            HelpMessage = "The name of the Azure SQL Server the database to be copied is in.")]
         [ValidateNotNullOrEmpty]
         public string ServerName { get; set; }
 
         /// <summary>
         /// Initializes the adapter
         /// </summary>
-        /// <param name="subscription"></param>
-        /// <returns></returns>
+        /// <param name="subscription">The Azure Subscription</param>
+        /// <returns>A replication Adapter object</returns>
         protected override AzureSqlDatabaseReplicationAdapter InitModelAdapter(Azure.Common.Authentication.Models.AzureSubscription subscription)
         {
             return new AzureSqlDatabaseReplicationAdapter(Profile, subscription);

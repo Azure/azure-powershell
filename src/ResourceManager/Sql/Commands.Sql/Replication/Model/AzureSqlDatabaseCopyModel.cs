@@ -18,22 +18,22 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.Sql.Replication.Model
 {
     /// <summary>
-    /// Represents an Azure Sql Database Copy
+    /// Represents an Azure SQL Database Copy
     /// </summary>
     public class AzureSqlDatabaseCopyModel : AzureSqlDatabaseReplicationModelBase
     {
         /// <summary>
-        /// Gets or sets the name of the resource group
+        /// Gets or sets the name of the target Resource Group for the copy
         /// </summary>
         public string CopyResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the server
+        /// Gets or sets the name of the target Azure SQL Server for the copy
         /// </summary>
         public string CopyServerName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the database
+        /// Gets or sets the name of the target Azure SQL Database for the copy
         /// </summary>
         public string CopyDatabaseName { get; set; }
 

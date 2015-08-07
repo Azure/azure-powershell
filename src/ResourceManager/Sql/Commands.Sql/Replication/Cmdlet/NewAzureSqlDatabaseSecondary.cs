@@ -12,17 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.Azure.Commands.Sql.Properties;
+using Microsoft.Azure.Commands.Sql.Replication.Model;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Hyak.Common;
-using Microsoft.Azure.Commands.Sql.Replication.Model;
-using Microsoft.Azure.Commands.Sql.Properties;
 
 namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
 {
     /// <summary>
-    /// Cmdlet to create a new Azure Sql Database Secondary and Replication Link
+    /// Cmdlet to create a new Azure SQL Database Secondary and Replication Link
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureSqlDatabaseSecondary",
         ConfirmImpact = ConfirmImpact.Low)]
@@ -55,10 +55,10 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         public string SecondaryElasticPoolName { get; set; }
 
         /// <summary>
-        /// Gets or sets the tags to associate with the Azure Sql Database Replication Link
+        /// Gets or sets the tags to associate with the Azure SQL Database Replication Link
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "The tags to associate with the Azure Sql Database Replication Link")]
+            HelpMessage = "The tags to associate with the Azure SQL Database Replication Link")]
         public Dictionary<string, string> Tags { get; set; }
 
         /// <summary>
@@ -70,10 +70,10 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         public string PartnerResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the server of the secondary.
+        /// Gets or sets the name of the Azure SQL Server of the secondary.
         /// </summary>
         [Parameter(Mandatory = true,
-            HelpMessage = "The name of the Azure Sql Database Server to create secondary in.")]
+            HelpMessage = "The name of the Azure SQL Server to create secondary in.")]
         [ValidateNotNullOrEmpty]
         public string PartnerServerName { get; set; }
 
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureReplicationLinkModel> GetEntity()
         {
-            // We try to get the database.  Since this is a geodr operation, we don't want the secondary to already exist
+            // We try to get the database.  Since this is a create secondary database operation, we don't want the secondary database to already exist
             try
             {
                 ModelAdapter.GetDatabase(this.PartnerResourceGroupName, this.PartnerServerName, this.DatabaseName);
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
 
             // The database already exists
             throw new PSArgumentException(
-                string.Format(Resources.DatabaseNameExists, this.DatabaseName, this.ServerName),
+                string.Format(Resources.DatabaseNameExists, this.DatabaseName, this.PartnerServerName),
                 "DatabaseName");
         }
 
