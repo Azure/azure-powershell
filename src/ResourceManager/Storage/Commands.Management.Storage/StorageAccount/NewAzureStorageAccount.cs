@@ -75,9 +75,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 this.Name,
                 createParameters);
 
-            var getAccountResponse = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
+            var storageAccount = this.StorageClient.StorageAccounts.GetProperties(this.ResourceGroupName, this.Name);
 
-            this.WriteStorageAccount(getAccountResponse.StorageAccount);
+            this.WriteStorageAccount(storageAccount);
         }
     }
 }

@@ -61,9 +61,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
             var keys = this.StorageClient.StorageAccounts.RegenerateKey(
                 this.ResourceGroupName,
                 this.Name,
-                keyName);
+                new StorageAccountRegenerateKeyParameters()
+                {
+                    KeyName = keyName
+                });
 
-            WriteObject(keys.StorageAccountKeys);
+            WriteObject(keys);
         }
 
         private static KeyName ParseKeyName(string keyName)
