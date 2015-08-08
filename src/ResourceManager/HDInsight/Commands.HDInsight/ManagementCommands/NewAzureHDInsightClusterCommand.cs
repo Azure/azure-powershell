@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -208,7 +209,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 }
                 foreach (var val in parameters.Configurations.Where(val => !result.Configurations.ContainsKey(val.Key)))
                 {
-                    result.Configurations.Add(val.Key, val.Value);
+                    result.Configurations.Add(val.Key, DictionaryToHashtable(val.Value));
                 }
                 return result;
             }
@@ -231,12 +232,13 @@ namespace Microsoft.Azure.Commands.HDInsight
                 }
                 foreach (var val in value.Configurations.Where(val => !parameters.Configurations.ContainsKey(val.Key)))
                 {
-                    parameters.Configurations.Add(val.Key, val.Value);
+                    parameters.Configurations.Add(val.Key, HashtableToDictionary(val.Value));
                 }
             } 
         }
 
         #endregion
+
 
         public NewAzureHDInsightClusterCommand()
         {
@@ -256,11 +258,20 @@ namespace Microsoft.Azure.Commands.HDInsight
                 parameters.RdpUsername = RdpCredential.UserName;
                 parameters.RdpPassword = RdpCredential.Password.ConvertToString();
             }
-            if (SshCredential != null)
+
+            if (OSType == OSType.Linux)
             {
                 parameters.SshUserName = SshCredential.UserName;
-                parameters.SshPassword = SshCredential.Password.ConvertToString();
+                if (!string.IsNullOrEmpty(SshCredential.Password.ConvertToString()))
+                {
+                    parameters.SshPassword = SshCredential.Password.ConvertToString();
+                }
+                if (!string.IsNullOrEmpty(SshPublicKey))
+                {
+                    parameters.SshPublicKey = SshPublicKey;
+                }
             }
+
             foreach (
                 var storageAccount in
                     AdditionalStorageAccounts.Where(
@@ -293,6 +304,18 @@ namespace Microsoft.Azure.Commands.HDInsight
             {
                 WriteObject(new AzureHDInsightCluster(cluster.Cluster));
             }
+        }
+
+        private static Hashtable DictionaryToHashtable(Dictionary<string, string> dictionary)
+        {
+            return new Hashtable(dictionary);
+        }
+
+        private static Dictionary<string, string> HashtableToDictionary(Hashtable table)
+        {
+            return table
+              .Cast<DictionaryEntry>()
+              .ToDictionary(kvp => (string)kvp.Key, kvp => (string)kvp.Value);
         }
     }
 }
