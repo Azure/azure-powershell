@@ -42,6 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         protected const string GetSqlServerExtensionParamSetName = "GetSqlServerExtension";
         protected const string AutoPatchingStatusMessageName = "Automated Patching";
         protected const string AutoBackupStatusMessageName = "Automated Backup";
+        protected const string KeyVaultCredentialStatusMessageName = "Key Vault Credential";
 
         internal void ExecuteCommand()
         {
@@ -54,12 +55,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 
                     return this.GetExtensionContext(r);
                 }), true);
-        }
+        } 
 
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
-            ExecuteCommand();
+            this.ExecuteCommand();
         }
 
         /// <summary>
@@ -116,10 +117,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                             {
                                 context.AutoPatchingSettings = DeSerializeAutoPatchingSettings(status.Name, formattedMessage);
                             }
-
-                            if (status.Name.Equals(AutoBackupStatusMessageName, System.StringComparison.InvariantCulture))
+                            else if (status.Name.Equals(AutoBackupStatusMessageName, System.StringComparison.InvariantCulture))
                             {
                                 context.AutoBackupSettings = DeSerializeAutoBackupSettings(status.Name, formattedMessage);
+                            }
+                            else if (status.Name.Equals(KeyVaultCredentialStatusMessageName, System.StringComparison.InvariantCulture))
+                            {
+                                context.KeyVaultCredentialSettings = DeSerializeKeyVaultCredentialSettings(status.Name, formattedMessage);
                             }
 
                             statusMessageList.Add(formattedMessage);
@@ -212,13 +216,23 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 
         private AutoBackupSettings DeSerializeAutoBackupSettings(string category, string input)
         {
-            AutoBackupSettings abs = new AutoBackupSettings();
+            AutoBackupSettings autoBackupSettings = new AutoBackupSettings();
 
             if (!string.IsNullOrEmpty(input))
             {
                 try
                 {
-                    abs = JsonConvert.DeserializeObject<AutoBackupSettings>(input);
+                    PublicAutoBackupSettings publicAutoBackupSettings = JsonConvert.DeserializeObject<PublicAutoBackupSettings>(input);
+
+                    if(publicAutoBackupSettings != null)
+                    {
+                        autoBackupSettings.Enable = publicAutoBackupSettings.Enable;
+                        autoBackupSettings.EnableEncryption = publicAutoBackupSettings.EnableEncryption;
+                        autoBackupSettings.RetentionPeriod = publicAutoBackupSettings.RetentionPeriod;
+                        autoBackupSettings.StorageAccessKey = "***";
+                        autoBackupSettings.StorageUrl = "***";
+                        autoBackupSettings.Password = "***";
+                    }
                 }
                 catch (JsonReaderException jre)
                 {
@@ -228,7 +242,38 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                 }
             }
 
-            return abs;
+            return autoBackupSettings;
+        }
+
+        private KeyVaultCredentialSettings DeSerializeKeyVaultCredentialSettings(string category, string input)
+        { 
+            KeyVaultCredentialSettings kvtSettings = new KeyVaultCredentialSettings();
+
+            if (!string.IsNullOrEmpty(input))
+            {
+                try
+                {
+                    // we only print the public settings
+                    PublicKeyVaultCredentialSettings publicSettings = JsonConvert.DeserializeObject<PublicKeyVaultCredentialSettings>(input);
+
+                    if(publicSettings != null)
+                    {
+                        kvtSettings.CredentialName = publicSettings.CredentialName;
+                        kvtSettings.Enable = publicSettings.Enable;
+                        kvtSettings.ServicePrincipalName = "***";
+                        kvtSettings.ServicePrincipalSecret = "***";
+                        kvtSettings.AzureKeyVaultUrl = "***";
+                    }
+                }
+                catch (JsonReaderException jre)
+                {
+                    WriteVerboseWithTimestamp("Category:" + category);
+                    WriteVerboseWithTimestamp("Message:" + input);
+                    WriteVerboseWithTimestamp(jre.ToString());
+                }
+            }
+
+            return kvtSettings;
         }
 
         /// <summary>

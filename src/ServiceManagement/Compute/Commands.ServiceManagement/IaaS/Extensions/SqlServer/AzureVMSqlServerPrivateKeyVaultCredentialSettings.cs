@@ -11,41 +11,38 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-using System.Collections.Generic;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
+
+using System.Security;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
-    using NSM = Management.Compute.Models;
-
     /// <summary>
-    /// SQL Extension's context object used by Get-AzureVMSqlServerExtension
+    /// Autobackup settings to configure managed backup on SQL VM
     /// </summary>
-    public class VirtualMachineSqlServerExtensionContext : VirtualMachineExtensionContext
+    public class PrivateKeyVaultCredentialSettings
     {
         /// <summary>
-        /// Auto-patching settings
+        /// Gets the azure key vault URL.
         /// </summary>
-        public AutoPatchingSettings AutoPatchingSettings;
+        /// <value>
+        /// The azure key vault URL for Credential Management.
+        /// </value>
+        public string AzureKeyVaultUrl { get; set; }
 
         /// <summary>
-        /// Auto-backup settings
+        /// Gets the name of the principal.
         /// </summary>
-        public AutoBackupSettings AutoBackupSettings;
+        /// <value>
+        /// The name of the service principal to access the Azure Key Vault.
+        /// </value>
+        public string ServicePrincipalName { get; set; }
 
         /// <summary>
-        /// Key Vault Credential settings
+        /// Gets the principal secret.
         /// </summary>
-        public KeyVaultCredentialSettings KeyVaultCredentialSettings;
-
-        /// <summary>
-        /// Status messages reported by extension
-        /// </summary>
-        public List<string> StatusMessages;
-
-        /// <summary>
-        /// Resource extension substatus list
-        /// </summary>
-        public IList<NSM.ResourceExtensionSubStatus> SubStatusList { get; set; }
+        /// <value>
+        /// The service principal secret to access the Azure Key Vault.
+        /// </value>
+        public string ServicePrincipalSecret { get; set; }
     }
 }

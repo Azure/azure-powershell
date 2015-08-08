@@ -158,6 +158,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IaaS\Extensions\SqlServer\AzureVMSqlServerPublicAutoBackupSettings.cs" />
+    <Compile Include="IaaS\Extensions\SqlServer\AzureVMSqlServerPublicKeyVaultCredentialSettings.cs" />
+    <Compile Include="IaaS\Extensions\SqlServer\AzureVMSqlServerPrivateKeyVaultCredentialSettings.cs" />
+    <Compile Include="IaaS\Extensions\SqlServer\AzureVMSqlServerKeyVaultCredentialSettings.cs" />
+    <Compile Include="IaaS\Extensions\SqlServer\NewAzureVMSqlServerKeyVaultCredentialConfig.cs" />
     <Compile Include="IaaS\Network\AddAzureVirtualIP.cs" />
     <Compile Include="AffinityGroups\GetAzureAffinityGroup.cs" />
     <Compile Include="AffinityGroups\NewAzureAffinityGroup.cs" />
