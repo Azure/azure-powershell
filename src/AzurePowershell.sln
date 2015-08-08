@@ -230,6 +230,7 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HDInsight", "ServiceManagement\HDInsight\Commands.HDInsight\HDInsight.csproj", "{137D404A-865A-43DB-930C-6DA67DA048DF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.HDInsight", "ResourceManager\HDInsight\Commands.HDInsight\Commands.HDInsight.csproj", "{6B7540C5-8AB3-4011-864B-0BE76F282F9E}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.SiteRecovery", "ResourceManager\SiteRecovery\Commands.SiteRecovery\Commands.SiteRecovery.csproj", "{7C879645-31EE-4A78-AD81-5512300FA104}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.SiteRecovery.Test", "ResourceManager\SiteRecovery\Commands.SiteRecovery.Test\Commands.SiteRecovery.Test.csproj", "{6C7D3D81-37AB-445E-8081-78A1FEC0A773}"

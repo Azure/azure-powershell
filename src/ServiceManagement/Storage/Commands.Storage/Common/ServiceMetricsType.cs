@@ -14,7 +14,6 @@
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
-
     public enum ServiceMetricsType
     {
         Hour,
