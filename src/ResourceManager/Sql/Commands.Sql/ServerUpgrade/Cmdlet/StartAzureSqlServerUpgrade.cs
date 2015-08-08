@@ -86,25 +86,28 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
         /// <returns>The generated model from user input</returns>
         protected override IEnumerable<AzureSqlServerUpgradeStartModel> ApplyUserInputToModel(IEnumerable<AzureSqlServerUpgradeStartModel> models)
         {
-            // Ignore user input and recalculate StorageMb based on Dtu and coefficient of the edition
-            foreach (var elasticPoolProperties in ElasticPoolCollection)
+            if (ElasticPoolCollection != null)
             {
-                switch (elasticPoolProperties.Edition.ToLower())
+                // Ignore user input and recalculate StorageMb based on Dtu and coefficient of the edition
+                foreach (var elasticPoolProperties in ElasticPoolCollection)
                 {
-                    case "basic":
-                        elasticPoolProperties.StorageMb = elasticPoolProperties.Dtu*StorageMbPerDtuBasic;
-                        break;
-                    case "standard":
-                        elasticPoolProperties.StorageMb = elasticPoolProperties.Dtu * StorageMbPerDtuStandard;
-                        break;
-                    case "premium":
-                        elasticPoolProperties.StorageMb = elasticPoolProperties.Dtu * StorageMbPerDtuPremium;
-                        break;
-                    default:
-                        throw new PSArgumentException(string.Format("Edition {0} is invalid", elasticPoolProperties.Edition));
+                    switch (elasticPoolProperties.Edition.ToLower())
+                    {
+                        case "basic":
+                            elasticPoolProperties.StorageMb = elasticPoolProperties.Dtu * StorageMbPerDtuBasic;
+                            break;
+                        case "standard":
+                            elasticPoolProperties.StorageMb = elasticPoolProperties.Dtu * StorageMbPerDtuStandard;
+                            break;
+                        case "premium":
+                            elasticPoolProperties.StorageMb = elasticPoolProperties.Dtu * StorageMbPerDtuPremium;
+                            break;
+                        default:
+                            throw new PSArgumentException(string.Format("Edition {0} is invalid", elasticPoolProperties.Edition));
+                    }
+
                 }
-                    
-            }
+            }            
 
             var newEntity = new List<AzureSqlServerUpgradeStartModel>();
             newEntity.Add(new AzureSqlServerUpgradeStartModel
