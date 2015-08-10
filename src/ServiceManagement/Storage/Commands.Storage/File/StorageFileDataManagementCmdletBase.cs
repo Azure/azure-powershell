@@ -12,15 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Globalization;
-using System.Management.Automation;
-using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Commands.Storage.Common;
-using Microsoft.WindowsAzure.Storage.DataMovement.TransferJobs;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.File
 {
+    using System;
+    using System.Globalization;
+    using System.Management.Automation;
+    using System.Threading.Tasks;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Storage.DataMovement;
+    using Microsoft.WindowsAzure.Storage.File;
+
     public abstract class StorageFileDataManagementCmdletBase : AzureStorageFileCmdletBase
     {
         /// <summary>
@@ -49,7 +50,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
         /// <param name="sourcePath">Indicating the source path.</param>
         /// <param name="destinationPath">Indicating the destination path.</param>
         /// <returns>Returns a value indicating whether to overwrite.</returns>
-        private bool ConfirmOverwrite(string sourcePath, string destinationPath)
+        protected bool ConfirmOverwrite(string sourcePath, string destinationPath)
         {
             return this.Force || this.OutputStream.ConfirmAsync(string.Format(CultureInfo.CurrentCulture, Resources.OverwriteConfirmation, destinationPath)).Result;
         }
@@ -63,17 +64,21 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
 
         protected override void EndProcessing()
         {
-            base.EndProcessing();
-            this.WriteTaskSummary();
-
-            this.transferJobRunner.Dispose();
-            this.transferJobRunner = null;
+            try
+            {
+                base.EndProcessing();
+                this.WriteTaskSummary();
+            }
+            finally
+            {
+                this.transferJobRunner.Dispose();
+                this.transferJobRunner = null;
+            }
         }
 
-        protected async Task RunTransferJob(FileTransferJob job, ProgressRecord record)
+        protected async Task RunTransferJob(TransferJob job, ProgressRecord record)
         {
             this.SetRequestOptionsInTransferJob(job);
-            job.AccessCondition = this.AccessCondition;
             job.OverwritePromptCallback = this.ConfirmOverwrite;
 
             try
@@ -104,7 +109,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
             }
         }
 
-        protected void SetRequestOptionsInTransferJob(FileTransferJob transferJob)
+        protected void SetRequestOptionsInTransferJob(TransferJob transferJob)
         {
             var cmdletOptions = this.RequestOptions;
 
@@ -113,7 +118,25 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
                 return;
             }
 
-            var requestOptions = transferJob.FileRequestOptions;
+            if (null != transferJob.Source.AzureFile)
+            {
+                this.SetRequestOptions(transferJob.Source, cmdletOptions);
+            }
+
+            if (null != transferJob.Destination.AzureFile)
+            {
+                this.SetRequestOptions(transferJob.Destination, cmdletOptions);
+            }
+        }
+
+        private void SetRequestOptions(TransferLocation location, FileRequestOptions cmdletOptions)
+        {
+            FileRequestOptions requestOptions = location.RequestOptions as FileRequestOptions;
+
+            if (null == requestOptions)
+            { 
+                requestOptions = new FileRequestOptions();
+            }
 
             if (cmdletOptions.MaximumExecutionTime != null)
             {
@@ -127,7 +150,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
 
             requestOptions.DisableContentMD5Validation = true;
 
-            transferJob.FileRequestOptions = requestOptions;
+            location.RequestOptions = requestOptions;
         }
     }
 }

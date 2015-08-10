@@ -116,7 +116,7 @@ function Test-VirtualMachine
 
         # Virtual Machine
         # TODO: Still need to do retry for New-AzureVM for SA, even it's returned in Get-.
-        New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p;
+        New-AzureVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Get VM
         $vm1 = Get-AzureVM -Name $vmname -ResourceGroupName $rgname;
@@ -139,7 +139,7 @@ function Test-VirtualMachine
 
         # Update
         $p.Location = $vm1.Location;
-        Update-AzureVM -ResourceGroupName $rgname -Name $vmname -VM $p;
+        Update-AzureVM -ResourceGroupName $rgname -VM $p;
 
         $vm2 = Get-AzureVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm2.NetworkProfile.NetworkInterfaces.Count 1;
@@ -487,7 +487,7 @@ function Test-VirtualMachineSizeAndUsage
 
         # Virtual Machine
         # TODO: Still need to do retry for New-AzureVM for SA, even it's returned in Get-.
-        New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p;
+        New-AzureVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Test Sizes
         $s1 = Get-AzureVMSize -Location ($loc -replace ' ');
@@ -656,7 +656,7 @@ function Test-VirtualMachinePIRv2
 
         # Virtual Machine
         # TODO: Still need to do retry for New-AzureVM for SA, even it's returned in Get-.
-        New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p;
+        New-AzureVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Remove
         # Remove-AzureVM -ResourceGroupName $rgname -Name $vmname -Force;
@@ -763,7 +763,7 @@ function Test-VirtualMachineCapture
 
         # Virtual Machine
         # TODO: Still need to do retry for New-AzureVM for SA, even it's returned in Get-.
-        New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p;
+        New-AzureVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Stop the VM before Capture
         Stop-AzureVM -ResourceGroupName $rgname -Name $vmname -Force;
@@ -856,7 +856,7 @@ function Test-VirtualMachineDataDisk
         $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
 
         # Negative Tests on A0 Size + 2 Data Disks
-        Assert-ThrowsContains { New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p; } "The maximum number of data disks allowed to be attached to a VM is 1.";
+        Assert-ThrowsContains { New-AzureVM -ResourceGroupName $rgname -Location $loc -VM $p; } "The maximum number of data disks allowed to be attached to a VM is 1.";
     }
     finally
     {
@@ -938,7 +938,7 @@ function Test-VirtualMachinePlan
         $p.Plan.PromotionCode = $plan;
 
         # Negative Tests on non-existing Plan
-        Assert-ThrowsContains { New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p; } "User failed validation to purchase resources";
+        Assert-ThrowsContains { New-AzureVM -ResourceGroupName $rgname -Location $loc -VM $p; } "User failed validation to purchase resources";
     }
     finally
     {
@@ -1023,7 +1023,7 @@ function Test-VirtualMachinePlan2
         $p.OSProfile.WindowsConfiguration = $null;
         
         # Negative Tests on non-purchased Plan
-        Assert-ThrowsContains { New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p; } "Legal terms have not been accepted for this item on this subscription";
+        Assert-ThrowsContains { New-AzureVM -ResourceGroupName $rgname -Location $loc -VM $p; } "Legal terms have not been accepted for this item on this subscription";
     }
     finally
     {
@@ -1093,7 +1093,7 @@ function Test-VirtualMachineTags
 
         # Test Tags
         $tags = @{Name = "test1"; Value = "testval1"}, @{ Name = "test2"; Value = "testval2" };
-        $st = New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p -Tags $tags;
+        $st = New-AzureVM -ResourceGroupName $rgname -Location $loc -VM $p -Tags $tags;
         Assert-NotNull $st.RequestId;
         Assert-NotNull $st.StatusCode;
         $vm = Get-AzureVM -ResourceGroupName $rgname -Name $vmname;
@@ -1188,7 +1188,7 @@ function Test-VirtualMachineWithVMAgentAutoUpdate
 
         # Virtual Machine
         # TODO: Still need to do retry for New-AzureVM for SA, even it's returned in Get-.
-        New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p;
+        New-AzureVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Get VM
         $vm1 = Get-AzureVM -Name $vmname -ResourceGroupName $rgname;
@@ -1291,7 +1291,7 @@ function Test-LinuxVirtualMachine
 
         # Virtual Machine
         # TODO: Still need to do retry for New-AzureVM for SA, even it's returned in Get-.
-        New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p;
+        New-AzureVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Get VM
         $vm1 = Get-AzureVM -Name $vmname -ResourceGroupName $rgname;
@@ -1339,7 +1339,7 @@ function Test-VMImageCmdletOutputFormat
 
     Assert-OutputContains " Get-AzureVMImage -Location $locStr -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'FilterExpression', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
 
-    Assert-OutputContains " Get-AzureVMImageDetail -Location $locStr -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'FilterExpression', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
+    Assert-OutputContains " Get-AzureVMImage -Location $locStr -PublisherName $publisher -Offer $offer -Skus $sku -Version $ver " @('Id', 'Location', 'PublisherName', 'Offer', 'Sku', 'Version', 'FilterExpression', 'Name', 'DataDiskImages', 'OSDiskImage', 'PurchasePlan');
 }
 
 # Test Get VM Size from All Locations

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.HDInsight.Commands;
@@ -27,77 +28,77 @@ namespace Microsoft.Azure.Commands.HDInsight
         typeof(AzureHDInsightConfig))]
     public class AddAzureHDInsightConfigValuesCommand : HDInsightCmdletBase
     {
-        private Dictionary<string, Dictionary<string, string>> _configurations;
+        private Dictionary<string, Hashtable> _configurations;
             
         #region Input Parameter Definitions
 
         [Parameter(Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The HDInsight cluster configuration to use when creating the new cluster")]
+            HelpMessage = "The HDInsight cluster configuration to use when creating the new cluster.")]
         public AzureHDInsightConfig Config { get; set; }
 
         [Parameter(HelpMessage = "Gets the Core Site configurations of this HDInsight cluster.")]
-        public Dictionary<string, string> Core { get; set; }
+        public Hashtable Core { get; set; }
 
         [Parameter(HelpMessage = "Gets the Hive Site configurations of this HDInsight cluster.")]
-        public Dictionary<string, string> HiveSite { get; set; }
+        public Hashtable HiveSite { get; set; }
 
         [Parameter(HelpMessage = "Gets the Hive Env configurations of this HDInsight cluster.")]
-        public Dictionary<string, string> HiveEnv { get; set; }
+        public Hashtable HiveEnv { get; set; }
 
         [Parameter(HelpMessage = "Gets the Oozie Site configurations of this HDInsight cluster.")]
-        public Dictionary<string, string> OozieSite { get; set; }
+        public Hashtable OozieSite { get; set; }
 
         [Parameter(HelpMessage = "Gets the Oozie Env configurations of this HDInsight cluster.")]
-        public Dictionary<string, string> OozieEnv { get; set; }
+        public Hashtable OozieEnv { get; set; }
 
         [Parameter(HelpMessage = "Gets the WebHCat Site configurations of this HDInsight cluster.")]
-        public Dictionary<string, string> WebHCat { get; set; }
+        public Hashtable WebHCat { get; set; }
 
         [Parameter(HelpMessage = "Gets the HBase Site configurations of this HDInsight cluster.")]
-        public Dictionary<string, string> HBaseSite { get; set; }
+        public Hashtable HBaseSite { get; set; }
 
         [Parameter(HelpMessage = "Gets the HBase Env configurations of this HDInsight cluster.")]
-        public Dictionary<string, string> HBaseEnv { get; set; }
+        public Hashtable HBaseEnv { get; set; }
 
         [Parameter(HelpMessage = "Gets the Storm Site configurations of this HDInsight cluster.")]
-        public Dictionary<string, string> Storm { get; set; }
+        public Hashtable Storm { get; set; }
 
         [Parameter(HelpMessage = "Gets the Yarn Site configurations of this HDInsight cluster.")]
-        public Dictionary<string, string> Yarn { get; set; }
+        public Hashtable Yarn { get; set; }
 
         [Parameter(HelpMessage = "Gets the MapRed Site configurations of this HDInsight cluster.")]
-        public Dictionary<string, string> MapRed { get; set; }
+        public Hashtable MapRed { get; set; }
 
         [Parameter(HelpMessage = "Gets the Tez Site configurations of this HDInsight cluster.")]
-        public Dictionary<string, string> Tez { get; set; }
+        public Hashtable Tez { get; set; }
 
         [Parameter(HelpMessage = "Gets the Hdfs Site configurations of this HDInsight cluster.")]
-        public Dictionary<string, string> Hdfs { get; set; }
+        public Hashtable Hdfs { get; set; }
 
         #endregion
 
         public AddAzureHDInsightConfigValuesCommand()
         {
-            Core = new Dictionary<string, string>();
-            HiveSite = new Dictionary<string, string>();
-            HiveEnv = new Dictionary<string, string>();
-            OozieSite = new Dictionary<string, string>();
-            OozieEnv = new Dictionary<string, string>();
-            WebHCat = new Dictionary<string, string>();
-            HBaseSite = new Dictionary<string, string>();
-            HBaseEnv = new Dictionary<string, string>();
-            Storm = new Dictionary<string, string>();
-            Yarn = new Dictionary<string, string>();
-            MapRed = new Dictionary<string, string>();
-            Tez = new Dictionary<string, string>();
-            Hdfs = new Dictionary<string, string>();
+            Core = new Hashtable();
+            HiveSite = new Hashtable();
+            HiveEnv = new Hashtable();
+            OozieSite = new Hashtable();
+            OozieEnv = new Hashtable();
+            WebHCat = new Hashtable();
+            HBaseSite = new Hashtable();
+            HBaseEnv = new Hashtable();
+            Storm = new Hashtable();
+            Yarn = new Hashtable();
+            MapRed = new Hashtable();
+            Tez = new Hashtable();
+            Hdfs = new Hashtable();
         }
 
         public override void ExecuteCmdlet()
         {
-            _configurations = Config.Configurations ?? new Dictionary<string, Dictionary<string, string>>();
+            _configurations = Config.Configurations ?? new Dictionary<string, Hashtable>();
 
             AddConfigToConfigurations(Core, ConfigurationKey.CoreSite);
             AddConfigToConfigurations(HiveSite, ConfigurationKey.HiveSite);
@@ -116,15 +117,16 @@ namespace Microsoft.Azure.Commands.HDInsight
             WriteObject(Config);
         }
 
-        private void AddConfigToConfigurations(Dictionary<string, string> userConfigs, string configKey)
+        private void AddConfigToConfigurations(Hashtable userConfigs, string configKey)
         {
+            //var userConfigs = HashtableToDictionary(configs);
             //if no configs of this type provided, do nothing
             if (userConfigs == null || userConfigs.Count == 0)
             {
                 return;
             }
 
-            Dictionary<string, string> config;
+            Hashtable config;
             
             //if configs provided and key does not already exist, add the key with provided dictionary
             if (!_configurations.TryGetValue(configKey, out config))
@@ -134,11 +136,18 @@ namespace Microsoft.Azure.Commands.HDInsight
             }
 
             //if configs provided and key already exists, add the provided values to the dictionary for the key
-            foreach (var conf in userConfigs)
+            var updatedConfig = ConcatHashtables(config, userConfigs);
+
+            _configurations[configKey] = updatedConfig;
+        }
+
+        private static Hashtable ConcatHashtables(Hashtable first, Hashtable second)
+        {
+            foreach (DictionaryEntry item in second)
             {
-                config.Add(conf.Key, conf.Value);
+                first[item.Key] = item.Value;
             }
-            _configurations[configKey] = config;
+            return first;
         }
     }
 }

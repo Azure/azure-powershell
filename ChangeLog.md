@@ -30,7 +30,9 @@
 * Azure Stream Analytics 
     * Use Stream Analytics SDK reference to 1.6.0 version.
 * Azure Backup
-    * Enable-AzureBackupContainerReregistration cmdlet.
+    * Get-AzureBackupContainer cmdlet
+    * Enable-AzureBackupContainerReregistration cmdlet
+    * Unregister-AzureBackupContainer cmdlet
 * Azure UsageAggregates cmdlet
 
 ## 2015.07.17 version 0.9.5
@@ -162,6 +164,8 @@
         * New-AzureVirtualNetworkGateway parameter changes
         * Removed command Resize-AzureVirtualNetworkGateway
         * Reset-AzureVirtualNetworkGatewayConnection renamed to Set-AzureVirtualNetworkGatewayConnection8
+* Azure Storage changes
+    * Fix the bug on aliases Get-AzureStorageContainerAcl, Start-CopyAzureStorageBlob and Stop-CopyAzureStorageBlob
 * Azure RedisCache cmdlets 
     * Set-AzureRedisCache - Added support for scaling, using RedisConfiguration instead of MaxMemoryPolicy #513
     * New-AzureRedisCache - Using RedisConfiguration instead of MaxMemoryPolicy #513

@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.File
 {
+    using System;
+
     /// <summary>
     /// Provides constants for cmdlets.
     /// </summary>
@@ -55,6 +55,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
         /// Cmdlet name for file content.
         /// </summary>
         public const string FileContentCmdletName = "AzureStorageFileContent";
+
+        /// <summary>
+        /// Cmdlet name for file copy.
+        /// </summary>
+        public const string FileCopyCmdletName = "AzureStorageFileCopy";
+
+        /// <summary>
+        /// Cmdlet name for file copy state.
+        /// </summary>
+        public const string FileCopyCmdletStateName = "AzureStorageFileCopyState";
 
         /// <summary>
         /// Stores the default endpoint suffix for storage accounts.

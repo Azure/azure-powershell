@@ -110,7 +110,7 @@ function Test-SingleNetworkInterface
 
         # Virtual Machine
         # TODO: Still need to do retry for New-AzureVM for SA, even it's returned in Get-.
-        New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p;
+        New-AzureVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Get VM
         $vm1 = Get-AzureVM -Name $vmname -ResourceGroupName $rgname;
@@ -215,7 +215,7 @@ function Test-SingleNetworkInterfaceDnsSettings
 
         # Virtual Machine
         # TODO: Still need to do retry for New-AzureVM for SA, even it's returned in Get-.
-        New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p;
+        New-AzureVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Get VM
         $vm1 = Get-AzureVM -Name $vmname -ResourceGroupName $rgname;
@@ -324,7 +324,7 @@ function Test-MultipleNetworkInterface
 
         # Virtual Machine
         # TODO: Still need to do retry for New-AzureVM for SA, even it's returned in Get-.
-        New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p;
+        New-AzureVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Get VM
         $vm1 = Get-AzureVM -Name $vmname -ResourceGroupName $rgname;
@@ -447,7 +447,7 @@ function Test-AddNetworkInterface
 
         # Virtual Machine
         # TODO: Still need to do retry for New-AzureVM for SA, even it's returned in Get-.
-        New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $p;
+        New-AzureVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         $vm1 = Get-AzureVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.Name $vmname;
