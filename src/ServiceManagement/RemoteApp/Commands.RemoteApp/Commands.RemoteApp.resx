@@ -261,4 +261,10 @@
   <data name="InvalidLocationArgument" xml:space="preserve">
     <value>Location must be supplied for Cloud only environtments</value>
   </data>
+  <data name="VNetDeprecatedUrl" xml:space="preserve">
+    <value>https://azure.microsoft.com/documentation/articles/remoteapp-migratevnet/</value>
+  </data>
+  <data name="VNetDeprecateed" xml:space="preserve">
+    <value>This cmdlet {0} has been deprecated. See x {1}</value>
+  </data>
 </root>
