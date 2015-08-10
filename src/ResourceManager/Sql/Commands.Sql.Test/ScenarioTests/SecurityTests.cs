@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             RunPowerShellTest("Test-DatabaseUpdatePolicyWithStorage");
         }
 
-        [Fact]
+        [Fact(Skip="Non stable interaction between the test and the testing framework")]
         [Trait(Category.Sql, Category.CheckIn)]
         public void TestDatabaseUpdatePolicyWithStorageV2()
         {
