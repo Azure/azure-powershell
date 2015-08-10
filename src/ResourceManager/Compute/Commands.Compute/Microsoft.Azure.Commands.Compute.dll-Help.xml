@@ -8493,7 +8493,7 @@ PS C:\&gt; Set-AzureVMSourceImage -VM $VirtualMachine -PublisherName "MicrosoftW
 PS C:\&gt; $Offer = (Get-AzureVMImageOffer -Location "Central US" -PublisherName $Publisher[0]) | select -ExpandProperty Offer | where { $_ -like '*Windows*' } 
 PS C:\&gt; $Sku = (Get-AzureVMImageSku -Location "Central US" -PublisherName $Publisher[0] -Offer $Offer[0]) | select -ExpandProperty Skus
 PS C:\&gt; $Versions = (Get-AzureVMImage -Location "Central US" -Offer -Offer $Offer[0] -PublisherName $Publisher[0] -Skus $Sku[0]) | select -ExpandProperty Version
-PS C:\&gt; $VMImage = Get-AzureVMImageDetail -Location "Central US" -Offer -Offer $Offer[0] -PublisherName $Publisher[0] -Skus $Sku[0] -Version $Versions[0] 
+PS C:\&gt; $VMImage = Get-AzureVMImage -Location "Central US" -Offer -Offer $Offer[0] -PublisherName $Publisher[0] -Skus $Sku[0] -Version $Versions[0]
 PS C:\&gt; $VirtualMachine07 = Set-AzureVMSourceImage -VM $VirtualMachine07 -ImageReference $VMImage
 </dev:code>
         <dev:remarks>
