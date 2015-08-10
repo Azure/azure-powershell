@@ -15,12 +15,13 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Management.Storage.Models;
+using StorageModels = Microsoft.Azure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Models
 {
     class PSStorageAccount
     {
-        public PSStorageAccount(StorageAccount storageAccount)
+        public PSStorageAccount(StorageModels.StorageAccount storageAccount)
         {
             this.ResourceGroupName = ParseResourceGroupFromId(storageAccount.Id);
             this.Name = storageAccount.Name;

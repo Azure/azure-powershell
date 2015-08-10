@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using StorageModels = Microsoft.Azure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
@@ -33,6 +34,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         protected const string StorageAccountTypeAlias = "StorageAccountType";
         protected const string AccountTypeAlias = "AccountType";
+
+        protected const string StorageAccountNameAvailabilityStr = "AzureStorageAccountNameAvailability";
 
         protected struct AccountTypeString
         {
@@ -100,12 +103,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
             throw new ArgumentOutOfRangeException("accountType");
         }
 
-        protected void WriteStorageAccount(StorageAccount storageAccount)
+        protected void WriteStorageAccount(StorageModels.StorageAccount storageAccount)
         {
             WriteObject(new PSStorageAccount(storageAccount));
         }
 
-        protected void WriteStorageAccountList(IList<StorageAccount> storageAccounts)
+        protected void WriteStorageAccountList(IList<StorageModels.StorageAccount> storageAccounts)
         {
             List<PSStorageAccount> output = new List<PSStorageAccount>();
             storageAccounts.ForEach(storageAccount => output.Add(new PSStorageAccount(storageAccount)));

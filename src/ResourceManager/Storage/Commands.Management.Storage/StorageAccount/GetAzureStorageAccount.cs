@@ -15,10 +15,11 @@
 using System.Management.Automation;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
+using StorageModels = Microsoft.Azure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet(VerbsCommon.Get, StorageAccountNounStr), OutputType(typeof(StorageAccount))]
+    [Cmdlet(VerbsCommon.Get, StorageAccountNounStr), OutputType(typeof(StorageModels.StorageAccount))]
     public class GetAzureStorageAccountCommand : StorageAccountBaseCmdlet
     {
         [Parameter(
