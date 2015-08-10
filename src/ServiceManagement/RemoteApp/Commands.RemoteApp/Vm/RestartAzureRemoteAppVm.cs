@@ -122,7 +122,7 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 
             restartDetails = new RestartVmCommandParameter(vm.VirtualMachineName);
             restartDetails.LogoffWaitTimeInSeconds = LogoffWaitSeconds <= 0 ? 60 : LogoffWaitSeconds;
-            restartDetails.LogoffMessage = string.IsNullOrEmpty(LogoffMessage) ? string.Format(Commands_RemoteApp.DefaultLogoffMessage, LogoffWaitSeconds) : LogoffMessage;
+            restartDetails.LogoffMessage = string.IsNullOrEmpty(LogoffMessage) ? string.Format(Commands_RemoteApp.DefaultLogoffMessage, restartDetails.LogoffWaitTimeInSeconds) : LogoffMessage;
 
             result = CallClient(() => Client.Collections.RestartVm(CollectionName, restartDetails), Client.Collections);
 
