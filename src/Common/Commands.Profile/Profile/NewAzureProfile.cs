@@ -20,6 +20,7 @@ using System.Security;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Profile.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -40,6 +41,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         internal const string AccessTokenParameterSet = "Token";
         internal const string FileParameterSet = "File";
         internal const string PropertyBagParameterSet = "PropertyBag";
+        internal const string EmptyParameterSet = "Empty";
 
         internal const string SubscriptionIdKey = "SubscriptionId";
         internal const string CertificateKey = "Certificate";
@@ -52,48 +54,49 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         internal const string EnvironmentKey = "Environment";
         internal const string StorageAccountKey = "StorageAccount";
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = CertificateParameterSet)]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ServicePrincipalParameterSet)]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = AccessTokenParameterSet)]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = CredentialsParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = CertificateParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = ServicePrincipalParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = AccessTokenParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = CredentialsParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = EmptyParameterSet)]
         public AzureEnvironment Environment { get; set; }
 
-        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = CertificateParameterSet)]
-        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = ServicePrincipalParameterSet)]
-        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = AccessTokenParameterSet)]
-        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = CredentialsParameterSet)]
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = CertificateParameterSet)]
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = ServicePrincipalParameterSet)]
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = AccessTokenParameterSet)]
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = CredentialsParameterSet)]
         public string SubscriptionId { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = CertificateParameterSet)]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ServicePrincipalParameterSet)]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = AccessTokenParameterSet)]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = CredentialsParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = CertificateParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = ServicePrincipalParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = AccessTokenParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = CredentialsParameterSet)]
         public string StorageAccount { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, ParameterSetName = CertificateParameterSet)]
         public X509Certificate2 Certificate { get; set; }
 
-        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, ParameterSetName = CredentialsParameterSet)]
-        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, ParameterSetName = ServicePrincipalParameterSet)]
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = CredentialsParameterSet)]
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = ServicePrincipalParameterSet)]
         public PSCredential Credential { get; set; }
 
-        [Parameter(Mandatory = false, Position = 2, ValueFromPipelineByPropertyName = true, ParameterSetName = CredentialsParameterSet)]
-        [Parameter(Mandatory = true, Position = 2, ValueFromPipelineByPropertyName = true, ParameterSetName = ServicePrincipalParameterSet)]
+        [Parameter(Mandatory = false, Position = 2, ParameterSetName = CredentialsParameterSet)]
+        [Parameter(Mandatory = true, Position = 2, ParameterSetName = ServicePrincipalParameterSet)]
         public string Tenant { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ServicePrincipalParameterSet)]
+        [Parameter(Mandatory = true, ParameterSetName = ServicePrincipalParameterSet)]
         public SwitchParameter ServicePrincipal { get; set; }
 
-        [Parameter(Mandatory = true, Position = 2, ValueFromPipelineByPropertyName = true, ParameterSetName = AccessTokenParameterSet)]
+        [Parameter(Mandatory = true, Position = 2, ParameterSetName = AccessTokenParameterSet)]
         public string AccessToken { get; set; }
 
-        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, ParameterSetName = AccessTokenParameterSet)]
+        [Parameter(Mandatory = true, Position = 1, ParameterSetName = AccessTokenParameterSet)]
         public string AccountId { get; set; }
 
-        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = FileParameterSet)]
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = FileParameterSet)]
         public string Path { get; set; }
 
-        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = PropertyBagParameterSet)]
+        [Parameter(Mandatory = true, Position = 0, ParameterSetName = PropertyBagParameterSet)]
         public Hashtable Properties { get; set; }
 
         // do not use the Profile parameter for this cmdlet
@@ -136,39 +139,59 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
         private void InitializeAzureProfile(AzureProfile profile, string parameterSet, AzureProfileSettings settings)
         {
-            var profileClient = new ProfileClient(profile);
-            if (settings.Environment == null)
+            var savedCache = AzureSession.TokenCache;
+            AzureSession.TokenCache = DefaultMemoryTokenCache;
+            try
             {
-                settings.Environment = AzureEnvironment.PublicEnvironments["AzureCloud"];
+
+                var profileClient = new ProfileClient(profile);
+                if (settings.Environment == null)
+                {
+                    settings.Environment = AzureEnvironment.PublicEnvironments["AzureCloud"];
+                }
+                switch (parameterSet)
+                {
+                    case CertificateParameterSet:
+                        profileClient.InitializeProfile(settings.Environment, new Guid(settings.SubscriptionId),
+                            settings.Certificate,
+                            settings.StorageAccount);
+                        break;
+                    case CredentialsParameterSet:
+                        var userAccount = new AzureAccount
+                        {
+                            Id = settings.Credential.UserName,
+                            Type = AzureAccount.AccountType.User
+                        };
+                        profileClient.InitializeProfile(settings.Environment, new Guid(settings.SubscriptionId),
+                            userAccount,
+                            settings.Credential.Password, settings.StorageAccount);
+                        break;
+                    case AccessTokenParameterSet:
+                        profileClient.InitializeProfile(settings.Environment, new Guid(settings.SubscriptionId),
+                            settings.AccessToken,
+                            settings.AccountId, settings.StorageAccount);
+                        break;
+                    case ServicePrincipalParameterSet:
+                        var servicePrincipalAccount = new AzureAccount
+                        {
+                            Id = settings.Credential.UserName,
+                            Type = AzureAccount.AccountType.ServicePrincipal
+                        };
+                        profileClient.InitializeProfile(settings.Environment, new Guid(settings.SubscriptionId),
+                            servicePrincipalAccount,
+                            settings.Credential.Password, settings.StorageAccount);
+                        break;
+                    case EmptyParameterSet:
+                        if (!profile.Environments.ContainsKey(settings.Environment.Name))
+                        {
+                            profile.Environments.Add(settings.Environment.Name, settings.Environment);
+                        }
+                        break;
+                }
             }
-            switch (parameterSet)
+            finally
             {
-                case CertificateParameterSet:
-                    profileClient.InitializeProfile(settings.Environment, new Guid(settings.SubscriptionId), settings.Certificate,
-                        settings.StorageAccount);
-                    break;
-                case CredentialsParameterSet:
-                    var userAccount = new AzureAccount
-                    {
-                        Id = settings.Credential.UserName,
-                        Type = AzureAccount.AccountType.User
-                    };
-                    profileClient.InitializeProfile(settings.Environment, new Guid(settings.SubscriptionId), userAccount,
-                        settings.Credential.Password, settings.StorageAccount);
-                    break;
-                case AccessTokenParameterSet:
-                    profileClient.InitializeProfile(settings.Environment, new Guid(settings.SubscriptionId), settings.AccessToken,
-                        settings.AccountId, settings.StorageAccount);
-                    break;
-                case ServicePrincipalParameterSet:
-                    var servicePrincipalAccount = new AzureAccount
-                    {
-                        Id = settings.Credential.UserName,
-                        Type = AzureAccount.AccountType.ServicePrincipal
-                    };
-                    profileClient.InitializeProfile(settings.Environment, new Guid(settings.SubscriptionId), servicePrincipalAccount,
-                        settings.Credential.Password, settings.StorageAccount);
-                    break;
+                AzureSession.TokenCache = savedCache;
             }
         }
 
@@ -181,7 +204,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                 throw new ArgumentException(Resources.MissingSubscriptionInProfileProperties);
             }
 
-            settings.SubscriptionId = (string) propertyBag[SubscriptionIdKey];
+            settings.SubscriptionId = (string)propertyBag[SubscriptionIdKey];
             if (propertyBag.ContainsKey(StorageAccountKey))
             {
                 settings.StorageAccount = (string)propertyBag[StorageAccountKey];

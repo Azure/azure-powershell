@@ -36,12 +36,12 @@ namespace Microsoft.WindowsAzure.Commands.Profile
     public class SelectAzureProfileCommand : AzurePSCmdlet
     {
         internal const string NewProfileParameterSet = "NewProfile";
-        internal const string DefaultProfilePrameterSet = "DefaultProfile";
+        internal const string DefaultProfileParameterSet = "DefaultProfile";
 
         [Parameter(ParameterSetName=NewProfileParameterSet, Mandatory=true, Position=0, ValueFromPipelineByPropertyName=true)]
         public new AzureProfile Profile { get; set; }
 
-        [Parameter(ParameterSetName=DefaultProfilePrameterSet, Mandatory=true)]
+        [Parameter(ParameterSetName=DefaultProfileParameterSet, Mandatory=true)]
         public SwitchParameter Default { get; set; }
 
         protected override void InitializeProfile()
@@ -52,7 +52,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            if (ParameterSetName == DefaultProfilePrameterSet)
+            if (ParameterSetName == DefaultProfileParameterSet)
             {
                 Profile = AzurePSCmdlet.InitializeDefaultProfile();
             }
