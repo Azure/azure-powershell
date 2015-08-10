@@ -12,29 +12,30 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using System.Management.Automation;
+using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Management.Storage;
 
-namespace Microsoft.Azure.Commands.Management.Storage
+namespace Microsoft.Azure.Commands.Management.Storage.StorageAccount
 {
-    public partial class StorageManagementClientWrapper
+    [Cmdlet(VerbsCommon.Get, StorageUsageNounStr), OutputType(typeof(PSUsage))]
+    public class GetAzureStorageUsageCommand : StorageAccountBaseCmdlet
     {
-        public IStorageManagementClient StorageManagementClient { get; set; }
-
-        public Action<string> VerboseLogger { get; set; }
-
-        public Action<string> ErrorLogger { get; set; }
-
-        public StorageManagementClientWrapper(AzureContext context)
-            : this(AzureSession.ClientFactory.CreateClient<StorageManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+        public override void ExecuteCmdlet()
         {
-        }
+            base.ExecuteCmdlet();
 
-        public StorageManagementClientWrapper(IStorageManagementClient resourceManagementClient)
-        {
-            StorageManagementClient = resourceManagementClient;
+            foreach (var usage in this.StorageClient.Usage.List().Usages)
+            {
+                WriteObject(new PSUsage() 
+                {
+                    LocalizedName = usage.Name.LocalizedValue,
+                    Name = usage.Name.Value,
+                    Unit = usage.Unit,
+                    CurrentValue = usage.CurrentValue,
+                    Limit = usage.Limit
+                });
+            }
         }
     }
 }

@@ -37,6 +37,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         protected const string StorageAccountNameAvailabilityStr = "AzureStorageAccountNameAvailability";
 
+        protected const string StorageUsageNounStr = "AzureStorageUsage";
+
         protected struct AccountTypeString
         {
             internal const string StandardLRS = "Standard_LRS";

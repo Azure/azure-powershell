@@ -61,10 +61,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             var keys = this.StorageClient.StorageAccounts.RegenerateKey(
                 this.ResourceGroupName,
                 this.Name,
-                new StorageAccountRegenerateKeyParameters()
-                {
-                    KeyName = keyName
-                });
+                keyName);
 
             WriteObject(keys);
         }

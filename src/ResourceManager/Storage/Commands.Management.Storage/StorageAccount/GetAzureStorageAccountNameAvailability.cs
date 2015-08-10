@@ -16,22 +16,14 @@ using System.Management.Automation;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 
-namespace Microsoft.Azure.Commands.Management.Storage
+namespace Microsoft.Azure.Commands.Management.Storage.StorageAccount
 {
-    [Cmdlet(VerbsCommon.Get, StorageAccountKeyNounStr), OutputType(typeof(StorageAccountKeys))]
-    public class GetAzureStorageAccountKeyCommand : StorageAccountBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, StorageAccountNameAvailabilityStr), OutputType(typeof(CheckNameAvailabilityResponse))]
+    public class GetAzureStorageAccountNameAvailability : StorageAccountBaseCmdlet
     {
         [Parameter(
-            Position = 0,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Resource Group Name.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(
             Position = 1,
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Name.")]
         [Alias(StorageAccountNameAlias, AccountNameAlias)]
@@ -42,11 +34,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         {
             base.ExecuteCmdlet();
 
-            var storageKeys = this.StorageClient.StorageAccounts.ListKeys(
-                 this.ResourceGroupName,
-                 this.Name).StorageAccountKeys;
-
-            WriteObject(storageKeys);
+            WriteObject(this.StorageClient.StorageAccounts.CheckNameAvailability(Name));
         }
     }
 }
