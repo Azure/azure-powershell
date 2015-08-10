@@ -160,6 +160,15 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Both domain name and credentials must be specified.
+        /// </summary>
+        internal static string InvalidADArguments {
+            get {
+                return ResourceManager.GetString("InvalidADArguments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid Argument SubnetName: {0} not found.
         /// </summary>
         internal static string InvalidArgumentSubNetNameNotFoundMessageFormat {
@@ -174,6 +183,15 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp {
         internal static string InvalidArgumentVNetNameNotFoundMessageFormat {
             get {
                 return ResourceManager.GetString("InvalidArgumentVNetNameNotFoundMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Location must be supplied for Cloud only environtments.
+        /// </summary>
+        internal static string InvalidLocationArgument {
+            get {
+                return ResourceManager.GetString("InvalidLocationArgument", resourceCulture);
             }
         }
         
@@ -349,7 +367,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Uploading Template Image.
+        ///   Looks up a localized string similar to Uploading template image.
         /// </summary>
         internal static string TemplateImageUploadingStatusMessage {
             get {
@@ -412,7 +430,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Upload RemoteApp Template Image.
+        ///   Looks up a localized string similar to Upload RemoteApp template image.
         /// </summary>
         internal static string UploadTemplateImageJobDescriptionMessage {
             get {
@@ -466,7 +484,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Waiting for Storage verification to complete.
+        ///   Looks up a localized string similar to Waiting for storage verification to complete.
         /// </summary>
         internal static string WaitingForStorageVerificationToCompleteMessage {
             get {
