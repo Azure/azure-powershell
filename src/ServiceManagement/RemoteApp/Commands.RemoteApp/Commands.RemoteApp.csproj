@@ -200,6 +200,7 @@
     <Compile Include="Vnet\RemoveAzureAppVnet.cs" />
     <Compile Include="Vnet\ResetAzureRemoteAppVpnSharedKey.cs" />
     <Compile Include="Vnet\SetAzureRemoteAppVnet.cs" />
+    <Compile Include="Vnet\VNetDeprecated.cs" />
     <Compile Include="WorkSpace\GetAzureRemoteAppWorkspace.cs" />
     <Compile Include="WorkSpace\Models\WorkSpace.cs" />
     <Compile Include="WorkSpace\SetAzureRemoteAppWorkspace.cs" />

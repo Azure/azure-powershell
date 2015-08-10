@@ -53,7 +53,6 @@
     <Compile Include="RemoteProgram\RemoteAppProgram.cs" />
     <Compile Include="SecurityPrincipals\RemoteAppSecurityPrincipals.cs" />
     <Compile Include="Templates\RemoteAppTemplates.cs" />
-    <Compile Include="VNet\RemoteAppVNet.cs" />
     <Compile Include="Workspace\RemoteAppWorkspace.cs" />
   </ItemGroup>
   <ItemGroup>
