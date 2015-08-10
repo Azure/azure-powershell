@@ -65,7 +65,6 @@
     <Compile Include="Zones\RemoveAzureDnsZone.cs" />
     <Compile Include="Zones\SetAzureDnsZone.cs" />
     <Compile Include="Zones\NewAzureDnsZone.cs" />
-    <None Include="app.config" />
     <None Include="MSSharedLibKey.snk" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

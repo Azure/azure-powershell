@@ -82,7 +82,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="Microsoft.Azure.Commands.HDInsight.dll-help.psd1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
