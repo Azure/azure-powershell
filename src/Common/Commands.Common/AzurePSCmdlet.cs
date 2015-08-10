@@ -117,7 +117,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected static void InitializeTokenCaches()
         {
-            DefaultMemoryTokenCache = new TokenCache();
+            DefaultMemoryTokenCache = TokenCache.DefaultShared;
             if (!string.IsNullOrWhiteSpace(AzureSession.ProfileDirectory) &&
                 !string.IsNullOrWhiteSpace(AzureSession.TokenCacheFile))
             {
