@@ -20,14 +20,14 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
     public class DataMaskingTests : SqlTestsBase
     {
 
-        [Fact]
+        [Fact(Skip = "Non stable interaction between the test and the testing framework")]
         [Trait(Category.Sql, Category.CheckIn)]
         public void TestDatabaseDataMaskingPolicyEnablementToggling()
         {
             RunPowerShellTest("Test-DatabaseDataMaskingPolicyEnablementToggling");
         }
 
-        [Fact]
+        [Fact(Skip = "Non stable interaction between the test and the testing framework")]
         [Trait(Category.Sql, Category.CheckIn)]
         public void TestDatabaseDataMaskingPrivilegedLoginsChanges()
         {

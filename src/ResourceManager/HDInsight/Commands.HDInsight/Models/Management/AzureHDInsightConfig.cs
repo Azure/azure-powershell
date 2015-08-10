@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
 using System.Collections.Generic;
 using Microsoft.Azure.Management.HDInsight.Models;
 
@@ -67,7 +68,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <summary>
         /// Gets the configurations of this HDInsight cluster.
         /// </summary>
-        public Dictionary<string, Dictionary<string, string>> Configurations { get; private set; }
+        public Dictionary<string, Hashtable> Configurations { get; private set; }
 
         /// <summary>
         /// Gets config actions for the cluster.
@@ -78,7 +79,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         {
             ClusterType = HDInsightClusterType.Hadoop;
             AdditionalStorageAccounts = new Dictionary<string, string>();
-            Configurations = new Dictionary<string, Dictionary<string, string>>();
+            Configurations = new Dictionary<string, Hashtable>();
             ScriptActions = new Dictionary<ClusterNodeType, List<ScriptAction>>();
         }
     }
