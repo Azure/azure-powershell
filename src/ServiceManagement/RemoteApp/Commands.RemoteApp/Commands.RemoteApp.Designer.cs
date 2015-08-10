@@ -457,6 +457,24 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to https://azure.microsoft.com/documentation/articles/remoteapp-migratevnet/.
+        /// </summary>
+        internal static string VNetDeprecatedUrl {
+            get {
+                return ResourceManager.GetString("VNetDeprecatedUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This cmdlet {0} has been deprecated. See x {1}.
+        /// </summary>
+        internal static string VNetDeprecateed {
+            get {
+                return ResourceManager.GetString("VNetDeprecateed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This operation will reset the shared key for the VNet&apos;s VPN device. This will interrupt connectivity to the on-premises network until you configure the VPN device to use the new shared key..
         /// </summary>
         internal static string VnetSharedKeyResetCaptionMessage {
