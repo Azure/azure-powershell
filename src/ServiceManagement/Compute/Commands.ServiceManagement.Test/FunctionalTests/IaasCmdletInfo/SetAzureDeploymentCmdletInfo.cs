@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PowershellCore;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo
@@ -38,12 +39,17 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         }
 
 
-        public static SetAzureDeploymentCmdletInfo SetAzureDeploymentConfigCmdletInfo(string serviceName, string slot, string configPath)
+        public static SetAzureDeploymentCmdletInfo SetAzureDeploymentConfigCmdletInfo(string serviceName, string slot, string configPath, ExtensionConfigurationInput extConfig = null)
         {
             SetAzureDeploymentCmdletInfo result = new SetAzureDeploymentCmdletInfo(serviceName, slot);
 
             result.cmdletParams.Add(new CmdletParam("Config"));
             result.cmdletParams.Add(new CmdletParam("Configuration", configPath));
+
+            if (extConfig != null)
+            {
+                result.cmdletParams.Add(new CmdletParam("ExtensionConfiguration", extConfig));
+            }
 
             return result;
         }

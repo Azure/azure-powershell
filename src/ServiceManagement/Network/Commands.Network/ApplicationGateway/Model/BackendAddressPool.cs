@@ -14,7 +14,7 @@
 
 using System.Linq;
 
-namespace Microsoft.Azure.Commands.Network.ApplicationGateway.Model
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model
 {
     using System.Text;
     using System.Collections.Generic;

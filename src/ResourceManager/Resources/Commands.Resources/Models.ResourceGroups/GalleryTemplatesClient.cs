@@ -289,6 +289,10 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 try
                 {
                     templateFile = JsonConvert.DeserializeObject<TemplateFile>(templateContent);
+                    if (templateFile.Parameters == null)
+                    {
+                        return dynamicParameters;
+                    }
                 }
                 catch
                 {

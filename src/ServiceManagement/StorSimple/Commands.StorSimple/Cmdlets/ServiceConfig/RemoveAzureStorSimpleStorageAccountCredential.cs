@@ -29,18 +29,18 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     public class RemoveAzureStorSimpleStorageAccountCredential : StorSimpleCmdletBase
     {
         [Alias("Name")]
-        [Parameter(Position = 0, Mandatory = true, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByName, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageStorageAccountName)]
+        [Parameter(Position = 0, Mandatory = true, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByName, HelpMessage = StorSimpleCmdletHelpMessage.StorageAccountName)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
 
-        [Parameter(Position = 0, Mandatory = true, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByObject, ValueFromPipeline = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageSACObject)]
+        [Parameter(Position = 0, Mandatory = true, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByObject, ValueFromPipeline = true, HelpMessage = StorSimpleCmdletHelpMessage.SACObject)]
         [ValidateNotNullOrEmpty]
         public StorageAccountCredentialResponse SAC { get; set; }
 
-        [Parameter(Position = 1, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageWaitTillComplete)]
+        [Parameter(Position = 1, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.WaitTillComplete)]
         public SwitchParameter WaitForComplete { get; set; }
 
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageForce)]
+        [Parameter(Position = 2, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.Force)]
         public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
@@ -70,21 +70,19 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                                   }
                                   if (existingSac == null)
                                   {
-                                      WriteObject(null);
-                                      WriteVerbose(string.Format(Resources.SACNotFoundWithName, sacName));
-                                      return;
+                                      throw new ArgumentException(string.Format(Resources.SACNotFoundWithName, sacName));
                                   }
-                                  
-                                    var serviceConfig = new ServiceConfiguration()
-                                    {
-                                    AcrChangeList = new AcrChangeList(),
-                                    CredentialChangeList = new SacChangeList()
-                                    {
-                                        Added = new List<StorageAccountCredential>(),
-                                        Deleted = new[] { existingSac.InstanceId },
-                                        Updated = new List<StorageAccountCredential>()
-                                    }
-                                    };
+
+                                  var serviceConfig = new ServiceConfiguration()
+                                  {
+                                      AcrChangeList = new AcrChangeList(),
+                                      CredentialChangeList = new SacChangeList()
+                                      {
+                                          Added = new List<StorageAccountCredential>(),
+                                          Deleted = new[] {existingSac.InstanceId},
+                                          Updated = new List<StorageAccountCredential>()
+                                      }
+                                  };
 
                                     if (WaitForComplete.IsPresent)
                                     {

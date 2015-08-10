@@ -12,16 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Diagnostics;
-using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
-using Microsoft.WindowsAzure;
 using System;
 using System.Collections.Generic;
-using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
-using System.Text.RegularExpressions;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
@@ -31,32 +26,36 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     [Cmdlet(VerbsCommon.Set, "AzureStorSimpleDeviceBackupPolicy"), OutputType(typeof(BackupPolicyDetails))]
     public class SetAzureStorSimpleDeviceBackupPolicy: StorSimpleCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceName)]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.DeviceName)]
         [ValidateNotNullOrEmptyAttribute]
         public string DeviceName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageBackupPolicyIdToUpdate)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.BackupPolicyIdToUpdate)]
         [ValidateNotNullOrEmptyAttribute]
         public string BackupPolicyId { get; set; }
 
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageBackupPolicyNameChange)]
+        [Parameter(Position = 2, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.BackupPolicyNameChange)]
         [ValidateNotNullOrEmptyAttribute]
         public string BackupPolicyName { get; set; }
 
-        [Parameter(Position = 3, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageBackupScheduleBaseObjsToAdd)]
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.BackupScheduleBaseObjsToAdd)]
         public PSObject[] BackupSchedulesToAdd { get; set; }
 
-        [Parameter(Position = 4, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageBackupScheduleBaseObjsToUpdate)]
+        [Parameter(Position = 4, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.BackupScheduleBaseObjsToUpdate)]
         public PSObject[] BackupSchedulesToUpdate { get; set; }
 
-        [Parameter(Position = 5, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageBackupScheduleBaseObjsToDelete)]
+        [Parameter(Position = 5, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.BackupScheduleBaseObjsToDelete)]
         public PSObject[] BackupScheduleIdsToDelete { get; set; }
 
-        [Parameter(Position = 6, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageVolumeObjsToUpdate)]
+        [Parameter(Position = 6, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.VolumeObjsToUpdate)]
         public PSObject[] VolumeIdsToUpdate { get; set; }
 
-        [Parameter(Position = 7, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageWaitTillComplete)]
+        [Parameter(Position = 7, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.WaitTillComplete)]
         public SwitchParameter WaitForComplete { get; set; }
+
+        [Parameter(Position = 8, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.BackupPolicyNewName)]
+        [ValidateNotNullOrEmpty]
+        public string NewName { get; set; }
 
         private string deviceId = null;
         private List<BackupScheduleBase> schedulesToAdd = null;
@@ -74,7 +73,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     return;
 
                 updateConfig.InstanceId = BackupPolicyId;
-                updateConfig.Name = BackupPolicyName;
+                updateConfig.Name = (NewName != null ? NewName : BackupPolicyName);
                 updateConfig.IsPolicyRenamed = true;
                 updateConfig.BackupSchedulesToBeAdded = schedulesToAdd;
                 updateConfig.BackupSchedulesToBeUpdated = schedulesToUpdate;
@@ -110,11 +109,10 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
         private bool ProcessParameters()
         {
             deviceId = StorSimpleClient.GetDeviceId(DeviceName);
+
             if (deviceId == null)
             {
-                WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
-                WriteObject(null);
-                return false;
+                throw new ArgumentException(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
             }
 
             ProcessAddSchedules();

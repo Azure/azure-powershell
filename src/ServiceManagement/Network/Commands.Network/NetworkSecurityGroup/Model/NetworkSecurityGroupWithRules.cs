@@ -17,7 +17,7 @@ using System.Linq;
 using AutoMapper;
 using Microsoft.WindowsAzure.Management.Network.Models;
 
-namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Model
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.NetworkSecurityGroup.Model
 {
     public class NetworkSecurityGroupWithRules : SimpleNetworkSecurityGroup
     {

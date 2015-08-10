@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Management.Automation;
+using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Security.Model;
 using Microsoft.Azure.Commands.Sql.Security.Services;
 using Microsoft.Azure.Common.Authentication.Models;
@@ -21,13 +23,20 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
     /// <summary>
     /// The base class for all SQL server auditing Management Cmdlets
     /// </summary>
-    public abstract class SqlDatabaseServerAuditingCmdletBase : SqlCmdletBase<ServerAuditingPolicyModel, SqlAuditAdapter>
+    public abstract class SqlDatabaseServerAuditingCmdletBase : AzureSqlCmdletBase<ServerAuditingPolicyModel, SqlAuditAdapter>
     {
+        /// <summary>
+        /// Gets or sets the name of the database server to use.
+        /// </summary>
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "SQL Database server name.")]
+        [ValidateNotNullOrEmpty]
+        public string ServerName { get; set; }
+
         /// <summary>
         /// Provides the model element that this cmdlet operates on
         /// </summary>
         /// <returns>A model object</returns>
-        protected override ServerAuditingPolicyModel GetModel()
+        protected override ServerAuditingPolicyModel GetEntity()
         {
             return ModelAdapter.GetServerAuditingPolicy(ResourceGroupName, ServerName, this.clientRequestId);
         }
@@ -47,9 +56,10 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.Auditing
         /// object to the REST endpoint
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override void SendModel(ServerAuditingPolicyModel model)
+        protected override ServerAuditingPolicyModel PersistChanges(ServerAuditingPolicyModel model)
         {
             ModelAdapter.SetServerAuditingPolicy(model, clientRequestId);
+            return null;
         }
     }
 }

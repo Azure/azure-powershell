@@ -48,13 +48,20 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 { 
                    this.AutomationClient.GetCredential(this.AutomationAccountName, this.Name)
                 };
+
+                this.GenerateCmdletOutput(ret);
             }
             else
             {
-                ret = this.AutomationClient.ListCredentials(this.AutomationAccountName);
-            }
+                var nextLink = string.Empty;
 
-            this.GenerateCmdletOutput(ret);
+                do
+                {
+                    ret = this.AutomationClient.ListCredentials(this.AutomationAccountName, ref nextLink);
+                    this.GenerateCmdletOutput(ret);
+
+                } while (!string.IsNullOrEmpty(nextLink));
+            }
         }
     }
 }

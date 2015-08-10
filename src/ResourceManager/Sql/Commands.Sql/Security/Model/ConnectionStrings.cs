@@ -19,7 +19,7 @@ using System.Text;
 namespace Microsoft.Azure.Commands.Sql.Security.Model
 {
     /// <summary>
-    /// A class represnting the secure connection strings
+    /// A class representing the secure connection strings
     /// </summary>
     public class ConnectionStrings
     {      

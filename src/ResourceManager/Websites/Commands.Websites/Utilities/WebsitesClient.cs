@@ -47,13 +47,20 @@ namespace Microsoft.Azure.Commands.WebApp.Utilities
 
         public WebSite CreateWebsite(string resourceGroupName, string webSiteName, string slotName, string location, string webHostingPlan)
         {
+            string webSiteSlotName = webSiteName;
+            if (string.IsNullOrEmpty(slotName) == false)
+            {
+                webSiteSlotName = string.Concat(webSiteName, "/", slotName);
+
+            }
+           
             var createdWebSite = WrappedWebsitesClient.WebSites.CreateOrUpdate(
                         resourceGroupName, webSiteName, slotName,
                         new WebSiteCreateOrUpdateParameters
                         {
                             WebSite = new WebSiteBase
                             {
-                                Name = webSiteName,
+                                Name = webSiteSlotName,
                                 Location = location,
                                 Properties = new WebSiteBaseProperties(webHostingPlan)
                             }
@@ -125,7 +132,7 @@ namespace Microsoft.Azure.Commands.WebApp.Utilities
             return usageMetrics;
         }
 
-        public WebHostingPlanCreateOrUpdateResponse CreateWebHostingPlan(string resourceGroupName, string whpName, string location, string adminSiteName, int numberOfWorkers, SkuOptions sku, WorkerSizeOptions workerSize)
+        public WebHostingPlanCreateOrUpdateResponse CreateAppServicePlan(string resourceGroupName, string whpName, string location, string adminSiteName, int numberOfWorkers, SkuOptions sku, WorkerSizeOptions workerSize)
         {
             WebHostingPlanProperties webHostingPlanProperties = new WebHostingPlanProperties();
             webHostingPlanProperties.Sku = sku;
@@ -143,24 +150,21 @@ namespace Microsoft.Azure.Commands.WebApp.Utilities
             return createdWHP;
         }
 
-        public AzureOperationResponse RemoveWebHostingPlan(string resourceGroupName, string whpName)
+        public AzureOperationResponse RemoveAppServicePlan(string resourceGroupName, string whpName)
         {
             var response = WrappedWebsitesClient.WebHostingPlans.Delete(resourceGroupName, whpName);
-            //proper return type need to be discussed
             return response;
         }
 
-        public WebHostingPlanGetResponse GetWebHostingPlan(string resourceGroupName, string whpName)
+        public WebHostingPlanGetResponse GetAppServicePlan(string resourceGroupName, string whpName)
         {
             var response = WrappedWebsitesClient.WebHostingPlans.Get(resourceGroupName, whpName);
-            //proper return type need to be discussed
             return response;
         }
 
-        public WebHostingPlanListResponse ListWebHostingPlan(string resourceGroupName)
+        public WebHostingPlanListResponse ListAppServicePlan(string resourceGroupName)
         {       
             var response = WrappedWebsitesClient.WebHostingPlans.List(resourceGroupName);
-            //proper return type need to be discussed
             return response;
         }
 

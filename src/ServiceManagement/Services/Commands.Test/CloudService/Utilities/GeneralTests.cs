@@ -14,6 +14,7 @@
 
 
 using System.IO;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -26,6 +27,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
     public class GeneralTests : TestBase
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SerializationTestWithGB18030()
         {
             // Setup

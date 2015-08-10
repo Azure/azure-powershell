@@ -19,7 +19,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Simulators
 {
     public class AzureHDInsightClusterManagementClientSimulatorFactory : IAzureHDInsightClusterManagementClientFactory
     {
-        public IHDInsightClient Create(IHDInsightSubscriptionCredentials credentials)
+        public IHDInsightClient Create(IHDInsightSubscriptionCredentials credentials, bool ignoreSslErrors)
         {
             return new AzureHDInsightClusterManagementClientSimulator(credentials);
         }

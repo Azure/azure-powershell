@@ -39,7 +39,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
             this.tokenSource.Cancel();
         }
 
-        internal IHDInsightClient GetClient()
+        internal IHDInsightClient GetClient(bool ignoreSslErrors = false)
         {
             this.CurrentSubscription.ArgumentNotNull("CurrentSubscription");
 
@@ -55,7 +55,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
                 subscriptionCredentials.Endpoint = this.Endpoint;               
             }
 
-            var clientInstance = ServiceLocator.Instance.Locate<IAzureHDInsightClusterManagementClientFactory>().Create(subscriptionCredentials);
+            var clientInstance = ServiceLocator.Instance.Locate<IAzureHDInsightClusterManagementClientFactory>().Create(subscriptionCredentials, ignoreSslErrors);
             clientInstance.SetCancellationSource(this.tokenSource);
             if (this.Logger.IsNotNull())
             {

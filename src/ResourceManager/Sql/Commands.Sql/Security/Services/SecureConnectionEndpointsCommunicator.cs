@@ -17,6 +17,7 @@ using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
 using System;
+using Microsoft.Azure.Commands.Sql.Common;
 
 namespace Microsoft.Azure.Commands.Sql.Security.Services
 {
@@ -43,20 +44,20 @@ namespace Microsoft.Azure.Commands.Sql.Security.Services
         /// <summary>
         /// Get the secure connection policy for a specific database
         /// </summary>
-        public SecureConnectionPolicy GetDatabaseSecureConnectionPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
+        public DatabaseSecureConnectionPolicy GetDatabaseSecureConnectionPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId)
         {
             ISecureConnectionPolicyOperations operations = GetCurrentSqlClient(clientRequestId).SecureConnection;
-            SecureConnectionPolicyGetResponse response = operations.Get(resourceGroupName, serverName, databaseName);
+            DatabaseSecureConnectionPolicyGetResponse response = operations.GetDatabasePolicy(resourceGroupName, serverName, databaseName);
             return response.SecureConnectionPolicy;
         }
 
         /// <summary>
         /// Set (or create) the secure connection policy for a specific database
         /// </summary>
-        public void SetDatabaseSecureConnectionPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId, SecureConnectionPolicyCreateOrUpdateParameters parameters)
+        public void SetDatabaseSecureConnectionPolicy(string resourceGroupName, string serverName, string databaseName, string clientRequestId, DatabaseSecureConnectionPolicyCreateOrUpdateParameters parameters)
         {
             ISecureConnectionPolicyOperations operations = GetCurrentSqlClient(clientRequestId).SecureConnection;
-            operations.CreateOrUpdate(resourceGroupName, serverName, databaseName, parameters);
+            operations.CreateOrUpdateDatabasePolicy(resourceGroupName, serverName, databaseName, parameters);
         }
 
         /// <summary>

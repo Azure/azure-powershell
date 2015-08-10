@@ -13,9 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Model;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.NetworkSecurityGroup.Model;
 
-namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Utilities
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.NetworkSecurityGroup.Utilities
 {
     public class NetworkSecurityGroupConfigurationBaseCmdlet : NetworkCmdletBase
     {

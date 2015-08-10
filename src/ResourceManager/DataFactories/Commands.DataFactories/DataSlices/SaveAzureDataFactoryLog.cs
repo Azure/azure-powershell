@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.DataFactories
                 ResourceGroupName = DataFactory.ResourceGroupName;
             }
 
-            PSRunLogInfo runLog =
+            Uri runLogUri =
                 DataFactoryClient.GetDataSliceRunLogsSharedAccessSignature(
                     ResourceGroupName, DataFactoryName, Id);
             if (DownloadLogs.IsPresent)
@@ -80,11 +80,10 @@ namespace Microsoft.Azure.Commands.DataFactories
                     DataFactoryClient.DownloadFileToBlob(new BlobDownloadParameters()
                     {
                         Directory = directory,
-                        SasUri = new Uri(runLog.SasUri),
-                        Credentials = new StorageCredentials(runLog.SasToken)
+                        SasUri = runLogUri,
                     });
                 }
-                catch 
+                catch
                 {
                     throw new Exception(string.Format(CultureInfo.InvariantCulture, Resources.DownloadFailed, directory));
                 }
@@ -92,7 +91,7 @@ namespace Microsoft.Azure.Commands.DataFactories
                 WriteWarning(string.Format(CultureInfo.InvariantCulture, Resources.DownloadLogCompleted, directory));
             }
 
-            WriteObject(runLog);
+            WriteObject(new PSRunLogInfo(runLogUri));
         }
 
         private bool HaveWriteAccess(string directory)
@@ -138,8 +137,6 @@ namespace Microsoft.Azure.Commands.DataFactories
             {
                 return false;
             }
-
-            
         }
     }
 }

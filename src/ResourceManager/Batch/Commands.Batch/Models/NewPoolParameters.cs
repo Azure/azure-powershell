@@ -19,17 +19,23 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class NewPoolParameters
+    public class NewPoolParameters : BatchClientParametersBase
     {
-        /// <summary>
-        /// The account details
-        /// </summary>
-        public BatchAccountContext Context { get; set; }
+        public NewPoolParameters(BatchAccountContext context, string poolName, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+            : base(context, additionalBehaviors)
+        {
+            if (string.IsNullOrWhiteSpace(poolName))
+            {
+                throw new ArgumentNullException("poolName");
+            }
+
+            this.PoolName = poolName;
+        }
 
         /// <summary>
         /// The name of the Pool to create.
         /// </summary>
-        public string PoolName { get; set; }
+        public string PoolName { get; private set; }
 
         /// <summary>
         /// The size of the VMs in the Pool.
@@ -90,10 +96,5 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// Certificate References for the Pool.
         /// </summary>
         public PSCertificateReference[] CertificateReferences { get; set; }
-
-        /// <summary>
-        /// Additional client behaviors to perform
-        /// </summary>
-        public IEnumerable<BatchClientBehavior> AdditionalBehaviors { get; set; }
     }
 }

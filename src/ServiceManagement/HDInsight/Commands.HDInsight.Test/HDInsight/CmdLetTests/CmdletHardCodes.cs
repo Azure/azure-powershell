@@ -28,6 +28,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CmdLetTests
         public const string Combiner = "Combiner";
         public const string CoreConfig = "Core";
         public const string Credential = "Credential";
+        public const string RdpCredential = "RdpCredential";
+        public const string RdpAccessExpiry = "RdpAccessExpiry";
         public const string DatabaseName = "DatabaseName";
         public const string Debug = "Debug";
         public const string DefaultStorageContainerName = "DefaultStorageContainerName";
@@ -39,6 +41,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CmdLetTests
         public const string GetAzureHDInsightJobOutput = "Get-AzureHDInsightJobOutput";
         public const string GetAzureHDInsightProperties = "Get-AzureHDInsightProperties";
         public const string GrantAzureHDInsightHttpAccess = "Grant-AzureHDInsightHttpServicesAccess";
+        public const string GrantAzureHDInsightRdpAccess = "Grant-AzureHDInsightRdpAccess";
         public const string HdfsConfig = "Hdfs";
         public const string HiveArgs = "Arguments";
         public const string HiveConfig = "Hive";
@@ -78,6 +81,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.HDInsight.CmdLetTests
         public const string Reducer = "Reducer";
         public const string RemoveAzureHDInsightCluster = "Remove-AzureHDInsightCluster";
         public const string RevokeAzureHDInsightHttpAccess = "Revoke-AzureHDInsightHttpServicesAccess";
+        public const string RevokeAzureHDInsightRdpAccess = "Revoke-AzureHDInsightRdpAccess";
         public const string SetAzureHDInsightClusterSize = "Set-AzureHDInsightClusterSize";
         public const string SetAzureHDInsightDefaultStorage = "Set-AzureHDInsightDefaultStorage";
         public const string Show = "Show";

@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
 
-            Assert.Throws<ArgumentException>(() => cmdlet.ExecuteCmdlet());
+            Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
 
             cmdlet.WorkItemName = "testWorkItem";
             cmdlet.JobName = "job-0000000001";

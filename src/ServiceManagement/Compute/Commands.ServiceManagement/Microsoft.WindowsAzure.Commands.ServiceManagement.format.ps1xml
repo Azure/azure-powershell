@@ -650,6 +650,7 @@
     </View>
     <View>
       <Name>Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.VirtualMachineDscExtensionStatusContext</Name>
+      <OutOfBand />
       <ViewSelectedBy>
         <TypeName>Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.VirtualMachineDscExtensionStatusContext</TypeName>
       </ViewSelectedBy>

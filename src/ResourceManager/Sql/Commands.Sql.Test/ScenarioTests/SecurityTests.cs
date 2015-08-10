@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Test;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -19,6 +21,28 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
     public class SecurityTests : SqlTestsBase
     {
+        protected Microsoft.Azure.Management.Storage.StorageManagementClient GetStorageV2Client()
+        {
+            var client = TestBase.GetServiceClient<Microsoft.Azure.Management.Storage.StorageManagementClient>(new CSMTestEnvironmentFactory());
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                client.LongRunningOperationInitialTimeout = 0;
+                client.LongRunningOperationRetryTimeout = 0;
+            }
+            return client;
+        }
+
+        protected override void SetupManagementClients()
+        {
+            var sqlCSMClient = GetSqlClient(); // to interact with the security endpoints
+            var storageClient = GetStorageClient();
+            var storageV2Client = GetStorageV2Client();
+            var resourcesClient = GetResourcesClient();
+            var authorizationClient = GetAuthorizationManagementClient();
+            helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, storageV2Client, resourcesClient, authorizationClient);
+        }
+
+        
         [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseUpdatePolicyWithStorage()
@@ -27,15 +51,20 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         }
 
         [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
-        [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseUpdatePolicyWithStorageV2()
+        {
+            RunPowerShellTest("Test-DatabaseUpdatePolicyWithStorageV2");
+        }
+
+        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void TestServerUpdatePolicyWithStorage()
         {
             RunPowerShellTest("Test-ServerUpdatePolicyWithStorage");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
         public void TestDatabaseUpdatePolicyWithEventTypes()
         {
             RunPowerShellTest("Test-DatabaseUpdatePolicyWithEventTypes");
@@ -43,7 +72,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
         [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerUpdatePolicyWithEventTypes()
         {
             RunPowerShellTest("Test-ServerUpdatePolicyWithEventTypes");
@@ -163,14 +191,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
         [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestDatabaseDirectAccess()
-        {
-            RunPowerShellTest("Test-DatabaseDirectAccess");
-        }
-
-        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
-        [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseStorageKeyRotation()
         {
             RunPowerShellTest("Test-DatabaseStorageKeyRotation");
@@ -182,6 +202,34 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         public void TestServerStorageKeyRotation()
         {
             RunPowerShellTest("Test-ServerStorageKeyRotation");
+        }
+
+        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void TestServerUpdatePolicyWithRetention()
+        {
+            RunPowerShellTest("Test-ServerUpdatePolicyWithRetention");
+        }
+
+        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void TestDatabaseUpdatePolicyWithRetention()
+        {
+            RunPowerShellTest("Test-DatabaseUpdatePolicyWithRetention");
+        }
+
+        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void TestServerRetentionKeepProperties()
+        {
+            RunPowerShellTest("Test-ServerRetentionKeepProperties");
+        }
+
+        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void TestDatabaseRetentionKeepProperties()
+        {
+            RunPowerShellTest("Test-DatabaseRetentionKeepProperties");
         }
     }
 }

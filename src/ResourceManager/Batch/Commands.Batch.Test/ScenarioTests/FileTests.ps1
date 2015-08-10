@@ -157,7 +157,7 @@ function Test-GetTaskFileContentByName
 
 	try
 	{
-		Get-AzureBatchTaskFileContent_ST -WorkItemName $wiName -JobName $jobName -TaskName $taskName -Name $taskFileName -BatchContext $context -MemStream $stream
+		Get-AzureBatchTaskFileContent_ST -WorkItemName $wiName -JobName $jobName -TaskName $taskName -Name $taskFileName -BatchContext $context -DestinationStream $stream
 		
 		$stream.Position = 0
 		$sr = New-Object System.IO.StreamReader $stream
@@ -179,7 +179,7 @@ function Test-GetTaskFileContentByName
 	$stream = New-Object System.IO.MemoryStream 
 	try
 	{
-		Get-AzureBatchTaskFileContent_ST -WorkItemName $wiName -JobName $jobName -TaskName $taskName -Name $taskFileName -BatchContext $context -MemStream $stream
+		Get-AzureBatchTaskFileContent_ST $wiName $jobName $taskName $taskFileName -BatchContext $context -DestinationStream $stream
 
 		$stream.Position = 0
 		$sr = New-Object System.IO.StreamReader $stream
@@ -212,7 +212,7 @@ function Test-GetTaskFileContentPipeline
 	try
 	{
 		$taskFile = Get-AzureBatchTaskFile_ST -WorkItemName $wiName -JobName $jobName -TaskName $taskName -Name $taskFileName -BatchContext $context
-		$taskFile | Get-AzureBatchTaskFileContent_ST -BatchContext $context -MemStream $stream
+		$taskFile | Get-AzureBatchTaskFileContent_ST -BatchContext $context -DestinationStream $stream
 		
 		$stream.Position = 0
 		$sr = New-Object System.IO.StreamReader $stream
@@ -220,6 +220,310 @@ function Test-GetTaskFileContentPipeline
 
 		# Don't do strict equality check since extra newline characters get added to the end of the file
 		Assert-True { $downloadedContents.Contains($fileContent) }
+	}
+	finally
+	{
+		if ($sr -ne $null)
+		{
+			$sr.Dispose()
+		}
+		$stream.Dispose()
+	}
+}
+
+<#
+.SYNOPSIS
+Tests querying for a Batch vm file by name
+#>
+function Test-GetVMFileByName
+{
+	param([string]$accountName, [string]$poolName, [string]$vmName, [string]$vmFileName)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$vmFile = Get-AzureBatchVMFile_ST -PoolName $poolName -VMName $vmName -Name $vmFileName -BatchContext $context
+
+	Assert-AreEqual $vmFileName $vmFile.Name
+
+	# Verify positional parameters also work
+	$vmFile = Get-AzureBatchVMFile_ST $poolName $vmName $vmFileName -BatchContext $context
+
+	Assert-AreEqual $vmFileName $vmFile.Name
+}
+
+<#
+.SYNOPSIS
+Tests querying for Batch vm files using a filter
+#>
+function Test-ListVMFilesByFilter
+{
+	param([string]$accountName, [string]$poolName, [string]$vmName, [string]$vmFilePrefix, [string]$matches)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$filter = "startswith(name,'" + "$vmFilePrefix" + "')"
+
+	$vmFiles = Get-AzureBatchVMFile_ST -PoolName $poolName -VMName $vmName -Filter $filter -BatchContext $context
+
+	Assert-AreEqual $matches $vmFiles.Length
+	foreach($vmFile in $vmFiles)
+	{
+		Assert-True { $vmFile.Name.StartsWith("$vmFilePrefix") }
+	}
+
+	# Verify parent object parameter set also works
+	$vm = Get-AzureBatchVM_ST $poolName $vmName -BatchContext $context
+	$vmFiles = Get-AzureBatchVMFile_ST -VM $vm -Filter $filter -BatchContext $context
+
+	Assert-AreEqual $matches $vmFiles.Length
+	foreach($vmFile in $vmFiles)
+	{
+		Assert-True { $vmFile.Name.StartsWith("$vmFilePrefix") }
+	}
+}
+
+<#
+.SYNOPSIS
+Tests querying for Batch vm files and supplying a max count
+#>
+function Test-ListVMFilesWithMaxCount
+{
+	param([string]$accountName, [string]$poolName, [string]$vmName, [string]$maxCount)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$vmFiles = Get-AzureBatchVMFile_ST -PoolName $poolName -VMName $vmName -MaxCount $maxCount -BatchContext $context
+
+	Assert-AreEqual $maxCount $vmFiles.Length
+
+	# Verify parent object parameter set also works
+	$vm = Get-AzureBatchVM_ST $poolName $vmName -BatchContext $context
+	$vmFiles = Get-AzureBatchVMFile_ST -VM $vm -MaxCount $maxCount -BatchContext $context
+
+	Assert-AreEqual $maxCount $vmFiles.Length
+}
+
+<#
+.SYNOPSIS
+Tests querying for Batch vm files with the Recursive switch
+#>
+function Test-ListVMFilesRecursive
+{
+	param([string]$accountName, [string]$poolName, [string]$vmName, [string]$startupFolder, [string]$recursiveCount)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$filter = "startswith(name,'" + "$startupFolder" + "')"
+	$vmFiles = Get-AzureBatchVMFile_ST -PoolName $poolName -VMName $vmName -Filter $filter -BatchContext $context
+
+	# Only the directory itself is returned
+	Assert-AreEqual 1 $vmFiles.Length
+	Assert-True { $vmFiles[0].IsDirectory }
+
+	# Verify the start task vm files are returned when using the Recursive switch
+	$vmFiles = Get-AzureBatchVMFile_ST -PoolName $poolName -VMName $vmName -Filter $filter -Recursive -BatchContext $context
+
+	Assert-AreEqual $recursiveCount $vmFiles.Length 
+	$files = $vmFiles | Where-Object { $_.Name.StartsWith("startup\st") -eq $true }
+	Assert-AreEqual 2 $files.Length # stdout, stderr
+}
+
+<#
+.SYNOPSIS
+Tests querying for all vm files under a VM
+#>
+function Test-ListAllVMFiles
+{
+	param([string]$accountName, [string]$poolName, [string] $vmName, [string]$count)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$vmFiles = Get-AzureBatchVMFile_ST -PoolName $poolName -VMName $vmName -BatchContext $context
+
+	Assert-AreEqual $count $vmFiles.Length
+
+	# Verify parent object parameter set also works
+	$vm = Get-AzureBatchVM_ST $poolName $vmName -BatchContext $context
+	$vmFiles = Get-AzureBatchVMFile_ST -VM $vm -BatchContext $context
+
+	Assert-AreEqual $count $vmFiles.Length
+}
+
+<#
+.SYNOPSIS
+Tests pipelining scenarios
+#>
+function Test-ListVMFilePipeline
+{
+	param([string]$accountName, [string]$poolName, [string]$vmName, [string]$count)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+
+	# Get VM into Get VM File
+	$vmFiles = Get-AzureBatchVM_ST -PoolName $poolName -Name $vmName -BatchContext $context | Get-AzureBatchVMFile_ST -BatchContext $context
+	Assert-AreEqual $count $vmFiles.Length
+}
+
+<#
+.SYNOPSIS
+Tests downloading vm file contents by name
+#>
+function Test-GetVMFileContentByName
+{
+	param([string]$accountName, [string]$poolName, [string]$vmName, [string]$vmFileName, [string]$fileContent)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$stream = New-Object System.IO.MemoryStream 
+
+	try
+	{
+		Get-AzureBatchVMFileContent_ST -PoolName $poolName -VMName $vmName -Name $vmFileName -BatchContext $context -DestinationStream $stream
+		
+		$stream.Position = 0
+		$sr = New-Object System.IO.StreamReader $stream
+		$downloadedContents = $sr.ReadToEnd()
+
+		# Don't do strict equality check since extra newline characters get added to the end of the file
+		Assert-True { $downloadedContents.Contains($fileContent) }
+	}
+	finally
+	{
+		if ($sr -ne $null)
+		{
+			$sr.Dispose()
+		}
+		$stream.Dispose()
+	}
+
+	# Verify positional parameters also work
+	$stream = New-Object System.IO.MemoryStream 
+	try
+	{
+		Get-AzureBatchVMFileContent_ST $poolName $vmName $vmFileName -BatchContext $context -DestinationStream $stream
+
+		$stream.Position = 0
+		$sr = New-Object System.IO.StreamReader $stream
+		$downloadedContents = $sr.ReadToEnd()
+
+		# Don't do strict equality check since extra newline characters get added to the end of the file
+		Assert-True { $downloadedContents.Contains($fileContent) }
+	}
+	finally
+	{
+		if ($sr -ne $null)
+		{
+			$sr.Dispose()
+		}
+		$stream.Dispose()
+	}
+}
+
+<#
+.SYNOPSIS
+Tests downloading vm file contents using the pipeline
+#>
+function Test-GetVMFileContentPipeline
+{
+	param([string]$accountName, [string]$poolName, [string]$vmName, [string]$vmFileName, [string]$fileContent)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$stream = New-Object System.IO.MemoryStream 
+
+	try
+	{
+		$vmFile = Get-AzureBatchVMFile_ST -PoolName $poolName -VMName $vmName -Name $vmFileName -BatchContext $context
+		$vmFile | Get-AzureBatchVMFileContent_ST -BatchContext $context -DestinationStream $stream
+		
+		$stream.Position = 0
+		$sr = New-Object System.IO.StreamReader $stream
+		$downloadedContents = $sr.ReadToEnd()
+
+		# Don't do strict equality check since extra newline characters get added to the end of the file
+		Assert-True { $downloadedContents.Contains($fileContent) }
+	}
+	finally
+	{
+		if ($sr -ne $null)
+		{
+			$sr.Dispose()
+		}
+		$stream.Dispose()
+	}
+}
+
+<#
+.SYNOPSIS
+Tests downloading an RDP file by name
+#>
+function Test-GetRDPFileByName
+{
+	param([string]$accountName, [string]$poolName, [string]$vmName)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$stream = New-Object System.IO.MemoryStream 
+	$rdpContents = "full address"
+
+	try
+	{
+		Get-AzureBatchRDPFile_ST -PoolName $poolName -VMName $vmName -BatchContext $context -DestinationStream $stream
+		
+		$stream.Position = 0
+		$sr = New-Object System.IO.StreamReader $stream
+		$downloadedContents = $sr.ReadToEnd()
+
+		# Verify RDP file contains some expected text
+		Assert-True { $downloadedContents.Contains($rdpContents) }
+	}
+	finally
+	{
+		if ($sr -ne $null)
+		{
+			$sr.Dispose()
+		}
+		$stream.Dispose()
+	}
+
+	# Verify positional parameters also work
+	$stream = New-Object System.IO.MemoryStream 
+	try
+	{
+		Get-AzureBatchRDPFile_ST $poolName $vmName -BatchContext $context -DestinationStream $stream
+
+		$stream.Position = 0
+		$sr = New-Object System.IO.StreamReader $stream
+		$downloadedContents = $sr.ReadToEnd()
+
+		# Verify RDP file contains some expected text
+		Assert-True { $downloadedContents.Contains($rdpContents) }
+	}
+	finally
+	{
+		if ($sr -ne $null)
+		{
+			$sr.Dispose()
+		}
+		$stream.Dispose()
+	}
+}
+
+<#
+.SYNOPSIS
+Tests downloading an RDP file using the pipeline
+#>
+function Test-GetRDPFilePipeline
+{
+	param([string]$accountName, [string]$poolName, [string]$vmName)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$stream = New-Object System.IO.MemoryStream 
+	$rdpContents = "full address"
+
+	try
+	{
+		$vm = Get-AzureBatchVM_ST -PoolName $poolName -Name $vmName -BatchContext $context
+		$vm | Get-AzureBatchRDPFile_ST -BatchContext $context -DestinationStream $stream
+		
+		$stream.Position = 0
+		$sr = New-Object System.IO.StreamReader $stream
+		$downloadedContents = $sr.ReadToEnd()
+
+		# Verify RDP file contains some expected text
+		Assert-True { $downloadedContents.Contains($rdpContents) }
 	}
 	finally
 	{

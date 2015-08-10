@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Batch
     public class GetBatchAccountCommand : BatchCmdletBase
     {
         [Alias("Name")]
-        [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the Batch service account name to query.")]
+        [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the Batch service account to query.")]
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
 

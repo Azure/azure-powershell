@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Batch
         public string AccountName { get; set; }
 
         [Alias("Tags")]
-        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, HelpMessage = "An array of hashtables which represents the account tags to be replaced or updated.")]
+        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, HelpMessage = "An array of hashtables which represents the tags to set on the account.")]
         public Hashtable[] Tag { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group of the account being updated.")]

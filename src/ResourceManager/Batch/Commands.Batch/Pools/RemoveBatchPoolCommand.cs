@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.Remove, "AzureBatchPool")]
     public class RemoveBatchPoolCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the Pool to delete.")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the pool to delete.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

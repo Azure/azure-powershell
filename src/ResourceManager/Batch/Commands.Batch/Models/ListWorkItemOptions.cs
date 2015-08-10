@@ -17,12 +17,11 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class ListWorkItemOptions
+    public class ListWorkItemOptions : BatchClientParametersBase
     {
-        /// <summary>
-        /// The account details
-        /// </summary>
-        public BatchAccountContext Context { get; set; }
+        public ListWorkItemOptions(BatchAccountContext context, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+            : base(context, additionalBehaviors)
+        { }
 
         /// <summary>
         /// If specified, the single WorkItem with this name will be returned
@@ -38,10 +37,5 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// The maximum number of WorkItems to return
         /// </summary>
         public int MaxCount { get; set; }
-
-        /// <summary>
-        /// Additional client behaviors to perform
-        /// </summary>
-        public IEnumerable<BatchClientBehavior> AdditionalBehaviors { get; set; }
     }
 }

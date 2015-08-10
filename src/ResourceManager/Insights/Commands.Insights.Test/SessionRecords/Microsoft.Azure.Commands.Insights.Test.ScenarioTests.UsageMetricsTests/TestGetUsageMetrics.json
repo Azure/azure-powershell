@@ -1,0 +1,64 @@
+{
+    "Entries": [
+        {
+            "RequestUri": "/%2Fsubscriptions%2Fa93fb07c-6c93-40be-bf3b-4f0deba10f4b%2FresourceGroups%2FDefault-Web-EastUS%2Fproviders%2Fmicrosoft.web%2Fsites%2Fgaryyang1/usages?api-version=2014-04-01&$filter=startTime%20eq%202015-04-07T15%3A31%3A28.4590754-07%3A00%20and%20endTime%20eq%202015-04-07T16%3A31%3A28.4590754-07%3A00",
+            "RequestMethod": "GET",
+            "RequestBody": "",
+            "RequestHeaders": {
+                "Accept": [ "application/json" ],
+                "User-Agent": [ "Microsoft.Azure.Insights.InsightsClient/0.9.0.0 AzurePowershell/v0.8.15" ],
+                "x-ms-version": [ "2014-04-01" ],
+                "Connection": [ "Keep-Alive" ]
+            },
+            "ResponseBody": "{\"id\":null,\"name\":\"garyyang1\",\"type\":\"Microsoft.Web/sites\",\"kind\":null,\"location\":\"East US\",\"tags\":null,\"plan\":null,\"properties\":[{\"displayName\":\"CPU Time\",\"name\":\"CpuTime\",\"resourceName\":\"CpuTime\",\"unit\":\"Milliseconds\",\"currentValue\":0,\"limit\":-1,\"nextResetTime\":\"2015-04-08T00:00:00\",\"computeMode\":1,\"siteMode\":null},{\"displayName\":\"Data In\",\"name\":\"BytesReceived\",\"resourceName\":\"BytesReceived\",\"unit\":\"Bytes\",\"currentValue\":0,\"limit\":-1,\"nextResetTime\":\"2015-04-08T00:00:00\",\"computeMode\":1,\"siteMode\":null},{\"displayName\":\"Data Out\",\"name\":\"BytesSent\",\"resourceName\":\"BytesSent\",\"unit\":\"Bytes\",\"currentValue\":0,\"limit\":-1,\"nextResetTime\":\"2015-04-08T00:00:00\",\"computeMode\":1,\"siteMode\":null},{\"displayName\":\"Local bytes read\",\"name\":\"LocalBytesRead\",\"resourceName\":\"LocalBytesRead\",\"unit\":\"Bytes\",\"currentValue\":0,\"limit\":-1,\"nextResetTime\":\"2015-04-08T00:00:00\",\"computeMode\":1,\"siteMode\":null},{\"displayName\":\"Local bytes written\",\"name\":\"LocalBytesWritten\",\"resourceName\":\"LocalBytesWritten\",\"unit\":\"Bytes\",\"currentValue\":0,\"limit\":-1,\"nextResetTime\":\"2015-04-08T00:00:00\",\"computeMode\":1,\"siteMode\":null},{\"displayName\":\"Network bytes read\",\"name\":\"NetworkBytesRead\",\"resourceName\":\"NetworkBytesRead\",\"unit\":\"Bytes\",\"currentValue\":0,\"limit\":-1,\"nextResetTime\":\"2015-04-08T00:00:00\",\"computeMode\":1,\"siteMode\":null},{\"displayName\":\"Network bytes written\",\"name\":\"NetworkBytesWritten\",\"resourceName\":\"NetworkBytesWritten\",\"unit\":\"Bytes\",\"currentValue\":0,\"limit\":-1,\"nextResetTime\":\"2015-04-08T00:00:00\",\"computeMode\":1,\"siteMode\":null},{\"displayName\":\"WP stop requests\",\"name\":\"WPStopRequests\",\"resourceName\":\"WPStopRequests\",\"unit\":\"Count\",\"currentValue\":0,\"limit\":-1,\"nextResetTime\":\"2015-04-08T00:00:00\",\"computeMode\":1,\"siteMode\":null},{\"displayName\":\"Memory Usage\",\"name\":\"MaxMemoryWorkingSetShortPeriod\",\"resourceName\":\"MaxMemoryWorkingSet\",\"unit\":\"Bytes\",\"currentValue\":0,\"limit\":-1,\"nextResetTime\":\"2015-04-08T00:00:00\",\"computeMode\":1,\"siteMode\":null},{\"displayName\":\"CPU Time - Minute Limit\",\"name\":\"CpuTimeShortPeriod\",\"resourceName\":\"CpuTime\",\"unit\":\"Milliseconds\",\"currentValue\":0,\"limit\":-1,\"nextResetTime\":\"2015-04-07T23:36:00\",\"computeMode\":1,\"siteMode\":null},{\"displayName\":\"File System Storage\",\"name\":\"FileSystemStorage\",\"resourceName\":\"FileSystemStorage\",\"unit\":\"Bytes\",\"currentValue\":756736,\"limit\":53687091200,\"nextResetTime\":\"9999-12-31T23:59:59.9999999Z\",\"computeMode\":1,\"siteMode\":null}]}",
+            "ResponseHeaders": {
+                "Cache-Control": [ "no-cache" ],
+                "Date": [ "Tue, 07 Apr 2015 23:31:33 GMT" ],
+                "Expires": [ "-1" ],
+                "Pragma": [ "no-cache" ],
+                "Content-Length": [ "2421" ],
+                "Content-Type": [ "application/json; charset=utf-8" ],
+                "x-ms-ratelimit-remaining-subscription-reads": [ "31999" ],
+                "x-ms-request-id": [ "63575ceb-f8d2-4a28-a571-edc783166245" ],
+                "x-ms-correlation-request-id": [ "4e8d2e93-0895-4cf1-aa40-5af880c3fb52" ],
+                "x-ms-routing-request-id": [ "WESTUS:20150323T205747Z:4e8d2e93-0895-4cf1-aa40-5af880c3fb52" ],
+                "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ]
+            },
+            "StatusCode": 200
+        },
+        {
+            "RequestUri": "/%2Fsubscriptions%2Fa93fb07c-6c93-40be-bf3b-4f0deba10f4b%2FresourceGroups%2FDefault-Web-EastUS%2Fproviders%2Fmicrosoft.web%2Fsites%2Fgaryyang1/usages?api-version=2014-04-01&$filter=",
+            "RequestMethod": "GET",
+            "RequestBody": "",
+            "RequestHeaders": {
+                "Accept": [ "application/json" ],
+                "User-Agent": [ "Microsoft.Azure.Insights.InsightsClient/0.9.0.0 AzurePowershell/v0.8.15" ],
+                "x-ms-version": [ "2014-04-01" ]
+            },
+            "ResponseBody": "{\"id\":null,\"name\":\"garyyang1\",\"type\":\"Microsoft.Web/sites\",\"kind\":null,\"location\":\"East US\",\"tags\":null,\"plan\":null,\"properties\":[{\"displayName\":\"CPU Time\",\"name\":\"CpuTime\",\"resourceName\":\"CpuTime\",\"unit\":\"Milliseconds\",\"currentValue\":0,\"limit\":-1,\"nextResetTime\":\"2015-04-08T00:00:00\",\"computeMode\":1,\"siteMode\":null},{\"displayName\":\"Data In\",\"name\":\"BytesReceived\",\"resourceName\":\"BytesReceived\",\"unit\":\"Bytes\",\"currentValue\":0,\"limit\":-1,\"nextResetTime\":\"2015-04-08T00:00:00\",\"computeMode\":1,\"siteMode\":null},{\"displayName\":\"Data Out\",\"name\":\"BytesSent\",\"resourceName\":\"BytesSent\",\"unit\":\"Bytes\",\"currentValue\":0,\"limit\":-1,\"nextResetTime\":\"2015-04-08T00:00:00\",\"computeMode\":1,\"siteMode\":null},{\"displayName\":\"Local bytes read\",\"name\":\"LocalBytesRead\",\"resourceName\":\"LocalBytesRead\",\"unit\":\"Bytes\",\"currentValue\":0,\"limit\":-1,\"nextResetTime\":\"2015-04-08T00:00:00\",\"computeMode\":1,\"siteMode\":null},{\"displayName\":\"Local bytes written\",\"name\":\"LocalBytesWritten\",\"resourceName\":\"LocalBytesWritten\",\"unit\":\"Bytes\",\"currentValue\":0,\"limit\":-1,\"nextResetTime\":\"2015-04-08T00:00:00\",\"computeMode\":1,\"siteMode\":null},{\"displayName\":\"Network bytes read\",\"name\":\"NetworkBytesRead\",\"resourceName\":\"NetworkBytesRead\",\"unit\":\"Bytes\",\"currentValue\":0,\"limit\":-1,\"nextResetTime\":\"2015-04-08T00:00:00\",\"computeMode\":1,\"siteMode\":null},{\"displayName\":\"Network bytes written\",\"name\":\"NetworkBytesWritten\",\"resourceName\":\"NetworkBytesWritten\",\"unit\":\"Bytes\",\"currentValue\":0,\"limit\":-1,\"nextResetTime\":\"2015-04-08T00:00:00\",\"computeMode\":1,\"siteMode\":null},{\"displayName\":\"WP stop requests\",\"name\":\"WPStopRequests\",\"resourceName\":\"WPStopRequests\",\"unit\":\"Count\",\"currentValue\":0,\"limit\":-1,\"nextResetTime\":\"2015-04-08T00:00:00\",\"computeMode\":1,\"siteMode\":null},{\"displayName\":\"Memory Usage\",\"name\":\"MaxMemoryWorkingSetShortPeriod\",\"resourceName\":\"MaxMemoryWorkingSet\",\"unit\":\"Bytes\",\"currentValue\":0,\"limit\":-1,\"nextResetTime\":\"2015-04-08T00:00:00\",\"computeMode\":1,\"siteMode\":null},{\"displayName\":\"CPU Time - Minute Limit\",\"name\":\"CpuTimeShortPeriod\",\"resourceName\":\"CpuTime\",\"unit\":\"Milliseconds\",\"currentValue\":0,\"limit\":-1,\"nextResetTime\":\"2015-04-07T23:41:00\",\"computeMode\":1,\"siteMode\":null},{\"displayName\":\"File System Storage\",\"name\":\"FileSystemStorage\",\"resourceName\":\"FileSystemStorage\",\"unit\":\"Bytes\",\"currentValue\":756736,\"limit\":53687091200,\"nextResetTime\":\"9999-12-31T23:59:59.9999999Z\",\"computeMode\":1,\"siteMode\":null}]}",
+            "ResponseHeaders": {
+                "Cache-Control": [ "no-cache" ],
+                "Date": [ "Tue, 07 Apr 2015 23:31:33 GMT" ],
+                "Expires": [ "-1" ],
+                "Pragma": [ "no-cache" ],
+                "Vary": [ "Accept-Encoding" ],
+                "Content-Length": [ "2421" ],
+                "Content-Type": [ "application/json; charset=utf-8" ],
+                "x-ms-ratelimit-remaining-subscription-reads": [ "31997" ],
+                "x-ms-request-id": [ "8e430569-842a-4b86-a954-0fda5fe1576f" ],
+                "x-ms-correlation-request-id": [ "095a4225-2fcb-4f72-87a8-0ea4e11bfb7a" ],
+                "x-ms-routing-request-id": [ "WESTUS:20150323T223347Z:095a4225-2fcb-4f72-87a8-0ea4e11bfb7a" ],
+                "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ]
+            },
+            "StatusCode": 200
+        }
+    ],
+    "Names": {
+        "Test-GetAzureCorrelationIdLog": [
+            ""
+        ]
+    },
+    "Variables": {
+        "SubscriptionId": "a93fb07c-6c93-40be-bf3b-4f0deba10f4b"
+    }
+}

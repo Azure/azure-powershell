@@ -87,44 +87,6 @@ function Test-TableWithDataFactoryParameter
 
 <#
 .SYNOPSIS
-Nagative test. Get resources with an empty table name.
-#>
-function Test-GetTableWithEmptyName
-{	
-    $tblname = ""
-	$dfname = Get-DataFactoryName
-    $rgname = Get-ResourceGroupName
-    $rglocation = Get-ProviderLocation ResourceManagement
-    $dflocation = Get-ProviderLocation DataFactoryManagement
-    
-    New-AzureResourceGroup -Name $rgname -Location $rglocation -Force
-    New-AzureDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
-
-    # Test
-    Assert-ThrowsContains { Get-AzureDataFactoryTable -ResourceGroupName $rgname -DataFactoryName $dfname -Name $tblname } "null"    
-}
-
-<#
-.SYNOPSIS
-Nagative test. Get resources with a table name which only contains white space.
-#>
-function Test-GetTableWithWhiteSpaceName
-{	
-    $tblname = "     "
-	$dfname = Get-DataFactoryName
-    $rgname = Get-ResourceGroupName
-    $rglocation = Get-ProviderLocation ResourceManagement
-    $dflocation = Get-ProviderLocation DataFactoryManagement
-    
-    New-AzureResourceGroup -Name $rgname -Location $rglocation -Force
-    New-AzureDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
-
-    # Test
-    Assert-ThrowsContains { Get-AzureDataFactoryTable -ResourceGroupName $rgname -DataFactoryName $dfname -Name $tblname } "null"      
-}
-
-<#
-.SYNOPSIS
 Test piping support.
 #>
 function Test-TablePiping

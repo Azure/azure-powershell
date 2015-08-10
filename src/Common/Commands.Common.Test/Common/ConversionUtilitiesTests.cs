@@ -16,12 +16,14 @@ using System.Collections.Generic;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 using Microsoft.Azure.Common.Authentication;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test
 {
     public class ConversionUtilitiesTests
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DeserializeJsonWorksForSimpleCases()
         {
             const string json1 =
@@ -56,6 +58,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DeserializeJsonWorksForEmptyObjects()
         {
             const string json1 =
@@ -78,6 +81,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DeserializeJsonAcceptsBadArguments()
         {
             Dictionary<string, object> result;
@@ -89,6 +93,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DeserializeJsonAcceptsBadJson()
         {
             const string json1 =

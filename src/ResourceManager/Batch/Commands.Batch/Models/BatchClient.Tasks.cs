@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
     public partial class BatchClient
     {
         /// <summary>
-        /// Lists the Tasks matching the specified filter options
+        /// Lists the tasks matching the specified filter options
         /// </summary>
-        /// <param name="options">The options to use when querying for Tasks</param>
-        /// <returns>The Tasks matching the specified filter options</returns>
+        /// <param name="options">The options to use when querying for tasks</param>
+        /// <returns>The tasks matching the specified filter options</returns>
         public IEnumerable<PSCloudTask> ListTasks(ListTaskOptions options)
         {
             if (options == null)
@@ -36,12 +36,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException("options");
             }
 
-            if ((string.IsNullOrWhiteSpace(options.WorkItemName) || string.IsNullOrWhiteSpace(options.JobName)) && options.Job == null)
-            {
-                throw new ArgumentNullException(Resources.GBT_NoJob);
-            }
-
-            // Get the single Task matching the specified name
+            // Get the single task matching the specified name
             if (!string.IsNullOrEmpty(options.TaskName))
             {
                 WriteVerbose(string.Format(Resources.GBT_GetByName, options.TaskName, options.JobName, options.WorkItemName));
@@ -52,20 +47,22 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     return new PSCloudTask[] { psTask };
                 }
             }
-            // List Tasks using the specified filter
+            // List tasks using the specified filter
             else
             {
                 string jName = options.Job == null ? options.JobName : options.Job.Name;
                 ODATADetailLevel odata = null;
+                string verboseLogString = null;
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
-                    WriteVerbose(string.Format(Resources.GBT_GetByOData, jName));
+                    verboseLogString = string.Format(Resources.GBT_GetByOData, jName);
                     odata = new ODATADetailLevel(filterClause: options.Filter);
                 }
                 else
                 {
-                    WriteVerbose(string.Format(Resources.GBT_GetNoFilter, jName));
+                    verboseLogString = string.Format(Resources.GBT_GetNoFilter, jName);
                 }
+                WriteVerbose(verboseLogString);
 
                 IEnumerableAsyncExtended<ICloudTask> tasks = null;
                 if (options.Job != null)
@@ -86,22 +83,14 @@ namespace Microsoft.Azure.Commands.Batch.Models
         }
 
         /// <summary>
-        /// Creates a new Task
+        /// Creates a new task
         /// </summary>
-        /// <param name="parameters">The parameters to use when creating the Task</param>
+        /// <param name="parameters">The parameters to use when creating the task</param>
         public void CreateTask(NewTaskParameters parameters)
         {
             if (parameters == null)
             {
                 throw new ArgumentNullException("parameters");
-            }
-            if ((string.IsNullOrWhiteSpace(parameters.WorkItemName) || string.IsNullOrWhiteSpace(parameters.JobName)) && parameters.Job == null)
-            {
-                throw new ArgumentException(Resources.NBT_NoJobSpecified);
-            }
-            if (string.IsNullOrWhiteSpace(parameters.TaskName))
-            {
-                throw new ArgumentNullException("TaskName");
             }
 
             CloudTask task = new CloudTask(parameters.TaskName, parameters.CommandLine);
@@ -152,18 +141,14 @@ namespace Microsoft.Azure.Commands.Batch.Models
         }
 
         /// <summary>
-        /// Deletes the specified Task
+        /// Deletes the specified task
         /// </summary>
-        /// <param name="parameters">The parameters indicating which Task to delete</param>
-        public void DeleteTask(RemoveTaskParameters parameters)
+        /// <param name="parameters">The parameters indicating which task to delete</param>
+        public void DeleteTask(TaskOperationParameters parameters)
         {
             if (parameters == null)
             {
                 throw new ArgumentNullException("parameters");
-            }
-            if ((string.IsNullOrWhiteSpace(parameters.WorkItemName) || string.IsNullOrWhiteSpace(parameters.JobName) || string.IsNullOrWhiteSpace(parameters.TaskName)) && parameters.Task == null)
-            {
-                throw new ArgumentException(Resources.RBT_NoTaskSpecified);
             }
 
             if (parameters.Task != null)

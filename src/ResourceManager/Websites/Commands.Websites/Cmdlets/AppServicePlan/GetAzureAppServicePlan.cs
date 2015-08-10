@@ -56,12 +56,12 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
 
         private void GetByWebHostingPlan()
         {
-            WriteObject(WebsitesClient.GetWebHostingPlan(ResourceGroupName, Name));
+            WriteObject(WebsitesClient.GetAppServicePlan(ResourceGroupName, Name));
         }
 
         private void GetByResourceGroup()
         {
-            WriteObject(WebsitesClient.ListWebHostingPlan(ResourceGroupName));
+            WriteObject(WebsitesClient.ListAppServicePlan(ResourceGroupName));
         }
     }
 }

@@ -13,17 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.Commands.KeyVault.Properties;
+using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using System;
 using System.IO;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
+namespace Microsoft.Azure.Commands.KeyVault
 {
     /// <summary>
     /// Requests that a backup of the specified key be downloaded and stored to a file
     /// </summary>
-    [Cmdlet(VerbsData.Backup, "AzureKeyVaultKey")]
+    [Cmdlet(VerbsData.Backup, "AzureKeyVaultKey", HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(String))]
     public class BackupAzureKeyVaultKey : KeyVaultCmdletBase
     {
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
                 OutputFile = GetDefaultFile();
             }
 
-            var filePath = ResolvePath(OutputFile, Resources.BackupKeyFileNotFound);
+            var filePath = ResolvePath(OutputFile);
 
             var backupBlobPath = this.DataServiceClient.BackupKey(VaultName, Name, filePath);
 
@@ -79,10 +79,18 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
         private string GetDefaultFile()
         {
             var currentPath = CurrentPath();
-            var filename = string.Format("{0}\\backup-{1}-{2}-{3}", currentPath, VaultName, Name, Microsoft.Azure.Commands.KeyVault.Client.UnixEpoch.Now());
-            File.Create(filename).Dispose();
+            var filename = string.Format("{0}\\backup-{1}-{2}-{3}", currentPath, VaultName, Name, Microsoft.Azure.KeyVault.UnixEpoch.Now());           
             return filename;
         }
 
+        private string ResolvePath(string filePath)
+        {
+            FileInfo keyFile = new FileInfo(this.GetUnresolvedProviderPathFromPSPath(filePath));
+            if (keyFile.Exists)
+            {
+                throw new IOException(string.Format(KeyVaultProperties.Resources.BackupKeyFileAlreadyExists, filePath));
+            }
+            return keyFile.FullName;
+        }
     }
 }

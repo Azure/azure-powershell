@@ -45,6 +45,10 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImp
             this.OSType = OSType.Windows;
         }
 
+        public PSCredential RdpCredential { get; set; }
+
+        public DateTime? RdpAccessExpiry { get; set; }
+
         public ICollection<AzureHDInsightStorageAccount> AdditionalStorageAccounts { get; private set; }
 
         /// <inheritdoc />
@@ -132,7 +136,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImp
 
         public override async Task EndProcessing()
         {
-            IHDInsightClient client = this.GetClient();
+            IHDInsightClient client = this.GetClient(IgnoreSslErrors);
             client.ClusterProvisioning += this.ClientOnClusterProvisioning;
             ClusterCreateParametersV2 createClusterRequest = this.GetClusterCreateParameters();
             var cluster = await client.CreateClusterAsync(createClusterRequest);
@@ -212,6 +216,17 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImp
                 createClusterRequest.ZookeeperNodeSize = this.ZookeeperNodeSize;
             }
 
+            if (this.RdpCredential.IsNotNull())
+            {
+                createClusterRequest.RdpUsername = this.RdpCredential.UserName;
+                createClusterRequest.RdpPassword = this.RdpCredential.GetCleartextPassword();
+            }
+
+            if (RdpAccessExpiry.IsNotNull())
+            {
+                createClusterRequest.RdpAccessExpiry = this.RdpAccessExpiry;
+			}
+			
             // Set IaaS specific parameters
             createClusterRequest.OSType = this.OSType;
 

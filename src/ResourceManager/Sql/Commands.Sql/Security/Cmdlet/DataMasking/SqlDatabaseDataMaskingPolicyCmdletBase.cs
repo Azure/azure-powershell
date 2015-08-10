@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.Security.Model;
 using Microsoft.Azure.Commands.Sql.Security.Services;
 using Microsoft.Azure.Common.Authentication.Models;
@@ -21,13 +22,13 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
     /// <summary>
     /// The base class for all Azure Sql Database data masking policy Cmdlets
     /// </summary>
-    public abstract class SqlDatabaseDataMaskingPolicyCmdletBase : SqlDatabaseCmdletBase<DatabaseDataMaskingPolicyModel, SqlDataMaskingAdapter>
+    public abstract class SqlDatabaseDataMaskingPolicyCmdletBase : AzureSqlDatabaseCmdletBase<DatabaseDataMaskingPolicyModel, SqlDataMaskingAdapter>
     {
         /// <summary>
         /// Provides the model element that this cmdlet operates on
         /// </summary>
         /// <returns>A model object</returns>
-        protected override DatabaseDataMaskingPolicyModel GetModel()
+        protected override DatabaseDataMaskingPolicyModel GetEntity()
         {
             return ModelAdapter.GetDatabaseDataMaskingPolicy(ResourceGroupName, ServerName, DatabaseName, clientRequestId);
         }
@@ -47,9 +48,10 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
         /// object to the REST endpoint
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override void SendModel(DatabaseDataMaskingPolicyModel model)
+        protected override DatabaseDataMaskingPolicyModel PersistChanges(DatabaseDataMaskingPolicyModel model)
         {
             ModelAdapter.SetDatabaseDataMaskingPolicy(model, clientRequestId);
+            return null;
         }
     }
 }

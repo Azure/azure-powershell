@@ -12,38 +12,30 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections;
 using Microsoft.Azure.Batch;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class NewTaskParameters
+    public class NewTaskParameters : JobOperationParameters
     {
-        /// <summary>
-        /// The account details
-        /// </summary>
-        public BatchAccountContext Context { get; set; }
+        public NewTaskParameters(BatchAccountContext context, string workItemName, string jobName, PSCloudJob job, string taskName,
+            IEnumerable<BatchClientBehavior> additionalBehaviors = null) : base(context, workItemName, jobName, job, additionalBehaviors)
+        {
+            if (string.IsNullOrWhiteSpace(taskName))
+            {
+                throw new ArgumentNullException("taskName");
+            }
 
-        /// <summary>
-        /// The name of the WorkItem to create the Task under.
-        /// </summary>
-        public string WorkItemName { get; set; }
-
-        /// <summary>
-        /// The name of the Job to create the Task under.
-        /// </summary>
-        public string JobName { get; set; }
+            this.TaskName = taskName;
+        }
 
         /// <summary>
         /// The name of the Task to create.
         /// </summary>
-        public string TaskName { get; set; }
-
-        /// <summary>
-        /// The Job to create the Task under.
-        /// </summary>
-        public PSCloudJob Job { get; set; }
+        public string TaskName { get; private set; }
 
         /// <summary>
         /// The command the Task will execute.
@@ -74,10 +66,5 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// The Task Constraints.
         /// </summary>
         public PSTaskConstraints TaskConstraints { get; set; }
-
-        /// <summary>
-        /// Additional client behaviors to perform
-        /// </summary>
-        public IEnumerable<BatchClientBehavior> AdditionalBehaviors { get; set; }
     }
 }

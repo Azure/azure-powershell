@@ -15,12 +15,14 @@
 using System;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test
 {
     public class PowerShellUtilitiesTests
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddsModulePathToUserPSModulePath()
         {
             string originalPSModulePath = Environment.GetEnvironmentVariable(PowerShellUtilities.PSModulePathName);
@@ -40,6 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemovesModulePathFromUserPSModulePath()
         {
             string originalPSModulePath = Environment.GetEnvironmentVariable(PowerShellUtilities.PSModulePathName);

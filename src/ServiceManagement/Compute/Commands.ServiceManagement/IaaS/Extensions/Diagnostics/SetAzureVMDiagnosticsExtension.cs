@@ -14,6 +14,7 @@
 
 using System;
 using System.IO;
+using System.Linq;
 using System.Management.Automation;
 using System.Text;
 using System.Xml;
@@ -121,6 +122,17 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             ValidateConfiguration();
             ExtensionName = DiagnosticsExtensionType;
             Publisher = DiagnosticsExtensionNamespace;
+
+            // If the user didn't specify an extension reference name and the input VM already has a diagnostics extension,
+            // reuse its reference name
+            if (string.IsNullOrEmpty(ReferenceName))
+            {
+                ResourceExtensionReference diagnosticsExtension = ResourceExtensionReferences.FirstOrDefault(ExtensionPredicate);
+                if (diagnosticsExtension != null)
+                {
+                    ReferenceName = diagnosticsExtension.ReferenceName;
+                }
+            }
         }
 
         private void ValidateStorageAccount()

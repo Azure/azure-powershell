@@ -22,7 +22,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseDataMaskingPolicyEnablementToggling()
         {
             RunPowerShellTest("Test-DatabaseDataMaskingPolicyEnablementToggling");
@@ -30,15 +29,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestDatabaseDataMaskingLevelChanges()
-        {
-            RunPowerShellTest("Test-DatabaseDataMaskingLevelChanges");
-        }
-
-        [Fact]
-        [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseDataMaskingPrivilegedLoginsChanges()
         {
             RunPowerShellTest("Test-DatabaseDataMaskingPrivilegedLoginsChanges");
@@ -46,7 +36,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseDataMaskingBasicRuleLifecycle()
         {
             RunPowerShellTest("Test-DatabaseDataMaskingBasicRuleLifecycle");
@@ -54,7 +43,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseDataMaskingNumberRuleLifecycle()
         {
             RunPowerShellTest("Test-DatabaseDataMaskingNumberRuleLifecycle");
@@ -62,7 +50,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseDataMaskingTextRuleLifecycle()
         {
             RunPowerShellTest("Test-DatabaseDataMaskingTextRuleLifecycle");
@@ -70,7 +57,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseDataMaskingRuleCreationFailures()
         {
             RunPowerShellTest("Test-DatabaseDataMaskingRuleCreationFailures");

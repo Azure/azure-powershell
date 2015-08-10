@@ -19,6 +19,7 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Websites;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites;
 using Microsoft.WindowsAzure.Commands.Websites;
 using Moq;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.Azure.Common.Authentication;
 using System;
@@ -42,6 +43,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DisableAzureWebsiteApplicationDiagnosticApplication()
         {
             // Setup
@@ -74,6 +76,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DisableAzureWebsiteApplicationDiagnosticApplicationTableLog()
         {
             // Setup
@@ -106,6 +109,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DisableAzureWebsiteApplicationDiagnosticApplicationBlobLog()
         {
             // Setup
@@ -138,6 +142,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DisablesApplicationDiagnosticOnSlot()
         {
             // Setup

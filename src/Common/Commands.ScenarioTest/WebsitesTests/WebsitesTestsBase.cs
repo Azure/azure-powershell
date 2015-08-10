@@ -52,7 +52,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
                 SetupManagementClients();
 
                 helper.SetupEnvironment(AzureModule.AzureServiceManagement);
-                helper.SetupModules(AzureModule.AzureServiceManagement, 
+                helper.SetupModulesFromCommon(AzureModule.AzureServiceManagement,
                     "Resources\\Websites\\Common.ps1",
                     "Resources\\Websites\\" + this.GetType().Name + ".ps1");
 

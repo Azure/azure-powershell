@@ -63,9 +63,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
 
             string fileName = "stdout.txt";
 
-            // Don't hit the file system during unit tests
-            cmdlet.Stream = new MemoryStream();
-
             // Don't go to the service on a GetTaskFile call or GetTaskFileProperties call
             YieldInjectionInterceptor interceptor = new YieldInjectionInterceptor((opContext, request) =>
             {
@@ -85,22 +82,21 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             });
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
-            Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
-
-            // Fill required Task file details
-            cmdlet.WorkItemName = "workItem";
-            cmdlet.JobName = "job-0000000001";
-            cmdlet.TaskName = "task";
-            cmdlet.Name = fileName;
-
-            try
+            using (MemoryStream memStream = new MemoryStream())
             {
+                // Don't hit the file system during unit tests
+                cmdlet.DestinationStream = memStream;
+
+                Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
+
+                // Fill required Task file details
+                cmdlet.WorkItemName = "workItem";
+                cmdlet.JobName = "job-0000000001";
+                cmdlet.TaskName = "task";
+                cmdlet.Name = fileName;
+
                 // Verify no exceptions occur
                 cmdlet.ExecuteCmdlet();
-            }
-            finally
-            {
-                cmdlet.Stream.Dispose();
             }
         }
     }

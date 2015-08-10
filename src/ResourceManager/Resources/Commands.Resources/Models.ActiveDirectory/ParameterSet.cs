@@ -67,5 +67,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
         public const string ApplicationWithKeyCredential = "ApplicationWithKeyCredentialParameterSet";
 
         public const string Empty = "EmptyParameterSet";
+
+        public const string InputFile = "InputFileParameterSet";
+
+        public const string RoleDefinition = "RoleDefinitionParameterSet";
     }
 }

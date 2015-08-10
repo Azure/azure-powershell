@@ -13,8 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
-using Microsoft.Azure.Commands.KeyVault.Properties;
-using Microsoft.Azure.Commands.KeyVault.WebKey;
+using Microsoft.Azure.KeyVault;
+using Microsoft.Azure.KeyVault.WebKey;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure;
@@ -24,6 +24,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Security;
+using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -32,27 +33,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public KeyVaultDataServiceClient(IAuthenticationFactory authFactory, AzureContext context, HttpClient httpClient)
         {
             if (authFactory == null)
-            {
                 throw new ArgumentNullException("authFactory");
-            }
             if (context == null)
-            {
                 throw new ArgumentNullException("context");
-            }
             if (context.Environment == null)
-            {
-                throw new ArgumentException(Resources.InvalidAzureEnvironment);
-            }
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidAzureEnvironment);
             if (httpClient == null)
-            {
                 throw new ArgumentNullException("httpClient");
-            }
-
+            
             var credential = new DataServiceCredential(authFactory, context);
-            this.keyVaultClient = new Client.KeyVaultClient(
-                credential.OnAuthentication,
-                SendRequestCallback,
-                ReceiveResponseCallback,
+            this.keyVaultClient = new KeyVaultClient(
+                new KeyVaultClient.AuthenticationCallback( credential.OnAuthentication ),
                 httpClient);
 
 
@@ -70,307 +61,364 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public KeyBundle CreateKey(string vaultName, string keyName, KeyAttributes keyAttributes)
         {
             if (string.IsNullOrEmpty(vaultName))
-            {
                 throw new ArgumentNullException("vaultName");
-            }
             if (string.IsNullOrEmpty(keyName))
-            {
                 throw new ArgumentNullException("keyName");
-            }
             if (keyAttributes == null)
-            {
                 throw new ArgumentNullException("keyAttributes");
-            }
-
+            
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
-            Client.KeyAttributes clientAttributes = (Client.KeyAttributes)keyAttributes;
+            var attributes = (Microsoft.Azure.KeyVault.KeyAttributes)keyAttributes;
 
-            Client.KeyBundle clientKeyBundle;
+            Microsoft.Azure.KeyVault.KeyBundle keyBundle;
             try
             {
-                clientKeyBundle = 
-                    this.keyVaultClient.CreateKeyAsync(
-                        vaultAddress,
-                        keyName,
-                        keyAttributes.KeyType,
-                        key_ops: keyAttributes.KeyOps,
-                        keyAttributes: clientAttributes).GetAwaiter().GetResult();
+                keyBundle = this.keyVaultClient.CreateKeyAsync(
+                    vaultAddress,
+                    keyName,
+                    keyAttributes.KeyType,
+                    key_ops: keyAttributes.KeyOps,
+                    keyAttributes: attributes,
+                    tags: keyAttributes.TagsDirectionary).GetAwaiter().GetResult();
             }
             catch (Exception ex)
             {
                 throw GetInnerException(ex);
             }
 
-            return new KeyBundle(clientKeyBundle, this.vaultUriHelper);
+            return new KeyBundle(keyBundle, this.vaultUriHelper);
         }
 
         public KeyBundle ImportKey(string vaultName, string keyName, KeyAttributes keyAttributes, JsonWebKey webKey, bool? importToHsm)
         {
             if (string.IsNullOrEmpty(vaultName))
-            {
                 throw new ArgumentNullException("vaultName");
-            }
             if (string.IsNullOrEmpty(keyName))
-            {
                 throw new ArgumentNullException("keyName");
-            }
             if (keyAttributes == null)
-            {
                 throw new ArgumentNullException("keyAttributes");
-            }
             if (webKey == null)
-            {
                 throw new ArgumentNullException("webKey");
-            }
-
+            if (webKey.Kty == JsonWebKeyType.RsaHsm && (importToHsm.HasValue && !importToHsm.Value))
+                throw new ArgumentException(KeyVaultProperties.Resources.ImportByokAsSoftkeyError);
+                      
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
-
-            Client.KeyAttributes clientAttributes = (Client.KeyAttributes)keyAttributes;
-
-            webKey.KeyOps = keyAttributes.KeyOps;
-            Client.KeyBundle clientKeyBundle = new Client.KeyBundle()
+            
+            webKey.KeyOps = keyAttributes.KeyOps;            
+            var keyBundle = new Microsoft.Azure.KeyVault.KeyBundle()
             {
-                Attributes = clientAttributes,
-                Key = webKey
+                Attributes = (Microsoft.Azure.KeyVault.KeyAttributes)keyAttributes,
+                Key = webKey,
+                Tags = keyAttributes.TagsDirectionary
             };
 
             try
             {
-                clientKeyBundle = this.keyVaultClient.ImportKeyAsync(vaultAddress, keyName, clientKeyBundle, importToHsm).GetAwaiter().GetResult();
+                keyBundle = this.keyVaultClient.ImportKeyAsync(vaultAddress, keyName, keyBundle, importToHsm).GetAwaiter().GetResult();
             }
             catch (Exception ex)
             {
                 throw GetInnerException(ex);
             }
 
-            return new KeyBundle(clientKeyBundle, this.vaultUriHelper);
+            return new KeyBundle(keyBundle, this.vaultUriHelper);
         }
 
-        public KeyBundle SetKey(string vaultName, string keyName, KeyAttributes keyAttributes)
+        public KeyBundle UpdateKey(string vaultName, string keyName, string keyVersion, KeyAttributes keyAttributes)
         {
             if (string.IsNullOrEmpty(vaultName))
-            {
                 throw new ArgumentNullException("vaultName");
-            }
             if (string.IsNullOrEmpty(keyName))
-            {
                 throw new ArgumentNullException("keyName");
-            }
             if (keyAttributes == null)
-            {
                 throw new ArgumentNullException("keyAttributes");
-            }
+            
+            Microsoft.Azure.KeyVault.KeyAttributes attributes = (Microsoft.Azure.KeyVault.KeyAttributes)keyAttributes;
+            var keyIdentifier = new KeyIdentifier(this.vaultUriHelper.CreateVaultAddress(vaultName), keyName, keyVersion);
 
-            Client.KeyAttributes clientAttributes = (Client.KeyAttributes)keyAttributes;
-
-            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
-
-            Client.KeyBundle clientKeyBundle;
+            Microsoft.Azure.KeyVault.KeyBundle keyBundle;
             try
             {
-                clientKeyBundle = this.keyVaultClient.UpdateKeyAsync(vaultAddress, keyName, keyAttributes.KeyOps, attributes: clientAttributes).GetAwaiter().GetResult();
+                keyBundle = this.keyVaultClient.UpdateKeyAsync(
+                    keyIdentifier.Identifier, keyAttributes.KeyOps, attributes: attributes, tags: keyAttributes.TagsDirectionary).GetAwaiter().GetResult();
             }
             catch (Exception ex)
             {
                 throw GetInnerException(ex);
             }
 
-            return new KeyBundle(clientKeyBundle, this.vaultUriHelper);
+            return new KeyBundle(keyBundle, this.vaultUriHelper);
         }
 
         public KeyBundle GetKey(string vaultName, string keyName, string keyVersion)
         {
             if (string.IsNullOrEmpty(vaultName))
-            {
                 throw new ArgumentNullException("vaultName");
-            }
             if (string.IsNullOrEmpty(keyName))
-            {
                 throw new ArgumentNullException("keyName");
-            }
-
+            
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
-            Client.KeyBundle clientKeyBundle;
+            Microsoft.Azure.KeyVault.KeyBundle keyBundle;
             try
             {
-                clientKeyBundle = this.keyVaultClient.GetKeyAsync(vaultAddress, keyName, keyVersion).GetAwaiter().GetResult();
+                keyBundle = this.keyVaultClient.GetKeyAsync(vaultAddress, keyName, keyVersion).GetAwaiter().GetResult();
             }
             catch (Exception ex)
             {
                 throw GetInnerException(ex); 
             }
 
-            return new KeyBundle(clientKeyBundle, this.vaultUriHelper);
+            return new KeyBundle(keyBundle, this.vaultUriHelper);
         }
 
-        public IEnumerable<KeyIdentityItem> GetKeys(string vaultName)
+        public IEnumerable<KeyIdentityItem> GetKeys(KeyVaultObjectFilterOptions options)
         {
-            if (string.IsNullOrEmpty(vaultName))
-            {
-                throw new ArgumentNullException("vaultName");
-            }
-
-            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
-
-            IEnumerable<Client.KeyItem> clientKeyBundles;
+            if (options == null)
+                throw new ArgumentNullException("options");
+           
+            if (string.IsNullOrEmpty(options.VaultName))
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidVaultName);
+           
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(options.VaultName);
+            
             try
             {
-                clientKeyBundles = this.keyVaultClient.GetKeysAsync(vaultAddress).GetAwaiter().GetResult();
+                ListKeysResponseMessage result;
+
+                if (string.IsNullOrEmpty(options.NextLink))
+                    result = this.keyVaultClient.GetKeysAsync(vaultAddress).GetAwaiter().GetResult();
+                else
+                    result = this.keyVaultClient.GetKeysNextAsync(options.NextLink).GetAwaiter().GetResult();
+                
+                options.NextLink = result.NextLink;
+                return (result.Value == null) ? new List<KeyIdentityItem>() :
+                    result.Value.Select((keyItem) => { return new KeyIdentityItem(keyItem, this.vaultUriHelper); });
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }                     
+        }
+
+        public IEnumerable<KeyIdentityItem> GetKeyVersions(KeyVaultObjectFilterOptions options)
+        {
+            if (options == null)
+                throw new ArgumentNullException("options");
+
+            if (string.IsNullOrEmpty(options.VaultName))
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidVaultName);
+
+            if (string.IsNullOrEmpty(options.Name))
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidKeyName);
+            
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(options.VaultName);
+
+            try
+            {
+                ListKeysResponseMessage result;
+
+                if (string.IsNullOrEmpty(options.NextLink))
+                    result = this.keyVaultClient.GetKeyVersionsAsync(vaultAddress, options.Name).GetAwaiter().GetResult();
+                else
+                    result = this.keyVaultClient.GetKeyVersionsNextAsync(options.NextLink).GetAwaiter().GetResult();
+               
+                options.NextLink = result.NextLink;
+                return result.Value.Select((keyItem) => { return new KeyIdentityItem(keyItem, this.vaultUriHelper); });
             }
             catch (Exception ex)
             {
                 throw GetInnerException(ex);
             }
-            return (clientKeyBundles).Select((keyItem) => { return new KeyIdentityItem(keyItem, this.vaultUriHelper); });
         }
 
         public KeyBundle DeleteKey(string vaultName, string keyName)
         {
             if (string.IsNullOrEmpty(vaultName))
-            {
                 throw new ArgumentNullException("vaultName");
-            }
             if (string.IsNullOrEmpty(keyName))
-            {
                 throw new ArgumentNullException("keyName");
-            }
-
+        
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
-            Client.KeyBundle clientKeyBundle;
+            Microsoft.Azure.KeyVault.KeyBundle keyBundle;
             try
             {
-                clientKeyBundle = this.keyVaultClient.DeleteKeyAsync(vaultAddress, keyName).GetAwaiter().GetResult();
+                keyBundle = this.keyVaultClient.DeleteKeyAsync(vaultAddress, keyName).GetAwaiter().GetResult();
             }
             catch (Exception ex)
             {
                 throw GetInnerException(ex);
             }
 
-            return new KeyBundle(clientKeyBundle, this.vaultUriHelper);
+            return new KeyBundle(keyBundle, this.vaultUriHelper);
         }
 
-        public Secret SetSecret(string vaultName, string secretName, SecureString secretValue)
+        public Secret SetSecret(string vaultName, string secretName, SecureString secretValue, SecretAttributes secretAttributes)
         {
             if (string.IsNullOrEmpty(vaultName))
-            {
                 throw new ArgumentNullException("vaultName");
-            }
             if (string.IsNullOrEmpty(secretName))
-            {
                 throw new ArgumentNullException("secretName");
-            }
             if (secretValue == null)
-            {
                 throw new ArgumentNullException("secretValue");
-            }
+            if (secretAttributes == null)
+                throw new ArgumentNullException("secretAttributes");
 
+            string value = secretValue.ConvertToString();
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
+            var attributes = (Microsoft.Azure.KeyVault.SecretAttributes)secretAttributes;
 
-            Client.Secret clientSecret;
+            Microsoft.Azure.KeyVault.Secret secret;
             try
             {
-                clientSecret = this.keyVaultClient.SetSecretAsync(vaultAddress, secretName, secretValue).GetAwaiter().GetResult();
+                secret = this.keyVaultClient.SetSecretAsync(vaultAddress, secretName, value, 
+                    secretAttributes.TagsDictionary, secretAttributes.ContentType, attributes).GetAwaiter().GetResult();
             }
             catch (Exception ex)
             {
                 throw GetInnerException(ex);
             }
 
-            return new Secret(clientSecret, this.vaultUriHelper);
+            return new Secret(secret, this.vaultUriHelper);
+        }
+
+        public Secret UpdateSecret(string vaultName, string secretName, string secretVersion, SecretAttributes secretAttributes)
+        {
+            if (string.IsNullOrEmpty(vaultName))
+                throw new ArgumentNullException("vaultName");
+            if (string.IsNullOrEmpty(secretName))
+                throw new ArgumentNullException("secretName");
+            if (secretAttributes == null)
+                throw new ArgumentNullException("secretAttributes");
+                     
+            var secretIdentifier = new Microsoft.Azure.KeyVault.SecretIdentifier(this.vaultUriHelper.CreateVaultAddress(vaultName), secretName, secretVersion);
+
+            Microsoft.Azure.KeyVault.SecretAttributes attributes = (Microsoft.Azure.KeyVault.SecretAttributes)secretAttributes;
+
+            Microsoft.Azure.KeyVault.Secret secret;
+            try
+            {
+                secret = this.keyVaultClient.UpdateSecretAsync(secretIdentifier.Identifier, 
+                    secretAttributes.ContentType, attributes, secretAttributes.TagsDictionary).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+
+            return new Secret(secret, this.vaultUriHelper);
         }
 
         public Secret GetSecret(string vaultName, string secretName, string secretVersion)
         {
             if (string.IsNullOrEmpty(vaultName))
-            {
                 throw new ArgumentNullException("vaultName");
-            }
             if (string.IsNullOrEmpty(secretName))
-            {
                 throw new ArgumentNullException("secretName");
-            }
-
-            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
-
-            var secretIdentifier = new Client.SecretIdentifier(vaultAddress, secretName, secretVersion);
-            Client.Secret clientSecret;
+                       
+            var secretIdentifier = new Microsoft.Azure.KeyVault.SecretIdentifier(this.vaultUriHelper.CreateVaultAddress(vaultName), secretName, secretVersion);
+            Microsoft.Azure.KeyVault.Secret secret;
             try
             {
-                clientSecret = this.keyVaultClient.GetSecretAsync(secretIdentifier.Identifier).GetAwaiter().GetResult();
+                secret = this.keyVaultClient.GetSecretAsync(secretIdentifier.Identifier).GetAwaiter().GetResult();
             }
             catch (Exception ex)
             {
                 throw GetInnerException(ex);
             }
 
-            return new Secret(clientSecret, this.vaultUriHelper);
+            return new Secret(secret, this.vaultUriHelper);
         }
 
-        public IEnumerable<SecretIdentityItem> GetSecrets(string vaultName)
+        public IEnumerable<SecretIdentityItem> GetSecrets(KeyVaultObjectFilterOptions options)
         {
-            if (string.IsNullOrEmpty(vaultName))
-            {
-                throw new ArgumentNullException("vaultName");
-            }
-
-            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
-
-            IEnumerable<Client.SecretItem> secretItems;
+            if (options == null)
+                throw new ArgumentNullException("options");
+            if (string.IsNullOrEmpty(options.VaultName))
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidVaultName);
+        
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(options.VaultName);
+                       
             try
             {
-                secretItems = this.keyVaultClient.GetSecretsAsync(vaultAddress).GetAwaiter().GetResult();
+                ListSecretsResponseMessage result;
+                  
+                if (string.IsNullOrEmpty(options.NextLink))
+                    result = this.keyVaultClient.GetSecretsAsync(vaultAddress).GetAwaiter().GetResult();                    
+                else
+                    result = this.keyVaultClient.GetSecretsNextAsync(options.NextLink).GetAwaiter().GetResult(); 
+
+                options.NextLink = result.NextLink;
+                return (result.Value == null) ? new List<SecretIdentityItem>() :
+                    result.Value.Select((secretItem) => { return new SecretIdentityItem(secretItem, this.vaultUriHelper); });            
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }           
+        }
+
+        public IEnumerable<SecretIdentityItem> GetSecretVersions(KeyVaultObjectFilterOptions options)
+        {
+            if (options == null)
+                throw new ArgumentNullException("options");
+            if (string.IsNullOrEmpty(options.VaultName))
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidVaultName);
+            if (string.IsNullOrEmpty(options.Name))
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidSecretName);
+            
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(options.VaultName);
+            
+            try
+            {
+                ListSecretsResponseMessage result;
+
+                if (string.IsNullOrEmpty(options.NextLink))
+                    result = this.keyVaultClient.GetSecretVersionsAsync(vaultAddress, options.Name).GetAwaiter().GetResult();
+                else
+                    result = this.keyVaultClient.GetSecretVersionsNextAsync(options.NextLink).GetAwaiter().GetResult();
+                
+                options.NextLink = result.NextLink;
+                return result.Value.Select((secretItem) => { return new SecretIdentityItem(secretItem, this.vaultUriHelper); });
             }
             catch (Exception ex)
             {
                 throw GetInnerException(ex);
             }
-
-            return (secretItems).Select((secretItem) => { return new SecretIdentityItem(secretItem, this.vaultUriHelper); });
         }
 
         public Secret DeleteSecret(string vaultName, string secretName)
         {
             if (string.IsNullOrEmpty(vaultName))
-            {
                 throw new ArgumentNullException("vaultName");
-            }
             if (string.IsNullOrEmpty(secretName))
-            {
                 throw new ArgumentNullException("secretName");
-            }
-
+           
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
-            Client.Secret clientSecret;
+            Microsoft.Azure.KeyVault.Secret secret;
             try
             {
-                clientSecret = this.keyVaultClient.DeleteSecretAsync(vaultAddress, secretName).GetAwaiter().GetResult();
+                secret = this.keyVaultClient.DeleteSecretAsync(vaultAddress, secretName).GetAwaiter().GetResult();
             }
             catch (Exception ex)
             {
                 throw GetInnerException(ex);
             }
 
-            return new Secret(clientSecret, this.vaultUriHelper);
+            return new Secret(secret, this.vaultUriHelper);
         }
 
         public string BackupKey(string vaultName, string keyName, string outputBlobPath)
         {
             if (string.IsNullOrEmpty(vaultName))
-            {
                 throw new ArgumentNullException("vaultName");
-            }
             if (string.IsNullOrEmpty(keyName))
-            {
                 throw new ArgumentNullException("keyName");
-            }
             if (string.IsNullOrEmpty(outputBlobPath))
-            {
                 throw new ArgumentNullException("outputBlobPath");
-            }
-
+            
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
             byte[] backupBlob;
@@ -391,46 +439,26 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public KeyBundle RestoreKey(string vaultName, string inputBlobPath)
         {
             if (string.IsNullOrEmpty(vaultName))
-            {
                 throw new ArgumentNullException("vaultName");
-            }
             if (string.IsNullOrEmpty(inputBlobPath))
-            {
                 throw new ArgumentNullException("inputBlobPath");
-            }
-
+            
             var backupBlob = File.ReadAllBytes(inputBlobPath);
 
             string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
 
-            Client.KeyBundle clientKeyBundle;
+            Microsoft.Azure.KeyVault.KeyBundle keyBundle;
             try
             {
-                clientKeyBundle = this.keyVaultClient.RestoreKeyAsync(vaultAddress, backupBlob).GetAwaiter().GetResult();
+                keyBundle = this.keyVaultClient.RestoreKeyAsync(vaultAddress, backupBlob).GetAwaiter().GetResult();
             }
             catch(Exception ex)
             {
                 throw GetInnerException(ex);
             }
 
-            return new KeyBundle(clientKeyBundle, this.vaultUriHelper);
-        }
-
-        private void SendRequestCallback(string correlationId, HttpRequestMessage request)
-        {
-            if (TracingAdapter.IsEnabled)
-            {
-                TracingAdapter.SendRequest(correlationId, request);
-            }
-        }
-
-        private void ReceiveResponseCallback(string correlationId, HttpResponseMessage response)
-        {
-            if (TracingAdapter.IsEnabled)
-            {
-                TracingAdapter.ReceiveResponse(correlationId, response);
-            }
-        }
+            return new KeyBundle(keyBundle, this.vaultUriHelper);
+        }       
 
         private Exception GetInnerException(Exception exception)
         {
@@ -439,6 +467,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         }
 
         private VaultUriHelper vaultUriHelper;
-        private Client.KeyVaultClient keyVaultClient;
+        private KeyVaultClient keyVaultClient;
     }
 }

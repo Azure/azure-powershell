@@ -17,37 +17,16 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class ListTaskFileOptions
+    public class ListTaskFileOptions : TaskOperationParameters
     {
-        /// <summary>
-        /// The account details
-        /// </summary>
-        public BatchAccountContext Context { get; set; }
-
-        /// <summary>
-        /// The name of the WorkItem
-        /// </summary>
-        public string WorkItemName { get; set; }
-
-        /// <summary>
-        /// The name of the Job
-        /// </summary>
-        public string JobName { get; set; }
-
-        /// <summary>
-        /// The name of the Task
-        /// </summary>
-        public string TaskName { get; set; }
+        public ListTaskFileOptions(BatchAccountContext context, string workItemName, string jobName, string taskName, PSCloudTask task, 
+            IEnumerable<BatchClientBehavior> additionalBehaviors = null) : base(context, workItemName, jobName, taskName, task, additionalBehaviors)
+        { }
 
         /// <summary>
         /// If specified, the single Task file with this name will be returned
         /// </summary>
         public string TaskFileName { get; set; }
-
-        /// <summary>
-        /// The Task to query for files
-        /// </summary>
-        public PSCloudTask Task { get; set; }
 
         /// <summary>
         /// The OData filter to use when querying for Task files
@@ -63,10 +42,5 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// If true, performs a recursive list of all files of the task. If false, returns only the files at the task directory root.
         /// </summary>
         public bool Recursive { get; set; }
-
-        /// <summary>
-        /// Additional client behaviors to perform
-        /// </summary>
-        public IEnumerable<BatchClientBehavior> AdditionalBehaviors { get; set; }
     }
 }

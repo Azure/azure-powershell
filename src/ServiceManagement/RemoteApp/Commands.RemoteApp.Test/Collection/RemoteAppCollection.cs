@@ -12,13 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
-namespace Microsoft.Azure.Commands.RemoteApp.Test
+namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
 {
     using Common;
-    using Microsoft.Azure.Management.RemoteApp;
-    using Microsoft.Azure.Management.RemoteApp.Cmdlets;
-    using Microsoft.Azure.Management.RemoteApp.Models;
+    using Microsoft.WindowsAzure.Management.RemoteApp;
+    using Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets;
+    using Microsoft.WindowsAzure.Management.RemoteApp.Models;
     using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
     using Moq;
     using Moq.Language.Flow;
@@ -35,6 +36,7 @@ namespace Microsoft.Azure.Commands.RemoteApp.Test
     {
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAllCollections()
         {
             int countOfExpectedCollections = 0;
@@ -74,6 +76,7 @@ namespace Microsoft.Azure.Commands.RemoteApp.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetCollectionsByName()
         {
             int countOfExpectedCollections = 1;
@@ -115,6 +118,7 @@ namespace Microsoft.Azure.Commands.RemoteApp.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddCollection()
         {
             List<TrackingResult> trackingIds = null;
@@ -159,6 +163,7 @@ namespace Microsoft.Azure.Commands.RemoteApp.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UpdateCollection()
         {
             List<TrackingResult> trackingIds = null;
@@ -227,7 +232,8 @@ namespace Microsoft.Azure.Commands.RemoteApp.Test
         }
 
         [Fact]
-        public void SetCollectionPlanTest()
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SetCollection()
         {
             SetAzureRemoteAppCollection mockCmdlet = SetUpTestCommon<SetAzureRemoteAppCollection>();
             string collectionName = "mycol";
@@ -541,6 +547,7 @@ namespace Microsoft.Azure.Commands.RemoteApp.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetRegionList()
         {
             List<Region> regionList = null;

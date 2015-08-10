@@ -18,13 +18,14 @@ using Microsoft.Azure.Common.Authentication.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Sql.Common;
 
 namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
 {
     /// <summary>
     /// The base class for all Azure Sql Database data masking rules cmdlets
     /// </summary>
-    public abstract class SqlDatabaseDataMaskingRuleCmdletBase : SqlDatabaseCmdletBase<IEnumerable<DatabaseDataMaskingRuleModel>, SqlDataMaskingAdapter>
+    public abstract class SqlDatabaseDataMaskingRuleCmdletBase : AzureSqlDatabaseCmdletBase<IEnumerable<DatabaseDataMaskingRuleModel>, SqlDataMaskingAdapter>
     {
         /// <summary>
         /// Gets or sets the id of the rule use.
@@ -37,7 +38,7 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
         /// Provides the model element that this cmdlet operates on
         /// </summary>
         /// <returns>A model object</returns>
-        protected override IEnumerable<DatabaseDataMaskingRuleModel> GetModel()
+        protected override IEnumerable<DatabaseDataMaskingRuleModel> GetEntity()
         {
             return ModelAdapter.GetDatabaseDataMaskingRule(ResourceGroupName, ServerName, DatabaseName, clientRequestId, RuleId);
         }
@@ -47,10 +48,11 @@ namespace Microsoft.Azure.Commands.Sql.Security.Cmdlet.DataMasking
         /// object to the REST endpoint
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override void SendModel(IEnumerable<DatabaseDataMaskingRuleModel> rules)
+        protected override IEnumerable<DatabaseDataMaskingRuleModel> PersistChanges(IEnumerable<DatabaseDataMaskingRuleModel> rules)
         {
             DatabaseDataMaskingRuleModel model = rules.First();
             ModelAdapter.SetDatabaseDataMaskingRule(model, clientRequestId);
+            return null;
         }
 
         /// <summary>

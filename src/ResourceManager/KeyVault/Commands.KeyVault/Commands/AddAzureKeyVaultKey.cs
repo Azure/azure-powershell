@@ -15,10 +15,11 @@
 using System;
 using System.IO;
 using System.Security;
+using System.Collections;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.Commands.KeyVault.Properties;
-using Microsoft.Azure.Commands.KeyVault.WebKey;
+using Microsoft.Azure.KeyVault.WebKey;
+using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 
 namespace Microsoft.Azure.Commands.KeyVault
@@ -34,7 +35,8 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// attributes
     /// </summary>
     [Cmdlet(VerbsCommon.Add, "AzureKeyVaultKey",
-        DefaultParameterSetName = CreateParameterSet)]
+        DefaultParameterSetName = CreateParameterSet, 
+        HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(KeyBundle))]
     public class AddAzureKeyVaultKey : KeyVaultCmdletBase
     {
@@ -55,12 +57,12 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = CreateParameterSet,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
+            HelpMessage = "Specifies the name of the vault to which this cmdlet adds the key.")]
         [Parameter(Mandatory = true,
             ParameterSetName = ImportParameterSet,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
+            HelpMessage = "Specifies the name of the vault to which this cmdlet adds the key.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
@@ -70,11 +72,11 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             ParameterSetName = CreateParameterSet,
             Position = 1,
-            HelpMessage = "key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
+            HelpMessage = "Specifies the name of the key to add to the key vault.")]
         [Parameter(Mandatory = true,
             ParameterSetName = ImportParameterSet,
             Position = 1,
-            HelpMessage = "key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
+            HelpMessage = "Specifies the name of the key to add to the key vault.")]
         [ValidateNotNullOrEmpty]
         [Alias("KeyName")]
         public string Name { get; set; }
@@ -87,7 +89,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = ImportParameterSet,
-            HelpMessage = "Path to the local file containing to-be-imported key material")]
+            HelpMessage = "Path to the local file containing the key material to be imported.")]
         [ValidateNotNullOrEmpty]
         public string KeyFilePath { get; set; }
 
@@ -97,7 +99,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = false,
             ParameterSetName = ImportParameterSet,
-            HelpMessage = "Password of the imported key file")]
+            HelpMessage = "Password of the local file containing the key material to be imported.")]
         [ValidateNotNullOrEmpty]
         public SecureString KeyFilePassword { get; set; }
 
@@ -106,10 +108,10 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = CreateParameterSet,
-            HelpMessage = "Destination of the key")]
+            HelpMessage = "Specifies whether to add the key as a software-protected key or an HSM-protected key in the Key Vault service. Valid values are: HSM and Software. ")]
         [Parameter(Mandatory = false,
             ParameterSetName = ImportParameterSet,
-            HelpMessage = "Destination of the key")]
+            HelpMessage = "Specifies whether to add the key as a software-protected key or an HSM-protected key in the Key Vault service. Valid values are: HSM and Software. ")]
         [ValidateSetAttribute(new string[] { HsmDestination, SoftwareDestination })]
         public string Destination { get; set; }
 
@@ -118,10 +120,10 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = false,
             ParameterSetName = CreateParameterSet,
-            HelpMessage = "Set key in disabled state if present. If not present, key is enabled.")]
+            HelpMessage = "Indicates that the key you are adding is set to an initial state of disabled. Any attempt to use the key will fail. Use this parameter if you are preloading keys that you intend to enable later.")]
         [Parameter(Mandatory = false,
             ParameterSetName = ImportParameterSet,
-            HelpMessage = "Set key in disabled state if present. If not present, key is enabled.")]
+            HelpMessage = "Indicates that the key you are adding is set to an initial state of disabled. Any attempt to use the key will fail. Use this parameter if you are preloading keys that you intend to enable later.")]
         public SwitchParameter Disable { get; set; }
 
         /// <summary>
@@ -143,11 +145,11 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ParameterSetName = CreateParameterSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The expiration time of a key in UTC time. If not present, key will not expire.")]
+            HelpMessage = "Specifies the expiration time of the key in UTC. If not specified, key will not expire.")]
         [Parameter(Mandatory = false,
             ParameterSetName = ImportParameterSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The expiration time of a key in UTC time. If not present, key will not expire.")]
+            HelpMessage = "Specifies the expiration time of the key in UTC. If not present, key will not expire.")]
         public DateTime? Expires { get; set; }
 
         /// <summary>
@@ -156,12 +158,25 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ParameterSetName = CreateParameterSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The UTC time before which key can't be used. If not present, no limitation.")]
+            HelpMessage = "The UTC time before which the key can't be used. If not specified, there is no limitation.")]
         [Parameter(Mandatory = false,
             ParameterSetName = ImportParameterSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The UTC time before which key can't be used. If not present, no limitation.")]
+            HelpMessage = "The UTC time before which the key can't be used. If not present, there is no limitation.")]
         public DateTime? NotBefore { get; set; }
+
+        /// <summary>
+        /// Key tags
+        /// </summary>
+        [Parameter(Mandatory = false,
+           ParameterSetName = CreateParameterSet,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "A hashtable representing key tags.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ImportParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "A hashtable representing key tags.")]
+        public Hashtable Tags { get; set; }
 
         #endregion
 
@@ -187,7 +202,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     break;
 
                 default:
-                    throw new ArgumentException(Resources.BadParameterSetName);
+                    throw new ArgumentException(KeyVaultProperties.Resources.BadParameterSetName);
             }
 
             this.WriteObject(keyBundle);
@@ -207,7 +222,8 @@ namespace Microsoft.Azure.Commands.KeyVault
                 Expires,
                 NotBefore,
                 keyType,
-                KeyOps);
+                KeyOps,
+                Tags);
         }
 
         internal JsonWebKey CreateWebKeyFromFile()
@@ -215,7 +231,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             FileInfo keyFile = new FileInfo(this.GetUnresolvedProviderPathFromPSPath(this.KeyFilePath));
             if (!keyFile.Exists)
             {
-                throw new FileNotFoundException(string.Format(Resources.KeyFileNotFound, this.KeyFilePath));
+                throw new FileNotFoundException(string.Format(KeyVaultProperties.Resources.KeyFileNotFound, this.KeyFilePath));
             }
 
             var converterChain = WebKeyConverterFactory.CreateConverterChain();

@@ -581,7 +581,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             {
                 // Try to get VM image with data disks
                 var vmImages = vmPowershellCmdlets.GetAzureVMImageReturningVMImages();
-                var vmImage = vmImages.Where(t => t.OS == "Windows" && t.Category == "Public" && t.DataDiskConfigurations != null && t.DataDiskConfigurations.Any()).FirstOrDefault();
+                var vmImage = vmImages.Where(t => t.OS == "Windows" && t.Category == "Public" && t.DataDiskConfigurations != null
+                    && t.Location.Contains(locationName) && t.DataDiskConfigurations.Any()).FirstOrDefault();
 
                 // New-AzureService and verify with Get-AzureService
                 vmPowershellCmdlets.NewAzureService(serviceName, serviceName, locationName);
@@ -589,7 +590,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
                 // New-AzureVMConfig
                 var vmName = Utilities.GetUniqueShortName(vmNamePrefix);
-                var vmSize = vmPowershellCmdlets.GetAzureRoleSize().Where(t => t.MaxDataDiskCount != null && t.MaxDataDiskCount >= vmImage.DataDiskConfigurations.Count()).Select(t => t.InstanceSize).First();
+                var vmSize = InstanceSize.ExtraLarge.ToString();
                 var currentStorage = vmPowershellCmdlets.GetAzureStorageAccount(defaultAzureSubscription.CurrentStorageAccountName).First();
                 var mediaLocationStr = ("mloc" + vmName).ToLower();
                 var vmMediaLocation = currentStorage.Endpoints.Where(p => p.Contains("blob")).First() + mediaLocationStr;
@@ -602,7 +603,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 vm = vmPowershellCmdlets.AddAzureProvisioningConfig(azureProvisioningConfig);
 
                 // New-AzureVM
-                vmPowershellCmdlets.NewAzureVM(serviceName, new[] { vm }, null, null, null, null, null, null);
+                vmPowershellCmdlets.NewAzureVM(serviceName, new[] { vm }, null, null, null, null, null, null, null, null, null, null, true);
                 pass = true;
 
                 // Get-AzureVM

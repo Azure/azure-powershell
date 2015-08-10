@@ -16,6 +16,7 @@ using System;
 using System.ComponentModel;
 using Microsoft.WindowsAzure.Commands.Websites.WebJobs;
 using Microsoft.WindowsAzure.WebSitesExtensions.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Websites
@@ -23,6 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
     public class WebJobWrapperTest
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ReadProperties_ValuesAreSameWiththeInternalWebJobInstance()
         {
             //Set up
@@ -52,6 +54,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void WriteProperties_InternalWebJobInstanceIsUpdated()
         {
             //Set up
@@ -97,6 +100,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SamePropertyNumberWithTriggeredWebJobModelClass()
         {
             // Setup & Test
@@ -108,6 +112,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SamePropertyNumberWithContinuousWebJobModelClass()
         {
             // Setup & Test

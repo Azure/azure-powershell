@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.DataFactories
             {
                 if (this.dataFactoryClient == null)
                 {
-                    this.dataFactoryClient = new DataFactoryClient(Profile.Context);
+                    this.dataFactoryClient = new DataFactoryClient(Profile);
                 }
                 return this.dataFactoryClient;
             }

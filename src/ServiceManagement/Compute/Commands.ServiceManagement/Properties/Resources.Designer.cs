@@ -530,6 +530,24 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Remove Extension.
+        /// </summary>
+        public static string DscExtensionRemovalCaption {
+            get {
+                return ResourceManager.GetString("DscExtensionRemovalCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}.
+        /// </summary>
+        public static string DscExtensionRemovalConfirmation {
+            get {
+                return ResourceManager.GetString("DscExtensionRemovalConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Duplicate names &apos;{0}&apos; found in both VM and OS images. Please delete one of them, using other method such as Portal or Invoke-RestMethod call, and try again..
         /// </summary>
         public static string DuplicateNamesFoundInBothVMAndOSImages {
@@ -1295,6 +1313,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Specified PublicIP not found in NetworkConfiguration.
+        /// </summary>
+        public static string PublicIPNotFoundInNetworkConfiguration {
+            get {
+                return ResourceManager.GetString("PublicIPNotFoundInNetworkConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Configuration published to {0}.
         /// </summary>
         public static string PublishVMDscExtensionArchiveUploadedMessage {
@@ -1577,6 +1604,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         public static string RemoveReservedIPWhatIfMessage {
             get {
                 return ResourceManager.GetString("RemoveReservedIPWhatIfMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove Virtual IP from service.
+        /// </summary>
+        public static string RemoveVirtualIP {
+            get {
+                return ResourceManager.GetString("RemoveVirtualIP", resourceCulture);
             }
         }
         
@@ -1928,6 +1964,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Properties {
         public static string VIPSwapBetweenStagingAndProduction {
             get {
                 return ResourceManager.GetString("VIPSwapBetweenStagingAndProduction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This cmdlet will remove the virtual IP from the specified service. Do you want to continue?.
+        /// </summary>
+        public static string VirtualIPWillBeRemoved {
+            get {
+                return ResourceManager.GetString("VirtualIPWillBeRemoved", resourceCulture);
             }
         }
         

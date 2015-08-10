@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Commands.ManagedCache.Test.ScenarioTests
     public class ManagedCacheTests : ManagedCacheTestsBase
     {
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ManagedCacheEndToEndTest()
         {
             this.RunPowerShellTest("Test-ManagedCacheEndToEnd");
@@ -34,14 +33,12 @@ namespace Microsoft.Azure.Commands.ManagedCache.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedCacheNamedCacheStandard()
         {
             this.RunPowerShellTest("Test-ManagedCacheNamedCacheStandard");
         }
         
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedCacheNamedCacheBasic()
         {
             this.RunPowerShellTest("Test-ManagedCacheNamedCacheBasic");
