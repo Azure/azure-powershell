@@ -306,7 +306,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             }
 
             var oldExtConfig = deployment.ExtensionConfiguration;
-            var oldPeerExtConfig = peerDeployment.ExtensionConfiguration;
 
             ExtensionConfigurationBuilder configBuilder = this.GetBuilder();
             foreach (ExtensionConfigurationInput context in inputs)
