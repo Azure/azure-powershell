@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
-    [Cmdlet("Restart", "AzureRemoteAppVM"), OutputType(typeof(TrackingResult))]
+    [Cmdlet("Restart", "AzureRemoteAppVM", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High), OutputType(typeof(TrackingResult))]
     public class RestartAzureRemoteAppVm : RdsCmdlet
     {
         [Parameter(Mandatory = true,
@@ -51,10 +51,6 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Time to wait before logging off users on the VM (default is 60 seconds)")]
         public int LogoffWaitSeconds { get; set; }
-
-        [Parameter(Mandatory = false,
-            HelpMessage = "Do not ask for confirmation if more users are logged into the VM")]
-        public SwitchParameter DoNotWarn { get; set; }
 
         private RemoteAppVm GetVm(string collectionName, string userUpn)
         {
@@ -95,26 +91,26 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
                 return;
             }
 
-            if (!DoNotWarn.IsPresent && vm.LoggedOnUserUpns.Count > 1)
+            if (vm.LoggedOnUserUpns.Count > 1)
             {
-                string loggedInUsers = null;
+                string otherLoggedInUsers = null;
+                string warningCaption = null;
+                string warningMessage = null;
 
                 foreach (string user in vm.LoggedOnUserUpns)
                 {
-                    if (loggedInUsers == null)
+                    if (string.Compare(user, UserUpn, true) != 0)
                     {
-                        loggedInUsers = user;
-                    }
-                    else
-                    {
-                        loggedInUsers += ", " + user;
+                        otherLoggedInUsers += "\n" + user;
                     }
                 }
 
-                if (!ShouldProcess(
-                    string.Format(Commands_RemoteApp.RestartVmWarningMessage, loggedInUsers), 
-                    Commands_RemoteApp.GenericAreYouSureQuestion,
-                    Commands_RemoteApp.RestartVmWarningCaption))
+                warningMessage = string.Format(Commands_RemoteApp.RestartVmWarningMessage, UserUpn, vm.VirtualMachineName, otherLoggedInUsers);
+                warningCaption = string.Format(Commands_RemoteApp.RestartVmWarningCaption, vm.VirtualMachineName);
+
+                WriteWarning(warningMessage);
+
+                if (!ShouldProcess(null, Commands_RemoteApp.GenericAreYouSureQuestion, warningCaption))
                 {
                     return;
                 }

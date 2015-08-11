@@ -262,9 +262,9 @@
     <value>No VM was found for user {0} in collection {1}.</value>
   </data>
   <data name="RestartVmWarningCaption" xml:space="preserve">
-    <value>This operation will logoff all logged-in users on VM</value>
+    <value>Restart VM {0}</value>
   </data>
   <data name="RestartVmWarningMessage" xml:space="preserve">
-    <value>Logged in users on VM: {0}</value>
+    <value>User {0} is on VM {1}. These users also have active sessions on this VM and will be logged off when the VM is rebooted: {2}</value>
   </data>
 </root>
