@@ -75,22 +75,38 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         /// <returns></returns>
         protected string GetPublicConfiguration()
         {
+            // Create auto backup settings if set
+            PublicAutoBackupSettings autoBackupSettings = null;
+            
+            if (this.AutoBackupSettings != null)
+            {
+                autoBackupSettings = new PublicAutoBackupSettings()
+                {
+                    Enable  = this.AutoBackupSettings.Enable,
+                    EnableEncryption = this.AutoBackupSettings.EnableEncryption,
+                    RetentionPeriod = this.AutoBackupSettings.RetentionPeriod                       
+                };
+            }
+
+            // Create Key vault settings if set
+            PublicKeyVaultCredentialSettings akvSettings = null;
+
+            if(this.KeyVaultCredentialSettings != null)
+            {
+                akvSettings = new PublicKeyVaultCredentialSettings()
+                {
+                    Enable = this.KeyVaultCredentialSettings == null ? false : this.KeyVaultCredentialSettings.Enable,
+                    CredentialName = this.KeyVaultCredentialSettings == null ? null : this.KeyVaultCredentialSettings.CredentialName
+                };
+            }
+
             return JsonUtilities.TryFormatJson(JsonConvert.SerializeObject(
                new SqlServerPublicSettings
                {
                    AutoPatchingSettings = this.AutoPatchingSettings,
                    AutoTelemetrySettings = this.AutoTelemetrySettings,
-                   AutoBackupSettings = new PublicAutoBackupSettings()
-                   {
-                       Enable = this.AutoBackupSettings == null ? false : this.AutoBackupSettings.Enable,
-                       EnableEncryption = this.AutoBackupSettings == null ? false : this.AutoBackupSettings.EnableEncryption,
-                       RetentionPeriod = this.AutoBackupSettings == null ? 0 : this.AutoBackupSettings.RetentionPeriod
-                   },
-                   KeyVaultCredentialSettings = new PublicKeyVaultCredentialSettings() 
-                   {
-                       Enable = this.KeyVaultCredentialSettings == null ? false : this.KeyVaultCredentialSettings.Enable,
-                       CredentialName = this.KeyVaultCredentialSettings == null ? null : this.KeyVaultCredentialSettings.CredentialName
-                   }
+                   AutoBackupSettings = autoBackupSettings,
+                   KeyVaultCredentialSettings = akvSettings
                }));
         }
 
