@@ -322,7 +322,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This operation will logoff all logged-in users on VM.
+        ///   Looks up a localized string similar to Restart VM {0}.
         /// </summary>
         internal static string RestartVmWarningCaption {
             get {
@@ -331,7 +331,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Logged in users on VM: {0}.
+        ///   Looks up a localized string similar to User {0} is on VM {1}. These users also have active sessions on this VM and will be logged off when the VM is rebooted: {2}.
         /// </summary>
         internal static string RestartVmWarningMessage {
             get {
