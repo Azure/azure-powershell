@@ -36,9 +36,9 @@ namespace Microsoft.Azure.Commands.DataFactories
         public string DataFactoryName { get; set; }
 
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The table name.")]
+            HelpMessage = "The dataset name.")]
         [ValidateNotNullOrEmpty]
-        public string TableName { get; set; }
+        public string DatasetName { get; set; }
 
         [Parameter(Position = 3, Mandatory = true, HelpMessage = "The start time of the data slice queried.")]
         public DateTime StartDateTime { get; set; }
@@ -57,17 +57,27 @@ namespace Microsoft.Azure.Commands.DataFactories
                 ResourceGroupName = DataFactory.ResourceGroupName;
             }
 
-            var dataSliceRuns = DataFactoryClient.ListDataSliceRuns(
-                ResourceGroupName, DataFactoryName, TableName, StartDateTime);
-
-            if (dataSliceRuns == null || dataSliceRuns.Count == 0)
+            DataSliceRunFilterOptions filterOptions = new DataSliceRunFilterOptions()
             {
-                WriteWarning(string.Format(
-                    CultureInfo.InvariantCulture,
-                    Resources.NoDataSliceFound));
-            }
+                ResourceGroupName = ResourceGroupName,
+                DataFactoryName = DataFactoryName,
+                DatasetName = this.DatasetName,
+                StartDateTime = StartDateTime
+            };
 
-            WriteObject(dataSliceRuns);
+            int totalDataSliceRuns = 0;
+
+            do
+            {
+                var dataSliceRuns = DataFactoryClient.ListDataSliceRuns(filterOptions);
+                totalDataSliceRuns += dataSliceRuns.Count;
+                WriteObject(dataSliceRuns, true);
+            } while (filterOptions.NextLink.IsNextPageLink());
+
+            if (totalDataSliceRuns == 0)
+            {
+                WriteWarning(string.Format(CultureInfo.InvariantCulture, Resources.NoDataSliceFound));
+            }
         }
     }
 }

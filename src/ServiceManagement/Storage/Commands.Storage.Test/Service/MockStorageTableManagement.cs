@@ -214,6 +214,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Service
                 requestOptions, operationContext));
         }
 
+
         public AzureStorageContext StorageContext
         {
             get { throw new NotImplementedException(); }

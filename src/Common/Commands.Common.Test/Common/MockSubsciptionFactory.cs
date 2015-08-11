@@ -19,6 +19,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 {
@@ -49,12 +51,12 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             throw new NotImplementedException();
         }
 
-        public System.Net.Http.HttpClient CreateHttpClient(string endpoint, System.Net.Http.HttpMessageHandler effectiveHandler)
+        public HttpClient CreateHttpClient(string endpoint, HttpMessageHandler effectiveHandler)
         {
             throw new NotImplementedException();
         }
 
-        public System.Net.Http.HttpClient CreateHttpClient(string endpoint, System.Net.ICredentials credentials)
+        public HttpClient CreateHttpClient(string endpoint, System.Net.ICredentials credentials)
         {
             throw new NotImplementedException();
         }
@@ -64,7 +66,33 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             throw new NotImplementedException();
         }
 
-        public List<System.Net.Http.Headers.ProductInfoHeaderValue> UserAgents
+        public void AddUserAgent(string productName, string productVersion)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddUserAgent(string productName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public HashSet<ProductInfoHeaderValue> UserAgents
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+
+        public TClient CreateArmClient<TClient>(Azure.Common.Authentication.Models.AzureContext context, Azure.Common.Authentication.Models.AzureEnvironment.Endpoint endpoint) where TClient : Microsoft.Rest.ServiceClient<TClient>
+        {
+            throw new NotImplementedException();
+        }
+
+        public TClient CreateCustomArmClient<TClient>(params object[] parameters) where TClient : Microsoft.Rest.ServiceClient<TClient>
+        {
+            throw new NotImplementedException();
+        }
+
+        List<ProductInfoHeaderValue> IClientFactory.UserAgents
         {
             get
             {

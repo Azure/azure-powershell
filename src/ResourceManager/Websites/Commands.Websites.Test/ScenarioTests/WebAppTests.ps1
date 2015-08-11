@@ -25,6 +25,7 @@ function Test-CreatesNewSimpleWebApp
 	$whpName = Get-WebHostPlanName
 	$apiversion = "2014-04-01"
 	$resourceType = "Microsoft.Web/sites"
+	$slotName = $wname + "(Dev)" 
 	try
 	{
 		#Setup
@@ -34,10 +35,13 @@ function Test-CreatesNewSimpleWebApp
 		# Test
 		$actual = New-AzureWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName 
 		$result = Get-AzureWebApp -ResourceGroupName $rgname -Name $wname
+		$slotCreate = New-AzureWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -SlotName Dev
+
 
 		# Assert
 		Assert-AreEqual $wname $result.Name
 		Assert-AreEqual $whpName $result.Properties.ServerFarm
+		Assert-AreEqual $slotName $slotCreate.Name
 	}
     finally
 	{

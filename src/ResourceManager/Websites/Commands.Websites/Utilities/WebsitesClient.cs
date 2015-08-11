@@ -47,13 +47,20 @@ namespace Microsoft.Azure.Commands.WebApp.Utilities
 
         public WebSite CreateWebsite(string resourceGroupName, string webSiteName, string slotName, string location, string webHostingPlan)
         {
+            string webSiteSlotName = webSiteName;
+            if (string.IsNullOrEmpty(slotName) == false)
+            {
+                webSiteSlotName = string.Concat(webSiteName, "/", slotName);
+
+            }
+           
             var createdWebSite = WrappedWebsitesClient.WebSites.CreateOrUpdate(
                         resourceGroupName, webSiteName, slotName,
                         new WebSiteCreateOrUpdateParameters
                         {
                             WebSite = new WebSiteBase
                             {
-                                Name = webSiteName,
+                                Name = webSiteSlotName,
                                 Location = location,
                                 Properties = new WebSiteBaseProperties(webHostingPlan)
                             }

@@ -132,6 +132,9 @@
   <data name="ImportByokAsSoftkeyError" xml:space="preserve">
     <value>BYOK key can not be imported as software key</value>
   </data>
+  <data name="InvalidApplicationId" xml:space="preserve">
+    <value>Invalid application Id.</value>
+  </data>
   <data name="InvalidAzureEnvironment" xml:space="preserve">
     <value>Invalid AzureEnvironment.</value>
   </data>

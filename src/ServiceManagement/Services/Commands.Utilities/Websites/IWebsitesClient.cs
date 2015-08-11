@@ -446,10 +446,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
         /// <param name="websiteName">The name of the web site.</param>
         /// <param name="slot">The name of the slot.</param>
         /// <param name="package">The WebDeploy package.</param>
+        /// <param name="setParametersFile">The SetParametersFile.xml used to override internal package configuration.</param>
         /// <param name="connectionStrings">The connection strings to overwrite the ones in the Web.config file.</param>
         /// <param name="skipAppData">Skip app data</param>
         /// <param name="doNotDelete">Do not delete files at destination</param>
-        void PublishWebProject(string websiteName, string slot, string package, Hashtable connectionStrings, bool skipAppData, bool doNotDelete);
+        void PublishWebProject(string websiteName, string slot, string package, string setParametersFile, Hashtable connectionStrings, bool skipAppData, bool doNotDelete);
 
         /// <summary>
         /// Parse the Web.config files to get the connection string names.

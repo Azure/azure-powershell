@@ -93,8 +93,8 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
                 Tags = model.Tags,
                 Properties = new ServerCreateOrUpdateProperties()
                 {
-                    AdministratorLogin = model.SqlAdminUserName,
-                    AdministratorLoginPassword = Decrypt(model.SqlAdminPassword),
+                    AdministratorLogin = model.SqlAdministratorLogin,
+                    AdministratorLoginPassword = Decrypt(model.SqlAdministratorPassword),
                     Version = model.ServerVersion,
                 }
             });
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
             server.ResourceGroupName = resourceGroupName;
             server.ServerName = resp.Name;
             server.ServerVersion = resp.Properties.Version;
-            server.SqlAdminUserName = resp.Properties.AdministratorLogin;
+            server.SqlAdministratorLogin = resp.Properties.AdministratorLogin;
             server.Location = resp.Location;
 
             return server;

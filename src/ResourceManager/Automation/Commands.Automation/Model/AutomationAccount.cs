@@ -36,10 +36,18 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// </param>
         public AutomationAccount(string resourceGroupName, AutomationManagement.Models.AutomationAccount automationAccount)
         {
-            Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
             Requires.Argument("AutomationAccount", automationAccount).NotNull();
 
-            this.ResourceGroupName = resourceGroupName;
+            
+            if (!string.IsNullOrEmpty(resourceGroupName))
+            {
+                this.ResourceGroupName = resourceGroupName;
+            }
+            else
+            {
+                this.ResourceGroupName = automationAccount.Id.Substring(1).Split(Convert.ToChar("/"))[3];
+            }
+
             this.AutomationAccountName = automationAccount.Name;
             this.Location = automationAccount.Location;
 

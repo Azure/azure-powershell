@@ -22,37 +22,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     {
         [Fact]
         [Trait(Category.Sql, Category.CheckIn)]
-        public void TestRecommendedElasticPoolList()
+        public void ListRecommendedElasticPools()
         {
-            RunPowerShellTest("Test-ListRecommendedElasticPools");
-        }
-
-        [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
-        public void TestRecommendedElasticPoolGet()
-        {
-            RunPowerShellTest("Test-GetRecommendedElasticPool");
-        }
-
-        [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
-        public void TestRecommendedElasticPoolListDatabase()
-        {
-            RunPowerShellTest("Test-ListRecommendedElasticPoolDatabases");
-        }
-
-        [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
-        public void TestRecommendedElasticPoolGetDatabase()
-        {
-            RunPowerShellTest("Test-GetRecommendedElasticPoolDatabase");
-        }
-
-        [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
-        public void TestRecommendedElasticPoolGetMetrics()
-        {
-            RunPowerShellTest("Test-GetRecommendedElasticPoolMetrics");
+            RunPowerShellTest("Test-ElasticPoolRecommendation");
         }
     }
 }

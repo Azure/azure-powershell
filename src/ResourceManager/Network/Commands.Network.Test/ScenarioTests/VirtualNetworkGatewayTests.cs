@@ -19,7 +19,7 @@ namespace Commands.Network.Test.ScenarioTests
 {
     public class VirtualNetworkGatewayTests
     {
-        [Fact(Skip = "TODO: Fix test.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualNetworkGatewayCRUD()
         {

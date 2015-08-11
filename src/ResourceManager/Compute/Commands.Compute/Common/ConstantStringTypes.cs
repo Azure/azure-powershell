@@ -70,10 +70,10 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VirtualMachineExtension = "AzureVMExtension";
         public const string VirtualMachineCustomScriptExtension = "AzureVMCustomScriptExtension";
         public const string VirtualMachineAccessExtension = "AzureVMAccessExtension";
+        public const string VirtualMachineDiagnosticsExtension = "AzureVMDiagnosticsExtension";
         public const string VirtualMachineExtensionImage = "AzureVMExtensionImage";
         public const string VirtualMachineExtensionImageVersion = "AzureVMExtensionImageVersion";
         public const string VirtualMachineExtensionImageType = "AzureVMExtensionImageType";
-        public const string VirtualMachineExtensionImageDetail = "AzureVMExtensionImageDetail";
 
         public const string AvailabilitySet = "AzureAvailabilitySet";
         public const string VirtualMachineConfig = "AzureVMConfig";
@@ -85,7 +85,6 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VirtualMachineImagePublisher = "AzureVMImagePublisher";
         public const string VirtualMachineImageOffer = "AzureVMImageOffer";
         public const string VirtualMachineImageSku = "AzureVMImageSku";
-        public const string VirtualMachineImageDetail = "AzureVMImageDetail";
         public const string VirtualMachineImageVersion = "AzureVMImageVersion";
 
         public const string VirtualMachineUsage = "AzureVMUsage";
@@ -94,5 +93,9 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string AdditionalUnattendContent = "AzureVMAdditionalUnattendContent";
         public const string VaultSecretGroup = "AzureVMSecret";
         public const string RemoteDesktopFile = "AzureRemoteDesktopFile";
+
+        //DSC
+        public const string VirtualMachineDscExtension = "AzureVMDscExtension";
+        public const string VirtualMachineDscConfiguration = "AzureVMDscConfiguration";
     }
 }

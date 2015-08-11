@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.DataFactories
 {
     public abstract class DataSliceContextBaseCmdlet : DataFactoryBaseCmdlet
     {
-        private DateTime _endDateTime;
+        protected DateTime _endDateTime;
 
         [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
  HelpMessage = "The data factory object.")]
@@ -32,26 +32,11 @@ namespace Microsoft.Azure.Commands.DataFactories
         public string DataFactoryName { get; set; }
 
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The table name.")]
+            HelpMessage = "The dataset name.")]
         [ValidateNotNullOrEmpty]
-        public string TableName { get; set; }
+        public string DatasetName { get; set; }
 
         [Parameter(Position = 3, Mandatory = true, HelpMessage = "The data slice range start time.")]
         public DateTime StartDateTime { get; set; }
-
-        [Parameter(Position = 4, Mandatory = false, HelpMessage = "The data slice range end time.")]
-        public DateTime EndDateTime
-        {
-            get
-            {
-                return _endDateTime == default(DateTime)
-                           ? StartDateTime + Constants.DefaultSliceActivePeriodDuration
-                           : _endDateTime;
-            }
-            set
-            {
-                _endDateTime = value;
-            }
-        }
     }
 }

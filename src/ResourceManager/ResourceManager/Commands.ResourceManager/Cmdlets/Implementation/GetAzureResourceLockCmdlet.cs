@@ -27,39 +27,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     public class GetAzureResourceLockCmdlet : ResourceLockManagementCmdletBase
     {
         /// <summary>
+        /// Gets or sets the extension resource name parameter.
+        /// </summary>
+        [Alias("ExtensionResourceName")]
+        [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.ResourceGroupLevelLock, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The name of the lock.")]
+        [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.ResourceGroupResourceLevelLock, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The name of the lock.")]
+        [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.ScopeLevelLock, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The name of the lock.")]
+        [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.SubscriptionLevelLock, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The name of the lock.")]
+        [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.SubscriptionResourceLevelLock, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The name of the lock.")]
+        [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.TenantResourceLevelLock, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The name of the lock.")]
+        [ValidateNotNullOrEmpty]
+        public string LockName { get; set; }
+
+        /// <summary>
         /// Gets or sets the at-scope filter.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "When specified returns all locks at or above the specified scope, otherwise returns all locks at, above or below the scope.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter AtScope { get; set; }
-
-
-        /// <summary>
-        /// Gets or sets the extension resource name parameter.
-        /// </summary>
-        [Alias("ExtensionResourceName")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the lock.")]
-        [ValidateNotNullOrEmpty]
-        public string LockName { get; set; }
-
-        /// <summary>
-        /// Gets the resource Id from the supplied PowerShell parameters.
-        /// </summary>
-        protected string GetResourceId()
-        {
-            return !string.IsNullOrWhiteSpace(this.Scope)
-                ? ResourceIdUtility.GetResourceId(
-                    resourceId: this.Scope,
-                    extensionResourceType: Constants.MicrosoftAuthorizationLocksType,
-                    extensionResourceName: this.LockName)
-                : ResourceIdUtility.GetResourceId(
-                    subscriptionId: this.SubscriptionId,
-                    resourceGroupName: this.ResourceGroupName,
-                    resourceType: this.ResourceType,
-                    resourceName: this.ResourceName,
-                    extensionResourceType: Constants.MicrosoftAuthorizationLocksType,
-                    extensionResourceName: this.LockName);
-        }
 
         /// <summary>
         /// Executes the cmdlet.
@@ -67,19 +52,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected override void OnProcessRecord()
         {
             base.OnProcessRecord();
-            this.RunCmdlet();
-        }
-
-        /// <summary>
-        /// Contains the cmdlet's execution logic.
-        /// </summary>
-        private void RunCmdlet()
-        {
             PaginatedResponseHelper.ForEach(
                 getFirstPage: () => this.GetResources(),
                 getNextPage: nextLink => this.GetNextLink<JObject>(nextLink),
                 cancellationToken: this.CancellationToken,
-                action: resources => this.WriteObject(sendToPipeline: resources.CoalesceEnumerable().SelectArray(resource => resource.ToPsObject()), enumerateCollection: true));
+                action: resources => this.WriteObject(sendToPipeline: this.GetOutputObjects(resources), enumerateCollection: true));
         }
 
         /// <summary>
@@ -101,7 +78,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private async Task<JObject> GetResource()
         {
-            var resourceId = this.GetResourceId();
+            var resourceId = this.GetResourceId(this.LockName);
 
             var apiVersion = await this
                 .DetermineApiVersion(resourceId: resourceId)
@@ -121,7 +98,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private async Task<ResponseWithContinuation<JObject[]>> ListResourcesTypeCollection()
         {
-            var resourceCollectionId = this.GetResourceId();
+            var resourceCollectionId = this.GetResourceId(this.LockName);
 
             var apiVersion = await this
                 .DetermineApiVersion(resourceId: resourceCollectionId)

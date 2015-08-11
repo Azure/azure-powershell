@@ -63,18 +63,20 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             if (policies != null && policies.Count() > 0)
             {                
-                string rowFormat = "{0, -40}  {1, -40}  {2, -40} {3, -40}\r\n";
+                string rowFormat = "{0, -40}  {1, -40}  {2, -40} {3, -40} {4, -40}\r\n";
                 sb.AppendLine();
-                sb.AppendFormat(rowFormat, "Tenant ID", "Object ID", "Permissions to keys", "Permissions to secrets");
+                sb.AppendFormat(rowFormat, "Tenant ID", "Object ID", "Application ID", "Permissions to keys", "Permissions to secrets");
                 sb.AppendFormat(rowFormat, 
                     GeneralUtilities.GenerateSeparator("Tenant ID".Length, "="), 
-                    GeneralUtilities.GenerateSeparator("Object ID".Length, "="), 
+                    GeneralUtilities.GenerateSeparator("Object ID".Length, "="),
+                    GeneralUtilities.GenerateSeparator("Application ID".Length, "="), 
                     GeneralUtilities.GenerateSeparator("Permissions To Keys".Length, "="), 
                     GeneralUtilities.GenerateSeparator("Permissions To Secrets".Length, "="));
 
                 foreach(var policy in policies)
                 {
-                    sb.AppendFormat(rowFormat, policy.TenantId.ToString(), policy.DisplayName, TrimWithEllipsis(policy.PermissionsToKeysStr, 40), TrimWithEllipsis(policy.PermissionsToSecretsStr, 40));
+                    sb.AppendFormat(rowFormat, policy.TenantId.ToString(), policy.DisplayName, policy.ApplicationIdDisplayName, 
+                        TrimWithEllipsis(policy.PermissionsToKeysStr, 40), TrimWithEllipsis(policy.PermissionsToSecretsStr, 40));
                 }
 
             }
@@ -93,6 +95,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 {                    
                     sb.AppendFormat("{0, -25}:\t{1}\r\n", "Tenant ID", policy.TenantName);
                     sb.AppendFormat("{0, -25}:\t{1}\r\n", "Object ID", policy.ObjectId);
+                    sb.AppendFormat("{0, -25}:\t{1}\r\n", "Application ID", policy.ApplicationIdDisplayName);
                     sb.AppendFormat("{0, -25}:\t{1}\r\n", "Display Name", policy.DisplayName);
                     sb.AppendFormat("{0, -25}:\t{1}\r\n", "Permissions to Keys", policy.PermissionsToKeysStr);
                     sb.AppendFormat("{0, -25}:\t{1}\r\n", "Permissions to Secrets", policy.PermissionsToSecretsStr);

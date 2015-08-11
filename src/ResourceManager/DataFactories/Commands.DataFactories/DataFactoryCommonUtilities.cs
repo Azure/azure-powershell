@@ -113,5 +113,10 @@ namespace Microsoft.Azure.Commands.DataFactories
                 string.Compare(provisioningState, OperationStatus.Succeeded.ToString(),
                     StringComparison.OrdinalIgnoreCase) == 0;
         }
+
+        public static bool IsNextPageLink(this string nextLink)
+        {
+            return !string.IsNullOrEmpty(nextLink);
+        }
     }
 }

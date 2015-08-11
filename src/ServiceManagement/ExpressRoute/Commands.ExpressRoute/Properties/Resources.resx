@@ -195,4 +195,13 @@
   <data name="VlanIdRequired" xml:space="preserve">
     <value>A value for the VLan Id has to be provided.</value>
   </data>
+  <data name="NewAzureCrossConnectionMessage" xml:space="preserve">
+    <value>Provisioning Cross Connection for service key {0}</value>
+  </data>
+  <data name="NewAzureCrossConnectionSucceeded" xml:space="preserve">
+    <value>Successfully provisioned cross connection</value>
+  </data>
+  <data name="NewAzureCrossConnectionWarning" xml:space="preserve">
+    <value>Are you sure you want to provision a cross connection for service key {0}?</value>
+  </data>
 </root>

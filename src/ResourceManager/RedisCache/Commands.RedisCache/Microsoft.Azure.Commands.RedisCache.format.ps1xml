@@ -43,8 +43,8 @@
                 <PropertyName>SslPort</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>MaxMemoryPolicy</Label>
-                <PropertyName>MaxMemoryPolicy</PropertyName>
+                <Label>RedisConfiguration</Label>
+                <PropertyName>RedisConfiguration</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>EnableNonSslPort</Label>
@@ -113,8 +113,8 @@
                 <PropertyName>SslPort</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>MaxMemoryPolicy</Label>
-                <PropertyName>MaxMemoryPolicy</PropertyName>
+                <Label>RedisConfiguration</Label>
+                <PropertyName>RedisConfiguration</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>EnableNonSslPort</Label>

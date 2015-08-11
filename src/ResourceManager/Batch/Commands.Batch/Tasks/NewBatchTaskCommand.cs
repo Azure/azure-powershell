@@ -21,59 +21,60 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.New, "AzureBatchTask")]
+    [Cmdlet(VerbsCommon.New, Constants.AzureBatchTask)]
     public class NewBatchTaskCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(ParameterSetName = Constants.NameParameterSet, Mandatory = true, HelpMessage = "The name of the workitem to create the task under.")]
+        [Parameter(ParameterSetName = Constants.IdParameterSet, Mandatory = true, HelpMessage = "The id of the job to create the task under.")]
         [ValidateNotNullOrEmpty]
-        public string WorkItemName { get; set; }
+        public string JobId { get; set; }
 
-        [Parameter(ParameterSetName = Constants.NameParameterSet, Mandatory = true, HelpMessage = "The name of the job to create the task under.")]
-        [ValidateNotNullOrEmpty]
-        public string JobName { get; set; }
-
-        [Parameter(ParameterSetName = Constants.ParentObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The PSCloudJob object representing the job to create the task under.")]
+        [Parameter(ParameterSetName = Constants.ParentObjectParameterSet, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public PSCloudJob Job { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The name of the task to create.")]
+        [Parameter(Mandatory = true, HelpMessage = "The id of the task to create.")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string Id { get; set; }
 
-        [Parameter(HelpMessage = "The commandline for the task.")]
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public string DisplayName { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = "The command line for the task.")]
         [ValidateNotNullOrEmpty]
         public string CommandLine { get; set; }
 
-        [Parameter(HelpMessage = "Resource files required by the task.")]
+        [Parameter]
         [ValidateNotNullOrEmpty]
         public IDictionary ResourceFiles { get; set; }
 
-        [Parameter(HelpMessage = "Environment settings to add to the new task.")]
+        [Parameter]
         [ValidateNotNullOrEmpty]
         public IDictionary EnvironmentSettings { get; set; }
 
-        [Parameter(HelpMessage = "Run the process under elevation as Administrator.")]
+        [Parameter]
         public SwitchParameter RunElevated { get; set; }
 
-        [Parameter(HelpMessage = "The locality hints for the task.")]
+        [Parameter]
         [ValidateNotNullOrEmpty]
         public PSAffinityInformation AffinityInformation { get; set; }
 
-        [Parameter(HelpMessage = "The execution constraints for the task.")]
+        [Parameter]
         [ValidateNotNullOrEmpty]
-        public PSTaskConstraints TaskConstraints { get; set; }
+        public PSTaskConstraints Constraints { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            NewTaskParameters parameters = new NewTaskParameters(this.BatchContext, this.WorkItemName, this.JobName, this.Job, 
-                this.Name, this.AdditionalBehaviors)
+            NewTaskParameters parameters = new NewTaskParameters(this.BatchContext, this.JobId, this.Job, 
+                this.Id, this.AdditionalBehaviors)
             {
+                DisplayName = this.DisplayName,
                 CommandLine = this.CommandLine,
                 ResourceFiles = this.ResourceFiles,
                 EnvironmentSettings = this.EnvironmentSettings,
                 RunElevated = this.RunElevated.IsPresent,
                 AffinityInformation = this.AffinityInformation,
-                TaskConstraints = this.TaskConstraints
+                Constraints = this.Constraints
             };
 
             BatchClient.CreateTask(parameters);

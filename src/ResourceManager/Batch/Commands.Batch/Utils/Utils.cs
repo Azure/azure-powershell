@@ -14,7 +14,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Runtime.ConstrainedExecution;
+using System.Linq;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
 
@@ -32,46 +32,121 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         {
             if (specification != null)
             {
-                if (specification.JobManager != null)
+                specification.omObject.CommonEnvironmentSettings = CreateSyncedList(specification.CommonEnvironmentSettings,
+                (e) =>
                 {
-                    JobManagerSyncCollections(specification.JobManager);   
+                    EnvironmentSetting envSetting = new EnvironmentSetting(e.Name, e.Value);
+                    return envSetting;
+                });
+
+                if (specification.JobManagerTask != null)
+                {
+                    JobManagerTaskSyncCollections(specification.JobManagerTask);   
+                }
+
+                if (specification.JobPreparationTask != null)
+                {
+                    JobPreparationTaskSyncCollections(specification.JobPreparationTask);
+                }
+
+                if (specification.JobReleaseTask != null)
+                {
+                    JobReleaseTaskSyncCollections(specification.JobReleaseTask);
+                }
+
+                specification.omObject.Metadata = CreateSyncedList(specification.Metadata,
+                (m) =>
+                {
+                    MetadataItem metadata = new MetadataItem(m.Name, m.Value);
+                    return metadata;
+                });
+                
+                if (specification.PoolInformation != null)
+                {
+                    PoolInformationSyncCollections(specification.PoolInformation);
                 }
             }
         }
 
         /// <summary>
-        /// Syncs the collections on a PSJobManager with its wrapped OM object
+        /// Syncs the collections on a PSJobManagerTask with its wrapped OM object
         /// </summary>
-        internal static void JobManagerSyncCollections(PSJobManager jobManager)
+        internal static void JobManagerTaskSyncCollections(PSJobManagerTask jobManager)
         {
             if (jobManager != null)
             {
                 jobManager.omObject.EnvironmentSettings = CreateSyncedList(jobManager.EnvironmentSettings, 
                     (e) =>
                     {
-                        IEnvironmentSetting envSetting = new EnvironmentSetting(e.Name, e.Value);
+                        EnvironmentSetting envSetting = new EnvironmentSetting(e.Name, e.Value);
                         return envSetting;
                     });
 
                 jobManager.omObject.ResourceFiles = CreateSyncedList(jobManager.ResourceFiles,
                     (r) =>
                     {
-                        IResourceFile resourceFile = new ResourceFile(r.BlobSource, r.FilePath);
+                        ResourceFile resourceFile = new ResourceFile(r.BlobSource, r.FilePath);
                         return resourceFile;
                     });
             }
         }
 
         /// <summary>
-        /// Syncs the collections on a PSJobManager with its wrapped OM object
+        /// Syncs the collections on a PSJobPreparationTask with its wrapped OM object
         /// </summary>
-        internal static void JobExecutionEnvironmentSyncCollections(PSJobExecutionEnvironment executionEnvironment)
+        internal static void JobPreparationTaskSyncCollections(PSJobPreparationTask jobPrepTask)
         {
-            if (executionEnvironment != null)
+            if (jobPrepTask != null)
             {
-                if (executionEnvironment.AutoPoolSpecification != null)
+                jobPrepTask.omObject.EnvironmentSettings = CreateSyncedList(jobPrepTask.EnvironmentSettings,
+                    (e) =>
+                    {
+                        EnvironmentSetting envSetting = new EnvironmentSetting(e.Name, e.Value);
+                        return envSetting;
+                    });
+
+                jobPrepTask.omObject.ResourceFiles = CreateSyncedList(jobPrepTask.ResourceFiles,
+                    (r) =>
+                    {
+                        ResourceFile resourceFile = new ResourceFile(r.BlobSource, r.FilePath);
+                        return resourceFile;
+                    });
+            }
+        }
+
+        /// <summary>
+        /// Syncs the collections on a PSJobReleaseTask with its wrapped OM object
+        /// </summary>
+        internal static void JobReleaseTaskSyncCollections(PSJobReleaseTask jobReleaseTask)
+        {
+            if (jobReleaseTask != null)
+            {
+                jobReleaseTask.omObject.EnvironmentSettings = CreateSyncedList(jobReleaseTask.EnvironmentSettings,
+                    (e) =>
+                    {
+                        EnvironmentSetting envSetting = new EnvironmentSetting(e.Name, e.Value);
+                        return envSetting;
+                    });
+
+                jobReleaseTask.omObject.ResourceFiles = CreateSyncedList(jobReleaseTask.ResourceFiles,
+                    (r) =>
+                    {
+                        ResourceFile resourceFile = new ResourceFile(r.BlobSource, r.FilePath);
+                        return resourceFile;
+                    });
+            }
+        }
+
+        /// <summary>
+        /// Syncs the collections on a PSPoolInformation with its wrapped OM object
+        /// </summary>
+        internal static void PoolInformationSyncCollections(PSPoolInformation poolInfo)
+        {
+            if (poolInfo != null)
+            {
+                if (poolInfo.AutoPoolSpecification != null)
                 {
-                    AutoPoolSpecificationSyncCollections(executionEnvironment.AutoPoolSpecification);
+                    AutoPoolSpecificationSyncCollections(poolInfo.AutoPoolSpecification);
                 }
             }
         }
@@ -100,7 +175,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                 spec.omObject.CertificateReferences = CreateSyncedList(spec.CertificateReferences,
                     (c) =>
                     {
-                        ICertificateReference certReference = new CertificateReference();
+                        CertificateReference certReference = new CertificateReference();
                         certReference.StoreLocation = c.StoreLocation;
                         certReference.StoreName = c.StoreName;
                         certReference.Thumbprint = c.Thumbprint;
@@ -112,7 +187,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                 spec.omObject.Metadata = CreateSyncedList(spec.Metadata, 
                     (m) =>
                     {
-                        IMetadataItem metadata = new MetadataItem(m.Name, m.Value);
+                        MetadataItem metadata = new MetadataItem(m.Name, m.Value);
                         return metadata;
                     });
 
@@ -133,14 +208,14 @@ namespace Microsoft.Azure.Commands.Batch.Utils
                 startTask.omObject.EnvironmentSettings = CreateSyncedList(startTask.EnvironmentSettings,
                     (e) =>
                     {
-                        IEnvironmentSetting envSetting = new EnvironmentSetting(e.Name, e.Value);
+                        EnvironmentSetting envSetting = new EnvironmentSetting(e.Name, e.Value);
                         return envSetting;
                     });
 
                 startTask.omObject.ResourceFiles = CreateSyncedList(startTask.ResourceFiles,
                     (r) =>
                     {
-                        IResourceFile resourceFile = new ResourceFile(r.BlobSource, r.FilePath);
+                        ResourceFile resourceFile = new ResourceFile(r.BlobSource, r.FilePath);
                         return resourceFile;
                     });
             }
@@ -154,7 +229,7 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         /// <param name="psList">The list of PowerShell items</param>
         /// <param name="mappingFunction">The function to create a matching OM item</param>
         /// <returns>A list of OM objects matching a list of PowerShell objects</returns>
-        private static IList<Tom> CreateSyncedList<Tps, Tom>(IList<Tps> psList, Func<Tps, Tom> mappingFunction)
+        private static IList<Tom> CreateSyncedList<Tps, Tom>(IEnumerable<Tps> psList, Func<Tps, Tom> mappingFunction)
         {
             if (psList == null)
             {

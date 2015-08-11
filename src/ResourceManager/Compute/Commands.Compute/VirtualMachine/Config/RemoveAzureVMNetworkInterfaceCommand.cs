@@ -41,28 +41,34 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public PSVirtualMachine VM { get; set; }
 
-        [Alias("NicId", "NetworkInterfaceId")]
+        [Alias("Id", "NicIds")]
         [Parameter(
             Mandatory = true,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMNetworkInterfaceID)]
         [ValidateNotNullOrEmpty]
-        public string Id { get; set; }
+        public string[] NetworkInterfaceIDs { get; set; }
 
         public override void ExecuteCmdlet()
         {
             var networkProfile = this.VM.NetworkProfile;
 
-            if (networkProfile != null && networkProfile.NetworkInterfaces != null && networkProfile.NetworkInterfaces.Any(nic => string.Equals(nic.ReferenceUri, this.Id, StringComparison.OrdinalIgnoreCase)))
+            foreach (var id in this.NetworkInterfaceIDs)
             {
-                var nicReference = networkProfile.NetworkInterfaces.First(nic => string.Equals(nic.ReferenceUri, this.Id, StringComparison.OrdinalIgnoreCase));
-                networkProfile.NetworkInterfaces.Remove(nicReference);
-
-                if (!networkProfile.NetworkInterfaces.Any())
+                if (networkProfile != null &&
+                    networkProfile.NetworkInterfaces != null &&
+                    networkProfile.NetworkInterfaces.Any(nic =>
+                        string.Equals(nic.ReferenceUri, id, StringComparison.OrdinalIgnoreCase)))
                 {
-                    networkProfile = null;
+                    var nicReference = networkProfile.NetworkInterfaces.First(nic => string.Equals(nic.ReferenceUri, id, StringComparison.OrdinalIgnoreCase));
+                    networkProfile.NetworkInterfaces.Remove(nicReference);
                 }
+            }
+
+            if (!networkProfile.NetworkInterfaces.Any())
+            {
+                networkProfile = null;
             }
 
             this.VM.NetworkProfile = networkProfile;

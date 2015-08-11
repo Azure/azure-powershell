@@ -23,8 +23,7 @@
               "PathPattern": "",
               "DateFormat": "yyyy/MM/dd",
               "TimeFormat": "HH",
-              "SourcePartitionCount": null,
-              "blobSerializationBoundary": "BlobBoundary"
+              "SourcePartitionCount": null
             }
           }
         }

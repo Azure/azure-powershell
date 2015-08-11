@@ -15,7 +15,6 @@
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Newtonsoft.Json.Linq;
@@ -26,6 +25,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     [Cmdlet(VerbsCommon.New, "AzureResourceLock", SupportsShouldProcess = true, DefaultParameterSetName = ResourceLockManagementCmdletBase.SubscriptionResourceLevelLock), OutputType(typeof(PSObject))]
     public class NewAzureResourceLockCmdlet : ResourceLockManagementCmdletBase
     {
+        /// <summary>
+        /// Gets or sets the extension resource name parameter.
+        /// </summary>
+        [Alias("ExtensionResourceName")]
+        [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.ResourceGroupLevelLock, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The name of the lock.")]
+        [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.ResourceGroupResourceLevelLock, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The name of the lock.")]
+        [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.ScopeLevelLock, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The name of the lock.")]
+        [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.SubscriptionLevelLock, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The name of the lock.")]
+        [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.SubscriptionResourceLevelLock, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The name of the lock.")]
+        [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.TenantResourceLevelLock, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The name of the lock.")]
+        [ValidateNotNullOrEmpty]
+        public string LockName { get; set; }
+
         /// <summary>
         /// Gets or sets the extension resource name parameter.
         /// </summary>
@@ -49,41 +61,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public SwitchParameter Force { get; set; }
 
         /// <summary>
-        /// Gets or sets the extension resource name parameter.
-        /// </summary>
-        [Alias("ExtensionResourceName")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the lock.")]
-        [ValidateNotNullOrEmpty]
-        public string LockName { get; set; }
-
-        /// <summary>
-        /// Gets the resource Id from the supplied PowerShell parameters.
-        /// </summary>
-        protected string GetResourceId()
-        {
-            return !string.IsNullOrWhiteSpace(this.Scope)
-                ? ResourceIdUtility.GetResourceId(
-                    resourceId: this.Scope,
-                    extensionResourceType: Constants.MicrosoftAuthorizationLocksType,
-                    extensionResourceName: this.LockName)
-                : ResourceIdUtility.GetResourceId(
-                    subscriptionId: this.SubscriptionId,
-                    resourceGroupName: this.ResourceGroupName,
-                    resourceType: this.ResourceType,
-                    resourceName: this.ResourceName,
-                    extensionResourceType: Constants.MicrosoftAuthorizationLocksType,
-                    extensionResourceName: this.LockName);
-        }
-
-        /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         protected override void OnProcessRecord()
         {
             base.OnProcessRecord();
-
-            var resourceId = this.GetResourceId();
-
+            var resourceId = this.GetResourceId(this.LockName);
             this.ConfirmAction(
                 this.Force,
                 this.GetActionMessage(resourceId),
@@ -111,7 +94,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
                         .WaitOnOperation(operationResult: operationResult);
 
-                    this.WriteObject(result);
+                    this.WriteObject(this.GetOutputObjects(result.ToJToken()), enumerateCollection: true);
                 });
         }
 

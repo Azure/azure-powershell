@@ -53,93 +53,97 @@ namespace Microsoft.Azure.Commands.Compute
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            
-            const string fullAddressPrefix = "full address:s:";
-            const string promptCredentials = "prompt for credentials:i:1";
-            const int defaultPort = 3389;
 
-            string address = string.Empty;
-            int port = defaultPort;
 
-            // Get Azure VM
-            var vmResponse = this.VirtualMachineClient.Get(this.ResourceGroupName, this.Name);
-
-            // Get the NIC
-            var nicResourceGroupName =
-                this.GetResourceGroupName(vmResponse.VirtualMachine.NetworkProfile.NetworkInterfaces.First().ReferenceUri);
-
-            var nicName =
-                this.GetResourceName(
-                    vmResponse.VirtualMachine.NetworkProfile.NetworkInterfaces.First().ReferenceUri, "networkInterfaces");
-
-            var nicResponse =
-                this.NetworkClient.NetworkResourceProviderClient.NetworkInterfaces.Get(nicResourceGroupName, nicName);
-
-            if (nicResponse.NetworkInterface.IpConfigurations.First().PublicIpAddress != null && !string.IsNullOrEmpty(nicResponse.NetworkInterface.IpConfigurations.First().PublicIpAddress.Id))
+            ExecuteClientAction(() =>
             {
-                // Get PublicIPAddress resource if present
-                address = this.GetAddressFromPublicIPResource(nicResponse.NetworkInterface.IpConfigurations.First().PublicIpAddress.Id);
-            }
-            else if (nicResponse.NetworkInterface.IpConfigurations.First().LoadBalancerInboundNatRules.Any())
-            {
-                address = string.Empty;
+                const string fullAddressPrefix = "full address:s:";
+                const string promptCredentials = "prompt for credentials:i:1";
+                const int defaultPort = 3389;
 
-                // Get ipaddress and port from loadbalancer
-                foreach (var nicRuleRef in nicResponse.NetworkInterface.IpConfigurations.First().LoadBalancerInboundNatRules)
+                string address = string.Empty;
+                int port = defaultPort;
+
+                // Get Azure VM
+                var vmResponse = this.VirtualMachineClient.Get(this.ResourceGroupName, this.Name);
+
+                // Get the NIC
+                var nicResourceGroupName =
+                    this.GetResourceGroupName(vmResponse.VirtualMachine.NetworkProfile.NetworkInterfaces.First().ReferenceUri);
+
+                var nicName =
+                    this.GetResourceName(
+                        vmResponse.VirtualMachine.NetworkProfile.NetworkInterfaces.First().ReferenceUri, "networkInterfaces");
+
+                var nicResponse =
+                    this.NetworkClient.NetworkResourceProviderClient.NetworkInterfaces.Get(nicResourceGroupName, nicName);
+
+                if (nicResponse.NetworkInterface.IpConfigurations.First().PublicIpAddress != null && !string.IsNullOrEmpty(nicResponse.NetworkInterface.IpConfigurations.First().PublicIpAddress.Id))
                 {
-                    var lbName = this.GetResourceName(nicRuleRef.Id, "loadBalancers");
-                    var lbResourceGroupName = this.GetResourceGroupName(nicRuleRef.Id);
-                    
-                    var loadbalancer =
-                        this.NetworkClient.NetworkResourceProviderClient.LoadBalancers.Get(lbResourceGroupName, lbName).LoadBalancer;
+                    // Get PublicIPAddress resource if present
+                    address = this.GetAddressFromPublicIPResource(nicResponse.NetworkInterface.IpConfigurations.First().PublicIpAddress.Id);
+                }
+                else if (nicResponse.NetworkInterface.IpConfigurations.First().LoadBalancerInboundNatRules.Any())
+                {
+                    address = string.Empty;
 
-                    // Iterate over the InboundNatRules where Backendport = 3389
-                    var inboundRule =
-                        loadbalancer.InboundNatRules.Where(
-                            rule =>
-                            rule.BackendPort == defaultPort
-                            && string.Equals(
-                                rule.Id,
-                                nicRuleRef.Id,
-                                StringComparison.OrdinalIgnoreCase));
-
-                    if (inboundRule.Any())
+                    // Get ipaddress and port from loadbalancer
+                    foreach (var nicRuleRef in nicResponse.NetworkInterface.IpConfigurations.First().LoadBalancerInboundNatRules)
                     {
-                        port = inboundRule.First().FrontendPort;
-                        
-                        // Get the corresponding frontendIPConfig -> publicIPAddress
-                        var frontendIPConfig =
-                            loadbalancer.FrontendIpConfigurations.First(
-                                frontend =>
-                                string.Equals(
-                                    inboundRule.First().FrontendIPConfiguration.Id,
-                                    frontend.Id,
+                        var lbName = this.GetResourceName(nicRuleRef.Id, "loadBalancers");
+                        var lbResourceGroupName = this.GetResourceGroupName(nicRuleRef.Id);
+
+                        var loadbalancer =
+                            this.NetworkClient.NetworkResourceProviderClient.LoadBalancers.Get(lbResourceGroupName, lbName).LoadBalancer;
+
+                        // Iterate over the InboundNatRules where Backendport = 3389
+                        var inboundRule =
+                            loadbalancer.InboundNatRules.Where(
+                                rule =>
+                                rule.BackendPort == defaultPort
+                                && string.Equals(
+                                    rule.Id,
+                                    nicRuleRef.Id,
                                     StringComparison.OrdinalIgnoreCase));
 
-                        if (frontendIPConfig.PublicIpAddress != null)
+                        if (inboundRule.Any())
                         {
-                            address = this.GetAddressFromPublicIPResource(frontendIPConfig.PublicIpAddress.Id);
-                            break;
+                            port = inboundRule.First().FrontendPort;
+
+                            // Get the corresponding frontendIPConfig -> publicIPAddress
+                            var frontendIPConfig =
+                                loadbalancer.FrontendIpConfigurations.First(
+                                    frontend =>
+                                    string.Equals(
+                                        inboundRule.First().FrontendIPConfiguration.Id,
+                                        frontend.Id,
+                                        StringComparison.OrdinalIgnoreCase));
+
+                            if (frontendIPConfig.PublicIpAddress != null)
+                            {
+                                address = this.GetAddressFromPublicIPResource(frontendIPConfig.PublicIpAddress.Id);
+                                break;
+                            }
                         }
                     }
-                }
 
-                if (string.IsNullOrEmpty(address))
+                    if (string.IsNullOrEmpty(address))
+                    {
+                        throw new ArgumentException(Properties.Resources.VirtualMachineNotAssociatedWithPublicLoadBalancer);
+                    }
+                }
+                else
                 {
-                    throw new ArgumentException(Properties.Resources.VirtualMachineNotAssociatedWithPublicLoadBalancer);
+                    throw new ArgumentException(Properties.Resources.VirtualMachineNotAssociatedWithPublicIPOrPublicLoadBalancer);
                 }
-            }
-            else
-            {
-                throw new ArgumentException(Properties.Resources.VirtualMachineNotAssociatedWithPublicIPOrPublicLoadBalancer);
-            }
 
-            // Write to file
-            using (var file = new StreamWriter(this.LocalPath))
-            {
-                file.WriteLine(fullAddressPrefix + address + ":" + port);
-                file.WriteLine(promptCredentials);
-            }
+                // Write to file
+                using (var file = new StreamWriter(this.LocalPath))
+                {
+                    file.WriteLine(fullAddressPrefix + address + ":" + port);
+                    file.WriteLine(promptCredentials);
+                }
+            });
         }
 
         private string GetAddressFromPublicIPResource(string resourceId)

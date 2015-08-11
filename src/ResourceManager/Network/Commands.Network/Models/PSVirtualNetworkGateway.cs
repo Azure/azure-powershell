@@ -22,9 +22,9 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public List<PSVirtualNetworkGatewayIpConfiguration> IpConfigurations { get; set; }
 
-        public string GatewaySize { get; set; }
-
         public string GatewayType { get; set; }
+
+        public string VpnType { get; set; }
 
         public bool EnableBgp { get; set; }
         

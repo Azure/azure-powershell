@@ -23,6 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
             var package = "test-package";
             var connectionStrings = new Hashtable();
             connectionStrings["DefaultConnection"] = "test-connection-string";
+            string setParametersFile = "testfile.xml";
 
             var publishProfile = new WebSiteGetPublishProfileResponse.PublishProfile()
             {
@@ -36,12 +37,13 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
             Mock<IWebsitesClient> clientMock = new Mock<IWebsitesClient>();
 
             clientMock.Setup(c => c.GetWebDeployPublishProfile(websiteName, slot)).Returns(publishProfile);
-            clientMock.Setup(c => c.PublishWebProject(websiteName, slot, package, connectionStrings, false, false))
-                .Callback((string n, string s, string p, Hashtable cs, bool skipAppData, bool doNotDelete) =>
+            clientMock.Setup(c => c.PublishWebProject(websiteName, slot, package, setParametersFile, connectionStrings, false, false))
+                .Callback((string n, string s, string p, string spf, Hashtable cs, bool skipAppData, bool doNotDelete) =>
                 {
                     Assert.Equal(websiteName, n);
                     Assert.Equal(slot, s);
                     Assert.Equal(package, p);
+                    Assert.Equal(setParametersFile, spf);
                     Assert.Equal(connectionStrings, cs);
                     Assert.False(skipAppData);
                     Assert.False(doNotDelete);
@@ -56,7 +58,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 Name = websiteName,
                 Package = package,
                 ConnectionString = connectionStrings,
-                WebsitesClient = clientMock.Object
+                WebsitesClient = clientMock.Object,
+                SetParametersFile = setParametersFile
             };
 
             command.ExecuteCmdlet();
@@ -76,6 +79,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
             var logFile = string.Format(@"{0}\build.log", Directory.GetCurrentDirectory());
             var connectionStrings = new Hashtable();
             connectionStrings["DefaultConnection"] = "test-connection-string";
+            string setParametersFile = "testfile.xml";
 
             using (FileSystemHelper files = new FileSystemHelper(this))
             {
@@ -96,12 +100,13 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
 
             clientMock.Setup(c => c.GetWebDeployPublishProfile(websiteName, slot)).Returns(publishProfile);
             clientMock.Setup(c => c.BuildWebProject(projectFile, configuration, logFile)).Returns(package);
-            clientMock.Setup(c => c.PublishWebProject(websiteName, slot, package, connectionStrings, false, false))
-                .Callback((string n, string s, string p, Hashtable cs, bool skipAppData, bool doNotDelete) =>
+            clientMock.Setup(c => c.PublishWebProject(websiteName, slot, package, setParametersFile, connectionStrings, false, false))
+                .Callback((string n, string s, string p, string spf, Hashtable cs, bool skipAppData, bool doNotDelete) =>
                 {
                     Assert.Equal(websiteName, n);
                     Assert.Equal(slot, s);
                     Assert.Equal(package, p);
+                    Assert.Equal(setParametersFile, spf);
                     Assert.Equal(connectionStrings, cs);
                     Assert.False(skipAppData);
                     Assert.False(doNotDelete);
@@ -117,7 +122,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 Name = websiteName,
                 ProjectFile = projectFile,
                 Configuration = configuration,
-                ConnectionString = connectionStrings
+                ConnectionString = connectionStrings,
+                SetParametersFile = setParametersFile
             };
 
             command.ExecuteCmdlet();

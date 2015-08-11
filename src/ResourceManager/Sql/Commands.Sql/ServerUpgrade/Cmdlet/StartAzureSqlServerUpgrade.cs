@@ -49,6 +49,10 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
             HelpMessage = "Determines the collection of recommended database properties for server upgrade")]
         public RecommendedDatabaseProperties[] DatabaseCollection { get; set; }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = "Determines the collection of recommended elastic pool properties for server upgrade")]
+        public UpgradeRecommendedElasticPoolProperties[] ElasticPoolCollection { get; set; }
+
         /// <summary>
         /// Check to see if the server already exists in this resource group.
         /// </summary>
@@ -85,7 +89,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
                 ServerName = this.ServerName,
                 ServerVersion = this.ServerVersion,
                 ScheduleUpgradeAfterUtcDateTime = this.ScheduleUpgradeAfterUtcDateTime,
-                DatabaseCollection = this.DatabaseCollection
+                DatabaseCollection = this.DatabaseCollection,
+                ElasticPoolCollection = this.ElasticPoolCollection
             });
             return newEntity;
         }

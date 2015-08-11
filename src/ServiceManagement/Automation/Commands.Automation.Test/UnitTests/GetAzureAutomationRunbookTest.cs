@@ -70,8 +70,9 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
         {
             // Setup
             string accountName = "automation";
+            string nextLink = string.Empty;
 
-            this.mockAutomationClient.Setup(f => f.ListRunbooks(accountName)).Returns((string a) => new List<Runbook>()); ;
+            this.mockAutomationClient.Setup(f => f.ListRunbooks(accountName, ref nextLink)).Returns((string a, string b) => new List<Runbook>()); ;
 
             // Test
             this.cmdlet.AutomationAccountName = accountName;
@@ -79,7 +80,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.ListRunbooks(accountName), Times.Once());
+            this.mockAutomationClient.Verify(f => f.ListRunbooks(accountName, ref nextLink), Times.Once());
         }
     }
 }

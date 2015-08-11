@@ -44,15 +44,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             get;
             set;
         }
-
-        public string ApiVersion
-        {
-            get
-            {
-                return KeyVaultManagementClient.ApiVersion;
-            }
-        }        
-        
+       
         /// <summary>
         /// Create a new vault
         /// </summary>
@@ -162,6 +154,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                         {
                             TenantId = a.TenantId,
                             ObjectId = a.ObjectId,
+                            ApplicationId = a.ApplicationId,
                             PermissionsToKeys = a.PermissionsToKeys.ToArray(),
                             PermissionsToSecrets = a.PermissionsToSecrets.ToArray()
                         }).ToList();

@@ -70,6 +70,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Auditing cannot be enabled . Upgrade to Basic, Standard or Premium Service Tier to enable auditing on your database(s).
+        /// </summary>
+        internal static string DatabaseNotInServiceTierForAuditingPolicy {
+            get {
+                return ResourceManager.GetString("DatabaseNotInServiceTierForAuditingPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A data masking rule for alias &apos;{0}&apos; is already exists.
         /// </summary>
         internal static string DataMaskingAliasAlreadyUsedError {
@@ -106,6 +115,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The {0} cmdlet is deprecated and will be removed in a future release..
+        /// </summary>
+        internal static string DeprecatedCmdletUsageWarning {
+            get {
+                return ResourceManager.GetString("DeprecatedCmdletUsageWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Elastic Pool with name: &apos;{0}&apos; already exists in server &apos;{1}&apos;..
         /// </summary>
         internal static string ElasticPoolNameExists {
@@ -133,15 +151,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot use deprecated audit events with the current audit events in the same policy..
-        /// </summary>
-        internal static string InvalidDeprecatedEventTypeSet {
-            get {
-                return ResourceManager.GetString("InvalidDeprecatedEventTypeSet", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Cannot use the &apos;{0}&apos; option with other event types..
         /// </summary>
         internal static string InvalidEventTypeSet {
@@ -165,6 +174,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string NewDataMaskingRuleIdAlreadyExistError {
             get {
                 return ResourceManager.GetString("NewDataMaskingRuleIdAlreadyExistError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rule Id cannot contain &apos;&lt;,&gt;,+,=,#,*,%,&amp;,\,/,?&apos; and cannot end with a &apos;.&apos;.
+        /// </summary>
+        internal static string NewDataMaskingRuleIdIsNotValid {
+            get {
+                return ResourceManager.GetString("NewDataMaskingRuleIdIsNotValid", resourceCulture);
             }
         }
         
@@ -223,47 +241,47 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Database &apos;{0}&apos; on server &apos;{1}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlDatabaseWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlDatabaseWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Permanently removing Azure Sql Database Server &apos;{0}&apos;..
         /// </summary>
-        internal static string RemoveAzureSqlDatabaseServerDescription {
+        internal static string RemoveAzureSqlServerDescription {
             get {
-                return ResourceManager.GetString("RemoveAzureSqlDatabaseServerDescription", resourceCulture);
+                return ResourceManager.GetString("RemoveAzureSqlServerDescription", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Permanently removing Firewall Rule &apos;{0}&apos; for Azure Sql Database Server &apos;{1}&apos;..
         /// </summary>
-        internal static string RemoveAzureSqlDatabaseServerFirewallRuleDescription {
+        internal static string RemoveAzureSqlServerFirewallRuleDescription {
             get {
-                return ResourceManager.GetString("RemoveAzureSqlDatabaseServerFirewallRuleDescription", resourceCulture);
+                return ResourceManager.GetString("RemoveAzureSqlServerFirewallRuleDescription", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the Firewall Rule &apos;{0}&apos; for Azure Sql Database Server  &apos;{1}&apos;?.
         /// </summary>
-        internal static string RemoveAzureSqlDatabaseServerFirewallRuleWarning {
+        internal static string RemoveAzureSqlServerFirewallRuleWarning {
             get {
-                return ResourceManager.GetString("RemoveAzureSqlDatabaseServerFirewallRuleWarning", resourceCulture);
+                return ResourceManager.GetString("RemoveAzureSqlServerFirewallRuleWarning", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Database Server &apos;{0}&apos;?.
         /// </summary>
-        internal static string RemoveAzureSqlDatabaseServerWarning {
+        internal static string RemoveAzureSqlServerWarning {
             get {
-                return ResourceManager.GetString("RemoveAzureSqlDatabaseServerWarning", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Database &apos;{0}&apos; on server &apos;{1}&apos;?.
-        /// </summary>
-        internal static string RemoveAzureSqlDatabaseWarning {
-            get {
-                return ResourceManager.GetString("RemoveAzureSqlDatabaseWarning", resourceCulture);
+                return ResourceManager.GetString("RemoveAzureSqlServerWarning", resourceCulture);
             }
         }
         
@@ -336,6 +354,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string sqlSampleTitle {
             get {
                 return ResourceManager.GetString("sqlSampleTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Azure Sql Database Elastic Pool name is required for this operation.
+        /// </summary>
+        internal static string StandaloneDatabaseActivityNotSupported {
+            get {
+                return ResourceManager.GetString("StandaloneDatabaseActivityNotSupported", resourceCulture);
             }
         }
         

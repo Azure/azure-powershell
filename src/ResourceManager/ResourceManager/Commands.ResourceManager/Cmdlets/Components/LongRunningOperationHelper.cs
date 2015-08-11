@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Collections;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients;
@@ -77,14 +76,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// Waits for the operation to complete.
         /// </summary>
         /// <param name="operationResult">The operation result.</param>
-        internal JToken WaitOnOperation(OperationResult operationResult)
+        internal string WaitOnOperation(OperationResult operationResult)
         {
             // TODO: Re-factor this mess.
             this.ProgressTrackerObject.UpdateProgress("Starting", 0);
 
             var trackingResult = this.HandleOperationResponse(operationResult, this.IsResourceCreateOrUpdate ? operationResult.OperationUri : operationResult.LocationUri);
 
-            while (trackingResult.ShouldWait)
+            while (trackingResult != null && trackingResult.ShouldWait)
             {
                 operationResult =
                     this.GetResourcesClient()
@@ -162,10 +161,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <param name="operationResult">The result of the operation.</param>
         private TrackingOperationResult HandleCreateOrUpdateResponse(OperationResult operationResult)
         {
-            var resource = operationResult.Value == null
-                ? null
-                : operationResult.Value
-                    .ToObject<Resource<InsensitiveDictionary<JToken>>>(JsonExtensions.JsonObjectTypeSerializer);
+            Resource<InsensitiveDictionary<JToken>> resource;
+            if (!operationResult.Value.TryConvertTo<Resource<InsensitiveDictionary<JToken>>>(out resource))
+            {
+                return null;
+            }
+
+            if(resource == null && operationResult.HttpStatusCode == HttpStatusCode.Created)
+            {
+                return this.SuccessfulResult(operationResult);
+            }
 
             if (resource == null)
             {
@@ -440,11 +445,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             /// <param name="operationResult">The operation result.</param>
             private static string GetResourceState(OperationResult operationResult)
             {
-                var resource = operationResult.Value == null
-                    ? null
-                    : operationResult.Value
-                        .ToObject<Resource<InsensitiveDictionary<JToken>>>(JsonExtensions.JsonObjectTypeSerializer);
-
+                Resource<InsensitiveDictionary<JToken>> resource;
+                if (!operationResult.Value.TryConvertTo<Resource<InsensitiveDictionary<JToken>>>(out resource))
+                {
+                    return null;
+                }
+                
                 if (resource == null)
                 {
                     return null;

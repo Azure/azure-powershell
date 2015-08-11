@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
+    using Microsoft.Azure.Common.Authentication;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json.Linq;
 
@@ -31,35 +32,65 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         /// Converts a <see cref="Resource{JToken}"/> object into a <see cref="PSObject"/> object.
         /// </summary>
         /// <param name="resource">The <see cref="Resource{JToken}"/> object.</param>
-        internal static PSObject ToPsObject(this Resource<JToken> resource)
+        /// <param name="objectFormat">The <see cref="ResourceObjectFormat"/></param>
+        internal static PSObject ToPsObject(this Resource<JToken> resource, ResourceObjectFormat objectFormat)
         {
-            var resourceType = ResourceIdUtility.GetResourceType(resource.Id);
-            var extensionResourceType = ResourceIdUtility.GetExtensionResourceType(resource.Id);
+            var resourceType = string.IsNullOrEmpty(resource.Id)
+                ? null
+                : ResourceIdUtility.GetResourceType(resource.Id);
+
+            var extensionResourceType = string.IsNullOrEmpty(resource.Id)
+                ? null
+                : ResourceIdUtility.GetExtensionResourceType(resource.Id);
 
             var objectDefinition = new Dictionary<string, object>
             {
                 { "Name", resource.Name },
-                { "ResourceId", resource.Id },
-                { "ResourceName", ResourceIdUtility.GetResourceName(resource.Id) },
+                { "ResourceId", string.IsNullOrEmpty(resource.Id) ? null : resource.Id },
+                { "ResourceName", string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetResourceName(resource.Id) },
                 { "ResourceType", resourceType },
-                { "ExtensionResourceName", ResourceIdUtility.GetExtensionResourceName(resource.Id) },
+                { "ExtensionResourceName", string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetExtensionResourceName(resource.Id) },
                 { "ExtensionResourceType", extensionResourceType },
                 { "Kind", resource.Kind },
-                { "ResourceGroupName", ResourceIdUtility.GetResourceGroup(resource.Id) },
+                { "ResourceGroupName", string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetResourceGroupName(resource.Id) },
                 { "Location", resource.Location },
-                { "SubscriptionId", ResourceIdUtility.GetSubscriptionId(resource.Id) },
+                { "SubscriptionId", string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetSubscriptionId(resource.Id) },
                 { "Tags", TagsHelper.GetTagsHashtables(resource.Tags) },
-                { "Plan", resource.Plan.ToJToken().ToPsObject() },
-                { "Properties", resource.Properties.ToPsObject() },
-                { "PropertiesText", resource.Properties == null ? null : resource.Properties.ToString() },
+                { "Plan", resource.Plan.ToJToken().ToPsObject(objectFormat) },
+                { "Properties", ResourceExtensions.GetProperties(resource, objectFormat) },
                 { "CreatedTime", resource.CreatedTime },
                 { "ChangedTime", resource.ChangedTime },
                 { "ETag", resource.ETag },
             };
 
-            return PowerShellUtilities.ConstructPSObject(
-                (resourceType + extensionResourceType).Replace('/', '.'),
+            var resourceTypeName = resourceType == null && extensionResourceType == null
+                ? null
+                : (resourceType + extensionResourceType).Replace('/', '.');
+
+            var psObject =
+                PowerShellUtilities.ConstructPSObject(
+                resourceTypeName,
                 objectDefinition.Where(kvp => kvp.Value != null).SelectManyArray(kvp => new[] { kvp.Key, kvp.Value }));
+
+            psObject.TypeNames.Add(Constants.MicrosoftAzureResource);
+            return psObject;
+        }
+
+        /// <summary>
+        /// Gets the properties object
+        /// </summary>
+        /// <param name="resource">The <see cref="Resource{JToken}"/> object.</param>
+        /// <param name="objectFormat">The <see cref="ResourceObjectFormat"/></param>
+        private static object GetProperties(Resource<JToken> resource, ResourceObjectFormat objectFormat)
+        {
+            if (resource.Properties == null)
+            {
+                return null;
+            }
+
+            return objectFormat == ResourceObjectFormat.Legacy
+                ? JsonUtilities.DeserializeJson(resource.Properties.ToString())
+                : (object)resource.Properties.ToPsObject(objectFormat);
         }
 
         /// <summary>
@@ -69,6 +100,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         internal static Resource<JToken> ToResource(this JToken jtoken)
         {
             return jtoken.ToObject<Resource<JToken>>(JsonExtensions.JsonMediaTypeSerializer);
+        }
+
+        /// <summary>00
+        /// Converts a <see cref="JToken"/> to a <see cref="Resource{JToken}"/>.
+        /// </summary>
+        /// <typeparam name="TType">The type of the properties.</typeparam>
+        /// <param name="jtoken">The <see cref="JToken"/>.</param>
+        internal static Resource<TType> ToResource<TType>(this JToken jtoken)
+        {
+            return jtoken.ToObject<Resource<TType>>(JsonExtensions.JsonMediaTypeSerializer);
         }
     }
 }

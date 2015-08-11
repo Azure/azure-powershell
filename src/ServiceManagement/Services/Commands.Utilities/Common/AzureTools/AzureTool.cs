@@ -24,7 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService.AzureTools
 {
     public class AzureTool
     {
-        public const string SupportAzureSdkVersion = "2.5.0";
+        public const string SupportAzureSdkVersion = "2.7.0";
 
         public static void Validate()
         {
@@ -94,13 +94,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService.AzureTools
                     {
                         throw new InvalidOperationException(Resources.AzureToolsNotInstalledMessage);
                     }
-                    version = key.GetSubKeyNames().FirstOrDefault(n => n == AzureSdkVersionInfo.SupportAzureSdkVersionRegKey);
 
-                    if (string.IsNullOrEmpty(version) && key.GetSubKeyNames().Length > 0)
-                    {
-                        throw new InvalidOperationException(string.Format(Resources.AzureSdkVersionNotSupported, AzureSdkVersionInfo.SupportAzureSdkVersionRegKey));
-                    }
-                    else if (string.IsNullOrEmpty(version) && key.GetSubKeyNames().Length == 0)
+                    // select the latest version of SDK installed on the machine.
+                    version = key.GetSubKeyNames().LastOrDefault();
+
+                    if (string.IsNullOrWhiteSpace(version) && key.GetSubKeyNames().Length == 0)
                     {
                         throw new InvalidOperationException(Resources.AzureToolsNotInstalledMessage);
                     }
@@ -110,7 +108,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService.AzureTools
             {
                 if (IgnoreMissingSDKError)
                 {
-                    version = AzureSdkVersionInfo.SupportAzureSdkVersionRegKey;
+                    version = AzureSdkVersionInfo.DefaultAzureSdkVersionRegKey;
                 }
                 else
                 {

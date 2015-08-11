@@ -141,18 +141,19 @@ namespace Microsoft.Azure.Commands.KeyVault
             return rg;
         }
 
-        protected bool VaultExists(string name, string resourceGroupName)
+        // See if we can list resources in current subscription and find a vault with matching name.
+        // If some other subscription has a vault by this name, we cannot list it here, but the Key Vault service will
+        // reject any attempts to create one by this name even if we tried.
+        //
+        // We are intentionally not looking up the vault name in a specific resource group here. If the vault did
+        // exist in that resource group, we would end up having the Key Vault service decrypt the vault for us.
+        // This is a heavy operation and not required here.
+        //
+        // An alternate implementation that checks for the vault name globally would be to construct a vault 
+        // URL with the given name and attempt checking DNS entries for it.
+        protected bool VaultExistsInCurrentSubscription(string name)
         {
-            //Get meta data using ResourceManagementClient to avoid having KV CP decrypt the vault
-            var identifier = new PSResourceManagerModels.ResourceIdentifier()
-            {
-                ParentResource = null,
-                ResourceGroupName = resourceGroupName,
-                ResourceName = name,
-                ResourceType = this.KeyVaultManagementClient.VaultsResourceType
-            }.ToResourceIdentity(this.KeyVaultManagementClient.ApiVersion);
-
-            return this.ResourcesClient.ResourceManagementClient.Resources.CheckExistence(resourceGroupName, identifier).Exists;
+            return GetResourceGroupName(name) != null;
         }
 
         protected Guid GetTenantId()

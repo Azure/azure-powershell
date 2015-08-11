@@ -49,8 +49,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         /// Converts a <see cref="JObject"/> to a <see cref="PSObject"/>
         /// </summary>
         /// <param name="jtoken">The <see cref="JObject"/></param>
+        /// <param name="objectFormat">The <see cref="ResourceObjectFormat"/></param>
         /// <param name="objectType">The type of the object.</param>
-        internal static PSObject ToPsObject(this JToken jtoken, string objectType = null)
+        internal static PSObject ToPsObject(this JToken jtoken, ResourceObjectFormat objectFormat, string objectType = null)
         {
             if (jtoken == null)
             {
@@ -59,16 +60,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
 
             if (jtoken.Type != JTokenType.Object)
             {
-                return new PSObject(JTokenExtensions.ConvertPropertyValueForPsObject(propertyValue: jtoken));
+                return new PSObject(JTokenExtensions.ConvertPropertyValueForPsObject(propertyValue: jtoken, objectFormat: objectFormat));
             }
 
             var jobject = (JObject)jtoken;
             var psObject = new PSObject();
-
-            if (jobject.CanConvertTo<Resource<JToken>>())
-            {
-                return jobject.ToResource().ToPsObject();
-            }
 
             if (!string.IsNullOrWhiteSpace(objectType))
             {
@@ -79,7 +75,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
             {
                 psObject.Properties.Add(new PSNoteProperty(
                     name: JTokenExtensions.ConvertToPascalCase(propertyName: property.Name), 
-                    value: JTokenExtensions.ConvertPropertyValueForPsObject(propertyValue: property.Value)));
+                    value: JTokenExtensions.ConvertPropertyValueForPsObject(propertyValue: property.Value, objectFormat: objectFormat)));
             }
 
             return psObject;
@@ -90,11 +86,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         /// used as the value of a <see cref="PSNoteProperty"/>.
         /// </summary>
         /// <param name="propertyValue">The <see cref="JToken"/> value.</param>
-        internal static object ConvertPropertyValueForPsObject(JToken propertyValue)
+        /// <param name="objectFormat">The <see cref="ResourceObjectFormat"/></param>
+        internal static object ConvertPropertyValueForPsObject(JToken propertyValue, ResourceObjectFormat objectFormat)
         {
             if (propertyValue.Type == JTokenType.Object)
             {
-                return propertyValue.ToPsObject();
+                return propertyValue.ToPsObject(objectFormat);
             }
 
             if (propertyValue.Type == JTokenType.Array)
@@ -105,7 +102,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
 
                 for (int i = 0; i < array.Length; ++i)
                 {
-                    array[i] = JTokenExtensions.ConvertPropertyValueForPsObject(jArray[i]);
+                    array[i] = JTokenExtensions.ConvertPropertyValueForPsObject(jArray[i], objectFormat);
                 }
 
                 return array;

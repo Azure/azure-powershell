@@ -39,6 +39,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.DataFactory
             string linkedServiceType = "OnPremisesSqlLinkedService";
             string nonCredentialValue = "Driver=mydriver;server=myserver";
             string authenticationType = "Basic";
+            string serverName = null;
+            string databaseName = null;
 
             var cmdlet = new NewAzureDataFactoryEncryptValueCommand
             {
@@ -50,17 +52,19 @@ namespace Microsoft.WindowsAzure.Commands.Test.DataFactory
                 GatewayName = GatewayName,
                 Type = linkedServiceType,
                 NonCredentialValue = nonCredentialValue,
-                AuthenticationType = authenticationType
+                AuthenticationType = authenticationType,
+                Server = serverName,
+                Database = databaseName
             };
 
             // Arrange
-            this.dataFactoriesClientMock.Setup(f => f.OnPremisesEncryptString(secureString, ResourceGroupName, DataFactoryName, GatewayName, null, linkedServiceType, nonCredentialValue, authenticationType)).Returns(expectedOutput);
+            this.dataFactoriesClientMock.Setup(f => f.OnPremisesEncryptString(secureString, ResourceGroupName, DataFactoryName, GatewayName, null, linkedServiceType, nonCredentialValue, authenticationType, serverName, databaseName)).Returns(expectedOutput);
 
             // Action
             cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.dataFactoriesClientMock.Verify(f => f.OnPremisesEncryptString(secureString, ResourceGroupName, DataFactoryName, GatewayName, null, linkedServiceType, nonCredentialValue, authenticationType), Times.Once());
+            this.dataFactoriesClientMock.Verify(f => f.OnPremisesEncryptString(secureString, ResourceGroupName, DataFactoryName, GatewayName, null, linkedServiceType, nonCredentialValue, authenticationType, serverName, databaseName), Times.Once());
             this.commandRuntimeMock.Verify(f => f.WriteObject(expectedOutput), Times.Once());
         }
 
@@ -76,6 +80,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.DataFactory
             string linkedServiceType = "OnPremisesFileSystemLinkedService";
             string nonCredentialValue = "Driver=mydriver;server=myserver";
             string authenticationType = "Basic";
+            string serverName = null;
+            string databaseName = null;
 
             var cmdlet = new NewAzureDataFactoryEncryptValueCommand
             {
@@ -88,17 +94,19 @@ namespace Microsoft.WindowsAzure.Commands.Test.DataFactory
                 Credential = credential,
                 Type = linkedServiceType,
                 NonCredentialValue = nonCredentialValue,
-                AuthenticationType = authenticationType
+                AuthenticationType = authenticationType,
+                Server = serverName,
+                Database = databaseName
             };
 
             // Arrange
-            this.dataFactoriesClientMock.Setup(f => f.OnPremisesEncryptString(secureString, ResourceGroupName, DataFactoryName, GatewayName, credential, linkedServiceType, nonCredentialValue, authenticationType)).Returns(expectedOutput);
+            this.dataFactoriesClientMock.Setup(f => f.OnPremisesEncryptString(secureString, ResourceGroupName, DataFactoryName, GatewayName, credential, linkedServiceType, nonCredentialValue, authenticationType, serverName, databaseName)).Returns(expectedOutput);
 
             // Action
             cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.dataFactoriesClientMock.Verify(f => f.OnPremisesEncryptString(secureString, ResourceGroupName, DataFactoryName, GatewayName, credential, linkedServiceType, nonCredentialValue, authenticationType), Times.Once());
+            this.dataFactoriesClientMock.Verify(f => f.OnPremisesEncryptString(secureString, ResourceGroupName, DataFactoryName, GatewayName, credential, linkedServiceType, nonCredentialValue, authenticationType, serverName, databaseName), Times.Once());
             this.commandRuntimeMock.Verify(f => f.WriteObject(expectedOutput), Times.Once());
         }
     }

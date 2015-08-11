@@ -12,7 +12,7 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$aliases = @{
+$script:aliases = @{
     # Profile aliases
     "Get-WAPackPublishSettingsFile" = "Get-AzurePublishSettingsFile";
     "Get-WAPackSubscription" = "Get-AzureSubscription";

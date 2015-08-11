@@ -38,11 +38,6 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public PSVirtualMachine VM { get; set; }
 
-        [Alias("ResourceName", "VMName")]
-        [Parameter(ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
         [Parameter(ValueFromPipelineByPropertyName = true)]
         public Hashtable[] Tags { get; set; }
 
@@ -50,21 +45,24 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ExecuteCmdlet();
 
-            var parameters = new VirtualMachine
+            ExecuteClientAction(() =>
             {
-                HardwareProfile          = this.VM.HardwareProfile,
-                StorageProfile           = this.VM.StorageProfile,
-                NetworkProfile           = this.VM.NetworkProfile,
-                OSProfile                = this.VM.OSProfile,
-                Plan                     = this.VM.Plan,
-                AvailabilitySetReference = this.VM.AvailabilitySetReference,
-                Location                 = !string.IsNullOrEmpty(this.Location) ? this.Location : this.VM.Location,
-                Name                     = !string.IsNullOrEmpty(this.Name) ? this.Name : this.VM.Name,
-                Tags                     = this.Tags != null ? this.Tags.ToDictionary() : this.VM.Tags
-            };
+                var parameters = new VirtualMachine
+                {
+                    HardwareProfile          = this.VM.HardwareProfile,
+                    StorageProfile           = this.VM.StorageProfile,
+                    NetworkProfile           = this.VM.NetworkProfile,
+                    OSProfile                = this.VM.OSProfile,
+                    Plan                     = this.VM.Plan,
+                    AvailabilitySetReference = this.VM.AvailabilitySetReference,
+                    Location                 = !string.IsNullOrEmpty(this.Location) ? this.Location : this.VM.Location,
+                    Name                     = this.VM.Name,
+                    Tags                     = this.Tags != null ? this.Tags.ToDictionary() : this.VM.Tags
+                };
 
-            var op = this.VirtualMachineClient.CreateOrUpdate(this.ResourceGroupName, parameters);
-            WriteObject(op);
+                var op = this.VirtualMachineClient.CreateOrUpdate(this.ResourceGroupName, parameters);
+                WriteObject(op);
+            });
         }
     }
 }

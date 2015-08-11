@@ -1,2 +1,2 @@
-packageName,configName1,configName2,updateConfig1,updateConfig2
-SampleAppV1.cspkg,ReservedIPConfig1.cscfg,ReservedIPConfig2.cscfg,ReservedIPConfig1update.cscfg,ReservedIPConfig2update.cscfg
+packageName,configName,updateConfig
+SampleAppV1.cspkg,ReservedIPConfig.cscfg,ReservedIPConfigupdate.cscfg

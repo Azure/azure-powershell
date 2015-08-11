@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <summary>
         /// The move action.
         /// </summary>
-        public static readonly string Move = "move";
+        public static readonly string MoveResources = "moveResources";
 
         /// <summary>
         /// The locks resource type.
@@ -63,5 +63,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// The deployment operations resource type.
         /// </summary>
         public static readonly string MicrosoftResourcesDeploymentOperationsType = Constants.MicrosoftResourceNamesapce + "/deployments/operations";
+
+        /// <summary>
+        /// The type name of the generic resource.
+        /// </summary>
+        public static readonly string MicrosoftAzureResource = "Microsoft.Azure.Resource";
     }
 }

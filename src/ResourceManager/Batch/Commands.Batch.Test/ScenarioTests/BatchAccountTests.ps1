@@ -138,15 +138,17 @@ function Test-GetBatchAccountsUnderResourceGroups
 	$account11 = Get-BatchAccountName
 	$account12 = Get-BatchAccountName
 	$account21 = Get-BatchAccountName
-    $location = Get-BatchAccountProviderLocation
+    $location1 = Get-BatchAccountProviderLocation
+	$location2 = Get-BatchAccountProviderLocation 1
+	$location3 = Get-BatchAccountProviderLocation 2
 
     try 
     {
-        New-AzureResourceGroup -Name $resourceGroup1 -Location $location
-		New-AzureResourceGroup -Name $resourceGroup2 -Location $location
-		New-AzureBatchAccount -Name $account11 -ResourceGroupName $resourceGroup1 -Location $location 
-		New-AzureBatchAccount -Name $account12 -ResourceGroupName $resourceGroup1 -Location $location 
-		New-AzureBatchAccount -Name $account21 -ResourceGroupName $resourceGroup2 -Location $location 
+        New-AzureResourceGroup -Name $resourceGroup1 -Location $location1
+		New-AzureResourceGroup -Name $resourceGroup2 -Location $location1
+		New-AzureBatchAccount -Name $account11 -ResourceGroupName $resourceGroup1 -Location $location1 
+		New-AzureBatchAccount -Name $account12 -ResourceGroupName $resourceGroup1 -Location $location2 
+		New-AzureBatchAccount -Name $account21 -ResourceGroupName $resourceGroup2 -Location $location3
 
         # Test
 		$allAccounts = Get-AzureBatchAccount | Where-Object {$_.ResourceGroupName -eq $resourceGroup1 -or $_.ResourceGroupName -eq $resourceGroup2}
@@ -177,15 +179,16 @@ function Test-CreateAndRemoveBatchAccountViaPiping
     $account1 = Get-BatchAccountName
 	$account2 = Get-BatchAccountName
     $resourceGroup = Get-ResourceGroupName
-    $location = Get-BatchAccountProviderLocation
+    $location1 = Get-BatchAccountProviderLocation
+	$location2 = Get-BatchAccountProviderLocation 1 
 
 	try
 	{
-		New-AzureResourceGroup -Name $resourceGroup -Location $location
+		New-AzureResourceGroup -Name $resourceGroup -Location $location1
 
 		# Test
-		New-AzureBatchAccount -Name $account1 -ResourceGroupName $resourceGroup -Location $location
-		New-AzureBatchAccount -Name $account2 -ResourceGroupName $resourceGroup -Location $location
+		New-AzureBatchAccount -Name $account1 -ResourceGroupName $resourceGroup -Location $location1
+		New-AzureBatchAccount -Name $account2 -ResourceGroupName $resourceGroup -Location $location2
 		Get-AzureBatchAccount | where {$_.AccountName -eq $account1 -or $_.AccountName -eq $account2} | Remove-AzureBatchAccount -Force
 
 		# Assert

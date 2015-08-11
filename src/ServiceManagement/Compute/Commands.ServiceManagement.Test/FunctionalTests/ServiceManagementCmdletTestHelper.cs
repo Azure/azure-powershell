@@ -34,7 +34,6 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.Iaa
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo.Extensions.BGInfo;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo.Extensions.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo.Extesnions.CustomScript;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo.Extesnions.Dsc;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo.Extesnions.VMAccess;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo.Extensions.SqlServer;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.IaasCmdletInfo.ILB;
@@ -455,9 +454,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return SetAzureDeployment(SetAzureDeploymentCmdletInfo.SetAzureDeploymentStatusCmdletInfo(serviceName, slot, newStatus));
         }
 
-        public ManagementOperationContext SetAzureDeploymentConfig(string serviceName, string slot, string configPath)
+        public ManagementOperationContext SetAzureDeploymentConfig(string serviceName, string slot, string configPath, ExtensionConfigurationInput extConfig = null)
         {
-            return SetAzureDeployment(SetAzureDeploymentCmdletInfo.SetAzureDeploymentConfigCmdletInfo(serviceName, slot, configPath));
+            return SetAzureDeployment(SetAzureDeploymentCmdletInfo.SetAzureDeploymentConfigCmdletInfo(serviceName, slot, configPath, extConfig));
         }
 
         public ManagementOperationContext SetAzureDeploymentUpgrade(string serviceName, string slot, string mode, string packagePath, string configPath)
@@ -828,6 +827,100 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         #endregion WinRM 
 
+        #region AzurePlatformExtension
+
+        internal ExtensionCertificateConfig NewAzurePlatformExtensionCertificateConfig(
+            string storeLocation, string storeName, string thumbAlgorithm, bool thumbRequired = false)
+        {
+            return RunPSCmdletAndReturnFirst<ExtensionCertificateConfig>(
+                new NewAzurePlatformExtensionCertificateConfigCmdletInfo(storeLocation, storeName, thumbAlgorithm, thumbRequired));
+        }
+
+        internal ExtensionEndpointConfigSet NewAzurePlatformExtensionEndpointConfigSet()
+        {
+            return RunPSCmdletAndReturnFirst<ExtensionEndpointConfigSet>(
+                new NewAzurePlatformExtensionEndpointConfigSetCmdletInfo());
+        }
+
+        internal ExtensionEndpointConfigSet SetAzurePlatformExtensionEndpoint(
+            ExtensionEndpointConfigSet endpointConfig, string inputEndpoint,
+            string protocol, int port, string localPort)
+        {
+            return RunPSCmdletAndReturnFirst<ExtensionEndpointConfigSet>(
+                new SetAzurePlatformExtensionEndpointCmdletInfo(endpointConfig,
+                    inputEndpoint, null, null, protocol, port, localPort, null, null));
+        }
+        internal ExtensionEndpointConfigSet SetAzurePlatformExtensionEndpoint(
+            ExtensionEndpointConfigSet endpointConfig, string internalEndpoint,
+            string protocol, int port)
+        {
+            return RunPSCmdletAndReturnFirst<ExtensionEndpointConfigSet>(
+                new SetAzurePlatformExtensionEndpointCmdletInfo(endpointConfig,
+                    null, internalEndpoint, null, protocol, port, null, null, null));
+        }
+        internal ExtensionEndpointConfigSet SetAzurePlatformExtensionEndpoint(
+            ExtensionEndpointConfigSet endpointConfig, string instanceInputEndpoint,
+            string protocol, string localPort, int portMax, int portMin)
+        {
+            return RunPSCmdletAndReturnFirst<ExtensionEndpointConfigSet>(
+                new SetAzurePlatformExtensionEndpointCmdletInfo(endpointConfig,
+                    null, null, instanceInputEndpoint, protocol, null, localPort, portMax, portMin));
+        }
+
+        internal ExtensionEndpointConfigSet RemoveAzurePlatformExtensionEndpoint(
+            ExtensionEndpointConfigSet endpointConfig, string epName, string kind)
+        {
+            return RunPSCmdletAndReturnFirst<ExtensionEndpointConfigSet>(
+                new RemoveAzurePlatformExtensionEndpointCmdletInfo(endpointConfig, epName, kind));
+        }
+
+        internal ExtensionLocalResourceConfigSet NewAzurePlatformExtensionLocalResourceConfigSet()
+        {
+            return RunPSCmdletAndReturnFirst<ExtensionLocalResourceConfigSet>(
+                new NewAzurePlatformExtensionLocalResourceConfigSetCmdletInfo());
+        }
+
+        internal ExtensionLocalResourceConfigSet SetAzurePlatformExtensionLocalResource(
+            ExtensionLocalResourceConfigSet lrConfig, string name, int sizeInMb)
+        {
+            return RunPSCmdletAndReturnFirst<ExtensionLocalResourceConfigSet>(
+                new SetAzurePlatformExtensionLocalResourceCmdletInfo(lrConfig, name, sizeInMb));
+        }
+
+        internal ExtensionLocalResourceConfigSet RemoveAzurePlatformExtensionLocalResource(
+            ExtensionLocalResourceConfigSet lrConfig, string name)
+        {
+            return RunPSCmdletAndReturnFirst<ExtensionLocalResourceConfigSet>(
+                new RemoveAzurePlatformExtensionLocalResourceCmdletInfo(lrConfig, name));
+        }
+
+        internal ManagementOperationContext PublishAzurePlatformExtension(
+            string extensionName, string publisher, string version, string hr,
+            Uri media, string label, string description, string company,
+            ExtensionCertificateConfig certConfig, ExtensionEndpointConfigSet epConfig, ExtensionLocalResourceConfigSet lrConfig,
+            DateTime publishDate, string publicSchema, string privateSchema, string sample,
+            string eula,  Uri privacyUri, Uri homepage, string os, string regions,
+            bool blockRole, bool disallowUpgrade, bool xmlExtension, bool internalExtension, bool force)
+        {
+            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(
+                new PublishAzurePlatformExtensionCmdletInfo(
+                    extensionName, publisher, version, hr,
+                    media, label, description, company,
+                    certConfig, epConfig, lrConfig,
+                    publishDate, publicSchema, privateSchema, sample,
+                    eula, privacyUri, homepage, os, regions,
+                    blockRole, disallowUpgrade, xmlExtension, internalExtension, force));
+        }
+
+        internal ManagementOperationContext UnpublishAzurePlatformExtension(
+            string extensionName, string publisher, string version, bool force)
+        {
+            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(
+                new UnpublishAzurePlatformExtensionCmdletInfo(extensionName, publisher, version, force));
+        }
+
+        #endregion
+
         #region AzurePlatformVMImage
 
         internal ComputeImageConfig NewAzurePlatformComputeImageConfig(string offer, string sku, string version)
@@ -1128,19 +1221,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
         // Set-AzureServiceDiagnosticsExtension
         public ManagementOperationContext SetAzureServiceDiagnosticsExtension
-            (string service, string storage, string config = null, string[] roles = null, string slot = null)
+            (string service, AzureStorageContext storageContext, string config = null, string[] roles = null, string slot = null)
         {
-            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new SetAzureServiceDiagnosticsExtensionCmdletInfo(service, storage, config, roles, slot));
+            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new SetAzureServiceDiagnosticsExtensionCmdletInfo(service, storageContext, config, roles, slot));
         }
 
-        public ManagementOperationContext SetAzureServiceDiagnosticsExtension(string service, string storage, X509Certificate2 cert, string config = null, string[] roles = null, string slot = null)
+        public ManagementOperationContext SetAzureServiceDiagnosticsExtension(string service, AzureStorageContext storageContext, X509Certificate2 cert, string config = null, string[] roles = null, string slot = null)
         {
-            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new SetAzureServiceDiagnosticsExtensionCmdletInfo(service, storage, cert, config, roles, slot));
+            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new SetAzureServiceDiagnosticsExtensionCmdletInfo(service, storageContext, cert, config, roles, slot));
         }
 
-        public ManagementOperationContext SetAzureServiceDiagnosticsExtension(string service, string storage, string thumbprint, string algorithm = null, string config = null, string[] roles = null, string slot = null)
+        public ManagementOperationContext SetAzureServiceDiagnosticsExtension(string service, AzureStorageContext storageContext, string thumbprint, string algorithm = null, string config = null, string[] roles = null, string slot = null)
         {
-            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new SetAzureServiceDiagnosticsExtensionCmdletInfo(service, storage, thumbprint, algorithm, config, roles, slot));
+            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new SetAzureServiceDiagnosticsExtensionCmdletInfo(service, storageContext, thumbprint, algorithm, config, roles, slot));
         }
 
         // Get-AzureServiceDiagnosticsExtension
@@ -1305,7 +1398,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         }
 
         #endregion
-
 
         #region AzureVM
 
@@ -2133,47 +2225,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new RemoveAzureVMCustomScriptExtensionCmdletInfo(vm));
         }
         #endregion AzureVMCustomScriptExtensionCmdlets
-
-        #region AzureVMDscExtensionCmdlets
-
-        internal struct SetAzureVMDscExtensionArguments
-        {
-            public string Version;
-            public SM.IPersistentVM VM;
-            public string ConfigurationArchive;
-            public AzureStorageContext StorageContext;
-            public string ContainerName;
-            public string ConfigurationName;
-            public Hashtable ConfigurationArgument;
-            public string ConfigurationDataPath;
-        }
-
-
-        internal SM.PersistentVM SetAzureVMDscExtension(SetAzureVMDscExtensionArguments args)
-        {
-            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(
-                new SetAzureVMDscExtensionCmdletInfo(
-                    args.Version,
-                    args.VM,
-                    args.ConfigurationArchive,
-                    args.StorageContext,
-                    args.ContainerName,
-                    args.ConfigurationName,
-                    args.ConfigurationArgument,
-                    args.ConfigurationDataPath));
-        }
-
-        internal VirtualMachineDscExtensionContext GetAzureVMDscExtension(SM.IPersistentVM vm)
-        {
-            return RunPSCmdletAndReturnFirst<VirtualMachineDscExtensionContext>(new GetAzureVMDscExtensionCmdletInfo(vm));
-        }
-
-        internal SM.PersistentVM RemoveAzureVMDscExtension(SM.PersistentVM vm)
-        {
-            return RunPSCmdletAndReturnFirst<SM.PersistentVM>(new RemoveAzureVMDscExtensionCmdletInfo(vm));
-        }
-
-        #endregion AzureVMDscExtensionCmdlets
 
         #region AzureVMSqlServerExtensionCmdlets
 

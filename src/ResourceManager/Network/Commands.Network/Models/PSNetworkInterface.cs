@@ -24,14 +24,16 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSNetworkInterfaceIpConfiguration> IpConfigurations { get; set; }
 
-        public PSDnsSettings DnsSettings { get; set; }
+        public PSNetworkInterfaceDnsSettings DnsSettings { get; set; }
         
         public string MacAddress { get; set; }
 
         public bool Primary { get; set; }
 
-        public PSResourceId NetworkSecurityGroup { get; set; }
+        public bool EnableIPForwarding { get; set; }
 
+        public PSResourceId NetworkSecurityGroup { get; set; }
+        
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]
@@ -49,7 +51,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonIgnore]
         public string DnsSettingsText
         {
-            get { return JsonConvert.SerializeObject(DnsSettings, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(this.DnsSettings, Formatting.Indented); }
         }
         
         [JsonIgnore]
