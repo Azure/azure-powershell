@@ -94,6 +94,18 @@ function Get-ComputeTestLocation
     return $env:AZURE_COMPUTE_TEST_LOCATION;
 }
 
+# Get Compute Default Test Location
+function Get-ComputeDefaultLocation
+{
+    $test_location = Get-ComputeTestLocation;
+    if ($test_location -eq '' -or $test_location -eq $null)
+    {
+        $test_location = 'westus';
+    }
+
+    return $test_location;
+}
+
 # Cleans the created resource group
 function Clean-ResourceGroup($rgname)
 {
@@ -195,6 +207,36 @@ function Get-DefaultVMSize
     }
 
     return $vmSizes[0].Name;
+}
+
+
+<#
+.SYNOPSIS
+Gets default RDFE Image
+#>
+function Get-DefaultRDFEImage
+{
+    param([string] $loca = "East Asia", [string] $query = '*Windows*Data*Center*')
+
+    $d = (Azure\Get-AzureVMImage | where {$_.ImageName -like $query -and ($_.Location -like "*;$loca;*" -or $_.Location -like "$loca;*" -or $_.Location -like "*;$loca" -or $_.Location -eq "$loca")});
+
+    if ($d -eq $null)
+    {
+        return $null;
+    }
+    else
+    {
+        return $d[-1].ImageName;
+    }
+}
+
+<#
+.SYNOPSIS
+Gets default storage type string
+#>
+function Get-DefaultStorageType
+{
+    return 'Standard_GRS';
 }
 
 <#
