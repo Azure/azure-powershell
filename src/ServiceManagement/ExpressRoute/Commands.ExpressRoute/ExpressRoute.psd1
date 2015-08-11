@@ -12,7 +12,7 @@
 ModuleToProcess = '.\Microsoft.WindowsAzure.Commands.ExpressRoute.dll'
 
 # Version number of this module.
-ModuleVersion = '0.9.5'
+ModuleVersion = '0.9.6'
 
 # ID used to uniquely identify this module
 GUID = 'e5b10573-30da-456a-9319-4c0a5f8bed4a'

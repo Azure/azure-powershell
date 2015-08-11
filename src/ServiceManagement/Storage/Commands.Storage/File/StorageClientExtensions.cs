@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Diagnostics;
-using System.Linq;
-using Microsoft.WindowsAzure.Storage.File;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.File
 {
+    using System;
+    using System.Diagnostics;
+    using System.Linq;
+    using Microsoft.WindowsAzure.Storage.File;
+
     /// <summary>
     /// Provides extension methods for storage client lib.
     /// </summary>

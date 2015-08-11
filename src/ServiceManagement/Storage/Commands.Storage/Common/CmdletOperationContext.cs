@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Threading;
-using Microsoft.WindowsAzure.Storage;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
+    using System;
+    using System.Threading;
+    using Microsoft.WindowsAzure.Storage;
+
     internal class CmdletOperationContext
     {
         private static volatile bool inited;

@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.Resources
     using System.Linq;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.Resources.Models;
+    using Microsoft.Azure.Management.Resources.Models;
 
     /// <summary>
     /// Get an existing resource.
@@ -40,16 +41,18 @@ namespace Microsoft.Azure.Commands.Resources
         /// </summary>
         public override void ExecuteCmdlet()
         {
+            // remove leading and trailing whitespaces
+            this.ActionString = this.ActionString.Trim();
+
             List<PSResourceProviderOperation> operationsToDisplay;
-            Dictionary<string, string> resourceProvidersWithOperationsApi = this.ResourcesClient.GetResourceProvidersWithOperationsSupport();
 
             if (this.ActionString.Contains(WildCardCharacter))
             {
-                operationsToDisplay = this.ProcessProviderOperationsWithWildCard(ActionString, resourceProvidersWithOperationsApi);
+                operationsToDisplay = this.ProcessProviderOperationsWithWildCard(ActionString);
             }
             else
             {
-                operationsToDisplay = this.ProcessProviderOperationsWithoutWildCard(ActionString, resourceProvidersWithOperationsApi);
+                operationsToDisplay = this.ProcessProviderOperationsWithoutWildCard(ActionString);
             }
 
             this.WriteObject(operationsToDisplay, enumerateCollection: true);
@@ -58,103 +61,87 @@ namespace Microsoft.Azure.Commands.Resources
         /// <summary>
         /// Get a list of Provider operations in the case that the Actionstring input contains a wildcard
         /// </summary>
-        private List<PSResourceProviderOperation> ProcessProviderOperationsWithWildCard(string actionString, Dictionary<string, string> resourceProvidersWithOperationsApi)
+        private List<PSResourceProviderOperation> ProcessProviderOperationsWithWildCard(string actionString)
         {
-            Dictionary<string, string> resourceProvidersToQuery = GetAzureProviderOperationCommand.FilterResourceProvidersToQueryForOperations(actionString, resourceProvidersWithOperationsApi);
-            
             // Filter the list of all operation names to what matches the wildcard
             WildcardPattern wildcard = new WildcardPattern(actionString, WildcardOptions.IgnoreCase | WildcardOptions.Compiled);
 
-            IList<ResourceIdentity> resourceidentities = new List<ResourceIdentity>();
-            foreach (KeyValuePair<string, string> kvp in resourceProvidersToQuery)
-            {
-                ResourceIdentity identity = new ResourceIdentity()
-                {
-                    ResourceName = string.Empty,
-                    ResourceType = "operations",
-                    ResourceProviderNamespace = kvp.Key,
-                    ResourceProviderApiVersion = kvp.Value
-                };
+            List<ProviderOperationsMetadata> providers = new List<ProviderOperationsMetadata>();
 
-                resourceidentities.Add(identity);
-            }
-
-            return this.ResourcesClient.ListPSProviderOperations(resourceidentities).Where(operation => wildcard.IsMatch(operation.OperationName)).ToList();
-        }
-
-        /// <summary>
-        /// Filters the list of resource providers that support operations api to return a list of those providers that match the action string input
-        /// </summary>
-        private static Dictionary<string, string> FilterResourceProvidersToQueryForOperations(string actionString, Dictionary<string, string> resourceProvidersWithOperationsApi)
-        {
-            Dictionary<string, string> resourceProvidersToQuery = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
-             
             string nonWildCardPrefix = GetAzureProviderOperationCommand.GetNonWildcardPrefix(actionString);
-
             if (string.IsNullOrWhiteSpace(nonWildCardPrefix))
             {
-                // 'Get-AzureSecurableAction *' or 'Get-AzureSecurableAction */virtualmachines/*'
-                resourceProvidersToQuery = resourceProvidersWithOperationsApi;
+                // 'Get-AzureProviderOperation *' or 'Get-AzureProviderOperation */virtualmachines/*'
+                // get operations for all providers
+                providers.AddRange(this.ResourcesClient.ListProviderOperationsMetadata());
             }
             else
             {
                 // Some string exists before the wild card character - potentially the full name of the provider.
                 string providerFullName = GetAzureProviderOperationCommand.GetResourceProviderFullName(nonWildCardPrefix);
-
                 if (!string.IsNullOrWhiteSpace(providerFullName))
                 {
-                    string apiVersion;
-                    if (resourceProvidersWithOperationsApi.TryGetValue(providerFullName, out apiVersion))
-                    {
-                        // We have the full name of the provider and it supports the operations api - so it can be queried
-                        resourceProvidersToQuery.Add(providerFullName, apiVersion);
-                    }
+                    // we have the full name of the provider. 'Get-AzureProviderOperation Microsoft.Sql/servers/*'
+                    // only query for that provider
+                    providers.Add(this.ResourcesClient.GetProviderOperationsMetadata(providerFullName));
                 }
                 else
                 {
-                    // We have only a partial name of the provider, say Microsoft.*/* or Microsoft.*/*/read. 
-                    resourceProvidersToQuery = resourceProvidersWithOperationsApi
-                        .Where(kvp => kvp.Key.StartsWith(nonWildCardPrefix, StringComparison.InvariantCultureIgnoreCase))
-                        .ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+                    // We have only a partial name of the provider, say Microsoft.*/* or Microsoft.*/*/read.
+                    // query for all providers and then do prefix match on the operations
+                    providers.AddRange(this.ResourcesClient.ListProviderOperationsMetadata());
                 }
             }
 
-            return resourceProvidersToQuery;
+            return providers.SelectMany(p => GetPSOperationsFromProviderOperationsMetadata(p)).Where(operation => wildcard.IsMatch(operation.Operation)).ToList();            
         }
 
         /// <summary>
         /// Gets a list of Provider operations in the case that the Actionstring input does not contain a wildcard
         /// </summary>
-        private List<PSResourceProviderOperation> ProcessProviderOperationsWithoutWildCard(string actionString, Dictionary<string, string> resourceProvidersWithOperationsApi)
+        private List<PSResourceProviderOperation> ProcessProviderOperationsWithoutWildCard(string actionString)
         {
-            Dictionary<string, string> resourceProvidersToQuery = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase);
-            string providerFullName = GetAzureProviderOperationCommand.GetResourceProviderFullName(actionString);
-
-            string apiVersion;
-            if (resourceProvidersWithOperationsApi.TryGetValue(providerFullName, out apiVersion))
-            {
-                // We have the full name of the provider and it supports the operations api - so it can be queried
-                resourceProvidersToQuery.Add(providerFullName, apiVersion);
-            }
-
             List<PSResourceProviderOperation> operationsToDisplay = new List<PSResourceProviderOperation>();
-
-            if(resourceProvidersToQuery.Count() > 0)
+            string providerFullName = GetAzureProviderOperationCommand.GetResourceProviderFullName(actionString);
+            if (!string.IsNullOrWhiteSpace(providerFullName))
             {
-                // Get all operations exposed by this single provider and find the one where the name matches the actionstring input
-                 ResourceIdentity identity = new ResourceIdentity()
-                {
-                    ResourceName = string.Empty,
-                    ResourceType = "operations",
-                    ResourceProviderNamespace = resourceProvidersToQuery.Single().Key,
-                    ResourceProviderApiVersion = resourceProvidersToQuery.Single().Value
-                };
-
-                IList<PSResourceProviderOperation> allResourceProviderOperations = this.ResourcesClient.ListPSProviderOperations(new List<ResourceIdentity>() { identity });
-                operationsToDisplay.AddRange(allResourceProviderOperations.Where(op => string.Equals(op.OperationName, actionString, StringComparison.InvariantCultureIgnoreCase)));
+                // We have the full name of the provider. get operations metadata for this provider
+                ProviderOperationsMetadata providerOperations = this.ResourcesClient.GetProviderOperationsMetadata(providerFullName);
+                IEnumerable<PSResourceProviderOperation> flattenedProviderOperations = GetAzureProviderOperationCommand.GetPSOperationsFromProviderOperationsMetadata(providerOperations);
+                operationsToDisplay.AddRange(flattenedProviderOperations.Where(op => string.Equals(op.Operation, actionString, StringComparison.OrdinalIgnoreCase)));
             }
 
             return operationsToDisplay;
+        }
+
+        private static IEnumerable<PSResourceProviderOperation> GetPSOperationsFromProviderOperationsMetadata(ProviderOperationsMetadata providerOperationsMetadata)
+        {
+            IEnumerable<PSResourceProviderOperation> operations = providerOperationsMetadata.Operations.Where(op => GetAzureProviderOperationCommand.IsUserOperation(op))
+                        .Select(op => ToPSResourceProviderOperation(op, providerOperationsMetadata.DisplayName));
+            if (providerOperationsMetadata.ResourceTypes != null)
+            {
+                operations = operations.Concat(providerOperationsMetadata.ResourceTypes.SelectMany(rt => rt.Operations.Where(op => GetAzureProviderOperationCommand.IsUserOperation(op))
+                    .Select(op => ToPSResourceProviderOperation(op, providerOperationsMetadata.DisplayName, rt.DisplayName))));
+            }
+
+            return operations;
+        }
+
+        private static bool IsUserOperation(Operation operation)
+        {
+            return operation.Origin == null || operation.Origin.Contains("user");
+        }
+
+        private static PSResourceProviderOperation ToPSResourceProviderOperation(Operation operation, string provider, string resource = null)
+        {
+            PSResourceProviderOperation psOperation = new PSResourceProviderOperation();
+            psOperation.Operation = operation.Name;
+            psOperation.OperationName = operation.DisplayName;
+            psOperation.Description = operation.Description;
+            psOperation.ProviderNamespace = provider;
+            psOperation.ResourceName = resource ?? string.Empty;
+
+            return psOperation;
         }
 
         /// <summary>

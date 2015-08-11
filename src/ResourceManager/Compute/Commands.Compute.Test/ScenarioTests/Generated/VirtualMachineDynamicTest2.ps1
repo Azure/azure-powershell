@@ -148,7 +148,7 @@ function ps_vm_dynamic_test_func_2_pstestrg2115
         $st = Write-Verbose 'Running Test ps_vm_dynamic_test_func_2_pstestrg2115 - Creating VM';
 
         $vmname = 'vm' + $rgname;
-        $st = New-AzureVM -ResourceGroupName $rgname -Location $loc -Name $vmname -VM $vmconfig;
+        $st = New-AzureVM -ResourceGroupName $rgname -Location $loc -VM $vmconfig;
 
         # Get VM
         $st = Write-Verbose 'Running Test ps_vm_dynamic_test_func_2_pstestrg2115 - Getting VM';

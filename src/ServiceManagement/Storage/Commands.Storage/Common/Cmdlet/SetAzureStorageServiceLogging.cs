@@ -12,12 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
-using System.Security.Permissions;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 {
+    using System;
+    using System.Management.Automation;
+    using System.Security.Permissions;
     using StorageClient = WindowsAzure.Storage.Shared.Protocol;
 
     /// <summary>
@@ -162,6 +161,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
+            if (StorageServiceType.File == ServiceType)
+            {
+                throw new PSInvalidOperationException(Resources.FileNotSupportLogging);
+            }
+
             StorageClient.ServiceProperties currentServiceProperties = Channel.GetStorageServiceProperties(ServiceType, GetRequestOptions(ServiceType), OperationContext);
             StorageClient.ServiceProperties serviceProperties = new StorageClient.ServiceProperties();
             serviceProperties.Clean();

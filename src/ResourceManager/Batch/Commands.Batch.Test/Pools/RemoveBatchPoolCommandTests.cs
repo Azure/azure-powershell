@@ -15,7 +15,7 @@
 using System;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
-using Microsoft.Azure.Batch.Protocol.Entities;
+using Microsoft.Azure.Batch.Protocol.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Collections.Generic;
@@ -57,18 +57,20 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
 
-            cmdlet.Name = "testPool";
+            cmdlet.Id = "testPool";
 
-            // Don't go to the service on a DeletePool call
-            YieldInjectionInterceptor interceptor = new YieldInjectionInterceptor((opContext, request) =>
+            // Don't go to the service on a Delete CloudPool call
+            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
-                if (request is DeletePoolRequest)
+                BatchRequest<CloudPoolDeleteParameters, CloudPoolDeleteResponse> request =
+                (BatchRequest<CloudPoolDeleteParameters, CloudPoolDeleteResponse>)baseRequest;
+
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
-                    DeletePoolResponse response = new DeletePoolResponse();
-                    Task<object> task = Task<object>.Factory.StartNew(() => { return response; });
+                    CloudPoolDeleteResponse response = new CloudPoolDeleteResponse();
+                    Task<CloudPoolDeleteResponse> task = Task.FromResult(response);
                     return task;
-                }
-                return null;
+                };
             });
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
