@@ -283,3 +283,92 @@ function Test-StopResizePoolByPipeline
 	$pool = Get-AzureBatchPool_ST -Id $poolId -BatchContext $context
 	Assert-AreEqual 'Stopping' $pool.AllocationState
 }
+
+<#
+.SYNOPSIS
+Tests enabling autoscale
+#>
+function Test-EnableAutoScale
+{
+	param([string]$accountName, [string]$poolId, [string]$usePipeline)
+
+	$context = Get-AzureBatchAccountKeys $accountName
+
+	$formula = '$TargetDedicated=2'
+
+	# Verify pool starts with autoscale disabled
+	$pool = Get-AzureBatchPool_ST $poolId -BatchContext $context
+	Assert-False { $pool.AutoScaleEnabled }
+
+	if ($usePipeline -eq '1')
+	{
+		Get-AzureBatchPool_ST -Id $poolId -BatchContext $context | Enable-AzureBatchAutoScale_ST -AutoScaleFormula $formula -BatchContext $context
+	}
+	else
+	{
+		Enable-AzureBatchAutoScale_ST $poolId $formula -BatchContext $context
+	}
+
+	# Verify that autoscale was enabled. 
+	# Use a filter because it seems that the recorder sometimes gets confused when two identical URLs are sent too close together
+	$pool = Get-AzureBatchPool_ST -Filter "id eq '$poolId'" -BatchContext $context
+	Assert-True { $pool.AutoScaleEnabled }
+}
+
+<#
+.SYNOPSIS
+Tests disabling autoscale
+#>
+function Test-DisableAutoScale
+{
+	param([string]$accountName, [string]$poolId, [string]$usePipeline)
+
+	$context = Get-AzureBatchAccountKeys $accountName
+
+	# Verify pool starts with autoscale enabled
+	$pool = Get-AzureBatchPool_ST $poolId -BatchContext $context
+	Assert-True { $pool.AutoScaleEnabled }
+
+	if ($usePipeline -eq '1')
+	{
+		Get-AzureBatchPool_ST -Id $poolId -BatchContext $context | Disable-AzureBatchAutoScale_ST -BatchContext $context
+	}
+	else
+	{
+		Disable-AzureBatchAutoScale_ST $poolId -BatchContext $context
+	}
+
+	# Verify that autoscale was disabled
+	# Use a filter because it seems that the recorder sometimes gets confused when two identical URLs are sent too close together
+	$pool = Get-AzureBatchPool_ST -Filter "id eq '$poolId'" -BatchContext $context
+	Assert-False { $pool.AutoScaleEnabled }
+}
+
+<#
+.SYNOPSIS
+Tests evaluating an autoscale formula
+#>
+function Test-EvaluateAutoScale
+{
+	param([string]$accountName, [string]$poolId, [string]$usePipeline)
+
+	$context = Get-AzureBatchAccountKeys $accountName
+
+	$formula = '$TargetDedicated=2'
+
+	# Verify pool starts with autoscale enabled
+	$pool = Get-AzureBatchPool_ST $poolId -BatchContext $context
+	Assert-True { $pool.AutoScaleEnabled }
+
+	if ($usePipeline -eq '1')
+	{
+		$evalResult = Get-AzureBatchPool_ST -Id $poolId -BatchContext $context | Test-AzureBatchAutoScale_ST -AutoScaleFormula $formula -BatchContext $context
+	}
+	else
+	{
+		$evalResult = Test-AzureBatchAutoScale_ST $poolId $formula -BatchContext $context
+	}
+
+	# Verify that the evaluation result matches expectation
+	Assert-True { $evalResult.AutoScaleRun.Results.Contains($formula) }
+}
