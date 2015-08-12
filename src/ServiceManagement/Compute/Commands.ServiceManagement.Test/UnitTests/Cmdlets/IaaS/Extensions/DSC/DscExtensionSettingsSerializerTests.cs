@@ -18,8 +18,8 @@ using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Test;
 using Xunit;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -32,7 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Extensions.DSC
     public class DscExtensionSettingsSerializerTests
     {
         [Fact]
-        [Trait(Category.AcceptanceType, Category.BVT)]
+        [Trait(Category.Functional, Category.BVT)]
         public void TestPsCredential()
         {
             const string userName = "user";
@@ -67,7 +67,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Extensions.DSC
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.BVT)]
+        [Trait(Category.Functional, Category.BVT)]
         public void TestString()
         {
             const string arg = "argument";
@@ -86,7 +86,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Extensions.DSC
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.BVT)]
+        [Trait(Category.Functional, Category.BVT)]
         public void TestInt()
         {
             const string arg = "argument";
@@ -105,7 +105,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Extensions.DSC
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.BVT)]
+        [Trait(Category.Functional, Category.BVT)]
         public void TestBool()
         {
             const string arg = "argument";
@@ -123,7 +123,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Extensions.DSC
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.BVT)]
+        [Trait(Category.Functional, Category.BVT)]
         public void TestChar()
         {
             const string arg = "argument";

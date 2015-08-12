@@ -484,7 +484,15 @@ function Run-ServiceExtensionSetCmdletTests
     try
     {
         # New-AzureDeployment (in Azure.psd1)
-        $cspkg = '.\Resources\ServiceManagement\Files\OneWebOneWorker.cspkg';
+        $testMode = Get-ComputeTestMode;
+        if ($testMode.ToLower() -ne 'playback')
+        {
+            $cspkg = '.\Resources\ServiceManagement\Files\OneWebOneWorker.cspkg';
+        }
+        else
+        {
+            $cspkg = "https://${storageName}.blob.azure.windows.net/blob/OneWebOneWorker.cspkg";
+        }
         $cscfg = '.\Resources\ServiceManagement\Files\OneWebOneWorker.cscfg';
 
         # Staging 1st
@@ -538,7 +546,15 @@ function Run-ServiceDeploymentExtensionCmdletTests
     try
     {
         # New-AzureDeployment (in Azure.psd1)
-        $cspkg = '.\Resources\ServiceManagement\Files\OneWebOneWorker.cspkg';
+        $testMode = Get-ComputeTestMode;
+        if ($testMode.ToLower() -ne 'playback')
+        {
+            $cspkg = '.\Resources\ServiceManagement\Files\OneWebOneWorker.cspkg';
+        }
+        else
+        {
+            $cspkg = "https://${storageName}.blob.azure.windows.net/blob/OneWebOneWorker.cspkg";
+        }
         $cscfg = '.\Resources\ServiceManagement\Files\OneWebOneWorker.cscfg';
 
         $rdpCfg1 = New-AzureServiceRemoteDesktopExtensionConfig -Credential $credential -Role WebRole1
