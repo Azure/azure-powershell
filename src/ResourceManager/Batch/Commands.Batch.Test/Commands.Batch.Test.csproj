@@ -173,11 +173,14 @@
     <Compile Include="Jobs\NewBatchJobCommandTests.cs" />
     <Compile Include="Jobs\RemoveBatchJobCommandTests.cs" />
     <Compile Include="Models\BatchAccountContextTest.cs" />
+    <Compile Include="Pools\DisableBatchAutoScaleCommandTests.cs" />
+    <Compile Include="Pools\EnableBatchAutoScaleCommandTests.cs" />
     <Compile Include="Pools\GetBatchPoolCommandTests.cs" />
     <Compile Include="Pools\NewBatchPoolCommandTests.cs" />
     <Compile Include="Pools\RemoveBatchPoolCommandTests.cs" />
     <Compile Include="Pools\StartBatchPoolResizeCommandTests.cs" />
     <Compile Include="Pools\StopBatchPoolResizeCommandTests.cs" />
+    <Compile Include="Pools\TestBatchAutoScaleCommandTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScenarioTests\BatchAccountTests.cs" />
     <Compile Include="ScenarioTests\BatchController.cs" />
@@ -379,6 +382,24 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.PoolTests\TestDeletePoolPipeline.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.PoolTests\TestDisableAutoScaleById.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.PoolTests\TestDisableAutoScaleByPipeline.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.PoolTests\TestEnableAutoScaleById.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.PoolTests\TestEnableAutoScaleByPipeline.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.PoolTests\TestEvaluateAutoScaleById.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.PoolTests\TestEvaluateAutoScaleByPipeline.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.PoolTests\TestGetPoolById.json">
