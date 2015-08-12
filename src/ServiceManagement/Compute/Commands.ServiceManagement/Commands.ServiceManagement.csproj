@@ -171,6 +171,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IaaS\Extensions\DSC\DscExtensionCmdletConstants.cs" />
+    <Compile Include="IaaS\Extensions\DSC\DscExtensionPrivateSettings.cs" />
+    <Compile Include="IaaS\Extensions\DSC\DscExtensionPublicSettings.cs" />
+    <Compile Include="IaaS\Extensions\DSC\DscExtensionSettingsSerializer.cs" />
+    <Compile Include="IaaS\Extensions\DSC\Exceptions\GetDscResourceException.cs" />
+    <Compile Include="IaaS\Extensions\DSC\Publish\ConfigurationParseResult.cs" />
+    <Compile Include="IaaS\Extensions\DSC\Publish\ConfigurationParsingHelper.cs" />
+    <Compile Include="IaaS\Extensions\DSC\Publish\DscExtensionPublishCmdletCommonBase.cs" />
     <Compile Include="IaaS\Network\AddAzureVirtualIP.cs" />
     <Compile Include="AffinityGroups\GetAzureAffinityGroup.cs" />
     <Compile Include="AffinityGroups\NewAzureAffinityGroup.cs" />
