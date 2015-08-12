@@ -127,16 +127,16 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>ItemName</Label>
-            <Width>18</Width>
+            <Label>Name</Label>
+            <Width>32</Width>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ProtectionStatus</Label>
-            <Width>18</Width>
+            <Width>32</Width>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>RecoveryPointsCount</Label>
-            <Width>22</Width>
+            <Width>32</Width>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ProtectionPolicyName</Label>
@@ -147,7 +147,7 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>ItemName</PropertyName>
+                <PropertyName>Name</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ProtectionStatus</PropertyName>

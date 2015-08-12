@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
     public class AzureBackupItemContextObject : AzureBackupContainerContextObject
     {
         /// <summary>
-        /// DataSourceId of Azure Backup Item
+        /// DataSourceName of Azure Backup Item
         /// </summary>
         public string ItemName { get; set; }
 
