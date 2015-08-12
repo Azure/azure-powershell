@@ -121,7 +121,7 @@
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Network.7.0.3\lib\net40\Microsoft.WindowsAzure.Management.Network.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.RemoteApp">
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.RemoteApp.2.0.0\lib\net40\Microsoft.WindowsAzure.Management.RemoteApp.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.RemoteApp.2.0.2\lib\net40\Microsoft.WindowsAzure.Management.RemoteApp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAzure.Management.Storage">
       <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Storage.5.1.1\lib\net40\Microsoft.WindowsAzure.Management.Storage.dll</HintPath>
@@ -206,6 +206,7 @@
     <Compile Include="TemplateImage\RemoveAzureRemoteAppTemplateImage.cs" />
     <Compile Include="TemplateImage\RenameAzureRemoteAppTemplateImage.cs" />
     <Compile Include="TemplateImage\TemplateImage.cs" />
+    <Compile Include="Vm\RestartAzureRemoteAppVm.cs" />
     <Compile Include="Vnet\GetAzureRemoteAppVnet.cs" />
     <Compile Include="Vnet\GetAzureRemoteAppVpnDeviceConfigScript.cs" />
     <Compile Include="Vnet\GetAzureRemoteAppVpnDevice.cs" />
