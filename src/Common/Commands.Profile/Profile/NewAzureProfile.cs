@@ -175,8 +175,9 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                         var servicePrincipalAccount = new AzureAccount
                         {
                             Id = settings.Credential.UserName,
-                            Type = AzureAccount.AccountType.ServicePrincipal
+                            Type = AzureAccount.AccountType.ServicePrincipal,
                         };
+                        servicePrincipalAccount.SetOrAppendProperty(AzureAccount.Property.Tenants, settings.Tenant);
                         profileClient.InitializeProfile(settings.Environment, new Guid(settings.SubscriptionId),
                             servicePrincipalAccount,
                             settings.Credential.Password, settings.StorageAccount);
