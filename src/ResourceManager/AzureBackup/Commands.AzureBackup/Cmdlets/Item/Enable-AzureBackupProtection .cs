@@ -62,13 +62,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     }
                     else
                     {
-                        throw new Exception("Uknown item type");
+                        throw new Exception("Unknown item type");
                     }
                 }
 
                 else
                 {
-                    throw new Exception("Uknown item type");
+                    throw new Exception("Unknown item type");
                 }
 
                 var operationId = AzureBackupClient.EnableProtection(Item.ContainerUniqueName, itemName, input);
