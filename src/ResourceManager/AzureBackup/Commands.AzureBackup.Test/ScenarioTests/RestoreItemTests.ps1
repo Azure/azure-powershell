@@ -22,5 +22,5 @@ function Test-RestoreAzureBackUpItem
 	$azureBackUpRecoveryPoint.ContainerUniqueName = $ContainerName
 	$azureBackUpRecoveryPoint.ItemName = $ItemName
 	$azureBackUpRecoveryPoint.RecoveryPointName = $RecoveryPointName
-	$jobId = Restore-AzureBackupItem -RecoveryPoint $azureBackUpRecoveryPoint -StorageAccountName $StorageAccountName
+	$jobId = Restore-AzureRMBackupItem -RecoveryPoint $azureBackUpRecoveryPoint -StorageAccountName $StorageAccountName
 }

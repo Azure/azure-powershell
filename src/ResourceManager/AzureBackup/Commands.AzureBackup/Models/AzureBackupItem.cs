@@ -27,6 +27,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
     public class AzureBackupItem : AzureBackupItemContextObject
     {
         /// <summary>
+        /// Friendly Name for the Azure BackupItem
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
         /// Status for the Azure Backup Item
         /// </summary>
         public string DataSourceStatus { get; set; }
@@ -67,6 +72,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
             DataSourceStatus = datasource.Properties.ProtectionStatus;
             ProtectionStatus = datasource.Properties.Status;
             ItemName = datasource.Name;
+            Name = datasource.Properties.FriendlyName;
 
             if (datasource.Properties.ProtectionPolicyId != null)
             {
@@ -83,6 +89,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         {
             ProtectionStatus = pPOItem.Properties.Status;
             ItemName = pPOItem.Name;
+            Name = pPOItem.Properties.FriendlyName;
             Type = pPOItem.Properties.ItemType;
         }
     }

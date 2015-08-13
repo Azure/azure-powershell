@@ -31,8 +31,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Get list of containers
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Unregister, "AzureBackupContainer")]
-    public class UnregisterAzureBackupContainer : AzureBackupContainerCmdletBase
+    [Cmdlet(VerbsLifecycle.Unregister, "AzureRMBackupContainer")]
+    public class UnregisterAzureRMBackupContainer : AzureBackupContainerCmdletBase
     {
         private PowerShellCustomConfirmation customerConfirmation;
 
