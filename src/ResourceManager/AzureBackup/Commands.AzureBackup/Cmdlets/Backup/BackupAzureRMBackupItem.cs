@@ -24,7 +24,7 @@ using Microsoft.Azure.Commands.AzureBackup.Models;
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     /// <summary>
-    /// Get list of containers
+    /// Backup an azue backup item
     /// </summary>
     [Cmdlet(VerbsData.Backup, "AzureRMBackupItem"), OutputType(typeof(AzureBackupJob))]
     public class BackupAzureRMBackupItem : AzureBackupDSCmdletBase
