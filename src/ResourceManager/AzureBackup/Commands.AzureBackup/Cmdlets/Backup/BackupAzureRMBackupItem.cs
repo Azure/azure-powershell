@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Get list of containers
     /// </summary>
-    [Cmdlet(VerbsData.Backup, "AzureBackupItem"), OutputType(typeof(AzureBackupJob))]
-    public class TriggerAzureBackup : AzureBackupDSCmdletBase
+    [Cmdlet(VerbsData.Backup, "AzureRMBackupItem"), OutputType(typeof(AzureBackupJob))]
+    public class BackupAzureRMBackupItem : AzureBackupDSCmdletBase
     {
         public override void ExecuteCmdlet()
         {
