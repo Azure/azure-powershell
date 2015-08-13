@@ -1517,7 +1517,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                             Properties = new DeploymentOperationProperties()
                             {
                                 ProvisioningState = ProvisioningState.Failed,
-                                StatusMessage = "A really bad error occured",
+                                StatusMessage = "{\"Code\":\"Conflict\"}",
                                 TargetResource = new TargetResource()
                                 {
                                     ResourceType = "Microsoft.Website",
@@ -1545,7 +1545,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 f => f(string.Format("Resource {0} '{1}' failed with message '{2}'",
                         "Microsoft.Website",
                         resourceName,
-                        "A really bad error occured")),
+                        "{\"Code\":\"Conflict\"}")),
                 Times.Once());
         }
 
