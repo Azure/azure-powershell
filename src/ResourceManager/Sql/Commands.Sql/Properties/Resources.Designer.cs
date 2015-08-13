@@ -61,6 +61,33 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to More than one Active Directory group with the display name &apos;{0}&apos; was found. Please provide an object id to select the correct group..
+        /// </summary>
+        internal static string ADGroupMoreThanOneFound {
+            get {
+                return ResourceManager.GetString("ADGroupMoreThanOneFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find the Azure Active Directory object &apos;{0}&apos;. Please make sure that the user or application service principal you are authorizing is registered in the current subscription&apos;s Azure Active directory..
+        /// </summary>
+        internal static string ADObjectNotFound {
+            get {
+                return ResourceManager.GetString("ADObjectNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More than one Azure Active Directory user with the display name &apos;{0}&apos; was found. Please provide an object id to select the correct user..
+        /// </summary>
+        internal static string ADUserMoreThanOneFound {
+            get {
+                return ResourceManager.GetString("ADUserMoreThanOneFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Database with name: &apos;{0}&apos; already exists in server &apos;{1}&apos;..
         /// </summary>
         internal static string DatabaseNameExists {
@@ -169,6 +196,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please set a valid tenant id in the AzureEnvironment..
+        /// </summary>
+        internal static string InvalidTenantId {
+            get {
+                return ResourceManager.GetString("InvalidTenantId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A data masking rule with the id &apos;{0}&apos; already exist.
         /// </summary>
         internal static string NewDataMaskingRuleIdAlreadyExistError {
@@ -246,6 +282,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string RemoveAzureSqlDatabaseWarning {
             get {
                 return ResourceManager.GetString("RemoveAzureSqlDatabaseWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing Azure Sql Server Active Directory Administrator on server &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemoveAzureSqlServerActiveDirectoryAdministratorDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlServerActiveDirectoryAdministratorDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Server Active Directory Administrator on server &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlServerActiveDirectoryAdministratorWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlServerActiveDirectoryAdministratorWarning", resourceCulture);
             }
         }
         
