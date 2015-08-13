@@ -228,6 +228,31 @@ function Test-NewDeploymentAndProviderRegistration
     }
 }
 
+<#
+.SYNOPSIS
+Tests deployment delete is successful
+#>
+function Test-RemoveDeployment
+{
+    # Setup
+    $deploymentName = "Test"
+    $templateUri = "https://gallery.azure.com/artifact/20140901/Microsoft.ResourceGroup.1.0.0/DeploymentTemplates/Template.json"
+    $rgName = "TestSDK"
+
+    try
+    {
+        # Test
+        New-AzureResourceGroup -Name $rgName -Location "west us"
+        $deployment = New-AzureResourceGroupDeployment -ResourceGroupName $rgName -Name $deploymentName -TemplateUri $templateUri
+        Assert-True { Remove-AzureResourceGroupDeployment -ResourceGroupName $deployment.ResourceGroupName -Name $deployment.DeploymentName -Force -PassThru }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgName
+    }
+}
+
 function Test-NewResourceGroupWithTemplateThenGetWithAndWithoutDetails
 {
     # Setup
