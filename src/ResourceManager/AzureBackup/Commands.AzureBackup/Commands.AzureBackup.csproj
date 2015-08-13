@@ -131,7 +131,7 @@
     <Compile Include="AzureBackupVaultCmdletBase.cs" />
     <Compile Include="AzureBackupCmdletBase.cs" />
     <Compile Include="AzureBackupCmdletHelpMessage.cs" />
-    <Compile Include="Cmdlets\Backup\TriggerBackUp.cs" />
+    <Compile Include="Cmdlets\Backup\BackupAzureRMBackupItem.cs" />
     <Compile Include="Cmdlets\Container\EnableAzureBackupContainerReregistration.cs" />
     <Compile Include="Cmdlets\Container\GetAzureBackupContainer.cs" />
     <Compile Include="Cmdlets\Container\RegisterAzureRMBackupContainer.cs" />
@@ -149,8 +149,8 @@
     <Compile Include="Cmdlets\ProtectionPolicy\NewAzureBackupRetentionPolicyObject.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\RemoveAzureBackupProtectionPolicy.cs" />
     <Compile Include="Cmdlets\ProtectionPolicy\SetAzureBackupProtectionPolicy.cs" />
-    <Compile Include="Cmdlets\RecoveryPoint\GetAzureBackupRecoveryPoint.cs" />
-    <Compile Include="Cmdlets\Restore\TriggerRestore.cs" />
+    <Compile Include="Cmdlets\RecoveryPoint\GetAzureRMBackupRecoveryPoint.cs" />
+    <Compile Include="Cmdlets\Restore\RestoreAzureRMBackupItem.cs" />
     <Compile Include="Cmdlets\VaultCredentials\GetAzureBackupVaultCredentials.cs" />
     <Compile Include="Cmdlets\Vault\RemoveAzureBackupVault.cs" />
     <Compile Include="Cmdlets\Vault\GetAzureBackupVault.cs" />
