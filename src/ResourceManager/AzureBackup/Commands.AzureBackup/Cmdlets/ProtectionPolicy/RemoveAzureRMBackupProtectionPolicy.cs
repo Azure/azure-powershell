@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Remove a protection policy
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureBackupProtectionPolicy")]
-    public class RemoveAzureBackupProtectionPolicy : AzureBackupPolicyCmdletBase
+    [Cmdlet(VerbsCommon.Remove, "AzureRMBackupProtectionPolicy")]
+    public class RemoveAzureRMBackupProtectionPolicy : AzureBackupPolicyCmdletBase
     {
         public override void ExecuteCmdlet()
         {
