@@ -19,5 +19,5 @@ function Test-BackUpAzureBackUpItem
 	$azureBackUpItem.Location = $Location
 	$azureBackUpItem.ContainerUniqueName = $ContainerName
 	$azureBackUpItem.ItemName = $ItemName
-	$jobId = Backup-AzureBackupItem -Item $azureBackUpItem
+	$jobId = Backup-AzureRMBackupItem -Item $azureBackUpItem
 }
