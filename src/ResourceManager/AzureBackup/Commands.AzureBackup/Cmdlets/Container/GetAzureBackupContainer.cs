@@ -87,7 +87,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             // So if requested Status is not Registered, return an empty list.
             // Machine containers don't have a resource group.
             // So, if a resource group is passed, return an empty list.
-            if (Status != AzureBackupContainerRegistrationStatus.Registered ||
+            if (Status == AzureBackupContainerRegistrationStatus.NotRegistered ||
+                Status == AzureBackupContainerRegistrationStatus.Registering ||
                 !string.IsNullOrEmpty(ManagedResourceGroupName))
             {
                 return new List<AzureBackupContainer>();
