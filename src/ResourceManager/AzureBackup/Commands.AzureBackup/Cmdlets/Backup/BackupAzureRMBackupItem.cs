@@ -24,10 +24,10 @@ using Microsoft.Azure.Commands.AzureBackup.Models;
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     /// <summary>
-    /// Get list of containers
+    /// Backup Azue Backup Item
     /// </summary>
-    [Cmdlet(VerbsData.Backup, "AzureBackupItem"), OutputType(typeof(AzureBackupJob))]
-    public class TriggerAzureBackup : AzureBackupDSCmdletBase
+    [Cmdlet(VerbsData.Backup, "AzureRMBackupItem"), OutputType(typeof(AzureBackupJob))]
+    public class BackupAzureRMBackupItem : AzureBackupDSCmdletBase
     {
         public override void ExecuteCmdlet()
         {
