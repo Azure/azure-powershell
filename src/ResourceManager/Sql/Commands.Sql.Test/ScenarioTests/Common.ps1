@@ -85,15 +85,19 @@ function Create-DataMaskingTestEnvironment ($testSuffix)
 	$params = Get-SqlDataMaskingTestEnvironmentParameters $testSuffix
 	New-AzureResourceGroup -Name $params.rgname -Location "Australia East" -TemplateFile ".\Templates\sql-ddm-test-env-setup.json" -serverName $params.serverName -databaseName $params.databaseName -EnvLocation "Australia East" -administratorLogin $params.userName -Force
 	$fullServerName = $params.serverName + ".database.windows.net"
+	
 	$uid = $params.userName
 	$pwd = $params.pwd
+		
 	$databaseName=$params.databaseName
 	$connectionString = "Server=$fullServerName;uid=$uid; pwd=$pwd;Database=$databaseName;Integrated Security=False;"
+
 	$connection = New-Object System.Data.SqlClient.SqlConnection
 	$connection.ConnectionString = $connectionString
 	try
 	{
 		$connection.Open()
+		
 		$table1 = $params.table1
 		$column1 = $params.column1
 		$columnInt = $params.columnInt
@@ -102,11 +106,10 @@ function Create-DataMaskingTestEnvironment ($testSuffix)
 		$column2 = $params.column2
 		$columnFloat = $params.columnFloat
 
-		$query = "CREATE TABLE $table1 ($column1 NVARCHAR(20)NOT NULL, $columnInt INT);CREATE TABLE $table2 ($column2 NVARCHAR(20)NOT NULL, $columnFloat DECIMAL(6,3));"
+		$query = "CREATE TABLE $table1 ($column1 NVARCHAR(20)NOT NULL, $columnInt INT);CREATE TABLE $table2 ($column2 NVARCHAR(20)NOT NULL, $columnFloat DECIMAL(6,3));CREATE USER $uid FOR LOGIN $uid;"
 		$command = $connection.CreateCommand()
-		$command.CommandText = $query
+		$command.CommandText = $query		
 		$command.ExecuteReader()
-		
 	}
 	catch
 	{
