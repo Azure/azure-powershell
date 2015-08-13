@@ -23,7 +23,7 @@ using Microsoft.Azure.Commands.AzureBackup.Models;
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     /// <summary>
-    /// Get list of azure recovery points
+    /// Get list of Azure Recovery Points
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRMBackupRecoveryPoint"), OutputType(typeof(AzureBackupRecoveryPoint), typeof(List<AzureBackupRecoveryPoint>))]
     public class GetAzureRMBackupRecoveryPoint : AzureBackupDSCmdletBase
