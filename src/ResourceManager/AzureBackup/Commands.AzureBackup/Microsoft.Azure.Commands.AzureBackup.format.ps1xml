@@ -128,19 +128,23 @@
         <TableHeaders>
           <TableColumnHeader>
             <Label>Name</Label>
-            <Width>32</Width>
+            <Width>26</Width>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ProtectionStatus</Label>
-            <Width>32</Width>
+            <Width>22</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DataSourceStatus</Label>
+            <Width>22</Width>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>RecoveryPointsCount</Label>
-            <Width>32</Width>
+            <Width>22</Width>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ProtectionPolicyName</Label>
-            <Width>36</Width>
+            <Width>22</Width>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -151,6 +155,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ProtectionStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>DataSourceStatus</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>RecoveryPointsCount</PropertyName>
