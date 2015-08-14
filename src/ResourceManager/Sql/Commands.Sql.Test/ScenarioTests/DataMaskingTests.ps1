@@ -59,24 +59,24 @@ function Test-DatabaseDataMaskingPrivilegedLoginsChanges
 {
 
 	# Setup
-	$testSuffix = 30777
+	$testSuffix = 30371
 	 $params = Create-DataMaskingTestEnvironment $testSuffix
 
 	try
 	{
 		# Test
-		Set-AzureSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -PrivilegedLogins "A;B;C" 
+		Set-AzureSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -PrivilegedLogins "dbo" 
 		$policy = Get-AzureSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
 	
 		# Assert
-		Assert-AreEqual $policy.PrivilegedLogins  "A;B;C"
+		Assert-AreEqual $policy.PrivilegedLogins  "dbo"
 
 		# Test
-		Set-AzureSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
+		Set-AzureSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -DataMaskingState "Disabled" 
 		$policy = Get-AzureSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
 	
 		# Assert
-		Assert-AreEqual $policy.PrivilegedLogins  "A;B;C"
+		Assert-AreEqual $policy.PrivilegedLogins  "dbo"
 
 		# Test
 		Set-AzureSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -PrivilegedLogins ""  
