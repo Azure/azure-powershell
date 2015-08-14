@@ -14,7 +14,7 @@ $RecoveryPointName = "12520735098347"
 
 function Test-GetAzureRecoveryPoints
 {
-    $azureBackUpItem = New-Object Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupItem
+    $azureBackUpItem = New-Object Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem
 	$azureBackUpItem.ResourceGroupName = $ResourceGroupName
 	$azureBackUpItem.ResourceName = $ResourceName
 	$azureBackUpItem.Location = $Location
@@ -34,7 +34,7 @@ function Test-GetAzureRecoveryPoints
 
 function Test-GetAzureRecoveryPoint
 {
-    $azureBackUpItem = New-Object Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupItem
+    $azureBackUpItem = New-Object Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem
 	$azureBackUpItem.ResourceGroupName = $ResourceGroupName
 	$azureBackUpItem.ResourceName = $ResourceName
 	$azureBackUpItem.Location = $Location
