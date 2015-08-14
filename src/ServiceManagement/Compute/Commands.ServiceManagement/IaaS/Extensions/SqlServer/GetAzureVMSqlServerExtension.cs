@@ -55,7 +55,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 
                     return this.GetExtensionContext(r);
                 }), true);
-        } 
+        }
 
         protected override void ProcessRecord()
         {
@@ -69,7 +69,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         /// <returns></returns>
         private VirtualMachineSqlServerExtensionContext GetExtensionContext(ResourceExtensionReference r)
         {
-            string extensionName= VirtualMachineSqlServerExtensionCmdletBase.ExtensionPublishedNamespace + "."
+            string extensionName = VirtualMachineSqlServerExtensionCmdletBase.ExtensionPublishedNamespace + "."
                                + VirtualMachineSqlServerExtensionCmdletBase.ExtensionPublishedName;
 
             VirtualMachineSqlServerExtensionContext context = new VirtualMachineSqlServerExtensionContext
@@ -162,7 +162,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                         NSM.DeploymentSlot.Production);
                 }
                 catch (CloudException e)
-                {  
+                {
                     if (e.Response.StatusCode != HttpStatusCode.NotFound)
                     {
                         throw;
@@ -231,7 +231,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                         autoBackupSettings.RetentionPeriod = publicAutoBackupSettings.RetentionPeriod;
                         autoBackupSettings.StorageAccessKey = "***";
                         autoBackupSettings.StorageUrl = "***";
-                        autoBackupSettings.Password = "***";
+
+                        if (autoBackupSettings.EnableEncryption)
+                        {
+                            autoBackupSettings.Password = "***";
+                        }
                     }
                 }
                 catch (JsonReaderException jre)
@@ -246,7 +250,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         }
 
         private KeyVaultCredentialSettings DeSerializeKeyVaultCredentialSettings(string category, string input)
-        { 
+        {
             KeyVaultCredentialSettings kvtSettings = new KeyVaultCredentialSettings();
 
             if (!string.IsNullOrEmpty(input))
@@ -256,13 +260,17 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                     // we only print the public settings
                     PublicKeyVaultCredentialSettings publicSettings = JsonConvert.DeserializeObject<PublicKeyVaultCredentialSettings>(input);
 
-                    if(publicSettings != null)
+                    if (publicSettings != null)
                     {
                         kvtSettings.CredentialName = publicSettings.CredentialName;
                         kvtSettings.Enable = publicSettings.Enable;
-                        kvtSettings.ServicePrincipalName = "***";
-                        kvtSettings.ServicePrincipalSecret = "***";
-                        kvtSettings.AzureKeyVaultUrl = "***";
+
+                        if (kvtSettings.Enable)
+                        {
+                            kvtSettings.ServicePrincipalName = "***";
+                            kvtSettings.ServicePrincipalSecret = "***";
+                            kvtSettings.AzureKeyVaultUrl = "***";
+                        }
                     }
                 }
                 catch (JsonReaderException jre)

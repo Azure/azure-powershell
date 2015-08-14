@@ -110,6 +110,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         internal void ExecuteCommand()
         {
             ValidateParameters();
+
+            if ((this.KeyVaultCredentialSettings != null) && !this.KeyVaultCredentialSettings.Enable)
+            {
+                WriteVerboseWithTimestamp("SQL Server Azure key vault disabled. Previously configured credentials are not removed but no status will be reported");
+            }
+
             RemovePredicateExtensions();
             AddResourceExtension();
             WriteObject(VM);
