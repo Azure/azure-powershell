@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Get list of containers
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureBackupContainer"), OutputType(typeof(List<AzureBackupContainer>))]
-    public class GetAzureBackupContainer : AzureBackupVaultCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRMBackupContainer"), OutputType(typeof(List<AzureBackupContainer>))]
+    public class GetAzureRMBackupContainer : AzureBackupVaultCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ManagedResourceName)]
         [ValidateNotNullOrEmpty]

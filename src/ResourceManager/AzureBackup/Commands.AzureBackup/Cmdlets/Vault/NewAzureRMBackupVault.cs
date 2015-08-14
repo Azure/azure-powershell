@@ -16,30 +16,46 @@ using Microsoft.Azure.Commands.AzureBackup.Helpers;
 using Microsoft.Azure.Commands.AzureBackup.Models;
 using System;
 using System.Management.Automation;
-using CmdletModel = Microsoft.Azure.Commands.AzureBackup.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     /// <summary>
-    /// Command to update an azure backup vault in a subscription.
+    /// Command to create an azure backup vault in a subscription
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureBackupVault"), OutputType(typeof(CmdletModel.AzurePSBackupVault))]
-    public class SetAzureBackupVault : AzureBackupVaultCmdletBase
+    [Cmdlet(VerbsCommon.New, "AzureRMBackupVault"), OutputType(typeof(AzurePSBackupVault))]
+    public class NewAzureRMBackupVault : AzureBackupCmdletBase
     {
-        [Parameter(Position = 1, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.StorageType)]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.ResourceGroupName)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.ResourceName)]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
+        [Parameter(Position = 2, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.Location)]
+        [ValidateNotNullOrEmpty]
+        public string Region { get; set; }
+
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.StorageType)]
         public AzureBackupVaultStorageType Storage { get; set; }
 
         // TODO: Add support for tags
         //[Alias("Tags")]
         //[Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ResourceTags)]
-        //public Hashtable[] Tag { get; set; }
+        //public Hashtable[] Tag { get; set; }        
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
             ExecutionBlock(() =>
             {
+                base.ExecuteCmdlet();
+                InitializeAzureBackupCmdlet(ResourceGroupName, Name);
+
+                WriteDebug(String.Format("Creating backup vault with ResourceGroupName: {0}, ResourceName: {1}", ResourceGroupName, Name));
+
+                var createdVault = AzureBackupClient.CreateOrUpdateAzureBackupVault(ResourceGroupName, Name, Region);
+
                 if (Storage != 0)
                 {
                     WriteDebug(String.Format("Setting storage type for the resource, Type: {0}", Storage));
@@ -47,8 +63,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     AzureBackupClient.UpdateStorageType(Storage.ToString());
                 }
 
-                var backupVault = AzureBackupClient.GetVault(Vault.ResourceGroupName, Vault.Name);
-                WriteObject(VaultHelpers.GetCmdletVault(backupVault, AzureBackupClient.GetStorageTypeDetails(Vault.ResourceGroupName, Vault.Name)));
+                WriteObject(VaultHelpers.GetCmdletVault(createdVault, AzureBackupClient.GetStorageTypeDetails(VaultHelpers.GetResourceGroup(createdVault.Id), createdVault.Name)));
             });
         }
     }

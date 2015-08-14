@@ -19,8 +19,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Command to remove an azure backup vault in the subscription
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureBackupVault")]
-    public class RemoveAzureBackupVault : AzureBackupVaultCmdletBase
+    [Cmdlet(VerbsCommon.Remove, "AzureRMBackupVault")]
+    public class RemoveAzureRMBackupVault : AzureBackupVaultCmdletBase
     {
         public override void ExecuteCmdlet()
         {
