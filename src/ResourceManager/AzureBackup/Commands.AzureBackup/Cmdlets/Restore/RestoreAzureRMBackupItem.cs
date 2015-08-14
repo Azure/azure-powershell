@@ -41,9 +41,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             ExecutionBlock(() =>
             {
                 WriteDebug("Making client call");
-                Guid jobId = Guid.NewGuid();
-                WriteDebug("Triggered Restore. Converting response");
-
                 AzureIaaSVMRecoveryInputsCSMObject azureIaaSVMRecoveryInputsCSMObject = new AzureIaaSVMRecoveryInputsCSMObject()
                 {
                     CloudServiceName = string.Empty,
