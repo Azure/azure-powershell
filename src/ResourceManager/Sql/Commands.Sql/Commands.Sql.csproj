@@ -103,11 +103,25 @@
     <Compile Include="Secure Connection\Model\DatabaseSecureConnectionPolicyModel.cs" />
     <Compile Include="Secure Connection\Services\SecureConnectionEndpointsCommunicator.cs" />
     <Compile Include="Secure Connection\Services\SqlSecureConnectionAdapter.cs" />
+    <Compile Include="ServerActiveDirectoryAdministrator\Cmdlet\AzureSqlServerActiveDirectoryAdministratorCmdletBase.cs" />
+    <Compile Include="ServerActiveDirectoryAdministrator\Cmdlet\GetAzureSqlServerActiveDirectoryAdministrator.cs" />
+    <Compile Include="ServerActiveDirectoryAdministrator\Cmdlet\RemoveAzureSqlServerActiveDirectoryAdministrator.cs" />
+    <Compile Include="ServerActiveDirectoryAdministrator\Cmdlet\SetAzureSqlServerActiveDirectoryAdministrator.cs" />
+    <Compile Include="ServerActiveDirectoryAdministrator\Model\AzureSqlServerActiveDirectoryAdministratorModel.cs" />
+    <Compile Include="ServerActiveDirectoryAdministrator\Services\AzureSqlServerActiveDirectoryAdministratorAdapter.cs" />
+    <Compile Include="ServerActiveDirectoryAdministrator\Services\AzureSqlServerActiveDirectoryAdministratorCommunicator.cs" />
     <Compile Include="ServiceTierAdvisor\Cmdlet\GetAzureSqlUpgradeDatabaseHint.cs" />
     <Compile Include="ServiceTierAdvisor\Cmdlet\GetAzureSqlUpgradeServerHint.cs" />
     <Compile Include="ServiceTierAdvisor\Model\UpgradeServerHint.cs" />
     <Compile Include="ServiceTierAdvisor\Services\AzureSqlServiceTierAdvisorAdapter.cs" />
     <Compile Include="ServiceTierAdvisor\Services\AzureSqlServiceTierAdvisorCommunicator.cs" />
+    <Compile Include="Index Recommendations\Cmdlet\AzureSqlDatabaseExecuteIndexRecommendationCmdletBase.cs" />
+    <Compile Include="Index Recommendations\Cmdlet\GetAzureSqlDatabaseIndexRecommendations.cs" />
+    <Compile Include="Index Recommendations\Cmdlet\StartAzureSqlDatabaseExecuteIndexRecommendation.cs" />
+    <Compile Include="Index Recommendations\Cmdlet\StopAzureSqlDatabaseExecuteIndexRecommendation.cs" />
+    <Compile Include="Index Recommendations\Model\IndexRecommendation.cs" />
+    <Compile Include="Index Recommendations\Service\AzureSqlDatabaseIndexRecommendationAdapter.cs" />
+    <Compile Include="Index Recommendations\Service\AzureSqlDatabaseIndexRecommendationCommunicator.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\AzureSqlDatabaseTransparentDataEncryptionActivityCmdletBase.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\AzureSqlDatabaseTransparentDataEncryptionCmdletBase.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\GetAzureSqlDatabaseTransparentDataEncryption.cs" />
@@ -204,7 +218,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Sql">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.32.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.36.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="Microsoft.Azure.Common, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -220,7 +234,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.4-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.6-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.Edm, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -302,6 +316,11 @@
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Resources\Commands.Resources\Commands.Resources.csproj">
+      <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>
+      <Name>Commands.Resources</Name>
+      <Aliases>MicrosoftAzureCommandsResources</Aliases>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
