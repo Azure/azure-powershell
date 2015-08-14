@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
 {
     public static class ProtectionPolicyHelpers
     {
-        public const int MinRetentionInDays = 7;
+        public const int MinRetentionInDays = 1;
         public const int MaxRetentionInDays = 366;
         public const int MinRetention = 1;
         public const int MaxRetentionInWeeks = 260;
@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
         public const int MaxRetentionInYears = 99;
         public const int MinPolicyNameLength = 3;
         public const int MaxPolicyNameLength = 150;
+        public const string LastDayOfTheMonth = "Last";
         public static Regex rgx = new Regex(@"^[A-Za-z][-A-Za-z0-9]*[A-Za-z0-9]$");
 
         public static AzureBackupProtectionPolicy GetCmdletPolicy(CmdletModel.AzurePSBackupVault vault, CSMProtectionPolicyResponse sourcePolicy)
@@ -117,7 +118,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
             {
                 if (parameterSetName == dailyParameterSet)
                 {
-                    throw new ArgumentException("For daily schedule, protection policy cannot have scheduleRundays");
+                    throw new ArgumentException("For daily backup schedule, protection policy cannot have DaysOfWeek param in backup schedule");
                 }
                 else
                 {
@@ -128,7 +129,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
             {
                 if (parameterSetName == weeklyParameterSet)
                 {
-                    throw new ArgumentException("For weekly schedule, ScheduleRundays param cannot be empty");
+                    throw new ArgumentException("For weekly backup schedule, DaysOfWeek in backup schedule is mandatory and cannot be empty");
                 }
                 else
                 {
@@ -141,10 +142,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
         {
             bool validateDailyRetention = false;
             bool validateWeeklyRetention = false;
+            int dailyRetentionPolicyCount = 0;
+            int weeklyRetentionPolicyCount = 0;
+            int monthlyRetentionPolicyCount = 0;
+            int yearlyRetentionPolicyCount = 0;
 
             if(retentionPolicyList.Count == 0 )
             {
-                var exception = new ArgumentException("Please pass atlease one retention policy");
+                var exception = new ArgumentException("Atleast one retention policy in RetentionPolicies param is mandatory");
                 throw exception;
             }
 
@@ -154,6 +159,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
                 {
                     ValidateDailyRetention((AzureBackupDailyRetentionPolicy)retentionPolicy);
                     validateDailyRetention = true;
+                    dailyRetentionPolicyCount = dailyRetentionPolicyCount + 1;
                 }
                 else if (retentionPolicy.RetentionType == "Weekly")
                 {
@@ -162,8 +168,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
                     if (backupSchedule != null)
                     {
                         var weeklyRetention = (AzureBackupWeeklyRetentionPolicy)retentionPolicy;
-                        ValidateForWeeklyBackupSchedule(RetentionFormat.Weekly, backupSchedule.BackupType, backupSchedule.ScheduleRunDays, weeklyRetention.DaysOfWeek);
+                        ValidateForWeeklyBackupScheduleDaysOfWeek(backupSchedule.ScheduleRun, backupSchedule.ScheduleRunDays, weeklyRetention.DaysOfWeek);
                     }
+                    weeklyRetentionPolicyCount = weeklyRetentionPolicyCount + 1;
                 }
                 else if (retentionPolicy.RetentionType == "Monthly")
                 {
@@ -171,8 +178,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
                     if (backupSchedule != null)
                     {
                         var monthlyRetention = (AzureBackupMonthlyRetentionPolicy)retentionPolicy;
-                        ValidateForWeeklyBackupSchedule(monthlyRetention.RetentionFormat, backupSchedule.BackupType, backupSchedule.ScheduleRunDays, monthlyRetention.DaysOfWeek);
+                        ValidateForWeeklyBackupSchedule(monthlyRetention.RetentionFormat, backupSchedule.ScheduleRun, backupSchedule.ScheduleRunDays, monthlyRetention.DaysOfWeek);
                     }
+                    monthlyRetentionPolicyCount = monthlyRetentionPolicyCount + 1;
                 }
                 else if (retentionPolicy.RetentionType == "Yearly")
                 {
@@ -180,29 +188,33 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
                     if (backupSchedule != null)
                     {
                         var yearlyRetention = (AzureBackupYearlyRetentionPolicy)retentionPolicy;
-                        ValidateForWeeklyBackupSchedule(yearlyRetention.RetentionFormat, backupSchedule.BackupType, backupSchedule.ScheduleRunDays, yearlyRetention.DaysOfWeek);
+                        ValidateForWeeklyBackupSchedule(yearlyRetention.RetentionFormat, backupSchedule.ScheduleRun, backupSchedule.ScheduleRunDays, yearlyRetention.DaysOfWeek);
                     }
+                    yearlyRetentionPolicyCount = yearlyRetentionPolicyCount + 1;
                 }
             }
 
+            ValidateRetentionPolicyCount(dailyRetentionPolicyCount, weeklyRetentionPolicyCount, monthlyRetentionPolicyCount,
+                                          yearlyRetentionPolicyCount);
+
             if (backupSchedule != null)
                 {
-                    string scheduleType = backupSchedule.BackupType;
+                    string scheduleType = backupSchedule.ScheduleRun;
                     if (scheduleType == ScheduleType.Daily.ToString() && validateDailyRetention == false)
                     {
-                        var exception = new ArgumentException("For Daily Schedule, please pass AzureBackupDailyRetentionPolicy in RetentionPolicies param.");
+                        var exception = new ArgumentException("For Daily Schedule, AzureBackupDailyRetentionPolicy in RetentionPolicies param is mandatory.");
                         throw exception;
                     }
 
                     if (scheduleType == ScheduleType.Weekly.ToString() && validateWeeklyRetention == false)
                     {
-                        var exception = new ArgumentException("For Weekly Schedule, please pass AzureBackupWeeklyRetentionPolicy in RetentionPolicies param.");
+                        var exception = new ArgumentException("For Weekly Schedule, AzureBackupWeeklyRetentionPolicy in RetentionPolicies param is mandatory.");
                         throw exception;
                     }
 
                     if (scheduleType == ScheduleType.Weekly.ToString() && validateDailyRetention == true)
                     {
-                        var exception = new ArgumentException("For Weekly Schedule, you cannot pass AzureBackupDailyRetentionPolicy in RetentionPolicies param.");
+                        var exception = new ArgumentException("For Weekly Schedule, AzureBackupDailyRetentionPolicy in RetentionPolicies param is not allowed.");
                         throw exception;
                     }
                }
@@ -225,7 +237,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
         {
             if (scheduleRunDays == null || scheduleRunDays.Length <= 0)
             {
-                var exception = new ArgumentException("For weekly scheduletype , ScheduleRunDays should not be empty.");
+                var exception = new ArgumentException("For weekly scheduletype , ScheduleRunDays param is mandatory and can not be empty.");
                 throw exception;
             }
 
@@ -254,11 +266,40 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
             return scheduleRunTime;
         }
 
+        private static void ValidateRetentionPolicyCount(int dailyRetentionCount, int weeklyRetentionCount, 
+            int monthlyRetentionCount, int yearlyRetentionCount)
+        {
+            if(dailyRetentionCount > 1)
+            {
+                var exception = new ArgumentException("Only one AzureBackupDailyRetentionPolicy in RetentionPolicies is allowed.");
+                throw exception;
+            }
+
+            if (weeklyRetentionCount > 1)
+            {
+                var exception = new ArgumentException("Only one AzureBackupWeeklyRetentionPolicy in RetentionPolicies is allowed.");
+                throw exception;
+            }
+
+            if (monthlyRetentionCount > 1)
+            {
+                var exception = new ArgumentException("Only one AzureBackupMonthlyRetentionPolicy in RetentionPolicies is allowed.");
+                throw exception;
+            }
+
+            if (yearlyRetentionCount > 1)
+            {
+                var exception = new ArgumentException("Only one AzureBackupYearlyRetentionPolicy in RetentionPolicies is allowed.");
+                throw exception;
+            }
+
+        }
+
         private static void ValidateDailyRetention(AzureBackupDailyRetentionPolicy dailyRetention)
         {
             if (dailyRetention.Retention < MinRetentionInDays || dailyRetention.Retention > MaxRetentionInDays)
             {
-                var exception = new ArgumentException(string.Format("For DailyRetentionPolicy , valid values of retention are {0} to {1}.", MinRetentionInDays, MaxRetentionInDays));
+                var exception = new ArgumentException(string.Format("For AzureBackupDailyRetentionPolicy , valid values of retention are {0} to {1}.", MinRetentionInDays, MaxRetentionInDays));
                 throw exception;
             }            
         }
@@ -267,13 +308,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
         {
             if (weeklyRetention.Retention < MinRetention || weeklyRetention.Retention > MaxRetentionInWeeks)
             {
-                var exception = new ArgumentException(string.Format("For WeeklyRetentionPolicy , valid values of retention are {0} to {1}.", MinRetention, MaxRetentionInWeeks));
+                var exception = new ArgumentException(string.Format("For AzureBackupWeeklyRetentionPolicy , valid values of retention are {0} to {1}.", MinRetention, MaxRetentionInWeeks));
                 throw exception;
             }
 
             if(weeklyRetention.DaysOfWeek == null || weeklyRetention.DaysOfWeek.Count == 0)
             {
-                var exception = new ArgumentException("For WeeklyRetentionPolicy , pass atleast one value for DaysOfWeek param.");
+                var exception = new ArgumentException("For AzureBackupWeeklyRetentionPolicy , DaysOfWeek param is mandatory and can not be empty.");
                 throw exception;
             }
         }
@@ -282,7 +323,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
         {
             if (monthlyRetention.Retention < MinRetention || monthlyRetention.Retention > MaxRetentionInMonths)
             {
-                var exception = new ArgumentException(string.Format("For MonthlyRetentionPolicy , valid values of retention are {0} to {1}.", MinRetention, MaxRetentionInMonths));
+                var exception = new ArgumentException(string.Format("For AzureBackupMonthlyRetentionPolicy , valid values of retention are {0} to {1}.", MinRetention, MaxRetentionInMonths));
                 throw exception;
             }
 
@@ -290,13 +331,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
             {
                 if(monthlyRetention.DaysOfMonth == null || monthlyRetention.DaysOfMonth.Count == 0)
                 {
-                    var exception = new ArgumentException("For MonthlyRetentionPolicy and RetentionFormat in Days, pass atleast one value for DaysOfMonth param.");
+                    var exception = new ArgumentException("For AzureBackupMonthlyRetentionPolicy and RetentionFormat in Days, DaysOfMonth param is mandatory and can not be empty.");
                     throw exception;
                 }
 
                 if(monthlyRetention.DaysOfWeek != null || monthlyRetention.WeekNumber != null)
                 {
-                    var exception = new ArgumentException("For MonthlyRetentionPolicy and RetentionFormat in Days, DaysOfWeek or WeekNumber params are not allowed.");
+                    var exception = new ArgumentException("For AzureBackupMonthlyRetentionPolicy and RetentionFormat in Days, DaysOfWeek or WeekNumber params are not allowed.");
                     throw exception;
                 }
             }
@@ -305,19 +346,19 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
             {
                 if (monthlyRetention.DaysOfWeek == null || monthlyRetention.DaysOfWeek.Count == 0)
                 {
-                    var exception = new ArgumentException("For MonthlyRetentionPolicy and RetentionFormat in Weeks, pass atleast one value for DaysOfWeek param.");
+                    var exception = new ArgumentException("For AzureBackupMonthlyRetentionPolicy and RetentionFormat in Weeks, DaysOfWeek param is mandatory and can not be empty.");
                     throw exception;
                 }
 
                 if (monthlyRetention.WeekNumber == null || monthlyRetention.WeekNumber.Count == 0)
                 {
-                    var exception = new ArgumentException("For MonthlyRetentionPolicy and RetentionFormat in Weeks, pass atleast one value for WeekNumber param.");
+                    var exception = new ArgumentException("For AzureBackupMonthlyRetentionPolicy and RetentionFormat in Weeks, WeekNumber param is mandatory and can not be empty.");
                     throw exception;
                 }
 
                 if (monthlyRetention.DaysOfMonth != null)
                 {
-                    var exception = new ArgumentException("For MonthlyRetentionPolicy and RetentionFormat in Weeks, DaysOfMonth param is not allowed.");
+                    var exception = new ArgumentException("For AzureBackupMonthlyRetentionPolicy and RetentionFormat in Weeks, DaysOfMonth param is not allowed.");
                     throw exception;
                 }
             }
@@ -327,13 +368,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
         {
             if (yearlyRetention.Retention < MinRetention || yearlyRetention.Retention > MaxRetentionInYears)
             {
-                var exception = new ArgumentException(string.Format("For YearlyRetentionPolicy , valid values of retention are {0} to {1}.", MinRetention, MaxRetentionInYears));
+                var exception = new ArgumentException(string.Format("For AzureBackupYearlyRetentionPolicy , valid values of retention are {0} to {1}.", MinRetention, MaxRetentionInYears));
                 throw exception;
             }
 
             if(yearlyRetention.MonthsOfYear == null || yearlyRetention.MonthsOfYear.Count == 0)
             {
-                var exception = new ArgumentException("For YearlyRetentionPolicy and RetentionFormat in days,pass atleast one value for MonthsOfYear param.");
+                var exception = new ArgumentException("For AzureBackupYearlyRetentionPolicy and RetentionFormat in days, MonthsOfYear param is mandatory and can not be empty.");
                 throw exception;
             }
 
@@ -341,13 +382,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
             {
                 if (yearlyRetention.DaysOfMonth == null || yearlyRetention.DaysOfMonth.Count == 0)
                 {
-                    var exception = new ArgumentException("For YearlyRetentionPolicy and RetentionFormat in Days, pass atleast one value for DaysOfMonth param.");
+                    var exception = new ArgumentException("For AzureBackupYearlyRetentionPolicy and RetentionFormat in Days, DaysOfMonth param is mandatory and can not be empty.");
                     throw exception;
                 }
 
                 if (yearlyRetention.DaysOfWeek != null || yearlyRetention.WeekNumber != null)
                 {
-                    var exception = new ArgumentException("For YearlyRetentionPolicy and RetentionFormat in Days, DaysOfWeek or WeekNumber params are not allowed.");
+                    var exception = new ArgumentException("For AzureBackupYearlyRetentionPolicy and RetentionFormat in Days, DaysOfWeek or WeekNumber params are not allowed.");
                     throw exception;
                 }
             }
@@ -356,19 +397,19 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
             {
                 if (yearlyRetention.DaysOfWeek == null || yearlyRetention.DaysOfWeek.Count == 0)
                 {
-                    var exception = new ArgumentException("For YearlyRetentionPolicy and RetentionFormat in Weeks,pass atleast one value for DaysOfWeek param.");
+                    var exception = new ArgumentException("For AzureBackupYearlyRetentionPolicy and RetentionFormat in Weeks, DaysOfWeek param is mandatory and can not be empty.");
                     throw exception;
                 }
 
                 if (yearlyRetention.WeekNumber == null || yearlyRetention.WeekNumber.Count == 0)
                 {
-                    var exception = new ArgumentException("For YearlyRetentionPolicy and RetentionFormat in Weeks, pass atleast one value for WeekNumber param.");
+                    var exception = new ArgumentException("For AzureBackupYearlyRetentionPolicy and RetentionFormat in Weeks, WeekNumber param is mandatory and can not be empty.");
                     throw exception;
                 }
 
                 if (yearlyRetention.DaysOfMonth != null)
                 {
-                    var exception = new ArgumentException("For YearlyRetentionPolicy and RetentionFormat in Weeks, DaysOfMonth param is not allowed.");
+                    var exception = new ArgumentException("For AzureBackupYearlyRetentionPolicy and RetentionFormat in Weeks, DaysOfMonth param is not allowed.");
                     throw exception;
                 }
             }
@@ -380,13 +421,32 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
             {
                 if (RetentionScheduleType == RetentionFormat.Daily)
                 {
-                    throw new ArgumentException("Days of  the month in Monthly/Yearly retention is not allowed for weekly backup Schedules ");
+                    throw new ArgumentException("Days of  the month in Monthly/Yearly retention is not allowed for weekly backup Schedules.");
                 }
                 foreach (var day in retentionScheduleRunDays)
                 {
                     if (!backupScheduleRunDays.Contains(day))
                     {
-                        throw new ArgumentException(" Days of the week list  in Weekly/Monthly/Yearly retention schedule should be subset of  Day of week list in Backup Schedule ");
+                        throw new ArgumentException("Days of the week list in Monthly/Yearly retention schedule should be subset of Day of week list in Backup Schedule.");
+                    }
+                }
+            }
+
+        }
+
+        private static void ValidateForWeeklyBackupScheduleDaysOfWeek(string backupScheduleType, IList<DayOfWeek> backupScheduleRunDays, List<DayOfWeek> retentionScheduleRunDays)
+        {
+            if (string.Compare(backupScheduleType, ScheduleType.Weekly.ToString(), true) == 0)
+            {
+                if(backupScheduleRunDays.Count != retentionScheduleRunDays.Count)
+                {
+                    throw new ArgumentException("DaysOfTheWeek of retention schedule  must be same of backup schedule DaysOfTheWeek");
+                }
+                foreach (var day in retentionScheduleRunDays)
+                {
+                    if (!backupScheduleRunDays.Contains(day))
+                    {
+                        throw new ArgumentException("DaysofTheWeek list in Weekly retention schedule must be same of backup schedule DaysOfTheWeek.");
                     }
                 }
             }
@@ -442,6 +502,17 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
             return scheduleEnumerator.Current;
         }
 
+        public static string ConvertToPowershellWorkloadType(string workloadType)
+        {
+            if(string.Compare(workloadType, "IaasVM", true) == 0)
+            {
+                return WorkloadType.AzureVM.ToString();
+            }
+            else
+            {
+                throw new ArgumentException("Unsupported WorkloadType");
+            }
+        }
         public static CSMLongTermRetentionPolicy ConvertToCSMRetentionPolicyObject(IList<AzureBackupRetentionPolicy> retentionPolicyList, CSMBackupSchedule backupSchedule)
         {
             CSMLongTermRetentionPolicy csmLongTermRetentionPolicy = new CSMLongTermRetentionPolicy();
@@ -472,11 +543,27 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
             return csmLongTermRetentionPolicy;
         }
 
+        public static string ConvertToCSMWorkLoadType(string workloadType)
+        {
+            string csmWorkloadType = "IaasVM";
+            WorkloadType type = (WorkloadType)Enum.Parse(typeof(WorkloadType), workloadType, true);
+
+            if (type == WorkloadType.AzureVM)
+            {
+                return csmWorkloadType;
+            }
+            else
+            {
+                throw new ArgumentException("Unsupported WorkloadType");
+            }
+        }
+
         private static AzureBackupDailyRetentionPolicy ConvertToPowershellDailyRetentionObject(CSMDailyRetentionSchedule DailySchedule)
         {
             if (DailySchedule == null)
                 return null;
             AzureBackupDailyRetentionPolicy dailyRetention = new AzureBackupDailyRetentionPolicy("Daily", DailySchedule.CSMRetentionDuration.Count);
+            dailyRetention.RetentionTimes = DailySchedule.RetentionTimes;
 
             return dailyRetention;
         }
@@ -487,6 +574,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
                 return null;
             AzureBackupWeeklyRetentionPolicy weeklyRetention = new AzureBackupWeeklyRetentionPolicy("Weekly", WeeklySchedule.CSMRetentionDuration.Count,
                 WeeklySchedule.DaysOfTheWeek);
+            weeklyRetention.RetentionTimes = WeeklySchedule.RetentionTimes;
 
             return weeklyRetention;
         }
@@ -512,6 +600,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
                 retentionFormat, null, weekNumberList, dayOfWeekList);
             }
 
+            monthlyRetention.RetentionTimes = MonthlySchedule.RetentionTimes;
             return monthlyRetention;
         }
 
@@ -538,20 +627,24 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
                  monthOfTheYearList, retentionFormat, null, weekNumberList, dayOfWeekList);
             }
 
+            yearlyRetention.RetentionTimes = YearlySchedule.RetentionTimes;
             return yearlyRetention;
         }
 
         private static List<string> ConvertToPowershellDayList(IList<Day> daysOfTheMonthList)
         {
-            string lastDayOfTheMonth = "IsLast";
             List<string> dayList = new List<string>();
             foreach (Day day in daysOfTheMonthList)
             {
-                dayList.Add(day.Date.ToString());
                 if (day.IsLast)
                 {
-                    dayList.Add(lastDayOfTheMonth);
+                    dayList.Add(LastDayOfTheMonth);
                 }
+                else
+                {
+                    dayList.Add(day.Date.ToString());
+                }
+                
             }
 
             return dayList;

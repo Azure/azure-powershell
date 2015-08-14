@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
 
         public DateTime BackupTime { get; set; }
 
-        public IList<AzureBackupRetentionPolicy> RetentionPolicyList { get; set; }
+        public IList<AzureBackupRetentionPolicy> RetentionPolicy { get; set; }
 
         public AzureBackupProtectionPolicy()
         {
@@ -51,11 +51,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         {
             PolicyId = policyId;
             Name = sourcePolicy.PolicyName;
-            Type = sourcePolicy.WorkloadType;
+            Type = ProtectionPolicyHelpers.ConvertToPowershellWorkloadType(sourcePolicy.WorkloadType);
             ScheduleType = sourcePolicy.BackupSchedule.ScheduleRun;
             BackupTime = ProtectionPolicyHelpers.ConvertToPowershellScheduleRunTimes(sourcePolicy.BackupSchedule.ScheduleRunTimes);
             DaysOfWeek = ProtectionPolicyHelpers.ConvertToPowershellScheduleRunDays(sourcePolicy.BackupSchedule.ScheduleRunDays);
-            RetentionPolicyList = ProtectionPolicyHelpers.ConvertCSMRetentionPolicyListToPowershell(sourcePolicy.LtrRetentionPolicy);            
+            RetentionPolicy = ProtectionPolicyHelpers.ConvertCSMRetentionPolicyListToPowershell(sourcePolicy.LtrRetentionPolicy);            
         }
     }    
 

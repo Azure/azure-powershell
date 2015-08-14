@@ -25,10 +25,10 @@ using Microsoft.Azure.Commands.AzureBackup.Models;
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     /// <summary>
-    /// Trigger Restore Job
+    /// Restore Azure Backup Item
     /// </summary>
-    [Cmdlet(VerbsData.Restore, "AzureBackupItem"), OutputType(typeof(AzureBackupJob))]
-    public class RestoreAzureBackup : AzureBackupRestoreBase
+    [Cmdlet(VerbsData.Restore, "AzureRMBackupItem"), OutputType(typeof(AzureBackupJob))]
+    public class RestoreAzureRMBackupItem : AzureBackupRestoreBase
     {
         [Parameter(Position = 1, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.StorageAccountName)]
         [ValidateNotNullOrEmpty]

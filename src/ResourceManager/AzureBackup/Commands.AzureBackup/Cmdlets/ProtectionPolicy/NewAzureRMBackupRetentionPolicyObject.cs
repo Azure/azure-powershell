@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Create new retention policy object.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureBackupRetentionPolicyObject"), OutputType(typeof(AzureBackupRetentionPolicy), typeof(List<AzureBackupRetentionPolicy>))]
-    public class NewAzureBackupRetentionPolicyObject : AzureBackupCmdletBase
+    [Cmdlet(VerbsCommon.New, "AzureRMBackupRetentionPolicyObject"), OutputType(typeof(AzureBackupRetentionPolicy), typeof(List<AzureBackupRetentionPolicy>))]
+    public class NewAzureRMBackupRetentionPolicyObject : AzureBackupCmdletBase
     {
         protected const string DailyRetentionParamSet = "DailyRetentionParamSet";
         protected const string WeeklyRetentionParamSet = "WeeklyRetentionParamSet";
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         [Parameter(ParameterSetName = MonthlyRetentionInDailyFormatParamSet, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.DaysOfMonth)]
         [Parameter(ParameterSetName = YearlyRetentionInDailyFormatParamSet, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.DaysOfMonth)]
         [ValidateSet("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" ,"13" ,"14", "15", "16", "17", "18",
-            "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "IsLast", IgnoreCase = true)]
+            "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "Last", IgnoreCase = true)]
         public List<string> DaysOfMonth { get; set; }
 
         [Parameter(ParameterSetName = MonthlyRetentionInWeeklyFormatParamSet, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.WeekNumber)]

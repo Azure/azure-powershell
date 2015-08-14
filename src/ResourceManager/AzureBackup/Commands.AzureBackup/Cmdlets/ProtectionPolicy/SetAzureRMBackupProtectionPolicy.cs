@@ -27,8 +27,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Update existing protection policy
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureBackupProtectionPolicy", DefaultParameterSetName = NoScheduleParamSet), OutputType(typeof(AzureBackupProtectionPolicy))]
-    public class SetAzureBackupProtectionPolicy : AzureBackupPolicyCmdletBase
+    [Cmdlet(VerbsCommon.Set, "AzureRMBackupProtectionPolicy", DefaultParameterSetName = NoScheduleParamSet), OutputType(typeof(AzureBackupProtectionPolicy))]
+    public class SetAzureRMBackupProtectionPolicy : AzureBackupPolicyCmdletBase
     {
         protected const string WeeklyScheduleParamSet = "WeeklyScheduleParamSet";
         protected const string DailyScheduleParamSet = "DailyScheduleParamSet";
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public DateTime BackupTime { get; set; }
 
         [Parameter(Position = 5, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.RetentionPolicyList)]
-        public AzureBackupRetentionPolicy[] RetentionPolicies { get; set; }
+        public AzureBackupRetentionPolicy[] RetentionPolicy { get; set; }
 
         [Parameter(ParameterSetName = WeeklyScheduleParamSet, Position = 6, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ScheduleRunDays)]
         [ValidateSet("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", IgnoreCase = true)]
@@ -84,17 +84,17 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 updateProtectionPolicyRequest.Properties.BackupSchedule = backupSchedule;
 
                 AzureBackupProtectionPolicy protectionPolicy = new AzureBackupProtectionPolicy();
-                if (RetentionPolicies != null && RetentionPolicies.Length > 0)
+                if (RetentionPolicy != null && RetentionPolicy.Length > 0)
                 {
                     updateProtectionPolicyRequest.Properties.LtrRetentionPolicy =
-                        ProtectionPolicyHelpers.ConvertToCSMRetentionPolicyObject(RetentionPolicies, backupSchedule);
-                    ProtectionPolicyHelpers.ValidateRetentionPolicy(RetentionPolicies, backupSchedule);
+                        ProtectionPolicyHelpers.ConvertToCSMRetentionPolicyObject(RetentionPolicy, backupSchedule);
+                    ProtectionPolicyHelpers.ValidateRetentionPolicy(RetentionPolicy, backupSchedule);
                 }
                 else
                 {
                     updateProtectionPolicyRequest.Properties.LtrRetentionPolicy =
-                        ProtectionPolicyHelpers.ConvertToCSMRetentionPolicyObject(policyInfo.RetentionPolicyList, backupSchedule);
-                    ProtectionPolicyHelpers.ValidateRetentionPolicy(policyInfo.RetentionPolicyList, backupSchedule);
+                        ProtectionPolicyHelpers.ConvertToCSMRetentionPolicyObject(policyInfo.RetentionPolicy, backupSchedule);
+                    ProtectionPolicyHelpers.ValidateRetentionPolicy(policyInfo.RetentionPolicy, backupSchedule);
                 }
 
                 var operationId = AzureBackupClient.UpdateProtectionPolicy(policyInfo.Name, updateProtectionPolicyRequest);
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             }
             else if (DaysOfWeek != null && DaysOfWeek.Length > 0)
             {
-                throw new ArgumentException("For Schedule Run Days, weekly switch param is required");
+                throw new ArgumentException("For DaysOfWeek, weekly switch param is required");
             }
         }
     }

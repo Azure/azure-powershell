@@ -18,15 +18,16 @@ using System.Collections.Generic;
 using System.Xml;
 using System.Linq;
 using Microsoft.Azure.Management.BackupServices.Models;
+using MBS = Microsoft.Azure.Management.BackupServices;
 using Microsoft.Azure.Commands.AzureBackup.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     /// <summary>
-    /// Remove a protection policy
+    /// Backup Azue Backup Item
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureBackupProtectionPolicy")]
-    public class RemoveAzureBackupProtectionPolicy : AzureBackupPolicyCmdletBase
+    [Cmdlet(VerbsData.Backup, "AzureRMBackupItem"), OutputType(typeof(AzureBackupJob))]
+    public class BackupAzureRMBackupItem : AzureBackupDSCmdletBase
     {
         public override void ExecuteCmdlet()
         {
@@ -35,19 +36,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 base.ExecuteCmdlet();
 
                 WriteDebug("Making client call");
+                Guid operationId = AzureBackupClient.TriggerBackup(Item.ContainerUniqueName, Item.ItemName);
 
-                var policyInfo = AzureBackupClient.GetProtectionPolicyByName(ProtectionPolicy.Name);
-                if (policyInfo != null)
-                {
-                    AzureBackupClient.DeleteProtectionPolicy(policyInfo.Name);
-                    WriteVerbose("Successfully deleted policy");
-                }
-                else
-                {
-                    WriteVerbose("Policy Not Found");
-                }
+                WriteDebug(string.Format("Triggered backup. Converting response {0}", operationId));
+
+                var operationStatus = TrackOperation(operationId);
+                WriteObject(GetCreatedJobs(new Models.AzurePSBackupVault(Item.ResourceGroupName, Item.ResourceName, Item.Location), operationStatus.JobList).FirstOrDefault());
             });
-        }        
+        }
     }
 }
-

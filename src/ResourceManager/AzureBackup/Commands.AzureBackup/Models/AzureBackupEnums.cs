@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
     public enum WorkloadType
     {
         Invalid = 0,
-        IaasVM = 1
+        AzureVM = 1
     }
 
     public enum RetentionFormat

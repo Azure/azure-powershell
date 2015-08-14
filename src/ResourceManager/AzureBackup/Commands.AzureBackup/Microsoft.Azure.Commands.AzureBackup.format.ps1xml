@@ -165,19 +165,23 @@
         <TableHeaders>
           <TableColumnHeader>
             <Label>Name</Label>
-            <Width>32</Width>
+            <Width>26</Width>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ProtectionStatus</Label>
-            <Width>32</Width>
+            <Width>22</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DataSourceStatus</Label>
+            <Width>22</Width>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>RecoveryPointsCount</Label>
-            <Width>32</Width>
+            <Width>22</Width>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ProtectionPolicyName</Label>
-            <Width>36</Width>
+            <Width>22</Width>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -190,10 +194,94 @@
                 <PropertyName>ProtectionStatus</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>DataSourceStatus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>RecoveryPointsCount</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ProtectionPolicyName</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupRetentionPolicy</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupRetentionPolicy</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>RetentionType</Label>
+            <Width>18</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Retention</Label>
+            <Width>18</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RetentionTimes</Label>
+            <Width>60</Width>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>RetentionType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Retention</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>RetentionTimes</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupProtectionPolicy</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupProtectionPolicy</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Name</Label>
+            <Width>25</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Type</Label>
+            <Width>18</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ScheduleType</Label>
+            <Width>18</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>BackupTime</Label>
+            <Width>38</Width>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Type</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ScheduleType</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>BackupTime</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
