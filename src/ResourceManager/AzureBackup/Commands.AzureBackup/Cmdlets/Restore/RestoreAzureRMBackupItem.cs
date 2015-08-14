@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             ExecutionBlock(() =>
             {
-                WriteVerbose("Making client call");
+                WriteDebug("Making client call");
                 Guid jobId = Guid.NewGuid();
                 WriteDebug("Triggered Restore. Converting response");
 
