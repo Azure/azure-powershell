@@ -179,14 +179,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             return response;
         }
 
-        internal IList<AzureBackupJob> GetCreatedJobs(AzurePSBackupVault vault, IList<string> jobIds)
+        internal IList<AzureRMBackupJob> GetCreatedJobs(AzurePSBackupVault vault, IList<string> jobIds)
         {
-            IList<AzureBackupJob> jobs = new List<AzureBackupJob>();
+            IList<AzureRMBackupJob> jobs = new List<AzureRMBackupJob>();
 
             foreach (string jobId in jobIds)
             {
                 CSMJobDetailsResponse job = AzureBackupClient.GetJobDetails(jobId);
-                jobs.Add(new AzureBackupJob(vault, job.JobDetailedProperties, job.Name));
+                jobs.Add(new AzureRMBackupJob(vault, job.JobDetailedProperties, job.Name));
             }
 
             return jobs;

@@ -22,8 +22,8 @@ using Microsoft.Azure.Commands.AzureBackup.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
-    [Cmdlet("Wait", "AzureBackupJob"), OutputType(typeof(List<AzureBackupJob>), typeof(AzureBackupJob))]
-    public class WaitAzureBackupJob : AzureBackupCmdletBase
+    [Cmdlet("Wait", "AzureRMBackupJob"), OutputType(typeof(List<AzureRMBackupJob>), typeof(AzureRMBackupJob))]
+    public class WaitAzureRMBackupJob : AzureBackupCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.WaitJobFilterJobHelpMessage, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
@@ -40,44 +40,44 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             if (Job != null)
             {
-                if ((Job is PSObject) && (((PSObject)Job).ImmediateBaseObject is List<AzureBackupJob>))
+                if ((Job is PSObject) && (((PSObject)Job).ImmediateBaseObject is List<AzureRMBackupJob>))
                 {
-                    foreach (AzureBackupJob jobToWait in (((PSObject)Job).ImmediateBaseObject as List<AzureBackupJob>))
+                    foreach (AzureRMBackupJob jobToWait in (((PSObject)Job).ImmediateBaseObject as List<AzureRMBackupJob>))
                     {
                         Vault = new AzurePSBackupVault(jobToWait.ResourceGroupName, jobToWait.ResourceName, jobToWait.Location);
                         specifiedJobs.Add(jobToWait.InstanceId);
                     }
                 }
-                else if (Job is List<AzureBackupJob>)
+                else if (Job is List<AzureRMBackupJob>)
                 {
                     WriteDebug("Type of input paramter is List<AzureBackupJob> second case");
-                    foreach (AzureBackupJob jobToWait in (Job as List<AzureBackupJob>))
+                    foreach (AzureRMBackupJob jobToWait in (Job as List<AzureRMBackupJob>))
                     {
                         Vault = new AzurePSBackupVault(jobToWait.ResourceGroupName, jobToWait.ResourceName, jobToWait.Location);
                         specifiedJobs.Add(jobToWait.InstanceId);
                     }
                 }
-                else if ((Job is PSObject) && (((PSObject)Job).ImmediateBaseObject is AzureBackupJob))
+                else if ((Job is PSObject) && (((PSObject)Job).ImmediateBaseObject is AzureRMBackupJob))
                 {
-                    AzureBackupJob azureJob = ((Job as PSObject).ImmediateBaseObject as AzureBackupJob);
+                    AzureRMBackupJob azureJob = ((Job as PSObject).ImmediateBaseObject as AzureRMBackupJob);
                     Vault = new AzurePSBackupVault(azureJob.ResourceGroupName, azureJob.ResourceName, azureJob.Location);
                     specifiedJobs.Add(azureJob.InstanceId);
                 }
-                else if (Job is AzureBackupJob)
+                else if (Job is AzureRMBackupJob)
                 {
-                    Vault = new AzurePSBackupVault((Job as AzureBackupJob).ResourceGroupName, (Job as AzureBackupJob).ResourceName, (Job as AzureBackupJob).Location);
-                    specifiedJobs.Add((Job as AzureBackupJob).InstanceId);
+                    Vault = new AzurePSBackupVault((Job as AzureRMBackupJob).ResourceGroupName, (Job as AzureRMBackupJob).ResourceName, (Job as AzureRMBackupJob).Location);
+                    specifiedJobs.Add((Job as AzureRMBackupJob).InstanceId);
                 }
-                else if ((Job is PSObject) && (((PSObject)Job).ImmediateBaseObject is AzureBackupJobDetails))
+                else if ((Job is PSObject) && (((PSObject)Job).ImmediateBaseObject is AzureRMBackupJobDetails))
                 {
-                    AzureBackupJob azureJob = ((Job as PSObject).ImmediateBaseObject as AzureBackupJobDetails);
+                    AzureRMBackupJob azureJob = ((Job as PSObject).ImmediateBaseObject as AzureRMBackupJobDetails);
                     Vault = new AzurePSBackupVault(azureJob.ResourceGroupName, azureJob.ResourceName, azureJob.Location);
                     specifiedJobs.Add(azureJob.InstanceId);
                 }
-                else if (Job is AzureBackupJobDetails)
+                else if (Job is AzureRMBackupJobDetails)
                 {
-                    Vault = new AzurePSBackupVault((Job as AzureBackupJobDetails).ResourceGroupName, (Job as AzureBackupJobDetails).ResourceName, (Job as AzureBackupJobDetails).Location);
-                    specifiedJobs.Add((Job as AzureBackupJobDetails).InstanceId);
+                    Vault = new AzurePSBackupVault((Job as AzureRMBackupJobDetails).ResourceGroupName, (Job as AzureRMBackupJobDetails).ResourceName, (Job as AzureRMBackupJobDetails).Location);
+                    specifiedJobs.Add((Job as AzureRMBackupJobDetails).InstanceId);
                 }
             }
 
@@ -135,11 +135,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     System.Threading.Thread.Sleep(30 * 1000);
                 }
 
-                IList<AzureBackupJob> finalJobs = new List<AzureBackupJob>();
+                IList<AzureRMBackupJob> finalJobs = new List<AzureRMBackupJob>();
                 foreach(string jobId in specifiedJobs)
                 {
                     Mgmt.CSMJobDetailsResponse retrievedJob = AzureBackupClient.GetJobDetails(jobId);
-                    finalJobs.Add(new AzureBackupJob(Vault, retrievedJob.JobDetailedProperties, retrievedJob.Name));
+                    finalJobs.Add(new AzureRMBackupJob(Vault, retrievedJob.JobDetailedProperties, retrievedJob.Name));
                 }
 
                 if (finalJobs.Count == 1)

@@ -24,7 +24,7 @@ using Mgmt = Microsoft.Azure.Management.BackupServices.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Models
 {
-    public class AzureBackupJob : AzureBackupVaultContextObject
+    public class AzureRMBackupJob : AzureBackupVaultContextObject
     {
         public string InstanceId { get; private set; }
 
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
 
         public List<ErrorInfo> ErrorDetails { get; set; }
 
-        public AzureBackupJob(AzurePSBackupVault vault, Mgmt.CSMJobProperties serviceJob, string jobName)
+        public AzureRMBackupJob(AzurePSBackupVault vault, Mgmt.CSMJobProperties serviceJob, string jobName)
             : base(vault)
         {
             this.InstanceId = jobName;
@@ -106,13 +106,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         }
     }
 
-    public class AzureBackupJobDetails : AzureBackupJob
+    public class AzureRMBackupJobDetails : AzureRMBackupJob
     {
         public Dictionary<string, string> Properties { get; set; }
 
         public List<AzureBackupJobSubTask> SubTasks { get; set; }
 
-        public AzureBackupJobDetails(AzurePSBackupVault vault, Mgmt.CSMJobDetailedProperties serviceJobProperties, string jobName)
+        public AzureRMBackupJobDetails(AzurePSBackupVault vault, Mgmt.CSMJobDetailedProperties serviceJobProperties, string jobName)
             : base(vault, serviceJobProperties, jobName)
         {
             if (serviceJobProperties.PropertyBag != null)

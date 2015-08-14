@@ -27,8 +27,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Get list of jobs pertaining to the filters specified. Gets list of all jobs created in the last 24 hours if no filters are specified.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureBackupJob", DefaultParameterSetName = "FiltersSet"), OutputType(typeof(List<AzureBackupJob>), typeof(AzureBackupJob))]
-    public class GetAzureBackupJob : AzureBackupCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRMBackupJob", DefaultParameterSetName = "FiltersSet"), OutputType(typeof(List<AzureRMBackupJob>), typeof(AzureRMBackupJob))]
+    public class GetAzureRMBackupJob : AzureBackupCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.Vault, ParameterSetName = "FiltersSet", ValueFromPipeline = true)]
         [ValidateNotNull]
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.JobFilterJobHelpMessage, ParameterSetName = "JobsListFilter")]
         [ValidateNotNull]
-        public AzureBackupJob Job { get; set; }
+        public AzureRMBackupJob Job { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.JobFilterStartTimeHelpMessage, ParameterSetName = "FiltersSet")]
         [ValidateNotNull]
@@ -140,12 +140,12 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 };
 
                 var jobsList = AzureBackupClient.ListJobs(queryParams);
-                List<AzureBackupJob> retrievedJobs = new List<AzureBackupJob>();
+                List<AzureRMBackupJob> retrievedJobs = new List<AzureRMBackupJob>();
 
                 foreach (Mgmt.CSMJobResponse serviceJob in jobsList)
                 {
                     // TODO: Initialize vault from Job object when vault is made optional
-                    retrievedJobs.Add(new AzureBackupJob(Vault, serviceJob.Properties, serviceJob.Name));
+                    retrievedJobs.Add(new AzureRMBackupJob(Vault, serviceJob.Properties, serviceJob.Name));
                 }
 
                 WriteDebug("Successfully retrieved all jobs. Number of jobs retrieved: " + retrievedJobs.Count());
