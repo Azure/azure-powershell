@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
     /// <summary>
     /// Represents Azure Backup Container
     /// </summary>
-    public class AzureBackupContainer : AzureBackupContainerContextObject
+    public class AzureBackupContainer : AzureRMBackupContainerContextObject
     {
         /// <summary>
         /// Resource name of the resource (ex: resource name of the VM) being managed by the Azure Backup service.

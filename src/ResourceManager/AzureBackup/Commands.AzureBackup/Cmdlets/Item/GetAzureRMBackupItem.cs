@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Get list of azure backup items
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureBackupItem"), OutputType(typeof(AzureBackupItem), typeof(List<AzureBackupItem>))]
-    public class GetAzureBackupItem : AzureBackupContainerCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRMBackupItem"), OutputType(typeof(AzureRMBackupItem), typeof(List<AzureRMBackupItem>))]
+    public class GetAzureRMBackupItem : AzureBackupContainerCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ProtectionStatus)]
         [ValidateSet("Protected", "Protecting", "NotProtected")]
@@ -89,18 +89,18 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         public void WriteAzureBackupItem(CSMProtectedItemResponse sourceItem, AzureBackupContainer azureBackupItem)
         {
-            this.WriteObject(new AzureBackupItem(sourceItem, azureBackupItem));
+            this.WriteObject(new AzureRMBackupItem(sourceItem, azureBackupItem));
         }
 
         public void WriteAzureBackupItem(List<CSMProtectedItemResponse> sourceDataSourceList, List<CSMItemResponse> sourcePOList, AzureBackupContainer azureBackupContainer)
         {
-            List<AzureBackupItem> targetList = new List<AzureBackupItem>();
+            List<AzureRMBackupItem> targetList = new List<AzureRMBackupItem>();
 
             if (sourceDataSourceList != null)
             {
                 foreach (var item in sourceDataSourceList)
                 {
-                    targetList.Add(new AzureBackupItem(item, azureBackupContainer));
+                    targetList.Add(new AzureRMBackupItem(item, azureBackupContainer));
                 }
             }
 
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     //So in this case removing  po items from the list.
                     if (targetList.FindIndex(element => element.ItemName == item.Name) < 0)
                     {
-                        targetList.Add(new AzureBackupItem(item, azureBackupContainer));
+                        targetList.Add(new AzureRMBackupItem(item, azureBackupContainer));
                     }
                 }
             }

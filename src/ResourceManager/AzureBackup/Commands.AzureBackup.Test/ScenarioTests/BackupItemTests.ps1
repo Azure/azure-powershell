@@ -13,11 +13,11 @@ $ItemName = "iaasvmcontainer;dev01testing;dev01testing"
 
 function Test-BackUpAzureBackUpItem
 {
-    $azureBackUpItem = New-Object Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupItem
-	$azureBackUpItem.ResourceGroupName = $ResourceGroupName
-	$azureBackUpItem.ResourceName = $ResourceName
-	$azureBackUpItem.Location = $Location
-	$azureBackUpItem.ContainerUniqueName = $ContainerName
-	$azureBackUpItem.ItemName = $ItemName
-	$jobId = Backup-AzureRMBackupItem -Item $azureBackUpItem
+    $AzureRMBackupItem = New-Object Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem
+	$AzureRMBackupItem.ResourceGroupName = $ResourceGroupName
+	$AzureRMBackupItem.ResourceName = $ResourceName
+	$AzureRMBackupItem.Location = $Location
+	$AzureRMBackupItem.ContainerUniqueName = $ContainerName
+	$AzureRMBackupItem.ItemName = $ItemName
+	$jobId = Backup-AzureRMBackupItem -Item $AzureRMBackupItem
 }

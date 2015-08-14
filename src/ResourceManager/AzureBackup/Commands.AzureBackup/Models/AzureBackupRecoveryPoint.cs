@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Models
 {
-    public class AzureBackupRecoveryPointContextObject : AzureBackupItemContextObject
+    public class AzureBackupRecoveryPointContextObject : AzureRMBackupItemContextObject
     {
         /// <summary>
         /// RecoveryPointId of Azure Backup Item
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         {            
         }
 
-        public AzureBackupRecoveryPointContextObject(CSMRecoveryPointResponse recoveryPointInfo, AzureBackupItem azureBackupItem)
+        public AzureBackupRecoveryPointContextObject(CSMRecoveryPointResponse recoveryPointInfo, AzureRMBackupItem azureBackupItem)
             : base(azureBackupItem)
         {
             RecoveryPointName = recoveryPointInfo.Name;
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         {            
         }
 
-        public AzureBackupRecoveryPoint(CSMRecoveryPointResponse recoveryPointInfo, AzureBackupItem azureBackupItem)
+        public AzureBackupRecoveryPoint(CSMRecoveryPointResponse recoveryPointInfo, AzureRMBackupItem azureBackupItem)
             : base(recoveryPointInfo, azureBackupItem)
         {
             RecoveryPointTime = recoveryPointInfo.Properties.RecoveryPointTime;

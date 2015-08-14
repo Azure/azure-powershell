@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
     /// <summary>
     /// Represents Azure Backup Item
     /// </summary>
-    public class AzureBackupItem : AzureBackupItemContextObject
+    public class AzureRMBackupItem : AzureRMBackupItemContextObject
     {
         /// <summary>
         /// Friendly Name for the Azure BackupItem
@@ -61,12 +61,12 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         /// </summary>
         public int RecoveryPointsCount { get; set; }
 
-        public AzureBackupItem()
+        public AzureRMBackupItem()
             : base()
         {
         }
 
-        public AzureBackupItem(CSMProtectedItemResponse datasource, AzureBackupContainer azureBackupContainer)
+        public AzureRMBackupItem(CSMProtectedItemResponse datasource, AzureBackupContainer azureBackupContainer)
             : base(datasource, azureBackupContainer)
         {
             DataSourceStatus = datasource.Properties.ProtectionStatus;
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
             Type = datasource.Properties.ItemType;
         }
 
-        public AzureBackupItem(CSMItemResponse pPOItem, AzureBackupContainer azureBackupContainer)
+        public AzureRMBackupItem(CSMItemResponse pPOItem, AzureBackupContainer azureBackupContainer)
             : base(pPOItem, azureBackupContainer)
         {
             ProtectionStatus = pPOItem.Properties.Status;

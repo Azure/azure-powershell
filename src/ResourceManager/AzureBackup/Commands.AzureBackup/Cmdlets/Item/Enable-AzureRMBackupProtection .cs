@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Enable Azure Backup protection
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Enable, "AzureBackupProtection"), OutputType(typeof(string))]
-    public class EnableAzureBackupProtection : AzureBackupItemCmdletBase
+    [Cmdlet(VerbsLifecycle.Enable, "AzureRMBackupProtection"), OutputType(typeof(AzureRMBackupJob))]
+    public class EnableAzureRMBackupProtection : AzureRMBackupItemCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.PolicyName)]
         [ValidateNotNullOrEmpty]
@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 input.Properties = new CSMSetProtectionRequestProperties();
                 input.Properties.PolicyId = Policy.PolicyId;
 
-                if (Item.GetType() == typeof(AzureBackupItem))
+                if (Item.GetType() == typeof(AzureRMBackupItem))
                 {
-                    itemName = (Item as AzureBackupItem).ItemName;
+                    itemName = (Item as AzureRMBackupItem).ItemName;
                 }
 
                 else if (Item.GetType() == typeof(AzureBackupContainer))

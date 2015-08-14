@@ -27,11 +27,11 @@ using Microsoft.Azure.Commands.AzureBackup.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
-    public abstract class AzureBackupItemCmdletBase : AzureBackupCmdletBase
+    public abstract class AzureRMBackupItemCmdletBase : AzureBackupCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.AzureBackupItem, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public AzureBackupContainerContextObject Item { get; set; }
+        public AzureRMBackupContainerContextObject Item { get; set; }
 
         public override void ExecuteCmdlet()
         {
