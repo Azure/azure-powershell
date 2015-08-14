@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
     /// <summary>
     /// Represents Azure Backup Container
     /// </summary>
-    public class AzureBackupRecoveryPoint : AzureBackupRecoveryPointContextObject
+    public class AzureRMBackupRecoveryPoint : AzureBackupRecoveryPointContextObject
     {
         /// <summary>
         /// Last Recovery Point for the Azure Backup Item
@@ -55,12 +55,12 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         /// </summary>
         public string RecoveryPointType { get; set; }
 
-        public AzureBackupRecoveryPoint()
+        public AzureRMBackupRecoveryPoint()
             : base()
         {            
         }
 
-        public AzureBackupRecoveryPoint(CSMRecoveryPointResponse recoveryPointInfo, AzureRMBackupItem azureBackupItem)
+        public AzureRMBackupRecoveryPoint(CSMRecoveryPointResponse recoveryPointInfo, AzureRMBackupItem azureBackupItem)
             : base(recoveryPointInfo, azureBackupItem)
         {
             RecoveryPointTime = recoveryPointInfo.Properties.RecoveryPointTime;

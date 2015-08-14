@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             string containerUniqueName = Container.ContainerUniqueName;
             var operationId = AzureBackupClient.UnRegisterContainer(containerUniqueName);
 
-            WriteObject(GetCreatedJobs(new Models.AzurePSBackupVault(Container.ResourceGroupName, Container.ResourceName, Container.Location), GetOperationStatus(operationId).JobList).FirstOrDefault());
+            WriteObject(GetCreatedJobs(new Models.AzureRMBackupVault(Container.ResourceGroupName, Container.ResourceName, Container.Location), GetOperationStatus(operationId).JobList).FirstOrDefault());
         }
     }
 }

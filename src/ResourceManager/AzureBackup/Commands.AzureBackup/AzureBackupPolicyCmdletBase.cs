@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         // Correct Help message and other attributes related to paameters
         [Parameter(Position = 0, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.AzureBackupPolicy, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public AzureBackupProtectionPolicy ProtectionPolicy { get; set; }
+        public AzureRMBackupProtectionPolicy ProtectionPolicy { get; set; }
 
         public override void ExecuteCmdlet()
         {

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Command to create an azure backup vault in a subscription
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRMBackupVault"), OutputType(typeof(AzurePSBackupVault))]
+    [Cmdlet(VerbsCommon.New, "AzureRMBackupVault"), OutputType(typeof(AzureRMBackupVault))]
     public class NewAzureRMBackupVault : AzureBackupCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.ResourceGroupName)]

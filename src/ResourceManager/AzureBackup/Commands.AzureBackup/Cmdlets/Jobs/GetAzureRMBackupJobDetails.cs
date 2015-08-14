@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     {
         [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.Vault, ParameterSetName = "IdFiltersSet")]
         [ValidateNotNull]
-        public AzurePSBackupVault Vault { get; set; }
+        public AzureRMBackupVault Vault { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.JobDetailsFilterJobIdHelpMessage, ParameterSetName = "IdFiltersSet")]
         [ValidateNotNullOrEmpty]
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         {
             if (Job != null)
             {
-                Vault = new AzurePSBackupVault(Job.ResourceGroupName, Job.ResourceName, Job.Location);
+                Vault = new AzureRMBackupVault(Job.ResourceGroupName, Job.ResourceName, Job.Location);
             }
             InitializeAzureBackupCmdlet(Vault);
 

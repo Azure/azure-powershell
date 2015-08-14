@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
             Location = locationName;
         }
 
-        public AzureBackupVaultContextObject(AzurePSBackupVault vault)
+        public AzureBackupVaultContextObject(AzureRMBackupVault vault)
             : this(vault.ResourceGroupName, vault.Name, vault.Region) { }
     }
 
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         {
         }
 
-        public AzureRMBackupContainerContextObject(AzurePSBackupVault vault, MarsContainerResponse marsContainerResponse)
+        public AzureRMBackupContainerContextObject(AzureRMBackupVault vault, MarsContainerResponse marsContainerResponse)
             : base(vault)
         {
             ContainerType = ContainerHelpers.GetContainerType(marsContainerResponse.Properties.CustomerType).ToString();
@@ -82,14 +82,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
             ContainerType = azureBackupContainerContextObject.ContainerType;
             ContainerUniqueName = azureBackupContainerContextObject.ContainerUniqueName;
         }
-        public AzureRMBackupContainerContextObject(AzureBackupContainer azureBackupContainer)
+        public AzureRMBackupContainerContextObject(AzureRMBackupContainer azureBackupContainer)
             : base(azureBackupContainer.ResourceGroupName, azureBackupContainer.ResourceName, azureBackupContainer.Location)
         {
             ContainerType = azureBackupContainer.ContainerType;
             ContainerUniqueName = azureBackupContainer.ContainerUniqueName;
         }
 
-        public AzureRMBackupContainerContextObject(AzurePSBackupVault vault, CSMContainerResponse containerInfo)
+        public AzureRMBackupContainerContextObject(AzureRMBackupVault vault, CSMContainerResponse containerInfo)
             : base(vault.ResourceGroupName, vault.Name, vault.Region)
         {
             ContainerType = ContainerHelpers.GetTypeForManagedContainer(containerInfo.Properties.ContainerType).ToString();
@@ -115,13 +115,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
             ItemName = azureBackupItemContextObject.ItemName;
         }
 
-        public AzureRMBackupItemContextObject(CSMProtectedItemResponse item, AzureBackupContainer azureBackupContainer)
+        public AzureRMBackupItemContextObject(CSMProtectedItemResponse item, AzureRMBackupContainer azureBackupContainer)
             : base(azureBackupContainer)
         {
             ItemName = item.Name;
         }
 
-        public AzureRMBackupItemContextObject(CSMItemResponse item, AzureBackupContainer azureBackupContainer)
+        public AzureRMBackupItemContextObject(CSMItemResponse item, AzureRMBackupContainer azureBackupContainer)
             : base(azureBackupContainer)
         {
             ItemName = item.Name;

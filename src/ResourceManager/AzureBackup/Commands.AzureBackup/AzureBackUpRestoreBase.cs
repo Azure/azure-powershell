@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.AzureBackup
         // Correct Help message and other attributes related to paameters
         [Parameter(Position = 0, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.AzureBackUpRecoveryPoint, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public AzureBackupRecoveryPoint RecoveryPoint { get; set; }
+        public AzureRMBackupRecoveryPoint RecoveryPoint { get; set; }
 
         public override void ExecuteCmdlet()
         {

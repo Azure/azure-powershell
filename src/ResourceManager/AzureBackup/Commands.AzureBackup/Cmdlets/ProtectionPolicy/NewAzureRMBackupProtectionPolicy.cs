@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Create new protection policy
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRMBackupProtectionPolicy", DefaultParameterSetName = NoScheduleParamSet), OutputType(typeof(AzureBackupProtectionPolicy))]
+    [Cmdlet(VerbsCommon.New, "AzureRMBackupProtectionPolicy", DefaultParameterSetName = NoScheduleParamSet), OutputType(typeof(AzureRMBackupProtectionPolicy))]
     public class NewAzureRMBackupProtectionPolicy : AzureBackupVaultCmdletBase
     {
         protected const string WeeklyScheduleParamSet = "WeeklyScheduleParamSet";
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public string[] DaysOfWeek { get; set; }
 
         [Parameter(Position = 7, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.RetentionPolicyList, ValueFromPipelineByPropertyName = true)]
-        public AzureBackupRetentionPolicy[] RetentionPolicy { get; set; }
+        public AzureRMBackupRetentionPolicy[] RetentionPolicy { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 ProtectionPolicyHelpers.ValidateRetentionPolicy(RetentionPolicy, backupSchedule);
                 
-                AzureBackupProtectionPolicy protectionPolicy = new AzureBackupProtectionPolicy();
+                AzureRMBackupProtectionPolicy protectionPolicy = new AzureRMBackupProtectionPolicy();
 
                 var addCSMProtectionPolicyRequest = new CSMAddProtectionPolicyRequest();
                 addCSMProtectionPolicyRequest.PolicyName = this.Name;

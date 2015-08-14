@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
     /// <summary>
     /// Represents ProtectionPolicy object
     /// </summary>
-    public class AzureBackupProtectionPolicy : AzureBackupVaultContextObject
+    public class AzureRMBackupProtectionPolicy : AzureBackupVaultContextObject
     {
         /// <summary>
         /// Name of the azurebackup object
@@ -40,13 +40,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
 
         public DateTime BackupTime { get; set; }
 
-        public IList<AzureBackupRetentionPolicy> RetentionPolicy { get; set; }
+        public IList<AzureRMBackupRetentionPolicy> RetentionPolicy { get; set; }
 
-        public AzureBackupProtectionPolicy()
+        public AzureRMBackupProtectionPolicy()
         {
         }
 
-        public AzureBackupProtectionPolicy(AzurePSBackupVault vault, CSMProtectionPolicyProperties sourcePolicy, string policyId)
+        public AzureRMBackupProtectionPolicy(AzureRMBackupVault vault, CSMProtectionPolicyProperties sourcePolicy, string policyId)
             : base(vault)
         {
             PolicyId = policyId;
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         }
     }    
 
-    public class AzureBackupRetentionPolicy
+    public class AzureRMBackupRetentionPolicy
     {
         public string RetentionType { get; set; }
 
@@ -67,21 +67,21 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
 
         public IList<DateTime> RetentionTimes { get; set; }
 
-        public AzureBackupRetentionPolicy(string retentionType, int retention)
+        public AzureRMBackupRetentionPolicy(string retentionType, int retention)
         {
             this.RetentionType = retentionType;
             this.Retention = retention;
         }
     }
 
-    public class AzureBackupDailyRetentionPolicy : AzureBackupRetentionPolicy
+    public class AzureBackupDailyRetentionPolicy : AzureRMBackupRetentionPolicy
     {
         public AzureBackupDailyRetentionPolicy(string retentionType, int retention)
             : base(retentionType, retention)
         { }
     }
 
-    public class AzureBackupWeeklyRetentionPolicy : AzureBackupRetentionPolicy
+    public class AzureBackupWeeklyRetentionPolicy : AzureRMBackupRetentionPolicy
     {
         public List<DayOfWeek> DaysOfWeek { get; set; }
         public AzureBackupWeeklyRetentionPolicy(string retentionType, int retention, IList<DayOfWeek> daysOfWeek)
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         }
     }
 
-    public class AzureBackupMonthlyRetentionPolicy : AzureBackupRetentionPolicy
+    public class AzureBackupMonthlyRetentionPolicy : AzureRMBackupRetentionPolicy
     {
         public RetentionFormat RetentionFormat { get; set; }
 
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         }
     }
 
-    public class AzureBackupYearlyRetentionPolicy : AzureBackupRetentionPolicy
+    public class AzureBackupYearlyRetentionPolicy : AzureRMBackupRetentionPolicy
     {
         public List<Month> MonthsOfYear { get; set; }
 

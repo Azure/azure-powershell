@@ -87,12 +87,12 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             });
         }
 
-        public void WriteAzureBackupItem(CSMProtectedItemResponse sourceItem, AzureBackupContainer azureBackupItem)
+        public void WriteAzureBackupItem(CSMProtectedItemResponse sourceItem, AzureRMBackupContainer azureBackupItem)
         {
             this.WriteObject(new AzureRMBackupItem(sourceItem, azureBackupItem));
         }
 
-        public void WriteAzureBackupItem(List<CSMProtectedItemResponse> sourceDataSourceList, List<CSMItemResponse> sourcePOList, AzureBackupContainer azureBackupContainer)
+        public void WriteAzureBackupItem(List<CSMProtectedItemResponse> sourceDataSourceList, List<CSMItemResponse> sourcePOList, AzureRMBackupContainer azureBackupContainer)
         {
             List<AzureRMBackupItem> targetList = new List<AzureRMBackupItem>();
 

@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Get list of Azure Recovery Points
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMBackupRecoveryPoint"), OutputType(typeof(AzureBackupRecoveryPoint), typeof(List<AzureBackupRecoveryPoint>))]
-    public class GetAzureRMBackupRecoveryPoint : AzureBackupDSCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRMBackupRecoveryPoint"), OutputType(typeof(AzureRMBackupRecoveryPoint), typeof(List<AzureRMBackupRecoveryPoint>))]
+    public class GetAzureRMBackupRecoveryPoint : AzureRMBackupDSCmdletBase
     {
         [Parameter(Position = 1, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.RecoveryPointId)]
         [ValidateNotNullOrEmpty]
@@ -76,18 +76,18 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             });
         }
 
-        public void WriteAzureBackupRecoveryPoint(CSMRecoveryPointResponse sourceRecoverPoint, AzureBackupItem azureBackupItem)
+        public void WriteAzureBackupRecoveryPoint(CSMRecoveryPointResponse sourceRecoverPoint, AzureRMBackupItem azureBackupItem)
         {
-            this.WriteObject(new AzureBackupRecoveryPoint(sourceRecoverPoint, azureBackupItem));
+            this.WriteObject(new AzureRMBackupRecoveryPoint(sourceRecoverPoint, azureBackupItem));
         }
 
-        public void WriteAzureBackupRecoveryPoint(IEnumerable<CSMRecoveryPointResponse> sourceRecoverPointList, AzureBackupItem azureBackupItem)
+        public void WriteAzureBackupRecoveryPoint(IEnumerable<CSMRecoveryPointResponse> sourceRecoverPointList, AzureRMBackupItem azureBackupItem)
         {
-            List<AzureBackupRecoveryPoint> targetList = new List<AzureBackupRecoveryPoint>();
+            List<AzureRMBackupRecoveryPoint> targetList = new List<AzureRMBackupRecoveryPoint>();
 
             foreach (var sourceRecoverPoint in sourceRecoverPointList)
             {
-                targetList.Add(new AzureBackupRecoveryPoint(sourceRecoverPoint, azureBackupItem));
+                targetList.Add(new AzureRMBackupRecoveryPoint(sourceRecoverPoint, azureBackupItem));
             }
 
             this.WriteObject(targetList, true);

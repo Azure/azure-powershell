@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Command to get azure backup vaults in a subscription
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMBackupVault"), OutputType(typeof(AzurePSBackupVault), typeof(List<AzurePSBackupVault>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRMBackupVault"), OutputType(typeof(AzureRMBackupVault), typeof(List<AzureRMBackupVault>))]
     public class GetAzureRMBackupVault : AzureBackupCmdletBase
     {
         [Parameter(Position = 0, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ResourceGroupName)]
@@ -66,9 +66,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             });
         }
 
-        private IEnumerable<AzurePSBackupVault> GetCmdletVaults(IEnumerable<AzureBackupVault> backupVaults)
+        private IEnumerable<AzureRMBackupVault> GetCmdletVaults(IEnumerable<AzureBackupVault> backupVaults)
         {
-            List<AzurePSBackupVault> resultList = new List<AzurePSBackupVault>();
+            List<AzureRMBackupVault> resultList = new List<AzureRMBackupVault>();
             if (backupVaults != null)
             {
                 foreach (var backupVault in backupVaults)

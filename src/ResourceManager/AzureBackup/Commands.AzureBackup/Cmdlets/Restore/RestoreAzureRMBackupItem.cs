@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 WriteDebug(string.Format("Triggered Restore. Converting response {0}", operationId));
 
                 var operationStatus = TrackOperation(operationId);
-                WriteObject(GetCreatedJobs(new Models.AzurePSBackupVault(RecoveryPoint.ResourceGroupName, RecoveryPoint.ResourceName, RecoveryPoint.Location), operationStatus.JobList).FirstOrDefault());
+                WriteObject(GetCreatedJobs(new Models.AzureRMBackupVault(RecoveryPoint.ResourceGroupName, RecoveryPoint.ResourceName, RecoveryPoint.Location), operationStatus.JobList).FirstOrDefault());
 
             });
         }

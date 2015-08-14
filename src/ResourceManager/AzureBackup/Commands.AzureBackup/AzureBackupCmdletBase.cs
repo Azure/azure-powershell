@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         /// Initializes required client adapters
         /// </summary>
         /// <param name="vault"></param>
-        protected void InitializeAzureBackupCmdlet(CmdletModel.AzurePSBackupVault vault)
+        protected void InitializeAzureBackupCmdlet(CmdletModel.AzureRMBackupVault vault)
         {
             InitializeAzureBackupCmdlet(vault.ResourceGroupName, vault.Name);
         }
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             return response;
         }
 
-        internal IList<AzureRMBackupJob> GetCreatedJobs(AzurePSBackupVault vault, IList<string> jobIds)
+        internal IList<AzureRMBackupJob> GetCreatedJobs(AzureRMBackupVault vault, IList<string> jobIds)
         {
             IList<AzureRMBackupJob> jobs = new List<AzureRMBackupJob>();
 

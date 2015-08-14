@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Update existing protection policy
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRMBackupProtectionPolicy", DefaultParameterSetName = NoScheduleParamSet), OutputType(typeof(AzureBackupProtectionPolicy))]
+    [Cmdlet(VerbsCommon.Set, "AzureRMBackupProtectionPolicy", DefaultParameterSetName = NoScheduleParamSet), OutputType(typeof(AzureRMBackupProtectionPolicy))]
     public class SetAzureRMBackupProtectionPolicy : AzureBackupPolicyCmdletBase
     {
         protected const string WeeklyScheduleParamSet = "WeeklyScheduleParamSet";
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public DateTime BackupTime { get; set; }
 
         [Parameter(Position = 5, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.RetentionPolicyList)]
-        public AzureBackupRetentionPolicy[] RetentionPolicy { get; set; }
+        public AzureRMBackupRetentionPolicy[] RetentionPolicy { get; set; }
 
         [Parameter(ParameterSetName = WeeklyScheduleParamSet, Position = 6, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ScheduleRunDays)]
         [ValidateSet("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", IgnoreCase = true)]
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 WriteDebug("Making client call");
 
                 var response = AzureBackupClient.GetProtectionPolicyByName(ProtectionPolicy.Name);
-                var vault = new CmdletModel.AzurePSBackupVault(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.Name, ProtectionPolicy.Location);
+                var vault = new CmdletModel.AzureRMBackupVault(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.Name, ProtectionPolicy.Location);
 
                 var policyInfo = ProtectionPolicyHelpers.GetCmdletPolicy(vault, response);
 
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 updateProtectionPolicyRequest.Properties.PolicyName = this.NewName;
                 updateProtectionPolicyRequest.Properties.BackupSchedule = backupSchedule;
 
-                AzureBackupProtectionPolicy protectionPolicy = new AzureBackupProtectionPolicy();
+                AzureRMBackupProtectionPolicy protectionPolicy = new AzureRMBackupProtectionPolicy();
                 if (RetentionPolicy != null && RetentionPolicy.Length > 0)
                 {
                     updateProtectionPolicyRequest.Properties.LtrRetentionPolicy =
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             });
         }
 
-        private void FillRemainingValuesForSetPolicyRequest(AzureBackupProtectionPolicy policy, string newName)
+        private void FillRemainingValuesForSetPolicyRequest(AzureRMBackupProtectionPolicy policy, string newName)
         {
             if (newName != null && NewName != policy.Name)
             {

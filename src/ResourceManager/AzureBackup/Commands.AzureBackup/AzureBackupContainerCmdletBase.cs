@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.AzureBackupContainer, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public AzureBackupContainer Container { get; set; }
+        public AzureRMBackupContainer Container { get; set; }
 
         public override void ExecuteCmdlet()
         {

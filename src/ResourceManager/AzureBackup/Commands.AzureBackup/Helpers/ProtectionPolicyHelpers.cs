@@ -47,24 +47,24 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
         public const string LastDayOfTheMonth = "Last";
         public static Regex rgx = new Regex(@"^[A-Za-z][-A-Za-z0-9]*[A-Za-z0-9]$");
 
-        public static AzureBackupProtectionPolicy GetCmdletPolicy(CmdletModel.AzurePSBackupVault vault, CSMProtectionPolicyResponse sourcePolicy)
+        public static AzureRMBackupProtectionPolicy GetCmdletPolicy(CmdletModel.AzureRMBackupVault vault, CSMProtectionPolicyResponse sourcePolicy)
         {
             if (sourcePolicy == null)
             {
                 return null;
             }
 
-            return new AzureBackupProtectionPolicy(vault, sourcePolicy.Properties, sourcePolicy.Id);
+            return new AzureRMBackupProtectionPolicy(vault, sourcePolicy.Properties, sourcePolicy.Id);
         }
 
-        public static IEnumerable<AzureBackupProtectionPolicy> GetCmdletPolicies(CmdletModel.AzurePSBackupVault vault, IEnumerable<CSMProtectionPolicyResponse> sourcePolicyList)
+        public static IEnumerable<AzureRMBackupProtectionPolicy> GetCmdletPolicies(CmdletModel.AzureRMBackupVault vault, IEnumerable<CSMProtectionPolicyResponse> sourcePolicyList)
         {
             if (sourcePolicyList == null)
             {
                 return null;
             }
 
-            List<AzureBackupProtectionPolicy> targetList = new List<AzureBackupProtectionPolicy>();
+            List<AzureRMBackupProtectionPolicy> targetList = new List<AzureRMBackupProtectionPolicy>();
 
             foreach (var sourcePolicy in sourcePolicyList)
             {
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
             }  
         }
 
-        public static void ValidateRetentionPolicy(IList<AzureBackupRetentionPolicy> retentionPolicyList, CSMBackupSchedule backupSchedule = null)
+        public static void ValidateRetentionPolicy(IList<AzureRMBackupRetentionPolicy> retentionPolicyList, CSMBackupSchedule backupSchedule = null)
         {
             bool validateDailyRetention = false;
             bool validateWeeklyRetention = false;
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
                 throw exception;
             }
 
-            foreach (AzureBackupRetentionPolicy retentionPolicy in retentionPolicyList)
+            foreach (AzureRMBackupRetentionPolicy retentionPolicy in retentionPolicyList)
             {
                 if(retentionPolicy.RetentionType == "Daily")
                 {
@@ -455,9 +455,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
 
         # region Conversion Helper Functions
 
-        public static IList<AzureBackupRetentionPolicy> ConvertCSMRetentionPolicyListToPowershell(CSMLongTermRetentionPolicy LTRRetentionPolicy)
+        public static IList<AzureRMBackupRetentionPolicy> ConvertCSMRetentionPolicyListToPowershell(CSMLongTermRetentionPolicy LTRRetentionPolicy)
         {
-            IList<AzureBackupRetentionPolicy> retentionPolicyList = new List<AzureBackupRetentionPolicy>();
+            IList<AzureRMBackupRetentionPolicy> retentionPolicyList = new List<AzureRMBackupRetentionPolicy>();
             AzureBackupDailyRetentionPolicy dailyRetentionPolicy = ConvertToPowershellDailyRetentionObject(LTRRetentionPolicy.DailySchedule);
             AzureBackupWeeklyRetentionPolicy weeklyRetentionPolicy = ConvertToPowershellWeeklyRetentionObject(LTRRetentionPolicy.WeeklySchedule);
             AzureBackupMonthlyRetentionPolicy monthlyRetentionPolicy = ConvertToPowershellMonthlyRetentionObject(LTRRetentionPolicy.MonthlySchedule);
@@ -513,10 +513,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
                 throw new ArgumentException("Unsupported WorkloadType");
             }
         }
-        public static CSMLongTermRetentionPolicy ConvertToCSMRetentionPolicyObject(IList<AzureBackupRetentionPolicy> retentionPolicyList, CSMBackupSchedule backupSchedule)
+        public static CSMLongTermRetentionPolicy ConvertToCSMRetentionPolicyObject(IList<AzureRMBackupRetentionPolicy> retentionPolicyList, CSMBackupSchedule backupSchedule)
         {
             CSMLongTermRetentionPolicy csmLongTermRetentionPolicy = new CSMLongTermRetentionPolicy();
-            foreach (AzureBackupRetentionPolicy retentionPolicy in retentionPolicyList)
+            foreach (AzureRMBackupRetentionPolicy retentionPolicy in retentionPolicyList)
             {
                 if (retentionPolicy.RetentionType == "Daily")
                 {

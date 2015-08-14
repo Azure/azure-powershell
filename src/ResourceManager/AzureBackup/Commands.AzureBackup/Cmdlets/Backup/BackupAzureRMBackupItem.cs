@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// Backup Azue Backup Item
     /// </summary>
     [Cmdlet(VerbsData.Backup, "AzureRMBackupItem"), OutputType(typeof(AzureRMBackupJob))]
-    public class BackupAzureRMBackupItem : AzureBackupDSCmdletBase
+    public class BackupAzureRMBackupItem : AzureRMBackupDSCmdletBase
     {
         public override void ExecuteCmdlet()
         {
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 WriteDebug(string.Format("Triggered backup. Converting response {0}", operationId));
 
                 var operationStatus = TrackOperation(operationId);
-                WriteObject(GetCreatedJobs(new Models.AzurePSBackupVault(Item.ResourceGroupName, Item.ResourceName, Item.Location), operationStatus.JobList).FirstOrDefault());
+                WriteObject(GetCreatedJobs(new Models.AzureRMBackupVault(Item.ResourceGroupName, Item.ResourceName, Item.Location), operationStatus.JobList).FirstOrDefault());
             });
         }
     }

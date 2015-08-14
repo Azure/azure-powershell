@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     {
         [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.PolicyName)]
         [ValidateNotNullOrEmpty]
-        public AzureBackupProtectionPolicy Policy { get; set; }
+        public AzureRMBackupProtectionPolicy Policy { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -53,12 +53,12 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     itemName = (Item as AzureRMBackupItem).ItemName;
                 }
 
-                else if (Item.GetType() == typeof(AzureBackupContainer))
+                else if (Item.GetType() == typeof(AzureRMBackupContainer))
                 {
                     WriteDebug("Input is container Type = " + Item.GetType());
-                    if ((Item as AzureBackupContainer).ContainerType == AzureBackupContainerType.AzureVM.ToString())
+                    if ((Item as AzureRMBackupContainer).ContainerType == AzureBackupContainerType.AzureVM.ToString())
                     {
-                        itemName = (Item as AzureBackupContainer).ContainerUniqueName;
+                        itemName = (Item as AzureRMBackupContainer).ContainerUniqueName;
                     }
                     else
                     {
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 WriteDebug("Received enable azure backup protection response");
 
                 var operationStatus = TrackOperation(operationId);
-                this.WriteObject(GetCreatedJobs(new Models.AzurePSBackupVault(Item.ResourceGroupName, Item.ResourceName, Item.Location), operationStatus.JobList).FirstOrDefault());
+                this.WriteObject(GetCreatedJobs(new Models.AzureRMBackupVault(Item.ResourceGroupName, Item.ResourceName, Item.Location), operationStatus.JobList).FirstOrDefault());
             });
         }
     }

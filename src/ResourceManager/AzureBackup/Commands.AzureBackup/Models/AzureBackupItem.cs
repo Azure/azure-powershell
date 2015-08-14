@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         {
         }
 
-        public AzureRMBackupItem(CSMProtectedItemResponse datasource, AzureBackupContainer azureBackupContainer)
+        public AzureRMBackupItem(CSMProtectedItemResponse datasource, AzureRMBackupContainer azureBackupContainer)
             : base(datasource, azureBackupContainer)
         {
             DataSourceStatus = datasource.Properties.ProtectionStatus;
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
             Type = datasource.Properties.ItemType;
         }
 
-        public AzureRMBackupItem(CSMItemResponse pPOItem, AzureBackupContainer azureBackupContainer)
+        public AzureRMBackupItem(CSMItemResponse pPOItem, AzureRMBackupContainer azureBackupContainer)
             : base(pPOItem, azureBackupContainer)
         {
             ProtectionStatus = pPOItem.Properties.Status;

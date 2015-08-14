@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Get list of containers
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMBackupContainer"), OutputType(typeof(List<AzureBackupContainer>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRMBackupContainer"), OutputType(typeof(List<AzureRMBackupContainer>))]
     public class GetAzureRMBackupContainer : AzureBackupVaultCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ManagedResourceName)]
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
-                List<AzureBackupContainer> containers = new List<AzureBackupContainer>();
+                List<AzureRMBackupContainer> containers = new List<AzureRMBackupContainer>();
 
                 switch (Type)
                 {
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             });
         }
 
-        private List<AzureBackupContainer> GetMachineContainers()
+        private List<AzureRMBackupContainer> GetMachineContainers()
         {
             List<MarsContainerResponse> marsContainerResponses = new List<MarsContainerResponse>();
 
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 Status == AzureBackupContainerRegistrationStatus.Registering ||
                 !string.IsNullOrEmpty(ManagedResourceGroupName))
             {
-                return new List<AzureBackupContainer>();
+                return new List<AzureRMBackupContainer>();
             }
 
             if (string.IsNullOrEmpty(Name))
@@ -103,15 +103,15 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 marsContainerResponses.AddRange(AzureBackupClient.ListMachineContainers(Name));
             }
 
-            return marsContainerResponses.ConvertAll<AzureBackupContainer>(marsContainerResponse =>
+            return marsContainerResponses.ConvertAll<AzureRMBackupContainer>(marsContainerResponse =>
             {
-                return new AzureBackupContainer(Vault, marsContainerResponse);
+                return new AzureRMBackupContainer(Vault, marsContainerResponse);
             }).Where(container => container.ContainerType == Type.ToString()).ToList();
         }
 
-        private List<AzureBackupContainer> GetManagedContainers()
+        private List<AzureRMBackupContainer> GetManagedContainers()
         {
-            List<AzureBackupContainer> managedContainers = new List<AzureBackupContainer>();
+            List<AzureRMBackupContainer> managedContainers = new List<AzureRMBackupContainer>();
 
             ContainerQueryParameters parameters = new ContainerQueryParameters();
             parameters.ContainerType = ManagedContainerType.IaasVM.ToString();
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             // BUG: Friendly name was previously assigned to ResourceName (vault name)
             managedContainers.AddRange(containers.ConvertAll(container =>
             {
-                return new AzureBackupContainer(Vault, container);
+                return new AzureRMBackupContainer(Vault, container);
             }));
 
             return managedContainers;
