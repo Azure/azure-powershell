@@ -50,15 +50,15 @@ function Test-AzureBackupMarsContainerScenario
     Assert-AreEqual $unregContainers.Count 0;
 }
 
-$IaasVMManagedResourceName = "dev01testing"
-$IaasVMManagedResourceGroupName = "dev01testing"
+$IaasVMManagedResourceName = "hydrarecordvm"
+$IaasVMManagedResourceGroupName = "hydrarecordvm"
 $VaultResourceName = "backuprn"
 $VaultResourceRGName = "backuprg"
 
 
 function Test-RegisterAzureBackupContainer
 { 
-    $vault = Get-AzureRMBackupVault -$VaultResourceRGName mkheranirg -Name $VaultResourceName
+    $vault = Get-AzureRMBackupVault -Name $VaultResourceName
     $jobId = Register-AzureRMBackupContainer -vault $vault -Name $IaasVMManagedResourceName -ServiceName $IaasVMManagedResourceGroupName 
      
     Assert-NotNull $jobId 'Job should not be null'; 
@@ -75,8 +75,8 @@ function Test-UnregisterAzureBackupContainer
 }
 
 $BMSContainerType = "AzureVM"
-$BMSContainerUniqueName = "iaasvmcontainer;panbha45;panbha45"
-$BMSContainerName = "panbha45"
+$BMSContainerUniqueName = "iaasvmcontainer;hydrarecordvm;hydrarecordvm"
+$BMSContainerName = "hydrarecordvm"
 $BMSContainerStatus = "Registered"
 
 function Test-AzureBackupContainerScenario

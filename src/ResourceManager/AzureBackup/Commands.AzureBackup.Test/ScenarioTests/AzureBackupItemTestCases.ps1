@@ -1,13 +1,13 @@
 ﻿$ResourceGroupName = "backuprg"
 $ResourceName = "backuprn"
-$ContainerName = "iaasvmcontainer;dev01testing;dev01testing"
+$ContainerName = "iaasvmcontainer;hydrarecordvm;hydrarecordvm"
 $ContainerType = "IaasVMContainer"
 $DataSourceType = "VM"
 $DataSourceId = "17593283453810"
 $Location = "SouthEast Asia"
 $PolicyName = "Policy9";
 $PolicyId = "c87bbada-6e1b-4db2-b76c-9062d28959a4";
-$POName = "iaasvmcontainer;dev01testing;dev01testing"
+$POName = "iaasvmcontainer;hydrarecordvm;hydrarecordvm"
 
 
 function Test-GetAzureBackupItemTests
@@ -18,7 +18,7 @@ function Test-GetAzureBackupItemTests
 	$azureBackUpContainer.Location = $Location
 	$azureBackUpContainer.ContainerUniqueName = $ContainerName
 	$azureBackUpContainer.ContainerType = $ContainerType
-	$item = Get-AzureBackupItem -Container $azureBackUpContainer
+	$item = Get-AzureRMBackupItem -Container $azureBackUpContainer
 	if (!($item -eq $null))
 	{
 		foreach($backupitem in $item)
@@ -56,7 +56,7 @@ function Test-EnableAzureBackupProtection
 	$azureBackUpItem.DataSourceId = $DataSourceId
 	$azureBackUpItem.Type = $DataSourceType
 	$azureBackUpItem.Name = $POName
-	$jobId = Enable-AzureBackupProtection -Item $azureBackUpItem -Policy $policy 
+	$jobId = Enable-AzureRMBackupProtection -Item $azureBackUpItem -Policy $policy 
 	
 }
 
@@ -71,5 +71,5 @@ function Test-DisableAzureBackupProtection
 	$azureBackUpItem.DataSourceId = $DataSourceId
 	$azureBackUpItem.Type = $DataSourceType
 	$azureBackUpItem.Name = $POName
-	$jobId1 = Disable-AzureBackupProtection -Item $azureBackUpItem
+	$jobId1 = Disable-AzureRMBackupProtection -Item $azureBackUpItem
 }

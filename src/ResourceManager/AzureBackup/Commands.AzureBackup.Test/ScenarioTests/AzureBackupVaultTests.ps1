@@ -14,7 +14,7 @@
 
 $ResourceGroupName = "backuprg"
 $ResourceName = "backuprn1"
-$Location = "westus"
+$Location = "southeastasia"
 $CertTargetLocation = (Get-Item -Path ".\" -Verbose).FullName;
 
 function Test-AzureBackupVaultScenario

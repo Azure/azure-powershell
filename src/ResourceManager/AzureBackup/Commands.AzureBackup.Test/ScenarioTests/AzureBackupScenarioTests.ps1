@@ -15,25 +15,25 @@
 $ResourceGroupName = "backuprg"
 $ResourceName = "backuprn"
 $Location = "southeastasia"
-$VirtualMachineName = "e2etest"
-$ProtectionPolicyName = "e2epolicy"
+$VirtualMachineName = "e2epowershell"
+$ProtectionPolicyName = "e2epolicy1"
 $RestoreStorageAccount = "e2estore"
 
 function Test-AzureBackupEndToEnd
 {
-	New-AzureBackupVault -ResourceGroupName $ResourceGroupName -Name $ResourceName -Region "SouthEast Asia"
-	$vault = Get-AzureBackupVault -Name $ResourceName;
-	$Job = Register-AzureBackupContainer -Vault $vault -Name $VirtualMachineName -ServiceName $VirtualMachineName;
-	Wait-AzureBackupJob -Job $Job;
-	$JobDetails = Get-AzureBackupJobDetails -Vault $vault -JobId $Job.InstanceId;
+	New-AzureRMBackupVault -ResourceGroupName $ResourceGroupName -Name $ResourceName -Region "SouthEast Asia"
+	$vault = Get-AzureRMBackupVault -Name $ResourceName;
+	$Job = Register-AzureRMBackupContainer -Vault $vault -Name $VirtualMachineName -ServiceName $VirtualMachineName;
+	Wait-AzureRMBackupJob -Job $Job;
+	$JobDetails = Get-AzureRMBackupJobDetails -Vault $vault -JobId $Job.InstanceId;
 	Assert-AreEqual $JobDetails.Status "Completed";
 	
-	$r1 = New-AzureBackupRetentionPolicyObject -DailyRetention -Retention 20;
-	$r2 = New-AzureBackupRetentionPolicyObject -WeeklyRetention -DaysOfWeek "Monday" -Retention 10;
-	$r3 = New-AzureBackupRetentionPolicyObject -MonthlyRetentionInDailyFormat -DaysOfMonth "10" -Retention 10;
+	$r1 = New-AzureRMBackupRetentionPolicyObject -DailyRetention -Retention 20;
+	$r2 = New-AzureRMBackupRetentionPolicyObject -WeeklyRetention -DaysOfWeek "Monday" -Retention 10;
+	$r3 = New-AzureRMBackupRetentionPolicyObject -MonthlyRetentionInDailyFormat -DaysOfMonth "10" -Retention 10;
 	$r = ($r1, $r2, $r3);
 	$backupTime = (Get-Date -Hour 15 -Minute 30 -Second 0).ToUniversalTime();
-	$protectionpolicy = New-AzureBackupProtectionPolicy -Vault $vault -Name $ProtectionPolicyName -Type "IaasVM" -Daily -BackupTime $backupTime -RetentionPolicies $r; 
+	$protectionpolicy = New-AzureRMBackupProtectionPolicy -Vault $vault -Name $ProtectionPolicyName -Type "IaasVM" -Daily -BackupTime $backupTime -RetentionPolicies $r; 
 
 	Assert-AreEqual $protectionpolicy.Name $ProtectionPolicyName;
 	Assert-AreEqual $protectionpolicy.Type "IaasVM";
@@ -43,7 +43,7 @@ function Test-AzureBackupEndToEnd
 	Assert-AreEqual $protectionpolicy.ResourceName $ResourceName;
 	Assert-AreEqual $protectionpolicy.Location $Location;
 	
-	$container = Get-AzureBackupContainer -Vault $vault -Name $VirtualMachineName -Type AzureVM
+	$container = Get-AzureRMBackupContainer -Vault $vault -Name $VirtualMachineName -Type AzureVM
 	Assert-AreEqual $container.ContainerType "IaasVM";
 	Assert-AreEqual $container.ContainerUniqueName.Contains("iaasvmcontainer") "True";
 	Assert-AreEqual $container.ContainerUniqueName.Contains($VirtualMachineName) "True";
@@ -52,9 +52,9 @@ function Test-AzureBackupEndToEnd
 	Assert-AreEqual $container.ResourceName $ResourceName;
 	Assert-AreEqual $container.Location $Location;
 
-	$Job = Enable-AzureBackupProtection -Item $container[0] -Policy $protectionpolicy[0];
-	Wait-AzureBackupJob -Job $Job;
-	$JobDetails = Get-AzureBackupJobDetails -Vault $vault -JobID $Job.InstanceId;
+	$Job = Enable-AzureRMBackupProtection -Item $container[0] -Policy $protectionpolicy[0];
+	Wait-AzureRMBackupJob -Job $Job;
+	$JobDetails = Get-AzureRMBackupJobDetails -Vault $vault -JobID $Job.InstanceId;
 	Assert-AreEqual $JobDetails.Operation "ConfigureBackup";
 	Assert-AreEqual $JobDetails.Status "Completed";
 	Assert-AreEqual $JobDetails.WorkloadName $VirtualMachineName;
@@ -64,7 +64,7 @@ function Test-AzureBackupEndToEnd
 	Assert-AreEqual $JobDetails.ResourceName $ResourceName;
 	Assert-AreEqual $JobDetails.Location $ResourceGroupName;
 
-	$item = Get-AzureBackupItem -Container $container[0];
+	$item = Get-AzureRMBackupItem -Container $container[0];
 	Assert-AreEqual $item.ProtectionStatus "Protected";
 	Assert-AreEqual $item.DataSourceStatus "IRPending";
 	Assert-AreEqual $item.ProtectionPolicyName  $ProtectionPolicyName;
@@ -76,9 +76,9 @@ function Test-AzureBackupEndToEnd
 	Assert-AreEqual $item.ResourceName $ResourceName;
 	Assert-AreEqual $item.Location $Location;
 	
-	$Job = Backup-AzureBackupItem -Item $item[0];
-	Wait-AzureBackupJob -Job $Job;
-	$JobDetails = Get-AzureBackupJobDetails -Vault $vault -JobID $Job.InstanceId;
+	$Job = Backup-AzureRMBackupItem -Item $item[0];
+	Wait-AzureRMBackupJob -Job $Job;
+	$JobDetails = Get-AzureRMBackupJobDetails -Vault $vault -JobID $Job.InstanceId;
 	Assert-AreEqual $JobDetails.Operation "Backup";
 	Assert-AreEqual $JobDetails.Status "Completed";
 	Assert-AreEqual $JobDetails.WorkloadType "VM";
@@ -88,7 +88,7 @@ function Test-AzureBackupEndToEnd
 	Assert-AreEqual $JobDetails.ResourceName $ResourceName;
 	Assert-AreEqual $JobDetails.Location $ResourceGroupName;
 
-	$item = Get-AzureBackupItem -Container $container[0];
+	$item = Get-AzureRMBackupItem -Container $container[0];
 	Assert-AreEqual $item.ProtectionStatus "Protected";
 	Assert-AreEqual $item.DataSourceStatus "Protected";
 	Assert-AreEqual $item.ProtectionPolicyName $ProtectionPolicyName;
@@ -99,7 +99,7 @@ function Test-AzureBackupEndToEnd
 	Assert-AreEqual $item.Location $ResourceGroupName;
 
 	#ToDo: Swatim to verify output Assert after this.
-	$recoveryPoints = Get-AzureBackupRecoveryPoint -Item $item[0];
+	$recoveryPoints = Get-AzureRMBackupRecoveryPoint -Item $item[0];
 	Assert-NotNull $recoveryPoints.RecoveryPointTime;
 	Assert-NotNull $recoveryPoints.RecoveryPointName;
 	Assert-AreEqual $recoveryPoints.RecoveryPointType "AppConsistent";
@@ -107,9 +107,9 @@ function Test-AzureBackupEndToEnd
 	Assert-AreEqual $recoveryPoints.ItemName.Contains($VirtualMachineName) "True";
 	Assert-AreEqual $recoveryPoints.ItemName.Contains("iaasvmcontainer") "True";
 
-	$Job = Restore-AzureBackupItem -RecoveryPoint $recoveryPoints -StorageAccountName $RestoreStorageAccount;
-	Wait-AzureBackupJob -Job $Job;
-	$JobDetails = Get-AzureBackupJobDetails -Vault $vault -JobID $Job.InstanceId;
+	$Job = Restore-AzureRMBackupItem -RecoveryPoint $recoveryPoints -StorageAccountName $RestoreStorageAccount;
+	Wait-AzureRMBackupJob -Job $Job;
+	$JobDetails = Get-AzureRMBackupJobDetails -Vault $vault -JobID $Job.InstanceId;
 	Assert-AreEqual $JobDetails.Operation "Restore";
 	Assert-AreEqual $JobDetails.Status "Completed";
 	Assert-AreEqual $JobDetails.WorkloadType "VM";
@@ -120,9 +120,9 @@ function Test-AzureBackupEndToEnd
 	Assert-AreEqual $JobDetails.ResourceName $ResourceName;
 	Assert-AreEqual $JobDetails.Location $ResourceGroupName;
 
-	$Job = Disable-AzureBackupProtection -RemoveRecoveryPoints -Item $item[0];
-	Wait-AzureBackupJob -Job $Job;
-	$JobDetails = Get-AzureBackupJobDetails -Vault $vault -JobID $Job.InstanceId;
+	$Job = Disable-AzureRMBackupProtection -RemoveRecoveryPoints -Item $item[0];
+	Wait-AzureRMBackupJob -Job $Job;
+	$JobDetails = Get-AzureRMBackupJobDetails -Vault $vault -JobID $Job.InstanceId;
 	Assert-AreEqual $JobDetails.Operation "Unprotect";
 	Assert-AreEqual $JobDetails.Status "Completed";
 	Assert-AreEqual $JobDetails.WorkloadName $VirtualMachineName;
@@ -132,17 +132,17 @@ function Test-AzureBackupEndToEnd
 	Assert-AreEqual $JobDetails.ResourceName $ResourceName;
 	Assert-AreEqual $JobDetails.Location $ResourceGroupName;
 
-	$Job = Unregister-AzureBackupContainer -Container $container[0];
-	Wait-AzureBackupJob -Job $Job;
-	$JobDetails = Get-AzureBackupJobDetails -Vault $vault -JobId $Job.InstanceId;
+	$Job = Unregister-AzureRMBackupContainer -Container $container[0];
+	Wait-AzureRMBackupJob -Job $Job;
+	$JobDetails = Get-AzureRMBackupJobDetails -Vault $vault -JobId $Job.InstanceId;
 	Assert-AreEqual $JobDetails.Operation "UnRegister";
 	Assert-AreEqual $JobDetails.Status "Completed";
 	Assert-AreEqual $JobDetails.WorkloadName $VirtualMachineName;
 
-	Remove-AzureBackupProtectionPolicy -ProtectionPolicy $protectionpolicy;
+	Remove-AzureRMBackupProtectionPolicy -ProtectionPolicy $protectionpolicy;
 	
-	Remove-AzureBackupVault -Vault $vault;
+	Remove-AzureRMBackupVault -Vault $vault;
 
-	$deletedVault = Get-AzureBackupVault -Name $ResourceName;
+	$deletedVault = Get-AzureRMBackupVault -Name $ResourceName;
 	Assert-Null $deletedVault;
 }

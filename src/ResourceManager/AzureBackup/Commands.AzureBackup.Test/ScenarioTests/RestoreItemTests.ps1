@@ -1,14 +1,14 @@
 ﻿$ResourceGroupName = "backuprg"
 $ResourceName = "backuprn"
-$ContainerName = "iaasvmcontainer;dev01testing;dev01testing"
+$ContainerName = "iaasvmcontainer;hydrarecordvm;hydrarecordvm"
 $ContainerType = "IaasVMContainer"
 $DataSourceType = "VM"
 $DataSourceId = "17593283453810"
 $Location = "southeastasia"
 $PolicyName = "Policy9";
 $PolicyId = "c87bbada-6e1b-4db2-b76c-9062d28959a4";
-$POName = "iaasvmcontainer;dev01testing;dev01testing"
-$ItemName = "iaasvmcontainer;dev01testing;dev01testing"
+$POName = "iaasvmcontainer;hydrarecordvm;hydrarecordvm"
+$ItemName = "iaasvmcontainer;hydrarecordvm;hydrarecordvm"
 $RecoveryPointName = "12520735098347"
 $StorageAccountName = "portalvhds7jzk3jty85qx5"
 
