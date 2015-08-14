@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             dbPolicyModel.UseServerDefault = properties.UseServerDefault == SecurityConstants.AuditingEndpoint.Enabled ? UseServerDefaultOptions.Enabled : UseServerDefaultOptions.Disabled;
             ModelizeStorageInfo(dbPolicyModel, properties.StorageAccountName, properties.StorageAccountKey, properties.StorageAccountSecondaryKey);
             ModelizeEventTypesInfo(dbPolicyModel, properties.EventTypesToAudit);
-            ModelizeRetentionInfo(dbPolicyModel, properties.RetentionDays, properties.AuditLogsTableName);
+            ModelizeRetentionInfo(dbPolicyModel, properties.RetentionDays, properties.AuditLogsTableName, properties.FullAuditLogsTableName);
             return dbPolicyModel;
         }
 
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             serverPolicyModel.AuditState = ModelizeAuditState(properties.AuditingState);
             ModelizeStorageInfo(serverPolicyModel, properties.StorageAccountName, properties.StorageAccountKey, properties.StorageAccountSecondaryKey);
             ModelizeEventTypesInfo(serverPolicyModel, properties.EventTypesToAudit);
-            ModelizeRetentionInfo(serverPolicyModel, properties.RetentionDays, properties.AuditLogsTableName);
+            ModelizeRetentionInfo(serverPolicyModel, properties.RetentionDays, properties.AuditLogsTableName, properties.FullAuditLogsTableName);
             return serverPolicyModel;
         }
 
@@ -228,9 +228,10 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// <summary>
         /// Updates the content of the model object with all the retention information
         /// </summary>
-        private void ModelizeRetentionInfo(BaseAuditingPolicyModel model, string retentionDays, string auditLogsTableName)
+        private void ModelizeRetentionInfo(BaseAuditingPolicyModel model, string retentionDays, string auditLogsTableName, string fullAuditLogsTableName)
         {
             model.TableIdentifier = auditLogsTableName;
+            model.FullAuditLogsTableName = fullAuditLogsTableName;
             uint retentionDaysForModel;
             if (!(UInt32.TryParse(retentionDays, out retentionDaysForModel)))
             {

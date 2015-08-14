@@ -12,22 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
-namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
+namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class DataMaskingTests : SqlTestsBase
     {
 
-        [Fact(Skip = "Non stable interaction between the test and the testing framework")]
+        [Fact]
         [Trait(Category.Sql, Category.CheckIn)]
         public void TestDatabaseDataMaskingPolicyEnablementToggling()
         {
             RunPowerShellTest("Test-DatabaseDataMaskingPolicyEnablementToggling");
         }
 
-        [Fact(Skip = "Non stable interaction between the test and the testing framework")]
+        [Fact]
         [Trait(Category.Sql, Category.CheckIn)]
         public void TestDatabaseDataMaskingPrivilegedLoginsChanges()
         {
