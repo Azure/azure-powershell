@@ -24,7 +24,7 @@ function Test-VirtualMachine
     try
     {
         # Common
-        $loc = 'westus';
+        $loc = Get-ComputeVMLocation;
         New-AzureResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
@@ -243,7 +243,7 @@ function Test-VirtualMachineImageList
 
     try
     {
-        $locStr = 'westus';
+        $locStr = Get-ComputeVMLocation;
 
         # List Tests
         $foundAnyImage = $false;
@@ -397,7 +397,7 @@ function Test-VirtualMachineSizeAndUsage
     try
     {
         # Common
-        $loc = 'westus';
+        $loc = Get-ComputeVMLocation;
         New-AzureResourceGroup -Name $rgname -Location $loc -Force;
 
         # Availability Set
@@ -571,7 +571,7 @@ function Test-VirtualMachinePIRv2
     try
     {
         # Common
-        $loc = 'westus';
+        $loc = Get-ComputeVMLocation;
         New-AzureResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
@@ -680,7 +680,7 @@ function Test-VirtualMachineCapture
     try
     {
         # Common
-        $loc = 'westus';
+        $loc = Get-ComputeVMLocation;
         New-AzureResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
@@ -798,7 +798,7 @@ function Test-VirtualMachineDataDisk
     try
     {
         # Common
-        $loc = 'westus';
+        $loc = Get-ComputeVMLocation;
         New-AzureResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
@@ -878,7 +878,7 @@ function Test-VirtualMachinePlan
     try
     {
         # Common
-        $loc = 'westus';
+        $loc = Get-ComputeVMLocation;
         New-AzureResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
@@ -961,7 +961,7 @@ function Test-VirtualMachinePlan2
     try
     {
         # Common
-        $loc = Get-ComputeDefaultLocation;
+        $loc = Get-ComputeVMLocation;
         
         New-AzureResourceGroup -Name $rgname -Location $loc -Force;
         
@@ -1041,7 +1041,7 @@ function Test-VirtualMachineTags
     try
     {
         # Common
-        $loc = 'westus';
+        $loc = Get-ComputeVMLocation;
         New-AzureResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
@@ -1119,7 +1119,7 @@ function Test-VirtualMachineWithVMAgentAutoUpdate
     try
     {
         # Common
-        $loc = 'westus';
+        $loc = Get-ComputeVMLocation;
         New-AzureResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
@@ -1223,7 +1223,7 @@ function Test-LinuxVirtualMachine
     try
     {
         # Common
-        $loc = 'westus';
+        $loc = Get-ComputeVMLocation;
         New-AzureResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
@@ -1317,7 +1317,7 @@ function Test-LinuxVirtualMachine
 # Test Image Cmdlet Output Format
 function Test-VMImageCmdletOutputFormat
 {
-    $locStr = Get-ComputeDefaultLocation;
+    $locStr = Get-ComputeVMLocation;
     $imgRef = Get-DefaultCRPImage -loc $locStr;
     $publisher = $imgRef.PublisherName;
     $offer = $imgRef.Offer;
@@ -1352,68 +1352,6 @@ function Test-GetVMSizeFromAllLocations
         Write-Output ('Found VM Size Standard_A3 in Location: ' + $loc);
     }
 }
-
-<#
-.SYNOPSIS
-Test Virtual Machine List with Paging
-#>
-function Test-VirtualMachineListWithPaging
-{
-    # Setup
-    $rgname = Get-ComputeTestResourceName
-
-    try
-    {
-        # Common
-        $loc = Get-ComputeDefaultLocation;
-        New-AzureResourceGroup -Name $rgname -Location $loc -Force;
-
-        $numberOfInstances = 51;
-        $vmSize = 'Standard_A0';
-
-        $templateFile = ".\Templates\azuredeploy.json";
-        $paramFile = ".\Templates\azuredeploy-parameters-51vms.json";
-        $paramContent =
-@"
-{
-  "newStorageAccountName": {
-    "value": "${rgname}sto"
-  },
-  "adminUsername": {
-    "value": "Foo12"
-  },
-  "adminPassword": {
-    "value": "BaR@123${rgname}"
-  },
-  "numberOfInstances": {
-    "value": $numberOfInstances
-  },
-  "location": {
-    "value": "$loc"
-  },
-  "vmSize": {
-    "value": "$vmSize"
-  }
-}
-"@;
-
-        Set-Content -Path $paramFile -Value $paramContent -Force -Verbose;
-
-        New-AzureResourceGroupDeployment -Name "${rgname}dp" -ResourceGroupName $rgname -TemplateFile $templateFile -TemplateParameterFile $paramFile;
-
-        $vms = Get-AzureVM -ResourceGroupName $rgname;
-        Assert-True { $vms.Count -eq $numberOfInstances };
-
-        $vms = Get-AzureVM;
-        Assert-True { $vms.Count -ge $numberOfInstances };
-    }
-    finally
-    {
-        # Cleanup
-        Clean-ResourceGroup $rgname
-    }
-}
-
 
 <#
 .SYNOPSIS
