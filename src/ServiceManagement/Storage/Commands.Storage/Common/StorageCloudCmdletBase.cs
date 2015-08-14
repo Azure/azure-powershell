@@ -21,6 +21,7 @@ using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Storage.File;
 using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
@@ -33,6 +34,7 @@ using Microsoft.WindowsAzure.Storage.Table;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
+
     /// <summary>
     /// Base cmdlet for all storage cmdlet that works with cloud
     /// </summary>
@@ -175,9 +177,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <returns>Storage account</returns>
         internal AzureStorageContext GetCmdletStorageContext()
         {
-            if (Context != null)
+            this.Context = this.GetCmdletStorageContext(this.Context);
+
+            return this.Context;
+        }
+
+        internal AzureStorageContext GetCmdletStorageContext(AzureStorageContext context)
+        {
+            if (context != null)
             {
-                WriteDebugLog(String.Format(Resources.UseStorageAccountFromContext, Context.StorageAccountName));
+                WriteDebugLog(String.Format(Resources.UseStorageAccountFromContext, context.StorageAccountName));
             }
             else
             {
@@ -202,10 +211,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 }
 
                 //Set the storage context and use it in pipeline
-                Context = new AzureStorageContext(account);
+                context = new AzureStorageContext(account);
             }
 
-            return Context;
+            return context;
         }
 
         /// <summary>
@@ -548,6 +557,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 SetUpMultiThreadEnvironment();
             }
+
+            OperationContext.GlobalSendingRequest +=
+                (sender, args) =>
+                {
+                    args.Request.UserAgent = Microsoft.WindowsAzure.Storage.Shared.Protocol.Constants.HeaderConstants.UserAgent + " " + ApiConstants.UserAgentHeaderValue;
+                };
 
             base.BeginProcessing();
         }

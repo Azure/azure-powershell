@@ -71,5 +71,39 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
         }
+
+        public PSApplicationGatewayFrontendIPConfiguration NewObject()
+        {
+            var frontendIPConfig = new PSApplicationGatewayFrontendIPConfiguration();
+            frontendIPConfig.Name = this.Name;
+
+            if (!string.IsNullOrEmpty(this.SubnetId))
+            {
+                frontendIPConfig.Subnet = new PSResourceId();
+                frontendIPConfig.Subnet.Id = this.SubnetId;
+
+                if (!string.IsNullOrEmpty(this.PrivateIPAddress))
+                {
+                    frontendIPConfig.PrivateIPAddress = this.PrivateIPAddress;
+                    frontendIPConfig.PrivateIPAllocationMethod = Management.Network.Models.IpAllocationMethod.Static;
+                }
+                else
+                {
+                    frontendIPConfig.PrivateIPAllocationMethod = Management.Network.Models.IpAllocationMethod.Dynamic;
+                }
+            }
+
+            if (!string.IsNullOrEmpty(this.PublicIPAddressId))
+            {
+                frontendIPConfig.PublicIPAddress = new PSResourceId();
+                frontendIPConfig.PublicIPAddress.Id = this.PublicIPAddressId;
+            }
+
+            frontendIPConfig.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
+                                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
+                                    Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayFrontendIPConfigName,
+                                    this.Name);
+            return frontendIPConfig;
+        }
     }
 }

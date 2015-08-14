@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
-using Microsoft.Azure.Batch.Protocol.Entities;
+using Microsoft.Azure.Batch.Protocol.Models;
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
@@ -51,20 +51,21 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             // Setup cmdlet to get a Job by name
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
-            cmdlet.WorkItemName = "workItem";
-            cmdlet.Name = "job-0000000001";
+            cmdlet.Id = "job-1";
             cmdlet.Filter = null;
 
-            // Build a Job instead of querying the service on a GetJob call
-            YieldInjectionInterceptor interceptor = new YieldInjectionInterceptor((opContext, request) =>
+            // Build a CloudJob instead of querying the service on a Get CloudJob call
+            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
-                if (request is GetJobRequest)
+                BatchRequest<CloudJobGetParameters, CloudJobGetResponse> request =
+                (BatchRequest<CloudJobGetParameters, CloudJobGetResponse>)baseRequest;
+
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
-                    GetJobResponse response = BatchTestHelpers.CreateGetJobResponse(cmdlet.Name);
-                    Task<object> task = Task<object>.Factory.StartNew(() => { return response; });
+                    CloudJobGetResponse response = BatchTestHelpers.CreateCloudJobGetResponse(cmdlet.Id);
+                    Task<CloudJobGetResponse> task = Task.FromResult(response);
                     return task;
-                }
-                return null;
+                };
             });
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
@@ -74,34 +75,36 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 
             cmdlet.ExecuteCmdlet();
 
-            // Verify that the cmdlet wrote the Job returned from the OM to the pipeline
+            // Verify that the cmdlet wrote the job returned from the OM to the pipeline
             Assert.Equal(1, pipeline.Count);
-            Assert.Equal(cmdlet.Name, pipeline[0].Name);
+            Assert.Equal(cmdlet.Id, pipeline[0].Id);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListBatchJobsByODataFilterTest()
         {
-            // Setup cmdlet to list Jobs using an OData filter. Use WorkItemName input.
+            // Setup cmdlet to list jobs using an OData filter. Use JobScheduleId input.
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
-            cmdlet.WorkItemName = "workItem";
-            cmdlet.Name = null;
+            cmdlet.JobScheduleId = "jobSchedule";
+            cmdlet.Id = null;
             cmdlet.Filter = "state -eq 'active'";
 
-            string[] namesOfConstructedJobs = new[] { "job-0000000001", "job-0000000002" };
+            string[] idsOfConstructedJobs = new[] { "job-1", "job-2" };
 
-            // Build some Jobs instead of querying the service on a ListJobs call
-            YieldInjectionInterceptor interceptor = new YieldInjectionInterceptor((opContext, request) =>
+            // Build some CloudJobs instead of querying the service on a List CloudJobs call
+            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
-                if (request is ListJobsRequest)
+                BatchRequest<CloudJobListParameters, CloudJobListResponse> request =
+                (BatchRequest<CloudJobListParameters, CloudJobListResponse>)baseRequest;
+
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
-                    ListJobsResponse response = BatchTestHelpers.CreateListJobsResponse(namesOfConstructedJobs);
-                    Task<object> task = Task<object>.Factory.StartNew(() => { return response; });
+                    CloudJobListResponse response = BatchTestHelpers.CreateCloudJobListResponse(idsOfConstructedJobs);
+                    Task<CloudJobListResponse> task = Task.FromResult(response);
                     return task;
-                }
-                return null;
+                };
             });
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
@@ -113,40 +116,42 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 
             cmdlet.ExecuteCmdlet();
 
-            // Verify that the cmdlet wrote the constructed Jobs to the pipeline
+            // Verify that the cmdlet wrote the constructed jobs to the pipeline
             Assert.Equal(2, pipeline.Count);
             int jobCount = 0;
             foreach (PSCloudJob j in pipeline)
             {
-                Assert.True(namesOfConstructedJobs.Contains(j.Name));
+                Assert.True(idsOfConstructedJobs.Contains(j.Id));
                 jobCount++;
             }
-            Assert.Equal(namesOfConstructedJobs.Length, jobCount);
+            Assert.Equal(idsOfConstructedJobs.Length, jobCount);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListBatchJobsWithoutFiltersTest()
         {
-            // Setup cmdlet to list Jobs without filters. Use WorkItem input.
+            // Setup cmdlet to list jobs without filters. 
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
-            cmdlet.WorkItem = BatchTestHelpers.CreatePSCloudWorkItem();
-            cmdlet.Name = null;
+            cmdlet.JobScheduleId = "jobSchedule";
+            cmdlet.Id = null;
             cmdlet.Filter = null;
 
-            string[] namesOfConstructedJobs = new[] { "job-0000000001", "job-0000000002", "job-0000000003" };
+            string[] idsOfConstructedJobs = new[] { "job-1", "job-2", "job-3" };
 
-            // Build some Jobs instead of querying the service on a ListJobs call
-            YieldInjectionInterceptor interceptor = new YieldInjectionInterceptor((opContext, request) =>
+            // Build some CloudJobs instead of querying the service on a List CloudJobs call
+            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
-                if (request is ListJobsRequest)
+                BatchRequest<CloudJobListParameters, CloudJobListResponse> request =
+                (BatchRequest<CloudJobListParameters, CloudJobListResponse>)baseRequest;
+
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
-                    ListJobsResponse response = BatchTestHelpers.CreateListJobsResponse(namesOfConstructedJobs);
-                    Task<object> task = Task<object>.Factory.StartNew(() => { return response; });
+                    CloudJobListResponse response = BatchTestHelpers.CreateCloudJobListResponse(idsOfConstructedJobs);
+                    Task<CloudJobListResponse> task = Task.FromResult(response);
                     return task;
-                }
-                return null;
+                };
             });
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
@@ -158,15 +163,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 
             cmdlet.ExecuteCmdlet();
 
-            // Verify that the cmdlet wrote the constructed Jobs to the pipeline
+            // Verify that the cmdlet wrote the constructed jobs to the pipeline
             Assert.Equal(3, pipeline.Count);
             int jobCount = 0;
             foreach (PSCloudJob j in pipeline)
             {
-                Assert.True(namesOfConstructedJobs.Contains(j.Name));
+                Assert.True(idsOfConstructedJobs.Contains(j.Id));
                 jobCount++;
             }
-            Assert.Equal(namesOfConstructedJobs.Length, jobCount);
+            Assert.Equal(idsOfConstructedJobs.Length, jobCount);
         }
 
         [Fact]
@@ -176,27 +181,29 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             // Verify default max count
             Assert.Equal(Microsoft.Azure.Commands.Batch.Utils.Constants.DefaultMaxCount, cmdlet.MaxCount);
 
-            // Setup cmdlet to list Jobs without filters and a max count
+            // Setup cmdlet to list jobs without filters and a max count
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
-            cmdlet.WorkItem = BatchTestHelpers.CreatePSCloudWorkItem();
-            cmdlet.Name = null;
+            cmdlet.JobScheduleId = "jobSchedule";
+            cmdlet.Id = null;
             cmdlet.Filter = null;
             int maxCount = 2;
             cmdlet.MaxCount = maxCount;
 
-            string[] namesOfConstructedJobs = new[] { "job-0000000001", "job-0000000002", "job-0000000003" };
+            string[] idsOfConstructedJobs = new[] { "job-1", "job-2", "job-3" };
 
-            // Build some Jobs instead of querying the service on a ListJobs call
-            YieldInjectionInterceptor interceptor = new YieldInjectionInterceptor((opContext, request) =>
+            // Build some CloudJobs instead of querying the service on a List CloudJobs call
+            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
-                if (request is ListJobsRequest)
+                BatchRequest<CloudJobListParameters, CloudJobListResponse> request =
+                (BatchRequest<CloudJobListParameters, CloudJobListResponse>)baseRequest;
+
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
-                    ListJobsResponse response = BatchTestHelpers.CreateListJobsResponse(namesOfConstructedJobs);
-                    Task<object> task = Task<object>.Factory.StartNew(() => { return response; });
+                    CloudJobListResponse response = BatchTestHelpers.CreateCloudJobListResponse(idsOfConstructedJobs);
+                    Task<CloudJobListResponse> task = Task.FromResult(response);
                     return task;
-                }
-                return null;
+                };
             });
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
@@ -216,7 +223,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             pipeline.Clear();
             cmdlet.ExecuteCmdlet();
 
-            Assert.Equal(namesOfConstructedJobs.Length, pipeline.Count);
+            Assert.Equal(idsOfConstructedJobs.Length, pipeline.Count);
         }
     }
 }

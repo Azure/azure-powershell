@@ -17,27 +17,28 @@ using Microsoft.Azure.Batch;
 using Microsoft.Azure.Commands.Batch.Models;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Batch.Properties;
+using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureBatchPool")]
+    [Cmdlet(VerbsCommon.Remove, Constants.AzureBatchPool)]
     public class RemoveBatchPoolCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the pool to delete.")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the pool to delete.")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string Id { get; set; }
 
-        [Parameter(HelpMessage = "Do not ask for confirmation.")]
+        [Parameter]
         public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Resources.RBP_RemoveConfirm, this.Name),
+                string.Format(Resources.RBP_RemoveConfirm, this.Id),
                 Resources.RBP_RemovePool,
-                this.Name,
-                () => BatchClient.DeletePool(this.BatchContext, this.Name, this.AdditionalBehaviors));
+                this.Id,
+                () => BatchClient.DeletePool(this.BatchContext, this.Id, this.AdditionalBehaviors));
         }
     }
 }

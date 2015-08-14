@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Globalization;
-using System.Linq;
-using System.Text.RegularExpressions;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.File
 {
+    using System;
+    using System.Globalization;
+    using System.Linq;
+    using System.Text.RegularExpressions;
+
     /// <summary>
     /// Provides utilities to determining whether the given string is a valid
     /// name of some component.
@@ -33,7 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
 
         private const string InvalidFileNamePattern = @"^((LPT\d)|(COM\d)|(PRN)|(AUX)|(NUL)|(CON)|(CLOCK\$))$";
 
-        private const int MaxPathLength = 1024;
+        private const int MaxPathLength = 2048;
 
         private static readonly char[] PathSeparators = new char[] { '/', '\\' };
 

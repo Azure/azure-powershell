@@ -12,15 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using Microsoft.WindowsAzure.Commands.Common.Storage;
-using Microsoft.WindowsAzure.Commands.Storage.Common;
-using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
-using Microsoft.WindowsAzure.Storage.Blob;
-
 namespace Microsoft.WindowsAzure.Commands.Storage
 {
+    using System;
+    using System.Globalization;
+    using Microsoft.WindowsAzure.Commands.Common.Storage;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.Blob;
+
     /// <summary>
     /// Base cmdlet for storage blob/container cmdlet
     /// </summary>
@@ -54,15 +56,50 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             }
         }
 
+        protected static CloudBlob GetBlobReferenceFromServerWithContainer(
+            IStorageBlobManagement localChannel,
+            CloudBlobContainer container,
+            string blobName,
+            AccessCondition accessCondition = null,
+            BlobRequestOptions requestOptions = null,
+            OperationContext operationContext = null)
+        {
+            return GetBlobReferenceWrapper(() =>
+                {
+                    try
+                    {
+                        return localChannel.GetBlobReferenceFromServer(container, blobName, accessCondition, requestOptions, operationContext);
+                    }
+                    catch (InvalidOperationException)
+                    {
+                        return null;
+                    }
+                },
+                blobName,
+                container.Name);
+        }
+
+        protected static CloudBlob GetBlobReferenceWrapper(Func<CloudBlob> getBlobReference, string blobName, string containerName)
+        {
+            CloudBlob blob = getBlobReference();
+
+            if (null == blob)
+            {
+                throw new ResourceNotFoundException(String.Format(Resources.BlobNotFound, blobName, containerName));
+            }
+
+            return blob;
+        }
+
         /// <summary>
         /// Make sure the pipeline blob is valid and already existing
         /// </summary>
-        /// <param name="blob">ICloudBlob object</param>
-        internal void ValidatePipelineICloudBlob(ICloudBlob blob)
+        /// <param name="blob">CloudBlob object</param>
+        internal void ValidatePipelineCloudBlob(CloudBlob blob)
         {
             if (null == blob)
             {
-                throw new ArgumentException(String.Format(Resources.ObjectCannotBeNull, typeof(ICloudBlob).Name));
+                throw new ArgumentException(String.Format(Resources.ObjectCannotBeNull, typeof(CloudBlob).Name));
             }
 
             if (!NameUtil.IsValidBlobName(blob.Name))
@@ -132,19 +169,19 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         /// <summary>
         /// whether the specified blob is a snapshot
         /// </summary>
-        /// <param name="blob">ICloudBlob object</param>
+        /// <param name="blob">CloudBlob object</param>
         /// <returns>true if the specified blob is snapshot, otherwise false</returns>
-        internal bool IsSnapshot(ICloudBlob blob)
+        internal bool IsSnapshot(CloudBlob blob)
         {
             return !string.IsNullOrEmpty(blob.Name) && blob.SnapshotTime != null;
         }
 
         /// <summary>
-        /// Write ICloudBlob to output using specified service channel
+        /// Write CloudBlob to output using specified service channel
         /// </summary>
-        /// <param name="blob">The output ICloudBlob object</param>
+        /// <param name="blob">The output CloudBlob object</param>
         /// <param name="channel">IStorageBlobManagement channel object</param>
-        internal void WriteICloudBlobObject(long taskId, IStorageBlobManagement channel, ICloudBlob blob, BlobContinuationToken continuationToken = null)
+        internal void WriteCloudBlobObject(long taskId, IStorageBlobManagement channel, CloudBlob blob, BlobContinuationToken continuationToken = null)
         {
             AzureStorageBlob azureBlob = new AzureStorageBlob(blob);
             azureBlob.Context = channel.StorageContext;
@@ -153,9 +190,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         }
 
         /// <summary>
-        /// Write ICloudBlob to output using specified service channel
+        /// Write CloudBlob to output using specified service channel
         /// </summary>
-        /// <param name="blob">The output ICloudBlob object</param>
+        /// <param name="blob">The output CloudBlob object</param>
         /// <param name="channel">IStorageBlobManagement channel object</param>
         internal void WriteCloudContainerObject(long taskId, IStorageBlobManagement channel,
             CloudBlobContainer container, BlobContainerPermissions permissions, BlobContinuationToken continuationToken = null)
@@ -164,29 +201,19 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             azureContainer.Context = channel.StorageContext;
             azureContainer.ContinuationToken = continuationToken;
             OutputStream.WriteObject(taskId, azureContainer);
-        }
-        
-        /// <summary>
-        /// Check whether the blob name is valid. If not throw an exception
-        /// </summary>
-        /// <param name="name">Blob name</param>
-        protected void ValidateBlobName(string name)
-        {
-            if (!NameUtil.IsValidBlobName(name))
-            {
-                throw new ArgumentException(String.Format(Resources.InvalidBlobName, name));
-            }
-        }
+        }        
 
-        /// <summary>
-        /// Check whether the container name is valid. If not throw an exception
-        /// </summary>
-        /// <param name="name">Container name</param>
-        protected void ValidateContainerName(string name)
+        protected void ValidateBlobType(CloudBlob blob)
         {
-            if (!NameUtil.IsValidContainerName(name))
+            if ((BlobType.BlockBlob != blob.BlobType)
+                && (BlobType.PageBlob != blob.BlobType)
+                && (BlobType.AppendBlob != blob.BlobType))
             {
-                throw new ArgumentException(String.Format(Resources.InvalidContainerName, name));
+                throw new InvalidOperationException(string.Format(
+                    CultureInfo.CurrentCulture, 
+                    Resources.InvalidBlobType, 
+                    blob.BlobType, 
+                    blob.Name));
             }
         }
     }

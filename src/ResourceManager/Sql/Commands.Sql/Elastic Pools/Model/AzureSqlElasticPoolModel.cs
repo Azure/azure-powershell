@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
         /// <summary>
         /// Gets or sets the amount of storage the elastic pool has
         /// </summary>
-        public long? StorageMB { get; set; }
+        public int? StorageMB { get; set; }
 
         /// <summary>
         /// Gets or sets the tags associated with the Elastic Pool.

@@ -12,18 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Globalization;
-using System.Management.Automation;
-using System.Security.Permissions;
-using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Commands.Storage.Common;
-using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-using Microsoft.WindowsAzure.Commands.Storage.Table;
-using Microsoft.WindowsAzure.Storage.Table;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
 {
+    using System;
+    using System.Globalization;
+    using System.Management.Automation;
+    using System.Security.Permissions;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using Microsoft.WindowsAzure.Commands.Storage.Table;
+    using Microsoft.WindowsAzure.Storage.Table;
+
     [Cmdlet(VerbsCommon.Remove, StorageNouns.TableStoredAccessPolicy, SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High), OutputType(typeof(Boolean))]
     public class RemoveAzureStorageTableStoredAccessPolicyCommand : StorageCloudTableCmdletBase
     {

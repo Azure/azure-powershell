@@ -38,11 +38,6 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public PSVirtualMachine VM { get; set; }
 
-        [Alias("ResourceName", "VMName")]
-        [Parameter(ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
         [Parameter(ValueFromPipelineByPropertyName = true)]
         public Hashtable[] Tags { get; set; }
 
@@ -52,11 +47,6 @@ namespace Microsoft.Azure.Commands.Compute
 
             ExecuteClientAction(() =>
             {
-                if (! string.IsNullOrEmpty(this.Name))
-                {
-                    WriteWarning(Properties.Resources.DeprecationOfNewAzureVMNameParameterWarning);
-                }
-
                 var parameters = new VirtualMachine
                 {
                     HardwareProfile          = this.VM.HardwareProfile,
@@ -66,7 +56,7 @@ namespace Microsoft.Azure.Commands.Compute
                     Plan                     = this.VM.Plan,
                     AvailabilitySetReference = this.VM.AvailabilitySetReference,
                     Location                 = !string.IsNullOrEmpty(this.Location) ? this.Location : this.VM.Location,
-                    Name                     = !string.IsNullOrEmpty(this.Name) ? this.Name : this.VM.Name,
+                    Name                     = this.VM.Name,
                     Tags                     = this.Tags != null ? this.Tags.ToDictionary() : this.VM.Tags
                 };
 

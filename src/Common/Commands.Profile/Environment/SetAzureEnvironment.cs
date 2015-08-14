@@ -12,9 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Globalization;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.WindowsAzure.Commands.Common.Properties;
+using Microsoft.WindowsAzure.Commands.Profile.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Profile;
 
 namespace Microsoft.WindowsAzure.Commands.Profile
@@ -23,7 +27,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
     /// <summary>
     /// Sets a Microsoft Azure environment.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureEnvironment"), OutputType(typeof(AzureEnvironment))]
+    [Cmdlet(VerbsCommon.Set, "AzureEnvironment"), OutputType(typeof(PSAzureEnvironment))]
     public class SetAzureEnvironmentCommand : SubscriptionCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true)]
@@ -33,22 +37,26 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         public string PublishSettingsFileUrl { get; set; }
 
         [Parameter(Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true)]
+        [Alias("ServiceManagement", "ServiceManagementUrl")]
         public string ServiceEndpoint { get; set; }
 
         [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true)]
         public string ManagementPortalUrl { get; set; }
 
         [Parameter(Position = 4, Mandatory = false, HelpMessage = "The storage endpoint")]
+        [Alias("StorageEndpointSuffix")]
         public string StorageEndpoint { get; set; }
 
         [Parameter(Position = 5, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Active directory endpoint")]
-        [Alias("AdEndpointUrl")]
+        [Alias("AdEndpointUrl", "ActiveDirectory", "ActiveDirectoryAuthority")]
         public string ActiveDirectoryEndpoint { get; set; }
 
         [Parameter(Position = 6, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The cloud service endpoint")]
+        [Alias("ResourceManager", "ResourceManagerUrl")]
         public string ResourceManagerEndpoint { get; set; }
 
         [Parameter(Position = 7, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The public gallery endpoint")]
+        [Alias("Gallery", "GalleryUrl")]
         public string GalleryEndpoint { get; set; }
 
         [Parameter(Position = 8, Mandatory = false, ValueFromPipelineByPropertyName = true, 
@@ -57,6 +65,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
         [Parameter(Position = 9, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The AD Graph Endpoint.")]
+        [Alias("Graph", "GraphUrl")]
         public string GraphEndpoint { get; set; }
 
         [Parameter(Position = 10, Mandatory = false, ValueFromPipelineByPropertyName = true,
@@ -67,12 +76,35 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             HelpMessage = "Resource identifier of Azure Key Vault data service that is the recipient of the requested token.")]
         public string AzureKeyVaultServiceEndpointResourceId { get; set; }
 
+        [Parameter(Position = 12, Mandatory = false, ValueFromPipelineByPropertyName = true,
+           HelpMessage = "Dns suffix of Traffic Manager service.")]
+        public string TrafficManagerDnsSuffix { get; set; }
+
+         [Parameter(Position = 13, Mandatory = false, ValueFromPipelineByPropertyName = true,
+           HelpMessage = "Dns suffix of Sql databases created in this environment.")]
+        public string SqlDatabaseDnsSuffix { get; set; }
+
+        [Parameter(Position = 14, Mandatory = false, ValueFromPipelineByPropertyName = true,
+           HelpMessage = "Determines whether to enable ADFS authentication, or to use AAD authentication instead. This value is normally true only for Azure Stack endpoints.")]
+        [Alias("OnPremise")]
+        public SwitchParameter EnableAdfsAuthentication { get; set; }
+
+        [Parameter(Position = 15, Mandatory = false, ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The default tenant for this environment.")]
+        public string AdTenant { get; set; }
+
         public SetAzureEnvironmentCommand() : base(true) { }
 
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            var newEnvironment = new AzureEnvironment { Name = Name };
+            if ((Name == "AzureCloud") || (Name == "AzureChinaCloud"))
+            {
+                throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, 
+                    Resources.CannotChangeBuiltinEnvironment, Name));
+            }
+
+            var newEnvironment = new AzureEnvironment { Name = Name, OnPremise = EnableAdfsAuthentication };
             if (ProfileClient.Profile.Environments.ContainsKey(Name))
             {
                 newEnvironment = ProfileClient.Profile.Environments[Name];
@@ -88,10 +120,13 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.Graph, GraphEndpoint);
             SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.AzureKeyVaultDnsSuffix, AzureKeyVaultDnsSuffix);
             SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId, AzureKeyVaultServiceEndpointResourceId);
+            SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.TrafficManagerDnsSuffix, TrafficManagerDnsSuffix);
+            SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix, SqlDatabaseDnsSuffix);
+            SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.AdTenant, AdTenant);
 
             ProfileClient.AddOrSetEnvironment(newEnvironment);
 
-            WriteObject(newEnvironment);
+            WriteObject((PSAzureEnvironment)newEnvironment);
         }
 
         private void SetEndpointIfProvided(AzureEnvironment newEnvironment, AzureEnvironment.Endpoint endpoint, string property)

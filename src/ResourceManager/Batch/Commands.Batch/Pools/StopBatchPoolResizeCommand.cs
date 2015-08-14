@@ -13,19 +13,20 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsLifecycle.Stop, "AzureBatchPoolResize")]
+    [Cmdlet(VerbsLifecycle.Stop, Constants.AzureBatchPoolResize)]
     public class StopBatchPoolResizeCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the pool.")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the pool.")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string Id { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            BatchClient.StopResizePool(this.BatchContext, this.Name, this.AdditionalBehaviors);
+            BatchClient.StopResizePool(this.BatchContext, this.Id, this.AdditionalBehaviors);
         }
     }
 }

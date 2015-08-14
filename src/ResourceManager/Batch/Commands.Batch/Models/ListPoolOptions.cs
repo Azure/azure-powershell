@@ -24,17 +24,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
         { }
 
         /// <summary>
-        /// If specified, the single Pool with this name will be returned
+        /// If specified, the single pool with this id will be returned.
         /// </summary>
-        public string PoolName { get; set; }
+        public string PoolId { get; set; }
 
         /// <summary>
-        /// The OData filter to use when querying for Pools
+        /// The OData filter to use when querying for pools.
         /// </summary>
         public string Filter { get; set; }
 
         /// <summary>
-        /// The maximum number of Pools to return
+        /// The maximum number of pools to return.
         /// </summary>
         public int MaxCount { get; set; }
     }

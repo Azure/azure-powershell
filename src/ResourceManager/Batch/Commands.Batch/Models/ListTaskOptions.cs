@@ -19,22 +19,22 @@ namespace Microsoft.Azure.Commands.Batch.Models
 {
     public class ListTaskOptions : JobOperationParameters
     {
-        public ListTaskOptions(BatchAccountContext context, string workItemName, string jobName, PSCloudJob job, 
-            IEnumerable<BatchClientBehavior> additionalBehaviors = null) : base(context, workItemName, jobName, job, additionalBehaviors)
+        public ListTaskOptions(BatchAccountContext context, string jobId, PSCloudJob job, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+            : base(context, jobId, job, additionalBehaviors)
         { }
 
         /// <summary>
-        /// If specified, the single Task with this name will be returned
+        /// If specified, the single task with this id will be returned.
         /// </summary>
-        public string TaskName { get; set; }
+        public string TaskId { get; set; }
 
         /// <summary>
-        /// The OData filter to use when querying for Tasks
+        /// The OData filter to use when querying for tasks.
         /// </summary>
         public string Filter { get; set; }
 
         /// <summary>
-        /// The maximum number of Tasks to return
+        /// The maximum number of tasks to return.
         /// </summary>
         public int MaxCount { get; set; }
     }

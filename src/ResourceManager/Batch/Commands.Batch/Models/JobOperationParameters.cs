@@ -21,31 +21,25 @@ namespace Microsoft.Azure.Commands.Batch.Models
 {
     public class JobOperationParameters : BatchClientParametersBase
     {
-        public JobOperationParameters(BatchAccountContext context, string workItemName, string jobName, PSCloudJob job,
+        public JobOperationParameters(BatchAccountContext context, string jobId, PSCloudJob job,
             IEnumerable<BatchClientBehavior> additionalBehaviors = null) : base(context, additionalBehaviors)
         {
-            if ((string.IsNullOrWhiteSpace(workItemName) || string.IsNullOrWhiteSpace(jobName)) && job == null)
+            if (string.IsNullOrWhiteSpace(jobId) && job == null)
             {
                 throw new ArgumentNullException(Resources.NoJob);
             }
 
-            this.WorkItemName = workItemName;
-            this.JobName = jobName;
+            this.JobId = jobId;
             this.Job = job;
         }
 
         /// <summary>
-        /// The name of the workitem containing the job
+        /// The id of the job.
         /// </summary>
-        public string WorkItemName { get; private set; }
+        public string JobId { get; private set; }
 
         /// <summary>
-        /// The name of the job
-        /// </summary>
-        public string JobName { get; private set; }
-
-        /// <summary>
-        /// The PSCloudJob object representing the target job
+        /// The PSCloudJob object representing the target job.
         /// </summary>
         public PSCloudJob Job { get; private set; }
     }

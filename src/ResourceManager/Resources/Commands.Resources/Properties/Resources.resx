@@ -297,4 +297,13 @@
   <data name="InvalidAssignableScopes" xml:space="preserve">
     <value>Invalid value for AssignableScopes</value>
   </data>
+  <data name="DeleteResourceGroupDeployment" xml:space="preserve">
+    <value>Are you sure you want to delete the deployment '{0}'?</value>
+  </data>
+  <data name="DeleteResourceGroupDeploymentMessage" xml:space="preserve">
+    <value>Deleting the deployment ...</value>
+  </data>
+  <data name="DeploymentDoesntExist" xml:space="preserve">
+    <value>Deployment '{0}' doesn't exist under resource group '{1}'</value>
+  </data>
 </root>
