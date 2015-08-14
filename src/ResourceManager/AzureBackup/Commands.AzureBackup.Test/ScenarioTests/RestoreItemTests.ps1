@@ -15,7 +15,7 @@ $StorageAccountName = "portalvhds7jzk3jty85qx5"
 
 function Test-RestoreAzureBackUpItem
 {
-    $azureBackUpRecoveryPoint = New-Object Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupRecoveryPoint
+    $azureBackUpRecoveryPoint = New-Object Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRecoveryPoint
 	$azureBackUpRecoveryPoint.ResourceGroupName = $ResourceGroupName
 	$azureBackUpRecoveryPoint.ResourceName = $ResourceName
 	$azureBackUpRecoveryPoint.Location = $Location

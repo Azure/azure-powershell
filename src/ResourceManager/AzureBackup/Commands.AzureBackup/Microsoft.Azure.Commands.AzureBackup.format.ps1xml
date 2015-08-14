@@ -113,9 +113,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupRecoveryPoint</Name>
+      <Name>Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRecoveryPoint</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupRecoveryPoint</TypeName>
+        <TypeName>Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRecoveryPoint</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
