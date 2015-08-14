@@ -40,47 +40,10 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("Backend address pool with the specified name does not exist");
             }
 
-            backendAddressPool = new PSApplicationGatewayBackendAddressPool();
+            var newbackendAddressPool = base.NewObject();
 
-            backendAddressPool.Name = this.Name;
-
-            if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResourceId))
-            {
-                backendAddressPool.BackendIpConfigurations = new System.Collections.Generic.List<PSResourceId>();
-                foreach (string id in this.BackendIPConfigurationIds)
-                {
-                    var backendIpConfig = new PSResourceId();
-                    backendIpConfig.Id = id;
-                    backendAddressPool.BackendIpConfigurations.Add(backendIpConfig);
-                }
-            }
-            else if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByIP))
-            {
-                backendAddressPool.BackendAddresses = new System.Collections.Generic.List<PSApplicationGatewayBackendAddress>();
-                foreach (string ip in this.BackendIPAddresses)
-                {
-                    var backendAddress = new PSApplicationGatewayBackendAddress();
-                    backendAddress.IpAddress = ip;
-                    backendAddressPool.BackendAddresses.Add(backendAddress);
-                }
-            }
-            else
-            {
-                backendAddressPool.BackendAddresses = new System.Collections.Generic.List<PSApplicationGatewayBackendAddress>();
-                foreach (string fqdn in this.BackendFqdns)
-                {
-                    var backendAddress = new PSApplicationGatewayBackendAddress();
-                    backendAddress.Fqdn = fqdn;
-                    backendAddressPool.BackendAddresses.Add(backendAddress);
-                }
-            }
-
-            backendAddressPool.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
-                                this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
-                                Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayBackendAddressPoolName,
-                                this.Name);
-
-            this.ApplicationGateway.BackendAddressPools.Add(backendAddressPool);
+            this.ApplicationGateway.BackendAddressPools.Remove(backendAddressPool);
+            this.ApplicationGateway.BackendAddressPools.Add(newbackendAddressPool);
 
             WriteObject(this.ApplicationGateway);
         }

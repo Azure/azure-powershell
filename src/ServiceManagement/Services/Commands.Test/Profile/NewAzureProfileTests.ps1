@@ -77,6 +77,33 @@ function Test-CreatesNewAzureProfileWithAccessToken
 
 <#
 .SYNOPSIS
+Tests creating an empty profile.
+#>
+function Test-NewEmptyProfile
+{
+    $actual = New-AzureProfile
+	Clear-AzureProfile -Force
+	$cloud = Get-AzureEnvironment -Name AzureCloud -Profile $actual
+	$chinaCloud = Get-AzureEnvironment -Name AzureChinaCloud -Profile $actual
+	Assert-NotNull $cloud
+	Assert-NotNull $chinaCloud 
+}
+
+<#
+.SYNOPSIS
+Tests creating an empty profile with a new environment.
+#>
+function Test-NewEmptyProfileWithEnvironment
+{
+   $newEnv = Add-AzureEnvironment -Name "NewEnv" -OnPremise $true -ManagementPortalUrl = "https://manage.windowsazure.com"
+   Clear-AzureProfile -Force
+   $actual = New-AzureProfile -Environment $newEnv
+   $checkEnv = Get-AzureEnvironment -Name "NewEnv" -Profile $actual
+   Assert-NotNull $checkEnv
+}
+
+<#
+.SYNOPSIS
 Tests using a profile to run an RDFE cmdlet
 #>
 function Test-NewAzureProfileInRDFEMode
@@ -103,4 +130,25 @@ function Test-NewAzureProfileInARMMode
 	$locations = Get-AzureLocation -Profile $profile
 	Assert-NotNull $locations
 	Assert-True {$locations.Count -gt 1}
+}
+
+<#
+.SYNOPSIS
+Tests using the pipeline with environment cmdlets
+#>
+function Test-EnvironmentPipeline
+{
+    Clear-AzureProfile -Force
+    $env = Get-AzureEnvironment -Name AzureCloud
+	$env.Name = "EditedAzureCloud"
+	$env.AdTenant = "NewAdTenant"
+	$newEnv = $env | Add-AzureEnvironment
+	$envs = Get-AzureEnvironment
+	Assert-AreEqual "EditedAzureCloud" $newEnv.Name
+	Assert-AreEqual "NewAdTenant" $newEnv.AdTenant
+	Assert-AreEqual 3 $envs.Count
+	$removedEnv = $newEnv | Remove-AzureEnvironment -Force
+	Assert-AreEqual "EditedAzureCloud" $removedEnv.Name
+	$envs = Get-AzureEnvironment
+	Assert-AreEqual 2 $envs.Count
 }

@@ -12,14 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-using Microsoft.WindowsAzure.Storage.Blob;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.IO;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using Microsoft.WindowsAzure.Storage.Blob;
+
     internal class BlobUploadRequestQueue
     {
         private string root;
@@ -90,7 +91,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             return Requests.Count == 0;
         }
 
-        public Tuple<string, ICloudBlob> DequeueRequest()
+        public Tuple<string, CloudBlob> DequeueRequest()
         {
             string filePath = Requests.Dequeue();
             string blobName = string.Empty;
@@ -106,20 +107,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
             blobName = NameUtil.ResolveBlobName(blobName);
 
-            ICloudBlob blob = default(ICloudBlob);
+            CloudBlob blob = Util.GetBlobReference(Container, blobName, Type);
 
-            switch (Type)
-            {
-                case BlobType.PageBlob:
-                    blob = Container.GetPageBlobReference(blobName);
-                    break;
-                case BlobType.BlockBlob:
-                default:
-                    blob = Container.GetBlockBlobReference(blobName);
-                    break;
-            }
-
-            return new Tuple<string, ICloudBlob>(filePath, blob);
+            return new Tuple<string, CloudBlob>(filePath, blob);
         }
 
         private string GetCommonDirectory(string dir1, string dir2)

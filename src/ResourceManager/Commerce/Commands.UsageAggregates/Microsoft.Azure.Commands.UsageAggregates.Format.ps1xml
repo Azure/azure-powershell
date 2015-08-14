@@ -27,11 +27,23 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>MeterCategory</Label>
+            <Label>Usage Start</Label>
             <Alignment>Left</Alignment>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>MeterName</Label>
+            <Label>Usage End</Label>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Meter Category</Label>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Meter Name</Label>
             <Alignment>Left</Alignment>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -42,6 +54,15 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <ScriptBlock>$_.Properties.UsageStartTime</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Properties.UsageEndTime</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Properties.InfoFields.Project</ScriptBlock>
+              </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.Properties.MeterCategory</ScriptBlock>
               </TableColumnItem>

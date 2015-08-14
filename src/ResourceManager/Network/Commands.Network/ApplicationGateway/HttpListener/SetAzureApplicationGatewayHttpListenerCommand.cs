@@ -32,41 +32,18 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.ExecuteCmdlet();
 
-            var httpListener = this.ApplicationGateway.HttpListeners.SingleOrDefault
+            var oldHttpListener = this.ApplicationGateway.HttpListeners.SingleOrDefault
                 (resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
-            if (httpListener == null)
+            if (oldHttpListener == null)
             {
                 throw new ArgumentException("Http Listener with the specified name does not exist");
             }
 
-            httpListener = new PSApplicationGatewayHttpListener();
-            httpListener.Name = this.Name;
-            httpListener.Protocol = this.Protocol;
+            var newHttpListener = base.NewObject();
 
-            if (!string.IsNullOrEmpty(this.FrontendIPConfigurationId))
-            {
-                httpListener.FrontendIpConfiguration = new PSResourceId();
-                httpListener.FrontendIpConfiguration.Id = this.FrontendIPConfigurationId;
-            }
-
-            if (!string.IsNullOrEmpty(this.FrontendPortId))
-            {
-                httpListener.FrontendPort = new PSResourceId();
-                httpListener.FrontendPort.Id = this.FrontendPortId;
-            }
-            if (!string.IsNullOrEmpty(this.SslCertificateId))
-            {
-                httpListener.SslCertificate = new PSResourceId();
-                httpListener.SslCertificate.Id = this.SslCertificateId;
-            }
-
-            httpListener.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
-                                this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
-                                Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayHttpListenerName,
-                                this.Name);
-
-            this.ApplicationGateway.HttpListeners.Add(httpListener);
+            this.ApplicationGateway.HttpListeners.Remove(oldHttpListener);
+            this.ApplicationGateway.HttpListeners.Add(newHttpListener);
 
             WriteObject(this.ApplicationGateway);
         }

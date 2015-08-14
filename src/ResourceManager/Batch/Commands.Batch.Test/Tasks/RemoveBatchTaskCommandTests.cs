@@ -15,7 +15,7 @@
 using System;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
-using Microsoft.Azure.Batch.Protocol.Entities;
+using Microsoft.Azure.Batch.Protocol.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Collections.Generic;
@@ -57,20 +57,21 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
             Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
 
-            cmdlet.WorkItemName = "testWorkItem";
-            cmdlet.JobName = "job-0000000001";
-            cmdlet.Name = "testTask";
+            cmdlet.JobId = "job-1";
+            cmdlet.Id = "testTask";
 
-            // Don't go to the service on a DeleteJob call
-            YieldInjectionInterceptor interceptor = new YieldInjectionInterceptor((opContext, request) =>
+            // Don't go to the service on a Delete CloudTask call
+            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
-                if (request is DeleteTaskRequest)
+                BatchRequest<CloudTaskDeleteParameters, CloudTaskDeleteResponse> request =
+                (BatchRequest<CloudTaskDeleteParameters, CloudTaskDeleteResponse>)baseRequest;
+
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
-                    DeleteTaskResponse response = new DeleteTaskResponse();
-                    Task<object> task = Task<object>.Factory.StartNew(() => { return response; });
+                    CloudTaskDeleteResponse response = new CloudTaskDeleteResponse();
+                    Task<CloudTaskDeleteResponse> task = Task.FromResult(response);
                     return task;
-                }
-                return null;
+                };
             });
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 

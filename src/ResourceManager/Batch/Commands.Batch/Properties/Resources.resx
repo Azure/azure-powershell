@@ -123,9 +123,6 @@
   <data name="BeginMAMLCall" xml:space="preserve">
     <value>Begin {0} call to RP</value>
   </data>
-  <data name="Downloading" xml:space="preserve">
-    <value>Downloading {0} file {1} to: {2}</value>
-  </data>
   <data name="EndMAMLCall" xml:space="preserve">
     <value>End {0} call to RP</value>
   </data>
@@ -138,16 +135,52 @@
   <data name="GBA_ResGroupAccounts" xml:space="preserve">
     <value>Getting accounts in resource group {0}</value>
   </data>
-  <data name="GBJ_GetByName" xml:space="preserve">
-    <value>Getting job "{0}" from workitem "{1}"</value>
+  <data name="GBCNF_GetByName" xml:space="preserve">
+    <value>Getting node file "{0}" from compute node "{1}"</value>
+  </data>
+  <data name="GBCNF_GetByOData" xml:space="preserve">
+    <value>Getting node files matching the specified OData filter from compute node "{0}".</value>
+  </data>
+  <data name="GBCNF_NoFilter" xml:space="preserve">
+    <value>Getting all node files from compute node "{0}".</value>
+  </data>
+  <data name="GBCN_GetById" xml:space="preserve">
+    <value>Getting compute node "{0}" from pool "{1}".</value>
+  </data>
+  <data name="GBCN_GetByOData" xml:space="preserve">
+    <value>Getting compute nodes matching the specified OData filter from pool "{0}".</value>
+  </data>
+  <data name="GBCN_NoFilter" xml:space="preserve">
+    <value>Getting all compute nodes under pool "{0}".</value>
+  </data>
+  <data name="GBJS_GetById" xml:space="preserve">
+    <value>Getting job schedule "{0}"</value>
+  </data>
+  <data name="GBJS_GetByOData" xml:space="preserve">
+    <value>Getting job schedules matching the specified OData filter. </value>
+  </data>
+  <data name="GBJS_NoFilter" xml:space="preserve">
+    <value>Getting all job schedules associated with the Batch account. </value>
+  </data>
+  <data name="GBJ_GetById" xml:space="preserve">
+    <value>Getting job "{0}"</value>
+  </data>
+  <data name="GBJ_GetByJobScheduleNoFilter" xml:space="preserve">
+    <value>Getting all jobs from job schedule "{0}".</value>
   </data>
   <data name="GBJ_GetByOData" xml:space="preserve">
-    <value>Getting jobs matching the specified OData filter from workitem "{0}". </value>
+    <value>Getting jobs matching the specified OData filter.</value>
+  </data>
+  <data name="GBJ_GetByODataAndJobSChedule" xml:space="preserve">
+    <value>Getting jobs matching the specified OData filter from job schedule "{0}".</value>
   </data>
   <data name="GBJ_GetNoFilter" xml:space="preserve">
-    <value>Getting all jobs from workitem "{0}". </value>
+    <value>Getting all jobs associated with the Batch account.</value>
   </data>
-  <data name="GBP_GetByName" xml:space="preserve">
+  <data name="GBNFC_Downloading" xml:space="preserve">
+    <value>Downloading node file {0} to: {1}</value>
+  </data>
+  <data name="GBP_GetById" xml:space="preserve">
     <value>Getting pool "{0}"</value>
   </data>
   <data name="GBP_GetByOData" xml:space="preserve">
@@ -156,17 +189,20 @@
   <data name="GBP_NoFilter" xml:space="preserve">
     <value>Getting all pools associated with the Batch account. </value>
   </data>
+  <data name="GBRDP_Downloading" xml:space="preserve">
+    <value>Downloading Remote Desktop Protocol file for compute node {0} to: {1}</value>
+  </data>
   <data name="GBTF_GetByName" xml:space="preserve">
-    <value>Getting task file "{0}" from task "{1}"</value>
+    <value>Getting node file "{0}" from task "{1}"</value>
   </data>
   <data name="GBTF_GetByOData" xml:space="preserve">
-    <value>Getting task files matching the specified OData filter from task "{0}".</value>
+    <value>Getting node files matching the specified OData filter from task "{0}".</value>
   </data>
   <data name="GBTF_NoFilter" xml:space="preserve">
-    <value>Getting all task files under task "{0}".</value>
+    <value>Getting all node files under task "{0}".</value>
   </data>
-  <data name="GBT_GetByName" xml:space="preserve">
-    <value>Getting task "{0}" from job "{1}" under workitem "{2}"</value>
+  <data name="GBT_GetById" xml:space="preserve">
+    <value>Getting task "{0}" from job "{1}"</value>
   </data>
   <data name="GBT_GetByOData" xml:space="preserve">
     <value>Getting tasks matching the specified OData filter from job "{0}".</value>
@@ -174,35 +210,8 @@
   <data name="GBT_GetNoFilter" xml:space="preserve">
     <value>Getting all tasks from job "{0}".</value>
   </data>
-  <data name="GBVMF_GetByName" xml:space="preserve">
-    <value>Getting vm file "{0}" from vm "{1}"</value>
-  </data>
-  <data name="GBVMF_GetByOData" xml:space="preserve">
-    <value>Getting vm files matching the specified OData filter from vm "{0}".</value>
-  </data>
-  <data name="GBVMF_NoFilter" xml:space="preserve">
-    <value>Getting all vm files from vm "{0}".</value>
-  </data>
-  <data name="GBVM_GetByName" xml:space="preserve">
-    <value>Getting vm "{0}" from pool "{1}".</value>
-  </data>
-  <data name="GBVM_GetByOData" xml:space="preserve">
-    <value>Getting vms matching the specified OData filter from pool "{0}".</value>
-  </data>
-  <data name="GBVM_NoFilter" xml:space="preserve">
-    <value>Getting all vms under pool "{0}".</value>
-  </data>
-  <data name="GBWI_GetByName" xml:space="preserve">
-    <value>Getting workitem "{0}"</value>
-  </data>
-  <data name="GBWI_GetByOData" xml:space="preserve">
-    <value>Getting workitems matching the specified OData filter. </value>
-  </data>
-  <data name="GBWI_NoFilter" xml:space="preserve">
-    <value>Getting all workitems associated with the Batch account. </value>
-  </data>
-  <data name="GRDP_NoVM" xml:space="preserve">
-    <value>No vm was specified. Supply a PSVM object or a pool name and vm name for the RDP file to point to.</value>
+  <data name="GRDP_NoComputeNode" xml:space="preserve">
+    <value>No compute node was specified. Supply a PSComputeNode object or a pool id and compute node id for the Remote Desktop Protocol file to point to.</value>
   </data>
   <data name="InvalidEndpointType" xml:space="preserve">
     <value>The endpoint is not recognized as valid: {0}</value>
@@ -234,6 +243,12 @@
   <data name="NBA_NameAvailability" xml:space="preserve">
     <value>Performing name availability check for account {0}</value>
   </data>
+  <data name="NBJS_CreatingJobSchedule" xml:space="preserve">
+    <value>Creating job schedule {0}</value>
+  </data>
+  <data name="NBJ_CreatingJob" xml:space="preserve">
+    <value>Creating job {0}</value>
+  </data>
   <data name="NBP_CreatingPool" xml:space="preserve">
     <value>Creating pool {0}</value>
   </data>
@@ -241,43 +256,46 @@
     <value>Creating task {0}</value>
   </data>
   <data name="NBU_CreatingUser" xml:space="preserve">
-    <value>Creating user {0} on vm {1}</value>
+    <value>Creating user {0} on compute node {1}</value>
   </data>
-  <data name="NBWI_CreatingWorkItem" xml:space="preserve">
-    <value>Creating workitem {0}</value>
+  <data name="NoComputeNode" xml:space="preserve">
+    <value>No compute node was specified. Supply a PSComputeNode object or a pool id and compute node id.</value>
+  </data>
+  <data name="NoComputeNodeUser" xml:space="preserve">
+    <value>No compute node user specified. Supply a pool id, compute node id, and compute node user name.</value>
   </data>
   <data name="NoDownloadDestination" xml:space="preserve">
     <value>No destination was provided for the downloaded file. Either provide a file path or a Stream object.</value>
   </data>
   <data name="NoJob" xml:space="preserve">
-    <value>No job was specified. Supply a PSCloudJob object or a workitem name and job name.</value>
+    <value>No job was specified. Supply a PSCloudJob object or a job id.</value>
+  </data>
+  <data name="NoJobSchedule" xml:space="preserve">
+    <value>No job schedule was specified.  Supply a job schedule id or PSCloudJobSchedule object.</value>
+  </data>
+  <data name="NoNodeFile" xml:space="preserve">
+    <value>No node file was specified. Supply a PSNodeFile object or a node file name along with either a parent job id and task id, or a parent pool id and compute node id.</value>
+  </data>
+  <data name="NoNodeFileParent" xml:space="preserve">
+    <value>No node file parent information was specified.  To specify a parent task, supply a PSCloudTask object or a job id and a task id. To specify a parent compute node, supply a PSComputeNode object or a pool id and a compute node id.</value>
   </data>
   <data name="NoPool" xml:space="preserve">
-    <value>No pool was specified. Supply a PSCloudPool object or a pool name.</value>
+    <value>No pool was specified. Supply a PSCloudPool object or a pool id.</value>
   </data>
   <data name="NoTask" xml:space="preserve">
-    <value>No task was specified. Supply a PSCloudTask object or a workitem name, job name, and task name.</value>
-  </data>
-  <data name="NoTaskFile" xml:space="preserve">
-    <value>No task file was specified. Supply a PSTaskFile object or a workitem name, job name, task name, and task file name.</value>
-  </data>
-  <data name="NoVM" xml:space="preserve">
-    <value>No vm was specified. Supply a PSVM object or a pool name and vm name.</value>
-  </data>
-  <data name="NoVMFile" xml:space="preserve">
-    <value>No vm file was specified. Supply a PSVMFile object or a pool name, vm name, and vm file name.</value>
-  </data>
-  <data name="NoVMUser" xml:space="preserve">
-    <value>No vm user specified. Supply a pool name, vm name, and user name.</value>
-  </data>
-  <data name="NoWorkItem" xml:space="preserve">
-    <value>No workitem was specified.  Supply a workitem name or PSCloudWorkItem object.</value>
+    <value>No task was specified. Supply a PSCloudTask object or a job id and task id.</value>
   </data>
   <data name="RBA_RemoveConfirm" xml:space="preserve">
     <value>Are you sure you want to remove batch account {0}?</value>
   </data>
   <data name="RBA_RemoveResource" xml:space="preserve">
     <value>Removing batch account ...</value>
+  </data>
+  <data name="RBJS_RemoveConfirm" xml:space="preserve">
+    <value>Are you sure you want to remove job schedule {0}?</value>
+  </data>
+  <data name="RBJS_RemoveJobSchedule" xml:space="preserve">
+    <value>Removing job schedule ...</value>
   </data>
   <data name="RBJ_RemoveConfirm" xml:space="preserve">
     <value>Are you sure you want to remove job {0}?</value>
@@ -302,12 +320,6 @@
   </data>
   <data name="RBU_RemoveUser" xml:space="preserve">
     <value>Removing user ...</value>
-  </data>
-  <data name="RBWI_RemoveConfirm" xml:space="preserve">
-    <value>Are you sure you want to remove workitem {0}?</value>
-  </data>
-  <data name="RBWI_RemoveWorkItem" xml:space="preserve">
-    <value>Removing workitem ...</value>
   </data>
   <data name="ResGroupLookup" xml:space="preserve">
     <value>Looking up resource group for account {0}</value>

@@ -26,7 +26,7 @@ using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Auth;
 using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Batch.Protocol;
-using Microsoft.Azure.Batch.Protocol.Entities;
+using Microsoft.Azure.Batch.Protocol.Models;
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Batch.Models;
@@ -46,19 +46,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     /// </summary>
     public static class ScenarioTestHelpers
     {
-        // Content-Type header used by the Batch REST APIs
-        private const string ContentTypeString = "application/json;odata=minimalmetadata";
-
-        // NOTE: To save time on setup and VM allocation when recording, many tests assume the following:
+        // NOTE: To save time on setup and compute node allocation when recording, many tests assume the following:
         //     - A Batch account named 'pstests' exists under the subscription being used for recording.
-        //     - The following commands were run to create a pool, and all 3 VMs are allocated:
+        //     - The following commands were run to create a pool, and all 3 compute nodes are allocated:
         //          $context = Get-AzureBatchAccountKeys "pstests"
         //          $startTask = New-Object Microsoft.Azure.Commands.Batch.Models.PSStartTask
         //          $startTask.CommandLine = "cmd /c echo hello"
-        //          New-AzureBatchPool -Name "testPool" -VMSize "small" -OSFamily "4" -TargetOSVersion "*" -TargetDedicated 3 -StartTask $startTask -BatchContext $context
+        //          New-AzureBatchPool -Id "testPool" -VirtualMachineSize "small" -OSFamily "4" -TargetOSVersion "*" -TargetDedicated 3 -StartTask $startTask -BatchContext $context
         internal const string SharedAccount = "pstests";
         internal const string SharedPool = "testPool";
-        internal const string SharedPoolVM = "tvm-4155946844_1-20150709t190321z"; // Use the following command to get a VM name: (Get-AzureBatchVM -PoolName "testPool" -BatchContext $context)[0].Name
         internal const string SharedPoolStartTaskStdOut = "startup\\stdout.txt";
         internal const string SharedPoolStartTaskStdOutContent = "hello";
 
@@ -99,31 +95,32 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Creates a test pool for use in Scenario tests.
         /// </summary>
-        public static void CreateTestPool(BatchController controller, BatchAccountContext context, string poolName, int targetDedicated)
+        public static void CreateTestPool(BatchController controller, BatchAccountContext context, string poolId, int targetDedicated)
         {
-            YieldInjectionInterceptor interceptor = CreateHttpRecordingInterceptor();
+            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
             BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            NewPoolParameters parameters = new NewPoolParameters(context, poolName, behaviors)
+            NewPoolParameters parameters = new NewPoolParameters(context, poolId, behaviors)
             {
+                VirtualMachineSize = "small",
                 OSFamily = "4",
                 TargetOSVersion = "*",
-                TargetDedicated = targetDedicated
+                TargetDedicated = targetDedicated,
             };
 
             client.CreatePool(parameters);
         }
 
-        public static void WaitForSteadyPoolAllocation(BatchController controller, BatchAccountContext context, string poolName)
+        public static void WaitForSteadyPoolAllocation(BatchController controller, BatchAccountContext context, string poolId)
         {
-            YieldInjectionInterceptor interceptor = CreateHttpRecordingInterceptor();
+            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
             BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
             ListPoolOptions options = new ListPoolOptions(context, behaviors)
             {
-                PoolName = poolName
+                PoolId = poolId
             };
 
             DateTime timeout = DateTime.Now.AddMinutes(2);
@@ -142,15 +139,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Gets the CurrentDedicated count from a pool
         /// </summary>
-        public static int GetPoolCurrentDedicated(BatchController controller, BatchAccountContext context, string poolName)
+        public static int GetPoolCurrentDedicated(BatchController controller, BatchAccountContext context, string poolId)
         {
-            YieldInjectionInterceptor interceptor = CreateHttpRecordingInterceptor();
+            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
             BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
             ListPoolOptions options = new ListPoolOptions(context, behaviors)
             {
-                PoolName = poolName
+                PoolId = poolId
             };
 
             PSCloudPool pool = client.ListPools(options).First();
@@ -162,7 +159,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// </summary>
         public static int GetPoolCount(BatchController controller, BatchAccountContext context)
         {
-            YieldInjectionInterceptor interceptor = CreateHttpRecordingInterceptor();
+            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
             BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
@@ -175,91 +172,103 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Deletes a pool used in a Scenario test.
         /// </summary>
-        public static void DeletePool(BatchController controller, BatchAccountContext context, string poolName)
+        public static void DeletePool(BatchController controller, BatchAccountContext context, string poolId)
         {
-            YieldInjectionInterceptor interceptor = CreateHttpRecordingInterceptor();
+            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
             BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            client.DeletePool(context, poolName, behaviors);
+            client.DeletePool(context, poolId, behaviors);
         }
 
         /// <summary>
-        /// Creates a test workitem for use in Scenario tests.
+        /// Creates a test job schedule for use in Scenario tests.
         /// </summary>
-        public static void CreateTestWorkItem(BatchController controller, BatchAccountContext context, string workItemName, TimeSpan? recurrenceInterval)
+        public static void CreateTestJobSchedule(BatchController controller, BatchAccountContext context, string jobScheduleId, TimeSpan? recurrenceInterval)
         {
-            YieldInjectionInterceptor interceptor = CreateHttpRecordingInterceptor();
+            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
             BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            PSJobExecutionEnvironment jobExecutionEnvironment = new PSJobExecutionEnvironment();
-            jobExecutionEnvironment.PoolName = SharedPool;
-            PSWorkItemSchedule schedule = null;
+            PSJobSpecification jobSpecification = new PSJobSpecification();
+            jobSpecification.PoolInformation = new PSPoolInformation();
+            jobSpecification.PoolInformation.PoolId = SharedPool;
+            PSSchedule schedule = new PSSchedule();
             if (recurrenceInterval != null)
             {
-                schedule = new PSWorkItemSchedule();
+                schedule = new PSSchedule();
                 schedule.RecurrenceInterval = recurrenceInterval;
             }
 
-            NewWorkItemParameters parameters = new NewWorkItemParameters(context, workItemName, behaviors)
+            NewJobScheduleParameters parameters = new NewJobScheduleParameters(context, jobScheduleId, behaviors)
             {
-                JobExecutionEnvironment = jobExecutionEnvironment,
+                JobSpecification = jobSpecification,
                 Schedule = schedule
             };
 
-            client.CreateWorkItem(parameters);
+            client.CreateJobSchedule(parameters);
         }
 
         /// <summary>
-        /// Creates a test workitem for use in Scenario tests.
+        /// Creates a test job for use in Scenario tests.
         /// </summary>
-        public static void CreateTestWorkItem(BatchController controller, BatchAccountContext context, string workItemName)
+        public static void CreateTestJob(BatchController controller, BatchAccountContext context, string jobId)
         {
-            CreateTestWorkItem(controller, context, workItemName, null);
-        }
-
-        /// <summary>
-        /// Waits for a recent job on a workitem and returns its name. If a previous job is specified, this method waits until a new job is created.
-        /// </summary>
-        public static string WaitForRecentJob(BatchController controller, BatchAccountContext context, string workItemName, string previousJob = null)
-        {
-            DateTime timeout = DateTime.Now.AddMinutes(2);
-
-            YieldInjectionInterceptor interceptor = CreateHttpRecordingInterceptor();
+            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
             BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            ListWorkItemOptions options = new ListWorkItemOptions(context, behaviors)
+            PSPoolInformation poolInfo = new PSPoolInformation();
+            poolInfo.PoolId = SharedPool;
+
+            NewJobParameters parameters = new NewJobParameters(context, jobId, behaviors)
             {
-                WorkItemName = workItemName,
+                PoolInformation = poolInfo
+            };
+
+            client.CreateJob(parameters);
+        }
+
+        /// <summary>
+        /// Waits for a recent job on a job schedule and returns its id. If a previous job is specified, this method waits until a new job is created.
+        /// </summary>
+        public static string WaitForRecentJob(BatchController controller, BatchAccountContext context, string jobScheduleId, string previousJob = null)
+        {
+            DateTime timeout = DateTime.Now.AddMinutes(2);
+            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
+            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            ListJobScheduleOptions options = new ListJobScheduleOptions(context, behaviors)
+            {
+                JobScheduleId = jobScheduleId,
                 Filter = null,
                 MaxCount = Constants.DefaultMaxCount
             };
-            PSCloudWorkItem workItem = client.ListWorkItems(options).First();
+            PSCloudJobSchedule jobSchedule = client.ListJobSchedules(options).First();
 
-            while (workItem.ExecutionInformation.RecentJob == null || string.Equals(workItem.ExecutionInformation.RecentJob.Name, previousJob, StringComparison.OrdinalIgnoreCase))
+            while (jobSchedule.ExecutionInformation.RecentJob == null || string.Equals(jobSchedule.ExecutionInformation.RecentJob.Id, previousJob, StringComparison.OrdinalIgnoreCase))
             {
                 if (DateTime.Now > timeout)
                 {
                     throw new TimeoutException("Timed out waiting for recent job");
                 }
                 Sleep(5000);
-                workItem = client.ListWorkItems(options).First();
+                jobSchedule = client.ListJobSchedules(options).First();
             }
-            return workItem.ExecutionInformation.RecentJob.Name;
+            return jobSchedule.ExecutionInformation.RecentJob.Id;
         }
 
         /// <summary>
         /// Creates a test task for use in Scenario tests.
         /// </summary>
-        public static void CreateTestTask(BatchController controller, BatchAccountContext context, string workItemName, string jobName, string taskName, string cmdLine = "cmd /c dir /s")
+        public static void CreateTestTask(BatchController controller, BatchAccountContext context, string jobId, string taskId, string cmdLine = "cmd /c dir /s")
         {
-            YieldInjectionInterceptor interceptor = CreateHttpRecordingInterceptor();
+            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
             BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            NewTaskParameters parameters = new NewTaskParameters(context, workItemName, jobName, null, taskName, behaviors)
+            NewTaskParameters parameters = new NewTaskParameters(context, jobId, null, taskId, behaviors)
             {
                 CommandLine = cmdLine,
                 RunElevated = true
@@ -271,78 +280,92 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Waits for the specified task to complete
         /// </summary>
-        public static void WaitForTaskCompletion(BatchController controller, BatchAccountContext context, string workItemName, string jobName, string taskName)
+        public static void WaitForTaskCompletion(BatchController controller, BatchAccountContext context, string jobId, string taskId)
         {
-            YieldInjectionInterceptor interceptor = CreateHttpRecordingInterceptor();
+            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
             BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            ListTaskOptions options = new ListTaskOptions(context, workItemName, jobName, null, behaviors)
+            ListTaskOptions options = new ListTaskOptions(context, jobId, null, behaviors)
             {
-                TaskName = taskName
+                TaskId = taskId
             };
             IEnumerable<PSCloudTask> tasks = client.ListTasks(options);
 
-            ITaskStateMonitor monitor = context.BatchOMClient.OpenToolbox().CreateTaskStateMonitor();
-            monitor.WaitAll(tasks.Select(t => t.omObject), TaskState.Completed, TimeSpan.FromMinutes(2), null, behaviors);
+            // Save time by not waiting during playback scenarios
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            {
+                TaskStateMonitor monitor = context.BatchOMClient.Utilities.CreateTaskStateMonitor();
+                monitor.WaitAll(tasks.Select(t => t.omObject), TaskState.Completed, TimeSpan.FromMinutes(2), null);
+            }
         }
 
         /// <summary>
-        /// Deletes a workitem used in a Scenario test.
+        /// Deletes a job schedule used in a Scenario test.
         /// </summary>
-        public static void DeleteWorkItem(BatchController controller, BatchAccountContext context, string workItemName)
+        public static void DeleteJobSchedule(BatchController controller, BatchAccountContext context, string jobScheduleId)
         {
-            YieldInjectionInterceptor interceptor = CreateHttpRecordingInterceptor();
+            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
             BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            client.DeleteWorkItem(context, workItemName, behaviors);
+            client.DeleteJobSchedule(context, jobScheduleId, behaviors);
+        }
+
+        /// <summary>
+        /// Deletes a job used in a Scenario test.
+        /// </summary>
+        public static void DeleteJob(BatchController controller, BatchAccountContext context, string jobId)
+        {
+            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
+            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            client.DeleteJob(context, jobId, behaviors);
         }
 
         /// <summary>
         /// Terminates a job
         /// TODO: Replace with terminate Job client method when it exists.
         /// </summary>
-        public static void TerminateJob(BatchAccountContext context, string workItemName, string jobName)
+        public static void TerminateJob(BatchAccountContext context, string jobId)
         {
-            if (HttpMockServer.Mode == HttpRecorderMode.Record)
-            {
-                using (IWorkItemManager wiManager = context.BatchOMClient.OpenWorkItemManager())
-                {
-                    wiManager.TerminateJob(workItemName, jobName);
-                }
-            }
+            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
+            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+
+            context.BatchOMClient.JobOperations.TerminateJob(jobId, additionalBehaviors: behaviors);
+        }
+
+        /// <summary>
+        /// Gets the id of a compute node in the specified pool
+        /// </summary>
+        public static string GetComputeNodeId(BatchController controller, BatchAccountContext context, string poolId)
+        {
+            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
+            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            ListComputeNodeOptions options = new ListComputeNodeOptions(context, poolId, null, behaviors);
+
+            return client.ListComputeNodes(options).First().Id;
         }
 
         /// <summary>
         /// Creates a test user for use in Scenario tests.
         /// </summary>
-        public static void CreateTestUser(BatchController controller, BatchAccountContext context, string poolName, string vmName, string vmUserName)
+        public static void CreateComputeNodeUser(BatchController controller, BatchAccountContext context, string poolId, string computeNodeId, string computeNodeUserName)
         {
-            YieldInjectionInterceptor interceptor = CreateHttpRecordingInterceptor();
+            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
             BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            NewVMUserParameters parameters = new NewVMUserParameters(context, poolName, vmName, null, behaviors)
+            NewComputeNodeUserParameters parameters = new NewComputeNodeUserParameters(context, poolId, computeNodeId, null, behaviors)
             {
-                VMUserName = vmUserName,
+                ComputeNodeUserName = computeNodeUserName,
                 Password = "Password1234!",
             };
 
-            client.CreateVMUser(parameters);
-        }
-
-        /// <summary>
-        /// Deletes a user used in a Scenario test.
-        /// </summary>
-        public static void DeleteUser(BatchController controller, BatchAccountContext context, string poolName, string vmName, string vmUserName)
-        {
-            YieldInjectionInterceptor interceptor = CreateHttpRecordingInterceptor();
-            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
-
-            VMUserOperationParameters parameters = new VMUserOperationParameters(context, poolName, vmName, vmUserName, behaviors);
-            client.DeleteVMUser(parameters);
+            client.CreateComputeNodeUser(parameters);
         }
 
         /// <summary>
@@ -352,194 +375,16 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// for serialization by the Protocol Layer.
         /// NOTE: This is a temporary behavior that should no longer be needed when the Batch OM switches to Hyak.
         /// </summary>
-        public static YieldInjectionInterceptor CreateHttpRecordingInterceptor()
+        public static RequestInterceptor CreateHttpRecordingInterceptor()
         {
-            YieldInjectionInterceptor interceptor = new YieldInjectionInterceptor((opContext, batchRequest) =>
+            RequestInterceptor interceptor = new RequestInterceptor((batchRequest) =>
             {
-                Task<object> task = Task<object>.Factory.StartNew(() =>
-                {
-                    object batchResponse = null;
-
-                    HttpRequestMessage request = GenerateHttpRequest((BatchRequest)batchRequest);
-
-                    // Setup HTTP recorder and send the request
-                    HttpMockServer mockServer = HttpMockServer.CreateInstance();
-                    mockServer.InnerHandler = new HttpClientHandler();
-                    HttpClient client = new HttpClient(mockServer);
-                    Task<HttpResponseMessage> responseTask = client.SendAsync(request);
-                    responseTask.Wait();
-                    HttpResponseMessage response = responseTask.Result;
-
-                    Task<Stream> getContentTask = response.Content.ReadAsStreamAsync();
-                    getContentTask.Wait();
-                    Stream body = getContentTask.Result;
-
-                    HttpWebResponse webResponse = ConvertResponseMessageToWebResponse(response);
-
-                    batchResponse = GenerateBatchResponse((BatchRequest)batchRequest, webResponse, body);
-
-                    return batchResponse;
-                });
-                return task;
+                // Setup HTTP recorder
+                HttpMockServer mockServer = HttpMockServer.CreateInstance();
+                mockServer.InnerHandler = new HttpClientHandler();
+                batchRequest.RestClient.AddHandlerToPipeline(mockServer);
             });
             return interceptor;
-        }
-
-        /// <summary>
-        /// Generates an HttpRequestMessage from the BatchRequest.
-        /// </summary>
-        private static HttpRequestMessage GenerateHttpRequest(BatchRequest batchRequest)
-        {
-            HttpRequestMessage requestMessage = null;
-            Uri uri = null;
-            // Since we aren't directly using the Protocol Layer to send the request, we have to extract the pieces to create the signed web request
-            // that we can convert into a format compatible with the HTTP Recorder.
-            MethodInfo getResourceMethod = batchRequest.GetType().GetMethod("GetResourceUri", BindingFlags.NonPublic | BindingFlags.Instance);
-            if (getResourceMethod != null)
-            {
-                uri = getResourceMethod.Invoke(batchRequest, null) as Uri;
-            }
-            
-            // Get the generated HttpWebRequest from the BatchRequest
-            MethodInfo createCommandMethod = batchRequest.GetType().GetMethod("CreateRestCommand", BindingFlags.NonPublic | BindingFlags.Instance);
-            if (createCommandMethod != null)
-            {
-                object command = createCommandMethod.Invoke(batchRequest, null);
-                FieldInfo buildRequestField = command.GetType().GetField("BuildRequestDelegate", BindingFlags.Public | BindingFlags.Instance);
-                if (buildRequestField != null)
-                {
-                    PropertyInfo currentResultProperty = command.GetType().GetProperty("CurrentResult", BindingFlags.NonPublic | BindingFlags.Instance);
-                    if (currentResultProperty != null)
-                    {
-                        currentResultProperty.SetValue(command, new RequestResult());
-                    }
-                    Delegate buildRequest = buildRequestField.GetValue(command) as Delegate;
-                    if (buildRequest != null)
-                    {
-                        HttpWebRequest webRequest = buildRequest.DynamicInvoke(uri, null, false, null, null) as HttpWebRequest;
-                        if (webRequest != null)
-                        {
-                            // Delete requests set a Content-Length of 0 with the HttpRequestMessage class for some reason.
-                            // Add in this header before signing the request.
-                            if (webRequest.Method == "DELETE")
-                            {
-                                webRequest.ContentLength = 0;
-                            }
-
-                            // Sign the request to add the Authorization header
-                            batchRequest.AuthenticationHandler.SignRequest(webRequest, null);
-
-                            // Convert the signed HttpWebRequest into an HttpRequestMessage for use with the HTTP Recorder
-                            requestMessage = new HttpRequestMessage(new HttpMethod(webRequest.Method), webRequest.RequestUri);
-                            foreach (var header in webRequest.Headers)
-                            {
-                                string key = header.ToString();
-                                string value = webRequest.Headers[key];
-                                if (string.Equals(key, "Content-Type"))
-                                {
-                                    // Copy the Content to the HttpRequestMessage
-                                    FieldInfo streamField = command.GetType().GetField("SendStream", BindingFlags.Public | BindingFlags.Instance);
-                                    if (streamField != null)
-                                    {
-                                        Stream contentStream = streamField.GetValue(command) as Stream;
-                                        if (contentStream != null)
-                                        {
-                                            MemoryStream memStream = new MemoryStream();
-
-                                            contentStream.CopyTo(memStream);
-                                            memStream.Seek(0, SeekOrigin.Begin);
-                                            requestMessage.Content = new StreamContent(memStream);
-
-                                            // Add Content-Type header to the HttpRequestMessage
-                                            // Use a custom class to force the proper formatting of the Content-Type header.
-                                            requestMessage.Content.Headers.ContentType = new JsonOdataMinimalHeader();
-                                            requestMessage.Content.Headers.ContentLength = webRequest.ContentLength;
-                                        }
-                                    }
-                                }
-                                else
-                                { 
-                                    requestMessage.Headers.Add(key, value);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            return requestMessage;
-        }
-
-        /// <summary>
-        /// Converts the HttpResponseMessage into an HttpWebResponse that can be used by the Protocol layer
-        /// </summary>
-        private static HttpWebResponse ConvertResponseMessageToWebResponse(HttpResponseMessage responseMessage)
-        {
-            HttpWebResponse webResponse = null;
-
-            // The HttpWebResponse class isn't meant to be built on the fly outside of the .NET framework internals, so we use Reflection.
-            ConstructorInfo constructor = typeof(HttpWebResponse).GetConstructor(new Type[] { });
-            if (constructor != null)
-            {
-                webResponse = constructor.Invoke(null) as HttpWebResponse;
-                if (webResponse != null)
-                {
-                    BatchTestHelpers.SetField(webResponse, "m_HttpResponseHeaders", new WebHeaderCollection());
-                    foreach (var header in responseMessage.Headers)
-                    {
-                        webResponse.Headers.Add(header.Key, header.Value.FirstOrDefault());
-                    }
-                    webResponse.Headers.Add("Content-Type", ContentTypeString);
-                    BatchTestHelpers.SetField(webResponse, "m_StatusCode", responseMessage.StatusCode);
-                }
-            }
-            return webResponse;
-        }
-
-        /// <summary>
-        /// Serializes an HttpWebRespone and response body into a BatchResponse
-        /// </summary>
-        private static object GenerateBatchResponse(BatchRequest batchRequest, HttpWebResponse webResponse, Stream responseBody)
-        {
-            object batchResponse = null;
-            MethodInfo createCommandMethod = batchRequest.GetType().GetMethod("CreateRestCommand", BindingFlags.NonPublic | BindingFlags.Instance);
-            if (createCommandMethod != null)
-            {
-                object command = createCommandMethod.Invoke(batchRequest, null);
-                FieldInfo preProcessField = command.GetType().GetField("PreProcessResponse", BindingFlags.Public | BindingFlags.Instance);
-                if (preProcessField != null)
-                {
-                    Delegate preProcessDelegate = preProcessField.GetValue(command) as Delegate;
-                    if (preProcessDelegate != null)
-                    {
-                        preProcessDelegate.DynamicInvoke(command, webResponse, null, null);
-                    }
-                }
-
-                FieldInfo postProcessField = command.GetType().GetField("PostProcessResponse", BindingFlags.Public | BindingFlags.Instance);
-                if (postProcessField != null)
-                {
-                    Delegate postProcessDelegate = postProcessField.GetValue(command) as Delegate;
-                    if (postProcessDelegate != null)
-                    {
-                        FieldInfo responseStreamField = command.GetType().GetField("ResponseStream", BindingFlags.Public | BindingFlags.Instance);
-                        if (responseStreamField != null)
-                        {
-                            responseStreamField.SetValue(command, responseBody);
-                        }
-                        FieldInfo destinationStreamField = command.GetType().GetField("DestinationStream", BindingFlags.Public | BindingFlags.Instance);
-                        if (destinationStreamField != null)
-                        {
-                            Stream destinationStream = destinationStreamField.GetValue(command) as Stream;
-                            if (destinationStream != null)
-                            {
-                                responseBody.CopyTo(destinationStream);
-                            }
-                        }
-                        batchResponse = postProcessDelegate.DynamicInvoke(command, webResponse, null, null);
-                    }
-                }
-            }
-            return batchResponse;
         }
 
         /// <summary>
@@ -550,24 +395,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             if (HttpMockServer.Mode == HttpRecorderMode.Record)
             {
                 Thread.Sleep(milliseconds);
-            }
-        }
-
-        /// <summary>
-        /// Custom override to the HttpRequestMessage Content header.
-        /// By default, calling MediaTypeHeaderValue.Parse("application/json;odata=minimalmetadata") will
-        /// add an extra space character to the Content-Type header that the Batch service will reject as 
-        /// incorrectly formatted. This extension class overrides the ToString() method to return the 
-        /// Content-Type header string without any extra spaces.
-        /// </summary>
-        private class JsonOdataMinimalHeader : MediaTypeHeaderValue
-        {
-            public JsonOdataMinimalHeader() : base("application/json")
-            { }
-
-            public override string ToString()
-            {
-                return ContentTypeString;
             }
         }
     }
