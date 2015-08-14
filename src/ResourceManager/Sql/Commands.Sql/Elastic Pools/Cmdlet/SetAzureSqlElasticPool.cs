@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
                 DatabaseDtuMin = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMin") ? (int?)DatabaseDtuMin : null,
                 Dtu = MyInvocation.BoundParameters.ContainsKey("Dtu") ? (int?)Dtu : null,
                 Edition = MyInvocation.BoundParameters.ContainsKey("Edition") ? (DatabaseEdition?)Edition : null,
-                StorageMB = MyInvocation.BoundParameters.ContainsKey("StorageMB") ? (long?)StorageMB : null,
+                StorageMB = MyInvocation.BoundParameters.ContainsKey("StorageMB") ? (int?)StorageMB : null,
             });
             return newEntity;
         }
