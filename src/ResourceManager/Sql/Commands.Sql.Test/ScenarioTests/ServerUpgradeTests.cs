@@ -22,9 +22,9 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     {
         [Fact]
         [Trait(Category.Sql, Category.CheckIn)]
-        public void TestServerUpgradeWithRecommendedDatabase()
+        public void TestServerUpgradeWithUpgradeHint()
         {
-            RunPowerShellTest("Test-ServerUpgradeWithRecommendedDatabase");
+            RunPowerShellTest("Test-ServerUpgradeWithUpgradeHint");
         }
 
         [Fact]

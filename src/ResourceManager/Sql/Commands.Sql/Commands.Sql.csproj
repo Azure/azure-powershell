@@ -51,6 +51,36 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Auditing\Cmdlet\GetAzureSqlDatabaseAuditingPolicy.cs" />
+    <Compile Include="Auditing\Cmdlet\GetAzureSqlServerAuditingPolicy.cs" />
+    <Compile Include="Auditing\Cmdlet\RemoveSqlDatabaseAuditing.cs" />
+    <Compile Include="Auditing\Cmdlet\RemoveSqlServerAuditing.cs" />
+    <Compile Include="Auditing\Cmdlet\SetAzureSqlDatabaseAuditingPolicy.cs" />
+    <Compile Include="Auditing\Cmdlet\SetAzureSqlServerAuditingPolicy.cs" />
+    <Compile Include="Auditing\Cmdlet\SqlDatabaseAuditingCmdletBase.cs" />
+    <Compile Include="Auditing\Cmdlet\SqlDatabaseServerAuditingCmdletBase.cs" />
+    <Compile Include="Auditing\Cmdlet\UseAzureSqlServerAuditingPolicy.cs" />
+    <Compile Include="Auditing\Model\BaseAuditingPolicyModel.cs" />
+    <Compile Include="Auditing\Model\DatabaseAuditingPolicyModel.cs" />
+    <Compile Include="Auditing\Model\ServerAuditingPolicyModel.cs" />
+    <Compile Include="Auditing\Services\AuditingEndpointsCommunicator.cs" />
+    <Compile Include="Auditing\Services\SqlAuditAdapter.cs" />
+    <Compile Include="Common\SecurityConstants.cs" />
+    <Compile Include="Data Masking\Cmdlet\BuildAzureSqlDatabaseDataMaskingRule.cs" />
+    <Compile Include="Data Masking\Cmdlet\GetAzureSqlDatabaseDataMaskingPolicy.cs" />
+    <Compile Include="Data Masking\Cmdlet\GetAzureSqlDatabaseDataMaskingRule.cs" />
+    <Compile Include="Data Masking\Cmdlet\NewAzureSqlDatabaseDataMaskingRule.cs" />
+    <Compile Include="Data Masking\Cmdlet\RemoveAzureSqlDatabaseDataMaskingRule.cs" />
+    <Compile Include="Data Masking\Cmdlet\SetAzureSqlDatabaseDataMaskingPolicy.cs" />
+    <Compile Include="Data Masking\Cmdlet\SetAzureSqlDatabaseDataMaskingRule.cs" />
+    <Compile Include="Data Masking\Cmdlet\SqlDatabaseDataMaskingPolicyCmdletBase.cs" />
+    <Compile Include="Data Masking\Cmdlet\SqlDatabaseDataMaskingRuleCmdletBase.cs" />
+    <Compile Include="Data Masking\Model\BaseDataMaskingPolicyModel.cs" />
+    <Compile Include="Data Masking\Model\BaseDataMaskingRuleModel.cs" />
+    <Compile Include="Data Masking\Model\DatabaseDataMaskingPolicyModel.cs" />
+    <Compile Include="Data Masking\Model\DatabaseDataMaskingRuleModel.cs" />
+    <Compile Include="Data Masking\Services\DataMaskingEndpointsCommunicator.cs" />
+    <Compile Include="Data Masking\Services\SqlDataMaskingAdapter.cs" />
     <Compile Include="Database Backup\Cmdlet\AzureSqlDatabaseRestorePointCmdletBase.cs" />
     <Compile Include="Database Backup\Cmdlet\GetAzureSqlDatabaseRestorePoints.cs" />
     <Compile Include="Database Backup\Model\AzureSqlDatabaseRestorePointModel.cs" />
@@ -61,6 +91,23 @@
     <Compile Include="Database Activation\Cmdlet\SuspendAzureSqlDatabase.cs" />
     <Compile Include="Database Activation\Services\SqlAzureDatabaseActivationAdapter.cs" />
     <Compile Include="Database Activation\Services\SqlAzureDatabaseActivationCommunicator.cs" />
+    <Compile Include="Database\Cmdlet\GetAzureSqlDatabaseExpanded.cs" />
+    <Compile Include="Database\Model\AzureSqlDatabaseModelExpanded.cs" />
+    <Compile Include="RecommendedElasticPools\Cmdlet\GetAzureSqlElasticPoolRecommendation.cs" />
+    <Compile Include="RecommendedElasticPools\Services\AzureSqlElasticPoolRecommendationAdapter.cs" />
+    <Compile Include="RecommendedElasticPools\Services\AzureSqlElasticPoolRecommendationCommunicator.cs" />
+    <Compile Include="Secure Connection\Cmdlet\GetAzureSqlDatabaseSecureConnectionPolicy.cs" />
+    <Compile Include="Secure Connection\Cmdlet\SqlDatabaseSecureConnectionCmdletBase.cs" />
+    <Compile Include="Secure Connection\Model\BaseSecureConnectionPolicyModel.cs" />
+    <Compile Include="Secure Connection\Model\ConnectionStrings.cs" />
+    <Compile Include="Secure Connection\Model\DatabaseSecureConnectionPolicyModel.cs" />
+    <Compile Include="Secure Connection\Services\SecureConnectionEndpointsCommunicator.cs" />
+    <Compile Include="Secure Connection\Services\SqlSecureConnectionAdapter.cs" />
+    <Compile Include="ServiceTierAdvisor\Cmdlet\GetAzureSqlUpgradeDatabaseHint.cs" />
+    <Compile Include="ServiceTierAdvisor\Cmdlet\GetAzureSqlUpgradeServerHint.cs" />
+    <Compile Include="ServiceTierAdvisor\Model\UpgradeServerHint.cs" />
+    <Compile Include="ServiceTierAdvisor\Services\AzureSqlServiceTierAdvisorAdapter.cs" />
+    <Compile Include="ServiceTierAdvisor\Services\AzureSqlServiceTierAdvisorCommunicator.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\AzureSqlDatabaseTransparentDataEncryptionActivityCmdletBase.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\AzureSqlDatabaseTransparentDataEncryptionCmdletBase.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\GetAzureSqlDatabaseTransparentDataEncryption.cs" />
@@ -84,14 +131,6 @@
     <Compile Include="Database\Model\DatabaseEdition.cs" />
     <Compile Include="Database\Services\AzureSqlDatabaseCommunicator.cs" />
     <Compile Include="Database\Services\AzureSqlDatabaseAdapter.cs" />
-    <Compile Include="Recommended Elastic Pools\Cmdlet\AzureSqlElasticPoolRecommendationCmdletBase.cs" />
-    <Compile Include="Recommended Elastic Pools\Cmdlet\GetAzureSqlElasticPoolRecommendation.cs" />
-    <Compile Include="Recommended Elastic Pools\Cmdlet\GetAzureSqlElasticPoolRecommendationMetrics.cs" />
-    <Compile Include="Recommended Elastic Pools\Cmdlet\GetAzureSqlElasticPoolRecommendationDatabase.cs" />
-    <Compile Include="Recommended Elastic Pools\Model\AzureSqlElasticPoolRecommendationMetricModel.cs" />
-    <Compile Include="Recommended Elastic Pools\Model\AzureSqlElasticPoolRecommendationModel.cs" />
-    <Compile Include="Recommended Elastic Pools\Services\AzureSqlElasticPoolRecommendationAdapter.cs" />
-    <Compile Include="Recommended Elastic Pools\Services\AzureSqlElasticPoolRecommendationCommunicator.cs" />
     <Compile Include="Elastic Pools\Cmdlet\AzureSqlElasticPoolActivityCmdletBase.cs" />
     <Compile Include="Elastic Pools\Cmdlet\AzureSqlElasticPoolCmdletBase.cs" />
     <Compile Include="Elastic Pools\Cmdlet\GetAzureSqlElasticPoolActivity.cs" />
@@ -117,47 +156,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Security\Cmdlet\DataMasking\BuildAzureSqlDatabaseDataMaskingRule.cs" />
-    <Compile Include="Security\Cmdlet\DataMasking\SetAzureSqlDatabaseDataMaskingRule.cs" />
-    <Compile Include="Security\Cmdlet\DataMasking\NewAzureSqlDatabaseDataMaskingRule.cs" />
-    <Compile Include="Security\Cmdlet\DataMasking\RemoveAzureSqlDatabaseDataMaskingRule.cs" />
-    <Compile Include="Security\Cmdlet\DataMasking\GetAzureSqlDatabaseDataMaskingRule.cs" />
-    <Compile Include="Security\Cmdlet\DataMasking\SqlDatabaseDataMaskingRuleCmdletBase.cs" />
-    <Compile Include="Security\Cmdlet\DataMasking\GetAzureSqlDatabaseDataMaskingPolicy.cs" />
-    <Compile Include="Security\Cmdlet\SecureConnection\GetAzureSqlDatabaseSecureConnectionPolicy.cs" />
-    <Compile Include="Security\Cmdlet\Auditing\GetAzureSqlDatabaseAuditingPolicy.cs" />
-    <Compile Include="Security\Cmdlet\Auditing\GetAzureSqlServerAuditingPolicy.cs" />
-    <Compile Include="Security\Cmdlet\DataMasking\SetAzureSqlDatabaseDataMaskingPolicy.cs" />
-    <Compile Include="Security\Cmdlet\DataMasking\SqlDatabaseDataMaskingPolicyCmdletBase.cs" />
-    <Compile Include="Security\Cmdlet\SecureConnection\SqlDatabaseSecureConnectionCmdletBase.cs" />
-    <Compile Include="Security\Cmdlet\Auditing\UseAzureSqlServerAuditingPolicy.cs" />
-    <Compile Include="Security\Cmdlet\Auditing\RemoveSqlServerAuditing.cs" />
-    <Compile Include="Security\Cmdlet\Auditing\RemoveSqlDatabaseAuditing.cs" />
-    <Compile Include="Security\Cmdlet\Auditing\SetAzureSqlServerAuditingPolicy.cs" />
-    <Compile Include="Security\Cmdlet\Auditing\SetAzureSqlDatabaseAuditingPolicy.cs" />
-    <Compile Include="Security\Cmdlet\Auditing\SqlDatabaseServerAuditingCmdletBase.cs" />
-    <Compile Include="Security\Cmdlet\Auditing\SqlDatabaseAuditingCmdletBase.cs" />
     <Compile Include="Common\AzureSqlDatabaseCmdletBase.cs" />
     <Compile Include="Common\AzureSqlCmdletBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Security\Model\DatabaseDataMaskingRuleModel.cs" />
-    <Compile Include="Security\Model\DatabaseDataMaskingPolicyModel.cs" />
-    <Compile Include="Security\Model\BaseDataMaskingPolicyModel.cs" />
-    <Compile Include="Security\Model\BaseSecureConnectionPolicyModel.cs" />
-    <Compile Include="Security\Model\ConnectionStrings.cs" />
-    <Compile Include="Security\Model\DatabaseSecureConnectionPolicyModel.cs" />
-    <Compile Include="Security\Model\ServerAuditingPolicyModel.cs" />
-    <Compile Include="Security\Model\DatabaseAuditingPolicyModel.cs" />
-    <Compile Include="Security\Model\BaseAuditingPolicyModel.cs" />
-    <Compile Include="Security\Model\BaseDataMaskingRuleModel.cs" />
-    <Compile Include="Security\Services\AuditingEndpointsCommunicator.cs" />
-    <Compile Include="Security\Services\DataMaskingEndpointsCommunicator.cs" />
-    <Compile Include="Security\Services\SecureConnectionEndpointsCommunicator.cs" />
     <Compile Include="Common\AzureEndpointsCommunicator.cs" />
-    <Compile Include="Security\Services\SecurityConstants.cs" />
-    <Compile Include="Security\Services\SqlDataMaskingAdapter.cs" />
-    <Compile Include="Security\Services\SqlSecureConnectionAdapter.cs" />
-    <Compile Include="Security\Services\SqlAuditAdapter.cs" />
     <Compile Include="ServerUpgrade\Cmdlet\AzureSqlServerUpgradeCmdletBase.cs" />
     <Compile Include="ServerUpgrade\Cmdlet\GetAzureSqlServerUpgrade.cs" />
     <Compile Include="ServerUpgrade\Cmdlet\StartAzureSqlServerUpgrade.cs" />
@@ -181,7 +183,9 @@
     <Compile Include="ServiceObjective\Service\AzureSqlServerServiceObjectiveCommunicator.cs" />
     <Compile Include="ServiceObjective\Service\AzureSqlServerServiceObjectiveAdapter.cs" />
     <Compile Include="Services\Util.cs" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -196,7 +200,8 @@
       <HintPath>..\..\..\packages\Hyak.Common.1.0.2\lib\net45\Hyak.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Sql">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.29.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.32.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="Microsoft.Azure.Common, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

@@ -117,10 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AzureVMNotFound" xml:space="preserve">
-    <value>The specified Azure Virtual Machine Not Found.</value>
-  </data>
   <data name="ResourceNotFoundMessage" xml:space="preserve">
     <value>The specified resource does not exist.</value>
+  </data>
+  <data name="UnregisterServerCaption" xml:space="preserve">
+    <value>Unregister Server</value>
+  </data>
+  <data name="UnregisterServerMessage" xml:space="preserve">
+    <value>This operation will delete all data in the backup vault that is associated with the server. Are you sure you want to unregister the server?</value>
   </data>
 </root>

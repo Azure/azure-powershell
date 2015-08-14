@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.BatchManager.Test
             Assert.Equal<string>(context.Location, resource.Location);
             Assert.Equal<string>(context.State, resource.Properties.ProvisioningState.ToString());
             Assert.Equal<string>(context.AccountName, account);
-            Assert.Equal<string>(context.TaskTenantUrl, string.Format("https://{0}", tenantUrlEnding));
+            Assert.Equal<string>(context.TaskTenantUrl, string.Format("https://{0}", endpoint));
             Assert.Equal<string>(context.Subscription, subscription);
             Assert.Equal<string>(context.ResourceGroupName, resourceGroup);
         }

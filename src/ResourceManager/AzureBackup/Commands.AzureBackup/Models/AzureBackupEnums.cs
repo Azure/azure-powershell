@@ -19,4 +19,21 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         GeoRedundant = 1,
         LocallyRedundant,
     }
+
+    public enum AzureBackupContainerType
+    {
+        Windows = 1,
+        SCDPM,
+    }
+
+    public enum AzureBackupContainerStatusInput
+    {
+        Registering = 1,
+        Registered,
+    }
+
+    public enum AzureBackupContainerRegistrationStatus
+    {
+        Registered = 1,
+    }
 }

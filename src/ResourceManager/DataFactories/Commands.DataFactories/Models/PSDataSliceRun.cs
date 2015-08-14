@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Models
 
         public string DataFactoryName { get; set; }
 
-        public string TableName { get; set; }
+        public string DatasetName { get; set; }
 
         public DateTime ProcessingStartTime
         {

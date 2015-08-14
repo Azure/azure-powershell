@@ -17456,6 +17456,13 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureStorageContext</command:parameterValue>
 			</command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>StorageEndpointSuffix</maml:name>
+        <maml:description>
+          <maml:para>Suffix for the storage end point, e.g. core.windows.net</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      </command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>WhatIf</maml:name>
 				<maml:description>
@@ -17560,6 +17567,18 @@ When this parameter is used, the configuration script is not uploaded to Azure b
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+      <maml:name>StorageEndpointSuffix</maml:name>
+      <maml:description>
+        <maml:para>Suffix for the storage end point, e.g. core.windows.net</maml:para>
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+      <dev:type>
+        <maml:name>string</maml:name>
+        <maml:uri/>
+      </dev:type>
+      <dev:defaultValue></dev:defaultValue>
+    </command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>WhatIf</maml:name>
 			<maml:description>
