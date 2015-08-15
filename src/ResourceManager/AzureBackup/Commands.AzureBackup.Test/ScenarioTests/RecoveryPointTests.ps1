@@ -9,7 +9,7 @@ $PolicyName = "Policy9";
 $PolicyId = "c87bbada-6e1b-4db2-b76c-9062d28959a4";
 $POName = "iaasvmcontainer;hydrarecordvm;hydrarecordvm"
 $ItemName = "iaasvmcontainer;hydrarecordvm;hydrarecordvm"
-$RecoveryPointName = "12520735098347"
+$RecoveryPointName = "587454680194"
 
 
 function Test-GetAzureRecoveryPoints
@@ -27,7 +27,7 @@ function Test-GetAzureRecoveryPoints
 		{
 			Assert-NotNull $recoveryPoint.RecoveryPointTime 'RecoveryPointTime should not be null'
 			Assert-NotNull $recoveryPoint.RecoveryPointType 'RecoveryPointType should not be null'
-			Assert-NotNull $recoveryPoint.RecoveryPointId  'RecoveryPointId should not be null'
+			Assert-NotNull $recoveryPoint.RecoveryPointName  'RecoveryPointId should not be null'
 		}
 	}
 }
@@ -45,6 +45,6 @@ function Test-GetAzureRecoveryPoint
 	{
 		Assert-NotNull $recoveryPoint.RecoveryPointTime 'RecoveryPointTime should not be null'
 		Assert-NotNull $recoveryPoint.RecoveryPointType 'RecoveryPointType should not be null'
-		Assert-NotNull $recoveryPoint.RecoveryPointId  'RecoveryPointId should not be null'
+		Assert-NotNull $recoveryPoint.RecoveryPointName  'RecoveryPointId should not be null'
 	}
 }

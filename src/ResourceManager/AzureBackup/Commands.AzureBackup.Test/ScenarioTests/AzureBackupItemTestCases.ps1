@@ -2,17 +2,18 @@
 $ResourceName = "backuprn"
 $ContainerName = "iaasvmcontainer;hydrarecordvm;hydrarecordvm"
 $ContainerType = "IaasVMContainer"
-$DataSourceType = "VM"
+$DataSourceType = "IaasVM"
 $DataSourceId = "17593283453810"
 $Location = "SouthEast Asia"
-$PolicyName = "Policy9";
-$PolicyId = "c87bbada-6e1b-4db2-b76c-9062d28959a4";
-$POName = "iaasvmcontainer;hydrarecordvm;hydrarecordvm"
+$PolicyName = "ProtPolicy01";
+$PolicyId = "/subscriptions/f5303a0b-fae4-4cdb-b44d-0e4c032dde26/resourceGroups/backuprg/providers/Microsoft.Backup/BackupVault/backuprn/protectionPolicies/DefaultPolicy";
+$POName = "hydrarecordvm"
+$itemName = "iaasvmcontainer;hydrarecordvm;hydrarecordvm"
 
 
 function Test-GetAzureBackupItemTests
 {
-	$azureBackUpContainer = New-Object Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupContainer
+	$azureBackUpContainer = New-Object Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer
 	$azureBackUpContainer.ResourceGroupName = $ResourceGroupName
 	$azureBackUpContainer.ResourceName = $ResourceName
 	$azureBackUpContainer.Location = $Location
@@ -37,39 +38,33 @@ function Test-GetAzureBackupItemTests
 
 function Test-EnableAzureBackupProtection
 {	
-	$policy = New-Object Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupProtectionPolicy
-	$policy.InstanceId = $PolicyId
-	$policy.Name = $PolicyName
-	$policy.ResourceGroupName = $ResourceGroupName
-	$policy.ResourceName = $ResourceName
-	$policy.Location = $Location
-	$policy.WorkloadType = "VM"
-	$policy.RetentionType = "1"
-	$policy.ScheduleRunTimes =  "2015-06-13T20:30:00"
+    $vault = Get-AzureRMBackupVault -Name $ResourceName
+	$policyList = Get-AzureRMBackupProtectionPolicy -Vault $vault
+	$policy = $policyList[0]
 
-	$azureBackUpItem = New-Object Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupItem
+	$azureBackUpItem = New-Object Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem
 	$azureBackUpItem.ResourceGroupName = $ResourceGroupName
 	$azureBackUpItem.ResourceName = $ResourceName
 	$azureBackUpItem.Location = $Location
 	$azureBackUpItem.ContainerUniqueName = $ContainerName
 	$azureBackUpItem.ContainerType = $ContainerType
-	$azureBackUpItem.DataSourceId = $DataSourceId
 	$azureBackUpItem.Type = $DataSourceType
 	$azureBackUpItem.Name = $POName
+	$azureBackUpItem.ItemName = $itemName
 	$jobId = Enable-AzureRMBackupProtection -Item $azureBackUpItem -Policy $policy 
 	
 }
 
 function Test-DisableAzureBackupProtection
 {	
-	$azureBackUpItem = New-Object Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupItem
+	$azureBackUpItem = New-Object Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem
 	$azureBackUpItem.ResourceGroupName = $ResourceGroupName
 	$azureBackUpItem.ResourceName = $ResourceName
 	$azureBackUpItem.Location = $Location
 	$azureBackUpItem.ContainerUniqueName = $ContainerName
 	$azureBackUpItem.ContainerType = $ContainerType
-	$azureBackUpItem.DataSourceId = $DataSourceId
 	$azureBackUpItem.Type = $DataSourceType
+	$azureBackUpItem.ItemName = $itemName
 	$azureBackUpItem.Name = $POName
 	$jobId1 = Disable-AzureRMBackupProtection -Item $azureBackUpItem
 }

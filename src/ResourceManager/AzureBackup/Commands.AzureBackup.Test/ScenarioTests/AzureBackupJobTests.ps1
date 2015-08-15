@@ -8,14 +8,16 @@ $Location = "SouthEast Asia"
 $PolicyName = "Policy9";
 $PolicyId = "c87bbada-6e1b-4db2-b76c-9062d28959a4";
 $POName = "iaasvmcontainer;hydrarecordvm;hydrarecordvm"
+$ItemName = "iaasvmcontainer;hydrarecordvm;hydrarecordvm"
 
+# startTime%20eq%20'2015-07-15%2009:39:29%20AM'%20and%20endTime%20eq%20'2015-08-14%2009:39:29%20AM'",
 
 function Test-GetAzureRMBackupJob
 {
-	$vault = Get-AzureBackupVault -Name $ResourceName;
-	$OneMonthBack = Get-Date;
-	$OneMonthBack = $OneMonthBack.AddDays(-30);
-	$jobs = Get-AzureRMBackupJob -Vault $vault -From $OneMonthBack
+	$vault = Get-AzureRMBackupVault -Name $ResourceName;
+	$OneMonthBack = Get-Date -Date "2015-07-15 09:39:29Z";
+	$now = Get-Date -Date "2015-08-14 09:39:29Z";
+	$jobs = Get-AzureRMBackupJob -Vault $vault -From $OneMonthBack -To $now
 	Assert-NotNull $jobs 'Jobs list should not be null'
 	foreach($job in $jobs)
 	{
@@ -41,19 +43,13 @@ function Test-GetAzureRMBackupJob
 
 function Test-StopAzureRMBackupJob
 {
-	$OneMonthBack = Get-Date;
-	$OneMonthBack = $OneMonthBack.AddDays(-30);
-
-    $azureBackUpItem = New-Object Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupItem
-	$azureBackUpItem.ResourceGroupName = $ResourceGroupName
-	$azureBackUpItem.ResourceName = $ResourceName
-	$azureBackUpItem.Location = $Location
-	$azureBackUpItem.ContainerUniqueName = $ContainerName
-	$azureBackUpItem.ContainerType = $ContainerType
-	$azureBackUpItem.DataSourceId = $DataSourceId
-	$azureBackUpItem.Type = $DataSourceType
-
-	$job = Backup-AzureBackupItem -Item $azureBackUpItem
+    $AzureRMBackupItem = New-Object Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem
+	$AzureRMBackupItem.ResourceGroupName = $ResourceGroupName
+	$AzureRMBackupItem.ResourceName = $ResourceName
+	$AzureRMBackupItem.Location = $Location
+	$AzureRMBackupItem.ContainerUniqueName = $ContainerName
+	$AzureRMBackupItem.ItemName = $ItemName
+	$job = Backup-AzureRMBackupItem -Item $AzureRMBackupItem
 
 	Stop-AzureRMBackupJob -Job $job;
 	Wait-AzureRMBackupJob -Job $job;
