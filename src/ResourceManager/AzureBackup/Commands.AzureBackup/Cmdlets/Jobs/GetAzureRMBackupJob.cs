@@ -90,7 +90,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     From = AzureBackupJobHelper.MinimumAllowedDate;
                 }
 
-                if (To.HasValue && To.Value <= From.Value)
+                if (To.HasValue && To.Value > From.Value)
+                {
+                    // everything is good. don't do anything
+                }
+                else if (To.HasValue && To.Value <= From.Value)
                 {
                     throw new Exception("From should be lesser than To.");
                 }

@@ -13,10 +13,10 @@
 # ----------------------------------------------------------------------------------
 
 $ResourceGroupName = "backuprg"
-$ResourceName = "backuprn1"
+$ResourceName = "backuprn"
 $ContainerName = "DPMDRSCALEINT1.DPMDOM02.SELFHOST.CORP.MICROSOFT.COM"
 $ContainerType = "Windows"
-$ContainerId = "10034"
+$ContainerId = "213698"
 $ContainerStatus = "Registered"
 
 function Test-AzureBackupMarsContainerScenario
@@ -67,7 +67,7 @@ function Test-RegisterAzureBackupContainer
 
 function Test-UnregisterAzureBackupContainer 
 { 
-    $vault = Get-AzureRMBackupVault -$VaultResourceRGName mkheranirg -Name $VaultResourceName
+    $vault = Get-AzureRMBackupVault -Name $VaultResourceName
     $container = Get-AzureRMBackupContainer -Name $IaasVMManagedResourceName -Type AzureVM -ManagedResourceGroupName $IaasVMManagedResourceGroupName -Vault $vault
     $jobId = Unregister-AzureRMBackupContainer -Container $container 
      

@@ -13,7 +13,7 @@
 # ----------------------------------------------------------------------------------
 
 $ResourceGroupName = "backuprg"
-$ResourceName = "backuprn1"
+$ResourceName = "backuprn"
 $Location = "southeastasia"
 $CertTargetLocation = (Get-Item -Path ".\" -Verbose).FullName;
 
