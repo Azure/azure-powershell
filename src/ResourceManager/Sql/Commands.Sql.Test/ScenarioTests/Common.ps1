@@ -38,8 +38,10 @@ function Get-SqlDataMaskingTestEnvironmentParameters ($testSuffix)
 			  pwd = "testp@ssMakingIt1007Longer";
 			  table1="table1";
 			  column1 = "column1";
+			  columnInt = "columnInt";
 			  table2="table2";
-			  column2 = "column2"
+			  column2 = "column2";
+			  columnFloat = "columnFloat"
 			  }
 }
 
@@ -94,16 +96,17 @@ function Create-DataMaskingTestEnvironment ($testSuffix)
 		$connection.Open()
 		$table1 = $params.table1
 		$column1 = $params.column1
-		$query = "CREATE TABLE $table1 ($column1 NVARCHAR(20)NOT NULL);"
-		$command = $connection.CreateCommand()
-		$command.CommandText = $query
-		$command.ExecuteReader()
+		$columnInt = $params.columnInt
+
 		$table2 = $params.table2
 		$column2 = $params.column2
-		$query = "CREATE TABLE $table2 ($column2 NVARCHAR(20)NOT NULL);"
+		$columnFloat = $params.columnFloat
+
+		$query = "CREATE TABLE $table1 ($column1 NVARCHAR(20)NOT NULL, $columnInt INT);CREATE TABLE $table2 ($column2 NVARCHAR(20)NOT NULL, $columnFloat DECIMAL(6,3));"
 		$command = $connection.CreateCommand()
 		$command.CommandText = $query
 		$command.ExecuteReader()
+		
 	}
 	catch
 	{

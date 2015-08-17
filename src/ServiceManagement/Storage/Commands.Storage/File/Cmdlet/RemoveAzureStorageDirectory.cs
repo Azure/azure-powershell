@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Globalization;
-using System.Management.Automation;
-using Microsoft.WindowsAzure.Storage.File;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
+    using System.Globalization;
+    using System.Management.Automation;
+    using Microsoft.WindowsAzure.Storage.File;
+
     [Cmdlet(
         VerbsCommon.Remove,
         Constants.FileDirectoryCmdletName,
@@ -101,7 +101,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             {
                 if (this.ShouldProcess(directoryToBeRemoved.GetFullPath()))
                 {
-                    await this.Channel.DeleteDirectoryAsync(directoryToBeRemoved, this.AccessCondition, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken);
+                    await this.Channel.DeleteDirectoryAsync(directoryToBeRemoved, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken);
                 }
 
                 if (this.PassThru)

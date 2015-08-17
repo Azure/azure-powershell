@@ -102,6 +102,34 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         [Parameter(HelpMessage = "By default Publish-AzureVMDscConfiguration will not overwrite any existing blobs")]
         public SwitchParameter Force { get; set; }
 
+        /// <summary>
+        /// Excludes DSC resource dependencies from the configuration archive
+        /// </summary>
+        [Parameter(HelpMessage = "Excludes DSC resource dependencies from the configuration archive")]
+        public SwitchParameter SkipDependencyDetection { get; set; }
+
+        /// <summary>
+        ///Path to a .psd1 file that specifies the data for the Configuration. This 
+        /// file must contain a hashtable with the items described in 
+        /// http://technet.microsoft.com/en-us/library/dn249925.aspx.
+        /// </summary>
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Path to a .psd1 file that specifies the data for the Configuration. This is added to the configuration " +
+                          "archive and then passed to the configuration function. It gets overwritten by the configuration data path " +
+                          "provided through the Set-AzureVMDscExtension cmdlet")]
+        [ValidateNotNullOrEmpty]
+        public string ConfigurationDataPath { get; set; }
+
+        /// <summary>
+        /// Path to a file or a directory to include in  the configuration archive 
+        /// </summary>
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Path to a file or a directory to include in  the configuration archive. It gets downloaded to the " +
+                          "VM along with the configuration")]
+        [ValidateNotNullOrEmpty]
+        public String[] AdditionalPath { get; set; }
 
         //Private Variables
 
@@ -123,6 +151,20 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 
                 ValidateConfigurationPath(ConfigurationPath, ParameterSetName);
 
+                if (ConfigurationDataPath != null)
+                {
+                    ConfigurationDataPath = GetUnresolvedProviderPathFromPSPath(ConfigurationDataPath);
+                    ValidateConfigurationDataPath(ConfigurationDataPath);
+                }
+
+                if (AdditionalPath != null && AdditionalPath.Length > 0)
+                {
+                    for (var count = 0; count < AdditionalPath.Length; count++)
+                    {
+                        AdditionalPath[count] = GetUnresolvedProviderPathFromPSPath(AdditionalPath[count]);
+                    }
+                }
+
                 switch (ParameterSetName)
                 {
                     case CreateArchiveParameterSetName:
@@ -143,8 +185,16 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                 }
 
                 PublishConfiguration(
-                   ConfigurationPath, OutputArchivePath, Force.IsPresent, _storageCredentials, StorageEndpointSuffix, ContainerName, ParameterSetName
-                );
+                    ConfigurationPath,
+                    ConfigurationDataPath,
+                    AdditionalPath,
+                    OutputArchivePath,
+                    StorageEndpointSuffix,
+                    ContainerName,
+                    ParameterSetName,
+                    Force.IsPresent,
+                    SkipDependencyDetection.IsPresent,
+                    _storageCredentials);
             }
             finally
             {

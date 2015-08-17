@@ -43,6 +43,10 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
 
         protected const string collectionName = "test1";
 
+        protected const string vmName = "testVm";
+
+        protected const string loggedInUserUpn = "test@somedomain.com";
+
         protected const string templateName = "Fake_Windows.vhd";
 
         protected const string billingPlan = "Standard";

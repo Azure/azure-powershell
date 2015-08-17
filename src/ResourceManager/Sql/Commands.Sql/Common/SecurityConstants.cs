@@ -52,9 +52,6 @@ namespace Microsoft.Azure.Commands.Sql.Common
             {TransactionManagement_Failure, AuditEventType.TransactionManagement_Failure}
         };
         
-        //id to locate a server's security policy
-        public const string ServerPolicyId = "c3d905bb-e460-48bb-884d-75fac8f63e11";
-
         public const string Primary = "Primary";
         public const string Secondary = "Secondary";
 
@@ -103,8 +100,6 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// </summary>
         public class DataMaskingEndpoint
         {
-            public const string Standard = "Relaxed";
-            public const string Extended = "Restricted";
             public const string Enabled = "Enabled";
             public const string Disabled = "Disabled";
 

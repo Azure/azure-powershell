@@ -96,6 +96,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             if (StorageAccountName != null)
             {
                 model.StorageAccountName = StorageAccountName;
+                ModelAdapter.ClearStorageDetailsCache();
             }
             if (!string.IsNullOrEmpty(StorageKeyType)) // the user enter a key type - we use it (and running over the previously defined key type)
             {

@@ -39,7 +39,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         [Parameter(
             Position = 2,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The extension handler name. This is defaulted to 'Microsoft.Powershell.DSC'")]
+            HelpMessage = "Name of the ARM resource that represents the extension. The Set-AzureVMDscExtension cmdlet sets this name to  " +
+            "'Microsoft.Powershell.DSC', which is the same value used by Get-AzureVMDscExtension. Specify this parameter only if you changed " +
+            "the default name in the Set cmdlet or used a different resource name in an ARM template.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -49,7 +51,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 
             if (String.IsNullOrEmpty(Name))
             {
-                Name = DscExtensionCmdletConstants.ExtensionPublishedName + "." + DscExtensionCmdletConstants.ExtensionPublishedName;
+                Name = DscExtensionCmdletConstants.ExtensionPublishedNamespace + "." + DscExtensionCmdletConstants.ExtensionPublishedName;
             }
 
             if (ShouldProcess(string.Format(CultureInfo.CurrentUICulture, Properties.Resources.DscExtensionRemovalConfirmation, Name), Properties.Resources.DscExtensionRemovalCaption))

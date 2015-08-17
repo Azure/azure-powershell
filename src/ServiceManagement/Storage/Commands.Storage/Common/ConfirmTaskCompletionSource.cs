@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Threading.Tasks;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
+    using System.Threading.Tasks;
+
     /// <summary>
     /// Async prompt confirm task completion source
     /// </summary>

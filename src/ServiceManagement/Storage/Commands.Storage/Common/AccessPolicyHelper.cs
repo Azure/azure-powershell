@@ -15,17 +15,13 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
     using System;
-    using System.Collections;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Management.Automation;
-    using System.Reflection;
-    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
-    using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
+    using Microsoft.WindowsAzure.Storage.File;
     using Microsoft.WindowsAzure.Storage.Queue;
-    using Microsoft.WindowsAzure.Storage.Queue.Protocol;
     using Microsoft.WindowsAzure.Storage.Table;
 
     internal class AccessPolicyHelper
@@ -41,6 +37,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         internal static void SetupAccessPolicy<T>(T policy, DateTime? startTime, DateTime? expiryTime, string permission, bool noStartTime = false, bool noExpiryTime = false) 
         {
             if (!(typeof(T) == typeof(SharedAccessTablePolicy) ||
+                typeof(T) == typeof(SharedAccessFilePolicy) ||
                 typeof(T) == typeof(SharedAccessBlobPolicy) ||
                 (typeof(T) == typeof(SharedAccessQueuePolicy))))
             {
@@ -112,6 +109,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 SetupAccessPolicyPermission((SharedAccessTablePolicy)(Object)policy, permission);
             }
+            else if (typeof(T) == typeof(SharedAccessFilePolicy))
+            {
+                SetupAccessPolicyPermission((SharedAccessFilePolicy)(Object)policy, permission);
+            }
             else if (typeof(T) == typeof(SharedAccessBlobPolicy))
             {
                 SetupAccessPolicyPermission((SharedAccessBlobPolicy)(Object)policy, permission);
@@ -165,6 +166,43 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
         }
 
+        /// <summary>
+        /// Set up shared access policy permission for SharedAccessFilePolicy
+        /// </summary>
+        /// <param name="policy">SharedAccessFilePolicy object</param>
+        /// <param name="permission">Permission</param>
+        internal static void SetupAccessPolicyPermission(SharedAccessFilePolicy policy, string permission)
+        {
+            //skip set the permission if passed-in value is null
+            if (permission == null) return;
+
+            policy.Permissions = SharedAccessFilePermissions.None;
+
+            //set permission as none if passed-in value is empty
+            if (string.IsNullOrEmpty(permission)) return;
+
+            permission = permission.ToLower();
+            foreach (char op in permission)
+            {
+                switch (op)
+                {
+                    case StorageNouns.Permission.Read:
+                        policy.Permissions |= SharedAccessFilePermissions.Read;
+                        break;
+                    case StorageNouns.Permission.Write:
+                        policy.Permissions |= SharedAccessFilePermissions.Write;
+                        break;
+                    case StorageNouns.Permission.Delete:
+                        policy.Permissions |= SharedAccessFilePermissions.Delete;
+                        break;
+                    case StorageNouns.Permission.List:
+                        policy.Permissions |= SharedAccessFilePermissions.List;
+                        break;
+                    default:
+                        throw new ArgumentException(string.Format(CultureInfo.CurrentCulture, Resources.InvalidAccessPermission, op));
+                }
+            }
+        }
 
         /// <summary>
         /// Set up shared access policy permission for SharedAccessBlobPolicy
@@ -246,7 +284,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         {
             if (!(typeof(T) == typeof(SharedAccessTablePolicy) ||
                typeof(T) == typeof(SharedAccessBlobPolicy) ||
-               (typeof(T) == typeof(SharedAccessQueuePolicy))))
+               (typeof(T) == typeof(SharedAccessQueuePolicy)) ||
+               (typeof(T) == typeof(SharedAccessFilePolicy))))
             {
                 throw new ArgumentException(Resources.InvalidAccessPolicyType);
             }
