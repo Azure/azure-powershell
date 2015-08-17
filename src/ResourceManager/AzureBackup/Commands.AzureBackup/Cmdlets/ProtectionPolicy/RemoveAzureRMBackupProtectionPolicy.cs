@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 }
                 else
                 {
-                    var exception = new ArgumentException(string.Format("ProtectionPolicy with name {0} does not exist.", policyInfo.Name));
+                    var exception = new ArgumentException(string.Format("Protection Policy {0} not found.", policyInfo.Name));
                     throw exception;                    
                 }
             });

@@ -77,8 +77,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 ProtectionPolicyHelpers.ValidateRetentionPolicy(RetentionPolicy, backupSchedule);
                 
-                AzureRMBackupProtectionPolicy protectionPolicy = new AzureRMBackupProtectionPolicy();
-
                 var addCSMProtectionPolicyRequest = new CSMAddProtectionPolicyRequest();
                 addCSMProtectionPolicyRequest.PolicyName = this.Name;
                 addCSMProtectionPolicyRequest.Properties = new CSMAddProtectionPolicyRequestProperties();
