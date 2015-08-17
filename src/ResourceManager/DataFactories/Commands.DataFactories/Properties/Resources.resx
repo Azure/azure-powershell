@@ -225,22 +225,22 @@ Are you sure you want to continue?</value>
   <data name="ResourceGroupNameCannotBeEmpty" xml:space="preserve">
     <value>Resource group name cannot be null.</value>
   </data>
-  <data name="TableConfirmationMessage" xml:space="preserve">
-    <value>Are you sure you want to remove table '{0}' in data factory '{1}'?</value>
+  <data name="DatasetConfirmationMessage" xml:space="preserve">
+    <value>Are you sure you want to remove dataset '{0}' in data factory '{1}'?</value>
   </data>
-  <data name="TableCreating" xml:space="preserve">
-    <value>Creating table '{0}' in data factory '{1}'.</value>
+  <data name="DatasetCreating" xml:space="preserve">
+    <value>Creating dataset '{0}' in data factory '{1}'.</value>
   </data>
-  <data name="TableExists" xml:space="preserve">
-    <value>A table with the name {0} in the data factory {1} already exists. 
+  <data name="DatasetExists" xml:space="preserve">
+    <value>A dataset with the name {0} in the data factory {1} already exists. 
 Continuing execution will overwrite the exisiting one. 
 Are you sure you want to continue?</value>
   </data>
-  <data name="TableNotFound" xml:space="preserve">
-    <value>Table '{0}' does not exist in data factory '{1}'.</value>
+  <data name="DatasetNotFound" xml:space="preserve">
+    <value>Dataset '{0}' does not exist in data factory '{1}'.</value>
   </data>
-  <data name="TableRemoving" xml:space="preserve">
-    <value>Removing table '{0}' in data factory '{1}'.</value>
+  <data name="DatasetRemoving" xml:space="preserve">
+    <value>Removing dataset '{0}' in data factory '{1}'.</value>
   </data>
   <data name="NoDataSliceFound" xml:space="preserve">
     <value>No Slices were found in the time range specified. </value>

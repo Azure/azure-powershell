@@ -68,5 +68,29 @@ namespace Microsoft.Azure.Commands.Test.Profile
         {
             ProfileTestController.NewARMInstance.RunPSTestWithToken((context, token) => string.Format("Test-NewAzureProfileInARMMode {0} {1} {2}", token, context.Account.Id, context.Subscription.Id));
         }
-    }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateEmptyProfile()
+        {
+            ProfileTestController.NewARMInstance.RunPsTest("Test-NewEmptyProfile");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateEmptyProfileWIthCustomEnvironment()
+        {
+            ProfileTestController.NewARMInstance.RunPsTest("Test-NewEmptyProfileWithEnvironment");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUsePipelineWithEnvironmentCmdlets()
+        {
+            ProfileTestController.NewARMInstance.RunPsTest("Test-EnvironmentPipeline");
+        }
+        
+}
 }

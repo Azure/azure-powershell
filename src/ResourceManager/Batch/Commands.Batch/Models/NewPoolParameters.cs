@@ -21,79 +21,84 @@ namespace Microsoft.Azure.Commands.Batch.Models
 {
     public class NewPoolParameters : BatchClientParametersBase
     {
-        public NewPoolParameters(BatchAccountContext context, string poolName, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+        public NewPoolParameters(BatchAccountContext context, string poolId, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
             : base(context, additionalBehaviors)
         {
-            if (string.IsNullOrWhiteSpace(poolName))
+            if (string.IsNullOrWhiteSpace(poolId))
             {
-                throw new ArgumentNullException("poolName");
+                throw new ArgumentNullException("poolId");
             }
 
-            this.PoolName = poolName;
+            this.PoolId = poolId;
         }
 
         /// <summary>
-        /// The name of the Pool to create.
+        /// The id of the pool to create.
         /// </summary>
-        public string PoolName { get; private set; }
+        public string PoolId { get; private set; }
 
         /// <summary>
-        /// The size of the VMs in the Pool.
+        /// The display name of the pool to create.
         /// </summary>
-        public string VMSize { get; set; }
+        public string DisplayName { get; set; }
 
         /// <summary>
-        /// The OS family of the VMs in the Pool.
+        /// The size of the virtual machines in the pool.
+        /// </summary>
+        public string VirtualMachineSize { get; set; }
+
+        /// <summary>
+        /// The OS family of the compute nodes in the pool.
         /// </summary>
         public string OSFamily { get; set; }
 
         /// <summary>
-        /// The target OS version of the VMs in the Pool.
+        /// The target OS version of the compute nodes in the pool.
         /// </summary>
         public string TargetOSVersion { get; set; }
 
         /// <summary>
-        /// The timeout for allocating VMs to the Pool.
+        /// The timeout for allocating compute nodes to the pool.
         /// </summary>
         public TimeSpan? ResizeTimeout { get; set; }
 
         /// <summary>
-        /// The target number of VMs to allocate to the Pool.
+        /// The target number of compute nodes to allocate to the pool.
         /// </summary>
         public int? TargetDedicated { get; set; }
 
         /// <summary>
-        /// The AutoScale formula to use with the Pool.
+        /// The AutoScale formula to use with the pool.
         /// </summary>
         public string AutoScaleFormula { get; set; }
 
         /// <summary>
-        /// The maximum number of Tasks that can run on a VM.
+        /// The maximum number of tasks that can run on a compute node.
         /// </summary>
-        public int? MaxTasksPerVM { get; set; }
+        public int? MaxTasksPerComputeNode { get; set; }
 
         /// <summary>
-        /// The scheduling policy.
+        /// The task scheduling policy.
         /// </summary>
-        public PSSchedulingPolicy SchedulingPolicy { get; set; }
+        public PSTaskSchedulingPolicy TaskSchedulingPolicy { get; set; }
 
         /// <summary>
-        /// Metadata to add to the new Pool.
+        /// Metadata to add to the new pool.
         /// </summary>
         public IDictionary Metadata { get; set; }
 
         /// <summary>
-        /// Whether the VMs in the Pool need to communicate with each other.
+        /// Specifies whether the pool permits direct communication between compute nodes. 
         /// </summary>
-        public bool Communication { get; set; }
+        public bool InterComputeNodeCommunicationEnabled { get; set; }
 
         /// <summary>
-        /// The Start Task the VMs in the Pool will run.
+        /// The start task the compute nodes in the pool will run.
         /// </summary>
         public PSStartTask StartTask { get; set; }
 
         /// <summary>
-        /// Certificate References for the Pool.
+        /// Certificate references for the pool.
         /// </summary>
         public PSCertificateReference[] CertificateReferences { get; set; }
     }

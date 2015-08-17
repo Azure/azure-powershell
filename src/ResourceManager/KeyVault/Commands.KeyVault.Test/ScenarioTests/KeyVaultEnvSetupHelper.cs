@@ -86,8 +86,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
         {
             if (HttpMockServer.Mode == HttpRecorderMode.Record)
             {
-                HttpMockServer.Variables["TenantId"] = environment.AuthorizationContext.TenatId;
-                return environment.AuthorizationContext.TenatId;
+                HttpMockServer.Variables["TenantId"] = environment.AuthorizationContext.TenantId;
+                return environment.AuthorizationContext.TenantId;
             }
             else
             {

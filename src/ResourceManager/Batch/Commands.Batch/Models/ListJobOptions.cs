@@ -17,24 +17,34 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class ListJobOptions : WorkItemOperationParameters
+    public class ListJobOptions : BatchClientParametersBase
     {
-        public ListJobOptions(BatchAccountContext context, string workItemName, PSCloudWorkItem workItem, IEnumerable<BatchClientBehavior> additionalBehaviors = null) 
-            : base(context, workItemName, workItem, additionalBehaviors)
+        public ListJobOptions(BatchAccountContext context, IEnumerable<BatchClientBehavior> additionalBehaviors = null) 
+            : base(context, additionalBehaviors)
         { }
 
         /// <summary>
-        /// If specified, the single Job with this name will be returned
+        /// If specified, the single job with this id will be returned.
         /// </summary>
-        public string JobName { get; set; }
+        public string JobId { get; set; }
 
         /// <summary>
-        /// The OData filter to use when querying for Jobs
+        /// If specified, the jobs under this job schedule will be returned.
+        /// </summary>
+        public string JobScheduleId { get; set; }
+
+        /// <summary>
+        /// If specified, the jobs under this job schedule will be returned.
+        /// </summary>
+        public PSCloudJobSchedule JobSchedule { get; set; }
+
+        /// <summary>
+        /// The OData filter to use when querying for jobs.
         /// </summary>
         public string Filter { get; set; }
 
         /// <summary>
-        /// The maximum number of Jobs to return
+        /// The maximum number of jobs to return.
         /// </summary>
         public int MaxCount { get; set; }
     }

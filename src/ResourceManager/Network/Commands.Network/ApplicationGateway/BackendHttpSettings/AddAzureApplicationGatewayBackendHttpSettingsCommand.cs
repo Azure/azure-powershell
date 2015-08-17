@@ -41,16 +41,7 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("Backend http settings with the specified name already exists");
             }
 
-            backendHttpSettings = new PSApplicationGatewayBackendHttpSettings();
-            backendHttpSettings.Name = this.Name;
-            backendHttpSettings.Port = this.Port;
-            backendHttpSettings.Protocol = this.Protocol;
-            backendHttpSettings.CookieBasedAffinity = this.CookieBasedAffinity;
-            backendHttpSettings.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
-                                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
-                                    Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewaybackendHttpSettingsName,
-                                    this.Name);
-
+            backendHttpSettings = base.NewObject();            
             this.ApplicationGateway.BackendHttpSettingsCollection.Add(backendHttpSettings);
 
             WriteObject(this.ApplicationGateway);

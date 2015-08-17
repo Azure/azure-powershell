@@ -17,22 +17,22 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Storage.Common;
-using Microsoft.WindowsAzure.Storage.DataMovement.TransferJobs;
+using Microsoft.WindowsAzure.Storage.DataMovement;
 
 namespace Microsoft.WindowsAzure.Management.Storage.Test.Common
 {
     internal sealed class MockTransferJobRunner : ITransferJobRunner
     {
-        private Func<TransferJobBase, Task> runnerValidation;
+        private Func<TransferJob, Task> runnerValidation;
 
         private AssertFailedException assertException;
 
-        public MockTransferJobRunner(Func<TransferJobBase, Task> runnerValidation)
+        public MockTransferJobRunner(Func<TransferJob, Task> runnerValidation)
         {
             this.runnerValidation = runnerValidation;
         }
 
-        public Task RunTransferJob(TransferJobBase job, Action<double, double> progressReport, CancellationToken cancellationToken)
+        public Task RunTransferJob(TransferJob job, Action<double, double> progressReport, CancellationToken cancellationToken)
         {
             try
             {

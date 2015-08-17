@@ -21,37 +21,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
 {
     public class TaskOperationParameters : BatchClientParametersBase
     {
-        public TaskOperationParameters(BatchAccountContext context, string workItemName, string jobName, string taskName, PSCloudTask task,
+        public TaskOperationParameters(BatchAccountContext context, string jobId, string taskId, PSCloudTask task,
             IEnumerable<BatchClientBehavior> additionalBehaviors = null) : base(context, additionalBehaviors)
         {
-            if ((string.IsNullOrWhiteSpace(workItemName) || string.IsNullOrWhiteSpace(jobName) || string.IsNullOrWhiteSpace(taskName)) && task == null)
+            if ((string.IsNullOrWhiteSpace(jobId) || string.IsNullOrWhiteSpace(taskId)) && task == null)
             {
                 throw new ArgumentNullException(Resources.NoTask);
             }
 
-            this.WorkItemName = workItemName;
-            this.JobName = jobName;
-            this.TaskName = taskName;
+            this.JobId = jobId;
+            this.TaskId = taskId;
             this.Task = task;
         }
 
         /// <summary>
-        /// The name of the workitem containing the task
+        /// The id of the job containing the task.
         /// </summary>
-        public string WorkItemName { get; private set; }
+        public string JobId { get; private set; }
 
         /// <summary>
-        /// The name of the job containing the task
+        /// The id of the task.
         /// </summary>
-        public string JobName { get; private set; }
+        public string TaskId { get; private set; }
 
         /// <summary>
-        /// The name of the task
-        /// </summary>
-        public string TaskName { get; private set; }
-
-        /// <summary>
-        /// The PSCloudTask object representing the target task
+        /// The PSCloudTask object representing the target task.
         /// </summary>
         public PSCloudTask Task { get; private set; }
     }

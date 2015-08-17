@@ -38,8 +38,10 @@ function Get-SqlDataMaskingTestEnvironmentParameters ($testSuffix)
 			  pwd = "testp@ssMakingIt1007Longer";
 			  table1="table1";
 			  column1 = "column1";
+			  columnInt = "columnInt";
 			  table2="table2";
-			  column2 = "column2"
+			  column2 = "column2";
+			  columnFloat = "columnFloat"
 			  }
 }
 
@@ -81,28 +83,32 @@ Creates the test environment needed to perform the Sql data masking tests
 function Create-DataMaskingTestEnvironment ($testSuffix)
 {
 	$params = Get-SqlDataMaskingTestEnvironmentParameters $testSuffix
-	New-AzureResourceGroup -Name $params.rgname -Location "West US" -TemplateFile ".\Templates\sql-ddm-test-env-setup.json" -serverName $params.serverName -databaseName $params.databaseName -EnvLocation "West US" -administratorLogin $params.userName -Force
+	New-AzureResourceGroup -Name $params.rgname -Location "Australia East" -TemplateFile ".\Templates\sql-ddm-test-env-setup.json" -serverName $params.serverName -databaseName $params.databaseName -EnvLocation "Australia East" -administratorLogin $params.userName -Force
 	$fullServerName = $params.serverName + ".database.windows.net"
+	
 	$uid = $params.userName
 	$pwd = $params.pwd
+		
 	$databaseName=$params.databaseName
 	$connectionString = "Server=$fullServerName;uid=$uid; pwd=$pwd;Database=$databaseName;Integrated Security=False;"
+
 	$connection = New-Object System.Data.SqlClient.SqlConnection
 	$connection.ConnectionString = $connectionString
 	try
 	{
 		$connection.Open()
+		
 		$table1 = $params.table1
 		$column1 = $params.column1
-		$query = "CREATE TABLE $table1 ($column1 NVARCHAR(20)NOT NULL);"
-		$command = $connection.CreateCommand()
-		$command.CommandText = $query
-		$command.ExecuteReader()
+		$columnInt = $params.columnInt
+
 		$table2 = $params.table2
 		$column2 = $params.column2
-		$query = "CREATE TABLE $table2 ($column2 NVARCHAR(20)NOT NULL);"
+		$columnFloat = $params.columnFloat
+
+		$query = "CREATE TABLE $table1 ($column1 NVARCHAR(20)NOT NULL, $columnInt INT);CREATE TABLE $table2 ($column2 NVARCHAR(20)NOT NULL, $columnFloat DECIMAL(6,3));CREATE USER $uid FOR LOGIN $uid;"
 		$command = $connection.CreateCommand()
-		$command.CommandText = $query
+		$command.CommandText = $query		
 		$command.ExecuteReader()
 	}
 	catch

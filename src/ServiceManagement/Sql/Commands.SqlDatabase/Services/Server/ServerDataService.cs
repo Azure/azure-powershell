@@ -41,7 +41,12 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
         protected ServerDataServiceContext(Uri serviceUri)
             : base(serviceUri)
         {
+
+#pragma warning disable 618
+            // SendingRequest has been deprecated in favor of SendingRequest2, but SendingRequest2 does not
+            // currently expose functionality we depend on, such as the ability to set UserAgent.
             this.SendingRequest += new EventHandler<SendingRequestEventArgs>(this.BeforeSendingRequest);
+#pragma warning restore 618
 
             // Set the default timeout for the context.
             this.Timeout = DefaultDataServiceContextTimeoutInSeconds;
