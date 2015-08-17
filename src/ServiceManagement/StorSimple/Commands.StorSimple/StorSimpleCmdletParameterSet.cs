@@ -23,5 +23,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         public const string IdentifyByParentObject = "IdentifyByParentObject";
         public const string IdentifyById2 = "IdentifyById2";
         public const string IdentifyByObject2 = "IdentifyByObject2";
+        public const string IdentifyByDeviceName = "IdentifyByDeviceName";
+        public const string IdentifyByType = "IdentifyByType";
+        public const string IdentifyByStatus = "IdentifyByStatus";
+        public const string UseExistingStorageAccount = "UseExistingStorageAccount";
+        public const string CreateNewStorageAccount = "CreateNewStorageAccount";
+        public const string MigrateAllContainer = "MigrateAllContainer";
+        public const string MigrateSpecificContainer = "MigrateSpecificContainer";
     }
 }

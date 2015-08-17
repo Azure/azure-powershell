@@ -13,10 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections;
-using Microsoft.Azure.Commands.Automation.Common;
+using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
+using Microsoft.Azure.Commands.Automation.Common;
 using Job = Microsoft.Azure.Commands.Automation.Model.Job;
+
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
@@ -42,6 +44,13 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public IDictionary Parameters { get; set; }
 
         /// <summary>
+        /// Gets or sets the optional hybrid agent friendly name upon which the runbook should be executed.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Optional name of the hybrid agent which should execute the runbook")]
+        [Alias("HybridWorker")]
+        public string RunOn { get; set; }
+
+        /// <summary>
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
@@ -49,7 +58,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             Job job = null;
 
-            job = this.AutomationClient.StartRunbook(this.AutomationAccountName, this.Name, this.Parameters);
+            job = this.AutomationClient.StartRunbook(this.AutomationAccountName, this.Name, this.Parameters, this.RunOn);
 
             this.WriteObject(job);
         }

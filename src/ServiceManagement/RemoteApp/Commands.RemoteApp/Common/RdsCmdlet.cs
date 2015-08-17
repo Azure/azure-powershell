@@ -13,18 +13,20 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
-using Microsoft.Azure.Commands.RemoteApp;
+using Microsoft.WindowsAzure.Commands.RemoteApp;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Management.RemoteApp.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Management.RemoteApp;
+using Microsoft.WindowsAzure.Management.RemoteApp.Models;
 using System;
 using System.Collections.ObjectModel;
 using System.Management.Automation;
 using System.Security.Principal;
+using Microsoft.Azure;
 
 
-namespace Microsoft.Azure.Management.RemoteApp.Models
+namespace Microsoft.WindowsAzure.Management.RemoteApp.Models
 {
 
     public class TrackingResult
@@ -38,7 +40,7 @@ namespace Microsoft.Azure.Management.RemoteApp.Models
     }
 }
 
-namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
+namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
     public class EnabledFeatures
     {

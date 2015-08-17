@@ -14,135 +14,234 @@
 
 using System.Linq;
 using Microsoft.Azure.Batch;
-using Microsoft.Azure.Batch.Protocol.Entities;
+using Microsoft.Azure.Batch.Protocol.Models;
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Commands.Batch.Properties;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using NodeFile = Microsoft.Azure.Batch.NodeFile;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
     public partial class BatchClient
     {
         /// <summary>
-        /// Lists the Task files matching the specified filter options
+        /// Lists the node files matching the specified filter options.
         /// </summary>
-        /// <param name="options">The options to use when querying for Task files</param>
-        /// <returns>The Task files matching the specified filter options</returns>
-        public IEnumerable<PSTaskFile> ListTaskFiles(ListTaskFileOptions options)
+        /// <param name="options">The options to use when querying for node files.</param>
+        /// <returns>The node files matching the specified filter options.</returns>
+        public IEnumerable<PSNodeFile> ListNodeFiles(ListNodeFileOptions options)
         {
             if (options == null)
             {
                 throw new ArgumentNullException("options");
             }
 
-            if ((string.IsNullOrWhiteSpace(options.WorkItemName) || string.IsNullOrWhiteSpace(options.JobName) || string.IsNullOrWhiteSpace(options.TaskName)) 
-                && options.Task == null)
+            switch (options.NodeFileType)
             {
-                throw new ArgumentNullException(Resources.GBTF_NoTaskSpecified);
-            }
-
-            // Get the single Task file matching the specified name
-            if (!string.IsNullOrEmpty(options.TaskFileName))
-            {
-                WriteVerbose(string.Format(Resources.GBTF_GetByName, options.TaskFileName, options.TaskName));
-                using (IWorkItemManager wiManager = options.Context.BatchOMClient.OpenWorkItemManager())
+                case PSNodeFileType.Task:
                 {
-                    ITaskFile taskFile = wiManager.GetTaskFile(options.WorkItemName, options.JobName, options.TaskName, options.TaskFileName, options.AdditionalBehaviors);
-                    PSTaskFile psTaskFile = new PSTaskFile(taskFile);
-                    return new PSTaskFile[] { psTaskFile };
+                    return ListNodeFilesByTask(options);
+                }
+                case PSNodeFileType.ComputeNode:
+                {
+                    return ListNodeFilesByComputeNode(options);
+                }
+                default:
+                {
+                    throw new ArgumentException(Resources.NoNodeFileParent);
                 }
             }
-            // List Task files using the specified filter
+        }
+
+        // Lists the node files under a task.
+        private IEnumerable<PSNodeFile> ListNodeFilesByTask(ListNodeFileOptions options)
+        {
+            // Get the single node file matching the specified name
+            if (!string.IsNullOrEmpty(options.NodeFileName))
+            {
+                WriteVerbose(string.Format(Resources.GBTF_GetByName, options.NodeFileName, options.TaskId));
+                JobOperations jobOperations = options.Context.BatchOMClient.JobOperations;
+                NodeFile nodeFile = jobOperations.GetNodeFile(options.JobId, options.TaskId, options.NodeFileName, options.AdditionalBehaviors);
+                PSNodeFile psNodeFile = new PSNodeFile(nodeFile);
+                return new PSNodeFile[] { psNodeFile };
+            }
+            // List node files using the specified filter
             else
             {
-                string tName = options.Task == null ? options.TaskName : options.Task.Name;
+                string taskId = options.Task == null ? options.TaskId : options.Task.Id;
                 ODATADetailLevel odata = null;
+                string verboseLogString = null;
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
-                    WriteVerbose(string.Format(Resources.GBTF_GetByOData, tName));
+                    verboseLogString = string.Format(Resources.GBTF_GetByOData, taskId);
                     odata = new ODATADetailLevel(filterClause: options.Filter);
                 }
                 else
                 {
-                    WriteVerbose(string.Format(Resources.GBTF_NoFilter, tName));
+                    verboseLogString = string.Format(Resources.GBTF_NoFilter, taskId);
                 }
+                WriteVerbose(verboseLogString);
 
-                IEnumerableAsyncExtended<ITaskFile> taskFiles = null;
+                IPagedEnumerable<NodeFile> nodeFiles = null;
                 if (options.Task != null)
                 {
-                    taskFiles = options.Task.omObject.ListTaskFiles(options.Recursive, odata, options.AdditionalBehaviors);
+                    nodeFiles = options.Task.omObject.ListNodeFiles(options.Recursive, odata, options.AdditionalBehaviors);
                 }
                 else
                 {
-                    using (IWorkItemManager wiManager = options.Context.BatchOMClient.OpenWorkItemManager())
-                    {
-                        taskFiles = wiManager.ListTaskFiles(options.WorkItemName, options.JobName, options.TaskName, options.Recursive, odata, options.AdditionalBehaviors);
-                    }
+                    JobOperations jobOperations = options.Context.BatchOMClient.JobOperations;
+                    nodeFiles = jobOperations.ListNodeFiles(options.JobId, options.TaskId, options.Recursive, odata, options.AdditionalBehaviors);
                 }
-                Func<ITaskFile, PSTaskFile> mappingFunction = f => { return new PSTaskFile(f); };
-                return PSAsyncEnumerable<PSTaskFile, ITaskFile>.CreateWithMaxCount(
-                    taskFiles, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
+                Func<NodeFile, PSNodeFile> mappingFunction = f => { return new PSNodeFile(f); };
+                return PSPagedEnumerable<PSNodeFile, NodeFile>.CreateWithMaxCount(
+                    nodeFiles, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
+            }
+        }
+
+        // Lists the node files under a compute node.
+        private IEnumerable<PSNodeFile> ListNodeFilesByComputeNode(ListNodeFileOptions options)
+        {
+            // Get the single node file matching the specified name
+            if (!string.IsNullOrEmpty(options.NodeFileName))
+            {
+                WriteVerbose(string.Format(Resources.GBCNF_GetByName, options.NodeFileName, options.ComputeNodeId));
+                PoolOperations poolOperations = options.Context.BatchOMClient.PoolOperations;
+                NodeFile nodeFile = poolOperations.GetNodeFile(options.PoolId, options.ComputeNodeId, options.NodeFileName, options.AdditionalBehaviors);
+                PSNodeFile psNodeFile = new PSNodeFile(nodeFile);
+                return new PSNodeFile[] { psNodeFile };
+            }
+            // List node files using the specified filter
+            else
+            {
+                string computeNodeId = options.ComputeNode == null ? options.ComputeNodeId : options.ComputeNode.Id;
+                ODATADetailLevel odata = null;
+                string verboseLogString = null;
+                if (!string.IsNullOrEmpty(options.Filter))
+                {
+                    verboseLogString = string.Format(Resources.GBCNF_GetByOData, computeNodeId);
+                    odata = new ODATADetailLevel(filterClause: options.Filter);
+                }
+                else
+                {
+                    verboseLogString = string.Format(Resources.GBCNF_NoFilter, computeNodeId);
+                }
+                WriteVerbose(verboseLogString);
+
+                IPagedEnumerable<NodeFile> nodeFiles = null;
+                if (options.ComputeNode != null)
+                {
+                    nodeFiles = options.ComputeNode.omObject.ListNodeFiles(options.Recursive, odata, options.AdditionalBehaviors);
+                }
+                else
+                {
+                    PoolOperations poolOperations = options.Context.BatchOMClient.PoolOperations;
+                    nodeFiles = poolOperations.ListNodeFiles(options.PoolId, options.ComputeNodeId, options.Recursive, odata, options.AdditionalBehaviors);
+                }
+                Func<NodeFile, PSNodeFile> mappingFunction = f => { return new PSNodeFile(f); };
+                return PSPagedEnumerable<PSNodeFile, NodeFile>.CreateWithMaxCount(
+                    nodeFiles, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
             }
         }
 
         /// <summary>
-        /// Downloads a Task file using the specified options.
+        /// Downloads a node file using the specified options.
         /// </summary>
-        /// <param name="options">The download options</param>
-        public void DownloadTaskFile(DownloadTaskFileOptions options)
+        /// <param name="options">The download options.</param>
+        public void DownloadNodeFile(DownloadNodeFileOptions options)
         {
             if (options == null)
             {
                 throw new ArgumentNullException("options");
             }
 
-            if ((string.IsNullOrWhiteSpace(options.WorkItemName) || string.IsNullOrWhiteSpace(options.JobName) || string.IsNullOrWhiteSpace(options.TaskName) 
-                || string.IsNullOrWhiteSpace(options.TaskFileName)) && options.TaskFile == null)
+            NodeFile nodeFile = null;
+            switch (options.NodeFileType)
             {
-                throw new ArgumentNullException(Resources.GBTFC_NoTaskFileSpecified);
-            }
-
-            ITaskFile taskFile = null;
-            if (options.TaskFile == null)
-            {
-                using (IWorkItemManager wiManager = options.Context.BatchOMClient.OpenWorkItemManager())
+                case PSNodeFileType.Task:
                 {
-                    taskFile = wiManager.GetTaskFile(options.WorkItemName, options.JobName, options.TaskName, options.TaskFileName, options.AdditionalBehaviors);
+                    JobOperations jobOperations = options.Context.BatchOMClient.JobOperations;
+                    nodeFile = jobOperations.GetNodeFile(options.JobId, options.TaskId, options.NodeFileName, options.AdditionalBehaviors);
+                    break;
+                }
+                case PSNodeFileType.ComputeNode:
+                {
+                    PoolOperations poolOperations = options.Context.BatchOMClient.PoolOperations;
+                    nodeFile = poolOperations.GetNodeFile(options.PoolId, options.ComputeNodeId, options.NodeFileName, options.AdditionalBehaviors);
+                    break;
+                }
+                case PSNodeFileType.PSNodeFileInstance:
+                {
+                    nodeFile = options.NodeFile.omObject;
+                    break;
+                }
+                default:
+                {
+                    throw new ArgumentException(Resources.NoNodeFile);
                 }
             }
+
+            DownloadNodeFileByInstance(nodeFile, options.DestinationPath, options.Stream, options.AdditionalBehaviors);
+        }
+
+        // Downloads the file represented by an NodeFile instance to the specified path.
+        private void DownloadNodeFileByInstance(NodeFile file, string destinationPath, Stream stream, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+        {
+            if (stream != null)
+            {
+                // Don't dispose supplied Stream
+                file.CopyToStream(stream, additionalBehaviors);
+            }
             else
             {
-                taskFile = options.TaskFile.omObject;
+                WriteVerbose(string.Format(Resources.GBNFC_Downloading, file.Name, destinationPath));
+                using (FileStream fs = new FileStream(destinationPath, FileMode.Create))
+                {
+                    file.CopyToStream(fs, additionalBehaviors);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Downloads a Remote Desktop Protocol file using the specified options.
+        /// </summary>
+        /// <param name="options">The download options.</param>
+        public void DownloadRemoteDesktopProtocolFile(DownloadRemoteDesktopProtocolFileOptions options)
+        {
+            if (options == null)
+            {
+                throw new ArgumentNullException("options");
             }
 
-            string path = null;
-            // The task file object's name is a relative path that includes directories.
-            string fileName = Path.GetFileName(taskFile.Name);
-            if (string.IsNullOrWhiteSpace(options.DestinationPath))
-            {
-                // If no destination is specified, just save the file to the local directory 
-                path = fileName;
-            }
-            else
-            {
-                path = Path.Combine(options.DestinationPath, fileName);
-            }
-
-            WriteVerbose(string.Format(Resources.GBTFC_Downloading, taskFile.Name, path));
             if (options.Stream != null)
             {
-                // Used for testing.
                 // Don't dispose supplied Stream
-                taskFile.CopyToStream(options.Stream, options.AdditionalBehaviors);
+                CopyRDPStream(options.Stream, options.Context.BatchOMClient, options.PoolId, options.ComputeNodeId, options.ComputeNode, options.AdditionalBehaviors);
             }
             else
             {
-                using (FileStream fs = new FileStream(path, FileMode.Create))
+                string computeNodeId = options.ComputeNode == null ? options.ComputeNodeId : options.ComputeNode.Id;
+                WriteVerbose(string.Format(Resources.GBRDP_Downloading, computeNodeId, options.DestinationPath));
+
+                using (FileStream fs = new FileStream(options.DestinationPath, FileMode.Create))
                 {
-                    taskFile.CopyToStream(fs, options.AdditionalBehaviors);
-                }   
+                    CopyRDPStream(fs, options.Context.BatchOMClient, options.PoolId, options.ComputeNodeId, options.ComputeNode, options.AdditionalBehaviors);
+                }
+            }
+        }
+
+        private void CopyRDPStream(Stream destinationStream, Microsoft.Azure.Batch.BatchClient client, string poolId, string computeNodeId,
+            PSComputeNode computeNode, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+        {
+            if (computeNode == null)
+            {
+                PoolOperations poolOperations = client.PoolOperations;
+                poolOperations.GetRDPFile(poolId, computeNodeId, destinationStream, additionalBehaviors);
+            }
+            else
+            {
+                computeNode.omObject.GetRDPFile(destinationStream, additionalBehaviors);
             }
         }
     }

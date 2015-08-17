@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites.Services;
 
@@ -21,6 +22,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites.Services
     public class GitTests
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetGetConfigurationValue()
         {
             // Set configuration

@@ -18,11 +18,11 @@ using System.Text;
 //using System.Collections.Generic;
 using System.Management.Automation;
 //using System.Runtime.Serialization;
-using Microsoft.Azure.Commands.Network.Properties;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Properties;
 using Microsoft.WindowsAzure.Management.Network.Models;
-using PowerShellAppGwModel = Microsoft.Azure.Commands.Network.ApplicationGateway.Model;
+using PowerShellAppGwModel = Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway.Model;
 
-namespace Microsoft.Azure.Commands.Network.ApplicationGateway
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway
 {
     [Cmdlet(VerbsCommon.Set, "AzureApplicationGatewayConfig"), OutputType(typeof(ApplicationGatewayOperationResponse))]
     public class SetApplicationGatewayConfigCommand : NetworkCmdletBase

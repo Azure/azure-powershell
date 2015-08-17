@@ -14,7 +14,7 @@
 
 Configuration VisualStudio
 {
-    Import-DscResource -Module xPSDesiredStateConfiguration
+    Import-DscResource -ModuleName xPSDesiredStateConfiguration
     Node localhost {
         xPackage VS
         {

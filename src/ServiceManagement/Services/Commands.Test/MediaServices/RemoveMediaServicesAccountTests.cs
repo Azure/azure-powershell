@@ -13,6 +13,7 @@
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.MediaServices;
@@ -27,6 +28,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.MediaServices
     public class RemoveMediaServicesAccountTests : TestBase
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ProcessRemoveMediaServicesAccountTest()
         {
             // Setup

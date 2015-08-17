@@ -201,11 +201,22 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
         public string SupportedOS { get; set; }
 
         [Parameter(
+           Mandatory = false,
+           Position = 22,
+           HelpMessage = "To force the registration operation.")]
+        public string Regions { get; set; }
+
+        [Parameter(
             Mandatory = false,
-            Position = 22,
+            Position = 23,
             HelpMessage = "To force the registration operation.")]
         public SwitchParameter Force { get; set; }
 
+        [Parameter(
+           Mandatory = false,
+           Position = 24,
+           HelpMessage = "To force the registration operation.")]
+        [ValidateSet(PublicModeStr, InternalModeStr, IgnoreCase = true)]
         public string ExtensionMode { get; set; }
 
         protected override void OnProcessRecord()
@@ -225,9 +236,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
                     var upgradeCnfm = Resources.ExtensionUpgradingConfirmation;
                     var upgradeCptn = Resources.ExtensionUpgradingCaption;
 
-                    this.IsInternalExtension = string.Equals(this.ExtensionMode, PublicModeStr) ? false
-                                             : string.Equals(this.ExtensionMode, InternalModeStr) ? true
-                                             : true;
+                    this.IsInternalExtension = ! this.ExtensionMode.Equals(PublicModeStr, StringComparison.InvariantCultureIgnoreCase);
 
                     if (found && (this.Force.IsPresent || this.ShouldContinue(upgradeCnfm, upgradeCptn)))
                     {

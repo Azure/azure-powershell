@@ -13,16 +13,17 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.Commands.KeyVault.Properties;
 using System;
+using System.IO;
 using System.Management.Automation;
+using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
-namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
+namespace Microsoft.Azure.Commands.KeyVault
 {
     /// <summary>
     /// Restores the backup key into a vault 
     /// </summary>
-    [Cmdlet(VerbsData.Restore, "AzureKeyVaultKey")]
+    [Cmdlet(VerbsData.Restore, "AzureKeyVaultKey", HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(KeyBundle))]
     public class RestoreAzureKeyVaultKey : KeyVaultCmdletBase
     {
@@ -43,7 +44,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
         /// </summary>
         [Parameter(Mandatory = true,
                    Position = 1,
-                   HelpMessage = "Input file. The input file containing the backed up blob")]
+                   HelpMessage = "Input file. The input file containing the backed-up blob")]
         [ValidateNotNullOrEmpty]
         public string InputFile { get; set; }
 
@@ -51,11 +52,21 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
 
         public override void ExecuteCmdlet()
         {
-            var filePath = ResolvePath(InputFile, Resources.BackupKeyFileNotFound);
+            var filePath = ResolvePath(InputFile);
 
             var restoredKeyBundle = this.DataServiceClient.RestoreKey(VaultName, filePath);
 
             this.WriteObject(restoredKeyBundle);
+        }
+
+        private string ResolvePath(string filePath)
+        {
+            FileInfo keyFile = new FileInfo(this.GetUnresolvedProviderPathFromPSPath(filePath));
+            if (!keyFile.Exists)
+            {
+                throw new FileNotFoundException(string.Format(KeyVaultProperties.Resources.BackupKeyFileNotFound, filePath));
+            }
+            return keyFile.FullName;
         }
     }
 }

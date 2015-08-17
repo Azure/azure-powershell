@@ -23,9 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Service Key for the Azure Circuit Vnet Mapping to be removed")]
-        [ValidateGuid]
-        [ValidateNotNullOrEmpty]
-        public string ServiceKey { get; set; }
+        public Guid ServiceKey { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Virtual Network Name for the Azure Circuit Vnet Mapping to be removed")]

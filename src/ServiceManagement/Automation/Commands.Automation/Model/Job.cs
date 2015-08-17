@@ -54,11 +54,15 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.Exception = job.Properties.Exception;
             this.EndTime = job.Properties.EndTime.HasValue ? job.Properties.EndTime.Value.ToLocalTime() : (DateTimeOffset?) null;
             this.LastStatusModifiedTime = job.Properties.LastStatusModifiedTime;
+            this.HybridWorker = job.Properties.RunOn;
             this.JobParameters = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
-            foreach (var kvp in job.Properties.Parameters.Where(kvp => 0 != String.Compare(kvp.Key, Constants.JobStartedByParameterName, CultureInfo.InvariantCulture,
-                CompareOptions.IgnoreCase)))
+            foreach (var kvp in job.Properties.Parameters) 
             {
-                this.JobParameters.Add(kvp.Key, (object)PowerShellJsonConverter.Deserialize(kvp.Value));
+                if (0 != String.Compare(kvp.Key, Constants.JobStartedByParameterName, CultureInfo.InvariantCulture, CompareOptions.IgnoreCase) && 
+                    0 != String.Compare(kvp.Key, Constants.JobRunOnParameterName, CultureInfo.InvariantCulture, CompareOptions.IgnoreCase))
+                {
+                    this.JobParameters.Add(kvp.Key, (object)PowerShellJsonConverter.Deserialize(kvp.Value));
+                }
             }
         }
 
@@ -128,5 +132,10 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// Gets or sets the runbook.
         /// </summary>
         public string RunbookName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the HybridWorker.
+        /// </summary>
+        public string HybridWorker { get; set; }
     }
 }

@@ -24,6 +24,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Websites
@@ -49,6 +50,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableAzureWebsiteApplicationDiagnosticApplication()
         {
             // Setup
@@ -81,6 +83,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableAzureWebsiteApplicationDiagnosticApplicationTableLog()
         {
             // Setup
@@ -119,6 +122,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableAzureWebsiteApplicationDiagnosticApplicationTableLogUseCurrentStorageAccount()
         {
             // Setup
@@ -156,6 +160,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableAzureWebsiteApplicationDiagnosticApplicationBlobLog()
         {
             // Setup
@@ -194,6 +199,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableAzureWebsiteApplicationDiagnosticApplicationBlobLogUseCurrentStorageAccount()
         {
             // Setup
@@ -231,6 +237,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableApplicationDiagnosticOnSlot()
         {
             string slot = "staging";

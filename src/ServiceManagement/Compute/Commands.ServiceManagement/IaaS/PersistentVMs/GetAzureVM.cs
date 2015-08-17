@@ -101,14 +101,18 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
         private List<T> GetVMContextList<T>(string serviceName, NSM.DeploymentGetResponse deployment)
             where T : PVM.PersistentVMRoleContext, new()
         {
-            var vmRoles = new List<NSM.Role>(deployment.Roles.Where(
-                r => string.IsNullOrEmpty(Name)
-                  || r.RoleName.Equals(Name, StringComparison.InvariantCultureIgnoreCase)));
+            Func<NSM.Role, bool> typeMatched =
+                r => string.Equals(r.RoleType, PersistentVMRoleStr, StringComparison.OrdinalIgnoreCase);
 
-            return GetVMContextList<T>(serviceName, deployment, vmRoles);
+            Func<NSM.Role, bool> nameMatched =
+                r => string.IsNullOrEmpty(this.Name) || r.RoleName.Equals(this.Name, StringComparison.InvariantCultureIgnoreCase);
+
+            var vmRoles = new List<NSM.Role>(deployment.Roles.Where(r => typeMatched(r) && nameMatched(r)));
+
+            return CreateVMContextList<T>(serviceName, deployment, vmRoles);
         }
 
-        private List<T> GetVMContextList<T>(string serviceName, NSM.DeploymentGetResponse deployment, List<NSM.Role> vmRoles)
+        private List<T> CreateVMContextList<T>(string serviceName, NSM.DeploymentGetResponse deployment, List<NSM.Role> vmRoles)
             where T : PVM.PersistentVMRoleContext, new()
         {
             var roleContexts = new List<T>();
@@ -156,6 +160,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                                             : roleInstance.PublicIPs == null || !roleInstance.PublicIPs.Any() ? string.Empty
                                             : !string.IsNullOrEmpty(roleInstance.PublicIPs.First().Name) ? roleInstance.PublicIPs.First().Name
                                             : PersistentVMHelper.GetPublicIPName(vmRole),
+                PublicIPDomainNameLabel     = roleInstance == null ? string.Empty
+                                            : roleInstance.PublicIPs == null || !roleInstance.PublicIPs.Any() ? string.Empty
+                                            : roleInstance.PublicIPs.First().DomainNameLabel,
+                PublicIPFqdns               = roleInstance == null ? new List<string>()
+                                            : roleInstance.PublicIPs == null || !roleInstance.PublicIPs.Any() ? new List<string>()
+                                            : roleInstance.PublicIPs.First().Fqdns.ToList(),
                 InstanceStateDetails        = roleInstance == null ? string.Empty : roleInstance.InstanceStateDetails,
                 PowerState                  = roleInstance == null ? string.Empty : roleInstance.PowerState.ToString(),
                 HostName                    = roleInstance == null ? string.Empty : roleInstance.HostName,

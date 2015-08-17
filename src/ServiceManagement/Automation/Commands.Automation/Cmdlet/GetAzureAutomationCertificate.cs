@@ -48,13 +48,19 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 { 
                    this.AutomationClient.GetCertificate(this.AutomationAccountName, this.Name)
                 };
+                this.GenerateCmdletOutput(ret);
             }
             else 
             {
-                ret = this.AutomationClient.ListCertificates(this.AutomationAccountName);
-            }
+                var nextLink = string.Empty;
 
-            this.GenerateCmdletOutput(ret);
+                do
+                {
+                    ret = this.AutomationClient.ListCertificates(this.AutomationAccountName, ref nextLink);
+                    this.GenerateCmdletOutput(ret);
+
+                } while (!string.IsNullOrEmpty(nextLink));
+            }
         }
     }
 }

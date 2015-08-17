@@ -20,35 +20,30 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Get, "AzureBatchTask", DefaultParameterSetName = Constants.ODataFilterParameterSet), OutputType(typeof(PSCloudTask))]
+    [Cmdlet(VerbsCommon.Get, Constants.AzureBatchTask, DefaultParameterSetName = Constants.ODataFilterParameterSet), OutputType(typeof(PSCloudTask))]
     public class GetBatchTaskCommand : BatchObjectModelCmdletBase
     {
         private int maxCount = Constants.DefaultMaxCount;
 
-        [Parameter(Position = 0, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the WorkItem containing the Tasks to query.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the job which contains the tasks.")]
         [Parameter(Position = 0, ParameterSetName = Constants.ODataFilterParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public string WorkItemName { get; set; }
+        public string JobId { get; set; }
 
-        [Parameter(Position = 1, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the Job containing the Tasks to query.")]
-        [Parameter(Position = 1, ParameterSetName = Constants.ODataFilterParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 1, ParameterSetName = Constants.IdParameterSet)]
         [ValidateNotNullOrEmpty]
-        public string JobName { get; set; }
+        public string Id { get; set; }
 
-        [Parameter(Position = 2, ParameterSetName = Constants.NameParameterSet, HelpMessage = "The name of the Task to query.")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(Position = 0, ParameterSetName = Constants.ParentObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The Job containing the Tasks to query.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.ParentObjectParameterSet, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public PSCloudJob Job { get; set; }
 
-        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet, HelpMessage = "OData filter to use when querying for Tasks.")]
+        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet)]
         [Parameter(ParameterSetName = Constants.ParentObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Filter { get; set; }
 
-        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet, HelpMessage = "The maximum number of Tasks to return. If a value of 0 or less is specified, then no upper limit will be used.")]
+        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet)]
         [Parameter(ParameterSetName = Constants.ParentObjectParameterSet)]
         public int MaxCount
         {
@@ -58,16 +53,12 @@ namespace Microsoft.Azure.Commands.Batch
 
         public override void ExecuteCmdlet()
         {
-            ListTaskOptions options = new ListTaskOptions()
+            ListTaskOptions options = new ListTaskOptions(this.BatchContext, this.JobId,
+                this.Job, this.AdditionalBehaviors)
             {
-                Context = this.BatchContext,
-                WorkItemName = this.WorkItemName,
-                JobName = this.JobName,
-                TaskName = this.Name,
-                Job = this.Job,
+                TaskId = this.Id,
                 Filter = this.Filter,
-                MaxCount = this.MaxCount,
-                AdditionalBehaviors = this.AdditionalBehaviors
+                MaxCount = this.MaxCount
             };
 
             // The enumerator will internally query the service in chunks. Using WriteObject with the enumerate flag will enumerate

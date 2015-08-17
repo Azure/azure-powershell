@@ -41,9 +41,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
         [TestInitialize]
         public void BaseSetup()
         {
-            if (AzureSession.DataStore != null && !(AzureSession.DataStore is MockDataStore))
+            if (AzureSession.DataStore != null && !(AzureSession.DataStore is MemoryDataStore))
             {
-                AzureSession.DataStore = new MockDataStore();
+                AzureSession.DataStore = new MemoryDataStore();
             }
             currentProfile = new AzureProfile();
 

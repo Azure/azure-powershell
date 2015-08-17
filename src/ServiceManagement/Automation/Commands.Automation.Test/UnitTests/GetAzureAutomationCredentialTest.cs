@@ -68,15 +68,16 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
         {
             // Setup
             string accountName = "automation";
+            string nextLink = string.Empty;
 
-            this.mockAutomationClient.Setup(f => f.ListCredentials(accountName)).Returns((string a) => new List<CredentialInfo>());
+            this.mockAutomationClient.Setup(f => f.ListCredentials(accountName, ref nextLink)).Returns((string a, string b) => new List<CredentialInfo>());
 
             // Test
             this.cmdlet.AutomationAccountName = accountName;
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.ListCredentials(accountName), Times.Once());
+            this.mockAutomationClient.Verify(f => f.ListCredentials(accountName, ref nextLink), Times.Once());
         }
     }
 }

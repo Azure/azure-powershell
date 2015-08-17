@@ -15,7 +15,7 @@
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
+namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
 
     public abstract partial class RdsCmdlet : AzurePSCmdlet

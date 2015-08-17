@@ -14,29 +14,28 @@
 
 using System;
 using System.Collections;
+using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;
-
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC;
-
+using Xunit;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
 {
     /// <summary>
-    /// Tests for <see cref="DscSettingsSerializer"/> class.
+    /// Tests for <see cref="DscExtensionSettingsSerializer"/> class.
     /// </summary>
-    [TestClass]
     public class DscExtensionSettingsSerializerTests
     {
-        [TestMethod]
-        [TestCategory(Category.BVT)]
-        public void TestPSCredential()
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.BVT)]
+        public void TestPsCredential()
         {
             const string userName = "user";
             const string password = "password";
@@ -44,33 +43,33 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
             Hashtable configurationArguments = new Hashtable();
             configurationArguments.Add(credentialParameterName, new PSCredential(userName, String2SecureString(password)));
             
-            DscPrivateSettings privateSettings;
+            DscExtensionPrivateSettings privateSettings;
             var publicSettings = GetPublicPrivateAfterDeseriazlization(configurationArguments, out privateSettings);
 
-            Assert.AreEqual(1, publicSettings.Properties.Count());
-            Assert.AreEqual(credentialParameterName, publicSettings.Properties[0].Name);
-            Assert.AreEqual(typeof(PSCredential).ToString(), publicSettings.Properties[0].TypeName);
-            var deserializedPSCredential = publicSettings.Properties[0].Value as JObject;
-            Assert.IsNotNull(deserializedPSCredential);
+            Assert.Equal(1, publicSettings.Properties.Count());
+            Assert.Equal(credentialParameterName, publicSettings.Properties[0].Name);
+            Assert.Equal(typeof(PSCredential).ToString(), publicSettings.Properties[0].TypeName);
+            var deserializedPsCredential = publicSettings.Properties[0].Value as JObject;
+            Assert.NotNull(deserializedPsCredential);
 
-            Assert.AreEqual(userName, deserializedPSCredential["UserName"]);
-            string passwordRef = deserializedPSCredential["Password"].ToString();
-            Assert.IsNotNull(passwordRef);
+            Assert.Equal(userName, deserializedPsCredential["UserName"]);
+            string passwordRef = deserializedPsCredential["Password"].ToString();
+            Assert.NotNull(passwordRef);
 
-            Assert.IsTrue(passwordRef.StartsWith("PrivateSettingsRef:"));
+            Assert.True(passwordRef.StartsWith("PrivateSettingsRef:"));
             passwordRef = passwordRef.Substring("PrivateSettingsRef:".Length);
 
-            Assert.AreEqual(1, privateSettings.Items.Count);
+            Assert.Equal(1, privateSettings.Items.Count);
             // There is only one, so it's fine to check it in foreach.
             foreach (DictionaryEntry argument in privateSettings.Items)
             {
-                Assert.AreEqual(password, argument.Value);
-                Assert.AreEqual(passwordRef, argument.Key);
+                Assert.Equal(password, argument.Value);
+                Assert.Equal(passwordRef, argument.Key);
             }
         }
 
-        [TestMethod]
-        [TestCategory(Category.BVT)]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestString()
         {
             const string arg = "argument";
@@ -78,18 +77,18 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
             Hashtable configurationArguments = new Hashtable();
             configurationArguments.Add(arg, value);
 
-            DscPrivateSettings privateSettings;
+            DscExtensionPrivateSettings privateSettings;
             var publicSettings = GetPublicPrivateAfterDeseriazlization(configurationArguments, out privateSettings);
 
-            Assert.AreEqual(1, publicSettings.Properties.Count());
-            Assert.AreEqual(arg, publicSettings.Properties[0].Name);
-            Assert.AreEqual(typeof(string).ToString(), publicSettings.Properties[0].TypeName);
+            Assert.Equal(1, publicSettings.Properties.Count());
+            Assert.Equal(arg, publicSettings.Properties[0].Name);
+            Assert.Equal(typeof(string).ToString(), publicSettings.Properties[0].TypeName);
             var deserializedValue = publicSettings.Properties[0].Value;
-            Assert.AreEqual(value, deserializedValue);
+            Assert.Equal(value, deserializedValue);
         }
 
-        [TestMethod]
-        [TestCategory(Category.BVT)]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestInt()
         {
             const string arg = "argument";
@@ -97,37 +96,36 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
             Hashtable configurationArguments = new Hashtable();
             configurationArguments.Add(arg, value);
 
-            DscPrivateSettings privateSettings;
+            DscExtensionPrivateSettings privateSettings;
             var publicSettings = GetPublicPrivateAfterDeseriazlization(configurationArguments, out privateSettings);
 
-            Assert.AreEqual(1, publicSettings.Properties.Count());
-            Assert.AreEqual(arg, publicSettings.Properties[0].Name);
-            Assert.AreEqual(typeof(int).ToString(), publicSettings.Properties[0].TypeName);
+            Assert.Equal(1, publicSettings.Properties.Count());
+            Assert.Equal(arg, publicSettings.Properties[0].Name);
+            Assert.Equal(typeof(int).ToString(), publicSettings.Properties[0].TypeName);
             var deserializedValue = publicSettings.Properties[0].Value;
-            Assert.AreEqual(value.ToString(), deserializedValue.ToString());
+            Assert.Equal(value.ToString(CultureInfo.InvariantCulture), deserializedValue.ToString());
         }
 
-        [TestMethod]
-        [TestCategory(Category.BVT)]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestBool()
         {
             const string arg = "argument";
-            var value = true;
-            Hashtable configurationArguments = new Hashtable();
-            configurationArguments.Add(arg, value);
+            const bool value = true;
+            var configurationArguments = new Hashtable {{arg, true}};
 
-            DscPrivateSettings privateSettings;
+            DscExtensionPrivateSettings privateSettings;
             var publicSettings = GetPublicPrivateAfterDeseriazlization(configurationArguments, out privateSettings);
 
-            Assert.AreEqual(1, publicSettings.Properties.Count());
-            Assert.AreEqual(arg, publicSettings.Properties[0].Name);
-            Assert.AreEqual(typeof(bool).ToString(), publicSettings.Properties[0].TypeName);
+            Assert.Equal(1, publicSettings.Properties.Count());
+            Assert.Equal(arg, publicSettings.Properties[0].Name);
+            Assert.Equal(typeof(bool).ToString(), publicSettings.Properties[0].TypeName);
             var deserializedValue = publicSettings.Properties[0].Value;
-            Assert.AreEqual(value, deserializedValue);
+            Assert.Equal(value, deserializedValue);
         }
 
-        [TestMethod]
-        [TestCategory(Category.BVT)]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestChar()
         {
             const string arg = "argument";
@@ -135,14 +133,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
             Hashtable configurationArguments = new Hashtable();
             configurationArguments.Add(arg, value);
 
-            DscPrivateSettings privateSettings;
+            DscExtensionPrivateSettings privateSettings;
             var publicSettings = GetPublicPrivateAfterDeseriazlization(configurationArguments, out privateSettings);
 
-            Assert.AreEqual(1, publicSettings.Properties.Count());
-            Assert.AreEqual(arg, publicSettings.Properties[0].Name);
-            Assert.AreEqual(typeof(char).ToString(), publicSettings.Properties[0].TypeName);
+            Assert.Equal(1, publicSettings.Properties.Count());
+            Assert.Equal(arg, publicSettings.Properties[0].Name);
+            Assert.Equal(typeof(char).ToString(), publicSettings.Properties[0].TypeName);
             var deserializedValue = publicSettings.Properties[0].Value;
-            Assert.AreEqual(value.ToString(), deserializedValue.ToString());
+            Assert.Equal(value.ToString(CultureInfo.InvariantCulture), deserializedValue.ToString());
         }
 
         /// <summary>
@@ -151,23 +149,23 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
         /// <param name="configurationArguments"></param>
         /// <param name="privateSettings"></param>
         /// <returns></returns>
-        private static DscPublicSettings GetPublicPrivateAfterDeseriazlization(
+        private static DscExtensionPublicSettings GetPublicPrivateAfterDeseriazlization(
             Hashtable configurationArguments,
-            out DscPrivateSettings privateSettings)
+            out DscExtensionPrivateSettings privateSettings)
         {
-            Tuple<DscPublicSettings.Property[], Hashtable> separatedSettings =
-                DscSettingsSerializer.SeparatePrivateItems(configurationArguments);
-            DscPublicSettings publicSettings = new DscPublicSettings();
-            privateSettings = new DscPrivateSettings();
-            publicSettings.Properties = separatedSettings.Item1;
+            Tuple<DscExtensionPublicSettings.Property[], Hashtable> separatedSettings =
+                DscExtensionSettingsSerializer.SeparatePrivateItems(configurationArguments);
+            DscExtensionPublicSettings extensionPublicSettings = new DscExtensionPublicSettings();
+            privateSettings = new DscExtensionPrivateSettings();
+            extensionPublicSettings.Properties = separatedSettings.Item1;
             privateSettings.Items = separatedSettings.Item2;
 
-            string serializedPublic = DscSettingsSerializer.SerializePublicSettings(publicSettings);
-            string serializedPrivate = DscSettingsSerializer.SerializePrivateSettings(privateSettings);
+            string serializedPublic = DscExtensionSettingsSerializer.SerializePublicSettings(extensionPublicSettings);
+            string serializedPrivate = DscExtensionSettingsSerializer.SerializePrivateSettings(privateSettings);
 
-            publicSettings = DscSettingsSerializer.DeserializePublicSettings(serializedPublic);
+            extensionPublicSettings = DscExtensionSettingsSerializer.DeserializePublicSettings(serializedPublic);
             privateSettings = DeserializePrivateSettings(serializedPrivate);
-            return publicSettings;
+            return extensionPublicSettings;
         }
 
         /// <summary>
@@ -186,15 +184,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions.Test.DSC
             return secureString;
         }
 
-
         /// <summary>
         /// We use this method for test purposes only.
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
-        static private DscPrivateSettings DeserializePrivateSettings(string s)
+        static private DscExtensionPrivateSettings DeserializePrivateSettings(string s)
         {
-            return JsonConvert.DeserializeObject<DscPrivateSettings>(s);
+            return JsonConvert.DeserializeObject<DscExtensionPrivateSettings>(s);
         }
     }
 }

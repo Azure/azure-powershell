@@ -113,6 +113,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
                                                   : PersistentVMHelper.GetPublicIPName(vmRole),
                             PublicIPIdleTimeoutInMinutes = role.PublicIPs == null || !role.PublicIPs.Any() ? null
                                                   : role.PublicIPs.First().IdleTimeoutInMinutes,
+                            PublicIPDomainNameLabel = role.PublicIPs == null || !role.PublicIPs.Any() ? null : role.PublicIPs.First().DomainNameLabel,
+                            PublicIPFqdns = role.PublicIPs == null || !role.PublicIPs.Any() ? null : role.PublicIPs.First().Fqdns.ToList(),
                             DeploymentID          = currentDeployment.PrivateId,
                             InstanceEndpoints     = Mapper.Map<PVM.InstanceEndpointList>(role.InstanceEndpoints)
                         });
@@ -161,7 +163,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
 
             DeploymentGetResponse deploymentGetResponse = null;
             InvokeInOperationContext(() => deploymentGetResponse = this.ComputeClient.Deployments.GetBySlot(this.ServiceName, slot));
-            operation = GetOperationNewSM(deploymentGetResponse.RequestId);
+            operation = GetOperation(deploymentGetResponse.RequestId);
 
             WriteVerboseWithTimestamp(Resources.GetDeploymentCompletedOperation);
 

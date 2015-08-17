@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.KeyVault.WebKey;
+using Microsoft.Azure.KeyVault.WebKey;
 using System.Collections.Generic;
 using System.Security;
 
@@ -22,21 +22,27 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
     {
         KeyBundle CreateKey(string vaultName, string keyName, KeyAttributes keyAttributes);
 
-        KeyBundle ImportKey(string vaultName, string keyName, KeyAttributes keyAttributes, JsonWebKey webKey, bool? importToHsm);     
-       
-        KeyBundle SetKey(string vaultName, string keyName, KeyAttributes keyAttributes);
+        KeyBundle ImportKey(string vaultName, string keyName, KeyAttributes keyAttributes, JsonWebKey webKey, bool? importToHsm);
+
+        KeyBundle UpdateKey(string vaultName, string keyName, string keyVersion, KeyAttributes keyAttributes);
 
         KeyBundle GetKey(string vaultName, string keyName, string keyVersion);
 
-        IEnumerable<KeyIdentityItem> GetKeys(string vaultName);
+        IEnumerable<KeyIdentityItem> GetKeys(KeyVaultObjectFilterOptions options);
+
+        IEnumerable<KeyIdentityItem> GetKeyVersions(KeyVaultObjectFilterOptions options);
         
         KeyBundle DeleteKey(string vaultName, string keyName);
 
-        Secret SetSecret(string vaultName, string secretName, SecureString secretValue);
+        Secret SetSecret(string vaultName, string secretName, SecureString secretValue, SecretAttributes secretAttributes);
+
+        Secret UpdateSecret(string vaultName, string secretName, string secretVersion, SecretAttributes secretAttributes);
 
         Secret GetSecret(string vaultName, string secretName, string secretVersion);
 
-        IEnumerable<SecretIdentityItem> GetSecrets(string vaultName);
+        IEnumerable<SecretIdentityItem> GetSecrets(KeyVaultObjectFilterOptions options);
+
+        IEnumerable<SecretIdentityItem> GetSecretVersions(KeyVaultObjectFilterOptions options);
 
         Secret DeleteSecret(string vaultName, string secretName);
 

@@ -25,6 +25,7 @@ function Test-CreatesNewSimpleWebApp
 	$whpName = Get-WebHostPlanName
 	$apiversion = "2014-04-01"
 	$resourceType = "Microsoft.Web/sites"
+	$slotName = $wname + "(Dev)" 
 	try
 	{
 		#Setup
@@ -34,10 +35,13 @@ function Test-CreatesNewSimpleWebApp
 		# Test
 		$actual = New-AzureWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName 
 		$result = Get-AzureWebApp -ResourceGroupName $rgname -Name $wname
+		$slotCreate = New-AzureWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -SlotName Dev
+
 
 		# Assert
 		Assert-AreEqual $wname $result.Name
 		Assert-AreEqual $whpName $result.Properties.ServerFarm
+		Assert-AreEqual $slotName $slotCreate.Name
 	}
     finally
 	{
@@ -71,6 +75,49 @@ function Test-CreatesNewAppServicePlan
 		Assert-AreEqual 1 $result.WebHostingPlan.Properties.NumberOfWorkers
 		Assert-AreEqual "Standard" $result.WebHostingPlan.Properties.Sku
 		Assert-AreEqual "Small" $result.WebHostingPlan.Properties.WorkerSize
+	}
+    finally
+    {
+		# Cleanup
+		Remove-AzureAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
+		Remove-AzureResourceGroup -Name $rgname -Force
+    }
+}
+
+<#
+.SYNOPSIS
+Tests creating a new Web Hosting Plan.
+#>
+function Test-SetNewAppServicePlan
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$whpName = Get-WebHostPlanName
+	$location = Get-Location
+
+	try
+	{
+		#Setup
+		New-AzureResourceGroup -Name $rgname -Location $location
+		# Test
+		$actual = New-AzureAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location 
+		$result = Get-AzureAppServicePlan -ResourceGroupName $rgname -Name  $whpName
+		# Assert
+		Assert-AreEqual $whpName $result.WebHostingPlan.Name
+		Assert-AreEqual 1 $result.WebHostingPlan.Properties.NumberOfWorkers
+		Assert-AreEqual "Standard" $result.WebHostingPlan.Properties.Sku
+		Assert-AreEqual "Small" $result.WebHostingPlan.Properties.WorkerSize
+
+		# Test setting the created service plan
+		$newresult = Set-AzureAppServicePlan  -ResourceGroupName $rgname -Name  $whpName -Location  $location -Sku Premium -NumberofWorkers 12 -WorkerSize Medium
+		# due to a bug Set and New are not returning the appropriate object so need to get.
+		$newresult = Get-AzureAppServicePlan -ResourceGroupName $rgname -Name  $whpName
+
+		# Assert
+		Assert-AreEqual $whpName $result.WebHostingPlan.Name
+		Assert-AreEqual 12 $newresult.WebHostingPlan.Properties.NumberOfWorkers
+		Assert-AreEqual "Premium" $newresult.WebHostingPlan.Properties.Sku
+		Assert-AreEqual "Medium" $newresult.WebHostingPlan.Properties.WorkerSize
 	}
     finally
     {

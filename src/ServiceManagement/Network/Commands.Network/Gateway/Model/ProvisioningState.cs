@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Network
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
 {
     public enum ProvisioningState
     {

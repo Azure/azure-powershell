@@ -6,7 +6,7 @@
       <DnsServers />
     </Dns>
     <VirtualNetworkSites>
-      <VirtualNetworkSite name="VirtualNetworkSiteName" Location="North Europe">
+      <VirtualNetworkSite name="VirtualNetworkSiteName" Location="North Central US">
         <AddressSpace>
           <AddressPrefix>192.168.100.0/24</AddressPrefix>
         </AddressSpace>

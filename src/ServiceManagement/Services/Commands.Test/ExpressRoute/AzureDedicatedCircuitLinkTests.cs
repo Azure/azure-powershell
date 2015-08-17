@@ -19,6 +19,7 @@ using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ExpressRoute;
@@ -44,6 +45,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureDedicatedCircuitLinkSuccessful()
         {
             // Setup
@@ -82,7 +84,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
 
             NewAzureDedicatedCircuitLinkCommand cmdlet = new NewAzureDedicatedCircuitLinkCommand()
             {
-                ServiceKey = serviceKey,
+                ServiceKey = Guid.Parse(serviceKey),
                 VNetName = vNetName,
                 CommandRuntime = mockCommandRuntime,
                 ExpressRouteClient = new ExpressRouteClient(client.Object)
@@ -97,6 +99,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureDedicatedCircuitLinkSuccessful()
         {
             // Setup
@@ -127,7 +130,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
 
             GetAzureDedicatedCircuitLinkCommand cmdlet = new GetAzureDedicatedCircuitLinkCommand()
             {
-                ServiceKey = serviceKey,
+                ServiceKey = Guid.Parse(serviceKey),
                 VNetName = vNetName,
                 CommandRuntime = mockCommandRuntime,
                 ExpressRouteClient = new ExpressRouteClient(client.Object)
@@ -143,6 +146,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveAzureDedicatedCircuitLinkSuccessful()
         {
             string serviceKey = "aa28cd19-b10a-41ff-981b-53c6bbf15ead";
@@ -166,7 +170,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
 
             RemoveAzureDedicatedCircuitLinkCommand cmdlet = new RemoveAzureDedicatedCircuitLinkCommand()
             {
-                ServiceKey = serviceKey,
+                ServiceKey = Guid.Parse(serviceKey),
                 VNetName = vNetName,
                 CommandRuntime = mockCommandRuntime,
                 ExpressRouteClient = new ExpressRouteClient(client.Object)
@@ -180,6 +184,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
 
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListAzureDedicatedCircuitLinkSuccessful()
         {
             // Setup
@@ -213,7 +218,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
 
             GetAzureDedicatedCircuitLinkCommand cmdlet = new GetAzureDedicatedCircuitLinkCommand()
             {
-                ServiceKey = serviceKey,
+                ServiceKey = Guid.Parse(serviceKey),
                 CommandRuntime = mockCommandRuntime,
                 ExpressRouteClient = new ExpressRouteClient(client.Object)
             };

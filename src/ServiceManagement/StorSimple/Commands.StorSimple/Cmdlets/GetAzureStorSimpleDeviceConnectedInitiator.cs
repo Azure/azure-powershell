@@ -28,12 +28,12 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     public class GetAzureStorSimpleDeviceConnectedInitiator : StorSimpleCmdletBase
     {
         [Alias("ID")]
-        [Parameter(Position = 0, Mandatory = true, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceId)]
+        [Parameter(Position = 0, Mandatory = true, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById, HelpMessage = StorSimpleCmdletHelpMessage.DeviceId)]
         [ValidateNotNullOrEmpty]
         public string DeviceId { get; set; }
 
         [Alias("Name")]
-        [Parameter(Position = 0, Mandatory = true, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByName, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceName)]
+        [Parameter(Position = 0, Mandatory = true, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyByName, HelpMessage = StorSimpleCmdletHelpMessage.DeviceName)]
         [ValidateNotNullOrEmpty]
         public string DeviceName { get; set; }
 
@@ -51,9 +51,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                     var deviceToUse = StorSimpleClient.GetAllDevices().Where(x => x.FriendlyName.Equals(DeviceName, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
                     if (deviceToUse == null)
                     {
-                        WriteVerbose(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, currentResourceName , DeviceName));
-                        WriteObject(null);
-                        return;
+                        throw new ArgumentException(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, currentResourceName, DeviceName));
                     }
                     deviceIdFinal = deviceToUse.DeviceId;
                 }

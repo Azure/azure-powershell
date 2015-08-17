@@ -30,20 +30,20 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     public class SetAzureStorSimpleStorageAccountCredential : StorSimpleCmdletBase
     {
         [Alias("Name")]
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageStorageAccountName)]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.StorageAccountName)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
 
         [Alias("Key")]
-        [Parameter(Position = 1, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageStorageAccountKey)]
+        [Parameter(Position = 1, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.StorageAccountKey)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountKey { get; set; }
 
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageUseSSL)]
+        [Parameter(Position = 2, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.UseSSL)]
         [ValidateNotNullOrEmpty]
         public bool? UseSSL { get; set; }
 
-        [Parameter(Position = 3, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageWaitTillComplete)]
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.WaitTillComplete)]
         public SwitchParameter WaitForComplete { get; set; }
 
         public override void ExecuteCmdlet()
@@ -55,8 +55,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 var existingSac = allSACs.Where(x => x.Name.Equals(StorageAccountName, StringComparison.InvariantCultureIgnoreCase)).FirstOrDefault();
                 if (existingSac == null)
                 {
-                    WriteVerbose(string.Format(Resources.SACNotFoundWithName,StorageAccountName));
-                    return;
+                    throw new ArgumentException(string.Format(Resources.SACNotFoundWithName, StorageAccountName));
                 }
 
                 string encryptedKey;

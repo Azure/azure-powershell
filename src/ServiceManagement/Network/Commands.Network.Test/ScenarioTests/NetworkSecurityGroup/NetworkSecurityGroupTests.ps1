@@ -188,11 +188,11 @@ function Test-SetNetworkSecurityGroupToSubnetInDifferentRegion
     Set-AzureVNetConfig ($(Get-Location).Path +  "\TestData\SimpleNetworkConfiguration.xml")
 
     # Assert
-    $expectedMessage = "BadRequest : The region europewest specified for the Network Security Group $securityGroupName is different than the region europenorth that Virtual Network $VirtualNetworkName belongs to, they need to belong to the same region."
+    $expectedMessage = "BadRequest : The region uswest specified for the Network Security Group $securityGroupName is different than the region usnorth that Virtual Network $VirtualNetworkName belongs to, they need to belong to the same region."
     Assert-Throws { Set-AzureNetworkSecurityGroupToSubnet -Name $securityGroupName -VirtualNetwork $VirtualNetworkName -Subnet $SubnetName -Force } $expectedMessage
 }
 
-########################## Remove Network Security Group for Subnet Tests #############################
+########################## Remove Network Security Group from Subnet Tests #############################
 
 <#
 .SYNOPSIS
@@ -213,4 +213,73 @@ function Test-RemoveNetworkSecurityGroupFromSubnet
     # Assert
     $expectedMessage = "ResourceNotFound: The virtual network name $VirtualNetworkName and subnet $SubnetName does not have any network security group assigned."
     Assert-Throws { Get-AzureNetworkSecurityGroupForSubnet -VirtualNetwork $VirtualNetworkName -Subnet $SubnetName } $expectedMessage
+}
+
+########################## Update-AzureVM keeps NSG on Role and on NIC #############################
+
+<#
+.SYNOPSIS
+Tests Update-AzureVM after a VM has NSG on Role
+#>
+function Test-SetNSGOnRoleAndUpdateVM
+{
+    # Setup
+    Set-AzureVNetConfig ($(Get-Location).Path +  "\TestData\SimpleNetworkConfiguration.xml")
+    $VMName = getAssetName
+    $image = get-azurevmimage | Where-Object {$_.OS -eq 'Windows'} | Select-Object -First 1 -ExpandProperty ImageName
+    $image = "b9a55fa61dad4dd88bab1b26ca2ed075__Test-Win2K8R2SP1-Datacenter-201401.01-en.us-127GB.vhd"
+
+    # Test
+    New-AzureVMConfig -ImageName $image -Name $VMName -InstanceSize Small |
+    Add-AzureProvisioningConfig -Windows -AdminUsername azuretest -Password "Pa@!!w0rd" |
+    Set-AzureSubnet -SubnetNames $SubnetName |
+    New-AzureVM -VNetName $VirtualNetworkName -ServiceName $VMName -Location $Location
+
+    $securityGroupName = Get-SecurityGroupName
+    $securityRuleName = Get-SecurityRuleName
+    $createdSecurityGroup = New-NetworkSecurityGroup $securityGroupName
+
+    # Test
+    Get-AzureVM $VMName | Set-AzureNetworkSecurityGroupAssociation $securityGroupName
+    Get-AzureVM $VMName |
+    Add-AzureEndpoint -Name "http" -Protocol tcp -LocalPort 80 -PublicPort 80 |
+    Update-AzureVM
+
+    # Assert
+    $retrievedNSG = Get-AzureVM $VMName | Get-AzureNetworkSecurityGroupAssociation
+    Assert-AreEqual $securityGroupName $retrievedNSG.Name
+}
+<#
+.SYNOPSIS
+Tests Update-AzureVM after a VM has NSG on Role
+#>
+function Test-SetNSGOnNICAndUpdateVM
+{
+    # Setup
+    Set-AzureVNetConfig ($(Get-Location).Path +  "\TestData\SimpleNetworkConfiguration.xml")
+    $VMName = getAssetName
+    $nicName = getAssetName
+    $image = get-azurevmimage | Where-Object {$_.OS -eq 'Windows'} | Select-Object -First 1 -ExpandProperty ImageName
+    $image = "b9a55fa61dad4dd88bab1b26ca2ed075__Test-Win2K8R2SP1-Datacenter-201401.01-en.us-127GB.vhd"
+
+    # Test
+    New-AzureVMConfig -ImageName $image -Name $VMName -InstanceSize Large |
+    Add-AzureProvisioningConfig -Windows -AdminUsername azuretest -Password "Pa@!!w0rd" |
+    Set-AzureSubnet -SubnetNames $SubnetName |
+    Add-AzureNetworkInterfaceConfig -Name $nicName -SubnetName $SubnetName |
+    New-AzureVM -VNetName $VirtualNetworkName -ServiceName $VMName -Location $Location
+
+    $securityGroupName = Get-SecurityGroupName
+    $securityRuleName = Get-SecurityRuleName
+    $createdSecurityGroup = New-NetworkSecurityGroup $securityGroupName
+
+    # Test
+    Get-AzureVM $VMName | Set-AzureNetworkSecurityGroupAssociation -Name $securityGroupName -NetworkInterfaceName $nicName
+    Get-AzureVM $VMName |
+    Add-AzureEndpoint -Name "http" -Protocol tcp -LocalPort 80 -PublicPort 80 |
+    Update-AzureVM
+
+    # Assert
+    $retrievedNSG = Get-AzureVM $VMName | Get-AzureNetworkSecurityGroupAssociation -NetworkInterfaceName $nicName
+    Assert-AreEqual $securityGroupName $retrievedNSG.Name
 }

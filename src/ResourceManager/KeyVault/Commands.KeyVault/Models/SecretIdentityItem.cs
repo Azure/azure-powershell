@@ -12,29 +12,71 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.KeyVault.Properties;
 using System;
+using System.Collections;
 using System.Security;
-using Client = Microsoft.Azure.Commands.KeyVault.Client;
+using Microsoft.Azure.KeyVault;
+using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public class SecretIdentityItem : ObjectIdentifier
     {
-        internal SecretIdentityItem(Client.SecretItem clientSecretItem, VaultUriHelper vaultUriHelper)
+        internal SecretIdentityItem(Microsoft.Azure.KeyVault.SecretItem secretItem, VaultUriHelper vaultUriHelper)
         {
-            if (clientSecretItem == null)
-            {
-                throw new ArgumentNullException("clientSecretItem");
-            }
-
-            if (String.IsNullOrEmpty(clientSecretItem.Id))
-            {
-                throw new ArgumentException(Resources.InvalidSecretUri);
-            }
-
-            SetObjectIdentifier(vaultUriHelper, new Client.SecretIdentifier(clientSecretItem.Id));
-            Id = clientSecretItem.Id;
+            if (secretItem == null)
+                throw new ArgumentNullException("secretItem");            
+            if (secretItem.Attributes == null)
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidSecretAttributes);
+            if (secretItem.Identifier == null)
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidSecretIdentifier);
+            
+            SetObjectIdentifier(vaultUriHelper, secretItem.Identifier);
+            Enabled = secretItem.Attributes.Enabled;
+            Expires = secretItem.Attributes.Expires;
+            NotBefore = secretItem.Attributes.NotBefore;
+            Created = secretItem.Attributes.Created;
+            Updated = secretItem.Attributes.Updated;
+            ContentType = secretItem.ContentType;
+            Tags = (secretItem.Tags == null) ? null : secretItem.Tags.ConvertToHashtable();
         }
+
+        internal SecretIdentityItem(Secret secret)
+        {
+            if (secret == null)
+                throw new ArgumentNullException("secret");
+            if (secret.Attributes == null)
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidSecretAttributes);
+
+            SetObjectIdentifier(secret);
+
+            Enabled = secret.Attributes.Enabled;
+            Expires = secret.Attributes.Expires;
+            NotBefore = secret.Attributes.NotBefore;
+            Created = secret.Attributes.Created;
+            Updated = secret.Attributes.Updated;
+            Tags = secret.Attributes.Tags;
+        }
+        public bool? Enabled { get; set; }
+
+        public DateTime? Expires { get; set; }
+
+        public DateTime? NotBefore { get; set; }
+
+        public DateTime? Created { get; private set; }
+
+        public DateTime? Updated { get; private set; }
+
+        public string ContentType { get; set; }
+
+        public Hashtable Tags { get; set; }
+        public string TagsTable
+        {
+            get
+            {
+                return (Tags == null) ? null : Tags.ConvertToTagsTable();
+            }
+        }      
+       
     }
 }

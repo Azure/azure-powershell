@@ -34,7 +34,7 @@ function Get-ResourceGroupName
 .SYNOPSIS
 Gets the location for the Batch account provider. Default to West US if none found.
 #>
-function Get-BatchAccountProviderLocation
+function Get-BatchAccountProviderLocation($index)
 {
     $location = Get-AzureLocation | where {$_.Name -eq "Microsoft.Batch/batchAccounts"}
     if ($location -eq $null) 
@@ -43,7 +43,14 @@ function Get-BatchAccountProviderLocation
     } 
 	else 
 	{
-        $location.Locations[0]
+	    if ($index -eq $null)
+		{
+			$location.Locations[0]
+		}
+		else
+		{
+			$location.Locations[$index]
+		}
     }
 }
 

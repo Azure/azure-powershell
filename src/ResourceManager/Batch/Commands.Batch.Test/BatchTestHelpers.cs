@@ -20,7 +20,6 @@ using System.Threading.Tasks;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Batch.Protocol;
-using Microsoft.Azure.Batch.Protocol.Entities;
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Commands.Batch.Test.ScenarioTests;
 using Microsoft.Azure.Management.Batch;
@@ -35,7 +34,7 @@ using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Storage.Shared.Protocol;
 using Xunit;
-using JobExecutionEnvironment = Microsoft.Azure.Batch.Protocol.Entities.JobExecutionEnvironment;
+using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 
 namespace Microsoft.Azure.Commands.Batch.Test
 {
@@ -113,203 +112,229 @@ namespace Microsoft.Azure.Commands.Batch.Test
         }
 
         /// <summary>
-        /// Builds a PSCloudWorkItem for testing
+        /// Builds a CloudPoolGetResponse object
         /// </summary>
-        public static PSCloudWorkItem CreatePSCloudWorkItem()
+        public static ProxyModels.CloudPoolGetResponse CreateCloudPoolGetResponse(string poolId)
         {
-            BatchAccountContext context = CreateBatchContextWithKeys();
-            using (IWorkItemManager wiManager = context.BatchOMClient.OpenWorkItemManager())
-            {
-                ICloudWorkItem workItem = wiManager.CreateWorkItem("testWorkItem");
-                return new PSCloudWorkItem(workItem);
-            }
-        }
+            ProxyModels.CloudPoolGetResponse response = new ProxyModels.CloudPoolGetResponse();
+            response.StatusCode = HttpStatusCode.OK;
 
-        /// <summary>
-        /// Builds a GetPoolResponse object
-        /// </summary>
-        public static GetPoolResponse CreateGetPoolResponse(string poolName)
-        {
-            GetPoolResponse response = new GetPoolResponse();
-            SetProperty(response, "StatusCode", HttpStatusCode.OK);
+            ProxyModels.CloudPool pool = new ProxyModels.CloudPool();
+            pool.Id = poolId;
 
-            Pool pool = new Pool();
-            SetProperty(pool, "Name", poolName);
-
-            SetProperty(response, "Pool", pool);
+            response.Pool = pool;
 
             return response;
         }
 
         /// <summary>
-        /// Builds a ListPoolsResponse object
+        /// Builds a CloudPoolListResponse object
         /// </summary>
-        public static ListPoolsResponse CreateListPoolsResponse(IEnumerable<string> poolNames)
+        public static ProxyModels.CloudPoolListResponse CreateCloudPoolListResponse(IEnumerable<string> poolIds)
         {
-            ListPoolsResponse response = new ListPoolsResponse();
-            SetProperty(response, "StatusCode", HttpStatusCode.OK);
+            ProxyModels.CloudPoolListResponse response = new ProxyModels.CloudPoolListResponse();
+            response.StatusCode = HttpStatusCode.OK;
 
-            List<Pool> pools = new List<Pool>();
+            List<ProxyModels.CloudPool> pools = new List<ProxyModels.CloudPool>();
 
-            foreach (string name in poolNames)
+            foreach (string id in poolIds)
             {
-                Pool pool = new Pool();
-                SetProperty(pool, "Name", name);
+                ProxyModels.CloudPool pool = new ProxyModels.CloudPool();
+                pool.Id = id;
                 pools.Add(pool);
             }
 
-            SetProperty(response, "Pools", pools);
+            response.Pools = pools;
 
             return response;
         }
 
         /// <summary>
-        /// Builds a GetWorkItemResponse object
+        /// Builds a ComputeNodeGetResponse object
         /// </summary>
-        public static GetWorkItemResponse CreateGetWorkItemResponse(string workItemName)
+        public static ProxyModels.ComputeNodeGetResponse CreateComputeNodeGetResponse(string computeNodeId)
         {
-            GetWorkItemResponse response = new GetWorkItemResponse();
-            SetProperty(response, "StatusCode", HttpStatusCode.OK);
+            ProxyModels.ComputeNodeGetResponse response = new ProxyModels.ComputeNodeGetResponse();
+            response.StatusCode = HttpStatusCode.OK;
 
-            JobExecutionEnvironment jee = new JobExecutionEnvironment();
-
-            WorkItem workItem = new WorkItem(workItemName, jee);
-            SetProperty(response, "WorkItem", workItem);
+            ProxyModels.ComputeNode computeNode = new ProxyModels.ComputeNode();
+            computeNode.Id = computeNodeId;
+            response.ComputeNode = computeNode;
 
             return response;
         }
 
         /// <summary>
-        /// Builds a ListWorkItemsResponse object
+        /// Builds a ComputeNodeListResponse object
         /// </summary>
-        public static ListWorkItemsResponse CreateListWorkItemsResponse(IEnumerable<string> workItemNames)
+        public static ProxyModels.ComputeNodeListResponse CreateComputeNodeListResponse(IEnumerable<string> computeNodeIds)
         {
-            ListWorkItemsResponse response = new ListWorkItemsResponse();
-            SetProperty(response, "StatusCode", HttpStatusCode.OK);
+            ProxyModels.ComputeNodeListResponse response = new ProxyModels.ComputeNodeListResponse();
+            response.StatusCode = HttpStatusCode.OK;
 
-            List<WorkItem> workItems = new List<WorkItem>();
-            JobExecutionEnvironment jee = new JobExecutionEnvironment();
+            List<ProxyModels.ComputeNode> computeNodes = new List<ProxyModels.ComputeNode>();
 
-            foreach (string name in workItemNames)
+            foreach (string id in computeNodeIds)
             {
-                workItems.Add(new WorkItem(name, jee));
+                ProxyModels.ComputeNode computeNode = new ProxyModels.ComputeNode();
+                computeNode.Id = id;
+                computeNodes.Add(computeNode);
             }
 
-            SetProperty(response, "WorkItems", workItems);
+            response.ComputeNodes = computeNodes;
 
             return response;
         }
 
         /// <summary>
-        /// Builds a GetJobResponse object
+        /// Builds a CloudJobScheduleGetResponse object
         /// </summary>
-        public static GetJobResponse CreateGetJobResponse(string jobName)
+        public static ProxyModels.CloudJobScheduleGetResponse CreateCloudJobScheduleGetResponse(string jobScheduleId)
         {
-            GetJobResponse response = new GetJobResponse();
-            SetProperty(response, "StatusCode", HttpStatusCode.OK);
+            ProxyModels.CloudJobScheduleGetResponse response = new ProxyModels.CloudJobScheduleGetResponse();
+            response.StatusCode = HttpStatusCode.OK;
 
-            Job job = new Job();
-            SetProperty(job, "Name", jobName);
+            ProxyModels.JobSpecification jobSpec = new ProxyModels.JobSpecification();
+            ProxyModels.Schedule schedule = new ProxyModels.Schedule();
 
-            SetProperty(response, "Job", job);
+            ProxyModels.CloudJobSchedule jobSchedule = new ProxyModels.CloudJobSchedule(jobScheduleId, schedule, jobSpec);
+            response.JobSchedule = jobSchedule;
 
             return response;
         }
 
         /// <summary>
-        /// Builds a ListJobsResponse object
+        /// Builds a CloudJobScheduleListResponse object
         /// </summary>
-        public static ListJobsResponse CreateListJobsResponse(IEnumerable<string> jobNames)
+        public static ProxyModels.CloudJobScheduleListResponse CreateCloudJobScheduleListResponse(IEnumerable<string> jobScheduleIds)
         {
-            ListJobsResponse response = new ListJobsResponse();
-            SetProperty(response, "StatusCode", HttpStatusCode.OK);
+            ProxyModels.CloudJobScheduleListResponse response = new ProxyModels.CloudJobScheduleListResponse();
+            response.StatusCode = HttpStatusCode.OK;;
 
-            List<Job> jobs = new List<Job>();
+            List<ProxyModels.CloudJobSchedule> jobSchedules = new List<ProxyModels.CloudJobSchedule>();
+            ProxyModels.JobSpecification jobSpec = new ProxyModels.JobSpecification();
+            ProxyModels.Schedule schedule = new ProxyModels.Schedule();
 
-            foreach (string name in jobNames)
+            foreach (string id in jobScheduleIds)
             {
-                Job job = new Job();
-                SetProperty(job, "Name", name);
+                jobSchedules.Add(new ProxyModels.CloudJobSchedule(id, schedule, jobSpec));
+            }
+
+            response.JobSchedules = jobSchedules;
+
+            return response;
+        }
+
+        /// <summary>
+        /// Builds a CloudJobGetResponse object
+        /// </summary>
+        public static ProxyModels.CloudJobGetResponse CreateCloudJobGetResponse(string jobId)
+        {
+            ProxyModels.CloudJobGetResponse response = new ProxyModels.CloudJobGetResponse();
+            response.StatusCode = HttpStatusCode.OK;
+
+            ProxyModels.CloudJob job = new ProxyModels.CloudJob();
+            job.Id = jobId;
+
+            response.Job = job;
+
+            return response;
+        }
+
+        /// <summary>
+        /// Builds a CloudJobListResponse object
+        /// </summary>
+        public static ProxyModels.CloudJobListResponse CreateCloudJobListResponse(IEnumerable<string> jobIds)
+        {
+            ProxyModels.CloudJobListResponse response = new ProxyModels.CloudJobListResponse();
+            response.StatusCode = HttpStatusCode.OK;
+
+            List<ProxyModels.CloudJob> jobs = new List<ProxyModels.CloudJob>();
+
+            foreach (string id in jobIds)
+            {
+                ProxyModels.CloudJob job = new ProxyModels.CloudJob();
+                job.Id = id;
                 jobs.Add(job);
             }
 
-            SetProperty(response, "Jobs", jobs);
+            response.Jobs = jobs;
 
             return response;
         }
 
         /// <summary>
-        /// Builds a GetTaskResponse object
+        /// Builds a CloudTaskGetResponse object
         /// </summary>
-        public static GetTaskResponse CreateGetTaskResponse(string taskName)
+        public static ProxyModels.CloudTaskGetResponse CreateCloudTaskGetResponse(string taskId)
         {
-            GetTaskResponse response = new GetTaskResponse();
-            SetProperty(response, "StatusCode", HttpStatusCode.OK);
+            ProxyModels.CloudTaskGetResponse response = new ProxyModels.CloudTaskGetResponse();
+            response.StatusCode = HttpStatusCode.OK;
 
-            Azure.Batch.Protocol.Entities.Task task = new Azure.Batch.Protocol.Entities.Task();
-            SetProperty(task, "Name", taskName);
+            ProxyModels.CloudTask task = new ProxyModels.CloudTask();
+            task.Id = taskId;
 
-            SetProperty(response, "Task", task);
+            response.Task = task;
 
             return response;
         }
 
         /// <summary>
-        /// Builds a ListTasksResponse object
+        /// Builds a CloudTaskListResponse object
         /// </summary>
-        public static ListTasksResponse CreateListTasksResponse(IEnumerable<string> taskNames)
+        public static ProxyModels.CloudTaskListResponse CreateCloudTaskListResponse(IEnumerable<string> taskIds)
         {
-            ListTasksResponse response = new ListTasksResponse();
-            SetProperty(response, "StatusCode", HttpStatusCode.OK);
+            ProxyModels.CloudTaskListResponse response = new ProxyModels.CloudTaskListResponse();
+            response.StatusCode = HttpStatusCode.OK;
 
-            List<Azure.Batch.Protocol.Entities.Task> tasks = new List<Azure.Batch.Protocol.Entities.Task>();
+            List<ProxyModels.CloudTask> tasks = new List<ProxyModels.CloudTask>();
 
-            foreach (string name in taskNames)
+            foreach (string id in taskIds)
             {
-                Azure.Batch.Protocol.Entities.Task task = new Azure.Batch.Protocol.Entities.Task();
-                SetProperty(task, "Name", name);
+                ProxyModels.CloudTask task = new ProxyModels.CloudTask();
+                task.Id = id;
                 tasks.Add(task);
             }
 
-            SetProperty(response, "Tasks", tasks);
+            response.Tasks = tasks;
 
             return response;
         }
 
         /// <summary>
-        /// Builds a GetTaskFilePropertiesResponse object
+        /// Builds a NodeFileGetPropertiesResponse object
         /// </summary>
-        public static GetTaskFilePropertiesResponse CreateGetTaskFilePropertiesResponse(string fileName)
+        public static ProxyModels.NodeFileGetPropertiesResponse CreateNodeFileGetPropertiesResponse(string fileName)
         {
-            GetTaskFilePropertiesResponse response = new GetTaskFilePropertiesResponse();
-            SetProperty(response, "StatusCode", HttpStatusCode.OK);
+            ProxyModels.NodeFileGetPropertiesResponse response = new ProxyModels.NodeFileGetPropertiesResponse();
+            response.StatusCode = HttpStatusCode.OK;
 
-            Azure.Batch.Protocol.Entities.File file = new Azure.Batch.Protocol.Entities.File();
-            SetProperty(file, "Name", fileName);
+            ProxyModels.NodeFile file = new ProxyModels.NodeFile();
+            file.Name = fileName;
 
-            SetProperty(response, "File", file);
+            response.File = file;
 
             return response;
         }
 
         /// <summary>
-        /// Builds a ListTaskFilesResponse object
+        /// Builds a NodeFileListResponse object
         /// </summary>
-        public static ListTaskFilesResponse CreateListTaskFilesResponse(IEnumerable<string> fileNames)
+        public static ProxyModels.NodeFileListResponse CreateNodeFileListResponse(IEnumerable<string> fileNames)
         {
-            ListTaskFilesResponse response = new ListTaskFilesResponse();
-            SetProperty(response, "StatusCode", HttpStatusCode.OK);
+            ProxyModels.NodeFileListResponse response = new ProxyModels.NodeFileListResponse();
+            response.StatusCode = HttpStatusCode.OK;
 
-            List<Azure.Batch.Protocol.Entities.File> files = new List<Azure.Batch.Protocol.Entities.File>();
+            List<ProxyModels.NodeFile> files = new List<ProxyModels.NodeFile>();
 
             foreach (string name in fileNames)
             {
-                Azure.Batch.Protocol.Entities.File file = new Azure.Batch.Protocol.Entities.File();
-                SetProperty(file, "Name", name);
+                ProxyModels.NodeFile file = new ProxyModels.NodeFile();
+                file.Name = name;
                 files.Add(file);
             }
 
-            SetProperty(response, "Files", files);
+            response.Files = files;
 
             return response;
         }

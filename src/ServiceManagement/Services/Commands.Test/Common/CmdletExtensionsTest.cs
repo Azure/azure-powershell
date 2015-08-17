@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
@@ -22,6 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Common
     public class CmdletExtensionsTest
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ResolvePathTest()
         {
             StubCmdlet stubCmdlet = new StubCmdlet();

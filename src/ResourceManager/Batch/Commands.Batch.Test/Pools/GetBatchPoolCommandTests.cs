@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
-using Microsoft.Azure.Batch.Protocol.Entities;
+using Microsoft.Azure.Batch.Protocol.Models;
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
@@ -48,22 +48,24 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetBatchPoolTest()
         {
-            // Setup cmdlet to get a Pool by name
+            // Setup cmdlet to get a pool by id
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
-            cmdlet.Name = "testPool";
+            cmdlet.Id = "testPool";
             cmdlet.Filter = null;
 
-            // Build a Pool instead of querying the service on a GetPool call
-            YieldInjectionInterceptor interceptor = new YieldInjectionInterceptor((opContext, request) =>
+            // Build a CloudPool instead of querying the service on a Get CloudPool call
+            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
-                if (request is GetPoolRequest)
+                BatchRequest<CloudPoolGetParameters, CloudPoolGetResponse> request =
+                (BatchRequest<CloudPoolGetParameters, CloudPoolGetResponse>)baseRequest;
+
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
-                    GetPoolResponse response = BatchTestHelpers.CreateGetPoolResponse(cmdlet.Name);
-                    Task<object> task = Task<object>.Factory.StartNew(() => { return response; });
+                    CloudPoolGetResponse response = BatchTestHelpers.CreateCloudPoolGetResponse(cmdlet.Id);
+                    Task<CloudPoolGetResponse> task = Task.FromResult(response);
                     return task;
-                }
-                return null;
+                };
             });
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
@@ -73,33 +75,35 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             cmdlet.ExecuteCmdlet();
 
-            // Verify that the cmdlet wrote the Pool returned from the OM to the pipeline
+            // Verify that the cmdlet wrote the pool returned from the OM to the pipeline
             Assert.Equal(1, pipeline.Count);
-            Assert.Equal(cmdlet.Name, pipeline[0].Name);
+            Assert.Equal(cmdlet.Id, pipeline[0].Id);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListBatchPoolByODataFilterTest()
         {
-            // Setup cmdlet to list Pools using an OData filter
+            // Setup cmdlet to list pools using an OData filter
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
-            cmdlet.Name = null;
-            cmdlet.Filter = "startswith(name,'test')";
+            cmdlet.Id = null;
+            cmdlet.Filter = "startswith(id,'test')";
 
-            string[] namesOfConstructedPools = new[] { "test1", "test2" };
+            string[] idsOfConstructedPools = new[] { "test1", "test2" };
 
-            // Build some Pools instead of querying the service on a ListPools call
-            YieldInjectionInterceptor interceptor = new YieldInjectionInterceptor((opContext, request) =>
+            // Build some CloudPools instead of querying the service on a List CloudPools call
+            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
-                if (request is ListPoolsRequest)
+                BatchRequest<CloudPoolListParameters, CloudPoolListResponse> request =
+                (BatchRequest<CloudPoolListParameters, CloudPoolListResponse>)baseRequest;
+
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
-                    ListPoolsResponse response = BatchTestHelpers.CreateListPoolsResponse(namesOfConstructedPools);
-                    Task<object> task = Task<object>.Factory.StartNew(() => { return response; });
+                    CloudPoolListResponse response = BatchTestHelpers.CreateCloudPoolListResponse(idsOfConstructedPools);
+                    Task<CloudPoolListResponse> task = Task.FromResult(response);
                     return task;
-                }
-                return null;
+                };
             });
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
@@ -111,39 +115,41 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             cmdlet.ExecuteCmdlet();
 
-            // Verify that the cmdlet wrote the constructed Pools to the pipeline
+            // Verify that the cmdlet wrote the constructed pools to the pipeline
             Assert.Equal(2, pipeline.Count);
             int poolCount = 0;
             foreach (PSCloudPool p in pipeline)
             {
-                Assert.True(namesOfConstructedPools.Contains(p.Name));
+                Assert.True(idsOfConstructedPools.Contains(p.Id));
                 poolCount++;
             }
-            Assert.Equal(namesOfConstructedPools.Length, poolCount);
+            Assert.Equal(idsOfConstructedPools.Length, poolCount);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListBatchPoolWithoutFiltersTest()
         {
-            // Setup cmdlet to list Pools without filters
+            // Setup cmdlet to list pools without filters
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
-            cmdlet.Name = null;
+            cmdlet.Id = null;
             cmdlet.Filter = null;
 
-            string[] namesOfConstructedPools = new[] { "name1", "name2", "name3" };
+            string[] idsOfConstructedPools = new[] { "pool1", "pool2", "pool3" };
 
-            // Build some Pools instead of querying the service on a ListPools call
-            YieldInjectionInterceptor interceptor = new YieldInjectionInterceptor((opContext, request) =>
+            // Build some CloudPools instead of querying the service on a List CloudPools call
+            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
-                if (request is ListPoolsRequest)
+                BatchRequest<CloudPoolListParameters, CloudPoolListResponse> request =
+                (BatchRequest<CloudPoolListParameters, CloudPoolListResponse>)baseRequest;
+
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
-                    ListPoolsResponse response = BatchTestHelpers.CreateListPoolsResponse(namesOfConstructedPools);
-                    Task<object> task = Task<object>.Factory.StartNew(() => { return response; });
+                    CloudPoolListResponse response = BatchTestHelpers.CreateCloudPoolListResponse(idsOfConstructedPools);
+                    Task<CloudPoolListResponse> task = Task.FromResult(response);
                     return task;
-                }
-                return null;
+                };
             });
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
@@ -155,15 +161,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             cmdlet.ExecuteCmdlet();
 
-            // Verify that the cmdlet wrote the constructed Pools to the pipeline
+            // Verify that the cmdlet wrote the constructed pools to the pipeline
             Assert.Equal(3, pipeline.Count);
             int poolCount = 0;
             foreach (PSCloudPool p in pipeline)
             {
-                Assert.True(namesOfConstructedPools.Contains(p.Name));
+                Assert.True(idsOfConstructedPools.Contains(p.Id));
                 poolCount++;
             }
-            Assert.Equal(namesOfConstructedPools.Length, poolCount);
+            Assert.Equal(idsOfConstructedPools.Length, poolCount);
         }
 
         [Fact]
@@ -173,26 +179,28 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             // Verify default max count
             Assert.Equal(Microsoft.Azure.Commands.Batch.Utils.Constants.DefaultMaxCount, cmdlet.MaxCount);
 
-            // Setup cmdlet to list Pools without filters and a max count
+            // Setup cmdlet to list pools without filters and a max count
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
-            cmdlet.Name = null;
+            cmdlet.Id = null;
             cmdlet.Filter = null;
             int maxCount = 2;
             cmdlet.MaxCount = maxCount;
 
-            string[] namesOfConstructedPools = new[] { "name1", "name2", "name3" };
+            string[] idsOfConstructedPools = new[] { "pool1", "pool2", "pool3" };
 
-            // Build some Pools instead of querying the service on a ListPools call
-            YieldInjectionInterceptor interceptor = new YieldInjectionInterceptor((opContext, request) =>
+            // Build some CloudPools instead of querying the service on a List CloudPools call
+            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
-                if (request is ListPoolsRequest)
+                BatchRequest<CloudPoolListParameters, CloudPoolListResponse> request =
+                (BatchRequest<CloudPoolListParameters, CloudPoolListResponse>)baseRequest;
+
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
-                    ListPoolsResponse response = BatchTestHelpers.CreateListPoolsResponse(namesOfConstructedPools);
-                    Task<object> task = Task<object>.Factory.StartNew(() => { return response; });
+                    CloudPoolListResponse response = BatchTestHelpers.CreateCloudPoolListResponse(idsOfConstructedPools);
+                    Task<CloudPoolListResponse> task = Task.FromResult(response);
                     return task;
-                }
-                return null;
+                };
             });
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
@@ -212,7 +220,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             pipeline.Clear();
             cmdlet.ExecuteCmdlet();
 
-            Assert.Equal(namesOfConstructedPools.Length, pipeline.Count);
+            Assert.Equal(idsOfConstructedPools.Length, pipeline.Count);
         }
     }
 }

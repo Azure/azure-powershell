@@ -21,6 +21,7 @@ using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Subscriptions.Csm.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using CSMSubscription = Microsoft.Azure.Subscriptions.Csm.Models.Subscription;
 using RDFESubscription = Microsoft.Azure.Subscriptions.Rdfe.Models.Subscription;
@@ -30,6 +31,7 @@ namespace Microsoft.Azure.Commands.Test.Profile
     public class NewAzureProfileTests
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatesNewAzureProfileWithCertificate()
         {
@@ -45,6 +47,7 @@ namespace Microsoft.Azure.Commands.Test.Profile
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatesNewAzureProfileWithAccessToken()
         {
             ProfileTestController.NewInstance.RunPsTest("Test-CreatesNewAzureProfileWithAccessToken");
@@ -52,12 +55,14 @@ namespace Microsoft.Azure.Commands.Test.Profile
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMakeRdfeCallWithCreatedProfile()
         {
             ProfileTestController.NewRdfeInstance.RunPSTestWithToken((context, token) => string.Format("Test-NewAzureProfileInRDFEMode {0} {1} {2}", token, context.Account.Id, context.Subscription.Id));
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMakeArmCallWithCreatedProfile()
         {

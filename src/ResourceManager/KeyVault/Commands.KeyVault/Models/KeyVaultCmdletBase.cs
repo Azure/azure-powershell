@@ -44,17 +44,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             {
                 this.dataServiceClient = value;
             }
-        }
-
-        internal string ResolvePath(string filePath, string notFoundMessage)
-        {
-            FileInfo keyFile = new FileInfo(this.GetUnresolvedProviderPathFromPSPath(filePath));
-            if (!keyFile.Exists)
-            {
-                throw new FileNotFoundException(string.Format(notFoundMessage, filePath));
-            }
-            return keyFile.FullName;
-        }
+        }       
+        
 
         private IKeyVaultDataServiceClient dataServiceClient;
     }

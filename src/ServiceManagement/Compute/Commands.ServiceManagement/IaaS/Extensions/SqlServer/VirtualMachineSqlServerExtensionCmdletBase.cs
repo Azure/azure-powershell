@@ -28,12 +28,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         /// <summary>
         /// Extension's publisher name 
         /// </summary>
-        protected const string ExtensionDefaultPublisher = "Microsoft.SqlServer.Management";
+        protected const string ExtensionPublishedNamespace = "Microsoft.SqlServer.Management";
 
         /// <summary>
         /// Extension's name - 
         /// </summary>
-        protected const string ExtensionDefaultName = "SqlIaaSAgent";
+        protected const string ExtensionPublishedName = "SqlIaaSAgent";
 
         /// <summary>
         /// Extension's default version 
@@ -60,8 +60,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         /// </summary>
         public VirtualMachineSqlServerExtensionCmdletBase()
         {
-            base.publisherName = ExtensionDefaultPublisher;
-            base.extensionName = ExtensionDefaultName;
+            base.publisherName = ExtensionPublishedNamespace;
+            base.extensionName = ExtensionPublishedName;
         }
 
         /// <summary>

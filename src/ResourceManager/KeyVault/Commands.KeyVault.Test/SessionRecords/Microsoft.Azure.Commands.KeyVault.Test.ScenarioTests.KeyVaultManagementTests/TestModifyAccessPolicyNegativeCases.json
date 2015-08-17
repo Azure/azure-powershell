@@ -1,0 +1,534 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/31bdf18e-b058-4d3a-838c-e123ac60bc43/resourceGroups/pshtestrg6355/providers/Microsoft.KeyVault/vaults/pshtestvault4651?api-version=2015-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzFiZGYxOGUtYjA1OC00ZDNhLTgzOGMtZTEyM2FjNjBiYzQzL3Jlc291cmNlR3JvdXBzL3BzaHRlc3RyZzYzNTUvcHJvdmlkZXJzL01pY3Jvc29mdC5LZXlWYXVsdC92YXVsdHMvcHNodGVzdHZhdWx0NDY1MT9hcGktdmVyc2lvbj0yMDE1LTA2LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/31bdf18e-b058-4d3a-838c-e123ac60bc43/resourceGroups/pshtestrg6355/providers/Microsoft.KeyVault/vaults/pshtestvault4651\",\r\n  \"name\": \"pshtestvault4651\",\r\n  \"type\": \"Microsoft.KeyVault/vaults\",\r\n  \"location\": \"northcentralus\",\r\n  \"tags\": {\r\n    \"testtag\": \"testvalue\"\r\n  },\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"family\": \"A\",\r\n      \"name\": \"Premium\"\r\n    },\r\n    \"tenantId\": \"8448c020-6abd-43d5-8ebc-410f7b59ffa9\",\r\n    \"accessPolicies\": [],\r\n    \"enabledForDeployment\": false,\r\n    \"vaultUri\": \"https://pshtestvault4651.vault.azure.net/\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "469"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14998"
+        ],
+        "x-ms-request-id": [
+          "27b4435a-94b2-4cda-93cd-0111585d1d40"
+        ],
+        "x-ms-correlation-request-id": [
+          "27b4435a-94b2-4cda-93cd-0111585d1d40"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20150616T173946Z:27b4435a-94b2-4cda-93cd-0111585d1d40"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 16 Jun 2015 17:39:45 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/31bdf18e-b058-4d3a-838c-e123ac60bc43/resourceGroups/pshtestrg6355/providers/Microsoft.KeyVault/vaults/pshtestvault4651?api-version=2015-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzFiZGYxOGUtYjA1OC00ZDNhLTgzOGMtZTEyM2FjNjBiYzQzL3Jlc291cmNlR3JvdXBzL3BzaHRlc3RyZzYzNTUvcHJvdmlkZXJzL01pY3Jvc29mdC5LZXlWYXVsdC92YXVsdHMvcHNodGVzdHZhdWx0NDY1MT9hcGktdmVyc2lvbj0yMDE1LTA2LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/31bdf18e-b058-4d3a-838c-e123ac60bc43/resourceGroups/pshtestrg6355/providers/Microsoft.KeyVault/vaults/pshtestvault4651\",\r\n  \"name\": \"pshtestvault4651\",\r\n  \"type\": \"Microsoft.KeyVault/vaults\",\r\n  \"location\": \"northcentralus\",\r\n  \"tags\": {\r\n    \"testtag\": \"testvalue\"\r\n  },\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"family\": \"A\",\r\n      \"name\": \"Premium\"\r\n    },\r\n    \"tenantId\": \"8448c020-6abd-43d5-8ebc-410f7b59ffa9\",\r\n    \"accessPolicies\": [],\r\n    \"enabledForDeployment\": false,\r\n    \"vaultUri\": \"https://pshtestvault4651.vault.azure.net/\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "469"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14997"
+        ],
+        "x-ms-request-id": [
+          "fcb3fd6a-e013-414e-890c-14dec1d0c282"
+        ],
+        "x-ms-correlation-request-id": [
+          "fcb3fd6a-e013-414e-890c-14dec1d0c282"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20150616T173947Z:fcb3fd6a-e013-414e-890c-14dec1d0c282"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 16 Jun 2015 17:39:46 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/31bdf18e-b058-4d3a-838c-e123ac60bc43/resourceGroups/pshtestrg6355/providers/Microsoft.KeyVault/vaults/pshtestvault4651?api-version=2015-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzFiZGYxOGUtYjA1OC00ZDNhLTgzOGMtZTEyM2FjNjBiYzQzL3Jlc291cmNlR3JvdXBzL3BzaHRlc3RyZzYzNTUvcHJvdmlkZXJzL01pY3Jvc29mdC5LZXlWYXVsdC92YXVsdHMvcHNodGVzdHZhdWx0NDY1MT9hcGktdmVyc2lvbj0yMDE1LTA2LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/31bdf18e-b058-4d3a-838c-e123ac60bc43/resourceGroups/pshtestrg6355/providers/Microsoft.KeyVault/vaults/pshtestvault4651\",\r\n  \"name\": \"pshtestvault4651\",\r\n  \"type\": \"Microsoft.KeyVault/vaults\",\r\n  \"location\": \"northcentralus\",\r\n  \"tags\": {\r\n    \"testtag\": \"testvalue\"\r\n  },\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"family\": \"A\",\r\n      \"name\": \"Premium\"\r\n    },\r\n    \"tenantId\": \"8448c020-6abd-43d5-8ebc-410f7b59ffa9\",\r\n    \"accessPolicies\": [],\r\n    \"enabledForDeployment\": false,\r\n    \"vaultUri\": \"https://pshtestvault4651.vault.azure.net/\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "469"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14996"
+        ],
+        "x-ms-request-id": [
+          "eb0df34f-2017-4350-b224-9c8a311664e4"
+        ],
+        "x-ms-correlation-request-id": [
+          "eb0df34f-2017-4350-b224-9c8a311664e4"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20150616T173947Z:eb0df34f-2017-4350-b224-9c8a311664e4"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 16 Jun 2015 17:39:46 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/31bdf18e-b058-4d3a-838c-e123ac60bc43/resourceGroups/pshtestrg6355/providers/Microsoft.KeyVault/vaults/pshtestvault4651?api-version=2015-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzFiZGYxOGUtYjA1OC00ZDNhLTgzOGMtZTEyM2FjNjBiYzQzL3Jlc291cmNlR3JvdXBzL3BzaHRlc3RyZzYzNTUvcHJvdmlkZXJzL01pY3Jvc29mdC5LZXlWYXVsdC92YXVsdHMvcHNodGVzdHZhdWx0NDY1MT9hcGktdmVyc2lvbj0yMDE1LTA2LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/31bdf18e-b058-4d3a-838c-e123ac60bc43/resourceGroups/pshtestrg6355/providers/Microsoft.KeyVault/vaults/pshtestvault4651\",\r\n  \"name\": \"pshtestvault4651\",\r\n  \"type\": \"Microsoft.KeyVault/vaults\",\r\n  \"location\": \"northcentralus\",\r\n  \"tags\": {\r\n    \"testtag\": \"testvalue\"\r\n  },\r\n  \"properties\": {\r\n    \"sku\": {\r\n      \"family\": \"A\",\r\n      \"name\": \"Premium\"\r\n    },\r\n    \"tenantId\": \"8448c020-6abd-43d5-8ebc-410f7b59ffa9\",\r\n    \"accessPolicies\": [],\r\n    \"enabledForDeployment\": false,\r\n    \"vaultUri\": \"https://pshtestvault4651.vault.azure.net/\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "469"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14995"
+        ],
+        "x-ms-request-id": [
+          "baf918df-d7ca-48f6-b958-138d2e701071"
+        ],
+        "x-ms-correlation-request-id": [
+          "baf918df-d7ca-48f6-b958-138d2e701071"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20150616T173947Z:baf918df-d7ca-48f6-b958-138d2e701071"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 16 Jun 2015 17:39:46 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/8448c020-6abd-43d5-8ebc-410f7b59ffa9/users/keyvaultsdktester1@keyvaultsdktestdg.onmicrosoft.com?api-version=1.42-previewInternal",
+      "EncodedRequestUri": "Lzg0NDhjMDIwLTZhYmQtNDNkNS04ZWJjLTQxMGY3YjU5ZmZhOS91c2Vycy9rZXl2YXVsdHNka3Rlc3RlcjFAa2V5dmF1bHRzZGt0ZXN0ZGcub25taWNyb3NvZnQuY29tP2FwaS12ZXJzaW9uPTEuNDItcHJldmlld0ludGVybmFs",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/8448c020-6abd-43d5-8ebc-410f7b59ffa9/$metadata#directoryObjects/Microsoft.WindowsAzure.ActiveDirectory.User/@Element\",\r\n  \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.User\",\r\n  \"objectType\": \"User\",\r\n  \"objectId\": \"c98f1ad6-17bd-46ef-b9c2-820ee601d54e\",\r\n  \"softDeletionTimestamp\": null,\r\n  \"acceptedAs\": null,\r\n  \"acceptedOn\": null,\r\n  \"accountEnabled\": true,\r\n  \"alternativeSecurityIds\": [],\r\n  \"appMetadata\": null,\r\n  \"assignedLicenses\": [],\r\n  \"assignedPlans\": [],\r\n  \"city\": null,\r\n  \"country\": null,\r\n  \"creationType\": null,\r\n  \"department\": null,\r\n  \"dirSyncEnabled\": null,\r\n  \"displayName\": \"KeyVaultSdkTester1\",\r\n  \"extensionAttribute1\": null,\r\n  \"extensionAttribute2\": null,\r\n  \"extensionAttribute3\": null,\r\n  \"extensionAttribute4\": null,\r\n  \"extensionAttribute5\": null,\r\n  \"extensionAttribute6\": null,\r\n  \"extensionAttribute7\": null,\r\n  \"extensionAttribute8\": null,\r\n  \"extensionAttribute9\": null,\r\n  \"extensionAttribute10\": null,\r\n  \"extensionAttribute11\": null,\r\n  \"extensionAttribute12\": null,\r\n  \"extensionAttribute13\": null,\r\n  \"extensionAttribute14\": null,\r\n  \"extensionAttribute15\": null,\r\n  \"facsimileTelephoneNumber\": null,\r\n  \"givenName\": \"KeyVaultSdkTester1\",\r\n  \"immutableId\": null,\r\n  \"invitedOn\": null,\r\n  \"inviteReplyUrl\": [],\r\n  \"inviteResources\": [],\r\n  \"inviteTicket\": [],\r\n  \"isCompromised\": null,\r\n  \"jobTitle\": null,\r\n  \"jrnlAddress\": null,\r\n  \"lastDirSyncTime\": null,\r\n  \"logonIdentifiers\": [],\r\n  \"mail\": null,\r\n  \"mailNickname\": \"keyvaultsdktester1\",\r\n  \"mobile\": null,\r\n  \"netId\": \"10037FFE9109F2F6\",\r\n  \"onPremiseSecurityIdentifier\": null,\r\n  \"otherMails\": [],\r\n  \"passwordPolicies\": \"None\",\r\n  \"passwordProfile\": null,\r\n  \"physicalDeliveryOfficeName\": null,\r\n  \"postalCode\": null,\r\n  \"preferredLanguage\": null,\r\n  \"primarySMTPAddress\": null,\r\n  \"provisionedPlans\": [],\r\n  \"provisioningErrors\": [],\r\n  \"proxyAddresses\": [],\r\n  \"searchableDeviceKey\": [],\r\n  \"selfServePasswordResetData\": null,\r\n  \"signInName\": \"keyvaultsdktester1@keyvaultsdktestdg.onmicrosoft.com\",\r\n  \"sipProxyAddress\": null,\r\n  \"smtpAddresses\": [],\r\n  \"state\": null,\r\n  \"streetAddress\": null,\r\n  \"surname\": null,\r\n  \"telephoneNumber\": null,\r\n  \"usageLocation\": null,\r\n  \"userPrincipalName\": \"keyvaultsdktester1@keyvaultsdktestdg.onmicrosoft.com\",\r\n  \"userState\": null,\r\n  \"userStateChangedOn\": null,\r\n  \"userType\": \"Member\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2019"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ocp-aad-diagnostics-server-name": [
+          "uojUeQNmnG7rHkYY6Os3AEDTrAe3OLrhcYc7TiubdLo="
+        ],
+        "request-id": [
+          "890206e7-2ca4-4fb6-87bc-5674364ad7e6"
+        ],
+        "client-request-id": [
+          "5caf3401-6340-4b0a-bc70-8f6fb4436621"
+        ],
+        "x-ms-gateway-rewrite": [
+          "false"
+        ],
+        "x-ms-dirapi-data-contract-version": [
+          "1.42-previewInternal"
+        ],
+        "ocp-aad-session-key": [
+          "vjQvqrv3vJoaNXAIB9rR88fyduqrBPeEJbjJkUJV9nck2TcvAg1fbVS8kuvT3NhQxhtwvuj8kUww3gIJd2MpQY6Lz6XaAd8cDA7t6zraJtMyMCaJeYulnRsDUhMWmrOd.jGc17vqJ8rgS21ohHtb5WHTHP3f79u5EDJP96dhYV8g"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "Date": [
+          "Tue, 16 Jun 2015 17:39:46 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/8448c020-6abd-43d5-8ebc-410f7b59ffa9/users/keyvaultsdktester1@keyvaultsdktestdg.onmicrosoft.com?api-version=1.42-previewInternal",
+      "EncodedRequestUri": "Lzg0NDhjMDIwLTZhYmQtNDNkNS04ZWJjLTQxMGY3YjU5ZmZhOS91c2Vycy9rZXl2YXVsdHNka3Rlc3RlcjFAa2V5dmF1bHRzZGt0ZXN0ZGcub25taWNyb3NvZnQuY29tP2FwaS12ZXJzaW9uPTEuNDItcHJldmlld0ludGVybmFs",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/8448c020-6abd-43d5-8ebc-410f7b59ffa9/$metadata#directoryObjects/Microsoft.WindowsAzure.ActiveDirectory.User/@Element\",\r\n  \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.User\",\r\n  \"objectType\": \"User\",\r\n  \"objectId\": \"c98f1ad6-17bd-46ef-b9c2-820ee601d54e\",\r\n  \"softDeletionTimestamp\": null,\r\n  \"acceptedAs\": null,\r\n  \"acceptedOn\": null,\r\n  \"accountEnabled\": true,\r\n  \"alternativeSecurityIds\": [],\r\n  \"appMetadata\": null,\r\n  \"assignedLicenses\": [],\r\n  \"assignedPlans\": [],\r\n  \"city\": null,\r\n  \"country\": null,\r\n  \"creationType\": null,\r\n  \"department\": null,\r\n  \"dirSyncEnabled\": null,\r\n  \"displayName\": \"KeyVaultSdkTester1\",\r\n  \"extensionAttribute1\": null,\r\n  \"extensionAttribute2\": null,\r\n  \"extensionAttribute3\": null,\r\n  \"extensionAttribute4\": null,\r\n  \"extensionAttribute5\": null,\r\n  \"extensionAttribute6\": null,\r\n  \"extensionAttribute7\": null,\r\n  \"extensionAttribute8\": null,\r\n  \"extensionAttribute9\": null,\r\n  \"extensionAttribute10\": null,\r\n  \"extensionAttribute11\": null,\r\n  \"extensionAttribute12\": null,\r\n  \"extensionAttribute13\": null,\r\n  \"extensionAttribute14\": null,\r\n  \"extensionAttribute15\": null,\r\n  \"facsimileTelephoneNumber\": null,\r\n  \"givenName\": \"KeyVaultSdkTester1\",\r\n  \"immutableId\": null,\r\n  \"invitedOn\": null,\r\n  \"inviteReplyUrl\": [],\r\n  \"inviteResources\": [],\r\n  \"inviteTicket\": [],\r\n  \"isCompromised\": null,\r\n  \"jobTitle\": null,\r\n  \"jrnlAddress\": null,\r\n  \"lastDirSyncTime\": null,\r\n  \"logonIdentifiers\": [],\r\n  \"mail\": null,\r\n  \"mailNickname\": \"keyvaultsdktester1\",\r\n  \"mobile\": null,\r\n  \"netId\": \"10037FFE9109F2F6\",\r\n  \"onPremiseSecurityIdentifier\": null,\r\n  \"otherMails\": [],\r\n  \"passwordPolicies\": \"None\",\r\n  \"passwordProfile\": null,\r\n  \"physicalDeliveryOfficeName\": null,\r\n  \"postalCode\": null,\r\n  \"preferredLanguage\": null,\r\n  \"primarySMTPAddress\": null,\r\n  \"provisionedPlans\": [],\r\n  \"provisioningErrors\": [],\r\n  \"proxyAddresses\": [],\r\n  \"searchableDeviceKey\": [],\r\n  \"selfServePasswordResetData\": null,\r\n  \"signInName\": \"keyvaultsdktester1@keyvaultsdktestdg.onmicrosoft.com\",\r\n  \"sipProxyAddress\": null,\r\n  \"smtpAddresses\": [],\r\n  \"state\": null,\r\n  \"streetAddress\": null,\r\n  \"surname\": null,\r\n  \"telephoneNumber\": null,\r\n  \"usageLocation\": null,\r\n  \"userPrincipalName\": \"keyvaultsdktester1@keyvaultsdktestdg.onmicrosoft.com\",\r\n  \"userState\": null,\r\n  \"userStateChangedOn\": null,\r\n  \"userType\": \"Member\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2019"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ocp-aad-diagnostics-server-name": [
+          "ndOaDad62j02kfRa1Cq/gK60FrLF0w5RKl7ELizCzzo="
+        ],
+        "request-id": [
+          "9fa2c360-1304-4610-b0ba-3dadf0da5239"
+        ],
+        "client-request-id": [
+          "873f955e-85f0-44fa-a989-fdbd57aebf73"
+        ],
+        "x-ms-gateway-rewrite": [
+          "false"
+        ],
+        "x-ms-dirapi-data-contract-version": [
+          "1.42-previewInternal"
+        ],
+        "ocp-aad-session-key": [
+          "EFHgQ21NMF7BESwZD2RHxUUbFFJawOlHrsKKR_xdJKxx-HKGJT5JiihXUS4wjPRM8JMCGz7ipyXwxIpwJeWuJV-NKRwQC3JYAT_LcCWVPhKIIVFo37LQbhS9QpRuKLRr.OGR9m6ywGzPOLVN8ZvliL2alY4yQ-EqZuE1G_q7GX3U"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "Date": [
+          "Tue, 16 Jun 2015 17:39:47 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/8448c020-6abd-43d5-8ebc-410f7b59ffa9/users/keyvaultsdktester1@keyvaultsdktestdg.onmicrosoft.com?api-version=1.42-previewInternal",
+      "EncodedRequestUri": "Lzg0NDhjMDIwLTZhYmQtNDNkNS04ZWJjLTQxMGY3YjU5ZmZhOS91c2Vycy9rZXl2YXVsdHNka3Rlc3RlcjFAa2V5dmF1bHRzZGt0ZXN0ZGcub25taWNyb3NvZnQuY29tP2FwaS12ZXJzaW9uPTEuNDItcHJldmlld0ludGVybmFs",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/8448c020-6abd-43d5-8ebc-410f7b59ffa9/$metadata#directoryObjects/Microsoft.WindowsAzure.ActiveDirectory.User/@Element\",\r\n  \"odata.type\": \"Microsoft.WindowsAzure.ActiveDirectory.User\",\r\n  \"objectType\": \"User\",\r\n  \"objectId\": \"c98f1ad6-17bd-46ef-b9c2-820ee601d54e\",\r\n  \"softDeletionTimestamp\": null,\r\n  \"acceptedAs\": null,\r\n  \"acceptedOn\": null,\r\n  \"accountEnabled\": true,\r\n  \"alternativeSecurityIds\": [],\r\n  \"appMetadata\": null,\r\n  \"assignedLicenses\": [],\r\n  \"assignedPlans\": [],\r\n  \"city\": null,\r\n  \"country\": null,\r\n  \"creationType\": null,\r\n  \"department\": null,\r\n  \"dirSyncEnabled\": null,\r\n  \"displayName\": \"KeyVaultSdkTester1\",\r\n  \"extensionAttribute1\": null,\r\n  \"extensionAttribute2\": null,\r\n  \"extensionAttribute3\": null,\r\n  \"extensionAttribute4\": null,\r\n  \"extensionAttribute5\": null,\r\n  \"extensionAttribute6\": null,\r\n  \"extensionAttribute7\": null,\r\n  \"extensionAttribute8\": null,\r\n  \"extensionAttribute9\": null,\r\n  \"extensionAttribute10\": null,\r\n  \"extensionAttribute11\": null,\r\n  \"extensionAttribute12\": null,\r\n  \"extensionAttribute13\": null,\r\n  \"extensionAttribute14\": null,\r\n  \"extensionAttribute15\": null,\r\n  \"facsimileTelephoneNumber\": null,\r\n  \"givenName\": \"KeyVaultSdkTester1\",\r\n  \"immutableId\": null,\r\n  \"invitedOn\": null,\r\n  \"inviteReplyUrl\": [],\r\n  \"inviteResources\": [],\r\n  \"inviteTicket\": [],\r\n  \"isCompromised\": null,\r\n  \"jobTitle\": null,\r\n  \"jrnlAddress\": null,\r\n  \"lastDirSyncTime\": null,\r\n  \"logonIdentifiers\": [],\r\n  \"mail\": null,\r\n  \"mailNickname\": \"keyvaultsdktester1\",\r\n  \"mobile\": null,\r\n  \"netId\": \"10037FFE9109F2F6\",\r\n  \"onPremiseSecurityIdentifier\": null,\r\n  \"otherMails\": [],\r\n  \"passwordPolicies\": \"None\",\r\n  \"passwordProfile\": null,\r\n  \"physicalDeliveryOfficeName\": null,\r\n  \"postalCode\": null,\r\n  \"preferredLanguage\": null,\r\n  \"primarySMTPAddress\": null,\r\n  \"provisionedPlans\": [],\r\n  \"provisioningErrors\": [],\r\n  \"proxyAddresses\": [],\r\n  \"searchableDeviceKey\": [],\r\n  \"selfServePasswordResetData\": null,\r\n  \"signInName\": \"keyvaultsdktester1@keyvaultsdktestdg.onmicrosoft.com\",\r\n  \"sipProxyAddress\": null,\r\n  \"smtpAddresses\": [],\r\n  \"state\": null,\r\n  \"streetAddress\": null,\r\n  \"surname\": null,\r\n  \"telephoneNumber\": null,\r\n  \"usageLocation\": null,\r\n  \"userPrincipalName\": \"keyvaultsdktester1@keyvaultsdktestdg.onmicrosoft.com\",\r\n  \"userState\": null,\r\n  \"userStateChangedOn\": null,\r\n  \"userType\": \"Member\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2019"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ocp-aad-diagnostics-server-name": [
+          "R1+xCOqrBsexJPMxtV0MNJLhsxNKpRCxYbIf34S61pM="
+        ],
+        "request-id": [
+          "38374515-2184-4524-af1a-a0837b408c8c"
+        ],
+        "client-request-id": [
+          "3f4fcbac-b3bb-4c10-9d7a-ce5e4e4c5329"
+        ],
+        "x-ms-gateway-rewrite": [
+          "false"
+        ],
+        "x-ms-dirapi-data-contract-version": [
+          "1.42-previewInternal"
+        ],
+        "ocp-aad-session-key": [
+          "QSssdPhtYXNiRhSaDSs22Tjp5joYYlMmF7t49XYDnQzNalkRf3uwjjOIP2zTpy3ozazG8RYvQ439LkbFaez78t44RS12ANFucyqyGAuhJF7Uj6hbZIEv_0ueAW_nqgTQ.eJtKMInCZxTyo-L1HZ-Ev8yXngV0jMTxBABOk6LUL3U"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "Date": [
+          "Tue, 16 Jun 2015 17:39:47 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/8448c020-6abd-43d5-8ebc-410f7b59ffa9/servicePrincipals?$filter=servicePrincipalNames/any(c:c%20eq%20'keyvaultsdktester1%40keyvaultsdktestdg.onmicrosoft.com')&api-version=1.42-previewInternal",
+      "EncodedRequestUri": "Lzg0NDhjMDIwLTZhYmQtNDNkNS04ZWJjLTQxMGY3YjU5ZmZhOS9zZXJ2aWNlUHJpbmNpcGFscz8kZmlsdGVyPXNlcnZpY2VQcmluY2lwYWxOYW1lcy9hbnkoYzpjJTIwZXElMjAna2V5dmF1bHRzZGt0ZXN0ZXIxJTQwa2V5dmF1bHRzZGt0ZXN0ZGcub25taWNyb3NvZnQuY29tJykmYXBpLXZlcnNpb249MS40Mi1wcmV2aWV3SW50ZXJuYWw=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Graph.RBAC.GraphRbacManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://graph.windows.net/8448c020-6abd-43d5-8ebc-410f7b59ffa9/$metadata#directoryObjects/Microsoft.WindowsAzure.ActiveDirectory.ServicePrincipal\",\r\n  \"value\": []\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "177"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; streaming=true; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ocp-aad-diagnostics-server-name": [
+          "uojUeQNmnG7rHkYY6Os3AEDTrAe3OLrhcYc7TiubdLo="
+        ],
+        "request-id": [
+          "c97cdf37-2277-4b36-9887-8c74c7f53736"
+        ],
+        "client-request-id": [
+          "06e74491-c411-4b11-b831-728be65dce02"
+        ],
+        "x-ms-gateway-rewrite": [
+          "false"
+        ],
+        "x-ms-dirapi-data-contract-version": [
+          "1.42-previewInternal"
+        ],
+        "ocp-aad-session-key": [
+          "sTUnP-2RbqXbL9b4zoMt1py-zEiwLPEbmdKXxAeMVKvdt6dsKt0JRBJXLERHOOyFAr64gpk9RhrpCMn1iINJaMEIahNQEre3qK4WKU-gRSyESGPVnb65iyXmSxDsKaYQ.yPXUANns76ITM8Q8PlDkCux1cA3UXV1giAr4pTEWw4E"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0;"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET",
+          "ASP.NET"
+        ],
+        "Date": [
+          "Tue, 16 Jun 2015 17:39:47 GMT"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "ResourceGroupName": "pshtestrg6355",
+    "Location": "northcentralus",
+    "PreCreatedVault": "pshtestvault4651",
+    "SubscriptionId": "31bdf18e-b058-4d3a-838c-e123ac60bc43",
+    "User": "keyvaultsdktester1@keyvaultsdktestdg.onmicrosoft.com",
+    "TenantId": "8448c020-6abd-43d5-8ebc-410f7b59ffa9",
+    "Domain": "keyvaultsdktestdg.onmicrosoft.com"
+  }
+}

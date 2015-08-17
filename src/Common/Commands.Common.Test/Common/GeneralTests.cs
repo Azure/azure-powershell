@@ -17,12 +17,14 @@ using System.IO;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 using Microsoft.Azure.Common.Authentication;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 {
     public class GeneralTests
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void IsValidDirectoryPathReturnsTrueForExistingFolders()
         {
             Assert.True(FileUtilities.IsValidDirectoryPath(Path.GetTempPath()));
@@ -31,6 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void IsValidDirectoryPathReturnsFalseForFilePaths()
         {
             Assert.False(FileUtilities.IsValidDirectoryPath(Path.GetTempPath() + "\\file.tst"));
@@ -39,6 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void IsValidDirectoryPathReturnsFalseForNonExistingFolders()
         {
             Assert.False(FileUtilities.IsValidDirectoryPath(""));

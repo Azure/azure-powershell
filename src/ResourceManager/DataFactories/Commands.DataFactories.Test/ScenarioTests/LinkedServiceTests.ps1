@@ -85,44 +85,6 @@ function Test-LinkedServiceWithDataFactoryParameter
 
 <#
 .SYNOPSIS
-Nagative test. Get resources with an empty linked service name.
-#>
-function Test-GetLinkedServiceWithEmptyName
-{	
-    $lsname = ""
-	$dfname = Get-DataFactoryName
-    $rgname = Get-ResourceGroupName
-    $rglocation = Get-ProviderLocation ResourceManagement
-    $dflocation = Get-ProviderLocation DataFactoryManagement
-    
-    New-AzureResourceGroup -Name $rgname -Location $rglocation -Force
-    New-AzureDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
-
-    # Test
-    Assert-ThrowsContains { Get-AzureDataFactoryLinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -Name $lsname } "null"    
-}
-
-<#
-.SYNOPSIS
-Nagative test. Get resources with a linked service name which only contains white space.
-#>
-function Test-GetLinkedServiceWithWhiteSpaceName
-{	
-    $lsname = "   "
-	$dfname = Get-DataFactoryName
-    $rgname = Get-ResourceGroupName
-    $rglocation = Get-ProviderLocation ResourceManagement
-    $dflocation = Get-ProviderLocation DataFactoryManagement
-    
-    New-AzureResourceGroup -Name $rgname -Location $rglocation -Force
-    New-AzureDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
-
-    # Test
-    Assert-ThrowsContains { Get-AzureDataFactoryLinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -Name $lsname } "null"    
-}
-
-<#
-.SYNOPSIS
 Test piping support.
 #>
 function Test-LinkedServicePiping

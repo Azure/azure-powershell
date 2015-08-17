@@ -92,8 +92,9 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             // Setup
             string accountName = "automation";
             string runbookName = "runbook";
+            string nextLink = string.Empty;
 
-            this.mockAutomationClient.Setup(f => f.ListJobSchedulesByRunbookName(accountName, runbookName)).Returns((string a, string b) => new List<JobSchedule>());
+            this.mockAutomationClient.Setup(f => f.ListJobSchedules(accountName, ref nextLink)).Returns((string a, string b) => new List<JobSchedule>());
 
             // Test
             this.cmdlet.AutomationAccountName = accountName;
@@ -102,7 +103,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.ListJobSchedulesByRunbookName(accountName, runbookName), Times.Once());
+            this.mockAutomationClient.Verify(f => f.ListJobSchedules(accountName, ref nextLink), Times.Once());
         }
 
         [TestMethod]
@@ -111,8 +112,9 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             // Setup
             string accountName = "automation";
             string scheduleName = "schedule";
+            string nextLink = string.Empty;
 
-            this.mockAutomationClient.Setup(f => f.ListJobSchedulesByScheduleName(accountName, scheduleName)).Returns((string a, string b) => new List<JobSchedule>());
+            this.mockAutomationClient.Setup(f => f.ListJobSchedules(accountName, ref nextLink)).Returns((string a, string b) => new List<JobSchedule>());
 
             // Test
             this.cmdlet.AutomationAccountName = accountName;
@@ -121,7 +123,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.ListJobSchedulesByScheduleName(accountName, scheduleName), Times.Once());
+            this.mockAutomationClient.Verify(f => f.ListJobSchedules(accountName, ref nextLink), Times.Once());
         }
 
         [TestMethod]
@@ -129,8 +131,9 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
         {
             // Setup
             string accountName = "automation";
+            string nextLink = string.Empty;
 
-            this.mockAutomationClient.Setup(f => f.ListJobSchedules(accountName)).Returns((string a) => new List<JobSchedule>());
+            this.mockAutomationClient.Setup(f => f.ListJobSchedules(accountName, ref nextLink)).Returns((string a, string b) => new List<JobSchedule>());
 
             // Test
             this.cmdlet.AutomationAccountName = accountName;
@@ -138,7 +141,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.ListJobSchedules(accountName), Times.Once());
+            this.mockAutomationClient.Verify(f => f.ListJobSchedules(accountName, ref nextLink), Times.Once());
         }
     }
 }

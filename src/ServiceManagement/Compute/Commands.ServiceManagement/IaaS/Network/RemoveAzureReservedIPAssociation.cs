@@ -35,7 +35,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
             set;
         }
 
-        [Parameter(Mandatory = false, Position = 1, ValueFromPipelineByPropertyName = true, HelpMessage = "Hosted Service Name.")]
+        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, HelpMessage = "Hosted Service Name.")]
         [ValidateNotNullOrEmpty]
         public string ServiceName
         {
@@ -43,7 +43,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
             set;
         }
 
-        [Parameter(Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Deployment slot [Staging | Production].")]
+        [Parameter(Mandatory = false, Position = 2, ValueFromPipelineByPropertyName = true, HelpMessage = "Virtual IP Name.")]
+        [ValidateNotNullOrEmpty]
+        public string VirtualIPName
+        {
+            get;
+            set;
+        }
+
+        [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Deployment slot [Staging | Production].")]
         [ValidateSet(Microsoft.WindowsAzure.Commands.ServiceManagement.Model.DeploymentSlotType.Staging, Microsoft.WindowsAzure.Commands.ServiceManagement.Model.DeploymentSlotType.Production, IgnoreCase = true)]
         public string Slot
         {
@@ -51,7 +59,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
             set;
         }
 
-        [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Do not confirm removal of reserved IP Association")]
+        [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Do not confirm removal of reserved IP Association")]
         public SwitchParameter Force
         {
             get;
@@ -87,7 +95,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                     var parameters = new NetworkReservedIPMobilityParameters
                     {
                         ServiceName = this.ServiceName,
-                        DeploymentName = deploymentName
+                        DeploymentName = deploymentName,
+                        VirtualIPName = this.VirtualIPName
                     };
 
                     return this.NetworkClient.ReservedIPs.Disassociate(this.ReservedIPName, parameters);

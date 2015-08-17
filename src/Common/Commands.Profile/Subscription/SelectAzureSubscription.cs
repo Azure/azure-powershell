@@ -20,13 +20,14 @@ using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Profile;
 using Microsoft.Azure.Common.Authentication;
+using Microsoft.WindowsAzure.Commands.Profile.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Profile
 {
 
 
     [Cmdlet(VerbsCommon.Select, "AzureSubscription", DefaultParameterSetName = SelectSubscriptionByNameParameterSet)]
-    [OutputType(typeof(AzureSubscription))]
+    [OutputType(typeof(PSAzureSubscription))]
     public class SelectAzureSubscriptionCommand : SubscriptionCmdletBase
     {
         private const string SelectSubscriptionByIdParameterSet = "SelectSubscriptionByIdParameterSet";
@@ -123,7 +124,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
             if (PassThru.IsPresent && azureSubscription != null)
             {
-                WriteObject(azureSubscription);
+                WriteObject(new PSAzureSubscription(azureSubscription, ProfileClient.Profile));
             }
         }
 

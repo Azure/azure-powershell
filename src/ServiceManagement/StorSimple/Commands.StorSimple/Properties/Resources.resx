@@ -121,22 +121,19 @@
     <value>{0} backup polic{1} found!</value>
   </data>
   <data name="BackupPolicyFound" xml:space="preserve">
-    <value>BackupPolicy with id {0} found!</value>
+    <value>Found a backup policy with ID {0}.</value>
   </data>
   <data name="NoBackupPolicyWithGivenNameFound" xml:space="preserve">
     <value>No backuppolicy with name : {0} found in your device: {1} !</value>
   </data>
-  <data name="FailureMessageSubmitJob" xml:space="preserve">
-    <value>The {0} task failed to submit. </value>
+  <data name="FailureMessageSubmitTask" xml:space="preserve">
+    <value>The {0} task was not submitted.</value>
   </data>
   <data name="NotAllowedErrorDataContainerEncryption" xml:space="preserve">
-    <value>Please provide the EncryptionKey.</value>
+    <value>Please provide the encryption key.</value>
   </data>
   <data name="NotFoundMessageACR" xml:space="preserve">
-    <value>No Access Control Record with given name {0} is found!</value>
-  </data>
-  <data name="NotFoundMessageDevice" xml:space="preserve">
-    <value>The specified device does not exist.</value>
+    <value>Could not find an access control record with given name {0}.</value>
   </data>
   <data name="NotFoundMessageResource" xml:space="preserve">
     <value>The specified resource does not exist.</value>
@@ -144,16 +141,16 @@
   <data name="NotFoundMessageStorageAccountCredential" xml:space="preserve">
     <value>Storage account with the specified name does not exist.</value>
   </data>
-  <data name="RemoveASSDBackupMessage" xml:space="preserve">
+  <data name="RemoveAzureStorSimpleDeviceBackupMessage" xml:space="preserve">
     <value>Removing backup with backupId {0}...</value>
   </data>
-  <data name="RemoveASSDBackupPolicyMessage" xml:space="preserve">
+  <data name="RemoveAzureStorSimpleDeviceBackupPolicyMessage" xml:space="preserve">
     <value>Removing backuppolicy with backuppolicyId {0}...</value>
   </data>
-  <data name="RemoveASSDBackupPolicyWarningMessage" xml:space="preserve">
+  <data name="RemoveAzureStorSimpleDeviceBackupPolicyWarningMessage" xml:space="preserve">
     <value>Are you sure you want to remove the backuppolicy with backuppolicyId{0}?</value>
   </data>
-  <data name="RemoveASSDBackupWarningMessage" xml:space="preserve">
+  <data name="RemoveAzureStorSimpleDeviceBackupWarningMessage" xml:space="preserve">
     <value>Are you sure you want to remove the backup with backupId{0}?</value>
   </data>
   <data name="NotFoundMessageVirtualDisk" xml:space="preserve">
@@ -183,83 +180,83 @@
   <data name="RemoveWarningVolume" xml:space="preserve">
     <value>Are you sure you want to remove the volume?</value>
   </data>
-  <data name="StartASSDBackupRestoreJobMessage" xml:space="preserve">
+  <data name="StartAzureStorSimpleDeviceBackupRestoreJobMessage" xml:space="preserve">
     <value>Restoring backup with backupId {0}...</value>
   </data>
-  <data name="StartASSDBackupRestoreJobWarningMessage" xml:space="preserve">
+  <data name="StartAzureStorSimpleDeviceBackupRestoreJobWarningMessage" xml:space="preserve">
     <value>Are you sure you want to restore the backup with backupId{0}?</value>
   </data>
   <data name="SuccessMessageSetResourceContext" xml:space="preserve">
     <value>Context set successfully for the given resource name.</value>
   </data>
-  <data name="SuccessMessageSubmitJob" xml:space="preserve">
-    <value>The {0} task is submitted successfully. Please use the command Get-AzureStorSimpleTask -InstanceId {1} for tracking the task's status</value>
+  <data name="SuccessMessageSubmitTask" xml:space="preserve">
+    <value>The {0} task was submitted successfully. Please use the command Get-AzureStorSimpleTask -InstanceId {1} to track the task's status.</value>
   </data>
   <data name="InvalidBackupIdParameter" xml:space="preserve">
-    <value>Specify valid string for BackupId parameter</value>
+    <value>Specify a valid string for the BackupId parameter.</value>
   </data>
   <data name="InvalidBackupObjectParameter" xml:space="preserve">
-    <value>Specify valid Backup object for Backup parameter </value>
+    <value>Specify a valid Backup object for the Backup parameter.</value>
   </data>
   <data name="InvalidBackupPolicyIdParameter" xml:space="preserve">
-    <value>Specify valid Guid for BackupPolicyId parameter</value>
+    <value>Specify a valid GUID for the BackupPolicyId parameter.</value>
   </data>
   <data name="InvalidBackupPolicyObjectParameter" xml:space="preserve">
-    <value>Specify valid BackupPolicy object for BackupPolicy Parameter</value>
+    <value>Specify a valid BackupPolicy object for the Backup parameter.</value>
   </data>
   <data name="BackupNextPageFormatMessage" xml:space="preserve">
-    <value>More backups are available for your query. To access the next page of your result use \"-First {0} -Skip {1}\" in your commandlet</value>
+    <value>More backups are available for your query. To access the next page of results, use \"-First {0} -Skip {1}\" in your cmdlet.</value>
   </data>
   <data name="BackupNextPagewithNoFirstMessage" xml:space="preserve">
-    <value>More backups are available in the subsequent pages for your query. To access the next page use \"-Skip {0}\"  in your commandlet</value>
+    <value>More backups are available in subsequent pages for your query. To access the next page, use \"-Skip {0}\" in your cmdlet.</value>
   </data>
   <data name="BackupNoMorePagesMessage" xml:space="preserve">
-    <value>No more backup sets are present for your query!</value>
+    <value>No more backup sets are available for your query.</value>
   </data>
   <data name="FirstParameterInvalidMessage" xml:space="preserve">
-    <value>Parameter First cannot be &lt;0</value>
+    <value>The First parameter cannot be &lt;0.</value>
   </data>
   <data name="InvalidBackupSchedulesToAddParameter" xml:space="preserve">
-    <value>Atleast one BackupSchedule should be present in BackupSchedulesToAdd parameter</value>
+    <value>At least one backup schedule should be present in the BackupSchedulesToAdd parameter.</value>
   </data>
   <data name="InvalidFromMessage" xml:space="preserve">
-    <value>Provide valid datetime string for From parameter!</value>
+    <value>Provide a valid dateTime string for the From parameter.</value>
   </data>
   <data name="InvalidToMessage" xml:space="preserve">
-    <value>Provide valid datetime string for To parameter!</value>
+    <value>Provide a valid dateTime string for the To parameter!</value>
   </data>
   <data name="InvalidVolumeIdsToAddParameter" xml:space="preserve">
-    <value>Atleast one VolumeId should be present in VolumeIdsToAdd parameter</value>
+    <value>At least one VolumeId should be present in the VolumeIdsToAdd parameter.</value>
   </data>
   <data name="SkipParameterInvalidMessage" xml:space="preserve">
-    <value>Parameter Skip cannot be &lt;0</value>
+    <value>The Skip parameter cannot be &lt;0.</value>
   </data>
   <data name="StartFromDateForBackupNotValid" xml:space="preserve">
-    <value>Provide valid dateTime for StartFrom parameter</value>
+    <value>Provide a valid dateTime string for the StartFrom parameter.</value>
   </data>
   <data name="CloudExceptionMessage" xml:space="preserve">
-    <value>Call to service failed with error code: {0}</value>
+    <value>The call to the service failed with error code: {0}.</value>
   </data>
   <data name="FailureMessageCompleteJob" xml:space="preserve">
-    <value>The {0} operation failed, please check the task's status for more details.</value>
+    <value>The {0} operation failed. Please check the task's status for details.</value>
   </data>
   <data name="SuccessMessageCompleteJob" xml:space="preserve">
-    <value>The task created for your {0} operation has completed successfully.</value>
+    <value>The task created for your {0} operation completed successfully.</value>
   </data>
   <data name="BackupsReturnedCount" xml:space="preserve">
     <value>{0} backups found!</value>
   </data>
   <data name="FoundDataContainerMessage" xml:space="preserve">
-    <value>Volume container with name: {0} is found.</value>
+    <value>A volume container with the name: {0} was found.</value>
   </data>
   <data name="FoundVolumeMessage" xml:space="preserve">
-    <value>Volume with name: {0} is found.</value>
+    <value>A volume with the name: {0} was found.</value>
   </data>
   <data name="NotFoundDataContainerMessage" xml:space="preserve">
-    <value>Volume container with name: {0} is not found.</value>
+    <value>A volume container with the name: {0} was not found.</value>
   </data>
   <data name="NotFoundVolumeMessage" xml:space="preserve">
-    <value>Volume with name: {0} is not found.</value>
+    <value>A volume with the name: {0} was not found.</value>
   </data>
   <data name="ReturnedCountDataContainerMessage" xml:space="preserve">
     <value>{0} volume container{1} found!</value>
@@ -268,55 +265,55 @@
     <value>{0} volume{1} found for your volume container!</value>
   </data>
   <data name="ClientRequestIdMessage" xml:space="preserve">
-    <value>ClientRequestId: {0}</value>
+    <value>{1} ClientRequestId: {0}</value>
   </data>
   <data name="DeviceWithNameNotFoundInResourceMessage" xml:space="preserve">
-    <value>Device with device name {0} not found under resource {1}</value>
+    <value>Found device with device name {0} under resource {1}.</value>
   </data>
   <data name="DeviceGet_StatusMessage" xml:space="preserve">
     <value>{0} StorSimple device{1} found!</value>
   </data>
   <data name="IncorrectFormatInRegistrationKey" xml:space="preserve">
-    <value>The Registration key specified appears to be in an incorrect format. Please verify that the exact key is copied from the portal!</value>
+    <value>The registration key specified appears to be in an incorrect format. Please verify that the exact key was copied from the portal.</value>
   </data>
   <data name="IscsiConnectionGet_StatusMessage" xml:space="preserve">
-    <value>{0} Iscsi Connection{1} found!</value>
+    <value>{0} iSCSI connection{1} found.</value>
   </data>
   <data name="NoDeviceFoundInResourceMessage" xml:space="preserve">
-    <value>No device found in your currently selected resource : {0}!</value>
+    <value>Could not find a device in your currently selected resource : {0}.</value>
   </data>
   <data name="NoDeviceFoundWithGivenIdInResourceMessage" xml:space="preserve">
-    <value>No device found in your currently selected resource : {0} with id : {1}!</value>
+    <value>Could not find a device with ID {1} in your currently selected resource : {0}.</value>
   </data>
   <data name="NoDeviceFoundWithGivenModelInResourceMessage" xml:space="preserve">
-    <value>No device found in your currently selected resource : {0} with ModelDescription : {1}!</value>
+    <value>Could not find a device with ModelDescription {1} in your currently selected resource : {0}.</value>
   </data>
   <data name="NoDeviceFoundWithGivenNameInResourceMessage" xml:space="preserve">
-    <value>No device found in your currently selected resource : {0} with name : {1}!</value>
+    <value>Could not find a device  named {1} in your currently selected resource : {0}.</value>
   </data>
   <data name="NoDeviceFoundWithGivenTypeInResourceMessage" xml:space="preserve">
-    <value>No device found in your currently selected resource : {0} with Type : {1}!</value>
+    <value>Could not find a device of type {1} in your currently selected resource : {0}.</value>
   </data>
   <data name="NoResourceFoundInSubscriptionMessage" xml:space="preserve">
-    <value>No resource found in your subscription!</value>
+    <value>Could not find the resource in your subscription.</value>
   </data>
   <data name="NoResourceFoundWithGivenNameInSubscriptionMessage" xml:space="preserve">
-    <value>No resource found in your subscription with name : {0}!</value>
+    <value>Could not find a resource named {0} in your subscription.</value>
   </data>
   <data name="NotProvidedWarningRegistrationKey" xml:space="preserve">
-    <value>Registration key parameter is not passed. Validating whether a registration key is already persisted for this resource!</value>
+    <value>Could not pass the Registration Key parameter. Determining whether a registration key is already persisted for this resource.</value>
   </data>
   <data name="ProvidedRegistrationKey" xml:space="preserve">
-    <value>Registration key is provided. Persisting for later use!</value>
+    <value>Registration key was provided. Persisting for later use.</value>
   </data>
   <data name="ResourceContextFound" xml:space="preserve">
-    <value>You have a resource selected. Resource Name: {0} Id: {1}</value>
+    <value>You selected resource named: {0} Id: {1}</value>
   </data>
   <data name="ResourceGet_StatusMessage" xml:space="preserve">
-    <value>{0} StorSimple resource{1} found!</value>
+    <value>Found {0} StorSimple resource{1}.</value>
   </data>
   <data name="SuccessfulResourceSelection" xml:space="preserve">
-    <value>Your resource has seen selected successfully. To change to another resource please use Select-AzureStorSimpleResource commandlet!</value>
+    <value>Your resource has seen selected successfully. To change to another resource please use the Select-AzureStorSimpleResource cmdlet.</value>
   </data>
   <data name="EncryptionInProgressMessage" xml:space="preserve">
     <value>Encryption in progress...</value>
@@ -325,7 +322,7 @@
     <value>Web exception encountered with StatusCode: {0}</value>
   </data>
   <data name="ValidationSuccessfulRegistrationKey" xml:space="preserve">
-    <value>The registration key has been validated successfully! </value>
+    <value>The registration key was validated successfully! </value>
   </data>
   <data name="InvalidInputMessage" xml:space="preserve">
     <value>Invalid input : {0}</value>
@@ -343,13 +340,13 @@
     <value>Could not find storage account with name: {0}</value>
   </data>
   <data name="RegistrationKeyNotPassedMessage" xml:space="preserve">
-    <value>Registrtion key not passed - validating that the secrets are already initialized</value>
+    <value>Registration key was not passed; confirming that the secrets were already initialized.</value>
   </data>
   <data name="RegistrationKeyPassedMessage" xml:space="preserve">
-    <value>Registration key passed - initializing secrets</value>
+    <value>Registration key passed; initializing secrets.</value>
   </data>
   <data name="ResourceContextInitializeMessage" xml:space="preserve">
-    <value>Initializing resource context</value>
+    <value>Initializing the resource context</value>
   </data>
   <data name="SecretsValidationCompleteMessage" xml:space="preserve">
     <value>Secrets validation complete</value>
@@ -358,22 +355,22 @@
     <value>Cleaning up objects, retry count: {0}</value>
   </data>
   <data name="InlineSacCreationMessage" xml:space="preserve">
-    <value>Creating StorageAccountCredential inline</value>
+    <value>Creating storage account credentials inline.</value>
   </data>
   <data name="ACRGet_StatusMessage" xml:space="preserve">
-    <value>{0} Access Control Record{1} found!</value>
+    <value>Found {0} access control record{1}.</value>
   </data>
   <data name="FoundMessageACR" xml:space="preserve">
-    <value>Access Control Record with given name {0} is found!</value>
+    <value>Found access control record named {0}.</value>
   </data>
   <data name="SACFoundWithName" xml:space="preserve">
-    <value>Storage Access Credential with name {0} found!</value>
+    <value>Found storage access credential named {0}.</value>
   </data>
   <data name="SACGet_StatusMessage" xml:space="preserve">
-    <value>{0} Storage Access Credential{1} found!</value>
+    <value>Found {0} storage access credential{1}.</value>
   </data>
   <data name="SACNotFoundWithName" xml:space="preserve">
-    <value>Storage Access Credential with name {0} not found!</value>
+    <value>Could not find storage access credential named {0}.</value>
   </data>
   <data name="BackupTypeInvalid" xml:space="preserve">
     <value>BackupType cannot be Invalid</value>
@@ -382,10 +379,10 @@
     <value>RecurrenceType cannot be Invalid</value>
   </data>
   <data name="RecurrenceValueLessThanZero" xml:space="preserve">
-    <value>RecurrenceValue should be &gt;=0</value>
+    <value>The RecurrenceValue must be &gt;=0.</value>
   </data>
   <data name="RetentionCountRangeInvalid" xml:space="preserve">
-    <value>RetentionCount value should be 1 - 64</value>
+    <value>The RetentionCount value must be 1-64.</value>
   </data>
   <data name="BackupPolicyNameHasDisallowedChars" xml:space="preserve">
     <value>BackupPolicyName should not have characters "[]=';"</value>
@@ -394,19 +391,19 @@
     <value>ResourceId must be specified</value>
   </data>
   <data name="CIKFetchFailed" xml:space="preserve">
-    <value>Could not retrieve secret. Please use Select-AzureStorSimpleResource and provide the Registration key once again.</value>
+    <value>Could not retrieve secret. Please use Select-AzureStorSimpleResource and provide the registration key again.</value>
   </data>
   <data name="CIKInvalid" xml:space="preserve">
-    <value>Invalid value for Registration Key. CIK could not be retrieved from Registration Key. Please provide the value as such from the portal!</value>
+    <value>The registration key is invalid. Please provide the value that was displayed in  the portal.</value>
   </data>
   <data name="CIKNotPersisted" xml:space="preserve">
-    <value>Could not find the persisted secret. Please use Select-AzureStorSimpleResource and provide the Registration key once again.</value>
+    <value>Could not find the persisted secret. Please use Select-AzureStorSimpleResource and provide the registration key again.</value>
   </data>
   <data name="PersistedCIKCorrupted" xml:space="preserve">
-    <value>Secret was persisted earlier, but seems to have been corrupted. Please use Select-AzureStorSimpleResource and provide the Registration key once again.</value>
+    <value>The secret was persisted earlier, but seems to have been corrupted. Please use Select-AzureStorSimpleResource and provide the registration key again.</value>
   </data>
   <data name="PersistedCIKIsNull" xml:space="preserve">
-    <value>Retrieved secret successfully, but was NULL.</value>
+    <value>Retrieved secret successfully, but it contained a NULL value.</value>
   </data>
   <data name="PersistedCIKValidationFailed" xml:space="preserve">
     <value>Failed to validate persisted secret.</value>
@@ -415,12 +412,166 @@
     <value>Could not persist secret</value>
   </data>
   <data name="DeviceNotConfiguredMessage" xml:space="preserve">
-    <value>The device name you have specified is not yet configured fully. Please complete the configuration and retry.</value>
+    <value>The device with the specified device name is not fully configured. Please complete the configuration and retry.</value>
   </data>
   <data name="DeviceNotRegisteredMessage" xml:space="preserve">
-    <value>No StorSimple device is currently registered with this resource. Please register at least one device to the resource and rerun this command.</value>
+    <value>No StorSimple device is currently registered with this resource. Please register at least one device with the resource and then rerun this command.</value>
   </data>
   <data name="ResourceContextNotSetMessage" xml:space="preserve">
-    <value>Resource Context is not set for your subscription. Please use Select-AzureStorSimpleResource -ResourceName &lt;&lt;name&gt;&gt; to set the resource context.</value>
+    <value>The resource context is not set for your subscription. Please use Select-AzureStorSimpleResource -ResourceName &lt;&lt;name&gt;&gt; to set the resource context.</value>
+  </data>
+  <data name="IPAddressesNotProvidedForNetInterfaceBeingEnabled" xml:space="preserve">
+    <value>IP address information (IPv4Address and IPv4Netmask or IPv6Prefix) must be provided for the {0} network interface, because it is being enabled.</value>
+  </data>
+  <data name="MandatoryParamsMissingForInitialDeviceConfiguration" xml:space="preserve">
+    <value>Data0 configuration with Controller0 and Controller1 IP addresses along with TimeZone and Primary DNS Server information is required when you configure the device for the first time.</value>
+  </data>
+  <data name="DeviceJobsNextPageFormatMessage" xml:space="preserve">
+    <value>More jobs are available for your query. To access the next page of  results, use -First {0} -Skip {1} in your cmdlet.</value>
+  </data>
+  <data name="DeviceJobsNextPagewithNoFirstMessage" xml:space="preserve">
+    <value>More jobs are available in subsequent pages for your query. To access the next page, use -Skip {0} in your cmdlet.</value>
+  </data>
+  <data name="DeviceJobsNoMorePagesMessage" xml:space="preserve">
+    <value>No more jobs are available for your query.</value>
+  </data>
+  <data name="DeviceJobsReturnedCount" xml:space="preserve">
+    <value>Found {0} job{1}.</value>
+  </data>
+  <data name="NewNetworkConfigCreated" xml:space="preserve">
+    <value>Successfully created a StorSimple network configuration for interface {0}.</value>
+  </data>
+  <data name="NoDeviceJobFoundWithGivenIdMessage" xml:space="preserve">
+    <value>Could not find a job with the specified Id : {0}.</value>
+  </data>
+  <data name="StopAzureStorSimpleJobMessage" xml:space="preserve">
+    <value>Stopping job with id {0}.</value>
+  </data>
+  <data name="StopAzureStorSimpleJobWarningMessage" xml:space="preserve">
+    <value>Are you sure you want to stop the job with id {0}?</value>
+  </data>
+  <data name="StopDeviceJobSucceeded" xml:space="preserve">
+    <value>Successfully stopped job.</value>
+  </data>
+  <data name="StoppingDeviceJob" xml:space="preserve">
+    <value>About to stop job Id : {0}.</value>
+  </data>
+  <data name="StorSimpleDeviceUpdatedSuccessfully" xml:space="preserve">
+    <value>Successfully updated configuration for device {0} with Id {1}.</value>
+  </data>
+  <data name="BeginningDeviceConfiguration" xml:space="preserve">
+    <value>About to configure the device : {0}.</value>
+  </data>
+  <data name="InvalidIPAddressProvidedMessage" xml:space="preserve">
+    <value>Invalid IP address provided for {0}. Please make sure that the address is in the correct format.</value>
+  </data>
+  <data name="NetworkConfigControllerIPsNotAllowedOnOthers" xml:space="preserve">
+    <value>Controller0IPAddress and Controller1IPAddress cannot be configured on interfaces other than Data0</value>
+  </data>
+  <data name="NetworkConfigData0AllowedSettings" xml:space="preserve">
+    <value>Controller0IPAddress, Controller1IPAddress and EnableIscsi are the only configuration settings that can be changed on the Data0 interface!</value>
+  </data>
+  <data name="ErrorRetrievingDevicePublicKey" xml:space="preserve">
+    <value>Could not retrieve encryption key for device. Please make sure you have specified the correct device.</value>
+  </data>
+  <data name="ReturnedCountDataContainerGroupMessage" xml:space="preserve">
+    <value>{0} volume container group{1} found!</value>
+  </data>
+  <data name="StartDeviceFailoverJobMessage" xml:space="preserve">
+    <value>Started failing over selected volume containers from device {0} to device {1}...</value>
+  </data>
+  <data name="StartDeviceFailoverJobWarningMessage" xml:space="preserve">
+    <value>Are you sure you want to failover the selected volume containers from device {0} to device {1}?</value>
+  </data>
+  <data name="VolumeContainerGroupNotEligibleForFailoverError" xml:space="preserve">
+    <value>Volume Container Group \"{0}\" is not eligible for failover due to  reason: {1}.</value>
+  </data>
+  <data name="SuccessMessageSubmitDeviceJob" xml:space="preserve">
+    <value>The {0} job was triggered successfully. Please use the command Get-AzureStorSimpleJob -InstanceId {1} to track the job's status.</value>
+  </data>
+  <data name="StartAzureStorSimpleBackupCloneJobMessage" xml:space="preserve">
+    <value>Cloning backup with backupId {0}...</value>
+  </data>
+  <data name="StartAzureStorSimpleBackupCloneJobWarningMessage" xml:space="preserve">
+    <value>Are you sure you want to clone the backup with backup Id {0}?</value>
+  </data>
+  <data name="InvalidInterfaceId" xml:space="preserve">
+    <value>{0} is not a valid interface alias.</value>
+  </data>
+  <data name="DeviceFailoverSourceAndTargetDeviceSameError" xml:space="preserve">
+    <value>The source and target devices in a failover operation cannot be the same.</value>
+  </data>
+  <data name="JobNotRunningOrCancellable" xml:space="preserve">
+    <value>Cannot stop job with id {0}. It is not a running cancellable job.</value>
+  </data>
+  <data name="CIKInvalidWhileDecrypting" xml:space="preserve">
+    <value>Invalid registration key. Please enter the valid registration key copied from the portal.</value>
+  </data>
+  <data name="CIKInvalidWithException" xml:space="preserve">
+    <value>Invalid value for registration key. The Cryptographic Ignition Key (CIK) provided couldn't be used to decrypt the secrets. The exact exception while decrypting is "{0}".</value>
+  </data>
+  <data name="PasswordCharacterCriteriaError" xml:space="preserve">
+    <value>{0} is not complex enough. It must contain 3 of the following:
+a lowercase character
+an uppercase character
+a number
+a special character</value>
+  </data>
+  <data name="AdminPasswordLengthError" xml:space="preserve">
+    <value>The AdministratorPassword must be between 8 to 15 characters.</value>
+  </data>
+  <data name="SnapshotPasswordLengthError" xml:space="preserve">
+    <value>The SnapshotManagerPassword must be either 14 or 15 characters long</value>
+  </data>
+  <data name="SetAzureStorSimpleDeviceNoSettingsProvided" xml:space="preserve">
+    <value>No settings were provided for updating device details.</value>
+  </data>
+  <data name="NotFoundWebExceptionMessage" xml:space="preserve">
+    <value>One or more inputs passed is wrong or the cmdlet that you are trying to use is not available.</value>
+  </data>
+  <data name="EncryptionKeyNotAcceptableMessage" xml:space="preserve">
+    <value>Please provide an encryption key consisting of printable ASCII characters</value>
+  </data>
+  <data name="ConfirmMigrationSuccessMessage" xml:space="preserve">
+    <value>You can check the commit or rollback status by using Get-AzureStorSimpleLegacyVolumeContainerConfirmStatus cmdlet.</value>
+  </data>
+  <data name="ImportLegacyApplianceConfigSuccessMessage" xml:space="preserve">
+    <value>Successfully imported config from the legacy appliance! Save the legacy config id and cloud configuration(s) for future reference.</value>
+  </data>
+  <data name="StartMigrationPlanSuccessMessage" xml:space="preserve">
+    <value>Successfully started estimating the migration plan. You can check the migration plan status with Get-AzureStorSimpleLegacyVolumeContainerMigrationPlan cmdlet.</value>
+  </data>
+  <data name="ServiceSecretEncryptionFailure" xml:space="preserve">
+    <value>Unable to encrypt the secrets. Please use Select-AzureStorSimpleResource and provide the Registration key once again.</value>
+  </data>
+  <data name="VolumeContainerList" xml:space="preserve">
+    <value>List of volume containers:</value>
+  </data>
+  <data name="MigrationMsgDeviceFound" xml:space="preserve">
+    <value>Device id obtained {0}</value>
+  </data>
+  <data name="MigrationMsgQueringDeviceId" xml:space="preserve">
+    <value>Getting device id for device {0}</value>
+  </data>
+  <data name="MigrationMsgUploadingConfig" xml:space="preserve">
+    <value>Making service call to import config</value>
+  </data>
+  <data name="MigrationConfigDecryptionFailed" xml:space="preserve">
+    <value>Unable to decrypt the config file. Please check your config decryption key.</value>
+  </data>
+  <data name="MigrationConfigFileNotFound" xml:space="preserve">
+    <value>Legacy appliance config not found</value>
+  </data>
+  <data name="MigrationImportDataContainerSuccessMessage" xml:space="preserve">
+    <value>Import started. You can check the import status with Get-AzureStorSimpleLegacyVolumeContainerStatus cmdlet.</value>
+  </data>
+  <data name="MigrationPlanNoConfigs" xml:space="preserve">
+    <value>No ConfigFile imported.</value>
+  </data>
+  <data name="MigrationPlanNotFound" xml:space="preserve">
+    <value>No migration plan found corresponding to the LegacyConfigId.</value>
+  </data>
+  <data name="MigrationParameterSetNotFound" xml:space="preserve">
+    <value>Parameter set cannot be resolved using the specified named parameters {0}</value>
   </data>
 </root>

@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Common.Authentication.Models;
@@ -33,6 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
     public class GetAzureWebsiteDeploymentTests : WebsitesTestBase
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureWebsiteDeploymentTest()
         {
             // Setup
@@ -89,6 +91,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureWebsiteDeploymentLogsTest()
         {
             // Setup
@@ -148,6 +151,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetsDeploymentForSlot()
         {
             string slot = "staging";

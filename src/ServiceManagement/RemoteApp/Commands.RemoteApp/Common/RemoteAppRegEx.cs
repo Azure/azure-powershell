@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Management.RemoteApp.Cmdlets
+namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
     public abstract partial class RdsCmdlet
     {

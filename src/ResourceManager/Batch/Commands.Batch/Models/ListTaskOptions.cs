@@ -17,46 +17,25 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class ListTaskOptions
+    public class ListTaskOptions : JobOperationParameters
     {
-        /// <summary>
-        /// The account details
-        /// </summary>
-        public BatchAccountContext Context { get; set; }
+        public ListTaskOptions(BatchAccountContext context, string jobId, PSCloudJob job, IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+            : base(context, jobId, job, additionalBehaviors)
+        { }
 
         /// <summary>
-        /// The name of the WorkItem to query for Tasks
+        /// If specified, the single task with this id will be returned.
         /// </summary>
-        public string WorkItemName { get; set; }
+        public string TaskId { get; set; }
 
         /// <summary>
-        /// The name of the Job to query for Tasks
-        /// </summary>
-        public string JobName { get; set; }
-
-        /// <summary>
-        /// If specified, the single Task with this name will be returned
-        /// </summary>
-        public string TaskName { get; set; }
-
-        /// <summary>
-        /// The Job to query for Tasks
-        /// </summary>
-        public PSCloudJob Job { get; set; }
-
-        /// <summary>
-        /// The OData filter to use when querying for Tasks
+        /// The OData filter to use when querying for tasks.
         /// </summary>
         public string Filter { get; set; }
 
         /// <summary>
-        /// The maximum number of Tasks to return
+        /// The maximum number of tasks to return.
         /// </summary>
         public int MaxCount { get; set; }
-
-        /// <summary>
-        /// Additional client behaviors to perform
-        /// </summary>
-        public IEnumerable<BatchClientBehavior> AdditionalBehaviors { get; set; }
     }
 }

@@ -61,15 +61,7 @@ namespace Microsoft.Azure.Commands.WebApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove web hosting plan &apos;{0}&apos;.
-        /// </summary>
-        internal static string RemovingWebHostPlan {
-            get {
-                return ResourceManager.GetString("RemovingWebHostPlan", resourceCulture);
-             }
-        }
-
-        ///   Looks up a localized string similar to Removing website.
+        ///   Looks up a localized string similar to Removing web app.
         /// </summary>
         internal static string RemoveWebsiteMessage {
             get {
@@ -78,7 +70,7 @@ namespace Microsoft.Azure.Commands.WebApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the website &quot;{0}&quot;.
+        ///   Looks up a localized string similar to Are you sure you want to remove the web app &quot;{0}&quot;.
         /// </summary>
         internal static string RemoveWebsiteWarning {
             get {
@@ -87,7 +79,16 @@ namespace Microsoft.Azure.Commands.WebApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove website &apos;{0}&apos;.
+        ///   Looks up a localized string similar to Are you sure you want to remove app service plan &apos;{0}&apos;.
+        /// </summary>
+        internal static string RemovingAppServicePlan {
+            get {
+                return ResourceManager.GetString("RemovingAppServicePlan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove web app &apos;{0}&apos;.
         /// </summary>
         internal static string RemovingWebsite {
             get {

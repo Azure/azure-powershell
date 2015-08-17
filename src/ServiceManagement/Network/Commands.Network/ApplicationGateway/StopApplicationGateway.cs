@@ -13,10 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Properties;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Properties;
 using Microsoft.WindowsAzure.Management.Network.Models;
 
-namespace Microsoft.Azure.Commands.Network.ApplicationGateway
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.ApplicationGateway
 {
     [Cmdlet(VerbsLifecycle.Stop, "AzureApplicationGateway"), OutputType(typeof(ApplicationGatewayOperationResponse))]
     public class StopApplicationGatewayCommand : NetworkCmdletBase

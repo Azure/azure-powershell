@@ -2,7 +2,6 @@
   "Entries": [
     {
       "RequestUri": "/1449d5b7-8a83-47db-ae4c-9b03e888bad0/users/a1a58b22-a124-4ae2-bd50-c9ecaccb6eb5?api-version=1.42-previewInternal",
-      "EncodedRequestUri": "LzE0NDlkNWI3LThhODMtNDdkYi1hZTRjLTliMDNlODg4YmFkMC91c2Vycy9hMWE1OGIyMi1hMTI0LTRhZTItYmQ1MC1jOWVjYWNjYjZlYjU/YXBpLXZlcnNpb249MS40Mi1wcmV2aWV3SW50ZXJuYWw=",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -66,7 +65,6 @@
     },
     {
       "RequestUri": "//subscriptions/3ca49042-782a-4cc9-89b5-ee1b487fe115/resourceGroups/csmrg4264/providers/Microsoft.Authorization/roleAssignments/9b8d3fbe-4a95-406c-aae6-50528fa2aefb?api-version=2014-10-01-preview",
-      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzNjYTQ5MDQyLTc4MmEtNGNjOS04OWI1LWVlMWI0ODdmZTExNS9yZXNvdXJjZUdyb3Vwcy9jc21yZzQyNjQvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRob3JpemF0aW9uL3JvbGVBc3NpZ25tZW50cy85YjhkM2ZiZS00YTk1LTQwNmMtYWFlNi01MDUyOGZhMmFlZmI/YXBpLXZlcnNpb249MjAxNC0xMC0wMS1wcmV2aWV3",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {

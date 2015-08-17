@@ -28,16 +28,16 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     public class NewAzureStorSimpleAccessControlRecord : StorSimpleCmdletBase
     {
         [Alias("Name")]
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageACRName)]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.ACRName)]
         [ValidateNotNullOrEmpty]
         public string ACRName { get; set; }
 
         [Alias("IQN")]
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageIQNforACR)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.IQNforACR)]
         [ValidateNotNullOrEmpty]
         public string IQNInitiatorName { get; set; }
 
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageWaitTillComplete)]
+        [Parameter(Position = 2, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.WaitTillComplete)]
         public SwitchParameter WaitForComplete { get; set; }
 
         public override void ExecuteCmdlet()

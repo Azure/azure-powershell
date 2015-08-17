@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 
@@ -100,6 +101,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test
                                                     };
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UnicodeToPunycodeConversionTest()
         {
             Assert.Equal(unicodeStrings.Length, punycodeStrings.Length);
@@ -148,6 +150,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void PunycodeToUnicodeConversionTest()
         {
             Assert.Equal(punycodeStrings.Length, unicodeStrings.Length);

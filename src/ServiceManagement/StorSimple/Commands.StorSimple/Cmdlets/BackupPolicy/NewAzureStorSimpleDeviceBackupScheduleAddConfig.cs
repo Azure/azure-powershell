@@ -14,11 +14,7 @@
 
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
-using Microsoft.WindowsAzure;
 using System;
-using System.Collections.Generic;
-using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
-using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 {
@@ -28,28 +24,28 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     [Cmdlet(VerbsCommon.New, "AzureStorSimpleDeviceBackupScheduleAddConfig"),OutputType(typeof(BackupScheduleBase))]
     public class NewAzureStorSimpleDeviceBackupScheduleAddConfig : StorSimpleCmdletBase 
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageBackupTypeDesc)]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.BackupTypeDesc)]
         [ValidateNotNullOrEmptyAttribute]
         [ValidateSet("LocalSnapshot", "CloudSnapshot")]
         public string BackupType { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageRecurrenceTypeDesc)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.RecurrenceTypeDesc)]
         [ValidateNotNullOrEmptyAttribute]
         [ValidateSet("Minutes", "Hourly", "Daily", "Weekly")]
         public string RecurrenceType { get; set; }
 
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageRecurrenceValueDesc)]
+        [Parameter(Position = 2, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.RecurrenceValueDesc)]
         [ValidateNotNullOrEmptyAttribute]
         public int RecurrenceValue { get; set; }
 
-        [Parameter(Position = 3, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageRetentionCountDesc)]
+        [Parameter(Position = 3, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.RetentionCountDesc)]
         [ValidateNotNullOrEmptyAttribute]
         public long RetentionCount { get; set; }
 
-        [Parameter(Position = 4, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageBackupStartFromDesc)]
+        [Parameter(Position = 4, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.BackupStartFromDesc)]
         public string StartFromDateTime { get; set; }
 
-        [Parameter(Position = 5, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageBackupEnabledDesc)]
+        [Parameter(Position = 5, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.BackupEnabledDesc)]
         public bool Enabled { get; set; }
 
         public override void ExecuteCmdlet()

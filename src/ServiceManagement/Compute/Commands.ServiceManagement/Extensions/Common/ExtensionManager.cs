@@ -21,12 +21,14 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
+using DeploymentSlotType = Microsoft.WindowsAzure.Commands.ServiceManagement.Model.DeploymentSlotType;
+using System.Diagnostics;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
 {
     public class ExtensionManager
     {
-        public const int ExtensionIdLiveCycleCount = 2;
+        public const int ExtensionIdLiveCycleCount = 3;
         private const string ExtensionIdTemplate = "{0}-{1}-{2}-Ext-{3}";
         private const string DefaultAllRolesNameStr = "Default";
         private const string ExtensionCertificateSubject = "DC=Microsoft Azure Service Management for Extensions";
@@ -142,17 +144,29 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
                 thumbprintAlgorithm = string.Empty;
             }
         }
-
-        public ExtensionConfiguration InstallExtension(ExtensionConfigurationInput context, string slot, Microsoft.WindowsAzure.Management.Compute.Models.ExtensionConfiguration extConfig)
+        
+        public ExtensionConfiguration InstallExtension(ExtensionConfigurationInput context, string slot,
+            DeploymentGetResponse deployment, DeploymentGetResponse peerDeployment)
         {
+            Func<DeploymentGetResponse, ExtensionConfiguration> func = (d) => d == null ? null : d.ExtensionConfiguration;
+
+            ExtensionConfiguration extConfig = func(deployment);
+            ExtensionConfiguration secondSlotExtConfig = func(peerDeployment);
+
             ExtensionConfigurationBuilder builder = GetBuilder(extConfig);
+            ExtensionConfigurationBuilder secondSlotConfigBuilder = null;
+            if (secondSlotExtConfig != null)
+            {
+                secondSlotConfigBuilder = GetBuilder(secondSlotExtConfig);
+            }
+
             foreach (ExtensionRole r in context.Roles)
             {
                 var extensionIds = (from index in Enumerable.Range(0, ExtensionIdLiveCycleCount)
                                     select r.GetExtensionId(context.Type, slot, index)).ToList();
 
                 string availableId = (from extensionId in extensionIds
-                                      where !builder.ExistAny(extensionId)
+                                      where !builder.ExistAny(extensionId) && (secondSlotConfigBuilder == null || !secondSlotConfigBuilder.ExistAny(extensionId))
                                       select extensionId).FirstOrDefault();
 
                 var extensionList = (from id in extensionIds
@@ -243,7 +257,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             }
         }
 
-        public Microsoft.WindowsAzure.Management.Compute.Models.ExtensionConfiguration Set(DeploymentGetResponse currentDeployment, ExtensionConfigurationInput[] inputs, string slot)
+        public ExtensionConfiguration Set(DeploymentGetResponse currentDeployment, DeploymentGetResponse peerDeployment, ExtensionConfigurationInput[] inputs, string slot)
         {
             string errorConfigInput = null;
             if (!Validate(inputs, out errorConfigInput))
@@ -251,14 +265,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
                 throw new Exception(string.Format(Resources.ServiceExtensionCannotApplyExtensionsInSameType, errorConfigInput));
             }
 
-            var oldExtConfig = currentDeployment != null ? currentDeployment.ExtensionConfiguration : new ExtensionConfiguration();
-
             ExtensionConfigurationBuilder configBuilder = this.GetBuilder();
             foreach (ExtensionConfigurationInput context in inputs)
             {
                 if (context != null)
                 {
-                    Microsoft.WindowsAzure.Management.Compute.Models.ExtensionConfiguration currentConfig = this.InstallExtension(context, slot, oldExtConfig);
+                    ExtensionConfiguration currentConfig = this.InstallExtension(context, slot, currentDeployment, peerDeployment);
+
                     foreach (var r in currentConfig.AllRoles)
                     {
                         if (currentDeployment == null || !this.GetBuilder(currentDeployment.ExtensionConfiguration).ExistAny(r.Id))
@@ -284,7 +297,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             return extConfig;
         }
 
-        public Microsoft.WindowsAzure.Management.Compute.Models.ExtensionConfiguration Add(DeploymentGetResponse deployment, ExtensionConfigurationInput[] inputs, string slot)
+        public ExtensionConfiguration Add(DeploymentGetResponse deployment, DeploymentGetResponse peerDeployment, ExtensionConfigurationInput[] inputs, string slot)
         {
             string errorConfigInput = null;
             if (!Validate(inputs, out errorConfigInput))
@@ -293,13 +306,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             }
 
             var oldExtConfig = deployment.ExtensionConfiguration;
+            var oldPeerExtConfig = peerDeployment.ExtensionConfiguration;
 
             ExtensionConfigurationBuilder configBuilder = this.GetBuilder();
             foreach (ExtensionConfigurationInput context in inputs)
             {
                 if (context != null)
                 {
-                    Microsoft.WindowsAzure.Management.Compute.Models.ExtensionConfiguration currentConfig = this.InstallExtension(context, slot, oldExtConfig);
+                    ExtensionConfiguration currentConfig = this.InstallExtension(context, slot, deployment, peerDeployment);
+
                     foreach (var r in currentConfig.AllRoles)
                     {
                         if (!this.GetBuilder(oldExtConfig).ExistAny(r.Id))

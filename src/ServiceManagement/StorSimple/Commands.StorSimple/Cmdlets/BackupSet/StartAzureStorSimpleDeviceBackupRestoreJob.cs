@@ -12,13 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Management.StorSimple.Models;
-using Microsoft.WindowsAzure;
 using System;
-using System.Collections.Generic;
-using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.StorSimple.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
@@ -28,22 +24,22 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     {
         private string deviceId = null;
 
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceName, ParameterSetName = StorSimpleCmdletParameterSet.Empty)]
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageDeviceName, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById)]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.DeviceName, ParameterSetName = StorSimpleCmdletParameterSet.Empty)]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.DeviceName, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById)]
         [ValidateNotNullOrEmptyAttribute]
         public string DeviceName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageBackupIdToRestore, ParameterSetName = StorSimpleCmdletParameterSet.Empty)]
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageBackupIdToRestore, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.BackupIdToRestore, ParameterSetName = StorSimpleCmdletParameterSet.Empty)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.BackupIdToRestore, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById)]
         public string BackupId { get; set; }
 
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessagesnapshotIdToRestore, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById)]
+        [Parameter(Position = 2, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.SnapshotIdToRestore, ParameterSetName = StorSimpleCmdletParameterSet.IdentifyById)]
         public string SnapshotId { get; set; }
 
-        [Parameter(Position = 3, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageWaitTillComplete)]
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.WaitTillComplete)]
         public SwitchParameter WaitForComplete { get; set; }
 
-        [Parameter(Position = 4, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageForce)]
+        [Parameter(Position = 4, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.Force)]
         public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
@@ -53,8 +49,8 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
                 ProcessParameters();
                 ConfirmAction(
                    Force.IsPresent,
-                   string.Format(Resources.StartASSDBackupRestoreJobWarningMessage, BackupId),
-                   string.Format(Resources.StartASSDBackupRestoreJobMessage, BackupId),
+                   string.Format(Resources.StartAzureStorSimpleDeviceBackupRestoreJobWarningMessage, BackupId),
+                   string.Format(Resources.StartAzureStorSimpleDeviceBackupRestoreJobMessage, BackupId),
                   BackupId,
                   () =>
                   {
@@ -87,7 +83,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
 
             if (deviceId == null)
             {
-                WriteVerbose(Resources.NotFoundMessageDevice);
+                throw new ArgumentException(string.Format(Resources.NoDeviceFoundWithGivenNameInResourceMessage, StorSimpleContext.ResourceName, DeviceName));
             }
         }
     }

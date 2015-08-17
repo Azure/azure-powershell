@@ -16,21 +16,21 @@
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Management.ExpressRoute.Models;
+using System;
 
 namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 {
+
     [Cmdlet(VerbsCommon.Get, "AzureDedicatedCircuit"), OutputType(typeof(AzureDedicatedCircuit), typeof (IEnumerable<AzureDedicatedCircuit>))]
     public class GetAzureDedicatedCircuitCommand : ExpressRouteBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "Service Key representing the Dedicated Circuit")]
-        [ValidateGuid]
-        [ValidateNotNullOrEmpty]
-        public string ServiceKey { get; set; }
+        public Guid ServiceKey { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (!string.IsNullOrEmpty(ServiceKey))
+            if (ServiceKey != Guid.Empty)
             {
                 GetByServiceKey();
             }

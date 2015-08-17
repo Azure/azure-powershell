@@ -16,6 +16,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Common.Authentication.Models;
@@ -33,6 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites.WebHostingPlans
     public class GetAzureWebHostingPlanTests : WebsitesTestBase
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListWebHostingPlansTest()
         {
             // Setup
@@ -69,6 +71,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites.WebHostingPlans
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureWebHostingPlanBasicTest()
         {
             // Setup

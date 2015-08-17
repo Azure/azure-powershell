@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Mocks;
 using Microsoft.WindowsAzure.Commands.Utilities.WAPackIaaS;
@@ -29,6 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         /// Tests WaitOnJob with no timeout and a job that completes immediately.
         /// </summary>
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
         public void WaitOnJobCompletesImmediately()
@@ -50,6 +52,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         /// Tests WaitOnJob with a timeout where the the Job does not complete before timeout occurs
         /// </summary>
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
         public void WaitOnJobTimeoutJobNotFinished()
@@ -79,6 +82,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         /// Tests WaitOnJob with empty response (no job) from server
         /// </summary>
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
         [Trait("Type", "WAPackIaaS-Negative")]
@@ -101,6 +105,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS.Operations
         /// Tests WaitOnJob with a timeout where the job completes before the timeout occurs
         /// </summary>
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
         public void WaitOnJobTimeoutJobFinished()

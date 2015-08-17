@@ -2,9 +2,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Network", "ServiceManagement\Network\Commands.Network\Commands.Network.csproj", "{40FEE0BB-FD45-4EFC-85BC-0D602A6892C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ServiceManagement.Network", "ServiceManagement\Network\Commands.Network\Commands.ServiceManagement.Network.csproj", "{40FEE0BB-FD45-4EFC-85BC-0D602A6892C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Network.Test", "ServiceManagement\Network\Commands.Network.Test\Commands.Network.Test.csproj", "{FDB897BD-FCB4-44A1-8D66-AC99F22EC737}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ServiceManagement.Network.Test", "ServiceManagement\Network\Commands.Network.Test\Commands.ServiceManagement.Network.Test.csproj", "{FDB897BD-FCB4-44A1-8D66-AC99F22EC737}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands", "ServiceManagement\Services\Commands\Commands.csproj", "{CD5AA507-F5EF-473D-855B-84B91A1ABE54}"
 EndProject

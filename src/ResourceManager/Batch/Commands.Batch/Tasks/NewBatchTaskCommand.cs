@@ -21,64 +21,60 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.New, "AzureBatchTask")]
+    [Cmdlet(VerbsCommon.New, Constants.AzureBatchTask)]
     public class NewBatchTaskCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(ParameterSetName = Constants.NameParameterSet, Mandatory = true, HelpMessage = "The name of the WorkItem to create the Task under.")]
+        [Parameter(ParameterSetName = Constants.IdParameterSet, Mandatory = true, HelpMessage = "The id of the job to create the task under.")]
         [ValidateNotNullOrEmpty]
-        public string WorkItemName { get; set; }
+        public string JobId { get; set; }
 
-        [Parameter(ParameterSetName = Constants.NameParameterSet, Mandatory = true, HelpMessage = "The name of the Job to create the Task under.")]
-        [ValidateNotNullOrEmpty]
-        public string JobName { get; set; }
-
-        [Parameter(ParameterSetName = Constants.ParentObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The Job to create the Task under.")]
+        [Parameter(ParameterSetName = Constants.ParentObjectParameterSet, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public PSCloudJob Job { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The name of the Task to create.")]
+        [Parameter(Mandatory = true, HelpMessage = "The id of the task to create.")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string Id { get; set; }
 
-        [Parameter(HelpMessage = "The commandline for the Task.")]
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public string DisplayName { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = "The command line for the task.")]
         [ValidateNotNullOrEmpty]
         public string CommandLine { get; set; }
 
-        [Parameter(HelpMessage = "Resource Files required by the Task. For each key/value pair, set the key to the Resource File path, and the value to the Resource File blob source.")]
+        [Parameter]
         [ValidateNotNullOrEmpty]
         public IDictionary ResourceFiles { get; set; }
 
-        [Parameter(HelpMessage = "Environment Settings to add to the new Task. For each key/value pair, set the key to the Environment Setting name, and the value to the Environment Setting value.")]
+        [Parameter]
         [ValidateNotNullOrEmpty]
         public IDictionary EnvironmentSettings { get; set; }
 
-        [Parameter(HelpMessage = "Run the Task in elevated mode.")]
+        [Parameter]
         public SwitchParameter RunElevated { get; set; }
 
-        [Parameter(HelpMessage = "The locality hints for the Task.")]
+        [Parameter]
         [ValidateNotNullOrEmpty]
         public PSAffinityInformation AffinityInformation { get; set; }
 
-        [Parameter(HelpMessage = "The execution constraints for the Task.")]
+        [Parameter]
         [ValidateNotNullOrEmpty]
-        public PSTaskConstraints TaskConstraints { get; set; }
+        public PSTaskConstraints Constraints { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            NewTaskParameters parameters = new NewTaskParameters()
+            NewTaskParameters parameters = new NewTaskParameters(this.BatchContext, this.JobId, this.Job, 
+                this.Id, this.AdditionalBehaviors)
             {
-                Context = this.BatchContext,
-                WorkItemName = this.WorkItemName,
-                JobName = this.JobName,
-                Job = this.Job,
-                TaskName = this.Name,
+                DisplayName = this.DisplayName,
                 CommandLine = this.CommandLine,
                 ResourceFiles = this.ResourceFiles,
                 EnvironmentSettings = this.EnvironmentSettings,
                 RunElevated = this.RunElevated.IsPresent,
                 AffinityInformation = this.AffinityInformation,
-                TaskConstraints = this.TaskConstraints,
-                AdditionalBehaviors = this.AdditionalBehaviors
+                Constraints = this.Constraints
             };
 
             BatchClient.CreateTask(parameters);

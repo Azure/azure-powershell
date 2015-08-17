@@ -292,6 +292,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
         [DataMember(Order = 3, EmitDefaultValue = false)]
         public string Name { get; set; }
 
+        [DataMember(Order = 4, EmitDefaultValue = false)]
+        public string ReservedIPName { get; set; }
+
         public ExtensionDataObject ExtensionData { get; set; }
 
         #region Implements Equals
@@ -863,7 +866,21 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
                 this.SetValue("PublicIPs", value);
             }
         }
-        [DataMember(Name = "NetworkSecurityGroup", EmitDefaultValue = false, Order = 7)]
+
+        [DataMember(Name = "NetworkInterfaces", EmitDefaultValue = false, Order = 7)]
+        public AssignNetworkInterfaceCollection NetworkInterfaces
+        {
+            get
+            {
+                return this.GetValue<AssignNetworkInterfaceCollection>("NetworkInterfaces");
+            }
+            set
+            {
+                this.SetValue("NetworkInterfaces", value);
+            }
+        }
+
+        [DataMember(Name = "NetworkSecurityGroup", EmitDefaultValue = false, Order = 8)]
         public string NetworkSecurityGroup
         {
             get
@@ -876,16 +893,16 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
             }
         }
 
-        [DataMember(Name = "NetworkInterfaces", EmitDefaultValue = false, Order = 7)]
-        public AssignNetworkInterfaceCollection NetworkInterfaces
+        [DataMember(Name = "IPForwarding", EmitDefaultValue = false, Order = 9)]
+        public string IPForwarding
         {
             get
             {
-                return this.GetValue<AssignNetworkInterfaceCollection>("NetworkInterfaces");
+                return this.GetValue<string>("IPForwarding");
             }
             set
             {
-                this.SetValue("NetworkInterfaces", value);
+                this.SetValue("IPForwarding", value);
             }
         }
     }
@@ -912,6 +929,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
         [DataMember(Name = "IdleTimeoutInMinutes", EmitDefaultValue = false, Order = 2)]
         public int? IdleTimeoutInMinutes { get; set; }
 
+        [DataMember(Name = "DomainNameLabel", EmitDefaultValue = false, Order = 3)]
+        public string DomainNameLabel { get; set; }
     }
 
     [CollectionDataContract(Name = "NetworkInterfaces", ItemName = "NetworkInterface", Namespace = Constants.ServiceManagementNS)]
@@ -946,6 +965,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
             }
         }
 
+        [DataMember(Name = "NetworkSecurityGroup", EmitDefaultValue = false, Order = 3)]
+        public string NetworkSecurityGroup { get; set; }
+
+        [DataMember(Name = "IPForwarding", EmitDefaultValue = false, Order = 4)]
+        public string IPForwarding { get; set; }
     }
 
     [CollectionDataContract(Name = "IPConfigurations", ItemName = "IPConfiguration", Namespace = Constants.ServiceManagementNS)]
@@ -1151,6 +1175,19 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
             set
             {
                 base.SetValue("LoadBalancerDistribution", value);
+            }
+        }
+
+        [DataMember(Name = "VirtualIPName", EmitDefaultValue = false, Order = 12)]
+        public string VirtualIPName
+        {
+            get
+            {
+                return base.GetValue<string>("VirtualIPName");
+            }
+            set
+            {
+                base.SetValue("VirtualIPName", value);
             }
         }
     }
@@ -3075,9 +3112,32 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
         [DataMember(EmitDefaultValue = false, Order = 2)]
         public string Address { get; set; }
 
+        [DataMember(EmitDefaultValue = false, Order = 3)]
+        public int? IdleTimeoutInMinutes { get; set; }
+
+        [DataMember(EmitDefaultValue = false, Order = 4)]
+        public string DomainNameLabel { get; set; }
+
+        [DataMember(EmitDefaultValue = false, Order = 5)]
+        public FqdnsList Fqdns { get; set; }
+
         public ExtensionDataObject ExtensionData { get; set; }
     }
 
+    [CollectionDataContract(Name = "Fqdns", ItemName = "Fqdn", Namespace = Constants.ServiceManagementNS)]
+    public class FqdnsList : List<string>
+    {
+        public FqdnsList()
+        {
+
+        }
+
+        public FqdnsList(IEnumerable<string> fqdns)
+            : base(fqdns)
+        {
+
+        }
+    }
 
     [CollectionDataContract(Name = "LoadBalancers", ItemName = "LoadBalancer", Namespace = Constants.ServiceManagementNS)]
     public class LoadBalancerList : List<LoadBalancer>

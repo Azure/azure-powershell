@@ -75,8 +75,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewResourceGroupWithTemplateThenGetWithAndWithoutDetails()
+        public void TestNewResourceGroupWithTemplate()
         {
             ResourcesController.NewInstance.RunPsTest("Test-NewResourceGroupWithTemplateThenGetWithAndWithoutDetails");
         }

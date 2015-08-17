@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.WindowsAzure;
@@ -80,7 +81,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
                     
                     ResourceCreateOrUpdateResult createOrUpdateResult = ResourceManagementClient.Resources.CreateOrUpdate(parameters.ResourceGroupName, 
                         resourceIdentity,
-                        new BasicResource
+                        new GenericResource
                             {
                                 Location = parameters.Location,
                                 Properties = SerializeHashtable(parameters.PropertyObject, addValueLayer: false),
@@ -138,7 +139,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(parameters.Tag, validate: true);
 
             ResourceManagementClient.Resources.CreateOrUpdate(parameters.ResourceGroupName, resourceIdentity,
-                        new BasicResource
+                        new GenericResource
                             {
                                 Location = getResource.Resource.Location,
                                 Properties = newProperty,
@@ -214,7 +215,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             bool createDeployment = !string.IsNullOrEmpty(parameters.GalleryTemplateIdentity) || !string.IsNullOrEmpty(parameters.TemplateFile);
             bool resourceExists = ResourceManagementClient.ResourceGroups.CheckExistence(parameters.ResourceGroupName).Exists;
 
-            ResourceGroup resourceGroup = null;
+            ResourceGroupExtended resourceGroup = null;
             Action createOrUpdateResourceGroup = () =>
             {
                 resourceGroup = CreateOrUpdateResourceGroup(parameters.ResourceGroupName, parameters.Location, parameters.Tag);
@@ -250,7 +251,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// <returns>The created resource group</returns>
         public virtual PSResourceGroup UpdatePSResourceGroup(UpdatePSResourceGroupParameters parameters)
         {
-            ResourceGroup resourceGroup = ResourceManagementClient.ResourceGroups.Get(parameters.ResourceGroupName).ResourceGroup;
+            ResourceGroupExtended resourceGroup = ResourceManagementClient.ResourceGroups.Get(parameters.ResourceGroupName).ResourceGroup;
 
             resourceGroup = CreateOrUpdateResourceGroup(parameters.ResourceGroupName, resourceGroup.Location, parameters.Tag);
             WriteVerbose(string.Format("Updated resource group '{0}' in location '{1}'", resourceGroup.Name, resourceGroup.Location));
@@ -263,9 +264,9 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// </summary>
         /// <param name="options">The filtering options</param>
         /// <returns>The filtered set of resources matching the filter criteria</returns>
-        public virtual List<Resource> FilterResources(FilterResourcesOptions options)
+        public virtual List<GenericResourceExtended> FilterResources(FilterResourcesOptions options)
         {
-            List<Resource> resources = new List<Resource>();
+            List<GenericResourceExtended> resources = new List<GenericResourceExtended>();
 
             if (!string.IsNullOrEmpty(options.ResourceGroup) && !string.IsNullOrEmpty(options.Name))
             {
@@ -301,7 +302,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         public virtual PSResourceGroupDeployment ExecuteDeployment(CreatePSResourceGroupDeploymentParameters parameters)
         {
             parameters.DeploymentName = GenerateDeploymentName(parameters);
-            BasicDeployment deployment = CreateBasicDeployment(parameters);
+            Deployment deployment = CreateBasicDeployment(parameters);
             TemplateValidationInfo validationInfo = CheckBasicDeploymentErrors(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
 
             if (validationInfo.Errors.Count != 0)
@@ -324,7 +325,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
             ResourceManagementClient.Deployments.CreateOrUpdate(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
             WriteVerbose(string.Format("Create template deployment '{0}'.", parameters.DeploymentName));
-            Deployment result = ProvisionDeploymentStatus(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
+            DeploymentExtended result = ProvisionDeploymentStatus(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
 
             return result.ToPSResourceGroupDeployment(parameters.ResourceGroupName);
         }
@@ -362,7 +363,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             if (string.IsNullOrEmpty(name))
             {
                 var response = ResourceManagementClient.ResourceGroups.List(null);
-                List<ResourceGroup> resourceGroups = ResourceManagementClient.ResourceGroups.List(null).ResourceGroups.ToList();
+                List<ResourceGroupExtended> resourceGroups = ResourceManagementClient.ResourceGroups.List(null).ResourceGroups.ToList();
 
                 while (!string.IsNullOrEmpty(response.NextLink))
                 {
@@ -564,7 +565,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// <returns>True if valid, false otherwise.</returns>
         public virtual List<PSResourceManagerError> ValidatePSResourceGroupDeployment(ValidatePSResourceGroupDeploymentParameters parameters)
         {
-            BasicDeployment deployment = CreateBasicDeployment(parameters);
+            Deployment deployment = CreateBasicDeployment(parameters);
             TemplateValidationInfo validationInfo = CheckBasicDeploymentErrors(parameters.ResourceGroupName, Guid.NewGuid().ToString(), deployment);
 
             if (validationInfo.Errors.Count == 0)

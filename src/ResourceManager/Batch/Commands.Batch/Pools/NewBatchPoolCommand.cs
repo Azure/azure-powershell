@@ -21,82 +21,84 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.New, "AzureBatchPool", DefaultParameterSetName = TargetDedicatedParameterSet)]
+    [Cmdlet(VerbsCommon.New, Constants.AzureBatchPool, DefaultParameterSetName = TargetDedicatedParameterSet)]
     public class NewBatchPoolCommand : BatchObjectModelCmdletBase
     {
         internal const string TargetDedicatedParameterSet = "TargetDedicated";
         internal const string AutoScaleParameterSet = "AutoScale";
 
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the Pool to create.")]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The id of the pool to create.")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string Id { get; set; }
 
-        [Parameter(HelpMessage = "The size of the VMs in the Pool.")]
+        [Parameter(Mandatory = true, HelpMessage = "The size of the virtual machines in the pool.")]
         [ValidateNotNullOrEmpty]
-        public string VMSize { get; set; }
+        public string VirtualMachineSize { get; set; }
 
-        [Parameter(HelpMessage = "The OS family of the VMs in the Pool. You can learn more about OS families and versions at http://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/")]
+        [Parameter(Mandatory = true, HelpMessage = "The Azure Guest OS family to be installed on the virtual machines in the pool.")]
         [ValidateNotNullOrEmpty]
         public string OSFamily { get; set; }
 
-        [Parameter(HelpMessage = "The target OS version of the VMs in the Pool. Use \"*\" for the latest OS version for the specified family. You can learn more about OS families and versions at http://azure.microsoft.com/en-us/documentation/articles/cloud-services-guestos-update-matrix/")]
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public string DisplayName { get; set; }
+
+        [Parameter]
         [ValidateNotNullOrEmpty]
         public string TargetOSVersion { get; set; }
 
-        [Parameter(ParameterSetName = TargetDedicatedParameterSet, HelpMessage = "The timeout for allocating VMs to the Pool.")]
+        [Parameter(ParameterSetName = TargetDedicatedParameterSet)]
         [ValidateNotNullOrEmpty]
         public TimeSpan? ResizeTimeout { get; set; }
 
-        [Parameter(ParameterSetName = TargetDedicatedParameterSet, HelpMessage = "The target number of VMs to allocate to the Pool.")]
+        [Parameter(ParameterSetName = TargetDedicatedParameterSet)]
         [ValidateNotNullOrEmpty]
         public int? TargetDedicated { get; set; }
 
-        [Parameter(ParameterSetName = AutoScaleParameterSet, HelpMessage = "The formula for automatically scaling the Pool.")]
+        [Parameter(ParameterSetName = AutoScaleParameterSet)]
         [ValidateNotNullOrEmpty]
         public string AutoScaleFormula { get; set; }
 
-        [Parameter(HelpMessage = "The maximum number of Tasks that can run on a single VM.")]
+        [Parameter]
         [ValidateNotNullOrEmpty]
-        public int? MaxTasksPerVM { get; set; }
+        public int? MaxTasksPerComputeNode { get; set; }
 
-        [Parameter(HelpMessage = "The scheduling policy.")]
+        [Parameter]
         [ValidateNotNullOrEmpty]
-        public PSSchedulingPolicy SchedulingPolicy { get; set; }
+        public PSTaskSchedulingPolicy TaskSchedulingPolicy { get; set; }
 
-        [Parameter(HelpMessage = "Metadata to add to the new Pool. For each key/value pair, set the key to the Metadata name, and the value to the Metadata value.")]
+        [Parameter]
         [ValidateNotNullOrEmpty]
         public IDictionary Metadata { get; set; }
 
-        [Parameter(HelpMessage = "Set up the Pool for direct communication between dedicated VMs.")]
-        public SwitchParameter CommunicationEnabled { get; set; }
+        [Parameter]
+        public SwitchParameter InterComputeNodeCommunicationEnabled { get; set; }
 
-        [Parameter(HelpMessage = "The start task specification for the Pool. The start task is run when a VM joins the Pool, or when the VM is rebooted or reimaged.")]
+        [Parameter]
         [ValidateNotNullOrEmpty]
         public PSStartTask StartTask { get; set; }
 
-        [Parameter(HelpMessage = "Certificates associated with the Pool.")]
+        [Parameter]
         [ValidateNotNullOrEmpty]
         public PSCertificateReference[] CertificateReferences { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            NewPoolParameters parameters = new NewPoolParameters()
+            NewPoolParameters parameters = new NewPoolParameters(this.BatchContext, this.Id, this.AdditionalBehaviors)
             {
-                Context = this.BatchContext,
-                PoolName = this.Name,
-                VMSize = this.VMSize,
+                VirtualMachineSize = this.VirtualMachineSize,
                 OSFamily = this.OSFamily,
+                DisplayName = this.DisplayName,
                 TargetOSVersion = this.TargetOSVersion,
                 ResizeTimeout = this.ResizeTimeout,
                 TargetDedicated = this.TargetDedicated,
                 AutoScaleFormula = this.AutoScaleFormula,
-                MaxTasksPerVM = this.MaxTasksPerVM,
-                SchedulingPolicy = this.SchedulingPolicy,
+                MaxTasksPerComputeNode = this.MaxTasksPerComputeNode,
+                TaskSchedulingPolicy = this.TaskSchedulingPolicy,
                 Metadata = this.Metadata,
-                Communication = this.CommunicationEnabled.IsPresent,
+                InterComputeNodeCommunicationEnabled = this.InterComputeNodeCommunicationEnabled.IsPresent,
                 StartTask = this.StartTask,
-                CertificateReferences = this.CertificateReferences,
-                AdditionalBehaviors = this.AdditionalBehaviors
+                CertificateReferences = this.CertificateReferences
             };
 
             BatchClient.CreatePool(parameters);

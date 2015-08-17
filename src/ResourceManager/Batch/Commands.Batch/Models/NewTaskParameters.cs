@@ -12,72 +12,64 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections;
 using Microsoft.Azure.Batch;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class NewTaskParameters
+    public class NewTaskParameters : JobOperationParameters
     {
-        /// <summary>
-        /// The account details
-        /// </summary>
-        public BatchAccountContext Context { get; set; }
+        public NewTaskParameters(BatchAccountContext context, string jobId, PSCloudJob job, string taskId, IEnumerable<BatchClientBehavior> additionalBehaviors = null) 
+            : base(context, jobId, job, additionalBehaviors)
+        {
+            if (string.IsNullOrWhiteSpace(taskId))
+            {
+                throw new ArgumentNullException("taskId");
+            }
+
+            this.TaskId = taskId;
+        }
 
         /// <summary>
-        /// The name of the WorkItem to create the Task under.
+        /// The id of the task to create.
         /// </summary>
-        public string WorkItemName { get; set; }
+        public string TaskId { get; private set; }
 
         /// <summary>
-        /// The name of the Job to create the Task under.
+        /// The display name of the task to create.
         /// </summary>
-        public string JobName { get; set; }
+        public string DisplayName { get; set; }
 
         /// <summary>
-        /// The name of the Task to create.
-        /// </summary>
-        public string TaskName { get; set; }
-
-        /// <summary>
-        /// The Job to create the Task under.
-        /// </summary>
-        public PSCloudJob Job { get; set; }
-
-        /// <summary>
-        /// The command the Task will execute.
+        /// The command the task will execute.
         /// </summary>
         public string CommandLine { get; set; }
 
         /// <summary>
-        /// Resource Files to add to the new Task.
+        /// Resource files to add to the new task.
         /// </summary>
         public IDictionary ResourceFiles { get; set; }
 
         /// <summary>
-        /// Environment Settings to add to the new Task.
+        /// Environment settings to add to the new task.
         /// </summary>
         public IDictionary EnvironmentSettings { get; set; }
 
         /// <summary>
-        /// Whether to run the Task in elevated mode.
+        /// Whether to run the task in elevated mode.
         /// </summary>
         public bool RunElevated { get; set; }
 
         /// <summary>
-        /// The Affinity Information for the Task.
+        /// The affinity information for the task.
         /// </summary>
         public PSAffinityInformation AffinityInformation { get; set; }
 
         /// <summary>
-        /// The Task Constraints.
+        /// The task constraints.
         /// </summary>
-        public PSTaskConstraints TaskConstraints { get; set; }
-
-        /// <summary>
-        /// Additional client behaviors to perform
-        /// </summary>
-        public IEnumerable<BatchClientBehavior> AdditionalBehaviors { get; set; }
+        public PSTaskConstraints Constraints { get; set; }
     }
 }

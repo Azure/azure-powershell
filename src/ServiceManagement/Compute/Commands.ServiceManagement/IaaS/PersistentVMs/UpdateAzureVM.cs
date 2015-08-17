@@ -12,19 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management.Automation;
 using AutoMapper;
+using Hyak.Common;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Storage;
-using Hyak.Common;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 {
@@ -71,23 +72,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                         throw new ArgumentException(Resources.CurrentStorageAccountIsNotAccessible);
                     }
 
-                    DateTime dateTimeCreated = DateTime.Now;
                     string diskPartName = VM.RoleName;
-
                     if (datadisk.DiskLabel != null)
                     {
                         diskPartName += "-" + datadisk.DiskLabel;
                     }
 
-                    string vhdname = string.Format("{0}-{1}-{2}-{3}-{4}-{5}.vhd", ServiceName, diskPartName, dateTimeCreated.Year, dateTimeCreated.Month, dateTimeCreated.Day, dateTimeCreated.Millisecond);
-                    string blobEndpoint = currentStorage.BlobEndpoint.AbsoluteUri;
-
-                    if (blobEndpoint.EndsWith("/") == false)
-                    {
-                        blobEndpoint += "/";
-                    }
-
-                    datadisk.MediaLink = new Uri(blobEndpoint + "vhds/" + vhdname);
+                    var mediaLinkFactory = new MediaLinkFactory(currentStorage, this.ServiceName, diskPartName);
+                    datadisk.MediaLink = mediaLinkFactory.Create();
                 }
 
                 if (VM.DataVirtualHardDisks.Count > 1)

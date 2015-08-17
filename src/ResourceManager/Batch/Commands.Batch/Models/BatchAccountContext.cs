@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Threading;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Auth;
 using Microsoft.Azure.Commands.Batch.Properties;
@@ -22,40 +23,79 @@ using System.Collections;
 namespace Microsoft.Azure.Commands.Batch
 {
     /// <summary>
-    /// very simple account context class for getting things started
+    /// Contains Batch account details for use when interacting with the Batch service.
     /// </summary>
     public class BatchAccountContext
     {
         private AccountKeyType keyInUse;
-        private IBatchClient batchOMClient;
+        private BatchClient batchOMClient;
 
+        /// <summary>
+        /// The account resource Id.
+        /// </summary>
         public string Id { get; private set; }
 
+        /// <summary>
+        /// The account endpoint.
+        /// </summary>
         public string AccountEndpoint { get; private set; }
 
+        /// <summary>
+        /// The primary account key.
+        /// </summary>
         public string PrimaryAccountKey { get; internal set; }
 
+        /// <summary>
+        /// The secondary account key.
+        /// </summary>
         public string SecondaryAccountKey { get; internal set; }
 
+        /// <summary>
+        /// The name of the Batch account.
+        /// </summary>
         public string AccountName { get; private set; }
 
+        /// <summary>
+        /// The region in which the account was created.
+        /// </summary>
         public string Location { get; private set; }
 
+        /// <summary>
+        /// The name of the resource group that the account resource is under.
+        /// </summary>
         public string ResourceGroupName { get; private set; }
 
+        /// <summary>
+        /// The subscription Id that the account belongs to.
+        /// </summary>
         public string Subscription { get; private set; }
 
+        /// <summary>
+        /// The provisioning state of the account resource.
+        /// </summary>
         public string State { get; private set; }
 
+        /// <summary>
+        /// The Batch service endpoint.
+        /// </summary>
         public string TaskTenantUrl { get; private set; }
 
+        /// <summary>
+        /// Tags associated with the account resource.
+        /// </summary>
         public Hashtable[] Tags { get; private set; }
 
+        /// <summary>
+        /// A string representation of the Tags property.
+        /// </summary>
         public string TagsTable
         {
             get { return Helpers.FormatTagsTable(Tags); }
         }
 
+        /// <summary>
+        /// The key to use when interacting with the Batch service. Be default, the primary key will be used.
+        /// </summary>
         public AccountKeyType KeyInUse 
         { 
             get { return this.keyInUse; }
@@ -70,7 +110,7 @@ namespace Microsoft.Azure.Commands.Batch
             } 
         }
 
-        internal IBatchClient BatchOMClient
+        internal BatchClient BatchOMClient
         {
             get
             {
@@ -82,8 +122,8 @@ namespace Microsoft.Azure.Commands.Batch
                         throw new InvalidOperationException(string.Format(Resources.KeyNotPresent, KeyInUse));
                     }
                     string key = KeyInUse == AccountKeyType.Primary ? PrimaryAccountKey : SecondaryAccountKey;
-                    BatchCredentials credentials = new BatchCredentials(AccountName, key);
-                    this.batchOMClient = Microsoft.Azure.Batch.BatchClient.Connect(TaskTenantUrl, credentials);
+                    BatchSharedKeyCredentials credentials = new BatchSharedKeyCredentials(TaskTenantUrl, AccountName, key);
+                    this.batchOMClient = Microsoft.Azure.Batch.BatchClient.Open(credentials);
                 }
                 return this.batchOMClient;
             }
@@ -121,7 +161,7 @@ namespace Microsoft.Azure.Commands.Batch
             // extract the host and strip off the account name for the TaskTenantUrl and AccountName
             var hostParts = accountEndpoint.Split('.');
             this.AccountName = hostParts[0];
-            this.TaskTenantUrl = Uri.UriSchemeHttps + Uri.SchemeDelimiter + String.Join(".", hostParts, 1, hostParts.Length - 1);
+            this.TaskTenantUrl = Uri.UriSchemeHttps + Uri.SchemeDelimiter + accountEndpoint;
 
             // get remaining fields from Id which looks like:
             // /subscriptions/4a06fe24-c197-4353-adc1-058d1a51924e/resourceGroups/clwtest/providers/Microsoft.Batch/batchAccounts/clw

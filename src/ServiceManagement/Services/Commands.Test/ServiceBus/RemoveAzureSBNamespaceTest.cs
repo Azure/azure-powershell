@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ServiceBus;
@@ -30,6 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.ServiceBus
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveAzureSBNamespaceSuccessfull()
         {
             // Setup

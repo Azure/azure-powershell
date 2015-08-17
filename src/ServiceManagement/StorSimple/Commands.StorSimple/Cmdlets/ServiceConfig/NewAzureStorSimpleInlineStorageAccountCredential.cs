@@ -28,16 +28,16 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     public class NewAzureStorSimpleInlineStorageAccountCredential : StorSimpleCmdletBase
     {
         [Alias("Name")]
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageStorageAccountName)]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.StorageAccountName)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
 
         [Alias("Key")]
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageStorageAccountKey)]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = StorSimpleCmdletHelpMessage.StorageAccountKey)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountKey { get; set; }
 
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.HelpMessageEndpoint)]
+        [Parameter(Position = 2, Mandatory = false, HelpMessage = StorSimpleCmdletHelpMessage.Endpoint)]
         [ValidateNotNullOrEmpty]
         public string Endpoint { get; set; }
 

@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             string accountName = "automation";
             string runbookName = "runbook";
 
-            this.mockAutomationClient.Setup(f => f.StartRunbook(accountName, runbookName, null));
+            this.mockAutomationClient.Setup(f => f.StartRunbook(accountName, runbookName, null, null));
 
             // Test
             this.cmdlet.AutomationAccountName = accountName;
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
-            this.mockAutomationClient.Verify(f => f.StartRunbook(accountName, runbookName, null), Times.Once());
+            this.mockAutomationClient.Verify(f => f.StartRunbook(accountName, runbookName, null, null), Times.Once());
         }
     }
 }
