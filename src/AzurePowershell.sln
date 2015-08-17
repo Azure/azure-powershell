@@ -230,8 +230,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.AzureBackup", "Res
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.AzureBackup.Test", "ResourceManager\AzureBackup\Commands.AzureBackup.Test\Commands.AzureBackup.Test.csproj", "{678AE95D-2364-47D7-888C-3FFA6D412CC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RemoteAppScenarioTest", "ServiceManagement\RemoteApp\Commands.RemoteApp.ScenarioTest\Commands.RemoteAppScenarioTest.csproj", "{C2FA83A2-8668-49DD-A1A0-0359653571CA}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -574,10 +572,6 @@ Global
 		{678AE95D-2364-47D7-888C-3FFA6D412CC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{678AE95D-2364-47D7-888C-3FFA6D412CC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{678AE95D-2364-47D7-888C-3FFA6D412CC8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C2FA83A2-8668-49DD-A1A0-0359653571CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C2FA83A2-8668-49DD-A1A0-0359653571CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C2FA83A2-8668-49DD-A1A0-0359653571CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C2FA83A2-8668-49DD-A1A0-0359653571CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -624,6 +618,5 @@ Global
 		{F220C306-29A3-4511-8518-A58A55C60D07} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{6448E795-3D02-4BDD-B0C7-AD0A2AFE3C8B} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{678AE95D-2364-47D7-888C-3FFA6D412CC8} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
-		{C2FA83A2-8668-49DD-A1A0-0359653571CA} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 	EndGlobalSection
 EndGlobal
