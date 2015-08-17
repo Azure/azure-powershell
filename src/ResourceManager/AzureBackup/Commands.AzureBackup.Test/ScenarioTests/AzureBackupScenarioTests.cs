@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
         [Fact]
         public void AzureBackupEndToEndTests()
         {
-            this.RunPowerShellTest("Test-AzureBackupEndToEnd");
+            //this.RunPowerShellTest("Test-AzureBackupEndToEnd");
         }
     }
 }
