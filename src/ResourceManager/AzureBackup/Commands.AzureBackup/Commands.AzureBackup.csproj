@@ -157,6 +157,7 @@
     <Compile Include="Cmdlets\Vault\RemoveAzureRMBackupVault.cs" />
     <Compile Include="Cmdlets\Vault\SetAzureRMBackupVault.cs" />
     <Compile Include="Helpers\ContainerHelpers.cs" />
+    <Compile Include="Helpers\ItemHelpers.cs" />
     <Compile Include="Helpers\ProtectionPolicyHelpers.cs" />
     <Compile Include="Helpers\VaultHelpers.cs" />
     <Compile Include="Library\CertUtils.cs" />

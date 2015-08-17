@@ -109,4 +109,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         Weekly
     }
 
+    public enum AzureBackupItemType
+    {
+        IaasVM = 0
+    }
 }
