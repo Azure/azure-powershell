@@ -16,7 +16,7 @@ $ResourceGroupName = "backuprg"
 $ResourceName = "backuprn"
 $ContainerName = "DPMDRSCALEINT1.DPMDOM02.SELFHOST.CORP.MICROSOFT.COM"
 $ContainerType = "Windows"
-$ContainerId = "213698"
+$ContainerId = "223719"
 $ContainerStatus = "Registered"
 
 function Test-AzureBackupMarsContainerScenario

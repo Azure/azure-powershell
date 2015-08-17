@@ -32,7 +32,7 @@ function Test-AzureBackupEndToEnd
 	$r2 = New-AzureRMBackupRetentionPolicyObject -WeeklyRetention -DaysOfWeek "Monday" -Retention 10;
 	$r3 = New-AzureRMBackupRetentionPolicyObject -MonthlyRetentionInDailyFormat -DaysOfMonth "10" -Retention 10;
 	$r = ($r1, $r2, $r3);
-	$backupTime = (Get-Date -Hour 15 -Minute 30 -Second 0).ToUniversalTime();
+	$backupTime = (Get-Date("17 August 2015 15:30:00")).ToUniversalTime();
 	$protectionpolicy = New-AzureRMBackupProtectionPolicy -Vault $vault -Name $ProtectionPolicyName -Type "AzureVM" -Daily -BackupTime $backupTime -RetentionPolicy $r; 
 
 	Assert-AreEqual $protectionpolicy.Name $ProtectionPolicyName;
@@ -81,7 +81,7 @@ function Test-AzureBackupEndToEnd
 	$JobDetails = Get-AzureRMBackupJobDetails -Vault $vault -JobID $Job.InstanceId;
 	Assert-AreEqual $JobDetails.Operation "Backup";
 	Assert-AreEqual $JobDetails.Status "Completed";
-	Assert-AreEqual $JobDetails.WorkloadType "VM";
+	Assert-NotNull $JobDetails.WorkloadType;
 	Assert-AreEqual $JobDetails.WorkloadName $VirtualMachineName;
 	Assert-AreEqual $JobDetails.Properties.Values.Contains($VirtualMachineName) "True";
 	Assert-AreEqual $JobDetails.ResourceGroupName $ResourceGroupName;
@@ -110,7 +110,7 @@ function Test-AzureBackupEndToEnd
 	$JobDetails = Get-AzureRMBackupJobDetails -Vault $vault -JobID $Job.InstanceId;
 	Assert-AreEqual $JobDetails.Operation "Restore";
 	Assert-AreEqual $JobDetails.Status "Completed";
-	Assert-AreEqual $JobDetails.WorkloadType "VM";
+	Assert-NotNull $JobDetails.WorkloadType;
 	Assert-AreEqual $JobDetails.WorkloadName $VirtualMachineName;
 	Assert-AreEqual $JobDetails.Properties.Values.Contains($RestoreStorageAccount) "True";
 	Assert-AreEqual $JobDetails.Properties.Values.Contains("Recover disks") "True";
