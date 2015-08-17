@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 if(isDiscoveryNeed)
                 {
                     WriteDebug(String.Format("VM {0} is not yet discovered. Triggering Discovery", vmName));
-                    RefreshContainer();
+                    RefreshContainer(Vault.ResourceGroupName, Vault.Name);
                     isDiscoveryNeed = IsDiscoveryNeeded(vmName, rgName, out container);
                     if ((isDiscoveryNeed == true) || (container == null))
                     {
@@ -101,14 +101,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 //Container is discovered. Register the container
                 WriteDebug(String.Format("Going to register VM {0}", vmName));
-                var operationId = AzureBackupClient.RegisterContainer(container.Name);
+                var operationId = AzureBackupClient.RegisterContainer(Vault.ResourceGroupName, Vault.Name, container.Name);
 
-                var operationStatus = GetOperationStatus(operationId);
-                WriteObject(GetCreatedJobs(Vault, operationStatus.JobList).FirstOrDefault());
+                var operationStatus = GetOperationStatus(Vault.ResourceGroupName, Vault.Name, operationId);
+                WriteObject(GetCreatedJobs(Vault.ResourceGroupName, Vault.Name, Vault, operationStatus.JobList).FirstOrDefault());
             });
         }
 
-        private void RefreshContainer()
+        private void RefreshContainer(string resourceGroupName, string resourceName)
         {
             bool isRetryNeeded = true;
             int retryCount = 1;
@@ -116,10 +116,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             string errorMessage = string.Empty;
             while (isRetryNeeded && retryCount <= 3)
             {
-                var operationId = AzureBackupClient.RefreshContainers();
+                var operationId = AzureBackupClient.RefreshContainers(resourceGroupName, resourceName);
 
                 //Now wait for the operation to Complete               
-                isRetryNeeded = WaitForDiscoveryToComplete(operationId, out isDiscoverySuccessful, out errorMessage);
+                isRetryNeeded = WaitForDiscoveryToComplete(resourceGroupName, resourceName, operationId, out isDiscoverySuccessful, out errorMessage);
                 retryCount++;
             }
 
@@ -129,10 +129,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             }
         }
 
-        private bool WaitForDiscoveryToComplete(Guid operationId, out bool isDiscoverySuccessful, out string errorMessage)
+        private bool WaitForDiscoveryToComplete(string resourceGroupName, string resourceName, Guid operationId, out bool isDiscoverySuccessful, out string errorMessage)
         {
             bool isRetryNeeded = false;
-            var status = TrackOperation(operationId);
+            var status = TrackOperation(resourceGroupName, resourceName, operationId);
             errorMessage = String.Empty;
 
             isDiscoverySuccessful = true;
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             };
 
             //First check if container is discovered or not            
-            var containers = AzureBackupClient.ListContainers(parameters);
+            var containers = AzureBackupClient.ListContainers(Vault.ResourceGroupName, Vault.Name, parameters);
             WriteDebug(String.Format("Container count returned from service: {0}.", containers.Count()));
             if (containers.Count() == 0)
             {

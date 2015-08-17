@@ -12,21 +12,31 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.AzureBackup.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xunit;
 
-namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.AzureBackup.Helpers
 {
-    public class AzureBackupScenarioTests : AzureBackupTestsBase
+    internal class ItemHelpers
     {
-        [Fact]
-        public void AzureBackupEndToEndTests()
+        internal static string GetTypeForItem(string typeFromServiceRespone)
         {
-            //this.RunPowerShellTest("Test-AzureBackupEndToEnd");
+            AzureBackupItemType managedContainerType = (AzureBackupItemType)Enum.Parse(typeof(AzureBackupItemType), typeFromServiceRespone, true);
+
+            string itemType = string.Empty;
+
+            switch (managedContainerType)
+            {
+                case AzureBackupItemType.IaasVM:
+                    itemType = "AzureVM";
+                    break;
+            }
+
+            return itemType;
         }
     }
 }

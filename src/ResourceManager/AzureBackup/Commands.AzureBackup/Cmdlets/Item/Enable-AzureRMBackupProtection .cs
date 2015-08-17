@@ -71,11 +71,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     throw new Exception("Unknown item type");
                 }
 
-                var operationId = AzureBackupClient.EnableProtection(Item.ContainerUniqueName, itemName, input);
+                var operationId = AzureBackupClient.EnableProtection(Item.ResourceGroupName, Item.ResourceName, Item.ContainerUniqueName, itemName, input);
                 WriteDebug("Received enable azure backup protection response");
 
-                var operationStatus = TrackOperation(operationId);
-                this.WriteObject(GetCreatedJobs(new Models.AzureRMBackupVault(Item.ResourceGroupName, Item.ResourceName, Item.Location), operationStatus.JobList).FirstOrDefault());
+                var operationStatus = TrackOperation(Item.ResourceGroupName, Item.ResourceName, operationId);
+                this.WriteObject(GetCreatedJobs(Item.ResourceGroupName, 
+                    Item.ResourceName, 
+                    new Models.AzureRMBackupVault(Item.ResourceGroupName, Item.ResourceName, Item.Location), 
+                    operationStatus.JobList).FirstOrDefault());
             });
         }
     }

@@ -61,19 +61,22 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
                         Properties = new CSMUpdateProtectionRequestProperties(string.Empty)
                     };
 
-                    operationId = AzureBackupClient.UpdateProtection(Item.ContainerUniqueName, Item.ItemName, input);
+                    operationId = AzureBackupClient.UpdateProtection(Item.ResourceGroupName, Item.ResourceName, Item.ContainerUniqueName, Item.ItemName, input);
                 }
 
                 else
                 {
                     //Calling disable protection
-                    operationId = AzureBackupClient.DisableProtection(Item.ContainerUniqueName, Item.ItemName);
+                    operationId = AzureBackupClient.DisableProtection(Item.ResourceGroupName, Item.ResourceName, Item.ContainerUniqueName, Item.ItemName);
                 }
 
 
                 WriteDebug("Received disable azure backup protection response");
-                var operationStatus = TrackOperation(operationId);
-                this.WriteObject(GetCreatedJobs(new Models.AzureRMBackupVault(Item.ResourceGroupName, Item.ResourceName, Item.Location), operationStatus.JobList).FirstOrDefault());
+                var operationStatus = TrackOperation(Item.ResourceGroupName, Item.ResourceName, operationId);
+                this.WriteObject(GetCreatedJobs(Item.ResourceGroupName, 
+                    Item.ResourceName, 
+                    new Models.AzureRMBackupVault(Item.ResourceGroupName, Item.ResourceName, Item.Location), 
+                    operationStatus.JobList).FirstOrDefault());
             });
         }
     }

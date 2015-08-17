@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public string Status { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.Type)]
-        [ValidateSet("IaasVM")]
+        [ValidateSet("AzureVM")]
         public string Type { get; set; }
 
         public override void ExecuteCmdlet()
@@ -57,16 +57,16 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 {
                     ProtectionStatus = this.ProtectionStatus,
                     Status = this.Status,
-                    Type = this.Type
+                    Type = GetItemType(this.Type)
                 };
 
                 CSMItemQueryObject POQueryParam = new CSMItemQueryObject()
                 {
                     Status = this.ProtectionStatus,
-                    Type = this.Type
+                    Type = GetItemType(this.Type)
                 };
 
-                var azureBackupDatasourceListResponse = AzureBackupClient.ListDataSources(DSQueryParam);
+                var azureBackupDatasourceListResponse = AzureBackupClient.ListDataSources(Container.ResourceGroupName, Container.ResourceName, DSQueryParam);
 
                 if (azureBackupDatasourceListResponse != null)
                 {
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 if (this.Status == null)
                 {
-                    var azureBackupPOListResponse = AzureBackupClient.ListProtectableObjects(POQueryParam);
+                    var azureBackupPOListResponse = AzureBackupClient.ListProtectableObjects(Container.ResourceGroupName, Container.ResourceName, POQueryParam);
                     if (azureBackupPOListResponse != null)
                     {
                         azureBackupPOObjects = azureBackupPOListResponse.Where(x => x.Properties.ContainerId.Split('/').Last().Equals(Container.ContainerUniqueName, System.StringComparison.InvariantCultureIgnoreCase)).ToList();
@@ -125,6 +125,18 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             {
                 this.WriteObject(targetList, true);
             }
+        }
+
+        public string GetItemType(string sourceType)
+        {
+            string result = null;
+
+            if(sourceType == "AzureVM")
+            {
+                result = AzureBackupItemType.IaasVM.ToString();
+            }
+
+            return result;
         }
 
     }

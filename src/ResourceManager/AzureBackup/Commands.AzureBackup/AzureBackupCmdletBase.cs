@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         protected void InitializeAzureBackupCmdlet(string rgName, string rName)
         {
             var cloudServicesClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(Profile, Profile.Context.Subscription, AzureEnvironment.Endpoint.ResourceManager);
-            azureBackupClientAdapter = new AzureBackupClientAdapter(cloudServicesClient.Credentials, cloudServicesClient.BaseUri, rgName, rName);
+            azureBackupClientAdapter = new AzureBackupClientAdapter(cloudServicesClient.Credentials, cloudServicesClient.BaseUri);
 
             WriteDebug(string.Format("Initialized AzureBackup Cmdlet, ClientRequestId: {0}, ResourceGroupName: {1}, ResourceName : {2}", azureBackupClientAdapter.GetClientRequestId(), rgName, rName));
         }
@@ -146,9 +146,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         /// </summary>
         /// <param name="operationId"></param>
         /// <returns></returns>
-        internal CSMOperationResult GetOperationStatus(Guid operationId)
+        internal CSMOperationResult GetOperationStatus(string resourceGroupName, string resourceName, Guid operationId)
         {
-            return AzureBackupClient.GetOperationStatus(operationId.ToString());
+            return AzureBackupClient.GetOperationStatus(resourceGroupName, resourceName, operationId.ToString());
         }
 
         private const int defaultOperationStatusRetryTimeInMilliSec = 10 * 1000; // 10 sec
@@ -159,13 +159,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         /// <param name="operationId"></param>
         /// <param name="checkFrequency">In Millisec</param>
         /// <returns></returns>
-        internal CSMOperationResult TrackOperation(Guid operationId, int checkFrequency = defaultOperationStatusRetryTimeInMilliSec)
+        internal CSMOperationResult TrackOperation(string resourceGroupName, string resourceName, Guid operationId, int checkFrequency = defaultOperationStatusRetryTimeInMilliSec)
         {
             CSMOperationResult response = null;
 
             while (true)
             {
-                response = GetOperationStatus(operationId);
+                response = GetOperationStatus(resourceGroupName, resourceName, operationId);
 
                 if (response.Status != CSMAzureBackupOperationStatus.InProgress.ToString())
                 {
@@ -179,13 +179,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             return response;
         }
 
-        internal IList<AzureRMBackupJob> GetCreatedJobs(AzureRMBackupVault vault, IList<string> jobIds)
+        internal IList<AzureRMBackupJob> GetCreatedJobs(string resourceGroupName, string resourceName, AzureRMBackupVault vault, IList<string> jobIds)
         {
             IList<AzureRMBackupJob> jobs = new List<AzureRMBackupJob>();
 
             foreach (string jobId in jobIds)
             {
-                CSMJobDetailsResponse job = AzureBackupClient.GetJobDetails(jobId);
+                CSMJobDetailsResponse job = AzureBackupClient.GetJobDetails(resourceGroupName, resourceName, jobId);
                 jobs.Add(new AzureRMBackupJob(vault, job.JobDetailedProperties, job.Name));
             }
 

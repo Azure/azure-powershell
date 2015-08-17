@@ -31,12 +31,18 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
         private CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
 
+        public static string ResourceGroupName;
+        public static string ResourceName;
+
         public BackupVaultServicesManagementClient BackupVaultServicesMgmtClient { get; private set; }
 
         public BackupServicesManagementClient BackupServicesMgmtClient { get; private set; }
 
         protected AzureBackupTestsBase()
         {
+            AzureBackupTestsBase.ResourceName = ConfigurationManager.AppSettings["ResourceName"];
+            AzureBackupTestsBase.ResourceGroupName = ConfigurationManager.AppSettings["ResourceGroupName"];
+
             this.helper = new EnvironmentSetupHelper();
             this.csmTestFactory = new CSMTestEnvironmentFactory();
         }
@@ -83,9 +89,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
 
             ServicePointManager.ServerCertificateValidationCallback = IgnoreCertificateErrorHandler;
 
-            string resourceName = ConfigurationManager.AppSettings["ResourceName"];
-            string resourceGroupName = ConfigurationManager.AppSettings["ResourceGroupName"];
-
             if (typeof(T) == typeof(BackupVaultServicesManagementClient))
             {
                 BackupVaultServicesManagementClient client;
@@ -93,8 +96,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
                 if (testEnvironment.UsesCustomUri())
                 {
                     client = new BackupVaultServicesManagementClient(
-                        resourceName,
-                        resourceGroupName,
                         testEnvironment.Credentials as SubscriptionCloudCredentials,
                         testEnvironment.BaseUri);
                 }
@@ -102,8 +103,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
                 else
                 {
                     client = new BackupVaultServicesManagementClient(
-                        resourceName,
-                        resourceGroupName,
                         testEnvironment.Credentials as SubscriptionCloudCredentials);
                 }
 
@@ -116,8 +115,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
                 if (testEnvironment.UsesCustomUri())
                 {
                     client = new BackupServicesManagementClient(
-                        resourceName,
-                        resourceGroupName,
                         testEnvironment.Credentials as SubscriptionCloudCredentials,
                         testEnvironment.BaseUri);
                 }
@@ -125,8 +122,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
                 else
                 {
                     client = new BackupServicesManagementClient(
-                        resourceName,
-                        resourceGroupName,
                         testEnvironment.Credentials as SubscriptionCloudCredentials);
                 }
 

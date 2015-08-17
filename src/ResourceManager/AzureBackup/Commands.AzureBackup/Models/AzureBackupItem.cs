@@ -18,6 +18,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Management.BackupServices.Models;
+using Microsoft.Azure.Commands.AzureBackup.Helpers;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Models
 {
@@ -81,7 +82,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
 
             ProtectionPolicyId = datasource.Properties.ProtectionPolicyId;
             RecoveryPointsCount = datasource.Properties.RecoveryPointsCount;
-            Type = datasource.Properties.ItemType;
+            Type = ItemHelpers.GetTypeForItem(datasource.Properties.ItemType);
         }
 
         public AzureRMBackupItem(CSMItemResponse pPOItem, AzureRMBackupContainer azureBackupContainer)
@@ -90,7 +91,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
             ProtectionStatus = pPOItem.Properties.Status;
             ItemName = pPOItem.Name;
             Name = pPOItem.Properties.FriendlyName;
-            Type = pPOItem.Properties.ItemType;
+            Type = ItemHelpers.GetTypeForItem(pPOItem.Properties.ItemType);
         }
     }
 }
