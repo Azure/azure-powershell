@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public string Status { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.Type)]
-        [ValidateSet("IaasVM")]
+        [ValidateSet("AzureVM")]
         public string Type { get; set; }
 
         public override void ExecuteCmdlet()
@@ -57,13 +57,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 {
                     ProtectionStatus = this.ProtectionStatus,
                     Status = this.Status,
-                    Type = this.Type
+                    Type = GetItemType(this.Type)
                 };
 
                 CSMItemQueryObject POQueryParam = new CSMItemQueryObject()
                 {
                     Status = this.ProtectionStatus,
-                    Type = this.Type
+                    Type = GetItemType(this.Type)
                 };
 
                 var azureBackupDatasourceListResponse = AzureBackupClient.ListDataSources(DSQueryParam);
@@ -125,6 +125,18 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             {
                 this.WriteObject(targetList, true);
             }
+        }
+
+        public string GetItemType(string sourceType)
+        {
+            string result = null;
+
+            if(sourceType == "AzureVM")
+            {
+                result = AzureBackupItemType.IaasVM.ToString();
+            }
+
+            return result;
         }
 
     }
