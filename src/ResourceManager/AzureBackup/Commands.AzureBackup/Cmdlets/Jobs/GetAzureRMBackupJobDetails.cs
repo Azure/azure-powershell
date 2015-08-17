@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 WriteDebug("JobID filter is: " + JobID);
 
-                Mgmt.CSMJobDetailsResponse serviceJobProperties = AzureBackupClient.GetJobDetails(JobID);
+                Mgmt.CSMJobDetailsResponse serviceJobProperties = AzureBackupClient.GetJobDetails(Vault.ResourceGroupName, Vault.Name, JobID);
                 AzureRMBackupJobDetails jobDetails = new AzureRMBackupJobDetails(Vault, serviceJobProperties.JobDetailedProperties, serviceJobProperties.Name);
 
                 WriteDebug("Retrieved JobDetails from service.");

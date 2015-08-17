@@ -32,21 +32,21 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
 {
     public partial class AzureBackupClientAdapter
     {
-        public IEnumerable<Mgmt.CSMJobResponse> ListJobs(CSMJobQueryObject queryParams)
+        public IEnumerable<Mgmt.CSMJobResponse> ListJobs(string resourceGroupName, string resourceName, CSMJobQueryObject queryParams)
         {
-            var response = AzureBackupClient.Job.ListAsync(queryParams, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+            var response = AzureBackupClient.Job.ListAsync(resourceGroupName, resourceName, queryParams, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
             return response.List.Value;
         }
 
-        public Mgmt.CSMJobDetailsResponse GetJobDetails(string jobId)
+        public Mgmt.CSMJobDetailsResponse GetJobDetails(string resourceGroupName, string resourceName, string jobId)
         {
-            var response = AzureBackupClient.Job.GetAsync(jobId, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+            var response = AzureBackupClient.Job.GetAsync(resourceGroupName, resourceName, jobId, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
             return response.Value;
         }
 
-        public Guid TriggerCancelJob(string jobId)
+        public Guid TriggerCancelJob(string resourceGroupName, string resourceName, string jobId)
         {
-            var response = AzureBackupClient.Job.StopAsync(jobId, GetCustomRequestHeaders(), CmdletCancellationToken).Result.OperationId;
+            var response = AzureBackupClient.Job.StopAsync(resourceGroupName, resourceName, jobId, GetCustomRequestHeaders(), CmdletCancellationToken).Result.OperationId;
             return response;
         }
     }

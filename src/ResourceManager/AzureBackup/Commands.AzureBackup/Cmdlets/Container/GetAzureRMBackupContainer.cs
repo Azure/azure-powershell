@@ -59,10 +59,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 {
                     case AzureBackupContainerType.Windows:
                     case AzureBackupContainerType.SCDPM:
-                        containers.AddRange(GetMachineContainers());
+                        containers.AddRange(GetMachineContainers(Vault.ResourceGroupName, Vault.Name));
                         break;
                     case AzureBackupContainerType.AzureVM:
-                        containers.AddRange(GetManagedContainers());
+                        containers.AddRange(GetManagedContainers(Vault.ResourceGroupName, Vault.Name));
                         break;
                     default:
                         break;
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             });
         }
 
-        private List<AzureRMBackupContainer> GetMachineContainers()
+        private List<AzureRMBackupContainer> GetMachineContainers(string resourceGroupName, string resourceName)
         {
             List<MarsContainerResponse> marsContainerResponses = new List<MarsContainerResponse>();
 
@@ -96,11 +96,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             if (string.IsNullOrEmpty(Name))
             {
-                marsContainerResponses.AddRange(AzureBackupClient.ListMachineContainers());
+                marsContainerResponses.AddRange(AzureBackupClient.ListMachineContainers(resourceGroupName, resourceName));
             }
             else
             {
-                marsContainerResponses.AddRange(AzureBackupClient.ListMachineContainers(Name));
+                marsContainerResponses.AddRange(AzureBackupClient.ListMachineContainers(resourceGroupName, resourceName, Name));
             }
 
             return marsContainerResponses.ConvertAll<AzureRMBackupContainer>(marsContainerResponse =>
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             }).Where(container => container.ContainerType == Type.ToString()).ToList();
         }
 
-        private List<AzureRMBackupContainer> GetManagedContainers()
+        private List<AzureRMBackupContainer> GetManagedContainers(string resourceGroupName, string resourceName)
         {
             List<AzureRMBackupContainer> managedContainers = new List<AzureRMBackupContainer>();
 
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             }
 
             List<CSMContainerResponse> containers = new List<CSMContainerResponse>();
-            containers.AddRange(AzureBackupClient.ListContainers(parameters));
+            containers.AddRange(AzureBackupClient.ListContainers(resourceGroupName, resourceName, parameters));
             WriteDebug(string.Format("Fetched {0} containers", containers.Count()));
 
             // When resource group name is specified, remove all containers whose resource group name

@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 if (RecoveryPointId != null)
                 {
-                    CSMRecoveryPointResponse recoveryPointObject = AzureBackupClient.GetRecoveryPoint(Item.ContainerUniqueName, Item.ItemName, RecoveryPointId);
+                    CSMRecoveryPointResponse recoveryPointObject = AzureBackupClient.GetRecoveryPoint(Item.ResourceGroupName, Item.ResourceName, Item.ContainerUniqueName, Item.ItemName, RecoveryPointId);
                     if (recoveryPointObject != null)
                     {
                         WriteAzureBackupRecoveryPoint(recoveryPointObject, Item);
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 }
                 else
                 {
-                    IEnumerable<CSMRecoveryPointResponse> recoveryPointListResponse = AzureBackupClient.ListRecoveryPoints(Item.ContainerUniqueName, Item.ItemName);
+                    IEnumerable<CSMRecoveryPointResponse> recoveryPointListResponse = AzureBackupClient.ListRecoveryPoints(Item.ResourceGroupName, Item.ResourceName, Item.ContainerUniqueName, Item.ItemName);
                     if (recoveryPointListResponse != null &&
                         recoveryPointListResponse.Count<CSMRecoveryPointResponse>() > 0)
                     {

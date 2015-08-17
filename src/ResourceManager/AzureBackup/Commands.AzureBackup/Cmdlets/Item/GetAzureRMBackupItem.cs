@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     Type = this.Type
                 };
 
-                var azureBackupDatasourceListResponse = AzureBackupClient.ListDataSources(DSQueryParam);
+                var azureBackupDatasourceListResponse = AzureBackupClient.ListDataSources(Container.ResourceGroupName, Container.ResourceName, DSQueryParam);
 
                 if (azureBackupDatasourceListResponse != null)
                 {
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 if (this.Status == null)
                 {
-                    var azureBackupPOListResponse = AzureBackupClient.ListProtectableObjects(POQueryParam);
+                    var azureBackupPOListResponse = AzureBackupClient.ListProtectableObjects(Container.ResourceGroupName, Container.ResourceName, POQueryParam);
                     if (azureBackupPOListResponse != null)
                     {
                         azureBackupPOObjects = azureBackupPOListResponse.Where(x => x.Properties.ContainerId.Split('/').Last().Equals(Container.ContainerUniqueName, System.StringComparison.InvariantCultureIgnoreCase)).ToList();

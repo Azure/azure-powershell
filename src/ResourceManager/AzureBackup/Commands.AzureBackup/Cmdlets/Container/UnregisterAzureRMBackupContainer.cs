@@ -73,16 +73,19 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             if (shouldUnregister)
             {
-                AzureBackupClient.UnregisterMachineContainer(Container.Id);
+                AzureBackupClient.UnregisterMachineContainer(Container.ResourceGroupName, Container.ResourceName, Container.Id);
             }
         }
 
         private void UnregisterContainer()
         {
             string containerUniqueName = Container.ContainerUniqueName;
-            var operationId = AzureBackupClient.UnRegisterContainer(containerUniqueName);
+            var operationId = AzureBackupClient.UnRegisterContainer(Container.ResourceGroupName, Container.ResourceName, containerUniqueName);
 
-            WriteObject(GetCreatedJobs(new Models.AzureRMBackupVault(Container.ResourceGroupName, Container.ResourceName, Container.Location), GetOperationStatus(operationId).JobList).FirstOrDefault());
+            WriteObject(GetCreatedJobs(Container.ResourceGroupName, 
+                Container.ResourceName, 
+                new Models.AzureRMBackupVault(Container.ResourceGroupName, Container.ResourceName, Container.Location), 
+                GetOperationStatus(Container.ResourceGroupName, Container.ResourceName, operationId).JobList).FirstOrDefault());
         }
     }
 }

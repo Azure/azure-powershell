@@ -34,16 +34,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         private Uri baseURI { get; set; }
 
         /// <summary>
-        /// ResourceGroup context for the operation
-        /// </summary>
-        private string resourceGroupName { get; set; }
-
-        /// <summary>
-        /// Resource context for the operation
-        /// </summary>
-        private string resourceName { get; set; }
-
-        /// <summary>
         /// Client request id.
         /// </summary>
         private string clientRequestId;
@@ -73,7 +63,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
             {
                 if (this.azureBackupVaultClient == null)
                 {
-                    this.azureBackupVaultClient = AzureSession.ClientFactory.CreateCustomClient<BackupVaultServicesManagementClient>(resourceName, resourceGroupName, cloudCreds, baseURI);
+                    this.azureBackupVaultClient = AzureSession.ClientFactory.CreateCustomClient<BackupVaultServicesManagementClient>(cloudCreds, baseURI);
                 }
 
                 return this.azureBackupVaultClient;
@@ -89,19 +79,17 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
             {
                 if (this.azureBackupClient == null)
                 {
-                    this.azureBackupClient = AzureSession.ClientFactory.CreateCustomClient<BackupServicesManagementClient>(resourceName, resourceGroupName, cloudCreds, baseURI);
+                    this.azureBackupClient = AzureSession.ClientFactory.CreateCustomClient<BackupServicesManagementClient>(cloudCreds, baseURI);
                 }
 
                 return this.azureBackupClient;
             }
         }
 
-        public AzureBackupClientAdapter(SubscriptionCloudCredentials creds, Uri baseUri, string rgName, string rName)
+        public AzureBackupClientAdapter(SubscriptionCloudCredentials creds, Uri baseUri)
         {
             cloudCreds = creds;
             baseURI = baseUri;
-            resourceGroupName = rgName;
-            resourceName = rName;
 
             RefreshClientRequestId();
 

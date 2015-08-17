@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 {
                     WriteDebug(String.Format("Setting storage type for the resource, Type: {0}", Storage));
 
-                    AzureBackupClient.UpdateStorageType(Storage.ToString());
+                    AzureBackupClient.UpdateStorageType(ResourceGroupName, Name, Storage.ToString());
                 }
 
                 WriteObject(VaultHelpers.GetCmdletVault(createdVault, AzureBackupClient.GetStorageTypeDetails(VaultHelpers.GetResourceGroup(createdVault.Id), createdVault.Name)));
