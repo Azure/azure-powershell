@@ -40,11 +40,12 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 if (policyInfo != null)
                 {
                     AzureBackupClient.DeleteProtectionPolicy(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, policyInfo.Name);
-                    WriteVerbose("Successfully deleted policy");
+                    WriteDebug("Successfully deleted policy");
                 }
                 else
                 {
-                    WriteVerbose("Policy Not Found");
+                    var exception = new ArgumentException(string.Format("ProtectionPolicy with name {0} does not exist.", policyInfo.Name));
+                    throw exception;                    
                 }
             });
         }        
