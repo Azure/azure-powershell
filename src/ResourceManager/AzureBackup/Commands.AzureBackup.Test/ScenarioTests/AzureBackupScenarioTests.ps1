@@ -75,7 +75,7 @@ function Test-AzureBackupEndToEnd
 	Assert-AreEqual $item.ResourceGroupName $ResourceGroupName;
 	Assert-AreEqual $item.ResourceName $ResourceName;
 	Assert-AreEqual $item.Location $Location;
-	sleep 660
+
 	$Job = Backup-AzureRMBackupItem -Item $item[0];
 	Wait-AzureRMBackupJob -Job $Job;
 	$JobDetails = Get-AzureRMBackupJobDetails -Vault $vault -JobID $Job.InstanceId;
@@ -118,7 +118,6 @@ function Test-AzureBackupEndToEnd
 	Assert-AreEqual $JobDetails.ResourceName $ResourceName;
 	Assert-AreEqual $JobDetails.Location $Location;
 
-	sleep 660
 	$Job = Disable-AzureRMBackupProtection -RemoveRecoveryPoints -Item $item[0];
 	Wait-AzureRMBackupJob -Job $Job;
 	$JobDetails = Get-AzureRMBackupJobDetails -Vault $vault -JobID $Job.InstanceId;
