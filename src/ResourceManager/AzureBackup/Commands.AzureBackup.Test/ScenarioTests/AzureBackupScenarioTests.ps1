@@ -81,7 +81,7 @@ function Test-AzureBackupEndToEnd
 	$JobDetails = Get-AzureRMBackupJobDetails -Vault $vault -JobID $Job.InstanceId;
 	Assert-AreEqual $JobDetails.Operation "Backup";
 	Assert-AreEqual $JobDetails.Status "Completed";
-	Assert-AreEqual $JobDetails.WorkloadType "VM";
+	Assert-NotNull $JobDetails.WorkloadType;
 	Assert-AreEqual $JobDetails.WorkloadName $VirtualMachineName;
 	Assert-AreEqual $JobDetails.Properties.Values.Contains($VirtualMachineName) "True";
 	Assert-AreEqual $JobDetails.ResourceGroupName $ResourceGroupName;
@@ -110,7 +110,7 @@ function Test-AzureBackupEndToEnd
 	$JobDetails = Get-AzureRMBackupJobDetails -Vault $vault -JobID $Job.InstanceId;
 	Assert-AreEqual $JobDetails.Operation "Restore";
 	Assert-AreEqual $JobDetails.Status "Completed";
-	Assert-AreEqual $JobDetails.WorkloadType "VM";
+	Assert-NotNull $JobDetails.WorkloadType;
 	Assert-AreEqual $JobDetails.WorkloadName $VirtualMachineName;
 	Assert-AreEqual $JobDetails.Properties.Values.Contains($RestoreStorageAccount) "True";
 	Assert-AreEqual $JobDetails.Properties.Values.Contains("Recover disks") "True";
