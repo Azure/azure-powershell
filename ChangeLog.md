@@ -27,6 +27,7 @@
   * Added Restart-AzureRemoteAppVm cmdlet
 * Azure HDInsight cmdlets
   * Added cmdlet help
+
 ## 2015.08.07 version 0.9.6
 * Azure Batch cmdlets
     * Cmdlets updated to use the general availability API. See http://blogs.technet.com/b/windowshpc/archive/2015/07/10/what-39-s-new-in-azure-batch-july-release-general-availability.aspx
