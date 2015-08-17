@@ -50,6 +50,21 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             ExecutionBlock(() =>
             {
+                if (JobID != null)
+                {
+                    if ((JobID is PSObject) && (((PSObject)JobID).ImmediateBaseObject is string))
+                    {
+                        JobID = ((PSObject)JobID).ImmediateBaseObject.ToString();
+                    }
+                    else if (JobID is string)
+                    {
+                           // nothing to do
+                    }
+                    else
+                    {
+                        throw new Exception("JobID should be of the type string. Please input a string.");
+                    }
+                }
                 if (Job != null)
                 {
                     JobID = Job.InstanceId;
