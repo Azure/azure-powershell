@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name of the DSC Extension handler. It will default to 'DSC' when it is not provided.")]
+            HelpMessage = "Name of the ARM resource that represents the extension. This is defaulted to 'Microsoft.Powershell.DSC'")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

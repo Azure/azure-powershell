@@ -91,28 +91,43 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 else
                 {
-                    VirtualMachineListResponse result = null;
-
+                    VirtualMachineListResponse vmListResult = null;
                     if (!string.IsNullOrEmpty(this.ResourceGroupName))
                     {
-                        result = this.VirtualMachineClient.List(this.ResourceGroupName);
+                        vmListResult = this.VirtualMachineClient.List(this.ResourceGroupName);
                     }
                     else if (this.NextLink != null)
                     {
-                        result = this.VirtualMachineClient.ListNext(this.NextLink.ToString());
+                        vmListResult = this.VirtualMachineClient.ListNext(this.NextLink.ToString());
                     }
                     else
                     {
                         var listParams = new ListParameters();
-                        result = this.VirtualMachineClient.ListAll(listParams);
+                        vmListResult = this.VirtualMachineClient.ListAll(listParams);
                     }
 
                     var psResultList = new List<PSVirtualMachine>();
-                    foreach (var item in result.VirtualMachines)
+
+                    while (vmListResult != null)
                     {
-                        var psItem = Mapper.Map<PSVirtualMachine>(item);
-                        psItem = Mapper.Map<AzureOperationResponse, PSVirtualMachine>(result, psItem);
-                        psResultList.Add(psItem);
+                        if (vmListResult.VirtualMachines != null)
+                        {
+                            foreach (var item in vmListResult.VirtualMachines)
+                            {
+                                var psItem = Mapper.Map<PSVirtualMachine>(item);
+                                psItem = Mapper.Map<AzureOperationResponse, PSVirtualMachine>(vmListResult, psItem);
+                                psResultList.Add(psItem);
+                            }
+                        }
+
+                        if (!string.IsNullOrEmpty(vmListResult.NextLink))
+                        {
+                            vmListResult = this.VirtualMachineClient.ListNext(vmListResult.NextLink);
+                        }
+                        else
+                        {
+                            vmListResult = null;
+                        }
                     }
 
                     WriteObject(psResultList, true);

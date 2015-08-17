@@ -1361,10 +1361,9 @@ use and privacy statement at &lt;url&gt; and (c) agree to sharing my contact inf
   <data name="SwitchAzureModeDeprecated" xml:space="preserve">
     <value>The Switch-AzureMode cmdlet is deprecated and will be removed in a future release.</value>
   </data>
-  <data name="ComputeCloudExceptionOperationIdMessage" xml:space="preserve"> 
-    <value>OperationID : '{0}'</value> 
-  </data> 
-  <!-- DSC -->
+  <data name="ComputeCloudExceptionOperationIdMessage" xml:space="preserve">
+    <value>OperationID : '{0}'</value>
+  </data>
   <data name="PublishVMDscExtensionGetDscResourceFailed" xml:space="preserve">
     <value>Cannot get module for DscResource '{0}'. Possible solutions:
 1) Specify -ModuleName for Import-DscResource in your configuration.
@@ -1410,6 +1409,14 @@ use and privacy statement at &lt;url&gt; and (c) agree to sharing my contact inf
     <value>Configuration file '{0}' not found.</value>
     <comment>0 = path to the configuration file</comment>
   </data>
+  <data name="PublishVMDscExtensionDirectoryNotExist" xml:space="preserve">
+    <value>Path '{0}' not found.</value>
+    <comment>0 = path to the additional content file/directory</comment>
+  </data>
+  <data name="PublishVMDscExtensionAdditionalContentPathNotExist" xml:space="preserve">
+    <value>Path '{0}' not found.</value>
+    <comment>0 = path to the additional content file/directory</comment>
+  </data>
   <data name="PublishVMDscExtensionUploadArchiveConfigFileInvalidExtension" xml:space="preserve">
     <value>Invalid configuration file: {0}.
 The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip).</value>
@@ -1451,5 +1458,14 @@ The file needs to be a PowerShell script (.ps1 or .psm1).</value>
   </data>
   <data name="IaasDiagnosticsBadConfigNoWadCfg" xml:space="preserve">
     <value>Cannot find the WadCfg element in the config.</value>
+  </data>
+  <data name="AzureVMDscCannotFindConfigurationDataFile" xml:space="preserve">
+    <value>Cannot find configuration data file: {0}</value>
+  </data>
+  <data name="AzureVMDscInvalidConfigurationDataFile" xml:space="preserve">
+    <value>The configuration data must be a .psd1 file</value>
+  </data>
+  <data name="CannotChangeBuiltinEnvironment" xml:space="preserve">
+    <value>Cannot change built-in environment {0}.</value>
   </data>
 </root>

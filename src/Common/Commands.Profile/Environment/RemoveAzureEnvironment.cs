@@ -16,6 +16,7 @@ using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
+using Microsoft.WindowsAzure.Commands.Profile.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Profile;
 
 namespace Microsoft.WindowsAzure.Commands.Profile
@@ -25,7 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
     /// <summary>
     /// Removes a Microsoft Azure environment.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureEnvironment"), OutputType(typeof(AzureEnvironment))]
+    [Cmdlet(VerbsCommon.Remove, "AzureEnvironment"), OutputType(typeof(PSAzureEnvironment))]
     public class RemoveAzureEnvironmentCommand : SubscriptionCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, 
@@ -50,7 +51,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
         public void RemoveEnvironmentProcess()
         {
-            WriteObject(ProfileClient.RemoveEnvironment(Name));
+            WriteObject((PSAzureEnvironment)(ProfileClient.RemoveEnvironment(Name)));
         }
     }
 }
