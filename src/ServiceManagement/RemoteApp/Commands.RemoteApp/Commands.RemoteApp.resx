@@ -2,7 +2,7 @@
 <root>
   <!-- 
     Microsoft ResX Schema 
-
+    
     Version 2.0
     
     The primary goals of this format is to allow a simple XML format 
@@ -254,5 +254,17 @@
   </data>
   <data name="UsageDetails" xml:space="preserve">
     <value>Get usage details</value>
+  </data>
+  <data name="DefaultLogoffMessage" xml:space="preserve">
+    <value>Please save your work and logoff. You will be logged off automatically after {0} seconds.</value>
+  </data>
+  <data name="NoVmInCollectionForUser" xml:space="preserve">
+    <value>No VM was found for user {0} in collection {1}.</value>
+  </data>
+  <data name="RestartVmWarningCaption" xml:space="preserve">
+    <value>Restart VM {0}</value>
+  </data>
+  <data name="RestartVmWarningMessage" xml:space="preserve">
+    <value>User {0} is on VM {1}. These users also have active sessions on this VM and will be logged off when the VM is rebooted: {2}</value>
   </data>
 </root>
