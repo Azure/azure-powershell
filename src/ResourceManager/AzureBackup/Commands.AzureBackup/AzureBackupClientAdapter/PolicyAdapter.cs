@@ -37,9 +37,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public CSMProtectionPolicyResponse GetProtectionPolicyByName(string name)
+        public CSMProtectionPolicyResponse GetProtectionPolicyByName(string resourceGroupName, string resourceName, string name)
         {
-            var policyList = ListProtectionPolicies();
+            var policyList = ListProtectionPolicies(resourceGroupName, resourceName);
             var filteredList = policyList.Where(x => x.Name.Equals(name, System.StringComparison.InvariantCultureIgnoreCase));
             return filteredList.FirstOrDefault();           
         }
@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         /// Gets all policies in the vault
         /// </summary>
         /// <returns></returns>
-        public IList<CSMProtectionPolicyResponse> ListProtectionPolicies()
-        {            
-            var listResponse = AzureBackupClient.CSMProtectionPolicy.ListAsync(GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+        public IList<CSMProtectionPolicyResponse> ListProtectionPolicies(string resourceGroupName, string resourceName)
+        {
+            var listResponse = AzureBackupClient.CSMProtectionPolicy.ListAsync(resourceGroupName, resourceName, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
             return listResponse.CSMProtectionPolicyListResponse.Value;         
         }
 
@@ -59,18 +59,18 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         /// </summary>
         /// <param name="policyName"></param>
         /// <param name="request"></param>
-        public void AddProtectionPolicy(string policyName, CSMAddProtectionPolicyRequest request)
+        public void AddProtectionPolicy(string resourceGroupName, string resourceName, string policyName, CSMAddProtectionPolicyRequest request)
         {
-            AzureBackupClient.CSMProtectionPolicy.AddAsync(policyName, request, GetCustomRequestHeaders(), CmdletCancellationToken).Wait();
+            AzureBackupClient.CSMProtectionPolicy.AddAsync(resourceGroupName, resourceName, policyName, request, GetCustomRequestHeaders(), CmdletCancellationToken).Wait();
         }
 
         /// <summary>
         /// Delete protection policy
         /// </summary>
         /// <param name="policyName"></param>
-        public void DeleteProtectionPolicy(string policyName)
+        public void DeleteProtectionPolicy(string resourceGroupName, string resourceName, string policyName)
         {
-            AzureBackupClient.CSMProtectionPolicy.DeleteAsync(policyName, GetCustomRequestHeaders(), CmdletCancellationToken).Wait();
+            AzureBackupClient.CSMProtectionPolicy.DeleteAsync(resourceGroupName, resourceName, policyName, GetCustomRequestHeaders(), CmdletCancellationToken).Wait();
         }
 
         /// <summary>
@@ -78,9 +78,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         /// </summary>
         /// <param name="policyName"></param>
         /// <param name="request"></param>
-        public Guid UpdateProtectionPolicy(string policyName, CSMUpdateProtectionPolicyRequest request)
+        public Guid UpdateProtectionPolicy(string resourceGroupName, string resourceName, string policyName, CSMUpdateProtectionPolicyRequest request)
         {
-            var response = AzureBackupClient.CSMProtectionPolicy.UpdateAsync(policyName, request, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+            var response = AzureBackupClient.CSMProtectionPolicy.UpdateAsync(resourceGroupName, resourceName, policyName, request, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
             return response.OperationId;
         }
 
@@ -89,9 +89,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public void CheckProtectionPolicyNameAvailability(string name)
+        public void CheckProtectionPolicyNameAvailability(string resourceGroupName, string resourceName, string name)
         {
-            var policy = GetProtectionPolicyByName(name);
+            var policy = GetProtectionPolicyByName(resourceGroupName, resourceName, name);
             if (policy != null)
             {
                 var exception = new ArgumentException("A protection policy with the specified name already exists.");

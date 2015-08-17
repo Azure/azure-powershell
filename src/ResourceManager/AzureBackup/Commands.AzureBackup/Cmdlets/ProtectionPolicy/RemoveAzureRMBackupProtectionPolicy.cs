@@ -36,10 +36,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 WriteDebug("Making client call");
 
-                var policyInfo = AzureBackupClient.GetProtectionPolicyByName(ProtectionPolicy.Name);
+                var policyInfo = AzureBackupClient.GetProtectionPolicyByName(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, ProtectionPolicy.Name);
                 if (policyInfo != null)
                 {
-                    AzureBackupClient.DeleteProtectionPolicy(policyInfo.Name);
+                    AzureBackupClient.DeleteProtectionPolicy(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, policyInfo.Name);
                     WriteVerbose("Successfully deleted policy");
                 }
                 else

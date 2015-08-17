@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 WriteDebug("Making client call");
 
                 ProtectionPolicyHelpers.ValidateProtectionPolicyName(Name);
-                AzureBackupClient.CheckProtectionPolicyNameAvailability(this.Name);
+                AzureBackupClient.CheckProtectionPolicyNameAvailability(Vault.ResourceGroupName, Vault.Name, this.Name);
 
                 var ScheduleType = ProtectionPolicyHelpers.GetScheduleType(DaysOfWeek, this.ParameterSetName, 
                                     DailyScheduleParamSet, WeeklyScheduleParamSet);
@@ -87,11 +87,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 addCSMProtectionPolicyRequest.Properties.WorkloadType = ProtectionPolicyHelpers.ConvertToCSMWorkLoadType(this.Type);
 
                 addCSMProtectionPolicyRequest.Properties.LtrRetentionPolicy = ProtectionPolicyHelpers.ConvertToCSMRetentionPolicyObject(RetentionPolicy, backupSchedule);
-                
-                AzureBackupClient.AddProtectionPolicy(this.Name, addCSMProtectionPolicyRequest);
+
+                AzureBackupClient.AddProtectionPolicy(Vault.ResourceGroupName, Vault.Name, this.Name, addCSMProtectionPolicyRequest);
                 WriteDebug("Protection policy created successfully");
 
-                var policyInfo = AzureBackupClient.GetProtectionPolicyByName(Name);
+                var policyInfo = AzureBackupClient.GetProtectionPolicyByName(Vault.ResourceGroupName, Vault.Name, Name);
                 WriteObject(ProtectionPolicyHelpers.GetCmdletPolicy(Vault, policyInfo));
             });
         }

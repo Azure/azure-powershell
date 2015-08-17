@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 },
             };
 
-            var vaultCredUploadCertResponse = AzureBackupClient.UploadCertificate("IdMgmtInternalCert", vaultCredUploadCertRequest);
+            var vaultCredUploadCertResponse = AzureBackupClient.UploadCertificate(resourceGroupName, resourceName, "IdMgmtInternalCert", vaultCredUploadCertRequest);
 
             return new AcsNamespace(vaultCredUploadCertResponse.ResourceCertificateAndACSDetails.GlobalAcsHostName,
                                     vaultCredUploadCertResponse.ResourceCertificateAndACSDetails.GlobalAcsNamespace,

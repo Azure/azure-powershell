@@ -36,9 +36,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        public IList<CSMProtectedItemResponse> ListDataSources(CSMProtectedItemQueryObject query)
+        public IList<CSMProtectedItemResponse> ListDataSources(string resourceGroupName, string resourceName, CSMProtectedItemQueryObject query)
         {
-            var response = AzureBackupClient.DataSource.ListCSMAsync(query, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+            var response = AzureBackupClient.DataSource.ListCSMAsync(resourceGroupName, resourceName, query, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
             return (response != null) ? response.CSMProtectedItemListResponse.Value : null;
         }
 
@@ -47,9 +47,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        public IList<CSMItemResponse> ListProtectableObjects(CSMItemQueryObject query)
+        public IList<CSMItemResponse> ListProtectableObjects(string resourceGroupName, string resourceName, CSMItemQueryObject query)
         {
-            var response = AzureBackupClient.ProtectableObject.ListCSMAsync(query, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+            var response = AzureBackupClient.ProtectableObject.ListCSMAsync(resourceGroupName, resourceName, query, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
             return (response != null) ? response.CSMItemListResponse.Value : null;
         }
 
@@ -61,9 +61,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         /// <param name="dsId"></param>
         /// <param name="request"></param>
         /// <returns></returns>
-        public Guid DisableProtection(string containerName, string itemName)
+        public Guid DisableProtection(string resourceGroupName, string resourceName, string containerName, string itemName)
         {
-            var response = AzureBackupClient.DataSource.DisableProtectionCSMAsync(GetCustomRequestHeaders(), containerName, itemName, CmdletCancellationToken).Result;
+            var response = AzureBackupClient.DataSource.DisableProtectionCSMAsync(resourceGroupName, resourceName, GetCustomRequestHeaders(), containerName, itemName, CmdletCancellationToken).Result;
             return response.OperationId;
         }
 
@@ -72,9 +72,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public Guid EnableProtection(string containerName, string itemName, CSMSetProtectionRequest request)
+        public Guid EnableProtection(string resourceGroupName, string resourceName, string containerName, string itemName, CSMSetProtectionRequest request)
         {
-            var response = AzureBackupClient.DataSource.EnableProtectionCSMAsync(GetCustomRequestHeaders(), containerName, itemName, request, CmdletCancellationToken).Result;
+            var response = AzureBackupClient.DataSource.EnableProtectionCSMAsync(resourceGroupName, resourceName, GetCustomRequestHeaders(), containerName, itemName, request, CmdletCancellationToken).Result;
             return response.OperationId;
         }
 
@@ -83,9 +83,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public Guid UpdateProtection(string containerName, string itemName, CSMUpdateProtectionRequest request)
+        public Guid UpdateProtection(string resourceGroupName, string resourceName, string containerName, string itemName, CSMUpdateProtectionRequest request)
         {
-            var response = AzureBackupClient.DataSource.UpdateProtectionCSMAsync(GetCustomRequestHeaders(), containerName, itemName, request, CmdletCancellationToken).Result;
+            var response = AzureBackupClient.DataSource.UpdateProtectionCSMAsync(resourceGroupName, resourceName, GetCustomRequestHeaders(), containerName, itemName, request, CmdletCancellationToken).Result;
             return response.OperationId;
         }
 
@@ -95,9 +95,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         /// <param name="containerName"></param>
         /// <param name="itemName"></param>
         /// <returns></returns>
-        public Guid TriggerBackup(string containerName, string itemName)
+        public Guid TriggerBackup(string resourceGroupName, string resourceName, string containerName, string itemName)
         {
-            var response = AzureBackupClient.BackUp.TriggerBackUpAsync(GetCustomRequestHeaders(), containerName, itemName, CmdletCancellationToken).Result;
+            var response = AzureBackupClient.BackUp.TriggerBackUpAsync(resourceGroupName, resourceName, GetCustomRequestHeaders(), containerName, itemName, CmdletCancellationToken).Result;
             return response.OperationId;              
         }
 
@@ -107,9 +107,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         /// <param name="containerName"></param>
         /// <param name="itemName"></param>
         /// <returns></returns>
-        public IEnumerable<CSMRecoveryPointResponse> ListRecoveryPoints(string containerName, string itemName)
+        public IEnumerable<CSMRecoveryPointResponse> ListRecoveryPoints(string resourceGroupName, string resourceName, string containerName, string itemName)
         {
-            var response = AzureBackupClient.RecoveryPoint.ListAsync(GetCustomRequestHeaders(), containerName, itemName, CmdletCancellationToken).Result;
+            var response = AzureBackupClient.RecoveryPoint.ListAsync(resourceGroupName, resourceName, GetCustomRequestHeaders(), containerName, itemName, CmdletCancellationToken).Result;
             return (response != null) ? response.CSMRecoveryPointListResponse.Value : null;
         }
 
@@ -119,9 +119,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         /// <param name="containerName"></param>
         /// <param name="itemName"></param>
         /// <returns></returns>
-        public CSMRecoveryPointResponse GetRecoveryPoint(string containerName, string itemName, string recoveryPointName)
+        public CSMRecoveryPointResponse GetRecoveryPoint(string resourceGroupName, string resourceName, string containerName, string itemName, string recoveryPointName)
         {
-            var response = AzureBackupClient.RecoveryPoint.GetAsync(GetCustomRequestHeaders(), containerName, itemName, recoveryPointName, CmdletCancellationToken).Result;
+            var response = AzureBackupClient.RecoveryPoint.GetAsync(resourceGroupName, resourceName, GetCustomRequestHeaders(), containerName, itemName, recoveryPointName, CmdletCancellationToken).Result;
             return (response != null) ? response.CSMRecoveryPointResponse : null;
         }
 
@@ -132,9 +132,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         /// <param name="itemName"></param>
         /// <param name="recoveryPointName"></param>
         /// <returns></returns>
-        public Guid TriggerRestore(string containerName, string itemName, string recoveryPointName, CSMRestoreRequest csmRestoreRequest)
+        public Guid TriggerRestore(string resourceGroupName, string resourceName, string containerName, string itemName, string recoveryPointName, CSMRestoreRequest csmRestoreRequest)
         {
-            var response = AzureBackupClient.Restore.TriggerResotreAsync(GetCustomRequestHeaders(), containerName, itemName, recoveryPointName, csmRestoreRequest, CmdletCancellationToken).Result;
+            var response = AzureBackupClient.Restore.TriggerResotreAsync(resourceGroupName, resourceName, GetCustomRequestHeaders(), containerName, itemName, recoveryPointName, csmRestoreRequest, CmdletCancellationToken).Result;
             return response.OperationId;
         }
     }

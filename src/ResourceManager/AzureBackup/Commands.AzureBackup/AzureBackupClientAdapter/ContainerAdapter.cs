@@ -37,9 +37,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         /// Gets all MARS containers in the vault
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<MarsContainerResponse> ListMachineContainers()
+        public IEnumerable<MarsContainerResponse> ListMachineContainers(string resourceGroupName, string resourceName)
         {
-            var listResponse = AzureBackupVaultClient.Container.ListMarsContainersByType(MarsContainerType.Machine, GetCustomRequestHeaders());
+            var listResponse = AzureBackupVaultClient.Container.ListMarsContainersByType(resourceGroupName, resourceName, MarsContainerType.Machine, GetCustomRequestHeaders());
             return listResponse.ListMarsContainerResponse.Value;
         }
 
@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         /// </summary>
         /// <param name="friendlyName">The friendly name of the container</param>
         /// <returns></returns>
-        public IEnumerable<MarsContainerResponse> ListMachineContainers(string friendlyName)
+        public IEnumerable<MarsContainerResponse> ListMachineContainers(string resourceGroupName, string resourceName, string friendlyName)
         {
-            var listResponse = AzureBackupVaultClient.Container.ListMarsContainersByTypeAndFriendlyName(MarsContainerType.Machine, friendlyName, GetCustomRequestHeaders());
+            var listResponse = AzureBackupVaultClient.Container.ListMarsContainersByTypeAndFriendlyName(resourceGroupName, resourceName, MarsContainerType.Machine, friendlyName, GetCustomRequestHeaders());
             return listResponse.ListMarsContainerResponse.Value;
         }
 
@@ -59,9 +59,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         /// </summary>
         /// <param name="containerId"></param>
         /// <returns></returns>
-        public void UnregisterMachineContainer(long containerId)
+        public void UnregisterMachineContainer(string resourceGroupName, string resourceName, long containerId)
         {
-            AzureBackupVaultClient.Container.UnregisterMarsContainer(containerId.ToString(), GetCustomRequestHeaders());
+            AzureBackupVaultClient.Container.UnregisterMarsContainer(resourceGroupName, resourceName, containerId.ToString(), GetCustomRequestHeaders());
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         /// </summary>
         /// <param name="containerId"></param>
         /// <returns></returns>
-        public void EnableMachineContainerReregistration(long containerId)
+        public void EnableMachineContainerReregistration(string resourceGroupName, string resourceName, long containerId)
         {
             EnableReregistrationRequest request = new EnableReregistrationRequest()
             {
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
                 },
             };
 
-            AzureBackupVaultClient.Container.EnableMarsContainerReregistration(containerId.ToString(), request, GetCustomRequestHeaders());
+            AzureBackupVaultClient.Container.EnableMarsContainerReregistration(resourceGroupName, resourceName, containerId.ToString(), request, GetCustomRequestHeaders());
         }
 
         /// <summary>
@@ -87,9 +87,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         /// </summary>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public IEnumerable<CSMContainerResponse> ListContainers(ContainerQueryParameters parameters)
+        public IEnumerable<CSMContainerResponse> ListContainers(string resourceGroupName, string resourceName, ContainerQueryParameters parameters)
         {
-            var listResponse = AzureBackupClient.Container.ListAsync(parameters, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+            var listResponse = AzureBackupClient.Container.ListAsync(resourceGroupName, resourceName, parameters, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
             return listResponse.CSMContainerListResponse.Value;
         }
 
@@ -98,9 +98,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         /// </summary>
         /// <param name="containerName"></param>
         /// <returns></returns>
-        public Guid RegisterContainer(string containerName)
+        public Guid RegisterContainer(string resourceGroupName, string resourceName, string containerName)
         {
-            var response = AzureBackupClient.Container.RegisterAsync(containerName, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+            var response = AzureBackupClient.Container.RegisterAsync(resourceGroupName, resourceName, containerName, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
             return response.OperationId;
         }
 
@@ -109,9 +109,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         /// </summary>
         /// <param name="containerName"></param>
         /// <returns></returns>
-        public Guid UnRegisterContainer(string containerName)
+        public Guid UnRegisterContainer(string resourceGroupName, string resourceName, string containerName)
         {
-            var response = AzureBackupClient.Container.UnregisterAsync(containerName, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+            var response = AzureBackupClient.Container.UnregisterAsync(resourceGroupName, resourceName, containerName, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
             return response.OperationId;
         }
 
@@ -119,9 +119,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         /// Refresh container list in service
         /// </summary>
         /// <returns></returns>
-        public Guid RefreshContainers()
+        public Guid RefreshContainers(string resourceGroupName, string resourceName)
         {
-            var response = AzureBackupClient.Container.RefreshAsync(GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+            var response = AzureBackupClient.Container.RefreshAsync(resourceGroupName, resourceName, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
             return response.OperationId;
         }
     }

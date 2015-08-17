@@ -61,8 +61,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 base.ExecuteCmdlet();
                 WriteDebug("Making client call");
 
-                var response = AzureBackupClient.GetProtectionPolicyByName(ProtectionPolicy.Name);
-                var vault = new CmdletModel.AzureRMBackupVault(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.Name, ProtectionPolicy.Location);
+                var response = AzureBackupClient.GetProtectionPolicyByName(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, ProtectionPolicy.Name);
+                var vault = new CmdletModel.AzureRMBackupVault(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, ProtectionPolicy.Location);
 
                 var policyInfo = ProtectionPolicyHelpers.GetCmdletPolicy(vault, response);
 
@@ -97,11 +97,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     ProtectionPolicyHelpers.ValidateRetentionPolicy(policyInfo.RetentionPolicy, backupSchedule);
                 }
 
-                var operationId = AzureBackupClient.UpdateProtectionPolicy(policyInfo.Name, updateProtectionPolicyRequest);
+                var operationId = AzureBackupClient.UpdateProtectionPolicy(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, policyInfo.Name, updateProtectionPolicyRequest);
 
                 if (operationId != Guid.Empty)
                 {
-                    var operationStatus = GetOperationStatus(operationId);
+                    var operationStatus = GetOperationStatus(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, operationId);
                     WriteDebug("Protection Policy successfully updated and created job(s) to re-configure protection on associated items");
                     WriteObject(operationStatus.JobList);
                 }
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             if (newName != null && NewName != policy.Name)
             {
                 ProtectionPolicyHelpers.ValidateProtectionPolicyName(this.NewName);
-                AzureBackupClient.CheckProtectionPolicyNameAvailability(this.NewName);
+                AzureBackupClient.CheckProtectionPolicyNameAvailability(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, this.NewName);
             }
 
             BackupTime = (BackupTime == DateTime.MinValue) ? policy.BackupTime :
