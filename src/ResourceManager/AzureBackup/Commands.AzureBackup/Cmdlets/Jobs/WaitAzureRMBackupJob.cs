@@ -19,6 +19,7 @@ using System.Xml;
 using System.Linq;
 using Mgmt = Microsoft.Azure.Management.BackupServices.Models;
 using Microsoft.Azure.Commands.AzureBackup.Models;
+using Microsoft.Azure.Commands.AzureBackup.Properties;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -50,7 +51,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 }
                 else if (Job is List<AzureRMBackupJob>)
                 {
-                    WriteDebug("Type of input paramter is List<AzureBackupJob> second case");
+                    WriteDebug(Resources.AzureBackupJobInputType);
                     foreach (AzureRMBackupJob jobToWait in (Job as List<AzureRMBackupJob>))
                     {
                         Vault = new AzureRMBackupVault(jobToWait.ResourceGroupName, jobToWait.ResourceName, jobToWait.Location);
@@ -81,11 +82,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 }
             }
 
-            WriteDebug("Number of jobs to wait on: " + specifiedJobs.Count);
+            WriteDebug(String.Format(Resources.NumberOfJobsForWaiting, specifiedJobs.Count));
 
             if (specifiedJobs.Count == 0)
             {
-                WriteDebug("No jobs to wait on. Quitting.");
+                WriteDebug(Resources.QuittingWaitJob);
                 return;
             }
 
@@ -104,11 +105,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 while (true)
                 {
-                    WriteDebug("In loop querying jobs");
+                    WriteDebug(Resources.QueryingJobs);
 
                     if (DateTime.UtcNow.Subtract(waitingStartTime).TotalSeconds >= TimeOut)
                     {
-                        WriteDebug("Exiting due to timeout.");
+                        WriteDebug(Resources.TimeOutWaitInJob);
                         break;
                     }
 
@@ -128,7 +129,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                     if (!areJobsRunning)
                     {
-                        WriteDebug("Exiting because all jobs have finished running.");
+                        WriteDebug(Resources.AllJobsCompleted);
                         break;
                     }
 

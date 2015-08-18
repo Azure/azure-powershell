@@ -19,6 +19,7 @@ using System.Xml;
 using System.Linq;
 using Microsoft.Azure.Management.BackupServices.Models;
 using Microsoft.Azure.Commands.AzureBackup.Models;
+using Microsoft.Azure.Commands.AzureBackup.Properties;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -34,17 +35,17 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
-                WriteDebug("Making client call");
+                WriteDebug(Resources.MakingClientCall);
 
                 var policyInfo = AzureBackupClient.GetProtectionPolicyByName(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, ProtectionPolicy.Name);
                 if (policyInfo != null)
                 {
                     AzureBackupClient.DeleteProtectionPolicy(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, policyInfo.Name);
-                    WriteDebug("Successfully deleted policy");
+                    WriteDebug(Resources.ProtectionPolicyDeleted);
                 }
                 else
                 {
-                    var exception = new ArgumentException(string.Format("Protection Policy {0} not found.", policyInfo.Name));
+                    var exception = new ArgumentException(string.Format(Resources.PolicyNotFound, policyInfo.Name));
                     throw exception;                    
                 }
             });

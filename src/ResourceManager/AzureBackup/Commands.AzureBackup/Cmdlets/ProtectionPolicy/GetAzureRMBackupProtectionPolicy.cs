@@ -12,14 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
-using System.Collections.Generic;
-using System.Xml;
-using System.Linq;
-using Microsoft.Azure.Management.BackupServices.Models;
-using Microsoft.Azure.Commands.AzureBackup.Models;
 using Microsoft.Azure.Commands.AzureBackup.Helpers;
+using Microsoft.Azure.Commands.AzureBackup.Models;
+using System.Collections.Generic;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -38,7 +34,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             ExecutionBlock(() =>
             {
                 base.ExecuteCmdlet();
-         
+
                 if (Name != null)
                 {
                     var policyInfo = AzureBackupClient.GetProtectionPolicyByName(Vault.ResourceGroupName, Vault.Name, Name);
@@ -48,7 +44,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 {
                     var policyObjects = AzureBackupClient.ListProtectionPolicies(Vault.ResourceGroupName, Vault.Name);
                     WriteObject(ProtectionPolicyHelpers.GetCmdletPolicies(Vault, policyObjects));
-                }                
+                }
             });
         }
     }

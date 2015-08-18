@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                         AzureBackupClient.EnableMachineContainerReregistration(Container.ResourceGroupName, Container.ResourceName, Container.Id);
                         break;
                     default:
-                        throw new ArgumentException("Reregistration can be enable only for machine containers.");
+                        throw new ArgumentException(Resources.CannotEnableRegistration);
                 }
             });
         }

@@ -22,6 +22,7 @@ using System.Runtime.Serialization;
 using System.Collections.Specialized;
 using Microsoft.Azure.Common.OData;
 using Microsoft.Azure.Commands.AzureBackup.Models;
+using Microsoft.Azure.Commands.AzureBackup.Properties;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -52,7 +53,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 List<CSMProtectedItemResponse> azureBackupDatasourceObjects = null;
                 List<CSMItemResponse> azureBackupPOObjects = null;
 
-                WriteDebug("Making client call");
+                WriteDebug(Resources.MakingClientCall);
                 CSMProtectedItemQueryObject DSQueryParam = new CSMProtectedItemQueryObject()
                 {
                     ProtectionStatus = this.ProtectionStatus,
@@ -82,7 +83,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     }
                 }
 
-                WriteDebug("Received azure backup item response");
+                WriteDebug(Resources.AzureBackupItemResponse);
                 WriteAzureBackupItem(azureBackupDatasourceObjects, azureBackupPOObjects, Container);
             });
         }

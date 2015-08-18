@@ -20,6 +20,7 @@ using System.Linq;
 using Microsoft.Azure.Management.BackupServices.Models;
 using Microsoft.Azure.Commands.AzureBackup.Helpers;
 using Microsoft.Azure.Commands.AzureBackup.Models;
+using Microsoft.Azure.Commands.AzureBackup.Properties;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -69,14 +70,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 ProtectionPolicyHelpers.ValidateProtectionPolicyName(Name);
                 AzureBackupClient.CheckProtectionPolicyNameAvailability(Vault.ResourceGroupName, Vault.Name, this.Name);
 
-                var ScheduleType = ProtectionPolicyHelpers.GetScheduleType(DaysOfWeek, this.ParameterSetName, 
+                var ScheduleType = ProtectionPolicyHelpers.GetScheduleType(DaysOfWeek, this.ParameterSetName,
                                     DailyScheduleParamSet, WeeklyScheduleParamSet);
 
                 var backupSchedule = ProtectionPolicyHelpers.FillCSMBackupSchedule(ScheduleType, BackupTime,
                     DaysOfWeek);
 
                 ProtectionPolicyHelpers.ValidateRetentionPolicy(RetentionPolicy, backupSchedule);
-                
+
                 var addCSMProtectionPolicyRequest = new CSMAddProtectionPolicyRequest();
                 addCSMProtectionPolicyRequest.PolicyName = this.Name;
                 addCSMProtectionPolicyRequest.Properties = new CSMAddProtectionPolicyRequestProperties();
@@ -87,7 +88,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 addCSMProtectionPolicyRequest.Properties.LtrRetentionPolicy = ProtectionPolicyHelpers.ConvertToCSMRetentionPolicyObject(RetentionPolicy, backupSchedule);
 
                 AzureBackupClient.AddProtectionPolicy(Vault.ResourceGroupName, Vault.Name, this.Name, addCSMProtectionPolicyRequest);
-                WriteDebug("Protection policy created successfully");
+                WriteDebug(Resources.ProtectionPolicyCreated);
 
                 var policyInfo = AzureBackupClient.GetProtectionPolicyByName(Vault.ResourceGroupName, Vault.Name, Name);
                 WriteObject(ProtectionPolicyHelpers.GetCmdletPolicy(Vault, policyInfo));

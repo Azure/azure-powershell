@@ -21,6 +21,7 @@ using Microsoft.Azure.Management.BackupServices.Models;
 using MBS = Microsoft.Azure.Management.BackupServices;
 using System.Web.Script.Serialization;
 using Microsoft.Azure.Commands.AzureBackup.Models;
+using Microsoft.Azure.Commands.AzureBackup.Properties;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -40,7 +41,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             ExecutionBlock(() =>
             {
-                WriteDebug("Making client call");
+                WriteDebug(Resources.MakingClientCall);
                 AzureIaaSVMRecoveryInputsCSMObject azureIaaSVMRecoveryInputsCSMObject = new AzureIaaSVMRecoveryInputsCSMObject()
                 {
                     CloudServiceName = string.Empty,
@@ -65,7 +66,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 };
 
                 Guid operationId = AzureBackupClient.TriggerRestore(RecoveryPoint.ResourceGroupName, RecoveryPoint.ResourceName, RecoveryPoint.ContainerUniqueName, RecoveryPoint.ItemName, RecoveryPoint.RecoveryPointName, csmRestoreRequest);
-                WriteDebug(string.Format("Triggered Restore. Converting response {0}", operationId));
+                WriteDebug(string.Format(Resources.TriggeringRestore, operationId));
 
                 var operationStatus = TrackOperation(RecoveryPoint.ResourceGroupName, RecoveryPoint.ResourceName, operationId);
                 WriteObject(GetCreatedJobs(RecoveryPoint.ResourceGroupName, 

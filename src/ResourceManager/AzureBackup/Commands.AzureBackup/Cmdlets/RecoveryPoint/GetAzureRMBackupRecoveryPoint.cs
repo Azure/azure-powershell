@@ -19,6 +19,7 @@ using System.Xml;
 using System.Linq;
 using Microsoft.Azure.Management.BackupServices.Models;
 using Microsoft.Azure.Commands.AzureBackup.Models;
+using Microsoft.Azure.Commands.AzureBackup.Properties;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -38,7 +39,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             ExecutionBlock(() =>
             {
-                WriteDebug("Making client call");
+                WriteDebug(Resources.MakingClientCall);
 
                 if (RecoveryPointId != null)
                 {
@@ -49,7 +50,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     }
                     else
                     {
-                        WriteDebug(string.Format("{0}{1}", "No recovery point exist with Id := ", RecoveryPointId));
+                        WriteDebug(string.Format(Resources.NoRpExist, RecoveryPointId));
                     }
                 }
                 else
@@ -70,7 +71,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     }
                     else
                     {
-                        WriteDebug("No recovery point found");
+                        WriteDebug(Resources.NoRpFound);
                     }
                 }
             });

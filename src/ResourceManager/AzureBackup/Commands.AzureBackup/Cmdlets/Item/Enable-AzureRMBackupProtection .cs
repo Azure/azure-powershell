@@ -22,6 +22,7 @@ using MBS = Microsoft.Azure.Management.BackupServices;
 using System.Runtime.Serialization;
 using Microsoft.Azure.Management.BackupServices;
 using Microsoft.Azure.Commands.AzureBackup.Models;
+using Microsoft.Azure.Commands.AzureBackup.Properties;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -41,7 +42,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
-                WriteDebug("Making client call");
+                WriteDebug(Resources.MakingClientCall);
                 string itemName = string.Empty;
 
                 CSMSetProtectionRequest input = new CSMSetProtectionRequest();
@@ -55,24 +56,25 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 else if (Item.GetType() == typeof(AzureRMBackupContainer))
                 {
-                    WriteDebug("Input is container Type = " + Item.GetType());
+                    WriteDebug(String.Format(Resources.ContainerTypeInput, Item.GetType()));
+
                     if ((Item as AzureRMBackupContainer).ContainerType == AzureBackupContainerType.AzureVM.ToString())
                     {
                         itemName = (Item as AzureRMBackupContainer).ContainerUniqueName;
                     }
                     else
                     {
-                        throw new Exception("Unknown item type");
+                        throw new Exception(Resources.UnknownItemType);
                     }
                 }
 
                 else
                 {
-                    throw new Exception("Unknown item type");
+                    throw new Exception(Resources.UnknownItemType);
                 }
 
                 var operationId = AzureBackupClient.EnableProtection(Item.ResourceGroupName, Item.ResourceName, Item.ContainerUniqueName, itemName, input);
-                WriteDebug("Received enable azure backup protection response");
+                WriteDebug(Resources.EnableAzureBackupProtection);
 
                 var operationStatus = TrackOperation(Item.ResourceGroupName, Item.ResourceName, operationId);
                 this.WriteObject(GetCreatedJobs(Item.ResourceGroupName, 
