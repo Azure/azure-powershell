@@ -5,7 +5,7 @@
     * Fixed issues with AAD aithentication when constructing profile
     * Enabled passing results of Add-AzureEnvironment to New-AzureProfile -Environment parameter
 * Azure ResourceManager cmdlets
-  * New-AzureResourceGroupDeployment: Added DeploymentMode and Force parameters 
+  * New-AzureResourceGroupDeployment: Added Mode (deployment mode) and Force parameters 
   * Get-AzureProviderOperation: API changes to improve performance
 * Azure Compute (ARM) Cmdlets
   * Fixes for Set-AzureDeployment with -ExtensionConfiguration
