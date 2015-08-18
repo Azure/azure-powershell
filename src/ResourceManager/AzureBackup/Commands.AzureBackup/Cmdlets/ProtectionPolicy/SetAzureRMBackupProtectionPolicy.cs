@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Update existing protection policy
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRMBackupProtectionPolicy", DefaultParameterSetName = NoScheduleParamSet), OutputType(typeof(AzureRMBackupProtectionPolicy))]
+    [Cmdlet(VerbsCommon.Set, "AzureRMBackupProtectionPolicy", DefaultParameterSetName = NoScheduleParamSet), OutputType(typeof(AzureRMBackupJob), typeof(IList<AzureRMBackupJob>))]
     public class SetAzureRMBackupProtectionPolicy : AzureBackupPolicyCmdletBase
     {
         protected const string WeeklyScheduleParamSet = "WeeklyScheduleParamSet";
@@ -71,7 +71,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     throw new ArgumentException(String.Format("Protection policy {0} not found", ProtectionPolicy.Name));
                 }
 
-                // TODO: Make the below function work with AzureBackupProtectionPolicy
                 FillRemainingValuesForSetPolicyRequest(policyInfo, this.NewName);
 
                 var backupSchedule = ProtectionPolicyHelpers.FillCSMBackupSchedule(policyInfo.ScheduleType, BackupTime,
@@ -83,7 +82,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 updateProtectionPolicyRequest.Properties.PolicyName = this.NewName;
                 updateProtectionPolicyRequest.Properties.BackupSchedule = backupSchedule;
 
-                AzureRMBackupProtectionPolicy protectionPolicy = new AzureRMBackupProtectionPolicy();
                 if (RetentionPolicy != null && RetentionPolicy.Length > 0)
                 {
                     updateProtectionPolicyRequest.Properties.LtrRetentionPolicy =
@@ -101,9 +99,12 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 if (operationId != Guid.Empty)
                 {
-                    var operationStatus = GetOperationStatus(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, operationId);
+                    string resourceGroupName = ProtectionPolicy.ResourceGroupName;
+                    string resourceName = ProtectionPolicy.ResourceName;
+                    var operationStatus = GetOperationStatus(resourceGroupName, resourceName, operationId);
                     WriteDebug("Protection Policy successfully updated and created job(s) to re-configure protection on associated items");
-                    WriteObject(operationStatus.JobList);
+
+                    WriteObject(GetCreatedJobs(resourceGroupName, resourceName, vault, operationStatus.JobList));
                 }
 
                 else
