@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// <summary>
     /// Set Protection Entity protection state.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureSiteRecoveryProtectionEntity", DefaultParameterSetName = ASRParameterSets.ByPEObject, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Set, "AzureSiteRecoveryProtectionEntity", DefaultParameterSetName = ASRParameterSets.EnterpriseToEnterprise, SupportsShouldProcess = true)]
     [OutputType(typeof(ASRJob))]
     public class SetAzureSiteRecoveryProtectionEntity : SiteRecoveryCmdletBase
     {
@@ -34,11 +34,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         private LongRunningOperationResponse response = null;
 
         /// <summary>
-        /// Protection Status of the entity.
-        /// </summary>
-        private bool alreadyEnabled = false;
-
-        /// <summary>
         /// Holds either Name (if object is passed) or ID (if IDs are passed) of the PE.
         /// </summary>
         private string targetNameOrId = string.Empty;
@@ -46,19 +41,35 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// Gets or sets Protection Entity Object.
         /// </summary>
-        [Parameter(ParameterSetName = ASRParameterSets.ByPEObject, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRProtectionEntity ProtectionEntity { get; set; }
 
         /// <summary>
+        /// Gets or sets Protection profile.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
+        [ValidateNotNullOrEmpty]
+        public ASRProtectionProfile ProtectionProfile { get; set; }
+
+        /// <summary>
         /// Gets or sets Protection to set, either enable or disable.
         /// </summary>
-        [Parameter(Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
             Constants.EnableProtection,
             Constants.DisableProtection)]
         public string Protection { get; set; }
+
+        /// <summary>
+        /// Gets or sets OS disk name.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure)]
+        [ValidateNotNullOrEmpty]
+        public string OSDiskName { get; set; }
 
         /// <summary>
         /// Gets or sets switch parameter. On passing, command waits till completion.
@@ -81,13 +92,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            switch (this.ParameterSetName)
-            {
-                case ASRParameterSets.ByPEObject:
-                    this.targetNameOrId = this.ProtectionEntity.FriendlyName;
-                    break;
-            }
-
+            this.targetNameOrId = this.ProtectionEntity.FriendlyName;
             this.ConfirmAction(
                 this.Force.IsPresent || 0 != string.CompareOrdinal(this.Protection, Constants.DisableProtection),
                 string.Format(Properties.Resources.DisableProtectionWarning, this.targetNameOrId),
@@ -97,12 +102,63 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     {
                         try
                         {
-                            // ADD SOME VALIDATIONS
-
                             if (this.Protection == Constants.EnableProtection)
                             {
                                 EnableProtectionInput input = new EnableProtectionInput();
                                 
+                                // Considering no PP input for E2E, if needed, change below logic
+                                // for E2E, consider the profile created PS & a profile created in service
+                                if (this.ProtectionProfile != null &&
+                                    0 == string.Compare(
+                                    this.ProtectionProfile.ReplicationProvider,
+                                    Constants.HyperVReplicaAzure,
+                                    StringComparison.OrdinalIgnoreCase))
+                                {
+                                    input.ProtectionProfileId = this.ProtectionProfile.Name;
+                                    AzureEnableProtectionInput providerSettings = new AzureEnableProtectionInput();
+                                    providerSettings.HvHostVmId = this.ProtectionEntity.FabricObjectId;
+                                    providerSettings.VmName = this.ProtectionEntity.FriendlyName;
+
+                                    // Id disk details are missing in input PE object, get the latest PE.
+                                    // As get PE by name is failing before protection, get all & filter.
+                                    // Once after we fix get pe by name, change the logic to use the same.
+                                    if (string.IsNullOrEmpty(this.ProtectionEntity.OS))
+                                    {
+                                        // Just checked for OS to see whether the disk details got filled up or not
+                                        ProtectionEntityListResponse protectionEntityListResponse =
+                                            RecoveryServicesClient.GetAzureSiteRecoveryProtectionEntity(
+                                            this.ProtectionEntity.ProtectionContainerId);
+
+                                        foreach (ProtectionEntity pe in protectionEntityListResponse.ProtectionEntities)
+                                        {
+                                            if (0 == string.Compare(this.ProtectionEntity.FriendlyName, pe.Properties.FriendlyName, true))
+                                            {
+                                                this.ProtectionEntity = new ASRProtectionEntity(pe);
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    providerSettings.OSType = this.ProtectionEntity.OS;
+
+                                    if (string.IsNullOrWhiteSpace(this.OSDiskName))
+                                    {
+                                        providerSettings.VHDId = this.ProtectionEntity.OSDiskId;
+                                    }
+                                    else
+                                    {
+                                        foreach (var disk in this.ProtectionEntity.Disks)
+                                        {
+                                            if (0 == string.Compare(disk.Name, this.OSDiskName, true))
+                                            {
+                                                providerSettings.VHDId = disk.Id;
+                                                break;
+                                            }
+                                        }
+                                    }
+
+                                    input.ProviderSettings = providerSettings;
+                                }
+
                                 this.response =
                                     RecoveryServicesClient.EnableProtection(
                                     this.ProtectionEntity.ProtectionContainerId,
