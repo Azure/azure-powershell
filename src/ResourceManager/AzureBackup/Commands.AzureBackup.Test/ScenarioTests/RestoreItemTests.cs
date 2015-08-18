@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
     public class RestoreItemTests : AzureBackupTestsBase
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RestoreAzureBackUpItem()
         {
             this.RunPowerShellTest("Test-RestoreAzureBackUpItem");

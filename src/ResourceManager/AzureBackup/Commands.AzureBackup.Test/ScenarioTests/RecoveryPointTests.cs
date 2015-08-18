@@ -20,12 +20,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
     public class RecoveryPointTests : AzureBackupTestsBase
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetRecoveryPointsTests()
         {
             this.RunPowerShellTest("Test-GetAzureRecoveryPoints");
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetRecoveryPointTests()
         {
             this.RunPowerShellTest("Test-GetAzureRecoveryPoint");
