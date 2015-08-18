@@ -122,9 +122,9 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
             }
 
             return new SiteRecoveryManagementClient(
-                asrVaultCreds.ResourceGroupName,
                 asrVaultCreds.ResourceName,
                 asrVaultCreds.ResourceGroupName,
+                "Microsof.SiteRecovery",
                 RecoveryServicesMgmtClient.Credentials,
                 RecoveryServicesMgmtClient.BaseUri).WithHandler(HttpMockServer.CreateInstance());
         }
