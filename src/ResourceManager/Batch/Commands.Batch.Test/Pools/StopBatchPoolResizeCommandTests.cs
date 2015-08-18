@@ -15,6 +15,7 @@
 using System;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
+using Microsoft.Azure.Batch.Protocol.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Collections.Generic;
@@ -49,22 +50,24 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
         {
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
-            cmdlet.Name = null;
+            cmdlet.Id = null;
 
             Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
 
-            cmdlet.Name = "testPool";
+            cmdlet.Id = "testPool";
 
-            // Don't go to the service on a StopPoolResize call
-            YieldInjectionInterceptor interceptor = new YieldInjectionInterceptor((opContext, request) =>
+            // Don't go to the service on a StopResize CloudPool call
+            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
-                if (request is StopPoolResizeRequest)
+                BatchRequest<CloudPoolStopResizeParameters, CloudPoolStopResizeResponse> request =
+                (BatchRequest<CloudPoolStopResizeParameters, CloudPoolStopResizeResponse>)baseRequest;
+
+                request.ServiceRequestFunc = (cancellationToken) =>
                 {
-                    StopPoolResizeResponse response = new StopPoolResizeResponse();
-                    Task<object> task = Task<object>.Factory.StartNew(() => { return response; });
+                    CloudPoolStopResizeResponse response = new CloudPoolStopResizeResponse();
+                    Task<CloudPoolStopResizeResponse> task = Task.FromResult(response);
                     return task;
-                }
-                return null;
+                };
             });
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 

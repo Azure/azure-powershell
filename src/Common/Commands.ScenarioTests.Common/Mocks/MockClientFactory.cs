@@ -40,7 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         public MockClientFactory(IEnumerable<object> clients, bool throwIfClientNotSpecified = true)
         {
-            UserAgents = new HashSet<ProductInfoHeaderValue>();
+            UniqueUserAgents = new HashSet<ProductInfoHeaderValue>();
             ManagementClients = clients.ToList();
             throwWhenNotAvailable = throwIfClientNotSpecified;
         }
@@ -105,6 +105,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                     var realClientFactory = new ClientFactory();
                     var realClient = realClientFactory.CreateCustomClient<TClient>(parameters);
                     var newRealClient = realClient.WithHandler(HttpMockServer.CreateInstance());
+                    
                     realClient.Dispose();
                     return newRealClient;
                 }
@@ -170,7 +171,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             throw new NotImplementedException();
         }
 
-        public HashSet<ProductInfoHeaderValue> UserAgents { get; set; }
+        public HashSet<ProductInfoHeaderValue> UniqueUserAgents { get; set; }
 
         /// <summary>
         /// This class exists to allow adding an additional reference to the httpClient to prevent the client 
@@ -181,6 +182,54 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
             {
                 return base.SendAsync(request, cancellationToken);
+            }
+        }
+
+
+        public TClient CreateArmClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint) where TClient : Rest.ServiceClient<TClient>
+        {
+            Debug.Assert(context != null);
+            var credentials = AzureSession.AuthenticationFactory.GetServiceClientCredentials(context);
+            var client = CreateCustomArmClient<TClient>(credentials, context.Environment.GetEndpointAsUri(endpoint),
+                context.Subscription.Id);
+            return client;
+
+        }
+
+        public TClient CreateCustomArmClient<TClient>(params object[] parameters) where TClient : Rest.ServiceClient<TClient>
+        {
+            TClient client = ManagementClients.FirstOrDefault(o => o is TClient) as TClient;
+            if (client == null)
+            {
+                if (throwWhenNotAvailable)
+                {
+                    throw new ArgumentException(
+                        string.Format("TestManagementClientHelper class wasn't initialized with the {0} client.",
+                            typeof (TClient).Name));
+                }
+                else
+                {
+                    var realClientFactory = new ClientFactory();
+                    var newParameters = new object[parameters.Length + 1];
+                    Array.Copy(parameters, 0, newParameters, 1, parameters.Length);
+                    newParameters[0] = HttpMockServer.CreateInstance();
+                    var realClient = realClientFactory.CreateCustomArmClient<TClient>(newParameters);
+                    return realClient;
+                }
+            }
+
+            return client;
+        }
+
+        List<ProductInfoHeaderValue> IClientFactory.UserAgents
+        {
+            get
+            {
+                return this.UniqueUserAgents.ToList();
+            }
+            set
+            {
+                value.ForEach((v) =>  this.UniqueUserAgents.Add(v));
             }
         }
     }

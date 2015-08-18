@@ -16,37 +16,14 @@ using System;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
+using System.Security.Cryptography.X509Certificates;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Set, "AzureApplicationGatewaySslCertificate"), OutputType(typeof(PSApplicationGateway))]
-    public class SetAzureApplicationGatewaySslCertificateCommand : NetworkBaseCmdlet
+    public class SetAzureApplicationGatewaySslCertificateCommand : AzureApplicationGatewaySslCertificateBase
     {
-        [Parameter(
-               Mandatory = true,
-               HelpMessage = "The name of the ssl certificate")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(
-               Mandatory = true,
-               HelpMessage = "Certificate data")]
-        [ValidateNotNullOrEmpty]
-        public string Data { get; set; }
-
-        [Parameter(
-               Mandatory = true,
-               HelpMessage = "Certificate password")]
-        [ValidateNotNullOrEmpty]
-        public string Password { get; set; }
-
-        [Parameter(
-               Mandatory = true,
-               HelpMessage = "Certificate public data")]
-        [ValidateNotNullOrEmpty]
-        public string PublicCertData { get; set; }
-
         [Parameter(
              Mandatory = true,
              ValueFromPipeline = true,
@@ -57,23 +34,19 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.ExecuteCmdlet();
 
-            var sslCertificate = this.ApplicationGateway.SslCertificates.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            var oldSslCertificate = this.ApplicationGateway.SslCertificates.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
-            if (sslCertificate == null)
+            if (oldSslCertificate == null)
             {
                 throw new ArgumentException("Ssl certificate with the specified name does not exist");
             }
 
-            sslCertificate.Name = this.Name;
-            sslCertificate.Data = this.Data;
-            sslCertificate.Password = this.Password;
-            sslCertificate.PublicCertData = this.PublicCertData;
-            
-            sslCertificate.Id =
-                ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
-                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
-                    Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewaySslCertificateName,
-                    this.Name);
+            X509Certificate2 cert = new X509Certificate2(CertificateFile, Password, X509KeyStorageFlags.Exportable);
+
+            var newSslCertificate = base.NewObject();
+
+            this.ApplicationGateway.SslCertificates.Remove(oldSslCertificate);
+            this.ApplicationGateway.SslCertificates.Add(newSslCertificate);
 
             WriteObject(this.ApplicationGateway);
         }

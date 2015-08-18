@@ -12,12 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Globalization;
-using System.Management.Automation;
-using Microsoft.WindowsAzure.Storage.File;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
+    using System.Globalization;
+    using System.Management.Automation;
+    using Microsoft.WindowsAzure.Storage.File;
+
     [Cmdlet(
         VerbsCommon.Remove,
         Constants.ShareCmdletName,
@@ -68,7 +68,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             {
                 if (this.ShouldProcess(share.Name))
                 {
-                    await this.Channel.DeleteShareAsync(share, this.AccessCondition, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken);
+                    await this.Channel.DeleteShareAsync(share, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken);
                 }
 
                 if (this.PassThru)

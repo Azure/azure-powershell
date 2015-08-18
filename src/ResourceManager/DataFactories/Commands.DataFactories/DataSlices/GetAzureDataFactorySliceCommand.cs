@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.DataFactories
             {
                 ResourceGroupName = ResourceGroupName,
                 DataFactoryName = DataFactoryName,
-                TableName = TableName,
+                DatasetName = this.DatasetName,
                 DataSliceRangeStartTime = StartDateTime,
                 DataSliceRangeEndTime = EndDateTime
             };

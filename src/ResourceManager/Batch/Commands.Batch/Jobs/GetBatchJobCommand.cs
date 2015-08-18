@@ -20,30 +20,29 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Get, "AzureBatchJob", DefaultParameterSetName = Constants.ODataFilterParameterSet), OutputType(typeof(PSCloudJob))]
+    [Cmdlet(VerbsCommon.Get, Constants.AzureBatchJob, DefaultParameterSetName = Constants.ODataFilterParameterSet), OutputType(typeof(PSCloudJob))]
     public class GetBatchJobCommand : BatchObjectModelCmdletBase
     {
         private int maxCount = Constants.DefaultMaxCount;
 
-        [Parameter(Position = 0, ParameterSetName = Constants.NameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the workitem which contains the jobs.")]
-        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet)]
         [ValidateNotNullOrEmpty]
-        public string WorkItemName { get; set; }
+        public string Id { get; set; }
 
-        [Parameter(Position = 1, ParameterSetName = Constants.NameParameterSet, HelpMessage = "The name of the job to retrieve.")]
+        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string JobScheduleId { get; set; }
 
-        [Parameter(Position = 0, ParameterSetName = Constants.ParentObjectParameterSet, ValueFromPipeline = true, HelpMessage = "The PSCloudWorkItem object representing the workitem which contains the jobs.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.ParentObjectParameterSet, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public PSCloudWorkItem WorkItem { get; set; }
+        public PSCloudJobSchedule JobSchedule { get; set; }
             
-        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet, HelpMessage = "The OData filter clause to use when querying for jobs.")]
+        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet)]
         [Parameter(ParameterSetName = Constants.ParentObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Filter { get; set; }
 
-        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet, HelpMessage = "The maximum number of jobs to return.")]
+        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet)]
         [Parameter(ParameterSetName = Constants.ParentObjectParameterSet)]
         public int MaxCount
         {
@@ -53,9 +52,11 @@ namespace Microsoft.Azure.Commands.Batch
 
         public override void ExecuteCmdlet()
         {
-            ListJobOptions options = new ListJobOptions(this.BatchContext, this.WorkItemName, this.WorkItem, this.AdditionalBehaviors)
+            ListJobOptions options = new ListJobOptions(this.BatchContext, this.AdditionalBehaviors)
             {
-                JobName = this.Name,
+                JobId = this.Id,
+                JobScheduleId = this.JobScheduleId,
+                JobSchedule = this.JobSchedule,
                 Filter = this.Filter,
                 MaxCount = this.MaxCount
             };

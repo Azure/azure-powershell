@@ -12,16 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Management.Automation;
-using System.Threading;
-using System.Threading.Tasks;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Management.Automation;
+    using System.Threading;
+    using System.Threading.Tasks;
+
     /// <summary>
     /// Task output stream in multithread environment
     /// It's the multithread version of WriteOuput/WriterVerbose/WriteError and etc.

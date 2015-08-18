@@ -231,4 +231,22 @@
   <data name="DatabaseNotInServiceTierForAuditingPolicy" xml:space="preserve">
     <value>Auditing cannot be enabled . Upgrade to Basic, Standard or Premium Service Tier to enable auditing on your database(s)</value>
   </data>
+  <data name="ADGroupMoreThanOneFound" xml:space="preserve">
+    <value>More than one Active Directory group with the display name '{0}' was found. Please provide an object id to select the correct group.</value>
+  </data>
+  <data name="ADObjectNotFound" xml:space="preserve">
+    <value>Cannot find the Azure Active Directory object '{0}'. Please make sure that the user or application service principal you are authorizing is registered in the current subscription's Azure Active directory.</value>
+  </data>
+  <data name="ADUserMoreThanOneFound" xml:space="preserve">
+    <value>More than one Azure Active Directory user with the display name '{0}' was found. Please provide an object id to select the correct user.</value>
+  </data>
+  <data name="InvalidTenantId" xml:space="preserve">
+    <value>Please set a valid tenant id in the AzureEnvironment.</value>
+  </data>
+  <data name="RemoveAzureSqlServerActiveDirectoryAdministratorDescription" xml:space="preserve">
+    <value>Removing Azure Sql Server Active Directory Administrator on server '{0}'.</value>
+  </data>
+  <data name="RemoveAzureSqlServerActiveDirectoryAdministratorWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Azure Sql Server Active Directory Administrator on server '{0}'?</value>
+  </data>
 </root>

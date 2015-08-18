@@ -12,17 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
-using Microsoft.WindowsAzure.Storage.Queue;
-using Microsoft.WindowsAzure.Storage.Queue.Protocol;
-using Microsoft.WindowsAzure.Storage.Table;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
+    using System;
+    using System.Collections.Generic;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.Blob;
+    using Microsoft.WindowsAzure.Storage.File;
+    using Microsoft.WindowsAzure.Storage.Queue;
+    using Microsoft.WindowsAzure.Storage.Queue.Protocol;
+    using Microsoft.WindowsAzure.Storage.Table;
+
     internal class SasTokenHelper
     {
         /// <summary>
@@ -51,6 +52,39 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             if (policy.SharedAccessExpiryTime.HasValue && sharedAccessPolicy.SharedAccessExpiryTime.HasValue)
             {
                 throw new ArgumentException(Resources.SignedExpiryTimeMustBeOmitted);
+            }
+
+            return !sharedAccessPolicy.SharedAccessExpiryTime.HasValue;
+        }
+        
+        /// <summary>
+        /// Validate the file share access policy
+        /// </summary>
+        /// <param name="policy">SharedAccessFilePolicy object</param>
+        /// <param name="policyIdentifier">The policy identifier which need to be checked.</param>
+        public static bool ValidateShareAccessPolicy(IStorageFileManagement channel, string shareName,
+             string policyIdentifier, bool shouldNoPermission, bool shouldNoStartTime, bool shouldNoExpiryTime)
+        {
+            if (string.IsNullOrEmpty(policyIdentifier)) return true;
+            CloudFileShare fileShare = channel.GetShareReference(shareName);
+            FileSharePermissions permission = fileShare.GetPermissions();
+
+            SharedAccessFilePolicy sharedAccessPolicy =
+                GetExistingPolicy<SharedAccessFilePolicy>(permission.SharedAccessPolicies, policyIdentifier);
+
+            if (shouldNoPermission && sharedAccessPolicy.Permissions != SharedAccessFilePermissions.None)
+            {
+                throw new InvalidOperationException(Resources.SignedPermissionsMustBeOmitted);
+            }
+
+            if (shouldNoStartTime && sharedAccessPolicy.SharedAccessStartTime.HasValue)
+            {
+                throw new InvalidOperationException(Resources.SignedStartTimeMustBeOmitted);
+            }
+
+            if (shouldNoExpiryTime && sharedAccessPolicy.SharedAccessExpiryTime.HasValue)
+            {
+                throw new InvalidOperationException(Resources.SignedExpiryTimeMustBeOmitted);
             }
 
             return !sharedAccessPolicy.SharedAccessExpiryTime.HasValue;
@@ -169,6 +203,21 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 throw new ArgumentException(String.Format(Resources.ExpiryTimeGreatThanStartTime,
                     SharedAccessExpiryTime.ToString(), SharedAccessStartTime.ToString()));
+            }
+        }
+
+        public static string GetFullUriWithSASToken(string absoluteUri, string sasToken)
+        {
+
+            if (absoluteUri.Contains("?"))
+            {
+                // There is already a query string in the URI,
+                // remove "?" from sas token.
+                return absoluteUri + sasToken.Substring(1);
+            }
+            else
+            {
+                return absoluteUri + sasToken;
             }
         }
     }

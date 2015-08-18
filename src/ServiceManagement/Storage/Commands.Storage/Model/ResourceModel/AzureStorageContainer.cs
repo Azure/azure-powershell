@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using Microsoft.WindowsAzure.Storage.Blob;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
 {
+    using System;
+    using Microsoft.WindowsAzure.Storage.Blob;
+
     /// <summary>
     /// azure storage container
     /// </summary>
