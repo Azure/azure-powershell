@@ -119,7 +119,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Properties {
         ///1. VM does not exist
         ///2. VM is Azure IaaS v2 VM
         ///3. The VM name or the Service name needs to be case sensitive
-        /// 
+        ///4. VM is already Registered with same or other Vault. Please Unregister VM first and then try to register it again.
+        ///
         ///Please contact Microsoft for further assistant..
         /// </summary>
         internal static string AzureVMNotFound {
