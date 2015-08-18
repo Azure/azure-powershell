@@ -22,7 +22,7 @@
     <DataFactoryManagerTestDebug>.\src\ResourceManager\DataFactories\Commands.DataFactories.Test\bin\Debug\Microsoft.Azure.Commands.DataFactories.Test.dll</DataFactoryManagerTestDebug>
     <StreamAnalyticsManagerTestDebug>.\src\ResourceManager\StreamAnalytics\Commands.StreamAnalytics.Test\bin\Debug\Microsoft.Azure.Commands.StreamAnalytics.Test.dll</StreamAnalyticsManagerTestDebug>
     <OperationalInsightsTestDebug>.\src\ResourceManager\OperationalInsights\Commands.OperationalInsights.Test\bin\Debug\Microsoft.Azure.Commands.OperationalInsights.Test.dll</OperationalInsightsTestDebug>
-    <BatchTestDebug>.\src\ResourceManager\Batch\Commands.Batch.Test\bin\Debug\Microsoft.Azure.Commands.Batch.Test.dll</BatchTestDebug>
+    <BatchTestDebug>.\src\ResourceManager\AzureBatch\Commands.Batch.Test\bin\Debug\Microsoft.Azure.Commands.Batch.Test.dll</BatchTestDebug>
     <WebsitesTestDebug>.\src\ResourceManager\Websites\Commands.Websites.Test\bin\Debug\Microsoft.Azure.Commands.Websites.Test.dll</WebsitesTestDebug>
     <RemoteAppTestDebug>.\src\ServiceManagement\RemoteApp\Commands.RemoteApp.Test\bin\Debug\Microsoft.Azure.Commands.RemoteApp.Tests.dll</RemoteAppTestDebug>
     <ServiceManagementTestDebug>.\src\ServiceManagement\Compute\Commands.ServiceManagement.Test\bin\Debug\Microsoft.WindowsAzure.Commands.ServiceManagement.Test.dll</ServiceManagementTestDebug>
@@ -56,7 +56,7 @@
     <XUnitTests Include=".\src\ResourceManager\Dns\Commands.Dns.Test\bin\Debug\Microsoft.Azure.Commands.Dns.Test.dll"/>
     <XUnitTests Include=".\src\ResourceManager\StreamAnalytics\Commands.StreamAnalytics.Test\bin\Debug\Microsoft.Azure.Commands.StreamAnalytics.Test.dll"/>
     <XUnitTests Include=".\src\ResourceManager\OperationalInsights\Commands.OperationalInsights.Test\bin\Debug\Microsoft.Azure.Commands.OperationalInsights.Test.dll"/>
-    <XUnitTests Include=".\src\ResourceManager\Batch\Commands.Batch.Test\bin\Debug\Microsoft.Azure.Commands.Batch.Test.dll"/>
+    <XUnitTests Include=".\src\ResourceManager\AzureBatch\Commands.Batch.Test\bin\Debug\Microsoft.Azure.Commands.Batch.Test.dll"/>
     <XUnitTests Include=".\src\ResourceManager\Websites\Commands.Websites.Test\bin\Debug\Microsoft.Azure.Commands.Websites.Test.dll"/>
     <XUnitTests Include=".\src\ResourceManager\KeyVault\Commands.KeyVault.Test\bin\Debug\Microsoft.Azure.Commands.KeyVault.Test.dll"/>
     <XUnitTests Include=".\src\ResourceManager\Commerce\Commands.UsageAggregates.Test\bin\Debug\Microsoft.Azure.Commands.UsageAggregates.Test.dll"/>

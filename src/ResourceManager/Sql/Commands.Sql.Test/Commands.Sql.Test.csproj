@@ -438,8 +438,12 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ElasticPoolCrudTests\TestElasticPoolUpdate.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.IndexRecommendationTests\TestCreateIndex.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.IndexRecommendationTests\TestGetIndexRecommendation.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.IndexRecommendationTests\TestCreateIndex.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.IndexRecommendationTests\TestGetIndexRecommendation.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.RecommendedElasticPoolTests\ListRecommendedElasticPools.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
