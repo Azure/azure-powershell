@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
             var policy = GetProtectionPolicyByName(resourceGroupName, resourceName, name);
             if (policy != null)
             {
-                var exception = new ArgumentException("A protection policy with the specified name already exists.");
+                var exception = new ArgumentException(Resources.PolicyAlreadyExist);
                 throw exception;
             }
         }

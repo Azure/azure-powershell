@@ -21,6 +21,7 @@ using System.Web;
 using Microsoft.Azure.Management.BackupServices;
 using Mgmt = Microsoft.Azure.Management.BackupServices.Models;
 using Microsoft.Azure.Commands.AzureBackup.Models;
+using Microsoft.Azure.Commands.AzureBackup.Properties;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -83,9 +84,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 {
                     if (To.HasValue)
                     {
-                        throw new Exception("Please specify both From and To.");
+                        throw new Exception(Resources.AzureBackupJobArguementException);
                     }
-                    WriteDebug("Setting StartTime to min value.");
+                    WriteDebug(Resources.SettingStartTime);
                     From = new DateTime();
                     From = AzureBackupJobHelper.MinimumAllowedDate;
                 }
@@ -96,18 +97,18 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 }
                 else if (To.HasValue && To.Value <= From.Value)
                 {
-                    throw new Exception("From should be lesser than To.");
+                    throw new Exception(Resources.TimeFilterNotCorrect);
                 }
                 else
                 {
                     if (From != AzureBackupJobHelper.MinimumAllowedDate)
                     {
-                        WriteDebug("End time not set. Setting it to current time.");
+                        WriteDebug(Resources.EndTimeNotSet);
                         To = DateTime.Now;
                     }
                     else
                     {
-                        WriteDebug("Setting EndTime to min value.");
+                        WriteDebug(Resources.SettingEndTime);
                         To = new DateTime();
                         To = AzureBackupJobHelper.MinimumAllowedDate;
                     }
@@ -126,12 +127,12 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     To = DateTime.UtcNow;
                 }
 
-                WriteDebug("StartTime filter is: " + System.Uri.EscapeDataString(From.Value.ToString("yyyy-MM-dd hh:mm:ss tt")));
-                WriteDebug("EndTime filter is: " + System.Uri.EscapeDataString(To.Value.ToString("yyyy-MM-dd hh:mm:ss tt")));
-                WriteDebug("Operation filter is: " + Operation);
-                WriteDebug("Status filter is: " + Status);
-                WriteDebug("Type filter is: " + Type);
-                WriteDebug("JobID filter is: " + JobId);
+                WriteDebug(String.Format(Resources.StartTimeFilter, System.Uri.EscapeDataString(From.Value.ToString("yyyy-MM-dd hh:mm:ss tt"))));
+                WriteDebug(String.Format(Resources.EndTimeFilter, System.Uri.EscapeDataString(To.Value.ToString("yyyy-MM-dd hh:mm:ss tt"))));
+                WriteDebug(String.Format(Resources.OperationFilter, Operation));
+                WriteDebug(String.Format(Resources.StatusFilter, Status));
+                WriteDebug(String.Format(Resources.TypeFilter, Type));
+                WriteDebug(String.Format(Resources.JobIdFilter, JobId));
 
                 Mgmt.CSMJobQueryObject queryParams = new Mgmt.CSMJobQueryObject()
                 {
@@ -152,7 +153,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     retrievedJobs.Add(new AzureRMBackupJob(Vault, serviceJob.Properties, serviceJob.Name));
                 }
 
-                WriteDebug("Successfully retrieved all jobs. Number of jobs retrieved: " + retrievedJobs.Count());
+                WriteDebug(String.Format(Resources.JobRetrieved, retrievedJobs.Count()));
 
                 if (retrievedJobs.Count == 1)
                 {

@@ -64,20 +64,20 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 {
                     vmName = Name;
                     rgName = ServiceName;
-                    WriteDebug(String.Format("Registering ARM-V1 VM, VMName: {0}, CloudServiceName: {1}", vmName, rgName));
+                    WriteDebug(String.Format(Resources.RegisteringARMVM1, vmName, rgName));
                     ServiceOrRG = "CloudServiceName";
                 }
                 else if(this.ParameterSetName == V2VMParameterSet)
                 {
                     vmName = Name;
                     rgName = ResourceGroupName;
-                    WriteDebug(String.Format("Registering ARM-V2 VM, VMName: {0}, ResourceGroupName: {1}", vmName, rgName));
+                    WriteDebug(String.Format(Resources.RegisteringARMVM2, vmName, rgName));
                     ServiceOrRG = "ResourceGroupName";
                 }
 
                 else
                 {
-                    throw new PSArgumentException("Please make sure you have pass right set of parameters"); //TODO: PM scrub needed
+                    throw new PSArgumentException(Resources.PSArgumentException); //TODO: PM scrub needed
                 }
 
                 Guid jobId = Guid.Empty;
@@ -87,20 +87,20 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 isDiscoveryNeed = IsDiscoveryNeeded(vmName, rgName, out container);
                 if(isDiscoveryNeed)
                 {
-                    WriteDebug(String.Format("VM {0} is not yet discovered. Triggering Discovery", vmName));
+                    WriteDebug(String.Format(Resources.VMNotDiscovered, vmName));
                     RefreshContainer(Vault.ResourceGroupName, Vault.Name);
                     isDiscoveryNeed = IsDiscoveryNeeded(vmName, rgName, out container);
                     if ((isDiscoveryNeed == true) || (container == null))
                     {
                         //Container is not discovered. Throw exception
-                        string errMsg = String.Format("Failed to discover VM {0} under {1} {2}. Please make sure names are correct and VM is not deleted", vmName, ServiceOrRG, rgName);
+                        string errMsg = String.Format(Resources.DiscoveryFailure, vmName, ServiceOrRG, rgName);
                         WriteDebug(errMsg);
                         ThrowTerminatingError(new ErrorRecord(new Exception(Resources.AzureVMNotFound), string.Empty, ErrorCategory.InvalidArgument, null));
                     }
                 }                
 
                 //Container is discovered. Register the container
-                WriteDebug(String.Format("Going to register VM {0}", vmName));
+                WriteDebug(String.Format(Resources.RegisteringVM, vmName));
                 var operationId = AzureBackupClient.RegisterContainer(Vault.ResourceGroupName, Vault.Name, container.Name);
 
                 var operationStatus = GetOperationStatus(Vault.ResourceGroupName, Vault.Name, operationId);
@@ -141,13 +141,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             {
                 isDiscoverySuccessful = false;
                 errorMessage = status.Error.Message;
-                WriteDebug(String.Format("Discovery operation failed with ErrorCode: {0}", status.Error.Code));
+                WriteDebug(String.Format(Resources.DiscoveryFailureErrorCode, status.Error.Code));
                 if ((status.Error.Code == AzureBackupOperationErrorCode.DiscoveryInProgress.ToString() ||
                     (status.Error.Code == AzureBackupOperationErrorCode.BMSUserErrorObjectLocked.ToString())))
                 {
                     //Need to retry for this errors
                     isRetryNeeded = true;
-                    WriteDebug(String.Format("Going to retry Discovery if retry count is not exceeded"));
+                    WriteDebug(String.Format(Resources.RertyDiscovery));
                 }
             }
             return isRetryNeeded;         
@@ -159,16 +159,17 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             ContainerQueryParameters parameters = new ContainerQueryParameters()
             {
                 ContainerType = ManagedContainerType.IaasVM.ToString(),
-                FriendlyName = vmName,                
+                FriendlyName = vmName,      
+                Status = AzureBackupContainerRegistrationStatus.NotRegistered.ToString(),
             };
 
             //First check if container is discovered or not            
             var containers = AzureBackupClient.ListContainers(Vault.ResourceGroupName, Vault.Name, parameters);
-            WriteDebug(String.Format("Container count returned from service: {0}.", containers.Count()));
+            WriteDebug(String.Format(Resources.ContainerCountFromService, containers.Count()));
             if (containers.Count() == 0)
             {
                 //Container is not discover
-                WriteDebug("Container is not discovered");
+                WriteDebug(Resources.ContainerNotDiscovered);
                 container = null;
                 isDiscoveryNeed = true;
             }
@@ -180,7 +181,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 if (container == null)
                 {
                     //Container is not in list of registered container
-                    WriteDebug(String.Format("Desired Container is not found. Returning with isDiscoveryNeed = true"));
+                    WriteDebug(String.Format(Resources.DesiredContainerNotFound));
                     isDiscoveryNeed = true;
                 }
             }

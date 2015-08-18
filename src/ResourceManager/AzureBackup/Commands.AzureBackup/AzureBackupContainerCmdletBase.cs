@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         {
             base.ExecuteCmdlet();
 
-            WriteDebug(String.Format("Cmdlet called for ResourceGroupName: {0}, ResourceName: {1}, Location: {2}", Container.ResourceGroupName, Container.ResourceName, Container.Location));
+            WriteDebug(String.Format(Resources.CmdletCalled, Container.ResourceGroupName, Container.ResourceName, Container.Location));
 
             InitializeAzureBackupCmdlet(Container.ResourceGroupName, Container.ResourceName);
         }

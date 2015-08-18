@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.AzureBackup.Properties;
 using System;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Models
@@ -46,12 +47,12 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         {
             if (String.IsNullOrEmpty(ResourceGroupName))
             {
-                throw new ArgumentException("AzureBackupVault.ResourceGroupName");
+                throw new ArgumentException(Resources.BackupVaultRGNameNullOrEmpty);
             }
 
             if (String.IsNullOrEmpty(Name))
             {
-                throw new ArgumentException("AzureBackupVault.Name");
+                throw new ArgumentException(Resources.BackupVaultResNameNullOrEmpty);
             }
         }
     }

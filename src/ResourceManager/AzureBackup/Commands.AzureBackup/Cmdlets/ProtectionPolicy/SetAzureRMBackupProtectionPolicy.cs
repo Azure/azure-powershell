@@ -21,6 +21,7 @@ using Microsoft.Azure.Management.BackupServices.Models;
 using Microsoft.Azure.Commands.AzureBackup.Helpers;
 using Microsoft.Azure.Commands.AzureBackup.Models;
 using CmdletModel = Microsoft.Azure.Commands.AzureBackup.Models;
+using Microsoft.Azure.Commands.AzureBackup.Properties;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -59,7 +60,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             ExecutionBlock(() =>
             {
                 base.ExecuteCmdlet();
-                WriteDebug("Making client call");
+                WriteDebug(Resources.MakingClientCall);
 
                 var response = AzureBackupClient.GetProtectionPolicyByName(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, ProtectionPolicy.Name);
                 var vault = new CmdletModel.AzureRMBackupVault(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, ProtectionPolicy.Location);
@@ -68,7 +69,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 if (policyInfo == null)
                 {
-                    throw new ArgumentException(String.Format("Protection policy {0} not found", ProtectionPolicy.Name));
+                    throw new ArgumentException(String.Format(Resources.PolicyNotFound, ProtectionPolicy.Name));
                 }
 
                 FillRemainingValuesForSetPolicyRequest(policyInfo, this.NewName);
@@ -102,14 +103,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     string resourceGroupName = ProtectionPolicy.ResourceGroupName;
                     string resourceName = ProtectionPolicy.ResourceName;
                     var operationStatus = GetOperationStatus(resourceGroupName, resourceName, operationId);
-                    WriteDebug("Protection Policy successfully updated and created job(s) to re-configure protection on associated items");
+                    WriteDebug(Resources.PolicyUpdatedReconfigureProtectionDone);
 
                     WriteObject(GetCreatedJobs(resourceGroupName, resourceName, vault, operationStatus.JobList));
                 }
 
                 else
                 {
-                    WriteDebug("Protection Policy successfully updated");
+                    WriteDebug(Resources.PolicyUpdated);
                 }
                 
             });
@@ -126,7 +127,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             BackupTime = (BackupTime == DateTime.MinValue) ? policy.BackupTime :
                                 BackupTime;
 
-            WriteDebug("ParameterSetName = " + this.ParameterSetName.ToString());
+            WriteDebug(String.Format(Resources.PolicyParameterSet, this.ParameterSetName.ToString()));
 
             if (this.ParameterSetName != NoScheduleParamSet )
             {
@@ -151,7 +152,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             }
             else if (DaysOfWeek != null && DaysOfWeek.Length > 0)
             {
-                throw new ArgumentException("For DaysOfWeek, weekly switch param is required");
+                throw new ArgumentException(Resources.PolicyArgumentException);
             }
         }
     }
