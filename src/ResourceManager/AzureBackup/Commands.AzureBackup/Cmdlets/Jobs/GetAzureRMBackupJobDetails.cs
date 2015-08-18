@@ -19,6 +19,7 @@ using System.Xml;
 using System.Linq;
 using Mgmt = Microsoft.Azure.Management.BackupServices.Models;
 using Microsoft.Azure.Commands.AzureBackup.Models;
+using Microsoft.Azure.Commands.AzureBackup.Properties;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -55,12 +56,12 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     JobID = Job.InstanceId;
                 }
 
-                WriteDebug("JobID filter is: " + JobID);
+                WriteDebug(String.Format(Resources.JobIdFilter, JobID));
 
                 Mgmt.CSMJobDetailsResponse serviceJobProperties = AzureBackupClient.GetJobDetails(Vault.ResourceGroupName, Vault.Name, JobID);
                 AzureRMBackupJobDetails jobDetails = new AzureRMBackupJobDetails(Vault, serviceJobProperties.JobDetailedProperties, serviceJobProperties.Name);
 
-                WriteDebug("Retrieved JobDetails from service.");
+                WriteDebug(Resources.JobResponse);
                 WriteObject(jobDetails);
             });
         }

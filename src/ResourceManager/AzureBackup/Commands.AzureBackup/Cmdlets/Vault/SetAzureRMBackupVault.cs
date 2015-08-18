@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.AzureBackup.Helpers;
 using Microsoft.Azure.Commands.AzureBackup.Models;
+using Microsoft.Azure.Commands.AzureBackup.Properties;
 using System;
 using System.Management.Automation;
 using CmdletModel = Microsoft.Azure.Commands.AzureBackup.Models;
@@ -42,7 +43,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             {
                 if (Storage != 0)
                 {
-                    WriteDebug(String.Format("Setting storage type for the resource, Type: {0}", Storage));
+                    WriteDebug(String.Format(Resources.SettingStorageType, Storage));
 
                     AzureBackupClient.UpdateStorageType(Vault.ResourceGroupName, Vault.Name, Storage.ToString());
                 }

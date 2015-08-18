@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             var cloudServicesClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(Profile, Profile.Context.Subscription, AzureEnvironment.Endpoint.ResourceManager);
             azureBackupClientAdapter = new AzureBackupClientAdapter(cloudServicesClient.Credentials, cloudServicesClient.BaseUri);
 
-            WriteDebug(string.Format("Initialized AzureBackup Cmdlet, ClientRequestId: {0}, ResourceGroupName: {1}, ResourceName : {2}", azureBackupClientAdapter.GetClientRequestId(), rgName, rName));
+            WriteDebug(string.Format(Resources.InitializingClient, azureBackupClientAdapter.GetClientRequestId(), rgName, rName));
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             }
             catch (Exception exception)
             {
-                WriteDebug(String.Format("Caught exception, type: {0}", exception.GetType()));
+                WriteDebug(String.Format(Resources.ExceptionInExecution, exception.GetType()));
                 HandleException(exception);
             }
         }
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             if (exception is AggregateException && ((AggregateException)exception).InnerExceptions != null
                 && ((AggregateException)exception).InnerExceptions.Count != 0)
             {
-                WriteDebug("Handling aggregate exception");
+                WriteDebug(Resources.AggregateException);
                 foreach (var innerEx in ((AggregateException)exception).InnerExceptions)
                 {
                     HandleException(innerEx);
@@ -110,14 +110,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     var cloudEx = exception as CloudException;
                     if (cloudEx.Response != null && cloudEx.Response.StatusCode == HttpStatusCode.NotFound)
                     {
-                        WriteDebug(String.Format("Received CloudException, StatusCode: {0}", cloudEx.Response.StatusCode));
+                        WriteDebug(String.Format(Resources.CloudExceptionCodeNotFound, cloudEx.Response.StatusCode));
 
                         targetEx = new Exception(Resources.ResourceNotFoundMessage);
                         targetErrorCategory = ErrorCategory.InvalidArgument;
                     }
                     else if (cloudEx.Error != null)
                     {
-                        WriteDebug(String.Format("Received CloudException, ErrorCode: {0}, Message: {1}", cloudEx.Error.Code, cloudEx.Error.Message));
+                        WriteDebug(String.Format(Resources.CloudException, cloudEx.Error.Code, cloudEx.Error.Message));
 
                         targetErrorId = cloudEx.Error.Code;
                         targetErrorCategory = ErrorCategory.InvalidOperation;
@@ -126,13 +126,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 else if (exception is WebException)
                 {
                     var webEx = exception as WebException;
-                    WriteDebug(string.Format("Received WebException, Response: {0}, Status: {1}", webEx.Response, webEx.Status));
+                    WriteDebug(string.Format(Resources.WebException, webEx.Response, webEx.Status));
 
                     targetErrorCategory = ErrorCategory.ConnectionError;
                 }
                 else if (exception is ArgumentException || exception is ArgumentNullException)
                 {
-                    WriteDebug(string.Format("Received ArgumentException"));
+                    WriteDebug(string.Format(Resources.ArgumentException));
                     targetErrorCategory = ErrorCategory.InvalidArgument;
                 }
 
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 if (response.Status != CSMAzureBackupOperationStatus.InProgress.ToString())
                 {
-                    WriteDebug(String.Format("OperationStatus : {0}", response.Status));
+                    WriteDebug(String.Format(Resources.OperationStatus, response.Status));
                     break;
                 }
 
