@@ -159,7 +159,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             ContainerQueryParameters parameters = new ContainerQueryParameters()
             {
                 ContainerType = ManagedContainerType.IaasVM.ToString(),
-                FriendlyName = vmName,                
+                FriendlyName = vmName,      
+                Status = AzureBackupContainerRegistrationStatus.NotRegistered.ToString(),
             };
 
             //First check if container is discovered or not            
