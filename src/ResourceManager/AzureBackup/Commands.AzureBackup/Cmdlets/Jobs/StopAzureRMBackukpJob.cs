@@ -21,6 +21,7 @@ using Microsoft.Azure.Management.BackupServices;
 using System.Threading.Tasks;
 using Mgmt = Microsoft.Azure.Management.BackupServices.Models;
 using Microsoft.Azure.Commands.AzureBackup.Models;
+using Microsoft.Azure.Commands.AzureBackup.Properties;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -58,17 +59,17 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     JobID = Job.InstanceId;
                 }
 
-                WriteDebug("JobID is: " + JobID);
+                WriteDebug(String.Format(Resources.JobId, JobID));
                 Guid cancelTaskId = AzureBackupClient.TriggerCancelJob(Vault.ResourceGroupName, Vault.Name, JobID);
                 CSMOperationResult opResponse = TrackOperation(Vault.ResourceGroupName, Vault.Name, cancelTaskId);
 
                 if (opResponse.Status == CSMAzureBackupOperationStatus.Succeeded.ToString())
                 {
-                    WriteDebug("Triggered cancellation of job with JobID: " + JobID);
+                    WriteDebug(String.Format(Resources.TriggeredCancellationJob, JobID));
                 }
                 else
                 {
-                    throw new Exception("Stop Job failed with ErrorCode: " + opResponse.Error.Code);
+                    throw new Exception(String.Format(Resources.StopJobFailed, opResponse.Error.Code));
                 }
             });
         }

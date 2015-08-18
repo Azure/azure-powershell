@@ -20,6 +20,7 @@ using System.Linq;
 using Microsoft.Azure.Management.BackupServices.Models;
 using MBS = Microsoft.Azure.Management.BackupServices;
 using Microsoft.Azure.Commands.AzureBackup.Models;
+using Microsoft.Azure.Commands.AzureBackup.Properties;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
@@ -35,10 +36,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
-                WriteDebug("Making client call");
+                WriteDebug(Resources.MakingClientCall);
                 Guid operationId = AzureBackupClient.TriggerBackup(Item.ResourceGroupName, Item.ResourceName, Item.ContainerUniqueName, Item.ItemName);
 
-                WriteDebug(string.Format("Triggered backup. Converting response {0}", operationId));
+                WriteDebug(string.Format(Resources.TriggeringBackup, operationId));
 
                 var operationStatus = TrackOperation(Item.ResourceGroupName, Item.ResourceName, operationId);
                 WriteObject(GetCreatedJobs(Item.ResourceGroupName, Item.ResourceName, new Models.AzureRMBackupVault(Item.ResourceGroupName, Item.ResourceName, Item.Location), operationStatus.JobList).FirstOrDefault());

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.AzureBackup.Models;
+using Microsoft.Azure.Commands.AzureBackup.Properties;
 using Microsoft.Azure.Management.BackupServices;
 using Microsoft.Azure.Management.BackupServices.Models;
 using System;
@@ -51,7 +52,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
             {
                 base.ExecuteCmdlet();
                 Guid operationId = Guid.Empty;
-                WriteDebug("Making client call");
+                WriteDebug(Resources.MakingClientCall);
 
                 if (!this.DeleteBackupData)
                 {
@@ -71,7 +72,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
                 }
 
 
-                WriteDebug("Received disable azure backup protection response");
+                WriteDebug(Resources.DisableAzureBackupProtection);
                 var operationStatus = TrackOperation(Item.ResourceGroupName, Item.ResourceName, operationId);
                 this.WriteObject(GetCreatedJobs(Item.ResourceGroupName, 
                     Item.ResourceName, 
