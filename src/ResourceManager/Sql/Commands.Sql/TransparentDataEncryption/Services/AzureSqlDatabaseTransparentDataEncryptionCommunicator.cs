@@ -42,14 +42,14 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureProfile Profile { get; set; }
+        public AzureSMProfile Profile { get; set; }
 
         /// <summary>
         /// Creates a communicator for Azure Sql Databases TransparentDataEncryption
         /// </summary>
         /// <param name="profile"></param>
         /// <param name="subscription"></param>
-        public AzureSqlDatabaseTransparentDataEncryptionCommunicator(AzureProfile profile, AzureSubscription subscription)
+        public AzureSqlDatabaseTransparentDataEncryptionCommunicator(AzureSMProfile profile, AzureSubscription subscription)
         {
             Profile = profile;
             if (subscription != Subscription)

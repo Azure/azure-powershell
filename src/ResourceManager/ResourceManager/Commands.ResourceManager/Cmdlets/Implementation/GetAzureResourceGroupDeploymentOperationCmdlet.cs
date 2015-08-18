@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             if (this.SubscriptionId == null)
             {
-                this.SubscriptionId = this.Profile.Context.Subscription.Id;
+                this.SubscriptionId = this.Profile.DefaultContext.Subscription.Id;
             }
 
             this.RunCmdlet();

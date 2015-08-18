@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Resources.ProviderFeatures
             {
                 if (this.providerFeatureClient == null)
                 {
-                    this.providerFeatureClient = new ProviderFeatureClient(this.Profile.Context);
+                    this.providerFeatureClient = new ProviderFeatureClient(this.Profile.DefaultContext);
                 }
 
                 return this.providerFeatureClient;

@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.UsageAggregates
             if (_theClient == null)
             {
                 _theClient = AzureSession.ClientFactory.CreateClient<UsageAggregationManagementClient>(Profile,
-                    Profile.Context.Subscription, AzureEnvironment.Endpoint.ResourceManager);
+                    Profile.DefaultContext.Subscription, AzureEnvironment.Endpoint.ResourceManager);
             }
 
             UsageAggregationGetResponse aggregations = _theClient.UsageAggregates.Get(ReportedStartTime,

@@ -38,14 +38,14 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Adapter
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureProfile Profile { get; set; }
+        public AzureSMProfile Profile { get; set; }
 
         /// <summary>
         /// Constructs a firewall rule adapter
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlServerFirewallRuleAdapter(AzureProfile profile, AzureSubscription subscription)
+        public AzureSqlServerFirewallRuleAdapter(AzureSMProfile profile, AzureSubscription subscription)
         {
             Profile = profile;
             Communicator = new AzureSqlServerFirewallRuleCommunicator(Profile, subscription);

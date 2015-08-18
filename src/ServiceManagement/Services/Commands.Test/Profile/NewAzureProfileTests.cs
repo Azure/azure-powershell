@@ -18,39 +18,37 @@ using System.Management.Automation.Language;
 using Microsoft.Azure.Commands.Test.Profile;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Subscriptions.Csm.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
-using CSMSubscription = Microsoft.Azure.Subscriptions.Csm.Models.Subscription;
-using RDFESubscription = Microsoft.Azure.Subscriptions.Rdfe.Models.Subscription;
+using CSMSubscription = Microsoft.Azure.Subscriptions.Models.Subscription;
+using RDFESubscription = Microsoft.WindowsAzure.Subscriptions.Models.SubscriptionListOperationResponse.Subscription;
 
 namespace Microsoft.Azure.Commands.Test.Profile
 {
-    public class NewAzureProfileTests
+    public class NewAzureSMProfileTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreatesNewAzureProfileWithCertificate()
+        public void TestCreatesNewAzureSMProfileWithCertificate()
         {
-            ProfileTestController.NewInstance.RunPsTest("Test-CreatesNewAzureProfileWithCertificate");
+            ProfileTestController.NewInstance.RunPsTest("Test-CreatesNewAzureSMProfileWithCertificate");
         }
 
         [Fact(Skip = "Need support from mocking framework")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreatesNewAzureProfileWithUserCredentials()
+        public void TestCreatesNewAzureSMProfileWithUserCredentials()
         {
-            ProfileTestController.NewInstance.RunPsTest("Test-CreatesNewAzureProfileWithUserCredentials");
+            ProfileTestController.NewInstance.RunPsTest("Test-CreatesNewAzureSMProfileWithUserCredentials");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreatesNewAzureProfileWithAccessToken()
+        public void TestCreatesNewAzureSMProfileWithAccessToken()
         {
-            ProfileTestController.NewInstance.RunPsTest("Test-CreatesNewAzureProfileWithAccessToken");
+            ProfileTestController.NewInstance.RunPsTest("Test-CreatesNewAzureSMProfileWithAccessToken");
         }
 
         [Fact]
@@ -58,7 +56,7 @@ namespace Microsoft.Azure.Commands.Test.Profile
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMakeRdfeCallWithCreatedProfile()
         {
-            ProfileTestController.NewRdfeInstance.RunPSTestWithToken((context, token) => string.Format("Test-NewAzureProfileInRDFEMode {0} {1} {2}", token, context.Account.Id, context.Subscription.Id));
+            ProfileTestController.NewRdfeInstance.RunPSTestWithToken((context, token) => string.Format("Test-NewAzureSMProfileInRDFEMode {0} {1} {2}", token, context.Account.Id, context.Subscription.Id));
         }
 
         [Fact]
@@ -66,7 +64,7 @@ namespace Microsoft.Azure.Commands.Test.Profile
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMakeArmCallWithCreatedProfile()
         {
-            ProfileTestController.NewARMInstance.RunPSTestWithToken((context, token) => string.Format("Test-NewAzureProfileInARMMode {0} {1} {2}", token, context.Account.Id, context.Subscription.Id));
+            ProfileTestController.NewARMInstance.RunPSTestWithToken((context, token) => string.Format("Test-NewAzureSMProfileInARMMode {0} {1} {2}", token, context.Account.Id, context.Subscription.Id));
         }
 
         [Fact]

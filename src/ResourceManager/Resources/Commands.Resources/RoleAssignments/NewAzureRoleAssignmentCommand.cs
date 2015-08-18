@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.Resources
                     ResourceGroupName = ResourceGroupName,
                     ResourceName = ResourceName,
                     ResourceType = ResourceType,
-                    Subscription = Profile.Context.Subscription.Id.ToString(),
+                    Subscription = Profile.DefaultContext.Subscription.Id.ToString(),
                 }
             };
 

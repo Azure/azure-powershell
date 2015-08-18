@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Commands
         {
             get {
                 return _hdInsightManagementClient ??
-                       (_hdInsightManagementClient = new AzureHdInsightManagementClient(Profile.Context));
+                       (_hdInsightManagementClient = new AzureHdInsightManagementClient(Profile.DefaultContext));
             }
             set { _hdInsightManagementClient = value; }
         }

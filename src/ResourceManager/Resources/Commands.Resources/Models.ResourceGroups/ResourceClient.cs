@@ -59,9 +59,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
         public GalleryTemplatesClient GalleryTemplatesClient { get; set; }
 
-        // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
-        //public IEventsClient EventsClient { get; set; }
-
         public Action<string> VerboseLogger { get; set; }
 
         public Action<string> ErrorLogger { get; set; }
@@ -72,13 +69,11 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// Creates new ResourceManagementClient
         /// </summary>
         /// <param name="profile">Profile containing resources to manipulate</param>
-        public ResourcesClient(AzureProfile profile)
+        public ResourcesClient(AzureSMProfile profile)
             : this(
                 AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(profile, AzureEnvironment.Endpoint.ResourceManager),
-                new GalleryTemplatesClient(profile.Context),
-                // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
-                //AzureSession.ClientFactory.CreateClient<EventsClient>(context, AzureEnvironment.Endpoint.ResourceManager),
-                AzureSession.ClientFactory.CreateClient<AuthorizationManagementClient>(profile.Context, AzureEnvironment.Endpoint.ResourceManager))
+                new GalleryTemplatesClient(profile.DefaultContext),
+                AzureSession.ClientFactory.CreateClient<AuthorizationManagementClient>(profile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager))
         {
 
         }
@@ -92,13 +87,9 @@ namespace Microsoft.Azure.Commands.Resources.Models
         public ResourcesClient(
             IResourceManagementClient resourceManagementClient,
             GalleryTemplatesClient galleryTemplatesClient,
-            // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
-            //IEventsClient eventsClient,
             IAuthorizationManagementClient authorizationManagementClient)
         {
             GalleryTemplatesClient = galleryTemplatesClient;
-            // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
-            //EventsClient = eventsClient;
             AuthorizationManagementClient = authorizationManagementClient;
             this.ResourceManagementClient = resourceManagementClient;
         }

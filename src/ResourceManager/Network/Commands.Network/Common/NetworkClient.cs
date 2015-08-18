@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public Action<string> WarningLogger { get; set; }
 
-        public NetworkClient(AzureProfile profile)
+        public NetworkClient(AzureSMProfile profile)
             : this(
                 AzureSession.ClientFactory.CreateClient<NetworkResourceProviderClient>(profile, AzureEnvironment.Endpoint.ResourceManager))
         {

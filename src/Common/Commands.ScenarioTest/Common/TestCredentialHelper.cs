@@ -32,7 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
         public static string EnvironmentVariableFile = "environment.yml";
         public static string PowerShellVariableFile = "variables.yml";
         public static string DefaultCredentialFile = "default.publishsettings";
-        public static string WindowsAzureProfileFile = "WindowsAzureProfile.xml";
+        public static string WindowsAzureSMProfileFile = "WindowsAzureSMProfile.xml";
         public static string TestEnvironmentVariable = "AZURE_TEST_ENVIRONMENT";
         public static string StorageAccountVariable = "AZURE_STORAGE_ACCOUNT";
         public static string StorageAccountKeyVariable = "AZURE_STORAGE_ACCESS_KEY";
@@ -74,7 +74,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
 
         public void SetupPowerShellEnvironment(System.Management.Automation.PowerShell powerShell)
         {
-            this.SetupPowerShellEnvironment(powerShell, DefaultCredentialFile, WindowsAzureProfileFile);
+            this.SetupPowerShellEnvironment(powerShell, DefaultCredentialFile, WindowsAzureSMProfileFile);
         }
 
         public void SetupPowerShellEnvironment(System.Management.Automation.PowerShell powerShell, string credentials, string profile)
@@ -86,7 +86,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
             {
                 string dest = Path.Combine(AzurePowerShell.ProfileDirectory, profile);
                 powerShell.AddScript(string.Format("Copy-Item -Path '{0}' -Destination '{1}' -Force", profileFile, dest));
-                powerShell.AddScript("[Microsoft.WindowsAzure.Commands.Utilities.Common.AzureProfile]::Instance.Load()");
+                powerShell.AddScript("[Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile]::Instance.Load()");
             }
             else
             {

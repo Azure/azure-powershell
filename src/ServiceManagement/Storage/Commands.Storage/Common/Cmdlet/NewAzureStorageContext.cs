@@ -340,9 +340,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 
             if (null != Profile)
             {
-                if (string.IsNullOrEmpty(azureEnvironmentName) && (null != Profile.Context))
+                if (string.IsNullOrEmpty(azureEnvironmentName) && (null != Profile.DefaultContext))
                 {
-                    azureEnvironment = Profile.Context.Environment;
+                    azureEnvironment = Profile.DefaultContext.Environment;
 
                     if (null == azureEnvironment)
                     {

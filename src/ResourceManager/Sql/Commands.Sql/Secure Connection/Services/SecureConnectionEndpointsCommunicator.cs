@@ -29,9 +29,9 @@ namespace Microsoft.Azure.Commands.Sql.SecureConnection.Services
 
         private static SqlManagementClient SqlClient { get; set; }             
         private static AzureSubscription Subscription {get ; set; }
-        public AzureProfile Profile { get; set; }
+        public AzureSMProfile Profile { get; set; }
 
-        public SecureConnectionEndpointsCommunicator(AzureProfile profile , AzureSubscription subscription)
+        public SecureConnectionEndpointsCommunicator(AzureSMProfile profile , AzureSubscription subscription)
         {
             Profile = profile;
             if (subscription != Subscription)

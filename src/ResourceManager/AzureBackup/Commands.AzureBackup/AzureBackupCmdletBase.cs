@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         /// <param name="rName"></param>
         protected void InitializeAzureBackupCmdlet(string rgName, string rName)
         {
-            var cloudServicesClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(Profile, Profile.Context.Subscription, AzureEnvironment.Endpoint.ResourceManager);
+            var cloudServicesClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(Profile, Profile.DefaultContext.Subscription, AzureEnvironment.Endpoint.ResourceManager);
             azureBackupClientAdapter = new AzureBackupClientAdapter(cloudServicesClient.Credentials, cloudServicesClient.BaseUri, rgName, rName);
 
             WriteDebug(string.Format("Initialized AzureBackup Cmdlet, ClientRequestId: {0}, ResourceGroupName: {1}, ResourceName : {2}", azureBackupClientAdapter.GetClientRequestId(), rgName, rName));

@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         {
             if (_storageClientWrapper == null)
             {
-                _storageClientWrapper = new StorageManagementClientWrapper(cmdlet.Profile.Context);
+                _storageClientWrapper = new StorageManagementClientWrapper(cmdlet.Profile.DefaultContext);
             }
 
             return _storageClientWrapper.StorageManagementClient;

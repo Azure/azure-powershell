@@ -119,7 +119,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
             {
                 this.WriteWarning("The -Subscription parameter is deprecated, Please use Select-AzureSubscription -Current to select a subscription to use.");
 
-                ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
+                ProfileClient client = new ProfileClient(new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
 
                 var subscriptionResolver =
                     ServiceLocator.Instance.Locate<IAzureHDInsightSubscriptionResolverFactory>().Create(client.Profile);
@@ -147,12 +147,12 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
                 // we need this for the tests to mock out the current subscription.
                 if (this.HasCurrentSubscription)
                 {
-                    return this.Profile.Context.Subscription;
+                    return this.Profile.DefaultContext.Subscription;
                 }
 
                 return testSubscription;
 #else
-                return this.Profile.Context.Subscription;
+                return this.Profile.DefaultContext.Subscription;
 #endif
             }
         }

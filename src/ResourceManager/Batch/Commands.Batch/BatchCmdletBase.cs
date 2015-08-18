@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Batch
             {
                 if (batchClient == null)
                 {
-                    batchClient = new BatchClient(Profile.Context);
+                    batchClient = new BatchClient(Profile.DefaultContext);
                     batchClient.VerboseLogger = WriteVerboseWithTimestamp;
                 }
                 return batchClient;

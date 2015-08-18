@@ -26,7 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.TrafficManager.Utilities
             {
                 if (this.trafficManagerClient == null)
                 {
-                    this.trafficManagerClient = new TrafficManagerClient(this.Profile, this.Profile.Context.Subscription);
+                    this.trafficManagerClient = new TrafficManagerClient(this.Profile, this.Profile.DefaultContext.Subscription);
                 }
                 return this.trafficManagerClient;
             }

@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureProfile Profile { get; set; }
+        public AzureSMProfile Profile { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure Subscription
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
             {
                 if (_activeDirectoryClient == null)
                 {
-                    _activeDirectoryClient = new MicrosoftAzureCommandsResourcesModelsActiveDirectory.ActiveDirectoryClient(Profile.Context);
+                    _activeDirectoryClient = new MicrosoftAzureCommandsResourcesModelsActiveDirectory.ActiveDirectoryClient(Profile.DefaultContext);
                 }
                 return this._activeDirectoryClient;
             }
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlServerActiveDirectoryAdministratorAdapter(AzureProfile Profile, AzureSubscription subscription)
+        public AzureSqlServerActiveDirectoryAdministratorAdapter(AzureSMProfile Profile, AzureSubscription subscription)
         {
             this.Profile = Profile;
             this._subscription = subscription;
@@ -242,9 +242,9 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         protected Guid GetTenantId()
         {
             var tenantIdStr =
-                Profile.Context.Subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants).FirstOrDefault();
-            string adTenant = Profile.Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.AdTenant);
-            string graph = Profile.Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.Graph);
+                Profile.DefaultContext.Subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants).FirstOrDefault();
+            string adTenant = Profile.DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.AdTenant);
+            string graph = Profile.DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.Graph);
             var tenantIdGuid = Guid.Empty;
             
             if (string.IsNullOrWhiteSpace(tenantIdStr) || !Guid.TryParse(tenantIdStr, out tenantIdGuid))

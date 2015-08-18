@@ -74,9 +74,9 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureProfile Profile { get; set; }
+        public AzureSMProfile Profile { get; set; }
 
-        public SqlAuditAdapter(AzureProfile profile, AzureSubscription subscription)
+        public SqlAuditAdapter(AzureSMProfile profile, AzureSubscription subscription)
         {
             Profile = profile;
             Subscription = subscription;

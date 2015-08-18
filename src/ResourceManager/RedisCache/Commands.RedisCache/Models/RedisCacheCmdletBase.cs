@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.RedisCache
             {
                 if (cacheClient == null)
                 {
-                    cacheClient = new RedisCacheClient(Profile.Context);
+                    cacheClient = new RedisCacheClient(Profile.DefaultContext);
                 }
                 return cacheClient;
             }

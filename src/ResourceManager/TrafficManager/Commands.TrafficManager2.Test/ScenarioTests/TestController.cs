@@ -21,9 +21,10 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
     using Microsoft.Azure.Management.Authorization;
     using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Management.TrafficManager;
-    using Microsoft.Azure.Subscriptions.Csm;
+   
     using Microsoft.Azure.Test;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using Microsoft.Azure.Subscriptions;
 
     public class TestController
     {

@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 if (this._keyVaultManagementClient == null)
                 {
-                    this._keyVaultManagementClient = new PSKeyVaultModels.VaultManagementClient(Profile.Context);
+                    this._keyVaultManagementClient = new PSKeyVaultModels.VaultManagementClient(Profile.DefaultContext);
                 }
                 return this._keyVaultManagementClient;
             }
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 if (_activeDirectoryClient == null)
                 {
-                    _activeDirectoryClient = new ActiveDirectoryClient(Profile.Context);
+                    _activeDirectoryClient = new ActiveDirectoryClient(Profile.DefaultContext);
                 }
                 return this._activeDirectoryClient;
             }
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         protected Guid GetTenantId()
         {
             var tenantIdStr =
-                Profile.Context.Subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants).FirstOrDefault();
+                Profile.DefaultContext.Subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants).FirstOrDefault();
             var tenantIdGuid = Guid.Empty;
 
             if (string.IsNullOrWhiteSpace(tenantIdStr) || !Guid.TryParse(tenantIdStr, out tenantIdGuid))
@@ -172,27 +172,27 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         protected Guid GetCurrentUsersObjectId()
         {
-            if (Profile.Context.Subscription == null)
+            if (Profile.DefaultContext.Subscription == null)
                 throw new InvalidOperationException(Microsoft.WindowsAzure.Commands.Common.Properties.Resources.InvalidSelectedSubscription);
 
-            if (string.IsNullOrWhiteSpace(Profile.Context.Subscription.Account))
+            if (string.IsNullOrWhiteSpace(Profile.DefaultContext.Subscription.Account))
                 throw new InvalidOperationException(PSKeyVaultProperties.Resources.NoDefaultUserAccount);
 
-            var account = Profile.Accounts.Values.Where(a => a.Id == Profile.Context.Subscription.Account && a.Type == AzureAccount.AccountType.User).FirstOrDefault();
+            var account = Profile.Accounts.Values.Where(a => a.Id == Profile.DefaultContext.Subscription.Account && a.Type == AzureAccount.AccountType.User).FirstOrDefault();
             if (account == null)
                 throw new InvalidOperationException(PSKeyVaultProperties.Resources.NoDefaultUserAccount);
 
             try
             {
                 return GetObjectId(
-                    upn: Profile.Context.Subscription.Account,
+                    upn: Profile.DefaultContext.Subscription.Account,
                     objectId: Guid.Empty,
                     spn: null
                 );
             }
             catch
             {
-                throw new InvalidOperationException(string.Format(PSKeyVaultProperties.Resources.ADObjectNotFound, Profile.Context.Subscription.Account, ActiveDirectoryClient.GraphClient.TenantID));
+                throw new InvalidOperationException(string.Format(PSKeyVaultProperties.Resources.ADObjectNotFound, Profile.DefaultContext.Subscription.Account, ActiveDirectoryClient.GraphClient.TenantID));
             }
         }
 

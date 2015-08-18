@@ -31,11 +31,11 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         public const string AssemblyFileVersion = "0.9.6";
 
-        public const string ProfileFile = "AzureProfile.json";
+        public const string ProfileFile = "AzureSMProfile.json";
 
-        public const string OldProfileFile = "WindowsAzureProfile.xml";
+        public const string OldProfileFile = "WindowsAzureSMProfile.xml";
 
-        public const string OldProfileFileBackup = "WindowsAzureProfile.xml.bak";
+        public const string OldProfileFileBackup = "WindowsAzureSMProfile.xml.bak";
 
         public const string TokenCacheFile = "TokenCache.dat";
 

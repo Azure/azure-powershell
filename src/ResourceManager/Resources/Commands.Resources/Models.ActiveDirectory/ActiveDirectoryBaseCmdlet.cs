@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory.Models
             {
                 if (activeDirectoryClient == null)
                 {
-                    activeDirectoryClient = new ActiveDirectoryClient(Profile.Context);
+                    activeDirectoryClient = new ActiveDirectoryClient(Profile.DefaultContext);
                 }
 
                 return activeDirectoryClient;

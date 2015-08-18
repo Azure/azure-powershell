@@ -43,14 +43,14 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureProfile Profile { get; set; }
+        public AzureSMProfile Profile { get; set; }
 
         /// <summary>
         /// Creates a communicator for Azure Sql Database backup REST endpoints.
         /// </summary>
         /// <param name="profile">Azure profile</param>
         /// <param name="subscription">Associated subscription</param>
-        public AzureSqlDatabaseBackupCommunicator(AzureProfile profile, AzureSubscription subscription)
+        public AzureSqlDatabaseBackupCommunicator(AzureSMProfile profile, AzureSubscription subscription)
         {
             Profile = profile;
             if (subscription != Subscription)

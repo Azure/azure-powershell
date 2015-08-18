@@ -73,7 +73,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.MediaServices
                 MediaServicesClient = clientMock.Object,
             };
 
-            currentProfile = new AzureProfile();
+            currentProfile = new AzureSMProfile();
             var subscription = new AzureSubscription { Id = new Guid(SubscriptionId) };
             subscription.Properties[AzureSubscription.Property.Default] = "True";
             currentProfile.Subscriptions[new Guid(SubscriptionId)] = subscription;
@@ -112,7 +112,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.MediaServices
                 MediaServicesClient = clientMock.Object,
                 Name = expectedName
             };
-            currentProfile = new AzureProfile();
+            currentProfile = new AzureSMProfile();
             var subscription = new AzureSubscription { Id = new Guid(SubscriptionId) };
             subscription.Properties[AzureSubscription.Property.Default] = "True";
             currentProfile.Subscriptions[new Guid(SubscriptionId)] = subscription;
@@ -154,7 +154,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.MediaServices
                 Name = mediaServicesAccountName
             };
 
-            currentProfile = new AzureProfile();
+            currentProfile = new AzureSMProfile();
             var subscription = new AzureSubscription { Id = new Guid(SubscriptionId) };
             subscription.Properties[AzureSubscription.Property.Default] = "True";
             currentProfile.Subscriptions[new Guid(SubscriptionId)] = subscription;

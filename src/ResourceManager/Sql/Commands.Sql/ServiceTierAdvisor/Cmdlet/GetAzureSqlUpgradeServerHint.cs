@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Cmdlet
             else
             {
                 // Return elastic pool hints and exclude databases contained in pools
-                var elasticPoolAdapter = new AzureSqlElasticPoolRecommendationAdapter(Profile, Profile.Context.Subscription);
+                var elasticPoolAdapter = new AzureSqlElasticPoolRecommendationAdapter(Profile, Profile.DefaultContext.Subscription);
                 return new UpgradeServerHint
                 {
                     Databases = ModelAdapter.ListUpgradeDatabaseHints(ResourceGroupName, ServerName, true),

@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureProfile Profile { get; set; }
+        public AzureSMProfile Profile { get; set; }
 
         /// <summary>
         /// Expand string used for getting additional database information
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// </summary>
         /// <param name="profile"></param>
         /// <param name="subscription"></param>
-        public AzureSqlDatabaseCommunicator(AzureProfile profile, AzureSubscription subscription)
+        public AzureSqlDatabaseCommunicator(AzureSMProfile profile, AzureSubscription subscription)
         {
             Profile = profile;
             if (subscription != Subscription)

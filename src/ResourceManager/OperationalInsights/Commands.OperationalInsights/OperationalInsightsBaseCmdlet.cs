@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
             {
                 if (this.operationalInsightsClient == null)
                 {
-                    this.operationalInsightsClient = new OperationalInsightsClient(Profile.Context);
+                    this.operationalInsightsClient = new OperationalInsightsClient(Profile.DefaultContext);
                 }
 
                 return this.operationalInsightsClient;

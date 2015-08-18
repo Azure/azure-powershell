@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Commands.Sql.SecureConnection.Services
         /// <summary>
         /// The Azure profile used by this adapter
         /// </summary>
-        public AzureProfile Profile { get; set; }
+        public AzureSMProfile Profile { get; set; }
 
-        public SqlSecureConnectionAdapter(AzureProfile profile , AzureSubscription subscription)
+        public SqlSecureConnectionAdapter(AzureSMProfile profile , AzureSubscription subscription)
         {
             Profile = profile;
             Subscription = subscription;

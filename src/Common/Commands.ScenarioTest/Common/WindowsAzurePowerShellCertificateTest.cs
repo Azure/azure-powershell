@@ -63,7 +63,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
             {
                 this.credentials = new TestCredentialHelper(Environment.CurrentDirectory);
                 this.credentialFile = TestCredentialHelper.DefaultCredentialFile;
-                this.profileFile = TestCredentialHelper.WindowsAzureProfileFile;
+                this.profileFile = TestCredentialHelper.WindowsAzureSMProfileFile;
             }
             AzureSession.DataStore = new MemoryDataStore();
 

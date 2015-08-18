@@ -48,14 +48,14 @@ namespace Microsoft.Azure.Commands.Sql.Service
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureProfile Profile { get; set; }
+        public AzureSMProfile Profile { get; set; }
 
         /// <summary>
         /// Creates a communicator for Azure Sql Databases
         /// </summary>
         /// <param name="profile"></param>
         /// <param name="subscription"></param>
-        public AzureSqlDatabaseIndexRecommendationCommunicator(AzureProfile profile, AzureSubscription subscription)
+        public AzureSqlDatabaseIndexRecommendationCommunicator(AzureSMProfile profile, AzureSubscription subscription)
         {
             Profile = profile;
             if (subscription != Subscription)

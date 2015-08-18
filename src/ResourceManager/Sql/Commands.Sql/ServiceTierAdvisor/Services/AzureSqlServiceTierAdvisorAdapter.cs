@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureProfile Profile { get; set; }
+        public AzureSMProfile Profile { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure Subscription
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Services
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlServiceTierAdvisorAdapter(AzureProfile profile, AzureSubscription subscription)
+        public AzureSqlServiceTierAdvisorAdapter(AzureSMProfile profile, AzureSubscription subscription)
         {
             _subscription = subscription;
             Profile = profile;

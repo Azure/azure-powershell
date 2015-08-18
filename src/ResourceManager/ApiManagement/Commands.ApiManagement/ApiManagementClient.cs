@@ -27,17 +27,17 @@ namespace Microsoft.Azure.Commands.ApiManagement
 
     public class ApiManagementClient
     {
-        private readonly AzureProfile _azureProfile;
+        private readonly AzureSMProfile _AzureSMProfile;
         private Management.ApiManagement.ApiManagementClient _client;
 
-        public ApiManagementClient(AzureProfile azureProfile)
+        public ApiManagementClient(AzureSMProfile AzureSMProfile)
         {
-            if (azureProfile == null)
+            if (AzureSMProfile == null)
             {
-                throw new ArgumentNullException("azureProfile");
+                throw new ArgumentNullException("AzureSMProfile");
             }
 
-            _azureProfile = azureProfile;
+            _AzureSMProfile = AzureSMProfile;
         }
 
         private IApiManagementClient Client
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.ApiManagement
                 {
                     _client =
                         AzureSession.ClientFactory.CreateClient<Management.ApiManagement.ApiManagementClient>(
-                            _azureProfile,
+                            _AzureSMProfile,
                             AzureEnvironment.Endpoint.ResourceManager);
                 }
 
