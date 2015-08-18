@@ -21,12 +21,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
     {
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureRMBackupJobTests()
         {
             this.RunPowerShellTest("Test-GetAzureRMBackupJob");
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void StopAzureRMBackupJobTests()
         {
             this.RunPowerShellTest("Test-StopAzureRMBackupJob");

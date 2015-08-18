@@ -155,13 +155,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
 
             foreach (AzureRMBackupRetentionPolicy retentionPolicy in retentionPolicyList)
             {
-                if(retentionPolicy.RetentionType == "Daily")
+                if(retentionPolicy.RetentionType == RetentionType.Daily.ToString())
                 {
                     ValidateDailyRetention((AzureBackupDailyRetentionPolicy)retentionPolicy);
                     validateDailyRetention = true;
                     dailyRetentionPolicyCount = dailyRetentionPolicyCount + 1;
                 }
-                else if (retentionPolicy.RetentionType == "Weekly")
+                else if (retentionPolicy.RetentionType == RetentionType.Weekly.ToString())
                 {
                     ValidateWeeklyRetention((AzureBackupWeeklyRetentionPolicy)retentionPolicy);
                     validateWeeklyRetention = true;
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
                     }
                     weeklyRetentionPolicyCount = weeklyRetentionPolicyCount + 1;
                 }
-                else if (retentionPolicy.RetentionType == "Monthly")
+                else if (retentionPolicy.RetentionType == RetentionType.Monthly.ToString())
                 {
                     ValidateMonthlyRetention((AzureBackupMonthlyRetentionPolicy)retentionPolicy);
                     if (backupSchedule != null)
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
                     }
                     monthlyRetentionPolicyCount = monthlyRetentionPolicyCount + 1;
                 }
-                else if (retentionPolicy.RetentionType == "Yearly")
+                else if (retentionPolicy.RetentionType == RetentionType.Yearly.ToString())
                 {
                     ValidateYearlyRetention((AzureBackupYearlyRetentionPolicy)retentionPolicy);
                     if (backupSchedule != null)

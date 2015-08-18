@@ -12,11 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
@@ -24,6 +20,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
     public class AzureBackupScenarioTests : AzureBackupTestsBase
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AzureBackupEndToEndTests()
         {
             //this.RunPowerShellTest("Test-AzureBackupEndToEnd");

@@ -69,7 +69,7 @@ function Test-AzureBackupEndToEnd
 	Assert-AreEqual $item.DataSourceStatus "IRPending";
 	Assert-AreEqual $item.ProtectionPolicyName  $ProtectionPolicyName;
 	Assert-AreEqual $item.ContainerType "AzureVM";
-	Assert-AreEqual $item.Type "IaasVM";
+	Assert-NotNull $item.Type;
 	Assert-AreEqual $item.ItemName.Contains("iaasvmcontainer") "True";
 	Assert-AreEqual $item.ItemName.Contains($VirtualMachineName) "True";
 	Assert-AreEqual $item.ResourceGroupName $ResourceGroupName;
