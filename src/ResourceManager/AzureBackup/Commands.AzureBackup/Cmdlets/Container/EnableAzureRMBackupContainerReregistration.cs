@@ -33,8 +33,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Enables reregistration of a machine container
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Enable, "AzureBackupContainerReregistration")]
-    public class EnableAzureBackupContainerReregistration : AzureBackupContainerCmdletBase
+    [Cmdlet(VerbsLifecycle.Enable, "AzureRMBackupContainerReregistration")]
+    public class EnableAzureRMBackupContainerReregistration : AzureBackupContainerCmdletBase
     {
         public override void ExecuteCmdlet()
         {
@@ -47,10 +47,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 {
                     case AzureBackupContainerType.Windows:
                     case AzureBackupContainerType.SCDPM:
-                        AzureBackupClient.EnableMachineContainerReregistration(Container.Id);
+                        AzureBackupClient.EnableMachineContainerReregistration(Container.ResourceGroupName, Container.ResourceName, Container.Id);
                         break;
                     default:
-                        throw new ArgumentException("Reregistration can be enable only for machine containers.");
+                        throw new ArgumentException(Resources.CannotEnableRegistration);
                 }
             });
         }

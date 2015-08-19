@@ -77,14 +77,26 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             ProtectionProfileListResponse profileListResponse =
                 RecoveryServicesClient.GetAzureSiteRecoveryProtectionProfile();
+            bool found = false;
 
             foreach (ProtectionProfile profile in profileListResponse.ProtectionProfiles)
             {
                 if (0 == string.Compare(this.FriendlyName, profile.CustomData.FriendlyName, true))
                 {
                     this.WriteProfile(profile);
+                    found = true;
                 }
             }
+
+            if (!found)
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.ProtectionProfileNotFound,
+                    this.FriendlyName,
+                    PSRecoveryServicesClient.asrVaultCreds.ResourceName));
+            }
+
         }
 
         /// <summary>
