@@ -25,7 +25,7 @@ using System;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 {
-    public class KeyVaultManagementTests : IUseFixture<KeyVaultTestFixture>
+    public class KeyVaultManagementTests : IClassFixture<KeyVaultTestFixture>
     {
         private KeyVaultTestFixture data;
 

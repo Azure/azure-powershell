@@ -1337,8 +1337,8 @@ namespace Common.Authentication.Test
             Assert.Equal(6, client.Profile.Subscriptions.Count);
         }
 
-        private void SetMocks(List<Microsoft.WindowsAzure.Subscriptions.Models.SubscriptionListOperationResponse.Subscription> rdfeSubscriptions,
-            List<Microsoft.Azure.Subscriptions.Models.Subscription> csmSubscriptions,
+        private void SetMocks(List<RDFESubscription> rdfeSubscriptions,
+            List<CSMSubscription> csmSubscriptions,
             List<TenantIdDescription> tenants = null,
             Func<AzureAccount, AzureEnvironment, string, IAccessToken> tokenProvider = null)
         {

@@ -13,12 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
-using Microsoft.Azure.Management.Csm;
-using Microsoft.Azure.Management.Rdfe;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
+using Microsoft.Azure.Management.Resources;
+using Microsoft.WindowsAzure.Management;
 
 namespace Microsoft.Azure.Common.Authentication.Models
 {

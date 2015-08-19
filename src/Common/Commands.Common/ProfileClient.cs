@@ -16,7 +16,6 @@ using Hyak.Common;
 using Microsoft.Azure.Common.Authentication.Factories;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Common.Authentication.Properties;
-using Microsoft.Azure.Subscriptions.Rdfe;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -24,6 +23,7 @@ using System.IO;
 using System.Linq;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
+using Microsoft.WindowsAzure.Subscriptions;
 
 namespace Microsoft.Azure.Common.Authentication
 {
