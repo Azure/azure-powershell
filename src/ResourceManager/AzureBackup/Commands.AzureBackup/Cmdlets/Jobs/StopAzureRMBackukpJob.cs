@@ -61,6 +61,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 WriteDebug(String.Format(Resources.JobId, JobID));
                 Guid cancelTaskId = AzureBackupClient.TriggerCancelJob(Vault.ResourceGroupName, Vault.Name, JobID);
+
+                if (cancelTaskId == Guid.Empty)
+                {
+                    WriteDebug(String.Format(Resources.TriggeredCancellationJob, JobID));
+                    return;
+                }
+
                 CSMOperationResult opResponse = TrackOperation(Vault.ResourceGroupName, Vault.Name, cancelTaskId);
 
                 if (opResponse.Status == CSMAzureBackupOperationStatus.Succeeded.ToString())
