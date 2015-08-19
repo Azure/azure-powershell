@@ -389,6 +389,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="Microsoft.Azure.Commands.Network.dll-Help.psd1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Microsoft.Azure.Commands.Network.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -1,3 +1,33 @@
+## 2015.08.17 version 0.9.7
+* Azure Profile cmdlets
+  * New-AzureProfile
+    * Added parameter set for empty profile
+    * Fixed issues with AAD aithentication when constructing profile
+    * Enabled passing results of Add-AzureEnvironment to New-AzureProfile -Environment parameter
+* Azure ResourceManager cmdlets
+  * New-AzureResourceGroupDeployment: Added Mode (deployment mode) and Force parameters 
+  * Get-AzureProviderOperation: API changes to improve performance
+* Azure Compute (ARM) Cmdlets
+  * Fixes for Set-AzureDeployment with -ExtensionConfiguration
+  * Fixes for Set-AzureVMCustomExtension cmdlets
+  * Deprecated cmdlets Get-AzureVMImageDetail and Get-AzureVMExtentionImageDetail
+* Azure Compute (Service Management) cmdlets
+  * Publish-AzureVMDSCConfiguration: Added additional configuration parameters
+* Azure Network (ARM) cmdlets
+  * Added help for Route Table cmdlets
+* Azure Storage cmdlets
+  * Added support for downloading, uploading, and copying append blob
+  * Added support for asynchronous copying to and from cloud file
+  * Added azure service CORS management
+* Azure Sql (ARM) Cmdlets
+  * Fixed issues with ElascitPool cmdlets
+* AzureBatch cmdlets
+  * Added Batch autoscale cmdlets Enable-AzureBatchAutoScale, Disable-AzureBatchAutoScale
+* RemoteApp cmdlets
+  * Added Restart-AzureRemoteAppVm cmdlet
+* Azure HDInsight cmdlets
+  * Added cmdlet help
+
 ## 2015.08.07 version 0.9.6
 * Azure Batch cmdlets
     * Cmdlets updated to use the general availability API. See http://blogs.technet.com/b/windowshpc/archive/2015/07/10/what-39-s-new-in-azure-batch-july-release-general-availability.aspx
@@ -15,7 +45,6 @@
     * Fix Publish Extension cmdlets.
     * Update CustomScript cmdlet for SAS Uri.
     * Update help file.
-    * Get, Set and Remove Azure Powershell commandlets for IaaS V2 VM.
 * Azure Data Factory
     * Rename Table to Dataset.
 * Azure SQL
