@@ -120,7 +120,8 @@ namespace Common.Authentication.Test
         [Fact]
         public void NewProfileFromADReturnsProfile()
         {
-            SetMocks(new[] { rdfeSubscription1, rdfeSubscription2 }.ToList(), new[] { csmSubscription1 }.ToList());
+            SetMocks(new[] { rdfeSubscription1, rdfeSubscription2 }.ToList(), new List<CSMSubscription>());
+            rdfeSubscription2.ActiveDirectoryTenantId = "123";
             MemoryDataStore dataStore = new MemoryDataStore();
             AzureSession.DataStore = dataStore;
             AzureSMProfile newProfile = new AzureSMProfile();
@@ -129,10 +130,10 @@ namespace Common.Authentication.Test
             newAccount.Properties[AzureAccount.Property.Tenants] = "123";
 
             client1.InitializeProfile(AzureEnvironment.PublicEnvironments["AzureCloud"],
-                new Guid(csmSubscription1.SubscriptionId), newAccount, null, null);
+                new Guid(rdfeSubscription2.SubscriptionId), newAccount, null, null);
 
             Assert.Equal("AzureCloud", newProfile.DefaultSubscription.Environment);
-            Assert.Equal(new Guid(csmSubscription1.SubscriptionId), newProfile.DefaultSubscription.Id);
+            Assert.Equal(new Guid(rdfeSubscription2.SubscriptionId), newProfile.DefaultSubscription.Id);
             Assert.Equal(newAccount.Id, newProfile.DefaultSubscription.Account);
             Assert.False(newProfile.DefaultSubscription.Properties.ContainsKey(AzureSubscription.Property.StorageAccount));
         }
@@ -334,10 +335,10 @@ namespace Common.Authentication.Test
             var account = client.AddAccountAndLoadSubscriptions(new AzureAccount { Id = "test", Type = AzureAccount.AccountType.User }, AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud], null);
 
             Assert.Equal("test", account.Id);
-            Assert.Equal(3, account.GetSubscriptions(client.Profile).Count);
+            Assert.Equal(2, account.GetSubscriptions(client.Profile).Count);
             Assert.True(account.GetSubscriptions(client.Profile).Any(s => s.Id == new Guid(rdfeSubscription1.SubscriptionId)));
             Assert.True(account.GetSubscriptions(client.Profile).Any(s => s.Id == new Guid(rdfeSubscription2.SubscriptionId)));
-            Assert.True(account.GetSubscriptions(client.Profile).Any(s => s.Id == new Guid(csmSubscription1.SubscriptionId)));
+            Assert.False(account.GetSubscriptions(client.Profile).Any(s => s.Id == new Guid(csmSubscription1.SubscriptionId)));
         }
 
         [Fact]
@@ -360,10 +361,10 @@ namespace Common.Authentication.Test
                     null);
 
             Assert.Equal("test", account.Id);
-            Assert.Equal(3, account.GetSubscriptions(client.Profile).Count);
+            Assert.Equal(2, account.GetSubscriptions(client.Profile).Count);
             Assert.True(account.GetSubscriptions(client.Profile).Any(s => s.Id == new Guid(rdfeSubscription1.SubscriptionId)));
             Assert.True(account.GetSubscriptions(client.Profile).Any(s => s.Id == new Guid(rdfeSubscription2.SubscriptionId)));
-            Assert.True(account.GetSubscriptions(client.Profile).Any(s => s.Id == new Guid(csmSubscription1.SubscriptionId)));
+            Assert.False(account.GetSubscriptions(client.Profile).Any(s => s.Id == new Guid(csmSubscription1.SubscriptionId)));
         }
 
         /// <summary>
@@ -399,11 +400,9 @@ namespace Common.Authentication.Test
             Assert.Equal(1, account.GetSubscriptions(client.Profile).Count);
             var subrdfe1 = account.GetSubscriptions(client.Profile).FirstOrDefault(s => s.Id == new Guid(rdfeSubscription1.SubscriptionId));
             var userA = client.GetAccount("UserA");
-            var userB = client.GetAccount("UserB");
+            Assert.Throws<ArgumentException>(() => client.GetAccount("UserB"));
             Assert.NotNull(userA);
-            Assert.NotNull(userB);
             Assert.Contains<string>(rdfeSubscription1.SubscriptionId, userA.GetPropertyAsArray(AzureAccount.Property.Subscriptions), StringComparer.OrdinalIgnoreCase);
-            Assert.False(userB.HasSubscription(new Guid(rdfeSubscription1.SubscriptionId)));
             Assert.NotNull(subrdfe1);
             Assert.Equal("UserA", subrdfe1.Account);
         }
@@ -416,7 +415,7 @@ namespace Common.Authentication.Test
         public void AddAzureAccountWithImpersonatedGuestWithSubscriptions()
         {
             SetMocks(new[] { rdfeSubscription1, guestRdfeSubscription }.ToList(),
-                     new List<Microsoft.Azure.Subscriptions.Models.Subscription>(),
+                     new List<CSMSubscription>(),
                      new[] { commonTenant, guestTenant }.ToList(),
                     (userAccount, environment, tenant) =>
                     {
@@ -439,7 +438,7 @@ namespace Common.Authentication.Test
                 AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud], null);
 
             Assert.Equal("UserA", account.Id);
-            Assert.Equal(1, account.GetSubscriptions(client.Profile).Count);
+            Assert.Equal(2, account.GetSubscriptions(client.Profile).Count);
             var subrdfe1 = account.GetSubscriptions(client.Profile).FirstOrDefault(s => s.Id == new Guid(rdfeSubscription1.SubscriptionId));
             var userA = client.GetAccount("UserA");
             var userB = client.GetAccount("UserB");
@@ -977,7 +976,7 @@ namespace Common.Authentication.Test
 
             Assert.True(client.Profile.Accounts[azureAccount.Id].HasSubscription(new Guid(rdfeSubscription1.SubscriptionId)));
             Assert.True(client.Profile.Accounts[azureAccount.Id].HasSubscription(new Guid(rdfeSubscription2.SubscriptionId)));
-            Assert.True(client.Profile.Accounts[azureAccount.Id].HasSubscription(new Guid(csmSubscription1.SubscriptionId)));
+            Assert.False(client.Profile.Accounts[azureAccount.Id].HasSubscription(new Guid(csmSubscription1.SubscriptionId)));
             Assert.True(client.Profile.Accounts[azureAccount.Id].HasSubscription(new Guid(csmSubscription1withDuplicateId.SubscriptionId)));
         }
 
@@ -995,12 +994,12 @@ namespace Common.Authentication.Test
 
             var subscriptions = client.RefreshSubscriptions(azureEnvironment);
 
-            Assert.Equal(4, subscriptions.Count);
-            Assert.Equal(4, subscriptions.Count(s => s.Account == "test"));
+            Assert.Equal(3, subscriptions.Count);
+            Assert.Equal(3, subscriptions.Count(s => s.Account == "test"));
             Assert.Equal(1, subscriptions.Count(s => s.Id == azureSubscription1.Id));
             Assert.Equal(1, subscriptions.Count(s => s.Id == new Guid(rdfeSubscription1.SubscriptionId)));
             Assert.Equal(1, subscriptions.Count(s => s.Id == new Guid(rdfeSubscription2.SubscriptionId)));
-            Assert.Equal(1, subscriptions.Count(s => s.Id == new Guid(csmSubscription1.SubscriptionId)));
+            Assert.Equal(0, subscriptions.Count(s => s.Id == new Guid(csmSubscription1.SubscriptionId)));
         }
 
         [Fact]
@@ -1016,8 +1015,8 @@ namespace Common.Authentication.Test
 
             var subscriptions = client.RefreshSubscriptions(client.Profile.Environments[EnvironmentName.AzureChinaCloud]);
 
-            Assert.Equal(3, subscriptions.Count);
-            Assert.Equal(3, subscriptions.Count(s => s.Account == "test"));
+            Assert.Equal(2, subscriptions.Count);
+            Assert.Equal(2, subscriptions.Count(s => s.Account == "test"));
             Assert.Equal(1, subscriptions.Count(s => s.Id == new Guid(rdfeSubscription1.SubscriptionId)));
             Assert.Equal(1, subscriptions.Count(s => s.Id == new Guid(rdfeSubscription2.SubscriptionId)));
         }
@@ -1036,10 +1035,10 @@ namespace Common.Authentication.Test
 
             var subscriptions = client.RefreshSubscriptions(azureEnvironment);
 
-            Assert.Equal(4, subscriptions.Count);
+            Assert.Equal(3, subscriptions.Count);
             Assert.Equal(1, subscriptions.Count(s => s.Id == new Guid(rdfeSubscription1.SubscriptionId)));
             Assert.Equal(1, subscriptions.Count(s => s.Id == new Guid(rdfeSubscription2.SubscriptionId)));
-            Assert.Equal(1, subscriptions.Count(s => s.Id == new Guid(csmSubscription1.SubscriptionId)));
+            Assert.Equal(0, subscriptions.Count(s => s.Id == new Guid(csmSubscription1.SubscriptionId)));
             Assert.True(subscriptions.All(s => s.Environment == "Test"));
             Assert.True(subscriptions.All(s => s.Account == "test"));
         }
@@ -1349,7 +1348,10 @@ namespace Common.Authentication.Test
             clientMocks.LoadTenants(tenants);
 
             AzureSession.ClientFactory = new MockClientFactory(new object[] { clientMocks.RdfeSubscriptionClientMock.Object,
-                clientMocks.CsmSubscriptionClientMock.Object });
+                clientMocks.CsmSubscriptionClientMock.Object })
+            {
+                MoqClients = true
+            };
 
             var mockFactory = new MockTokenAuthenticationFactory();
             if (tokenProvider != null)

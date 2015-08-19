@@ -36,6 +36,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
     {
         private readonly bool throwWhenNotAvailable;
 
+        public bool MoqClients { get; set; }
+
         public List<object> ManagementClients { get; private set; }
 
         public MockClientFactory(IEnumerable<object> clients, bool throwIfClientNotSpecified = true)
@@ -112,10 +114,13 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             }
             else
             {
-                // Use the WithHandler method to create an extra reference to the http client
-                // this will prevent the httpClient from being disposed in a long-running test using 
-                // the same client for multiple cmdlets
-                client = client.WithHandler(new PassThroughDelegatingHandler());
+                if (!MoqClients)
+                {
+                    // Use the WithHandler method to create an extra reference to the http client
+                    // this will prevent the httpClient from being disposed in a long-running test using 
+                    // the same client for multiple cmdlets
+                    client = client.WithHandler(new PassThroughDelegatingHandler());
+                }
             }
 
             return client;
@@ -160,7 +165,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             // Do nothing
         }
 
-
         public void AddUserAgent(string productName, string productVersion)
         {
             throw new NotImplementedException();
@@ -184,7 +188,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                 return base.SendAsync(request, cancellationToken);
             }
         }
-
 
         public TClient CreateArmClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint) where TClient : Rest.ServiceClient<TClient>
         {
