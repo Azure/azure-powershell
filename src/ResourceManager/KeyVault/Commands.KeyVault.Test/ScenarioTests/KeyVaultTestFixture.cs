@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 var testEnv = testFactory.GetTestEnvironment();
                 var resourcesClient = TestBase.GetServiceClient<ResourceManagementClient>(testFactory);
                 var mgmtClient = TestBase.GetServiceClient<KeyVaultManagementClient>(testFactory);
-                var tenantId = testEnv.AuthorizationContext.TenatId;                
+                var tenantId = testEnv.AuthorizationContext.TenantId;                
 
                 //Figure out which locations are available for Key Vault
                 location = GetKeyVaultLocation(resourcesClient);
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 var testEnv = testFactory.GetTestEnvironment();
                 var resourcesClient = TestBase.GetServiceClient<ResourceManagementClient>(testFactory);
                 var mgmtClient = TestBase.GetServiceClient<KeyVaultManagementClient>(testFactory);
-                var tenantId = Guid.Parse(testEnv.AuthorizationContext.TenatId);
+                var tenantId = Guid.Parse(testEnv.AuthorizationContext.TenantId);
 
                 var policies = new AccessPolicyEntry[] { };
 

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
@@ -208,14 +209,7 @@ namespace Microsoft.Azure.Commands.Compute
                 Hashtable publicSettings = new Hashtable();
                 publicSettings.Add(commandToExecuteKey, commandToExecute ?? "");
                 publicSettings.Add(fileUrisKey, FileUri ?? new string[] { });
-
-                Hashtable privateSettings = new Hashtable();
-                privateSettings.Add(storageAccountNameKey, StorageAccountName ?? "");
-                privateSettings.Add(storageAccountKeyKey, StorageAccountKey ?? "");
-
                 var SettingString = JsonConvert.SerializeObject(publicSettings);
-                var ProtectedSettingString = JsonConvert.SerializeObject(privateSettings);
-
 
                 var parameters = new VirtualMachineExtension
                 {
@@ -226,7 +220,7 @@ namespace Microsoft.Azure.Commands.Compute
                     ExtensionType = VirtualMachineCustomScriptExtensionContext.ExtensionDefaultName,
                     TypeHandlerVersion = (this.TypeHandlerVersion) ?? VirtualMachineCustomScriptExtensionContext.ExtensionDefaultVersion,
                     Settings = SettingString,
-                    ProtectedSettings = ProtectedSettingString,
+                    ProtectedSettings = GetPrivateConfiguration(),
                 };
 
                 var op = this.VirtualMachineExtensionClient.CreateOrUpdate(
@@ -292,5 +286,19 @@ namespace Microsoft.Azure.Commands.Compute
             return cloudBlob.Uri + sasToken;
         }
 
+        protected string GetPrivateConfiguration()
+        {
+            if (string.IsNullOrEmpty(this.StorageAccountName) || string.IsNullOrEmpty(this.StorageAccountKey))
+            {
+                return null;
+            }
+            else
+            {
+                var privateSettings = new Hashtable();
+                privateSettings.Add(storageAccountNameKey, StorageAccountName);
+                privateSettings.Add(storageAccountKeyKey, StorageAccountKey);
+                return JsonUtilities.TryFormatJson(JsonConvert.SerializeObject(privateSettings));
+            }
+        }
     }
 }

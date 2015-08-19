@@ -9,7 +9,7 @@
 @{  
   
 # Version number of this module.  
-ModuleVersion = '0.9.5'  
+ModuleVersion = '0.9.7'  
   
 # ID used to uniquely identify this module  
 GUID = '81d522a4-6e5d-4105-8f58-376204c47458'  
@@ -65,7 +65,7 @@ FormatsToProcess = @(
     '.\Resources\Microsoft.WindowsAzure.Commands.Profile.format.ps1xml',  
     '.\DataFactories\Microsoft.Azure.Commands.DataFactories.format.ps1xml',  
     '.\RedisCache\Microsoft.Azure.Commands.RedisCache.format.ps1xml',  
-    '.\Batch\Microsoft.Azure.Commands.Batch.format.ps1xml',  
+    '.\AzureBatch\Microsoft.Azure.Commands.Batch.format.ps1xml',  
     '.\KeyVault\Microsoft.Azure.Commands.KeyVault.format.ps1xml',  
     '.\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.format.ps1xml',  
     '.\Compute\Microsoft.Azure.Commands.Compute.format.ps1xml',  
@@ -87,7 +87,7 @@ NestedModules = @(
     '.\Sql\Microsoft.Azure.Commands.Sql.dll',  
     '.\DataFactories\Microsoft.Azure.Commands.DataFactories.dll',  
     '.\RedisCache\Microsoft.Azure.Commands.RedisCache.dll',  
-    '.\Batch\Microsoft.Azure.Commands.Batch.dll',  
+    '.\AzureBatch\Microsoft.Azure.Commands.Batch.dll',  
     '.\Dns\Microsoft.Azure.Commands.Dns.dll',  
     '.\KeyVault\Microsoft.Azure.Commands.KeyVault.dll',  
     '.\TrafficManager\Microsoft.Azure.Commands.TrafficManager.dll',  
@@ -101,7 +101,8 @@ NestedModules = @(
     '.\ApiManagement\Microsoft.Azure.Commands.ApiManagement.dll',  
     '.\StorageManagement\Microsoft.Azure.Commands.Management.Storage.dll',  
     '.\OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.dll',  
-    '.\UsageAggregates\Microsoft.Azure.Commands.UsageAggregates.dll',  
+    '.\UsageAggregates\Microsoft.Azure.Commands.UsageAggregates.dll', 
+	'.\HDInsight\Microsoft.Azure.Commands.HDInsight.dll',
     '.\ApiManagement\Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll',  
     '.\AzureBackup\Microsoft.Azure.Commands.AzureBackup.dll',
     '.\SiteRecovery\Microsoft.Azure.Commands.SiteRecovery.dll'
@@ -136,4 +137,4 @@ FileList =  @()
 # Private data to pass to the module specified in ModuleToProcess  
 PrivateData = ''  
 
-}  
+} 

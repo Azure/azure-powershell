@@ -12,18 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
-using System.Security.Permissions;
-using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Commands.Storage.Common;
-using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
+    using System;
+    using System.Management.Automation;
+    using System.Security.Permissions;
+    using System.Threading.Tasks;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.Blob;
+
     /// <summary>
     /// list azure blobs in specified azure container
     /// </summary>
@@ -180,7 +180,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     wildcard = new WildcardPattern(blobName, options);
                 }
 
-                Func<ICloudBlob, bool> blobFilter = (blob) => wildcard == null || wildcard.IsMatch(blob.Name);
+                Func<CloudBlob, bool> blobFilter = (blob) => wildcard == null || wildcard.IsMatch(blob.Name);
                 await ListBlobsByPrefix(taskId, localChannel, containerName, prefix, blobFilter);
             }
             else
@@ -192,7 +192,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     throw new ArgumentException(String.Format(Resources.InvalidBlobName, blobName));
                 }
 
-                ICloudBlob blob = await localChannel.GetBlobReferenceFromServerAsync(container, blobName, accessCondition, requestOptions, OperationContext, CmdletCancellationToken);
+                CloudBlob blob = await localChannel.GetBlobReferenceFromServerAsync(container, blobName, accessCondition, requestOptions, OperationContext, CmdletCancellationToken);
                 
                 if (null == blob)
                 {
@@ -200,7 +200,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 }
                 else
                 {
-                    WriteICloudBlobObject(taskId, localChannel, blob);
+                    WriteCloudBlobObject(taskId, localChannel, blob);
                 }
             }
         }
@@ -211,7 +211,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <param name="containerName">container name</param>
         /// <param name="prefix">blob preifx</param>
         /// <returns>An enumerable collection of IListBlobItem</returns>
-        internal async Task ListBlobsByPrefix(long taskId, IStorageBlobManagement localChannel, string containerName, string prefix, Func<ICloudBlob, bool> blobFilter = null)
+        internal async Task ListBlobsByPrefix(long taskId, IStorageBlobManagement localChannel, string containerName, string prefix, Func<CloudBlob, bool> blobFilter = null)
         {
             CloudBlobContainer container = await GetCloudBlobContainerByName(localChannel, containerName);
 
@@ -234,7 +234,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
                 foreach (IListBlobItem blobItem in blobResult.Results)
                 {
-                    ICloudBlob blob = blobItem as ICloudBlob;
+                    CloudBlob blob = blobItem as CloudBlob;
 
                     if (blob == null)
                     {
@@ -243,7 +243,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
                     if (blobFilter == null || blobFilter(blob))
                     {
-                        WriteICloudBlobObject(taskId, localChannel, blob, blobResult.ContinuationToken);
+                        WriteCloudBlobObject(taskId, localChannel, blob, blobResult.ContinuationToken);
                         realListCount++;
                     }
                 }
