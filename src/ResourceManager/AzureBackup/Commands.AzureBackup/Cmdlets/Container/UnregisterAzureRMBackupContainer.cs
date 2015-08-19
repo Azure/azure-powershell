@@ -31,8 +31,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Get list of containers
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Unregister, "AzureBackupContainer")]
-    public class UnregisterAzureBackupContainer : AzureBackupContainerCmdletBase
+    [Cmdlet(VerbsLifecycle.Unregister, "AzureRMBackupContainer")]
+    public class UnregisterAzureRMBackupContainer : AzureBackupContainerCmdletBase
     {
         private PowerShellCustomConfirmation customerConfirmation;
 
@@ -45,12 +45,15 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
-                AzureBackupContainerType containerType = (AzureBackupContainerType)Enum.Parse(typeof(AzureBackupContainerType), Container.ContainerType);
+                AzureBackupContainerType containerType = (AzureBackupContainerType)Enum.Parse(typeof(AzureBackupContainerType), Container.ContainerType, true);
                 switch (containerType)
                 {
                     case AzureBackupContainerType.Windows:
                     case AzureBackupContainerType.SCDPM:
                         DeleteServer();
+                        break;
+                    case AzureBackupContainerType.AzureVM:
+                        UnregisterContainer();
                         break;
                     default:
                         break;
@@ -70,8 +73,19 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
             if (shouldUnregister)
             {
-                AzureBackupClient.UnregisterMachineContainer(Container.Id);
+                AzureBackupClient.UnregisterMachineContainer(Container.ResourceGroupName, Container.ResourceName, Container.Id);
             }
+        }
+
+        private void UnregisterContainer()
+        {
+            string containerUniqueName = Container.ContainerUniqueName;
+            var operationId = AzureBackupClient.UnRegisterContainer(Container.ResourceGroupName, Container.ResourceName, containerUniqueName);
+
+            WriteObject(GetCreatedJobs(Container.ResourceGroupName, 
+                Container.ResourceName, 
+                new Models.AzureRMBackupVault(Container.ResourceGroupName, Container.ResourceName, Container.Location), 
+                GetOperationStatus(Container.ResourceGroupName, Container.ResourceName, operationId).JobList).FirstOrDefault());
         }
     }
 }
