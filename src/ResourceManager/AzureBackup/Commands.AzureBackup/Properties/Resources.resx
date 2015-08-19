@@ -208,10 +208,10 @@ Please contact Microsoft for further assistant.</value>
     <comment>Scrubbed</comment>
   </data>
   <data name="DaysofTheWeekInWeeklyRetentionException" xml:space="preserve">
-    <value>The DaysOfWeek specified in a weekly retention schedule should be a same as of DaysOfWeek value specified in the backup schedule</value>
+    <value>The DaysOfWeek specified in a weekly retention schedule should be same as of DaysOfWeek value specified in the backup schedule</value>
   </data>
   <data name="DaysOfTheWeekOfRetentionScheduleException" xml:space="preserve">
-    <value>The DaysOfWeek specified in a weekly retention schedule should be a same as of DaysOfWeek value specified in the backup schedule</value>
+    <value>The DaysOfWeek specified in a weekly retention schedule should be same as of DaysOfWeek value specified in the backup schedule</value>
   </data>
   <data name="DesiredContainerNotFound" xml:space="preserve">
     <value>Desired Container is not found. Returning with isDiscoveryNeed = true</value>
