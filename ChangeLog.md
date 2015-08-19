@@ -27,6 +27,8 @@
   * Added Restart-AzureRemoteAppVm cmdlet
 * Azure HDInsight cmdlets
   * Added cmdlet help
+* Azure Backup cmdlets
+  * Added cmdlets for Register, Policy, Protection, Backup, Recovery Points, Restore and Jobs
 
 ## 2015.08.07 version 0.9.6
 * Azure Batch cmdlets
