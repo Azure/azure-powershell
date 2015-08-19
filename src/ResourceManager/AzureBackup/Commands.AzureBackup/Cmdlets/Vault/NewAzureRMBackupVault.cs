@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.AzureBackup.Helpers;
 using Microsoft.Azure.Commands.AzureBackup.Models;
+using Microsoft.Azure.Commands.AzureBackup.Properties;
 using System;
 using System.Management.Automation;
 
@@ -22,8 +23,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Command to create an azure backup vault in a subscription
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureBackupVault"), OutputType(typeof(AzurePSBackupVault))]
-    public class NewAzureBackupVault : AzureBackupCmdletBase
+    [Cmdlet(VerbsCommon.New, "AzureRMBackupVault"), OutputType(typeof(AzureRMBackupVault))]
+    public class NewAzureRMBackupVault : AzureBackupCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.ResourceGroupName)]
         [ValidateNotNullOrEmpty]
@@ -52,15 +53,15 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 base.ExecuteCmdlet();
                 InitializeAzureBackupCmdlet(ResourceGroupName, Name);
 
-                WriteDebug(String.Format("Creating backup vault with ResourceGroupName: {0}, ResourceName: {1}", ResourceGroupName, Name));
+                WriteDebug(String.Format(Resources.CreatingBackupVault, ResourceGroupName, Name));
 
                 var createdVault = AzureBackupClient.CreateOrUpdateAzureBackupVault(ResourceGroupName, Name, Region);
 
                 if (Storage != 0)
                 {
-                    WriteDebug(String.Format("Setting storage type for the resource, Type: {0}", Storage));
+                    WriteDebug(String.Format(Resources.SettingStorageType, Storage));
 
-                    AzureBackupClient.UpdateStorageType(Storage.ToString());
+                    AzureBackupClient.UpdateStorageType(ResourceGroupName, Name, Storage.ToString());
                 }
 
                 WriteObject(VaultHelpers.GetCmdletVault(createdVault, AzureBackupClient.GetStorageTypeDetails(VaultHelpers.GetResourceGroup(createdVault.Id), createdVault.Name)));

@@ -12,24 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
 
-namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
+namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
 {
-    /// <summary>
-    /// Command to remove an azure backup vault in the subscription
-    /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureBackupVault")]
-    public class RemoveAzureBackupVault : AzureBackupVaultCmdletBase
+    public class BackupItemTests : AzureBackupTestsBase
     {
-        public override void ExecuteCmdlet()
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void BackUpAzureBackUpItem()
         {
-            ExecutionBlock(() =>
-            {
-                base.ExecuteCmdlet();
-
-                AzureBackupClient.DeleteVault(Vault.ResourceGroupName, Vault.Name);
-            });
+            this.RunPowerShellTest("Test-BackUpAzureBackUpItem");
         }
     }
 }

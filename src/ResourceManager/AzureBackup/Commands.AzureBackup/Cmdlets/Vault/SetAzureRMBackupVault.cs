@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.AzureBackup.Helpers;
 using Microsoft.Azure.Commands.AzureBackup.Models;
+using Microsoft.Azure.Commands.AzureBackup.Properties;
 using System;
 using System.Management.Automation;
 using CmdletModel = Microsoft.Azure.Commands.AzureBackup.Models;
@@ -23,8 +24,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Command to update an azure backup vault in a subscription.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureBackupVault"), OutputType(typeof(CmdletModel.AzurePSBackupVault))]
-    public class SetAzureBackupVault : AzureBackupVaultCmdletBase
+    [Cmdlet(VerbsCommon.Set, "AzureRMBackupVault"), OutputType(typeof(CmdletModel.AzureRMBackupVault))]
+    public class SetAzureRMBackupVault : AzureBackupVaultCmdletBase
     {
         [Parameter(Position = 1, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.StorageType)]
         public AzureBackupVaultStorageType Storage { get; set; }
@@ -42,9 +43,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             {
                 if (Storage != 0)
                 {
-                    WriteDebug(String.Format("Setting storage type for the resource, Type: {0}", Storage));
+                    WriteDebug(String.Format(Resources.SettingStorageType, Storage));
 
-                    AzureBackupClient.UpdateStorageType(Storage.ToString());
+                    AzureBackupClient.UpdateStorageType(Vault.ResourceGroupName, Vault.Name, Storage.ToString());
                 }
 
                 var backupVault = AzureBackupClient.GetVault(Vault.ResourceGroupName, Vault.Name);
