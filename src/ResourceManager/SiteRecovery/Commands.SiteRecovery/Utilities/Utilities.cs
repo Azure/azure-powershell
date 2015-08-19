@@ -113,6 +113,24 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     asrVaultCreds.ResourceGroupName;
                 PSRecoveryServicesClient.asrVaultCreds.ChannelIntegrityKey =
                     asrVaultCreds.ChannelIntegrityKey;
+                if (asrVaultCreds.ResourceNamespace != null)
+                {
+                    PSRecoveryServicesClient.asrVaultCreds.ResourceNamespace =
+                        asrVaultCreds.ResourceNamespace;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Imports Azure Site Recovery Vault settings.
+        /// </summary>
+        /// <param name="resourceNamespace">Provider Namespace</param>
+        public static void UpdateVaultSettingsProviderNamespace(string resourceNamespace)
+        {
+            object updateVaultSettingsOneAtATime = new object();
+            lock (updateVaultSettingsOneAtATime)
+            {
+                PSRecoveryServicesClient.asrVaultCreds.ResourceNamespace = resourceNamespace;
             }
         }
 

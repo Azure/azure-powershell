@@ -33,6 +33,9 @@ using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
+using Microsoft.WindowsAzure.Management.Scheduler;
+using System.Configuration;
+using System.Collections.Specialized;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
 {
@@ -83,6 +86,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         private RecoveryServicesManagementClient recoveryServicesClient;
 
         /// <summary>
+        /// Recovery Services client.
+        /// </summary>
+        private CloudServiceManagementClient cloudServicesClient;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="PSRecoveryServicesClient" /> class with 
         /// required current subscription.
         /// </summary>
@@ -90,8 +98,30 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         public PSRecoveryServicesClient(AzureProfile azureProfile, AzureSubscription azureSubscription)
         {
             this.Profile = azureProfile;
+
+            this.cloudServicesClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(azureProfile, azureSubscription, AzureEnvironment.Endpoint.ResourceManager);
+
+            System.Configuration.Configuration siteRecoveryConfig = ConfigurationManager.OpenExeConfiguration(System.Reflection.Assembly.GetExecutingAssembly().Location);            
+
+            System.Configuration.AppSettingsSection appSettings = (System.Configuration.AppSettingsSection)siteRecoveryConfig.GetSection("appSettings");
+            
+            string resourceNamespace = "";
+            if(appSettings.Settings.Count == 0)
+            {
+                resourceNamespace = "Microsoft.SiteRecovery"; // ProviderNameSpace for Production is taken as default
+            }
+            else
+            {
+                resourceNamespace = appSettings.Settings["ProviderNamespace"].Value;
+            }
+             
+            Utilities.UpdateVaultSettingsProviderNamespace(resourceNamespace);
+
             this.recoveryServicesClient =
-                AzureSession.ClientFactory.CreateClient<RecoveryServicesManagementClient>(azureProfile, azureSubscription, AzureEnvironment.Endpoint.ResourceManager);
+            AzureSession.ClientFactory.CreateCustomClient<RecoveryServicesManagementClient>(
+                asrVaultCreds.ResourceNamespace,
+                cloudServicesClient.Credentials,
+                Profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager));
         }
 
         /// <summary>
@@ -238,10 +268,10 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
             SiteRecoveryManagementClient siteRecoveryClient =
                 AzureSession.ClientFactory.CreateCustomClient<SiteRecoveryManagementClient>(
-                asrVaultCreds.ResourceGroupName,
                 asrVaultCreds.ResourceName,
                 asrVaultCreds.ResourceGroupName,
-                recoveryServicesClient.Credentials,
+                asrVaultCreds.ResourceNamespace,
+                cloudServicesClient.Credentials,
                 Profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager));
 
             if (null == siteRecoveryClient)
