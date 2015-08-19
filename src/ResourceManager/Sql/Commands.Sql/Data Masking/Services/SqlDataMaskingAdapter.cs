@@ -94,6 +94,12 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// </summary>
         public void SetDatabaseDataMaskingRule(DatabaseDataMaskingRuleModel model, String clientId)
         {
+            DatabaseDataMaskingPolicyModel policyModel = GetDatabaseDataMaskingPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName, clientId);
+            if (policyModel.DataMaskingState == DataMaskingStateType.Uninitialized)
+            {
+                policyModel.DataMaskingState = DataMaskingStateType.Enabled;
+                SetDatabaseDataMaskingPolicy(policyModel, clientId);
+            }
             DataMaskingRuleCreateOrUpdateParameters parameters = PolicizeDatabaseDataRuleModel(model);
             Communicator.SetDatabaseDataMaskingRule(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.RuleId, clientId, parameters);
         }
@@ -210,13 +216,31 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         }
 
         /// <summary>
+        /// Transforms a data masking policy state from its string representation to its model representation
+        /// </summary>
+        private DataMaskingStateType ModelizePolicyState(string policyState)
+        {
+            if(SecurityConstants.DataMaskingEndpoint.Enabled == policyState)
+            {
+                return DataMaskingStateType.Enabled;
+            }
+
+            if (SecurityConstants.DataMaskingEndpoint.Disabled == policyState)
+            {
+                return DataMaskingStateType.Disabled;
+            }
+            
+            return DataMaskingStateType.Uninitialized;
+        }
+
+        /// <summary>
         /// Transforms a data masking policy to its cmdlet model representation
         /// </summary>
         private DatabaseDataMaskingPolicyModel ModelizeDatabaseDataMaskingPolicy(DataMaskingPolicy policy)
         {
             DatabaseDataMaskingPolicyModel dbPolicyModel = new DatabaseDataMaskingPolicyModel();
             DataMaskingPolicyProperties properties = policy.Properties;
-            dbPolicyModel.DataMaskingState = (properties.DataMaskingState == SecurityConstants.DataMaskingEndpoint.Enabled) ? DataMaskingStateType.Enabled : DataMaskingStateType.Disabled;
+            dbPolicyModel.DataMaskingState = ModelizePolicyState(properties.DataMaskingState); 
             dbPolicyModel.PrivilegedLogins = properties.ExemptPrincipals;
             return dbPolicyModel;
         }

@@ -23,7 +23,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet(VerbsLifecycle.Invoke,
-        Constants.CommandNames.Hive),
+        Constants.CommandNames.AzureHDInsightHiveJob),
     OutputType(typeof(string))]
     public class InvokeHiveCommand : HDInsightCmdletBase
     {

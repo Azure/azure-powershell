@@ -24,7 +24,6 @@ namespace Microsoft.Azure.Commands.ApiManagement
     using Microsoft.Azure.Common.Authentication.Models;
     using Microsoft.Azure.Management.ApiManagement;
     using Microsoft.Azure.Management.ApiManagement.Models;
-    using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
     public class ApiManagementClient
     {

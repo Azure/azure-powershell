@@ -124,7 +124,12 @@
     <value>Can not find blob name or container name.</value>
   </data>
   <data name="BlobNotFound" xml:space="preserve">
-    <value>Can not find blob '{0}' in container '{1}'.</value>
+    <value>Can not find blob '{0}' in container '{1}', or the blob type is unsupported.</value>
+    <comment>DRAFT</comment>
+  </data>
+    <data name="BlobUriNotFound" xml:space="preserve">
+    <value>Can not find blob '{0}', or the blob type is unsupported.</value>
+    <comment>DRAFT</comment>
   </data>
   <data name="ConfirmRemoveContainer" xml:space="preserve">
     <value>Are you sure to remove container '{0}'?</value>
@@ -166,8 +171,17 @@
   <data name="InvalidExpiryTime" xml:space="preserve">
     <value>Invalid expiry time '{0}'.</value>
   </data>
+  <data name="InvalidHTTPMethod" xml:space="preserve">
+    <value>'{0}' is an invalid HTTP method.</value>
+  </data>
   <data name="InvalidStartTime" xml:space="preserve">
     <value>Invalid start time '{0}'.</value>
+  </data>
+  <data name="FileNotSupportLogging" xml:space="preserve">
+    <value>It doesn't support logging in Microsoft Azure File service.</value>
+  </data>
+  <data name="FileNotSupportMetrics" xml:space="preserve">
+    <value>It doesn't support metrics in Microsoft Azure File service.</value>
   </data>
   <data name="OnlyOnePermissionForContainer" xml:space="preserve">
     <value>You must supply only one permission in Off/Blob/Container for container.</value>
@@ -258,7 +272,7 @@
     <value>Blob End Point: {0}.</value>
   </data>
   <data name="InvalidBlobWithoutContainer" xml:space="preserve">
-    <value>ICloudBlob "{0}" should contain container properties.</value>
+    <value>CloudBlob "{0}" should contain container properties.</value>
   </data>
   <data name="ObjectCannotBeNull" xml:space="preserve">
     <value>Object '{0}' cannot be null.</value>
@@ -349,8 +363,11 @@
     <value>{0} begin processing with ParameterSet '{1}'.</value>
   </data>
   <data name="InvalidBlobType" xml:space="preserve">
-    <value>Blob type of "{0}" is invalid, only page blob or block blob are supported.</value>
-    <comment>0 for blob name</comment>
+    <value>Blob type '{0}' of blob '{1}' is not supported.</value>
+    <comment>0 for blob type, 1 is the blob name. DRAFT</comment>
+  </data>
+  <data name="OnlyCopyFromBlockBlobToAzureFile" xml:space="preserve">
+    <value>Only support to copy from azure file to a block blob.</value>
   </data>
   <data name="CannotDeleteSnapshotForSnapshot" xml:space="preserve">
     <value>The specified blob '{0}' is already a snapshot with snapshot time {1}. Can't use "DeleteSnapshot" option for it.</value>
@@ -434,13 +451,21 @@
     <value>Stopped the copy task on blob '{0}' in container '{1}' successfully.</value>
     <comment>0 for blob name, 1 for container name</comment>
   </data>
-  <data name="CopyBlobPendingStatus" xml:space="preserve">
+  <data name="StopCopyFileSuccessfully" xml:space="preserve">
+    <value>Stopped the copy task on file '{0}' successfully.</value>
+    <comment>0 for file uri</comment>
+  </data>
+  <data name="CopyPendingStatus" xml:space="preserve">
     <value>Percent:{0}%. BytesCopied: {1}Bytes. TotalBytes: {2}Bytes.</value>
     <comment>0 for copied percent, 1 for bytes copied, 2 for total bytes.</comment>
   </data>
   <data name="CopyBlobStatus" xml:space="preserve">
     <value>'{0}' copy to blob '{1}' in container '{2}' from '{3}'.</value>
     <comment>0 for copy status, 1 for destination blob name, 2 for destination container name, 3 for source uri.</comment>
+  </data>
+  <data name="CopyFileStatus" xml:space="preserve">
+    <value>'{0}' copy to file '{1}' in share '{2}' from '{3}'.</value>
+    <comment>0 for copy status, 1 for destination file path, 2 for destination share name, 3 for source uri.</comment>
   </data>
   <data name="CopyBlobToBlobSuccessfully" xml:space="preserve">
     <value>Successfully start copy blob '{0}' in container '{1}' to blob '{2}' in container '{3}'.</value>
@@ -453,6 +478,9 @@
   <data name="CopyBlobActivity" xml:space="preserve">
     <value>Copy Blob.</value>
   </data>
+  <data name="CopyFileActivity" xml:space="preserve">
+    <value>Copy File.</value>
+  </data>
   <data name="CopyBlobSummaryActivity" xml:space="preserve">
     <value>Copy Blob Status Summary.</value>
   </data>
@@ -461,8 +489,15 @@
     <comment>0,1,2,3 for related task count.</comment>
   </data>
   <data name="CopyTaskNotFound" xml:space="preserve">
-    <value>Can not find copy task on specified blob '{0}' in container '{1}'.</value>
+    <value>Can not find copy task on the specified blob '{0}' in container '{1}'.</value>
     <comment>0 for blob name, 1 for container name.</comment>
+  </data>
+  <data name="FileCopyTaskNotFound" xml:space="preserve">
+    <value>Can not find copy task on the specified file '{0}'.</value>
+    <comment>0 for file uri.</comment>
+  </data>
+  <data name="CORSRuleError" xml:space="preserve">
+    <value>CORS rules setting is invalid. Please reference to "https://msdn.microsoft.com/en-us/library/azure/dn535601.aspx" to get detailed information.</value>
   </data>
   <data name="TransmitFailed" xml:space="preserve">
     <value>Transmit failed. Exception: {0}.</value>
@@ -478,6 +513,10 @@
   <data name="ConfirmAbortCopyOperation" xml:space="preserve">
     <value>blob '{0}' in container '{1}' with CopyId {2}.</value>
     <comment>0 for blob name, 1 for container name, 2 for copy id.</comment>
+  </data>
+  <data name="ConfirmAbortFileCopyOperation" xml:space="preserve">
+    <value>file '{0}' with CopyId {1}.</value>
+    <comment>0 for file uri, 1 for copy id.</comment>
   </data>
   <data name="CopyIdMismatch" xml:space="preserve">
     <value>CopyId mismatch on  blob '{0}' in container '{1}'. Expected:{2}. User supplied: {3}.</value>
@@ -587,6 +626,9 @@ Failed: {2}.</value>
   <data name="BlobIsNotReadable" xml:space="preserve">
     <value>Can't read the blob properties.</value>
   </data>
+  <data name="SignedStartTimeMustBeOmitted" xml:space="preserve">
+    <value>This start time field must be omitted if it has been specified in an associated stored access policy.</value>
+  </data>
   <data name="SignedExpiryTimeMustBeOmitted" xml:space="preserve">
     <value>This expiry time field must be omitted if it has been specified in an associated stored access policy.</value>
   </data>
@@ -599,6 +641,9 @@ Failed: {2}.</value>
   </data>
   <data name="ConfirmCaption" xml:space="preserve">
     <value>Confirm</value>
+  </data>
+  <data name="DefaultDomain" xml:space="preserve">
+    <value>core.windows.net</value>
   </data>
   <data name="TransmitActiveSummary" xml:space="preserve">
     <value>Total: {0}. Successful: {1}. Failed: {2}. Active: {3}.</value>
@@ -641,7 +686,7 @@ Failed: {2}.</value>
     <value>The length of the given path/prefix '{0}' exceeded the max allowed length {1} for Microsoft Azure File Service REST API.</value>
   </data>
   <data name="ShareNameInvalid" xml:space="preserve">
-    <value>The given share name/prefix '{0}' is not a valid name for a file share of Microsoft Azure File Service.</value>
+    <value>The given share name/prefix '{0}' is not a valid name for a file share of Microsoft Azure File Service; refer to https://msdn.microsoft.com/library/azure/dn167011.aspx for details.</value>
   </data>
   <data name="SourceFileNotFound" xml:space="preserve">
     <value>The specified source file '{0}' was not found.</value>

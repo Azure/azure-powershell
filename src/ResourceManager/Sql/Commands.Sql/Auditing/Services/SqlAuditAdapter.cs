@@ -480,5 +480,13 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             }
             return null;
         }
+
+        internal void ClearStorageDetailsCache()
+        {
+            FetchedStorageAccountName = null;
+            FetchedStorageAccountResourceGroup = null;
+            FetchedStorageAccountSubscription = null;
+            FetchedStorageAccountTableEndpoint = null;
+        }
     }
 }
