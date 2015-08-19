@@ -21,6 +21,7 @@ using System.Web;
 using Microsoft.Azure.Management.BackupServices;
 using Microsoft.Azure.Management.BackupServices;
 using Mgmt = Microsoft.Azure.Management.BackupServices.Models;
+using Microsoft.Azure.Commands.AzureBackup.Cmdlets;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Models
 {
@@ -52,7 +53,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
             : base(vault)
         {
             this.InstanceId = jobName;
-            this.WorkloadType = serviceJob.WorkloadType;
+            this.WorkloadType = AzureBackupJobHelper.GetTypeForPS(serviceJob.WorkloadType);
             this.WorkloadName = serviceJob.EntityFriendlyName;
             this.Operation = serviceJob.Operation;
             this.Status = serviceJob.Status;
