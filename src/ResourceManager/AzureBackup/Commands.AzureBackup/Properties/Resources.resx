@@ -196,7 +196,7 @@ Please contact Microsoft for further assistant.</value>
     <comment>Scrubbed</comment>
   </data>
   <data name="DailyRetentionPolicyValueException" xml:space="preserve">
-    <value>The daily retention value should be between  {0} and {1}</value>
+    <value>The daily retention value should be between {0} and {1}</value>
     <comment>Scrubbed</comment>
   </data>
   <data name="DailyScheduleException" xml:space="preserve">
@@ -204,7 +204,7 @@ Please contact Microsoft for further assistant.</value>
     <comment>Scrubbed</comment>
   </data>
   <data name="DaysOfMonthsNotAllowedinMonthlyYearlyFormat" xml:space="preserve">
-    <value>Days of  the month in Monthly/Yearly retention is not allowed for weekly backup Schedules</value>
+    <value>Using the DaysOfMonth parameter in retention policies is not allowed when weekly backup schedules are used</value>
     <comment>Scrubbed</comment>
   </data>
   <data name="DaysofTheWeekInWeeklyRetentionException" xml:space="preserve">
