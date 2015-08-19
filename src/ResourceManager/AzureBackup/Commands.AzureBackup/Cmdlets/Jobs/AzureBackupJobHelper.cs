@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Xml;
 using System.Linq;
 using Mgmt = Microsoft.Azure.Management.BackupServices.Models;
+using Microsoft.Azure.Commands.AzureBackup.Models;
 
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
@@ -61,6 +62,30 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     public static class AzureBackupJobHelper
     {
         public static DateTime MinimumAllowedDate = new DateTime(DateTime.MinValue.Year, DateTime.MinValue.Month, DateTime.MinValue.Day, DateTime.MinValue.Hour, DateTime.MinValue.Minute, DateTime.MinValue.Second, DateTimeKind.Utc);
+
+        public static string GetTypeForPS(string itemType)
+        {
+            AzureBackupItemType managedContainerType = (AzureBackupItemType)Enum.Parse(typeof(AzureBackupItemType), itemType, true);
+
+            string returnType = string.Empty;
+
+            switch (managedContainerType)
+            {
+                case AzureBackupItemType.IaasVM:
+                    returnType = "AzureVM";
+                    break;
+            }
+
+            return returnType;
+        }
+
+        public static string GetTypeForService(string itemType)
+        {
+            if (itemType.CompareTo("AzureVM") == 0)
+                return AzureBackupItemType.IaasVM.ToString();
+            throw new ArgumentException("Invalid value", "itemType");
+        }
+
 
         public static bool IsValidStatus(string inputStatus)
         {
