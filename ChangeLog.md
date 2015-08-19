@@ -27,8 +27,23 @@
   * Added Restart-AzureRemoteAppVm cmdlet
 * Azure HDInsight cmdlets
   * Added cmdlet help
-* Azure Backup cmdlets
-  * Added cmdlets for Register, Policy, Protection, Backup, Recovery Points, Restore and Jobs
+* Azure Backup - added the following cmdlets
+  * Backup-AzureRMBackupItem
+  * Register-AzureRMBackupContainer
+  * Disable-AzureRMBackupProtection
+  * Enable-AzureRMBackupProtection
+  * Get-AzureRMBackupItem
+  * Get-AzureRMBackupJob
+  * Get-AzureRMBackupJobDetails
+  * Stop-AzureRMBackupJob
+  * Wait-AzureRMBackupJob
+  * Get-AzureRMBackupProtectionPolicy
+  * New-AzureRMBackupProtectionPolicy
+  * New-AzureRMBackupRetentionPolicyObject
+  * Remove-AzureRMBackupProtectionPolicy
+  * Set-AzureRMBackupProtectionPolicy
+  * Get-AzureRMBackupRecoveryPoint
+  * Restore-AzureRMBackupItem
 
 ## 2015.08.07 version 0.9.6
 * Azure Batch cmdlets
