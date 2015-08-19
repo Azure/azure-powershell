@@ -188,5 +188,28 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     paramName));
             }
         }
+
+        /// <summary>
+        /// Gets the current vault location.
+        /// </summary>
+        /// <returns>The current vault location.</returns>
+        protected string GetCurrentValutLocation()
+        {
+            string location = string.Empty;
+
+            VaultListResponse vaultListResponse =
+                RecoveryServicesClient.GetVaultsInResouceGroup(PSRecoveryServicesClient.asrVaultCreds.ResourceGroupName);
+
+            foreach (Vault vault in vaultListResponse.Vaults)
+            {
+                if (0 == string.Compare(PSRecoveryServicesClient.asrVaultCreds.ResourceName, vault.Name, true))
+                {
+                    location = vault.Location;
+                    break;
+                }
+            }
+
+            return location;
+        }
     }
 }
