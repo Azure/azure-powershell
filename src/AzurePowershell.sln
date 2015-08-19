@@ -134,9 +134,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RedisCache", "Reso
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RedisCache.Test", "ResourceManager\RedisCache\Commands.RedisCache.Test\Commands.RedisCache.Test.csproj", "{4AE5705F-62CF-461D-B72E-DD9DCD9B3609}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Batch", "ResourceManager\Batch\Commands.Batch\Commands.Batch.csproj", "{D470E50A-9607-48D6-A924-4F9F86502704}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Batch", "ResourceManager\AzureBatch\Commands.Batch\Commands.Batch.csproj", "{D470E50A-9607-48D6-A924-4F9F86502704}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Batch.Test", "ResourceManager\Batch\Commands.Batch.Test\Commands.Batch.Test.csproj", "{F4ABAD68-64A5-4B23-B09C-42559A7524DE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Batch.Test", "ResourceManager\AzureBatch\Commands.Batch.Test\Commands.Batch.Test.csproj", "{F4ABAD68-64A5-4B23-B09C-42559A7524DE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ServiceManagement.Network", "ServiceManagement\Network\Commands.Network\Commands.ServiceManagement.Network.csproj", "{40FEE0BB-FD45-4EFC-85BC-0D602A6892C4}"
 EndProject
