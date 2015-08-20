@@ -123,6 +123,9 @@
   <data name="BeginMAMLCall" xml:space="preserve">
     <value>Begin {0} call to RP</value>
   </data>
+  <data name="ChangeOSVersion" xml:space="preserve">
+    <value>Changing OS version of pool {0} to {1}.</value>
+  </data>
   <data name="DisableAutoScale" xml:space="preserve">
     <value>Disabling automatic scaling on pool {0}.</value>
   </data>
@@ -329,6 +332,12 @@
   </data>
   <data name="RBU_RemoveUser" xml:space="preserve">
     <value>Removing user ...</value>
+  </data>
+  <data name="RebootComputeNode" xml:space="preserve">
+    <value>Rebooting compute node {0}.</value>
+  </data>
+  <data name="ReimageComputeNode" xml:space="preserve">
+    <value>Reimaging compute node {0}.</value>
   </data>
   <data name="ResGroupLookup" xml:space="preserve">
     <value>Looking up resource group for account {0}</value>

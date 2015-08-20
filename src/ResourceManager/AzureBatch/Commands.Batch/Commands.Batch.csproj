@@ -154,6 +154,8 @@
     <Compile Include="Accounts\NewBatchAccountCommand.cs" />
     <Compile Include="Accounts\NewBatchAccountKeyCommand.cs" />
     <Compile Include="Accounts\SetBatchAccountCommand.cs" />
+    <Compile Include="ComputeNodes\ResetBatchComputeNodeCommand.cs" />
+    <Compile Include="ComputeNodes\RestartBatchComputeNodeCommand.cs" />
     <Compile Include="Files\GetBatchNodeFileCommand.cs" />
     <Compile Include="Files\GetBatchNodeFileContentCommand.cs" />
     <Compile Include="Files\GetBatchRemoteDesktopProtocolFileCommand.cs" />
@@ -190,6 +192,7 @@
     <Compile Include="Models\BatchClient.ComputeNodes.cs" />
     <Compile Include="Models\BatchClient.JobSchedules.cs" />
     <Compile Include="Models\BatchClientParametersBase.cs" />
+    <Compile Include="Models\ChangeOSVersionParameters.cs" />
     <Compile Include="Models\DownloadNodeFileOptions.cs" />
     <Compile Include="Models\DownloadRemoteDesktopProtocolFileOptions.cs" />
     <Compile Include="Models\JobOperationParameters.cs" />
@@ -241,6 +244,8 @@
     <Compile Include="Models.Generated\PSUsageStatistics.cs" />
     <Compile Include="Models\PoolResizeParameters.cs" />
     <Compile Include="Models\ComputeNodeUserOperationParameters.cs" />
+    <Compile Include="Models\RebootComputeNodeParameters.cs" />
+    <Compile Include="Models\ReimageComputeNodeParameters.cs" />
     <Compile Include="Models\TaskOperationParameters.cs" />
     <Compile Include="Models\ComputeNodeOperationParameters.cs" />
     <Compile Include="Models\JobScheduleOperationParameters.cs" />
@@ -249,6 +254,7 @@
     <Compile Include="Pools\GetBatchPoolCommand.cs" />
     <Compile Include="Pools\NewBatchPoolCommand.cs" />
     <Compile Include="Pools\RemoveBatchPoolCommand.cs" />
+    <Compile Include="Pools\SetBatchPoolOSVersionCommand.cs" />
     <Compile Include="Pools\StartBatchPoolResizeCommand.cs" />
     <Compile Include="Pools\StopBatchPoolResizeCommand.cs" />
     <Compile Include="Pools\TestBatchAutoScaleCommand.cs" />
