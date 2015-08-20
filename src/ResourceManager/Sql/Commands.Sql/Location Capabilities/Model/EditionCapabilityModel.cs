@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Model
     /// <summary>
     /// Represents an Edition for an Azure SQL Database and its capabilities
     /// </summary>
-    public class EditionCapabilities
+    public class EditionCapabilityModel
     {
         /// <summary>
         /// Gets or sets the name of the Edition
@@ -33,6 +33,6 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Model
         /// <summary>
         /// Gets or sets the list of supported Service Level Objectives and their capabilities.
         /// </summary>
-        public IList<ServiceObjectiveCapability> SupportedServiceLevelObjectives { get; set; }
+        public IList<ServiceObjectiveCapabilityModel> SupportedServiceLevelObjectives { get; set; }
     }
 }

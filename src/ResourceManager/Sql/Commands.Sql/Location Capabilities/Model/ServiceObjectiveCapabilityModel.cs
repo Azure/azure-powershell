@@ -11,26 +11,34 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+
 namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Model
 {
     /// <summary>
-    /// Represents a supported Azure SQL Database Maximum size
+    /// Represents a Service Level Objective and its capabilities
     /// </summary>
-    public class MaxSizeCapability
+    public class ServiceObjectiveCapabilityModel
     {
         /// <summary>
-        /// Gets or sets the max size limit 
+        /// Gets or sets the name of the Service Level Objective
         /// </summary>
-        public int Limit { get; set; }
+        public string ServiceObjectiveName { get; set; }
 
         /// <summary>
-        /// Gets or sets the units for the max size limit
-        /// </summary>
-        public string Unit { get; set; }
-
-        /// <summary>
-        /// Gets or sets the status for this max size for the given: Subscription, Server Version, Edition, Service Level Objective combination.
+        /// Gets or sets the status of the Service Level Objective for the given: Subscription, Server Version, Database Edition combination.
         /// </summary>
         public string Status { get; set; }
+
+        /// <summary>
+        /// Gets or sets the unique ID of the Service Level Objecive
+        /// </summary>
+        public Guid Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of supported max sizes and their capabilities
+        /// </summary>
+        public IList<MaxSizeCapabilityModel> SupportedMaxSizes { get; internal set; }
     }
 }

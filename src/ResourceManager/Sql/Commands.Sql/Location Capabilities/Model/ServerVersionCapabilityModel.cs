@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Model
     /// <summary>
     /// Represents the capabilities of a server version
     /// </summary>
-    public class ServerVersionCapabilities
+    public class ServerVersionCapabilityModel
     {
         /// <summary>
         /// Gets or sets the name of the Server Version
@@ -33,6 +33,6 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Model
         /// <summary>
         /// Gets or sets the list of supported datababase Editions and their capabilities
         /// </summary>
-        public IList<EditionCapabilities> SupportedEditions { get; set; }
+        public IList<EditionCapabilityModel> SupportedEditions { get; set; }
     }
 }
