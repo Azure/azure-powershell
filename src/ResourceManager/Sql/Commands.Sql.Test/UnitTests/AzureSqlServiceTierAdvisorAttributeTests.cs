@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
     public class AzureSqlServiceTierAdvisorAttributeTests
     {
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureSqlDatabaseUpgradeHintAttributes()
         {
             Type type = typeof(GetAzureSqlDatabaseUpgradeHint);
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureSqlServerUpgradeHintAttributes()
         {
             Type type = typeof(GetAzureSqlServerUpgradeHint);
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureSqlDatabaseExpandedAttributes()
         {
             Type type = typeof(GetAzureSqlDatabaseExpanded);

@@ -31,8 +31,8 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Model
         public string Status { get; set; }
 
         /// <summary>
-        /// Gets or sets the list of supported Service Level Objectives and their capabilities.
+        /// Gets or sets the list of supported Service Objectives and their capabilities.
         /// </summary>
-        public IList<ServiceObjectiveCapabilityModel> SupportedServiceLevelObjectives { get; set; }
+        public IList<ServiceObjectiveCapabilityModel> SupportedServiceObjectives { get; set; }
     }
 }

@@ -18,20 +18,13 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class ServiceTierAdvisorTests : SqlTestsBase
+    public class LocationCapabilitiesTests : SqlTestsBase
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetUpgradeDatabaseHint()
+        public void TestLocationCapabilities()
         {
-            RunPowerShellTest("Test-GetUpgradeDatabaseHint");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetUpgradeServerHint()
-        {
-            RunPowerShellTest("Test-GetUpgradeServerHint");
+            RunPowerShellTest("Test-LocationCapabilities");
         }
     }
 }

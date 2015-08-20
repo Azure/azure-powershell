@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
             EditionCapabilityModel edition = new EditionCapabilityModel();
             edition.EditionName = e.Name;
             edition.Status = e.Status;
-            edition.SupportedServiceLevelObjectives = e.SupportedServiceObjectives.Select(slo => { return CreateSupportedSLOModel(slo); }).ToList();
+            edition.SupportedServiceObjectives = e.SupportedServiceObjectives.Select(slo => { return CreateSupportedSLOModel(slo); }).ToList();
             return edition;
         }
 

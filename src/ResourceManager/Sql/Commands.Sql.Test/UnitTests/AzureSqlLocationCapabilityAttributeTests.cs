@@ -13,27 +13,28 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Management.Automation;
-
-using Microsoft.Azure.Commands.Sql.Backup.Cmdlet;
+using Microsoft.Azure.Commands.Sql.Location_Capabilities.Cmdlet;
 using Microsoft.Azure.Commands.Sql.Test.Utilities;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
 {
-    public class AzureSqlDatabaseBackupAttributeTests
+    public class AzureSqlLocationCapabilityAttributeTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetAzureSqlDatabaseRestorePointsAttributes()
+        public void NewAzureSqlDatabaseAttributes()
         {
-            Type type = typeof(GetAzureSqlDatabaseRestorePoints);
+            Type type = typeof(GetAzureSqlLocationCapability);
             UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: false);
-            UnitTestHelper.CheckConfirmImpact(type, ConfirmImpact.None);
+            UnitTestHelper.CheckConfirmImpact(type, System.Management.Automation.ConfirmImpact.None);
 
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "ServerName", isMandatory: true, valueFromPipelineByName: true);
-            UnitTestHelper.CheckCmdletParameterAttributes(type, "DatabaseName", isMandatory: true, valueFromPipelineByName: true);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "LocationName", isMandatory: true, valueFromPipelineByName: true);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "ServerVersionName", isMandatory: false, valueFromPipelineByName: true);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "EditionName", isMandatory: false, valueFromPipelineByName: true);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "ServiceObjectiveName", isMandatory: false, valueFromPipelineByName: true);
+            UnitTestHelper.CheckCmdletParameterAttributes(type, "Defaults", isMandatory: false, valueFromPipelineByName: false);
         }
     }
 }
