@@ -131,12 +131,12 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Cmdlet
             var defaultVersion = model.SupportedServerVersions;
             defaultVersion[0].SupportedEditions = defaultVersion[0].SupportedEditions.Where(v => { return v.Status == "Default"; }).ToList();
             var defaultEdition = defaultVersion[0].SupportedEditions;
-            defaultEdition[0].SupportedServiceLevelObjectives = defaultEdition[0].SupportedServiceLevelObjectives.Where(v => { return v.Status == "Default"; }).ToList();
-            var defaultServiceObjective = defaultEdition[0].SupportedServiceLevelObjectives;
+            defaultEdition[0].SupportedServiceObjectives = defaultEdition[0].SupportedServiceObjectives.Where(v => { return v.Status == "Default"; }).ToList();
+            var defaultServiceObjective = defaultEdition[0].SupportedServiceObjectives;
 
             // Assign defaults back to model.
             defaultServiceObjective[0].SupportedMaxSizes = defaultServiceObjective[0].SupportedMaxSizes.Where(v => { return v.Status == "Default"; }).ToList();
-            defaultEdition[0].SupportedServiceLevelObjectives = defaultServiceObjective;
+            defaultEdition[0].SupportedServiceObjectives = defaultServiceObjective;
             defaultVersion[0].SupportedEditions = defaultEdition;
             model.SupportedServerVersions = defaultVersion;
         }
@@ -152,14 +152,14 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Cmdlet
                 foreach (var edition in version.SupportedEditions)
                 {
                     // Remove all service objectives with a name that does not match the desired value
-                    edition.SupportedServiceLevelObjectives = 
-                        edition.SupportedServiceLevelObjectives
+                    edition.SupportedServiceObjectives = 
+                        edition.SupportedServiceObjectives
                             .Where(slo => { return slo.ServiceObjectiveName == this.ServiceObjectiveName; })
                             .ToList();
                 }
 
                 // Remove editions that have no supported service objectives after filtering
-                version.SupportedEditions = version.SupportedEditions.Where(e => e.SupportedServiceLevelObjectives.Count > 0).ToList();
+                version.SupportedEditions = version.SupportedEditions.Where(e => e.SupportedServiceObjectives.Count > 0).ToList();
             }
 
             // Remove server versions that have no supported editions after filtering
