@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
                 }
             });
 
-            return GetLink(resourceGroupName, serverName, model.DatabaseName, model.PartnerResourceGroupName, model.PartnerServerName);
+            return GetLink(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.PartnerResourceGroupName, model.PartnerServerName);
         }
 
         /// <summary>
@@ -278,6 +278,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         {
             IList<AzureReplicationLinkModel> links = ListLinks(resourceGroupName, serverName, databaseName, partnerResourceGroupName).ToList();
 
+            // Resource Management executes in context of the Secondary
             return links.FirstOrDefault(l => l.PartnerServerName == partnerServerName);
         }
 
