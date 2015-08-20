@@ -1,5 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
-//
+﻿//
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,41 +12,40 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
 
-namespace Microsoft.Azure.Commands.Sql.FirewallRule.Services
+namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
 {
     /// <summary>
-    /// This class is responsible for all the REST communication with the audit REST endpoints
+    /// Communicator class for communicating between APIs and powershell cmdlet
     /// </summary>
-    public class AzureSqlServerFirewallRuleCommunicator
+    public class AzureSqlLocationCapabilitiesCommunicator
     {
         /// <summary>
-        /// The Sql client to be used by this end points communicator
+        /// The SQL Management Client to be used by the communicator
         /// </summary>
         private static SqlManagementClient SqlClient { get; set; }
-        
+
         /// <summary>
         /// Gets or set the Azure subscription
         /// </summary>
-        private static AzureSubscription Subscription {get ; set; }
+        private static AzureSubscription Subscription { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
         public AzureProfile Profile { get; set; }
-
+        
         /// <summary>
         /// Creates a communicator for Azure Sql Databases FirewallRules
         /// </summary>
         /// <param name="profile"></param>
         /// <param name="subscription"></param>
-        public AzureSqlServerFirewallRuleCommunicator(AzureProfile profile, AzureSubscription subscription)
+        public AzureSqlLocationCapabilitiesCommunicator(AzureProfile profile, AzureSubscription subscription)
         {
             Profile = profile;
             if (subscription != Subscription)
@@ -58,35 +56,14 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Services
         }
 
         /// <summary>
-        /// Gets the Azure Sql Database Server FirewallRules
+        /// Gets the Location Capabilities for the specified region for the current subscription.
         /// </summary>
-        public Management.Sql.Models.FirewallRule Get(string resourceGroupName, string serverName, string firewallRuleName, string clientRequestId)
+        /// <param name="locationName">The name of the region for which to get the location capabilities</param>
+        /// <param name="clientRequestId">The client request ID to use</param>
+        /// <returns>The location capabilities for the region</returns>
+        public LocationCapability Get(string locationName, string clientRequestId)
         {
-            return GetCurrentSqlClient(clientRequestId).FirewallRules.Get(resourceGroupName, serverName, firewallRuleName).FirewallRule;
-        }
-
-        /// <summary>
-        /// Lists Azure Sql Databases Server FirewallRules
-        /// </summary>
-        public IList<Management.Sql.Models.FirewallRule> List(string resourceGroupName, string serverName, string clientRequestId)
-        {
-            return GetCurrentSqlClient(clientRequestId).FirewallRules.List(resourceGroupName, serverName).FirewallRules;
-        }
-
-        /// <summary>
-        /// Creates or updates an Azure Sql Database Server FirewallRule
-        /// </summary>
-        public Management.Sql.Models.FirewallRule CreateOrUpdate(string resourceGroupName, string serverName, string firewallRuleName, string clientRequestId, FirewallRuleCreateOrUpdateParameters parameters)
-        {
-            return GetCurrentSqlClient(clientRequestId).FirewallRules.CreateOrUpdate(resourceGroupName, serverName, firewallRuleName, parameters).FirewallRule;
-        }
-
-        /// <summary>
-        /// Deletes an Azure Sql Database Server FirewallRule
-        /// </summary>
-        public void Remove(string resourceGroupName, string serverName, string firewallRuleName, string clientRequestId)
-        {
-            GetCurrentSqlClient(clientRequestId).FirewallRules.Delete(resourceGroupName, serverName, firewallRuleName);
+            return GetCurrentSqlClient(clientRequestId).Capabilities.Get(locationName).Capabilities;
         }
 
         /// <summary>
@@ -101,8 +78,10 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Services
             {
                 SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Profile, Subscription, AzureEnvironment.Endpoint.ResourceManager);
             }
+
             SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
             SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
+            
             return SqlClient;
         }
     }
