@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
     /// <summary>
     /// Represents Azure Backup Container
     /// </summary>
-    public class AzureBackupContainer : AzureBackupContainerContextObject
+    public class AzureRMBackupContainer : AzureRMBackupContainerContextObject
     {
         /// <summary>
         /// Resource name of the resource (ex: resource name of the VM) being managed by the Azure Backup service.
@@ -42,14 +42,23 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         /// </summary>
         public string Status { get; set; }
 
-        public AzureBackupContainer() : base() { }
+        public AzureRMBackupContainer() : base() { }
 
-        public AzureBackupContainer(AzurePSBackupVault vault, MarsContainerResponse marsContainerResponse)
+        public AzureRMBackupContainer(AzureRMBackupVault vault, MarsContainerResponse marsContainerResponse)
             : base(vault, marsContainerResponse)
         {
             Name = marsContainerResponse.Properties.FriendlyName;
             Id = marsContainerResponse.Properties.ContainerId;
             Status = AzureBackupContainerRegistrationStatus.Registered.ToString();
+        }
+
+        public AzureRMBackupContainer(AzureRMBackupVault vault, CSMContainerResponse containerInfo)
+            : base(vault, containerInfo)
+        {
+            //ManagedResourceGroupName = ContainerHelpers.GetRGNameFromId(containerInfo.Properties.ParentContainerId);
+            Name = containerInfo.Properties.FriendlyName;
+            //HealthStatus = containerInfo.Properties.HealthStatus;
+            Status = containerInfo.Properties.Status;
         }
     }
 }

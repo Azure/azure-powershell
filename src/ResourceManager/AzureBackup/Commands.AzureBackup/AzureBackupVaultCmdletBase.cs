@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.Vault, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public AzurePSBackupVault Vault { get; set; }
+        public AzureRMBackupVault Vault { get; set; }
 
         public override void ExecuteCmdlet()
         {

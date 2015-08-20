@@ -73,5 +73,10 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Model
         /// Gets or sets the audit logs table name 
         /// </summary>
         public string TableIdentifier { get; internal set; }
+
+        /// <summary>
+        /// Gets or sets the full name of audit logs table 
+        /// </summary>
+        public string FullAuditLogsTableName { get; internal set; }
     }
 }
