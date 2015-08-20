@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.JobDetailsFilterJobIdHelpMessage, ParameterSetName = "IdFiltersSet")]
         [ValidateNotNullOrEmpty]
-        public string JobId { get; set; }
+        public string JobID { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.JobDetailsFilterJobHelpMessage, ParameterSetName = "JobsFiltersSet", ValueFromPipeline = true)]
         [ValidateNotNull]
@@ -53,12 +53,12 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             {
                 if (Job != null)
                 {
-                    JobId = Job.InstanceId;
+                    JobID = Job.InstanceId;
                 }
 
-                WriteDebug(String.Format(Resources.JobIdFilter, JobId));
+                WriteDebug(String.Format(Resources.JobIdFilter, JobID));
 
-                Mgmt.CSMJobDetailsResponse serviceJobProperties = AzureBackupClient.GetJobDetails(Vault.ResourceGroupName, Vault.Name, JobId);
+                Mgmt.CSMJobDetailsResponse serviceJobProperties = AzureBackupClient.GetJobDetails(Vault.ResourceGroupName, Vault.Name, JobID);
                 AzureRMBackupJobDetails jobDetails = new AzureRMBackupJobDetails(Vault, serviceJobProperties.JobDetailedProperties, serviceJobProperties.Name);
 
                 WriteDebug(Resources.JobResponse);
