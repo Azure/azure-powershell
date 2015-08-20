@@ -69,5 +69,56 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     computeNodes, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
             }
         }
+
+        /// <summary>
+        /// Reboots the specified compute node.
+        /// </summary>
+        /// <param name="parameters">The parameters specifying the compute node to reboot and the reboot option.</param>
+        public void RebootComputeNode(RebootComputeNodeParameters parameters)
+        {
+            if (parameters == null)
+            {
+                throw new ArgumentNullException("parameters");
+            }
+
+            string computeNodeId = parameters.ComputeNode == null ? parameters.ComputeNodeId : parameters.ComputeNode.Id;
+            WriteVerbose(string.Format(Resources.RebootComputeNode, computeNodeId));
+
+            if (parameters.ComputeNode != null)
+            {
+                parameters.ComputeNode.omObject.Reboot(parameters.RebootOption, parameters.AdditionalBehaviors);
+            }
+            else
+            {
+                PoolOperations poolOperations = parameters.Context.BatchOMClient.PoolOperations;
+                poolOperations.Reboot(parameters.PoolId, parameters.ComputeNodeId, parameters.RebootOption, parameters.AdditionalBehaviors);
+            }
+        }
+
+
+        /// <summary>
+        /// Reinstalls the operating system on the specified compute node.
+        /// </summary>
+        /// <param name="parameters">The parameters specifying the compute node to reimage and the reimage option.</param>
+        public void ReimageComputeNode(ReimageComputeNodeParameters parameters)
+        {
+            if (parameters == null)
+            {
+                throw new ArgumentNullException("parameters");
+            }
+
+            string computeNodeId = parameters.ComputeNode == null ? parameters.ComputeNodeId : parameters.ComputeNode.Id;
+            WriteVerbose(string.Format(Resources.ReimageComputeNode, computeNodeId));
+
+            if (parameters.ComputeNode != null)
+            {
+                parameters.ComputeNode.omObject.Reimage(parameters.ReimageOption, parameters.AdditionalBehaviors);
+            }
+            else
+            {
+                PoolOperations poolOperations = parameters.Context.BatchOMClient.PoolOperations;
+                poolOperations.Reimage(parameters.PoolId, parameters.ComputeNodeId, parameters.ReimageOption, parameters.AdditionalBehaviors);
+            }
+        }
     }
 }
