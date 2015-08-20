@@ -73,9 +73,9 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
         /// </summary>
         /// <param name="v">The object to transform</param>
         /// <returns>The converted server version capability model</returns>
-        private ServerVersionCapabilities CreateSupportedVersionsModel(Management.Sql.Models.ServerVersionCapability v)
+        private ServerVersionCapabilityModel CreateSupportedVersionsModel(Management.Sql.Models.ServerVersionCapability v)
         {
-            ServerVersionCapabilities version = new ServerVersionCapabilities();
+            ServerVersionCapabilityModel version = new ServerVersionCapabilityModel();
             version.ServerVersionName = v.Name;
             version.Status = v.Status;
             version.SupportedEditions = v.SupportedEditions.Select(e => { return CreateSupportedEditionModel(e); }).ToList();
@@ -87,9 +87,9 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
         /// </summary>
         /// <param name="e">The object to transform</param>
         /// <returns>The converted database edition capability model</returns>
-        private EditionCapabilities CreateSupportedEditionModel(Management.Sql.Models.EditionCapability e)
+        private EditionCapabilityModel CreateSupportedEditionModel(Management.Sql.Models.EditionCapability e)
         {
-            EditionCapabilities edition = new EditionCapabilities();
+            EditionCapabilityModel edition = new EditionCapabilityModel();
             edition.EditionName = e.Name;
             edition.Status = e.Status;
             edition.SupportedServiceLevelObjectives = e.SupportedServiceObjectives.Select(slo => { return CreateSupportedSLOModel(slo); }).ToList();
@@ -101,9 +101,9 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
         /// </summary>
         /// <param name="s">The object to transform</param>
         /// <returns>The converted edition Service Level Objective capability model</returns>
-        private ServiceObjectiveCapability CreateSupportedSLOModel(Management.Sql.Models.ServiceObjectiveCapability s)
+        private ServiceObjectiveCapabilityModel CreateSupportedSLOModel(Management.Sql.Models.ServiceObjectiveCapability s)
         {
-            ServiceObjectiveCapability slo = new ServiceObjectiveCapability();
+            ServiceObjectiveCapabilityModel slo = new ServiceObjectiveCapabilityModel();
 
             slo.Id = s.Id;
             slo.ServiceObjectiveName = s.Name;
@@ -118,9 +118,9 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
         /// </summary>
         /// <param name="e">The object to transform</param>
         /// <returns>The converted database max size capability model</returns>
-        private MaxSizeCapability CreateSupportedMaxSizeModel(Management.Sql.Models.MaxSizeCapability m)
+        private MaxSizeCapabilityModel CreateSupportedMaxSizeModel(Management.Sql.Models.MaxSizeCapability m)
         {
-            MaxSizeCapability maxSize = new MaxSizeCapability();
+            MaxSizeCapabilityModel maxSize = new MaxSizeCapabilityModel();
 
             maxSize.Limit = m.Limit;
             maxSize.Status = m.Status;
