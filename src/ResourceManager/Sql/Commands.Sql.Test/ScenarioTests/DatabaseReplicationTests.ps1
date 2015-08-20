@@ -39,7 +39,7 @@ function Test-CreateCopyInternal ($serverVersion, $location = "North Europe")
 	# Setup
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $serverVersion $location
-	$database = Create-DatabaseForTest $rg $server
+	$database = Create-DatabaseForTest $rg $server "Standard"
 
 	$copyRg = Create-ResourceGroupForTest $location
 	$copyServer = Create-ServerForTest $copyRg $serverVersion $location
@@ -108,27 +108,7 @@ function Test-CreateSecondaryDatabaseInternal ($serverVersion, $location = "Nort
 
 	try
 	{	
-		# Create Secondary (defaults to NonReadableSecondary)
-		$secondary = New-AzureSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
-		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName
-		Assert-NotNull $nonReadSecondary.LinkId
-		Assert-AreEqual $nonReadSecondary.ResourceGroupName $rg.ResourceGroupName
-		Assert-AreEqual $nonReadSecondary.ServerName $server.ServerName
-		Assert-AreEqual $nonReadSecondary.DatabaseName $database.DatabaseName
-		Assert-NotNull $nonReadSecondary.Role
-		Assert-AreEqual $nonReadSecondary.Location $location
-		Assert-AreEqual $nonReadSecondary.PartnerResourceGroupName $partRg.ResourceGroupName
-		Assert-AreEqual $nonReadSecondary.PartnerServerName $partServer.ServerName
-		Assert-NotNull $nonReadSecondary.PartnerRole
-		Assert-AreEqual $nonReadSecondary.PartnerLocation $location
-		Assert-NotNull $nonReadSecondary.AllowConnections
-		Assert-NotNull $nonReadSecondary.ReplicationState
-		Assert-NotNull $nonReadSecondary.PercentComplete
-		Get-AzureSqlDatabase -ResourceGroupName $partRg.ResourceGroupName -ServerName $partServer.ServerName -DatabaseName $database.DatabaseName | Remove-DatabaseForTest
-		Get-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName | Remove-DatabaseForTest
-
 		# Create Readable Secondary
-		$database = Create-DatabaseForTest $rg $server "Premium"
 		$readSecondary = New-AzureSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
 		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All
 		Assert-NotNull $readSecondary.LinkId
@@ -139,30 +119,11 @@ function Test-CreateSecondaryDatabaseInternal ($serverVersion, $location = "Nort
 		Assert-AreEqual $readSecondary.Location $location
 		Assert-AreEqual $readSecondary.PartnerResourceGroupName $partRg.ResourceGroupName
 		Assert-AreEqual $readSecondary.PartnerServerName $partServer.ServerName
-		Assert-AreEqual $readSecondary.PartnerRole "ReadableSecondary"
+		Assert-NotNull $readSecondary.PartnerRole
 		Assert-AreEqual $readSecondary.PartnerLocation $location
-		Assert-AreEqual $readSecondary.AllowConnections "All"
+		Assert-NotNull $readSecondary.AllowConnections
 		Assert-NotNull $readSecondary.ReplicationState
 		Assert-NotNull $readSecondary.PercentComplete
-		Get-AzureSqlDatabase -ResourceGroupName $readSecondary.PartnerResourceGroupName -ServerName $readSecondary.PartnerServerName -DatabaseName $readSecondary.DatabaseName `
-		 | Remove-DatabaseForTest
-
-		# Create NonReadable Secondary
-		$nonReadSecondary = New-AzureSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
-		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections No
-		Assert-NotNull $nonReadSecondary.LinkId
-		Assert-AreEqual $nonReadSecondary.ResourceGroupName $rg.ResourceGroupName
-		Assert-AreEqual $nonReadSecondary.ServerName $server.ServerName
-		Assert-AreEqual $nonReadSecondary.DatabaseName $database.DatabaseName
-		Assert-AreEqual $nonReadSecondary.Role "Primary"
-		Assert-AreEqual $nonReadSecondary.Location $location
-		Assert-AreEqual $nonReadSecondary.PartnerResourceGroupName $partRg.ResourceGroupName
-		Assert-AreEqual $nonReadSecondary.PartnerServerName $partServer.ServerName
-		Assert-AreEqual $nonReadSecondary.PartnerRole "NonReadableSecondary"
-		Assert-AreEqual $nonReadSecondary.PartnerLocation $location
-		Assert-AreEqual $nonReadSecondary.AllowConnections "No"
-		Assert-NotNull $nonReadSecondary.ReplicationState
-		Assert-NotNull $nonReadSecondary.PercentComplete
 	}
 	finally
 	{
@@ -207,7 +168,7 @@ function Test-GetReplicationLinkInternal ($serverVersion, $location = "North Eur
 	{	
 		# Get Secondary
 		New-AzureSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
-		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName
+		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All
 
 		$secondary = Get-AzureSqlDatabaseReplicationLink -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
 		 -DatabaseName $database.DatabaseName -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName
@@ -219,9 +180,9 @@ function Test-GetReplicationLinkInternal ($serverVersion, $location = "North Eur
 		Assert-AreEqual $secondary.Location $location
 		Assert-AreEqual $secondary.PartnerResourceGroupName $partRg.ResourceGroupName
 		Assert-AreEqual $secondary.PartnerServerName $partServer.ServerName
-		Assert-AreEqual $secondary.PartnerRole NonReadableSecondary
+		Assert-NotNull $secondary.PartnerRole
 		Assert-AreEqual $secondary.PartnerLocation $location
-		Assert-AreEqual $secondary.AllowConnections No
+		Assert-NotNull $secondary.AllowConnections
 		Assert-NotNull $secondary.ReplicationState
 		Assert-NotNull $secondary.PercentComplete
 	}
@@ -268,7 +229,7 @@ function Test-RemoveSecondaryDatabaseInternal ($serverVersion, $location = "Nort
 	{	
 		# remove Secondary
 		New-AzureSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
-		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName
+		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All
 
 		Remove-AzureSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
 		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName
@@ -285,18 +246,8 @@ function Test-RemoveSecondaryDatabaseInternal ($serverVersion, $location = "Nort
 	.SYNOPSIS
 	Creates test database
 #>
-function Create-DatabaseForTest  ($rg, $server, $edition = "Standard")
+function Create-DatabaseForTest  ($rg, $server, $edition = "Premium")
 {
 	$databaseName = Get-DatabaseName
-	$maxSizeBytes = 250GB
-	New-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition $edition -MaxSizeBytes $maxSizeBytes
-}
-
-<#
-	.SYNOPSIS
-	Removes a test database
-#>
-function Remove-DatabaseForTest  ($testDatabase)
-{
-	$testDatabase | Remove-AzureSqlDatabase
+	New-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition $edition
 }
