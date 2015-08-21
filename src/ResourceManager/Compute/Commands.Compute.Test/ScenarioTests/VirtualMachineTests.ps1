@@ -839,16 +839,17 @@ function Test-VirtualMachineDataDisk
         $dataDiskVhdUri3 = "https://$stoname.blob.core.windows.net/test/data3.vhd";
         $dataDiskName1 = 'testDataDisk1';
         $dataDiskName2 = 'testDataDisk2';
+        $dataDiskName3 = 'testDataDisk3';
 
         $p = Set-AzureVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
         $p = Add-AzureVMDataDisk -VM $p -Name $dataDiskName1 -Caching 'ReadOnly' -DiskSizeInGB 5 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
         $p = Add-AzureVMDataDisk -VM $p -Name $dataDiskName2 -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
-        $p = Remove-AzureVMDataDisk -VM $p -Name 'testDataDisk3';
+        $p = Add-AzureVMDataDisk -VM $p -Name $dataDiskName3 -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
+        $p = Remove-AzureVMDataDisk -VM $p -Name $dataDiskName3;
 
         $p = Set-AzureVMDataDisk -VM $p -Name $dataDiskName1 -DiskSizeInGB 10;
-        Assert-ThrowsContains { Set-AzureVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadWrite'; } "not currently assigned for this VM";
+        Assert-ThrowsContains { Set-AzureVMDataDisk -VM $p -Name $dataDiskName3 -Caching 'ReadWrite'; } "not currently assigned for this VM";
 
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
@@ -897,6 +898,7 @@ function Test-VirtualMachineDataDisk
 
         # Get VM
         $vm1 = Get-AzureVM -Name $vmname -ResourceGroupName $rgname;
+
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
@@ -906,7 +908,7 @@ function Test-VirtualMachineDataDisk
         Assert-AreEqual $vm1.StorageProfile.ImageReference.Sku $imgRef.Skus;
         Assert-AreEqual $vm1.StorageProfile.ImageReference.Version $imgRef.Version;
 
-        Assert-AreEqual $p.StorageProfile.DataDisks.Count 2;
+        Assert-AreEqual $vm1.StorageProfile.DataDisks.Count 2;
         Assert-AreEqual $vm1.StorageProfile.DataDisks[0].Name $dataDiskName1;
         Assert-AreEqual $vm1.StorageProfile.DataDisks[0].Caching 'ReadOnly';
         Assert-AreEqual $vm1.StorageProfile.DataDisks[0].DiskSizeGB 10;
@@ -927,6 +929,7 @@ function Test-VirtualMachineDataDisk
 
         $vm1 = Set-AzureVMDataDisk -VM $vm1 -Caching 'ReadWrite' -Lun 1;
         $vm1 = Set-AzureVMDataDisk -VM $vm1 -Name $dataDiskName2 -Caching 'ReadWrite';
+        $vm1 = Add-AzureVMDataDisk -VM $vm1 -Name $dataDiskName3 -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
 
         # Update
         Update-AzureVM -ResourceGroupName $rgname -VM $vm1;
@@ -940,20 +943,27 @@ function Test-VirtualMachineDataDisk
         Assert-AreEqual $vm2.StorageProfile.ImageReference.Sku $imgRef.Skus;
         Assert-AreEqual $vm2.StorageProfile.ImageReference.Version $imgRef.Version;
 
-        Assert-AreEqual $p.StorageProfile.DataDisks.Count 2;
-        Assert-AreEqual $vm1.StorageProfile.DataDisks[0].Name $dataDiskName1;
-        Assert-AreEqual $vm1.StorageProfile.DataDisks[0].Caching 'ReadWrite';
-        Assert-AreEqual $vm1.StorageProfile.DataDisks[0].DiskSizeGB 10;
-        Assert-AreEqual $vm1.StorageProfile.DataDisks[0].Lun 1;
-        Assert-AreEqual $vm1.StorageProfile.DataDisks[0].VirtualHardDisk.Uri $dataDiskVhdUri1;
-        Assert-AreEqual $vm1.StorageProfile.DataDisks[0].CreateOption 'Empty';
+        Assert-AreEqual $vm2.StorageProfile.DataDisks.Count 3;
+        Assert-AreEqual $vm2.StorageProfile.DataDisks[0].Name $dataDiskName1;
+        Assert-AreEqual $vm2.StorageProfile.DataDisks[0].Caching 'ReadWrite';
+        Assert-AreEqual $vm2.StorageProfile.DataDisks[0].DiskSizeGB 10;
+        Assert-AreEqual $vm2.StorageProfile.DataDisks[0].Lun 1;
+        Assert-AreEqual $vm2.StorageProfile.DataDisks[0].VirtualHardDisk.Uri $dataDiskVhdUri1;
+        Assert-AreEqual $vm2.StorageProfile.DataDisks[0].CreateOption 'Empty';
 
-        Assert-AreEqual $vm1.StorageProfile.DataDisks[1].Name $dataDiskName2;
-        Assert-AreEqual $vm1.StorageProfile.DataDisks[1].Caching 'ReadWrite';
-        Assert-AreEqual $vm1.StorageProfile.DataDisks[1].DiskSizeGB 11;
-        Assert-AreEqual $vm1.StorageProfile.DataDisks[1].Lun 2;
-        Assert-AreEqual $vm1.StorageProfile.DataDisks[1].VirtualHardDisk.Uri $dataDiskVhdUri2;
-        Assert-AreEqual $vm1.StorageProfile.DataDisks[1].CreateOption 'Empty';
+        Assert-AreEqual $vm2.StorageProfile.DataDisks[1].Name $dataDiskName2;
+        Assert-AreEqual $vm2.StorageProfile.DataDisks[1].Caching 'ReadWrite';
+        Assert-AreEqual $vm2.StorageProfile.DataDisks[1].DiskSizeGB 11;
+        Assert-AreEqual $vm2.StorageProfile.DataDisks[1].Lun 2;
+        Assert-AreEqual $vm2.StorageProfile.DataDisks[1].VirtualHardDisk.Uri $dataDiskVhdUri2;
+        Assert-AreEqual $vm2.StorageProfile.DataDisks[1].CreateOption 'Empty';
+
+        Assert-AreEqual $vm2.StorageProfile.DataDisks[2].Name $dataDiskName3;
+        Assert-AreEqual $vm2.StorageProfile.DataDisks[2].Caching 'ReadOnly';
+        Assert-AreEqual $vm2.StorageProfile.DataDisks[2].DiskSizeGB 12;
+        Assert-AreEqual $vm2.StorageProfile.DataDisks[2].Lun 3;
+        Assert-AreEqual $vm2.StorageProfile.DataDisks[2].VirtualHardDisk.Uri $dataDiskVhdUri3;
+        Assert-AreEqual $vm2.StorageProfile.DataDisks[2].CreateOption 'Empty';
 
         Assert-AreEqual $vm2.OSProfile.AdminUsername $user;
         Assert-AreEqual $vm2.OSProfile.ComputerName $computerName;
