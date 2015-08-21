@@ -26,9 +26,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
         /// <param name="vault"></param>
         /// <param name="storage"></param>
         /// <returns></returns>
-        public static CmdletModel.AzurePSBackupVault GetCmdletVault(ClientModel.AzureBackupVault vault, string storageType)
+        public static CmdletModel.AzureRMBackupVault GetCmdletVault(ClientModel.AzureBackupVault vault, string storageType)
         {
-            var response = new CmdletModel.AzurePSBackupVault
+            var response = new CmdletModel.AzureRMBackupVault
             {
                 ResourceId = vault.Id,
                 Name = vault.Name,

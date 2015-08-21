@@ -12,7 +12,7 @@
 ModuleToProcess = '.\Microsoft.WindowsAzure.Commands.ServiceManagement.Preview.dll'
 
 # Version number of this module.
-ModuleVersion = '0.9.6'
+ModuleVersion = '0.9.7'
 
 # ID used to uniquely identify this module
 GUID = '1C72E555-E83F-45E4-AED2-AF3278828DCD'

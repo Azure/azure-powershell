@@ -13,11 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
@@ -29,6 +24,27 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
         public void AzureBackupMarsContainerScenarioTests()
         {
             this.RunPowerShellTest("Test-AzureBackupMarsContainerScenario");
-        }   
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void AzureBackupRegisterContainerScenarioTests()
+        {
+            this.RunPowerShellTest("Test-RegisterAzureBackupContainer");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void AzureBackupUnregisterContainerScenarioTests()
+        {
+            this.RunPowerShellTest("Test-UnregisterAzureBackupContainer");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void AzureBackupContainerScenarioTests()
+        {
+            this.RunPowerShellTest("Test-AzureBackupContainerScenario");
+        }
     }
 }
