@@ -914,7 +914,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             Assert.Equal(profile.Subscriptions.Values.Count((s) => s.Id == rdfeSubscription), 1);
             Assert.Equal(profile.Accounts.Values.Count((s) => s.Id == credential.UserName), 1);
             Assert.Contains(rdfeSubscription.ToString(), profile.Accounts.First().Value.GetProperty(AzureAccount.Property.Subscriptions));
-            Assert.Contains(csmSubscription.ToString(), profile.Accounts.First().Value.GetProperty(AzureAccount.Property.Subscriptions));
             Assert.Equal(profile.DefaultContext.Account.Id, credential.UserName);
             Assert.Equal(profile.DefaultContext.Subscription.Id, rdfeSubscription);
         }
@@ -943,7 +942,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
                 {
                     cmdlet.Properties[NewAzureProfileCommand.SPNKey] = credential.UserName;
                     cmdlet.Properties[NewAzureProfileCommand.PasswordKey] = password;
-                    cmdlet.Properties[NewAzureProfileCommand.TenantKey] = Guid.NewGuid().ToString();
                 }, (profile) => ValidateCredential(credential, profile, AzureAccount.AccountType.ServicePrincipal));
         }
 
@@ -1062,6 +1060,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             {
                 command.Properties = new Hashtable();
                 command.Properties.Add(NewAzureProfileCommand.SubscriptionIdKey, subscription.ToString());
+                command.Properties[NewAzureProfileCommand.TenantKey] = subscription.ToString();
                 prepare(command);
             }, NewAzureProfileCommand.PropertyBagParameterSet, subscription, validate);
         }
