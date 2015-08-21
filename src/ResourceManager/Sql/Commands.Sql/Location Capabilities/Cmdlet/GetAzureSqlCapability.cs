@@ -21,12 +21,12 @@ using System.Linq;
 namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureSqlLocationCapability cmdlet
+    /// Defines the Get-AzureSqlCapability cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureSqlLocationCapability", 
+    [Cmdlet(VerbsCommon.Get, "AzureSqlCapability", 
         ConfirmImpact = ConfirmImpact.None,
         DefaultParameterSetName = _filtered)]
-    public class GetAzureSqlLocationCapability : AzurePSCmdlet
+    public class GetAzureSqlCapability : AzurePSCmdlet
     {
         /// <summary>
         /// Parameter set name for when the cmdlet is invoked without specifying -Default
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            AzureSqlLocationCapabilitiesAdapter adapter = new AzureSqlLocationCapabilitiesAdapter(Profile, Profile.Context.Subscription);
+            AzureSqlCapabilitiesAdapter adapter = new AzureSqlCapabilitiesAdapter(Profile, Profile.Context.Subscription);
             LocationCapabilityModel model = adapter.GetLocationCapabilities(LocationName);
 
             switch(ParameterSetName)

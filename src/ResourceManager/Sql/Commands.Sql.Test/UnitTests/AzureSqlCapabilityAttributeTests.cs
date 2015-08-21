@@ -20,13 +20,13 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
 {
-    public class AzureSqlLocationCapabilityAttributeTests
+    public class AzureSqlCapabilityAttributeTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NewAzureSqlDatabaseAttributes()
+        public void GetAzureSqlCapabilityAttributes()
         {
-            Type type = typeof(GetAzureSqlLocationCapability);
+            Type type = typeof(GetAzureSqlCapability);
             UnitTestHelper.CheckCmdletModifiesData(type, supportsShouldProcess: false);
             UnitTestHelper.CheckConfirmImpact(type, System.Management.Automation.ConfirmImpact.None);
 

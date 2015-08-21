@@ -14,25 +14,25 @@
 
 <# 
     .SYNOPSIS
-    Tests the Get-AzureSqlLocationCapabilities cmdlet
+    Tests the Get-AzureSqlCapability cmdlet
 #>
-function Test-LocationCapabilities
+function Test-Capabilities
 {
 	$location = "North Europe"
-	$all = Get-AzureSqlLocationCapability $location
-	Validate-LocationCapabilities $all
+	$all = Get-AzureSqlCapability $location
+	Validate-Capabilities $all
 	
-	$default = Get-AzureSqlLocationCapability $location -Defaults
-	Validate-LocationCapabilities $default
+	$default = Get-AzureSqlCapability $location -Defaults
+	Validate-Capabilities $default
 	
-	$version = Get-AzureSqlLocationCapability $location -ServerVersionName "12.0"
-	Validate-LocationCapabilities $default
+	$version = Get-AzureSqlCapability $location -ServerVersionName "12.0"
+	Validate-Capabilities $default
 	
-	$edition = Get-AzureSqlLocationCapability $location -EditionName "Premium"
-	Validate-LocationCapabilities $default
+	$edition = Get-AzureSqlCapability $location -EditionName "Premium"
+	Validate-Capabilities $default
 	
-	$so = Get-AzureSqlLocationCapability $location -ServiceObjectiveName "S3"
-	Validate-LocationCapabilities $default
+	$so = Get-AzureSqlCapability $location -ServiceObjectiveName "S3"
+	Validate-Capabilities $default
 
 }
 
@@ -40,7 +40,7 @@ function Test-LocationCapabilities
     .SYNOPSIS
     Validates that a LocationCapabilities object is valid and has all properties filled out
 #>
-function Validate-LocationCapabilities ($capabilities)
+function Validate-Capabilities ($capabilities)
 {
 	Assert-NotNull $capabilities
 	Assert-AreEqual $capabilities.Status "Available"

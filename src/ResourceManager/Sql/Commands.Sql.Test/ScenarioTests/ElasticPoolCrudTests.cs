@@ -20,8 +20,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class ElasticPoolCrudTests : SqlTestsBase
     {
+        // Currently the test runs too long to be marked as a check-in test.
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestElasticPoolCreate()
         {
             RunPowerShellTest("Test-CreateElasticPool");

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
     /// <summary>
     /// Communicator class for communicating between APIs and powershell cmdlet
     /// </summary>
-    public class AzureSqlLocationCapabilitiesCommunicator
+    public class AzureSqlCapabilitiesCommunicator
     {
         /// <summary>
         /// The SQL Management Client to be used by the communicator
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
         /// </summary>
         /// <param name="profile"></param>
         /// <param name="subscription"></param>
-        public AzureSqlLocationCapabilitiesCommunicator(AzureProfile profile, AzureSubscription subscription)
+        public AzureSqlCapabilitiesCommunicator(AzureProfile profile, AzureSubscription subscription)
         {
             Profile = profile;
             if (subscription != Subscription)
