@@ -20,12 +20,12 @@ using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
 {
-    public class AzureSqlLocationCapabilitiesAdapter
+    public class AzureSqlCapabilitiesAdapter
     {
         /// <summary>
         /// The communicator for interacting with the service APIs
         /// </summary>
-        private AzureSqlLocationCapabilitiesCommunicator _communicator;
+        private AzureSqlCapabilitiesCommunicator _communicator;
 
         /// <summary>
         /// Gets or sets the Azure profile
@@ -37,10 +37,10 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlLocationCapabilitiesAdapter(AzureProfile profile, AzureSubscription subscription)
+        public AzureSqlCapabilitiesAdapter(AzureProfile profile, AzureSubscription subscription)
         {
             Profile = profile;
-            _communicator = new AzureSqlLocationCapabilitiesCommunicator(Profile, subscription);
+            _communicator = new AzureSqlCapabilitiesCommunicator(Profile, subscription);
         }
 
         /// <summary>
