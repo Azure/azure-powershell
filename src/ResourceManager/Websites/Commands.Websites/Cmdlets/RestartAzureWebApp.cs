@@ -41,11 +41,6 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets
     [Cmdlet(VerbsLifecycle.Restart, "AzureWebApp")]
     public class RestartAzureWebAppCmdlet : WebAppBaseCmdlet
     {
-
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = "The name of the web app slot.")]
-        [ValidateNotNullOrEmptyAttribute]
-        public string SlotName { get; set; }
-
         public override void ExecuteCmdlet()
         {
             WriteObject(WebsitesClient.RestartWebsite(ResourceGroupName, Name, SlotName));

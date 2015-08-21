@@ -41,10 +41,6 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets
     public class NewAzureWebAppCmdlet : WebAppBaseCmdlet
     {
 
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = "The name of the web app slot.")]
-        [ValidateNotNullOrEmptyAttribute]
-        public string SlotName { get; set; }
-
         [Parameter(Position = 3, Mandatory = true, HelpMessage = "The Location of the web app eg: West US.")]
         public string Location { get; set; }
 

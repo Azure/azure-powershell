@@ -40,12 +40,7 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets
     /// </summary>
     [Cmdlet(VerbsLifecycle.Start, "AzureWebApp")]
     public class StartAzureWebAppCmdlet : WebAppBaseCmdlet
-    {
-
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = "The name of the web app slot.")]
-        [ValidateNotNullOrEmptyAttribute]
-        public string SlotName { get; set; }
-     
+    {    
         public override void ExecuteCmdlet()
         {
             WriteObject(WebsitesClient.StartWebsite(ResourceGroupName, Name, SlotName));

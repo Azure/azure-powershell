@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets
     /// this commandlet will let you get a new Azure Websites using ARM APIs
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureWebApp")]
-    public class GetAzureWebAppCmdlet : WebAppBaseSlotCmdlet
+    public class GetAzureWebAppCmdlet : WebAppBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {

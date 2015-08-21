@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
     /// <summary>
     /// this commandlet will let you Get an Azure App Service Plan using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureAppServicePlan"), OutputType(typeof(WebHostingPlanGetResponse), typeof(WebHostingPlanListResponse))]
+    [Cmdlet(VerbsCommon.Get, "AzureAppServicePlan"), OutputType(typeof(ServerFarmWithRichSku), typeof(ServerFarmCollection))]
     public class GetAppServicePlanCmdlet : WebHostingPlanBaseNotMandatoryCmdlet
     {
         public override void ExecuteCmdlet()
@@ -50,7 +50,6 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
             {
                 GetByResourceGroup();
             }
-
         }
 
         private void GetByWebHostingPlan()

@@ -23,6 +23,7 @@ using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Commands;
 using Microsoft.Azure.Management.WebSites;
 using System.Net;
+using System.Xml;
 using Hyak.Common;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Common.Authentication;
@@ -36,7 +37,7 @@ namespace Microsoft.Azure.Commands.WebApp.Utilities
 
         public WebsitesClient(AzureContext context)
         {
-            this.WrappedWebsitesClient = AzureSession.ClientFactory.CreateClient<WebSiteManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            this.WrappedWebsitesClient = AzureSession.ClientFactory.CreateArmClient<WebSiteManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
 
         }
         public WebSiteManagementClient WrappedWebsitesClient
@@ -45,173 +46,201 @@ namespace Microsoft.Azure.Commands.WebApp.Utilities
             private set;
         }
 
-        public WebSite CreateWebsite(string resourceGroupName, string webSiteName, string slotName, string location, string webHostingPlan)
+        public Site CreateWebsite(string resourceGroupName, string webSiteName, string slotName, string location, string serverFarmId)
         {
-            string webSiteSlotName = webSiteName;
-            if (string.IsNullOrEmpty(slotName) == false)
+            Site createdWebSite = null;
+            string qualifiedSiteName;
+            if (ShouldSlotInterfaceBeUsed(webSiteName, slotName, out qualifiedSiteName))
             {
-                webSiteSlotName = string.Concat(webSiteName, "/", slotName);
-
-            }
-           
-            var createdWebSite = WrappedWebsitesClient.WebSites.CreateOrUpdate(
-                        resourceGroupName, webSiteName, slotName,
-                        new WebSiteCreateOrUpdateParameters
+                createdWebSite = WrappedWebsitesClient.Sites.CreateOrUpdateSiteSlot(
+                        resourceGroupName, webSiteName, slot: slotName, siteEnvelope:
+                        new Site
                         {
-                            WebSite = new WebSiteBase
-                            {
-                                Name = webSiteSlotName,
-                                Location = location,
-                                Properties = new WebSiteBaseProperties(webHostingPlan)
-                            }
+                            SiteName = qualifiedSiteName,
+                            Location = location,
+                            ServerFarmId = serverFarmId
                         });
-            createdWebSite.WebSite.Properties.SiteConfig = new WebSiteConfiguration()
+            }
+            else
             {
-                AppSettings = new Dictionary<string, string>(),
-                ConnectionStrings = new List<ConnectionStringInfo>(),
-                Metadata = new Dictionary<string, string>()
-            };
-            createdWebSite.WebSite.Properties.SiteConfig = GetWebSiteConfiguration(resourceGroupName, webSiteName, slotName);
-            return createdWebSite.WebSite;
+                createdWebSite = WrappedWebsitesClient.Sites.CreateOrUpdateSite(
+                        resourceGroupName, webSiteName, siteEnvelope:
+                        new Site
+                        {
+                            SiteName = qualifiedSiteName,
+                            Location = location,
+                            ServerFarmId = serverFarmId
+                        });
+            }
+
+            GetWebSiteConfiguration(resourceGroupName, webSiteName, slotName, createdWebSite);
+            return createdWebSite;
         }
 
-        public System.Net.HttpStatusCode StartWebsite(string resourceGroupName, string webSiteName, string slotName)
+        public HttpStatusCode StartWebsite(string resourceGroupName, string webSiteName, string slotName)
         {
-                 var startedWebsite =  WrappedWebsitesClient.WebSites.Start(resourceGroupName, webSiteName, slotName);
-                 return startedWebsite.StatusCode;
+            string qualifiedSiteName;
+            if (ShouldSlotInterfaceBeUsed(webSiteName, slotName, out qualifiedSiteName))
+            {
+                WrappedWebsitesClient.Sites.StartSiteSlot(resourceGroupName, webSiteName, slotName);
+            }
+            else
+            {
+                WrappedWebsitesClient.Sites.StartSite(resourceGroupName, webSiteName);
+            }
+
+            return HttpStatusCode.OK;
         }
-        public System.Net.HttpStatusCode StopWebsite(string resourceGroupName, string webSiteName, string slotName)
+        public HttpStatusCode StopWebsite(string resourceGroupName, string webSiteName, string slotName)
         {
-            var stoppedWebsite = WrappedWebsitesClient.WebSites.Stop(resourceGroupName, webSiteName, slotName);
-            return stoppedWebsite.StatusCode;
+            string qualifiedSiteName;
+            if (ShouldSlotInterfaceBeUsed(webSiteName, slotName, out qualifiedSiteName))
+            {
+                WrappedWebsitesClient.Sites.StopSiteSlot(resourceGroupName, webSiteName, slotName);
+            }
+            else
+            {
+                WrappedWebsitesClient.Sites.StopSite(resourceGroupName, webSiteName);
+            }
+            return HttpStatusCode.OK;
         }
-        public System.Net.HttpStatusCode RestartWebsite(string resourceGroupName, string webSiteName, string slotName)
+        public HttpStatusCode RestartWebsite(string resourceGroupName, string webSiteName, string slotName)
         {
-            var restartedWebsite = WrappedWebsitesClient.WebSites.Restart(resourceGroupName, webSiteName, slotName);
-            return restartedWebsite.StatusCode;
+            string qualifiedSiteName;
+            if (ShouldSlotInterfaceBeUsed(webSiteName, slotName, out qualifiedSiteName))
+            {
+                WrappedWebsitesClient.Sites.RestartSiteSlot(resourceGroupName, webSiteName, slotName);
+            }
+            else
+            {
+                WrappedWebsitesClient.Sites.RestartSite(resourceGroupName, webSiteName);
+            }
+
+            return HttpStatusCode.OK;
         }
 
-        public System.Net.HttpStatusCode RemoveWebsite(string resourceGroupName, string webSiteName, string slotName, bool deleteEmptyServerFarmBydefault, bool deleteMetricsBydefault, bool deleteSlotsBydefault)
+        public HttpStatusCode RemoveWebsite(string resourceGroupName, string webSiteName, string slotName, bool deleteEmptyServerFarmBydefault, bool deleteMetricsBydefault, bool deleteSlotsBydefault)
         {
-            WebSiteDeleteParameters webSiteDelParams = new WebSiteDeleteParameters(deleteEmptyServerFarmBydefault, deleteMetricsBydefault, deleteSlotsBydefault);
+            string qualifiedSiteName;
+            if (ShouldSlotInterfaceBeUsed(webSiteName, slotName, out qualifiedSiteName))
+            {
+                WrappedWebsitesClient.Sites.DeleteSiteSlot(resourceGroupName, webSiteName, slotName, deleteMetrics: deleteMetricsBydefault.ToString(), deleteEmptyServerFarm: deleteEmptyServerFarmBydefault.ToString(), deleteAllSlots: deleteSlotsBydefault.ToString());
+            }
+            else
+            {
+                WrappedWebsitesClient.Sites.DeleteSite(resourceGroupName, webSiteName, deleteMetrics: deleteMetricsBydefault.ToString(), deleteEmptyServerFarm: deleteEmptyServerFarmBydefault.ToString(), deleteAllSlots: deleteSlotsBydefault.ToString());
+            }
+
+            return HttpStatusCode.OK;
+        }
+
+        public Site GetWebsite(string resourceGroupName, string webSiteName, string slotName)
+        {
+            Site site = null; 
+            string qualifiedSiteName;
             
-            var removedWebsite = WrappedWebsitesClient.WebSites.Delete(resourceGroupName, webSiteName, slotName, webSiteDelParams);
-            return removedWebsite.StatusCode;
+            site = ShouldSlotInterfaceBeUsed(webSiteName, slotName, out qualifiedSiteName) ? WrappedWebsitesClient.Sites.GetSiteSlot(resourceGroupName, webSiteName, slotName) : WrappedWebsitesClient.Sites.GetSite(resourceGroupName, webSiteName);
+
+            GetWebSiteConfiguration(resourceGroupName, webSiteName, slotName, site);
+
+            return site;
         }
 
-        public WebSite GetWebsite(string resourceGroupName, string webSiteName, string slotName)
+        public XmlElement GetWebsitePublishingProfile(string resourceGroupName, string webSiteName, string slotName)
         {
-            WebSiteGetParameters webSiteGetParams = new WebSiteGetParameters();
-            var getWebsite = WrappedWebsitesClient.WebSites.Get(resourceGroupName, webSiteName, slotName, webSiteGetParams);
-            getWebsite.WebSite.Properties.SiteConfig = new WebSiteConfiguration()
-            {
-                AppSettings = new Dictionary<string, string>(),
-                ConnectionStrings = new List<ConnectionStringInfo>(),
-                Metadata = new Dictionary<string, string>()
-            };
-            getWebsite.WebSite.Properties.SiteConfig = GetWebSiteConfiguration(resourceGroupName, webSiteName, slotName);                   
-            return getWebsite.WebSite;
+            string qualifiedSiteName;
+            var publishingXml = (ShouldSlotInterfaceBeUsed(webSiteName, slotName, out qualifiedSiteName) ? WrappedWebsitesClient.Sites.ListSiteSlotPublishingProfileXml(resourceGroupName, webSiteName, null, slotName) : WrappedWebsitesClient.Sites.ListSitePublishingProfileXml(resourceGroupName, webSiteName, null)) as XmlElement;
+
+            return publishingXml;
         }
 
-        public WebSiteGetPublishProfileResponse GetWebsitePublishingProfile(string resourceGroupName, string webSiteName, string slotName)
-        {
-            var pubCreds = WrappedWebsitesClient.WebSites.GetPublishProfile(resourceGroupName, webSiteName, slotName);
-            return pubCreds;
-        }
-
-        public WebSiteGetHistoricalUsageMetricsResponse GetWebAppUsageMetrics(string resourceGroupName, string webSiteName, string slotName,  IList<string> metricNames,
+        public MetricResponseCollection GetWebAppUsageMetrics(string resourceGroupName, string webSiteName, string slotName, IList<string> metricNames,
     DateTime? startTime, DateTime? endTime, string timeGrain, bool instanceDetails)
         {
-            WebSiteGetHistoricalUsageMetricsParameters parameters = new WebSiteGetHistoricalUsageMetricsParameters();
-            parameters.MetricNames = metricNames;
-            parameters.IncludeInstanceBreakdown = instanceDetails;
-            parameters.EndTime = endTime;
-            parameters.StartTime = startTime;
-            parameters.TimeGrain = timeGrain;
-            var usageMetrics = WrappedWebsitesClient.WebSites.GetHistoricalUsageMetrics(resourceGroupName, webSiteName, slotName,parameters);
+            string qualifiedSiteName;
+            var usageMetrics = ShouldSlotInterfaceBeUsed(webSiteName, slotName, out qualifiedSiteName) ?
+                WrappedWebsitesClient.Sites.GetSiteSlotMetrics(resourceGroupName, webSiteName, slotName, string.Join(",", metricNames), startTime.ToString(), endTime.ToString(), timeGrain, instanceDetails): 
+                WrappedWebsitesClient.Sites.GetSiteMetrics(resourceGroupName, webSiteName, string.Join(",", metricNames), startTime.ToString(), endTime.ToString(), timeGrain, instanceDetails);
             return usageMetrics;
         }
 
-        public WebHostingPlanCreateOrUpdateResponse CreateAppServicePlan(string resourceGroupName, string whpName, string location, string adminSiteName, int numberOfWorkers, SkuOptions sku, WorkerSizeOptions workerSize)
+        public ServerFarmWithRichSku CreateAppServicePlan(string resourceGroupName, string appServicePlanName, string location, string adminSiteName, string sku, string tier, int? capacity)
         {
-            WebHostingPlanProperties webHostingPlanProperties = new WebHostingPlanProperties();
-            webHostingPlanProperties.Sku = sku;
-            webHostingPlanProperties.AdminSiteName = adminSiteName;
-            webHostingPlanProperties.NumberOfWorkers = numberOfWorkers;
-            webHostingPlanProperties.WorkerSize = workerSize;
-            WebHostingPlan webHostingPlan = new WebHostingPlan();        
-            WebHostingPlanCreateOrUpdateParameters webHostingPlanCreateOrUpdateParameters = new WebHostingPlanCreateOrUpdateParameters(webHostingPlan);
-            webHostingPlanCreateOrUpdateParameters.WebHostingPlan.Location = location;
-            webHostingPlanCreateOrUpdateParameters.WebHostingPlan.Name = whpName;
-            webHostingPlanCreateOrUpdateParameters.WebHostingPlan.Properties = webHostingPlanProperties;
+            var serverFarm = new ServerFarmWithRichSku
+            {
+                Location = location,
+                ServerFarmWithRichSkuName = appServicePlanName,
+                Sku = new SkuDescription
+                {
+                    Name = sku, 
+                    Tier = tier,
+                    Capacity = capacity
+                },
+                AdminSiteName = adminSiteName
+            };
 
-            var createdWHP = WrappedWebsitesClient.WebHostingPlans.CreateOrUpdate(resourceGroupName, webHostingPlanCreateOrUpdateParameters);
-            //proper return type need to be discussed
-            return createdWHP;
+            return WrappedWebsitesClient.ServerFarms.CreateOrUpdateServerFarm(resourceGroupName, appServicePlanName, serverFarm);
         }
 
-        public AzureOperationResponse RemoveAppServicePlan(string resourceGroupName, string whpName)
+        public HttpStatusCode RemoveAppServicePlan(string resourceGroupName, string appServicePlanName)
         {
-            var response = WrappedWebsitesClient.WebHostingPlans.Delete(resourceGroupName, whpName);
-            return response;
+            WrappedWebsitesClient.ServerFarms.DeleteServerFarm(resourceGroupName, appServicePlanName);
+            return HttpStatusCode.OK;
         }
 
-        public WebHostingPlanGetResponse GetAppServicePlan(string resourceGroupName, string whpName)
+        public ServerFarmWithRichSku GetAppServicePlan(string resourceGroupName, string appServicePlanName)
         {
-            var response = WrappedWebsitesClient.WebHostingPlans.Get(resourceGroupName, whpName);
-            return response;
+            return WrappedWebsitesClient.ServerFarms.GetServerFarm(resourceGroupName, appServicePlanName);
         }
 
-        public WebHostingPlanListResponse ListAppServicePlan(string resourceGroupName)
-        {       
-            var response = WrappedWebsitesClient.WebHostingPlans.List(resourceGroupName);
-            return response;
+        public ServerFarmCollection ListAppServicePlan(string resourceGroupName)
+        {
+            return WrappedWebsitesClient.ServerFarms.GetServerFarms(resourceGroupName);
         }
 
-        public WebHostingPlanGetHistoricalUsageMetricsResponse GetAppServicePlanHistoricalUsageMetrics(string resourceGroupName, string appServicePlanName, IList<string> metricNames,
+        public MetricResponseCollection GetAppServicePlanHistoricalUsageMetrics(string resourceGroupName, string appServicePlanName, IList<string> metricNames,
     DateTime? startTime, DateTime? endTime, string timeGrain, bool instanceDetails)
         {
-            WebHostingPlanGetHistoricalUsageMetricsParameters parameters = new WebHostingPlanGetHistoricalUsageMetricsParameters();
-            parameters.MetricNames = metricNames;
-            parameters.IncludeInstanceBreakdown = instanceDetails;
-            parameters.EndTime = endTime;
-            parameters.StartTime = startTime;
-            parameters.TimeGrain = timeGrain;
-            var response = WrappedWebsitesClient.WebHostingPlans.GetHistoricalUsageMetrics(resourceGroupName, appServicePlanName, parameters);
+            var response = WrappedWebsitesClient.ServerFarms.GetServerFarmMetrics(resourceGroupName, appServicePlanName, string.Join(",", metricNames), startTime.ToString(), endTime.ToString(), timeGrain, instanceDetails);
             return response;
         }
-        
-        private WebSiteConfiguration GetWebSiteConfiguration(string resourceGroupName, string webSiteName, string slotName)
+
+        private void GetWebSiteConfiguration(string resourceGroupName, string webSiteName, string slotName, Site site)
         {
-            WebSiteConfiguration siteConfinguration = new WebSiteConfiguration();
             try
             {
-                var getAppSettings = WrappedWebsitesClient.WebSites.GetAppSettings(resourceGroupName, webSiteName, slotName);
-                //Add websiteApp Settings to the Website object as the Create call will not return them.
-                foreach (var appSettingVal in getAppSettings.Resource.Properties.ToList())
+                if (site.SiteConfig == null)
                 {
-                    if (!siteConfinguration.AppSettings.Keys.Contains(appSettingVal.Name))
-                        siteConfinguration.AppSettings.Add(appSettingVal.Name, appSettingVal.Value);
+                    site.SiteConfig = new SiteConfig();
                 }
-                var getConnStrings = WrappedWebsitesClient.WebSites.GetConnectionStrings(resourceGroupName, webSiteName, slotName);
-                //Add websiteApp Settings to the Website object as the Create call will not return them.
-                foreach (var connSettingVal in getConnStrings.Resource.Properties.ToList())
-                {
-                    siteConfinguration.ConnectionStrings.Add(connSettingVal);
-                }
-                var getMetaDataSettings = WrappedWebsitesClient.WebSites.GetAppSettings(resourceGroupName, webSiteName, slotName);
-                //Add websiteApp Settings to the Website object as the Create call will not return them.
-                foreach (var metadataVal in getMetaDataSettings.Resource.Properties.ToList())
-                {
-                    if (!siteConfinguration.Metadata.Keys.Contains(metadataVal.Name))
-                        siteConfinguration.Metadata.Add(metadataVal.Name, metadataVal.Value);
-                }                
+
+                string qualifiedSiteName;
+                var appSettings = ShouldSlotInterfaceBeUsed(webSiteName, slotName, out qualifiedSiteName) ? WrappedWebsitesClient.Sites.ListSiteSlotAppSettings(resourceGroupName, webSiteName, slotName): WrappedWebsitesClient.Sites.ListSiteAppSettings(resourceGroupName, webSiteName);
+                
+                site.SiteConfig.AppSettings = appSettings.Select(s => new NameValuePair{ Name = s.Key, Value = s.Value}).ToList();
+
+                var connectionStrings = ShouldSlotInterfaceBeUsed(webSiteName, slotName, out qualifiedSiteName) ? WrappedWebsitesClient.Sites.ListSiteSlotConnectionStrings(resourceGroupName, webSiteName, slotName) : WrappedWebsitesClient.Sites.ListSiteConnectionStrings(resourceGroupName, webSiteName);
+
+                site.SiteConfig.ConnectionStrings = connectionStrings.Select(s => new ConnStringInfo() { Name = s.Key, ConnectionString = s.Value.Value, Type = s.Value.Type }).ToList();
             }
             catch
             {
                 //ignore if this call fails as it will for reader RBAC
             }
-            return siteConfinguration;
+        }
+
+        private bool ShouldSlotInterfaceBeUsed(string webSiteName, string slotName, out string qualifiedSiteName)
+        {
+            bool result = false;
+            qualifiedSiteName = webSiteName;
+            var siteNamePattern = "{0}({1})";
+            if (!string.IsNullOrEmpty(slotName) && !string.Equals(slotName, "Production", StringComparison.OrdinalIgnoreCase))
+            {
+                result = true;
+                qualifiedSiteName = string.Format(siteNamePattern, webSiteName, slotName);
+            }
+
+            return result;
         }
     }
 }

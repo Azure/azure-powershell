@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
     /// <summary>
     /// this commandlet will let you create a new Azure App service Plan using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureAppServicePlan"), OutputType(typeof(WebHostingPlanCreateOrUpdateResponse))]
+    [Cmdlet(VerbsCommon.New, "AzureAppServicePlan"), OutputType(typeof(ServerFarmWithRichSku))]
     public class NewAzureAppServicePlanCmdlet : AppServicePlanBaseCmdlet
     {
 
@@ -44,79 +44,17 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
         [ValidateNotNullOrEmptyAttribute]
         public string Location { get; set; }
         
-        [Parameter(Position = 3, Mandatory = false, HelpMessage = "The Sku of the Webhosting plan eg: free, shared, basic, standard.")]
-        [ValidateSet("Free", "Shared", "Basic", "Standard", "Premium", IgnoreCase = true)]
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = "The Sku of the Webhosting plan.")]
         [ValidateNotNullOrEmptyAttribute]
-        public string Sku { get; set; }
+        public SkuDescription Sku { get; set; }
 
         [Parameter(Position = 4, Mandatory = false, HelpMessage = "Number of Workers to be allocated.")]
         [ValidateNotNullOrEmptyAttribute]
         public int NumberofWorkers { get; set; }
 
-        [Parameter(Position = 5, Mandatory = false, HelpMessage = "The size of the workers: eg Small, Medium, Large")]
-        [ValidateNotNullOrEmptyAttribute]
-        [ValidateSet("Small", "Medium", "Large", IgnoreCase = true)]
-        public string WorkerSize { get; set; }
-
         public override void ExecuteCmdlet()
         {
-            //for now not asking admin site name need to implement in future
-            string adminSiteName = null;
-
-            //if Sku is not specified assume default to be Standard
-            SkuOptions skuInput = SkuOptions.Standard;
-
-            //if workerSize is not specified assume default to be small
-            WorkerSizeOptions workerSizeInput = WorkerSizeOptions.Small;
-
-            //if NumberofWorkers is not specified assume default to be 1
-            if (NumberofWorkers == 0)
-                NumberofWorkers = 1;
-
-
-            if (WorkerSize != null)
-            {
-                switch (WorkerSize.ToUpper())
-                {
-                    case "SMALL":
-                        workerSizeInput = WorkerSizeOptions.Small;
-                        break;
-                    case "MEDIUM":
-                        workerSizeInput = WorkerSizeOptions.Medium;
-                        break;
-                    case "LARGE":
-                        workerSizeInput = WorkerSizeOptions.Large;
-                        break;
-                    default:
-                        workerSizeInput = WorkerSizeOptions.Large;
-                        break;
-                }
-            }
-
-            if (Sku != null)
-            {
-                switch (Sku.ToUpper())
-                {
-                    case "FREE":
-                        skuInput = SkuOptions.Free;
-                        break;
-                    case "SHARED":
-                        skuInput = SkuOptions.Shared;
-                        break;
-                    case "BASIC":
-                        skuInput = SkuOptions.Basic;
-                        break;
-                    case "PREMIUM":
-                        skuInput = SkuOptions.Premium;
-                        break;
-                    default:
-                        skuInput = SkuOptions.Standard;
-                        break;
-                }
-            }
-
-            WriteObject(WebsitesClient.CreateAppServicePlan(ResourceGroupName, Name, Location, adminSiteName, NumberofWorkers, skuInput, workerSizeInput));
-
+            WriteObject(WebsitesClient.CreateAppServicePlan(ResourceGroupName, Name, Location, null, Sku.Name, Sku.Tier, Sku.Capacity));
         }
 
     }
