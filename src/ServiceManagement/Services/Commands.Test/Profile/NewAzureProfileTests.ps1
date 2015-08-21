@@ -38,9 +38,9 @@ function Test-CreatesNewAzureProfileWithCertificate
     $actual = New-AzureProfile -SubscriptionId "058de55e-28e0-49e7-8cf2-6701d4a88ef5" -StorageAccount myStorage -Certificate $testCert
 
     # Assert
-    Assert-AreEqual "058de55e-28e0-49e7-8cf2-6701d4a88ef5" $actual.Context.Subscription.Id
-	Assert-AreEqual "AzureCloud" $actual.Context.Environment.Name
-	Assert-AreEqual "Certificate" $actual.Context.Account.Type
+    Assert-AreEqual "058de55e-28e0-49e7-8cf2-6701d4a88ef5" $actual.DefaultContext.Subscription.Id
+	Assert-AreEqual "AzureCloud" $actual.DefaultContext.Environment.Name
+	Assert-AreEqual "Certificate" $actual.DefaultContext.Account.Type
 }
 
 <#
@@ -53,10 +53,10 @@ function Test-CreatesNewAzureProfileWithUserCredentials
     $actual = New-AzureProfile -SubscriptionId "058de55e-28e0-49e7-8cf2-6701d4a88ef5" -StorageAccount myStorage -Credentials $testCreds -Tenant "testTenant"
 
     # Assert
-    Assert-AreEqual "058de55e-28e0-49e7-8cf2-6701d4a88ef5" $actual.Context.Subscription.Id
-	Assert-AreEqual "AzureCloud" $actual.Context.Environment.Name
-	Assert-AreEqual "test@mail.com" $actual.Context.Account.Id
-	Assert-AreEqual "User" $actual.Context.Account.Type
+    Assert-AreEqual "058de55e-28e0-49e7-8cf2-6701d4a88ef5" $actual.DefaultContext.Subscription.Id
+	Assert-AreEqual "AzureCloud" $actual.DefaultContext.Environment.Name
+	Assert-AreEqual "test@mail.com" $actual.DefaultContext.Account.Id
+	Assert-AreEqual "User" $actual.DefaultContext.Account.Type
 }
 
 <#
@@ -69,10 +69,10 @@ function Test-CreatesNewAzureProfileWithAccessToken
     $actual = New-AzureProfile -SubscriptionId "058de55e-28e0-49e7-8cf2-6701d4a88ef5" -StorageAccount myStorage -AccessToken "123456" -AccountId myAccount
 
     # Assert
-    Assert-AreEqual "058de55e-28e0-49e7-8cf2-6701d4a88ef5" $actual.Context.Subscription.Id
-	Assert-AreEqual "AzureCloud" $actual.Context.Environment.Name
-	Assert-AreEqual "myAccount" $actual.Context.Account.Id
-	Assert-AreEqual "AccessToken" $actual.Context.Account.Type
+    Assert-AreEqual "058de55e-28e0-49e7-8cf2-6701d4a88ef5" $actual.DefaultContext.Subscription.Id
+	Assert-AreEqual "AzureCloud" $actual.DefaultContext.Environment.Name
+	Assert-AreEqual "myAccount" $actual.DefaultContext.Account.Id
+	Assert-AreEqual "AccessToken" $actual.DefaultContext.Account.Type
 }
 
 <#
