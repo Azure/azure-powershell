@@ -79,6 +79,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Changing OS version of pool {0} to {1}..
+        /// </summary>
+        internal static string ChangeOSVersion {
+            get {
+                return ResourceManager.GetString("ChangeOSVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Disabling automatic scaling on pool {0}..
         /// </summary>
         internal static string DisableAutoScale {
@@ -696,6 +705,24 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string RBU_RemoveUser {
             get {
                 return ResourceManager.GetString("RBU_RemoveUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rebooting compute node {0}..
+        /// </summary>
+        internal static string RebootComputeNode {
+            get {
+                return ResourceManager.GetString("RebootComputeNode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reimaging compute node {0}..
+        /// </summary>
+        internal static string ReimageComputeNode {
+            get {
+                return ResourceManager.GetString("ReimageComputeNode", resourceCulture);
             }
         }
         
