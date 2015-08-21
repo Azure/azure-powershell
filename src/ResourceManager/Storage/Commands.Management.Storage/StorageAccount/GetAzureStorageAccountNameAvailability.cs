@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.StorageAccount
     {
         [Parameter(
             Position = 1,
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Name.")]
         [Alias(StorageAccountNameAlias, AccountNameAlias)]
