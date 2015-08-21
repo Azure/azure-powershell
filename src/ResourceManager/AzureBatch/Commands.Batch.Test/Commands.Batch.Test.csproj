@@ -171,6 +171,8 @@
     <Compile Include="Accounts\RemoveBatchAccountCommandTests.cs" />
     <Compile Include="Accounts\SetBatchAccountCommandTests.cs" />
     <Compile Include="BatchTestHelpers.cs" />
+    <Compile Include="ComputeNodes\ResetBatchComputeNodeCommandTests.cs" />
+    <Compile Include="ComputeNodes\RestartBatchComputeNodeCommandTests.cs" />
     <Compile Include="Files\GetBatchRemoteDesktopProtocolFileCommandTests.cs" />
     <Compile Include="Files\GetBatchNodeFileCommandTests.cs" />
     <Compile Include="Files\GetBatchNodeFileContentCommandTests.cs" />
@@ -183,6 +185,7 @@
     <Compile Include="Pools\GetBatchPoolCommandTests.cs" />
     <Compile Include="Pools\NewBatchPoolCommandTests.cs" />
     <Compile Include="Pools\RemoveBatchPoolCommandTests.cs" />
+    <Compile Include="Pools\SetBatchPoolOSVersionCommandTests.cs" />
     <Compile Include="Pools\StartBatchPoolResizeCommandTests.cs" />
     <Compile Include="Pools\StopBatchPoolResizeCommandTests.cs" />
     <Compile Include="Pools\TestBatchAutoScaleCommandTests.cs" />
@@ -273,6 +276,18 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ComputeNodeTests\TestListComputeNodesWithMaxCount.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ComputeNodeTests\TestRebootComputeNodeById.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ComputeNodeTests\TestRebootComputeNodePipeline.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ComputeNodeTests\TestReimageComputeNodeById.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ComputeNodeTests\TestReimageComputeNodePipeline.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ComputeNodeUserTests\TestCreateComputeNodeUser.json">
@@ -381,6 +396,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobTests\TestNewJob.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.PoolTests\TestChangeOSVersionById.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.PoolTests\TestChangeOSVersionPipeline.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.PoolTests\TestDeletePool.json">

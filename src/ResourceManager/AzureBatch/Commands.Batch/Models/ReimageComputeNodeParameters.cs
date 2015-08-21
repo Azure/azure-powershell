@@ -12,24 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
+using Microsoft.Azure.Batch;
+using Microsoft.Azure.Batch.Common;
+using System;
+using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.Resources.Models
+namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class ValidatePSResourceGroupDeploymentParameters
+    public class ReimageComputeNodeParameters : ComputeNodeOperationParameters
     {
-        public string ResourceGroupName { get; set; }
+        public ReimageComputeNodeParameters(BatchAccountContext context, string poolId, string computeNodeId, PSComputeNode computeNode,
+            IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+            : base(context, poolId, computeNodeId, computeNode, additionalBehaviors)
+        { }
 
-        public string GalleryTemplateIdentity { get; set; }
-
-        public string TemplateFile { get; set; }
-
-        public Hashtable TemplateParameterObject { get; set; }
-
-        public string ParameterUri { get; set; }
-
-        public string TemplateVersion { get; set; }
-
-        public string StorageAccountName { get; set; }
+        /// <summary>
+        /// Specifies when to reimage the node and what to do with currently running tasks.
+        /// </summary>
+        public ComputeNodeReimageOption? ReimageOption { get; set; }
     }
 }

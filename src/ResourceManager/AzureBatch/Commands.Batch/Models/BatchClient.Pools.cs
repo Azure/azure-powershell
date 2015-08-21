@@ -237,5 +237,23 @@ namespace Microsoft.Azure.Commands.Batch.Models
             AutoScaleEvaluation evaluation = poolOperations.EvaluateAutoScale(poolId, parameters.AutoScaleFormula, parameters.AdditionalBehaviors);
             return new PSAutoScaleEvaluation(evaluation);
         }
+
+        /// <summary>
+        /// Changes the operating system version of the specified pool.
+        /// </summary>
+        /// <param name="parameters">The parameters specifying the pool and target OS version.</param>
+        public void ChangeOSVersion(ChangeOSVersionParameters parameters)
+        {
+            if (parameters == null)
+            {
+                throw new ArgumentNullException("parameters");
+            }
+
+            string poolId = parameters.Pool == null ? parameters.PoolId : parameters.Pool.Id;
+
+            WriteVerbose(string.Format(Resources.ChangeOSVersion, poolId, parameters.TargetOSVersion));
+            PoolOperations poolOperations = parameters.Context.BatchOMClient.PoolOperations;
+            poolOperations.ChangeOSVersion(poolId, parameters.TargetOSVersion, parameters.AdditionalBehaviors);
+        }
     }
 }

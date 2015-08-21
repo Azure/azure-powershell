@@ -386,6 +386,38 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 TestUtilities.GetCallingClass(),
                 TestUtilities.GetCurrentMethodName());
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestChangeOSVersionById()
+        {
+            TestChangeOSVersion(false);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestChangeOSVersionPipeline()
+        {
+            TestChangeOSVersion(true);
+        }
+
+        private void TestChangeOSVersion(bool usePipeline)
+        {
+            BatchController controller = BatchController.NewInstance;
+            BatchAccountContext context = null;
+            string newTargetOSVersion = null;
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-ChangeOSVersion '{0}' '{1}' '{2}' '{3}'", commonAccountName, testPoolId, newTargetOSVersion, usePipeline ? 1 : 0) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, commonAccountName);
+                    string currentTargetOSVersion = ScenarioTestHelpers.WaitForOSVersionChange(controller, context, testPoolId);
+                    newTargetOSVersion = currentTargetOSVersion == "*" ? "WA-GUEST-OS-4.20_201505-01" : "*";
+                },
+                null,
+                TestUtilities.GetCallingClass(),
+                usePipeline ? "TestChangeOSVersionPipeline" : "TestChangeOSVersionById");
+        }
     }
 
     // Cmdlets that use the HTTP Recorder interceptor for use with scenario tests
@@ -461,6 +493,16 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
     [Cmdlet(VerbsDiagnostic.Test, "AzureBatchAutoScale_ST")]
     public class TestBatchAutoScaleScenarioTestCommand : TestBatchAutoScaleCommand
+    {
+        public override void ExecuteCmdlet()
+        {
+            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
+            base.ExecuteCmdlet();
+        }
+    }
+
+    [Cmdlet(VerbsCommon.Set, "AzureBatchPoolOSVersion_ST")]
+    public class SetBatchPoolOSVersionScenarioTestCommand : SetBatchPoolOSVersionCommand
     {
         public override void ExecuteCmdlet()
         {
