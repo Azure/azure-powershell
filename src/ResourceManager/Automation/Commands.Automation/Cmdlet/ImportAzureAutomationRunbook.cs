@@ -44,6 +44,13 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public string Description { get; set; }
 
         /// <summary>
+        /// Gets or sets the runbook name
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook name.")]
+        [Alias("RunbookName")]
+        public string Name { get; set; }
+
+        /// <summary>
         /// Gets or sets the runbook tags.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook tags.")]
@@ -98,7 +105,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                     this.LogProgress, 
                     this.LogVerbose,
                     this.Published.IsPresent,
-                    this.Force.IsPresent);
+                    this.Force.IsPresent,
+                    this.Name);
 
             this.WriteObject(runbook);
         }

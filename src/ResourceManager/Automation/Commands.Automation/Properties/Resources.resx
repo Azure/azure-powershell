@@ -403,4 +403,15 @@
     <value>Runbook file already exists. Specify the force switch switch overwrite. Runbook file name: {0}</value>
     <comment>Automation</comment>
   </data>
+  <data name="FileNameRunbookNameMismatch" xml:space="preserve">
+    <value>FileName and RunbookName should be same for PowerShellWorkflow runbook type.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="ConnectionTypeNotFound" xml:space="preserve">
+    <value>The connectiontype was not found. ConnectionType name: {0}.</value>
+  </data>
+  <data name="RemoveConnectionTypeThatHasConnectionWarning" xml:space="preserve">
+    <value>This connectiontype has connections associated with it. If you delete this connectiontype, all connections associated with it will be unusable and should be removed, unless you create a new connectiontype with the same name that has the same field definitions as the deleted connectiontype. However, it can have additional fields as well. Are you sure you want to remove the Azure Automation {0} ?</value>
+    <comment>Automation</comment>
+  </data>
 </root>
