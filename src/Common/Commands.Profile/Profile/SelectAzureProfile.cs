@@ -32,8 +32,8 @@ namespace Microsoft.WindowsAzure.Commands.Profile
     /// <summary>
     /// Creates new Microsoft Azure profile.
     /// </summary>
-    [Cmdlet(VerbsCommon.Select, "AzureSMProfile"), OutputType(typeof(AzureSMProfile))]
-    public class SelectAzureSMProfileCommand : AzurePSCmdlet
+    [Cmdlet(VerbsCommon.Select, "AzureProfile"), OutputType(typeof(AzureSMProfile))]
+    public class SelectAzureProfileCommand : AzurePSCmdlet
     {
         internal const string NewProfileParameterSet = "NewProfile";
         internal const string DefaultProfileParameterSet = "DefaultProfile";
@@ -59,7 +59,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
             if (Profile == null)
             {
-                throw new ArgumentException(Resources.AzureSMProfileMustNotBeNull);
+                throw new ArgumentException(Resources.AzureProfileMustNotBeNull);
             }
 
             AzurePSCmdlet.CurrentProfile = Profile;

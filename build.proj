@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <UsingTask 
-    AssemblyFile="$(AzurePowerShellSln)\packages\xunit.MSBuild.2.0.0.0\tools\xunit.runner.msbuild.dll"
+    AssemblyFile="$(MSBuildProjectDirectory)\src\packages\xunit.MSBuild.2.0.0.0\tools\xunit.runner.msbuild.dll"
     TaskName="Xunit.Runner.MSBuild.xunit" />
   
   <!-- Clean the build in all configurations -->

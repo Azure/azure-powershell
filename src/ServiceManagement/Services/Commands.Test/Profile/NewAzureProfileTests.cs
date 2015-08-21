@@ -26,69 +26,63 @@ using RDFESubscription = Microsoft.WindowsAzure.Subscriptions.Models.Subscriptio
 
 namespace Microsoft.Azure.Commands.Test.Profile
 {
-    public class NewAzureSMProfileTests
+    public class NewAzureProfileTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreatesNewAzureSMProfileWithCertificate()
+        public void TestCreatesNewAzureProfileWithCertificate()
         {
-            ProfileTestController.NewInstance.RunPsTest("Test-CreatesNewAzureSMProfileWithCertificate");
+            ProfileTestController.NewInstance.RunPsTest("Test-CreatesNewAzureProfileWithCertificate");
         }
 
         [Fact(Skip = "Need support from mocking framework")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreatesNewAzureSMProfileWithUserCredentials()
+        public void TestCreatesNewAzureProfileWithUserCredentials()
         {
-            ProfileTestController.NewInstance.RunPsTest("Test-CreatesNewAzureSMProfileWithUserCredentials");
+            ProfileTestController.NewInstance.RunPsTest("Test-CreatesNewAzureProfileWithUserCredentials");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreatesNewAzureSMProfileWithAccessToken()
+        public void TestCreatesNewAzureProfileWithAccessToken()
         {
-            ProfileTestController.NewInstance.RunPsTest("Test-CreatesNewAzureSMProfileWithAccessToken");
+            ProfileTestController.NewInstance.RunPsTest("Test-CreatesNewAzureProfileWithAccessToken");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMakeRdfeCallWithCreatedProfile()
         {
-            ProfileTestController.NewRdfeInstance.RunPSTestWithToken((context, token) => string.Format("Test-NewAzureSMProfileInRDFEMode {0} {1} {2}", token, context.Account.Id, context.Subscription.Id));
+            ProfileTestController.NewRdfeInstance.RunPSTestWithToken((context, token) => string.Format("Test-NewAzureProfileInRDFEMode {0} {1} {2}", token, context.Account.Id, context.Subscription.Id));
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMakeArmCallWithCreatedProfile()
         {
-            ProfileTestController.NewARMInstance.RunPSTestWithToken((context, token) => string.Format("Test-NewAzureSMProfileInARMMode {0} {1} {2}", token, context.Account.Id, context.Subscription.Id));
+            ProfileTestController.NewARMInstance.RunPSTestWithToken((context, token) => string.Format("Test-NewAzureProfileInARMMode {0} {1} {2}", token, context.Account.Id, context.Subscription.Id));
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact(Skip = "test requires environment variable that is not documented")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateEmptyProfile()
         {
             ProfileTestController.NewARMInstance.RunPsTest("Test-NewEmptyProfile");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact(Skip = "test requires environment variable that is not documented")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateEmptyProfileWIthCustomEnvironment()
         {
             ProfileTestController.NewARMInstance.RunPsTest("Test-NewEmptyProfileWithEnvironment");
         }
 
-        [Fact]
+        [Fact(Skip = "test requires environment variable that is not documented")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUsePipelineWithEnvironmentCmdlets()
         {
             ProfileTestController.NewARMInstance.RunPsTest("Test-EnvironmentPipeline");
         }
-        
-}
+
+    }
 }

@@ -21,7 +21,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile.Models
     /// <summary>
     /// Configuration for generating an Azure Profile using certificate or AAD credentials
     /// </summary>
-    public class AzureSMProfileSettings
+    public class AzureProfileSettings
     {
         public AzureEnvironment Environment { get; set; }
 
@@ -39,9 +39,9 @@ namespace Microsoft.WindowsAzure.Commands.Profile.Models
 
         public string AccountId { get; set; }
 
-        public static AzureSMProfileSettings Create(NewAzureSMProfileCommand command)
+        public static AzureProfileSettings Create(NewAzureProfileCommand command)
         {
-            return new AzureSMProfileSettings
+            return new AzureProfileSettings
             {
                 Environment = command.Environment,
                 SubscriptionId = command.SubscriptionId,

@@ -25,13 +25,13 @@ namespace Microsoft.WindowsAzure.Commands.Profile
     /// <summary>
     /// Removes a Microsoft Azure environment.
     /// </summary>
-    [Cmdlet(VerbsCommon.Clear, "AzureSMProfile"), OutputType(typeof(AzureEnvironment))]
-    public class ClearAzureSMProfileCommand : SubscriptionCmdletBase
+    [Cmdlet(VerbsCommon.Clear, "AzureProfile"), OutputType(typeof(AzureEnvironment))]
+    public class ClearAzureProfileCommand : SubscriptionCmdletBase
     {
         [Parameter(Position = 1, HelpMessage = "Force deletion of AzureSMProfile without prompt")]
         public SwitchParameter Force { get; set; }
 
-        public ClearAzureSMProfileCommand() : base(true) { }
+        public ClearAzureProfileCommand() : base(true) { }
 
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
@@ -39,7 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             ConfirmAction(
                 Force.IsPresent, Resources.RemoveProfileConfirmation,
                 Resources.RemoveProfileMessage,
-                "AzureSMProfile",
+                "AzureProfile",
                 RemoveProfileProcess);
         }
 

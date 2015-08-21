@@ -261,9 +261,9 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Selected profile must not be null..
         /// </summary>
-        public static string AzureSMProfileMustNotBeNull {
+        public static string AzureProfileMustNotBeNull {
             get {
-                return ResourceManager.GetString("AzureSMProfileMustNotBeNull", resourceCulture);
+                return ResourceManager.GetString("AzureProfileMustNotBeNull", resourceCulture);
             }
         }
         
