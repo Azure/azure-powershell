@@ -7498,7 +7498,7 @@ System.Object</maml:para>
 	<command:details>
 		<command:name>Remove-AzureSqlServerActiveDirectoryAdministrator</command:name>
 		<maml:description>
-			<maml:para>Removes an Azure Active Directory administrator for an Azure SQL Server in the current subscription.</maml:para>
+			<maml:para>Removes an Azure Active Directory administrator for Azure SQL Server in the current subscription.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -7508,6 +7508,7 @@ System.Object</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
+		<maml:para>The Remove-AzureSqlServerActiveDirectoryAdministrator cmdlet removes an Azure Active Directory administrator for Azure SQL Server in the current subscription.</maml:para>
 		<maml:para>Note: This cmdlet can only be executed in Azure Resource Manager mode. To enable Azure Resource Manager mode run the following command:
 Switch-AzureMode –Name AzureResourceManager</maml:para>
 		<maml:para>For more information, see Using Windows PowerShell with Resource Manager.</maml:para>
@@ -10177,6 +10178,16 @@ System.Object</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
+		<maml:para>The Set-AzureSqlServerActiveDirectoryAdministrator cmdlet provisions an Azure Active Directory administrator for Azure SQL Server in the current subscription.</maml:para>
+		<maml:para>At any given time only one administrator can be provisioned</maml:para>
+		<maml:para>The following members of Azure Active Directory can be provisioned as an administrator for Azure SQL Server</maml:para>
+		<maml:para>Native members of Azure Active Directory</maml:para>
+		<maml:para>Federated members of Azure Active Directory</maml:para>
+		<maml:para>Imported members from other Azure Active Directories who are native or federated members </maml:para>
+		<maml:para>Active directory groups created as security groups</maml:para>
+		<maml:para />
+		<maml:para> Microsoft accounts (i.e. outllok.com, hotmail.com, live.com) or other guest accounts (i.e. gmail.com, yahoo.com) are not supported as administrators</maml:para>
+		<maml:para>For manageability purpose it is recommended to provision a dedicated Azure Active Directory group as an administrator</maml:para>
 		<maml:para>Note: This cmdlet can only be executed in Azure Resource Manager mode. To enable Azure Resource Manager mode run the following command:
 Switch-AzureMode –Name AzureResourceManager</maml:para>
 		<maml:para>For more information, see Using Windows PowerShell with Resource Manager.</maml:para>
@@ -10187,35 +10198,36 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
 				<maml:name>DisplayName</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Diplay name of the Azure AD administrator (user or group) to be provisioned for SQL Server.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
 				<maml:name>ObjectId</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The unique object ID of the Azure AD administrator to be provisioned for SQL Server. Required if Azure AD &lt;DisplayName&gt; parameter is not unique.
+</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 				<maml:name>ServerName</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The name of the Azure SQL Server that contains the Azure Active Directory administrator you want to change.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>The name of the resource group that contains the Azure SQL Server with the Azure Active Directory administrator to change.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Profile</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>In-memory profile.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
 			</command:parameter>
@@ -10225,7 +10237,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
 			<maml:name>DisplayName</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Diplay name of the Azure AD administrator (user or group) to be provisioned for SQL Server.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -10237,7 +10249,8 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
 			<maml:name>ObjectId</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The unique object ID of the Azure AD administrator to be provisioned for SQL Server. Required if Azure AD &lt;DisplayName&gt; parameter is not unique.
+</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
 			<dev:type>
@@ -10249,7 +10262,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
 			<maml:name>ServerName</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The name of the Azure SQL Server that contains the Azure Active Directory administrator you want to change.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -10261,7 +10274,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>The name of the resource group that contains the Azure SQL Server with the Azure Active Directory administrator to change.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -10519,7 +10532,7 @@ Switch-AzureMode –Name AzureResourceManager</maml:para>
 				<maml:name>AzureProfile</maml:name>
 				<maml:uri/>
 			</dev:type>
-			<dev:defaultValue>none</dev:defaultValue>
+			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 	</command:parameters>
 	<command:inputTypes>
@@ -10558,7 +10571,30 @@ Microsoft.Azure.Commands.Sql.Security.Model.ServerAuditingPolicyModel</maml:para
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  Code Example  --------------------------</maml:title>
+			<maml:title>--------------------------  Code Example 1  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS C:\&gt;Set-AzureSqlServerActiveDirectoryAdministrator  –ResourceGroupName &quot;Group-23&quot; –ServerName &quot;aad-managed-demo&quot; –DisplayName  &quot;DBAs&quot;</dev:code>
+			<dev:remarks>
+				<maml:para>This command provisions an Azure Active Directory administrator group “DBAs” for Azure SQL Database Server “aad-managed-demo” associated with resource group &quot;Group-23&quot; </maml:para>
+				<maml:para />
+				<maml:para />
+				<maml:para>
+ResourceGroupName                     ServerName                            DisplayName                          ObjectId
+-----------------                     ----------                            -----------                          --------
+Group-23                              aad-managed-demo                      DBAs                                 40b79501-b343-44ed-9ce7-da4c8cc7353b</maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Code Example 2  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
@@ -10566,8 +10602,34 @@ Microsoft.Azure.Commands.Sql.Security.Model.ServerAuditingPolicyModel</maml:para
 			<dev:remarks>
 				<maml:para>Code Example Description</maml:para>
 				<maml:para />
+				<maml:para>
+ResourceGroupName                     ServerName                            DisplayName                          ObjectId
+-----------------                     ----------                            -----------                          --------
+Group-23                              aad-managed-demo                      Bob Johns                            11E95548-B179-4FE1-9AF4-ACA49D13ABB9</maml:para>
+			</dev:remarks>
+			<command:commandLines>
+				<command:commandLine>
+					<command:commandText>
+						<maml:para />
+					</command:commandText>
+				</command:commandLine>
+			</command:commandLines>
+		</command:example>
+		<command:example>
+			<maml:title>--------------------------  Code Example 3  --------------------------</maml:title>
+			<maml:introduction>
+				<maml:paragraph>PS C:\&gt;</maml:paragraph>
+			</maml:introduction>
+			<dev:code>PS c:\&gt;Set-AzureSqlServerActiveDirectoryAdministrator –ResourceGroupName  &quot;Group-23&quot; –ServerName &quot;aad-managed-demo&quot; –DisplayName  &quot;DBAs&quot; –ObjectId  &quot;40b79501-b343-44ed-9ce7-da4c8cc7353b&quot;</dev:code>
+			<dev:remarks>
+				<maml:para>This command provisions an Azure Active Directory administrator group “DBAs” for Azure SQL Database Server “aad-managed-demo” associated with resource group &quot;Group-23&quot;. To enforce &lt;DisplayName&gt; uniqueness, an optional parameter &lt;–ObjectId &gt;  &quot;40b79501-b343-44ed-9ce7-da4c8cc7353b&quot; representing Azure AD ObjectID for the DBAs group is included</maml:para>
 				<maml:para />
-				<maml:para></maml:para>
+				<maml:para />
+				<maml:para>PS c:\&gt;Set-AzureSqlServerActiveDirectoryAdministrator –ResourceGroupName  &quot;Group-23&quot; –ServerName &quot;aad-managed-demo&quot; –DisplayName  &quot;DBAs&quot; –ObjectId  &quot;40b79501-b343-44ed-9ce7-da4c8cc7353b&quot;
+
+ResourceGroupName                     ServerName                            DisplayName                          ObjectId
+-----------------                     ----------                            -----------                          --------
+Group-23                              aad-managed-demo                      DBAs                                 40b79501-b343-44ed-9ce7-da4c8cc7353b</maml:para>
 			</dev:remarks>
 			<command:commandLines>
 				<command:commandLine>
