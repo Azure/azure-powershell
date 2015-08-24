@@ -176,6 +176,10 @@
     <Compile Include="Files\GetBatchRemoteDesktopProtocolFileCommandTests.cs" />
     <Compile Include="Files\GetBatchNodeFileCommandTests.cs" />
     <Compile Include="Files\GetBatchNodeFileContentCommandTests.cs" />
+    <Compile Include="JobSchedules\DisableBatchJobScheduleCommandTests.cs" />
+    <Compile Include="JobSchedules\EnableBatchJobScheduleCommandTests.cs" />
+    <Compile Include="Jobs\DisableBatchJobCommandTests.cs" />
+    <Compile Include="Jobs\EnableBatchJobCommandTests.cs" />
     <Compile Include="Jobs\GetBatchJobCommandTests.cs" />
     <Compile Include="Jobs\NewBatchJobCommandTests.cs" />
     <Compile Include="Jobs\RemoveBatchJobCommandTests.cs" />
@@ -359,6 +363,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobScheduleTests\TestDeleteJobSchedulePipeline.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobScheduleTests\TestDisableAndEnableJobSchedule.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobScheduleTests\TestGetJobScheduleById.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -378,6 +385,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobTests\TestDeleteJobPipeline.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobTests\TestDisableAndEnableJob.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobTests\TestGetJobById.json">

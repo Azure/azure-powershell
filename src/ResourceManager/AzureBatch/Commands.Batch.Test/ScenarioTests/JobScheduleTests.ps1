@@ -355,3 +355,39 @@ function Test-DeleteJobSchedule
 	$jobSchedules = Get-AzureBatchJobSchedule_ST -BatchContext $context
 	Assert-True { $jobSchedules -eq $null -or $jobSchedules[0].State.ToString().ToLower() -eq 'deleting' }
 }
+
+<#
+.SYNOPSIS
+Tests disabling and enabling a job schedule
+#>
+function Test-DisableAndEnableJobSchedule
+{
+	param([string]$accountName, [string]$jobScheduleId)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+
+	# Verify the job schedule is Active
+	$jobSchedule = Get-AzureBatchJobSchedule_ST $jobScheduleId -BatchContext $context
+	Assert-AreEqual 'Active' $jobSchedule.State
+
+	Disable-AzureBatchJobSchedule_ST $jobScheduleId -BatchContext $context
+
+	# Verify the job schedule was Disabled
+	$jobSchedule = Get-AzureBatchJobSchedule_ST $jobScheduleId -BatchContext $context
+	Assert-AreEqual 'Disabled' $jobSchedule.State
+
+	Enable-AzureBatchJobSchedule_ST $jobScheduleId -BatchContext $context
+
+	# Verify the job schedule is again Active
+	$jobSchedule = Get-AzureBatchJobSchedule_ST -Filter "id eq '$jobScheduleId'" -BatchContext $context
+	Assert-AreEqual 'Active' $jobSchedule.State
+
+	# Verify using the pipeline
+	$jobSchedule | Disable-AzureBatchJobSchedule_ST -BatchContext $context
+	$jobSchedule = Get-AzureBatchJobSchedule_ST $jobScheduleId -BatchContext $context
+	Assert-AreEqual 'Disabled' $jobSchedule.State
+
+	$jobSchedule | Enable-AzureBatchJobSchedule_ST -BatchContext $context
+	$jobSchedule = Get-AzureBatchJobSchedule_ST -Filter "id eq '$jobScheduleId'" -BatchContext $context
+	Assert-AreEqual 'Active' $jobSchedule.State
+}

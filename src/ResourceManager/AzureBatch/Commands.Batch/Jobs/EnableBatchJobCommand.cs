@@ -12,12 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
-{
-    public class PSADGroup : PSADObject
-    {
-        public string Mail { get; set; }
+using System;
+using System.Management.Automation;
+using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
-        public bool? SecurityEnabled { get; set; }
+namespace Microsoft.Azure.Commands.Batch
+{
+    [Cmdlet(VerbsLifecycle.Enable, Constants.AzureBatchJob)]
+    public class EnableBatchJobCommand : BatchObjectModelCmdletBase
+    {
+        [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "The id of the job to enable.")]
+        [ValidateNotNullOrEmpty]
+        public string Id { get; set; }
+
+        public override void ExecuteCmdlet()
+        {
+            BatchClient.EnableJob(this.BatchContext, this.Id, this.AdditionalBehaviors);
+        }
     }
 }

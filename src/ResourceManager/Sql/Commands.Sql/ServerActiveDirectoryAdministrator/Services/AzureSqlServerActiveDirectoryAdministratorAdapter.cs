@@ -66,6 +66,11 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
                 if (_activeDirectoryClient == null)
                 {
                     _activeDirectoryClient = new MicrosoftAzureCommandsResourcesModelsActiveDirectory.ActiveDirectoryClient(Profile.DefaultContext);
+                    if (!Profile.DefaultContext.Environment.IsEndpointSet(AzureEnvironment.Endpoint.Graph))
+                    {
+                        throw new ArgumentException(string.Format(Resources.InvalidGraphEndpoint));
+                    }
+                    _activeDirectoryClient = new MicrosoftAzureCommandsResourcesModelsActiveDirectory.ActiveDirectoryClient(Profile.DefaultContext);
                 }
                 return this._activeDirectoryClient;
             }
@@ -192,6 +197,13 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
             {
                 // Only one group was found. Get the group display name and object id
                 var group = groupList.First();
+                
+                // Only support Security Groups
+                if (group.SecurityEnabled.HasValue && !group.SecurityEnabled.Value)
+                {
+                    throw new ArgumentException(string.Format(Resources.InvalidADGroupNotSecurity, displayName));
+                }
+
                 return new ServerAdministratorCreateOrUpdateProperties()
                 {
                     Login = group.DisplayName,
@@ -211,6 +223,20 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
             // Get a list of user from Azure Active Directory
             var userList = ActiveDirectoryClient.FilterUsers(filter).Where(gr => string.Equals(gr.DisplayName, displayName, StringComparison.OrdinalIgnoreCase));
 
+            // No user was found. Check if the display name is a UPN
+            if (userList == null || userList.Count() == 0)
+            {
+                // Check if the display name is the UPN
+                filter = new MicrosoftAzureCommandsResourcesModelsActiveDirectory.ADObjectFilterOptions()
+                {
+                    Id = (objectId != null && objectId != Guid.Empty) ? objectId.ToString() : null,
+                    UPN = displayName,
+                    Paging = true,
+                };
+
+                userList = ActiveDirectoryClient.FilterUsers(filter).Where(gr => string.Equals(gr.UserPrincipalName, displayName, StringComparison.OrdinalIgnoreCase));
+            }
+
             // No user was found
             if (userList == null || userList.Count() == 0)
             {
@@ -228,7 +254,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
 
                 return new ServerAdministratorCreateOrUpdateProperties()
                 {
-                    Login = obj.DisplayName,
+                    Login = displayName,
                     Sid = obj.Id,
                     TenantId = tenantId,
                 };
@@ -245,6 +271,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
                 Profile.DefaultContext.Subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants).FirstOrDefault();
             string adTenant = Profile.DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.AdTenant);
             string graph = Profile.DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.Graph);
+                Profile.DefaultContext.Subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants).FirstOrDefault();
             var tenantIdGuid = Guid.Empty;
             
             if (string.IsNullOrWhiteSpace(tenantIdStr) || !Guid.TryParse(tenantIdStr, out tenantIdGuid))

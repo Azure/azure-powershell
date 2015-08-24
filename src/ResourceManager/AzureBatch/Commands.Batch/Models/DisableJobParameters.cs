@@ -12,12 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
-{
-    public class PSADGroup : PSADObject
-    {
-        public string Mail { get; set; }
+using Microsoft.Azure.Batch;
+using Microsoft.Azure.Batch.Common;
+using System;
+using System.Collections.Generic;
 
-        public bool? SecurityEnabled { get; set; }
+namespace Microsoft.Azure.Commands.Batch.Models
+{
+    public class DisableJobParameters : JobOperationParameters
+    {
+        public DisableJobParameters(BatchAccountContext context, string jobId, PSCloudJob job, DisableJobOption disableJobOption,
+            IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+            : base(context, jobId, job, additionalBehaviors)
+        {
+            this.DisableJobOption = disableJobOption;
+        }
+
+        /// <summary>
+        /// Specifies what to do with active tasks associated with the job.
+        /// </summary>
+        public DisableJobOption DisableJobOption { get; private set; }
     }
 }

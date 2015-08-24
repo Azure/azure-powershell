@@ -352,3 +352,39 @@ function Test-DeleteJob
 	$jobs = Get-AzureBatchJob_ST -BatchContext $context
 	Assert-True { $jobs -eq $null -or $jobs[0].State.ToString().ToLower() -eq 'deleting' }
 }
+
+<#
+.SYNOPSIS
+Tests disabling and enabling a job
+#>
+function Test-DisableAndEnableJob
+{
+	param([string]$accountName, [string]$jobId)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+
+	# Verify the job is Active
+	$job = Get-AzureBatchJob_ST $jobId -BatchContext $context
+	Assert-AreEqual 'Active' $job.State
+
+	Disable-AzureBatchJob_ST $jobId Terminate -BatchContext $context
+
+	# Verify the job was Disabled
+	$job = Get-AzureBatchJob_ST $jobId -BatchContext $context
+	Assert-AreEqual 'Disabled' $job.State
+
+	Enable-AzureBatchJob_ST $jobId -BatchContext $context
+
+	# Verify the job is again active
+	$job = Get-AzureBatchJob_ST -Filter "id eq '$jobId'" -BatchContext $context
+	Assert-AreEqual 'Active' $job.State
+
+	# Verify using the pipeline
+	$job | Disable-AzureBatchJob_ST -DisableJobOption Terminate -BatchContext $context
+	$job = Get-AzureBatchJob_ST $jobId -BatchContext $context
+	Assert-AreEqual 'Disabled' $job.State
+
+	$job | Enable-AzureBatchJob_ST -BatchContext $context
+	$job = Get-AzureBatchJob_ST -Filter "id eq '$jobId'" -BatchContext $context
+	Assert-AreEqual 'Active' $job.State
+}
