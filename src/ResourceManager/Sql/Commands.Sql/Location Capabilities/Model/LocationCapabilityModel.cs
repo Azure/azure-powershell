@@ -35,5 +35,10 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Model
         /// Gets or sets a list of all the supported server versions and their capabilities
         /// </summary>
         public IList<ServerVersionCapabilityModel> SupportedServerVersions { get; set; }
+
+        /// <summary>
+        /// Gets or sets a formatted string containing the expanded details of the model
+        /// </summary>
+        public string ExpandedDetails { get; set; }
     }
 }
