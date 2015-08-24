@@ -110,6 +110,32 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetADGroupSecurityEnabled()
+        {
+            const string scriptMethod = "Test-GetADGroupSecurityEnabled '{0}' '{1}'";
+            Group newGroup = null;
+            var controllerAdmin = ResourcesController.NewInstance;
+
+            controllerAdmin.RunPsTestWorkflow(
+                // scriptBuilder
+                () =>
+                {
+                    newGroup = CreateNewAdGroup(controllerAdmin);
+                    return new[] { string.Format(scriptMethod, newGroup.ObjectId, newGroup.SecurityEnabled) };
+                },
+                // initialize
+                null,
+                // cleanup
+                () =>
+                {
+                    DeleteAdGroup(controllerAdmin, newGroup);
+                },
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADGroupWithBadObjectId()
         {
             ResourcesController.NewInstance.RunPsTest("Test-GetADGroupWithBadObjectId");

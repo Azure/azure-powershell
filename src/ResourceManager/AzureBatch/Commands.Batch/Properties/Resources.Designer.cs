@@ -97,11 +97,47 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disabling job {0}..
+        /// </summary>
+        internal static string DisableJob {
+            get {
+                return ResourceManager.GetString("DisableJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disabling job schedule {0}..
+        /// </summary>
+        internal static string DisableJobSchedule {
+            get {
+                return ResourceManager.GetString("DisableJobSchedule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enabling automatic scaling on pool {0} using the formula: {1}.
         /// </summary>
         internal static string EnableAutoScale {
             get {
                 return ResourceManager.GetString("EnableAutoScale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enabling job {0}..
+        /// </summary>
+        internal static string EnableJob {
+            get {
+                return ResourceManager.GetString("EnableJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enabling job schedule {0}..
+        /// </summary>
+        internal static string EnableJobSchedule {
+            get {
+                return ResourceManager.GetString("EnableJobSchedule", resourceCulture);
             }
         }
         

@@ -129,8 +129,20 @@
   <data name="DisableAutoScale" xml:space="preserve">
     <value>Disabling automatic scaling on pool {0}.</value>
   </data>
+  <data name="DisableJob" xml:space="preserve">
+    <value>Disabling job {0}.</value>
+  </data>
+  <data name="DisableJobSchedule" xml:space="preserve">
+    <value>Disabling job schedule {0}.</value>
+  </data>
   <data name="EnableAutoScale" xml:space="preserve">
     <value>Enabling automatic scaling on pool {0} using the formula: {1}</value>
+  </data>
+  <data name="EnableJob" xml:space="preserve">
+    <value>Enabling job {0}.</value>
+  </data>
+  <data name="EnableJobSchedule" xml:space="preserve">
+    <value>Enabling job schedule {0}.</value>
   </data>
   <data name="EndMAMLCall" xml:space="preserve">
     <value>End {0} call to RP</value>
