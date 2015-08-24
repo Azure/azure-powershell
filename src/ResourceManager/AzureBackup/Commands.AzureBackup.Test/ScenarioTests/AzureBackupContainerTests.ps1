@@ -54,13 +54,12 @@ $IaasVMManagedResourceName = "hydrarecordvm"
 $IaasVMManagedResourceGroupName = "hydrarecordvm"
 $VaultResourceName = "backuprn"
 $VaultResourceRGName = "backuprg"
-$RegisterTestVM = "powershellbvt"
 
 
 function Test-RegisterAzureBackupContainer
 { 
     $vault = Get-AzureRMBackupVault -Name $VaultResourceName
-    $jobId = Register-AzureRMBackupContainer -vault $vault -Name $RegisterTestVM -ServiceName $RegisterTestVM 
+    $jobId = Register-AzureRMBackupContainer -vault $vault -Name $IaasVMManagedResourceName -ServiceName $IaasVMManagedResourceGroupName 
      
     Assert-NotNull $jobId 'Job should not be null'; 
 } 
