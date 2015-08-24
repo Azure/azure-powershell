@@ -54,8 +54,17 @@ namespace Microsoft.Azure.Commands.Compute
         public string Name { get; set; }
 
         [Parameter(
+            Mandatory = true,
+            Position = 1,
+            ParameterSetName = LunParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMDataDiskLun)]
+        [ValidateNotNullOrEmpty]
+        public int? Lun { get; set; }
+
+        [Parameter(
             Mandatory = false,
-            Position = 3,
+            Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMDataDiskCaching)]
         [ValidateNotNullOrEmpty]
@@ -64,33 +73,19 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = false,
-            Position = 4,
+            Position = 3,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMDataDiskSizeInGB)]
         [AllowNull]
         public int? DiskSizeInGB { get; set; }
 
-        [Parameter(
-            Mandatory = true,
-            Position = 5,
-            ParameterSetName = LunParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = HelpMessages.VMDataDiskLun)]
-        [ValidateNotNullOrEmpty]
-        public int? Lun { get; set; }
-
         public override void ExecuteCmdlet()
         {            
             var storageProfile = this.VM.StorageProfile;            
 
-            if (storageProfile == null)
+            if (storageProfile == null || storageProfile.DataDisks == null)
             {
-                storageProfile = new StorageProfile();
-            }
-
-            if (storageProfile.DataDisks == null)
-            {
-                storageProfile.DataDisks = new List<DataDisk>();
+                ThrowDataDiskNotExistError();
             }
 
             var dataDisk = (this.ParameterSetName.Equals(LunParameterSet))
@@ -99,15 +94,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             if (dataDisk == null)
             {
-                var missingDisk = (this.ParameterSetName.Equals(LunParameterSet))
-                    ? string.Format("LUN # {0}", this.Lun)
-                    : "Name: " + this.Name;
-                ThrowTerminatingError(
-                    new ErrorRecord(
-                            new InvalidOperationException(string.Format(CultureInfo.InvariantCulture, Properties.Resources.DataDiskNotAssignedForVM, missingDisk)),
-                            string.Empty,
-                            ErrorCategory.InvalidData,
-                            null));
+                ThrowDataDiskNotExistError();
             }
             else
             {
@@ -124,6 +111,21 @@ namespace Microsoft.Azure.Commands.Compute
             this.VM.StorageProfile = storageProfile;
 
             WriteObject(this.VM);
+        }
+
+        private void ThrowDataDiskNotExistError()
+        {
+            var missingDisk = (this.ParameterSetName.Equals(LunParameterSet))
+                   ? string.Format("LUN # {0}", this.Lun)
+                   : "Name: " + this.Name;
+
+            ThrowTerminatingError
+                (new ErrorRecord(
+                    new InvalidOperationException(string.Format(CultureInfo.InvariantCulture,
+                        Properties.Resources.DataDiskNotAssignedForVM, missingDisk)),
+                    string.Empty,
+                    ErrorCategory.InvalidData,
+                    null));
         }
     }
 }
