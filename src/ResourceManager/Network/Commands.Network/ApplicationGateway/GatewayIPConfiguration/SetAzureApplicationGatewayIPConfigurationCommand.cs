@@ -32,31 +32,18 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.ExecuteCmdlet();
 
-            var gatewayIPConfiguration = this.ApplicationGateway.GatewayIPConfigurations.SingleOrDefault
+            var oldGatewayIPConfiguration = this.ApplicationGateway.GatewayIPConfigurations.SingleOrDefault
                 (resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
-            if (gatewayIPConfiguration == null)
+            if (oldGatewayIPConfiguration == null)
             {
                 throw new ArgumentException("Application gateway IP configuration with the specified name does not exist");
             }
 
-            gatewayIPConfiguration = new PSApplicationGatewayIPConfiguration();
-
-            gatewayIPConfiguration.Name = this.Name;
-
-            if (!string.IsNullOrEmpty(this.SubnetId))
-            {
-                var gatewayIPConfig = new PSResourceId();
-                gatewayIPConfig.Id = this.SubnetId;
-                gatewayIPConfiguration.Subnet = gatewayIPConfig;
-            }    
-
-            gatewayIPConfiguration.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
-                                this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
-                                Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayIpConfigurationName,
-                                this.Name);
-
-            this.ApplicationGateway.GatewayIPConfigurations.Add(gatewayIPConfiguration);
+            var newGatewayIPConfiguration = base.NewObject();
+            
+            this.ApplicationGateway.GatewayIPConfigurations.Remove(oldGatewayIPConfiguration);
+            this.ApplicationGateway.GatewayIPConfigurations.Add(newGatewayIPConfiguration);
 
             WriteObject(this.ApplicationGateway);
         }

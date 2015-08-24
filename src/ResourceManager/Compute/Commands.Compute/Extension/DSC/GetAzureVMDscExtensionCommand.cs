@@ -1,11 +1,13 @@
-﻿using System;
-using System.Collections;
-using System.Linq;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.Compute.Common;
+﻿using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
+using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
 using Newtonsoft.Json;
+using System;
+using System.Collections;
+using System.Globalization;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 {
@@ -15,7 +17,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         DefaultParameterSetName = GetDscExtensionParamSetName),
      OutputType(
          typeof(VirtualMachineDscExtensionContext))]
-    public class GetAzureVMDscExtensionCommand : VirtualMachineDscExtensionBaseCmdlet
+    public class GetAzureVMDscExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         private const string GetDscExtensionParamSetName = "GetDscExtension";
 
@@ -38,7 +40,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         [Parameter(
             Position = 2,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The extension handler name. This is defaulted to 'Microsoft.Powershell.DSC'")]
+            HelpMessage = "Name of the ARM resource that represents the extension. The Set-AzureVMDscExtension cmdlet sets this name to  " +
+            "'Microsoft.Powershell.DSC', which is the same value used by Get-AzureVMDscExtension. Specify this parameter only if you changed " +
+            "the default name in the Set cmdlet or used a different resource name in an ARM template.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
        
@@ -54,7 +58,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 
             if (String.IsNullOrEmpty(Name))
             {
-                Name = ExtensionNamespace + "." + ExtensionName;
+                Name = DscExtensionCmdletConstants.ExtensionPublishedNamespace + "." + DscExtensionCmdletConstants.ExtensionPublishedName;
             }
 
             if (Status)
@@ -63,9 +67,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                 var extension = result.ToPSVirtualMachineExtension(ResourceGroupName);
 
                 if (
-                    extension.Publisher.Equals(ExtensionNamespace,
+                    extension.Publisher.Equals(DscExtensionCmdletConstants.ExtensionPublishedNamespace,
                         StringComparison.InvariantCultureIgnoreCase) &&
-                    extension.ExtensionType.Equals(ExtensionName,
+                    extension.ExtensionType.Equals(DscExtensionCmdletConstants.ExtensionPublishedName,
                         StringComparison.InvariantCultureIgnoreCase))
                 {
                     WriteObject(GetDscExtensionContext(extension));
@@ -81,9 +85,11 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                 var extension = result.ToPSVirtualMachineExtension(ResourceGroupName);
 
                 if (
-                    extension.Publisher.Equals(ExtensionNamespace,
+                    extension.Publisher.Equals(
+                        DscExtensionCmdletConstants.ExtensionPublishedNamespace,
                         StringComparison.InvariantCultureIgnoreCase) &&
-                    extension.ExtensionType.Equals(ExtensionName,
+                    extension.ExtensionType.Equals(
+                        DscExtensionCmdletConstants.ExtensionPublishedName,
                         StringComparison.InvariantCultureIgnoreCase))
                 {
                     WriteObject(GetDscExtensionContext(extension));
@@ -113,28 +119,27 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                 Statuses = extension.Statuses
             };
 
-            DscExtensionPublicSettings publicSettings;
+            DscExtensionPublicSettings extensionPublicSettings = null;
             try
             {
-                publicSettings = string.IsNullOrEmpty(extension.PublicSettings) ? null
-                                    : JsonConvert.DeserializeObject<DscExtensionPublicSettings>(extension.PublicSettings);
+                extensionPublicSettings = DscExtensionSettingsSerializer.DeserializePublicSettings(extension.PublicSettings);
             }
-            catch (Exception)
+            catch (JsonException e)
             {
-                // Try deserialize as version 1.0
-                try
-                {
-                    var publicSettingsV1 =
-                        JsonConvert.DeserializeObject<DscExtensionPublicSettings.Version1>(extension.PublicSettings);
-                    publicSettings = publicSettingsV1.ToCurrentVersion();
-                }
-                catch (JsonException)
-                {
-                    throw;
-                } 
+                ThrowTerminatingError(
+                    new ErrorRecord(
+                        new JsonException(
+                            String.Format(
+                                CultureInfo.CurrentUICulture,
+                                Properties.Resources.AzureVMDscWrongSettingsFormat,
+                                extension.PublicSettings),
+                            e),
+                        string.Empty,
+                        ErrorCategory.ParserError,
+                        null));
             }
-            
-            if (publicSettings == null)
+
+            if (extensionPublicSettings == null)
             {
                 context.ModulesUrl = string.Empty;
                 context.ConfigurationFunction = string.Empty;
@@ -142,9 +147,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             }
             else
             {
-                context.ModulesUrl = publicSettings.ModulesUrl;
-                context.ConfigurationFunction = publicSettings.ConfigurationFunction;
-                context.Properties = new Hashtable(publicSettings.Properties.ToDictionary( x => x.Name, x => x.Value ));
+                context.ModulesUrl = extensionPublicSettings.ModulesUrl;
+                context.ConfigurationFunction = extensionPublicSettings.ConfigurationFunction;
+                context.Properties = new Hashtable(extensionPublicSettings.Properties.ToDictionary(x => x.Name, x => x.Value));
             }
 
             return context;

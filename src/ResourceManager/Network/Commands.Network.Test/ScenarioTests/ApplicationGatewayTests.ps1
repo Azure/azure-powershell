@@ -56,16 +56,16 @@ function Test-ApplicationGatewayCRUD
 		$poolSetting = New-AzureApplicationGatewayBackendHttpSettings -Name $poolSettingName  -Port 80 -Protocol HTTP -CookieBasedAffinity Disabled
 		$fp = New-AzureApplicationGatewayFrontendPort -Name $frontendPortName  -Port 80
 		$fipconfig = New-AzureApplicationGatewayFrontendIPConfig -Name $fipconfigName -PublicIPAddress $publicip
-		$listener = New-AzureApplicationGatewayHttpListener -Name $listenerName  -Protocol http -FrontendIpConfiguration $fipconfig -FrontendPort $fp
+		$listener = New-AzureApplicationGatewayHttpListener -Name $listenerName  -Protocol http -FrontendIPConfiguration $fipconfig -FrontendPort $fp
 		$rule = New-AzureApplicationGatewayRequestRoutingRule -Name $ruleName -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
 		$sku = New-AzureApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
 
-		# $actual = New-AzureApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
-		# $expected =  Get-AzureApplicationGateway -Name $appgwName -ResourceGroupName $rgname
-		# Compare-AzureApplicationGateway $actual $expected
+		$actual = New-AzureApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
+		$expected =  Get-AzureApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+		Compare-AzureApplicationGateway $actual $expected
 		
-		# Stop-AzureApplicationGateway -ApplicationGateway $expected
-		# Remove-AzureApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+		Stop-AzureApplicationGateway -ApplicationGateway $expected
+		Remove-AzureApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Force
 	}
 	finally
 	{

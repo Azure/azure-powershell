@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8531411A-0137-4E27-9C5E-49E07C245048}"
 	ProjectSection(SolutionItems) = preProject
@@ -28,6 +28,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ScenarioTest", "Co
 	ProjectSection(ProjectDependencies) = postProject
 		{CD5AA507-F5EF-473D-855B-84B91A1ABE54} = {CD5AA507-F5EF-473D-855B-84B91A1ABE54}
 		{DDF5D225-C9C5-42B7-BDB5-2C3646E479AA} = {DDF5D225-C9C5-42B7-BDB5-2C3646E479AA}
+		{E895BBDA-0B06-46AB-B909-9B97B3ECE47E} = {E895BBDA-0B06-46AB-B909-9B97B3ECE47E}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ServiceManagement", "ServiceManagement\Compute\Commands.ServiceManagement\Commands.ServiceManagement.csproj", "{E1CA72BA-8374-45F6-904D-FD34ECDF5B6F}"
@@ -98,8 +99,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Automation.Test", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.TrafficManager.Test", "ServiceManagement\TrafficManager\Commands.TrafficManager.Test\Commands.TrafficManager.Test.csproj", "{84F99CBD-5B86-4428-B263-135B2F67F512}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.HDInsight", "ServiceManagement\HDInsight\Commands.HDInsight\Commands.HDInsight.csproj", "{137D404A-865A-43DB-930C-6DA67DA048DF}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.HDInsight.Test", "ServiceManagement\HDInsight\Commands.HDInsight.Test\Commands.HDInsight.Test.csproj", "{7E8D2555-2DDD-4757-974F-D5FFD0647671}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Tags", "ResourceManager\Tags\Commands.Tags\Commands.Tags.csproj", "{2493A8F7-1949-4F29-8D53-9D459046C3B8}"
@@ -131,15 +130,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.DataFactories.Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Sql.Test", "ResourceManager\Sql\Commands.Sql.Test\Commands.Sql.Test.csproj", "{56ED8C97-53B9-4DF6-ACB5-7E6800105BF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ServiceManagement.Extensions.Test", "ServiceManagement\Compute\Commands.ServiceManagement.Extensions.Test\Commands.ServiceManagement.Extensions.Test.csproj", "{7A9D7758-A1AB-4BE8-BD09-3FAF446314F2}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RedisCache", "ResourceManager\RedisCache\Commands.RedisCache\Commands.RedisCache.csproj", "{C972E3EF-4461-4758-BA31-93E0947B1253}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RedisCache.Test", "ResourceManager\RedisCache\Commands.RedisCache.Test\Commands.RedisCache.Test.csproj", "{4AE5705F-62CF-461D-B72E-DD9DCD9B3609}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Batch", "ResourceManager\Batch\Commands.Batch\Commands.Batch.csproj", "{D470E50A-9607-48D6-A924-4F9F86502704}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Batch", "ResourceManager\AzureBatch\Commands.Batch\Commands.Batch.csproj", "{D470E50A-9607-48D6-A924-4F9F86502704}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Batch.Test", "ResourceManager\Batch\Commands.Batch.Test\Commands.Batch.Test.csproj", "{F4ABAD68-64A5-4B23-B09C-42559A7524DE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Batch.Test", "ResourceManager\AzureBatch\Commands.Batch.Test\Commands.Batch.Test.csproj", "{F4ABAD68-64A5-4B23-B09C-42559A7524DE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ServiceManagement.Network", "ServiceManagement\Network\Commands.Network\Commands.ServiceManagement.Network.csproj", "{40FEE0BB-FD45-4EFC-85BC-0D602A6892C4}"
 EndProject
@@ -229,6 +226,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.AzureBackup", "ResourceManager\AzureBackup\Commands.AzureBackup\Commands.AzureBackup.csproj", "{6C8D2337-C9D1-4F52-94B3-AB63A19F3453}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.AzureBackup.Test", "ResourceManager\AzureBackup\Commands.AzureBackup.Test\Commands.AzureBackup.Test.csproj", "{678AE95D-2364-47D7-888C-3FFA6D412CC8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HDInsight", "ServiceManagement\HDInsight\Commands.HDInsight\HDInsight.csproj", "{137D404A-865A-43DB-930C-6DA67DA048DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.HDInsight", "ResourceManager\HDInsight\Commands.HDInsight\Commands.HDInsight.csproj", "{6B7540C5-8AB3-4011-864B-0BE76F282F9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.SiteRecovery", "ResourceManager\SiteRecovery\Commands.SiteRecovery\Commands.SiteRecovery.csproj", "{7C879645-31EE-4A78-AD81-5512300FA104}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.SiteRecovery.Test", "ResourceManager\SiteRecovery\Commands.SiteRecovery.Test\Commands.SiteRecovery.Test.csproj", "{6C7D3D81-37AB-445E-8081-78A1FEC0A773}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -364,10 +369,6 @@ Global
 		{84F99CBD-5B86-4428-B263-135B2F67F512}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84F99CBD-5B86-4428-B263-135B2F67F512}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84F99CBD-5B86-4428-B263-135B2F67F512}.Release|Any CPU.Build.0 = Release|Any CPU
-		{137D404A-865A-43DB-930C-6DA67DA048DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{137D404A-865A-43DB-930C-6DA67DA048DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{137D404A-865A-43DB-930C-6DA67DA048DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{137D404A-865A-43DB-930C-6DA67DA048DF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7E8D2555-2DDD-4757-974F-D5FFD0647671}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7E8D2555-2DDD-4757-974F-D5FFD0647671}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E8D2555-2DDD-4757-974F-D5FFD0647671}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -396,10 +397,6 @@ Global
 		{56ED8C97-53B9-4DF6-ACB5-7E6800105BF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56ED8C97-53B9-4DF6-ACB5-7E6800105BF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56ED8C97-53B9-4DF6-ACB5-7E6800105BF8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7A9D7758-A1AB-4BE8-BD09-3FAF446314F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7A9D7758-A1AB-4BE8-BD09-3FAF446314F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7A9D7758-A1AB-4BE8-BD09-3FAF446314F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7A9D7758-A1AB-4BE8-BD09-3FAF446314F2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C972E3EF-4461-4758-BA31-93E0947B1253}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C972E3EF-4461-4758-BA31-93E0947B1253}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C972E3EF-4461-4758-BA31-93E0947B1253}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -572,11 +569,28 @@ Global
 		{678AE95D-2364-47D7-888C-3FFA6D412CC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{678AE95D-2364-47D7-888C-3FFA6D412CC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{678AE95D-2364-47D7-888C-3FFA6D412CC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{137D404A-865A-43DB-930C-6DA67DA048DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{137D404A-865A-43DB-930C-6DA67DA048DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{137D404A-865A-43DB-930C-6DA67DA048DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{137D404A-865A-43DB-930C-6DA67DA048DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B7540C5-8AB3-4011-864B-0BE76F282F9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B7540C5-8AB3-4011-864B-0BE76F282F9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B7540C5-8AB3-4011-864B-0BE76F282F9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B7540C5-8AB3-4011-864B-0BE76F282F9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C879645-31EE-4A78-AD81-5512300FA104}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C879645-31EE-4A78-AD81-5512300FA104}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C879645-31EE-4A78-AD81-5512300FA104}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C879645-31EE-4A78-AD81-5512300FA104}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C7D3D81-37AB-445E-8081-78A1FEC0A773}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C7D3D81-37AB-445E-8081-78A1FEC0A773}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C7D3D81-37AB-445E-8081-78A1FEC0A773}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C7D3D81-37AB-445E-8081-78A1FEC0A773}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{B7FD03F6-98BC-4F54-9A14-0455E579FCD4} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{37455286-D8A7-4E0C-8B4D-C517D20C641A} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{D6F470A6-7395-4B8B-9D29-44DF0EC8F624} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{A3965B66-5A3E-4B8C-9574-28E5958D4828} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
@@ -587,7 +601,6 @@ Global
 		{4BC0E3D3-6EDD-43AA-8F15-DCFED8ACC93D} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{9D5A40CA-5594-4F5C-8230-7ADF7CC0558E} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{3B48A77B-5956-4A62-9081-92BA04B02B27} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
-		{B7FD03F6-98BC-4F54-9A14-0455E579FCD4} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{4C2FE49A-09E1-4979-AD46-CD64FD04C8F7} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{374D4000-DEDE-4995-9B63-E3B9FE0C4D29} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{127D0D51-FDEA-4E1A-8CD8-34DEB5C2F7F6} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
@@ -596,7 +609,6 @@ Global
 		{C1BDA476-A5CC-4394-914D-48B0EC31A710} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{D4EDAD6F-6A1D-4295-9A88-CD3F69EAD42B} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{56ED8C97-53B9-4DF6-ACB5-7E6800105BF8} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
-		{7A9D7758-A1AB-4BE8-BD09-3FAF446314F2} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{4AE5705F-62CF-461D-B72E-DD9DCD9B3609} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{F4ABAD68-64A5-4B23-B09C-42559A7524DE} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{FDB897BD-FCB4-44A1-8D66-AC99F22EC737} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
@@ -618,5 +630,6 @@ Global
 		{F220C306-29A3-4511-8518-A58A55C60D07} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{6448E795-3D02-4BDD-B0C7-AD0A2AFE3C8B} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{678AE95D-2364-47D7-888C-3FFA6D412CC8} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{6C7D3D81-37AB-445E-8081-78A1FEC0A773} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 	EndGlobalSection
 EndGlobal

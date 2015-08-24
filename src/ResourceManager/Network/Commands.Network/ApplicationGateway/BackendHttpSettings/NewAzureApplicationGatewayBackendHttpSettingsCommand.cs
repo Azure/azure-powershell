@@ -23,19 +23,8 @@ namespace Microsoft.Azure.Commands.Network
     {
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
-            var backendHttpSettings = new PSApplicationGatewayBackendHttpSettings();
-            backendHttpSettings.Name = this.Name;
-            backendHttpSettings.Port = this.Port;
-            backendHttpSettings.Protocol = this.Protocol;
-            backendHttpSettings.CookieBasedAffinity = this.CookieBasedAffinity;
-            backendHttpSettings.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
-                                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
-                                    Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewaybackendHttpSettingsName,
-                                    this.Name);
-
-            WriteObject(backendHttpSettings);
+            base.ExecuteCmdlet();            
+            WriteObject(base.NewObject());
         }
     }
 }
