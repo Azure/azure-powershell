@@ -22,19 +22,19 @@ using Microsoft.Azure.Commands.Automation.Properties;
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
-    /// Removes a ConnectionType for automation.
+    /// Removes a Connection type for automation.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureAutomationConnectionType", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
     public class RemoveAzureAutomationConnectionType : AzureAutomationBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the connection name.
+        /// Gets or sets the connection type name.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The connectiontype name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The connection type name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 2, HelpMessage = "Confirm the removal of the connectiontype")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 2, HelpMessage = "Confirm the removal of the connection type")]
         public SwitchParameter Force { get; set; }
 
         /// <summary>
