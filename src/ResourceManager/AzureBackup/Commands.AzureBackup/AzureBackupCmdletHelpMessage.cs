@@ -93,5 +93,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public const string WeekNumber = "List of Week Numbers of the month";
         public const string MonthsOfYear = "List of Months of the year";
         public const string Retention = "Retention duration value";
+
+        public const string PolicyObject = "Policy object for enabling protection";
     }
 }
