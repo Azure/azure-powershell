@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.AzureBackup.Properties;
 using System;
-using System.Collections;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Models
 {

@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.AzureBackup.Helpers;
 using Microsoft.Azure.Commands.AzureBackup.Models;
 using Microsoft.Azure.Commands.AzureBackup.Properties;
 using System;
-using System.Collections;
 using System.Management.Automation;
 using CmdletModel = Microsoft.Azure.Commands.AzureBackup.Models;
 
