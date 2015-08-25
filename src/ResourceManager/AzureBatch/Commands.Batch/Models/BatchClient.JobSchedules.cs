@@ -127,5 +127,43 @@ namespace Microsoft.Azure.Commands.Batch.Models
             JobScheduleOperations jobScheduleOperations = context.BatchOMClient.JobScheduleOperations;
             jobScheduleOperations.DeleteJobSchedule(jobScheduleId, additionBehaviors);
         }
+
+        /// <summary>
+        /// Enables the specified job schedule.
+        /// </summary>
+        /// <param name="context">The account to use.</param>
+        /// <param name="jobScheduleId">The id of the job schedule to enable.</param>
+        /// <param name="additionBehaviors">Additional client behaviors to perform.</param>
+        public void EnableJobSchedule(BatchAccountContext context, string jobScheduleId, IEnumerable<BatchClientBehavior> additionBehaviors = null)
+        {
+            if (string.IsNullOrWhiteSpace(jobScheduleId))
+            {
+                throw new ArgumentNullException("jobScheduleId");
+            }
+
+            WriteVerbose(string.Format(Resources.EnableJobSchedule, jobScheduleId));
+
+            JobScheduleOperations jobScheduleOperations = context.BatchOMClient.JobScheduleOperations;
+            jobScheduleOperations.EnableJobSchedule(jobScheduleId, additionBehaviors);
+        }
+
+        /// <summary>
+        /// Disables the specified job schedule.
+        /// </summary>
+        /// <param name="context">The account to use.</param>
+        /// <param name="jobScheduleId">The id of the job schedule to disable.</param>
+        /// <param name="additionBehaviors">Additional client behaviors to perform.</param>
+        public void DisableJobSchedule(BatchAccountContext context, string jobScheduleId, IEnumerable<BatchClientBehavior> additionBehaviors = null)
+        {
+            if (string.IsNullOrWhiteSpace(jobScheduleId))
+            {
+                throw new ArgumentNullException("jobScheduleId");
+            }
+
+            WriteVerbose(string.Format(Resources.DisableJobSchedule, jobScheduleId));
+
+            JobScheduleOperations jobScheduleOperations = context.BatchOMClient.JobScheduleOperations;
+            jobScheduleOperations.DisableJobSchedule(jobScheduleId, additionBehaviors);
+        }
     }
 }

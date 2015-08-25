@@ -159,6 +159,10 @@
     <Compile Include="Files\GetBatchNodeFileCommand.cs" />
     <Compile Include="Files\GetBatchNodeFileContentCommand.cs" />
     <Compile Include="Files\GetBatchRemoteDesktopProtocolFileCommand.cs" />
+    <Compile Include="JobSchedules\DisableBatchJobScheduleCommand.cs" />
+    <Compile Include="JobSchedules\EnableBatchJobScheduleCommand.cs" />
+    <Compile Include="Jobs\DisableBatchJobCommand.cs" />
+    <Compile Include="Jobs\EnableBatchJobCommand.cs" />
     <Compile Include="Jobs\NewBatchJobCommand.cs" />
     <Compile Include="Jobs\RemoveBatchJobCommand.cs" />
     <Compile Include="Models.Generated\PSAutoScaleEvaluation.cs" />
@@ -193,6 +197,7 @@
     <Compile Include="Models\BatchClient.JobSchedules.cs" />
     <Compile Include="Models\BatchClientParametersBase.cs" />
     <Compile Include="Models\ChangeOSVersionParameters.cs" />
+    <Compile Include="Models\DisableJobParameters.cs" />
     <Compile Include="Models\DownloadNodeFileOptions.cs" />
     <Compile Include="Models\DownloadRemoteDesktopProtocolFileOptions.cs" />
     <Compile Include="Models\JobOperationParameters.cs" />
