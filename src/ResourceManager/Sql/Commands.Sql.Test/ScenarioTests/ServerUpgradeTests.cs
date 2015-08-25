@@ -21,21 +21,21 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     public class ServerUpgradeTests : SqlTestsBase
     {
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerUpgradeWithUpgradeHint()
         {
             RunPowerShellTest("Test-ServerUpgradeWithUpgradeHint");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerUpgradeAndCancel()
         {
             RunPowerShellTest("Test-ServerUpgradeAndCancel");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerUpgradeNegative()
         {
             RunPowerShellTest("Test-ServerUpgradeNegative");
