@@ -60,7 +60,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                 {
                     DisplayName = obj.DisplayName,
                     Type = obj.ObjectType,
-                    Id = new Guid(obj.ObjectId)/*,
+                    Id = new Guid(obj.ObjectId),
+                    SecurityEnabled = obj.SecurityEnabled/*,
                     Mail = group.Mail*/
                 };
 
@@ -101,7 +102,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
             return new PSADGroup()
             {
                 DisplayName = group.DisplayName,
-                Id = new Guid(group.ObjectId)/*,
+                Id = new Guid(group.ObjectId),
+                SecurityEnabled = group.SecurityEnabled/*,
                 Mail = group.Mail*/
             };
         }
