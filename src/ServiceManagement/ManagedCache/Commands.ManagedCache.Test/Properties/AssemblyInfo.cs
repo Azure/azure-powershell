@@ -15,6 +15,7 @@
 using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using Xunit;
 
 [assembly: AssemblyTitle("ManagedCache Test Assembly")]
 [assembly: AssemblyCompany(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCompany)]
@@ -26,3 +27,4 @@ using System.Runtime.InteropServices;
 [assembly: Guid("3E5D3114-DEBB-4DC2-BB9D-CF2A2707F74D")]
 [assembly: AssemblyVersion(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyVersion)]
 [assembly: AssemblyFileVersion(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyFileVersion)]
+[assembly: CollectionBehavior(DisableTestParallelization = true)]

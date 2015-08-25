@@ -32,9 +32,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
         private readonly EnvironmentSetupHelper _helper;
         private ApiManagementTestsFixture _fixture;
 
-        public ApiManagementTests()
+        public ApiManagementTests(ApiManagementTestsFixture fixture)
         {
             _helper = new EnvironmentSetupHelper();
+            _fixture = fixture;
         }
 
         protected void SetupManagementClients()
@@ -179,11 +180,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
 
                 _helper.RunPowerShellTest(scripts);
             }
-        }
-
-        public void SetFixture(ApiManagementTestsFixture fixture)
-        {
-            _fixture = fixture;
         }
     }
 }

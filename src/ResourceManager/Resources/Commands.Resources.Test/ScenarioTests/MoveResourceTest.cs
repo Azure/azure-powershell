@@ -20,7 +20,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
     public class MoveResourceTest
     {
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // TODO: test takes too long, reduce time and then add to Category.CheckIn
+        //[Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMoveAzureResource()
         {
             ResourcesController.NewInstance.RunPsTest("Test-MoveAzureResource");

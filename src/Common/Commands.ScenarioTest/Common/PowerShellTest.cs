@@ -87,6 +87,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
             finally
             {
                 powershell.LogPowerShellResults(output, this.TestContext);
+                powershell.Streams.Error.Clear();
             }
         }
 

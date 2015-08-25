@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
     {
         private KeyVaultTestFixture data;
 
-        public void SetFixture(KeyVaultTestFixture data)
+        public KeyVaultManagementTests(KeyVaultTestFixture data)
         {
             this.data = data;
             this.data.Initialize(TestUtilities.GetCallingClass());
