@@ -255,4 +255,7 @@
   <data name="InvalidGraphEndpoint" xml:space="preserve">
     <value>Please use Set-AzureEnvironment to set a valid GraphEndpoint for the current AzureEnvironment.</value>
   </data>
+  <data name="SetSecondaryNoOptionProvided" xml:space="preserve">
+    <value>Must provide a Secondary Option to Set.</value>
+  </data>
 </root>
