@@ -92,22 +92,6 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         }
 
         /// <summary>
-        /// Fails over a Replication Link without data loss
-        /// </summary>
-        public void FailoverLink(string resourceGroupName, string serverName, string databaseName, Guid linkId, string clientRequestId)
-        {
-            GetCurrentSqlClient(clientRequestId).DatabaseReplicationLinks.Failover(resourceGroupName, serverName, databaseName, linkId.ToString());
-        }
-
-        /// <summary>
-        /// Fails over a Replication Link with data loss
-        /// </summary>
-        public void FailoverLinkAllowDataLoss(string resourceGroupName, string serverName, string databaseName, Guid linkId, string clientRequestId)
-        {
-            GetCurrentSqlClient(clientRequestId).DatabaseReplicationLinks.FailoverAllowDataLoss(resourceGroupName, serverName, databaseName, linkId.ToString());
-        }
-
-        /// <summary>
         /// Retrieve the SQL Management client for the currently selected subscription, adding the session and request
         /// id tracing headers for the current cmdlet invocation.
         /// </summary>

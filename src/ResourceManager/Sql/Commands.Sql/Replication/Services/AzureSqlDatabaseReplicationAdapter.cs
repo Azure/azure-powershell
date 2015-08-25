@@ -296,34 +296,5 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
 
             ReplicationCommunicator.RemoveLink(link.ResourceGroupName, link.ServerName, link.DatabaseName, link.LinkId, Util.GenerateTracingId());
         }
-
-        /// <summary>
-        /// Finds and removes the Secondary Link by the secondary resource group and Azure SQL Server
-        /// </summary>
-        /// <param name="resourceGroupName">The resource group name of primary database</param>
-        /// <param name="serverName">The Azure SQL Server name of primary database</param>
-        /// <param name="databaseName">The name of primary database</param>
-        /// <param name="partnerResourceGroupName">The resource group name of secondary database</param>
-        /// <param name="partnerServerName">The Azure SQL Server name of secondary database</param>
-        /// <param name="allowDataLoss">Whether the failover operation will allow data loss</param>
-        /// <returns>The Azure SQL Database ReplicationLink object</returns>
-        internal AzureReplicationLinkModel FailoverLink(string resourceGroupName, string serverName, string databaseName, string partnerResourceGroupName, bool allowDataLoss)
-        {
-            IList<AzureReplicationLinkModel> links = ListLinks(resourceGroupName, serverName, databaseName, partnerResourceGroupName).ToList();
-
-            // Resource Management executes in context of the Secondary
-            AzureReplicationLinkModel link = links.FirstOrDefault();
-
-            if(allowDataLoss)
-            {
-                ReplicationCommunicator.FailoverLinkAllowDataLoss(link.ResourceGroupName, link.ServerName, link.DatabaseName, link.LinkId, Util.GenerateTracingId());
-            }
-            else
-            {
-                ReplicationCommunicator.FailoverLink(link.ResourceGroupName, link.ServerName, link.DatabaseName, link.LinkId, Util.GenerateTracingId());
-            }
-
-            return GetLink(link.PartnerResourceGroupName, link.PartnerServerName, link.DatabaseName, link.PartnerResourceGroupName, link.PartnerServerName);
-        }
     }
 }

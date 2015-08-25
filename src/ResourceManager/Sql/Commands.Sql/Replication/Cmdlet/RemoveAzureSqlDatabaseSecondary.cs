@@ -22,6 +22,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
 {
     [Cmdlet(VerbsCommon.Remove, "AzureSqlDatabaseSecondary",
+        SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.High)]
     public class RemoveAzureSqlDatabaseSecondary : AzureSqlDatabaseSecondaryCmdletBase
     {
