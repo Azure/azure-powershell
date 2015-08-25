@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         /// Updates storage type of the vault identified by client
         /// </summary>
         /// <param name="storageType"></param>
-        public void UpdateStorageType(string storageType)
+        public void UpdateStorageType(string resourceGroupName, string resourceName, string storageType)
         {
             UpdateVaultStorageTypeRequest updateVaultStorageTypeRequest = new UpdateVaultStorageTypeRequest()
             {
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
                 },
             };
 
-            AzureBackupVaultClient.Vault.UpdateStorageTypeAsync(updateVaultStorageTypeRequest, GetCustomRequestHeaders(), CmdletCancellationToken).Wait();
+            AzureBackupVaultClient.Vault.UpdateStorageTypeAsync(resourceGroupName, resourceName, updateVaultStorageTypeRequest, GetCustomRequestHeaders(), CmdletCancellationToken).Wait();
         }
 
         /// <summary>
@@ -122,9 +122,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
             AzureBackupVaultClient.Vault.DeleteAsync(resourceGroupName, vaultName, GetCustomRequestHeaders(), CmdletCancellationToken).Wait();
         }
 
-        public VaultCredUploadCertResponse UploadCertificate(string certName, VaultCredUploadCertRequest request)
+        public VaultCredUploadCertResponse UploadCertificate(string resourceGroupName, string resourceName, string certName, VaultCredUploadCertRequest request)
         {
-            return AzureBackupVaultClient.Vault.UploadCertificateAsync(certName, request, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+            return AzureBackupVaultClient.Vault.UploadCertificateAsync(resourceGroupName, resourceName, certName, request, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
         }
     }
 }
