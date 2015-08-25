@@ -83,22 +83,56 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             var request = new ReprotectRequest();
 
-            if (this.ProtectionEntity == null)
-            {
-                var pe = RecoveryServicesClient.GetAzureSiteRecoveryProtectionEntity(
-                    this.protectionContainerId,
-                    this.protectionEntityId);
-                this.ProtectionEntity = new ASRProtectionEntity(pe.ProtectionEntity);
+            request.FailoverDirection = this.Direction;
 
-                this.ValidateUsageById(
-                    this.ProtectionEntity.ReplicationProvider,
-                    this.protectionEntityId);
+            if (string.IsNullOrEmpty(this.ProtectionEntity.ReplicationProvider))
+            {
+                // fetch the latest PE object
+                // As get PE by name is failing before protection, get all & filter.
+                // Once after we fix get pe by name, change the logic to use the same.
+                ProtectionEntityListResponse protectionEntityListResponse =
+                    RecoveryServicesClient.GetAzureSiteRecoveryProtectionEntity(
+                    this.ProtectionEntity.ProtectionContainerId);
+
+                foreach (ProtectionEntity pe in protectionEntityListResponse.ProtectionEntities)
+                {
+                    if (0 == string.Compare(this.ProtectionEntity.FriendlyName, pe.Properties.FriendlyName, true))
+                    {
+                        this.ProtectionEntity = new ASRProtectionEntity(pe);
+                        break;
+                    }
+                }
             }
 
-            request.ReplicationProviderSettings = string.Empty;
-
             request.ReplicationProvider = this.ProtectionEntity.ReplicationProvider;
-            request.FailoverDirection = this.Direction;
+            request.ReplicationProviderSettings = new FailoverReplicationProviderSpecificInput();
+
+            if ((this.Direction == Constants.PrimaryToRecovery &&
+                    this.ProtectionEntity.ActiveLocation == Constants.RecoveryLocation) ||
+                (this.Direction == Constants.RecoveryToPrimary &&
+                    this.ProtectionEntity.ActiveLocation == Constants.PrimaryLocation))
+            {
+                throw new ArgumentException("Parameter value is not correct.", "Direction");
+            }
+
+            if (0 == string.Compare(
+                this.ProtectionEntity.ReplicationProvider,
+                Constants.HyperVReplicaAzure,
+                StringComparison.OrdinalIgnoreCase))
+            {
+                if (this.Direction == Constants.PrimaryToRecovery)
+                {
+                    AzureReprotectInput reprotectInput = new AzureReprotectInput()
+                    {
+                        HvHostVmId = this.ProtectionEntity.FabricObjectId,
+                        VmName = this.ProtectionEntity.Name,
+                        OSType = this.ProtectionEntity.OS,
+                        VHDId = this.ProtectionEntity.OSDiskId
+                    };
+
+                    request.ReplicationProviderSettings = reprotectInput;
+                }
+            }
 
             LongRunningOperationResponse response = RecoveryServicesClient.StartAzureSiteRecoveryReprotection(
                 this.protectionContainerId,

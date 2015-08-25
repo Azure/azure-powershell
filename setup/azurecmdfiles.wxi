@@ -1979,6 +1979,9 @@
                         <Component Id="cmp6932892D3EB941E513DDF7B42C800185" Guid="*">
                             <File Id="fil1D0B75D45EBB3D78E01D5D9F41B8BC1E" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\SiteRecovery\Microsoft.WindowsAzure.Commands.Common.dll" />
                         </Component>
+                        <Component Id="cmpBC2AAA143F176F9080E7BFE115AEC20F" Guid="*">
+                            <File Id="filC87D2A1F5D6F57CEA95BB463CFBCAE30" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\SiteRecovery\Microsoft.WindowsAzure.Management.Scheduler.dll" />
+                        </Component>
                         <Component Id="cmp221776A546431A254D6AFC9C774C14CB" Guid="*">
                             <File Id="filFE1DD10E0939B54760057B43058A5C93" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\SiteRecovery\Newtonsoft.Json.dll" />
                         </Component>
@@ -5365,6 +5368,7 @@
             <ComponentRef Id="cmp7EB72BFDCED68608173EFAF47EC77E49" />
             <ComponentRef Id="cmp08BF15A9163BDB63E6494854B9D1C3E9" />
             <ComponentRef Id="cmp6932892D3EB941E513DDF7B42C800185" />
+            <ComponentRef Id="cmpBC2AAA143F176F9080E7BFE115AEC20F" />
             <ComponentRef Id="cmp221776A546431A254D6AFC9C774C14CB" />
             <ComponentRef Id="cmpFC0F305B51DB7E1FB2F0920E119CEBCA" />
             <ComponentRef Id="cmpF88DDCCB35F1D6E61990314B0C8488D9" />

@@ -348,13 +348,14 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// <param name="resourceName">resource name</param>
         /// <param name="managementCert">management cert</param>
         /// <param name="acsNamespace">authenticating service namespace</param>
-        public VaultCreds(string subscriptionId, string resourceName, string managementCert, AcsNamespace acsNamespace)
+        public VaultCreds(string subscriptionId, string resourceName, string managementCert, AcsNamespace acsNamespace, string resourceNamespace)
         {
             this.SubscriptionId = subscriptionId;
             this.ResourceType = Constants.ASRVaultType;
             this.ResourceName = resourceName;
             this.ManagementCert = managementCert;
             this.AcsNamespace = acsNamespace;
+            this.ResourceNamespace = resourceNamespace;
         }
 
         #endregion
@@ -389,6 +390,13 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// </summary>
         [DataMember(Order = 4)]
         public AcsNamespace AcsNamespace { get; set; }
+
+        /// <summary>
+        /// Gets or sets the key name for HostName entry
+        /// </summary>
+        [DataMember(Order = 5)]
+        public string ResourceNamespace { get; set; }
+
         #endregion
     }
 
@@ -427,8 +435,9 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
             string managementCert,
             AcsNamespace acsNamespace,
             string channelIntegrityKey,
-            string cloudServiceName)
-            : base(subscriptionId, resourceName, managementCert, acsNamespace)
+            string cloudServiceName,
+            string resourceNamespace = "Microsoft.SiteRecovery")
+            : base(subscriptionId, resourceName, managementCert, acsNamespace, resourceNamespace)
         {
             this.ChannelIntegrityKey = channelIntegrityKey;
             this.ResourceGroupName = cloudServiceName;
