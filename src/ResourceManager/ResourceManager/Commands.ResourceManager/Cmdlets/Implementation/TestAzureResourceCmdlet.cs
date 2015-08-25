@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private void RunCmdlet()
         {
-            this.WriteWarning("This cmdlet is being deprecated. ");
+            this.WriteWarning("The Test-AzureResource cmdlet is being deprecated and will be removed in a future release.");
             this.WriteObject(this.TestResource());
         }
 
