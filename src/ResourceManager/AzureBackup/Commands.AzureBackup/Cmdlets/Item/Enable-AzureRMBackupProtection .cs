@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     [Cmdlet(VerbsLifecycle.Enable, "AzureRMBackupProtection"), OutputType(typeof(AzureRMBackupJob))]
     public class EnableAzureRMBackupProtection : AzureRMBackupItemCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.PolicyName)]
+        [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.PolicyObject)]
         [ValidateNotNullOrEmpty]
         public AzureRMBackupProtectionPolicy Policy { get; set; }
 
