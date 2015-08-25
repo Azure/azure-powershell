@@ -20,7 +20,7 @@ function Run-ComputeCloudExceptionTests
     try
     {
         # Common
-        $loc = 'West US';
+        $loc = Get-ComputeVMLocation;
         New-AzureResourceGroup -Name $rgname -Location $loc -Force;
 
         $compare = "Resource*NotFound*OperationID : `'*`'";
