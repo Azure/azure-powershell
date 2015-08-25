@@ -113,12 +113,39 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void GetByName()
         {
-            ProtectionEntityResponse protectionEntityResponse =
-                RecoveryServicesClient.GetAzureSiteRecoveryProtectionEntity(
-                this.ProtectionContainer.Name,
-                this.Name);
+            // Commenting below code as Get PE by Name is faiing for somereason in service.
+            // Taking alternate route
 
-            this.WriteProtectionEntity(protectionEntityResponse.ProtectionEntity);
+            //ProtectionEntityResponse protectionEntityResponse =
+            //    RecoveryServicesClient.GetAzureSiteRecoveryProtectionEntity(
+            //    this.ProtectionContainer.Name,
+            //    this.Name);
+
+            //this.WriteProtectionEntity(protectionEntityResponse.ProtectionEntity);
+
+            ProtectionEntityListResponse protectionEntityListResponse =
+                RecoveryServicesClient.GetAzureSiteRecoveryProtectionEntity(
+                this.ProtectionContainer.Name);
+
+            bool found = false;
+            foreach (ProtectionEntity pe in protectionEntityListResponse.ProtectionEntities)
+            {
+                if (0 == string.Compare(this.Name, pe.Name, true))
+                {
+                    this.WriteProtectionEntity(pe);
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found)
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.ProtectionEntityNotFound,
+                    this.Name,
+                    this.ProtectionContainer.FriendlyName));
+            }
         }
 
         /// <summary>

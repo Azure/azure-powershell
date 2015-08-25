@@ -21,8 +21,8 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// <summary>
     /// Adds Azure Site Recovery Protection Profile settings to a Protection Container.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureSiteRecoveryProtectionProfileDissociationJob")]
-    // [OutputType(typeof(ASRJob))]
+    [Cmdlet(VerbsLifecycle.Start, "AzureSiteRecoveryProtectionProfileDissociationJob", DefaultParameterSetName = ASRParameterSets.EnterpriseToAzure)]
+    [OutputType(typeof(ASRJob))]
     public class StartAzureSiteRecoveryProtectionProfileDissociationJob : SiteRecoveryCmdletBase
     {
         /// <summary>
@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Gets or sets Protection Profile object.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true, ValueFromPipeline = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public ASRProtectionProfile ProtectionProfile { get; set; }
 
@@ -43,6 +44,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// Gets or sets Protection Container to be removed the Protection Profile settings off.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToEnterprise, Mandatory = true)]
+        [Parameter(ParameterSetName = ASRParameterSets.EnterpriseToAzure, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ASRProtectionContainer PrimaryProtectionContainer { get; set; }
 
@@ -62,29 +64,80 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             try
             {
-                string recoveryContainerId = string.Empty;
-                recoveryContainerId = this.RecoveryProtectionContainer.ID;
-
-                DisassociateProtectionProfileInput disassociateProtectionProfileInput = new DisassociateProtectionProfileInput();
-                disassociateProtectionProfileInput.PrimaryProtectionContainerId = this.PrimaryProtectionContainer.Name;
-                disassociateProtectionProfileInput.RecoveryProtectionContainerId = this.RecoveryProtectionContainer.Name;
-                disassociateProtectionProfileInput.Name = this.ProtectionProfile.Name;
-                disassociateProtectionProfileInput.ReplicationProviderSettings = string.Empty; 
-
-                this.response = RecoveryServicesClient.DissociateAzureSiteRecoveryProtectionProfile(
-                    this.ProtectionProfile.Name,
-                    disassociateProtectionProfileInput);
-
-                JobResponse jobResponse =
-                    RecoveryServicesClient
-                    .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
-
-                WriteObject(new ASRJob(jobResponse.Job));
+                switch (this.ParameterSetName)
+                {
+                    case ASRParameterSets.EnterpriseToAzure:
+                        this.EnterpriseToAzureDissociation();
+                        break;
+                    case ASRParameterSets.EnterpriseToEnterprise:
+                        this.EnterpriseToEnterpriseDissociation();
+                        break;
+                }
             }
             catch (Exception exception)
             {
                 this.HandleException(exception);
             }
+        }
+
+        private void EnterpriseToEnterpriseDissociation()
+        {
+            if (string.Compare(
+                this.ProtectionProfile.ReplicationProvider,
+                Constants.HyperVReplica,
+                StringComparison.OrdinalIgnoreCase) != 0)
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.IncorrectReplicationProvider,
+                    this.ProtectionProfile.ReplicationProvider));
+            }
+
+            DisassociateProtectionProfileInput disassociateProtectionProfileInput = new DisassociateProtectionProfileInput();
+            disassociateProtectionProfileInput.PrimaryProtectionContainerId = this.PrimaryProtectionContainer.Name;
+            disassociateProtectionProfileInput.RecoveryProtectionContainerId = this.RecoveryProtectionContainer.Name;
+            disassociateProtectionProfileInput.Name = this.ProtectionProfile.Name;
+            disassociateProtectionProfileInput.ReplicationProviderSettings = new ProtectionProfileProviderSpecificInput();
+
+            this.response = RecoveryServicesClient.DissociateAzureSiteRecoveryProtectionProfile(
+                this.ProtectionProfile.Name,
+                disassociateProtectionProfileInput);
+
+            JobResponse jobResponse =
+                RecoveryServicesClient
+                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+
+            WriteObject(new ASRJob(jobResponse.Job));
+        }
+
+        private void EnterpriseToAzureDissociation()
+        {
+            if (string.Compare(
+                this.ProtectionProfile.ReplicationProvider,
+                Constants.HyperVReplicaAzure,
+                StringComparison.OrdinalIgnoreCase) != 0)
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.IncorrectReplicationProvider,
+                    this.ProtectionProfile.ReplicationProvider));
+            }
+
+            DisassociateProtectionProfileInput disassociateProtectionProfileInput = new DisassociateProtectionProfileInput();
+            disassociateProtectionProfileInput.PrimaryProtectionContainerId = this.PrimaryProtectionContainer.Name;
+            disassociateProtectionProfileInput.RecoveryProtectionContainerId = Constants.AzureContainer;
+            disassociateProtectionProfileInput.Name = this.ProtectionProfile.Name;
+            disassociateProtectionProfileInput.ReplicationProviderSettings = new ProtectionProfileProviderSpecificInput();
+
+            this.response = RecoveryServicesClient.DissociateAzureSiteRecoveryProtectionProfile(
+                this.ProtectionProfile.Name,
+                disassociateProtectionProfileInput);
+
+            JobResponse jobResponse =
+                RecoveryServicesClient
+                .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
+
+            WriteObject(new ASRJob(jobResponse.Job));
         }
     }
 }

@@ -277,4 +277,7 @@ Please provide a storage account with the same location as that of the vault.</v
   <data name="VaultCannotBeDeleted" xml:space="preserve">
     <value>Vault {0} cannot be deleted as it contains registered servers. Unregister them and then retry the operation.</value>
   </data>
+  <data name="ProtectionProfileNotFound" xml:space="preserve">
+    <value>Protection Profile {0} is not associated with the Vault {1}</value>
+  </data>
 </root>

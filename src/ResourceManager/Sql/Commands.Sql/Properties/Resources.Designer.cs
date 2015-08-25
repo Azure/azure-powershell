@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to More than one Active Directory group with the display name &apos;{0}&apos; was found. Please provide an object id to select the correct group..
+        ///   Looks up a localized string similar to More than one Active Directory group with the display name &apos;{0}&apos; was found. Please provide an Azure Active Directory object id to select the correct group. To get the object id use Get-AzureADGroup -SearchString &quot;{0}&quot;.
         /// </summary>
         internal static string ADGroupMoreThanOneFound {
             get {
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot find the Azure Active Directory object &apos;{0}&apos;. Please make sure that the user or application service principal you are authorizing is registered in the current subscription&apos;s Azure Active directory..
+        ///   Looks up a localized string similar to Cannot find the Azure Active Directory object &apos;{0}&apos;. Please make sure that the user or group you are authorizing is registered in the current subscription&apos;s Azure Active directory. To get a list of Azure Active Directory groups use Get-AzureADGroup, or to get a list of Azure Active Directory users use Get-AzureADUser..
         /// </summary>
         internal static string ADObjectNotFound {
             get {
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to More than one Azure Active Directory user with the display name &apos;{0}&apos; was found. Please provide an object id to select the correct user..
+        ///   Looks up a localized string similar to More than one Azure Active Directory user with the display name &apos;{0}&apos; was found. Please provide an Azure Active Directory object id to select the correct user. To get the object id use Get-AzureADUser -SearchString &quot;{0}&quot;.
         /// </summary>
         internal static string ADUserMoreThanOneFound {
             get {
@@ -178,11 +178,29 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Active Directory Group &apos;{0}&apos; is not security enabled. Only Azure Active Directory Security Enabled Groups are supported..
+        /// </summary>
+        internal static string InvalidADGroupNotSecurity {
+            get {
+                return ResourceManager.GetString("InvalidADGroupNotSecurity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot use the &apos;{0}&apos; option with other event types..
         /// </summary>
         internal static string InvalidEventTypeSet {
             get {
                 return ResourceManager.GetString("InvalidEventTypeSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please use Set-AzureEnvironment to set a valid GraphEndpoint in the AzureEnvironment. .
+        /// </summary>
+        internal static string InvalidGraphEndpoint {
+            get {
+                return ResourceManager.GetString("InvalidGraphEndpoint", resourceCulture);
             }
         }
         
