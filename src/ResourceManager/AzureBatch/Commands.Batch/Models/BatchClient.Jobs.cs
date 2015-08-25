@@ -169,5 +169,43 @@ namespace Microsoft.Azure.Commands.Batch.Models
             JobOperations jobOperations = context.BatchOMClient.JobOperations;
             jobOperations.DeleteJob(jobId, additionBehaviors);
         }
+
+        /// <summary>
+        /// Enables the specified job.
+        /// </summary>
+        /// <param name="context">The account to use.</param>
+        /// <param name="jobId">The id of the job to enable.</param>
+        /// <param name="additionBehaviors">Additional client behaviors to perform.</param>
+        public void EnableJob(BatchAccountContext context, string jobId, IEnumerable<BatchClientBehavior> additionBehaviors = null)
+        {
+            if (string.IsNullOrWhiteSpace(jobId))
+            {
+                throw new ArgumentNullException("jobId");
+            }
+
+            WriteVerbose(string.Format(Resources.EnableJob, jobId));
+
+            JobOperations jobOperations = context.BatchOMClient.JobOperations;
+            jobOperations.EnableJob(jobId, additionBehaviors);
+        }
+
+        /// <summary>
+        /// Disables the specified job.
+        /// </summary>
+        /// <param name="parameters">Specifies the job to disable as well as the job disable option.</param>
+        public void DisableJob(DisableJobParameters parameters)
+        {
+            if (parameters == null)
+            {
+                throw new ArgumentNullException("parameters");
+            }
+
+            string jobId = parameters.Job == null ? parameters.JobId : parameters.Job.Id;
+
+            WriteVerbose(string.Format(Resources.DisableJob, jobId));
+
+            JobOperations jobOperations = parameters.Context.BatchOMClient.JobOperations;
+            jobOperations.DisableJob(jobId, parameters.DisableJobOption, parameters.AdditionalBehaviors);
+        }
     }
 }
