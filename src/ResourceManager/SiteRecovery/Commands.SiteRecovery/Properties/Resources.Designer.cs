@@ -291,6 +291,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Protection Profile {0} is not associated with the Vault {1}.
+        /// </summary>
+        internal static string ProtectionProfileNotFound {
+            get {
+                return ResourceManager.GetString("ProtectionProfileNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RecoveryPlan  {0} is not associated with the Vault {1}.
         /// </summary>
         internal static string RecoveryPlanNotFound {

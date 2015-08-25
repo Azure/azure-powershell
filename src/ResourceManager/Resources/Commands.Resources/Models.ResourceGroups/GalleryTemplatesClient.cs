@@ -278,6 +278,26 @@ namespace Microsoft.Azure.Commands.Resources.Models
             return parameters;
         }
 
+        public Dictionary<string, TemplateFileParameterV1> ParseTemplateParameterContent(string templateParameterContent)
+        {
+            Dictionary<string, TemplateFileParameterV1> parameters = new Dictionary<string, TemplateFileParameterV1>();
+
+            if (!string.IsNullOrEmpty(templateParameterContent))
+            {
+                try
+                {
+                    parameters = JsonConvert.DeserializeObject<Dictionary<string, TemplateFileParameterV1>>(templateParameterContent);
+                }
+                catch (JsonSerializationException)
+                {
+                    parameters = new Dictionary<string, TemplateFileParameterV1>(
+                        JsonConvert.DeserializeObject<TemplateFileParameterV2>(templateParameterContent).Parameters);
+                }
+            }
+
+            return parameters;
+        }
+
         private RuntimeDefinedParameterDictionary ParseTemplateAndExtractParameters(string templateContent, Hashtable templateParameterObject, string templateParameterFilePath, string[] staticParameters)
         {
             RuntimeDefinedParameterDictionary dynamicParameters = new RuntimeDefinedParameterDictionary();
@@ -314,6 +334,11 @@ namespace Microsoft.Azure.Commands.Resources.Models
             {
                 var parametersFromFile = ParseTemplateParameterFileContents(templateParameterFilePath);
                 UpdateParametersWithObject(dynamicParameters, new Hashtable(parametersFromFile));
+            }
+            if (templateParameterFilePath != null && Uri.IsWellFormedUriString(templateParameterFilePath, UriKind.Absolute))
+            {
+                var parametersFromUri = ParseTemplateParameterContent(GeneralUtilities.DownloadFile(templateParameterFilePath));
+                UpdateParametersWithObject(dynamicParameters, new Hashtable(parametersFromUri));
             }
             return dynamicParameters;
         }

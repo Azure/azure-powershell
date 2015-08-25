@@ -58,9 +58,8 @@
     <Reference Include="Microsoft.Azure.Common.NetFramework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.6-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+    <Reference Include="Microsoft.Azure.ResourceManager">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.7-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.18.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.18.206251556\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
@@ -155,9 +154,15 @@
     <Compile Include="Accounts\NewBatchAccountCommand.cs" />
     <Compile Include="Accounts\NewBatchAccountKeyCommand.cs" />
     <Compile Include="Accounts\SetBatchAccountCommand.cs" />
+    <Compile Include="ComputeNodes\ResetBatchComputeNodeCommand.cs" />
+    <Compile Include="ComputeNodes\RestartBatchComputeNodeCommand.cs" />
     <Compile Include="Files\GetBatchNodeFileCommand.cs" />
     <Compile Include="Files\GetBatchNodeFileContentCommand.cs" />
     <Compile Include="Files\GetBatchRemoteDesktopProtocolFileCommand.cs" />
+    <Compile Include="JobSchedules\DisableBatchJobScheduleCommand.cs" />
+    <Compile Include="JobSchedules\EnableBatchJobScheduleCommand.cs" />
+    <Compile Include="Jobs\DisableBatchJobCommand.cs" />
+    <Compile Include="Jobs\EnableBatchJobCommand.cs" />
     <Compile Include="Jobs\NewBatchJobCommand.cs" />
     <Compile Include="Jobs\RemoveBatchJobCommand.cs" />
     <Compile Include="Models.Generated\PSAutoScaleEvaluation.cs" />
@@ -191,6 +196,8 @@
     <Compile Include="Models\BatchClient.ComputeNodes.cs" />
     <Compile Include="Models\BatchClient.JobSchedules.cs" />
     <Compile Include="Models\BatchClientParametersBase.cs" />
+    <Compile Include="Models\ChangeOSVersionParameters.cs" />
+    <Compile Include="Models\DisableJobParameters.cs" />
     <Compile Include="Models\DownloadNodeFileOptions.cs" />
     <Compile Include="Models\DownloadRemoteDesktopProtocolFileOptions.cs" />
     <Compile Include="Models\JobOperationParameters.cs" />
@@ -242,6 +249,8 @@
     <Compile Include="Models.Generated\PSUsageStatistics.cs" />
     <Compile Include="Models\PoolResizeParameters.cs" />
     <Compile Include="Models\ComputeNodeUserOperationParameters.cs" />
+    <Compile Include="Models\RebootComputeNodeParameters.cs" />
+    <Compile Include="Models\ReimageComputeNodeParameters.cs" />
     <Compile Include="Models\TaskOperationParameters.cs" />
     <Compile Include="Models\ComputeNodeOperationParameters.cs" />
     <Compile Include="Models\JobScheduleOperationParameters.cs" />
@@ -250,6 +259,7 @@
     <Compile Include="Pools\GetBatchPoolCommand.cs" />
     <Compile Include="Pools\NewBatchPoolCommand.cs" />
     <Compile Include="Pools\RemoveBatchPoolCommand.cs" />
+    <Compile Include="Pools\SetBatchPoolOSVersionCommand.cs" />
     <Compile Include="Pools\StartBatchPoolResizeCommand.cs" />
     <Compile Include="Pools\StopBatchPoolResizeCommand.cs" />
     <Compile Include="Pools\TestBatchAutoScaleCommand.cs" />

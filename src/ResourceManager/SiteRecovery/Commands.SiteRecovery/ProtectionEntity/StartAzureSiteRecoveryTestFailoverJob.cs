@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 {
                     case ASRParameterSets.ByPEObject:
                         this.networkType = "DisconnectedVMNetworkTypeForTestFailover";
-                        this.UpdateRequiredParametersAndStartFailover();
+                        this.StartPETestFailover();
                         break;
                 }
             }
@@ -91,19 +91,47 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     this.ProtectionEntity.ProtectionContainerId,
                     this.ProtectionEntity.Name);
                 this.ProtectionEntity = new ASRProtectionEntity(pe.ProtectionEntity);
-
-                /* this.ValidateUsageById(
-                    this.ProtectionEntity.ReplicationProvider,
-                    Constants.ProtectionEntityId); */
             }
 
-            request.ReplicationProviderSettings = string.Empty;
-
-            request.ReplicationProvider = this.ProtectionEntity.ReplicationProvider;
             request.FailoverDirection = this.Direction;
-
             request.NetworkID = this.networkId;
             request.NetworkType = this.networkType;
+
+            if (string.IsNullOrEmpty(this.ProtectionEntity.ReplicationProvider))
+            {
+                // fetch the latest PE object
+                // As get PE by name is failing before protection, get all & filter.
+                // Once after we fix get pe by name, change the logic to use the same.
+                ProtectionEntityListResponse protectionEntityListResponse =
+                    RecoveryServicesClient.GetAzureSiteRecoveryProtectionEntity(
+                    this.ProtectionEntity.ProtectionContainerId);
+
+                foreach (ProtectionEntity pe in protectionEntityListResponse.ProtectionEntities)
+                {
+                    if (0 == string.Compare(this.ProtectionEntity.FriendlyName, pe.Properties.FriendlyName, true))
+                    {
+                        this.ProtectionEntity = new ASRProtectionEntity(pe);
+                        break;
+                    }
+                }
+            }
+
+            request.ReplicationProvider = this.ProtectionEntity.ReplicationProvider;
+            request.ReplicationProviderSettings = new FailoverReplicationProviderSpecificInput();
+
+            if (0 == string.Compare(
+                this.ProtectionEntity.ReplicationProvider,
+                Constants.HyperVReplicaAzure,
+                StringComparison.OrdinalIgnoreCase))
+            {
+                AzureFailoverInput failoverInput = new AzureFailoverInput()
+                {
+                    PrimaryKekCertificatePfx = string.Empty,
+                    SecondaryKekCertificatePfx = string.Empty,
+                    VaultLocation = this.GetCurrentValutLocation()
+                };
+                request.ReplicationProviderSettings = failoverInput;
+            }
 
             LongRunningOperationResponse response =
                 RecoveryServicesClient.StartAzureSiteRecoveryTestFailover(
@@ -116,22 +144,6 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 .GetAzureSiteRecoveryJobDetails(PSRecoveryServicesClient.GetJobIdFromReponseLocation(response.Location));
 
             WriteObject(new ASRJob(jobResponse.Job));
-        }
-
-        /// <summary>
-        /// Updates required parameters and starts test failover.
-        /// </summary>
-        private void UpdateRequiredParametersAndStartFailover()
-        {
-            /* if (!this.ProtectionEntity.Protected)
-            {
-                throw new InvalidOperationException(
-                    string.Format(
-                    Properties.Resources.ProtectionEntityNotProtected,
-                    this.ProtectionEntity.Name));
-            } */
-
-            this.StartPETestFailover();
         }
     }
 }

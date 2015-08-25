@@ -116,3 +116,55 @@ function Test-ListComputeNodePipeline
 
 	Assert-AreEqual $count $computeNodes.Count
 }
+
+<#
+.SYNOPSIS
+Tests rebooting a compute node
+#>
+function Test-RebootComputeNode
+{
+	param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$usePipeline)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+
+	$rebootOption = ([Microsoft.Azure.Batch.Common.ComputeNodeRebootOption]::Terminate)
+
+	if ($usePipeline -eq '1')
+	{
+	    Get-AzureBatchComputeNode_ST $poolId $computeNodeId -BatchContext $context | Restart-AzureBatchComputeNode_ST -RebootOption $rebootOption -BatchContext $context
+	}
+	else
+	{
+	    Restart-AzureBatchComputeNode_ST $poolId $computeNodeId -RebootOption $rebootOption -BatchContext $context
+	}
+
+	$computeNode = Get-AzureBatchComputeNode_ST -PoolId $poolId -Filter "id eq '$computeNodeId'" -BatchContext $context
+
+	Assert-AreEqual 'Rebooting' $computeNode.State
+}
+
+<#
+.SYNOPSIS
+Tests reimaging a compute node
+#>
+function Test-ReimageComputeNode
+{
+	param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$usePipeline)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+
+	$reimageOption = ([Microsoft.Azure.Batch.Common.ComputeNodeReimageOption]::Terminate)
+
+	if ($usePipeline -eq '1')
+	{
+	    Get-AzureBatchComputeNode_ST $poolId $computeNodeId -BatchContext $context | Reset-AzureBatchComputeNode_ST -ReimageOption $reimageOption -BatchContext $context
+	}
+	else
+	{
+	    Reset-AzureBatchComputeNode_ST $poolId $computeNodeId -ReimageOption $reimageOption -BatchContext $context
+	}
+
+	$computeNode = Get-AzureBatchComputeNode_ST -PoolId $poolId -Filter "id eq '$computeNodeId'" -BatchContext $context
+
+	Assert-AreEqual 'Reimaging' $computeNode.State
+}
