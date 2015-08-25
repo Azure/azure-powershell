@@ -254,6 +254,7 @@
     <Compile Include="VirtualMachineSizes\VirtualMachineSizeBaseCmdlet.cs" />
     <Compile Include="VirtualMachine\Action\SaveAzureVMImageCommand.cs" />
     <Compile Include="VirtualMachine\Action\SetAzureVMCommand.cs" />
+    <Compile Include="VirtualMachine\Action\VirtualMachineActionBaseCmdlet.cs" />
     <Compile Include="VirtualMachine\Config\AddAzureVMAdditionalUnattendContentCommand.cs" />
     <Compile Include="VirtualMachine\Config\AddAzureVMSshPublicKeyCommand.cs" />
     <Compile Include="VirtualMachine\Config\AddAzureVMSecretCommand.cs" />
