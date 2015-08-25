@@ -205,14 +205,12 @@ namespace Microsoft.Azure.Commands.Resources.Models
         }
 
         /// <summary>
-        /// Creates a new resource group and deployment using the passed template file option which
-        /// can be user customized or from gallery templates.
+        /// Creates a new resource group
         /// </summary>
         /// <param name="parameters">The create parameters</param>
         /// <returns>The created resource group</returns>
         public virtual PSResourceGroup CreatePSResourceGroup(CreatePSResourceGroupParameters parameters)
         {
-            bool createDeployment = !string.IsNullOrEmpty(parameters.GalleryTemplateIdentity) || !string.IsNullOrEmpty(parameters.TemplateFile);
             bool resourceExists = ResourceManagementClient.ResourceGroups.CheckExistence(parameters.ResourceGroupName).Exists;
 
             ResourceGroupExtended resourceGroup = null;
@@ -221,10 +219,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 resourceGroup = CreateOrUpdateResourceGroup(parameters.ResourceGroupName, parameters.Location, parameters.Tag);
                 WriteVerbose(string.Format("Created resource group '{0}' in location '{1}'", resourceGroup.Name, resourceGroup.Location));
 
-                if (createDeployment)
-                {
-                    ExecuteDeployment(parameters);
-                }
             };
 
             if (resourceExists && !parameters.Force)
@@ -232,7 +226,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 parameters.ConfirmAction(parameters.Force,
                     ProjectResources.ResourceGroupAlreadyExists,
                     ProjectResources.NewResourceGroupMessage,
-                    parameters.DeploymentName,
                     createOrUpdateResourceGroup);
                 resourceGroup = ResourceManagementClient.ResourceGroups.Get(parameters.ResourceGroupName).ResourceGroup;
             }
@@ -242,6 +235,17 @@ namespace Microsoft.Azure.Commands.Resources.Models
             }
 
             return resourceGroup.ToPSResourceGroup(this, true);
+        }
+
+        /// <summary>
+        /// Creates a resource group deployment using the passed template file option which
+        /// can be user customized or from gallery templates.
+        /// </summary>
+        /// <param name="parameters">The create deployment parameters</param>
+        /// <returns>The created resource group deployment</returns>
+        public virtual PSResourceGroupDeployment CreatePSResourceGroupDeployment(CreatePSResourceGroupDeploymentParameters parameters)
+        {
+            return ExecuteDeployment(parameters);
         }
 
         /// <summary>

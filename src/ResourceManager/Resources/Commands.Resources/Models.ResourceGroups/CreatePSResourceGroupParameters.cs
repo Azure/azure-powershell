@@ -17,14 +17,17 @@ using System.Collections;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
-    public class CreatePSResourceGroupParameters : CreatePSResourceGroupDeploymentParameters
+    public class CreatePSResourceGroupParameters
     {
+        public string ResourceGroupName { get; set; }
+
         public string Location { get; set; }
 
         public bool Force { get; set; }
 
         public Hashtable[] Tag { get; set; }
 
-        public Action<bool, string, string, string, Action> ConfirmAction { get; set; }
+        public Action<bool, string, string, Action> ConfirmAction { get; set; }
+
     }
 }

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
 {
     public class TestAzureResourceGroupTemplateCommandTests
     {
-        private TestAzureResourceGroupTemplateCommand cmdlet;
+        private TestAzureResourceGroupDeploymentCommand cmdlet;
 
         private Mock<ResourcesClient> resourcesClientMock;
 
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
         {
             resourcesClientMock = new Mock<ResourcesClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new TestAzureResourceGroupTemplateCommand()
+            cmdlet = new TestAzureResourceGroupDeploymentCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 ResourcesClient = resourcesClientMock.Object

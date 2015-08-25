@@ -75,9 +75,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact]
-        public void TestNewResourceGroupWithTemplate()
+        public void TestNewResourceGroupDeploymentWithTemplate()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-NewResourceGroupWithTemplateThenGetWithAndWithoutDetails");
+            ResourcesController.NewInstance.RunPsTest("Test-NewResourceGroupDeploymentWithTemplateThenGetWithAndWithoutDetails");
         }
 
         [Fact]
