@@ -294,6 +294,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 finally
                 {
                     powershell.LogPowerShellResults(output);
+                    powershell.Streams.Error.Clear();
                 }
             }
         }
