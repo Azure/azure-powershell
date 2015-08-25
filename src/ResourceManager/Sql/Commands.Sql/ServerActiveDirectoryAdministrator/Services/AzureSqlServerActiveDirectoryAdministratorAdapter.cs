@@ -65,6 +65,10 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
             {
                 if (_activeDirectoryClient == null)
                 {
+                    if (!Profile.Context.Environment.IsEndpointSet(AzureEnvironment.Endpoint.Graph))
+                    {
+                        throw new ArgumentException(string.Format(Resources.InvalidGraphEndpoint));
+                    }
                     _activeDirectoryClient = new MicrosoftAzureCommandsResourcesModelsActiveDirectory.ActiveDirectoryClient(Profile.Context);
                 }
                 return this._activeDirectoryClient;
