@@ -23,8 +23,8 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroupDeployments
     /// <summary>
     /// Validate a template to see whether it's using the right syntax, resource providers, resource types, etc.
     /// </summary>
-    [Cmdlet(VerbsDiagnostic.Test, "AzureResourceGroupTemplate", DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(List<PSResourceManagerError>))]
-    public class TestAzureResourceGroupTemplateCommand : ResourceWithParameterBaseCmdlet, IDynamicParameters
+    [Cmdlet(VerbsDiagnostic.Test, "AzureResourceGroupDeployment", DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(List<PSResourceManagerError>))]
+    public class TestAzureResourceGroupDeploymentCommand : ResourceWithParameterBaseCmdlet, IDynamicParameters
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroupDeployments
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The deployment mode.")]
         public DeploymentMode Mode { get; set; }
 
-        public TestAzureResourceGroupTemplateCommand()
+        public TestAzureResourceGroupDeploymentCommand()
         {
             this.Mode = DeploymentMode.Incremental;
         }
@@ -47,8 +47,7 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroupDeployments
                 TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
                 TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
                 ParameterUri = TemplateParameterUri,
-                TemplateVersion = TemplateVersion,
-                StorageAccountName = StorageAccountName
+                TemplateVersion = TemplateVersion
             };
 
             WriteObject(ResourcesClient.ValidatePSResourceGroupDeployment(parameters, Mode));

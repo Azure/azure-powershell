@@ -58,7 +58,6 @@ namespace Microsoft.Azure.Commands.Resources
                 TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
                 ParameterUri = TemplateParameterUri,
                 TemplateVersion = TemplateVersion,
-                StorageAccountName = StorageAccountName
             };
 
             if(this.Mode == DeploymentMode.Complete)

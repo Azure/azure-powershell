@@ -253,7 +253,7 @@ function Test-RemoveDeployment
     }
 }
 
-function Test-NewResourceGroupWithTemplateThenGetWithAndWithoutDetails
+function Test-NewResourceGroupDeploymentWithTemplateThenGetWithAndWithoutDetails
 {
     # Setup
     $rgname = Get-ResourceGroupName
@@ -264,14 +264,14 @@ function Test-NewResourceGroupWithTemplateThenGetWithAndWithoutDetails
     try
     {
         # Test
-        $actual = New-AzureResourceGroup -Name $rgname -Location $location -TemplateFile $templateFile `
-                    -siteName $websiteName -hostingPlanName "test" -siteLocation "West US" `
-                    -Tag @{ Name = "testtag"; Value = "testval" }
+		# Create resource group
+		New-AzureResourceGroup -Name $rgname -Location $location
+        $actual = New-AzureResourceGroupDeployment -ResourceGroupName $rgname -TemplateFile $templateFile `
+                    -siteName $websiteName -hostingPlanName "test" -siteLocation "West US"
 
         $expected1 = Get-AzureResourceGroup -Name $rgname
         # Assert
         Assert-AreEqual $expected1.ResourceGroupName $actual.ResourceGroupName
-        Assert-AreEqual $expected1.Tags[0]["Name"] $actual.Tags[0]["Name"]
         Assert-AreEqual $expected1.Resources.Count 2
 
         $expected2 = Get-AzureResourceGroup
