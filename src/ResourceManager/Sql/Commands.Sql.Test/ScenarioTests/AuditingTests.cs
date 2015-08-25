@@ -44,182 +44,182 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         }
         
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingDatabaseUpdatePolicyWithStorage()
         {
             RunPowerShellTest("Test-AuditingDatabaseUpdatePolicyWithStorage");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingDatabaseUpdatePolicyWithStorageV2()
         {
             RunPowerShellTest("Test-AuditingDatabaseUpdatePolicyWithStorageV2");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingServerUpdatePolicyWithStorage()
         {
             RunPowerShellTest("Test-AuditingServerUpdatePolicyWithStorage");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingDatabaseUpdatePolicyWithEventTypes()
         {
             RunPowerShellTest("Test-AuditingDatabaseUpdatePolicyWithEventTypes");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingServerUpdatePolicyWithEventTypes()
         {
             RunPowerShellTest("Test-AuditingServerUpdatePolicyWithEventTypes");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingDisableDatabaseAuditing()
         {
             RunPowerShellTest("Test-AuditingDisableDatabaseAuditing");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingDisableServerAuditing()
         {
             RunPowerShellTest("Test-AuditingDisableServerAuditing");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingDatabaseDisableEnableKeepProperties()
         {
             RunPowerShellTest("Test-AuditingDatabaseDisableEnableKeepProperties");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingServerDisableEnableKeepProperties()
         {
             RunPowerShellTest("Test-AuditingServerDisableEnableKeepProperties");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingUseServerDefault()
         {
             RunPowerShellTest("Test-AuditingUseServerDefault");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingFailedDatabaseUpdatePolicyWithNoStorage()
         {
             RunPowerShellTest("Test-AuditingFailedDatabaseUpdatePolicyWithNoStorage");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingFailedServerUpdatePolicyWithNoStorage()
         {
             RunPowerShellTest("Test-AuditingFailedServerUpdatePolicyWithNoStorage");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingFailedUseServerDefault()
         {
             RunPowerShellTest("Test-AuditingFailedUseServerDefault");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingDatabaseUpdatePolicyWithEventTypeShortcuts()
         {
             RunPowerShellTest("Test-AuditingDatabaseUpdatePolicyWithEventTypeShortcuts");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingServerUpdatePolicyWithEventTypeShortcuts()
         {
             RunPowerShellTest("Test-AuditingServerUpdatePolicyWithEventTypeShortcuts");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingDatabaseUpdatePolicyKeepPreviousStorage()
         {
             RunPowerShellTest("Test-AuditingDatabaseUpdatePolicyKeepPreviousStorage");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingServerUpdatePolicyKeepPreviousStorage()
         {
             RunPowerShellTest("Test-AuditingServerUpdatePolicyKeepPreviousStorage");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingFailWithBadDatabaseIndentity()
         {
             RunPowerShellTest("Test-AuditingFailWithBadDatabaseIndentity");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingFailWithBadServerIndentity()
         {
             RunPowerShellTest("Test-AuditingFailWithBadServerIndentity");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingDatabaseStorageKeyRotation()
         {
             RunPowerShellTest("Test-AuditingDatabaseStorageKeyRotation");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingServerStorageKeyRotation()
         {
             RunPowerShellTest("Test-AuditingServerStorageKeyRotation");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingServerUpdatePolicyWithRetention()
         {
             RunPowerShellTest("Test-AuditingServerUpdatePolicyWithRetention");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingDatabaseUpdatePolicyWithRetention()
         {
             RunPowerShellTest("Test-AuditingDatabaseUpdatePolicyWithRetention");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingServerRetentionKeepProperties()
         {
             RunPowerShellTest("Test-AuditingServerRetentionKeepProperties");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingDatabaseRetentionKeepProperties()
         {
             RunPowerShellTest("Test-AuditingDatabaseRetentionKeepProperties");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingDatabaseUpdatePolicyWithSameNameStorageOnDifferentRegion()
         {
             RunPowerShellTest("Test-AuditingDatabaseUpdatePolicyWithSameNameStorageOnDifferentRegion");

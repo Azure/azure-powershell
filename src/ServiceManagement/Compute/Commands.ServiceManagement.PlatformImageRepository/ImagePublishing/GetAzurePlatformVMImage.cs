@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Linq;
-using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageRepository.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute;
+using System.Linq;
+using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageRepository.ImagePublishing
 {
@@ -101,6 +101,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
                         SmallIconUri = imageDetails.SmallIconUri,
                         SharingStatus = imageDetails.SharingStatus,
                         PublisherName = imageDetails.PublisherName,
+                        Offer = (imageDetails.ComputeImageAttributes == null) ? string.Empty : imageDetails.ComputeImageAttributes.Offer,
+                        Sku = (imageDetails.ComputeImageAttributes == null) ? string.Empty : imageDetails.ComputeImageAttributes.Sku,
+                        Version = (imageDetails.ComputeImageAttributes == null) ? string.Empty : imageDetails.ComputeImageAttributes.Version,
                         ReplicationProgress = imageDetails.ReplicationProgress.Select(
                                                detail => new ReplicationProgressContext
                                                {
