@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         /// <param name="location"></param>
         /// <param name="skuParam"></param>
         /// <returns></returns>
-        public AzureBackupVault CreateOrUpdateAzureBackupVault(string resourceGroupName, string vaultName, string location, Hashtable[] Tag)
+        public AzureBackupVault CreateOrUpdateAzureBackupVault(string resourceGroupName, string vaultName, string location)
         {
             var createResourceParameters = new AzureBackupVaultCreateOrUpdateParameters()
             {
@@ -44,7 +44,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
                         Name = defaultSKU,
                     },
                 },
-                Tags = Tag.ConvertToDictionary(),
             };
 
             var response = AzureBackupVaultClient.Vault.CreateOrUpdateAsync(resourceGroupName, vaultName, createResourceParameters, GetCustomRequestHeaders(), CmdletCancellationToken).Result;

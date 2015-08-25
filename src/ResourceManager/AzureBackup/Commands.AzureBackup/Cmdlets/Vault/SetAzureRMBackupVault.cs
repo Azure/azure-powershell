@@ -32,9 +32,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public AzureBackupVaultStorageType Storage { get; set; }
 
         // TODO: Add support for tags
-        [Alias("Tags")]
-        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ResourceTags)]
-        public Hashtable[] Tag { get; set; }
+        //[Alias("Tags")]
+        //[Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ResourceTags)]
+        //public Hashtable[] Tag { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -47,11 +47,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     WriteDebug(String.Format(Resources.SettingStorageType, Storage));
 
                     AzureBackupClient.UpdateStorageType(Vault.ResourceGroupName, Vault.Name, Storage.ToString());
-                }
-
-                if (Tag != null)
-                {
-                    AzureBackupClient.CreateOrUpdateAzureBackupVault(Vault.ResourceGroupName, Vault.Name, Vault.Region, Tag);
                 }
 
                 var backupVault = AzureBackupClient.GetVault(Vault.ResourceGroupName, Vault.Name);

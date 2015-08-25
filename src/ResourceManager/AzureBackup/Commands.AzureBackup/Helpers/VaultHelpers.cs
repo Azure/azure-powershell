@@ -38,7 +38,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
                 Region = vault.Location,
                 ResourceGroupName = GetResourceGroup(vault.Id),
                 Storage = storageType,
-                Tags = vault.Tags.GetTagsHashtables(),
             };
 
             return response;
