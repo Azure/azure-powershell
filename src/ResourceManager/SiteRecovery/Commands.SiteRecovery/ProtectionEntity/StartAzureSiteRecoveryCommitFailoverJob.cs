@@ -84,30 +84,29 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             var request = new CommitFailoverRequest();
 
-            if (this.ProtectionEntity == null)
-            {
-                var pe = RecoveryServicesClient.GetAzureSiteRecoveryProtectionEntity(
-                    this.protectionContainerId,
-                    this.protectionEntityId);
-                this.ProtectionEntity = new ASRProtectionEntity(pe.ProtectionEntity);
+            request.FailoverDirection = this.Direction;
 
-                this.ValidateUsageById(
-                    this.ProtectionEntity.ReplicationProvider, 
-                    Constants.ProtectionEntityId);
+            if (string.IsNullOrEmpty(this.ProtectionEntity.ReplicationProvider))
+            {
+                // fetch the latest PE object
+                // As get PE by name is failing before protection, get all & filter.
+                // Once after we fix get pe by name, change the logic to use the same.
+                ProtectionEntityListResponse protectionEntityListResponse =
+                    RecoveryServicesClient.GetAzureSiteRecoveryProtectionEntity(
+                    this.ProtectionEntity.ProtectionContainerId);
+
+                foreach (ProtectionEntity pe in protectionEntityListResponse.ProtectionEntities)
+                {
+                    if (0 == string.Compare(this.ProtectionEntity.FriendlyName, pe.Properties.FriendlyName, true))
+                    {
+                        this.ProtectionEntity = new ASRProtectionEntity(pe);
+                        break;
+                    }
+                }
             }
 
             request.ReplicationProvider = this.ProtectionEntity.ReplicationProvider;
-            request.ReplicationProviderSettings = string.Empty;
-            request.FailoverDirection = this.Direction;
- 
-            //if (this.ProtectionEntity.ActiveLocation == Constants.PrimaryLocation)
-            //{
-            //    request.FailoverDirection = Constants.RecoveryToPrimary;
-            //}
-            //else
-            //{
-            //    request.FailoverDirection = Constants.PrimaryToRecovery;
-            //}
+            request.ReplicationProviderSettings = new FailoverReplicationProviderSpecificInput();
 
             LongRunningOperationResponse response = RecoveryServicesClient.StartAzureSiteRecoveryCommitFailover(
                 this.protectionContainerId,

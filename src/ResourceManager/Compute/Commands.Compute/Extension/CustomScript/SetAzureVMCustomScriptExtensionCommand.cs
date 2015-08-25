@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Commands.Compute
         {
             if (string.IsNullOrEmpty(this.StorageAccountName) || string.IsNullOrEmpty(this.StorageAccountKey))
             {
-                return string.Empty;
+                return null;
             }
             else
             {
