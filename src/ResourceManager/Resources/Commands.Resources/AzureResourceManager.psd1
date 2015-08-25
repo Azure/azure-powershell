@@ -56,7 +56,7 @@ ScriptsToProcess = @()
 # Type files (.ps1xml) to be loaded when importing this module  
 TypesToProcess = @(  
     '.\Compute\Microsoft.Azure.Commands.Compute.Types.ps1xml',
-	'.\Sql\Microsoft.Azure.Commands.Sql.Types.ps1xml' 
+    '.\Sql\Microsoft.Azure.Commands.Sql.Types.ps1xml' 
 )  
   
 # Format files (.ps1xml) to be loaded when importing this module  

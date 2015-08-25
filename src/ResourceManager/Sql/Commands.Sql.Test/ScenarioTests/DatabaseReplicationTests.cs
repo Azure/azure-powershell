@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     public class DatabaseReplicationTests : SqlTestsBase
     {
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDatabaseCopy()
         {
             RunPowerShellTest("Test-CreateDatabaseCopy");
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateSecondaryDatabase()
         {
             RunPowerShellTest("Test-CreateSecondaryDatabase");
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveSecondaryDatabase()
         {
             RunPowerShellTest("Test-RemoveSecondaryDatabase");
