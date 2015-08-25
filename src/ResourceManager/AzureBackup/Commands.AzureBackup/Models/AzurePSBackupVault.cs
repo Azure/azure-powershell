@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.AzureBackup.Properties;
 using System;
+using System.Collections;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Models
 {
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
 
         public string Region { get; set; }
 
-        // public Hashtable[] Tags { get; protected set; }
+        public Hashtable[] Tags { get; set; }
 
         public string Storage { get; set; }
 

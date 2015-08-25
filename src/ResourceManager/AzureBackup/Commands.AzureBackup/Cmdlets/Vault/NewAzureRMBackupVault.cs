@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.AzureBackup.Helpers;
 using Microsoft.Azure.Commands.AzureBackup.Models;
 using Microsoft.Azure.Commands.AzureBackup.Properties;
 using System;
+using System.Collections;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
@@ -41,10 +42,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         [Parameter(Position = 3, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.StorageType)]
         public AzureBackupVaultStorageType Storage { get; set; }
 
-        // TODO: Add support for tags
-        //[Alias("Tags")]
-        //[Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ResourceTags)]
-        //public Hashtable[] Tag { get; set; }        
+        [Alias("Tags")]
+        [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ResourceTags)]
+        public Hashtable[] Tag { get; set; }        
 
         public override void ExecuteCmdlet()
         {
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 WriteDebug(String.Format(Resources.CreatingBackupVault, ResourceGroupName, Name));
 
-                var createdVault = AzureBackupClient.CreateOrUpdateAzureBackupVault(ResourceGroupName, Name, Region);
+                var createdVault = AzureBackupClient.CreateOrUpdateAzureBackupVault(ResourceGroupName, Name, Region, Tag);
 
                 if (Storage != 0)
                 {

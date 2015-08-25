@@ -12,9 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.AzureBackup.Helpers;
 using Microsoft.Azure.Management.BackupServices.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
 {
@@ -29,7 +32,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         /// <param name="location"></param>
         /// <param name="skuParam"></param>
         /// <returns></returns>
-        public AzureBackupVault CreateOrUpdateAzureBackupVault(string resourceGroupName, string vaultName, string location)
+        public AzureBackupVault CreateOrUpdateAzureBackupVault(string resourceGroupName, string vaultName, string location, Hashtable[] Tag)
         {
             var createResourceParameters = new AzureBackupVaultCreateOrUpdateParameters()
             {
@@ -41,6 +44,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
                         Name = defaultSKU,
                     },
                 },
+                Tags = Tag.ConvertToDictionary(),
             };
 
             var response = AzureBackupVaultClient.Vault.CreateOrUpdateAsync(resourceGroupName, vaultName, createResourceParameters, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
