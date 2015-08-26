@@ -1,5 +1,13 @@
 ## 2015.09.03 version 0.9.8
 
+* Azure Compute (ARM) Cmdlets
+  * Added Id parameter for VM cmdlets to support piping scenario without ResourceGroupName parameter
+  * Added Set-AzureVMDataDisk cmdlet
+  * Changed the output format of Get image cmdlets as a table
+* Azure Compute (Service Management) cmdlets
+  * Changed the warning message to a non-terminating error message for ResourceNotFound in VM cmdlets
+  * Exposed ComputeImageConfig in Get-AzurePlatformVMImage cmdlet
+
 ## 2015.08.17 version 0.9.7
 * Azure Profile cmdlets
   * New-AzureProfile
