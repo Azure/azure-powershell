@@ -87,7 +87,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     VerifyRDPExtension(vmName, serviceName);
 
                     // Disbale extesnion
-                    DisableExtension(vmName, serviceName);
+                    DisableExtension(vmName, serviceName, "1.*");
                     ValidateVMAccessExtension(vmName, serviceName, false);
                     pass = true;
 
@@ -301,11 +301,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             Console.WriteLine("Azure VM RDP file downloaded.");
         }
 
-        private void DisableExtension(string vmName, string serviceName)
+        private void DisableExtension(string vmName, string serviceName, string ver = "2.0")
         {
             var vm = GetAzureVM(vmName, serviceName);
             Console.WriteLine("Disabling the VM Access extesnion for the vm {0}",vmName);
-            vm = vmPowershellCmdlets.SetAzureVMAccessExtension(vm, disable:true, version:"2.0", forceUpdate:true);
+            vm = vmPowershellCmdlets.SetAzureVMAccessExtension(vm, disable:true, version:ver, forceUpdate:true);
             vmPowershellCmdlets.UpdateAzureVM(vmName, serviceName, vm);
             Console.WriteLine("Disabled VM Access extesnion for the vm {0}", vmName);
         }
