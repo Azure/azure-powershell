@@ -171,7 +171,6 @@ function Create-ResourceGroupForTest ()
 	return $rg
 }
 
-
 <#
 	.SYNOPSIS 
 	removes a resource group that was used for testing
