@@ -12,13 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Common.Properties;
 using System;
 using System.Collections;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Xml;
+using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Newtonsoft.Json;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common

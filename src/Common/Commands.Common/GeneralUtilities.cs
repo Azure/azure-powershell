@@ -12,9 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -29,6 +26,9 @@ using System.Security.Permissions;
 using System.ServiceModel.Channels;
 using System.Text;
 using System.Xml;
+using Hyak.Common;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {

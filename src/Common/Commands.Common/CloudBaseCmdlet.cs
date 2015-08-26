@@ -12,10 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Common.Properties;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using System;
 using System.Diagnostics;
 using System.Globalization;
@@ -24,6 +20,10 @@ using System.Net;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Security;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.WindowsAzure.Commands.Common.Properties;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {

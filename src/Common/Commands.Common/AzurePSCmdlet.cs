@@ -12,16 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Concurrent;
+using System.Diagnostics;
+using System.IO;
+using System.Management.Automation;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
-using System;
-using System.Diagnostics;
-using System.IO;
-using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {

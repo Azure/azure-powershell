@@ -38,14 +38,14 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureProfile Profile { get; set; }
+        public AzureSMProfile Profile { get; set; }
         
         /// <summary>
         /// Creates a communicator for Azure Sql Databases FirewallRules
         /// </summary>
         /// <param name="profile"></param>
         /// <param name="subscription"></param>
-        public AzureSqlCapabilitiesCommunicator(AzureProfile profile, AzureSubscription subscription)
+        public AzureSqlCapabilitiesCommunicator(AzureSMProfile profile, AzureSubscription subscription)
         {
             Profile = profile;
             if (subscription != Subscription)
