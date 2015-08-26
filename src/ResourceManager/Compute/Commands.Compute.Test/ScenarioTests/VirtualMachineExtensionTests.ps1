@@ -24,7 +24,7 @@ function Test-VirtualMachineExtension
     try
     {
         # Common
-        $loc = 'westus';
+        $loc = Get-ComputeVMLocation;
         New-AzureResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
@@ -163,7 +163,7 @@ function Test-VirtualMachineExtensionUsingHashTable
     try
     {
         # Common
-        $loc = 'westus';
+        $loc = Get-ComputeVMLocation;
         New-AzureResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
@@ -325,7 +325,7 @@ function Test-VirtualMachineCustomScriptExtension
     try
     {
         # Common
-        $loc = 'westus';
+        $loc = Get-ComputeVMLocation;
         New-AzureResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
@@ -494,7 +494,7 @@ function Test-VirtualMachineCustomScriptExtensionFileUri
     try
     {
         # Common
-        $loc = 'westus';
+        $loc = Get-ComputeVMLocation;
         New-AzureResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
@@ -652,7 +652,7 @@ function Test-VirtualMachineAccessExtension
     try
     {
         # Common
-        $loc = 'westus';
+        $loc = Get-ComputeVMLocation;
         New-AzureResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
