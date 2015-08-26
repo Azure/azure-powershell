@@ -12,34 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
+using Microsoft.Azure.Commands.Batch.Models;
 using System.Management.Automation;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Set, Constants.AzureRmBatchAccount), OutputType(typeof(BatchAccountContext))]
-    public class SetBatchAccountCommand : BatchCmdletBase
+    [Cmdlet(VerbsCommon.Get, Constants.AzureRmBatchSubscriptionQuotas), OutputType(typeof(PSBatchSubscriptionQuotas))]
+    public class GetBatchSubscriptionQuotasCommand : BatchCmdletBase
     {
-        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, 
-            HelpMessage = "The name of the Batch service account to update.")]
-        [Alias("Name")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, 
+            HelpMessage = "The region use for getting the quotas of the subscription in the Batch Service.")]
         [ValidateNotNullOrEmpty]
-        public string AccountName { get; set; }
-
-        [Alias("Tags")]
-        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, 
-            HelpMessage = "An array of hashtables which represents the tags to set on the account.")]
-        public Hashtable[] Tag { get; set; }
-
-        [Parameter(ValueFromPipelineByPropertyName = true)]
-        public string ResourceGroupName { get; set; }
+        public string Location { get; set; }
 
         protected override void ProcessRecord()
         {
-            BatchAccountContext context = BatchClient.UpdateAccount(this.ResourceGroupName, this.AccountName, this.Tag);
-            WriteObject(context);
+            PSBatchSubscriptionQuotas quotas = BatchClient.GetSubscriptionQuotas(this.Location);
+            WriteObject(quotas);
         }
     }
 }
