@@ -43,7 +43,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
         public void TestGetManageUrl()
         {
             NewAzureSqlDatabaseServerContext contextCmdlet = new NewAzureSqlDatabaseServerContext();
-            var profile = new AzureProfile();
+            var profile = new AzureSMProfile();
             var account = new AzureAccount {Id = "mockAccount", Type = AzureAccount.AccountType.User};
             var subscription = new AzureSubscription
             {

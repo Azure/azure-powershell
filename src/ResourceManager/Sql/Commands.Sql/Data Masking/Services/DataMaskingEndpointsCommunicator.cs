@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureProfile Profile { get; set; }
+        public AzureSMProfile Profile { get; set; }
 
-        public DataMaskingEndpointsCommunicator(AzureProfile profile, AzureSubscription subscription)
+        public DataMaskingEndpointsCommunicator(AzureSMProfile profile, AzureSubscription subscription)
         {
             Profile = profile;
             if (subscription != Subscription)

@@ -39,9 +39,9 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureProfile Profile { get; set; }
+        public AzureSMProfile Profile { get; set; }
 
-        public AuditingEndpointsCommunicator(AzureProfile profile, AzureSubscription subscription)
+        public AuditingEndpointsCommunicator(AzureSMProfile profile, AzureSubscription subscription)
         {
             Profile = profile;
             if (subscription != Subscription)

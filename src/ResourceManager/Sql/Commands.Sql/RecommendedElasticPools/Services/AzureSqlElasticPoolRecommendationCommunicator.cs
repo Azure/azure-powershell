@@ -39,14 +39,14 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureProfile Profile { get; set; }
+        public AzureSMProfile Profile { get; set; }
 
         /// <summary>
         /// Creates a communicator for Azure Sql Recommended Elastic Pool
         /// </summary>
         /// <param name="profile"></param>
         /// <param name="subscription"></param>
-        public AzureSqlElasticPoolRecommendationCommunicator(AzureProfile profile, AzureSubscription subscription)
+        public AzureSqlElasticPoolRecommendationCommunicator(AzureSMProfile profile, AzureSubscription subscription)
         {
             Profile = profile;
             if (subscription != Subscription)

@@ -52,14 +52,14 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureProfile Profile { get; set; }
+        public AzureSMProfile Profile { get; set; }
 
         /// <summary>
         /// Creates a communicator for Azure SQL Server Active Directory administrator
         /// </summary>
         /// <param name="profile"></param>
         /// <param name="subscription"></param>
-        public AzureSqlServerActiveDirectoryAdministratorCommunicator(AzureProfile profile, AzureSubscription subscription)
+        public AzureSqlServerActiveDirectoryAdministratorCommunicator(AzureSMProfile profile, AzureSubscription subscription)
         {
             Profile = profile;
             if (subscription != Subscription)

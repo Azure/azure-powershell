@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                         if (StorageEndpointSuffix == null)
                         {
                             StorageEndpointSuffix =
-                                Profile.Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix);
+                                Profile.DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix);
                         }
                         break;
                 }

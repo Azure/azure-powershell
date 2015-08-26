@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
             _helper = new EnvironmentSetupHelper();
         }
 
+
         protected void SetupManagementClients()
         {
             var apiManagementManagementClient = GetApiManagementManagementClient();
@@ -181,9 +182,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
             }
         }
 
-        public void SetFixture(ApiManagementTestsFixture fixture)
+        public void SetFixture(ApiManagementTestsFixture data)
         {
-            _fixture = fixture;
+            this._fixture = data;
         }
     }
 }

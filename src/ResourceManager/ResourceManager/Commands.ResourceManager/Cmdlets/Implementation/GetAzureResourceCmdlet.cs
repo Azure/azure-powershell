@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             this.SubscriptionId = this.subscriptionIds.DistinctArray();
             if (string.IsNullOrWhiteSpace(this.ResourceId) && !this.SubscriptionId.CoalesceEnumerable().Any() && !this.TenantLevel)
             {
-                this.SubscriptionId = this.Profile.Context.Subscription.Id.AsArray();
+                this.SubscriptionId = this.Profile.DefaultContext.Subscription.Id.AsArray();
             }
 
             this.RunCmdlet();

@@ -288,7 +288,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
             Debug.Assert(string.IsNullOrEmpty(AzureSdkPath));
 
             AzureSdkPath = CreateDirectory("AzureSdk");
-            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
+            ProfileClient client = new ProfileClient(new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             AzureSession.DataStore.WriteFile(publishSettingsPath, File.ReadAllText(publishSettingsPath));
             client.ImportPublishSettings(publishSettingsPath, null);
             client.Profile.Save();

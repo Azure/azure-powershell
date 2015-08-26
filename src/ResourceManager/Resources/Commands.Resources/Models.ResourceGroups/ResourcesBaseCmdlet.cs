@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             {
                 if (this.policiesClient == null)
                 {
-                    this.policiesClient = new AuthorizationClient(this.Profile.Context);
+                    this.policiesClient = new AuthorizationClient(this.Profile.DefaultContext);
                 }
                 return this.policiesClient;
             }

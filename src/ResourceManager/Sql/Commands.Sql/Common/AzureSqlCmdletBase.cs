@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            ModelAdapter = InitModelAdapter(Profile.Context.Subscription);
+            ModelAdapter = InitModelAdapter(Profile.DefaultContext.Subscription);
             M model = this.GetEntity();
             M updatedModel = this.ApplyUserInputToModel(model);
             M responseModel = this.PersistChanges(updatedModel);

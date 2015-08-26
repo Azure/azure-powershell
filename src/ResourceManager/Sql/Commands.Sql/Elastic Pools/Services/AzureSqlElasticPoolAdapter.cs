@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureProfile Profile { get; set; }
+        public AzureSMProfile Profile { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure Subscription
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlElasticPoolAdapter(AzureProfile Profile, AzureSubscription subscription)
+        public AzureSqlElasticPoolAdapter(AzureSMProfile Profile, AzureSubscription subscription)
         {
             this._subscription = subscription;
             this.Profile = Profile;

@@ -138,7 +138,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ProcessGetWebsiteWithNullSubscription()
         {
-            currentProfile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+            currentProfile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
             currentProfile.Subscriptions.Clear();
             currentProfile.Save();
             AzurePSCmdlet.CurrentProfile = currentProfile;

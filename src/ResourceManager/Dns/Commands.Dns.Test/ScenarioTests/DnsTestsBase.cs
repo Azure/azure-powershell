@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
     using Microsoft.Azure.Gallery; 
     using Microsoft.Azure.Management.Authorization; 
     using Microsoft.Azure.Management.Resources; 
-    using Microsoft.Azure.Subscriptions.Csm; 
     using Microsoft.Azure.Test; 
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.Azure.Management.Dns;
+    using Microsoft.Azure.Subscriptions;
 
 
     public class DnsTestsBase 

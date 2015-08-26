@@ -28,7 +28,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
     /// </summary>
     public abstract class TestBase
     {
-        protected AzureProfile currentProfile;
+        protected AzureSMProfile currentProfile;
 
         public TestBase()
         {
@@ -45,9 +45,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
             {
                 AzureSession.DataStore = new MemoryDataStore();
             }
-            currentProfile = new AzureProfile();
+            currentProfile = new AzureSMProfile();
 
-            if (currentProfile.Context.Subscription == null)
+            if (currentProfile.DefaultContext.Subscription == null)
             {
                 var newGuid = Guid.NewGuid();
                 currentProfile.Subscriptions[newGuid] = new AzureSubscription { Id = newGuid, Name = "test", Environment = EnvironmentName.AzureCloud, Account = "test" };

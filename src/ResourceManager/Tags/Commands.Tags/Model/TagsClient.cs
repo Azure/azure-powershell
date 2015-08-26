@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Tags.Model
         /// Creates new TagsClient
         /// </summary>
         /// <param name="subscription">Subscription containing resources to manipulate</param>
-        public TagsClient(AzureProfile profile, AzureSubscription subscription)
+        public TagsClient(AzureSMProfile profile, AzureSubscription subscription)
             : this(AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ResourceManager))
         {
 

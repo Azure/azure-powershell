@@ -133,6 +133,32 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             client.DisableAutoScale(parameters);
         }
 
+        public static string WaitForOSVersionChange(BatchController controller, BatchAccountContext context, string poolId)
+        {
+            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
+            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            ListPoolOptions options = new ListPoolOptions(context, behaviors)
+            {
+                PoolId = poolId
+            };
+
+            DateTime timeout = DateTime.Now.AddMinutes(2);
+            PSCloudPool pool = client.ListPools(options).First();
+            while (pool.CurrentOSVersion != pool.TargetOSVersion)
+            {
+                if (DateTime.Now > timeout)
+                {
+                    throw new TimeoutException("Timed out waiting for active state pool");
+                }
+                Sleep(5000);
+                pool = client.ListPools(options).First();
+            }
+
+            return pool.TargetOSVersion;
+        }
+
         public static void WaitForSteadyPoolAllocation(BatchController controller, BatchAccountContext context, string poolId)
         {
             RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
@@ -369,6 +395,34 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             ListComputeNodeOptions options = new ListComputeNodeOptions(context, poolId, null, behaviors);
 
             return client.ListComputeNodes(options).First().Id;
+        }
+
+        /// <summary>
+        /// Waits for a compute node to get to the idle state
+        /// </summary>
+        public static void WaitForIdleComputeNode(BatchController controller, BatchAccountContext context, string poolId, string computeNodeId)
+        {
+            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
+            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            ListComputeNodeOptions options = new ListComputeNodeOptions(context, poolId, null, behaviors)
+            {
+                ComputeNodeId = computeNodeId
+            };
+
+            DateTime timeout = DateTime.Now.AddMinutes(2);
+            PSComputeNode computeNode = client.ListComputeNodes(options).First();
+            if (computeNode.State != ComputeNodeState.Idle)
+            {
+                if (DateTime.Now > timeout)
+                {
+                    throw new TimeoutException("Timed out waiting for idle compute node");
+                }
+
+                Sleep(5000);
+                computeNode = client.ListComputeNodes(options).First();
+            }
         }
 
         /// <summary>

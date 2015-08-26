@@ -41,14 +41,14 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureProfile Profile { get; set; }
+        public AzureSMProfile Profile { get; set; }
 
         /// <summary>
         /// Constructs a server adapter
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlServerAdapter(AzureProfile profile, AzureSubscription subscription)
+        public AzureSqlServerAdapter(AzureSMProfile profile, AzureSubscription subscription)
         {
             Profile = profile;
             Communicator = new AzureSqlServerCommunicator(Profile, subscription);

@@ -241,7 +241,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         public ResourceManagerRestRestClient GetResourcesClient()
         {
-            var endpoint = this.Profile.Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.ResourceManager);
+            var endpoint = this.Profile.DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.ResourceManager);
 
             if (string.IsNullOrWhiteSpace(endpoint))
             {
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 endpointUri: endpointUri,
                 httpClientHelper: HttpClientHelperFactory.Instance
                 .CreateHttpClientHelper(
-                        credentials: AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(this.Profile.Context),
+                        credentials: AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(this.Profile.DefaultContext),
                         headerValues: AzureSession.ClientFactory.UserAgents));
         }
 

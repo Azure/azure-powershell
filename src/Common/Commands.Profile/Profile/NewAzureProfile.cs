@@ -32,7 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
     /// <summary>
     /// Creates new Microsoft Azure profile.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureProfile"), OutputType(typeof(AzureProfile))]
+    [Cmdlet(VerbsCommon.New, "AzureProfile"), OutputType(typeof(AzureSMProfile))]
     public class NewAzureProfileCommand : AzurePSCmdlet
     {
         internal const string CertificateParameterSet = "Certificate";
@@ -100,18 +100,18 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         public Hashtable Properties { get; set; }
 
         // do not use the Profile parameter for this cmdlet
-        private new AzureProfile Profile { get; set; }
+        private new AzureSMProfile Profile { get; set; }
 
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            AzureProfile azureProfile;
+            AzureSMProfile AzureSMProfile;
             AzureProfileSettings settings;
             if (ParameterSetName == PropertyBagParameterSet)
             {
-                azureProfile = new AzureProfile();
+                AzureSMProfile = new AzureSMProfile();
                 var actualParameterSet = ParseHashTableParameters(Properties, out settings);
-                InitializeAzureProfile(azureProfile, actualParameterSet, settings);
+                InitializeAzureProfile(AzureSMProfile, actualParameterSet, settings);
             }
             else if (ParameterSetName == FileParameterSet)
             {
@@ -120,16 +120,16 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                     throw new ArgumentException(Resources.InvalidNewProfilePath);
                 }
 
-                azureProfile = new AzureProfile(Path);
+                AzureSMProfile = new AzureSMProfile(Path);
             }
             else
             {
-                azureProfile = new AzureProfile();
+                AzureSMProfile = new AzureSMProfile();
                 settings = AzureProfileSettings.Create(this);
-                InitializeAzureProfile(azureProfile, ParameterSetName, settings);
+                InitializeAzureProfile(AzureSMProfile, ParameterSetName, settings);
             }
 
-            WriteObject(azureProfile);
+            WriteObject(AzureSMProfile);
         }
 
         protected override void InitializeProfile()
@@ -137,7 +137,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             // do not initialize the current profile for this cmdlet
         }
 
-        private void InitializeAzureProfile(AzureProfile profile, string parameterSet, AzureProfileSettings settings)
+        private void InitializeAzureProfile(AzureSMProfile profile, string parameterSet, AzureProfileSettings settings)
         {
             var savedCache = AzureSession.TokenCache;
             AzureSession.TokenCache = DefaultMemoryTokenCache;

@@ -99,21 +99,21 @@ namespace Microsoft.WindowsAzure.Commands.CloudService
 
             if (Service.IsPresent)
             {
-                IsDNSAvailable(Profile.Context.Subscription, Name);
+                IsDNSAvailable(Profile.DefaultContext.Subscription, Name);
             }
             else if (Storage.IsPresent)
             {
-                IsStorageServiceAvailable(Profile.Context.Subscription, Name);
+                IsStorageServiceAvailable(Profile.DefaultContext.Subscription, Name);
             }
             else if (Website.IsPresent)
             {
-                WebsitesClient = WebsitesClient ?? new WebsitesClient(Profile, Profile.Context.Subscription, WriteDebug);
+                WebsitesClient = WebsitesClient ?? new WebsitesClient(Profile, Profile.DefaultContext.Subscription, WriteDebug);
                 IsWebsiteAvailable(Name);
             }
             else
             {
-                ServiceBusClient = ServiceBusClient ?? new ServiceBusClientExtensions(Profile, Profile.Context.Subscription);
-                IsServiceBusNamespaceAvailable(Profile.Context.Subscription.Id.ToString(), Name);
+                ServiceBusClient = ServiceBusClient ?? new ServiceBusClientExtensions(Profile, Profile.DefaultContext.Subscription);
+                IsServiceBusNamespaceAvailable(Profile.DefaultContext.Subscription.Id.ToString(), Name);
             }
         }
 

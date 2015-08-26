@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.WebApp.Models
             {
                 if (_websitesClient == null)
                 {
-                    _websitesClient = new WebsitesClient(this.Profile.Context);
+                    _websitesClient = new WebsitesClient(this.Profile.DefaultContext);
                 }
                 return _websitesClient;
             }

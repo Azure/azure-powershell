@@ -32,14 +32,14 @@ namespace Microsoft.WindowsAzure.Commands.Profile
     /// <summary>
     /// Creates new Microsoft Azure profile.
     /// </summary>
-    [Cmdlet(VerbsCommon.Select, "AzureProfile"), OutputType(typeof(AzureProfile))]
+    [Cmdlet(VerbsCommon.Select, "AzureProfile"), OutputType(typeof(AzureSMProfile))]
     public class SelectAzureProfileCommand : AzurePSCmdlet
     {
         internal const string NewProfileParameterSet = "NewProfile";
         internal const string DefaultProfileParameterSet = "DefaultProfile";
 
         [Parameter(ParameterSetName=NewProfileParameterSet, Mandatory=true, Position=0, ValueFromPipelineByPropertyName=true)]
-        public new AzureProfile Profile { get; set; }
+        public new AzureSMProfile Profile { get; set; }
 
         [Parameter(ParameterSetName=DefaultProfileParameterSet, Mandatory=true)]
         public SwitchParameter Default { get; set; }

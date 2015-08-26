@@ -37,14 +37,14 @@ namespace Microsoft.Azure.Commands.Sql.Service
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureProfile Profile { get; set; }
+        public AzureSMProfile Profile { get; set; }
 
         /// <summary>
         /// Constructs adapter
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlDatabaseIndexRecommendationAdapter(AzureProfile profile, AzureSubscription subscription)
+        public AzureSqlDatabaseIndexRecommendationAdapter(AzureSMProfile profile, AzureSubscription subscription)
         {
             Profile = profile;
             Communicator = new AzureSqlDatabaseIndexRecommendationCommunicator(Profile, subscription);

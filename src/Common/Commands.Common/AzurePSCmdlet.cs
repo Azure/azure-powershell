@@ -30,16 +30,16 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         private readonly ConcurrentQueue<string> _debugMessages = new ConcurrentQueue<string>();
         private RecordingTracingInterceptor _httpTracingInterceptor;
         private DebugStreamTraceListener _adalListener;
-        protected static AzureProfile _currentProfile = null;
+        protected static AzureSMProfile _currentProfile = null;
 
         [Parameter(Mandatory = false, HelpMessage = "In-memory profile.")]
-        public AzureProfile Profile { get; set; }
+        public AzureSMProfile Profile { get; set; }
 
         /// <summary>
         /// Sets the current profile - the profile used when no Profile is explicitly passed in.  Should be used only by
         /// Profile cmdlets and tests that need to set up a particular profile
         /// </summary>
-        public static AzureProfile CurrentProfile 
+        public static AzureSMProfile CurrentProfile 
         {
             private get
             {
@@ -83,14 +83,14 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// Create the default profile, based on the default profile path
         /// </summary>
         /// <returns>The default profile, serialized from the default location on disk</returns>
-        protected static AzureProfile InitializeDefaultProfile()
+        protected static AzureSMProfile InitializeDefaultProfile()
         {
             if (!string.IsNullOrEmpty(AzureSession.ProfileDirectory) && !string.IsNullOrEmpty(AzureSession.ProfileFile))
             {
                 try
                 {
                    GeneralUtilities.EnsureDefaultProfileDirectoryExists();
-                   return new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+                   return new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
                 }
                 catch
                 {
@@ -98,7 +98,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 }
             }
 
-            return new AzureProfile();
+            return new AzureSMProfile();
         }
 
         /// <summary>
@@ -109,10 +109,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             if (Profile != null)
             {
-                return Profile.Context;
+                return Profile.DefaultContext;
             }
 
-            return CurrentProfile.Context;
+            return CurrentProfile.DefaultContext;
         }
 
         protected static void InitializeTokenCaches()
@@ -134,7 +134,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// Update the token cache when setting the profile
         /// </summary>
         /// <param name="profile"></param>
-        protected static void SetTokenCacheForProfile(AzureProfile profile)
+        protected static void SetTokenCacheForProfile(AzureSMProfile profile)
         {
             var defaultProfilePath = Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile);
             if (string.Equals(profile.ProfilePath, defaultProfilePath, StringComparison.OrdinalIgnoreCase))
@@ -162,9 +162,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 WriteDebugWithTimestamp(string.Format(Resources.BeginProcessingWithParameterSetLog, this.GetType().Name, ParameterSetName));
             }
 
-            if (Profile != null && Profile.Context != null && Profile.Context.Account != null && Profile.Context.Account.Id != null)
+            if (Profile != null && Profile.DefaultContext != null && Profile.DefaultContext.Account != null && Profile.DefaultContext.Account.Id != null)
             {
-                WriteDebugWithTimestamp(string.Format("using account id '{0}'...", Profile.Context.Account.Id));
+                WriteDebugWithTimestamp(string.Format("using account id '{0}'...", Profile.DefaultContext.Account.Id));
             }
 
             _httpTracingInterceptor = _httpTracingInterceptor?? new RecordingTracingInterceptor(_debugMessages);
@@ -205,7 +205,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         public bool HasCurrentSubscription
         {
-            get { return Profile.Context.Subscription != null; }
+            get { return Profile.DefaultContext.Subscription != null; }
         }
 
         protected string CurrentPath()
