@@ -51,6 +51,14 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Location Capabilities\Cmdlet\GetAzureSqlCapability.cs" />
+    <Compile Include="Location Capabilities\Model\EditionCapabilityModel.cs" />
+    <Compile Include="Location Capabilities\Model\LocationCapabilityModel.cs" />
+    <Compile Include="Location Capabilities\Model\MaxSizeCapabilityModel.cs" />
+    <Compile Include="Location Capabilities\Model\ServerVersionCapabilityModel.cs" />
+    <Compile Include="Location Capabilities\Model\ServiceObjectiveCapabilityModel.cs" />
+    <Compile Include="Location Capabilities\Services\AzureSqlCapabilitiesAdapter.cs" />
+    <Compile Include="Location Capabilities\Services\AzureSqlCapabilitiesCommunicator.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
