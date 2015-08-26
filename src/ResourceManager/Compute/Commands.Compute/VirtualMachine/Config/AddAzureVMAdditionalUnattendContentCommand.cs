@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Compute
         ProfileNouns.AdditionalUnattendContent),
     OutputType(
         typeof(PSVirtualMachine))]
-    public class NewAzureAdditionalUnattendContentCommand : AzurePSCmdlet
+    public class NewAzureAdditionalUnattendContentCommand : AzureSMCmdlet
     {
         private const string defaultComponentName = "Microsoft-Windows-Shell-Setup";
         private const string defaultPassName = "oobeSystem";

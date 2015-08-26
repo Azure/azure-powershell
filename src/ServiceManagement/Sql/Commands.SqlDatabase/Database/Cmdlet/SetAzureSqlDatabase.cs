@@ -30,7 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureSqlDatabase", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.Medium)]
-    public class SetAzureSqlDatabase : AzurePSCmdlet
+    public class SetAzureSqlDatabase : AzureSMCmdlet
     {
         #region Parameter sets
 

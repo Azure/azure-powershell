@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// <summary>
     /// The base class for all Windows Azure Recovery Services commands
     /// </summary>
-    public abstract class SiteRecoveryCmdletBase : AzurePSCmdlet
+    public abstract class SiteRecoveryCmdletBase : AzureSMCmdlet
     {
         /// <summary>
         /// Recovery Services client.

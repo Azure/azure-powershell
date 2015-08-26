@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureAutomationAccount")]
     [OutputType(typeof(AutomationAccount))]
-    public class GetAzureAutomationAccount : AzurePSCmdlet
+    public class GetAzureAutomationAccount : AzureSMCmdlet
     {
         /// <summary>
         /// The automation client.

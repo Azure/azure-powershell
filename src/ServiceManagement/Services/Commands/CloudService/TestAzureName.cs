@@ -25,7 +25,7 @@ using System.Reflection;
 namespace Microsoft.WindowsAzure.Commands.CloudService
 {
     [Cmdlet(VerbsDiagnostic.Test, "AzureName"), OutputType(typeof(bool))]
-    public class TestAzureNameCommand : AzurePSCmdlet, IModuleAssemblyInitializer
+    public class TestAzureNameCommand : AzureSMCmdlet, IModuleAssemblyInitializer
     {
         internal ServiceBusClientExtensions ServiceBusClient { get; set; }
         internal ICloudServiceClient CloudServiceClient { get; set; }

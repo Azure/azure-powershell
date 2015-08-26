@@ -22,7 +22,7 @@ using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics
 {
-    public abstract class StreamAnalyticsBaseCmdlet : AzurePSCmdlet
+    public abstract class StreamAnalyticsBaseCmdlet : AzureSMCmdlet
     {
         private StreamAnalyticsClient streamAnalyticsClient;
 

@@ -20,7 +20,7 @@ using System.Net.Http;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class KeyVaultCmdletBase : AzurePSCmdlet
+    public class KeyVaultCmdletBase : AzureSMCmdlet
     {        
         public KeyVaultCmdletBase()
         {        

@@ -15,7 +15,7 @@ using Newtonsoft.Json;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
 {
-    public class DscExtensionPublishCmdletCommonBase : AzurePSCmdlet
+    public class DscExtensionPublishCmdletCommonBase : AzureSMCmdlet
     {
         //Publish
         private const string CreateArchiveParameterSetName = "CreateArchive";

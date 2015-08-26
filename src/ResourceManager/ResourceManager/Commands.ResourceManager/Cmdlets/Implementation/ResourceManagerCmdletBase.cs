@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// The base class for resource manager cmdlets.
     /// </summary>
-    public abstract class ResourceManagerCmdletBase : AzurePSCmdlet
+    public abstract class ResourceManagerCmdletBase : AzureSMCmdlet
     {
         /// <summary>
         /// The cancellation source.

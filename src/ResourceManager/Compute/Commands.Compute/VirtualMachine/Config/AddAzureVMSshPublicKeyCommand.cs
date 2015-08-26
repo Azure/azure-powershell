@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Compute
         ProfileNouns.SshPublicKey),
     OutputType(
         typeof(PSVirtualMachine))]
-    public class NewAzureSshPublicKeyCommand : AzurePSCmdlet
+    public class NewAzureSshPublicKeyCommand : AzureSMCmdlet
     {
         [Alias("VMProfile")]
         [Parameter(

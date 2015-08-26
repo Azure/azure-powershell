@@ -16,7 +16,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Tags.Model
 {
-    public abstract class TagBaseCmdlet : AzurePSCmdlet
+    public abstract class TagBaseCmdlet : AzureSMCmdlet
     {
         private TagsClient tagsClient;
 

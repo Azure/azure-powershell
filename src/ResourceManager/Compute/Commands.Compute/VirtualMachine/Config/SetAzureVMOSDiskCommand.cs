@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Compute
         DefaultParameterSetName = WindowsParamSet),
     OutputType(
         typeof(PSVirtualMachine))]
-    public class SetAzureVMOSDiskCommand : AzurePSCmdlet
+    public class SetAzureVMOSDiskCommand : AzureSMCmdlet
     {
         protected const string WindowsParamSet = "WindowsParamSet";
         protected const string LinuxParamSet = "LinuxParamSet";

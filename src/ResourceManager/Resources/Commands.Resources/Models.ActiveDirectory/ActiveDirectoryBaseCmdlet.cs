@@ -17,7 +17,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory.Models
 {
-    public abstract class ActiveDirectoryBaseCmdlet : AzurePSCmdlet
+    public abstract class ActiveDirectoryBaseCmdlet : AzureSMCmdlet
     {
         private ActiveDirectoryClient activeDirectoryClient;
 

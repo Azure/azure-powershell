@@ -21,7 +21,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    public abstract class StorageAccountBaseCmdlet : AzurePSCmdlet
+    public abstract class StorageAccountBaseCmdlet : AzureSMCmdlet
     {
         private StorageManagementClientWrapper storageClientWrapper;
         

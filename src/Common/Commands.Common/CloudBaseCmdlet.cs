@@ -27,7 +27,7 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
-    public abstract class CloudBaseCmdlet<T> : AzurePSCmdlet
+    public abstract class CloudBaseCmdlet<T> : AzureSMCmdlet
         where T : class
     {
         private Binding _serviceBinding;

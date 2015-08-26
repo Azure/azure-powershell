@@ -25,7 +25,7 @@ using Microsoft.WindowsAzure.Commands.Common.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
-    public abstract class AzurePSCmdlet : PSCmdlet
+    public abstract class AzureSMCmdlet : PSCmdlet
     {
         private readonly ConcurrentQueue<string> _debugMessages = new ConcurrentQueue<string>();
         private RecordingTracingInterceptor _httpTracingInterceptor;
@@ -63,7 +63,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected static TokenCache DefaultMemoryTokenCache { get; set; }
 
-        static AzurePSCmdlet()
+        static AzureSMCmdlet()
         {
             if (!TestMockSupport.RunningMocked)
             {
@@ -182,7 +182,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             if (Profile == null)
             {
-                Profile = AzurePSCmdlet.CurrentProfile;
+                Profile = AzureSMCmdlet.CurrentProfile;
             }
 
             SetTokenCacheForProfile(Profile);

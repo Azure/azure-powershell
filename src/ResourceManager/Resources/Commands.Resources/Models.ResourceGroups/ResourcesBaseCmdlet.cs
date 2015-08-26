@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
     /// <summary> 
     /// Base class for all resources cmdlets
     /// </summary>
-    public abstract class ResourcesBaseCmdlet : AzurePSCmdlet
+    public abstract class ResourcesBaseCmdlet : AzureSMCmdlet
     {
         /// <summary>
         /// Field that holds the resource client instance

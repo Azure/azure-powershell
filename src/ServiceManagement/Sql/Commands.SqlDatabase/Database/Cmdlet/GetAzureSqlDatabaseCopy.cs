@@ -30,7 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureSqlDatabaseCopy", ConfirmImpact = ConfirmImpact.None,
         DefaultParameterSetName = "ByServerNameOnly")]
-    public class GetAzureSqlDatabaseCopy : AzurePSCmdlet
+    public class GetAzureSqlDatabaseCopy : AzureSMCmdlet
     {
         #region Parameter Sets
 

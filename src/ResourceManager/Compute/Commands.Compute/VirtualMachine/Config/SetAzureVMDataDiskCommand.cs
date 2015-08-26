@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Compute
         ProfileNouns.DataDisk),
     OutputType(
         typeof(PSVirtualMachine))]
-    public class SetAzureVMDataDiskCommand : AzurePSCmdlet
+    public class SetAzureVMDataDiskCommand : AzureSMCmdlet
     {
         private const string NameParameterSet = "ChangeWithName";
         private const string LunParameterSet = "ChangeWithLun";

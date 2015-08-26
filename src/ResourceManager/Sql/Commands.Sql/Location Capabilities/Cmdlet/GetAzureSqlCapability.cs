@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Cmdlet
     [Cmdlet(VerbsCommon.Get, "AzureSqlCapability", 
         ConfirmImpact = ConfirmImpact.None,
         DefaultParameterSetName = _filtered)]
-    public class GetAzureSqlCapability : AzurePSCmdlet
+    public class GetAzureSqlCapability : AzureSMCmdlet
     {
         /// <summary>
         /// Parameter set name for when the cmdlet is invoked without specifying -Default
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            AzureSqlCapabilitiesAdapter adapter = new AzureSqlCapabilitiesAdapter(Profile, Profile.Context.Subscription);
+            AzureSqlCapabilitiesAdapter adapter = new AzureSqlCapabilitiesAdapter(Profile, Profile.DefaultContext.Subscription);
             LocationCapabilityModel model = adapter.GetLocationCapabilities(LocationName);
             int depth = 0;
 

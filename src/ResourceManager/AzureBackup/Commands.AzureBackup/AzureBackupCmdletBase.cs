@@ -31,7 +31,7 @@ using CmdletModel = Microsoft.Azure.Commands.AzureBackup.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
-    public abstract class AzureBackupCmdletBase : AzurePSCmdlet
+    public abstract class AzureBackupCmdletBase : AzureSMCmdlet
     {
         /// <summary>
         /// Azure backup client.

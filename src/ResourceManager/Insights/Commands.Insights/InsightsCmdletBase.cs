@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Insights
     /// <summary>
     /// Base class for the Azure Insights SDK Cmdlets
     /// </summary>
-    public abstract class InsightsCmdletBase : AzurePSCmdlet
+    public abstract class InsightsCmdletBase : AzureSMCmdlet
     {
         /// <summary>
         /// Executes the Cmdlet. This is a callback function to simplify the execption handling

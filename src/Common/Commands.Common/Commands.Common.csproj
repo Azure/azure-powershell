@@ -161,7 +161,7 @@
     <Compile Include="ChannelHelper.cs" />
     <Compile Include="ClientCreatedArgs.cs" />
     <Compile Include="CloudBaseCmdlet.cs" />
-    <Compile Include="AzurePSCmdlet.cs" />
+    <Compile Include="AzureSMCmdlet.cs" />
     <Compile Include="CmdletExtensions.cs" />
     <Compile Include="ConfigurationConstants.cs" />
     <Compile Include="DiagnosticsHelper.cs" />

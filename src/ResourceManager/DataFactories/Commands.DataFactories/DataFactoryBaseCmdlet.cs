@@ -22,7 +22,7 @@ using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    public abstract class DataFactoryBaseCmdlet : AzurePSCmdlet
+    public abstract class DataFactoryBaseCmdlet : AzureSMCmdlet
     {
         private DataFactoryClient dataFactoryClient;
 

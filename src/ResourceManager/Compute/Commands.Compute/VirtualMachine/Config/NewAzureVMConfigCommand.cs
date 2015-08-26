@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Compute
         ProfileNouns.VirtualMachineConfig),
     OutputType(
         typeof(PSVirtualMachine))]
-    public class NewAzureVMConfigCommand : AzurePSCmdlet
+    public class NewAzureVMConfigCommand : AzureSMCmdlet
     {
         [Alias("ResourceName", "Name")]
         [Parameter(

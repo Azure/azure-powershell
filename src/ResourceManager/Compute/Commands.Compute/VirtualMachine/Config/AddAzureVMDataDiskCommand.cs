@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Compute
         ProfileNouns.DataDisk),
     OutputType(
         typeof(PSVirtualMachine))]
-    public class AddAzureVMDataDiskCommand : AzurePSCmdlet
+    public class AddAzureVMDataDiskCommand : AzureSMCmdlet
     {
         [Alias("VMProfile")]
         [Parameter(
