@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
     public class AzureSqlDatabaseBackupAttributeTests
     {
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureSqlDatabaseRestorePointsAttributes()
         {
             Type type = typeof(GetAzureSqlDatabaseRestorePoints);

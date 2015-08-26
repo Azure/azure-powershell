@@ -24,7 +24,7 @@ function Test-AvailabilitySet
     try
     {
         # Common
-        $loc = 'West US';
+        $loc = Get-ComputeVMLocation;
         New-AzureResourceGroup -Name $rgname -Location $loc -Force;
 
         $asetName = 'avs' + $rgname;
