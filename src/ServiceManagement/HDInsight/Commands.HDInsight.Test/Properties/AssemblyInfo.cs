@@ -46,4 +46,3 @@ using Xunit;
 [assembly: AssemblyVersion(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyVersion)]
 [assembly: AssemblyFileVersion(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyFileVersion)]
 [assembly: CLSCompliant(false)]
-[assembly: CollectionBehavior(DisableTestParallelization = true)]

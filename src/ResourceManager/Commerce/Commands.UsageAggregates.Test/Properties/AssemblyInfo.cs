@@ -34,4 +34,3 @@ using Xunit;
 
 [assembly: AssemblyVersion("0.1.0")]
 [assembly: AssemblyFileVersion("0.1.0")]
-[assembly: CollectionBehavior(DisableTestParallelization = true)]

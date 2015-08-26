@@ -47,4 +47,3 @@ using Xunit;
 // by using the '*' as shown below:
 [assembly: AssemblyVersion(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyVersion)]
 [assembly: AssemblyFileVersion(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyFileVersion)]
-[assembly: CollectionBehavior(DisableTestParallelization = true)]

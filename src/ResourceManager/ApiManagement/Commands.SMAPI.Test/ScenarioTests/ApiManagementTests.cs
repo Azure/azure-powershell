@@ -27,16 +27,16 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
     using Microsoft.WindowsAzure.Management.Storage;
     using Xunit;
 
-    public class ApiManagementTests : IClassFixture<ApiManagementTestsFixture>
+    public class ApiManagementTests : IUseFixture<ApiManagementTestsFixture>
     {
         private readonly EnvironmentSetupHelper _helper;
         private ApiManagementTestsFixture _fixture;
 
-        public ApiManagementTests(ApiManagementTestsFixture fixture)
+        public ApiManagementTests()
         {
             _helper = new EnvironmentSetupHelper();
-            _fixture = fixture;
         }
+
 
         protected void SetupManagementClients()
         {
@@ -180,6 +180,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
 
                 _helper.RunPowerShellTest(scripts);
             }
+        }
+
+        public void SetFixture(ApiManagementTestsFixture data)
+        {
+            this._fixture = data;
         }
     }
 }
