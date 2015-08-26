@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Compute
         ProfileNouns.NetworkInterface),
     OutputType(
         typeof(PSVirtualMachine))]
-    public class RemoveAzureVMNetworkInterfaceCommand : AzurePSCmdlet
+    public class RemoveAzureVMNetworkInterfaceCommand : AzureSMCmdlet
     {
         [Alias("VMProfile")]
         [Parameter(

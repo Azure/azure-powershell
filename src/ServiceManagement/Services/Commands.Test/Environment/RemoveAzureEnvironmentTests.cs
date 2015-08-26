@@ -53,7 +53,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
 
             const string name = "test";
             var profile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-            AzurePSCmdlet.CurrentProfile = profile;
+            AzureSMCmdlet.CurrentProfile = profile;
             ProfileClient client = new ProfileClient(profile);
             client.AddOrSetEnvironment(new AzureEnvironment
             {

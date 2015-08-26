@@ -141,7 +141,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
             currentProfile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
             currentProfile.Subscriptions.Clear();
             currentProfile.Save();
-            AzurePSCmdlet.CurrentProfile = currentProfile;
+            AzureSMCmdlet.CurrentProfile = currentProfile;
 
             // Test
             var getAzureWebsiteCommand = new GetAzureWebsiteCommand

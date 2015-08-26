@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using Microsoft.Azure.Commands.ApiManagement.Properties;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
-    public class AzureApiManagementCmdletBase : AzurePSCmdlet
+    public class AzureApiManagementCmdletBase : AzureSMCmdlet
     {
         protected static TimeSpan LongRunningOperationDefaultTimeout = TimeSpan.FromMinutes(1);
 

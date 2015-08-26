@@ -17,7 +17,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    public abstract class NetworkBaseCmdlet : AzurePSCmdlet
+    public abstract class NetworkBaseCmdlet : AzureSMCmdlet
     {
 
         private NetworkClient _networkClient;

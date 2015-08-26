@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
     /// <summary>
     /// The base class for all Azure Sql cmdlets
     /// </summary>
-    public abstract class AzureSqlCmdletBase<M, A> : AzurePSCmdlet
+    public abstract class AzureSqlCmdletBase<M, A> : AzureSMCmdlet
     {
         /// <summary>
         /// Stores the per request session Id for all request made in this cmdlet call.

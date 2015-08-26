@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Compute
         DefaultParameterSetName = WindowsParamSet),
     OutputType(
         typeof(PSVirtualMachine))]
-    public class SetAzureVMOperatingSystemCommand : AzurePSCmdlet
+    public class SetAzureVMOperatingSystemCommand : AzureSMCmdlet
     {
         protected const string WindowsParamSet = "Windows";
         protected const string LinuxParamSet = "Linux";

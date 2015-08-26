@@ -12,14 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Common.Authentication.XmlSchema;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml.Serialization;
+using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Common.Authentication.XmlSchema;
 
 namespace Microsoft.Azure.Common.Authentication
 {

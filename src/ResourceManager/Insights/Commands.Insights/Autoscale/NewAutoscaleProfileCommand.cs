@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
     /// Create an autoscale profile
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AutoscaleProfile"), OutputType(typeof(AutoscaleProfile))]
-    public class NewAutoscaleProfileCommand : AzurePSCmdlet
+    public class NewAutoscaleProfileCommand : AzureSMCmdlet
     {
         private const string AddAutoscaleProfileNoScheduleParamGroup = "Parameters for AddAutoscale profile cmdlet without scheduled times";
         private const string AddAutoscaleProfileFixDateParamGroup = "Parameters for AddAutoscale profile cmdlet using fix date scheduling";

@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
     [Cmdlet(VerbsCommon.New, "AzureApiManagementVirtualNetwork"), OutputType(typeof(PsApiManagementVirtualNetwork))]
-    public class NewAzureApiManagementVirtualNetwork : AzurePSCmdlet
+    public class NewAzureApiManagementVirtualNetwork : AzureSMCmdlet
     {
         [Parameter(
             ValueFromPipelineByPropertyName = false, 

@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Compute
         DefaultParameterSetName = NicIdParamSetName),
     OutputType(
         typeof(PSVirtualMachine))]
-    public class AddAzureVMNetworkInterfaceCommand : AzurePSCmdlet
+    public class AddAzureVMNetworkInterfaceCommand : AzureSMCmdlet
     {
         protected const string NicIdParamSetName = "GetNicFromNicId";
         protected const string NicObjectParamSetName = "GetNicFromNicObject";

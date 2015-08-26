@@ -20,7 +20,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.HDInsight.Commands
 {
-    public class HDInsightCmdletBase : AzurePSCmdlet
+    public class HDInsightCmdletBase : AzureSMCmdlet
     {
         private AzureHdInsightManagementClient _hdInsightManagementClient;
         private AzureHdInsightJobManagementClient _hdInsightJobClient;

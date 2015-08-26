@@ -161,7 +161,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Utilities
             var testManager = new IntegrationTestManager();
             AzureSession.DataStore = new MemoryDataStore();
             var profile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-            AzurePSCmdlet.CurrentProfile = profile;
+            AzureSMCmdlet.CurrentProfile = profile;
             TestCredentials = testManager.GetCredentials("default");
             if (TestCredentials == null)
             {

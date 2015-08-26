@@ -294,7 +294,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests
                 certificate);
 
             var profile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-            AzurePSCmdlet.CurrentProfile = profile;
+            AzureSMCmdlet.CurrentProfile = profile;
             ProfileClient client = new ProfileClient(profile);
             client.Profile.Environments[UnitTestEnvironmentName] = new AzureEnvironment
                 {

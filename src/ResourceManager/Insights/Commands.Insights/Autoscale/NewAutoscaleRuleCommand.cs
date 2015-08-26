@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
     /// Create an Autoscale rule
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AutoscaleRule"), OutputType(typeof(ScaleRule))]
-    public class NewAutoscaleRuleCommand : AzurePSCmdlet
+    public class NewAutoscaleRuleCommand : AzureSMCmdlet
     {
         private readonly TimeSpan MinimumTimeWindow = TimeSpan.FromMinutes(5);
         private readonly TimeSpan MinimumTimeGrain = TimeSpan.FromMinutes(1);

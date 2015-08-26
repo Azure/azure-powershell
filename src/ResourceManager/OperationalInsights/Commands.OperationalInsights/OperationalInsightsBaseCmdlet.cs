@@ -19,7 +19,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    public abstract class OperationalInsightsBaseCmdlet : AzurePSCmdlet
+    public abstract class OperationalInsightsBaseCmdlet : AzureSMCmdlet
     {
         protected const string ByWorkspaceName = "ByWorkspaceName";
         protected const string ByWorkspaceObject = "ByWorkspaceObject";

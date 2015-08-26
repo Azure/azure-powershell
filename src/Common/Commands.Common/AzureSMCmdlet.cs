@@ -12,20 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Concurrent;
+using System.Diagnostics;
+using System.IO;
+using System.Management.Automation;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
-using System;
-using System.Diagnostics;
-using System.IO;
-using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
-    public abstract class AzurePSCmdlet : PSCmdlet
+    public abstract class AzureSMCmdlet : PSCmdlet
     {
         private readonly ConcurrentQueue<string> _debugMessages = new ConcurrentQueue<string>();
         private RecordingTracingInterceptor _httpTracingInterceptor;
@@ -63,7 +63,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected static TokenCache DefaultMemoryTokenCache { get; set; }
 
-        static AzurePSCmdlet()
+        static AzureSMCmdlet()
         {
             if (!TestMockSupport.RunningMocked)
             {
@@ -182,7 +182,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             if (Profile == null)
             {
-                Profile = AzurePSCmdlet.CurrentProfile;
+                Profile = AzureSMCmdlet.CurrentProfile;
             }
 
             SetTokenCacheForProfile(Profile);

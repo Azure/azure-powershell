@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Resources.ProviderFeatures
     /// <summary>
     /// Base class for all feature cmdlets
     /// </summary>
-    public abstract class AzureProviderFeatureCmdletBase : AzurePSCmdlet
+    public abstract class AzureProviderFeatureCmdletBase : AzureSMCmdlet
     {
         /// <summary>
         /// Cache for the feature client

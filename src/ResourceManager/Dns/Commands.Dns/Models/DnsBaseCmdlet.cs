@@ -16,7 +16,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Dns.Models
 {
-    public abstract class DnsBaseCmdlet : AzurePSCmdlet
+    public abstract class DnsBaseCmdlet : AzureSMCmdlet
     {
         private DnsClient dnsClient;
 

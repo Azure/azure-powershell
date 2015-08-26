@@ -48,7 +48,7 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
         public const string goldImageImport = "GoldImageImport";
     }
 
-    public abstract partial class RdsCmdlet : AzurePSCmdlet
+    public abstract partial class RdsCmdlet : AzureSMCmdlet
     {
         [ThreadStatic]
         internal static Job theJob;

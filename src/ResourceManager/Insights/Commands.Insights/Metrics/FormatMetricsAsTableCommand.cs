@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
     /// Get the list of metric definition for a resource.
     /// </summary>
     [Cmdlet(VerbsCommon.Format, "MetricsAsTable"), OutputType(typeof(PSMetricTabularResult[]))]
-    public class FormatMetricsAsTableCommand : AzurePSCmdlet
+    public class FormatMetricsAsTableCommand : AzureSMCmdlet
     {
         /// <summary>
         /// Gets or sets the array of metrics of the cmdlet

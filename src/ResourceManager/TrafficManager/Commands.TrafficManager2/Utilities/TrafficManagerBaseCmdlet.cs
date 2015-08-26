@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 {
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
-    public abstract class TrafficManagerBaseCmdlet : AzurePSCmdlet
+    public abstract class TrafficManagerBaseCmdlet : AzureSMCmdlet
     {
         private TrafficManagerClient trafficManagerClient;
 

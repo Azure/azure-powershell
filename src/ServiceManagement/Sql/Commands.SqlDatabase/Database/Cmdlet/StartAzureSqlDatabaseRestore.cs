@@ -26,7 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
     /// Issues a new restore request for the specified live or dropped Microsoft Azure SQL Database.
     /// </summary>
     [Cmdlet(VerbsLifecycle.Start, "AzureSqlDatabaseRestore", ConfirmImpact = ConfirmImpact.Low)]
-    public class StartAzureSqlDatabaseRestore : AzurePSCmdlet
+    public class StartAzureSqlDatabaseRestore : AzureSMCmdlet
     {
         #region Parameter Sets
 

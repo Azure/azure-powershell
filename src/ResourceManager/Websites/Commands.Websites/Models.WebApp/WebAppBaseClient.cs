@@ -23,7 +23,7 @@ using Microsoft.Azure.Commands.WebApp.Utilities;
 
 namespace Microsoft.Azure.Commands.WebApp.Models
 {
-    public abstract class WebAppBaseClientCmdLet : AzurePSCmdlet
+    public abstract class WebAppBaseClientCmdLet : AzureSMCmdlet
     {
         private WebsitesClient _websitesClient;
         public WebsitesClient WebsitesClient

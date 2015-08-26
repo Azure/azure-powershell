@@ -25,7 +25,7 @@ using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    public class BatchCmdletBase : AzurePSCmdlet
+    public class BatchCmdletBase : AzureSMCmdlet
     {
         private BatchClient batchClient;
 

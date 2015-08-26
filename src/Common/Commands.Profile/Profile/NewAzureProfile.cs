@@ -33,7 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
     /// Creates new Microsoft Azure profile.
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureProfile"), OutputType(typeof(AzureSMProfile))]
-    public class NewAzureProfileCommand : AzurePSCmdlet
+    public class NewAzureProfileCommand : AzureSMCmdlet
     {
         internal const string CertificateParameterSet = "Certificate";
         internal const string CredentialsParameterSet = "Credentials";

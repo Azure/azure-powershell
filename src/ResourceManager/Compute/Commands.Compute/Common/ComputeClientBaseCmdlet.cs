@@ -19,7 +19,7 @@ using System;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    public abstract class ComputeClientBaseCmdlet : AzurePSCmdlet
+    public abstract class ComputeClientBaseCmdlet : AzureSMCmdlet
     {
         protected const string VirtualMachineExtensionType = "Microsoft.Compute/virtualMachines/extensions";
 

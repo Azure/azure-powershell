@@ -29,7 +29,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureSqlDatabase", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.Low)]
-    public class NewAzureSqlDatabase : AzurePSCmdlet
+    public class NewAzureSqlDatabase : AzureSMCmdlet
     {
         #region Parameter Sets
 

@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.RedisCache
     /// <summary>
     /// The base class for all Microsoft Azure Redis Cache Management Cmdlets
     /// </summary>
-    public abstract class RedisCacheCmdletBase : AzurePSCmdlet
+    public abstract class RedisCacheCmdletBase : AzureSMCmdlet
     {
         private RedisCacheClient cacheClient;
 

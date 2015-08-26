@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureAutomationAccount", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
     [OutputType(typeof(AutomationAccount))]
-    public class NewAzureAutomationAccount : AzurePSCmdlet
+    public class NewAzureAutomationAccount : AzureSMCmdlet
     {
         /// <summary>
         /// The automation client.

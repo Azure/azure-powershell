@@ -173,7 +173,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.MockServer
             PSTestTracingInterceptor.AddToContext();
             var newGuid = Guid.NewGuid();
             var profile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-            AzurePSCmdlet.CurrentProfile = profile;
+            AzureSMCmdlet.CurrentProfile = profile;
             AzureSession.DataStore = new MemoryDataStore();
             AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
             ProfileClient client = new ProfileClient(profile);

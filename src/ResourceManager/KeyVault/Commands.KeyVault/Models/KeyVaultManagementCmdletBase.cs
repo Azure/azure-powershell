@@ -29,7 +29,7 @@ using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    public class KeyVaultManagementCmdletBase : AzurePSCmdlet
+    public class KeyVaultManagementCmdletBase : AzureSMCmdlet
     {
         public KeyVaultManagementCmdletBase()
         {

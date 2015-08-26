@@ -51,7 +51,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             var datastore = new MemoryDataStore();
             AzureSession.DataStore = datastore;
             var profile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-            AzurePSCmdlet.CurrentProfile = profile;
+            AzureSMCmdlet.CurrentProfile = profile;
             AzureSession.DataStore = datastore;
             ProfileClient = new ProfileClient(profile);
 
