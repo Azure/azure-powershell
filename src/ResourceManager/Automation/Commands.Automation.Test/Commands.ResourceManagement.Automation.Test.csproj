@@ -166,10 +166,6 @@
     <Compile Include="UnitTests\UnregisterAzureAutomationScheduledRunbookTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Test\Commands.Common.Test.csproj">
-      <Project>{3b48a77b-5956-4a62-9081-92ba04b02b27}</Project>
-      <Name>Commands.Common.Test</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>
