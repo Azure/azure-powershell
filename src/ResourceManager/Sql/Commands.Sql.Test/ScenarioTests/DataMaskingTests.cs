@@ -22,49 +22,49 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     {
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestDatabaseDataMaskingPolicyEnablementToggling()
         {
             RunPowerShellTest("Test-DatabaseDataMaskingPolicyEnablementToggling");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestDatabaseDataMaskingPrivilegedLoginsChanges()
         {
             RunPowerShellTest("Test-DatabaseDataMaskingPrivilegedLoginsChanges");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestDatabaseDataMaskingBasicRuleLifecycle()
         {
             RunPowerShellTest("Test-DatabaseDataMaskingBasicRuleLifecycle");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestDatabaseDataMaskingNumberRuleLifecycle()
         {
             RunPowerShellTest("Test-DatabaseDataMaskingNumberRuleLifecycle");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestDatabaseDataMaskingTextRuleLifecycle()
         {
             RunPowerShellTest("Test-DatabaseDataMaskingTextRuleLifecycle");
         }
         
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestDatabaseDataMaskingRuleCreationFailures()
         {
             RunPowerShellTest("Test-DatabaseDataMaskingRuleCreationFailures");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestDatabaseDataMaskingRuleCreationWithoutPolicy()
         {
             RunPowerShellTest("Test-DatabaseDataMaskingRuleCreationWithoutPolicy");

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
     public class AzureSqlDatabaseServerServiceObjectiveAttributeTests
     {
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void GetAzureSqlDatabaseServerServiceObjectiveAttributes()
         {
             Type type = typeof(GetAzureSqlServerServiceObjective);

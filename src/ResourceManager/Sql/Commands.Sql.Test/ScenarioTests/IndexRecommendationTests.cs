@@ -21,14 +21,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     public class IndexRecommendationTests : SqlTestsBase
     {
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestGetIndexRecommendation()
         {
             RunPowerShellTest("Test-GetIndexRecommendations");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestCreateIndex()
         {
             RunPowerShellTest("Test-CreateIndex");

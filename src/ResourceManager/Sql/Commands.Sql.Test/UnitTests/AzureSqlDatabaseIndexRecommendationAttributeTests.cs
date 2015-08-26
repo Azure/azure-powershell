@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
     public class AzureSqlDatabaseIndexRecommendationAttributeTests
     {
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void GetAzureSqlIndexRecommendationAttributes()
         {
             Type type = typeof(GetAzureSqlDatabaseIndexRecommendations);
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void StartAzureSqlDatabaseExecuteIndexRecommendationAttributes()
         {
             Type type = typeof(StartAzureSqlDatabaseExecuteIndexRecommendation);
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void StopAzureSqlDatabaseExecuteIndexRecommendationAttributes()
         {
             Type type = typeof(StopAzureSqlDatabaseExecuteIndexRecommendation);

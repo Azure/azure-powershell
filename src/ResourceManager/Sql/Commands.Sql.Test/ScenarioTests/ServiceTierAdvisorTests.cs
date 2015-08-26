@@ -21,14 +21,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     public class ServiceTierAdvisorTests : SqlTestsBase
     {
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void GetUpgradeDatabaseHint()
         {
             RunPowerShellTest("Test-GetUpgradeDatabaseHint");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void GetUpgradeServerHint()
         {
             RunPowerShellTest("Test-GetUpgradeServerHint");

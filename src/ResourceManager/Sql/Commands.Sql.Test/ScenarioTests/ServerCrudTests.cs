@@ -21,28 +21,28 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     public class ServerCrudTests : SqlTestsBase
     {
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestServerCreate()
         {
             RunPowerShellTest("Test-CreateServer");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestServerUpdate()
         {
             RunPowerShellTest("Test-UpdateServer");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestServerGet()
         {
             RunPowerShellTest("Test-GetServer");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestServerRemove()
         {
             RunPowerShellTest("Test-RemoveServer");

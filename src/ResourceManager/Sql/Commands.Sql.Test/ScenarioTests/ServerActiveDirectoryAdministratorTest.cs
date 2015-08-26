@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     public class ServerActiveDirectoryAdministratorTest : SqlTestsBase
     {
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestServerActiveDirectoryAdministratorCRUD()
         {
             RunPowerShellTest("Test-ServerActiveDirectoryAdministrator");

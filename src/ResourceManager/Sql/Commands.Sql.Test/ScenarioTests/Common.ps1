@@ -170,6 +170,7 @@ function Create-ResourceGroupForTest ($location = "Japan East")
 	return $rg
 }
 
+
 <#
 	.SYNOPSIS 
 	removes a resource group that was used for testing

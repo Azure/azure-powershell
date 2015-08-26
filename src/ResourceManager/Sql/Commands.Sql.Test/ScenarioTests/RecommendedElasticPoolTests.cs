@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     public class RecommendedElasticPoolTests : SqlTestsBase
     {
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void ListRecommendedElasticPools()
         {
             RunPowerShellTest("Test-ElasticPoolRecommendation");

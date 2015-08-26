@@ -21,14 +21,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     public class TransparentDataEncryptionCrudTests : SqlTestsBase
     {
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestDatabaseTransparentDataEncryptionUpdate()
         {
             RunPowerShellTest("Test-UpdateTransparentDataEncryption");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestDatabaseTransparentDataEncryptionGet()
         {
             RunPowerShellTest("Test-GetTransparentDataEncryption");
