@@ -52,7 +52,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
             this.modules.Add("Assert.ps1");
             this.modules.Add("Common.ps1");
             this.modules.AddRange(modules);
-            TestingTracingInterceptor.AddToContext();
+            PSTestTracingInterceptor.AddToContext();
         }
 
         protected void AddScenarioScript(string script)
