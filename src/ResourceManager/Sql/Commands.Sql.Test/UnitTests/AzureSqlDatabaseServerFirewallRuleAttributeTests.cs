@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
     public class AzureSqlServerFirewallRuleAttributeTests
     {
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureSqlServerFirewallRuleAttributes()
         {
             Type type = typeof(NewAzureSqlServerFirewallRule);
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureSqlServerFirewallRuleAttributes()
         {
             Type type = typeof(SetAzureSqlServerFirewallRule);
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveAzureSqlServerFirewallRuleAttributes()
         {
             Type type = typeof(RemoveAzureSqlServerFirewallRule);
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureSqlServerFirewallRuleAttributes()
         {
             Type type = typeof(GetAzureSqlServerFirewallRule);

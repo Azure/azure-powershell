@@ -353,12 +353,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 .DetermineApiVersion(resourceId: resourceId)
                 .ConfigureAwait(continueOnCapturedContext: false);
 
+            var odataQuery = QueryFilterBuilder.CreateFilter(
+                resourceType: null,
+                resourceName: null,
+                tagName: null,
+                tagValue: null,
+                filter: this.ODataQuery);
+
             return await this
                 .GetResourcesClient()
                 .GetResource<JObject>(
                     resourceId: resourceId,
                     apiVersion: apiVersion,
-                    cancellationToken: this.CancellationToken.Value)
+                    cancellationToken: this.CancellationToken.Value,
+                    odataQuery: odataQuery)
                 .ConfigureAwait(continueOnCapturedContext: false);
         }
 

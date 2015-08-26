@@ -21,56 +21,56 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     public class DatabaseCrudTests : SqlTestsBase
     {
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseCreate()
         {
             RunPowerShellTest("Test-CreateDatabase");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseUpdate()
         {
             RunPowerShellTest("Test-UpdateDatabase");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseGet()
         {
             RunPowerShellTest("Test-GetDatabase");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseRemove()
         {
             RunPowerShellTest("Test-RemoveDatabase");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseCreateV2()
         {
             RunPowerShellTest("Test-CreateDatabaseV2");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseUpdateV2()
         {
             RunPowerShellTest("Test-UpdateDatabaseV2");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseGetV2()
         {
             RunPowerShellTest("Test-GetDatabaseV2");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseRemoveV2()
         {
             RunPowerShellTest("Test-RemoveDatabaseV2");

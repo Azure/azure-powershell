@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.AzureBackup.Properties;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
@@ -28,7 +30,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
-                AzureBackupClient.DeleteVault(Vault.ResourceGroupName, Vault.Name);
+                if (!AzureBackupClient.DeleteVault(Vault.ResourceGroupName, Vault.Name))
+                {
+                    throw new Exception(Resources.ResourceNotFoundMessage);
+                }
             });
         }
     }
