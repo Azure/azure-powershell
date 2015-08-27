@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 }
                 else
                 {
-                    var exception = new ArgumentException(string.Format(Resources.PolicyNotFound, policyInfo.Name));
+                    var exception = new ArgumentException(string.Format(Resources.PolicyNotFound, ProtectionPolicy.Name));
                     throw exception;                    
                 }
             });

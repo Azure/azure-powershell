@@ -233,6 +233,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A data disk, {0}, is not currently assigned for this VM. Use Add-AzureVMDataDisk to add it..
+        /// </summary>
+        public static string DataDiskNotAssignedForVM {
+            get {
+                return ResourceManager.GetString("DataDiskNotAssignedForVM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove Extension.
         /// </summary>
         public static string DscExtensionRemovalCaption {

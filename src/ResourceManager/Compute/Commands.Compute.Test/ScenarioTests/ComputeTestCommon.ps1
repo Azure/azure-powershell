@@ -394,3 +394,75 @@ function Get-SasUri
 
 	return $uri;
 }
+
+# Get a Location according to resource provider.
+function Get-ResourceProviderLocation
+{
+    param ([string] $name, [string] $default = "westus", [bool] $canonical = $true)
+
+	$loc = Get-AzureLocation | where { $_.Name.Equals($name) };
+
+	if ($loc -eq $null)
+	{
+	    throw 'There is no available locations with given parameters';
+	}
+
+	if ($loc.LocationsString.ToLowerInvariant().Replace(" ", "").Contains($default.ToLowerInvariant().Replace(" ","")))
+	{
+	    return $default;
+	}
+
+	if ($canonical)
+	{
+	    return $loc.Locations[0].ToLowerInvariant().Replace(" ", "");
+	}
+	else
+	{
+	    return $loc.Locations[0];
+    }
+}
+
+function Get-ComputeVMLocation
+{
+     Get-ResourceProviderLocation "Microsoft.Compute/virtualMachines";
+}
+
+function Get-ComputeAvailabilitySetLocation
+{
+     Get-ResourceProviderLocation "Microsoft.Compute/availabilitySets";
+}
+
+function Get-ComputeVMExtensionLocation
+{
+     Get-ResourceProviderLocation "Microsoft.Compute/virtualMachines/extensions";
+}
+
+function Get-ComputeVMDiagnosticSettingLocation
+{
+     Get-ResourceProviderLocation "Microsoft.Compute/virtualMachines/diagnosticSettings";
+}
+
+function Get-ComputeVMMetricDefinitionLocation
+{
+     Get-ResourceProviderLocation "Microsoft.Compute/virtualMachines/metricDefinitions";
+}
+
+function Get-ComputeOperationLocation
+{
+     Get-ResourceProviderLocation "Microsoft.Compute/locations/operations";
+}
+
+function Get-ComputeVMSizeLocation
+{
+     Get-ResourceProviderLocation "Microsoft.Compute/locations/vmSizes";
+}
+
+function Get-ComputeUsageLocation
+{
+     Get-ResourceProviderLocation "Microsoft.Compute/locations/usages";
+}
+
+function Get-ComputePublisherLocation
+{
+     Get-ResourceProviderLocation "Microsoft.Compute/locations/publishers";
+}
