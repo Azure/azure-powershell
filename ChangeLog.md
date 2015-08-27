@@ -1,3 +1,7 @@
+## 2015.09.03 version 0.9.8
+* Azure Compute (ARM) Cmdlets
+	* Add -Launch parameter for Get-AzureRemoteDesktopFile cmdlet
+	
 ## 2015.08.17 version 0.9.7
 * Azure Profile cmdlets
   * New-AzureProfile
