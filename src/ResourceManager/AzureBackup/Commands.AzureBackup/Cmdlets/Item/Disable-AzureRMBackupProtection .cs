@@ -40,12 +40,6 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
         }
         private bool DeleteBackupData;
 
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.Reason)]
-        public string Reason { get; set; }
-
-        [Parameter(Position = 3, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.Comments)]
-        public string Comments { get; set; }
-
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
