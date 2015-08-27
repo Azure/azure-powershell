@@ -50,7 +50,6 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.RefreshMode = dscNodeReport.RefreshMode;
             this.RebootRequested = dscNodeReport.RebootRequested;
             this.ReportFormatVersion = dscNodeReport.ReportFormatVersion;
-            this.ConfigurationVersion = dscNodeReport.ConfigurationVersion;
         }
 
         /// <summary>
@@ -119,10 +118,5 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// Gets or sets the Report Format Version.
         /// </summary>
         public string ReportFormatVersion { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Configuration Version.
-        /// </summary>
-        public string ConfigurationVersion { get; set; }
     }
 }
