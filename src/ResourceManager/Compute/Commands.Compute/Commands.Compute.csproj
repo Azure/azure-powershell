@@ -90,8 +90,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.4-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.7-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.Edm, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -171,6 +171,30 @@
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\DscExtensionCmdletConstants.cs">
+      <Link>Extension\DSC\DscExtensionCmdletConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\DscExtensionPrivateSettings.cs">
+      <Link>Extension\DSC\DscExtensionPrivateSettings.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\DscExtensionPublicSettings.cs">
+      <Link>Extension\DSC\DscExtensionPublicSettings.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\DscExtensionSettingsSerializer.cs">
+      <Link>Extension\DSC\DscExtensionSettingsSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\Exceptions\GetDscResourceException.cs">
+      <Link>Extension\DSC\GetDscResourceException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\Publish\ConfigurationParseResult.cs">
+      <Link>Extension\DSC\ConfigurationParseResult.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\Publish\ConfigurationParsingHelper.cs">
+      <Link>Extension\DSC\ConfigurationParsingHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\Publish\DscExtensionPublishCmdletCommonBase.cs">
+      <Link>Extension\DSC\DscExtensionPublishCmdletCommonBase.cs</Link>
+    </Compile>
     <Compile Include="AvailabilitySets\RemoveAzureAvailabilitySetCommand.cs" />
     <Compile Include="AvailabilitySets\GetAzureAvailabilitySetCommand.cs" />
     <Compile Include="AvailabilitySets\NewAzureAvailabilitySetCommand.cs" />
@@ -235,6 +259,7 @@
     <Compile Include="VirtualMachine\Config\AddAzureVMSecretCommand.cs" />
     <Compile Include="VirtualMachine\Config\RemoveAzureVMNetworkInterfaceCommand.cs" />
     <Compile Include="VirtualMachine\Config\RemoveAzureVMDataDiskCommand.cs" />
+    <Compile Include="VirtualMachine\Config\SetAzureVMDataDiskCommand.cs" />
     <Compile Include="VirtualMachine\Config\SetAzureVMSourceImage.cs" />
     <Compile Include="VirtualMachine\Config\SetAzureVMOSDiskCommand.cs" />
     <Compile Include="VirtualMachine\Operation\GetAzureVMCommand.cs" />
