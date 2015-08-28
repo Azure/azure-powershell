@@ -21,14 +21,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     public class DatabaseActivationTests : SqlTestsBase
     {
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabasePauseResume()
         {
             RunPowerShellTest("Test-DatabasePauseResume");
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabasePauseResumePiped()
         {
             RunPowerShellTest("Test-DatabasePauseResumePiped");

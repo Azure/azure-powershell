@@ -89,6 +89,9 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                     ProfileClient.Profile.Accounts[testAccount.Id] = testAccount;
                     ProfileClient.SetSubscriptionAsDefault(testSubscription.Name, testSubscription.Account);
 
+                    var environment = ProfileClient.Profile.Environments[ProfileClient.Profile.DefaultSubscription.Environment];
+                    environment.Endpoints[AzureEnvironment.Endpoint.Graph] = csmEnvironment.Endpoints.GraphUri.AbsoluteUri;
+
                     ProfileClient.Profile.Save();
                 }
             }
