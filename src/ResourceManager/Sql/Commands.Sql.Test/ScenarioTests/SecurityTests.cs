@@ -43,193 +43,186 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         }
 
         
-        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestDatabaseUpdatePolicyWithStorage()
         {
             RunPowerShellTest("Test-DatabaseUpdatePolicyWithStorage");
         }
 
-        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact(Skip="Non stable interaction between the test and the testing framework")]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestDatabaseUpdatePolicyWithStorageV2()
         {
             RunPowerShellTest("Test-DatabaseUpdatePolicyWithStorageV2");
         }
 
-        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
-        [Trait(Category.RunType, Category.LiveOnly)]
+        [Fact]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestServerUpdatePolicyWithStorage()
         {
             RunPowerShellTest("Test-ServerUpdatePolicyWithStorage");
         }
 
-        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
+        [Fact]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestDatabaseUpdatePolicyWithEventTypes()
         {
             RunPowerShellTest("Test-DatabaseUpdatePolicyWithEventTypes");
         }
 
-        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
-        [Trait(Category.RunType, Category.LiveOnly)]
+        [Fact]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestServerUpdatePolicyWithEventTypes()
         {
             RunPowerShellTest("Test-ServerUpdatePolicyWithEventTypes");
         }
 
-        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
-        [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestDisableDatabaseAuditing()
         {
             RunPowerShellTest("Test-DisableDatabaseAuditing");
         }
 
-        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
-        [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestDisableServerAuditing()
         {
             RunPowerShellTest("Test-DisableServerAuditing");
         }
 
-        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
-        [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestDatabaseDisableEnableKeepProperties()
         {
             RunPowerShellTest("Test-DatabaseDisableEnableKeepProperties");
         }
 
-        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
-        [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestServerDisableEnableKeepProperties()
         {
             RunPowerShellTest("Test-ServerDisableEnableKeepProperties");
         }
 
-        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
-        [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestUseServerDefault()
         {
             RunPowerShellTest("Test-UseServerDefault");
         }
 
-        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestFailedDatabaseUpdatePolicyWithNoStorage()
         {
             RunPowerShellTest("Test-FailedDatabaseUpdatePolicyWithNoStorage");
         }
 
-        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
-        [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestFailedServerUpdatePolicyWithNoStorage()
         {
             RunPowerShellTest("Test-FailedServerUpdatePolicyWithNoStorage");
         }
 
-        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
-        [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestFailedUseServerDefault()
         {
             RunPowerShellTest("Test-FailedUseServerDefault");
         }
 
-        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
-        [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestDatabaseUpdatePolicyWithEventTypeShortcuts()
         {
             RunPowerShellTest("Test-DatabaseUpdatePolicyWithEventTypeShortcuts");
         }
 
-        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
-        [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestServerUpdatePolicyWithEventTypeShortcuts()
         {
             RunPowerShellTest("Test-ServerUpdatePolicyWithEventTypeShortcuts");
         }
 
-        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
-        [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestDatabaseUpdatePolicyKeepPreviousStorage()
         {
             RunPowerShellTest("Test-DatabaseUpdatePolicyKeepPreviousStorage");
         }
 
-        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
-        [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestServerUpdatePolicyKeepPreviousStorage()
         {
             RunPowerShellTest("Test-ServerUpdatePolicyKeepPreviousStorage");
         }
 
-        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
-        [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestFailWithBadDatabaseIndentity()
         {
             RunPowerShellTest("Test-FailWithBadDatabaseIndentity");
         }
 
-        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
-        [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestFailWithBadServerIndentity()
         {
             RunPowerShellTest("Test-FailWithBadServerIndentity");
         }
 
-        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
-        [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestDatabaseStorageKeyRotation()
         {
             RunPowerShellTest("Test-DatabaseStorageKeyRotation");
         }
 
-        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
-        [Trait(Category.RunType, Category.LiveOnly)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestServerStorageKeyRotation()
         {
             RunPowerShellTest("Test-ServerStorageKeyRotation");
         }
 
-        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
-        [Trait(Category.RunType, Category.LiveOnly)]
+        [Fact]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestServerUpdatePolicyWithRetention()
         {
             RunPowerShellTest("Test-ServerUpdatePolicyWithRetention");
         }
 
-        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
-        [Trait(Category.RunType, Category.LiveOnly)]
+        [Fact]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestDatabaseUpdatePolicyWithRetention()
         {
             RunPowerShellTest("Test-DatabaseUpdatePolicyWithRetention");
         }
 
-        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
-        [Trait(Category.RunType, Category.LiveOnly)]
+        [Fact]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestServerRetentionKeepProperties()
         {
             RunPowerShellTest("Test-ServerRetentionKeepProperties");
         }
 
-        [Fact(Skip = "Skip for the version header upgrade on Storage library.")]
-        [Trait(Category.RunType, Category.LiveOnly)]
+        [Fact]
+        [Trait(Category.Sql, Category.CheckIn)]
         public void TestDatabaseRetentionKeepProperties()
         {
             RunPowerShellTest("Test-DatabaseRetentionKeepProperties");
+        }
+
+        [Fact]
+        [Trait(Category.Sql, Category.CheckIn)]
+        public void TestDatabaseUpdatePolicyWithSameNameStorageOnDifferentRegion()
+        {
+            RunPowerShellTest("Test-DatabaseUpdatePolicyWithSameNameStorageOnDifferentRegion");
         }
     }
 }

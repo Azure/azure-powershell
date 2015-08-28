@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Profile.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
@@ -70,7 +71,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
 
-            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<AzureEnvironment>()), Times.Once());
+            commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()), Times.Once());
             client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             AzureEnvironment env = client.Profile.Environments["KaTaL"];
             Assert.Equal(env.Name.ToLower(), cmdlet.Name.ToLower());
@@ -94,9 +95,12 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
                     Name = name,
                     PublishSettingsFileUrl = "http://microsoft.com"
                 };
-
-                cmdlet.InvokeBeginProcessing();
-                Assert.Throws<ArgumentException>(() => cmdlet.ExecuteCmdlet());
+                var savedValue = AzureEnvironment.PublicEnvironments[name].GetEndpoint(AzureEnvironment.Endpoint.PublishSettingsFileUrl);
+               cmdlet.InvokeBeginProcessing();
+                Assert.Throws<InvalidOperationException>(() => cmdlet.ExecuteCmdlet());
+                var newValue = cmdlet.ProfileClient.Profile.Environments[name].GetEndpoint(AzureEnvironment.Endpoint.PublishSettingsFileUrl);
+                Assert.Equal(savedValue, newValue);
+                Assert.NotEqual(cmdlet.PublishSettingsFileUrl, newValue);
             }
         }
 

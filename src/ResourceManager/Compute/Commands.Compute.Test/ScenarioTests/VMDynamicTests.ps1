@@ -372,7 +372,7 @@ function ${generated_func_name}
 
         `$vmname = `$rgname + 'vm';
         
-        `$st = New-AzureVM -ResourceGroupName `$rgname -Location `$loc -Name `$vmname -VM `$vmconfig -Tags (Get-ComputeTestTag `$global:ps_test_tag_name);
+        `$st = New-AzureVM -ResourceGroupName `$rgname -Location `$loc -VM `$vmconfig -Tags (Get-ComputeTestTag `$global:ps_test_tag_name);
 
         # Get VM
         `$st = Write-Verbose 'Running Test ${generated_func_name} - Getting VM';

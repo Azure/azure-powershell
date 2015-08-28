@@ -13,9 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.WindowsAzure.Commands.Profile.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Profile;
 using System;
 
@@ -24,7 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
     /// <summary>
     /// Gets the available Microsoft Azure environments.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureEnvironment"), OutputType(typeof(List<AzureEnvironment>))]
+    [Cmdlet(VerbsCommon.Get, "AzureEnvironment"), OutputType(typeof(PSAzureEnvironment))]
     public class GetAzureEnvironmentCommand : SubscriptionCmdletBase
     {
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, 
@@ -36,18 +38,8 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            List<AzureEnvironment> environments = ProfileClient.ListEnvironments(Name);
-            List<PSObject> output = new List<PSObject>();
-            foreach (AzureEnvironment e in environments)
-            {
-                List<object> args = new List<object> { "Name", e.Name };
-                foreach (AzureEnvironment.Endpoint property in Enum.GetValues(typeof(AzureEnvironment.Endpoint)))
-                {
-                    args.AddRange(new object[] { property, e.GetEndpoint(property) });
-                }
-                output.Add(base.ConstructPSObject(null, args.ToArray()));
-            }
-            WriteObject(output, true);
+            List<PSAzureEnvironment> environments = ProfileClient.ListEnvironments(Name).Select((e) => (PSAzureEnvironment)e).ToList();
+            WriteObject(environments, true);
         }
     }
 }

@@ -12,7 +12,7 @@
 ModuleToProcess = '.\Microsoft.WindowsAzure.Commands.ServiceManagement.Preview.dll'
 
 # Version number of this module.
-ModuleVersion = '0.9.5'
+ModuleVersion = '0.9.7'
 
 # ID used to uniquely identify this module
 GUID = '1C72E555-E83F-45E4-AED2-AF3278828DCD'
@@ -62,6 +62,7 @@ TypesToProcess = @(
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = @(
+    '.\Microsoft.WindowsAzure.Commands.ServiceManagement.Preview.format.ps1xml'
 )
 
 # Modules to import as nested modules of the module specified in ModuleToProcess

@@ -45,25 +45,25 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob
         }
 
         [TestMethod]
-        public void ValidatePipelineICloudBlobWithNullTest()
+        public void ValidatePipelineCloudBlobWithNullTest()
         {
-            AssertThrows<ArgumentException>(() => command.ValidatePipelineICloudBlob(null), String.Format(Resources.ObjectCannotBeNull, typeof(ICloudBlob).Name));
+            AssertThrows<ArgumentException>(() => command.ValidatePipelineCloudBlob(null), String.Format(Resources.ObjectCannotBeNull, typeof(CloudBlob).Name));
         }
 
         [TestMethod]
-        public void ValidatePipelineICloudBlobWithInvalidBlobNameTest()
+        public void ValidatePipelineCloudBlobWithInvalidBlobNameTest()
         {
             CloudBlockBlob blob = new CloudBlockBlob(new Uri("http://127.0.0.1/account/container/"));
-            AssertThrows<ArgumentException>(() => command.ValidatePipelineICloudBlob(blob), String.Format(Resources.InvalidBlobName, blob.Name));
+            AssertThrows<ArgumentException>(() => command.ValidatePipelineCloudBlob(blob), String.Format(Resources.InvalidBlobName, blob.Name));
         }
 
         [TestMethod]
-        public void ValidatePipelineICloudBlobSuccessfullyTest()
+        public void ValidatePipelineCloudBlobSuccessfullyTest()
         {
             AddTestBlobs();
 
             CloudBlockBlob blob = new CloudBlockBlob(new Uri("http://127.0.0.1/account/container1/blob0"));
-            command.ValidatePipelineICloudBlob(blob);
+            command.ValidatePipelineCloudBlob(blob);
         }
 
         [TestMethod]
