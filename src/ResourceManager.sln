@@ -81,6 +81,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ApiManagement.Serv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ApiManagement.ServiceManagement.Test", "ResourceManager\ApiManagement\Commands.SMAPI.Test\Commands.ApiManagement.ServiceManagement.Test.csproj", "{6448E795-3D02-4BDD-B0C7-AD0A2AFE3C8B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Batch.Test", "ResourceManager\AzureBatch\Commands.Batch.Test\Commands.Batch.Test.csproj", "{F4ABAD68-64A5-4B23-B09C-42559A7524DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -227,6 +229,10 @@ Global
 		{6448E795-3D02-4BDD-B0C7-AD0A2AFE3C8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6448E795-3D02-4BDD-B0C7-AD0A2AFE3C8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6448E795-3D02-4BDD-B0C7-AD0A2AFE3C8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4ABAD68-64A5-4B23-B09C-42559A7524DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4ABAD68-64A5-4B23-B09C-42559A7524DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4ABAD68-64A5-4B23-B09C-42559A7524DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4ABAD68-64A5-4B23-B09C-42559A7524DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -238,5 +244,6 @@ Global
 		{59D1B5DC-9175-43EC-90C6-CBA601B3565F} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{678AE95D-2364-47D7-888C-3FFA6D412CC8} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{6448E795-3D02-4BDD-B0C7-AD0A2AFE3C8B} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{F4ABAD68-64A5-4B23-B09C-42559A7524DE} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 	EndGlobalSection
 EndGlobal
