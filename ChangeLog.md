@@ -1,5 +1,7 @@
 ## 2015.09.03 version 0.9.8
-
+* Azure Compute (ARM) Cmdlets
+	* Add -Launch parameter for Get-AzureRemoteDesktopFile cmdlet
+	
 * Azure Compute (ARM) Cmdlets
   * Added Id parameter for VM cmdlets to support piping scenario without ResourceGroupName parameter
   * Added Set-AzureVMDataDisk cmdlet
