@@ -241,6 +241,46 @@ function Test-RemoveSecondaryDatabaseInternal ($serverVersion, $location = "Nort
 	}
 }
 
+<#
+	.SYNOPSIS
+	Tests removing a secondary database
+#>
+function Test-FailoverSecondaryDatabase
+{
+	#v12 only
+	Test-FailoverSecondaryDatabaseInternal "12.0" "North Europe"
+}
+
+<#
+	.SYNOPSIS
+	Tests failing over a secondary database
+#>
+function Test-FailoverSecondaryDatabaseInternal ($serverVersion, $location = "North Europe")
+{
+	# Setup
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $serverVersion $location
+	$database = Create-DatabaseForTest $rg $server
+
+	$partRg = Create-ResourceGroupForTest $location
+	$partServer = Create-ServerForTest $partRg $serverVersion $location
+
+	try
+	{	
+		# failover Secondary
+		New-AzureSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
+		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All
+
+		$secondary = Get-AzureSqlDatabaseReplicationLink -ResourceGroupName $partRg.ResourceGroupName -ServerName $partServer.ServerName -DatabaseName $database.DatabaseName -PartnerResourceGroupName $rg.ResourceGroupName -PartnerServerName $server.ServerName
+
+		$secondary | Set-AzureSqlDatabaseSecondary -PartnerResourceGroupName $rg.ResourceGroupName -Failover
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+		Remove-ResourceGroupForTest $partRg
+	}
+}
 
 <#
 	.SYNOPSIS
