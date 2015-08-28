@@ -97,5 +97,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         //DSC
         public const string VirtualMachineDscExtension = "AzureVMDscExtension";
         public const string VirtualMachineDscConfiguration = "AzureVMDscConfiguration";
+
+        public const string Vhd = "AzureVhd";
     }
 }
