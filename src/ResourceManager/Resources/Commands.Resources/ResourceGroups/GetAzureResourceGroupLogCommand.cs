@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(ParameterSetName = AllSetName, HelpMessage = "Optional. If given, return logs of all the operations including CRUD and deployment.")]
         public SwitchParameter All { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             GetPSResourceGroupLogParameters parameters = new GetPSResourceGroupLogParameters
                 {

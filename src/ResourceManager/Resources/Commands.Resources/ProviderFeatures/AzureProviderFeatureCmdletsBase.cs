@@ -14,13 +14,14 @@
 
 namespace Microsoft.Azure.Commands.Resources.ProviderFeatures
 {
+    using ResourceManager.Common;
     using Microsoft.Azure.Commands.Resources.Models.ProviderFeatures;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
     /// <summary>
     /// Base class for all feature cmdlets
     /// </summary>
-    public abstract class AzureProviderFeatureCmdletBase : AzureSMCmdlet
+    public abstract class AzureProviderFeatureCmdletBase : AzureRMCmdlet
     {
         /// <summary>
         /// Cache for the feature client
@@ -36,7 +37,7 @@ namespace Microsoft.Azure.Commands.Resources.ProviderFeatures
             {
                 if (this.providerFeatureClient == null)
                 {
-                    this.providerFeatureClient = new ProviderFeatureClient(this.Profile.DefaultContext);
+                    this.providerFeatureClient = new ProviderFeatureClient(Context);
                 }
 
                 return this.providerFeatureClient;
@@ -51,6 +52,14 @@ namespace Microsoft.Azure.Commands.Resources.ProviderFeatures
         public virtual string DetermineParameterSetName()
         {
             return this.ParameterSetName;
+        }
+
+        /// <summary>
+        /// This is present for making tests compile, ideally this pattern should go away.
+        /// </summary>
+        public void ExecuteCmdlet()
+        {
+            ProcessRecord();
         }
     }
 }

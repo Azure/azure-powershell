@@ -31,7 +31,7 @@ using Microsoft.Azure.Common.OData;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Models
 {
-    public class GalleryTemplatesClientTests : TestBase
+    public class GalleryTemplatesClientTests : RMTestBase
     {
         private GalleryTemplatesClient galleryTemplatesClient;
 

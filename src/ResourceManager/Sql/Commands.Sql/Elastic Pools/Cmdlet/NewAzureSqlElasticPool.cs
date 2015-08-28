@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 
             // The database already exists
             throw new PSArgumentException(
-                string.Format(Resources.ElasticPoolNameExists, this.ElasticPoolName, this.ServerName),
+                string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ElasticPoolNameExists, this.ElasticPoolName, this.ServerName),
                 "ElasticPoolName");
         }
 

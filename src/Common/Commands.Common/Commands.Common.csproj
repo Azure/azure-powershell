@@ -138,6 +138,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\AzurePSCmdlet.cs">
+      <Link>AzurePSCmdlet.cs</Link>
+    </Compile>
     <Compile Include="AzurePowerShell.cs" />
     <Compile Include="ComputeCloudException.cs" />
     <Compile Include="Constants.cs" />

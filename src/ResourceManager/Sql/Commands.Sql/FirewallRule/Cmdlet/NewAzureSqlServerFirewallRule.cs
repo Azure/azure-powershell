@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
 
             // The server already exists
             throw new PSArgumentException(
-                string.Format(Resources.ServerFirewallRuleNameExists, this.FirewallRuleName, this.ServerName),
+                string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ServerFirewallRuleNameExists, this.FirewallRuleName, this.ServerName),
                 "FirewallRule");
         }
 

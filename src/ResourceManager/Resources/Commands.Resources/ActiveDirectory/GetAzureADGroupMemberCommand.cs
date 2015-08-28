@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [ValidateNotNullOrEmpty]
         public Guid GroupObjectId { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ADObjectFilterOptions options = new ADObjectFilterOptions
             {

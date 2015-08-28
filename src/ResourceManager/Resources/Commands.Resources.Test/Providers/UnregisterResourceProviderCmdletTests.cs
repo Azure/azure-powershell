@@ -24,13 +24,14 @@ namespace Microsoft.Azure.Commands.Resources.Test
     using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Management.Resources.Models;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using WindowsAzure.Commands.Test.Utilities.Common;
     using Moq;
     using Xunit;
 
     /// <summary>
     /// Tests the AzureProvider cmdlets
     /// </summary>
-    public class UnregisterAzureProviderCmdletTests
+    public class UnregisterAzureProviderCmdletTests : RMTestBase
     {
         /// <summary>
         /// An instance of the cmdlet

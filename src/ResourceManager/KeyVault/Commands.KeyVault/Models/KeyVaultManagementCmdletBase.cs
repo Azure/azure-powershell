@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             get
             {
-                this._resourcesClient = new PSResourceManagerModels.ResourcesClient(this.Profile)
+                this._resourcesClient = new PSResourceManagerModels.ResourcesClient(Context)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp,

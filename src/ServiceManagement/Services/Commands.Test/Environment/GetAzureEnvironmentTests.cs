@@ -28,7 +28,7 @@ using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Environment
 {
-    public class GetAzureEnvironmentTests : TestBase
+    public class GetAzureEnvironmentTests : SMTestBase
     {
         private MemoryDataStore dataStore;
 

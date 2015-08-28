@@ -30,7 +30,7 @@ using Microsoft.Azure.Common.Authentication.Models;
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
 {
     
-    public class PublishContextTests : TestBase, IDisposable
+    public class PublishContextTests : SMTestBase, IDisposable
     {
         private static AzureServiceWrapper service;
 

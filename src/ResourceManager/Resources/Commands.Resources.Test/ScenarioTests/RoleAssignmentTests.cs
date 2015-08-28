@@ -27,10 +27,11 @@ using System.Linq;
 using System.Threading;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class RoleAssignmentTests
+    public class RoleAssignmentTests : RMTestBase
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

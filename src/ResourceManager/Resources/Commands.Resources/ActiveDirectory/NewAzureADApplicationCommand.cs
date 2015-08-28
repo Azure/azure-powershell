@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             KeyUsage = "Verify";
         }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             CreatePSApplicationParameters createParameters = new CreatePSApplicationParameters
             {

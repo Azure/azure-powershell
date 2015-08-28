@@ -29,7 +29,7 @@ using System.IO;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Environment
 {
-    public class RemoveAzureEnvironmentTests : TestBase, IDisposable
+    public class RemoveAzureEnvironmentTests : SMTestBase, IDisposable
     {
         private MemoryDataStore dataStore;
 

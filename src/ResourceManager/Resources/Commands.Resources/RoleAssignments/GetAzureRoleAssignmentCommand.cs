@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateNotNullOrEmpty]
         public string Scope { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             FilterRoleAssignmentsOptions options = new FilterRoleAssignmentsOptions()
             {

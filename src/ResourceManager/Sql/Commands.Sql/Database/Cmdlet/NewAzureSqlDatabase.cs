@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 
             // The database already exists
             throw new PSArgumentException(
-                string.Format(Resources.DatabaseNameExists, this.DatabaseName, this.ServerName),
+                string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.DatabaseNameExists, this.DatabaseName, this.ServerName),
                 "DatabaseName");
         }
 

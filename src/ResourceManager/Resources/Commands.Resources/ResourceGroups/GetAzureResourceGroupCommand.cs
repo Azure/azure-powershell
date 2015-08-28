@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = "GetMultiple")]
         public SwitchParameter Detailed { get; set; }
         
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             var detailed = Detailed.IsPresent || !string.IsNullOrEmpty(Name);
             WriteObject(ResourcesClient.FilterResourceGroups(Name, Tag, detailed), true);

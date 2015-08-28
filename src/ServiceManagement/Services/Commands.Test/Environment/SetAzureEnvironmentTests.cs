@@ -32,7 +32,7 @@ using System.IO;
 namespace Microsoft.WindowsAzure.Commands.Test.Environment
 {
     
-    public class SetAzureEnvironmentTests : TestBase, IDisposable
+    public class SetAzureEnvironmentTests : SMTestBase, IDisposable
     {
         private MemoryDataStore dataStore;
 

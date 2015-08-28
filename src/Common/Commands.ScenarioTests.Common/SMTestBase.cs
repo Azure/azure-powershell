@@ -15,22 +15,20 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 {
     /// <summary>
-    /// Base class for Microsoft Azure PowerShell unit tests.
+    /// Base class for Microsoft Azure PowerShell Service Management unit tests.
     /// </summary>
-    public abstract class TestBase
+    public abstract class SMTestBase
     {
         protected AzureSMProfile currentProfile;
 
-        public TestBase()
+        public SMTestBase()
         {
             BaseSetup();
         }

@@ -74,7 +74,7 @@ namespace Microsoft.WindowsAzure.Commands.Websites
                     string.Format(Resources.WebsiteSufixUrl, Name));
             }
 
-            GeneralUtilities.LaunchWebPage(managementPortalUrl);
+            ProcessHelper.Start(managementPortalUrl);
         }
     }
 }

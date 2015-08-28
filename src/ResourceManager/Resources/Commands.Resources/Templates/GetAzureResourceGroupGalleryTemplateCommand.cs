@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Resources.Templates
         [Parameter(Position = 4, ParameterSetName = BaseParameterSetName, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Optional. Include all versions.")]
         public SwitchParameter AllVersions { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             FilterGalleryTemplatesOptions options = new FilterGalleryTemplatesOptions()
             {

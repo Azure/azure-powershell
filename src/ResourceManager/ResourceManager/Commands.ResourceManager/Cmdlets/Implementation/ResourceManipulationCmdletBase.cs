@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             if (string.IsNullOrWhiteSpace(this.ResourceId) && !this.TenantLevel && this.SubscriptionId == null)
             {
-                this.SubscriptionId = this.Profile.DefaultContext.Subscription.Id;
+                this.SubscriptionId = Context.Subscription.Id;
             }
 
             base.OnProcessRecord();

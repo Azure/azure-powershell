@@ -101,6 +101,11 @@
     <Compile Include="Location Capabilities\Model\ServiceObjectiveCapabilityModel.cs" />
     <Compile Include="Location Capabilities\Services\AzureSqlCapabilitiesAdapter.cs" />
     <Compile Include="Location Capabilities\Services\AzureSqlCapabilitiesCommunicator.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="RecommendedElasticPools\Cmdlet\GetAzureSqlElasticPoolRecommendation.cs" />
     <Compile Include="RecommendedElasticPools\Services\AzureSqlElasticPoolRecommendationAdapter.cs" />
     <Compile Include="RecommendedElasticPools\Services\AzureSqlElasticPoolRecommendationCommunicator.cs" />
@@ -176,11 +181,6 @@
     <Compile Include="FirewallRule\Model\AzureSqlServerFirewallRuleModel.cs" />
     <Compile Include="FirewallRule\Services\AzureSqlServerFirewallRuleCommunicator.cs" />
     <Compile Include="FirewallRule\Services\AzureSqlServerFirewallRuleAdapter.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Common\AzureSqlDatabaseCmdletBase.cs" />
     <Compile Include="Common\AzureSqlCmdletBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -211,13 +211,6 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Hyak.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -329,7 +322,22 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
+      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
+      <Name>Commands.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Resources\Commands.Resources\Commands.Resources.csproj">
+      <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>
+      <Name>Commands.Resources</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />

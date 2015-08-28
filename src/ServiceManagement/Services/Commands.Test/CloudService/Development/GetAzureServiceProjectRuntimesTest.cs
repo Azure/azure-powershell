@@ -24,7 +24,7 @@ using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests.Cmdlet
 {
-    public class GetAzureServiceProjectRuntimesTests : TestBase
+    public class GetAzureServiceProjectRuntimesTests : SMTestBase
     {
         private const string serviceName = "AzureService";
 

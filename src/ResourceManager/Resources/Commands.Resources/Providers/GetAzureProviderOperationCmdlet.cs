@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Resources
         /// <summary>
         /// Executes the cmdlet
         /// </summary>
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             // remove leading and trailing whitespaces
             this.ActionString = this.ActionString.Trim();

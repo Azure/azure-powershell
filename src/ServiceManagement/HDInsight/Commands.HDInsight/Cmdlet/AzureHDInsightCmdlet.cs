@@ -145,7 +145,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
             {
 #if DEBUG
                 // we need this for the tests to mock out the current subscription.
-                if (this.HasCurrentSubscription)
+                if (Profile.DefaultContext.Subscription != null)
                 {
                     return this.Profile.DefaultContext.Subscription;
                 }
