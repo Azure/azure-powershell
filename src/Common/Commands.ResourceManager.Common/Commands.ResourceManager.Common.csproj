@@ -161,6 +161,9 @@
     <Compile Include="..\Commands.Common\RecordingTracingInterceptor.cs">
       <Link>Common\RecordingTracingInterceptor.cs</Link>
     </Compile>
+    <Compile Include="..\Commands.Common\SecureStringExtensions.cs">
+      <Link>Common\SecureStringExtensions.cs</Link>
+    </Compile>
     <Compile Include="AzureRMCmdlet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="packages.config">

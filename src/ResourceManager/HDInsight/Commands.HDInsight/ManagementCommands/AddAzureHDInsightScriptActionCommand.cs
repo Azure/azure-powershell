@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             _action = new ScriptAction();
         }
         
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             List<ScriptAction> actions;
 
