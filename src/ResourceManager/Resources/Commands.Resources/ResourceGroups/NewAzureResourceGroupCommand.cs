@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.Resources
 
         public override void ExecuteCmdlet()
         {
+            this.WriteWarning("The deployment parameters in New-AzureResourceGroup cmdlet is being deprecated and will be removed in a future release. Please use New-AzureResourceGroupDeployment to submit deployments.");
             CreatePSResourceGroupParameters parameters = new CreatePSResourceGroupParameters
             {
                 ResourceGroupName = Name,
