@@ -161,9 +161,8 @@ function Get-ElasticPoolName
 	.SYNOPSIS
 	Creates a resource group for tests
 #>
-function Create-ResourceGroupForTest ()
+function Create-ResourceGroupForTest ($location = "Japan East")
 {
-	$location = "Japan East"
 	$rgName = Get-ResourceGroupName
 	
 	$rg = New-AzureResourceGroup -Name $rgName -Location $location

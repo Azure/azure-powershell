@@ -2077,6 +2077,9 @@
                         <Component Id="cmp55FEE041CC305952FE17E655815CE51A" Guid="*">
                             <File Id="fil14F4B8C7E95C606DDDE47BE166D9F241" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Sql\Microsoft.Azure.Commands.Sql.format.ps1xml" />
                         </Component>
+                        <Component Id="cmpF23457BA331434DDB0815F84746FD1E7" Guid="*">
+                            <File Id="fil1972DDA29C9A5FC7D61122B5F5E1D84B" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Sql\Microsoft.Azure.Commands.Sql.Types.ps1xml" />
+                        </Component>
                         <Component Id="cmp057F4C8C0E8E8DB3E57FD8B64885B30F" Guid="*">
                             <File Id="fil17C8016A3D5AA097BE35FB83C7539AB9" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Sql\Microsoft.Azure.Commands.Tags.dll" />
                         </Component>
@@ -5475,6 +5478,7 @@
             <ComponentRef Id="cmp56F52674BB946225BB64533814DCF37F" />
             <ComponentRef Id="cmp499092B04619C0EDE4686B78E1128605" />
             <ComponentRef Id="cmp55FEE041CC305952FE17E655815CE51A" />
+            <ComponentRef Id="cmpF23457BA331434DDB0815F84746FD1E7" />
             <ComponentRef Id="cmp057F4C8C0E8E8DB3E57FD8B64885B30F" />
             <ComponentRef Id="cmpC6D3C91080AD47682B7959EF9DF193D3" />
             <ComponentRef Id="cmpD7CC32C127B6074C2D5CA20EAA1B14A0" />

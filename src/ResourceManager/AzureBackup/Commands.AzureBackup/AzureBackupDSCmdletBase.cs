@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     public abstract class AzureRMBackupDSCmdletBase : AzureBackupCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.AzureBackUpItem, ValueFromPipeline = true)]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.AzureBackupItem, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public AzureRMBackupItem Item { get; set; }
 

@@ -1,4 +1,5 @@
-﻿// ----------------------------------------------------------------------------------
+﻿extern alias MicrosoftAzureCommandsResources;
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,7 +26,7 @@ using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
+using MicrosoftAzureCommandsResources::Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 
 namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Services
 {
