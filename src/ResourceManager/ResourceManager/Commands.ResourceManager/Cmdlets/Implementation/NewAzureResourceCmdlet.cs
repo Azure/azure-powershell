@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
@@ -70,6 +71,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets a value that indicates if the full object was passed it.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "When set indicates that the full object is passed in to the -PropertyObject parameter.")]
+        [Obsolete("This parameter is obsolete and will be removed in future releases.")]
         public SwitchParameter IsFullObject { get; set; }
 
         /// <summary>

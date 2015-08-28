@@ -139,6 +139,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(ParameterSetName = GetAzureResourceCmdlet.ListResourcesParameterSet, Mandatory = false, HelpMessage = "The name of the tag to query by.")]
         [Parameter(ParameterSetName = GetAzureResourceCmdlet.MultiSubscriptionListResourcesParameterSet, Mandatory = false, HelpMessage = "The name of the tag to query by.")]
         [ValidateNotNullOrEmpty]
+        [Obsolete("This parameter is obsolete and will be removed in future releases.")]
         public string TagName { get; set; }
 
         /// <summary>
@@ -147,6 +148,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(ParameterSetName = GetAzureResourceCmdlet.ListResourcesParameterSet, Mandatory = false, HelpMessage = "The value of the tag to query by.")]
         [Parameter(ParameterSetName = GetAzureResourceCmdlet.MultiSubscriptionListResourcesParameterSet, Mandatory = false, HelpMessage = "The value of the tag to query by.")]
         [ValidateNotNullOrEmpty]
+        [Obsolete("This parameter is obsolete and will be removed in future releases.")]
         public string TagValue { get; set; }
 
         /// <summary>
