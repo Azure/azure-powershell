@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 .Concat(this.ResourceId)
                 .DistinctArray(StringComparer.InvariantCultureIgnoreCase);
 
-            this.DestinationSubscriptionId = this.DestinationSubscriptionId ?? Context.Subscription.Id;
+            this.DestinationSubscriptionId = this.DestinationSubscriptionId ?? DefaultContext.Subscription.Id;
 
             var sourceResourceGroups = resourceIdsToUse
                 .Select(resourceId => ResourceIdUtility.GetResourceGroupId(resourceId))

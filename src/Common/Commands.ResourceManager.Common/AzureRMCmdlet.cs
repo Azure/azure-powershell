@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         /// <summary>
         /// Gets the current default context.
         /// </summary>
-        protected override AzureContext Context
+        protected override AzureContext DefaultContext
         {
             get
             {

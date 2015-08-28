@@ -49,7 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// <summary>
         /// Gets the default Azure context.
         /// </summary>
-        protected abstract AzureContext Context { get; }
+        protected abstract AzureContext DefaultContext { get; }
 
         /// <summary>
         /// Initializes AzurePSCmdlet properties.
@@ -73,9 +73,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 WriteDebugWithTimestamp(string.Format("{0} begin processing with ParameterSet '{1}'.", this.GetType().Name, ParameterSetName));
             }
 
-            if (Context != null && Context.Account != null && Context.Account.Id != null)
+            if (DefaultContext != null && DefaultContext.Account != null && DefaultContext.Account.Id != null)
             {
-                WriteDebugWithTimestamp(string.Format("using account id '{0}'...", Context.Account.Id));
+                WriteDebugWithTimestamp(string.Format("using account id '{0}'...", DefaultContext.Account.Id));
             }
 
             _httpTracingInterceptor = _httpTracingInterceptor ?? new RecordingTracingInterceptor(_debugMessages);

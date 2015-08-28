@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             return string.IsNullOrWhiteSpace(this.ApiVersion)
                 ? ApiVersionHelper.DetermineApiVersion(
-                    Context,
+                    DefaultContext,
                     resourceId: resourceId,
                     cancellationToken: this.CancellationToken.Value,
                     pre: pre ?? this.Pre)
@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             return string.IsNullOrWhiteSpace(this.ApiVersion)
                 ? ApiVersionHelper.DetermineApiVersion(
-                    Context,
+                    DefaultContext,
                     providerNamespace: providerNamespace,
                     resourceType: resourceType,
                     cancellationToken: this.CancellationToken.Value,
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         public ResourceManagerRestRestClient GetResourcesClient()
         {
-            var endpoint = Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.ResourceManager);
+            var endpoint = DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.ResourceManager);
 
             if (string.IsNullOrWhiteSpace(endpoint))
             {
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 endpointUri: endpointUri,
                 httpClientHelper: HttpClientHelperFactory.Instance
                 .CreateHttpClientHelper(
-                        credentials: AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(Context),
+                        credentials: AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(DefaultContext),
                         headerValues: AzureSession.ClientFactory.UserAgents));
         }
 

@@ -26,7 +26,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 {
     [TestClass]
-    public class SetAzureAutomationCredentialTest : TestBase
+    public class SetAzureAutomationCredentialTest : SMTestBase
     {
         private Mock<IAutomationClient> mockAutomationClient;
 

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Tags.Model
             {
                 if (tagsClient == null)
                 {
-                    tagsClient = new TagsClient(Context)
+                    tagsClient = new TagsClient(DefaultContext)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp
