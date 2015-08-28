@@ -21,9 +21,12 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureSqlDatabaseSecondary",
-        ConfirmImpact = ConfirmImpact.High)]
-    public class RemoveAzureSqlDatabaseSecondary : AzureSqlDatabaseSecondaryCmdletBase
+    /// <summary>
+    /// Cmdlet to fail over Azure SQL Database Replication Link to the secondary database
+    /// </summary>
+    [Cmdlet(VerbsCommon.Set, "AzureSqlDatabaseSecondary",
+        ConfirmImpact = ConfirmImpact.Medium)]
+    public class SetAzureSqlDatabaseSecondary : AzureSqlDatabaseSecondaryCmdletBase
     {
         /// <summary>
         /// Gets or sets the name of the primary Azure SQL Database with the replication link to remove.
@@ -31,7 +34,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
-            HelpMessage = "The name of the Azure SQL Database to remove.")]
+            HelpMessage = "The name of the Azure SQL Database to failover.")]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
 
@@ -40,18 +43,27 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The name of the resource group of the secondary.")]
+            HelpMessage = "The name of the Azure Resource Group of the partner Azure SQL Database.")]
         [ValidateNotNullOrEmpty]
         public string PartnerResourceGroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the partner Azure SQL Server.
+        /// Gets or sets a value indicating whether this is a failover.
         /// </summary>
-        [Parameter(Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The name of the Azure SQL Server of the secondary.")]
-        [ValidateNotNullOrEmpty]
-        public string PartnerServerName { get; set; }
+        /// <returns></returns>
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = "Whether this operation is a failover.")]
+        public SwitchParameter Failover { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to make this failover will allow data loss.
+        /// </summary>
+        /// <returns></returns>
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = "Whether this failover operation will allow data loss.")]
+        public SwitchParameter AllowDataLoss { get; set; }
 
         /// <summary>
         /// Get the entities from the service
@@ -59,9 +71,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureReplicationLinkModel> GetEntity()
         {
-            return new List<Model.AzureReplicationLinkModel>() { 
-                ModelAdapter.GetLink(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.PartnerResourceGroupName, this.PartnerServerName) 
-            };
+            return ModelAdapter.ListLinks(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.PartnerResourceGroupName);
         }
 
         /// <summary>
@@ -81,7 +91,21 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// <returns>The input entity</returns>
         protected override IEnumerable<AzureReplicationLinkModel> PersistChanges(IEnumerable<AzureReplicationLinkModel> entity)
         {
-            ModelAdapter.RemoveLink(this.ResourceGroupName, this.ServerName, this.DatabaseName, this.PartnerResourceGroupName, this.PartnerServerName);
+            if (this.MyInvocation.BoundParameters.ContainsKey("Failover"))
+            {
+                return new List<AzureReplicationLinkModel>() { ModelAdapter.FailoverLink(this.ResourceGroupName, 
+                    this.ServerName, 
+                    this.DatabaseName, 
+                    this.PartnerResourceGroupName,
+                    this.MyInvocation.BoundParameters.ContainsKey("AllowDataLoss") ? true : false)
+                };
+            }
+            else
+            {
+                // Warning user that no options were provided so no action can be taken.
+                WriteWarning(Resources.SetSecondaryNoOptionProvided);
+            }
+
             return entity;
         }
     }

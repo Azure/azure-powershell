@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please use Set-AzureEnvironment to set a valid GraphEndpoint in the AzureEnvironment. .
+        ///   Looks up a localized string similar to Please use Set-AzureEnvironment to set a valid GraphEndpoint for the current AzureEnvironment..
         /// </summary>
         internal static string InvalidGraphEndpoint {
             get {
@@ -408,6 +408,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string SetDataMaskingRuleIdDoesNotExistError {
             get {
                 return ResourceManager.GetString("SetDataMaskingRuleIdDoesNotExistError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No Set Options were provided.
+        /// </summary>
+        internal static string SetSecondaryNoOptionProvided {
+            get {
+                return ResourceManager.GetString("SetSecondaryNoOptionProvided", resourceCulture);
             }
         }
         

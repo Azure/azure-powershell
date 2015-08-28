@@ -171,6 +171,7 @@
     <Compile Include="Replication\Cmdlet\NewAzureSqlDatabaseCopy.cs" />
     <Compile Include="Replication\Cmdlet\NewAzureSqlDatabaseSecondary.cs" />
     <Compile Include="Replication\Cmdlet\RemoveAzureSqlDatabaseSecondary.cs" />
+    <Compile Include="Replication\Cmdlet\SetAzureSqlDatabaseSecondary.cs" />
     <Compile Include="Replication\Model\AllowConnections.cs" />
     <Compile Include="Replication\Model\AzureReplicationLinkModel.cs" />
     <Compile Include="Replication\Model\AzureSqlDatabaseCopyModel.cs" />
@@ -254,9 +255,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Sql">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.37.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Microsoft.Azure.Management.Sql, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.38.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.2.4.0-preview\lib\net40\Microsoft.Azure.Management.Storage.dll</HintPath>
