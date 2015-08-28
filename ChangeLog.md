@@ -1,11 +1,10 @@
 ## 2015.09.03 version 0.9.8
 * Azure Compute (ARM) Cmdlets
-	* Add -Launch parameter for Get-AzureRemoteDesktopFile cmdlet
-	
-* Azure Compute (ARM) Cmdlets
+  * Add -Launch parameter for Get-AzureRemoteDesktopFile cmdlet
   * Added Id parameter for VM cmdlets to support piping scenario without ResourceGroupName parameter
   * Added Set-AzureVMDataDisk cmdlet
   * Changed the output format of Get image cmdlets as a table
+  * Fix Set-AzureVMAccessExtension cmdlet
 * Azure Compute (Service Management) cmdlets
   * Changed the warning message to a non-terminating error message for ResourceNotFound in VM cmdlets
   * Exposed ComputeImageConfig in Get-AzurePlatformVMImage cmdlet
