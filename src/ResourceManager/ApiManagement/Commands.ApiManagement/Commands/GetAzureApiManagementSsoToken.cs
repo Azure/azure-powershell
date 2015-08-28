@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ExecuteCmdLetWrap(
                 () => Client.GetSsoToken(ResourceGroupName, Name),

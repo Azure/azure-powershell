@@ -14,7 +14,6 @@
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Xunit;
 
     public class MoveResourceTest

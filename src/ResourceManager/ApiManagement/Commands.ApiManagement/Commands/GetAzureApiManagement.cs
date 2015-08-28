@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             HelpMessage = "Name of API Management service.")]
         public string Name { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(Name))
             {

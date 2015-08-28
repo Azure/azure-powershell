@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Commands.Resources.Test
     using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Management.Resources.Models;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using WindowsAzure.Commands.Test.Utilities.Common;
     using Moq;
+    using WindowsAzure.Commands.Test.Utilities.Common;
     using Xunit;
 
     /// <summary>

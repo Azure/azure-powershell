@@ -104,8 +104,7 @@ NestedModules = @(
     '.\OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.dll',  
     '.\UsageAggregates\Microsoft.Azure.Commands.UsageAggregates.dll', 
     '.\HDInsight\Microsoft.Azure.Commands.HDInsight.dll',
-    # TODO: Why a ServiceManagement dll is importe in Resource Manager module?
-    # '.\ApiManagement\Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll',  
+    '.\ApiManagement\Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll',  
     '.\AzureBackup\Microsoft.Azure.Commands.AzureBackup.dll',
     '.\SiteRecovery\Microsoft.Azure.Commands.SiteRecovery.dll'
 )  

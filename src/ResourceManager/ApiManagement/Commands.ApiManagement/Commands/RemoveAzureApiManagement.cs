@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(HelpMessage = "Do not confirm on the removal of the API Management service.")]
         public SwitchParameter Force { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             var actionDescription = string.Format(
                     CultureInfo.CurrentCulture,

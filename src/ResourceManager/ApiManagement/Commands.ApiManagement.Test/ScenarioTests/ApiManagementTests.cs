@@ -22,11 +22,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
     using Microsoft.Azure.Test;
     using Microsoft.Azure.Test.HttpRecorder;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using WindowsAzure.Commands.Test.Utilities.Common;
     using Microsoft.WindowsAzure.Management;
     using Microsoft.WindowsAzure.Management.Storage;
     using Xunit;
 
-    public class ApiManagementTests
+    public class ApiManagementTests : RMTestBase
     {
         private readonly EnvironmentSetupHelper _helper;
 
@@ -51,7 +52,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
                 galaryClient,
                 authorizationManagementClient,
                 managementClient,
-                //storageManagementClient,
                 armStorageManagementClient);
         }
 
