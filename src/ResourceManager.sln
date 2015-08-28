@@ -89,6 +89,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Dns.Test", "Resour
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.HDInsight.Test", "ResourceManager\HDInsight\Commands.HDInsight.Test\Commands.HDInsight.Test.csproj", "{5FBB9D19-B365-4C97-BEFF-BBD5506A6D25}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Insights.Test", "ResourceManager\Insights\Commands.Insights.Test\Commands.Insights.Test.csproj", "{469F20E0-9D40-41AD-94C3-B47AD15A4C00}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -251,6 +253,10 @@ Global
 		{5FBB9D19-B365-4C97-BEFF-BBD5506A6D25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FBB9D19-B365-4C97-BEFF-BBD5506A6D25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FBB9D19-B365-4C97-BEFF-BBD5506A6D25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{469F20E0-9D40-41AD-94C3-B47AD15A4C00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{469F20E0-9D40-41AD-94C3-B47AD15A4C00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{469F20E0-9D40-41AD-94C3-B47AD15A4C00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{469F20E0-9D40-41AD-94C3-B47AD15A4C00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -266,5 +272,6 @@ Global
 		{D4EDAD6F-6A1D-4295-9A88-CD3F69EAD42B} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{133561EC-99AF-4ADC-AF41-39C4D3AD323B} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{5FBB9D19-B365-4C97-BEFF-BBD5506A6D25} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{469F20E0-9D40-41AD-94C3-B47AD15A4C00} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 	EndGlobalSection
 EndGlobal
