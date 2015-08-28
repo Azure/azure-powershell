@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Dns
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             bool deleted = false;
             DnsZone zoneToDelete = null;

@@ -85,6 +85,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Batch.Test", "Reso
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.DataFactories.Test", "ResourceManager\DataFactories\Commands.DataFactories.Test\Commands.DataFactories.Test.csproj", "{D4EDAD6F-6A1D-4295-9A88-CD3F69EAD42B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Dns.Test", "ResourceManager\Dns\Commands.Dns.Test\Commands.Dns.Test.csproj", "{133561EC-99AF-4ADC-AF41-39C4D3AD323B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -239,6 +241,10 @@ Global
 		{D4EDAD6F-6A1D-4295-9A88-CD3F69EAD42B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4EDAD6F-6A1D-4295-9A88-CD3F69EAD42B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4EDAD6F-6A1D-4295-9A88-CD3F69EAD42B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{133561EC-99AF-4ADC-AF41-39C4D3AD323B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{133561EC-99AF-4ADC-AF41-39C4D3AD323B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{133561EC-99AF-4ADC-AF41-39C4D3AD323B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{133561EC-99AF-4ADC-AF41-39C4D3AD323B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -252,5 +258,6 @@ Global
 		{6448E795-3D02-4BDD-B0C7-AD0A2AFE3C8B} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{F4ABAD68-64A5-4B23-B09C-42559A7524DE} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{D4EDAD6F-6A1D-4295-9A88-CD3F69EAD42B} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{133561EC-99AF-4ADC-AF41-39C4D3AD323B} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 	EndGlobalSection
 EndGlobal
