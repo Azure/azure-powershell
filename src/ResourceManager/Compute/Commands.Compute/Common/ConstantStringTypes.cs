@@ -97,5 +97,8 @@ namespace Microsoft.Azure.Commands.Compute.Common
         //DSC
         public const string VirtualMachineDscExtension = "AzureVMDscExtension";
         public const string VirtualMachineDscConfiguration = "AzureVMDscConfiguration";
+
+        // Sql Server
+        public const string VirtualMachineSqlServerExtension = "AzureVMSqlServerExtension";
     }
 }

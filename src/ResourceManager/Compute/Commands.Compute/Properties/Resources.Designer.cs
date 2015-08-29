@@ -215,6 +215,16 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot deserialize settings string from Sql Server extension. Updating your Azure PowerShell SDK to the latest version may solve this problem. Settings string:
+        ///{0}.
+        /// </summary>
+        public static string AzureVMSqlServerWrongSettingsFormat {
+            get {
+                return ResourceManager.GetString("AzureVMSqlServerWrongSettingsFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot specify both Windows and Linux configurations..
         /// </summary>
         public static string BothWindowsAndLinuxConfigurationsSpecified {
