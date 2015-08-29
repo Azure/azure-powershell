@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #endregion
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(VaultName) : ResourceGroupName;
             if (string.IsNullOrWhiteSpace(ResourceGroupName))

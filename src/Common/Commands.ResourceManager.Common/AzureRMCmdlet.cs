@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             get
             {
-                if (Profile == null)
+                if (Profile == null || Profile.DefaultContext == null)
                 {
                     throw new PSInvalidOperationException("Run Login-AzureRMAccount to logic with profile.");
                 }

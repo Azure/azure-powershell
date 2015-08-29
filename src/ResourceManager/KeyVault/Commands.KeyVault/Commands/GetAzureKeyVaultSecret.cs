@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #endregion
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             Secret secret;
             switch (ParameterSetName)

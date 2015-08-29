@@ -181,10 +181,29 @@
     <None Include="ScenarioTests\Common.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Scripts\bvtdata\byoktest.byok" />
+    <None Include="Scripts\bvtdata\byoktest1024.byok" />
+    <None Include="Scripts\bvtdata\pfxtest.pfx" />
+    <None Include="Scripts\bvtdata\pfxtest1024.pfx" />
+    <None Include="Scripts\Common.ps1" />
+    <None Include="Scripts\ControlPlane\Common.ps1" />
     <None Include="Scripts\ControlPlane\KeyVaultManagementTests.ps1">
       <Link>ScenarioTests\KeyVaultManagementTests.ps1</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Scripts\ControlPlane\KeyVaultManagementTests.ps1" />
+    <None Include="Scripts\proddata\byoktest.byok" />
+    <None Include="Scripts\proddata\byoktest1024.byok" />
+    <None Include="Scripts\proddata\pfxtest.pfx" />
+    <None Include="Scripts\proddata\pfxtest1024.pfx" />
+    <None Include="Scripts\PSHCommon\Assert.ps1" />
+    <None Include="Scripts\PSHCommon\Common.ps1" />
+    <None Include="Scripts\RunKeyVaultTests.ps1" />
+    <None Include="Scripts\RunUITests.ps1" />
+    <None Include="Scripts\VaultKeyTests.ps1" />
+    <None Include="Scripts\VaultManagementTests.ps1" />
+    <None Include="Scripts\VaultSecretTests.ps1" />
+    <None Include="Scripts\VaultUITests.ps1" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests.KeyVaultManagementTests\TestCreateDeleteVaultWithPiping.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -268,9 +287,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
-      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
-      <Name>Commands.Common</Name>
+    <ProjectReference Include="..\..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
+      <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
+      <Name>Commands.ResourceManager.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.ScenarioTests.Common\Commands.ScenarioTests.Common.csproj">
       <Project>{c1bda476-a5cc-4394-914d-48b0ec31a710}</Project>
@@ -290,6 +309,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\readme.txt" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -91,6 +91,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.HDInsight.Test", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Insights.Test", "ResourceManager\Insights\Commands.Insights.Test\Commands.Insights.Test.csproj", "{469F20E0-9D40-41AD-94C3-B47AD15A4C00}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.KeyVault.Test", "ResourceManager\KeyVault\Commands.KeyVault.Test\Commands.KeyVault.Test.csproj", "{080B0477-7E52-4455-90AB-23BD13D1B1CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -257,6 +259,10 @@ Global
 		{469F20E0-9D40-41AD-94C3-B47AD15A4C00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{469F20E0-9D40-41AD-94C3-B47AD15A4C00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{469F20E0-9D40-41AD-94C3-B47AD15A4C00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{080B0477-7E52-4455-90AB-23BD13D1B1CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{080B0477-7E52-4455-90AB-23BD13D1B1CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{080B0477-7E52-4455-90AB-23BD13D1B1CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{080B0477-7E52-4455-90AB-23BD13D1B1CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -273,5 +279,6 @@ Global
 		{133561EC-99AF-4ADC-AF41-39C4D3AD323B} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{5FBB9D19-B365-4C97-BEFF-BBD5506A6D25} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{469F20E0-9D40-41AD-94C3-B47AD15A4C00} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{080B0477-7E52-4455-90AB-23BD13D1B1CE} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 	EndGlobalSection
 EndGlobal

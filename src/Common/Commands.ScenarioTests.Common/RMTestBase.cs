@@ -51,7 +51,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
                             {AzureAccount.Property.Subscriptions, newGuid.ToString()}
                     }
                 },
-            AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud]);
+            AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud], 
+            new AzureTenant { Id = Guid.NewGuid(), Domain = "testdomain.onmicrosoft.com" });
 
             AzureRMCmdlet.Profile = currentProfile;
 
@@ -60,8 +61,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
             {
                 AzureSession.DataStore = new MemoryDataStore();
             }
-
-            
 
             AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
         }

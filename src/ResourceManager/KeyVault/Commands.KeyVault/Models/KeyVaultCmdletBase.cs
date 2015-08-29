@@ -17,13 +17,22 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.IO;
 using System.Net.Http;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class KeyVaultCmdletBase : AzureSMCmdlet
+    public class KeyVaultCmdletBase : AzureRMCmdlet
     {        
         public KeyVaultCmdletBase()
         {        
+        }
+
+        /// <summary>
+        /// Shim method for backward compatibility.  All cmdlets should implement ProcessRecord directly
+        /// </summary>
+        public void ExecuteCmdlet()
+        {
+            ProcessRecord();
         }
 
         internal IKeyVaultDataServiceClient DataServiceClient
@@ -34,7 +43,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 {
                     this.dataServiceClient = new KeyVaultDataServiceClient(
                         AzureSession.AuthenticationFactory,
-                        Profile.DefaultContext,
+                        DefaultContext,
                         new HttpClient());
                 }
 

@@ -27,7 +27,7 @@ using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Management.KeyVault;
 using Microsoft.Azure.Common.Authentication.Models;
 using System.Collections.Generic;
-
+using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test
 {
@@ -49,8 +49,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
                 var testSubscription = new AzureSubscription()
                 {
                     Id = new Guid(csmEnvironment.SubscriptionId),
-                    Name = ProfileClient.Profile.DefaultSubscription.Name,
-                    Environment = ProfileClient.Profile.DefaultSubscription.Environment,
+                    Name = AzureRMCmdlet.Profile.DefaultContext.Subscription.Name,
+                    Environment = AzureRMCmdlet.Profile.DefaultContext.Environment.Name,
                     Account = user,
                     Properties = new Dictionary<AzureSubscription.Property, string>
                     {
@@ -73,12 +73,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
                     }
                 };
 
-                ProfileClient.Profile.Accounts.Remove(ProfileClient.Profile.DefaultSubscription.Account);
-                ProfileClient.Profile.Subscriptions[testSubscription.Id] = testSubscription;
-                ProfileClient.Profile.Accounts[testAccount.Id] = testAccount;                
-                ProfileClient.SetSubscriptionAsDefault(testSubscription.Name, testSubscription.Account);
-                
-                ProfileClient.Profile.Save();
+                AzureRMCmdlet.Profile.DefaultContext = new AzureContext(testSubscription, testAccount, AzureRMCmdlet.Profile.DefaultContext.Environment, new AzureTenant { Id = new Guid(tenantId) });
             }
         }
 

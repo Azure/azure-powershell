@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         public Hashtable Tag { get; set; }
 
         #endregion
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             switch (ParameterSetName)
             {
