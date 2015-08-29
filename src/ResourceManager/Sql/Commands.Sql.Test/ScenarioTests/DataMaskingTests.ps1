@@ -140,6 +140,19 @@ function Test-DatabaseDataMaskingBasicRuleLifecycle
 		Assert-AreEqual $rule.TableName $params.table2
 		Assert-AreEqual $rule.ColumnName $params.column2
 
+		Set-AzureSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -RuleId $ruleId -MaskingFunction "Default"
+		$rule = Get-AzureSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -RuleId $ruleId
+
+			# Assert
+		Assert-AreEqual $rule.ResourceGroupName $params.rgname
+		Assert-AreEqual $rule.ServerName $params.serverName
+		Assert-AreEqual $rule.DatabaseName $params.databaseName
+		Assert-AreEqual $rule.RuleId $ruleId
+		Assert-AreEqual $rule.MaskingFunction "Default"
+		Assert-AreEqual $rule.SchemaName "dbo"
+		Assert-AreEqual $rule.TableName $params.table2
+		Assert-AreEqual $rule.ColumnName $params.column2
+
 		$ruleCountBefore = (Get-AzureSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName).Count
 		$ruleCountBefore = if ( !$ruleCountBefore ) {0} else {$ruleCountBefore}
 		Remove-AzureSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -RuleId $ruleId -Force
@@ -353,7 +366,7 @@ function Test-DatabaseDataMaskingRuleCreationWithoutPolicy
 {
 
 	# Setup
-	$testSuffix = 45262
+	$testSuffix = 457822
 	 $params = Create-DataMaskingTestEnvironment $testSuffix
 	 $ruleId = "rule1"
 	try
