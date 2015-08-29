@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
@@ -46,14 +47,31 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = true,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Path and name of the output RDP file.")]
+            HelpMessage = "Path and name of the output RDP file.",
+            ParameterSetName = "Download")]
+        [Parameter(
+            Mandatory = false,
+            Position = 2,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Path and name of the output RDP file.",
+            ParameterSetName = "Launch")]
         [ValidateNotNullOrEmpty]
-        public string LocalPath { get; set;}
+        public string LocalPath { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            Position = 3, 
+            HelpMessage = "Start a remote desktop session to the specified role instance.", 
+            ParameterSetName = "Launch")]
+        public SwitchParameter Launch
+        {
+            get;
+            set;
+        }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-
 
             ExecuteClientAction(() =>
             {
@@ -138,10 +156,45 @@ namespace Microsoft.Azure.Commands.Compute
                 }
 
                 // Write to file
-                using (var file = new StreamWriter(this.LocalPath))
+                string rdpFilePath = this.LocalPath ?? Path.GetTempFileName();
+
+                using (var file = new StreamWriter(rdpFilePath))
                 {
                     file.WriteLine(fullAddressPrefix + address + ":" + port);
                     file.WriteLine(promptCredentials);
+                }
+
+                if (Launch.IsPresent)
+                {
+                    var startInfo = new ProcessStartInfo
+                                        {
+                                            CreateNoWindow = true,
+                                            WindowStyle = ProcessWindowStyle.Hidden
+                                        };
+
+                    if (this.LocalPath == null)
+                    {
+                        string scriptGuid = Guid.NewGuid().ToString();
+
+                        string launchRDPScript = Path.GetTempPath() + scriptGuid + ".bat";
+                        using (var scriptStream = File.OpenWrite(launchRDPScript))
+                        {
+                            var writer = new StreamWriter(scriptStream);
+                            writer.WriteLine("start /wait mstsc.exe " + rdpFilePath);
+                            writer.WriteLine("del " + rdpFilePath);
+                            writer.WriteLine("del " + launchRDPScript);
+                            writer.Flush();
+                        }
+
+                        startInfo.FileName = launchRDPScript;
+                    }
+                    else
+                    {
+                        startInfo.FileName = "mstsc.exe";
+                        startInfo.Arguments = rdpFilePath;
+                    }
+
+                    Process.Start(startInfo);
                 }
             });
         }
