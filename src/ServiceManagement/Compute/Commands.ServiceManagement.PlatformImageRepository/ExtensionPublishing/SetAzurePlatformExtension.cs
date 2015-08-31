@@ -12,13 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Management.Compute;
+using Microsoft.WindowsAzure.Management.Compute.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
-using AutoMapper;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Compute.Models;
-using Microsoft.WindowsAzure.Management.Compute;
+
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageRepository.ExtensionPublishing
 {
@@ -117,6 +118,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
         [ValidateNotNullOrEmpty]
         public string CompanyName { get; set; }
 
+        [Parameter(
+           Mandatory = false,
+           Position = 11,
+           HelpMessage = "Regions of the Extension")]
+        public string Regions { get; set; }
+
         public bool? BlockRoleUponFailure { get; set; }
 
         public bool? DisallowMajorVersionUpgrade { get; set; }
@@ -145,19 +152,20 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
                     if (vmExtension != null)
                     {
                         IsJsonExtension = vmExtension.IsJsonExtension;
-                        IsInternalExtension = vmExtension.IsJsonExtension;
+                        IsInternalExtension = vmExtension.IsInternalExtension;
                         DisallowMajorVersionUpgrade = vmExtension.DisallowMajorVersionUpgrade;
                     }
                     else if (serviceExtn != null)
                     {
                         IsJsonExtension = serviceExtn.IsJsonExtension;
-                        IsInternalExtension = serviceExtn.IsJsonExtension;
+                        IsInternalExtension = serviceExtn.IsInternalExtension;
                         BlockRoleUponFailure = serviceExtn.BlockRoleUponFailure;
                     }
 
-                    this.IsInternalExtension = string.Equals(this.ExtensionMode, PublicModeStr) ? false
-                                             : string.Equals(this.ExtensionMode, InternalModeStr) ? true
-                                             : true;
+                    if (! string.IsNullOrEmpty(this.ExtensionMode))
+                    {
+                        this.IsInternalExtension = this.ExtensionMode.Equals(InternalModeStr);
+                    }
 
                     var parameters = Mapper.Map<ExtensionImageUpdateParameters>(this);
 
