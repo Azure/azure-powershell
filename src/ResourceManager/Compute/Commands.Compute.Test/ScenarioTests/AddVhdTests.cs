@@ -12,10 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Compute
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
+
+namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
-    public class VMAccessExtensionPrivateSettings
+    public class AddVhdTests
     {
-        public string Password;
+        [Fact(Skip = "TODO: only works for live mode")]
+        [Trait(Category.RunType, Category.LiveOnly)]
+        public void TestAddVhd()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-AddVhd");
+        }
     }
 }
