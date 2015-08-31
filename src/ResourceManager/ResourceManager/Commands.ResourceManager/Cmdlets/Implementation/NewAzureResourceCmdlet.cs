@@ -71,7 +71,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets a value that indicates if the full object was passed it.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "When set indicates that the full object is passed in to the -PropertyObject parameter.")]
-        [Obsolete("This parameter is obsolete and will be removed in future releases.")]
         public SwitchParameter IsFullObject { get; set; }
 
         /// <summary>
@@ -96,6 +95,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             base.OnProcessRecord();
             this.DetermineOutputObjectFormat();
+            if(this.IsFullObject.IsPresent)
+            {
+                this.WriteWarning("The IsFullObject parameter is obsolete and will be removed in future releases.");
+            }
             if (this.OutputObjectFormat == ResourceObjectFormat.Legacy)
             {
                 this.WriteWarning("This cmdlet is using the legacy properties object format. This format is being deprecated. Please use '-OutputObjectFormat New' and update your scripts.");

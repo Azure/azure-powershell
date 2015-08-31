@@ -63,7 +63,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets a value that indicates if the operation should wait for completion before returning the result. If set, the cmdlet will return as soon as the request is accepted.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Do not wait for operation to complete.")]
-        [Obsolete("This parameter is obsolete and will be removed in future releases.")]
         public SwitchParameter NoWait { get; set; }
 
         /// <summary>
@@ -102,6 +101,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private void RunCmdlet()
         {
+            if(this.NoWait.IsPresent)
+            {
+                this.WriteWarning("The NoWait parameter is obsolete and will be removed in future releases.");
+            }
             var resourceIdsToUse = this.resourceIds
                 .Concat(this.ResourceId)
                 .DistinctArray(StringComparer.InvariantCultureIgnoreCase);
