@@ -281,6 +281,84 @@ The file needs to be a PowerShell script (.ps1 or .psm1).</value>
   <data name="DscExtensionRemovalConfirmation" xml:space="preserve">
     <value>{0}</value>
   </data>
+  <data name="AddAzureVhdCommandSASUriNotSupportedInPatchMode" xml:space="preserve">
+    <value>SAS Uri for the destination blob is not supported in patch mode:{0}</value>
+  </data>
+  <data name="PSSyncOutputEventsCalculatingMD5Hash" xml:space="preserve">
+    <value>Calculating MD5 Hash</value>
+  </data>
+  <data name="PSSyncOutputEventsCalculatingMD5HashForFile" xml:space="preserve">
+    <value>MD5 hash is being calculated for the file '{0}'.</value>
+  </data>
+  <data name="PSSyncOutputEventsCopying" xml:space="preserve">
+    <value>Copying</value>
+  </data>
+  <data name="PSSyncOutputEventsCreatingNewPageBlob" xml:space="preserve">
+    <value>Creating new page blob of size {0}...</value>
+  </data>
+  <data name="PSSyncOutputEventsDetectingActualDataBlocks" xml:space="preserve">
+    <value>Detecting the empty data blocks in the local file.</value>
+  </data>
+  <data name="PSSyncOutputEventsDetectingActualDataBlocksCompleted" xml:space="preserve">
+    <value>Detecting the empty data blocks completed.</value>
+  </data>
+  <data name="PSSyncOutputEventsDownloading" xml:space="preserve">
+    <value>Downloading</value>
+  </data>
+  <data name="PSSyncOutputEventsElapsedTimeForCopy" xml:space="preserve">
+    <value>Elapsed time for copy: {0}</value>
+  </data>
+  <data name="PSSyncOutputEventsElapsedTimeForDownload" xml:space="preserve">
+    <value>Elapsed time for download: {0}</value>
+  </data>
+  <data name="PSSyncOutputEventsElapsedTimeForOperation" xml:space="preserve">
+    <value>Elapsed time for the operation: {0}</value>
+  </data>
+  <data name="PSSyncOutputEventsElapsedTimeForUpload" xml:space="preserve">
+    <value>Elapsed time for upload: {0}</value>
+  </data>
+  <data name="PSSyncOutputEventsEmptyBlockDetected" xml:space="preserve">
+    <value>Empty block detected: {0}</value>
+  </data>
+  <data name="PSSyncOutputEventsEmptyBlockDetectionCompleted" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="PSSyncOutputEventsEmptyBlockDetectionDetecting" xml:space="preserve">
+    <value>Detecting empty blocks</value>
+  </data>
+  <data name="PSSyncOutputEventsFormatDuration" xml:space="preserve">
+    <value>{0} days {1:00}:{2:00}:{3:00}</value>
+  </data>
+  <data name="PSSyncOutputEventsLogProgress" xml:space="preserve">
+    <value>{0:0.0}% complete; Remaining Time: {1}; Throughput: {2:0.0}Mbps</value>
+  </data>
+  <data name="PSSyncOutputEventsLogProgressCompleteCompleted" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="PSSyncOutputEventsMD5HashCalculationFinished" xml:space="preserve">
+    <value>MD5 hash calculation is completed.</value>
+  </data>
+  <data name="PSSyncOutputEventsPrintBlockRange" xml:space="preserve">
+    <value>Range of the block is {0}, Length: {1}</value>
+  </data>
+  <data name="PSSyncOutputEventsProgressEmptyBlockDetection" xml:space="preserve">
+    <value>Empty Block Detection</value>
+  </data>
+  <data name="PSSyncOutputEventsResumingUpload" xml:space="preserve">
+    <value>Found existing page blob. Resuming upload...</value>
+  </data>
+  <data name="PSSyncOutputEventsRetryingAfterANetworkDisruption" xml:space="preserve">
+    <value>Network disruption occured, retrying.</value>
+  </data>
+  <data name="PSSyncOutputEventsUploadFailedWithException" xml:space="preserve">
+    <value>Upload failed with exceptions:</value>
+  </data>
+  <data name="PSSyncOutputEventsUploading" xml:space="preserve">
+    <value>Uploading</value>
+  </data>
+  <data name="StorageCredentialsFactoryCurrentSubscriptionNotSet" xml:space="preserve">
+    <value>No current subscription has been designated. Use Select-AzureSubscription -Current &lt;subscriptionName&gt; to set the current subscription.</value>
+  </data>
   <data name="DataDiskNotAssignedForVM" xml:space="preserve">
     <value>A data disk, {0}, is not currently assigned for this VM. Use Add-AzureVMDataDisk to add it.</value>
   </data>

@@ -12,10 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Compute
+using System;
+using System.IO;
+
+namespace Microsoft.Azure.Commands.Compute.Models
 {
-    public class VMAccessExtensionPrivateSettings
+    public class VhdUploadContext
     {
-        public string Password;
+        public FileInfo LocalFilePath { get; set; }
+        public Uri DestinationUri { get; set; }
     }
 }
