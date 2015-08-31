@@ -1,4 +1,4 @@
-## 2015.09.03 version 0.9.8
+﻿## 2015.09.03 version 0.9.8
 * Azure Compute (ARM) Cmdlets
 	* Add -Launch parameter for Get-AzureRemoteDesktopFile cmdlet
 * Azure Backup - added the following cmdlets
@@ -18,6 +18,14 @@
   * Set-AzureRMBackupProtectionPolicy
   * Get-AzureRMBackupRecoveryPoint
   * Restore-AzureRMBackupItem
+* Azure Batch - added the following cmdlets
+  * Enable-AzureBatchJob
+  * Disable-AzureBatchJob
+  * Enable-AzureBatchJobSchedule
+  * Disable-AzureBatchJobSchedule
+  * Stop-AzureBatchJob
+  * Stop-AzureBatchJobSchedule
+  * Stop-AzureBatchTask
 	
 ## 2015.08.17 version 0.9.7
 * Azure Profile cmdlets
