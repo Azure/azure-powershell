@@ -38,7 +38,6 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
 
         private ILogWriter logger;
 
-      
         /// <summary>
         ///     Gets or sets a value indicating whether logging should be enabled.
         /// </summary>
