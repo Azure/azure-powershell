@@ -124,7 +124,6 @@ namespace Microsoft.WindowsAzure.Commands.HDInsight.Cmdlet.PSCmdlets
 
         protected override void EndProcessing()
         {
-            this.WriteWarning(AzureHdInsightPowerShellConstants.AsmWarning);
             if (Cluster != null)
             {
                 Name = Cluster.Name;
