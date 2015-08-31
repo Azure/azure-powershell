@@ -36,7 +36,7 @@
   * Stop-AzureBatchJobSchedule
   * Stop-AzureBatchTask
 	
-## 2015.08.17 version 0.9.7
+## 2015.08.17 version 0.9.8
 * Azure Profile cmdlets
   * New-AzureProfile
     * Added parameter set for empty profile
