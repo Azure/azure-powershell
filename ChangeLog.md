@@ -41,7 +41,7 @@
     * TeradataLinkedService no longer accepts the obsolete properties "database" and "schema". 
     * Obsolete copy-related properties are no longer returned from the service. 
 	
-## 2015.08.17 version 0.9.7
+## 2015.08.17 version 0.9.8
 * Azure Profile cmdlets
   * New-AzureProfile
     * Added parameter set for empty profile
