@@ -222,7 +222,7 @@ function Test-DeleteUnknownVaultFails
 {	
 	$vaultName = Get-VaultName
 
-	Assert-Throws { Remove-AzureKeyVault -VaultName $vaultName  } 
+	Assert-Throws { Remove-AzureKeyVault -VaultName $vaultName  }
 }
 
 #-------------------------------------------------------------------------------------
