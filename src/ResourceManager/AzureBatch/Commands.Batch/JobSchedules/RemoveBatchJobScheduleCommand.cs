@@ -32,8 +32,8 @@ namespace Microsoft.Azure.Commands.Batch
         {
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Resources.RBJS_RemoveConfirm, this.Id),
-                Resources.RBJS_RemoveJobSchedule,
+                string.Format(Resources.RemoveJobScheduleConfirm, this.Id),
+                Resources.RemoveJobSchedule,
                 this.Id,
                 () => BatchClient.DeleteJobSchedule(this.BatchContext, this.Id, this.AdditionalBehaviors));
         }

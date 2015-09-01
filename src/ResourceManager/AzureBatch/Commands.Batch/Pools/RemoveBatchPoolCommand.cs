@@ -35,8 +35,8 @@ namespace Microsoft.Azure.Commands.Batch
         {
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Resources.RBP_RemoveConfirm, this.Id),
-                Resources.RBP_RemovePool,
+                string.Format(Resources.RemovePoolConfirm, this.Id),
+                Resources.RemovePool,
                 this.Id,
                 () => BatchClient.DeletePool(this.BatchContext, this.Id, this.AdditionalBehaviors));
         }

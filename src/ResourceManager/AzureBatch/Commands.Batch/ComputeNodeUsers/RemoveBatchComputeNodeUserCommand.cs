@@ -46,8 +46,8 @@ namespace Microsoft.Azure.Commands.Batch
 
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Resources.RBU_RemoveConfirm, this.Name),
-                Resources.RBU_RemoveUser,
+                string.Format(Resources.RemoveComputeNodeUserConfirm, this.Name),
+                Resources.RemoveComputeNodeUser,
                 this.Name,
                 () => BatchClient.DeleteComputeNodeUser(parameters));
         }

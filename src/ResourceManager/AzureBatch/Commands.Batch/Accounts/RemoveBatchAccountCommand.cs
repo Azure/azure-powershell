@@ -39,8 +39,8 @@ namespace Microsoft.Azure.Commands.Batch
         {
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Resources.RBA_RemoveConfirm, this.AccountName),
-                Resources.RBA_RemoveResource,
+                string.Format(Resources.RemoveAccountConfirm, this.AccountName),
+                Resources.RemoveBatchAccount,
                 this.AccountName,
                 () => DeleteAction(this.ResourceGroupName, this.AccountName));
         }

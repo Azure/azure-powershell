@@ -47,8 +47,8 @@ namespace Microsoft.Azure.Commands.Batch
 
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Resources.RBT_RemoveConfirm, taskId),
-                Resources.RBT_RemoveTask,
+                string.Format(Resources.RemoveTaskConfirm, taskId),
+                Resources.RemoveTask,
                 taskId,
                 () => BatchClient.DeleteTask(parameters));
         }
