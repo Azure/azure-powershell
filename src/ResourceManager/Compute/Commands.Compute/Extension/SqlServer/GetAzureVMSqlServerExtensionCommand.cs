@@ -57,13 +57,6 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(
-            Position = 3,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "To show the status.")]
-        [ValidateNotNullOrEmpty]
-        public SwitchParameter Status { get; set; }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -73,45 +66,21 @@ namespace Microsoft.Azure.Commands.Compute
                 Name = VirtualMachineSqlServerExtensionContext.ExtensionPublishedNamespace + "." + VirtualMachineSqlServerExtensionContext.ExtensionPublishedName;
             }
 
-            if (Status)
-            {
-                var result = VirtualMachineExtensionClient.GetWithInstanceView(ResourceGroupName, VMName, Name);
-                var extension = result.ToPSVirtualMachineExtension(ResourceGroupName);
+            var result = VirtualMachineExtensionClient.GetWithInstanceView(ResourceGroupName, VMName, Name);
+            var extension = result.ToPSVirtualMachineExtension(ResourceGroupName);
 
-                if (
-                    extension.Publisher.Equals(VirtualMachineSqlServerExtensionContext.ExtensionPublishedNamespace,
-                        StringComparison.InvariantCultureIgnoreCase) &&
-                    extension.ExtensionType.Equals(VirtualMachineSqlServerExtensionContext.ExtensionPublishedName,
-                        StringComparison.InvariantCultureIgnoreCase))
-                {
-                    WriteObject(GetSqlServerExtensionContext(extension));
-                }
-                else
-                {
-                    WriteObject(null);
-                }
+            if (
+                extension.Publisher.Equals(VirtualMachineSqlServerExtensionContext.ExtensionPublishedNamespace,
+                    StringComparison.InvariantCultureIgnoreCase) &&
+                extension.ExtensionType.Equals(VirtualMachineSqlServerExtensionContext.ExtensionPublishedName,
+                    StringComparison.InvariantCultureIgnoreCase))
+            {
+                WriteObject(GetSqlServerExtensionContext(extension));
             }
             else
             {
-                var result = VirtualMachineExtensionClient.Get(ResourceGroupName, VMName, Name);
-                var extension = result.ToPSVirtualMachineExtension(ResourceGroupName);
-
-                if (
-                    extension.Publisher.Equals(
-                        VirtualMachineSqlServerExtensionContext.ExtensionPublishedNamespace,
-                        StringComparison.InvariantCultureIgnoreCase) &&
-                    extension.ExtensionType.Equals(
-                        VirtualMachineSqlServerExtensionContext.ExtensionPublishedName,
-                        StringComparison.InvariantCultureIgnoreCase))
-                {
-                    WriteObject(GetSqlServerExtensionContext(extension));
-                }
-                else
-                {
-                    WriteObject(null);
-                }
+                WriteObject(null);
             }
-
         }
 
         private VirtualMachineSqlServerExtensionContext GetSqlServerExtensionContext(PSVirtualMachineExtension extension)
@@ -138,6 +107,8 @@ namespace Microsoft.Azure.Commands.Compute
                     PublicSettings = JsonConvert.SerializeObject(extensionPublicSettings),
                     ProtectedSettings = extension.ProtectedSettings,
                     ProvisioningState = extension.ProvisioningState,
+                    AutoBackupSettings = extensionPublicSettings.AutoBackupSettings,
+                    AutoPatchingSettings = extensionPublicSettings.AutoPatchingSettings,
                     Statuses = extension.Statuses
                 };
 
