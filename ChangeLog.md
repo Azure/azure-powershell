@@ -40,6 +40,10 @@
     * Imposes message size limits for all authoring types. Pipelines must be 200 KB or less in size and all others must be 30 KB or less. 
     * TeradataLinkedService no longer accepts the obsolete properties "database" and "schema". 
     * Obsolete copy-related properties are no longer returned from the service. 
+* Azure Sql (ARM) Cmdlets - added the following cmdlets
+  * Get-AzureSqlServerActiveDirectoryAdministrator
+  * Set-AzureSqlServerActiveDirectoryAdministrator
+  * Remove-AzureSqlServerActiveDirectoryAdministrator
 	
 ## 2015.08.17 version 0.9.8
 * Azure Profile cmdlets
