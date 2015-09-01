@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ParameterSetName = UpdateCustomDomainParamSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Custom Domain Name.")]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
         public string CustomDomainName { get; set; }
 
         [Parameter(
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ParameterSetName = UpdateTagsParamSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Tags.")]
-        [ValidateNotNullOrEmpty]
+        [ValidateNotNull]
         public Hashtable[] Tags { get; set; }
 
         public override void ExecuteCmdlet()
