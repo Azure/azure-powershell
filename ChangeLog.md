@@ -1,4 +1,4 @@
-## 2015.09.03 version 0.9.8
+﻿## 2015.09.03 version 0.9.8
 * Azure Compute (ARM) Cmdlets
   * Added -Launch parameter for Get-AzureRemoteDesktopFile cmdlet
   * Added Id parameter for VM cmdlets to support piping scenario without ResourceGroupName parameter
@@ -27,6 +27,14 @@
   * Set-AzureRMBackupProtectionPolicy
   * Get-AzureRMBackupRecoveryPoint
   * Restore-AzureRMBackupItem
+* Azure Batch - added the following cmdlets
+  * Enable-AzureBatchJob
+  * Disable-AzureBatchJob
+  * Enable-AzureBatchJobSchedule
+  * Disable-AzureBatchJobSchedule
+  * Stop-AzureBatchJob
+  * Stop-AzureBatchJobSchedule
+  * Stop-AzureBatchTask
 	
 ## 2015.08.17 version 0.9.7
 * Azure Profile cmdlets

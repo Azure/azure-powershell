@@ -90,7 +90,6 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         /// </summary>
         protected override void EndProcessing()
         {
-            this.WriteWarning(AzureHdInsightPowerShellConstants.AsmWarning);
             if (this.File.IsNullOrEmpty() && this.Query.IsNullOrEmpty())
             {
                 throw new PSArgumentException("Either File or Query should be specified for Pig jobs.");

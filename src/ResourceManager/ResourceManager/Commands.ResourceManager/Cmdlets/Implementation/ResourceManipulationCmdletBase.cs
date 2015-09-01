@@ -68,7 +68,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         [Parameter(ParameterSetName = ResourceManipulationCmdletBase.SubscriptionLevelResoruceParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The parent resource type. e.g. Servers/myServer.")]
         [ValidateNotNullOrEmpty]
-        [Obsolete("This parameter is obsolete and will be removed in future releases. Please use the -ResourceType and -ResourceName parameters instead.")]
         public string ParentResource { get; set; }
 
         /// <summary>
@@ -125,6 +124,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         protected override void OnProcessRecord()
         {
+            if(this.SubscriptionId != null)
+            {
+                this.WriteWarning("The SubscriptionId parameter is obsolete and will be removed in future releases.");
+            }
+            if (!string.IsNullOrEmpty(this.ParentResource))
+            {
+                this.WriteWarning("The ParentResource parameter is obsolete and will be removed in future releases. Please use the -ResourceType and -ResourceName parameters instead.");
+            }
             if (string.IsNullOrWhiteSpace(this.ResourceId) && !this.TenantLevel && this.SubscriptionId == null)
             {
                 this.SubscriptionId = this.Profile.Context.Subscription.Id;

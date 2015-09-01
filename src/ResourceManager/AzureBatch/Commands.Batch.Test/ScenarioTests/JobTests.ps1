@@ -388,3 +388,29 @@ function Test-DisableAndEnableJob
 	$job = Get-AzureBatchJob_ST -Filter "id eq '$jobId'" -BatchContext $context
 	Assert-AreEqual 'Active' $job.State
 }
+
+<#
+.SYNOPSIS
+Tests terminating a job
+#>
+function Test-TerminateJob
+{
+	param([string]$accountName, [string]$jobId, [string]$usePipeline)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$terminateReason = "test"
+
+	if ($usePipeline -eq '1')
+	{
+		Get-AzureBatchJob_ST -Id $jobId -BatchContext $context | Stop-AzureBatchJob_ST -TerminateReason $terminateReason -BatchContext $context
+	}
+	else
+	{
+		Stop-AzureBatchJob_ST $jobId $terminateReason -BatchContext $context
+	}
+
+	# Verify the job was terminated and that the terminate reason was set
+	$job = Get-AzureBatchJob_ST $jobId -BatchContext $context
+	Assert-True { ($job.State.ToString().ToLower() -eq 'terminating') -or ($job.State.ToString().ToLower() -eq 'completed') }
+	Assert-AreEqual $terminateReason $job.ExecutionInformation.TerminateReason
+}
