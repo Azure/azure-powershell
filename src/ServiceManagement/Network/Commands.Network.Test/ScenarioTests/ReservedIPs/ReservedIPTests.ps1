@@ -47,8 +47,11 @@ function Test-AzureReservedIPSimpleOperations
 
 function Test-CreateVMWithReservedIP
 {
+    # Virtual Machine cmdlets are now showing a non-terminating error message for ResourceNotFound
+    # To continue script, $ErrorActionPreference should be set to 'SilentlyContinue'.
+    $ErrorActionPreference='SilentlyContinue';
+
     # Setup
-      
     $vmname = getAssetName
     $serviceName = getAssetName
     $storageAccountName = getAssetName
@@ -98,8 +101,11 @@ function Test-CreateVMWithReservedIP
 
 function Test-ReserveExistingDeploymentIP
 {
+    # Virtual Machine cmdlets are now showing a non-terminating error message for ResourceNotFound
+    # To continue script, $ErrorActionPreference should be set to 'SilentlyContinue'.
+    $ErrorActionPreference='SilentlyContinue';
+
     # Setup
-    
     $vmname = getAssetName
     $serviceName = getAssetName
     $storageAccountName = getAssetName
@@ -139,8 +145,11 @@ function Test-ReserveExistingDeploymentIP
 #>
 function Test-SetAzureReservedIPAssociationSingleVip
 {
+    # Virtual Machine cmdlets are now showing a non-terminating error message for ResourceNotFound
+    # To continue script, $ErrorActionPreference should be set to 'SilentlyContinue'.
+    $ErrorActionPreference='SilentlyContinue';
+
     # Setup
-     
     $vmname = getAssetName
     $serviceName = getAssetName
     $storageAccountName = getAssetName
@@ -192,8 +201,11 @@ function Test-SetAzureReservedIPAssociationSingleVip
 
 function Test-RemoveAzureReservedIPAssociationSingleVip
 {
+    # Virtual Machine cmdlets are now showing a non-terminating error message for ResourceNotFound
+    # To continue script, $ErrorActionPreference should be set to 'SilentlyContinue'.
+    $ErrorActionPreference='SilentlyContinue';
+
     # Setup
-      
     $vmname = getAssetName
     $serviceName = getAssetName
     $storageAccountName = getAssetName

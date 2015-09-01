@@ -898,7 +898,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             ExtensionCertificateConfig certConfig, ExtensionEndpointConfigSet epConfig, ExtensionLocalResourceConfigSet lrConfig,
             DateTime publishDate, string publicSchema, string privateSchema, string sample,
             string eula,  Uri privacyUri, Uri homepage, string os, string regions,
-            bool blockRole, bool disallowUpgrade, bool xmlExtension, bool internalExtension, bool force)
+            bool blockRole, bool disallowUpgrade, bool xmlExtension, bool force)
         {
             return RunPSCmdletAndReturnFirst<ManagementOperationContext>(
                 new PublishAzurePlatformExtensionCmdletInfo(
@@ -907,7 +907,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     certConfig, epConfig, lrConfig,
                     publishDate, publicSchema, privateSchema, sample,
                     eula, privacyUri, homepage, os, regions,
-                    blockRole, disallowUpgrade, xmlExtension, internalExtension, force));
+                    blockRole, disallowUpgrade, xmlExtension, force));
         }
 
         internal ManagementOperationContext UnpublishAzurePlatformExtension(
