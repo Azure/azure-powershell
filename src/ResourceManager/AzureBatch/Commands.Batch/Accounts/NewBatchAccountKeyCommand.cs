@@ -14,10 +14,11 @@
 
 using Microsoft.Azure.Management.Batch.Models;
 using System.Management.Automation;
+using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.New, "AzureBatchAccountKey"), OutputType(typeof(BatchAccountContext))]
+    [Cmdlet(VerbsCommon.New, Constants.AzureBatchAccountKey), OutputType(typeof(BatchAccountContext))]
     public class RegenBatchAccountKeyCommand : BatchCmdletBase
     {
         internal const string ParameterSetContext = "Use Context";

@@ -14,10 +14,11 @@
 
 using Microsoft.Azure.Commands.Batch.Properties;
 using System.Management.Automation;
+using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureBatchAccount")]
+    [Cmdlet(VerbsCommon.Remove, Constants.AzureBatchAccount)]
     public class RemoveBatchAccountCommand : BatchCmdletBase
     {
         private static string mamlCall = "RemoveAccount";
