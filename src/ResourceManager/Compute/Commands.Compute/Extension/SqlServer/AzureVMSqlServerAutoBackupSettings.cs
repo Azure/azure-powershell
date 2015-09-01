@@ -11,6 +11,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -37,16 +38,19 @@ namespace Microsoft.Azure.Commands.Compute
         /// <summary>
         /// storage url where databases will be backed up
         /// </summary>
+        [JsonIgnoreAttribute()]
         public string StorageUrl { get; set; }
 
         /// <summary>
         /// Key of storage account used by managed backup
         /// </summary>
+        [JsonIgnoreAttribute()]
         public string StorageAccessKey { get; set; }
 
         /// <summary>
         /// Password required for certification when encryption is enabled
         /// </summary>
+        [JsonIgnoreAttribute()]
         public string Password { get; set; }
     }
 }

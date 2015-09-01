@@ -32,8 +32,6 @@ namespace Microsoft.Azure.Commands.Compute
     {
         protected const string GetSqlServerExtensionParamSetName = "GetSqlServerExtension";
 
-        private const string SecretMaskedString = "*****";
-
         [Parameter(
            Mandatory = true,
            Position = 0,
@@ -119,20 +117,30 @@ namespace Microsoft.Azure.Commands.Compute
         private VirtualMachineSqlServerExtensionContext GetSqlServerExtensionContext(PSVirtualMachineExtension extension)
         {
             SqlServerPublicSettings extensionPublicSettings = null;
+            VirtualMachineSqlServerExtensionContext context = null;
+
             try
             {
                 extensionPublicSettings = string.IsNullOrEmpty(extension.PublicSettings) ? null
                                   : JsonConvert.DeserializeObject<SqlServerPublicSettings>(extension.PublicSettings);
 
-                if (null != extensionPublicSettings)
+                // #$ISSUE- extension.Statuses is always null, follow up with Azure team
+                context = new VirtualMachineSqlServerExtensionContext
                 {
-                    if (null != extensionPublicSettings.AutoBackupSettings)
-                    {
-                        // Mask secrets so that they are not printed on console
-                        extensionPublicSettings.AutoBackupSettings.Password = SecretMaskedString;
-                        extensionPublicSettings.AutoBackupSettings.StorageAccessKey = SecretMaskedString;
-                    }
-                }
+                    ResourceGroupName = extension.ResourceGroupName,
+                    Name = extension.Name,
+                    Location = extension.Location,
+                    Etag = extension.Etag,
+                    Publisher = extension.Publisher,
+                    ExtensionType = extension.ExtensionType,
+                    TypeHandlerVersion = extension.TypeHandlerVersion,
+                    Id = extension.Id,
+                    PublicSettings = JsonConvert.SerializeObject(extensionPublicSettings),
+                    ProtectedSettings = extension.ProtectedSettings,
+                    ProvisioningState = extension.ProvisioningState,
+                    Statuses = extension.Statuses
+                };
+
             }
             catch (JsonException e)
             {
@@ -149,30 +157,6 @@ namespace Microsoft.Azure.Commands.Compute
                         null));
             }
 
-            string publicSettingsAsString = String.Empty;
-            if (null != extensionPublicSettings)
-            {
-                publicSettingsAsString = JsonConvert.SerializeObject(extensionPublicSettings);
-            }
-
-            // #$ISSUE- extension.Statuses is always null, follow up with Azure team
-            var context = new VirtualMachineSqlServerExtensionContext
-            {
-                ResourceGroupName = extension.ResourceGroupName,
-                Name = extension.Name,
-                Location = extension.Location,
-                Etag = extension.Etag,
-                Publisher = extension.Publisher,
-                ExtensionType = extension.ExtensionType,
-                TypeHandlerVersion = extension.TypeHandlerVersion,
-                Id = extension.Id,
-                PublicSettings = JsonConvert.SerializeObject(extensionPublicSettings),
-                ProtectedSettings = extension.ProtectedSettings,
-                ProvisioningState = extension.ProvisioningState,
-                Statuses = extension.Statuses
-            };
-
-            
             return context;
         }
     }
