@@ -116,10 +116,6 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateNotNullOrEmpty]
         public string TemplateUri { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The expect content version of the template.")]
-        [ValidateNotNullOrEmpty]
-        public string TemplateVersion { get; set; }
-
         public object GetDynamicParameters()
         {
             if (!string.IsNullOrEmpty(GalleryTemplateIdentity))
