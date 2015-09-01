@@ -266,6 +266,7 @@
   </data>
   <data name="VNetDeprecateed" xml:space="preserve">
     <value>This cmdlet {0} has been deprecated. See x {1}</value>
+  </data>
   <data name="DefaultLogoffMessage" xml:space="preserve">
     <value>Please save your work and logoff. You will be logged off automatically after {0} seconds.</value>
   </data>
