@@ -12,27 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.RemoteApp;
 using Microsoft.WindowsAzure.Management.RemoteApp;
 using Microsoft.WindowsAzure.Management.RemoteApp.Models;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRemoteAppVpnDevice"), OutputType(typeof(Vendor))]
-    public class GetAzureRemoteAppVpnDevice : VNetDeprecated
+    public class VNetDeprecated : RdsCmdlet
     {
-        [Parameter(Mandatory = true,
-            Position = 0,
-            ValueFromPipeline = true,
-            HelpMessage = "RemoteApp virtual network name.")]
-        [ValidatePattern(VNetNameValidatorString)]
-        public string VNetName { get; set; }
-
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            VNetVpnDeviceResult response = CallClient(() => Client.VNet.GetVpnDevices(VNetName), Client.VNet);
-            WriteObject(response.Vendors, true);
-        }
+            string message = String.Format(Commands_RemoteApp.VNetDeprecateed,
+                this.GetType().Name, Commands_RemoteApp.VNetDeprecatedUrl);
+         
+             WriteErrorWithTimestamp(Commands_RemoteApp.VNetTimeout);
 
+            throw new RemoteAppServiceException(message, ErrorCategory.InvalidOperation);
+        }
     }
 }
