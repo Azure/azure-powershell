@@ -21,21 +21,18 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.New, Constants.AzureBatchAccountKey), OutputType(typeof(BatchAccountContext))]
     public class RegenBatchAccountKeyCommand : BatchCmdletBase
     {
-        internal const string ParameterSetContext = "Use Context";
-        internal const string ParameterSetCmdLine = "Use Command Line";
-
-        [Parameter(ParameterSetName = ParameterSetCmdLine, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the Batch service account to regenerate the specified key for.")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, 
+            HelpMessage = "The name of the Batch service account to regenerate the specified key for.")]
         [Alias("Name")]
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetCmdLine, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group of the account.")]
+        [Parameter(ValueFromPipelineByPropertyName = true)]
         public string ResourceGroupName { get; set; }
 
         private AccountKeyType keyType;
-        //[Parameter(ParameterSetName = ParameterSetContext, Mandatory = true, ValueFromPipeline = false,
-        //    HelpMessage = "The type of key (primary or secondary) to regenerate.")]
-        [Parameter(ParameterSetName = ParameterSetCmdLine, Mandatory = true, ValueFromPipeline = false, HelpMessage = "The type of key (primary or secondary) to regenerate.")]
+        [Parameter(Mandatory = true, ValueFromPipeline = false, 
+            HelpMessage = "The type of key (primary or secondary) to regenerate.")]
         [ValidateSet("Primary", "Secondary")]
         public string KeyType
         {
