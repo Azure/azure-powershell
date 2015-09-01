@@ -108,7 +108,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetResourceParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The parent resource type. e.g. Servers/myServer.")]
         [ValidateNotNullOrEmpty]
-        [Obsolete("This parameter is obsolete and will be removed in future releases. Please use the -ResourceType and -ResourceName parameters instead.")]
         public string ParentResource { get; set; }
 
         /// <summary>
@@ -232,6 +231,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected override void OnProcessRecord()
         {
             base.OnProcessRecord();
+            if(!string.IsNullOrEmpty(this.TagName) || !string.IsNullOrEmpty(this.TagValue))
+            {
+                this.WriteWarning("The TagName and TagValue parameters are obsolete and will be removed in future releases.");
+            }
+            if(!string.IsNullOrEmpty(this.ParentResource))
+            {
+                this.WriteWarning("The ParentResource parameter is obsolete and will be removed in future releases. Please use the -ResourceType and -ResourceName parameters instead.");
+            }
             this.subscriptionIds.AddRange(this.SubscriptionId.CoalesceEnumerable());
         }
 
@@ -353,12 +360,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 .DetermineApiVersion(resourceId: resourceId)
                 .ConfigureAwait(continueOnCapturedContext: false);
 
+            var odataQuery = QueryFilterBuilder.CreateFilter(
+                resourceType: null,
+                resourceName: null,
+                tagName: null,
+                tagValue: null,
+                filter: this.ODataQuery);
+
             return await this
                 .GetResourcesClient()
                 .GetResource<JObject>(
                     resourceId: resourceId,
                     apiVersion: apiVersion,
-                    cancellationToken: this.CancellationToken.Value)
+                    cancellationToken: this.CancellationToken.Value,
+                    odataQuery: odataQuery)
                 .ConfigureAwait(continueOnCapturedContext: false);
         }
 

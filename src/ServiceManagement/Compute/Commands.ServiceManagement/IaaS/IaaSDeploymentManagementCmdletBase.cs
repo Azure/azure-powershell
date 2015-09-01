@@ -79,7 +79,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                         }
                         else
                         {
-                            WriteWarning(string.Format(CultureInfo.CurrentUICulture, Resources.NoDeploymentFoundInService, ServiceName));
+                            WriteError(new ErrorRecord(
+                                new InvalidOperationException(string.Format(CultureInfo.CurrentUICulture,
+                                    Properties.Resources.NoDeploymentFoundInService, ServiceName)),
+                                string.Empty,
+                                ErrorCategory.ResourceUnavailable,
+                                null));
                         }
                     }
                 });

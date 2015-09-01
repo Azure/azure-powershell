@@ -148,10 +148,12 @@ Please contact Microsoft for further assistant.</value>
     <value>Cmdlet called for ResourceGroupName: {0}, ResourceName: {1}, Location: {2}</value>
   </data>
   <data name="BackupScheduleDailyParamException" xml:space="preserve">
-    <value>For daily backup schedule, protection policy cannot have DaysOfWeek param in backup schedule</value>
+    <value>For a daily backup schedule, using the DaysOfWeek parameter is not allowed</value>
+    <comment>Scrubbed</comment>
   </data>
   <data name="BackupScheduleWeeklyParamException" xml:space="preserve">
-    <value>For weekly backup schedule, DaysOfWeek in backup schedule is mandatory and cannot be empty</value>
+    <value>For a weekly backup schedule, using the DaysOfWeek parameter is mandatory</value>
+    <comment>Scrubbed</comment>
   </data>
   <data name="BackupVaultResNameNullOrEmpty" xml:space="preserve">
     <value>AzureBackupVault.Name</value>
@@ -190,22 +192,26 @@ Please contact Microsoft for further assistant.</value>
     <value>Creating backup vault with ResourceGroupName: {0}, ResourceName: {1}</value>
   </data>
   <data name="DailyRetentionPolicyException" xml:space="preserve">
-    <value>Only one AzureBackupDailyRetentionPolicy in RetentionPolicies is allowed</value>
+    <value>Only one daily retention policy is allowed for a Protection Policy</value>
+    <comment>Scrubbed</comment>
   </data>
   <data name="DailyRetentionPolicyValueException" xml:space="preserve">
-    <value>For AzureBackupDailyRetentionPolicy , valid values of retention are {0} to {1}</value>
+    <value>The daily retention value should be between {0} and {1}</value>
+    <comment>Scrubbed</comment>
   </data>
   <data name="DailyScheduleException" xml:space="preserve">
-    <value>For Daily Schedule, AzureBackupDailyRetentionPolicy in RetentionPolicies param is mandatory</value>
+    <value>For a daily backup schedule, setting a daily retention policy is mandatory</value>
+    <comment>Scrubbed</comment>
   </data>
   <data name="DaysOfMonthsNotAllowedinMonthlyYearlyFormat" xml:space="preserve">
-    <value>Days of  the month in Monthly/Yearly retention is not allowed for weekly backup Schedules</value>
+    <value>Using the DaysOfMonth parameter in retention policies is not allowed when weekly backup schedules are used</value>
+    <comment>Scrubbed</comment>
   </data>
   <data name="DaysofTheWeekInWeeklyRetentionException" xml:space="preserve">
-    <value>DaysofTheWeek list in Weekly retention schedule must be same of backup schedule DaysOfTheWeek</value>
+    <value>The DaysOfWeek specified in a weekly retention schedule should be same as of DaysOfWeek value specified in the backup schedule</value>
   </data>
   <data name="DaysOfTheWeekOfRetentionScheduleException" xml:space="preserve">
-    <value>DaysOfTheWeek of retention schedule  must be same of backup schedule DaysOfTheWeek</value>
+    <value>The DaysOfWeek specified in a weekly retention schedule should be same as of DaysOfWeek value specified in the backup schedule</value>
   </data>
   <data name="DesiredContainerNotFound" xml:space="preserve">
     <value>Desired Container is not found. Returning with isDiscoveryNeed = true</value>
@@ -256,28 +262,36 @@ Please contact Microsoft for further assistant.</value>
     <value>Making client call</value>
   </data>
   <data name="MonthlyRetentionPolicyDaysOfMonthParamException" xml:space="preserve">
-    <value>For AzureBackupMonthlyRetentionPolicy and RetentionFormat in Days, DaysOfMonth param is mandatory and can not be empty</value>
+    <value>For a monthly retention policy specified in days, using the DaysOfMonth parameter is mandatory</value>
+    <comment>Scrubbed</comment>
   </data>
   <data name="MonthlyRetentionPolicyDaysOfMonthsException" xml:space="preserve">
-    <value>For AzureBackupMonthlyRetentionPolicy and RetentionFormat in Weeks, DaysOfMonth param is not allowed.</value>
+    <value>For a monthly retention policy specified in weeks, using the DaysOfMonth parameter is not allowed</value>
+    <comment>Scrubbed</comment>
   </data>
   <data name="MonthlyRetentionPolicyDaysOfWeekException" xml:space="preserve">
-    <value>For AzureBackupMonthlyRetentionPolicy and RetentionFormat in Weeks, DaysOfWeek param is mandatory and can not be empty</value>
+    <value>For a monthly retention policy specified in weeks, using the DaysOfWeek parameter is mandatory</value>
+    <comment>Scrubbed</comment>
   </data>
   <data name="MonthlyRetentionPolicyDaysOfWeekParamException" xml:space="preserve">
-    <value>For AzureBackupMonthlyRetentionPolicy and RetentionFormat in Days, DaysOfWeek or WeekNumber params are not allowed</value>
+    <value>For a monthly retention policy specified in days, using the DaysOfWeek and WeekNumber parameters is not allowed</value>
+    <comment>Scrubbed</comment>
   </data>
   <data name="MonthlyRetentionPolicyException" xml:space="preserve">
-    <value>Only one AzureBackupMonthlyRetentionPolicy in RetentionPolicies is allowed</value>
+    <value>Only one monthly retention policy is allowed for a Protection Policy</value>
+    <comment>Scrubbed</comment>
   </data>
   <data name="MonthlyRetentionPolicyValueException" xml:space="preserve">
-    <value>For AzureBackupMonthlyRetentionPolicy , valid values of retention are {0} to {1}</value>
+    <value>The monthly retention value should be between {0} and {1}</value>
+    <comment>Scrubbed</comment>
   </data>
   <data name="MonthlyRetentionPolicyWeekNumException" xml:space="preserve">
-    <value>For AzureBackupMonthlyRetentionPolicy and RetentionFormat in Weeks, WeekNumber param is mandatory and can not be empty</value>
+    <value>For a monthly retention policy specified in weeks, using the WeekNumber parameter is mandatory</value>
+    <comment>Scrubbed</comment>
   </data>
   <data name="MonthlyYearlyRetentionArgumentException" xml:space="preserve">
-    <value>Days of the week list in Monthly/Yearly retention schedule should be subset of Day of week list in Backup Schedule</value>
+    <value>The DaysOfWeek specified for monthly and yearly retention policies should be a subset of the DaysOfWeek value specified in the backup schedule</value>
+    <comment>Scrubbed</comment>
   </data>
   <data name="NoRpExist" xml:space="preserve">
     <value>No recovery point exist with Id := {0}</value>
@@ -295,13 +309,16 @@ Please contact Microsoft for further assistant.</value>
     <value>OperationStatus : {0}</value>
   </data>
   <data name="PolicyAlreadyExist" xml:space="preserve">
-    <value>A protection policy with the specified name already exists.</value>
+    <value>A protection policy with the specified name already exists</value>
+    <comment>Scrubbed</comment>
   </data>
   <data name="PolicyArgumentException" xml:space="preserve">
-    <value>For DaysOfWeek, weekly switch param is required</value>
+    <value>The DaysOfWeek parameter should be used in conjunction with the –Weekly switch parameter</value>
+    <comment>Scrubbed</comment>
   </data>
   <data name="PolicyNotFound" xml:space="preserve">
     <value>Protection Policy {0} not found</value>
+    <comment>Scrubbed</comment>
   </data>
   <data name="PolicyParameterSet" xml:space="preserve">
     <value>ParameterSetName = {0}</value>
@@ -320,9 +337,11 @@ Please contact Microsoft for further assistant.</value>
   </data>
   <data name="ProtectionPolicyNameException" xml:space="preserve">
     <value>The protection policy name should contain alphanumeric characters and cannot start with a number</value>
+    <comment>Scrubbed</comment>
   </data>
   <data name="ProtectionPolicyNameLengthException" xml:space="preserve">
     <value>The protection policy name must contain between 3 and 150 characters</value>
+    <comment>Scrubbed</comment>
   </data>
   <data name="PSArgumentException" xml:space="preserve">
     <value>Please make sure you have pass right set of parameters</value>
@@ -419,45 +438,59 @@ Please contact Microsoft for further assistant.</value>
     <value>Received WebException, Response: {0}, Status: {1}</value>
   </data>
   <data name="WeeklyRetentionPolicyDaysOfWeekException" xml:space="preserve">
-    <value>For AzureBackupWeeklyRetentionPolicy , DaysOfWeek param is mandatory and can not be empty</value>
+    <value>For a weekly retention policy, using the DaysOfWeek parameter is mandatory</value>
+    <comment>Scrubbed</comment>
   </data>
   <data name="WeeklyRetentionPolicyException" xml:space="preserve">
-    <value>Only one AzureBackupWeeklyRetentionPolicy in RetentionPolicies is allowed</value>
+    <value>Only one weekly retention policy is allowed for a Protection Policy</value>
+    <comment>Scrubbed</comment>
   </data>
   <data name="WeeklyRetentionPolicyValueException" xml:space="preserve">
-    <value>For AzureBackupWeeklyRetentionPolicy , valid values of retention are {0} to {1}</value>
+    <value>The weekly retention value should be between {0} and {1}</value>
+    <comment>Scrubbed</comment>
   </data>
   <data name="WeeklyScheduleException" xml:space="preserve">
-    <value>For Weekly Schedule, AzureBackupWeeklyRetentionPolicy in RetentionPolicies param is mandatory</value>
+    <value>For a weekly backup schedule, setting a weekly retention policy is mandatory</value>
+    <comment>Scrubbed</comment>
   </data>
   <data name="WeeklyScheduleRunDaysException" xml:space="preserve">
-    <value>For weekly scheduletype , ScheduleRunDays param is mandatory and can not be empty.</value>
+    <value>For a weekly backup schedule, using the DaysOfWeek parameter is mandatory</value>
+    <comment>Scrubbed</comment>
   </data>
   <data name="WeeklyScheduleWithDailyException" xml:space="preserve">
-    <value>For Weekly Schedule, AzureBackupDailyRetentionPolicy in RetentionPolicies param is not allowed</value>
+    <value>For a weekly backup schedule, setting a daily retention policy is not allowed</value>
+    <comment>Scrubbed</comment>
   </data>
   <data name="YearlyRetentionPolicyDaysOfMonthInWeekFormatException" xml:space="preserve">
-    <value>For AzureBackupYearlyRetentionPolicy and RetentionFormat in Weeks, DaysOfMonth param is not allowed</value>
+    <value>For a yearly retention policy specified in days, using the MonthsOfYear and DaysOfMonth parameters is not allowed</value>
+    <comment>Scrubbed</comment>
   </data>
   <data name="YearlyRetentionPolicyDaysOfMonthParamException" xml:space="preserve">
-    <value>For AzureBackupYearlyRetentionPolicy and RetentionFormat in Days, DaysOfMonth param is mandatory and can not be empty</value>
+    <value>For a yearly retention policy specified in days, using the MonthsOfYear and DaysOfMonth parameters is mandatory</value>
+    <comment>Scrubbed</comment>
   </data>
   <data name="YearlyRetentionPolicyDaysOfWeekInWeeksFormatParamException" xml:space="preserve">
-    <value>For AzureBackupYearlyRetentionPolicy and RetentionFormat in Weeks, DaysOfWeek param is mandatory and can not be empty</value>
+    <value>For a yearly retention policy specified in weeks, using the DaysOfWeek and WeekNumber parameters is mandatory</value>
+    <comment>Scrubbed</comment>
   </data>
   <data name="YearlyRetentionPolicyDaysOfWeekParamException" xml:space="preserve">
-    <value>For AzureBackupYearlyRetentionPolicy and RetentionFormat in Days, DaysOfWeek or WeekNumber params are not allowed</value>
+    <value>For a yearly retention policy specified in days, using the DaysOfWeek and WeekNumber parameters is not allowed</value>
+    <comment>Scrubbed</comment>
   </data>
   <data name="YearlyRetentionPolicyException" xml:space="preserve">
-    <value>Only one AzureBackupYearlyRetentionPolicy in RetentionPolicies is allowed</value>
+    <value>Only one yearly retention policy is allowed for a Protection Policy</value>
+    <comment>Scrubbed</comment>
   </data>
   <data name="YearlyRetentionPolicyMonthOfYearParamException" xml:space="preserve">
-    <value>For AzureBackupYearlyRetentionPolicy and RetentionFormat in days, MonthsOfYear param is mandatory and can not be empty</value>
+    <value>For a yearly retention policy specified in days, using the MonthsOfYear and DaysOfMonth parameters is mandatory</value>
+    <comment>Scrubbed</comment>
   </data>
   <data name="YearlyRetentionPolicyValueException" xml:space="preserve">
-    <value>For AzureBackupYearlyRetentionPolicy , valid values of retention are {0} to {1}</value>
+    <value>Yearly retention value should be between {0} and {1}</value>
+    <comment>Scrubbed</comment>
   </data>
   <data name="YearlyRetentionPolicyWeekNumParamException" xml:space="preserve">
-    <value>For AzureBackupYearlyRetentionPolicy and RetentionFormat in Weeks, WeekNumber param is mandatory and can not be empty</value>
+    <value>For a yearly retention policy specified in weeks, using the DaysOfWeek and WeekNumber parameters is mandatory</value>
+    <comment>Scrubbed</comment>
   </data>
 </root>

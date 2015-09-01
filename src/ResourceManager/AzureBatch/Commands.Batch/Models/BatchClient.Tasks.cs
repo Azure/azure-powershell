@@ -156,5 +156,29 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 jobOperations.DeleteTask(parameters.JobId, parameters.TaskId, parameters.AdditionalBehaviors);
             }
         }
+
+        /// <summary>
+        /// Terminates the specified task.
+        /// </summary>
+        /// <param name="parameters">The parameters indicating which task to terminate.</param>
+        public void TerminateTask(TaskOperationParameters parameters)
+        {
+            if (parameters == null)
+            {
+                throw new ArgumentNullException("parameters");
+            }
+
+            WriteVerbose(string.Format(Resources.TerminateTask, parameters.Task == null ? parameters.TaskId : parameters.Task.Id));
+
+            if (parameters.Task != null)
+            {
+                parameters.Task.omObject.Terminate(parameters.AdditionalBehaviors);
+            }
+            else
+            {
+                JobOperations jobOperations = parameters.Context.BatchOMClient.JobOperations;
+                jobOperations.TerminateTask(parameters.JobId, parameters.TaskId, parameters.AdditionalBehaviors);
+            }
+        }
     }
 }
