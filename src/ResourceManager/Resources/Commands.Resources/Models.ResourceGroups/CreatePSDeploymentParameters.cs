@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Management.Resources.Models;
 
 namespace Microsoft.Azure.Commands.Resources.Models
@@ -21,5 +22,8 @@ namespace Microsoft.Azure.Commands.Resources.Models
         public string DeploymentName { get; set; }
 
         public DeploymentMode DeploymentMode { get; set; }
+
+        public Action<bool, string, string, string, Action> ConfirmAction { get; set; }
+
     }
 }

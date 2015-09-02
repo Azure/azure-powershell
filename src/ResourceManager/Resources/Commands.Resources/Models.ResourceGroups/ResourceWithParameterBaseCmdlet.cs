@@ -116,21 +116,6 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateNotNullOrEmpty]
         public string TemplateUri { get; set; }
 
-        [Parameter(ParameterSetName = TemplateFileParameterObjectParameterSetName,
-            Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The storage account which the cmdlet should use to upload the template file to. If not specified, the current storage account of the subscription will be used.")]
-        [Parameter(ParameterSetName = TemplateFileParameterFileParameterSetName,
-            Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The storage account which the cmdlet should use to upload the template file to. If not specified, the current storage account of the subscription will be used.")]
-        [Parameter(ParameterSetName = TemplateFileParameterUriParameterSetName,
-            Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The storage account which the cmdlet should use to upload the template file to. If not specified, the current storage account of the subscription will be used.")]
-        [Parameter(ParameterSetName = ParameterlessTemplateFileParameterSetName,
-            Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The storage account which the cmdlet should use to upload the template file to. If not specified, the current storage account of the subscription will be used.")]
-        [ValidateNotNullOrEmpty]
-        public string StorageAccountName { get; set; }
-
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The expect content version of the template.")]
-        [ValidateNotNullOrEmpty]
-        public string TemplateVersion { get; set; }
-
         public object GetDynamicParameters()
         {
             if (!string.IsNullOrEmpty(GalleryTemplateIdentity))

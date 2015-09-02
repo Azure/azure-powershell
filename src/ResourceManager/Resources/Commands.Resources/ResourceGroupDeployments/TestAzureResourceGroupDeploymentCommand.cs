@@ -23,8 +23,8 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroupDeployments
     /// <summary>
     /// Validate a template to see whether it's using the right syntax, resource providers, resource types, etc.
     /// </summary>
-    [Cmdlet(VerbsDiagnostic.Test, "AzureResourceGroupTemplate", DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(List<PSResourceManagerError>))]
-    public class TestAzureResourceGroupTemplateCommand : ResourceWithParameterBaseCmdlet, IDynamicParameters
+    [Cmdlet(VerbsDiagnostic.Test, "AzureResourceGroupDeployment", DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(List<PSResourceManagerError>))]
+    public class TestAzureResourceGroupDeploymentCommand : ResourceWithParameterBaseCmdlet, IDynamicParameters
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
@@ -33,23 +33,20 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroupDeployments
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The deployment mode.")]
         public DeploymentMode Mode { get; set; }
 
-        public TestAzureResourceGroupTemplateCommand()
+        public TestAzureResourceGroupDeploymentCommand()
         {
             this.Mode = DeploymentMode.Incremental;
         }
 
         public override void ExecuteCmdlet()
         {
-            this.WriteWarning("The Test-AzureResourceGroupTemplate cmdlet is being renamed to Test-AzureResourceGroupDeployment in a future release.");
             ValidatePSResourceGroupDeploymentParameters parameters = new ValidatePSResourceGroupDeploymentParameters()
             {
                 ResourceGroupName = ResourceGroupName,
                 GalleryTemplateIdentity = GalleryTemplateIdentity,
                 TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
                 TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
-                ParameterUri = TemplateParameterUri,
-                TemplateVersion = TemplateVersion,
-                StorageAccountName = StorageAccountName
+                ParameterUri = TemplateParameterUri
             };
 
             WriteObject(ResourcesClient.ValidatePSResourceGroupDeployment(parameters, Mode));

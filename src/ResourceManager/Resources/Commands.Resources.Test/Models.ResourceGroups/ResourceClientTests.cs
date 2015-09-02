@@ -105,9 +105,20 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             action();
         }
 
+        private void ConfirmAction(bool force, string actionMessage, string target, Action action)
+        {
+            ConfirmActionCounter++;
+            action();
+        }
+
         private int RejectActionCounter = 0;
 
         private void RejectAction(bool force, string actionMessage, string processMessage, string target, Action action)
+        {
+            RejectActionCounter++;
+        }
+
+        private void RejectAction(bool force, string actionMessage, string target, Action action)
         {
             RejectActionCounter++;
         }
@@ -339,12 +350,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NewResourceGroupWithGalleryTemplateAndWithoutStorageAccountNameSucceeds()
+        public void NewResourceGroupDeploymentWithGalleryTemplateSucceeds()
         {
-            CreatePSResourceGroupParameters parameters = new CreatePSResourceGroupParameters()
+            CreatePSResourceGroupDeploymentParameters parameters = new CreatePSResourceGroupDeploymentParameters()
             {
                 ResourceGroupName = resourceGroupName,
-                Location = resourceGroupLocation,
                 ConfirmAction = ConfirmAction,
                 GalleryTemplateIdentity = "templateFile"
             };
@@ -361,7 +371,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 new CancellationToken()))
                     .Returns(Task.Factory.StartNew(() => new ResourceGroupCreateOrUpdateResult
                     {
-                        ResourceGroup = new ResourceGroupExtended() { Name = parameters.ResourceGroupName, Location = parameters.Location }
+                        ResourceGroup = new ResourceGroupExtended() { Name = parameters.ResourceGroupName }
                     }));
             resourceGroupMock.Setup(f => f.GetAsync(resourceGroupName, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() => new ResourceGroupGetResult
@@ -395,16 +405,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                     Operations = new List<DeploymentOperation>()
                 }));
 
-            PSResourceGroup result = resourcesClient.CreatePSResourceGroup(parameters);
+            PSResourceGroupDeployment result = resourcesClient.CreatePSResourceGroupDeployment(parameters);
 
             Assert.Equal(parameters.ResourceGroupName, result.ResourceGroupName);
-            Assert.Equal(parameters.Location, result.Location);
-            Assert.Empty(result.Resources);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NewResourceGroupWithoutDeploymentSucceeds()
+        public void NewResourceGroupSucceeds()
         {
             CreatePSResourceGroupParameters parameters = new CreatePSResourceGroupParameters()
             {
@@ -894,18 +902,16 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NewResourceGroupFailsWithInvalidDeployment()
+        public void NewResourceGroupDeploymentFailsWithInvalidDeployment()
         {
             Uri templateUri = new Uri("http://templateuri.microsoft.com");
             Deployment deploymentFromGet = new Deployment();
             Deployment deploymentFromValidate = new Deployment();
-            CreatePSResourceGroupParameters parameters = new CreatePSResourceGroupParameters()
+            CreatePSResourceGroupDeploymentParameters parameters = new CreatePSResourceGroupDeploymentParameters()
             {
                 ResourceGroupName = resourceGroupName,
-                Location = resourceGroupLocation,
                 DeploymentName = deploymentName,
                 TemplateFile = templateFile,
-                StorageAccountName = storageAccountName,
                 ConfirmAction = ConfirmAction
             };
             resourceGroupMock.Setup(f => f.CheckExistenceAsync(parameters.ResourceGroupName, new CancellationToken()))
@@ -920,7 +926,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 new CancellationToken()))
                     .Returns(Task.Factory.StartNew(() => new ResourceGroupCreateOrUpdateResult
                     {
-                        ResourceGroup = new ResourceGroupExtended() { Name = parameters.ResourceGroupName, Location = parameters.Location }
+                        ResourceGroup = new ResourceGroupExtended() { Name = parameters.ResourceGroupName }
                     }));
             resourceGroupMock.Setup(f => f.GetAsync(resourceGroupName, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() => new ResourceGroupGetResult
@@ -979,7 +985,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                     }
                 }));
 
-            Assert.Throws<ArgumentException>(() => resourcesClient.CreatePSResourceGroup(parameters));
+            Assert.Throws<ArgumentException>(() => resourcesClient.CreatePSResourceGroupDeployment(parameters));
         }
 
         [Fact]
@@ -1065,13 +1071,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             string deploymentName = "abc123";
             Deployment deploymentFromGet = new Deployment();
             Deployment deploymentFromValidate = new Deployment();
-            CreatePSResourceGroupParameters parameters = new CreatePSResourceGroupParameters()
+            CreatePSResourceGroupDeploymentParameters parameters = new CreatePSResourceGroupDeploymentParameters()
             {
                 ResourceGroupName = resourceGroupName,
-                Location = resourceGroupLocation,
                 DeploymentName = deploymentName,
                 GalleryTemplateIdentity = "abc",
-                StorageAccountName = storageAccountName,
                 ConfirmAction = ConfirmAction
             };
 
@@ -1225,18 +1229,16 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NewResourceGroupWithDeploymentSucceeds()
+        public void NewResourceGroupDeploymentSucceeds()
         {
             Uri templateUri = new Uri("http://templateuri.microsoft.com");
             Deployment deploymentFromGet = new Deployment();
             Deployment deploymentFromValidate = new Deployment();
-            CreatePSResourceGroupParameters parameters = new CreatePSResourceGroupParameters()
+            CreatePSResourceGroupDeploymentParameters parameters = new CreatePSResourceGroupDeploymentParameters()
             {
                 ResourceGroupName = resourceGroupName,
-                Location = resourceGroupLocation,
                 DeploymentName = deploymentName,
                 TemplateFile = templateFile,
-                StorageAccountName = storageAccountName,
                 ConfirmAction = ConfirmAction
             };
             resourceGroupMock.Setup(f => f.CheckExistenceAsync(parameters.ResourceGroupName, new CancellationToken()))
@@ -1251,7 +1253,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 new CancellationToken()))
                     .Returns(Task.Factory.StartNew(() => new ResourceGroupCreateOrUpdateResult
                     {
-                        ResourceGroup = new ResourceGroupExtended() { Name = parameters.ResourceGroupName, Location = parameters.Location }
+                        ResourceGroup = new ResourceGroupExtended() { Name = parameters.ResourceGroupName }
                     }));
             resourceGroupMock.Setup(f => f.GetAsync(resourceGroupName, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() => new ResourceGroupGetResult
@@ -1309,11 +1311,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                     }
                 }));
 
-            PSResourceGroup result = resourcesClient.CreatePSResourceGroup(parameters);
+            PSResourceGroupDeployment result = resourcesClient.CreatePSResourceGroupDeployment(parameters);
             deploymentsMock.Verify((f => f.CreateOrUpdateAsync(resourceGroupName, deploymentName, deploymentFromGet, new CancellationToken())), Times.Once());
             Assert.Equal(parameters.ResourceGroupName, result.ResourceGroupName);
-            Assert.Equal(parameters.Location, result.Location);
-            Assert.Equal(1, result.Resources.Count);
 
             Assert.Equal(DeploymentMode.Incremental, deploymentFromGet.Properties.Mode);
             Assert.NotNull(deploymentFromGet.Properties.Template);
@@ -1331,15 +1331,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void CreatesResourceGroupWithDeploymentFromTemplateParameterObject()
+        public void CreatesResourceGroupDeploymentFromTemplateParameterObject()
         {
             Uri templateUri = new Uri("http://templateuri.microsoft.com");
             Deployment deploymentFromGet = new Deployment();
             Deployment deploymentFromValidate = new Deployment();
-            CreatePSResourceGroupParameters parameters = new CreatePSResourceGroupParameters()
+            CreatePSResourceGroupDeploymentParameters parameters = new CreatePSResourceGroupDeploymentParameters()
             {
                 ResourceGroupName = resourceGroupName,
-                Location = resourceGroupLocation,
                 DeploymentName = deploymentName,
                 TemplateFile = templateFile,
                 TemplateParameterObject = new Hashtable()
@@ -1349,7 +1348,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                     { "int", 12 },
                     { "bool", true },
                 },
-                StorageAccountName = storageAccountName,
                 ConfirmAction = ConfirmAction
             };
             resourceGroupMock.Setup(f => f.CheckExistenceAsync(parameters.ResourceGroupName, new CancellationToken()))
@@ -1364,7 +1362,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 new CancellationToken()))
                     .Returns(Task.Factory.StartNew(() => new ResourceGroupCreateOrUpdateResult
                     {
-                        ResourceGroup = new ResourceGroupExtended() { Name = parameters.ResourceGroupName, Location = parameters.Location }
+                        ResourceGroup = new ResourceGroupExtended() { Name = parameters.ResourceGroupName }
                     }));
             resourceGroupMock.Setup(f => f.GetAsync(resourceGroupName, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() => new ResourceGroupGetResult
@@ -1419,12 +1417,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                     }
                 }));
 
-            PSResourceGroup result = resourcesClient.CreatePSResourceGroup(parameters);
+            PSResourceGroupDeployment result = resourcesClient.CreatePSResourceGroupDeployment(parameters);
 
             deploymentsMock.Verify((f => f.CreateOrUpdateAsync(resourceGroupName, deploymentName, deploymentFromGet, new CancellationToken())), Times.Once());
             Assert.Equal(parameters.ResourceGroupName, result.ResourceGroupName);
-            Assert.Equal(parameters.Location, result.Location);
-            Assert.Equal(1, result.Resources.Count);
 
             Assert.Equal(DeploymentMode.Incremental, deploymentFromGet.Properties.Mode);
             Assert.NotNull(deploymentFromGet.Properties.Template);
@@ -1446,18 +1442,16 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ShowsFailureErrorWhenResourceGroupWithDeploymentFails()
+        public void ShowsFailureErrorWhenResourceGroupDeploymentFails()
         {
             Uri templateUri = new Uri("http://templateuri.microsoft.com");
             Deployment deploymentFromGet = new Deployment();
             Deployment deploymentFromValidate = new Deployment();
-            CreatePSResourceGroupParameters parameters = new CreatePSResourceGroupParameters()
+            CreatePSResourceGroupDeploymentParameters parameters = new CreatePSResourceGroupDeploymentParameters()
             {
                 ResourceGroupName = resourceGroupName,
-                Location = resourceGroupLocation,
                 DeploymentName = deploymentName,
                 TemplateFile = templateFile,
-                StorageAccountName = storageAccountName,
                 ConfirmAction = ConfirmAction
             };
             resourceGroupMock.Setup(f => f.CheckExistenceAsync(parameters.ResourceGroupName, new CancellationToken()))
@@ -1472,7 +1466,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 new CancellationToken()))
                     .Returns(Task.Factory.StartNew(() => new ResourceGroupCreateOrUpdateResult
                     {
-                        ResourceGroup = new ResourceGroupExtended() { Name = parameters.ResourceGroupName, Location = parameters.Location }
+                        ResourceGroup = new ResourceGroupExtended() { Name = parameters.ResourceGroupName }
                     }));
             resourceGroupMock.Setup(f => f.GetAsync(resourceGroupName, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() => new ResourceGroupGetResult
@@ -1528,12 +1522,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                     }
                 }));
 
-            PSResourceGroup result = resourcesClient.CreatePSResourceGroup(parameters);
+            PSResourceGroupDeployment result = resourcesClient.CreatePSResourceGroupDeployment(parameters);
 
             deploymentsMock.Verify((f => f.CreateOrUpdateAsync(resourceGroupName, deploymentName, deploymentFromGet, new CancellationToken())), Times.Once());
             Assert.Equal(parameters.ResourceGroupName, result.ResourceGroupName);
-            Assert.Equal(parameters.Location, result.Location);
-            Assert.Equal(1, result.Resources.Count);
 
             Assert.Equal(DeploymentMode.Incremental, deploymentFromGet.Properties.Mode);
             Assert.NotNull(deploymentFromGet.Properties.Template);
@@ -1556,13 +1548,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Uri templateUri = new Uri("http://templateuri.microsoft.com");
             Deployment deploymentFromGet = new Deployment();
             Deployment deploymentFromValidate = new Deployment();
-            CreatePSResourceGroupParameters parameters = new CreatePSResourceGroupParameters()
+            CreatePSResourceGroupDeploymentParameters parameters = new CreatePSResourceGroupDeploymentParameters()
             {
                 ResourceGroupName = resourceGroupName,
-                Location = resourceGroupLocation,
                 DeploymentName = deploymentName,
                 TemplateFile = templateFile,
-                StorageAccountName = storageAccountName,
                 ConfirmAction = ConfirmAction
             };
             resourceGroupMock.Setup(f => f.CheckExistenceAsync(parameters.ResourceGroupName, new CancellationToken()))
@@ -1577,7 +1567,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 new CancellationToken()))
                     .Returns(Task.Factory.StartNew(() => new ResourceGroupCreateOrUpdateResult
                     {
-                        ResourceGroup = new ResourceGroupExtended() { Name = parameters.ResourceGroupName, Location = parameters.Location }
+                        ResourceGroup = new ResourceGroupExtended() { Name = parameters.ResourceGroupName }
                     }));
             resourceGroupMock.Setup(f => f.GetAsync(resourceGroupName, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() => new ResourceGroupGetResult
@@ -1636,12 +1626,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                     }
                 }));
 
-            PSResourceGroup result = resourcesClient.CreatePSResourceGroup(parameters);
+            PSResourceGroupDeployment result = resourcesClient.CreatePSResourceGroupDeployment(parameters);
 
             deploymentsMock.Verify((f => f.CreateOrUpdateAsync(resourceGroupName, deploymentName, deploymentFromGet, new CancellationToken())), Times.Once());
             Assert.Equal(parameters.ResourceGroupName, result.ResourceGroupName);
-            Assert.Equal(parameters.Location, result.Location);
-            Assert.Equal(1, result.Resources.Count);
 
             Assert.Equal(DeploymentMode.Incremental, deploymentFromGet.Properties.Mode);
             Assert.NotNull(deploymentFromGet.Properties.Template);
