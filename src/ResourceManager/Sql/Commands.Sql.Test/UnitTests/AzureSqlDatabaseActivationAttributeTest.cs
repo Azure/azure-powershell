@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
     public class AzureSqlDatabaseActivationAttributeTests
     {
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SuspendAzureSqlDatabaseAttributes()
         {
             Type type = typeof(SuspendAzureSqlDatabase);
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ResumeAzureSqlDatabaseAttributes()
         {
             Type type = typeof(ResumeAzureSqlDatabase);

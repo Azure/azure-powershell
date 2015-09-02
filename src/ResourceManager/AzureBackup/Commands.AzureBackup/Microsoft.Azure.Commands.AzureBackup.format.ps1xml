@@ -13,6 +13,10 @@
             <Width>18</Width>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+            <Width>18</Width>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>Region</Label>
             <Width>18</Width>
           </TableColumnHeader>
@@ -26,6 +30,9 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Region</PropertyName>

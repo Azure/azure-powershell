@@ -207,5 +207,23 @@ namespace Microsoft.Azure.Commands.Batch.Models
             JobOperations jobOperations = parameters.Context.BatchOMClient.JobOperations;
             jobOperations.DisableJob(jobId, parameters.DisableJobOption, parameters.AdditionalBehaviors);
         }
+
+        /// <summary>
+        /// Terminates the specified job.
+        /// </summary>
+        /// <param name="parameters">Specifies the job to terminate as well as the terminate reason.</param>
+        public void TerminateJob(TerminateJobParameters parameters)
+        {
+            if (parameters == null)
+            {
+                throw new ArgumentNullException("parameters");
+            }
+
+            string jobId = parameters.Job == null ? parameters.JobId : parameters.Job.Id;
+            WriteVerbose(string.Format(Resources.TerminateJob, jobId));
+
+            JobOperations jobOperations = parameters.Context.BatchOMClient.JobOperations;
+            jobOperations.TerminateJob(jobId, parameters.TerminateReason, parameters.AdditionalBehaviors);
+        }
     }
 }

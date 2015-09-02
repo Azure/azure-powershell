@@ -206,6 +206,40 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 TestUtilities.GetCallingClass(),
                 TestUtilities.GetCurrentMethodName());
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestTerminateJobScheduleById()
+        {
+            TestTerminateJobSchedule(false);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestTerminateJobSchedulePipeline()
+        {
+            TestTerminateJobSchedule(true);
+        }
+
+        private void TestTerminateJobSchedule(bool usePipeline)
+        {
+            BatchController controller = BatchController.NewInstance;
+            BatchAccountContext context = null;
+            string jobScheduleId = "testTerminateJobSchedule" + (usePipeline ? "Pipeline" : "Id");
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-TerminateJobSchedule '{0}' '{1}' '{2}'", accountName, jobScheduleId, usePipeline ? 1 : 0) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    ScenarioTestHelpers.CreateTestJobSchedule(controller, context, jobScheduleId, null);
+                },
+                () =>
+                {
+                    ScenarioTestHelpers.DeleteJobSchedule(controller, context, jobScheduleId);
+                },
+                TestUtilities.GetCallingClass(),
+                usePipeline ? "TestTerminateJobSchedulePipeline" : "TestTerminateJobScheduleById");
+        }
     }
 
     // Cmdlets that use the HTTP Recorder interceptor for use with scenario tests
@@ -251,6 +285,16 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
     [Cmdlet(VerbsLifecycle.Disable, "AzureBatchJobSchedule_ST")]
     public class DisableBatchJobScheduleScenarioTestCommand : DisableBatchJobScheduleCommand
+    {
+        public override void ExecuteCmdlet()
+        {
+            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
+            base.ExecuteCmdlet();
+        }
+    }
+
+    [Cmdlet(VerbsLifecycle.Stop, "AzureBatchJobSchedule_ST")]
+    public class StopBatchJobScheduleScenarioTestCommand : StopBatchJobScheduleCommand
     {
         public override void ExecuteCmdlet()
         {

@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
@@ -94,6 +95,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             base.OnProcessRecord();
             this.DetermineOutputObjectFormat();
+            if(this.IsFullObject.IsPresent)
+            {
+                this.WriteWarning("The IsFullObject parameter is obsolete and will be removed in future releases.");
+            }
             if (this.OutputObjectFormat == ResourceObjectFormat.Legacy)
             {
                 this.WriteWarning("This cmdlet is using the legacy properties object format. This format is being deprecated. Please use '-OutputObjectFormat New' and update your scripts.");
