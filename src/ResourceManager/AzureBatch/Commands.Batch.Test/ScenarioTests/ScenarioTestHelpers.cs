@@ -133,6 +133,32 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             client.DisableAutoScale(parameters);
         }
 
+        public static string WaitForOSVersionChange(BatchController controller, BatchAccountContext context, string poolId)
+        {
+            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
+            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            ListPoolOptions options = new ListPoolOptions(context, behaviors)
+            {
+                PoolId = poolId
+            };
+
+            DateTime timeout = DateTime.Now.AddMinutes(2);
+            PSCloudPool pool = client.ListPools(options).First();
+            while (pool.CurrentOSVersion != pool.TargetOSVersion)
+            {
+                if (DateTime.Now > timeout)
+                {
+                    throw new TimeoutException("Timed out waiting for active state pool");
+                }
+                Sleep(5000);
+                pool = client.ListPools(options).First();
+            }
+
+            return pool.TargetOSVersion;
+        }
+
         public static void WaitForSteadyPoolAllocation(BatchController controller, BatchAccountContext context, string poolId)
         {
             RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
@@ -347,14 +373,16 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         /// <summary>
         /// Terminates a job
-        /// TODO: Replace with terminate Job client method when it exists.
         /// </summary>
-        public static void TerminateJob(BatchAccountContext context, string jobId)
+        public static void TerminateJob(BatchController controller, BatchAccountContext context, string jobId)
         {
             RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
             BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            context.BatchOMClient.JobOperations.TerminateJob(jobId, additionalBehaviors: behaviors);
+            TerminateJobParameters parameters = new TerminateJobParameters(context, jobId, null, behaviors);
+
+            client.TerminateJob(parameters);
         }
 
         /// <summary>
@@ -369,6 +397,34 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             ListComputeNodeOptions options = new ListComputeNodeOptions(context, poolId, null, behaviors);
 
             return client.ListComputeNodes(options).First().Id;
+        }
+
+        /// <summary>
+        /// Waits for a compute node to get to the idle state
+        /// </summary>
+        public static void WaitForIdleComputeNode(BatchController controller, BatchAccountContext context, string poolId, string computeNodeId)
+        {
+            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
+            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            ListComputeNodeOptions options = new ListComputeNodeOptions(context, poolId, null, behaviors)
+            {
+                ComputeNodeId = computeNodeId
+            };
+
+            DateTime timeout = DateTime.Now.AddMinutes(2);
+            PSComputeNode computeNode = client.ListComputeNodes(options).First();
+            if (computeNode.State != ComputeNodeState.Idle)
+            {
+                if (DateTime.Now > timeout)
+                {
+                    throw new TimeoutException("Timed out waiting for idle compute node");
+                }
+
+                Sleep(5000);
+                computeNode = client.ListComputeNodes(options).First();
+            }
         }
 
         /// <summary>
@@ -391,10 +447,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         /// <summary>
         /// Creates an interceptor that can be used to support the HTTP recorder scenario tests.
-        /// This behavior grabs the outgoing Protocol request, converts it to an HttpRequestMessage compatible with the 
-        /// HTTP recorder, sends the request through the HTTP recorder, and converts the response to an HttpWebResponse
-        /// for serialization by the Protocol Layer.
-        /// NOTE: This is a temporary behavior that should no longer be needed when the Batch OM switches to Hyak.
+        /// Since the BatchRestClient is not generated from the test infrastructure, the HTTP
+        /// recording delegate must be explicitly added.
         /// </summary>
         public static RequestInterceptor CreateHttpRecordingInterceptor()
         {

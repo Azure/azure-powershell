@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.AzureBackup.Properties;
 using System;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Models
@@ -19,7 +20,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
     /// <summary>
     /// Represents Azure Backup vault
     /// </summary>
-    public class AzurePSBackupVault
+    public class AzureRMBackupVault
     {
         public string ResourceId { get; set; }
 
@@ -29,13 +30,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
 
         public string Region { get; set; }
 
-        // public Hashtable[] Tags { get; protected set; }
+        // TODO: Add support for tags
+        //public Hashtable[] Tags { get; set; }
 
         public string Storage { get; set; }
 
-        public AzurePSBackupVault() : base() { }
+        public AzureRMBackupVault() : base() { }
 
-        public AzurePSBackupVault(string resourceGroupName, string resourceName, string region)
+        public AzureRMBackupVault(string resourceGroupName, string resourceName, string region)
         {
             ResourceGroupName = resourceGroupName;
             Name = resourceName;
@@ -46,12 +48,12 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         {
             if (String.IsNullOrEmpty(ResourceGroupName))
             {
-                throw new ArgumentException("AzureBackupVault.ResourceGroupName");
+                throw new ArgumentException(Resources.BackupVaultRGNameNullOrEmpty);
             }
 
             if (String.IsNullOrEmpty(Name))
             {
-                throw new ArgumentException("AzureBackupVault.Name");
+                throw new ArgumentException(Resources.BackupVaultResNameNullOrEmpty);
             }
         }
     }

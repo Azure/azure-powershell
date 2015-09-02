@@ -24,16 +24,93 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
     {
         Windows = 1,
         SCDPM,
+        AzureVM,
     }
 
-    public enum AzureBackupContainerStatusInput
+    public enum DataSourceType
     {
-        Registering = 1,
-        Registered,
+        Invalid = 0,
+
+        VM
     }
 
     public enum AzureBackupContainerRegistrationStatus
     {
         Registered = 1,
+        Registering,
+        NotRegistered,
+    }
+
+    public enum ScheduleType
+    {
+        Invalid = 0,
+        Daily = 1,
+        Weekly = 2
+    }
+
+    public enum BackupType
+    {
+        Invalid = 0,
+        Full = 1
+    }
+
+    public enum CSMAzureBackupOperationStatus
+    {
+
+        Invalid = 0,
+
+
+        InProgress,
+
+
+        Cancelled,
+
+
+        Succeeded,
+
+
+        Failed,
+
+
+        PartialSuccess
+    }
+
+    public enum AzureBackupOperationErrorCode
+    {
+        BMSUserErrorObjectLocked = 390026,
+        DiscoveryInProgress = 410002,
+    }
+
+    public enum ManagedContainerType
+    {
+        Invalid = 0,
+        IaasVM,
+        IaasVMService,
+    }
+
+    public enum RetentionType
+    {
+        Invalid = 0,
+        Daily = 1,
+        Weekly = 2,
+        Monthly = 3,
+        Yearly = 4
+    }
+
+    public enum WorkloadType
+    {
+        Invalid = 0,
+        AzureVM = 1
+    }
+
+    public enum RetentionFormat
+    {
+        Daily,
+        Weekly
+    }
+
+    public enum AzureBackupItemType
+    {
+        IaasVM = 0
     }
 }

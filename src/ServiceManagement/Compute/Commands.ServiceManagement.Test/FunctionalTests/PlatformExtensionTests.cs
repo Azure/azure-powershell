@@ -268,7 +268,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     certConfig, epConfig, lrConfig,
                     publishDate, publicSchema, privateSchema, EncodeTo64(sample),
                     eula, privacyUri, homepage, os, regions,
-                    blockRole, disallowUpgrade, xmlExtension, internalExtension, force);
+                    blockRole, disallowUpgrade, xmlExtension, force);
             }
             catch (Exception e)
             {
@@ -310,7 +310,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                      certConfig, epConfig, lrConfig,
                      publishDate, publicSchema, privateSchema, EncodeTo64(sample),
                      eula, privacyUri, homepage, os, regions,
-                     blockRole, disallowUpgrade, xmlExtension, internalExtension, force);
+                     blockRole, disallowUpgrade, xmlExtension, force);
             }
             catch (Exception e)
             {

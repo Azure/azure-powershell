@@ -40,12 +40,14 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroupDeployments
 
         public override void ExecuteCmdlet()
         {
+            this.WriteWarning("The Test-AzureResourceGroupTemplate cmdlet is being renamed to Test-AzureResourceGroupDeployment in a future release.");
             ValidatePSResourceGroupDeploymentParameters parameters = new ValidatePSResourceGroupDeploymentParameters()
             {
                 ResourceGroupName = ResourceGroupName,
                 GalleryTemplateIdentity = GalleryTemplateIdentity,
                 TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
                 TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
+                ParameterUri = TemplateParameterUri,
                 TemplateVersion = TemplateVersion,
                 StorageAccountName = StorageAccountName
             };

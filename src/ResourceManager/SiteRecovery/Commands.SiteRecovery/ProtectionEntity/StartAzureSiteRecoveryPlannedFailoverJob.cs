@@ -53,6 +53,15 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             Constants.RecoveryToPrimary)]
         public string Direction { get; set; }
 
+        /// <summary>
+        /// Gets or sets the Optimize value.
+        /// </summary>
+        [Parameter]
+        [ValidateSet(
+            Constants.ForDowntime,
+            Constants.ForSynchronization)]
+        public string Optimize { get; set; }
+
         #endregion Parameters
 
         /// <summary>
@@ -84,20 +93,55 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             var request = new PlannedFailoverRequest();
 
-            if (this.ProtectionEntity == null)
-            {
-                var pe = RecoveryServicesClient.GetAzureSiteRecoveryProtectionEntity(
-                    this.protectionContainerId,
-                    this.protectionEntityId);
-                this.ProtectionEntity = new ASRProtectionEntity(pe.ProtectionEntity);
+            request.FailoverDirection = this.Direction;
 
-                this.ValidateUsageById(this.ProtectionEntity.ReplicationProvider, Constants.ProtectionEntityId);
+            if (string.IsNullOrEmpty(this.ProtectionEntity.ReplicationProvider))
+            {
+                // fetch the latest PE object
+                // As get PE by name is failing before protection, get all & filter.
+                // Once after we fix get pe by name, change the logic to use the same.
+                ProtectionEntityListResponse protectionEntityListResponse =
+                    RecoveryServicesClient.GetAzureSiteRecoveryProtectionEntity(
+                    this.ProtectionEntity.ProtectionContainerId);
+
+                foreach (ProtectionEntity pe in protectionEntityListResponse.ProtectionEntities)
+                {
+                    if (0 == string.Compare(this.ProtectionEntity.FriendlyName, pe.Properties.FriendlyName, true))
+                    {
+                        this.ProtectionEntity = new ASRProtectionEntity(pe);
+                        break;
+                    }
+                }
             }
 
-            request.ReplicationProviderSettings = string.Empty;
-
             request.ReplicationProvider = this.ProtectionEntity.ReplicationProvider;
-            request.FailoverDirection = this.Direction;
+            request.ReplicationProviderSettings = new FailoverReplicationProviderSpecificInput();
+
+            if (0 == string.Compare(
+                this.ProtectionEntity.ReplicationProvider,
+                Constants.HyperVReplicaAzure,
+                StringComparison.OrdinalIgnoreCase))
+            {
+                if (this.Direction == Constants.PrimaryToRecovery)
+                {
+                    AzureFailoverInput failoverInput = new AzureFailoverInput()
+                    {
+                        PrimaryKekCertificatePfx = string.Empty,
+                        SecondaryKekCertificatePfx = string.Empty,
+                        VaultLocation = this.GetCurrentValutLocation()
+                    };
+                    request.ReplicationProviderSettings = failoverInput;
+                }
+                else
+                {
+                    AzureFailbackInput failbackInput = new AzureFailbackInput()
+                    {
+                        CreateRecoveryVmIfDoesntExist = false,
+                        SkipDataSync = this.Optimize == Constants.ForDowntime ? true : false
+                    };
+                    request.ReplicationProviderSettings = failbackInput;
+                }
+            }
 
             LongRunningOperationResponse response =
                 RecoveryServicesClient.StartAzureSiteRecoveryPlannedFailover(

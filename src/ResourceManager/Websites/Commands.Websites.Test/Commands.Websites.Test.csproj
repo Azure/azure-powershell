@@ -64,8 +64,9 @@
     <Reference Include="Microsoft.Azure.Management.WebSites">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.WebSites.0.16.4-prerelease\lib\net40\Microsoft.Azure.Management.WebSites.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.ResourceManager">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.4-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
+    <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.7-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Test.Framework, Version=1.0.5513.27084, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -158,7 +159,7 @@
       <Project>{c1bda476-a5cc-4394-914d-48b0ec31a710}</Project>
       <Name>Commands.ScenarioTests.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Batch\Commands.Batch\Commands.Batch.csproj">
+    <ProjectReference Include="..\..\AzureBatch\Commands.Batch\Commands.Batch.csproj">
       <Project>{d470e50a-9607-48d6-a924-4f9f86502704}</Project>
       <Name>Commands.Batch</Name>
     </ProjectReference>

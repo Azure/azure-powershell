@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         /// Updates storage type of the vault identified by client
         /// </summary>
         /// <param name="storageType"></param>
-        public void UpdateStorageType(string storageType)
+        public void UpdateStorageType(string resourceGroupName, string resourceName, string storageType)
         {
             UpdateVaultStorageTypeRequest updateVaultStorageTypeRequest = new UpdateVaultStorageTypeRequest()
             {
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
                 },
             };
 
-            AzureBackupVaultClient.Vault.UpdateStorageTypeAsync(updateVaultStorageTypeRequest, GetCustomRequestHeaders(), CmdletCancellationToken).Wait();
+            AzureBackupVaultClient.Vault.UpdateStorageTypeAsync(resourceGroupName, resourceName, updateVaultStorageTypeRequest, GetCustomRequestHeaders(), CmdletCancellationToken).Wait();
         }
 
         /// <summary>
@@ -117,14 +117,17 @@ namespace Microsoft.Azure.Commands.AzureBackup.ClientAdapter
         /// </summary>
         /// <param name="resourceGroupName"></param>
         /// <param name="vaultName"></param>
-        public void DeleteVault(string resourceGroupName, string vaultName)
+        public bool DeleteVault(string resourceGroupName, string vaultName)
         {
-            AzureBackupVaultClient.Vault.DeleteAsync(resourceGroupName, vaultName, GetCustomRequestHeaders(), CmdletCancellationToken).Wait();
+            AzureBackupVaultGetResponse response = AzureBackupVaultClient.Vault.DeleteAsync(resourceGroupName, vaultName, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+            
+            // OneSDK will return only either OK or NoContent
+            return response.StatusCode == System.Net.HttpStatusCode.OK;
         }
 
-        public VaultCredUploadCertResponse UploadCertificate(string certName, VaultCredUploadCertRequest request)
+        public VaultCredUploadCertResponse UploadCertificate(string resourceGroupName, string resourceName, string certName, VaultCredUploadCertRequest request)
         {
-            return AzureBackupVaultClient.Vault.UploadCertificateAsync(certName, request, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
+            return AzureBackupVaultClient.Vault.UploadCertificateAsync(resourceGroupName, resourceName, certName, request, GetCustomRequestHeaders(), CmdletCancellationToken).Result;
         }
     }
 }

@@ -79,6 +79,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Changing OS version of pool {0} to {1}..
+        /// </summary>
+        internal static string ChangeOSVersion {
+            get {
+                return ResourceManager.GetString("ChangeOSVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Disabling automatic scaling on pool {0}..
         /// </summary>
         internal static string DisableAutoScale {
@@ -88,11 +97,47 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disabling job {0}..
+        /// </summary>
+        internal static string DisableJob {
+            get {
+                return ResourceManager.GetString("DisableJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disabling job schedule {0}..
+        /// </summary>
+        internal static string DisableJobSchedule {
+            get {
+                return ResourceManager.GetString("DisableJobSchedule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enabling automatic scaling on pool {0} using the formula: {1}.
         /// </summary>
         internal static string EnableAutoScale {
             get {
                 return ResourceManager.GetString("EnableAutoScale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enabling job {0}..
+        /// </summary>
+        internal static string EnableJob {
+            get {
+                return ResourceManager.GetString("EnableJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enabling job schedule {0}..
+        /// </summary>
+        internal static string EnableJobSchedule {
+            get {
+                return ResourceManager.GetString("EnableJobSchedule", resourceCulture);
             }
         }
         
@@ -700,6 +745,24 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rebooting compute node {0}..
+        /// </summary>
+        internal static string RebootComputeNode {
+            get {
+                return ResourceManager.GetString("RebootComputeNode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reimaging compute node {0}..
+        /// </summary>
+        internal static string ReimageComputeNode {
+            get {
+                return ResourceManager.GetString("ReimageComputeNode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Looking up resource group for account {0}.
         /// </summary>
         internal static string ResGroupLookup {
@@ -741,6 +804,33 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string SBPR_StopResizingPool {
             get {
                 return ResourceManager.GetString("SBPR_StopResizingPool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Terminating job {0}..
+        /// </summary>
+        internal static string TerminateJob {
+            get {
+                return ResourceManager.GetString("TerminateJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Terminating job schedule {0}..
+        /// </summary>
+        internal static string TerminateJobSchedule {
+            get {
+                return ResourceManager.GetString("TerminateJobSchedule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Terminating task {0}..
+        /// </summary>
+        internal static string TerminateTask {
+            get {
+                return ResourceManager.GetString("TerminateTask", resourceCulture);
             }
         }
     }

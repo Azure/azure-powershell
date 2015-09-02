@@ -372,3 +372,30 @@ function Test-EvaluateAutoScale
 	# Verify that the evaluation result matches expectation
 	Assert-True { $evalResult.AutoScaleRun.Results.Contains($formula) }
 }
+
+<#
+.SYNOPSIS
+Tests changing the pool OS version
+#>
+function Test-ChangeOSVersion
+{
+	param([string]$accountName, [string]$poolId, [string]$targetOSVersion, [string]$usePipeline)
+
+	$context = Get-AzureBatchAccountKeys $accountName
+
+	# Verify that we start with a different target OS
+	$pool = Get-AzureBatchPool_ST $poolId -BatchContext $context
+	Assert-AreNotEqual $targetOSVersion $pool.TargetOSVersion
+
+	if ($usePipeline -eq '1')
+	{
+	    Get-AzureBatchPool_ST -Filter "id eq '$poolId'" -BatchContext $context | Set-AzureBatchPoolOSVersion_ST -TargetOSVersion $targetOSVersion -BatchContext $context
+	}
+	else
+	{
+	    Set-AzureBatchPoolOSVersion_ST $poolId $targetOSVersion -BatchContext $context
+	}
+
+	$pool = Get-AzureBatchPool_ST $poolId -BatchContext $context
+	Assert-AreEqual $targetOSVersion $pool.TargetOSVersion
+}

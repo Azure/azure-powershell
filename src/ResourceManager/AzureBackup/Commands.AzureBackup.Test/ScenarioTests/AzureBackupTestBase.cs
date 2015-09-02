@@ -31,10 +31,18 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
         private CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
 
+        public static string ResourceGroupName;
+        public static string ResourceName;
+
         public BackupVaultServicesManagementClient BackupVaultServicesMgmtClient { get; private set; }
+
+        public BackupServicesManagementClient BackupServicesMgmtClient { get; private set; }
 
         protected AzureBackupTestsBase()
         {
+            AzureBackupTestsBase.ResourceName = ConfigurationManager.AppSettings["ResourceName"];
+            AzureBackupTestsBase.ResourceGroupName = ConfigurationManager.AppSettings["ResourceGroupName"];
+
             this.helper = new EnvironmentSetupHelper();
             this.csmTestFactory = new CSMTestEnvironmentFactory();
         }
@@ -42,8 +50,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
         protected void SetupManagementClients()
         {
             BackupVaultServicesMgmtClient = GetBackupVaultServicesManagementClient();
+            BackupServicesMgmtClient = GetBackupServicesManagementClient();
+
             //helper.SetupManagementClients(BackupServicesMgmtClient);
-            helper.SetupSomeOfManagementClients(BackupVaultServicesMgmtClient);
+            helper.SetupSomeOfManagementClients(BackupVaultServicesMgmtClient, BackupServicesMgmtClient);
         }
 
         protected void RunPowerShellTest(params string[] scripts)
@@ -66,6 +76,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
             return GetServiceClient<BackupVaultServicesManagementClient>();
         }
 
+        private BackupServicesManagementClient GetBackupServicesManagementClient()
+        {
+            return GetServiceClient<BackupServicesManagementClient>();
+        }
+
         public static T GetServiceClient<T>() where T : class
         {
             var factory = (TestEnvironmentFactory)new CSMTestEnvironmentFactory();
@@ -74,32 +89,87 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
 
             ServicePointManager.ServerCertificateValidationCallback = IgnoreCertificateErrorHandler;
 
-            BackupVaultServicesManagementClient client;
-            string resourceName = ConfigurationManager.AppSettings["ResourceName"];
-            string resourceGroupName = ConfigurationManager.AppSettings["ResourceGroupName"];
-
-
-            if (testEnvironment.UsesCustomUri())
+            if (typeof(T) == typeof(BackupVaultServicesManagementClient))
             {
-                client = new BackupVaultServicesManagementClient(
-                    resourceName,
-                    resourceGroupName,
-                    testEnvironment.Credentials as SubscriptionCloudCredentials,
-                    testEnvironment.BaseUri);
-            }
+                BackupVaultServicesManagementClient client;
 
+                if (testEnvironment.UsesCustomUri())
+                {
+                    client = new BackupVaultServicesManagementClient(
+                        testEnvironment.Credentials as SubscriptionCloudCredentials,
+                        testEnvironment.BaseUri);
+                }
+
+                else
+                {
+                    client = new BackupVaultServicesManagementClient(
+                        testEnvironment.Credentials as SubscriptionCloudCredentials);
+                }
+
+                return GetServiceClient<T>(factory, client);
+            }
             else
             {
-                client = new BackupVaultServicesManagementClient(
-                    resourceName,
-                    resourceGroupName,
-                    testEnvironment.Credentials as SubscriptionCloudCredentials);
-            }
+                BackupServicesManagementClient client;
 
-            return GetServiceClient<T>(factory, client);
+                if (testEnvironment.UsesCustomUri())
+                {
+                    client = new BackupServicesManagementClient(
+                        testEnvironment.Credentials as SubscriptionCloudCredentials,
+                        testEnvironment.BaseUri);
+                }
+
+                else
+                {
+                    client = new BackupServicesManagementClient(
+                        testEnvironment.Credentials as SubscriptionCloudCredentials);
+                }
+
+                return GetVaultServiceClient<T>(factory, client);
+            }
         }
 
         public static T GetServiceClient<T>(TestEnvironmentFactory factory, BackupVaultServicesManagementClient client) where T : class
+        {
+            TestEnvironment testEnvironment = factory.GetTestEnvironment();
+
+            HttpMockServer instance;
+            try
+            {
+                instance = HttpMockServer.CreateInstance();
+            }
+            catch (ApplicationException)
+            {
+                HttpMockServer.Initialize("TestEnvironment", "InitialCreation");
+                instance = HttpMockServer.CreateInstance();
+            }
+            T obj2 = typeof(T).GetMethod("WithHandler", new Type[1]
+            {
+                typeof (DelegatingHandler)
+            }).Invoke((object)client, new object[1]
+            {
+                (object) instance
+            }) as T;
+
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            {
+                HttpMockServer.Variables[TestEnvironment.SubscriptionIdKey] = testEnvironment.SubscriptionId;
+            }
+
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                PropertyInfo property1 = typeof(T).GetProperty("LongRunningOperationInitialTimeout", typeof(int));
+                PropertyInfo property2 = typeof(T).GetProperty("LongRunningOperationRetryTimeout", typeof(int));
+                if (property1 != (PropertyInfo)null && property2 != (PropertyInfo)null)
+                {
+                    property1.SetValue((object)obj2, (object)0);
+                    property2.SetValue((object)obj2, (object)0);
+                }
+            }
+            return obj2;
+        }
+
+        public static T GetVaultServiceClient<T>(TestEnvironmentFactory factory, BackupServicesManagementClient client) where T : class
         {
             TestEnvironment testEnvironment = factory.GetTestEnvironment();
 

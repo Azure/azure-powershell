@@ -90,8 +90,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.4-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.7-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.Edm, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -237,6 +237,7 @@
     <Compile Include="Images\GetAzureVMImagePublisherCommand.cs" />
     <Compile Include="Images\GetAzureVMImageOfferCommand.cs" />
     <Compile Include="Images\VirtualMachineImageBaseCmdlet.cs" />
+    <Compile Include="Models\PSSyncOutputEvents.cs" />
     <Compile Include="Models\PSUsage.cs" />
     <Compile Include="Models\PSVirtualMachineExtensionImage.cs" />
     <Compile Include="Models\PSVirtualMachineImage.cs" />
@@ -246,19 +247,27 @@
     <Compile Include="Models\PSVirtualMachineInstanceView.cs" />
     <Compile Include="Models\PSVirtualMachineSize.cs" />
     <Compile Include="Common\LocationStringExtensions.cs" />
+    <Compile Include="Models\UploadParameters.cs" />
+    <Compile Include="Models\VhdUploadContext.cs" />
+    <Compile Include="Models\VhdUploaderModel.cs" />
     <Compile Include="RemoteDesktop\VirtualMachineRemoteDesktopBaseCmdlet.cs" />
     <Compile Include="RemoteDesktop\GetAzureRemoteDesktopFileCommand.cs" />
+    <Compile Include="StorageServices\AddAzureVhdCommand.cs" />
+    <Compile Include="StorageServices\CloudPageBlobObjectFactory.cs" />
+    <Compile Include="StorageServices\StorageCredentialsFactory.cs" />
     <Compile Include="Usage\GetAzureVMUsageCommand.cs" />
     <Compile Include="Usage\VirtualMachineUsageBaseCmdlet.cs" />
     <Compile Include="VirtualMachineSizes\GetAzureVMSizeCommand.cs" />
     <Compile Include="VirtualMachineSizes\VirtualMachineSizeBaseCmdlet.cs" />
     <Compile Include="VirtualMachine\Action\SaveAzureVMImageCommand.cs" />
     <Compile Include="VirtualMachine\Action\SetAzureVMCommand.cs" />
+    <Compile Include="VirtualMachine\Action\VirtualMachineActionBaseCmdlet.cs" />
     <Compile Include="VirtualMachine\Config\AddAzureVMAdditionalUnattendContentCommand.cs" />
     <Compile Include="VirtualMachine\Config\AddAzureVMSshPublicKeyCommand.cs" />
     <Compile Include="VirtualMachine\Config\AddAzureVMSecretCommand.cs" />
     <Compile Include="VirtualMachine\Config\RemoveAzureVMNetworkInterfaceCommand.cs" />
     <Compile Include="VirtualMachine\Config\RemoveAzureVMDataDiskCommand.cs" />
+    <Compile Include="VirtualMachine\Config\SetAzureVMDataDiskCommand.cs" />
     <Compile Include="VirtualMachine\Config\SetAzureVMSourceImage.cs" />
     <Compile Include="VirtualMachine\Config\SetAzureVMOSDiskCommand.cs" />
     <Compile Include="VirtualMachine\Operation\GetAzureVMCommand.cs" />
@@ -295,6 +304,14 @@
     <ProjectReference Include="..\..\..\Common\Commands.Profile\Commands.Profile.csproj">
       <Project>{c60342b1-47d3-4a0e-8081-9b97ce60b7af}</Project>
       <Name>Commands.Profile</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\ServiceManagement\Compute\Sync\Sync.csproj">
+      <Project>{73820cbc-f4eb-4c5e-b4f0-cc4a93fbf157}</Project>
+      <Name>Sync</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\ServiceManagement\Compute\VhdManagement\VhdManagement.csproj">
+      <Project>{80496b7b-068a-4a1e-b0bb-4b1fff3fa616}</Project>
+      <Name>VhdManagement</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Network\Commands.Network\Commands.Network.csproj">
       <Project>{98cfd96b-a6bc-4f15-ae2c-603fc2b58981}</Project>
