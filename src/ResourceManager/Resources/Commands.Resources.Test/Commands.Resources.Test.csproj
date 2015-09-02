@@ -206,7 +206,7 @@
     <Compile Include="ScenarioTests\ResourceTests.cs" />
     <Compile Include="ScenarioTests\RoleAssignmentTests.cs" />
     <Compile Include="ScenarioTests\RoleDefinitionTests.cs" />
-    <Compile Include="Templates\TestAzureResourceGroupTemplateCommandTests.cs" />
+    <Compile Include="Templates\TestAzureResourceGroupDeploymentCommandTests.cs" />
     <Compile Include="Templates\SaveAzureResourceGroupGalleryTemplateCommandTests.cs" />
     <Compile Include="Templates\GetAzureResourceGroupGalleryTemplateCommandTests.cs" />
     <Compile Include="Models.ResourceGroups\ResourceClientTests.cs" />
@@ -474,7 +474,7 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ResourceTests\TestSetAResourceTest.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-	<None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.RoleAssignmentTests\RaAuthorizationChangeLog.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.RoleAssignmentTests\RaAuthorizationChangeLog.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.RoleAssignmentTests\RaByResource.json">

@@ -96,7 +96,6 @@ namespace Microsoft.Azure.Commands.Resources.Test
             cmdlet.ResourceGroupName = resourceGroupName;
             cmdlet.Name = expectedParameters.DeploymentName;
             cmdlet.TemplateFile = expectedParameters.TemplateFile;
-            cmdlet.TemplateVersion = expectedParameters.TemplateVersion;
 
             cmdlet.ExecuteCmdlet();
 
@@ -104,7 +103,6 @@ namespace Microsoft.Azure.Commands.Resources.Test
             Assert.Equal(expectedParameters.GalleryTemplateIdentity, actualParameters.GalleryTemplateIdentity);
             Assert.Equal(expectedParameters.TemplateFile, actualParameters.TemplateFile);
             Assert.NotNull(actualParameters.TemplateParameterObject);
-            Assert.Equal(expectedParameters.TemplateVersion, actualParameters.TemplateVersion);
 
             commandRuntimeMock.Verify(f => f.WriteObject(expected), Times.Once());
         }
@@ -155,7 +153,6 @@ namespace Microsoft.Azure.Commands.Resources.Test
             cmdlet.ResourceGroupName = resourceGroupName;
             cmdlet.Name = expectedParameters.DeploymentName;
             cmdlet.GalleryTemplateIdentity = expectedParameters.GalleryTemplateIdentity;
-            cmdlet.TemplateVersion = expectedParameters.TemplateVersion;
 
             cmdlet.ExecuteCmdlet();
 
@@ -163,7 +160,6 @@ namespace Microsoft.Azure.Commands.Resources.Test
             Assert.Equal(expectedParameters.GalleryTemplateIdentity, actualParameters.GalleryTemplateIdentity);
             Assert.Equal(expectedParameters.TemplateFile, actualParameters.TemplateFile);
             Assert.NotNull(actualParameters.TemplateParameterObject);
-            Assert.Equal(expectedParameters.TemplateVersion, actualParameters.TemplateVersion);
             Assert.Equal(null, actualParameters.StorageAccountName);
 
             commandRuntimeMock.Verify(f => f.WriteObject(expected), Times.Once());

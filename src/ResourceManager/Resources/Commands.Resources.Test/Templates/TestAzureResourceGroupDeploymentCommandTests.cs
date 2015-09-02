@@ -22,7 +22,7 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Resources
 {
-    public class TestAzureResourceGroupTemplateCommandTests
+    public class TestAzureResourceGroupDeploymentCommandTests
     {
         private TestAzureResourceGroupDeploymentCommand cmdlet;
 
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
 
         private string storageAccountName = "myStorageAccount";
 
-        public TestAzureResourceGroupTemplateCommandTests()
+        public TestAzureResourceGroupDeploymentCommandTests()
         {
             resourcesClientMock = new Mock<ResourcesClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
@@ -82,7 +82,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
 
             cmdlet.ResourceGroupName = resourceGroupName;
             cmdlet.TemplateFile = expectedParameters.TemplateFile;
-            cmdlet.TemplateVersion = expectedParameters.TemplateVersion;
 
             cmdlet.ExecuteCmdlet();
 
@@ -130,7 +129,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
 
             cmdlet.ResourceGroupName = resourceGroupName;
             cmdlet.GalleryTemplateIdentity = expectedParameters.GalleryTemplateIdentity;
-            cmdlet.TemplateVersion = expectedParameters.TemplateVersion;
 
             cmdlet.ExecuteCmdlet();
 
