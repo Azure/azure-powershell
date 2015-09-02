@@ -24,10 +24,21 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
     /// <summary>
     /// Cmdlet to fail over Azure SQL Database Replication Link to the secondary database
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureSqlDatabaseSecondary",
+    [Cmdlet(VerbsCommon.Set, "AzureSqlDatabaseSecondary", 
+        DefaultParameterSetName = ByDatabaseName,
         ConfirmImpact = ConfirmImpact.Medium)]
     public class SetAzureSqlDatabaseSecondary : AzureSqlDatabaseSecondaryCmdletBase
     {
+        /// <summary>
+        /// ParameterSet to set properties for a given Azure SQL Database Secondary
+        /// </summary>
+        internal const string ByDatabaseName = "ByDatabaseName";
+
+        /// <summary>
+        /// ParameterSet to get a Replication Link by its partner Azure SQL Server Name
+        /// </summary>
+        internal const string ByFailoverParams = "ByFailoverParams";
+        
         /// <summary>
         /// Gets or sets the name of the primary Azure SQL Database with the replication link to remove.
         /// </summary>
@@ -51,8 +62,9 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// Gets or sets a value indicating whether this is a failover.
         /// </summary>
         /// <returns></returns>
-        [Parameter(Mandatory = false,
+        [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = false,
+            ParameterSetName = ByFailoverParams,
             HelpMessage = "Whether this operation is a failover.")]
         public SwitchParameter Failover { get; set; }
 
@@ -62,6 +74,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// <returns></returns>
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = false,
+            ParameterSetName = ByFailoverParams,
             HelpMessage = "Whether this failover operation will allow data loss.")]
         public SwitchParameter AllowDataLoss { get; set; }
 
@@ -91,19 +104,20 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// <returns>The input entity</returns>
         protected override IEnumerable<AzureReplicationLinkModel> PersistChanges(IEnumerable<AzureReplicationLinkModel> entity)
         {
-            if (this.MyInvocation.BoundParameters.ContainsKey("Failover"))
+            
+            switch (ParameterSetName)
             {
-                return new List<AzureReplicationLinkModel>() { ModelAdapter.FailoverLink(this.ResourceGroupName, 
-                    this.ServerName, 
-                    this.DatabaseName, 
-                    this.PartnerResourceGroupName,
-                    this.MyInvocation.BoundParameters.ContainsKey("AllowDataLoss") ? true : false)
-                };
-            }
-            else
-            {
-                // Warning user that no options were provided so no action can be taken.
-                WriteWarning(Resources.SetSecondaryNoOptionProvided);
+                case ByFailoverParams:
+                    return new List<AzureReplicationLinkModel>() { ModelAdapter.FailoverLink(this.ResourceGroupName, 
+                        this.ServerName, 
+                        this.DatabaseName, 
+                        this.PartnerResourceGroupName,
+                        this.MyInvocation.BoundParameters.ContainsKey("AllowDataLoss") ? true : false)
+                    };
+                default:
+                    // Warning user that no options were provided so no action can be taken.
+                    WriteWarning(Resources.SetSecondaryNoOptionProvided);
+                    break;
             }
 
             return entity;
