@@ -25,14 +25,14 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
     /// Cmdlet to fail over Azure SQL Database Replication Link to the secondary database
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureSqlDatabaseSecondary", 
-        DefaultParameterSetName = ByDatabaseName,
+        DefaultParameterSetName = NoOptionsSet,
         ConfirmImpact = ConfirmImpact.Medium)]
     public class SetAzureSqlDatabaseSecondary : AzureSqlDatabaseSecondaryCmdletBase
     {
         /// <summary>
         /// ParameterSet to set properties for a given Azure SQL Database Secondary
         /// </summary>
-        internal const string ByDatabaseName = "ByDatabaseName";
+        internal const string NoOptionsSet = "NoOptionsSet";
 
         /// <summary>
         /// ParameterSet to get a Replication Link by its partner Azure SQL Server Name
