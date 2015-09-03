@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.Resources.Templates
 
         public override void ExecuteCmdlet()
         {
+            WriteWarning("This cmdlet is being deprecated and will be removed in a future release.");
             FilterGalleryTemplatesOptions options = new FilterGalleryTemplatesOptions()
             {
                 Category = Category,
