@@ -7,7 +7,6 @@
   * Changed the output format of Get image cmdlets as a table
   * Fixed Set-AzureVMAccessExtension cmdlet
 * Azure Compute (Service Management) cmdlets
-  * Changed the warning message to a non-terminating error message for ResourceNotFound in VM cmdlets
   * Exposed ComputeImageConfig in Get-AzurePlatformVMImage cmdlet
   * Fixed Publish-AzurePlatformExtension and Set-AzurePlatformExtension cmdlets
 * Azure Backup - added the following cmdlets
@@ -35,6 +34,15 @@
   * Stop-AzureBatchJob
   * Stop-AzureBatchJobSchedule
   * Stop-AzureBatchTask
+* Azure Data Factory
+  * Update SDK reference to 3.0.0 to use API version 2015-09-01
+    * Imposes message size limits for all authoring types. Pipelines must be 200 KB or less in size and all others must be 30 KB or less. 
+    * TeradataLinkedService no longer accepts the obsolete properties "database" and "schema". 
+    * Obsolete copy-related properties are no longer returned from the service. 
+* Azure Sql (ARM) Cmdlets - added the following cmdlets
+  * Get-AzureSqlServerActiveDirectoryAdministrator
+  * Set-AzureSqlServerActiveDirectoryAdministrator
+  * Remove-AzureSqlServerActiveDirectoryAdministrator
 	
 ## 2015.08.17 version 0.9.7
 * Azure Profile cmdlets
