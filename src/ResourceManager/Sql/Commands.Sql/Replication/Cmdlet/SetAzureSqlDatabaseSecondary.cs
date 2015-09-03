@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                         this.ServerName, 
                         this.DatabaseName, 
                         this.PartnerResourceGroupName,
-                        this.MyInvocation.BoundParameters.ContainsKey("AllowDataLoss") ? true : false)
+                        this.AllowDataLoss.IsPresent)
                     };
                 default:
                     // Warning user that no options were provided so no action can be taken.
