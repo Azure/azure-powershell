@@ -43,6 +43,12 @@
   * Get-AzureSqlServerActiveDirectoryAdministrator
   * Set-AzureSqlServerActiveDirectoryAdministrator
   * Remove-AzureSqlServerActiveDirectoryAdministrator
+* SQL Server VM cmdlets (ARM)
+  * New-AzureVMSqlServerAutoPatchingConfig
+  * New-AzureVMSqlServerAutoBackupConfig
+  * Set-AzureVMSqlServerExtension
+  * Get-AzureVMSqlServerExtension
+  * Remove-AzureVMSqlServerExtension
 	
 ## 2015.08.17 version 0.9.7
 * Azure Profile cmdlets

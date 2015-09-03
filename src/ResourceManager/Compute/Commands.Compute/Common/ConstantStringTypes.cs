@@ -99,5 +99,8 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VirtualMachineDscConfiguration = "AzureVMDscConfiguration";
 
         public const string Vhd = "AzureVhd";
+
+        // Sql Server
+        public const string VirtualMachineSqlServerExtension = "AzureVMSqlServerExtension";
     }
 }
