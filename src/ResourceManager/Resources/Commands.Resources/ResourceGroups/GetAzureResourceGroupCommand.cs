@@ -38,6 +38,15 @@ namespace Microsoft.Azure.Commands.Resources
         
         public override void ExecuteCmdlet()
         {
+            if(this.Tag != null)
+            {
+                WriteWarning("The Tag parameter is being deprecated and will be removed in a future release.");
+            }
+            if(this.Detailed.IsPresent)
+            {
+                WriteWarning("The Detailed switch parameter is being deprecated and will be removed in a future release.");
+            }
+            WriteWarning("The output object of this cmdlet will be modified in a future release.");
             var detailed = Detailed.IsPresent || !string.IsNullOrEmpty(Name);
             WriteObject(ResourcesClient.FilterResourceGroups(Name, Tag, detailed), true);
         }

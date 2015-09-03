@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.Resources
     {
         public override void ExecuteCmdlet()
         {
+            WriteWarning("The output object of this cmdlet will be modified in a future release.");
             WriteObject(ResourcesClient.GetLocations(), true);
         }
 

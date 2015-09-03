@@ -67,6 +67,7 @@ namespace Microsoft.Azure.Commands.Resources
             {
                 WriteWarning("The deployment parameters in New-AzureResourceGroup cmdlet is being deprecated and will be removed in a future release. Please use New-AzureResourceGroupDeployment to submit deployments.");
             }
+            WriteWarning("The output object of this cmdlet is being modified and will be changed in a future release.");
             WriteObject(ResourcesClient.CreatePSResourceGroup(parameters));
         }
     }
