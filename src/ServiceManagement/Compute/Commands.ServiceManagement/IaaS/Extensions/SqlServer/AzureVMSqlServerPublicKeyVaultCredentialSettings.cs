@@ -11,41 +11,24 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-using System.Collections.Generic;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
+
+using System.Security;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
-    using NSM = Management.Compute.Models;
-
     /// <summary>
-    /// SQL Extension's context object used by Get-AzureVMSqlServerExtension
+    /// Key Vault public settings to manage SQL VM credentials on configure Azure Key Vault
     /// </summary>
-    public class VirtualMachineSqlServerExtensionContext : VirtualMachineExtensionContext
+    public class PublicKeyVaultCredentialSettings
     {
         /// <summary>
-        /// Auto-patching settings
+        /// Defines if the Key Vault Credentails feature is enabled or disabled
         /// </summary>
-        public AutoPatchingSettings AutoPatchingSettings;
+        public bool Enable { get; set; }
 
         /// <summary>
-        /// Auto-backup settings
+        /// Key Vault credentails name
         /// </summary>
-        public AutoBackupSettings AutoBackupSettings;
-
-        /// <summary>
-        /// Key Vault Credential settings
-        /// </summary>
-        public KeyVaultCredentialSettings KeyVaultCredentialSettings;
-
-        /// <summary>
-        /// Status messages reported by extension
-        /// </summary>
-        public List<string> StatusMessages;
-
-        /// <summary>
-        /// Resource extension substatus list
-        /// </summary>
-        public IList<NSM.ResourceExtensionSubStatus> SubStatusList { get; set; }
+        public string CredentialName { get; set; }
     }
 }

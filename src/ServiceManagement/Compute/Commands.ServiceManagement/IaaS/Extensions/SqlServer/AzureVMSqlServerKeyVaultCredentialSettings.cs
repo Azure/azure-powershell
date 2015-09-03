@@ -11,41 +11,48 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-using System.Collections.Generic;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
+
+using System.Security;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
-    using NSM = Management.Compute.Models;
-
     /// <summary>
-    /// SQL Extension's context object used by Get-AzureVMSqlServerExtension
+    /// Autobackup settings to configure managed backup on SQL VM
     /// </summary>
-    public class VirtualMachineSqlServerExtensionContext : VirtualMachineExtensionContext
+    public class KeyVaultCredentialSettings
     {
         /// <summary>
-        /// Auto-patching settings
+        /// Defines if the Key Vault Credentails feature is enabled or disabled
         /// </summary>
-        public AutoPatchingSettings AutoPatchingSettings;
+        public bool Enable { get; set; }
 
         /// <summary>
-        /// Auto-backup settings
+        /// Key Vault credentails name
         /// </summary>
-        public AutoBackupSettings AutoBackupSettings;
+        public string CredentialName { get; set; }
 
         /// <summary>
-        /// Key Vault Credential settings
+        /// Gets the azure key vault URL.
         /// </summary>
-        public KeyVaultCredentialSettings KeyVaultCredentialSettings;
+        /// <value>
+        /// The azure key vault URL for Credential Management.
+        /// </value>
+        public string AzureKeyVaultUrl { get; set; }
 
         /// <summary>
-        /// Status messages reported by extension
+        /// Gets the name of the principal.
         /// </summary>
-        public List<string> StatusMessages;
+        /// <value>
+        /// The name of the service principal to access the Azure Key Vault.
+        /// </value>
+        public string ServicePrincipalName { get; set; }
 
         /// <summary>
-        /// Resource extension substatus list
+        /// Gets the principal secret.
         /// </summary>
-        public IList<NSM.ResourceExtensionSubStatus> SubStatusList { get; set; }
+        /// <value>
+        /// The service principal secret to access the Azure Key Vault.
+        /// </value>
+        public string ServicePrincipalSecret { get; set; }
     }
 }
