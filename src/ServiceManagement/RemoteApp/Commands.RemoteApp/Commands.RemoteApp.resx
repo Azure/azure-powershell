@@ -196,7 +196,7 @@
     <value>Upload template image failed.</value>
   </data>
   <data name="TemplateImageUploadingStatusMessage" xml:space="preserve">
-    <value>Uploading Template Image</value>
+    <value>Uploading template image</value>
   </data>
   <data name="TemplateImageUploadSuccessMessage" xml:space="preserve">
     <value>Upload template image completed successfully.</value>
@@ -211,7 +211,7 @@
     <value>Template image upload script failed</value>
   </data>
   <data name="UploadTemplateImageJobDescriptionMessage" xml:space="preserve">
-    <value>Upload RemoteApp Template Image</value>
+    <value>Upload RemoteApp template image</value>
   </data>
   <data name="VnetSharedKeyResetCaptionMessage" xml:space="preserve">
     <value>This operation will reset the shared key for the VNet's VPN device. This will interrupt connectivity to the on-premises network until you configure the VPN device to use the new shared key.</value>
@@ -220,7 +220,7 @@
     <value>Resetting the VPN shared key on {0}</value>
   </data>
   <data name="WaitingForStorageVerificationToCompleteMessage" xml:space="preserve">
-    <value>Waiting for Storage verification to complete</value>
+    <value>Waiting for storage verification to complete</value>
   </data>
   <data name="TemplateImageUploadPendingMessage" xml:space="preserve">
     <value>Pending upload template image</value>
@@ -254,6 +254,18 @@
   </data>
   <data name="UsageDetails" xml:space="preserve">
     <value>Get usage details</value>
+  </data>
+  <data name="InvalidADArguments" xml:space="preserve">
+    <value>Both domain name and credentials must be specified</value>
+  </data>
+  <data name="InvalidLocationArgument" xml:space="preserve">
+    <value>Location must be supplied for Cloud only environtments</value>
+  </data>
+  <data name="VNetDeprecatedUrl" xml:space="preserve">
+    <value>https://azure.microsoft.com/documentation/articles/remoteapp-migratevnet/</value>
+  </data>
+  <data name="VNetDeprecateed" xml:space="preserve">
+    <value>This cmdlet {0} has been deprecated. See x {1}</value>
   </data>
   <data name="DefaultLogoffMessage" xml:space="preserve">
     <value>Please save your work and logoff. You will be logged off automatically after {0} seconds.</value>
