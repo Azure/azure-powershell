@@ -234,7 +234,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             // Initialize it from the environment variable or profile file.
             InitializeDataCollectionProfile();
 
-            if (!_dataCollectionProfile.EnableAzureDataCollection.HasValue)
+            if (GeneralUtilities.CheckIfInteractive() && !_dataCollectionProfile.EnableAzureDataCollection.HasValue)
             {
                 WriteWarning(Resources.DataCollectionPrompt);
 

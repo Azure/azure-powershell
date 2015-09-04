@@ -430,5 +430,14 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 AzureSession.DataStore.CreateDirectory(AzureSession.ProfileDirectory);
             }
         }
+
+        /// <summary>
+        /// Check if the PS program is run in interactive mode.
+        /// </summary>
+        public static bool CheckIfInteractive()
+        {
+            var arguments = Environment.GetCommandLineArgs();
+            return arguments.Any(s => !string.Equals(s, "-noninteractive"));
+        }
     }
 }
