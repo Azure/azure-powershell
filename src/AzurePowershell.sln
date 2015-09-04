@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8531411A-0137-4E27-9C5E-49E07C245048}"
 	ProjectSection(SolutionItems) = preProject
@@ -91,7 +91,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ManagedCache", "Se
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ManagedCache.Test", "ServiceManagement\ManagedCache\Commands.ManagedCache.Test\Commands.ManagedCache.Test.csproj", "{374D4000-DEDE-4995-9B63-E3B9FE0C4D29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "Common\Commands.Profile\Commands.Profile.csproj", "{C60342B1-47D3-4A0E-8081-9B97CE60B7AF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.SMProfile", "Common\Commands.SMProfile\Commands.SMProfile.csproj", "{C60342B1-47D3-4A0E-8081-9B97CE60B7AF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Automation", "ServiceManagement\Automation\Commands.Automation\Commands.Automation.csproj", "{47CD7E95-5330-4384-ABCE-2C267C57085C}"
 EndProject
@@ -236,6 +236,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.SiteRecovery.Test", "ResourceManager\SiteRecovery\Commands.SiteRecovery.Test\Commands.SiteRecovery.Test.csproj", "{6C7D3D81-37AB-445E-8081-78A1FEC0A773}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ResourceManager.Common", "Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj", "{3819D8A7-C62C-4C47-8DDD-0332D9CE1252}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RMProfile", "Common\Commands.RMProfile\Commands.RMProfile.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -591,6 +593,10 @@ Global
 		{3819D8A7-C62C-4C47-8DDD-0332D9CE1252}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3819D8A7-C62C-4C47-8DDD-0332D9CE1252}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3819D8A7-C62C-4C47-8DDD-0332D9CE1252}.Release|Any CPU.Build.0 = Release|Any CPU
+		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

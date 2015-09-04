@@ -16,6 +16,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
@@ -30,6 +31,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         static AzureRMCmdlet()
         {
             AzureSession.DataStore = new DiskDataStore();
+            Profile = new AzureRMProfile();
         }
 
         /// <summary>
@@ -50,6 +52,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 }
 
                 return Profile.DefaultContext;
+            }
+        }
+
+        public virtual void ExecuteCmdlet()
+        {
+            // Do nothing.
+        }
+
+        protected override void ProcessRecord()
+        {
+            try
+            {
+                base.ProcessRecord();
+                ExecuteCmdlet();
+            }
+            catch (Exception ex)
+            {
+                WriteExceptionError(ex);
             }
         }
     }
