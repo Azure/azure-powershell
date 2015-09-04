@@ -1118,6 +1118,63 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
             }
         }
 
+        public Model.NodeConfiguration CreateNodeConfiguration(
+            string resourceGroupName,
+            string automationAccountName,
+            string sourcePath,
+            string nodeConfiguraionName,
+            string configurationName)
+        {
+            using (var request = new RequestSettings(this.automationManagementClient))
+            {
+                Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
+                Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
+                Requires.Argument("SourcePath", sourcePath).NotNull();
+
+                string fileContent = null;
+                string nodeConfigurationName = String.Empty;
+
+                try
+                {
+                    if (File.Exists(Path.GetFullPath(sourcePath)))
+                    {
+                        fileContent = System.IO.File.ReadAllText(sourcePath);
+                    }
+                }
+                catch (Exception)
+                {
+                    // exception in accessing the file path
+                    throw new FileNotFoundException(
+                                        string.Format(
+                                            CultureInfo.CurrentCulture,
+                                            Resources.ConfigurationSourcePathInvalid));
+                }
+
+                var nodeConfigurationCreateParameters = new DscNodeConfigurationCreateOrUpdateParameters()
+                {
+                    Name = nodeConfiguraionName,
+                    Source = new Microsoft.Azure.Management.Automation.Models.ContentSource()
+                    {
+                        // only embeddedContent supported for now
+                        ContentType = Model.ContentSourceType.embeddedContent.ToString(),
+                        Value = fileContent
+                    },
+                    Configuration = new DscConfigurationAssociationProperty() 
+                    {
+                        Name = configurationName
+                    }
+                };
+
+                var configuration =
+                    this.automationManagementClient.NodeConfigurations.CreateOrUpdate(
+                        resourceGroupName,
+                        automationAccountName,
+                        nodeConfigurationCreateParameters).NodeConfiguration;
+
+                return new Model.NodeConfiguration(resourceGroupName, automationAccountName, configuration);
+            }
+        }
+
         #endregion
 
         #region dsc reports

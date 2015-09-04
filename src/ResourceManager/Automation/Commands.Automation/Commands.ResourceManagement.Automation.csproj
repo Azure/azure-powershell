@@ -117,6 +117,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cmdlet\AzureAutomationBaseCmdlet.cs" />
+    <Compile Include="Cmdlet\ImportAzureAutomationDscNodeConfiguration.cs" />
     <Compile Include="Cmdlet\ExportAzureAutomationDscConfiguration.cs" />
     <Compile Include="Cmdlet\ExportAzureAutomationDscNodeReportContent.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationCertificate.cs" />
