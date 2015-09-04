@@ -806,5 +806,32 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
                 return ResourceManager.GetString("SBPR_StopResizingPool", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Terminating job {0}..
+        /// </summary>
+        internal static string TerminateJob {
+            get {
+                return ResourceManager.GetString("TerminateJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Terminating job schedule {0}..
+        /// </summary>
+        internal static string TerminateJobSchedule {
+            get {
+                return ResourceManager.GetString("TerminateJobSchedule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Terminating task {0}..
+        /// </summary>
+        internal static string TerminateTask {
+            get {
+                return ResourceManager.GetString("TerminateTask", resourceCulture);
+            }
+        }
     }
 }

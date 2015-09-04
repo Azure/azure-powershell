@@ -20,16 +20,23 @@ using Microsoft.Azure.Graph.RBAC.Models;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
-using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
     public class RoleAssignmentTests : RMTestBase
     {
+        [Fact(Skip = "http://vstfrd:8080/Azure/RD/_workitems/edit/4616537")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaAuthorizationChangeLog()
+        {
+           ResourcesController.NewInstance.RunPsTest("Test-RaAuthorizationChangeLog");
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaNegativeScenarios()

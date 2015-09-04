@@ -47,6 +47,11 @@ namespace Microsoft.Azure.Commands.Resources
                     new List<string>() { ProvisioningState }
             };
 
+            if(!string.IsNullOrEmpty(Name))
+            {
+                WriteWarning("The parameter 'Name' in Get-AzureResourceGroupDeployment cmdlet is being renamed to DeploymentName and will be updated in a future release.");
+            }
+
             WriteObject(ResourcesClient.FilterResourceGroupDeployments(options), true);
         }
     }

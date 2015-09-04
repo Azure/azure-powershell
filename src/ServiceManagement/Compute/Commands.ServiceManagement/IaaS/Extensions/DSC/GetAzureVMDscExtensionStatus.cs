@@ -12,18 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
 using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
-using Microsoft.WindowsAzure.Management.Compute;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
-using System.Net;
-
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
@@ -98,12 +94,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         {
             ServiceManagementProfile.Initialize();
             GetService(ServiceName, VM);
-            GetCurrentDeployment();
+            base.ExecuteCommand();
 
             if (CurrentDeploymentNewSM == null)
             {
-                WriteWarning(
-                    string.Format(CultureInfo.CurrentUICulture, Resources.NoDeploymentFoundInService, Service));
                 return;
             }
             
@@ -136,32 +130,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
                 Service = vmRoleContext.ServiceName;
                 VmName = vmRoleContext.Name;
             }
-        }
-
-        /// <summary>
-        /// Retrieves deployment information for a cloud service from service api's 
-        /// </summary>
-        internal void GetCurrentDeployment()
-        {
-            InvokeInOperationContext(() =>
-            {
-                try
-                {
-                    if (string.IsNullOrEmpty(Service))
-                        return;
-                    
-                    CurrentDeploymentNewSM = ComputeClient.Deployments.GetBySlot(Service, NSM.DeploymentSlot.Production);
-                    GetDeploymentOperationNewSM = GetOperation(CurrentDeploymentNewSM.RequestId);
-                    WriteVerboseWithTimestamp(Resources.GetDeploymentCompletedOperation);
-                }
-                catch (CloudException ex)
-                {
-                    if (ex.Response.StatusCode != HttpStatusCode.NotFound)
-                    {
-                        throw;
-                    }
-                }
-            });
         }
 
         /// <summary>
@@ -251,7 +219,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             };
             return dscStatusContext;
         }
-
     }
 }
 

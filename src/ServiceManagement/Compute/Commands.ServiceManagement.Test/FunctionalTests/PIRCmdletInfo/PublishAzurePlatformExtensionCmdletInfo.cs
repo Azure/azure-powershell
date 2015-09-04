@@ -26,7 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             ExtensionCertificateConfig certConfig, ExtensionEndpointConfigSet epConfig, ExtensionLocalResourceConfigSet lrConfig,
             DateTime publishDate, string publicSchema, string privateSchema, string sample,
             string eula,  Uri privacyUri, Uri homepage, string os, string regions,
-            bool blockRole, bool disallowUpgrade, bool xmlExtension, bool internalExtension, bool force)
+            bool blockRole, bool disallowUpgrade, bool xmlExtension, bool force)
         {
             this.cmdletName = Utilities.PublishAzurePlatformExtensionCmdletName;
 
@@ -109,34 +109,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             if (force)
             {
                 this.cmdletParams.Add(new CmdletParam("Force"));
-            }
-
-            this.cmdletParams.Add(new CmdletParam("ExtensionMode", (internalExtension)? "Internal" : "Public"));
-        }
-
-        public PublishAzurePlatformExtensionCmdletInfo(string imageName, string permission, string[] locations, ComputeImageConfig compCfg, MarketplaceImageConfig marketCfg)
-        {
-            this.cmdletName = Utilities.PublishAzurePlatformExtensionCmdletName;
-            this.cmdletParams.Add(new CmdletParam("ImageName", imageName));
-
-            if (permission != null)
-            {
-                this.cmdletParams.Add(new CmdletParam("Permission", permission));
-            }
-
-            if (locations != null)
-            {
-                this.cmdletParams.Add(new CmdletParam("ReplicaLocations", locations));
-            }
-
-            if (compCfg != null)
-            {
-                this.cmdletParams.Add(new CmdletParam("PlatformComputeImageConfig", compCfg));
-            }
-
-            if (marketCfg != null)
-            {
-                this.cmdletParams.Add(new CmdletParam("PlatformMarketplaceImageConfig", marketCfg));
             }
         }
     }
