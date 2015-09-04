@@ -227,10 +227,15 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected bool CheckIfInteractive()
         {
+            if (this.Host == null || this.Host.UI == null || this.Host.UI.RawUI == null)
+            {
+                return false;
+            }
+
             bool interactive = true;
             try
             {
-                var test = this.Host.UI.RawUI.CursorSize;
+                var test = this.Host.UI.RawUI.KeyAvailable;
             }
             catch (HostException ex)
             {
@@ -298,9 +303,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// </summary>
         protected override void BeginProcessing()
         {
+            InitializeProfile();
             PromptForDataCollectionProfileIfNotExists();
 
-            InitializeProfile();
             if (string.IsNullOrEmpty(ParameterSetName))
             {
                 WriteDebugWithTimestamp(string.Format(Resources.BeginProcessingWithoutParameterSetLog, this.GetType().Name));
