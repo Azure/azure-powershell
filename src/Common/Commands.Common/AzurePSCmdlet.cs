@@ -12,16 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Concurrent;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.IO;
 using System.Management.Automation;
+using System.Management.Automation.Host;
+using System.Threading;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
@@ -31,6 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         private RecordingTracingInterceptor _httpTracingInterceptor;
         private DebugStreamTraceListener _adalListener;
         protected static AzureProfile _currentProfile = null;
+        protected static AzurePSDataCollectionProfile _dataCollectionProfile = null;
 
         [Parameter(Mandatory = false, HelpMessage = "In-memory profile.")]
         public AzureProfile Profile { get; set; }
@@ -148,10 +152,132 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         }
 
         /// <summary>
+        /// Initialize the data collection profile
+        /// </summary>
+        protected static void InitializeDataCollectionProfile()
+        {
+            if (_dataCollectionProfile != null && _dataCollectionProfile.EnableAzureDataCollection.HasValue)
+            {
+                return;
+            }
+
+            // Get the value of the environment variable for Azure PS data collection setting.
+            string value = Environment.GetEnvironmentVariable(AzurePSDataCollectionProfile.EnvironmentVariableName);
+            if (!string.IsNullOrWhiteSpace(value))
+            {
+                if (string.Equals(value, bool.FalseString, StringComparison.OrdinalIgnoreCase))
+                {
+                    // Disable data collection only if it is explictly set to 'false'.
+                    _dataCollectionProfile = new AzurePSDataCollectionProfile(true);
+                }
+                else if (string.Equals(value, bool.TrueString, StringComparison.OrdinalIgnoreCase))
+                {
+                    // Enable data collection only if it is explictly set to 'true'.
+                    _dataCollectionProfile = new AzurePSDataCollectionProfile(false);
+                }
+            }
+
+            // If the environment value is null or empty, or not correctly set, try to read the setting from default file location.
+            if (_dataCollectionProfile == null)
+            {
+                string fileFullPath = Path.Combine(AzureSession.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
+                if (File.Exists(fileFullPath))
+                {
+                    string contents = File.ReadAllText(fileFullPath);
+                    _dataCollectionProfile = JsonConvert.DeserializeObject<AzurePSDataCollectionProfile>(contents);
+                }
+            }
+
+            // If the environment variable or file content is not set, create a new profile object.
+            if (_dataCollectionProfile == null)
+            {
+                _dataCollectionProfile = new AzurePSDataCollectionProfile();
+            }
+        }
+
+        /// <summary>
+        /// Get the data collection profile
+        /// </summary>
+        protected static AzurePSDataCollectionProfile GetDataCollectionProfile()
+        {
+            if (_dataCollectionProfile == null)
+            {
+                InitializeDataCollectionProfile();
+            }
+
+            return _dataCollectionProfile;
+        }
+
+        /// <summary>
+        /// Save the current data collection profile Json data into the default file path
+        /// </summary>
+        /// <param name="profile"></param>
+        protected void SaveDataCollectionProfile()
+        {
+            if (_dataCollectionProfile == null)
+            {
+                InitializeDataCollectionProfile();
+            }
+
+            string fileFullPath = Path.Combine(AzureSession.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
+            var contents = JsonConvert.SerializeObject(_dataCollectionProfile);
+            AzureSession.DataStore.WriteFile(fileFullPath, contents);
+            WriteWarning(string.Format(Resources.DataCollectionSaveFileInformation, fileFullPath));
+        }
+
+        /// <summary>
+        /// Prompt for the current data collection profile
+        /// </summary>
+        /// <param name="profile"></param>
+        protected void PromptForDataCollectionProfileIfNotExists()
+        {
+            // Initialize it from the environment variable or profile file.
+            InitializeDataCollectionProfile();
+
+            if (!_dataCollectionProfile.EnableAzureDataCollection.HasValue)
+            {
+                WriteWarning(Resources.DataCollectionPrompt);
+
+                const double timeToWaitInSeconds = 60;
+                var status = string.Format(Resources.DataCollectionConfirmTime, timeToWaitInSeconds);
+                ProgressRecord record = new ProgressRecord(0, Resources.DataCollectionActivity, status);
+
+                var startTime = DateTime.Now;
+                var endTime = DateTime.Now;
+                double elapsedSeconds = 0;
+
+                while (!this.Host.UI.RawUI.KeyAvailable && elapsedSeconds < timeToWaitInSeconds)
+                {
+                    Thread.Sleep(TimeSpan.FromMilliseconds(10));
+                    endTime = DateTime.Now;
+
+                    elapsedSeconds = (endTime - startTime).TotalSeconds;
+                    record.PercentComplete = ((int)elapsedSeconds * 100 / (int)timeToWaitInSeconds);
+                    WriteProgress(record);
+                }
+
+                bool enabled = false;
+                if (this.Host.UI.RawUI.KeyAvailable)
+                {
+                    KeyInfo keyInfo = this.Host.UI.RawUI.ReadKey(ReadKeyOptions.NoEcho);
+                    enabled = (keyInfo.Character == 'Y' || keyInfo.Character == 'y');
+                }
+
+                _dataCollectionProfile.EnableAzureDataCollection = enabled;
+
+                WriteWarning(enabled ? Resources.DataCollectionConfirmYes : Resources.DataCollectionConfirmNo);
+
+                SaveDataCollectionProfile();
+            }
+        }
+
+        /// <summary>
         /// Cmdlet begin process. Write to logs, setup Http Tracing and initialize profile
         /// </summary>
         protected override void BeginProcessing()
         {
+            PromptForDataCollectionProfileIfNotExists();
+
             InitializeProfile();
             if (string.IsNullOrEmpty(ParameterSetName))
             {

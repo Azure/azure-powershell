@@ -138,6 +138,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AzurePSDataCollectionProfile.cs" />
     <Compile Include="AzurePowerShell.cs" />
     <Compile Include="ComputeCloudException.cs" />
     <Compile Include="Constants.cs" />
