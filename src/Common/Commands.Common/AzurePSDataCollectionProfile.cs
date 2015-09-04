@@ -22,7 +22,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
     public class AzurePSDataCollectionProfile
     {
         public const string EnvironmentVariableName = "Azure_PS_Data_Collection";
-        public static string DefaultFileName = "AzureDataCollectionProfile.dat";
+        public static string DefaultFileName = "AzureDataCollectionProfile.json";
 
         public AzurePSDataCollectionProfile()
         {
