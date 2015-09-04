@@ -101,6 +101,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private void RunCmdlet()
         {
+            if(this.NoWait.IsPresent)
+            {
+                this.WriteWarning("The NoWait parameter is obsolete and will be removed in future releases.");
+            }
             var resourceIdsToUse = this.resourceIds
                 .Concat(this.ResourceId)
                 .DistinctArray(StringComparer.InvariantCultureIgnoreCase);

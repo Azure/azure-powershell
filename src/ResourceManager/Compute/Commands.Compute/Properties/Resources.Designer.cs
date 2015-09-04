@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SAS Uri for the destination blob is not supported in patch mode:{0}.
+        /// </summary>
+        public static string AddAzureVhdCommandSASUriNotSupportedInPatchMode {
+            get {
+                return ResourceManager.GetString("AddAzureVhdCommandSASUriNotSupportedInPatchMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Availability set removal operation.
         /// </summary>
         public static string AvailabilitySetRemovalCaption {
@@ -260,6 +269,222 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Calculating MD5 Hash.
+        /// </summary>
+        public static string PSSyncOutputEventsCalculatingMD5Hash {
+            get {
+                return ResourceManager.GetString("PSSyncOutputEventsCalculatingMD5Hash", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MD5 hash is being calculated for the file &apos;{0}&apos;..
+        /// </summary>
+        public static string PSSyncOutputEventsCalculatingMD5HashForFile {
+            get {
+                return ResourceManager.GetString("PSSyncOutputEventsCalculatingMD5HashForFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copying.
+        /// </summary>
+        public static string PSSyncOutputEventsCopying {
+            get {
+                return ResourceManager.GetString("PSSyncOutputEventsCopying", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating new page blob of size {0}....
+        /// </summary>
+        public static string PSSyncOutputEventsCreatingNewPageBlob {
+            get {
+                return ResourceManager.GetString("PSSyncOutputEventsCreatingNewPageBlob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Detecting the empty data blocks in the local file..
+        /// </summary>
+        public static string PSSyncOutputEventsDetectingActualDataBlocks {
+            get {
+                return ResourceManager.GetString("PSSyncOutputEventsDetectingActualDataBlocks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Detecting the empty data blocks completed..
+        /// </summary>
+        public static string PSSyncOutputEventsDetectingActualDataBlocksCompleted {
+            get {
+                return ResourceManager.GetString("PSSyncOutputEventsDetectingActualDataBlocksCompleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Downloading.
+        /// </summary>
+        public static string PSSyncOutputEventsDownloading {
+            get {
+                return ResourceManager.GetString("PSSyncOutputEventsDownloading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Elapsed time for copy: {0}.
+        /// </summary>
+        public static string PSSyncOutputEventsElapsedTimeForCopy {
+            get {
+                return ResourceManager.GetString("PSSyncOutputEventsElapsedTimeForCopy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Elapsed time for download: {0}.
+        /// </summary>
+        public static string PSSyncOutputEventsElapsedTimeForDownload {
+            get {
+                return ResourceManager.GetString("PSSyncOutputEventsElapsedTimeForDownload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Elapsed time for the operation: {0}.
+        /// </summary>
+        public static string PSSyncOutputEventsElapsedTimeForOperation {
+            get {
+                return ResourceManager.GetString("PSSyncOutputEventsElapsedTimeForOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Elapsed time for upload: {0}.
+        /// </summary>
+        public static string PSSyncOutputEventsElapsedTimeForUpload {
+            get {
+                return ResourceManager.GetString("PSSyncOutputEventsElapsedTimeForUpload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Empty block detected: {0}.
+        /// </summary>
+        public static string PSSyncOutputEventsEmptyBlockDetected {
+            get {
+                return ResourceManager.GetString("PSSyncOutputEventsEmptyBlockDetected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completed.
+        /// </summary>
+        public static string PSSyncOutputEventsEmptyBlockDetectionCompleted {
+            get {
+                return ResourceManager.GetString("PSSyncOutputEventsEmptyBlockDetectionCompleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Detecting empty blocks.
+        /// </summary>
+        public static string PSSyncOutputEventsEmptyBlockDetectionDetecting {
+            get {
+                return ResourceManager.GetString("PSSyncOutputEventsEmptyBlockDetectionDetecting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} days {1:00}:{2:00}:{3:00}.
+        /// </summary>
+        public static string PSSyncOutputEventsFormatDuration {
+            get {
+                return ResourceManager.GetString("PSSyncOutputEventsFormatDuration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0:0.0}% complete; Remaining Time: {1}; Throughput: {2:0.0}Mbps.
+        /// </summary>
+        public static string PSSyncOutputEventsLogProgress {
+            get {
+                return ResourceManager.GetString("PSSyncOutputEventsLogProgress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Completed.
+        /// </summary>
+        public static string PSSyncOutputEventsLogProgressCompleteCompleted {
+            get {
+                return ResourceManager.GetString("PSSyncOutputEventsLogProgressCompleteCompleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MD5 hash calculation is completed..
+        /// </summary>
+        public static string PSSyncOutputEventsMD5HashCalculationFinished {
+            get {
+                return ResourceManager.GetString("PSSyncOutputEventsMD5HashCalculationFinished", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Range of the block is {0}, Length: {1}.
+        /// </summary>
+        public static string PSSyncOutputEventsPrintBlockRange {
+            get {
+                return ResourceManager.GetString("PSSyncOutputEventsPrintBlockRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Empty Block Detection.
+        /// </summary>
+        public static string PSSyncOutputEventsProgressEmptyBlockDetection {
+            get {
+                return ResourceManager.GetString("PSSyncOutputEventsProgressEmptyBlockDetection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Found existing page blob. Resuming upload....
+        /// </summary>
+        public static string PSSyncOutputEventsResumingUpload {
+            get {
+                return ResourceManager.GetString("PSSyncOutputEventsResumingUpload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Network disruption occured, retrying..
+        /// </summary>
+        public static string PSSyncOutputEventsRetryingAfterANetworkDisruption {
+            get {
+                return ResourceManager.GetString("PSSyncOutputEventsRetryingAfterANetworkDisruption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload failed with exceptions:.
+        /// </summary>
+        public static string PSSyncOutputEventsUploadFailedWithException {
+            get {
+                return ResourceManager.GetString("PSSyncOutputEventsUploadFailedWithException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uploading.
+        /// </summary>
+        public static string PSSyncOutputEventsUploading {
+            get {
+                return ResourceManager.GetString("PSSyncOutputEventsUploading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Configuration published to {0}.
         /// </summary>
         public static string PublishVMDscExtensionArchiveUploadedMessage {
@@ -398,6 +623,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string PublishVMDscExtensionUploadArchiveConfigFileNotExist {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionUploadArchiveConfigFileNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No current subscription has been designated. Use Select-AzureSubscription -Current &lt;subscriptionName&gt; to set the current subscription..
+        /// </summary>
+        public static string StorageCredentialsFactoryCurrentSubscriptionNotSet {
+            get {
+                return ResourceManager.GetString("StorageCredentialsFactoryCurrentSubscriptionNotSet", resourceCulture);
             }
         }
         
