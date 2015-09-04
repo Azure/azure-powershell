@@ -225,6 +225,28 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             WriteWarning(string.Format(Resources.DataCollectionSaveFileInformation, fileFullPath));
         }
 
+        protected bool CheckIfInteractive()
+        {
+            bool interactive = true;
+            try
+            {
+                var test = this.Host.UI.RawUI.CursorSize;
+            }
+            catch (HostException ex)
+            {
+                if (ex.Message.StartsWith("A command that prompts the user failed"))
+                {
+                    interactive = false;
+                }
+                else
+                {
+                    throw ex;
+                }
+            }
+
+            return interactive;
+        }
+
         /// <summary>
         /// Prompt for the current data collection profile
         /// </summary>
@@ -234,7 +256,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             // Initialize it from the environment variable or profile file.
             InitializeDataCollectionProfile();
 
-            if (GeneralUtilities.CheckIfInteractive() && !_dataCollectionProfile.EnableAzureDataCollection.HasValue)
+            if (CheckIfInteractive() && !_dataCollectionProfile.EnableAzureDataCollection.HasValue)
             {
                 WriteWarning(Resources.DataCollectionPrompt);
 
@@ -259,7 +281,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 bool enabled = false;
                 if (this.Host.UI.RawUI.KeyAvailable)
                 {
-                    KeyInfo keyInfo = this.Host.UI.RawUI.ReadKey(ReadKeyOptions.NoEcho);
+                    KeyInfo keyInfo = this.Host.UI.RawUI.ReadKey(ReadKeyOptions.NoEcho | ReadKeyOptions.AllowCtrlC | ReadKeyOptions.IncludeKeyDown);
                     enabled = (keyInfo.Character == 'Y' || keyInfo.Character == 'y');
                 }
 
