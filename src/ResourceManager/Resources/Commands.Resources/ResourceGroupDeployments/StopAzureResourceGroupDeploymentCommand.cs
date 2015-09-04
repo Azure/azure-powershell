@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroups
         [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "True if succeed, false otherwise.")]
         public SwitchParameter PassThru { get; set; }
         
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ConfirmAction(
                 Force.IsPresent,

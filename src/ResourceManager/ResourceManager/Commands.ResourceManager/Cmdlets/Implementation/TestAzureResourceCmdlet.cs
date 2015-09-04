@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             base.OnProcessRecord();
             if (!this.TenantLevel)
             {
-                this.SubscriptionId = this.Profile.DefaultContext.Subscription.Id;
+                this.SubscriptionId = DefaultContext.Subscription.Id;
             }
 
             this.RunCmdlet();

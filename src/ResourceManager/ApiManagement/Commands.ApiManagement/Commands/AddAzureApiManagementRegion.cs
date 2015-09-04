@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             HelpMessage = "Virtual network configuration. Default value is $null.")]
         public PsApiManagementVirtualNetwork VirtualNetwork { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ExecuteCmdLetWrap(
                 () =>

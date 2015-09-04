@@ -29,7 +29,7 @@ using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Files
 {
-    public class GetBatchNodeFileCommandTests
+    public class GetBatchNodeFileCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
         private GetBatchNodeFileCommand cmdlet;
         private Mock<BatchClient> batchClientMock;

@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory=false)]
         public SwitchParameter Custom { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             if (Custom.IsPresent)
             {

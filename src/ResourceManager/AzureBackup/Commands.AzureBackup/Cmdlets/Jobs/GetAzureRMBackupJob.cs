@@ -56,14 +56,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public string Status { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.JobFilterTypeHelpMessage, ParameterSetName = "FiltersSet")]
-        [ValidateSet("IaasVM")]
+        [ValidateSet("AzureVM")]
         public string Type { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.JobFilterOperationHelpMessage, ParameterSetName = "FiltersSet")]
         [ValidateSet("Backup", "ConfigureBackup", "DeleteBackupData", "Register", "Restore", "UnProtect", "Unregister")]
         public string Operation { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ExecutionBlock(() =>
             {
@@ -77,6 +77,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 if (Job != null)
                 {
                     JobId = Job.InstanceId;
+                }
+
+                if (Type != null)
+                {
+                    Type = AzureBackupJobHelper.GetTypeForService(Type);
                 }
 
                 // validations

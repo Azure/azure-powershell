@@ -32,7 +32,7 @@ using Microsoft.Azure.Common.Authentication;
 namespace Microsoft.WindowsAzure.Commands.Test.MediaServices
 {
     
-    public class GetAzureMediaServicesTests : TestBase
+    public class GetAzureMediaServicesTests : SMTestBase
     {
         protected string SubscriptionId = "DE8C2681-0BCD-47DB-A8A6-A103D2D4A1B9";
 

@@ -55,7 +55,8 @@ ScriptsToProcess = @()
   
 # Type files (.ps1xml) to be loaded when importing this module  
 TypesToProcess = @(  
-    '.\Compute\Microsoft.Azure.Commands.Compute.Types.ps1xml'  
+    '.\Compute\Microsoft.Azure.Commands.Compute.Types.ps1xml',
+    '.\Sql\Microsoft.Azure.Commands.Sql.Types.ps1xml' 
 )  
   
 # Format files (.ps1xml) to be loaded when importing this module  
@@ -76,7 +77,7 @@ FormatsToProcess = @(
     '.\OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.format.ps1xml',  
     '.\AzureBackup\Microsoft.Azure.Commands.AzureBackup.format.ps1xml',
     '.\UsageAggregates\Microsoft.Azure.Commands.UsageAggregates.Format.ps1xml',
-	'.\Sql\Microsoft.Azure.Commands.Sql.format.ps1xml'
+    '.\Sql\Microsoft.Azure.Commands.Sql.format.ps1xml'
 )  
   
 # Modules to import as nested modules of the module specified in ModuleToProcess  
@@ -103,7 +104,7 @@ NestedModules = @(
     '.\StorageManagement\Microsoft.Azure.Commands.Management.Storage.dll',  
     '.\OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.dll',  
     '.\UsageAggregates\Microsoft.Azure.Commands.UsageAggregates.dll', 
-	'.\HDInsight\Microsoft.Azure.Commands.HDInsight.dll',
+    '.\HDInsight\Microsoft.Azure.Commands.HDInsight.dll',
     '.\ApiManagement\Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll',  
     '.\AzureBackup\Microsoft.Azure.Commands.AzureBackup.dll',
     '.\SiteRecovery\Microsoft.Azure.Commands.SiteRecovery.dll'

@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         {
             if(!rules.Any(r=> r.RuleId == RuleId))
             {
-                return string.Format(CultureInfo.InvariantCulture, Resources.SetDataMaskingRuleIdDoesNotExistError, RuleId);
+                return string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.SetDataMaskingRuleIdDoesNotExistError, RuleId);
             }
             return null;
         }

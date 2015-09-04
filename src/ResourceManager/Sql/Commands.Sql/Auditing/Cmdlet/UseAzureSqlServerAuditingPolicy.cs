@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             string storageAccountName = ModelAdapter.GetServerStorageAccount(ResourceGroupName, ServerName, clientRequestId);
             if (string.IsNullOrEmpty(storageAccountName))
             {
-                throw new Exception(string.Format(Resources.UseServerWithoutStorageAccount));
+                throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.UseServerWithoutStorageAccount));
             }
             return storageAccountName;
         }

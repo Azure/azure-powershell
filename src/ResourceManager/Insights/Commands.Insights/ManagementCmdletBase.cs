@@ -49,22 +49,10 @@ namespace Microsoft.Azure.Commands.Insights
         }
 
         /// <summary>
-        /// Dispose method
-        /// The implementation of IDispose follows the recommeded pattern
-        /// </summary>
-        public void Dispose()
-        {
-            this.Dispose(true);
-
-            // The class is not sealed, so this is here in case a derived class is created
-            GC.SuppressFinalize(this);
-        }
-
-        /// <summary>
         /// Dispose the resources
         /// </summary>
         /// <param name="disposing">Indicates whether the managed resources should be disposed or not</param>
-        protected virtual void Dispose(bool disposing)
+        protected override void Dispose(bool disposing)
         {
             if (!this.disposed)
             {
@@ -76,6 +64,7 @@ namespace Microsoft.Azure.Commands.Insights
 
                 this.disposed = true;
             }
+            base.Dispose(disposing);
         }
 
         #endregion

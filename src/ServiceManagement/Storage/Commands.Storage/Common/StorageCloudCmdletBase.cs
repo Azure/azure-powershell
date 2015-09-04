@@ -43,7 +43,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     {
         [Parameter(HelpMessage = "Azure Storage Context Object",
             ValueFromPipelineByPropertyName = true)]
-        public virtual AzureStorageContext Context { get; set; }
+        public AzureStorageContext Context { get; set; }
 
         [Parameter(HelpMessage = "The server time out for each request in seconds.")]
         public virtual int? ServerTimeoutPerRequest { get; set; }
@@ -245,7 +245,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         internal virtual bool ShouldInitServiceChannel()
         {
             //Storage Context is empty and have already set the current storage account in subscription
-            if (Context == null && HasCurrentSubscription && Profile.DefaultContext.Subscription != null &&
+            if (Context == null && Profile.DefaultContext.Subscription != null && Profile.DefaultContext.Subscription != null &&
                 !String.IsNullOrEmpty(Profile.DefaultContext.Subscription.GetProperty(AzureSubscription.Property.StorageAccount)))
             {
                 return true;

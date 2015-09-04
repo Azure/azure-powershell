@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
             }
             catch
             {
-                throw new Exception(string.Format(Resources.StorageAccountNotFound, storageAccountName));
+                throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.StorageAccountNotFound, storageAccountName));
             }
         }
 
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
                 }
                 else
                 {
-                    throw new Exception(string.Format(Resources.StorageAccountNotFound, storageAccountName));
+                    throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.StorageAccountNotFound, storageAccountName));
                 }
             };            
             try
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
                 }
                 catch
                 {
-                    throw new Exception(string.Format(Resources.StorageAccountNotFound, storageAccountName));
+                    throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.StorageAccountNotFound, storageAccountName));
                 }
             }
         }

@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected override void OnProcessRecord()
         {
             base.OnProcessRecord();
-            this.SubscriptionId = this.Profile.DefaultContext.Subscription.Id;
+            this.SubscriptionId = DefaultContext.Subscription.Id;
             this.RunCmdlet();
         }
 

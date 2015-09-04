@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Resources.Templates
         [Parameter(Position = 2, Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             string path = GalleryTemplatesClient.DownloadGalleryTemplateFile(
                 Identity,

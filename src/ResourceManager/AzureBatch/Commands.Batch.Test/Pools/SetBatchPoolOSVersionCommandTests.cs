@@ -28,7 +28,7 @@ using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Pools
 {
-    public class SetBatchPoolOSVersionCommandTests
+    public class SetBatchPoolOSVersionCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
         private SetBatchPoolOSVersionCommand cmdlet;
         private Mock<BatchClient> batchClientMock;

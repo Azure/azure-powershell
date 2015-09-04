@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             }
         }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             _clusterName = GetClusterConnection(ResourceGroupName, ClusterName);
             var output = GetJobOutput();

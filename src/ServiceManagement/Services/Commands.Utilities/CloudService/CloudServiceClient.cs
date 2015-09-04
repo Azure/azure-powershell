@@ -825,7 +825,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
 
             if (launch)
             {
-                GeneralUtilities.LaunchWebPage(deployment.Uri.ToString());
+                ProcessHelper.Start(deployment.Uri.ToString());
             }
             return deployment;
         }

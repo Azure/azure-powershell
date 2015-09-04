@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
                 select ModelizeDatabaseDataMaskingRule(r, resourceGroup, serverName, databaseName)).ToList();
             if(ruleId != null && rules.Count == 0)
             {
-                throw new Exception(string.Format(CultureInfo.InvariantCulture, Resources.DataMaskingRuleDoesNotExist, ruleId));
+                throw new Exception(string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.DataMaskingRuleDoesNotExist, ruleId));
             }
             return rules;
         }

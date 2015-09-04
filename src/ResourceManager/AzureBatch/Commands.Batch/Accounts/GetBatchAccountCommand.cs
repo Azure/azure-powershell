@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Filter list of accounts using the key and optional value of the specified tag.")]
         public Hashtable Tag { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             if (string.IsNullOrEmpty(this.AccountName))
             {

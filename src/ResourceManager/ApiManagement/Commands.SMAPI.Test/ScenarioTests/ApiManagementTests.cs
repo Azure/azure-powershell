@@ -23,11 +23,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
     using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Test;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using WindowsAzure.Commands.Test.Utilities.Common;
     using Microsoft.WindowsAzure.Management;
     using Microsoft.WindowsAzure.Management.Storage;
     using Xunit;
 
-    public class ApiManagementTests : IUseFixture<ApiManagementTestsFixture>
+    public class ApiManagementTests : RMTestBase, IUseFixture<ApiManagementTestsFixture>
     {
         private readonly EnvironmentSetupHelper _helper;
         private ApiManagementTestsFixture _fixture;

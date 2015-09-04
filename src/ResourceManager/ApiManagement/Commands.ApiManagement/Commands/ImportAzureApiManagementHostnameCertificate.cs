@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             HelpMessage = "Sends imported PsApiManagementHostnameCertificate to pipeline if operation succeeds.")]
         public SwitchParameter PassThru { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ExecuteCmdLetWrap(() =>
                 Client.UploadCertificate(

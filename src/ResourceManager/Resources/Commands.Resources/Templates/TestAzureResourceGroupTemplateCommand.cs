@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroupDeployments
             this.Mode = DeploymentMode.Incremental;
         }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             this.WriteWarning("The Test-AzureResourceGroupTemplate cmdlet is being renamed to Test-AzureResourceGroupDeployment in a future release.");
             ValidatePSResourceGroupDeploymentParameters parameters = new ValidatePSResourceGroupDeploymentParameters()

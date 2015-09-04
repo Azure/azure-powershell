@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #endregion Input Parameter Definitions
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             var filePath = ResolvePath(InputFile);
 

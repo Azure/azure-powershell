@@ -16,6 +16,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Common.Authentication.Models;
@@ -29,11 +30,19 @@ using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    public class KeyVaultManagementCmdletBase : AzureSMCmdlet
+    public class KeyVaultManagementCmdletBase : AzureRMCmdlet
     {
         public KeyVaultManagementCmdletBase()
         {
 
+        }
+
+        /// <summary>
+        /// Shim method for backward compatibility.  All cmdlets should implement ProcessRecord directly
+        /// </summary>
+        public void ExecuteCmdlet()
+        {
+            ProcessRecord();
         }
 
         private PSKeyVaultModels.VaultManagementClient _keyVaultManagementClient;
@@ -43,7 +52,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 if (this._keyVaultManagementClient == null)
                 {
-                    this._keyVaultManagementClient = new PSKeyVaultModels.VaultManagementClient(Profile.DefaultContext);
+                    this._keyVaultManagementClient = new PSKeyVaultModels.VaultManagementClient(DefaultContext);
                 }
                 return this._keyVaultManagementClient;
             }
@@ -59,7 +68,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 if (_activeDirectoryClient == null)
                 {
-                    _activeDirectoryClient = new ActiveDirectoryClient(Profile.DefaultContext);
+                    _activeDirectoryClient = new ActiveDirectoryClient(DefaultContext);
                 }
                 return this._activeDirectoryClient;
             }
@@ -72,7 +81,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             get
             {
-                this._resourcesClient = new PSResourceManagerModels.ResourcesClient(this.Profile)
+                this._resourcesClient = new PSResourceManagerModels.ResourcesClient(DefaultContext)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp,
@@ -158,41 +167,34 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         protected Guid GetTenantId()
         {
-            var tenantIdStr =
-                Profile.DefaultContext.Subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants).FirstOrDefault();
-            var tenantIdGuid = Guid.Empty;
-
-            if (string.IsNullOrWhiteSpace(tenantIdStr) || !Guid.TryParse(tenantIdStr, out tenantIdGuid))
+            if (DefaultContext.Tenant == null || DefaultContext.Tenant.Id == Guid.Empty)
             {
                 throw new InvalidOperationException(PSKeyVaultProperties.Resources.InvalidAzureEnvironment);
             }
 
-            return tenantIdGuid;
+            return DefaultContext.Tenant.Id;
         }
 
         protected Guid GetCurrentUsersObjectId()
         {
-            if (Profile.DefaultContext.Subscription == null)
-                throw new InvalidOperationException(Microsoft.WindowsAzure.Commands.Common.Properties.Resources.InvalidSelectedSubscription);
+            if (DefaultContext.Subscription == null)
+                throw new InvalidOperationException(PSKeyVaultProperties.Resources.InvalidSelectedSubscription);
 
-            if (string.IsNullOrWhiteSpace(Profile.DefaultContext.Subscription.Account))
+            if (DefaultContext.Account == null)
                 throw new InvalidOperationException(PSKeyVaultProperties.Resources.NoDefaultUserAccount);
 
-            var account = Profile.Accounts.Values.Where(a => a.Id == Profile.DefaultContext.Subscription.Account && a.Type == AzureAccount.AccountType.User).FirstOrDefault();
-            if (account == null)
-                throw new InvalidOperationException(PSKeyVaultProperties.Resources.NoDefaultUserAccount);
 
             try
             {
                 return GetObjectId(
-                    upn: Profile.DefaultContext.Subscription.Account,
+                    upn: DefaultContext.Account.Id,
                     objectId: Guid.Empty,
                     spn: null
                 );
             }
             catch
             {
-                throw new InvalidOperationException(string.Format(PSKeyVaultProperties.Resources.ADObjectNotFound, Profile.DefaultContext.Subscription.Account, ActiveDirectoryClient.GraphClient.TenantID));
+                throw new InvalidOperationException(string.Format(PSKeyVaultProperties.Resources.ADObjectNotFound, DefaultContext.Subscription.Account, ActiveDirectoryClient.GraphClient.TenantID));
             }
         }
 

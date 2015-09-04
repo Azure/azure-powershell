@@ -38,7 +38,7 @@ Param($rgName, $location, $tagName, $tagValue)
 	Assert-AreEqual $false $actual.EnabledForDeployment
 
 	# Default Access Policy
-	$upn = @(Get-AzureAccount)[0].Id
+	$upn = [Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet]::Profile.DefaultContext.Account.Id
 	$objectId = @(Get-AzureADUser -Mail $upn)[0].Id
 	$expectedPermsToKeys = @("get",
             "create",

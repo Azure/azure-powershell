@@ -27,7 +27,7 @@ using System;
 namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 {
     [TestClass]
-    public class NewAzureAutomationConnectionTest : TestBase
+    public class NewAzureAutomationConnectionTest : SMTestBase
     {
         private Mock<IAutomationClient> mockAutomationClient;
 

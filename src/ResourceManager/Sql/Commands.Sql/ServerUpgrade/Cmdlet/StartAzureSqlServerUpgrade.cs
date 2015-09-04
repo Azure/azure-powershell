@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
             {
                 // The server upgrade is already pending
                 throw new PSArgumentException(
-                    string.Format(Resources.ServerUpgradeExists, this.ServerName),
+                    string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ServerUpgradeExists, this.ServerName),
                     "ServerName");
             }
 
