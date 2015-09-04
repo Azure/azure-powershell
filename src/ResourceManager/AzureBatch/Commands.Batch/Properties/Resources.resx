@@ -373,4 +373,19 @@
   <data name="UpdatingAccount" xml:space="preserve">
     <value>Updating account {0}</value>
   </data>
+  <data name="UpdatingComputeNodeUser" xml:space="preserve">
+    <value>Updating compute node user {0}.</value>
+  </data>
+  <data name="UpdatingJob" xml:space="preserve">
+    <value>Updating job {0}.</value>
+  </data>
+  <data name="UpdatingJobSchedule" xml:space="preserve">
+    <value>Updating job schedule {0}.</value>
+  </data>
+  <data name="UpdatingPool" xml:space="preserve">
+    <value>Updating pool {0}.</value>
+  </data>
+  <data name="UpdatingTask" xml:space="preserve">
+    <value>Updating task {0}.</value>
+  </data>
 </root>
