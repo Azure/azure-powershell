@@ -23,6 +23,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Graph.RBAC;
+using Microsoft.Azure.Insights;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Subscriptions;
@@ -49,6 +50,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public SubscriptionClient SubscriptionClient { get; private set; }
 
         public GalleryClient GalleryClient { get; private set; }
+        
+        public InsightsClient InsightsClient { get; private set; }
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
@@ -141,6 +144,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             GalleryClient = GetGalleryClient();
             AuthorizationManagementClient = GetAuthorizationManagementClient();
             GraphClient = GetGraphClient();
+            InsightsClient = GetInsightsClient();
             this.FeatureClient = this.GetFeatureClient();
             HttpClientHelperFactory.Instance = new TestHttpClientHelperFactory(this.csmTestFactory.GetTestEnvironment().Credentials as SubscriptionCloudCredentials);
 
@@ -149,6 +153,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 GalleryClient,
                 AuthorizationManagementClient,
                 GraphClient,
+                InsightsClient,
                 this.FeatureClient);
         }
 
@@ -207,6 +212,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         private GalleryClient GetGalleryClient()
         {
             return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
+        }
+
+        private InsightsClient GetInsightsClient()
+        {
+            return TestBase.GetServiceClient<InsightsClient>(this.csmTestFactory);
         }
 
         /// <summary>

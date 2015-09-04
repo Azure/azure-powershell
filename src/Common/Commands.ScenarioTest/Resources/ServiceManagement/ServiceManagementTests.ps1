@@ -18,8 +18,11 @@ Tests Create-AzureVM with valid information.
 #>
 function Test-GetAzureVM
 {
-    # Setup
+    # Virtual Machine cmdlets are now showing a non-terminating error message for ResourceNotFound
+    # To continue script, $ErrorActionPreference should be set to 'SilentlyContinue'.
+    $ErrorActionPreference='SilentlyContinue';
 
+    # Setup
     $location = Get-DefaultLocation
     $imgName = Get-DefaultImage $location
 
@@ -74,6 +77,10 @@ function Run-ServiceManagementCloudExceptionTests
 # Test Start/Stop-AzureVM for Multiple VMs
 function Run-StartAndStopMultipleVirtualMachinesTest
 {
+    # Virtual Machine cmdlets are now showing a non-terminating error message for ResourceNotFound
+    # To continue script, $ErrorActionPreference should be set to 'SilentlyContinue'.
+    $ErrorActionPreference='SilentlyContinue';
+
     # Setup
     $location = Get-DefaultLocation;
     $imgName = Get-DefaultImage $location;

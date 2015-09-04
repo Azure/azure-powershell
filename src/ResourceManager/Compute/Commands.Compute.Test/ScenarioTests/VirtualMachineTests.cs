@@ -28,6 +28,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachinePiping()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachinePiping");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLinuxVirtualMachine()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-LinuxVirtualMachine");

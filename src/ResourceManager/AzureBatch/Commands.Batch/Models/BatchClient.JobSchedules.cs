@@ -165,5 +165,24 @@ namespace Microsoft.Azure.Commands.Batch.Models
             JobScheduleOperations jobScheduleOperations = context.BatchOMClient.JobScheduleOperations;
             jobScheduleOperations.DisableJobSchedule(jobScheduleId, additionBehaviors);
         }
+
+        /// <summary>
+        /// Terminates the specified job schedule.
+        /// </summary>
+        /// <param name="context">The account to use.</param>
+        /// <param name="jobScheduleId">The id of the job schedule to terminate.</param>
+        /// <param name="additionBehaviors">Additional client behaviors to perform.</param>
+        public void TerminateJobSchedule(BatchAccountContext context, string jobScheduleId, IEnumerable<BatchClientBehavior> additionBehaviors = null)
+        {
+            if (string.IsNullOrWhiteSpace(jobScheduleId))
+            {
+                throw new ArgumentNullException("jobScheduleId");
+            }
+
+            WriteVerbose(string.Format(Resources.TerminateJobSchedule, jobScheduleId));
+
+            JobScheduleOperations jobScheduleOperations = context.BatchOMClient.JobScheduleOperations;
+            jobScheduleOperations.TerminateJobSchedule(jobScheduleId, additionBehaviors);
+        }
     }
 }

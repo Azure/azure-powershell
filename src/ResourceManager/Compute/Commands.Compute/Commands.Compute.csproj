@@ -236,6 +236,7 @@
     <Compile Include="Images\GetAzureVMImagePublisherCommand.cs" />
     <Compile Include="Images\GetAzureVMImageOfferCommand.cs" />
     <Compile Include="Images\VirtualMachineImageBaseCmdlet.cs" />
+    <Compile Include="Models\PSSyncOutputEvents.cs" />
     <Compile Include="Models\PSUsage.cs" />
     <Compile Include="Models\PSVirtualMachineExtensionImage.cs" />
     <Compile Include="Models\PSVirtualMachineImage.cs" />
@@ -245,14 +246,21 @@
     <Compile Include="Models\PSVirtualMachineInstanceView.cs" />
     <Compile Include="Models\PSVirtualMachineSize.cs" />
     <Compile Include="Common\LocationStringExtensions.cs" />
+    <Compile Include="Models\UploadParameters.cs" />
+    <Compile Include="Models\VhdUploadContext.cs" />
+    <Compile Include="Models\VhdUploaderModel.cs" />
     <Compile Include="RemoteDesktop\VirtualMachineRemoteDesktopBaseCmdlet.cs" />
     <Compile Include="RemoteDesktop\GetAzureRemoteDesktopFileCommand.cs" />
+    <Compile Include="StorageServices\AddAzureVhdCommand.cs" />
+    <Compile Include="StorageServices\CloudPageBlobObjectFactory.cs" />
+    <Compile Include="StorageServices\StorageCredentialsFactory.cs" />
     <Compile Include="Usage\GetAzureVMUsageCommand.cs" />
     <Compile Include="Usage\VirtualMachineUsageBaseCmdlet.cs" />
     <Compile Include="VirtualMachineSizes\GetAzureVMSizeCommand.cs" />
     <Compile Include="VirtualMachineSizes\VirtualMachineSizeBaseCmdlet.cs" />
     <Compile Include="VirtualMachine\Action\SaveAzureVMImageCommand.cs" />
     <Compile Include="VirtualMachine\Action\SetAzureVMCommand.cs" />
+    <Compile Include="VirtualMachine\Action\VirtualMachineActionBaseCmdlet.cs" />
     <Compile Include="VirtualMachine\Config\AddAzureVMAdditionalUnattendContentCommand.cs" />
     <Compile Include="VirtualMachine\Config\AddAzureVMSshPublicKeyCommand.cs" />
     <Compile Include="VirtualMachine\Config\AddAzureVMSecretCommand.cs" />
@@ -291,6 +299,14 @@
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\ServiceManagement\Compute\Sync\Sync.csproj">
+      <Project>{73820cbc-f4eb-4c5e-b4f0-cc4a93fbf157}</Project>
+      <Name>Sync</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\ServiceManagement\Compute\VhdManagement\VhdManagement.csproj">
+      <Project>{80496b7b-068a-4a1e-b0bb-4b1fff3fa616}</Project>
+      <Name>VhdManagement</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Network\Commands.Network\Commands.Network.csproj">
       <Project>{98cfd96b-a6bc-4f15-ae2c-603fc2b58981}</Project>

@@ -202,3 +202,23 @@ function Test-DeleteTask
 	$tasks = Get-AzureBatchTask_ST -JobId $jobId -BatchContext $context
 	Assert-Null $tasks
 }
+
+<#
+.SYNOPSIS
+Tests terminating a task
+#>
+function Test-TerminateTask
+{
+	param([string]$accountName, [string]$jobId, [string]$taskId1, [string]$taskId2)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+
+	Stop-AzureBatchTask_ST $jobId $taskId1 -BatchContext $context
+	Get-AzureBatchTask_ST $jobId $taskId2 -BatchContext $context | Stop-AzureBatchTask_ST -BatchContext $context
+
+	# Verify the tasks were terminated
+	foreach ($task in Get-AzureBatchTask_ST $jobId -BatchContext $context)
+	{
+		Assert-AreEqual 'completed' $task.State.ToString().ToLower()
+	}
+}
