@@ -60,14 +60,14 @@ namespace Microsoft.Azure.Commands.Profile
                 throw new ArgumentException(Resources.AzureProfileMustNotBeNull);
             }
 
-            WriteObject(Profile);
+            WriteObject(AzureRMCmdlet.Profile);
         }
 
         protected override AzureContext DefaultContext
         {
             get
             {
-                return null;
+                return AzureRMCmdlet.Profile.DefaultContext;
             }
         }
 
