@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Profile
         {
             get
             {
-                return AzureRMCmdlet.Profile.DefaultContext;
+                return null;
             }
         }
 

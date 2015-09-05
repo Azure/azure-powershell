@@ -30,8 +30,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         /// </summary>
         static AzureRMCmdlet()
         {
-            AzureSession.DataStore = new DiskDataStore();
-            Profile = new AzureRMProfile();
+            if (AzureSession.DataStore == null)
+            {
+                AzureSession.DataStore = new DiskDataStore();
+            }
+            if (Profile == null)
+            {
+                Profile = new AzureRMProfile();
+            }
         }
 
         /// <summary>

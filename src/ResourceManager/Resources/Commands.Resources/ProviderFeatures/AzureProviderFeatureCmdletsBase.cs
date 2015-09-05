@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Resources.ProviderFeatures
         /// <summary>
         /// This is present for making tests compile, ideally this pattern should go away.
         /// </summary>
-        public void ExecuteCmdlet()
+        public override void ExecuteCmdlet()
         {
             ProcessRecord();
         }

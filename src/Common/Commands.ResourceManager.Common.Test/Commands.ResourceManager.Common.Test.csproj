@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3B48A77B-5956-4A62-9081-92BA04B02B27}</ProjectGuid>
+    <ProjectGuid>{9D4B6E57-633D-4E5E-B017-53F22987DB94}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.WindowsAzure.Commands.Common.Test</RootNamespace>
-    <AssemblyName>Microsoft.WindowsAzure.Commands.Common.Test</AssemblyName>
+    <RootNamespace>Microsoft.Azure.Commands.Common.Test</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.Common.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -173,45 +173,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\AuthenticationFactoryTests.cs" />
-    <Compile Include="Common\MockSubsciptionFactory.cs" />
-    <Compile Include="Common\ProfileClientTests.cs" />
-    <Compile Include="Common\ServicePrincipalStoreTests.cs" />
-    <Compile Include="Common\GeneralUtilitiesTests.cs" />
-    <Compile Include="Common\Data.cs" />
-    <Compile Include="Common\DirStack.cs" />
-    <Compile Include="Common\EmbeddedFileWriter.cs" />
-    <Compile Include="Common\GeneralTests.cs" />
-    <Compile Include="Common\IdnUtilitiesTests.cs" />
-    <Compile Include="Common\JsonUtilitiesTests.cs" />
-    <Compile Include="Mocks\ClientMocks.cs" />
-    <Compile Include="Common\PSObjectExtensions.cs" />
-    <Compile Include="Common\RemoveAzurePublishSettings.cs" />
-    <Compile Include="Common\SimpleServiceManagementAsyncResult.cs" />
-    <Compile Include="Common\ConversionUtilitiesTests.cs" />
-    <Compile Include="Common\Testing.cs" />
-    <Compile Include="Mocks\MockCommandRuntime.cs" />
+    <Compile Include="..\Commands.Common.Test\Mocks\MockCommandRuntime.cs">
+      <Link>MockCommandRuntime.cs</Link>
+    </Compile>
+    <Compile Include="ProfileCmdlet\ProfileCmdletTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Common\PSTestTracingInterceptor.cs" />
-    <Compile Include="Resources\ResourceLocator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Commands.Common.Storage\Commands.Common.Storage.csproj">
       <Project>{65c3a86a-716d-4e7d-ab67-1db00b3bf72d}</Project>
       <Name>Commands.Common.Storage</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.Common\Commands.Common.csproj">
-      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
-      <Name>Commands.Common</Name>
+    <ProjectReference Include="..\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
+      <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
+      <Name>Commands.ResourceManager.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.SMProfile\Commands.SMProfile.csproj">
-      <Project>{c60342b1-47d3-4a0e-8081-9b97ce60b7af}</Project>
-      <Name>Commands.Profile</Name>
+    <ProjectReference Include="..\Commands.RMProfile\Commands.RMProfile.csproj">
+      <Project>{142d7b0b-388a-4ceb-a228-7f6d423c5c2e}</Project>
+      <Name>Commands.RMProfile</Name>
     </ProjectReference>
     <ProjectReference Include="..\Commands.ScenarioTests.Common\Commands.ScenarioTests.Common.csproj">
       <Project>{c1bda476-a5cc-4394-914d-48b0ec31a710}</Project>
@@ -227,82 +211,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="MSSharedLibKey.snk" />
-    <EmbeddedResource Include="Resources\Azure.publishsettings">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\GB18030ServiceDefinition.csdef" />
-    <EmbeddedResource Include="Resources\InvalidProfile.PublishSettings" />
-    <EmbeddedResource Include="Resources\ValidProfile.PublishSettings">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\ValidProfile2.PublishSettings" />
     <None Include="packages.config" />
-    <EmbeddedResource Include="Resources\ValidProfile3.PublishSettings">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\ValidProfileChina.PublishSettings">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\ValidProfileChinaOld.PublishSettings">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <None Include="Resources\DSC\Configurations\CorporateClientConfiguration.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\DSC\Configurations\DomainControllerConfiguration.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\DSC\Configurations\Dummy\ModuleImportListInsideNode.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\DSC\Configurations\Dummy\ModuleImportListOutsideNode.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\DSC\Configurations\Dummy\ModuleImportSingleInsideNode.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\DSC\Configurations\Dummy\ModuleImportSingleOutsideNode.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\DSC\Configurations\Dummy\NameImportListInsideNode.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\DSC\Configurations\Dummy\NameImportListOutsideNode.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\DSC\Configurations\Dummy\NameImportSingleInsideNode.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\DSC\Configurations\Dummy\NameImportSingleOutsideNode.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\DSC\Configurations\Dummy\NameModuleImportSingleInsideNode.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\DSC\Configurations\IEEScBad.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\DSC\Configurations\IEEScGood.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\DSC\Configurations\SHMulptiConfigurations.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\DSC\Configurations\VisualStudio.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <Content Include="Resources\DSC\DSC Resource Kit Wave 6 08282014.zip">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\invalidsubscriptions.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\subscriptions.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\testruntimemanifest.xml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
