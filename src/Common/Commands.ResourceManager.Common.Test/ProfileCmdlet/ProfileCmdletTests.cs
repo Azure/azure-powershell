@@ -62,7 +62,6 @@ namespace Microsoft.Azure.Commands.Common.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SelectAzureProfileNull()
         {
-            var profile = new AzureRMProfile();
             SelectAzureProfileCommand cmdlt = new SelectAzureProfileCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
@@ -92,6 +91,68 @@ namespace Microsoft.Azure.Commands.Common.Test
 
             // Verify
             Assert.True(AzureRMCmdlet.Profile.Environments.ContainsKey("foo"));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SaveAzureProfileInMemory()
+        {
+            var profile = new AzureRMProfile();
+            profile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
+            SaveAzureProfileCommand cmdlt = new SaveAzureProfileCommand();
+            // Setup
+            cmdlt.Profile = profile;
+            cmdlt.Path = "X:\\foo.json";
+            cmdlt.CommandRuntime = commandRuntimeMock;
+
+            // Act
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
+
+            // Verify
+            Assert.True(AzureSession.DataStore.FileExists("X:\\foo.json"));
+            var profile2 = new AzureRMProfile("X:\\foo.json");
+            Assert.True(profile2.Environments.ContainsKey("foo"));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SaveAzureProfileNull()
+        {
+            SaveAzureProfileCommand cmdlt = new SaveAzureProfileCommand();
+            // Setup
+            AzureRMCmdlet.Profile = null;
+            cmdlt.Path = "X:\\foo.json";
+            cmdlt.CommandRuntime = commandRuntimeMock;
+
+            // Act
+            cmdlt.InvokeBeginProcessing();
+            Assert.Throws<ArgumentException>(() => cmdlt.ExecuteCmdlet());
+            cmdlt.InvokeEndProcessing();
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SaveAzureProfileFromDefault()
+        {
+            var profile = new AzureRMProfile();
+            profile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
+            AzureRMCmdlet.Profile = profile;
+            SaveAzureProfileCommand cmdlt = new SaveAzureProfileCommand();
+            // Setup
+            cmdlt.Path = "X:\\foo.json";
+            cmdlt.CommandRuntime = commandRuntimeMock;
+
+            // Act
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
+
+            // Verify
+            Assert.True(AzureSession.DataStore.FileExists("X:\\foo.json"));
+            var profile2 = new AzureRMProfile("X:\\foo.json");
+            Assert.True(profile2.Environments.ContainsKey("foo"));
         }
     }
 }
