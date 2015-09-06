@@ -24,7 +24,7 @@ function Test-VirtualMachineExtension
     try
     {
         # Common
-        $loc = 'westus';
+        $loc = Get-ComputeVMLocation;
         New-AzureResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
@@ -163,7 +163,7 @@ function Test-VirtualMachineExtensionUsingHashTable
     try
     {
         # Common
-        $loc = 'westus';
+        $loc = Get-ComputeVMLocation;
         New-AzureResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
@@ -325,7 +325,7 @@ function Test-VirtualMachineCustomScriptExtension
     try
     {
         # Common
-        $loc = 'westus';
+        $loc = Get-ComputeVMLocation;
         New-AzureResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
@@ -494,7 +494,7 @@ function Test-VirtualMachineCustomScriptExtensionFileUri
     try
     {
         # Common
-        $loc = 'westus';
+        $loc = Get-ComputeVMLocation;
         New-AzureResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
@@ -652,7 +652,7 @@ function Test-VirtualMachineAccessExtension
     try
     {
         # Common
-        $loc = 'westus';
+        $loc = Get-ComputeVMLocation;
         New-AzureResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
@@ -726,13 +726,6 @@ function Test-VirtualMachineAccessExtension
         Assert-AreEqual $p.OSProfile.AdminPassword $password;
         Assert-AreEqual $p.OSProfile.WindowsConfiguration.ProvisionVMAgent $true;
 
-        # TODO : The test is outdated, need re-recording and re-enabling these fields for validation
-        #
-        # Assert-AreEqual $p.StorageProfile.ImageReference.Offer $imgRef.Offer;
-        # Assert-AreEqual $p.StorageProfile.ImageReference.Publisher $imgRef.PublisherName;
-        # Assert-AreEqual $p.StorageProfile.ImageReference.Sku $imgRef.Skus;
-        # Assert-AreEqual $p.StorageProfile.ImageReference.Version $imgRef.Version;
-
         # Virtual Machine
         # TODO: Still need to do retry for New-AzureVM for SA, even it's returned in Get-.
         New-AzureVM -ResourceGroupName $rgname -Location $loc -VM $p;
@@ -758,6 +751,7 @@ function Test-VirtualMachineAccessExtension
         Assert-AreEqual $ext.TypeHandlerVersion $extver;
         Assert-AreEqual $ext.UserName $user2;
         Assert-NotNull $ext.ProvisioningState;
+        Assert-True {$ext.PublicSettings.Contains("UserName")};
 
         $ext = Get-AzureVMAccessExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Status;
         Assert-AreEqual $ext.ResourceGroupName $rgname;
@@ -767,19 +761,13 @@ function Test-VirtualMachineAccessExtension
         Assert-AreEqual $ext.TypeHandlerVersion $extver;
         Assert-NotNull $ext.ProvisioningState;
         Assert-NotNull $ext.Statuses;
+        Assert-True {$ext.PublicSettings.Contains("UserName")};
 
         # Get VM
         $vm1 = Get-AzureVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
-
-        # TODO : The test is outdated, need re-recording and re-enabling these fields for validation
-        #
-        # Assert-AreEqual $vm1.StorageProfile.ImageReference.Offer $imgRef.Offer;
-        # Assert-AreEqual $vm1.StorageProfile.ImageReference.Publisher $imgRef.PublisherName;
-        # Assert-AreEqual $vm1.StorageProfile.ImageReference.Sku $imgRef.Skus;
-        # Assert-AreEqual $vm1.StorageProfile.ImageReference.Version $imgRef.Version;
 
         Assert-AreEqual $vm1.OSProfile.AdminUsername $user;
         Assert-AreEqual $vm1.OSProfile.ComputerName $computerName;

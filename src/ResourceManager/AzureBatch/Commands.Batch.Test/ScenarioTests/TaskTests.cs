@@ -235,6 +235,32 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 TestUtilities.GetCallingClass(),
                 TestUtilities.GetCurrentMethodName());
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestTerminateTask()
+        {
+            BatchController controller = BatchController.NewInstance;
+            BatchAccountContext context = null;
+            string jobId = "testTerminateTaskJob";
+            string taskId1 = "testTask1";
+            string taskId2 = "testTask2";
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-TerminateTask '{0}' '{1}' '{2}' '{3}'", accountName, jobId, taskId1, taskId2) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
+                    ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId1);
+                    ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId2);
+                },
+                () =>
+                {
+                    ScenarioTestHelpers.DeleteJob(controller, context, jobId);
+                },
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
+        }
     }
 
     // Cmdlets that use the HTTP Recorder interceptor for use with scenario tests
@@ -260,6 +286,16 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
     [Cmdlet(VerbsCommon.Remove, "AzureBatchTask_ST")]
     public class RemoveBatchTaskScenarioTestCommand : RemoveBatchTaskCommand
+    {
+        public override void ExecuteCmdlet()
+        {
+            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
+            base.ExecuteCmdlet();
+        }
+    }
+
+    [Cmdlet(VerbsLifecycle.Stop, "AzureBatchTask_ST")]
+    public class StopBatchTaskScenarioTestCommand : StopBatchTaskCommand
     {
         public override void ExecuteCmdlet()
         {

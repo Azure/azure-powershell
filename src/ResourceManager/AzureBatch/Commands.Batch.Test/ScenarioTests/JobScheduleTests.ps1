@@ -391,3 +391,27 @@ function Test-DisableAndEnableJobSchedule
 	$jobSchedule = Get-AzureBatchJobSchedule_ST -Filter "id eq '$jobScheduleId'" -BatchContext $context
 	Assert-AreEqual 'Active' $jobSchedule.State
 }
+
+<#
+.SYNOPSIS
+Tests terminating a job schedule
+#>
+function Test-TerminateJobSchedule
+{
+	param([string]$accountName, [string]$jobScheduleId, [string]$usePipeline)
+
+	$context = Get-AzureBatchAccountKeys -Name $accountName
+
+	if ($usePipeline -eq '1')
+	{
+		Get-AzureBatchJobSchedule_ST -Id $jobScheduleId -BatchContext $context | Stop-AzureBatchJobSchedule_ST -BatchContext $context
+	}
+	else
+	{
+		Stop-AzureBatchJobSchedule_ST $jobScheduleId -BatchContext $context
+	}
+
+	# Verify the job schedule was terminated
+	$jobSchedule = Get-AzureBatchJobSchedule_ST $jobScheduleId -BatchContext $context
+	Assert-True { ($jobSchedule.State.ToString().ToLower() -eq 'terminating') -or ($jobSchedule.State.ToString().ToLower() -eq 'completed') }
+}
