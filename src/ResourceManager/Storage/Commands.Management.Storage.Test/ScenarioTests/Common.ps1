@@ -49,7 +49,14 @@ function Retry-IfException
     {
         $iter += 1;
 
-        &$script;
+        try
+        {
+            &$script;
+        }
+        catch
+        {
+
+        }
 
         if ($Error.Count -gt 0)
         {
