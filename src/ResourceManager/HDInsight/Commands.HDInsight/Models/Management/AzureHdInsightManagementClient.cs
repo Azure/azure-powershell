@@ -109,5 +109,21 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         {
             return HdInsightManagementClient.Clusters.GetCapabilities(location);
         }
+
+        public virtual IDictionary<string, string> GetClusterConfigurations(Cluster cluster, string configurationName)
+        {
+            Dictionary<string, string> properties = new Dictionary<string, string>();
+            
+            if(string.IsNullOrWhiteSpace(configurationName))
+            {
+                return properties;
+            }
+
+            string resourceGroupName = ClusterConfigurationUtils.GetResourceGroupFromClusterId(cluster.Id);
+            return HdInsightManagementClient.Clusters.GetClusterConfigurations(
+                resourceGroupName, 
+                cluster.Name, 
+                configurationName).Configuration;
+        }
     }
 }

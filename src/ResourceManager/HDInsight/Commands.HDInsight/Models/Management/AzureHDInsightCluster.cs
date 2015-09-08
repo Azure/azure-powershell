@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Management.HDInsight.Models;
 
@@ -34,6 +35,25 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 cluster.Properties.ConnectivityEndpoints.FirstOrDefault(c => c.Name.Equals("HTTPS", StringComparison.OrdinalIgnoreCase));
             HttpEndpoint = httpEndpoint != null ? httpEndpoint.Location : null;
 
+            ResourceGroup = ClusterConfigurationUtils.GetResourceGroupFromClusterId(cluster.Id);
+
+        }
+
+        public AzureHDInsightCluster(Cluster cluster, IDictionary<string, string> clusterConfiguration) 
+            : this(cluster)
+        {
+            if (clusterConfiguration != null)
+            {
+                var defaultAccount = ClusterConfigurationUtils.GetDefaultStorageAccountDetails(
+                clusterConfiguration,
+                cluster.Properties.ClusterVersion);
+
+                DefaultStorageAccount = defaultAccount.StorageAccountName;
+                DefaultStorageContainer = defaultAccount.StorageContainerName;
+
+                AdditionalStorageAccounts = ClusterConfigurationUtils.GetAdditionStorageAccounts(clusterConfiguration, DefaultStorageAccount);
+            }
+            
         }
 
         /// <summary>
@@ -80,5 +100,25 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// The endpoint with which to connect to the cluster.
         /// </summary>
         public string HttpEndpoint { get; set; }
+        
+        /// <summary>
+        /// Default storage account for this cluster.
+        /// </summary>
+        public string DefaultStorageAccount { get; set; }
+
+        /// <summary>
+        /// Default storage container for this cluster.
+        /// </summary>
+        public string DefaultStorageContainer { get; set; }
+
+        /// <summary>
+        /// Default storage container for this cluster.
+        /// </summary>
+        public string ResourceGroup { get; set; }
+
+        /// <summary>
+        /// Additional storage accounts for this cluster
+        /// </summary>
+        public List<string> AdditionalStorageAccounts { get; set; }
     }
 }

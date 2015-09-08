@@ -40,5 +40,12 @@ namespace Microsoft.Azure.Commands.HDInsight
             public const string AzureHDInsightMapReduceJobDefinition = "AzureHDInsightMapReduceJobDefinition";
             public const string AzureHDInsightStreamingMapReduceJobDefinition = "AzureHDInsightStreamingMapReduceJobDefinition";
         }
+
+        public static class ClusterConfiguration
+        {
+            public const string DefaultStorageAccountNameKey = "fs.defaultFS";
+            public const string DefaultStorageAccountNameKeyOld = "fs.default.name";
+            public const string StorageAccountKeyPrefix = "fs.azure.account.key.";
+        }
     }
 }
