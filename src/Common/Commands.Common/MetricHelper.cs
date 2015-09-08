@@ -20,19 +20,14 @@ namespace Microsoft.WindowsAzure.Commands.Common
         static MetricHelper()
         {            
             TelemetryClient = new TelemetryClient();
-            //InstrumentationKey shall be injected in build server
-            TelemetryClient.InstrumentationKey = "ce08abab-065a-4af8-a997-fdd4cd5481b4";
-            //TelemetryClient.Context.Location.Ip = "0.0.0.0";
-
-            if (!IsMetricTermAccepted())
-            {
-                TelemetryConfiguration.Active.DisableTelemetry = true;
-            }
+            // TODO: InstrumentationKey shall be injected in build server
+            TelemetryClient.InstrumentationKey = "7df6ff70-8353-4672-80d6-568517fed090";
+            // Disable IP collection
+            TelemetryClient.Context.Location.Ip = "0.0.0.0";
 
             if (TestMockSupport.RunningMocked)
             {
-                //TODO enable in final cr
-                //TelemetryConfiguration.Active.DisableTelemetry = true;
+                TelemetryConfiguration.Active.DisableTelemetry = true;
             }
         }
 
@@ -84,8 +79,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         public static bool IsMetricTermAccepted()
         {
-            //TODO check the config/preference
-            return true;
+            return AzurePSCmdlet.IsDataCollectionAllowed();
         }
 
         public static void FlushMetric(bool waitForMetricSending)

@@ -220,6 +220,22 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         }
 
         /// <summary>
+        /// Check whether the data collection is opted in from user
+        /// </summary>
+        /// <returns>true if allowed</returns>
+        public static bool IsDataCollectionAllowed()
+        {
+            if (_dataCollectionProfile != null &&
+                _dataCollectionProfile.EnableAzureDataCollection.HasValue &&
+                _dataCollectionProfile.EnableAzureDataCollection.Value)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
         /// Save the current data collection profile Json data into the default file path
         /// </summary>
         /// <param name="profile"></param>
@@ -551,24 +567,29 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
 
             QosEvent.FinishQosEvent();
-            //TODO change to debug
-            WriteVerbose(QosEvent.ToString());
 
             if (!IsUsageMetricEnabled && (!IsErrorMetricEnabled || QosEvent.IsSuccess))
             {
                 return;
             }
 
+            if (!IsDataCollectionAllowed())
+            {
+                return;
+            }
+
+            WriteDebug(QosEvent.ToString());
+
             try
             {
                 MetricHelper.LogQoSEvent(QosEvent, IsUsageMetricEnabled, IsErrorMetricEnabled);
                 MetricHelper.FlushMetric(waitForMetricSending);
-                WriteVerbose("Finish sending metric.");
+                WriteDebug("Finish sending metric.");
             }
             catch (Exception e)
             {
                 //Swallow error from Application Insights event collection.
-                WriteErrorWithTimestamp(e.ToString());
+                WriteWarning(e.ToString());
             }
         }
 
