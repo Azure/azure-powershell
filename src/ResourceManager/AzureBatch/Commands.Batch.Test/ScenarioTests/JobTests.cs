@@ -183,6 +183,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateJob()
+        {
+            BatchController controller = BatchController.NewInstance;
+            string jobId = "updateJobTest";
+            controller.RunPsTest(string.Format("Test-UpdateJob '{0}' '{1}'", accountName, jobId));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeleteJob()
         {
             BatchController controller = BatchController.NewInstance;
@@ -297,6 +306,16 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         {
             AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
             base.ProcessRecord();
+        }
+    }
+
+    [Cmdlet(VerbsCommon.Set, "AzureBatchJob_ST")]
+    public class SetBatchJobScenarioTestCommand : SetBatchJobCommand
+    {
+        public override void ExecuteCmdlet()
+        {
+            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
+            base.ExecuteCmdlet();
         }
     }
 

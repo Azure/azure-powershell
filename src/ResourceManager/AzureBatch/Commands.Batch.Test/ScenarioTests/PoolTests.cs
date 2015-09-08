@@ -151,6 +151,29 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdatePool()
+        {
+            BatchController controller = BatchController.NewInstance;
+            string poolId = "testUpdate";
+
+            BatchAccountContext context = null;
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-UpdatePool '{0}' '{1}'", commonAccountName, poolId) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, commonAccountName);
+                    ScenarioTestHelpers.CreateTestPool(controller, context, poolId, 0);
+                },
+                () =>
+                {
+                    ScenarioTestHelpers.DeletePool(controller, context, poolId);
+                },
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeletePool()
         {
             BatchController controller = BatchController.NewInstance;
@@ -438,6 +461,16 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         {
             AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
             base.ProcessRecord();
+        }
+    }
+
+    [Cmdlet(VerbsCommon.Set, "AzureBatchPool_ST")]
+    public class SetBatchPoolScenarioTestCommand : SetBatchPoolCommand
+    {
+        public override void ExecuteCmdlet()
+        {
+            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
+            base.ExecuteCmdlet();
         }
     }
 

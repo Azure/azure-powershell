@@ -146,6 +146,29 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateJobSchedule()
+        {
+            BatchController controller = BatchController.NewInstance;
+            string jobScheduleId = "testUpdateJobSchedule";
+
+            BatchAccountContext context = null;
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-UpdateJobSchedule '{0}' '{1}'", accountName, jobScheduleId) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    ScenarioTestHelpers.CreateTestJobSchedule(controller, context, jobScheduleId, null);
+                },
+                () =>
+                {
+                    ScenarioTestHelpers.DeleteJobSchedule(controller, context, jobScheduleId);
+                },
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeleteJobSchedule()
         {
             BatchController controller = BatchController.NewInstance;
@@ -300,6 +323,16 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         {
             AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
             base.ProcessRecord();
+        }
+    }
+
+    [Cmdlet(VerbsCommon.Set, "AzureBatchJobSchedule_ST")]
+    public class SetBatchJobScheduleScenarioTestCommand : SetBatchJobScheduleCommand
+    {
+        public override void ExecuteCmdlet()
+        {
+            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
+            base.ExecuteCmdlet();
         }
     }
 }
