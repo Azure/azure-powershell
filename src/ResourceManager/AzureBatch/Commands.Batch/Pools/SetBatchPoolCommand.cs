@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Batch
     public class SetBatchPoolCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true,
-            HelpMessage = "The PSCloudPool object representing the pool to update.")]
+            HelpMessage = "The PSCloudPool object with changes to commit to the Batch Service.")]
         [ValidateNotNullOrEmpty]
         public PSCloudPool Pool { get; set; }
 

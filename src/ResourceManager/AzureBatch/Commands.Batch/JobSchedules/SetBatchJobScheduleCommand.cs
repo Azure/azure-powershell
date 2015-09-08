@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Batch
     public class SetBatchJobScheduleCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true,
-            HelpMessage = "The PSCloudJobSchedule object representing the job schedule to update.")]
+            HelpMessage = "The PSCloudJobSchedule object with changes to commit to the Batch Service.")]
         [ValidateNotNullOrEmpty]
         public PSCloudJobSchedule JobSchedule { get; set; }
 

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Batch
     public class SetBatchTaskCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true,
-            HelpMessage = "The PSCloudTask object representing the task to update.")]
+            HelpMessage = "The PSCloudTask object with changes to commit to the Batch Service.")]
         [ValidateNotNullOrEmpty]
         public PSCloudTask Task { get; set; }
 
