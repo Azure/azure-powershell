@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void AutomationExecuteCmdlet()
+        protected override void AutomationProcessRecord()
         {
 
             var updatedConnection = this.AutomationClient.UpdateConnectionFieldValue(this.ResourceGroupName, this.AutomationAccountName, this.Name, this.ConnectionFieldName, this.Value);

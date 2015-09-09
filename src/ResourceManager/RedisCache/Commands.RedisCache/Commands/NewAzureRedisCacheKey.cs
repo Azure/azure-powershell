@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.RedisCache
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             RedisKeyType keyTypeToRegenerated = RedisKeyType.Primary;
             if (KeyType.Equals("Secondary"))

@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.RedisCache
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             RedisListKeysResponse keysResponse = CacheClient.GetAccessKeys(ResourceGroupName, Name);
             WriteObject(new RedisAccessKeys() {
