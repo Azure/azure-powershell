@@ -217,7 +217,7 @@
       <Name>Commands.Profile</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.ScenarioTests.Common\Commands.ScenarioTests.Common.csproj">
-      <Project>{C1BDA476-A5CC-4394-914D-48B0EC31A710}</Project>
+      <Project>{c1bda476-a5cc-4394-914d-48b0ec31a710}</Project>
       <Name>Commands.ScenarioTests.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\ManagedCache\Commands.ManagedCache\Commands.ManagedCache.csproj">
