@@ -197,13 +197,5 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
                 TimeZone = this.ScheduleTimeZone,
             };
         }
-
-        /// <summary>
-        /// Added for tests only, should be removed in the future.
-        /// </summary>
-        public void ExecuteCmdlet()
-        {
-            ProcessRecord();
-        }
     }
 }

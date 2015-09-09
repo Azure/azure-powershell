@@ -37,14 +37,6 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         }
 
-        /// <summary>
-        /// Shim method for backward compatibility.  All cmdlets should implement ProcessRecord directly
-        /// </summary>
-        public void ExecuteCmdlet()
-        {
-            ProcessRecord();
-        }
-
         private PSKeyVaultModels.VaultManagementClient _keyVaultManagementClient;
         public PSKeyVaultModels.VaultManagementClient KeyVaultManagementClient
         {

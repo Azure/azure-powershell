@@ -179,13 +179,5 @@ namespace Microsoft.Azure.Commands.Batch
                 }
             }
         }
-
-        /// <summary>
-        /// This is added for tests only, should move out from this pattern and rely of ProcessRecord.
-        /// </summary>
-        public void ExecuteCmdlet()
-        {
-            ProcessRecord();
-        }
     }
 }

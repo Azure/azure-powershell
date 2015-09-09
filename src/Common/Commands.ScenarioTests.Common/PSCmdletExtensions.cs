@@ -12,27 +12,37 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Diagnostics;
+using System.Management.Automation;
+using System.Reflection;
 
-namespace Microsoft.Azure.Commands.Dns.Models
+namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
-    public abstract class DnsBaseCmdlet : AzureRMCmdlet
+    public static class PSCmdletExtensions
     {
-        private DnsClient dnsClient;
-
-        public DnsClient DnsClient
+        private static MethodInfo GetProtectedMethod(string name)
         {
-            get
-            {
-                if (dnsClient == null)
-                {
-                    dnsClient = new DnsClient(DefaultContext);
-                }
-                return dnsClient;
-            }
+            MethodInfo m = typeof(PSCmdlet).GetMethod(
+                name,
+                BindingFlags.Instance | BindingFlags.NonPublic,
+                Type.DefaultBinder,
+                new Type[] { },
+                null);
 
-            set { dnsClient = value; }
+            return m;
+        }
+
+        public static void ExecuteCmdlet(this PSCmdlet cmdlet)
+        {
+            try
+            {
+                GetProtectedMethod("ProcessRecord").Invoke(cmdlet, new object[] { });
+            }
+            catch (TargetInvocationException e)
+            {
+                throw e.InnerException;
+            }
         }
     }
 }
