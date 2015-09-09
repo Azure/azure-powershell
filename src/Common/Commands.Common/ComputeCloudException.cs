@@ -49,7 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 if (headers.ContainsKey(RequestIdHeaderInResponse))
                 {
                     sb.AppendLine().AppendFormat(
-                        Properties.Resources.ComputeCloudExceptionOperationIdMessage,
+                        "OperationID : '{0}'",
                         headers[RequestIdHeaderInResponse].FirstOrDefault());
                 }
             }

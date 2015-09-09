@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         /// <summary>
         /// Entry point for the cmdlet
         /// </summary>
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             if (!Force.IsPresent && !ShouldProcess(
                string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerFirewallRuleDescription, this.FirewallRuleName, this.ServerName),
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
                 return;
             }
 
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
         }
     }
 }

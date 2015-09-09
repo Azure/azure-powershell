@@ -42,13 +42,13 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
        /// <summary>
        /// Gets or sets the Azure profile
        /// </summary>
-        public AzureSMProfile Profile { get; set; }
+        public AzureContext Context { get; set; }
 
-        public SqlDataMaskingAdapter(AzureSMProfile profile, AzureSubscription subscription)
+        public SqlDataMaskingAdapter(AzureContext context)
         {
-            Profile = profile;
-            Subscription = subscription;
-            Communicator = new DataMaskingEndpointsCommunicator(profile, subscription);
+            Context = context;
+            Subscription = context.Subscription;
+            Communicator = new DataMaskingEndpointsCommunicator(Context);
         }
 
         /// <summary>

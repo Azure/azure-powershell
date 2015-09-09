@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureAutomationAccount")]
     [OutputType(typeof(AutomationAccount))]
-    public class SetAzureAutomationAccount : AzureSMCmdlet
+    public class SetAzureAutomationAccount : ResourceManager.Common.AzureRMCmdlet
     {
         /// <summary>
         /// The automation client.
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             get
             {
-                return this.automationClient = this.automationClient ?? new AutomationClient(Profile, Profile.DefaultContext.Subscription);
+                return this.automationClient = this.automationClient ?? new AutomationClient(Profile.DefaultContext);
             }
 
             set
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             var account = this.AutomationClient.UpdateAutomationAccount(this.ResourceGroupName, this.Name, this.Plan, this.Tags);
             this.WriteObject(account);

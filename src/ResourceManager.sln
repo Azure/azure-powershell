@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8531411A-0137-4E27-9C5E-49E07C245048}"
 	ProjectSection(SolutionItems) = preProject
@@ -100,6 +100,20 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VhdManagement", "ServiceManagement\Compute\VhdManagement\VhdManagement.csproj", "{80496B7B-068A-4A1E-B0BB-4B1FFF3FA616}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Network.Test", "ResourceManager\Network\Commands.Network.Test\Commands.Network.Test.csproj", "{A2DF4FE5-46EE-43E2-B246-E5CDDD47B752}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Compute.Test", "ResourceManager\Compute\Commands.Compute.Test\Commands.Compute.Test.csproj", "{37C44181-3F1B-4ABD-8089-26DFAB4B6BA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.OperationalInsights.Test", "ResourceManager\OperationalInsights\Commands.OperationalInsights.Test\Commands.OperationalInsights.Test.csproj", "{11387E0A-4DB6-49B8-BDBC-EE020D85D10F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RedisCache.Test", "ResourceManager\RedisCache\Commands.RedisCache.Test\Commands.RedisCache.Test.csproj", "{4AE5705F-62CF-461D-B72E-DD9DCD9B3609}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.SiteRecovery.Test", "ResourceManager\SiteRecovery\Commands.SiteRecovery.Test\Commands.SiteRecovery.Test.csproj", "{6C7D3D81-37AB-445E-8081-78A1FEC0A773}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Sql.Test", "ResourceManager\Sql\Commands.Sql.Test\Commands.Sql.Test.csproj", "{56ED8C97-53B9-4DF6-ACB5-7E6800105BF8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.StreamAnalytics.Test", "ResourceManager\StreamAnalytics\Commands.StreamAnalytics.Test\Commands.StreamAnalytics.Test.csproj", "{7E6683BE-ECFF-4709-89EB-1325E9E70512}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.TrafficManager2.Test", "ResourceManager\TrafficManager\Commands.TrafficManager2.Test\Commands.TrafficManager2.Test.csproj", "{5764A3A4-586C-4536-8481-13007CAC111B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -287,6 +301,34 @@ Global
 		{A2DF4FE5-46EE-43E2-B246-E5CDDD47B752}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2DF4FE5-46EE-43E2-B246-E5CDDD47B752}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2DF4FE5-46EE-43E2-B246-E5CDDD47B752}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37C44181-3F1B-4ABD-8089-26DFAB4B6BA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37C44181-3F1B-4ABD-8089-26DFAB4B6BA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37C44181-3F1B-4ABD-8089-26DFAB4B6BA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37C44181-3F1B-4ABD-8089-26DFAB4B6BA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11387E0A-4DB6-49B8-BDBC-EE020D85D10F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11387E0A-4DB6-49B8-BDBC-EE020D85D10F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11387E0A-4DB6-49B8-BDBC-EE020D85D10F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11387E0A-4DB6-49B8-BDBC-EE020D85D10F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AE5705F-62CF-461D-B72E-DD9DCD9B3609}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AE5705F-62CF-461D-B72E-DD9DCD9B3609}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AE5705F-62CF-461D-B72E-DD9DCD9B3609}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AE5705F-62CF-461D-B72E-DD9DCD9B3609}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C7D3D81-37AB-445E-8081-78A1FEC0A773}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C7D3D81-37AB-445E-8081-78A1FEC0A773}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C7D3D81-37AB-445E-8081-78A1FEC0A773}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C7D3D81-37AB-445E-8081-78A1FEC0A773}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56ED8C97-53B9-4DF6-ACB5-7E6800105BF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56ED8C97-53B9-4DF6-ACB5-7E6800105BF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56ED8C97-53B9-4DF6-ACB5-7E6800105BF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56ED8C97-53B9-4DF6-ACB5-7E6800105BF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E6683BE-ECFF-4709-89EB-1325E9E70512}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E6683BE-ECFF-4709-89EB-1325E9E70512}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E6683BE-ECFF-4709-89EB-1325E9E70512}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E6683BE-ECFF-4709-89EB-1325E9E70512}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5764A3A4-586C-4536-8481-13007CAC111B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5764A3A4-586C-4536-8481-13007CAC111B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5764A3A4-586C-4536-8481-13007CAC111B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5764A3A4-586C-4536-8481-13007CAC111B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -306,5 +348,12 @@ Global
 		{080B0477-7E52-4455-90AB-23BD13D1B1CE} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{7D1D3B56-4EB4-4819-86FD-43330DED8EE7} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{A2DF4FE5-46EE-43E2-B246-E5CDDD47B752} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{37C44181-3F1B-4ABD-8089-26DFAB4B6BA8} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{11387E0A-4DB6-49B8-BDBC-EE020D85D10F} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{4AE5705F-62CF-461D-B72E-DD9DCD9B3609} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{6C7D3D81-37AB-445E-8081-78A1FEC0A773} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{56ED8C97-53B9-4DF6-ACB5-7E6800105BF8} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{7E6683BE-ECFF-4709-89EB-1325E9E70512} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{5764A3A4-586C-4536-8481-13007CAC111B} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 	EndGlobalSection
 EndGlobal

@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// <summary>
         /// Executes the cmdlet.
         /// </summary>
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ModelAdapter = InitModelAdapter(Profile.DefaultContext.Subscription);
 

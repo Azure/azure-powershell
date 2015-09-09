@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureAutomationAccount", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(AutomationAccount))]
-    public class GetAzureAutomationAccount : AzureSMCmdlet
+    public class GetAzureAutomationAccount : ResourceManager.Common.AzureRMCmdlet
     {
         /// <summary>
         /// The automation client.
@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             get
             {
-                return this.automationClient = this.automationClient ?? new AutomationClient(Profile, Profile.DefaultContext.Subscription);
+                return this.automationClient = this.automationClient ?? new AutomationClient(Profile.DefaultContext);
             }
 
             set
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             IEnumerable<AutomationAccount> ret = null;
             if (this.ParameterSetName == AutomationCmdletParameterSets.ByAutomationAccountName)

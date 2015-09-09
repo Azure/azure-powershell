@@ -177,9 +177,9 @@ namespace Microsoft.Azure.Commands.Compute
         public string Location { get; set; }
 
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
             ExecuteClientAction(() =>
             {
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Commands.Compute
 
                         if (string.IsNullOrEmpty(this.Run))
                         {
-                            WriteWarning(Properties.Resources.CustomScriptExtensionTryToUseTheFirstSpecifiedFileAsRunScript);
+                            WriteWarning(Microsoft.Azure.Commands.Compute.Properties.Resources.CustomScriptExtensionTryToUseTheFirstSpecifiedFileAsRunScript);
                             this.Run = this.FileName[0];
                         }
                     }

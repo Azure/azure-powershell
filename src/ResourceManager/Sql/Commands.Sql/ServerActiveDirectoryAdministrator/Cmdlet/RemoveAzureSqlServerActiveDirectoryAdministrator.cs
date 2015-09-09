@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
         /// <summary>
         /// Entry point for the cmdlet
         /// </summary>
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             if (!Force.IsPresent && !ShouldProcess(
                string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerActiveDirectoryAdministratorDescription, this.ServerName),
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
                 return;
             }
 
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
         }
     }
 }

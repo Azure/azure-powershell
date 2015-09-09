@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             try
             {
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void GetVaultSettingsFile()
         {
-            AzureSubscription subscription = this.Profile.DefaultContext.Subscription;
+            AzureSubscription subscription = Profile.DefaultContext.Subscription;
 
             // Generate certificate
             X509Certificate2 cert = CertUtils.CreateSelfSignedCertificate(VaultCertificateExpiryInHoursForHRM, subscription.Id.ToString(), this.Vault.Name);

@@ -19,10 +19,11 @@ using Microsoft.Azure.Commands.StreamAnalytics.Properties;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Hyak.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics
 {
-    public abstract class StreamAnalyticsBaseCmdlet : AzureSMCmdlet
+    public abstract class StreamAnalyticsBaseCmdlet : AzureRMCmdlet
     {
         private StreamAnalyticsClient streamAnalyticsClient;
 

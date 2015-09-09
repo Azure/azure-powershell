@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureSMProfile Profile { get; set; }
+        public AzureContext Context { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure Subscription
@@ -64,12 +64,12 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
             {
                 if (_activeDirectoryClient == null)
                 {
-                    _activeDirectoryClient = new ActiveDirectoryClient(Profile.DefaultContext);
-                    if (!Profile.DefaultContext.Environment.IsEndpointSet(AzureEnvironment.Endpoint.Graph))
+                    _activeDirectoryClient = new ActiveDirectoryClient(Context);
+                    if (!Context.Environment.IsEndpointSet(AzureEnvironment.Endpoint.Graph))
                     {
                         throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidGraphEndpoint));
                     }
-                    _activeDirectoryClient = new ActiveDirectoryClient(Profile.DefaultContext);
+                    _activeDirectoryClient = new ActiveDirectoryClient(Context);
                 }
                 return this._activeDirectoryClient;
             }
@@ -82,11 +82,11 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlServerActiveDirectoryAdministratorAdapter(AzureSMProfile Profile, AzureSubscription subscription)
+        public AzureSqlServerActiveDirectoryAdministratorAdapter(AzureContext context)
         {
-            this.Profile = Profile;
-            this._subscription = subscription;
-            Communicator = new AzureSqlServerActiveDirectoryAdministratorCommunicator(Profile, subscription);
+            Context = context;
+            _subscription = context.Subscription;
+            Communicator = new AzureSqlServerActiveDirectoryAdministratorCommunicator(Context);
         }
 
         /// <summary>
@@ -266,11 +266,9 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Servic
         /// <returns></returns>
         protected Guid GetTenantId()
         {
-            var tenantIdStr =
-                Profile.DefaultContext.Subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants).FirstOrDefault();
-            string adTenant = Profile.DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.AdTenant);
-            string graph = Profile.DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.Graph);
-                Profile.DefaultContext.Subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants).FirstOrDefault();
+            var tenantIdStr = Context.Tenant.Id.ToString();
+            string adTenant = Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.AdTenant);
+            string graph = Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.Graph);
             var tenantIdGuid = Guid.Empty;
             
             if (string.IsNullOrWhiteSpace(tenantIdStr) || !Guid.TryParse(tenantIdStr, out tenantIdGuid))

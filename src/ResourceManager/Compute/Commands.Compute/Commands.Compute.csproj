@@ -170,6 +170,12 @@
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\..\Common\Commands.Common\ComputeCloudException.cs">
+      <Link>Common\ComputeCloudException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Common\Commands.Common\DiagnosticsHelper.cs">
+      <Link>Common\DiagnosticsHelper.cs</Link>
+    </Compile>
     <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\DscExtensionCmdletConstants.cs">
       <Link>Extension\DSC\DscExtensionCmdletConstants.cs</Link>
     </Compile>
@@ -296,9 +302,9 @@
       <Project>{65c3a86a-716d-4e7d-ab67-1db00b3bf72d}</Project>
       <Name>Commands.Common.Storage</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
-      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
-      <Name>Commands.Common</Name>
+    <ProjectReference Include="..\..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
+      <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
+      <Name>Commands.ResourceManager.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\ServiceManagement\Compute\Sync\Sync.csproj">
       <Project>{73820cbc-f4eb-4c5e-b4f0-cc4a93fbf157}</Project>
