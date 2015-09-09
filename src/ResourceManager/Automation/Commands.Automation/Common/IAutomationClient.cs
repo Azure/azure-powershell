@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         IEnumerable<NodeConfiguration> ListNodeConfigurations(string resourceGroupName, string automationAccountName, string rollupStatus);
 
-        NodeConfiguration CreateNodeConfiguration(string resourceGroupName, string automationAccountName, string sourcePath, IDictionary tags);
+        NodeConfiguration CreateNodeConfiguration(string resourceGroupName, string automationAccountName, string sourcePath, string nodeConfiguraionName, bool overWrite);
         #endregion
 
         #region Configurations

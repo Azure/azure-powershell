@@ -26,31 +26,40 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Imports dsc node configuration script
     /// </summary>
-    [Cmdlet(VerbsData.Import, "ImportAzureAutomationDscNodeConfiguration")]
-    [OutputType(typeof(DscConfiguration))]
+    [Cmdlet(VerbsData.Import, "AzureAutomationDscNodeConfiguration")]
+    [OutputType(typeof(NodeConfiguration))]
     public class ImportAzureAutomationDscNodeConfiguration : AzureAutomationBaseCmdlet
-    {       
+    {
+        /// <summary>
+        /// True to overwrite the existing configuration; false otherwise.
+        /// </summary>        
+        private bool overwriteExistingConfiguration;
+
         /// <summary>
         /// Gets or sets the source path.
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Path to the node configuration script .mof to import.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Path to the node configuration .mof to import.")]
         [Alias("Path")]
         [ValidateNotNullOrEmpty]
         public string SourcePath { get; set; }
 
         /// <summary>
-        /// Gets or sets the node configuration name.
-        /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The dsc node configuration name for which .mof is imported.")]
-        [Alias("Name")]
-        public string Name { get; set; }
-
-        /// <summary>
         /// Gets or sets the configuration name for the node configuration.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The dsc configuration name for .mof imported")]
-        [Alias("ConfigurationName")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the DSC Configuration to import the node configuration under. All Node Configurations in Azure Automation must exist under a Configuration. The name of the Configuration will become the namespace of the imported Node Configuration, in the form of 'ConfigurationName.MofFileName'")]
+        [Alias("NodeConfigurationName")]
         public string ConfigurationName { get; set; }
+
+
+        /// <summary>
+        /// Gets or sets switch parameter to confirm overwriting of existing configurations.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Forces the command to overwrite an existing configuration.")]
+        public SwitchParameter Force
+        {
+            get { return this.overwriteExistingConfiguration; }
+            set { this.overwriteExistingConfiguration = value; }
+        }
         
         /// <summary>
         /// Execute this cmdlet.
@@ -62,8 +71,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                     this.ResourceGroupName,
                     this.AutomationAccountName,
                     this.SourcePath,
-                    this.Name,
-                    this.ConfigurationName);
+                    this.ConfigurationName,
+                    this.Force);
 
             this.WriteObject(nodeConfiguration);
         }
