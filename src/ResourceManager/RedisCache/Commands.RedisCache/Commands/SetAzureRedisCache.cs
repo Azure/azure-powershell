@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.RedisCache
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "EnableNonSslPort property of redis cache.")]
         public bool? EnableNonSslPort { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             RedisGetResponse response = CacheClient.GetCache(ResourceGroupName, Name);
 

@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         private const string redisDefaultVersion = "2.8";
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             string skuFamily;
 
