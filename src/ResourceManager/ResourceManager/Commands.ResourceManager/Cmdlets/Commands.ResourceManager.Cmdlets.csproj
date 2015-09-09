@@ -131,10 +131,14 @@
     <Compile Include="Handlers\RetryHandler.cs" />
     <Compile Include="Handlers\TracingHandler.cs" />
     <Compile Include="Handlers\UserAgentHandler.cs" />
+    <Compile Include="Implementation\RemoveAzureResourceGroupCmdlet.cs" />
+    <Compile Include="Implementation\GetAzureResourceGroupCmdlet.cs" />
     <Compile Include="Implementation\GetAzureResourceGroupDeploymentOperationCmdlet.cs" />
     <Compile Include="Implementation\GetAzureResourceLockCmdlet.cs" />
     <Compile Include="Implementation\InvokeAzureResourceActionCmdlet.cs" />
     <Compile Include="Implementation\MoveAzureResourceCmdlet.cs" />
+    <Compile Include="Implementation\SetAzureResourceGroupCmdlet.cs" />
+    <Compile Include="Implementation\NewAzureResourceGroupCmdlet.cs" />
     <Compile Include="Implementation\NewAzureResourceLockCmdlet.cs" />
     <Compile Include="Implementation\RemoveAzureResourceCmdlet.cs" />
     <Compile Include="Implementation\RemoveAzureResourceLockCmdlet.cs" />

@@ -25,7 +25,7 @@ function Test-CreatesNewSimpleResourceGroup
     try 
     {
         # Test
-        $actual = New-AzureResourceGroup -Name $rgname -Location $location -Tags @{Name = "testtag"; Value = "testval"} 
+        $actual = New-AzureResourceGroup -Name $rgname -Location $location -Tags @{Name = "testtag"; Value = "testval"} -Force
         $expected = Get-AzureResourceGroup -Name $rgname
 
         # Assert
@@ -52,20 +52,44 @@ function Test-UpdatesExistingResourceGroup
     try 
     {
         # Test update without tag
-        Assert-Throws { Set-AzureResourceGroup -Name $rgname -Tags @{"testtag" = "testval"} } "ResourceGroupNotFound: Resource group '$rgname' could not be found."
+        Assert-Throws { Set-AzureResourceGroup -Name $rgname -Tags @{"testtag" = "testval"} -Force }
         
-        $new = New-AzureResourceGroup -Name $rgname -Location $location
-        
-        # Test update with bad tag format
-        Assert-Throws { Set-AzureResourceGroup -Name $rgname -Tags @{"testtag" = "testval"} } "Invalid tag format. Expect @{Name = `"tagName`"} or @{Name = `"tagName`"; Value = `"tagValue`"}"
-        # Test update with bad tag format
-        Assert-Throws { Set-AzureResourceGroup -Name $rgname -Tags @{Name = "testtag"; Value = "testval"}, @{Name = "testtag"; Value = "testval2"} } "Invalid tag format. Ensure that each tag has a unique name. Example: @{Name = `"tagName1`"; Value = `"tagValue1`"}, @{Name = `"tagName2`"; Value = `"tagValue2`"}"
-            
-        $actual = Set-AzureResourceGroup -Name $rgname -Tags @{Name = "testtag"; Value = "testval"} 
+        $new = New-AzureResourceGroup -Name $rgname -Location $location -Force
+
+        $actual = Set-AzureResourceGroup -Name $rgname -Tags @{Name = "testtag"; Value = "testval"} -Force
         $expected = Get-AzureResourceGroup -Name $rgname
 
         # Assert
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
+        Assert-AreEqual 0 $new.Tags.Count
+        Assert-AreEqual $expected.Tags[0]["Name"] $actual.Tags[0]["Name"]
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests updates existing resource group via piping
+#>
+function Test-UpdatesExistingResourceGroupViaPiping
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $location = Get-ProviderLocation ResourceManagement
+
+    try
+    {
+        New-AzureResourceGroup -Name $rgname -Location $location -Force
+        $new = Get-AzureResourceGroup -Name $rgname
+        $actual = $new | Set-AzureResourceGroup -Tags @{Name = "testtag"; Value = "testval"} -Force
+        $expected = Get-AzureResourceGroup -Name $rgname
+
+        # Assert
+        Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
         Assert-AreEqual 0 $new.Tags.Count
         Assert-AreEqual $expected.Tags[0]["Name"] $actual.Tags[0]["Name"]
     }
@@ -88,14 +112,14 @@ function Test-CreatesAndRemoveResourceGroupViaPiping
     $location = Get-ProviderLocation ResourceManagement
 
     # Test
-    New-AzureResourceGroup -Name $rgname1 -Location $location
-    New-AzureResourceGroup -Name $rgname2 -Location $location
+    New-AzureResourceGroup -Name $rgname1 -Location $location -Force
+    New-AzureResourceGroup -Name $rgname2 -Location $location -Force
 
     Get-AzureResourceGroup | where {$_.ResourceGroupName -eq $rgname1 -or $_.ResourceGroupName -eq $rgname2} | Remove-AzureResourceGroup -Force
 
     # Assert
-    Assert-Throws { Get-AzureResourceGroup -Name $rgname1 } "Provided resource group does not exist."
-    Assert-Throws { Get-AzureResourceGroup -Name $rgname2 } "Provided resource group does not exist."
+    Assert-Throws { Get-AzureResourceGroup -Name $rgname1 }
+    Assert-Throws { Get-AzureResourceGroup -Name $rgname2 }
 }
 
 <#
@@ -107,7 +131,7 @@ function Test-GetNonExistingResourceGroup
     # Setup
     $rgname = Get-ResourceGroupName
 
-    Assert-Throws { Get-AzureResourceGroup -Name $rgname } "Provided resource group does not exist."
+    Assert-Throws { Get-AzureResourceGroup -Name $rgname }
 }
 
 <#
@@ -131,7 +155,7 @@ function Test-RemoveNonExistingResourceGroup
     # Setup
     $rgname = Get-ResourceGroupName
 
-    Assert-Throws { Remove-AzureResourceGroup $rgname -Force } "Provided resource group does not exist."
+    Assert-Throws { Remove-AzureResourceGroup $rgname -Force }
 }
 
 <#
