@@ -17,6 +17,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
     using System;
     using System.Globalization;
     using System.IO;
+    using Properties;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Microsoft.WindowsAzure.Management.Storage;
     using Microsoft.WindowsAzure.Management.Storage.Models;
@@ -97,7 +98,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
                 else
                 {
                     throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                        Commands.Common.Properties.Resources.BlobAlreadyExistsInTheAccount, blobName));
+                        Resources.BlobAlreadyExistsInTheAccount, blobName));
                 }
             }
 
