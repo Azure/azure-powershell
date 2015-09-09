@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateNotNullOrEmpty]
         public string EndpointLocation { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             if (this.TrafficManagerProfile.Endpoints == null)
             {
