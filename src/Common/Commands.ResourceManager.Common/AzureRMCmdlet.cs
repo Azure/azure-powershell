@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         /// <summary>
         /// Gets or sets the global profile for ARM cmdlets.
         /// </summary>
-        public static AzureRMProfile Profile { get; set; }
+        public static AzureRMProfile DefaultProfile { get; set; }
 
         /// <summary>
         /// Gets the current default context.
@@ -44,12 +44,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             get
             {
-                if (Profile == null || Profile.DefaultContext == null)
+                if (DefaultProfile == null || DefaultProfile.DefaultContext == null)
                 {
                     throw new PSInvalidOperationException("Run Login-AzureRMAccount to logic with profile.");
                 }
 
-                return Profile.DefaultContext;
+                return DefaultProfile.DefaultContext;
             }
         }
     }

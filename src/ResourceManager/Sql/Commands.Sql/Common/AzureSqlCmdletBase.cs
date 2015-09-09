@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// </summary>
         protected override void ProcessRecord()
         {
-            ModelAdapter = InitModelAdapter(Profile.DefaultContext.Subscription);
+            ModelAdapter = InitModelAdapter(DefaultProfile.DefaultContext.Subscription);
             M model = this.GetEntity();
             M updatedModel = this.ApplyUserInputToModel(model);
             M responseModel = this.PersistChanges(updatedModel);

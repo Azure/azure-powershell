@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Cmdlet
         /// </summary>
         protected override void ProcessRecord()
         {
-            AzureSqlCapabilitiesAdapter adapter = new AzureSqlCapabilitiesAdapter(Profile.DefaultContext);
+            AzureSqlCapabilitiesAdapter adapter = new AzureSqlCapabilitiesAdapter(DefaultProfile.DefaultContext);
             LocationCapabilityModel model = adapter.GetLocationCapabilities(LocationName);
             int depth = 0;
 

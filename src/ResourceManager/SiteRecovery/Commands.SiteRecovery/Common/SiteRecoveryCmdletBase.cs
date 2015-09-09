@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             {
                 if (this.recoveryServicesClient == null)
                 {
-                    this.recoveryServicesClient = new PSRecoveryServicesClient(Profile);
+                    this.recoveryServicesClient = new PSRecoveryServicesClient(DefaultProfile);
                 }
 
                 return this.recoveryServicesClient;

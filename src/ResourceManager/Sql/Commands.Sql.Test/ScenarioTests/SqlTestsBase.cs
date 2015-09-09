@@ -137,12 +137,12 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                 if (HttpMockServer.Variables.ContainsKey(TenantIdKey))
                 {
                     tenantId = HttpMockServer.Variables[TenantIdKey];
-                    AzureRMCmdlet.Profile.DefaultContext.Tenant.Id = new Guid(tenantId);
+                    AzureRMCmdlet.DefaultProfile.DefaultContext.Tenant.Id = new Guid(tenantId);
                 }
                 if (HttpMockServer.Variables.ContainsKey(DomainKey))
                 {
                     UserDomain = HttpMockServer.Variables[DomainKey];
-                    AzureRMCmdlet.Profile.DefaultContext.Tenant.Domain = UserDomain;
+                    AzureRMCmdlet.DefaultProfile.DefaultContext.Tenant.Domain = UserDomain;
                 }
             }
 

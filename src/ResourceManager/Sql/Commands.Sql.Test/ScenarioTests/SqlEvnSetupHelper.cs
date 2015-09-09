@@ -55,8 +55,8 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                     var testSubscription = new AzureSubscription()
                     {
                         Id = new Guid(csmEnvironment.SubscriptionId),
-                        Name = ResourceManager.Common.AzureRMCmdlet.Profile.DefaultContext.Subscription.Name,
-                        Environment = ResourceManager.Common.AzureRMCmdlet.Profile.DefaultContext.Subscription.Environment,
+                        Name = ResourceManager.Common.AzureRMCmdlet.DefaultProfile.DefaultContext.Subscription.Name,
+                        Environment = ResourceManager.Common.AzureRMCmdlet.DefaultProfile.DefaultContext.Subscription.Environment,
                         Account = user,
                         Properties = new Dictionary<AzureSubscription.Property, string>
                     {
@@ -85,13 +85,13 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                     }
                     };
 
-                    AzureRMCmdlet.Profile.DefaultContext.Subscription.Name = testSubscription.Name;
-                    AzureRMCmdlet.Profile.DefaultContext.Subscription.Account = testSubscription.Account;
+                    AzureRMCmdlet.DefaultProfile.DefaultContext.Subscription.Name = testSubscription.Name;
+                    AzureRMCmdlet.DefaultProfile.DefaultContext.Subscription.Account = testSubscription.Account;
 
-                    var environment = AzureRMCmdlet.Profile.Environments[AzureRMCmdlet.Profile.DefaultContext.Subscription.Environment];
+                    var environment = AzureRMCmdlet.DefaultProfile.Environments[AzureRMCmdlet.DefaultProfile.DefaultContext.Subscription.Environment];
                     environment.Endpoints[AzureEnvironment.Endpoint.Graph] = csmEnvironment.Endpoints.GraphUri.AbsoluteUri;
 
-                    AzureRMCmdlet.Profile.Save();
+                    AzureRMCmdlet.DefaultProfile.Save();
                 }
             }
         }
