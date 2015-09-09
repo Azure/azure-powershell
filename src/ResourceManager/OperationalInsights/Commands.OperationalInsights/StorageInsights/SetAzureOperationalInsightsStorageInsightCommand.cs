@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
             HelpMessage = "The Azure Storage blob containers that the storage insight will read data from.")]
         public string[] Containers { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             if (ParameterSetName == ByWorkspaceObject)
             {
