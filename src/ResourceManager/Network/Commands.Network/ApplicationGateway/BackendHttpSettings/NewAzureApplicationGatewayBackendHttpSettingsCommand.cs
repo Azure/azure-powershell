@@ -21,9 +21,9 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet(VerbsCommon.New, "AzureApplicationGatewayBackendHttpSettings"), OutputType(typeof(PSApplicationGatewayBackendHttpSettings))]
     public class NewAzureApplicationGatewayBackendHttpSettingsCommand : AzureApplicationGatewayBackendHttpSettingsBase
     {
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();            
+            base.ProcessRecord();            
             WriteObject(base.NewObject());
         }
     }

@@ -21,9 +21,9 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet(VerbsCommon.New, "AzureApplicationGatewayFrontendPort"), OutputType(typeof(PSApplicationGatewayFrontendPort))]
     public class NewAzureApplicationGatewayFrontendPortCommand : AzureApplicationGatewayFrontendPortBase
     {
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
             WriteObject(base.NewObject());
         }
     }

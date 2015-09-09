@@ -32,9 +32,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The NetworkInterface")]
         public PSNetworkInterface NetworkInterface { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
             if (!this.IsNetworkInterfacePresent(this.NetworkInterface.ResourceGroupName, this.NetworkInterface.Name))
             {
