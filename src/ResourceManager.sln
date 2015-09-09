@@ -101,6 +101,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VhdManagement", "ServiceMan
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Network.Test", "ResourceManager\Network\Commands.Network.Test\Commands.Network.Test.csproj", "{A2DF4FE5-46EE-43E2-B246-E5CDDD47B752}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Compute.Test", "ResourceManager\Compute\Commands.Compute.Test\Commands.Compute.Test.csproj", "{37C44181-3F1B-4ABD-8089-26DFAB4B6BA8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -287,6 +289,10 @@ Global
 		{A2DF4FE5-46EE-43E2-B246-E5CDDD47B752}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2DF4FE5-46EE-43E2-B246-E5CDDD47B752}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2DF4FE5-46EE-43E2-B246-E5CDDD47B752}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37C44181-3F1B-4ABD-8089-26DFAB4B6BA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37C44181-3F1B-4ABD-8089-26DFAB4B6BA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37C44181-3F1B-4ABD-8089-26DFAB4B6BA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37C44181-3F1B-4ABD-8089-26DFAB4B6BA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -306,5 +312,6 @@ Global
 		{080B0477-7E52-4455-90AB-23BD13D1B1CE} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{7D1D3B56-4EB4-4819-86FD-43330DED8EE7} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{A2DF4FE5-46EE-43E2-B246-E5CDDD47B752} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{37C44181-3F1B-4ABD-8089-26DFAB4B6BA8} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 	EndGlobalSection
 EndGlobal

@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         internal void ExecuteCommand()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
             ExecuteClientAction(() =>
             {
