@@ -48,9 +48,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource group tags.")]
         public Hashtable[] Tag { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         /// <summary>
         /// Executes the cmdlet.
         /// </summary>
@@ -59,36 +56,28 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             base.OnProcessRecord();
             var subscriptionId = this.Profile.Context.Subscription.Id;
             string resourceId = string.Format("/subscriptions/{0}/resourceGroups/{1}", subscriptionId.ToString(), this.Name);
-            this.ConfirmAction(
-                this.Force,
-                "Are you sure you want to create the following resource group: "+ this.Name,
-                "Creating the resource group...",
-                this.Name,
-                () =>
-                {
-                    var apiVersion = this.DetermineApiVersion(resourceId: resourceId).Result;
+            var apiVersion = this.DetermineApiVersion(resourceId: resourceId).Result;
 
-                    var operationResult = this.GetResourcesClient()
-                        .PutResource(
-                            resourceId: resourceId,
-                            apiVersion: apiVersion,
-                            resource: this.GetResource().ToJToken(),
-                            cancellationToken: this.CancellationToken.Value,
-                            odataQuery: null)
-                        .Result;
+            var operationResult = this.GetResourcesClient()
+                .PutResource(
+                    resourceId: resourceId,
+                    apiVersion: apiVersion,
+                    resource: this.GetResource().ToJToken(),
+                    cancellationToken: this.CancellationToken.Value,
+                    odataQuery: null)
+                .Result;
 
-                    var managementUri = this.GetResourcesClient()
-                      .GetResourceManagementRequestUri(
-                          resourceId: resourceId,
-                          apiVersion: apiVersion,
-                          odataQuery: null);
+            var managementUri = this.GetResourcesClient()
+              .GetResourceManagementRequestUri(
+                  resourceId: resourceId,
+                  apiVersion: apiVersion,
+                  odataQuery: null);
 
-                    var activity = string.Format("PUT {0}", managementUri.PathAndQuery);
-                    var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
-                        .WaitOnOperation(operationResult: operationResult);
+            var activity = string.Format("PUT {0}", managementUri.PathAndQuery);
+            var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
+                .WaitOnOperation(operationResult: operationResult);
 
-                    this.TryConvertToResourceAndWriteObject(result, ResourceObjectFormat.New);
-                });
+            this.TryConvertToResourceAndWriteObject(result, ResourceObjectFormat.New);
         }
 
         /// <summary>

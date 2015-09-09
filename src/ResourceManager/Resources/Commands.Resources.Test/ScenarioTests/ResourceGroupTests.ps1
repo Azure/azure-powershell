@@ -25,7 +25,7 @@ function Test-CreatesNewSimpleResourceGroup
     try 
     {
         # Test
-        $actual = New-AzureResourceGroup -Name $rgname -Location $location -Tags @{Name = "testtag"; Value = "testval"} -Force
+        $actual = New-AzureResourceGroup -Name $rgname -Location $location -Tags @{Name = "testtag"; Value = "testval"}
         $expected = Get-AzureResourceGroup -Name $rgname
 
         # Assert
@@ -54,9 +54,9 @@ function Test-UpdatesExistingResourceGroup
         # Test update without tag
         Assert-Throws { Set-AzureResourceGroup -Name $rgname -Tags @{"testtag" = "testval"} -Force }
         
-        $new = New-AzureResourceGroup -Name $rgname -Location $location -Force
+        $new = New-AzureResourceGroup -Name $rgname -Location $location
 
-        $actual = Set-AzureResourceGroup -Name $rgname -Tags @{Name = "testtag"; Value = "testval"} -Force
+        $actual = Set-AzureResourceGroup -Name $rgname -Tags @{Name = "testtag"; Value = "testval"}
         $expected = Get-AzureResourceGroup -Name $rgname
 
         # Assert
@@ -83,9 +83,9 @@ function Test-UpdatesExistingResourceGroupViaPiping
 
     try
     {
-        New-AzureResourceGroup -Name $rgname -Location $location -Force
+        New-AzureResourceGroup -Name $rgname -Location $location
         $new = Get-AzureResourceGroup -Name $rgname
-        $actual = $new | Set-AzureResourceGroup -Tags @{Name = "testtag"; Value = "testval"} -Force
+        $actual = $new | Set-AzureResourceGroup -Tags @{Name = "testtag"; Value = "testval"}
         $expected = Get-AzureResourceGroup -Name $rgname
 
         # Assert
@@ -112,8 +112,8 @@ function Test-CreatesAndRemoveResourceGroupViaPiping
     $location = Get-ProviderLocation ResourceManagement
 
     # Test
-    New-AzureResourceGroup -Name $rgname1 -Location $location -Force
-    New-AzureResourceGroup -Name $rgname2 -Location $location -Force
+    New-AzureResourceGroup -Name $rgname1 -Location $location
+    New-AzureResourceGroup -Name $rgname2 -Location $location
 
     Get-AzureResourceGroup | where {$_.ResourceGroupName -eq $rgname1 -or $_.ResourceGroupName -eq $rgname2} | Remove-AzureResourceGroup -Force
 

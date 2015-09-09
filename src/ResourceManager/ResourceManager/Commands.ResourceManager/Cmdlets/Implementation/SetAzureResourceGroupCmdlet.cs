@@ -60,9 +60,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents resource group tags.")]
         public Hashtable[] Tag { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
-        public SwitchParameter Force { get; set; }
-
         /// <summary>
         /// Executes the cmdlet.
         /// </summary>
@@ -73,14 +70,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             string resourceId = this.Id ?? string.Format("/subscriptions/{0}/resourceGroups/{1}", subscriptionId, this.Name);
             var apiVersion = this.DetermineApiVersion(resourceId: resourceId).Result;
             var resource = this.GetExistingResource(resourceId, apiVersion).Result.ToResource();
-            this.ConfirmAction(
-                this.Force,
-                "Are you sure you want to update the following resource group: "+ this.Name,
-                "Updating the resource group...",
-                this.Name,
-                () =>
-                {
-                    var operationResult = this.GetResourcesClient()
+
+            var operationResult = this.GetResourcesClient()
                         .PutResource(
                             resourceId: resourceId,
                             apiVersion: apiVersion,
@@ -89,18 +80,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             odataQuery: null)
                         .Result;
 
-                    var managementUri = this.GetResourcesClient()
-                      .GetResourceManagementRequestUri(
-                          resourceId: resourceId,
-                          apiVersion: apiVersion,
-                          odataQuery: null);
+            var managementUri = this.GetResourcesClient()
+              .GetResourceManagementRequestUri(
+                  resourceId: resourceId,
+                  apiVersion: apiVersion,
+                  odataQuery: null);
 
-                    var activity = string.Format("PUT {0}", managementUri.PathAndQuery);
-                    var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
-                        .WaitOnOperation(operationResult: operationResult);
+            var activity = string.Format("PUT {0}", managementUri.PathAndQuery);
+            var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
+                .WaitOnOperation(operationResult: operationResult);
 
-                    this.TryConvertToResourceAndWriteObject(result, ResourceObjectFormat.New);
-                });
+            this.TryConvertToResourceAndWriteObject(result, ResourceObjectFormat.New);
         }
 
         /// <summary>
