@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             this.Location = this.Location.Replace(" ", string.Empty);
             var result = this.NetworkClient.NetworkResourceProviderClient.CheckDnsNameAvailability(this.Location, this.DomainQualifiedName);

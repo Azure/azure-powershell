@@ -31,9 +31,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The RouteTable")]
         public PSRouteTable RouteTable { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
             if (!this.IsRouteTablePresent(this.RouteTable.ResourceGroupName, this.RouteTable.Name))
             {

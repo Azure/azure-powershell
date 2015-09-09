@@ -15,13 +15,14 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Management.Storage.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    public abstract class StorageAccountBaseCmdlet : AzureSMCmdlet
+    public abstract class StorageAccountBaseCmdlet : AzureRMCmdlet
     {
         private StorageManagementClientWrapper storageClientWrapper;
         
@@ -68,11 +69,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 return Profile.DefaultContext.Subscription.Id.ToString();
             }
-        }
-
-        public override void ExecuteCmdlet()
-        {
-            base.ExecuteCmdlet();
         }
 
         protected static AccountType ParseAccountType(string accountType)

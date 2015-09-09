@@ -89,13 +89,5 @@ namespace Microsoft.Azure.Commands.DataFactories
 
             return resolvedResourceName;
         }
-
-        /// <summary>
-        /// This is added for tests purpose only, should step down in the future.
-        /// </summary>
-        public void ExecuteCmdlet()
-        {
-            ProcessRecord();
-        }
     }
 }

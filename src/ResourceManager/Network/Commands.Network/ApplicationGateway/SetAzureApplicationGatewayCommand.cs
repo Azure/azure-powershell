@@ -32,9 +32,9 @@ namespace Microsoft.Azure.Commands.Network
              HelpMessage = "The applicationGateway")]
         public PSApplicationGateway ApplicationGateway { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
             if (!this.IsApplicationGatewayPresent(this.ApplicationGateway.ResourceGroupName, this.ApplicationGateway.Name))
             {

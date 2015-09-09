@@ -12,19 +12,37 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Diagnostics;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
+using System.Reflection;
 
-namespace Microsoft.Azure.Commands.Network
+namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
-    [Cmdlet(VerbsCommon.New, "AzureApplicationGatewaySslCertificate"), OutputType(typeof(PSApplicationGatewaySslCertificate))]
-    public class NewAzureApplicationGatewaySslCertificateCommand : AzureApplicationGatewaySslCertificateBase
+    public static class PSCmdletExtensions
     {
-        protected override void ProcessRecord()
+        private static MethodInfo GetProtectedMethod(string name)
         {
-            base.ProcessRecord();
-            WriteObject(base.NewObject());
+            MethodInfo m = typeof(PSCmdlet).GetMethod(
+                name,
+                BindingFlags.Instance | BindingFlags.NonPublic,
+                Type.DefaultBinder,
+                new Type[] { },
+                null);
+
+            return m;
+        }
+
+        public static void ExecuteCmdlet(this PSCmdlet cmdlet)
+        {
+            try
+            {
+                GetProtectedMethod("ProcessRecord").Invoke(cmdlet, new object[] { });
+            }
+            catch (TargetInvocationException e)
+            {
+                throw e.InnerException;
+            }
         }
     }
 }

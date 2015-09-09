@@ -32,9 +32,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The PublicIpAddress")]
         public PSPublicIpAddress PublicIpAddress { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
             if (!this.IsPublicIpAddressPresent(this.PublicIpAddress.ResourceGroupName, this.PublicIpAddress.Name))
             {
