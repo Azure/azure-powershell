@@ -136,7 +136,6 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Services.Client" />
-    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http" />
@@ -175,8 +174,6 @@
     <Compile Include="Common\GeneralTests.cs" />
     <Compile Include="Common\IdnUtilitiesTests.cs" />
     <Compile Include="Common\JsonUtilitiesTests.cs" />
-    <Compile Include="Extensions\DSC\DscExtensionConfigurationParsingHelperTests.cs" />
-    <Compile Include="Extensions\DSC\DscExtensionSettingsSerializerTests.cs" />
     <Compile Include="Mocks\ClientMocks.cs" />
     <Compile Include="Common\PSObjectExtensions.cs" />
     <Compile Include="Common\RemoveAzurePublishSettings.cs" />
