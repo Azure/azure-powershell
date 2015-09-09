@@ -176,8 +176,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
 
                 SetupManagementClients();
 
-                _helper.SetupEnvironment(AzureModule.AzureProfile);
-                _helper.SetupModules(AzureModule.AzureProfile, "ScenarioTests\\Common.ps1", "ScenarioTests\\" + GetType().Name + ".ps1");
+                _helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                _helper.SetupModules(AzureModule.AzureResourceManager, "ScenarioTests\\Common.ps1", "ScenarioTests\\" + GetType().Name + ".ps1");
 
                 _helper.RunPowerShellTest(scripts);
             }
