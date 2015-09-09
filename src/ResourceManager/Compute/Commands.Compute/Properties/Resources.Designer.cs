@@ -485,11 +485,29 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Path &apos;{0}&apos; not found..
+        /// </summary>
+        public static string PublishVMDscExtensionAdditionalContentPathNotExist {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionAdditionalContentPathNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Configuration published to {0}.
         /// </summary>
         public static string PublishVMDscExtensionArchiveUploadedMessage {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionArchiveUploadedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Configuration published to {0}.
+        /// </summary>
+        public static string PublishVMDscExtensionArchiveUploadedMessage1 {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionArchiveUploadedMessage1", resourceCulture);
             }
         }
         
@@ -512,11 +530,29 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy &apos;{0}&apos; to &apos;{1}&apos;..
+        /// </summary>
+        public static string PublishVMDscExtensionCopyFileVerbose1 {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionCopyFileVerbose1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy the module &apos;{0}&apos; to &apos;{1}&apos;..
         /// </summary>
         public static string PublishVMDscExtensionCopyModuleVerbose {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionCopyModuleVerbose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy the module &apos;{0}&apos; to &apos;{1}&apos;..
+        /// </summary>
+        public static string PublishVMDscExtensionCopyModuleVerbose1 {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionCopyModuleVerbose1", resourceCulture);
             }
         }
         
@@ -527,6 +563,16 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string PublishVMDscExtensionCreateArchiveConfigFileInvalidExtension {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionCreateArchiveConfigFileInvalidExtension", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid configuration file: {0}.
+        ///The file needs to be a PowerShell script (.ps1 or .psm1)..
+        /// </summary>
+        public static string PublishVMDscExtensionCreateArchiveConfigFileInvalidExtension1 {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionCreateArchiveConfigFileInvalidExtension1", resourceCulture);
             }
         }
         
@@ -549,11 +595,38 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deleted &apos;{0}&apos;.
+        /// </summary>
+        public static string PublishVMDscExtensionDeletedFileMessage1 {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionDeletedFileMessage1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot delete &apos;{0}&apos;: {1}.
         /// </summary>
         public static string PublishVMDscExtensionDeleteErrorMessage {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionDeleteErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot delete &apos;{0}&apos;: {1}.
+        /// </summary>
+        public static string PublishVMDscExtensionDeleteErrorMessage1 {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionDeleteErrorMessage1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Path &apos;{0}&apos; not found..
+        /// </summary>
+        public static string PublishVMDscExtensionDirectoryNotExist {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionDirectoryNotExist", resourceCulture);
             }
         }
         
@@ -571,6 +644,19 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot get module for DscResource &apos;{0}&apos;. Possible solutions:
+        ///1) Specify -ModuleName for Import-DscResource in your configuration.
+        ///2) Unblock module that contains resource.
+        ///3) Move Import-DscResource inside Node block.
+        ///.
+        /// </summary>
+        public static string PublishVMDscExtensionGetDscResourceFailed1 {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionGetDscResourceFailed1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to List of required modules: [{0}]..
         /// </summary>
         public static string PublishVMDscExtensionRequiredModulesVerbose {
@@ -580,11 +666,29 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to List of required modules: [{0}]..
+        /// </summary>
+        public static string PublishVMDscExtensionRequiredModulesVerbose1 {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionRequiredModulesVerbose1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your current PowerShell version {1} is less then required by this cmdlet {0}. Consider download and install latest PowerShell version..
         /// </summary>
         public static string PublishVMDscExtensionRequiredPsVersion {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionRequiredPsVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your current PowerShell version {1} is less then required by this cmdlet {0}. Consider download and install latest PowerShell version..
+        /// </summary>
+        public static string PublishVMDscExtensionRequiredPsVersion1 {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionRequiredPsVersion1", resourceCulture);
             }
         }
         
@@ -599,11 +703,30 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Configuration script &apos;{0}&apos; contained parse errors:
+        ///{1}.
+        /// </summary>
+        public static string PublishVMDscExtensionStorageParserErrors1 {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionStorageParserErrors1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Temp folder &apos;{0}&apos; created..
         /// </summary>
         public static string PublishVMDscExtensionTempFolderVerbose {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionTempFolderVerbose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Temp folder &apos;{0}&apos; created..
+        /// </summary>
+        public static string PublishVMDscExtensionTempFolderVerbose1 {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionTempFolderVerbose1", resourceCulture);
             }
         }
         
@@ -618,11 +741,30 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid configuration file: {0}.
+        ///The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)..
+        /// </summary>
+        public static string PublishVMDscExtensionUploadArchiveConfigFileInvalidExtension1 {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionUploadArchiveConfigFileInvalidExtension1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Configuration file &apos;{0}&apos; not found..
         /// </summary>
         public static string PublishVMDscExtensionUploadArchiveConfigFileNotExist {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionUploadArchiveConfigFileNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Configuration file &apos;{0}&apos; not found..
+        /// </summary>
+        public static string PublishVMDscExtensionUploadArchiveConfigFileNotExist1 {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionUploadArchiveConfigFileNotExist1", resourceCulture);
             }
         }
         
