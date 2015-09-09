@@ -42,13 +42,5 @@ namespace Microsoft.Azure.Commands.Insights
                 throw ex.Flatten().InnerException;
             }
         }
-
-        /// <summary>
-        /// Added for tests only, should be removed in the future.
-        /// </summary>
-        public override void ExecuteCmdlet()
-        {
-            ProcessRecord();
-        }
     }
 }

@@ -130,6 +130,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PSCmdletExtensions.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="EnvironmentSetupHelper.cs" />
     <Compile Include="Mocks\MockAccessToken.cs" />

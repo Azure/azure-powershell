@@ -162,13 +162,5 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
                 ScaleAction = action,
             };
         }
-
-        /// <summary>
-        /// Added for tests only, should be removed in the future.
-        /// </summary>
-        public override void ExecuteCmdlet()
-        {
-            ProcessRecord();
-        }
     }
 }

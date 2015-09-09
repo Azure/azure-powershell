@@ -83,13 +83,5 @@ namespace Microsoft.Azure.Commands.HDInsight.Commands
             }
             return httpEndpoint;
         }
-
-        /// <summary>
-        /// Added for test code only, should be removed in the future.
-        /// </summary>
-        public void ExecuteCmdlet()
-        {
-            ProcessRecord();
-        }
     }
 }
