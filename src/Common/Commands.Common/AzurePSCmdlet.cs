@@ -36,6 +36,17 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         protected static AzureProfile _currentProfile = null;
         protected static AzurePSDataCollectionProfile _dataCollectionProfile = null;
 
+        protected AzurePSQoSEvent QosEvent;
+
+        protected virtual bool IsUsageMetricEnabled {
+            get { return false; }
+        }
+
+        protected virtual bool IsErrorMetricEnabled
+        {
+            get { return true; }
+        }
+
         [Parameter(Mandatory = false, HelpMessage = "In-memory profile.")]
         public AzureProfile Profile { get; set; }
 
@@ -209,6 +220,22 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         }
 
         /// <summary>
+        /// Check whether the data collection is opted in from user
+        /// </summary>
+        /// <returns>true if allowed</returns>
+        public static bool IsDataCollectionAllowed()
+        {
+            if (_dataCollectionProfile != null &&
+                _dataCollectionProfile.EnableAzureDataCollection.HasValue &&
+                _dataCollectionProfile.EnableAzureDataCollection.Value)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
         /// Save the current data collection profile Json data into the default file path
         /// </summary>
         /// <param name="profile"></param>
@@ -305,7 +332,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             InitializeProfile();
             PromptForDataCollectionProfileIfNotExists();
-
+            InitializeQosEvent();
             if (string.IsNullOrEmpty(ParameterSetName))
             {
                 WriteDebugWithTimestamp(string.Format(Resources.BeginProcessingWithoutParameterSetLog, this.GetType().Name));
@@ -346,6 +373,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// </summary>
         protected override void EndProcessing()
         {
+            LogQosEvent();
             string message = string.Format(Resources.EndProcessingLog, this.GetType().Name);
             WriteDebugWithTimestamp(message);
 
@@ -379,6 +407,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         public new void WriteError(ErrorRecord errorRecord)
         {
             FlushDebugMessages();
+            QosEvent.Exception = errorRecord.Exception;
+            QosEvent.IsSuccess = false;
+            LogQosEvent(true);
             base.WriteError(errorRecord);
         }
 
@@ -506,6 +537,62 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
         }
 
+        protected void InitializeQosEvent()
+        {
+            QosEvent = new AzurePSQoSEvent()
+            {
+                CmdletType = this.GetType().Name,
+                IsSuccess = true,
+            };
+
+            if (this.Profile != null && this.Profile.DefaultSubscription != null)
+            {
+                QosEvent.Uid = MetricHelper.GenerateSha256HashString(
+                    this.Profile.DefaultSubscription.Id.ToString());
+            }
+            else
+            {
+                QosEvent.Uid = "defaultid";
+            }
+        }
+
+        /// <summary>
+        /// Invoke this method when the cmdlet is completed or terminated.
+        /// </summary>
+        protected void LogQosEvent(bool waitForMetricSending = false)
+        {
+            if (QosEvent == null)
+            {
+                return;
+            }
+
+            QosEvent.FinishQosEvent();
+
+            if (!IsUsageMetricEnabled && (!IsErrorMetricEnabled || QosEvent.IsSuccess))
+            {
+                return;
+            }
+
+            if (!IsDataCollectionAllowed())
+            {
+                return;
+            }
+
+            WriteDebug(QosEvent.ToString());
+
+            try
+            {
+                MetricHelper.LogQoSEvent(QosEvent, IsUsageMetricEnabled, IsErrorMetricEnabled);
+                MetricHelper.FlushMetric(waitForMetricSending);
+                WriteDebug("Finish sending metric.");
+            }
+            catch (Exception e)
+            {
+                //Swallow error from Application Insights event collection.
+                WriteWarning(e.ToString());
+            }
+        }
+
         /// <summary>
         /// Asks for confirmation before executing the action.
         /// </summary>
@@ -516,10 +603,19 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// <param name="action">The action code</param>
         protected void ConfirmAction(bool force, string actionMessage, string processMessage, string target, Action action)
         {
+            if (QosEvent != null)
+            {
+                QosEvent.PauseQoSTimer();
+            }
+            
             if (force || ShouldContinue(actionMessage, ""))
             {
                 if (ShouldProcess(target, processMessage))
-                {
+                {                 
+                    if (QosEvent != null)
+                    {
+                        QosEvent.ResumeQosTimer();
+                    }
                     action();
                 }
             }
