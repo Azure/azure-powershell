@@ -54,7 +54,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
             AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud], 
             new AzureTenant { Id = Guid.NewGuid(), Domain = "testdomain.onmicrosoft.com" });
 
-            AzureRMCmdlet.Profile = currentProfile;
+            AzureRMCmdlet.DefaultProfile = currentProfile;
 
             // Now override AzureSession.DataStore to use the MemoryDataStore
             if (AzureSession.DataStore != null && !(AzureSession.DataStore is MemoryDataStore))
