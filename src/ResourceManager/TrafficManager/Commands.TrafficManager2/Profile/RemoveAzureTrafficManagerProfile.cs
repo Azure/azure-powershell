@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             var deleted = false;
             TrafficManagerProfile profileToDelete = null;

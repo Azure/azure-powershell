@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateNotNullOrEmpty]
         public TrafficManagerProfile TrafficManagerProfile { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             TrafficManagerProfile profileToEnable = null;
 

@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             if (this.ResourceGroupName == null && this.Name != null)
             {
