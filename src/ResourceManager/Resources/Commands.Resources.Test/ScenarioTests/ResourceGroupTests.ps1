@@ -236,7 +236,8 @@ function Test-NewDeploymentAndProviderRegistration
         }
 
         # Test
-        $deployment = New-AzureResourceGroup -Name $rgname -Location $location -GalleryTemplateIdentity $template -cacheName $rname -cacheLocation $location
+        New-AzureResourceGroup -Name $rgname -Location $location
+        $deployment = New-AzureResourceGroupDeployment -ResourceGroupName $rgname -Location $location -GalleryTemplateIdentity $template -cacheName $rname -cacheLocation $location
 
         # Assert
         $client = New-Object Microsoft.Azure.Commands.Resources.Models.ResourcesClient $subscription
@@ -288,7 +289,8 @@ function Test-NewResourceGroupWithTemplateThenGetWithAndWithoutDetails
     try
     {
         # Test
-        $actual = New-AzureResourceGroup -Name $rgname -Location $location -TemplateFile $templateFile `
+        New-AzureResourceGroup -Name $rgname -Location $location
+        $actual = New-AzureResourceGroupDeployment -ResourceGroupName $rgname -TemplateFile $templateFile `
                     -siteName $websiteName -hostingPlanName "test" -siteLocation "West US" `
                     -Tag @{ Name = "testtag"; Value = "testval" }
 
