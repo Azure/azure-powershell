@@ -46,15 +46,15 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the configuration name for the node configuration.
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the DSC Configuration to import the node configuration under. All Node Configurations in Azure Automation must exist under a Configuration. The name of the Configuration will become the namespace of the imported Node Configuration, in the form of 'ConfigurationName.MofFileName'")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the DSC Configuration to import the Node Configuration under. All Node Configurations in Azure Automation must exist under a Configuration. The name of the Configuration will become the namespace of the imported Node Configuration, in the form of 'ConfigurationName.MofFileName'")]
         [Alias("NodeConfigurationName")]
-        public string ConfigurationName { get; set; }
+        public string Name { get; set; }
 
 
         /// <summary>
         /// Gets or sets switch parameter to confirm overwriting of existing configurations.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Forces the command to overwrite an existing configuration.")]
+        [Parameter(Mandatory = false, HelpMessage = "Forces the command to overwrite an existing Node Configuration.")]
         public SwitchParameter Force
         {
             get { return this.overwriteExistingConfiguration; }
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                     this.ResourceGroupName,
                     this.AutomationAccountName,
                     this.SourcePath,
-                    this.ConfigurationName,
+                    this.Name,
                     this.Force);
 
             this.WriteObject(nodeConfiguration);

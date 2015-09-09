@@ -1169,25 +1169,22 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
         {
             using (var request = new RequestSettings(this.automationManagementClient))
             {
-                Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
-                Requires.Argument("AutomationAccountName", automationAccountName).NotNull();
-                Requires.Argument("SourcePath", sourcePath).NotNull();
-                Requires.Argument("nodeConfigurationName", nodeConfigurationName).NotNull();
+                Requires.Argument("ResourceGroupName", resourceGroupName).NotNullOrEmpty();
+                Requires.Argument("AutomationAccountName", automationAccountName).NotNullOrEmpty();
+                Requires.Argument("SourcePath", sourcePath).NotNullOrEmpty();
+                Requires.Argument("nodeConfigurationName", nodeConfigurationName).NotNullOrEmpty();
 
                 string fileContent = null;
                 string configurationName = null;
                 string nodeName = null;
 
-                try
+                if (File.Exists(Path.GetFullPath(sourcePath)))
                 {
-                    if (File.Exists(Path.GetFullPath(sourcePath)))
-                    {
-                        fileContent = System.IO.File.ReadAllText(sourcePath);
-                    }
+                    fileContent = System.IO.File.ReadAllText(sourcePath);
                 }
-                catch (Exception)
+                else
                 {
-                    // exception in accessing the file path
+                    // file path not valid.
                     throw new FileNotFoundException(
                                         string.Format(
                                             CultureInfo.CurrentCulture,
@@ -1196,21 +1193,25 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
 
                 try
                 {
-                    var configuration = nodeConfigurationName.Split('.');
-                    if(configuration.Length == 2)
+                    int index = nodeConfigurationName.IndexOf(".");
+                    if (index > 0)
                     {
-                        configurationName = configuration[0];
-                        nodeName = configuration[1];
+                        nodeName = nodeConfigurationName.Substring(0, index);
+                        int configNameStartIndex = index + 1;
+                        int configNameLenght = nodeConfigurationName.Length - index -1;
+                        configurationName = nodeConfigurationName.Substring(configNameStartIndex, configNameLenght);
                     }
                     else
                     {
-                        throw new Exception();
+                        throw new ArgumentException(string.Format(
+                                            CultureInfo.CurrentCulture,
+                                            Resources.NodeConfigurationNameInvalid));
                     }
                 }
                  catch (Exception)
                 {
-                    // exception in getting the config name from NodeConfigName
-                    throw new FileNotFoundException(
+                    // exception in getting the config name from configurationName
+                    throw new ArgumentException(
                                         string.Format(
                                             CultureInfo.CurrentCulture,
                                             Resources.NodeConfigurationNameInvalid));
@@ -1490,17 +1491,16 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
         {
             parameters = parameters ?? new Dictionary<string, string>();
             var filteredParameters = new Dictionary<string,string>();
-            foreach (var configParameter in parameters.Keys)
+            foreach (var key in parameters.Keys)
             {                
                 try
                 {
-                    filteredParameters.Add(configParameter.ToString(), Newtonsoft.Json.JsonConvert.SerializeObject(parameters[configParameter]));
+                    filteredParameters.Add(key.ToString(), Newtonsoft.Json.JsonConvert.SerializeObject(parameters[key]));
                 }
                 catch (JsonSerializationException)
                 {
-                    throw new ArgumentException(
-                    string.Format(
-                        CultureInfo.CurrentCulture, Resources.ConfigurationParameterCannotBeSerializedToJson, configParameter.ToString()));
+                    throw new ArgumentException(string.Format(
+                        CultureInfo.CurrentCulture, Resources.ConfigurationParameterCannotBeSerializedToJson, key.ToString()));
                 }             
             }
             return filteredParameters;

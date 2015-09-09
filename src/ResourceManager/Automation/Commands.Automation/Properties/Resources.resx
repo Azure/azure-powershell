@@ -415,7 +415,7 @@
     <comment>Automation</comment>
   </data>
   <data name="NodeConfigurationNameInvalid" xml:space="preserve">
-    <value>Invalid node configuration name. Please specify in the format &lt;node name&gt;.&lt;config name&gt;</value>
+    <value>Invalid node configuration name. Please specify in the format &lt;config name&gt;.&lt;node name&gt;</value>
     <comment>Automation</comment>
   </data>
 </root>

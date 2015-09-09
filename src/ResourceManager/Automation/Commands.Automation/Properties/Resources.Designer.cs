@@ -394,7 +394,7 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid node configuration name. Please specify in the format &lt;node name&gt;.&lt;config name&gt;.
+        ///   Looks up a localized string similar to Invalid node configuration name. Please specify in the format &lt;config name&gt;.&lt;node name&gt;.
         /// </summary>
         internal static string NodeConfigurationNameInvalid {
             get {
