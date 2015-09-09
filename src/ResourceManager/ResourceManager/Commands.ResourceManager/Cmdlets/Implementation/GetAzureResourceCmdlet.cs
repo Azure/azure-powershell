@@ -239,6 +239,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             {
                 this.WriteWarning("The ParentResource parameter is obsolete and will be removed in future releases. Please use the -ResourceType and -ResourceName parameters instead.");
             }
+            if (this.ExpandPermissions.IsPresent)
+            {
+                this.WriteWarning("The ExpandPermissions parameter is obsolete and will be removed in future releases.");
+            }
             this.subscriptionIds.AddRange(this.SubscriptionId.CoalesceEnumerable());
         }
 
@@ -403,7 +407,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             return await this
                 .GetResourcesClient()
-                .ListObjectColleciton<JObject>(
+                .ListObjectCollection<JObject>(
                     resourceCollectionId: resourceCollectionId,
                     apiVersion: apiVersion,
                     cancellationToken: this.CancellationToken.Value,
@@ -581,7 +585,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             return this
                 .GetResourcesClient()
-                .ListObjectColleciton<Permission>(
+                .ListObjectCollection<Permission>(
                     resourceCollectionId: permissionCheckId,
                     apiVersion: apiVersion,
                     cancellationToken: this.CancellationToken.Value);

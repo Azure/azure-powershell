@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             return await this
                 .GetResourcesClient()
-                .ListObjectColleciton<JObject>(
+                .ListObjectCollection<JObject>(
                     resourceCollectionId: resourceCollectionId,
                     apiVersion: apiVersion,
                     cancellationToken: this.CancellationToken.Value,
