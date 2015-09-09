@@ -24,10 +24,13 @@ using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using System;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
-    public class SqlTestsBase
+    public class SqlTestsBase : RMTestBase
     {
         protected SqlEvnSetupHelper helper;
 
@@ -134,10 +137,12 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                 if (HttpMockServer.Variables.ContainsKey(TenantIdKey))
                 {
                     tenantId = HttpMockServer.Variables[TenantIdKey];
+                    AzureRMCmdlet.Profile.DefaultContext.Tenant.Id = new Guid(tenantId);
                 }
                 if (HttpMockServer.Variables.ContainsKey(DomainKey))
                 {
                     UserDomain = HttpMockServer.Variables[DomainKey];
+                    AzureRMCmdlet.Profile.DefaultContext.Tenant.Domain = UserDomain;
                 }
             }
 

@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.Sql.Cmdlet
         /// <returns>The recommended index adapter</returns>
         protected override AzureSqlDatabaseIndexRecommendationAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            return new AzureSqlDatabaseIndexRecommendationAdapter(Profile, subscription);
+            return new AzureSqlDatabaseIndexRecommendationAdapter(Profile.DefaultContext);
         }
     }
 }

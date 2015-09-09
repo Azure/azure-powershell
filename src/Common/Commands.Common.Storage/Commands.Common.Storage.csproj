@@ -155,21 +155,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\commands.common\AzurePowerShell.cs">
-      <Link>Common\AzurePowerShell.cs</Link>
-    </Compile>
-    <Compile Include="..\commands.common\ConversionUtilities.cs">
-      <Link>Common\ConversionUtilities.cs</Link>
-    </Compile>
-    <Compile Include="..\commands.common\DebugStreamTraceListener.cs">
-      <Link>Common\DebugStreamTraceListener.cs</Link>
-    </Compile>
-    <Compile Include="..\commands.common\GeneralUtilities.cs">
-      <Link>Common\GeneralUtilities.cs</Link>
-    </Compile>
-    <Compile Include="..\commands.common\RecordingTracingInterceptor.cs">
-      <Link>Common\RecordingTracingInterceptor.cs</Link>
-    </Compile>
     <Compile Include="AzureStorageContext.cs" />
     <Compile Include="BlobUploadParameters.cs" />
     <Compile Include="IStorageClientWrapper.cs" />

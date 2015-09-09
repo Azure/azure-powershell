@@ -74,14 +74,14 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureSMProfile Profile { get; set; }
+        public AzureContext Context { get; set; }
 
-        public SqlAuditAdapter(AzureSMProfile profile, AzureSubscription subscription)
+        public SqlAuditAdapter(AzureContext context)
         {
-            Profile = profile;
-            Subscription = subscription;
-            Communicator = new AuditingEndpointsCommunicator(Profile, subscription);
-            AzureCommunicator = new AzureEndpointsCommunicator(Profile, subscription);
+            Context = context;
+            Subscription = context.Subscription;
+            Communicator = new AuditingEndpointsCommunicator(Context);
+            AzureCommunicator = new AzureEndpointsCommunicator(Context);
             IgnoreStorage = false;
         }
 
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
 
         private bool IsDatabaseInServiceTierForPolicy(DatabaseAuditingPolicyModel model, string clientId)
         {
-            AzureSqlDatabaseCommunicator dbCommunicator = new AzureSqlDatabaseCommunicator(Profile, Subscription);
+            AzureSqlDatabaseCommunicator dbCommunicator = new AzureSqlDatabaseCommunicator(Context);
             Management.Sql.Models.Database database = dbCommunicator.Get(model.ResourceGroupName, model.ServerName, model.DatabaseName, clientId);
             DatabaseEdition edition = DatabaseEdition.None;
             Enum.TryParse<DatabaseEdition>(database.Properties.Edition, true, out edition);
@@ -431,7 +431,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             {
                 return FetchedStorageAccountTableEndpoint;
             }
-            return AzureCommunicator.GetStorageTableEndpoint(Profile, storageName);
+            return AzureCommunicator.GetStorageTableEndpoint(Context, storageName);
         }
 
         /// <summary>
