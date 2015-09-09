@@ -17,6 +17,7 @@ using System.Linq;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Moq;
 using Xunit;
 
@@ -214,6 +215,53 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                                 list.Count == 2 &&
                                 list.Any(c => c.Name == cluster1.Name) &&
                                 list.Any(c => c.Name == cluster2.Name)), true), Times.Once);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CanGetHDInsightClusterWithError()
+        {
+            cmdlet.ClusterName = ClusterName;
+            cmdlet.ResourceGroupName = ResourceGroupName;
+            var cluster = new Cluster
+            {
+                Id = "id",
+                Name = ClusterName,
+                Location = Location,
+                Properties = new ClusterGetProperties
+                {
+                    ClusterVersion = "3.1",
+                    ClusterState = "Running",
+                    ClusterDefinition = new ClusterDefinition
+                    {
+                        ClusterType = HDInsightClusterType.Hadoop
+                    },
+                    QuotaInfo = new QuotaInfo
+                    {
+                        CoresUsed = 24
+                    },
+                    OperatingSystemType = OSType.Windows,
+                    ErrorInfos = new List<ErrorInfo>
+                    {
+                        new ErrorInfo {Code = "BadRequest", Message = "Error message for bad request."},
+                        new ErrorInfo {Code = "OtherError", Message = "This should not show up."}
+                    }
+                }
+            };
+
+            var getresponse = new ClusterGetResponse { Cluster = cluster };
+            hdinsightManagementMock.Setup(c => c.Get(ResourceGroupName, ClusterName))
+                .Returns(getresponse)
+                .Verifiable();
+
+            hdinsightManagementMock.Setup(c => c.GetCluster(It.IsAny<string>(), It.IsAny<string>()))
+                .CallBase()
+                .Verifiable();
+
+            cmdlet.ExecuteCmdlet();
+
+            commandRuntimeMock.VerifyAll();
+            commandRuntimeMock.Verify(f => f.WriteObject(It.Is<List<AzureHDInsightCluster>>(c => c.First().Error.Equals("Error message for bad request.")), true), Times.Once);
         }
     }
 }
