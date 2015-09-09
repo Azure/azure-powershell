@@ -407,9 +407,13 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         public new void WriteError(ErrorRecord errorRecord)
         {
             FlushDebugMessages();
-            QosEvent.Exception = errorRecord.Exception;
-            QosEvent.IsSuccess = false;
-            LogQosEvent(true);
+            if (QosEvent != null && errorRecord != null)
+            {
+                QosEvent.Exception = errorRecord.Exception;
+                QosEvent.IsSuccess = false;
+                LogQosEvent(true);
+            }
+            
             base.WriteError(errorRecord);
         }
 
