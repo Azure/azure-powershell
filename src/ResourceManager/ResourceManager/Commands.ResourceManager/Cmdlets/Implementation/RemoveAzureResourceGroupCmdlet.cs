@@ -108,9 +108,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         protected string GetResourceId()
         {
-            return !string.IsNullOrEmpty(this.Name)
-                ? ResourceIdUtility.GetResourceId(this.Profile.Context.Subscription.Id, this.Name, null, null)
-                : string.Format("/subscriptions/{0}/resourceGroups/", this.Profile.Context.Subscription.Id.ToString());
+            return ResourceIdUtility.GetResourceId(this.Profile.Context.Subscription.Id, this.Name, null, null);
         }
     }
 }
