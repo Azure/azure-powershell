@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// <returns></returns>
         protected override AzureSqlElasticPoolAdapter InitModelAdapter(Azure.Common.Authentication.Models.AzureSubscription subscription)
         {
-            return new AzureSqlElasticPoolAdapter(Profile.DefaultContext);
+            return new AzureSqlElasticPoolAdapter(DefaultProfile.DefaultContext);
         }
     }
 }

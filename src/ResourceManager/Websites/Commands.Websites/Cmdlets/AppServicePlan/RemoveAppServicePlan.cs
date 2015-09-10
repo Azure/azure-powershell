@@ -14,9 +14,6 @@
 
 
 using System.Management.Automation;
-using Microsoft.Azure.Management.WebSites.Models;
-using Microsoft.Azure;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.WebApp.Utilities;
 
 
@@ -31,7 +28,7 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ConfirmAction(
                     Force.IsPresent,

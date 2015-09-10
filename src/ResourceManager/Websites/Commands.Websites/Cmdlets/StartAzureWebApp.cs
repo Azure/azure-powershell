@@ -14,22 +14,7 @@
 // ----------------------------------------------------------------------------------
 
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Management.Automation;
-using Microsoft.Azure.Management.WebSites.Models;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
-using Microsoft.Azure.Commands.WebApp;
-using Microsoft.Azure.Management.WebSites;
-using System.Net.Http;
-using System.Threading;
-using System.Net;
-using Microsoft.Azure;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.WebApp.Utilities;
 
 
@@ -46,7 +31,7 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets
         [ValidateNotNullOrEmptyAttribute]
         public string SlotName { get; set; }
      
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             WriteObject(WebsitesClient.StartWebsite(ResourceGroupName, Name, SlotName));
             

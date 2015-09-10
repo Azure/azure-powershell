@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
             {
                 if (this.trafficManagerClient == null)
                 {
-                    this.trafficManagerClient = new TrafficManagerClient(Profile.DefaultContext)
+                    this.trafficManagerClient = new TrafficManagerClient(DefaultProfile.DefaultContext)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp

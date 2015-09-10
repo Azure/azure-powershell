@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 if (_networkClient == null)
                 {
-                    _networkClient = new NetworkClient(Profile.DefaultContext)
+                    _networkClient = new NetworkClient(DefaultProfile.DefaultContext)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp,

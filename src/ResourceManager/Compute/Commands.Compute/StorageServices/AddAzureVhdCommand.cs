@@ -152,11 +152,11 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             StorageCredentialsFactory storageCredentialsFactory;
 
             var storageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(
-                        Profile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
+                        DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
 
             if (StorageCredentialsFactory.IsChannelRequired(Destination))
             {
-                storageCredentialsFactory = new StorageCredentialsFactory(this.ResourceGroupName, storageClient, AzureRMCmdlet.Profile.DefaultContext.Subscription);
+                storageCredentialsFactory = new StorageCredentialsFactory(this.ResourceGroupName, storageClient, AzureRMCmdlet.DefaultProfile.DefaultContext.Subscription);
             }
             else
             {
