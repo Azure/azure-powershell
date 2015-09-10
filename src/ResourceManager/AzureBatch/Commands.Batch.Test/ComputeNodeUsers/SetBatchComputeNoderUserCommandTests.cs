@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodeUsers
             cmdlet.Name = "testUser";
 
             // Don't go to the service on an Update ComputeNodeUser call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<ComputeNodeUpdateUserParameters, ComputeNodeUpdateUserResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeUpdateUserParameters, ComputeNodeUpdateUserResponse>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameters are set
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodeUsers
                     requestPassword = request.TypedParameters.Password;
                     requestExpiryTime = request.TypedParameters.ExpiryTime.Value;
                 };
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor(requestAction: extractUserUpdateParametersAction);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor(requestAction: extractUserUpdateParametersAction);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             cmdlet.ExecuteCmdlet();

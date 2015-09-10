@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 
             cmdlet.Job = new PSCloudJob(BatchTestHelpers.CreateFakeBoundJob(context));
 
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudJobUpdateParameters, CloudJobUpdateResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudJobUpdateParameters, CloudJobUpdateResponse>();
             cmdlet.AdditionalBehaviors = new BatchClientBehavior[] {interceptor};
 
             // Verify that no exceptions occur

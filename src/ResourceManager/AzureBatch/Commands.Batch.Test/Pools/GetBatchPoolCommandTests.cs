@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             // Build a CloudPool instead of querying the service on a Get CloudPool call
             CloudPoolGetResponse response = BatchTestHelpers.CreateCloudPoolGetResponse(cmdlet.Id);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudPoolGetParameters, CloudPoolGetResponse>(response);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudPoolGetParameters, CloudPoolGetResponse>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             // Build some CloudPools instead of querying the service on a List CloudPools call
             CloudPoolListResponse response = BatchTestHelpers.CreateCloudPoolListResponse(idsOfConstructedPools);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudPoolListParameters, CloudPoolListResponse>(response);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudPoolListParameters, CloudPoolListResponse>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             // Build some CloudPools instead of querying the service on a List CloudPools call
             CloudPoolListResponse response = BatchTestHelpers.CreateCloudPoolListResponse(idsOfConstructedPools);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudPoolListParameters, CloudPoolListResponse>(response);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudPoolListParameters, CloudPoolListResponse>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             // Build some CloudPools instead of querying the service on a List CloudPools call
             CloudPoolListResponse response = BatchTestHelpers.CreateCloudPoolListResponse(idsOfConstructedPools);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudPoolListParameters, CloudPoolListResponse>(response);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudPoolListParameters, CloudPoolListResponse>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later

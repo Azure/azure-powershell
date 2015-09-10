@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             cmdlet.Id = "testJob";
 
             // Don't go to the service on a Terminate CloudJob call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudJobTerminateParameters, CloudJobTerminateResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudJobTerminateParameters, CloudJobTerminateResponse>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
                 {
                     requestTerminateReason = request.TypedParameters.TerminateReason;
                 };
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor(requestAction: extractTerminateReasponAction);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor(requestAction: extractTerminateReasponAction);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             cmdlet.ExecuteCmdlet();

@@ -107,7 +107,8 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// <param name="requestAction">An action to perform on the request.</param>
         /// <typeparam name="TParameters">The type of the request parameters.</typeparam>
         /// <typeparam name="TResponse">The type of the expected response.</typeparam>
-        public static RequestInterceptor CreateNoOpInterceptor<TParameters, TResponse>(TResponse responseToUse = null, Action<BatchRequest<TParameters, TResponse>> requestAction = null)
+        public static RequestInterceptor CreateFakeServiceResponseInterceptor<TParameters, TResponse>(TResponse responseToUse = null, 
+            Action<BatchRequest<TParameters, TResponse>> requestAction = null)
             where TParameters : ProxyModels.BatchParameters
             where TResponse : ProxyModels.BatchOperationResponse, new()
         {
@@ -135,7 +136,7 @@ namespace Microsoft.Azure.Commands.Batch.Test
         /// The interceptor must handle both request types since it's possible for one OM node file method to perform both REST APIs.
         /// </summary>
         /// <param name="fileName">The name of the file to put in the response body.</param>
-        public static RequestInterceptor CreateNoOpGetFileAndPropertiesInterceptor(string fileName)
+        public static RequestInterceptor CreateFakGetFileAndPropertiesResponseInterceptor(string fileName)
         {
             RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {

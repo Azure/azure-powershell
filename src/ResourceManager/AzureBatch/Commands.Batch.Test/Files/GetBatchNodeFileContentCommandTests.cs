@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             string fileName = "stdout.txt";
 
             // Don't go to the service on a Get NodeFile call or Get NodeFile Properties call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpGetFileAndPropertiesInterceptor(cmdlet.Name);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakGetFileAndPropertiesResponseInterceptor(cmdlet.Name);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             using (MemoryStream memStream = new MemoryStream())
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             string fileName = "startup\\stdout.txt";
 
             // Don't go to the service on a Get NodeFile call or Get NodeFile Properties call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpGetFileAndPropertiesInterceptor(cmdlet.Name);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakGetFileAndPropertiesResponseInterceptor(cmdlet.Name);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             using (MemoryStream memStream = new MemoryStream())

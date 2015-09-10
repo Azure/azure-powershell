@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.AutoScaleFormula = "formula";
 
             // Don't go to the service on an Evaluate AutoScale call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudPoolEvaluateAutoScaleParameters, CloudPoolEvaluateAutoScaleResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudPoolEvaluateAutoScaleParameters, CloudPoolEvaluateAutoScaleResponse>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
                 {
                     requestFormula = request.TypedParameters.AutoScaleFormula;
                 };
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor(requestAction: extractFormulaAction);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor(requestAction: extractFormulaAction);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             cmdlet.ExecuteCmdlet();

@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             cmdlet.Pool = new PSCloudPool(BatchTestHelpers.CreateFakeBoundPool(context));
 
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudPoolUpdatePropertiesParameters, CloudPoolUpdatePropertiesResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudPoolUpdatePropertiesParameters, CloudPoolUpdatePropertiesResponse>();
             cmdlet.AdditionalBehaviors = new BatchClientBehavior[] { interceptor };
 
             // Verify that no exceptions occur

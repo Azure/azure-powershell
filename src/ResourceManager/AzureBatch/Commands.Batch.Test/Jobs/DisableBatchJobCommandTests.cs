@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             cmdlet.DisableJobOption = DisableJobOption.Terminate;
 
             // Don't go to the service on a Disable CloudJob call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudJobDisableParameters, CloudJobDisableResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudJobDisableParameters, CloudJobDisableResponse>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
                 {
                     requestDisableOption = request.TypedParameters.DisableJobOption;
                 };
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor(requestAction: extractDisableOptionAction);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor(requestAction: extractDisableOptionAction);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             cmdlet.ExecuteCmdlet();
