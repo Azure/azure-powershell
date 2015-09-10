@@ -13,23 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Management.Automation;
-using Microsoft.Azure.Management.WebSites.Models;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
-using Microsoft.Azure.Commands.WebApp;
-using Microsoft.Azure.Management.WebSites;
-using System.Net.Http;
-using System.Threading;
-using System.Net;
-using Microsoft.Azure;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.WebApp.Utilities;
+using Microsoft.Azure.Management.WebSites.Models;
 
 namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
 {
@@ -58,7 +44,7 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
         [ValidateSet("Small", "Medium", "Large", IgnoreCase = true)]
         public string WorkerSize { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             //for now not asking admin site name need to implement in future
             string adminSiteName = null;

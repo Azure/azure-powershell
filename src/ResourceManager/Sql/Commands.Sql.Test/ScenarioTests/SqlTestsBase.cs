@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
                 helper.SetupEnvironment();
 
-                helper.SetupModules(AzureModule.AzureProfile, "ScenarioTests\\Common.ps1",
+                helper.SetupModules(AzureModule.AzureResourceManager, "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + this.GetType().Name + ".ps1");
 
                 helper.RunPowerShellTest(scripts);
