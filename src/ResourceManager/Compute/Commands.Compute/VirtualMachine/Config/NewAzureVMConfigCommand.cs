@@ -51,6 +51,11 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string AvailabilitySetId { get; set; }
 
+        protected override bool IsUsageMetricEnabled
+        {
+            get { return true; }
+        }
+
         public override void ExecuteCmdlet()
         {
             var vm = new PSVirtualMachine

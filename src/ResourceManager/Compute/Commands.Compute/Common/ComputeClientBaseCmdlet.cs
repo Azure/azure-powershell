@@ -23,6 +23,11 @@ namespace Microsoft.Azure.Commands.Compute
     {
         protected const string VirtualMachineExtensionType = "Microsoft.Compute/virtualMachines/extensions";
 
+        protected override bool IsUsageMetricEnabled
+        {
+            get { return true; }
+        }
+
         private ComputeClient computeClient;
 
         public ComputeClient ComputeClient
@@ -54,18 +59,11 @@ namespace Microsoft.Azure.Commands.Compute
         {
             try
             {
-                try
-                {
-                    action();
-                }
-                catch (CloudException ex)
-                {
-                    throw new ComputeCloudException(ex);
-                }
+                action();
             }
-            catch (Exception ex)
+            catch (CloudException ex)
             {
-                WriteExceptionError(ex);
+                throw new ComputeCloudException(ex);
             }
         }
     }
