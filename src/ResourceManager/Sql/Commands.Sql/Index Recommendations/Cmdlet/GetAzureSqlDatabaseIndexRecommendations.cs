@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.Cmdlet
     /// <summary>
     /// Defines the Get-AzureSqlDatabaseIndexRecommendations cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureSqlDatabaseIndexRecommendations", ConfirmImpact = ConfirmImpact.None)]
+    [Cmdlet(VerbsCommon.Get, "AzureRMSqlDatabaseIndexRecommendations", ConfirmImpact = ConfirmImpact.None)]
     public class GetAzureSqlDatabaseIndexRecommendations : AzureSqlCmdletBase<IEnumerable<IndexRecommendation>, AzureSqlDatabaseIndexRecommendationAdapter>
     {
         /// <summary>

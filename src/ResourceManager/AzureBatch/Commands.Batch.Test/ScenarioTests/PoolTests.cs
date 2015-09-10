@@ -421,7 +421,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     }
 
     // Cmdlets that use the HTTP Recorder interceptor for use with scenario tests
-    [Cmdlet(VerbsCommon.Get, "AzureBatchPool_ST", DefaultParameterSetName = Constants.ODataFilterParameterSet)]
+    [Cmdlet(VerbsCommon.Get, "AzureRMBatchPool_ST", DefaultParameterSetName = Constants.ODataFilterParameterSet)]
     public class GetBatchPoolScenarioTestCommand : GetBatchPoolCommand
     {
         protected override void ProcessRecord()
@@ -431,7 +431,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
     }
 
-    [Cmdlet(VerbsCommon.New, "AzureBatchPool_ST", DefaultParameterSetName = TargetDedicatedParameterSet)]
+    [Cmdlet(VerbsCommon.New, "AzureRMBatchPool_ST", DefaultParameterSetName = TargetDedicatedParameterSet)]
     public class NewBatchPoolScenarioTestCommand : NewBatchPoolCommand
     {
         protected override void ProcessRecord()
@@ -441,7 +441,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
     }
 
-    [Cmdlet(VerbsCommon.Remove, "AzureBatchPool_ST")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRMBatchPool_ST")]
     public class RemoveBatchPoolScenarioTestCommand : RemoveBatchPoolCommand
     {
         protected override void ProcessRecord()
@@ -501,7 +501,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
     }
 
-    [Cmdlet(VerbsCommon.Set, "AzureBatchPoolOSVersion_ST")]
+    [Cmdlet(VerbsCommon.Set, "AzureRMBatchPoolOSVersion_ST")]
     public class SetBatchPoolOSVersionScenarioTestCommand : SetBatchPoolOSVersionCommand
     {
         protected override void ProcessRecord()

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure Sql Database
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureSqlDatabase",
+    [Cmdlet(VerbsCommon.New, "AzureRMSqlDatabase",
         ConfirmImpact = ConfirmImpact.Low)]
     public class NewAzureSqlDatabase : AzureSqlDatabaseCmdletBase
     {

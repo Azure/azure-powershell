@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets azure automation variables for a given account.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureAutomationVariable")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRMAutomationVariable")]
     [OutputType(typeof(Variable))]
     public class RemoveAzureAutomationVariable : AzureAutomationBaseCmdlet
     {

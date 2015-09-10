@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Get, "AzureBatchAccount"), OutputType(typeof(BatchAccountContext))]
+    [Cmdlet(VerbsCommon.Get, "AzureRMBatchAccount"), OutputType(typeof(BatchAccountContext))]
     public class GetBatchAccountCommand : BatchCmdletBase
     {
         [Alias("Name")]
