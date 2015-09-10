@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8531411A-0137-4E27-9C5E-49E07C245048}"
 	ProjectSection(SolutionItems) = preProject
@@ -112,6 +112,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.StreamAnalytics.Test", "ResourceManager\StreamAnalytics\Commands.StreamAnalytics.Test\Commands.StreamAnalytics.Test.csproj", "{7E6683BE-ECFF-4709-89EB-1325E9E70512}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.TrafficManager2.Test", "ResourceManager\TrafficManager\Commands.TrafficManager2.Test\Commands.TrafficManager2.Test.csproj", "{5764A3A4-586C-4536-8481-13007CAC111B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ResourceManager.Profile", "Common\Commands.ResourceManager.Profile\Commands.ResourceManager.Profile.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ResourceManager.Profile.Test", "Common\Commands.ResourceManager.Profile.Test\Commands.ResourceManager.Profile.Test.csproj", "{152D78F0-A642-4D0E-B3A8-2FC64FFA9714}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.UsageAggregates.Test", "ResourceManager\Commerce\Commands.UsageAggregates.Test\Commands.UsageAggregates.Test.csproj", "{F220C306-29A3-4511-8518-A58A55C60D07}"
 EndProject
@@ -329,6 +333,14 @@ Global
 		{5764A3A4-586C-4536-8481-13007CAC111B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5764A3A4-586C-4536-8481-13007CAC111B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5764A3A4-586C-4536-8481-13007CAC111B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{152D78F0-A642-4D0E-B3A8-2FC64FFA9714}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{152D78F0-A642-4D0E-B3A8-2FC64FFA9714}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{152D78F0-A642-4D0E-B3A8-2FC64FFA9714}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{152D78F0-A642-4D0E-B3A8-2FC64FFA9714}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F220C306-29A3-4511-8518-A58A55C60D07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F220C306-29A3-4511-8518-A58A55C60D07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F220C306-29A3-4511-8518-A58A55C60D07}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -367,6 +379,7 @@ Global
 		{56ED8C97-53B9-4DF6-ACB5-7E6800105BF8} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{7E6683BE-ECFF-4709-89EB-1325E9E70512} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{5764A3A4-586C-4536-8481-13007CAC111B} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{152D78F0-A642-4D0E-B3A8-2FC64FFA9714} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{F220C306-29A3-4511-8518-A58A55C60D07} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{13E031E4-8A43-4B87-9D72-D70180C31C11} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 	EndGlobalSection
