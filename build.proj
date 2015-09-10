@@ -43,7 +43,7 @@
       Targets="Clean"
       Properties="$(ReleaseBuildConfig)"
       ContinueOnError="false" />
-    <!--<MSBuild
+    <MSBuild
       Projects="@(AzureServiceManagementSln)"
       Targets="Clean"
       Properties="$(DebugBuildConfig)"
@@ -52,7 +52,7 @@
       Projects="@(AzureServiceManagementSln)"
       Targets="Clean"
       Properties="$(ReleaseBuildConfig)"
-      ContinueOnError="false" />-->
+      ContinueOnError="false" />
     <MSBuild
       Projects="@(SetupSln)"
       Targets="Clean"
@@ -135,7 +135,7 @@
       Properties="$(ReleaseBuildConfig)"
       BuildInParallel="$(BuildInParallel)"
       ContinueOnError="false" />
-    <!--<MSBuild
+    <MSBuild
       Projects="@(AzureServiceManagementSln)"
       Targets="Build"
       Properties="$(DebugBuildConfig)"
@@ -146,7 +146,7 @@
       Targets="Build"
       Properties="$(ReleaseBuildConfig)"
       BuildInParallel="$(BuildInParallel)"
-      ContinueOnError="false" />-->
+      ContinueOnError="false" />
   </Target>
 
   <!-- Build the Setup -->
@@ -199,12 +199,12 @@
       Properties="$(ReleaseBuildConfig)"
       BuildInParallel="$(BuildInParallel)"
       ContinueOnError="false" />
-    <!--<MSBuild
+    <MSBuild
       Projects="@(AzureServiceManagementSln)"
       Targets="Build"
       Properties="$(ReleaseBuildConfig)"
       BuildInParallel="$(BuildInParallel)"
-      ContinueOnError="false" />-->
+      ContinueOnError="false" />
   </Target>
 
   <!-- Build the Cmdlets in Debug configuration -->
@@ -216,12 +216,12 @@
       Properties="$(DebugBuildConfig)"
       BuildInParallel="$(BuildInParallel)"
       ContinueOnError="false" />
-    <!--<MSBuild
+    <MSBuild
       Projects="@(AzureServiceManagementSln)"
       Targets="Build"
       Properties="$(DebugBuildConfig)"
       BuildInParallel="$(BuildInParallel)"
-      ContinueOnError="false" />-->
+      ContinueOnError="false" />
   </Target>
 
   <PropertyGroup>
