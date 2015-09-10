@@ -431,7 +431,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     filter: this.ODataQuery);
 
             var apiVersion = await this
-                .DetermineApiVersion(providerNamespace: Constants.MicrosoftResourceNamesapce, resourceType: Constants.ResourceGroups)
+                .DetermineApiVersion(providerNamespace: Constants.MicrosoftResourceNamespace, resourceType: Constants.ResourceGroups)
                 .ConfigureAwait(continueOnCapturedContext: false);
 
             return await this
@@ -458,7 +458,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     filter: this.ODataQuery);
 
             var apiVersion = await this
-                .DetermineApiVersion(providerNamespace: Constants.MicrosoftResourceNamesapce, resourceType: Constants.ResourceGroups)
+                .DetermineApiVersion(providerNamespace: Constants.MicrosoftResourceNamespace, resourceType: Constants.ResourceGroups)
                 .ConfigureAwait(continueOnCapturedContext: false);
 
             return await this
@@ -487,7 +487,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     filter: this.ODataQuery);
 
             var apiVersion = await this
-                .DetermineApiVersion(providerNamespace: Constants.MicrosoftResourceNamesapce, resourceType: Constants.ResourceGroups)
+                .DetermineApiVersion(providerNamespace: Constants.MicrosoftResourceNamespace, resourceType: Constants.ResourceGroups)
                 .ConfigureAwait(continueOnCapturedContext: false);
 
             return await this

@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 {
                     var apiVersion = this
                         .DetermineApiVersion(
-                            providerNamespace: Constants.MicrosoftResourceNamesapce,
+                            providerNamespace: Constants.MicrosoftResourceNamespace,
                             resourceType: Constants.ResourceGroups)
                         .Result;
 

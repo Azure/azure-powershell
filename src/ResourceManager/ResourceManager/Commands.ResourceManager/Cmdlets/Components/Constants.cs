@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <summary>
         /// The <c>Microsoft.Resource</c> namespace.
         /// </summary>
-        public static readonly string MicrosoftResourceNamesapce = "Microsoft.Resources";
+        public static readonly string MicrosoftResourceNamespace = "Microsoft.Resources";
 
         /// <summary>
         /// The string literal <c>ResourceGroups</c>
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <summary>
         /// The deployment operations resource type.
         /// </summary>
-        public static readonly string MicrosoftResourcesDeploymentOperationsType = Constants.MicrosoftResourceNamesapce + "/deployments/operations";
+        public static readonly string MicrosoftResourcesDeploymentOperationsType = Constants.MicrosoftResourceNamespace + "/deployments/operations";
 
         /// <summary>
         /// The type name of the generic resource.
