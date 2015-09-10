@@ -188,17 +188,11 @@
     <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\DscExtensionSettingsSerializer.cs">
       <Link>Extension\DSC\DscExtensionSettingsSerializer.cs</Link>
     </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\Exceptions\GetDscResourceException.cs">
-      <Link>Extension\DSC\GetDscResourceException.cs</Link>
-    </Compile>
     <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\Publish\ConfigurationParseResult.cs">
       <Link>Extension\DSC\ConfigurationParseResult.cs</Link>
     </Compile>
     <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\Publish\ConfigurationParsingHelper.cs">
       <Link>Extension\DSC\ConfigurationParsingHelper.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\Publish\DscExtensionPublishCmdletCommonBase.cs">
-      <Link>Extension\DSC\DscExtensionPublishCmdletCommonBase.cs</Link>
     </Compile>
     <Compile Include="AvailabilitySets\RemoveAzureAvailabilitySetCommand.cs" />
     <Compile Include="AvailabilitySets\GetAzureAvailabilitySetCommand.cs" />
@@ -219,6 +213,8 @@
     <Compile Include="Extension\Diagnostics\GetAzureVMDiagnosticsExtension.cs" />
     <Compile Include="Extension\Diagnostics\RemoveAzureVMDiagnosticsExtension.cs" />
     <Compile Include="Extension\Diagnostics\SetAzureVMDiagnosticsExtension.cs" />
+    <Compile Include="Extension\DSC\GetDscResourceException.cs" />
+    <Compile Include="Extension\DSC\DscExtensionPublishCmdletCommonBase.cs" />
     <Compile Include="Extension\DSC\DscExtensionCmdletCommonBase.cs" />
     <Compile Include="Extension\DSC\PublishAzureVMDscConfigurationCommand.cs" />
     <Compile Include="Extension\DSC\RemoveAzureVMDscExtensionCommand.cs" />

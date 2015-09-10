@@ -130,9 +130,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Commands.Common.Test\Mocks\MockCommandRuntime.cs">
-      <Link>Mocks\MockCommandRuntime.cs</Link>
-    </Compile>
+    <Compile Include="Mocks\MockCommandRuntime.cs" />
     <Compile Include="PSCmdletExtensions.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="EnvironmentSetupHelper.cs" />
