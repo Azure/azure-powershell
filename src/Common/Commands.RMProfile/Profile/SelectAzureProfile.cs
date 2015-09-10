@@ -48,26 +48,26 @@ namespace Microsoft.Azure.Commands.Profile
         {
             if (!string.IsNullOrEmpty(Path))
             {
-                AzureRMCmdlet.Profile = new AzureRMProfile(Path);
+                AzureRMCmdlet.DefaultProfile = new AzureRMProfile(Path);
             }
             else
             {
-                AzureRMCmdlet.Profile = Profile;
+                AzureRMCmdlet.DefaultProfile = Profile;
             }
 
-            if (AzureRMCmdlet.Profile == null)
+            if (AzureRMCmdlet.DefaultProfile == null)
             {
                 throw new ArgumentException(Resources.AzureProfileMustNotBeNull);
             }
 
-            WriteObject(AzureRMCmdlet.Profile);
+            WriteObject(AzureRMCmdlet.DefaultProfile);
         }
 
         protected override AzureContext DefaultContext
         {
             get
             {
-                return AzureRMCmdlet.Profile.DefaultContext;
+                return AzureRMCmdlet.DefaultProfile.DefaultContext;
             }
         }
 

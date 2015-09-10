@@ -49,11 +49,11 @@ namespace Microsoft.Azure.Commands.Profile
             }
             else
             {
-                if (AzureRMCmdlet.Profile == null)
+                if (AzureRMCmdlet.DefaultProfile == null)
                 {
                     throw new ArgumentException(Resources.AzureProfileMustNotBeNull);
                 }
-                AzureRMCmdlet.Profile.Save(Path);
+                AzureRMCmdlet.DefaultProfile.Save(Path);
             }
 
             WriteVerbose(string.Format("Profile saved to: {0}.", Path));
