@@ -48,6 +48,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources
         public string Type { get; set; }
 
         /// <summary>
+        /// Gets or sets the resource <c>sku</c>.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public ResourceSku Sku { get; set; }
+
+        /// <summary>
         /// Gets or sets the kind of the resource definition.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
