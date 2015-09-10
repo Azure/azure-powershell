@@ -69,6 +69,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ParameterSetName = UpdateCustomDomainParamSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Custom Domain Name.")]
+        [AllowEmptyString]
         [ValidateNotNull]
         public string CustomDomainName { get; set; }
 
@@ -86,6 +87,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ParameterSetName = UpdateTagsParamSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Tags.")]
+        [AllowEmptyCollection]
         [ValidateNotNull]
         public Hashtable[] Tags { get; set; }
 
@@ -120,7 +122,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
                 updateParameters = new StorageAccountUpdateParameters
                     {
-                        Tags = tagDictionary
+                        Tags = tagDictionary ?? new Dictionary<string, string>()
                     };
             }
 
