@@ -58,7 +58,7 @@
       Targets="Clean"
       Properties="$(DebugBuildConfig)"
       ContinueOnError="false" />
-	  
+      
     <!-- Delete the publish files -->
     <Message Importance="high" Text="Cleaning publish files..." ContinueOnError="false" />
     <ItemGroup>
@@ -135,7 +135,7 @@
       Properties="$(ReleaseBuildConfig)"
       BuildInParallel="$(BuildInParallel)"
       ContinueOnError="false" />
-	<!--<MSBuild
+    <!--<MSBuild
       Projects="@(AzureServiceManagementSln)"
       Targets="Build"
       Properties="$(DebugBuildConfig)"
@@ -159,11 +159,11 @@
       Importance="high"
       Text="You are required to have installed the WiX Toolset at http://wix.codeplex.com/releases/view/115492 (Wix38.msi)"
       ContinueOnError="false" />
-    <MSBuild
+    <!--<MSBuild
       Projects="@(SetupSln)"
       Targets="Build"
       Properties="$(DebugBuildConfig)"
-      ContinueOnError="false" />
+      ContinueOnError="false" />-->
   </Target>
 
   <!-- Build the Setup -->
@@ -176,11 +176,11 @@
       Importance="high"
       Text="You are required to have installed the WiX Toolset at http://wix.codeplex.com/releases/view/115492 (Wix38.msi)"
       ContinueOnError="false" />
-    <MSBuild
+    <!--<MSBuild
       Projects="@(SetupSln)"
       Targets="Build"
       Properties="$(ReleaseBuildConfig)"
-      ContinueOnError="false" />
+      ContinueOnError="false" />-->
   </Target>
 
   <!-- Build the Cmdlets and Setup in all configurations -->
@@ -199,7 +199,7 @@
       Properties="$(ReleaseBuildConfig)"
       BuildInParallel="$(BuildInParallel)"
       ContinueOnError="false" />
-	<!--<MSBuild
+    <!--<MSBuild
       Projects="@(AzureServiceManagementSln)"
       Targets="Build"
       Properties="$(ReleaseBuildConfig)"
@@ -216,7 +216,7 @@
       Properties="$(DebugBuildConfig)"
       BuildInParallel="$(BuildInParallel)"
       ContinueOnError="false" />
-	<!--<MSBuild
+    <!--<MSBuild
       Projects="@(AzureServiceManagementSln)"
       Targets="Build"
       Properties="$(DebugBuildConfig)"
