@@ -128,9 +128,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlt.CommandRuntime = commandRuntimeMock;
 
             // Act
-            cmdlt.InvokeBeginProcessing();
             Assert.Throws<ArgumentException>(() => cmdlt.ExecuteCmdlet());
-            cmdlt.InvokeEndProcessing();
         }
 
         [Fact]
@@ -139,6 +137,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         {
             var profile = new AzureRMProfile();
             profile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
+            profile.DefaultContext = new AzureContext(new AzureSubscription(), new AzureAccount(), profile.Environments["foo"]);
             AzureRMCmdlet.DefaultProfile = profile;
             SaveAzureProfileCommand cmdlt = new SaveAzureProfileCommand();
             // Setup
