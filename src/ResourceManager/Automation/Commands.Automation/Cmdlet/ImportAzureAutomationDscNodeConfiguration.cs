@@ -47,8 +47,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the configuration name for the node configuration.
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the DSC Configuration to import the Node Configuration under. All Node Configurations in Azure Automation must exist under a Configuration. The name of the Configuration will become the namespace of the imported Node Configuration, in the form of 'ConfigurationName.MofFileName'")]
-        [Alias("NodeConfigurationName")]
-        public string Name { get; set; }
+        [Alias("ConfigurationName")]
+        public string ConfigName { get; set; }
 
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                     this.ResourceGroupName,
                     this.AutomationAccountName,
                     this.SourcePath,
-                    this.Name,
+                    this.ConfigName,
                     this.Force);
 
             this.WriteObject(nodeConfiguration);

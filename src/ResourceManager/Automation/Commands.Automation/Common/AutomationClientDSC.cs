@@ -1065,6 +1065,22 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
         #endregion
 
         #region node configuration
+        public Model.NodeConfiguration TryGetNodeConfiguration(string resourceGroupName, string automationAccountName, string nodeConfigurationName, string rollupStatus)
+        {
+            using (var request = new RequestSettings(this.automationManagementClient))
+            {
+                try
+                {
+                    return GetNodeConfiguration(resourceGroupName, automationAccountName, nodeConfigurationName, rollupStatus);
+                }
+                catch (ResourceNotFoundException resourceNotFoundException)
+                {
+                    Console.Write(resourceNotFoundException.Message);
+                    return null;
+                }                
+            }
+        }
+
         public Model.NodeConfiguration GetNodeConfiguration(string resourceGroupName, string automationAccountName, string nodeConfigurationName, string rollupStatus)
         {
             using (var request = new RequestSettings(this.automationManagementClient))
@@ -1164,7 +1180,7 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
             string resourceGroupName,
             string automationAccountName,
             string sourcePath,
-            string nodeConfigurationName,
+            string configurationName,
             bool overWrite)
         {
             using (var request = new RequestSettings(this.automationManagementClient))
@@ -1172,15 +1188,16 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
                 Requires.Argument("ResourceGroupName", resourceGroupName).NotNullOrEmpty();
                 Requires.Argument("AutomationAccountName", automationAccountName).NotNullOrEmpty();
                 Requires.Argument("SourcePath", sourcePath).NotNullOrEmpty();
-                Requires.Argument("nodeConfigurationName", nodeConfigurationName).NotNullOrEmpty();
+                Requires.Argument("configurationName", configurationName).NotNullOrEmpty();
 
                 string fileContent = null;
-                string configurationName = null;
+                string nodeConfigurationName = null;
                 string nodeName = null;
 
                 if (File.Exists(Path.GetFullPath(sourcePath)))
                 {
                     fileContent = System.IO.File.ReadAllText(sourcePath);
+                    nodeConfigurationName = configurationName + "." + System.IO.Path.GetFileNameWithoutExtension(sourcePath);
                 }
                 else
                 {
@@ -1190,35 +1207,9 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
                                             CultureInfo.CurrentCulture,
                                             Resources.ConfigurationSourcePathInvalid));
                 }
-
-                try
-                {
-                    int index = nodeConfigurationName.IndexOf(".");
-                    if (index > 0)
-                    {
-                        nodeName = nodeConfigurationName.Substring(0, index);
-                        int configNameStartIndex = index + 1;
-                        int configNameLenght = nodeConfigurationName.Length - index -1;
-                        configurationName = nodeConfigurationName.Substring(configNameStartIndex, configNameLenght);
-                    }
-                    else
-                    {
-                        throw new ArgumentException(string.Format(
-                                            CultureInfo.CurrentCulture,
-                                            Resources.NodeConfigurationNameInvalid));
-                    }
-                }
-                 catch (Exception)
-                {
-                    // exception in getting the config name from configurationName
-                    throw new ArgumentException(
-                                        string.Format(
-                                            CultureInfo.CurrentCulture,
-                                            Resources.NodeConfigurationNameInvalid));
-                }
-
+                
                  // if node configuration already exists, ensure overwrite flag is specified
-                var nodeConfigurationModel = this.GetNodeConfiguration(
+                var nodeConfigurationModel = this.TryGetNodeConfiguration(
                     resourceGroupName,
                     automationAccountName,
                     nodeConfigurationName,
