@@ -53,23 +53,5 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 return DefaultProfile.DefaultContext;
             }
         }
-
-        public virtual void ExecuteCmdlet()
-        {
-            // Do nothing.
-        }
-
-        protected override void ProcessRecord()
-        {
-            try
-            {
-                base.ProcessRecord();
-                ExecuteCmdlet();
-            }
-            catch (Exception ex)
-            {
-                WriteExceptionError(ex);
-            }
-        }
     }
 }

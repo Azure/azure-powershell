@@ -119,6 +119,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common", "Common\C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RMProfile", "Common\Commands.RMProfile\Commands.RMProfile.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ResourceManager.Common.Test", "Common\Commands.ResourceManager.Common.Test\Commands.ResourceManager.Common.Test.csproj", "{9D4B6E57-633D-4E5E-B017-53F22987DB94}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -341,6 +343,10 @@ Global
 		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D4B6E57-633D-4E5E-B017-53F22987DB94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D4B6E57-633D-4E5E-B017-53F22987DB94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D4B6E57-633D-4E5E-B017-53F22987DB94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D4B6E57-633D-4E5E-B017-53F22987DB94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -369,5 +375,6 @@ Global
 		{5764A3A4-586C-4536-8481-13007CAC111B} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{F220C306-29A3-4511-8518-A58A55C60D07} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{13E031E4-8A43-4B87-9D72-D70180C31C11} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
+		{9D4B6E57-633D-4E5E-B017-53F22987DB94} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 	EndGlobalSection
 EndGlobal
