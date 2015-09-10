@@ -106,5 +106,16 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 };
             }
         }
+
+        public static PSRoleAssignment ToPSRoleAssignment(this ClassicAdministrator classicAdministrator, string currentSubscriptionId)
+        {
+            return new PSRoleAssignment()
+            {
+                RoleDefinitionName = classicAdministrator.Properties.Role,
+                DisplayName = classicAdministrator.Properties.EmailAddress,
+                Scope = "/subscriptions/" + currentSubscriptionId,
+                Actions = new List<string>() {"*"}
+            };
+        }
     }
 }

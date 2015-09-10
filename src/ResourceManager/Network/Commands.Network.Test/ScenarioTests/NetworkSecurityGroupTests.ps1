@@ -47,7 +47,7 @@ function Test-NetworkSecurityGroupCRUD
         #verification
         Assert-AreEqual $rgName $getNsg.ResourceGroupName
         Assert-AreEqual $nsgName $getNsg.Name
-        Assert-AreEqual $location $getNsg.Location
+        Assert-NotNull $getNsg.Location
         Assert-NotNull $getNsg.Etag
         Assert-AreEqual 0 @($getNsg.SecurityRules).Count
         Assert-AreEqual 6 @($getNsg.DefaultSecurityRules).Count
@@ -144,7 +144,7 @@ function Test-NetworkSecurityGroup-SecurityRuleCRUD
         #verification
         Assert-AreEqual $rgName $getNsg.ResourceGroupName
         Assert-AreEqual $nsgName $getNsg.Name
-        Assert-AreEqual $location $getNsg.Location
+        Assert-NotNull $getNsg.Location
         Assert-NotNull $getNsg.Etag
         Assert-AreEqual 1 @($getNsg.SecurityRules).Count
         Assert-AreEqual 6 @($getNsg.DefaultSecurityRules).Count

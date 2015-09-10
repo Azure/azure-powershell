@@ -129,8 +129,11 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// Filters role assignments based on the passed options.
         /// </summary>
         /// <param name="options">The filtering options</param>
+        /// <param name="currentSubscription">The current subscription</param>
+        /// <param name="expandPrincipalGroups">If true, assignments to the specified (user) principal's groups are also returned, in addition to direct assignments to the user</param>
+        /// <param name="includeClassicAdmins">If true, the subscription classic administrators are also returned as assignments</param>
         /// <returns>The filtered role assignments</returns>
-        public List<PSRoleAssignment> FilterRoleAssignments(FilterRoleAssignmentsOptions options)
+        public List<PSRoleAssignment> FilterRoleAssignments(FilterRoleAssignmentsOptions options, string currentSubscription, bool expandPrincipalGroups = false, bool includeClassicAdmins = false)
         {
             List<PSRoleAssignment> result = new List<PSRoleAssignment>();
             ListAssignmentsFilterParameters parameters = new ListAssignmentsFilterParameters();
@@ -138,7 +141,26 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             if (options.ADObjectFilter.HasFilter)
             {
                 // Filter first by principal
-                parameters.PrincipalId = string.IsNullOrEmpty(options.ADObjectFilter.Id) ? ActiveDirectoryClient.GetObjectId(options.ADObjectFilter) : Guid.Parse(options.ADObjectFilter.Id);
+                if (expandPrincipalGroups)
+                {
+                    PSADObject adObject = ActiveDirectoryClient.GetADObject(options.ADObjectFilter);
+                    if (adObject == null)
+                    {
+                        throw new KeyNotFoundException("The provided information does not map to an AD object.");
+                    }
+
+                    if (!(adObject is PSADUser))
+                    {
+                        throw new InvalidOperationException("ExpandPrincipalGroups is only supported for a User principal");
+                    }
+                    
+                    parameters.AssignedToPrincipalId = adObject.Id;
+                }
+                else
+                {
+                    parameters.PrincipalId = string.IsNullOrEmpty(options.ADObjectFilter.Id) ? ActiveDirectoryClient.GetObjectId(options.ADObjectFilter) : Guid.Parse(options.ADObjectFilter.Id);
+                }
+                
                 result.AddRange(AuthorizationManagementClient.RoleAssignments.List(parameters)
                     .RoleAssignments.Select(r => r.ToPSRoleAssignment(this, ActiveDirectoryClient)));
 
@@ -166,6 +188,14 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 result = result.Where(r => r.RoleDefinitionName.Equals(options.RoleDefinition, StringComparison.OrdinalIgnoreCase)).ToList();
             }
 
+            if (includeClassicAdmins)
+            {
+                // Get classic administrator access assignments 
+                List<ClassicAdministrator> classicAdministrators = AuthorizationManagementClient.ClassicAdministrators.List().ClassicAdministrators.ToList(); 
+                List<PSRoleAssignment> classicAdministratorsAssignments = classicAdministrators.Select(a => a.ToPSRoleAssignment(currentSubscription)).ToList(); 
+                result.AddRange(classicAdministratorsAssignments);
+            }
+
             return result;
         }
 
@@ -176,7 +206,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// <returns>The deleted role assignments</returns>
         public PSRoleAssignment RemoveRoleAssignment(FilterRoleAssignmentsOptions options)
         {
-            PSRoleAssignment roleAssignment = FilterRoleAssignments(options).FirstOrDefault();
+            PSRoleAssignment roleAssignment = FilterRoleAssignments(options, currentSubscription: string.Empty).FirstOrDefault();
 
             if (roleAssignment != null)
             {
