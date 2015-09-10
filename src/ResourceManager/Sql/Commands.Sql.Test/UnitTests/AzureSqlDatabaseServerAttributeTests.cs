@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
     public class AzureSqlServerAttributeTests
     {
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewAzureSqlServerAttributes()
         {
             Type type = typeof(NewAzureSqlServer);
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureSqlServerAttributes()
         {
             Type type = typeof(SetAzureSqlServer);
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveAzureSqlServerAttributes()
         {
             Type type = typeof(RemoveAzureSqlServer);
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureSqlServerAttributes()
         {
             Type type = typeof(GetAzureSqlServer);

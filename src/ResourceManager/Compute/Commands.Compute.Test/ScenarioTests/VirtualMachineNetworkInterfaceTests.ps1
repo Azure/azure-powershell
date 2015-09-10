@@ -24,7 +24,7 @@ function Test-SingleNetworkInterface
     try
     {
         # Common
-        $loc = 'westus';
+        $loc = Get-ComputeVMLocation;
         New-AzureResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
@@ -146,7 +146,7 @@ function Test-SingleNetworkInterfaceDnsSettings
     try
     {
         # Common
-        $loc = 'westus';
+        $loc = Get-ComputeVMLocation;
         New-AzureResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
@@ -252,7 +252,7 @@ function Test-MultipleNetworkInterface
     try
     {
         # Common
-        $loc = 'westus';
+        $loc = Get-ComputeVMLocation;
         New-AzureResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
@@ -366,7 +366,7 @@ function Test-AddNetworkInterface
     try
     {
         # Common
-        $loc = 'westus';
+        $loc = Get-ComputeVMLocation;
         New-AzureResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware

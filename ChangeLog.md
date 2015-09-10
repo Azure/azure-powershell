@@ -1,3 +1,41 @@
+﻿## 2015.09.03 version 0.9.8
+* Azure Compute (ARM) Cmdlets
+  * Added -Launch parameter for Get-AzureRemoteDesktopFile cmdlet
+  * Added Id parameter for VM cmdlets to support piping scenario without ResourceGroupName parameter
+  * Added Set-AzureVMDataDisk cmdlet
+  * Added Add-AzureVhd cmdlet
+  * Changed the output format of Get image cmdlets as a table
+  * Fixed Set-AzureVMAccessExtension cmdlet
+* Azure Compute (Service Management) cmdlets
+  * Changed the warning message to a non-terminating error message for ResourceNotFound in VM cmdlets
+  * Exposed ComputeImageConfig in Get-AzurePlatformVMImage cmdlet
+  * Fixed Publish-AzurePlatformExtension and Set-AzurePlatformExtension cmdlets
+* Azure Backup - added the following cmdlets
+  * Backup-AzureRMBackupItem
+  * Register-AzureRMBackupContainer
+  * Disable-AzureRMBackupProtection
+  * Enable-AzureRMBackupProtection
+  * Get-AzureRMBackupItem
+  * Get-AzureRMBackupJob
+  * Get-AzureRMBackupJobDetails
+  * Stop-AzureRMBackupJob
+  * Wait-AzureRMBackupJob
+  * Get-AzureRMBackupProtectionPolicy
+  * New-AzureRMBackupProtectionPolicy
+  * New-AzureRMBackupRetentionPolicyObject
+  * Remove-AzureRMBackupProtectionPolicy
+  * Set-AzureRMBackupProtectionPolicy
+  * Get-AzureRMBackupRecoveryPoint
+  * Restore-AzureRMBackupItem
+* Azure Batch - added the following cmdlets
+  * Enable-AzureBatchJob
+  * Disable-AzureBatchJob
+  * Enable-AzureBatchJobSchedule
+  * Disable-AzureBatchJobSchedule
+  * Stop-AzureBatchJob
+  * Stop-AzureBatchJobSchedule
+  * Stop-AzureBatchTask
+	
 ## 2015.08.17 version 0.9.7
 * Azure Profile cmdlets
   * New-AzureProfile
@@ -27,23 +65,6 @@
   * Added Restart-AzureRemoteAppVm cmdlet
 * Azure HDInsight cmdlets
   * Added cmdlet help
-* Azure Backup - added the following cmdlets
-  * Backup-AzureRMBackupItem
-  * Register-AzureRMBackupContainer
-  * Disable-AzureRMBackupProtection
-  * Enable-AzureRMBackupProtection
-  * Get-AzureRMBackupItem
-  * Get-AzureRMBackupJob
-  * Get-AzureRMBackupJobDetails
-  * Stop-AzureRMBackupJob
-  * Wait-AzureRMBackupJob
-  * Get-AzureRMBackupProtectionPolicy
-  * New-AzureRMBackupProtectionPolicy
-  * New-AzureRMBackupRetentionPolicyObject
-  * Remove-AzureRMBackupProtectionPolicy
-  * Set-AzureRMBackupProtectionPolicy
-  * Get-AzureRMBackupRecoveryPoint
-  * Restore-AzureRMBackupItem
 
 ## 2015.08.07 version 0.9.6
 * Azure Batch cmdlets

@@ -21,8 +21,11 @@
 
 function Test-AdditionalVipLifecycle
 {
+    # Virtual Machine cmdlets are now showing a non-terminating error message for ResourceNotFound
+    # To continue script, $ErrorActionPreference should be set to 'SilentlyContinue'.
+    $ErrorActionPreference='SilentlyContinue';
+
     # Setup
-       
     $vmname = getAssetName
     $vipName = getAssetName
     $serviceName = getAssetName
@@ -118,8 +121,11 @@ function CreateMultivipDeployment($vmname, $vipName, $serviceName, $storageAccou
 #>
 function Test-AdditionalVipMobility
 {
+    # Virtual Machine cmdlets are now showing a non-terminating error message for ResourceNotFound
+    # To continue script, $ErrorActionPreference should be set to 'SilentlyContinue'.
+    $ErrorActionPreference='SilentlyContinue';
+
     # Setup
-      
     $vmname = getAssetName
     $vipName = getAssetName
     $serviceName = getAssetName
@@ -176,8 +182,11 @@ function Test-AdditionalVipMobility
 #>
 function Test-ReserveExistingDeploymentIPMultivip
 {
+    # Virtual Machine cmdlets are now showing a non-terminating error message for ResourceNotFound
+    # To continue script, $ErrorActionPreference should be set to 'SilentlyContinue'.
+    $ErrorActionPreference='SilentlyContinue';
+
     # Setup
-    
     $vmname = getAssetName
     $vipName = getAssetName
     $serviceName = getAssetName
@@ -217,8 +226,11 @@ function Test-ReserveExistingDeploymentIPMultivip
 
 function Test-SetLBEndpoint
 {
+    # Virtual Machine cmdlets are now showing a non-terminating error message for ResourceNotFound
+    # To continue script, $ErrorActionPreference should be set to 'SilentlyContinue'.
+    $ErrorActionPreference='SilentlyContinue';
+
     # Setup
-      
     $vmname = getAssetName
     $vipName = getAssetName
     $serviceName = getAssetName
