@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
     }
 
-    [Cmdlet(VerbsLifecycle.Stop, "AzureBatchTask_ST")]
+    [Cmdlet(VerbsLifecycle.Stop, "AzureRMBatchTask_ST")]
     public class StopBatchTaskScenarioTestCommand : StopBatchTaskCommand
     {
         protected override void ProcessRecord()

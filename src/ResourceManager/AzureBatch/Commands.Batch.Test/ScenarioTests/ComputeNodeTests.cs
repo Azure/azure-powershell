@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
     }
 
-    [Cmdlet(VerbsLifecycle.Restart, "AzureBatchComputeNode_ST", DefaultParameterSetName = Constants.IdParameterSet)]
+    [Cmdlet(VerbsLifecycle.Restart, "AzureRMBatchComputeNode_ST", DefaultParameterSetName = Constants.IdParameterSet)]
     public class RestartBatchComputeNodeScenarioTestCommand : RestartBatchComputeNodeCommand
     {
         protected override void ProcessRecord()

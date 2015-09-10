@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets
     /// <summary>
     /// this commandlet will let you stop an Azure Web app
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Stop, "AzureWebApp")]
+    [Cmdlet(VerbsLifecycle.Stop, "AzureRMWebApp")]
     public class StopAzureWebAppCmdlet : WebAppBaseCmdlet
     {
 

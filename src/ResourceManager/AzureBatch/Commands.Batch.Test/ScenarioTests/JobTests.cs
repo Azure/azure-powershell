@@ -310,7 +310,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
     }
 
-    [Cmdlet(VerbsLifecycle.Enable, "AzureBatchJob_ST")]
+    [Cmdlet(VerbsLifecycle.Enable, "AzureRMBatchJob_ST")]
     public class EnableBatchJobScenarioTestCommand : EnableBatchJobCommand
     {
         protected override void ProcessRecord()
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
     }
 
-    [Cmdlet(VerbsLifecycle.Disable, "AzureBatchJob_ST")]
+    [Cmdlet(VerbsLifecycle.Disable, "AzureRMBatchJob_ST")]
     public class DisableBatchJobScenarioTestCommand : DisableBatchJobCommand
     {
         protected override void ProcessRecord()
@@ -330,7 +330,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
     }
 
-    [Cmdlet(VerbsLifecycle.Stop, "AzureBatchJob_ST")]
+    [Cmdlet(VerbsLifecycle.Stop, "AzureRMBatchJob_ST")]
     public class StopBatchJobScenarioTestCommand : StopBatchJobCommand
     {
         protected override void ProcessRecord()

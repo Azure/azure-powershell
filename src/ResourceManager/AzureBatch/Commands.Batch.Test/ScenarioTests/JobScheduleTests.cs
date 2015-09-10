@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
     }
 
-    [Cmdlet(VerbsLifecycle.Enable, "AzureBatchJobSchedule_ST")]
+    [Cmdlet(VerbsLifecycle.Enable, "AzureRMBatchJobSchedule_ST")]
     public class EnableBatchJobScheduleScenarioTestCommand : EnableBatchJobScheduleCommand
     {
         protected override void ProcessRecord()
@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
     }
 
-    [Cmdlet(VerbsLifecycle.Disable, "AzureBatchJobSchedule_ST")]
+    [Cmdlet(VerbsLifecycle.Disable, "AzureRMBatchJobSchedule_ST")]
     public class DisableBatchJobScheduleScenarioTestCommand : DisableBatchJobScheduleCommand
     {
         protected override void ProcessRecord()
@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
     }
 
-    [Cmdlet(VerbsLifecycle.Stop, "AzureBatchJobSchedule_ST")]
+    [Cmdlet(VerbsLifecycle.Stop, "AzureRMBatchJobSchedule_ST")]
     public class StopBatchJobScheduleScenarioTestCommand : StopBatchJobScheduleCommand
     {
         protected override void ProcessRecord()
