@@ -12,27 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.IO;
-using System.Linq;
-using System.Security;
-using System.Security.Cryptography.X509Certificates;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System.Management.Automation;
-using System.Security.Permissions;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.Profile.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Common.Authentication.Models;
+using System;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile
 {
     /// <summary>
-    /// Creates new Microsoft Azure profile.
+    /// Selects Microsoft Azure profile.
     /// </summary>
-    [Cmdlet(VerbsCommon.Select, "AzureProfile"), OutputType(typeof(AzureSMProfile))]
-    public class SelectAzureProfileCommand : AzurePSCmdlet
+    [Cmdlet(VerbsCommon.Select, "AzureProfile"), OutputType(typeof(AzureRMProfile))]
+    public class SelectAzureProfileCommand : AzureRMCmdlet
     {
         internal const string InMemoryProfileParameterSet = "InMemoryProfile";
         internal const string ProfileFromDiskParameterSet = "ProfileFromDisk";
@@ -43,45 +35,23 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(ParameterSetName = ProfileFromDiskParameterSet, Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true)]
         public string Path { get; set; }
 
-        [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        public void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             if (!string.IsNullOrEmpty(Path))
             {
-                AzureRMCmdlet.Profile = new AzureRMProfile(Path);
+                AzureRMCmdlet.DefaultProfile = new AzureRMProfile(Path);
             }
             else
             {
-                AzureRMCmdlet.Profile = Profile;
+                AzureRMCmdlet.DefaultProfile = Profile;
             }
 
-            if (AzureRMCmdlet.Profile == null)
+            if (AzureRMCmdlet.DefaultProfile == null)
             {
                 throw new ArgumentException(Resources.AzureProfileMustNotBeNull);
             }
 
-            WriteObject(AzureRMCmdlet.Profile);
-        }
-
-        protected override AzureContext DefaultContext
-        {
-            get
-            {
-                return AzureRMCmdlet.Profile.DefaultContext;
-            }
-        }
-
-        protected override void ProcessRecord()
-        {
-            try
-            {
-                base.ProcessRecord();
-                ExecuteCmdlet();
-            }
-            catch (Exception ex)
-            {
-                WriteExceptionError(ex);
-            }
+            WriteObject(AzureRMCmdlet.DefaultProfile);
         }
     }
 }

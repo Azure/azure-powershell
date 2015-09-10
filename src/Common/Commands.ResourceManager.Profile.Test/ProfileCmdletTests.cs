@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            Assert.True(AzureRMCmdlet.Profile.Environments.ContainsKey("foo"));
+            Assert.True(AzureRMCmdlet.DefaultProfile.Environments.ContainsKey("foo"));
         }
 
         [Fact]
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            Assert.True(AzureRMCmdlet.Profile.Environments.ContainsKey("foo"));
+            Assert.True(AzureRMCmdlet.DefaultProfile.Environments.ContainsKey("foo"));
         }
 
         [Fact]
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         {
             SaveAzureProfileCommand cmdlt = new SaveAzureProfileCommand();
             // Setup
-            AzureRMCmdlet.Profile = null;
+            AzureRMCmdlet.DefaultProfile = null;
             cmdlt.Path = "X:\\foo.json";
             cmdlt.CommandRuntime = commandRuntimeMock;
 
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         {
             var profile = new AzureRMProfile();
             profile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
-            AzureRMCmdlet.Profile = profile;
+            AzureRMCmdlet.DefaultProfile = profile;
             SaveAzureProfileCommand cmdlt = new SaveAzureProfileCommand();
             // Setup
             cmdlt.Path = "X:\\foo.json";

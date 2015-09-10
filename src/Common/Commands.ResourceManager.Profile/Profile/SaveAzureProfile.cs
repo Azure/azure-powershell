@@ -12,27 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.IO;
-using System.Linq;
-using System.Security;
-using System.Security.Cryptography.X509Certificates;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System.Management.Automation;
-using System.Security.Permissions;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.Profile.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Common.Authentication.Models;
+using System;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile
 {
     /// <summary>
     /// Saves Microsoft Azure profile.
     /// </summary>
-    [Cmdlet(VerbsData.Save, "AzureProfile"), OutputType(typeof(AzureSMProfile))]
-    public class SaveAzureProfileCommand : AzurePSCmdlet
+    [Cmdlet(VerbsData.Save, "AzureProfile"), OutputType(typeof(AzureRMProfile))]
+    public class SaveAzureProfileCommand : AzureRMCmdlet
     {
         [Parameter(Mandatory = false, Position = 0, ValueFromPipelineByPropertyName = true)]
         public AzureRMProfile Profile { get; set; }
@@ -40,8 +32,7 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true)]
         public string Path { get; set; }
 
-        [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        public void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             if (Profile != null)
             {
@@ -49,35 +40,14 @@ namespace Microsoft.Azure.Commands.Profile
             }
             else
             {
-                if (AzureRMCmdlet.Profile == null)
+                if (AzureRMCmdlet.DefaultProfile == null)
                 {
                     throw new ArgumentException(Resources.AzureProfileMustNotBeNull);
                 }
-                AzureRMCmdlet.Profile.Save(Path);
+                AzureRMCmdlet.DefaultProfile.Save(Path);
             }
 
             WriteVerbose(string.Format("Profile saved to: {0}.", Path));
-        }
-
-        protected override AzureContext DefaultContext
-        {
-            get
-            {
-                return null;
-            }
-        }
-
-        protected override void ProcessRecord()
-        {
-            try
-            {
-                base.ProcessRecord();
-                ExecuteCmdlet();
-            }
-            catch (Exception ex)
-            {
-                WriteExceptionError(ex);
-            }
         }
     }
 }
