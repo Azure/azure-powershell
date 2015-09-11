@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources
     using Newtonsoft.Json;
 
     /// <summary>
-    /// The resource plan object.
+    /// The resource sku object.
     /// </summary>
     public class ResourceSku
     {
