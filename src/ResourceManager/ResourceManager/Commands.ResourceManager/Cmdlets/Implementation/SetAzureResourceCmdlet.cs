@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     {
                         Kind = this.Kind ?? resource.Kind,
                         Plan = this.Plan.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourcePlan>() ?? resource.Plan,
-                        Sku = this.Sku.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourceSku>(),
+                        Sku = this.Sku.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourceSku>() ?? resource.Sku,
                         Tags = TagsHelper.GetTagsDictionary(this.Tag) ?? resource.Tags,
                         Location = resource.Location,
                         Properties = this.Properties == null ? resource.Properties : this.Properties.ToResourcePropertiesBody(),
