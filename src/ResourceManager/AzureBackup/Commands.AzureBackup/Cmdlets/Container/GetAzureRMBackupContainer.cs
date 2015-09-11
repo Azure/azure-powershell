@@ -48,11 +48,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         [ValidateNotNullOrEmpty]
         public AzureBackupContainerRegistrationStatus Status { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ExecutionBlock(() =>
             {
-                base.ExecuteCmdlet();
+                base.ProcessRecord();
 
                 List<AzureRMBackupContainer> containers = new List<AzureRMBackupContainer>();
 

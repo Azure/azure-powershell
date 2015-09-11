@@ -171,7 +171,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
 
         public void NewAzureVMProcess()
         {
-            AzureSubscription currentSubscription = Profile.Context.Subscription;
+            AzureSubscription currentSubscription = Profile.DefaultContext.Subscription;
             CloudStorageAccount currentStorage = null;
             try
             {

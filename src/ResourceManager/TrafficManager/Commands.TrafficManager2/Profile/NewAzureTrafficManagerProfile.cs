@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
     using System.Net;
     using Hyak.Common;
 
-    [Cmdlet(VerbsCommon.New, "AzureTrafficManagerProfile"), OutputType(typeof(TrafficManagerProfile))]
+    [Cmdlet(VerbsCommon.New, "AzureRMTrafficManagerProfile"), OutputType(typeof(TrafficManagerProfile))]
     public class NewAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the profile.")]
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource tags.")]
         public Hashtable[] Tag { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             // We are not supporting etags yet, NewAzureTrafficManagerProfile should not overwrite any existing profile.
             // Since our create operation is implemented using PUT, it will overwrite by default.

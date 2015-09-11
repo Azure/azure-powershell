@@ -69,7 +69,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 CommandRuntime = new MockCommandRuntime(),
                 WebsitesClient = clientMock.Object
             };
-            currentProfile = new AzureProfile();
+            currentProfile = new AzureSMProfile();
             var subscription = new AzureSubscription { Id = new Guid(base.subscriptionId) };
             subscription.Properties[AzureSubscription.Property.Default] = "True";
             currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;

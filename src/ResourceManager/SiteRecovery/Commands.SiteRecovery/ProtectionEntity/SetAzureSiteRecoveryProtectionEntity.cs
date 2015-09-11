@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// <summary>
     /// Set Protection Entity protection state.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureSiteRecoveryProtectionEntity", DefaultParameterSetName = ASRParameterSets.EnterpriseToEnterprise, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Set, "AzureRMSiteRecoveryProtectionEntity", DefaultParameterSetName = ASRParameterSets.EnterpriseToEnterprise, SupportsShouldProcess = true)]
     [OutputType(typeof(ASRJob))]
     public class SetAzureSiteRecoveryProtectionEntity : SiteRecoveryCmdletBase
     {
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             this.targetNameOrId = this.ProtectionEntity.FriendlyName;
             this.ConfirmAction(

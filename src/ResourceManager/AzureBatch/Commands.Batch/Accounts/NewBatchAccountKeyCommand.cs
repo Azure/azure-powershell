@@ -17,7 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.New, "AzureBatchAccountKey"), OutputType(typeof(BatchAccountContext))]
+    [Cmdlet(VerbsCommon.New, "AzureRMBatchAccountKey"), OutputType(typeof(BatchAccountContext))]
     public class RegenBatchAccountKeyCommand : BatchCmdletBase
     {
         internal const string ParameterSetContext = "Use Context";
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Batch
             }
         }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             BatchAccountContext context = BatchClient.RegenerateKeys(this.ResourceGroupName, this.AccountName, this.keyType);
             WriteObject(context);

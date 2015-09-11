@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.ManagedCache
         private const int MaxNamedCacheCount = 10;
 
         private ManagedCacheClient client;
-        public PSCacheClient(AzureProfile profile, AzureSubscription currentSubscription)
+        public PSCacheClient(AzureSMProfile profile, AzureSubscription currentSubscription)
         {
             client = AzureSession.ClientFactory.CreateClient<ManagedCacheClient>(profile, currentSubscription, AzureEnvironment.Endpoint.ServiceManagement);
         }

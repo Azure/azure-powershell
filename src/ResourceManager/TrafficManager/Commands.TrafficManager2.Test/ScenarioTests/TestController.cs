@@ -21,11 +21,13 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
     using Microsoft.Azure.Management.Authorization;
     using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Management.TrafficManager;
-    using Microsoft.Azure.Subscriptions.Csm;
+
     using Microsoft.Azure.Test;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using Microsoft.Azure.Subscriptions;
+    using WindowsAzure.Commands.Test.Utilities.Common;
 
-    public class TestController
+    public class TestController : RMTestBase
     {
         private CSMTestEnvironmentFactory csmTestFactory;
 

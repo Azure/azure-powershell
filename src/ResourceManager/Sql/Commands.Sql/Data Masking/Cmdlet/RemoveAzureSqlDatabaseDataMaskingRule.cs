@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
     /// <summary>
     /// Removes a data masking rule from a given database
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureSqlDatabaseDataMaskingRule", SupportsShouldProcess = true,
+    [Cmdlet(VerbsCommon.Remove, "AzureRMSqlDatabaseDataMaskingRule", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.High)]
     public class RemoveAzureSqlDatabaseDataMaskingRule : SqlDatabaseDataMaskingRuleCmdletBase
     {
@@ -47,9 +47,9 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         protected override IEnumerable<DatabaseDataMaskingRuleModel> PersistChanges(IEnumerable<DatabaseDataMaskingRuleModel> rules)
         {
             if (!Force.IsPresent && !ShouldProcess(
-                string.Format(CultureInfo.InvariantCulture, Resources.RemoveDatabaseDataMaskingRuleDescription, RuleId, DatabaseName),
-                string.Format(CultureInfo.InvariantCulture, Resources.RemoveDatabaseDataMaskingRuleWarning, RuleId, DatabaseName),
-                Resources.ShouldProcessCaption))
+                string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveDatabaseDataMaskingRuleDescription, RuleId, DatabaseName),
+                string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveDatabaseDataMaskingRuleWarning, RuleId, DatabaseName),
+                Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
             {
                 return null;
             }

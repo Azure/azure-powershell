@@ -48,7 +48,7 @@ namespace Microsoft.WindowsAzure.Commands.Websites
                         {
                             Site websiteObject = WebsitesClient.GetWebsite(Name, Slot);
                             WebsitesClient.DeleteWebsite(websiteObject.WebSpace, Name, Slot);
-                            Cache.RemoveSite(Profile.Context.Subscription.Id.ToString(), websiteObject);
+                            Cache.RemoveSite(Profile.DefaultContext.Subscription.Id.ToString(), websiteObject);
                         }
                         catch (CloudException)
                         {

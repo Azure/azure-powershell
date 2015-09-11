@@ -79,11 +79,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.Retention)]
         public int Retention { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ExecutionBlock(() =>
             {
-                base.ExecuteCmdlet();
+                base.ProcessRecord();
                 if (DailyRetention != false)
                 {
                     AzureRMBackupRetentionPolicy retentionPolicy = new AzureBackupDailyRetentionPolicy(RetentionType.Daily.ToString(), Retention);
