@@ -27,11 +27,16 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         /// <summary>
         /// Auto-backup settings
         /// </summary>
-        public AutoBackupSettings AutoBackupSettings { get; set; }
+        public PublicAutoBackupSettings AutoBackupSettings { get; set; }
 
         /// <summary>
         /// Auto-telemetry settings
         /// </summary>
         public AutoTelemetrySettings AutoTelemetrySettings { get; set; }
+
+        /// <summary>
+        /// Azure Key Vault SQL Credentials settings
+        /// </summary>
+        public PublicKeyVaultCredentialSettings KeyVaultCredentialSettings { get; set; }
     }
 }

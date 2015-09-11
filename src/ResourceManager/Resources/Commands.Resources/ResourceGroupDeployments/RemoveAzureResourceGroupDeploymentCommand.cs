@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroups
 
             if (PassThru)
             {
+                WriteWarning("The PassThru switch parameter is being deprecated and will be removed in a future release.");
                 WriteObject(true);
             }
         }

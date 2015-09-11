@@ -239,6 +239,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             {
                 this.WriteWarning("The ParentResource parameter is obsolete and will be removed in future releases. Please use the -ResourceType and -ResourceName parameters instead.");
             }
+            if (this.ExpandPermissions.IsPresent)
+            {
+                this.WriteWarning("The ExpandPermissions parameter is obsolete and will be removed in future releases.");
+            }
             this.subscriptionIds.AddRange(this.SubscriptionId.CoalesceEnumerable());
         }
 

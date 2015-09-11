@@ -171,6 +171,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IaaS\Extensions\SqlServer\AzureVMSqlServerPublicAutoBackupSettings.cs" />
+    <Compile Include="IaaS\Extensions\SqlServer\AzureVMSqlServerPublicKeyVaultCredentialSettings.cs" />
+    <Compile Include="IaaS\Extensions\SqlServer\AzureVMSqlServerPrivateKeyVaultCredentialSettings.cs" />
+    <Compile Include="IaaS\Extensions\SqlServer\AzureVMSqlServerKeyVaultCredentialSettings.cs" />
+    <Compile Include="IaaS\Extensions\SqlServer\NewAzureVMSqlServerKeyVaultCredentialConfig.cs" />
     <Compile Include="IaaS\Extensions\DSC\DscExtensionCmdletConstants.cs" />
     <Compile Include="IaaS\Extensions\DSC\DscExtensionPrivateSettings.cs" />
     <Compile Include="IaaS\Extensions\DSC\DscExtensionPublicSettings.cs" />
