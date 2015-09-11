@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
-using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Factories;
 using Microsoft.Azure.Common.Authentication.Models;
@@ -21,102 +20,144 @@ using Microsoft.Azure.Subscriptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Management.Automation;
 using System.Security;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
     public class RMProfileClient
     {
         private AzureRMProfile _profile;
+        public Action<string> WarningLog;
 
         public RMProfileClient(AzureRMProfile profile)
         {
             _profile = profile;
         }
 
-        public AzureRMProfile Login(AzureAccount account, AzureEnvironment environment, string tenantId)
+        public AzureRMProfile Login(AzureAccount account, AzureEnvironment environment, string tenantId, string subscriptionId, SecureString password)
         {
-            var tenant = string.IsNullOrEmpty(tenantId) ? AuthenticationFactory.CommonAdTenant : tenantId;
+            AzureSubscription newSubscription = null;
+            AzureTenant newTenant = new AzureTenant();
 
-            var commonTenantToken = AzureSession.AuthenticationFactory.Authenticate(account, environment, tenant, null, ShowDialog.Auto);
-
-            using (SubscriptionClient SubscriptionClient = AzureSession.ClientFactory.CreateCustomClient<SubscriptionClient>(
-                new TokenCloudCredentials(commonTenantToken.AccessToken),
-                environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement)))
+            // (tenant and subscription are present) OR
+            // (tenant is present and subscription is not provided)
+            if (!string.IsNullOrEmpty(tenantId))
             {
-                var tenantListResult = SubscriptionClient.Tenants.List();
-
-                if (!string.IsNullOrEmpty(tenantId) && !tenantListResult.TenantIds.Any(s => s.TenantId.Equals(tenantId, StringComparison.OrdinalIgnoreCase)))
+                newTenant.Id = new Guid(tenantId);
+                ShowDialog promptBehavior = password == null ? ShowDialog.Always : ShowDialog.Never;
+                TryGetTenantSubscription(account, environment, tenantId, subscriptionId, password, promptBehavior, out newSubscription);
+            }
+            // (tenant is not provided and subscription is present) OR
+            // (tenant is not provided and subscription is not provided)
+            else
+            {
+                foreach(var tenant in ListAccountTenants(account, environment, password))
                 {
-                    throw new ArgumentException(string.Format(Resources.TenantNotFound, tenantId));
+                    if (TryGetTenantSubscription(account, environment, tenant, subscriptionId, password, ShowDialog.Auto, out newSubscription))
+                    {
+                        newTenant.Id = new Guid(tenant);
+                        break;
+                    }
                 }
 
-                _profile.
-                //ListResourceManagerSubscriptions
-
-
-                //_profile.DefaultContext = new AzureContext();
             }
+
+            if (newSubscription == null)
+            {
+                throw new PSInvalidOperationException("Subscription was not found.");
+            }
+
+            _profile.DefaultContext = new AzureContext(newSubscription, account, environment, newTenant);
 
             return _profile;
         }
 
-        public IEnumerable<string> GetTenantSubscriptions(AzureAccount account, AzureEnvironment environment, string tenantId, SecureString password)
+        private bool TryGetTenantSubscription(
+            AzureAccount account, 
+            AzureEnvironment environment, 
+            string tenantId, 
+            string subscriptionId, 
+            SecureString password, 
+            ShowDialog promptBehavior, 
+            out AzureSubscription subscription)
         {
-            try
+            var accessToken = AzureSession.AuthenticationFactory.Authenticate(
+                    account,
+                    environment,
+                    tenantId,
+                    password,
+                    promptBehavior);
+            using (var subscriptionClient = AzureSession.ClientFactory.CreateCustomClient<SubscriptionClient>(
+                new TokenCloudCredentials(accessToken.AccessToken),
+                environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager)))
             {
-                var tenantAccount = new AzureAccount();
-                CopyAccount(account, tenantAccount);
-                var tenantToken = AzureSession.AuthenticationFactory.Authenticate(tenantAccount, environment, tenantId, password, ShowDialog.Never);
-                if (string.Equals(tenantAccount.Id, account.Id, StringComparison.InvariantCultureIgnoreCase))
+                Subscriptions.Models.Subscription subscriptionFromServer = null;
+
+                try
                 {
-                    tenantAccount = account;
+                    if (subscriptionId != null)
+                    {
+                        subscriptionFromServer = subscriptionClient.Subscriptions.Get(subscriptionId).Subscription;
+                    }
+                    else
+                    {
+                        var subscriptions = subscriptionClient.Subscriptions.List().Subscriptions;
+                        if (subscriptions != null)
+                        {
+                            if (subscriptions.Count > 1)
+                            {
+                                WriteWarningMessage(string.Format(
+                                    "Tenant '{0}' contains more than one subscription. First one will be selected for further use.",
+                                    tenantId));
+                            }
+                            subscriptionFromServer = subscriptions.First();
+                        }
+                    }
+                }
+                catch (CloudException ex)
+                {
+                    WriteWarningMessage(ex.Message);
                 }
 
-                tenantAccount.SetOrAppendProperty(AzureAccount.Property.Tenants, new string[] { tenantId });
-
-                using (var subscriptionClient = AzureSession.ClientFactory.CreateCustomClient<SubscriptionClient>(
-                            new TokenCloudCredentials(tenantToken.AccessToken),
-                            environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager)))
+                if (subscriptionFromServer != null)
                 {
-                    var subscriptionListResult = subscriptionClient.Subscriptions.List();
-
-                    return subscriptionListResult.Subscriptions.Select(s => s.SubscriptionId);
+                    subscription = new AzureSubscription
+                    {
+                        Id = new Guid(subscriptionFromServer.SubscriptionId),
+                        Account = accessToken.UserId,
+                        Environment = environment.Name,
+                        Name = subscriptionFromServer.DisplayName,
+                        Properties = new Dictionary<AzureSubscription.Property, string> { { AzureSubscription.Property.Tenants, accessToken.TenantId } }
+                    };
+                    return true;
                 }
 
-
-            }
-            catch (CloudException cEx)
-            {
-                WriteOrThrowAadExceptionMessage(cEx);
-            }
-            catch (AadAuthenticationException aadEx)
-            {
-                WriteOrThrowAadExceptionMessage(aadEx);
+                subscription = null;
+                return false;
             }
         }
 
-        private void CopyAccount(AzureAccount sourceAccount, AzureAccount targetAccount)
+        private string[] ListAccountTenants(AzureAccount account, AzureEnvironment environment, SecureString password)
         {
-            targetAccount.Id = sourceAccount.Id;
-            targetAccount.Type = sourceAccount.Type;
+            ShowDialog promptBehavior = password == null ? ShowDialog.Always : ShowDialog.Never;
+
+            var commonTenantToken = AzureSession.AuthenticationFactory.Authenticate(account, environment,
+                AuthenticationFactory.CommonAdTenant, password, promptBehavior);
+
+            using (var subscriptionClient = AzureSession.ClientFactory.CreateCustomClient<SubscriptionClient>(
+                    new TokenCloudCredentials(commonTenantToken.AccessToken),
+                    environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager)))
+            {
+                return subscriptionClient.Tenants.List().TenantIds.Select(ti => ti.TenantId).ToArray();
+            }
         }
 
-        private void WriteOrThrowAadExceptionMessage(AadAuthenticationException aadEx)
+        private void WriteWarningMessage(string message)
         {
-            if (aadEx is AadAuthenticationFailedWithoutPopupException)
+            if (WarningLog != null)
             {
-                WriteDebugMessage(aadEx.Message);
-            }
-            else if (aadEx is AadAuthenticationCanceledException)
-            {
-                WriteWarningMessage(aadEx.Message);
-            }
-            else
-            {
-                throw aadEx;
+                WarningLog(message);
             }
         }
     }

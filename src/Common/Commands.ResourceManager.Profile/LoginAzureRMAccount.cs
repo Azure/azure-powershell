@@ -12,16 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using System.Management.Automation;
 using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Common.Authentication;
 using System.Security;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -30,7 +25,7 @@ namespace Microsoft.Azure.Commands.Profile
     /// </summary>
     [Cmdlet("Login", "AzureRMAccount", DefaultParameterSetName = "User")]
     [OutputType(typeof(AzureRMProfile))]
-    public class LoginAzureRMAccount : AzureRMCmdlet
+    public class LoginAzureRMAccount : AzurePSCmdlet
     {
         [Parameter(Mandatory = false, HelpMessage = "Environment containing the account to log into")]
         [ValidateNotNullOrEmpty]
@@ -57,6 +52,14 @@ namespace Microsoft.Azure.Commands.Profile
         [ValidateNotNullOrEmpty]
         public string SubscriptionId { get; set; }
 
+        protected override AzureContext DefaultContext
+        {
+            get
+            {
+                return null;
+            }
+        }
+
         public LoginAzureRMAccount()
             : base()
         {
@@ -67,7 +70,7 @@ namespace Microsoft.Azure.Commands.Profile
             base.BeginProcessing();
             if (Environment == null)
             {
-                Environment = DefaultContext.Environment;
+                Environment = AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud];
             }
         }
 
@@ -100,31 +103,10 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 azureAccount.SetProperty(AzureAccount.Property.Tenants, new[] { Tenant });
             }
-
-            var profileClient = new ProfileClient();
-            var account = this.ProfileClient.AddAccountAndLoadSubscriptions(azureAccount, ProfileClient.GetEnvironmentOrDefault(Environment), password);
-
-            if (account != null)
-            {
-                WriteVerbose(string.Format(Resources.AddAccountAdded, azureAccount.Id));
-                if (ProfileClient.Profile.DefaultSubscription != null)
-                {
-                    WriteVerbose(string.Format(Resources.AddAccountShowDefaultSubscription,
-                        ProfileClient.Profile.DefaultSubscription.Name));
-                }
-                WriteVerbose(Resources.AddAccountViewSubscriptions);
-                WriteVerbose(Resources.AddAccountChangeSubscription);
-
-                string subscriptionsList = account.GetProperty(AzureAccount.Property.Subscriptions);
-                string tenantsList = account.GetProperty(AzureAccount.Property.Tenants);
-
-                if (subscriptionsList == null)
-                {
-                    WriteWarning(string.Format(Resources.NoSubscriptionAddedMessage, azureAccount.Id));
-                }
-
-                WriteObject(account.ToPSAzureAccount());
-            }
+            
+            var profileClient = new RMProfileClient(AzureRMCmdlet.DefaultProfile);
+            
+            WriteObject(profileClient.Login(azureAccount, Environment, Tenant, SubscriptionId, password));
         }
     }
 }
