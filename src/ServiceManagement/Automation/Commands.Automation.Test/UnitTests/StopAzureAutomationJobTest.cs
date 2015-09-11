@@ -25,7 +25,7 @@ using Moq;
 namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
 {
     [TestClass]
-    public class StopAzureAutomationJobTest : TestBase
+    public class StopAzureAutomationJobTest : SMTestBase
     {
         private Mock<IAutomationClient> mockAutomationClient;
 

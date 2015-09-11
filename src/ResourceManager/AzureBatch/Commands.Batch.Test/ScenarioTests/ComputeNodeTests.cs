@@ -24,7 +24,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
-    public class ComputeNodeTests
+    public class ComputeNodeTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
         private const string accountName = ScenarioTestHelpers.SharedAccount;
         private const string poolId = ScenarioTestHelpers.SharedPool;
@@ -170,33 +170,33 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     }
 
     // Cmdlets that use the HTTP Recorder interceptor for use with scenario tests
-    [Cmdlet(VerbsCommon.Get, "AzureBatchComputeNode_ST", DefaultParameterSetName = Constants.ODataFilterParameterSet)]
+    [Cmdlet(VerbsCommon.Get, "AzureRMBatchComputeNode_ST", DefaultParameterSetName = Constants.ODataFilterParameterSet)]
     public class GetBatchComputeNodeScenarioTestCommand : GetBatchComputeNodeCommand
     {
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
         }
     }
 
-    [Cmdlet(VerbsLifecycle.Restart, "AzureBatchComputeNode_ST", DefaultParameterSetName = Constants.IdParameterSet)]
+    [Cmdlet(VerbsLifecycle.Restart, "AzureRMBatchComputeNode_ST", DefaultParameterSetName = Constants.IdParameterSet)]
     public class RestartBatchComputeNodeScenarioTestCommand : RestartBatchComputeNodeCommand
     {
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
         }
     }
 
-    [Cmdlet(VerbsCommon.Reset, "AzureBatchComputeNode_ST", DefaultParameterSetName = Constants.IdParameterSet)]
+    [Cmdlet(VerbsCommon.Reset, "AzureRMBatchComputeNode_ST", DefaultParameterSetName = Constants.IdParameterSet)]
     public class ResetBatchComputeNodeScenarioTestCommand : ResetBatchComputeNodeCommand
     {
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
         }
     }
 }

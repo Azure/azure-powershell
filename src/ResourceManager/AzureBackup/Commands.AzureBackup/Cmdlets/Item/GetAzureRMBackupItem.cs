@@ -44,11 +44,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         [ValidateSet("AzureVM")]
         public string Type { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ExecutionBlock(() =>
             {
-                base.ExecuteCmdlet();
+                base.ProcessRecord();
 
                 List<CSMProtectedItemResponse> azureBackupDatasourceObjects = null;
                 List<CSMItemResponse> azureBackupPOObjects = null;

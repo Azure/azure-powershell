@@ -48,7 +48,7 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
         public const string goldImageImport = "GoldImageImport";
     }
 
-    public abstract partial class RdsCmdlet : AzurePSCmdlet
+    public abstract partial class RdsCmdlet : AzureSMCmdlet
     {
         [ThreadStatic]
         internal static Job theJob;
@@ -63,7 +63,7 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
             {
                 if (client == null)
                 {
-                    client = AzureSession.ClientFactory.CreateClient<RemoteAppManagementClient>(Profile.Context, AzureEnvironment.Endpoint.ServiceManagement);
+                    client = AzureSession.ClientFactory.CreateClient<RemoteAppManagementClient>(Profile.DefaultContext, AzureEnvironment.Endpoint.ServiceManagement);
                     client.RdfeNamespace = "remoteapp";
 
                     // Read the namespace if defined as an environment variable from the session configuration
@@ -93,7 +93,7 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
                 if (mgmtClient == null)
                 {
                     mgmtClient = AzureSession.ClientFactory.CreateClient<Microsoft.WindowsAzure.Management.ManagementClient>
-                                        (Profile.Context, AzureEnvironment.Endpoint.ServiceManagement);
+                                        (Profile.DefaultContext, AzureEnvironment.Endpoint.ServiceManagement);
 
                 }
 

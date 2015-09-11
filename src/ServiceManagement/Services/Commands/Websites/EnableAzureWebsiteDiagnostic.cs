@@ -69,7 +69,7 @@ namespace Microsoft.WindowsAzure.Commands.Websites
             else if (TableStorage.IsPresent || BlobStorage.IsPresent)
             {
                 properties[DiagnosticProperties.StorageAccountName] = string.IsNullOrEmpty(StorageAccountName) ?
-                    Profile.Context.Subscription.GetProperty(AzureSubscription.Property.StorageAccount) : StorageAccountName;
+                    Profile.DefaultContext.Subscription.GetProperty(AzureSubscription.Property.StorageAccount) : StorageAccountName;
 
                 if (TableStorage.IsPresent)
                 {

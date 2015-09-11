@@ -25,36 +25,36 @@ function Test-VirtualMachineExtension
     {
         # Common
         $loc = Get-ComputeVMLocation;
-        New-AzureResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
         $vmsize = 'Standard_A2';
         $vmname = 'vm' + $rgname;
-        $p = New-AzureVMConfig -VMName $vmname -VMSize $vmsize;
+        $p = New-AzureRMVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
 
         # NRP
-        $subnet = New-AzureVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
-        $vnet = Get-AzureVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
+        $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
-        $pubip = New-AzurePublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
-        $pubip = Get-AzurePublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubip = New-AzureRMPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzureRMPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
         $pubipId = $pubip.Id;
-        $nic = New-AzureNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
-        $nic = Get-AzureNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nic = New-AzureRMNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzureRMNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
         $nicId = $nic.Id;
 
-        $p = Add-AzureVMNetworkInterface -VM $p -Id $nicId;
+        $p = Add-AzureRMVMNetworkInterface -VM $p -Id $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
 
         # Storage Account (SA)
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        New-AzureStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-        Retry-IfException { $global:stoaccount = Get-AzureStorageAccount -ResourceGroupName $rgname -Name $stoname; }
-        $stokey = (Get-AzureStorageAccountKey -ResourceGroupName $rgname -Name $stoname).Key1;
+        New-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        Retry-IfException { $global:stoaccount = Get-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        $stokey = (Get-AzureRMStorageAccountKey -ResourceGroupName $rgname -Name $stoname).Key1;
 
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
@@ -63,12 +63,12 @@ function Test-VirtualMachineExtension
         $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
         $dataDiskVhdUri3 = "https://$stoname.blob.core.windows.net/test/data3.vhd";
 
-        $p = Set-AzureVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
+        $p = Set-AzureRMVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
-        $p = Remove-AzureVMDataDisk -VM $p -Name 'testDataDisk3';
+        $p = Add-AzureRMVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
+        $p = Add-AzureRMVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
+        $p = Add-AzureRMVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
+        $p = Remove-AzureRMVMDataDisk -VM $p -Name 'testDataDisk3';
         
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
@@ -91,10 +91,10 @@ function Test-VirtualMachineExtension
         $computerName = 'test';
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
-        $p = Set-AzureVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
+        $p = Set-AzureRMVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
 
         $imgRef = Get-DefaultCRPWindowsImageOffline;
-        $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
+        $p = ($imgRef | Set-AzureRMVMSourceImage -VM $p);
 
         Assert-AreEqual $p.OSProfile.AdminUsername $user;
         Assert-AreEqual $p.OSProfile.ComputerName $computerName;
@@ -107,7 +107,7 @@ function Test-VirtualMachineExtension
         Assert-AreEqual $p.StorageProfile.ImageReference.Version $imgRef.Version;
 
         # Virtual Machine
-        New-AzureVM -ResourceGroupName $rgname -Location $loc -VM $p;
+        New-AzureRMVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Virtual Machine Extension
         $extname = 'csetest';
@@ -118,10 +118,10 @@ function Test-VirtualMachineExtension
         # Set extension settings by raw strings
         $settingstr = '{"fileUris":[],"commandToExecute":""}';
         $protectedsettingstr = '{"storageAccountName":"' + $stoname + '","storageAccountKey":"' + $stokey + '"}';
-        Set-AzureVMExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -Publisher $publisher -ExtensionType $exttype -TypeHandlerVersion $extver -SettingString $settingstr -ProtectedSettingString $protectedsettingstr;
+        Set-AzureRMVMExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -Publisher $publisher -ExtensionType $exttype -TypeHandlerVersion $extver -SettingString $settingstr -ProtectedSettingString $protectedsettingstr;
 
         # Get VM Extension
-        $ext = Get-AzureVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname;
+        $ext = Get-AzureRMVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname;
         Assert-AreEqual $ext.ResourceGroupName $rgname;
         Assert-AreEqual $ext.Name $extname;
         Assert-AreEqual $ext.Publisher $publisher;
@@ -130,7 +130,7 @@ function Test-VirtualMachineExtension
         Assert-AreEqual $ext.ResourceGroupName $rgname;
         Assert-NotNull $ext.ProvisioningState;
 
-        $ext = Get-AzureVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Status;
+        $ext = Get-AzureRMVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Status;
         Assert-AreEqual $ext.ResourceGroupName $rgname;
         Assert-AreEqual $ext.Name $extname;
         Assert-AreEqual $ext.Publisher $publisher;
@@ -141,7 +141,7 @@ function Test-VirtualMachineExtension
         Assert-NotNull $ext.Statuses;
 
         # Remove Extension
-        Remove-AzureVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Force;
+        Remove-AzureRMVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Force;
     }
     finally
     {
@@ -164,36 +164,36 @@ function Test-VirtualMachineExtensionUsingHashTable
     {
         # Common
         $loc = Get-ComputeVMLocation;
-        New-AzureResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
         $vmsize = 'Standard_A2';
         $vmname = 'vm' + $rgname;
-        $p = New-AzureVMConfig -VMName $vmname -VMSize $vmsize;
+        $p = New-AzureRMVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
 
         # NRP
-        $subnet = New-AzureVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
-        $vnet = Get-AzureVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
+        $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
-        $pubip = New-AzurePublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
-        $pubip = Get-AzurePublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubip = New-AzureRMPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzureRMPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
         $pubipId = $pubip.Id;
-        $nic = New-AzureNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
-        $nic = Get-AzureNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nic = New-AzureRMNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzureRMNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
         $nicId = $nic.Id;
 
-        $p = Add-AzureVMNetworkInterface -VM $p -Id $nicId;
+        $p = Add-AzureRMVMNetworkInterface -VM $p -Id $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
 
         # Storage Account (SA)
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        New-AzureStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-        Retry-IfException { $global:stoaccount = Get-AzureStorageAccount -ResourceGroupName $rgname -Name $stoname; }
-        $stokey = (Get-AzureStorageAccountKey -ResourceGroupName $rgname -Name $stoname).Key1;
+        New-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        Retry-IfException { $global:stoaccount = Get-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        $stokey = (Get-AzureRMStorageAccountKey -ResourceGroupName $rgname -Name $stoname).Key1;
 
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
@@ -202,12 +202,12 @@ function Test-VirtualMachineExtensionUsingHashTable
         $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
         $dataDiskVhdUri3 = "https://$stoname.blob.core.windows.net/test/data3.vhd";
 
-        $p = Set-AzureVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
+        $p = Set-AzureRMVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
-        $p = Remove-AzureVMDataDisk -VM $p -Name 'testDataDisk3';
+        $p = Add-AzureRMVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
+        $p = Add-AzureRMVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
+        $p = Add-AzureRMVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
+        $p = Remove-AzureRMVMDataDisk -VM $p -Name 'testDataDisk3';
         
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
@@ -230,10 +230,10 @@ function Test-VirtualMachineExtensionUsingHashTable
         $computerName = 'test';
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
-        $p = Set-AzureVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
+        $p = Set-AzureRMVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
 
         $imgRef = Get-DefaultCRPWindowsImageOffline;
-        $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
+        $p = ($imgRef | Set-AzureRMVMSourceImage -VM $p);
 
         Assert-AreEqual $p.OSProfile.AdminUsername $user;
         Assert-AreEqual $p.OSProfile.ComputerName $computerName;
@@ -246,7 +246,7 @@ function Test-VirtualMachineExtensionUsingHashTable
         Assert-AreEqual $p.StorageProfile.ImageReference.Version $imgRef.Version;
 
         # Virtual Machine Create
-        New-AzureVM -ResourceGroupName $rgname -Location $loc -VM $p;
+        New-AzureRMVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Virtual Machine Extension
         $extname = $rgname + 'ext';
@@ -257,10 +257,10 @@ function Test-VirtualMachineExtensionUsingHashTable
         # Set extension settings by hash table
         $settings = @{"fileUris" = @(); "commandToExecute" = ""};
         $protectedsettings = @{"storageAccountName" = $stoname; "storageAccountKey" = $stokey};
-        Set-AzureVMExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -Publisher $publisher -ExtensionType $exttype -TypeHandlerVersion $extver -Settings $settings -ProtectedSettings $protectedsettings;
+        Set-AzureRMVMExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -Publisher $publisher -ExtensionType $exttype -TypeHandlerVersion $extver -Settings $settings -ProtectedSettings $protectedsettings;
 
         # Get VM Extension
-        $ext = Get-AzureVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname;
+        $ext = Get-AzureRMVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname;
         Assert-AreEqual $ext.ResourceGroupName $rgname;
         Assert-AreEqual $ext.Name $extname;
         Assert-AreEqual $ext.Publisher $publisher;
@@ -269,7 +269,7 @@ function Test-VirtualMachineExtensionUsingHashTable
         Assert-AreEqual $ext.ResourceGroupName $rgname;
         Assert-NotNull $ext.ProvisioningState;
 
-        $ext = Get-AzureVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Status;
+        $ext = Get-AzureRMVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Status;
         Assert-AreEqual $ext.ResourceGroupName $rgname;
         Assert-AreEqual $ext.Name $extname;
         Assert-AreEqual $ext.Publisher $publisher;
@@ -280,7 +280,7 @@ function Test-VirtualMachineExtensionUsingHashTable
         Assert-NotNull $ext.Statuses;
 
         # Get VM
-        $vm1 = Get-AzureVM -Name $vmname -ResourceGroupName $rgname;
+        $vm1 = Get-AzureRMVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
@@ -304,7 +304,7 @@ function Test-VirtualMachineExtensionUsingHashTable
         Assert-NotNull $vm1.Extensions[0].Settings;
 
         # Remove Extension
-        Remove-AzureVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Force;
+        Remove-AzureRMVMExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Force;
     }
     finally
     {
@@ -326,36 +326,36 @@ function Test-VirtualMachineCustomScriptExtension
     {
         # Common
         $loc = Get-ComputeVMLocation;
-        New-AzureResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
-        $p = New-AzureVMConfig -VMName $vmname -VMSize $vmsize;
+        $p = New-AzureRMVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
 
         # NRP
-        $subnet = New-AzureVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
-        $vnet = Get-AzureVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
+        $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
-        $pubip = New-AzurePublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
-        $pubip = Get-AzurePublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubip = New-AzureRMPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzureRMPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
         $pubipId = $pubip.Id;
-        $nic = New-AzureNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
-        $nic = Get-AzureNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nic = New-AzureRMNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzureRMNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
         $nicId = $nic.Id;
 
-        $p = Add-AzureVMNetworkInterface -VM $p -Id $nicId;
+        $p = Add-AzureRMVMNetworkInterface -VM $p -Id $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
 
         # Storage Account (SA)
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        New-AzureStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-        Retry-IfException { $global:stoaccount = Get-AzureStorageAccount -ResourceGroupName $rgname -Name $stoname; }
-        $stokey = (Get-AzureStorageAccountKey -ResourceGroupName $rgname -Name $stoname).Key1;
+        New-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        Retry-IfException { $global:stoaccount = Get-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        $stokey = (Get-AzureRMStorageAccountKey -ResourceGroupName $rgname -Name $stoname).Key1;
 
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
@@ -363,10 +363,10 @@ function Test-VirtualMachineCustomScriptExtension
         $dataDiskVhdUri1 = "https://$stoname.blob.core.windows.net/test/data1.vhd";
         $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
 
-        $p = Set-AzureVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
+        $p = Set-AzureRMVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
+        $p = Add-AzureRMVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
+        $p = Add-AzureRMVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
 
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
@@ -389,10 +389,10 @@ function Test-VirtualMachineCustomScriptExtension
         $computerName = 'test';
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
-        $p = Set-AzureVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
+        $p = Set-AzureRMVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
 
         $imgRef = Get-DefaultCRPWindowsImageOffline;
-        $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
+        $p = ($imgRef | Set-AzureRMVMSourceImage -VM $p);
 
         Assert-AreEqual $p.OSProfile.AdminUsername $user;
         Assert-AreEqual $p.OSProfile.ComputerName $computerName;
@@ -407,8 +407,8 @@ function Test-VirtualMachineCustomScriptExtension
         # Assert-AreEqual $p.StorageProfile.ImageReference.Version $imgRef.Version;
 
         # Virtual Machine
-        # TODO: Still need to do retry for New-AzureVM for SA, even it's returned in Get-.
-        New-AzureVM -ResourceGroupName $rgname -Location $loc -VM $p;
+        # TODO: Still need to do retry for New-AzureRMVM for SA, even it's returned in Get-.
+        New-AzureRMVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Virtual Machine Extension
         $extname = $rgname + 'ext';
@@ -419,10 +419,10 @@ function Test-VirtualMachineCustomScriptExtension
         $containerName = 'script';
 
         # Set custom script extension
-        Set-AzureVMCustomScriptExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -TypeHandlerVersion $extver -StorageAccountName $stoname -StorageAccountKey $stokey -FileName $fileToExecute -ContainerName $containerName;
+        Set-AzureRMVMCustomScriptExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -TypeHandlerVersion $extver -StorageAccountName $stoname -StorageAccountKey $stokey -FileName $fileToExecute -ContainerName $containerName;
 
         # Get VM Extension
-        $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname;
+        $ext = Get-AzureRMVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname;
 
         $expCommand = 'powershell -ExecutionPolicy Unrestricted -file ' + $fileToExecute + ' ';
         $expUri = $stoname + '.blob.core.windows.net/' + $containerName + '/' + $fileToExecute;
@@ -435,7 +435,7 @@ function Test-VirtualMachineCustomScriptExtension
         Assert-True {$ext.Uri[0].Contains($expUri)};
         Assert-NotNull $ext.ProvisioningState;
 
-        $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Status;
+        $ext = Get-AzureRMVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Status;
         Assert-AreEqual $ext.ResourceGroupName $rgname;
         Assert-AreEqual $ext.Name $extname;
         Assert-AreEqual $ext.Publisher $publisher;
@@ -447,7 +447,7 @@ function Test-VirtualMachineCustomScriptExtension
         Assert-NotNull $ext.Statuses;
 
         # Get VM
-        $vm1 = Get-AzureVM -Name $vmname -ResourceGroupName $rgname;
+        $vm1 = Get-AzureRMVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
@@ -495,36 +495,36 @@ function Test-VirtualMachineCustomScriptExtensionFileUri
     {
         # Common
         $loc = Get-ComputeVMLocation;
-        New-AzureResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
-        $p = New-AzureVMConfig -VMName $vmname -VMSize $vmsize;
+        $p = New-AzureRMVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
 
         # NRP
-        $subnet = New-AzureVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
-        $vnet = Get-AzureVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
+        $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
-        $pubip = New-AzurePublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
-        $pubip = Get-AzurePublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubip = New-AzureRMPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzureRMPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
         $pubipId = $pubip.Id;
-        $nic = New-AzureNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
-        $nic = Get-AzureNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nic = New-AzureRMNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzureRMNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
         $nicId = $nic.Id;
 
-        $p = Add-AzureVMNetworkInterface -VM $p -Id $nicId;
+        $p = Add-AzureRMVMNetworkInterface -VM $p -Id $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
 
         # Storage Account (SA)
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        New-AzureStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-        Retry-IfException { $global:stoaccount = Get-AzureStorageAccount -ResourceGroupName $rgname -Name $stoname; }
-        $stokey = (Get-AzureStorageAccountKey -ResourceGroupName $rgname -Name $stoname).Key1;
+        New-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        Retry-IfException { $global:stoaccount = Get-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        $stokey = (Get-AzureRMStorageAccountKey -ResourceGroupName $rgname -Name $stoname).Key1;
 
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
@@ -532,10 +532,10 @@ function Test-VirtualMachineCustomScriptExtensionFileUri
         $dataDiskVhdUri1 = "https://$stoname.blob.core.windows.net/test/data1.vhd";
         $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
 
-        $p = Set-AzureVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
+        $p = Set-AzureRMVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
+        $p = Add-AzureRMVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
+        $p = Add-AzureRMVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
 
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
@@ -558,10 +558,10 @@ function Test-VirtualMachineCustomScriptExtensionFileUri
         $computerName = 'test';
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
-        $p = Set-AzureVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
+        $p = Set-AzureRMVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
 
         $imgRef = Get-DefaultCRPWindowsImageOffline;
-        $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
+        $p = ($imgRef | Set-AzureRMVMSourceImage -VM $p);
 
         Assert-AreEqual $p.OSProfile.AdminUsername $user;
         Assert-AreEqual $p.OSProfile.ComputerName $computerName;
@@ -569,7 +569,7 @@ function Test-VirtualMachineCustomScriptExtensionFileUri
         Assert-AreEqual $p.OSProfile.WindowsConfiguration.ProvisionVMAgent $true;
 
         # Virtual Machine
-        New-AzureVM -ResourceGroupName $rgname -Location $loc -VM $p;
+        New-AzureRMVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Virtual Machine Extension
         $extname = $rgname + 'ext';
@@ -585,10 +585,10 @@ function Test-VirtualMachineCustomScriptExtensionFileUri
 		$sasFile2 = Get-SasUri $stoname $stokey $containerName $fileToExecute $duration $type;
 
         # Set custom script extension
-        Set-AzureVMCustomScriptExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -TypeHandlerVersion $extver -Run $fileToExecute -FileUri $sasFile1, $sasFile2;
+        Set-AzureRMVMCustomScriptExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -TypeHandlerVersion $extver -Run $fileToExecute -FileUri $sasFile1, $sasFile2;
 
         # Get VM Extension
-        $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname;
+        $ext = Get-AzureRMVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname;
 
         $expCommand = 'powershell -ExecutionPolicy Unrestricted -file ' + $fileToExecute+ ' ';
         $expUri = $stoname + '.blob.core.windows.net/' + $containerName + '/' + $fileToExecute;
@@ -602,7 +602,7 @@ function Test-VirtualMachineCustomScriptExtensionFileUri
 		Assert-True {$ext.Uri[1].Contains($expUri)};
         Assert-NotNull $ext.ProvisioningState;
 
-        $ext = Get-AzureVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Status;
+        $ext = Get-AzureRMVMCustomScriptExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Status;
         Assert-AreEqual $ext.ResourceGroupName $rgname;
         Assert-AreEqual $ext.Name $extname;
         Assert-AreEqual $ext.Publisher $publisher;
@@ -615,7 +615,7 @@ function Test-VirtualMachineCustomScriptExtensionFileUri
         Assert-NotNull $ext.Statuses;
 
         # Get VM
-        $vm1 = Get-AzureVM -Name $vmname -ResourceGroupName $rgname;
+        $vm1 = Get-AzureRMVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
@@ -653,36 +653,36 @@ function Test-VirtualMachineAccessExtension
     {
         # Common
         $loc = Get-ComputeVMLocation;
-        New-AzureResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
-        $p = New-AzureVMConfig -VMName $vmname -VMSize $vmsize;
+        $p = New-AzureRMVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
 
         # NRP
-        $subnet = New-AzureVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
-        $vnet = Get-AzureVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
+        $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
-        $pubip = New-AzurePublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
-        $pubip = Get-AzurePublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubip = New-AzureRMPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzureRMPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
         $pubipId = $pubip.Id;
-        $nic = New-AzureNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
-        $nic = Get-AzureNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nic = New-AzureRMNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzureRMNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
         $nicId = $nic.Id;
 
-        $p = Add-AzureVMNetworkInterface -VM $p -Id $nicId;
+        $p = Add-AzureRMVMNetworkInterface -VM $p -Id $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
 
         # Storage Account (SA)
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        New-AzureStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-        Retry-IfException { $global:stoaccount = Get-AzureStorageAccount -ResourceGroupName $rgname -Name $stoname; }
-        $stokey = (Get-AzureStorageAccountKey -ResourceGroupName $rgname -Name $stoname).Key1;
+        New-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        Retry-IfException { $global:stoaccount = Get-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        $stokey = (Get-AzureRMStorageAccountKey -ResourceGroupName $rgname -Name $stoname).Key1;
 
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
@@ -690,10 +690,10 @@ function Test-VirtualMachineAccessExtension
         $dataDiskVhdUri1 = "https://$stoname.blob.core.windows.net/test/data1.vhd";
         $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
 
-        $p = Set-AzureVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
+        $p = Set-AzureRMVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
+        $p = Add-AzureRMVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
+        $p = Add-AzureRMVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
 
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
@@ -716,10 +716,10 @@ function Test-VirtualMachineAccessExtension
         $computerName = 'test';
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
-        $p = Set-AzureVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
+        $p = Set-AzureRMVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
 
         $imgRef = Get-DefaultCRPWindowsImageOffline;
-        $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
+        $p = ($imgRef | Set-AzureRMVMSourceImage -VM $p);
 
         Assert-AreEqual $p.OSProfile.AdminUsername $user;
         Assert-AreEqual $p.OSProfile.ComputerName $computerName;
@@ -727,8 +727,8 @@ function Test-VirtualMachineAccessExtension
         Assert-AreEqual $p.OSProfile.WindowsConfiguration.ProvisionVMAgent $true;
 
         # Virtual Machine
-        # TODO: Still need to do retry for New-AzureVM for SA, even it's returned in Get-.
-        New-AzureVM -ResourceGroupName $rgname -Location $loc -VM $p;
+        # TODO: Still need to do retry for New-AzureRMVM for SA, even it's returned in Get-.
+        New-AzureRMVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Virtual Machine Extension
         $extname = 'csetest';
@@ -737,13 +737,13 @@ function Test-VirtualMachineAccessExtension
         $password2 = 'FoO@123' + $rgname;
 
         # Set custom script extension
-        Set-AzureVMAccessExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -TypeHandlerVersion $extver -UserName $user2 -Password $password2;
+        Set-AzureRMVMAccessExtension -ResourceGroupName $rgname -Location $loc -VMName $vmname -Name $extname -TypeHandlerVersion $extver -UserName $user2 -Password $password2;
 
         $publisher = 'Microsoft.Compute';
         $exttype = 'VMAccessAgent';
 
         # Get VM Extension
-        $ext = Get-AzureVMAccessExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname;
+        $ext = Get-AzureRMVMAccessExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname;
         Assert-AreEqual $ext.ResourceGroupName $rgname;
         Assert-AreEqual $ext.Name $extname;
         Assert-AreEqual $ext.Publisher $publisher;
@@ -753,7 +753,7 @@ function Test-VirtualMachineAccessExtension
         Assert-NotNull $ext.ProvisioningState;
         Assert-True {$ext.PublicSettings.Contains("UserName")};
 
-        $ext = Get-AzureVMAccessExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Status;
+        $ext = Get-AzureRMVMAccessExtension -ResourceGroupName $rgname -VMName $vmname -Name $extname -Status;
         Assert-AreEqual $ext.ResourceGroupName $rgname;
         Assert-AreEqual $ext.Name $extname;
         Assert-AreEqual $ext.Publisher $publisher;
@@ -764,7 +764,7 @@ function Test-VirtualMachineAccessExtension
         Assert-True {$ext.PublicSettings.Contains("UserName")};
 
         # Get VM
-        $vm1 = Get-AzureVM -Name $vmname -ResourceGroupName $rgname;
+        $vm1 = Get-AzureRMVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;

@@ -26,7 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.CloudService.Development.Scaffolding
     /// default cscfg file which wires up node/iisnode at startup in Azure as well as startup.js. 
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureServiceProject"), OutputType(typeof(CloudServiceProject))]
-    public class NewAzureServiceProjectCommand : AzurePSCmdlet
+    public class NewAzureServiceProjectCommand : AzureSMCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Name of the cloud project")]
         [ValidateNotNullOrEmpty]

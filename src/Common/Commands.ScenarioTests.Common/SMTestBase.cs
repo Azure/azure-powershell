@@ -15,22 +15,20 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 {
     /// <summary>
-    /// Base class for Microsoft Azure PowerShell unit tests.
+    /// Base class for Microsoft Azure PowerShell Service Management unit tests.
     /// </summary>
-    public abstract class TestBase
+    public abstract class SMTestBase
     {
-        protected AzureProfile currentProfile;
+        protected AzureSMProfile currentProfile;
 
-        public TestBase()
+        public SMTestBase()
         {
             BaseSetup();
         }
@@ -45,9 +43,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
             {
                 AzureSession.DataStore = new MemoryDataStore();
             }
-            currentProfile = new AzureProfile();
+            currentProfile = new AzureSMProfile();
 
-            if (currentProfile.Context.Subscription == null)
+            if (currentProfile.DefaultContext.Subscription == null)
             {
                 var newGuid = Guid.NewGuid();
                 currentProfile.Subscriptions[newGuid] = new AzureSubscription { Id = newGuid, Name = "test", Environment = EnvironmentName.AzureCloud, Account = "test" };

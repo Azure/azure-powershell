@@ -24,9 +24,9 @@ using Hyak.Common.Internals;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 {
-    public class TestingTracingInterceptor : ICloudTracingInterceptor
+    public class PSTestTracingInterceptor : ICloudTracingInterceptor
     {
-        private TestingTracingInterceptor()
+        private PSTestTracingInterceptor()
         {
 #if DEBUG
             if (Debug.Listeners.Count < 1)
@@ -82,7 +82,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 
         public void Error(string invocationId, Exception ex)
         {
-            Write("{0} - Error: {1}", invocationId, ex);
         }
 
         public void Exit(string invocationId, object result)
@@ -90,24 +89,24 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             Write("{0} - Exited method with result: {1}", invocationId, result);
         }
 
-        static TestingTracingInterceptor()
+        static PSTestTracingInterceptor()
         {
-            TestingTracingInterceptor.Singleton = new TestingTracingInterceptor();
+            PSTestTracingInterceptor.Singleton = new PSTestTracingInterceptor();
         }
 
         public static void AddToContext()
         {
             try
             {
-                TracingAdapter.RemoveTracingInterceptor(TestingTracingInterceptor.Singleton);
+                TracingAdapter.RemoveTracingInterceptor(PSTestTracingInterceptor.Singleton);
             }
             catch
             {
             }
-            TracingAdapter.AddTracingInterceptor(TestingTracingInterceptor.Singleton);
+            TracingAdapter.AddTracingInterceptor(PSTestTracingInterceptor.Singleton);
         }
 
-        static TestingTracingInterceptor Singleton
+        static PSTestTracingInterceptor Singleton
         {
             get;
             set;

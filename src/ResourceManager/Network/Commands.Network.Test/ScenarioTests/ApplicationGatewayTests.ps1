@@ -42,30 +42,30 @@ function Test-ApplicationGatewayCRUD
 	try 
 	{
 		# Create the resource group
-		$resourceGroup = New-AzureResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
+		$resourceGroup = New-AzureRMResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
       
 		# Create the Virtual Network
-		$subnet = New-AzureVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
-		$vnet = New-AzurevirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-		$vnet = Get-AzurevirtualNetwork -Name $vnetName -ResourceGroupName $rgname
-		$subnet = Get-AzureVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
+		$subnet = New-AzureRMVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix 10.0.0.0/24
+		$vnet = New-AzureRMvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+		$vnet = Get-AzureRMvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		$subnet = Get-AzureRMVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
 
 		# Create the Application Gateway
-		$gipconfig = New-AzureApplicationGatewayIPConfiguration -Name $gipconfigname -Subnet $subnet
-		$pool = New-AzureApplicationGatewayBackendAddressPool -Name $poolName -BackendIPAddresses 1.1.1.1, 2.2.2.2, 3.3.3.3
-		$poolSetting = New-AzureApplicationGatewayBackendHttpSettings -Name $poolSettingName  -Port 80 -Protocol HTTP -CookieBasedAffinity Disabled
-		$fp = New-AzureApplicationGatewayFrontendPort -Name $frontendPortName  -Port 80
-		$fipconfig = New-AzureApplicationGatewayFrontendIPConfig -Name $fipconfigName -PublicIPAddress $publicip
-		$listener = New-AzureApplicationGatewayHttpListener -Name $listenerName  -Protocol http -FrontendIPConfiguration $fipconfig -FrontendPort $fp
-		$rule = New-AzureApplicationGatewayRequestRoutingRule -Name $ruleName -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
-		$sku = New-AzureApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
+		$gipconfig = New-AzureRMApplicationGatewayIPConfiguration -Name $gipconfigname -Subnet $subnet
+		$pool = New-AzureRMApplicationGatewayBackendAddressPool -Name $poolName -BackendIPAddresses 1.1.1.1, 2.2.2.2, 3.3.3.3
+		$poolSetting = New-AzureRMApplicationGatewayBackendHttpSettings -Name $poolSettingName  -Port 80 -Protocol HTTP -CookieBasedAffinity Disabled
+		$fp = New-AzureRMApplicationGatewayFrontendPort -Name $frontendPortName  -Port 80
+		$fipconfig = New-AzureRMApplicationGatewayFrontendIPConfig -Name $fipconfigName -PublicIPAddress $publicip
+		$listener = New-AzureRMApplicationGatewayHttpListener -Name $listenerName  -Protocol http -FrontendIPConfiguration $fipconfig -FrontendPort $fp
+		$rule = New-AzureRMApplicationGatewayRequestRoutingRule -Name $ruleName -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
+		$sku = New-AzureRMApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
 
-		$actual = New-AzureApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
-		$expected =  Get-AzureApplicationGateway -Name $appgwName -ResourceGroupName $rgname
-		Compare-AzureApplicationGateway $actual $expected
+		$actual = New-AzureRMApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
+		$expected =  Get-AzureRMApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+		Compare-AzureRMApplicationGateway $actual $expected
 		
-		Stop-AzureApplicationGateway -ApplicationGateway $expected
-		Remove-AzureApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Force
+		Stop-AzureRMApplicationGateway -ApplicationGateway $expected
+		Remove-AzureRMApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Force
 	}
 	finally
 	{
@@ -78,7 +78,7 @@ function Test-ApplicationGatewayCRUD
 .SYNOPSIS
 Compare application gateways
 #>
-function Compare-AzureApplicationGateway($actual, $expected)
+function Compare-AzureRMApplicationGateway($actual, $expected)
 {
 	Assert-AreEqual $expected.Name $actual.Name
 	Assert-AreEqual $expected.Name $actual.Name

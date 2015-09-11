@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             job = new AzureHDInsightMapReduceJobDefinition();
         }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             foreach (var arg in Arguments)
             {

@@ -39,19 +39,19 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureProfile Profile { get; set; }
+        public AzureContext Context { get; set; }
 
         /// <summary>
         /// Creates a communicator for Azure Sql Service Tier Advisor
         /// </summary>
         /// <param name="profile"></param>
         /// <param name="subscription"></param>
-        public AzureSqlServiceTierAdvisorCommunicator(AzureProfile profile, AzureSubscription subscription)
+        public AzureSqlServiceTierAdvisorCommunicator(AzureContext context)
         {
-            Profile = profile;
-            if (subscription != Subscription)
+            Context = context;
+            if (context.Subscription != Subscription)
             {
-                Subscription = subscription;
+                Subscription = context.Subscription;
                 SqlClient = null;
             }
         }
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Services
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
-                SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Profile, Subscription, AzureEnvironment.Endpoint.ResourceManager);
+                SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
             }
             SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
             SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);
