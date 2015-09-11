@@ -112,7 +112,8 @@
     <Exec Command="$(NuGetCommand) sources add -Name LocalFeed -Source &quot;$(MSBuildProjectDirectory)\tools\LocalFeed&quot; $(NuGetRestoreConfigSwitch)"/>
 
     <!-- Restore packages -->
-    <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\src\AzurePowerShell.sln $(NuGetRestoreConfigSwitch)" ContinueOnError="false" />
+    <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\src\ResourceManager.sln $(NuGetRestoreConfigSwitch)" ContinueOnError="false" />
+    <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\src\ServiceManagement.sln $(NuGetRestoreConfigSwitch)" ContinueOnError="false" />
     
     <!--Restore the xunit runner needed to run unit tests-->
     <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\packages.config -PackagesDirectory $(MSBuildProjectDirectory)\packages" />
