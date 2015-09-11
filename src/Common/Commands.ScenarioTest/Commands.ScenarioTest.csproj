@@ -197,6 +197,12 @@
     <None Include="Resources\CredentialTests\Common.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Resources\ServiceManagement\Files\LongRoleName.Cloud.cscfg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\ServiceManagement\Files\LongRoleName.Cloud.cspkg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\ServiceManagement\Files\OneWebOneWorker.cscfg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
