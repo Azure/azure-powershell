@@ -38,17 +38,15 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the source path.
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Path to the node configuration .mof to import.")]
-        [Alias("Path")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Path to the node configuration .mof to import.")]        
         [ValidateNotNullOrEmpty]
-        public string SourcePath { get; set; }
+        public string Path { get; set; }
 
         /// <summary>
         /// Gets or sets the configuration name for the node configuration.
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the DSC Configuration to import the Node Configuration under. All Node Configurations in Azure Automation must exist under a Configuration. The name of the Configuration will become the namespace of the imported Node Configuration, in the form of 'ConfigurationName.MofFileName'")]
-        [Alias("ConfigurationName")]
-        public string ConfigName { get; set; }
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the DSC Configuration to import the Node Configuration under. All Node Configurations in Azure Automation must exist under a Configuration. The name of the Configuration will become the namespace of the imported Node Configuration, in the form of 'ConfigurationName.MofFileName'")]        
+        public string ConfigurationName { get; set; }
 
 
         /// <summary>
@@ -70,8 +68,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             var nodeConfiguration = this.AutomationClient.CreateNodeConfiguration(
                     this.ResourceGroupName,
                     this.AutomationAccountName,
-                    this.SourcePath,
-                    this.ConfigName,
+                    this.Path,
+                    this.ConfigurationName,
                     this.Force);
 
             this.WriteObject(nodeConfiguration);
