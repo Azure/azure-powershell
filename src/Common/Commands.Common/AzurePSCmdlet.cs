@@ -254,28 +254,27 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected bool CheckIfInteractive()
         {
+            bool interactive = true;
             if (this.Host == null || this.Host.UI == null || this.Host.UI.RawUI == null)
             {
-                return false;
+                interactive = false;
             }
-
-            bool interactive = true;
-            try
+            else
             {
-                var test = this.Host.UI.RawUI.KeyAvailable;
-            }
-            catch (HostException ex)
-            {
-                if (ex.Message.StartsWith("A command that prompts the user failed"))
+                try
+                {
+                    var test = this.Host.UI.RawUI.KeyAvailable;
+                }
+                catch
                 {
                     interactive = false;
                 }
-                else
-                {
-                    throw ex;
-                }
             }
 
+            if (!interactive && !_dataCollectionProfile.EnableAzureDataCollection.HasValue)
+            {
+                _dataCollectionProfile.EnableAzureDataCollection = false;
+            }
             return interactive;
         }
 
@@ -288,7 +287,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             // Initialize it from the environment variable or profile file.
             InitializeDataCollectionProfile();
 
-            if (CheckIfInteractive() && !_dataCollectionProfile.EnableAzureDataCollection.HasValue)
+            if (!_dataCollectionProfile.EnableAzureDataCollection.HasValue && CheckIfInteractive())
             {
                 WriteWarning(Resources.DataCollectionPrompt);
 
