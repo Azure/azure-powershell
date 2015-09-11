@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
         
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             WriteObject(OperationalInsightsClient.GetWorkspaceManagementGroups(ResourceGroupName, Name), true);
         }

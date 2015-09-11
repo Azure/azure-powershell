@@ -22,27 +22,22 @@ using System.Security;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using Hyak.Common;
 using Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Xunit;
-using Xunit.Extensions;
-using System.Diagnostics;
-using Microsoft.Azure.Common.Authentication;
-using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Models
 {
-    public class ResourceClientTests : TestBase
+    public class ResourceClientTests : RMTestBase
     {
         private Mock<IResourceManagementClient> resourceManagementClientMock;
 
@@ -56,13 +51,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
         private Mock<GalleryTemplatesClient> galleryTemplatesClientMock;
 
-        // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
-        //private Mock<IEventsClient> eventsClientMock;
-
         private Mock<IDeploymentOperationOperations> deploymentOperationsMock;
-
-        // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
-        //private Mock<IEventDataOperations> eventDataOperationsMock;
 
         private Mock<IProviderOperations> providersMock;
 
@@ -93,9 +82,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
         private Dictionary<string, object> properties;
 
         private string serializedProperties;
-
-        // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
-        //private List<EventData> sampleEvents;
 
         private int ConfirmActionCounter = 0;
 

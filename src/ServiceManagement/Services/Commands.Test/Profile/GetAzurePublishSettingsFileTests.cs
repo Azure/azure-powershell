@@ -42,7 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
                 Environment = EnvironmentName.AzureCloud,
                 Realm = "microsoft.com"
             };
-            cmdlet.ProfileClient = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
+            cmdlet.ProfileClient = new ProfileClient(new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
 
             // Test
             cmdlet.ExecuteCmdlet();

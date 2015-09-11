@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         {
         }
 
-        public AutomationClient(AzureProfile profile, AzureSubscription subscription)
+        public AutomationClient(AzureSMProfile profile, AzureSubscription subscription)
             : this(subscription,
             AzureSession.ClientFactory.CreateClient<AutomationManagement.AutomationManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement))
         {

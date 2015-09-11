@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Insights.UsageMetrics
         /// <summary>
         /// Execute the cmdlet
         /// </summary>
-        protected override void ExecuteCmdletInternal()
+        protected override void ProcessRecordInternal()
         {
             string queryFilter = this.ProcessParameters();
             string apiVersion = this.ApiVersion ?? DefaultApiVersion;

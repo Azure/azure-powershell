@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
     /// <summary>
     /// Returns the data masking policy of a specific database.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureSqlDatabaseDataMaskingPolicy"), OutputType(typeof(DatabaseDataMaskingPolicyModel))]
+    [Cmdlet(VerbsCommon.Get, "AzureRMSqlDatabaseDataMaskingPolicy"), OutputType(typeof(DatabaseDataMaskingPolicyModel))]
     public class GetAzureSqlDatabaseDataMaskingPolicy : SqlDatabaseDataMaskingPolicyCmdletBase
     {
         /// <summary>

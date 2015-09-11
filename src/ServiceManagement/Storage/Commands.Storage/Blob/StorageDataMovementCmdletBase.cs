@@ -173,16 +173,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// <summary>
         /// Dispose DataMovement cmdlet
         /// </summary>
-        public void Dispose()
-        {
-            Dispose(true);
-        }
-
-        /// <summary>
-        /// Dispose DataMovement cmdlet
-        /// </summary>
         /// <param name="disposing">User disposing</param>
-        protected virtual void Dispose(bool disposing)
+        protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
@@ -192,6 +184,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                     this.transferJobRunner = null;
                 }
             }
+            base.Dispose(disposing);
         }
     }
 }

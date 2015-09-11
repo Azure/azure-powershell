@@ -29,7 +29,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 {
     /// <summary>
     /// Implementation of the get-azuresubscription cmdlet that works against
-    /// the AzureProfile layer.
+    /// the AzureSMProfile layer.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureSubscription", DefaultParameterSetName = "ByName")]
     [OutputType(typeof(PSAzureSubscription))]
@@ -66,9 +66,9 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             {
                 case "ByName":
                     IEnumerable<AzureSubscription> subscriptions = new AzureSubscription[0];
-                    if (Profile.Context != null && Profile.Context.Environment != null)
+                    if (Profile.DefaultContext != null && Profile.DefaultContext.Environment != null)
                     {
-                        subscriptions = ProfileClient.RefreshSubscriptions(Profile.Context.Environment)
+                        subscriptions = ProfileClient.RefreshSubscriptions(Profile.DefaultContext.Environment)
                             .Where(
                                 s =>
                                     SubscriptionName == null ||
@@ -113,7 +113,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             // since current is strictly in-memory and we want the real
             // current subscription.
             //
-            if (Profile.Context.Subscription == null)
+            if (Profile.DefaultContext.Subscription == null)
             {
                 WriteError(new ErrorRecord(
                     new InvalidOperationException(Resources.InvalidSelectedSubscription),
@@ -122,7 +122,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             }
             else
             {
-                WriteSubscriptions(Profile.Context.Subscription);
+                WriteSubscriptions(Profile.DefaultContext.Subscription);
             }
         }
 

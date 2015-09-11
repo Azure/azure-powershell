@@ -43,7 +43,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
         {
             this.CurrentSubscription.ArgumentNotNull("CurrentSubscription");
 
-            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
+            ProfileClient client = new ProfileClient(new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
 
             var subscriptionCredentials = this.GetSubscriptionCredentials(
                 this.CurrentSubscription,
