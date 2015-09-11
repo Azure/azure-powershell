@@ -20,7 +20,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, "AzureApplicationGatewayIPConfiguration"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet(VerbsCommon.Add, "AzureRMApplicationGatewayIPConfiguration"), OutputType(typeof(PSApplicationGateway))]
     public class AddAzureApplicationGatewayIPConfigurationCommand : AzureApplicationGatewayIPConfigurationBase
     {
         [Parameter(
@@ -29,9 +29,9 @@ namespace Microsoft.Azure.Commands.Network
              HelpMessage = "The applicationGateway")]
         public PSApplicationGateway ApplicationGateway { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
             var gatewayIPConfiguration = this.ApplicationGateway.GatewayIPConfigurations.SingleOrDefault
                 (resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
@@ -41,22 +41,8 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("Application gateway IP configuration with the specified name already exists");
             }
 
-            gatewayIPConfiguration = new PSApplicationGatewayIPConfiguration();
-
-            gatewayIPConfiguration.Name = this.Name;
-
-            if (!string.IsNullOrEmpty(this.SubnetId))
-            {
-                var gatewayIPConfig = new PSResourceId();
-                gatewayIPConfig.Id = this.SubnetId;
-                gatewayIPConfiguration.Subnet = gatewayIPConfig;
-            }    
-
-            gatewayIPConfiguration.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
-                                this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
-                                Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayIpConfigurationName,
-                                this.Name);
-
+            gatewayIPConfiguration = base.NewObject();
+            
             this.ApplicationGateway.GatewayIPConfigurations.Add(gatewayIPConfiguration);
 
             WriteObject(this.ApplicationGateway);

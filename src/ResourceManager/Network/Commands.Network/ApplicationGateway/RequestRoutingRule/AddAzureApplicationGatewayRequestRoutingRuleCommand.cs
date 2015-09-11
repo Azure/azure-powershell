@@ -20,7 +20,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, "AzureApplicationGatewayRequestRoutingRule"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet(VerbsCommon.Add, "AzureRMApplicationGatewayRequestRoutingRule"), OutputType(typeof(PSApplicationGateway))]
     public class AddAzureApplicationGatewayRequestRoutingRuleCommand : AzureApplicationGatewayRequestRoutingRuleBase
     {
         [Parameter(
@@ -29,9 +29,9 @@ namespace Microsoft.Azure.Commands.Network
              HelpMessage = "The applicationGateway")]
         public PSApplicationGateway ApplicationGateway { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
             var requestRoutingRule = this.ApplicationGateway.RequestRoutingRules.SingleOrDefault
                 (resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
@@ -41,32 +41,7 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("RequestRoutingRule with the specified name already exists");
             }
 
-            requestRoutingRule = new PSApplicationGatewayRequestRoutingRule();
-            requestRoutingRule.Name = this.Name;
-            requestRoutingRule.RuleType = this.RuleType;
-
-            if (!string.IsNullOrEmpty(this.BackendHttpSettingsId))
-            {
-                requestRoutingRule.BackendHttpSettings = new PSResourceId();
-                requestRoutingRule.BackendHttpSettings.Id = this.BackendHttpSettingsId;
-            }
-
-            if (!string.IsNullOrEmpty(this.HttpListenerId))
-            {
-                requestRoutingRule.HttpListener = new PSResourceId();
-                requestRoutingRule.HttpListener.Id = this.HttpListenerId;
-            }
-            if (!string.IsNullOrEmpty(this.BackendAddressPoolId))
-            {
-                requestRoutingRule.BackendAddressPool = new PSResourceId();
-                requestRoutingRule.BackendAddressPool.Id = this.BackendAddressPoolId;
-            }
-
-            requestRoutingRule.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
-                                this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
-                                Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayRequestRoutingRuleName,
-                                this.Name);
-
+            requestRoutingRule = base.NewObject();
             this.ApplicationGateway.RequestRoutingRules.Add(requestRoutingRule);
 
             WriteObject(this.ApplicationGateway);

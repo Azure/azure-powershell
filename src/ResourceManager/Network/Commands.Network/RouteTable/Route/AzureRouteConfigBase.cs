@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The type of Azure hop the packet should be sent to.")]
         [ValidateSet(
             MNM.RouteNextHopType.Internet,
-            MNM.RouteNextHopType.Null,
+            MNM.RouteNextHopType.None,
             MNM.RouteNextHopType.VirtualAppliance,
             MNM.RouteNextHopType.VirtualNetworkGateway,
             MNM.RouteNextHopType.VnetLocal,

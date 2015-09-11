@@ -20,7 +20,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureApplicationGatewayHttpListener"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet(VerbsCommon.Set, "AzureRMApplicationGatewayHttpListener"), OutputType(typeof(PSApplicationGateway))]
     public class SetAzureApplicationGatewayHttpListenerCommand : AzureApplicationGatewayHttpListenerBase
     {
         [Parameter(
@@ -28,45 +28,22 @@ namespace Microsoft.Azure.Commands.Network
              ValueFromPipeline = true,
              HelpMessage = "The applicationGateway")]
         public PSApplicationGateway ApplicationGateway { get; set; }
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
-            var httpListener = this.ApplicationGateway.HttpListeners.SingleOrDefault
+            var oldHttpListener = this.ApplicationGateway.HttpListeners.SingleOrDefault
                 (resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
-            if (httpListener == null)
+            if (oldHttpListener == null)
             {
                 throw new ArgumentException("Http Listener with the specified name does not exist");
             }
 
-            httpListener = new PSApplicationGatewayHttpListener();
-            httpListener.Name = this.Name;
-            httpListener.Protocol = this.Protocol;
+            var newHttpListener = base.NewObject();
 
-            if (!string.IsNullOrEmpty(this.FrontendIPConfigurationId))
-            {
-                httpListener.FrontendIpConfiguration = new PSResourceId();
-                httpListener.FrontendIpConfiguration.Id = this.FrontendIPConfigurationId;
-            }
-
-            if (!string.IsNullOrEmpty(this.FrontendPortId))
-            {
-                httpListener.FrontendPort = new PSResourceId();
-                httpListener.FrontendPort.Id = this.FrontendPortId;
-            }
-            if (!string.IsNullOrEmpty(this.SslCertificateId))
-            {
-                httpListener.SslCertificate = new PSResourceId();
-                httpListener.SslCertificate.Id = this.SslCertificateId;
-            }
-
-            httpListener.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
-                                this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
-                                Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayHttpListenerName,
-                                this.Name);
-
-            this.ApplicationGateway.HttpListeners.Add(httpListener);
+            this.ApplicationGateway.HttpListeners.Remove(oldHttpListener);
+            this.ApplicationGateway.HttpListeners.Add(newHttpListener);
 
             WriteObject(this.ApplicationGateway);
         }

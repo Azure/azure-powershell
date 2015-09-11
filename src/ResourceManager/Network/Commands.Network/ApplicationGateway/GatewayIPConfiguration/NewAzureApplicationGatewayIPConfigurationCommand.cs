@@ -18,30 +18,13 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureApplicationGatewayIPConfiguration"), OutputType(typeof(PSApplicationGatewayIPConfiguration))]
+    [Cmdlet(VerbsCommon.New, "AzureRMApplicationGatewayIPConfiguration"), OutputType(typeof(PSApplicationGatewayIPConfiguration))]
     public class NewAzureApplicationGatewayIPConfigurationCommand : AzureApplicationGatewayIPConfigurationBase
     {
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
-
-            var gatewayIPConfiguration = new PSApplicationGatewayIPConfiguration();
-
-            gatewayIPConfiguration.Name = this.Name;
-
-            if (!string.IsNullOrEmpty(this.SubnetId))
-            {
-                var gatewayIPConfig = new PSResourceId();
-                gatewayIPConfig.Id = this.SubnetId;
-                gatewayIPConfiguration.Subnet = gatewayIPConfig;
-            }            
-
-            gatewayIPConfiguration.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
-                                this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
-                                Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayIpConfigurationName,
-                                this.Name);
-
-            WriteObject(gatewayIPConfiguration);
+            base.ProcessRecord();
+            WriteObject(base.NewObject());
         }
     }
 }

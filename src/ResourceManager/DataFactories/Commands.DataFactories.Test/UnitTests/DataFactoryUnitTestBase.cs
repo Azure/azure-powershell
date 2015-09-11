@@ -13,11 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
 
 namespace Microsoft.Azure.Commands.DataFactories.Test
 {
-    public class DataFactoryUnitTestBase
+    public class DataFactoryUnitTestBase : RMTestBase
     {
         protected const string subscriptionId = "subscriptionid";
 

@@ -18,36 +18,13 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureApplicationGatewayFrontendPort"), OutputType(typeof(PSApplicationGatewayFrontendPort))]
-    public class NewAzureApplicationGatewayFrontendPortCommand : NetworkBaseCmdlet
+    [Cmdlet(VerbsCommon.New, "AzureRMApplicationGatewayFrontendPort"), OutputType(typeof(PSApplicationGatewayFrontendPort))]
+    public class NewAzureApplicationGatewayFrontendPortCommand : AzureApplicationGatewayFrontendPortBase
     {
-        [Parameter(
-                Mandatory = true,
-               HelpMessage = "The name of the frontend port")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(
-               Mandatory = true,
-               HelpMessage = "Frontend port")]
-        [ValidateNotNullOrEmpty]
-        public int Port { get; set; }
-
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
-
-            var frontendPort = new PSApplicationGatewayFrontendPort();
-            frontendPort.Name = this.Name;
-            frontendPort.Port = this.Port;
-
-            frontendPort.Id =
-                ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
-                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
-                    Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayFrontendPortName,
-                    this.Name);
-
-            WriteObject(frontendPort);
+            base.ProcessRecord();
+            WriteObject(base.NewObject());
         }
     }
 }

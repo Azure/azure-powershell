@@ -36,11 +36,13 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
     {
         private readonly bool throwWhenNotAvailable;
 
+        public bool MoqClients { get; set; }
+
         public List<object> ManagementClients { get; private set; }
 
         public MockClientFactory(IEnumerable<object> clients, bool throwIfClientNotSpecified = true)
         {
-            UserAgents = new HashSet<ProductInfoHeaderValue>();
+            UniqueUserAgents = new HashSet<ProductInfoHeaderValue>();
             ManagementClients = clients.ToList();
             throwWhenNotAvailable = throwIfClientNotSpecified;
         }
@@ -55,12 +57,12 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             return client;
         }
 
-        public TClient CreateClient<TClient>(AzureProfile profile, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
+        public TClient CreateClient<TClient>(AzureSMProfile profile, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
         {
-            return CreateClient<TClient>(profile, profile.Context.Subscription, endpoint);
+            return CreateClient<TClient>(profile, profile.DefaultContext.Subscription, endpoint);
         }
 
-        public TClient CreateClient<TClient>(AzureProfile profile, AzureSubscription subscription, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
+        public TClient CreateClient<TClient>(AzureSMProfile profile, AzureSubscription subscription, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
         {
             if (subscription == null)
             {
@@ -69,7 +71,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
             if (profile == null)
             {
-                profile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+                profile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
             }
 
             SubscriptionCloudCredentials creds = new TokenCloudCredentials(subscription.Id.ToString(), "fake_token");
@@ -105,16 +107,20 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                     var realClientFactory = new ClientFactory();
                     var realClient = realClientFactory.CreateCustomClient<TClient>(parameters);
                     var newRealClient = realClient.WithHandler(HttpMockServer.CreateInstance());
+                    
                     realClient.Dispose();
                     return newRealClient;
                 }
             }
             else
             {
-                // Use the WithHandler method to create an extra reference to the http client
-                // this will prevent the httpClient from being disposed in a long-running test using 
-                // the same client for multiple cmdlets
-                client = client.WithHandler(new PassThroughDelegatingHandler());
+                if (!MoqClients)
+                {
+                    // Use the WithHandler method to create an extra reference to the http client
+                    // this will prevent the httpClient from being disposed in a long-running test using 
+                    // the same client for multiple cmdlets
+                    client = client.WithHandler(new PassThroughDelegatingHandler());
+                }
             }
 
             return client;
@@ -159,7 +165,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             // Do nothing
         }
 
-
         public void AddUserAgent(string productName, string productVersion)
         {
             throw new NotImplementedException();
@@ -170,7 +175,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             throw new NotImplementedException();
         }
 
-        public HashSet<ProductInfoHeaderValue> UserAgents { get; set; }
+        public HashSet<ProductInfoHeaderValue> UniqueUserAgents { get; set; }
 
         /// <summary>
         /// This class exists to allow adding an additional reference to the httpClient to prevent the client 
@@ -181,6 +186,53 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
             {
                 return base.SendAsync(request, cancellationToken);
+            }
+        }
+
+        public TClient CreateArmClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint) where TClient : Rest.ServiceClient<TClient>
+        {
+            Debug.Assert(context != null);
+            var credentials = AzureSession.AuthenticationFactory.GetServiceClientCredentials(context);
+            var client = CreateCustomArmClient<TClient>(credentials, context.Environment.GetEndpointAsUri(endpoint),
+                context.Subscription.Id);
+            return client;
+
+        }
+
+        public TClient CreateCustomArmClient<TClient>(params object[] parameters) where TClient : Rest.ServiceClient<TClient>
+        {
+            TClient client = ManagementClients.FirstOrDefault(o => o is TClient) as TClient;
+            if (client == null)
+            {
+                if (throwWhenNotAvailable)
+                {
+                    throw new ArgumentException(
+                        string.Format("TestManagementClientHelper class wasn't initialized with the {0} client.",
+                            typeof (TClient).Name));
+                }
+                else
+                {
+                    var realClientFactory = new ClientFactory();
+                    var newParameters = new object[parameters.Length + 1];
+                    Array.Copy(parameters, 0, newParameters, 1, parameters.Length);
+                    newParameters[0] = HttpMockServer.CreateInstance();
+                    var realClient = realClientFactory.CreateCustomArmClient<TClient>(newParameters);
+                    return realClient;
+                }
+            }
+
+            return client;
+        }
+
+        List<ProductInfoHeaderValue> IClientFactory.UserAgents
+        {
+            get
+            {
+                return this.UniqueUserAgents.ToList();
+            }
+            set
+            {
+                value.ForEach((v) =>  this.UniqueUserAgents.Add(v));
             }
         }
     }

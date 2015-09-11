@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, "AzureApplicationGatewayFrontendIPConfig"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet(VerbsCommon.Add, "AzureRMApplicationGatewayFrontendIPConfig"), OutputType(typeof(PSApplicationGateway))]
     public class AddAzureApplicationGatewayFrontendIPConfigCommand : AzureApplicationGatewayFrontendIPConfigBase
     {
         [Parameter(
@@ -28,67 +28,23 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The application gateway")]
         public PSApplicationGateway ApplicationGateway { get; set; }
         
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
-            var existingFrontendIPConfig = this.ApplicationGateway.FrontendIPConfigurations.SingleOrDefault
+            var frontendIPConfig = this.ApplicationGateway.FrontendIPConfigurations.SingleOrDefault
                 (resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
-            if (existingFrontendIPConfig != null)
+            if (frontendIPConfig != null)
             {
                 throw new ArgumentException("FrontendIPConfiguration with the specified name already exists");
             }
 
-
-            // Get the subnetId and publicIPAddressId from the object if specified
-            if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
-            {
-                this.SubnetId = this.Subnet.Id;
-
-                if (PublicIPAddress != null)
-                {
-                    this.PublicIPAddressId = this.PublicIPAddress.Id;
-                }
-            }
-
-            var frontendIPConfig = new PSApplicationGatewayFrontendIPConfiguration();
-            frontendIPConfig.Name = this.Name;
-           
-            if (!string.IsNullOrEmpty(this.SubnetId))
-            {
-                frontendIPConfig.Subnet = new PSResourceId();
-                frontendIPConfig.Subnet.Id = this.SubnetId;
-
-                if (!string.IsNullOrEmpty(this.PrivateIPAddress))
-                {
-                    frontendIPConfig.PrivateIPAddress = this.PrivateIPAddress;
-                    frontendIPConfig.PrivateIPAllocationMethod = Management.Network.Models.IpAllocationMethod.Static;
-                }
-                else
-                {
-                    frontendIPConfig.PrivateIPAllocationMethod = Management.Network.Models.IpAllocationMethod.Dynamic;
-                }
-            }
-
-            if (!string.IsNullOrEmpty(this.PublicIPAddressId))
-            {
-                frontendIPConfig.PublicIPAddress = new PSResourceId();
-                frontendIPConfig.PublicIPAddress.Id = this.PublicIPAddressId;
-            }
-
-            frontendIPConfig.Id =
-                ChildResourceHelper.GetResourceId(
-                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
-                    this.ApplicationGateway.ResourceGroupName,
-                    this.ApplicationGateway.Name,
-                    Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayFrontendIpConfigName, 
-                    this.Name);
+            frontendIPConfig = base.NewObject();
 
             this.ApplicationGateway.FrontendIPConfigurations.Add(frontendIPConfig);
-
+            
             WriteObject(this.ApplicationGateway);
-
         }
     }
 }

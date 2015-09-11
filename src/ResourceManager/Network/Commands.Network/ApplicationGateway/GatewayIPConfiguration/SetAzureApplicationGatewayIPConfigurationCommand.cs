@@ -20,7 +20,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureApplicationGatewayIPConfiguration"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet(VerbsCommon.Set, "AzureRMApplicationGatewayIPConfiguration"), OutputType(typeof(PSApplicationGateway))]
     public class SetAzureApplicationGatewayIPConfigurationCommand : AzureApplicationGatewayIPConfigurationBase
     {
         [Parameter(
@@ -28,35 +28,22 @@ namespace Microsoft.Azure.Commands.Network
              ValueFromPipeline = true,
              HelpMessage = "The applicationGateway")]
         public PSApplicationGateway ApplicationGateway { get; set; }
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
-            var gatewayIPConfiguration = this.ApplicationGateway.GatewayIPConfigurations.SingleOrDefault
+            var oldGatewayIPConfiguration = this.ApplicationGateway.GatewayIPConfigurations.SingleOrDefault
                 (resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
-            if (gatewayIPConfiguration == null)
+            if (oldGatewayIPConfiguration == null)
             {
                 throw new ArgumentException("Application gateway IP configuration with the specified name does not exist");
             }
 
-            gatewayIPConfiguration = new PSApplicationGatewayIPConfiguration();
-
-            gatewayIPConfiguration.Name = this.Name;
-
-            if (!string.IsNullOrEmpty(this.SubnetId))
-            {
-                var gatewayIPConfig = new PSResourceId();
-                gatewayIPConfig.Id = this.SubnetId;
-                gatewayIPConfiguration.Subnet = gatewayIPConfig;
-            }    
-
-            gatewayIPConfiguration.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
-                                this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
-                                Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayIpConfigurationName,
-                                this.Name);
-
-            this.ApplicationGateway.GatewayIPConfigurations.Add(gatewayIPConfiguration);
+            var newGatewayIPConfiguration = base.NewObject();
+            
+            this.ApplicationGateway.GatewayIPConfigurations.Remove(oldGatewayIPConfiguration);
+            this.ApplicationGateway.GatewayIPConfigurations.Add(newGatewayIPConfiguration);
 
             WriteObject(this.ApplicationGateway);
         }

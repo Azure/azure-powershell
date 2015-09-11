@@ -32,16 +32,16 @@ namespace Microsoft.WindowsAzure.Commands.Profile
     /// <summary>
     /// Creates new Microsoft Azure profile.
     /// </summary>
-    [Cmdlet(VerbsCommon.Select, "AzureProfile"), OutputType(typeof(AzureProfile))]
-    public class SelectAzureProfileCommand : AzurePSCmdlet
+    [Cmdlet(VerbsCommon.Select, "AzureProfile"), OutputType(typeof(AzureSMProfile))]
+    public class SelectAzureProfileCommand : AzureSMCmdlet
     {
         internal const string NewProfileParameterSet = "NewProfile";
-        internal const string DefaultProfilePrameterSet = "DefaultProfile";
+        internal const string DefaultProfileParameterSet = "DefaultProfile";
 
         [Parameter(ParameterSetName=NewProfileParameterSet, Mandatory=true, Position=0, ValueFromPipelineByPropertyName=true)]
-        public new AzureProfile Profile { get; set; }
+        public new AzureSMProfile Profile { get; set; }
 
-        [Parameter(ParameterSetName=DefaultProfilePrameterSet, Mandatory=true)]
+        [Parameter(ParameterSetName=DefaultProfileParameterSet, Mandatory=true)]
         public SwitchParameter Default { get; set; }
 
         protected override void InitializeProfile()
@@ -52,9 +52,9 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            if (ParameterSetName == DefaultProfilePrameterSet)
+            if (ParameterSetName == DefaultProfileParameterSet)
             {
-                Profile = AzurePSCmdlet.InitializeDefaultProfile();
+                Profile = AzureSMCmdlet.InitializeDefaultProfile();
             }
 
             if (Profile == null)
@@ -62,7 +62,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                 throw new ArgumentException(Resources.AzureProfileMustNotBeNull);
             }
 
-            AzurePSCmdlet.CurrentProfile = Profile;
+            AzureSMCmdlet.CurrentProfile = Profile;
             WriteObject(Profile);
         }
     }

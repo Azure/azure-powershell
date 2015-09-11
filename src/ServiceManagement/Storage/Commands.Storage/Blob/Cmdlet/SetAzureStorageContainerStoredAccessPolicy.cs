@@ -18,11 +18,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
-    using System.Threading.Tasks;
     using Common;
     using Microsoft.WindowsAzure.Storage.Blob;
     using Model.Contract;
-    using Model.ResourceModel;
 
     /// <summary>
     /// create a new azure container
@@ -43,7 +41,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Policy {get; set; }
 
-        [Parameter(HelpMessage = "Permissions for a container. Permissions can be any not-empty subset of \"audq\".")]
+        [Parameter(HelpMessage = "Permissions for a container. Permissions can be any non-empty subset of \"rdwl\".")]
         public string Permission { get; set; }
 
         [Parameter(HelpMessage = "Start Time")]

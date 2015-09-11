@@ -18,24 +18,13 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureApplicationGatewayBackendHttpSettings"), OutputType(typeof(PSApplicationGatewayBackendHttpSettings))]
+    [Cmdlet(VerbsCommon.New, "AzureRMApplicationGatewayBackendHttpSettings"), OutputType(typeof(PSApplicationGatewayBackendHttpSettings))]
     public class NewAzureApplicationGatewayBackendHttpSettingsCommand : AzureApplicationGatewayBackendHttpSettingsBase
     {
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
-
-            var backendHttpSettings = new PSApplicationGatewayBackendHttpSettings();
-            backendHttpSettings.Name = this.Name;
-            backendHttpSettings.Port = this.Port;
-            backendHttpSettings.Protocol = this.Protocol;
-            backendHttpSettings.CookieBasedAffinity = this.CookieBasedAffinity;
-            backendHttpSettings.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
-                                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
-                                    Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewaybackendHttpSettingsName,
-                                    this.Name);
-
-            WriteObject(backendHttpSettings);
+            base.ProcessRecord();            
+            WriteObject(base.NewObject());
         }
     }
 }

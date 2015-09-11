@@ -46,13 +46,13 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public SwitchParameter Force { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
             ExecuteClientAction(() =>
             {
-                if (this.Force.IsPresent || this.ShouldContinue(Properties.Resources.AvailabilitySetRemovalConfirmation, Properties.Resources.AvailabilitySetRemovalCaption))
+                if (this.Force.IsPresent || this.ShouldContinue(Microsoft.Azure.Commands.Compute.Properties.Resources.AvailabilitySetRemovalConfirmation, Microsoft.Azure.Commands.Compute.Properties.Resources.AvailabilitySetRemovalCaption))
                 {
                     AzureOperationResponse op = this.AvailabilitySetClient.Delete(this.ResourceGroupName, this.Name);
                     var result = Mapper.Map<PSOperation>(op);

@@ -1,11 +1,12 @@
-﻿using System;
-using System.Globalization;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
-using System.Management.Automation;
 using Microsoft.Azure.Management.Compute.Models;
+using System;
+using System.Globalization;
+using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.Extensions.DSC;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 {
@@ -17,7 +18,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         ProfileNouns.VirtualMachineDscExtension,
         SupportsShouldProcess = true)]
     [OutputType(typeof(PSComputeLongRunningOperation))]
-    public class RemoveAzureVMDscExtensionCommand : VirtualMachineDscExtensionBaseCmdlet
+    public class RemoveAzureVMDscExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
            Mandatory = true,
@@ -38,20 +39,22 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         [Parameter(
             Position = 2,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The extension handler name. This is defaulted to 'Microsoft.Powershell.DSC'")]
+            HelpMessage = "Name of the ARM resource that represents the extension. The Set-AzureVMDscExtension cmdlet sets this name to  " +
+            "'Microsoft.Powershell.DSC', which is the same value used by Get-AzureVMDscExtension. Specify this parameter only if you changed " +
+            "the default name in the Set cmdlet or used a different resource name in an ARM template.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
             if (String.IsNullOrEmpty(Name))
             {
-                Name = ExtensionNamespace + "." + ExtensionName;
+                Name = DscExtensionCmdletConstants.ExtensionPublishedNamespace + "." + DscExtensionCmdletConstants.ExtensionPublishedName;
             }
 
-            if (ShouldProcess(string.Format(CultureInfo.CurrentUICulture, Properties.Resources.DscExtensionRemovalConfirmation, Name), Properties.Resources.DscExtensionRemovalCaption))
+            if (ShouldProcess(string.Format(CultureInfo.CurrentUICulture, Microsoft.Azure.Commands.Compute.Properties.Resources.DscExtensionRemovalConfirmation, Name), Microsoft.Azure.Commands.Compute.Properties.Resources.DscExtensionRemovalCaption))
             {
                 //Add retry logic due to CRP service restart known issue CRP bug: 3564713
                 var count = 1;

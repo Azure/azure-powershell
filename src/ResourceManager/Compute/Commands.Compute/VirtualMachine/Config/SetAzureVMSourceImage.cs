@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Set, ProfileNouns.SourceImage, DefaultParameterSetName = ImageReferenceParameterSet),
     OutputType(typeof(PSVirtualMachine))]
-    public class SetAzureVMSourceImageCommand : AzurePSCmdlet
+    public class SetAzureVMSourceImageCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         protected const string ImageReferenceParameterSet = "ImageReferenceParameterSet";
 
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string Version { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             if (this.VM.StorageProfile == null)
             {

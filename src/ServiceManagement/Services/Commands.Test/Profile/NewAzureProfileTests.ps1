@@ -38,9 +38,9 @@ function Test-CreatesNewAzureProfileWithCertificate
     $actual = New-AzureProfile -SubscriptionId "058de55e-28e0-49e7-8cf2-6701d4a88ef5" -StorageAccount myStorage -Certificate $testCert
 
     # Assert
-    Assert-AreEqual "058de55e-28e0-49e7-8cf2-6701d4a88ef5" $actual.Context.Subscription.Id
-	Assert-AreEqual "AzureCloud" $actual.Context.Environment.Name
-	Assert-AreEqual "Certificate" $actual.Context.Account.Type
+    Assert-AreEqual "058de55e-28e0-49e7-8cf2-6701d4a88ef5" $actual.DefaultContext.Subscription.Id
+	Assert-AreEqual "AzureCloud" $actual.DefaultContext.Environment.Name
+	Assert-AreEqual "Certificate" $actual.DefaultContext.Account.Type
 }
 
 <#
@@ -53,10 +53,10 @@ function Test-CreatesNewAzureProfileWithUserCredentials
     $actual = New-AzureProfile -SubscriptionId "058de55e-28e0-49e7-8cf2-6701d4a88ef5" -StorageAccount myStorage -Credentials $testCreds -Tenant "testTenant"
 
     # Assert
-    Assert-AreEqual "058de55e-28e0-49e7-8cf2-6701d4a88ef5" $actual.Context.Subscription.Id
-	Assert-AreEqual "AzureCloud" $actual.Context.Environment.Name
-	Assert-AreEqual "test@mail.com" $actual.Context.Account.Id
-	Assert-AreEqual "User" $actual.Context.Account.Type
+    Assert-AreEqual "058de55e-28e0-49e7-8cf2-6701d4a88ef5" $actual.DefaultContext.Subscription.Id
+	Assert-AreEqual "AzureCloud" $actual.DefaultContext.Environment.Name
+	Assert-AreEqual "test@mail.com" $actual.DefaultContext.Account.Id
+	Assert-AreEqual "User" $actual.DefaultContext.Account.Type
 }
 
 <#
@@ -69,10 +69,37 @@ function Test-CreatesNewAzureProfileWithAccessToken
     $actual = New-AzureProfile -SubscriptionId "058de55e-28e0-49e7-8cf2-6701d4a88ef5" -StorageAccount myStorage -AccessToken "123456" -AccountId myAccount
 
     # Assert
-    Assert-AreEqual "058de55e-28e0-49e7-8cf2-6701d4a88ef5" $actual.Context.Subscription.Id
-	Assert-AreEqual "AzureCloud" $actual.Context.Environment.Name
-	Assert-AreEqual "myAccount" $actual.Context.Account.Id
-	Assert-AreEqual "AccessToken" $actual.Context.Account.Type
+    Assert-AreEqual "058de55e-28e0-49e7-8cf2-6701d4a88ef5" $actual.DefaultContext.Subscription.Id
+	Assert-AreEqual "AzureCloud" $actual.DefaultContext.Environment.Name
+	Assert-AreEqual "myAccount" $actual.DefaultContext.Account.Id
+	Assert-AreEqual "AccessToken" $actual.DefaultContext.Account.Type
+}
+
+<#
+.SYNOPSIS
+Tests creating an empty profile.
+#>
+function Test-NewEmptyProfile
+{
+    $actual = New-AzureProfile
+	Clear-AzureProfile -Force
+	$cloud = Get-AzureEnvironment -Name AzureCloud -Profile $actual
+	$chinaCloud = Get-AzureEnvironment -Name AzureChinaCloud -Profile $actual
+	Assert-NotNull $cloud
+	Assert-NotNull $chinaCloud 
+}
+
+<#
+.SYNOPSIS
+Tests creating an empty profile with a new environment.
+#>
+function Test-NewEmptyProfileWithEnvironment
+{
+   $newEnv = Add-AzureEnvironment -Name "NewEnv" -OnPremise $true -ManagementPortalUrl = "https://manage.windowsazure.com"
+   Clear-AzureProfile -Force
+   $actual = New-AzureProfile -Environment $newEnv
+   $checkEnv = Get-AzureEnvironment -Name "NewEnv" -Profile $actual
+   Assert-NotNull $checkEnv
 }
 
 <#
@@ -83,7 +110,7 @@ function Test-NewAzureProfileInRDFEMode
 {
     param([string] $token, [string] $user, [string] $sub)
     $profile = $(Create-Profile $token $user $sub)
-    Assert-AreEqual "AzureCloud" $profile.Context.Environment.Name
+    Assert-AreEqual "AzureCloud" $Profile.DefaultContext.Environment.Name
     Clear-AzureProfile -Force
     $locations = Get-AzureLocation -Profile $profile
     Assert-NotNull $locations
@@ -98,9 +125,30 @@ function Test-NewAzureProfileInARMMode
 {
     param([string] $token, [string] $user, [string] $sub)
     $profile = $(Create-Profile $token $user $sub)
-	Assert-AreEqual "AzureCloud" $($profile.Context.Environment.Name) "Expecting the azure cloud environment"
+	Assert-AreEqual "AzureCloud" $($Profile.DefaultContext.Environment.Name) "Expecting the azure cloud environment"
 	Clear-AzureProfile -Force
 	$locations = Get-AzureLocation -Profile $profile
 	Assert-NotNull $locations
 	Assert-True {$locations.Count -gt 1}
+}
+
+<#
+.SYNOPSIS
+Tests using the pipeline with environment cmdlets
+#>
+function Test-EnvironmentPipeline
+{
+    Clear-AzureProfile -Force
+    $env = Get-AzureEnvironment -Name AzureCloud
+	$env.Name = "EditedAzureCloud"
+	$env.AdTenant = "NewAdTenant"
+	$newEnv = $env | Add-AzureEnvironment
+	$envs = Get-AzureEnvironment
+	Assert-AreEqual "EditedAzureCloud" $newEnv.Name
+	Assert-AreEqual "NewAdTenant" $newEnv.AdTenant
+	Assert-AreEqual 3 $envs.Count
+	$removedEnv = $newEnv | Remove-AzureEnvironment -Force
+	Assert-AreEqual "EditedAzureCloud" $removedEnv.Name
+	$envs = Get-AzureEnvironment
+	Assert-AreEqual 2 $envs.Count
 }

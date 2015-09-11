@@ -18,54 +18,13 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureApplicationGatewayBackendAddressPool"), OutputType(typeof(PSApplicationGatewayBackendAddressPool))]
+    [Cmdlet(VerbsCommon.New, "AzureRMApplicationGatewayBackendAddressPool"), OutputType(typeof(PSApplicationGatewayBackendAddressPool))]
     public class NewAzureApplicationGatewayBackendAddressPoolCommand : AzureApplicationGatewayBackendAddressPoolBase
     {
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
-
-            var backendAddressPool = new PSApplicationGatewayBackendAddressPool();
-
-            backendAddressPool.Name = this.Name;
-
-            if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResourceId))
-            {
-                backendAddressPool.BackendIpConfigurations = new System.Collections.Generic.List<PSResourceId>();
-                foreach (string id in this.BackendIPConfigurationIds)
-                {
-                    var backendIpConfig = new PSResourceId();
-                    backendIpConfig.Id = id;
-                    backendAddressPool.BackendIpConfigurations.Add(backendIpConfig);
-                }
-            }
-            else if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByIP))
-            {
-                backendAddressPool.BackendAddresses = new System.Collections.Generic.List<PSApplicationGatewayBackendAddress>();
-                foreach (string ip in this.BackendIPAddresses)
-                {
-                    var backendAddress = new PSApplicationGatewayBackendAddress();
-                    backendAddress.IpAddress = ip;
-                    backendAddressPool.BackendAddresses.Add(backendAddress);
-                }
-            }
-            else 
-            {
-                backendAddressPool.BackendAddresses = new System.Collections.Generic.List<PSApplicationGatewayBackendAddress>();
-                foreach (string fqdn in this.BackendFqdns)
-                {
-                    var backendAddress = new PSApplicationGatewayBackendAddress();
-                    backendAddress.Fqdn = fqdn;
-                    backendAddressPool.BackendAddresses.Add(backendAddress);
-                }
-            }
-
-            backendAddressPool.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
-                                this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
-                                Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayBackendAddressPoolName,
-                                this.Name);
-
-            WriteObject(backendAddressPool);
+            base.ProcessRecord();
+            WriteObject(base.NewObject());
         }
     }
 }

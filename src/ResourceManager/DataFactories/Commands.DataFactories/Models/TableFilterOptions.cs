@@ -14,7 +14,7 @@
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    public class TableFilterOptions
+    public class DatasetFilterOptions
     {
         public string Name { get; set; }
 

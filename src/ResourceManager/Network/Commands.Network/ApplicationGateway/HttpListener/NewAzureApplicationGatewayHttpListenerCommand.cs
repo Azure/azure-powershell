@@ -18,40 +18,13 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureApplicationGatewayHttpListener"), OutputType(typeof(PSApplicationGatewayHttpListener))]
+    [Cmdlet(VerbsCommon.New, "AzureRMApplicationGatewayHttpListener"), OutputType(typeof(PSApplicationGatewayHttpListener))]
     public class NewAzureApplicationGatewayHttpListenerCommand : AzureApplicationGatewayHttpListenerBase
     {
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
-
-            var httpListener = new PSApplicationGatewayHttpListener();
-            httpListener.Name = this.Name;
-            httpListener.Protocol = this.Protocol;
-
-            if (!string.IsNullOrEmpty(this.FrontendIPConfigurationId))
-            {
-                httpListener.FrontendIpConfiguration = new PSResourceId();
-                httpListener.FrontendIpConfiguration.Id = this.FrontendIPConfigurationId;
-            }
-
-            if (!string.IsNullOrEmpty(this.FrontendPortId))
-            {
-                httpListener.FrontendPort = new PSResourceId();
-                httpListener.FrontendPort.Id = this.FrontendPortId;
-            }
-            if (!string.IsNullOrEmpty(this.SslCertificateId))
-            {
-                httpListener.SslCertificate = new PSResourceId();
-                httpListener.SslCertificate.Id = this.SslCertificateId;
-            }
-
-            httpListener.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
-                                this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
-                                Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayHttpListenerName,
-                                this.Name);
-
-            WriteObject(httpListener);
+            base.ProcessRecord();
+            WriteObject(base.NewObject());
         }
     }
 }

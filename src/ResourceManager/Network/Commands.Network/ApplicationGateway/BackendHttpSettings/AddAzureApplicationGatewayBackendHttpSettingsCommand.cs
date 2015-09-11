@@ -20,7 +20,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, "AzureApplicationGatewayBackendHttpSettings"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet(VerbsCommon.Add, "AzureRMApplicationGatewayBackendHttpSettings"), OutputType(typeof(PSApplicationGateway))]
     public class AddAzureApplicationGatewayBackendHttpSettingsCommand : AzureApplicationGatewayBackendHttpSettingsBase
     {
         [Parameter(
@@ -29,9 +29,9 @@ namespace Microsoft.Azure.Commands.Network
                  HelpMessage = "The applicationGateway")]
         public PSApplicationGateway ApplicationGateway { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
             var backendHttpSettings = this.ApplicationGateway.BackendHttpSettingsCollection.SingleOrDefault
                     (resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
@@ -41,16 +41,7 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("Backend http settings with the specified name already exists");
             }
 
-            backendHttpSettings = new PSApplicationGatewayBackendHttpSettings();
-            backendHttpSettings.Name = this.Name;
-            backendHttpSettings.Port = this.Port;
-            backendHttpSettings.Protocol = this.Protocol;
-            backendHttpSettings.CookieBasedAffinity = this.CookieBasedAffinity;
-            backendHttpSettings.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
-                                    this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
-                                    Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewaybackendHttpSettingsName,
-                                    this.Name);
-
+            backendHttpSettings = base.NewObject();            
             this.ApplicationGateway.BackendHttpSettingsCollection.Add(backendHttpSettings);
 
             WriteObject(this.ApplicationGateway);

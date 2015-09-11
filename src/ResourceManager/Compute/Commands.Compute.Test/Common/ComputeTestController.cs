@@ -27,10 +27,11 @@ using Microsoft.Azure.Test;
 using System;
 using System.Linq;
 using Microsoft.Azure.Common.Authentication;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
-    public sealed class ComputeTestController
+    public sealed class ComputeTestController : RMTestBase
     {
         bool testViaCsm = true; // Currently set to true, we will get this from Environment varialbe.
 
@@ -172,7 +173,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
             if (HttpMockServer.Mode == HttpRecorderMode.Record)
             {
-                tenantId = environment.AuthorizationContext.TenatId;
+                tenantId = environment.AuthorizationContext.TenantId;
                 UserDomain = environment.AuthorizationContext.UserDomain;
 
                 HttpMockServer.Variables[TenantIdKey] = tenantId;

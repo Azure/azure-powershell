@@ -18,6 +18,6 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
 {
     internal interface IAzureHDInsightSubscriptionResolverFactory
     {
-        IAzureHDInsightSubscriptionResolver Create(AzureProfile profile);
+        IAzureHDInsightSubscriptionResolver Create(AzureSMProfile profile);
     }
 }

@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Subnet where application gateway gets its address from")]
         public PSSubnet Subnet { get; set; }
        
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
             if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
             {
@@ -49,6 +49,27 @@ namespace Microsoft.Azure.Commands.Network
                     this.SubnetId = this.Subnet.Id;
                 }
             }
+        }
+
+        public PSApplicationGatewayIPConfiguration NewObject()
+        {
+            var gatewayIPConfiguration = new PSApplicationGatewayIPConfiguration();
+
+            gatewayIPConfiguration.Name = this.Name;
+
+            if (!string.IsNullOrEmpty(this.SubnetId))
+            {
+                var gatewayIPConfig = new PSResourceId();
+                gatewayIPConfig.Id = this.SubnetId;
+                gatewayIPConfiguration.Subnet = gatewayIPConfig;
+            }
+
+            gatewayIPConfiguration.Id = ApplicationGatewayChildResourceHelper.GetResourceNotSetId(
+                                this.NetworkClient.NetworkResourceProviderClient.Credentials.SubscriptionId,
+                                Microsoft.Azure.Commands.Network.Properties.Resources.ApplicationGatewayIPConfigurationName,
+                                this.Name);
+            
+            return gatewayIPConfiguration;
         }
     }
 }

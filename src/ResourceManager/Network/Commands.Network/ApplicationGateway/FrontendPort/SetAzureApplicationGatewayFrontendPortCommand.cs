@@ -20,20 +20,9 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureApplicationGatewayFrontendPort"), OutputType(typeof(PSApplicationGateway))]
-    public class SetAzureApplicationGatewayFrontendPortCommand : NetworkBaseCmdlet
+    [Cmdlet(VerbsCommon.Set, "AzureRMApplicationGatewayFrontendPort"), OutputType(typeof(PSApplicationGateway))]
+    public class SetAzureApplicationGatewayFrontendPortCommand : AzureApplicationGatewayFrontendPortBase
     {
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The name of the frontend port")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(
-               Mandatory = true,
-               HelpMessage = "Frontend port")]
-        [ValidateNotNullOrEmpty]
-        public int Port { get; set; }
 
         [Parameter(
              Mandatory = true,
@@ -41,18 +30,21 @@ namespace Microsoft.Azure.Commands.Network
              HelpMessage = "The applicationGateway")]
         public PSApplicationGateway ApplicationGateway { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
-            var frontendPort = this.ApplicationGateway.FrontendPorts.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
+            var oldFrontendPort = this.ApplicationGateway.FrontendPorts.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
 
-            if (frontendPort == null)
+            if (oldFrontendPort == null)
             {
                 throw new ArgumentException("Frontend port with the specified name does not exist");
             }
 
-            frontendPort.Port = this.Port;
+            var newFrontendPort = base.NewObject();
+
+            this.ApplicationGateway.FrontendPorts.Remove(oldFrontendPort);
+            this.ApplicationGateway.FrontendPorts.Add(newFrontendPort);
 
             WriteObject(this.ApplicationGateway);
         }

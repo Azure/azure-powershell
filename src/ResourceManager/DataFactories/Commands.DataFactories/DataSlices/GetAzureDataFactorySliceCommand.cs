@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.DataFactories
         }
 
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             if (ParameterSetName == ByFactoryObject)
             {
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.DataFactories
             {
                 ResourceGroupName = ResourceGroupName,
                 DataFactoryName = DataFactoryName,
-                TableName = TableName,
+                DatasetName = this.DatasetName,
                 DataSliceRangeStartTime = StartDateTime,
                 DataSliceRangeEndTime = EndDateTime
             };

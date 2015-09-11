@@ -14,6 +14,7 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Resources
@@ -21,7 +22,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Creates a new resource group deployment.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureResourceGroupDeployment", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(PSResourceGroupDeployment))]
+    [Cmdlet(VerbsCommon.New, "AzureRMResourceGroupDeployment", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(PSResourceGroupDeployment))]
     public class NewAzureResourceGroupDeploymentCommand : ResourceWithParameterBaseCmdlet, IDynamicParameters
     {
         [Alias("DeploymentName")]
@@ -34,20 +35,53 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        public override void ExecuteCmdlet()
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The deployment mode.")]
+        public DeploymentMode Mode { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
+        public SwitchParameter Force { get; set; }
+
+        public NewAzureResourceGroupDeploymentCommand()
+        {
+            this.Mode = DeploymentMode.Incremental;
+        }
+
+        protected override void ProcessRecord()
         {
             CreatePSResourceGroupDeploymentParameters parameters = new CreatePSResourceGroupDeploymentParameters()
             {
                 ResourceGroupName = ResourceGroupName,
                 DeploymentName = Name,
+                DeploymentMode = Mode,
                 GalleryTemplateIdentity = GalleryTemplateIdentity,
                 TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
                 TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
+                ParameterUri = TemplateParameterUri,
                 TemplateVersion = TemplateVersion,
                 StorageAccountName = StorageAccountName
             };
 
-            WriteObject(ResourcesClient.ExecuteDeployment(parameters));
+            if(!string.IsNullOrEmpty(TemplateVersion) || !string.IsNullOrEmpty(StorageAccountName))
+            {
+                WriteWarning("The TemplateVersion and StorageAccountName parameters in New-AzureResourceGroupDeployment cmdlet is being deprecated and will be removed in a future release.");
+            }
+
+            if(this.Mode == DeploymentMode.Complete)
+            {
+                this.ConfirmAction(
+                    this.Force,
+                    "Are you sure you want to use the complete deployment mode? Resources in the resource group '" + ResourceGroupName + "' which are not included in the template will be deleted.",
+                    "Creating a deployment with Complete mode",
+                    ResourceGroupName,
+                    () =>
+                    {
+                        WriteObject(ResourcesClient.ExecuteDeployment(parameters));
+                    });
+            }
+            else
+            {
+                WriteObject(ResourcesClient.ExecuteDeployment(parameters));
+            }
         }
     }
 }

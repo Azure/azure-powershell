@@ -17,7 +17,7 @@ using Xunit;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class RouteTableTests
+    public class RouteTableTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -47,5 +47,11 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest("Test-RouteTableRouteCRUD");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRouteHopTypeTest()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-RouteHopTypeTest");
+        }
     }
 }
