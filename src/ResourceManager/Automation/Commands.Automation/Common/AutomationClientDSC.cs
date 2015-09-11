@@ -1073,9 +1073,8 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
                 {
                     return GetNodeConfiguration(resourceGroupName, automationAccountName, nodeConfigurationName, rollupStatus);
                 }
-                catch (ResourceNotFoundException resourceNotFoundException)
+                catch (ResourceNotFoundException)
                 {
-                    Console.Write(resourceNotFoundException.Message);
                     return null;
                 }                
             }
