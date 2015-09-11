@@ -207,7 +207,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 
             var dscStatusContext = new VirtualMachineDscExtensionStatusContext
             {
-                ServiceName = Service,
+                ServiceName = this.ServiceName,
                 Name = vmRole == null ? string.Empty : vmRole.RoleName,
                 Status = extensionSettingStatus.Status ?? string.Empty,
                 StatusCode = extensionSettingStatus.Code ?? -1,
