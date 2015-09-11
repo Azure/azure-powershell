@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroups
 
             if (PassThru)
             {
+                WriteWarning("The output object of this cmdlet will be modified in a future release.");
                 WriteObject(true);
             }
         }

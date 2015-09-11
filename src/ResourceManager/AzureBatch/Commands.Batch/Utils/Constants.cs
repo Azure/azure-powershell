@@ -19,17 +19,21 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         public const int DefaultMaxCount = 1000;
 
         // Cmdlet nouns
-        public const string AzureBatchPool = "AzureBatchPool";
-        public const string AzureBatchPoolResize = "AzureBatchPoolResize";
+        public const string AzureBatchAccount = "AzureBatchAccount";
+        public const string AzureBatchAccountKey = "AzureBatchAccountKey";
+        public const string AzureBatchAccountKeys = "AzureBatchAccountKeys";
+        public const string AzureBatchAutoScale = "AzureBatchAutoScale";
         public const string AzureBatchComputeNode = "AzureBatchComputeNode";
         public const string AzureBatchComputeNodeUser = "AzureBatchComputeNodeUser";
-        public const string AzureBatchJobSchedule = "AzureBatchJobSchedule";
         public const string AzureBatchJob = "AzureBatchJob";
-        public const string AzureBatchTask = "AzureBatchTask";
+        public const string AzureBatchJobSchedule = "AzureBatchJobSchedule";
         public const string AzureBatchNodeFile = "AzureBatchNodeFile";
         public const string AzureBatchNodeFileContent = "AzureBatchNodeFileContent";
+        public const string AzureBatchPool = "AzureBatchPool";
+        public const string AzureBatchPoolOSVersion = "AzureBatchPoolOSVersion";
+        public const string AzureBatchPoolResize = "AzureBatchPoolResize";
         public const string AzureBatchRemoteDesktopProtocolFile = "AzureBatchRemoteDesktopProtocolFile";
-        public const string AzureBatchAutoScale = "AzureBatchAutoScale";
+        public const string AzureBatchTask = "AzureBatchTask";
 
         // Parameter sets
         public const string IdParameterSet = "Id";

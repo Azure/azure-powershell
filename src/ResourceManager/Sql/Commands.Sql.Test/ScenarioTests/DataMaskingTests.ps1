@@ -59,24 +59,24 @@ function Test-DatabaseDataMaskingPrivilegedLoginsChanges
 {
 
 	# Setup
-	$testSuffix = 30777
+	$testSuffix = 30371
 	 $params = Create-DataMaskingTestEnvironment $testSuffix
 
 	try
 	{
 		# Test
-		Set-AzureSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -PrivilegedLogins "A;B;C" 
+		Set-AzureSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -PrivilegedLogins "dbo" 
 		$policy = Get-AzureSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
 	
 		# Assert
-		Assert-AreEqual $policy.PrivilegedLogins  "A;B;C"
+		Assert-AreEqual $policy.PrivilegedLogins  "dbo"
 
 		# Test
-		Set-AzureSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
+		Set-AzureSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -DataMaskingState "Disabled" 
 		$policy = Get-AzureSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
 	
 		# Assert
-		Assert-AreEqual $policy.PrivilegedLogins  "A;B;C"
+		Assert-AreEqual $policy.PrivilegedLogins  "dbo"
 
 		# Test
 		Set-AzureSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -PrivilegedLogins ""  
@@ -136,6 +136,19 @@ function Test-DatabaseDataMaskingBasicRuleLifecycle
 		Assert-AreEqual $rule.DatabaseName $params.databaseName
 		Assert-AreEqual $rule.RuleId $ruleId
 		Assert-AreEqual $rule.MaskingFunction "Email"
+		Assert-AreEqual $rule.SchemaName "dbo"
+		Assert-AreEqual $rule.TableName $params.table2
+		Assert-AreEqual $rule.ColumnName $params.column2
+
+		Set-AzureSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -RuleId $ruleId -MaskingFunction "Default"
+		$rule = Get-AzureSqlDatabaseDataMaskingRule -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -RuleId $ruleId
+
+			# Assert
+		Assert-AreEqual $rule.ResourceGroupName $params.rgname
+		Assert-AreEqual $rule.ServerName $params.serverName
+		Assert-AreEqual $rule.DatabaseName $params.databaseName
+		Assert-AreEqual $rule.RuleId $ruleId
+		Assert-AreEqual $rule.MaskingFunction "Default"
 		Assert-AreEqual $rule.SchemaName "dbo"
 		Assert-AreEqual $rule.TableName $params.table2
 		Assert-AreEqual $rule.ColumnName $params.column2
@@ -353,7 +366,7 @@ function Test-DatabaseDataMaskingRuleCreationWithoutPolicy
 {
 
 	# Setup
-	$testSuffix = 45262
+	$testSuffix = 457822
 	 $params = Create-DataMaskingTestEnvironment $testSuffix
 	 $ruleId = "rule1"
 	try

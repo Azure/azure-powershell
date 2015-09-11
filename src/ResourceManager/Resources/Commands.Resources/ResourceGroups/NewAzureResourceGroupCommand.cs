@@ -62,7 +62,12 @@ namespace Microsoft.Azure.Commands.Resources
                 Tag = Tag,
                 ConfirmAction = ConfirmAction
             };
-
+            if(!string.IsNullOrEmpty(DeploymentName) || !string.IsNullOrEmpty(GalleryTemplateIdentity) || !string.IsNullOrEmpty(TemplateFile)
+                || !string.IsNullOrEmpty(TemplateVersion) || TemplateParameterObject != null || !string.IsNullOrEmpty(StorageAccountName))
+            {
+                WriteWarning("The deployment parameters in New-AzureResourceGroup cmdlet is being deprecated and will be removed in a future release. Please use New-AzureResourceGroupDeployment to submit deployments.");
+            }
+            WriteWarning("The output object of this cmdlet will be modified in a future release.");
             WriteObject(ResourcesClient.CreatePSResourceGroup(parameters));
         }
     }

@@ -14,14 +14,19 @@
 
 using Hyak.Common;
 using Microsoft.Azure.Commands.AzureBackup.ClientAdapter;
+using Microsoft.Azure.Commands.AzureBackup.Models;
 using Microsoft.Azure.Commands.AzureBackup.Properties;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Management.BackupServices;
+using Microsoft.Azure.Management.BackupServices.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Scheduler;
 using System;
+using System.Collections.Generic;
 using System.Management.Automation;
 using System.Net;
+using System.Threading;
 using CmdletModel = Microsoft.Azure.Commands.AzureBackup.Models;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
@@ -52,16 +57,16 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         protected void InitializeAzureBackupCmdlet(string rgName, string rName)
         {
             var cloudServicesClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(Profile, Profile.Context.Subscription, AzureEnvironment.Endpoint.ResourceManager);
-            azureBackupClientAdapter = new AzureBackupClientAdapter(cloudServicesClient.Credentials, cloudServicesClient.BaseUri, rgName, rName);
+            azureBackupClientAdapter = new AzureBackupClientAdapter(cloudServicesClient.Credentials, cloudServicesClient.BaseUri);
 
-            WriteDebug(string.Format("Initialized AzureBackup Cmdlet, ClientRequestId: {0}, ResourceGroupName: {1}, ResourceName : {2}", azureBackupClientAdapter.GetClientRequestId(), rgName, rName));
+            WriteDebug(string.Format(Resources.InitializingClient, azureBackupClientAdapter.GetClientRequestId(), rgName, rName));
         }
 
         /// <summary>
         /// Initializes required client adapters
         /// </summary>
         /// <param name="vault"></param>
-        protected void InitializeAzureBackupCmdlet(CmdletModel.AzurePSBackupVault vault)
+        protected void InitializeAzureBackupCmdlet(CmdletModel.AzureRMBackupVault vault)
         {
             InitializeAzureBackupCmdlet(vault.ResourceGroupName, vault.Name);
         }
@@ -74,7 +79,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             }
             catch (Exception exception)
             {
-                WriteDebug(String.Format("Caught exception, type: {0}", exception.GetType()));
+                WriteDebug(String.Format(Resources.ExceptionInExecution, exception.GetType()));
                 HandleException(exception);
             }
         }
@@ -88,7 +93,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             if (exception is AggregateException && ((AggregateException)exception).InnerExceptions != null
                 && ((AggregateException)exception).InnerExceptions.Count != 0)
             {
-                WriteDebug("Handling aggregate exception");
+                WriteDebug(Resources.AggregateException);
                 foreach (var innerEx in ((AggregateException)exception).InnerExceptions)
                 {
                     HandleException(innerEx);
@@ -105,14 +110,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     var cloudEx = exception as CloudException;
                     if (cloudEx.Response != null && cloudEx.Response.StatusCode == HttpStatusCode.NotFound)
                     {
-                        WriteDebug(String.Format("Received CloudException, StatusCode: {0}", cloudEx.Response.StatusCode));
+                        WriteDebug(String.Format(Resources.CloudExceptionCodeNotFound, cloudEx.Response.StatusCode));
 
                         targetEx = new Exception(Resources.ResourceNotFoundMessage);
                         targetErrorCategory = ErrorCategory.InvalidArgument;
                     }
                     else if (cloudEx.Error != null)
                     {
-                        WriteDebug(String.Format("Received CloudException, ErrorCode: {0}, Message: {1}", cloudEx.Error.Code, cloudEx.Error.Message));
+                        WriteDebug(String.Format(Resources.CloudException, cloudEx.Error.Code, cloudEx.Error.Message));
 
                         targetErrorId = cloudEx.Error.Code;
                         targetErrorCategory = ErrorCategory.InvalidOperation;
@@ -121,19 +126,70 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 else if (exception is WebException)
                 {
                     var webEx = exception as WebException;
-                    WriteDebug(string.Format("Received WebException, Response: {0}, Status: {1}", webEx.Response, webEx.Status));
+                    WriteDebug(string.Format(Resources.WebException, webEx.Response, webEx.Status));
 
                     targetErrorCategory = ErrorCategory.ConnectionError;
                 }
                 else if (exception is ArgumentException || exception is ArgumentNullException)
                 {
-                    WriteDebug(string.Format("Received ArgumentException"));
+                    WriteDebug(string.Format(Resources.ArgumentException));
                     targetErrorCategory = ErrorCategory.InvalidArgument;
                 }
 
                 var errorRecord = new ErrorRecord(targetEx, targetErrorId, targetErrorCategory, null);
                 WriteError(errorRecord);
             }
+        }
+
+        /// <summary>
+        /// Get status of long running operation
+        /// </summary>
+        /// <param name="operationId"></param>
+        /// <returns></returns>
+        internal CSMOperationResult GetOperationStatus(string resourceGroupName, string resourceName, Guid operationId)
+        {
+            return AzureBackupClient.GetOperationStatus(resourceGroupName, resourceName, operationId.ToString());
+        }
+
+        private const int defaultOperationStatusRetryTimeInMilliSec = 10 * 1000; // 10 sec
+
+        /// <summary>
+        /// Track completion of long running operation
+        /// </summary>
+        /// <param name="operationId"></param>
+        /// <param name="checkFrequency">In Millisec</param>
+        /// <returns></returns>
+        internal CSMOperationResult TrackOperation(string resourceGroupName, string resourceName, Guid operationId, int checkFrequency = defaultOperationStatusRetryTimeInMilliSec)
+        {
+            CSMOperationResult response = null;
+
+            while (true)
+            {
+                response = GetOperationStatus(resourceGroupName, resourceName, operationId);
+
+                if (response.Status != CSMAzureBackupOperationStatus.InProgress.ToString())
+                {
+                    WriteDebug(String.Format(Resources.OperationStatus, response.Status));
+                    break;
+                }
+
+                Thread.Sleep(checkFrequency);
+            }
+
+            return response;
+        }
+
+        internal IList<AzureRMBackupJob> GetCreatedJobs(string resourceGroupName, string resourceName, AzureRMBackupVault vault, IList<string> jobIds)
+        {
+            IList<AzureRMBackupJob> jobs = new List<AzureRMBackupJob>();
+
+            foreach (string jobId in jobIds)
+            {
+                CSMJobDetailsResponse job = AzureBackupClient.GetJobDetails(resourceGroupName, resourceName, jobId);
+                jobs.Add(new AzureRMBackupJob(vault, job.JobDetailedProperties, job.Name));
+            }
+
+            return jobs;
         }
     }
 }

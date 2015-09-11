@@ -18,8 +18,11 @@ Tests Create-AzureVM with valid information.
 #>
 function Test-GetAzureVM
 {
-    # Setup
+    # Virtual Machine cmdlets are now showing a non-terminating error message for ResourceNotFound
+    # To continue script, $ErrorActionPreference should be set to 'SilentlyContinue'.
+    $ErrorActionPreference='SilentlyContinue';
 
+    # Setup
     $location = Get-DefaultLocation
     $imgName = Get-DefaultImage $location
 
@@ -74,6 +77,10 @@ function Run-ServiceManagementCloudExceptionTests
 # Test Start/Stop-AzureVM for Multiple VMs
 function Run-StartAndStopMultipleVirtualMachinesTest
 {
+    # Virtual Machine cmdlets are now showing a non-terminating error message for ResourceNotFound
+    # To continue script, $ErrorActionPreference should be set to 'SilentlyContinue'.
+    $ErrorActionPreference='SilentlyContinue';
+
     # Setup
     $location = Get-DefaultLocation;
     $imgName = Get-DefaultImage $location;
@@ -583,4 +590,22 @@ function Run-ServiceDeploymentExtensionCmdletTests
         # Cleanup
         Cleanup-CloudService $svcName;
     }
+}
+
+# Run Data Collection Cmdlet Tests
+function Run-EnableAndDisableDataCollectionTests
+{
+    $st = Enable-AzureDataCollection;
+
+    $locations = Get-AzureLocation;
+    foreach ($loc in $locations)
+    {
+        $svcName = getAssetName;
+        $st = New-AzureService -ServiceName $svcName -Location $loc.Name;
+        
+        # Cleanup
+        Cleanup-CloudService $svcName
+    }
+
+    $st = Disable-AzureDataCollection;
 }

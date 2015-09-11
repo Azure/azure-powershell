@@ -234,6 +234,20 @@ function Test-RaUserPermissions
 
 <#
 .SYNOPSIS
+Tests verifies Get-AzureAuthorizationChangeLog
+#>
+function Test-RaAuthorizationChangeLog
+{
+	$log1 = Get-AzureAuthorizationChangeLog -startTime 2015-08-27 -EndTime 2015-08-27T22:30:00Z
+
+	# Assert
+	Assert-True { $log1.Count -ge 1 } "At least one record should be returned for the user"
+}
+
+
+
+<#
+.SYNOPSIS
 Creates role assignment
 #>
 function CreateRoleAssignment

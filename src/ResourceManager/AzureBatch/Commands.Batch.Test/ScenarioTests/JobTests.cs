@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId1);
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId2);
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId3);
-                    ScenarioTestHelpers.TerminateJob(context, jobId1);
+                    ScenarioTestHelpers.TerminateJob(controller, context, jobId1);
                 },
                 () =>
                 {
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                     ScenarioTestHelpers.CreateTestJob(controller, context, runOnceJob);
                     ScenarioTestHelpers.CreateTestJobSchedule(controller, context, jobScheduleId, recurrence);
                     jobId = ScenarioTestHelpers.WaitForRecentJob(controller, context, jobScheduleId);
-                    ScenarioTestHelpers.TerminateJob(context, jobId);
+                    ScenarioTestHelpers.TerminateJob(controller, context, jobId);
                     jobId2 = ScenarioTestHelpers.WaitForRecentJob(controller, context, jobScheduleId, jobId);
                 },
                 () =>
@@ -220,6 +220,63 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 TestUtilities.GetCallingClass(),
                 TestUtilities.GetCurrentMethodName());
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDisableAndEnableJob()
+        {
+            BatchController controller = BatchController.NewInstance;
+            string jobId = "testDisableEnableJob";
+
+            BatchAccountContext context = null;
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-DisableAndEnableJob '{0}' '{1}' '1'", accountName, jobId) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
+                },
+                () =>
+                {
+                    ScenarioTestHelpers.DeleteJob(controller, context, jobId);
+                },
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestTerminateJobById()
+        {
+            TestTerminateJob(false);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestTerminateJobPipeline()
+        {
+            TestTerminateJob(true);
+        }
+
+        private void TestTerminateJob(bool usePipeline)
+        {
+            BatchController controller = BatchController.NewInstance;
+            BatchAccountContext context = null;
+            string jobId = "testTerminateJob" + (usePipeline ? "Pipeline" : "Id");
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-TerminateJob '{0}' '{1}' '{2}'", accountName, jobId, usePipeline ? 1 : 0) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
+                },
+                () =>
+                {
+                    ScenarioTestHelpers.DeleteJob(controller, context, jobId);
+                },
+                TestUtilities.GetCallingClass(),
+                usePipeline ? "TestTerminateJobPipeline" : "TestTerminateJobById");
+        }
     }
 
     // Cmdlets that use the HTTP Recorder interceptor for use with scenario tests
@@ -245,6 +302,36 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
     [Cmdlet(VerbsCommon.Remove, "AzureBatchJob_ST")]
     public class RemoveBatchJobScenarioTestCommand : RemoveBatchJobCommand
+    {
+        public override void ExecuteCmdlet()
+        {
+            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
+            base.ExecuteCmdlet();
+        }
+    }
+
+    [Cmdlet(VerbsLifecycle.Enable, "AzureBatchJob_ST")]
+    public class EnableBatchJobScenarioTestCommand : EnableBatchJobCommand
+    {
+        public override void ExecuteCmdlet()
+        {
+            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
+            base.ExecuteCmdlet();
+        }
+    }
+
+    [Cmdlet(VerbsLifecycle.Disable, "AzureBatchJob_ST")]
+    public class DisableBatchJobScenarioTestCommand : DisableBatchJobCommand
+    {
+        public override void ExecuteCmdlet()
+        {
+            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
+            base.ExecuteCmdlet();
+        }
+    }
+
+    [Cmdlet(VerbsLifecycle.Stop, "AzureBatchJob_ST")]
+    public class StopBatchJobScenarioTestCommand : StopBatchJobCommand
     {
         public override void ExecuteCmdlet()
         {

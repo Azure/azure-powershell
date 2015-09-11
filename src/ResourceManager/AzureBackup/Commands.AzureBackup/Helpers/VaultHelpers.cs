@@ -13,6 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using ClientModel = Microsoft.Azure.Management.BackupServices.Models;
 using CmdletModel = Microsoft.Azure.Commands.AzureBackup.Models;
 
@@ -26,9 +29,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
         /// <param name="vault"></param>
         /// <param name="storage"></param>
         /// <returns></returns>
-        public static CmdletModel.AzurePSBackupVault GetCmdletVault(ClientModel.AzureBackupVault vault, string storageType)
+        public static CmdletModel.AzureRMBackupVault GetCmdletVault(ClientModel.AzureBackupVault vault, string storageType)
         {
-            var response = new CmdletModel.AzurePSBackupVault
+            var response = new CmdletModel.AzureRMBackupVault
             {
                 ResourceId = vault.Id,
                 Name = vault.Name,
@@ -50,5 +53,78 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
             string[] tokens = vaultId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
             return tokens[3];
         }
+
+        // NOTE: Commenting code which will be used in a later sprint, but not right now.
+        
+        /// <summary>
+        /// Extension to convert enumerable Hashtable into a dictionary
+        /// </summary>
+        /// <param name="tags"></param>
+        /// <returns></returns>
+        // public static Dictionary<string, string> ConvertToDictionary(this Hashtable[] tags)
+        // {
+        //     return tags == null
+        //         ? null
+        //         : tags
+        //             .CoalesceEnumerable()
+        //             .Select(hashTable => hashTable.OfType<DictionaryEntry>()
+        //                 .ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value))
+        //             .Where(tagDictionary => tagDictionary.ContainsKey("Name"))
+        //             .Select(tagDictionary => Tuple
+        //                 .Create(
+        //                     tagDictionary["Name"].ToString(),
+        //                     tagDictionary.ContainsKey("Value") ? tagDictionary["Value"].ToString() : string.Empty))
+        //             .Distinct(kvp => kvp.Item1)
+        //             .ToDictionary(kvp => kvp.Item1, kvp => kvp.Item2);
+        // }
+
+        /// <summary>
+        /// Extension to coalesce enumerable
+        /// </summary>
+        /// <typeparam name="TSource">Enumerable type</typeparam>
+        /// <param name="source">Enumerable</param>
+        /// <returns></returns>
+        // public static IEnumerable<TSource> CoalesceEnumerable<TSource>(this IEnumerable<TSource> source)
+        // {
+        //     return source ?? Enumerable.Empty<TSource>();
+        // }
+
+        /// <summary>
+        /// Extension to remove duplicates from enumerable based on a provided key selector
+        /// </summary>
+        /// <typeparam name="TSource">Enumerable type</typeparam>
+        /// <typeparam name="TKeyType">Type of key</typeparam>
+        /// <param name="source">Input enumerable to remove duplicates from</param>
+        /// <param name="keySelector">Lambda to select key</param>
+        /// <returns></returns>
+        // public static IEnumerable<TSource> Distinct<TSource, TKeyType>(this IEnumerable<TSource> source, Func<TSource, TKeyType> keySelector)
+        // {
+        //     var set = new Dictionary<TKeyType, TSource>(EqualityComparer<TKeyType>.Default);
+        //     foreach (TSource element in source)
+        //     {
+        //         TSource value;
+        //         var key = keySelector(element);
+        //         if (!set.TryGetValue(key, out value))
+        //         {
+        //             yield return element;
+        //         }
+        //         else
+        //         {
+        //             set[key] = value;
+        //         }
+        //     }
+        // }
+
+        /// <summary>
+        /// Extension to convert dictionary to hashtable enumerable
+        /// </summary>
+        /// <param name="tags"></param>
+        /// <returns></returns>
+        // public static Hashtable[] GetTagsHashtables(this IDictionary<string, string> tags)
+        // {
+        //     return tags == null
+        //         ? null
+        //         : tags.Select(kvp => new Hashtable { { "Name", kvp.Key }, { "Value", kvp.Value } }).ToArray();
+        // }
     }
 }

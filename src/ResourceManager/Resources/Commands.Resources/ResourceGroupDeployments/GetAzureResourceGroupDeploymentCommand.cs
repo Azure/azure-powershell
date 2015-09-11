@@ -47,6 +47,10 @@ namespace Microsoft.Azure.Commands.Resources
                     new List<string>() { ProvisioningState }
             };
 
+            if(!string.IsNullOrEmpty(ProvisioningState))
+            {
+                WriteWarning("The ProvisioningState parameter is being deprecated and will be removed in a future release.");
+            }
             WriteObject(ResourcesClient.FilterResourceGroupDeployments(options), true);
         }
     }

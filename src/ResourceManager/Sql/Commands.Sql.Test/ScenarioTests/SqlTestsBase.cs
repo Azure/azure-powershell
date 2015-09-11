@@ -19,18 +19,26 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.Azure.Test;
+using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Management.Authorization;
+using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
+using System;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
     public class SqlTestsBase
     {
-        protected EnvironmentSetupHelper helper;
+        protected SqlEvnSetupHelper helper;
+
+        private const string TenantIdKey = "TenantId";
+        private const string DomainKey = "Domain";
+
+        public string UserDomain { get; private set; }
 
         protected SqlTestsBase()
         {
-            helper = new EnvironmentSetupHelper();
+            helper = new SqlEvnSetupHelper();
         }
 
         protected virtual void SetupManagementClients()
@@ -39,7 +47,8 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             var storageClient = GetStorageClient();
             var resourcesClient = GetResourcesClient();
             var authorizationClient = GetAuthorizationManagementClient();
-            helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, resourcesClient, authorizationClient);
+            var graphClient = GetGraphClient();
+            helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, resourcesClient, authorizationClient, graphClient);
         }
 
         protected void RunPowerShellTest(params string[] scripts)
@@ -53,7 +62,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
                 SetupManagementClients();
 
-                helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                helper.SetupEnvironment();
 
                 helper.SetupModules(AzureModule.AzureProfile, "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + this.GetType().Name + ".ps1");
@@ -104,6 +113,35 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                 client.LongRunningOperationRetryTimeout = 0;
             }
             return client;
+        }
+
+        protected GraphRbacManagementClient GetGraphClient()
+        {
+            var testFactory = new CSMTestEnvironmentFactory();
+            var environment = testFactory.GetTestEnvironment();
+            string tenantId = Guid.Empty.ToString();
+
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            {
+                tenantId = environment.AuthorizationContext.TenantId;
+                UserDomain = environment.AuthorizationContext.UserDomain;
+
+                HttpMockServer.Variables[TenantIdKey] = tenantId;
+                HttpMockServer.Variables[DomainKey] = UserDomain;
+            }
+            else if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                if (HttpMockServer.Variables.ContainsKey(TenantIdKey))
+                {
+                    tenantId = HttpMockServer.Variables[TenantIdKey];
+                }
+                if (HttpMockServer.Variables.ContainsKey(DomainKey))
+                {
+                    UserDomain = HttpMockServer.Variables[DomainKey];
+                }
+            }
+
+            return TestBase.GetGraphServiceClient<GraphRbacManagementClient>(testFactory, tenantId);
         }
     }
 }

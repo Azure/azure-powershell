@@ -12,16 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Concurrent;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.IO;
 using System.Management.Automation;
+using System.Management.Automation.Host;
+using System.Threading;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
@@ -31,6 +34,18 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         private RecordingTracingInterceptor _httpTracingInterceptor;
         private DebugStreamTraceListener _adalListener;
         protected static AzureProfile _currentProfile = null;
+        protected static AzurePSDataCollectionProfile _dataCollectionProfile = null;
+
+        protected AzurePSQoSEvent QosEvent;
+
+        protected virtual bool IsUsageMetricEnabled {
+            get { return false; }
+        }
+
+        protected virtual bool IsErrorMetricEnabled
+        {
+            get { return true; }
+        }
 
         [Parameter(Mandatory = false, HelpMessage = "In-memory profile.")]
         public AzureProfile Profile { get; set; }
@@ -148,11 +163,175 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         }
 
         /// <summary>
+        /// Initialize the data collection profile
+        /// </summary>
+        protected static void InitializeDataCollectionProfile()
+        {
+            if (_dataCollectionProfile != null && _dataCollectionProfile.EnableAzureDataCollection.HasValue)
+            {
+                return;
+            }
+
+            // Get the value of the environment variable for Azure PS data collection setting.
+            string value = Environment.GetEnvironmentVariable(AzurePSDataCollectionProfile.EnvironmentVariableName);
+            if (!string.IsNullOrWhiteSpace(value))
+            {
+                if (string.Equals(value, bool.FalseString, StringComparison.OrdinalIgnoreCase))
+                {
+                    // Disable data collection only if it is explictly set to 'false'.
+                    _dataCollectionProfile = new AzurePSDataCollectionProfile(true);
+                }
+                else if (string.Equals(value, bool.TrueString, StringComparison.OrdinalIgnoreCase))
+                {
+                    // Enable data collection only if it is explictly set to 'true'.
+                    _dataCollectionProfile = new AzurePSDataCollectionProfile(false);
+                }
+            }
+
+            // If the environment value is null or empty, or not correctly set, try to read the setting from default file location.
+            if (_dataCollectionProfile == null)
+            {
+                string fileFullPath = Path.Combine(AzureSession.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
+                if (File.Exists(fileFullPath))
+                {
+                    string contents = File.ReadAllText(fileFullPath);
+                    _dataCollectionProfile = JsonConvert.DeserializeObject<AzurePSDataCollectionProfile>(contents);
+                }
+            }
+
+            // If the environment variable or file content is not set, create a new profile object.
+            if (_dataCollectionProfile == null)
+            {
+                _dataCollectionProfile = new AzurePSDataCollectionProfile();
+            }
+        }
+
+        /// <summary>
+        /// Get the data collection profile
+        /// </summary>
+        protected static AzurePSDataCollectionProfile GetDataCollectionProfile()
+        {
+            if (_dataCollectionProfile == null)
+            {
+                InitializeDataCollectionProfile();
+            }
+
+            return _dataCollectionProfile;
+        }
+
+        /// <summary>
+        /// Check whether the data collection is opted in from user
+        /// </summary>
+        /// <returns>true if allowed</returns>
+        public static bool IsDataCollectionAllowed()
+        {
+            if (_dataCollectionProfile != null &&
+                _dataCollectionProfile.EnableAzureDataCollection.HasValue &&
+                _dataCollectionProfile.EnableAzureDataCollection.Value)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Save the current data collection profile Json data into the default file path
+        /// </summary>
+        /// <param name="profile"></param>
+        protected void SaveDataCollectionProfile()
+        {
+            if (_dataCollectionProfile == null)
+            {
+                InitializeDataCollectionProfile();
+            }
+
+            string fileFullPath = Path.Combine(AzureSession.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
+            var contents = JsonConvert.SerializeObject(_dataCollectionProfile);
+            AzureSession.DataStore.WriteFile(fileFullPath, contents);
+            WriteWarning(string.Format(Resources.DataCollectionSaveFileInformation, fileFullPath));
+        }
+
+        protected bool CheckIfInteractive()
+        {
+            bool interactive = true;
+            if (this.Host == null || this.Host.UI == null || this.Host.UI.RawUI == null)
+            {
+                interactive = false;
+            }
+            else
+            {
+                try
+                {
+                    var test = this.Host.UI.RawUI.KeyAvailable;
+                }
+                catch
+                {
+                    interactive = false;
+                }
+            }
+
+            if (!interactive && !_dataCollectionProfile.EnableAzureDataCollection.HasValue)
+            {
+                _dataCollectionProfile.EnableAzureDataCollection = false;
+            }
+            return interactive;
+        }
+
+        /// <summary>
+        /// Prompt for the current data collection profile
+        /// </summary>
+        /// <param name="profile"></param>
+        protected void PromptForDataCollectionProfileIfNotExists()
+        {
+            // Initialize it from the environment variable or profile file.
+            InitializeDataCollectionProfile();
+
+            if (!_dataCollectionProfile.EnableAzureDataCollection.HasValue && CheckIfInteractive())
+            {
+                WriteWarning(Resources.DataCollectionPrompt);
+
+                const double timeToWaitInSeconds = 60;
+                var status = string.Format(Resources.DataCollectionConfirmTime, timeToWaitInSeconds);
+                ProgressRecord record = new ProgressRecord(0, Resources.DataCollectionActivity, status);
+
+                var startTime = DateTime.Now;
+                var endTime = DateTime.Now;
+                double elapsedSeconds = 0;
+
+                while (!this.Host.UI.RawUI.KeyAvailable && elapsedSeconds < timeToWaitInSeconds)
+                {
+                    Thread.Sleep(TimeSpan.FromMilliseconds(10));
+                    endTime = DateTime.Now;
+
+                    elapsedSeconds = (endTime - startTime).TotalSeconds;
+                    record.PercentComplete = ((int)elapsedSeconds * 100 / (int)timeToWaitInSeconds);
+                    WriteProgress(record);
+                }
+
+                bool enabled = false;
+                if (this.Host.UI.RawUI.KeyAvailable)
+                {
+                    KeyInfo keyInfo = this.Host.UI.RawUI.ReadKey(ReadKeyOptions.NoEcho | ReadKeyOptions.AllowCtrlC | ReadKeyOptions.IncludeKeyDown);
+                    enabled = (keyInfo.Character == 'Y' || keyInfo.Character == 'y');
+                }
+
+                _dataCollectionProfile.EnableAzureDataCollection = enabled;
+
+                WriteWarning(enabled ? Resources.DataCollectionConfirmYes : Resources.DataCollectionConfirmNo);
+
+                SaveDataCollectionProfile();
+            }
+        }
+
+        /// <summary>
         /// Cmdlet begin process. Write to logs, setup Http Tracing and initialize profile
         /// </summary>
         protected override void BeginProcessing()
         {
             InitializeProfile();
+            PromptForDataCollectionProfileIfNotExists();
+            InitializeQosEvent();
             if (string.IsNullOrEmpty(ParameterSetName))
             {
                 WriteDebugWithTimestamp(string.Format(Resources.BeginProcessingWithoutParameterSetLog, this.GetType().Name));
@@ -193,6 +372,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// </summary>
         protected override void EndProcessing()
         {
+            LogQosEvent();
             string message = string.Format(Resources.EndProcessingLog, this.GetType().Name);
             WriteDebugWithTimestamp(message);
 
@@ -226,6 +406,13 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         public new void WriteError(ErrorRecord errorRecord)
         {
             FlushDebugMessages();
+            if (QosEvent != null && errorRecord != null)
+            {
+                QosEvent.Exception = errorRecord.Exception;
+                QosEvent.IsSuccess = false;
+                LogQosEvent(true);
+            }
+            
             base.WriteError(errorRecord);
         }
 
@@ -353,6 +540,62 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
         }
 
+        protected void InitializeQosEvent()
+        {
+            QosEvent = new AzurePSQoSEvent()
+            {
+                CmdletType = this.GetType().Name,
+                IsSuccess = true,
+            };
+
+            if (this.Profile != null && this.Profile.DefaultSubscription != null)
+            {
+                QosEvent.Uid = MetricHelper.GenerateSha256HashString(
+                    this.Profile.DefaultSubscription.Id.ToString());
+            }
+            else
+            {
+                QosEvent.Uid = "defaultid";
+            }
+        }
+
+        /// <summary>
+        /// Invoke this method when the cmdlet is completed or terminated.
+        /// </summary>
+        protected void LogQosEvent(bool waitForMetricSending = false)
+        {
+            if (QosEvent == null)
+            {
+                return;
+            }
+
+            QosEvent.FinishQosEvent();
+
+            if (!IsUsageMetricEnabled && (!IsErrorMetricEnabled || QosEvent.IsSuccess))
+            {
+                return;
+            }
+
+            if (!IsDataCollectionAllowed())
+            {
+                return;
+            }
+
+            WriteDebug(QosEvent.ToString());
+
+            try
+            {
+                MetricHelper.LogQoSEvent(QosEvent, IsUsageMetricEnabled, IsErrorMetricEnabled);
+                MetricHelper.FlushMetric(waitForMetricSending);
+                WriteDebug("Finish sending metric.");
+            }
+            catch (Exception e)
+            {
+                //Swallow error from Application Insights event collection.
+                WriteWarning(e.ToString());
+            }
+        }
+
         /// <summary>
         /// Asks for confirmation before executing the action.
         /// </summary>
@@ -363,10 +606,19 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// <param name="action">The action code</param>
         protected void ConfirmAction(bool force, string actionMessage, string processMessage, string target, Action action)
         {
+            if (QosEvent != null)
+            {
+                QosEvent.PauseQoSTimer();
+            }
+            
             if (force || ShouldContinue(actionMessage, ""))
             {
                 if (ShouldProcess(target, processMessage))
-                {
+                {                 
+                    if (QosEvent != null)
+                    {
+                        QosEvent.ResumeQosTimer();
+                    }
                     action();
                 }
             }

@@ -559,6 +559,21 @@ namespace Microsoft.Azure.Commands.Resources.Models
         }
 
         /// <summary>
+        /// Deletes a deployment
+        /// </summary>
+        /// <param name="resourceGroup">The resource group name</param>
+        /// <param name="deploymentName">Deployment name</param>
+        public virtual void DeleteDeployment(string resourceGroup, string deploymentName)
+        {
+            if (!ResourceManagementClient.Deployments.CheckExistence(resourceGroup, deploymentName).Exists)
+            {
+                throw new ArgumentException(string.Format(ProjectResources.DeploymentDoesntExist, deploymentName, resourceGroup));
+            }
+
+            ResourceManagementClient.Deployments.Delete(resourceGroup, deploymentName);
+        }
+
+        /// <summary>
         /// Validates a given deployment.
         /// </summary>
         /// <param name="parameters">The deployment create options</param>

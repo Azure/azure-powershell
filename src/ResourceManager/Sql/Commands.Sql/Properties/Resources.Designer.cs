@@ -61,6 +61,33 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to More than one Active Directory group with the display name &apos;{0}&apos; was found. Please provide an Azure Active Directory object id to select the correct group. To get the object id use Get-AzureADGroup -SearchString &quot;{0}&quot;.
+        /// </summary>
+        internal static string ADGroupMoreThanOneFound {
+            get {
+                return ResourceManager.GetString("ADGroupMoreThanOneFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find the Azure Active Directory object &apos;{0}&apos;. Please make sure that the user or group you are authorizing is registered in the current subscription&apos;s Azure Active directory. To get a list of Azure Active Directory groups use Get-AzureADGroup, or to get a list of Azure Active Directory users use Get-AzureADUser..
+        /// </summary>
+        internal static string ADObjectNotFound {
+            get {
+                return ResourceManager.GetString("ADObjectNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More than one Azure Active Directory user with the display name &apos;{0}&apos; was found. Please provide an Azure Active Directory object id to select the correct user. To get the object id use Get-AzureADUser -SearchString &quot;{0}&quot;.
+        /// </summary>
+        internal static string ADUserMoreThanOneFound {
+            get {
+                return ResourceManager.GetString("ADUserMoreThanOneFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Database with name: &apos;{0}&apos; already exists in server &apos;{1}&apos;..
         /// </summary>
         internal static string DatabaseNameExists {
@@ -151,6 +178,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Active Directory Group &apos;{0}&apos; is not security enabled. Only Azure Active Directory Security Enabled Groups are supported..
+        /// </summary>
+        internal static string InvalidADGroupNotSecurity {
+            get {
+                return ResourceManager.GetString("InvalidADGroupNotSecurity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot use the &apos;{0}&apos; option with other event types..
         /// </summary>
         internal static string InvalidEventTypeSet {
@@ -160,11 +196,29 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please use Set-AzureEnvironment to set a valid GraphEndpoint in the AzureEnvironment. .
+        /// </summary>
+        internal static string InvalidGraphEndpoint {
+            get {
+                return ResourceManager.GetString("InvalidGraphEndpoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot use audit table retention without specifying TableIdentifier. You may want to use &apos;{0}&apos;..
         /// </summary>
         internal static string InvalidRetentionTypeSet {
             get {
                 return ResourceManager.GetString("InvalidRetentionTypeSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please set a valid tenant id in the AzureEnvironment..
+        /// </summary>
+        internal static string InvalidTenantId {
+            get {
+                return ResourceManager.GetString("InvalidTenantId", resourceCulture);
             }
         }
         
@@ -246,6 +300,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string RemoveAzureSqlDatabaseWarning {
             get {
                 return ResourceManager.GetString("RemoveAzureSqlDatabaseWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing Azure Sql Server Active Directory Administrator on server &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemoveAzureSqlServerActiveDirectoryAdministratorDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlServerActiveDirectoryAdministratorDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Server Active Directory Administrator on server &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlServerActiveDirectoryAdministratorWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlServerActiveDirectoryAdministratorWarning", resourceCulture);
             }
         }
         

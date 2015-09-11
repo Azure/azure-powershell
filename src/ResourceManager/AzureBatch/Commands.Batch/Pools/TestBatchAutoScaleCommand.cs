@@ -24,7 +24,8 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsDiagnostic.Test, Constants.AzureBatchAutoScale)]
     public class TestBatchAutoScaleCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "The id of the pool to evaluate the autoscale formula on.")]
+        [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, 
+            Mandatory = true, HelpMessage = "The id of the pool to evaluate the autoscale formula on.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
