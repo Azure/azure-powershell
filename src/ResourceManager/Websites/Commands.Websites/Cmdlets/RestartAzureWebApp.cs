@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets
     /// <summary>
     /// this commandlet will let you restart an Azure Web app
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Restart, "AzureWebApp")]
+    [Cmdlet(VerbsLifecycle.Restart, "AzureRMWebApp")]
     public class RestartAzureWebAppCmdlet : WebAppBaseCmdlet
     {
 

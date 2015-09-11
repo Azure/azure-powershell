@@ -21,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Set, "AzureBatchAccount"), OutputType(typeof(BatchAccountContext))]
+    [Cmdlet(VerbsCommon.Set, "AzureRMBatchAccount"), OutputType(typeof(BatchAccountContext))]
     public class SetBatchAccountCommand : BatchCmdletBase
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the Batch service account to update.")]

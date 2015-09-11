@@ -14,22 +14,22 @@
 
 @{
     # Sql aliases
-    "Get-AzureSqlDatabaseServerAuditingPolicy" = "Get-AzureSqlServerAuditingPolicy";
-    "Remove-AzureSqlDatabaseServerAuditing" = "Remove-AzureSqlServerAuditing";
-    "Set-AzureSqlDatabaseServerAuditingPolicy" = "Set-AzureSqlServerAuditingPolicy";
-    "Use-AzureSqlDatabaseServerAuditingPolicy" = "Use-AzureSqlServerAuditingPolicy";
+    "Get-AzureRMSqlDatabaseServerAuditingPolicy" = "Get-AzureRMSqlServerAuditingPolicy";
+    "Remove-AzureRMSqlDatabaseServerAuditing" = "Remove-AzureRMSqlServerAuditing";
+    "Set-AzureRMSqlDatabaseServerAuditingPolicy" = "Set-AzureRMSqlServerAuditingPolicy";
+    "Use-AzureRMSqlDatabaseServerAuditingPolicy" = "Use-AzureRMSqlServerAuditingPolicy";
 
     # Storage aliases
-    "Get-AzureStorageContainerAcl" = "Get-AzureStorageContainer";
-    "Start-CopyAzureStorageBlob" = "Start-AzureStorageBlobCopy";
-    "Stop-CopyAzureStorageBlob" = "Stop-AzureStorageBlobCopy";
+    "Get-AzureRMStorageContainerAcl" = "Get-AzureRMStorageContainer";
+    "Start-CopyAzureStorageBlob" = "Start-AzureRMStorageBlobCopy";
+    "Stop-CopyAzureStorageBlob" = "Stop-AzureRMStorageBlobCopy";
 }.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | New-Alias -Description "AzureAlias"
 
 
 # Authorization script commandlet that builds on top of existing Insights comandlets. 
-# This commandlet gets all events for the "Microsoft.Authorization" resource provider by calling the "Get-AzureResourceProviderLog" commandlet
+# This commandlet gets all events for the "Microsoft.Authorization" resource provider by calling the "Get-AzureRMResourceProviderLog" commandlet
 
-function Get-AzureAuthorizationChangeLog { 
+function Get-AzureRMAuthorizationChangeLog { 
     [CmdletBinding()] 
     param(  
         [parameter(Mandatory=$false, ValueFromPipelineByPropertyName=$true, HelpMessage = "The start time. Optional
@@ -42,7 +42,7 @@ function Get-AzureAuthorizationChangeLog {
     ) 
     PROCESS { 
          # Get all events for the "Microsoft.Authorization" provider by calling the Insights commandlet
-         $events = Get-AzureResourceProviderLog -ResourceProvider "Microsoft.Authorization" -DetailedOutput -StartTime $StartTime -EndTime $EndTime
+         $events = Get-AzureRMResourceProviderLog -ResourceProvider "Microsoft.Authorization" -DetailedOutput -StartTime $StartTime -EndTime $EndTime
              
          $startEvents = @{}
          $endEvents = @{}
@@ -59,7 +59,7 @@ function Get-AzureAuthorizationChangeLog {
 
          # Get all role definitions once from the service and cache to use for all 'startevents'
          $azureRoleDefinitionCache = @{}
-         Get-AzureRoleDefinition | % { $azureRoleDefinitionCache[$_.Id] = $_ }
+         Get-AzureRMRoleDefinition | % { $azureRoleDefinitionCache[$_.Id] = $_ }
 
          $principalDetailsCache = @{}
 
@@ -164,17 +164,17 @@ function Get-PrincipalDetails($principalId, [REF]$principalDetailsCache)
     }
 
     $principalDetails = "" | select Name, Type
-    $user = Get-AzureADUser -ObjectId $principalId
+    $user = Get-AzureRMADUser -ObjectId $principalId
     if ($user) {
         $principalDetails.Name = $user.DisplayName
         $principalDetails.Type = "User"    
     } else {
-        $group = Get-AzureADGroup -ObjectId $principalId
+        $group = Get-AzureRMADGroup -ObjectId $principalId
         if ($group) {
             $principalDetails.Name = $group.DisplayName
             $principalDetails.Type = "Group"        
         } else {
-            $servicePrincipal = Get-AzureADServicePrincipal -objectId $principalId
+            $servicePrincipal = Get-AzureRMADServicePrincipal -objectId $principalId
             if ($servicePrincipal) {
                 $principalDetails.Name = $servicePrincipal.DisplayName
                 $principalDetails.Type = "Service Principal"                        

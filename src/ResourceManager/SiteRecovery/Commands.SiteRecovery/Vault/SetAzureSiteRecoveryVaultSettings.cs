@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// <summary>
     /// Retrieves Azure Site Recovery Vault Settings.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureSiteRecoveryVaultSettings")]
+    [Cmdlet(VerbsCommon.Set, "AzureRMSiteRecoveryVaultSettings")]
     [OutputType(typeof(ASRVaultSettings))]
     public class SetAzureSiteRecoveryVaultSettings : SiteRecoveryCmdletBase
     {

@@ -26,7 +26,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureNetworkInterface"), OutputType(typeof(PSNetworkInterface))]
+    [Cmdlet(VerbsCommon.New, "AzureRMNetworkInterface"), OutputType(typeof(PSNetworkInterface))]
     public class NewAzureNetworkInterfaceCommand : NetworkInterfaceBaseCmdlet
     {
         [Alias("ResourceName")]

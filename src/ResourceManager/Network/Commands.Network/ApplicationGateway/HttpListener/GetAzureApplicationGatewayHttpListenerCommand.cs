@@ -19,7 +19,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureApplicationGatewayHttpListener"), 
+    [Cmdlet(VerbsCommon.Get, "AzureRMApplicationGatewayHttpListener"), 
         OutputType(typeof(PSApplicationGatewayHttpListener), typeof(IEnumerable<PSApplicationGatewayHttpListener>))]
     public class GetAzureApplicationGatewayHttpListenerCommand : NetworkBaseCmdlet
     {

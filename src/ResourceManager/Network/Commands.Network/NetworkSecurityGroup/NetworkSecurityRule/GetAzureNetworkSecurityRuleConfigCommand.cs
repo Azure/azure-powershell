@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureNetworkSecurityRuleConfig"), OutputType(typeof(PSSecurityRule))]
+    [Cmdlet(VerbsCommon.Get, "AzureRMNetworkSecurityRuleConfig"), OutputType(typeof(PSSecurityRule))]
     public class GetAzureNetworkSecurityRuleConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(

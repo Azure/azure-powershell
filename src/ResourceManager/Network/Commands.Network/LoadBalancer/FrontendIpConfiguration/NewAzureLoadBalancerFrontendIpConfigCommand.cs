@@ -17,7 +17,7 @@ using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureLoadBalancerFrontendIpConfig"), OutputType(typeof(PSFrontendIPConfiguration))]
+    [Cmdlet(VerbsCommon.New, "AzureRMLoadBalancerFrontendIpConfig"), OutputType(typeof(PSFrontendIPConfiguration))]
     public class NewAzureLoadBalancerFrontendIpConfigCommand : AzureLoadBalancerFrontendIpConfigBase
     {
         [Parameter(

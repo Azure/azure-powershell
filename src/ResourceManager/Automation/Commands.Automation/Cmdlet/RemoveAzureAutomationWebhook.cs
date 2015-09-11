@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Remove a new Webhook for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureAutomationWebhook")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRMAutomationWebhook")]
     public class RemoveAzureAutomationWebhook : AzureAutomationBaseCmdlet
     {
         /// <summary>

@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.Sql.Properties;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureSqlElasticPool",
+    [Cmdlet(VerbsCommon.Remove, "AzureRMSqlElasticPool",
         SupportsShouldProcess = true, 
         ConfirmImpact = ConfirmImpact.High)]
     public class RemoveAzureSqlElasticPool : AzureSqlElasticPoolCmdletBase

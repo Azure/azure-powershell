@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Create a new key vault. 
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureKeyVault", HelpUri = Constants.KeyVaultHelpUri)]
+    [Cmdlet(VerbsCommon.New, "AzureRMKeyVault", HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof (PSKeyVaultModels.PSVault))]
     public class NewAzureKeyVault : KeyVaultManagementCmdletBase
     {

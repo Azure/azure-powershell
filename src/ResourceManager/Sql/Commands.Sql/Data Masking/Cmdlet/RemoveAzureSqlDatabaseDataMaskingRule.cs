@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
     /// <summary>
     /// Removes a data masking rule from a given database
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureSqlDatabaseDataMaskingRule", SupportsShouldProcess = true,
+    [Cmdlet(VerbsCommon.Remove, "AzureRMSqlDatabaseDataMaskingRule", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.High)]
     public class RemoveAzureSqlDatabaseDataMaskingRule : SqlDatabaseDataMaskingRuleCmdletBase
     {

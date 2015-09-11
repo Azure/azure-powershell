@@ -12,7 +12,7 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-#------------------------------New-AzureKeyVault--------------------------------------
+#------------------------------New-AzureRMKeyVault--------------------------------------
 
 <#
 .SYNOPSIS
@@ -26,7 +26,7 @@ Param($rgName, $location, $tagName, $tagValue)
     $vaultname = Get-VaultName				
         
     # Test
-    $actual = New-AzureKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $location -Tags @{Name = $tagName; Value = $tagValue}	
+    $actual = New-AzureRMKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $location -Tags @{Name = $tagName; Value = $tagValue}	
         
     # Assert
     Assert-AreEqual $vaultName $actual.VaultName			
@@ -39,7 +39,7 @@ Param($rgName, $location, $tagName, $tagValue)
 
     # Default Access Policy
     $upn = [Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet]::DefaultProfile.DefaultContext.Account.Id
-    $objectId = @(Get-AzureADUser -Mail $upn)[0].Id
+    $objectId = @(Get-AzureRMADUser -Mail $upn)[0].Id
     $expectedPermsToKeys = @("get",
             "create",
             "delete",
@@ -70,7 +70,7 @@ function Test-CreateNewPremiumVaultEnabledForDeployment
     $vaultname = Get-VaultName					
         
     # Test
-    $actual = New-AzureKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $location -Sku premium -EnabledForDeployment
+    $actual = New-AzureRMKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $location -Sku premium -EnabledForDeployment
         
     # Assert
     Assert-AreEqual $vaultName $actual.VaultName			
@@ -89,7 +89,7 @@ function Test-RecreateVaultFails
 {
     Param($existingVaultName, $rgName, $location)
 
-     Assert-Throws { New-AzureKeyVault -VaultName $existingVaultName -ResourceGroupName $rgname -Location $location }
+     Assert-Throws { New-AzureRMKeyVault -VaultName $existingVaultName -ResourceGroupName $rgname -Location $location }
 }
 
 function Test-CreateVaultInUnknownResGrpFails
@@ -99,7 +99,7 @@ function Test-CreateVaultInUnknownResGrpFails
     $vaultname = Get-VaultName			
     $rgName = Get-ResourceGroupName
 
-    Assert-Throws { New-AzureKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $location }
+    Assert-Throws { New-AzureRMKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $location }
 }
 
 function Test-CreateVaultPositionalParams
@@ -110,19 +110,19 @@ function Test-CreateVaultPositionalParams
     $vaultname = Get-VaultName					
         
     # Test
-    $actual = New-AzureKeyVault $vaultName $rgname $location
+    $actual = New-AzureRMKeyVault $vaultName $rgname $location
 
     Assert-NotNull $actual		
 }
 #-------------------------------------------------------------------------------------
 
-#------------------------------Get-AzureKeyVault--------------------------------------
+#------------------------------Get-AzureRMKeyVault--------------------------------------
 
 function Test-GetVaultByNameAndResourceGroup
 {
     Param($existingVaultName, $rgName)
 
-    $got = Get-AzureKeyVault -VaultName $existingVaultName -ResourceGroupName $rgName
+    $got = Get-AzureRMKeyVault -VaultName $existingVaultName -ResourceGroupName $rgName
 
     Assert-NotNull $got
 }
@@ -131,7 +131,7 @@ function Test-GetVaultByNameAndResourceGroupPositionalParams
 {
     Param($existingVaultName, $rgName)
 
-    $got = Get-AzureKeyVault $existingVaultName $rgName
+    $got = Get-AzureRMKeyVault $existingVaultName $rgName
 
     Assert-NotNull $got
 }
@@ -140,7 +140,7 @@ function Test-GetVaultByName
 {
     Param($existingVaultName)
 
-    $got = Get-AzureKeyVault -VaultName $existingVaultName
+    $got = Get-AzureRMKeyVault -VaultName $existingVaultName
 
     Assert-NotNull $got
 }
@@ -150,7 +150,7 @@ function Test-GetUnknownVaultFails
     Param($rgName)
     $vaultname = Get-VaultName		
     
-    Assert-Throws { Get-AzureKeyVault -VaultName $vaultName -ResourceGroupName $rgName }
+    Assert-Throws { Get-AzureRMKeyVault -VaultName $vaultName -ResourceGroupName $rgName }
 }
 
 function Test-GetVaultFromUnknownResourceGroupFails
@@ -158,13 +158,13 @@ function Test-GetVaultFromUnknownResourceGroupFails
     Param($existingVaultName)
     $rgName = Get-ResourceGroupName	
     
-    Assert-Throws { Get-AzureKeyVault -VaultName $existingVaultName -ResourceGroupName $rgName }
+    Assert-Throws { Get-AzureRMKeyVault -VaultName $existingVaultName -ResourceGroupName $rgName }
 }
 
 function Test-ListVaultsByResourceGroup
 {
     Param($rgName)
-    $list = Get-AzureKeyVault -ResourceGroupName $rgName
+    $list = Get-AzureRMKeyVault -ResourceGroupName $rgName
 
     Assert-NotNull $list
     Assert-True { $list.Count -gt 0 }
@@ -177,7 +177,7 @@ function Test-ListVaultsByResourceGroup
 
 function Test-ListAllVaultsInSubscription
 {	
-    $list = Get-AzureKeyVault 
+    $list = Get-AzureRMKeyVault 
 
     Assert-NotNull $list
     Assert-True { $list.Count -gt 0 }
@@ -190,7 +190,7 @@ function Test-ListAllVaultsInSubscription
 function Test-ListVaultsByTag
 {	
     Param($tagName, $tagValue)
-    $list = Get-AzureKeyVault -Tag  @{Name = $tagName; Value = $tagValue}
+    $list = Get-AzureRMKeyVault -Tag  @{Name = $tagName; Value = $tagValue}
 
     Assert-NotNull $list
     Assert-True { $list.Count -gt 0 }	
@@ -200,34 +200,34 @@ function Test-ListVaultsByUnknownResourceGroupFails
 {
     $rgName = Get-ResourceGroupName	
     
-    Assert-Throws { Get-AzureKeyVault -ResourceGroupName $rgName }
+    Assert-Throws { Get-AzureRMKeyVault -ResourceGroupName $rgName }
 }
 
 #-------------------------------------------------------------------------------------
 
-#------------------------------Remove-AzureKeyVault-----------------------------------
+#------------------------------Remove-AzureRMKeyVault-----------------------------------
 function Test-DeleteVaultByName
 {
     Param($rgName, $location)
     $vaultName = Get-VaultName
     
-    New-AzureKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $location 
+    New-AzureRMKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $location 
     
-    Remove-AzureKeyVault -VaultName $vaultName -Force -Confirm:$false
+    Remove-AzureRMKeyVault -VaultName $vaultName -Force -Confirm:$false
 
-    Assert-Throws { Get-AzureKeyVault -VaultName $vaultName -ResourceGroupName $rgName }
+    Assert-Throws { Get-AzureRMKeyVault -VaultName $vaultName -ResourceGroupName $rgName }
 }
 
 function Test-DeleteUnknownVaultFails
 {	
     $vaultName = Get-VaultName
 
-    Assert-Throws { Remove-AzureKeyVault -VaultName $vaultName  } 
+    Assert-Throws { Remove-AzureRMKeyVault -VaultName $vaultName  } 
 }
 
 #-------------------------------------------------------------------------------------
 
-#------------------------------Set-AzureKeyVaultAccessPolicy--------------------------
+#------------------------------Set-AzureRMKeyVaultAccessPolicy--------------------------
 
 function Test-SetRemoveAccessPolicyByUPN
 {
@@ -235,13 +235,13 @@ function Test-SetRemoveAccessPolicyByUPN
     
     $PermToKeys = @("encrypt", "decrypt", "unwrapKey", "wrapKey", "verify", "sign", "get", "list", "update", "create", "import", "delete", "backup", "restore")
     $PermToSecrets = @("get", "list", "set", "delete")
-    $vault = Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $upn -PermissionsToKeys $PermToKeys -PermissionsToSecrets $PermToSecrets -PassThru
+    $vault = Set-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $upn -PermissionsToKeys $PermToKeys -PermissionsToSecrets $PermToSecrets -PassThru
 
     CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets
 
-    Assert-AreEqual $upn (Get-AzureADUser -ObjectId $vault.AccessPolicies[0].ObjectId)[0].UserPrincipalName
+    Assert-AreEqual $upn (Get-AzureRMADUser -ObjectId $vault.AccessPolicies[0].ObjectId)[0].UserPrincipalName
 
-    $vault = Remove-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $upn -PassThru
+    $vault = Remove-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $upn -PassThru
     Assert-AreEqual 0 $vault.AccessPolicies.Count
 }
 
@@ -251,13 +251,13 @@ function Test-SetRemoveAccessPolicyBySPN
     
     $PermToKeys = @()
     $PermToSecrets = @("get", "set", "list")
-    $vault = Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ServicePrincipalName $spn -PermissionsToKeys $PermToKeys -PermissionsToSecrets $PermToSecrets -PassThru
+    $vault = Set-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ServicePrincipalName $spn -PermissionsToKeys $PermToKeys -PermissionsToSecrets $PermToSecrets -PassThru
 
     CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets
     
-    Assert-AreEqual $spn (Get-AzureADServicePrincipal -ObjectId $vault.AccessPolicies[0].ObjectId)[0].ServicePrincipalName
+    Assert-AreEqual $spn (Get-AzureRMADServicePrincipal -ObjectId $vault.AccessPolicies[0].ObjectId)[0].ServicePrincipalName
 
-    $vault = Remove-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -SPN $spn -PassThru
+    $vault = Remove-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -SPN $spn -PassThru
     Assert-AreEqual 0 $vault.AccessPolicies.Count
 }
 
@@ -265,23 +265,23 @@ function Test-SetRemoveAccessPolicyByObjectId
 {
     Param($existingVaultName, $rgName, $upn)
 
-    $user = Get-AzureADUser -UserPrincipalName $upn
+    $user = Get-AzureRMADUser -UserPrincipalName $upn
     if ($user -eq $null)
     {
-        $user = Get-AzureADUser -Mail $upn
+        $user = Get-AzureRMADUser -Mail $upn
     }
     Assert-NotNull $user
     $objId = $user.Id
     
     $PermToKeys = @("encrypt", "decrypt")
     $PermToSecrets = @()
-    $vault = Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -PermissionsToKeys $PermToKeys -PassThru
+    $vault = Set-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -PermissionsToKeys $PermToKeys -PassThru
 
     CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets
     
     Assert-AreEqual $objId $vault.AccessPolicies[0].ObjectId
 
-    $vault = Remove-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -PassThru
+    $vault = Remove-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -PassThru
     Assert-AreEqual 0 $vault.AccessPolicies.Count
 }
 
@@ -291,24 +291,24 @@ function Test-SetRemoveAccessPolicyByCompoundId
 
     Assert-NotNull $appId
     
-    $user = Get-AzureADUser -UserPrincipalName $upn
+    $user = Get-AzureRMADUser -UserPrincipalName $upn
     if ($user -eq $null)
     {
-        $user = Get-AzureADUser -Mail $upn
+        $user = Get-AzureRMADUser -Mail $upn
     }
     Assert-NotNull $user
     $objId = $user.Id
     
     $PermToKeys = @("encrypt", "decrypt")
     $PermToSecrets = @()
-    $vault = Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -ApplicationId $appId -PermissionsToKeys $PermToKeys -PassThru
+    $vault = Set-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -ApplicationId $appId -PermissionsToKeys $PermToKeys -PassThru
 
     CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets
     
     Assert-AreEqual $objId $vault.AccessPolicies[0].ObjectId
     Assert-AreEqual $appId $vault.AccessPolicies[0].ApplicationId	
 
-    $vault = Remove-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -ApplicationId $appId -PassThru
+    $vault = Remove-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -ApplicationId $appId -PassThru
     Assert-AreEqual 0 $vault.AccessPolicies.Count
 }
 
@@ -319,10 +319,10 @@ function Test-RemoveAccessPolicyWithCompoundIdPolicies
     Assert-NotNull $appId1
     Assert-NotNull $appId2
 
-    $user = Get-AzureADUser -UserPrincipalName $upn
+    $user = Get-AzureRMADUser -UserPrincipalName $upn
     if ($user -eq $null)
     {
-        $user = Get-AzureADUser -Mail $upn
+        $user = Get-AzureRMADUser -Mail $upn
     }
     Assert-NotNull $user
     $objId = $user.Id
@@ -330,17 +330,17 @@ function Test-RemoveAccessPolicyWithCompoundIdPolicies
     # Add three access policies: ObjectId, (ObjectId, App1), (ObjectId, App2)
     $PermToKeys = @("encrypt", "decrypt")
     $PermToSecrets = @()
-    $vault = Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -PermissionsToKeys $PermToKeys -PassThru
-    $vault = Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -ApplicationId $appId1 -PermissionsToKeys $PermToKeys -PassThru
-    $vault = Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -ApplicationId $appId2 -PermissionsToKeys $PermToKeys -PassThru
+    $vault = Set-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -PermissionsToKeys $PermToKeys -PassThru
+    $vault = Set-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -ApplicationId $appId1 -PermissionsToKeys $PermToKeys -PassThru
+    $vault = Set-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -ApplicationId $appId2 -PermissionsToKeys $PermToKeys -PassThru
     Assert-AreEqual 3 $vault.AccessPolicies.Count
     
     # Remove one policy if specify compound id
-    $vault = Remove-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -ApplicationId $appId1 -PassThru
+    $vault = Remove-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -ApplicationId $appId1 -PassThru
     Assert-AreEqual 2 $vault.AccessPolicies.Count
     
     # Remove remaining two policies if specify object id
-    $vault = Remove-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -PassThru	
+    $vault = Remove-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -PassThru	
     Assert-AreEqual 0 $vault.AccessPolicies.Count
 }
 
@@ -350,10 +350,10 @@ function Test-SetCompoundIdAccessPolicy
 
     Assert-NotNull $appId
 
-    $user = Get-AzureADUser -UserPrincipalName $upn
+    $user = Get-AzureRMADUser -UserPrincipalName $upn
     if ($user -eq $null)
     {
-        $user = Get-AzureADUser -Mail $upn
+        $user = Get-AzureRMADUser -Mail $upn
     }
     Assert-NotNull $user
     $objId = $user.Id
@@ -361,7 +361,7 @@ function Test-SetCompoundIdAccessPolicy
     # Add one compound id policy
     $PermToKeys = @("encrypt", "decrypt")
     $PermToSecrets = @()
-    $vault = Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -ApplicationId $appId -PermissionsToKeys $PermToKeys -PassThru
+    $vault = Set-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -ApplicationId $appId -PermissionsToKeys $PermToKeys -PassThru
 
     CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets
     
@@ -369,18 +369,18 @@ function Test-SetCompoundIdAccessPolicy
     Assert-AreEqual $appId $vault.AccessPolicies[0].ApplicationId	
 
     # Add one object id policy	
-    $vault = Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -PermissionsToKeys $PermToKeys -PassThru
+    $vault = Set-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -PermissionsToKeys $PermToKeys -PassThru
     Assert-AreEqual 2 $vault.AccessPolicies.Count
 
     # Change compound id policy shall not affect object id policy		
-    $vault = Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -ApplicationId $appId -PermissionsToKeys @("encrypt") -PassThru
+    $vault = Set-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -ApplicationId $appId -PermissionsToKeys @("encrypt") -PassThru
     Assert-AreEqual 2 $vault.AccessPolicies.Count
-    $vault = Remove-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -ApplicationId $appId -PassThru
+    $vault = Remove-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -ApplicationId $appId -PassThru
     CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets
     Assert-AreEqual $objId $vault.AccessPolicies[0].ObjectId
     Assert-AreEqual $vault.AccessPolicies[0].ApplicationId $null
     
-    $vault = Remove-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -PassThru	
+    $vault = Remove-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -PassThru	
     Assert-AreEqual 0 $vault.AccessPolicies.Count
 }
 
@@ -393,40 +393,40 @@ function Test-ModifyAccessPolicy
     # Adding nothing should not change the vault
     $PermToKeys = @()
     $PermToSecrets = @()	
-    $vault = Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $upn -PermissionsToKeys $PermToKeys -PassThru
+    $vault = Set-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $upn -PermissionsToKeys $PermToKeys -PassThru
     Assert-NotNull $vault
     Assert-AreEqual 0 $vault.AccessPolicies.Count
 
     # Add some perms now
     $PermToKeys = @("encrypt", "decrypt", "unwrapKey", "wrapKey", "verify", "sign", "get", "list", "update", "create", "import", "delete", "backup", "restore")
     $PermToSecrets = @("get", "list", "set", "delete")
-    $vault = Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UPN $upn -PermissionsToKeys $PermToKeys -PermissionsToSecrets $PermToSecrets -PassThru
+    $vault = Set-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UPN $upn -PermissionsToKeys $PermToKeys -PermissionsToSecrets $PermToSecrets -PassThru
 
     CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets
-    Assert-AreEqual $upn (Get-AzureADUser -ObjectId $vault.AccessPolicies[0].ObjectId)[0].UserPrincipalName
+    Assert-AreEqual $upn (Get-AzureRMADUser -ObjectId $vault.AccessPolicies[0].ObjectId)[0].UserPrincipalName
 
     $objId = $vault.AccessPolicies[0].ObjectId
 
     # Remove one perm from keys list, use piping to set
     $vault.AccessPolicies[0].PermissionsToKeys.Remove("unwrapKey")	
-    $vault = $vault.AccessPolicies[0] | Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -PassThru
+    $vault = $vault.AccessPolicies[0] | Set-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -PassThru
 
     $PermToKeys = @("encrypt", "decrypt", "wrapKey", "verify", "sign", "get", "list", "update", "create", "import", "delete", "backup", "restore")	
     CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets
 
     # Change just the secrets perms
     $PermToSecrets = @("all")
-    $vault = Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -PermissionsToSecrets $PermToSecrets -PassThru
+    $vault = Set-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $objId -PermissionsToSecrets $PermToSecrets -PassThru
     CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets
 
     # Remove just the keys perms
     $PermToKeys = @()
-    $vault = Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $upn -PermissionsToKeys $PermToKeys -PassThru
+    $vault = Set-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $upn -PermissionsToKeys $PermToKeys -PassThru
     CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets
     
     # Remove secret perms too
     $PermToSecrets = @()	
-    $vault = Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $upn -PermissionsToKeys $PermToKeys -PermissionsToSecrets $PermToSecrets -PassThru
+    $vault = Set-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $upn -PermissionsToKeys $PermToKeys -PermissionsToSecrets $PermToSecrets -PassThru
     Assert-NotNull $vault
     Assert-AreEqual 0 $vault.AccessPolicies.Count
 }
@@ -434,18 +434,18 @@ function Test-ModifyAccessPolicy
 function Test-ModifyAccessPolicyEnabledForDeployment
 {
     Param($existingVaultName, $rgName, $upn)
-    $vault = Get-AzureKeyVault -VaultName $existingVaultName -ResourceGroupName $rgName
+    $vault = Get-AzureRMKeyVault -VaultName $existingVaultName -ResourceGroupName $rgName
     Assert-NotNull $vault
     Assert-AreEqual 0 $vault.AccessPolicies.Count
     Assert-AreEqual $false $vault.EnabledForDeployment
 
     # Set and Remove EnabledForDeployment, without any other permissions
-    $vault = Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -EnabledForDeployment -PassThru
+    $vault = Set-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -EnabledForDeployment -PassThru
     Assert-NotNull $vault
     Assert-AreEqual 0 $vault.AccessPolicies.Count
     Assert-AreEqual $true $vault.EnabledForDeployment
 
-    $vault = Remove-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -EnabledForDeployment -PassThru
+    $vault = Remove-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -EnabledForDeployment -PassThru
     Assert-NotNull $vault
     Assert-AreEqual 0 $vault.AccessPolicies.Count
     Assert-AreEqual $false $vault.EnabledForDeployment
@@ -453,11 +453,11 @@ function Test-ModifyAccessPolicyEnabledForDeployment
     # Set and Remove EnabledForDeployment, with other permissions
     $PermToKeys = @("encrypt", "decrypt", "unwrapKey", "wrapKey", "verify", "sign", "get", "list", "update", "create", "import", "delete", "backup", "restore")
     $PermToSecrets = @("get", "list", "set", "delete")
-    $vault = Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -EnabledForDeployment -UPN $upn -PermissionsToKeys $PermToKeys -PermissionsToSecrets $PermToSecrets -PassThru
+    $vault = Set-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -EnabledForDeployment -UPN $upn -PermissionsToKeys $PermToKeys -PermissionsToSecrets $PermToSecrets -PassThru
     CheckVaultAccessPolicy $vault $PermToKeys $PermToSecrets	
     Assert-AreEqual $true $vault.EnabledForDeployment
 
-    $vault = Remove-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -EnabledForDeployment -ObjectId $vault.AccessPolicies[0].ObjectId -PassThru
+    $vault = Remove-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -EnabledForDeployment -ObjectId $vault.AccessPolicies[0].ObjectId -PassThru
     Assert-AreEqual 0 $vault.AccessPolicies.Count
     Assert-AreEqual $false $vault.EnabledForDeployment
 }
@@ -467,26 +467,26 @@ function Test-ModifyAccessPolicyNegativeCases
     Param($existingVaultName, $rgName, $upn)
 
     # "all" plus other perms
-    Assert-Throws { Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $upn -PermissionsToKeys get, all }
-    Assert-Throws { Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $upn -PermissionsToSecrets get, all }
+    Assert-Throws { Set-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $upn -PermissionsToKeys get, all }
+    Assert-Throws { Set-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $upn -PermissionsToSecrets get, all }
 
     # random string in perms
-    Assert-Throws { Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $upn -PermissionsToSecrets blah, get }
+    Assert-Throws { Set-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $upn -PermissionsToSecrets blah, get }
 
     # invalid set of params
-    Assert-Throws { Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName }
-    Assert-Throws { Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName }
-    Assert-Throws { Remove-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName }
-    Assert-Throws { Remove-AzureKeyVaultAccessPolicy -VaultName $existingVaultName }
-    Assert-Throws { Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $upn }
-    Assert-Throws { Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -SPN $upn }
-    Assert-Throws { Set-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $upn }
+    Assert-Throws { Set-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName }
+    Assert-Throws { Set-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName }
+    Assert-Throws { Remove-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName }
+    Assert-Throws { Remove-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName }
+    Assert-Throws { Set-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UserPrincipalName $upn }
+    Assert-Throws { Set-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -SPN $upn }
+    Assert-Throws { Set-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -ObjectId $upn }
 }
 
 function Test-RemoveNonExistentAccessPolicyDoesNotThrow
 {
     Param($existingVaultName, $rgName, $upn)		
-    $vault = Remove-AzureKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UPN $upn -PassThru
+    $vault = Remove-AzureRMKeyVaultAccessPolicy -VaultName $existingVaultName -ResourceGroupName $rgName -UPN $upn -PassThru
     Assert-AreEqual 0 $vault.AccessPolicies.Count
 }
 
@@ -500,9 +500,9 @@ function Test-CreateDeleteVaultWithPiping
     Param($rgName, $location)
     $vaultName = Get-VaultName
     
-    New-AzureKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $location | Get-AzureKeyVault | Remove-AzureKeyVault -Force -Confirm:$false
+    New-AzureRMKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $location | Get-AzureRMKeyVault | Remove-AzureRMKeyVault -Force -Confirm:$false
 
-    Assert-Throws { Get-AzureKeyVault -VaultName $vaultName -ResourceGroupName $rgName }
+    Assert-Throws { Get-AzureRMKeyVault -VaultName $vaultName -ResourceGroupName $rgName }
 }
 
 #-------------------------------------------------------------------------------------

@@ -17,7 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Get, "AzureBatchAccountKeys"), OutputType(typeof(BatchAccountContext))]
+    [Cmdlet(VerbsCommon.Get, "AzureRMBatchAccountKeys"), OutputType(typeof(BatchAccountContext))]
     public class GetBatchAccountKeysCommand : BatchCmdletBase
     {
         internal const string ParameterSetContext = "Use Context";

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
     /// <summary>
     /// Defines the Get-AzureSqlDatabaseServer cmdlet
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Stop, "AzureSqlServerUpgrade",
+    [Cmdlet(VerbsLifecycle.Stop, "AzureRMSqlServerUpgrade",
         SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.High)]
     public class StopAzureSqlServerUpgrade : AzureSqlServerUpgradeCmdletBase<AzureSqlServerUpgradeModel>

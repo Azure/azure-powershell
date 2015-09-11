@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Resources.Templates
     /// <summary>
     /// Get one template or a list of templates from the gallery.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureResourceGroupGalleryTemplate", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(List<PSGalleryItem>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRMResourceGroupGalleryTemplate", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(List<PSGalleryItem>))]
     public class GetAzureResourceGroupGalleryTemplateCommand : ResourcesBaseCmdlet
     {
         internal const string BaseParameterSetName = "List gallery templates";

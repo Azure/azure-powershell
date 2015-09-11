@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using ResourceManager.Common;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
-    [Cmdlet(VerbsCommon.New, "AzureApiManagementHostnameConfiguration"), OutputType(typeof (PsApiManagementHostnameConfiguration))]
+    [Cmdlet(VerbsCommon.New, "AzureRMApiManagementHostnameConfiguration"), OutputType(typeof (PsApiManagementHostnameConfiguration))]
     public class NewAzureApiManagementHostnameConfiguration : AzureRMCmdlet
     {
         [Parameter(
