@@ -24,7 +24,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureApplicationGateway"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet(VerbsCommon.New, "AzureRMApplicationGateway"), OutputType(typeof(PSApplicationGateway))]
     public class NewAzureApplicationGatewayCommand : ApplicationGatewayBaseCmdlet
     {
         [Alias("ResourceName")]

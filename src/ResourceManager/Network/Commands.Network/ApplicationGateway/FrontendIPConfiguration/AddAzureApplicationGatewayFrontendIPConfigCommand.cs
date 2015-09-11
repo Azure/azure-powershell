@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, "AzureApplicationGatewayFrontendIPConfig"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet(VerbsCommon.Add, "AzureRMApplicationGatewayFrontendIPConfig"), OutputType(typeof(PSApplicationGateway))]
     public class AddAzureApplicationGatewayFrontendIPConfigCommand : AzureApplicationGatewayFrontendIPConfigBase
     {
         [Parameter(

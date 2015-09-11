@@ -17,7 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureBatchAccount")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRMBatchAccount")]
     public class RemoveBatchAccountCommand : BatchCmdletBase
     {
         private static string mamlCall = "RemoveAccount";

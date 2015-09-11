@@ -17,7 +17,7 @@ using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureLoadBalancerBackendAddressPoolConfig"), OutputType(typeof(PSBackendAddressPool))]
+    [Cmdlet(VerbsCommon.New, "AzureRMLoadBalancerBackendAddressPoolConfig"), OutputType(typeof(PSBackendAddressPool))]
     public class NewAzureLoadBalancerBackendAddressPoolConfigCommand : AzureLoadBalancerBackendAddressPoolConfigBase
     {
         [Parameter(

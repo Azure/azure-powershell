@@ -17,7 +17,7 @@ using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRouteConfig"), OutputType(typeof(PSRoute))]
+    [Cmdlet(VerbsCommon.New, "AzureRMRouteConfig"), OutputType(typeof(PSRoute))]
     public class NewAzureRouteConfigCommand : AzureRouteConfigBase
     {
         [Parameter(

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// <summary>
     /// Used to initiate a vault create operation.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureSiteRecoveryVault")]
+    [Cmdlet(VerbsCommon.New, "AzureRMSiteRecoveryVault")]
     public class CreateAzureSiteRecoveryVault : SiteRecoveryCmdletBase
     {
         #region Parameters

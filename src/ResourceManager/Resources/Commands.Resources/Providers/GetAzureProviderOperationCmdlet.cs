@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Get an existing resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureProviderOperation"), OutputType(typeof(PSResourceProviderOperation))]
+    [Cmdlet(VerbsCommon.Get, "AzureRMProviderOperation"), OutputType(typeof(PSResourceProviderOperation))]
     public class GetAzureProviderOperationCommand : ResourcesBaseCmdlet
     {
         private const string WildCardCharacter = "*";

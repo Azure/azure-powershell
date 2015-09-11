@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Resources.Templates
     /// <summary>
     /// Downloads a template file to the disk.
     /// </summary>
-    [Cmdlet(VerbsData.Save, "AzureResourceGroupGalleryTemplate"), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsData.Save, "AzureRMResourceGroupGalleryTemplate"), OutputType(typeof(PSObject))]
     public class SaveAzureResourceGroupGalleryTemplateCommand : ResourcesBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The gallery template identity.")]

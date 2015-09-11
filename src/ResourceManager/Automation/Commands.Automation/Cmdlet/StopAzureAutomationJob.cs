@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets a Credential for automation.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Stop, "AzureAutomationJob")]
+    [Cmdlet(VerbsLifecycle.Stop, "AzureRMAutomationJob")]
     public class StopAzureAutomationJob : AzureAutomationBaseCmdlet
     {
         /// <summary> 

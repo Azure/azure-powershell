@@ -152,7 +152,7 @@ function Initialize-KeyTest
 {
     $keyVault = Get-KeyVault
     $keyPattern = Get-KeyName '*'
-    Get-AzureKeyVaultKey $keyVault  | Where-Object {$_.KeyName -like $keyPattern}  | Remove-AzureKeyVaultKey -Force -Confirm:$false
+    Get-AzureRMKeyVaultKey $keyVault  | Where-Object {$_.KeyName -like $keyPattern}  | Remove-AzureRMKeyVaultKey -Force -Confirm:$false
 }
 
 <#
@@ -163,7 +163,7 @@ function Initialize-SecretTest
 {
     $keyVault = Get-KeyVault
     $secretPattern = Get-SecretName '*'
-    Get-AzureKeyVaultSecret $keyVault  | Where-Object {$_.SecretName -like $secretPattern}  | Remove-AzureKeyVaultSecret -Force -Confirm:$false
+    Get-AzureRMKeyVaultSecret $keyVault  | Where-Object {$_.SecretName -like $secretPattern}  | Remove-AzureRMKeyVaultSecret -Force -Confirm:$false
 }
 
 
@@ -181,7 +181,7 @@ function Cleanup-SingleKeyTest
          {
             $keyVault = Get-KeyVault
             Write-Debug "Removing key with name $_ in vault $keyVault"
-            $catch = Remove-AzureKeyVaultKey $keyVault $_ -Force -Confirm:$false
+            $catch = Remove-AzureRMKeyVaultKey $keyVault $_ -Force -Confirm:$false
          }
          catch 
          {
@@ -205,7 +205,7 @@ function Cleanup-SingleSecretTest
          {
             $keyVault = Get-KeyVault
             Write-Debug "Removing secret with name $_ in vault $keyVault"
-            $catch = Remove-AzureKeyVaultSecret $keyVault $_ -Force -Confirm:$false
+            $catch = Remove-AzureRMKeyVaultSecret $keyVault $_ -Force -Confirm:$false
          }
          catch 
          {

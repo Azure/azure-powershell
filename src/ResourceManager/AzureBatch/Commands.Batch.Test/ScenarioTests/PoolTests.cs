@@ -421,7 +421,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     }
 
     // Cmdlets that use the HTTP Recorder interceptor for use with scenario tests
-    [Cmdlet(VerbsCommon.Get, "AzureBatchPool_ST", DefaultParameterSetName = Constants.ODataFilterParameterSet)]
+    [Cmdlet(VerbsCommon.Get, "AzureRMBatchPool_ST", DefaultParameterSetName = Constants.ODataFilterParameterSet)]
     public class GetBatchPoolScenarioTestCommand : GetBatchPoolCommand
     {
         protected override void ProcessRecord()
@@ -431,7 +431,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
     }
 
-    [Cmdlet(VerbsCommon.New, "AzureBatchPool_ST", DefaultParameterSetName = TargetDedicatedParameterSet)]
+    [Cmdlet(VerbsCommon.New, "AzureRMBatchPool_ST", DefaultParameterSetName = TargetDedicatedParameterSet)]
     public class NewBatchPoolScenarioTestCommand : NewBatchPoolCommand
     {
         protected override void ProcessRecord()
@@ -441,7 +441,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
     }
 
-    [Cmdlet(VerbsCommon.Remove, "AzureBatchPool_ST")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRMBatchPool_ST")]
     public class RemoveBatchPoolScenarioTestCommand : RemoveBatchPoolCommand
     {
         protected override void ProcessRecord()
@@ -451,7 +451,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
     }
 
-    [Cmdlet(VerbsLifecycle.Start, "AzureBatchPoolResize_ST")]
+    [Cmdlet(VerbsLifecycle.Start, "AzureRMBatchPoolResize_ST")]
     public class StartBatchPoolResizeScenarioTestCommand : StartBatchPoolResizeCommand
     {
         protected override void ProcessRecord()
@@ -461,7 +461,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
     }
 
-    [Cmdlet(VerbsLifecycle.Stop, "AzureBatchPoolResize_ST")]
+    [Cmdlet(VerbsLifecycle.Stop, "AzureRMBatchPoolResize_ST")]
     public class StopBatchPoolResizeScenarioTestCommand : StopBatchPoolResizeCommand
     {
         protected override void ProcessRecord()
@@ -471,7 +471,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
     }
 
-    [Cmdlet(VerbsLifecycle.Enable, "AzureBatchAutoScale_ST")]
+    [Cmdlet(VerbsLifecycle.Enable, "AzureRMBatchAutoScale_ST")]
     public class EnableBatchAutoScaleScenarioTestCommand : EnableBatchAutoScaleCommand
     {
         protected override void ProcessRecord()
@@ -481,7 +481,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
     }
 
-    [Cmdlet(VerbsLifecycle.Disable, "AzureBatchAutoScale_ST")]
+    [Cmdlet(VerbsLifecycle.Disable, "AzureRMBatchAutoScale_ST")]
     public class DisableBatchAutoScaleScenarioTestCommand : DisableBatchAutoScaleCommand
     {
         protected override void ProcessRecord()
@@ -491,7 +491,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
     }
 
-    [Cmdlet(VerbsDiagnostic.Test, "AzureBatchAutoScale_ST")]
+    [Cmdlet(VerbsDiagnostic.Test, "AzureRMBatchAutoScale_ST")]
     public class TestBatchAutoScaleScenarioTestCommand : TestBatchAutoScaleCommand
     {
         protected override void ProcessRecord()
@@ -501,7 +501,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
     }
 
-    [Cmdlet(VerbsCommon.Set, "AzureBatchPoolOSVersion_ST")]
+    [Cmdlet(VerbsCommon.Set, "AzureRMBatchPoolOSVersion_ST")]
     public class SetBatchPoolOSVersionScenarioTestCommand : SetBatchPoolOSVersionCommand
     {
         protected override void ProcessRecord()

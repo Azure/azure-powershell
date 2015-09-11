@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureLoadBalancerInboundNatRuleConfig"), OutputType(typeof(PSInboundNatRule))]
+    [Cmdlet(VerbsCommon.Get, "AzureRMLoadBalancerInboundNatRuleConfig"), OutputType(typeof(PSInboundNatRule))]
     public class GetAzureLoadBalancerInboundNatRuleConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
     /// <summary>
     /// Defines the Get-AzureSqlServerFirewallRule cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureSqlServerFirewallRule",
+    [Cmdlet(VerbsCommon.Remove, "AzureRMSqlServerFirewallRule",
         SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.High)]
     public class RemoveAzureSqlServerFirewallRule : AzureSqlServerFirewallRuleCmdletBase

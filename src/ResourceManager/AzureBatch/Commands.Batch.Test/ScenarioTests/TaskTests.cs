@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     }
 
     // Cmdlets that use the HTTP Recorder interceptor for use with scenario tests
-    [Cmdlet(VerbsCommon.Get, "AzureBatchTask_ST", DefaultParameterSetName = Constants.ODataFilterParameterSet)]
+    [Cmdlet(VerbsCommon.Get, "AzureRMBatchTask_ST", DefaultParameterSetName = Constants.ODataFilterParameterSet)]
     public class GetBatchTaskScenarioTestCommand : GetBatchTaskCommand
     {
         protected override void ProcessRecord()
@@ -274,7 +274,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
     }
 
-    [Cmdlet(VerbsCommon.New, "AzureBatchTask_ST")]
+    [Cmdlet(VerbsCommon.New, "AzureRMBatchTask_ST")]
     public class NewBatchTaskScenarioTestCommand : NewBatchTaskCommand
     {
         protected override void ProcessRecord()
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
     }
 
-    [Cmdlet(VerbsCommon.Remove, "AzureBatchTask_ST")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRMBatchTask_ST")]
     public class RemoveBatchTaskScenarioTestCommand : RemoveBatchTaskCommand
     {
         protected override void ProcessRecord()
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
     }
 
-    [Cmdlet(VerbsLifecycle.Stop, "AzureBatchTask_ST")]
+    [Cmdlet(VerbsLifecycle.Stop, "AzureRMBatchTask_ST")]
     public class StopBatchTaskScenarioTestCommand : StopBatchTaskCommand
     {
         protected override void ProcessRecord()

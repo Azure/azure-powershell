@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Removes azure automation accounts, filterd by automation account name and location.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureAutomationAccount")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRMAutomationAccount")]
     [OutputType(typeof(AutomationAccount))]
     public class RemoveAzureAutomationAccount : ResourceManager.Common.AzureRMCmdlet
     {

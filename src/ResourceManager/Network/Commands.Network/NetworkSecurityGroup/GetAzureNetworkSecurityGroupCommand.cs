@@ -20,7 +20,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-     [Cmdlet(VerbsCommon.Get, "AzureNetworkSecurityGroup"), OutputType(typeof(PSNetworkSecurityGroup))]
+     [Cmdlet(VerbsCommon.Get, "AzureRMNetworkSecurityGroup"), OutputType(typeof(PSNetworkSecurityGroup))]
     public class GetAzureNetworkSecurityGroupCommand : NetworkSecurityGroupBaseCmdlet
     {
         [Alias("ResourceName")]

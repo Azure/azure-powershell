@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
     using System.Net;
     using Hyak.Common;
 
-    [Cmdlet(VerbsCommon.New, "AzureTrafficManagerEndpoint"), OutputType(typeof(TrafficManagerEndpoint))]
+    [Cmdlet(VerbsCommon.New, "AzureRMTrafficManagerEndpoint"), OutputType(typeof(TrafficManagerEndpoint))]
     public class NewAzureTrafficManagerEndpoint : TrafficManagerBaseCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the endpoint.")]

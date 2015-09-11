@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// <summary>
     /// Creates Azure Site Recovery Protection Profile object in memory.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureSiteRecoveryProtectionProfile")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRMSiteRecoveryProtectionProfile")]
     public class RemoveAzureSiteRecoveryProtectionProfile : SiteRecoveryCmdletBase
     {
         #region Parameters

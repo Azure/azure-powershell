@@ -21,7 +21,7 @@ using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Set, "AzureKeyVaultAccessPolicy", HelpUri = Constants.KeyVaultHelpUri)]
+    [Cmdlet(VerbsCommon.Set, "AzureRMKeyVaultAccessPolicy", HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(PSKeyVaultModels.PSVault))]
     public class SetAzureKeyVaultAccessPolicy : KeyVaultManagementCmdletBase
     {

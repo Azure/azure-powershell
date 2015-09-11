@@ -19,7 +19,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureLoadBalancerInboundNatRuleConfig"), OutputType(typeof(PSInboundNatRule))]
+    [Cmdlet(VerbsCommon.New, "AzureRMLoadBalancerInboundNatRuleConfig"), OutputType(typeof(PSInboundNatRule))]
     public class NewAzureLoadBalancerInboundNatRuleConfigCommand : AzureLoadBalancerInboundNatRuleConfigBase
     {
         [Parameter(
