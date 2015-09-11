@@ -103,7 +103,12 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 azureAccount.SetProperty(AzureAccount.Property.Tenants, new[] { Tenant });
             }
-            
+
+            if( AzureRMCmdlet.DefaultProfile == null)
+            {
+                AzureRMCmdlet.DefaultProfile = new AzureRMProfile();
+            }
+
             var profileClient = new RMProfileClient(AzureRMCmdlet.DefaultProfile);
             
             WriteObject(profileClient.Login(azureAccount, Environment, Tenant, SubscriptionId, password));
