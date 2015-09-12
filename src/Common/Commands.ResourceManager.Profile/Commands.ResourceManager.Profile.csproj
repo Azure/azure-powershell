@@ -132,6 +132,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LoginAzureRMAccount.cs" />
     <Compile Include="Profile\SaveAzureProfile.cs" />
     <Compile Include="Profile\SelectAzureProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
