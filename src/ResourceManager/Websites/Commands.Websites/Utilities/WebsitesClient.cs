@@ -24,6 +24,7 @@ using Microsoft.Azure.Commands;
 using Microsoft.Azure.Management.WebSites;
 using System.Net;
 using System.Xml;
+using System.Xml.Linq;
 using Hyak.Common;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Common.Authentication;
@@ -146,22 +147,21 @@ namespace Microsoft.Azure.Commands.WebApp.Utilities
             return site;
         }
 
-        public XmlElement GetWebsitePublishingProfile(string resourceGroupName, string webSiteName, string slotName)
+        public XDocument GetWebsitePublishingProfile(string resourceGroupName, string webSiteName, string slotName)
         {
             string qualifiedSiteName;
-            var publishingXml = (ShouldSlotInterfaceBeUsed(webSiteName, slotName, out qualifiedSiteName) ? WrappedWebsitesClient.Sites.ListSiteSlotPublishingProfileXml(resourceGroupName, webSiteName, null, slotName) : WrappedWebsitesClient.Sites.ListSitePublishingProfileXml(resourceGroupName, webSiteName, null)) as XmlElement;
-
-            return publishingXml;
+            var publishingXml = (ShouldSlotInterfaceBeUsed(webSiteName, slotName, out qualifiedSiteName) ? WrappedWebsitesClient.Sites.ListSitePublishingProfileXmlSlot(resourceGroupName, webSiteName, null, slotName) : WrappedWebsitesClient.Sites.ListSitePublishingProfileXml(resourceGroupName, webSiteName, null));
+            return XDocument.Load(publishingXml, LoadOptions.None);
         }
 
-        public MetricResponseCollection GetWebAppUsageMetrics(string resourceGroupName, string webSiteName, string slotName, IList<string> metricNames,
+        public XDocument GetWebAppUsageMetrics(string resourceGroupName, string webSiteName, string slotName, IReadOnlyList<string> metricNames,
     DateTime? startTime, DateTime? endTime, string timeGrain, bool instanceDetails)
         {
             string qualifiedSiteName;
             var usageMetrics = ShouldSlotInterfaceBeUsed(webSiteName, slotName, out qualifiedSiteName) ?
-                WrappedWebsitesClient.Sites.GetSiteSlotMetrics(resourceGroupName, webSiteName, slotName, string.Join(",", metricNames), startTime.ToString(), endTime.ToString(), timeGrain, instanceDetails): 
-                WrappedWebsitesClient.Sites.GetSiteMetrics(resourceGroupName, webSiteName, string.Join(",", metricNames), startTime.ToString(), endTime.ToString(), timeGrain, instanceDetails);
-            return usageMetrics;
+                WrappedWebsitesClient.Sites.GetSiteMetricsSlot(resourceGroupName, webSiteName, slotName, instanceDetails, BuildMetricFilter(startTime, endTime, timeGrain, metricNames)) :
+                WrappedWebsitesClient.Sites.GetSiteMetrics(resourceGroupName, webSiteName, instanceDetails, BuildMetricFilter(startTime, endTime, timeGrain, metricNames));
+            return XDocument.Load(usageMetrics, LoadOptions.None);
         }
 
         public ServerFarmWithRichSku CreateAppServicePlan(string resourceGroupName, string appServicePlanName, string location, string adminSiteName, string sku, string tier, int? capacity)
@@ -198,10 +198,10 @@ namespace Microsoft.Azure.Commands.WebApp.Utilities
             return WrappedWebsitesClient.ServerFarms.GetServerFarms(resourceGroupName);
         }
 
-        public MetricResponseCollection GetAppServicePlanHistoricalUsageMetrics(string resourceGroupName, string appServicePlanName, IList<string> metricNames,
+        public MetricResponseCollection GetAppServicePlanHistoricalUsageMetrics(string resourceGroupName, string appServicePlanName, IReadOnlyList<string> metricNames,
     DateTime? startTime, DateTime? endTime, string timeGrain, bool instanceDetails)
         {
-            var response = WrappedWebsitesClient.ServerFarms.GetServerFarmMetrics(resourceGroupName, appServicePlanName, string.Join(",", metricNames), startTime.ToString(), endTime.ToString(), timeGrain, instanceDetails);
+            var response = WrappedWebsitesClient.ServerFarms.GetServerFarmMetrics(resourceGroupName, appServicePlanName, instanceDetails, BuildMetricFilter(startTime, endTime, timeGrain, metricNames));
             return response;
         }
 
@@ -215,13 +215,13 @@ namespace Microsoft.Azure.Commands.WebApp.Utilities
                 }
 
                 string qualifiedSiteName;
-                var appSettings = ShouldSlotInterfaceBeUsed(webSiteName, slotName, out qualifiedSiteName) ? WrappedWebsitesClient.Sites.ListSiteSlotAppSettings(resourceGroupName, webSiteName, slotName): WrappedWebsitesClient.Sites.ListSiteAppSettings(resourceGroupName, webSiteName);
+                var appSettings = ShouldSlotInterfaceBeUsed(webSiteName, slotName, out qualifiedSiteName) ? WrappedWebsitesClient.Sites.ListSiteAppSettingsSlot(resourceGroupName, webSiteName, slotName): WrappedWebsitesClient.Sites.ListSiteAppSettings(resourceGroupName, webSiteName);
                 
-                site.SiteConfig.AppSettings = appSettings.Select(s => new NameValuePair{ Name = s.Key, Value = s.Value}).ToList();
+                site.SiteConfig.AppSettings = appSettings.Properties.Select(s => new NameValuePair{ Name = s.Key, Value = s.Value}).ToList();
 
-                var connectionStrings = ShouldSlotInterfaceBeUsed(webSiteName, slotName, out qualifiedSiteName) ? WrappedWebsitesClient.Sites.ListSiteSlotConnectionStrings(resourceGroupName, webSiteName, slotName) : WrappedWebsitesClient.Sites.ListSiteConnectionStrings(resourceGroupName, webSiteName);
+                var connectionStrings = ShouldSlotInterfaceBeUsed(webSiteName, slotName, out qualifiedSiteName) ? WrappedWebsitesClient.Sites.ListSiteConnectionStringsSlot(resourceGroupName, webSiteName, slotName) : WrappedWebsitesClient.Sites.ListSiteConnectionStrings(resourceGroupName, webSiteName);
 
-                site.SiteConfig.ConnectionStrings = connectionStrings.Select(s => new ConnStringInfo() { Name = s.Key, ConnectionString = s.Value.Value, Type = s.Value.Type }).ToList();
+                site.SiteConfig.ConnectionStrings = connectionStrings.Properties.Select(s => new ConnStringInfo() { Name = s.Key, ConnectionString = s.Value.Value, Type = s.Value.Type }).ToList();
             }
             catch
             {
@@ -241,6 +241,40 @@ namespace Microsoft.Azure.Commands.WebApp.Utilities
             }
 
             return result;
+        }
+
+        private static string BuildMetricFilter(DateTime? startTime, DateTime? endTime, string timeGrain, IReadOnlyList<string> metricNames)
+        {
+            var dateTimeFormat = "yyyy-MM-ddTHH:mm:ssZ";
+            var filter = "";
+            if (metricNames != null && metricNames.Count > 0)
+            {
+                if (metricNames.Count == 1)
+                {
+                    filter = "name.value eq '" + metricNames[0] + "'";
+                }
+                else
+                {
+                    filter = "(name.value eq '" + string.Join("' or name.value eq '", metricNames) + "')";
+                }
+            }
+
+            if (startTime.HasValue)
+            {
+                filter += string.Format("and startTime eq {0}", startTime.Value.ToString(dateTimeFormat));
+            }
+
+            if (endTime.HasValue)
+            {
+                filter += string.Format("and endTime eq {0}", endTime.Value.ToString(dateTimeFormat));
+            }
+
+            if (endTime.HasValue)
+            {
+                filter += string.Format("and timeGrain eq duration'{0}'", timeGrain);
+            }
+
+            return filter;
         }
     }
 }

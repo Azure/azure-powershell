@@ -23,7 +23,7 @@ function Test-CreatesNewSimpleWebApp
 	$wname = Get-WebsiteName
 	$location = Get-Location
 	$whpName = Get-WebHostPlanName
-	$apiversion = "2014-04-01"
+	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
 	$slotName = $wname + "(Dev)" 
 	try
