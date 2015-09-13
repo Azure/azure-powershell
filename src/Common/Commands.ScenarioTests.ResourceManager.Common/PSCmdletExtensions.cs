@@ -12,26 +12,37 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Diagnostics;
 using System.Management.Automation;
-using System.Security.Permissions;
+using System.Reflection;
 
-namespace Microsoft.WindowsAzure.Commands.Profile
+namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
-    [Cmdlet(VerbsLifecycle.Enable, "AzureDataCollection")]
-    public class EnableAzureDataCollectionCommand : AzureSMCmdlet
+    public static class PSCmdletExtensions
     {
-        [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        public override void ExecuteCmdlet()
+        private static MethodInfo GetProtectedMethod(string name)
         {
-            SetDataCollectionProfile(true);
+            MethodInfo m = typeof(PSCmdlet).GetMethod(
+                name,
+                BindingFlags.Instance | BindingFlags.NonPublic,
+                Type.DefaultBinder,
+                new Type[] { },
+                null);
+
+            return m;
         }
 
-        protected void SetDataCollectionProfile(bool enable)
+        public static void ExecuteCmdlet(this PSCmdlet cmdlet)
         {
-            var profile = GetDataCollectionProfile();
-            profile.EnableAzureDataCollection = enable;
-            SaveDataCollectionProfile();
+            try
+            {
+                GetProtectedMethod("ProcessRecord").Invoke(cmdlet, new object[] { });
+            }
+            catch (TargetInvocationException e)
+            {
+                throw e.InnerException;
+            }
         }
     }
 }

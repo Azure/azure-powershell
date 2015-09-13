@@ -140,10 +140,6 @@
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
       <Name>Commands.ResourceManager.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.ScenarioTests.Common\Commands.ScenarioTests.Common.csproj">
-      <Project>{c1bda476-a5cc-4394-914d-48b0ec31a710}</Project>
-      <Name>Commands.ScenarioTests.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Commands.TrafficManager2\Commands.TrafficManager2.csproj">
       <Project>{270cbb5f-bb8a-4e33-b35b-95698e607d97}</Project>
       <Name>Commands.TrafficManager2</Name>

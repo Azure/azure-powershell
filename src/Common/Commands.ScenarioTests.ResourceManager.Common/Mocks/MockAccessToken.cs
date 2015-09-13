@@ -12,26 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System.Management.Automation;
-using System.Security.Permissions;
+using System;
+using Microsoft.Azure.Common.Authentication;
 
-namespace Microsoft.WindowsAzure.Commands.Profile
+namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 {
-    [Cmdlet(VerbsLifecycle.Enable, "AzureDataCollection")]
-    public class EnableAzureDataCollectionCommand : AzureSMCmdlet
+    public class MockAccessToken : IAccessToken
     {
-        [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        public override void ExecuteCmdlet()
+        public void AuthorizeRequest(Action<string, string> authTokenSetter)
         {
-            SetDataCollectionProfile(true);
+            authTokenSetter("Bearer", AccessToken);
         }
 
-        protected void SetDataCollectionProfile(bool enable)
+        public string AccessToken { get; set; }
+        public string UserId { get; set; }
+        public LoginType LoginType { get; set; }
+
+        public string TenantId
         {
-            var profile = GetDataCollectionProfile();
-            profile.EnableAzureDataCollection = enable;
-            SaveDataCollectionProfile();
+            get { return string.Empty; }
         }
     }
 }

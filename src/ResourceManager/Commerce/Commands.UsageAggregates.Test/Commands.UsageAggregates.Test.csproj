@@ -113,10 +113,6 @@
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
       <Name>Commands.ResourceManager.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.ScenarioTests.Common\Commands.ScenarioTests.Common.csproj">
-      <Project>{C1BDA476-A5CC-4394-914D-48B0EC31A710}</Project>
-      <Name>Commands.ScenarioTests.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Commands.UsageAggregates\Commands.UsageAggregates.csproj">
       <Project>{1a131d3a-eac4-420c-a1c0-5490ed68ef67}</Project>
       <Name>Commands.UsageAggregates</Name>
