@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Test;
@@ -50,8 +51,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         {
             var datastore = new MemoryDataStore();
             AzureSession.DataStore = datastore;
-            var profile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-            AzureSMCmdlet.CurrentProfile = profile;
+            var profile = new AzureRMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+            AzureRMCmdlet.DefaultProfile = profile;
             AzureSession.DataStore = datastore;
             ProfileClient = new ProfileClient(profile);
 

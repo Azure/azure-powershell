@@ -167,6 +167,18 @@
     <Compile Include="..\Commands.Common\PowerShellUtilities.cs">
       <Link>Common\PowerShellUtilities.cs</Link>
     </Compile>
+    <Compile Include="..\Commands.Common\ProfileClient.cs">
+      <Link>Common\ProfileClient.cs</Link>
+    </Compile>
+    <Compile Include="..\Commands.Common\ProfileClientExtensions.cs">
+      <Link>Common\ProfileClientExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Commands.Common\PSAzureAccount.cs">
+      <Link>Common\PSAzureAccount.cs</Link>
+    </Compile>
+    <Compile Include="..\Commands.Common\PublishSettingsImporter.cs">
+      <Link>Common\PublishSettingsImporter.cs</Link>
+    </Compile>
     <Compile Include="..\Commands.Common\RecordingTracingInterceptor.cs">
       <Link>Common\RecordingTracingInterceptor.cs</Link>
     </Compile>

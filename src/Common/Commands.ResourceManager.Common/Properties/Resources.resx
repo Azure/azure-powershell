@@ -145,4 +145,7 @@ Select Y to enable data collection [Y/N]:</value>
   <data name="DataCollectionSaveFileInformation" xml:space="preserve">
     <value>The setting profile has been saved to the following path '{0}'.</value>
   </data>
+  <data name="InvalidDefaultSubscription" xml:space="preserve">
+    <value>No default subscription has been designated. Use Select-AzureSubscription -Default &lt;subscriptionName&gt; to set the default subscription.</value>
+  </data>
 </root>

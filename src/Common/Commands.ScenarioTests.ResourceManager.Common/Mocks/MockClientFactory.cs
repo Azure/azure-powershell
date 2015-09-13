@@ -66,7 +66,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
         {
             if (subscription == null)
             {
-                throw new ArgumentException(Commands.Common.Properties.Resources.InvalidDefaultSubscription);
+                throw new ArgumentException(Microsoft.Azure.Commands.ResourceManager.Common.Properties.Resources.InvalidDefaultSubscription);
             }
 
             if (profile == null)
