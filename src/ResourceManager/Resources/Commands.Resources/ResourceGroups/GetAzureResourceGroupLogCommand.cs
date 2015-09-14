@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// Get the list of events for a deployment.
     /// </summary>
     // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
-    //[Cmdlet(VerbsCommon.Get, "AzureResourceGroupLog", DefaultParameterSetName = LastDeploymentSetName), OutputType(typeof(List<PSDeploymentEventData>))]
+    //[Cmdlet(VerbsCommon.Get, "AzureRMResourceGroupLog", DefaultParameterSetName = LastDeploymentSetName), OutputType(typeof(List<PSDeploymentEventData>))]
     public class GetAzureResourceGroupLogCommand : ResourcesBaseCmdlet
     {
         internal const string AllSetName = "All";
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(ParameterSetName = AllSetName, HelpMessage = "Optional. If given, return logs of all the operations including CRUD and deployment.")]
         public SwitchParameter All { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             GetPSResourceGroupLogParameters parameters = new GetPSResourceGroupLogParameters
                 {

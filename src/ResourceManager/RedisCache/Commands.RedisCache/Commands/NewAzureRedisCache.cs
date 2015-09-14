@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.RedisCache
     using Hyak.Common;
     using System.Collections;
 
-    [Cmdlet(VerbsCommon.New, "AzureRedisCache"), OutputType(typeof(RedisCacheAttributesWithAccessKeys))]
+    [Cmdlet(VerbsCommon.New, "AzureRMRedisCache"), OutputType(typeof(RedisCacheAttributesWithAccessKeys))]
     public class NewAzureRedisCache : RedisCacheCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under which you want to create cache.")]
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         private const string redisDefaultVersion = "2.8";
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             string skuFamily;
 

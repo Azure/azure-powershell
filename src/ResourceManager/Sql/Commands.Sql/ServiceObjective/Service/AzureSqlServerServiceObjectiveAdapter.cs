@@ -41,17 +41,17 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Adapter
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureProfile Profile { get; set; }
+        public AzureContext Context { get; set; }
 
         /// <summary>
         /// Constructs a ServiceObjective adapter
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlServerServiceObjectiveAdapter(AzureProfile profile, AzureSubscription subscription)
+        public AzureSqlServerServiceObjectiveAdapter(AzureContext context)
         {
-            Profile = profile;
-            Communicator = new AzureSqlServerServiceObjectiveCommunicator(Profile, subscription);
+            Context = context;
+            Communicator = new AzureSqlServerServiceObjectiveCommunicator(Context);
         }
 
         /// <summary>

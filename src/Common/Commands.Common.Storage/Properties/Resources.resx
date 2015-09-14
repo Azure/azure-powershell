@@ -120,6 +120,9 @@
   <data name="AnonymousAccountName" xml:space="preserve">
     <value>[Anonymous]</value>
   </data>
+  <data name="BlobAlreadyExistsInTheAccount" xml:space="preserve">
+    <value>Blob with the name {0} already exists in the account.</value>
+  </data>
   <data name="SasTokenAccountName" xml:space="preserve">
     <value>[SasToken]</value>
   </data>

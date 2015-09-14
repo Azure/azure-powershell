@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure SQL Database Copy
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureSqlDatabaseCopy",
+    [Cmdlet(VerbsCommon.New, "AzureRMSqlDatabaseCopy",
         ConfirmImpact = ConfirmImpact.Low)]
     public class NewAzureSqlDatabaseCopy : AzureSqlDatabaseCopyCmdletBase
     {

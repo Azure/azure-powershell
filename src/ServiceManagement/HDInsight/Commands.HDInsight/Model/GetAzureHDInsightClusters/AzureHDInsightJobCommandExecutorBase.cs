@@ -49,7 +49,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
         {
             cluster.ArgumentNotNull("ClusterEndpoint");
             IJobSubmissionClient client = null;
-            ProfileClient profileClient = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
+            ProfileClient profileClient = new ProfileClient(new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
 
             string currentEnvironmentName = this.CurrentSubscription == null ? null : this.CurrentSubscription.Environment;
 
