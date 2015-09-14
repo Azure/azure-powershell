@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected override void OnProcessRecord()
         {
             base.OnProcessRecord();
-            string resourceId = ResourceIdUtility.GetResourceId(this.Profile.Context.Subscription.Id, this.Name, null, null);
+            string resourceId = ResourceIdUtility.GetResourceId(DefaultContext.Subscription.Id, this.Name, null, null);
             var apiVersion = this.DetermineApiVersion(resourceId: resourceId).Result;
 
             var operationResult = this.GetResourcesClient()
