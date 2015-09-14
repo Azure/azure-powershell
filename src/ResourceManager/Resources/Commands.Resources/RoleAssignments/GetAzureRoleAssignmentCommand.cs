@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Commands.Resources
                 }
             };
 
-            WriteObject(PoliciesClient.FilterRoleAssignments(options, Profile.Context.Subscription.Id.ToString(), ExpandPrincipalGroups.IsPresent, IncludeClassicAdministrators.IsPresent), true);
+            WriteObject(PoliciesClient.FilterRoleAssignments(options, DefaultProfile.DefaultContext.Subscription.Id.ToString(), ExpandPrincipalGroups.IsPresent, IncludeClassicAdministrators.IsPresent), true);
         }
     }
 }
