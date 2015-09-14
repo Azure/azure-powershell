@@ -126,6 +126,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         /// <inheritdoc />
         protected override void EndProcessing()
         {
+            this.WriteWarning(AzureHdInsightPowerShellConstants.AsmWarning);
             try
             {
                 this.command.Logger = this.Logger;

@@ -104,5 +104,8 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         public const string Show = "Show";
         public const string Skip = "Skip";
         public const string ToDateTime = "To";
+
+        public const string AsmWarning =
+            "WARNING: The Azure Service Management (ASM) cmdlets for HDInsight are deprecated and will be non-default in a future release, and they will be removed soon thereafter. Please use Switch-AzureMode AzureResourceManager to use the Azure Resource Manager cmdlets for HDInsight.";
     }
 }

@@ -362,6 +362,11 @@ The file needs to be a PowerShell script (.ps1 or .psm1).</value>
   <data name="DataDiskNotAssignedForVM" xml:space="preserve">
     <value>A data disk, {0}, is not currently assigned for this VM. Use Add-AzureVMDataDisk to add it.</value>
   </data>
+  <data name="AzureVMSqlServerWrongSettingsFormat" xml:space="preserve">
+    <value>Cannot deserialize settings string from Sql Server extension. Updating your Azure PowerShell SDK to the latest version may solve this problem. Settings string:
+{0}</value>
+    <comment>{0} settings json string</comment>
+  </data>
   <data name="PublishVMDscExtensionAdditionalContentPathNotExist" xml:space="preserve">
     <value>Path '{0}' not found.</value>
     <comment>0 = path to the additional content file/directory</comment>
