@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Creates a new resource group.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureResourceGroup", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(PSResourceGroup))]
+    [Cmdlet(VerbsCommon.New, "AzureRMResourceGroup", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(PSResourceGroup))]
     public class NewAzureResourceGroupCommand : ResourceWithParameterBaseCmdlet, IDynamicParameters
     {
         [Alias("ResourceGroupName")]
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             CreatePSResourceGroupParameters parameters = new CreatePSResourceGroupParameters
             {

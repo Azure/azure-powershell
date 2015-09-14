@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(Position = 1)]
         public string TerminateReason { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             TerminateJobParameters parameters = new TerminateJobParameters(this.BatchContext, this.Id, null, this.AdditionalBehaviors)
             {

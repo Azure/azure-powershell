@@ -36,9 +36,9 @@ namespace Microsoft.Azure.Commands.AzureBackup
         [ValidateNotNullOrEmpty]
         public AzureRMBackupRecoveryPoint RecoveryPoint { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
             WriteDebug(String.Format(Resources.CmdletCalled, RecoveryPoint.ResourceGroupName, RecoveryPoint.ResourceName, RecoveryPoint.Location));
             InitializeAzureBackupCmdlet(RecoveryPoint.ResourceGroupName, RecoveryPoint.ResourceName);

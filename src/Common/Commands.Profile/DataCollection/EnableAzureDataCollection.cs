@@ -19,7 +19,7 @@ using System.Security.Permissions;
 namespace Microsoft.WindowsAzure.Commands.Profile
 {
     [Cmdlet(VerbsLifecycle.Enable, "AzureDataCollection")]
-    public class EnableAzureDataCollectionCommand : AzurePSCmdlet
+    public class EnableAzureDataCollectionCommand : AzureSMCmdlet
     {
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
     using System.Net;
     using Hyak.Common;
 
-    [Cmdlet(VerbsCommon.New, "AzureTrafficManagerEndpoint"), OutputType(typeof(TrafficManagerEndpoint))]
+    [Cmdlet(VerbsCommon.New, "AzureRMTrafficManagerEndpoint"), OutputType(typeof(TrafficManagerEndpoint))]
     public class NewAzureTrafficManagerEndpoint : TrafficManagerBaseCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the endpoint.")]
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateNotNullOrEmpty]
         public string EndpointLocation { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             // We are not supporting etags yet, NewAzureTrafficManagerEndpoint should not overwrite any existing endpoint.
             // Since our create operation is implemented using PUT, it will overwrite by default.

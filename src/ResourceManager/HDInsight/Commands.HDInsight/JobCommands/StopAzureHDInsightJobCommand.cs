@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.HDInsight
        
         #endregion
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             _clusterName = GetClusterConnection(ResourceGroupName, ClusterName);
             HDInsightJobClient.StopJob(JobId);

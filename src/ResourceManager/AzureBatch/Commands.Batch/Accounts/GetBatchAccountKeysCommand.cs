@@ -17,7 +17,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Get, Constants.AzureBatchAccountKeys), OutputType(typeof(BatchAccountContext))]
+    [Cmdlet(VerbsCommon.Get, "AzureRMBatchAccountKeys"), OutputType(typeof(BatchAccountContext))]
     public class GetBatchAccountKeysCommand : BatchCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, 
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Batch
         /// Get the keys associated with the specified account. If only the account name is passed in, then
         /// look up its resource group and construct a new BatchAccountContext to hold everything.
         /// </summary>
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             BatchAccountContext context = BatchClient.ListKeys(this.ResourceGroupName, this.AccountName);
             WriteObject(context);

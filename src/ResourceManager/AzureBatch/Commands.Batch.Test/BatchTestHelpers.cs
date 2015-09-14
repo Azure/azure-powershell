@@ -31,7 +31,6 @@ using System.Reflection;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Storage.Shared.Protocol;
 using Xunit;
 using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;

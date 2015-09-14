@@ -32,7 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
     /// </summary>
     [Cmdlet(VerbsLifecycle.Stop, "AzureSqlDatabaseCopy", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.Medium)]
-    public class StopAzureSqlDatabaseCopy : AzurePSCmdlet
+    public class StopAzureSqlDatabaseCopy : AzureSMCmdlet
     {
         #region ParameterSetNames
 
@@ -133,7 +133,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
             // provided ServerName and the active subscription.
             IServerDataServiceContext context = ServerDataServiceCertAuth.Create(this.ServerName,
                 Profile,
-                Profile.Context.Subscription);
+                Profile.DefaultContext.Subscription);
 
             DatabaseCopyModel databaseCopy;
             if (this.MyInvocation.BoundParameters.ContainsKey("DatabaseCopy"))

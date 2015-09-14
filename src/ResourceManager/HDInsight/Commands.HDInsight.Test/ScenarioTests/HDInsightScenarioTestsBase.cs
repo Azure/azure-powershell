@@ -17,10 +17,11 @@ using Microsoft.Azure.Management.HDInsight;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.HDInsight.Test
 {
-    public abstract class HDInsightScenarioTestsBase
+    public abstract class HDInsightScenarioTestsBase : RMTestBase
     {
         private EnvironmentSetupHelper helper;
 

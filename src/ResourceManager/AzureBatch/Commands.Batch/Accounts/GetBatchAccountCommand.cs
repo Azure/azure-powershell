@@ -18,7 +18,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Get, Constants.AzureBatchAccount), OutputType(typeof(BatchAccountContext))]
+    [Cmdlet(VerbsCommon.Get, "AzureRMBatchAccount"), OutputType(typeof(BatchAccountContext))]
     public class GetBatchAccountCommand : BatchCmdletBase
     {
         [Alias("Name")]
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(Position = 2, ValueFromPipelineByPropertyName = true)]
         public Hashtable Tag { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             if (string.IsNullOrEmpty(this.AccountName))
             {
