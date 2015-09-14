@@ -17,9 +17,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Test.HttpRecorder;
 using Newtonsoft.Json.Linq;
-using System;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using Microsoft.Azure.Test.HttpRecorder;
 using Hyak.Common;
 using Microsoft.Azure;
 

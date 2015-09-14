@@ -13,30 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Management.Automation;
-using Microsoft.Azure.Management.WebSites.Models;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
-using Microsoft.Azure.Commands.WebApp;
-using Microsoft.Azure.Management.WebSites;
-using System.Net.Http;
-using System.Threading;
-using System.Net;
-using Microsoft.Azure;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.WebApp.Utilities;
+using Microsoft.Azure.Management.WebSites.Models;
 
 namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
 {
     /// <summary>
     /// this commandlet will let you create a new Azure App service Plan using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureAppServicePlan"), OutputType(typeof(ServerFarmWithRichSku))]
+    [Cmdlet(VerbsCommon.New, "AzureRMAppServicePlan"), OutputType(typeof(ServerFarmWithRichSku))]
     public class NewAzureAppServicePlanCmdlet : AppServicePlanBaseCmdlet
     {
 
@@ -52,7 +38,7 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
         [ValidateNotNullOrEmptyAttribute]
         public int NumberofWorkers { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             WriteObject(WebsitesClient.CreateAppServicePlan(ResourceGroupName, Name, Location, null, Sku.Name, Sku.Tier, Sku.Capacity));
         }

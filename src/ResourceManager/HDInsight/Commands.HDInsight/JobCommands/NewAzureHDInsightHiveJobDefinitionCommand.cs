@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             job = new AzureHDInsightHiveJobDefinition();
         }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             var hivejob = GetHiveJob();
 

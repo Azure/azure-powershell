@@ -13,15 +13,15 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.Azure.Commands.WebApp.Utilities;
+using Microsoft.Azure.Management.WebSites.Models;
 
 namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
 {
     /// <summary>
     /// this commandlet will let you set Azure App Service Plan using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureAppServicePlan"), OutputType(typeof(ServerFarmWithRichSku))]
+    [Cmdlet(VerbsCommon.Set, "AzureRMAppServicePlan"), OutputType(typeof(ServerFarmWithRichSku))]
     public class SetAzureAppServicePlanCmdlet : AppServicePlanBaseCmdlet
     {
 
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
         [ValidateNotNullOrEmptyAttribute]
         public string AdminSiteName { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             WriteObject(WebsitesClient.CreateAppServicePlan(ResourceGroupName, Name, Location, AdminSiteName, Sku.Name, Sku.Tier, Sku.Capacity));
 

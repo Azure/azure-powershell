@@ -28,7 +28,7 @@ using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Pools
 {
-    public class EnableBatchJobScheduleCommandTests
+    public class EnableBatchJobScheduleCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
         private EnableBatchJobScheduleCommand cmdlet;
         private Mock<BatchClient> batchClientMock;

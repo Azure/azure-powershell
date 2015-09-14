@@ -33,11 +33,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <summary>
         /// Determines the API version.
         /// </summary>
-        /// <param name="profile">The azure profile.</param>
+        /// <param name="context">The azure profile.</param>
         /// <param name="resourceId">The resource Id.</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <param name="pre">When specified, indicates if pre-release API versions should be considered.</param>
-        internal static Task<string> DetermineApiVersion(AzureProfile profile, string resourceId, CancellationToken cancellationToken, bool? pre = null)
+        internal static Task<string> DetermineApiVersion(AzureContext context, string resourceId, CancellationToken cancellationToken, bool? pre = null)
         {
             var providerNamespace = ResourceIdUtility.GetExtensionProviderNamespace(resourceId)
                 ?? ResourceIdUtility.GetProviderNamespace(resourceId);
@@ -45,23 +45,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             var resourceType = ResourceIdUtility.GetExtensionResourceType(resourceId: resourceId, includeProviderNamespace: false)
                 ?? ResourceIdUtility.GetResourceType(resourceId: resourceId, includeProviderNamespace: false);
 
-            return ApiVersionHelper.DetermineApiVersion(profile: profile, providerNamespace: providerNamespace, resourceType: resourceType, cancellationToken: cancellationToken, pre: pre);
+            return ApiVersionHelper.DetermineApiVersion(context: context, providerNamespace: providerNamespace, resourceType: resourceType, cancellationToken: cancellationToken, pre: pre);
         }
 
         /// <summary>
         /// Determines the API version.
         /// </summary>
-        /// <param name="profile">The azure profile.</param>
+        /// <param name="context">The azure profile.</param>
         /// <param name="providerNamespace">The provider namespace.</param>
         /// <param name="resourceType">The resource type.</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <param name="pre">When specified, indicates if pre-release API versions should be considered.</param>
-        internal static Task<string> DetermineApiVersion(AzureProfile profile, string providerNamespace, string resourceType, CancellationToken cancellationToken, bool? pre = null)
+        internal static Task<string> DetermineApiVersion(AzureContext context, string providerNamespace, string resourceType, CancellationToken cancellationToken, bool? pre = null)
         {
             var cacheKey = ApiVersionCache.GetCacheKey(providerNamespace: providerNamespace, resourceType: resourceType);
             var apiVersions = ApiVersionCache.Instance
                 .AddOrGetExisting(cacheKey: cacheKey, getFreshData: () => ApiVersionHelper.GetApiVersionsForResourceType(
-                    profile: profile,
+                    context,
                     providerNamespace: providerNamespace,
                     resourceType: resourceType,
                     cancellationToken: cancellationToken));
@@ -92,16 +92,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <summary>
         /// Determines the list of api versions currently supported by the RP.
         /// </summary>
-        /// <param name="profile">The azure profile.</param>
+        /// <param name="context">The azure profile.</param>
         /// <param name="providerNamespace">The provider namespace.</param>
         /// <param name="resourceType">The resource type.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
-        private static string[] GetApiVersionsForResourceType(AzureProfile profile, string providerNamespace, string resourceType, CancellationToken cancellationToken)
+        private static string[] GetApiVersionsForResourceType(AzureContext context, string providerNamespace, string resourceType, CancellationToken cancellationToken)
         {
-            var resourceManagerClient = ResourceManagerClientHelper.GetResourceManagerClient(profile);
+            var resourceManagerClient = ResourceManagerClientHelper.GetResourceManagerClient(context);
 
-            var defaultSubscription = profile.DefaultSubscription ?? 
-                profile.Subscriptions.CoalesceEnumerable().Select(kvp => kvp.Value).FirstOrDefault();
+            var defaultSubscription = context.Subscription;
 
             var resourceCollectionId = defaultSubscription == null
                 ? "/providers"

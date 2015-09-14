@@ -17,7 +17,6 @@ using System.ComponentModel;
 using System.Management.Automation;
 using Microsoft.Azure.Management.SiteRecovery.Models;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
-using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Properties = Microsoft.Azure.Commands.SiteRecovery.Properties;
 
 namespace Microsoft.Azure.Commands.SiteRecovery
@@ -25,7 +24,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// <summary>
     /// Creates Azure Site Recovery Protection Profile object in memory.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureSiteRecoveryProtectionProfile")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRMSiteRecoveryProtectionProfile")]
     public class RemoveAzureSiteRecoveryProtectionProfile : SiteRecoveryCmdletBase
     {
         #region Parameters
@@ -41,7 +40,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             try
             {

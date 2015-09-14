@@ -36,7 +36,7 @@ Gets the default location for a provider
 #>
 function Get-ProviderLocation($provider)
 {
-    $location = Get-AzureLocation | where {$_.Name -eq $provider}
+    $location = Get-AzureRMLocation | where {$_.Name -eq $provider}
     if ($location -eq $null) {
         "West US"
     } else {
@@ -60,6 +60,6 @@ Cleans the created resource groups
 function Clean-ResourceGroup($rgname)
 {
     if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
-        Remove-AzureResourceGroup -Name $rgname -Force
+        Remove-AzureRMResourceGroup -Name $rgname -Force
     }
 }
