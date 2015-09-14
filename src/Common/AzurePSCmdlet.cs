@@ -379,6 +379,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
         }
 
+        protected abstract void InitializeQosEvent();
+
         private void RecordDebugMessages()
         {
             // Create 'ErrorRecords' folder under profile directory, if not exists
@@ -414,25 +416,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
 
             AzureSession.DataStore.WriteFile(filePath, sb.ToString());
-        }
-
-        protected void InitializeQosEvent()
-        {
-            QosEvent = new AzurePSQoSEvent()
-            {
-                CmdletType = this.GetType().Name,
-                IsSuccess = true,
-            };
-
-            if (this.Profile != null && this.Profile.DefaultSubscription != null)
-            {
-                QosEvent.Uid = MetricHelper.GenerateSha256HashString(
-                    this.Profile.DefaultSubscription.Id.ToString());
-            }
-            else
-            {
-                QosEvent.Uid = "defaultid";
-            }
         }
 
         /// <summary>
