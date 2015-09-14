@@ -33,9 +33,9 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ValueFromPipelineByPropertyName = true)]
         public Hashtable[] Tags { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
             ExecuteClientAction(() =>
             {

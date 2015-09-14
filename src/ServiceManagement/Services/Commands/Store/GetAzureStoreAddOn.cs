@@ -64,14 +64,14 @@ namespace Microsoft.WindowsAzure.Commands.Store
 
         private void GetAddOn()
         {
-            StoreClient = StoreClient ?? new StoreClient(Profile, Profile.Context.Subscription);
+            StoreClient = StoreClient ?? new StoreClient(Profile, Profile.DefaultContext.Subscription);
             List<WindowsAzureAddOn> addOns = StoreClient.GetAddOn(new AddOnSearchOptions(Name, null, null));
             WriteObject(addOns, true);
         }
 
         private void ListAvailableAddOns()
         {
-            StoreClient = StoreClient ?? new StoreClient(Profile, Profile.Context.Subscription);
+            StoreClient = StoreClient ?? new StoreClient(Profile, Profile.DefaultContext.Subscription);
             MarketplaceClient = MarketplaceClient ??
                 new MarketplaceClient(StoreClient.GetLocations().Select(l => l.Name));
 

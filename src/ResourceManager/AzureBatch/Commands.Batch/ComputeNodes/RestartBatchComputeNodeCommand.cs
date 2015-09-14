@@ -24,11 +24,13 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsLifecycle.Restart, Constants.AzureBatchComputeNode, DefaultParameterSetName = Constants.IdParameterSet)]
     public class RestartBatchComputeNodeCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true, HelpMessage = "The id of the pool that contains the compute node.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true, 
+            HelpMessage = "The id of the pool that contains the compute node.")]
         [ValidateNotNullOrEmpty]
         public string PoolId { get; set; }
 
-        [Parameter(Position = 1, ParameterSetName = Constants.IdParameterSet, Mandatory = true, HelpMessage = "The id of the compute node to reboot.")]
+        [Parameter(Position = 1, ParameterSetName = Constants.IdParameterSet, Mandatory = true, 
+            HelpMessage = "The id of the compute node to reboot.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
@@ -40,7 +42,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public ComputeNodeRebootOption? RebootOption { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             RebootComputeNodeParameters parameters = new RebootComputeNodeParameters(this.BatchContext, this.PoolId,
                 this.Id, this.ComputeNode, this.AdditionalBehaviors)

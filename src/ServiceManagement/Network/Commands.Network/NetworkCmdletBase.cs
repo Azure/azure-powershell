@@ -23,13 +23,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network
     /// <summary>
     /// The base class for all Microsoft Azure Network Gateway Management Cmdlets
     /// </summary>
-    public abstract class NetworkCmdletBase : AzurePSCmdlet
+    public abstract class NetworkCmdletBase : AzureSMCmdlet
     {
         private NetworkClient client;
 
         protected AzureSubscription CurrentSubscription
         {
-            get { return Profile.Context.Subscription; }
+            get { return Profile.DefaultContext.Subscription; }
         }
 
         public NetworkClient Client

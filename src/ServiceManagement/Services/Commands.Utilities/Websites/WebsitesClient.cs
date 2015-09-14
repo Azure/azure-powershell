@@ -70,7 +70,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
         /// </summary>
         /// <param name="subscription">Subscription containing websites to manipulate</param>
         /// <param name="logger">The logger action</param>
-        public WebsitesClient(AzureProfile profile, AzureSubscription subscription, Action<string> logger)
+        public WebsitesClient(AzureSMProfile profile, AzureSubscription subscription, Action<string> logger)
         {
             Logger = logger;
             cloudServiceClient = new CloudServiceClient(profile, subscription, debugStream: logger);

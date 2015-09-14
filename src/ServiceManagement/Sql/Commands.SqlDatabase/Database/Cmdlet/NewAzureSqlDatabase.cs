@@ -29,7 +29,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureSqlDatabase", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.Low)]
-    public class NewAzureSqlDatabase : AzurePSCmdlet
+    public class NewAzureSqlDatabase : AzureSMCmdlet
     {
         #region Parameter Sets
 
@@ -171,7 +171,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
             try
             {
                 // Get the current subscription data.
-                AzureSubscription subscription = Profile.Context.Subscription;
+                AzureSubscription subscription = Profile.DefaultContext.Subscription;
 
                 // Create a temporary context
                 ServerDataServiceCertAuth context =

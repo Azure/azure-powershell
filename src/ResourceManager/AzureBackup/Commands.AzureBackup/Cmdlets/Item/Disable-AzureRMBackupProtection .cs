@@ -40,11 +40,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
         }
         private bool DeleteBackupData;
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ExecutionBlock(() =>
             {
-                base.ExecuteCmdlet();
+                base.ProcessRecord();
                 Guid operationId = Guid.Empty;
                 WriteDebug(Resources.MakingClientCall);
 

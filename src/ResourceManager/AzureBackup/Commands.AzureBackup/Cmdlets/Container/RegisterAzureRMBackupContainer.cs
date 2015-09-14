@@ -22,7 +22,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Management.BackupServices.Models;
 using MBS = Microsoft.Azure.Management.BackupServices;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.Azure.Commands.AzureBackup.Properties;
 using Microsoft.Azure.Commands.AzureBackup.Models;
 using Microsoft.Azure.Commands.AzureBackup.Helpers;
@@ -50,11 +49,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public string ResourceGroupName { get; set; }
 
         
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ExecutionBlock(() =>
             {
-                base.ExecuteCmdlet();
+                base.ProcessRecord();
 
                 string vmName = String.Empty;
                 string rgName = String.Empty;

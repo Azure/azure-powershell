@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         private void GetByObject()
         {
-            AzureSubscription subscription = this.Profile.Context.Subscription;
+            AzureSubscription subscription = this.Profile.DefaultContext.Subscription;
             this.Vault.SubscriptionId = subscription.Id.ToString();
 
             CloudService cloudService = RecoveryServicesClient.GetCloudServiceForVault(this.Vault);

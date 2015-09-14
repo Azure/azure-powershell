@@ -24,10 +24,10 @@ function Test-SiteRecoveryEnumerationTests
 	param([string] $vaultSettingsFilePath)
 
 	# Import Azure Site Recovery Vault Settings
-	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+	Import-AzureRMSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
 
 	# Enumerate Vaults
-	$vaults = Get-AzureSiteRecoveryVault
+	$vaults = Get-AzureRMSiteRecoveryVault
 	Assert-True { $vaults.Count -gt 0 }
 	Assert-NotNull($vaults)
 	foreach($vault in $vaults)
@@ -37,7 +37,7 @@ function Test-SiteRecoveryEnumerationTests
 	}
 
 	# Enumerate Servers
-	$servers = Get-AzureSiteRecoveryServer
+	$servers = Get-AzureRMSiteRecoveryServer
 	Assert-True { $servers.Count -gt 0 }
 	Assert-NotNull($servers)
 	foreach($server in $servers)
@@ -47,7 +47,7 @@ function Test-SiteRecoveryEnumerationTests
 	}
 
 	# Enumerate Protection Containers
-	$protectionContainers = Get-AzureSiteRecoveryProtectionContainer
+	$protectionContainers = Get-AzureRMSiteRecoveryProtectionContainer
 	Assert-True { $protectionContainers.Count -gt 0 }
 	Assert-NotNull($protectionContainers)
 	foreach($protectionContainer in $protectionContainers)
@@ -66,10 +66,10 @@ function Test-SiteRecoveryCreateProfile
 	param([string] $vaultSettingsFilePath)
 
 	# Import Azure Site Recovery Vault Settings
-	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+	Import-AzureRMSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
 
 	# Create profile
-	$job = New-AzureSiteRecoveryProtectionProfile -Name pp -ReplicationProvider HyperVReplica -ReplicationMethod Online -ReplicationFrequencyInSeconds 30 -RecoveryPoints 1 -ApplicationConsistentSnapshotFrequencyInHours 0 -ReplicationPort 8083 -Authentication Kerberos
+	$job = New-AzureRMSiteRecoveryProtectionProfile -Name pp -ReplicationProvider HyperVReplica -ReplicationMethod Online -ReplicationFrequencyInSeconds 30 -RecoveryPoints 1 -ApplicationConsistentSnapshotFrequencyInHours 0 -ReplicationPort 8083 -Authentication Kerberos
 	# WaitForJobCompletion -JobId $job.Name
 }
 
@@ -82,15 +82,15 @@ function Test-SiteRecoveryDeleteProfile
 	param([string] $vaultSettingsFilePath)
 
 	# Import Azure Site Recovery Vault Settings
-	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+	Import-AzureRMSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
 
 	# Get a profile created in previous test (with name pp)
-	$profiles = Get-AzureSiteRecoveryProtectionProfile -Name pp
+	$profiles = Get-AzureRMSiteRecoveryProtectionProfile -Name pp
 	Assert-True { $profiles.Count -gt 0 }
 	Assert-NotNull($profiles)
 
 	# Delete the profile
-	$job = Remove-AzureSiteRecoveryProtectionProfile -ProtectionProfile $profiles[0]
+	$job = Remove-AzureRMSiteRecoveryProtectionProfile -ProtectionProfile $profiles[0]
 	# WaitForJobCompletion -JobId $job.Name
 }
 
@@ -103,15 +103,15 @@ function Test-SiteRecoveryAssociateProfile
 	param([string] $vaultSettingsFilePath)
 
 	# Import Azure Site Recovery Vault Settings
-	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+	Import-AzureRMSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
 
 	# Get the primary cloud, recovery cloud, and protection profile
-	$pri = Get-AzureSiteRecoveryProtectionContainer -FriendlyName pri
-	$rec = Get-AzureSiteRecoveryProtectionContainer -FriendlyName rec
-	$pp = Get-AzureSiteRecoveryProtectionProfile -Name pp;
+	$pri = Get-AzureRMSiteRecoveryProtectionContainer -FriendlyName pri
+	$rec = Get-AzureRMSiteRecoveryProtectionContainer -FriendlyName rec
+	$pp = Get-AzureRMSiteRecoveryProtectionProfile -Name pp;
 
 	# Associate the profile
-	$job = Start-AzureSiteRecoveryProtectionProfileAssociationJob -ProtectionProfile $pp -PrimaryProtectionContainer $pri -RecoveryProtectionContainer $rec
+	$job = Start-AzureRMSiteRecoveryProtectionProfileAssociationJob -ProtectionProfile $pp -PrimaryProtectionContainer $pri -RecoveryProtectionContainer $rec
 	# WaitForJobCompletion -JobId $job.Name
 }
 
@@ -124,15 +124,15 @@ function Test-SiteRecoveryDissociateProfile
 	param([string] $vaultSettingsFilePath)
 
 	# Import Azure Site Recovery Vault Settings
-	Import-AzureSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
+	Import-AzureRMSiteRecoveryVaultSettingsFile $vaultSettingsFilePath
 
 	# Get the primary cloud, recovery cloud, and protection profile
-	$pri = Get-AzureSiteRecoveryProtectionContainer -FriendlyName pri
-	$rec = Get-AzureSiteRecoveryProtectionContainer -FriendlyName rec
-	$pp = Get-AzureSiteRecoveryProtectionProfile -Name pp;
+	$pri = Get-AzureRMSiteRecoveryProtectionContainer -FriendlyName pri
+	$rec = Get-AzureRMSiteRecoveryProtectionContainer -FriendlyName rec
+	$pp = Get-AzureRMSiteRecoveryProtectionProfile -Name pp;
 
 	# Dissociate the profile
-	$job = Start-AzureSiteRecoveryProtectionProfileDissociationJob -ProtectionProfile $pp -PrimaryProtectionContainer $pri -RecoveryProtectionContainer $rec
+	$job = Start-AzureRMSiteRecoveryProtectionProfileDissociationJob -ProtectionProfile $pp -PrimaryProtectionContainer $pri -RecoveryProtectionContainer $rec
 	# WaitForJobCompletion -JobId $job.Name
 }
 
@@ -154,7 +154,7 @@ function WaitForJobCompletion
 	{
 		Start-Sleep $interval
 		$timeElapse = $timeElapse + $interval
-		$job = Get-AzureSiteRecoveryJob -Name $JobId;
+		$job = Get-AzureRMSiteRecoveryJob -Name $JobId;
 	} while((-not ($endStateDescription -ccontains $job.State)) -and ($timeElapse -lt $NumOfSecondsToWait))
 
 	Assert-True { $endStateDescription -ccontains $job.State } "Job did not reached desired state within $NumOfSecondsToWait seconds."

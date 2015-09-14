@@ -28,10 +28,11 @@ using System.Management.Automation;
 using System.Net;
 using System.Threading;
 using CmdletModel = Microsoft.Azure.Commands.AzureBackup.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
-    public abstract class AzureBackupCmdletBase : AzurePSCmdlet
+    public abstract class AzureBackupCmdletBase : AzureRMCmdlet
     {
         /// <summary>
         /// Azure backup client.
@@ -56,7 +57,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         /// <param name="rName"></param>
         protected void InitializeAzureBackupCmdlet(string rgName, string rName)
         {
-            var cloudServicesClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(Profile, Profile.Context.Subscription, AzureEnvironment.Endpoint.ResourceManager);
+            var cloudServicesClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
             azureBackupClientAdapter = new AzureBackupClientAdapter(cloudServicesClient.Credentials, cloudServicesClient.BaseUri);
 
             WriteDebug(string.Format(Resources.InitializingClient, azureBackupClientAdapter.GetClientRequestId(), rgName, rName));

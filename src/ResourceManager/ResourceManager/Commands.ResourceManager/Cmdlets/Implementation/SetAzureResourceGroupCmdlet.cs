@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// A cmdlet that updates a resource group.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureResourceGroup", DefaultParameterSetName = SetAzureResourceGroupCmdlet.ResourceGroupNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Set, "AzureRMResourceGroup", DefaultParameterSetName = SetAzureResourceGroupCmdlet.ResourceGroupNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSObject))]
     public sealed class SetAzureResourceGroupCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>

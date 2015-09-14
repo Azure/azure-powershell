@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Removes the resource group.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureResourceGroup", DefaultParameterSetName = RemoveAzureResourceGroupCmdlet.ResourceGroupNameParameterSet), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRMResourceGroup", DefaultParameterSetName = RemoveAzureResourceGroupCmdlet.ResourceGroupNameParameterSet), OutputType(typeof(bool))]
     public class RemoveAzureResourceGroupCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>

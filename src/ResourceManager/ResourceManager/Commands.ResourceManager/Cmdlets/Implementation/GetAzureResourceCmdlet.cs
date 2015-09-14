@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Cmdlet to get existing resources.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureResource", DefaultParameterSetName = GetAzureResourceCmdlet.ListResourcesParameterSet), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Get, "AzureRMResource", DefaultParameterSetName = GetAzureResourceCmdlet.ListResourcesParameterSet), OutputType(typeof(PSObject))]
     public sealed class GetAzureResourceCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             this.SubscriptionId = this.subscriptionIds.DistinctArray();
             if (string.IsNullOrWhiteSpace(this.ResourceId) && !this.SubscriptionId.CoalesceEnumerable().Any() && !this.TenantLevel)
             {
-                this.SubscriptionId = this.Profile.Context.Subscription.Id.AsArray();
+                this.SubscriptionId = DefaultContext.Subscription.Id.AsArray();
             }
 
             this.RunCmdlet();
@@ -546,7 +546,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
                 var apiVersion = await ApiVersionHelper
                     .DetermineApiVersion(
-                        profile: this.Profile,
+                        DefaultContext,
                         providerNamespace: "Microsoft.Authorization",
                         resourceType: "permissions",
                         cancellationToken: this.CancellationToken.Value,
@@ -613,7 +613,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             {
                 var apiVersion = await ApiVersionHelper
                     .DetermineApiVersion(
-                        profile: this.Profile,
+                        DefaultContext,
                         resourceId: resource.Id,
                         cancellationToken: this.CancellationToken.Value,
                         pre: this.Pre)

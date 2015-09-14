@@ -26,7 +26,7 @@ using Microsoft.Azure;
 namespace Microsoft.WindowsAzure.Commands.Test.MediaServices
 {
     
-    public class RegenerateMediaServicesAccountTests : TestBase
+    public class RegenerateMediaServicesAccountTests : SMTestBase
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

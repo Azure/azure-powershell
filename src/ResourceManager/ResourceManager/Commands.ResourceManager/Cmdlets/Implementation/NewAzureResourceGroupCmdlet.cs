@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// A cmdlet that creates a new azure resource group.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureResourceGroup", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.New, "AzureRMResourceGroup", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
     public sealed class NewAzureResourceGroupCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>

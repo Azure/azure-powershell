@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Gets the resource group.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureResourceGroup", DefaultParameterSetName = GetAzureResourceGroupCmdlet.ParameterlessSet), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Get, "AzureRMResourceGroup", DefaultParameterSetName = GetAzureResourceGroupCmdlet.ParameterlessSet), OutputType(typeof(PSObject))]
     public class GetAzureResourceGroupCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>

@@ -30,10 +30,11 @@ using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Common.Authentication;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
 {
-    public abstract class SiteRecoveryTestsBase
+    public abstract class SiteRecoveryTestsBase : RMTestBase
     {
         private CSMTestEnvironmentFactory armTestFactory;
         private EnvironmentSetupHelper helper;

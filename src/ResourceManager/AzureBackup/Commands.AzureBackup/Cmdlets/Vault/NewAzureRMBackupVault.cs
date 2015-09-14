@@ -46,11 +46,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         //[Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ResourceTags)]
         //public Hashtable[] Tag { get; set; }        
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ExecutionBlock(() =>
             {
-                base.ExecuteCmdlet();
+                base.ProcessRecord();
                 InitializeAzureBackupCmdlet(ResourceGroupName, Name);
 
                 WriteDebug(String.Format(Resources.CreatingBackupVault, ResourceGroupName, Name));

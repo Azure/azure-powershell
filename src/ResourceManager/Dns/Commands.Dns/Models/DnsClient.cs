@@ -32,8 +32,8 @@ namespace Microsoft.Azure.Commands.Dns.Models
     {
         public const string DnsResourceLocation = "global";
 
-        public DnsClient(AzureProfile profile)
-            : this(AzureSession.ClientFactory.CreateClient<DnsManagementClient>(profile, AzureEnvironment.Endpoint.ResourceManager))
+        public DnsClient(AzureContext context)
+            : this(AzureSession.ClientFactory.CreateClient<DnsManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {            
         }
 
