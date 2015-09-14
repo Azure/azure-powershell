@@ -142,6 +142,7 @@
     <Compile Include="EnvironmentSetupHelper.cs" />
     <Compile Include="Mocks\MockClientFactory.cs" />
     <Compile Include="Mocks\MockCommandRuntime.cs" />
+    <Compile Include="PermissiveRecordMatcherWithApiExclusion.cs" />
     <Compile Include="PSCmdletExtensions.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Mocks\MockAccessToken.cs" />
