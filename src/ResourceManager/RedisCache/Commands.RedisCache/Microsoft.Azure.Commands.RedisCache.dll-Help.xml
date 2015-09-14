@@ -296,13 +296,6 @@
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-          <maml:name>RedisVersion</maml:name>
-          <maml:description>
-            <maml:para>RedisVersion of the redis cache. If not provided, the default value is 2.8.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
           <maml:name>Size</maml:name>
           <maml:description>
             <maml:para>Size of the redis cache. The default value is 1GB or C1. Possible values are C0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2.5GB, 6GB, 13GB, 26GB, 53GB.</maml:para>
@@ -371,18 +364,6 @@
         </dev:type>
         <dev:defaultValue>
         </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
-        <maml:name>RedisVersion</maml:name>
-        <maml:description>
-          <maml:para>RedisVersion of the redis cache. The default value is 2.8.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>2.8</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
         <maml:name>Size</maml:name>
@@ -511,7 +492,7 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;New-AzureRedisCache -ResourceGroupName mygroup -Name mycache -Location "North Central US" -RedisVersion "2.8" -Size 250MB -Sku Standard -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"} -Force
+          PS C:\&gt;New-AzureRedisCache -ResourceGroupName mygroup -Name mycache -Location "North Central US" -Size 250MB -Sku Standard -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"} -Force
 
           PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=

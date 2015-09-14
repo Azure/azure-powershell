@@ -21,7 +21,7 @@ function Test-RedisCache
     Assert-AreEqual 6379 $cacheCreated.Port
     Assert-AreEqual 6380 $cacheCreated.SslPort
     Assert-AreEqual "creating" $cacheCreated.ProvisioningState
-    Assert-AreEqual "2.8" $cacheCreated.RedisVersion
+    Assert-AreEqual "3.0" $cacheCreated.RedisVersion
     Assert-AreEqual "250MB" $cacheCreated.Size
     Assert-AreEqual "Basic" $cacheCreated.Sku
     
@@ -43,7 +43,7 @@ function Test-RedisCache
             Assert-AreEqual 6379 $cacheGet[0].Port
             Assert-AreEqual 6380 $cacheGet[0].SslPort
             Assert-AreEqual "succeeded" $cacheGet[0].ProvisioningState
-            Assert-AreEqual "2.8" $cacheGet[0].RedisVersion
+            Assert-AreEqual "3.0" $cacheGet[0].RedisVersion
             Assert-AreEqual "250MB" $cacheGet[0].Size
             Assert-AreEqual "Basic" $cacheGet[0].Sku
             break
@@ -62,7 +62,7 @@ function Test-RedisCache
     Assert-AreEqual 6379 $cacheUpdated.Port
     Assert-AreEqual 6380 $cacheUpdated.SslPort
     Assert-AreEqual "succeeded" $cacheUpdated.ProvisioningState
-    Assert-AreEqual "2.8" $cacheUpdated.RedisVersion
+    Assert-AreEqual "3.0" $cacheUpdated.RedisVersion
     Assert-AreEqual "250MB" $cacheUpdated.Size
     Assert-AreEqual "Basic" $cacheUpdated.Sku
     Assert-AreEqual "allkeys-lru" $cacheUpdated.RedisConfiguration.Item("maxmemory-policy")
@@ -88,7 +88,7 @@ function Test-RedisCache
             Assert-AreEqual 6379 $cachesInResourceGroup[$i].Port
             Assert-AreEqual 6380 $cachesInResourceGroup[$i].SslPort
             Assert-AreEqual "succeeded" $cachesInResourceGroup[$i].ProvisioningState
-            Assert-AreEqual "2.8" $cachesInResourceGroup[$i].RedisVersion
+            Assert-AreEqual "3.0" $cachesInResourceGroup[$i].RedisVersion
             Assert-AreEqual "250MB" $cachesInResourceGroup[$i].Size
             Assert-AreEqual "Basic" $cachesInResourceGroup[$i].Sku
             break
@@ -114,7 +114,7 @@ function Test-RedisCache
             Assert-AreEqual 6379 $cachesInSubscription[$i].Port
             Assert-AreEqual 6380 $cachesInSubscription[$i].SslPort
             Assert-AreEqual "succeeded" $cachesInSubscription[$i].ProvisioningState
-            Assert-AreEqual "2.8" $cachesInSubscription[$i].RedisVersion
+            Assert-AreEqual "3.0" $cachesInSubscription[$i].RedisVersion
             Assert-AreEqual "250MB" $cachesInSubscription[$i].Size
             Assert-AreEqual "Basic" $cachesInSubscription[$i].Sku
             break
@@ -176,7 +176,7 @@ function Test-RedisCachePipeline
     Assert-AreEqual 6379 $cacheCreated.Port
     Assert-AreEqual 6380 $cacheCreated.SslPort
     Assert-AreEqual "creating" $cacheCreated.ProvisioningState
-    Assert-AreEqual "2.8" $cacheCreated.RedisVersion
+    Assert-AreEqual "3.0" $cacheCreated.RedisVersion
     Assert-AreEqual "250MB" $cacheCreated.Size
     Assert-AreEqual "Basic" $cacheCreated.Sku
     Assert-True { $cacheCreated.EnableNonSslPort }
@@ -199,7 +199,7 @@ function Test-RedisCachePipeline
             Assert-AreEqual 6379 $cacheGet[0].Port
             Assert-AreEqual 6380 $cacheGet[0].SslPort
             Assert-AreEqual "succeeded" $cacheGet[0].ProvisioningState
-            Assert-AreEqual "2.8" $cacheGet[0].RedisVersion
+            Assert-AreEqual "3.0" $cacheGet[0].RedisVersion
             Assert-AreEqual "250MB" $cacheGet[0].Size
             Assert-AreEqual "Basic" $cacheGet[0].Sku
             break
@@ -219,7 +219,7 @@ function Test-RedisCachePipeline
     Assert-AreEqual 6379 $cacheUpdatedPiped.Port
     Assert-AreEqual 6380 $cacheUpdatedPiped.SslPort
     Assert-AreEqual "succeeded" $cacheUpdatedPiped.ProvisioningState
-    Assert-AreEqual "2.8" $cacheUpdatedPiped.RedisVersion
+    Assert-AreEqual "3.0" $cacheUpdatedPiped.RedisVersion
     Assert-AreEqual "250MB" $cacheUpdatedPiped.Size
     Assert-AreEqual "Basic" $cacheUpdatedPiped.Sku
     Assert-AreEqual "allkeys-random"  $cacheUpdatedPiped.RedisConfiguration.Item("maxmemory-policy")
