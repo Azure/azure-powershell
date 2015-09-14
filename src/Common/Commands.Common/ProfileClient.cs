@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Common.Authentication
     /// </summary>
     public class ProfileClient
     {
-        public AzureRMProfile Profile { get; private set; }
+        public AzureSMProfile Profile { get; private set; }
 
         public Action<string> WarningLog;
 
@@ -129,12 +129,12 @@ namespace Microsoft.Azure.Common.Authentication
                 // In case that we changed a disk profile, reload it
                 if (Profile != null && Profile.ProfilePath == newProfileFilePath)
                 {
-                    Profile = new AzureRMProfile(Profile.ProfilePath);
+                    Profile = new AzureSMProfile(Profile.ProfilePath);
                 }
             }
         }
 
-        public ProfileClient(AzureRMProfile profile)
+        public ProfileClient(AzureSMProfile profile)
         {
             Profile = profile;
             WarningLog = (s) => Debug.WriteLine(s);
@@ -330,16 +330,16 @@ namespace Microsoft.Azure.Common.Authentication
                     AddOrSetSubscription(subscription);
                 }
 
-                if (Profile.DefaultContext.Subscription == null)
+                if (Profile.DefaultSubscription == null)
                 {
-                    var firstSubscription = Profile.DefaultContext.Subscription.Values.FirstOrDefault();
+                    var firstSubscription = Profile.Subscriptions.Values.FirstOrDefault();
                     if (firstSubscription != null)
                     {
                         SetSubscriptionAsDefault(firstSubscription.Name, firstSubscription.Account);
                     }
                 }
 
-                return Profile.DefaultContext.Account;
+                return Profile.Accounts[account.Id];
             }
             else
             {

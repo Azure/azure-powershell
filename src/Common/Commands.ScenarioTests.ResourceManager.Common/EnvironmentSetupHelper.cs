@@ -25,6 +25,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Management.Automation;
 using System.Security.Cryptography.X509Certificates;
 
@@ -51,8 +52,12 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         {
             var datastore = new MemoryDataStore();
             AzureSession.DataStore = datastore;
-            var profile = new AzureRMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-            AzureRMCmdlet.DefaultProfile = profile;
+            var profile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+            var rmprofile = new AzureRMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+            rmprofile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
+            rmprofile.DefaultContext = new AzureContext(new AzureSubscription(), new AzureAccount(), rmprofile.Environments["foo"], new AzureTenant());
+            rmprofile.DefaultContext.Subscription.Environment = "foo";
+            AzureRMCmdlet.DefaultProfile = rmprofile;
             AzureSession.DataStore = datastore;
             ProfileClient = new ProfileClient(profile);
 
@@ -267,7 +272,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         {
             using (var powershell = System.Management.Automation.PowerShell.Create())
             {
-               SetupPowerShellModules(powershell);
+                SetupPowerShellModules(powershell);
 
                 Collection<PSObject> output = null;
                 for (int i = 0; i < scripts.Length; ++i)
@@ -277,8 +282,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 }
                 try
                 {
-                   powershell.Runspace.Events.Subscribers.Clear();
-                   output = powershell.Invoke();
+                    powershell.Runspace.Events.Subscribers.Clear();
+                    output = powershell.Invoke();
 
                     if (powershell.Streams.Error.Count > 0)
                     {

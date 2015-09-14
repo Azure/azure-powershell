@@ -167,17 +167,11 @@
     <Compile Include="..\Commands.Common\PowerShellUtilities.cs">
       <Link>Common\PowerShellUtilities.cs</Link>
     </Compile>
-    <Compile Include="..\Commands.Common\ProfileClient.cs">
-      <Link>Common\ProfileClient.cs</Link>
-    </Compile>
     <Compile Include="..\Commands.Common\ProfileClientExtensions.cs">
       <Link>Common\ProfileClientExtensions.cs</Link>
     </Compile>
     <Compile Include="..\Commands.Common\PSAzureAccount.cs">
       <Link>Common\PSAzureAccount.cs</Link>
-    </Compile>
-    <Compile Include="..\Commands.Common\PublishSettingsImporter.cs">
-      <Link>Common\PublishSettingsImporter.cs</Link>
     </Compile>
     <Compile Include="..\Commands.Common\RecordingTracingInterceptor.cs">
       <Link>Common\RecordingTracingInterceptor.cs</Link>
@@ -185,22 +179,26 @@
     <Compile Include="..\Commands.Common\SecureStringExtensions.cs">
       <Link>Common\SecureStringExtensions.cs</Link>
     </Compile>
+    <Compile Include="..\Commands.Common\TestMockSupport.cs">
+      <Link>Common\TestMockSupport.cs</Link>
+    </Compile>
     <Compile Include="AzureRMCmdlet.cs" />
-    <Compile Include="Common\TestMockSupport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RMProfileClient.cs" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
                 resourceCulture = value;
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Microsoft Azure PowerShell Data Collection Confirmation.
         /// </summary>
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to You choose not to participate in Microsoft Azure PowerShell data collection..
         /// </summary>
-        internal static string DataCollectionConfirmNo {
+        public static string DataCollectionConfirmNo {
             get {
                 return ResourceManager.GetString("DataCollectionConfirmNo", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to This confirmation message will be dismissed in &apos;{0}&apos; second(s)....
         /// </summary>
-        internal static string DataCollectionConfirmTime {
+        public static string DataCollectionConfirmTime {
             get {
                 return ResourceManager.GetString("DataCollectionConfirmTime", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to You choose to participate in Microsoft Azure PowerShell data collection..
         /// </summary>
-        internal static string DataCollectionConfirmYes {
+        public static string DataCollectionConfirmYes {
             get {
                 return ResourceManager.GetString("DataCollectionConfirmYes", resourceCulture);
             }
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         ///If you choose to participate, you can stop at any time by using Azure PowerShell as follows:
         ///1.	Use the Disable-AzureDataCollection cmdlet to turn the feature Off. The  [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string DataCollectionPrompt {
+        public static string DataCollectionPrompt {
             get {
                 return ResourceManager.GetString("DataCollectionPrompt", resourceCulture);
             }
@@ -111,18 +111,27 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The setting profile has been saved to the following path &apos;{0}&apos;..
         /// </summary>
-        internal static string DataCollectionSaveFileInformation {
+        public static string DataCollectionSaveFileInformation {
             get {
                 return ResourceManager.GetString("DataCollectionSaveFileInformation", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to No default subscription has been designated. Use Select-AzureSubscription -Default &lt;subscriptionName&gt; to set the default subscription..
         /// </summary>
         public static string InvalidDefaultSubscription {
             get {
                 return ResourceManager.GetString("InvalidDefaultSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tenant &apos;{0}&apos; was not found. Please verify that your account has access to this tenant..
+        /// </summary>
+        public static string TenantNotFound {
+            get {
+                return ResourceManager.GetString("TenantNotFound", resourceCulture);
             }
         }
     }
