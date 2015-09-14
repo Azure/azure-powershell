@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.ResourceManager.Common.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,9 +61,75 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Microsoft Azure PowerShell Data Collection Confirmation.
+        /// </summary>
+        public static string DataCollectionActivity {
+            get {
+                return ResourceManager.GetString("DataCollectionActivity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You choose not to participate in Microsoft Azure PowerShell data collection..
+        /// </summary>
+        public static string DataCollectionConfirmNo {
+            get {
+                return ResourceManager.GetString("DataCollectionConfirmNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This confirmation message will be dismissed in &apos;{0}&apos; second(s)....
+        /// </summary>
+        public static string DataCollectionConfirmTime {
+            get {
+                return ResourceManager.GetString("DataCollectionConfirmTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You choose to participate in Microsoft Azure PowerShell data collection..
+        /// </summary>
+        public static string DataCollectionConfirmYes {
+            get {
+                return ResourceManager.GetString("DataCollectionConfirmYes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Microsoft Azure PowerShell collects data about how users use PowerShell cmdlets and some problems they encounter.  Microsoft uses this information to improve our PowerShell cmdlets.  Participation is voluntary and when you choose to participate your device automatically sends information to Microsoft about how you use Azure PowerShell. 
+        /// 
+        ///If you choose to participate, you can stop at any time by using Azure PowerShell as follows:
+        ///1.	Use the Disable-AzureDataCollection cmdlet to turn the feature Off. The  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string DataCollectionPrompt {
+            get {
+                return ResourceManager.GetString("DataCollectionPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The setting profile has been saved to the following path &apos;{0}&apos;..
+        /// </summary>
+        public static string DataCollectionSaveFileInformation {
+            get {
+                return ResourceManager.GetString("DataCollectionSaveFileInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No default subscription has been designated. Use Select-AzureSubscription -Default &lt;subscriptionName&gt; to set the default subscription..
+        /// </summary>
+        public static string InvalidDefaultSubscription {
+            get {
+                return ResourceManager.GetString("InvalidDefaultSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tenant &apos;{0}&apos; was not found. Please verify that your account has access to this tenant..
         /// </summary>
-        internal static string TenantNotFound {
+        public static string TenantNotFound {
             get {
                 return ResourceManager.GetString("TenantNotFound", resourceCulture);
             }
