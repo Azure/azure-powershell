@@ -24,6 +24,7 @@ using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
@@ -53,7 +54,10 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
         protected void RunPowerShellTest(params string[] scripts)
         {
-            HttpMockServer.Matcher = new PermissiveRecordMatcher();
+            //HttpMockServer.Matcher = new PermissiveRecordMatcher();
+            Dictionary<string, string> d = new Dictionary<string, string>();
+            d.Add("Microsoft.Authorization", "2014-07-01-preview");
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
             // Enable undo functionality as well as mock recording
             using (UndoContext context = UndoContext.Current)
             {
