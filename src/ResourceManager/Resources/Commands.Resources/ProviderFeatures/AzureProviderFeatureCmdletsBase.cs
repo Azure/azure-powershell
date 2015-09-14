@@ -14,13 +14,14 @@
 
 namespace Microsoft.Azure.Commands.Resources.ProviderFeatures
 {
+    using ResourceManager.Common;
     using Microsoft.Azure.Commands.Resources.Models.ProviderFeatures;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
     /// <summary>
     /// Base class for all feature cmdlets
     /// </summary>
-    public abstract class AzureProviderFeatureCmdletBase : AzurePSCmdlet
+    public abstract class AzureProviderFeatureCmdletBase : AzureRMCmdlet
     {
         /// <summary>
         /// Cache for the feature client
@@ -36,7 +37,7 @@ namespace Microsoft.Azure.Commands.Resources.ProviderFeatures
             {
                 if (this.providerFeatureClient == null)
                 {
-                    this.providerFeatureClient = new ProviderFeatureClient(this.Profile.Context);
+                    this.providerFeatureClient = new ProviderFeatureClient(DefaultContext);
                 }
 
                 return this.providerFeatureClient;

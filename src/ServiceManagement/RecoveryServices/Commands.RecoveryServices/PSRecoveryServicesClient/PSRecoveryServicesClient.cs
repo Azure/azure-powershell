@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
         /// Azure profile
         /// </summary>
-        public AzureProfile Profile { get; set; }
+        public AzureSMProfile Profile { get; set; }
 
         /// <summary>
         /// Amount of time to sleep before fetching job details again.
@@ -84,11 +84,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// required current subscription.
         /// </summary>
         /// <param name="azureSubscription">Azure Subscription</param>
-        public PSRecoveryServicesClient(AzureProfile azureProfile, AzureSubscription azureSubscription)
+        public PSRecoveryServicesClient(AzureSMProfile AzureSMProfile, AzureSubscription azureSubscription)
         {
-            this.Profile = azureProfile;
+            this.Profile = AzureSMProfile;
             this.recoveryServicesClient =
-                AzureSession.ClientFactory.CreateClient<RecoveryServicesManagementClient>(azureProfile, azureSubscription, AzureEnvironment.Endpoint.ServiceManagement);
+                AzureSession.ClientFactory.CreateClient<RecoveryServicesManagementClient>(AzureSMProfile, azureSubscription, AzureEnvironment.Endpoint.ServiceManagement);
         }
 
         /// <summary>
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             SiteRecoveryManagementClient siteRecoveryClient =
                 AzureSession.ClientFactory.CreateCustomClient<SiteRecoveryManagementClient>(asrVaultCreds.CloudServiceName, 
                 asrVaultCreds.ResourceName, recoveryServicesClient.Credentials, 
-                Profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement));
+                Profile.DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement));
 
             if (null == siteRecoveryClient)
             {

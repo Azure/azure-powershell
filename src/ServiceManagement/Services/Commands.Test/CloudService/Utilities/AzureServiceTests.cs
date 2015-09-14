@@ -31,7 +31,7 @@ using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
 {
-    public class AzureServiceTests: TestBase
+    public class AzureServiceTests: SMTestBase
     {
         private const string serviceName = "AzureService";
 

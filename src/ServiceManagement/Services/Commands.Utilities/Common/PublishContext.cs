@@ -69,7 +69,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
             {
                 try
                 {
-                    ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
+                    ProfileClient client = new ProfileClient(new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
                     SubscriptionId =
                         client.Profile.Subscriptions.Values.Where(s => s.Name == settings.Subscription)
                             .Select(s => s.Id.ToString())

@@ -77,7 +77,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 NumberOfWorkers = 3,
                 WebsitesClient = clientMock.Object
             };
-            currentProfile = new AzureProfile();
+            currentProfile = new AzureSMProfile();
             var subscription = new AzureSubscription{Id = new Guid(base.subscriptionId) };
             subscription.Properties[AzureSubscription.Property.Default] = "True";
             currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
@@ -96,7 +96,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 HostNames = new [] { "stuff.com" },
                 WebsitesClient = clientMock.Object
             };
-            currentProfile = new AzureProfile();
+            currentProfile = new AzureSMProfile();
             subscription = new AzureSubscription { Id = new Guid(base.subscriptionId) };
             subscription.Properties[AzureSubscription.Property.Default] = "True";
             currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
@@ -153,7 +153,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 WebsitesClient = clientMock.Object,
                 Slot = slot
             };
-            currentProfile = new AzureProfile();
+            currentProfile = new AzureSMProfile();
             var subscription = new AzureSubscription{Id = new Guid(base.subscriptionId) };
             subscription.Properties[AzureSubscription.Property.Default] = "True";
             currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
@@ -173,7 +173,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 WebsitesClient = clientMock.Object,
                 Slot = slot
             };
-            currentProfile = new AzureProfile();
+            currentProfile = new AzureSMProfile();
             subscription = new AzureSubscription{Id = new Guid(base.subscriptionId) };
             subscription.Properties[AzureSubscription.Property.Default] = "True";
             currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;

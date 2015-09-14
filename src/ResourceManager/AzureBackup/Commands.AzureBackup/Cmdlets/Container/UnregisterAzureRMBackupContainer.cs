@@ -23,7 +23,6 @@ using System.Threading.Tasks;
 using Microsoft.Azure.Management.BackupServices.Models;
 using MBS = Microsoft.Azure.Management.BackupServices;
 using Microsoft.Azure.Commands.AzureBackup.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Store;
 using Microsoft.Azure.Commands.AzureBackup.Properties;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
@@ -34,16 +33,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     [Cmdlet(VerbsLifecycle.Unregister, "AzureRMBackupContainer")]
     public class UnregisterAzureRMBackupContainer : AzureBackupContainerCmdletBase
     {
-        private PowerShellCustomConfirmation customerConfirmation;
-
         [Parameter(Position = 1, Mandatory = false, HelpMessage = "Confirm unregistration and deletion of server")]
         public SwitchParameter Force { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ExecutionBlock(() =>
             {
-                base.ExecuteCmdlet();
+                base.ProcessRecord();
 
                 AzureBackupContainerType containerType = (AzureBackupContainerType)Enum.Parse(typeof(AzureBackupContainerType), Container.ContainerType, true);
                 switch (containerType)
@@ -63,18 +60,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         private void DeleteServer()
         {
-            bool shouldUnregister = true;
-
-            if (!Force.IsPresent)
-            {
-                customerConfirmation = customerConfirmation ?? new PowerShellCustomConfirmation(Host);
-                shouldUnregister = customerConfirmation.ShouldProcess(Resources.UnregisterServerCaption, Resources.UnregisterServerMessage);
-            }
-
-            if (shouldUnregister)
-            {
-                AzureBackupClient.UnregisterMachineContainer(Container.ResourceGroupName, Container.ResourceName, Container.Id);
-            }
+            ConfirmAction(Force, Resources.UnregisterServerCaption, Resources.UnregisterServerMessage, "", () =>
+                AzureBackupClient.UnregisterMachineContainer(Container.ResourceGroupName, Container.ResourceName, Container.Id));
         }
 
         private void UnregisterContainer()

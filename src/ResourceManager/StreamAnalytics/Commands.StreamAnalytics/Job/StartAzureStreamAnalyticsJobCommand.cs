@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
         public DateTime? OutputStartTime { get; set; }
 
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             if (ResourceGroupName != null && string.IsNullOrWhiteSpace(ResourceGroupName))
             {
