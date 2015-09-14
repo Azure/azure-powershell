@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             // group name nor the exception
             if (GetGroupForAccountNoThrow(accountName) != null)
             {
-                throw new CloudException(Resources.NBA_AccountAlreadyExists);
+                throw new CloudException(Resources.AccountAlreadyExists);
             }
 
             Dictionary<string, string> tagDictionary = Helpers.CreateTagDictionary(tags, validate: true);

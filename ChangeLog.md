@@ -7,7 +7,6 @@
   * Changed the output format of Get image cmdlets as a table
   * Fixed Set-AzureVMAccessExtension cmdlet
 * Azure Compute (Service Management) cmdlets
-  * Changed the warning message to a non-terminating error message for ResourceNotFound in VM cmdlets
   * Exposed ComputeImageConfig in Get-AzurePlatformVMImage cmdlet
   * Fixed Publish-AzurePlatformExtension and Set-AzurePlatformExtension cmdlets
 * Azure Backup - added the following cmdlets
@@ -44,6 +43,12 @@
   * Get-AzureSqlServerActiveDirectoryAdministrator
   * Set-AzureSqlServerActiveDirectoryAdministrator
   * Remove-AzureSqlServerActiveDirectoryAdministrator
+* SQL Server VM cmdlets (ARM)
+  * New-AzureVMSqlServerAutoPatchingConfig
+  * New-AzureVMSqlServerAutoBackupConfig
+  * Set-AzureVMSqlServerExtension
+  * Get-AzureVMSqlServerExtension
+  * Remove-AzureVMSqlServerExtension
 	
 ## 2015.08.17 version 0.9.7
 * Azure Profile cmdlets

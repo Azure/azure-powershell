@@ -53,6 +53,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Hyak.Common.1.0.2\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ApplicationInsights">
+      <HintPath>..\..\packages\Microsoft.ApplicationInsights.1.1.1-beta\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Azure.Common">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
@@ -143,6 +146,9 @@
     <Compile Include="..\Commands.Common\AzurePowerShell.cs">
       <Link>Common\AzurePowerShell.cs</Link>
     </Compile>
+    <Compile Include="..\Commands.Common\AzurePSDataCollectionProfile.cs">
+      <Link>Common\AzurePSDataCollectionProfile.cs</Link>
+    </Compile>
     <Compile Include="..\Commands.Common\CmdletExtensions.cs">
       <Link>Common\CmdletExtensions.cs</Link>
     </Compile>
@@ -155,14 +161,26 @@
     <Compile Include="..\Commands.Common\GeneralUtilities.cs">
       <Link>Common\GeneralUtilities.cs</Link>
     </Compile>
+    <Compile Include="..\Commands.Common\MetricHelper.cs">
+      <Link>Common\MetricHelper.cs</Link>
+    </Compile>
     <Compile Include="..\Commands.Common\PowerShellUtilities.cs">
       <Link>Common\PowerShellUtilities.cs</Link>
+    </Compile>
+    <Compile Include="..\Commands.Common\ProfileClientExtensions.cs">
+      <Link>Common\ProfileClientExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Commands.Common\PSAzureAccount.cs">
+      <Link>Common\PSAzureAccount.cs</Link>
     </Compile>
     <Compile Include="..\Commands.Common\RecordingTracingInterceptor.cs">
       <Link>Common\RecordingTracingInterceptor.cs</Link>
     </Compile>
     <Compile Include="..\Commands.Common\SecureStringExtensions.cs">
       <Link>Common\SecureStringExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Commands.Common\TestMockSupport.cs">
+      <Link>Common\TestMockSupport.cs</Link>
     </Compile>
     <Compile Include="AzureRMCmdlet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -178,8 +196,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
