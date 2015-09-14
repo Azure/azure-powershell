@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Profile
     /// </summary>
     [Cmdlet("Login", "AzureRMAccount", DefaultParameterSetName = "User")]
     [OutputType(typeof(AzureRMProfile))]
-    public class LoginAzureRMAccount : AzurePSCmdlet
+    public class LoginAzureRMAccount : AzureRMCmdlet
     {
         [Parameter(Mandatory = false, HelpMessage = "Environment containing the account to log into")]
         [ValidateNotNullOrEmpty]

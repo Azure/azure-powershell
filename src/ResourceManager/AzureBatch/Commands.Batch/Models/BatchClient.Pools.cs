@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             // Get the single pool matching the specified id
             if (!string.IsNullOrWhiteSpace(options.PoolId))
             {
-                WriteVerbose(string.Format(Resources.GBP_GetById, options.PoolId));
+                WriteVerbose(string.Format(Resources.GetPoolById, options.PoolId));
                 PoolOperations poolOperations = options.Context.BatchOMClient.PoolOperations;
                 CloudPool pool = poolOperations.GetPool(options.PoolId, additionalBehaviors: options.AdditionalBehaviors);
                 PSCloudPool psPool = new PSCloudPool(pool);
@@ -52,12 +52,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 string verboseLogString = null;
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
-                    verboseLogString = Resources.GBP_GetByOData;
+                    verboseLogString = Resources.GetPoolByOData;
                     odata = new ODATADetailLevel(filterClause: options.Filter);
                 }
                 else
                 {
-                    verboseLogString = Resources.GBP_NoFilter;
+                    verboseLogString = Resources.GetPoolNoFilter;
                 }
                 WriteVerbose(verboseLogString);
 
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 }
             }
 
-            WriteVerbose(string.Format(Resources.NBP_CreatingPool, parameters.PoolId));
+            WriteVerbose(string.Format(Resources.CreatingPool, parameters.PoolId));
             pool.Commit(parameters.AdditionalBehaviors);
         }
 
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             string poolId = parameters.Pool == null ? parameters.PoolId : parameters.Pool.Id;
 
-            WriteVerbose(string.Format(Resources.SBPR_ResizingPool, poolId, parameters.TargetDedicated));
+            WriteVerbose(string.Format(Resources.ResizingPool, poolId, parameters.TargetDedicated));
             PoolOperations poolOperations = parameters.Context.BatchOMClient.PoolOperations;
             poolOperations.ResizePool(poolId, parameters.TargetDedicated, parameters.ResizeTimeout, parameters.ComputeNodeDeallocationOption, parameters.AdditionalBehaviors);
         }
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException("poolId");
             }
 
-            WriteVerbose(string.Format(Resources.SBPR_StopResizingPool, poolId));
+            WriteVerbose(string.Format(Resources.StopResizingPool, poolId));
             PoolOperations poolOperations = context.BatchOMClient.PoolOperations;
             poolOperations.StopResizePool(poolId, additionalBehaviors);
         }
