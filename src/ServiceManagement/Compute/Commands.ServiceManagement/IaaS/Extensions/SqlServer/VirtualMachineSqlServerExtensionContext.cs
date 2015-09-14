@@ -34,6 +34,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         public AutoBackupSettings AutoBackupSettings;
 
         /// <summary>
+        /// Key Vault Credential settings
+        /// </summary>
+        public KeyVaultCredentialSettings KeyVaultCredentialSettings;
+
+        /// <summary>
         /// Status messages reported by extension
         /// </summary>
         public List<string> StatusMessages;

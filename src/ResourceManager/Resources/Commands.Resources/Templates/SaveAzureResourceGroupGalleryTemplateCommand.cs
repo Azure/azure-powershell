@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.Resources.Templates
 
         protected override void ProcessRecord()
         {
+            WriteWarning("This cmdlet is being deprecated and will be removed in a future release.");
             string path = GalleryTemplatesClient.DownloadGalleryTemplateFile(
                 Identity,
                 string.IsNullOrEmpty(Path) ? System.IO.Path.Combine(CurrentPath(), Identity) : this.TryResolvePath(Path),

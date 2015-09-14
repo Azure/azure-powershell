@@ -20,7 +20,6 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Collections.Generic;
 using System.Management.Automation;
-using System.Threading.Tasks;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
@@ -60,18 +59,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.Id = "testPool";
 
             // Don't go to the service on a Delete CloudPool call
-            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
-            {
-                BatchRequest<CloudPoolDeleteParameters, CloudPoolDeleteResponse> request =
-                (BatchRequest<CloudPoolDeleteParameters, CloudPoolDeleteResponse>)baseRequest;
-
-                request.ServiceRequestFunc = (cancellationToken) =>
-                {
-                    CloudPoolDeleteResponse response = new CloudPoolDeleteResponse();
-                    Task<CloudPoolDeleteResponse> task = Task.FromResult(response);
-                    return task;
-                };
-            });
+            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudPoolDeleteParameters, CloudPoolDeleteResponse>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameters are set
