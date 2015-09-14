@@ -379,8 +379,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
         }
 
-        protected abstract void InitializeQosEvent();
-
         private void RecordDebugMessages()
         {
             // Create 'ErrorRecords' folder under profile directory, if not exists
