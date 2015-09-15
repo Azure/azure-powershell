@@ -149,7 +149,8 @@ namespace Microsoft.Azure.Commands.Resources
                     ResourceName = ResourceName,
                     ResourceType = ResourceType,
                     Subscription = DefaultProfile.DefaultContext.Subscription.Id.ToString()
-                }
+                },
+                ExcludeAssignmentsForDeletedPrincipals = false
             };
 
             ConfirmAction(
