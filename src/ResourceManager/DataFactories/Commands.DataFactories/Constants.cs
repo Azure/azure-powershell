@@ -20,30 +20,30 @@ namespace Microsoft.Azure.Commands.DataFactories
     {
         public static readonly TimeSpan DefaultSliceActivePeriodDuration = TimeSpan.FromHours(48);
 
-        public const string DataFactory = "AzureDataFactory";
+        public const string DataFactory = "AzureRMDataFactory";
 
-        public const string LinkedService = "AzureDataFactoryLinkedService";
+        public const string LinkedService = "AzureRMDataFactoryLinkedService";
 
-        public const string Gateway = "AzureDataFactoryGateway";
+        public const string Gateway = "AzureRMDataFactoryGateway";
 
-        public const string GatewayKey = "AzureDataFactoryGatewayKey";
+        public const string GatewayKey = "AzureRMDataFactoryGatewayKey";
 
-        public const string EncryptString = "AzureDataFactoryEncryptValue";
+        public const string EncryptString = "AzureRMDataFactoryEncryptValue";
 
-        public const string Dataset = "AzureDataFactoryDataset";
+        public const string Dataset = "AzureRMDataFactoryDataset";
 
-        public const string Pipeline = "AzureDataFactoryPipeline";
+        public const string Pipeline = "AzureRMDataFactoryPipeline";
 
-        public const string PipelineActivePeriod = "AzureDataFactoryPipelineActivePeriod";
+        public const string PipelineActivePeriod = "AzureRMDataFactoryPipelineActivePeriod";
 
-        public const string Run = "AzureDataFactoryRun";
+        public const string Run = "AzureRMDataFactoryRun";
 
-        public const string DataSlice = "AzureDataFactorySlice";
+        public const string DataSlice = "AzureRMDataFactorySlice";
 
-        public const string SliceStatus = "AzureDataFactorySliceStatus";
+        public const string SliceStatus = "AzureRMDataFactorySliceStatus";
 
-        public const string Hub = "AzureDataFactoryHub";
+        public const string Hub = "AzureRMDataFactoryHub";
 
-        public const string RunLog = "AzureDataFactoryLog";
+        public const string RunLog = "AzureRMDataFactoryLog";
     }
 }

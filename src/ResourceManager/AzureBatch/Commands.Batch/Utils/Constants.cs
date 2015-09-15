@@ -19,18 +19,25 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         public const int DefaultMaxCount = 1000;
 
         // Cmdlet nouns
-        public const string AzureBatchPool = "AzureBatchPool";
-        public const string AzureBatchPoolResize = "AzureBatchPoolResize";
-        public const string AzureBatchComputeNode = "AzureBatchComputeNode";
-        public const string AzureBatchComputeNodeUser = "AzureBatchComputeNodeUser";
-        public const string AzureBatchJobSchedule = "AzureBatchJobSchedule";
-        public const string AzureBatchJob = "AzureBatchJob";
-        public const string AzureBatchTask = "AzureBatchTask";
-        public const string AzureBatchNodeFile = "AzureBatchNodeFile";
-        public const string AzureBatchNodeFileContent = "AzureBatchNodeFileContent";
-        public const string AzureBatchRemoteDesktopProtocolFile = "AzureBatchRemoteDesktopProtocolFile";
-        public const string AzureBatchAutoScale = "AzureBatchAutoScale";
-        public const string AzureBatchPoolOSVersion = "AzureBatchPoolOSVersion";
+
+        public const string AzureBatchAccount = "AzureRMBatchAccount";
+        public const string AzureBatchAccountKey = "AzureRMBatchAccountKey";
+        public const string AzureBatchAccountKeys = "AzureRMBatchAccountKeys";
+
+
+
+        public const string AzureBatchPool = "AzureRMBatchPool";
+        public const string AzureBatchPoolResize = "AzureRMBatchPoolResize";
+        public const string AzureBatchComputeNode = "AzureRMBatchComputeNode";
+        public const string AzureBatchComputeNodeUser = "AzureRMBatchComputeNodeUser";
+        public const string AzureBatchJobSchedule = "AzureRMBatchJobSchedule";
+        public const string AzureBatchJob = "AzureRMBatchJob";
+        public const string AzureBatchTask = "AzureRMBatchTask";
+        public const string AzureBatchNodeFile = "AzureRMBatchNodeFile";
+        public const string AzureBatchNodeFileContent = "AzureRMBatchNodeFileContent";
+        public const string AzureBatchRemoteDesktopProtocolFile = "AzureRMBatchRemoteDesktopProtocolFile";
+        public const string AzureBatchAutoScale = "AzureRMBatchAutoScale";
+        public const string AzureBatchPoolOSVersion = "AzureRMBatchPoolOSVersion";
 
         // Parameter sets
         public const string IdParameterSet = "Id";

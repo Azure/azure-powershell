@@ -24,22 +24,25 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.Remove, Constants.AzureBatchTask)]
     public class RemoveBatchTaskCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the job containing the task to delete.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true, 
+            ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the job containing the task to delete.")]
         [ValidateNotNullOrEmpty]
         public string JobId { get; set; }
 
-        [Parameter(Position = 1, ParameterSetName = Constants.IdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the task to delete.")]
+        [Parameter(Position = 1, ParameterSetName = Constants.IdParameterSet, Mandatory = true, 
+            ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the task to delete.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
-        [Parameter(Position = 0, ParameterSetName = Constants.InputObjectParameterSet, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The PSCloudTask object representing the task to delete.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.InputObjectParameterSet, Mandatory = true, 
+            ValueFromPipeline = true, HelpMessage = "The PSCloudTask object representing the task to delete.")]
         [ValidateNotNullOrEmpty]
         public PSCloudTask InputObject { get; set; }
 
         [Parameter]
         public SwitchParameter Force { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             string taskId = InputObject == null ? this.Id : InputObject.Id;
             TaskOperationParameters parameters = new TaskOperationParameters(this.BatchContext, this.JobId,
@@ -47,8 +50,8 @@ namespace Microsoft.Azure.Commands.Batch
 
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Resources.RBT_RemoveConfirm, taskId),
-                Resources.RBT_RemoveTask,
+                string.Format(Resources.RemoveTaskConfirm, taskId),
+                Resources.RemoveTask,
                 taskId,
                 () => BatchClient.DeleteTask(parameters));
         }

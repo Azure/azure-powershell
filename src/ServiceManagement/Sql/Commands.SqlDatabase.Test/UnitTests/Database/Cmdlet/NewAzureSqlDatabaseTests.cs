@@ -26,7 +26,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cmdlet
 {
     [TestClass]
-    public class NewAzureSqlDatabaseTests : TestBase
+    public class NewAzureSqlDatabaseTests : SMTestBase
     {
         /// <summary>
         /// Initialize the necessary environment for the tests.

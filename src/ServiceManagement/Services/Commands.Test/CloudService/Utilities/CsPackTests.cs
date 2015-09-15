@@ -26,7 +26,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
 {
     
-    internal class CsPackTests : TestBase
+    internal class CsPackTests : SMTestBase
     {
         private const string serviceName = "AzureService";
 

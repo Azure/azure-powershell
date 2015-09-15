@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         #endregion
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             var result = HDInsightManagementClient.GetCluster(ResourceGroupName, ClusterName);
             var output = result.Select(cluster => new AzureHDInsightCluster(cluster)).ToList();
