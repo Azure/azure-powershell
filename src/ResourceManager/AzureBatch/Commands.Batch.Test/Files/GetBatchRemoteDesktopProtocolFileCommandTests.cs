@@ -15,22 +15,18 @@
 using System;
 using System.IO;
 using Microsoft.Azure.Batch;
-using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Batch.Protocol.Models;
-using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using System.Threading.Tasks;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Files
 {
-    public class GetBatchRemoteDesktopProtocolFileCommandTests
+    public class GetBatchRemoteDesktopProtocolFileCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
         private GetBatchRemoteDesktopProtocolFileCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
@@ -60,18 +56,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             cmdlet.DestinationPath = null;
 
             // Don't go to the service on a Get ComputeNode Remote Desktop call
-            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
-            {
-                BatchRequest<ComputeNodeGetRemoteDesktopParameters, ComputeNodeGetRemoteDesktopResponse> request =
-                (BatchRequest<ComputeNodeGetRemoteDesktopParameters, ComputeNodeGetRemoteDesktopResponse>)baseRequest;
-
-                request.ServiceRequestFunc = (cancellationToken) =>
-                {
-                    ComputeNodeGetRemoteDesktopResponse response = new ComputeNodeGetRemoteDesktopResponse();
-                    Task<ComputeNodeGetRemoteDesktopResponse> task = Task.FromResult(response);
-                    return task;
-                };
-            });
+            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<ComputeNodeGetRemoteDesktopParameters, ComputeNodeGetRemoteDesktopResponse>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             using (MemoryStream memStream = new MemoryStream())

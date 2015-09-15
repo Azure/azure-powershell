@@ -18,7 +18,7 @@
 #>
 function Test-ElasticPoolRecommendation
 {
-    $response = Get-AzureSqlElasticPoolRecommendation -ResourceGroupName TestRg -ServerName test-srv-v1
+    $response = Get-AzureRMSqlElasticPoolRecommendation -ResourceGroupName TestRg -ServerName test-srv-v1
     Assert-NotNull $response
     Assert-AreEqual 2 $response.Count
 

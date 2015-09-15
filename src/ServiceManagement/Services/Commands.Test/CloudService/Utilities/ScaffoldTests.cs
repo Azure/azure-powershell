@@ -23,7 +23,7 @@ using Microsoft.Azure.Common.Authentication;
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
 {
     
-    public class ScaffoldTests : TestBase
+    public class ScaffoldTests : SMTestBase
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

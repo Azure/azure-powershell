@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
     /// <summary>
     /// Cmdlet to fail over Azure SQL Database Replication Link to the secondary database
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureSqlDatabaseSecondary", 
+    [Cmdlet(VerbsCommon.Set, "AzureRMSqlDatabaseSecondary", 
         DefaultParameterSetName = NoOptionsSet,
         ConfirmImpact = ConfirmImpact.Medium)]
     public class SetAzureSqlDatabaseSecondary : AzureSqlDatabaseSecondaryCmdletBase

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// <summary>
     /// Retrieves Azure Site Recovery Vault.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureSiteRecoveryVault")]
+    [Cmdlet(VerbsCommon.Get, "AzureRMSiteRecoveryVault")]
     [OutputType(typeof(List<ASRVault>))]
     public class GetAzureSiteRecoveryVaults : SiteRecoveryCmdletBase
     {
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             try
             {

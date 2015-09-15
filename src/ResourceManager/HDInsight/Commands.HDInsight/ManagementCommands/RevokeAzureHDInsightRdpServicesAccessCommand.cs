@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         #endregion
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             var rdpParams = new RDPSettingsParameters
             {

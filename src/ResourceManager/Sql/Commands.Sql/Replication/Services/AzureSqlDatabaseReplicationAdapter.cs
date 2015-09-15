@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureProfile Profile { get; set; }
+        public AzureContext Context { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure Subscription
@@ -62,13 +62,13 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlDatabaseReplicationAdapter(AzureProfile Profile, AzureSubscription subscription)
+        public AzureSqlDatabaseReplicationAdapter(AzureContext context)
         {
-            this.Profile = Profile;
-            this._subscription = subscription;
-            ReplicationCommunicator = new AzureSqlDatabaseReplicationCommunicator(Profile, subscription);
-            DatabaseCommunicator = new AzureSqlDatabaseCommunicator(Profile, subscription);
-            ServerCommunicator = new AzureSqlServerCommunicator(Profile, subscription);
+            Context = context;
+            _subscription = context.Subscription;
+            ReplicationCommunicator = new AzureSqlDatabaseReplicationCommunicator(Context);
+            DatabaseCommunicator = new AzureSqlDatabaseCommunicator(Context);
+            ServerCommunicator = new AzureSqlServerCommunicator(Context);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         /// <returns>The region hosting the Azure SQL Server</returns>
         internal string GetServerLocation(string resourceGroupName, string serverName)
         {
-            AzureSqlServerAdapter serverAdapter = new AzureSqlServerAdapter(Profile, _subscription);
+            AzureSqlServerAdapter serverAdapter = new AzureSqlServerAdapter(Context);
             var server = serverAdapter.GetServer(resourceGroupName, serverName);
             return server.Location;
         }

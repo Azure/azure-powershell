@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             _metastore = new AzureHDInsightMetastore();
         }
         
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             switch (MetastoreType)
             {

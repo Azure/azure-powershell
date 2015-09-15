@@ -15,10 +15,11 @@
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Moq;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test
 {
-    public class KeyVaultUnitTestBase
+    public class KeyVaultUnitTestBase : RMTestBase
     {
         protected const string subscriptionId = "subscriptionid";
 

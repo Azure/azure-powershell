@@ -28,7 +28,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
     [Cmdlet(VerbsCommon.Clear, "AzureProfile"), OutputType(typeof(AzureEnvironment))]
     public class ClearAzureProfileCommand : SubscriptionCmdletBase
     {
-        [Parameter(Position = 1, HelpMessage = "Force deletion of AzureProfile without prompt")]
+        [Parameter(Position = 1, HelpMessage = "Force deletion of AzureSMProfile without prompt")]
         public SwitchParameter Force { get; set; }
 
         public ClearAzureProfileCommand() : base(true) { }

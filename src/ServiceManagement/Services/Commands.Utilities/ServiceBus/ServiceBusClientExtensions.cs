@@ -290,7 +290,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.ServiceBus
         /// Creates new instance from ServiceBusClientExtensions
         /// </summary>
         /// <param name="subscription"></param>
-        public ServiceBusClientExtensions(AzureProfile profile, AzureSubscription subscription)
+        public ServiceBusClientExtensions(AzureSMProfile profile, AzureSubscription subscription)
         {
             subscriptionId = subscription.Id.ToString();
             Subscription = subscription;

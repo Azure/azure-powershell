@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
 
         /// Azure profile
         /// </summary>
-        public AzureProfile Profile { get; set; }
+        public IAzureProfile Profile { get; set; }
 
         /// <summary>
         /// Amount of time to sleep before fetching job details again.
@@ -95,11 +95,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// required current subscription.
         /// </summary>
         /// <param name="azureSubscription">Azure Subscription</param>
-        public PSRecoveryServicesClient(AzureProfile azureProfile, AzureSubscription azureSubscription)
+        public PSRecoveryServicesClient(IAzureProfile azureProfile)
         {
             this.Profile = azureProfile;
 
-            this.cloudServicesClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(azureProfile, azureSubscription, AzureEnvironment.Endpoint.ResourceManager);
+            this.cloudServicesClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(azureProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
 
             System.Configuration.Configuration siteRecoveryConfig = ConfigurationManager.OpenExeConfiguration(System.Reflection.Assembly.GetExecutingAssembly().Location);            
 
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             AzureSession.ClientFactory.CreateCustomClient<RecoveryServicesManagementClient>(
                 asrVaultCreds.ResourceNamespace,
                 cloudServicesClient.Credentials,
-                Profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager));
+                Profile.DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager));
         }
 
         /// <summary>
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 asrVaultCreds.ResourceGroupName,
                 asrVaultCreds.ResourceNamespace,
                 cloudServicesClient.Credentials,
-                Profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager));
+                Profile.DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager));
 
             if (null == siteRecoveryClient)
             {

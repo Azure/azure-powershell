@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Compute
         DefaultParameterSetName = NicIdParamSetName),
     OutputType(
         typeof(PSVirtualMachine))]
-    public class AddAzureVMNetworkInterfaceCommand : AzurePSCmdlet
+    public class AddAzureVMNetworkInterfaceCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         protected const string NicIdParamSetName = "GetNicFromNicId";
         protected const string NicObjectParamSetName = "GetNicFromNicObject";
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public SwitchParameter Primary { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             var networkProfile = this.VM.NetworkProfile;
 

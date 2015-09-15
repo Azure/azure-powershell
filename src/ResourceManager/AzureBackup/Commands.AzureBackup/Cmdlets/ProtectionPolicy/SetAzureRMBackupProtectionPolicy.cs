@@ -55,11 +55,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         [ValidateSet("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", IgnoreCase = true)]
         public string[] DaysOfWeek { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ExecutionBlock(() =>
             {
-                base.ExecuteCmdlet();
+                base.ProcessRecord();
                 WriteDebug(Resources.MakingClientCall);
 
                 var response = AzureBackupClient.GetProtectionPolicyByName(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, ProtectionPolicy.Name);

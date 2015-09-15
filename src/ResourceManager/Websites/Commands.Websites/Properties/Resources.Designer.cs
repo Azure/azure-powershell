@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.WebApp.Properties {
-    using System;
-    
-    
+namespace Microsoft.Azure.Commands.WebApp.Properties
+{
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
