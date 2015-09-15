@@ -25,6 +25,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         public static readonly string MicrosoftResourceNamesapce = "Microsoft.Resources";
 
         /// <summary>
+        /// The <c>Microsoft.Authorization</c> namespace.
+        /// </summary>
+        public static readonly string MicrosoftAuthorizationNamespace = "Microsoft.Authorization";
+
+        /// <summary>
         /// The string literal <c>ResourceGroups</c>
         /// </summary>
         public static readonly string ResourceGroups = "ResourceGroups";
@@ -63,6 +68,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// The deployment operations resource type.
         /// </summary>
         public static readonly string MicrosoftResourcesDeploymentOperationsType = Constants.MicrosoftResourceNamesapce + "/deployments/operations";
+
+        /// <summary>
+        /// The policy definition resource type.
+        /// </summary>
+        public static readonly string MicrosoftAuthorizationPolicyDefinitionType = Constants.MicrosoftAuthorizationNamespace + "/policydefinitions";
 
         /// <summary>
         /// The type name of the generic resource.
