@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Moves existing resources to a new resource group or subscription.
     /// </summary>
-    [Cmdlet(VerbsCommon.Move, "AzureResource", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Move, "AzureRMResource", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class MoveAzureResourceCommand : ResourceManagerCmdletBase
     {
         /// <summary>
@@ -101,11 +101,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private void RunCmdlet()
         {
+            if(this.NoWait.IsPresent)
+            {
+                this.WriteWarning("The NoWait parameter is obsolete and will be removed in future releases.");
+            }
             var resourceIdsToUse = this.resourceIds
                 .Concat(this.ResourceId)
                 .DistinctArray(StringComparer.InvariantCultureIgnoreCase);
 
-            this.DestinationSubscriptionId = this.DestinationSubscriptionId ?? this.Profile.Context.Subscription.Id;
+            this.DestinationSubscriptionId = this.DestinationSubscriptionId ?? DefaultContext.Subscription.Id;
 
             var sourceResourceGroups = resourceIdsToUse
                 .Select(resourceId => ResourceIdUtility.GetResourceGroupId(resourceId))
@@ -173,7 +177,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                                 isResourceCreateOrUpdate: false)
                             .WaitOnOperation(operationResult: operationResult);
 
-                        this.WriteObject(result, ResourceObjectFormat.New);
+                        this.TryConvertAndWriteObject(result, ResourceObjectFormat.New);
                     }
                     else
                     {

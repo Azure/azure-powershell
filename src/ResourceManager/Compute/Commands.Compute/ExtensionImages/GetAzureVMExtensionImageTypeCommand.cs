@@ -31,30 +31,33 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty]
         public string PublisherName { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
-            var parameters = new VirtualMachineExtensionImageListTypesParameters
+            ExecuteClientAction(() =>
             {
-                Location = Location.Canonicalize(),
-                PublisherName = PublisherName
-            };
+                var parameters = new VirtualMachineExtensionImageListTypesParameters
+                {
+                    Location = Location.Canonicalize(),
+                    PublisherName = PublisherName
+                };
 
-            VirtualMachineImageResourceList result = this.VirtualMachineExtensionImageClient.ListTypes(parameters);
+                VirtualMachineImageResourceList result = this.VirtualMachineExtensionImageClient.ListTypes(parameters);
 
-            var images = from r in result.Resources
-                         select new PSVirtualMachineExtensionImageType
-                         {
-                             RequestId = result.RequestId,
-                             StatusCode = result.StatusCode,
-                             Id = r.Id,
-                             Location = r.Location,
-                             Type = r.Name,
-                             PublisherName = this.PublisherName
-                         };
+                var images = from r in result.Resources
+                             select new PSVirtualMachineExtensionImageType
+                             {
+                                 RequestId = result.RequestId,
+                                 StatusCode = result.StatusCode,
+                                 Id = r.Id,
+                                 Location = r.Location,
+                                 Type = r.Name,
+                                 PublisherName = this.PublisherName
+                             };
 
-            WriteObject(images, true);
+                WriteObject(images, true);
+            });
         }
     }
 }

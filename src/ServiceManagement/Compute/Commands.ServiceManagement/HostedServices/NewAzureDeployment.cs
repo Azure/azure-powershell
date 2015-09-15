@@ -113,7 +113,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
             AssertNoPersistenVmRoleExistsInDeployment(PVM.DeploymentSlotType.Production);
             AssertNoPersistenVmRoleExistsInDeployment(PVM.DeploymentSlotType.Staging);
 
-            var storageName = Profile.Context.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
+            var storageName = Profile.DefaultContext.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
 
             Uri packageUrl;
             if (this.Package.StartsWith(Uri.UriSchemeHttp, StringComparison.OrdinalIgnoreCase) ||
@@ -170,7 +170,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
                     {
                         if (ex.Response.StatusCode != HttpStatusCode.NotFound && IsVerbose() == false)
                         {
-                            this.WriteExceptionDetails(ex);
+                            WriteExceptionError(ex);
                         }
                     }
 
@@ -225,7 +225,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
                 }
                 catch (CloudException ex)
                 {
-                    this.WriteExceptionDetails(ex);
+                    WriteExceptionError(ex);
                 }
             });
         }
@@ -249,7 +249,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
                 {
                     if (ex.Response.StatusCode != HttpStatusCode.NotFound && IsVerbose() == false)
                     {
-                        this.WriteExceptionDetails(ex);
+                        WriteExceptionError(ex);
                     }
                 }
             });

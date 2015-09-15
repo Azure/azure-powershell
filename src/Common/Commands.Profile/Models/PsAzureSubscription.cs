@@ -21,29 +21,35 @@ namespace Microsoft.WindowsAzure.Commands.Profile.Models
     public class PSAzureSubscription
     {
         public PSAzureSubscription() {}
-        public PSAzureSubscription(AzureSubscription subscription, AzureProfile profile)
+        public PSAzureSubscription(AzureSubscription subscription, AzureSMProfile profile)
         {
             SubscriptionId = subscription.Id.ToString();
             SubscriptionName = subscription.Name;
             Environment = subscription.Environment;
-            SupportedModes = subscription.GetProperty(AzureSubscription.Property.SupportedModes);
             DefaultAccount = subscription.Account;
             Accounts = profile.Accounts.Values.Where(a => a.HasSubscription(subscription.Id)).ToArray();
             IsDefault = subscription.IsPropertySet(AzureSubscription.Property.Default);
-            IsCurrent = profile.Context.Subscription != null && profile.Context.Subscription.Id == subscription.Id;
+            IsCurrent = profile.DefaultContext != null && profile.DefaultContext.Subscription.Id == subscription.Id;
             CurrentStorageAccountName = subscription.GetProperty(AzureSubscription.Property.StorageAccount);
             TenantId = subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants).FirstOrDefault();
         }
 
         public string SubscriptionId { get; set; }
+        
         public string SubscriptionName { get; set; }
+        
         public string Environment { get; set; }
-        public string SupportedModes { get; set; }
+        
         public string DefaultAccount { get; set; }
+        
         public AzureAccount[] Accounts { get; set; }
+        
         public bool IsDefault { get; set; }
+        
         public bool IsCurrent { get; set; }
+        
         public string CurrentStorageAccountName { get; set; }
+        
         public string TenantId { get; set; }
     }
 }

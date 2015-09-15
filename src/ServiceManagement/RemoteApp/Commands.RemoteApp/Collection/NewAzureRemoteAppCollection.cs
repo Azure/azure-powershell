@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+
 namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
     using Microsoft.WindowsAzure.Commands.RemoteApp;
@@ -24,11 +25,9 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
     using System.Net;
     using System.Threading.Tasks;
 
-    [Cmdlet(VerbsCommon.New, "AzureRemoteAppCollection", DefaultParameterSetName = NoDomain), OutputType(typeof(TrackingResult))]
+    [Cmdlet(VerbsCommon.New, "AzureRemoteAppCollection", DefaultParameterSetName = "AllParameterSets"),  OutputType(typeof(TrackingResult))]
     public class NewAzureRemoteAppCollection : RdsCmdlet
     {
-        private const string DomainJoined = "DomainJoined";
-        private const string NoDomain = "NoDomain";
         private const string AzureVNet = "AzureVNet";
 
         [Parameter(Mandatory = true,
@@ -53,21 +52,26 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
         )]
         public string Plan { get; set; }
 
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
             Position = 3,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = NoDomain,
             HelpMessage = "Location in which this collection will be created. Use Get-AzureRemoteAppLocation to see the locations available."
         )]
         public string Location { get; set; }
 
-        [Parameter(
+        [Parameter(Mandatory = true, 
             ValueFromPipelineByPropertyName = true,
+            ParameterSetName = AzureVNet,
             HelpMessage = "The name of the RemoteApp or Azure VNet to create the collection in."
         )]
-        [Parameter(Mandatory = true, Position = 3, ParameterSetName = DomainJoined)]
-        [Parameter(Mandatory = true, Position = 3, ParameterSetName = AzureVNet)]
         public string VNetName { get; set; }
+
+        [Parameter(Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = AzureVNet,
+            HelpMessage = "For Azure VNets only, the name of the subnet."
+        )]
+        public string SubnetName { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -77,38 +81,25 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
         [ValidateNotNullOrEmpty]
         public string DnsServers { get; set; }
 
-        [Parameter(Mandatory = true,
-            Position = 6,
+        [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = AzureVNet,
-            HelpMessage = "For Azure VNets only, the name of the subnet."
-        )]
-        [ValidateNotNullOrEmpty]
-        public string SubnetName { get; set; }
-
-        [Parameter(
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the on-premise domain to join the RD Session Host servers to."
         )]
-        [Parameter(Mandatory = true, Position = 4, ParameterSetName = DomainJoined)]
-        [Parameter(Mandatory = true, Position = 4, ParameterSetName = AzureVNet)]
         [ValidatePattern(DomainNameValidatorString)]
         public string Domain { get; set; }
 
-        [Parameter(
+        [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The users credentials that has permission to add computers to the domain."
-        )]
-        [Parameter(Mandatory = true, Position = 5, ParameterSetName = DomainJoined)]
-        [Parameter(Mandatory = true, Position = 5, ParameterSetName = AzureVNet)]
+            ParameterSetName = AzureVNet,
+            HelpMessage = "The credentials of a user who has permission to add computers to the domain. The user's domain must be supplied as an FQDN, (e.g. home.local\\username or username@home.local).")]
         public PSCredential Credential { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            ParameterSetName = AzureVNet,
             HelpMessage = "The name of your organizational unit to join the RD Session Host servers, e.g. OU=MyOu,DC=MyDomain,DC=ParentDomain,DC=com. Attributes such as OU, DC, etc. must be in uppercase."
         )]
-        [Parameter(ParameterSetName = DomainJoined)]
-        [Parameter(ParameterSetName = AzureVNet)]
         [ValidatePattern(OrgIDValidatorString)]
         public string OrganizationalUnit { get; set; }
 
@@ -152,39 +143,33 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
             OperationResultWithTrackingId response = null;
 
 
-            switch (ParameterSetName)
+            if (ParameterSetName == "AzureVNet")
             {
-                case DomainJoined:
-                case AzureVNet:
+                details.VNetName = VNetName;
+                details.SubnetName = SubnetName;
+                ValidateCustomerVNetParams(details.VNetName, details.SubnetName);
+
+                if (DnsServers != null)
                 {
-                    creds = Credential.GetNetworkCredential();
-                    details.VNetName = VNetName;
+                    details.DnsServers = DnsServers.Split(new char[] { ',' });
+                }
 
-                    if (SubnetName != null)
+                if (!String.IsNullOrWhiteSpace(Domain) || Credential != null)
+                {
+                    if (String.IsNullOrWhiteSpace(Domain) || Credential == null)
                     {
-                        if (!IsFeatureEnabled(EnabledFeatures.azureVNet))
-                        {
-                            ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
-                                     string.Format(Commands_RemoteApp.LinkAzureVNetFeatureNotEnabledMessage),
-                                     String.Empty,
-                                     Client.Account,
-                                     ErrorCategory.InvalidOperation
-                                     );
+                        // you supplied either a domain or a cred, but not both.
+                        ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
+                                                Commands_RemoteApp.InvalidADArguments,
+                                                String.Empty,
+                                                Client.Collections,
+                                                ErrorCategory.InvalidArgument
+                                                );
 
-                            ThrowTerminatingError(er);
-                        }
-
-                        details.SubnetName = SubnetName;
-                        ValidateCustomerVNetParams(details.VNetName, details.SubnetName);
-
-                        if (DnsServers != null)
-                        {
-                            details.DnsServers = DnsServers.Split(new char[] { ',' });
-                        }
-
-                        details.Region = Location;
+                        ThrowTerminatingError(er);
                     }
 
+                    creds = Credential.GetNetworkCredential();
                     details.AdInfo = new ActiveDirectoryConfig()
                     {
                         DomainName = Domain,
@@ -192,13 +177,20 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
                         UserName = creds.UserName,
                         Password = creds.Password,
                     };
-                    break;
                 }
-                case NoDomain:
-                default:
+            }
+            else
+            {
+                if (String.IsNullOrEmpty(details.Region))
                 {
-                    details.Region = Location;
-                    break;
+                    ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
+                                            Commands_RemoteApp.InvalidLocationArgument,
+                                            String.Empty,
+                                            Client.Collections,
+                                            ErrorCategory.InvalidArgument
+                                            );
+
+                    ThrowTerminatingError(er);
                 }
             }
 

@@ -12,13 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Hyak.Common;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    public abstract class ComputeClientBaseCmdlet : AzurePSCmdlet
+    public abstract class ComputeClientBaseCmdlet : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         protected const string VirtualMachineExtensionType = "Microsoft.Compute/virtualMachines/extensions";
+
+        protected override bool IsUsageMetricEnabled
+        {
+            get { return true; }
+        }
 
         private ComputeClient computeClient;
 
@@ -28,7 +36,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (computeClient == null)
                 {
-                    computeClient = new ComputeClient(Profile.Context)
+                    computeClient = new ComputeClient(DefaultProfile.DefaultContext)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp
@@ -40,10 +48,23 @@ namespace Microsoft.Azure.Commands.Compute
 
             set { computeClient = value; }
         }
-        public override void ExecuteCmdlet()
+
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
             ComputeAutoMapperProfile.Initialize();
+        }
+
+        protected void ExecuteClientAction(Action action)
+        {
+            try
+            {
+                action();
+            }
+            catch (CloudException ex)
+            {
+                throw new ComputeCloudException(ex);
+            }
         }
     }
 }

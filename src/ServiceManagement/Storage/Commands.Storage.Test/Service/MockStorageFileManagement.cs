@@ -57,6 +57,16 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Service
             return client.GetShareReference(shareName);
         }
 
+        public void FetchShareAttributes(CloudFileShare share, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetShareProperties(CloudFileShare share, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task EnumerateFilesAndDirectoriesAsync(CloudFileDirectory directory, Action<IListFileItem> enumerationAction, FileRequestOptions options, OperationContext operationContext, CancellationToken token)
         {
             IListFileItem[] enumerationItems;
@@ -138,6 +148,35 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.Service
         public AzureStorageContext StorageContext
         {
             get { throw new NotImplementedException(); }
+        }
+
+        public Task<FileSharePermissions> GetSharePermissionsAsync(CloudFileShare share, AccessCondition accessCondition,
+            FileRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public FileSharePermissions GetSharePermissions(CloudFileShare share, AccessCondition accessCondition = null,
+            FileRequestOptions options = null, OperationContext operationContext = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetSharePermissions(CloudFileShare share, FileSharePermissions permissions,
+            AccessCondition accessCondition = null,
+            FileRequestOptions options = null, OperationContext operationContext = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task FetchFileAttributesAsync(CloudFile file, AccessCondition accessCondition, FileRequestOptions options, OperationContext operationContext, CancellationToken token)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task AbortCopyAsync(CloudFile file, string copyId, AccessCondition accessCondition, FileRequestOptions requestOptions, OperationContext operationContext, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
         }
     }
 }

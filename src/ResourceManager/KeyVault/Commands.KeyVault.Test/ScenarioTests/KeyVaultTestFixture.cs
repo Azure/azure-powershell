@@ -9,11 +9,12 @@ using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 {
-    public class KeyVaultTestFixture : IDisposable
+    public class KeyVaultTestFixture : RMTestBase, IDisposable
     {
         public string tagName = "testtag", tagValue = "testvalue";
         public string resourceGroupName, location, preCreatedVault;
@@ -45,7 +46,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 var testEnv = testFactory.GetTestEnvironment();
                 var resourcesClient = TestBase.GetServiceClient<ResourceManagementClient>(testFactory);
                 var mgmtClient = TestBase.GetServiceClient<KeyVaultManagementClient>(testFactory);
-                var tenantId = testEnv.AuthorizationContext.TenatId;                
+                var tenantId = testEnv.AuthorizationContext.TenantId;                
 
                 //Figure out which locations are available for Key Vault
                 location = GetKeyVaultLocation(resourcesClient);
@@ -109,7 +110,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
                 var testEnv = testFactory.GetTestEnvironment();
                 var resourcesClient = TestBase.GetServiceClient<ResourceManagementClient>(testFactory);
                 var mgmtClient = TestBase.GetServiceClient<KeyVaultManagementClient>(testFactory);
-                var tenantId = Guid.Parse(testEnv.AuthorizationContext.TenatId);
+                var tenantId = Guid.Parse(testEnv.AuthorizationContext.TenantId);
 
                 var policies = new AccessPolicyEntry[] { };
 

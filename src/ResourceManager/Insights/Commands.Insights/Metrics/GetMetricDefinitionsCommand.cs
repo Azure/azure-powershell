@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         /// <summary>
         /// Execute the cmdlet
         /// </summary>
-        protected override void ExecuteCmdletInternal()
+        protected override void ProcessRecordInternal()
         {
             string queryFilter = this.ProcessParameters();
             bool fullDetails = this.DetailedOutput.IsPresent;

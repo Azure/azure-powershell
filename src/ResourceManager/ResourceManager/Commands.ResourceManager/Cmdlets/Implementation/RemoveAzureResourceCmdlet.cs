@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// A cmdlet that removes an azure resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureResource", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.ResourceIdParameterSet), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRMResource", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.ResourceIdParameterSet), OutputType(typeof(bool))]
     public class RemoveAzureResourceCmdlet : ResourceManipulationCmdletBase
     {
         /// <summary>
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
                     var activity = string.Format("DELETE {0}", managementUri.PathAndQuery);
 
-                    var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: false)
+                    this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: false)
                         .WaitOnOperation(operationResult: operationResult);
 
                     this.WriteObject(true);

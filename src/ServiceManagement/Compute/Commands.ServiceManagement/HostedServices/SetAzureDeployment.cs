@@ -175,7 +175,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
                     {
                         if (ex.Response.StatusCode != HttpStatusCode.NotFound && IsVerbose() == false)
                         {
-                            this.WriteExceptionDetails(ex);
+                            WriteExceptionError(ex);
                         }
                     }
 
@@ -198,7 +198,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
             if (string.Compare(ParameterSetName, "Upgrade", StringComparison.OrdinalIgnoreCase) == 0)
             {
                 bool removePackage = false;
-                var storageName = Profile.Context.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
+                var storageName = Profile.DefaultContext.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
 
                 Uri packageUrl = null;
                 if (Package.StartsWith(Uri.UriSchemeHttp, StringComparison.OrdinalIgnoreCase) ||
@@ -263,7 +263,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
                     }
                     catch (CloudException ex)
                     {
-                        this.WriteExceptionDetails(ex);
+                        WriteExceptionError(ex);
                     }
                 });
             }

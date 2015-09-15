@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Updates an existing resource group.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureResourceGroup"), OutputType(typeof(PSResourceGroup))]
+    [Cmdlet(VerbsCommon.Set, "AzureRMResourceGroup"), OutputType(typeof(PSResourceGroup))]
     public class SetAzureResourceGroupCommand : ResourcesBaseCmdlet
     {
         [Alias("ResourceGroupName")]
@@ -33,14 +33,14 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, HelpMessage = "An array of hashtables which represents resource tags.")]
         public Hashtable[] Tag { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             UpdatePSResourceGroupParameters parameters = new UpdatePSResourceGroupParameters
             {
                 ResourceGroupName = Name,
                 Tag = Tag
             };
-
+            WriteWarning("The output object of this cmdlet will be modified in a future release.");
             WriteObject(ResourcesClient.UpdatePSResourceGroup(parameters));
         }
     }

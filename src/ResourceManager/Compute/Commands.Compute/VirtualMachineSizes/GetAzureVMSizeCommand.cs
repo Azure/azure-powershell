@@ -72,38 +72,41 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string VMName { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
-            VirtualMachineSizeListResponse result = null;
+            ExecuteClientAction(() =>
+            {
+                VirtualMachineSizeListResponse result = null;
 
-            if (!string.IsNullOrEmpty(this.VMName))
-            {
-                result = this.VirtualMachineClient.ListAvailableSizes(
-                    this.ResourceGroupName,
-                    this.VMName);
-            }
-            else if (!string.IsNullOrEmpty(this.AvailabilitySetName))
-            {
-                result = this.AvailabilitySetClient.ListAvailableSizes(
-                    this.ResourceGroupName,
-                    this.AvailabilitySetName);
-            }
-            else
-            {
-                result = this.VirtualMachineSizeClient.List(this.Location.Canonicalize());
-            }
+                if (!string.IsNullOrEmpty(this.VMName))
+                {
+                    result = this.VirtualMachineClient.ListAvailableSizes(
+                        this.ResourceGroupName,
+                        this.VMName);
+                }
+                else if (!string.IsNullOrEmpty(this.AvailabilitySetName))
+                {
+                    result = this.AvailabilitySetClient.ListAvailableSizes(
+                        this.ResourceGroupName,
+                        this.AvailabilitySetName);
+                }
+                else
+                {
+                    result = this.VirtualMachineSizeClient.List(this.Location.Canonicalize());
+                }
 
-            List<PSVirtualMachineSize> psResultList = new List<PSVirtualMachineSize>();
-            foreach (var item in result.VirtualMachineSizes)
-            {
-                var psItem = Mapper.Map<VirtualMachineSize, PSVirtualMachineSize>(item);
-                psItem = Mapper.Map<AzureOperationResponse, PSVirtualMachineSize>(result, psItem);
-                psResultList.Add(psItem);
-            }
+                List<PSVirtualMachineSize> psResultList = new List<PSVirtualMachineSize>();
+                foreach (var item in result.VirtualMachineSizes)
+                {
+                    var psItem = Mapper.Map<VirtualMachineSize, PSVirtualMachineSize>(item);
+                    psItem = Mapper.Map<AzureOperationResponse, PSVirtualMachineSize>(result, psItem);
+                    psResultList.Add(psItem);
+                }
 
-            WriteObject(psResultList, true);
+                WriteObject(psResultList, true);
+            });
         }
     }
 }

@@ -15,8 +15,8 @@
 using System;
 using System.Globalization;
 using System.Linq;
-using Microsoft.Azure.Commands.Sql.Security.Services;
 using Microsoft.Azure.Commands.Sql.Properties;
+using Microsoft.Azure.Commands.Sql.Common;
 
 namespace Microsoft.Azure.Commands.Sql.Services
 {
@@ -78,45 +78,14 @@ namespace Microsoft.Azure.Commands.Sql.Services
             {
                 if (eventTypes.Contains(SecurityConstants.All))
                 {
-                    throw new Exception(string.Format(Resources.InvalidEventTypeSet, SecurityConstants.All));
+                    throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidEventTypeSet, SecurityConstants.All));
                 }
                 if (eventTypes.Contains(SecurityConstants.None))
                 {
-                    throw new Exception(string.Format(Resources.InvalidEventTypeSet, SecurityConstants.None));
+                    throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidEventTypeSet, SecurityConstants.None));
                 }
-
-                if (DeprecatedEventTypeFound(eventTypes))
-                {
-                    if(eventTypes.Intersect(auditEvents).Any())
-                    {
-                        // If the event types includes new events and deprecated events we throw error
-                    throw new Exception(Resources.InvalidDeprecatedEventTypeSet);
-                    }
-                }
-
             }
             return eventTypes;
-        }
-        
-        /// <summary>
-        /// Checks whether a deprected event type is found in the received array of event types
-        /// </summary>
-        internal static bool DeprecatedEventTypeFound(string[] eventType)
-        {
-            if(eventType == null)
-            {
-                return false;
-            }
-
-            string[] deprecatedAuditEvents = 
-            {
-                SecurityConstants.DeprecatedAuditEvents.DataAccess,
-                SecurityConstants.DeprecatedAuditEvents.DataChanges,
-                SecurityConstants.DeprecatedAuditEvents.SecurityExceptions,
-                SecurityConstants.DeprecatedAuditEvents.RevokePermissions,
-                SecurityConstants.DeprecatedAuditEvents.SchemaChanges
-            };
-            return eventType.Intersect(deprecatedAuditEvents).Any();
-        }
+        }        
     }
 }

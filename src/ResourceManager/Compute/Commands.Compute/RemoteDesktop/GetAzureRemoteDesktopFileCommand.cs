@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
@@ -46,100 +47,156 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = true,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Path and name of the output RDP file.")]
+            HelpMessage = "Path and name of the output RDP file.",
+            ParameterSetName = "Download")]
+        [Parameter(
+            Mandatory = false,
+            Position = 2,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Path and name of the output RDP file.",
+            ParameterSetName = "Launch")]
         [ValidateNotNullOrEmpty]
-        public string LocalPath { get; set;}
+        public string LocalPath { get; set; }
 
-        public override void ExecuteCmdlet()
+        [Parameter(
+            Mandatory = true,
+            Position = 3, 
+            HelpMessage = "Start a remote desktop session to the specified role instance.", 
+            ParameterSetName = "Launch")]
+        public SwitchParameter Launch
         {
-            base.ExecuteCmdlet();
-            
-            const string fullAddressPrefix = "full address:s:";
-            const string promptCredentials = "prompt for credentials:i:1";
-            const int defaultPort = 3389;
+            get;
+            set;
+        }
 
-            string address = string.Empty;
-            int port = defaultPort;
+        protected override void ProcessRecord()
+        {
+            base.ProcessRecord();
 
-            // Get Azure VM
-            var vmResponse = this.VirtualMachineClient.Get(this.ResourceGroupName, this.Name);
-
-            // Get the NIC
-            var nicResourceGroupName =
-                this.GetResourceGroupName(vmResponse.VirtualMachine.NetworkProfile.NetworkInterfaces.First().ReferenceUri);
-
-            var nicName =
-                this.GetResourceName(
-                    vmResponse.VirtualMachine.NetworkProfile.NetworkInterfaces.First().ReferenceUri, "networkInterfaces");
-
-            var nicResponse =
-                this.NetworkClient.NetworkResourceProviderClient.NetworkInterfaces.Get(nicResourceGroupName, nicName);
-
-            if (nicResponse.NetworkInterface.IpConfigurations.First().PublicIpAddress != null && !string.IsNullOrEmpty(nicResponse.NetworkInterface.IpConfigurations.First().PublicIpAddress.Id))
+            ExecuteClientAction(() =>
             {
-                // Get PublicIPAddress resource if present
-                address = this.GetAddressFromPublicIPResource(nicResponse.NetworkInterface.IpConfigurations.First().PublicIpAddress.Id);
-            }
-            else if (nicResponse.NetworkInterface.IpConfigurations.First().LoadBalancerInboundNatRules.Any())
-            {
-                address = string.Empty;
+                const string fullAddressPrefix = "full address:s:";
+                const string promptCredentials = "prompt for credentials:i:1";
+                const int defaultPort = 3389;
 
-                // Get ipaddress and port from loadbalancer
-                foreach (var nicRuleRef in nicResponse.NetworkInterface.IpConfigurations.First().LoadBalancerInboundNatRules)
+                string address = string.Empty;
+                int port = defaultPort;
+
+                // Get Azure VM
+                var vmResponse = this.VirtualMachineClient.Get(this.ResourceGroupName, this.Name);
+
+                // Get the NIC
+                var nicResourceGroupName =
+                    this.GetResourceGroupName(vmResponse.VirtualMachine.NetworkProfile.NetworkInterfaces.First().ReferenceUri);
+
+                var nicName =
+                    this.GetResourceName(
+                        vmResponse.VirtualMachine.NetworkProfile.NetworkInterfaces.First().ReferenceUri, "networkInterfaces");
+
+                var nicResponse =
+                    this.NetworkClient.NetworkResourceProviderClient.NetworkInterfaces.Get(nicResourceGroupName, nicName);
+
+                if (nicResponse.NetworkInterface.IpConfigurations.First().PublicIpAddress != null && !string.IsNullOrEmpty(nicResponse.NetworkInterface.IpConfigurations.First().PublicIpAddress.Id))
                 {
-                    var lbName = this.GetResourceName(nicRuleRef.Id, "loadBalancers");
-                    var lbResourceGroupName = this.GetResourceGroupName(nicRuleRef.Id);
-                    
-                    var loadbalancer =
-                        this.NetworkClient.NetworkResourceProviderClient.LoadBalancers.Get(lbResourceGroupName, lbName).LoadBalancer;
+                    // Get PublicIPAddress resource if present
+                    address = this.GetAddressFromPublicIPResource(nicResponse.NetworkInterface.IpConfigurations.First().PublicIpAddress.Id);
+                }
+                else if (nicResponse.NetworkInterface.IpConfigurations.First().LoadBalancerInboundNatRules.Any())
+                {
+                    address = string.Empty;
 
-                    // Iterate over the InboundNatRules where Backendport = 3389
-                    var inboundRule =
-                        loadbalancer.InboundNatRules.Where(
-                            rule =>
-                            rule.BackendPort == defaultPort
-                            && string.Equals(
-                                rule.Id,
-                                nicRuleRef.Id,
-                                StringComparison.OrdinalIgnoreCase));
-
-                    if (inboundRule.Any())
+                    // Get ipaddress and port from loadbalancer
+                    foreach (var nicRuleRef in nicResponse.NetworkInterface.IpConfigurations.First().LoadBalancerInboundNatRules)
                     {
-                        port = inboundRule.First().FrontendPort;
-                        
-                        // Get the corresponding frontendIPConfig -> publicIPAddress
-                        var frontendIPConfig =
-                            loadbalancer.FrontendIpConfigurations.First(
-                                frontend =>
-                                string.Equals(
-                                    inboundRule.First().FrontendIPConfiguration.Id,
-                                    frontend.Id,
+                        var lbName = this.GetResourceName(nicRuleRef.Id, "loadBalancers");
+                        var lbResourceGroupName = this.GetResourceGroupName(nicRuleRef.Id);
+
+                        var loadbalancer =
+                            this.NetworkClient.NetworkResourceProviderClient.LoadBalancers.Get(lbResourceGroupName, lbName).LoadBalancer;
+
+                        // Iterate over the InboundNatRules where Backendport = 3389
+                        var inboundRule =
+                            loadbalancer.InboundNatRules.Where(
+                                rule =>
+                                rule.BackendPort == defaultPort
+                                && string.Equals(
+                                    rule.Id,
+                                    nicRuleRef.Id,
                                     StringComparison.OrdinalIgnoreCase));
 
-                        if (frontendIPConfig.PublicIpAddress != null)
+                        if (inboundRule.Any())
                         {
-                            address = this.GetAddressFromPublicIPResource(frontendIPConfig.PublicIpAddress.Id);
-                            break;
+                            port = inboundRule.First().FrontendPort;
+
+                            // Get the corresponding frontendIPConfig -> publicIPAddress
+                            var frontendIPConfig =
+                                loadbalancer.FrontendIpConfigurations.First(
+                                    frontend =>
+                                    string.Equals(
+                                        inboundRule.First().FrontendIPConfiguration.Id,
+                                        frontend.Id,
+                                        StringComparison.OrdinalIgnoreCase));
+
+                            if (frontendIPConfig.PublicIpAddress != null)
+                            {
+                                address = this.GetAddressFromPublicIPResource(frontendIPConfig.PublicIpAddress.Id);
+                                break;
+                            }
                         }
                     }
-                }
 
-                if (string.IsNullOrEmpty(address))
+                    if (string.IsNullOrEmpty(address))
+                    {
+                        throw new ArgumentException(Microsoft.Azure.Commands.Compute.Properties.Resources.VirtualMachineNotAssociatedWithPublicLoadBalancer);
+                    }
+                }
+                else
                 {
-                    throw new ArgumentException(Properties.Resources.VirtualMachineNotAssociatedWithPublicLoadBalancer);
+                    throw new ArgumentException(Microsoft.Azure.Commands.Compute.Properties.Resources.VirtualMachineNotAssociatedWithPublicIPOrPublicLoadBalancer);
                 }
-            }
-            else
-            {
-                throw new ArgumentException(Properties.Resources.VirtualMachineNotAssociatedWithPublicIPOrPublicLoadBalancer);
-            }
 
-            // Write to file
-            using (var file = new StreamWriter(this.LocalPath))
-            {
-                file.WriteLine(fullAddressPrefix + address + ":" + port);
-                file.WriteLine(promptCredentials);
-            }
+                // Write to file
+                string rdpFilePath = this.LocalPath ?? Path.GetTempFileName();
+
+                using (var file = new StreamWriter(rdpFilePath))
+                {
+                    file.WriteLine(fullAddressPrefix + address + ":" + port);
+                    file.WriteLine(promptCredentials);
+                }
+
+                if (Launch.IsPresent)
+                {
+                    var startInfo = new ProcessStartInfo
+                                        {
+                                            CreateNoWindow = true,
+                                            WindowStyle = ProcessWindowStyle.Hidden
+                                        };
+
+                    if (this.LocalPath == null)
+                    {
+                        string scriptGuid = Guid.NewGuid().ToString();
+
+                        string launchRDPScript = Path.GetTempPath() + scriptGuid + ".bat";
+                        using (var scriptStream = File.OpenWrite(launchRDPScript))
+                        {
+                            var writer = new StreamWriter(scriptStream);
+                            writer.WriteLine("start /wait mstsc.exe " + rdpFilePath);
+                            writer.WriteLine("del " + rdpFilePath);
+                            writer.WriteLine("del " + launchRDPScript);
+                            writer.Flush();
+                        }
+
+                        startInfo.FileName = launchRDPScript;
+                    }
+                    else
+                    {
+                        startInfo.FileName = "mstsc.exe";
+                        startInfo.Arguments = rdpFilePath;
+                    }
+
+                    Process.Start(startInfo);
+                }
+            });
         }
 
         private string GetAddressFromPublicIPResource(string resourceId)

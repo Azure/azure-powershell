@@ -64,25 +64,28 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public int? PlatformFaultDomainCount { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
-            var avSetParams = new AvailabilitySet
+            ExecuteClientAction(() =>
             {
-                Name = this.Name,
-                Location = this.Location,
-                PlatformUpdateDomainCount = this.PlatformUpdateDomainCount,
-                PlatformFaultDomainCount = this.PlatformFaultDomainCount
-            };
+                var avSetParams = new AvailabilitySet
+                {
+                    Name = this.Name,
+                    Location = this.Location,
+                    PlatformUpdateDomainCount = this.PlatformUpdateDomainCount,
+                    PlatformFaultDomainCount = this.PlatformFaultDomainCount
+                };
 
-            var result = this.AvailabilitySetClient.CreateOrUpdate(
-                this.ResourceGroupName,
-                avSetParams);
+                var result = this.AvailabilitySetClient.CreateOrUpdate(
+                    this.ResourceGroupName,
+                    avSetParams);
 
-            var psResult = Mapper.Map<PSAvailabilitySet>(result.AvailabilitySet);
-            psResult = Mapper.Map<AzureOperationResponse, PSAvailabilitySet>(result, psResult);
-            WriteObject(psResult);
+                var psResult = Mapper.Map<PSAvailabilitySet>(result.AvailabilitySet);
+                psResult = Mapper.Map<AzureOperationResponse, PSAvailabilitySet>(result, psResult);
+                WriteObject(psResult);
+            });
         }
     }
 }

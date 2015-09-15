@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Compute
         ProfileNouns.DataDisk),
     OutputType(
         typeof(PSVirtualMachine))]
-    public class AddAzureVMDataDiskCommand : AzurePSCmdlet
+    public class AddAzureVMDataDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Alias("VMProfile")]
         [Parameter(
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 4,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMDataDiskSizeInGB)]
-        [ValidateNotNullOrEmpty]
+        [AllowNull]
         public int? DiskSizeInGB { get; set; }
 
         [Parameter(
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string SourceImageUri { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             var storageProfile = this.VM.StorageProfile;
 

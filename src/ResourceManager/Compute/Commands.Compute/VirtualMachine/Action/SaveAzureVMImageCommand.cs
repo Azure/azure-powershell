@@ -22,27 +22,18 @@ using System.IO;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsData.Save, ProfileNouns.VirtualMachineImage)]
+    [Cmdlet(VerbsData.Save, ProfileNouns.VirtualMachineImage, DefaultParameterSetName = ResourceGroupNameParameterSet)]
     [OutputType(typeof(PSComputeLongRunningOperation))]
-    public class SaveAzureVMImageCommand : VirtualMachineBaseCmdlet
+    public class SaveAzureVMImageCommand : VirtualMachineActionBaseCmdlet
     {
-        public string Name { get; set; }
-
-        [Parameter(
-           Mandatory = true,
-           Position = 0,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
+        [Alias("VMName")]
         [Parameter(
            Mandatory = true,
            Position = 1,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The virtual machine name.")]
         [ValidateNotNullOrEmpty]
-        public string VMName { get; set; }
+        public string Name { get; set; }
 
         [Parameter(
            Mandatory = true,
@@ -75,29 +66,32 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
-            var parameters = new VirtualMachineCaptureParameters
+            ExecuteClientAction(() =>
             {
-                DestinationContainerName = DestinationContainerName,
-                Overwrite = Overwrite.IsPresent,
-                VirtualHardDiskNamePrefix = VHDNamePrefix
-            };
+                var parameters = new VirtualMachineCaptureParameters
+                {
+                    DestinationContainerName = DestinationContainerName,
+                    Overwrite = Overwrite.IsPresent,
+                    VirtualHardDiskNamePrefix = VHDNamePrefix
+                };
 
-            var op = this.VirtualMachineClient.Capture(
-                this.ResourceGroupName,
-                this.VMName,
-                parameters);
+                var op = this.VirtualMachineClient.Capture(
+                    this.ResourceGroupName,
+                    this.Name,
+                    parameters);
 
-            var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+                var result = Mapper.Map<PSComputeLongRunningOperation>(op);
 
-            if (! string.IsNullOrWhiteSpace(this.Path))
-            {
-                File.WriteAllText(this.Path, result.Output);
-            }
-            WriteObject(result);
+                if (!string.IsNullOrWhiteSpace(this.Path))
+                {
+                    File.WriteAllText(this.Path, result.Output);
+                }
+                WriteObject(result);
+            });
         }
     }
 }

@@ -22,7 +22,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Profile
     /// azure subscription, provides common support
     /// for the SubscriptionDataFile parameter.
     /// </summary>
-    public abstract class SubscriptionCmdletBase : AzurePSCmdlet
+    public abstract class SubscriptionCmdletBase : AzureSMCmdlet
     {
         private readonly bool _saveProfile;
 

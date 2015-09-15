@@ -171,7 +171,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
 
         public void NewAzureVMProcess()
         {
-            AzureSubscription currentSubscription = Profile.Context.Subscription;
+            AzureSubscription currentSubscription = Profile.DefaultContext.Subscription;
             CloudStorageAccount currentStorage = null;
             try
             {
@@ -238,7 +238,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                 }
                 catch (CloudException ex)
                 {
-                    this.WriteExceptionDetails(ex);
+                    WriteExceptionError(ex);
                     return;
                 }
             }
@@ -354,7 +354,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                     throw new Exception(Resources.ServiceDoesNotExistSpecifyLocationOrAffinityGroup);
                 }
 
-                this.WriteExceptionDetails(ex);
+                WriteExceptionError(ex);
             }
         }
 
@@ -549,7 +549,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
                 {
                     return false;
                 }
-                this.WriteExceptionDetails(ex);
+                WriteExceptionError(ex);
             }
 
             return false;

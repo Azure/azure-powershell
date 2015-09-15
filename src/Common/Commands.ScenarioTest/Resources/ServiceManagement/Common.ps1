@@ -88,3 +88,36 @@ function Cleanup-Storage
          Write-Warning "Cannot Remove the Storage Account"
     }
 }
+
+<#
+.SYNOPSIS
+Gets test mode - 'Record' or 'Playback'
+#>
+function Get-ComputeTestMode
+{
+    $oldErrorActionPreferenceValue = $ErrorActionPreference;
+    $ErrorActionPreference = "SilentlyContinue";
+    
+    try
+    {
+        $testMode = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode;
+        $testMode = $testMode.ToString();
+    }
+    catch
+    {
+        if (($Error.Count -gt 0) -and ($Error[0].Exception.Message -like '*Unable to find type*'))
+        {
+            $testMode = 'Record';
+        }
+        else
+        {
+            throw;
+        }
+    }
+    finally
+    {
+        $ErrorActionPreference = $oldErrorActionPreferenceValue;
+    }
+
+    return $testMode;
+}

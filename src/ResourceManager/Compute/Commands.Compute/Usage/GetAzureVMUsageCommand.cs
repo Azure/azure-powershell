@@ -34,21 +34,24 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
-            ListUsagesResponse result = this.UsageClient.List(this.Location.Canonicalize());
-
-            List<PSUsage> psResultList = new List<PSUsage>();
-            foreach (var item in result.Usages)
+            ExecuteClientAction(() =>
             {
-                var psItem = Mapper.Map<PSUsage>(item);
-                psItem = Mapper.Map<AzureOperationResponse, PSUsage>(result, psItem);
-                psResultList.Add(psItem);
-            }
+                ListUsagesResponse result = this.UsageClient.List(this.Location.Canonicalize());
 
-            WriteObject(psResultList, true);
+                List<PSUsage> psResultList = new List<PSUsage>();
+                foreach (var item in result.Usages)
+                {
+                    var psItem = Mapper.Map<PSUsage>(item);
+                    psItem = Mapper.Map<AzureOperationResponse, PSUsage>(result, psItem);
+                    psResultList.Add(psItem);
+                }
+
+                WriteObject(psResultList, true);
+            });
         }
     }
 }

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// A cmdlet that creates a new azure resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureResource", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.ResourceIdParameterSet), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Set, "AzureRMResource", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.ResourceIdParameterSet), OutputType(typeof(PSObject))]
     public sealed class SetAzureResourceCmdlet : ResourceManipulationCmdletBase
     {
         /// <summary>
@@ -85,6 +85,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 this.WriteWarning("This cmdlet is using the legacy properties object format. This format is being deprecated. Please use '-OutputObjectFormat New' and update your scripts.");
             }
 
+            if(!string.IsNullOrEmpty(this.ODataQuery))
+            {
+                this.WriteWarning("The ODataQuery parameter is being deprecated in Set-AzureResource cmdlet and will be removed in a future release.");
+            }
+
             var resourceId = this.GetResourceId();
             this.ConfirmAction(
                 this.Force,
@@ -124,7 +129,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
                         .WaitOnOperation(operationResult: operationResult);
 
-                    this.WriteObject(result.ToResource().ToPsObject(this.OutputObjectFormat.Value));
+                    this.TryConvertToResourceAndWriteObject(result, this.OutputObjectFormat.Value);
                 });
         }
 

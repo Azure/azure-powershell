@@ -23,10 +23,11 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.Azure.Test;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.DataFactories.Test
 {
-    public abstract class DataFactoriesScenarioTestsBase
+    public abstract class DataFactoriesScenarioTestsBase : RMTestBase
     {
         private EnvironmentSetupHelper helper;
 
@@ -67,9 +68,9 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
             }
         }
 
-        protected DataPipelineManagementClient GetDataPipelineManagementClient()
+        protected DataFactoryManagementClient GetDataPipelineManagementClient()
         {
-            return TestBase.GetServiceClient<DataPipelineManagementClient>(new CSMTestEnvironmentFactory());
+            return TestBase.GetServiceClient<DataFactoryManagementClient>(new CSMTestEnvironmentFactory());
         }
 
         protected ResourceManagementClient GetResourceManagementClient()

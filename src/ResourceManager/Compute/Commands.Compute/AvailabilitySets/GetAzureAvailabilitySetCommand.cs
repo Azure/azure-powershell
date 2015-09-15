@@ -41,31 +41,34 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
-            if (string.IsNullOrEmpty(this.Name))
+            ExecuteClientAction(() =>
             {
-                var result = this.AvailabilitySetClient.List(this.ResourceGroupName);
-
-                List<PSAvailabilitySet> psResultList = new List<PSAvailabilitySet>();
-                foreach (var item in result.AvailabilitySets)
+                if (string.IsNullOrEmpty(this.Name))
                 {
-                    var psItem = Mapper.Map<PSAvailabilitySet>(item);
-                    psItem = Mapper.Map<AzureOperationResponse, PSAvailabilitySet>(result, psItem);
-                    psResultList.Add(psItem);
-                }
+                    var result = this.AvailabilitySetClient.List(this.ResourceGroupName);
 
-                WriteObject(psResultList, true);
-            }
-            else
-            {
-                var result = this.AvailabilitySetClient.Get(this.ResourceGroupName, this.Name);
-                var psResult = Mapper.Map<PSAvailabilitySet>(result.AvailabilitySet);
-                psResult = Mapper.Map<AzureOperationResponse, PSAvailabilitySet>(result, psResult);
-                WriteObject(psResult);
-            }
+                    List<PSAvailabilitySet> psResultList = new List<PSAvailabilitySet>();
+                    foreach (var item in result.AvailabilitySets)
+                    {
+                        var psItem = Mapper.Map<PSAvailabilitySet>(item);
+                        psItem = Mapper.Map<AzureOperationResponse, PSAvailabilitySet>(result, psItem);
+                        psResultList.Add(psItem);
+                    }
+
+                    WriteObject(psResultList, true);
+                }
+                else
+                {
+                    var result = this.AvailabilitySetClient.Get(this.ResourceGroupName, this.Name);
+                    var psResult = Mapper.Map<PSAvailabilitySet>(result.AvailabilitySet);
+                    psResult = Mapper.Map<AzureOperationResponse, PSAvailabilitySet>(result, psResult);
+                    WriteObject(psResult);
+                }
+            });
         }
     }
 }

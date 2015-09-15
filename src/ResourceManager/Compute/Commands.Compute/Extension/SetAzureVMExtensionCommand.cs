@@ -123,35 +123,38 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
-            if (this.Settings != null)
+            ExecuteClientAction(() =>
             {
-                this.SettingString = JsonConvert.SerializeObject(Settings);
-                this.ProtectedSettingString = JsonConvert.SerializeObject(ProtectedSettings);
-            }
+                if (this.Settings != null)
+                {
+                    this.SettingString = JsonConvert.SerializeObject(Settings);
+                    this.ProtectedSettingString = JsonConvert.SerializeObject(ProtectedSettings);
+                }
 
-            var parameters = new VirtualMachineExtension
-            {
-                Location = this.Location,
-                Name = this.Name,
-                Type = VirtualMachineExtensionType,
-                Publisher = this.Publisher,
-                ExtensionType = this.ExtensionType,
-                TypeHandlerVersion = this.TypeHandlerVersion,
-                Settings = this.SettingString,
-                ProtectedSettings = this.ProtectedSettingString,
-            };
+                var parameters = new VirtualMachineExtension
+                {
+                    Location = this.Location,
+                    Name = this.Name,
+                    Type = VirtualMachineExtensionType,
+                    Publisher = this.Publisher,
+                    ExtensionType = this.ExtensionType,
+                    TypeHandlerVersion = this.TypeHandlerVersion,
+                    Settings = this.SettingString,
+                    ProtectedSettings = this.ProtectedSettingString,
+                };
 
-            var op = this.VirtualMachineExtensionClient.CreateOrUpdate(
-                this.ResourceGroupName,
-                this.VMName,
-                parameters);
+                var op = this.VirtualMachineExtensionClient.CreateOrUpdate(
+                    this.ResourceGroupName,
+                    this.VMName,
+                    parameters);
 
-            var result = Mapper.Map<PSComputeLongRunningOperation>(op);
-            WriteObject(result);
+                var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+                WriteObject(result);
+            });
         }
     }
 }

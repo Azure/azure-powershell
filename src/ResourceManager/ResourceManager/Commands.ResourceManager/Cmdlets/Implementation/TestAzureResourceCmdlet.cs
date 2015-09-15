@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Cmdlet to check if a resource exists or not
     /// </summary>
-    [Cmdlet(VerbsDiagnostic.Test, "AzureResource", DefaultParameterSetName = TestAzureResoruceCmdlet.GetTenantResourceParameterSet), OutputType(typeof(bool))]
+    [Cmdlet(VerbsDiagnostic.Test, "AzureRMResource", DefaultParameterSetName = TestAzureResoruceCmdlet.GetTenantResourceParameterSet), OutputType(typeof(bool))]
     public sealed class TestAzureResoruceCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             base.OnProcessRecord();
             if (!this.TenantLevel)
             {
-                this.SubscriptionId = this.Profile.Context.Subscription.Id;
+                this.SubscriptionId = DefaultContext.Subscription.Id;
             }
 
             this.RunCmdlet();
@@ -131,6 +131,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private void RunCmdlet()
         {
+            this.WriteWarning("The Test-AzureResource cmdlet is being deprecated and will be removed in a future release.");
             this.WriteObject(this.TestResource());
         }
 

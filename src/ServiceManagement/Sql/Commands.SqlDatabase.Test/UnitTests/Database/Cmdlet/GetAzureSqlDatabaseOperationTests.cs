@@ -21,7 +21,7 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cmdlet
 {
     [TestClass]
-    public class GetAzureSqlDatabaseOperationTests : TestBase
+    public class GetAzureSqlDatabaseOperationTests : SMTestBase
     {
         [TestCleanup]
         public void CleanupTest()
@@ -36,6 +36,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
         /// <param name="powershell">The powershell instance containing the context.</param>
         /// <param name="contextVariable">The variable name that holds the server context.</param>
         [TestMethod]
+        [Ignore]
         public void GetAzureSqlDatabaseOperationWithSqlAuth()
         {
             using (System.Management.Automation.PowerShell powershell =

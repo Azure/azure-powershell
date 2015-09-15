@@ -24,6 +24,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Network
     [Cmdlet(VerbsCommon.Add, "AzureVirtualIP"), OutputType(typeof(ManagementOperationContext))]
     public class AddAzureVirtualIP : ServiceManagementBaseCmdlet
     {
+        public AddAzureVirtualIP()
+        {
+        }
+
+        public AddAzureVirtualIP(IClientProvider provider) : base(provider)
+        {
+        }
+
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = false)]
         [ValidateNotNullOrEmpty]
         public string ServiceName { get; set; }

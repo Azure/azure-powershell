@@ -27,7 +27,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureSqlDatabaseOperation", ConfirmImpact = ConfirmImpact.None,
         DefaultParameterSetName = ByConnectionContext)]
-    public class GetAzureSqlDatabaseOperation : AzurePSCmdlet
+    public class GetAzureSqlDatabaseOperation : AzureSMCmdlet
     {
         #region Parameter Sets
 
@@ -111,7 +111,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
                     break;
 
                 case ByServerName:
-                    context = ServerDataServiceCertAuth.Create(this.ServerName, Profile, Profile.Context.Subscription);
+                    context = ServerDataServiceCertAuth.Create(this.ServerName, Profile, Profile.DefaultContext.Subscription);
                     break;
             }
             ProcessWithContext(context);
