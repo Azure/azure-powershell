@@ -17,6 +17,7 @@ using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Factories;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Subscriptions;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +40,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             AzureSubscription newSubscription = null;
             AzureTenant newTenant = new AzureTenant();
+            
+            if (_profile != null && _profile.TokenCache != null && _profile.TokenCache.Length > 0)
+            {
+                TokenCache.DefaultShared.Deserialize(_profile.TokenCache);
+            }
 
             // (tenant and subscription are present) OR
             // (tenant is present and subscription is not provided)
@@ -60,7 +66,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                         break;
                     }
                 }
-
             }
 
             if (newSubscription == null)
@@ -69,6 +74,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
 
             _profile.DefaultContext = new AzureContext(newSubscription, account, environment, newTenant);
+            _profile.TokenCache = TokenCache.DefaultShared.Serialize();
 
             return _profile;
         }
@@ -87,7 +93,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     environment,
                     tenantId,
                     password,
-                    promptBehavior);
+                    promptBehavior,
+                    TokenCache.DefaultShared);
             using (var subscriptionClient = AzureSession.ClientFactory.CreateCustomClient<SubscriptionClient>(
                 new TokenCloudCredentials(accessToken.AccessToken),
                 environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager)))
@@ -130,6 +137,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                         Name = subscriptionFromServer.DisplayName,
                         Properties = new Dictionary<AzureSubscription.Property, string> { { AzureSubscription.Property.Tenants, accessToken.TenantId } }
                     };
+
+                    account.Properties[AzureAccount.Property.Tenants] = accessToken.TenantId;
                     return true;
                 }
 
@@ -142,8 +151,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             ShowDialog promptBehavior = password == null ? ShowDialog.Always : ShowDialog.Never;
 
-            var commonTenantToken = AzureSession.AuthenticationFactory.Authenticate(account, environment,
-                AuthenticationFactory.CommonAdTenant, password, promptBehavior);
+            var commonTenantToken = AzureSession.AuthenticationFactory.Authenticate(
+                account, 
+                environment,
+                AuthenticationFactory.CommonAdTenant, 
+                password, 
+                promptBehavior,
+                TokenCache.DefaultShared);
 
             using (var subscriptionClient = AzureSession.ClientFactory.CreateCustomClient<SubscriptionClient>(
                     new TokenCloudCredentials(commonTenantToken.AccessToken),

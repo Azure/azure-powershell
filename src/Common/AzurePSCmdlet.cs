@@ -440,7 +440,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected virtual void Dispose(bool disposing)
         {
-            _adalListener.Dispose();
+            if (_adalListener != null)
+            {
+                _adalListener.Dispose();
+            }
         }
 
         public void Dispose()

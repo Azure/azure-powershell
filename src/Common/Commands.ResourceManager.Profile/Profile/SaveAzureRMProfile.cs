@@ -21,37 +21,33 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Profile
 {
     /// <summary>
-    /// Selects Microsoft Azure profile.
+    /// Saves Microsoft Azure profile.
     /// </summary>
-    [Cmdlet(VerbsCommon.Select, "AzureProfile"), OutputType(typeof(AzureRMProfile))]
-    public class SelectAzureProfileCommand : AzureRMCmdlet
+    [Cmdlet(VerbsData.Save, "AzureRMProfile"), OutputType(typeof(AzureRMProfile))]
+    public class SaveAzureRMProfileCommand : AzureRMCmdlet
     {
-        internal const string InMemoryProfileParameterSet = "InMemoryProfile";
-        internal const string ProfileFromDiskParameterSet = "ProfileFromDisk";
-
-        [Parameter(ParameterSetName = InMemoryProfileParameterSet, Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = false, Position = 0, ValueFromPipelineByPropertyName = true)]
         public AzureRMProfile Profile { get; set; }
 
-        [Parameter(ParameterSetName = ProfileFromDiskParameterSet, Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true)]
         public string Path { get; set; }
 
         protected override void ProcessRecord()
         {
-            if (!string.IsNullOrEmpty(Path))
+            if (Profile != null)
             {
-                AzureRMCmdlet.DefaultProfile = new AzureRMProfile(Path);
+                Profile.Save(Path);
             }
             else
             {
-                AzureRMCmdlet.DefaultProfile = Profile;
+                if (AzureRMCmdlet.DefaultProfile == null)
+                {
+                    throw new ArgumentException(Resources.AzureProfileMustNotBeNull);
+                }
+                AzureRMCmdlet.DefaultProfile.Save(Path);
             }
 
-            if (AzureRMCmdlet.DefaultProfile == null)
-            {
-                throw new ArgumentException(Resources.AzureProfileMustNotBeNull);
-            }
-
-            WriteObject(AzureRMCmdlet.DefaultProfile);
+            WriteVerbose(string.Format("Profile saved to: {0}.", Path));
         }
     }
 }
