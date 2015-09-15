@@ -117,7 +117,7 @@
       <HintPath>..\..\..\packages\Moq.4.2.1402.2112\lib\net40\Moq.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -147,11 +147,7 @@
     <Compile Include="Autoscale\NewAutoscaleProfileCommandTests.cs" />
     <Compile Include="Autoscale\NewAutoscaleRuleCommandTests.cs" />
     <Compile Include="Autoscale\RemoveAutoscaleSettingCommandTests.cs" />
-    <Compile Include="Events\GetAzureCorrelationIdLogCommandTests.cs" />
-    <Compile Include="Events\GetAzureResourceLogCommandTests.cs" />
-    <Compile Include="Events\GetAzureResourceProviderLogCommandTests.cs" />
-    <Compile Include="Events\GetAzureSubscriptionIdLogCommandTests.cs" />
-    <Compile Include="Events\GetAzureResourceGroupLogCommandTests.cs" />
+    <Compile Include="Events\GetAzureLogCommandTests.cs" />
     <Compile Include="Metrics\FormatMetricsAsTableCommandTests.cs" />
     <Compile Include="Metrics\GetMetricDefinitionsCommandTests.cs" />
     <Compile Include="Metrics\GetMetricsCommandTests.cs" />
