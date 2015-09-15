@@ -262,10 +262,12 @@ namespace Microsoft.Azure.Commands.Resources
                     ResourceName = ResourceName,
                     ResourceType = ResourceType,
                     Subscription = string.IsNullOrEmpty(ResourceGroupName) ? null : DefaultProfile.DefaultContext.Subscription.Id.ToString()
-                }
+                },
+                ExpandPrincipalGroups = ExpandPrincipalGroups.IsPresent,
+                IncludeClassicAdministrators = IncludeClassicAdministrators.IsPresent
             };
 
-            WriteObject(PoliciesClient.FilterRoleAssignments(options, DefaultProfile.DefaultContext.Subscription.Id.ToString(), ExpandPrincipalGroups.IsPresent, IncludeClassicAdministrators.IsPresent), true);
+            WriteObject(PoliciesClient.FilterRoleAssignments(options, DefaultProfile.DefaultContext.Subscription.Id.ToString()), true);
         }
     }
 }

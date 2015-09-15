@@ -53,5 +53,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public ResourceIdentifier ResourceIdentifier { get; set; }
 
         public ADObjectFilterOptions ADObjectFilter { get; set; }
+
+        public bool ExpandPrincipalGroups { get; set; }
+
+        public bool IncludeClassicAdministrators { get; set; }
     }
 }

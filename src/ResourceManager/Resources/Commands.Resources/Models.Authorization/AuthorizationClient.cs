@@ -130,10 +130,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// </summary>
         /// <param name="options">The filtering options</param>
         /// <param name="currentSubscription">The current subscription</param>
-        /// <param name="expandPrincipalGroups">If true, assignments to the specified (user) principal's groups are also returned, in addition to direct assignments to the user</param>
-        /// <param name="includeClassicAdmins">If true, the subscription classic administrators are also returned as assignments</param>
         /// <returns>The filtered role assignments</returns>
-        public List<PSRoleAssignment> FilterRoleAssignments(FilterRoleAssignmentsOptions options, string currentSubscription, bool expandPrincipalGroups = false, bool includeClassicAdmins = false)
+        public List<PSRoleAssignment> FilterRoleAssignments(FilterRoleAssignmentsOptions options, string currentSubscription)
         {
             List<PSRoleAssignment> result = new List<PSRoleAssignment>();
             ListAssignmentsFilterParameters parameters = new ListAssignmentsFilterParameters();
@@ -141,17 +139,17 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             if (options.ADObjectFilter.HasFilter)
             {
                 // Filter first by principal
-                if (expandPrincipalGroups)
+                if (options.ExpandPrincipalGroups)
                 {
                     PSADObject adObject = ActiveDirectoryClient.GetADObject(options.ADObjectFilter);
                     if (adObject == null)
                     {
-                        throw new KeyNotFoundException("The provided information does not map to an AD object.");
+                        throw new KeyNotFoundException(ProjectResources.PrincipalNotFound);
                     }
 
                     if (!(adObject is PSADUser))
                     {
-                        throw new InvalidOperationException("ExpandPrincipalGroups is only supported for a User principal");
+                        throw new InvalidOperationException(ProjectResources.ExpandGroupsNotSupported);
                     }
                     
                     parameters.AssignedToPrincipalId = adObject.Id;
@@ -188,7 +186,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 result = result.Where(r => r.RoleDefinitionName.Equals(options.RoleDefinition, StringComparison.OrdinalIgnoreCase)).ToList();
             }
 
-            if (includeClassicAdmins)
+            if (options.IncludeClassicAdministrators)
             {
                 // Get classic administrator access assignments 
                 List<ClassicAdministrator> classicAdministrators = AuthorizationManagementClient.ClassicAdministrators.List().ClassicAdministrators.ToList(); 
