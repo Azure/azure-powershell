@@ -123,10 +123,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             //    IsSuccess = true,
             //};
 
-            //if (this.DefaultContext != null && this.DefaultContext.Subscription != null)
+            //if (this.Context != null && this.Context.Subscription != null)
             //{
             //    QosEvent.Uid = MetricHelper.GenerateSha256HashString(
-            //        this.DefaultContext.Subscription.Id.ToString());
+            //        this.Context.Subscription.Id.ToString());
             //}
             //else
             //{
