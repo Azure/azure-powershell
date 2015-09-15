@@ -212,10 +212,11 @@ namespace Microsoft.Azure.Commands.Resources
                     ResourceName = ResourceName,
                     ResourceType = ResourceType,
                     Subscription = string.IsNullOrEmpty(ResourceGroupName) ? null : DefaultProfile.DefaultContext.Subscription.Id.ToString()
-                }
+                },
+                ExcludeAssignmentsForDeletedPrincipals = true
             };
 
-            WriteObject(PoliciesClient.FilterRoleAssignments(options), true);
+            WriteObject(PoliciesClient.FilterRoleAssignments(options), enumerateCollection: true);
         }
     }
 }
