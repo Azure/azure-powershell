@@ -24,33 +24,30 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.Remove, Constants.AzureBatchComputeNodeUser)]
     public class RemoveBatchComputeNodeUserCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, 
-            HelpMessage = "The id of the pool that contains the compute node.")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the pool that contains the compute node.")]
         [ValidateNotNullOrEmpty]
         public string PoolId { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, 
-            HelpMessage = "The id of the compute node that contains the user.")]
+        [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the compute node that contains the user.")]
         [ValidateNotNullOrEmpty]
         public string ComputeNodeId { get; set; }
 
-        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, 
-            HelpMessage = "The name of the compute node user to delete.")]
+        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the compute node user to delete.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ComputeNodeUserOperationParameters parameters = new ComputeNodeUserOperationParameters(this.BatchContext, this.PoolId, this.ComputeNodeId,
                 this.Name, this.AdditionalBehaviors);
 
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Resources.RemoveComputeNodeUserConfirm, this.Name),
-                Resources.RemoveComputeNodeUser,
+                string.Format(Resources.RBU_RemoveConfirm, this.Name),
+                Resources.RBU_RemoveUser,
                 this.Name,
                 () => BatchClient.DeleteComputeNodeUser(parameters));
         }

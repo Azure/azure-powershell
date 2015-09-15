@@ -28,7 +28,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Scaffolding
 {
     
-    public class NewAzureRoleTemplateTests : SMTestBase
+    public class NewAzureRoleTemplateTests : TestBase
     {
         private MockCommandRuntime mockCommandRuntime;
 

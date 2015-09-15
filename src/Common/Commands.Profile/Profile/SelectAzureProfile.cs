@@ -32,14 +32,14 @@ namespace Microsoft.WindowsAzure.Commands.Profile
     /// <summary>
     /// Creates new Microsoft Azure profile.
     /// </summary>
-    [Cmdlet(VerbsCommon.Select, "AzureProfile"), OutputType(typeof(AzureSMProfile))]
-    public class SelectAzureProfileCommand : AzureSMCmdlet
+    [Cmdlet(VerbsCommon.Select, "AzureProfile"), OutputType(typeof(AzureProfile))]
+    public class SelectAzureProfileCommand : AzurePSCmdlet
     {
         internal const string NewProfileParameterSet = "NewProfile";
         internal const string DefaultProfileParameterSet = "DefaultProfile";
 
         [Parameter(ParameterSetName=NewProfileParameterSet, Mandatory=true, Position=0, ValueFromPipelineByPropertyName=true)]
-        public new AzureSMProfile Profile { get; set; }
+        public new AzureProfile Profile { get; set; }
 
         [Parameter(ParameterSetName=DefaultProfileParameterSet, Mandatory=true)]
         public SwitchParameter Default { get; set; }
@@ -54,7 +54,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         {
             if (ParameterSetName == DefaultProfileParameterSet)
             {
-                Profile = AzureSMCmdlet.InitializeDefaultProfile();
+                Profile = AzurePSCmdlet.InitializeDefaultProfile();
             }
 
             if (Profile == null)
@@ -62,7 +62,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                 throw new ArgumentException(Resources.AzureProfileMustNotBeNull);
             }
 
-            AzureSMCmdlet.CurrentProfile = Profile;
+            AzurePSCmdlet.CurrentProfile = Profile;
             WriteObject(Profile);
         }
     }

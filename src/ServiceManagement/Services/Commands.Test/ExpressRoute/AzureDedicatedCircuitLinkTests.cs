@@ -32,7 +32,7 @@ using Microsoft.Azure;
 namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
 {
     
-    public class AzureDedicatedCircuitLinkTests : SMTestBase
+    public class AzureDedicatedCircuitLinkTests : TestBase
     {
         private const string SubscriptionId = "foo";
 

@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Model;
 
 namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRMSqlServerActiveDirectoryAdministrator",
+    [Cmdlet(VerbsCommon.Remove, "AzureSqlServerActiveDirectoryAdministrator",
         SupportsShouldProcess = true, 
         ConfirmImpact = ConfirmImpact.High)]
     public class RemoveAzureSqlServerActiveDirectoryAdministrator : AzureSqlServerActiveDirectoryAdministratorCmdletBase
@@ -66,17 +66,17 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
         /// <summary>
         /// Entry point for the cmdlet
         /// </summary>
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (!Force.IsPresent && !ShouldProcess(
-               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerActiveDirectoryAdministratorDescription, this.ServerName),
-               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerActiveDirectoryAdministratorWarning, this.ServerName),
-               Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
+               string.Format(CultureInfo.InvariantCulture, Resources.RemoveAzureSqlServerActiveDirectoryAdministratorDescription, this.ServerName),
+               string.Format(CultureInfo.InvariantCulture, Resources.RemoveAzureSqlServerActiveDirectoryAdministratorWarning, this.ServerName),
+               Resources.ShouldProcessCaption))
             {
                 return;
             }
 
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
         }
     }
 }

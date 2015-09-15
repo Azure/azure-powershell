@@ -27,7 +27,7 @@ using Moq;
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.UnitTests.Cmdlets.IaaS.Extensions
 {
     [TestClass]
-    public class VirtualMachineExtensionImageFactoryTests : SMTestBase
+    public class VirtualMachineExtensionImageFactoryTests : TestBase
     {
         private const string nonExistingPublisherName = "nonExistingPublisherName";
         private const string nonExistingExtensionName = "nonExistingExtensionName";

@@ -33,17 +33,17 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public AzureProfile Profile { get; set; }
 
         /// <summary>
         /// Constructs a server adapter
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlServerUpgradeAdapter(AzureContext context)
+        public AzureSqlServerUpgradeAdapter(AzureProfile profile, AzureSubscription subscription)
         {
-            Context = context;
-            Communicator = new AzureSqlServerUpgradeCommunicator(Context);
+            Profile = profile;
+            Communicator = new AzureSqlServerUpgradeCommunicator(Profile, subscription);
         }
 
         /// <summary>

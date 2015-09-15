@@ -610,10 +610,6 @@
                 <Label>AutoBackupSettings</Label>
                 <PropertyName>AutoBackupSettings</PropertyName>
               </ListItem>
-              <ListItem>
-                <Label>KeyVaultCredentialSettings</Label>
-                <PropertyName>KeyVaultCredentialSettings</PropertyName>
-              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>

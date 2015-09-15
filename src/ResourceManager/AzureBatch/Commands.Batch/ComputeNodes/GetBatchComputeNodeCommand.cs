@@ -20,16 +20,13 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Get, Constants.AzureBatchComputeNode, DefaultParameterSetName = Constants.ODataFilterParameterSet), 
-        OutputType(typeof(PSComputeNode))]
+    [Cmdlet(VerbsCommon.Get, Constants.AzureBatchComputeNode, DefaultParameterSetName = Constants.ODataFilterParameterSet), OutputType(typeof(PSComputeNode))]
     public class GetBatchComputeNodeCommand : BatchObjectModelCmdletBase
     {
         private int maxCount = Constants.DefaultMaxCount;
 
-        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true, 
-            ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the pool.")]
-        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet, Mandatory = true, 
-            ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the pool.")]
+        [Parameter(ParameterSetName = Constants.ODataFilterParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string PoolId { get; set; }
 
@@ -54,7 +51,7 @@ namespace Microsoft.Azure.Commands.Batch
             set { this.maxCount = value; }
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ListComputeNodeOptions options = new ListComputeNodeOptions(this.BatchContext, this.PoolId, this.Pool, this.AdditionalBehaviors)
             {

@@ -18,10 +18,9 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.UnitTests
     using System.Management.Automation;
     using Microsoft.Azure.Commands.TrafficManager.Models;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using WindowsAzure.Commands.Test.Utilities.Common;
     using Xunit;
 
-    public class AddAzureTrafficManagerEndpointConfigTests : RMTestBase
+    public class AddAzureTrafficManagerEndpointConfigTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

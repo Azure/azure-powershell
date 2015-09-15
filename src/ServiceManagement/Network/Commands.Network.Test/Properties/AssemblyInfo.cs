@@ -15,7 +15,6 @@
 using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using Xunit;
 
 [assembly: AssemblyTitle("Network Test Assembly")]
 [assembly: AssemblyCompany("Microsoft")]

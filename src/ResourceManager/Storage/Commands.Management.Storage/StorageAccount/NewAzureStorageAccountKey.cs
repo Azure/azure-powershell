@@ -52,9 +52,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateSet(Key1, Key2, IgnoreCase = true)]
         public string KeyName { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             KeyName keyName = ParseKeyName(this.KeyName);
 

@@ -23,7 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.DataFactories
     /// In order to show warning for ADF cmdlets if client is using service management mode
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureDataFactory")]
-    public class NewAzureDataFactoryStubCommand : AzureSMCmdlet
+    public class NewAzureDataFactoryStubCommand : AzurePSCmdlet
     {
         //Just to make sure there is no error messages for parameters when clients use "New-AzureDataFactory" 
         [Parameter(Mandatory = false)]

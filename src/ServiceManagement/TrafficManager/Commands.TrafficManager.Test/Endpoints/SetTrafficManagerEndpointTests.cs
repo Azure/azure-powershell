@@ -25,7 +25,7 @@ using Microsoft.WindowsAzure.Management.TrafficManager.Models;
 namespace Microsoft.WindowsAzure.Commands.Test.TrafficManager.Endpoints
 {
     [TestClass]
-    public class SetTrafficManagerEndpointTests : SMTestBase
+    public class SetTrafficManagerEndpointTests : TestBase
     {
         private const string ProfileName = "my-profile";
         private const string ProfileDomainName = "my.profile.trafficmanager.net";

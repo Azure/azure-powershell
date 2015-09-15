@@ -24,8 +24,7 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsLifecycle.Start, Constants.AzureBatchPoolResize)]
     public class StartBatchPoolResizeCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, HelpMessage = "The id of the pool to resize.")]
+        [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "The id of the pool to resize.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
@@ -41,7 +40,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public ComputeNodeDeallocationOption? ComputeNodeDeallocationOption { get; set; }
         
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             PoolResizeParameters parameters = new PoolResizeParameters(this.BatchContext, this.Id, null, this.AdditionalBehaviors)
             {

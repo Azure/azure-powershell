@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Filters resource groups.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMResourceGroup"), OutputType(typeof(List<PSResourceGroup>))]
+    [Cmdlet(VerbsCommon.Get, "AzureResourceGroup"), OutputType(typeof(List<PSResourceGroup>))]
     public class GetAzureResourceGroupCommand : ResourcesBaseCmdlet
     {
         [Alias("ResourceGroupName")]
@@ -36,17 +36,8 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = "GetMultiple")]
         public SwitchParameter Detailed { get; set; }
         
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            if(this.Tag != null)
-            {
-                WriteWarning("The Tag parameter is being deprecated and will be removed in a future release.");
-            }
-            if(this.Detailed.IsPresent)
-            {
-                WriteWarning("The Detailed switch parameter is being deprecated and will be removed in a future release.");
-            }
-            WriteWarning("The output object of this cmdlet will be modified in a future release.");
             var detailed = Detailed.IsPresent || !string.IsNullOrEmpty(Name);
             WriteObject(ResourcesClient.FilterResourceGroups(Name, Tag, detailed), true);
         }

@@ -18,10 +18,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement;
-    using ResourceManager.Common;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
-    abstract public class AzureApiManagementCmdletBase : AzureRMCmdlet
+    abstract public class AzureApiManagementCmdletBase : AzurePSCmdlet
     {
         protected static TimeSpan LongRunningOperationDefaultTimeout = TimeSpan.FromMinutes(1);
 
@@ -33,7 +32,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             {
                 if (_client == null)
                 {
-                    _client = new ApiManagementClient(DefaultContext);
+                    _client = new ApiManagementClient(Profile);
                 }
                 return _client;
             }
@@ -45,7 +44,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public abstract void ExecuteApiManagementCmdlet();
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             try
             {

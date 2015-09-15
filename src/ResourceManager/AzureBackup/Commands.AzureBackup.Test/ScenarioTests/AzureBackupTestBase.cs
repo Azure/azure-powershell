@@ -23,11 +23,10 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Security;
 using System.Reflection;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
 {
-    public abstract class AzureBackupTestsBase : RMTestBase
+    public abstract class AzureBackupTestsBase
     {
         private CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
@@ -53,6 +52,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
             BackupVaultServicesMgmtClient = GetBackupVaultServicesManagementClient();
             BackupServicesMgmtClient = GetBackupServicesManagementClient();
 
+            //helper.SetupManagementClients(BackupServicesMgmtClient);
             helper.SetupSomeOfManagementClients(BackupVaultServicesMgmtClient, BackupServicesMgmtClient);
         }
 

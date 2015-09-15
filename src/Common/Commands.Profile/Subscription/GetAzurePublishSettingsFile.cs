@@ -48,7 +48,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         {
             AzureEnvironment environment = ProfileClient.GetEnvironmentOrDefault(Environment);
             string url = environment.GetPublishSettingsFileUrlWithRealm(Realm);
-            ProcessHelper.Start(url);
+            GeneralUtilities.LaunchWebPage(url);
 
             if (PassThru)
             {

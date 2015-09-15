@@ -22,7 +22,6 @@ using System.IO;
 using System.Management.Automation;
 using Rsrc = Microsoft.Azure.Commands.Compute.Properties.Resources;
 using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.Compute.StorageServices
 {
@@ -152,11 +151,11 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             StorageCredentialsFactory storageCredentialsFactory;
 
             var storageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(
-                        DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
+                        Profile.Context, AzureEnvironment.Endpoint.ResourceManager);
 
             if (StorageCredentialsFactory.IsChannelRequired(Destination))
             {
-                storageCredentialsFactory = new StorageCredentialsFactory(this.ResourceGroupName, storageClient, AzureRMCmdlet.DefaultProfile.DefaultContext.Subscription);
+                storageCredentialsFactory = new StorageCredentialsFactory(this.ResourceGroupName, storageClient, this.Profile.Context.Subscription);
             }
             else
             {
@@ -166,7 +165,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             return storageCredentialsFactory;
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             var parameters = ValidateParameters();
             var vhdUploadContext = VhdUploaderModel.Upload(parameters);

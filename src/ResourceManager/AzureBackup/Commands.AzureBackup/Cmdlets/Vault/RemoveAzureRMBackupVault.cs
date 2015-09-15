@@ -24,11 +24,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     [Cmdlet(VerbsCommon.Remove, "AzureRMBackupVault")]
     public class RemoveAzureRMBackupVault : AzureBackupVaultCmdletBase
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
             {
-                base.ProcessRecord();
+                base.ExecuteCmdlet();
 
                 if (!AzureBackupClient.DeleteVault(Vault.ResourceGroupName, Vault.Name))
                 {

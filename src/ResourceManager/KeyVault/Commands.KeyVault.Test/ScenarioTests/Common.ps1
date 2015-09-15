@@ -36,7 +36,7 @@ Gets the location for the Website. Default to West US if none found.
 #>
 function Get-Location
 {
-    $location = Get-AzureRMLocation | where {$_.Name -eq "Microsoft.KeyVault/vaults"}
+    $location = Get-AzureLocation | where {$_.Name -eq "Microsoft.KeyVault/vaults"}
 	if ($location -eq $null) 
 	{
 		return "East US"
@@ -53,7 +53,7 @@ Gets the default location for a provider
 #>
 function Get-ProviderLocation($provider)
 {
-    $location = Get-AzureRMLocation | where {$_.Name -eq $provider}
+    $location = Get-AzureLocation | where {$_.Name -eq $provider}
     if ($location -eq $null) {
         "East US"
     } else {
@@ -68,6 +68,6 @@ Cleans the created resource groups
 function Clean-ResourceGroup($rgname)
 {
     if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
-        Remove-AzureRMResourceGroup -Name $rgname -Force
+        Remove-AzureResourceGroup -Name $rgname -Force
     }
 }

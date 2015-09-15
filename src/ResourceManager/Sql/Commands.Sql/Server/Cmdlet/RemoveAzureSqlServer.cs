@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
     /// <summary>
     /// Defines the Get-AzureSqlDatabaseServer cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRMSqlServer",
+    [Cmdlet(VerbsCommon.Remove, "AzureSqlServer",
         SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.High)]
     public class RemoveAzureSqlServer : AzureSqlServerCmdletBase
@@ -78,17 +78,17 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// <summary>
         /// Entry point for the cmdlet
         /// </summary>
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (!Force.IsPresent && !ShouldProcess(
-               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerDescription, this.ServerName),
-               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerWarning, this.ServerName),
-               Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
+               string.Format(CultureInfo.InvariantCulture, Resources.RemoveAzureSqlServerDescription, this.ServerName),
+               string.Format(CultureInfo.InvariantCulture, Resources.RemoveAzureSqlServerWarning, this.ServerName),
+               Resources.ShouldProcessCaption))
             {
                 return;
             }
 
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
         }
     }
 }

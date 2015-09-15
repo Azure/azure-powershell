@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public AzureProfile Profile { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure Subscription
@@ -56,12 +56,12 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlDatabaseAdapter(AzureContext context)
+        public AzureSqlDatabaseAdapter(AzureProfile Profile, AzureSubscription subscription)
         {
-            Context = context;
-            _subscription = context.Subscription;
-            Communicator = new AzureSqlDatabaseCommunicator(Context);
-            ElasticPoolCommunicator = new AzureSqlElasticPoolCommunicator(Context);
+            this.Profile = Profile;
+            this._subscription = subscription;
+            Communicator = new AzureSqlDatabaseCommunicator(Profile, subscription);
+            ElasticPoolCommunicator = new AzureSqlElasticPoolCommunicator(Profile, subscription);
         }
 
         /// <summary>
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
         /// <returns></returns>
         public string GetServerLocation(string resourceGroupName, string serverName)
         {
-            AzureSqlServerAdapter serverAdapter = new AzureSqlServerAdapter(Context);
+            AzureSqlServerAdapter serverAdapter = new AzureSqlServerAdapter(Profile, _subscription);
             var server = serverAdapter.GetServer(resourceGroupName, serverName);
             return server.Location;
         }
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
             }
             else
             {
-                throw new NotSupportedException(string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.StandaloneDatabaseActivityNotSupported));
+                throw new NotSupportedException(string.Format(CultureInfo.InvariantCulture, Resources.StandaloneDatabaseActivityNotSupported));
             }
         }
     }

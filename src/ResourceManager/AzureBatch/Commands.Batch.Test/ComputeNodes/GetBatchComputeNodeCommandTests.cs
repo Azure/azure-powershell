@@ -21,12 +21,13 @@ using Moq;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Threading.Tasks;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
 {
-    public class GetBatchComputeNodeCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class GetBatchComputeNodeCommandTests
     {
         private GetBatchComputeNodeCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
@@ -55,8 +56,18 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
             cmdlet.Filter = null;
 
             // Build a compute node instead of querying the service on a Get ComputeNode call
-            ComputeNodeGetResponse response = BatchTestHelpers.CreateComputeNodeGetResponse(cmdlet.Id);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<ComputeNodeGetParameters, ComputeNodeGetResponse>(response);
+            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
+            {
+                BatchRequest<ComputeNodeGetParameters, ComputeNodeGetResponse> request =
+                (BatchRequest<ComputeNodeGetParameters, ComputeNodeGetResponse>)baseRequest;
+
+                request.ServiceRequestFunc = (cancellationToken) =>
+                {
+                    ComputeNodeGetResponse response = BatchTestHelpers.CreateComputeNodeGetResponse(cmdlet.Id);
+                    Task<ComputeNodeGetResponse> task = Task.FromResult(response);
+                    return task;
+                };
+            });
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -84,8 +95,18 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
             string[] idsOfConstructedComputeNodes = new[] { "computeNode1", "computeNode2" };
 
             // Build some compute nodes instead of querying the service on a List ComputeNodes call
-            ComputeNodeListResponse response = BatchTestHelpers.CreateComputeNodeListResponse(idsOfConstructedComputeNodes);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<ComputeNodeListParameters, ComputeNodeListResponse>(response);
+            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
+            {
+                BatchRequest<ComputeNodeListParameters, ComputeNodeListResponse> request =
+                (BatchRequest<ComputeNodeListParameters, ComputeNodeListResponse>)baseRequest;
+
+                request.ServiceRequestFunc = (cancellationToken) =>
+                {
+                    ComputeNodeListResponse response = BatchTestHelpers.CreateComputeNodeListResponse(idsOfConstructedComputeNodes);
+                    Task<ComputeNodeListResponse> task = Task.FromResult(response);
+                    return task;
+                };
+            });
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -121,8 +142,18 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
             string[] idsOfConstructedComputeNodes = new[] { "computeNode1", "computeNode2", "computeNode3" };
 
             // Build some compute nodes instead of querying the service on a List ComputeNodes call
-            ComputeNodeListResponse response = BatchTestHelpers.CreateComputeNodeListResponse(idsOfConstructedComputeNodes);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<ComputeNodeListParameters, ComputeNodeListResponse>(response);
+            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
+            {
+                BatchRequest<ComputeNodeListParameters, ComputeNodeListResponse> request =
+                (BatchRequest<ComputeNodeListParameters, ComputeNodeListResponse>)baseRequest;
+
+                request.ServiceRequestFunc = (cancellationToken) =>
+                {
+                    ComputeNodeListResponse response = BatchTestHelpers.CreateComputeNodeListResponse(idsOfConstructedComputeNodes);
+                    Task<ComputeNodeListResponse> task = Task.FromResult(response);
+                    return task;
+                };
+            });
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -163,8 +194,18 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
             string[] idsOfConstructedComputeNodes = new[] { "computeNode1", "computeNode2", "computeNode3" };
 
             // Build some compute nodes instead of querying the service on a List ComputeNodes call
-            ComputeNodeListResponse response = BatchTestHelpers.CreateComputeNodeListResponse(idsOfConstructedComputeNodes);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<ComputeNodeListParameters, ComputeNodeListResponse>(response);
+            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
+            {
+                BatchRequest<ComputeNodeListParameters, ComputeNodeListResponse> request =
+                (BatchRequest<ComputeNodeListParameters, ComputeNodeListResponse>)baseRequest;
+
+                request.ServiceRequestFunc = (cancellationToken) =>
+                {
+                    ComputeNodeListResponse response = BatchTestHelpers.CreateComputeNodeListResponse(idsOfConstructedComputeNodes);
+                    Task<ComputeNodeListResponse> task = Task.FromResult(response);
+                    return task;
+                };
+            });
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later

@@ -25,17 +25,17 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.UnitTests.Cmdle
         {
             //when service name is passed as argument in the cmdlet
             getAzureVmDscExtensionStatusCmdlet.GetService(ServiceName, null);
-            Assert.Equal(ServiceName, getAzureVmDscExtensionStatusCmdlet.ServiceName);
+            Assert.Equal(ServiceName, getAzureVmDscExtensionStatusCmdlet.Service);
 
             //when vm object is passed as argument in the cmdlet
             getAzureVmDscExtensionStatusCmdlet.GetService("", GetAzureVM(ServiceName, ServiceName));
-            Assert.Equal(ServiceName, getAzureVmDscExtensionStatusCmdlet.ServiceName);
+            Assert.Equal(ServiceName, getAzureVmDscExtensionStatusCmdlet.Service);
         }
 
         [Fact]
         public void TestGetVirtualMachineDscStatusContextListWithServiceName()
         {
-            getAzureVmDscExtensionStatusCmdlet.ServiceName = ServiceName;
+            getAzureVmDscExtensionStatusCmdlet.Service = ServiceName;
 
             // service has multiple vm's
             var roles = new List<NSM.Role> {CreateRole("dscmachine01"), CreateRole("dscmachine02")};
@@ -59,7 +59,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.UnitTests.Cmdle
         [Fact]
         public void TestGetVirtualMachineDscStatusContextListWithServiceNameAndVmName()
         {
-            getAzureVmDscExtensionStatusCmdlet.ServiceName = ServiceName;
+            getAzureVmDscExtensionStatusCmdlet.Service = ServiceName;
             getAzureVmDscExtensionStatusCmdlet.Name = "dscmachine01";
 
             // service has multiple vm's
@@ -84,7 +84,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.UnitTests.Cmdle
         [Fact]
         public void TestGetVirtualMachineDscStatusContextListWithServiceNameAndIncorrectVmName()
         {
-            getAzureVmDscExtensionStatusCmdlet.ServiceName = ServiceName;
+            getAzureVmDscExtensionStatusCmdlet.Service = ServiceName;
             getAzureVmDscExtensionStatusCmdlet.Name = "some-blah";
 
             // service has multiple vm's
@@ -108,7 +108,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.UnitTests.Cmdle
         [Fact]
         public void TestGetVirtualMachineDscStatusContextListWithVm()
         {
-            getAzureVmDscExtensionStatusCmdlet.ServiceName = ServiceName;
+            getAzureVmDscExtensionStatusCmdlet.Service = ServiceName;
             getAzureVmDscExtensionStatusCmdlet.VmName = "dscmachine02";
 
             // service has multiple vm's
@@ -127,7 +127,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.UnitTests.Cmdle
         [Fact]
         public void TestCreateDscStatusContext()
         {
-            getAzureVmDscExtensionStatusCmdlet.ServiceName = ServiceName;
+            getAzureVmDscExtensionStatusCmdlet.Service = ServiceName;
 
             var roles = new List<NSM.Role> {CreateRole("dscmachine02")};
             var roleInstances = new List<NSM.RoleInstance> {CreateRoleInstance("dscmachine02")};

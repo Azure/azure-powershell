@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// <summary>
         /// Execute the cmdlet
         /// </summary>
-        protected override void ProcessRecordInternal()
+        protected override void ExecuteCmdletInternal()
         {
             AzureOperationResponse result = this.InsightsManagementClient.AutoscaleOperations.DeleteSettingAsync(resourceGroupName: this.ResourceGroup, autoscaleSettingName: this.Name).Result;
             WriteObject(result);

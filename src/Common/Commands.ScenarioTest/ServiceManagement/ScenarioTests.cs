@@ -125,14 +125,5 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         {
             this.RunPowerShellTest("Run-ServiceDeploymentExtensionCmdletTests");
         }
-
-        [Fact]
-        [Trait(Category.Service, Category.ServiceManagement)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.AcceptanceType, Category.BVT)]
-        public void RunEnableAndDisableDataCollectionTests()
-        {
-            this.RunPowerShellTest("Run-EnableAndDisableDataCollectionTests");
-        }
     }
 }

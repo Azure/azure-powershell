@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Create a new Webhook for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRMAutomationWebhook")]
+    [Cmdlet(VerbsCommon.New, "AzureAutomationWebhook")]
     [OutputType(typeof(Webhook))]
     public class NewAzureAutomationWebhook : AzureAutomationBaseCmdlet
     {
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void AutomationProcessRecord()
+        protected override void AutomationExecuteCmdlet()
         {
             this.ConfirmAction(
                 Force.IsPresent,

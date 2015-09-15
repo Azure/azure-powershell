@@ -39,12 +39,12 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
-                if (this.Force.IsPresent || this.ShouldContinue(Microsoft.Azure.Commands.Compute.Properties.Resources.VirtualMachineRemovalConfirmation, Microsoft.Azure.Commands.Compute.Properties.Resources.VirtualMachineRemovalCaption))
+                if (this.Force.IsPresent || this.ShouldContinue(Properties.Resources.VirtualMachineRemovalConfirmation, Properties.Resources.VirtualMachineRemovalCaption))
                 {
                     var op = this.VirtualMachineClient.Delete(this.ResourceGroupName, this.Name);
                     var result = Mapper.Map<PSComputeLongRunningOperation>(op);

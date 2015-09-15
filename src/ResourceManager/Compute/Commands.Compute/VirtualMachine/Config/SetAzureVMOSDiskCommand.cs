@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Compute
         DefaultParameterSetName = WindowsParamSet),
     OutputType(
         typeof(PSVirtualMachine))]
-    public class SetAzureVMOSDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+    public class SetAzureVMOSDiskCommand : AzurePSCmdlet
     {
         protected const string WindowsParamSet = "WindowsParamSet";
         protected const string LinuxParamSet = "LinuxParamSet";
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = HelpMessages.VMOSDiskLinuxOSType)]
         public SwitchParameter Linux { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (this.VM.StorageProfile == null)
             {

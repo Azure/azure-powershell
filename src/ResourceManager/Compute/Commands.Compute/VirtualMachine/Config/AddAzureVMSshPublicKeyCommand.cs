@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Compute
         ProfileNouns.SshPublicKey),
     OutputType(
         typeof(PSVirtualMachine))]
-    public class NewAzureSshPublicKeyCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+    public class NewAzureSshPublicKeyCommand : AzurePSCmdlet
     {
         [Alias("VMProfile")]
         [Parameter(
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
 
             if (this.VM.OSProfile == null)
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Compute
             }
             else if (this.VM.OSProfile.WindowsConfiguration != null && this.VM.OSProfile.LinuxConfiguration == null)
             {
-                throw new ArgumentException(Microsoft.Azure.Commands.Compute.Properties.Resources.BothWindowsAndLinuxConfigurationsSpecified);
+                throw new ArgumentException(Properties.Resources.BothWindowsAndLinuxConfigurationsSpecified);
             }
 
             if (this.VM.OSProfile.LinuxConfiguration.SshConfiguration == null)

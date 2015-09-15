@@ -37,7 +37,7 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
         }
     }
 
-    public abstract class RemoteAppClientTest : SMTestBase
+    public abstract class RemoteAppClientTest : TestBase
     {
         protected const string subscriptionId = "foo";
 

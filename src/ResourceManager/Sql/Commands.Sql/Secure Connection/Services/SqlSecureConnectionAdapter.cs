@@ -38,13 +38,13 @@ namespace Microsoft.Azure.Commands.Sql.SecureConnection.Services
         /// <summary>
         /// The Azure profile used by this adapter
         /// </summary>
-        public AzureContext Context { get; set; }
+        public AzureProfile Profile { get; set; }
 
-        public SqlSecureConnectionAdapter(AzureContext context)
+        public SqlSecureConnectionAdapter(AzureProfile profile , AzureSubscription subscription)
         {
-            Context = context;
-            Subscription = context.Subscription;
-            Communicator = new SecureConnectionEndpointsCommunicator(Context);
+            Profile = profile;
+            Subscription = subscription;
+            Communicator = new SecureConnectionEndpointsCommunicator(profile, subscription);
         }
 
         /// <summary>

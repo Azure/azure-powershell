@@ -23,7 +23,7 @@ using Moq;
 namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
 {
     [TestClass]
-    public class RemoveAzureAutomationModuleTest : SMTestBase
+    public class RemoveAzureAutomationModuleTest : TestBase
     {
         private Mock<IAutomationClient> mockAutomationClient;
 

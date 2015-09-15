@@ -17,7 +17,7 @@ using Xunit;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class LoadBalancerTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class LoadBalancerTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

@@ -29,7 +29,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cmdlet
 {
     [TestClass]
-    public class AzureSqlDatabaseCopyCertAuthTests : SMTestBase
+    public class AzureSqlDatabaseCopyCertAuthTests : TestBase
     {
         private DateTime TestStartTime { get; set; }
 

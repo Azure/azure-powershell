@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Updates configuration on the dsc node.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRMAutomationDscNode")]
+    [Cmdlet(VerbsCommon.Set, "AzureAutomationDscNode")]
     [OutputType(typeof(DscNode))]
     public class SetAzureAutomationDscNode : AzureAutomationBaseCmdlet
     {
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             this.ConfirmAction(
                 this.Force.IsPresent,

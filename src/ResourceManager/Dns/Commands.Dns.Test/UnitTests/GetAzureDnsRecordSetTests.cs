@@ -16,10 +16,9 @@ namespace Microsoft.Azure.Commands.Dns.Test.UnitTests
 {
     using System.Management.Automation;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using WindowsAzure.Commands.Test.Utilities.Common;
     using Xunit;
 
-    public class GetAzureDnsRecordSetTests : RMTestBase
+    public class GetAzureDnsRecordSetTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

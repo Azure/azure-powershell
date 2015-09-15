@@ -59,7 +59,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 File = true,
             };
 
-            currentProfile = new AzureSMProfile();
+            currentProfile = new AzureProfile();
             var subscription = new AzureSubscription{Id = new Guid(base.subscriptionId) };
             subscription.Properties[AzureSubscription.Property.Default] = "True";
             currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
@@ -92,7 +92,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 TableStorage = true
             };
 
-            currentProfile = new AzureSMProfile();
+            currentProfile = new AzureProfile();
             var subscription = new AzureSubscription{Id = new Guid(base.subscriptionId) };
             subscription.Properties[AzureSubscription.Property.Default] = "True";
             currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
@@ -125,7 +125,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 BlobStorage = true
             };
 
-            currentProfile = new AzureSMProfile();
+            currentProfile = new AzureProfile();
             var subscription = new AzureSubscription{Id = new Guid(base.subscriptionId) };
             subscription.Properties[AzureSubscription.Property.Default] = "True";
             currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;
@@ -160,7 +160,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 Slot = slot
             };
 
-            currentProfile = new AzureSMProfile();
+            currentProfile = new AzureProfile();
             var subscription = new AzureSubscription{Id = new Guid(base.subscriptionId) };
             subscription.Properties[AzureSubscription.Property.Default] = "True";
             currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;

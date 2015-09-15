@@ -19,7 +19,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRMApplicationGatewayIPConfiguration"),
+    [Cmdlet(VerbsCommon.Get, "AzureApplicationGatewayIPConfiguration"),
         OutputType(typeof(PSApplicationGatewayIPConfiguration), typeof(IEnumerable<PSApplicationGatewayIPConfiguration>))]
     public class GetAzureApplicationGatewayIPConfigurationCommand : NetworkBaseCmdlet
     {
@@ -35,9 +35,9 @@ namespace Microsoft.Azure.Commands.Network
              HelpMessage = "The applicationGateway")]
         public PSApplicationGateway ApplicationGateway { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             
             if (!string.IsNullOrEmpty(this.Name))
             {

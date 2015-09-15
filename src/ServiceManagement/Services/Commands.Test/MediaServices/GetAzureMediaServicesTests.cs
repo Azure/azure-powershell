@@ -32,7 +32,7 @@ using Microsoft.Azure.Common.Authentication;
 namespace Microsoft.WindowsAzure.Commands.Test.MediaServices
 {
     
-    public class GetAzureMediaServicesTests : SMTestBase
+    public class GetAzureMediaServicesTests : TestBase
     {
         protected string SubscriptionId = "DE8C2681-0BCD-47DB-A8A6-A103D2D4A1B9";
 
@@ -73,7 +73,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.MediaServices
                 MediaServicesClient = clientMock.Object,
             };
 
-            currentProfile = new AzureSMProfile();
+            currentProfile = new AzureProfile();
             var subscription = new AzureSubscription { Id = new Guid(SubscriptionId) };
             subscription.Properties[AzureSubscription.Property.Default] = "True";
             currentProfile.Subscriptions[new Guid(SubscriptionId)] = subscription;
@@ -112,7 +112,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.MediaServices
                 MediaServicesClient = clientMock.Object,
                 Name = expectedName
             };
-            currentProfile = new AzureSMProfile();
+            currentProfile = new AzureProfile();
             var subscription = new AzureSubscription { Id = new Guid(SubscriptionId) };
             subscription.Properties[AzureSubscription.Property.Default] = "True";
             currentProfile.Subscriptions[new Guid(SubscriptionId)] = subscription;
@@ -154,7 +154,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.MediaServices
                 Name = mediaServicesAccountName
             };
 
-            currentProfile = new AzureSMProfile();
+            currentProfile = new AzureProfile();
             var subscription = new AzureSubscription { Id = new Guid(SubscriptionId) };
             subscription.Properties[AzureSubscription.Property.Default] = "True";
             currentProfile.Subscriptions[new Guid(SubscriptionId)] = subscription;

@@ -23,7 +23,7 @@ using Moq;
 namespace Microsoft.WindowsAzure.Commands.Test.ServiceBus
 {
     
-    public class RemoveAzureSBNamespaceTests : SMTestBase
+    public class RemoveAzureSBNamespaceTests : TestBase
     {
         public RemoveAzureSBNamespaceTests()
         {

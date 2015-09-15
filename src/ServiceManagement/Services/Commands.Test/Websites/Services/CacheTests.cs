@@ -26,7 +26,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 namespace Microsoft.WindowsAzure.Commands.Test.Websites.Services
 {
     
-    public class CacheTests : SMTestBase, IDisposable
+    public class CacheTests : TestBase, IDisposable
     {
         public static string SubscriptionName = "fakename";
 

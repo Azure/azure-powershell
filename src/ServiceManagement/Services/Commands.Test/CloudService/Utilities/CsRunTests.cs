@@ -24,7 +24,7 @@ using Moq;
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
 {
     
-    public class CsRunTests : SMTestBase
+    public class CsRunTests : TestBase
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

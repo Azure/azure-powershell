@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Sets an azure automation runbook's configuration values.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRMAutomationRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByRunbookName)]
+    [Cmdlet(VerbsCommon.Set, "AzureAutomationRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByRunbookName)]
     [OutputType(typeof(Runbook))]
     public class SetAzureAutomationRunbook : AzureAutomationBaseCmdlet
     {
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void AutomationProcessRecord()
+        protected override void AutomationExecuteCmdlet()
         {
             // ByRunbookName
             var runbook = this.AutomationClient.UpdateRunbook(

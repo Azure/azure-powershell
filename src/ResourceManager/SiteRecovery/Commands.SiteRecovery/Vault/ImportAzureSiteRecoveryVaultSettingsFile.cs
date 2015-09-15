@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// <summary>
     /// Imports Azure Site Recovery Vault Settings.
     /// </summary>
-    [Cmdlet(VerbsData.Import, "AzureRMSiteRecoveryVaultSettingsFile")]
+    [Cmdlet(VerbsData.Import, "AzureSiteRecoveryVaultSettingsFile")]
     [OutputType(typeof(ASRVaultSettings))]
     public class ImportAzureSiteRecoveryVaultSettingsFile : SiteRecoveryCmdletBase
     {
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             this.WriteVerbose("Vault Settings File path: " + this.Path);
 

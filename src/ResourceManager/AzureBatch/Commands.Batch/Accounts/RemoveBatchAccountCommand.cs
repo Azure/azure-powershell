@@ -14,34 +14,32 @@
 
 using Microsoft.Azure.Commands.Batch.Properties;
 using System.Management.Automation;
-using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRMBatchAccount")]
+    [Cmdlet(VerbsCommon.Remove, "AzureBatchAccount")]
     public class RemoveBatchAccountCommand : BatchCmdletBase
     {
         private static string mamlCall = "RemoveAccount";
 
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, 
-            HelpMessage = "The name of the Batch service account to remove.")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the Batch service account to remove.")]
         [Alias("Name")]
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
 
-        [Parameter(Position = 1, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group of the account being removed.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter]
+        [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Resources.RemoveAccountConfirm, this.AccountName),
-                Resources.RemoveBatchAccount,
+                string.Format(Resources.RBA_RemoveConfirm, this.AccountName),
+                Resources.RBA_RemoveResource,
                 this.AccountName,
                 () => DeleteAction(this.ResourceGroupName, this.AccountName));
         }

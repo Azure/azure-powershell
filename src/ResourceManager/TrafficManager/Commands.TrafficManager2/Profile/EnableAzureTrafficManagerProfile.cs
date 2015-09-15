@@ -20,7 +20,7 @@ using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Reso
 
 namespace Microsoft.Azure.Commands.TrafficManager
 {
-    [Cmdlet(VerbsLifecycle.Enable, "AzureRMTrafficManagerProfile"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsLifecycle.Enable, "AzureTrafficManagerProfile"), OutputType(typeof(bool))]
     public class EnableAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the profile.", ParameterSetName = "Fields")]
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateNotNullOrEmpty]
         public TrafficManagerProfile TrafficManagerProfile { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             TrafficManagerProfile profileToEnable = null;
 

@@ -16,9 +16,11 @@ using System;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Batch.Protocol.Models;
+using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
 using Xunit;
@@ -26,7 +28,7 @@ using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Pools
 {
-    public class SetBatchPoolOSVersionCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class SetBatchPoolOSVersionCommandTests
     {
         private SetBatchPoolOSVersionCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
@@ -59,8 +61,19 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
             cmdlet.TargetOSVersion = "targetOS";
 
-            // Don't go to the service on an Upgrade OS call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudPoolUpgradeOSParameters, CloudPoolUpgradeOSResponse>();
+            // Don't go to the service on an Upgrage OS call
+            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
+            {
+                BatchRequest<CloudPoolUpgradeOSParameters, CloudPoolUpgradeOSResponse> request =
+                (BatchRequest<CloudPoolUpgradeOSParameters, CloudPoolUpgradeOSResponse>)baseRequest;
+
+                request.ServiceRequestFunc = (cancellationToken) =>
+                {
+                    CloudPoolUpgradeOSResponse response = new CloudPoolUpgradeOSResponse();
+                    Task<CloudPoolUpgradeOSResponse> task = Task.FromResult(response);
+                    return task;
+                };
+            });
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set
@@ -80,13 +93,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.Id = "testPool";
             cmdlet.TargetOSVersion = targetOS;
 
-            // Don't go to the service on an Upgrade OS call
+            // Don't go to the service on an Enable AutoScale call
             RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
             {
                 BatchRequest<CloudPoolUpgradeOSParameters, CloudPoolUpgradeOSResponse> request =
                 (BatchRequest<CloudPoolUpgradeOSParameters, CloudPoolUpgradeOSResponse>)baseRequest;
 
-                // Grab the target OS version off the outgoing request
                 requestTargetOS = request.TypedParameters.TargetOSVersion;
 
                 request.ServiceRequestFunc = (cancellationToken) =>

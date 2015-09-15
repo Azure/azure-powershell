@@ -544,7 +544,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
         /// <param name="verboseStream">Action used to log detailed client progress</param>
         /// <param name="warningStream">Action used to log warning messages</param>
         public CloudServiceClient(
-            AzureSMProfile profile, 
+            AzureProfile profile, 
             AzureSubscription subscription,
             string currentLocation = null,
             Action<string> debugStream = null,
@@ -825,7 +825,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
 
             if (launch)
             {
-                ProcessHelper.Start(deployment.Uri.ToString());
+                GeneralUtilities.LaunchWebPage(deployment.Uri.ToString());
             }
             return deployment;
         }

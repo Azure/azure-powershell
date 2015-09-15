@@ -16,16 +16,18 @@ using System;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Batch.Protocol.Models;
+using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Collections.Generic;
 using System.Management.Automation;
+using System.Threading.Tasks;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Pools
 {
-    public class NewBatchPoolCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class NewBatchPoolCommandTests
     {
         private NewBatchPoolCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
@@ -57,7 +59,18 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.OSFamily = "4";
 
             // Don't go to the service on an Add CloudPool call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudPoolAddParameters, CloudPoolAddResponse>();
+            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
+            {
+                BatchRequest<CloudPoolAddParameters, CloudPoolAddResponse> request =
+                (BatchRequest<CloudPoolAddParameters, CloudPoolAddResponse>)baseRequest;
+
+                request.ServiceRequestFunc = (cancellationToken) =>
+                {
+                    CloudPoolAddResponse response = new CloudPoolAddResponse();
+                    Task<CloudPoolAddResponse> task = Task.FromResult(response);
+                    return task;
+                };
+            });
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameters are set

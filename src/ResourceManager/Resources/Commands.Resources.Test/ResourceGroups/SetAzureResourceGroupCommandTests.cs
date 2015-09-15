@@ -18,13 +18,12 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Resources.Test
 {
-    public class SetAzureResourceGroupCommandTests : RMTestBase
+    public class SetAzureResourceGroupCommandTests
     {
         private SetAzureResourceGroupCommand cmdlet;
 

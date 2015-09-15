@@ -17,7 +17,7 @@ using Xunit;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class NetworkSecurityGroupTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class NetworkSecurityGroupTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

@@ -29,7 +29,7 @@ using System.Text.RegularExpressions;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple
 {
-    public class StorSimpleCmdletBase : AzureSMCmdlet
+    public class StorSimpleCmdletBase : AzurePSCmdlet
     {
         //this property will determine whether before running the actual commandlet logic, should resource selection be verified
         protected bool verifyResourceBeforeCmdletExecute;
@@ -56,7 +56,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
             {
                 if (this.storSimpleClient == null)
                 {
-                    this.storSimpleClient = new StorSimpleClient(Profile, Profile.DefaultContext.Subscription);
+                    this.storSimpleClient = new StorSimpleClient(Profile, Profile.Context.Subscription);
                 }
                 storSimpleClient.ClientRequestId = Guid.NewGuid().ToString("D") + "_PS";
                 WriteVerbose(string.Format(Resources.ClientRequestIdMessage, storSimpleClient.ClientRequestId, DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss")));

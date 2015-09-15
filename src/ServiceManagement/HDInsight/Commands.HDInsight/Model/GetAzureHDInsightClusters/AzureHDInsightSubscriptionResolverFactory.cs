@@ -19,7 +19,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
 {
     internal class AzureHDInsightSubscriptionResolverFactory : IAzureHDInsightSubscriptionResolverFactory
     {
-        public IAzureHDInsightSubscriptionResolver Create(AzureSMProfile profile)
+        public IAzureHDInsightSubscriptionResolver Create(AzureProfile profile)
         {
             return new AzureHDInsightSubscriptionResolver(profile);
         }

@@ -20,7 +20,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRMPublicIpAddress"), OutputType(typeof(PSPublicIpAddress))]
+    [Cmdlet(VerbsCommon.Get, "AzurePublicIpAddress"), OutputType(typeof(PSPublicIpAddress))]
     public class GetAzurePublicIpAddressCommand : PublicIpAddressBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             if (!string.IsNullOrEmpty(this.Name))
             {
                 var publicIp = this.GetPublicIpAddress(this.ResourceGroupName, this.Name);

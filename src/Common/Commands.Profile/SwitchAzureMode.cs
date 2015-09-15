@@ -24,7 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
     /// Switches between ServiceManagement and ResourceManager modes.
     /// </summary>
     [Cmdlet(VerbsCommon.Switch, "AzureMode")]
-    public class SwitchAzureMode : AzureSMCmdlet
+    public class SwitchAzureMode : AzurePSCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Name of the mode to switch to. Valid values are AzureServiceManagement and AzureResourceManager")]
         [ValidateSet("AzureServiceManagement", "AzureResourceManager", IgnoreCase = false)]

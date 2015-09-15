@@ -36,11 +36,11 @@ namespace Microsoft.Azure.Commands.Tags.Model
         public Action<string> ErrorLogger { get; set; }
 
         /// <summary>
-        /// Creates new tags client instance.
+        /// Creates new TagsClient
         /// </summary>
-        /// <param name="context">The Azure context instance</param>
-        public TagsClient(AzureContext context)
-            : this(AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+        /// <param name="subscription">Subscription containing resources to manipulate</param>
+        public TagsClient(AzureProfile profile, AzureSubscription subscription)
+            : this(AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ResourceManager))
         {
 
         }

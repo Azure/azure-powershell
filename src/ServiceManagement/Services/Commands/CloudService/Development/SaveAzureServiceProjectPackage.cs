@@ -27,7 +27,7 @@ namespace Microsoft.WindowsAzure.Commands.CloudService.Development
     /// Packages the service project into cloud or local package.
     /// </summary>
     [Cmdlet(VerbsData.Save, "AzureServiceProjectPackage"), OutputType(typeof(PSObject))]
-    public class SaveAzureServiceProjectPackageCommand : AzureSMCmdlet
+    public class SaveAzureServiceProjectPackageCommand : AzurePSCmdlet
     {
         [Parameter(Mandatory = false)]
         [Alias("l")]

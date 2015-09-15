@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Creates a new resource group.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRMResourceGroup", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(PSResourceGroup))]
+    [Cmdlet(VerbsCommon.New, "AzureResourceGroup", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(PSResourceGroup))]
     public class NewAzureResourceGroupCommand : ResourceWithParameterBaseCmdlet, IDynamicParameters
     {
         [Alias("ResourceGroupName")]
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             CreatePSResourceGroupParameters parameters = new CreatePSResourceGroupParameters
             {
@@ -67,7 +67,6 @@ namespace Microsoft.Azure.Commands.Resources
             {
                 WriteWarning("The deployment parameters in New-AzureResourceGroup cmdlet is being deprecated and will be removed in a future release. Please use New-AzureResourceGroupDeployment to submit deployments.");
             }
-            WriteWarning("The output object of this cmdlet will be modified in a future release.");
             WriteObject(ResourcesClient.CreatePSResourceGroup(parameters));
         }
     }

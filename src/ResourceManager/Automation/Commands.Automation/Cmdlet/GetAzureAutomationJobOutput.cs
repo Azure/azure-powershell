@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets azure automation variables for a given account.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMAutomationJobOutput")]
+    [Cmdlet(VerbsCommon.Get, "AzureAutomationJobOutput")]
     [OutputType(typeof(JobStream))]
     public class GetAzureAutomationJobOutput : AzureAutomationBaseCmdlet
     {
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void AutomationProcessRecord()
+        protected override void AutomationExecuteCmdlet()
         {
             var nextLink = string.Empty;
 

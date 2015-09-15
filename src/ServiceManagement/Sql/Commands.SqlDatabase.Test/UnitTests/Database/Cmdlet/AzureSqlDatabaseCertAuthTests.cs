@@ -31,7 +31,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cmdlet
 {
     [TestClass]
-    public class AzureSqlDatabaseTests : SMTestBase
+    public class AzureSqlDatabaseTests : TestBase
     {
         [TestCleanup]
         public void CleanupTest()

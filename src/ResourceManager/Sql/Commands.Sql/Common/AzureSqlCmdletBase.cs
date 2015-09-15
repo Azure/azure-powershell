@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -23,7 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
     /// <summary>
     /// The base class for all Azure Sql cmdlets
     /// </summary>
-    public abstract class AzureSqlCmdletBase<M, A> : AzureRMCmdlet
+    public abstract class AzureSqlCmdletBase<M, A> : AzurePSCmdlet
     {
         /// <summary>
         /// Stores the per request session Id for all request made in this cmdlet call.
@@ -88,9 +87,9 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// <summary>
         /// Executes the cmdlet
         /// </summary>
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            ModelAdapter = InitModelAdapter(DefaultProfile.DefaultContext.Subscription);
+            ModelAdapter = InitModelAdapter(Profile.Context.Subscription);
             M model = this.GetEntity();
             M updatedModel = this.ApplyUserInputToModel(model);
             M responseModel = this.PersistChanges(updatedModel);

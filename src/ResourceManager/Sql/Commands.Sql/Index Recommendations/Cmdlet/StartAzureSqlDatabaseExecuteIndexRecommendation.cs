@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Sql.Cmdlet
     /// <summary>
     /// Defines the Start-AzureSqlDatabaseExecuteIndexRecommendation cmdlet
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureRMSqlDatabaseExecuteIndexRecommendation",
+    [Cmdlet(VerbsLifecycle.Start, "AzureSqlDatabaseExecuteIndexRecommendation",
         ConfirmImpact = ConfirmImpact.Low)]
     public class StartAzureSqlDatabaseExecuteIndexRecommendation : AzureSqlDatabaseExecuteIndexRecommendationCmdletBase
     {

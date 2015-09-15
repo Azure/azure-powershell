@@ -22,11 +22,10 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.Azure.Test;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics.Test
 {
-    public abstract class StreamAnalyticsScenarioTestsBase : RMTestBase
+    public abstract class StreamAnalyticsScenarioTestsBase
     {
         private EnvironmentSetupHelper helper;
 

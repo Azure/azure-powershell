@@ -18,7 +18,6 @@ using System.Runtime.Serialization;
 using System.Threading;
 using System.Xml;
 using Hyak.Common;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.RecoveryServices;
 using Microsoft.Azure.Management.RecoveryServices.Models;
 using Microsoft.Azure.Management.SiteRecovery;
@@ -31,7 +30,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// <summary>
     /// The base class for all Windows Azure Recovery Services commands
     /// </summary>
-    public abstract class SiteRecoveryCmdletBase : AzureRMCmdlet
+    public abstract class SiteRecoveryCmdletBase : AzurePSCmdlet
     {
         /// <summary>
         /// Recovery Services client.
@@ -52,7 +51,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             {
                 if (this.recoveryServicesClient == null)
                 {
-                    this.recoveryServicesClient = new PSRecoveryServicesClient(DefaultProfile);
+                    this.recoveryServicesClient = new PSRecoveryServicesClient(Profile, Profile.Context.Subscription);
                 }
 
                 return this.recoveryServicesClient;

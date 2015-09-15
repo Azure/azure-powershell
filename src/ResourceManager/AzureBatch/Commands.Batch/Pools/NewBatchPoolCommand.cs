@@ -35,8 +35,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string VirtualMachineSize { get; set; }
 
-        [Parameter(Mandatory = true, 
-            HelpMessage = "The Azure Guest OS family to be installed on the virtual machines in the pool.")]
+        [Parameter(Mandatory = true, HelpMessage = "The Azure Guest OS family to be installed on the virtual machines in the pool.")]
         [ValidateNotNullOrEmpty]
         public string OSFamily { get; set; }
 
@@ -83,7 +82,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSCertificateReference[] CertificateReferences { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             NewPoolParameters parameters = new NewPoolParameters(this.BatchContext, this.Id, this.AdditionalBehaviors)
             {

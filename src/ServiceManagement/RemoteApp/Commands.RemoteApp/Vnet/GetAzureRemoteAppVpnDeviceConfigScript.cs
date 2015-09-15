@@ -20,7 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
     [Cmdlet(VerbsCommon.Get, "AzureRemoteAppVpnDeviceConfigScript"), OutputType(typeof(String))]
-    public class GetAzureRemoteAppVpnDeviceConfigScript : VNetDeprecated
+    public class GetAzureRemoteAppVpnDeviceConfigScript : RdsCmdlet
     {
         [Parameter(Mandatory = true,
             Position = 0,

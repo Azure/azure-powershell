@@ -21,7 +21,7 @@ using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRMKeyVaultKey",
+    [Cmdlet(VerbsCommon.Get, "AzureKeyVaultKey",
         DefaultParameterSetName = ByVaultNameParameterSet, 
         HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(List<KeyIdentityItem>), typeof(KeyBundle))]
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #endregion
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             KeyBundle keyBundle;
             switch (ParameterSetName)

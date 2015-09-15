@@ -13,12 +13,19 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
+using System.Runtime.Serialization.Formatters;
+using System.Threading;
 using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Commands;
 using Microsoft.Azure.Management.WebSites;
+using System.Net;
+using Hyak.Common;
+using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Management.WebSites.Models;
 
 namespace Microsoft.Azure.Commands.WebApp.Utilities

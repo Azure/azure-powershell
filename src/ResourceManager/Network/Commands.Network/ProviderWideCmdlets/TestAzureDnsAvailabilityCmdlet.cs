@@ -17,7 +17,7 @@ using Microsoft.Azure.Management.Network;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsDiagnostic.Test, "AzureRMDnsAvailability"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsDiagnostic.Test, "AzureDnsAvailability"), OutputType(typeof(bool))]
     public class TestAzureDnsAvailabilityCmdlet : NetworkBaseCmdlet
     {
         [Parameter(
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             this.Location = this.Location.Replace(" ", string.Empty);
             var result = this.NetworkClient.NetworkResourceProviderClient.CheckDnsNameAvailability(this.Location, this.DomainQualifiedName);

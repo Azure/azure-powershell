@@ -26,9 +26,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Creates azure automation accounts based on automation account name and location.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRMAutomationAccount")]
+    [Cmdlet(VerbsCommon.New, "AzureAutomationAccount")]
     [OutputType(typeof(AutomationAccount))]
-    public class NewAzureAutomationAccount : ResourceManager.Common.AzureRMCmdlet
+    public class NewAzureAutomationAccount : AzurePSCmdlet
     {
         /// <summary>
         /// The automation client.
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             get
             {
-                return this.automationClient = this.automationClient ?? new AutomationClient(DefaultProfile.DefaultContext);
+                return this.automationClient = this.automationClient ?? new AutomationClient(Profile, Profile.Context.Subscription);
             }
 
             set
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             var account = this.AutomationClient.CreateAutomationAccount(this.ResourceGroupName, this.Name, this.Location, this.Plan, this.Tags);
             this.WriteObject(account);

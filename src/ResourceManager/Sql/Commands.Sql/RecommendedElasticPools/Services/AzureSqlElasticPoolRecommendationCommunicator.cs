@@ -39,19 +39,19 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public AzureProfile Profile { get; set; }
 
         /// <summary>
         /// Creates a communicator for Azure Sql Recommended Elastic Pool
         /// </summary>
         /// <param name="profile"></param>
         /// <param name="subscription"></param>
-        public AzureSqlElasticPoolRecommendationCommunicator(AzureContext context)
+        public AzureSqlElasticPoolRecommendationCommunicator(AzureProfile profile, AzureSubscription subscription)
         {
-            Context = context;
-            if (context.Subscription != Subscription)
+            Profile = profile;
+            if (subscription != Subscription)
             {
-                Subscription = context.Subscription;
+                Subscription = subscription;
                 SqlClient = null;
             }
         }
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Services
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
-                SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+                SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Profile, Subscription, AzureEnvironment.Endpoint.ResourceManager);
             }
             SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
             SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);

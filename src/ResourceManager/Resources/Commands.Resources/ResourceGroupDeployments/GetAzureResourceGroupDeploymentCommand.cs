@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Filters resource group deployments.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMResourceGroupDeployment"), OutputType(typeof(List<PSResourceGroupDeployment>))]
+    [Cmdlet(VerbsCommon.Get, "AzureResourceGroupDeployment"), OutputType(typeof(List<PSResourceGroupDeployment>))]
     public class GetAzureResourceGroupDeploymentCommand : ResourcesBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.")]
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateNotNullOrEmpty]
         public string ProvisioningState { get; set; }
         
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             FilterResourceGroupDeploymentOptions options = new FilterResourceGroupDeploymentOptions()
             {
@@ -47,10 +47,11 @@ namespace Microsoft.Azure.Commands.Resources
                     new List<string>() { ProvisioningState }
             };
 
-            if(!string.IsNullOrEmpty(ProvisioningState))
+            if(!string.IsNullOrEmpty(Name))
             {
-                WriteWarning("The ProvisioningState parameter is being deprecated and will be removed in a future release.");
+                WriteWarning("The parameter 'Name' in Get-AzureResourceGroupDeployment cmdlet is being renamed to DeploymentName and will be updated in a future release.");
             }
+
             WriteObject(ResourcesClient.FilterResourceGroupDeployments(options), true);
         }
     }

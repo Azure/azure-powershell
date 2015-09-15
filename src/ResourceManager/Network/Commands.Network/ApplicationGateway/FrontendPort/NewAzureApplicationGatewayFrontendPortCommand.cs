@@ -18,12 +18,12 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRMApplicationGatewayFrontendPort"), OutputType(typeof(PSApplicationGatewayFrontendPort))]
+    [Cmdlet(VerbsCommon.New, "AzureApplicationGatewayFrontendPort"), OutputType(typeof(PSApplicationGatewayFrontendPort))]
     public class NewAzureApplicationGatewayFrontendPortCommand : AzureApplicationGatewayFrontendPortBase
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             WriteObject(base.NewObject());
         }
     }

@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// <summary>
     /// The base class for all Windows Azure Recovery Services commands
     /// </summary>
-    public abstract class RecoveryServicesCmdletBase : AzureSMCmdlet
+    public abstract class RecoveryServicesCmdletBase : AzurePSCmdlet
     {
         /// <summary>
         /// Recovery Services client.
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             {
                 if (this.recoveryServicesClient == null)
                 {
-                    this.recoveryServicesClient = new PSRecoveryServicesClient(Profile, Profile.DefaultContext.Subscription);
+                    this.recoveryServicesClient = new PSRecoveryServicesClient(Profile, Profile.Context.Subscription);
                 }
 
                 return this.recoveryServicesClient;

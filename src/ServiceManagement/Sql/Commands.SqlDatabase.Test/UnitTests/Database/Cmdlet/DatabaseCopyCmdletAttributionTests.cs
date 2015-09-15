@@ -24,7 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
     /// These tests prevent regression in parameter validation attributes.
     /// </summary>
     [TestClass]
-    public class DatabaseCopyCmdletAttributionTests : SMTestBase
+    public class DatabaseCopyCmdletAttributionTests : TestBase
     {
         [TestMethod]
         public void GetAzureSqlDatabaseCopyAttributeTest()

@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRMRouteConfig"), OutputType(typeof(PSRoute))]
+    [Cmdlet(VerbsCommon.Get, "AzureRouteConfig"), OutputType(typeof(PSRoute))]
     public class GetAzureRouteConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -33,9 +33,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The RouteTable")]
         public PSRouteTable RouteTable { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             var routes = this.RouteTable.Routes;
             

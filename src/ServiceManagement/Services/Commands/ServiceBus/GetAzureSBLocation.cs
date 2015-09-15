@@ -24,7 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceBus
     /// Lists all service bus locations available for a subscription.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureSBLocation"), OutputType(typeof(List<ServiceBusLocation>))]
-    public class GetAzureSBLocationCommand : AzureSMCmdlet
+    public class GetAzureSBLocationCommand : AzurePSCmdlet
     {
         internal ServiceBusClientExtensions Client { get; set; }
 
@@ -33,7 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceBus
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            Client = Client ?? new ServiceBusClientExtensions(Profile, Profile.DefaultContext.Subscription);
+            Client = Client ?? new ServiceBusClientExtensions(Profile, Profile.Context.Subscription);
             WriteObject(Client.GetServiceBusRegions(), true);
         }
     }

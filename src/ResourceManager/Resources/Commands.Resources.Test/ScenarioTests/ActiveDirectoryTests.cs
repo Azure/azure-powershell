@@ -14,14 +14,14 @@
 
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Graph.RBAC.Models;
-using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.Azure.Test;
+using System.Linq;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class ActiveDirectoryTests : RMTestBase
+    public class ActiveDirectoryTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

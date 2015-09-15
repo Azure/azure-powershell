@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Cmdlet to check if a resource group exists or not
     /// </summary>
-    [Cmdlet(VerbsDiagnostic.Test, "AzureRMResourceGroup"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsDiagnostic.Test, "AzureResourceGroup"), OutputType(typeof(bool))]
     public sealed class TestAzureResoruceGroupCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected override void OnProcessRecord()
         {
             base.OnProcessRecord();
-            this.SubscriptionId = DefaultContext.Subscription.Id;
+            this.SubscriptionId = this.Profile.Context.Subscription.Id;
             this.RunCmdlet();
         }
 

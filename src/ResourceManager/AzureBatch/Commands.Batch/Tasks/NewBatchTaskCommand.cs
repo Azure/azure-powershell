@@ -24,8 +24,7 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.New, Constants.AzureBatchTask)]
     public class NewBatchTaskCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(ParameterSetName = Constants.IdParameterSet, Mandatory = true, 
-            HelpMessage = "The id of the job to create the task under.")]
+        [Parameter(ParameterSetName = Constants.IdParameterSet, Mandatory = true, HelpMessage = "The id of the job to create the task under.")]
         [ValidateNotNullOrEmpty]
         public string JobId { get; set; }
 
@@ -64,7 +63,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSTaskConstraints Constraints { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             NewTaskParameters parameters = new NewTaskParameters(this.BatchContext, this.JobId, this.Job, 
                 this.Id, this.AdditionalBehaviors)

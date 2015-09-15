@@ -17,12 +17,11 @@ using Hyak.Common;
 using Microsoft.Azure.Commands.HDInsight.Models;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
 
 namespace Microsoft.Azure.Commands.HDInsight.Test
 {
-    public class HDInsightTestBase : RMTestBase
+    public class HDInsightTestBase
     {
         protected const string ClusterName = "hdicluster";
         protected const string ResourceGroupName = "hdi-rg1";

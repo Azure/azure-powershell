@@ -17,7 +17,7 @@ using Xunit;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class VirtualNetworkGatewayTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class VirtualNetworkGatewayTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

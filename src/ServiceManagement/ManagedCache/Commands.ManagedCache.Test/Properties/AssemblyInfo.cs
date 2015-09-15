@@ -15,7 +15,6 @@
 using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using Xunit;
 
 [assembly: AssemblyTitle("ManagedCache Test Assembly")]
 [assembly: AssemblyCompany(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCompany)]

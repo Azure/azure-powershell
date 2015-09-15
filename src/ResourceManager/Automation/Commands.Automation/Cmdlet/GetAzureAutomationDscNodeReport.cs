@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets azure automation dsc node report.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMAutomationDscNodeReport", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet(VerbsCommon.Get, "AzureAutomationDscNodeReport", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(DscNode))]
     public class GetAzureAutomationDscNodeReport : AzureAutomationBaseCmdlet
     {
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             IEnumerable<DscNodeReport> ret = null;
 

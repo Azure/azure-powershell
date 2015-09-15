@@ -26,7 +26,7 @@ using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Environment
 {
-    public class AddAzureEnvironmentTests : SMTestBase, IDisposable
+    public class AddAzureEnvironmentTests : TestBase, IDisposable
     {
         private MemoryDataStore dataStore;
 
@@ -45,7 +45,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddsAzureEnvironment()
         {
-            var profile = new AzureSMProfile();
+            var profile = new AzureProfile();
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
             AddAzureEnvironmentCommand cmdlet = new AddAzureEnvironmentCommand()
             {
@@ -76,7 +76,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddsEnvironmentWithMinimumInformation()
         {
-            var profile = new AzureSMProfile();
+            var profile = new AzureProfile();
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
             AddAzureEnvironmentCommand cmdlet = new AddAzureEnvironmentCommand()
             {
@@ -103,7 +103,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void IgnoresAddingDuplicatedEnvironment()
         {
-            var profile = new AzureSMProfile();
+            var profile = new AzureProfile();
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
             AddAzureEnvironmentCommand cmdlet = new AddAzureEnvironmentCommand()
             {
@@ -144,7 +144,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddsEnvironmentWithStorageEndpoint()
         {
-            var profile = new AzureSMProfile();
+            var profile = new AzureProfile();
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
             PSAzureEnvironment actual = null;
             commandRuntimeMock.Setup(f => f.WriteObject(It.IsAny<object>()))
@@ -173,7 +173,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanCreateEnvironmentWithAllProperties()
         {
-            var profile = new AzureSMProfile();
+            var profile = new AzureProfile();
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
             PSAzureEnvironment actual = null;
             commandRuntimeMock.Setup(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()))

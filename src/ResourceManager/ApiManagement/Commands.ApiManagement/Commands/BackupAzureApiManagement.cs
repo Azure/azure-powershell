@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using Microsoft.WindowsAzure.Commands.Common.Storage;
 
       
-    [Cmdlet(VerbsData.Backup, "AzureRMApiManagement"), OutputType(typeof(PsApiManagement))]
+    [Cmdlet(VerbsData.Backup, "AzureApiManagement"), OutputType(typeof(PsApiManagement))]
     public class BackupAzureApiManagement : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             HelpMessage = "Sends backed up PsApiManagement to pipeline if operation succeeds.")]
         public SwitchParameter PassThru { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ExecuteLongRunningCmdletWrap(
                 () => Client.BeginBackupApiManagement(

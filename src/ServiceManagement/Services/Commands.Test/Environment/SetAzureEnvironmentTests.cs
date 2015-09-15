@@ -32,7 +32,7 @@ using System.IO;
 namespace Microsoft.WindowsAzure.Commands.Test.Environment
 {
     
-    public class SetAzureEnvironmentTests : SMTestBase, IDisposable
+    public class SetAzureEnvironmentTests : TestBase, IDisposable
     {
         private MemoryDataStore dataStore;
 
@@ -48,13 +48,12 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
         }
 
         [Fact]
-        // TODO: fix flaky test
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetsAzureEnvironment()
         {
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
             string name = "Katal";
-            ProfileClient client = new ProfileClient(new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
+            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             client.AddOrSetEnvironment(new AzureEnvironment { Name = name });
 
             SetAzureEnvironmentCommand cmdlet = new SetAzureEnvironmentCommand()
@@ -73,7 +72,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
             cmdlet.InvokeEndProcessing();
 
             commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()), Times.Once());
-            client = new ProfileClient(new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
+            client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             AzureEnvironment env = client.Profile.Environments["KaTaL"];
             Assert.Equal(env.Name.ToLower(), cmdlet.Name.ToLower());
             Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl], cmdlet.PublishSettingsFileUrl);

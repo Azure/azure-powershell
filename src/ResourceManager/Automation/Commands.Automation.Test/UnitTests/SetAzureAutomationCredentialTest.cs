@@ -13,20 +13,20 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Management.Automation;
-using System.Security;
+using System.Collections.Generic;
 using Microsoft.Azure.Commands.Automation.Cmdlet;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
+using System.Security;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 {
     [TestClass]
-    public class SetAzureAutomationCredentialTest : RMTestBase
+    public class SetAzureAutomationCredentialTest : TestBase
     {
         private Mock<IAutomationClient> mockAutomationClient;
 

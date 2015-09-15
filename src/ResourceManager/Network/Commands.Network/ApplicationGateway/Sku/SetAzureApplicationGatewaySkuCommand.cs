@@ -20,7 +20,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRMApplicationGatewaySku"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet(VerbsCommon.Set, "AzureApplicationGatewaySku"), OutputType(typeof(PSApplicationGateway))]
     public class SetAzureApplicationGatewaySkuCommand : AzureApplicationGatewaySkuBase
     {
         [Parameter(
@@ -28,9 +28,9 @@ namespace Microsoft.Azure.Commands.Network
              ValueFromPipeline = true,
              HelpMessage = "The applicationGateway")]
         public PSApplicationGateway ApplicationGateway { get; set; }
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             this.ApplicationGateway.Sku.Name = this.Name;
             this.ApplicationGateway.Sku.Tier = this.Tier;

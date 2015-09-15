@@ -29,7 +29,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Firewall.Cmdlet
 {
     [TestClass]
-    public class FirewallCmdletTests : SMTestBase
+    public class FirewallCmdletTests : TestBase
     {
         [TestCleanup]
         public void CleanupTest()

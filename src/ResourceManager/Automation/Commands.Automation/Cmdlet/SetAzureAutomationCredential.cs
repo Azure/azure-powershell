@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Sets a Credential for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRMAutomationCredential", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
+    [Cmdlet(VerbsCommon.Set, "AzureAutomationCredential", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
     [OutputType(typeof(CredentialInfo))]
     public class SetAzureAutomationCredential : AzureAutomationBaseCmdlet
     {
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void AutomationProcessRecord()
+        protected override void AutomationExecuteCmdlet()
         {
             string userName = null, password = null;
 

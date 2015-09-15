@@ -22,7 +22,7 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
 
     [Cmdlet(VerbsCommon.Reset, "AzureRemoteAppVpnSharedKey", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High), OutputType(typeof(VNet))]
-    public class ResetAzureRemoteAppVpnSharedKey : VNetDeprecated
+    public class ResetAzureRemoteAppVpnSharedKey : RdsCmdlet
     {
         [Parameter(Mandatory = true,
            Position = 0,

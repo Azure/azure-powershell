@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets azure automation dsc onboarding meta configuration information for a given account.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMAutomationDscOnboardingMetaconfig")]
+    [Cmdlet(VerbsCommon.Get, "AzureAutomationDscOnboardingMetaconfig")]
     [OutputType(typeof(DscOnboardingMetaconfig))]
     public class GetAzureAutomationDscOnboardingMetaconfig : AzureAutomationBaseCmdlet
     {
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             this.ConfirmAction(
                 this.Force.IsPresent,

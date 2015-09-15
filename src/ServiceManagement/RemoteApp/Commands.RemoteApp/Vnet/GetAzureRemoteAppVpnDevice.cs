@@ -19,7 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
     [Cmdlet(VerbsCommon.Get, "AzureRemoteAppVpnDevice"), OutputType(typeof(Vendor))]
-    public class GetAzureRemoteAppVpnDevice : VNetDeprecated
+    public class GetAzureRemoteAppVpnDevice : RdsCmdlet
     {
         [Parameter(Mandatory = true,
             Position = 0,

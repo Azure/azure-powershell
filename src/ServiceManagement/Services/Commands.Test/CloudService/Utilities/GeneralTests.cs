@@ -24,7 +24,7 @@ using Microsoft.Azure.Common.Authentication;
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
 {
     
-    public class GeneralTests : SMTestBase
+    public class GeneralTests : TestBase
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

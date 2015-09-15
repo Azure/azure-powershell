@@ -19,7 +19,7 @@ Cleans the created resource groups
 function Clean-ResourceGroup($rgname)
 {
     if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
-        Remove-AzureRMResourceGroup -Name $rgname -Force
+        Remove-AzureResourceGroup -Name $rgname -Force
     }
 }
 
@@ -49,14 +49,7 @@ function Retry-IfException
     {
         $iter += 1;
 
-        try
-        {
-            &$script;
-        }
-        catch
-        {
-
-        }
+        &$script;
 
         if ($Error.Count -gt 0)
         {

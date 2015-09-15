@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// The azure automation base cmdlet.
     /// </summary>
-    public abstract class AzureAutomationBaseCmdlet : AzureSMCmdlet
+    public abstract class AzureAutomationBaseCmdlet : AzurePSCmdlet
     {
         /// <summary>
         /// The automation client.
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             get
             {
-                return this.automationClient = this.automationClient ?? new AutomationClient(Profile, Profile.DefaultContext.Subscription);
+                return this.automationClient = this.automationClient ?? new AutomationClient(Profile, Profile.Context.Subscription);
             }
 
             set

@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         internal const string PeriodPattern = "^(?<" + PeriodGroupName + ">[DdMmYy]{1})(?<" + ValueGroupName + @">\d+)$";
         static readonly Regex PeriodRegex = new Regex(PeriodPattern, RegexOptions.Compiled);
 
-        private readonly AzureContext _context;
+        private readonly AzureProfile _azureProfile;
         private Management.ApiManagement.ApiManagementClient _client;
 
         static ApiManagementClient()
@@ -155,14 +155,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
             return string.Format(format, notificationPeriod.Interval.ToString()[0], notificationPeriod.Value);
         }
 
-        public ApiManagementClient(AzureContext context)
+        public ApiManagementClient(AzureProfile azureProfile)
         {
-            if (context == null)
+            if (azureProfile == null)
             {
-                throw new ArgumentNullException("AzureProfile");
+                throw new ArgumentNullException("azureProfile");
             }
 
-            _context = context;
+            _azureProfile = azureProfile;
             _client = CreateClient();
 
         }
@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
         private Management.ApiManagement.ApiManagementClient CreateClient()
         {
             return AzureSession.ClientFactory.CreateClient<Management.ApiManagement.ApiManagementClient>(
-                _context,
+                _azureProfile,
                 AzureEnvironment.Endpoint.ResourceManager);
         }
 

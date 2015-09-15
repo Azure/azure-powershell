@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureAutomationAccount", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
     [OutputType(typeof(AutomationAccount))]
-    public class NewAzureAutomationAccount : AzureSMCmdlet
+    public class NewAzureAutomationAccount : AzurePSCmdlet
     {
         /// <summary>
         /// The automation client.
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             get
             {
                 return this.automationClient = this.automationClient ?? new AutomationClient(Profile, 
-                    Profile.DefaultContext.Subscription);
+                    Profile.Context.Subscription);
             }
 
             set

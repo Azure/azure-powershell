@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.Test.Profile
                         command.CommandRuntime = new MockCommandRuntime();
                         command.InvokeBeginProcessing();
                         var profile = command.Profile;
-                        var context = profile.DefaultContext;
+                        var context = profile.Context;
                         var account = context.Account;
                         var tenant = account.IsPropertySet(AzureAccount.Property.Tenants)
                             ? account.GetPropertyAsArray(AzureAccount.Property.Tenants).First()

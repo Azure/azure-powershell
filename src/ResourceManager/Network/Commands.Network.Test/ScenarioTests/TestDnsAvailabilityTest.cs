@@ -17,7 +17,7 @@ using Xunit;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class TestDnsAvailabilityTest : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class TestDnsAvailabilityTest
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

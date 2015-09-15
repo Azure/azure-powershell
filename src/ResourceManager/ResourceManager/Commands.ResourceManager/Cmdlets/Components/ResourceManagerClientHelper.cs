@@ -28,10 +28,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <summary>
         /// Gets a new instance of the <see cref="ResourceManagerRestRestClient"/>.
         /// </summary>
-        /// <param name="context">The azure profile.</param>
-        internal static ResourceManagerRestRestClient GetResourceManagerClient(AzureContext context)
+        /// <param name="profile">The azure profile.</param>
+        internal static ResourceManagerRestRestClient GetResourceManagerClient(AzureProfile profile)
         {
-            var endpoint = context.Environment.GetEndpoint(AzureEnvironment.Endpoint.ResourceManager);
+            var endpoint = profile.Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.ResourceManager);
 
             if (string.IsNullOrWhiteSpace(endpoint))
             {
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                 endpointUri: endpointUri,
                 httpClientHelper: HttpClientHelperFactory.Instance
                 .CreateHttpClientHelper(
-                        credentials: AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context),
+                        credentials: AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(profile.Context),
                         headerValues: AzureSession.ClientFactory.UserAgents));
         }
     }

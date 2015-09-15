@@ -24,9 +24,9 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightCl
 
     internal class AzureHDInsightSubscriptionResolver : IAzureHDInsightSubscriptionResolver
     {
-        private readonly AzureSMProfile profile;
+        private readonly AzureProfile profile;
 
-        public AzureHDInsightSubscriptionResolver(AzureSMProfile profile)
+        public AzureHDInsightSubscriptionResolver(AzureProfile profile)
         {
             this.profile = profile;
         }

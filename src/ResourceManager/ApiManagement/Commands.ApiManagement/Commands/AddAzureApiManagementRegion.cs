@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Models;
 
-    [Cmdlet(VerbsCommon.Add, "AzureRMApiManagementRegion"), OutputType(typeof(PsApiManagement))]
+    [Cmdlet(VerbsCommon.Add, "AzureApiManagementRegion"), OutputType(typeof(PsApiManagement))]
     public class AddAzureApiManagementRegion : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             HelpMessage = "Virtual network configuration. Default value is $null.")]
         public PsApiManagementVirtualNetwork VirtualNetwork { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ExecuteCmdLetWrap(
                 () =>

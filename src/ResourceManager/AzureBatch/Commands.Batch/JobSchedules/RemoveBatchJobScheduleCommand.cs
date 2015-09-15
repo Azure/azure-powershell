@@ -21,20 +21,19 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.Remove, Constants.AzureBatchJobSchedule)]
     public class RemoveBatchJobScheduleCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, 
-            HelpMessage = "The id of the job schedule to delete.")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the job schedule to delete.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
         [Parameter]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Resources.RemoveJobScheduleConfirm, this.Id),
-                Resources.RemoveJobSchedule,
+                string.Format(Resources.RBJS_RemoveConfirm, this.Id),
+                Resources.RBJS_RemoveJobSchedule,
                 this.Id,
                 () => BatchClient.DeleteJobSchedule(this.BatchContext, this.Id, this.AdditionalBehaviors));
         }

@@ -32,13 +32,12 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
     /// <summary>
     ///     The base class for HDInsight Cmdlets.
     /// </summary>
-    public abstract class AzureHDInsightCmdlet : AzureSMCmdlet
+    public abstract class AzureHDInsightCmdlet : AzurePSCmdlet
     {
         internal static AzureSubscription testSubscription;
 
         private ILogWriter logger;
 
-      
         /// <summary>
         ///     Gets or sets a value indicating whether logging should be enabled.
         /// </summary>
@@ -120,7 +119,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
             {
                 this.WriteWarning("The -Subscription parameter is deprecated, Please use Select-AzureSubscription -Current to select a subscription to use.");
 
-                ProfileClient client = new ProfileClient(new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
+                ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
 
                 var subscriptionResolver =
                     ServiceLocator.Instance.Locate<IAzureHDInsightSubscriptionResolverFactory>().Create(client.Profile);
@@ -146,14 +145,14 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
             {
 #if DEBUG
                 // we need this for the tests to mock out the current subscription.
-                if (Profile.DefaultContext.Subscription != null)
+                if (this.HasCurrentSubscription)
                 {
-                    return this.Profile.DefaultContext.Subscription;
+                    return this.Profile.Context.Subscription;
                 }
 
                 return testSubscription;
 #else
-                return this.Profile.DefaultContext.Subscription;
+                return this.Profile.Context.Subscription;
 #endif
             }
         }

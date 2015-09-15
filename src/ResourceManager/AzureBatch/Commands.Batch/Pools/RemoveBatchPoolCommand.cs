@@ -24,20 +24,19 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.Remove, Constants.AzureBatchPool)]
     public class RemoveBatchPoolCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, 
-            HelpMessage = "The id of the pool to delete.")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the pool to delete.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
         [Parameter]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Resources.RemovePoolConfirm, this.Id),
-                Resources.RemovePool,
+                string.Format(Resources.RBP_RemoveConfirm, this.Id),
+                Resources.RBP_RemovePool,
                 this.Id,
                 () => BatchClient.DeletePool(this.BatchContext, this.Id, this.AdditionalBehaviors));
         }

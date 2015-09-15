@@ -14,16 +14,31 @@
 // ----------------------------------------------------------------------------------
 
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.WebApp.Properties;
+using Microsoft.Azure.Management.WebSites.Models;
+using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
+using Microsoft.Azure.Commands.WebApp;
+using Microsoft.Azure.Management.WebSites;
+using System.Net.Http;
+using System.Threading;
+using System.Net;
+using Microsoft.Azure;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.WebApp.Utilities;
+using Microsoft.Azure.Commands.WebApp.Properties;
 
 namespace Microsoft.Azure.Commands.WebApp.Cmdlets
 {
     /// <summary>
     /// this commandlet will let you delete an Azure web app
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRMWebApp")]
+    [Cmdlet(VerbsCommon.Remove, "AzureWebApp")]
     public class RemoveAzureWebAppCmdlet : WebAppBaseNotMandatoryCmdlet
     {
 
@@ -39,7 +54,7 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
             
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             // Currently we delete all slots.
             string slotName = null;

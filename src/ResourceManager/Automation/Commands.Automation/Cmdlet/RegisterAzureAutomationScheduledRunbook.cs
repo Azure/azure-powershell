@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Registers an azure automation scheduled runbook.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Register, "AzureRMAutomationScheduledRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByRunbookName)]
+    [Cmdlet(VerbsLifecycle.Register, "AzureAutomationScheduledRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByRunbookName)]
     [OutputType(typeof(JobSchedule))]
     public class RegisterAzureAutomationScheduledRunbook : AzureAutomationBaseCmdlet
     {
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void AutomationProcessRecord()
+        protected override void AutomationExecuteCmdlet()
         {
             JobSchedule jobSchedule;
 

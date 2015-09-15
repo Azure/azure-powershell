@@ -13,9 +13,23 @@
 // ----------------------------------------------------------------------------------
 
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.WebApp.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
+using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
+using Microsoft.Azure.Commands.WebApp;
+using Microsoft.Azure.Management.WebSites;
+using System.Net.Http;
+using System.Threading;
+using System.Net;
+using Microsoft.Azure;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.WebApp.Utilities;
 
 
 namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
@@ -23,10 +37,10 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
     /// <summary>
     /// this commandlet will let you Get an Azure App Service Plan using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMAppServicePlan"), OutputType(typeof(WebHostingPlanGetResponse), typeof(WebHostingPlanListResponse))]
+    [Cmdlet(VerbsCommon.Get, "AzureAppServicePlan"), OutputType(typeof(WebHostingPlanGetResponse), typeof(WebHostingPlanListResponse))]
     public class GetAppServicePlanCmdlet : WebHostingPlanBaseNotMandatoryCmdlet
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(Name))
             {

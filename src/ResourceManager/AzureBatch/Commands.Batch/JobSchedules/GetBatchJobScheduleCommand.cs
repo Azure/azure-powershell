@@ -20,14 +20,12 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Get, Constants.AzureBatchJobSchedule, DefaultParameterSetName = Constants.ODataFilterParameterSet), 
-        OutputType(typeof(PSCloudJobSchedule))]
+    [Cmdlet(VerbsCommon.Get, Constants.AzureBatchJobSchedule, DefaultParameterSetName = Constants.ODataFilterParameterSet), OutputType(typeof(PSCloudJobSchedule))]
     public class GetBatchJobScheduleCommand : BatchObjectModelCmdletBase
     {
         private int maxCount = Constants.DefaultMaxCount;
 
-        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, ValueFromPipeline = true, 
-            ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
@@ -42,7 +40,7 @@ namespace Microsoft.Azure.Commands.Batch
             set { this.maxCount = value; }
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ListJobScheduleOptions options = new ListJobScheduleOptions(this.BatchContext, this.AdditionalBehaviors)
             {

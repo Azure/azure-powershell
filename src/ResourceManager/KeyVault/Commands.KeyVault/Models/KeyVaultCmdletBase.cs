@@ -17,11 +17,10 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.IO;
 using System.Net.Http;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
-    public class KeyVaultCmdletBase : AzureRMCmdlet
+    public class KeyVaultCmdletBase : AzurePSCmdlet
     {        
         public KeyVaultCmdletBase()
         {        
@@ -35,7 +34,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 {
                     this.dataServiceClient = new KeyVaultDataServiceClient(
                         AzureSession.AuthenticationFactory,
-                        DefaultContext,
+                        Profile.Context,
                         new HttpClient());
                 }
 

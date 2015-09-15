@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.WebApp.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.WebApp

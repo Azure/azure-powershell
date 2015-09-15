@@ -52,9 +52,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         [ValidateNotNullOrEmpty]
         public SwitchParameter Status { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             if (String.IsNullOrEmpty(Name))
             {
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                         new JsonException(
                             String.Format(
                                 CultureInfo.CurrentUICulture,
-                                Microsoft.Azure.Commands.Compute.Properties.Resources.AzureVMDscWrongSettingsFormat,
+                                Properties.Resources.AzureVMDscWrongSettingsFormat,
                                 extension.PublicSettings),
                             e),
                         string.Empty,

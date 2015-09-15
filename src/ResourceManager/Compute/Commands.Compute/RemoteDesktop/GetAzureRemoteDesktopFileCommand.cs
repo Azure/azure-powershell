@@ -69,9 +69,9 @@ namespace Microsoft.Azure.Commands.Compute
             set;
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             ExecuteClientAction(() =>
             {
@@ -147,12 +147,12 @@ namespace Microsoft.Azure.Commands.Compute
 
                     if (string.IsNullOrEmpty(address))
                     {
-                        throw new ArgumentException(Microsoft.Azure.Commands.Compute.Properties.Resources.VirtualMachineNotAssociatedWithPublicLoadBalancer);
+                        throw new ArgumentException(Properties.Resources.VirtualMachineNotAssociatedWithPublicLoadBalancer);
                     }
                 }
                 else
                 {
-                    throw new ArgumentException(Microsoft.Azure.Commands.Compute.Properties.Resources.VirtualMachineNotAssociatedWithPublicIPOrPublicLoadBalancer);
+                    throw new ArgumentException(Properties.Resources.VirtualMachineNotAssociatedWithPublicIPOrPublicLoadBalancer);
                 }
 
                 // Write to file

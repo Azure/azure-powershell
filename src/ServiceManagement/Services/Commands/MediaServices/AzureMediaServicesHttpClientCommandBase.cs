@@ -18,7 +18,7 @@ using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.MediaServices
 {
-    public class AzureMediaServicesHttpClientCommandBase : AzureSMCmdlet
+    public class AzureMediaServicesHttpClientCommandBase : AzurePSCmdlet
     {
         protected virtual void OnProcessRecord()
         {

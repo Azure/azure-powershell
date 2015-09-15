@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// The azure automation base cmdlet.
     /// </summary>
-    public abstract class AzureAutomationBaseCmdlet : ResourceManager.Common.AzureRMCmdlet
+    public abstract class AzureAutomationBaseCmdlet : AzurePSCmdlet
     {
         /// <summary>
         /// The automation client.
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             get
             {
-                return this.automationClient = this.automationClient ?? new AutomationClient(DefaultProfile.DefaultContext);
+                return this.automationClient = this.automationClient ?? new AutomationClient(Profile, Profile.Context.Subscription);
             }
 
             set
@@ -69,18 +69,18 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [ValidateNotNullOrEmpty]
         public string AutomationAccountName { get; set; }
 
-        protected virtual void AutomationProcessRecord()
+        protected virtual void AutomationExecuteCmdlet()
         {
             // Do nothing.
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             try
             {
                 Requires.Argument("ResourceGroupName", this.ResourceGroupName).NotNull();
                 Requires.Argument("AutomationAccountName", this.AutomationAccountName).NotNull();
-                this.AutomationProcessRecord();
+                this.AutomationExecuteCmdlet();
             }
             catch (CloudException cloudException)
             {

@@ -63,19 +63,19 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public AzureProfile Profile { get; set; }
 
         /// <summary>
         /// Default Constructor.
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureEndpointsCommunicator(AzureContext context)
+        public AzureEndpointsCommunicator(AzureProfile profile, AzureSubscription subscription)
         {
-            Context = context;
-            if (context.Subscription != Subscription)
+            Profile = profile;
+            if (subscription != Subscription)
             {
-                Subscription = context.Subscription;
+                Subscription = subscription;
                 StorageClient = null;
                 ResourcesClient = null;
                 StorageV2Client = null;
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
 
         private Dictionary<StorageKeyKind, string> GetV2Keys(string resourceGroupName, string storageAccountName)
         {
-            Microsoft.Azure.Management.Storage.StorageManagementClient storageClient = GetCurrentStorageV2Client(Context);
+            Microsoft.Azure.Management.Storage.StorageManagementClient storageClient = GetCurrentStorageV2Client(Profile);
             var r =  storageClient.StorageAccounts.ListKeys(resourceGroupName, storageAccountName);
             string k1 = r.StorageAccountKeys.Key1;
             string k2 = r.StorageAccountKeys.Key2;
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
             }
             catch
             {
-                throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.StorageAccountNotFound, storageAccountName));
+                throw new Exception(string.Format(Resources.StorageAccountNotFound, storageAccountName));
             }
         }
 
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// </summary>
         public string GetStorageResourceGroup(string storageAccountName)
         {
-            ResourceManagementClient resourcesClient = GetCurrentResourcesClient(Context);
+            ResourceManagementClient resourcesClient = GetCurrentResourcesClient(Profile);            
             Func<string, string> getResourceGroupName =
             resourceType =>
             {
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
                 }
                 else
                 {
-                    throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.StorageAccountNotFound, storageAccountName));
+                    throw new Exception(string.Format(Resources.StorageAccountNotFound, storageAccountName));
                 }
             };            
             try
@@ -202,22 +202,22 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// <summary>
         /// Gets the storage table endpoint the given storage account
         /// </summary>
-        public string GetStorageTableEndpoint(AzureContext context, string storageAccountName)
+        public string GetStorageTableEndpoint(AzureProfile profile, string storageAccountName)
         {
             try
             {
-                List<Uri> endpoints = new List<Uri>(GetCurrentStorageClient(context).StorageAccounts.Get(storageAccountName).StorageAccount.Properties.Endpoints);
+                List<Uri> endpoints = new List<Uri>(GetCurrentStorageClient(profile).StorageAccounts.Get(storageAccountName).StorageAccount.Properties.Endpoints);
                 return endpoints.Find(u => u.AbsoluteUri.Contains(".table.")).AbsoluteUri;
             }
             catch
             {
                 try
                 {
-                    return GetCurrentStorageV2Client(context).StorageAccounts.List().StorageAccounts.Where(a => a.Name == storageAccountName).First().PrimaryEndpoints.Table.AbsoluteUri;
+                    return GetCurrentStorageV2Client(profile).StorageAccounts.List().StorageAccounts.Where(a => a.Name == storageAccountName).First().PrimaryEndpoints.Table.AbsoluteUri;
                 }
                 catch
                 {
-                    throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.StorageAccountNotFound, storageAccountName));
+                    throw new Exception(string.Format(Resources.StorageAccountNotFound, storageAccountName));
                 }
             }
         }
@@ -225,30 +225,30 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// <summary>
         /// Lazy creation of a single instance of a storage client
         /// </summary>
-        private Microsoft.WindowsAzure.Management.Storage.StorageManagementClient GetCurrentStorageClient(AzureContext context)
+        private Microsoft.WindowsAzure.Management.Storage.StorageManagementClient GetCurrentStorageClient(AzureProfile profile)
         {
             if(StorageClient == null)
-                StorageClient = AzureSession.ClientFactory.CreateClient<Microsoft.WindowsAzure.Management.Storage.StorageManagementClient>(Context, AzureEnvironment.Endpoint.ServiceManagement);
+                StorageClient = AzureSession.ClientFactory.CreateClient<Microsoft.WindowsAzure.Management.Storage.StorageManagementClient>(profile, Subscription, AzureEnvironment.Endpoint.ServiceManagement);
             return StorageClient;
         }
 
         /// <summary>
         /// Lazy creation of a single instance of a storage client
         /// </summary>
-        private Microsoft.Azure.Management.Storage.StorageManagementClient GetCurrentStorageV2Client(AzureContext context)
+        private Microsoft.Azure.Management.Storage.StorageManagementClient GetCurrentStorageV2Client(AzureProfile profile)
         {
             if (StorageV2Client == null)
-                StorageV2Client = AzureSession.ClientFactory.CreateClient<Microsoft.Azure.Management.Storage.StorageManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+                StorageV2Client = AzureSession.ClientFactory.CreateClient<Microsoft.Azure.Management.Storage.StorageManagementClient>(profile, Subscription, AzureEnvironment.Endpoint.ResourceManager);
             return StorageV2Client;
         }
 
         /// <summary>
         /// Lazy creation of a single instance of a resoures client
         /// </summary>
-        private ResourceManagementClient GetCurrentResourcesClient(AzureContext context)
+        private ResourceManagementClient GetCurrentResourcesClient(AzureProfile profile)
         {
             if (ResourcesClient == null)
-                ResourcesClient = AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+                ResourcesClient = AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(profile, Subscription, AzureEnvironment.Endpoint.ResourceManager);
             return ResourcesClient;
         }
 
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
-                SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+                SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Profile, Subscription, AzureEnvironment.Endpoint.ResourceManager);
             }
             SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
             SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);

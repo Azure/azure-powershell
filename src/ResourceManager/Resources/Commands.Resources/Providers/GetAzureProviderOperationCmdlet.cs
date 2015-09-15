@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Get an existing resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMProviderOperation"), OutputType(typeof(PSResourceProviderOperation))]
+    [Cmdlet(VerbsCommon.Get, "AzureProviderOperation"), OutputType(typeof(PSResourceProviderOperation))]
     public class GetAzureProviderOperationCommand : ResourcesBaseCmdlet
     {
         private const string WildCardCharacter = "*";
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Resources
         /// <summary>
         /// Executes the cmdlet
         /// </summary>
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             // remove leading and trailing whitespaces
             this.ActionString = this.ActionString.Trim();

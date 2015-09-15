@@ -13,12 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class ApplicationGatewayTests : RMTestBase
+    public class ApplicationGatewayTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

@@ -22,11 +22,10 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Text;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    public class BatchCmdletBase : AzureRMCmdlet
+    public class BatchCmdletBase : AzurePSCmdlet
     {
         private BatchClient batchClient;
 
@@ -36,7 +35,7 @@ namespace Microsoft.Azure.Commands.Batch
             {
                 if (batchClient == null)
                 {
-                    batchClient = new BatchClient(DefaultContext);
+                    batchClient = new BatchClient(Profile.Context);
                     batchClient.VerboseLogger = WriteVerboseWithTimestamp;
                 }
                 return batchClient;
@@ -55,7 +54,7 @@ namespace Microsoft.Azure.Commands.Batch
             try
             {
                 Validate.ValidateInternetConnection();
-                ProcessRecord();
+                ExecuteCmdlet();
                 OnProcessRecord();
             }
             catch (AggregateException ex)

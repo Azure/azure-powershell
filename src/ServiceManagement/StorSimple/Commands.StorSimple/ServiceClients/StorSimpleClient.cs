@@ -43,16 +43,16 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         /// <summary>
         /// Azure profile
         /// </summary>
-        public AzureSMProfile Profile { get; set; }
+        public AzureProfile Profile { get; set; }
 
-        public StorSimpleClient(AzureSMProfile AzureSMProfile, AzureSubscription currentSubscription)  
+        public StorSimpleClient(AzureProfile azureProfile, AzureSubscription currentSubscription)  
         {
             // Temp code to be able to test internal env.
             ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };//IgnoreCertificateErrorHandler;//delegate { return true; };
             
-            this.Profile = AzureSMProfile;
+            this.Profile = azureProfile;
 
-            this.cloudServicesClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(AzureSMProfile, currentSubscription, AzureEnvironment.Endpoint.ServiceManagement);
+            this.cloudServicesClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(azureProfile, currentSubscription, AzureEnvironment.Endpoint.ServiceManagement);
             
             ResourceCachetimeoutPolicy.AbsoluteExpiration = DateTimeOffset.Now.AddHours(1.0d);
         }
@@ -69,7 +69,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                     StorSimpleContext.CloudServiceName,
                     StorSimpleContext.ResourceName, StorSimpleContext.ResourceId,
                     StorSimpleContext.ResourceProviderNameSpace, this.cloudServicesClient.Credentials,
-                    Profile.DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement));
+                    Profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement));
             
             if (storSimpleClient == null)
             {

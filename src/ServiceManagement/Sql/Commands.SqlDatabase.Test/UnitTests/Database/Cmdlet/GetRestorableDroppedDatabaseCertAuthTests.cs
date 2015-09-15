@@ -32,7 +32,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cmdlet
 {
     [TestClass]
-    public class GetRestorableDroppedDatabaseCertAuthTests : SMTestBase
+    public class GetRestorableDroppedDatabaseCertAuthTests : TestBase
     {
         private const string deletionDateStringFormat = "yyyy-MM-ddTHH:mm:ss.FFFZ";
 

@@ -58,7 +58,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 Name = "website1",
                 Force = true
             };
-            currentProfile = new AzureSMProfile();
+            currentProfile = new AzureProfile();
             var subscription = new AzureSubscription { Id = new Guid(base.subscriptionId) };
             subscription.Properties[AzureSubscription.Property.Default] = "True";
             currentProfile.Subscriptions[new Guid(base.subscriptionId)] = subscription;

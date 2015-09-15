@@ -25,7 +25,7 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cmdlet
 {
     [TestClass]
-    public class GetRestorableDroppedDatabaseSqlAuthTests : SMTestBase
+    public class GetRestorableDroppedDatabaseSqlAuthTests : TestBase
     {
         private const string deletionDateStringFormat = "yyyy-MM-ddTHH:mm:ss.FFFZ";
 

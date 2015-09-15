@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Resources.Templates
     /// <summary>
     /// Get one template or a list of templates from the gallery.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMResourceGroupGalleryTemplate", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(List<PSGalleryItem>))]
+    [Cmdlet(VerbsCommon.Get, "AzureResourceGroupGalleryTemplate", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(List<PSGalleryItem>))]
     public class GetAzureResourceGroupGalleryTemplateCommand : ResourcesBaseCmdlet
     {
         internal const string BaseParameterSetName = "List gallery templates";
@@ -47,9 +47,8 @@ namespace Microsoft.Azure.Commands.Resources.Templates
         [Parameter(Position = 4, ParameterSetName = BaseParameterSetName, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Optional. Include all versions.")]
         public SwitchParameter AllVersions { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            WriteWarning("This cmdlet is being deprecated and will be removed in a future release.");
             FilterGalleryTemplatesOptions options = new FilterGalleryTemplatesOptions()
             {
                 Category = Category,

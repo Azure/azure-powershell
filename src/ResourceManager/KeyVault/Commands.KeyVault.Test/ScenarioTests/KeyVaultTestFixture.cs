@@ -9,12 +9,11 @@ using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 {
-    public class KeyVaultTestFixture : RMTestBase, IDisposable
+    public class KeyVaultTestFixture : IDisposable
     {
         public string tagName = "testtag", tagValue = "testvalue";
         public string resourceGroupName, location, preCreatedVault;

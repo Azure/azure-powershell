@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Compute
         ProfileNouns.VirtualMachineConfig),
     OutputType(
         typeof(PSVirtualMachine))]
-    public class NewAzureVMConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+    public class NewAzureVMConfigCommand : AzurePSCmdlet
     {
         [Alias("ResourceName", "Name")]
         [Parameter(
@@ -51,12 +51,7 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string AvailabilitySetId { get; set; }
 
-        protected override bool IsUsageMetricEnabled
-        {
-            get { return true; }
-        }
-
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             var vm = new PSVirtualMachine
             {

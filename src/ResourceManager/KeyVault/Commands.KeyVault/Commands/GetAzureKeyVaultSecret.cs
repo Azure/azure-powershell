@@ -21,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRMKeyVaultSecret",
+    [Cmdlet(VerbsCommon.Get, "AzureKeyVaultSecret",
         DefaultParameterSetName = ByVaultNameParameterSet, 
         HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(List<SecretIdentityItem>), typeof(Secret))]
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #endregion
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             Secret secret;
             switch (ParameterSetName)

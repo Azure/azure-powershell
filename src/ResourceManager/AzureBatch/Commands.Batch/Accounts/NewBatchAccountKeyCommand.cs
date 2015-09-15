@@ -14,25 +14,27 @@
 
 using Microsoft.Azure.Management.Batch.Models;
 using System.Management.Automation;
-using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.New, "AzureRMBatchAccountKey"), OutputType(typeof(BatchAccountContext))]
+    [Cmdlet(VerbsCommon.New, "AzureBatchAccountKey"), OutputType(typeof(BatchAccountContext))]
     public class RegenBatchAccountKeyCommand : BatchCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, 
-            HelpMessage = "The name of the Batch service account to regenerate the specified key for.")]
+        internal const string ParameterSetContext = "Use Context";
+        internal const string ParameterSetCmdLine = "Use Command Line";
+
+        [Parameter(ParameterSetName = ParameterSetCmdLine, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the Batch service account to regenerate the specified key for.")]
         [Alias("Name")]
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = ParameterSetCmdLine, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group of the account.")]
         public string ResourceGroupName { get; set; }
 
         private AccountKeyType keyType;
-        [Parameter(Mandatory = true, ValueFromPipeline = false, 
-            HelpMessage = "The type of key (primary or secondary) to regenerate.")]
+        //[Parameter(ParameterSetName = ParameterSetContext, Mandatory = true, ValueFromPipeline = false,
+        //    HelpMessage = "The type of key (primary or secondary) to regenerate.")]
+        [Parameter(ParameterSetName = ParameterSetCmdLine, Mandatory = true, ValueFromPipeline = false, HelpMessage = "The type of key (primary or secondary) to regenerate.")]
         [ValidateSet("Primary", "Secondary")]
         public string KeyType
         {
@@ -50,7 +52,7 @@ namespace Microsoft.Azure.Commands.Batch
             }
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             BatchAccountContext context = BatchClient.RegenerateKeys(this.ResourceGroupName, this.AccountName, this.keyType);
             WriteObject(context);

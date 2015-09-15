@@ -17,7 +17,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
     using System;
     using System.Globalization;
     using System.IO;
-    using Properties;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Microsoft.WindowsAzure.Management.Storage;
     using Microsoft.WindowsAzure.Management.Storage.Models;
@@ -59,7 +58,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
             StorageAccountGetResponse storageService = StorageManagementClient.StorageAccounts.Get(parameters.StorageName);
             Uri blobEndpointUri = storageService.StorageAccount.Properties.Endpoints[0];
             return UploadFile(parameters.StorageName,
-                StorageUtilities.CreateHttpsEndpoint(blobEndpointUri.ToString()),
+                GeneralUtilities.CreateHttpsEndpoint(blobEndpointUri.ToString()),
                 storageKey, parameters);
         }
 
@@ -98,7 +97,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
                 else
                 {
                     throw new ArgumentException(string.Format(CultureInfo.CurrentCulture,
-                        Resources.BlobAlreadyExistsInTheAccount, blobName));
+                        Commands.Common.Properties.Resources.BlobAlreadyExistsInTheAccount, blobName));
                 }
             }
 

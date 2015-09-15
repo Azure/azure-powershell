@@ -39,18 +39,18 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         private const int VaultCertificateExpiryInHoursForBackup = 48;
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
             {
-                base.ProcessRecord();
+                base.ExecuteCmdlet();
 
                 if (!Directory.Exists(TargetLocation))
                 {
                     throw new ArgumentException(Resources.VaultCredPathException);
                 }
 
-                string subscriptionId = DefaultContext.Subscription.Id.ToString();
+                string subscriptionId = Profile.DefaultSubscription.Id.ToString();
                 string resourceType = "BackupVault";
                 string displayName = subscriptionId + "_" + Vault.ResourceGroupName + "_" + Vault.Name;
 

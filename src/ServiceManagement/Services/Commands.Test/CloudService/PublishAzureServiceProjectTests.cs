@@ -23,7 +23,7 @@ using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService
 {
-    public class PublishAzureServiceTests : SMTestBase
+    public class PublishAzureServiceTests : TestBase
     {
         private Mock<ICloudServiceClient> clientMock;
 

@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.Sql.Database.Services;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRMSqlDatabaseExpanded", 
+    [Cmdlet(VerbsCommon.Get, "AzureSqlDatabaseExpanded", 
         ConfirmImpact = ConfirmImpact.None)]
     public class GetAzureSqlDatabaseExpanded : AzureSqlCmdletBase<IEnumerable<AzureSqlDatabaseModelExpanded>, AzureSqlDatabaseAdapter>
     {
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <returns></returns>
         protected override AzureSqlDatabaseAdapter InitModelAdapter(Azure.Common.Authentication.Models.AzureSubscription subscription)
         {
-            return new AzureSqlDatabaseAdapter(DefaultProfile.DefaultContext);
+            return new AzureSqlDatabaseAdapter(Profile, subscription);
         }
 
         /// <summary>

@@ -13,16 +13,30 @@
 // ----------------------------------------------------------------------------------
 
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.WebApp.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
+using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
+using Microsoft.Azure.Commands.WebApp;
+using Microsoft.Azure.Management.WebSites;
+using System.Net.Http;
+using System.Threading;
+using System.Net;
+using Microsoft.Azure;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.WebApp.Utilities;
 
 namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
 {
     /// <summary>
     /// this commandlet will let you create a new Azure App service Plan using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRMAppServicePlan"), OutputType(typeof(WebHostingPlanCreateOrUpdateResponse))]
+    [Cmdlet(VerbsCommon.New, "AzureAppServicePlan"), OutputType(typeof(WebHostingPlanCreateOrUpdateResponse))]
     public class NewAzureAppServicePlanCmdlet : AppServicePlanBaseCmdlet
     {
 
@@ -44,7 +58,7 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
         [ValidateSet("Small", "Medium", "Large", IgnoreCase = true)]
         public string WorkerSize { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             //for now not asking admin site name need to implement in future
             string adminSiteName = null;

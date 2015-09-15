@@ -89,9 +89,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public Hashtable[] Tags { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             Dictionary<string, string> tagDictionary = null;
             StorageAccountUpdateParameters updateParameters = null;

@@ -26,7 +26,7 @@ using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Tests.Cmdlet
 {
-    public class SetAzureServiceProjectTests : SMTestBase
+    public class SetAzureServiceProjectTests : TestBase
     {
         private MockCommandRuntime mockCommandRuntime;
 

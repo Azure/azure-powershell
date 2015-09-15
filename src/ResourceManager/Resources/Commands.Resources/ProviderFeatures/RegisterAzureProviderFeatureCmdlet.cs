@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Resources.ProviderFeatures
     /// <summary>
     /// Register the previewed features of a certain azure resource provider.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Register, "AzureRMProviderFeature"), OutputType(typeof(List<PSProviderFeature>))]
+    [Cmdlet(VerbsLifecycle.Register, "AzureProviderFeature"), OutputType(typeof(List<PSProviderFeature>))]
     public class RegisterAzureProviderFeatureCmdlet : AzureProviderFeatureCmdletBase
     {
         /// <summary>
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Resources.ProviderFeatures
         /// <summary>
         /// Executes the cmdlet
         /// </summary>
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             this.ConfirmAction(
                 force: this.Force,

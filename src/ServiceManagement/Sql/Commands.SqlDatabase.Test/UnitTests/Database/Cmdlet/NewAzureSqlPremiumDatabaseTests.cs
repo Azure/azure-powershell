@@ -20,7 +20,7 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cmdlet
 {
     [TestClass]
-    public class NewAzureSqlPremiumDatabaseTests : SMTestBase
+    public class NewAzureSqlPremiumDatabaseTests : TestBase
     {
         [TestCleanup]
         public void CleanupTest()

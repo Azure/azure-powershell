@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Insights
@@ -21,21 +20,21 @@ namespace Microsoft.Azure.Commands.Insights
     /// <summary>
     /// Base class for the Azure Insights SDK Cmdlets
     /// </summary>
-    public abstract class InsightsCmdletBase : AzureRMCmdlet
+    public abstract class InsightsCmdletBase : AzurePSCmdlet
     {
         /// <summary>
         /// Executes the Cmdlet. This is a callback function to simplify the execption handling
         /// </summary>
-        protected abstract void ProcessRecordInternal();
+        protected abstract void ExecuteCmdletInternal();
 
         /// <summary>
         /// Execute the cmdlet
         /// </summary>
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             try
             {
-                this.ProcessRecordInternal();
+                this.ExecuteCmdletInternal();
             }
             catch (AggregateException ex)
             {

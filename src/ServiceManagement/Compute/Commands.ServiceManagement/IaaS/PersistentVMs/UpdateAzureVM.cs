@@ -55,7 +55,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 
             base.ExecuteCommand();
 
-            AzureSubscription currentSubscription = Profile.DefaultContext.Subscription;
+            AzureSubscription currentSubscription = Profile.Context.Subscription;
             if (CurrentDeploymentNewSM == null)
             {
                 throw new ApplicationException(String.Format(Resources.CouldNotFindDeployment, ServiceName, Model.DeploymentSlotType.Production));

@@ -19,7 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRemoteAppVNet"), OutputType(typeof(TrackingResult))]
-    public class RemoveAzureRemoteAppVNet : VNetDeprecated
+    public class RemoveAzureRemoteAppVNet : RdsCmdlet
     {
 
         [Parameter(Mandatory = true,

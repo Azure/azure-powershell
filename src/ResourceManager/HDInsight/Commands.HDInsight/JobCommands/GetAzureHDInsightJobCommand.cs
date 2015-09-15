@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             HelpMessage = "The JobID of the jobDetails to stop.")]
         public string JobId { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             _clusterName = GetClusterConnection(ResourceGroupName, ClusterName);
             if (JobId != null)

@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRMApiManagementGroup", DefaultParameterSetName = GetAll)]
+    [Cmdlet(VerbsCommon.Get, "AzureApiManagementGroup", DefaultParameterSetName = GetAll)]
     [OutputType(typeof(PsApiManagementGroup))]
     public class GetAzureApiManagementGroup : AzureApiManagementCmdletBase
     {

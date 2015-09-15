@@ -15,7 +15,6 @@
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Insights.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
@@ -25,7 +24,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
     /// Create an autoscale profile
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AutoscaleProfile"), OutputType(typeof(AutoscaleProfile))]
-    public class NewAutoscaleProfileCommand : AzureRMCmdlet
+    public class NewAutoscaleProfileCommand : AzurePSCmdlet
     {
         private const string AddAutoscaleProfileNoScheduleParamGroup = "Parameters for AddAutoscale profile cmdlet without scheduled times";
         private const string AddAutoscaleProfileFixDateParamGroup = "Parameters for AddAutoscale profile cmdlet using fix date scheduling";
@@ -135,7 +134,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// <summary>
         /// Execute the cmdlet
         /// </summary>
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             AutoscaleProfile profile = this.CreateSettingProfile();
             WriteObject(profile);

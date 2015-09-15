@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets azure automation variables for a given account.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRMAutomationVariable")]
+    [Cmdlet(VerbsCommon.Set, "AzureAutomationVariable")]
     [OutputType(typeof(Variable))]
     public class SetAzureAutomationVariable : AzureAutomationBaseCmdlet
     {
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void AutomationProcessRecord()
+        protected override void AutomationExecuteCmdlet()
         {
             Variable variable = new Variable()
             {

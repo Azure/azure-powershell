@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Removes a new resource group.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRMResourceGroup", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureResourceGroup", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureResourceGroupCommand : ResourcesBaseCmdlet
     {
         [Alias("ResourceGroupName")]
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
         
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ConfirmAction(
                 Force.IsPresent,
@@ -46,7 +46,6 @@ namespace Microsoft.Azure.Commands.Resources
 
             if (PassThru)
             {
-                WriteWarning("The PassThru switch parameter is being deprecated and will be removed in a future release.");
                 WriteObject(true);
             }
         }

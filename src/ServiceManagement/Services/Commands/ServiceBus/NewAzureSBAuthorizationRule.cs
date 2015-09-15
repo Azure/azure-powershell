@@ -24,7 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceBus
     /// Creates new service bus authorization rule.
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureSBAuthorizationRule"), OutputType(typeof(ExtendedAuthorizationRule))]
-    public class NewAzureSBAuthorizationRuleCommand : AzureSMCmdlet
+    public class NewAzureSBAuthorizationRuleCommand : AzurePSCmdlet
     {
         public const string EntitySASParameterSet = "EntitySAS";
 
@@ -62,7 +62,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceBus
 
         public override void ExecuteCmdlet()
         {
-            Client = Client ?? new ServiceBusClientExtensions(Profile, Profile.DefaultContext.Subscription);
+            Client = Client ?? new ServiceBusClientExtensions(Profile, Profile.Context.Subscription);
             ExtendedAuthorizationRule rule = null;
             PSObject output = null;
 

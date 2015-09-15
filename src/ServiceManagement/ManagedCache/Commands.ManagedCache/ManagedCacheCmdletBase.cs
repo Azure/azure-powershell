@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ManagedCache
     /// <summary>
     /// The base class for all Microsoft Azure Managed Cache Management Cmdlets
     /// </summary>
-    public abstract class ManagedCacheCmdletBase : AzureSMCmdlet
+    public abstract class ManagedCacheCmdletBase : AzurePSCmdlet
     {
         private PSCacheClient cacheClient;
 
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.ManagedCache
             {
                 if (cacheClient == null)
                 {
-                    cacheClient = new PSCacheClient(Profile, Profile.DefaultContext.Subscription);
+                    cacheClient = new PSCacheClient(Profile, Profile.Context.Subscription);
                 }
                 return cacheClient;
             }

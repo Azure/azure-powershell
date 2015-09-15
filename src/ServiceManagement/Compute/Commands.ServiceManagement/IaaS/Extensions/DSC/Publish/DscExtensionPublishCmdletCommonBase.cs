@@ -15,7 +15,7 @@ using Newtonsoft.Json;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
 {
-    public class DscExtensionPublishCmdletCommonBase : AzureSMCmdlet
+    public class DscExtensionPublishCmdletCommonBase : AzurePSCmdlet
     {
         //Publish
         private const string CreateArchiveParameterSetName = "CreateArchive";
@@ -36,7 +36,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
                             new InvalidOperationException(
                                 string.Format(
                                 CultureInfo.CurrentUICulture, 
-                                Microsoft.WindowsAzure.Commands.Common.Properties.Resources.PublishVMDscExtensionRequiredPsVersion, 
+                                Properties.Resources.PublishVMDscExtensionRequiredPsVersion, 
                                 DscExtensionCmdletConstants.MinMajorPowerShellVersion, 
                                 major)),
                             "InvalidPowerShellVersion",
@@ -51,7 +51,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
             if (!File.Exists(configurationPath))
             {
                 ThrowInvalidArgumentError(
-                    Microsoft.WindowsAzure.Commands.Common.Properties.Resources.PublishVMDscExtensionUploadArchiveConfigFileNotExist,
+                    Properties.Resources.PublishVMDscExtensionUploadArchiveConfigFileNotExist,
                     configurationPath);
             }
 
@@ -61,14 +61,14 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
             {
                 if (!DscExtensionCmdletConstants.UploadArchiveAllowedFileExtensions.Contains(Path.GetExtension(configurationFileExtension)))
                 {
-                    ThrowInvalidArgumentError(Microsoft.WindowsAzure.Commands.Common.Properties.Resources.PublishVMDscExtensionUploadArchiveConfigFileInvalidExtension, configurationPath);
+                    ThrowInvalidArgumentError(Properties.Resources.PublishVMDscExtensionUploadArchiveConfigFileInvalidExtension, configurationPath);
                 }
             }
             else if (paramaterSetName == CreateArchiveParameterSetName)
             {
                 if (!DscExtensionCmdletConstants.CreateArchiveAllowedFileExtensions.Contains(Path.GetExtension(configurationFileExtension)))
                 {
-                    ThrowInvalidArgumentError(Microsoft.WindowsAzure.Commands.Common.Properties.Resources.PublishVMDscExtensionCreateArchiveConfigFileInvalidExtension, configurationPath);
+                    ThrowInvalidArgumentError(Properties.Resources.PublishVMDscExtensionCreateArchiveConfigFileInvalidExtension, configurationPath);
                 }
             }
         }
@@ -78,7 +78,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
             if (!File.Exists(configurationDataPath))
             {
                 ThrowInvalidArgumentError(
-                    Microsoft.WindowsAzure.Commands.Common.Properties.Resources.AzureVMDscCannotFindConfigurationDataFile,
+                    Properties.Resources.AzureVMDscCannotFindConfigurationDataFile,
                     configurationDataPath);
             }
             if (string.Compare(
@@ -86,7 +86,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
                 ".psd1",
                 StringComparison.InvariantCultureIgnoreCase) != 0)
             {
-                ThrowInvalidArgumentError(Microsoft.WindowsAzure.Commands.Common.Properties.Resources.AzureVMDscInvalidConfigurationDataFile);
+                ThrowInvalidArgumentError(Properties.Resources.AzureVMDscInvalidConfigurationDataFile);
             }
         }
 
@@ -104,7 +104,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
             var tempZipFolder = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
             WriteVerbose(String.Format(
                 CultureInfo.CurrentUICulture, 
-                Microsoft.WindowsAzure.Commands.Common.Properties.Resources.PublishVMDscExtensionTempFolderVerbose, 
+                Properties.Resources.PublishVMDscExtensionTempFolderVerbose, 
                 tempZipFolder));
             Directory.CreateDirectory(tempZipFolder);
             _temporaryDirectoriesToDelete.Add(tempZipFolder);
@@ -163,7 +163,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
                 {
                     ThrowTerminatingError(
                         new ErrorRecord(
-                            new UnauthorizedAccessException(string.Format(CultureInfo.CurrentUICulture, Microsoft.WindowsAzure.Commands.Common.Properties.Resources.AzureVMDscArchiveAlreadyExists, archive)),
+                            new UnauthorizedAccessException(string.Format(CultureInfo.CurrentUICulture, Properties.Resources.AzureVMDscArchiveAlreadyExists, archive)),
                             "FileAlreadyExists",
                             ErrorCategory.PermissionDenied,
                             null));
@@ -172,7 +172,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
             else
             {
                 string tempArchiveFolder = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
-                WriteVerbose(String.Format(CultureInfo.CurrentUICulture, Microsoft.WindowsAzure.Commands.Common.Properties.Resources.PublishVMDscExtensionTempFolderVerbose, tempArchiveFolder));
+                WriteVerbose(String.Format(CultureInfo.CurrentUICulture, Properties.Resources.PublishVMDscExtensionTempFolderVerbose, tempArchiveFolder));
                 Directory.CreateDirectory(tempArchiveFolder);
                 _temporaryDirectoriesToDelete.Add(tempArchiveFolder);
                 archive = Path.Combine(tempArchiveFolder, configurationName + DscExtensionCmdletConstants.ZipFileExtension);
@@ -210,7 +210,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
                 ConfirmAction(
                     true,
                     string.Empty,
-                    Microsoft.WindowsAzure.Commands.Common.Properties.Resources.AzureVMDscCreateArchiveAction,
+                    Properties.Resources.AzureVMDscCreateArchiveAction,
                     outputArchivePath, () => CreateConfigurationArchive(
                         configurationPath,
                         configurationDataPath,
@@ -245,7 +245,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
             WriteVerbose(
                     String.Format(
                         CultureInfo.CurrentUICulture,
-                        Microsoft.WindowsAzure.Commands.Common.Properties.Resources.AzureVMDscParsingConfiguration,
+                        Properties.Resources.AzureVMDscParsingConfiguration,
                         configurationPath));
 
             var requiredModules = GetRequiredModules(configurationPath);
@@ -281,7 +281,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
                         .AddParameter("tempZipFolder", tempZipFolder);
                     WriteVerbose(String.Format(
                         CultureInfo.CurrentUICulture,
-                            Microsoft.WindowsAzure.Commands.Common.Properties.Resources.PublishVMDscExtensionCopyModuleVerbose,
+                            Properties.Resources.PublishVMDscExtensionCopyModuleVerbose,
                             module,
                             tempZipFolder));
                     powershell.Invoke();
@@ -308,7 +308,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
                     if (!dir.Exists)
                     {
                         ThrowInvalidArgumentError(
-                        Microsoft.WindowsAzure.Commands.Common.Properties.Resources.PublishVMDscExtensionDirectoryNotExist,
+                        Properties.Resources.PublishVMDscExtensionDirectoryNotExist,
                         dir);
                     }
 
@@ -322,7 +322,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
             catch (Exception)
             {
                 ThrowInvalidArgumentError(
-                    Microsoft.WindowsAzure.Commands.Common.Properties.Resources.PublishVMDscExtensionAdditionalContentPathNotExist,
+                    Properties.Resources.PublishVMDscExtensionAdditionalContentPathNotExist,
                     additionalPath);
             }
         }
@@ -372,7 +372,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
                         new ParseException(
                             String.Format(
                                 CultureInfo.CurrentUICulture,
-                                Microsoft.WindowsAzure.Commands.Common.Properties.Resources.PublishVMDscExtensionStorageParserErrors,
+                                Properties.Resources.PublishVMDscExtensionStorageParserErrors,
                                 configurationPath,
                                 String.Join("\n", parseResult.Errors.Select(error => error.ToString())))),
                         "DscConfigurationParseError",
@@ -389,7 +389,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
 
             WriteVerbose(String.Format(
                 CultureInfo.CurrentUICulture,
-                Microsoft.WindowsAzure.Commands.Common.Properties.Resources.PublishVMDscExtensionRequiredModulesVerbose, 
+                Properties.Resources.PublishVMDscExtensionRequiredModulesVerbose, 
                 String.Join(", ", requiredModules)));
             
             return requiredModules;
@@ -409,7 +409,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
             ConfirmAction(
                 true,
                 string.Empty,
-                string.Format(CultureInfo.CurrentUICulture, Microsoft.WindowsAzure.Commands.Common.Properties.Resources.AzureVMDscUploadToBlobStorageAction, archivePath),
+                string.Format(CultureInfo.CurrentUICulture, Properties.Resources.AzureVMDscUploadToBlobStorageAction, archivePath),
                 modulesBlob.Uri.AbsoluteUri, () =>
                 {
                     if (!force && modulesBlob.Exists())
@@ -419,7 +419,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
                                 new UnauthorizedAccessException(
                                     string.Format(
                                         CultureInfo.CurrentUICulture, 
-                                        Microsoft.WindowsAzure.Commands.Common.Properties.Resources.AzureVMDscStorageBlobAlreadyExists, modulesBlob.Uri.AbsoluteUri)),
+                                        Properties.Resources.AzureVMDscStorageBlobAlreadyExists, modulesBlob.Uri.AbsoluteUri)),
                                 "StorageBlobAlreadyExists",
                                 ErrorCategory.PermissionDenied,
                                 null));
@@ -429,7 +429,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
 
                     WriteVerbose(string.Format(
                         CultureInfo.CurrentUICulture, 
-                        Microsoft.WindowsAzure.Commands.Common.Properties.Resources.PublishVMDscExtensionArchiveUploadedMessage, modulesBlob.Uri.AbsoluteUri));
+                        Properties.Resources.PublishVMDscExtensionArchiveUploadedMessage, modulesBlob.Uri.AbsoluteUri));
 
                     if (passThru)
                     {
@@ -442,7 +442,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
         {
             WriteVerbose(String.Format(
                 CultureInfo.CurrentUICulture,
-                Microsoft.WindowsAzure.Commands.Common.Properties.Resources.PublishVMDscExtensionCopyFileVerbose,
+                Properties.Resources.PublishVMDscExtensionCopyFileVerbose,
                 source,
                 destination));
             File.Copy(source, destination);
@@ -461,11 +461,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
                 try
                 {
                     DeleteFile(file);
-                    WriteVerbose(string.Format(CultureInfo.CurrentUICulture, Microsoft.WindowsAzure.Commands.Common.Properties.Resources.PublishVMDscExtensionDeletedFileMessage, file));
+                    WriteVerbose(string.Format(CultureInfo.CurrentUICulture, Properties.Resources.PublishVMDscExtensionDeletedFileMessage, file));
                 }
                 catch (Exception e)
                 {
-                    WriteVerbose(string.Format(CultureInfo.CurrentUICulture, Microsoft.WindowsAzure.Commands.Common.Properties.Resources.PublishVMDscExtensionDeleteErrorMessage, file, e.Message));
+                    WriteVerbose(string.Format(CultureInfo.CurrentUICulture, Properties.Resources.PublishVMDscExtensionDeleteErrorMessage, file, e.Message));
                 }
             }
             foreach (var directory in _temporaryDirectoriesToDelete)
@@ -473,11 +473,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
                 try
                 {
                     DeleteDirectory(directory);
-                    WriteVerbose(string.Format(CultureInfo.CurrentUICulture, Microsoft.WindowsAzure.Commands.Common.Properties.Resources.PublishVMDscExtensionDeletedFileMessage, directory));
+                    WriteVerbose(string.Format(CultureInfo.CurrentUICulture, Properties.Resources.PublishVMDscExtensionDeletedFileMessage, directory));
                 }
                 catch (Exception e)
                 {
-                    WriteVerbose(string.Format(CultureInfo.CurrentUICulture, Microsoft.WindowsAzure.Commands.Common.Properties.Resources.PublishVMDscExtensionDeleteErrorMessage, directory, e.Message));
+                    WriteVerbose(string.Format(CultureInfo.CurrentUICulture, Properties.Resources.PublishVMDscExtensionDeleteErrorMessage, directory, e.Message));
                 }
             }
         }

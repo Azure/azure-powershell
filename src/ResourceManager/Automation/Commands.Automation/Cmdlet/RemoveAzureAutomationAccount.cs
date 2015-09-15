@@ -25,9 +25,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Removes azure automation accounts, filterd by automation account name and location.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRMAutomationAccount")]
+    [Cmdlet(VerbsCommon.Remove, "AzureAutomationAccount")]
     [OutputType(typeof(AutomationAccount))]
-    public class RemoveAzureAutomationAccount : ResourceManager.Common.AzureRMCmdlet
+    public class RemoveAzureAutomationAccount : AzurePSCmdlet
     {
         /// <summary>
         /// The automation client.
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             get
             {
-                return this.automationClient = this.automationClient ?? new AutomationClient(DefaultProfile.DefaultContext);
+                return this.automationClient = this.automationClient ?? new AutomationClient(Profile, Profile.Context.Subscription);
             }
 
             set
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             this.ConfirmAction(
                 this.Force.IsPresent,

@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             this.hiveJobDefinitionCommand = new NewAzureHDInsightHiveJobDefinitionCommand();
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             //get variables from session
             var clusterConnection = SessionState.PSVariable.Get(UseAzureHDInsightClusterCommand.ClusterEndpoint).Value.ToString();

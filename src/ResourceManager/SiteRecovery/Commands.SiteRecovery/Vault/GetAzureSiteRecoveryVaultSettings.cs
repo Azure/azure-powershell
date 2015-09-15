@@ -23,14 +23,14 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// <summary>
     /// Retrieves Azure Site Recovery Vault Settings.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMSiteRecoveryVaultSettings")]
+    [Cmdlet(VerbsCommon.Get, "AzureSiteRecoveryVaultSettings")]
     [OutputType(typeof(ASRVaultSettings))]
     public class GetAzureSiteRecoveryVaultSettings : SiteRecoveryCmdletBase
     {
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             this.WriteObject(new ASRVaultSettings(
                 PSRecoveryServicesClient.asrVaultCreds.ResourceName,

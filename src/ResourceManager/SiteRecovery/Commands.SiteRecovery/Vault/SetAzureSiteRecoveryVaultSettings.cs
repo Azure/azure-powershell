@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// <summary>
     /// Retrieves Azure Site Recovery Vault Settings.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRMSiteRecoveryVaultSettings")]
+    [Cmdlet(VerbsCommon.Set, "AzureSiteRecoveryVaultSettings")]
     [OutputType(typeof(ASRVaultSettings))]
     public class SetAzureSiteRecoveryVaultSettings : SiteRecoveryCmdletBase
     {
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             // Validate the Vault
             RecoveryServicesClient.ValidateVaultSettings(

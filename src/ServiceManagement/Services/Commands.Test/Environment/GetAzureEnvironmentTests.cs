@@ -28,7 +28,7 @@ using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Environment
 {
-    public class GetAzureEnvironmentTests : SMTestBase
+    public class GetAzureEnvironmentTests : TestBase
     {
         private MemoryDataStore dataStore;
 
@@ -52,7 +52,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
                 CommandRuntime = commandRuntimeMock.Object
             };
 
-            AzureSMCmdlet.CurrentProfile = new AzureSMProfile();
+            AzurePSCmdlet.CurrentProfile = new AzureProfile();
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
@@ -75,7 +75,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
                 Name = EnvironmentName.AzureChinaCloud
             };
 
-            AzureSMCmdlet.CurrentProfile = new AzureSMProfile();
+            AzurePSCmdlet.CurrentProfile = new AzureProfile();
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();

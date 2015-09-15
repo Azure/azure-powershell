@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Regenerates the agent registration key based on the key name.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRMAutomationKey")]
+    [Cmdlet(VerbsCommon.New, "AzureAutomationKey")]
     [OutputType(typeof(AgentRegistration))]
     public class NewAzureAutomationKey : AzureAutomationBaseCmdlet
     {
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             var agentRegistration = this.AutomationClient.NewAgentRegistrationKey(this.ResourceGroupName, this.AutomationAccountName, this.KeyType);
             this.WriteObject(agentRegistration);

@@ -22,15 +22,14 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsLifecycle.Stop, Constants.AzureBatchJob)]
     public class StopBatchJobCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, HelpMessage = "The id of the job to terminate.")]
+        [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "The id of the job to terminate.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
         [Parameter(Position = 1)]
         public string TerminateReason { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             TerminateJobParameters parameters = new TerminateJobParameters(this.BatchContext, this.Id, null, this.AdditionalBehaviors)
             {

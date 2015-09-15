@@ -17,7 +17,7 @@ using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRMRouteConfig"), OutputType(typeof(PSRoute))]
+    [Cmdlet(VerbsCommon.New, "AzureRouteConfig"), OutputType(typeof(PSRoute))]
     public class NewAzureRouteConfigCommand : AzureRouteConfigBase
     {
         [Parameter(
@@ -26,9 +26,9 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public override string Name { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             var route = new PSRoute();
 

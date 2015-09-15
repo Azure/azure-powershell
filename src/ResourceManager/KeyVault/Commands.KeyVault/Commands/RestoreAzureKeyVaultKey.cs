@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Restores the backup key into a vault 
     /// </summary>
-    [Cmdlet(VerbsData.Restore, "AzureRMKeyVaultKey", HelpUri = Constants.KeyVaultHelpUri)]
+    [Cmdlet(VerbsData.Restore, "AzureKeyVaultKey", HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(KeyBundle))]
     public class RestoreAzureKeyVaultKey : KeyVaultCmdletBase
     {
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #endregion Input Parameter Definitions
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             var filePath = ResolvePath(InputFile);
 

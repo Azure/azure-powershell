@@ -30,17 +30,17 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public AzureProfile Profile { get; set; }
 
         /// <summary>
         /// Constructs a firewall rule adapter
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlCapabilitiesAdapter(AzureContext context)
+        public AzureSqlCapabilitiesAdapter(AzureProfile profile, AzureSubscription subscription)
         {
-            Context = context;
-            _communicator = new AzureSqlCapabilitiesCommunicator(Context);
+            Profile = profile;
+            _communicator = new AzureSqlCapabilitiesCommunicator(Profile, subscription);
         }
 
         /// <summary>

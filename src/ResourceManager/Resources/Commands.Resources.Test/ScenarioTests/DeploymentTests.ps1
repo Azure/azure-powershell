@@ -25,9 +25,9 @@ function Test-ValidateDeployment
 	$location = Get-ProviderLocation "Microsoft.Web/sites"
 
 	# Test
-	New-AzureRMResourceGroup -Name $rgname -Location $rglocation
+	New-AzureResourceGroup -Name $rgname -Location $rglocation
 		
-	$list = Test-AzureRMResourceGroupTemplate -ResourceGroupName $rgname -TemplateFile Build2014_Website_App.json -siteName $rname -hostingPlanName $rname -siteLocation $location -sku Free -workerSize 0
+	$list = Test-AzureResourceGroupTemplate -ResourceGroupName $rgname -TemplateFile Build2014_Website_App.json -siteName $rname -hostingPlanName $rname -siteLocation $location -sku Free -workerSize 0
 
 	# Assert
 	Assert-AreEqual 0 @($list).Count
@@ -46,9 +46,9 @@ function Test-NewDeploymentFromTemplateFile
 	$location = Get-ProviderLocation "Microsoft.Web/sites"
 
 	# Test
-	New-AzureRMResourceGroup -Name $rgname -Location $rglocation
+	New-AzureResourceGroup -Name $rgname -Location $rglocation
 		
-	$deployment = New-AzureRMResourceGroupDeployment -ResourceGroupName $rgname -TemplateFile Build2014_Website_App.json -siteName $rname -hostingPlanName $rname -siteLocation $location -sku Free -workerSize 0
+	$deployment = New-AzureResourceGroupDeployment -ResourceGroupName $rgname -TemplateFile Build2014_Website_App.json -siteName $rname -hostingPlanName $rname -siteLocation $location -sku Free -workerSize 0
 
 	# Assert
 	Assert-AreEqual Succeeded $deployment.ProvisioningStatelean-ResourceGroup $rgname

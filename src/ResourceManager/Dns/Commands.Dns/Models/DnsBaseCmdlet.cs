@@ -12,12 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Dns.Models
 {
-    public abstract class DnsBaseCmdlet : AzureRMCmdlet
+    public abstract class DnsBaseCmdlet : AzurePSCmdlet
     {
         private DnsClient dnsClient;
 
@@ -27,7 +26,7 @@ namespace Microsoft.Azure.Commands.Dns.Models
             {
                 if (dnsClient == null)
                 {
-                    dnsClient = new DnsClient(DefaultContext);
+                    dnsClient = new DnsClient(this.Profile);
                 }
                 return dnsClient;
             }

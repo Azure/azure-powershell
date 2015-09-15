@@ -20,12 +20,13 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Collections.Generic;
 using System.Management.Automation;
+using System.Threading.Tasks;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodeUsers
 {
-    public class RemoveBatchComputeNodeUserCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class RemoveBatchComputeNodeUserCommandTests
     {
         private RemoveBatchComputeNodeUserCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
@@ -60,8 +61,19 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodeUsers
             cmdlet.ComputeNodeId = "computeNode1";
             cmdlet.Name = "testUser";
 
-            // Don't go to the service on a Delete ComputeNodeUser call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<ComputeNodeDeleteUserParameters, ComputeNodeDeleteUserResponse>();
+            // Don't go to the service on a DeleteTVMUser call
+            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
+            {
+                BatchRequest<ComputeNodeDeleteUserParameters, ComputeNodeDeleteUserResponse> request =
+                (BatchRequest<ComputeNodeDeleteUserParameters, ComputeNodeDeleteUserResponse>)baseRequest;
+
+                request.ServiceRequestFunc = (cancellationToken) =>
+                {
+                    ComputeNodeDeleteUserResponse response = new ComputeNodeDeleteUserResponse();
+                    Task<ComputeNodeDeleteUserResponse> task = Task.FromResult(response);
+                    return task;
+                };
+            });
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameters are set

@@ -24,7 +24,7 @@ using Moq;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService
 {
-    public class TestAzureNameTests : SMTestBase
+    public class TestAzureNameTests : TestBase
     {
         private Mock<ICloudServiceClient> cloudServiceClientMock;
         private Mock<IWebsitesClient> websitesClientMock;

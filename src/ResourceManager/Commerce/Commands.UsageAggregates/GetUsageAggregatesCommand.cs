@@ -23,10 +23,9 @@ namespace Microsoft.Azure.Commands.UsageAggregates
     using WindowsAzure.Commands.Utilities.Common;
     using System;
     using System.Management.Automation;
-    using ResourceManager.Common;
 
     [Cmdlet(VerbsCommon.Get, "UsageAggregates"), OutputType(typeof(UsageAggregationGetResponse))]
-    public class GetUsageAggregatesCommand : AzureRMCmdlet
+    public class GetUsageAggregatesCommand : AzurePSCmdlet
     {
         private UsageAggregationManagementClient _theClient;
         private AggregationGranularity _aggregationGranularity = AggregationGranularity.Daily;
@@ -53,12 +52,12 @@ namespace Microsoft.Azure.Commands.UsageAggregates
         [Parameter(Mandatory = false, HelpMessage = "Retrieved from previous calls, this is the bookmark used for progress when the responses are paged.")]
         public string ContinuationToken { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (_theClient == null)
             {
-                _theClient = AzureSession.ClientFactory.CreateClient<UsageAggregationManagementClient>(DefaultProfile.DefaultContext,
-                    AzureEnvironment.Endpoint.ResourceManager);
+                _theClient = AzureSession.ClientFactory.CreateClient<UsageAggregationManagementClient>(Profile,
+                    Profile.Context.Subscription, AzureEnvironment.Endpoint.ResourceManager);
             }
 
             UsageAggregationGetResponse aggregations = _theClient.UsageAggregates.Get(ReportedStartTime,

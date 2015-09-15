@@ -32,7 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
     /// <summary>
     /// Basic unit tests for the Enable-AzureServiceProjectRemoteDesktop enableRDCmdlet.
     /// </summary>
-    internal class SaveAzureServiceProjectPackageCommandTest : SMTestBase
+    internal class SaveAzureServiceProjectPackageCommandTest : TestBase
     {
         static private MockCommandRuntime mockCommandRuntime;
 

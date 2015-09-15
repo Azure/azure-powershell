@@ -11,21 +11,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
 
     public class StorageUtilities
     {
-        /// <summary>
-        /// Creates https endpoint from the given endpoint.
-        /// </summary>
-        /// <param name="endpointUri">The endpoint uri.</param>
-        /// <returns>The https endpoint uri.</returns>
-        public static Uri CreateHttpsEndpoint(string endpointUri)
-        {
-            UriBuilder builder = new UriBuilder(endpointUri) { Scheme = "https" };
-            string endpoint = builder.Uri.GetComponents(
-                UriComponents.AbsoluteUri & ~UriComponents.Port,
-                UriFormat.UriEscaped);
-
-            return new Uri(endpoint);
-        }
-
         public static CloudStorageAccount GenerateCloudStorageAccount(StorageManagementClient storageClient, string accountName)
         {
             var storageServiceResponse = storageClient.StorageAccounts.Get(accountName);
@@ -38,18 +23,18 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
 
             if (storageServiceResponse.StorageAccount.Properties.Endpoints.Count >= 4)
             {
-                fileEndpoint = StorageUtilities.CreateHttpsEndpoint(storageServiceResponse.StorageAccount.Properties.Endpoints[3].ToString());
+                fileEndpoint = GeneralUtilities.CreateHttpsEndpoint(storageServiceResponse.StorageAccount.Properties.Endpoints[3].ToString());
             }
             
             if (storageServiceResponse.StorageAccount.Properties.Endpoints.Count >= 3)
             {
-                tableEndpoint = StorageUtilities.CreateHttpsEndpoint(storageServiceResponse.StorageAccount.Properties.Endpoints[2].ToString());
-                queueEndpoint = StorageUtilities.CreateHttpsEndpoint(storageServiceResponse.StorageAccount.Properties.Endpoints[1].ToString());
+                tableEndpoint = GeneralUtilities.CreateHttpsEndpoint(storageServiceResponse.StorageAccount.Properties.Endpoints[2].ToString());
+                queueEndpoint = GeneralUtilities.CreateHttpsEndpoint(storageServiceResponse.StorageAccount.Properties.Endpoints[1].ToString());
             }
 
             if (storageServiceResponse.StorageAccount.Properties.Endpoints.Count >= 1)
             {
-                blobEndpoint = StorageUtilities.CreateHttpsEndpoint(storageServiceResponse.StorageAccount.Properties.Endpoints[0].ToString());
+                blobEndpoint = GeneralUtilities.CreateHttpsEndpoint(storageServiceResponse.StorageAccount.Properties.Endpoints[0].ToString());
             }
 
             return new CloudStorageAccount(

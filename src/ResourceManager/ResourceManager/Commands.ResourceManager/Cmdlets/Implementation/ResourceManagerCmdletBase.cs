@@ -25,7 +25,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients;
-    using Common;
     using Microsoft.Azure.Common.Authentication;
     using Microsoft.Azure.Common.Authentication.Models;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -34,7 +33,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// The base class for resource manager cmdlets.
     /// </summary>
-    public abstract class ResourceManagerCmdletBase : AzureRMCmdlet
+    public abstract class ResourceManagerCmdletBase : AzurePSCmdlet
     {
         /// <summary>
         /// The cancellation source.
@@ -212,7 +211,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             return string.IsNullOrWhiteSpace(this.ApiVersion)
                 ? ApiVersionHelper.DetermineApiVersion(
-                    DefaultContext,
+                    profile: this.Profile,
                     resourceId: resourceId,
                     cancellationToken: this.CancellationToken.Value,
                     pre: pre ?? this.Pre)
@@ -229,7 +228,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             return string.IsNullOrWhiteSpace(this.ApiVersion)
                 ? ApiVersionHelper.DetermineApiVersion(
-                    DefaultContext,
+                    profile: this.Profile,
                     providerNamespace: providerNamespace,
                     resourceType: resourceType,
                     cancellationToken: this.CancellationToken.Value,
@@ -242,7 +241,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         public ResourceManagerRestRestClient GetResourcesClient()
         {
-            var endpoint = DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.ResourceManager);
+            var endpoint = this.Profile.Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.ResourceManager);
 
             if (string.IsNullOrWhiteSpace(endpoint))
             {
@@ -256,7 +255,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 endpointUri: endpointUri,
                 httpClientHelper: HttpClientHelperFactory.Instance
                 .CreateHttpClientHelper(
-                        credentials: AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(DefaultContext),
+                        credentials: AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(this.Profile.Context),
                         headerValues: AzureSession.ClientFactory.UserAgents));
         }
 

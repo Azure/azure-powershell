@@ -463,7 +463,22 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
                     }
                 case AzureVmUpload:
                     {
-                        ImportTemplateImage();
+                        if (IsFeatureEnabled(EnabledFeatures.goldImageImport))
+                        {
+                            ImportTemplateImage();
+                        }
+                        else
+                        {
+                            ErrorRecord er = RemoteAppCollectionErrorState.CreateErrorRecordFromString(
+                                     string.Format(Commands_RemoteApp.ImportImageFeatureNotEnabledError),
+                                     String.Empty,
+                                     Client.Account,
+                                     ErrorCategory.InvalidOperation
+                                     );
+
+                            ThrowTerminatingError(er);
+                        }
+                        
                         break;
                     }
             }

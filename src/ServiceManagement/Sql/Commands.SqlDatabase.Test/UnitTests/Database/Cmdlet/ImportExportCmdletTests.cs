@@ -33,7 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
     /// Get-AzureSqlDatabaseImportExportStatus cmdlet.
     /// </summary>
     [TestClass]
-    public class ImportExportCmdletTests : SMTestBase
+    public class ImportExportCmdletTests : TestBase
     {
         [TestCleanup]
         public void CleanupTest()

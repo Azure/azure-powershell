@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.Compute
                 if (this.storageClient == null)
                 {
                     this.storageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(
-                        DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ServiceManagement);
+                        Profile.Context, AzureEnvironment.Endpoint.ServiceManagement);
                 }
 
                 return this.storageClient;
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         internal void ExecuteCommand()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             ExecuteClientAction(() =>
             {

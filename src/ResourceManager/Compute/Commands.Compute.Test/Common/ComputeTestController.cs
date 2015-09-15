@@ -27,11 +27,10 @@ using Microsoft.Azure.Test;
 using System;
 using System.Linq;
 using Microsoft.Azure.Common.Authentication;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
-    public sealed class ComputeTestController : RMTestBase
+    public sealed class ComputeTestController
     {
         bool testViaCsm = true; // Currently set to true, we will get this from Environment varialbe.
 

@@ -19,14 +19,9 @@ using System;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    public abstract class ComputeClientBaseCmdlet : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+    public abstract class ComputeClientBaseCmdlet : AzurePSCmdlet
     {
         protected const string VirtualMachineExtensionType = "Microsoft.Compute/virtualMachines/extensions";
-
-        protected override bool IsUsageMetricEnabled
-        {
-            get { return true; }
-        }
 
         private ComputeClient computeClient;
 
@@ -36,7 +31,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (computeClient == null)
                 {
-                    computeClient = new ComputeClient(DefaultProfile.DefaultContext)
+                    computeClient = new ComputeClient(Profile.Context)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp
@@ -49,9 +44,9 @@ namespace Microsoft.Azure.Commands.Compute
             set { computeClient = value; }
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
             ComputeAutoMapperProfile.Initialize();
         }
 
@@ -59,11 +54,18 @@ namespace Microsoft.Azure.Commands.Compute
         {
             try
             {
-                action();
+                try
+                {
+                    action();
+                }
+                catch (CloudException ex)
+                {
+                    throw new ComputeCloudException(ex);
+                }
             }
-            catch (CloudException ex)
+            catch (Exception ex)
             {
-                throw new ComputeCloudException(ex);
+                WriteExceptionError(ex);
             }
         }
     }

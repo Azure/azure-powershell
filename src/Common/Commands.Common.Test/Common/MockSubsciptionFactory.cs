@@ -31,12 +31,12 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             throw new NotImplementedException();
         }
 
-        public TClient CreateClient<TClient>(Azure.Common.Authentication.Models.AzureSMProfile profile, Azure.Common.Authentication.Models.AzureSubscription subscription, Azure.Common.Authentication.Models.AzureEnvironment.Endpoint endpoint) where TClient : Hyak.Common.ServiceClient<TClient>
+        public TClient CreateClient<TClient>(Azure.Common.Authentication.Models.AzureProfile profile, Azure.Common.Authentication.Models.AzureSubscription subscription, Azure.Common.Authentication.Models.AzureEnvironment.Endpoint endpoint) where TClient : Hyak.Common.ServiceClient<TClient>
         {
             throw new NotImplementedException();
         }
 
-        public TClient CreateClient<TClient>(Azure.Common.Authentication.Models.AzureSMProfile profile, Azure.Common.Authentication.Models.AzureEnvironment.Endpoint endpoint) where TClient : Hyak.Common.ServiceClient<TClient>
+        public TClient CreateClient<TClient>(Azure.Common.Authentication.Models.AzureProfile profile, Azure.Common.Authentication.Models.AzureEnvironment.Endpoint endpoint) where TClient : Hyak.Common.ServiceClient<TClient>
         {
             throw new NotImplementedException();
         }

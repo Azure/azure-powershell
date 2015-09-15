@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// <summary>
     /// Retrieves Azure Site Recovery Vault Settings File.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMSiteRecoveryVaultSettingsFile", DefaultParameterSetName = ASRParameterSets.ByParam)]
+    [Cmdlet(VerbsCommon.Get, "AzureSiteRecoveryVaultSettingsFile", DefaultParameterSetName = ASRParameterSets.ByParam)]
     [OutputType(typeof(VaultSettingsFilePath))]
     public class GetAzureSiteRecoveryVaultSettingsFile : SiteRecoveryCmdletBase
     {
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             try
             {
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// </summary>
         private void GetVaultSettingsFile()
         {
-            AzureSubscription subscription = DefaultProfile.DefaultContext.Subscription;
+            AzureSubscription subscription = this.Profile.Context.Subscription;
 
             // Generate certificate
             X509Certificate2 cert = CertUtils.CreateSelfSignedCertificate(VaultCertificateExpiryInHoursForHRM, subscription.Id.ToString(), this.Vault.Name);

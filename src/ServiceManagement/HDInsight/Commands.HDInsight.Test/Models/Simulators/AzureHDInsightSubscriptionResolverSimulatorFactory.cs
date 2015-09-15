@@ -19,7 +19,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.HDInsight.Simulators
 {
     internal class AzureHDInsightSubscriptionResolverSimulatorFactory : IAzureHDInsightSubscriptionResolverFactory
     {
-        public IAzureHDInsightSubscriptionResolver Create(AzureSMProfile profile)
+        public IAzureHDInsightSubscriptionResolver Create(AzureProfile profile)
         {
             return new AzureHDInsightSubscriptionResolverSimulator();
         }

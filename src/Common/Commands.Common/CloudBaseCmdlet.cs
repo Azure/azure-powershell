@@ -12,6 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.WindowsAzure.Commands.Common.Properties;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using System;
 using System.Diagnostics;
 using System.Globalization;
@@ -20,14 +24,10 @@ using System.Net;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Security;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Common.Properties;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
-    public abstract class CloudBaseCmdlet<T> : AzureSMCmdlet
+    public abstract class CloudBaseCmdlet<T> : AzurePSCmdlet
         where T : class
     {
         private Binding _serviceBinding;
@@ -81,12 +81,12 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected void DoInitChannelCurrentSubscription(bool force)
         {
-            if (Profile.DefaultContext.Subscription == null)
+            if (Profile.Context.Subscription == null)
             {
                 throw new ArgumentException(Resources.InvalidDefaultSubscription);
             }
 
-            if (Profile.DefaultContext.Account == null)
+            if (Profile.Context.Account == null)
             {
                 throw new ArgumentException(Resources.AccountNeedsToBeSpecified);
             }
@@ -127,19 +127,19 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 return Channel;
             }
 
-            string certificateThumbprint = Profile.DefaultContext.Account.Id;
+            string certificateThumbprint = Profile.Context.Account.Id;
             Debug.Assert(Profile.Accounts[certificateThumbprint].Type == AzureAccount.AccountType.Certificate);
 
             return ChannelHelper.CreateServiceManagementChannel<T>(
                 ServiceBinding,
-                Profile.DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement),
+                Profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement),
                 AzureSession.DataStore.GetCertificate(certificateThumbprint),
                 new HttpRestMessageInspector(WriteDebug));
         }
 
         protected void RetryCall(Action<string> call)
         {
-            RetryCall(Profile.DefaultContext.Subscription.Id, call);
+            RetryCall(Profile.Context.Subscription.Id, call);
         }
 
         protected void RetryCall(Guid subsId, Action<string> call)
@@ -172,7 +172,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected TResult RetryCall<TResult>(Func<string, TResult> call)
         {
-            return RetryCall(Profile.DefaultContext.Subscription.Id, call);
+            return RetryCall(Profile.Context.Subscription.Id, call);
         }
 
         protected TResult RetryCall<TResult>(Guid subsId, Func<string, TResult> call)

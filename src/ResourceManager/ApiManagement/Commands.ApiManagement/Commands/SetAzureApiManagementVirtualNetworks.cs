@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Models;
 
-    [Cmdlet(VerbsCommon.Set, "AzureRMApiManagementVirtualNetworks"), OutputType(typeof (PsApiManagement))]
+    [Cmdlet(VerbsCommon.Set, "AzureApiManagementVirtualNetworks"), OutputType(typeof (PsApiManagement))]
     public class SetAzureApiManagementVirtualNetworks : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             HelpMessage = "Sends updated PsApiManagement to pipeline if operation succeeds.")]
         public SwitchParameter PassThru { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ExecuteLongRunningCmdletWrap(
                 () => Client.BeginManageVirtualNetworks(ResourceGroupName, Name, VirtualNetworks),

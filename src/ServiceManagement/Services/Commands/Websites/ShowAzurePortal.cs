@@ -25,7 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.Websites
     /// Opens the azure portal.
     /// </summary>
     [Cmdlet(VerbsCommon.Show, "AzurePortal")]
-    public class ShowAzurePortalCommand : AzureSMCmdlet
+    public class ShowAzurePortalCommand : AzurePSCmdlet
     {
         private string name;
 
@@ -57,7 +57,7 @@ namespace Microsoft.WindowsAzure.Commands.Websites
             AzureEnvironment environment;
             if (string.IsNullOrEmpty(Environment))
             {
-                environment = Profile.DefaultContext.Environment;
+                environment = Profile.Context.Environment;
             }
             else
             {
@@ -74,7 +74,7 @@ namespace Microsoft.WindowsAzure.Commands.Websites
                     string.Format(Resources.WebsiteSufixUrl, Name));
             }
 
-            ProcessHelper.Start(managementPortalUrl);
+            GeneralUtilities.LaunchWebPage(managementPortalUrl);
         }
     }
 }

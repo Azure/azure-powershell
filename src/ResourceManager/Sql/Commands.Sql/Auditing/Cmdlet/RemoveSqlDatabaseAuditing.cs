@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// <summary>
     /// Disables auditing on a specific database.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRMSqlDatabaseAuditing"), OutputType(typeof(DatabaseAuditingPolicyModel))]
+    [Cmdlet(VerbsCommon.Remove, "AzureSqlDatabaseAuditing"), OutputType(typeof(DatabaseAuditingPolicyModel))]
     [Alias("Remove-AzureSqlDatabaseAuditing")]
     public class RemoveSqlDatabaseAuditing : SqlDatabaseAuditingCmdletBase
     {

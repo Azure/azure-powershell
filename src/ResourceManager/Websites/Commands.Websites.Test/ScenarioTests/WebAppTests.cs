@@ -14,12 +14,11 @@
 
 
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.WebApp.Test.ScenarioTests
 {
-    public class WebAppTests : RMTestBase
+    public class WebAppTests 
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

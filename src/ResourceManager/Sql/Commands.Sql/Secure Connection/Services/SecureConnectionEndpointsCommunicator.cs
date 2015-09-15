@@ -26,18 +26,17 @@ namespace Microsoft.Azure.Commands.Sql.SecureConnection.Services
     /// </summary>
     public class SecureConnectionEndpointsCommunicator
     {
-        private static SqlManagementClient SqlClient { get; set; }
 
+        private static SqlManagementClient SqlClient { get; set; }             
         private static AzureSubscription Subscription {get ; set; }
+        public AzureProfile Profile { get; set; }
 
-        public AzureContext Context { get; set; }
-
-        public SecureConnectionEndpointsCommunicator(AzureContext context)
+        public SecureConnectionEndpointsCommunicator(AzureProfile profile , AzureSubscription subscription)
         {
-            Context = context;
-            if (context.Subscription != Subscription)
+            Profile = profile;
+            if (subscription != Subscription)
             {
-                Subscription = context.Subscription;
+                Subscription = subscription;
                 SqlClient = null;
             }
         }
@@ -71,7 +70,7 @@ namespace Microsoft.Azure.Commands.Sql.SecureConnection.Services
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
-                SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+                SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Profile, Subscription, AzureEnvironment.Endpoint.ResourceManager);
             }
             SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
             SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);

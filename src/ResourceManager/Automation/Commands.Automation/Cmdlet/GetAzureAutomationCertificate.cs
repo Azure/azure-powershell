@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets a certificate for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMAutomationCertificate", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet(VerbsCommon.Get, "AzureAutomationCertificate", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(CertificateInfo))]
     public class GetAzureAutomationCertificate : AzureAutomationBaseCmdlet
     {
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void AutomationProcessRecord()
+        protected override void AutomationExecuteCmdlet()
         {
             IEnumerable<CertificateInfo> ret = null;
             if (this.ParameterSetName == AutomationCmdletParameterSets.ByCertificateName)

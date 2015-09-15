@@ -20,12 +20,13 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Collections.Generic;
 using System.Management.Automation;
+using System.Threading.Tasks;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
 {
-    public class RemoveBatchJobScheduleCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class RemoveBatchJobScheduleCommandTests
     {
         private RemoveBatchJobScheduleCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
@@ -59,7 +60,18 @@ namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
             cmdlet.Id = "testJobSchedule";
 
             // Don't go to the service on a Delete CloudJobSchedule call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudJobScheduleDeleteParameters, CloudJobScheduleDeleteResponse>();
+            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
+            {
+                BatchRequest<CloudJobScheduleDeleteParameters, CloudJobScheduleDeleteResponse> request =
+                (BatchRequest<CloudJobScheduleDeleteParameters, CloudJobScheduleDeleteResponse>)baseRequest;
+
+                request.ServiceRequestFunc = (cancellationToken) =>
+                {
+                    CloudJobScheduleDeleteResponse response = new CloudJobScheduleDeleteResponse();
+                    Task<CloudJobScheduleDeleteResponse> task = Task.FromResult(response);
+                    return task;
+                };
+            });
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameters are set

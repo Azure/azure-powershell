@@ -47,19 +47,19 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public AzureProfile Profile { get; set; }
 
         /// <summary>
         /// Creates a communicator for Azure Sql Databases
         /// </summary>
         /// <param name="profile"></param>
         /// <param name="subscription"></param>
-        public AzureSqlServerUpgradeCommunicator(AzureContext context)
+        public AzureSqlServerUpgradeCommunicator(AzureProfile profile, AzureSubscription subscription)
         {
-            Context = context;
-            if (context.Subscription != Subscription)
+            Profile = profile;
+            if (subscription != Subscription)
             {
-                Subscription = context.Subscription;
+                Subscription = subscription;
                 SqlClient = null;
             }
         }
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Services
             // Get the SQL management client for the current subscription
             if (SqlClient == null)
             {
-                SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
+                SqlClient = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Profile, Subscription, AzureEnvironment.Endpoint.ResourceManager);
             }
             SqlClient.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
             SqlClient.HttpClient.DefaultRequestHeaders.Add(Constants.ClientRequestIdHeaderName, clientRequestId);

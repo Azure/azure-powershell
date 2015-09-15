@@ -20,7 +20,7 @@ using System.Globalization;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRMKeyVaultKey", 
+    [Cmdlet(VerbsCommon.Remove, "AzureKeyVaultKey", 
         SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.High, 
         HelpUri = Constants.KeyVaultHelpUri)]
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         public SwitchParameter PassThru { get; set; }
 
         #endregion
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             KeyBundle keyBundle = null;
             ConfirmAction(

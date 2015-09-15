@@ -24,7 +24,6 @@ using Microsoft.Azure.Insights.Models;
 using Microsoft.Azure.Management.Insights.Models;
 using Moq;
 using Xunit;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.Insights.Test
 {

@@ -15,7 +15,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Gallery;
@@ -55,8 +54,8 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                     var testSubscription = new AzureSubscription()
                     {
                         Id = new Guid(csmEnvironment.SubscriptionId),
-                        Name = ResourceManager.Common.AzureRMCmdlet.DefaultProfile.DefaultContext.Subscription.Name,
-                        Environment = ResourceManager.Common.AzureRMCmdlet.DefaultProfile.DefaultContext.Subscription.Environment,
+                        Name = ProfileClient.Profile.DefaultSubscription.Name,
+                        Environment = ProfileClient.Profile.DefaultSubscription.Environment,
                         Account = user,
                         Properties = new Dictionary<AzureSubscription.Property, string>
                     {
@@ -85,13 +84,15 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                     }
                     };
 
-                    AzureRMCmdlet.DefaultProfile.DefaultContext.Subscription.Name = testSubscription.Name;
-                    AzureRMCmdlet.DefaultProfile.DefaultContext.Subscription.Account = testSubscription.Account;
+                    ProfileClient.Profile.Accounts.Remove(ProfileClient.Profile.DefaultSubscription.Account);
+                    ProfileClient.Profile.Subscriptions[testSubscription.Id] = testSubscription;
+                    ProfileClient.Profile.Accounts[testAccount.Id] = testAccount;
+                    ProfileClient.SetSubscriptionAsDefault(testSubscription.Name, testSubscription.Account);
 
-                    var environment = AzureRMCmdlet.DefaultProfile.Environments[AzureRMCmdlet.DefaultProfile.DefaultContext.Subscription.Environment];
+                    var environment = ProfileClient.Profile.Environments[ProfileClient.Profile.DefaultSubscription.Environment];
                     environment.Endpoints[AzureEnvironment.Endpoint.Graph] = csmEnvironment.Endpoints.GraphUri.AbsoluteUri;
 
-                    AzureRMCmdlet.DefaultProfile.Save();
+                    ProfileClient.Profile.Save();
                 }
             }
         }

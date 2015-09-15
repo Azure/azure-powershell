@@ -17,7 +17,7 @@ using Xunit;
 
 namespace Commands.Network.Test.ScenarioTests
 {
-    public class RouteTableTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class RouteTableTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

@@ -23,7 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceBus
     /// Lists all service bus namespaces associated with a subscription
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureSBNamespace"), OutputType(typeof(List<ExtendedServiceBusNamespace>), typeof(ExtendedServiceBusNamespace))]
-    public class GetAzureSBNamespaceCommand : AzureSMCmdlet
+    public class GetAzureSBNamespaceCommand : AzurePSCmdlet
     {
         internal ServiceBusClientExtensions Client { get; set; }
 
@@ -35,7 +35,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceBus
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            Client = Client ?? new ServiceBusClientExtensions(Profile, Profile.DefaultContext.Subscription);
+            Client = Client ?? new ServiceBusClientExtensions(Profile, Profile.Context.Subscription);
 
             if (string.IsNullOrEmpty(Name))
             {

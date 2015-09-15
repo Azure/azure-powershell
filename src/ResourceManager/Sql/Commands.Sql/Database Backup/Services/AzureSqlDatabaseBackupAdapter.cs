@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public AzureProfile Profile { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure Subscription
@@ -56,11 +56,11 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlDatabaseBackupAdapter(AzureContext context)
+        public AzureSqlDatabaseBackupAdapter(AzureProfile Profile, AzureSubscription subscription)
         {
-            Context = context;
-            _subscription = context.Subscription;
-            Communicator = new AzureSqlDatabaseBackupCommunicator(Context);
+            this.Profile = Profile;
+            this._subscription = subscription;
+            Communicator = new AzureSqlDatabaseBackupCommunicator(Profile, subscription);
         }
 
         /// <summary>

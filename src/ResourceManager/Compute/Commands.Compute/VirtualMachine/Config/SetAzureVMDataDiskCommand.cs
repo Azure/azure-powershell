@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Compute
         ProfileNouns.DataDisk),
     OutputType(
         typeof(PSVirtualMachine))]
-    public class SetAzureVMDataDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+    public class SetAzureVMDataDiskCommand : AzurePSCmdlet
     {
         private const string NameParameterSet = "ChangeWithName";
         private const string LunParameterSet = "ChangeWithLun";
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Compute
         [AllowNull]
         public int? DiskSizeInGB { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {            
             var storageProfile = this.VM.StorageProfile;            
 
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Compute
             ThrowTerminatingError
                 (new ErrorRecord(
                     new InvalidOperationException(string.Format(CultureInfo.InvariantCulture,
-                        Microsoft.Azure.Commands.Compute.Properties.Resources.DataDiskNotAssignedForVM, missingDisk)),
+                        Properties.Resources.DataDiskNotAssignedForVM, missingDisk)),
                     string.Empty,
                     ErrorCategory.InvalidData,
                     null));

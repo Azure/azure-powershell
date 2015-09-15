@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             _config = new AzureHDInsightConfig();
         }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             WriteObject(_config);
         }

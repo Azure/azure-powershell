@@ -138,9 +138,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         /// </summary>
         private StorageCredentials _storageCredentials;
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             try
             {
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                         if (StorageEndpointSuffix == null)
                         {
                             StorageEndpointSuffix =
-                                DefaultProfile.DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix);
+                                Profile.Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix);
                         }
                         break;
                 }

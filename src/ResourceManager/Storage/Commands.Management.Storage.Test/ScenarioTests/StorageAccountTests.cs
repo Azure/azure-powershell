@@ -14,12 +14,11 @@
 
 
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 {
-    public class StorageAccountTests : RMTestBase
+    public class StorageAccountTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

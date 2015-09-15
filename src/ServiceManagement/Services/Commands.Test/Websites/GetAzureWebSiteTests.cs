@@ -32,20 +32,9 @@ using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Websites
 {
-    public static class WebsiteCmdletTestsExtensions
-    {
-        public static void ExecuteWithProcessing(this AzureSMCmdlet cmdlt)
-        {
-            cmdlt.InvokeBeginProcessing();
-            cmdlt.ExecuteCmdlet();
-            cmdlt.InvokeEndProcessing();
-
-        }
-    }
-       
+    
     public class GetAzureWebsiteTests : WebsitesTestBase
     {
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ProcessGetWebsiteTest()
@@ -149,10 +138,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ProcessGetWebsiteWithNullSubscription()
         {
-            currentProfile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+            currentProfile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
             currentProfile.Subscriptions.Clear();
             currentProfile.Save();
-            AzureSMCmdlet.CurrentProfile = currentProfile;
+            AzurePSCmdlet.CurrentProfile = currentProfile;
 
             // Test
             var getAzureWebsiteCommand = new GetAzureWebsiteCommand

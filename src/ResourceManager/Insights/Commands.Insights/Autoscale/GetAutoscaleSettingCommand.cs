@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// <summary>
         /// Execute the cmdlet
         /// </summary>
-        protected override void ProcessRecordInternal()
+        protected override void ExecuteCmdletInternal()
         {
             if (string.IsNullOrWhiteSpace(this.Name))
             {

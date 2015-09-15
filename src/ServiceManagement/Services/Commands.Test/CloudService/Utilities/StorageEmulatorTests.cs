@@ -24,7 +24,7 @@ using Moq;
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
 {
     
-    public class StorageEmulatorTests : SMTestBase
+    public class StorageEmulatorTests : TestBase
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

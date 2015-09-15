@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
     /// <summary>
     /// Defines the Get-AzureSqlServerFirewallRule cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRMSqlServerFirewallRule",
+    [Cmdlet(VerbsCommon.Remove, "AzureSqlServerFirewallRule",
         SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.High)]
     public class RemoveAzureSqlServerFirewallRule : AzureSqlServerFirewallRuleCmdletBase
@@ -78,17 +78,17 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         /// <summary>
         /// Entry point for the cmdlet
         /// </summary>
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (!Force.IsPresent && !ShouldProcess(
-               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerFirewallRuleDescription, this.FirewallRuleName, this.ServerName),
-               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlServerFirewallRuleWarning, this.FirewallRuleName, this.ServerName),
-               Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
+               string.Format(CultureInfo.InvariantCulture, Resources.RemoveAzureSqlServerFirewallRuleDescription, this.FirewallRuleName, this.ServerName),
+               string.Format(CultureInfo.InvariantCulture, Resources.RemoveAzureSqlServerFirewallRuleWarning, this.FirewallRuleName, this.ServerName),
+               Resources.ShouldProcessCaption))
             {
                 return;
             }
 
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
         }
     }
 }

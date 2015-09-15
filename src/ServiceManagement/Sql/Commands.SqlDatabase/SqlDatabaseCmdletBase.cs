@@ -27,7 +27,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase
     /// <summary>
     /// The base class for all Microsoft Azure Sql Database Management Cmdlets
     /// </summary>
-    public abstract class SqlDatabaseCmdletBase : AzureSMCmdlet
+    public abstract class SqlDatabaseCmdletBase : AzurePSCmdlet
     {
         /// <summary>
         /// Stores the session Id for all the request made in this session.
@@ -61,7 +61,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase
         protected SqlManagementClient GetCurrentSqlClient()
         {
             // Get the SQL management client for the current subscription
-            AzureSubscription subscription = Profile.DefaultContext.Subscription;
+            AzureSubscription subscription = Profile.Context.Subscription;
             SqlDatabaseCmdletBase.ValidateSubscription(subscription);
             SqlManagementClient client = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
             client.HttpClient.DefaultRequestHeaders.Add(Constants.ClientSessionIdHeaderName, clientSessionId);

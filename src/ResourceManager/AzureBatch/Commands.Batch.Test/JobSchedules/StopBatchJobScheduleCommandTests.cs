@@ -16,14 +16,17 @@ using System;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Batch.Protocol.Models;
+using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
+using System.Threading.Tasks;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
-namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
+namespace Microsoft.Azure.Commands.Batch.Test.Pools
 {
     public class StopBatchJobScheduleCommandTests
     {
@@ -55,7 +58,18 @@ namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
             cmdlet.Id = "testJobSchedule";
 
             // Don't go to the service on a Terminate CloudJobSchedule call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudJobScheduleTerminateParameters, CloudJobScheduleTerminateResponse>();
+            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
+            {
+                BatchRequest<CloudJobScheduleTerminateParameters, CloudJobScheduleTerminateResponse> request =
+                (BatchRequest<CloudJobScheduleTerminateParameters, CloudJobScheduleTerminateResponse>)baseRequest;
+
+                request.ServiceRequestFunc = (cancellationToken) =>
+                {
+                    CloudJobScheduleTerminateResponse response = new CloudJobScheduleTerminateResponse();
+                    Task<CloudJobScheduleTerminateResponse> task = Task.FromResult(response);
+                    return task;
+                };
+            });
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set

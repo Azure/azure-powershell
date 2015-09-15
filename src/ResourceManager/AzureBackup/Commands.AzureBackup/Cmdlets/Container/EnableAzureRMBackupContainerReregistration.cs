@@ -22,6 +22,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Management.BackupServices.Models;
 using MBS = Microsoft.Azure.Management.BackupServices;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.Azure.Commands.AzureBackup.Properties;
 using Microsoft.Azure.Commands.AzureBackup.Models;
 using Microsoft.Azure.Commands.AzureBackup.Helpers;
@@ -35,11 +36,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     [Cmdlet(VerbsLifecycle.Enable, "AzureRMBackupContainerReregistration")]
     public class EnableAzureRMBackupContainerReregistration : AzureBackupContainerCmdletBase
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
             {
-                base.ProcessRecord();
+                base.ExecuteCmdlet();
 
                 AzureBackupContainerType containerType = (AzureBackupContainerType)Enum.Parse(typeof(AzureBackupContainerType), Container.ContainerType);
                 switch (containerType)

@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Properties;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRMApiManagement"), OutputType(typeof (bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureApiManagement"), OutputType(typeof (bool))]
     public class RemoveAzureApiManagement : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [Parameter(HelpMessage = "Do not confirm on the removal of the API Management service.")]
         public SwitchParameter Force { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             var actionDescription = string.Format(
                     CultureInfo.CurrentCulture,

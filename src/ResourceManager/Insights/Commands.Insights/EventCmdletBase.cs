@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Commands.Insights
         /// <summary>
         /// Execute the cmdlet
         /// </summary>
-        protected override void ProcessRecordInternal()
+        protected override void ExecuteCmdletInternal()
         {
             string queryFilter = this.ProcessParameters();
 

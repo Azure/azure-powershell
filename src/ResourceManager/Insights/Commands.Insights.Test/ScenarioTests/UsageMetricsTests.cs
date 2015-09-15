@@ -13,12 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 {
-    public class UsageMetricsTests : RMTestBase
+    public class UsageMetricsTests
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

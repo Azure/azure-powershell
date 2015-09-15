@@ -14,7 +14,22 @@
 // ----------------------------------------------------------------------------------
 
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Management.Automation;
+using Microsoft.Azure.Management.WebSites.Models;
+using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
+using Microsoft.Azure.Commands.WebApp;
+using Microsoft.Azure.Management.WebSites;
+using System.Net.Http;
+using System.Threading;
+using System.Net;
+using Microsoft.Azure;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.WebApp.Utilities;
 
 
@@ -23,7 +38,7 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets
     /// <summary>
     /// this commandlet will let you Start an Azure Web app
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureRMWebApp")]
+    [Cmdlet(VerbsLifecycle.Start, "AzureWebApp")]
     public class StartAzureWebAppCmdlet : WebAppBaseCmdlet
     {
 
@@ -31,7 +46,7 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets
         [ValidateNotNullOrEmptyAttribute]
         public string SlotName { get; set; }
      
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             WriteObject(WebsitesClient.StartWebsite(ResourceGroupName, Name, SlotName));
             

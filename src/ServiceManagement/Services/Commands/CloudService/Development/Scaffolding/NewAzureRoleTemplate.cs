@@ -27,7 +27,7 @@ namespace Microsoft.WindowsAzure.Commands.CloudService.Development.Scaffolding
     /// Creates new azure template for web/worker role.
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRoleTemplate"), OutputType(typeof(PSObject))]
-    public class NewAzureRoleTemplateCommand : AzureSMCmdlet
+    public class NewAzureRoleTemplateCommand : AzurePSCmdlet
     {
         const string DefaultWebRoleTemplate = "WebRoleTemplate";
 

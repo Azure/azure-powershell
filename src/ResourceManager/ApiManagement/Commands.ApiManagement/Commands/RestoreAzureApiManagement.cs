@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using Microsoft.Azure.Commands.ApiManagement.Models;
     using Microsoft.WindowsAzure.Commands.Common.Storage;
 
-    [Cmdlet(VerbsData.Restore, "AzureRMApiManagement"), OutputType(typeof (PsApiManagement))]
+    [Cmdlet(VerbsData.Restore, "AzureApiManagement"), OutputType(typeof (PsApiManagement))]
     public class RestoreAzureApiManagement : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             HelpMessage = "Sends restored PsApiManagement to pipeline if operation succeeds.")]
         public SwitchParameter PassThru { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ExecuteLongRunningCmdletWrap(
                 () => Client.BeginRestoreApiManagement(

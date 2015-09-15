@@ -591,21 +591,3 @@ function Run-ServiceDeploymentExtensionCmdletTests
         Cleanup-CloudService $svcName;
     }
 }
-
-# Run Data Collection Cmdlet Tests
-function Run-EnableAndDisableDataCollectionTests
-{
-    $st = Enable-AzureDataCollection;
-
-    $locations = Get-AzureLocation;
-    foreach ($loc in $locations)
-    {
-        $svcName = getAssetName;
-        $st = New-AzureService -ServiceName $svcName -Location $loc.Name;
-        
-        # Cleanup
-        Cleanup-CloudService $svcName
-    }
-
-    $st = Disable-AzureDataCollection;
-}

@@ -21,12 +21,11 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsLifecycle.Disable, Constants.AzureBatchJobSchedule)]
     public class DisableBatchJobScheduleCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, HelpMessage = "The id of the job schedule to disable.")]
+        [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "The id of the job schedule to disable.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             BatchClient.DisableJobSchedule(this.BatchContext, this.Id, this.AdditionalBehaviors);
         }

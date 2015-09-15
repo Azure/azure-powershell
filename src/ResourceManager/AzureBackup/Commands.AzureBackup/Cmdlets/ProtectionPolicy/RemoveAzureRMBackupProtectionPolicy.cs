@@ -29,11 +29,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     [Cmdlet(VerbsCommon.Remove, "AzureRMBackupProtectionPolicy")]
     public class RemoveAzureRMBackupProtectionPolicy : AzureBackupPolicyCmdletBase
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
             {
-                base.ProcessRecord();
+                base.ExecuteCmdlet();
 
                 WriteDebug(Resources.MakingClientCall);
 

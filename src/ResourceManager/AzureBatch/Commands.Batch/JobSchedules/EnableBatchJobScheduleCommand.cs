@@ -21,12 +21,11 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsLifecycle.Enable, Constants.AzureBatchJobSchedule)]
     public class EnableBatchJobScheduleCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, 
-            Mandatory = true, HelpMessage = "The id of the job schedule to enable.")]
+        [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "The id of the job schedule to enable.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             BatchClient.EnableJobSchedule(this.BatchContext, this.Id, this.AdditionalBehaviors);
         }

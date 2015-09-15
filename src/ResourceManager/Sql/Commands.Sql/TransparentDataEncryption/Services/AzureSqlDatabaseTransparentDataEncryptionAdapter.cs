@@ -38,17 +38,17 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public AzureProfile Profile { get; set; }
 
         /// <summary>
         /// Constructs a Transparent Data Encryption adapter
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlDatabaseTransparentDataEncryptionAdapter(AzureContext context)
+        public AzureSqlDatabaseTransparentDataEncryptionAdapter(AzureProfile profile, AzureSubscription subscription)
         {
-            Context = context;
-            Communicator = new AzureSqlDatabaseTransparentDataEncryptionCommunicator(Context);
+            Profile = profile;
+            Communicator = new AzureSqlDatabaseTransparentDataEncryptionCommunicator(Profile, subscription);
         }
 
         /// <summary>

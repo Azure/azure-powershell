@@ -18,12 +18,12 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRMApplicationGatewaySku"), OutputType(typeof(PSApplicationGatewaySku))]
+    [Cmdlet(VerbsCommon.New, "AzureApplicationGatewaySku"), OutputType(typeof(PSApplicationGatewaySku))]
     public class NewAzureApplicationGatewaySkuCommand : AzureApplicationGatewaySkuBase
     {
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
-            base.ProcessRecord();
+            base.ExecuteCmdlet();
 
             PSApplicationGatewaySku sku = new PSApplicationGatewaySku()
                 {

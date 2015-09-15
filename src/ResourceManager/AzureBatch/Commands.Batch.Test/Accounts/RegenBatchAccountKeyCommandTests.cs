@@ -22,7 +22,7 @@ using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Accounts
 {
-    public class RegenBatchAccountKeyCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class RegenBatchAccountKeyCommandTests
     {
         private RegenBatchAccountKeyCommand cmdlet;
         private Mock<BatchClient> batchClientMock;

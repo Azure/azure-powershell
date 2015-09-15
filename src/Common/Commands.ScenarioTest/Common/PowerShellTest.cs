@@ -52,7 +52,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
             this.modules.Add("Assert.ps1");
             this.modules.Add("Common.ps1");
             this.modules.AddRange(modules);
-            PSTestTracingInterceptor.AddToContext();
+            TestingTracingInterceptor.AddToContext();
         }
 
         protected void AddScenarioScript(string script)
@@ -87,7 +87,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
             finally
             {
                 powershell.LogPowerShellResults(output, this.TestContext);
-                powershell.Streams.Error.Clear();
             }
         }
 

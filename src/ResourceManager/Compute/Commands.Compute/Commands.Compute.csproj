@@ -52,6 +52,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\AutoMapper.3.1.1\lib\net40\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="AutoMapper.Net4, Version=3.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL" />
     <Reference Include="Hyak.Common">
       <HintPath>..\..\..\packages\Hyak.Common.1.0.2\lib\portable-net403+win+wpa81\Hyak.Common.dll</HintPath>
     </Reference>
@@ -60,7 +61,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Common.Authentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.1.4-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.1.3-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
@@ -170,12 +171,6 @@
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\..\Common\Commands.Common\ComputeCloudException.cs">
-      <Link>Common\ComputeCloudException.cs</Link>
-    </Compile>
-    <Compile Include="..\..\..\Common\Commands.Common\DiagnosticsHelper.cs">
-      <Link>Common\DiagnosticsHelper.cs</Link>
-    </Compile>
     <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\DscExtensionCmdletConstants.cs">
       <Link>Extension\DSC\DscExtensionCmdletConstants.cs</Link>
     </Compile>
@@ -188,11 +183,17 @@
     <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\DscExtensionSettingsSerializer.cs">
       <Link>Extension\DSC\DscExtensionSettingsSerializer.cs</Link>
     </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\Exceptions\GetDscResourceException.cs">
+      <Link>Extension\DSC\GetDscResourceException.cs</Link>
+    </Compile>
     <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\Publish\ConfigurationParseResult.cs">
       <Link>Extension\DSC\ConfigurationParseResult.cs</Link>
     </Compile>
     <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\Publish\ConfigurationParsingHelper.cs">
       <Link>Extension\DSC\ConfigurationParsingHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\ServiceManagement\Compute\Commands.ServiceManagement\IaaS\Extensions\DSC\Publish\DscExtensionPublishCmdletCommonBase.cs">
+      <Link>Extension\DSC\DscExtensionPublishCmdletCommonBase.cs</Link>
     </Compile>
     <Compile Include="AvailabilitySets\RemoveAzureAvailabilitySetCommand.cs" />
     <Compile Include="AvailabilitySets\GetAzureAvailabilitySetCommand.cs" />
@@ -213,8 +214,6 @@
     <Compile Include="Extension\Diagnostics\GetAzureVMDiagnosticsExtension.cs" />
     <Compile Include="Extension\Diagnostics\RemoveAzureVMDiagnosticsExtension.cs" />
     <Compile Include="Extension\Diagnostics\SetAzureVMDiagnosticsExtension.cs" />
-    <Compile Include="Extension\DSC\GetDscResourceException.cs" />
-    <Compile Include="Extension\DSC\DscExtensionPublishCmdletCommonBase.cs" />
     <Compile Include="Extension\DSC\DscExtensionCmdletCommonBase.cs" />
     <Compile Include="Extension\DSC\PublishAzureVMDscConfigurationCommand.cs" />
     <Compile Include="Extension\DSC\RemoveAzureVMDscExtensionCommand.cs" />
@@ -224,17 +223,6 @@
     <Compile Include="Extension\SetAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\RemoveAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\GetAzureVMExtensionCommand.cs" />
-    <Compile Include="Extension\SqlServer\AzureVMSqlServerAutoBackupSettings.cs" />
-    <Compile Include="Extension\SqlServer\AzureVMSqlServerAutoPatchingSettings.cs" />
-    <Compile Include="Extension\SqlServer\AzureVMSqlServerAutoTelemetrySettings.cs" />
-    <Compile Include="Extension\SqlServer\AzureVMSqlServerPrivateSettings.cs" />
-    <Compile Include="Extension\SqlServer\AzureVMSqlServerPublicSettings.cs" />
-    <Compile Include="Extension\SqlServer\GetAzureVMSqlServerExtensionCommand.cs" />
-    <Compile Include="Extension\SqlServer\NewAzureVMSqlServerAutoBackupConfig.cs" />
-    <Compile Include="Extension\SqlServer\NewAzureVMSqlServerAutoPatchingConfig.cs" />
-    <Compile Include="Extension\SqlServer\RemoveAzureVMSqlServerExtensionCommand.cs" />
-    <Compile Include="Extension\SqlServer\SetAzureVMSqlServerExtensionCommand.cs" />
-    <Compile Include="Extension\SqlServer\VirtualMachineSqlServerExtensionContext.cs" />
     <Compile Include="Images\GetAzureVMImageCommand.cs" />
     <Compile Include="Common\HashTableExtensions.cs" />
     <Compile Include="Models\PSComputeLongRunningOperation.cs" />
@@ -309,9 +297,13 @@
       <Project>{65c3a86a-716d-4e7d-ab67-1db00b3bf72d}</Project>
       <Name>Commands.Common.Storage</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
-      <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
-      <Name>Commands.ResourceManager.Common</Name>
+    <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
+      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
+      <Name>Commands.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Profile\Commands.Profile.csproj">
+      <Project>{c60342b1-47d3-4a0e-8081-9b97ce60b7af}</Project>
+      <Name>Commands.Profile</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\ServiceManagement\Compute\Sync\Sync.csproj">
       <Project>{73820cbc-f4eb-4c5e-b4f0-cc4a93fbf157}</Project>

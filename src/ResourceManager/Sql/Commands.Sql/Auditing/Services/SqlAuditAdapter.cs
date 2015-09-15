@@ -74,14 +74,14 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureContext Context { get; set; }
+        public AzureProfile Profile { get; set; }
 
-        public SqlAuditAdapter(AzureContext context)
+        public SqlAuditAdapter(AzureProfile profile, AzureSubscription subscription)
         {
-            Context = context;
-            Subscription = context.Subscription;
-            Communicator = new AuditingEndpointsCommunicator(Context);
-            AzureCommunicator = new AzureEndpointsCommunicator(Context);
+            Profile = profile;
+            Subscription = subscription;
+            Communicator = new AuditingEndpointsCommunicator(Profile, subscription);
+            AzureCommunicator = new AzureEndpointsCommunicator(Profile, subscription);
             IgnoreStorage = false;
         }
 
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         {
             if (!IsDatabaseInServiceTierForPolicy(model, clientId))
             {
-                throw new Exception(Microsoft.Azure.Commands.Sql.Properties.Resources.DatabaseNotInServiceTierForAuditingPolicy);
+                throw new Exception(Resources.DatabaseNotInServiceTierForAuditingPolicy);
             }
             DatabaseAuditingPolicyCreateOrUpdateParameters parameters = PolicizeDatabaseAuditingModel(model);
             Communicator.SetDatabaseAuditingPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName, clientId, parameters);
@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
 
         private bool IsDatabaseInServiceTierForPolicy(DatabaseAuditingPolicyModel model, string clientId)
         {
-            AzureSqlDatabaseCommunicator dbCommunicator = new AzureSqlDatabaseCommunicator(Context);
+            AzureSqlDatabaseCommunicator dbCommunicator = new AzureSqlDatabaseCommunicator(Profile, Subscription);
             Management.Sql.Models.Database database = dbCommunicator.Get(model.ResourceGroupName, model.ServerName, model.DatabaseName, clientId);
             DatabaseEdition edition = DatabaseEdition.None;
             Enum.TryParse<DatabaseEdition>(database.Properties.Edition, true, out edition);
@@ -343,7 +343,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             }
             if (string.IsNullOrEmpty(storageAccountName) && (!IgnoreStorage)) // can happen if the user didn't provide account name for a policy that lacked it 
             {
-                throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.NoStorageAccountWhenConfiguringAuditingPolicy));
+                throw new Exception(string.Format(Resources.NoStorageAccountWhenConfiguringAuditingPolicy));
             }
             return storageAccountName;
         }
@@ -431,7 +431,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             {
                 return FetchedStorageAccountTableEndpoint;
             }
-            return AzureCommunicator.GetStorageTableEndpoint(Context, storageName);
+            return AzureCommunicator.GetStorageTableEndpoint(Profile, storageName);
         }
 
         /// <summary>

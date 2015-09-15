@@ -12,13 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory.Models
 {
-    public abstract class ActiveDirectoryBaseCmdlet : AzureRMCmdlet
+    public abstract class ActiveDirectoryBaseCmdlet : AzurePSCmdlet
     {
         private ActiveDirectoryClient activeDirectoryClient;
 
@@ -28,7 +27,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory.Models
             {
                 if (activeDirectoryClient == null)
                 {
-                    activeDirectoryClient = new ActiveDirectoryClient(DefaultProfile.DefaultContext);
+                    activeDirectoryClient = new ActiveDirectoryClient(Profile.Context);
                 }
 
                 return activeDirectoryClient;

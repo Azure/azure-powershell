@@ -20,7 +20,7 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.BatchManager.Test
 {
-    public class BatchAccountContextTest : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class BatchAccountContextTest
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
