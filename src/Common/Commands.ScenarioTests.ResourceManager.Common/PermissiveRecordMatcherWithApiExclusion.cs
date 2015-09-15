@@ -20,6 +20,8 @@ using Microsoft.Azure.Test.HttpRecorder;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
+    // Excludes api version when matching mocked records. 
+    // If alternate api version is provided, uses that to match records else removes the api-version matching.
     public class PermissiveRecordMatcherWithApiExclusion : IRecordMatcher
     {
         private bool _ignoreGenericResource;
@@ -42,7 +44,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             string version;
             if (ContainsIgnoredProvider(path, out version))
             {
-                path = RemoveApiVersion(path, version);
+                path = RemoveOrReplaceApiVersion(path, version);
             }
 
             var encodedPath = Convert.ToBase64String(Encoding.UTF8.GetBytes(path));
@@ -60,7 +62,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 string version;
                 if (ContainsIgnoredProvider(updatedPath, out version))
                 {
-                    updatedPath = RemoveApiVersion(updatedPath, version);
+                    updatedPath = RemoveOrReplaceApiVersion(updatedPath, version);
                 }
 
                 encodedPath = Convert.ToBase64String(Encoding.UTF8.GetBytes(updatedPath));
@@ -92,9 +94,16 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             return false;
         }
 
-        private string RemoveApiVersion(string requestUri, string version)
+        private string RemoveOrReplaceApiVersion(string requestUri, string version)
         {
-            return Regex.Replace(requestUri, @"\?api-version=[^&]+", string.Format("?api-version={0}", version));
+            if (!string.IsNullOrWhiteSpace(version))
+            {
+                return Regex.Replace(requestUri, @"\?api-version=[^&]+", string.Format("?api-version={0}", version));
+            }
+            else
+            {
+                return Regex.Replace(requestUri, @"\?api-version=[^&]+", string.Empty);
+            }
         }
     }
 } 
