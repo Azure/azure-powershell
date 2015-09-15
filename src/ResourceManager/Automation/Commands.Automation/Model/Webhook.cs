@@ -65,7 +65,11 @@ namespace Microsoft.Azure.Commands.Automation.Model
             }
 
             this.LastModifiedTime = webhook.Properties.LastModifiedTime.ToLocalTime();
-            this.Parameters = new Hashtable(webhook.Properties.Parameters.ToDictionary(kvp => kvp.Key, kvp => kvp.Value));
+            foreach (var kvp in webhook.Properties.Parameters)
+            {
+                this.Parameters.Add(kvp.Key, (object)PowerShellJsonConverter.Deserialize(kvp.Value));
+            }
+
             this.RunbookName = webhook.Properties.Runbook.Name;
             this.WebhookURI = webhookUri;
         }

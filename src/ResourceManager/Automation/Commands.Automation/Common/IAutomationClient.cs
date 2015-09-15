@@ -16,6 +16,7 @@ using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Security;
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Common.Authentication.Models;
@@ -139,7 +140,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             string runbookName,
             bool isEnabled,
             DateTimeOffset expiryTime,
-            Hashtable parameters);
+            IDictionary parameters);
 
         Model.Webhook GetWebhook(string resourceGroupName, string automationAccountName, string name);
 
