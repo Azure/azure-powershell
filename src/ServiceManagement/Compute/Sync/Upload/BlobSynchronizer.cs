@@ -70,8 +70,8 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
                     if (loopResult.Exceptions.Any())
                     {
                         Program.SyncOutput.ErrorUploadFailedWithExceptions(loopResult.Exceptions);
-                        //TODO: throw an AggregateException
-                        return false;
+
+                        throw new AggregateException(loopResult.Exceptions);
                     }
                 }
                 else
