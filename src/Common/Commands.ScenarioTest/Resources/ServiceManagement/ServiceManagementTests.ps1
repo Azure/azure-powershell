@@ -556,18 +556,20 @@ function Run-ServiceDeploymentExtensionCmdletTests
         $testMode = Get-ComputeTestMode;
         if ($testMode.ToLower() -ne 'playback')
         {
-            $cspkg = '.\Resources\ServiceManagement\Files\OneWebOneWorker.cspkg';
+            $cspkg = '.\Resources\ServiceManagement\Files\LongRoleName.Cloud.cspkg';
         }
         else
         {
-            $cspkg = "https://${storageName}.blob.azure.windows.net/blob/OneWebOneWorker.cspkg";
+            $cspkg = "https://${storageName}.blob.azure.windows.net/blob/LongRoleName.Cloud.cspkg";
         }
-        $cscfg = '.\Resources\ServiceManagement\Files\OneWebOneWorker.cscfg';
+        $cscfg = '.\Resources\ServiceManagement\Files\LongRoleName.Cloud.cscfg';
 
-        $rdpCfg1 = New-AzureServiceRemoteDesktopExtensionConfig -Credential $credential -Role WebRole1
-        $rdpCfg2 = New-AzureServiceRemoteDesktopExtensionConfig -Credential $credential -Role WorkerRole1;
-        $adCfg1 = New-AzureServiceADDomainExtensionConfig -Role WebRole1 -WorkgroupName 'test1';
-        $adCfg2 = New-AzureServiceADDomainExtensionConfig -Role WorkerRole1 -WorkgroupName 'test2';
+        $webRoleShortName = "WebRole1";
+        $workerRoleLongName = "Microsoft.Contoso.Department.ProjectCodeName.Worker";
+        $rdpCfg1 = New-AzureServiceRemoteDesktopExtensionConfig -Credential $credential -Role $webRoleShortName
+        $rdpCfg2 = New-AzureServiceRemoteDesktopExtensionConfig -Credential $credential -Role $workerRoleLongName;
+        $adCfg1 = New-AzureServiceADDomainExtensionConfig -Role $webRoleShortName -WorkgroupName 'test1';
+        $adCfg2 = New-AzureServiceADDomainExtensionConfig -Role $workerRoleLongName -WorkgroupName 'test2';
 
         $st = New-AzureDeployment -ServiceName $svcName -Package $cspkg -Configuration $cscfg -Label $svcName -Slot Production -ExtensionConfiguration $rdpCfg1,$adCfg1;
         $exts = Get-AzureServiceExtension -ServiceName $svcName -Slot Production;
