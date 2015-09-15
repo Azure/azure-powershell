@@ -615,8 +615,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            Assert.NotNull(cmdlt.Profile.DefaultContext.Subscription);
-            Assert.Equal(azureSubscription2.Id, cmdlt.Profile.DefaultContext.Subscription.Id);
+            Assert.NotNull(cmdlt.Profile.Context.Subscription);
+            Assert.Equal(azureSubscription2.Id, cmdlt.Profile.Context.Subscription.Id);
         }
 
         [Fact]
@@ -639,10 +639,10 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            Assert.NotNull(cmdlt.Profile.DefaultContext.Subscription);
-            Assert.Equal(azureSubscription2.Id, cmdlt.Profile.DefaultContext.Subscription.Id);
+            Assert.NotNull(cmdlt.Profile.Context.Subscription);
+            Assert.Equal(azureSubscription2.Id, cmdlt.Profile.Context.Subscription.Id);
             // current profile unchanged
-            Assert.Equal(azureSubscription1.Id, client.Profile.DefaultContext.Subscription.Id);
+            Assert.Equal(azureSubscription1.Id, client.Profile.Context.Subscription.Id);
         }
 
         [Fact]
@@ -663,9 +663,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            Assert.NotNull(cmdlt.Profile.DefaultContext.Subscription);
-            Assert.Equal(azureSubscription2.Account, cmdlt.Profile.DefaultContext.Subscription.Account);
-            Assert.Equal(azureSubscription2.Id, cmdlt.Profile.DefaultContext.Subscription.Id);
+            Assert.NotNull(cmdlt.Profile.Context.Subscription);
+            Assert.Equal(azureSubscription2.Account, cmdlt.Profile.Context.Subscription.Account);
+            Assert.Equal(azureSubscription2.Id, cmdlt.Profile.Context.Subscription.Id);
         }
 
         [Fact]
@@ -686,9 +686,9 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            Assert.NotNull(cmdlt.Profile.DefaultContext.Subscription);
-            Assert.Equal(azureSubscription2.Account, cmdlt.Profile.DefaultContext.Subscription.Account);
-            Assert.Equal(azureSubscription2.Id, cmdlt.Profile.DefaultContext.Subscription.Id);
+            Assert.NotNull(cmdlt.Profile.Context.Subscription);
+            Assert.Equal(azureSubscription2.Account, cmdlt.Profile.Context.Subscription.Account);
+            Assert.Equal(azureSubscription2.Id, cmdlt.Profile.Context.Subscription.Id);
         }
 
         [Fact]
@@ -909,13 +909,13 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
             Assert.NotNull(profile.Subscriptions);
             Assert.NotNull(profile.Accounts);
             Assert.NotNull(profile.Environments);
-            Assert.NotNull(profile.DefaultContext);
+            Assert.NotNull(profile.Context);
             Assert.Equal(profile.Subscriptions.Values.Count((s) => s.Id == csmSubscription), 0);
             Assert.Equal(profile.Subscriptions.Values.Count((s) => s.Id == rdfeSubscription), 1);
             Assert.Equal(profile.Accounts.Values.Count((s) => s.Id == credential.UserName), 1);
             Assert.Contains(rdfeSubscription.ToString(), profile.Accounts.First().Value.GetProperty(AzureAccount.Property.Subscriptions));
-            Assert.Equal(profile.DefaultContext.Account.Id, credential.UserName);
-            Assert.Equal(profile.DefaultContext.Subscription.Id, rdfeSubscription);
+            Assert.Equal(profile.Context.Account.Id, credential.UserName);
+            Assert.Equal(profile.Context.Subscription.Id, rdfeSubscription);
         }
 
         [Fact]

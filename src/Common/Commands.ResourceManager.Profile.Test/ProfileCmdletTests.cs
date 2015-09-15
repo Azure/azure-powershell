@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         {
             var profile = new AzureRMProfile();
             profile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
-            profile.DefaultContext = new AzureContext(new AzureSubscription(), new AzureAccount(), profile.Environments["foo"]);
+            profile.Context = new AzureContext(new AzureSubscription(), new AzureAccount(), profile.Environments["foo"]);
             AzureRMCmdlet.DefaultProfile = profile;
             SaveAzureRMProfileCommand cmdlt = new SaveAzureRMProfileCommand();
             // Setup

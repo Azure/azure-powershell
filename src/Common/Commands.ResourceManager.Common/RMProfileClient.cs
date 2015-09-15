@@ -41,9 +41,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             AzureSubscription newSubscription = null;
             AzureTenant newTenant = new AzureTenant();
             
-            if (_profile != null && _profile.TokenCache != null && _profile.TokenCache.Length > 0)
+            if (_profile != null && _profile.Context != null && 
+                _profile.Context.TokenCache != null && _profile.Context.TokenCache.Length > 0)
             {
-                TokenCache.DefaultShared.Deserialize(_profile.TokenCache);
+                TokenCache.DefaultShared.Deserialize(_profile.Context.TokenCache);
             }
 
             // (tenant and subscription are present) OR
@@ -73,8 +74,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 throw new PSInvalidOperationException("Subscription was not found.");
             }
 
-            _profile.DefaultContext = new AzureContext(newSubscription, account, environment, newTenant);
-            _profile.TokenCache = TokenCache.DefaultShared.Serialize();
+            _profile.Context = new AzureContext(newSubscription, account, environment, newTenant);
+            _profile.Context.TokenCache = TokenCache.DefaultShared.Serialize();
 
             return _profile;
         }

@@ -29,7 +29,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile.Models
             DefaultAccount = subscription.Account;
             Accounts = profile.Accounts.Values.Where(a => a.HasSubscription(subscription.Id)).ToArray();
             IsDefault = subscription.IsPropertySet(AzureSubscription.Property.Default);
-            IsCurrent = profile.DefaultContext != null && profile.DefaultContext.Subscription.Id == subscription.Id;
+            IsCurrent = profile.Context != null && profile.Context.Subscription.Id == subscription.Id;
             CurrentStorageAccountName = subscription.GetProperty(AzureSubscription.Property.StorageAccount);
             TenantId = subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants).FirstOrDefault();
         }

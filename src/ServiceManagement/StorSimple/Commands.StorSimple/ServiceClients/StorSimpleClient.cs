@@ -69,7 +69,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
                     StorSimpleContext.CloudServiceName,
                     StorSimpleContext.ResourceName, StorSimpleContext.ResourceId,
                     StorSimpleContext.ResourceProviderNameSpace, this.cloudServicesClient.Credentials,
-                    Profile.DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement));
+                    Profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement));
             
             if (storSimpleClient == null)
             {

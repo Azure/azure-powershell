@@ -51,12 +51,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             get
             {
-                if (DefaultProfile == null || DefaultProfile.DefaultContext == null)
+                if (DefaultProfile == null || DefaultProfile.Context == null)
                 {
                     throw new PSInvalidOperationException("Run Login-AzureRMAccount to login.");
                 }
 
-                return DefaultProfile.DefaultContext;
+                return DefaultProfile.Context;
             }
         }
 

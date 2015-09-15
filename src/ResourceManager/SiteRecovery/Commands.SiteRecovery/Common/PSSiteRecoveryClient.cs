@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             this.Profile = azureProfile;
 
-            this.cloudServicesClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(azureProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
+            this.cloudServicesClient = AzureSession.ClientFactory.CreateClient<CloudServiceManagementClient>(azureProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
 
             System.Configuration.Configuration siteRecoveryConfig = ConfigurationManager.OpenExeConfiguration(System.Reflection.Assembly.GetExecutingAssembly().Location);            
 
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             AzureSession.ClientFactory.CreateCustomClient<RecoveryServicesManagementClient>(
                 asrVaultCreds.ResourceNamespace,
                 cloudServicesClient.Credentials,
-                Profile.DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager));
+                Profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager));
         }
 
         /// <summary>
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                 asrVaultCreds.ResourceGroupName,
                 asrVaultCreds.ResourceNamespace,
                 cloudServicesClient.Credentials,
-                Profile.DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager));
+                Profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager));
 
             if (null == siteRecoveryClient)
             {
