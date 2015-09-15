@@ -268,12 +268,12 @@ function Test-FailoverSecondaryDatabaseInternal ($serverVersion, $location = "No
 	try
 	{	
 		# failover Secondary
-		New-AzureSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
+		New-AzureRMSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
 		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All
 
-		$secondary = Get-AzureSqlDatabaseReplicationLink -ResourceGroupName $partRg.ResourceGroupName -ServerName $partServer.ServerName -DatabaseName $database.DatabaseName -PartnerResourceGroupName $rg.ResourceGroupName -PartnerServerName $server.ServerName
+		$secondary = Get-AzureRMSqlDatabaseReplicationLink -ResourceGroupName $partRg.ResourceGroupName -ServerName $partServer.ServerName -DatabaseName $database.DatabaseName -PartnerResourceGroupName $rg.ResourceGroupName -PartnerServerName $server.ServerName
 
-		$secondary | Set-AzureSqlDatabaseSecondary -PartnerResourceGroupName $rg.ResourceGroupName -Failover
+		$secondary | Set-AzureRMSqlDatabaseSecondary -PartnerResourceGroupName $rg.ResourceGroupName -Failover
 	}
 	finally
 	{
