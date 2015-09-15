@@ -28,12 +28,12 @@ namespace Microsoft.Azure.Commands.Resources
     [Cmdlet(VerbsCommon.Remove, "AzureRMRoleAssignment", DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(List<PSRoleAssignment>))]
     public class RemoveAzureRoleAssignmentCommand : ResourcesBaseCmdlet
     {
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Empty,
+            HelpMessage = "The user or group object id")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithObjectId,
             HelpMessage = "The user or group object id.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithObjectId,
             HelpMessage = "The user or group object id.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Empty,
-            HelpMessage = "The user or group object id")]
         [ValidateNotNullOrEmpty]
         [Alias("Id", "PrincipalId")]
         public Guid ObjectId { get; set; }
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateNotNullOrEmpty]
         public string Scope { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Role the principal is assigned with.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Role the principal is assigned to.")]
         [ValidateNotNullOrEmpty]
         public string RoleDefinitionName { get; set; }
 
