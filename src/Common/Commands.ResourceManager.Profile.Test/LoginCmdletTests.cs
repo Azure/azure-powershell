@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.NotNull(AzureRMCmdlet.DefaultProfile.DefaultContext);
+            Assert.NotNull(AzureRMCmdlet.DefaultProfile.Context);
         }
 
         [Fact]
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.NotNull(AzureRMCmdlet.DefaultProfile.DefaultContext);
+            Assert.NotNull(AzureRMCmdlet.DefaultProfile.Context);
         }
         
         [Fact]
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.NotNull(AzureRMCmdlet.DefaultProfile.DefaultContext);
+            Assert.NotNull(AzureRMCmdlet.DefaultProfile.Context);
         }
 
         [Fact]
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.NotNull(AzureRMCmdlet.DefaultProfile.DefaultContext);
+            Assert.NotNull(AzureRMCmdlet.DefaultProfile.Context);
         }
     }
 }
