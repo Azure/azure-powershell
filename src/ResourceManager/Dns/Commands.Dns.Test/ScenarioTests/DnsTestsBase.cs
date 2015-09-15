@@ -12,6 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+using Microsoft.Azure.Test.HttpRecorder;
+
 namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 {
     using System;
@@ -106,7 +109,11 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
             Action cleanup, 
             string callingClassType, 
             string mockName) 
-        { 
+        {
+            Dictionary<string, string> d = new Dictionary<string, string>();
+            d.Add("Microsoft.Authorization", "2014-07-01-preview");
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
+
             using (UndoContext context = UndoContext.Current) 
             { 
                 context.Start(callingClassType, mockName); 
