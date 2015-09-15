@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             string resourceGroupName,
             string automationAccountName,
             string name,
-            Hashtable parameters,
+            IDictionary parameters,
             bool? isEnabled)
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
@@ -171,8 +171,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     if (parameters != null)
                     {
                         webhookPatchProperties.Parameters =
-                            parameters.Cast<DictionaryEntry>()
-                                .ToDictionary(kvp => (string)kvp.Key, kvp => (string)kvp.Value);
+                            this.ProcessRunbookParameters(resourceGroupName, automationAccountName, webhookModel.Properties.Runbook.Name, parameters);
                     }
                 }
 

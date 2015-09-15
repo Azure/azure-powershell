@@ -17,7 +17,6 @@ using Microsoft.Azure.Commands.Automation.Properties;
 using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
 
