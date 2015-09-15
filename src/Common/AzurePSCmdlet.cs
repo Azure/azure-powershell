@@ -24,6 +24,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Newtonsoft.Json;
 using System.IO;
 using System.Management.Automation.Host;
+using System.Text;
 using System.Threading;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
@@ -39,6 +40,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         private DebugStreamTraceListener _adalListener;
         protected static AzurePSDataCollectionProfile _dataCollectionProfile = null;
+        protected static string _errorRecordFolderPath = null;
+        protected const string _fileTimeStampSuffixFormat = "yyyy-MM-dd-THH-mm-ss-fff";
 
         protected AzurePSQoSEvent QosEvent;
 
@@ -254,7 +257,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected new void WriteError(ErrorRecord errorRecord)
         {
-            FlushDebugMessages();
+            FlushDebugMessages(IsDataCollectionAllowed());
             if (QosEvent != null && errorRecord != null)
             {
                 QosEvent.Exception = errorRecord.Exception;
@@ -362,8 +365,13 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             WriteObject(customObject);
         }
 
-        private void FlushDebugMessages()
+        private void FlushDebugMessages(bool record = false)
         {
+            if (record)
+            {
+                RecordDebugMessages();
+            }
+
             string message;
             while (_debugMessages.TryDequeue(out message))
             {
@@ -372,6 +380,43 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         }
 
         protected abstract void InitializeQosEvent();
+
+        private void RecordDebugMessages()
+        {
+            // Create 'ErrorRecords' folder under profile directory, if not exists
+            if (string.IsNullOrEmpty(_errorRecordFolderPath) || !Directory.Exists(_errorRecordFolderPath))
+            {
+                _errorRecordFolderPath = Path.Combine(AzureSession.ProfileDirectory, "ErrorRecords");
+                Directory.CreateDirectory(_errorRecordFolderPath);
+            }
+
+            CommandInfo cmd = this.MyInvocation.MyCommand;
+
+            string filePrefix = cmd.Name;
+            string timeSampSuffix = DateTime.Now.ToString(_fileTimeStampSuffixFormat);
+            string fileName = filePrefix + "_" + timeSampSuffix + ".log";
+            string filePath = Path.Combine(_errorRecordFolderPath, fileName);
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Module : ").AppendLine(cmd.ModuleName);
+            sb.Append("Cmdlet : ").AppendLine(cmd.Name);
+
+            sb.AppendLine("Parameters");
+            foreach (var item in this.MyInvocation.BoundParameters)
+            {
+                sb.Append(" -").Append(item.Key).Append(" : ");
+                sb.AppendLine(item.Value == null ? "null" : item.Value.ToString());
+            }
+
+            sb.AppendLine();
+
+            foreach (var content in _debugMessages)
+            {
+                sb.AppendLine(content);
+            }
+
+            AzureSession.DataStore.WriteFile(filePath, sb.ToString());
+        }
 
         /// <summary>
         /// Invoke this method when the cmdlet is completed or terminated.
