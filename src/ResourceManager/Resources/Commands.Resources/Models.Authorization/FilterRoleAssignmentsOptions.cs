@@ -57,5 +57,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public bool ExpandPrincipalGroups { get; set; }
 
         public bool IncludeClassicAdministrators { get; set; }
+
+        public bool ExcludeAssignmentsForDeletedPrincipals { get; set; }
     }
 }

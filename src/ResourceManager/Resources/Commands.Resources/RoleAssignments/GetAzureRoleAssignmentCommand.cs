@@ -264,10 +264,11 @@ namespace Microsoft.Azure.Commands.Resources
                     Subscription = string.IsNullOrEmpty(ResourceGroupName) ? null : DefaultProfile.DefaultContext.Subscription.Id.ToString()
                 },
                 ExpandPrincipalGroups = ExpandPrincipalGroups.IsPresent,
-                IncludeClassicAdministrators = IncludeClassicAdministrators.IsPresent
+                IncludeClassicAdministrators = IncludeClassicAdministrators.IsPresent,
+                ExcludeAssignmentsForDeletedPrincipals = true
             };
 
-            WriteObject(PoliciesClient.FilterRoleAssignments(options, DefaultProfile.DefaultContext.Subscription.Id.ToString()), true);
+            WriteObject(PoliciesClient.FilterRoleAssignments(options, DefaultProfile.DefaultContext.Subscription.Id.ToString()), enumerateCollection: true);
         }
     }
 }
