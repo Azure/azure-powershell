@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Common.Authentication.Models;
 using System;
 using System.Management.Automation;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -30,23 +31,24 @@ namespace Microsoft.Azure.Commands.Profile
         public AzureRMProfile Profile { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
         public string Path { get; set; }
 
         protected override void ProcessRecord()
         {
-            if (Profile != null)
+            AzureRMProfile profileToSave = Profile;
+            if (profileToSave == null)
             {
-                Profile.Save(Path);
-            }
-            else
-            {
-                if (AzureRMCmdlet.DefaultProfile == null)
-                {
-                    throw new ArgumentException(Resources.AzureProfileMustNotBeNull);
-                }
-                AzureRMCmdlet.DefaultProfile.Save(Path);
+                profileToSave = AzureRMCmdlet.DefaultProfile;
             }
 
+            if (profileToSave == null)
+            {
+                throw new ArgumentException(Resources.AzureProfileMustNotBeNull);
+            }
+
+            profileToSave.TokenCache = TokenCache.DefaultShared.Serialize();
+            profileToSave.Save(Path);
             WriteVerbose(string.Format("Profile saved to: {0}.", Path));
         }
     }
