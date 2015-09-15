@@ -61,11 +61,6 @@ namespace Microsoft.Azure.Commands.Profile
             }
         }
 
-        public LoginAzureRMAccount()
-            : base()
-        {
-        }
-
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
