@@ -40,7 +40,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
         {
             currentProfile = new AzureRMProfile();
             var newGuid = Guid.NewGuid();
-            currentProfile.DefaultContext = new AzureContext(
+            currentProfile.Context = new AzureContext(
                 new AzureSubscription { Id = newGuid, Name = "test", Environment = EnvironmentName.AzureCloud, Account = "test" },
                 new AzureAccount
                 {

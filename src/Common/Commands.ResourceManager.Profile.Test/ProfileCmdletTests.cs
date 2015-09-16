@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         {
             var profile = new AzureRMProfile();
             profile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
-            SelectAzureProfileCommand cmdlt = new SelectAzureProfileCommand();
+            SelectAzureRMProfileCommand cmdlt = new SelectAzureRMProfileCommand();
             // Setup
             cmdlt.Profile = profile;
             cmdlt.CommandRuntime = commandRuntimeMock;
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SelectAzureProfileNull()
         {
-            SelectAzureProfileCommand cmdlt = new SelectAzureProfileCommand();
+            SelectAzureRMProfileCommand cmdlt = new SelectAzureRMProfileCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
 
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             var profile = new AzureRMProfile();
             profile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
             profile.Save("X:\\foo.json");
-            SelectAzureProfileCommand cmdlt = new SelectAzureProfileCommand();
+            SelectAzureRMProfileCommand cmdlt = new SelectAzureRMProfileCommand();
             // Setup
             cmdlt.Path = "X:\\foo.json";
             cmdlt.CommandRuntime = commandRuntimeMock;
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         {
             var profile = new AzureRMProfile();
             profile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
-            SaveAzureProfileCommand cmdlt = new SaveAzureProfileCommand();
+            SaveAzureRMProfileCommand cmdlt = new SaveAzureRMProfileCommand();
             // Setup
             cmdlt.Profile = profile;
             cmdlt.Path = "X:\\foo.json";
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SaveAzureProfileNull()
         {
-            SaveAzureProfileCommand cmdlt = new SaveAzureProfileCommand();
+            SaveAzureRMProfileCommand cmdlt = new SaveAzureRMProfileCommand();
             // Setup
             AzureRMCmdlet.DefaultProfile = null;
             cmdlt.Path = "X:\\foo.json";
@@ -137,9 +137,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         {
             var profile = new AzureRMProfile();
             profile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
-            profile.DefaultContext = new AzureContext(new AzureSubscription(), new AzureAccount(), profile.Environments["foo"]);
+            profile.Context = new AzureContext(new AzureSubscription(), new AzureAccount(), profile.Environments["foo"]);
             AzureRMCmdlet.DefaultProfile = profile;
-            SaveAzureProfileCommand cmdlt = new SaveAzureProfileCommand();
+            SaveAzureRMProfileCommand cmdlt = new SaveAzureRMProfileCommand();
             // Setup
             cmdlt.Path = "X:\\foo.json";
             cmdlt.CommandRuntime = commandRuntimeMock;

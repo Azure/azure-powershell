@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Commands.Insights
             {
                 if (this.insightsClient == null)
                 {
-                    // The premise is that a command to establish a context (like Add-AzureAccount) has been called before this command in order to have a correct CurrentContext
-                    this.insightsClient = AzureSession.ClientFactory.CreateClient<InsightsClient>(DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
+                    // The premise is that a command to establish a context (like Add-AzureRMAccount) has been called before this command in order to have a correct CurrentContext
+                    this.insightsClient = AzureSession.ClientFactory.CreateClient<InsightsClient>(DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
                 }
 
                 return this.insightsClient;

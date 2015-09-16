@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Resources
             string nonWildCardPrefix = GetAzureProviderOperationCommand.GetNonWildcardPrefix(actionString);
             if (string.IsNullOrWhiteSpace(nonWildCardPrefix))
             {
-                // 'Get-AzureProviderOperation *' or 'Get-AzureProviderOperation */virtualmachines/*'
+                // 'Get-AzureRMProviderOperation *' or 'Get-AzureRMProviderOperation */virtualmachines/*'
                 // get operations for all providers
                 providers.AddRange(this.ResourcesClient.ListProviderOperationsMetadata());
             }
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Resources
                 string providerFullName = GetAzureProviderOperationCommand.GetResourceProviderFullName(nonWildCardPrefix);
                 if (!string.IsNullOrWhiteSpace(providerFullName))
                 {
-                    // we have the full name of the provider. 'Get-AzureProviderOperation Microsoft.Sql/servers/*'
+                    // we have the full name of the provider. 'Get-AzureRMProviderOperation Microsoft.Sql/servers/*'
                     // only query for that provider
                     providers.Add(this.ResourcesClient.GetProviderOperationsMetadata(providerFullName));
                 }

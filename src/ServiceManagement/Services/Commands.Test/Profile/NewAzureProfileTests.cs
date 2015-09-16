@@ -32,21 +32,21 @@ namespace Microsoft.Azure.Commands.Test.Profile
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatesNewAzureProfileWithCertificate()
         {
-            ProfileTestController.NewInstance.RunPsTest("Test-CreatesNewAzureProfileWithCertificate");
+            ProfileTestController.NewRdfeInstance.RunPsTest("Test-CreatesNewAzureProfileWithCertificate");
         }
 
         [Fact(Skip = "Need support from mocking framework")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatesNewAzureProfileWithUserCredentials()
         {
-            ProfileTestController.NewInstance.RunPsTest("Test-CreatesNewAzureProfileWithUserCredentials");
+            ProfileTestController.NewRdfeInstance.RunPsTest("Test-CreatesNewAzureProfileWithUserCredentials");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatesNewAzureProfileWithAccessToken()
         {
-            ProfileTestController.NewInstance.RunPsTest("Test-CreatesNewAzureProfileWithAccessToken");
+            ProfileTestController.NewRdfeInstance.RunPsTest("Test-CreatesNewAzureProfileWithAccessToken");
         }
 
         [Fact]
