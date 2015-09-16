@@ -9,7 +9,7 @@ function Test-RedisCache
     $resourceGroupName = "MyResourceGroup"
     $cacheName = "powershelltest"
     $location = "North Central US"
-	
+
     # Creating Cache
     $cacheCreated = New-AzureRMRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size 250MB -Sku Basic
     
@@ -32,7 +32,7 @@ function Test-RedisCache
     for ($i = 0; $i -le 60; $i++)
     {
         [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
-		$cacheGet = Get-AzureRMRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
+        $cacheGet = Get-AzureRMRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
         if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
         {
             Assert-AreEqual $cacheName $cacheGet[0].Name
@@ -67,7 +67,7 @@ function Test-RedisCache
     Assert-AreEqual "Basic" $cacheUpdated.Sku
     Assert-AreEqual "allkeys-lru" $cacheUpdated.RedisConfiguration.Item("maxmemory-policy")
     Assert-True  { $cacheUpdated.EnableNonSslPort }
-	
+
     Assert-NotNull $cacheUpdated.PrimaryKey "PrimaryKey do not exists"
     Assert-NotNull $cacheUpdated.SecondaryKey "SecondaryKey do not exists"
 
@@ -148,7 +148,7 @@ function Test-SetNonExistingRedisCacheTest
     $resourceGroupName = "MyResourceGroup"
     $cacheName = "NonExistingRedisCache"
     $location = "North Central US"
-	
+
     # Creating Cache
     Assert-Throws {Set-AzureRMRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"} }
 }
@@ -164,7 +164,7 @@ function Test-RedisCachePipeline
     $resourceGroupName = "MyResourceGroup"
     $cacheName = "powershelltestpipe"
     $location = "North Central US"
-	
+
     # Creating Cache
     $cacheCreated = New-AzureRMRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size 250MB -Sku Basic -EnableNonSslPort $true
     
@@ -188,7 +188,7 @@ function Test-RedisCachePipeline
     for ($i = 0; $i -le 60; $i++)
     {
         [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
-		$cacheGet = Get-AzureRMRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
+        $cacheGet = Get-AzureRMRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
         if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
         {
             Assert-AreEqual $cacheName $cacheGet[0].Name
@@ -206,7 +206,7 @@ function Test-RedisCachePipeline
         }
         Assert-False {$i -eq 60} "Cache is not in succeeded state even after 30 min."
     }
-	
+
     # Updating Cache using pipeline
     Get-AzureRMRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName | Set-AzureRMRedisCache -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"} -EnableNonSslPort $false
     $cacheUpdatedPiped = Get-AzureRMRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName 
@@ -250,12 +250,12 @@ function Test-SetRedisCacheBugFixTest
     $resourceGroupName = "Siddharth"
     $cacheName = "siddharthchatrola"
     $location = "North Central US"
-	
-	# Updating Cache
+
+    # Updating Cache
     $cacheUpdated = Set-AzureRMRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -EnableNonSslPort $true
     Assert-True  { $cacheUpdated.EnableNonSslPort }
-	
+
     $cacheUpdated2 = Set-AzureRMRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -RedisConfiguration @{"maxmemory-policy" = "allkeys-lru"} 
-	Assert-AreEqual "allkeys-lru" $cacheUpdated2.RedisConfiguration.Item("maxmemory-policy")
-	Assert-True  { $cacheUpdated2.EnableNonSslPort }
+    Assert-AreEqual "allkeys-lru" $cacheUpdated2.RedisConfiguration.Item("maxmemory-policy")
+    Assert-True  { $cacheUpdated2.EnableNonSslPort }
 }

@@ -38,6 +38,9 @@ namespace Microsoft.Azure.Commands.RedisCache
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Redis version.")]
+        public string RedisVersion { get; set; }
+
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Size of redis cache. Valid values: C0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2.5GB, 6GB, 13GB, 26GB, 53GB")]
         [ValidateSet(SizeConverter.C0String, SizeConverter.C1String, SizeConverter.C2String, SizeConverter.C3String, SizeConverter.C4String, SizeConverter.C5String,
             SizeConverter.C6String, SizeConverter.C0, SizeConverter.C1, SizeConverter.C2, SizeConverter.C3, SizeConverter.C4, SizeConverter.C5, SizeConverter.C6, IgnoreCase = false)]
@@ -57,6 +60,11 @@ namespace Microsoft.Azure.Commands.RedisCache
 
         protected override void ProcessRecord()
         {
+            if (!string.IsNullOrEmpty(RedisVersion))
+            {
+                WriteWarning("RedisVersion parameter is deprecated, so please stop using it.");
+            }
+
             string skuFamily;
 
             int skuCapacity = 1;
