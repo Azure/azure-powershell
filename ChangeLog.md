@@ -1,4 +1,6 @@
 ﻿## 2015.09.03 version 0.9.8
+* Azure Redis Cache cmdlets 
+  * New-AzureRMRedisCache - 'RedisVersion' parameter is deprecated.
 * Azure Compute (ARM) Cmdlets
   * Added -Launch parameter for Get-AzureRemoteDesktopFile cmdlet
   * Added Id parameter for VM cmdlets to support piping scenario without ResourceGroupName parameter
