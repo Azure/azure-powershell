@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.Sql.Server.Model;
 namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureSqlServer cmdlet
+    /// Defines the Get-AzureRMSqlServer cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRMSqlServer", ConfirmImpact = ConfirmImpact.None)]
     public class GetAzureSqlServer : AzureSqlServerCmdletBase

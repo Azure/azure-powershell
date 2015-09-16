@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// Marks the given database as using its server's default policy instead of its own policy.
     /// </summary>
     [Cmdlet(VerbsOther.Use, "AzureRMSqlServerAuditingPolicy"), OutputType(typeof(DatabaseAuditingPolicyModel))]
-    [Alias("Use-AzureSqlDatabaseServerAuditingPolicy")]
+    [Alias("Use-AzureRMSqlDatabaseServerAuditingPolicy")]
     public class UseAzureSqlServerAuditingPolicy : SqlDatabaseAuditingCmdletBase
     {
         /// <summary>
