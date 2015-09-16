@@ -362,11 +362,11 @@ function Test-EvaluateAutoScale
 
 	if ($usePipeline -eq '1')
 	{
-		$evalResult = Get-AzureRMBatchPool_ST -Id $poolId -BatchContext $context | Test-AzureRMBatchAutoScale_ST -AutoScaleFormula $formula -BatchContext $context
+		$evalResult = Get-AzureRMBatchPool_ST -Id $poolId -BatchContext $context | Test-AzureBatchAutoScale_ST -AutoScaleFormula $formula -BatchContext $context
 	}
 	else
 	{
-		$evalResult = Test-AzureRMBatchAutoScale_ST $poolId $formula -BatchContext $context
+		$evalResult = Test-AzureBatchAutoScale_ST $poolId $formula -BatchContext $context
 	}
 
 	# Verify that the evaluation result matches expectation

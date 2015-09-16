@@ -46,7 +46,7 @@ function Test-TestStreamingAnalyticsE2E
 	Assert-AreEqual $inputName $actual.Name
 
     # Test Input 
-    $actual = Test-AzureRMStreamAnalyticsInput -JobName $jobName -Name Input -ResourceGroupName $resourceGroup
+    $actual = Test-AzureStreamAnalyticsInput -JobName $jobName -Name Input -ResourceGroupName $resourceGroup
 	$expected = "True"
 	Assert-AreEqual $expected $actual
 
@@ -55,7 +55,7 @@ function Test-TestStreamingAnalyticsE2E
 	Assert-AreEqual $outputName $actual.Name
 
 	# Test Output
-    $actual = Test-AzureRMStreamAnalyticsOutput -JobName $jobName -Name $outputName -ResourceGroupName $resourceGroup	
+    $actual = Test-AzureStreamAnalyticsOutput -JobName $jobName -Name $outputName -ResourceGroupName $resourceGroup	
 	$expected = "True"
 	Assert-AreEqual $expected $actual
 

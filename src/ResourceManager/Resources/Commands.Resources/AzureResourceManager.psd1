@@ -121,11 +121,11 @@ VariablesToExport = '*'
   
 # Aliases to export from this module  
 AliasesToExport = @(  
-    'Get-AzureSqlDatabaseServerAuditingPolicy',  
-    'Remove-AzureSqlDatabaseServerAuditing',  
-    'Set-AzureSqlDatabaseServerAuditingPolicy',  
-    'Use-AzureSqlDatabaseServerAuditingPolicy',  
-    'Get-AzureStorageContainerAcl',  
+    'Get-AzureRMSqlDatabaseServerAuditingPolicy',  
+    'Remove-AzureRMSqlDatabaseServerAuditing',  
+    'Set-AzureRMSqlDatabaseServerAuditingPolicy',  
+    'Use-AzureRMSqlDatabaseServerAuditingPolicy',  
+    'Get-AzureRMStorageContainerAcl',  
     'Start-CopyAzureStorageBlob',  
     'Stop-CopyAzureStorageBlob'  
 )  
