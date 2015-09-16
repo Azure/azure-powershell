@@ -12,37 +12,93 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using System.Management.Automation;
+using System.Net;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
-using System.Security;
+using Hyak.Common;
 using Microsoft.Azure.Common.Authentication.Factories;
-using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Subscriptions;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Profile
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRMSubscription"), OutputType(typeof(AzureSubscription))]
+    [Cmdlet(VerbsCommon.Get, "AzureRMSubscription", DefaultParameterSetName = ListInTenantParameterSet), 
+        OutputType(typeof(AzureSubscription))]
     public class GetAzureRMSubscriptionCommand : AzureRMCmdlet
     {
+        public const string ListInTenantParameterSet = "ListInTenant";
+        public const string ListAllParameterSet = "ListAll";
+
+        private RMProfileClient _client;
+
+        [Parameter(ParameterSetName= ListInTenantParameterSet, ValueFromPipelineByPropertyName = true, Mandatory=false)]
+        public string SubscriptionId { get; set; }
+
+        [Parameter(ParameterSetName = ListInTenantParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = false)]
+        public string Tenant { get; set; }
+
+        [Parameter(ParameterSetName = ListAllParameterSet, Mandatory = true)]
+        public SwitchParameter All { get; set; }
+
+        protected override void BeginProcessing()
+        {
+            base.BeginProcessing();
+            _client = new RMProfileClient(DefaultProfile);
+            _client.WarningLog = (s) => WriteWarning(s);
+        }
+
         protected override void ProcessRecord()
         {
-            var subscriptionClient = AzureSession.ClientFactory.CreateClient<SubscriptionClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
-            var subscriptions = subscriptionClient.Subscriptions.List();
-            WriteObject(subscriptions.Subscriptions.Select((s) =>
+            if (this.ParameterSetName == ListAllParameterSet)
+            { 
+                try
+                {
+                    WriteObject(_client.ListSubscriptions());
+                }
+                catch (AadAuthenticationException)
+                {
+                    WriteErrorWithTimestamp(string.Format("Could not authenticate your user account {0} with the common tenant.  " +
+                       "Please login again using Login-AzureRMAccount.", DefaultContext.Account));
+                    throw;
+                }
+            }
+            else if (!string.IsNullOrWhiteSpace(this.SubscriptionId))
             {
-                var subscription = new AzureSubscription();
-                subscription.Account = DefaultContext.Account != null? DefaultContext.Account.Id : null;
-                subscription.Environment = DefaultContext.Environment != null? DefaultContext.Environment.Name : EnvironmentName.AzureCloud;
-                subscription.Id = new Guid(s.SubscriptionId);
-                subscription.Name = s.DisplayName;
-                subscription.SetProperty(AzureSubscription.Property.Tenants,
-                    DefaultContext.Tenant.Id.ToString());
-                return subscription;
-            }));
+                AzureSubscription result;
+                if (!this._client.TryGetSubscription(this.Tenant, this.SubscriptionId, out result))
+                {
+                    WriteSubscriptionNotFoundError(this.Tenant, this.SubscriptionId);
+                }
+
+                WriteObject( result);
+            }
+            else
+            {
+                var tenant = this.Tenant;
+                if (string.IsNullOrWhiteSpace(tenant))
+                {
+                    if (DefaultContext.Tenant != null && DefaultContext.Tenant.Id != null)
+                    {
+                        tenant = DefaultContext.Tenant.Id.ToString();
+                    }
+                    else
+                    {
+                        throw new PSArgumentException(
+                            "No tenant Id was provided.  Please log in using Login-AzureRMAcount, or provide a tenant in the 'Tenant' parameter.");
+                    }
+                }
+
+                WriteObject(_client.ListSubscriptions(tenant));
+            }
+        }
+
+        private void WriteSubscriptionNotFoundError(string subscription, string tenant)
+        {
+            throw new PSArgumentException(string.Format("Subscription {0} was not found in tenant {1}.  " +
+                   "Please verify that the subscription exists in this tenant.", subscription, tenant));
         }
     }
 }

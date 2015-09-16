@@ -73,6 +73,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             return _profile;
         }
 
+        public bool TryGetSubscription(string tenantId, string subscriptionId, out AzureSubscription subscription)
+        {
+            return TryGetTenantSubscription(_profile.DefaultContext.Account, _profile.DefaultContext.Environment,
+                tenantId, subscriptionId, null, ShowDialog.Never, out subscription);
+        }
+
         private bool TryGetTenantSubscription(
             AzureAccount account, 
             AzureEnvironment environment, 
@@ -108,7 +114,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                             if (subscriptions.Count > 1)
                             {
                                 WriteWarningMessage(string.Format(
-                                    "Tenant '{0}' contains more than one subscription. First one will be selected for further use.",
+                                    "Tenant '{0}' contains more than one subscription. First one will be selected for further use. " +
+                                    "To select another subscription, use Set-AzureRMContext.",
                                     tenantId));
                             }
                             subscriptionFromServer = subscriptions.First();
@@ -151,6 +158,69 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 return subscriptionClient.Tenants.List().TenantIds.Select(ti => ti.TenantId).ToArray();
             }
+        }
+
+        /// <summary>
+        /// List all tenants for the account in the profile context
+        /// </summary>
+        /// <returns>The list of tenants for the default account.</returns>
+        public string[] ListTenants()
+        {
+            return ListAccountTenants(_profile.DefaultContext.Account, _profile.DefaultContext.Environment, null);
+        }
+
+        private IEnumerable<AzureSubscription> ListSubscriptionsForTenant(AzureAccount account, AzureEnvironment environment, 
+            SecureString password, ShowDialog promptBehavior, string tenantId)
+        {
+            var accessToken = AzureSession.AuthenticationFactory.Authenticate(
+                    account,
+                    environment,
+                    tenantId,
+                    password,
+                    promptBehavior);
+            using (var subscriptionClient = AzureSession.ClientFactory.CreateCustomClient<SubscriptionClient>(
+                new TokenCloudCredentials(accessToken.AccessToken),
+                environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager)))
+            {
+                var subscriptions = subscriptionClient.Subscriptions.List();
+                if (subscriptions != null && subscriptions.Subscriptions != null)
+                {
+                    return
+                        subscriptions.Subscriptions.Select(
+                            (s) =>
+                                s.ToAzureSubscription(new AzureContext(_profile.DefaultContext.Subscription, account,
+                                    environment, new AzureTenant {Id = new Guid(tenantId)})));
+                }
+
+                return null;
+            }
+        }
+
+        public IEnumerable<AzureSubscription> ListSubscriptions(string tenant)
+        {
+            return ListSubscriptionsForTenant(_profile.DefaultContext.Account, _profile.DefaultContext.Environment, null,
+                ShowDialog.Never, tenant);
+        }
+
+        public IEnumerable<AzureSubscription> ListSubscriptions()
+        {
+            List<AzureSubscription> subscriptions = new List<AzureSubscription>();
+            foreach (var tenant in ListTenants())
+            {
+                try
+                {
+                    subscriptions.AddRange(ListSubscriptions(tenant));
+                }
+                catch (AadAuthenticationException)
+                {
+                    WriteWarningMessage(string.Format("Could not authenticate user account {0} with tenant {1}.  " +
+                       "Subscriptions in this tenant will not be listed. Please login again using Login-AzureRMAccount " +
+                       "to view the subscriptions in this tenant.", _profile.DefaultContext.Account, tenant));
+                }
+
+            }
+
+            return subscriptions;
         }
 
         private void WriteWarningMessage(string message)
