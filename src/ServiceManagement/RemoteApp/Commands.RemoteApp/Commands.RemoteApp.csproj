@@ -226,7 +226,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Microsoft.Azure.Commands.RemoteApp.dll-help.xml">
+    <Content Include="Microsoft.WindowsAzure.Commands.RemoteApp.dll-help.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

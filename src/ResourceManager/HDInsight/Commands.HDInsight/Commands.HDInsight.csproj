@@ -172,7 +172,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Microsoft.Azure.Commands.HDInsight.dll-help.Help.xml" />
+    <Content Include="Microsoft.Azure.Commands.HDInsight.dll-help.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
