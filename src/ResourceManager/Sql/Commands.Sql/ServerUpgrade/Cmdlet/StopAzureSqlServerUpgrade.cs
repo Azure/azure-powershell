@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.Sql.ServerUpgrade.Model;
 namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureSqlDatabaseServer cmdlet
+    /// Defines the Get-AzureRMSqlDatabaseServer cmdlet
     /// </summary>
     [Cmdlet(VerbsLifecycle.Stop, "AzureRMSqlServerUpgrade",
         SupportsShouldProcess = true,

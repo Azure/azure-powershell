@@ -23,7 +23,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureSqlCapability cmdlet
+    /// Defines the Get-AzureRMSqlCapability cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRMSqlCapability", 
         ConfirmImpact = ConfirmImpact.None,
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Cmdlet
         /// </summary>
         protected override void ProcessRecord()
         {
-            AzureSqlCapabilitiesAdapter adapter = new AzureSqlCapabilitiesAdapter(DefaultProfile.DefaultContext);
+            AzureSqlCapabilitiesAdapter adapter = new AzureSqlCapabilitiesAdapter(DefaultProfile.Context);
             LocationCapabilityModel model = adapter.GetLocationCapabilities(LocationName);
             int depth = 0;
 

@@ -60,7 +60,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Common.Authentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.1.4-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.3.0-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework">
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
@@ -72,9 +72,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Graph.RBAC.1.7.0-preview\lib\net40\Microsoft.Azure.Graph.RBAC.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Authorization, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.0.19.2-preview\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Authorization">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.1.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Compute, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.8.2.0\lib\net40\Microsoft.Azure.Management.Compute.dll</HintPath>
@@ -224,6 +224,17 @@
     <Compile Include="Extension\SetAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\RemoveAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\GetAzureVMExtensionCommand.cs" />
+    <Compile Include="Extension\SqlServer\AzureVMSqlServerAutoBackupSettings.cs" />
+    <Compile Include="Extension\SqlServer\AzureVMSqlServerAutoPatchingSettings.cs" />
+    <Compile Include="Extension\SqlServer\AzureVMSqlServerAutoTelemetrySettings.cs" />
+    <Compile Include="Extension\SqlServer\AzureVMSqlServerPrivateSettings.cs" />
+    <Compile Include="Extension\SqlServer\AzureVMSqlServerPublicSettings.cs" />
+    <Compile Include="Extension\SqlServer\GetAzureVMSqlServerExtensionCommand.cs" />
+    <Compile Include="Extension\SqlServer\NewAzureVMSqlServerAutoBackupConfig.cs" />
+    <Compile Include="Extension\SqlServer\NewAzureVMSqlServerAutoPatchingConfig.cs" />
+    <Compile Include="Extension\SqlServer\RemoveAzureVMSqlServerExtensionCommand.cs" />
+    <Compile Include="Extension\SqlServer\SetAzureVMSqlServerExtensionCommand.cs" />
+    <Compile Include="Extension\SqlServer\VirtualMachineSqlServerExtensionContext.cs" />
     <Compile Include="Images\GetAzureVMImageCommand.cs" />
     <Compile Include="Common\HashTableExtensions.cs" />
     <Compile Include="Models\PSComputeLongRunningOperation.cs" />

@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 }
                 if (HttpMockServer.Variables.ContainsKey(SubscriptionIdKey))
                 {
-                    AzureRMCmdlet.DefaultProfile.DefaultContext.Subscription.Id = new Guid(HttpMockServer.Variables[SubscriptionIdKey]);
+                    AzureRMCmdlet.DefaultProfile.Context.Subscription.Id = new Guid(HttpMockServer.Variables[SubscriptionIdKey]);
                 }
             }
 

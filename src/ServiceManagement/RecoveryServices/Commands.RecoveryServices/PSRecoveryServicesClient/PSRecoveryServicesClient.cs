@@ -250,7 +250,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             SiteRecoveryManagementClient siteRecoveryClient =
                 AzureSession.ClientFactory.CreateCustomClient<SiteRecoveryManagementClient>(asrVaultCreds.CloudServiceName, 
                 asrVaultCreds.ResourceName, recoveryServicesClient.Credentials, 
-                Profile.DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement));
+                Profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement));
 
             if (null == siteRecoveryClient)
             {

@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 if (storageClientWrapper == null)
                 {
-                    storageClientWrapper = new StorageManagementClientWrapper(DefaultProfile.DefaultContext)
+                    storageClientWrapper = new StorageManagementClientWrapper(DefaultProfile.Context)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         {
             get
             {
-                return DefaultProfile.DefaultContext.Subscription.Id.ToString();
+                return DefaultProfile.Context.Subscription.Id.ToString();
             }
         }
 

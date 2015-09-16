@@ -12,23 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Batch.Properties;
 using System.Management.Automation;
+using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
     [Cmdlet(VerbsCommon.Get, "AzureRMBatchAccountKeys"), OutputType(typeof(BatchAccountContext))]
     public class GetBatchAccountKeysCommand : BatchCmdletBase
     {
-        internal const string ParameterSetContext = "Use Context";
-        internal const string ParameterSetNames = "Use Names";
-
-        [Parameter(ParameterSetName = ParameterSetNames, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the Batch service account to query keys for.")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, 
+            HelpMessage = "The name of the Batch service account to query keys for.")]
         [Alias("Name")]
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group of the account.")]
+        [Parameter(ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

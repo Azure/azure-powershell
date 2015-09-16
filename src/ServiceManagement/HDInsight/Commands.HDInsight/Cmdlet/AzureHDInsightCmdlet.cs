@@ -38,6 +38,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
 
         private ILogWriter logger;
 
+      
         /// <summary>
         ///     Gets or sets a value indicating whether logging should be enabled.
         /// </summary>
@@ -145,14 +146,14 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
             {
 #if DEBUG
                 // we need this for the tests to mock out the current subscription.
-                if (Profile.DefaultContext.Subscription != null)
+                if (Profile.Context.Subscription != null)
                 {
-                    return this.Profile.DefaultContext.Subscription;
+                    return this.Profile.Context.Subscription;
                 }
 
                 return testSubscription;
 #else
-                return this.Profile.DefaultContext.Subscription;
+                return this.Profile.Context.Subscription;
 #endif
             }
         }

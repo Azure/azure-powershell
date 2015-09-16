@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             // Get the single job schedule matching the specified id
             if (!string.IsNullOrWhiteSpace(options.JobScheduleId))
             {
-                WriteVerbose(string.Format(Resources.GBJS_GetById, options.JobScheduleId));
+                WriteVerbose(string.Format(Resources.GetJobScheduleById, options.JobScheduleId));
                 JobScheduleOperations jobScheduleOperations = options.Context.BatchOMClient.JobScheduleOperations;
                 CloudJobSchedule jobSchedule = jobScheduleOperations.GetJobSchedule(options.JobScheduleId, additionalBehaviors: options.AdditionalBehaviors);
                 PSCloudJobSchedule psJobSchedule = new PSCloudJobSchedule(jobSchedule);
@@ -53,12 +53,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 string verboseLogString = null;
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
-                    verboseLogString = Resources.GBJS_GetByOData;
+                    verboseLogString = Resources.GetJobScheduleByOData;
                     odata = new ODATADetailLevel(filterClause: options.Filter);
                 }
                 else
                 {
-                    verboseLogString = Resources.GBJS_NoFilter;
+                    verboseLogString = Resources.GetJobScheduleNoFilter;
                 }
                 WriteVerbose(verboseLogString);
 
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                     jobSchedule.Metadata.Add(metadata);
                 }
             }
-            WriteVerbose(string.Format(Resources.NBJS_CreatingJobSchedule, parameters.JobScheduleId));
+            WriteVerbose(string.Format(Resources.CreatingJobSchedule, parameters.JobScheduleId));
             jobSchedule.Commit(parameters.AdditionalBehaviors);
         }
 
