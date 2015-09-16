@@ -85,7 +85,6 @@ namespace Microsoft.Azure.Commands.Profile
             else
             {
                 azureAccount.Type = AzureAccount.AccountType.User;
-
             }
 
             SecureString password = null;

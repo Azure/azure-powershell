@@ -178,8 +178,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContextCmdletTests.Live.cs" />
     <Compile Include="LoginCmdletTests.cs" />
-    <Compile Include="ContextCmdletTests.cs" />
+    <Compile Include="ContextCmdletTests.Mocked.cs" />
     <Compile Include="ProfileCmdletTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -26,12 +26,12 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 {
-    public class ContextCmdletTests : RMTestBase
+    public class ContextCmdletTestsMocked : RMTestBase
     {
         private MemoryDataStore dataStore;
         private MockCommandRuntime commandRuntimeMock;
 
-        public ContextCmdletTests()
+        public ContextCmdletTestsMocked()
         {
             dataStore = new MemoryDataStore();
             AzureSession.DataStore = dataStore;
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetAzureContextInMemory()
+        public void GetAzureContext()
         {
             var cmdlt = new GetAzureRMContextCommand();
             // Setup
