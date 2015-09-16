@@ -49,7 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.MediaServices
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            MediaServicesClient = MediaServicesClient ?? new MediaServicesClient(Profile, Profile.Context.Subscription, WriteDebug);
+            MediaServicesClient = MediaServicesClient ?? new MediaServicesClient(Profile, Profile.DefaultContext.Subscription, WriteDebug);
 
             if (!string.IsNullOrEmpty(Name))
             {

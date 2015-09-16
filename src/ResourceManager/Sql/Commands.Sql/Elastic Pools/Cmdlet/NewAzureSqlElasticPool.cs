@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure Sql ElasticPool
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureSqlElasticPool",
+    [Cmdlet(VerbsCommon.New, "AzureRMSqlElasticPool",
         ConfirmImpact = ConfirmImpact.Low)]
     public class NewAzureSqlElasticPool : AzureSqlElasticPoolCmdletBase
     {
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 
             // The database already exists
             throw new PSArgumentException(
-                string.Format(Resources.ElasticPoolNameExists, this.ElasticPoolName, this.ServerName),
+                string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ElasticPoolNameExists, this.ElasticPoolName, this.ServerName),
                 "ElasticPoolName");
         }
 

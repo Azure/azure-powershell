@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Compute
         DefaultParameterSetName = WindowsParamSet),
     OutputType(
         typeof(PSVirtualMachine))]
-    public class SetAzureVMOperatingSystemCommand : AzurePSCmdlet
+    public class SetAzureVMOperatingSystemCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         protected const string WindowsParamSet = "Windows";
         protected const string LinuxParamSet = "Linux";
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public SwitchParameter DisablePasswordAuthentication { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             this.VM.OSProfile = new OSProfile
             {
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (this.VM.OSProfile.WindowsConfiguration != null)
                 {
-                    throw new ArgumentException(Properties.Resources.BothWindowsAndLinuxConfigurationsSpecified);
+                    throw new ArgumentException(Microsoft.Azure.Commands.Compute.Properties.Resources.BothWindowsAndLinuxConfigurationsSpecified);
                 }
 
                 if (this.VM.OSProfile.LinuxConfiguration == null)
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 if (this.VM.OSProfile.LinuxConfiguration != null)
                 {
-                    throw new ArgumentException(Properties.Resources.BothWindowsAndLinuxConfigurationsSpecified);
+                    throw new ArgumentException(Microsoft.Azure.Commands.Compute.Properties.Resources.BothWindowsAndLinuxConfigurationsSpecified);
                 }
 
                 if (this.VM.OSProfile.WindowsConfiguration == null)

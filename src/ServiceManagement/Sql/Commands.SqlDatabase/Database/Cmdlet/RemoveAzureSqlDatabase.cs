@@ -30,7 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureSqlDatabase", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.High)]
-    public class RemoveAzureSqlDatabase : AzurePSCmdlet
+    public class RemoveAzureSqlDatabase : AzureSMCmdlet
     {
         #region Parameter sets
 
@@ -201,7 +201,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
             try
             {
                 // Get the current subscription data.
-                AzureSubscription subscription = Profile.Context.Subscription;
+                AzureSubscription subscription = Profile.DefaultContext.Subscription;
 
                 // Create a temporary context
                 ServerDataServiceCertAuth context =

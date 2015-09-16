@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
 {
     public class DataFactoryGatewayTests : DataFactoriesScenarioTestsBase
     {
-        [Fact]
+        [Fact(Skip = "test takes too long (more than 5 sec)")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNonExistingDataFactoryGateway()
         {
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
             RunPowerShellTest("Test-DataFactoryGateway");
         }
 
-        [Fact]
+        [Fact(Skip = "test takes too long (more than 5 sec)")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDataFactoryGatewayWithDataFactoryParameter()
         {

@@ -25,27 +25,27 @@ function Test-SingleNetworkInterface
     {
         # Common
         $loc = Get-ComputeVMLocation;
-        New-AzureResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
         $vmsize = 'Standard_A2';
         $vmname = 'vm' + $rgname;
-        $p = New-AzureVMConfig -VMName $vmname -VMSize $vmsize;
+        $p = New-AzureRMVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
 
         # NRP
-        $subnet = New-AzureVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
-        $vnet = Get-AzureVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
+        $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
-        $pubip = New-AzurePublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
-        $pubip = Get-AzurePublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubip = New-AzureRMPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzureRMPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
         $pubipId = $pubip.Id;
-        $nic = New-AzureNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
-        $nic = Get-AzureNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nic = New-AzureRMNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzureRMNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
         $nicId = $nic.Id;
 
-        $p = Add-AzureVMNetworkInterface -VM $p -Id $nicId;
+        $p = Add-AzureRMVMNetworkInterface -VM $p -Id $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
         Assert-Null $p.NetworkProfile.NetworkInterfaces[0].Primary;
@@ -53,8 +53,8 @@ function Test-SingleNetworkInterface
         # Storage Account (SA)
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        New-AzureStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-        $stoaccount = Get-AzureStorageAccount -ResourceGroupName $rgname -Name $stoname;
+        New-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname;
 
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
@@ -63,12 +63,12 @@ function Test-SingleNetworkInterface
         $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
         $dataDiskVhdUri3 = "https://$stoname.blob.core.windows.net/test/data3.vhd";
 
-        $p = Set-AzureVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
+        $p = Set-AzureRMVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
-        $p = Remove-AzureVMDataDisk -VM $p -Name 'testDataDisk3';
+        $p = Add-AzureRMVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
+        $p = Add-AzureRMVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
+        $p = Add-AzureRMVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
+        $p = Remove-AzureRMVMDataDisk -VM $p -Name 'testDataDisk3';
         
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
@@ -93,7 +93,7 @@ function Test-SingleNetworkInterface
         $img = 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201503.01-en.us-127GB.vhd';
 
         # $p.StorageProfile.OSDisk = $null;
-        $p = Set-AzureVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
+        $p = Set-AzureRMVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
 
         Assert-AreEqual $p.OSProfile.AdminUsername $user;
         Assert-AreEqual $p.OSProfile.ComputerName $computerName;
@@ -101,7 +101,7 @@ function Test-SingleNetworkInterface
 
         # Image Reference
         $imgRef = Get-DefaultCRPImage;
-        $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
+        $p = ($imgRef | Set-AzureRMVMSourceImage -VM $p);
         Assert-NotNull $p.StorageProfile.ImageReference;
         Assert-Null $p.StorageProfile.SourceImageId;
 
@@ -109,23 +109,23 @@ function Test-SingleNetworkInterface
         $p.StorageProfile.DataDisks = $null;
 
         # Virtual Machine
-        # TODO: Still need to do retry for New-AzureVM for SA, even it's returned in Get-.
-        New-AzureVM -ResourceGroupName $rgname -Location $loc -VM $p;
+        # TODO: Still need to do retry for New-AzureRMVM for SA, even it's returned in Get-.
+        New-AzureRMVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Get VM
-        $vm1 = Get-AzureVM -Name $vmname -ResourceGroupName $rgname;
+        $vm1 = Get-AzureRMVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
 
         # Get NetworkInterface
-        $getnic = Get-AzureNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $getnic = Get-AzureRMNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $getnic.Id;
         Assert-AreEqual $getnic.Primary true;
         Assert-NotNull $getnic.MacAddress;
 
         # Remove
-        Remove-AzureVM -Name $vmname -ResourceGroupName $rgname -Force;
+        Remove-AzureRMVM -Name $vmname -ResourceGroupName $rgname -Force;
     }
     finally
     {
@@ -147,27 +147,27 @@ function Test-SingleNetworkInterfaceDnsSettings
     {
         # Common
         $loc = Get-ComputeVMLocation;
-        New-AzureResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
         $vmsize = 'Standard_A2';
         $vmname = 'vm' + $rgname;
-        $p = New-AzureVMConfig -VMName $vmname -VMSize $vmsize;
+        $p = New-AzureRMVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
 
         # NRP
-        $subnet = New-AzureVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
-        $vnet = Get-AzureVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
+        $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
-        $pubip = New-AzurePublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
-        $pubip = Get-AzurePublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubip = New-AzureRMPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzureRMPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
         $pubipId = $pubip.Id;
-        $nic = New-AzureNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id -DnsServer "10.0.1.5";
-        $nic = Get-AzureNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $nic = New-AzureRMNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id -DnsServer "10.0.1.5";
+        $nic = Get-AzureRMNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
         $nicId = $nic.Id;
 
-        $p = Add-AzureVMNetworkInterface -VM $p -Id $nicId;
+        $p = Add-AzureRMVMNetworkInterface -VM $p -Id $nicId;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
         Assert-Null $p.NetworkProfile.NetworkInterfaces[0].Primary;
@@ -175,8 +175,8 @@ function Test-SingleNetworkInterfaceDnsSettings
         # Storage Account (SA)
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        New-AzureStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-        $stoaccount = Get-AzureStorageAccount -ResourceGroupName $rgname -Name $stoname;
+        New-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname;
 
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
@@ -185,12 +185,12 @@ function Test-SingleNetworkInterfaceDnsSettings
         $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
         $dataDiskVhdUri3 = "https://$stoname.blob.core.windows.net/test/data3.vhd";
 
-        $p = Set-AzureVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
+        $p = Set-AzureRMVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
-        $p = Remove-AzureVMDataDisk -VM $p -Name 'testDataDisk3';
+        $p = Add-AzureRMVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
+        $p = Add-AzureRMVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
+        $p = Add-AzureRMVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
+        $p = Remove-AzureRMVMDataDisk -VM $p -Name 'testDataDisk3';
         
         # OS & Image
         $user = "Foo12";
@@ -202,11 +202,11 @@ function Test-SingleNetworkInterfaceDnsSettings
         $img = 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201503.01-en.us-127GB.vhd';
 
         # $p.StorageProfile.OSDisk = $null;
-        $p = Set-AzureVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
+        $p = Set-AzureRMVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
 
         # Image Reference
         $imgRef = Get-DefaultCRPImage;
-        $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
+        $p = ($imgRef | Set-AzureRMVMSourceImage -VM $p);
         Assert-NotNull $p.StorageProfile.ImageReference;
         Assert-Null $p.StorageProfile.SourceImageId;
 
@@ -214,24 +214,24 @@ function Test-SingleNetworkInterfaceDnsSettings
         $p.StorageProfile.DataDisks = $null;
 
         # Virtual Machine
-        # TODO: Still need to do retry for New-AzureVM for SA, even it's returned in Get-.
-        New-AzureVM -ResourceGroupName $rgname -Location $loc -VM $p;
+        # TODO: Still need to do retry for New-AzureRMVM for SA, even it's returned in Get-.
+        New-AzureRMVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Get VM
-        $vm1 = Get-AzureVM -Name $vmname -ResourceGroupName $rgname;
+        $vm1 = Get-AzureRMVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;
 
         # Get NetworkInterface
-        $getnic = Get-AzureNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
+        $getnic = Get-AzureRMNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $getnic.Id;
         Assert-AreEqual $getnic.Primary true;
         Assert-NotNull $getnic.MacAddress;
         Assert-NotNull $getnic.DnsSettings.AppliedDnsServers;
 
         # Remove
-        Remove-AzureVM -Name $vmname -ResourceGroupName $rgname -Force;
+        Remove-AzureRMVM -Name $vmname -ResourceGroupName $rgname -Force;
     }
     finally
     {
@@ -253,28 +253,28 @@ function Test-MultipleNetworkInterface
     {
         # Common
         $loc = Get-ComputeVMLocation;
-        New-AzureResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
         
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
-        $p = New-AzureVMConfig -VMName $vmname -VMSize $vmsize;
+        $p = New-AzureRMVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
 
         # NRP
-        $subnet = New-AzureVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
-        $vnet = Get-AzureVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
+        $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
-        $nic1 = New-AzureNetworkInterface -Force -Name ('nic1' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId;
-        $nic2 = New-AzureNetworkInterface -Force -Name ('nic2' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId;
+        $nic1 = New-AzureRMNetworkInterface -Force -Name ('nic1' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId;
+        $nic2 = New-AzureRMNetworkInterface -Force -Name ('nic2' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId;
         
-        $p = Add-AzureVMNetworkInterface -VM $p -Id $nic1.Id;
+        $p = Add-AzureRMVMNetworkInterface -VM $p -Id $nic1.Id;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nic1.Id;
         Assert-Null $p.NetworkProfile.NetworkInterfaces[0].Primary;
         
-        $p = Add-AzureVMNetworkInterface -VM $p -Id $nic2.Id -Primary;
+        $p = Add-AzureRMVMNetworkInterface -VM $p -Id $nic2.Id -Primary;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 2;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[1].ReferenceUri $nic2.Id;
 
@@ -284,8 +284,8 @@ function Test-MultipleNetworkInterface
         # Storage Account (SA)
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        New-AzureStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-        $stoaccount = Get-AzureStorageAccount -ResourceGroupName $rgname -Name $stoname;
+        New-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname;
 
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
@@ -294,12 +294,12 @@ function Test-MultipleNetworkInterface
         $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
         $dataDiskVhdUri3 = "https://$stoname.blob.core.windows.net/test/data3.vhd";
 
-        $p = Set-AzureVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
+        $p = Set-AzureRMVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
-        $p = Remove-AzureVMDataDisk -VM $p -Name 'testDataDisk3';
+        $p = Add-AzureRMVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
+        $p = Add-AzureRMVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
+        $p = Add-AzureRMVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 3 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
+        $p = Remove-AzureRMVMDataDisk -VM $p -Name 'testDataDisk3';
         
         # OS & Image
         $user = "Foo12";
@@ -311,11 +311,11 @@ function Test-MultipleNetworkInterface
         $img = 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201503.01-en.us-127GB.vhd';
 
         # $p.StorageProfile.OSDisk = $null;
-        $p = Set-AzureVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
+        $p = Set-AzureRMVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
 
         # Image Reference
         $imgRef = Get-DefaultCRPImage;
-        $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
+        $p = ($imgRef | Set-AzureRMVMSourceImage -VM $p);
         Assert-NotNull $p.StorageProfile.ImageReference;
         Assert-Null $p.StorageProfile.SourceImageId;
 
@@ -323,29 +323,29 @@ function Test-MultipleNetworkInterface
         $p.StorageProfile.DataDisks = $null;
 
         # Virtual Machine
-        # TODO: Still need to do retry for New-AzureVM for SA, even it's returned in Get-.
-        New-AzureVM -ResourceGroupName $rgname -Location $loc -VM $p;
+        # TODO: Still need to do retry for New-AzureRMVM for SA, even it's returned in Get-.
+        New-AzureRMVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
         # Get VM
-        $vm1 = Get-AzureVM -Name $vmname -ResourceGroupName $rgname;
+        $vm1 = Get-AzureRMVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 2;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nic1.Id;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[1].ReferenceUri $nic2.Id;
         
         # Get NetworkInterface
-        $getnic1 = Get-AzureNetworkInterface -Name ('nic1' + $rgname) -ResourceGroupName $rgname;
+        $getnic1 = Get-AzureRMNetworkInterface -Name ('nic1' + $rgname) -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $getnic1.Id;
         Assert-AreNotEqual  $getnic1.Primary true;
         Assert-NotNull $getnic1.MacAddress;
 
-        $getnic2 = Get-AzureNetworkInterface -Name ('nic2' + $rgname) -ResourceGroupName $rgname;
+        $getnic2 = Get-AzureRMNetworkInterface -Name ('nic2' + $rgname) -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[1].ReferenceUri $getnic2.Id;
         Assert-AreEqual $getnic2.Primary true;
         Assert-NotNull $getnic2.MacAddress;
 
         # Remove
-        Remove-AzureVM -Name $vmname -ResourceGroupName $rgname -Force;
+        Remove-AzureRMVM -Name $vmname -ResourceGroupName $rgname -Force;
     }
     finally
     {
@@ -367,28 +367,28 @@ function Test-AddNetworkInterface
     {
         # Common
         $loc = Get-ComputeVMLocation;
-        New-AzureResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
         $vmsize = 'Standard_A2';
         $vmname = 'vm' + $rgname;
-        $p = New-AzureVMConfig -VMName $vmname -VMSize $vmsize;
+        $p = New-AzureRMVMConfig -VMName $vmname -VMSize $vmsize;
         Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
 
         # NRP
-        $subnet = New-AzureVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-        $vnet = New-AzureVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
-        $vnet = Get-AzureVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
+        $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
-        $pubip = New-AzurePublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
-        $pubip = Get-AzurePublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
+        $pubip = New-AzureRMPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
+        $pubip = Get-AzureRMPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
         $pubipId = $pubip.Id;
-        $nic = New-AzureNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = New-AzureRMNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
         $nicId = $nic.Id;
 
-        $nicList = Get-AzureNetworkInterface -ResourceGroupName $rgname;
+        $nicList = Get-AzureRMNetworkInterface -ResourceGroupName $rgname;
         $nicList[0].Primary = $true;
-        $p = Add-AzureVMNetworkInterface -VM $p -NetworkInterface $nicList;
+        $p = Add-AzureRMVMNetworkInterface -VM $p -NetworkInterface $nicList;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicList[0].Id;
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Primary $true;
@@ -396,8 +396,8 @@ function Test-AddNetworkInterface
         # Storage Account (SA)
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        New-AzureStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-        $stoaccount = Get-AzureStorageAccount -ResourceGroupName $rgname -Name $stoname;
+        New-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname;
 
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
@@ -406,10 +406,10 @@ function Test-AddNetworkInterface
         $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
         $dataDiskVhdUri3 = "https://$stoname.blob.core.windows.net/test/data3.vhd";
 
-        $p = Set-AzureVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
+        $p = Set-AzureRMVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
-        $p = Add-AzureVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
+        $p = Add-AzureRMVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
+        $p = Add-AzureRMVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 2 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
 
         Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
         Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
@@ -430,7 +430,7 @@ function Test-AddNetworkInterface
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $computerName = 'test';
-        $p = Set-AzureVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
+        $p = Set-AzureRMVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred;
 
         Assert-AreEqual $p.OSProfile.AdminUsername $user;
         Assert-AreEqual $p.OSProfile.ComputerName $computerName;
@@ -438,7 +438,7 @@ function Test-AddNetworkInterface
 
         # Image Reference
         $imgRef = Get-DefaultCRPImage;
-        $p = ($imgRef | Set-AzureVMSourceImage -VM $p);
+        $p = ($imgRef | Set-AzureRMVMSourceImage -VM $p);
         Assert-NotNull $p.StorageProfile.ImageReference;
         Assert-Null $p.StorageProfile.SourceImageId;
 
@@ -446,10 +446,10 @@ function Test-AddNetworkInterface
         $p.StorageProfile.DataDisks = $null;
 
         # Virtual Machine
-        # TODO: Still need to do retry for New-AzureVM for SA, even it's returned in Get-.
-        New-AzureVM -ResourceGroupName $rgname -Location $loc -VM $p;
+        # TODO: Still need to do retry for New-AzureRMVM for SA, even it's returned in Get-.
+        New-AzureRMVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
-        $vm1 = Get-AzureVM -Name $vmname -ResourceGroupName $rgname;
+        $vm1 = Get-AzureRMVM -Name $vmname -ResourceGroupName $rgname;
         Assert-AreEqual $vm1.Name $vmname;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces.Count 1;
         Assert-AreEqual $vm1.NetworkProfile.NetworkInterfaces[0].ReferenceUri $nicId;

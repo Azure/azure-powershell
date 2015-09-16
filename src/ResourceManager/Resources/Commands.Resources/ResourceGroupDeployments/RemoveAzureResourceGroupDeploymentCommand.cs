@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroups
     /// <summary>
     /// Deletes a deployment.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureResourceGroupDeployment"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRMResourceGroupDeployment"), OutputType(typeof(bool))]
     public class RemoveAzureResourceGroupDeploymentCommand : ResourcesBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.")]
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroups
         [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "True if succeed, false otherwise.")]
         public SwitchParameter PassThru { get; set; }
         
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ConfirmAction(
                 Force.IsPresent,
@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroups
 
             if (PassThru)
             {
+                WriteWarning("The PassThru switch parameter is being deprecated and will be removed in a future release.");
                 WriteObject(true);
             }
         }

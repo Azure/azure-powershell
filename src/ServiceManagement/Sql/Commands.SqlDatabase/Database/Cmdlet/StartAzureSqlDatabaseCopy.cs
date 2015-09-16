@@ -31,7 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
     /// </summary>
     [Cmdlet(VerbsLifecycle.Start, "AzureSqlDatabaseCopy", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.Low)]
-    public class StartAzureSqlDatabaseCopy : AzurePSCmdlet
+    public class StartAzureSqlDatabaseCopy : AzureSMCmdlet
     {
         #region ParameterSets
 
@@ -189,7 +189,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
             // provided ServerName and the active subscription.
             IServerDataServiceContext context = ServerDataServiceCertAuth.Create(this.ServerName,
                 Profile,
-                Profile.Context.Subscription);
+                Profile.DefaultContext.Subscription);
 
             try
             {

@@ -42,7 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
 
         public ExtensionManager(ServiceManagementBaseCmdlet cmdlet, string serviceName)
         {
-            if (cmdlet == null || cmdlet.Profile.Context.Subscription == null)
+            if (cmdlet == null || cmdlet.Profile.DefaultContext.Subscription == null)
             {
                 throw new ArgumentNullException("cmdlet");
             }
@@ -53,7 +53,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
             }
 
             Cmdlet = cmdlet;
-            SubscriptionId = cmdlet.Profile.Context.Subscription.Id.ToString();
+            SubscriptionId = cmdlet.Profile.DefaultContext.Subscription.Id.ToString();
             ServiceName = serviceName;
         }
 

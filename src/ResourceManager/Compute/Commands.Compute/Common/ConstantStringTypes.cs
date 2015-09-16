@@ -51,53 +51,56 @@ namespace Microsoft.Azure.Commands.Compute.Common
 
     public static class ProfileNouns
     {
-        public const string VirtualMachineProfile = "AzureVMProfile";
+        public const string VirtualMachineProfile = "AzureRMVMProfile";
 
-        public const string OSProfile = "AzureVMOSProfile";
-        public const string StorageProfile = "AzureVMStorageProfile";
-        public const string HardwareProfile = "AzureVMHardwareProfile";
-        public const string NetworkProfile = "AzureVMNetworkProfile";
+        public const string OSProfile = "AzureRMVMOSProfile";
+        public const string StorageProfile = "AzureRMVMStorageProfile";
+        public const string HardwareProfile = "AzureRMVMHardwareProfile";
+        public const string NetworkProfile = "AzureRMVMNetworkProfile";
 
-        public const string OperatingSystem = "AzureVMOperatingSystem";
+        public const string OperatingSystem = "AzureRMVMOperatingSystem";
 
-        public const string DataDisk = "AzureVMDataDisk";
-        public const string OSDisk = "AzureVMOSDisk";
-        public const string SourceImage = "AzureVMSourceImage";
+        public const string DataDisk = "AzureRMVMDataDisk";
+        public const string OSDisk = "AzureRMVMOSDisk";
+        public const string SourceImage = "AzureRMVMSourceImage";
 
-        public const string NetworkInterface = "AzureVMNetworkInterface";
+        public const string NetworkInterface = "AzureRMVMNetworkInterface";
 
-        public const string VirtualMachine = "AzureVM";
-        public const string VirtualMachineExtension = "AzureVMExtension";
-        public const string VirtualMachineCustomScriptExtension = "AzureVMCustomScriptExtension";
-        public const string VirtualMachineAccessExtension = "AzureVMAccessExtension";
-        public const string VirtualMachineDiagnosticsExtension = "AzureVMDiagnosticsExtension";
-        public const string VirtualMachineExtensionImage = "AzureVMExtensionImage";
-        public const string VirtualMachineExtensionImageVersion = "AzureVMExtensionImageVersion";
-        public const string VirtualMachineExtensionImageType = "AzureVMExtensionImageType";
+        public const string VirtualMachine = "AzureRMVM";
+        public const string VirtualMachineExtension = "AzureRMVMExtension";
+        public const string VirtualMachineCustomScriptExtension = "AzureRMVMCustomScriptExtension";
+        public const string VirtualMachineAccessExtension = "AzureRMVMAccessExtension";
+        public const string VirtualMachineDiagnosticsExtension = "AzureRMVMDiagnosticsExtension";
+        public const string VirtualMachineExtensionImage = "AzureRMVMExtensionImage";
+        public const string VirtualMachineExtensionImageVersion = "AzureRMVMExtensionImageVersion";
+        public const string VirtualMachineExtensionImageType = "AzureRMVMExtensionImageType";
 
-        public const string AvailabilitySet = "AzureAvailabilitySet";
-        public const string VirtualMachineConfig = "AzureVMConfig";
-        public const string VirtualMachinePlan = "AzureVMPlan";
+        public const string AvailabilitySet = "AzureRMAvailabilitySet";
+        public const string VirtualMachineConfig = "AzureRMVMConfig";
+        public const string VirtualMachinePlan = "AzureRMVMPlan";
 
-        public const string VirtualMachineSize = "AzureVMSize";
+        public const string VirtualMachineSize = "AzureRMVMSize";
 
-        public const string VirtualMachineImage = "AzureVMImage";
-        public const string VirtualMachineImagePublisher = "AzureVMImagePublisher";
-        public const string VirtualMachineImageOffer = "AzureVMImageOffer";
-        public const string VirtualMachineImageSku = "AzureVMImageSku";
-        public const string VirtualMachineImageVersion = "AzureVMImageVersion";
+        public const string VirtualMachineImage = "AzureRMVMImage";
+        public const string VirtualMachineImagePublisher = "AzureRMVMImagePublisher";
+        public const string VirtualMachineImageOffer = "AzureRMVMImageOffer";
+        public const string VirtualMachineImageSku = "AzureRMVMImageSku";
+        public const string VirtualMachineImageVersion = "AzureRMVMImageVersion";
 
-        public const string VirtualMachineUsage = "AzureVMUsage";
+        public const string VirtualMachineUsage = "AzureRMVMUsage";
 
-        public const string SshPublicKey = "AzureVMSshPublicKey";
-        public const string AdditionalUnattendContent = "AzureVMAdditionalUnattendContent";
-        public const string VaultSecretGroup = "AzureVMSecret";
-        public const string RemoteDesktopFile = "AzureRemoteDesktopFile";
+        public const string SshPublicKey = "AzureRMVMSshPublicKey";
+        public const string AdditionalUnattendContent = "AzureRMVMAdditionalUnattendContent";
+        public const string VaultSecretGroup = "AzureRMVMSecret";
+        public const string RemoteDesktopFile = "AzureRMRemoteDesktopFile";
 
         //DSC
-        public const string VirtualMachineDscExtension = "AzureVMDscExtension";
-        public const string VirtualMachineDscConfiguration = "AzureVMDscConfiguration";
+        public const string VirtualMachineDscExtension = "AzureRMVMDscExtension";
+        public const string VirtualMachineDscConfiguration = "AzureRMVMDscConfiguration";
 
-        public const string Vhd = "AzureVhd";
+        public const string Vhd = "AzureRMVhd";
+
+        // Sql Server
+        public const string VirtualMachineSqlServerExtension = "AzureRMVMSqlServerExtension";
     }
 }

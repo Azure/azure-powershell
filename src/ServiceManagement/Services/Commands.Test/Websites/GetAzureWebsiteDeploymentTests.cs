@@ -76,7 +76,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 WebsitesClient = clientMock.Object,
                 CommandRuntime = new MockCommandRuntime(),
             };
-            currentProfile = new AzureProfile();
+            currentProfile = new AzureSMProfile();
             var subscription = new AzureSubscription{Id = new Guid(subscriptionId) };
             subscription.Properties[AzureSubscription.Property.Default] = "True";
             currentProfile.Subscriptions[new Guid(subscriptionId)] = subscription;
@@ -136,7 +136,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 Details = true,
                 CommandRuntime = new MockCommandRuntime(),
             };
-            currentProfile = new AzureProfile();
+            currentProfile = new AzureSMProfile();
             var subscription = new AzureSubscription{Id = new Guid(subscriptionId) };
             subscription.Properties[AzureSubscription.Property.Default] = "True";
             currentProfile.Subscriptions[new Guid(subscriptionId)] = subscription;
@@ -195,7 +195,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 CommandRuntime = new MockCommandRuntime(),
                 Slot = slot
             };
-            currentProfile = new AzureProfile();
+            currentProfile = new AzureSMProfile();
             var subscription = new AzureSubscription{Id = new Guid(subscriptionId) };
             subscription.Properties[AzureSubscription.Property.Default] = "True";
             currentProfile.Subscriptions[new Guid(subscriptionId)] = subscription;

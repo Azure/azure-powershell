@@ -12,31 +12,30 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Batch.Properties;
-using Microsoft.Azure.Management.Batch.Models;
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Management.Automation;
+using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Set, "AzureBatchAccount"), OutputType(typeof(BatchAccountContext))]
+    [Cmdlet(VerbsCommon.Set, "AzureRMBatchAccount"), OutputType(typeof(BatchAccountContext))]
     public class SetBatchAccountCommand : BatchCmdletBase
     {
-        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the Batch service account to update.")]
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, 
+            HelpMessage = "The name of the Batch service account to update.")]
         [Alias("Name")]
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
 
         [Alias("Tags")]
-        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, HelpMessage = "An array of hashtables which represents the tags to set on the account.")]
+        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, 
+            HelpMessage = "An array of hashtables which represents the tags to set on the account.")]
         public Hashtable[] Tag { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group of the account being updated.")]
+        [Parameter(ValueFromPipelineByPropertyName = true)]
         public string ResourceGroupName { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             BatchAccountContext context = BatchClient.UpdateAccount(this.ResourceGroupName, this.AccountName, this.Tag);
             WriteObject(context);

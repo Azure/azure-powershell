@@ -12,9 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Hyak.Common;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -25,10 +22,12 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
-using System.Security.Permissions;
 using System.ServiceModel.Channels;
 using System.Text;
 using System.Xml;
+using Hyak.Common;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
@@ -47,19 +46,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             store.Close();
 
             return certificates != null && certificates.Count > 0;
-        }
-
-        public static string GetNodeModulesPath()
-        {
-            return Path.Combine(
-                FileUtilities.GetAssemblyDirectory(), 
-                Microsoft.WindowsAzure.Commands.Common.Properties.Resources.NodeModulesPath);
-        }
-
-        [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust")]
-        public static void LaunchWebPage(string target)
-        {
-            ProcessHelper.Start(target);
         }
 
         public static X509Certificate2 GetCertificateFromStore(string thumbprint)
