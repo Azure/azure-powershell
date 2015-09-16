@@ -54,6 +54,10 @@
                 <Label>Subnets</Label>
                 <PropertyName>SubnetsText</PropertyName>
               </ListItem>
+			  <ListItem>
+				<Label>ResourceGuid</Label>
+				<PropertyName>ResourceGuidText</PropertyName>
+			  </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -162,6 +166,10 @@
                 <Label>DnsSettings</Label>
                 <PropertyName>DnsSettingsText</PropertyName>
               </ListItem>
+			  <ListItem>
+				<Label>ResourceGuid</Label>
+				<PropertyName>ResourceGuidText</PropertyName>
+			  </ListItem>			
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -228,6 +236,10 @@
                 <Label>Primary</Label>
                 <PropertyName>Primary</PropertyName>
               </ListItem>
+			  <ListItem>
+				<Label>ResourceGuid</Label>
+				<PropertyName>ResourceGuidText</PropertyName>
+			  </ListItem>				
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -340,6 +352,10 @@
                 <Label>Subnets</Label>
                 <PropertyName>SubnetsText</PropertyName>
               </ListItem>
+			  <ListItem>
+				<Label>ResourceGuid</Label>
+				<PropertyName>ResourceGuidText</PropertyName>
+			  </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -468,6 +484,10 @@
                 <Label>InboundNatRules</Label>
                 <PropertyName>InboundNatRulesText</PropertyName>
               </ListItem>
+			  <ListItem>
+				<Label>ResourceGuid</Label>
+				<PropertyName>ResourceGuidText</PropertyName>
+			  </ListItem>			
             </ListItems>
           </ListEntry>
         </ListEntries>

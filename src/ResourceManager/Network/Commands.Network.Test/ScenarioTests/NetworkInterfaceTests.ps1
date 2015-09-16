@@ -48,6 +48,7 @@ function Test-NetworkInterfaceCRUD
         Assert-AreEqual $expectedNic.ResourceGroupName $actualNic.ResourceGroupName	
         Assert-AreEqual $expectedNic.Name $actualNic.Name	
         Assert-AreEqual $expectedNic.Location $actualNic.Location
+		Assert-NotNull $expectedNic.ResourceGuid
         Assert-AreEqual "Succeeded" $expectedNic.ProvisioningState
         Assert-AreEqual $expectedNic.IpConfigurations[0].Name $actualNic.IpConfigurations[0].Name
         Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $actualNic.IpConfigurations[0].PublicIpAddress.Id

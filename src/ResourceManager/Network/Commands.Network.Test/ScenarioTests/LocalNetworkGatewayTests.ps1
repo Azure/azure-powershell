@@ -38,6 +38,7 @@ function Test-LocalNetworkGatewayCRUD
       Assert-AreEqual "192.168.3.4" $expected.GatewayIpAddress
       Assert-AreEqual "192.168.0.0/16" $expected.LocalNetworkAddressSpace.AddressPrefixes[0]
       $expected.Location = $location
+	  Assert-NotNull $expected.ResourceGuid
 
       # List LocalNetworkGateways
       $list = Get-AzureRMLocalNetworkGateway -ResourceGroupName $rgname

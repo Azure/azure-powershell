@@ -48,6 +48,7 @@ function Test-NetworkSecurityGroupCRUD
         Assert-AreEqual $rgName $getNsg.ResourceGroupName
         Assert-AreEqual $nsgName $getNsg.Name
         Assert-AreEqual $location $getNsg.Location
+		Assert-NotNull $getNsg.ResourceGuid
         Assert-NotNull $getNsg.Etag
         Assert-AreEqual 0 @($getNsg.SecurityRules).Count
         Assert-AreEqual 6 @($getNsg.DefaultSecurityRules).Count

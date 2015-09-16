@@ -49,7 +49,8 @@ function Test-VirtualNetworkGatewayCRUD
       $actual = New-AzureRMVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false
       $expected = Get-AzureRMVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
-      Assert-AreEqual $expected.Name $actual.Name	
+      Assert-AreEqual $expected.Name $actual.Name
+	  Assert-NotNull $expected.ResourceGuid	
       #Assert-AreEqual "Vpn" $expected.GatewayType
       #Assert-AreEqual "RouteBased" $expected.VpnType
       

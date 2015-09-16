@@ -29,5 +29,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get { return ResourcesExtensions.ConstructTagsTable(Tag); }
         }
+
+        public string ResourceGuid { get; set; }
     }
 }

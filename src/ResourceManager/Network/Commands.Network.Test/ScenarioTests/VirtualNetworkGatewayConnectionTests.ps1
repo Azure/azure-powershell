@@ -52,6 +52,7 @@ function Test-VirtualNetworkGatewayConnectionCRUD
       $vnetGateway = Get-AzureRMVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $vnetGateway.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $vnetGateway.Name $actual.Name	
+	  Assert-NotNull $vnetGateway.ResourceGuid
       #Assert-AreEqual "Vpn" $expected.GatewayType
       #Assert-AreEqual "RouteBased" $expected.VpnType
       
