@@ -20,7 +20,7 @@ using System.Security;
 namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureSqlServer cmdlet
+    /// Defines the Get-AzureRMSqlServer cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRMSqlServer", 
         SupportsShouldProcess = true,

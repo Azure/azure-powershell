@@ -985,7 +985,7 @@ function Test-LoadBalancer-NicAssociation
         # Verification of Load Balancer
         Assert-AreEqual $rgname $lb.ResourceGroupName
         Assert-AreEqual $lbName $lb.Name
-        Assert-AreEqual $location $lb.Location
+        Assert-NotNull $lb.Location
         Assert-AreEqual "Succeeded" $lb.ProvisioningState
         Assert-AreEqual 1 @($lb.FrontendIPConfigurations).Count
 
@@ -1079,7 +1079,7 @@ function Test-LoadBalancer-NicAssociationDuringCreate
         # Verification of Load Balancer
         Assert-AreEqual $rgname $lb.ResourceGroupName
         Assert-AreEqual $lbName $lb.Name
-        Assert-AreEqual $location $lb.Location
+        Assert-NotNull $lb.Location
         Assert-AreEqual "Succeeded" $lb.ProvisioningState
         Assert-AreEqual 1 @($lb.FrontendIPConfigurations).Count
 

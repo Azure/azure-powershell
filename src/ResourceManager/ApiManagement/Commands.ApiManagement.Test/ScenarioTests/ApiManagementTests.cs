@@ -12,6 +12,8 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+using System.Collections.Generic;
+
 namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 {
     using System;
@@ -146,6 +148,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
             //    "TEST_ORGID_AUTHENTICATION",
             //    "SubscriptionId=;Environment=");
 #endif
+            Dictionary<string, string> d = new Dictionary<string, string>();
+            d.Add("Microsoft.Authorization", "2014-07-01-preview");
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
 
             using (var context = UndoContext.Current)
             {
