@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.Sql.Properties;
 namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureSqlServerFirewallRule cmdlet
+    /// Defines the Get-AzureRMSqlServerFirewallRule cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRMSqlServerFirewallRule",
         SupportsShouldProcess = true,
