@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Profile
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRMContext")]
     [OutputType(typeof(AzureContext))]
-    public class GetAzureRMContext : AzureRMCmdlet
+    public class GetAzureRMContextCommand : AzureRMCmdlet
     {
         protected override void ProcessRecord()
         {

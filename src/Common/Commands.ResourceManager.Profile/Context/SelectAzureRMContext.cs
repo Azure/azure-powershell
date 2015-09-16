@@ -23,11 +23,29 @@ namespace Microsoft.Azure.Commands.Profile
     /// </summary>
     [Cmdlet(VerbsCommon.Select, "AzureRMContext")]
     [OutputType(typeof(AzureContext))]
-    public class SelectAzureRMContext : AzureRMCmdlet
+    public class SelectAzureRMContextCommand : AzureRMCmdlet
     {
+        private const string TenantParameterSet = "Tenant";
+        private const string SubscriptionParameterSet = "Subscription";
+        private const string TenantAndSubscriptionParameterSet = "TenantAndSubscription";
+
+        [Parameter(ParameterSetName = TenantParameterSet, Mandatory = true, HelpMessage = "Tenant name or ID")]
+        [Parameter(ParameterSetName = TenantAndSubscriptionParameterSet, Mandatory = true, HelpMessage = "Tenant name or ID")]
+        [ValidateNotNullOrEmpty]
+        public string Tenant { get; set; }
+
+        [Parameter(ParameterSetName = SubscriptionParameterSet, Mandatory = true, HelpMessage = "Subscription")]
+        [Parameter(ParameterSetName = TenantAndSubscriptionParameterSet, Mandatory = true, HelpMessage = "Subscription")]
+        [ValidateNotNullOrEmpty]
+        public string SubscriptionId { get; set; }
+
         protected override void ProcessRecord()
         {
-            throw new PSNotImplementedException();
+            var profileClient = new RMProfileClient(AzureRMCmdlet.DefaultProfile);
+
+            AzureRMCmdlet.DefaultProfile.Context = profileClient.UpdateCurrentContext(SubscriptionId, Tenant);
+
+            WriteObject(AzureRMCmdlet.DefaultProfile.Context);
         }
     }
 }

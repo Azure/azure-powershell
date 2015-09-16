@@ -179,6 +179,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LoginCmdletTests.cs" />
+    <Compile Include="ContextCmdletTests.cs" />
     <Compile Include="ProfileCmdletTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
