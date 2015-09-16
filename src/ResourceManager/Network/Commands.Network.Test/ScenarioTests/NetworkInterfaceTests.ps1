@@ -417,7 +417,7 @@ function Test-NetworkInterfaceIDns
         Assert-NotNull $expectedNic.IpConfigurations[0].PrivateIpAddress
         Assert-AreEqual "Dynamic" $expectedNic.IpConfigurations[0].PrivateIpAllocationMethod
         Assert-AreEqual "idnstest" $expectedNic.DnsSettings.InternalDnsNameLabel
-        Assert-Null $expectedNic.DnsSettings.InternalFqdn
+        Assert-NotNull $expectedNic.DnsSettings.InternalFqdn
 		
         # Delete NetworkInterface
         $delete = Remove-AzureRMNetworkInterface -ResourceGroupName $rgname -name $nicName -PassThru -Force
