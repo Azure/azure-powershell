@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.RedisCache
         {
             if (!string.IsNullOrEmpty(RedisVersion))
             {
-                WriteWarning("RedisVersion parameter is deprecated, so please stop using it.");
+                WriteWarning("The RedisVersion parameter has been deprecated.  As such, it is no longer necessary to provide this parameter and any value specified is ignored.");
             }
 
             string skuFamily;

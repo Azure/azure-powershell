@@ -298,7 +298,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
           <maml:name>RedisVersion</maml:name>
           <maml:description>
-            <maml:para>RedisVersion is deprecate and will be removed in future release.</maml:para>
+            <maml:para>RedisVersion is deprecated and will be removed in future release.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -375,7 +375,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
         <maml:name>RedisVersion</maml:name>
         <maml:description>
-          <maml:para>RedisVersion is deprecate and will be removed in future release.</maml:para>
+          <maml:para>RedisVersion is deprecated and will be removed in future release.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
