@@ -14,6 +14,25 @@
 
 <#
 .SYNOPSIS
+Tests retrieval of classic administrators
+#>
+function Test-RaClassicAdmins
+{
+	# Setup
+	Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
+	$subscription = Get-AzureSubscription -Current
+
+	# Test
+	[Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("8D7DD69E-9AE2-44A1-94D8-F7BC8E12645E")
+	$classic =  Get-AzureRoleAssignment -IncludeClassicAdministrators  | Where-Object { $_.Scope -ieq ('/subscriptions/' + $subscription.SubscriptionId) -and $_.RoleDefinitionName.ToLower().Contains('administrator')}	
+	
+	# Assert
+	Assert-NotNull $classic
+	Assert-True { $classic.Length -ge 1 }
+}
+
+<#
+.SYNOPSIS
 Tests verifies negative scenarios for RoleAssignments
 #>
 function Test-RaNegativeScenarios
@@ -61,7 +80,7 @@ function Test-RaByScope
     Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
     
     # Test
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("8D7DD69E-9AE2-44A1-94D8-F7BC8E12645E")
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("fa1a4d3b-2cca-406b-8956-6b6b32377641")
     $newAssignment = New-AzureRMRoleAssignment `
                         -ObjectId $users[0].Id.Guid `
                         -RoleDefinitionName $definitionName `
@@ -95,7 +114,7 @@ function Test-RaByResourceGroup
     Assert-AreEqual 1 $resourceGroups.Count "No resource group found. Unable to run the test."
 
     # Test
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("A4B82891-EBEE-4568-B606-632899BF9453")
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("7a750d57-9d92-4be1-ad66-f099cecffc01")
     $newAssignment = New-AzureRMRoleAssignment `
                         -ObjectId $users[0].Id.Guid `
                         -RoleDefinitionName $definitionName `
@@ -124,7 +143,9 @@ function Test-RaByResource
     $definitionName = 'Owner'
     $groups = Get-AzureRMADGroup | Select-Object -Last 1 -Wait
     Assert-AreEqual 1 $groups.Count "There should be at least one group to run the test."
-    $resource = Get-AzureRMResource -ResourceGroupName 'csmrg8120'
+	$resourceGroups = Get-AzureRMResourceGroup | Select-Object -Last 1 -Wait
+	Assert-AreEqual 1 $resourceGroups.Count "No resource group found. Unable to run the test."
+    $resource = Get-AzureRMResource -ResourceGroupName $resourceGroups[0].ResourceGroupName
     Assert-NotNull $resource "Cannot find any resource to continue test execution."
 
     # Test
@@ -132,7 +153,7 @@ function Test-RaByResource
     $newAssignment = New-AzureRMRoleAssignment `
                         -ObjectId $groups[0].Id.Guid `
                         -RoleDefinitionName $definitionName `
-                        -ResourceGroupName 'csmrg8120' `
+                        -ResourceGroupName $resourceGroups[0].ResourceGroupName `
                         -ResourceType $resource.ResourceType `
                         -ResourceName $resource.Name
     
@@ -164,7 +185,7 @@ function Test-RaByServicePrincipal
     Assert-AreEqual 1 $servicePrincipals.Count "No service principals found. Unable to run the test."
 
     # Test
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("FA1A4D3B-2CCA-406B-8956-6B6B32377641")
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("a4b82891-ebee-4568-b606-632899bf9453")
     $newAssignment = New-AzureRMRoleAssignment `
                         -ServicePrincipalName $servicePrincipals[0].DisplayName `
                         -RoleDefinitionName $definitionName `
@@ -199,7 +220,7 @@ function Test-RaByUpn
     Assert-AreEqual 1 $resourceGroups.Count "No resource group found. Unable to run the test."
 
     # Test
-    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("7A750D57-9D92-4BE1-AD66-F099CECFFC01")
+    [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("8d7dd69e-9ae2-44a1-94d8-f7bc8e12645e")
     $newAssignment = New-AzureRMRoleAssignment `
                         -UPN $users[0].Mail `
                         -RoleDefinitionName $definitionName `
