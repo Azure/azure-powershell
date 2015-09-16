@@ -34,36 +34,38 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         public RMProfileClient(AzureRMProfile profile)
         {
             _profile = profile;
+
+            if (_profile != null && _profile.Context != null &&
+                _profile.Context.TokenCache != null && _profile.Context.TokenCache.Length > 0)
+            {
+                TokenCache.DefaultShared.Deserialize(_profile.Context.TokenCache);
+            }
         }
 
         public AzureRMProfile Login(AzureAccount account, AzureEnvironment environment, string tenantId, string subscriptionId, SecureString password)
         {
             AzureSubscription newSubscription = null;
             AzureTenant newTenant = new AzureTenant();
-            
-            if (_profile != null && _profile.Context != null && 
-                _profile.Context.TokenCache != null && _profile.Context.TokenCache.Length > 0)
-            {
-                TokenCache.DefaultShared.Deserialize(_profile.Context.TokenCache);
-            }
+            ShowDialog promptBehavior = password == null ? ShowDialog.Always : ShowDialog.Never;
 
             // (tenant and subscription are present) OR
             // (tenant is present and subscription is not provided)
             if (!string.IsNullOrEmpty(tenantId))
             {
-                newTenant.Id = new Guid(tenantId);
-                ShowDialog promptBehavior = password == null ? ShowDialog.Always : ShowDialog.Never;
-                TryGetTenantSubscription(account, environment, tenantId, subscriptionId, password, promptBehavior, out newSubscription);
+                if (TryGetTenantSubscription(account, environment, tenantId, subscriptionId, password, promptBehavior, out newSubscription))
+                {
+                    newTenant.Id = new Guid(account.Properties[AzureAccount.Property.Tenants]);
+                }
             }
             // (tenant is not provided and subscription is present) OR
             // (tenant is not provided and subscription is not provided)
             else
             {
-                foreach(var tenant in ListAccountTenants(account, environment, password))
+                foreach(var tenant in ListAccountTenants(account, environment, password, promptBehavior))
                 {
                     if (TryGetTenantSubscription(account, environment, tenant, subscriptionId, password, ShowDialog.Auto, out newSubscription))
                     {
-                        newTenant.Id = new Guid(tenant);
+                        newTenant.Id = new Guid(account.Properties[AzureAccount.Property.Tenants]);
                         break;
                     }
                 }
@@ -78,6 +80,59 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             _profile.Context.TokenCache = TokenCache.DefaultShared.Serialize();
 
             return _profile;
+        }
+
+        public AzureContext UpdateCurrentContext(string subscriptionId, string tenantId)
+        {
+            AzureSubscription newSubscription = null;
+            AzureTenant newTenant = new AzureTenant();
+            AzureAccount account = _profile.Context.Account;
+            AzureEnvironment envrionment = _profile.Context.Environment;
+            ShowDialog promptBehavior = ShowDialog.Auto;
+
+            if (!string.IsNullOrWhiteSpace(tenantId) &&
+                !string.IsNullOrWhiteSpace(subscriptionId))
+            {                
+                if(TryGetTenantSubscription(account, envrionment, tenantId, subscriptionId, null, promptBehavior, out newSubscription))
+                {
+                    newTenant.Id = new Guid(account.Properties[AzureAccount.Property.Tenants]);
+                    _profile.Context = new AzureContext(newSubscription, account, envrionment, newTenant);
+                }
+            }
+            else if (!string.IsNullOrWhiteSpace(tenantId))
+            {
+                var accessToken = AzureSession.AuthenticationFactory.Authenticate(
+                   account,
+                   envrionment,
+                   tenantId,
+                   null,
+                   promptBehavior,
+                   TokenCache.DefaultShared);
+
+                account.Properties[AzureAccount.Property.Tenants] = accessToken.TenantId;
+                newTenant.Id = new Guid(accessToken.TenantId);
+                _profile.Context = new AzureContext(account, envrionment, newTenant);
+            }
+            else if(!string.IsNullOrWhiteSpace(subscriptionId))
+            {
+                foreach (var tenant in ListAccountTenants(account, envrionment, null, promptBehavior))
+                {
+                    if (TryGetTenantSubscription(account, envrionment, tenant, subscriptionId, null, promptBehavior, out newSubscription))
+                    {
+                        newTenant.Id = new Guid(account.Properties[AzureAccount.Property.Tenants]);
+                        _profile.Context = new AzureContext(newSubscription, account, envrionment, newTenant);
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                throw new PSNotSupportedException();
+            }
+
+            _profile.Context.TokenCache = TokenCache.DefaultShared.Serialize();
+
+            return _profile.Context;
         }
 
         private bool TryGetTenantSubscription(
@@ -148,10 +203,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
         }
 
-        private string[] ListAccountTenants(AzureAccount account, AzureEnvironment environment, SecureString password)
+        private string[] ListAccountTenants(AzureAccount account, AzureEnvironment environment, SecureString password, ShowDialog promptBehavior)
         {
-            ShowDialog promptBehavior = password == null ? ShowDialog.Always : ShowDialog.Never;
-
             var commonTenantToken = AzureSession.AuthenticationFactory.Authenticate(
                 account, 
                 environment,
