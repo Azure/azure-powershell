@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.Profile
     [OutputType(typeof(List<AzureTenant>))]
     public class GetAzureRMTenantCommand : AzureRMCmdlet
     {
+        [Parameter(Mandatory = false, Position = 0, ValueFromPipelineByPropertyName = true)]
         [Alias("Domain")]
         [ValidateNotNullOrEmpty]
         public string Tenant { get; set; }
