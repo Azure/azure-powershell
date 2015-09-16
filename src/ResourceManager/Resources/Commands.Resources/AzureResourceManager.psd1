@@ -63,8 +63,6 @@ TypesToProcess = @(
 FormatsToProcess = @(  
     '.\Resources\Microsoft.Azure.Commands.Resources.format.ps1xml',  
     '.\Tags\Microsoft.Azure.Commands.Tags.format.ps1xml',  
-    # TODO: the following should go away when Azure RM Profile Cmdlets are implemented
-    '..\..\ServiceManagement\Azure\Services\Microsoft.WindowsAzure.Commands.Profile.format.ps1xml', 
     '.\Resources\Microsoft.Azure.Commands.Profile.format.ps1xml',  
     '.\DataFactories\Microsoft.Azure.Commands.DataFactories.format.ps1xml',  
     '.\RedisCache\Microsoft.Azure.Commands.RedisCache.format.ps1xml',  
@@ -86,8 +84,6 @@ FormatsToProcess = @(
 NestedModules = @(  
     '.\Automation\Microsoft.Azure.Commands.ResourceManager.Automation.dll',  
     '.\Resources\Microsoft.Azure.Commands.Resources.dll',  
-    # TODO: the following should go away when Azure RM Profile Cmdlets are implemented
-    '..\..\ServiceManagement\Azure\Services\Microsoft.WindowsAzure.Commands.Profile.dll',    
     '.\Resources\Microsoft.Azure.Commands.Profile.dll',  
     '.\Tags\Microsoft.Azure.Commands.Tags.dll',  
     '.\Sql\Microsoft.Azure.Commands.Sql.dll',  
@@ -125,11 +121,11 @@ VariablesToExport = '*'
   
 # Aliases to export from this module  
 AliasesToExport = @(  
-    'Get-AzureSqlDatabaseServerAuditingPolicy',  
-    'Remove-AzureSqlDatabaseServerAuditing',  
-    'Set-AzureSqlDatabaseServerAuditingPolicy',  
-    'Use-AzureSqlDatabaseServerAuditingPolicy',  
-    'Get-AzureStorageContainerAcl',  
+    'Get-AzureRMSqlDatabaseServerAuditingPolicy',  
+    'Remove-AzureRMSqlDatabaseServerAuditing',  
+    'Set-AzureRMSqlDatabaseServerAuditingPolicy',  
+    'Use-AzureRMSqlDatabaseServerAuditingPolicy',  
+    'Get-AzureRMStorageContainerAcl',  
     'Start-CopyAzureStorageBlob',  
     'Stop-CopyAzureStorageBlob'  
 )  

@@ -63,7 +63,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected static TokenCache DefaultMemoryTokenCache { get; set; }
 
-        protected override AzureContext DefaultContext { get { return CurrentProfile.DefaultContext; } }
+        protected override AzureContext DefaultContext { get { return CurrentProfile.Context; } }
 
         static AzureSMCmdlet()
         {

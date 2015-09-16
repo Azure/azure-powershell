@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specifies the Azure region in which to create the key vault. Use the command Get-AzureLocation to see your choices. For more information, type Get-Help Get-AzureLocation.")]
+            HelpMessage = "Specifies the Azure region in which to create the key vault. Use the command Get-AzureRMLocation to see your choices. For more information, type Get-Help Get-AzureRMLocation.")]
         [ValidateNotNullOrEmpty()]
         public string Location { get; set; }
 

@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.UsageAggregates
         {
             if (_theClient == null)
             {
-                _theClient = AzureSession.ClientFactory.CreateClient<UsageAggregationManagementClient>(DefaultProfile.DefaultContext,
+                _theClient = AzureSession.ClientFactory.CreateClient<UsageAggregationManagementClient>(DefaultProfile.Context,
                     AzureEnvironment.Endpoint.ResourceManager);
             }
 

@@ -31,16 +31,16 @@ namespace Microsoft.Azure.Common.Authentication.Models
         private void RegisterResourceManagerProviders<T>(IAzureProfile profile) 
         {
             var providersToRegister = RequiredResourceLookup.RequiredProvidersForResourceManager<T>();
-            var registeredProviders = profile.DefaultContext.Subscription.GetPropertyAsArray(AzureSubscription.Property.RegisteredResourceProviders);
+            var registeredProviders = profile.Context.Subscription.GetPropertyAsArray(AzureSubscription.Property.RegisteredResourceProviders);
             var unregisteredProviders = providersToRegister.Where(p => !registeredProviders.Contains(p)).ToList();
             var successfullyRegisteredProvider = new List<string>();
-            SubscriptionCloudCredentials creds = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(profile.DefaultContext);
+            SubscriptionCloudCredentials creds = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(profile.Context);
 
             if (unregisteredProviders.Count > 0)
             {
                 using (var client = ClientFactory.CreateCustomClient<ResourceManagementClient>(
                                                         creds, 
-                                                        profile.DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager)))
+                                                        profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager)))
                 {
                     foreach (string provider in unregisteredProviders)
                     {
@@ -64,9 +64,9 @@ namespace Microsoft.Azure.Common.Authentication.Models
         /// <typeparam name="T">The client type</typeparam>
         private void RegisterServiceManagementProviders<T>(AzureSMProfile profile) 
         {
-            var credentials = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(profile.DefaultContext);
+            var credentials = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(profile.Context);
             var providersToRegister = RequiredResourceLookup.RequiredProvidersForServiceManagement<T>();
-            var registeredProviders = profile.DefaultContext.Subscription.GetPropertyAsArray(AzureSubscription.Property.RegisteredResourceProviders);
+            var registeredProviders = profile.Context.Subscription.GetPropertyAsArray(AzureSubscription.Property.RegisteredResourceProviders);
             var unregisteredProviders = providersToRegister.Where(p => !registeredProviders.Contains(p)).ToList();
             var successfullyRegisteredProvider = new List<string>();
 
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Common.Authentication.Models
             {
                 using (var client = new ManagementClient(
                                             credentials, 
-                                            profile.DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement)))
+                                            profile.Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ServiceManagement)))
                 {
                     foreach (var provider in unregisteredProviders)
                     {
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Common.Authentication.Models
                 }
 
                 Debug.Assert(profile is AzureSMProfile);
-                UpdateSubscriptionRegisteredProviders((AzureSMProfile)profile, profile.DefaultContext.Subscription, successfullyRegisteredProvider);
+                UpdateSubscriptionRegisteredProviders((AzureSMProfile)profile, profile.Context.Subscription, successfullyRegisteredProvider);
             }
         }
 

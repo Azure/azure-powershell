@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The data factory object provided is invalid. Use Get-AzureDataFactory to retrieve a specific data factory object, or use New-AzureDataFactory to create a new data factory object..
+        ///   Looks up a localized string similar to The data factory object provided is invalid. Use Get-AzureRMDataFactory to retrieve a specific data factory object, or use New-AzureRMDataFactory to create a new data factory object..
         /// </summary>
         internal static string DataFactoryArgumentInvalid {
             get {
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EndDateTime is not specified and is set to 48 hours from StartDateTime (by default). Please use -EndDateTime parameter in Get-AzureDataFactorySlice command if you want to specify EndDateTime..
+        ///   Looks up a localized string similar to EndDateTime is not specified and is set to 48 hours from StartDateTime (by default). Please use -EndDateTime parameter in Get-AzureRMDataFactorySlice command if you want to specify EndDateTime..
         /// </summary>
         internal static string EndDateTimeNotSpecifiedForGetSlice {
             get {
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to EndDateTime is not specified and is set to 48 hours from StartDateTime (by default). Please use -EndDateTime parameter in Set-AzureDataFactorySliceStatus command if you want to specify EndDateTime..
+        ///   Looks up a localized string similar to EndDateTime is not specified and is set to 48 hours from StartDateTime (by default). Please use -EndDateTime parameter in Set-AzureRMDataFactorySliceStatus command if you want to specify EndDateTime..
         /// </summary>
         internal static string EndDateTimeNotSpecifiedForSetSliceStatus {
             get {
