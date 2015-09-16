@@ -143,6 +143,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Tenant\GetAzureRMTenant.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Microsoft.Azure.Commands.Profile.format.ps1xml">
