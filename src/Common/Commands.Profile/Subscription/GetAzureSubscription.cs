@@ -66,9 +66,9 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             {
                 case "ByName":
                     IEnumerable<AzureSubscription> subscriptions = new AzureSubscription[0];
-                    if (Profile.DefaultContext != null && Profile.DefaultContext.Environment != null)
+                    if (Profile.Context != null && Profile.Context.Environment != null)
                     {
-                        subscriptions = ProfileClient.RefreshSubscriptions(Profile.DefaultContext.Environment)
+                        subscriptions = ProfileClient.RefreshSubscriptions(Profile.Context.Environment)
                             .Where(
                                 s =>
                                     SubscriptionName == null ||
@@ -113,7 +113,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             // since current is strictly in-memory and we want the real
             // current subscription.
             //
-            if (Profile.DefaultContext.Subscription == null)
+            if (Profile.Context.Subscription == null)
             {
                 WriteError(new ErrorRecord(
                     new InvalidOperationException(Resources.InvalidSelectedSubscription),
@@ -122,7 +122,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
             }
             else
             {
-                WriteSubscriptions(Profile.DefaultContext.Subscription);
+                WriteSubscriptions(Profile.Context.Subscription);
             }
         }
 

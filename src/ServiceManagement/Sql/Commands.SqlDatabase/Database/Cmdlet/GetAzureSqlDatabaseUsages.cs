@@ -54,7 +54,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            var context = ServerDataServiceCertAuth.Create(this.ServerName, Profile, Profile.DefaultContext.Subscription);
+            var context = ServerDataServiceCertAuth.Create(this.ServerName, Profile, Profile.Context.Subscription);
             ProcessWithContext(context);
         }
 

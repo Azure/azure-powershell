@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Commands.Compute
                 if (string.Equals(this.ParameterSetName, SetCustomScriptExtensionByContainerBlobsParamSetName))
                 {
                     this.StorageEndpointSuffix = string.IsNullOrEmpty(this.StorageEndpointSuffix) ?
-                        DefaultProfile.DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix) : this.StorageEndpointSuffix;
+                        DefaultProfile.Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix) : this.StorageEndpointSuffix;
                     var sName = string.IsNullOrEmpty(this.StorageAccountName) ? GetStorageName() : this.StorageAccountName;
                     var sKey = string.IsNullOrEmpty(this.StorageAccountKey) ? GetStorageKey(sName) : this.StorageAccountKey;
 
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         protected string GetStorageName()
         {
-            return DefaultProfile.DefaultContext.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
+            return DefaultProfile.Context.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
         }
 
         protected string GetStorageKey(string storageName)
