@@ -65,6 +65,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             }
 
             this.LastModifiedTime = webhook.Properties.LastModifiedTime.ToLocalTime();
+            this.Parameters = new Hashtable(StringComparer.InvariantCultureIgnoreCase);
             foreach (var kvp in webhook.Properties.Parameters)
             {
                 this.Parameters.Add(kvp.Key, (object)PowerShellJsonConverter.Deserialize(kvp.Value));
