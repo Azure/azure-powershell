@@ -183,6 +183,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AzureRMProfileTests.cs" />
+    <Compile Include="EnvironmentCmdletTests.cs" />
     <Compile Include="MockSubscriptionClientFactory.cs" />
     <Compile Include="ProfileController.cs" />
     <Compile Include="SubscriptionCmdletTests.cs" />
