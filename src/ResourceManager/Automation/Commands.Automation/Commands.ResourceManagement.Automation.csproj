@@ -127,6 +127,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cmdlet\AzureAutomationBaseCmdlet.cs" />
+    <Compile Include="Cmdlet\ImportAzureAutomationDscNodeConfiguration.cs" />
     <Compile Include="Cmdlet\ExportAzureAutomationDscConfiguration.cs" />
     <Compile Include="Cmdlet\ExportAzureAutomationDscNodeReportContent.cs" />
     <Compile Include="Cmdlet\GetAzureAutomationCertificate.cs" />
@@ -159,6 +160,7 @@
     <Compile Include="Cmdlet\RegisterAzureAutomationDscNode.cs" />
     <Compile Include="Cmdlet\RegisterAzureAutomationScheduledRunbook.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationCertificate.cs" />
+    <Compile Include="Cmdlet\RemoveAzureAutomationConnectionType.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationConnection.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationCredential.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationModule.cs" />

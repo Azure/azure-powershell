@@ -59,6 +59,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
         IEnumerable<NodeConfiguration> ListNodeConfigurationsByConfigurationName(string resourceGroupName, string automationAccountName, string configurationName, string rollupStatus);
 
         IEnumerable<NodeConfiguration> ListNodeConfigurations(string resourceGroupName, string automationAccountName, string rollupStatus);
+
+        NodeConfiguration CreateNodeConfiguration(string resourceGroupName, string automationAccountName, string sourcePath, string nodeConfiguraionName, bool overWrite);
         #endregion
 
         #region Configurations
@@ -187,7 +189,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         Runbook CreateRunbookByName(string resourceGroupName, string automationAccountName, string runbookName, string description, IDictionary tags, string type, bool? logProgress, bool? logVerbose, bool overwrite);
 
-        Runbook ImportRunbook(string resourceGroupName, string automationAccountName, string runbookPath, string description, IDictionary tags, string type, bool? logProgress, bool? logVerbose, bool published, bool overwrite);
+        Runbook ImportRunbook(string resourceGroupName, string automationAccountName, string runbookPath, string description, IDictionary tags, string type, bool? logProgress, bool? logVerbose, bool published, bool overwrite, string runbookName);
 
         void DeleteRunbook(string resourceGroupName, string automationAccountName, string runbookName);
 
@@ -282,6 +284,12 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         void UnregisterScheduledRunbook(string resourceGroupName, string automationAccountName, string runbookName, string scheduleName);
 
+
+        #endregion
+
+        #region ConnectionType
+
+        void DeleteConnectionType(string resourceGroupName, string automationAccountName, string name);
 
         #endregion
     }
