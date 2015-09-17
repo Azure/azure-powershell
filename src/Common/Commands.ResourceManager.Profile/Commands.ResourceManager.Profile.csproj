@@ -134,7 +134,7 @@
   <ItemGroup>
     <Compile Include="Account\LoginAzureRMAccount.cs" />
     <Compile Include="Context\GetAzureRMContext.cs" />
-    <Compile Include="Context\SelectAzureRMContext.cs" />
+    <Compile Include="Context\SetAzureRMContext.cs" />
     <Compile Include="Profile\SaveAzureRMProfile.cs" />
     <Compile Include="Profile\SelectAzureRMProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
