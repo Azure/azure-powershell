@@ -28,12 +28,12 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
-    public class LoginCmdletTests
+    public class TenantCmdletTests
     {
         private MemoryDataStore dataStore;
         private MockCommandRuntime commandRuntimeMock;
 
-        public LoginCmdletTests()
+        public TenantCmdletTests()
         {
             dataStore = new MemoryDataStore();
             AzureSession.DataStore = dataStore;
@@ -43,82 +43,70 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
-        public void LoginWithSubscriptionAndTenant()
+        public void GetTenantWithTenantParameter()
         {
-            var cmdlt = new LoginAzureRMAccountCommand();
+            var cmdlt = new GetAzureRMTenantCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.SubscriptionId = "2c224e7e-3ef5-431d-a57b-e71f4662e3a6";
             cmdlt.Tenant = "72f988bf-86f1-41af-91ab-2d7cd011db47";
 
             // Act
+            Login("2c224e7e-3ef5-431d-a57b-e71f4662e3a6", null);
             cmdlt.InvokeBeginProcessing();
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
-
-            Assert.NotNull(AzureRMCmdlet.DefaultProfile.Context);
-            Assert.Equal("microsoft.com", AzureRMCmdlet.DefaultProfile.Context.Tenant.Domain);
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
-        public void LoginWithInvalidSubscriptionAndTenantThrowsCloudException()
-        {
-            var cmdlt = new LoginAzureRMAccountCommand();
-            // Setup
-            cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.SubscriptionId = "2c224e7e-3ef5-431d-a57b-e71f4662e3a5";
-            cmdlt.Tenant = "72f988bf-86f1-41af-91ab-2d7cd011db47";
-
-            // Act
-            cmdlt.InvokeBeginProcessing();
-            Assert.Throws<PSInvalidOperationException>(() => cmdlt.ExecuteCmdlet());
-            cmdlt.InvokeEndProcessing();
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
-        public void LoginWithSubscriptionAndNoTenant()
-        {
-            var cmdlt = new LoginAzureRMAccountCommand();
-            // Setup
-            cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.SubscriptionId = "2c224e7e-3ef5-431d-a57b-e71f4662e3a6";
-
-            // Act
-            cmdlt.InvokeBeginProcessing();
-            cmdlt.ExecuteCmdlet();
-            cmdlt.InvokeEndProcessing();
-
-            Assert.NotNull(AzureRMCmdlet.DefaultProfile.Context);
-            Assert.Equal("microsoft.com", AzureRMCmdlet.DefaultProfile.Context.Tenant.Domain);
+            
+            Assert.True(commandRuntimeMock.OutputPipeline.Count == 2);
+            Assert.Equal("72f988bf-86f1-41af-91ab-2d7cd011db47", ((AzureTenant)commandRuntimeMock.OutputPipeline[1]).Id.ToString());
+            Assert.Equal("microsoft.com", ((AzureTenant)commandRuntimeMock.OutputPipeline[1]).Domain);
         }
         
         [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
-        public void LoginWithNoSubscriptionAndNoTenant()
+        public void GetTenantWithDomainParameter()
         {
-            var cmdlt = new LoginAzureRMAccountCommand();
+            var cmdlt = new GetAzureRMTenantCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.Tenant = "microsoft.com";
 
             // Act
+            Login("2c224e7e-3ef5-431d-a57b-e71f4662e3a6", null);
             cmdlt.InvokeBeginProcessing();
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.NotNull(AzureRMCmdlet.DefaultProfile.Context);
-            Assert.Equal("microsoft.com", AzureRMCmdlet.DefaultProfile.Context.Tenant.Domain);
+            Assert.True(commandRuntimeMock.OutputPipeline.Count == 2);
+            Assert.Equal("72f988bf-86f1-41af-91ab-2d7cd011db47", ((AzureTenant)commandRuntimeMock.OutputPipeline[1]).Id.ToString());
+            Assert.Equal("microsoft.com", ((AzureTenant)commandRuntimeMock.OutputPipeline[1]).Domain);
         }
-
+        
         [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
-        public void LoginWithNoSubscriptionAndTenant()
+        public void GetTenantWithoutParameters()
+        {
+            var cmdlt = new GetAzureRMTenantCommand();
+            // Setup
+            cmdlt.CommandRuntime = commandRuntimeMock;
+
+            // Act
+            Login("2c224e7e-3ef5-431d-a57b-e71f4662e3a6", null);
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
+
+            Assert.True(commandRuntimeMock.OutputPipeline.Count == 2);
+            Assert.Equal("72f988bf-86f1-41af-91ab-2d7cd011db47", ((AzureTenant)commandRuntimeMock.OutputPipeline[1]).Id.ToString());
+            Assert.Equal("microsoft.com", ((AzureTenant)commandRuntimeMock.OutputPipeline[1]).Domain);
+        }
+
+        private void Login(string subscriptionId, string tenantId)
         {
             var cmdlt = new LoginAzureRMAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.Tenant = "72f988bf-86f1-41af-91ab-2d7cd011db47";
+            cmdlt.SubscriptionId = subscriptionId;
+            cmdlt.Tenant = tenantId;
 
             // Act
             cmdlt.InvokeBeginProcessing();
@@ -126,7 +114,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.InvokeEndProcessing();
 
             Assert.NotNull(AzureRMCmdlet.DefaultProfile.Context);
-            Assert.Equal("microsoft.com", AzureRMCmdlet.DefaultProfile.Context.Tenant.Domain);
         }
     }
 }
