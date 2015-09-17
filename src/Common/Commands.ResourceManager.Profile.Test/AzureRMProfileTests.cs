@@ -12,27 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using System.Linq;
 using Xunit;
 using System;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Hyak.Common;
-using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
-using Moq;
-using Microsoft.Rest;
 using System.Collections.Generic;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.Azure.Subscriptions;
-using Microsoft.Azure.Subscriptions.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
