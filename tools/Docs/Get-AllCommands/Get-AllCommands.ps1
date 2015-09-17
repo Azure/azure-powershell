@@ -514,8 +514,8 @@ function Get-ScriptDirectory
     Split-Path $Invocation.MyCommand.Path
 }
 
-$asmPath = Join-Path (Get-ScriptDirectory) "..\..\..\src\Package\Release\ServiceManagement\Azure\Azure.psd1"
-$armPath = Join-Path (Get-ScriptDirectory) "..\..\..\src\Package\Release\ResourceManager\AzureResourceManager\AzureResourceManager.psd1"
+$asmPath = Join-Path (Get-ScriptDirectory) "..\..\..\src\Package\Debug\ServiceManagement\Azure\Azure.psd1"
+$armPath = Join-Path (Get-ScriptDirectory) "..\..\..\src\Package\Debug\ResourceManager\AzureResourceManager\AzureResourceManager.psd1"
 
 
 Get-AllBuildServerCommands -OutputPath ".\Output\asm" -ManifestFullName $asmPath
