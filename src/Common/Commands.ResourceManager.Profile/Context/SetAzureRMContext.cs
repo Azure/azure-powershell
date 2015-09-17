@@ -21,9 +21,9 @@ namespace Microsoft.Azure.Commands.Profile
     /// <summary>
     /// Cmdlet to change current Azure context. 
     /// </summary>
-    [Cmdlet(VerbsCommon.Select, "AzureRMContext")]
+    [Cmdlet(VerbsCommon.Set, "AzureRMContext")]
     [OutputType(typeof(AzureContext))]
-    public class SelectAzureRMContextCommand : AzureRMCmdlet
+    public class SetAzureRMContextCommand : AzureRMCmdlet
     {
         private const string TenantParameterSet = "Tenant";
         private const string SubscriptionParameterSet = "Subscription";
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Profile
         {
             var profileClient = new RMProfileClient(AzureRMCmdlet.DefaultProfile);
 
-            AzureRMCmdlet.DefaultProfile.Context = profileClient.UpdateCurrentContext(SubscriptionId, Tenant);
+            AzureRMCmdlet.DefaultProfile.Context = profileClient.SetCurrentContext(SubscriptionId, Tenant);
 
             WriteObject(AzureRMCmdlet.DefaultProfile.Context);
         }
