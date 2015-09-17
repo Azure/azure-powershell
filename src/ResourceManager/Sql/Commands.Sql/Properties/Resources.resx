@@ -255,4 +255,7 @@
   <data name="UseServerWithoutStorageAccount" xml:space="preserve">
     <value>Cannot use a server's auditing policy before it is configured.</value>
   </data>
+  <data name="SetSecondaryNoOptionProvided" xml:space="preserve">
+    <value>No Set Options were provided</value>
+  </data>
 </root>
