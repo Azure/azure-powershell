@@ -59,7 +59,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.1.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.TrafficManager, Version=0.9.1.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Azure.Management.TrafficManager">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\TrafficManager\Microsoft.Azure.Management.TrafficManager.dll</HintPath>
     </Reference>
