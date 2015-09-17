@@ -142,8 +142,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         public bool TryGetSubscription(string tenantId, string subscriptionId, out AzureSubscription subscription)
         {
+            if (string.IsNullOrWhiteSpace(tenantId))
+            {
+                throw new ArgumentNullException("Please provide a valid tenant Id");
+            }
+
+            AzureTenant tenant;
             return TryGetTenantSubscription(_profile.Context.Account, _profile.Context.Environment,
-                tenantId, subscriptionId, null, ShowDialog.Never, out subscription);
+                tenantId, subscriptionId, null, ShowDialog.Never, out subscription, out tenant);
         }
 
         private bool TryGetTenantSubscription(
@@ -244,9 +250,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         /// List all tenants for the account in the profile context
         /// </summary>
         /// <returns>The list of tenants for the default account.</returns>
-        public string[] ListTenants()
+        public IEnumerable<AzureTenant> ListTenants()
         {
-            return ListAccountTenants(_profile.Context.Account, _profile.Context.Environment, null);
+            return ListAccountTenants(_profile.Context.Account, _profile.Context.Environment, null, ShowDialog.Never);
         }
 
         private IEnumerable<AzureSubscription> ListSubscriptionsForTenant(AzureAccount account, AzureEnvironment environment, 
@@ -269,7 +275,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                         subscriptions.Subscriptions.Select(
                             (s) =>
                                 s.ToAzureSubscription(new AzureContext(_profile.Context.Subscription, account,
-                                    environment, new AzureTenant {Id = new Guid(tenantId)})));
+                                    environment, CreateTenantFromString(tenantId))));
                 }
 
                 return null;
@@ -289,7 +295,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 try
                 {
-                    subscriptions.AddRange(ListSubscriptions(tenant));
+                    subscriptions.AddRange(ListSubscriptions(tenant.Id.ToString()));
                 }
                 catch (AadAuthenticationException)
                 {
@@ -309,6 +315,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 WarningLog(message);
             }
+        }
+
+        private static AzureTenant CreateTenantFromString(string tenantOrDomain)
+        {
+            AzureTenant result = new AzureTenant();
+            Guid id;
+            if (Guid.TryParse(tenantOrDomain, out id))
+            {
+                result.Id = id;
+            }
+            else
+            {
+                result.Domain = tenantOrDomain;
+            }
+
+            return result;
         }
     }
 }

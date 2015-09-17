@@ -17,8 +17,6 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Common.Authentication.Models;
 using System;
 using System.Management.Automation;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -51,11 +49,6 @@ namespace Microsoft.Azure.Commands.Profile
             if (AzureRMCmdlet.DefaultProfile == null)
             {
                 throw new ArgumentException(Resources.AzureProfileMustNotBeNull);
-            }
-
-            if (DefaultProfile.TokenCache != null && DefaultProfile.TokenCache.Length > 0)
-            {
-                TokenCache.DefaultShared.Deserialize(DefaultProfile.TokenCache);
             }
 
             WriteObject(AzureRMCmdlet.DefaultProfile);

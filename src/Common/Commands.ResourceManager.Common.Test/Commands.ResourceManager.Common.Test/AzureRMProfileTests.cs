@@ -33,89 +33,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Subscriptions.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 {
-
-    public class MockSubscriptionClientFactory 
-    {
-        private IDictionary<string, List<string>> _map;
-        private string _currentTenant;
-        public MockSubscriptionClientFactory(IDictionary<string, List<string>> tenantSubscriptionMap)
-        {
-            _map = tenantSubscriptionMap;
-        }
-
-        public SubscriptionClient GetSubscriptionClient(string tenant)
-        {
-            var tenantMock = new Mock<ITenantOperations>();
-            tenantMock.Setup(t => t.ListAsync(It.IsAny<CancellationToken>()))
-                .Returns(
-                    (CancellationToken token) =>
-                        Task.FromResult(new TenantListResult()
-                        {
-                            StatusCode = HttpStatusCode.OK,
-                            RequestId = Guid.NewGuid().ToString(),
-                            TenantIds = _map.Keys.Select((k) => new TenantIdDescription() { Id = k, TenantId = k }).ToList()
-                        }));
-            var subscriptionMock = new Mock<ISubscriptionOperations>();
-            subscriptionMock.Setup(
-                s => s.GetAsync(It.IsAny<string>(), It.IsAny<CancellationToken>())).Returns(
-                    (string subId, CancellationToken token) =>
-                    {
-                        GetSubscriptionResult result = null;
-                        if (_map.ContainsKey(_currentTenant) && _map[_currentTenant].Contains(subId))
-                        {
-                            result = new GetSubscriptionResult
-                            {
-                                RequestId = Guid.NewGuid().ToString(),
-                                StatusCode = HttpStatusCode.OK,
-                                Subscription =
-                                    new Subscription
-                                    {
-                                        DisplayName = "Returned SUbscription",
-                                        Id = subId,
-                                        State = "Active",
-                                        SubscriptionId = subId
-                                    }
-                            };
-                        }
-
-                        return Task.FromResult(result);
-                    });
-            subscriptionMock.Setup(
-                (s) => s.ListAsync(It.IsAny<CancellationToken>())).Returns(
-                    (CancellationToken token) =>
-                    {
-                        SubscriptionListResult result = null;
-                        if (_map.ContainsKey(_currentTenant))
-                        {
-                            result = new SubscriptionListResult
-                            {
-                                StatusCode = HttpStatusCode.OK,
-                                RequestId = Guid.NewGuid().ToString(),
-                                Subscriptions =
-                                    new List<Subscription>(
-                                        _map[_currentTenant].Select(
-                                            sub =>
-                                                new Subscription
-                                                {
-                                                    DisplayName = "Contoso Subscription",
-                                                    Id = sub,
-                                                    State = "Active",
-                                                    SubscriptionId = sub
-                                                }))
-                            };
-                        }
-
-                        return Task.FromResult(result);
-                    });
-            var client = new Mock<SubscriptionClient>();
-            client.SetupGet(c => c.Subscriptions).Returns(subscriptionMock.Object);
-            client.SetupGet(c => c.Tenants).Returns(tenantMock.Object);
-            return client.Object;
-        }
-    }
 
     public class AzureRMProfileTests
     {
@@ -124,40 +45,105 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         private static string DefaultSubscriptionName = "Contoso Subscription";
         private static string DefaultDomain = "contoso.com";
         private static Guid DefaultTenant = Guid.NewGuid();
-        [Fact]
-        public void TestListSubscriptionWithoutTenantsThrows()
+
+        private static RMProfileClient SetupTestEnvironment(List<string> tenants, params List<string>[] subscriptionLists)
         {
             AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory(DefaultAccount,
-                Guid.NewGuid().ToString());
-            var clientFactory = new MockSubscriptionClientFactory(new Dictionary<string, List<string>>());
-            AzureSession.ClientFactory = new MockClientFactory( new List<object>
+                Guid.NewGuid().ToString(), DefaultTenant.ToString());
+            var subscriptionList = new Queue<List<string>>(subscriptionLists);
+            var clientFactory = new MockSubscriptionClientFactory(tenants, subscriptionList);
+            var mock = new MockClientFactory(new List<object>
             {
-                clientFactory.GetSubscriptionClient(DefaultTenant.ToString())
+                clientFactory.GetSubscriptionClient()
             }, true);
-            var context = new AzureContext(new AzureSubscription() {Account=DefaultAccount,
-                Environment =EnvironmentName.AzureCloud, Id = DefaultSubscription, Name=DefaultSubscriptionName },
-                new AzureAccount() {Id = DefaultAccount, Type = AzureAccount.AccountType.User}, 
-                AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud], 
-                new AzureTenant() {Domain = DefaultDomain, Id = DefaultTenant});
+            mock.MoqClients = true;
+            AzureSession.ClientFactory = mock;
+            var context = new AzureContext(new AzureSubscription()
+            {
+                Account = DefaultAccount,
+                Environment = EnvironmentName.AzureCloud,
+                Id = DefaultSubscription,
+                Name = DefaultSubscriptionName
+            },
+                new AzureAccount() { Id = DefaultAccount, Type = AzureAccount.AccountType.User },
+                AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud],
+                new AzureTenant() { Domain = DefaultDomain, Id = DefaultTenant });
             var profile = new AzureRMProfile();
-            profile.DefaultContext = context;
-            RMProfileClient client = new RMProfileClient( profile);
-
+            profile.Context = context;
+            return new RMProfileClient(profile);
         }
 
         [Fact]
-        public void TestListSubscriptionWithoutSubscriptionsThrows()
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void MultipleTenantsAndSubscriptionsSucceed()
         {
+            var tenants = new List<string> {Guid.NewGuid().ToString(), DefaultTenant.ToString()};
+            var firstList = new List<string> { DefaultSubscription.ToString(), Guid.NewGuid().ToString() };
+            var secondList = new List<string> { Guid.NewGuid().ToString()};
+            var client = SetupTestEnvironment(tenants, firstList, secondList);
+            var subResults = new List<AzureSubscription>(client.ListSubscriptions());
+            Assert.Equal(3, subResults.Count);
+            var tenantResults = client.ListTenants();
+            Assert.Equal(2, tenantResults.Count());
+            tenantResults = client.ListTenants(DefaultTenant.ToString());
+            Assert.Equal(1, tenantResults.Count());
+            AzureSubscription subValue;
+            Assert.True(client.TryGetSubscription(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
+            Assert.Equal(DefaultSubscription.ToString(), subValue.Id.ToString());
         }
 
         [Fact]
-        public void TestListSubscriptionWithSingleTenantSingleSubscription()
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SingleTenantAndSubscriptionSucceeds()
         {
+            var tenants = new List<string> {DefaultTenant.ToString()};
+            var subscriptions = new List<string> {DefaultSubscription.ToString()};
+            var client = SetupTestEnvironment(tenants, subscriptions);
+            var subResults = new List<AzureSubscription>(client.ListSubscriptions());
+            Assert.Equal(1, subResults.Count);
+            var tenantResults = client.ListTenants();
+            Assert.Equal(1, tenantResults.Count());
+            tenantResults = client.ListTenants(DefaultTenant.ToString());
+            Assert.Equal(1, tenantResults.Count());
+            AzureSubscription subValue;
+            Assert.True(client.TryGetSubscription(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
+            Assert.Equal(DefaultSubscription.ToString(), subValue.Id.ToString());
         }
 
         [Fact]
-        public void TestListSubscriptionWithMultipleTenantsAndSubscriptions()
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SubscriptionNotFoundDoesNotThrow()
         {
+            var tenants = new List<string> { DefaultTenant.ToString() };
+            var subscriptions = new List<string> { Guid.NewGuid().ToString() };
+            var client = SetupTestEnvironment(tenants, subscriptions);
+            var subResults = new List<AzureSubscription>(client.ListSubscriptions());
+            Assert.Equal(1, subResults.Count);
+            AzureSubscription subValue;
+            Assert.False(client.TryGetSubscription(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NoTenantsDoesNotThrow()
+        {
+            var tenants = new List<string> {  };
+            var subscriptions = new List<string> { Guid.NewGuid().ToString() };
+            var client = SetupTestEnvironment(tenants, subscriptions);
+            Assert.Equal(0, client.ListSubscriptions().Count());
+            Assert.Equal(0, client.ListTenants().Count());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NoSubscriptionsInListThrows()
+        {
+            var tenants = new List<string> { DefaultTenant.ToString() };
+            var subscriptions = new List<string> () ;
+            var client = SetupTestEnvironment(tenants, subscriptions);
+            Assert.Equal(0, client.ListSubscriptions().Count());
+            AzureSubscription subValue;
+            Assert.False(client.TryGetSubscription(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
         }
     }
 }

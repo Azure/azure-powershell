@@ -11,17 +11,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using System.Management.Automation;
-using System.Net;
+using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
-using Hyak.Common;
-using Microsoft.Azure.Common.Authentication.Factories;
-using Microsoft.Azure.Subscriptions;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -56,49 +50,71 @@ namespace Microsoft.Azure.Commands.Profile
             { 
                 try
                 {
-                    WriteObject(_client.ListSubscriptions());
+                    WriteObject(_client.ListSubscriptions(), enumerateCollection: true);
                 }
-                catch (AadAuthenticationException)
+                catch (AadAuthenticationException exception)
                 {
-                    WriteErrorWithTimestamp(string.Format("Could not authenticate your user account {0} with the common tenant.  " +
-                       "Please login again using Login-AzureRMAccount.", DefaultContext.Account));
-                    throw;
+                    var account = DefaultContext.Account == null || DefaultContext.Account.Id == null
+                        ? Resources.NoAccountProvided
+                        : DefaultContext.Account.Id;
+                    throw new PSInvalidOperationException(string.Format(Resources.CommonTenantAuthFailed, account), exception);
                 }
             }
             else if (!string.IsNullOrWhiteSpace(this.SubscriptionId))
             {
+                var tenant = EnsureValidTenant();
                 AzureSubscription result;
-                if (!this._client.TryGetSubscription(this.Tenant, this.SubscriptionId, out result))
+                try
                 {
-                    WriteSubscriptionNotFoundError(this.Tenant, this.SubscriptionId);
+                    if (!this._client.TryGetSubscription(tenant, this.SubscriptionId, out result))
+                    {
+                        ThrowSubscriptionNotFoundError(this.Tenant, this.SubscriptionId);
+                    }
+
+                    WriteObject(result);
+                }
+                catch (AadAuthenticationException exception)
+                {
+                    ThrowTenantAuthenticationError(tenant, exception);
+                    throw;
                 }
 
-                WriteObject( result);
             }
             else
             {
-                var tenant = this.Tenant;
-                if (string.IsNullOrWhiteSpace(tenant))
+                var tenant = EnsureValidTenant();
+                try
                 {
-                    if (DefaultContext.Tenant != null && DefaultContext.Tenant.Id != null)
-                    {
-                        tenant = DefaultContext.Tenant.Id.ToString();
-                    }
-                    else
-                    {
-                        throw new PSArgumentException(
-                            "No tenant Id was provided.  Please log in using Login-AzureRMAcount, or provide a tenant in the 'Tenant' parameter.");
-                    }
+                    WriteObject(_client.ListSubscriptions(tenant), enumerateCollection: true);
                 }
-
-                WriteObject(_client.ListSubscriptions(tenant));
+                catch (AadAuthenticationException exception)
+                {
+                    ThrowTenantAuthenticationError(tenant, exception);
+                    throw;
+                }
             }
         }
 
-        private void WriteSubscriptionNotFoundError(string subscription, string tenant)
+        private void ThrowSubscriptionNotFoundError(string tenant, string subscription)
         {
-            throw new PSArgumentException(string.Format("Subscription {0} was not found in tenant {1}.  " +
-                   "Please verify that the subscription exists in this tenant.", subscription, tenant));
+            throw new PSArgumentException(string.Format(Resources.SubscriptionNotFoundError, subscription, tenant));
+        }
+
+        private void ThrowTenantAuthenticationError(string tenant, AadAuthenticationException exception)
+        {
+            throw new PSArgumentException(string.Format(Resources.TenantAuthFailed, tenant), exception);
+        }
+
+        private string EnsureValidTenant()
+        {
+            var tenant = this.Tenant;
+            if (string.IsNullOrWhiteSpace(tenant) && (DefaultContext.Tenant == null ||
+                DefaultContext.Tenant.Id == null))
+            {
+                throw new PSArgumentException(Resources.NoValidTenant);
+            }
+
+            return tenant ?? DefaultContext.Tenant.Id.ToString();
         }
     }
 }
