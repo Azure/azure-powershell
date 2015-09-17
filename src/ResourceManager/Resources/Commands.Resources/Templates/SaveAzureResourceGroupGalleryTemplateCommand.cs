@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Resources.Templates
     /// <summary>
     /// Downloads a template file to the disk.
     /// </summary>
-    [Cmdlet(VerbsData.Save, "AzureResourceGroupGalleryTemplate"), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsData.Save, "AzureRMResourceGroupGalleryTemplate"), OutputType(typeof(PSObject))]
     public class SaveAzureResourceGroupGalleryTemplateCommand : ResourcesBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The gallery template identity.")]
@@ -35,8 +35,9 @@ namespace Microsoft.Azure.Commands.Resources.Templates
         [Parameter(Position = 2, Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
+            WriteWarning("This cmdlet is being deprecated and will be removed in a future release.");
             string path = GalleryTemplatesClient.DownloadGalleryTemplateFile(
                 Identity,
                 string.IsNullOrEmpty(Path) ? System.IO.Path.Combine(CurrentPath(), Identity) : this.TryResolvePath(Path),

@@ -42,13 +42,13 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
        /// <summary>
        /// Gets or sets the Azure profile
        /// </summary>
-        public AzureProfile Profile { get; set; }
+        public AzureContext Context { get; set; }
 
-        public SqlDataMaskingAdapter(AzureProfile profile, AzureSubscription subscription)
+        public SqlDataMaskingAdapter(AzureContext context)
         {
-            Profile = profile;
-            Subscription = subscription;
-            Communicator = new DataMaskingEndpointsCommunicator(profile, subscription);
+            Context = context;
+            Subscription = context.Subscription;
+            Communicator = new DataMaskingEndpointsCommunicator(Context);
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
                 select ModelizeDatabaseDataMaskingRule(r, resourceGroup, serverName, databaseName)).ToList();
             if(ruleId != null && rules.Count == 0)
             {
-                throw new Exception(string.Format(CultureInfo.InvariantCulture, Resources.DataMaskingRuleDoesNotExist, ruleId));
+                throw new Exception(string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.DataMaskingRuleDoesNotExist, ruleId));
             }
             return rules;
         }

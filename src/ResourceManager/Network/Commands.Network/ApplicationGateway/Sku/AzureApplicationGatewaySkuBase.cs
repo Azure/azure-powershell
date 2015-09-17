@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Commands.Network
                HelpMessage = "Application gateway instance count")]
         [ValidateNotNullOrEmpty]
         public int Capacity { get; set; }        
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();            
+            base.ProcessRecord();            
         }
     }
 }

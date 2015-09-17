@@ -31,7 +31,6 @@ using System.Reflection;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Storage.Shared.Protocol;
 using Xunit;
 using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
@@ -109,6 +108,69 @@ namespace Microsoft.Azure.Commands.Batch.Test
             Assert.Equal<string>(context1.Subscription, context2.Subscription);
             Assert.Equal<string>(context1.TagsTable, context2.TagsTable);
             Assert.Equal<string>(context1.TaskTenantUrl, context2.TaskTenantUrl);
+        }
+
+        /// <summary>
+        /// Creates a RequestInterceptor that does not contact the Batch Service but instead uses the supplied response body.
+        /// </summary>
+        /// <param name="responseToUse">The response the interceptor should return. If none is specified, then a new instance of the response type is instantiated.</param>
+        /// <typeparam name="TParameters">The type of the request parameters.</typeparam>
+        /// <typeparam name="TResponse">The type of the expected response.</typeparam>
+        public static RequestInterceptor CreateNoOpInterceptor<TParameters, TResponse>(TResponse responseToUse = null)
+            where TParameters : ProxyModels.BatchParameters
+            where TResponse : ProxyModels.BatchOperationResponse, new()
+        {
+            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
+            {
+                BatchRequest<TParameters, TResponse> request =
+                (BatchRequest<TParameters, TResponse>)baseRequest;
+
+                request.ServiceRequestFunc = (cancellationToken) =>
+                {
+                    TResponse response = responseToUse ?? new TResponse();
+                    Task<TResponse> task = Task.FromResult(response);
+                    return task;
+                };
+            });
+            return interceptor;
+        }
+
+        /// <summary>
+        /// Creates a RequestInterceptor that does not contact the Batch Service on a Get NodeFile or a Get NodeFile Properties call.
+        /// The interceptor must handle both request types since it's possible for one OM node file method to perform both REST APIs.
+        /// </summary>
+        /// <param name="fileName">The name of the file to put in the response body.</param>
+        public static RequestInterceptor CreateNoOpGetFileAndPropertiesInterceptor(string fileName)
+        {
+            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
+            {
+                BatchRequest<ProxyModels.NodeFileGetParameters, ProxyModels.NodeFileGetResponse> fileRequest = baseRequest as
+                BatchRequest<ProxyModels.NodeFileGetParameters, ProxyModels.NodeFileGetResponse>;
+
+                if (fileRequest != null)
+                {
+                    fileRequest.ServiceRequestFunc = (cancellationToken) =>
+                    {
+                        ProxyModels.NodeFileGetResponse response = new ProxyModels.NodeFileGetResponse();
+                        Task<ProxyModels.NodeFileGetResponse> task = Task.FromResult(response);
+                        return task;
+                    };
+                }
+                else
+                {
+                    BatchRequest<ProxyModels.NodeFileGetPropertiesParameters, ProxyModels.NodeFileGetPropertiesResponse> propRequest =
+                        (BatchRequest<ProxyModels.NodeFileGetPropertiesParameters, ProxyModels.NodeFileGetPropertiesResponse>)baseRequest;
+
+                    propRequest.ServiceRequestFunc = (cancellationToken) =>
+                    {
+                        ProxyModels.NodeFileGetPropertiesResponse response = BatchTestHelpers.CreateNodeFileGetPropertiesResponse(fileName);
+                        Task<ProxyModels.NodeFileGetPropertiesResponse> task = Task.FromResult(response);
+                        return task;
+                    };
+                }
+            });
+
+            return interceptor;
         }
 
         /// <summary>

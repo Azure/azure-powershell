@@ -17,28 +17,28 @@ namespace Microsoft.Azure.Commands.HDInsight
     {
         public static class CommandNames
         {
-            public const string AzureHDInsightCluster = "AzureHDInsightCluster";
-            public const string AzureHDInsightClusterConfig = "AzureHDInsightClusterConfig";
-            public const string AzureHDInsightClusterSize = "AzureHDInsightClusterSize";
-            public const string AzureHDInsightHttpServicesAccess = "AzureHDInsightHttpServicesAccess";
-            public const string AzureHDInsightRdpServicesAccess = "AzureHDInsightRdpServicesAccess";
-            public const string AzureHDInsightConfigValues = "AzureHDInsightConfigValues";
-            public const string AzureHDInsightMetastore = "AzureHDInsightMetastore";
-            public const string AzureHDInsightScriptAction = "AzureHDInsightScriptAction";
-            public const string AzureHDInsightStorage = "AzureHDInsightStorage";
-            public const string AzureHDInsightProperties = "AzureHDInsightProperties";
-            public const string AzureHDInsightJob = "AzureHDInsightJob";
-            public const string AzureHDInsightJobOutput = "AzureHDInsightJobOutput";
-            public const string AzureHDInsightDefaultStorage = "AzureHDInsightDefaultStorage";
-            public const string AzureHDInsightHiveJob = "AzureHDInsightHiveJob";
+            public const string AzureHDInsightCluster = "AzureRMHDInsightCluster";
+            public const string AzureHDInsightClusterConfig = "AzureRMHDInsightClusterConfig";
+            public const string AzureHDInsightClusterSize = "AzureRMHDInsightClusterSize";
+            public const string AzureHDInsightHttpServicesAccess = "AzureRMHDInsightHttpServicesAccess";
+            public const string AzureHDInsightRdpServicesAccess = "AzureRMHDInsightRdpServicesAccess";
+            public const string AzureHDInsightConfigValues = "AzureRMHDInsightConfigValues";
+            public const string AzureHDInsightMetastore = "AzureRMHDInsightMetastore";
+            public const string AzureHDInsightScriptAction = "AzureRMHDInsightScriptAction";
+            public const string AzureHDInsightStorage = "AzureRMHDInsightStorage";
+            public const string AzureHDInsightProperties = "AzureRMHDInsightProperties";
+            public const string AzureHDInsightJob = "AzureRMHDInsightJob";
+            public const string AzureHDInsightJobOutput = "AzureRMHDInsightJobOutput";
+            public const string AzureHDInsightDefaultStorage = "AzureRMHDInsightDefaultStorage";
+            public const string AzureHDInsightHiveJob = "AzureRMHDInsightHiveJob";
         }
 
         public static class JobDefinitions
         {
-            public const string AzureHDInsightHiveJobDefinition = "AzureHDInsightHiveJobDefinition";
-            public const string AzureHDInsightPigJobDefinition = "AzureHDInsightPigJobDefinition";
-            public const string AzureHDInsightMapReduceJobDefinition = "AzureHDInsightMapReduceJobDefinition";
-            public const string AzureHDInsightStreamingMapReduceJobDefinition = "AzureHDInsightStreamingMapReduceJobDefinition";
+            public const string AzureHDInsightHiveJobDefinition = "AzureRMHDInsightHiveJobDefinition";
+            public const string AzureHDInsightPigJobDefinition = "AzureRMHDInsightPigJobDefinition";
+            public const string AzureHDInsightMapReduceJobDefinition = "AzureRMHDInsightMapReduceJobDefinition";
+            public const string AzureHDInsightStreamingMapReduceJobDefinition = "AzureRMHDInsightStreamingMapReduceJobDefinition";
         }
     }
 }

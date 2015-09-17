@@ -16,19 +16,16 @@ using System;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Batch.Protocol.Models;
-using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using System.Threading.Tasks;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Pools
 {
-    public class StartBatchPoolResizeCommandTests
+    public class StartBatchPoolResizeCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
         private StartBatchPoolResizeCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
@@ -58,18 +55,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.Id = "testPool";
 
             // Don't go to the service on a Resize CloudPool call
-            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
-            {
-                BatchRequest<CloudPoolResizeParameters, CloudPoolResizeResponse> request =
-                (BatchRequest<CloudPoolResizeParameters, CloudPoolResizeResponse>)baseRequest;
-
-                request.ServiceRequestFunc = (cancellationToken) =>
-                {
-                    CloudPoolResizeResponse response = new CloudPoolResizeResponse();
-                    Task<CloudPoolResizeResponse> task = Task.FromResult(response);
-                    return task;
-                };
-            });
+            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudPoolResizeParameters, CloudPoolResizeResponse>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set

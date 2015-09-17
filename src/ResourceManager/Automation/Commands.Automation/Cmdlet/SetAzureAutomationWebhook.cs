@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Update a Webhook for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureAutomationWebhook")]
+    [Cmdlet(VerbsCommon.Set, "AzureRMAutomationWebhook")]
     [OutputType(typeof(Webhook))]
     public class SetAzureAutomationWebhook : AzureAutomationBaseCmdlet
     {
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void AutomationExecuteCmdlet()
+        protected override void AutomationProcessRecord()
         {
             var updatedWebhook = this.AutomationClient.UpdateWebhook(
                 this.ResourceGroupName,

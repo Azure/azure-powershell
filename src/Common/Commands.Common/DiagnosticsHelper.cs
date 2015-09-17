@@ -12,11 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Common.Properties;
 using System;
 using System.Collections;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Xml;
 using Newtonsoft.Json;
@@ -57,18 +55,18 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             int wadCfgBeginIndex = config.IndexOf("<WadCfg>");
             if (wadCfgBeginIndex == -1)
             {
-                throw new ArgumentException(Resources.IaasDiagnosticsBadConfigNoWadCfg);
+                throw new ArgumentException("Cannot find the WadCfg element in the config.");
             }
 
             int wadCfgEndIndex = config.IndexOf("</WadCfg>");
             if (wadCfgEndIndex == -1)
             {
-                throw new ArgumentException(Resources.IaasDiagnosticsBadConfigNoEndWadCfg);
+                throw new ArgumentException("Cannot find the WadCfg end element in the config.");
             }
 
             if (wadCfgEndIndex <= wadCfgBeginIndex)
             {
-                throw new ArgumentException(Resources.IaasDiagnosticsBadConfigNoMatchingWadCfg);
+                throw new ArgumentException("WadCfg start element in the config is not matching the end element.");
             }
 
             string encodedConfiguration = Convert.ToBase64String(

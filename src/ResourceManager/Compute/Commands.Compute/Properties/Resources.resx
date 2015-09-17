@@ -236,7 +236,7 @@ The file needs to be a PowerShell script (.ps1 or .psm1).</value>
     <comment>{0} = minimal required PS version, {1} = current PS version</comment>
   </data>
   <data name="AzureVMDscDefaultStorageCredentialsNotFound" xml:space="preserve">
-    <value>Can not find your azure storage credential. Please specify an storage context using the -StorageContext parameter, or set the current storage account using "Set-AzureSubscription", or set the "AZURE_STORAGE_CONNECTION_STRING" environment variable.</value>
+    <value>Can not find your azure storage credential. Please specify an storage context using the -StorageContext parameter, or set the current storage account using "Set-AzureRMSubscription", or set the "AZURE_STORAGE_CONNECTION_STRING" environment variable.</value>
   </data>
   <data name="PublishVMDscExtensionRequiredModulesVerbose" xml:space="preserve">
     <value>List of required modules: [{0}].</value>
@@ -357,9 +357,81 @@ The file needs to be a PowerShell script (.ps1 or .psm1).</value>
     <value>Uploading</value>
   </data>
   <data name="StorageCredentialsFactoryCurrentSubscriptionNotSet" xml:space="preserve">
-    <value>No current subscription has been designated. Use Select-AzureSubscription -Current &lt;subscriptionName&gt; to set the current subscription.</value>
+    <value>No current subscription has been designated. Use Select-AzureRMSubscription -Current &lt;subscriptionName&gt; to set the current subscription.</value>
   </data>
   <data name="DataDiskNotAssignedForVM" xml:space="preserve">
-    <value>A data disk, {0}, is not currently assigned for this VM. Use Add-AzureVMDataDisk to add it.</value>
+    <value>A data disk, {0}, is not currently assigned for this VM. Use Add-AzureRMVMDataDisk to add it.</value>
+  </data>
+  <data name="AzureVMSqlServerWrongSettingsFormat" xml:space="preserve">
+    <value>Cannot deserialize settings string from Sql Server extension. Updating your Azure PowerShell SDK to the latest version may solve this problem. Settings string:
+{0}</value>
+    <comment>{0} settings json string</comment>
+  </data>
+  <data name="PublishVMDscExtensionAdditionalContentPathNotExist" xml:space="preserve">
+    <value>Path '{0}' not found.</value>
+    <comment>0 = path to the additional content file/directory</comment>
+  </data>
+  <data name="PublishVMDscExtensionArchiveUploadedMessage1" xml:space="preserve">
+    <value>Configuration published to {0}</value>
+    <comment>{0} is an URI</comment>
+  </data>
+  <data name="PublishVMDscExtensionCopyFileVerbose1" xml:space="preserve">
+    <value>Copy '{0}' to '{1}'.</value>
+    <comment>{0} = source, {1} = destination</comment>
+  </data>
+  <data name="PublishVMDscExtensionCopyModuleVerbose1" xml:space="preserve">
+    <value>Copy the module '{0}' to '{1}'.</value>
+    <comment>{0} = source, {1} = destination</comment>
+  </data>
+  <data name="PublishVMDscExtensionCreateArchiveConfigFileInvalidExtension1" xml:space="preserve">
+    <value>Invalid configuration file: {0}.
+The file needs to be a PowerShell script (.ps1 or .psm1).</value>
+    <comment>0 = path to the configuration file</comment>
+  </data>
+  <data name="PublishVMDscExtensionDeletedFileMessage1" xml:space="preserve">
+    <value>Deleted '{0}'</value>
+    <comment>{0} is the path of a file</comment>
+  </data>
+  <data name="PublishVMDscExtensionDeleteErrorMessage1" xml:space="preserve">
+    <value>Cannot delete '{0}': {1}</value>
+    <comment>{0} is the path of a file, {1} is an error message</comment>
+  </data>
+  <data name="PublishVMDscExtensionDirectoryNotExist" xml:space="preserve">
+    <value>Path '{0}' not found.</value>
+    <comment>0 = path to the additional content file/directory</comment>
+  </data>
+  <data name="PublishVMDscExtensionGetDscResourceFailed1" xml:space="preserve">
+    <value>Cannot get module for DscResource '{0}'. Possible solutions:
+1) Specify -ModuleName for Import-DscResource in your configuration.
+2) Unblock module that contains resource.
+3) Move Import-DscResource inside Node block.
+</value>
+    <comment>0 = name of DscResource</comment>
+  </data>
+  <data name="PublishVMDscExtensionRequiredModulesVerbose1" xml:space="preserve">
+    <value>List of required modules: [{0}].</value>
+    <comment>{0} = list of modules</comment>
+  </data>
+  <data name="PublishVMDscExtensionRequiredPsVersion1" xml:space="preserve">
+    <value>Your current PowerShell version {1} is less then required by this cmdlet {0}. Consider download and install latest PowerShell version.</value>
+    <comment>{0} = minimal required PS version, {1} = current PS version</comment>
+  </data>
+  <data name="PublishVMDscExtensionStorageParserErrors1" xml:space="preserve">
+    <value>Configuration script '{0}' contained parse errors:
+{1}</value>
+    <comment>0 = path to the configuration script, 1 = parser errors</comment>
+  </data>
+  <data name="PublishVMDscExtensionTempFolderVerbose1" xml:space="preserve">
+    <value>Temp folder '{0}' created.</value>
+    <comment>{0} = temp folder path</comment>
+  </data>
+  <data name="PublishVMDscExtensionUploadArchiveConfigFileInvalidExtension1" xml:space="preserve">
+    <value>Invalid configuration file: {0}.
+The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip).</value>
+    <comment>0 = path to the configuration file</comment>
+  </data>
+  <data name="PublishVMDscExtensionUploadArchiveConfigFileNotExist1" xml:space="preserve">
+    <value>Configuration file '{0}' not found.</value>
+    <comment>0 = path to the configuration file</comment>
   </data>
 </root>

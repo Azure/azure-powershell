@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.Sql.Models;
 
 namespace Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureSqlElasticPoolRecommendation", 
+    [Cmdlet(VerbsCommon.Get, "AzureRMSqlElasticPoolRecommendation", 
         ConfirmImpact = ConfirmImpact.None)]
     public class GetAzureSqlElasticPoolRecommendation : AzureSqlCmdletBase<IEnumerable<UpgradeRecommendedElasticPoolProperties>, AzureSqlElasticPoolRecommendationAdapter>
     {
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Cmdlet
         /// <returns></returns>
         protected override AzureSqlElasticPoolRecommendationAdapter InitModelAdapter(Azure.Common.Authentication.Models.AzureSubscription subscription)
         {
-            return new AzureSqlElasticPoolRecommendationAdapter(Profile, subscription);
+            return new AzureSqlElasticPoolRecommendationAdapter(DefaultProfile.Context);
         }
 
         /// <summary>

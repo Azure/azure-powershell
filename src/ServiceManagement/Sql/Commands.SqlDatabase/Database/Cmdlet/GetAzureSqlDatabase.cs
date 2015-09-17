@@ -27,7 +27,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureSqlDatabase", ConfirmImpact = ConfirmImpact.None,
         DefaultParameterSetName = ByConnectionContext)]
-    public class GetAzureSqlDatabase : AzurePSCmdlet
+    public class GetAzureSqlDatabase : AzureSMCmdlet
     {
         #region Parameter Sets
 

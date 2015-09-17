@@ -9,7 +9,7 @@
 @{  
   
 # Version number of this module.  
-ModuleVersion = '0.9.7'  
+ModuleVersion = '0.9.8'  
   
 # ID used to uniquely identify this module  
 GUID = '81d522a4-6e5d-4105-8f58-376204c47458'  
@@ -63,7 +63,7 @@ TypesToProcess = @(
 FormatsToProcess = @(  
     '.\Resources\Microsoft.Azure.Commands.Resources.format.ps1xml',  
     '.\Tags\Microsoft.Azure.Commands.Tags.format.ps1xml',  
-    '.\Resources\Microsoft.WindowsAzure.Commands.Profile.format.ps1xml',  
+    '.\Resources\Microsoft.Azure.Commands.Profile.format.ps1xml',  
     '.\DataFactories\Microsoft.Azure.Commands.DataFactories.format.ps1xml',  
     '.\RedisCache\Microsoft.Azure.Commands.RedisCache.format.ps1xml',  
     '.\AzureBatch\Microsoft.Azure.Commands.Batch.format.ps1xml',  
@@ -77,14 +77,14 @@ FormatsToProcess = @(
     '.\OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.format.ps1xml',  
     '.\AzureBackup\Microsoft.Azure.Commands.AzureBackup.format.ps1xml',
     '.\UsageAggregates\Microsoft.Azure.Commands.UsageAggregates.Format.ps1xml',
-	'.\Sql\Microsoft.Azure.Commands.Sql.format.ps1xml'
+    '.\Sql\Microsoft.Azure.Commands.Sql.format.ps1xml'
 )  
   
 # Modules to import as nested modules of the module specified in ModuleToProcess  
 NestedModules = @(  
     '.\Automation\Microsoft.Azure.Commands.ResourceManager.Automation.dll',  
     '.\Resources\Microsoft.Azure.Commands.Resources.dll',  
-    '.\Resources\Microsoft.WindowsAzure.Commands.Profile.dll',  
+    '.\Resources\Microsoft.Azure.Commands.Profile.dll',  
     '.\Tags\Microsoft.Azure.Commands.Tags.dll',  
     '.\Sql\Microsoft.Azure.Commands.Sql.dll',  
     '.\DataFactories\Microsoft.Azure.Commands.DataFactories.dll',  
@@ -104,7 +104,7 @@ NestedModules = @(
     '.\StorageManagement\Microsoft.Azure.Commands.Management.Storage.dll',  
     '.\OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.dll',  
     '.\UsageAggregates\Microsoft.Azure.Commands.UsageAggregates.dll', 
-	'.\HDInsight\Microsoft.Azure.Commands.HDInsight.dll',
+    '.\HDInsight\Microsoft.Azure.Commands.HDInsight.dll',
     '.\ApiManagement\Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll',  
     '.\AzureBackup\Microsoft.Azure.Commands.AzureBackup.dll',
     '.\SiteRecovery\Microsoft.Azure.Commands.SiteRecovery.dll'
@@ -121,11 +121,11 @@ VariablesToExport = '*'
   
 # Aliases to export from this module  
 AliasesToExport = @(  
-    'Get-AzureSqlDatabaseServerAuditingPolicy',  
-    'Remove-AzureSqlDatabaseServerAuditing',  
-    'Set-AzureSqlDatabaseServerAuditingPolicy',  
-    'Use-AzureSqlDatabaseServerAuditingPolicy',  
-    'Get-AzureStorageContainerAcl',  
+    'Get-AzureRMSqlDatabaseServerAuditingPolicy',  
+    'Remove-AzureRMSqlDatabaseServerAuditing',  
+    'Set-AzureRMSqlDatabaseServerAuditingPolicy',  
+    'Use-AzureRMSqlDatabaseServerAuditingPolicy',  
+    'Get-AzureRMStorageContainerAcl',  
     'Start-CopyAzureStorageBlob',  
     'Stop-CopyAzureStorageBlob'  
 )  
