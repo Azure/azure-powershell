@@ -78,55 +78,43 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             return _profile;
         }
 
-        public AzureContext UpdateCurrentContext(string subscriptionId, string tenantId)
+        public AzureContext SetCurrentContext(string subscriptionId, string tenantId)
         {
-            AzureSubscription newSubscription = null;
-            AzureTenant newTenant = null;
-            AzureAccount account = _profile.Context.Account;
-            AzureEnvironment envrionment = _profile.Context.Environment;
-            ShowDialog promptBehavior = ShowDialog.Auto;
+            if (!string.IsNullOrWhiteSpace(tenantId))
+            {
+                _profile.Context = new AzureContext(
+                    _profile.Context.Subscription,
+                    _profile.Context.Account, 
+                    _profile.Context.Environment, 
+                    new AzureTenant() { Id = new Guid(tenantId) });
 
-            if (!string.IsNullOrWhiteSpace(tenantId) &&
-                !string.IsNullOrWhiteSpace(subscriptionId))
-            {                
-                if(TryGetTenantSubscription(account, envrionment, tenantId, subscriptionId, null, promptBehavior, out newSubscription, out newTenant))
+                if (_profile.Context.Account != null)
                 {
-                    _profile.Context = new AzureContext(newSubscription, account, envrionment, newTenant);
+                    _profile.Context.Account.Properties[AzureAccount.Property.Tenants] = tenantId;
+                }
+                if (_profile.Context.Subscription != null)
+                {
+                    _profile.Context.Subscription.Properties[AzureSubscription.Property.Tenants] = tenantId;
                 }
             }
-            else if (!string.IsNullOrWhiteSpace(tenantId))
-            {
-                var accessToken = AzureSession.AuthenticationFactory.Authenticate(
-                   account,
-                   envrionment,
-                   tenantId,
-                   null,
-                   promptBehavior,
-                   TokenCache.DefaultShared);
 
-                account.Properties[AzureAccount.Property.Tenants] = accessToken.TenantId;
-                newTenant = new AzureTenant();
-                newTenant.Id = new Guid(accessToken.TenantId);
-                newTenant.Domain = accessToken.GetDomain();
-                _profile.Context = new AzureContext(account, envrionment, newTenant);
-            }
-            else if(!string.IsNullOrWhiteSpace(subscriptionId))
+            if(!string.IsNullOrWhiteSpace(subscriptionId))
             {
-                foreach (var tenant in ListAccountTenants(account, envrionment, null, promptBehavior))
+                var newSubscription = new AzureSubscription { Id = new Guid(subscriptionId) };
+                if(_profile.Context.Subscription != null)
                 {
-                    if (TryGetTenantSubscription(account, envrionment, tenant.Id.ToString(), subscriptionId, null, promptBehavior, out newSubscription, out newTenant))
-                    {
-                        _profile.Context = new AzureContext(newSubscription, account, envrionment, newTenant);
-                        break;
-                    }
+                    newSubscription.Account = _profile.Context.Subscription.Account;
+                    newSubscription.Environment = _profile.Context.Subscription.Environment;
+                    newSubscription.Properties = _profile.Context.Subscription.Properties;
+                    newSubscription.Name = null;
                 }
-            }
-            else
-            {
-                throw new PSNotSupportedException();
-            }
 
-            _profile.Context.TokenCache = TokenCache.DefaultShared.Serialize();
+                _profile.Context = new AzureContext(
+                    newSubscription,
+                    _profile.Context.Account,
+                    _profile.Context.Environment, 
+                    _profile.Context.Tenant);
+            }
 
             return _profile.Context;
         }
