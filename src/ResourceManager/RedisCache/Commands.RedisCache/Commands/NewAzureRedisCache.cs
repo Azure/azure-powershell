@@ -56,18 +56,18 @@ namespace Microsoft.Azure.Commands.RedisCache
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "EnableNonSslPort property of redis cache.")]
         public bool? EnableNonSslPort { get; set; }
 
-        private const string redisDefaultVersion = "2.8";
+        private const string redisDefaultVersion = "3.0";
 
         protected override void ProcessRecord()
         {
+            if (!string.IsNullOrEmpty(RedisVersion))
+            {
+                WriteWarning("The RedisVersion parameter has been deprecated.  As such, it is no longer necessary to provide this parameter and any value specified is ignored.");
+            }
+
             string skuFamily;
 
             int skuCapacity = 1;
-
-            if (string.IsNullOrEmpty(RedisVersion))
-            {
-                RedisVersion = redisDefaultVersion;
-            }
 
             if (string.IsNullOrEmpty(Size))
             {
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.RedisCache
                     throw;
                 }
             }
-            WriteObject(new RedisCacheAttributesWithAccessKeys(CacheClient.CreateOrUpdateCache(ResourceGroupName, Name, Location, RedisVersion, skuFamily, skuCapacity, Sku, RedisConfiguration, EnableNonSslPort), ResourceGroupName));
+            WriteObject(new RedisCacheAttributesWithAccessKeys(CacheClient.CreateOrUpdateCache(ResourceGroupName, Name, Location, redisDefaultVersion, skuFamily, skuCapacity, Sku, RedisConfiguration, EnableNonSslPort), ResourceGroupName));
         }
     }
 }

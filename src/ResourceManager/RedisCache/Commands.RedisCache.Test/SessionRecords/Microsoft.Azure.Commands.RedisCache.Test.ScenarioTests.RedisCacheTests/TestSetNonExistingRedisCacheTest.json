@@ -1,19 +1,19 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/e638312d-094f-40fd-a2cc-579fe8490bbd/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/NonExistingRedisCache?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTYzODMxMmQtMDk0Zi00MGZkLWEyY2MtNTc5ZmU4NDkwYmJkL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL05vbkV4aXN0aW5nUmVkaXNDYWNoZT9hcGktdmVyc2lvbj0yMDE0LTA0LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/04db7ed3-6ed9-4861-8b22-7c0c0c98490b/resourceGroups/MyResourceGroup/providers/Microsoft.Cache/Redis/NonExistingRedisCache?api-version=2015-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDRkYjdlZDMtNmVkOS00ODYxLThiMjItN2MwYzBjOTg0OTBiL3Jlc291cmNlR3JvdXBzL015UmVzb3VyY2VHcm91cC9wcm92aWRlcnMvTWljcm9zb2Z0LkNhY2hlL1JlZGlzL05vbkV4aXN0aW5nUmVkaXNDYWNoZT9hcGktdmVyc2lvbj0yMDE1LTAzLTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "User-Agent": [
-          "Microsoft.Azure.Management.Redis.RedisManagementClient/0.9.0.0"
+          "Microsoft.Azure.Management.Redis.RedisManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"Resource not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Cache/Redis/NonExistingRedisCache' under resource group 'MyResourceGroup' was not found.\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "69"
+          "162"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -24,14 +24,17 @@
         "Pragma": [
           "no-cache"
         ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
         "x-ms-request-id": [
-          "f75f354f-eeaf-416d-83de-0f7bc6d1554e"
+          "61987ae9-1861-4584-a927-9cc2ffc8c14f"
         ],
         "x-ms-correlation-request-id": [
-          "f75f354f-eeaf-416d-83de-0f7bc6d1554e"
+          "61987ae9-1861-4584-a927-9cc2ffc8c14f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20141112T220409Z:f75f354f-eeaf-416d-83de-0f7bc6d1554e"
+          "WESTUS:20150914T194717Z:61987ae9-1861-4584-a927-9cc2ffc8c14f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -40,7 +43,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 12 Nov 2014 22:04:09 GMT"
+          "Mon, 14 Sep 2015 19:47:16 GMT"
         ]
       },
       "StatusCode": 404
@@ -48,6 +51,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "e638312d-094f-40fd-a2cc-579fe8490bbd"
+    "SubscriptionId": "04db7ed3-6ed9-4861-8b22-7c0c0c98490b"
   }
 }
