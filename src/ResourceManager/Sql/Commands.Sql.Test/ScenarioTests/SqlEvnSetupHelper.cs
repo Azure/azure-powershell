@@ -85,9 +85,9 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                     }
                     };
 
-                    AzureRMCmdlet.DefaultProfile.DefaultContext.Subscription.Name = testSubscription.Name;
-                    AzureRMCmdlet.DefaultProfile.DefaultContext.Subscription.Id = testSubscription.Id;
-                    AzureRMCmdlet.DefaultProfile.DefaultContext.Subscription.Account = testSubscription.Account;
+                    AzureRMCmdlet.DefaultProfile.Context.Subscription.Name = testSubscription.Name;
+                    AzureRMCmdlet.DefaultProfile.Context.Subscription.Id = testSubscription.Id;
+                    AzureRMCmdlet.DefaultProfile.Context.Subscription.Account = testSubscription.Account;
 
                     var environment = AzureRMCmdlet.DefaultProfile.Environments[AzureRMCmdlet.DefaultProfile.Context.Subscription.Environment];
                     environment.Endpoints[AzureEnvironment.Endpoint.Graph] = csmEnvironment.Endpoints.GraphUri.AbsoluteUri;
