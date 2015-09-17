@@ -132,7 +132,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GetAzureRMSubscription.cs" />    <Compile Include="Account\LoginAzureRMAccount.cs" />
+    <Compile Include="GetAzureRMSubscription.cs" />
+    <Compile Include="Account\LoginAzureRMAccount.cs" />
     <Compile Include="Context\GetAzureRMContext.cs" />
     <Compile Include="Context\SelectAzureRMContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

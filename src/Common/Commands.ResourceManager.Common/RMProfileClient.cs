@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         public bool TryGetSubscription(string tenantId, string subscriptionId, out AzureSubscription subscription)
         {
-            return TryGetTenantSubscription(_profile.DefaultContext.Account, _profile.DefaultContext.Environment,
+            return TryGetTenantSubscription(_profile.Context.Account, _profile.Context.Environment,
                 tenantId, subscriptionId, null, ShowDialog.Never, out subscription);
         }
 
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         /// <returns>The list of tenants for the default account.</returns>
         public string[] ListTenants()
         {
-            return ListAccountTenants(_profile.DefaultContext.Account, _profile.DefaultContext.Environment, null);
+            return ListAccountTenants(_profile.Context.Account, _profile.Context.Environment, null);
         }
 
         private IEnumerable<AzureSubscription> ListSubscriptionsForTenant(AzureAccount account, AzureEnvironment environment, 
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     return
                         subscriptions.Subscriptions.Select(
                             (s) =>
-                                s.ToAzureSubscription(new AzureContext(_profile.DefaultContext.Subscription, account,
+                                s.ToAzureSubscription(new AzureContext(_profile.Context.Subscription, account,
                                     environment, new AzureTenant {Id = new Guid(tenantId)})));
                 }
 
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         public IEnumerable<AzureSubscription> ListSubscriptions(string tenant)
         {
-            return ListSubscriptionsForTenant(_profile.DefaultContext.Account, _profile.DefaultContext.Environment, null,
+            return ListSubscriptionsForTenant(_profile.Context.Account, _profile.Context.Environment, null,
                 ShowDialog.Never, tenant);
         }
 
@@ -283,7 +283,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 {
                     WriteWarningMessage(string.Format("Could not authenticate user account {0} with tenant {1}.  " +
                        "Subscriptions in this tenant will not be listed. Please login again using Login-AzureRMAccount " +
-                       "to view the subscriptions in this tenant.", _profile.DefaultContext.Account, tenant));
+                       "to view the subscriptions in this tenant.", _profile.Context.Account, tenant));
                 }
 
             }
