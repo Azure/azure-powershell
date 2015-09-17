@@ -57,6 +57,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.InvokeEndProcessing();
 
             Assert.NotNull(AzureRMCmdlet.DefaultProfile.Context);
+            Assert.Equal("microsoft.com", AzureRMCmdlet.DefaultProfile.Context.Tenant.Domain);
         }
 
         [Fact]
@@ -90,6 +91,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.InvokeEndProcessing();
 
             Assert.NotNull(AzureRMCmdlet.DefaultProfile.Context);
+            Assert.Equal("microsoft.com", AzureRMCmdlet.DefaultProfile.Context.Tenant.Domain);
         }
         
         [Fact]
@@ -106,6 +108,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.InvokeEndProcessing();
 
             Assert.NotNull(AzureRMCmdlet.DefaultProfile.Context);
+            Assert.Equal("microsoft.com", AzureRMCmdlet.DefaultProfile.Context.Tenant.Domain);
         }
 
         [Fact]
@@ -123,6 +126,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.InvokeEndProcessing();
 
             Assert.NotNull(AzureRMCmdlet.DefaultProfile.Context);
+            Assert.Equal("microsoft.com", AzureRMCmdlet.DefaultProfile.Context.Tenant.Domain);
         }
     }
 }

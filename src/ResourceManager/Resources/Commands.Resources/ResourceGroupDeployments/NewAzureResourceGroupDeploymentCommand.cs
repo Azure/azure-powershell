@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Resources
 
             if (!string.IsNullOrEmpty(TemplateVersion) || !string.IsNullOrEmpty(StorageAccountName) || !string.IsNullOrEmpty(GalleryTemplateIdentity))
             {
-                WriteWarning("The GalleryTemplateIdentity, TemplateVersion and StorageAccountName parameters in New-AzureResourceGroupDeployment cmdlet is being deprecated and will be removed in a future release.");
+                WriteWarning("The GalleryTemplateIdentity, TemplateVersion and StorageAccountName parameters in New-AzureRMResourceGroupDeployment cmdlet is being deprecated and will be removed in a future release.");
             }
 
             if(this.Mode == DeploymentMode.Complete)

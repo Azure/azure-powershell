@@ -23,39 +23,19 @@ using System.Linq;
 using Xunit;
 using System;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Hyak.Common;
+using System.Management.Automation;
+using Microsoft.Azure.Commands.Resources.Test.ScenarioTests;
 
-namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
+namespace Microsoft.Azure.Commands.Profile.Test
 {
-    public class ContextCmdletTestsMocked : RMTestBase
+    public class SubscriptionCmdletTests
     {
-        private MemoryDataStore dataStore;
-        private MockCommandRuntime commandRuntimeMock;
-
-        public ContextCmdletTestsMocked()
-        {
-            dataStore = new MemoryDataStore();
-            AzureSession.DataStore = dataStore;
-            commandRuntimeMock = new MockCommandRuntime();
-            AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
-        }
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetAzureContext()
+        public void AllParameterSetsSucceed()
         {
-            var cmdlt = new GetAzureRMContextCommand();
-            // Setup
-            cmdlt.CommandRuntime = commandRuntimeMock;
-
-            // Act
-            cmdlt.InvokeBeginProcessing();
-            cmdlt.ExecuteCmdlet();
-            cmdlt.InvokeEndProcessing();
-
-            // Verify
-            Assert.True(commandRuntimeMock.OutputPipeline.Count == 1);
-            var context = (AzureContext) commandRuntimeMock.OutputPipeline[0];
-            Assert.Equal("test", context.Subscription.Name);
+            ProfileController.NewInstance.RunPsTest("72f988bf-86f1-41af-91ab-2d7cd011db47", "Test-GetSubscriptionsEndToEnd");
         }
     }
 }

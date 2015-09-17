@@ -1,0 +1,120 @@
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.Azure.Subscriptions;
+using Microsoft.Azure.Subscriptions.Models;
+using Moq;
+
+namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
+{
+    public class MockSubscriptionClientFactory
+    {
+        private IList<string> _tenants;
+        private Queue<List<string>> _subscriptions;
+        private HashSet<string> _subscriptionSet;
+        public MockSubscriptionClientFactory(List<string> tenants, Queue<List<string>> subscriptions)
+        {
+            _tenants = tenants;
+            _subscriptions = new Queue<List<string>>();
+            _subscriptionSet = new HashSet<string>();
+            foreach (var subscriptionList in subscriptions)
+            {
+                _subscriptions.Enqueue(subscriptionList);
+                foreach (var subscription in subscriptionList)
+                {
+                    _subscriptionSet.Add(subscription);
+                }
+            }
+        }
+
+        public SubscriptionClient GetSubscriptionClient()
+        {
+            var tenantMock = new Mock<ITenantOperations>();
+            tenantMock.Setup(t => t.ListAsync(It.IsAny<CancellationToken>()))
+                .Returns(
+                    (CancellationToken token) =>
+                        Task.FromResult(new TenantListResult()
+                        {
+                            StatusCode = HttpStatusCode.OK,
+                            RequestId = Guid.NewGuid().ToString(),
+                            TenantIds = _tenants.Select((k) => new TenantIdDescription() { Id = k, TenantId = k }).ToList()
+                        }));
+            var subscriptionMock = new Mock<ISubscriptionOperations>();
+            subscriptionMock.Setup(
+                s => s.GetAsync(It.IsAny<string>(), It.IsAny<CancellationToken>())).Returns(
+                    (string subId, CancellationToken token) =>
+                    {
+                        GetSubscriptionResult result = new GetSubscriptionResult
+                        {
+                            RequestId = Guid.NewGuid().ToString(),
+                            StatusCode = HttpStatusCode.NotFound
+                        };
+                        if (_subscriptionSet.Contains(subId))
+                        {
+                            result.StatusCode = HttpStatusCode.OK;
+                            result.Subscription =
+                                new Subscription
+                                {
+                                    DisplayName = "Returned Subscription",
+                                    Id = subId,
+                                    State = "Active",
+                                    SubscriptionId = subId
+                                };
+
+                        }
+
+                        return Task.FromResult(result);
+                    });
+            subscriptionMock.Setup(
+                (s) => s.ListAsync(It.IsAny<CancellationToken>())).Returns(
+                    (CancellationToken token) =>
+                    {
+                        SubscriptionListResult result = null;
+                        if (_subscriptions.Count > 0)
+                        {
+                            var subscriptionList = _subscriptions.Dequeue();
+                            result = new SubscriptionListResult
+                            {
+                                StatusCode = HttpStatusCode.OK,
+                                RequestId = Guid.NewGuid().ToString(),
+                                Subscriptions =
+                                    new List<Subscription>(
+                                        subscriptionList.Select(
+                                            sub =>
+                                                new Subscription
+                                                {
+                                                    DisplayName = "Contoso Subscription",
+                                                    Id = sub,
+                                                    State = "Active",
+                                                    SubscriptionId = sub
+                                                }))
+                            };
+                        }
+
+                        return Task.FromResult(result);
+                    });
+            var client = new Mock<SubscriptionClient>();
+            client.SetupGet(c => c.Subscriptions).Returns(subscriptionMock.Object);
+            client.SetupGet(c => c.Tenants).Returns(tenantMock.Object);
+            return client.Object;
+        }
+    }
+
+}

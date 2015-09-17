@@ -19,6 +19,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 {
     public class MockAccessToken : IAccessToken
     {
+        private string _tenantId = String.Empty;
         public void AuthorizeRequest(Action<string, string> authTokenSetter)
         {
             authTokenSetter("Bearer", AccessToken);
@@ -30,7 +31,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         public string TenantId
         {
-            get { return string.Empty; }
+            get { return _tenantId; }
+            set { _tenantId = value; }
         }
     }
 }

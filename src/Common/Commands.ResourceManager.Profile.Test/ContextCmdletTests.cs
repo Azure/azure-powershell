@@ -23,120 +23,120 @@ using System.Linq;
 using Xunit;
 using System;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 {
-    public class ContextCmdletTestsLive 
+    public class ContextCmdletTests : RMTestBase
     {
         private MemoryDataStore dataStore;
         private MockCommandRuntime commandRuntimeMock;
 
-        public ContextCmdletTestsLive()
+        public ContextCmdletTests()
         {
             dataStore = new MemoryDataStore();
             AzureSession.DataStore = dataStore;
             commandRuntimeMock = new MockCommandRuntime();
-            AzureRMCmdlet.DefaultProfile = new AzureRMProfile();
+            AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
         }
-        
+
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetAzureContext()
+        {
+            var cmdlt = new GetAzureRMContextCommand();
+            // Setup
+            cmdlt.CommandRuntime = commandRuntimeMock;
+
+            // Act
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
+
+            // Verify
+            Assert.True(commandRuntimeMock.OutputPipeline.Count == 1);
+            var context = (AzureContext) commandRuntimeMock.OutputPipeline[0];
+            Assert.Equal("test", context.Subscription.Name);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SelectAzureContextWithSubscriptionAndTenant()
         {
-            var cmdlt = new SelectAzureRMContextCommand();
+            var cmdlt = new SetAzureRMContextCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.SubscriptionId = "db1ab6f0-4769-4b27-930e-01e2ef9c123c";
             cmdlt.Tenant = "72f988bf-86f1-41af-91ab-2d7cd011db47";
 
             // Act
-            Login("2c224e7e-3ef5-431d-a57b-e71f4662e3a6", null);
             cmdlt.InvokeBeginProcessing();
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            Assert.True(commandRuntimeMock.OutputPipeline.Count == 2);
-            var context = (AzureContext)commandRuntimeMock.OutputPipeline[1];
+            Assert.True(commandRuntimeMock.OutputPipeline.Count == 1);
+            var context = (AzureContext)commandRuntimeMock.OutputPipeline[0];
             Assert.Equal("db1ab6f0-4769-4b27-930e-01e2ef9c123c", context.Subscription.Id.ToString());
+            Assert.Equal("72f988bf-86f1-41af-91ab-2d7cd011db47", context.Tenant.Id.ToString());
         }
-        
+
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SelectAzureContextWithSubscriptionAndNoTenant()
         {
-            var cmdlt = new SelectAzureRMContextCommand();
+            var cmdlt = new SetAzureRMContextCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.SubscriptionId = "db1ab6f0-4769-4b27-930e-01e2ef9c123c";
 
             // Act
-            Login("2c224e7e-3ef5-431d-a57b-e71f4662e3a6", null);
             cmdlt.InvokeBeginProcessing();
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            Assert.True(commandRuntimeMock.OutputPipeline.Count == 2);
-            var context = (AzureContext)commandRuntimeMock.OutputPipeline[1];
+            Assert.True(commandRuntimeMock.OutputPipeline.Count == 1);
+            var context = (AzureContext)commandRuntimeMock.OutputPipeline[0];
             Assert.Equal("db1ab6f0-4769-4b27-930e-01e2ef9c123c", context.Subscription.Id.ToString());
-            Assert.Equal("72f988bf-86f1-41af-91ab-2d7cd011db47", context.Tenant.Id.ToString());
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SelectAzureContextWithNoSubscriptionAndTenant()
         {
-            var cmdlt = new SelectAzureRMContextCommand();
+            var cmdlt = new SetAzureRMContextCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.Tenant = "72f988bf-86f1-41af-91ab-2d7cd011db47";
 
             // Act
-            Login("2c224e7e-3ef5-431d-a57b-e71f4662e3a6", null);
             cmdlt.InvokeBeginProcessing();
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            Assert.True(commandRuntimeMock.OutputPipeline.Count == 2);
-            var context = (AzureContext)commandRuntimeMock.OutputPipeline[1];
-            Assert.Null(context.Subscription);
+            Assert.True(commandRuntimeMock.OutputPipeline.Count == 1);
+            var context = (AzureContext)commandRuntimeMock.OutputPipeline[0];
             Assert.Equal("72f988bf-86f1-41af-91ab-2d7cd011db47", context.Tenant.Id.ToString());
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SelectAzureContextWithNoSubscriptionAndNoTenant()
         {
-            var cmdlt = new SelectAzureRMContextCommand();
+            var cmdlt = new SetAzureRMContextCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
-
-            // Act
-            Login("2c224e7e-3ef5-431d-a57b-e71f4662e3a6", null);
-            cmdlt.InvokeBeginProcessing();
-            
-            // Verify
-            Assert.Throws<PSNotSupportedException>(() => cmdlt.ExecuteCmdlet());
-            cmdlt.InvokeEndProcessing();
-        }
-
-        private void Login(string subscriptionId, string tenantId)
-        {
-            var cmdlt = new LoginAzureRMAccountCommand();
-            // Setup
-            cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.SubscriptionId = subscriptionId;
-            cmdlt.Tenant = tenantId;
 
             // Act
             cmdlt.InvokeBeginProcessing();
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.NotNull(AzureRMCmdlet.DefaultProfile.Context);
+            // Verify
+            Assert.True(commandRuntimeMock.OutputPipeline.Count == 1);
+            var context = (AzureContext)commandRuntimeMock.OutputPipeline[0];
+            Assert.NotNull(context);
         }
     }
 }
