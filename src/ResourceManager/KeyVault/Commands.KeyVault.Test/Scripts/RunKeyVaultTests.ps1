@@ -7,7 +7,9 @@
   [Parameter(Mandatory=$false,Position=2)]   
   [string]$Location = 'eastus2',
   [Parameter(Mandatory=$false, Position=3)]
-  [string]$Vault = ""
+  [string]$Vault = "",
+  [Parameter(Mandatory=$false, Position=3)]
+  [string]$ResourceGroup = ""
 )
 
 $invocationPath = Split-Path $MyInvocation.MyCommand.Definition;
@@ -29,6 +31,7 @@ $global:testEnv = 'PROD';
 $global:testns = $TestRunNameSpace
 $global:location = $location
 $global:testVault = $Vault
+$global:resourceGroupName = $ResourceGroup
 
 function Run-TestProtected
 {
@@ -112,9 +115,13 @@ function Run-AllControlPlaneTests
     }
     finally
     {
-        Write-Host Starting clean up for vault tests. This can take upto a minute or more...
-        Cleanup-VaultTest
-        Write-Host Completed clean up for vault tests
+        if($ResourceGroup -eq "")
+        {
+            # only clean up if we created it.
+            Write-Host Starting clean up for vault tests. This can take upto a minute or more...
+            Cleanup-VaultTest
+            Write-Host Completed clean up for vault tests
+        }
     }
 }
 
