@@ -87,6 +87,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     _profile.Context.Account, 
                     _profile.Context.Environment, 
                     new AzureTenant() { Id = new Guid(tenantId) });
+
+                if (_profile.Context.Account != null)
+                {
+                    _profile.Context.Account.Properties[AzureAccount.Property.Tenants] = tenantId;
+                }
+                if (_profile.Context.Subscription != null)
+                {
+                    _profile.Context.Subscription.Properties[AzureSubscription.Property.Tenants] = tenantId;
+                }
             }
 
             if(!string.IsNullOrWhiteSpace(subscriptionId))
