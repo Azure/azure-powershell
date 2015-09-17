@@ -16,6 +16,7 @@ using Hyak.Common;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Factories;
 using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Common.Authentication.Properties;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System;
@@ -138,6 +139,59 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             AzureTenant tenant;
             return TryGetTenantSubscription(_profile.Context.Account, _profile.Context.Environment,
                 tenantId, subscriptionId, null, ShowDialog.Never, out subscription, out tenant);
+        }
+
+        public AzureEnvironment AddOrSetEnvironment(AzureEnvironment environment)
+        {
+            if (environment == null)
+            {
+                throw new ArgumentNullException("environment", Resources.EnvironmentNeedsToBeSpecified);
+            }
+
+            if (AzureEnvironment.PublicEnvironments.ContainsKey(environment.Name))
+            {
+                throw new ArgumentException(Resources.ChangingDefaultEnvironmentNotSupported, "environment");
+            }
+
+            if (_profile.Environments.ContainsKey(environment.Name))
+            {
+                _profile.Environments[environment.Name] =
+                    MergeEnvironmentProperties(environment, _profile.Environments[environment.Name]);
+            }
+            else
+            {
+                _profile.Environments[environment.Name] = environment;
+            }
+
+            return _profile.Environments[environment.Name];
+        }
+
+        private AzureEnvironment MergeEnvironmentProperties(AzureEnvironment environment1, AzureEnvironment environment2)
+        {
+            if (environment1 == null || environment2 == null)
+            {
+                throw new ArgumentNullException("environment1");
+            }
+            if (!string.Equals(environment1.Name, environment2.Name, StringComparison.InvariantCultureIgnoreCase))
+            {
+                throw new ArgumentException("Environment names do not match.");
+            }
+            AzureEnvironment mergedEnvironment = new AzureEnvironment
+            {
+                Name = environment1.Name
+            };
+
+            // Merge all properties
+            foreach (AzureEnvironment.Endpoint property in Enum.GetValues(typeof(AzureEnvironment.Endpoint)))
+            {
+                string propertyValue = environment1.GetEndpoint(property) ?? environment2.GetEndpoint(property);
+                if (propertyValue != null)
+                {
+                    mergedEnvironment.Endpoints[property] = propertyValue;
+                }
+            }
+
+            return mergedEnvironment;
         }
 
         private bool TryGetTenantSubscription(
