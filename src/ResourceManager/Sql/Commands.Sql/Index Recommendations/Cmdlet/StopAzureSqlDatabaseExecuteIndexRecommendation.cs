@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.Sql.Model;
 namespace Microsoft.Azure.Commands.Sql.Cmdlet
 {
     /// <summary>
-    /// Defines the Stop-AzureSqlDatabaseExecuteIndexRecommendation cmdlet
+    /// Defines the Stop-AzureRMSqlDatabaseExecuteIndexRecommendation cmdlet
     /// </summary>
     [Cmdlet(VerbsLifecycle.Stop, "AzureRMSqlDatabaseExecuteIndexRecommendation",
         ConfirmImpact = ConfirmImpact.Low)]

@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             if(!string.IsNullOrEmpty(this.ODataQuery))
             {
-                this.WriteWarning("The ODataQuery parameter is being deprecated in Set-AzureResource cmdlet and will be removed in a future release.");
+                this.WriteWarning("The ODataQuery parameter is being deprecated in Set-AzureRMResource cmdlet and will be removed in a future release.");
             }
 
             var resourceId = this.GetResourceId();

@@ -20,11 +20,11 @@ function Test-RaClassicAdmins
 {
 	# Setup
 	Add-Type -Path ".\\Microsoft.Azure.Commands.Resources.dll"
-	$subscription = Get-AzureSubscription -Current
+	$subscription = Get-AzureRMSubscription -Current
 
 	# Test
 	[Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("8D7DD69E-9AE2-44A1-94D8-F7BC8E12645E")
-	$classic =  Get-AzureRoleAssignment -IncludeClassicAdministrators  | Where-Object { $_.Scope -ieq ('/subscriptions/' + $subscription.SubscriptionId) -and $_.RoleDefinitionName.ToLower().Contains('administrator')}	
+	$classic =  Get-AzureRMRoleAssignment -IncludeClassicAdministrators  | Where-Object { $_.Scope -ieq ('/subscriptions/' + $subscription.SubscriptionId) -and $_.RoleDefinitionName.ToLower().Contains('administrator')}	
 	
 	# Assert
 	Assert-NotNull $classic
