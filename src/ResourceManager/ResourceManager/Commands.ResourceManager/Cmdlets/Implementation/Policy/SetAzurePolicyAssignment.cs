@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
                 .WaitOnOperation(operationResult: operationResult);
 
-            this.WriteObject(this.GetOutputObjects(result.ToJToken()), enumerateCollection: true);
+            this.WriteObject(this.GetOutputObjects(JObject.Parse(result)), enumerateCollection: true);
         }
 
         /// <summary>
@@ -109,9 +109,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             
             var policyAssignmentObject = new PolicyAssignment
             {
+                Name = this.Name ?? ResourceIdUtility.GetResourceName(this.Id),
                 Properties = new PolicyAssignmentProperties
                 {
-                    DisplayName = this.DisplayName ?? resource.Properties["DisplayName"].ToString(),
+                    DisplayName = this.DisplayName ?? (resource.Properties["displayName"] != null
+                        ? resource.Properties["displayName"].ToString()
+                        : null)
                 }
             };
 

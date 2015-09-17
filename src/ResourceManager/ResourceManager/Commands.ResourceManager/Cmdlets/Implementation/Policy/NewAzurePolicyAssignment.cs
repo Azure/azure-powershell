@@ -63,6 +63,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected override void OnProcessRecord()
         {
             base.OnProcessRecord();
+            if(this.PolicyDefinition.Properties["policyDefinitionId"] == null)
+            {
+                throw new PSInvalidOperationException("The supplied PolicyDefinition object is invalid.");
+            }
             string resourceId = GetResourceId();
             var apiVersion = this.DetermineApiVersion(resourceId: resourceId).Result;
             
@@ -85,7 +89,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
                 .WaitOnOperation(operationResult: operationResult);
 
-            this.WriteObject(this.GetOutputObjects(result.ToJToken()), enumerateCollection: true);
+            this.WriteObject(this.GetOutputObjects(JObject.Parse(result)), enumerateCollection: true);
         }
 
         /// <summary>
@@ -106,10 +110,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             var policyassignmentObject = new PolicyAssignment
             {
+                Name = this.Name,
                 Properties = new PolicyAssignmentProperties
                 {
                     DisplayName = this.DisplayName ?? null,
-                    PolicyDefinitionId = this.PolicyDefinition.Properties["PolicyDefinitionId"].Value.ToString(),
+                    PolicyDefinitionId = this.PolicyDefinition.Properties["policyDefinitionId"].Value.ToString(),
                     Scope = this.Scope
                 }
             };

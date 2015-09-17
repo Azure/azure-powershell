@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 .DetermineApiVersion(resourceId: resourceId)
                 .ConfigureAwait(continueOnCapturedContext: false);
 
-            if (!string.IsNullOrEmpty(this.Name) && !string.IsNullOrEmpty(this.Scope))
+            if (IsResourceGet(resourceId))
             {
                 var resource = await this
                     .GetResourcesClient()
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     ? retVal
                     : new ResponseWithContinuation<JObject[]> { Value = resource.AsArray() };
             }
-            else if(!string.IsNullOrEmpty(this.Scope) && string.IsNullOrEmpty(this.Name))//If only scope is given, list assignments call
+            else if (IsScopeLevelList(resourceId))//If only scope is given, list assignments call
             {
                 string filter = "$filter=atScope()";
                 return await this
@@ -146,6 +146,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                         odataQuery: filter)
                     .ConfigureAwait(continueOnCapturedContext: false);
             }
+        }
+
+        /// <summary>
+        /// Returns true if it is scope level policy assignment list call
+        /// </summary>
+        private bool IsScopeLevelList(string resourceId)
+        {
+            return (!string.IsNullOrEmpty(this.Scope) && string.IsNullOrEmpty(this.Name))
+                || (!string.IsNullOrEmpty(this.Scope) && string.IsNullOrEmpty(ResourceIdUtility.GetResourceName(resourceId)));
+        }
+
+        /// <summary>
+        /// Returns true if it is a single policy assignment get
+        /// </summary>
+        /// <param name="resourceId"></param>
+        private bool IsResourceGet(string resourceId)
+        {
+            return (!string.IsNullOrEmpty(this.Name) && !string.IsNullOrEmpty(this.Scope))
+                || !string.IsNullOrEmpty(ResourceIdUtility.GetResourceName(resourceId));
         }
 
         /// <summary>
