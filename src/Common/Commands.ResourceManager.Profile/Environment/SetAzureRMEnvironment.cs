@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Profile
     /// Cmdlet to set Azure Environment in Profile.
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRMEnvironment")]
-    [OutputType(typeof(AzureEnvironment))]
+    [OutputType(typeof(PSAzureEnvironment))]
     public class SetAzureRMEnvironmentCommand : AzureRMCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true)]
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.Profile
 
             profileClient.AddOrSetEnvironment(newEnvironment);
 
-            WriteObject(newEnvironment);
+            WriteObject((PSAzureEnvironment)newEnvironment);
         }
 
         private void SetEndpointIfProvided(AzureEnvironment newEnvironment, AzureEnvironment.Endpoint endpoint, string property)

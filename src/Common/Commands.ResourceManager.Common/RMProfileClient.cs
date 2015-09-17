@@ -21,6 +21,7 @@ using Microsoft.Azure.Subscriptions;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;
@@ -164,6 +165,45 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
 
             return _profile.Environments[environment.Name];
+        }
+
+        public List<AzureEnvironment> ListEnvironments(string name)
+        {
+            var result = new List<AzureEnvironment>();
+
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                result.AddRange(_profile.Environments.Values);
+            }
+            else if (_profile.Environments.ContainsKey(name))
+            {
+                result.Add(_profile.Environments[name]);
+            }
+
+            return result;
+        }
+
+        public AzureEnvironment RemoveEnvironment(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+            {
+                throw new ArgumentNullException("name", Resources.EnvironmentNameNeedsToBeSpecified);
+            }
+            if (AzureEnvironment.PublicEnvironments.ContainsKey(name))
+            {
+                throw new ArgumentException(Resources.RemovingDefaultEnvironmentsNotSupported, "name");
+            }
+
+            if (_profile.Environments.ContainsKey(name))
+            {
+                var environment = _profile.Environments[name];
+                _profile.Environments.Remove(name);
+                return environment;
+            }
+            else
+            {
+                throw new ArgumentException(string.Format(Resources.EnvironmentNotFound, name), "name");
+            }
         }
 
         private AzureEnvironment MergeEnvironmentProperties(AzureEnvironment environment1, AzureEnvironment environment2)

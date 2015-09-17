@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Profile
     /// Cmdlet to add Azure Environment to Profile.
     /// </summary>
     [Cmdlet(VerbsCommon.Add, "AzureRMEnvironment")]
-    [OutputType(typeof(AzureEnvironment))]
+    [OutputType(typeof(PSAzureEnvironment))]
     public class AddAzureRMEnvironmentCommand : AzureRMCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true)]
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Profile
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.TrafficManagerDnsSuffix] = TrafficManagerDnsSuffix;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix] = SqlDatabaseDnsSuffix;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.AdTenant] = AdTenant;
-            WriteObject(profileClient.AddOrSetEnvironment(newEnvironment));
+            WriteObject((PSAzureEnvironment)profileClient.AddOrSetEnvironment(newEnvironment));
         }
     }
 }
