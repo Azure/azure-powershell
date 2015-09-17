@@ -394,6 +394,7 @@
     </None>
     <None Include="Microsoft.Azure.Commands.Network.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">

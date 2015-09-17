@@ -61,6 +61,7 @@ function Test-LoadBalancerCRUD-Public
         Assert-AreEqual $expectedLb.Name $actualLb.Name
         Assert-AreEqual $expectedLb.Location $actualLb.Location
         Assert-AreEqual "Succeeded" $expectedLb.ProvisioningState
+        Assert-NotNull $expectedLb.ResourceGuid
         Assert-AreEqual 1 @($expectedLb.FrontendIPConfigurations).Count
         
         Assert-AreEqual $frontendName $expectedLb.FrontendIPConfigurations[0].Name
