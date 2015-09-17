@@ -87,7 +87,6 @@
     </DirectoryRef>
 
     <Feature Id="azurecmd" Title="Microsoft Azure PowerShell" Level="1" Description="Windows PowerShell commandlets">
-      <ComponentGroupRef Id="azurecmdfiles" />
       <ComponentRef Id="PSModulePath.System" />
       <ComponentRef Id="AzureSdkShortcut" />
     </Feature>
