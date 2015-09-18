@@ -44,27 +44,27 @@ namespace Microsoft.Azure.Commands.Insights.Events
         /// <summary>
         /// Gets or sets the status parameter of the cmdlet
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The status of the records to fetch")]
+        [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The status of the events to fetch")]
         [ValidateNotNullOrEmpty]
         public override string Status { get; set; }
 
         /// <summary>
         /// Gets or sets the caller parameter of the cmdlet
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The caller of the records to fetch")]
+        [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The caller of the events to fetch")]
         [ValidateNotNullOrEmpty]
         public override string Caller { get; set; }
 
         /// <summary>
         /// Gets or sets the detailedoutput parameter of the cmdlet
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "Return object with all the details of the records (the default is to return only some attributes, i.e. no detail)")]
+        [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "Return object with all the details of the events (the default is to return only some attributes, i.e. no detail)")]
         public override SwitchParameter DetailedOutput { get; set; }
 
         /// <summary>
         /// Gets or sets the correlationId of the cmdlet
         /// </summary>
-        [Parameter(Position = 0, ParameterSetName = CorrelationIdName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "CorrelationId")]
+        [Parameter(Position = 0, ParameterSetName = CorrelationIdName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The CorrelationId")]
         [ValidateNotNullOrEmpty]
         public string CorrelationId { get; set; }
 
@@ -78,16 +78,23 @@ namespace Microsoft.Azure.Commands.Insights.Events
         /// <summary>
         /// Gets or sets the resourceId parameter of the cmdlet
         /// </summary>
-        [Parameter(Position = 0, ParameterSetName = ResourceIdName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "ResourceId")]
+        [Parameter(Position = 0, ParameterSetName = ResourceIdName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The ResourceId")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the resourceprovider parameter of the cmdlet
         /// </summary>
-        [Parameter(Position = 0, ParameterSetName = ResourceProviderName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "ResourceProvider name")]
+        [Parameter(Position = 0, ParameterSetName = ResourceProviderName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The ResourceProvider name")]
         [ValidateNotNullOrEmpty]
         public string ResourceProvider { get; set; }
+
+        /// <summary>
+        /// Gets or sets the max number of events to fetch parameter of the cmdlet
+        /// </summary>
+        [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The maximum number of events to fetch")]
+        [ValidateNotNullOrEmpty]
+        public virtual int MaxEvents { get; set; }
 
         /// <summary>
         /// Process the parameters defined by this class  (a.k.a. particular parameters)
@@ -96,6 +103,8 @@ namespace Microsoft.Azure.Commands.Insights.Events
         /// <returns>The query filter with the conditions for particular parameters added</returns>
         protected override string ProcessParticularParameters(string currentQueryFilter)
         {
+            this.SetMaxEventsIfPresent(currentQueryFilter, "MaxEvents", this.MaxEvents);
+
             string extendedQuery = this.AddConditionIfPResent(currentQueryFilter, "correlationId", this.CorrelationId);
             extendedQuery = this.AddConditionIfPResent(extendedQuery, "resourceGroupName", this.ResourceGroup);
 
