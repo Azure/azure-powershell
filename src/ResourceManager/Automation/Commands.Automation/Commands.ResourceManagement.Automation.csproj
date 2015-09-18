@@ -159,6 +159,7 @@
     <Compile Include="Cmdlet\RegisterAzureAutomationDscNode.cs" />
     <Compile Include="Cmdlet\RegisterAzureAutomationScheduledRunbook.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationCertificate.cs" />
+    <Compile Include="Cmdlet\RemoveAzureAutomationConnectionType.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationConnection.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationCredential.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationModule.cs" />

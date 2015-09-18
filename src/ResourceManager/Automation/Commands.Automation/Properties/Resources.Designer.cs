@@ -232,6 +232,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The connection type was not found. ConnectionType name: {0}..
+        /// </summary>
+        internal static string ConnectionTypeNotFound {
+            get {
+                return ResourceManager.GetString("ConnectionTypeNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The credential was not found. Credential name: {0}..
         /// </summary>
         internal static string CredentialNotFound {
@@ -264,6 +273,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         internal static string DscNodeNotFound {
             get {
                 return ResourceManager.GetString("DscNodeNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File name and runbook name must be the same for PowerShell Workflow runbooks..
+        /// </summary>
+        internal static string FileNameRunbookNameMismatch {
+            get {
+                return ResourceManager.GetString("FileNameRunbookNameMismatch", resourceCulture);
             }
         }
         
@@ -489,6 +507,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         internal static string RemoveAzureAutomationScheduleWarning {
             get {
                 return ResourceManager.GetString("RemoveAzureAutomationScheduleWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This connection type has connections associated with it. If you delete this connection type, all connections associated with it will be unusable and should be removed, unless you create a new connection type with the same name that has the same field definitions as the deleted connection type. However, it can have additional fields as well. Are you sure you want to remove the Azure Automation {0} ?.
+        /// </summary>
+        internal static string RemoveConnectionTypeThatHasConnectionWarning {
+            get {
+                return ResourceManager.GetString("RemoveConnectionTypeThatHasConnectionWarning", resourceCulture);
             }
         }
         

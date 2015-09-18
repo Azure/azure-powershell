@@ -133,6 +133,7 @@
     <Compile Include="Cmdlet\GetAzureAutomationConnection.cs" />
     <Compile Include="Cmdlet\NewAzureAutomationConnection.cs" />
     <Compile Include="Cmdlet\RemoveAzureAutomationConnection.cs" />
+    <Compile Include="Cmdlet\RemoveAzureAutomationConnectionType.cs" />
     <Compile Include="Cmdlet\SetAzureAutomationConnection.cs" />
     <Compile Include="Cmdlet\SetAzureAutomationCertificate.cs" />
     <Compile Include="Cmdlet\NewAzureAutomationCertificate.cs" />
