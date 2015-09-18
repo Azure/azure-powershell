@@ -24,7 +24,7 @@ CompanyName = 'Microsoft Corporation'
 Copyright = '© Microsoft Corporation. All rights reserved.'    
   
 # Description of the functionality provided by this module  
-Description = ''  
+Description = 'Azure Resource Manager'  
   
 # Minimum version of the Windows PowerShell engine required by this module  
 PowerShellVersion = '3.0'  
@@ -55,59 +55,59 @@ ScriptsToProcess = @()
   
 # Type files (.ps1xml) to be loaded when importing this module  
 TypesToProcess = @(  
-    '.\Compute\Microsoft.Azure.Commands.Compute.Types.ps1xml',
-    '.\Sql\Microsoft.Azure.Commands.Sql.Types.ps1xml' 
+    '.\Azure.Compute\Microsoft.Azure.Commands.Compute.Types.ps1xml',
+    '.\Azure.Sql\Microsoft.Azure.Commands.Sql.Types.ps1xml' 
 )  
   
 # Format files (.ps1xml) to be loaded when importing this module  
 FormatsToProcess = @(  
-    '.\Resources\Microsoft.Azure.Commands.Resources.format.ps1xml',  
-    '.\Tags\Microsoft.Azure.Commands.Tags.format.ps1xml',  
-    '.\Resources\Microsoft.Azure.Commands.Profile.format.ps1xml',  
-    '.\DataFactories\Microsoft.Azure.Commands.DataFactories.format.ps1xml',  
-    '.\RedisCache\Microsoft.Azure.Commands.RedisCache.format.ps1xml',  
-    '.\AzureBatch\Microsoft.Azure.Commands.Batch.format.ps1xml',  
-    '.\KeyVault\Microsoft.Azure.Commands.KeyVault.format.ps1xml',  
-    '.\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.format.ps1xml',  
-    '.\Compute\Microsoft.Azure.Commands.Compute.format.ps1xml',  
-    '.\Compute\Microsoft.Azure.Commands.Compute.format.generated.ps1xml',  
-    '.\Network\Microsoft.Azure.Commands.Network.format.ps1xml',  
-    '.\Storage\Microsoft.WindowsAzure.Commands.Storage.format.ps1xml',  
-    '.\StorageManagement\Microsoft.Azure.Commands.Management.Storage.format.ps1xml', 
-    '.\OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.format.ps1xml',  
-    '.\AzureBackup\Microsoft.Azure.Commands.AzureBackup.format.ps1xml',
-    '.\UsageAggregates\Microsoft.Azure.Commands.UsageAggregates.Format.ps1xml',
-    '.\Sql\Microsoft.Azure.Commands.Sql.format.ps1xml'
+    '.\Azure.Resources\Microsoft.Azure.Commands.Resources.format.ps1xml',  
+    '.\Azure.Tags\Microsoft.Azure.Commands.Tags.format.ps1xml',  
+    '.\Azure.Resources\Microsoft.Azure.Commands.Profile.format.ps1xml',  
+    '.\Azure.DataFactories\Microsoft.Azure.Commands.DataFactories.format.ps1xml',  
+    '.\Azure.RedisCache\Microsoft.Azure.Commands.RedisCache.format.ps1xml',  
+    '.\Azure.AzureBatch\Microsoft.Azure.Commands.Batch.format.ps1xml',  
+    '.\Azure.KeyVault\Microsoft.Azure.Commands.KeyVault.format.ps1xml',  
+    '.\Azure.StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.format.ps1xml',  
+    '.\Azure.Compute\Microsoft.Azure.Commands.Compute.format.ps1xml',  
+    '.\Azure.Compute\Microsoft.Azure.Commands.Compute.format.generated.ps1xml',  
+    '.\Azure.Network\Microsoft.Azure.Commands.Network.format.ps1xml',  
+    '.\Azure.Storage\Microsoft.WindowsAzure.Commands.Storage.format.ps1xml',  
+    '.\Azure.StorageManagement\Microsoft.Azure.Commands.Management.Storage.format.ps1xml', 
+    '.\Azure.OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.format.ps1xml',  
+    '.\Azure.AzureBackup\Microsoft.Azure.Commands.AzureBackup.format.ps1xml',
+    '.\Azure.UsageAggregates\Microsoft.Azure.Commands.UsageAggregates.Format.ps1xml',
+    '.\Azure.Sql\Microsoft.Azure.Commands.Sql.format.ps1xml'
 )  
   
 # Modules to import as nested modules of the module specified in ModuleToProcess  
 NestedModules = @(  
-    '.\Automation\Microsoft.Azure.Commands.ResourceManager.Automation.dll',  
-    '.\Resources\Microsoft.Azure.Commands.Resources.dll',  
-    '.\Resources\Microsoft.Azure.Commands.Profile.dll',  
-    '.\Tags\Microsoft.Azure.Commands.Tags.dll',  
-    '.\Sql\Microsoft.Azure.Commands.Sql.dll',  
-    '.\DataFactories\Microsoft.Azure.Commands.DataFactories.dll',  
-    '.\RedisCache\Microsoft.Azure.Commands.RedisCache.dll',  
-    '.\AzureBatch\Microsoft.Azure.Commands.Batch.dll',  
-    '.\Dns\Microsoft.Azure.Commands.Dns.dll',  
-    '.\KeyVault\Microsoft.Azure.Commands.KeyVault.dll',  
-    '.\TrafficManager\Microsoft.Azure.Commands.TrafficManager.dll',  
-    '.\StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.dll',  
-    '.\Insights\Microsoft.Azure.Commands.Insights.dll',  
-    '.\Websites\Microsoft.Azure.Commands.Websites.dll',  
-    '.\Compute\Microsoft.Azure.Commands.Compute.dll',  
-    '.\Network\Microsoft.Azure.Commands.Network.dll',  
-    '.\Storage\Microsoft.WindowsAzure.Commands.Storage.dll',  
-    '.\ResourceManager\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll',  
-    '.\ApiManagement\Microsoft.Azure.Commands.ApiManagement.dll',  
-    '.\StorageManagement\Microsoft.Azure.Commands.Management.Storage.dll',  
-    '.\OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.dll',  
-    '.\UsageAggregates\Microsoft.Azure.Commands.UsageAggregates.dll', 
-    '.\HDInsight\Microsoft.Azure.Commands.HDInsight.dll',
-    '.\ApiManagement\Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll',  
-    '.\AzureBackup\Microsoft.Azure.Commands.AzureBackup.dll',
-    '.\SiteRecovery\Microsoft.Azure.Commands.SiteRecovery.dll'
+    '.\Azure.Automation\Microsoft.Azure.Commands.ResourceManager.Automation.dll',  
+    '.\Azure.Resources\Microsoft.Azure.Commands.Resources.dll',  
+    '.\Azure.Resources\Microsoft.Azure.Commands.Profile.dll',  
+    '.\Azure.Tags\Microsoft.Azure.Commands.Tags.dll',  
+    '.\Azure.Sql\Microsoft.Azure.Commands.Sql.dll',  
+    '.\Azure.DataFactories\Microsoft.Azure.Commands.DataFactories.dll',  
+    '.\Azure.RedisCache\Microsoft.Azure.Commands.RedisCache.dll',  
+    '.\Azure.AzureBatch\Microsoft.Azure.Commands.Batch.dll',  
+    '.\Azure.Dns\Microsoft.Azure.Commands.Dns.dll',  
+    '.\Azure.KeyVault\Microsoft.Azure.Commands.KeyVault.dll',  
+    '.\Azure.TrafficManager\Microsoft.Azure.Commands.TrafficManager.dll',  
+    '.\Azure.StreamAnalytics\Microsoft.Azure.Commands.StreamAnalytics.dll',  
+    '.\Azure.Insights\Microsoft.Azure.Commands.Insights.dll',  
+    '.\Azure.Websites\Microsoft.Azure.Commands.Websites.dll',  
+    '.\Azure.Compute\Microsoft.Azure.Commands.Compute.dll',  
+    '.\Azure.Network\Microsoft.Azure.Commands.Network.dll',  
+    '.\Azure.Storage\Microsoft.WindowsAzure.Commands.Storage.dll',  
+    '.\Azure.ResourceManager\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll',  
+    '.\Azure.ApiManagement\Microsoft.Azure.Commands.ApiManagement.dll',  
+    '.\Azure.StorageManagement\Microsoft.Azure.Commands.Management.Storage.dll',  
+    '.\Azure.OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.dll',  
+    '.\Azure.UsageAggregates\Microsoft.Azure.Commands.UsageAggregates.dll', 
+    '.\Azure.HDInsight\Microsoft.Azure.Commands.HDInsight.dll',
+    '.\Azure.ApiManagement\Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll',  
+    '.\Azure.AzureBackup\Microsoft.Azure.Commands.AzureBackup.dll',
+    '.\Azure.SiteRecovery\Microsoft.Azure.Commands.SiteRecovery.dll'
 )  
   
 # Functions to export from this module  
