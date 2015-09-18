@@ -38,6 +38,7 @@ function Test-PublicIpAddressCRUD
       Assert-AreEqual $expected.Name $actual.Name	
       Assert-AreEqual $expected.Location $actual.Location
       Assert-AreEqual "Dynamic" $expected.PublicIpAllocationMethod
+      Assert-NotNull $expected.ResourceGuid
       Assert-AreEqual "Succeeded" $expected.ProvisioningState
       Assert-AreEqual $domainNameLabel $expected.DnsSettings.DomainNameLabel
       

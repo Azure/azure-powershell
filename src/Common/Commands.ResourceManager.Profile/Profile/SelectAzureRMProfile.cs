@@ -35,6 +35,11 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(ParameterSetName = ProfileFromDiskParameterSet, Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true)]
         public string Path { get; set; }
 
+        protected override void BeginProcessing()
+        {
+            // Do not access the DefaultContext when loading a profile
+        }
+
         protected override void ProcessRecord()
         {
             if (!string.IsNullOrEmpty(Path))

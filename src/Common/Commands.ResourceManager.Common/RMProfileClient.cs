@@ -16,10 +16,12 @@ using Hyak.Common;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Factories;
 using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Common.Authentication.Properties;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;
@@ -60,9 +62,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 foreach(var tenant in ListAccountTenants(account, environment, password, promptBehavior))
                 {
-                    if (TryGetTenantSubscription(account, environment, tenant.Id.ToString(), subscriptionId, password, ShowDialog.Auto, out newSubscription, out newTenant))
+                    AzureTenant tempTenant;
+                    if (TryGetTenantSubscription(account, environment, tenant.Id.ToString(), subscriptionId, password, ShowDialog.Auto, out newSubscription, out tempTenant))
                     {
-                        break;
+                        newTenant = tempTenant;
                     }
                 }
             }
@@ -138,6 +141,98 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             AzureTenant tenant;
             return TryGetTenantSubscription(_profile.Context.Account, _profile.Context.Environment,
                 tenantId, subscriptionId, null, ShowDialog.Never, out subscription, out tenant);
+        }
+
+        public AzureEnvironment AddOrSetEnvironment(AzureEnvironment environment)
+        {
+            if (environment == null)
+            {
+                throw new ArgumentNullException("environment", Resources.EnvironmentNeedsToBeSpecified);
+            }
+
+            if (AzureEnvironment.PublicEnvironments.ContainsKey(environment.Name))
+            {
+                throw new ArgumentException(Resources.ChangingDefaultEnvironmentNotSupported, "environment");
+            }
+
+            if (_profile.Environments.ContainsKey(environment.Name))
+            {
+                _profile.Environments[environment.Name] =
+                    MergeEnvironmentProperties(environment, _profile.Environments[environment.Name]);
+            }
+            else
+            {
+                _profile.Environments[environment.Name] = environment;
+            }
+
+            return _profile.Environments[environment.Name];
+        }
+
+        public List<AzureEnvironment> ListEnvironments(string name)
+        {
+            var result = new List<AzureEnvironment>();
+
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                result.AddRange(_profile.Environments.Values);
+            }
+            else if (_profile.Environments.ContainsKey(name))
+            {
+                result.Add(_profile.Environments[name]);
+            }
+
+            return result;
+        }
+
+        public AzureEnvironment RemoveEnvironment(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+            {
+                throw new ArgumentNullException("name", Resources.EnvironmentNameNeedsToBeSpecified);
+            }
+            if (AzureEnvironment.PublicEnvironments.ContainsKey(name))
+            {
+                throw new ArgumentException(Resources.RemovingDefaultEnvironmentsNotSupported, "name");
+            }
+
+            if (_profile.Environments.ContainsKey(name))
+            {
+                var environment = _profile.Environments[name];
+                _profile.Environments.Remove(name);
+                return environment;
+            }
+            else
+            {
+                throw new ArgumentException(string.Format(Resources.EnvironmentNotFound, name), "name");
+            }
+        }
+
+        private AzureEnvironment MergeEnvironmentProperties(AzureEnvironment environment1, AzureEnvironment environment2)
+        {
+            if (environment1 == null || environment2 == null)
+            {
+                throw new ArgumentNullException("environment1");
+            }
+            if (!string.Equals(environment1.Name, environment2.Name, StringComparison.InvariantCultureIgnoreCase))
+            {
+                throw new ArgumentException("Environment names do not match.");
+            }
+            AzureEnvironment mergedEnvironment = new AzureEnvironment
+            {
+                Name = environment1.Name
+            };
+
+            // Merge all properties
+            foreach (AzureEnvironment.Endpoint property in Enum.GetValues(typeof(AzureEnvironment.Endpoint)))
+            {
+                string propertyValue = environment1.GetEndpoint(property) ?? environment2.GetEndpoint(property);
+                if (propertyValue != null)
+                {
+                    mergedEnvironment.Endpoints[property] = propertyValue;
+                }
+            }
+
+            return mergedEnvironment;
         }
 
         private bool TryGetTenantSubscription(
@@ -251,7 +346,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     environment,
                     tenantId,
                     password,
-                    promptBehavior);
+                    promptBehavior, 
+                    TokenCache.DefaultShared);
             using (var subscriptionClient = AzureSession.ClientFactory.CreateCustomClient<SubscriptionClient>(
                 new TokenCloudCredentials(accessToken.AccessToken),
                 environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager)))

@@ -207,8 +207,6 @@
     <Compile Include="ScenarioTests\RoleAssignmentTests.cs" />
     <Compile Include="ScenarioTests\RoleDefinitionTests.cs" />
     <Compile Include="Templates\TestAzureResourceGroupTemplateCommandTests.cs" />
-    <Compile Include="Templates\SaveAzureResourceGroupGalleryTemplateCommandTests.cs" />
-    <Compile Include="Templates\GetAzureResourceGroupGalleryTemplateCommandTests.cs" />
     <Compile Include="Models.ResourceGroups\ResourceClientTests.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
