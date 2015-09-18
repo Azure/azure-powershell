@@ -28,7 +28,7 @@ function Test-CreatesNewSimpleResource
 
 	# Test
 	New-AzureRMResourceGroup -Name $rgname -Location $rglocation
-	$actual = New-AzureRMResource -Name $rname -Location $location -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -ApiVersion $apiversion
+	$actual = New-AzureRMResource -Name $rname -Location $location -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion
 	$expected = Get-AzureRMResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceType -ApiVersion $apiversion
 	
 	$list = Get-AzureRMResource -ResourceGroupName $rgname
@@ -39,6 +39,7 @@ function Test-CreatesNewSimpleResource
 	Assert-AreEqual $expected.ResourceType $actual.ResourceType
 	Assert-AreEqual 1 @($list).Count
 	Assert-AreEqual $expected.Name $list[0].Name	
+	Assert-AreEqual $expected.Sku $actual.Sku	
 }
 
 <#
@@ -259,11 +260,13 @@ function Test-SetAResource
 
 	# Test
 	New-AzureRMResourceGroup -Name $rgname -Location $rglocation
-	$resource = New-AzureRMResource -Name $rname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -ApiVersion $apiversion -Force
-	Set-AzureRMResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -Properties @{"key2" = "value2"} -Force
+	$resource = New-AzureRMResource -Name $rname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+	Set-AzureRMResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -Properties @{"key2" = "value2"}  -Force
+	Set-AzureRMResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -SkuObject @{ Name = "A1" }  -Force
 
 	$modifiedResource = Get-AzureRMResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType
 
 	# Assert
 	Assert-AreEqual $modifiedResource.Properties.key2 "value2"
+	Assert-AreEqual $modifiedResource.Sku.Name "A1"
 }
