@@ -38,7 +38,6 @@
     </WixExtension>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="azurecmdfiles.wxi" />
     <Content Include="media\GettingStarted.url" />
     <Content Include="media\License.rtf" />
     <Content Include="media\WAIcon.ico" />
@@ -52,6 +51,10 @@
   <Import Project="$(WixTargetsPath)" />
   <PropertyGroup>
     <PreBuildEvent />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <OutputPath>
+    </OutputPath>
   </PropertyGroup>
   <!--
 	To modify your build process, add your task inside one of the targets below and uncomment it.
