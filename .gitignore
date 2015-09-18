@@ -194,3 +194,4 @@ UpgradeLog*.htm
 FakesAssemblies/
 
 .vs/
+/tools/*.dll
