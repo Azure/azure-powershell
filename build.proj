@@ -231,14 +231,13 @@
     </GetFrameworkSdkPath>
 
     <ItemGroup>
-      <DelaySignedAssembliesToValidate Include="src\Package\$(Configuration)\**\Microsoft*Azure*Commands*.dll" />
-      <DelaySignedAssembliesToValidate Include="src\Package\$(Configuration)\**\Microsoft.Azure.Common.Extensions.dll" />
+      <DelaySignedAssembliesToValidate Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\Microsoft*Azure*Commands*.dll" />
+      <DelaySignedAssembliesToValidate Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\Microsoft.Azure.Common.Extensions.dll" />
       <DelaySignedFilesToValidate Include="@(DelaySignedAssembliesToValidate)" />
-      <DelaySignedFilesToValidate Include="src\Package\$(Configuration)\**\*.ps1" />
-      <DelaySignedFilesToValidate Include="setup*\build\$(Configuration)\AzurePowerShell*.msi" />
+      <DelaySignedFilesToValidate Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\*.ps1" />
     </ItemGroup>
     
-    <Message Importance="high" Text="src\Package\$(Configuration) does not contains any files to sign. Code sign will skip." 
+    <Message Importance="high" Text="$(LibrarySourceFolder)\Package\$(Configuration) does not contains any files to sign. Code sign will skip." 
              Condition="'@(DelaySignedFilesToValidate)' == ''" />
              
     <ValidateStrongNameSignatureTask
@@ -253,26 +252,30 @@
       Description="Microsoft Azure PowerShell"
       Keywords="Microsoft Azure PowerShell"
       UnsignedFiles="@(DelaySignedFilesToValidate)"
-      DestinationPath="signed"
-      SigningLogPath="signed\signing.log"
+      DestinationPath="$(LibraryRoot)"
+      BasePath="$(LibraryRoot)"
+      SigningLogPath="$(LibraryRoot)\signing.log"
       ToolsPath="$(CIToolsPath)"
       Condition="!$(DelaySign) and '@(DelaySignedFilesToValidate)' != ''"/>  
+    
+    <!--<ItemGroup>
+        <SignedFilesToCopy Include="$(LibraryRoot)\signed\**\*.*" />
+    </ItemGroup>
+    
+    <Copy SourceFiles="@(SignedFilesToCopy)" 
+      DestinationFiles="@(SignedFilesToCopy->'$(LibrarySourceFolder)\Package\$(Configuration)\%(RecursiveDir)%(Filename)%(Extension)')"
+      Condition="!$(DelaySign) and '@(DelaySignedFilesToValidate)' != ''"/>  -->
       
     <!--If we are testing locally then we copy the binaries and do not submit to the code sign server-->
     <Copy SourceFiles="@(DelaySignedFilesToValidate)" DestinationFolder="signed" Condition="$(DelaySign)" />
-    
-    <ItemGroup>
-      <AfterSignedAssembliesToValidate Include="signed\*.dll" />
-    </ItemGroup>
+
     <ValidateStrongNameSignatureTask
         WindowsSdkPath="$(WindowsSdkPath)"
-        Assembly="%(AfterSignedAssembliesToValidate.Identity)"
+        Assembly="%(DelaySignedAssembliesToValidate.Identity)"
         ExpectedTokenSignature="$(StrongNameToken)"
         ExpectedDelaySigned="false"
         ContinueOnError="false" 
-        Condition="!$(DelaySign) and '@(AfterSignedAssembliesToValidate)' != ''"/>
-    
-    <Message Text="TODO: Copy signed files back"/>
+        Condition="!$(DelaySign) and '@(DelaySignedAssembliesToValidate)' != ''"/>
   </Target>
   
   <Target Name="SignInstaller">
@@ -285,25 +288,24 @@
     </GetFrameworkSdkPath>
 
     <ItemGroup>
-      <DelaySignedFilesToValidate Include="setup*\build\$(Configuration)\AzurePowerShell*.msi" />
+      <DelaySignedFilesToValidate Include="$(LibraryRoot)\setup*\build\**\*.msi" />
     </ItemGroup>
     
-    <Message Importance="high" Text="setup*\build\$(Configuration) does not contains any installer files to sign. Code sign will skip." 
+    <Message Importance="high" Text="$(LibraryRoot)\setup does not contains any installers to sign. Code sign will skip." 
              Condition="'@(DelaySignedFilesToValidate)' == ''" />
-    
+
     <CodeSigningTask
       Description="Microsoft Azure PowerShell"
       Keywords="Microsoft Azure PowerShell"
       UnsignedFiles="@(DelaySignedFilesToValidate)"
-      DestinationPath="signed"
-      SigningLogPath="signed\signing.log"
+      DestinationPath="$(LibraryRoot)"
+      BasePath="$(LibraryRoot)"
+      SigningLogPath="$(LibraryRoot)\msi-signing.log"
       ToolsPath="$(CIToolsPath)"
       Condition="!$(DelaySign) and '@(DelaySignedFilesToValidate)' != ''"/>  
-      
+         
     <!--If we are testing locally then we copy the binaries and do not submit to the code sign server-->
     <Copy SourceFiles="@(DelaySignedFilesToValidate)" DestinationFolder="signed" Condition="$(DelaySign)" />
-    
-    <Message Text="TODO: Copy signed files back"/>
   </Target>
 
   <PropertyGroup>
