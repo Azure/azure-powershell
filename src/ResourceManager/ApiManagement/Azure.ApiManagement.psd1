@@ -62,7 +62,7 @@ FormatsToProcess = @()
 # Modules to import as nested modules of the module specified in ModuleToProcess  
 NestedModules = @(  
     '.\ApiManagement\Microsoft.Azure.Commands.ApiManagement.dll',
-    '.\ApiManagement\Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll
+    '.\ApiManagement\Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll'
 )  
   
 # Functions to export from this module  
