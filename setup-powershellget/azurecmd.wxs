@@ -31,10 +31,10 @@
     <Property Id="PSCOMPATIBLEVERSION">
       <RegistrySearch Id="PSCOMPATIBLEVERSION" Root="HKLM" Key="SOFTWARE\Microsoft\PowerShell\3\PowerShellEngine" Name="PSCompatibleVersion" Type="raw" />
     </Property>
-
-    <Condition Message="This setup requires the Windows PowerShell 3.0 or compatible version to be installed.">
+    
+    <Condition Message="This setup requires the Windows PowerShell 5.0 or compatible version to be installed.">
       <!-- This condition will break if PowerShell has version x3.0 and it is not compatible with 3.0 -->
-      <![CDATA[Installed or (PSCOMPATIBLEVERSION >< "3.0")]]>
+      <![CDATA[Installed or (PSCOMPATIBLEVERSION >< "5.0")]]>
     </Condition>
 
     <PropertyRef Id="NETFRAMEWORK40FULL" />
