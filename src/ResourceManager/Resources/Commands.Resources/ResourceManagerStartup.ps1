@@ -74,7 +74,8 @@ function Get-AzureRMAuthorizationChangeLog {
         
          # Create the output structure
          $out = "" | select Timestamp, Caller, Action, PrincipalId, PrincipalName, PrincipalType, Scope, ScopeName, ScopeType, RoleDefinitionId, RoleName
-         $out.Timestamp = $endEvent.EventTimestamp
+				 
+         $out.Timestamp = Get-Date -Date $endEvent.EventTimestamp -Format u
          $out.Caller = $_.Caller
          if ($_.HttpRequest.Method -ieq "PUT") {
             $out.Action = "Granted"
@@ -92,21 +93,72 @@ function Get-AzureRMAuthorizationChangeLog {
         }
 
         if ($messageBody) {
-            
+            # Process principal details
             $out.PrincipalId = $messageBody.properties.principalId
             if ($out.PrincipalId -ne $null) { 
-                $principalDetails = Get-PrincipalDetails $out.PrincipalId ([REF]$principalDetailsCache)
+				# Get principal details by querying Graph. Cache principal details and read from cache if present
+				$principalId = $out.PrincipalId 
+                
+				if($principalDetailsCache.ContainsKey($principalId)) {
+					# Found in cache
+                    $principalDetails = $principalDetailsCache[$principalId]
+                } else { # not in cache
+		            $principalDetails = "" | select Name, Type
+                    $user = Get-AzureRMADUser -ObjectId $principalId
+                    if ($user) {
+                        $principalDetails.Name = $user.DisplayName
+                        $principalDetails.Type = "User"    
+                    } else {
+                        $group = Get-AzureRMADGroup -ObjectId $principalId
+                        if ($group) {
+                            $principalDetails.Name = $group.DisplayName
+                            $principalDetails.Type = "Group"        
+                        } else {
+                            $servicePrincipal = Get-AzureRMADServicePrincipal -objectId $principalId
+                            if ($servicePrincipal) {
+                                $principalDetails.Name = $servicePrincipal.DisplayName
+                                $principalDetails.Type = "Service Principal"                        
+                            }
+                        }
+                    }              
+					# add principal details to cache
+                    $principalDetailsCache.Add($principalId, $principalDetails);
+	            }
+
                 $out.PrincipalName = $principalDetails.Name
                 $out.PrincipalType = $principalDetails.Type
             }
 
+			# Process scope details
             if ([string]::IsNullOrEmpty($out.Scope)) { $out.Scope = $messageBody.properties.Scope }
             if ($out.Scope -ne $null) {
-                $resourceDetails = Get-ResourceDetails $out.Scope
-                $out.ScopeName = $resourceDetails.Name
+				# Remove the authorization provider details from the scope, if present
+			    if ($out.Scope.ToLower().Contains("/providers/microsoft.authorization")) {
+					$index = $out.Scope.ToLower().IndexOf("/providers/microsoft.authorization") 
+					$out.Scope = $out.Scope.Substring(0, $index) 
+				}
+
+              	$scope = $out.Scope 
+				$resourceDetails = "" | select Name, Type
+                $scopeParts = $scope.Split('/', [System.StringSplitOptions]::RemoveEmptyEntries)
+                $len = $scopeParts.Length
+
+                if ($len -gt 0 -and $len -le 2 -and $scope.ToLower().Contains("subscriptions"))	{
+                    $resourceDetails.Type = "Subscription"
+                    $resourceDetails.Name  = $scopeParts[1]
+                } elseif ($len -gt 0 -and $len -le 4 -and $scope.ToLower().Contains("resourcegroups")) {
+                    $resourceDetails.Type = "Resource Group"
+                    $resourceDetails.Name  = $scopeParts[3]
+                    } elseif ($len -ge 6 -and $scope.ToLower().Contains("providers")) {
+                        $resourceDetails.Type = "Resource"
+                        $resourceDetails.Name  = $scopeParts[$len -1]
+                        }
+                
+				$out.ScopeName = $resourceDetails.Name
                 $out.ScopeType = $resourceDetails.Type
             }
 
+			# Process Role definition details
             $out.RoleDefinitionId = $messageBody.properties.roleDefinitionId
             if ($out.RoleDefinitionId -ne $null) {
                 if ($azureRoleDefinitionCache[$out.RoleDefinitionId]) {
@@ -124,7 +176,7 @@ function Get-AzureRMAuthorizationChangeLog {
         if($_.Status -ne $null -and $_.Status -ieq "Succeeded" -and $_.OperationName -ne $null -and $_.operationName.StartsWith("Microsoft.Authorization/ClassicAdministrators", [System.StringComparison]::OrdinalIgnoreCase)) {
             
             $out = "" | select Timestamp, Caller, Action, PrincipalId, PrincipalName, PrincipalType, Scope, ScopeName, ScopeType, RoleDefinitionId, RoleName
-            $out.Timestamp = $_.EventTimestamp
+            $out.Timestamp = Get-Date -Date $_.EventTimestamp -Format u
             $out.Caller = "Subscription Admin"
 
             if($_.operationName -ieq "Microsoft.Authorization/ClassicAdministrators/write"){
@@ -153,60 +205,4 @@ function Get-AzureRMAuthorizationChangeLog {
     $output | Sort Timestamp
 } 
 } # End commandlet
-
-# Helper functions
-# Resolve a principal. If the principal's object id was encountered in the principals resolved so far, return principalDetails from the cache. 
-# Else make a Grpah call and add that principal to cache of known principals
-function Get-PrincipalDetails($principalId, [REF]$principalDetailsCache)
-{	
-    if($principalDetailsCache.Value.ContainsKey($principalId)) {
-        return $principalDetailsCache.Value[$principalId]
-    }
-
-    $principalDetails = "" | select Name, Type
-    $user = Get-AzureRMADUser -ObjectId $principalId
-    if ($user) {
-        $principalDetails.Name = $user.DisplayName
-        $principalDetails.Type = "User"    
-    } else {
-        $group = Get-AzureRMADGroup -ObjectId $principalId
-        if ($group) {
-            $principalDetails.Name = $group.DisplayName
-            $principalDetails.Type = "Group"        
-        } else {
-            $servicePrincipal = Get-AzureRMADServicePrincipal -objectId $principalId
-            if ($servicePrincipal) {
-                $principalDetails.Name = $servicePrincipal.DisplayName
-                $principalDetails.Type = "Service Principal"                        
-            }
-        }
-    }
-
-    $principalDetailsCache.Value.Add($principalId, $principalDetails);
-
-    $principalDetails
-} 
-
-# Get resource details from scope
-function Get-ResourceDetails($scope)
-{
-    $resourceDetails = "" | select Name, Type
-    $scopeParts = $scope.Split('/', [System.StringSplitOptions]::RemoveEmptyEntries)
-    $len = $scopeParts.Length
-
-    if ($len -gt 0 -and $len -le 2 -and $scope.ToLower().Contains("subscriptions"))	{
-        $resourceDetails.Type = "Subscription"
-        $resourceDetails.Name  = $scopeParts[1]
-    }
-    elseif ($len -gt 0 -and $len -le 4 -and $scope.ToLower().Contains("resourcegroups")) {
-        $resourceDetails.Type = "Resource Group"
-        $resourceDetails.Name  = $scopeParts[3]
-    }
-    elseif ($len -ge 6 -and $scope.ToLower().Contains("providers"))	{
-        $resourceDetails.Type = "Resource"
-        $resourceDetails.Name  = $scopeParts[$len -1]
-    }
-
-    $resourceDetails
-}
  

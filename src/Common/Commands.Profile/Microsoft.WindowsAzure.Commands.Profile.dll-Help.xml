@@ -399,7 +399,7 @@
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="7">
 				<maml:name>GalleryEndpoint</maml:name>
 				<maml:description>
-					<maml:para>Specifies the endpoint for the Azure Resource Manager gallery, which stores resource group gallery templates. For more information about Azure resource groups and gallery templates, see the help topic for Get-AzureResourceGroupGalleryTemplate.</maml:para>
+					<maml:para>Specifies the endpoint for the Azure Resource Manager gallery, which stores resource group gallery templates.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -528,7 +528,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="7">
 			<maml:name>GalleryEndpoint</maml:name>
 			<maml:description>
-				<maml:para>Specifies the endpoint for the Azure Resource Manager gallery, which stores resource group gallery templates. For more information about Azure resource groups and gallery templates, see the help topic for Get-AzureResourceGroupGalleryTemplate.</maml:para>
+				<maml:para>Specifies the endpoint for the Azure Resource Manager gallery, which stores resource group gallery templates.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -3946,7 +3946,7 @@
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="7">
 				<maml:name>GalleryEndpoint</maml:name>
 				<maml:description>
-					<maml:para>Changes the endpoint for the Azure Resource Manager gallery to the specified value. The gallery endpoint is the location for resource group gallery templates. For more information about Azure resource groups and gallery templates, see the help topic for Get-AzureResourceGroupGalleryTemplate.</maml:para>
+					<maml:para>Changes the endpoint for the Azure Resource Manager gallery to the specified value. The gallery endpoint is the location for resource group gallery templates.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -4075,7 +4075,7 @@
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="7">
 			<maml:name>GalleryEndpoint</maml:name>
 			<maml:description>
-				<maml:para>Changes the endpoint for the Azure Resource Manager gallery to the specified value. The gallery endpoint is the location for resource group gallery templates. For more information about Azure resource groups and gallery templates, see the help topic for Get-AzureResourceGroupGalleryTemplate.</maml:para>
+				<maml:para>Changes the endpoint for the Azure Resource Manager gallery to the specified value. The gallery endpoint is the location for resource group gallery templates.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
