@@ -43,6 +43,19 @@
     <SetupSln Include=".\setup\azurepowershell.sln" />
     <SetupPowershellGetSln Include=".\setup-powershellget\powershellget.sln" />
   </ItemGroup>
+  
+  <!--
+  CI build related
+  -->
+  <PropertyGroup>
+    <!--OnPremiseBuildTasks is not a good name, but CI server is using that, will update across soon-->
+    <CIToolsPath>$(OnPremiseBuildTasks)</CIToolsPath>
+    <OnPremiseBuild Condition=" Exists($(OnPremiseBuildTasks)) ">true</OnPremiseBuild>
+    <OnPremiseBuild Condition=" ! Exists($(OnPremiseBuildTasks)) ">false</OnPremiseBuild>
+  </PropertyGroup>
+  <UsingTask Condition=" $(OnPremiseBuild) " TaskName="CodeSigningTask" AssemblyFile="$(CIToolsPath)\Microsoft.WindowsAzure.Tools.Build.Tasks.OnPremise.dll" />
+  <UsingTask Condition=" $(OnPremiseBuild) " TaskName="CorporateValidation" AssemblyFile="$(CIToolsPath)\Microsoft.WindowsAzure.Tools.Build.Tasks.OnPremise.dll" />
+  <Import Condition=" $(OnPremiseBuild) " Project="$(CIToolsPath)\Microsoft.WindowsAzure.Build.OnPremise.msbuild" />
 
   <UsingTask 
     AssemblyFile="$(MSBuildProjectDirectory)\src\packages\xunit.MSBuild.2.0.0.0\tools\xunit.runner.msbuild.dll"
@@ -109,12 +122,11 @@
   don't need to be checked into source control.
   -->
   <Target Name="RestoreNugetPackages">
-    <ItemGroup>
+    <!-- Delete NuGet cache-->
+    <!--<ItemGroup>
       <NuGetCache Include="$(LOCALAPPDATA)\NuGet\Cache\*.nupkg"/>
     </ItemGroup>
-
-     <!-- Delete NuGet cache-->
-    <Delete Files="@(NuGetCache)" />
+    <Delete Files="@(NuGetCache)" />-->
     
     <Delete Files="$(NuGetRestoreConfigFile)" />
     <WriteLinesToFile
@@ -148,6 +160,9 @@
       Targets="Build"
       Properties="Configuration=$(Configuration);Platform=Any CPU"
       BuildInParallel="$(BuildInParallel)" ContinueOnError="false" />
+      
+    <CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " />
+    
     <Message Importance="high" Text="Building Setup..." />
     <MSBuild
       Projects="@(SetupPowershellGetSln)"
@@ -159,8 +174,8 @@
       Targets="Build"
       Properties="Configuration=$(Configuration);Platform=Any CPU"
       ContinueOnError="false" />
-      
-    <CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " />
+    
+    <CallTarget Targets="CodeSignInstaller" Condition=" '$(CodeSign)' == 'true' " />    
   </Target>
   
   <Target Name="CodeSignBinaries">
@@ -177,6 +192,21 @@
     
     <CallTarget Targets="ValidateCorporateCompliance" Condition="!$(DelaySign)"/>
   </Target>
+  
+  <Target Name="CodeSignInstaller">
+    <Error Condition=" !$(OnPremiseBuild) and !$(DelaySign) " Text="No CI tools path available, the code sign will be unable to continue. $(CIToolsPath)" />
+
+    <Message Text="Code signing installer" Importance="high" />
+
+    <Message Text="Signing project: $(MSBuildProjectFullPath)" />
+    
+    <MSBuild Projects="$(MSBuildProjectFullPath)"
+             Targets="SignInstaller"
+             Properties="StrongNameToken=$(StrongNameToken)">    
+    </MSBuild>
+    
+    <CallTarget Targets="ValidateCorporateCompliance" Condition="!$(DelaySign)"/>
+  </Target>
 
   <!-- Do everything possible -->
   <Target
@@ -187,7 +217,7 @@
     <MSBuild Projects="$(LibraryToolsFolder)\BuildPackagesTask\Microsoft.Azure.Build.Tasks.csproj"
              Targets="Build" Properties="Configuration=Debug;Platform=AnyCPU" />
   </Target>
-   
+  
   <UsingTask TaskName="ValidateStrongNameSignatureTask" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll"  />
   <UsingTask TaskName="FilterOutAutoRestLibraries" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll"  />  
   
@@ -241,6 +271,37 @@
         ExpectedDelaySigned="false"
         ContinueOnError="false" 
         Condition="!$(DelaySign) and '@(AfterSignedAssembliesToValidate)' != ''"/>
+    
+    <Message Text="TODO: Copy signed files back"/>
+  </Target>
+  
+  <Target Name="SignInstaller">
+    <PropertyGroup>
+      <!--public token associated with MSSharedLibKey.snk-->
+      <StrongNameToken Condition=" '$(StrongNameToken)' == '' ">31bf3856ad364e35</StrongNameToken>
+    </PropertyGroup>
+    <GetFrameworkSdkPath>
+      <Output TaskParameter="Path" PropertyName="WindowsSdkPath"/>
+    </GetFrameworkSdkPath>
+
+    <ItemGroup>
+      <DelaySignedFilesToValidate Include="setup*\build\$(Configuration)\AzurePowerShell*.msi" />
+    </ItemGroup>
+    
+    <Message Importance="high" Text="setup*\build\$(Configuration) does not contains any installer files to sign. Code sign will skip." 
+             Condition="'@(DelaySignedFilesToValidate)' == ''" />
+    
+    <CodeSigningTask
+      Description="Microsoft Azure PowerShell"
+      Keywords="Microsoft Azure PowerShell"
+      UnsignedFiles="@(DelaySignedFilesToValidate)"
+      DestinationPath="signed"
+      SigningLogPath="signed\signing.log"
+      ToolsPath="$(CIToolsPath)"
+      Condition="!$(DelaySign) and '@(DelaySignedFilesToValidate)' != ''"/>  
+      
+    <!--If we are testing locally then we copy the binaries and do not submit to the code sign server-->
+    <Copy SourceFiles="@(DelaySignedFilesToValidate)" DestinationFolder="signed" Condition="$(DelaySign)" />
     
     <Message Text="TODO: Copy signed files back"/>
   </Target>
