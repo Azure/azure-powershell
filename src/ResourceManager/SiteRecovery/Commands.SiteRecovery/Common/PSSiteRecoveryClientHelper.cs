@@ -70,40 +70,5 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     string.Format(Properties.Resources.ReplicationStartTimeInvalid));
             }
         }
-
-        /// <summary>
-        /// Validates whether the subscription belongs to the currently logged account or not.
-        /// </summary>
-        /// <param name="azureSubscriptionId">Azure Subscription ID</param>
-        public void ValidateSubscriptionAccountAssociation(string azureSubscriptionId)
-        {
-            if (string.IsNullOrEmpty(azureSubscriptionId))
-            {
-                throw new InvalidOperationException(
-                    string.Format(
-                    Properties.Resources.SubscriptionIdIsNotValid));
-            }
-
-            bool associatedSubscription = false;
-            List<AzureSubscription> subscriptions =
-                new List<AzureSubscription>(this.Profile.Subscriptions.Values);
-
-            foreach (AzureSubscription sub in subscriptions)
-            {
-                if (azureSubscriptionId.Equals(sub.Id.ToString(), StringComparison.OrdinalIgnoreCase))
-                {
-                    associatedSubscription = true;
-                    break;
-                }
-            }
-
-            if (!associatedSubscription)
-            {
-                throw new InvalidOperationException(
-                    string.Format(
-                    Properties.Resources.SubscriptionIsNotAssociatedWithTheAccount,
-                    azureSubscriptionId));
-            }
-        }
     }
 }

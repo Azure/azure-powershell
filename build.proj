@@ -20,12 +20,14 @@
     <BuildInParallel Condition="'$(BuildInParallel)' == ''">true</BuildInParallel>
   </PropertyGroup>
   <ItemGroup>
-    <AzurePowerShellSln Include=".\src\AzurePowerShell.sln" />
+    <AzureResourceManagerSln Include=".\src\ResourceManager.sln" />
+    <AzureServiceManagementSln Include=".\src\ServiceManagement.sln" />
     <SetupSln Include=".\setup\azurepowershell.sln" />
+    <SetupPowershellGetSln Include=".\setup-powershellget\powershellget.sln" />
   </ItemGroup>
 
   <UsingTask 
-    AssemblyFile="$(MSBuildProjectDirectory)\packages\xunit.runner.console.2.0.0\tools\xunit.runner.msbuild.dll"
+    AssemblyFile="$(MSBuildProjectDirectory)\src\packages\xunit.MSBuild.2.0.0.0\tools\xunit.runner.msbuild.dll"
     TaskName="Xunit.Runner.MSBuild.xunit" />
   
   <!-- Clean the build in all configurations -->
@@ -33,12 +35,22 @@
     <!-- Clean the solutions -->
     <Message Importance="high" Text="Cleaning Cmdlets..." ContinueOnError="false" />
     <MSBuild
-      Projects="@(AzurePowerShellSln)"
+      Projects="@(AzureResourceManagerSln)"
       Targets="Clean"
       Properties="$(DebugBuildConfig)"
       ContinueOnError="false" />
     <MSBuild
-      Projects="@(AzurePowerShellSln)"
+      Projects="@(AzureResourceManagerSln)"
+      Targets="Clean"
+      Properties="$(ReleaseBuildConfig)"
+      ContinueOnError="false" />
+    <MSBuild
+      Projects="@(AzureServiceManagementSln)"
+      Targets="Clean"
+      Properties="$(DebugBuildConfig)"
+      ContinueOnError="false" />
+    <MSBuild
+      Projects="@(AzureServiceManagementSln)"
       Targets="Clean"
       Properties="$(ReleaseBuildConfig)"
       ContinueOnError="false" />
@@ -47,7 +59,7 @@
       Targets="Clean"
       Properties="$(DebugBuildConfig)"
       ContinueOnError="false" />
-
+      
     <!-- Delete the publish files -->
     <Message Importance="high" Text="Cleaning publish files..." ContinueOnError="false" />
     <ItemGroup>
@@ -74,9 +86,9 @@
   </Target>
   
   <PropertyGroup>
-	<NuGetCommand>$(MSBuildProjectDirectory)\src\.nuget\NuGet.exe</NuGetCommand>
-	<NuGetRestoreConfigFile>$(MSBuildProjectDirectory)\restore.config</NuGetRestoreConfigFile>
-	<NuGetRestoreConfigSwitch>-ConfigFile &quot;$(NuGetRestoreConfigFile)&quot;</NuGetRestoreConfigSwitch>
+    <NuGetCommand>$(MSBuildProjectDirectory)\src\.nuget\NuGet.exe</NuGetCommand>
+    <NuGetRestoreConfigFile>$(MSBuildProjectDirectory)\restore.config</NuGetRestoreConfigFile>
+    <NuGetRestoreConfigSwitch>-ConfigFile &quot;$(NuGetRestoreConfigFile)&quot;</NuGetRestoreConfigSwitch>
   </PropertyGroup>
   
   <!--
@@ -88,7 +100,7 @@
       <NuGetCache Include="$(LOCALAPPDATA)\NuGet\Cache\*.nupkg"/>
     </ItemGroup>
 
-	 <!-- Delete NuGet cache-->
+     <!-- Delete NuGet cache-->
     <Delete Files="@(NuGetCache)" />
     
     <Delete Files="$(NuGetRestoreConfigFile)" />
@@ -101,7 +113,8 @@
     <Exec Command="$(NuGetCommand) sources add -Name LocalFeed -Source &quot;$(MSBuildProjectDirectory)\tools\LocalFeed&quot; $(NuGetRestoreConfigSwitch)"/>
 
     <!-- Restore packages -->
-    <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\src\AzurePowerShell.sln $(NuGetRestoreConfigSwitch)" ContinueOnError="false" />
+    <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\src\ResourceManager.sln $(NuGetRestoreConfigSwitch)" ContinueOnError="false" />
+    <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\src\ServiceManagement.sln $(NuGetRestoreConfigSwitch)" ContinueOnError="false" />
     
     <!--Restore the xunit runner needed to run unit tests-->
     <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\packages.config -PackagesDirectory $(MSBuildProjectDirectory)\packages" />
@@ -113,13 +126,25 @@
   <Target Name="BuildCmdlets" DependsOnTargets="ForceRestorePackages">
     <Message Importance="high" Text="Building Cmdlets..." />
     <MSBuild
-      Projects="@(AzurePowerShellSln)"
+      Projects="@(AzureResourceManagerSln)"
       Targets="Build"
       Properties="$(DebugBuildConfig)"
       BuildInParallel="$(BuildInParallel)"
       ContinueOnError="false" />
     <MSBuild
-      Projects="@(AzurePowerShellSln)"
+      Projects="@(AzureResourceManagerSln)"
+      Targets="Build"
+      Properties="$(ReleaseBuildConfig)"
+      BuildInParallel="$(BuildInParallel)"
+      ContinueOnError="false" />
+    <MSBuild
+      Projects="@(AzureServiceManagementSln)"
+      Targets="Build"
+      Properties="$(DebugBuildConfig)"
+      BuildInParallel="$(BuildInParallel)"
+      ContinueOnError="false" />
+    <MSBuild
+      Projects="@(AzureServiceManagementSln)"
       Targets="Build"
       Properties="$(ReleaseBuildConfig)"
       BuildInParallel="$(BuildInParallel)"
@@ -135,6 +160,11 @@
     <Message
       Importance="high"
       Text="You are required to have installed the WiX Toolset at http://wix.codeplex.com/releases/view/115492 (Wix38.msi)"
+      ContinueOnError="false" />
+    <MSBuild
+      Projects="@(SetupPowershellGetSln)"
+      Targets="Build"
+      Properties="$(DebugBuildConfig)"
       ContinueOnError="false" />
     <MSBuild
       Projects="@(SetupSln)"
@@ -154,6 +184,11 @@
       Text="You are required to have installed the WiX Toolset at http://wix.codeplex.com/releases/view/115492 (Wix38.msi)"
       ContinueOnError="false" />
     <MSBuild
+      Projects="@(SetupPowershellGetSln)"
+      Targets="Build"
+      Properties="$(ReleaseBuildConfig)"
+      ContinueOnError="false" />
+    <MSBuild
       Projects="@(SetupSln)"
       Targets="Build"
       Properties="$(ReleaseBuildConfig)"
@@ -171,7 +206,13 @@
   <Target Name="BuildRelease" DependsOnTargets="ForceRestorePackages">
     <Message Importance="high" Text="Building Cmdlets in Release config..." />
     <MSBuild
-      Projects="@(AzurePowerShellSln)"
+      Projects="@(AzureResourceManagerSln)"
+      Targets="Build"
+      Properties="$(ReleaseBuildConfig)"
+      BuildInParallel="$(BuildInParallel)"
+      ContinueOnError="false" />
+    <MSBuild
+      Projects="@(AzureServiceManagementSln)"
       Targets="Build"
       Properties="$(ReleaseBuildConfig)"
       BuildInParallel="$(BuildInParallel)"
@@ -182,7 +223,13 @@
   <Target Name="BuildDebug" DependsOnTargets="ForceRestorePackages">
     <Message Importance="high" Text="Building Cmdlets in Debug config..." />
     <MSBuild
-      Projects="@(AzurePowerShellSln)"
+      Projects="@(AzureResourceManagerSln)"
+      Targets="Build"
+      Properties="$(DebugBuildConfig)"
+      BuildInParallel="$(BuildInParallel)"
+      ContinueOnError="false" />
+    <MSBuild
+      Projects="@(AzureServiceManagementSln)"
       Targets="Build"
       Properties="$(DebugBuildConfig)"
       BuildInParallel="$(BuildInParallel)"

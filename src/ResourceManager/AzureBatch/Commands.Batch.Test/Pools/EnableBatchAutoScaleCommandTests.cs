@@ -16,11 +16,9 @@ using System;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Batch.Protocol.Models;
-using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
 using Xunit;
@@ -28,7 +26,7 @@ using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Pools
 {
-    public class EnableBatchAutoScaleCommandTests
+    public class EnableBatchAutoScaleCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
         private EnableBatchAutoScaleCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
@@ -62,18 +60,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.AutoScaleFormula = "formula";
 
             // Don't go to the service on an Enable AutoScale call
-            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
-            {
-                BatchRequest<CloudPoolEnableAutoScaleParameters, CloudPoolEnableAutoScaleResponse> request =
-                (BatchRequest<CloudPoolEnableAutoScaleParameters, CloudPoolEnableAutoScaleResponse>)baseRequest;
-
-                request.ServiceRequestFunc = (cancellationToken) =>
-                {
-                    CloudPoolEnableAutoScaleResponse response = new CloudPoolEnableAutoScaleResponse();
-                    Task<CloudPoolEnableAutoScaleResponse> task = Task.FromResult(response);
-                    return task;
-                };
-            });
+            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudPoolEnableAutoScaleParameters, CloudPoolEnableAutoScaleResponse>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set
@@ -99,6 +86,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
                 BatchRequest<CloudPoolEnableAutoScaleParameters, CloudPoolEnableAutoScaleResponse> request =
                 (BatchRequest<CloudPoolEnableAutoScaleParameters, CloudPoolEnableAutoScaleResponse>)baseRequest;
 
+                // Grab the formula off the outgoing request
                 requestFormula = request.TypedParameters.AutoScaleFormula;
 
                 request.ServiceRequestFunc = (cancellationToken) =>

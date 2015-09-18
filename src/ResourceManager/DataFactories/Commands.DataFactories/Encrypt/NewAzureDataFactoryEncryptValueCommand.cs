@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.DataFactories
         public string Database { get; set; }
 
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             if (ParameterSetName == ByFactoryObject)
             {

@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         {
             if (rules.Any(r => r.TableName == TableName && r.ColumnName == ColumnName && r.RuleId != RuleId))
             {
-                return string.Format(CultureInfo.InvariantCulture, Resources.DataMaskingTableAndColumnUsedError, TableName, ColumnName);
+                return string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.DataMaskingTableAndColumnUsedError, TableName, ColumnName);
             }
             return null;
         }
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
 
                 if(rule.NumberFrom > rule.NumberTo)
                 {
-                    throw new Exception(string.Format(CultureInfo.InvariantCulture, Resources.DataMaskingNumberRuleIntervalDefinitionError));
+                    throw new Exception(string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.DataMaskingNumberRuleIntervalDefinitionError));
                 }
             }
             return rule;

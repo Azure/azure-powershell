@@ -19,6 +19,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Graph.RBAC;
@@ -38,6 +39,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         private EnvironmentSetupHelper helper;
         private const string TenantIdKey = "TenantId";
         private const string DomainKey = "Domain";
+        private const string SubscriptionIdKey = "SubscriptionId";
 
         public GraphRbacManagementClient GraphClient { get; private set; }
 
@@ -50,9 +52,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public GalleryClient GalleryClient { get; private set; }
         
         public InsightsClient InsightsClient { get; private set; }
-
-        // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
-        //public EventsClient EventsClient { get; private set; }
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
@@ -114,8 +113,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 helper.SetupModules(
                     AzureModule.AzureResourceManager, 
                     "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + callingClassName + ".ps1",
-                    "ResourceManagerStartup.ps1");
+                    "ScenarioTests\\" + callingClassName + ".ps1");
 
                 try
                 {
@@ -181,6 +179,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 if (HttpMockServer.Variables.ContainsKey(DomainKey))
                 {
                     UserDomain = HttpMockServer.Variables[DomainKey];
+                }
+                if (HttpMockServer.Variables.ContainsKey(SubscriptionIdKey))
+                {
+                    AzureRMCmdlet.DefaultProfile.Context.Subscription.Id = new Guid(HttpMockServer.Variables[SubscriptionIdKey]);
                 }
             }
 

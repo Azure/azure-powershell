@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 
+using System;
+using System.Linq;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Graph.RBAC.Models;
 using Microsoft.Azure.Management.Authorization;
@@ -20,30 +22,36 @@ using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.Azure.Test;
-using System;
-using System.Linq;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class RoleAssignmentTests
+    public class RoleAssignmentTests : RMTestBase
     {
-        [Fact]
+        [Fact(Skip = "http://vstfrd:8080/Azure/RD/_workitems/edit/4616537")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaAuthorizationChangeLog()
         {
            ResourcesController.NewInstance.RunPsTest("Test-RaAuthorizationChangeLog");
         }
 
-        [Fact]
+        [Fact(Skip = "PSGet Migration: TODO: Get-AzureRMSubscription")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaClassicAdmins()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RaClassicAdmins");
+        }
+
+        [Fact(Skip = "PSGet Migration: TODO: Get-AzureRMSubscription")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaNegativeScenarios()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaNegativeScenarios");
         }
 
-        [Fact]
+        [Fact(Skip = "PSGet Migration: TODO: Get-AzureRMSubscription")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByScope()
         {
@@ -64,7 +72,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-RaByResource");
         }
 
-        [Fact]
+        [Fact(Skip = "PSGet Migration: TODO: Get-AzureRMSubscription")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByServicePrincipal()
         {

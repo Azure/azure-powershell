@@ -22,7 +22,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
-    public class JobScheduleTests
+    public class JobScheduleTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
         private const string accountName = ScenarioTestHelpers.SharedAccount;
 
@@ -243,63 +243,63 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     }
 
     // Cmdlets that use the HTTP Recorder interceptor for use with scenario tests
-    [Cmdlet(VerbsCommon.Get, "AzureBatchJobSchedule_ST", DefaultParameterSetName = Constants.ODataFilterParameterSet)]
+    [Cmdlet(VerbsCommon.Get, "AzureRMBatchJobSchedule_ST", DefaultParameterSetName = Constants.ODataFilterParameterSet)]
     public class GetBatchJobScheduleScenarioTestCommand : GetBatchJobScheduleCommand
     {
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
         }
     }
 
-    [Cmdlet(VerbsCommon.New, "AzureBatchJobSchedule_ST")]
+    [Cmdlet(VerbsCommon.New, "AzureRMBatchJobSchedule_ST")]
     public class NewBatchJobScheduleScenarioTestCommand : NewBatchJobScheduleCommand
     {
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
         }
     }
 
-    [Cmdlet(VerbsCommon.Remove, "AzureBatchJobSchedule_ST")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRMBatchJobSchedule_ST")]
     public class RemoveBatchJobScheduleScenarioTestCommand : RemoveBatchJobScheduleCommand
     {
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
         }
     }
 
-    [Cmdlet(VerbsLifecycle.Enable, "AzureBatchJobSchedule_ST")]
+    [Cmdlet(VerbsLifecycle.Enable, "AzureRMBatchJobSchedule_ST")]
     public class EnableBatchJobScheduleScenarioTestCommand : EnableBatchJobScheduleCommand
     {
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
         }
     }
 
-    [Cmdlet(VerbsLifecycle.Disable, "AzureBatchJobSchedule_ST")]
+    [Cmdlet(VerbsLifecycle.Disable, "AzureRMBatchJobSchedule_ST")]
     public class DisableBatchJobScheduleScenarioTestCommand : DisableBatchJobScheduleCommand
     {
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
         }
     }
 
-    [Cmdlet(VerbsLifecycle.Stop, "AzureBatchJobSchedule_ST")]
+    [Cmdlet(VerbsLifecycle.Stop, "AzureRMBatchJobSchedule_ST")]
     public class StopBatchJobScheduleScenarioTestCommand : StopBatchJobScheduleCommand
     {
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
         }
     }
 }

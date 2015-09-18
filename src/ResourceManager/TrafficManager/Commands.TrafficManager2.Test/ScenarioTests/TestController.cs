@@ -12,6 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+using Microsoft.Azure.Test.HttpRecorder;
+
 namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
 {
     using System;
@@ -21,11 +24,13 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
     using Microsoft.Azure.Management.Authorization;
     using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Management.TrafficManager;
-    using Microsoft.Azure.Subscriptions.Csm;
+
     using Microsoft.Azure.Test;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using Microsoft.Azure.Subscriptions;
+    using WindowsAzure.Commands.Test.Utilities.Common;
 
-    public class TestController
+    public class TestController : RMTestBase
     {
         private CSMTestEnvironmentFactory csmTestFactory;
 
@@ -92,6 +97,10 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
             string callingClassType,
             string mockName)
         {
+            Dictionary<string, string> d = new Dictionary<string, string>();
+            d.Add("Microsoft.Authorization", "2014-07-01-preview");
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
+
             using (UndoContext context = UndoContext.Current)
             {
                 context.Start(callingClassType, mockName);

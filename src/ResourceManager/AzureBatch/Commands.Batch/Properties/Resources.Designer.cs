@@ -61,6 +61,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to AccountAlreadyExists: Account already exists..
+        /// </summary>
+        internal static string AccountAlreadyExists {
+            get {
+                return ResourceManager.GetString("AccountAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Executing cmdlet with Batch account {0} with its {1} key. To change which key to use, set the KeyInUse property on the BatchAccountContext..
         /// </summary>
         internal static string AccountAndKeyInUse {
@@ -88,6 +97,60 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Performing name availability check for account {0}.
+        /// </summary>
+        internal static string CheckingAccountNameAvailability {
+            get {
+                return ResourceManager.GetString("CheckingAccountNameAvailability", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating user {0} on compute node {1}.
+        /// </summary>
+        internal static string CreatingComputeNodeUser {
+            get {
+                return ResourceManager.GetString("CreatingComputeNodeUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating job {0}.
+        /// </summary>
+        internal static string CreatingJob {
+            get {
+                return ResourceManager.GetString("CreatingJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating job schedule {0}.
+        /// </summary>
+        internal static string CreatingJobSchedule {
+            get {
+                return ResourceManager.GetString("CreatingJobSchedule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating pool {0}.
+        /// </summary>
+        internal static string CreatingPool {
+            get {
+                return ResourceManager.GetString("CreatingPool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating task {0}.
+        /// </summary>
+        internal static string CreatingTask {
+            get {
+                return ResourceManager.GetString("CreatingTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Disabling automatic scaling on pool {0}..
         /// </summary>
         internal static string DisableAutoScale {
@@ -111,6 +174,24 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string DisableJobSchedule {
             get {
                 return ResourceManager.GetString("DisableJobSchedule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Downloading node file {0} to: {1}.
+        /// </summary>
+        internal static string DownloadingNodeFile {
+            get {
+                return ResourceManager.GetString("DownloadingNodeFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Downloading Remote Desktop Protocol file for compute node {0} to: {1}.
+        /// </summary>
+        internal static string DownloadingRDPFile {
+            get {
+                return ResourceManager.GetString("DownloadingRDPFile", resourceCulture);
             }
         }
         
@@ -162,261 +243,234 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Getting all accounts in subscription.
         /// </summary>
-        internal static string GBA_AllAccounts {
+        internal static string GetAllAccounts {
             get {
-                return ResourceManager.GetString("GBA_AllAccounts", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Getting accounts in resource group {0}.
-        /// </summary>
-        internal static string GBA_ResGroupAccounts {
-            get {
-                return ResourceManager.GetString("GBA_ResGroupAccounts", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Getting account keys for {0}.
-        /// </summary>
-        internal static string GBAK_GettingKeys {
-            get {
-                return ResourceManager.GetString("GBAK_GettingKeys", resourceCulture);
+                return ResourceManager.GetString("GetAllAccounts", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Getting compute node &quot;{0}&quot; from pool &quot;{1}&quot;..
         /// </summary>
-        internal static string GBCN_GetById {
+        internal static string GetComputeNodeById {
             get {
-                return ResourceManager.GetString("GBCN_GetById", resourceCulture);
+                return ResourceManager.GetString("GetComputeNodeById", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Getting compute nodes matching the specified OData filter from pool &quot;{0}&quot;..
         /// </summary>
-        internal static string GBCN_GetByOData {
+        internal static string GetComputeNodeByOData {
             get {
-                return ResourceManager.GetString("GBCN_GetByOData", resourceCulture);
+                return ResourceManager.GetString("GetComputeNodeByOData", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Getting all compute nodes under pool &quot;{0}&quot;..
         /// </summary>
-        internal static string GBCN_NoFilter {
+        internal static string GetComputeNodeNoFilter {
             get {
-                return ResourceManager.GetString("GBCN_NoFilter", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Getting node file &quot;{0}&quot; from compute node &quot;{1}&quot;.
-        /// </summary>
-        internal static string GBCNF_GetByName {
-            get {
-                return ResourceManager.GetString("GBCNF_GetByName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Getting node files matching the specified OData filter from compute node &quot;{0}&quot;..
-        /// </summary>
-        internal static string GBCNF_GetByOData {
-            get {
-                return ResourceManager.GetString("GBCNF_GetByOData", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Getting all node files from compute node &quot;{0}&quot;..
-        /// </summary>
-        internal static string GBCNF_NoFilter {
-            get {
-                return ResourceManager.GetString("GBCNF_NoFilter", resourceCulture);
+                return ResourceManager.GetString("GetComputeNodeNoFilter", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Getting job &quot;{0}&quot;.
         /// </summary>
-        internal static string GBJ_GetById {
+        internal static string GetJobById {
             get {
-                return ResourceManager.GetString("GBJ_GetById", resourceCulture);
+                return ResourceManager.GetString("GetJobById", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Getting all jobs from job schedule &quot;{0}&quot;..
         /// </summary>
-        internal static string GBJ_GetByJobScheduleNoFilter {
+        internal static string GetJobByJobScheduleNoFilter {
             get {
-                return ResourceManager.GetString("GBJ_GetByJobScheduleNoFilter", resourceCulture);
+                return ResourceManager.GetString("GetJobByJobScheduleNoFilter", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Getting jobs matching the specified OData filter..
         /// </summary>
-        internal static string GBJ_GetByOData {
+        internal static string GetJobByOData {
             get {
-                return ResourceManager.GetString("GBJ_GetByOData", resourceCulture);
+                return ResourceManager.GetString("GetJobByOData", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Getting jobs matching the specified OData filter from job schedule &quot;{0}&quot;..
         /// </summary>
-        internal static string GBJ_GetByODataAndJobSChedule {
+        internal static string GetJobByODataAndJobSChedule {
             get {
-                return ResourceManager.GetString("GBJ_GetByODataAndJobSChedule", resourceCulture);
+                return ResourceManager.GetString("GetJobByODataAndJobSChedule", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Getting all jobs associated with the Batch account..
         /// </summary>
-        internal static string GBJ_GetNoFilter {
+        internal static string GetJobNoFilter {
             get {
-                return ResourceManager.GetString("GBJ_GetNoFilter", resourceCulture);
+                return ResourceManager.GetString("GetJobNoFilter", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Getting job schedule &quot;{0}&quot;.
         /// </summary>
-        internal static string GBJS_GetById {
+        internal static string GetJobScheduleById {
             get {
-                return ResourceManager.GetString("GBJS_GetById", resourceCulture);
+                return ResourceManager.GetString("GetJobScheduleById", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Getting job schedules matching the specified OData filter. .
         /// </summary>
-        internal static string GBJS_GetByOData {
+        internal static string GetJobScheduleByOData {
             get {
-                return ResourceManager.GetString("GBJS_GetByOData", resourceCulture);
+                return ResourceManager.GetString("GetJobScheduleByOData", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Getting all job schedules associated with the Batch account. .
         /// </summary>
-        internal static string GBJS_NoFilter {
+        internal static string GetJobScheduleNoFilter {
             get {
-                return ResourceManager.GetString("GBJS_NoFilter", resourceCulture);
+                return ResourceManager.GetString("GetJobScheduleNoFilter", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Downloading node file {0} to: {1}.
+        ///   Looks up a localized string similar to Getting node file &quot;{0}&quot; from compute node &quot;{1}&quot;.
         /// </summary>
-        internal static string GBNFC_Downloading {
+        internal static string GetNodeFileByComputeNodeByName {
             get {
-                return ResourceManager.GetString("GBNFC_Downloading", resourceCulture);
+                return ResourceManager.GetString("GetNodeFileByComputeNodeByName", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting pool &quot;{0}&quot;.
+        ///   Looks up a localized string similar to Getting node files matching the specified OData filter from compute node &quot;{0}&quot;..
         /// </summary>
-        internal static string GBP_GetById {
+        internal static string GetNodeFileByComputeNodeByOData {
             get {
-                return ResourceManager.GetString("GBP_GetById", resourceCulture);
+                return ResourceManager.GetString("GetNodeFileByComputeNodeByOData", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Getting pools matching the specified OData filter. .
+        ///   Looks up a localized string similar to Getting all node files from compute node &quot;{0}&quot;..
         /// </summary>
-        internal static string GBP_GetByOData {
+        internal static string GetNodeFileByComputeNodeNoFilter {
             get {
-                return ResourceManager.GetString("GBP_GetByOData", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Getting all pools associated with the Batch account. .
-        /// </summary>
-        internal static string GBP_NoFilter {
-            get {
-                return ResourceManager.GetString("GBP_NoFilter", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Downloading Remote Desktop Protocol file for compute node {0} to: {1}.
-        /// </summary>
-        internal static string GBRDP_Downloading {
-            get {
-                return ResourceManager.GetString("GBRDP_Downloading", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Getting task &quot;{0}&quot; from job &quot;{1}&quot;.
-        /// </summary>
-        internal static string GBT_GetById {
-            get {
-                return ResourceManager.GetString("GBT_GetById", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Getting tasks matching the specified OData filter from job &quot;{0}&quot;..
-        /// </summary>
-        internal static string GBT_GetByOData {
-            get {
-                return ResourceManager.GetString("GBT_GetByOData", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Getting all tasks from job &quot;{0}&quot;..
-        /// </summary>
-        internal static string GBT_GetNoFilter {
-            get {
-                return ResourceManager.GetString("GBT_GetNoFilter", resourceCulture);
+                return ResourceManager.GetString("GetNodeFileByComputeNodeNoFilter", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Getting node file &quot;{0}&quot; from task &quot;{1}&quot;.
         /// </summary>
-        internal static string GBTF_GetByName {
+        internal static string GetNodeFileByTaskByName {
             get {
-                return ResourceManager.GetString("GBTF_GetByName", resourceCulture);
+                return ResourceManager.GetString("GetNodeFileByTaskByName", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Getting node files matching the specified OData filter from task &quot;{0}&quot;..
         /// </summary>
-        internal static string GBTF_GetByOData {
+        internal static string GetNodeFileByTaskByOData {
             get {
-                return ResourceManager.GetString("GBTF_GetByOData", resourceCulture);
+                return ResourceManager.GetString("GetNodeFileByTaskByOData", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Getting all node files under task &quot;{0}&quot;..
         /// </summary>
-        internal static string GBTF_NoFilter {
+        internal static string GetNodeFileByTaskNoFilter {
             get {
-                return ResourceManager.GetString("GBTF_NoFilter", resourceCulture);
+                return ResourceManager.GetString("GetNodeFileByTaskNoFilter", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No compute node was specified. Supply a PSComputeNode object or a pool id and compute node id for the Remote Desktop Protocol file to point to..
+        ///   Looks up a localized string similar to Getting pool &quot;{0}&quot;.
         /// </summary>
-        internal static string GRDP_NoComputeNode {
+        internal static string GetPoolById {
             get {
-                return ResourceManager.GetString("GRDP_NoComputeNode", resourceCulture);
+                return ResourceManager.GetString("GetPoolById", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting pools matching the specified OData filter. .
+        /// </summary>
+        internal static string GetPoolByOData {
+            get {
+                return ResourceManager.GetString("GetPoolByOData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting all pools associated with the Batch account. .
+        /// </summary>
+        internal static string GetPoolNoFilter {
+            get {
+                return ResourceManager.GetString("GetPoolNoFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting accounts in resource group {0}.
+        /// </summary>
+        internal static string GetResourceGroupAccounts {
+            get {
+                return ResourceManager.GetString("GetResourceGroupAccounts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting task &quot;{0}&quot; from job &quot;{1}&quot;.
+        /// </summary>
+        internal static string GetTaskById {
+            get {
+                return ResourceManager.GetString("GetTaskById", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting tasks matching the specified OData filter from job &quot;{0}&quot;..
+        /// </summary>
+        internal static string GetTaskByOData {
+            get {
+                return ResourceManager.GetString("GetTaskByOData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting all tasks from job &quot;{0}&quot;..
+        /// </summary>
+        internal static string GetTaskNoFilter {
+            get {
+                return ResourceManager.GetString("GetTaskNoFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting account keys for {0}.
+        /// </summary>
+        internal static string GettingAccountKeys {
+            get {
+                return ResourceManager.GetString("GettingAccountKeys", resourceCulture);
             }
         }
         
@@ -457,11 +511,20 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The current KeyInUse on this BatchAccountContext is the {0} key, but this key is not populated on the BatchAccountContext object. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its keys populated..
+        ///   Looks up a localized string similar to The current KeyInUse on this BatchAccountContext is the {0} key, but this key is not populated on the BatchAccountContext object. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its keys populated..
         /// </summary>
         internal static string KeyNotPresent {
             get {
                 return ResourceManager.GetString("KeyNotPresent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Checking if account already exists.
+        /// </summary>
+        internal static string LookupAccount {
+            get {
+                return ResourceManager.GetString("LookupAccount", resourceCulture);
             }
         }
         
@@ -480,78 +543,6 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string MissingResGroupName {
             get {
                 return ResourceManager.GetString("MissingResGroupName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to AccountAlreadyExists: Account already exists..
-        /// </summary>
-        internal static string NBA_AccountAlreadyExists {
-            get {
-                return ResourceManager.GetString("NBA_AccountAlreadyExists", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Checking if account already exists.
-        /// </summary>
-        internal static string NBA_LookupAccount {
-            get {
-                return ResourceManager.GetString("NBA_LookupAccount", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Performing name availability check for account {0}.
-        /// </summary>
-        internal static string NBA_NameAvailability {
-            get {
-                return ResourceManager.GetString("NBA_NameAvailability", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Creating job {0}.
-        /// </summary>
-        internal static string NBJ_CreatingJob {
-            get {
-                return ResourceManager.GetString("NBJ_CreatingJob", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Creating job schedule {0}.
-        /// </summary>
-        internal static string NBJS_CreatingJobSchedule {
-            get {
-                return ResourceManager.GetString("NBJS_CreatingJobSchedule", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Creating pool {0}.
-        /// </summary>
-        internal static string NBP_CreatingPool {
-            get {
-                return ResourceManager.GetString("NBP_CreatingPool", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Creating task {0}.
-        /// </summary>
-        internal static string NBT_CreatingTask {
-            get {
-                return ResourceManager.GetString("NBT_CreatingTask", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Creating user {0} on compute node {1}.
-        /// </summary>
-        internal static string NBU_CreatingUser {
-            get {
-                return ResourceManager.GetString("NBU_CreatingUser", resourceCulture);
             }
         }
         
@@ -637,114 +628,6 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove batch account {0}?.
-        /// </summary>
-        internal static string RBA_RemoveConfirm {
-            get {
-                return ResourceManager.GetString("RBA_RemoveConfirm", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Removing batch account ....
-        /// </summary>
-        internal static string RBA_RemoveResource {
-            get {
-                return ResourceManager.GetString("RBA_RemoveResource", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove job {0}?.
-        /// </summary>
-        internal static string RBJ_RemoveConfirm {
-            get {
-                return ResourceManager.GetString("RBJ_RemoveConfirm", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Removing job ....
-        /// </summary>
-        internal static string RBJ_RemoveJob {
-            get {
-                return ResourceManager.GetString("RBJ_RemoveJob", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove job schedule {0}?.
-        /// </summary>
-        internal static string RBJS_RemoveConfirm {
-            get {
-                return ResourceManager.GetString("RBJS_RemoveConfirm", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Removing job schedule ....
-        /// </summary>
-        internal static string RBJS_RemoveJobSchedule {
-            get {
-                return ResourceManager.GetString("RBJS_RemoveJobSchedule", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove pool {0}?.
-        /// </summary>
-        internal static string RBP_RemoveConfirm {
-            get {
-                return ResourceManager.GetString("RBP_RemoveConfirm", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Removing pool ....
-        /// </summary>
-        internal static string RBP_RemovePool {
-            get {
-                return ResourceManager.GetString("RBP_RemovePool", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove task {0}?.
-        /// </summary>
-        internal static string RBT_RemoveConfirm {
-            get {
-                return ResourceManager.GetString("RBT_RemoveConfirm", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Removing task ....
-        /// </summary>
-        internal static string RBT_RemoveTask {
-            get {
-                return ResourceManager.GetString("RBT_RemoveTask", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove user {0}?.
-        /// </summary>
-        internal static string RBU_RemoveConfirm {
-            get {
-                return ResourceManager.GetString("RBU_RemoveConfirm", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Removing user ....
-        /// </summary>
-        internal static string RBU_RemoveUser {
-            get {
-                return ResourceManager.GetString("RBU_RemoveUser", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Rebooting compute node {0}..
         /// </summary>
         internal static string RebootComputeNode {
@@ -763,11 +646,128 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove batch account {0}?.
+        /// </summary>
+        internal static string RemoveAccountConfirm {
+            get {
+                return ResourceManager.GetString("RemoveAccountConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing batch account ....
+        /// </summary>
+        internal static string RemoveBatchAccount {
+            get {
+                return ResourceManager.GetString("RemoveBatchAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing user ....
+        /// </summary>
+        internal static string RemoveComputeNodeUser {
+            get {
+                return ResourceManager.GetString("RemoveComputeNodeUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove user {0}?.
+        /// </summary>
+        internal static string RemoveComputeNodeUserConfirm {
+            get {
+                return ResourceManager.GetString("RemoveComputeNodeUserConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing job ....
+        /// </summary>
+        internal static string RemoveJob {
+            get {
+                return ResourceManager.GetString("RemoveJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove job {0}?.
+        /// </summary>
+        internal static string RemoveJobConfirm {
+            get {
+                return ResourceManager.GetString("RemoveJobConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing job schedule ....
+        /// </summary>
+        internal static string RemoveJobSchedule {
+            get {
+                return ResourceManager.GetString("RemoveJobSchedule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove job schedule {0}?.
+        /// </summary>
+        internal static string RemoveJobScheduleConfirm {
+            get {
+                return ResourceManager.GetString("RemoveJobScheduleConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing pool ....
+        /// </summary>
+        internal static string RemovePool {
+            get {
+                return ResourceManager.GetString("RemovePool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove pool {0}?.
+        /// </summary>
+        internal static string RemovePoolConfirm {
+            get {
+                return ResourceManager.GetString("RemovePoolConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing task ....
+        /// </summary>
+        internal static string RemoveTask {
+            get {
+                return ResourceManager.GetString("RemoveTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove task {0}?.
+        /// </summary>
+        internal static string RemoveTaskConfirm {
+            get {
+                return ResourceManager.GetString("RemoveTaskConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Looking up resource group for account {0}.
         /// </summary>
         internal static string ResGroupLookup {
             get {
                 return ResourceManager.GetString("ResGroupLookup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resizing pool {0}, new target dedicated: {1}..
+        /// </summary>
+        internal static string ResizingPool {
+            get {
+                return ResourceManager.GetString("ResizingPool", resourceCulture);
             }
         }
         
@@ -781,29 +781,11 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Updating account {0}.
-        /// </summary>
-        internal static string SBA_Updating {
-            get {
-                return ResourceManager.GetString("SBA_Updating", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Resizing pool {0}, new target dedicated: {1}..
-        /// </summary>
-        internal static string SBPR_ResizingPool {
-            get {
-                return ResourceManager.GetString("SBPR_ResizingPool", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Stopping resize operation on pool {0}..
         /// </summary>
-        internal static string SBPR_StopResizingPool {
+        internal static string StopResizingPool {
             get {
-                return ResourceManager.GetString("SBPR_StopResizingPool", resourceCulture);
+                return ResourceManager.GetString("StopResizingPool", resourceCulture);
             }
         }
         
@@ -831,6 +813,15 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string TerminateTask {
             get {
                 return ResourceManager.GetString("TerminateTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating account {0}.
+        /// </summary>
+        internal static string UpdatingAccount {
+            get {
+                return ResourceManager.GetString("UpdatingAccount", resourceCulture);
             }
         }
     }

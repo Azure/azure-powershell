@@ -36,7 +36,7 @@ Gets the default location for a provider
 #>
 function Get-ProviderLocation($provider)
 {
-    $location = Get-AzureLocation | where {[string]::Compare($_.Name, $provider, $True) -eq $True}
+    $location = Get-AzureRMLocation | where {[string]::Compare($_.Name, $provider, $True) -eq $True}
     if ($location -eq $null) {
         "West US"
     } else {
@@ -52,6 +52,6 @@ function TestSetup-CreateResourceGroup
 {
     $resourceGroupName = Get-ResourceGroupName
 	$rglocation = Get-ProviderLocation "microsoft.compute"
-    $resourceGroup = New-AzureResourceGroup -Name $resourceGroupName -location $rglocation
+    $resourceGroup = New-AzureRMResourceGroup -Name $resourceGroupName -location $rglocation
 	return $resourceGroup
 }

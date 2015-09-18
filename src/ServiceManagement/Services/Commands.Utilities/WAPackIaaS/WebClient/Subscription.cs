@@ -59,7 +59,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.WAPackIaaS.WebClient
                 throw new ArgumentNullException();
             }
 
-            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
+            ProfileClient client = new ProfileClient(new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             var environment = client.GetEnvironmentOrDefault(azureSubscription.Environment);
 
             this.SubscriptionName = azureSubscription.Name;

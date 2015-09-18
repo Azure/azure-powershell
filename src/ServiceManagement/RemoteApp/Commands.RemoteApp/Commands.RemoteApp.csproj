@@ -62,7 +62,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.Authentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.1.3-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.3.0-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -206,6 +206,7 @@
     <Compile Include="TemplateImage\RemoveAzureRemoteAppTemplateImage.cs" />
     <Compile Include="TemplateImage\RenameAzureRemoteAppTemplateImage.cs" />
     <Compile Include="TemplateImage\TemplateImage.cs" />
+    <Compile Include="Vm\GetAzureRemoteAppVm.cs" />
     <Compile Include="Vm\RestartAzureRemoteAppVm.cs" />
     <Compile Include="Vnet\GetAzureRemoteAppVnet.cs" />
     <Compile Include="Vnet\GetAzureRemoteAppVpnDeviceConfigScript.cs" />
@@ -214,6 +215,7 @@
     <Compile Include="Vnet\RemoveAzureAppVnet.cs" />
     <Compile Include="Vnet\ResetAzureRemoteAppVpnSharedKey.cs" />
     <Compile Include="Vnet\SetAzureRemoteAppVnet.cs" />
+    <Compile Include="Vnet\VNetDeprecated.cs" />
     <Compile Include="WorkSpace\GetAzureRemoteAppWorkspace.cs" />
     <Compile Include="WorkSpace\Models\WorkSpace.cs" />
     <Compile Include="WorkSpace\SetAzureRemoteAppWorkspace.cs" />
@@ -225,7 +227,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Microsoft.Azure.Commands.RemoteApp.dll-help.xml">
+    <Content Include="Microsoft.WindowsAzure.Commands.RemoteApp.dll-help.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

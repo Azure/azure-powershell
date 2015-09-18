@@ -48,7 +48,7 @@ function Test-CreateCopyInternal ($serverVersion, $location = "North Europe")
 	try
 	{	
 		# Create a local database copy
-		$dbLocalCopy = New-AzureSqlDatabaseCopy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
+		$dbLocalCopy = New-AzureRMSqlDatabaseCopy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
 		 -CopyDatabaseName $copyDatabaseName
 		Assert-AreEqual $dbLocalCopy.ResourceGroupName $rg.ResourceGroupName
 		Assert-AreEqual $dbLocalCopy.ServerName $server.ServerName
@@ -58,7 +58,7 @@ function Test-CreateCopyInternal ($serverVersion, $location = "North Europe")
 		Assert-AreEqual $dbLocalCopy.CopyDatabaseName $copyDatabaseName
 
 		# Create a cross server copy
-		$dbCrossServerCopy = New-AzureSqlDatabaseCopy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
+		$dbCrossServerCopy = New-AzureRMSqlDatabaseCopy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
 		 -CopyResourceGroupName $copyRg.ResourceGroupName -CopyServerName $copyServer.ServerName -CopyDatabaseName $copyDatabaseName
 		Assert-AreEqual $dbCrossServerCopy.ResourceGroupName $rg.ResourceGroupName
 		Assert-AreEqual $dbCrossServerCopy.ServerName $server.ServerName
@@ -109,7 +109,7 @@ function Test-CreateSecondaryDatabaseInternal ($serverVersion, $location = "Nort
 	try
 	{	
 		# Create Readable Secondary
-		$readSecondary = New-AzureSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
+		$readSecondary = New-AzureRMSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
 		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All
 		Assert-NotNull $readSecondary.LinkId
 		Assert-AreEqual $readSecondary.ResourceGroupName $rg.ResourceGroupName
@@ -167,10 +167,10 @@ function Test-GetReplicationLinkInternal ($serverVersion, $location = "North Eur
 	try
 	{	
 		# Get Secondary
-		New-AzureSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
+		New-AzureRMSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
 		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All
 
-		$secondary = Get-AzureSqlDatabaseReplicationLink -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
+		$secondary = Get-AzureRMSqlDatabaseReplicationLink -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName `
 		 -DatabaseName $database.DatabaseName -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName
 		Assert-NotNull $secondary.LinkId
 		Assert-AreEqual $secondary.ResourceGroupName $rg.ResourceGroupName
@@ -228,10 +228,10 @@ function Test-RemoveSecondaryDatabaseInternal ($serverVersion, $location = "Nort
 	try
 	{	
 		# remove Secondary
-		New-AzureSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
+		New-AzureRMSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
 		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All
 
-		Remove-AzureSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
+		Remove-AzureRMSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
 		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName
 	}
 	finally
@@ -241,6 +241,46 @@ function Test-RemoveSecondaryDatabaseInternal ($serverVersion, $location = "Nort
 	}
 }
 
+<#
+	.SYNOPSIS
+	Tests removing a secondary database
+#>
+function Test-FailoverSecondaryDatabase
+{
+	#v12 only
+	Test-FailoverSecondaryDatabaseInternal "12.0" "North Europe"
+}
+
+<#
+	.SYNOPSIS
+	Tests failing over a secondary database
+#>
+function Test-FailoverSecondaryDatabaseInternal ($serverVersion, $location = "North Europe")
+{
+	# Setup
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $serverVersion $location
+	$database = Create-DatabaseForTest $rg $server
+
+	$partRg = Create-ResourceGroupForTest $location
+	$partServer = Create-ServerForTest $partRg $serverVersion $location
+
+	try
+	{	
+		# failover Secondary
+		New-AzureRMSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
+		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All
+
+		$secondary = Get-AzureRMSqlDatabaseReplicationLink -ResourceGroupName $partRg.ResourceGroupName -ServerName $partServer.ServerName -DatabaseName $database.DatabaseName -PartnerResourceGroupName $rg.ResourceGroupName -PartnerServerName $server.ServerName
+
+		$secondary | Set-AzureRMSqlDatabaseSecondary -PartnerResourceGroupName $rg.ResourceGroupName -Failover
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+		Remove-ResourceGroupForTest $partRg
+	}
+}
 
 <#
 	.SYNOPSIS
@@ -249,5 +289,5 @@ function Test-RemoveSecondaryDatabaseInternal ($serverVersion, $location = "Nort
 function Create-DatabaseForTest  ($rg, $server, $edition = "Premium")
 {
 	$databaseName = Get-DatabaseName
-	New-AzureSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition $edition
+	New-AzureRMSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition $edition
 }

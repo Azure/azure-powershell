@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Creates a new resource group deployment.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureResourceGroupDeployment", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(PSResourceGroupDeployment))]
+    [Cmdlet(VerbsCommon.New, "AzureRMResourceGroupDeployment", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(PSResourceGroupDeployment))]
     public class NewAzureResourceGroupDeploymentCommand : ResourceWithParameterBaseCmdlet, IDynamicParameters
     {
         [Alias("DeploymentName")]
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Resources
             this.Mode = DeploymentMode.Incremental;
         }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             CreatePSResourceGroupDeploymentParameters parameters = new CreatePSResourceGroupDeploymentParameters()
             {
@@ -61,9 +61,9 @@ namespace Microsoft.Azure.Commands.Resources
                 StorageAccountName = StorageAccountName
             };
 
-            if(!string.IsNullOrEmpty(TemplateVersion) || !string.IsNullOrEmpty(StorageAccountName))
+            if (!string.IsNullOrEmpty(TemplateVersion) || !string.IsNullOrEmpty(StorageAccountName) || !string.IsNullOrEmpty(GalleryTemplateIdentity))
             {
-                WriteWarning("The TemplateVersion and StorageAccountName parameters in New-AzureResourceGroupDeployment cmdlet is being deprecated and will be removed in a future release.");
+                WriteWarning("The GalleryTemplateIdentity, TemplateVersion and StorageAccountName parameters in New-AzureRMResourceGroupDeployment cmdlet is being deprecated and will be removed in a future release.");
             }
 
             if(this.Mode == DeploymentMode.Complete)

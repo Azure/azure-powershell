@@ -19,7 +19,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    public abstract class OperationalInsightsBaseCmdlet : AzurePSCmdlet
+    public abstract class OperationalInsightsBaseCmdlet : ResourceManager.Common.AzureRMCmdlet
     {
         protected const string ByWorkspaceName = "ByWorkspaceName";
         protected const string ByWorkspaceObject = "ByWorkspaceObject";
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
             {
                 if (this.operationalInsightsClient == null)
                 {
-                    this.operationalInsightsClient = new OperationalInsightsClient(Profile.Context);
+                    this.operationalInsightsClient = new OperationalInsightsClient(DefaultProfile.Context);
                 }
 
                 return this.operationalInsightsClient;

@@ -21,11 +21,12 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsLifecycle.Stop, Constants.AzureBatchJobSchedule)]
     public class StopBatchJobScheduleCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "The id of the job schedule to terminate.")]
+        [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, 
+            Mandatory = true, HelpMessage = "The id of the job schedule to terminate.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             BatchClient.TerminateJobSchedule(this.BatchContext, this.Id, this.AdditionalBehaviors);
         }

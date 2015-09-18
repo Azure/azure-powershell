@@ -14,10 +14,11 @@
 
 using System;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    public abstract class NetworkBaseCmdlet : AzurePSCmdlet
+    public abstract class NetworkBaseCmdlet : AzureRMCmdlet
     {
 
         private NetworkClient _networkClient;
@@ -28,7 +29,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 if (_networkClient == null)
                 {
-                    _networkClient = new NetworkClient(Profile)
+                    _networkClient = new NetworkClient(DefaultProfile.Context)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp,
@@ -40,9 +41,9 @@ namespace Microsoft.Azure.Commands.Network
 
             set { _networkClient = value; }
         }
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
             NetworkResourceManagerProfile.Initialize();
         }
 

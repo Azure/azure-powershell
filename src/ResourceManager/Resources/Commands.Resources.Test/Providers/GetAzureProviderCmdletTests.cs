@@ -25,12 +25,13 @@ namespace Microsoft.Azure.Commands.Resources.Test
     using Microsoft.Azure.Management.Resources.Models;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Moq;
+    using WindowsAzure.Commands.Test.Utilities.Common;
     using Xunit;
 
     /// <summary>
     /// Tests the AzureProvider cmdlets
     /// </summary>
-    public class GetAzureProviderCmdletTests
+    public class GetAzureProviderCmdletTests : RMTestBase
     {
         /// <summary>
         /// An instance of the cmdlet
@@ -70,7 +71,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         }
 
         /// <summary>
-        /// Validates all Get-AzureResourceProvider parameter combinations
+        /// Validates all Get-AzureRMResourceProvider parameter combinations
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
