@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.WindowsAzure.Commands.Common;
-using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
 
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// </summary>
         [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Runbook parameters name/value.")]
-        public IDictionary<string, string> Parameters { get; set; }
+        public IDictionary Parameters { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 this.ResourceGroupName,
                 this.AutomationAccountName,
                 this.Name,
-                this.Parameters.ToHashtable(),
+                this.Parameters,
                 this.IsEnabled);
             this.WriteObject(updatedWebhook);
         }
