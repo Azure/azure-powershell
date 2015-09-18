@@ -114,7 +114,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 {
                     DisplayName = this.DisplayName ?? (resource.Properties["displayName"] != null
                         ? resource.Properties["displayName"].ToString()
-                        : null)
+                        : null),
+                    Scope = resource.Properties["scope"].ToString(),
+                    PolicyDefinitionId = resource.Properties["policyDefinitionId"].ToString()
                 }
             };
 
