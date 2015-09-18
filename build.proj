@@ -1,22 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project
-  xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
-  ToolsVersion="4.0"
-  DefaultTargets="ForceRestorePackages;Clean;BuildDebug;BuildRelease;BuildSetupDebug">
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  
+  <!--
+  Available Targets:
+
+  /t:Clean
+    Removes temporary build outputs.
+    
+  /t:Build
+    Builds assemblies.
+
+  /t:Test
+    Runs tests
+
+  /p:CodeSign=True
+    Code sign binaries, mainly for official release. Default is false.
+
+  /p:CodeSign=True;DelaySign=True
+    Test the code sign workflow locally. 
+  
+  -->  
 
   <!-- Define build properties -->
   <PropertyGroup>
-    <ManagementCmdletBinDirectory>.\src\ServiceManagement\Services\Commands\bin</ManagementCmdletBinDirectory>
-    <ManagementTestDirectory>.\src\ServiceManagement\Services\Commands.Test\bin</ManagementTestDirectory>
-    <ManagementTestAssemblyName>Microsoft.WindowsAzure.Commands.Test.dll</ManagementTestAssemblyName>
-    <SetupDirectory>.\setup\build</SetupDirectory>
-    <PublishDirectory>.\src\Publish</PublishDirectory>
-    <PackageDirectory>.\src\Package</PackageDirectory>
+    <LibraryRoot>$(MSBuildThisFileDirectory)</LibraryRoot>
+    <LibrarySourceFolder>$(LibraryRoot)src</LibrarySourceFolder>
+    <LibraryToolsFolder>$(LibraryRoot)tools</LibraryToolsFolder>
+    <PublishDirectory>$(LibrarySourceFolder)\Publish</PublishDirectory>
+    <PackageDirectory>$(LibrarySourceFolder)\Package</PackageDirectory>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <CodeSign Condition=" '$(CodeSign)' == '' ">false</CodeSign>
+    <!--Set this true only if you want to test the code sign workflow locally-->
+    <DelaySign Condition =" '$(DelaySign)' == '' ">false</DelaySign>
     <BuildOutputDirectory>$(PublishDirectory)\Build</BuildOutputDirectory>
     <SetupOutputDirectory>$(PublishDirectory)\Setup</SetupOutputDirectory>
     <TestOutputDirectory>$(PublishDirectory)\TestResults</TestOutputDirectory>
-    <DebugBuildConfig>Configuration=Debug;Platform=Any CPU</DebugBuildConfig>
-    <ReleaseBuildConfig>Configuration=Release;Platform=Any CPU</ReleaseBuildConfig>
     <BuildInParallel Condition="'$(BuildInParallel)' == ''">true</BuildInParallel>
   </PropertyGroup>
   <ItemGroup>
@@ -37,27 +55,22 @@
     <MSBuild
       Projects="@(AzureResourceManagerSln)"
       Targets="Clean"
-      Properties="$(DebugBuildConfig)"
-      ContinueOnError="false" />
-    <MSBuild
-      Projects="@(AzureResourceManagerSln)"
-      Targets="Clean"
-      Properties="$(ReleaseBuildConfig)"
+      Properties="Configuration=$(Configuration);Platform=Any CPU"
       ContinueOnError="false" />
     <MSBuild
       Projects="@(AzureServiceManagementSln)"
       Targets="Clean"
-      Properties="$(DebugBuildConfig)"
-      ContinueOnError="false" />
-    <MSBuild
-      Projects="@(AzureServiceManagementSln)"
-      Targets="Clean"
-      Properties="$(ReleaseBuildConfig)"
+      Properties="Configuration=$(Configuration);Platform=Any CPU"
       ContinueOnError="false" />
     <MSBuild
       Projects="@(SetupSln)"
       Targets="Clean"
-      Properties="$(DebugBuildConfig)"
+      Properties="Configuration=$(Configuration);Platform=Any CPU"
+      ContinueOnError="false" />
+    <MSBuild
+      Projects="@(SetupPowershellGetSln)"
+      Targets="Clean"
+      Properties="Configuration=$(Configuration);Platform=Any CPU"
       ContinueOnError="false" />
       
     <!-- Delete the publish files -->
@@ -95,7 +108,7 @@
   Force nuget package restore so that packages that include .targets files
   don't need to be checked into source control.
   -->
-  <Target Name="ForceRestorePackages">
+  <Target Name="RestoreNugetPackages">
     <ItemGroup>
       <NuGetCache Include="$(LOCALAPPDATA)\NuGet\Cache\*.nupkg"/>
     </ItemGroup>
@@ -123,128 +136,125 @@
   </Target>
 
   <!-- Build all flavors of the Cmdlets -->
-  <Target Name="BuildCmdlets" DependsOnTargets="ForceRestorePackages">
+  <Target Name="Build" DependsOnTargets="RestoreNugetPackages;BuildMsBuildTask">
     <Message Importance="high" Text="Building Cmdlets..." />
     <MSBuild
       Projects="@(AzureResourceManagerSln)"
       Targets="Build"
-      Properties="$(DebugBuildConfig)"
-      BuildInParallel="$(BuildInParallel)"
-      ContinueOnError="false" />
-    <MSBuild
-      Projects="@(AzureResourceManagerSln)"
-      Targets="Build"
-      Properties="$(ReleaseBuildConfig)"
-      BuildInParallel="$(BuildInParallel)"
-      ContinueOnError="false" />
+      Properties="Configuration=$(Configuration);Platform=Any CPU"
+      BuildInParallel="$(BuildInParallel)" ContinueOnError="false" />
     <MSBuild
       Projects="@(AzureServiceManagementSln)"
       Targets="Build"
-      Properties="$(DebugBuildConfig)"
-      BuildInParallel="$(BuildInParallel)"
-      ContinueOnError="false" />
-    <MSBuild
-      Projects="@(AzureServiceManagementSln)"
-      Targets="Build"
-      Properties="$(ReleaseBuildConfig)"
-      BuildInParallel="$(BuildInParallel)"
-      ContinueOnError="false" />
-  </Target>
-
-  <!-- Build the Setup -->
-  <Target Name="BuildSetupDebug">
-    <Message
-      Importance="high"
-      Text="Building Setup..."
-      ContinueOnError="false" />
-    <Message
-      Importance="high"
-      Text="You are required to have installed the WiX Toolset at http://wix.codeplex.com/releases/view/115492 (Wix38.msi)"
-      ContinueOnError="false" />
+      Properties="Configuration=$(Configuration);Platform=Any CPU"
+      BuildInParallel="$(BuildInParallel)" ContinueOnError="false" />
+    <Message Importance="high" Text="Building Setup..." />
     <MSBuild
       Projects="@(SetupPowershellGetSln)"
       Targets="Build"
-      Properties="$(DebugBuildConfig)"
+      Properties="Configuration=$(Configuration);Platform=Any CPU"
       ContinueOnError="false" />
     <MSBuild
       Projects="@(SetupSln)"
       Targets="Build"
-      Properties="$(DebugBuildConfig)"
+      Properties="Configuration=$(Configuration);Platform=Any CPU"
       ContinueOnError="false" />
+      
+    <CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " />
+  </Target>
+  
+  <Target Name="CodeSignBinaries">
+    <Error Condition=" !$(OnPremiseBuild) and !$(DelaySign) " Text="No CI tools path available, the code sign will be unable to continue. $(CIToolsPath)" />
+
+    <Message Text="Code signing" Importance="high" />
+
+    <Message Text="Signing project: $(MSBuildProjectFullPath)" />
+    
+    <MSBuild Projects="$(MSBuildProjectFullPath)"
+             Targets="SignBinaries"
+             Properties="StrongNameToken=$(StrongNameToken)">    
+    </MSBuild>
+    
+    <CallTarget Targets="ValidateCorporateCompliance" Condition="!$(DelaySign)"/>
   </Target>
 
-  <!-- Build the Setup -->
-  <Target Name="BuildSetupRelease">
-    <Message
-      Importance="high"
-      Text="Building Setup..."
-      ContinueOnError="false" />
-    <Message
-      Importance="high"
-      Text="You are required to have installed the WiX Toolset at http://wix.codeplex.com/releases/view/115492 (Wix38.msi)"
-      ContinueOnError="false" />
-    <MSBuild
-      Projects="@(SetupPowershellGetSln)"
-      Targets="Build"
-      Properties="$(ReleaseBuildConfig)"
-      ContinueOnError="false" />
-    <MSBuild
-      Projects="@(SetupSln)"
-      Targets="Build"
-      Properties="$(ReleaseBuildConfig)"
-      ContinueOnError="false" />
-  </Target>
-
-  <!-- Build the Cmdlets and Setup in all configurations -->
-  <Target Name="Build" DependsOnTargets="BuildCmdlets;BuildSetupRelease" />
   <!-- Do everything possible -->
   <Target
     Name="Full"
-    DependsOnTargets="ForceRestorePackages;Clean;BuildDebug;Test;BuildSetupDebug" />
-
-  <!-- Build the Cmdlets in Release configuration -->
-  <Target Name="BuildRelease" DependsOnTargets="ForceRestorePackages">
-    <Message Importance="high" Text="Building Cmdlets in Release config..." />
-    <MSBuild
-      Projects="@(AzureResourceManagerSln)"
-      Targets="Build"
-      Properties="$(ReleaseBuildConfig)"
-      BuildInParallel="$(BuildInParallel)"
-      ContinueOnError="false" />
-    <MSBuild
-      Projects="@(AzureServiceManagementSln)"
-      Targets="Build"
-      Properties="$(ReleaseBuildConfig)"
-      BuildInParallel="$(BuildInParallel)"
-      ContinueOnError="false" />
+    DependsOnTargets="Clean;Build;Test" />
+    
+  <Target Name="BuildMsBuildTask" DependsOnTargets="RestoreNugetPackages">
+    <MSBuild Projects="$(LibraryToolsFolder)\BuildPackagesTask\Microsoft.Azure.Build.Tasks.csproj"
+             Targets="Build" Properties="Configuration=Debug;Platform=AnyCPU" />
   </Target>
+   
+  <UsingTask TaskName="ValidateStrongNameSignatureTask" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll"  />
+  <UsingTask TaskName="FilterOutAutoRestLibraries" AssemblyFile="$(LibraryToolsFolder)\Microsoft.Azure.Build.Tasks.dll"  />  
+  
+  <Target Name="SignBinaries">
+    <PropertyGroup>
+      <!--public token associated with MSSharedLibKey.snk-->
+      <StrongNameToken Condition=" '$(StrongNameToken)' == '' ">31bf3856ad364e35</StrongNameToken>
+    </PropertyGroup>
+    <GetFrameworkSdkPath>
+      <Output TaskParameter="Path" PropertyName="WindowsSdkPath"/>
+    </GetFrameworkSdkPath>
 
-  <!-- Build the Cmdlets in Debug configuration -->
-  <Target Name="BuildDebug" DependsOnTargets="ForceRestorePackages">
-    <Message Importance="high" Text="Building Cmdlets in Debug config..." />
-    <MSBuild
-      Projects="@(AzureResourceManagerSln)"
-      Targets="Build"
-      Properties="$(DebugBuildConfig)"
-      BuildInParallel="$(BuildInParallel)"
-      ContinueOnError="false" />
-    <MSBuild
-      Projects="@(AzureServiceManagementSln)"
-      Targets="Build"
-      Properties="$(DebugBuildConfig)"
-      BuildInParallel="$(BuildInParallel)"
-      ContinueOnError="false" />
+    <ItemGroup>
+      <DelaySignedAssembliesToValidate Include="src\Package\$(Configuration)\**\Microsoft*Azure*Commands*.dll" />
+      <DelaySignedAssembliesToValidate Include="src\Package\$(Configuration)\**\Microsoft.Azure.Common.Extensions.dll" />
+      <DelaySignedFilesToValidate Include="@(DelaySignedAssembliesToValidate)" />
+      <DelaySignedFilesToValidate Include="src\Package\$(Configuration)\**\*.ps1" />
+      <DelaySignedFilesToValidate Include="setup*\build\$(Configuration)\AzurePowerShell*.msi" />
+    </ItemGroup>
+    
+    <Message Importance="high" Text="src\Package\$(Configuration) does not contains any files to sign. Code sign will skip." 
+             Condition="'@(DelaySignedFilesToValidate)' == ''" />
+             
+    <ValidateStrongNameSignatureTask
+      WindowsSdkPath="$(WindowsSdkPath)"
+      Assembly="%(DelaySignedAssembliesToValidate.Identity)"
+      ExpectedTokenSignature="$(StrongNameToken)"
+      ExpectedDelaySigned="true"
+      ContinueOnError="false" 
+      Condition="'@(DelaySignedAssembliesToValidate)' != ''"/>
+
+    <CodeSigningTask
+      Description="Microsoft Azure PowerShell"
+      Keywords="Microsoft Azure PowerShell"
+      UnsignedFiles="@(DelaySignedFilesToValidate)"
+      DestinationPath="signed"
+      SigningLogPath="signed\signing.log"
+      ToolsPath="$(CIToolsPath)"
+      Condition="!$(DelaySign) and '@(DelaySignedFilesToValidate)' != ''"/>  
+      
+    <!--If we are testing locally then we copy the binaries and do not submit to the code sign server-->
+    <Copy SourceFiles="@(DelaySignedFilesToValidate)" DestinationFolder="signed" Condition="$(DelaySign)" />
+    
+    <ItemGroup>
+      <AfterSignedAssembliesToValidate Include="signed\*.dll" />
+    </ItemGroup>
+    <ValidateStrongNameSignatureTask
+        WindowsSdkPath="$(WindowsSdkPath)"
+        Assembly="%(AfterSignedAssembliesToValidate.Identity)"
+        ExpectedTokenSignature="$(StrongNameToken)"
+        ExpectedDelaySigned="false"
+        ContinueOnError="false" 
+        Condition="!$(DelaySign) and '@(AfterSignedAssembliesToValidate)' != ''"/>
+    
+    <Message Text="TODO: Copy signed files back"/>
   </Target>
 
   <PropertyGroup>
     <RunTestLive Condition="'$(RunTestLive)' == ''">false</RunTestLive>
     <XUnitIncludedTrait Condition="!$(RunTestLive)">AcceptanceType=CheckIn</XUnitIncludedTrait>
   </PropertyGroup>
+  
   <!-- Note: all testing related target should go to 'AzurePowershell.test.targets' file except the one used by CI run -->
   <Import Project="$(MSBuildThisFileDirectory)AzurePowershell.test.targets"/>
   
   <!-- Run checkin tests for each pull request -->
-  <Target Name="Test" DependsOnTargets="BuildDebug;BeforeRunTests">
+  <Target Name="Test" DependsOnTargets="Build;BeforeRunTests">
     <Message Importance="high" Text="Running check in tests..." />
     <CallTarget Targets="InvokeXUnit"/>
   </Target>
@@ -252,14 +262,14 @@
   <!-- Run Full switch with scenario tests -->
   <Target
     Name="FullWithScenarioTests"
-    DependsOnTargets="ForceRestorePackages;Clean;BuildDebug;BuildRelease;Test;BuildSetupDebug;BuildSetupRelease;RunOneSDKCIT" />
+    DependsOnTargets="Clean;Build;Test;RunOneSDKCIT" />
   
   <!-- Run live tests and record mocks -->
     <Target
     Name="RunLiveTests"
-    DependsOnTargets="ForceRestorePackages;Clean;BuildDebug;BuildRelease;LiveTestsFilter;BuildSetupDebug;BuildSetupRelease" />
+    DependsOnTargets="Clean;Build;LiveTestsFilter" />
 
-    <Target Name="LiveTestsFilter" DependsOnTargets="BuildDebug;BeforeRunTests">
+    <Target Name="LiveTestsFilter" DependsOnTargets="Build;BeforeRunTests">
     <Message Importance="high" Text="Running live tests..." />
     <CallTarget Targets="LiveTests"/>
   </Target>
