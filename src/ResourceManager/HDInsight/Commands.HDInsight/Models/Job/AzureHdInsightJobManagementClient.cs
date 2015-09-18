@@ -134,6 +134,18 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             return joboutput;
         }
 
+        public Stream GetJobTaskLogSummary(string jobid, string storageAccountName, string storageAccountKey, string containerName)
+        {
+            var joboutput = HdInsightJobManagementClient.JobManagement.GetJobTaskLogSummary(jobid, storageAccountName, storageAccountKey, containerName);
+            return joboutput;
+        }
+
+        public void DownloadJobTaskLogs(string jobid, string targetDirectory, string storageAccountName,
+            string storageAccountKey, string containerName)
+        {
+            HdInsightJobManagementClient.JobManagement.DownloadJobTaskLogs(jobid, targetDirectory, storageAccountName, storageAccountKey, containerName);
+        }
+
         public static string ConvertDefinesToString(IDictionary<string, string> defines)
         {
             return defines.Count == 0 ? null : string.Format("&define={0}", string.Join("&define=", defines.Select(x => x.Key + "%3D" + x.Value).ToArray()));
