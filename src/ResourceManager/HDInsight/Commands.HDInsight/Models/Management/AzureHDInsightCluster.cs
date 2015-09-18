@@ -36,10 +36,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             HttpEndpoint = httpEndpoint != null ? httpEndpoint.Location : null;
 
             ResourceGroup = ClusterConfigurationUtils.GetResourceGroupFromClusterId(cluster.Id);
-
         }
 
-        public AzureHDInsightCluster(Cluster cluster, IDictionary<string, string> clusterConfiguration) 
+        public AzureHDInsightCluster(Cluster cluster, IDictionary<string, string> clusterConfiguration)
             : this(cluster)
         {
             if (clusterConfiguration != null)
@@ -53,19 +52,18 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 
                 AdditionalStorageAccounts = ClusterConfigurationUtils.GetAdditionStorageAccounts(clusterConfiguration, DefaultStorageAccount);
             }
-            
         }
 
         /// <summary>
         /// The name of the resource.
         /// </summary>
         public string Name { get; set; }
-        
+
         /// <summary>
         /// The ID of the resource.
         /// </summary>
         public string Id { get; set; }
-        
+
         /// <summary>
         /// The location of the resource.
         /// </summary>
@@ -100,7 +98,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// The endpoint with which to connect to the cluster.
         /// </summary>
         public string HttpEndpoint { get; set; }
-        
+
         /// <summary>
         /// Default storage account for this cluster.
         /// </summary>

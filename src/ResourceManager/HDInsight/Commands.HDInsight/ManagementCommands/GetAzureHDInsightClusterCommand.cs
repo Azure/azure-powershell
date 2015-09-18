@@ -45,11 +45,12 @@ namespace Microsoft.Azure.Commands.HDInsight
         protected override void ProcessRecord()
         {
             var result = HDInsightManagementClient.GetCluster(ResourceGroupName, ClusterName);
-            
+
             var output = result.Select(entry =>
             {
-                var configuration = HDInsightManagementClient.GetClusterConfigurations(entry, "core-site");
-                return new AzureHDInsightCluster(entry, configuration);                                    
+                string resourceGroupName = ClusterConfigurationUtils.GetResourceGroupFromClusterId(entry.Id);
+                var configuration = HDInsightManagementClient.GetClusterConfigurations(resourceGroupName, entry.Name, "core-site");
+                return new AzureHDInsightCluster(entry, configuration);
             }).ToList();
 
             WriteObject(output, true);

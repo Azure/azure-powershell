@@ -20,34 +20,34 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
     internal class ClusterConfigurationUtils
     {
         public static string GetResourceGroupFromClusterId(string clusterId)
-        {            
-            string clusterGroup = null;
+        {
+            // Parse resource group from cluster Id
+            // The code expects Id to be of the format \
+            // /subscriptions/<subscription ID>/resourceGroups/<Resource Group Id>/providers/Microsoft.HDInsight/clusters/<cluster name>
+
+            string resourceGroup = null;
             int index = clusterId.IndexOf("resourceGroups", StringComparison.OrdinalIgnoreCase);
 
             if (index >= 0)
             {
                 index += "resourceGroups".Length;
-                string[] parts = clusterId.Substring(index).Split(new [] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                string[] parts = clusterId.Substring(index).Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
 
                 if (parts.Length > 0)
                 {
-                    clusterGroup = parts[0];
+                    resourceGroup = parts[0];
                 }
-            }            
+            }
 
-            return clusterGroup;
+            return resourceGroup;
         }
 
         public static AzureHDInsightDefaultStorageAccount GetDefaultStorageAccountDetails(
-            IDictionary<string, string> configuration, 
+            IDictionary<string, string> configuration,
             string version)
-        {            
-            string key = Constants.ClusterConfiguration.DefaultStorageAccountNameKey;
-
-            if (version.Equals("2.1"))
-            {
-                key = Constants.ClusterConfiguration.DefaultStorageAccountNameKeyOld;
-            }
+        {
+            string key = version.Equals("2.1") ? Constants.ClusterConfiguration.DefaultStorageAccountNameKeyOld
+                : Constants.ClusterConfiguration.DefaultStorageAccountNameKey;
 
             string accountAndContainerStr;
 
@@ -68,9 +68,10 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 
         public static List<string> GetAdditionStorageAccounts(IDictionary<string, string> configuration, string defaultAccount)
         {
-            return (from key in configuration.Keys 
-                    where key.StartsWith(Constants.ClusterConfiguration.StorageAccountKeyPrefix) && 
-                    !key.EndsWith(defaultAccount) 
+            // Parse the storage account names from the key and exclude the default one
+            return (from key in configuration.Keys
+                    where key.StartsWith(Constants.ClusterConfiguration.StorageAccountKeyPrefix, StringComparison.OrdinalIgnoreCase) &&
+                    !key.EndsWith(defaultAccount, StringComparison.OrdinalIgnoreCase)
                     select key.Remove(0, Constants.ClusterConfiguration.StorageAccountKeyPrefix.Length)).ToList();
         }
     }

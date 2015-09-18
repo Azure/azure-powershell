@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 var getresponse = Get(resourceGroupName, clusterName);
                 if (getresponse != null)
                 {
-                    result.Add(getresponse.Cluster);   
+                    result.Add(getresponse.Cluster);
                 }
             }
             return result;
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 
         public virtual ClusterListResponse ListClusters(string resourceGroupName)
         {
-            return HdInsightManagementClient.Clusters.ListByResourceGroup(resourceGroupName);   
+            return HdInsightManagementClient.Clusters.ListByResourceGroup(resourceGroupName);
         }
 
         public virtual ClusterGetResponse Get(string resourceGroupName, string clusterName)
@@ -110,19 +110,20 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             return HdInsightManagementClient.Clusters.GetCapabilities(location);
         }
 
-        public virtual IDictionary<string, string> GetClusterConfigurations(Cluster cluster, string configurationName)
+        public virtual IDictionary<string, string> GetClusterConfigurations(string resourceGroupName, string clusterName, string configurationName)
         {
             Dictionary<string, string> properties = new Dictionary<string, string>();
-            
-            if(string.IsNullOrWhiteSpace(configurationName))
+
+            if (string.IsNullOrWhiteSpace(resourceGroupName) ||
+                string.IsNullOrWhiteSpace(clusterName) ||
+                string.IsNullOrWhiteSpace(configurationName))
             {
                 return properties;
             }
 
-            string resourceGroupName = ClusterConfigurationUtils.GetResourceGroupFromClusterId(cluster.Id);
             return HdInsightManagementClient.Clusters.GetClusterConfigurations(
-                resourceGroupName, 
-                cluster.Name, 
+                resourceGroupName,
+                clusterName,
                 configurationName).Configuration;
         }
     }
