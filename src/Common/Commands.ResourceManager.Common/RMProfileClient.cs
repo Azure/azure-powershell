@@ -60,9 +60,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 foreach(var tenant in ListAccountTenants(account, environment, password, promptBehavior))
                 {
-                    if (TryGetTenantSubscription(account, environment, tenant.Id.ToString(), subscriptionId, password, ShowDialog.Auto, out newSubscription, out newTenant))
+                    AzureTenant tempTenant;
+                    if (TryGetTenantSubscription(account, environment, tenant.Id.ToString(), subscriptionId, password, ShowDialog.Auto, out newSubscription, out tempTenant))
                     {
-                        break;
+                        newTenant = tempTenant;
                     }
                 }
             }
@@ -251,7 +252,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     environment,
                     tenantId,
                     password,
-                    promptBehavior);
+                    promptBehavior, 
+                    TokenCache.DefaultShared);
             using (var subscriptionClient = AzureSession.ClientFactory.CreateCustomClient<SubscriptionClient>(
                 new TokenCloudCredentials(accessToken.AccessToken),
                 environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager)))
