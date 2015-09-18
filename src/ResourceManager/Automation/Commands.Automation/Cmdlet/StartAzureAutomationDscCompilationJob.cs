@@ -43,6 +43,12 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public IDictionary Parameters { get; set; }
 
         /// <summary>
+        /// Gets or sets the configuration data.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The compilation job configuration data.")]
+        public IDictionary ConfigurationData { get; set; }
+
+        /// <summary>
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
@@ -50,6 +56,10 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             CompilationJob job = null;
 
+            if (this.ConfigurationData != null)
+            {
+                Parameters.Add("ConfigurationData", this.ConfigurationData);
+            }
             job = this.AutomationClient.StartCompilationJob(this.ResourceGroupName, this.AutomationAccountName, this.ConfigurationName, this.Parameters);
 
             this.WriteObject(job);

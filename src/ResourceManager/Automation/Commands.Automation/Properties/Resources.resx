@@ -414,4 +414,8 @@
     <value>This connection type has connections associated with it. If you delete this connection type, all connections associated with it will be unusable and should be removed, unless you create a new connection type with the same name that has the same field definitions as the deleted connection type. However, it can have additional fields as well. Are you sure you want to remove the Azure Automation {0} ?</value>
     <comment>Automation</comment>
   </data>
+  <data name="NodeConfigurationNameInvalid" xml:space="preserve">
+    <value>Invalid node configuration name. Please specify in the format &lt;config name&gt;.&lt;node name&gt;</value>
+    <comment>Automation</comment>
+  </data>
 </root>
