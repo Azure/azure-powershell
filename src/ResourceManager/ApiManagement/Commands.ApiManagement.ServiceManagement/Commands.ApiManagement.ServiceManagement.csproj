@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\ApiManagement\</OutputPath>
+    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\Azure.ApiManagement\</OutputPath>
     <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -30,7 +30,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\ApiManagement\</OutputPath>
+    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\Azure.ApiManagement\</OutputPath>
     <DefineConstants>TRACE;SIGN</DefineConstants>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <CodeAnalysisLogFile>bin\Release\Management.Automation.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
@@ -246,6 +246,9 @@
     <Content Include="Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-help.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="..\Azure.ApiManagement.psd1">
+      <Link>Azure.ApiManagement.psd1</Link>
+    </None>
     <None Include="packages.config" />
     <None Include="MSSharedLibKey.snk" />
   </ItemGroup>
