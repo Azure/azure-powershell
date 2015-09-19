@@ -56,14 +56,15 @@ ScriptsToProcess = @()
 # Type files (.ps1xml) to be loaded when importing this module  
 TypesToProcess = @(  
     '.\AzureRM.Compute\Microsoft.Azure.Commands.Compute.Types.ps1xml',
-    '.\AzureRM.Sql\Microsoft.Azure.Commands.Sql.Types.ps1xml'
+    '.\AzureRM.Sql\Microsoft.Azure.Commands.Sql.Types.ps1xml',
+	'.\Azure.Storage\Microsoft.WindowsAzure.Commands.Storage.Types.ps1xml'
 )  
   
 # Format files (.ps1xml) to be loaded when importing this module  
 FormatsToProcess = @(  
     '.\AzureRM.Resources\Microsoft.Azure.Commands.Resources.format.ps1xml',  
     '.\AzureRM.Tags\Microsoft.Azure.Commands.Tags.format.ps1xml',  
-    '.\AzureRM.Profile\Microsoft.Azure.Commands.Profile.format.ps1xml',  
+    '.\AzureRM.Profile\Microsoft.Azure.Commands.Profile.format.ps1xml',
     '.\AzureRM.DataFactories\Microsoft.Azure.Commands.DataFactories.format.ps1xml',  
     '.\AzureRM.RedisCache\Microsoft.Azure.Commands.RedisCache.format.ps1xml',  
     '.\AzureRM.AzureBatch\Microsoft.Azure.Commands.Batch.format.ps1xml',  
@@ -72,7 +73,7 @@ FormatsToProcess = @(
     '.\AzureRM.Compute\Microsoft.Azure.Commands.Compute.format.ps1xml',  
     '.\AzureRM.Compute\Microsoft.Azure.Commands.Compute.format.generated.ps1xml',  
     '.\AzureRM.Network\Microsoft.Azure.Commands.Network.format.ps1xml',  
-    '.\Storage\Microsoft.WindowsAzure.Commands.Storage.format.ps1xml',  
+    '.\Azure.Storage\Microsoft.WindowsAzure.Commands.Storage.format.ps1xml',
     '.\AzureRM.StorageManagement\Microsoft.Azure.Commands.Management.Storage.format.ps1xml', 
     '.\AzureRM.OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.format.ps1xml',  
     '.\AzureRM.AzureBackup\Microsoft.Azure.Commands.AzureBackup.format.ps1xml',
@@ -99,7 +100,7 @@ NestedModules = @(
     '.\AzureRM.Websites\Microsoft.Azure.Commands.Websites.dll',  
     '.\AzureRM.Compute\Microsoft.Azure.Commands.Compute.dll',  
     '.\AzureRM.Network\Microsoft.Azure.Commands.Network.dll',  
-    '.\Storage\Microsoft.WindowsAzure.Commands.Storage.dll',  
+    '.\Azure.Storage\Microsoft.WindowsAzure.Commands.Storage.dll',
     '.\AzureRM.ApiManagement\Microsoft.Azure.Commands.ApiManagement.dll',  
     '.\AzureRM.StorageManagement\Microsoft.Azure.Commands.Management.Storage.dll',  
     '.\AzureRM.OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.dll',  
@@ -127,7 +128,7 @@ AliasesToExport = @(
     'Use-AzureRMSqlDatabaseServerAuditingPolicy',
     'Get-AzureRMStorageContainerAcl',  
     'Start-CopyAzureStorageBlob',  
-    'Stop-CopyAzureStorageBlob'  
+    'Stop-CopyAzureStorageBlob'
 )  
   
 # List of all modules packaged with this module  
