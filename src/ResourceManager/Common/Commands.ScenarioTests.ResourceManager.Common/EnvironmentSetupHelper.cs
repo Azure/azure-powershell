@@ -27,6 +27,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
+using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
@@ -308,7 +309,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         private void SetupPowerShellModules(System.Management.Automation.PowerShell powershell)
         {
-            powershell.AddScript(string.Format("cd \"{0}\"", Environment.CurrentDirectory));
+            powershell.AddScript(string.Format("Write-Debug \"current executing assembly: {0}\"", Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)));
+            powershell.AddScript(string.Format("cd \"{0}\"", Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)));
 
             foreach (string moduleName in modules)
             {
