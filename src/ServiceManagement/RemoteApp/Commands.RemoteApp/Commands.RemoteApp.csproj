@@ -206,6 +206,7 @@
     <Compile Include="TemplateImage\RemoveAzureRemoteAppTemplateImage.cs" />
     <Compile Include="TemplateImage\RenameAzureRemoteAppTemplateImage.cs" />
     <Compile Include="TemplateImage\TemplateImage.cs" />
+    <Compile Include="Vm\GetAzureRemoteAppVm.cs" />
     <Compile Include="Vm\RestartAzureRemoteAppVm.cs" />
     <Compile Include="Vnet\GetAzureRemoteAppVnet.cs" />
     <Compile Include="Vnet\GetAzureRemoteAppVpnDeviceConfigScript.cs" />
@@ -226,7 +227,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Microsoft.Azure.Commands.RemoteApp.dll-help.xml">
+    <Content Include="Microsoft.WindowsAzure.Commands.RemoteApp.dll-help.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

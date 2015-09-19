@@ -19,7 +19,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\Package\Debug\ResourceManager\AzureResourceManager\Resources</OutputPath>
+    <OutputPath>..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -28,7 +28,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
-    <OutputPath>..\..\Package\Release\ResourceManager\AzureResourceManager\Resources</OutputPath>
+    <OutputPath>..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile\</OutputPath>
     <DefineConstants>TRACE;SIGN</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
@@ -132,10 +132,15 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GetAzureRMSubscription.cs" />
+    <Compile Include="Environment\PSAzureEnvironment.cs" />
+    <Compile Include="Environment\RemoveAzureRMEnvironment.cs" />
+    <Compile Include="Environment\GetAzureRMEnvironment.cs" />
+    <Compile Include="Environment\SetAzureRMEnvironment.cs" />
+    <Compile Include="Environment\AddAzureRMEnvironment.cs" />
+    <Compile Include="Subscription\GetAzureRMSubscription.cs" />
     <Compile Include="Account\LoginAzureRMAccount.cs" />
     <Compile Include="Context\GetAzureRMContext.cs" />
-    <Compile Include="Context\SelectAzureRMContext.cs" />
+    <Compile Include="Context\SetAzureRMContext.cs" />
     <Compile Include="Profile\SelectAzureRMProfile.cs" />
     <Compile Include="Profile\SaveAzureRMProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -172,6 +177,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />

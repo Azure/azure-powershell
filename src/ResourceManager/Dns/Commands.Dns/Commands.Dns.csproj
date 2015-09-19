@@ -20,7 +20,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\Dns</OutputPath>
+    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Dns</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -35,7 +35,7 @@
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
     <DelaySign>true</DelaySign>
-    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\Dns\</OutputPath>
+    <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.Dns\</OutputPath>
     <DefineConstants>TRACE;SIGN</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
@@ -175,6 +175,11 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Microsoft.Azure.Commands.Dns.dll-Help.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

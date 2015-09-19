@@ -18,33 +18,33 @@
 #>
 function Test-AzureProvider
 {
-    $defaultProviders = Get-AzureRMProvider
+    $defaultProviders = Get-AzureRMResourceProvider
 
     Assert-True { $defaultProviders.Length -gt 0 }
 
-    $allProviders = Get-AzureRMProvider -ListAvailable
+    $allProviders = Get-AzureRMResourceProvider -ListAvailable
 
     Assert-True { $allProviders.Length -gt $defaultProviders.Length }
 
-    Register-AzureRMProvider -ProviderName "Microsoft.ApiManagement" -Force
+    Register-AzureRMResourceProvider -ProviderName "Microsoft.ApiManagement" -Force
 
     $endTime = [DateTime]::UtcNow.AddMinutes(5)
 
-    while ([DateTime]::UtcNow -lt $endTime -and @(Get-AzureRMProvider -ProviderName "Microsoft.ApiManagement").RegistrationState -ne "Registered")
+    while ([DateTime]::UtcNow -lt $endTime -and @(Get-AzureRMResourceProvider -ProviderName "Microsoft.ApiManagement").RegistrationState -ne "Registered")
     {
         [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(1000)
     }
 
-    Assert-True { @(Get-AzureRMProvider -ProviderName "Microsoft.ApiManagement").RegistrationState -eq "Registered" }
+    Assert-True { @(Get-AzureRMResourceProvider -ProviderName "Microsoft.ApiManagement").RegistrationState -eq "Registered" }
 
-    Unregister-AzureRMProvider -ProviderName "Microsoft.ApiManagement" -Force
+    Unregister-AzureRMResourceProvider -ProviderName "Microsoft.ApiManagement" -Force
 
-    while ([DateTime]::UtcNow -lt $endTime -and @(Get-AzureRMProvider -ProviderName "Microsoft.ApiManagement").RegistrationState -ne "Unregistered")
+    while ([DateTime]::UtcNow -lt $endTime -and @(Get-AzureRMResourceProvider -ProviderName "Microsoft.ApiManagement").RegistrationState -ne "Unregistered")
     {
         [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(1000)
     }
 
-    Assert-True { @(Get-AzureRMProvider -ProviderName "Microsoft.ApiManagement").RegistrationState -eq "Unregistered" }
+    Assert-True { @(Get-AzureRMResourceProvider -ProviderName "Microsoft.ApiManagement").RegistrationState -eq "Unregistered" }
  }
 
  <#
