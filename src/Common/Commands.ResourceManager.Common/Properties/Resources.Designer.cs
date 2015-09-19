@@ -127,6 +127,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The provided account {0} does not have access to any subscriptions. Please try logging in with different credentials..
+        /// </summary>
+        public static string NoSubscriptionFound {
+            get {
+                return ResourceManager.GetString("NoSubscriptionFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tenant &apos;{0}&apos; was not found. Please verify that your account has access to this tenant..
         /// </summary>
         public static string TenantNotFound {
