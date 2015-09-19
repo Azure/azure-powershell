@@ -249,6 +249,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\CompilationJobStreamType.cs" />
+    <None Include="..\AzureRM.Automation.psd1">
+      <Link>AzureRM.Automation.psd1</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>

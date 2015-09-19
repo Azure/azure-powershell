@@ -218,6 +218,7 @@
     </Content>
     <None Include="..\AzureRM.ApiManagement.psd1">
       <Link>AzureRM.ApiManagement.psd1</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config">
       <SubType>Designer</SubType>

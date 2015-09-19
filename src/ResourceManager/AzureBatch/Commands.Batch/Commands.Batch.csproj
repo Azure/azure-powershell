@@ -286,6 +286,10 @@
     <Compile Include="JobSchedules\RemoveBatchJobScheduleCommand.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\AzureRM.Batch.psd1">
+      <Link>AzureRM.Batch.psd1</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Microsoft.Azure.Commands.Batch.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>

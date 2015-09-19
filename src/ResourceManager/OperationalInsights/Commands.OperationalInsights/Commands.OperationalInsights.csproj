@@ -162,6 +162,9 @@
     <Compile Include="Workspaces\SetAzureOperationalInsightsWorkspaceCommand.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\AzureRM.OperationalInsights.psd1">
+      <Link>AzureRM.OperationalInsights.psd1</Link>
+    </None>
     <None Include="Microsoft.Azure.Commands.OperationalInsights.dll-Help.psd1" />
     <Content Include="Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
