@@ -222,17 +222,17 @@
     <Compile Include="ResourceGroups\NewAzureResourceGroupCommandTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
+    <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
       <Name>Commands.ResourceManager.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\Commands.ScenarioTests.ResourceManager.Common\Commands.ScenarioTests.ResourceManager.Common.csproj">
+    <ProjectReference Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\Commands.ScenarioTests.ResourceManager.Common.csproj">
       <Project>{3436a126-edc9-4060-8952-9a1be34cdd95}</Project>
       <Name>Commands.ScenarioTests.ResourceManager.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\ResourceManager\Commands.ResourceManager\Cmdlets\Commands.ResourceManager.Cmdlets.csproj">
+    <ProjectReference Include="..\Commands.ResourceManager\Cmdlets\Commands.Resources.Rest.csproj">
       <Project>{8058d403-06e3-4bed-8924-d166ce303961}</Project>
-      <Name>Commands.ResourceManager.Cmdlets</Name>
+      <Name>Commands.Resources.Rest</Name>
     </ProjectReference>
     <ProjectReference Include="..\Commands.Resources\Commands.Resources.csproj">
       <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>

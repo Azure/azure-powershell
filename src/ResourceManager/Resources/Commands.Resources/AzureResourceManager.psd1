@@ -56,7 +56,7 @@ ScriptsToProcess = @()
 # Type files (.ps1xml) to be loaded when importing this module  
 TypesToProcess = @(  
     '.\AzureRM.Compute\Microsoft.Azure.Commands.Compute.Types.ps1xml',
-    '.\AzureRM.Sql\Microsoft.Azure.Commands.Sql.Types.ps1xml' 
+    '.\AzureRM.Sql\Microsoft.Azure.Commands.Sql.Types.ps1xml'
 )  
   
 # Format files (.ps1xml) to be loaded when importing this module  
@@ -84,6 +84,7 @@ FormatsToProcess = @(
 NestedModules = @(  
     '.\AzureRM.Automation\Microsoft.Azure.Commands.ResourceManager.Automation.dll',  
     '.\AzureRM.Resources\Microsoft.Azure.Commands.Resources.dll',  
+	'.\AzureRM.Resources\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll',  
     '.\AzureRM.Profile\Microsoft.Azure.Commands.Profile.dll',  
     '.\AzureRM.Tags\Microsoft.Azure.Commands.Tags.dll',  
     '.\AzureRM.Sql\Microsoft.Azure.Commands.Sql.dll',  
@@ -99,7 +100,6 @@ NestedModules = @(
     '.\AzureRM.Compute\Microsoft.Azure.Commands.Compute.dll',  
     '.\AzureRM.Network\Microsoft.Azure.Commands.Network.dll',  
     '.\Storage\Microsoft.WindowsAzure.Commands.Storage.dll',  
-    '.\AzureRM.ResourceManager\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll',  
     '.\AzureRM.ApiManagement\Microsoft.Azure.Commands.ApiManagement.dll',  
     '.\AzureRM.StorageManagement\Microsoft.Azure.Commands.Management.Storage.dll',  
     '.\AzureRM.OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.dll',  
@@ -124,7 +124,7 @@ AliasesToExport = @(
     'Get-AzureRMSqlDatabaseServerAuditingPolicy',  
     'Remove-AzureRMSqlDatabaseServerAuditing',  
     'Set-AzureRMSqlDatabaseServerAuditingPolicy',  
-    'Use-AzureRMSqlDatabaseServerAuditingPolicy',  
+    'Use-AzureRMSqlDatabaseServerAuditingPolicy',
     'Get-AzureRMStorageContainerAcl',  
     'Start-CopyAzureStorageBlob',  
     'Stop-CopyAzureStorageBlob'  

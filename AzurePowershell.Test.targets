@@ -16,7 +16,7 @@
     <AzureRTTestSettings>.\src\AzureRT.testsettings</AzureRTTestSettings>
     <AzureRTSeqTestSettings>.\src\AzureRTSeq.testsettings</AzureRTSeqTestSettings>
     <AzureRTTestContainer>.\src\ServiceManagement\Compute\Commands.ServiceManagement.Test\bin\Debug\Microsoft.WindowsAzure.Commands.ServiceManagement.Test.dll</AzureRTTestContainer>
-    <StorageScenarioTestDebug>src\ServiceManagement\Storage\Commands.Storage.ScenarioTest\bin\Debug\CLITest.dll</StorageScenarioTestDebug>
+    <StorageScenarioTestDebug>src\Common\Storage\Commands.Storage.ScenarioTest\bin\Debug\CLITest.dll</StorageScenarioTestDebug>
     <ManagementTestDebug>.\src\ServiceManagement\Services\Commands.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Test.dll</ManagementTestDebug>
     <ResourceManagerTestDebug>.\src\ResourceManager\Resources\Commands.Resources.Test\bin\Debug\Microsoft.Azure.Commands.Resources.Test.dll</ResourceManagerTestDebug>
     <DataFactoryManagerTestDebug>.\src\ResourceManager\DataFactories\Commands.DataFactories.Test\bin\Debug\Microsoft.Azure.Commands.DataFactories.Test.dll</DataFactoryManagerTestDebug>
@@ -28,7 +28,7 @@
     <ServiceManagementTestDebug>.\src\ServiceManagement\Compute\Commands.ServiceManagement.Test\bin\Debug\Microsoft.WindowsAzure.Commands.ServiceManagement.Test.dll</ServiceManagementTestDebug>
     <SqlDatabaseTestDebug>.\src\ServiceManagement\Sql\Commands.SqlDatabase.Test\bin\Debug\Microsoft.WindowsAzure.Commands.SqlDatabase.Test.dll</SqlDatabaseTestDebug>
     <HDInsightTestDebug>.\src\ServiceManagement\HDInsight\Commands.HDInsight.Test\bin\Debug\Microsoft.WindowsAzure.Commands.HDInsight.Test.dll</HDInsightTestDebug>
-    <StorageTestDebug>.\src\ServiceManagement\Storage\Commands.Storage.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Storage.Test.dll</StorageTestDebug>
+    <StorageTestDebug>.\src\Common\Storage\Commands.Storage.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Storage.Test.dll</StorageTestDebug>
     <KeyVaultTestDebug>.\src\ResourceManager\KeyVault\Commands.KeyVault.Test\bin\Debug\Microsoft.Azure.Commands.KeyVault.Test.dll</KeyVaultTestDebug>
     <UsageAggregationTestDebug>.\src\ResourceManager\UsageAggregates\Commands.UsageAggregates.Test\bin\Debug\Microsoft.Azure.Commands.UsageAggregates.Test.dll</UsageAggregationTestDebug>
     <TestFilter>"!Functional&#x26;!Scenario&#x26;!AzureRTScenario&#x26;!Sequential&#x26;!PIRTest&#x26;!Preview&#x26;!ADDomain&#x26;!Network&#x26;!AzureRTUpload&#x26;!AzureRTCleanUp"</TestFilter>
@@ -67,7 +67,7 @@
     <XUnitTests Include=".\src\ResourceManager\TrafficManager\Commands.TrafficManager2.Test\bin\Debug\Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests.dll"/>
     <XUnitTests Include=".\src\ServiceManagement\Network\Commands.Network.Test\bin\Debug\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.dll"/>
     <XUnitTests Include=".\src\ResourceManager\ApiManagement\Commands.ApiManagement.Test\bin\Debug\Microsoft.Azure.Commands.ApiManagement.Test.dll"/>
-    <XUnitTests Include=".\src\Common\Commands.ResourceManager.Profile.Test\bin\Debug\Microsoft.Azure.Commands.Profile.Test.dll"/>
+    <XUnitTests Include=".\src\ResourceManager\Profile\Commands.ResourceManager.Profile.Test\bin\Debug\Microsoft.Azure.Commands.Profile.Test.dll"/>
   </ItemGroup>
   
   <Target Name="InvokeMSTest">
