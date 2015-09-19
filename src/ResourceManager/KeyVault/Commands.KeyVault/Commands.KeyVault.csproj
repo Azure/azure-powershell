@@ -62,6 +62,10 @@
     <Compile Include="Commands\RemoveAzureKeyVaultAccessPolicy.cs" />
     <Compile Include="Commands\SetAzureKeyVaultAccessPolicy.cs" />
     <Compile Include="Models\KeyVaultManagementCmdletBase.cs" />
+    <None Include="..\AzureRM.KeyVault.psd1">
+      <Link>AzureRM.KeyVault.psd1</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Microsoft.Azure.Commands.KeyVault.format.ps1xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -196,7 +200,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
+    <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
       <Name>Commands.ResourceManager.Common</Name>
     </ProjectReference>
