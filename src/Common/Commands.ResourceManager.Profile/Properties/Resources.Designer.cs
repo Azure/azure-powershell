@@ -68,5 +68,50 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
                 return ResourceManager.GetString("AzureProfileMustNotBeNull", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not authenticate your user account {0} with the common tenant. Please login again using Login-AzureRMAccount..
+        /// </summary>
+        internal static string CommonTenantAuthFailed {
+            get {
+                return ResourceManager.GetString("CommonTenantAuthFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (no account provided).
+        /// </summary>
+        internal static string NoAccountProvided {
+            get {
+                return ResourceManager.GetString("NoAccountProvided", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide a valid tenant Id on the command line or execute Login-AzureRMAccount..
+        /// </summary>
+        internal static string NoValidTenant {
+            get {
+                return ResourceManager.GetString("NoValidTenant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Subscription {0} was not found in tenant {1}. Please verify that the subscription exists in this tenant..
+        /// </summary>
+        internal static string SubscriptionNotFoundError {
+            get {
+                return ResourceManager.GetString("SubscriptionNotFoundError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not authenticate with tenant {0}. Please ensure that your account has access to this tenant and log in with Login-AzureRMAccount.
+        /// </summary>
+        internal static string TenantAuthFailed {
+            get {
+                return ResourceManager.GetString("TenantAuthFailed", resourceCulture);
+            }
+        }
     }
 }

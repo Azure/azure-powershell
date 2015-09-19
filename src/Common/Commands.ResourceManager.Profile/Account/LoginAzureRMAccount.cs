@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Profile
     /// </summary>
     [Cmdlet("Login", "AzureRMAccount", DefaultParameterSetName = "User")]
     [OutputType(typeof(AzureRMProfile))]
-    public class LoginAzureRMAccount : AzureRMCmdlet
+    public class LoginAzureRMAccountCommand : AzureRMCmdlet
     {
         [Parameter(Mandatory = false, HelpMessage = "Environment containing the account to log into")]
         [ValidateNotNullOrEmpty]
@@ -61,11 +61,6 @@ namespace Microsoft.Azure.Commands.Profile
             }
         }
 
-        public LoginAzureRMAccount()
-            : base()
-        {
-        }
-
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
@@ -90,7 +85,6 @@ namespace Microsoft.Azure.Commands.Profile
             else
             {
                 azureAccount.Type = AzureAccount.AccountType.User;
-
             }
 
             SecureString password = null;

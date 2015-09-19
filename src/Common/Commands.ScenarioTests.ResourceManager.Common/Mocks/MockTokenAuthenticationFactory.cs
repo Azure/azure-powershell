@@ -50,11 +50,25 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             {
                 UserId = userId,
                 LoginType = LoginType.OrgId,
-                AccessToken = accessToken
+                AccessToken = accessToken,
             };
 
             TokenProvider = ((account, environment, tenant) => Token);
         }
+
+        public MockTokenAuthenticationFactory(string userId, string accessToken, string tenantId)
+        {
+            Token = new MockAccessToken
+            {
+                UserId = userId,
+                LoginType = LoginType.OrgId,
+                AccessToken = accessToken,
+                TenantId = tenantId
+            };
+
+            TokenProvider = ((account, environment, tenant) => Token);
+        }
+
 
         public IAccessToken Authenticate(
             AzureAccount account,
