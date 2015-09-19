@@ -45,7 +45,7 @@ CLRVersion='4.0'
 ProcessorArchitecture = 'None'  
   
 # Modules that must be imported into the global environment prior to importing this module  
-RequiredModules = @( @{ ModuleName = 'Azure.Profile'; ModuleVersion = '0.9.8' })
+RequiredModules = @( @{ ModuleName = 'AzureRM.Profile'; ModuleVersion = '0.9.8' })
   
 # Assemblies that must be loaded prior to importing this module  
 RequiredAssemblies = @()  
@@ -61,8 +61,8 @@ FormatsToProcess = @()
   
 # Modules to import as nested modules of the module specified in ModuleToProcess  
 NestedModules = @(  
-    '.\ApiManagement\Microsoft.Azure.Commands.ApiManagement.dll',
-    '.\ApiManagement\Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll'
+    '.\Microsoft.Azure.Commands.ApiManagement.dll',
+    '.\Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll'
 )  
   
 # Functions to export from this module  
