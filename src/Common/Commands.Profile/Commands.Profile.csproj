@@ -141,7 +141,6 @@
     <Compile Include="Profile\SelectAzureProfile.cs" />
     <Compile Include="Profile\NewAzureProfile.cs" />
     <Compile Include="Profile\ClearAzureProfile.cs" />
-    <Compile Include="SwitchAzureMode.cs" />
     <Compile Include="Account\AddAzureAccount.cs" />
     <Compile Include="Subscription\RemoveAzureSubscription.cs" />
     <Compile Include="Account\GetAzureAccount.cs" />
