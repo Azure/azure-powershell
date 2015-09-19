@@ -61,7 +61,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.TrafficManager">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\Azure.TrafficManager\Microsoft.Azure.Management.TrafficManager.dll</HintPath>
+      <HintPath>..\..\..\Package\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.TrafficManager\Microsoft.Azure.Management.TrafficManager.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
