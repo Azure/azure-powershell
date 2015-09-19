@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 var callingClassName = callingClassType
                     .Split(new[] {"."}, StringSplitOptions.RemoveEmptyEntries)
                     .Last();
-                helper.SetupModulesFromCommon(
+                helper.SetupModules(
                     AzureModule.AzureResourceManager,
                     callingClassName + ".ps1");
 
