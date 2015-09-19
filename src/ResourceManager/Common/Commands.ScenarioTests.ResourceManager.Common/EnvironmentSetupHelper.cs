@@ -309,8 +309,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         private void SetupPowerShellModules(System.Management.Automation.PowerShell powershell)
         {
+            powershell.AddScript(string.Format("Write-Debug \"current directory: {0}\"", Directory.GetCurrentDirectory()));
             powershell.AddScript(string.Format("Write-Debug \"current executing assembly: {0}\"", Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)));
-            powershell.AddScript(string.Format("cd \"{0}\"", Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)));
+            powershell.AddScript(string.Format("cd \"{0}\"", Directory.GetCurrentDirectory()));
 
             foreach (string moduleName in modules)
             {
