@@ -29,7 +29,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 {
     /// <summary>
     /// Implementation of the get-azuresubscription cmdlet that works against
-    /// the AzureProfile layer.
+    /// the AzureSMProfile layer.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureSubscription", DefaultParameterSetName = "ByName")]
     [OutputType(typeof(PSAzureSubscription))]

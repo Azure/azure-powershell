@@ -19,9 +19,10 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.UnitTests
     using Microsoft.Azure.Commands.TrafficManager;
     using Microsoft.Azure.Commands.TrafficManager.Models;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using WindowsAzure.Commands.Test.Utilities.Common;
     using Xunit;
 
-    public class RemoveAzureTrafficManagerEndpointConfigTests
+    public class RemoveAzureTrafficManagerEndpointConfigTests : RMTestBase
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -45,9 +46,9 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.UnitTests
             {
                 TrafficManagerProfile = new TrafficManagerProfile
                 {
-                    Endpoints = new List<Endpoint>
+                    Endpoints = new List<TrafficManagerEndpoint>
                     {
-                        new Endpoint
+                        new TrafficManagerEndpoint
                         {
                             Name = "My external endpoint"
                         }

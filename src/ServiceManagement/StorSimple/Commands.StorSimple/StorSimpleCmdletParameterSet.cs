@@ -28,5 +28,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple
         public const string IdentifyByStatus = "IdentifyByStatus";
         public const string UseExistingStorageAccount = "UseExistingStorageAccount";
         public const string CreateNewStorageAccount = "CreateNewStorageAccount";
+        public const string MigrateAllContainer = "MigrateAllContainer";
+        public const string MigrateSpecificContainer = "MigrateSpecificContainer";
     }
 }

@@ -31,12 +31,12 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             throw new NotImplementedException();
         }
 
-        public TClient CreateClient<TClient>(Azure.Common.Authentication.Models.AzureProfile profile, Azure.Common.Authentication.Models.AzureSubscription subscription, Azure.Common.Authentication.Models.AzureEnvironment.Endpoint endpoint) where TClient : Hyak.Common.ServiceClient<TClient>
+        public TClient CreateClient<TClient>(Azure.Common.Authentication.Models.AzureSMProfile profile, Azure.Common.Authentication.Models.AzureSubscription subscription, Azure.Common.Authentication.Models.AzureEnvironment.Endpoint endpoint) where TClient : Hyak.Common.ServiceClient<TClient>
         {
             throw new NotImplementedException();
         }
 
-        public TClient CreateClient<TClient>(Azure.Common.Authentication.Models.AzureProfile profile, Azure.Common.Authentication.Models.AzureEnvironment.Endpoint endpoint) where TClient : Hyak.Common.ServiceClient<TClient>
+        public TClient CreateClient<TClient>(Azure.Common.Authentication.Models.AzureSMProfile profile, Azure.Common.Authentication.Models.AzureEnvironment.Endpoint endpoint) where TClient : Hyak.Common.ServiceClient<TClient>
         {
             throw new NotImplementedException();
         }
@@ -79,6 +79,29 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
         public HashSet<ProductInfoHeaderValue> UserAgents
         {
             get { throw new NotImplementedException(); }
+        }
+
+
+        public TClient CreateArmClient<TClient>(Azure.Common.Authentication.Models.AzureContext context, Azure.Common.Authentication.Models.AzureEnvironment.Endpoint endpoint) where TClient : Microsoft.Rest.ServiceClient<TClient>
+        {
+            throw new NotImplementedException();
+        }
+
+        public TClient CreateCustomArmClient<TClient>(params object[] parameters) where TClient : Microsoft.Rest.ServiceClient<TClient>
+        {
+            throw new NotImplementedException();
+        }
+
+        List<ProductInfoHeaderValue> IClientFactory.UserAgents
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+            set
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }

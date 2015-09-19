@@ -14,6 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 {
+    using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
@@ -27,7 +28,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// A cmdlet that creates a new azure resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureResource", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.ResourceIdParameterSet), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.New, "AzureRMResource", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.ResourceIdParameterSet), OutputType(typeof(PSObject))]
     public sealed class NewAzureResourceCmdlet : ResourceManipulationCmdletBase
     {
         /// <summary>
@@ -94,6 +95,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             base.OnProcessRecord();
             this.DetermineOutputObjectFormat();
+            if(this.IsFullObject.IsPresent)
+            {
+                this.WriteWarning("The IsFullObject parameter is obsolete and will be removed in future releases.");
+            }
             if (this.OutputObjectFormat == ResourceObjectFormat.Legacy)
             {
                 this.WriteWarning("This cmdlet is using the legacy properties object format. This format is being deprecated. Please use '-OutputObjectFormat New' and update your scripts.");
@@ -129,7 +134,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
                         .WaitOnOperation(operationResult: operationResult);
 
-                    this.TryConvertAndWriteObject(result, this.OutputObjectFormat.Value);
+                    this.TryConvertToResourceAndWriteObject(result, this.OutputObjectFormat.Value);
                 });
         }
 

@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.WindowsAzure.Commands.Common.Properties {
-    using System;
-    
-    
+namespace Microsoft.WindowsAzure.Commands.Common.Properties
+{
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -277,6 +277,69 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File &apos;{0}&apos; already exists. Use the -Force parameter to overwrite it..
+        /// </summary>
+        public static string AzureVMDscArchiveAlreadyExists {
+            get {
+                return ResourceManager.GetString("AzureVMDscArchiveAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find configuration data file: {0}.
+        /// </summary>
+        public static string AzureVMDscCannotFindConfigurationDataFile {
+            get {
+                return ResourceManager.GetString("AzureVMDscCannotFindConfigurationDataFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create Archive.
+        /// </summary>
+        public static string AzureVMDscCreateArchiveAction {
+            get {
+                return ResourceManager.GetString("AzureVMDscCreateArchiveAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The configuration data must be a .psd1 file.
+        /// </summary>
+        public static string AzureVMDscInvalidConfigurationDataFile {
+            get {
+                return ResourceManager.GetString("AzureVMDscInvalidConfigurationDataFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parsing configuration script: {0}.
+        /// </summary>
+        public static string AzureVMDscParsingConfiguration {
+            get {
+                return ResourceManager.GetString("AzureVMDscParsingConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage Blob &apos;{0}&apos; already exists. Use the -Force parameter to overwrite it..
+        /// </summary>
+        public static string AzureVMDscStorageBlobAlreadyExists {
+            get {
+                return ResourceManager.GetString("AzureVMDscStorageBlobAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload &apos;{0}&apos;.
+        /// </summary>
+        public static string AzureVMDscUploadToBlobStorageAction {
+            get {
+                return ResourceManager.GetString("AzureVMDscUploadToBlobStorageAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Base Uri was empty..
         /// </summary>
         public static string BaseUriEmpty {
@@ -363,6 +426,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         public static string CacheVersionWarningText {
             get {
                 return ResourceManager.GetString("CacheVersionWarningText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot change built-in environment {0}..
+        /// </summary>
+        public static string CannotChangeBuiltinEnvironment {
+            get {
+                return ResourceManager.GetString("CannotChangeBuiltinEnvironment", resourceCulture);
             }
         }
         
@@ -615,6 +687,63 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         public static string DatacenterBlobQuery {
             get {
                 return ResourceManager.GetString("DatacenterBlobQuery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Microsoft Azure PowerShell Data Collection Confirmation.
+        /// </summary>
+        public static string DataCollectionActivity {
+            get {
+                return ResourceManager.GetString("DataCollectionActivity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You choose not to participate in Microsoft Azure PowerShell data collection..
+        /// </summary>
+        public static string DataCollectionConfirmNo {
+            get {
+                return ResourceManager.GetString("DataCollectionConfirmNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This confirmation message will be dismissed in &apos;{0}&apos; second(s)....
+        /// </summary>
+        public static string DataCollectionConfirmTime {
+            get {
+                return ResourceManager.GetString("DataCollectionConfirmTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You choose to participate in Microsoft Azure PowerShell data collection..
+        /// </summary>
+        public static string DataCollectionConfirmYes {
+            get {
+                return ResourceManager.GetString("DataCollectionConfirmYes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Microsoft Azure PowerShell collects data about how users use PowerShell cmdlets and some problems they encounter.  Microsoft uses this information to improve our PowerShell cmdlets.  Participation is voluntary and when you choose to participate your device automatically sends information to Microsoft about how you use Azure PowerShell. 
+        /// 
+        ///If you choose to participate, you can stop at any time by using Azure PowerShell as follows:
+        ///1.	Use the Disable-AzureDataCollection cmdlet to turn the feature Off. The  [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string DataCollectionPrompt {
+            get {
+                return ResourceManager.GetString("DataCollectionPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The setting profile has been saved to the following path &apos;{0}&apos;..
+        /// </summary>
+        public static string DataCollectionSaveFileInformation {
+            get {
+                return ResourceManager.GetString("DataCollectionSaveFileInformation", resourceCulture);
             }
         }
         
@@ -930,6 +1059,33 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         public static string GlobalSettingsManager_Load_PublishSettingsNotFound {
             get {
                 return ResourceManager.GetString("GlobalSettingsManager_Load_PublishSettingsNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find the WadCfg end element in the config..
+        /// </summary>
+        public static string IaasDiagnosticsBadConfigNoEndWadCfg {
+            get {
+                return ResourceManager.GetString("IaasDiagnosticsBadConfigNoEndWadCfg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WadCfg start element in the config is not matching the end element..
+        /// </summary>
+        public static string IaasDiagnosticsBadConfigNoMatchingWadCfg {
+            get {
+                return ResourceManager.GetString("IaasDiagnosticsBadConfigNoMatchingWadCfg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find the WadCfg element in the config..
+        /// </summary>
+        public static string IaasDiagnosticsBadConfigNoWadCfg {
+            get {
+                return ResourceManager.GetString("IaasDiagnosticsBadConfigNoWadCfg", resourceCulture);
             }
         }
         
@@ -2225,6 +2381,148 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Path &apos;{0}&apos; not found..
+        /// </summary>
+        public static string PublishVMDscExtensionAdditionalContentPathNotExist {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionAdditionalContentPathNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Configuration published to {0}.
+        /// </summary>
+        public static string PublishVMDscExtensionArchiveUploadedMessage {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionArchiveUploadedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy &apos;{0}&apos; to &apos;{1}&apos;..
+        /// </summary>
+        public static string PublishVMDscExtensionCopyFileVerbose {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionCopyFileVerbose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy the module &apos;{0}&apos; to &apos;{1}&apos;..
+        /// </summary>
+        public static string PublishVMDscExtensionCopyModuleVerbose {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionCopyModuleVerbose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid configuration file: {0}.
+        ///The file needs to be a PowerShell script (.ps1 or .psm1)..
+        /// </summary>
+        public static string PublishVMDscExtensionCreateArchiveConfigFileInvalidExtension {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionCreateArchiveConfigFileInvalidExtension", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleted &apos;{0}&apos;.
+        /// </summary>
+        public static string PublishVMDscExtensionDeletedFileMessage {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionDeletedFileMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot delete &apos;{0}&apos;: {1}.
+        /// </summary>
+        public static string PublishVMDscExtensionDeleteErrorMessage {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionDeleteErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Path &apos;{0}&apos; not found..
+        /// </summary>
+        public static string PublishVMDscExtensionDirectoryNotExist {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionDirectoryNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot get module for DscResource &apos;{0}&apos;. Possible solutions:
+        ///1) Specify -ModuleName for Import-DscResource in your configuration.
+        ///2) Unblock module that contains resource.
+        ///3) Move Import-DscResource inside Node block.
+        ///.
+        /// </summary>
+        public static string PublishVMDscExtensionGetDscResourceFailed {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionGetDscResourceFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List of required modules: [{0}]..
+        /// </summary>
+        public static string PublishVMDscExtensionRequiredModulesVerbose {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionRequiredModulesVerbose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your current PowerShell version {1} is less then required by this cmdlet {0}. Consider download and install latest PowerShell version..
+        /// </summary>
+        public static string PublishVMDscExtensionRequiredPsVersion {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionRequiredPsVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Configuration script &apos;{0}&apos; contained parse errors:
+        ///{1}.
+        /// </summary>
+        public static string PublishVMDscExtensionStorageParserErrors {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionStorageParserErrors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Temp folder &apos;{0}&apos; created..
+        /// </summary>
+        public static string PublishVMDscExtensionTempFolderVerbose {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionTempFolderVerbose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid configuration file: {0}.
+        ///The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)..
+        /// </summary>
+        public static string PublishVMDscExtensionUploadArchiveConfigFileInvalidExtension {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionUploadArchiveConfigFileInvalidExtension", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Configuration file &apos;{0}&apos; not found..
+        /// </summary>
+        public static string PublishVMDscExtensionUploadArchiveConfigFileNotExist {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionUploadArchiveConfigFileNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Replace current deployment with &apos;{0}&apos; Id ?.
         /// </summary>
         public static string RedeployCommit {
@@ -3315,7 +3613,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to WAStorageEmulator.exe.
+        ///   Looks up a localized string similar to AzureStorageEmulator.exe.
         /// </summary>
         public static string StorageEmulatorExe {
             get {

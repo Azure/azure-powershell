@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Sql.DatabaseActivation.Services
         /// <summary>
         /// Gets or sets the Azure profile
         /// </summary>
-        public AzureProfile Profile { get; set; }
+        public AzureContext Context { get; set; }
 
         /// <summary>
         /// Gets or sets the Azure Subscription
@@ -55,11 +55,11 @@ namespace Microsoft.Azure.Commands.Sql.DatabaseActivation.Services
         /// </summary>
         /// <param name="profile">The current azure profile</param>
         /// <param name="subscription">The current azure subscription</param>
-        public AzureSqlDatabaseActivationAdapter(AzureProfile Profile, AzureSubscription subscription)
+        public AzureSqlDatabaseActivationAdapter(AzureContext context)
         {
-            this.Profile = Profile;
-            this._subscription = subscription;
-            Communicator = new AzureSqlDatabaseActivationCommunicator(Profile, subscription);
+            Context = context;
+            _subscription = context.Subscription;
+            Communicator = new AzureSqlDatabaseActivationCommunicator(Context);
         }
 
         /// <summary>

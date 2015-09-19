@@ -36,12 +36,8 @@ Gets the default location for a provider
 #>
 function Get-ProviderLocation($provider)
 {
-    $location = Get-AzureLocation | where {$_.Name -eq $provider}
-    if ($location -eq $null) {
-        "West US"
-    } else {
-        $location.Locations[0]
-    }
+    # A Dogfood data center for ADF cmdlet mock testing
+    "East US 2"
 }
 
 <#
@@ -51,7 +47,7 @@ Cleans the created data factory
 function Clean-DataFactory($rgname, $dfname)
 {
     if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) {
-        Remove-AzureDataFactory -ResourceGroupName $rgname -Name $dfname -Force
+        Remove-AzureRMDataFactory -ResourceGroupName $rgname -Name $dfname -Force
     }
 }
 
@@ -61,5 +57,5 @@ Cleans the created tags
 #>
 function Clean-Tags
 {
-    Get-AzureTag | Remove-AzureTag -Force
+    Get-AzureRMTag | Remove-AzureRMTag -Force
 }

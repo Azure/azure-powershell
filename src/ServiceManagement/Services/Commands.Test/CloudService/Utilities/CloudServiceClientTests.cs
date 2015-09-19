@@ -38,7 +38,7 @@ using Microsoft.Azure;
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
 {
     
-    public class CloudServiceClientTests : TestBase
+    public class CloudServiceClientTests : SMTestBase
     {
         private AzureSubscription subscription;
 

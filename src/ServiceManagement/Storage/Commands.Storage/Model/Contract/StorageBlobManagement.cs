@@ -12,20 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Commands.Common.Storage;
-using Microsoft.WindowsAzure.Commands.Storage.Common;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
-using Microsoft.WindowsAzure.Storage.Queue;
-using Microsoft.WindowsAzure.Storage.Shared.Protocol;
-using Microsoft.WindowsAzure.Storage.Table;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Microsoft.WindowsAzure.Commands.Common.Storage;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.Blob;
+    using Microsoft.WindowsAzure.Storage.File;
+    using Microsoft.WindowsAzure.Storage.File.Protocol;
+    using Microsoft.WindowsAzure.Storage.Queue;
+    using Microsoft.WindowsAzure.Storage.Shared.Protocol;
+    using Microsoft.WindowsAzure.Storage.Table;
+
     /// <summary>
     /// Blob management
     /// </summary>
@@ -40,6 +42,26 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// Internal storage context
         /// </summary>
         private AzureStorageContext internalStorageContext;
+
+        private CloudBlobClient BlobClient
+        {
+            get
+            {
+                if (this.blobClient == null)
+                {
+                    if (this.StorageContext.StorageAccount == null)
+                    {
+                        throw new ArgumentException(Resources.DefaultStorageCredentialsNotFound);
+                    }
+                    else
+                    {
+                        this.blobClient = this.StorageContext.StorageAccount.CreateCloudBlobClient();
+                    }
+                }
+
+                return this.blobClient;
+            }
+        }
 
         /// <summary>
         /// The azure storage context assoicated with this IStorageBlobManagement
@@ -59,7 +81,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         public StorageBlobManagement(AzureStorageContext context)
         {
             internalStorageContext = context;
-            blobClient = internalStorageContext.StorageAccount.CreateCloudBlobClient();
         }
 
         /// <summary>
@@ -72,7 +93,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <returns>An enumerable collection of cloudblobcontainer</returns>
         public IEnumerable<CloudBlobContainer> ListContainers(string prefix, ContainerListingDetails detailsIncluded, BlobRequestOptions options, OperationContext operationContext)
         {
-            return blobClient.ListContainers(prefix, detailsIncluded, options, operationContext);
+            return this.BlobClient.ListContainers(prefix, detailsIncluded, options, operationContext);
         }
 
         /// <summary>
@@ -95,7 +116,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <returns>A CloudBlobContainer in local memory</returns>
         public CloudBlobContainer GetContainerReference(string name)
         {
-            return blobClient.GetContainerReference(name);
+            return this.BlobClient.GetContainerReference(name);
         }
 
         /// <summary>
@@ -143,12 +164,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="accessCondition">Access condition</param>
         /// <param name="options">Blob request options</param>
         /// <param name="operationContext">Operation context</param>
-        /// <returns>Return an ICloudBlob if the specific blob exists on azure, otherwise return null</returns>
-        public ICloudBlob GetBlobReferenceFromServer(CloudBlobContainer container, string blobName, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext)
+        /// <returns>Return an CloudBlob if the specific blob exists on azure, otherwise return null</returns>
+        public CloudBlob GetBlobReferenceFromServer(CloudBlobContainer container, string blobName, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext)
         {
             try
             {
-                ICloudBlob blob = container.GetBlobReferenceFromServer(blobName, accessCondition, options, operationContext);
+                CloudBlob blob = Util.GetBlobReferenceFromServer(container, blobName, accessCondition, options, operationContext);
                 return blob;
             }
             catch(StorageException e)
@@ -173,7 +194,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="blobListingDetails">Blob listing details</param>
         /// <param name="options">Blob request option</param>
         /// <param name="operationContext">Operation context</param>
-        /// <returns>An enumerable collection of icloudblob</returns>
+        /// <returns>An enumerable collection of CloudBlob</returns>
         public IEnumerable<IListBlobItem> ListBlobs(CloudBlobContainer container, string prefix, bool useFlatBlobListing, BlobListingDetails blobListingDetails, BlobRequestOptions options, OperationContext operationContext)
         {
             return container.ListBlobs(prefix, useFlatBlobListing, blobListingDetails, options, operationContext);
@@ -201,11 +222,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <summary>
         /// Whether the blob is exists or not
         /// </summary>
-        /// <param name="blob">An ICloudBlob object</param>
+        /// <param name="blob">An CloudBlob object</param>
         /// <param name="options">Blob request option</param>
         /// <param name="operationContext">Operation context</param>
         /// <returns>True if the specific blob exists, otherwise return false</returns>
-        public bool DoesBlobExist(ICloudBlob blob, BlobRequestOptions options, OperationContext operationContext)
+        public bool DoesBlobExist(CloudBlob blob, BlobRequestOptions options, OperationContext operationContext)
         {
             if (null == blob)
             {
@@ -220,12 +241,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <summary>
         /// Delete azure blob
         /// </summary>
-        /// <param name="blob">ICloudblob object</param>
+        /// <param name="blob">Cloudblob object</param>
         /// <param name="deleteSnapshotsOption">Delete snapshots option</param>
         /// <param name="accessCondition">Access condition</param>
         /// <param name="operationContext">Operation context</param>
-        /// <returns>An enumerable collection of icloudblob</returns>
-        public void DeleteICloudBlob(ICloudBlob blob, DeleteSnapshotsOption deleteSnapshotsOption, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext)
+        /// <returns>An enumerable collection of CloudBlob</returns>
+        public void DeleteCloudBlob(CloudBlob blob, DeleteSnapshotsOption deleteSnapshotsOption, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext)
         {
             blob.Delete(deleteSnapshotsOption, accessCondition, options, operationContext);
         }
@@ -248,7 +269,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="accessCondition">Access condition</param>
         /// <param name="options">Blob request options</param>
         /// <param name="operationContext">An object that represents the context for the current operation.</param>
-        public void FetchBlobAttributes(ICloudBlob blob, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext)
+        public void FetchBlobAttributes(CloudBlob blob, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext)
         {
             blob.FetchAttributes(accessCondition, options, operationContext);
         }
@@ -259,7 +280,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="accessCondition">Access condition</param>
         /// <param name="options">Blob request options</param>
         /// <param name="operationContext">An object that represents the context for the current operation.</param>
-        public void SetBlobProperties(ICloudBlob blob, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext)
+        public void SetBlobProperties(CloudBlob blob, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext)
         {
             blob.SetProperties(accessCondition, options, operationContext);
         }
@@ -271,7 +292,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="accessCondition">Access condition</param>
         /// <param name="options">Blob request options</param>
         /// <param name="operationContext">An object that represents the context for the current operation.</param>
-        public void SetBlobMetadata(ICloudBlob blob, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext)
+        public void SetBlobMetadata(CloudBlob blob, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext)
         {
             blob.SetMetadata(accessCondition, options, operationContext);
         }
@@ -279,12 +300,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <summary>
         /// Abort copy operation on specified blob
         /// </summary>
-        /// <param name="blob">ICloudBlob object</param>
+        /// <param name="blob">CloudBlob object</param>
         /// <param name="copyId">Copy id</param>
         /// <param name="accessCondition">Access condition</param>
         /// <param name="options">Blob request options</param>
         /// <param name="operationContext">Operation context</param>
-        public void AbortCopy(ICloudBlob blob, string copyId, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext)
+        public void AbortCopy(CloudBlob blob, string copyId, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext)
         {
             try
             {
@@ -323,6 +344,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                     return account.CreateCloudQueueClient().GetServiceProperties((QueueRequestOptions) options, operationContext);
                 case StorageServiceType.Table:
                     return account.CreateCloudTableClient().GetServiceProperties((TableRequestOptions) options, operationContext);
+                case StorageServiceType.File:
+                    FileServiceProperties fileServiceProperties = account.CreateCloudFileClient().GetServiceProperties((FileRequestOptions)options, operationContext);
+                    ServiceProperties sp = new ServiceProperties();
+                    sp.Clean();
+                    sp.Cors = fileServiceProperties.Cors;
+                    return sp;
                 default:
                     throw new ArgumentException(Resources.InvalidStorageServiceType, "type");
             }
@@ -349,6 +376,21 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
                     break;
                 case StorageServiceType.Table:
                     account.CreateCloudTableClient().SetServiceProperties(properties, (TableRequestOptions)options, operationContext);
+                    break;
+                case StorageServiceType.File:
+                    if (null != properties.Logging)
+                    {
+                        throw new InvalidOperationException(Resources.FileNotSupportLogging);
+                    }
+
+                    if (null != properties.HourMetrics || null != properties.MinuteMetrics)
+                    {
+                        throw new InvalidOperationException(Resources.FileNotSupportMetrics);
+                    }
+
+                    FileServiceProperties fileServiceProperties = new FileServiceProperties();
+                    fileServiceProperties.Cors = properties.Cors;
+                    account.CreateCloudFileClient().SetServiceProperties(fileServiceProperties, (FileRequestOptions)options, operationContext);
                     break;
                 default:
                     throw new ArgumentException(Resources.InvalidStorageServiceType, "type");
@@ -394,12 +436,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">Operation context</param>
         /// <param name="cmdletCancellationToken">Cancellation token</param>
         /// <returns>A task object that asynchronously get the blob reference from server</returns>
-        public async Task<ICloudBlob> GetBlobReferenceFromServerAsync(CloudBlobContainer container, string blobName, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
+        public async Task<CloudBlob> GetBlobReferenceFromServerAsync(CloudBlobContainer container, string blobName, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
         {
             try
             {
-                ICloudBlob blob = await container.GetBlobReferenceFromServerAsync(blobName, accessCondition, options, operationContext, cancellationToken);
-                return blob;
+                CloudBlob blob = container.GetBlobReference(blobName);
+                await blob.FetchAttributesAsync(accessCondition, options, operationContext, cancellationToken);
+
+                return Util.GetCorrespondingTypeBlobReference(blob);
             }
             catch (StorageException e)
             {
@@ -423,7 +467,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="operationContext">Operation context</param>
         /// <param name="cmdletCancellationToken">Cancellation token</param>
         /// <returns>Return a task that asynchronously fetch blob attributes</returns>
-        public Task FetchBlobAttributesAsync(ICloudBlob blob, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
+        public Task FetchBlobAttributesAsync(CloudBlob blob, AccessCondition accessCondition, BlobRequestOptions options, OperationContext operationContext, CancellationToken cancellationToken)
         {
             return blob.FetchAttributesAsync(accessCondition, options, operationContext, cancellationToken);
         }
@@ -459,14 +503,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <summary>
         /// Return a task that asynchronously abort the blob copy operation
         /// </summary>
-        /// <param name="blob">ICloudBlob object</param>
+        /// <param name="blob">CloudBlob object</param>
         /// <param name="abortCopyId">Copy id</param>
         /// <param name="accessCondition">Access condition</param>
         /// <param name="abortRequestOption">Blob request options</param>
         /// <param name="operationContext">Operation context</param>
         /// <param name="cmdletCancellationToken">Cancellation token</param>
         /// <returns>Return a task that asynchronously abort the blob copy operation</returns>
-        public Task AbortCopyAsync(ICloudBlob blob, string copyId, AccessCondition accessCondition, BlobRequestOptions requestOptions, OperationContext operationContext, CancellationToken cancellationToken)
+        public Task AbortCopyAsync(CloudBlob blob, string copyId, AccessCondition accessCondition, BlobRequestOptions requestOptions, OperationContext operationContext, CancellationToken cancellationToken)
         {
             return blob.AbortCopyAsync(copyId, accessCondition, requestOptions, operationContext, cancellationToken);
         }
@@ -489,14 +533,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <summary>
         /// Return a task that asynchronously delete the specified blob
         /// </summary>
-        /// <param name="blob">ICloudBlob object</param>
+        /// <param name="blob">CloudBlob object</param>
         /// <param name="deleteSnapshotsOption">Snapshot delete option</param>
         /// <param name="accessCondition">Access condition</param>
         /// <param name="requestOptions">Blob request option</param>
         /// <param name="operationContext">Operation context</param>
         /// <param name="cmdletCancellationToken">Cancellation token</param>
         /// <returns>Return a task that asynchronously delete the specified blob</returns>
-        public Task DeleteICloudBlobAsync(ICloudBlob blob, DeleteSnapshotsOption deleteSnapshotsOption, AccessCondition accessCondition, BlobRequestOptions requestOptions, OperationContext operationContext, CancellationToken cancellationToken)
+        public Task DeleteCloudBlobAsync(CloudBlob blob, DeleteSnapshotsOption deleteSnapshotsOption, AccessCondition accessCondition, BlobRequestOptions requestOptions, OperationContext operationContext, CancellationToken cancellationToken)
         {
             return blob.DeleteAsync(deleteSnapshotsOption, accessCondition, requestOptions, operationContext, cancellationToken);
         }
@@ -504,12 +548,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <summary>
         /// Return a task that asynchronously check whether the specified blob exists.
         /// </summary>
-        /// <param name="blob">ICloudBlob object</param>
+        /// <param name="blob">CloudBlob object</param>
         /// <param name="options">Blob request options</param>
         /// <param name="operationContext">Operation context</param>
         /// <param name="cmdletCancellationToken">Cancellation token</param>
         /// <returns>A task object that asynchronously check whether the specified blob exists.</returns>
-        public Task<bool> DoesBlobExistAsync(ICloudBlob blob, BlobRequestOptions options, OperationContext operationContext, CancellationToken cmdletCancellationToken)
+        public Task<bool> DoesBlobExistAsync(CloudBlob blob, BlobRequestOptions options, OperationContext operationContext, CancellationToken cmdletCancellationToken)
         {
             return blob.ExistsAsync(options, operationContext, cmdletCancellationToken);
         }
@@ -521,7 +565,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="accessCondition">Access condition</param>
         /// <param name="options">Blob request options</param>
         /// <param name="operationContext">An object that represents the context for the current operation.</param>
-        public Task SetBlobPropertiesAsync(ICloudBlob blob, AccessCondition accessCondition,
+        public Task SetBlobPropertiesAsync(CloudBlob blob, AccessCondition accessCondition,
             BlobRequestOptions options, OperationContext operationContext, CancellationToken cmdletCancellationToken)
         {
             return blob.SetPropertiesAsync(accessCondition, options, operationContext, cmdletCancellationToken);
@@ -530,11 +574,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <summary>
         /// Return a task that asynchronously set blob meta data
         /// </summary>
-        /// <param name="blob">ICloud blob object</param>
+        /// <param name="blob">CloudBlob object</param>
         /// <param name="accessCondition">Access condition</param>
         /// <param name="options">Blob request options</param>
         /// <param name="operationContext">An object that represents the context for the current operation.</param>
-        public Task SetBlobMetadataAsync(ICloudBlob blob, AccessCondition accessCondition,
+        public Task SetBlobMetadataAsync(CloudBlob blob, AccessCondition accessCondition,
             BlobRequestOptions options, OperationContext operationContext, CancellationToken cmdletCancellationToken)
         {
             return blob.SetMetadataAsync(accessCondition, options, operationContext, cmdletCancellationToken);
@@ -580,7 +624,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <returns>An enumerable collection of cloudblobcontainer</returns>
         public ContainerResultSegment ListContainersSegmented(string prefix, ContainerListingDetails detailsIncluded, int? maxResults, BlobContinuationToken currentToken, BlobRequestOptions options, OperationContext operationContext)
         {
-            return blobClient.ListContainersSegmented(prefix, detailsIncluded, maxResults, currentToken, options, operationContext);
+            return this.BlobClient.ListContainersSegmented(prefix, detailsIncluded, maxResults, currentToken, options, operationContext);
         }
     }
 }

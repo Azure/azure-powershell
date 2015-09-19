@@ -13,17 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.WebApp.Utilities;
 
 namespace Microsoft.Azure.Commands.WebApp.Models
 {
-    public abstract class WebAppBaseClientCmdLet : AzurePSCmdlet
+    public abstract class WebAppBaseClientCmdLet : AzureRMCmdlet
     {
         private WebsitesClient _websitesClient;
         public WebsitesClient WebsitesClient
@@ -32,7 +27,7 @@ namespace Microsoft.Azure.Commands.WebApp.Models
             {
                 if (_websitesClient == null)
                 {
-                    _websitesClient = new WebsitesClient(this.Profile.Context);
+                    _websitesClient = new WebsitesClient(DefaultProfile.Context);
                 }
                 return _websitesClient;
             }

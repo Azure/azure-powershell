@@ -15,6 +15,7 @@
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Resources.ResourceGroupDeployments
@@ -22,26 +23,40 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroupDeployments
     /// <summary>
     /// Validate a template to see whether it's using the right syntax, resource providers, resource types, etc.
     /// </summary>
-    [Cmdlet(VerbsDiagnostic.Test, "AzureResourceGroupTemplate", DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(List<PSResourceManagerError>))]
+    [Cmdlet(VerbsDiagnostic.Test, "AzureRMResourceGroupTemplate", DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(List<PSResourceManagerError>))]
     public class TestAzureResourceGroupTemplateCommand : ResourceWithParameterBaseCmdlet, IDynamicParameters
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        public override void ExecuteCmdlet()
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The deployment mode.")]
+        public DeploymentMode Mode { get; set; }
+
+        public TestAzureResourceGroupTemplateCommand()
         {
+            this.Mode = DeploymentMode.Incremental;
+        }
+
+        protected override void ProcessRecord()
+        {
+            this.WriteWarning("The Test-AzureResourceGroupTemplate cmdlet is being renamed to Test-AzureResourceGroupDeployment in a future release.");
+            if (!string.IsNullOrEmpty(TemplateVersion) || !string.IsNullOrEmpty(StorageAccountName) || !string.IsNullOrEmpty(GalleryTemplateIdentity))
+            {
+                WriteWarning("The GalleryTemplateIdentity, TemplateVersion and StorageAccountName parameters are being deprecated and will be removed in a future release.");
+            }
             ValidatePSResourceGroupDeploymentParameters parameters = new ValidatePSResourceGroupDeploymentParameters()
             {
                 ResourceGroupName = ResourceGroupName,
                 GalleryTemplateIdentity = GalleryTemplateIdentity,
                 TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
                 TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
+                ParameterUri = TemplateParameterUri,
                 TemplateVersion = TemplateVersion,
                 StorageAccountName = StorageAccountName
             };
 
-            WriteObject(ResourcesClient.ValidatePSResourceGroupDeployment(parameters));
+            WriteObject(ResourcesClient.ValidatePSResourceGroupDeployment(parameters, Mode));
         }
     }
 }

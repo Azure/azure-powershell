@@ -13,11 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class ResourceGroupTests
+    public class ResourceGroupTests : RMTestBase
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -78,6 +79,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void TestNewResourceGroupWithTemplate()
         {
             ResourcesController.NewInstance.RunPsTest("Test-NewResourceGroupWithTemplateThenGetWithAndWithoutDetails");
+        }
+
+        [Fact]
+        public void TestRemoveDeployment()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RemoveDeployment");
         }
     }
 }

@@ -26,9 +26,17 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
     [Cmdlet(VerbsCommon.New, ReservedIPConstants.CmdletNoun, DefaultParameterSetName = ReserveNewIPParamSet), OutputType(typeof(ManagementOperationContext))]
     public class NewAzureReservedIPCmdlet : ServiceManagementBaseCmdlet
     {
-        protected const string ReserveNewIPParamSet = "CreateNewReservedIP";
-        protected const string ReserveInUseIPUsingSlotParamSet = "CreateInUseReservedIPUsingSlot";
-        protected const string ReserveInUseIPParamSet = "CreateInUseReservedIP";
+        public const string ReserveNewIPParamSet = "CreateNewReservedIP";
+        public const string ReserveInUseIPUsingSlotParamSet = "CreateInUseReservedIPUsingSlot";
+        public const string ReserveInUseIPParamSet = "CreateInUseReservedIP";
+
+        public NewAzureReservedIPCmdlet()
+        {
+        }
+
+        public NewAzureReservedIPCmdlet(IClientProvider provider) : base(provider)
+        {
+        }
 
         [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = ReserveNewIPParamSet, HelpMessage = "Reserved IP Name.")]
         [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = ReserveInUseIPUsingSlotParamSet, HelpMessage = "Reserved IP Name.")]
@@ -85,7 +93,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
             set;
         }
 
-        protected override void OnProcessRecord()
+        public override void ExecuteCmdlet()
         {
             ServiceManagementProfile.Initialize();
             string deploymentName = string.Empty;

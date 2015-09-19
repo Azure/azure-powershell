@@ -317,6 +317,11 @@
         <TypeName>Microsoft.WindowsAzure.Commands.ServiceManagement.Model.PersistentVMRoleListContext</TypeName>
       </ViewSelectedBy>
       <TableControl>
+        <TableHeaders>
+          <TableColumnHeader/>
+          <TableColumnHeader/>
+          <TableColumnHeader/>
+        </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
@@ -604,6 +609,10 @@
               <ListItem>
                 <Label>AutoBackupSettings</Label>
                 <PropertyName>AutoBackupSettings</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>KeyVaultCredentialSettings</Label>
+                <PropertyName>KeyVaultCredentialSettings</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

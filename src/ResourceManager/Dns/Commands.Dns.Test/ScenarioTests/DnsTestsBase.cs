@@ -12,21 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
+using Microsoft.Azure.Test.HttpRecorder;
+
 namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 {
-    using System; 
-    using System.Linq; 
-    using Microsoft.Azure.Common.Authentication; 
-    using Microsoft.Azure.Gallery; 
-    using Microsoft.Azure.Management.Authorization; 
-    using Microsoft.Azure.Management.Resources; 
-    using Microsoft.Azure.Subscriptions.Csm; 
-    using Microsoft.Azure.Test; 
+    using System;
+    using System.Linq;
+    using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Gallery;
+    using Microsoft.Azure.Management.Authorization;
+    using Microsoft.Azure.Management.Resources;
+    using Microsoft.Azure.Test;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.Azure.Management.Dns;
-
-
-    public class DnsTestsBase 
+    using Microsoft.Azure.Subscriptions;
+    using WindowsAzure.Commands.Test.Utilities.Common;
+    using Dns.Models;
+    
+    public class DnsTestsBase : RMTestBase
     { 
         private CSMTestEnvironmentFactory csmTestFactory; 
 
@@ -105,7 +109,11 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
             Action cleanup, 
             string callingClassType, 
             string mockName) 
-        { 
+        {
+            Dictionary<string, string> d = new Dictionary<string, string>();
+            d.Add("Microsoft.Authorization", "2014-07-01-preview");
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
+
             using (UndoContext context = UndoContext.Current) 
             { 
                 context.Start(callingClassType, mockName); 
