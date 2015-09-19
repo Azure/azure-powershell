@@ -17,14 +17,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy
     using Newtonsoft.Json;
 
     /// <summary>
-    /// The policy rule object.
+    /// The policy assignment object.
     /// </summary>
-    public class PolicyRule
+    public class PolicyAssignment
     {
         /// <summary>
-        /// The policy rule
+        /// The policy assignment properties.
         /// </summary>
-        [JsonProperty(Required = Required.Always)]
-        public string Rule { get; set; }
+        [JsonProperty(Required = Required.Default)]
+        public PolicyAssignmentProperties Properties { get; set; }
+
+        /// <summary>
+        /// The policy assignment name.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public string Name { get; set; }
     }
 }

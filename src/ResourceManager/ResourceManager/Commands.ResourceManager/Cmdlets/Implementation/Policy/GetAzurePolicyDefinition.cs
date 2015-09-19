@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 .DetermineApiVersion(resourceId: resourceId)
                 .ConfigureAwait(continueOnCapturedContext: false);
 
-            if (!string.IsNullOrEmpty(ResourceIdUtility.GetResourceGroupName(resourceId)))
+            if (!string.IsNullOrEmpty(ResourceIdUtility.GetResourceName(resourceId)))
             {
                 var resource = await this
                     .GetResourcesClient()
