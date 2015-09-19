@@ -54,7 +54,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             // (tenant is present and subscription is not provided)
             if (!string.IsNullOrEmpty(tenantId))
             {
-                TryGetTenantSubscription(account, environment, tenantId, subscriptionId, password, promptBehavior, out newSubscription, out newTenant);
+                var token = AcquireAccessToken(account, environment, tenantId, password, promptBehavior);
+                TryGetTenantSubscription(token, account, environment, tenantId, subscriptionId, out newSubscription, out newTenant);
             }
             // (tenant is not provided and subscription is present) OR
             // (tenant is not provided and subscription is not provided)
@@ -63,16 +64,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 foreach(var tenant in ListAccountTenants(account, environment, password, promptBehavior))
                 {
                     AzureTenant tempTenant;
-                    if (TryGetTenantSubscription(account, environment, tenant.Id.ToString(), subscriptionId, password, ShowDialog.Auto, out newSubscription, out tempTenant))
-                    {
+                    AzureSubscription tempSubscription;
+                    var token = AcquireAccessToken(account, environment, tenant.Id.ToString(), password,
+                        ShowDialog.Auto);
+                    if (newTenant == null && TryGetTenantSubscription(token, account, environment, tenant.Id.ToString(), subscriptionId, out tempSubscription, out tempTenant) &&
+                        newTenant == null)
+                    {                      
                         newTenant = tempTenant;
+                        newSubscription = tempSubscription;
                     }
                 }
             }
 
             if (newSubscription == null)
             {
-                throw new PSInvalidOperationException("Subscription was not found.");
+                throw new PSInvalidOperationException(String.Format(Properties.Resources.NoSubscriptionFound, account.Id));
             }
 
             _profile.Context = new AzureContext(newSubscription, account, environment, newTenant);
@@ -135,12 +141,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             if (string.IsNullOrWhiteSpace(tenantId))
             {
-                throw new ArgumentNullException("Please provide a valid tenant Id");
+                throw new ArgumentNullException("Please provide a valid tenant Id.");
             }
 
             AzureTenant tenant;
-            return TryGetTenantSubscription(_profile.Context.Account, _profile.Context.Environment,
-                tenantId, subscriptionId, null, ShowDialog.Never, out subscription, out tenant);
+            var token = AcquireAccessToken(_profile.Context.Account, _profile.Context.Environment,
+                tenantId, null, ShowDialog.Never);
+            return TryGetTenantSubscription(token, _profile.Context.Account, _profile.Context.Environment,
+                tenantId, subscriptionId, out subscription, out tenant);
         }
 
         public AzureEnvironment AddOrSetEnvironment(AzureEnvironment environment)
@@ -235,23 +243,30 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             return mergedEnvironment;
         }
 
-        private bool TryGetTenantSubscription(
-            AzureAccount account, 
-            AzureEnvironment environment, 
-            string tenantId, 
-            string subscriptionId, 
-            SecureString password, 
-            ShowDialog promptBehavior, 
+        private IAccessToken AcquireAccessToken(AzureAccount account,
+            AzureEnvironment environment,
+            string tenantId,
+            SecureString password,
+            ShowDialog promptBehavior)
+        {
+            return AzureSession.AuthenticationFactory.Authenticate(
+                account,
+                environment,
+                tenantId,
+                password,
+                promptBehavior,
+                TokenCache.DefaultShared);
+        }
+
+        private bool TryGetTenantSubscription(IAccessToken accessToken,
+            AzureAccount account,
+            AzureEnvironment environment,
+            string tenantId,
+            string subscriptionId,
             out AzureSubscription subscription,
             out AzureTenant tenant)
         {
-            var accessToken = AzureSession.AuthenticationFactory.Authenticate(
-                    account,
-                    environment,
-                    tenantId,
-                    password,
-                    promptBehavior,
-                    TokenCache.DefaultShared);
+           
             using (var subscriptionClient = AzureSession.ClientFactory.CreateCustomClient<SubscriptionClient>(
                 new TokenCloudCredentials(accessToken.AccessToken),
                 environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager)))
@@ -311,13 +326,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         private List<AzureTenant> ListAccountTenants(AzureAccount account, AzureEnvironment environment, SecureString password, ShowDialog promptBehavior)
         {
-            var commonTenantToken = AzureSession.AuthenticationFactory.Authenticate(
-                account, 
-                environment,
-                AuthenticationFactory.CommonAdTenant, 
-                password, 
-                promptBehavior,
-                TokenCache.DefaultShared);
+            var commonTenantToken = AcquireAccessToken( account, environment, AuthenticationFactory.CommonAdTenant, 
+                password, promptBehavior);
 
             using (var subscriptionClient = AzureSession.ClientFactory.CreateCustomClient<SubscriptionClient>(
                     new TokenCloudCredentials(commonTenantToken.AccessToken),
@@ -341,13 +351,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         private IEnumerable<AzureSubscription> ListSubscriptionsForTenant(AzureAccount account, AzureEnvironment environment, 
             SecureString password, ShowDialog promptBehavior, string tenantId)
         {
-            var accessToken = AzureSession.AuthenticationFactory.Authenticate(
-                    account,
-                    environment,
-                    tenantId,
-                    password,
-                    promptBehavior, 
-                    TokenCache.DefaultShared);
+            var accessToken = AcquireAccessToken(account, environment, tenantId, password, promptBehavior);
             using (var subscriptionClient = AzureSession.ClientFactory.CreateCustomClient<SubscriptionClient>(
                 new TokenCloudCredentials(accessToken.AccessToken),
                 environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager)))
