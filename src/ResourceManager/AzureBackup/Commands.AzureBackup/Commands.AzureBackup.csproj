@@ -192,6 +192,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\AzureRM.AzureBackup.psd1">
+      <Link>AzureRM.AzureBackup.psd1</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Microsoft.Azure.Commands.AzureBackup.dll-help.psd1" />
     <None Include="Microsoft.Azure.Commands.AzureBackup.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -217,7 +221,7 @@
     <Content Include="Resources\Security.Cryptography.dll" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
+    <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
       <Name>Commands.ResourceManager.Common</Name>
     </ProjectReference>
