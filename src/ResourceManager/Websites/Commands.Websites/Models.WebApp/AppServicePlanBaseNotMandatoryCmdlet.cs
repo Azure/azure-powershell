@@ -19,9 +19,9 @@ namespace Microsoft.Azure.Commands.WebApp
 {
     public abstract class WebHostingPlanBaseNotMandatoryCmdlet : WebAppBaseClientCmdLet
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
+        [Parameter(Position = 0, Mandatory = false, HelpMessage = "The name of the resource group.")]
         [ValidateNotNullOrEmptyAttribute]
-        public string ResourceGroupName { get; set; }
+        public string ResourceGroup { get; set; }
 
         [Parameter(Position = 1, Mandatory = false, HelpMessage = "The name of the app service plan.")]
         [ValidateNotNullOrEmptyAttribute]

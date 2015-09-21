@@ -26,10 +26,22 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets
     [Cmdlet(VerbsCommon.Get, "AzureRMWebAppPublishingProfile")]
     public class GetAzureWebAppPublishingProfileCmdlet : WebAppBaseCmdlet
     {
+        private const string DefaultFormat = "WebDeploy";
+
+        [Parameter(Position = 3, Mandatory = true, HelpMessage = "The file the publishing profile will we saved as")]
+        public string OutputFile { get; set; }
+
+        [Parameter(Position = 4, Mandatory = false, HelpMessage = "The format of the profile. Allowed values are [WebDeploy|FileZilla3|Ftp]. Default value is WebDeploy")]
+        public string Format { get; set; }
+
+        public GetAzureWebAppPublishingProfileCmdlet()
+        {
+            Format = Format ?? DefaultFormat;
+        }
+
         protected override void ProcessRecord()
         {
-            WriteObject(WebsitesClient.GetWebsitePublishingProfile(ResourceGroupName, Name, SlotName));
-
+            WriteObject(WebsitesClient.GetWebsitePublishingProfile(ResourceGroup, Name, SlotName, OutputFile, Format));
         }
 
     }

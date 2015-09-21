@@ -20,11 +20,11 @@ namespace Microsoft.Azure.Commands.WebApp
 {
     public class WebAppBaseCmdlet : WebAppBaseClientCmdLet
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmptyAttribute]
-        public string ResourceGroupName { get; set; }
+        public string ResourceGroup { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the web app.")]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the web app.", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmptyAttribute]
         public string Name { get; set; }
 

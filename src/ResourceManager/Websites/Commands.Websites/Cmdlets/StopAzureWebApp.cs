@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets
     {
         protected override void ProcessRecord()
         {
-            WriteObject(WebsitesClient.StopWebsite(ResourceGroupName, Name, SlotName));
+            WriteObject(WebsitesClient.StopWebsite(ResourceGroup, Name, SlotName));
         }
 
     }

@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
@@ -22,12 +23,15 @@ using Microsoft.Azure.Management.WebSites;
 using Microsoft.Azure.Management.WebSites.Models;
 using System.Net;
 using System.Xml.Linq;
+using Microsoft.PowerShell;
 
 namespace Microsoft.Azure.Commands.WebApp.Utilities
 {
     public class WebsitesClient
     {
         public Action<string> VerboseLogger { get; set; }
+
+        private static readonly Dictionary<string, int> WorkerSizes = new Dictionary<string, int> (StringComparer.OrdinalIgnoreCase) { { "Small", 1 }, { "Medium", 2 }, { "Large", 3 }, { "ExtraLarge", 4 } };
 
         public WebsitesClient(AzureContext context)
         {
@@ -40,7 +44,7 @@ namespace Microsoft.Azure.Commands.WebApp.Utilities
             private set;
         }
 
-        public Site CreateWebsite(string resourceGroupName, string webSiteName, string slotName, string location, string serverFarmId)
+        public Site CreateWebsite(string resourceGroupName, string webSiteName, string slotName, string location, string serverFarmId, CloningInfo cloningInfo)
         {
             Site createdWebSite = null;
             string qualifiedSiteName;
@@ -52,7 +56,8 @@ namespace Microsoft.Azure.Commands.WebApp.Utilities
                         {
                             SiteName = qualifiedSiteName,
                             Location = location,
-                            ServerFarmId = serverFarmId
+                            ServerFarmId = serverFarmId,
+                            CloningInfo =  cloningInfo
                         });
             }
             else
@@ -140,11 +145,18 @@ namespace Microsoft.Azure.Commands.WebApp.Utilities
             return site;
         }
 
-        public XDocument GetWebsitePublishingProfile(string resourceGroupName, string webSiteName, string slotName)
+        public string GetWebsitePublishingProfile(string resourceGroupName, string webSiteName, string slotName, string outputFile, string format)
         {
             string qualifiedSiteName;
-            var publishingXml = (ShouldSlotInterfaceBeUsed(webSiteName, slotName, out qualifiedSiteName) ? WrappedWebsitesClient.Sites.ListSitePublishingProfileXmlSlot(resourceGroupName, webSiteName, null, slotName) : WrappedWebsitesClient.Sites.ListSitePublishingProfileXml(resourceGroupName, webSiteName, null));
-            return XDocument.Load(publishingXml, LoadOptions.None);
+            var options = new CsmPublishingProfileOptions
+            {
+                Format = format
+            };
+
+            var publishingXml = (ShouldSlotInterfaceBeUsed(webSiteName, slotName, out qualifiedSiteName) ? WrappedWebsitesClient.Sites.ListSitePublishingProfileXmlSlot(resourceGroupName, webSiteName, options, slotName) : WrappedWebsitesClient.Sites.ListSitePublishingProfileXml(resourceGroupName, webSiteName, options));
+             var doc = XDocument.Load(publishingXml, LoadOptions.None);
+             doc.Save(outputFile, SaveOptions.OmitDuplicateNamespaces);
+            return doc.ToString();
         }
 
         public XDocument GetWebAppUsageMetrics(string resourceGroupName, string webSiteName, string slotName, IReadOnlyList<string> metricNames,
@@ -157,21 +169,16 @@ namespace Microsoft.Azure.Commands.WebApp.Utilities
             return XDocument.Load(usageMetrics, LoadOptions.None);
         }
 
-        public ServerFarmWithRichSku CreateAppServicePlan(string resourceGroupName, string appServicePlanName, string location, string adminSiteName, string sku, string tier, int? capacity)
+        public ServerFarmWithRichSku CreateAppServicePlan(string resourceGroupName, string appServicePlanName, string location, string adminSiteName, SkuDescription sku)
         {
             var serverFarm = new ServerFarmWithRichSku
             {
                 Location = location,
                 ServerFarmWithRichSkuName = appServicePlanName,
-                Sku = new SkuDescription
-                {
-                    Name = sku, 
-                    Tier = tier,
-                    Capacity = capacity
-                },
+                Sku = sku,
                 AdminSiteName = adminSiteName
             };
-
+            
             return WrappedWebsitesClient.ServerFarms.CreateOrUpdateServerFarm(resourceGroupName, appServicePlanName, serverFarm);
         }
 
@@ -269,5 +276,37 @@ namespace Microsoft.Azure.Commands.WebApp.Utilities
 
             return filter;
         }
+
+        internal static string GetSkuName(string tier, int workerSize)
+        {
+            string sku;
+            if (string.Equals("Shared", tier, StringComparison.OrdinalIgnoreCase))
+            {
+                sku = "D";
+            }
+            else
+            {
+                sku = string.Empty + tier[0];
+            }
+
+            sku += workerSize;
+            return sku;
+        }
+
+        internal static string GetSkuName(string tier, string workerSize)
+        {
+            string sku;
+            if (string.Equals("Shared", tier, StringComparison.OrdinalIgnoreCase))
+            {
+                sku = "D";
+            }
+            else
+            {
+                sku = string.Empty + tier[0];
+            }
+
+            sku += WorkerSizes[workerSize];
+            return sku;
+        }       
     }
 }

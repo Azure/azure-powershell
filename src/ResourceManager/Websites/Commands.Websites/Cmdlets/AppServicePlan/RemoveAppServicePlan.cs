@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
                     string.Format(Microsoft.Azure.Commands.WebApp.Properties.Resources.RemovingAppServicePlan, Name),
                     Microsoft.Azure.Commands.WebApp.Properties.Resources.RemovingAppServicePlan,
                     Name,
-                    () => WebsitesClient.RemoveAppServicePlan(ResourceGroupName, Name));
+                    () => WebsitesClient.RemoveAppServicePlan(ResourceGroup, Name));
         }
     }
 }

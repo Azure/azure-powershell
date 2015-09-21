@@ -15,6 +15,7 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.WebApp.Utilities;
+using Microsoft.Azure.Management.WebSites.Models;
 
 
 namespace Microsoft.Azure.Commands.WebApp.Cmdlets
@@ -31,10 +32,26 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets
 
         [Parameter(Position = 4, Mandatory = true, HelpMessage = "The name of the app service plan eg: Default1.")]
         public string AppServicePlan { get; set; }
+
+        [Parameter(Position = 5, Mandatory = false, HelpMessage = "The information needed to clone web app")]
+        [ValidateNotNullOrEmpty]
+        public Site SourceWebApp { get; set; }
+
+        [Parameter(Position = 6, Mandatory = false, HelpMessage = "The information needed to clone web app")]
+        [ValidateNotNullOrEmpty]
+        public CloningInfo CloningInfo { get; set; }
        
         protected override void ProcessRecord()
         {
-            WriteObject(WebsitesClient.CreateWebsite(ResourceGroupName, Name, SlotName, Location, AppServicePlan));
+            if (SourceWebApp != null && CloningInfo == null)
+            {
+                CloningInfo = new CloningInfo()
+                {
+                    SourceWebAppId = SourceWebApp.Id
+                };
+            }
+
+            WriteObject(WebsitesClient.CreateWebsite(ResourceGroup, Name, SlotName, Location, AppServicePlan, CloningInfo));
             
         }
         

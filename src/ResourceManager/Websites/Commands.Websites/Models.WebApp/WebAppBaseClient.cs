@@ -14,12 +14,27 @@
 
 
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.WebApp.Utilities;
 
 namespace Microsoft.Azure.Commands.WebApp.Models
 {
     public abstract class WebAppBaseClientCmdLet : AzureRMCmdlet
     {
+        private PSResourceManagerModels.ResourcesClient _resourcesClient;
+        public PSResourceManagerModels.ResourcesClient ResourcesClient
+        {
+            get
+            {
+                if (_resourcesClient == null)
+                {
+                    _resourcesClient = new PSResourceManagerModels.ResourcesClient(DefaultProfile.DefaultContext);
+                }
+                return _resourcesClient;
+            }
+            set { _resourcesClient = value; }
+        }
+
         private WebsitesClient _websitesClient;
         public WebsitesClient WebsitesClient
         {

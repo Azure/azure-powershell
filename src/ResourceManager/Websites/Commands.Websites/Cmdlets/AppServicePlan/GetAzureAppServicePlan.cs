@@ -13,10 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 
+using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.WebApp.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
-
+using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
 
 namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
 {
@@ -28,24 +30,48 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
     {
         protected override void ProcessRecord()
         {
-            if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(Name))
+            if (!string.IsNullOrEmpty(ResourceGroup) && !string.IsNullOrEmpty(Name))
             {
                 GetByWebHostingPlan();
             }
-            else if (!string.IsNullOrEmpty(ResourceGroupName))
+            else if (!string.IsNullOrEmpty(ResourceGroup))
             {
                 GetByResourceGroup();
+            }
+            else
+            {
+                GetBySubscription();
             }
         }
 
         private void GetByWebHostingPlan()
         {
-            WriteObject(WebsitesClient.GetAppServicePlan(ResourceGroupName, Name));
+            WriteObject(WebsitesClient.GetAppServicePlan(ResourceGroup, Name));
         }
 
         private void GetByResourceGroup()
         {
-            WriteObject(WebsitesClient.ListAppServicePlan(ResourceGroupName));
+            WriteObject(WebsitesClient.ListAppServicePlan(ResourceGroup));
+        }
+
+        private void GetBySubscription()
+        {
+            var resourceGroups = this.ResourcesClient.FilterPSResources(new PSResourceManagerModels.BasePSResourceParameters()
+                {
+                    ResourceType = "Microsoft.Web/ServerFarms"
+                }).Select(sf => sf.ResourceGroupName);
+
+            var list = new List<ServerFarmWithRichSku>();
+            foreach (var rg in resourceGroups)
+            {
+                var result = WebsitesClient.ListAppServicePlan(rg) == null ? null : WebsitesClient.ListAppServicePlan(rg).Value;
+                if (result != null)
+                {
+                    list.AddRange(result);
+                }
+            }
+
+            WriteObject(new ServerFarmCollection() { Value = list } );
         }
     }
 }

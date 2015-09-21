@@ -15,9 +15,6 @@
 
 
 using System.Management.Automation;
-using Microsoft.Azure.Commands.WebApp.Properties;
-using Microsoft.Azure.Commands.WebApp.Utilities;
-
 namespace Microsoft.Azure.Commands.WebApp.Cmdlets
 {
     /// <summary>
@@ -46,8 +43,8 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets
 
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Resources.RemoveWebsiteWarning, Name),
-                Resources.RemoveWebsiteMessage,
+                string.Format(Properties.Resources.RemoveWebsiteWarning, Name),
+                Properties.Resources.RemoveWebsiteMessage,
                 Name,
                 () => WebsitesClient.RemoveWebsite(ResourceGroupName, Name, slotName, deleteEmptyServerFarmByDefault, deleteMetricsByDefault, deleteSlotsByDefault));
         }
