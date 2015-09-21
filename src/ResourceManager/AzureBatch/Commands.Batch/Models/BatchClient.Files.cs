@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             // Get the single node file matching the specified name
             if (!string.IsNullOrEmpty(options.NodeFileName))
             {
-                WriteVerbose(string.Format(Resources.GBTF_GetByName, options.NodeFileName, options.TaskId));
+                WriteVerbose(string.Format(Resources.GetNodeFileByTaskByName, options.NodeFileName, options.TaskId));
                 JobOperations jobOperations = options.Context.BatchOMClient.JobOperations;
                 NodeFile nodeFile = jobOperations.GetNodeFile(options.JobId, options.TaskId, options.NodeFileName, options.AdditionalBehaviors);
                 PSNodeFile psNodeFile = new PSNodeFile(nodeFile);
@@ -75,12 +75,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 string verboseLogString = null;
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
-                    verboseLogString = string.Format(Resources.GBTF_GetByOData, taskId);
+                    verboseLogString = string.Format(Resources.GetNodeFileByTaskByOData, taskId);
                     odata = new ODATADetailLevel(filterClause: options.Filter);
                 }
                 else
                 {
-                    verboseLogString = string.Format(Resources.GBTF_NoFilter, taskId);
+                    verboseLogString = string.Format(Resources.GetNodeFileByTaskNoFilter, taskId);
                 }
                 WriteVerbose(verboseLogString);
 
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             // Get the single node file matching the specified name
             if (!string.IsNullOrEmpty(options.NodeFileName))
             {
-                WriteVerbose(string.Format(Resources.GBCNF_GetByName, options.NodeFileName, options.ComputeNodeId));
+                WriteVerbose(string.Format(Resources.GetNodeFileByComputeNodeByName, options.NodeFileName, options.ComputeNodeId));
                 PoolOperations poolOperations = options.Context.BatchOMClient.PoolOperations;
                 NodeFile nodeFile = poolOperations.GetNodeFile(options.PoolId, options.ComputeNodeId, options.NodeFileName, options.AdditionalBehaviors);
                 PSNodeFile psNodeFile = new PSNodeFile(nodeFile);
@@ -120,12 +120,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 string verboseLogString = null;
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
-                    verboseLogString = string.Format(Resources.GBCNF_GetByOData, computeNodeId);
+                    verboseLogString = string.Format(Resources.GetNodeFileByComputeNodeByOData, computeNodeId);
                     odata = new ODATADetailLevel(filterClause: options.Filter);
                 }
                 else
                 {
-                    verboseLogString = string.Format(Resources.GBCNF_NoFilter, computeNodeId);
+                    verboseLogString = string.Format(Resources.GetNodeFileByComputeNodeNoFilter, computeNodeId);
                 }
                 WriteVerbose(verboseLogString);
 
@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
             else
             {
-                WriteVerbose(string.Format(Resources.GBNFC_Downloading, file.Name, destinationPath));
+                WriteVerbose(string.Format(Resources.DownloadingNodeFile, file.Name, destinationPath));
                 using (FileStream fs = new FileStream(destinationPath, FileMode.Create))
                 {
                     file.CopyToStream(fs, additionalBehaviors);
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             else
             {
                 string computeNodeId = options.ComputeNode == null ? options.ComputeNodeId : options.ComputeNode.Id;
-                WriteVerbose(string.Format(Resources.GBRDP_Downloading, computeNodeId, options.DestinationPath));
+                WriteVerbose(string.Format(Resources.DownloadingRDPFile, computeNodeId, options.DestinationPath));
 
                 using (FileStream fs = new FileStream(options.DestinationPath, FileMode.Create))
                 {

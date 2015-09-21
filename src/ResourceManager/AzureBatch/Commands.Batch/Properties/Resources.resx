@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccountAlreadyExists" xml:space="preserve">
+    <value>AccountAlreadyExists: Account already exists.</value>
+  </data>
   <data name="AccountAndKeyInUse" xml:space="preserve">
     <value>Executing cmdlet with Batch account {0} with its {1} key. To change which key to use, set the KeyInUse property on the BatchAccountContext.</value>
   </data>
@@ -126,6 +129,24 @@
   <data name="ChangeOSVersion" xml:space="preserve">
     <value>Changing OS version of pool {0} to {1}.</value>
   </data>
+  <data name="CheckingAccountNameAvailability" xml:space="preserve">
+    <value>Performing name availability check for account {0}</value>
+  </data>
+  <data name="CreatingComputeNodeUser" xml:space="preserve">
+    <value>Creating user {0} on compute node {1}</value>
+  </data>
+  <data name="CreatingJob" xml:space="preserve">
+    <value>Creating job {0}</value>
+  </data>
+  <data name="CreatingJobSchedule" xml:space="preserve">
+    <value>Creating job schedule {0}</value>
+  </data>
+  <data name="CreatingPool" xml:space="preserve">
+    <value>Creating pool {0}</value>
+  </data>
+  <data name="CreatingTask" xml:space="preserve">
+    <value>Creating task {0}</value>
+  </data>
   <data name="DisableAutoScale" xml:space="preserve">
     <value>Disabling automatic scaling on pool {0}.</value>
   </data>
@@ -134,6 +155,12 @@
   </data>
   <data name="DisableJobSchedule" xml:space="preserve">
     <value>Disabling job schedule {0}.</value>
+  </data>
+  <data name="DownloadingNodeFile" xml:space="preserve">
+    <value>Downloading node file {0} to: {1}</value>
+  </data>
+  <data name="DownloadingRDPFile" xml:space="preserve">
+    <value>Downloading Remote Desktop Protocol file for compute node {0} to: {1}</value>
   </data>
   <data name="EnableAutoScale" xml:space="preserve">
     <value>Enabling automatic scaling on pool {0} using the formula: {1}</value>
@@ -150,92 +177,83 @@
   <data name="EvaluateAutoScale" xml:space="preserve">
     <value>Evaluating the following autoscale formula on pool {0}: {1}</value>
   </data>
-  <data name="GBAK_GettingKeys" xml:space="preserve">
-    <value>Getting account keys for {0}</value>
-  </data>
-  <data name="GBA_AllAccounts" xml:space="preserve">
+  <data name="GetAllAccounts" xml:space="preserve">
     <value>Getting all accounts in subscription</value>
   </data>
-  <data name="GBA_ResGroupAccounts" xml:space="preserve">
-    <value>Getting accounts in resource group {0}</value>
-  </data>
-  <data name="GBCNF_GetByName" xml:space="preserve">
-    <value>Getting node file "{0}" from compute node "{1}"</value>
-  </data>
-  <data name="GBCNF_GetByOData" xml:space="preserve">
-    <value>Getting node files matching the specified OData filter from compute node "{0}".</value>
-  </data>
-  <data name="GBCNF_NoFilter" xml:space="preserve">
-    <value>Getting all node files from compute node "{0}".</value>
-  </data>
-  <data name="GBCN_GetById" xml:space="preserve">
+  <data name="GetComputeNodeById" xml:space="preserve">
     <value>Getting compute node "{0}" from pool "{1}".</value>
   </data>
-  <data name="GBCN_GetByOData" xml:space="preserve">
+  <data name="GetComputeNodeByOData" xml:space="preserve">
     <value>Getting compute nodes matching the specified OData filter from pool "{0}".</value>
   </data>
-  <data name="GBCN_NoFilter" xml:space="preserve">
+  <data name="GetComputeNodeNoFilter" xml:space="preserve">
     <value>Getting all compute nodes under pool "{0}".</value>
   </data>
-  <data name="GBJS_GetById" xml:space="preserve">
-    <value>Getting job schedule "{0}"</value>
-  </data>
-  <data name="GBJS_GetByOData" xml:space="preserve">
-    <value>Getting job schedules matching the specified OData filter. </value>
-  </data>
-  <data name="GBJS_NoFilter" xml:space="preserve">
-    <value>Getting all job schedules associated with the Batch account. </value>
-  </data>
-  <data name="GBJ_GetById" xml:space="preserve">
+  <data name="GetJobById" xml:space="preserve">
     <value>Getting job "{0}"</value>
   </data>
-  <data name="GBJ_GetByJobScheduleNoFilter" xml:space="preserve">
+  <data name="GetJobByJobScheduleNoFilter" xml:space="preserve">
     <value>Getting all jobs from job schedule "{0}".</value>
   </data>
-  <data name="GBJ_GetByOData" xml:space="preserve">
+  <data name="GetJobByOData" xml:space="preserve">
     <value>Getting jobs matching the specified OData filter.</value>
   </data>
-  <data name="GBJ_GetByODataAndJobSChedule" xml:space="preserve">
+  <data name="GetJobByODataAndJobSChedule" xml:space="preserve">
     <value>Getting jobs matching the specified OData filter from job schedule "{0}".</value>
   </data>
-  <data name="GBJ_GetNoFilter" xml:space="preserve">
+  <data name="GetJobNoFilter" xml:space="preserve">
     <value>Getting all jobs associated with the Batch account.</value>
   </data>
-  <data name="GBNFC_Downloading" xml:space="preserve">
-    <value>Downloading node file {0} to: {1}</value>
+  <data name="GetJobScheduleById" xml:space="preserve">
+    <value>Getting job schedule "{0}"</value>
   </data>
-  <data name="GBP_GetById" xml:space="preserve">
-    <value>Getting pool "{0}"</value>
+  <data name="GetJobScheduleByOData" xml:space="preserve">
+    <value>Getting job schedules matching the specified OData filter. </value>
   </data>
-  <data name="GBP_GetByOData" xml:space="preserve">
-    <value>Getting pools matching the specified OData filter. </value>
+  <data name="GetJobScheduleNoFilter" xml:space="preserve">
+    <value>Getting all job schedules associated with the Batch account. </value>
   </data>
-  <data name="GBP_NoFilter" xml:space="preserve">
-    <value>Getting all pools associated with the Batch account. </value>
+  <data name="GetNodeFileByComputeNodeByName" xml:space="preserve">
+    <value>Getting node file "{0}" from compute node "{1}"</value>
   </data>
-  <data name="GBRDP_Downloading" xml:space="preserve">
-    <value>Downloading Remote Desktop Protocol file for compute node {0} to: {1}</value>
+  <data name="GetNodeFileByComputeNodeByOData" xml:space="preserve">
+    <value>Getting node files matching the specified OData filter from compute node "{0}".</value>
   </data>
-  <data name="GBTF_GetByName" xml:space="preserve">
+  <data name="GetNodeFileByComputeNodeNoFilter" xml:space="preserve">
+    <value>Getting all node files from compute node "{0}".</value>
+  </data>
+  <data name="GetNodeFileByTaskByName" xml:space="preserve">
     <value>Getting node file "{0}" from task "{1}"</value>
   </data>
-  <data name="GBTF_GetByOData" xml:space="preserve">
+  <data name="GetNodeFileByTaskByOData" xml:space="preserve">
     <value>Getting node files matching the specified OData filter from task "{0}".</value>
   </data>
-  <data name="GBTF_NoFilter" xml:space="preserve">
+  <data name="GetNodeFileByTaskNoFilter" xml:space="preserve">
     <value>Getting all node files under task "{0}".</value>
   </data>
-  <data name="GBT_GetById" xml:space="preserve">
+  <data name="GetPoolById" xml:space="preserve">
+    <value>Getting pool "{0}"</value>
+  </data>
+  <data name="GetPoolByOData" xml:space="preserve">
+    <value>Getting pools matching the specified OData filter. </value>
+  </data>
+  <data name="GetPoolNoFilter" xml:space="preserve">
+    <value>Getting all pools associated with the Batch account. </value>
+  </data>
+  <data name="GetResourceGroupAccounts" xml:space="preserve">
+    <value>Getting accounts in resource group {0}</value>
+  </data>
+  <data name="GetTaskById" xml:space="preserve">
     <value>Getting task "{0}" from job "{1}"</value>
   </data>
-  <data name="GBT_GetByOData" xml:space="preserve">
+  <data name="GetTaskByOData" xml:space="preserve">
     <value>Getting tasks matching the specified OData filter from job "{0}".</value>
   </data>
-  <data name="GBT_GetNoFilter" xml:space="preserve">
+  <data name="GetTaskNoFilter" xml:space="preserve">
     <value>Getting all tasks from job "{0}".</value>
   </data>
-  <data name="GRDP_NoComputeNode" xml:space="preserve">
-    <value>No compute node was specified. Supply a PSComputeNode object or a pool id and compute node id for the Remote Desktop Protocol file to point to.</value>
+  <data name="GettingAccountKeys" xml:space="preserve">
+    <value>Getting account keys for {0}</value>
   </data>
   <data name="InvalidEndpointType" xml:space="preserve">
     <value>The endpoint is not recognized as valid: {0}</value>
@@ -250,37 +268,16 @@
     <value>Invalid tag format. Ensure that each tag has a unique name. Example: @{Name = "tagName1"; Value = "tagValue1"}, @{Name = "tagName2"; Value = "tagValue2"}</value>
   </data>
   <data name="KeyNotPresent" xml:space="preserve">
-    <value>The current KeyInUse on this BatchAccountContext is the {0} key, but this key is not populated on the BatchAccountContext object. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its keys populated.</value>
+    <value>The current KeyInUse on this BatchAccountContext is the {0} key, but this key is not populated on the BatchAccountContext object. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its keys populated.</value>
+  </data>
+  <data name="LookupAccount" xml:space="preserve">
+    <value>Checking if account already exists</value>
   </data>
   <data name="MaxCount" xml:space="preserve">
     <value>A max count of {0} will be returned.</value>
   </data>
   <data name="MissingResGroupName" xml:space="preserve">
     <value>Cannot find resource group name in ID property: {0}</value>
-  </data>
-  <data name="NBA_AccountAlreadyExists" xml:space="preserve">
-    <value>AccountAlreadyExists: Account already exists.</value>
-  </data>
-  <data name="NBA_LookupAccount" xml:space="preserve">
-    <value>Checking if account already exists</value>
-  </data>
-  <data name="NBA_NameAvailability" xml:space="preserve">
-    <value>Performing name availability check for account {0}</value>
-  </data>
-  <data name="NBJS_CreatingJobSchedule" xml:space="preserve">
-    <value>Creating job schedule {0}</value>
-  </data>
-  <data name="NBJ_CreatingJob" xml:space="preserve">
-    <value>Creating job {0}</value>
-  </data>
-  <data name="NBP_CreatingPool" xml:space="preserve">
-    <value>Creating pool {0}</value>
-  </data>
-  <data name="NBT_CreatingTask" xml:space="preserve">
-    <value>Creating task {0}</value>
-  </data>
-  <data name="NBU_CreatingUser" xml:space="preserve">
-    <value>Creating user {0} on compute node {1}</value>
   </data>
   <data name="NoComputeNode" xml:space="preserve">
     <value>No compute node was specified. Supply a PSComputeNode object or a pool id and compute node id.</value>
@@ -309,62 +306,59 @@
   <data name="NoTask" xml:space="preserve">
     <value>No task was specified. Supply a PSCloudTask object or a job id and task id.</value>
   </data>
-  <data name="RBA_RemoveConfirm" xml:space="preserve">
-    <value>Are you sure you want to remove batch account {0}?</value>
-  </data>
-  <data name="RBA_RemoveResource" xml:space="preserve">
-    <value>Removing batch account ...</value>
-  </data>
-  <data name="RBJS_RemoveConfirm" xml:space="preserve">
-    <value>Are you sure you want to remove job schedule {0}?</value>
-  </data>
-  <data name="RBJS_RemoveJobSchedule" xml:space="preserve">
-    <value>Removing job schedule ...</value>
-  </data>
-  <data name="RBJ_RemoveConfirm" xml:space="preserve">
-    <value>Are you sure you want to remove job {0}?</value>
-  </data>
-  <data name="RBJ_RemoveJob" xml:space="preserve">
-    <value>Removing job ...</value>
-  </data>
-  <data name="RBP_RemoveConfirm" xml:space="preserve">
-    <value>Are you sure you want to remove pool {0}?</value>
-  </data>
-  <data name="RBP_RemovePool" xml:space="preserve">
-    <value>Removing pool ...</value>
-  </data>
-  <data name="RBT_RemoveConfirm" xml:space="preserve">
-    <value>Are you sure you want to remove task {0}?</value>
-  </data>
-  <data name="RBT_RemoveTask" xml:space="preserve">
-    <value>Removing task ...</value>
-  </data>
-  <data name="RBU_RemoveConfirm" xml:space="preserve">
-    <value>Are you sure you want to remove user {0}?</value>
-  </data>
-  <data name="RBU_RemoveUser" xml:space="preserve">
-    <value>Removing user ...</value>
-  </data>
   <data name="RebootComputeNode" xml:space="preserve">
     <value>Rebooting compute node {0}.</value>
   </data>
   <data name="ReimageComputeNode" xml:space="preserve">
     <value>Reimaging compute node {0}.</value>
   </data>
+  <data name="RemoveAccountConfirm" xml:space="preserve">
+    <value>Are you sure you want to remove batch account {0}?</value>
+  </data>
+  <data name="RemoveBatchAccount" xml:space="preserve">
+    <value>Removing batch account ...</value>
+  </data>
+  <data name="RemoveComputeNodeUser" xml:space="preserve">
+    <value>Removing user ...</value>
+  </data>
+  <data name="RemoveComputeNodeUserConfirm" xml:space="preserve">
+    <value>Are you sure you want to remove user {0}?</value>
+  </data>
+  <data name="RemoveJob" xml:space="preserve">
+    <value>Removing job ...</value>
+  </data>
+  <data name="RemoveJobConfirm" xml:space="preserve">
+    <value>Are you sure you want to remove job {0}?</value>
+  </data>
+  <data name="RemoveJobSchedule" xml:space="preserve">
+    <value>Removing job schedule ...</value>
+  </data>
+  <data name="RemoveJobScheduleConfirm" xml:space="preserve">
+    <value>Are you sure you want to remove job schedule {0}?</value>
+  </data>
+  <data name="RemovePool" xml:space="preserve">
+    <value>Removing pool ...</value>
+  </data>
+  <data name="RemovePoolConfirm" xml:space="preserve">
+    <value>Are you sure you want to remove pool {0}?</value>
+  </data>
+  <data name="RemoveTask" xml:space="preserve">
+    <value>Removing task ...</value>
+  </data>
+  <data name="RemoveTaskConfirm" xml:space="preserve">
+    <value>Are you sure you want to remove task {0}?</value>
+  </data>
   <data name="ResGroupLookup" xml:space="preserve">
     <value>Looking up resource group for account {0}</value>
+  </data>
+  <data name="ResizingPool" xml:space="preserve">
+    <value>Resizing pool {0}, new target dedicated: {1}.</value>
   </data>
   <data name="ResourceNotFound" xml:space="preserve">
     <value>ResourceNotFound: Resource not found.</value>
     <comment>emulate exception generated by RP</comment>
   </data>
-  <data name="SBA_Updating" xml:space="preserve">
-    <value>Updating account {0}</value>
-  </data>
-  <data name="SBPR_ResizingPool" xml:space="preserve">
-    <value>Resizing pool {0}, new target dedicated: {1}.</value>
-  </data>
-  <data name="SBPR_StopResizingPool" xml:space="preserve">
+  <data name="StopResizingPool" xml:space="preserve">
     <value>Stopping resize operation on pool {0}.</value>
   </data>
   <data name="TerminateJob" xml:space="preserve">
@@ -375,5 +369,8 @@
   </data>
   <data name="TerminateTask" xml:space="preserve">
     <value>Terminating task {0}.</value>
+  </data>
+  <data name="UpdatingAccount" xml:space="preserve">
+    <value>Updating account {0}</value>
   </data>
 </root>

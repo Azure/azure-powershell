@@ -44,10 +44,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
             }
             else
             {
-                var storageAccountName = cmdlet.Profile.DefaultContext.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
+                var storageAccountName = cmdlet.Profile.Context.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
 
                 var storageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(
-                        cmdlet.Profile, cmdlet.Profile.DefaultContext.Subscription, AzureEnvironment.Endpoint.ServiceManagement);
+                        cmdlet.Profile, cmdlet.Profile.Context.Subscription, AzureEnvironment.Endpoint.ServiceManagement);
 
                 if (!string.IsNullOrEmpty(storageAccountName) && storageClient != null)
                 {

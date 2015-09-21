@@ -61,7 +61,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase
         protected SqlManagementClient GetCurrentSqlClient()
         {
             // Get the SQL management client for the current subscription
-            AzureSubscription subscription = Profile.DefaultContext.Subscription;
+            AzureSubscription subscription = Profile.Context.Subscription;
             SqlDatabaseCmdletBase.ValidateSubscription(subscription);
             SqlManagementClient client = AzureSession.ClientFactory.CreateClient<SqlManagementClient>(Profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
             client.HttpClient.DefaultRequestHeaders.Add(Constants.ClientSessionIdHeaderName, clientSessionId);

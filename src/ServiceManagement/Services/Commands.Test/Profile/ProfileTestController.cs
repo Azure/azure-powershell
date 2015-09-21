@@ -31,15 +31,7 @@ namespace Microsoft.Azure.Commands.Test.Profile
     {
         private TestEnvironmentFactory testFactory;
         private EnvironmentSetupHelper helper;
-
-        public static ProfileTestController NewInstance 
-        { 
-            get
-            {
-                return new ProfileTestController();
-            }
-        }
-
+        
         public static ProfileTestController NewRdfeInstance 
         { 
             get
@@ -60,11 +52,6 @@ namespace Microsoft.Azure.Commands.Test.Profile
         {
             get; 
             private set; 
-        }
-        public ProfileTestController()
-        {
-            Module = AzureModule.AzureResourceManager;
-            helper = new EnvironmentSetupHelper();
         }
 
         public ProfileTestController(AzureModule module)
@@ -105,7 +92,7 @@ namespace Microsoft.Azure.Commands.Test.Profile
                         command.CommandRuntime = new MockCommandRuntime();
                         command.InvokeBeginProcessing();
                         var profile = command.Profile;
-                        var context = profile.DefaultContext;
+                        var context = profile.Context;
                         var account = context.Account;
                         var tenant = account.IsPropertySet(AzureAccount.Property.Tenants)
                             ? account.GetPropertyAsArray(AzureAccount.Property.Tenants).First()

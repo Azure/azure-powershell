@@ -75,5 +75,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             RunPowerShellTest("Test-RemoveSecondaryDatabaseV2");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFailoverSecondaryDatabase()
+        {
+            RunPowerShellTest("Test-FailoverSecondaryDatabase");
+        }
     }
 }
