@@ -11,7 +11,7 @@
         <maml:para />
       </maml:copyright>
       <command:verb>Get</command:verb>
-      <command:noun>AzureBatchAccountKeys</command:noun>
+      <command:noun>AzureRMBatchAccountKeys</command:noun>
       <dev:version />
     </command:details>
     <maml:description>
@@ -152,7 +152,7 @@
         <maml:para />
       </maml:copyright>
       <command:verb>Get</command:verb>
-      <command:noun>AzureBatchAccount</command:noun>
+      <command:noun>AzureRMBatchAccount</command:noun>
       <dev:version />
     </command:details>
     <maml:description>
@@ -344,7 +344,7 @@ cmdletexample2       westus          CmdletExampleRG                      https:
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>Get-AzureRMBatchComputeNode</command:name>
+      <command:name>Get-AzureBatchComputeNode</command:name>
       <maml:description>
         <maml:para>Gets Batch compute nodes from a pool.</maml:para>
       </maml:description>
@@ -356,11 +356,11 @@ cmdletexample2       westus          CmdletExampleRG                      https:
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Get-AzureRMBatchComputeNode cmdlet gets Azure Batch compute nodes under a pool. Specify either the pool ID or pool object. Specify the Id parameter to get a single compute node. Specify the Filter parameter to get the compute nodes that match an OData filter. </maml:para>
+      <maml:para>The Get-AzureBatchComputeNode cmdlet gets Azure Batch compute nodes under a pool. Specify either the pool ID or pool object. Specify the Id parameter to get a single compute node. Specify the Filter parameter to get the compute nodes that match an OData filter. </maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Get-AzureRMBatchComputeNode</maml:name>
+        <maml:name>Get-AzureBatchComputeNode</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Filter</maml:name>
           <maml:description>
@@ -398,7 +398,7 @@ cmdletexample2       westus          CmdletExampleRG                      https:
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Get-AzureRMBatchComputeNode</maml:name>
+        <maml:name>Get-AzureBatchComputeNode</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="1" aliases="none">
           <maml:name>PoolId</maml:name>
           <maml:description>
@@ -429,11 +429,11 @@ cmdletexample2       westus          CmdletExampleRG                      https:
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Get-AzureRMBatchComputeNode</maml:name>
+        <maml:name>Get-AzureBatchComputeNode</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="1" aliases="none">
           <maml:name>Pool</maml:name>
           <maml:description>
-            <maml:para>Specifies the pool, as a PSCloudPool object, that contains the compute nodes. To obtain a PSCloudPool object, use the Get-AzureRMBatchPool cmdlet.</maml:para>
+            <maml:para>Specifies the pool, as a PSCloudPool object, that contains the compute nodes. To obtain a PSCloudPool object, use the Get-AzureBatchPool cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">PSCloudPool</command:parameterValue>
         </command:parameter>
@@ -519,7 +519,7 @@ cmdletexample2       westus          CmdletExampleRG                      https:
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="1" aliases="none">
         <maml:name>Pool</maml:name>
         <maml:description>
-          <maml:para>Specifies the pool, as a PSCloudPool object, that contains the compute nodes. To obtain a PSCloudPool object, use the Get-AzureRMBatchPool cmdlet.</maml:para>
+          <maml:para>Specifies the pool, as a PSCloudPool object, that contains the compute nodes. To obtain a PSCloudPool object, use the Get-AzureBatchPool cmdlet.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">PSCloudPool</command:parameterValue>
         <dev:type>
@@ -595,7 +595,7 @@ cmdletexample2       westus          CmdletExampleRG                      https:
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRMBatchComputeNode -PoolId "Pool06" -Id "tvm-2316545714_1-20150725t213220z" -BatchContext $Context
+        <dev:code>PS C:\&gt;Get-AzureBatchComputeNode -PoolId "Pool06" -Id "tvm-2316545714_1-20150725t213220z" -BatchContext $Context
 Id                    : tvm-2316545714_1-20150725t213220z
 Url                   : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_1-20150725t213220z
 State                 : Idle
@@ -629,7 +629,7 @@ Errors                :
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRMBatchComputeNode -PoolId "Pool06" -Filter "state eq 'idle'" -BatchContext $Context
+        <dev:code>PS C:\&gt;Get-AzureBatchComputeNode -PoolId "Pool06" -Filter "state eq 'idle'" -BatchContext $Context
 Id                    : tvm-2316545714_1-20150725t213220z
 Url                   : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_1-20150725t213220z
 State                 : Idle
@@ -679,7 +679,7 @@ Errors                :
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRMBatchPool -Id "Pool07" -BatchContext $Context | Get-AzureRMBatchComputeNode -BatchContext $Context
+        <dev:code>PS C:\&gt;Get-AzureBatchPool -Id "Pool07" -BatchContext $Context | Get-AzureBatchComputeNode -BatchContext $Context
 Id                    : tvm-2316545714_1-20150725t213220z
 Url                   : https://cmdletexample.westus.batch.azure.com/pools/MyPool/nodes/tvm-2316545714_1-20150725t213220z
 State                 : Idle
@@ -713,7 +713,7 @@ CertificateReferences :
 Errors                :         
 </dev:code>
         <dev:remarks>
-          <maml:para>This command gets the pool that has the ID Pool07 by using the Get-AzureRMBatchPool cmdlet. The command passes that pool to the current cmdlet by using the pipeline operator. That cmdlet gets all compute nodes from that pool.</maml:para>
+          <maml:para>This command gets the pool that has the ID Pool07 by using the Get-AzureBatchPool cmdlet. The command passes that pool to the current cmdlet by using the pipeline operator. That cmdlet gets all compute nodes from that pool.</maml:para>
           <maml:para />
           <maml:para />
         </dev:remarks>
@@ -726,15 +726,15 @@ Errors                :
     </command:examples>
     <maml:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureRMBatchNodeFile</maml:linkText>
+        <maml:linkText>Get-AzureBatchNodeFile</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureRMBatchNodeFileContent</maml:linkText>
+        <maml:linkText>Get-AzureBatchNodeFileContent</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureRMBatchPool</maml:linkText>
+        <maml:linkText>Get-AzureBatchPool</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -745,7 +745,7 @@ Errors                :
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>Get-AzureRMBatchJobSchedule</command:name>
+      <command:name>Get-AzureBatchJobSchedule</command:name>
       <maml:description>
         <maml:para>Gets Batch job schedules.</maml:para>
       </maml:description>
@@ -757,11 +757,11 @@ Errors                :
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Get-AzureRMBatchJobSchedule cmdlet gets Azure Batch job schedules for the Batch account specified by the BatchContext parameter. Specify an ID to get a single job schedule. Specify the Filter parameter to get the job schedules that match an OData filter. </maml:para>
+      <maml:para>The Get-AzureBatchJobSchedule cmdlet gets Azure Batch job schedules for the Batch account specified by the BatchContext parameter. Specify an ID to get a single job schedule. Specify the Filter parameter to get the job schedules that match an OData filter. </maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Get-AzureRMBatchJobSchedule</maml:name>
+        <maml:name>Get-AzureBatchJobSchedule</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Filter</maml:name>
           <maml:description>
@@ -792,7 +792,7 @@ Errors                :
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Get-AzureRMBatchJobSchedule</maml:name>
+        <maml:name>Get-AzureBatchJobSchedule</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByValue,ByPropertyName)" position="1" aliases="none">
           <maml:name>Id</maml:name>
           <maml:description>
@@ -920,7 +920,7 @@ Errors                :
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRMBatchJobSchedule -Id "JobSchedule23" -BatchContext $Context
+        <dev:code>PS C:\&gt;Get-AzureBatchJobSchedule -Id "JobSchedule23" -BatchContext $Context
 CreationTime                : 7/25/2015 9:15:43 PM
 DisplayName                 : 
 ETag                        : 0x8D2953633427FCA
@@ -954,7 +954,7 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobsc
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRMBatchJobSchedule -Filter "startswith(id,'Job')" -BatchContext $Context
+        <dev:code>PS C:\&gt;Get-AzureBatchJobSchedule -Filter "startswith(id,'Job')" -BatchContext $Context
 CreationTime                : 7/25/2015 9:15:43 PM
 DisplayName                 : 
 ETag                        : 0x8D2953633427FCA
@@ -1001,11 +1001,11 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobsc
     </command:examples>
     <maml:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>New-AzureRMBatchJobSchedule</maml:linkText>
+        <maml:linkText>New-AzureBatchJobSchedule</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Remove-AzureRMBatchJobSchedule</maml:linkText>
+        <maml:linkText>Remove-AzureBatchJobSchedule</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -1016,7 +1016,7 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobsc
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>Get-AzureRMBatchJob</command:name>
+      <command:name>Get-AzureBatchJob</command:name>
       <maml:description>
         <maml:para>Gets Batch jobs under the specified Batch account or job schedule.</maml:para>
       </maml:description>
@@ -1028,11 +1028,11 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobsc
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Get-AzureRMBatchJob cmdlet gets the Azure Batch jobs under the Batch account specified by the BatchAccountContext parameter. You can use the Id parameter to get a single job, or you can use the Filter parameter to get the jobs that match an OData filter. If you supply a job schedule ID or PSCloudJobSchedule instance, only the jobs under that job schedule will be returned.</maml:para>
+      <maml:para>The Get-AzureBatchJob cmdlet gets the Azure Batch jobs under the Batch account specified by the BatchAccountContext parameter. You can use the Id parameter to get a single job, or you can use the Filter parameter to get the jobs that match an OData filter. If you supply a job schedule ID or PSCloudJobSchedule instance, only the jobs under that job schedule will be returned.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Get-AzureRMBatchJob</maml:name>
+        <maml:name>Get-AzureBatchJob</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Filter</maml:name>
           <maml:description>
@@ -1070,7 +1070,7 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobsc
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Get-AzureRMBatchJob</maml:name>
+        <maml:name>Get-AzureBatchJob</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="1" aliases="none">
           <maml:name>Id</maml:name>
           <maml:description>
@@ -1094,11 +1094,11 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobsc
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Get-AzureRMBatchJob</maml:name>
+        <maml:name>Get-AzureBatchJob</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="1" aliases="none">
           <maml:name>JobSchedule</maml:name>
           <maml:description>
-            <maml:para>Specifies the PSCloudJobSchedule object representing the job schedule which contains the jobs. Use the Get-AzureRMBatchJobSchedule cmdlet to get a PSCloudJobSchedule object.</maml:para>
+            <maml:para>Specifies the PSCloudJobSchedule object representing the job schedule which contains the jobs. Use the Get-AzureBatchJobSchedule cmdlet to get a PSCloudJobSchedule object.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">PSCloudJobSchedule</command:parameterValue>
         </command:parameter>
@@ -1172,7 +1172,7 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobsc
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="1" aliases="none">
         <maml:name>JobSchedule</maml:name>
         <maml:description>
-          <maml:para>Specifies the PSCloudJobSchedule object representing the job schedule which contains the jobs. Use the Get-AzureRMBatchJobSchedule cmdlet to get a PSCloudJobSchedule object.</maml:para>
+          <maml:para>Specifies the PSCloudJobSchedule object representing the job schedule which contains the jobs. Use the Get-AzureBatchJobSchedule cmdlet to get a PSCloudJobSchedule object.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">PSCloudJobSchedule</command:parameterValue>
         <dev:type>
@@ -1260,7 +1260,7 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobsc
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRMBatchJob -Id "Job01" -BatchContext $Context
+        <dev:code>PS C:\&gt;Get-AzureBatchJob -Id "Job01" -BatchContext $Context
 CommonEnvironmentSettings   : 
 Constraints                 : Microsoft.Azure.Commands.Batch.Models.PSJobConstraints
 CreationTime                : 7/25/2015 9:12:07 PM
@@ -1299,7 +1299,7 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobs/
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRMBatchJob -JobScheduleId "MyJobSchedule" -Filter "state eq 'active'" -BatchContext $Context
+        <dev:code>PS C:\&gt;Get-AzureBatchJob -JobScheduleId "MyJobSchedule" -Filter "state eq 'active'" -BatchContext $Context
 CommonEnvironmentSettings   : 
 Constraints                 : Microsoft.Azure.Commands.Batch.Models.PSJobConstraints
 CreationTime                : 7/25/2015 9:15:44 PM
@@ -1338,7 +1338,7 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobs/
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRMBatchJobSchedule -Id "MyJobSchedule" -BatchContext $Context | Get-AzureRMBatchJob -BatchContext $Context
+        <dev:code>PS C:\&gt;Get-AzureBatchJobSchedule -Id "MyJobSchedule" -BatchContext $Context | Get-AzureBatchJob -BatchContext $Context
 CommonEnvironmentSettings   : 
 Constraints                 : Microsoft.Azure.Commands.Batch.Models.PSJobConstraints
 CreationTime                : 7/25/2015 9:15:44 PM
@@ -1378,11 +1378,11 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobs/
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureRMBatchJobSchedule</maml:linkText>
+        <maml:linkText>Get-AzureBatchJobSchedule</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Remove-AzureRMBatchJob</maml:linkText>
+        <maml:linkText>Remove-AzureBatchJob</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -1393,7 +1393,7 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobs/
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>Get-AzureRMBatchNodeFileContent</command:name>
+      <command:name>Get-AzureBatchNodeFileContent</command:name>
       <maml:description>
         <maml:para>Gets a Batch node file.</maml:para>
       </maml:description>
@@ -1405,11 +1405,11 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobs/
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Get-AzureRMBatchNodeFileContent cmdlet gets an Azure Batch node file and saves it as a file or to a stream.</maml:para>
+      <maml:para>The Get-AzureBatchNodeFileContent cmdlet gets an Azure Batch node file and saves it as a file or to a stream.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Get-AzureRMBatchNodeFileContent</maml:name>
+        <maml:name>Get-AzureBatchNodeFileContent</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3" aliases="none">
           <maml:name>Name</maml:name>
           <maml:description>
@@ -1454,7 +1454,7 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobs/
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Get-AzureRMBatchNodeFileContent</maml:name>
+        <maml:name>Get-AzureBatchNodeFileContent</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Profile</maml:name>
           <maml:description>
@@ -1499,7 +1499,7 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobs/
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Get-AzureRMBatchNodeFileContent</maml:name>
+        <maml:name>Get-AzureBatchNodeFileContent</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="none">
           <maml:name>PoolId</maml:name>
           <maml:description>
@@ -1544,7 +1544,7 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobs/
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Get-AzureRMBatchNodeFileContent</maml:name>
+        <maml:name>Get-AzureBatchNodeFileContent</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="none">
           <maml:name>PoolId</maml:name>
           <maml:description>
@@ -1589,11 +1589,11 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobs/
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Get-AzureRMBatchNodeFileContent</maml:name>
+        <maml:name>Get-AzureBatchNodeFileContent</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="1" aliases="none">
           <maml:name>InputObject</maml:name>
           <maml:description>
-            <maml:para>Specifies the file that this cmdlet gets, as a PSNodeFile object. To obtain a node file object, use the Get-AzureRMBatchNodeFile cmdlet.</maml:para>
+            <maml:para>Specifies the file that this cmdlet gets, as a PSNodeFile object. To obtain a node file object, use the Get-AzureBatchNodeFile cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">PSNodeFile</command:parameterValue>
         </command:parameter>
@@ -1620,11 +1620,11 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobs/
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Get-AzureRMBatchNodeFileContent</maml:name>
+        <maml:name>Get-AzureBatchNodeFileContent</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="1" aliases="none">
           <maml:name>InputObject</maml:name>
           <maml:description>
-            <maml:para>Specifies the file that this cmdlet gets, as a PSNodeFile object. To obtain a node file object, use the Get-AzureRMBatchNodeFile cmdlet.</maml:para>
+            <maml:para>Specifies the file that this cmdlet gets, as a PSNodeFile object. To obtain a node file object, use the Get-AzureBatchNodeFile cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">PSNodeFile</command:parameterValue>
         </command:parameter>
@@ -1703,7 +1703,7 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobs/
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="1" aliases="none">
         <maml:name>InputObject</maml:name>
         <maml:description>
-          <maml:para>Specifies the file that this cmdlet gets, as a PSNodeFile object. To obtain a node file object, use the Get-AzureRMBatchNodeFile cmdlet.</maml:para>
+          <maml:para>Specifies the file that this cmdlet gets, as a PSNodeFile object. To obtain a node file object, use the Get-AzureBatchNodeFile cmdlet.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">PSNodeFile</command:parameterValue>
         <dev:type>
@@ -1816,7 +1816,7 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobs/
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRMBatchNodeFileContent -JobId "Job01" -TaskId "Task01" -Name "StdOut.txt" -DestinationPath "E:\PowerShell\StdOut.txt" -BatchContext $Context
+        <dev:code>PS C:\&gt;Get-AzureBatchNodeFileContent -JobId "Job01" -TaskId "Task01" -Name "StdOut.txt" -DestinationPath "E:\PowerShell\StdOut.txt" -BatchContext $Context
 </dev:code>
         <dev:remarks>
           <maml:para>This command gets the node file that is named StdOut.txt, and saves it to the E:\PowerShell\StdOut.txt file path on the local computer. The StdOut.txt node file is associated with task that has the ID Task01 for the job that has the ID Job01. Use the Get-AzureRMBatchAccountKeys cmdlet to assign a context to the $Context variable.</maml:para>
@@ -1835,10 +1835,10 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobs/
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRMBatchNodeFile -JobId "Job02" -TaskId "Task02" -Name "StdErr.txt" -BatchContext $Context | Get-AzureRMBatchNodeFileContent -DestinationPath "E:\PowerShell\StdOut.txt" -BatchContext $Context
+        <dev:code>PS C:\&gt;Get-AzureBatchNodeFile -JobId "Job02" -TaskId "Task02" -Name "StdErr.txt" -BatchContext $Context | Get-AzureBatchNodeFileContent -DestinationPath "E:\PowerShell\StdOut.txt" -BatchContext $Context
 </dev:code>
         <dev:remarks>
-          <maml:para>This command gets the node file that is named StdErr.txt by using the Get-AzureRMBatchNodeFile cmdlet. The command passes that file to the current cmdlet by using the pipeline operator. The current cmdlet saves that file to the E:\PowerShell\StdOut.txt file path on the local computer. The StdOut.txt node file is associated with the task that has the ID Task02 for the job that has the ID Job02.</maml:para>
+          <maml:para>This command gets the node file that is named StdErr.txt by using the Get-AzureBatchNodeFile cmdlet. The command passes that file to the current cmdlet by using the pipeline operator. The current cmdlet saves that file to the E:\PowerShell\StdOut.txt file path on the local computer. The StdOut.txt node file is associated with the task that has the ID Task02 for the job that has the ID Job02.</maml:para>
           <maml:para />
           <maml:para />
         </dev:remarks>
@@ -1855,7 +1855,7 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobs/
           </maml:para>
         </maml:introduction>
         <dev:code>PS C:\&gt;$Stream = New-Object -TypeName "System.IO.MemoryStream"
-PS C:\&gt; Get-AzureRMBatchNodeFileContent -JobId "Job03" -TaskId "Task11" -Name "stdout.txt" -DestinationStream $Stream -BatchContext $Context
+PS C:\&gt; Get-AzureBatchNodeFileContent -JobId "Job03" -TaskId "Task11" -Name "stdout.txt" -DestinationStream $Stream -BatchContext $Context
 </dev:code>
         <dev:remarks>
           <maml:para>The first command creates a stream by using the New-Object cmdlet, and then stores it in the $Stream variable. </maml:para>
@@ -1875,7 +1875,7 @@ PS C:\&gt; Get-AzureRMBatchNodeFileContent -JobId "Job03" -TaskId "Task11" -Name
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRMBatchNodeFileContent -PoolId "Pool01" -ComputeNodeId "ComputeNode01" -Name "Startup\StdOut.txt" -DestinationPath "E:\PowerShell\StdOut.txt" -BatchContext $Context
+        <dev:code>PS C:\&gt;Get-AzureBatchNodeFileContent -PoolId "Pool01" -ComputeNodeId "ComputeNode01" -Name "Startup\StdOut.txt" -DestinationPath "E:\PowerShell\StdOut.txt" -BatchContext $Context
 </dev:code>
         <dev:remarks>
           <maml:para>This command gets the node file Startup\StdOut.txt from the compute node that has the ID ComputeNode01 in the pool that has the ID Pool01. The command saves the file to the E:\PowerShell\StdOut.txt file path on the local computer.</maml:para>
@@ -1894,10 +1894,10 @@ PS C:\&gt; Get-AzureRMBatchNodeFileContent -JobId "Job03" -TaskId "Task11" -Name
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRMBatchNodeFile -PoolId "Pool01" -ComputeNodeId "ComputeNode01" -Name "Startup\StdOut.txt" -BatchContext $Context | Get-AzureRMBatchNodeFileContent -DestinationPath "E:\PowerShell\StdOut.txt" -BatchContext $Context
+        <dev:code>PS C:\&gt;Get-AzureBatchNodeFile -PoolId "Pool01" -ComputeNodeId "ComputeNode01" -Name "Startup\StdOut.txt" -BatchContext $Context | Get-AzureBatchNodeFileContent -DestinationPath "E:\PowerShell\StdOut.txt" -BatchContext $Context
 </dev:code>
         <dev:remarks>
-          <maml:para>This command gets the node file Startup\StdOut.txt by using Get-AzureRMBatchNodeFile from the compute node that has the ID ComputeNode01. The compute node is in the pool that has the ID Pool01. The command passes that node file to the current cmdlet. That cmdlet saves the file to the E:\PowerShell\StdOut.txt file path on the local computer.</maml:para>
+          <maml:para>This command gets the node file Startup\StdOut.txt by using Get-AzureBatchNodeFile from the compute node that has the ID ComputeNode01. The compute node is in the pool that has the ID Pool01. The command passes that node file to the current cmdlet. That cmdlet saves the file to the E:\PowerShell\StdOut.txt file path on the local computer.</maml:para>
           <maml:para />
           <maml:para />
         </dev:remarks>
@@ -1914,7 +1914,7 @@ PS C:\&gt; Get-AzureRMBatchNodeFileContent -JobId "Job03" -TaskId "Task11" -Name
           </maml:para>
         </maml:introduction>
         <dev:code>PS C:\&gt;$Stream = New-Object -TypeName "System.IO.MemoryStream"
-PS C:\&gt; Get-AzureRMBatchNodeFileContent -PoolId "Pool01" -ComputeNodeId "ComputeNode01" -Name "startup\stdout.txt" -DestinationStream $Stream -BatchContext $Context
+PS C:\&gt; Get-AzureBatchNodeFileContent -PoolId "Pool01" -ComputeNodeId "ComputeNode01" -Name "startup\stdout.txt" -DestinationStream $Stream -BatchContext $Context
 </dev:code>
         <dev:remarks>
           <maml:para>The first command creates a stream by using the New-Object cmdlet, and then stores it in the $Stream variable. </maml:para>
@@ -1935,7 +1935,7 @@ PS C:\&gt; Get-AzureRMBatchNodeFileContent -PoolId "Pool01" -ComputeNodeId "Comp
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureRMBatchNodeFile</maml:linkText>
+        <maml:linkText>Get-AzureBatchNodeFile</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -1946,7 +1946,7 @@ PS C:\&gt; Get-AzureRMBatchNodeFileContent -PoolId "Pool01" -ComputeNodeId "Comp
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>Get-AzureRMBatchNodeFile</command:name>
+      <command:name>Get-AzureBatchNodeFile</command:name>
       <maml:description>
         <maml:para>Gets the properties of Batch node files.</maml:para>
       </maml:description>
@@ -1958,11 +1958,11 @@ PS C:\&gt; Get-AzureRMBatchNodeFileContent -PoolId "Pool01" -ComputeNodeId "Comp
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Get-AzureRMBatchNodeFile cmdlet gets the properties of the Azure Batch node files of a task or compute node. To narrow your results, you can specify a filter. If you specify a task, but not a filter, this cmdlet returns properties for all node files for that task. If you specify a compute node, but not a filter, this cmdlet returns properties for all node files for that compute node.</maml:para>
+      <maml:para>The Get-AzureBatchNodeFile cmdlet gets the properties of the Azure Batch node files of a task or compute node. To narrow your results, you can specify a filter. If you specify a task, but not a filter, this cmdlet returns properties for all node files for that task. If you specify a compute node, but not a filter, this cmdlet returns properties for all node files for that compute node.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Get-AzureRMBatchNodeFile</maml:name>
+        <maml:name>Get-AzureBatchNodeFile</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="none">
           <maml:name>PoolId</maml:name>
           <maml:description>
@@ -2000,7 +2000,7 @@ PS C:\&gt; Get-AzureRMBatchNodeFileContent -PoolId "Pool01" -ComputeNodeId "Comp
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Get-AzureRMBatchNodeFile</maml:name>
+        <maml:name>Get-AzureBatchNodeFile</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Filter</maml:name>
           <maml:description>
@@ -2051,7 +2051,7 @@ PS C:\&gt; Get-AzureRMBatchNodeFileContent -PoolId "Pool01" -ComputeNodeId "Comp
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Get-AzureRMBatchNodeFile</maml:name>
+        <maml:name>Get-AzureBatchNodeFile</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Name</maml:name>
           <maml:description>
@@ -2089,11 +2089,11 @@ PS C:\&gt; Get-AzureRMBatchNodeFileContent -PoolId "Pool01" -ComputeNodeId "Comp
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Get-AzureRMBatchNodeFile</maml:name>
+        <maml:name>Get-AzureBatchNodeFile</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="1" aliases="none">
           <maml:name>Task</maml:name>
           <maml:description>
-            <maml:para>Specifies the task, as a PSCloudTask object, with which the node files are associated. To obtain a task object, use the Get-AzureRMBatchTask cmdlet.</maml:para>
+            <maml:para>Specifies the task, as a PSCloudTask object, with which the node files are associated. To obtain a task object, use the Get-AzureBatchTask cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">PSCloudTask</command:parameterValue>
         </command:parameter>
@@ -2133,7 +2133,7 @@ PS C:\&gt; Get-AzureRMBatchNodeFileContent -PoolId "Pool01" -ComputeNodeId "Comp
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Get-AzureRMBatchNodeFile</maml:name>
+        <maml:name>Get-AzureBatchNodeFile</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="none">
           <maml:name>PoolId</maml:name>
           <maml:description>
@@ -2184,11 +2184,11 @@ PS C:\&gt; Get-AzureRMBatchNodeFileContent -PoolId "Pool01" -ComputeNodeId "Comp
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Get-AzureRMBatchNodeFile</maml:name>
+        <maml:name>Get-AzureBatchNodeFile</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="1" aliases="none">
           <maml:name>ComputeNode</maml:name>
           <maml:description>
-            <maml:para>Specifies the compute node, as a PSComputeNode object, that contains the Batch node files. To obtain a compute node object, use the Get-AzureRMBatchComputeNode cmdlet.</maml:para>
+            <maml:para>Specifies the compute node, as a PSComputeNode object, that contains the Batch node files. To obtain a compute node object, use the Get-AzureBatchComputeNode cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">PSComputeNode</command:parameterValue>
         </command:parameter>
@@ -2244,7 +2244,7 @@ PS C:\&gt; Get-AzureRMBatchNodeFileContent -PoolId "Pool01" -ComputeNodeId "Comp
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="1" aliases="none">
         <maml:name>ComputeNode</maml:name>
         <maml:description>
-          <maml:para>Specifies the compute node, as a PSComputeNode object, that contains the Batch node files. To obtain a compute node object, use the Get-AzureRMBatchComputeNode cmdlet.</maml:para>
+          <maml:para>Specifies the compute node, as a PSComputeNode object, that contains the Batch node files. To obtain a compute node object, use the Get-AzureBatchComputeNode cmdlet.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">PSComputeNode</command:parameterValue>
         <dev:type>
@@ -2352,7 +2352,7 @@ PS C:\&gt; Get-AzureRMBatchNodeFileContent -PoolId "Pool01" -ComputeNodeId "Comp
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="1" aliases="none">
         <maml:name>Task</maml:name>
         <maml:description>
-          <maml:para>Specifies the task, as a PSCloudTask object, with which the node files are associated. To obtain a task object, use the Get-AzureRMBatchTask cmdlet.</maml:para>
+          <maml:para>Specifies the task, as a PSCloudTask object, with which the node files are associated. To obtain a task object, use the Get-AzureBatchTask cmdlet.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">PSCloudTask</command:parameterValue>
         <dev:type>
@@ -2416,7 +2416,7 @@ PS C:\&gt; Get-AzureRMBatchNodeFileContent -PoolId "Pool01" -ComputeNodeId "Comp
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRMBatchNodeFile -JobId "Job-000001" -TaskId "Task26" -Name "Stdout.txt" -BatchContext $Context
+        <dev:code>PS C:\&gt;Get-AzureBatchNodeFile -JobId "Job-000001" -TaskId "Task26" -Name "Stdout.txt" -BatchContext $Context
 IsDirectory Name          Properties                                      Url
 
 ----------- ----          ----------                                      ---
@@ -2440,7 +2440,7 @@ False StdOut.txt    Microsoft.Azure.Commands.Batch.Models.PSFile... https://cmdl
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRMBatchNodeFile -JobId "Job-00002" -TaskId "Task26" -Filter "startswith(name,'St')" -BatchContext $Context
+        <dev:code>PS C:\&gt;Get-AzureBatchNodeFile -JobId "Job-00002" -TaskId "Task26" -Filter "startswith(name,'St')" -BatchContext $Context
 IsDirectory Name        Properties                                      Url
 
 ----------- ----        ----------                                      ---
@@ -2465,7 +2465,7 @@ False StdOut.txt  Microsoft.Azure.Commands.Batch.Models.PSFile... https://cmdlet
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRMBatchTask "Job-00003" "Task31" -BatchContext $Context | Get-AzureRMBatchNodeFile -Recursive -BatchContext $Context
+        <dev:code>PS C:\&gt;Get-AzureBatchTask "Job-00003" "Task31" -BatchContext $Context | Get-AzureBatchNodeFile -Recursive -BatchContext $Context
 IsDirectory Name             Properties                                      Url
 
 ----------- ----             ----------                                      ---
@@ -2494,7 +2494,7 @@ False wd\newFile.txt   Microsoft.Azure.Commands.Batch.Models.PSFile... https://c
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRMBatchNodeFile -PoolId "Pool22" -ComputeNodeId "ComputeNode01" -Name "Startup\StdOut.txt" -BatchContext $Context
+        <dev:code>PS C:\&gt;Get-AzureBatchNodeFile -PoolId "Pool22" -ComputeNodeId "ComputeNode01" -Name "Startup\StdOut.txt" -BatchContext $Context
 IsDirectory Name                    Properties                                      Url
 ----------- ----                    ----------                                      ---
 False       startup\stdout.txt      Microsoft.Azure.Commands.Batch.Models.PSFile... https://cmdletexample.westus.Batch.contoso...
@@ -2516,7 +2516,7 @@ False       startup\stdout.txt      Microsoft.Azure.Commands.Batch.Models.PSFile
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRMBatchNodeFile -PoolId "Pool22" -ComputeNodeId "ComputeNode01" -Filter "startswith(name,'startup')" -Recursive -BatchContext $Context
+        <dev:code>PS C:\&gt;Get-AzureBatchNodeFile -PoolId "Pool22" -ComputeNodeId "ComputeNode01" -Filter "startswith(name,'startup')" -Recursive -BatchContext $Context
 IsDirectory Name                      Properties                                      Url
 ----------- ----                      ----------                                      ---
 True        startup                                                                   https://cmdletexample.westus.Batch.contoso... 
@@ -2542,7 +2542,7 @@ True        startup\wd                                                          
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRMBatchComputeNode "Pool22" -Id "ComputeNode01" -BatchContext $Context | Get-AzureRMBatchNodeFile -BatchContext $Context
+        <dev:code>PS C:\&gt;Get-AzureBatchComputeNode "Pool22" -Id "ComputeNode01" -BatchContext $Context | Get-AzureBatchNodeFile -BatchContext $Context
 IsDirectory Name           Properties       Url
 ----------- ----           ----------       ---
 True        shared                          https://cmdletexample.westus.Batch.contoso... 
@@ -2567,11 +2567,11 @@ True        workitems                       https://cmdletexample.westus.Batch.c
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureRMBatchComputeNode</maml:linkText>
+        <maml:linkText>Get-AzureBatchComputeNode</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureRMBatchTask</maml:linkText>
+        <maml:linkText>Get-AzureBatchTask</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -2582,7 +2582,7 @@ True        workitems                       https://cmdletexample.westus.Batch.c
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>Get-AzureRMBatchPool</command:name>
+      <command:name>Get-AzureBatchPool</command:name>
       <maml:description>
         <maml:para>Gets Batch pools under the specified Batch account.</maml:para>
       </maml:description>
@@ -2594,11 +2594,11 @@ True        workitems                       https://cmdletexample.westus.Batch.c
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Get-AzureRMBatchPool cmdlet gets the Azure Batch pools under the Batch account specified with the BatchContext parameter. You can use the Id parameter to get a single pool, or you can use the Filter parameter to get the pools that match an OData filter. </maml:para>
+      <maml:para>The Get-AzureBatchPool cmdlet gets the Azure Batch pools under the Batch account specified with the BatchContext parameter. You can use the Id parameter to get a single pool, or you can use the Filter parameter to get the pools that match an OData filter. </maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Get-AzureRMBatchPool</maml:name>
+        <maml:name>Get-AzureBatchPool</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Filter</maml:name>
           <maml:description>
@@ -2629,7 +2629,7 @@ True        workitems                       https://cmdletexample.westus.Batch.c
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Get-AzureRMBatchPool</maml:name>
+        <maml:name>Get-AzureBatchPool</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByValue,ByPropertyName)" position="1" aliases="none">
           <maml:name>Id</maml:name>
           <maml:description>
@@ -2757,7 +2757,7 @@ True        workitems                       https://cmdletexample.westus.Batch.c
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRMBatchPool -Id "MyPool" -BatchContext $Context
+        <dev:code>PS C:\&gt;Get-AzureBatchPool -Id "MyPool" -BatchContext $Context
 AllocationState                      : Resizing
 AllocationStateTransitionTime        : 7/25/2015 9:30:28 PM
 AutoScaleEnabled                     : False
@@ -2805,7 +2805,7 @@ VirtualMachineSize                   : small
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRMBatchPool -Filter "startswith(id,'My')" -BatchContext $Context
+        <dev:code>PS C:\&gt;Get-AzureBatchPool -Filter "startswith(id,'My')" -BatchContext $Context
 AllocationState                      : Resizing
 AllocationStateTransitionTime        : 7/25/2015 9:30:28 PM
 AutoScaleEnabled                     : False
@@ -2853,11 +2853,11 @@ VirtualMachineSize                   : small
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>New-AzureRMBatchPool</maml:linkText>
+        <maml:linkText>New-AzureBatchPool</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Remove-AzureRMBatchPool</maml:linkText>
+        <maml:linkText>Remove-AzureBatchPool</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -2868,7 +2868,7 @@ VirtualMachineSize                   : small
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>Get-AzureRMBatchRemoteDesktopProtocolFile</command:name>
+      <command:name>Get-AzureBatchRemoteDesktopProtocolFile</command:name>
       <maml:description>
         <maml:para>Gets an RDP file from a compute node.</maml:para>
       </maml:description>
@@ -2880,11 +2880,11 @@ VirtualMachineSize                   : small
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Get-AzureRMBatchRemoteDesktopProtocolFile cmdlet gets a Remote Desktop Protocol (RDP) file from a compute node and saves it as a file or to a user supplied stream.</maml:para>
+      <maml:para>The Get-AzureBatchRemoteDesktopProtocolFile cmdlet gets a Remote Desktop Protocol (RDP) file from a compute node and saves it as a file or to a user supplied stream.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Get-AzureRMBatchRemoteDesktopProtocolFile</maml:name>
+        <maml:name>Get-AzureBatchRemoteDesktopProtocolFile</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1" aliases="none">
           <maml:name>PoolId</maml:name>
           <maml:description>
@@ -2922,7 +2922,7 @@ VirtualMachineSize                   : small
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Get-AzureRMBatchRemoteDesktopProtocolFile</maml:name>
+        <maml:name>Get-AzureBatchRemoteDesktopProtocolFile</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="none">
           <maml:name>PoolId</maml:name>
           <maml:description>
@@ -2960,11 +2960,11 @@ VirtualMachineSize                   : small
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Get-AzureRMBatchRemoteDesktopProtocolFile</maml:name>
+        <maml:name>Get-AzureBatchRemoteDesktopProtocolFile</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="1" aliases="none">
           <maml:name>ComputeNode</maml:name>
           <maml:description>
-            <maml:para>Specifies a compute node, as a PSComputeNode object, to which the .rdp file points. To obtain a compute node object, use the Get-AzureRMBatchComputeNode cmdlet.</maml:para>
+            <maml:para>Specifies a compute node, as a PSComputeNode object, to which the .rdp file points. To obtain a compute node object, use the Get-AzureBatchComputeNode cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">PSComputeNode</command:parameterValue>
         </command:parameter>
@@ -2991,11 +2991,11 @@ VirtualMachineSize                   : small
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Get-AzureRMBatchRemoteDesktopProtocolFile</maml:name>
+        <maml:name>Get-AzureBatchRemoteDesktopProtocolFile</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="1" aliases="none">
           <maml:name>ComputeNode</maml:name>
           <maml:description>
-            <maml:para>Specifies a compute node, as a PSComputeNode object, to which the .rdp file points. To obtain a compute node object, use the Get-AzureRMBatchComputeNode cmdlet.</maml:para>
+            <maml:para>Specifies a compute node, as a PSComputeNode object, to which the .rdp file points. To obtain a compute node object, use the Get-AzureBatchComputeNode cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">PSComputeNode</command:parameterValue>
         </command:parameter>
@@ -3038,7 +3038,7 @@ VirtualMachineSize                   : small
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="1" aliases="none">
         <maml:name>ComputeNode</maml:name>
         <maml:description>
-          <maml:para>Specifies a compute node, as a PSComputeNode object, to which the .rdp file points. To obtain a compute node object, use the Get-AzureRMBatchComputeNode cmdlet.</maml:para>
+          <maml:para>Specifies a compute node, as a PSComputeNode object, to which the .rdp file points. To obtain a compute node object, use the Get-AzureBatchComputeNode cmdlet.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">PSComputeNode</command:parameterValue>
         <dev:type>
@@ -3151,7 +3151,7 @@ VirtualMachineSize                   : small
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRMBatchRemoteDesktopProtocolFile -PoolId "Pool06" -ComputeNodeId "ComputeNode01" -DestinationPath "C:\PowerShell\ComputeNode01.rdp" -BatchContext $Context
+        <dev:code>PS C:\&gt;Get-AzureBatchRemoteDesktopProtocolFile -PoolId "Pool06" -ComputeNodeId "ComputeNode01" -DestinationPath "C:\PowerShell\ComputeNode01.rdp" -BatchContext $Context
 </dev:code>
         <dev:remarks>
           <maml:para>This command gets an RDP file from the compute node that has the ID ComputeNode01 in the pool that has the ID Pool06. The command saves the .rdp file as C:\PowerShell\MyComputeNode.rdp. Use the Get-AzureRMBatchAccountKeys cmdlet to assign a context to the $Context variable.</maml:para>
@@ -3170,7 +3170,7 @@ VirtualMachineSize                   : small
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRMBatchComputeNode -PoolId "Pool06" -Id "ComputeNode02" -BatchContext $Context | Get-AzureRMBatchRemoteDesktopProtocolFile -DestinationPath "C:\PowerShell\MyComputeNode02.rdp" -BatchContext $Context
+        <dev:code>PS C:\&gt;Get-AzureBatchComputeNode -PoolId "Pool06" -Id "ComputeNode02" -BatchContext $Context | Get-AzureBatchRemoteDesktopProtocolFile -DestinationPath "C:\PowerShell\MyComputeNode02.rdp" -BatchContext $Context
 </dev:code>
         <dev:remarks>
           <maml:para>This command gets the compute node that has the ID ComputeNode02 in the pool that has the ID Pool06. The command passes that compute node to the current cmdlet by using the pipeline operator. The current cmdlet gets an .rpd file from the compute node, and then saves the contents as a file that is named C:\PowerShell\MyComputeNode02.rdp. </maml:para>
@@ -3190,7 +3190,7 @@ VirtualMachineSize                   : small
           </maml:para>
         </maml:introduction>
         <dev:code>PS C:\&gt;$Stream = New-Object -TypeName "System.IO.MemoryStream"
- PS C:\&gt; Get-AzureRMBatchRemoteDesktopProtocolFile "Pool06" -ComputeNodeId "ComputeNode03" -DestinationStream $Stream -BatchContext $Context
+ PS C:\&gt; Get-AzureBatchRemoteDesktopProtocolFile "Pool06" -ComputeNodeId "ComputeNode03" -DestinationStream $Stream -BatchContext $Context
 </dev:code>
         <dev:remarks>
           <maml:para>The first command creates a stream by using the New-Object cmdlet, and then stores it in the $Stream variable. </maml:para>
@@ -3211,7 +3211,7 @@ VirtualMachineSize                   : small
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureRMBatchComputeNode</maml:linkText>
+        <maml:linkText>Get-AzureBatchComputeNode</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -3222,7 +3222,7 @@ VirtualMachineSize                   : small
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>Get-AzureRMBatchTask</command:name>
+      <command:name>Get-AzureBatchTask</command:name>
       <maml:description>
         <maml:para>Gets the Batch tasks for the specified job.</maml:para>
       </maml:description>
@@ -3234,11 +3234,11 @@ VirtualMachineSize                   : small
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Get-AzureRMBatchTask cmdlet gets the Azure Batch tasks for the job specified by either the JobId parameter or the Job parameter. You can use the Id parameter to get a single task, or you can use the Filter parameter to get the tasks that match an OData filter. </maml:para>
+      <maml:para>The Get-AzureBatchTask cmdlet gets the Azure Batch tasks for the job specified by either the JobId parameter or the Job parameter. You can use the Id parameter to get a single task, or you can use the Filter parameter to get the tasks that match an OData filter. </maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Get-AzureRMBatchTask</maml:name>
+        <maml:name>Get-AzureBatchTask</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1" aliases="none">
           <maml:name>JobId</maml:name>
           <maml:description>
@@ -3276,7 +3276,7 @@ VirtualMachineSize                   : small
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Get-AzureRMBatchTask</maml:name>
+        <maml:name>Get-AzureBatchTask</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="none">
           <maml:name>JobId</maml:name>
           <maml:description>
@@ -3307,11 +3307,11 @@ VirtualMachineSize                   : small
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Get-AzureRMBatchTask</maml:name>
+        <maml:name>Get-AzureBatchTask</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="1" aliases="none">
           <maml:name>Job</maml:name>
           <maml:description>
-            <maml:para>Specifies the PSCloudJob object representing the job which contains the tasks. Use the Get-AzureRMBatchJob cmdlet to get a PSCloudJob object.</maml:para>
+            <maml:para>Specifies the PSCloudJob object representing the job which contains the tasks. Use the Get-AzureBatchJob cmdlet to get a PSCloudJob object.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">PSCloudJob</command:parameterValue>
         </command:parameter>
@@ -3385,7 +3385,7 @@ VirtualMachineSize                   : small
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="1" aliases="none">
         <maml:name>Job</maml:name>
         <maml:description>
-          <maml:para>Specifies the PSCloudJob object representing the job which contains the tasks. Use the Get-AzureRMBatchJob cmdlet to get a PSCloudJob object.</maml:para>
+          <maml:para>Specifies the PSCloudJob object representing the job which contains the tasks. Use the Get-AzureBatchJob cmdlet to get a PSCloudJob object.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">PSCloudJob</command:parameterValue>
         <dev:type>
@@ -3473,7 +3473,7 @@ VirtualMachineSize                   : small
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRMBatchTask -JobId "Job01" -Id "MyTask" -BatchContext $Context
+        <dev:code>PS C:\&gt;Get-AzureBatchTask -JobId "Job01" -Id "MyTask" -BatchContext $Context
 AffinityInformation         : 
 CommandLine                 : cmd /c dir /s
 ComputeNodeInformation      : Microsoft.Azure.Commands.Batch.Models.PSComputeNodeInformation
@@ -3511,7 +3511,7 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobs/
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRMBatchTask -JobId "Job02" -Filter "state eq 'completed'" -BatchContext $Context
+        <dev:code>PS C:\&gt;Get-AzureBatchTask -JobId "Job02" -Filter "state eq 'completed'" -BatchContext $Context
 AffinityInformation         : 
 CommandLine                 : cmd /c dir /s
 ComputeNodeInformation      : Microsoft.Azure.Commands.Batch.Models.PSComputeNodeInformation
@@ -3568,15 +3568,15 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobs/
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureRMBatchJob</maml:linkText>
+        <maml:linkText>Get-AzureBatchJob</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>New-AzureRMBatchTask</maml:linkText>
+        <maml:linkText>New-AzureBatchTask</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Remove-AzureRMBatchTask</maml:linkText>
+        <maml:linkText>Remove-AzureBatchTask</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -3595,7 +3595,7 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobs/
         <maml:para />
       </maml:copyright>
       <command:verb>New</command:verb>
-      <command:noun>AzureBatchAccountKey</command:noun>
+      <command:noun>AzureRMBatchAccountKey</command:noun>
       <dev:version />
     </command:details>
     <maml:description>
@@ -3767,7 +3767,7 @@ cmdletexample        westus          CmdletExample                        https:
         <maml:para />
       </maml:copyright>
       <command:verb>New</command:verb>
-      <command:noun>AzureBatchAccount</command:noun>
+      <command:noun>AzureRMBatchAccount</command:noun>
       <dev:version />
     </command:details>
     <maml:description>
@@ -3955,7 +3955,7 @@ cmdletexample       WestUS           CmdletExampleRG                      https:
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>New-AzureRMBatchComputeNodeUser</command:name>
+      <command:name>New-AzureBatchComputeNodeUser</command:name>
       <maml:description>
         <maml:para>Creates a user account on a Batch compute node.</maml:para>
       </maml:description>
@@ -3967,11 +3967,11 @@ cmdletexample       WestUS           CmdletExampleRG                      https:
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The New-AzureRMBatchComputeNodeUser cmdlet creates a user account on an Azure Batch compute node. </maml:para>
+      <maml:para>The New-AzureBatchComputeNodeUser cmdlet creates a user account on an Azure Batch compute node. </maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>New-AzureRMBatchComputeNodeUser</maml:name>
+        <maml:name>New-AzureBatchComputeNodeUser</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1" aliases="none">
           <maml:name>PoolId</maml:name>
           <maml:description>
@@ -4029,7 +4029,7 @@ cmdletexample       WestUS           CmdletExampleRG                      https:
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>New-AzureRMBatchComputeNodeUser</maml:name>
+        <maml:name>New-AzureBatchComputeNodeUser</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>ComputeNode</maml:name>
           <maml:description>
@@ -4233,7 +4233,7 @@ cmdletexample       WestUS           CmdletExampleRG                      https:
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;New-AzureRMBatchComputeNodeUser -PoolId "MyPool01" -ComputeNodeId "ComputeNode01" -Name "TestUser" -Password "Password" -ExpiryTime ([DateTime]::Now.AddDays(7)) -IsAdmin -BatchContext $Context
+        <dev:code>PS C:\&gt;New-AzureBatchComputeNodeUser -PoolId "MyPool01" -ComputeNodeId "ComputeNode01" -Name "TestUser" -Password "Password" -ExpiryTime ([DateTime]::Now.AddDays(7)) -IsAdmin -BatchContext $Context
 </dev:code>
         <dev:remarks>
           <maml:para>This command creates a user account on the compute node that has the ID ComputeNode01. The node is in the pool that has the ID MyPool01. The user name is TestUser, the password is Password, the account expires in seven days, and the account is has administrative credentials.</maml:para>
@@ -4252,10 +4252,10 @@ cmdletexample       WestUS           CmdletExampleRG                      https:
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRMBatchComputeNode "MyPool01" -ComputeNodeId "ComputeNode01" -BatchContext $Context | New-AzureRMBatchComputeNodeUser -Name "TestUser" -Password "Password" -BatchContext $Context
+        <dev:code>PS C:\&gt;Get-AzureBatchComputeNode "MyPool01" -ComputeNodeId "ComputeNode01" -BatchContext $Context | New-AzureBatchComputeNodeUser -Name "TestUser" -Password "Password" -BatchContext $Context
 </dev:code>
         <dev:remarks>
-          <maml:para>This command gets the compute node named ComputeNode01 by using the Get-AzureRMBatchComputeNode cmdlet. That node is in the pool that has the ID MyPool01. The command passes that compute node to the current cmdlet by using the pipeline operator. The command creates a user account that has the user name TestUserand the password Password.</maml:para>
+          <maml:para>This command gets the compute node named ComputeNode01 by using the Get-AzureBatchComputeNode cmdlet. That node is in the pool that has the ID MyPool01. The command passes that compute node to the current cmdlet by using the pipeline operator. The command creates a user account that has the user name TestUserand the password Password.</maml:para>
           <maml:para />
           <maml:para />
         </dev:remarks>
@@ -4272,11 +4272,11 @@ cmdletexample       WestUS           CmdletExampleRG                      https:
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureRMBatchComputeNode</maml:linkText>
+        <maml:linkText>Get-AzureBatchComputeNode</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Remove-AzureRMBatchComputeNodeUser</maml:linkText>
+        <maml:linkText>Remove-AzureBatchComputeNodeUser</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -4287,7 +4287,7 @@ cmdletexample       WestUS           CmdletExampleRG                      https:
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>New-AzureRMBatchJobSchedule</command:name>
+      <command:name>New-AzureBatchJobSchedule</command:name>
       <maml:description>
         <maml:para>Creates a job schedule in the Batch service.</maml:para>
       </maml:description>
@@ -4299,11 +4299,11 @@ cmdletexample       WestUS           CmdletExampleRG                      https:
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The New-AzureRMBatchJobSchedule cmdlet creates a job schedule in the Azure Batch service. The BatchAccountContext parameter specifies the account in which this cmdlet creates the schedule.</maml:para>
+      <maml:para>The New-AzureBatchJobSchedule cmdlet creates a job schedule in the Azure Batch service. The BatchAccountContext parameter specifies the account in which this cmdlet creates the schedule.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>New-AzureRMBatchJobSchedule</maml:name>
+        <maml:name>New-AzureBatchJobSchedule</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="none">
           <maml:name>Id</maml:name>
           <maml:description>
@@ -4489,7 +4489,7 @@ PS C:\&gt; $Schedule.RecurrenceInterval = [TimeSpan]::FromDays(1)
 PS C:\&gt; $JobSpecification = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSJobSpecification"
 PS C:\&gt; $JobSpecification.PoolInformation = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSPoolInformation"
 PS C:\&gt; $JobSpecification.PoolInformation.PoolId = "ContosoPool06"
-PS C:\&gt; New-AzureRMBatchJobSchedule -Id "JobSchedule17" -Schedule $Schedule -JobSpecification $JobSpecification -BatchContext $Context
+PS C:\&gt; New-AzureBatchJobSchedule -Id "JobSchedule17" -Schedule $Schedule -JobSpecification $JobSpecification -BatchContext $Context
 </dev:code>
         <dev:remarks>
           <maml:para>This example creates a job schedule. The first five commands create and modify PSSchedule, PSJobSpecification, and PSPoolInformation objects. The commands use the New-Object cmdlet and standard Azure PowerShell syntax. The commands store these objects in the $Schedule and $JobSpecification variables.</maml:para>
@@ -4510,11 +4510,11 @@ PS C:\&gt; New-AzureRMBatchJobSchedule -Id "JobSchedule17" -Schedule $Schedule -
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureRMBatchJobSchedule</maml:linkText>
+        <maml:linkText>Get-AzureBatchJobSchedule</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Remove-AzureRMBatchJobSchedule</maml:linkText>
+        <maml:linkText>Remove-AzureBatchJobSchedule</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -4525,7 +4525,7 @@ PS C:\&gt; New-AzureRMBatchJobSchedule -Id "JobSchedule17" -Schedule $Schedule -
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>New-AzureRMBatchJob</command:name>
+      <command:name>New-AzureBatchJob</command:name>
       <maml:description>
         <maml:para>Creates a job in the Batch service.</maml:para>
       </maml:description>
@@ -4537,11 +4537,11 @@ PS C:\&gt; New-AzureRMBatchJobSchedule -Id "JobSchedule17" -Schedule $Schedule -
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The New-AzureRMBatchJob cmdlet creates a job in the Azure Batch service in the account specified by the BatchAccountContext parameter.</maml:para>
+      <maml:para>The New-AzureBatchJob cmdlet creates a job in the Azure Batch service in the account specified by the BatchAccountContext parameter.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>New-AzureRMBatchJob</maml:name>
+        <maml:name>New-AzureBatchJob</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="none">
           <maml:name>Id</maml:name>
           <maml:description>
@@ -4819,7 +4819,7 @@ PS C:\&gt; New-AzureRMBatchJobSchedule -Id "JobSchedule17" -Schedule $Schedule -
         </maml:introduction>
         <dev:code>PS C:\&gt;$PoolInformation = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSPoolInformation" 
 PS C:\&gt; $PoolInformation.PoolId = "Pool22" 
-PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformation -BatchContext $Context
+PS C:\&gt; New-AzureBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformation -BatchContext $Context
 </dev:code>
         <dev:remarks>
           <maml:para>The first command creates a PSPoolInformation object by using the New-Object cmdlet. The command stores that object in the $PoolInformation variable. </maml:para>
@@ -4841,11 +4841,11 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureRMBatchJobSchedule</maml:linkText>
+        <maml:linkText>Get-AzureBatchJobSchedule</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Remove-AzureRMBatchJob</maml:linkText>
+        <maml:linkText>Remove-AzureBatchJob</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -4856,7 +4856,7 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>New-AzureRMBatchPool</command:name>
+      <command:name>New-AzureBatchPool</command:name>
       <maml:description>
         <maml:para>Creates a new pool in the Batch service under the specified account.</maml:para>
       </maml:description>
@@ -4868,11 +4868,11 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The New-AzureRMBatchPool cmdlet creates a new pool in the Azure Batch service under the account specified by the BatchContext parameter.</maml:para>
+      <maml:para>The New-AzureBatchPool cmdlet creates a new pool in the Azure Batch service under the account specified by the BatchContext parameter.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>New-AzureRMBatchPool</maml:name>
+        <maml:name>New-AzureBatchPool</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1" aliases="none">
           <maml:name>Id</maml:name>
           <maml:description>
@@ -4972,7 +4972,7 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>New-AzureRMBatchPool</maml:name>
+        <maml:name>New-AzureBatchPool</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1" aliases="none">
           <maml:name>Id</maml:name>
           <maml:description>
@@ -5316,7 +5316,7 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;New-AzureRMBatchPool -Id "MyPool" -VirtualMachineSize "small" -OSFamily "4" -TargetOSVersion "*" -TargetDedicated 3 -BatchContext $Context
+        <dev:code>PS C:\&gt;New-AzureBatchPool -Id "MyPool" -VirtualMachineSize "small" -OSFamily "4" -TargetOSVersion "*" -TargetDedicated 3 -BatchContext $Context
 </dev:code>
         <dev:remarks>
           <maml:para>This command creates a new pool with id MyPool using the TargetDedicated parameter set. The target allocation is three compute nodes. The pool will use small virtual machines imaged with the latest operating system version of family four.</maml:para>
@@ -5335,7 +5335,7 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;New-AzureRMBatchPool -Id "AutoScalePool" -VirtualMachineSize "small" -OSFamily "4" -TargetOSVersion "*" -AutoScaleFormula '$TargetDedicated=2;' -BatchContext $Context
+        <dev:code>PS C:\&gt;New-AzureBatchPool -Id "AutoScalePool" -VirtualMachineSize "small" -OSFamily "4" -TargetOSVersion "*" -AutoScaleFormula '$TargetDedicated=2;' -BatchContext $Context
 </dev:code>
         <dev:remarks>
           <maml:para>This command creates a new pool with ID AutoScalePool using the AutoScale parameter set. The pool will use small virtual machines imaged with the latest operating system version of family four, and the target number of compute nodes will be determined by the Autoscale formula.</maml:para>
@@ -5355,11 +5355,11 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureRMBatchPool</maml:linkText>
+        <maml:linkText>Get-AzureBatchPool</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Remove-AzureRMBatchPool</maml:linkText>
+        <maml:linkText>Remove-AzureBatchPool</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -5370,7 +5370,7 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>New-AzureRMBatchTask</command:name>
+      <command:name>New-AzureBatchTask</command:name>
       <maml:description>
         <maml:para>Creates a new Batch task under the specified job.</maml:para>
       </maml:description>
@@ -5382,11 +5382,11 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The New-AzureRMBatchTask cmdlet creates a new Azure Batch task under the job specified by the JobId parameter or the Job parameter.</maml:para>
+      <maml:para>The New-AzureBatchTask cmdlet creates a new Azure Batch task under the job specified by the JobId parameter or the Job parameter.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>New-AzureRMBatchTask</maml:name>
+        <maml:name>New-AzureBatchTask</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>AffinityInformation</maml:name>
           <maml:description>
@@ -5465,7 +5465,7 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>New-AzureRMBatchTask</maml:name>
+        <maml:name>New-AzureBatchTask</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>AffinityInformation</maml:name>
           <maml:description>
@@ -5497,7 +5497,7 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>Job</maml:name>
           <maml:description>
-            <maml:para>Specifies the PSCloudJob object representing the job to create the task under. Use the Get-AzureRMBatchJob cmdlet to get a PSCloudJob object.</maml:para>
+            <maml:para>Specifies the PSCloudJob object representing the job to create the task under. Use the Get-AzureBatchJob cmdlet to get a PSCloudJob object.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">PSCloudJob</command:parameterValue>
         </command:parameter>
@@ -5632,7 +5632,7 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
         <maml:name>Job</maml:name>
         <maml:description>
-          <maml:para>Specifies the PSCloudJob object representing the job to create the task under. Use the Get-AzureRMBatchJob cmdlet to get a PSCloudJob object.</maml:para>
+          <maml:para>Specifies the PSCloudJob object representing the job to create the task under. Use the Get-AzureBatchJob cmdlet to get a PSCloudJob object.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">PSCloudJob</command:parameterValue>
         <dev:type>
@@ -5733,7 +5733,7 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;New-AzureRMBatchTask -JobId "Job-000001" -Id "MyTask" -CommandLine "cmd /c dir /s" -BatchContext $Context
+        <dev:code>PS C:\&gt;New-AzureBatchTask -JobId "Job-000001" -Id "MyTask" -CommandLine "cmd /c dir /s" -BatchContext $Context
 </dev:code>
         <dev:remarks>
           <maml:para>This command creates a new task with ID MyTask under job Job-000001. The task will run the command-line "cmd /c dir /s".</maml:para>
@@ -5752,7 +5752,7 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRMBatchJob -Id "Job-000001" -BatchContext $Context | New-AzureRMBatchTask -Id "MyTask2" -CommandLine "cmd /c echo hello &gt; newFile.txt" -RunElevated -BatchContext $Context
+        <dev:code>PS C:\&gt;Get-AzureBatchJob -Id "Job-000001" -BatchContext $Context | New-AzureBatchTask -Id "MyTask2" -CommandLine "cmd /c echo hello &gt; newFile.txt" -RunElevated -BatchContext $Context
 </dev:code>
         <dev:remarks>
           <maml:para>This command creates a new task with ID MyTask2 under job Job-000001. The task will run the command-line "cmd /c echo hello &gt; newFile.txt" with elevated permissions.</maml:para>
@@ -5772,15 +5772,15 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureRMBatchJob</maml:linkText>
+        <maml:linkText>Get-AzureBatchJob</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureRMBatchTask</maml:linkText>
+        <maml:linkText>Get-AzureBatchTask</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Remove-AzureRMBatchTask</maml:linkText>
+        <maml:linkText>Remove-AzureBatchTask</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -5799,7 +5799,7 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
         <maml:para />
       </maml:copyright>
       <command:verb>Remove</command:verb>
-      <command:noun>AzureBatchAccount</command:noun>
+      <command:noun>AzureRMBatchAccount</command:noun>
       <dev:version />
     </command:details>
     <maml:description>
@@ -5965,7 +5965,7 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>Remove-AzureRMBatchComputeNodeUser</command:name>
+      <command:name>Remove-AzureBatchComputeNodeUser</command:name>
       <maml:description>
         <maml:para>Deletes a user account from a Batch compute node.</maml:para>
       </maml:description>
@@ -5977,11 +5977,11 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Remove-AzureRMBatchComputeNodeUser cmdlet deletes a user account from an Azure Batch compute node.</maml:para>
+      <maml:para>The Remove-AzureBatchComputeNodeUser cmdlet deletes a user account from an Azure Batch compute node.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Remove-AzureRMBatchComputeNodeUser</maml:name>
+        <maml:name>Remove-AzureBatchComputeNodeUser</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="none">
           <maml:name>PoolId</maml:name>
           <maml:description>
@@ -6142,7 +6142,7 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Remove-AzureRMBatchComputeNodeUser -PoolId "Pool01" -ComputeNodeId "ComputeNode01" -Name "User14" -Force -BatchContext $Context
+        <dev:code>PS C:\&gt;Remove-AzureBatchComputeNodeUser -PoolId "Pool01" -ComputeNodeId "ComputeNode01" -Name "User14" -Force -BatchContext $Context
 </dev:code>
         <dev:remarks>
           <maml:para>This command deletes the user named User14 from compute node named ComputeNode01. The compute node is in the pool named Pool01. This command specifies the Force parameter. Therefore, the command does not prompt you for confirmation. </maml:para>
@@ -6162,7 +6162,7 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>New-AzureRMBatchComputeNodeUser</maml:linkText>
+        <maml:linkText>New-AzureBatchComputeNodeUser</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -6173,7 +6173,7 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>Remove-AzureRMBatchJobSchedule</command:name>
+      <command:name>Remove-AzureBatchJobSchedule</command:name>
       <maml:description>
         <maml:para>Removes a Batch job schedule.</maml:para>
       </maml:description>
@@ -6185,11 +6185,11 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Remove-AzureRMBatchJobSchedule cmdlet removes an Azure Batch job schedule. This cmdlet prompts you for confirmation before it removes a schedule. </maml:para>
+      <maml:para>The Remove-AzureBatchJobSchedule cmdlet removes an Azure Batch job schedule. This cmdlet prompts you for confirmation before it removes a schedule. </maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Remove-AzureRMBatchJobSchedule</maml:name>
+        <maml:name>Remove-AzureBatchJobSchedule</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="none">
           <maml:name>Id</maml:name>
           <maml:description>
@@ -6312,7 +6312,7 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Remove-AzureRMBatchJobSchedule "JobSchedule17" -BatchContext $Context
+        <dev:code>PS C:\&gt;Remove-AzureBatchJobSchedule "JobSchedule17" -BatchContext $Context
 </dev:code>
         <dev:remarks>
           <maml:para>This command deletes the job schedule that has the ID JobSchedule17. Use the Get-AzureRMBatchAccountKeys cmdlet to assign a context to the $Context variable. This command prompts you before it removes the schedule.</maml:para>
@@ -6331,10 +6331,10 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRMBatchJobSchedule -Id "JobSchedule23" -BatchContext $Context | Remove-AzureRMBatchJobSchedule -Force -BatchContext $Context
+        <dev:code>PS C:\&gt;Get-AzureBatchJobSchedule -Id "JobSchedule23" -BatchContext $Context | Remove-AzureBatchJobSchedule -Force -BatchContext $Context
 </dev:code>
         <dev:remarks>
-          <maml:para>This command gets the job schedule that has the ID JobSchedule23 by using the Get-AzureRMBatchJobSchedule cmdlet. The command passes that schedule to the current cmdlet by using the pipeline operator. The command removes that schedule. The command specifies the Force parameter. Therefore, it does not prompt you for confirmation.</maml:para>
+          <maml:para>This command gets the job schedule that has the ID JobSchedule23 by using the Get-AzureBatchJobSchedule cmdlet. The command passes that schedule to the current cmdlet by using the pipeline operator. The command removes that schedule. The command specifies the Force parameter. Therefore, it does not prompt you for confirmation.</maml:para>
           <maml:para />
           <maml:para />
         </dev:remarks>
@@ -6347,11 +6347,11 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
     </command:examples>
     <maml:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureRMBatchJobSchedule</maml:linkText>
+        <maml:linkText>Get-AzureBatchJobSchedule</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>New-AzureRMBatchJobSchedule</maml:linkText>
+        <maml:linkText>New-AzureBatchJobSchedule</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -6362,7 +6362,7 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>Remove-AzureRMBatchJob</command:name>
+      <command:name>Remove-AzureBatchJob</command:name>
       <maml:description>
         <maml:para>Deletes the specified Batch job.</maml:para>
       </maml:description>
@@ -6374,11 +6374,11 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Remove-AzureRMBatchJob cmdlet deletes the specified Azure Batch job. You will be prompted for confirmation unless you use the Force parameter.</maml:para>
+      <maml:para>The Remove-AzureBatchJob cmdlet deletes the specified Azure Batch job. You will be prompted for confirmation unless you use the Force parameter.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Remove-AzureRMBatchJob</maml:name>
+        <maml:name>Remove-AzureBatchJob</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="none">
           <maml:name>Id</maml:name>
           <maml:description>
@@ -6501,7 +6501,7 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Remove-AzureRMBatchJob -Id "Job-000001" -BatchContext $Context
+        <dev:code>PS C:\&gt;Remove-AzureBatchJob -Id "Job-000001" -BatchContext $Context
 </dev:code>
         <dev:remarks>
           <maml:para>This command deletes the job with ID Job-000001. The user is prompted for confirmation before the delete operation takes place.</maml:para>
@@ -6520,7 +6520,7 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRMBatchJob -Id "Job-000002" -BatchContext $Context | Remove-AzureRMBatchJob -Force -BatchContext $Context
+        <dev:code>PS C:\&gt;Get-AzureBatchJob -Id "Job-000002" -BatchContext $Context | Remove-AzureBatchJob -Force -BatchContext $Context
 </dev:code>
         <dev:remarks>
           <maml:para>This command deletes the job with ID Job-000002. Since the Force parameter is present, the confirmation prompt is suppressed.</maml:para>
@@ -6540,7 +6540,7 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureRMBatchJob</maml:linkText>
+        <maml:linkText>Get-AzureBatchJob</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -6551,7 +6551,7 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>Remove-AzureRMBatchPool</command:name>
+      <command:name>Remove-AzureBatchPool</command:name>
       <maml:description>
         <maml:para>Deletes the specified Batch pool.</maml:para>
       </maml:description>
@@ -6563,11 +6563,11 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Remove-AzureRMBatchPool cmdlet deletes the specified Azure Batch pool. You will be prompted for confirmation unless you use the Force parameter.</maml:para>
+      <maml:para>The Remove-AzureBatchPool cmdlet deletes the specified Azure Batch pool. You will be prompted for confirmation unless you use the Force parameter.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Remove-AzureRMBatchPool</maml:name>
+        <maml:name>Remove-AzureBatchPool</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="none">
           <maml:name>Id</maml:name>
           <maml:description>
@@ -6690,7 +6690,7 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Remove-AzureRMBatchPool -Id "MyPool" -BatchContext $Context
+        <dev:code>PS C:\&gt;Remove-AzureBatchPool -Id "MyPool" -BatchContext $Context
 </dev:code>
         <dev:remarks>
           <maml:para>This command deletes the pool with ID MyPool. The user is prompted for confirmation before the delete operation takes place.</maml:para>
@@ -6709,7 +6709,7 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRMBatchPool -BatchContext $Context | Remove-AzureRMBatchPool -Force -BatchContext $Context
+        <dev:code>PS C:\&gt;Get-AzureBatchPool -BatchContext $Context | Remove-AzureBatchPool -Force -BatchContext $Context
 </dev:code>
         <dev:remarks>
           <maml:para>This command deletes all Batch pools. Since the Force parameter is present, the confirmation prompt is suppressed.</maml:para>
@@ -6725,11 +6725,11 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
     </command:examples>
     <maml:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureRMBatchPool</maml:linkText>
+        <maml:linkText>Get-AzureBatchPool</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>New-AzureRMBatchPool</maml:linkText>
+        <maml:linkText>New-AzureBatchPool</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -6744,7 +6744,7 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>Remove-AzureRMBatchTask</command:name>
+      <command:name>Remove-AzureBatchTask</command:name>
       <maml:description>
         <maml:para>Deletes the specified Batch task.</maml:para>
       </maml:description>
@@ -6756,11 +6756,11 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Remove-AzureRMBatchTask cmdlet deletes the specified Azure Batch task. You will be prompted for confirmation unless you use the Force parameter.</maml:para>
+      <maml:para>The Remove-AzureBatchTask cmdlet deletes the specified Azure Batch task. You will be prompted for confirmation unless you use the Force parameter.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Remove-AzureRMBatchTask</maml:name>
+        <maml:name>Remove-AzureBatchTask</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="none">
           <maml:name>JobId</maml:name>
           <maml:description>
@@ -6797,11 +6797,11 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Remove-AzureRMBatchTask</maml:name>
+        <maml:name>Remove-AzureBatchTask</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="1" aliases="none">
           <maml:name>InputObject</maml:name>
           <maml:description>
-            <maml:para>Specifies the PSCloudTask object representing the task to delete. Use the Get-AzureRMBatchTask cmdlet to get a PSCloudTask object.</maml:para>
+            <maml:para>Specifies the PSCloudTask object representing the task to delete. Use the Get-AzureBatchTask cmdlet to get a PSCloudTask object.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">PSCloudTask</command:parameterValue>
         </command:parameter>
@@ -6867,7 +6867,7 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="1" aliases="none">
         <maml:name>InputObject</maml:name>
         <maml:description>
-          <maml:para>Specifies the PSCloudTask object representing the task to delete. Use the Get-AzureRMBatchTask cmdlet to get a PSCloudTask object.</maml:para>
+          <maml:para>Specifies the PSCloudTask object representing the task to delete. Use the Get-AzureBatchTask cmdlet to get a PSCloudTask object.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">PSCloudTask</command:parameterValue>
         <dev:type>
@@ -6944,7 +6944,7 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Remove-AzureRMBatchTask -JobId "Job-000001" -Id "MyTask" -BatchContext $Context
+        <dev:code>PS C:\&gt;Remove-AzureBatchTask -JobId "Job-000001" -Id "MyTask" -BatchContext $Context
 </dev:code>
         <dev:remarks>
           <maml:para>This command deletes the task with ID MyTask in job Job-000001. The user is prompted for confirmation before the delete operation takes place.</maml:para>
@@ -6963,7 +6963,7 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRMBatchTask "Job-000001" "MyTask2" -BatchContext $Context | Remove-AzureRMBatchTask -Force -BatchContext $Context
+        <dev:code>PS C:\&gt;Get-AzureBatchTask "Job-000001" "MyTask2" -BatchContext $Context | Remove-AzureBatchTask -Force -BatchContext $Context
 </dev:code>
         <dev:remarks>
           <maml:para>This command deletes the task with id MyTask2 in job Job-000001. Since the Force parameter is present, the confirmation prompt is suppressed.</maml:para>
@@ -6983,11 +6983,11 @@ PS C:\&gt; New-AzureRMBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformat
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureRMBatchTask</maml:linkText>
+        <maml:linkText>Get-AzureBatchTask</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>New-AzureRMBatchTask</maml:linkText>
+        <maml:linkText>New-AzureBatchTask</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -7012,76 +7012,76 @@ Switch-AzureMode AzureResourceManager</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Gets a Batch account under the current subscription.</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Get-AzureRMBatchAccountKeys</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Gets the specified key of the specified Batch accounts under the current subscription.</maml:para>
-  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Get-AzureRMBatchComputeNode</maml:para>
+  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Get-AzureBatchComputeNode</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Gets Batch compute nodes from a pool.</maml:para>
-  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Get-AzureRMBatchJob</maml:para>
+  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Get-AzureBatchJob</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Gets Batch jobs under the specified Batch account or job schedule.</maml:para>
-  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Get-AzureRMBatchJobSchedule</maml:para>
+  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Get-AzureBatchJobSchedule</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Gets Batch job schedules.</maml:para>
-  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Get-AzureRMBatchNodeFile</maml:para>
+  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Get-AzureBatchNodeFile</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Gets the properties of Batch node files.</maml:para>
-  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Get-AzureRMBatchNodeFileContent</maml:para>
+  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Get-AzureBatchNodeFileContent</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Gets a Batch node file.</maml:para>
-  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Get-AzureRMBatchPool</maml:para>
+  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Get-AzureBatchPool</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Gets Batch pools under the specified Batch account.</maml:para>
-  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Get-AzureRMBatchRemoteDesktopProtocolFile</maml:para>
+  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Get-AzureBatchRemoteDesktopProtocolFile</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Gets an RDP file from a compute node.</maml:para>
-  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Get-AzureRMBatchTask</maml:para>
+  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Get-AzureBatchTask</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Gets the Batch tasks for the specified job.</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">New-AzureRMBatchAccount</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Creates a new Batch account.</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">New-AzureRMBatchAccountKey</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Regenerates the specified key of the specified Batch account.</maml:para>
-  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">New-AzureRMBatchComputeNodeUser</maml:para>
+  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">New-AzureBatchComputeNodeUser</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Creates a user account on a Batch compute node.</maml:para>
-  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">New-AzureRMBatchJob</maml:para>
+  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">New-AzureBatchJob</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Creates a job in the Batch service.</maml:para>
-  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">New-AzureRMBatchJobSchedule</maml:para>
+  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">New-AzureBatchJobSchedule</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Creates a job schedule in the Batch service.</maml:para>
-  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">New-AzureRMBatchPool</maml:para>
+  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">New-AzureBatchPool</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Creates a new pool in the Batch service under the specified account.</maml:para>
-  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">New-AzureRMBatchTask</maml:para>
+  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">New-AzureBatchTask</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Creates a new Batch task under the specified job.</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Remove-AzureRMBatchAccount</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Removes the specified  Batch account.</maml:para>
-  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Remove-AzureRMBatchComputeNodeUser</maml:para>
+  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Remove-AzureBatchComputeNodeUser</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Deletes a user account from a  Batch compute node.</maml:para>
-  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Remove-AzureRMBatchJob</maml:para>
+  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Remove-AzureBatchJob</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Deletes the specified Batch job.</maml:para>
-  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Remove-AzureRMBatchJobSchedule</maml:para>
+  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Remove-AzureBatchJobSchedule</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Removes a Batch job schedule.</maml:para>
-  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Remove-AzureRMBatchPool</maml:para>
+  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Remove-AzureBatchPool</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Deletes the specified Batch pool.</maml:para>
-  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Remove-AzureRMBatchTask</maml:para>
+  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Remove-AzureBatchTask</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Deletes the specified Batch task.</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Set-AzureRMBatchAccount</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Updates the specified Batch account.</maml:para>
-  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Start-AzureRMBatchPoolResize</maml:para>
+  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Start-AzureBatchPoolResize</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Starts to resize a pool.</maml:para>
-  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Stop-AzureRMBatchPoolResize</maml:para>
+  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Stop-AzureBatchPoolResize</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Stops a pool resize operation.</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">For more information about, or for the syntax of, any of the cmdlets, use the Get-Help &lt;cmdlet name&gt; cmdlet, where &lt;cmdlet name&gt; is the name of the cmdlet that you want to research. For more detailed information, you can run any of the following cmdlets:   ● Get-Help &lt;cmdlet name&gt; -Detailed  ● Get-Help &lt;cmdlet name&gt; -Examples  ● Get-Help &lt;cmdlet name&gt; -Full </maml:para>
   <maml:navigationLink xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <maml:linkText>Azure Cmdlet Reference</maml:linkText>
     <maml:uri>
     </maml:uri>
-  </maml:navigationLink>Azure Resource Manager Cmdlets<maml:navigationLink xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp"><maml:linkText>Using Windows Powershell with Resource Manager</maml:linkText><maml:uri></maml:uri></maml:navigationLink><command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp"><command:details><command:name>Set-AzureRMBatchAccount</command:name><maml:description><maml:para>Updates the specified Batch account.</maml:para></maml:description><maml:copyright><maml:para /></maml:copyright><command:verb>Set</command:verb><command:noun>AzureBatchAccount</command:noun><dev:version /></command:details><maml:description><maml:para>The Set-AzureRMBatchAccount cmdlet updates the specified Azure Batch account. Currently, only tags can be updated.</maml:para></maml:description><command:syntax><command:syntaxItem><maml:name>Set-AzureRMBatchAccount</maml:name><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="Name"><maml:name>AccountName</maml:name><maml:description><maml:para>Specifies the name of the existing Batch account to update.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">String</command:parameterValue></command:parameter><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="2" aliases="Tags"><maml:name>Tag</maml:name><maml:description><maml:para>Specifies tags in an array of hash tables to set on the account.</maml:para></maml:description><command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>Profile</maml:name><maml:description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none"><maml:name>ResourceGroupName</maml:name><maml:description><maml:para>Specifies the resource group of the account being updated.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">String</command:parameterValue></command:parameter></command:syntaxItem></command:syntax><command:parameters><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="Name"><maml:name>AccountName</maml:name><maml:description><maml:para>Specifies the name of the existing Batch account to update.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">String</command:parameterValue><dev:type><maml:name>String</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>Profile</maml:name><maml:description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue><dev:type><maml:name>AzureProfile</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none"><maml:name>ResourceGroupName</maml:name><maml:description><maml:para>Specifies the resource group of the account being updated.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">String</command:parameterValue><dev:type><maml:name>String</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="2" aliases="Tags"><maml:name>Tag</maml:name><maml:description><maml:para>Specifies tags in an array of hash tables to set on the account.</maml:para></maml:description><command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue><dev:type><maml:name>Hashtable[]</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter></command:parameters><command:inputTypes><command:inputType><dev:type><maml:name></maml:name><maml:uri></maml:uri><maml:description><maml:para /></maml:description></dev:type><maml:description><maml:para></maml:para></maml:description></command:inputType></command:inputTypes><command:returnValues><command:returnValue><dev:type><maml:name>BatchAccountContext</maml:name><maml:uri></maml:uri><maml:description><maml:para /></maml:description></dev:type><maml:description><maml:para></maml:para></maml:description></command:returnValue></command:returnValues><command:terminatingErrors /><command:nonTerminatingErrors /><command:examples><command:example><maml:title>Example 1: Update the tags on an existing Batch account</maml:title><maml:introduction><maml:para></maml:para></maml:introduction><dev:code>PS C:\&gt;Set-AzureRMBatchAccount -AccountName "cmdletexample" -Tag @(@{Name = "tag1";Value = "value1"},@{Name = "tag2";Value = "value2"})
+  </maml:navigationLink>Azure Resource Manager Cmdlets<maml:navigationLink xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp"><maml:linkText>Using Windows Powershell with Resource Manager</maml:linkText><maml:uri></maml:uri></maml:navigationLink><command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp"><command:details><command:name>Set-AzureRMBatchAccount</command:name><maml:description><maml:para>Updates the specified Batch account.</maml:para></maml:description><maml:copyright><maml:para /></maml:copyright><command:verb>Set</command:verb><command:noun>AzureRMBatchAccount</command:noun><dev:version /></command:details><maml:description><maml:para>The Set-AzureRMBatchAccount cmdlet updates the specified Azure Batch account. Currently, only tags can be updated.</maml:para></maml:description><command:syntax><command:syntaxItem><maml:name>Set-AzureRMBatchAccount</maml:name><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="Name"><maml:name>AccountName</maml:name><maml:description><maml:para>Specifies the name of the existing Batch account to update.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">String</command:parameterValue></command:parameter><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="2" aliases="Tags"><maml:name>Tag</maml:name><maml:description><maml:para>Specifies tags in an array of hash tables to set on the account.</maml:para></maml:description><command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>Profile</maml:name><maml:description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none"><maml:name>ResourceGroupName</maml:name><maml:description><maml:para>Specifies the resource group of the account being updated.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">String</command:parameterValue></command:parameter></command:syntaxItem></command:syntax><command:parameters><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="Name"><maml:name>AccountName</maml:name><maml:description><maml:para>Specifies the name of the existing Batch account to update.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">String</command:parameterValue><dev:type><maml:name>String</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>Profile</maml:name><maml:description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue><dev:type><maml:name>AzureProfile</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none"><maml:name>ResourceGroupName</maml:name><maml:description><maml:para>Specifies the resource group of the account being updated.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">String</command:parameterValue><dev:type><maml:name>String</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="2" aliases="Tags"><maml:name>Tag</maml:name><maml:description><maml:para>Specifies tags in an array of hash tables to set on the account.</maml:para></maml:description><command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue><dev:type><maml:name>Hashtable[]</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter></command:parameters><command:inputTypes><command:inputType><dev:type><maml:name></maml:name><maml:uri></maml:uri><maml:description><maml:para /></maml:description></dev:type><maml:description><maml:para></maml:para></maml:description></command:inputType></command:inputTypes><command:returnValues><command:returnValue><dev:type><maml:name>BatchAccountContext</maml:name><maml:uri></maml:uri><maml:description><maml:para /></maml:description></dev:type><maml:description><maml:para></maml:para></maml:description></command:returnValue></command:returnValues><command:terminatingErrors /><command:nonTerminatingErrors /><command:examples><command:example><maml:title>Example 1: Update the tags on an existing Batch account</maml:title><maml:introduction><maml:para></maml:para></maml:introduction><dev:code>PS C:\&gt;Set-AzureRMBatchAccount -AccountName "cmdletexample" -Tag @(@{Name = "tag1";Value = "value1"},@{Name = "tag2";Value = "value2"})
 AccountName          Location        ResourceGroupName Tags               TaskTenantUrl
 -----------          --------        ----------------- ----               -------------
 cmdletexample        westus          cmdletexamplerg   {System.Collection https://cmdletexample.westus.batch.azure.com
                                                        s.Hashtable, Syste
                                                        m.Collections.Hash
                                                        table}                        
-</dev:code><dev:remarks><maml:para>This command updates the tags on the cmdletexample account.</maml:para><maml:para /><maml:para /></dev:remarks><command:commandLines><command:commandLine><command:commandText /></command:commandLine></command:commandLines></command:example></command:examples><maml:relatedLinks><maml:navigationLink><maml:linkText>Get-AzureRMBatchAccount</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>New-AzureRMBatchAccount</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>Remove-AzureRMBatchAccount</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>RMAzure_Batch_Cmdlets</maml:linkText><maml:uri /></maml:navigationLink></maml:relatedLinks></command:command><command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp"><command:details><command:name>Start-AzureRMBatchPoolResize</command:name><maml:description><maml:para>Starts to resize a pool.</maml:para></maml:description><maml:copyright><maml:para /></maml:copyright><command:verb>Start</command:verb><command:noun>AzureBatchPoolResize</command:noun><dev:version /></command:details><maml:description><maml:para>The Start-AzureRMBatchPoolResize cmdlet starts an Azure Batch resize operation on a pool.</maml:para></maml:description><command:syntax><command:syntaxItem><maml:name>Start-AzureRMBatchPoolResize</maml:name><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue,ByPropertyName)" position="1" aliases="none"><maml:name>Id</maml:name><maml:description><maml:para>Specifies the ID of the pool that this cmdlet resizes.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">String</command:parameterValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>ComputeNodeDeallocationOption</maml:name><maml:description><maml:para>Specifies a deallocation option for the resizing operation that this cmdlet starts.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">ComputeNodeDeallocationOption</command:parameterValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>Profile</maml:name><maml:description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>ResizeTimeout</maml:name><maml:description><maml:para>Specifies a time-out period for the resizing operation. If the pool does not reach the target size by this time, the resize operation stops.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">TimeSpan</command:parameterValue></command:parameter><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none"><maml:name>BatchContext</maml:name><maml:description><maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet. </maml:para></maml:description><command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue></command:parameter><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>TargetDedicated</maml:name><maml:description><maml:para>Specifies the target number of dedicated compute nodes.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">Int32</command:parameterValue></command:parameter></command:syntaxItem></command:syntax><command:parameters><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none"><maml:name>BatchContext</maml:name><maml:description><maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet. </maml:para></maml:description><command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue><dev:type><maml:name>BatchAccountContext</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>ComputeNodeDeallocationOption</maml:name><maml:description><maml:para>Specifies a deallocation option for the resizing operation that this cmdlet starts.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">ComputeNodeDeallocationOption</command:parameterValue><dev:type><maml:name>ComputeNodeDeallocationOption</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue,ByPropertyName)" position="1" aliases="none"><maml:name>Id</maml:name><maml:description><maml:para>Specifies the ID of the pool that this cmdlet resizes.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">String</command:parameterValue><dev:type><maml:name>String</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>Profile</maml:name><maml:description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue><dev:type><maml:name>AzureProfile</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>ResizeTimeout</maml:name><maml:description><maml:para>Specifies a time-out period for the resizing operation. If the pool does not reach the target size by this time, the resize operation stops.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">TimeSpan</command:parameterValue><dev:type><maml:name>TimeSpan</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>TargetDedicated</maml:name><maml:description><maml:para>Specifies the target number of dedicated compute nodes.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">Int32</command:parameterValue><dev:type><maml:name>Int32</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter></command:parameters><command:inputTypes><command:inputType><dev:type><maml:name></maml:name><maml:uri></maml:uri><maml:description><maml:para /></maml:description></dev:type><maml:description><maml:para></maml:para></maml:description></command:inputType></command:inputTypes><command:returnValues><command:returnValue><dev:type><maml:name></maml:name><maml:uri></maml:uri><maml:description><maml:para /></maml:description></dev:type><maml:description><maml:para></maml:para></maml:description></command:returnValue></command:returnValues><command:terminatingErrors /><command:nonTerminatingErrors /><command:examples><command:example><maml:title>Example 1: Resize a pool to 12 nodes</maml:title><maml:introduction><maml:para></maml:para></maml:introduction><dev:code>PS C:\&gt;Start-AzureRMBatchPoolResize -Id "ContosoPool06" -TargetDedicated 12 -BatchContext $Context
-</dev:code><dev:remarks><maml:para>This command starts a resize operation on the pool that has the ID ContosoPool06. The target for the operation is 12 dedicated compute nodes. Use the Get-AzureRMBatchAccountKeys cmdlet to assign a context to the $Context variable. </maml:para><maml:para /><maml:para /></dev:remarks><command:commandLines><command:commandLine><command:commandText /></command:commandLine></command:commandLines></command:example><command:example><maml:title>Example 2: Resize a pool using a deallocation option</maml:title><maml:introduction><maml:para></maml:para></maml:introduction><dev:code>PS C:\&gt;Get-AzureRMBatchPool -Id "ContosoPool06" -BatchContext $Context | Start-AzureRMBatchPoolResize -TargetDedicated 5 -ResizeTimeout ([TimeSpan]::FromHours(1)) -ComputeNodeDeallocationOption ([Microsoft.Azure.Batch.Common.ComputeNodeDeallocationOption]::Terminate) -BatchContext $Context
-</dev:code><dev:remarks><maml:para>This cmdlet resizes a pool to five dedicated compute nodes. The command gets the pool that has the ID ContosoPool06 by using the Get-AzureRMBatchPool cmdlet. The command passes that pool object to the current cmdlet by using the pipeline operator. The command starts a resize operation on the pool. The target is five dedicated compute nodes. The command specifies time-out period of one hour. The command specifies a deallocation option of Terminate.</maml:para><maml:para /><maml:para /></dev:remarks><command:commandLines><command:commandLine><command:commandText /></command:commandLine></command:commandLines></command:example></command:examples><maml:relatedLinks><maml:navigationLink><maml:linkText>Get-AzureRMBatchAccountKeys</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>Get-AzureRMBatchPool</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>Stop-AzureRMBatchPoolResize</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>RMAzure_Batch_Cmdlets</maml:linkText><maml:uri /></maml:navigationLink></maml:relatedLinks></command:command><command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp"><command:details><command:name>Stop-AzureRMBatchPoolResize</command:name><maml:description><maml:para>Stops a pool resize operation.</maml:para></maml:description><maml:copyright><maml:para /></maml:copyright><command:verb>Stop</command:verb><command:noun>AzureBatchPoolResize</command:noun><dev:version /></command:details><maml:description><maml:para>The Stop-AzureRMBatchPoolResize cmdlet stops an Azure Batch resize operation on a pool.</maml:para></maml:description><command:syntax><command:syntaxItem><maml:name>Stop-AzureRMBatchPoolResize</maml:name><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue,ByPropertyName)" position="1" aliases="none"><maml:name>Id</maml:name><maml:description><maml:para>Specifies the ID of the pool for which this cmdlet stops a resizing operation.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">String</command:parameterValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>Profile</maml:name><maml:description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue></command:parameter><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none"><maml:name>BatchContext</maml:name><maml:description><maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue></command:parameter></command:syntaxItem></command:syntax><command:parameters><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none"><maml:name>BatchContext</maml:name><maml:description><maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue><dev:type><maml:name>BatchAccountContext</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue,ByPropertyName)" position="1" aliases="none"><maml:name>Id</maml:name><maml:description><maml:para>Specifies the ID of the pool for which this cmdlet stops a resizing operation.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">String</command:parameterValue><dev:type><maml:name>String</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>Profile</maml:name><maml:description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue><dev:type><maml:name>AzureProfile</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter></command:parameters><command:inputTypes><command:inputType><dev:type><maml:name></maml:name><maml:uri></maml:uri><maml:description><maml:para /></maml:description></dev:type><maml:description><maml:para></maml:para></maml:description></command:inputType></command:inputTypes><command:returnValues><command:returnValue><dev:type><maml:name></maml:name><maml:uri></maml:uri><maml:description><maml:para /></maml:description></dev:type><maml:description><maml:para></maml:para></maml:description></command:returnValue></command:returnValues><command:terminatingErrors /><command:nonTerminatingErrors /><command:examples><command:example><maml:title>Example 1: Stop resizing a pool</maml:title><maml:introduction><maml:para></maml:para></maml:introduction><dev:code>PS C:\&gt;Stop-AzureRMBatchPoolResize -Id "ContosoPool06" -BatchContext $Context 
-</dev:code><dev:remarks><maml:para>This command stops a resize operation on the pool that has the ID ContosoPool06. Use the Get-AzureRMBatchAccountKeys cmdlet to assign a context to the $Context variable.</maml:para><maml:para /><maml:para /></dev:remarks><command:commandLines><command:commandLine><command:commandText /></command:commandLine></command:commandLines></command:example><command:example><maml:title>Example 2: Stop resizing a pool by using the pipeline</maml:title><maml:introduction><maml:para></maml:para></maml:introduction><dev:code>PS C:\&gt;Get-AzureRMBatchPool -Id "ContosoPool06" -BatchContext $Context | Stop-AzureRMBatchPoolResize -BatchContext $Context 
-</dev:code><dev:remarks><maml:para>This example stops resizing a pool by using the pipeline operator. The command gets the pool that has the ID ContosoPool06 by using the Get-AzureRMBatchPool cmdlet. The command passes that pool object to the current cmdlet. The command stops the resize operation on that pool. </maml:para><maml:para /><maml:para /></dev:remarks><command:commandLines><command:commandLine><command:commandText /></command:commandLine></command:commandLines></command:example></command:examples><maml:relatedLinks><maml:navigationLink><maml:linkText>Get-AzureRMBatchAccountKeys</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>Get-AzureRMBatchPool</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>Start-AzureRMBatchPoolResize</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>RMAzure_Batch_Cmdlets</maml:linkText><maml:uri /></maml:navigationLink></maml:relatedLinks></command:command>
+</dev:code><dev:remarks><maml:para>This command updates the tags on the cmdletexample account.</maml:para><maml:para /><maml:para /></dev:remarks><command:commandLines><command:commandLine><command:commandText /></command:commandLine></command:commandLines></command:example></command:examples><maml:relatedLinks><maml:navigationLink><maml:linkText>Get-AzureRMBatchAccount</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>New-AzureRMBatchAccount</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>Remove-AzureRMBatchAccount</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>RMAzure_Batch_Cmdlets</maml:linkText><maml:uri /></maml:navigationLink></maml:relatedLinks></command:command><command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp"><command:details><command:name>Start-AzureBatchPoolResize</command:name><maml:description><maml:para>Starts to resize a pool.</maml:para></maml:description><maml:copyright><maml:para /></maml:copyright><command:verb>Start</command:verb><command:noun>AzureBatchPoolResize</command:noun><dev:version /></command:details><maml:description><maml:para>The Start-AzureBatchPoolResize cmdlet starts an Azure Batch resize operation on a pool.</maml:para></maml:description><command:syntax><command:syntaxItem><maml:name>Start-AzureBatchPoolResize</maml:name><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue,ByPropertyName)" position="1" aliases="none"><maml:name>Id</maml:name><maml:description><maml:para>Specifies the ID of the pool that this cmdlet resizes.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">String</command:parameterValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>ComputeNodeDeallocationOption</maml:name><maml:description><maml:para>Specifies a deallocation option for the resizing operation that this cmdlet starts.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">ComputeNodeDeallocationOption</command:parameterValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>Profile</maml:name><maml:description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>ResizeTimeout</maml:name><maml:description><maml:para>Specifies a time-out period for the resizing operation. If the pool does not reach the target size by this time, the resize operation stops.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">TimeSpan</command:parameterValue></command:parameter><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none"><maml:name>BatchContext</maml:name><maml:description><maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet. </maml:para></maml:description><command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue></command:parameter><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>TargetDedicated</maml:name><maml:description><maml:para>Specifies the target number of dedicated compute nodes.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">Int32</command:parameterValue></command:parameter></command:syntaxItem></command:syntax><command:parameters><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none"><maml:name>BatchContext</maml:name><maml:description><maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet. </maml:para></maml:description><command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue><dev:type><maml:name>BatchAccountContext</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>ComputeNodeDeallocationOption</maml:name><maml:description><maml:para>Specifies a deallocation option for the resizing operation that this cmdlet starts.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">ComputeNodeDeallocationOption</command:parameterValue><dev:type><maml:name>ComputeNodeDeallocationOption</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue,ByPropertyName)" position="1" aliases="none"><maml:name>Id</maml:name><maml:description><maml:para>Specifies the ID of the pool that this cmdlet resizes.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">String</command:parameterValue><dev:type><maml:name>String</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>Profile</maml:name><maml:description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue><dev:type><maml:name>AzureProfile</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>ResizeTimeout</maml:name><maml:description><maml:para>Specifies a time-out period for the resizing operation. If the pool does not reach the target size by this time, the resize operation stops.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">TimeSpan</command:parameterValue><dev:type><maml:name>TimeSpan</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>TargetDedicated</maml:name><maml:description><maml:para>Specifies the target number of dedicated compute nodes.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">Int32</command:parameterValue><dev:type><maml:name>Int32</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter></command:parameters><command:inputTypes><command:inputType><dev:type><maml:name></maml:name><maml:uri></maml:uri><maml:description><maml:para /></maml:description></dev:type><maml:description><maml:para></maml:para></maml:description></command:inputType></command:inputTypes><command:returnValues><command:returnValue><dev:type><maml:name></maml:name><maml:uri></maml:uri><maml:description><maml:para /></maml:description></dev:type><maml:description><maml:para></maml:para></maml:description></command:returnValue></command:returnValues><command:terminatingErrors /><command:nonTerminatingErrors /><command:examples><command:example><maml:title>Example 1: Resize a pool to 12 nodes</maml:title><maml:introduction><maml:para></maml:para></maml:introduction><dev:code>PS C:\&gt;Start-AzureBatchPoolResize -Id "ContosoPool06" -TargetDedicated 12 -BatchContext $Context
+</dev:code><dev:remarks><maml:para>This command starts a resize operation on the pool that has the ID ContosoPool06. The target for the operation is 12 dedicated compute nodes. Use the Get-AzureRMBatchAccountKeys cmdlet to assign a context to the $Context variable. </maml:para><maml:para /><maml:para /></dev:remarks><command:commandLines><command:commandLine><command:commandText /></command:commandLine></command:commandLines></command:example><command:example><maml:title>Example 2: Resize a pool using a deallocation option</maml:title><maml:introduction><maml:para></maml:para></maml:introduction><dev:code>PS C:\&gt;Get-AzureBatchPool -Id "ContosoPool06" -BatchContext $Context | Start-AzureBatchPoolResize -TargetDedicated 5 -ResizeTimeout ([TimeSpan]::FromHours(1)) -ComputeNodeDeallocationOption ([Microsoft.Azure.Batch.Common.ComputeNodeDeallocationOption]::Terminate) -BatchContext $Context
+</dev:code><dev:remarks><maml:para>This cmdlet resizes a pool to five dedicated compute nodes. The command gets the pool that has the ID ContosoPool06 by using the Get-AzureBatchPool cmdlet. The command passes that pool object to the current cmdlet by using the pipeline operator. The command starts a resize operation on the pool. The target is five dedicated compute nodes. The command specifies time-out period of one hour. The command specifies a deallocation option of Terminate.</maml:para><maml:para /><maml:para /></dev:remarks><command:commandLines><command:commandLine><command:commandText /></command:commandLine></command:commandLines></command:example></command:examples><maml:relatedLinks><maml:navigationLink><maml:linkText>Get-AzureRMBatchAccountKeys</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>Get-AzureBatchPool</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>Stop-AzureBatchPoolResize</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>RMAzure_Batch_Cmdlets</maml:linkText><maml:uri /></maml:navigationLink></maml:relatedLinks></command:command><command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp"><command:details><command:name>Stop-AzureBatchPoolResize</command:name><maml:description><maml:para>Stops a pool resize operation.</maml:para></maml:description><maml:copyright><maml:para /></maml:copyright><command:verb>Stop</command:verb><command:noun>AzureBatchPoolResize</command:noun><dev:version /></command:details><maml:description><maml:para>The Stop-AzureBatchPoolResize cmdlet stops an Azure Batch resize operation on a pool.</maml:para></maml:description><command:syntax><command:syntaxItem><maml:name>Stop-AzureBatchPoolResize</maml:name><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue,ByPropertyName)" position="1" aliases="none"><maml:name>Id</maml:name><maml:description><maml:para>Specifies the ID of the pool for which this cmdlet stops a resizing operation.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">String</command:parameterValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>Profile</maml:name><maml:description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue></command:parameter><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none"><maml:name>BatchContext</maml:name><maml:description><maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue></command:parameter></command:syntaxItem></command:syntax><command:parameters><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none"><maml:name>BatchContext</maml:name><maml:description><maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue><dev:type><maml:name>BatchAccountContext</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue,ByPropertyName)" position="1" aliases="none"><maml:name>Id</maml:name><maml:description><maml:para>Specifies the ID of the pool for which this cmdlet stops a resizing operation.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">String</command:parameterValue><dev:type><maml:name>String</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>Profile</maml:name><maml:description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue><dev:type><maml:name>AzureProfile</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter></command:parameters><command:inputTypes><command:inputType><dev:type><maml:name></maml:name><maml:uri></maml:uri><maml:description><maml:para /></maml:description></dev:type><maml:description><maml:para></maml:para></maml:description></command:inputType></command:inputTypes><command:returnValues><command:returnValue><dev:type><maml:name></maml:name><maml:uri></maml:uri><maml:description><maml:para /></maml:description></dev:type><maml:description><maml:para></maml:para></maml:description></command:returnValue></command:returnValues><command:terminatingErrors /><command:nonTerminatingErrors /><command:examples><command:example><maml:title>Example 1: Stop resizing a pool</maml:title><maml:introduction><maml:para></maml:para></maml:introduction><dev:code>PS C:\&gt;Stop-AzureBatchPoolResize -Id "ContosoPool06" -BatchContext $Context 
+</dev:code><dev:remarks><maml:para>This command stops a resize operation on the pool that has the ID ContosoPool06. Use the Get-AzureRMBatchAccountKeys cmdlet to assign a context to the $Context variable.</maml:para><maml:para /><maml:para /></dev:remarks><command:commandLines><command:commandLine><command:commandText /></command:commandLine></command:commandLines></command:example><command:example><maml:title>Example 2: Stop resizing a pool by using the pipeline</maml:title><maml:introduction><maml:para></maml:para></maml:introduction><dev:code>PS C:\&gt;Get-AzureBatchPool -Id "ContosoPool06" -BatchContext $Context | Stop-AzureBatchPoolResize -BatchContext $Context 
+</dev:code><dev:remarks><maml:para>This example stops resizing a pool by using the pipeline operator. The command gets the pool that has the ID ContosoPool06 by using the Get-AzureBatchPool cmdlet. The command passes that pool object to the current cmdlet. The command stops the resize operation on that pool. </maml:para><maml:para /><maml:para /></dev:remarks><command:commandLines><command:commandLine><command:commandText /></command:commandLine></command:commandLines></command:example></command:examples><maml:relatedLinks><maml:navigationLink><maml:linkText>Get-AzureRMBatchAccountKeys</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>Get-AzureBatchPool</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>Start-AzureBatchPoolResize</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>RMAzure_Batch_Cmdlets</maml:linkText><maml:uri /></maml:navigationLink></maml:relatedLinks></command:command>
 
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
-        Enable-AzureRMBatchAutoScale
+        Enable-AzureBatchAutoScale
       </command:name>
       <maml:description>
         <maml:para>Enables automatic scaling on the specified pool.</maml:para>
@@ -7099,7 +7099,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
     <!-- Cmdlet syntax section-->
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Enable-AzureRMBatchAutoScale</maml:name>
+        <maml:name>Enable-AzureBatchAutoScale</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
           <maml:name>Id</maml:name>
           <maml:description>
@@ -7223,7 +7223,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
         </maml:introduction>
         <dev:code>
           $formula = 'totalNodes=($CPUPercent.GetSamplePercent(TimeInterval_Minute*0,TimeInterval_Minute*10)&lt;0.7?5:(min($CPUPercent.GetSample(TimeInterval_Minute*0, TimeInterval_Minute*10))&gt;0.8?($CurrentDedicated*1.1):$CurrentDedicated));$TargetDedicated=min(100,totalNodes);';
-          Enable-AzureRMBatchAutoScale &quot;myPool&quot; $formula -BatchContext $context
+          Enable-AzureBatchAutoScale &quot;myPool&quot; $formula -BatchContext $context
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
@@ -7426,7 +7426,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
-        Disable-AzureRMBatchAutoScale
+        Disable-AzureBatchAutoScale
       </command:name>
       <maml:description>
         <maml:para>Disables automatic scaling on the specified pool.</maml:para>
@@ -7444,7 +7444,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
     <!-- Cmdlet syntax section-->
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Disable-AzureRMBatchAutoScale</maml:name>
+        <maml:name>Disable-AzureBatchAutoScale</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
           <maml:name>Id</maml:name>
           <maml:description>
@@ -7547,7 +7547,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Disable-AzureRMBatchAutoScale &quot;myPool&quot; -BatchContext $context
+          Disable-AzureBatchAutoScale &quot;myPool&quot; -BatchContext $context
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
@@ -7576,7 +7576,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
-        Restart-AzureRMBatchComputeNode
+        Restart-AzureBatchComputeNode
       </command:name>
       <maml:description>
         <maml:para>Reboots the specified compute node.</maml:para>
@@ -7594,7 +7594,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
     <!-- Cmdlet syntax section-->
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Restart-AzureRMBatchComputeNode</maml:name>
+        <maml:name>Restart-AzureBatchComputeNode</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
           <maml:name>PoolId</maml:name>
           <maml:description>
@@ -7625,7 +7625,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Restart-AzureRMBatchComputeNode</maml:name>
+        <maml:name>Restart-AzureBatchComputeNode</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
           <maml:name>ComputeNode</maml:name>
           <maml:description>
@@ -7774,7 +7774,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Restart-AzureRMBatchComputeNode -PoolId &quot;myPool&quot; -Id &quot;tvm-3257026573_2-20150813t200938z&quot; -BatchContext $context
+          Restart-AzureBatchComputeNode -PoolId &quot;myPool&quot; -Id &quot;tvm-3257026573_2-20150813t200938z&quot; -BatchContext $context
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
@@ -7800,7 +7800,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Get-AzureRMBatchComputeNode -PoolId &quot;myPool&quot; -BatchContext $context | Restart-AzureRMBatchComputeNode -BatchContext $context
+          Get-AzureBatchComputeNode -PoolId &quot;myPool&quot; -BatchContext $context | Restart-AzureBatchComputeNode -BatchContext $context
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
@@ -7829,7 +7829,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
-        Reset-AzureRMBatchComputeNode
+        Reset-AzureBatchComputeNode
       </command:name>
       <maml:description>
         <maml:para>Reinstalls the operating system on the specified compute node.</maml:para>
@@ -7847,7 +7847,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
     <!-- Cmdlet syntax section-->
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Reset-AzureRMBatchComputeNode</maml:name>
+        <maml:name>Reset-AzureBatchComputeNode</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="1">
           <maml:name>PoolId</maml:name>
           <maml:description>
@@ -7878,7 +7878,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Reset-AzureRMBatchComputeNode</maml:name>
+        <maml:name>Reset-AzureBatchComputeNode</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
           <maml:name>ComputeNode</maml:name>
           <maml:description>
@@ -8027,7 +8027,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Reset-AzureRMBatchComputeNode -PoolId &quot;myPool&quot; -Id &quot;tvm-3257026573_2-20150813t200938z&quot; -BatchContext $context
+          Reset-AzureBatchComputeNode -PoolId &quot;myPool&quot; -Id &quot;tvm-3257026573_2-20150813t200938z&quot; -BatchContext $context
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
@@ -8053,7 +8053,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Get-AzureRMBatchComputeNode -PoolId &quot;myPool&quot; -BatchContext $context | Reset-AzureRMBatchComputeNode -BatchContext $context
+          Get-AzureBatchComputeNode -PoolId &quot;myPool&quot; -BatchContext $context | Reset-AzureBatchComputeNode -BatchContext $context
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
@@ -8082,7 +8082,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
-        Set-AzureRMBatchPoolOSVersion
+        Set-AzureBatchPoolOSVersion
       </command:name>
       <maml:description>
         <maml:para>Changes the operating system version of the specified pool.</maml:para>
@@ -8100,7 +8100,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
     <!-- Cmdlet syntax section-->
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Set-AzureRMBatchPoolOSVersion</maml:name>
+        <maml:name>Set-AzureBatchPoolOSVersion</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
           <maml:name>Id</maml:name>
           <maml:description>
@@ -8223,7 +8223,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Set-AzureRMBatchPoolOSVersion -Id &quot;myPool&quot; -TargetOSVersion &quot;WA-GUEST-OS-4.20_201505-01&quot; -BatchContext $context
+          Set-AzureBatchPoolOSVersion -Id &quot;myPool&quot; -TargetOSVersion &quot;WA-GUEST-OS-4.20_201505-01&quot; -BatchContext $context
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
@@ -8252,7 +8252,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
-        Enable-AzureRMBatchJobSchedule
+        Enable-AzureBatchJobSchedule
       </command:name>
       <maml:description>
         <maml:para>Enables the specified job schedule.</maml:para>
@@ -8270,7 +8270,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
     <!-- Cmdlet syntax section-->
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Enable-AzureRMBatchJobSchedule</maml:name>
+        <maml:name>Enable-AzureBatchJobSchedule</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
           <maml:name>Id</maml:name>
           <maml:description>
@@ -8373,7 +8373,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Enable-AzureRMBatchJobSchedule &quot;myJobSchedule&quot; -BatchContext $context
+          Enable-AzureBatchJobSchedule &quot;myJobSchedule&quot; -BatchContext $context
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
@@ -8402,7 +8402,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
-        Disable-AzureRMBatchJobSchedule
+        Disable-AzureBatchJobSchedule
       </command:name>
       <maml:description>
         <maml:para>Disables the specified job schedule</maml:para>
@@ -8420,7 +8420,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
     <!-- Cmdlet syntax section-->
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Disable-AzureRMBatchJobSchedule</maml:name>
+        <maml:name>Disable-AzureBatchJobSchedule</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
           <maml:name>Id</maml:name>
           <maml:description>
@@ -8523,7 +8523,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Disable-AzureRMBatchJobSchedule &quot;myJobSchedule&quot; -BatchContext $context
+          Disable-AzureBatchJobSchedule &quot;myJobSchedule&quot; -BatchContext $context
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
@@ -8552,7 +8552,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
-        Enable-AzureRMBatchJob
+        Enable-AzureBatchJob
       </command:name>
       <maml:description>
         <maml:para>Enables the specified job.</maml:para>
@@ -8570,7 +8570,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
     <!-- Cmdlet syntax section-->
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Enable-AzureRMBatchJob</maml:name>
+        <maml:name>Enable-AzureBatchJob</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
           <maml:name>Id</maml:name>
           <maml:description>
@@ -8673,7 +8673,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Enable-AzureRMBatchJob &quot;myJob&quot; -BatchContext $context
+          Enable-AzureBatchJob &quot;myJob&quot; -BatchContext $context
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
@@ -8702,7 +8702,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
-        Disable-AzureRMBatchJob
+        Disable-AzureBatchJob
       </command:name>
       <maml:description>
         <maml:para>Disables the specified job.</maml:para>
@@ -8720,7 +8720,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
     <!-- Cmdlet syntax section-->
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Disable-AzureRMBatchJob</maml:name>
+        <maml:name>Disable-AzureBatchJob</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
           <maml:name>Id</maml:name>
           <maml:description>
@@ -8843,7 +8843,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Disable-AzureRMBatchJob &quot;myJob&quot; Terminate -BatchContext $context
+          Disable-AzureBatchJob &quot;myJob&quot; Terminate -BatchContext $context
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
@@ -8872,7 +8872,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
-        Stop-AzureRMBatchJobSchedule
+        Stop-AzureBatchJobSchedule
       </command:name>
       <maml:description>
         <maml:para>Terminates the specified job schedule.</maml:para>
@@ -8890,7 +8890,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
     <!-- Cmdlet syntax section-->
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Stop-AzureRMBatchJobSchedule</maml:name>
+        <maml:name>Stop-AzureBatchJobSchedule</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
           <maml:name>Id</maml:name>
           <maml:description>
@@ -8993,7 +8993,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Stop-AzureRMBatchJobSchedule &quot;myJobSchedule&quot; -BatchContext $context
+          Stop-AzureBatchJobSchedule &quot;myJobSchedule&quot; -BatchContext $context
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
@@ -9022,7 +9022,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
-        Stop-AzureRMBatchJob
+        Stop-AzureBatchJob
       </command:name>
       <maml:description>
         <maml:para>Terminates the specified job.</maml:para>
@@ -9040,7 +9040,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
     <!-- Cmdlet syntax section-->
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Stop-AzureRMBatchJob</maml:name>
+        <maml:name>Stop-AzureBatchJob</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="1">
           <maml:name>Id</maml:name>
           <maml:description>
@@ -9163,7 +9163,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Stop-AzureRMBatchJob &quot;myJob&quot; &quot;No more tasks to run&quot; -BatchContext $context
+          Stop-AzureBatchJob &quot;myJob&quot; &quot;No more tasks to run&quot; -BatchContext $context
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
@@ -9192,7 +9192,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
-        Stop-AzureRMBatchTask
+        Stop-AzureBatchTask
       </command:name>
       <maml:description>
         <maml:para>Terminates the specified task.</maml:para>
@@ -9210,7 +9210,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
     <!-- Cmdlet syntax section-->
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Stop-AzureRMBatchTask</maml:name>
+        <maml:name>Stop-AzureBatchTask</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
           <maml:name>JobId</maml:name>
           <maml:description>
@@ -9234,11 +9234,11 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Stop-AzureRMBatchTask</maml:name>
+        <maml:name>Stop-AzureBatchTask</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
           <maml:name>Task</maml:name>
           <maml:description>
-            <maml:para>The PSCloudTask object representing the task to terminate. Use the Get-AzureRMBatchTask cmdlet to get a PSCloudTask object.</maml:para>
+            <maml:para>The PSCloudTask object representing the task to terminate. Use the Get-AzureBatchTask cmdlet to get a PSCloudTask object.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">PSCloudTask</command:parameterValue>
         </command:parameter>
@@ -9269,7 +9269,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="1">
         <maml:name>Task</maml:name>
         <maml:description>
-          <maml:para>The PSCloudTask object representing the task to terminate. Use the Get-AzureRMBatchTask cmdlet to get a PSCloudTask object.</maml:para>
+          <maml:para>The PSCloudTask object representing the task to terminate. Use the Get-AzureBatchTask cmdlet to get a PSCloudTask object.</maml:para>
 
         </maml:description>
         <command:parameterValue required="true" variableLength="false">PSCloudTask</command:parameterValue>
@@ -9363,7 +9363,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Stop-AzureRMBatchTask &quot;myJob&quot; &quot;myTask&quot; -BatchContext $context
+          Stop-AzureBatchTask &quot;myJob&quot; &quot;myTask&quot; -BatchContext $context
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
@@ -9388,7 +9388,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Get-AzureRMBatchTask &quot;myJob&quot; &quot;myTask&quot; -BatchContext $context | Stop-AzureRMBatchTask -BatchContext $context
+          Get-AzureBatchTask &quot;myJob&quot; &quot;myTask&quot; -BatchContext $context | Stop-AzureBatchTask -BatchContext $context
         </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>

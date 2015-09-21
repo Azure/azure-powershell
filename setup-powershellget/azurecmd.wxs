@@ -27,14 +27,16 @@
     <Property Id="ARPPRODUCTICON" Value="icon.ico" />
     <Property Id="ALLUSERS" Value="1" />
     <!-- per machine install-->
+    
+    <Property Id="POWERSHELLEXE"><![CDATA[C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe]]></Property>
 
     <Property Id="PSCOMPATIBLEVERSION">
       <RegistrySearch Id="PSCOMPATIBLEVERSION" Root="HKLM" Key="SOFTWARE\Microsoft\PowerShell\3\PowerShellEngine" Name="PSCompatibleVersion" Type="raw" />
     </Property>
-
-    <Condition Message="This setup requires the Windows PowerShell 3.0 or compatible version to be installed.">
+    
+    <Condition Message="This setup requires the Windows PowerShell 5.0 or compatible version to be installed.">
       <!-- This condition will break if PowerShell has version x3.0 and it is not compatible with 3.0 -->
-      <![CDATA[Installed or (PSCOMPATIBLEVERSION >< "3.0")]]>
+      <![CDATA[Installed or (PSCOMPATIBLEVERSION >< "5.0")]]>
     </Condition>
 
     <PropertyRef Id="NETFRAMEWORK40FULL" />
@@ -71,15 +73,18 @@
         <!-- Work around bug that PowerShell does not always consider default module paths. -->
         <Environment Id="PSModulePath.SystemAppRoot" Action="set" Name="PSMODULEPATH" Part="last" Value="[PowerShellFolder]ServiceManagement" System="yes" />
       </Component>
+      <Component Id="AzureSdkShortcutScript" Guid="3d0d589a-b34c-4c48-9a4c-df78f286c6a3">
+          <File Id="AzureSdkShortcutScriptFile" KeyPath="yes" Source="$(var.SolutionDir)\Setup\ShortcutStartup.ps1" />
+      </Component>
     </DirectoryRef>
-
+    
     <DirectoryRef Id="AzureSdkMenu">
       <Component Id="AzureSdkShortcut" Guid="A9B58A22-F746-451D-8840-F887D8014C3C">
         <Shortcut Id="AzureSdkStartMenuShortcut"
                   Name="Microsoft Azure PowerShell"
                   Description="Microsoft PowerShell cmdlets"
                   Target="[POWERSHELLPATH]\powershell.exe"
-                  Arguments="-NoExit -ExecutionPolicy Bypass -File &quot;[PowerShellFolder]ServiceManagement\Azure\Services\ShortcutStartup.ps1&quot;"/>
+                  Arguments="-NoExit -ExecutionPolicy Bypass -File &quot;[PowerShellFolder]\ShortcutStartup.ps1&quot;"/>
         <RemoveFolder Id="AzureSdkMenu" On="uninstall"/>
         <RemoveFile Id="RemoveStaleFiles" Directory="StaleAzureSdkMenu" Name="Windows Azure PowerShell.lnk" On="both"/>
         <RegistryValue Root="HKCU" Key="SOFTWARE\Microsoft\Microsoft SDKs\WindowsAzure\$(var.version)" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
@@ -89,16 +94,21 @@
     <Feature Id="azurecmd" Title="Microsoft Azure PowerShell" Level="1" Description="Windows PowerShell commandlets">
       <ComponentRef Id="PSModulePath.System" />
       <ComponentRef Id="AzureSdkShortcut" />
+      <ComponentRef Id="AzureSdkShortcutScript" />
     </Feature>
 
     <Binary Id="CustomActions" SourceFile="$(var.caSourceDir)\Microsoft.WindowsAzure.Setup.CA.dll"/>
     <CustomAction Id="UpdatePSShortcut" BinaryKey="CustomActions" DllEntry="UpdatePSShortcut" Execute ="deferred" Impersonate="no"/>
     <CustomAction Id="SetCustomActionDataValue" Return="check" Property="UpdatePSShortcut"
                      Value="ShortcutPath=[AzureSdkMenu]Microsoft Azure PowerShell.lnk;DefaultShortcutPath=[ProgramMenuFolder]System Tools\Windows PowerShell.lnk" />
+    <CustomAction Id="SetExecutionPolicy" Property="POWERSHELLEXE" ExeCommand="-NoLogo -NoProfile -Command &quot;Set-ExecutionPolicy RemoteSigned -Force&quot;" Execute="deferred" Impersonate="no" Return="check"/>
+    <CustomAction Id="RunModuleInstallScript" Property="POWERSHELLEXE" ExeCommand="-NoLogo -NoProfile -Command &quot;\&quot;[PowerShellFolder]\ShortcutStartup.ps1 -Install\&quot;&quot;" Execute="deferred" Impersonate="no" Return="check"/>
 
     <InstallExecuteSequence>
       <Custom Action="SetCustomActionDataValue" After="CreateShortcuts">NOT Installed</Custom>
       <Custom Action="UpdatePSShortcut" After="SetCustomActionDataValue">NOT Installed</Custom>
+      <Custom Action="SetExecutionPolicy" After="UpdatePSShortcut">NOT Installed</Custom>
+      <Custom Action="RunModuleInstallScript" After="SetExecutionPolicy">NOT Installed</Custom>
     </InstallExecuteSequence>
 
     <WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectDir)\media\License.rtf" />
