@@ -27,7 +27,7 @@ function Test-MoveAzureResource
     $providerNamespace = "Providers.Test"
     $resourceType = $providerNamespace + "/statefulResources"
 
-    Register-AzureRMProvider -ProviderNamespace $providerNamespace -Force
+    Register-AzureRMResourceProvider -ProviderNamespace $providerNamespace -Force
     New-AzureRMResourceGroup -Name $sourceResourceGroupName -Location $location -Force
     New-AzureRMResourceGroup -Name $destinationResourceGroupName -Location $location -Force
     $resource1 = New-AzureRMResource -Name $testResourceName1 -Location $location -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $sourceResourceGroupName -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -ApiVersion $apiversion -Force
