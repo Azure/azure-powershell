@@ -128,11 +128,7 @@
     <Compile Include="Autoscale\GetAutoscaleSettingCommand.cs" />
     <Compile Include="Autoscale\RemoveAutoscaleSettingCommand.cs" />
     <Compile Include="EventCmdletBase.cs" />
-    <Compile Include="Events\GetAzureCorrelationIdLogCommand.cs" />
-    <Compile Include="Events\GetAzureResourceGroupLogCommand.cs" />
-    <Compile Include="Events\GetAzureResourceLogCommand.cs" />
-    <Compile Include="Events\GetAzureResourceProviderLogCommand.cs" />
-    <Compile Include="Events\GetAzureSubscriptionIdLogCommand.cs" />
+    <Compile Include="Events\GetAzureLogCommand.cs" />
     <Compile Include="InsightsClientCmdletBase.cs" />
     <Compile Include="InsightsCmdletBase.cs" />
     <Compile Include="ManagementCmdletBase.cs" />
@@ -220,6 +216,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
