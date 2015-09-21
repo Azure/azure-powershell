@@ -200,6 +200,10 @@
       <Output TaskParameter="Path" PropertyName="WindowsSdkPath"/>
     </GetFrameworkSdkPath>
 
+    <!-- Copying shortcut to be signed -->
+    <Copy SourceFiles="$(LibraryRoot)setup-powershellget\Setup\ShortcutStartup.ps1" 
+      DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
+    
     <ItemGroup>
       <DelaySignedAssembliesToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\Microsoft*Azure*Commands*.dll" />
       <DelaySignedAssembliesToSign Include="$(LibrarySourceFolder)\Package\$(Configuration)\**\Microsoft.Azure.Common.Extensions.dll" />
@@ -246,6 +250,10 @@
         ExpectedDelaySigned="false"
         ContinueOnError="false" 
         Condition="!$(DelaySign) and '@(DelaySignedAssembliesToSign)' != ''"/>
+        
+    <!-- Copying signed shortcut back -->
+    <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\ShortcutStartup.ps1" 
+      DestinationFolder="$(LibraryRoot)setup-powershellget\Setup" />
   </Target>
   
   <Target Name="CodeSignInstaller">
