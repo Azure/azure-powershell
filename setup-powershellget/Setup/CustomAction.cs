@@ -78,6 +78,7 @@ namespace Microsoft.WindowsAzure.Setup
                     powerShellShellLink.SetScreenBufferSize(120, 3000);
                     powerShellShellLink.SetWindowSize(120, 50);
                 }
+                powerShellShellLink.SetFont();
                 powerShellShellLink.Save();
                 session.Log("UpdatePSShortcut: success");
             }
