@@ -71,5 +71,45 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
 
             Assert.True(trackingIds.Any(t => t.TrackingId == trackingId), "The actual result does not match the expected.");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetVm()
+        {
+            int countOfExpectedVms = 0;
+            GetAzureRemoteAppVm mockCmdlet = SetUpTestCommon<GetAzureRemoteAppVm>();
+            IEnumerable<IList<RemoteAppVm>> result = null;
+            IList<RemoteAppVm> resultVms = null;
+
+            // Required parameters for this test
+            mockCmdlet.CollectionName = collectionName;
+
+            // Setup the environment for testing this cmdlet
+            countOfExpectedVms = MockObject.SetUpDefaultRemoteAppVm(remoteAppManagementClientMock, collectionName, vmName, loggedInUserUpn, trackingId);
+            mockCmdlet.ResetPipelines();
+
+            Log("Calling Get-AzureRemoteAppVm which should return list of Vms.");
+
+            mockCmdlet.ExecuteCmdlet();
+            if (mockCmdlet.runTime().ErrorStream.Count != 0)
+            {
+                Assert.True(false,
+                    String.Format("Get-AzureRemoteAppVm returned the following error {0}.",
+                        mockCmdlet.runTime().ErrorStream[0].Exception.Message
+                    )
+                );
+            }
+
+            result = LanguagePrimitives.GetEnumerable(mockCmdlet.runTime().OutputPipeline).Cast<IList<RemoteAppVm>>();
+
+            Assert.NotNull(result);
+            Assert.Equal(1, result.Count());
+
+            resultVms = result.First<IList<RemoteAppVm>>();
+
+            Assert.Equal(countOfExpectedVms, resultVms.Count);
+            Assert.Equal<string>(vmName, resultVms[0].VirtualMachineName);
+            Assert.Equal<string>(loggedInUserUpn, resultVms[0].LoggedOnUserUpns[0]);
+        }
     }
 }
