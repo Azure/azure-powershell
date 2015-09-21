@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Creates new role assignment.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRoleAssignment"), OutputType(typeof(PSRoleAssignment))]
+    [Cmdlet(VerbsCommon.New, "AzureRMRoleAssignment"), OutputType(typeof(PSRoleAssignment))]
     public class NewAzureRoleAssignmentCommand : ResourcesBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithObjectId,
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateNotNullOrEmpty]
         public string RoleDefinitionName { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             FilterRoleAssignmentsOptions parameters = new FilterRoleAssignmentsOptions()
             {
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Commands.Resources
                     ResourceGroupName = ResourceGroupName,
                     ResourceName = ResourceName,
                     ResourceType = ResourceType,
-                    Subscription = Profile.Context.Subscription.Id.ToString(),
+                    Subscription = DefaultProfile.Context.Subscription.Id.ToString(),
                 }
             };
 

@@ -51,10 +51,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateSet(Key1, Key2, IgnoreCase = true)]
         public string KeyName { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
-            
+            base.ProcessRecord();
+
             var keys = this.StorageClient.StorageAccounts.RegenerateKey(
                 this.ResourceGroupName,
                 this.Name,

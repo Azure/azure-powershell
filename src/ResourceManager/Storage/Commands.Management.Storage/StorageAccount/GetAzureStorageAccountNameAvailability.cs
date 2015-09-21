@@ -30,9 +30,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.StorageAccount
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
             WriteObject(this.StorageClient.StorageAccounts.CheckNameAvailability(Name));
         }

@@ -41,9 +41,9 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true)]
         public string Version { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
             ExecuteClientAction(() =>
             {

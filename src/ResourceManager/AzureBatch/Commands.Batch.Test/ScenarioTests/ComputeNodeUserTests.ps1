@@ -20,25 +20,25 @@ function Test-CreateComputeNodeUser
 {
 	param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$userName, [string]$usePipeline)
 
-	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$context = Get-AzureRMBatchAccountKeys -Name $accountName
 	$password = "Password1234!"
 
 	# Create a user
 	if ($usePipeline -eq '1')
 	{
 		$expiryTime = New-Object DateTime -ArgumentList @(2020,01,01)
-		$computeNode = Get-AzureBatchComputeNode_ST $poolId $computeNodeId -BatchContext $context
-		$computeNode | New-AzureBatchComputeNodeUser_ST -Name $userName -Password $password -ExpiryTime $expiryTime -IsAdmin -BatchContext $context
+		$computeNode = Get-AzureRMBatchComputeNode_ST $poolId $computeNodeId -BatchContext $context
+		$computeNode | New-AzureRMBatchComputeNodeUser_ST -Name $userName -Password $password -ExpiryTime $expiryTime -IsAdmin -BatchContext $context
 	}
 	else
 	{
-		New-AzureBatchComputeNodeUser_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -Password $password -BatchContext $context
+		New-AzureRMBatchComputeNodeUser_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -Password $password -BatchContext $context
 	}
 
 	# Verify that a user was created 
 	# There is currently no Get/List user API, so verify by calling the delete operation. 
 	# If the user account was created, it will succeed; otherwsie, it will throw a 404 error.
-	Remove-AzureBatchComputeNodeUser_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -Force -BatchContext $context
+	Remove-AzureRMBatchComputeNodeUser_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -Force -BatchContext $context
 }
 
 <#
@@ -49,11 +49,11 @@ function Test-DeleteComputeNodeUser
 {
 	param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$userName)
 
-	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$context = Get-AzureRMBatchAccountKeys -Name $accountName
 
-	Remove-AzureBatchComputeNodeUser_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -Force -BatchContext $context
+	Remove-AzureRMBatchComputeNodeUser_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -Force -BatchContext $context
 
 	# Verify the user was deleted
 	# There is currently no Get/List user API, so try to delete the user again and verify that it fails.
-	Assert-Throws { Remove-AzureBatchComputeNodeUser_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -Force -BatchContext $context }
+	Assert-Throws { Remove-AzureRMBatchComputeNodeUser_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -Force -BatchContext $context }
 }

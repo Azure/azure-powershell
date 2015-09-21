@@ -23,14 +23,16 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsLifecycle.Disable, Constants.AzureBatchJob)]
     public class DisableBatchJobCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "The id of the job to disable.")]
+        [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, 
+            Mandatory = true, HelpMessage = "The id of the job to disable.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = "Specifies what to do with active tasks associated with the job.")]
+        [Parameter(Position = 1, Mandatory = true, 
+            HelpMessage = "Specifies what to do with active tasks associated with the job.")]
         public DisableJobOption DisableJobOption { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             DisableJobParameters parameters = new DisableJobParameters(this.BatchContext, this.Id, null, this.DisableJobOption, this.AdditionalBehaviors);
             BatchClient.DisableJob(parameters);

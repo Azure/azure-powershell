@@ -19,10 +19,11 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Accounts
 {
-    public class GetBatchAccountCommandTests
+    public class GetBatchAccountCommandTests : RMTestBase
     {
         private GetBatchAccountCommand cmdlet;
         private Mock<BatchClient> batchClientMock;

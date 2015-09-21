@@ -15,22 +15,17 @@
 using System;
 using System.IO;
 using Microsoft.Azure.Batch;
-using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Batch.Protocol;
-using Microsoft.Azure.Batch.Protocol.Models;
-using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using System.Threading.Tasks;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Files
 {
-    public class GetBatchNodeFileContentCommandTests
+    public class GetBatchNodeFileContentCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
         private GetBatchNodeFileContentCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
@@ -63,34 +58,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             string fileName = "stdout.txt";
 
             // Don't go to the service on a Get NodeFile call or Get NodeFile Properties call
-            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
-            {
-                BatchRequest<NodeFileGetParameters, NodeFileGetResponse> fileRequest = baseRequest as 
-                BatchRequest<NodeFileGetParameters, NodeFileGetResponse>;
-
-                if (fileRequest != null)
-                {
-                    fileRequest.ServiceRequestFunc = (cancellationToken) =>
-                    {
-                        NodeFileGetResponse response = new NodeFileGetResponse();
-                        Task<NodeFileGetResponse> task = Task.FromResult(response);
-                        return task;
-                    };
-                }
-                else
-                {
-                    BatchRequest<NodeFileGetPropertiesParameters, NodeFileGetPropertiesResponse> propRequest =
-                        (BatchRequest<NodeFileGetPropertiesParameters, NodeFileGetPropertiesResponse>)baseRequest;
-
-                    propRequest.ServiceRequestFunc = (cancellationToken) =>
-                    {
-                        NodeFileGetPropertiesResponse response = BatchTestHelpers.CreateNodeFileGetPropertiesResponse(cmdlet.Name);
-                        Task<NodeFileGetPropertiesResponse> task = Task.FromResult(response);
-                        return task;
-                    };
-                }
-            });
-
+            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpGetFileAndPropertiesInterceptor(cmdlet.Name);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             using (MemoryStream memStream = new MemoryStream())
@@ -126,34 +94,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             string fileName = "startup\\stdout.txt";
 
             // Don't go to the service on a Get NodeFile call or Get NodeFile Properties call
-            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
-            {
-                BatchRequest<NodeFileGetParameters, NodeFileGetResponse> fileRequest = baseRequest as
-                BatchRequest<NodeFileGetParameters, NodeFileGetResponse>;
-
-                if (fileRequest != null)
-                {
-                    fileRequest.ServiceRequestFunc = (cancellationToken) =>
-                    {
-                        NodeFileGetResponse response = new NodeFileGetResponse();
-                        Task<NodeFileGetResponse> task = Task.FromResult(response);
-                        return task;
-                    };
-                }
-                else
-                {
-                    BatchRequest<NodeFileGetPropertiesParameters, NodeFileGetPropertiesResponse> propRequest =
-                        (BatchRequest<NodeFileGetPropertiesParameters, NodeFileGetPropertiesResponse>)baseRequest;
-
-                    propRequest.ServiceRequestFunc = (cancellationToken) =>
-                    {
-                        NodeFileGetPropertiesResponse response = BatchTestHelpers.CreateNodeFileGetPropertiesResponse(cmdlet.Name);
-                        Task<NodeFileGetPropertiesResponse> task = Task.FromResult(response);
-                        return task;
-                    };
-                }
-            });
-
+            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpGetFileAndPropertiesInterceptor(cmdlet.Name);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             using (MemoryStream memStream = new MemoryStream())

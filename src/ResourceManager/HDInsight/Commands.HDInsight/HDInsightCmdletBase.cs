@@ -16,11 +16,12 @@ using System;
 using System.Linq;
 using Hyak.Common;
 using Microsoft.Azure.Commands.HDInsight.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.HDInsight.Commands
 {
-    public class HDInsightCmdletBase : AzurePSCmdlet
+    public class HDInsightCmdletBase : AzureRMCmdlet
     {
         private AzureHdInsightManagementClient _hdInsightManagementClient;
         private AzureHdInsightJobManagementClient _hdInsightJobClient;
@@ -31,7 +32,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Commands
         {
             get {
                 return _hdInsightManagementClient ??
-                       (_hdInsightManagementClient = new AzureHdInsightManagementClient(Profile.Context));
+                       (_hdInsightManagementClient = new AzureHdInsightManagementClient(DefaultContext));
             }
             set { _hdInsightManagementClient = value; }
         }
@@ -45,7 +46,6 @@ namespace Microsoft.Azure.Commands.HDInsight.Commands
                     return new AzureHdInsightJobManagementClient(_clusterName, _credential);
                 }
                 return _hdInsightJobClient;
-                //return _hdInsightJobClient ?? (_hdInsightJobClient = new AzureHdInsightJobManagementClient(_clusterName, _credential));
             }
             set { _hdInsightJobClient = value; }
         }

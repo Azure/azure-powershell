@@ -91,11 +91,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
 
                 WriteObject(roleContexts, true);
             }
-            else
-            {
-                WriteWarning(
-                    string.Format(Resources.NoDeploymentFoundInService, ServiceName));
-            }
         }
 
         private List<T> GetVMContextList<T>(string serviceName, NSM.DeploymentGetResponse deployment)

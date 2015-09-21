@@ -11,7 +11,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
     /// <summary>
     /// Uploads a Desired State Configuration script to Azure blob storage, which 
     /// later can be applied to Azure Virtual Machines using the 
-    /// Set-AzureVMDscExtension cmdlet.
+    /// Set-AzureRMVMDscExtension cmdlet.
     /// </summary>
     [Cmdlet(
         VerbsData.Publish,
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 
         /// <summary>
         /// Path to a local ZIP file to write the configuration archive to.
-        /// When using this parameter, Publish-AzureVMDscConfiguration creates a
+        /// When using this parameter, Publish-AzureRMVMDscConfiguration creates a
         /// local ZIP archive instead of uploading it to blob storage..
         /// </summary>
         [Alias("ConfigurationArchivePath")]
@@ -96,10 +96,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         public string StorageEndpointSuffix { get; set; }  
 
         /// <summary>
-        /// By default Publish-AzureVMDscConfiguration will not overwrite any existing blobs. 
+        /// By default Publish-AzureRMVMDscConfiguration will not overwrite any existing blobs. 
         /// Use -Force to overwrite them.
         /// </summary>
-        [Parameter(HelpMessage = "By default Publish-AzureVMDscConfiguration will not overwrite any existing blobs")]
+        [Parameter(HelpMessage = "By default Publish-AzureRMVMDscConfiguration will not overwrite any existing blobs")]
         public SwitchParameter Force { get; set; }
 
         /// <summary>
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Path to a .psd1 file that specifies the data for the Configuration. This is added to the configuration " +
                           "archive and then passed to the configuration function. It gets overwritten by the configuration data path " +
-                          "provided through the Set-AzureVMDscExtension cmdlet")]
+                          "provided through the Set-AzureRMVMDscExtension cmdlet")]
         [ValidateNotNullOrEmpty]
         public string ConfigurationDataPath { get; set; }
 
@@ -138,9 +138,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         /// </summary>
         private StorageCredentials _storageCredentials;
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
             try
             {
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
                         if (StorageEndpointSuffix == null)
                         {
                             StorageEndpointSuffix =
-                                Profile.Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix);
+                                DefaultProfile.Context.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix);
                         }
                         break;
                 }

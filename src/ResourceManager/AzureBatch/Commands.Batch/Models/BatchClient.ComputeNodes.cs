@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             // Get the single compute node matching the specified id
             if (!string.IsNullOrEmpty(options.ComputeNodeId))
             {
-                WriteVerbose(string.Format(Resources.GBCN_GetById, options.ComputeNodeId, poolId));
+                WriteVerbose(string.Format(Resources.GetComputeNodeById, options.ComputeNodeId, poolId));
                 PoolOperations poolOperations = options.Context.BatchOMClient.PoolOperations;
                 ComputeNode computeNode = poolOperations.GetComputeNode(poolId, options.ComputeNodeId, additionalBehaviors: options.AdditionalBehaviors);
                 PSComputeNode psComputeNode = new PSComputeNode(computeNode);
@@ -53,12 +53,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 string verboseLogString = null;
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
-                    verboseLogString = string.Format(Resources.GBCN_GetByOData, poolId);
+                    verboseLogString = string.Format(Resources.GetComputeNodeByOData, poolId);
                     odata = new ODATADetailLevel(filterClause: options.Filter);
                 }
                 else
                 {
-                    verboseLogString = string.Format(Resources.GBCN_NoFilter, poolId);
+                    verboseLogString = string.Format(Resources.GetComputeNodeNoFilter, poolId);
                 }
                 WriteVerbose(verboseLogString);
 

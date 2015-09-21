@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroups
     /// <summary>
     /// Cancel a running deployment.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Stop, "AzureResourceGroupDeployment"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsLifecycle.Stop, "AzureRMResourceGroupDeployment"), OutputType(typeof(bool))]
     public class StopAzureResourceGroupDeploymentCommand : ResourcesBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.")]
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroups
         [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "True if succeed, false otherwise.")]
         public SwitchParameter PassThru { get; set; }
         
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ConfirmAction(
                 Force.IsPresent,
@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroups
 
             if (PassThru)
             {
+                WriteWarning("The output object of this cmdlet will be modified in a future release.");
                 WriteObject(true);
             }
         }

@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// <summary>
     /// Resumes Azure Site Recovery Job.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Resume, "AzureSiteRecoveryJob", DefaultParameterSetName = ASRParameterSets.ByObject)]
+    [Cmdlet(VerbsLifecycle.Resume, "AzureRMSiteRecoveryJob", DefaultParameterSetName = ASRParameterSets.ByObject)]
     [OutputType(typeof(ASRJob))]
     public class ResumeAzureSiteRecoveryJob : SiteRecoveryCmdletBase
     {
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             try
             {

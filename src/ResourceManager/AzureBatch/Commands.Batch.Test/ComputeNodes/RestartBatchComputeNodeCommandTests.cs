@@ -17,11 +17,9 @@ using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Batch.Protocol.Models;
-using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
 using Xunit;
@@ -29,7 +27,7 @@ using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Pools
 {
-    public class RestartBatchComputeNodeCommandTests
+    public class RestartBatchComputeNodeCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
         private RestartBatchComputeNodeCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
@@ -63,18 +61,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.Id = "computeNode1";
 
             // Don't go to the service on a Reboot ComputeNode call
-            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
-            {
-                BatchRequest<ComputeNodeRebootParameters, ComputeNodeRebootResponse> request =
-                (BatchRequest<ComputeNodeRebootParameters, ComputeNodeRebootResponse>)baseRequest;
-
-                request.ServiceRequestFunc = (cancellationToken) =>
-                {
-                    ComputeNodeRebootResponse response = new ComputeNodeRebootResponse();
-                    Task<ComputeNodeRebootResponse> task = Task.FromResult(response);
-                    return task;
-                };
-            });
+            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<ComputeNodeRebootParameters, ComputeNodeRebootResponse>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set
@@ -102,6 +89,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
 
                 request.ServiceRequestFunc = (cancellationToken) =>
                 {
+                    // Grab the reboot option from the outgoing request.
                     requestRebootOption = request.TypedParameters.ComputeNodeRebootOption;
 
                     ComputeNodeRebootResponse response = new ComputeNodeRebootResponse();

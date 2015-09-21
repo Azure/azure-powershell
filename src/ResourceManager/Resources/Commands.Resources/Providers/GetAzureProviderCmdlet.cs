@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Providers
     /// <summary>
     /// Get an existing resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureProvider", DefaultParameterSetName = GetAzureProviderCmdlet.ListAvailableParameterSet), OutputType(typeof(PSResourceProvider))]
+    [Cmdlet(VerbsCommon.Get, "AzureRMResourceProvider", DefaultParameterSetName = GetAzureProviderCmdlet.ListAvailableParameterSet), OutputType(typeof(PSResourceProvider))]
     public class GetAzureProviderCmdlet : ResourcesBaseCmdlet
     {
         /// <summary>
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Providers
         /// <summary>
         /// Executes the cmdlet
         /// </summary>
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             var parameterSetName = this.DetermineParameterSetName();
 

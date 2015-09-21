@@ -17,19 +17,17 @@ using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Batch.Protocol.Models;
-using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
 using System.Threading.Tasks;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
-namespace Microsoft.Azure.Commands.Batch.Test.Pools
+namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 {
-    public class DisableBatchJobCommandTests
+    public class DisableBatchJobCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
         private DisableBatchJobCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
@@ -60,18 +58,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.DisableJobOption = DisableJobOption.Terminate;
 
             // Don't go to the service on a Disable CloudJob call
-            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
-            {
-                BatchRequest<CloudJobDisableParameters, CloudJobDisableResponse> request =
-                (BatchRequest<CloudJobDisableParameters, CloudJobDisableResponse>)baseRequest;
-
-                request.ServiceRequestFunc = (cancellationToken) =>
-                {
-                    CloudJobDisableResponse response = new CloudJobDisableResponse();
-                    Task<CloudJobDisableResponse> task = Task.FromResult(response);
-                    return task;
-                };
-            });
+            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudJobDisableParameters, CloudJobDisableResponse>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set
@@ -97,6 +84,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
                 BatchRequest<CloudJobDisableParameters, CloudJobDisableResponse> request =
                 (BatchRequest<CloudJobDisableParameters, CloudJobDisableResponse>)baseRequest;
 
+                // Grab the disable option off the outgoing request.
                 requestDisableOption = request.TypedParameters.DisableJobOption;
 
                 request.ServiceRequestFunc = (cancellationToken) =>

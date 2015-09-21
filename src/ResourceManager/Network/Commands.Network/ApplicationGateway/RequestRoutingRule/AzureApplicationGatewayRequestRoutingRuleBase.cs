@@ -69,9 +69,9 @@ namespace Microsoft.Azure.Commands.Network
                 HelpMessage = "Application gateway BackendAddressPool")]
         [ValidateNotNullOrEmpty]
         public PSApplicationGatewayBackendAddressPool BackendAddressPool { get; set; }
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
             
             if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
             {
