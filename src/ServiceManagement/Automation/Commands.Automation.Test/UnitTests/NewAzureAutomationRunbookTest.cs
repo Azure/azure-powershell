@@ -12,11 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Microsoft.Azure.Commands.Automation.Cmdlet;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
 
 namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
@@ -49,7 +51,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             string accountName = "automation";
             string runbookPath = "runbook.ps1";
             string description = "desc";
-            var tags = new string[] { "tag1", "tags2" };
+            string[] tags = { "tag1", "tags2" };
 
             this.mockAutomationClient.Setup(
                 f => f.CreateRunbookByPath(accountName, runbookPath, description, tags));
@@ -58,6 +60,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             this.cmdlet.Path = runbookPath;
             this.cmdlet.Description = description;
             this.cmdlet.Tags = tags;
+            this.cmdlet.SetParameterSet("ByPath");
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
@@ -71,7 +74,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             string accountName = "automation";
             string runbookName = "runbook";
             string description = "desc";
-            var tags = new string[] { "tag1", "tags2" };
+            string[] tags = { "tag1", "tags2" };
 
             this.mockAutomationClient.Setup(
                 f => f.CreateRunbookByName(accountName, runbookName, description, tags));
@@ -80,6 +83,7 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             this.cmdlet.Name = runbookName;
             this.cmdlet.Description = description;
             this.cmdlet.Tags = tags;
+            this.cmdlet.SetParameterSet("ByRunbookName");
             this.cmdlet.ExecuteCmdlet();
 
             // Assert

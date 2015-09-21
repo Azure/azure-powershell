@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Profile;
 using Moq;
@@ -23,6 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Profile
     public class SelectAzureSubscriptionTests
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CleansDefaultSubscriptionTwice()
         {
             // Setup

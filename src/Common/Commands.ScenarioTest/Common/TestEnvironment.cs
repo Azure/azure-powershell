@@ -17,6 +17,7 @@ using System;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
 {
+    using Hyak.Common;
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using System;
     public class TestEnvironment

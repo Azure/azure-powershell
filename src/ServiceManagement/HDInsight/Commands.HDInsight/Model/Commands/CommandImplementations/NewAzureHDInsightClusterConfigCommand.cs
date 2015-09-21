@@ -33,10 +33,22 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImp
             set { this.config.ClusterSizeInNodes = value; }
         }
 
-        public NodeVMSize HeadNodeVMSize
+        public string HeadNodeVMSize
         {
             get { return this.config.HeadNodeVMSize; }
             set { this.config.HeadNodeVMSize = value; }
+        }
+
+        public string DataNodeVMSize
+        {
+            get { return this.config.DataNodeVMSize; }
+            set { this.config.DataNodeVMSize = value; }
+        }
+
+        public string ZookeeperNodeVMSize
+        {
+            get { return this.config.ZookeeperNodeVMSize; }
+            set { this.config.ZookeeperNodeVMSize = value; }
         }
 
         public ClusterType ClusterType

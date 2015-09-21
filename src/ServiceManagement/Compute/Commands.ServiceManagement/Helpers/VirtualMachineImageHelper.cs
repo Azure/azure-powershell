@@ -17,6 +17,7 @@ using System.Linq;
 using System.Net;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Management.Compute;
+using Hyak.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers
 {

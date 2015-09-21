@@ -204,6 +204,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
         [Parameter(Position = 12, ValueFromPipelineByPropertyName = true, ParameterSetName = DomainThumbprintParameterSet)]
         [Parameter(Position = 12, ValueFromPipelineByPropertyName = true, ParameterSetName = DomainJoinOptionParameterSet)]
         [Parameter(Position = 12, ValueFromPipelineByPropertyName = true, ParameterSetName = DomainJoinOptionThumbprintParameterSet)]
+        [Parameter(Position = 8, ValueFromPipelineByPropertyName = true, ParameterSetName = WorkgroupParameterSet)]
+        [Parameter(Position = 8, ValueFromPipelineByPropertyName = true, ParameterSetName = WorkgroupThumbprintParameterSet)]
         [ValidateNotNullOrEmpty]
         public override string Version
         {
@@ -236,7 +238,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
                 Roles = new ExtensionRoleList(Role != null && Role.Any() ? Role.Select(r => new ExtensionRole(r)) : Enumerable.Repeat(new ExtensionRole(), 1))
             };
 
-            var extConfig = ExtensionManager.InstallExtension(context, Slot, Deployment.ExtensionConfiguration);
+            var extConfig = ExtensionManager.InstallExtension(context, Slot, Deployment, PeerDeployment);
             ChangeDeployment(extConfig);
         }
 

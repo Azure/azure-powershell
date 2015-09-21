@@ -15,7 +15,7 @@
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Graph.RBAC.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Testing;
+using Microsoft.Azure.Test;
 using System.Linq;
 using Xunit;
 
@@ -96,6 +96,32 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 {
                     newGroup = CreateNewAdGroup(controllerAdmin);
                 return new[] { string.Format(scriptMethod, newGroup.ObjectId) };
+                },
+                // initialize
+                null,
+                // cleanup
+                () =>
+                {
+                    DeleteAdGroup(controllerAdmin, newGroup);
+                },
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetADGroupSecurityEnabled()
+        {
+            const string scriptMethod = "Test-GetADGroupSecurityEnabled '{0}' '{1}'";
+            Group newGroup = null;
+            var controllerAdmin = ResourcesController.NewInstance;
+
+            controllerAdmin.RunPsTestWorkflow(
+                // scriptBuilder
+                () =>
+                {
+                    newGroup = CreateNewAdGroup(controllerAdmin);
+                    return new[] { string.Format(scriptMethod, newGroup.ObjectId, newGroup.SecurityEnabled) };
                 },
                 // initialize
                 null,
@@ -553,6 +579,39 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void TestGetADUserWithBadSearchString()
         {
             ResourcesController.NewInstance.RunPsTest("Test-GetADUserWithBadSearchString");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewADApplication()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-NewADApplication");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewADServicePrincipal()
+        {
+            const string scriptMethod = "Test-NewADServicePrincipal '{0}'";
+            Application application = null;
+            var controllerAdmin = ResourcesController.NewInstance;
+
+            controllerAdmin.RunPsTestWorkflow(
+                // scriptBuilder
+                () =>
+                {
+                    application = CreateNewAdApp(controllerAdmin);
+                    return new[] { string.Format(scriptMethod, application.AppId) };
+                },
+                // initialize
+                null,
+                // cleanup
+                () =>
+                {
+                    DeleteAdApp(controllerAdmin, application);
+                },
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
         }
 
         private User CreateNewAdUser(ResourcesController controllerAdmin)

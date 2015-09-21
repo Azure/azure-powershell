@@ -20,10 +20,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         protected const string DiagnosticsExtensionType = "IaaSDiagnostics";
         protected const string VirtualMachineDiagnosticsExtensionNoun = "AzureVMDiagnosticsExtension";
 
-        protected string StorageAccountName { get; set; }
-        protected string StorageKey { get; set; }
-        protected string Endpoint { get; set; }
-        
         public VirtualMachineDiagnosticsExtensionCmdletBase()
             : base()
         {

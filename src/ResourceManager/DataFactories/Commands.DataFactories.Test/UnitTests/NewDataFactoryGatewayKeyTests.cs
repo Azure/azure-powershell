@@ -24,6 +24,7 @@ using Microsoft.WindowsAzure.Commands.Utilities;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using Xunit;
+using Hyak.Common;
 
 
 namespace Microsoft.WindowsAzure.Commands.Test.Gateway

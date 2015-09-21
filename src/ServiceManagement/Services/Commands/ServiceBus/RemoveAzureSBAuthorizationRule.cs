@@ -56,7 +56,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceBus
 
         public override void ExecuteCmdlet()
         {
-            Client = Client ?? new ServiceBusClientExtensions(CurrentContext.Subscription);
+            Client = Client ?? new ServiceBusClientExtensions(Profile, Profile.Context.Subscription);
             AuthorizationRuleFilterOption options = new AuthorizationRuleFilterOption()
             {
                 Namespace = Namespace,

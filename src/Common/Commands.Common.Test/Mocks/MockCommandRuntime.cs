@@ -102,7 +102,18 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         public void WriteObject(object sendToPipeline, bool enumerateCollection)
         {
-            OutputPipeline.Add(sendToPipeline);
+            System.Collections.IEnumerable enumerable = LanguagePrimitives.GetEnumerable(sendToPipeline);
+            if (enumerable != null && enumerateCollection)
+            {
+                foreach (object o in enumerable)
+                {
+                    OutputPipeline.Add(o);
+                }
+            }
+            else
+            {
+                OutputPipeline.Add(sendToPipeline);
+            }
         }
 
         public void WriteObject(object sendToPipeline)

@@ -22,17 +22,16 @@ using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Monitoring.Events.Models;
 using Newtonsoft.Json;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.Azure.Management.Authorization.Models;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
     public static class ResourcesExtensions
     {
-        public static PSResourceGroup ToPSResourceGroup(this ResourceGroup resourceGroup, ResourcesClient client, bool detailed)
+        public static PSResourceGroup ToPSResourceGroup(this ResourceGroupExtended resourceGroup, ResourcesClient client, bool detailed)
         {
             var result = new PSResourceGroup
             {
@@ -65,7 +64,8 @@ namespace Microsoft.Azure.Commands.Resources.Models
             return deployment;
         }
 
-        public static PSResourceGroupDeployment ToPSResourceGroupDeployment(this Deployment result, string resourceGroup)
+
+        public static PSResourceGroupDeployment ToPSResourceGroupDeployment(this DeploymentExtended result, string resourceGroup)
         {
             PSResourceGroupDeployment deployment = new PSResourceGroupDeployment();
 
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 };
         }
 
-        public static PSResource ToPSResource(this Resource resource, ResourcesClient client, bool minimal)
+        public static PSResource ToPSResource(this GenericResourceExtended resource, ResourcesClient client, bool minimal)
         {
             ResourceIdentifier identifier = new ResourceIdentifier(resource.Id);
             return new PSResource
@@ -104,9 +104,38 @@ namespace Microsoft.Azure.Commands.Resources.Models
             };
         }
 
-        public static PSResourceProviderType ToPSResourceProviderType(this ProviderResourceType resourceType, string providerNamespace)
+        public static PSResourceProvider ToPSResourceProvider(this Provider provider)
         {
-            PSResourceProviderType result = new PSResourceProviderType();
+            return new PSResourceProvider
+            {
+                ProviderNamespace = provider.Namespace,
+                RegistrationState = provider.RegistrationState,
+                ResourceTypes =
+                    provider.ResourceTypes.Select(
+                        resourceType =>
+                            new PSResourceProviderResourceType
+                            {
+                                ResourceTypeName = resourceType.Name,
+                                Locations = resourceType.Locations.ToArray(),
+                                ApiVersions = resourceType.ApiVersions.ToArray(),
+                            }).ToArray(),
+            };
+        }
+
+        public static PSResourceProviderOperation ToPSResourceProviderOperation(this ResourceProviderOperationDefinition resourceProviderOperationDefinition)
+        {
+            return new PSResourceProviderOperation
+            {
+                OperationName = resourceProviderOperationDefinition.Name,
+                Description = resourceProviderOperationDefinition.ResourceProviderOperationDisplayProperties.Description,
+                ProviderNamespace = resourceProviderOperationDefinition.ResourceProviderOperationDisplayProperties.Provider,
+                ResourceName = resourceProviderOperationDefinition.ResourceProviderOperationDisplayProperties.Resource
+            };
+        }
+
+        public static PSResourceProviderLocationInfo ToPSResourceProviderLocationInfo(this ProviderResourceType resourceType, string providerNamespace)
+        {
+            PSResourceProviderLocationInfo result = new PSResourceProviderLocationInfo();
             if (resourceType != null)
             {
                 resourceType.Locations = resourceType.Locations ?? new List<string>();
@@ -137,70 +166,73 @@ namespace Microsoft.Azure.Commands.Resources.Models
             return psGalleryItem;
         }
 
-        public static PSDeploymentEventData ToPSDeploymentEventData(this EventData eventData)
-        {
-            if (eventData == null)
-            {
-                return null;
-            }
-            PSDeploymentEventData psObject = new PSDeploymentEventData
-                {
-                    Authorization = eventData.Authorization.ToPSDeploymentEventDataAuthorization(),
-                    ResourceUri = eventData.ResourceUri,
-                    SubscriptionId = eventData.SubscriptionId,
-                    EventId = eventData.EventDataId,
-                    EventName = eventData.EventName.LocalizedValue,
-                    EventSource = eventData.EventSource.LocalizedValue,
-                    Channels = eventData.EventChannels.ToString(),
-                    Level = eventData.Level.ToString(),
-                    Description = eventData.Description,
-                    Timestamp = eventData.EventTimestamp,
-                    OperationId = eventData.OperationId,
-                    OperationName = eventData.OperationName.LocalizedValue,
-                    Status = eventData.Status.LocalizedValue,
-                    SubStatus = eventData.SubStatus.LocalizedValue,
-                    Caller = GetEventDataCaller(eventData.Claims),
-                    CorrelationId = eventData.CorrelationId,
-                    ResourceGroupName = eventData.ResourceGroupName,
-                    ResourceProvider = eventData.ResourceProviderName.LocalizedValue,
-                    HttpRequest = eventData.HttpRequest.ToPSDeploymentEventDataHttpRequest(),
-                    Claims = eventData.Claims,
-                    Properties = eventData.Properties
-                };
-            return psObject;
-        }
+        // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
+        //public static PSDeploymentEventData ToPSDeploymentEventData(this EventData eventData)
+        //{
+        //    if (eventData == null)
+        //    {
+        //        return null;
+        //    }
+        //    PSDeploymentEventData psObject = new PSDeploymentEventData
+        //        {
+        //            Authorization = eventData.Authorization.ToPSDeploymentEventDataAuthorization(),
+        //            ResourceUri = eventData.ResourceUri,
+        //            SubscriptionId = eventData.SubscriptionId,
+        //            EventId = eventData.EventDataId,
+        //            EventName = eventData.EventName.LocalizedValue,
+        //            EventSource = eventData.EventSource.LocalizedValue,
+        //            Channels = eventData.EventChannels.ToString(),
+        //            Level = eventData.Level.ToString(),
+        //            Description = eventData.Description,
+        //            Timestamp = eventData.EventTimestamp,
+        //            OperationId = eventData.OperationId,
+        //            OperationName = eventData.OperationName.LocalizedValue,
+        //            Status = eventData.Status.LocalizedValue,
+        //            SubStatus = eventData.SubStatus.LocalizedValue,
+        //            Caller = GetEventDataCaller(eventData.Claims),
+        //            CorrelationId = eventData.CorrelationId,
+        //            ResourceGroupName = eventData.ResourceGroupName,
+        //            ResourceProvider = eventData.ResourceProviderName.LocalizedValue,
+        //            HttpRequest = eventData.HttpRequest.ToPSDeploymentEventDataHttpRequest(),
+        //            Claims = eventData.Claims,
+        //            Properties = eventData.Properties
+        //        };
+        //    return psObject;
+        //}
 
-        public static PSDeploymentEventDataHttpRequest ToPSDeploymentEventDataHttpRequest(this HttpRequestInfo httpRequest)
-        {
-            if (httpRequest == null)
-            {
-                return null;
-            }
-            PSDeploymentEventDataHttpRequest psObject = new PSDeploymentEventDataHttpRequest
-            {
-                ClientId = httpRequest.ClientRequestId,
-                Method = httpRequest.Method,
-                Url = httpRequest.Uri,
-                ClientIpAddress = httpRequest.ClientIpAddress
-            };
-            return psObject;
-        }
+        // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
+        //public static PSDeploymentEventDataHttpRequest ToPSDeploymentEventDataHttpRequest(this HttpRequestInfo httpRequest)
+        //{
+        //    if (httpRequest == null)
+        //    {
+        //        return null;
+        //    }
+        //    PSDeploymentEventDataHttpRequest psObject = new PSDeploymentEventDataHttpRequest
+        //    {
+        //        ClientId = httpRequest.ClientRequestId,
+        //        Method = httpRequest.Method,
+        //        Url = httpRequest.Uri,
+        //        ClientIpAddress = httpRequest.ClientIpAddress
+        //    };
+        //    return psObject;
+        //}
 
-        public static PSDeploymentEventDataAuthorization ToPSDeploymentEventDataAuthorization(this SenderAuthorization authorization)
-        {
-            if (authorization == null)
-            {
-                return null;
-            }
-            PSDeploymentEventDataAuthorization psObject = new PSDeploymentEventDataAuthorization
-            {
-                Action = authorization.Action,
-                Role = authorization.Role,
-                Scope = authorization.Scope,
-                Condition = authorization.Condition
-            };
-            return psObject;
-        }
+        // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
+        //public static PSDeploymentEventDataAuthorization ToPSDeploymentEventDataAuthorization(this SenderAuthorization authorization)
+        //{
+        //    if (authorization == null)
+        //    {
+        //        return null;
+        //    }
+        //    PSDeploymentEventDataAuthorization psObject = new PSDeploymentEventDataAuthorization
+        //    {
+        //        Action = authorization.Action,
+        //        Role = authorization.Role,
+        //        Scope = authorization.Scope,
+        //        Condition = authorization.Condition
+        //    };
+        //    return psObject;
+        //}
 
         public static string ConstructResourcesTable(List<PSResource> resources)
         {
@@ -322,7 +354,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
         private static PSResourceGroupDeployment CreatePSResourceGroupDeployment(
             string name,
             string gesourceGroup,
-            DeploymentProperties properties)
+            DeploymentPropertiesExtended properties)
         {
             PSResourceGroupDeployment deploymentObject = new PSResourceGroupDeployment();
 

@@ -37,5 +37,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         public string SupportedOS { get; set; }
         public DateTime? PublishedDate { get; set; }
         public string CompanyName { get; set; }
+        public string Regions { get; set; }
     }
 }

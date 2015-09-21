@@ -12,23 +12,30 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Network.Routes
-{
-    using System.Management.Automation;
-    using Model;
+using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Routes.Model;
 
-    [Cmdlet(VerbsCommon.Get, "AzureSubnetRouteTable"), OutputType(typeof(SubnetRouteTableContext))]
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Routes
+{
+    [Cmdlet(VerbsCommon.Get, "AzureSubnetRouteTable"), OutputType(typeof(IRouteTable))]
     public class GetAzureSubnetRouteTable : NetworkCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the virtual network.")]
-        public string VNetName { get; set; }
+        public string VirtualNetworkName { get; set; }
 
         [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the subnet that will have its route table removed.")]
         public string SubnetName { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Whether the list of routes in the route table is inlcuded")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter Detailed { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            WriteObject(Client.GetRouteTableForSubnet(VNetName, SubnetName));
+            var getForSubnetResponse = Client.GetRouteTableForSubnet(VirtualNetworkName, SubnetName);
+
+            IRouteTable routeTable = Client.GetRouteTable(getForSubnetResponse.RouteTableName, Detailed);
+            WriteObject(routeTable);
         }
     }
 }

@@ -15,6 +15,7 @@
 using System.Management.Automation;
 using System.Net;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS

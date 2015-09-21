@@ -70,6 +70,24 @@ namespace Microsoft.Azure.Commands.Tags.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid tag format. Expect @{Name = &quot;tagName&quot;} or @{Name = &quot;tagName&quot;; Value = &quot;tagValue&quot;}.
+        /// </summary>
+        internal static string InvalidTagFormat {
+            get {
+                return ResourceManager.GetString("InvalidTagFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid tag format. Ensure that each tag has a unique name. Example: @{Name = &quot;tagName1&quot;; Value = &quot;tagValue1&quot;}, @{Name = &quot;tagName2&quot;; Value = &quot;tagValue2&quot;}.
+        /// </summary>
+        internal static string InvalidTagFormatNotUniqueName {
+            get {
+                return ResourceManager.GetString("InvalidTagFormatNotUniqueName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing tag .....
         /// </summary>
         internal static string RemoveTagMessage {

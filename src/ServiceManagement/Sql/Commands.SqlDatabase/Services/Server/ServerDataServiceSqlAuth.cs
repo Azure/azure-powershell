@@ -31,7 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
     /// <summary>
     /// Implementation of the <see cref="IServerDataServiceContext"/> with Sql Authentication.
     /// </summary>
-    public partial class ServerDataServiceSqlAuth : ServerDataServiceContext, IServerDataServiceContext
+    public partial class ServerDataServiceSqlAuth : ServerDataServiceContext, IServerDataServiceContext, ISqlServerConnectionInformation
     {
         #region Constants
 

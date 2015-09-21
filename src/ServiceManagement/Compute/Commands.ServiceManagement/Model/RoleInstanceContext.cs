@@ -14,6 +14,8 @@
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
 {
+    using System.Collections.Generic;
+
     public class RoleInstanceContext : ServiceOperationContext
     {
         public InstanceEndpointList InstanceEndpoints { get; set; } 
@@ -43,5 +45,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
         public string PublicIPName { get; set; }
 
         public int? PublicIPIdleTimeoutInMinutes { get; set; }
+
+        public string PublicIPDomainNameLabel { get; set; }
+
+        public List<string> PublicIPFqdns { get; set; }
     }
 }

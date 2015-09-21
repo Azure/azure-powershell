@@ -48,7 +48,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceBus
                 Name,
                 () =>
                 {
-                    Client = Client ?? new ServiceBusClientExtensions(CurrentContext.Subscription);
+                    Client = Client ?? new ServiceBusClientExtensions(Profile, Profile.Context.Subscription);
                     Client.RemoveNamespace(Name);
 
                     if (PassThru)

@@ -25,7 +25,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.Commands.CommandImp
     {
         public override async Task EndProcessing()
         {
-            IHDInsightClient client = this.GetClient();
+            IHDInsightClient client = this.GetClient(this.IgnoreSslErrors);
             if (!string.IsNullOrWhiteSpace(this.Name))
             {
                 var azureCluster = await client.GetClusterAsync(this.Name);

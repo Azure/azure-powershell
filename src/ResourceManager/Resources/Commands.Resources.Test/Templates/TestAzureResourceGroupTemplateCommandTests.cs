@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.ResourceGroupDeployments;
+using Microsoft.Azure.Management.Resources.Models;
 using Moq;
 using Xunit;
 
@@ -75,9 +76,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
                 }
             };
             resourcesClientMock.Setup(f => f.ValidatePSResourceGroupDeployment(
-                It.IsAny<ValidatePSResourceGroupDeploymentParameters>()))
+                It.IsAny<ValidatePSResourceGroupDeploymentParameters>(), DeploymentMode.Incremental))
                 .Returns(expected)
-                .Callback((ValidatePSResourceGroupDeploymentParameters p) => { actualParameters = p; });
+                .Callback((ValidatePSResourceGroupDeploymentParameters p, DeploymentMode m) => { actualParameters = p; m = DeploymentMode.Incremental; });
 
             cmdlet.ResourceGroupName = resourceGroupName;
             cmdlet.TemplateFile = expectedParameters.TemplateFile;
@@ -123,9 +124,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
                 }
             };
             resourcesClientMock.Setup(f => f.ValidatePSResourceGroupDeployment(
-                It.IsAny<ValidatePSResourceGroupDeploymentParameters>()))
+                It.IsAny<ValidatePSResourceGroupDeploymentParameters>(), DeploymentMode.Incremental))
                 .Returns(expected)
-                .Callback((ValidatePSResourceGroupDeploymentParameters p) => { actualParameters = p; });
+                .Callback((ValidatePSResourceGroupDeploymentParameters p, DeploymentMode m) => { actualParameters = p; m = DeploymentMode.Incremental; });
 
             cmdlet.ResourceGroupName = resourceGroupName;
             cmdlet.GalleryTemplateIdentity = expectedParameters.GalleryTemplateIdentity;

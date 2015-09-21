@@ -44,9 +44,9 @@ namespace Microsoft.Azure.Commands.Resources.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetsLocations()
         {
-            List<PSResourceProviderType> result = new List<PSResourceProviderType>()
+            List<PSResourceProviderLocationInfo> result = new List<PSResourceProviderLocationInfo>()
             {
-                new PSResourceProviderType()
+                new PSResourceProviderLocationInfo()
                 {
                     Locations = new List<string>() { "West US" },
                     Name = "Microsoft.Web"

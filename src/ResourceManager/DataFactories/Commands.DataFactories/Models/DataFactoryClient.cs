@@ -15,24 +15,24 @@
 using System.IO;
 using Microsoft.Azure.Management.DataFactories;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Commands.DataFactories.Properties;
 using System;
 using Microsoft.WindowsAzure.Storage.Blob;
 using Microsoft.WindowsAzure.Storage;
 using System.Net;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
     public partial class DataFactoryClient
     {
-        public IDataPipelineManagementClient DataPipelineManagementClient { get; private set; }
+        public IDataFactoryManagementClient DataPipelineManagementClient { get; private set; }
 
-        public DataFactoryClient(AzureContext context)
+        public DataFactoryClient(AzureProfile profile)
         {
-            DataPipelineManagementClient = AzureSession.ClientFactory.CreateClient<DataPipelineManagementClient>(
-                context, AzureEnvironment.Endpoint.ResourceManager);
+            DataPipelineManagementClient = AzureSession.ClientFactory.CreateClient<DataFactoryManagementClient>(
+                profile, AzureEnvironment.Endpoint.ResourceManager);
         }
 
         /// <summary>

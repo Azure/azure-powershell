@@ -14,7 +14,9 @@ using System.IO;
 using System.Xml;
 using System.Xml.Linq;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
+using Microsoft.WindowsAzure.Commands.ServiceManagement;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
+using Microsoft.WindowsAzure.Management.Storage;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
 {

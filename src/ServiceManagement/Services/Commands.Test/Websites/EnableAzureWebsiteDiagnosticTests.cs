@@ -12,17 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Management.Automation;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Websites;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites;
 using Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.DeploymentEntities;
 using Microsoft.WindowsAzure.Commands.Websites;
 using Moq;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
-using Microsoft.Azure.Common.Extensions;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Websites
 {
@@ -47,6 +50,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableAzureWebsiteApplicationDiagnosticApplication()
         {
             // Setup
@@ -54,6 +58,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 websiteName,
                 WebsiteDiagnosticOutput.FileSystem,
                 properties, null));
+
+            SetupProfile(null);
 
             enableAzureWebsiteApplicationDiagnosticCommand = new EnableAzureWebsiteApplicationDiagnosticCommand()
             {
@@ -64,10 +70,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 LogLevel = LogEntryType.Information
             };
 
-            AzureSession.SetCurrentContext(new AzureSubscription { Id = new System.Guid(base.subscriptionId) }, null, null);
-
             // Test
-            enableAzureWebsiteApplicationDiagnosticCommand.ExecuteCmdlet();
+            enableAzureWebsiteApplicationDiagnosticCommand.ExecuteWithProcessing();
 
             // Assert
             websitesClientMock.Verify(f => f.EnableApplicationDiagnostic(
@@ -79,6 +83,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableAzureWebsiteApplicationDiagnosticApplicationTableLog()
         {
             // Setup
@@ -91,6 +96,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 WebsiteDiagnosticOutput.StorageTable,
                 properties, null));
 
+            SetupProfile(null);
+
             enableAzureWebsiteApplicationDiagnosticCommand = new EnableAzureWebsiteApplicationDiagnosticCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
@@ -102,10 +109,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 StorageTableName = tableName
             };
 
-            AzureSession.SetCurrentContext(new AzureSubscription { Id = new System.Guid(base.subscriptionId) }, null, null);
-
             // Test
-            enableAzureWebsiteApplicationDiagnosticCommand.ExecuteCmdlet();
+            enableAzureWebsiteApplicationDiagnosticCommand.ExecuteWithProcessing();
 
             // Assert
             websitesClientMock.Verify(f => f.EnableApplicationDiagnostic(
@@ -117,6 +122,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableAzureWebsiteApplicationDiagnosticApplicationTableLogUseCurrentStorageAccount()
         {
             // Setup
@@ -129,6 +135,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 WebsiteDiagnosticOutput.StorageTable,
                 properties, null));
 
+            SetupProfile(storageName);
+
             enableAzureWebsiteApplicationDiagnosticCommand = new EnableAzureWebsiteApplicationDiagnosticCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
@@ -139,11 +147,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 StorageTableName = tableName
             };
 
-            AzureSession.SetCurrentContext(new AzureSubscription { Id = new System.Guid(base.subscriptionId) }, null, null);
-            AzureSession.CurrentContext.Subscription.Properties[AzureSubscription.Property.StorageAccount] = storageName;
-
             // Test
-            enableAzureWebsiteApplicationDiagnosticCommand.ExecuteCmdlet();
+            enableAzureWebsiteApplicationDiagnosticCommand.ExecuteWithProcessing();
 
             // Assert
             websitesClientMock.Verify(f => f.EnableApplicationDiagnostic(
@@ -155,6 +160,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableAzureWebsiteApplicationDiagnosticApplicationBlobLog()
         {
             // Setup
@@ -167,6 +173,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 WebsiteDiagnosticOutput.StorageBlob,
                 properties, null));
 
+            SetupProfile(null);
+
             enableAzureWebsiteApplicationDiagnosticCommand = new EnableAzureWebsiteApplicationDiagnosticCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
@@ -178,10 +186,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 StorageBlobContainerName = blobContainerName
             };
 
-            AzureSession.SetCurrentContext(new AzureSubscription { Id = new System.Guid(base.subscriptionId) }, null, null);
-
             // Test
-            enableAzureWebsiteApplicationDiagnosticCommand.ExecuteCmdlet();
+            enableAzureWebsiteApplicationDiagnosticCommand.ExecuteWithProcessing();
 
             // Assert
             websitesClientMock.Verify(f => f.EnableApplicationDiagnostic(
@@ -193,6 +199,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableAzureWebsiteApplicationDiagnosticApplicationBlobLogUseCurrentStorageAccount()
         {
             // Setup
@@ -205,6 +212,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 WebsiteDiagnosticOutput.StorageBlob,
                 properties, null));
 
+            SetupProfile(storageName);
+
             enableAzureWebsiteApplicationDiagnosticCommand = new EnableAzureWebsiteApplicationDiagnosticCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
@@ -215,11 +224,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 StorageBlobContainerName = blobContainerName
             };
 
-            AzureSession.SetCurrentContext(new AzureSubscription { Id = new System.Guid(base.subscriptionId) }, null, null);
-            AzureSession.CurrentContext.Subscription.Properties[AzureSubscription.Property.StorageAccount] = storageName;
-
             // Test
-            enableAzureWebsiteApplicationDiagnosticCommand.ExecuteCmdlet();
+            enableAzureWebsiteApplicationDiagnosticCommand.ExecuteWithProcessing();
 
             // Assert
             websitesClientMock.Verify(f => f.EnableApplicationDiagnostic(
@@ -231,6 +237,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EnableApplicationDiagnosticOnSlot()
         {
             string slot = "staging";
@@ -240,6 +247,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 WebsiteDiagnosticOutput.FileSystem,
                 properties,
                 slot));
+            
+            SetupProfile(null);
 
             enableAzureWebsiteApplicationDiagnosticCommand = new EnableAzureWebsiteApplicationDiagnosticCommand()
             {
@@ -251,10 +260,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
                 Slot = slot
             };
 
-            AzureSession.SetCurrentContext(new AzureSubscription { Id = new System.Guid(base.subscriptionId) }, null, null);
-
             // Test
-            enableAzureWebsiteApplicationDiagnosticCommand.ExecuteCmdlet();
+            enableAzureWebsiteApplicationDiagnosticCommand.ExecuteWithProcessing();
 
             // Assert
             websitesClientMock.Verify(f => f.EnableApplicationDiagnostic(

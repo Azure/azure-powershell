@@ -12,9 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.KeyVault.Client;
 using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.Commands.KeyVault.WebKey;
+using Microsoft.Azure.KeyVault.WebKey;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.IO;

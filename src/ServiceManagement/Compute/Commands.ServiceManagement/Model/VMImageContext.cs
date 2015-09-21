@@ -56,8 +56,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
         public override string RecommendedVMSize { get; set; }
         public override bool? IsPremium { get; set; }
         public override string Eula { get; set; }
-        public override Uri IconUri { get; set; }
-        public override Uri SmallIconUri { get; set; }
+        public override string IconUri { get; set; }
+        public override string SmallIconUri { get; set; }
         public override Uri PrivacyUri { get; set; }
         public override string PublisherName { get; set; }
         public override DateTime? PublishedDate { get; set; }

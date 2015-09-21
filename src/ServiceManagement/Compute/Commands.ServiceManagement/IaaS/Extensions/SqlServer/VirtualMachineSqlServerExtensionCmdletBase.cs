@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Newtonsoft.Json;
 
@@ -28,12 +28,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         /// <summary>
         /// Extension's publisher name 
         /// </summary>
-        protected const string ExtensionDefaultPublisher = "Microsoft.SqlServer.Management";
+        protected const string ExtensionPublishedNamespace = "Microsoft.SqlServer.Management";
 
         /// <summary>
         /// Extension's name - 
         /// </summary>
-        protected const string ExtensionDefaultName = "SqlIaaSAgent";
+        protected const string ExtensionPublishedName = "SqlIaaSAgent";
 
         /// <summary>
         /// Extension's default version 
@@ -51,6 +51,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         public virtual AutoBackupSettings AutoBackupSettings { get; set; }
 
         /// <summary>
+        /// Azure Key Vault SQL Credentials settings
+        /// </summary>
+        public virtual KeyVaultCredentialSettings KeyVaultCredentialSettings { get; set; }
+
+        /// <summary>
         /// value of Auto-telemetry settings object that can be set by derived classes
         /// </summary>
         public virtual AutoTelemetrySettings AutoTelemetrySettings { get; set; }
@@ -60,8 +65,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         /// </summary>
         public VirtualMachineSqlServerExtensionCmdletBase()
         {
-            base.publisherName = ExtensionDefaultPublisher;
-            base.extensionName = ExtensionDefaultName;
+            base.publisherName = ExtensionPublishedNamespace;
+            base.extensionName = ExtensionPublishedName;
         }
 
         /// <summary>
@@ -70,12 +75,38 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         /// <returns></returns>
         protected string GetPublicConfiguration()
         {
+            // Create auto backup settings if set
+            PublicAutoBackupSettings autoBackupSettings = null;
+            
+            if (this.AutoBackupSettings != null)
+            {
+                autoBackupSettings = new PublicAutoBackupSettings()
+                {
+                    Enable  = this.AutoBackupSettings.Enable,
+                    EnableEncryption = this.AutoBackupSettings.EnableEncryption,
+                    RetentionPeriod = this.AutoBackupSettings.RetentionPeriod                       
+                };
+            }
+
+            // Create Key vault settings if set
+            PublicKeyVaultCredentialSettings akvSettings = null;
+
+            if(this.KeyVaultCredentialSettings != null)
+            {
+                akvSettings = new PublicKeyVaultCredentialSettings()
+                {
+                    Enable = this.KeyVaultCredentialSettings == null ? false : this.KeyVaultCredentialSettings.Enable,
+                    CredentialName = this.KeyVaultCredentialSettings == null ? null : this.KeyVaultCredentialSettings.CredentialName
+                };
+            }
+
             return JsonUtilities.TryFormatJson(JsonConvert.SerializeObject(
                new SqlServerPublicSettings
                {
                    AutoPatchingSettings = this.AutoPatchingSettings,
-                   AutoBackupSettings = this.AutoBackupSettings,
-                   AutoTelemetrySettings = this.AutoTelemetrySettings
+                   AutoTelemetrySettings = this.AutoTelemetrySettings,
+                   AutoBackupSettings = autoBackupSettings,
+                   KeyVaultCredentialSettings = akvSettings
                }));
         }
 
@@ -85,14 +116,25 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         /// <returns></returns>
         protected string GetPrivateConfiguration()
         {
+
+            PrivateKeyVaultCredentialSettings akvPrivateSettings = null;
+
+            if(this.KeyVaultCredentialSettings != null)
+            {
+                akvPrivateSettings = new PrivateKeyVaultCredentialSettings { AzureKeyVaultUrl = this.KeyVaultCredentialSettings.AzureKeyVaultUrl, 
+                                                                             ServicePrincipalName = this.KeyVaultCredentialSettings.ServicePrincipalName, 
+                                                                             ServicePrincipalSecret = this.KeyVaultCredentialSettings.ServicePrincipalSecret 
+                                                                           };
+            }
+
             return JsonUtilities.TryFormatJson(JsonConvert.SerializeObject(
                        new SqlServerPrivateSettings
                        {
                            StorageUrl = (this.AutoBackupSettings == null) ? string.Empty : this.AutoBackupSettings.StorageUrl,
                            StorageAccessKey = (this.AutoBackupSettings == null) ? string.Empty : this.AutoBackupSettings.StorageAccessKey,
-                           Password = (this.AutoBackupSettings == null) ? string.Empty : this.AutoBackupSettings.Password
+                           Password = (this.AutoBackupSettings == null) ? string.Empty : this.AutoBackupSettings.Password,
+                           PrivateKeyVaultCredentialSettings = (akvPrivateSettings == null) ? null : akvPrivateSettings
                        }));
-
         }
     }
 }

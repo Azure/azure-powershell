@@ -13,14 +13,14 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Microsoft.Azure.Utilities.HttpRecorder;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.WindowsAzure.Management.WebSites;
-using Microsoft.WindowsAzure.Testing;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Test;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
 {
@@ -52,7 +52,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.WebsitesTests
                 SetupManagementClients();
 
                 helper.SetupEnvironment(AzureModule.AzureServiceManagement);
-                helper.SetupModules(AzureModule.AzureServiceManagement, 
+                helper.SetupModulesFromCommon(AzureModule.AzureServiceManagement,
                     "Resources\\Websites\\Common.ps1",
                     "Resources\\Websites\\" + this.GetType().Name + ".ps1");
 

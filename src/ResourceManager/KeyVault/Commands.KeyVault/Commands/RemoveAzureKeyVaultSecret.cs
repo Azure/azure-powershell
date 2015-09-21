@@ -15,14 +15,15 @@
 using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.Commands.KeyVault.Properties;
+using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using System.Globalization;
 
-namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
+namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet(VerbsCommon.Remove, "AzureKeyVaultSecret",
         SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.High)]
+        ConfirmImpact = ConfirmImpact.High, 
+        HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(Secret))]
     public class RemoveAzureKeyVaultSecret : KeyVaultCmdletBase
     {
@@ -57,37 +58,30 @@ namespace Microsoft.Azure.Commands.KeyVault.Cmdlets
         public SwitchParameter Force { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = "Cmdlet does not return object by default. If this switch is specified, return a bool to enable pipeline.")]
+            HelpMessage = "Cmdlet does not return an object by default. If this switch is specified, cmdlet returns the secret that was deleted.")]
         public SwitchParameter PassThru { get; set; }
 
         #endregion
 
         public override void ExecuteCmdlet()
         {
-            try
+            Secret secret = null;
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    KeyVaultProperties.Resources.RemoveSecretWarning,
+                    Name),
+                string.Format(
+                    CultureInfo.InvariantCulture,
+                    KeyVaultProperties.Resources.RemoveSecretWhatIfMessage,
+                    Name),
+                Name,
+               () => { secret = DataServiceClient.DeleteSecret(VaultName, Name); });
+
+            if (PassThru)
             {
-                Secret secret = null;
-                ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        Resources.RemoveSecretWarning,
-                        Name),
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        Resources.RemoveSecretWhatIfMessage,
-                        Name),
-                    Name,
-                   () => { secret = DataServiceClient.DeleteSecret(VaultName, Name); });
-                                
-                if (PassThru.IsPresent)
-                {
-                    WriteObject(secret);
-                }
-            }
-            catch (Exception ex)
-            {
-                this.WriteErrorDetails(ex);
+                WriteObject(secret);
             }
         }
     }

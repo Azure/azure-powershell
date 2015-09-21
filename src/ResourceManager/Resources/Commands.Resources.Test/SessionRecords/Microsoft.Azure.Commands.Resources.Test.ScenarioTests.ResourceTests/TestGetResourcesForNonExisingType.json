@@ -2,7 +2,6 @@
   "Entries": [
     {
       "RequestUri": "/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c/resources?$filter=resourceType%20eq%20'Non-Existing'&api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZGIxYWI2ZjAtNDc2OS00YjI3LTkzMGUtMDFlMmVmOWMxMjNjL3Jlc291cmNlcz8kZmlsdGVyPXJlc291cmNlVHlwZSUyMGVxJTIwJ05vbi1FeGlzdGluZycmYXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {

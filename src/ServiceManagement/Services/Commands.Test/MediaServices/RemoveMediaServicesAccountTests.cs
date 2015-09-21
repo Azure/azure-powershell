@@ -13,12 +13,14 @@
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.MediaServices;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.MediaServices;
 using Moq;
+using Microsoft.Azure;
 
 namespace Microsoft.WindowsAzure.Commands.Test.MediaServices
 {
@@ -26,6 +28,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.MediaServices
     public class RemoveMediaServicesAccountTests : TestBase
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ProcessRemoveMediaServicesAccountTest()
         {
             // Setup
@@ -34,7 +37,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.MediaServices
             const string expectedName = "testacc";
 
             clientMock.Setup(f => f.DeleteAzureMediaServiceAccountAsync(expectedName)).Returns(
-                Task.Factory.StartNew(() => new OperationResponse { StatusCode = HttpStatusCode.NoContent }));
+                Task.Factory.StartNew(() => new AzureOperationResponse { StatusCode = HttpStatusCode.NoContent }));
 
             // Test
             RemoveAzureMediaServiceCommand command = new RemoveAzureMediaServiceCommand

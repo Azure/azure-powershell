@@ -80,6 +80,24 @@ function Test-GetADGroupWithObjectId
 
 <#
 .SYNOPSIS
+Tests getting Active Directory group with security enabled .
+#>
+function Test-GetADGroupSecurityEnabled
+{
+    param([string]$objectId, [string]$securityEnabled)
+    
+    # Test
+    $groups = Get-AzureADGroup -ObjectId $objectId
+
+    # Assert
+    Assert-AreEqual $groups.Count 1
+    Assert-AreEqual $groups[0].Id $objectId
+    Assert-AreEqual $groups[0].SecurityEnabled $securityEnabled
+    Assert-NotNull($groups[0].DisplayName)
+}
+
+<#
+.SYNOPSIS
 Tests getting Active Directory groups.
 #>
 function Test-GetADGroupWithBadObjectId
@@ -432,3 +450,37 @@ function Test-GetADUserWithBadSearchString
     # Assert
     Assert-Null($users)
 }
+
+<#
+.SYNOPSIS
+Tests Creating and deleting application.
+#>
+function Test-NewADApplication
+{
+    # Setup
+    $displayName = getAssetName
+    $homePage = "http://" + $displayName + ".com"
+    $identifierUri = "http://" + $displayName
+
+    # Test
+    $application = New-AzureADApplication -DisplayName $displayName -HomePage $homePage -IdentifierUris $identifierUri
+
+    # Assert
+    Assert-NotNull $application
+}
+
+<#
+.SYNOPSIS
+Tests Creating and deleting service principal.
+#>
+function Test-NewADServicePrincipal
+{
+    param([string]$applicationId)
+
+    # Test
+    $servicePrincipal = New-AzureADServicePrincipal -ApplicationId $applicationId
+
+    # Assert
+    Assert-NotNull $servicePrincipal
+}
+

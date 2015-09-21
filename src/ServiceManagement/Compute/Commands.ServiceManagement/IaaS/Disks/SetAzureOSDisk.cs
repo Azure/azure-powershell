@@ -23,7 +23,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
     [Cmdlet(VerbsCommon.Set, "AzureOSDisk"), OutputType(typeof(IPersistentVM))]
     public class SetAzureOSDiskCommand : VirtualMachineConfigurationCmdletBase
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "Controls the platform caching behavior of data disk blob for read / write efficiency.")]
+        private const string ResizeParameterSet = "Resize";
+        private const string NoResizeParameteSet = "NoResize";
+
+        [Parameter(Position = 0, ParameterSetName = NoResizeParameteSet, Mandatory = true, HelpMessage = "Controls the platform caching behavior of data disk blob for read / write efficiency.")]
+        [Parameter(Position = 0, ParameterSetName = ResizeParameterSet, Mandatory = false, HelpMessage = "Controls the platform caching behavior of data disk blob for read / write efficiency.")]
         [ValidateSet("ReadOnly", "ReadWrite", IgnoreCase = true)]
         public string HostCaching
         {
@@ -31,9 +35,21 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
             set;
         }
 
+        [Parameter(Position = 1,
+            ParameterSetName = ResizeParameterSet,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = "Resize the new OS Disk to a larger size.")]
+        [ValidateNotNullOrEmpty]
+        public int ResizedSizeInGB
+        {
+            get;
+            set;
+        }
+
         internal void ExecuteCommand()
         {
-            var role = VM.GetInstance(); 
+            var role = VM.GetInstance();
 
             if (role.OSVirtualHardDisk == null)
             {
@@ -45,8 +61,24 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS
                             null));
             }
 
-            OSVirtualHardDisk disk = role.OSVirtualHardDisk;
-            disk.HostCaching = HostCaching;
+            role.OSVirtualHardDisk.HostCaching = HostCaching;
+            if (this.ParameterSetName.Equals(ResizeParameterSet))
+            {
+                role.OSVirtualHardDisk.ResizedSizeInGB = this.ResizedSizeInGB;
+
+                if (role.VMImageInput == null)
+                {
+                    role.VMImageInput = new VMImageInput();
+                }
+
+                if (role.VMImageInput.OSDiskConfiguration == null)
+                {
+                    role.VMImageInput.OSDiskConfiguration = new OSDiskConfiguration();
+                };
+
+                role.VMImageInput.OSDiskConfiguration.ResizedSizeInGB = this.ResizedSizeInGB;
+            }
+
             WriteObject(VM, true);
         }
 

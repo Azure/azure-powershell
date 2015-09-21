@@ -21,6 +21,8 @@ using Microsoft.Azure.Commands.DataFactories.Properties;
 using Microsoft.Azure.Management.DataFactories;
 using Microsoft.Azure.Management.DataFactories.Models;
 using Microsoft.WindowsAzure;
+using Hyak.Common;
+using Microsoft.Azure.Management.DataFactories.Common.Models;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
@@ -47,7 +49,7 @@ namespace Microsoft.Azure.Commands.DataFactories
 
         public virtual HttpStatusCode DeletePipeline(string resourceGroupName, string dataFactoryName, string pipelineName)
         {
-            OperationResponse response = DataPipelineManagementClient.Pipelines.Delete(
+            AzureOperationResponse response = DataPipelineManagementClient.Pipelines.Delete(
                 resourceGroupName, dataFactoryName, pipelineName);
 
             return response.StatusCode;
@@ -65,42 +67,22 @@ namespace Microsoft.Azure.Commands.DataFactories
             };
         }
 
-        public virtual List<PSDataSliceRun> GetPipelineRuns(string resourceGroupName, string dataFactoryName, string pipelineName,
-            string activityName, DateTime runRangeStartTime, DateTime? runRangeEndTime, string runRecordStatus = null)
-        {
-            var pipelineRuns = new List<PSDataSliceRun>();
-
-            var response = DataPipelineManagementClient.PipelineRuns.List(resourceGroupName, dataFactoryName, pipelineName,
-                new PipelineRunListParameters()
-                {
-                    ActivityName = activityName,
-                    RunRangeStartTime = runRangeStartTime.ConvertToISO8601DateTimeString(),
-                    RunRangeEndTime = runRangeEndTime != null ? runRangeEndTime.Value.ConvertToISO8601DateTimeString() : null,
-                    RunRecordStatus = runRecordStatus
-                });
-
-            if (response != null && response.PipelineRuns != null)
-            {
-                foreach (var run in response.PipelineRuns)
-                {
-                    pipelineRuns.Add(
-                        new PSDataSliceRun(run)
-                        {
-                            ResourceGroupName = resourceGroupName,
-                            DataFactoryName = dataFactoryName
-                        });
-                }
-            }
-
-            return pipelineRuns;
-        }
-
-        public virtual List<PSPipeline> ListPipelines(string resourceGroupName, string dataFactoryName)
+        public virtual List<PSPipeline> ListPipelines(PipelineFilterOptions filterOptions)
         {
             List<PSPipeline> pipelines = new List<PSPipeline>();
 
-            var response = DataPipelineManagementClient.Pipelines.List(resourceGroupName, dataFactoryName);
-
+            PipelineListResponse response;
+            if (filterOptions.NextLink.IsNextPageLink())
+            {
+                response = DataPipelineManagementClient.Pipelines.ListNext(filterOptions.NextLink);
+            }
+            else
+            {
+                response = DataPipelineManagementClient.Pipelines.List(filterOptions.ResourceGroupName,
+                    filterOptions.DataFactoryName);
+            }
+            filterOptions.NextLink = response != null ? response.NextLink : null;
+            
             if (response != null && response.Pipelines != null)
             {
                 foreach (var pipeline in response.Pipelines)
@@ -108,8 +90,8 @@ namespace Microsoft.Azure.Commands.DataFactories
                     pipelines.Add(
                         new PSPipeline(pipeline)
                         {
-                            ResourceGroupName = resourceGroupName,
-                            DataFactoryName = dataFactoryName
+                            ResourceGroupName = filterOptions.ResourceGroupName,
+                            DataFactoryName = filterOptions.DataFactoryName
                         });
                 }
             }
@@ -170,8 +152,7 @@ namespace Microsoft.Azure.Commands.DataFactories
             }
             else
             {
-                Pipelines.AddRange(ListPipelines(filterOptions.ResourceGroupName,
-                    filterOptions.DataFactoryName));
+                Pipelines.AddRange(ListPipelines(filterOptions));
             }
 
             return Pipelines;
@@ -196,6 +177,14 @@ namespace Microsoft.Azure.Commands.DataFactories
                         ResourceGroupName = parameters.ResourceGroupName,
                         DataFactoryName = parameters.DataFactoryName
                     };
+
+                if (!DataFactoryCommonUtilities.IsSucceededProvisioningState(pipeline.ProvisioningState))
+                {
+                    string errorMessage = pipeline.Properties == null
+                        ? string.Empty
+                        : pipeline.Properties.ErrorMessage;
+                    throw new ProvisioningFailedException(errorMessage);
+                }
             };
 
             if (parameters.Force)
@@ -222,14 +211,6 @@ namespace Microsoft.Azure.Commands.DataFactories
                             parameters.DataFactoryName),
                         parameters.Name,
                         createPipeline);
-            }
-
-            if (!DataFactoryCommonUtilities.IsSucceededProvisioningState(pipeline.ProvisioningState))
-            {
-                string errorMessage = pipeline.Properties == null
-                    ? string.Empty
-                    : pipeline.Properties.ErrorMessage;
-                throw new ProvisioningFailedException(errorMessage);
             }
 
             return pipeline;

@@ -12,39 +12,53 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
+using System.Collections.Generic;
 using System.Management.Automation;
 using System.Security.Permissions;
+using Microsoft.Azure.Commands.Automation.Common;
 using Job = Microsoft.Azure.Commands.Automation.Model.Job;
+
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
     /// Starts an Azure automation runbook.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureAutomationRunbook", DefaultParameterSetName = ByRunbookName)]
+    [Cmdlet(VerbsLifecycle.Start, "AzureAutomationRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByRunbookName)]
     [OutputType(typeof(Job))]
-    public class StartAzureAutomationRunbook : StartAzureAutomationRunbookBase
+    public class StartAzureAutomationRunbook : AzureAutomationBaseCmdlet
     {
+        /// <summary>
+        /// Gets or sets the runbook name
+        /// </summary>
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook name.")]
+        [ValidateNotNullOrEmpty]
+        [Alias("RunbookName")]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the runbook parameters.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook parameters.")]
+        public IDictionary Parameters { get; set; }
+
+        /// <summary>
+        /// Gets or sets the optional hybrid agent friendly name upon which the runbook should be executed.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Optional name of the hybrid agent which should execute the runbook")]
+        [Alias("HybridWorker")]
+        public string RunOn { get; set; }
+
         /// <summary>
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            Job job;
+            Job job = null;
 
-            if (this.Id.HasValue)
-            {
-                // ByRunbookId
-                job = this.AutomationClient.StartRunbook(
-                    this.AutomationAccountName, this.Id.Value, this.Parameters);
-            }
-            else
-            {
-                // ByRunbookName
-                job = this.AutomationClient.StartRunbook(
-                    this.AutomationAccountName, this.Name, this.Parameters);
-            }
+            job = this.AutomationClient.StartRunbook(this.AutomationAccountName, this.Name, this.Parameters, this.RunOn);
 
             this.WriteObject(job);
         }

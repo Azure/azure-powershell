@@ -98,6 +98,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Endpoints
         [ValidateNotNullOrEmpty]
         public string LoadBalancerDistribution { get; set; }
 
+        [Parameter(HelpMessage = "The Virtual IP Name of the Virtual IP on which the endpoint is to be added.")]
+        [ValidateNotNullOrEmpty]
+        public string VirtualIPName { get; set;}
+
         internal void ExecuteCommand()
         {
             this.ValidateParameters();
@@ -126,6 +130,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Endpoints
                 LoadBalancerName = this.InternalLoadBalancerName,
                 IdleTimeoutInMinutes = this.ParameterSpecified("IdleTimeoutInMinutes") ? this.IdleTimeoutInMinutes : null,
                 LoadBalancerDistribution = this.ParameterSpecified("LoadBalancerDistribution") ? this.LoadBalancerDistribution : null,
+                VirtualIPName = this.ParameterSpecified("VirtualIPName") ? this.VirtualIPName : null, 
             };
 
             if (this.ParameterSetName == AddAzureEndpoint.LBNoProbeParameterSet

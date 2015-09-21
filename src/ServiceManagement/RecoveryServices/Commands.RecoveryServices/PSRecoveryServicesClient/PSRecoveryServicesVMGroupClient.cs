@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Management.SiteRecovery;
 using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 

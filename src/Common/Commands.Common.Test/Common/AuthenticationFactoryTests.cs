@@ -15,16 +15,18 @@
 using System.Collections.Generic;
 using Xunit;
 using System;
-using Microsoft.Azure.Common.Extensions.Factories;
+using Microsoft.Azure.Common.Authentication.Factories;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Microsoft.Azure.Common.Extensions.Authentication;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 {
     public class AuthenticationFactoryTests
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void VerifySubscriptionTokenCacheRemove()
         {
             var authFactory = new AuthenticationFactory
@@ -34,10 +36,16 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 
             var subscriptionId = Guid.NewGuid();
 
-            var credential = authFactory.GetSubscriptionCloudCredentials(new AzureContext
-            {
-                Environment = AzureEnvironment.PublicEnvironments["AzureCloud"],
-                Account = new AzureAccount
+            var credential = authFactory.GetSubscriptionCloudCredentials(new AzureContext(
+                new AzureSubscription
+                {
+                    Id = subscriptionId,
+                    Properties = new Dictionary<AzureSubscription.Property, string>
+                    {
+                        { AzureSubscription.Property.Tenants, "123"}
+                    }
+                },
+                new AzureAccount
                 {
                     Id = "testuser",
                     Type = AzureAccount.AccountType.User,
@@ -46,16 +54,9 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
                         { AzureAccount.Property.Tenants, "123" }
                     }
                 },
-                Subscription = new AzureSubscription
-                {
-                    Id = subscriptionId,
-                    Properties = new Dictionary<AzureSubscription.Property, string>
-                    {
-                        { AzureSubscription.Property.Tenants, "123"}
-                    }
-                }
+                AzureEnvironment.PublicEnvironments["AzureCloud"]
                 
-            });
+            ));
 
             Assert.True(credential is AccessTokenCredential);
             Assert.Equal(subscriptionId, new Guid(((AccessTokenCredential)credential).SubscriptionId));

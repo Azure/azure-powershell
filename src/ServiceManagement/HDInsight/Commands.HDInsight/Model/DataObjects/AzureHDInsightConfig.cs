@@ -12,8 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.Data;
+using Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.GetAzureHDInsightClusters.Extensions;
 
 namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects
 {
@@ -36,9 +38,12 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects
             this.MapReduceConfiguration = new MapReduceConfiguration();
             this.HiveConfiguration = new HiveConfiguration();
             this.OozieConfiguration = new OozieConfiguration();
-            this.HeadNodeVMSize = NodeVMSize.Default;
+            this.HeadNodeVMSize = NodeVMSize.Large.ToString();
+            this.DataNodeVMSize = NodeVMSize.Large.ToString();
+            this.ZookeeperNodeVMSize = null;
             this.ClusterType = ClusterType.Hadoop;
             this.StormConfiguration = new ConfigValuesCollection();
+            this.SparkConfiguration = new ConfigValuesCollection();
             this.HBaseConfiguration = new HBaseConfiguration();
         }
 
@@ -53,7 +58,23 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects
         /// <value>
         /// The size of the head node VM.
         /// </value>
-        public NodeVMSize HeadNodeVMSize { get; set; }
+        public string HeadNodeVMSize { get; set; }
+
+        /// <summary>
+        /// Gets or sets the size of the head node VM.
+        /// </summary>
+        /// <value>
+        /// The size of the head node VM.
+        /// </value>
+        public string DataNodeVMSize { get; set; }
+
+        /// <summary>
+        /// Gets or sets the size of the head node VM.
+        /// </summary>
+        /// <value>
+        /// The size of the head node VM.
+        /// </value>
+        public string ZookeeperNodeVMSize { get; set; }
 
         /// <summary>
         ///     Gets or sets the size of the cluster in data nodes.
@@ -131,8 +152,58 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects
         public ConfigValuesCollection StormConfiguration { get; private set; }
 
         /// <summary>
+        ///     Gets a collection of configuration properties to customize the Spark service.
+        /// </summary>
+        public ConfigValuesCollection SparkConfiguration { get; private set; }
+
+        /// <summary>
         ///     Gets a collection of configuration properties to customize the HBase service.
         /// </summary>
         public HBaseConfiguration HBaseConfiguration { get; private set; }
+
+
+        /// <summary>
+        ///     Copies all parameters from the provided AzureHDInsightConfig object into this object, replacing
+        ///     single-value attributes, and merging collection attributes.
+        /// </summary>
+        public virtual void CopyFrom(AzureHDInsightConfig value)
+        {
+            if (value==null)
+            {
+                throw new ArgumentNullException("value", "The value for the configuration cannot be null.");
+            }
+
+            this.ClusterSizeInNodes = value.ClusterSizeInNodes;
+            this.DefaultStorageAccount = new AzureHDInsightDefaultStorageAccount(value.DefaultStorageAccount);
+            this.AdditionalStorageAccounts.AddRange(value.AdditionalStorageAccounts);
+            this.ConfigActions.AddRange(value.ConfigActions);
+            this.HiveMetastore = value.HiveMetastore ?? this.HiveMetastore;
+            this.OozieMetastore = value.OozieMetastore ?? this.OozieMetastore;
+            this.CoreConfiguration.AddRange(value.CoreConfiguration);
+            this.YarnConfiguration.AddRange(value.YarnConfiguration);
+            this.HdfsConfiguration.AddRange(value.HdfsConfiguration);
+            this.MapReduceConfiguration.ConfigurationCollection.AddRange(value.MapReduceConfiguration.ConfigurationCollection);
+            this.MapReduceConfiguration.CapacitySchedulerConfigurationCollection.AddRange(
+                value.MapReduceConfiguration.CapacitySchedulerConfigurationCollection);
+            this.HiveConfiguration.ConfigurationCollection.AddRange(value.HiveConfiguration.ConfigurationCollection);
+            this.HiveConfiguration.AdditionalLibraries = 
+                 value.HiveConfiguration.AdditionalLibraries ?? this.HiveConfiguration.AdditionalLibraries;
+            this.OozieConfiguration.ConfigurationCollection.AddRange(value.OozieConfiguration.ConfigurationCollection);
+            this.OozieConfiguration.AdditionalActionExecutorLibraries =
+                value.OozieConfiguration.AdditionalActionExecutorLibraries ?? this.OozieConfiguration.AdditionalActionExecutorLibraries;
+            this.OozieConfiguration.AdditionalSharedLibraries =
+                value.OozieConfiguration.AdditionalSharedLibraries ?? this.OozieConfiguration.AdditionalSharedLibraries;
+            this.HeadNodeVMSize = value.HeadNodeVMSize;
+            this.DataNodeVMSize = value.DataNodeVMSize;
+            this.ZookeeperNodeVMSize = value.ZookeeperNodeVMSize;
+            this.ClusterType = value.ClusterType;
+            this.VirtualNetworkId = value.VirtualNetworkId;
+            this.SubnetName = value.SubnetName;
+            this.StormConfiguration.AddRange(value.StormConfiguration);
+            this.HBaseConfiguration.ConfigurationCollection.AddRange(value.HBaseConfiguration.ConfigurationCollection);
+            this.HBaseConfiguration.AdditionalLibraries = 
+                value.HBaseConfiguration.AdditionalLibraries ?? this.HBaseConfiguration.AdditionalLibraries;
+            this.SparkConfiguration.AddRange(value.SparkConfiguration);
+        }
     }
 }

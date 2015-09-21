@@ -22,17 +22,17 @@ using System.Management.Automation;
 using System.Security;
 using System.Text;
 using System.Text.RegularExpressions;
-
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Gallery.Models;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Common.OData;
 using Newtonsoft.Json;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
+using Hyak.Common;
+using Microsoft.Azure.Common.OData;
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
@@ -278,6 +278,26 @@ namespace Microsoft.Azure.Commands.Resources.Models
             return parameters;
         }
 
+        public Dictionary<string, TemplateFileParameterV1> ParseTemplateParameterContent(string templateParameterContent)
+        {
+            Dictionary<string, TemplateFileParameterV1> parameters = new Dictionary<string, TemplateFileParameterV1>();
+
+            if (!string.IsNullOrEmpty(templateParameterContent))
+            {
+                try
+                {
+                    parameters = JsonConvert.DeserializeObject<Dictionary<string, TemplateFileParameterV1>>(templateParameterContent);
+                }
+                catch (JsonSerializationException)
+                {
+                    parameters = new Dictionary<string, TemplateFileParameterV1>(
+                        JsonConvert.DeserializeObject<TemplateFileParameterV2>(templateParameterContent).Parameters);
+                }
+            }
+
+            return parameters;
+        }
+
         private RuntimeDefinedParameterDictionary ParseTemplateAndExtractParameters(string templateContent, Hashtable templateParameterObject, string templateParameterFilePath, string[] staticParameters)
         {
             RuntimeDefinedParameterDictionary dynamicParameters = new RuntimeDefinedParameterDictionary();
@@ -289,6 +309,10 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 try
                 {
                     templateFile = JsonConvert.DeserializeObject<TemplateFile>(templateContent);
+                    if (templateFile.Parameters == null)
+                    {
+                        return dynamicParameters;
+                    }
                 }
                 catch
                 {
@@ -310,6 +334,11 @@ namespace Microsoft.Azure.Commands.Resources.Models
             {
                 var parametersFromFile = ParseTemplateParameterFileContents(templateParameterFilePath);
                 UpdateParametersWithObject(dynamicParameters, new Hashtable(parametersFromFile));
+            }
+            if (templateParameterFilePath != null && Uri.IsWellFormedUriString(templateParameterFilePath, UriKind.Absolute))
+            {
+                var parametersFromUri = ParseTemplateParameterContent(GeneralUtilities.DownloadFile(templateParameterFilePath));
+                UpdateParametersWithObject(dynamicParameters, new Hashtable(parametersFromUri));
             }
             return dynamicParameters;
         }

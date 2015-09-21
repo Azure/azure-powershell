@@ -12,19 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Concurrent;
-using System.Management.Automation;
-using System.Security.Permissions;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Commands.Storage.Common;
-using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
+    using System;
+    using System.Collections.Concurrent;
+    using System.Management.Automation;
+    using System.Security.Permissions;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.Blob;
+
     [Cmdlet(VerbsCommon.Get, StorageNouns.CopyBlobStatus, DefaultParameterSetName = NameParameterSet),
        OutputType(typeof(AzureStorageBlob))]
     public class GetAzureStorageBlobCopyState : StorageCloudBlobCmdletBase
@@ -44,9 +44,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// </summary>
         private const string NameParameterSet = "NamePipeline";
 
-        [Parameter(HelpMessage = "ICloudBlob Object", Mandatory = true,
+        [Alias("ICloudBlob")]
+        [Parameter(HelpMessage = "CloudBlob Object", Mandatory = true,
             ValueFromPipelineByPropertyName = true, ParameterSetName = BlobPipelineParameterSet)]
-        public ICloudBlob ICloudBlob { get; set; }
+        public CloudBlob CloudBlob { get; set; }
 
         [Parameter(HelpMessage = "CloudBlobContainer Object", Mandatory = true,
             ValueFromPipelineByPropertyName = true, ParameterSetName = ContainerPipelineParmeterSet)]
@@ -80,9 +81,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         private bool waitForComplete;
 
         /// <summary>
-        /// ICloudBlob objects which need to mointor until copy complete
+        /// CloudBlob objects which need to mointor until copy complete
         /// </summary>
-        private ConcurrentQueue<Tuple<long, ICloudBlob>> jobList = new ConcurrentQueue<Tuple<long, ICloudBlob>>();
+        private ConcurrentQueue<Tuple<long, CloudBlob>> jobList = new ConcurrentQueue<Tuple<long, CloudBlob>>();
         private ConcurrentDictionary<long, bool> TaskStatus = new ConcurrentDictionary<long, bool>();
 
         /// <summary>
@@ -110,23 +111,23 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            ICloudBlob blob = default(ICloudBlob);
+            CloudBlob blob = null;
 
             switch (ParameterSetName)
             {
                 case NameParameterSet:
-                    blob = GetICloudBlobObject(ContainerName, BlobName);
+                    blob = GetCloudBlobObject(ContainerName, BlobName);
                     break;
                 case ContainerPipelineParmeterSet:
-                    blob = GetICloudBlobObject(CloudBlobContainer, BlobName);
+                    blob = GetCloudBlobObject(CloudBlobContainer, BlobName);
                     break;
                 case BlobPipelineParameterSet:
-                    blob = GetICloudBlobObject(ICloudBlob);
+                    blob = GetCloudBlobObject(CloudBlob);
                     break;
             }
 
             long taskId = InternalTotalTaskCount;
-            jobList.Enqueue(new Tuple<long, ICloudBlob>(taskId, blob));
+            jobList.Enqueue(new Tuple<long, CloudBlob>(taskId, blob));
             InternalTotalTaskCount++;
         }
 
@@ -172,7 +173,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// </summary>
         /// <param name="blob">ICloud blob object</param>
         /// <param name="progress">Progress record</param>
-        internal void WriteCopyProgress(ICloudBlob blob, ProgressRecord progress)
+        internal void WriteCopyProgress(CloudBlob blob, ProgressRecord progress)
         {
             if(blob.CopyState == null) return ;
             long bytesCopied = blob.CopyState.BytesCopied ?? 0;
@@ -187,7 +188,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
             string activity = String.Format(Resources.CopyBlobStatus, blob.CopyState.Status.ToString(), blob.Name, blob.Container.Name, blob.CopyState.Source.ToString());
             progress.Activity = activity;
-            string message = String.Format(Resources.CopyBlobPendingStatus, percent, blob.CopyState.BytesCopied, blob.CopyState.TotalBytes);
+            string message = String.Format(Resources.CopyPendingStatus, percent, blob.CopyState.BytesCopied, blob.CopyState.TotalBytes);
             progress.StatusDescription = message;
             OutputStream.WriteProgress(progress);
         }
@@ -197,11 +198,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// </summary>
         /// <param name="containerName">Container name</param>
         /// <param name="blobName">blob name</param>
-        /// <returns>ICloudBlob object</returns>
-        private ICloudBlob GetICloudBlobObject(string containerName, string blobName)
+        /// <returns>CloudBlob object</returns>
+        private CloudBlob GetCloudBlobObject(string containerName, string blobName)
         {
             CloudBlobContainer container = Channel.GetContainerReference(containerName);
-            return GetICloudBlobObject(container, blobName);
+            return GetCloudBlobObject(container, blobName);
         }
 
         /// <summary>
@@ -209,33 +210,31 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// </summary>
         /// <param name="container">CloudBlobContainer object</param>
         /// <param name="blobName">Blob name</param>
-        /// <returns>ICloudBlob object</returns>
-        private ICloudBlob GetICloudBlobObject(CloudBlobContainer container, string blobName)
+        /// <returns>CloudBlob object</returns>
+        private CloudBlob GetCloudBlobObject(CloudBlobContainer container, string blobName)
         {
             AccessCondition accessCondition = null;
             BlobRequestOptions options = RequestOptions;
 
-            ValidateBlobName(blobName);
-            ValidateContainerName(container.Name);
+            NameUtil.ValidateBlobName(blobName);
+            NameUtil.ValidateContainerName(container.Name);
 
-            ICloudBlob blob = Channel.GetBlobReferenceFromServer(container, blobName, accessCondition, options, OperationContext);
+            CloudBlob blob = GetBlobReferenceFromServerWithContainer(Channel, container, blobName, accessCondition, options, OperationContext);
 
-            if (blob == null)
-            {
-                throw new ResourceNotFoundException(String.Format(Resources.BlobNotFound, blobName, container.Name));
-            }
-
-            return GetICloudBlobObject(blob);
+            return GetCloudBlobObject(blob);
         }
 
         /// <summary>
-        /// Get blob with copy status by ICloudBlob object
+        /// Get blob with copy status by CloudBlob object
         /// </summary>
-        /// <param name="blob">ICloudBlob object</param>
-        /// <returns>ICloudBlob object</returns>
-        private ICloudBlob GetICloudBlobObject(ICloudBlob blob)
+        /// <param name="blob">CloudBlob object</param>
+        /// <returns>CloudBlob object</returns>
+        private CloudBlob GetCloudBlobObject(CloudBlob blob)
         {
-            ValidateBlobName(blob.Name);
+            NameUtil.ValidateBlobName(blob.Name);
+
+            ValidateBlobType(blob);
+
             return blob;
         }
 
@@ -260,7 +259,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         protected async Task MonitorBlobCopyStatusAsync(long taskId)
         {
             ProgressRecord records = new ProgressRecord(OutputStream.GetProgressId(taskId), Resources.CopyBlobActivity, Resources.CopyBlobActivity);
-            Tuple<long, ICloudBlob> monitorRequest = null;
+            Tuple<long, CloudBlob> monitorRequest = null;
             BlobRequestOptions requestOptions = RequestOptions;
             AccessCondition accessCondition = null;
             OperationContext context = OperationContext;
@@ -272,7 +271,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 if(monitorRequest != null)
                 {
                     long internalTaskId = monitorRequest.Item1;
-                    ICloudBlob blob = monitorRequest.Item2;
+                    CloudBlob blob = monitorRequest.Item2;
                     //Just use the last blob management channel since the following operation is context insensitive
                     await Channel.FetchBlobAttributesAsync(blob, accessCondition, requestOptions, context, CmdletCancellationToken);
                     bool taskDone = false;

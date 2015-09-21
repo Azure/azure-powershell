@@ -206,17 +206,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.CloudService
                 }
             }
         }
-
-        public static string GetRuntimeUrl(string runtimeType, string runtimeVersion, string manifest = null)
-        {
-            CloudRuntimeCollection collection;
-            CloudRuntimeCollection.CreateCloudRuntimeCollection(out collection, manifest);
-            CloudRuntime desiredRuntime = CloudRuntime.CreateCloudRuntime(runtimeType, runtimeVersion, null, null);
-            CloudRuntimePackage foundPackage;
-            bool found = collection.TryFindMatch(desiredRuntime, out foundPackage);
-
-            return found ? foundPackage.PackageUri.AbsoluteUri : null;
-        }
     }
 
     class VersionComparer : IComparer<string>

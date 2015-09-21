@@ -12,34 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
 using System.Management.Automation;
 using System.Security.Permissions;
+using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
-    /// Creates an azure automation runbook.
+    /// Gets azure automation schedules for a given account.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureAutomationRunbook", DefaultParameterSetName = ByRunbookName)]
-    [OutputType(typeof(Runbook))]
+    [Cmdlet(VerbsCommon.New, "AzureAutomationRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByRunbookName)]
+    [OutputType(typeof (Runbook))]
     public class NewAzureAutomationRunbook : AzureAutomationBaseCmdlet
     {
         /// <summary>
-        /// The create runbook by runbook path parameter set.
-        /// </summary>
-        private const string ByRunbookPath = "ByRunbookPath";
-
-        /// <summary>
-        /// The create runbook by runbook name parameter set.
-        /// </summary>
-        private const string ByRunbookName = "ByRunbookName";
-
-        /// <summary>
         /// Gets or sets the runbook name
         /// </summary>
-        [Parameter(ParameterSetName = ByRunbookName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook name.")]
         [Alias("RunbookName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -47,7 +39,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the path of the runbook script
         /// </summary>
-        [Parameter(ParameterSetName = ByRunbookPath, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook file path.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByPath, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook file path.")]
         [Alias("RunbookPath")]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
@@ -62,6 +54,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the runbook tags.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook tags.")]
+        [Alias("Tag")]
         public string[] Tags { get; set; }
 
         /// <summary>
@@ -70,15 +63,15 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            Runbook runbook;
+            Runbook runbook = null;
 
-            if (this.Path != null)
+            if (this.ParameterSetName == AutomationCmdletParameterSets.ByPath)
             {
                 // ByRunbookPath
                 runbook = this.AutomationClient.CreateRunbookByPath(
                     this.AutomationAccountName, this.ResolvePath(this.Path), this.Description, this.Tags);
             }
-            else
+            else if (this.ParameterSetName == AutomationCmdletParameterSets.ByRunbookName)
             {
                 // ByRunbookName
                 runbook = this.AutomationClient.CreateRunbookByName(

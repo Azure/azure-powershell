@@ -13,8 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
 using System.Security;
-using Microsoft.Azure.Commands.KeyVault.Client;
+using Microsoft.Azure.KeyVault;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -28,17 +29,23 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         /// </summary>
         /// <param name="clientSecret">secret returned from service</param>
         /// <param name="vaultUriHelper">helper class</param>
-        internal Secret(Client.Secret clientSecret, VaultUriHelper vaultUriHelper)
+        internal Secret(Microsoft.Azure.KeyVault.Secret secret, VaultUriHelper vaultUriHelper)
         {
-            if (clientSecret == null)
-            {
-                throw new ArgumentNullException("clientSecret");
-            }
+            if (secret == null)
+                throw new ArgumentNullException("secret");
+            
+            SetObjectIdentifier(vaultUriHelper, secret.SecretIdentifier);
+            if (secret.Value != null)
+                SecretValue = secret.Value.ConvertToSecureString();
 
-            SetObjectIdentifier(vaultUriHelper, new Client.SecretIdentifier(clientSecret.Id));
-            SecretValue = clientSecret.SecureValue;
-
-            Id = clientSecret.Id;
+            Attributes = new SecretAttributes(
+                secret.Attributes.Enabled, 
+                secret.Attributes.Expires, 
+                secret.Attributes.NotBefore,
+                secret.Attributes.Created,
+                secret.Attributes.Updated,
+                secret.ContentType, 
+                secret.Tags);            
         }
 
         public SecureString SecretValue { get; set; }
@@ -47,8 +54,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         {
             get
             {
-                return SecretValue.ConvertToString();
+                string text = null;
+                if (SecretValue != null)
+                    text = SecretValue.ConvertToString();
+                return text;               
             }
         }
+        public SecretAttributes Attributes { get; set; }
+      
     }
 }

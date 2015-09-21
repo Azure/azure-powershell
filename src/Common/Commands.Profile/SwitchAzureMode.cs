@@ -14,8 +14,9 @@
 
 using System;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Profile
 {
@@ -34,6 +35,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
 
         public override void ExecuteCmdlet()
         {
+            WriteWarning(Resources.SwitchAzureModeDeprecated);
             AzureModule moduleToImport = (AzureModule)Enum.Parse(typeof(AzureModule), Name, false);
             AzureModule moduleToRemove = moduleToImport == AzureModule.AzureResourceManager ? AzureModule.AzureServiceManagement : AzureModule.AzureResourceManager;
             RemoveAzureModule(FileUtilities.GetModuleName(moduleToRemove), FileUtilities.GetPSModulePathForModule(moduleToRemove));

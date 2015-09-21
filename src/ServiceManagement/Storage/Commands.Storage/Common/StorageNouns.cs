@@ -100,6 +100,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         public const string StorageServiceLogging = "AzureStorageServiceLoggingProperty";
 
         /// <summary>
+        /// Azure storage CORS rule
+        /// </summary>
+        public const string StorageCORSRule = "AzureStorageCORSRule";
+
+        /// <summary>
         /// Azure storage container sas
         /// </summary>
         public const string ContainerSas = "AzureStorageContainerSASToken";
@@ -110,6 +115,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         public const string BlobSas = "AzureStorageBlobSASToken";
 
         /// <summary>
+        /// Azure storage file share sas
+        /// </summary>
+        public const string ShareSas = "AzureStorageShareSASToken";
+
+        /// <summary>
+        /// Azure storage file sas
+        /// </summary>
+        public const string FileSas = "AzureStorageFileSASToken";
+
+        /// <summary>
         /// Azure storage table sas
         /// </summary>
         public const string TableSas = "AzureStorageTableSASToken";
@@ -118,6 +133,32 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// Azure storage queue sas
         /// </summary>
         public const string QueueSas = "AzureStorageQueueSASToken";
+
+        /// <summary>
+        /// Azure storage table stored access policy
+        /// </summary>
+        public const string TableStoredAccessPolicy = "AzureStorageTableStoredAccessPolicy";
+
+        /// <summary>
+        /// Azure storage share stored access policy
+        /// </summary>
+        public const string ShareStoredAccessPolicy = "AzureStorageShareStoredAccessPolicy";
+
+        /// <summary>
+        /// Azure storage container stored access policy
+        /// </summary>
+        public const string ContainerStoredAccessPolicy = "AzureStorageContainerStoredAccessPolicy";
+
+
+        /// <summary>
+        /// Azure storage container stored access policy
+        /// </summary>
+        public const string QueueStoredAccessPolicy = "AzureStorageQueueStoredAccessPolicy";
+
+        /// <summary>
+        /// Azure storage share quota
+        /// </summary>
+        public const string ShareQuota = "AzureStorageShareQuota";
 
         /// <summary>
         /// Default service metrics version

@@ -11,17 +11,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.WindowsAzure.Commands.Storage.Table;
 using Microsoft.WindowsAzure.Commands.Storage.Test.Service;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Storage.Table;
+using System;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
 {
     public class StorageTableStorageTestBase : StorageTestBase
     {
         public MockStorageTableManagement tableMock = null;
+        public const string TestPolicy1 = "TestPolicy1";
+        public const string TestPolicy2 = "TestPolicy2";
+
+        protected StorageCloudTableCmdletBase CurrentTableCmd { get; set; }
 
         [TestInitialize]
         public void InitMock()
@@ -44,6 +50,44 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Table
             
             tableMock.tableList.Add(new CloudTable(new Uri(testUri)));
             tableMock.tableList.Add(new CloudTable(new Uri(textUri)));
+        }
+
+        public void AddTestStoredAccessPolicy()
+        {
+            tableMock.tablePermissions.SharedAccessPolicies.Clear();
+
+            SharedAccessTablePolicy testPolicy1 = new SharedAccessTablePolicy();
+            testPolicy1.Permissions = SharedAccessTablePermissions.None;
+            testPolicy1.Permissions |= SharedAccessTablePermissions.Query;
+            testPolicy1.SharedAccessStartTime = DateTime.Today.ToUniversalTime();
+            testPolicy1.SharedAccessExpiryTime = DateTime.Today.AddDays(1).ToUniversalTime();
+            tableMock.tablePermissions.SharedAccessPolicies.Add(TestPolicy1, testPolicy1);
+
+            SharedAccessTablePolicy testPolicy2 = new SharedAccessTablePolicy();
+            testPolicy1.Permissions = SharedAccessTablePermissions.None;
+            testPolicy1.Permissions |= SharedAccessTablePermissions.Query;
+            testPolicy1.SharedAccessStartTime = DateTime.Today.ToUniversalTime();
+            testPolicy1.SharedAccessExpiryTime = DateTime.Today.AddDays(1).ToUniversalTime();
+            tableMock.tablePermissions.SharedAccessPolicies.Add(TestPolicy2, testPolicy2);
+        }
+
+        public void clearTest()
+        {
+            tableMock.tableList.Clear();
+            tableMock.tablePermissions.SharedAccessPolicies.Clear();
+        }
+
+        /// <summary>
+        /// Run async command
+        /// </summary>
+        /// <param name="cmd">Storage command</param>
+        /// <param name="asyncAction">Async action</param>
+        protected void RunAsyncCommand(Action asyncAction)
+        {
+            MockCmdRunTime.ResetPipelines();
+            CurrentTableCmd.SetUpMultiThreadEnvironment();
+            asyncAction();
+            CurrentTableCmd.MultiThreadEndProcessing();
         }
     }
 }

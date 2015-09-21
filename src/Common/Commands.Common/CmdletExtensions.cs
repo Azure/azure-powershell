@@ -123,6 +123,13 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             MethodInfo dynMethod = (typeof(PSCmdlet)).GetMethod("EndProcessing", BindingFlags.NonPublic | BindingFlags.Instance);
             dynMethod.Invoke(cmdlt, null);
         }
+        public static void ExecuteWithProcessing(this AzurePSCmdlet cmdlt)
+        {
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
+
+        }
 
         #endregion
     }

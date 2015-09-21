@@ -2192,7 +2192,7 @@ Business Edition values: 10, 20, 30, 40, 50, 100, or 150</maml:para>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Version</maml:name>
 				<maml:description>
-					<maml:para>Specifies the type of SQL Database Server to create. Accepts values 1.0 or 2.0.</maml:para>
+					<maml:para>Specifies the type of SQL Database Server to create. Accepts values 2.0 or 12.0.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Single</command:parameterValue>
 			</command:parameter>
@@ -2259,7 +2259,7 @@ Business Edition values: 10, 20, 30, 40, 50, 100, or 150</maml:para>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Version</maml:name>
 			<maml:description>
-				<maml:para>Specifies the type of SQL Database Server to create. Accepts values 1.0 or 2.0.</maml:para>
+				<maml:para>Specifies the type of SQL Database Server to create. Accepts values 2.0 or 12.0.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">Single</command:parameterValue>
 			<dev:type>

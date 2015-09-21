@@ -16,6 +16,7 @@ using System;
 using System.Globalization;
 using System.Management.Automation;
 using System.Security.Permissions;
+using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Properties;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
@@ -23,37 +24,20 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Removes an azure automation Schedule.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureAutomationSchedule", SupportsShouldProcess = true, DefaultParameterSetName = ByScheduleName)]
+    [Cmdlet(VerbsCommon.Remove, "AzureAutomationSchedule", SupportsShouldProcess = true, DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
     public class RemoveAzureAutomationSchedule : AzureAutomationBaseCmdlet
     {
         /// <summary>
-        /// The get schedule by schedule id parameter set.
-        /// </summary>
-        private const string ByScheduleId = "ByScheduleId";
-
-        /// <summary>
-        /// The get schedule by schedule name parameter set.
-        /// </summary>
-        private const string ByScheduleName = "ByScheduleName";
-
-        /// <summary>
-        /// Gets or sets the schedule id.
-        /// </summary>
-        [Parameter(ParameterSetName = ByScheduleId, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The schedule id.")]
-        public Guid? Id { get; set; }
-
-        /// <summary>
         /// Gets or sets the schedule name.
         /// </summary>
-        [Parameter(ParameterSetName = ByScheduleName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The schedule name.")]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the switch parameter not to confirm on removing the schedule.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Do not confirm on removing the schedule.")]
+        [Parameter(Mandatory = false, HelpMessage = "Forces the command to run without asking for user confirmation.")]
         public SwitchParameter Force { get; set; }
 
         /// <summary>
@@ -66,19 +50,10 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 this.Force.IsPresent,
                 string.Format(CultureInfo.CurrentCulture, Resources.RemoveAzureAutomationScheduleWarning),
                 string.Format(CultureInfo.CurrentCulture, Resources.RemoveAzureAutomationScheduleDescription),
-                this.Id.HasValue ? this.Id.Value.ToString() : this.Name,
+                this.Name,
                 () =>
                     {
-                        if (this.Id.HasValue)
-                        {
-                            // ByScheduleId
-                            this.AutomationClient.DeleteSchedule(this.AutomationAccountName, this.Id.Value);
-                        }
-                        else
-                        {
-                            // ByScheduleName
-                            this.AutomationClient.DeleteSchedule(this.AutomationAccountName, this.Name);
-                        }
+                        this.AutomationClient.DeleteSchedule(this.AutomationAccountName, this.Name);
                     });
         }
     }

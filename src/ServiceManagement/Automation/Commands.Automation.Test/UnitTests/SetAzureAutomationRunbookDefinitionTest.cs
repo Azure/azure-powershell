@@ -43,28 +43,6 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
                               };
         }
 
-        [TestMethod]
-        public void SetAzureAutomationRunbookDefinitionByIdSuccessfull()
-        {
-            // Setup
-            string accountName = "automation";
-            string runbookPath = "runbook.ps1";
-            var runbookId = new Guid();
-
-            this.mockAutomationClient.Setup(
-                f => f.UpdateRunbookDefinition(accountName, runbookId, runbookPath, false));
-
-            // Test
-            this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Id = runbookId;
-            this.cmdlet.Path = runbookPath;
-            this.cmdlet.ExecuteCmdlet();
-
-            // Assert
-            this.mockAutomationClient.Verify(
-                f => f.UpdateRunbookDefinition(accountName, runbookId, runbookPath, false),
-                Times.Once());
-        }
 
         [TestMethod]
         public void SetAzureAutomationRunbookDefinitionByNameSuccessfull()
@@ -86,30 +64,6 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             // Assert
             this.mockAutomationClient.Verify(
                 f => f.UpdateRunbookDefinition(accountName, runbookName, runbookPath, false),
-                Times.Once());
-        }
-
-        [TestMethod]
-        public void SetAzureAutomationRunbookDefinitionByIdWithOverwriteSuccessfull()
-        {
-            // Setup
-            string accountName = "automation";
-            string runbookPath = "runbook.ps1";
-            var runbookId = new Guid();
-
-            this.mockAutomationClient.Setup(
-                f => f.UpdateRunbookDefinition(accountName, runbookId, runbookPath, true));
-
-            // Test
-            this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Id = runbookId;
-            this.cmdlet.Path = runbookPath;
-            this.cmdlet.Overwrite = true;
-            this.cmdlet.ExecuteCmdlet();
-
-            // Assert
-            this.mockAutomationClient.Verify(
-                f => f.UpdateRunbookDefinition(accountName, runbookId, runbookPath, true),
                 Times.Once());
         }
 

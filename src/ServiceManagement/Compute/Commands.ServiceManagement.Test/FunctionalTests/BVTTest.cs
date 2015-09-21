@@ -100,10 +100,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 string certData = Convert.ToBase64String(((X509Certificate2)certToUpload.BaseObject).RawData);
 
                 string newAzureVMName = Utilities.GetUniqueShortName(vmNamePrefix);
-                if (string.IsNullOrEmpty(imageName))
-                {
-                    imageName = vmPowershellCmdlets.GetAzureVMImageName(new[] { "Windows" }, false);
-                }
+
+                imageName = vmPowershellCmdlets.GetAzureVMImageName(new[] { "Windows" }, false, 50);
 
                 RecordTimeTaken(ref prevTime);
 
@@ -222,9 +220,13 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 RecordTimeTaken(ref prevTime);
 
                 //
+                // Set-AzureOSDisk
+                //
+                vm = vmPowershellCmdlets.SetAzureOSDisk(null, vm, 100);
+
+                //
                 // New-AzureDns
                 //
-
                 string dnsName = "OpenDns1";
                 string ipAddress = "208.67.222.222";
 
@@ -347,7 +349,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 // Set-AzureOSDisk
                 //
                 vm = vmPowershellCmdlets.SetAzureOSDisk(HostCaching.ReadOnly, vm);
-
 
                 //
                 // Update-AzureVM

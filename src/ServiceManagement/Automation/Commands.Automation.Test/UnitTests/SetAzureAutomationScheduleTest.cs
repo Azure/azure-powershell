@@ -37,32 +37,10 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
             this.mockAutomationClient = new Mock<IAutomationClient>();
             this.mockCommandRuntime = new MockCommandRuntime();
             this.cmdlet = new SetAzureAutomationSchedule
-                              {
-                                  AutomationClient = this.mockAutomationClient.Object,
-                                  CommandRuntime = this.mockCommandRuntime
-                              };
-        }
-
-        [TestMethod]
-        public void SetAzureAutomationScheduleByIdSuccessfull()
-        {
-            // Setup
-            string accountName = "automation";
-            string description = "desc";
-            bool? isEnabled = true;
-            var scheduleId = new Guid();
-
-            this.mockAutomationClient.Setup(f => f.UpdateSchedule(accountName, scheduleId, isEnabled, description));
-
-            // Test
-            this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Id = scheduleId;
-            this.cmdlet.IsEnabled = isEnabled;
-            this.cmdlet.Description = description;
-            this.cmdlet.ExecuteCmdlet();
-
-            // Assert
-            this.mockAutomationClient.Verify(f => f.UpdateSchedule(accountName, scheduleId, isEnabled, description), Times.Once());
+            {
+                AutomationClient = this.mockAutomationClient.Object,
+                CommandRuntime = this.mockCommandRuntime
+            };
         }
 
         [TestMethod]

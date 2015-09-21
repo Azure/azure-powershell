@@ -13,6 +13,7 @@
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.MediaServices;
@@ -20,6 +21,7 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.MediaServices;
 using Microsoft.WindowsAzure.Management.MediaServices.Models;
 using Moq;
+using Microsoft.Azure;
 
 namespace Microsoft.WindowsAzure.Commands.Test.MediaServices
 {
@@ -27,6 +29,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.MediaServices
     public class RegenerateMediaServicesAccountTests : TestBase
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RegenerateMediaServicesAccountTest()
         {
             // Setup
@@ -36,7 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.MediaServices
             const string expectedName = "testacc";
 
             clientMock.Setup(f => f.RegenerateMediaServicesAccountAsync(expectedName, MediaServicesKeyType.Primary)).Returns(
-                Task.Factory.StartNew(() => new OperationResponse { StatusCode = HttpStatusCode.OK }));
+                Task.Factory.StartNew(() => new AzureOperationResponse { StatusCode = HttpStatusCode.OK }));
 
             MediaServicesAccountGetResponse detail = new MediaServicesAccountGetResponse
             {

@@ -202,7 +202,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
                     {
                         Address = a.Address,
                         IsDnsProgrammed = a.IsDnsProgrammed,
-                        Name = a.Name
+                        Name = a.Name,
+                        ReservedIPName = a.ReservedIPName
                     }));
 
             // DNS

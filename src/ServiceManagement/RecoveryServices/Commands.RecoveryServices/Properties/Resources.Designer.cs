@@ -61,6 +61,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please provide required VM properties to update.
+        /// </summary>
+        internal static string ArgumentsMissingForUpdateVmProperties {
+            get {
+                return ResourceManager.GetString("ArgumentsMissingForUpdateVmProperties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AzureVMNetwork {0} is not associated with the Subscription {1}.
+        /// </summary>
+        internal static string AzureVMNetworkIsNotAssociatedWithTheSubscription {
+            get {
+                return ResourceManager.GetString("AzureVMNetworkIsNotAssociatedWithTheSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Operation Failed.
         ///Message: {0}
         ///Possible Causes: {1}
@@ -101,6 +119,33 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Calls using ID based parameter {0} will not be supported from next release. Please use its corresponding full object parameter instead..
+        /// </summary>
+        internal static string IDBasedParamUsageNotSupportedFromNextRelease {
+            get {
+                return ResourceManager.GetString("IDBasedParamUsageNotSupportedFromNextRelease", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Replication Provider {0} entered invalid for the current set of parameters..
+        /// </summary>
+        internal static string IncorrectReplicationProvider {
+            get {
+                return ResourceManager.GetString("IncorrectReplicationProvider", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vault information (Name: {0}, Location: {1}) is not correct.
+        /// </summary>
+        internal static string InCorrectVaultInformation {
+            get {
+                return ResourceManager.GetString("InCorrectVaultInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Operation failed.
         ///{0}.
         /// </summary>
@@ -116,6 +161,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         internal static string InvalidCloudService {
             get {
                 return ResourceManager.GetString("InvalidCloudService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Replication Frequency {0} is invalid.
+        /// </summary>
+        internal static string InvalidReplicationFrequency {
+            get {
+                return ResourceManager.GetString("InvalidReplicationFrequency", resourceCulture);
             }
         }
         
@@ -138,6 +192,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} will be a mandatory paramter from next release..
+        /// </summary>
+        internal static string MandatoryParamFromNextRelease {
+            get {
+                return ResourceManager.GetString("MandatoryParamFromNextRelease", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vault Key value is missing. Please import Vault Settings and verify the same.
         /// </summary>
         internal static string MissingChannelIntergrityKey {
@@ -156,6 +219,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please provide both Source Nic and Recovery Target to update.
+        /// </summary>
+        internal static string NetworkArgumentsMissingForUpdateVmProperties {
+            get {
+                return ResourceManager.GetString("NetworkArgumentsMissingForUpdateVmProperties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creates a new in-memory protection profile association object..
+        /// </summary>
+        internal static string NewProtectionProfileObjectWhatIfMessage {
+            get {
+                return ResourceManager.GetString("NewProtectionProfileObjectWhatIfMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RecoveryServices client is null, please check Resource, Cloud Service information in Vault Settings.
         /// </summary>
         internal static string NullRecoveryServicesClient {
@@ -170,6 +251,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         internal static string ProtectionContainerNotFound {
             get {
                 return ResourceManager.GetString("ProtectionContainerNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Protection entity {0} is already disabled.
+        /// </summary>
+        internal static string ProtectionEntityAlreadyDisabled {
+            get {
+                return ResourceManager.GetString("ProtectionEntityAlreadyDisabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Protection entity {0} is already enabled.
+        /// </summary>
+        internal static string ProtectionEntityAlreadyEnabled {
+            get {
+                return ResourceManager.GetString("ProtectionEntityAlreadyEnabled", resourceCulture);
             }
         }
         
@@ -219,6 +318,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Replication Start Time span value cannot be greater then 24 hours..
+        /// </summary>
+        internal static string ReplicationStartTimeInvalid {
+            get {
+                return ResourceManager.GetString("ReplicationStartTimeInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Resource name mentioned is either null or empty.
         /// </summary>
         internal static string ResourceNameNullOrEmpty {
@@ -237,11 +345,94 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please enter the storage account name details in the protection profile..
+        /// </summary>
+        internal static string StorageAccountNameIsNotValid {
+            get {
+                return ResourceManager.GetString("StorageAccountNameIsNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Subscription or Storage account couldn’t be validated. For failovers to be successful, the Subscription should belong to your account, the Storage account to the Subscription and Storage account location must be the same as location of your Vault..
+        /// </summary>
+        internal static string StorageAccountValidationUnsuccessful {
+            get {
+                return ResourceManager.GetString("StorageAccountValidationUnsuccessful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage account given is in a different location as compared to the current vault.
+        ///Please provide a storage account with the same location as that of the vault..
+        /// </summary>
+        internal static string StorageIsNotInTheSameLocationAsVault {
+            get {
+                return ResourceManager.GetString("StorageIsNotInTheSameLocationAsVault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter the subscription ID details..
+        /// </summary>
+        internal static string SubscriptionIdIsNotValid {
+            get {
+                return ResourceManager.GetString("SubscriptionIdIsNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Subscription {0} is not associated with the account.
+        /// </summary>
+        internal static string SubscriptionIsNotAssociatedWithTheAccount {
+            get {
+                return ResourceManager.GetString("SubscriptionIsNotAssociatedWithTheAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not validate the storage account and subscription given.
+        ///Are you sure you want to continue {0}?.
+        /// </summary>
+        internal static string ValidationUnsuccessfulWarning {
+            get {
+                return ResourceManager.GetString("ValidationUnsuccessfulWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vault has been created.
+        /// </summary>
+        internal static string VaultCreationSuccessMessage {
+            get {
+                return ResourceManager.GetString("VaultCreationSuccessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vault {0} is not associated with the given subscription..
+        /// </summary>
+        internal static string VaultNotFound {
+            get {
+                return ResourceManager.GetString("VaultNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Vault settings file not found, please pass the file downloaded from portal.
         /// </summary>
         internal static string VaultSettingFileNotFound {
             get {
                 return ResourceManager.GetString("VaultSettingFileNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot generate vault settings file for this vault. Download it from the Azure Portal..
+        /// </summary>
+        internal static string VaultSettingsGenerationUnSupported {
+            get {
+                return ResourceManager.GetString("VaultSettingsGenerationUnSupported", resourceCulture);
             }
         }
         

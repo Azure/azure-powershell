@@ -14,6 +14,7 @@
 
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.WindowsAzure.Management.Storage.Models;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.StorageServices

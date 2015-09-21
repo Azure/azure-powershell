@@ -20,7 +20,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 {
     public class SetAzureVMAccessExtensionCmdletInfo:CmdletsInfo
     {
-        public SetAzureVMAccessExtensionCmdletInfo(IPersistentVM vm, string userName, string password, string version, string referenceName,bool disable)
+        public SetAzureVMAccessExtensionCmdletInfo(
+            IPersistentVM vm,
+            string userName,
+            string password,
+            string version,
+            string referenceName,
+            bool disable,
+            bool forceUpdate)
         {
             this.cmdletName = Utilities.SetAzureVMAccessExtensionCmdletName;
             cmdletParams.Add(new CmdletParam("VM", vm));
@@ -42,7 +49,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             }
             if (disable)
             {
-                cmdletParams.Add(new CmdletParam("Disable", disable));
+                cmdletParams.Add(new CmdletParam("Disable"));
+            }
+            if (forceUpdate)
+            {
+                cmdletParams.Add(new CmdletParam("ForceUpdate"));
             }
         }
     }

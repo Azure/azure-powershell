@@ -14,12 +14,14 @@
 
 namespace Microsoft.Azure.Commands.RedisCache
 {
-    using Microsoft.Azure.Common.Extensions;
-    using Microsoft.Azure.Common.Extensions.Models;
+    using Microsoft.Azure.Common.Authentication;
+    using Microsoft.Azure.Common.Authentication.Models;
     using Microsoft.Azure.Management.Redis;
     using Microsoft.Azure.Management.Redis.Models;
     using Microsoft.WindowsAzure;
     using Microsoft.WindowsAzure.Commands.Common;
+    using System.Collections;
+    using System.Collections.Generic;
 
     public class RedisCacheClient
     {
@@ -30,7 +32,7 @@ namespace Microsoft.Azure.Commands.RedisCache
         }
         public RedisCacheClient() { }
 
-        public RedisCreateOrUpdateResponse CreateOrUpdateCache(string resourceGroupName, string cacheName, string location, string redisVersion, string skuFamily, int skuCapacity, string skuName, string maxMemoryPolicy, bool? enableNonSslPort)
+        public RedisCreateOrUpdateResponse CreateOrUpdateCache(string resourceGroupName, string cacheName, string location, string redisVersion, string skuFamily, int skuCapacity, string skuName, Hashtable redisConfiguration, bool? enableNonSslPort)
         {
             RedisCreateOrUpdateParameters parameters = new RedisCreateOrUpdateParameters
                                                     {
@@ -46,9 +48,13 @@ namespace Microsoft.Azure.Commands.RedisCache
                                                         }
                                                     };
 
-            if (!string.IsNullOrEmpty(maxMemoryPolicy))
+            if (redisConfiguration != null)
             {
-                parameters.Properties.MaxMemoryPolicy = maxMemoryPolicy;
+                parameters.Properties.RedisConfiguration = new Dictionary<string, string>();
+                foreach (object key in redisConfiguration.Keys)
+                {
+                    parameters.Properties.RedisConfiguration.Add(key.ToString(), redisConfiguration[key].ToString());
+                }
             }
 
             if (enableNonSslPort.HasValue)
@@ -59,7 +65,7 @@ namespace Microsoft.Azure.Commands.RedisCache
             return response;
         }
 
-        public OperationResponse DeleteCache(string resourceGroupName, string cacheName)
+        public AzureOperationResponse DeleteCache(string resourceGroupName, string cacheName)
         {
             return _client.Redis.Delete(resourceGroupName: resourceGroupName, name: cacheName);
         }
@@ -86,7 +92,7 @@ namespace Microsoft.Azure.Commands.RedisCache
             return _client.Redis.ListNext(nextLink: nextLink);
         }
         
-        public OperationResponse RegenerateAccessKeys(string resourceGroupName, string cacheName, RedisKeyType keyType)
+        public AzureOperationResponse RegenerateAccessKeys(string resourceGroupName, string cacheName, RedisKeyType keyType)
         {
             return _client.Redis.RegenerateKey(resourceGroupName: resourceGroupName, name: cacheName, parameters: new RedisRegenerateKeyParameters() { KeyType = keyType });
         }

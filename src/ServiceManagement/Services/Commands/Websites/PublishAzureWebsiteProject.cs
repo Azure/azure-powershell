@@ -28,6 +28,9 @@ namespace Microsoft.WindowsAzure.Commands.Websites
         [ValidateNotNullOrEmpty]
         public Hashtable ConnectionString { get; set; }
 
+        [Parameter(Mandatory = false, ParameterSetName = "Package", HelpMessage = "The WebDeploy SetParameters.xml file to transform configuration within the package.")]
+        public string SetParametersFile { get; set; }
+
         [Parameter(Mandatory = false, ParameterSetName = "ProjectFile")]
         [Parameter(Mandatory = false, ParameterSetName = "Package")]
         public SwitchParameter SkipAppData { get; set; }
@@ -40,6 +43,7 @@ namespace Microsoft.WindowsAzure.Commands.Websites
         private string fullWebConfigFileWithConfiguration;
         private string fullWebConfigFile;
         private string fullPackage;
+        private string fullSetParametersFile;
         private string configuration;
 
         private RuntimeDefinedParameterDictionary dynamicParameters;
@@ -59,6 +63,8 @@ namespace Microsoft.WindowsAzure.Commands.Websites
             // Resolve the full path of the package file or folder when the "Package" parameter set is used.
             fullPackage = string.IsNullOrEmpty(fullPackage) ? this.TryResolvePath(Package) : fullPackage;
             WriteVerbose(string.Format(Resources.StartPublishingProjectTemplate, fullPackage));
+
+            fullSetParametersFile = string.IsNullOrEmpty(fullSetParametersFile) ? this.TryResolvePath(SetParametersFile) : fullSetParametersFile;
 
             // Convert dynamic parameters to a connection string hash table.
             var connectionStrings = ConnectionString;
@@ -80,7 +86,7 @@ namespace Microsoft.WindowsAzure.Commands.Websites
             try
             {
                 // Publish the package.
-                WebsitesClient.PublishWebProject(Name, Slot, fullPackage, connectionStrings, SkipAppData.IsPresent, DoNotDelete.IsPresent);
+                WebsitesClient.PublishWebProject(Name, Slot, fullPackage, fullSetParametersFile, connectionStrings, SkipAppData.IsPresent, DoNotDelete.IsPresent);
                 WriteVerbose(string.Format(Resources.CompletePublishingProjectTemplate, fullPackage));
             }
             catch (Exception)
@@ -94,7 +100,7 @@ namespace Microsoft.WindowsAzure.Commands.Websites
         /// Generate dynamic parameters based on the connection strings in the Web.config.
         /// It will look at 2 Web.config files:
         /// 1. Web.config
-        /// 2. Web.<configuration>.config (like Web.Release.config)
+        /// 2. Web.&lt;configuration&gt;.config (like Web.Release.config)
         /// This only works when -ProjectFile is used and -ConnectionString is not used.
         /// </summary>
         /// <returns>The dynamic parameters.</returns>

@@ -21,6 +21,8 @@ using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Linq;
 using Microsoft.WindowsAzure.Commands.SqlDatabase.Properties;
+using Microsoft.Azure;
+using System.Data.Services.Client;
 
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Common
 {
@@ -202,7 +204,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Common
         /// <param name="response">The response containing the xml serialized error information.</param>
         /// <param name="info">The converted <see cref="ManagementServiceExceptionInfo"/> containing errors from the exception.</param>
         /// <returns><c>true</c> if parsing succeeded.</returns>
-        public static bool TryParse(System.Data.Services.Client.OperationResponse response, out ManagementServiceExceptionInfo info)
+        public static bool TryParse(OperationResponse response, out ManagementServiceExceptionInfo info)
         {
             if (response != null && response.Error != null)
             {
@@ -218,7 +220,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Common
         /// </summary>
         /// <param name="response">The response containing the xml serialized error information.</param>
         /// <returns>The converted <see cref="ManagementServiceExceptionInfo"/> containing errors from the exception.</returns>
-        public static ManagementServiceExceptionInfo Parse(System.Data.Services.Client.OperationResponse response)
+        public static ManagementServiceExceptionInfo Parse(OperationResponse response)
         {
             if (response == null)
             {

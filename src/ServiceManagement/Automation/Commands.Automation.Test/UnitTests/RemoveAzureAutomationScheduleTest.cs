@@ -44,25 +44,6 @@ namespace Microsoft.Azure.Commands.Automation.Test.UnitTests
         }
 
         [TestMethod]
-        public void RemoveAzureAutomationScheduleByIdSuccessfull()
-        {
-            // Setup
-            string accountName = "automation";
-            var scheduleId = new Guid();
-
-            this.mockAutomationClient.Setup(f => f.DeleteSchedule(accountName, scheduleId));
-
-            // Test
-            this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Id = scheduleId;
-            this.cmdlet.Force = true;
-            this.cmdlet.ExecuteCmdlet();
-
-            // Assert
-            this.mockAutomationClient.Verify(f => f.DeleteSchedule(accountName, scheduleId), Times.Once());
-        }
-
-        [TestMethod]
         public void RemoveAzureAutomationScheduleByNameSuccessfull()
         {
             // Setup

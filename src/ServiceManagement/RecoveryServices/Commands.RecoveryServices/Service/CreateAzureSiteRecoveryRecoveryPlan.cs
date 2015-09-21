@@ -17,10 +17,9 @@ using System.Diagnostics;
 using System.Management.Automation;
 using System.Threading;
 using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
+using Microsoft.Azure.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.WindowsAzure.Management.SiteRecovery.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -42,7 +41,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         [Parameter(Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        public string File {get; set;}
+        public string File { get; set; }
 
         /// <summary>
         /// Gets or sets switch parameter. This is required to wait for job completion.

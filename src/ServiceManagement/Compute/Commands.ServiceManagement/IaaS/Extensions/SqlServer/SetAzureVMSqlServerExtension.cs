@@ -16,15 +16,19 @@ using System;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
+using Microsoft.WindowsAzure.Commands.ServiceManagement;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using System.Net;
+using Microsoft.WindowsAzure.Management.Compute;
+using Microsoft.WindowsAzure.Management;
+using Hyak.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
 {
     /// <summary>
     /// Set-AzureVMSqlServerExtension implementation.
-    /// This cmdlet can be used to set AutoPatching / AutoBackup settings,  disable, uninstalls Sql Extension
+    /// This cmdlet can be used to set AutoPatching / AutoBackup / Key Vault Credential settings,  disable, uninstalls Sql Extension
     /// </summary>
     [Cmdlet(
         VerbsCommon.Set,
@@ -87,16 +91,31 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             HelpMessage = "The Automatic Backup configuration.")]
         [ValidateNotNullOrEmpty]
         public override AutoBackupSettings AutoBackupSettings { get; set; }
-
+        
+        [Parameter(
+            ParameterSetName = EnableExtensionParamSetName,
+            Mandatory = false,
+            Position = 5,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Azure Key Vault SQL Credentials configuration.")]
+        [ValidateNotNullOrEmpty]
+        public override KeyVaultCredentialSettings KeyVaultCredentialSettings { get; set; }
+        
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
-            ExecuteCommand();
+            this.ExecuteCommand();
         }
 
         internal void ExecuteCommand()
         {
             ValidateParameters();
+
+            if ((this.KeyVaultCredentialSettings != null) && !this.KeyVaultCredentialSettings.Enable)
+            {
+                WriteVerboseWithTimestamp("SQL Server Azure key vault disabled. Previously configured credentials are not removed but no status will be reported");
+            }
+
             RemovePredicateExtensions();
             AddResourceExtension();
             WriteObject(VM);
@@ -105,7 +124,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         protected override void ValidateParameters()
         {
             base.ValidateParameters();
-            this.ReferenceName = string.IsNullOrEmpty(this.ReferenceName) ? ExtensionDefaultName : this.ReferenceName;
+            this.ReferenceName = string.IsNullOrEmpty(this.ReferenceName) ? ExtensionPublishedName : this.ReferenceName;
             this.SetupAutoTelemetrySettings();
             this.PublicConfiguration = GetPublicConfiguration();
             this.PrivateConfiguration = GetPrivateConfiguration();

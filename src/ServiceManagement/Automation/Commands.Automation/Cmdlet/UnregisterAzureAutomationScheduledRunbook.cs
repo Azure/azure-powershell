@@ -13,53 +13,50 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Globalization;
 using System.Management.Automation;
 using System.Security.Permissions;
+using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
+using Microsoft.Azure.Commands.Automation.Properties;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
     /// Unregisters an azure automation scheduled runbook.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Unregister, "AzureAutomationScheduledRunbook", DefaultParameterSetName = ByRunbookName)]
-    [OutputType(typeof(Runbook))]
+    [Cmdlet(VerbsLifecycle.Unregister, "AzureAutomationScheduledRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByJobScheduleId)]
     public class UnregisterAzureAutomationScheduledRunbook : AzureAutomationBaseCmdlet
     {
         /// <summary>
-        /// The start runbook by runbook id parameter set.
-        /// </summary>
-        protected const string ByRunbookId = "ByRunbookId";
-
-        /// <summary>
-        /// The start runbook by runbook name parameter set.
-        /// </summary>
-        protected const string ByRunbookName = "ByRunbookName";
-
-        /// <summary>
         /// Gets or sets the runbook Id
         /// </summary>
-        [Parameter(ParameterSetName = ByRunbookId, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The runbook id.")]
-        [Alias("RunbookId")]
-        public Guid? Id { get; set; }
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByJobScheduleId, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The job schedule id.")]
+        public Guid? JobScheduleId { get; set; }
 
         /// <summary>
         /// Gets or sets the runbook name
         /// </summary>
-        [Parameter(ParameterSetName = ByRunbookName, Mandatory = true, ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookNameAndScheduleName, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The runbook name.")]
         [ValidateNotNullOrEmpty]
-        [Alias("RunbookName")]
-        public string Name { get; set; }
+        [Alias("Name")]
+        public string RunbookName { get; set; }
 
         /// <summary>
         /// Gets or sets the schedule that will be used to start the runbook.
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true,
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookNameAndScheduleName, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the schedule on which the runbook will be started.")]
         [ValidateNotNullOrEmpty]
         public string ScheduleName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the switch parameter not to confirm on removing the runbook.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Forces the command to run without asking for user confirmation.")]
+        public SwitchParameter Force { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.
@@ -67,20 +64,24 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationExecuteCmdlet()
         {
-            Runbook runbook;
-
-            if (this.Id.HasValue)
-            {
-                runbook = this.AutomationClient.UnregisterScheduledRunbook(
-                    this.AutomationAccountName, this.Id.Value, this.ScheduleName);
-            }
-            else
-            {
-                runbook = this.AutomationClient.UnregisterScheduledRunbook(
-                    this.AutomationAccountName, this.Name, this.ScheduleName);
-            }
-
-            this.WriteObject(runbook);
+            this.ConfirmAction(
+                this.Force.IsPresent,
+                string.Format(CultureInfo.CurrentCulture, Resources.RemoveAzureAutomationJobScheduleWarning),
+                string.Format(CultureInfo.CurrentCulture, Resources.RemoveAzureAutomationJobScheduleDescription),
+                this.JobScheduleId.HasValue ? this.JobScheduleId.Value.ToString() : this.RunbookName,
+                () =>
+                    {
+                        if (this.ParameterSetName == AutomationCmdletParameterSets.ByJobScheduleId)
+                        {
+                            this.AutomationClient.UnregisterScheduledRunbook(
+                                this.AutomationAccountName, this.JobScheduleId.Value);
+                        }
+                        else if (this.ParameterSetName == AutomationCmdletParameterSets.ByRunbookNameAndScheduleName)
+                        {
+                            this.AutomationClient.UnregisterScheduledRunbook(
+                                this.AutomationAccountName, this.RunbookName, this.ScheduleName);
+                        }
+                    });
         }
     }
 }

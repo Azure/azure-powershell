@@ -28,6 +28,8 @@ using ConfigurationSet = Microsoft.WindowsAzure.Commands.ServiceManagement.Model
 using DataVirtualHardDisk = Microsoft.WindowsAzure.Commands.ServiceManagement.Model.DataVirtualHardDisk;
 using OSVirtualHardDisk = Microsoft.WindowsAzure.Commands.ServiceManagement.Model.OSVirtualHardDisk;
 using RoleInstance = Microsoft.WindowsAzure.Management.Compute.Models.RoleInstance;
+using CSM = Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
+using MCM = Microsoft.WindowsAzure.Management.Compute.Models;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers
 {
@@ -115,6 +117,27 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers
             return roleNamesCollection;
         }
 
+        // Return the list of role names that match any of the given query.
+        public static RoleNamesCollection GetRoleNames(IList<RoleInstance> roleInstanceList, string[] roleNameQueries)
+        {
+            List<string> distinctRoleNameList = new List<string>();
+
+            foreach (var roleNameQuery in roleNameQueries)
+            {
+                var unionResult = distinctRoleNameList.Union(GetRoleNames(roleInstanceList, roleNameQuery));
+                distinctRoleNameList = unionResult.Distinct(StringComparer.OrdinalIgnoreCase).ToList();
+            }
+
+            var roleNamesCollection = new RoleNamesCollection();
+
+            foreach (var roleName in distinctRoleNameList)
+            {
+                roleNamesCollection.Add(roleName);
+            }
+
+            return roleNamesCollection;
+        }
+
         public static Collection<ConfigurationSet> MapConfigurationSets(IList<Management.Compute.Models.ConfigurationSet> configurationSets)
         {
             var result = new Collection<ConfigurationSet>();
@@ -127,7 +150,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers
             return result;
         }
 
-        public static  IList<Management.Compute.Models.ConfigurationSet> MapConfigurationSets(Collection<ConfigurationSet> configurationSets)
+        public static  IList<MCM.ConfigurationSet> MapConfigurationSets(Collection<ConfigurationSet> configurationSets)
         {
             var result = new Collection<Management.Compute.Models.ConfigurationSet>();
             foreach (var networkConfig in configurationSets.OfType<NetworkConfigurationSet>())
@@ -185,6 +208,39 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers
             }
 
             return name;
+        }
+
+        public static MCM.VMImageInput MapVMImageInput(CSM.VMImageInput vmImageInput)
+        {
+            var result = new MCM.VMImageInput();
+
+            if (vmImageInput == null)
+            {
+                return null;
+            }
+
+            if (vmImageInput.OSDiskConfiguration != null)
+            {
+                result.OSDiskConfiguration = new MCM.OSDiskConfiguration()
+                    {
+                        ResizedSizeInGB = vmImageInput.OSDiskConfiguration.ResizedSizeInGB
+                    };
+            }
+
+            if (vmImageInput.DataDiskConfigurations != null)
+            {
+                result.DataDiskConfigurations = new Collection<MCM.DataDiskConfiguration>();
+                foreach (var dataDiskConfig in vmImageInput.DataDiskConfigurations)
+                {
+                    result.DataDiskConfigurations.Add(
+                        new MCM.DataDiskConfiguration()
+                        {
+                            DiskName = dataDiskConfig.Name,
+                            ResizedSizeInGB = dataDiskConfig.ResizedSizeInGB
+                        });
+                }
+            }
+            return result;
         }
 
         public static string ConvertCustomDataFileToBase64(string fileName)

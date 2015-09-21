@@ -17,8 +17,10 @@ using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 using AutoMapper;
+using Microsoft.WindowsAzure.Commands.ServiceManagement;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Management.Compute;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Endpoints
 {
@@ -87,6 +89,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Endpoints
         [ValidateNotNullOrEmpty]
         public string LoadBalancerDistribution { get; set; }
 
+        [Parameter(HelpMessage = "The Virtual IP Name of the Virtual IP on which the endpoint is to be added.")]
+        [ValidateNotNullOrEmpty]
+        public string VirtualIPName { get; set; }
+
         protected override void ExecuteCommand()
         {
             ServiceManagementProfile.Initialize();
@@ -148,6 +154,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Endpoints
                     LoadBalancerName = this.InternalLoadBalancerName,
                     IdleTimeoutInMinutes = endpoint.IdleTimeoutInMinutes,
                     LoadBalancerDistribution = endpoint.LoadBalancerDistribution,
+                    VirtualIPName = endpoint.VirtualIPName,
                 }).ToList()
             };
 
@@ -205,6 +212,11 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Endpoints
             if (this.ParameterSpecified("LoadBalancerDistribution"))
             {
                 endpoint.LoadBalancerDistribution = this.LoadBalancerDistribution;
+            }
+
+            if (this.ParameterSpecified("VirtualIPName"))
+            {
+                endpoint.VirtualIPName = this.VirtualIPName;
             }
 
             if (this.ParameterSpecified("DirectServerReturn"))

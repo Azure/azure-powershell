@@ -19,7 +19,8 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Storage.Test.Service;
 using Microsoft.WindowsAzure.Storage.Blob;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob
 {
@@ -60,7 +61,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob
         {
             BlobMock = new MockStorageBlobManagement();
             MockCmdRunTime = new MockCommandRuntime();
-            ProfileClient.DataStore = new MockDataStore();
+            AzureSession.DataStore = new MemoryDataStore();
         }
 
         [TestCleanup]
@@ -131,7 +132,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob
         /// <param name="count">How many blobs need to be added to the container</param>
         private void AddContainerBlobs(string containerName, int count)
         {
-            List<ICloudBlob> blobList = null;
+            List<CloudBlob> blobList = null;
 
             if (BlobMock.ContainerBlobs.ContainsKey(containerName))
             {
@@ -140,7 +141,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Blob
             }
             else
             {
-                blobList = new List<ICloudBlob>();
+                blobList = new List<CloudBlob>();
                 BlobMock.ContainerBlobs.Add(containerName, blobList);
             }
 

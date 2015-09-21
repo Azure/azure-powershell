@@ -18,6 +18,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Management.Automation;
 using System.Security.Permissions;
 
@@ -30,8 +31,9 @@ namespace Microsoft.Azure.Commands.DataFactories
             HelpMessage = "The pipeline name.")]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
-HelpMessage = "The data factory object.")]
+        [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The data factory object.")]
         public PSDataFactory DataFactory { get; set; }
 
         [Parameter(ParameterSetName = ByFactoryName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
@@ -66,19 +68,21 @@ HelpMessage = "The data factory object.")]
                 DataFactoryName = DataFactoryName
             };
 
-            List<PSPipeline> pipelines = DataFactoryClient.FilterPSPipelines(filterOptions);
-
-            if (pipelines != null)
+            if (Name != null)
             {
-                if (pipelines.Count == 1 && Name != null)
+                List<PSPipeline> pipelines = DataFactoryClient.FilterPSPipelines(filterOptions);
+                if (pipelines != null && pipelines.Any())
                 {
-                    WriteObject(pipelines[0]);
+                    WriteObject(pipelines.First());
                 }
-                else
-                {
-                    WriteObject(pipelines, true);
-                }
+                return;
             }
+
+            // List pipelines until all pages are fetched.
+            do
+            {
+                WriteObject(DataFactoryClient.FilterPSPipelines(filterOptions), true);
+            } while (filterOptions.NextLink.IsNextPageLink());
         }
     }
 }

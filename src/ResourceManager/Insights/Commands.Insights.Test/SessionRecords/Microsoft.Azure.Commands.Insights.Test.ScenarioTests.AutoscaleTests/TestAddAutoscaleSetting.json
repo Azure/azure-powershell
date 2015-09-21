@@ -1,0 +1,61 @@
+{
+    "Entries": [
+        {
+            "RequestUri": "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourcegroups/Default-Web-EastUS/providers/microsoft.insights/autoscalesettings/MySetting?api-version=2014-04-01",
+            "RequestMethod": "PUT",
+            "RequestBody": "{ \"location\": \"East US\", \"properties\": { \"profiles\": [ { \"name\": \"adios\", \"capacity\": { \"minimum\": \"1\", \"maximum\": \"10\", \"default\": \"1\" }, \"rules\": [ { \"metricTrigger\": { \"metricName\": \"Requests\", \"metricResourceUri\": \"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/misitiooeltuyo\", \"timeGrain\": \"PT1M\", \"statistic\": \"Average\", \"timeWindow\": \"PT5M\", \"timeAggregation\": \"Average\", \"operator\": \"GreaterThan\", \"threshold\": 10.0 }, \"scaleAction\": { \"direction\": \"Increase\", \"type\": \"ChangeCount\", \"value\": \"1\", \"cooldown\": \"PT5M\" } }, { \"metricTrigger\": { \"metricName\": \"Requests\", \"metricResourceUri\": \"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/misitiooeltuyo\", \"timeGrain\": \"PT1M\", \"statistic\": \"Average\", \"timeWindow\": \"PT5M\", \"timeAggregation\": \"Average\", \"operator\": \"GreaterThan\", \"threshold\": 10.0 }, \"scaleAction\": { \"direction\": \"Increase\", \"type\": \"ChangeCount\", \"value\": \"2\", \"cooldown\": \"PT10M\" } } ], \"fixedDate\": { \"timeZone\": \"GMT\", \"start\": \"2015-03-05T14:00:00\", \"end\": \"2015-03-05T14:30:00\" } }, { \"name\": \"saludos\", \"capacity\": { \"minimum\": \"1\", \"maximum\": \"10\", \"default\": \"1\" }, \"rules\": [ { \"metricTrigger\": { \"metricName\": \"Requests\", \"metricResourceUri\": \"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/misitiooeltuyo\", \"timeGrain\": \"PT1M\", \"statistic\": \"Average\", \"timeWindow\": \"PT5M\", \"timeAggregation\": \"Average\", \"operator\": \"GreaterThan\", \"threshold\": 10.0 }, \"scaleAction\": { \"direction\": \"Increase\", \"type\": \"ChangeCount\", \"value\": \"1\", \"cooldown\": \"PT5M\" } }, { \"metricTrigger\": { \"metricName\": \"Requests\", \"metricResourceUri\": \"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/misitiooeltuyo\", \"timeGrain\": \"PT1M\", \"statistic\": \"Average\", \"timeWindow\": \"PT5M\", \"timeAggregation\": \"Average\", \"operator\": \"GreaterThan\", \"threshold\": 10.0 }, \"scaleAction\": { \"direction\": \"Increase\", \"type\": \"ChangeCount\", \"value\": \"2\", \"cooldown\": \"PT10M\" } } ], \"recurrence\": { \"frequency\": \"Minute\", \"schedule\": { \"timeZone\": \"GMT\", \"days\": [ \"1\", \"2\", \"3\" ], \"hours\": [ 5, 10, 15 ], \"minutes\": [ 15, 30, 45 ] } } } ], \"enabled\": true, \"name\": \"MySetting\", \"targetResourceUri\": \"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/serverFarms/DefaultServerFarm\" } }",
+            "RequestHeaders": {
+                "Accept": [ "application/json" ],
+                "User-Agent": [ "Microsoft.Azure.Insights.InsightsClient/0.9.0.0 AzurePowershell/v0.8.15" ],
+                "Content-Length": [ "4078" ],
+                "Content-Type": [ "application/json" ],
+                "Expect": [ "100-continue" ]
+            },
+            "ResponseBody": "{\"id\":\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.insights/alertrules/chiricutin\",\"name\":\"chiricutin\",\"type\":\"Microsoft.Insights/alertRules\",\"location\":\"East US\",\"tags\":{\"$type\":\"Microsoft.WindowsAzure.Management.Common.Storage.CasePreservedDictionary, Microsoft.WindowsAzure.Management.Common.Storage\",\"hidden-link:/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/misitiooeltuyo\":\"Resource\"},\"properties\":{\"name\":\"chiricutin\",\"description\":\"Pura Vida\",\"isEnabled\":true,\"condition\":{\"$type\":\"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.ThresholdRuleCondition, Microsoft.WindowsAzure.Management.Mon.Client\",\"odata.type\":\"Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition\",\"dataSource\":{\"$type\":\"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.RuleMetricDataSource, Microsoft.WindowsAzure.Management.Mon.Client\",\"odata.type\":\"Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource\",\"resourceUri\":\"/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/misitiooeltuyo\",\"metricName\":\"Requests\"},\"threshold\":2.0,\"windowSize\":\"PT5M\",\"timeAggregation\":\"Total\"},\"action\":{\"$type\":\"Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.RuleEmailAction, Microsoft.WindowsAzure.Management.Mon.Client\",\"odata.type\":\"Microsoft.Azure.Management.Insights.Models.RuleEmailAction\",\"customEmails\":[]},\"lastUpdatedTime\":\"2015-03-03T19:08:25.8741729Z\",\"provisioningState\":\"Succeeded\"}}",
+            "ResponseHeaders": {
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Date": [
+                    "Web, 11 Mar 2015 17:17:07 GMT"
+                ],
+                "Expires": [
+                    "-1"
+                ],
+                "Pragma": [
+                    "no-cache"
+                ],
+                "Content-Length": [
+                    "1612"
+                ],
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "x-ms-ratelimit-remaining-subscription-writes": [
+                    "1199"
+                ],
+                "x-ms-request-id": [
+                    "47af504c-88a1-49c5-9766-e397d54e490b"
+                ],
+                "x-ms-correlation-request-id": [
+                    "e223e5fa-7d3c-4d2c-a2e9-aed3011aefb7"
+                ],
+                "x-ms-routing-request-id": [
+                    "WESTUS:20150303T190828Z:e223e5fa-7d3c-4d2c-a2e9-aed3011aefb7"
+                ],
+                "Strict-Transport-Security": [
+                    "max-age=31536000; includeSubDomains"
+                ]
+            },
+            "StatusCode": 201
+        }
+    ],
+  "Names": {
+    "Test-AddAutoscaleSetting": [
+      ""
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "a93fb07c-6c93-40be-bf3b-4f0deba10f4b"
+  }
+}

@@ -20,6 +20,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Properties;
 using Moq;
 using System.IO;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
@@ -27,6 +28,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
     public class CsPackUtilTests
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         void RetrieveRightErrorFromCsPackProcess()
         {
             string serviceName = "AzureService";

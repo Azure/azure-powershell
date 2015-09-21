@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.DataFactories.Properties;
 using Microsoft.Azure.Management.DataFactories;
 using Microsoft.Azure.Management.DataFactories.Models;
 using Microsoft.WindowsAzure;
+using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
@@ -65,6 +66,12 @@ namespace Microsoft.Azure.Commands.DataFactories
                             parameters.Name,
                             parameters.RawJsonContent))
                     {DataFactoryName = parameters.DataFactoryName, ResourceGroupName = parameters.ResourceGroupName};
+
+                if (!DataFactoryCommonUtilities.IsSucceededProvisioningState(hub.ProvisioningState))
+                {
+                    // ToDo: service side should set the error message for provisioning failures.
+                    throw new ProvisioningFailedException(Resources.HubProvisioningFailed);
+                }
             };
 
             if (parameters.Force)
@@ -94,12 +101,6 @@ namespace Microsoft.Azure.Commands.DataFactories
                     createHub);
             }
 
-            if (!DataFactoryCommonUtilities.IsSucceededProvisioningState(hub.ProvisioningState))
-            {
-                // ToDo: service side should set the error message for provisioning failures.
-                throw new ProvisioningFailedException(Resources.HubProvisioningFailed);
-            }
-
             return hub;
         }
 
@@ -114,11 +115,21 @@ namespace Microsoft.Azure.Commands.DataFactories
                        };
         }
 
-        public virtual List<PSHub> ListHubs(string resourceGroupName, string dataFactoryName)
+        public virtual List<PSHub> ListHubs(HubFilterOptions filterOptions)
         {
             List<PSHub> hubs = new List<PSHub>();
 
-            var response = DataPipelineManagementClient.Hubs.List(resourceGroupName, dataFactoryName);
+            HubListResponse response;
+            if (filterOptions.NextLink.IsNextPageLink())
+            {
+                response = DataPipelineManagementClient.Hubs.ListNext(filterOptions.NextLink);
+            }
+            else
+            {
+                response = DataPipelineManagementClient.Hubs.List(filterOptions.ResourceGroupName,
+                    filterOptions.DataFactoryName);
+            }
+            filterOptions.NextLink = response != null ? response.NextLink : null;
 
             if (response != null && response.Hubs != null)
             {
@@ -126,8 +137,8 @@ namespace Microsoft.Azure.Commands.DataFactories
                 {
                     hubs.Add(new PSHub(hub)
                                  {
-                                     ResourceGroupName = resourceGroupName,
-                                     DataFactoryName = dataFactoryName
+                                     ResourceGroupName = filterOptions.ResourceGroupName,
+                                     DataFactoryName = filterOptions.DataFactoryName
                                  });
                 }
             }
@@ -137,7 +148,7 @@ namespace Microsoft.Azure.Commands.DataFactories
 
         public virtual HttpStatusCode DeleteHub(string resourceGroupName, string dataFactoryName, string hubName)
         {
-            OperationResponse response = DataPipelineManagementClient.Hubs.Delete(
+            AzureOperationResponse response = DataPipelineManagementClient.Hubs.Delete(
                 resourceGroupName,
                 dataFactoryName,
                 hubName);
@@ -165,7 +176,7 @@ namespace Microsoft.Azure.Commands.DataFactories
             }
             else
             {
-                hubs.AddRange(ListHubs(filterOptions.ResourceGroupName, filterOptions.DataFactoryName));
+                hubs.AddRange(ListHubs(filterOptions));
             }
 
             return hubs;

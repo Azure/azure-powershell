@@ -42,6 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         private static string currentTestEnvironment = null;
         private static CloudBlobContainer blobContainer;
         private const string VhdFilesContainerName = "vhdfiles";
+        private const string toolsContainerName = "tools";
 
         private static Dictionary<string, string> environment = new Dictionary<string, string>();
         public static Dictionary<string, string> PowerShellVariables { get; private set; }
@@ -111,6 +112,17 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                 ICloudBlob blob = blobClient.GetBlobReferenceFromServer(blobItem.Uri);
                 Console.WriteLine("Downloading file {0} from blob Uri {1}", blob.Name, blob.Uri);
                 FileStream blobStream = new FileStream(Path.Combine(downloadDirectoryPath, blob.Name), FileMode.Create);
+                blob.DownloadToStream(blobStream);
+                blobStream.Flush();
+                blobStream.Close();
+            }
+
+            blobContainer = blobClient.GetContainerReference(toolsContainerName);
+            foreach (IListBlobItem blobItem in blobContainer.ListBlobs())
+            {
+                ICloudBlob blob = blobClient.GetBlobReferenceFromServer(blobItem.Uri);
+                Console.WriteLine("Downloading file {0} from blob Uri {1}", blob.Name, blob.Uri);
+                FileStream blobStream = new FileStream(Path.Combine(downloadDirectoryPath, @"..\..\", blob.Name), FileMode.Create);
                 blob.DownloadToStream(blobStream);
                 blobStream.Flush();
                 blobStream.Close();
@@ -239,7 +251,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             }
         }
 
-        public static void CopyTestData(string srcContainer, string srcBlob, string destContainer, string destBlob)
+        public static void CopyTestData(string srcContainer, string srcBlob, string destContainer, string destBlob = null)
         {
             ServiceManagementCmdletTestHelper vmPowershellCmdlets = new ServiceManagementCmdletTestHelper();
             Process currentProcess = Process.GetCurrentProcess();
@@ -262,7 +274,15 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             // Make SAS Uri for the source blob.
             string srcSasUri = Utilities.GenerateSasUri(CredentialHelper.CredentialBlobUriFormat, storageAccount, storageAccountKey, srcContainer, srcBlob);
 
-            vmPowershellCmdlets.RunPSScript(string.Format("Start-AzureStorageBlobCopy -SrcUri \"{0}\" -DestContainer {1} -DestBlob {2} -Force", srcSasUri, destContainer, destBlob));
+            if (string.IsNullOrEmpty(destBlob))
+            {
+                vmPowershellCmdlets.RunPSScript(string.Format("Start-AzureStorageBlobCopy -SrcContainer {0} -SrcBlob {1} -DestContainer {2} -Force", srcContainer, srcBlob, destContainer));
+                destBlob = srcBlob;
+            }
+            else
+            {
+                vmPowershellCmdlets.RunPSScript(string.Format("Start-AzureStorageBlobCopy -SrcUri \"{0}\" -DestContainer {1} -DestBlob {2} -Force", srcSasUri, destContainer, destBlob));
+            }
 
             for (int i = 0; i < 60; i++)
             {

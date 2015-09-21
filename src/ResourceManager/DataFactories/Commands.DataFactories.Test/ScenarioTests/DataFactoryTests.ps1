@@ -75,38 +75,6 @@ function Test-DeleteDataFactoryWithDataFactoryParameter
 
 <#
 .SYNOPSIS
-Nagative test. Get resources with an empty data factory name.
-#>
-function Test-GetDataFactoryWithEmptyName
-{	
-    $dfname = ""
-    $rgname = Get-ResourceGroupName
-    $rglocation = Get-ProviderLocation ResourceManagement
-    
-    New-AzureResourceGroup -Name $rgname -Location $rglocation -Force
-    
-    # Test
-    Assert-ThrowsContains { Get-AzureDataFactory -ResourceGroupName $rgname -Name $dfname } "empty"    
-}
-
-<#
-.SYNOPSIS
-Nagative test. Get resources with a data factory name which only contains white space.
-#>
-function Test-GetDataFactoryWithWhiteSpaceName
-{	
-    $dfname = "   "
-    $rgname = Get-ResourceGroupName
-    $rglocation = Get-ProviderLocation ResourceManagement
-    
-    New-AzureResourceGroup -Name $rgname -Location $rglocation -Force
-    
-    # Test
-    Assert-ThrowsContains { Get-AzureDataFactory -ResourceGroupName $rgname -Name $dfname } "Value cannot be null"    
-}
-
-<#
-.SYNOPSIS
 Test piping support.
 #>
 function Test-DataFactoryPiping

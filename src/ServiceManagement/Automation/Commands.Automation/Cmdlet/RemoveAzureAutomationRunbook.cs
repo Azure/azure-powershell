@@ -16,6 +16,7 @@ using System;
 using System.Globalization;
 using System.Management.Automation;
 using System.Security.Permissions;
+using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Properties;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
@@ -23,30 +24,13 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Removes an azure automation runbook.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureAutomationRunbook", SupportsShouldProcess = true, DefaultParameterSetName = ByRunbookName)]
+    [Cmdlet(VerbsCommon.Remove, "AzureAutomationRunbook", SupportsShouldProcess = true, DefaultParameterSetName = AutomationCmdletParameterSets.ByRunbookName)]
     public class RemoveAzureAutomationRunbook : AzureAutomationBaseCmdlet
     {
         /// <summary>
-        /// The remove runbook by runbook id parameter set.
-        /// </summary>
-        private const string ByRunbookId = "ByRunbookId";
-
-        /// <summary>
-        /// The remove runbook by runbook name parameter set.
-        /// </summary>
-        private const string ByRunbookName = "ByRunbookName";
-
-        /// <summary>
-        /// Gets or sets the runbook id
-        /// </summary>
-        [Parameter(ParameterSetName = ByRunbookId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook id.")]
-        [Alias("RunbookId")]
-        public Guid? Id { get; set; }
-
-        /// <summary>
         /// Gets or sets the runbook name
         /// </summary>
-        [Parameter(ParameterSetName = ByRunbookName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByRunbookName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The runbook name.")]
         [Alias("RunbookName")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -54,7 +38,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the switch parameter not to confirm on removing the runbook.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Do not confirm on removing the runbook.")]
+        [Parameter(Mandatory = false, HelpMessage = "Forces the command to run without asking for user confirmation.")]
         public SwitchParameter Force { get; set; }
 
         /// <summary>
@@ -67,20 +51,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 this.Force.IsPresent,
                 string.Format(CultureInfo.CurrentCulture, Resources.RemoveAzureAutomationRunbookWarning),
                 string.Format(CultureInfo.CurrentCulture, Resources.RemoveAzureAutomationRunbookDescription),
-                this.Id.HasValue ? this.Id.Value.ToString() : this.Name,
+                this.Name,
                 () =>
-                    {
-                        if (this.Id.HasValue)
-                        {
-                            // ByRunbookId
-                            this.AutomationClient.DeleteRunbook(this.AutomationAccountName, this.Id.Value);
-                        }
-                        else
-                        {
-                            // ByRunbookName
-                            this.AutomationClient.DeleteRunbook(this.AutomationAccountName, this.Name);
-                        }
-                    });
+                {   
+                    AutomationClient.DeleteRunbook(this.AutomationAccountName, this.Name);
+                });
         }
     }
 }

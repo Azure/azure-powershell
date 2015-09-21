@@ -18,12 +18,20 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 {
     public class UpdateAzureDiskCmdletInfo : CmdletsInfo
     {
-        public UpdateAzureDiskCmdletInfo(string diskName, string label)
+        public UpdateAzureDiskCmdletInfo(string diskName, string label, int? resizedSize)
         {
             cmdletName = Utilities.UpdateAzureDiskCmdletName;
             
             this.cmdletParams.Add(new CmdletParam("DiskName", diskName));
-            this.cmdletParams.Add(new CmdletParam("Label", label));            
+
+            if (label != null)
+            {
+                this.cmdletParams.Add(new CmdletParam("Label", label));
+            }
+            if (resizedSize != null)
+            {
+                this.cmdletParams.Add(new CmdletParam("ResizedSizeInGB", resizedSize));
+            }
         }
     }
 }

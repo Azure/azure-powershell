@@ -12,24 +12,59 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Management.Automation;
-using System.Text.RegularExpressions;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.IO;
+    using System.Linq;
+    using System.Management.Automation;
+    using System.Text.RegularExpressions;
+
     /// <summary>
     /// Name utility
     /// </summary>
     internal class NameUtil
     {
+        public const int MaxFileNameLength = 1024;
+
         /// <summary>
         /// Max file length in windows
         /// </summary>
         public const int WindowsMaxFileNameLength = 256;
+
+        /// <summary>
+        /// Max length for Stored Access Policy name
+        /// </summary>
+        public const int MaxStoredAccessPolicyNameLength = 64;
+
+        /// <summary>
+        /// Check whether the blob name is valid. If not throw an exception
+        /// </summary>
+        /// <param name="name">Blob name</param>
+        public static void ValidateBlobName(string name)
+        {
+            if (!NameUtil.IsValidBlobName(name))
+            {
+                throw new ArgumentException(String.Format(
+                    CultureInfo.CurrentCulture,
+                    Resources.InvalidBlobName,
+                    name));
+            }
+        }
+
+        /// <summary>
+        /// Check whether the container name is valid. If not throw an exception
+        /// </summary>
+        /// <param name="name">Container name</param>
+        public static void ValidateContainerName(string name)
+        {
+            if (!NameUtil.IsValidContainerName(name))
+            {
+                throw new ArgumentException(String.Format(CultureInfo.CurrentCulture, Resources.InvalidContainerName, name));
+            }
+        }
 
         /// <summary>
         /// Is valid container name <see cref="http://msdn.microsoft.com/en-us/library/windowsazure/dd135715.aspx"/>
@@ -206,6 +241,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 bool forbidden = forbiddenList.Contains(realName);
                 return !forbidden;
             }
+        }
+
+        public static bool IsValidStoredAccessPolicyName(string policyName)
+        {
+            if (string.IsNullOrEmpty(policyName) || policyName.Length > MaxStoredAccessPolicyNameLength)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         public static string ResolveBlobName(string blobName)

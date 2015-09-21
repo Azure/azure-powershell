@@ -19,7 +19,9 @@ using System.Xml.Linq;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
+using Microsoft.Azure;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
 {
@@ -108,7 +110,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.HostedServices
 
             WriteVerboseWithTimestamp(Resources.GetDeploymentBeginOperation);
             DeploymentGetResponse deploymentGetResponse = this.ComputeClient.Deployments.GetBySlot(this.ServiceName, slot);
-            operation = GetOperationNewSM(deploymentGetResponse.RequestId);
+            operation = GetOperation(deploymentGetResponse.RequestId);
             WriteVerboseWithTimestamp(Resources.GetDeploymentCompletedOperation);
 
             return deploymentGetResponse;

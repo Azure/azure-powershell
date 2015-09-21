@@ -15,40 +15,44 @@
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.Profile;
+using Microsoft.WindowsAzure.Commands.Profile.Models;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Environment
 {
     public class GetAzureEnvironmentTests : TestBase
     {
-        private MockDataStore dataStore;
+        private MemoryDataStore dataStore;
 
         public GetAzureEnvironmentTests()
         {
-            dataStore = new MockDataStore();
-            ProfileClient.DataStore = dataStore;
+            dataStore = new MemoryDataStore();
+            AzureSession.DataStore = dataStore;
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetsAzureEnvironments()
         {
-            List<PSObject> environments = null;
+            List<PSAzureEnvironment> environments = null;
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
             commandRuntimeMock.Setup(c => c.WriteObject(It.IsAny<object>(), It.IsAny<bool>()))
-                .Callback<object, bool>((e, _) => environments = (List<PSObject>)e);
+                .Callback<object, bool>((e, _) => environments = (List<PSAzureEnvironment>)e);
 
             GetAzureEnvironmentCommand cmdlet = new GetAzureEnvironmentCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object
             };
 
+            AzurePSCmdlet.CurrentProfile = new AzureProfile();
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
@@ -57,12 +61,13 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetsAzureEnvironment()
         {
-            List<PSObject> environments = null;
+            List<PSAzureEnvironment> environments = null;
             Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
             commandRuntimeMock.Setup(c => c.WriteObject(It.IsAny<object>(), It.IsAny<bool>()))
-                .Callback<object, bool>((e, _) => environments = (List<PSObject>)e);
+                .Callback<object, bool>((e, _) => environments = (List<PSAzureEnvironment>)e);
 
             GetAzureEnvironmentCommand cmdlet = new GetAzureEnvironmentCommand()
             {
@@ -70,6 +75,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
                 Name = EnvironmentName.AzureChinaCloud
             };
 
+            AzurePSCmdlet.CurrentProfile = new AzureProfile();
             cmdlet.InvokeBeginProcessing();
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();

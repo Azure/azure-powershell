@@ -13,10 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Model;
-using Microsoft.Azure.Commands.Network.NetworkSecurityGroup.Utilities;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.NetworkSecurityGroup.Model;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.NetworkSecurityGroup.Utilities;
 
-namespace Microsoft.Azure.Commands.Network.NetworkSecurityGroup
+namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.NetworkSecurityGroup
 {
     [Cmdlet(VerbsCommon.Set, "AzureNetworkSecurityRule"), OutputType(typeof(INetworkSecurityGroup))]
     public class SetAzureNetworkSecurityRule : NetworkSecurityGroupConfigurationBaseCmdlet

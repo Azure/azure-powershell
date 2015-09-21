@@ -34,6 +34,11 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
     }
 
+    public static class StorSimpleConstants
+    {
+        public const string DefaultStorageAccountEndpoint = "core.windows.net";
+    }
+
     public class SDKVersion
     {
         public const string Version180 = "1.8.0";

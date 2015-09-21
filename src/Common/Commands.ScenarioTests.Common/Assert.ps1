@@ -89,6 +89,44 @@ function Assert-ThrowsContains
   throw "No exception occured";
 }
 
+######################
+#
+# Validate that the given code block throws the given exception
+#
+#    param [ScriptBlock] $script : The code to test
+#    param [ScriptBlock] $compare: Predicate used to determine if the message meets the criteria (-like)
+#######################
+function Assert-ThrowsLike
+{
+  param([ScriptBlock] $script, [string] $compare)
+  try 
+  {
+    &$script
+  }
+  catch 
+  {
+    if ($message -ne "")
+    {
+      $actualMessage = $_.Exception.Message
+      Write-Output ("Caught exception: '$actualMessage'")
+      if ($actualMessage -like $compare)
+      {
+        return $true;
+      }
+      else
+      {
+        throw "Expected exception is not like the expected text '$compare', the actual message is '$actualMessage'";
+      }
+    }
+    else
+    {
+      return $true;
+    }
+  }
+
+  throw "No exception occured";
+}
+
 <#
 .SYNOPSIS
 Given a list of variable names, assert that all of them are defined

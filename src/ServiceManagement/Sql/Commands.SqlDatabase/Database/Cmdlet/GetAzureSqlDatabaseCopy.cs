@@ -22,7 +22,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
 {
     using DatabaseCopyModel = Model.DatabaseCopy;
-    using Microsoft.Azure.Common.Extensions;
+    using Microsoft.Azure.Common.Authentication;
 
     /// <summary>
     /// Retrieves a list of all ongoing Microsoft Azure SQL Database copy operations in the given
@@ -118,7 +118,8 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
             // Use the provided ServerDataServiceContext or create one from the
             // provided ServerName and the active subscription.
             IServerDataServiceContext context = ServerDataServiceCertAuth.Create(this.ServerName,
-                AzureSession.CurrentContext.Subscription);
+                Profile,
+                Profile.Context.Subscription);
 
             try
             {

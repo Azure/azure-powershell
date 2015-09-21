@@ -25,19 +25,4 @@ catch [System.Management.Automation.CommandNotFoundException] {
     }
 }
 
-#The detecting logic for django is not decent, but the best we can do so far.    
-if (!(Test-Path "$env:SystemDrive\Python27")) {
-    Write-Host "download Python, Pip and Django to $tempFileShare"
-    $tempFileShare = $env:temp
-    $client = New-Object System.Net.WebClient
-    $client.DownloadFile("https://www.python.org/ftp/python/2.7.5/python-2.7.5.msi", "$tempFileShare\python-2.7.5.msi")
-    $client.DownloadFile("https://raw.github.com/pypa/pip/master/contrib/get-pip.py", "$tempFileShare\get-pip.py");        
-    Write-Host "Install..."
-    Start-Process msiexec.exe "/i $tempFileShare\python-2.7.5.msi /passive" -Wait
-    Start-Process "$env:SystemDrive\Python27\python.exe" "$tempFileShare\get-pip.py" -Wait
-    Start-Process "$env:SystemDrive\Python27\scripts\pip.exe" "install Django==1.5" -Wait
-    Remove-Item "$tempFileShare\python-2.7.5.msi"
-    Remove-Item "$tempFileShare\get-pip.py"
-}
-
 $env:AZURE_TEST_MODE="Playback"

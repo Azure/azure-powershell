@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
@@ -24,6 +25,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
     public class ServicePathInfoTests
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ServicePathInfoTest()
         {
             PowerShellProjectPathInfo paths = new PowerShellProjectPathInfo("MyService");
@@ -31,6 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ServicePathInfoTestEmptyRootPathFail()
         {
             try
@@ -46,6 +49,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ServicePathInfoTestNullRootPathFail()
         {
             try
@@ -61,6 +65,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ServicePathInfoTestInvalidRootPathFail()
         {
             foreach (string invalidDirectoryName in Test.Utilities.Common.Data.InvalidServiceRootName)

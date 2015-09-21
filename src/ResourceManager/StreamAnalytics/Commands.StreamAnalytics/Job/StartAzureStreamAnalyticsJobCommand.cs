@@ -19,6 +19,7 @@ using System.Net;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.StreamAnalytics.Models;
 using Microsoft.Azure.Commands.StreamAnalytics.Properties;
+using Microsoft.Azure.Management.StreamAnalytics.Models;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics
 {
@@ -29,6 +30,14 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The desired output start mode for the azure stream analytics job.")]
+        [ValidateNotNullOrEmpty]
+        public string OutputStartMode { get; set; }
+
+        [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The desired output start time for the azure stream analytics job.")]
+        [ValidateNotNullOrEmpty]
+        public DateTime? OutputStartTime { get; set; }
+
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
@@ -37,10 +46,15 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
                 throw new PSArgumentNullException("ResourceGroupName");
             }
 
-            JobParametersBase parameter = new JobParametersBase()
+            StartPSJobParameter parameter = new StartPSJobParameter()
                 {
                     ResourceGroupName = ResourceGroupName,
-                    JobName = Name
+                    JobName = Name,
+                    StartParameters = new JobStartParameters()
+                    {
+                        OutputStartMode = OutputStartMode,
+                        OutputStartTime = OutputStartTime
+                    }
                 };
 
             try

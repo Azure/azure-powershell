@@ -17,9 +17,9 @@ using System.IO;
 using System.Linq;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Testing;
+using Microsoft.Azure.Test;
 using Xunit;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
@@ -100,7 +100,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 modules.Add("Common.ps1");
 
                 helper.SetupEnvironment(AzureModule.AzureServiceManagement);
-                helper.SetupModules(AzureModule.AzureServiceManagement, modules.ToArray());
+                helper.SetupModulesFromCommon(AzureModule.AzureServiceManagement, modules.ToArray());
 
                 helper.RunPowerShellTest(scripts);
             }

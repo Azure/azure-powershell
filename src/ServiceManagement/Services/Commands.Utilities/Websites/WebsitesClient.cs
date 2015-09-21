@@ -27,7 +27,7 @@ using Microsoft.Build.Framework;
 using Microsoft.Build.Logging;
 using Microsoft.Web.Deployment;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -47,8 +47,9 @@ using Newtonsoft.Json.Linq;
 namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
 {
     using Utilities = Services.WebEntities;
-    using Microsoft.Azure.Common.Extensions.Models;
-    using Microsoft.Azure.Common.Extensions;
+    using Microsoft.Azure.Common.Authentication.Models;
+    using Microsoft.Azure.Common.Authentication;
+    using Hyak.Common;
 
     public class WebsitesClient : IWebsitesClient
     {
@@ -69,11 +70,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
         /// </summary>
         /// <param name="subscription">Subscription containing websites to manipulate</param>
         /// <param name="logger">The logger action</param>
-        public WebsitesClient(AzureSubscription subscription, Action<string> logger)
+        public WebsitesClient(AzureProfile profile, AzureSubscription subscription, Action<string> logger)
         {
             Logger = logger;
-            cloudServiceClient = new CloudServiceClient(subscription, debugStream: logger);
-            WebsiteManagementClient = AzureSession.ClientFactory.CreateClient<WebSiteManagementClient>(subscription, AzureEnvironment.Endpoint.ServiceManagement);
+            cloudServiceClient = new CloudServiceClient(profile, subscription, debugStream: logger);
+            WebsiteManagementClient = AzureSession.ClientFactory.CreateClient<WebSiteManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement);
             this.subscription = subscription;
         }
 
@@ -1211,10 +1212,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
         /// <param name="websiteName">The name of the web site.</param>
         /// <param name="slot">The name of the slot.</param>
         /// <param name="package">The WebDeploy package.</param>
+        /// <param name="setParametersFile">The SetParametersFile.xml used to override internal package configuration.</param>
         /// <param name="connectionStrings">The connection strings to overwrite the ones in the Web.config file.</param>
         /// <param name="skipAppData">Skip app data</param>
         /// <param name="doNotDelete">Do not delete files at destination</param>
-        public void PublishWebProject(string websiteName, string slot, string package, Hashtable connectionStrings, bool skipAppData, bool doNotDelete)
+        public void PublishWebProject(string websiteName, string slot, string package, string setParametersFile, Hashtable connectionStrings, bool skipAppData, bool doNotDelete)
         {
             if (File.GetAttributes(package).HasFlag(FileAttributes.Directory))
             {
@@ -1222,7 +1224,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
             }
             else
             {
-                PublishWebProjectFromPackageFile(websiteName, slot, package, connectionStrings, skipAppData, doNotDelete);
+                PublishWebProjectFromPackageFile(websiteName, slot, package, setParametersFile, connectionStrings, skipAppData, doNotDelete);
             }
         }
 
@@ -1232,10 +1234,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
         /// <param name="websiteName">The name of the web site.</param>
         /// <param name="slot">The name of the slot.</param>
         /// <param name="package">The WebDeploy package zip file.</param>
+        /// <param name="setParametersFile">The SetParametersFile.xml used to override internal package configuration.</param>
         /// <param name="connectionStrings">The connection strings to overwrite the ones in the Web.config file.</param>
         /// <param name="skipAppData">Skip app data</param>
         /// <param name="doNotDelete">Do not delete files at destination</param>
-        private void PublishWebProjectFromPackageFile(string websiteName, string slot, string package, Hashtable connectionStrings, bool skipAppData, bool doNotDelete)
+        private void PublishWebProjectFromPackageFile(string websiteName, string slot, string package, string setParametersFile, Hashtable connectionStrings, bool skipAppData, bool doNotDelete)
         {
             DeploymentBaseOptions remoteBaseOptions = CreateRemoteDeploymentBaseOptions(websiteName, slot);
             DeploymentBaseOptions localBaseOptions = new DeploymentBaseOptions();
@@ -1246,6 +1249,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
 
             using (var deployment = DeploymentManager.CreateObject(DeploymentWellKnownProvider.Package, package, localBaseOptions))
             {
+                if (!string.IsNullOrEmpty(setParametersFile))
+                {
+                    deployment.SyncParameters.Load(setParametersFile, true);
+                }
+
                 DeploymentSyncParameter providerPathParameter = new DeploymentSyncParameter(
                     "Provider Path Parameter",
                     "Provider Path Parameter",
@@ -1263,8 +1271,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Websites
                     null);
                 providerPathParameter.Add(iisAppEntry);
                 providerPathParameter.Add(setAclEntry);
-                deployment.SyncParameters.Add(providerPathParameter);
 
+                deployment.SyncParameters.Add(providerPathParameter);
+                
                 // Replace the connection strings in Web.config with the ones user specifies from the cmdlet.
                 ReplaceConnectionStrings(deployment, connectionStrings);
 

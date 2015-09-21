@@ -12,14 +12,15 @@
 // limitations under the License.
 // ---------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Queue;
-using Microsoft.WindowsAzure.Storage.Queue.Protocol;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.Queue;
+    using Microsoft.WindowsAzure.Storage.Queue.Protocol;
+
     /// <summary>
     /// Storage queue management interface
     /// </summary>
@@ -83,6 +84,25 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.Contract
         /// <param name="options">Queue request options </param>
         /// <param name="operationContext">Operation context</param>
         /// <returns>QueuePermissions object</returns>
-        QueuePermissions GetPermissions(CloudQueue queue, QueueRequestOptions options, OperationContext operationContext);
+        QueuePermissions GetPermissions(CloudQueue queue, QueueRequestOptions options = null, OperationContext operationContext = null);
+
+       
+        /// <summary>
+        /// Get queue permission async
+        /// </summary>
+        /// <param name="queue"></param>
+        /// <param name="requestOptions"></param>
+        /// <param name="operationContext"></param>
+        /// <returns></returns>
+        Task<QueuePermissions> GetPermissionsAsync(CloudQueue queue, QueueRequestOptions requestOptions = null, OperationContext operationContext = null);
+
+        /// <summary>
+        /// set queue permission
+        /// </summary>
+        /// <param name="queue"></param>
+        /// <param name="queuePermissions"></param>
+        /// <param name="requestOptions"></param>
+        /// <param name="operationContext"></param>
+        void SetPermissions(CloudQueue queue, QueuePermissions queuePermissions, QueueRequestOptions requestOptions = null, OperationContext operationContext = null);
     }
 }

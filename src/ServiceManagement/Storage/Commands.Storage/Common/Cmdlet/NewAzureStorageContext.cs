@@ -17,12 +17,12 @@ using System.Globalization;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Extensions.Models;
+using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
-using Microsoft.Azure.Common.Extensions;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
 {
@@ -296,20 +296,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                 throw new ArgumentException(String.Format(Resources.ObjectCannotBeNull, StorageNouns.StorageAccountName));
             }
 
+            if (string.IsNullOrEmpty(endPoint))
+            {
+                return GetStorageAccountWithAzureEnvironment(credential, storageAccountName, useHttps);
+            }
+
             string blobEndpoint = string.Empty;
             string tableEndpoint = string.Empty;
             string queueEndpoint = string.Empty;
             string fileEndpoint = string.Empty;
-            string domain = string.Empty;
-
-            if (string.IsNullOrEmpty(endPoint))
-            {
-                domain = GetDefaultEndPointDomain();
-            }
-            else
-            {
-                domain = endPoint.Trim();
-            }
+            string domain = endPoint.Trim();
 
             if (useHttps)
             {
@@ -332,7 +328,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         /// <summary>
         /// Get storage account and use specific azure environment
         /// </summary>
-        /// <param name="credential">Storage credentail</param>
+        /// <param name="credential">Storage credential</param>
         /// <param name="storageAccountName">Storage account name, it's used for build end point</param>
         /// <param name="useHttps">Use secure Http protocol</param>
         /// <param name="azureEnvironmentName">Environment name</param>
@@ -341,29 +337,51 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             string storageAccountName, bool useHttps, string azureEnvironmentName = "")
         {
             AzureEnvironment azureEnvironment = null;
-            
-            if (string.IsNullOrEmpty(azureEnvironmentName))
+
+            if (null != Profile)
             {
-                azureEnvironment = AzureSession.CurrentContext.Environment;
+                if (string.IsNullOrEmpty(azureEnvironmentName) && (null != Profile.Context))
+                {
+                    azureEnvironment = Profile.Context.Environment;
+
+                    if (null == azureEnvironment)
+                    {
+                        azureEnvironmentName = EnvironmentName.AzureCloud;
+                    }
+                }
+
+                if (null == azureEnvironment)
+                {
+                    try
+                    {
+                        var profileClient = new ProfileClient(Profile);
+                        azureEnvironment = profileClient.GetEnvironmentOrDefault(azureEnvironmentName);
+                    }
+                    catch (ArgumentException e)
+                    {
+                        throw new ArgumentException(e.Message + " " + string.Format(CultureInfo.CurrentCulture, Resources.ValidEnvironmentName, EnvironmentName.AzureCloud, EnvironmentName.AzureChinaCloud));
+                    }
+                }
             }
-            else
+
+            if (null != azureEnvironment)
             {
                 try
                 {
-                    azureEnvironment = DefaultProfileClient.GetEnvironmentOrDefault(azureEnvironmentName);
+                    Uri blobEndPoint = azureEnvironment.GetStorageBlobEndpoint(storageAccountName, useHttps);
+                    Uri queueEndPoint = azureEnvironment.GetStorageQueueEndpoint(storageAccountName, useHttps);
+                    Uri tableEndPoint = azureEnvironment.GetStorageTableEndpoint(storageAccountName, useHttps);
+                    Uri fileEndPoint = azureEnvironment.GetStorageFileEndpoint(storageAccountName, useHttps);
+
+                    return new CloudStorageAccount(credential, blobEndPoint, queueEndPoint, tableEndPoint, fileEndPoint);
                 }
-                catch (ArgumentException e)
+                catch (ArgumentNullException)
                 {
-                    throw new ArgumentException(e.Message + " " + string.Format(CultureInfo.CurrentCulture, Resources.ValidEnvironmentName, EnvironmentName.AzureCloud, EnvironmentName.AzureChinaCloud)); 
+                    // the environment may not have value for StorageEndpointSuffix, in this case, we'll still use the default domain of "core.windows.net"
                 }
             }
-
-            Uri blobEndPoint = azureEnvironment.GetStorageBlobEndpoint(storageAccountName, useHttps);
-            Uri queueEndPoint = azureEnvironment.GetStorageQueueEndpoint(storageAccountName, useHttps);
-            Uri tableEndPoint = azureEnvironment.GetStorageTableEndpoint(storageAccountName, useHttps);
-            Uri fileEndPoint = azureEnvironment.GetStorageFileEndpoint(storageAccountName, useHttps);
-
-            return new CloudStorageAccount(credential, blobEndPoint, queueEndPoint, tableEndPoint, fileEndPoint);
+            
+            return GetStorageAccountWithEndPoint(credential, storageAccountName, useHttps, Resources.DefaultDomain);
         }
 
         /// <summary>

@@ -12,15 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Management.Automation;
-using System.Security.Permissions;
-using Microsoft.WindowsAzure.Commands.Storage.Common;
-using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
-using Microsoft.WindowsAzure.Storage.Blob;
-
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
+    using System;
+    using System.Management.Automation;
+    using System.Security.Permissions;
+    using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
+    using Microsoft.WindowsAzure.Storage.Blob;
+
     [Cmdlet(VerbsCommon.New, StorageNouns.BlobSas, DefaultParameterSetName = BlobNamePipelineParmeterSetWithPermission), OutputType(typeof(String))]
     public class NewAzureStorageBlobSasTokenCommand : StorageCloudBlobCmdletBase
     {
@@ -44,11 +44,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// </summary>
         private const string BlobPipelineParameterSetWithPolicy = "BlobPipelineWithPolicy";
 
-        [Parameter(HelpMessage = "ICloudBlob Object", Mandatory = true,
+        [Alias("ICloudBlob")]
+        [Parameter(HelpMessage = "CloudBlob Object", Mandatory = true,
             ValueFromPipelineByPropertyName = true, ParameterSetName = BlobPipelineParameterSetWithPolicy)]
-        [Parameter(HelpMessage = "ICloudBlob Object", Mandatory = true,
+        [Parameter(HelpMessage = "CloudBlob Object", Mandatory = true,
             ValueFromPipelineByPropertyName = true, ParameterSetName = BlobPipelineParameterSetWithPermision)]
-        public ICloudBlob ICloudBlob { get; set; }
+        public CloudBlob CloudBlob { get; set; }
 
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Container Name",
             ParameterSetName = BlobNamePipelineParmeterSetWithPermission)]
@@ -117,16 +118,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            ICloudBlob blob = default(ICloudBlob);
+            CloudBlob blob = null;
 
             if (ParameterSetName == BlobNamePipelineParmeterSetWithPermission ||
                 ParameterSetName == BlobNamePipelineParmeterSetWithPolicy)
             {
-                blob = GetICloudBlobByName(Container, Blob);
+                blob = GetCloudBlobByName(Container, Blob);
             }
             else
             {
-                blob = ICloudBlob;
+                blob = this.CloudBlob;
             }
 
             SharedAccessBlobPolicy accessPolicy = new SharedAccessBlobPolicy();
@@ -149,30 +150,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// <summary>
         /// Get blob shared access signature
         /// </summary>
-        /// <param name="blob">ICloudBlob object</param>
+        /// <param name="blob">CloudBlob object</param>
         /// <param name="accessPolicy">SharedAccessBlobPolicy object</param>
         /// <param name="policyIdentifier">The existing policy identifier.</param>
         /// <returns></returns>
-        private string GetBlobSharedAccessSignature(ICloudBlob blob, SharedAccessBlobPolicy accessPolicy, string policyIdentifier)
+        private string GetBlobSharedAccessSignature(CloudBlob blob, SharedAccessBlobPolicy accessPolicy, string policyIdentifier)
         {
             CloudBlobContainer container = blob.Container;
-            string signature = String.Empty;
-
-            switch (blob.BlobType)
-            {
-                case BlobType.BlockBlob:
-                    CloudBlockBlob blockBlob = blob as CloudBlockBlob;
-                    signature = blockBlob.GetSharedAccessSignature(accessPolicy, policyIdentifier);
-                    break;
-                case BlobType.PageBlob:
-                    CloudPageBlob pageBlob = blob as CloudPageBlob;
-                    signature = pageBlob.GetSharedAccessSignature(accessPolicy, policyIdentifier);
-                    break;
-                default:
-                    throw new ArgumentException(Resources.UnknownBlob);
-            }
-
-            return signature;
+            return blob.GetSharedAccessSignature(accessPolicy, policyIdentifier);
         }
 
         /// <summary>
@@ -221,12 +206,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
 
         /// <summary>
-        /// Get ICloudBlob object by name
+        /// Get CloudBlob object by name
         /// </summary>
         /// <param name="ContainerName">Container name</param>
         /// <param name="BlobName">Blob name.</param>
-        /// <returns>ICloudBlob object</returns>
-        private ICloudBlob GetICloudBlobByName(string ContainerName, string BlobName)
+        /// <returns>CloudBlob object</returns>
+        private CloudBlob GetCloudBlobByName(string ContainerName, string BlobName)
         {
             CloudBlobContainer container = Channel.GetContainerReference(ContainerName);
             //Create a block blob object in local no mattter what's the real blob type. If so, we can save the unnecessary request calls.

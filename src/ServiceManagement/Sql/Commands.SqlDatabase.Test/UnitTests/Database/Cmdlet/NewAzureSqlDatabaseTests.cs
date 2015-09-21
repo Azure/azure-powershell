@@ -346,7 +346,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
                         @"-ServerName $serverName " +
                         @"-DatabaseName testdb2 " +
                         @"-Collation Japanese_CI_AS " +
-                        @"-Edition Web " +
+                        @"-Edition Standard " +
                         @"-MaxSizeGB 5 " +
                         @"-Force",
                         @"$testdb2");
@@ -365,15 +365,15 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
 
                 Services.Server.Database database = database1.Single().BaseObject as Services.Server.Database;
                 Assert.IsTrue(database != null, "Expecting a Database object");
-                DatabaseTestHelper.ValidateDatabaseProperties(database, "testdb1", "Web", 1, 1073741824L, "SQL_Latin1_General_CP1_CI_AS", "Shared", false, DatabaseTestHelper.SharedSloGuid);
+                DatabaseTestHelper.ValidateDatabaseProperties(database, "testdb1", "Standard", 250, 268435456000L, "SQL_Latin1_General_CP1_CI_AS", "S0", false, DatabaseTestHelper.StandardS0SloGuid);
 
                 database = database2.Single().BaseObject as Services.Server.Database;
                 Assert.IsTrue(database != null, "Expecting a Database object");
-                DatabaseTestHelper.ValidateDatabaseProperties(database, "testdb2", "Web", 5, 5368709120L, "Japanese_CI_AS", "Shared", false, DatabaseTestHelper.SharedSloGuid);
+                DatabaseTestHelper.ValidateDatabaseProperties(database, "testdb2", "Standard", 250, 268435456000L, "Japanese_CI_AS", "S0", false, DatabaseTestHelper.StandardS0SloGuid);
 
                 database = database3.Single().BaseObject as Services.Server.Database;
                 Assert.IsTrue(database != null, "Expecting a Database object");
-                DatabaseTestHelper.ValidateDatabaseProperties(database, "testdb3", "Web", 0, 104857600L, "SQL_Latin1_General_CP1_CI_AS", "Shared", false, DatabaseTestHelper.SharedSloGuid);
+                DatabaseTestHelper.ValidateDatabaseProperties(database, "testdb3", "Standard", 0, 104857600L, "SQL_Latin1_General_CP1_CI_AS", "S0", false, DatabaseTestHelper.StandardS0SloGuid);
             }
         }
 

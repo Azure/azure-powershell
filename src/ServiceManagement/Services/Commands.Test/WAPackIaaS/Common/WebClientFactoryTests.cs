@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.Utilities.WAPackIaaS;
 using Microsoft.WindowsAzure.Commands.Utilities.WAPackIaaS.WebClient;
@@ -23,6 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS
     public class WebClientFactoryTests
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-Negative")]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
@@ -33,6 +35,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.WAPackIaaS
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Type", "WAPackIaaS-All")]
         [Trait("Type", "WAPackIaaS-Unit")]
         public void ShouldCreateWAPackIaaSClient()
