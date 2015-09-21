@@ -178,6 +178,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to IncludeClassicAdministrators is only supported for a User principal.
+        /// </summary>
+        internal static string IncludeClassicAdminsNotSupported {
+            get {
+                return ResourceManager.GetString("IncludeClassicAdminsNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid value for Actions.
         /// </summary>
         internal static string InvalidActions {

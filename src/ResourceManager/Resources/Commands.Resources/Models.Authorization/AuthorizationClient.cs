@@ -136,17 +136,18 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             List<PSRoleAssignment> result = new List<PSRoleAssignment>();
             ListAssignmentsFilterParameters parameters = new ListAssignmentsFilterParameters();
 
+            PSADObject adObject = null;
             if (options.ADObjectFilter.HasFilter)
             {
+                adObject = ActiveDirectoryClient.GetADObject(options.ADObjectFilter);
+                if (adObject == null)
+                {
+                    throw new KeyNotFoundException(ProjectResources.PrincipalNotFound);
+                }
+
                 // Filter first by principal
                 if (options.ExpandPrincipalGroups)
                 {
-                    PSADObject adObject = ActiveDirectoryClient.GetADObject(options.ADObjectFilter);
-                    if (adObject == null)
-                    {
-                        throw new KeyNotFoundException(ProjectResources.PrincipalNotFound);
-                    }
-
                     if (!(adObject is PSADUser))
                     {
                         throw new InvalidOperationException(ProjectResources.ExpandGroupsNotSupported);
@@ -156,7 +157,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 }
                 else
                 {
-                    parameters.PrincipalId = string.IsNullOrEmpty(options.ADObjectFilter.Id) ? ActiveDirectoryClient.GetObjectId(options.ADObjectFilter) : Guid.Parse(options.ADObjectFilter.Id);
+                    parameters.PrincipalId = string.IsNullOrEmpty(options.ADObjectFilter.Id) ? adObject.Id : Guid.Parse(options.ADObjectFilter.Id);
                 }
                 
                 result.AddRange(AuthorizationManagementClient.RoleAssignments.List(parameters)
@@ -190,7 +191,22 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             {
                 // Get classic administrator access assignments 
                 List<ClassicAdministrator> classicAdministrators = AuthorizationManagementClient.ClassicAdministrators.List().ClassicAdministrators.ToList(); 
-                List<PSRoleAssignment> classicAdministratorsAssignments = classicAdministrators.Select(a => a.ToPSRoleAssignment(currentSubscription)).ToList(); 
+                List<PSRoleAssignment> classicAdministratorsAssignments = classicAdministrators.Select(a => a.ToPSRoleAssignment(currentSubscription)).ToList();
+
+                // Filter by principal if provided
+                if (options.ADObjectFilter.HasFilter)
+                {
+                    if (!(adObject is PSADUser))
+                    {
+                        throw new InvalidOperationException(ProjectResources.IncludeClassicAdminsNotSupported);
+                    }
+
+                    var userObject = adObject as PSADUser;
+                    classicAdministratorsAssignments = classicAdministratorsAssignments.Where(c =>
+                           c.DisplayName.Equals(userObject.UserPrincipalName, StringComparison.OrdinalIgnoreCase) ||
+                           c.DisplayName.Equals(userObject.Mail, StringComparison.OrdinalIgnoreCase)).ToList();
+                }
+                
                 result.AddRange(classicAdministratorsAssignments);
             }
 
