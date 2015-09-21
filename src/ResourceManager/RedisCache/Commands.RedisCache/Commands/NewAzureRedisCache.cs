@@ -50,6 +50,9 @@ namespace Microsoft.Azure.Commands.RedisCache
         [ValidateSet(SkuStrings.Basic, SkuStrings.Standard, IgnoreCase = false)]
         public string Sku { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "MaxMemoryPolicy is deprecated. Please use RedisConfiguration instead.")]
+        public string MaxMemoryPolicy { get; set; }
+
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "A hash table which represents redis configuration properties.")]
         public Hashtable RedisConfiguration { get; set; }
 
@@ -63,6 +66,11 @@ namespace Microsoft.Azure.Commands.RedisCache
             if (!string.IsNullOrEmpty(RedisVersion))
             {
                 WriteWarning("The RedisVersion parameter has been deprecated.  As such, it is no longer necessary to provide this parameter and any value specified is ignored.");
+            }
+
+            if (!string.IsNullOrEmpty(MaxMemoryPolicy))
+            {
+                throw new CloudException(Resources.MaxMemoryPolicyException);
             }
 
             string skuFamily;
