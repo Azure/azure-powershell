@@ -40,6 +40,7 @@ function Test-VirtualNetworkCRUD
         Assert-AreEqual $expected.Name $actual.Name	
         Assert-AreEqual $expected.Location $actual.Location
         Assert-AreEqual "Succeeded" $expected.ProvisioningState
+        Assert-NotNull $expected.ResourceGuid
         Assert-AreEqual "10.0.0.0/16" $expected.AddressSpace.AddressPrefixes[0]
         Assert-AreEqual 1 @($expected.DhcpOptions.DnsServers).Count
         Assert-AreEqual "8.8.8.8" $expected.DhcpOptions.DnsServers[0]

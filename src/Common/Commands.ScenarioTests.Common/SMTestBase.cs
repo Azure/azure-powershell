@@ -45,7 +45,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
             }
             currentProfile = new AzureSMProfile();
 
-            if (currentProfile.DefaultContext.Subscription == null)
+            if (currentProfile.Context.Subscription == null)
             {
                 var newGuid = Guid.NewGuid();
                 currentProfile.Subscriptions[newGuid] = new AzureSubscription { Id = newGuid, Name = "test", Environment = EnvironmentName.AzureCloud, Account = "test" };

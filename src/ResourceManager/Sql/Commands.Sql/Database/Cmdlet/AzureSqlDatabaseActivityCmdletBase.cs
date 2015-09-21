@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <returns></returns>
         protected override AzureSqlDatabaseAdapter InitModelAdapter(Azure.Common.Authentication.Models.AzureSubscription subscription)
         {
-            return new AzureSqlDatabaseAdapter(DefaultProfile.DefaultContext);
+            return new AzureSqlDatabaseAdapter(DefaultProfile.Context);
         }
     }
 }

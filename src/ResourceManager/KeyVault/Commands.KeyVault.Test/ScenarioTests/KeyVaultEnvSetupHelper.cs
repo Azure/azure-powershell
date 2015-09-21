@@ -49,8 +49,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
                 var testSubscription = new AzureSubscription()
                 {
                     Id = new Guid(csmEnvironment.SubscriptionId),
-                    Name = AzureRMCmdlet.DefaultProfile.DefaultContext.Subscription.Name,
-                    Environment = AzureRMCmdlet.DefaultProfile.DefaultContext.Environment.Name,
+                    Name = AzureRMCmdlet.DefaultProfile.Context.Subscription.Name,
+                    Environment = AzureRMCmdlet.DefaultProfile.Context.Environment.Name,
                     Account = user,
                     Properties = new Dictionary<AzureSubscription.Property, string>
                     {
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
                     }
                 };
 
-                AzureRMCmdlet.DefaultProfile.DefaultContext = new AzureContext(testSubscription, testAccount, AzureRMCmdlet.DefaultProfile.DefaultContext.Environment, new AzureTenant { Id = new Guid(tenantId) });
+                AzureRMCmdlet.DefaultProfile.Context = new AzureContext(testSubscription, testAccount, AzureRMCmdlet.DefaultProfile.Context.Environment, new AzureTenant { Id = new Guid(tenantId) });
             }
         }
 

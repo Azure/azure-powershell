@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         }
 
         /// <summary>
-        /// Validates all Get-AzureResourceProvider parameter combinations
+        /// Validates all Get-AzureRMResourceProvider parameter combinations
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

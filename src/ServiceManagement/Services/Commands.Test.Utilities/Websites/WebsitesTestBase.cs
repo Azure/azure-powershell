@@ -66,7 +66,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Websites
             currentProfile.Subscriptions[new Guid(subscriptionId)] = subscription;
             if (storageName != null)
             {
-                currentProfile.DefaultContext.Subscription.Properties[AzureSubscription.Property.StorageAccount] = storageName;
+                currentProfile.Context.Subscription.Properties[AzureSubscription.Property.StorageAccount] = storageName;
             }
             currentProfile.Save();
         }
