@@ -264,12 +264,15 @@
     <Compile Include="Models\PSVirtualMachineSize.cs" />
     <Compile Include="Common\LocationStringExtensions.cs" />
     <Compile Include="Models\UploadParameters.cs" />
+    <Compile Include="Models\VhdDownloadContext.cs" />
+    <Compile Include="Models\VhdDownloaderModel.cs" />
     <Compile Include="Models\VhdUploadContext.cs" />
     <Compile Include="Models\VhdUploaderModel.cs" />
     <Compile Include="RemoteDesktop\VirtualMachineRemoteDesktopBaseCmdlet.cs" />
     <Compile Include="RemoteDesktop\GetAzureRemoteDesktopFileCommand.cs" />
     <Compile Include="StorageServices\AddAzureVhdCommand.cs" />
     <Compile Include="StorageServices\CloudPageBlobObjectFactory.cs" />
+    <Compile Include="StorageServices\SaveAzureVhdCommand.cs" />
     <Compile Include="StorageServices\StorageCredentialsFactory.cs" />
     <Compile Include="Usage\GetAzureVMUsageCommand.cs" />
     <Compile Include="Usage\VirtualMachineUsageBaseCmdlet.cs" />
