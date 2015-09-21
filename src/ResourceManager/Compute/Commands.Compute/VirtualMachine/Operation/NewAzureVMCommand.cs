@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System.Collections;
@@ -23,6 +23,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.New, ProfileNouns.VirtualMachine)]
+    [OutputType(typeof(PSComputeLongRunningOperation))]
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true)]
@@ -61,7 +62,8 @@ namespace Microsoft.Azure.Commands.Compute
                 };
 
                 var op = this.VirtualMachineClient.CreateOrUpdate(this.ResourceGroupName, parameters);
-                WriteObject(op);
+                var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+                WriteObject(result);
             });
         }
     }
