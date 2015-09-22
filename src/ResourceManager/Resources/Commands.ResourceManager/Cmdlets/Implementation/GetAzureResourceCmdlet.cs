@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             return await this
                 .GetResourcesClient()
-                .ListObjectColleciton<JObject>(
+                .ListObjectCollection<JObject>(
                     resourceCollectionId: resourceCollectionId,
                     apiVersion: apiVersion,
                     cancellationToken: this.CancellationToken.Value,
@@ -377,7 +377,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     filter: this.ODataQuery);
 
             var apiVersion = await this
-                .DetermineApiVersion(providerNamespace: Constants.MicrosoftResourceNamesapce, resourceType: Constants.ResourceGroups)
+                .DetermineApiVersion(providerNamespace: Constants.MicrosoftResourceNamespace, resourceType: Constants.ResourceGroups)
                 .ConfigureAwait(continueOnCapturedContext: false);
 
             return await this
@@ -404,7 +404,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     filter: this.ODataQuery);
 
             var apiVersion = await this
-                .DetermineApiVersion(providerNamespace: Constants.MicrosoftResourceNamesapce, resourceType: Constants.ResourceGroups)
+                .DetermineApiVersion(providerNamespace: Constants.MicrosoftResourceNamespace, resourceType: Constants.ResourceGroups)
                 .ConfigureAwait(continueOnCapturedContext: false);
 
             return await this
@@ -433,7 +433,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     filter: this.ODataQuery);
 
             var apiVersion = await this
-                .DetermineApiVersion(providerNamespace: Constants.MicrosoftResourceNamesapce, resourceType: Constants.ResourceGroups)
+                .DetermineApiVersion(providerNamespace: Constants.MicrosoftResourceNamespace, resourceType: Constants.ResourceGroups)
                 .ConfigureAwait(continueOnCapturedContext: false);
 
             return await this

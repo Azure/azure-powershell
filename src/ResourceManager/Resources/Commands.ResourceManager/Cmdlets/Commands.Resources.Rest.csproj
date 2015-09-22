@@ -138,10 +138,10 @@
     <Compile Include="Implementation\GetAzureResourceLockCmdlet.cs" />
     <Compile Include="Implementation\InvokeAzureResourceActionCmdlet.cs" />
     <Compile Include="Implementation\MoveAzureResourceCmdlet.cs" />
-    <Compile Include="Implementation\ResourceGroup\GetAzureResourceGroupCmdlet.cs" />
-    <Compile Include="Implementation\ResourceGroup\NewAzureResourceGroupCmdlet.cs" />
     <Compile Include="Implementation\ResourceGroup\RemoveAzureResourceGroupCmdlet.cs" />
     <Compile Include="Implementation\ResourceGroup\SetAzureResourceGroupCmdlet.cs" />
+    <Compile Include="Implementation\ResourceGroup\GetAzureResourceGroupCmdlet.cs" />
+    <Compile Include="Implementation\ResourceGroup\NewAzureResourceGroupCmdlet.cs" />
     <Compile Include="Implementation\NewAzureResourceLockCmdlet.cs" />
     <Compile Include="Implementation\Policy\GetAzurePolicyDefinition.cs" />
     <Compile Include="Implementation\Policy\NewAzurePolicyDefinition.cs" />
