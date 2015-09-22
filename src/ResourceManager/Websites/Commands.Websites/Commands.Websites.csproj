@@ -70,7 +70,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Graph.RBAC.1.7.0-preview\lib\net40\Microsoft.Azure.Graph.RBAC.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Authorization">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.0.19.2-preview\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.1.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.WebSites, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -143,13 +143,13 @@
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cmdlets\GetAzureWebAppPublishingProfile.cs" />
-    <Compile Include="Cmdlets\GetAzureWebApp.cs" />
-    <Compile Include="Cmdlets\RemoveAzureWebApp.cs" />
-    <Compile Include="Cmdlets\NewAzureWebApp.cs" />
-    <Compile Include="Cmdlets\RestartAzureWebApp.cs" />
-    <Compile Include="Cmdlets\StartAzureWebApp.cs" />
-    <Compile Include="Cmdlets\StopAzureWebApp.cs" />
+    <Compile Include="Cmdlets\WebApps\GetAzureWebAppPublishingProfile.cs" />
+    <Compile Include="Cmdlets\WebApps\GetAzureWebApp.cs" />
+    <Compile Include="Cmdlets\WebApps\RemoveAzureWebApp.cs" />
+    <Compile Include="Cmdlets\WebApps\NewAzureWebApp.cs" />
+    <Compile Include="Cmdlets\WebApps\RestartAzureWebApp.cs" />
+    <Compile Include="Cmdlets\WebApps\StartAzureWebApp.cs" />
+    <Compile Include="Cmdlets\WebApps\StopAzureWebApp.cs" />
     <Compile Include="Cmdlets\AppServicePlan\GetAzureAppServicePlan.cs" />
     <Compile Include="Cmdlets\AppServicePlan\SetAzureAppServicePlan.cs" />
     <Compile Include="Cmdlets\AppServicePlan\NewAzureAppServicePlan.cs" />
@@ -202,6 +202,10 @@
       <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>
       <Name>Commands.Resources</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Cmdlets\Certificates\" />
+    <Folder Include="Cmdlets\DeploymentSlots\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

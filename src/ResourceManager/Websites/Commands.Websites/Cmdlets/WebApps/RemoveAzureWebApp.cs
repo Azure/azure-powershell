@@ -38,17 +38,13 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets
             
         protected override void ProcessRecord()
         {
-            // Currently we delete all slots.
-            string slotName = null;
-
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(Properties.Resources.RemoveWebsiteWarning, Name),
                 Properties.Resources.RemoveWebsiteMessage,
                 Name,
-                () => WebsitesClient.RemoveWebsite(ResourceGroupName, Name, slotName, deleteEmptyServerFarmByDefault, deleteMetricsByDefault, deleteSlotsByDefault));
+                () => WebsitesClient.RemoveWebApp(ResourceGroup, Name, null, deleteEmptyServerFarmByDefault, deleteMetricsByDefault, deleteSlotsByDefault));
         }
-
     }
 }
 

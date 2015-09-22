@@ -27,10 +27,6 @@ namespace Microsoft.Azure.Commands.WebApp
         [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the web app.", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmptyAttribute]
         public string Name { get; set; }
-
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = "The name of the web app slot.")]
-        [ValidateNotNullOrEmptyAttribute]
-        public string SlotName { get; set; }
     }
 }
 

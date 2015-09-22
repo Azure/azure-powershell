@@ -17,18 +17,20 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.WebApp.Utilities;
 
+
 namespace Microsoft.Azure.Commands.WebApp.Cmdlets
 {
     /// <summary>
-    /// this commandlet will let you get a new Azure Websites using ARM APIs
+    /// this commandlet will let you stop an Azure Web app
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMWebApp")]
-    public class GetAzureWebAppCmdlet : WebAppBaseCmdlet
+    [Cmdlet(VerbsLifecycle.Stop, "AzureRMWebApp")]
+    public class StopAzureWebAppCmdlet : WebAppBaseCmdlet
     {
         protected override void ProcessRecord()
         {
-            WriteObject(WebsitesClient.GetWebsite(ResourceGroup, Name, SlotName));
+            WriteObject(WebsitesClient.StopWebApp(ResourceGroup, Name, null));
         }
+
     }
 }
 

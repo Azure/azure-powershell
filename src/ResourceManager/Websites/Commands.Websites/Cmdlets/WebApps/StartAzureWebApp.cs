@@ -21,29 +21,17 @@ using Microsoft.Azure.Commands.WebApp.Utilities;
 namespace Microsoft.Azure.Commands.WebApp.Cmdlets
 {
     /// <summary>
-    /// this commandlet will get the publishing creds of the given Azure Web app using ARM APIs
+    /// this commandlet will let you Start an Azure Web app
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMWebAppPublishingProfile")]
-    public class GetAzureWebAppPublishingProfileCmdlet : WebAppBaseCmdlet
-    {
-        private const string DefaultFormat = "WebDeploy";
-
-        [Parameter(Position = 3, Mandatory = true, HelpMessage = "The file the publishing profile will we saved as")]
-        public string OutputFile { get; set; }
-
-        [Parameter(Position = 4, Mandatory = false, HelpMessage = "The format of the profile. Allowed values are [WebDeploy|FileZilla3|Ftp]. Default value is WebDeploy")]
-        public string Format { get; set; }
-
-        public GetAzureWebAppPublishingProfileCmdlet()
-        {
-            Format = Format ?? DefaultFormat;
-        }
-
+    [Cmdlet(VerbsLifecycle.Start, "AzureRMWebApp")]
+    public class StartAzureWebAppCmdlet : WebAppBaseCmdlet
+    {    
         protected override void ProcessRecord()
         {
-            WriteObject(WebsitesClient.GetWebsitePublishingProfile(ResourceGroup, Name, SlotName, OutputFile, Format));
+            WriteObject(WebsitesClient.StartWebApp(ResourceGroup, Name, null));
+            
         }
-
+        
     }
 }
 

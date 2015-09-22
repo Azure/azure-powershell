@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.WebApp
     {
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.")]
         [ValidateNotNullOrEmptyAttribute]
-        public string ResourceGroupName { get; set; }
+        public string ResourceGroup { get; set; }
 
         [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the website.")]
         [ValidateNotNullOrEmptyAttribute]

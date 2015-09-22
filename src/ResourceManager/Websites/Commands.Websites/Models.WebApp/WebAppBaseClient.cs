@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.WebApp.Models
             {
                 if (_resourcesClient == null)
                 {
-                    _resourcesClient = new PSResourceManagerModels.ResourcesClient(DefaultProfile.DefaultContext);
+                    _resourcesClient = new PSResourceManagerModels.ResourcesClient(DefaultProfile.Context);
                 }
                 return _resourcesClient;
             }

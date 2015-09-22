@@ -43,15 +43,17 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets
        
         protected override void ProcessRecord()
         {
-            if (SourceWebApp != null && CloningInfo == null)
+            if (SourceWebApp != null)
             {
-                CloningInfo = new CloningInfo()
+                if (CloningInfo == null)
                 {
-                    SourceWebAppId = SourceWebApp.Id
-                };
+                    CloningInfo = new CloningInfo();
+                }
+
+                CloningInfo.SourceWebAppId = SourceWebApp.Id;
             }
 
-            WriteObject(WebsitesClient.CreateWebsite(ResourceGroup, Name, SlotName, Location, AppServicePlan, CloningInfo));
+            WriteObject(WebsitesClient.CreateWebsite(ResourceGroup, Name, null, Location, AppServicePlan, CloningInfo));
             
         }
         
