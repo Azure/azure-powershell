@@ -20,9 +20,11 @@ Param(
 $error.clear()
 try {
 	if ($Install.IsPresent) {
-		Write-Output @"Installing Azure Modules from PowerShell Gallery. 
-This may take some time...
+		Write-Output @"
 
+Finalizing installation of Azure PowerShell. 
+Installing Azure Modules from PowerShell Gallery. 
+This may take some time...
 "@
 		Get-PackageProvider -Name NuGet -ForceBootstrap
 		Install-Module AzureRM.Installer
