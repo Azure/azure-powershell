@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Models;
 
-    [Cmdlet(VerbsCommon.Set, "AzureRMApiManagementVirtualNetworks"), OutputType(typeof (PsApiManagement))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmApiManagementVirtualNetworks"), OutputType(typeof (PsApiManagement))]
     public class SetAzureApiManagementVirtualNetworks : AzureApiManagementCmdletBase
     {
         [Parameter(

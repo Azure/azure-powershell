@@ -109,7 +109,7 @@ function Get-ComputeDefaultLocation
 # Cleans the created resource group
 function Clean-ResourceGroup($rgname)
 {
-    Remove-AzureRMResourceGroup -Name $rgname -Force;
+    Remove-AzureRmResourceGroup -Name $rgname -Force;
 }
 
 # Get Compute Test Tag
@@ -196,7 +196,7 @@ function Get-DefaultVMSize
 {
     param([string] $location = "westus")
 
-    $vmSizes = Get-AzureRMVMSize -Location $location | where { $_.NumberOfCores -ge 4 -and $_.MaxDataDiskCount -ge 8 };
+    $vmSizes = Get-AzureRmVMSize -Location $location | where { $_.NumberOfCores -ge 4 -and $_.MaxDataDiskCount -ge 8 };
 
     foreach ($sz in $vmSizes)
     {
@@ -218,7 +218,7 @@ function Get-DefaultRDFEImage
 {
     param([string] $loca = "East Asia", [string] $query = '*Windows*Data*Center*')
 
-    $d = (Azure\Get-AzureRMVMImage | where {$_.ImageName -like $query -and ($_.Location -like "*;$loca;*" -or $_.Location -like "$loca;*" -or $_.Location -like "*;$loca" -or $_.Location -eq "$loca")});
+    $d = (Azure\Get-AzureRmVMImage | where {$_.ImageName -like $query -and ($_.Location -like "*;$loca;*" -or $_.Location -like "$loca;*" -or $_.Location -like "*;$loca" -or $_.Location -eq "$loca")});
 
     if ($d -eq $null)
     {
@@ -247,7 +247,7 @@ function Get-DefaultCRPImage
 {
     param([string] $loc = "westus", [string] $query = '*Microsoft*Windows*Server')
 
-    $result = (Get-AzureRMVMImagePublisher -Location $loc) | select -ExpandProperty PublisherName | where { $_ -like $query };
+    $result = (Get-AzureRmVMImagePublisher -Location $loc) | select -ExpandProperty PublisherName | where { $_ -like $query };
     if ($result.Count -eq 1)
     {
         $defaultPublisher = $result;
@@ -257,7 +257,7 @@ function Get-DefaultCRPImage
         $defaultPublisher = $result[0];
     }
 
-    $result = (Get-AzureRMVMImageOffer -Location $loc -PublisherName $defaultPublisher) | select -ExpandProperty Offer | where { $_ -like '*Windows*' };
+    $result = (Get-AzureRmVMImageOffer -Location $loc -PublisherName $defaultPublisher) | select -ExpandProperty Offer | where { $_ -like '*Windows*' };
     if ($result.Count -eq 1)
     {
         $defaultOffer = $result;
@@ -267,7 +267,7 @@ function Get-DefaultCRPImage
         $defaultOffer = $result[0];
     }
 
-    $result = (Get-AzureRMVMImageSku -Location $loc -PublisherName $defaultPublisher -Offer $defaultOffer) | select -ExpandProperty Skus;
+    $result = (Get-AzureRmVMImageSku -Location $loc -PublisherName $defaultPublisher -Offer $defaultOffer) | select -ExpandProperty Skus;
     if ($result.Count -eq 1)
     {
         $defaultSku = $result;
@@ -277,7 +277,7 @@ function Get-DefaultCRPImage
         $defaultSku = $result[0];
     }
 
-    $result = (Get-AzureRMVMImage -Location $loc -Offer $defaultOffer -PublisherName $defaultPublisher -Skus $defaultSku) | select -ExpandProperty Version;
+    $result = (Get-AzureRmVMImage -Location $loc -Offer $defaultOffer -PublisherName $defaultPublisher -Skus $defaultSku) | select -ExpandProperty Version;
     if ($result.Count -eq 1)
     {
         $defaultVersion = $result;
@@ -287,7 +287,7 @@ function Get-DefaultCRPImage
         $defaultVersion = $result[0];
     }
     
-    $vmimg = Get-AzureRMVMImage -Location $loc -Offer $defaultOffer -PublisherName $defaultPublisher -Skus $defaultSku -Version $defaultVersion;
+    $vmimg = Get-AzureRmVMImage -Location $loc -Offer $defaultOffer -PublisherName $defaultPublisher -Skus $defaultSku -Version $defaultVersion;
 
     return $vmimg;
 }
@@ -326,7 +326,7 @@ function Get-MarketplaceImage
 {
     param([string] $location = "westus", [string] $pubFilter = '*', [string] $offerFilter = '*')
 
-    $imgs = Get-AzureRMVMImagePublisher -Location $location | where { $_.PublisherName -like $pubFilter } | Get-AzureRMVMImageOffer | where { $_.Offer -like $offerFilter } | Get-AzureRMVMImageSku | Get-AzureRMVMImage | Get-AzureRMVMImage | where { $_.PurchasePlan -ne $null };
+    $imgs = Get-AzureRmVMImagePublisher -Location $location | where { $_.PublisherName -like $pubFilter } | Get-AzureRmVMImageOffer | where { $_.Offer -like $offerFilter } | Get-AzureRmVMImageSku | Get-AzureRmVMImage | Get-AzureRmVMImage | where { $_.PurchasePlan -ne $null };
 
     return $imgs;
 }
@@ -343,7 +343,7 @@ function Get-DefaultVMConfig
     $vmsize = Get-DefaultVMSize $location;
     $vmname = Get-RandomItemName 'crptestps';
 
-    $vm = New-AzureRMVMConfig -VMName $vmname -VMSize $vmsize;
+    $vm = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
 
     return $vm;
 }
@@ -400,7 +400,7 @@ function Get-ResourceProviderLocation
 {
     param ([string] $name, [string] $default = "westus", [bool] $canonical = $true)
 
-	$loc = Get-AzureRMLocation | where { $_.Name.Equals($name) };
+	$loc = Get-AzureRmLocation | where { $_.Name.Equals($name) };
 
 	if ($loc -eq $null)
 	{

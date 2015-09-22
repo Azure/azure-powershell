@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
     using System.Net;
     using Hyak.Common;
 
-    [Cmdlet(VerbsCommon.New, "AzureRMTrafficManagerProfile"), OutputType(typeof(TrafficManagerProfile))]
+    [Cmdlet(VerbsCommon.New, "AzureRmTrafficManagerProfile"), OutputType(typeof(TrafficManagerProfile))]
     public class NewAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the profile.")]

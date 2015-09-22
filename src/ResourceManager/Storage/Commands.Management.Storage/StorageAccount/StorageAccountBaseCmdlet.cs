@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
     {
         private StorageManagementClientWrapper storageClientWrapper;
         
-        protected const string StorageAccountNounStr = "AzureRMStorageAccount";
+        protected const string StorageAccountNounStr = "AzureRmStorageAccount";
         protected const string StorageAccountKeyNounStr = StorageAccountNounStr + "Key";
 
         protected const string StorageAccountNameAlias = "StorageAccountName";

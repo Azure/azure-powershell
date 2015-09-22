@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Get list of containers
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Unregister, "AzureRMBackupContainer")]
+    [Cmdlet(VerbsLifecycle.Unregister, "AzureRmBackupContainer")]
     public class UnregisterAzureRMBackupContainer : AzureBackupContainerCmdletBase
     {
         [Parameter(Position = 1, Mandatory = false, HelpMessage = "Confirm unregistration and deletion of server")]

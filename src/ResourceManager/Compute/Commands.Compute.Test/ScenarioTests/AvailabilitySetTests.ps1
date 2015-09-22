@@ -25,27 +25,27 @@ function Test-AvailabilitySet
     {
         # Common
         $loc = Get-ComputeVMLocation;
-        New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
         $asetName = 'avs' + $rgname;
         $nonDefaultUD = 2;
         $nonDefaultFD = 3;
 
-        New-AzureRMAvailabilitySet -ResourceGroupName $rgname -Name $asetName -Location $loc -PlatformUpdateDomainCount $nonDefaultUD -PlatformFaultDomainCount $nonDefaultFD;
+        New-AzureRmAvailabilitySet -ResourceGroupName $rgname -Name $asetName -Location $loc -PlatformUpdateDomainCount $nonDefaultUD -PlatformFaultDomainCount $nonDefaultFD;
 
-        $asets = Get-AzureRMAvailabilitySet -ResourceGroupName $rgname;
+        $asets = Get-AzureRmAvailabilitySet -ResourceGroupName $rgname;
         Assert-NotNull $asets;
         Assert-AreEqual $asetName $asets[0].Name;
 
-        $aset = Get-AzureRMAvailabilitySet -ResourceGroupName $rgname -Name $asetName;
+        $aset = Get-AzureRmAvailabilitySet -ResourceGroupName $rgname -Name $asetName;
         Assert-NotNull $aset;
         Assert-AreEqual $asetName $aset.Name;
         Assert-AreEqual $aset.PlatformUpdateDomainCount $nonDefaultUD;
         Assert-AreEqual $aset.PlatformFaultDomainCount $nonDefaultFD;
 
-        Remove-AzureRMAvailabilitySet -ResourceGroupName $rgname -Name $asetName -Force;
+        Remove-AzureRmAvailabilitySet -ResourceGroupName $rgname -Name $asetName -Force;
         
-        $asets = Get-AzureRMAvailabilitySet -ResourceGroupName $rgname;
+        $asets = Get-AzureRmAvailabilitySet -ResourceGroupName $rgname;
         Assert-AreEqual $asets $null;
     }
     finally

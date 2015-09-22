@@ -20,9 +20,9 @@ using Microsoft.Azure.Commands.Sql.Properties;
 namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureRMSqlDatabaseServer cmdlet
+    /// Defines the Get-AzureRmSqlDatabaseServer cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRMSqlServer",
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlServer",
         SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.High)]
     public class RemoveAzureSqlServer : AzureSqlServerCmdletBase
