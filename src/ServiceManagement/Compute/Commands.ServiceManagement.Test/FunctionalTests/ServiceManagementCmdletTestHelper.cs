@@ -727,7 +727,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         }
 
         public ManagementOperationContext NewAzureQuickVM(OS os, string name, string serviceName, string imageName,
-            string userName, string password, string locationName, string instanceSize, string disableWinRMHttps,
+            string userName, string password, string locationName, string instanceSize, bool disableWinRMHttps,
             string reservedIpName = null, string vnetName = null)
         {
             var result = new ManagementOperationContext();

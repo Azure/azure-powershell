@@ -75,6 +75,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     "Windows Azure is currently performing an operation on this hosted service that requires exclusive access."
                 };
 
+                Utilities.VerifyFailure(
+                    () => vmPowershellCmdlets.NewAzureQuickVM(
+                        OS.Windows, newAzureQuickVMName1, serviceName, imageName, username, password),
+                    ""
+                    );
+
                 Utilities.RetryActionUntilSuccess(() =>
                 {
                     var svcExists = vmPowershellCmdlets.TestAzureServiceName(serviceName);
@@ -92,7 +98,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
                 Utilities.RetryActionUntilSuccess(() =>
                 {
-                    vmPowershellCmdlets.NewAzureQuickVM(OS.Windows, newAzureQuickVMName2, serviceName, imageName, username, password);
+                    vmPowershellCmdlets.NewAzureQuickVM(OS.Windows, newAzureQuickVMName2, serviceName, imageName, username, password, locationName);
                 }, retriableErrorMessages, 10, 30);
 
                 // Verify
@@ -108,69 +114,112 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
                     Console.WriteLine("Fail as expected: {0}", e.ToString());
                 }
 
-
-
                 // Cleanup 
                 vmPowershellCmdlets.RemoveAzureVM(newAzureQuickVMName1, serviceName);
                 Assert.AreEqual(null, vmPowershellCmdlets.GetAzureVM(newAzureQuickVMName1, serviceName));
+
                 Assert.AreEqual(newAzureQuickVMName2, vmPowershellCmdlets.GetAzureVM(newAzureQuickVMName2, serviceName).Name, true);
                 vmPowershellCmdlets.RemoveAzureVM(newAzureQuickVMName2, serviceName);
                 Assert.AreEqual(null, vmPowershellCmdlets.GetAzureVM(newAzureQuickVMName2, serviceName));
+
+                Utilities.RetryActionUntilSuccess(() =>
+                {
+                    vmPowershellCmdlets.NewAzureQuickVM(OS.Windows, newAzureQuickVMName2, serviceName, imageName, username, password);
+                }, retriableErrorMessages, 10, 30);
+                Assert.AreEqual(newAzureQuickVMName2, vmPowershellCmdlets.GetAzureVM(newAzureQuickVMName2, serviceName).Name, true);
 
                 //Remove the service after removing the VM above
                 vmPowershellCmdlets.RemoveAzureService(serviceName);
 
                 //DisableWinRMHttps Test Case
-
-                try
-                {
-                    vmPowershellCmdlets.NewAzureQuickVM(OS.Windows, newAzureQuickVMName2, serviceName, imageName, username, password, locationName, null, "");
-                    pass = true;
-
-                }
-                catch (Exception e)
-                {
-                    pass = false;
-                    if (e is AssertFailedException)
-                    {
-                        throw;
-                    }
-
-                }
-                finally
-                {
-                    if (pass == true) pass = true;
-                    vmPowershellCmdlets.RemoveAzureVM(newAzureQuickVMName2, serviceName);
-                    Assert.AreEqual(null, vmPowershellCmdlets.GetAzureVM(newAzureQuickVMName2, serviceName));
-                }
-
-                //End DisableWinRMHttps Test Case
-
-                // Negative Test Case--It should Fail
-
-                try
-                {
-                    vmPowershellCmdlets.NewAzureQuickVM(OS.Windows, newAzureQuickVMName1, serviceName, imageName, username, password, locationName);
-                    Assert.Fail("Should have failed, but succeeded!!");
-                    pass = true;
-                }
-                catch (Exception e)
-                {
-                    if (e is AssertFailedException)
-                    {
-                        throw;
-                    }
-                    Console.WriteLine("This exception is expected.");
-                    pass = true;
-                }
-                // End of Negative Test Case -- It should Fail]
-
-
+                vmPowershellCmdlets.NewAzureQuickVM(OS.Windows,
+                     newAzureQuickVMName2, serviceName, imageName, username, password,
+                     locationName, null, true);
+                pass = true;
             }
-            catch (Exception e)
+            finally
             {
-                Console.WriteLine(e);
-                throw;
+                vmPowershellCmdlets.RemoveAzureService(serviceName);
+            }
+        }
+
+        /// <summary>
+        /// </summary>
+        [TestMethod(), TestCategory(Category.Scenario), TestCategory(Category.BVT), TestProperty("Feature", "IaaS"), Priority(1), Owner("priya"), Description("Test the cmdlets (New-AzureQuickVM,Get-AzureVMImage,Get-AzureVM,Get-AzureLocation,Import-AzurePublishSettingsFile,Get-AzureSubscription,Set-AzureSubscription)")]
+        public void NewWindowsAzureQuickVMAG()
+        {
+            StartTest(MethodBase.GetCurrentMethod().Name, testStartTime);
+            string newAzureQuickVMName1 = Utilities.GetUniqueShortName(vmNamePrefix);
+            string newAzureQuickVMName2 = Utilities.GetUniqueShortName(vmNamePrefix);
+            string affName = Utilities.GetUniqueShortName("aff");
+
+            try
+            {
+                if (string.IsNullOrEmpty(imageName))
+                    imageName = vmPowershellCmdlets.GetAzureVMImageName(new[] { "Windows" }, false);
+
+                var retriableErrorMessages = new string[]
+                {
+                    "The server encountered an internal error. Please retry the request.",
+                    "Windows Azure is currently performing an operation on this hosted service that requires exclusive access."
+                };
+
+                vmPowershellCmdlets.NewAzureAffinityGroup(affName, locationName, "testaff", "testaff");
+
+                Utilities.VerifyFailure(
+                    () => vmPowershellCmdlets.NewAzureQuickVM(
+                        OS.Windows, newAzureQuickVMName1, serviceName, imageName, username, password),
+                    ""
+                    );
+
+                // Create VM1
+                Utilities.RetryActionUntilSuccess(() =>
+                {
+                    var svcExists = vmPowershellCmdlets.TestAzureServiceName(serviceName);
+                    if (svcExists)
+                    {
+                        // Try to delete the hosted service artifact in this subscription
+                        vmPowershellCmdlets.RemoveAzureService(serviceName, true);
+                    }
+
+                    vmPowershellCmdlets.NewAzureQuickVM(OS.Windows,
+                        newAzureQuickVMName1, serviceName, imageName, null,
+                        InstanceSize.Small, username, password, null, affName);
+                }, retriableErrorMessages, 10, 30);
+
+                // Verify
+                Assert.AreEqual(newAzureQuickVMName1, vmPowershellCmdlets.GetAzureVM(newAzureQuickVMName1, serviceName).Name, true);
+
+                // Create VM2 without affinity group name
+                Utilities.RetryActionUntilSuccess(() =>
+                {
+                    vmPowershellCmdlets.NewAzureQuickVM(OS.Windows,
+                        newAzureQuickVMName2, serviceName, imageName, null,
+                        InstanceSize.Small, username, password, null, null);
+                }, retriableErrorMessages, 10, 30);
+
+                // Verify
+                Assert.AreEqual(newAzureQuickVMName2, vmPowershellCmdlets.GetAzureVM(newAzureQuickVMName2, serviceName).Name, true);
+
+                // Remove VM2
+                vmPowershellCmdlets.RemoveAzureVM(newAzureQuickVMName2, serviceName);
+                Assert.AreEqual(null, vmPowershellCmdlets.GetAzureVM(newAzureQuickVMName2, serviceName));
+
+                // Create VM2 with affinity group name
+                Utilities.RetryActionUntilSuccess(() =>
+                {
+                    vmPowershellCmdlets.NewAzureQuickVM(OS.Windows,
+                        newAzureQuickVMName2, serviceName, imageName, null,
+                        InstanceSize.Small, username, password, null, affName);
+                }, retriableErrorMessages, 10, 30);
+
+                // Verify
+                Assert.AreEqual(newAzureQuickVMName2, vmPowershellCmdlets.GetAzureVM(newAzureQuickVMName2, serviceName).Name, true);
+            }
+            finally
+            {
+                vmPowershellCmdlets.RemoveAzureService(serviceName);
+                vmPowershellCmdlets.RemoveAzureAffinityGroup(affName);
             }
         }
 
