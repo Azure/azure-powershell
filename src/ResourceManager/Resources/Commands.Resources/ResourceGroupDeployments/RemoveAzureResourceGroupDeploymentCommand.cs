@@ -33,10 +33,10 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroups
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Do not confirm the remove.")]
+        [Parameter(Mandatory = false, HelpMessage = "Do not confirm the remove.")]
         public SwitchParameter Force { get; set; }
 
-        [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "True if succeed, false otherwise.")]
+        [Parameter(Mandatory = false, HelpMessage = "True if succeed, false otherwise.")]
         public SwitchParameter PassThru { get; set; }
         
         protected override void ProcessRecord()

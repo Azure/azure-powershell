@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The provisioning state of the resource group deployment.")]
+        [Parameter(Mandatory = false, HelpMessage = "The provisioning state of the resource group deployment.")]
         [ValidateNotNullOrEmpty]
         public string ProvisioningState { get; set; }
         
