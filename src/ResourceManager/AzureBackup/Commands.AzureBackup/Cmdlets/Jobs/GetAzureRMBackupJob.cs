@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Globalization;
 using System.Management.Automation;
 using System.Collections.Generic;
 using System.Xml;
@@ -139,10 +140,12 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 WriteDebug(String.Format(Resources.TypeFilter, Type));
                 WriteDebug(String.Format(Resources.JobIdFilter, JobId));
 
+                DateTimeFormatInfo format = new CultureInfo("en-US").DateTimeFormat;
                 Mgmt.CSMJobQueryObject queryParams = new Mgmt.CSMJobQueryObject()
                 {
-                    StartTime = From.Value.ToString("yyyy-MM-dd hh:mm:ss tt"),
-                    EndTime = To.Value.ToString("yyyy-MM-dd hh:mm:ss tt"),
+
+                    StartTime = From.Value.ToString("yyyy-MM-dd hh:mm:ss tt", format),
+                    EndTime = To.Value.ToString("yyyy-MM-dd hh:mm:ss tt", format),
                     Operation = Operation,
                     Status = Status,
                     WorkloadType = Type,
