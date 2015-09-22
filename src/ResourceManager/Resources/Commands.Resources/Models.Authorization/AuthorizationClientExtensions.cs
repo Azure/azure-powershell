@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             return roleDefinition;
         }
 
-        public static PSRoleAssignment ToPSRoleAssignment(this RoleAssignment role, AuthorizationClient policyClient, ActiveDirectoryClient activeDirectoryClient)
+        public static PSRoleAssignment ToPSRoleAssignment(this RoleAssignment role, AuthorizationClient policyClient, ActiveDirectoryClient activeDirectoryClient, bool excludeAssignmentsForDeletedPrincipals = true)
         {
             PSRoleDefinition roleDefinition = policyClient.GetRoleDefinition(role.Properties.RoleDefinitionId);
             PSADObject adObject = activeDirectoryClient.GetADObject(new ADObjectFilterOptions { Id = role.Properties.PrincipalId.ToString() }) ?? new PSADObject() { Id = role.Properties.PrincipalId };
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                     ObjectId = adObject.Id
                 };
             }
-            else
+            else if (!excludeAssignmentsForDeletedPrincipals)
             {
                 return new PSRoleAssignment()
                 {
@@ -105,6 +105,19 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                     ObjectId = adObject.Id
                 };
             }
+
+            return null;
+        }
+
+        public static PSRoleAssignment ToPSRoleAssignment(this ClassicAdministrator classicAdministrator, string currentSubscriptionId)
+        {
+            return new PSRoleAssignment()
+            {
+                RoleDefinitionName = classicAdministrator.Properties.Role,
+                DisplayName = classicAdministrator.Properties.EmailAddress,
+                Scope = "/subscriptions/" + currentSubscriptionId,
+                Actions = new List<string>() {"*"}
+            };
         }
     }
 }

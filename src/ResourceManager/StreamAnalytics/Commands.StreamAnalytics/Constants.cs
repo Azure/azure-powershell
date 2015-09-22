@@ -18,14 +18,14 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
 {
     internal static class Constants
     {
-        public const string StreamAnalyticsJob = "AzureStreamAnalyticsJob";
+        public const string StreamAnalyticsJob = "AzureRMStreamAnalyticsJob";
 
-        public const string StreamAnalyticsInput = "AzureStreamAnalyticsInput";
+        public const string StreamAnalyticsInput = "AzureRMStreamAnalyticsInput";
 
-        public const string StreamAnalyticsOutput = "AzureStreamAnalyticsOutput";
+        public const string StreamAnalyticsOutput = "AzureRMStreamAnalyticsOutput";
 
-        public const string StreamAnalyticsTransformation = "AzureStreamAnalyticsTransformation";
+        public const string StreamAnalyticsTransformation = "AzureRMStreamAnalyticsTransformation";
 
-        public const string StreamAnalyticsQuota = "AzureStreamAnalyticsQuota";
+        public const string StreamAnalyticsQuota = "AzureRMStreamAnalyticsQuota";
     }
 }

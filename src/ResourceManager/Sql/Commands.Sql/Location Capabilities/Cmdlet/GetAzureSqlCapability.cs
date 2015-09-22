@@ -18,16 +18,17 @@ using Microsoft.Azure.Commands.Sql.Location_Capabilities.Services;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Linq;
 using System.Text;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureSqlCapability cmdlet
+    /// Defines the Get-AzureRMSqlCapability cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureSqlCapability", 
+    [Cmdlet(VerbsCommon.Get, "AzureRMSqlCapability", 
         ConfirmImpact = ConfirmImpact.None,
         DefaultParameterSetName = _filtered)]
-    public class GetAzureSqlCapability : AzurePSCmdlet
+    public class GetAzureSqlCapability : AzureRMCmdlet
     {
         /// <summary>
         /// Parameter set name for when the cmdlet is invoked without specifying -Default
@@ -87,9 +88,9 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Cmdlet
         /// <summary>
         /// Executes the cmdlet
         /// </summary>
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            AzureSqlCapabilitiesAdapter adapter = new AzureSqlCapabilitiesAdapter(Profile, Profile.Context.Subscription);
+            AzureSqlCapabilitiesAdapter adapter = new AzureSqlCapabilitiesAdapter(DefaultProfile.Context);
             LocationCapabilityModel model = adapter.GetLocationCapabilities(LocationName);
             int depth = 0;
 

@@ -50,8 +50,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         {
             var datastore = new MemoryDataStore();
             AzureSession.DataStore = datastore;
-            var profile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-            AzurePSCmdlet.CurrentProfile = profile;
+            var profile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+            AzureSMCmdlet.CurrentProfile = profile;
             AzureSession.DataStore = datastore;
             ProfileClient = new ProfileClient(profile);
 
@@ -266,7 +266,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         {
             using (var powershell = System.Management.Automation.PowerShell.Create())
             {
-                SetupPowerShellModules(powershell);
+               SetupPowerShellModules(powershell);
 
                 Collection<PSObject> output = null;
                 for (int i = 0; i < scripts.Length; ++i)
@@ -276,7 +276,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 }
                 try
                 {
-                    output = powershell.Invoke();
+                   powershell.Runspace.Events.Subscribers.Clear();
+                   output = powershell.Invoke();
 
                     if (powershell.Streams.Error.Count > 0)
                     {
@@ -294,6 +295,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 finally
                 {
                     powershell.LogPowerShellResults(output);
+                    powershell.Streams.Error.Clear();
                 }
             }
         }
@@ -313,5 +315,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             powershell.AddScript("Write-Debug \"AZURE_TEST_MODE = $($env:AZURE_TEST_MODE)\"");
             powershell.AddScript("Write-Debug \"TEST_HTTPMOCK_OUTPUT =  $($env:TEST_HTTPMOCK_OUTPUT)\"");
         }
+
     }
 }

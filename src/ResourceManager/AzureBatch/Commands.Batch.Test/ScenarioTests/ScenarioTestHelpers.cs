@@ -49,10 +49,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         // NOTE: To save time on setup and compute node allocation when recording, many tests assume the following:
         //     - A Batch account named 'pstests' exists under the subscription being used for recording.
         //     - The following commands were run to create a pool, and all 3 compute nodes are allocated:
-        //          $context = Get-AzureBatchAccountKeys "pstests"
+        //          $context = Get-AzureRMBatchAccountKeys "pstests"
         //          $startTask = New-Object Microsoft.Azure.Commands.Batch.Models.PSStartTask
         //          $startTask.CommandLine = "cmd /c echo hello"
-        //          New-AzureBatchPool -Id "testPool" -VirtualMachineSize "small" -OSFamily "4" -TargetOSVersion "*" -TargetDedicated 3 -StartTask $startTask -BatchContext $context
+        //          New-AzureRMBatchPool -Id "testPool" -VirtualMachineSize "small" -OSFamily "4" -TargetOSVersion "*" -TargetDedicated 3 -StartTask $startTask -BatchContext $context
         internal const string SharedAccount = "pstests";
         internal const string SharedPool = "testPool";
         internal const string SharedPoolStartTaskStdOut = "startup\\stdout.txt";
@@ -373,14 +373,16 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         /// <summary>
         /// Terminates a job
-        /// TODO: Replace with terminate Job client method when it exists.
         /// </summary>
-        public static void TerminateJob(BatchAccountContext context, string jobId)
+        public static void TerminateJob(BatchController controller, BatchAccountContext context, string jobId)
         {
             RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
             BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            context.BatchOMClient.JobOperations.TerminateJob(jobId, additionalBehaviors: behaviors);
+            TerminateJobParameters parameters = new TerminateJobParameters(context, jobId, null, behaviors);
+
+            client.TerminateJob(parameters);
         }
 
         /// <summary>
@@ -445,10 +447,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         /// <summary>
         /// Creates an interceptor that can be used to support the HTTP recorder scenario tests.
-        /// This behavior grabs the outgoing Protocol request, converts it to an HttpRequestMessage compatible with the 
-        /// HTTP recorder, sends the request through the HTTP recorder, and converts the response to an HttpWebResponse
-        /// for serialization by the Protocol Layer.
-        /// NOTE: This is a temporary behavior that should no longer be needed when the Batch OM switches to Hyak.
+        /// Since the BatchRestClient is not generated from the test infrastructure, the HTTP
+        /// recording delegate must be explicitly added.
         /// </summary>
         public static RequestInterceptor CreateHttpRecordingInterceptor()
         {

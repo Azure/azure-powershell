@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             this.hiveJobDefinitionCommand = new NewAzureHDInsightHiveJobDefinitionCommand();
         }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             //get variables from session
             var clusterConnection = SessionState.PSVariable.Get(UseAzureHDInsightClusterCommand.ClusterEndpoint).Value.ToString();
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             {
                 throw new NullReferenceException(
                     string.Format(
-                        "The cluster or resource group specified is null. Please use the Use-AzureHDInsightCluster command to connect to a cluster."));
+                        "The cluster or resource group specified is null. Please use the Use-AzureRMHDInsightCluster command to connect to a cluster."));
             }
 
             //get hive job

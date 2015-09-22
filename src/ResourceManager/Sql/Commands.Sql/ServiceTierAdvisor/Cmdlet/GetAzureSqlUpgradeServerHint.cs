@@ -21,7 +21,7 @@ using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureSqlServerUpgradeHint", ConfirmImpact = ConfirmImpact.None)]
+    [Cmdlet(VerbsCommon.Get, "AzureRMSqlServerUpgradeHint", ConfirmImpact = ConfirmImpact.None)]
     public class GetAzureSqlServerUpgradeHint : AzureSqlCmdletBase<UpgradeServerHint, AzureSqlServiceTierAdvisorAdapter>
     {
         /// <summary>
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Cmdlet
             else
             {
                 // Return elastic pool hints and exclude databases contained in pools
-                var elasticPoolAdapter = new AzureSqlElasticPoolRecommendationAdapter(Profile, Profile.Context.Subscription);
+                var elasticPoolAdapter = new AzureSqlElasticPoolRecommendationAdapter(DefaultProfile.Context);
                 return new UpgradeServerHint
                 {
                     Databases = ModelAdapter.ListUpgradeDatabaseHints(ResourceGroupName, ServerName, true),
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Cmdlet
         /// <returns>Returns new AzureSqlServiceTierAdvisorAdapter</returns>
         protected override AzureSqlServiceTierAdvisorAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            return new AzureSqlServiceTierAdvisorAdapter(Profile, subscription);
+            return new AzureSqlServiceTierAdvisorAdapter(DefaultProfile.Context);
         }
     }
 }

@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             CreatePSWorkspaceParameters parameters = new CreatePSWorkspaceParameters()
             {

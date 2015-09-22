@@ -29,7 +29,7 @@ using System.Text.RegularExpressions;
 
 namespace Microsoft.WindowsAzure.Commands.StorSimple
 {
-    public class StorSimpleCmdletBase : AzurePSCmdlet
+    public class StorSimpleCmdletBase : AzureSMCmdlet
     {
         //this property will determine whether before running the actual commandlet logic, should resource selection be verified
         protected bool verifyResourceBeforeCmdletExecute;

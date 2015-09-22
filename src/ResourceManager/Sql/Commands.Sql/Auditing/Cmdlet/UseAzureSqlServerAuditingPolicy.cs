@@ -22,8 +22,8 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// <summary>
     /// Marks the given database as using its server's default policy instead of its own policy.
     /// </summary>
-    [Cmdlet(VerbsOther.Use, "AzureSqlServerAuditingPolicy"), OutputType(typeof(DatabaseAuditingPolicyModel))]
-    [Alias("Use-AzureSqlDatabaseServerAuditingPolicy")]
+    [Cmdlet(VerbsOther.Use, "AzureRMSqlServerAuditingPolicy"), OutputType(typeof(DatabaseAuditingPolicyModel))]
+    [Alias("Use-AzureRMSqlDatabaseServerAuditingPolicy")]
     public class UseAzureSqlServerAuditingPolicy : SqlDatabaseAuditingCmdletBase
     {
         /// <summary>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             string storageAccountName = ModelAdapter.GetServerStorageAccount(ResourceGroupName, ServerName, clientRequestId);
             if (string.IsNullOrEmpty(storageAccountName))
             {
-                throw new Exception(string.Format(Resources.UseServerWithoutStorageAccount));
+                throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.UseServerWithoutStorageAccount));
             }
             return storageAccountName;
         }

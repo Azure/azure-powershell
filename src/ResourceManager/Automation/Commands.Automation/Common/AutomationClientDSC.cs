@@ -751,7 +751,7 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
                 resourceGroupName,
                 automationAccountName);
 
-            // prepare the parameters to be used in New-AzureResourceGroupDeployment cmdlet
+            // prepare the parameters to be used in New-AzureRMResourceGroupDeployment cmdlet
             Hashtable templateParameters = new Hashtable();
             templateParameters.Add("vmName", azureVMName);
             templateParameters.Add("location", location);
@@ -767,10 +767,10 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
             templateParameters.Add("actionAfterReboot", actionAfterReboot);
             templateParameters.Add("allowModuleOverwrite", moduleOverwriteFlag);
 
-            // invoke the New-AzureResourceGroupDeployment cmdlet
+            // invoke the New-AzureRMResourceGroupDeployment cmdlet
             using (Pipeline pipe = Runspace.DefaultRunspace.CreateNestedPipeline())
             {
-                Command invokeCommand = new Command("New-AzureResourceGroupDeployment");
+                Command invokeCommand = new Command("New-AzureRMResourceGroupDeployment");
                 invokeCommand.Parameters.Add("Name", deploymentName);
                 invokeCommand.Parameters.Add("ResourceGroupName", azureVmResourceGroup);
                 invokeCommand.Parameters.Add("TemplateParameterObject", templateParameters);

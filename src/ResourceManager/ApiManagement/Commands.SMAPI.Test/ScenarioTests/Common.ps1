@@ -50,6 +50,6 @@ Gets all locations for a provider
 #>
 function Get-ProviderLocations($provider)
 {
-    $location = Get-AzureLocation | where {$_.Name -eq $provider}
+    $location = Get-AzureRMLocation | where {$_.Name -eq $provider}
     $location.Locations
 }

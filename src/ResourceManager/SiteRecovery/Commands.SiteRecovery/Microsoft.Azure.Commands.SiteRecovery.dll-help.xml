@@ -5,7 +5,7 @@
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
-        Get-AzureSiteRecoveryServer
+        Get-AzureRMSiteRecoveryServer
       </command:name>
       <maml:description>
         <maml:para>Get information about Azure Site Recovery Server for current Azure Site Recovery vault</maml:para>
@@ -23,7 +23,7 @@
     <!-- Cmdlet syntax section-->
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Get-AzureSiteRecoveryServer</maml:name>
+        <maml:name>Get-AzureRMSiteRecoveryServer</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Name</maml:name>
           <maml:description>
@@ -40,7 +40,7 @@
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Get-AzureSiteRecoveryServer</maml:name>
+        <maml:name>Get-AzureRMSiteRecoveryServer</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>FriendlyName</maml:name>
           <maml:description>
@@ -156,7 +156,7 @@
           <maml:para>PS C:\&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Get-AzureSiteRecoveryServer
+          Get-AzureRMSiteRecoveryServer
 
 FriendlyName    : sriramvu-hv2.fareast.corp.microsoft.com
 Name            : 57f95c35-6c83-42ce-bb21-2c4f10f92d8e

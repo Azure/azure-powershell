@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Get an existing resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureProviderOperation"), OutputType(typeof(PSResourceProviderOperation))]
+    [Cmdlet(VerbsCommon.Get, "AzureRMProviderOperation"), OutputType(typeof(PSResourceProviderOperation))]
     public class GetAzureProviderOperationCommand : ResourcesBaseCmdlet
     {
         private const string WildCardCharacter = "*";
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Resources
         /// <summary>
         /// Executes the cmdlet
         /// </summary>
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             // remove leading and trailing whitespaces
             this.ActionString = this.ActionString.Trim();
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Resources
             string nonWildCardPrefix = GetAzureProviderOperationCommand.GetNonWildcardPrefix(actionString);
             if (string.IsNullOrWhiteSpace(nonWildCardPrefix))
             {
-                // 'Get-AzureProviderOperation *' or 'Get-AzureProviderOperation */virtualmachines/*'
+                // 'Get-AzureRMProviderOperation *' or 'Get-AzureRMProviderOperation */virtualmachines/*'
                 // get operations for all providers
                 providers.AddRange(this.ResourcesClient.ListProviderOperationsMetadata());
             }
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Resources
                 string providerFullName = GetAzureProviderOperationCommand.GetResourceProviderFullName(nonWildCardPrefix);
                 if (!string.IsNullOrWhiteSpace(providerFullName))
                 {
-                    // we have the full name of the provider. 'Get-AzureProviderOperation Microsoft.Sql/servers/*'
+                    // we have the full name of the provider. 'Get-AzureRMProviderOperation Microsoft.Sql/servers/*'
                     // only query for that provider
                     providers.Add(this.ResourcesClient.GetProviderOperationsMetadata(providerFullName));
                 }
