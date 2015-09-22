@@ -1446,9 +1446,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             return RunPSCmdletAndReturnFirst<SM.PersistentVMRoleContext>(new GetAzureVMCmdletInfo(vmName, serviceName));
         }
 
-        public ManagementOperationContext RemoveAzureVM(string vmName, string serviceName, bool deleteVhd = false)
+        public ManagementOperationContext RemoveAzureVM(string vmName, string serviceName, bool deleteVhd = false, bool whatif = false)
         {
-            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new RemoveAzureVMCmdletInfo(vmName, serviceName, deleteVhd));
+            return RunPSCmdletAndReturnFirst<ManagementOperationContext>(new RemoveAzureVMCmdletInfo(vmName, serviceName, deleteVhd, whatif));
         }
 
         public ManagementOperationContext StartAzureVM(string vmName, string serviceName)
