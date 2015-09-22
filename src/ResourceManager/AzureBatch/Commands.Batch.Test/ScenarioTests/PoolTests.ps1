@@ -172,7 +172,7 @@ function Test-UpdatePool
 {
 	param([string]$accountName, [string]$poolId)
 
-	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$context = Get-AzureRMBatchAccountKeys -Name $accountName
 
 	$pool = Get-AzureBatchPool_ST $poolId -BatchContext $context
 

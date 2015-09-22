@@ -333,7 +333,7 @@ function Test-UpdateJob
 {
 	param([string]$accountName, [string]$jobId)
 
-	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$context = Get-AzureRMBatchAccountKeys -Name $accountName
 
 	# Create the job with an auto pool
 	$poolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolSpecification

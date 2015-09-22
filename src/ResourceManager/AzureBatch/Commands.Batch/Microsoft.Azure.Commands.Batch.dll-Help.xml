@@ -9468,7 +9468,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -9486,7 +9486,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
 
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
@@ -9677,7 +9677,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -9688,7 +9688,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
 
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
@@ -9829,7 +9829,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -9840,7 +9840,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
 
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
@@ -9984,7 +9984,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -9995,7 +9995,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
 
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
@@ -10138,7 +10138,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -10149,7 +10149,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
 
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
