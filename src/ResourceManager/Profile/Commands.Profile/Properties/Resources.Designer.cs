@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Could not authenticate your user account {0} with the common tenant. Please login again using Login-AzureRMAccount..
+        ///   Looks up a localized string similar to Could not authenticate your user account {0} with the common tenant. Please login again using Login-AzureRmAccount..
         /// </summary>
         internal static string CommonTenantAuthFailed {
             get {
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please provide a valid tenant Id on the command line or execute Login-AzureRMAccount..
+        ///   Looks up a localized string similar to Please provide a valid tenant Id on the command line or execute Login-AzureRmAccount..
         /// </summary>
         internal static string NoValidTenant {
             get {
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Could not authenticate with tenant {0}. Please ensure that your account has access to this tenant and log in with Login-AzureRMAccount.
+        ///   Looks up a localized string similar to Could not authenticate with tenant {0}. Please ensure that your account has access to this tenant and log in with Login-AzureRmAccount.
         /// </summary>
         internal static string TenantAuthFailed {
             get {

@@ -20,7 +20,7 @@ function Test-GetNodeFileByTaskByName
 {
 	param([string]$accountName, [string]$jobId, [string]$taskId, [string]$nodeFileName)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$nodeFile = Get-AzureBatchNodeFile_ST -JobId $jobId -TaskId $taskId -Name $nodeFileName -BatchContext $context
 
 	Assert-AreEqual $nodeFileName $nodeFile.Name
@@ -34,7 +34,7 @@ function Test-ListNodeFilesByTaskByFilter
 {
 	param([string]$accountName, [string]$jobId, [string]$taskId, [string]$nodeFilePrefix, [string]$matches)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$filter = "startswith(name,'" + "$nodeFilePrefix" + "')"
 
 	$nodeFiles = Get-AzureBatchNodeFile_ST -JobId $jobId -TaskId $taskId -Filter $filter -BatchContext $context
@@ -64,7 +64,7 @@ function Test-ListNodeFilesByTaskWithMaxCount
 {
 	param([string]$accountName, [string]$jobId, [string]$taskId, [string]$maxCount)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$nodeFiles = Get-AzureBatchNodeFile_ST -JobId $jobId -TaskId $taskId -MaxCount $maxCount -BatchContext $context
 
 	Assert-AreEqual $maxCount $nodeFiles.Length
@@ -84,7 +84,7 @@ function Test-ListNodeFilesByTaskRecursive
 {
 	param([string]$accountName, [string]$jobId, [string]$taskId, [string]$newfile)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$filter = "startswith(name,'wd')"
 	$nodeFiles = Get-AzureBatchNodeFile_ST -JobId $jobId -TaskId $taskId -Filter $filter -BatchContext $context
 
@@ -108,7 +108,7 @@ function Test-ListAllNodeFilesByTask
 {
 	param([string]$accountName, [string] $jobId, [string]$taskId, [string]$count)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$nodeFiles = Get-AzureBatchNodeFile_ST -JobId $jobId -TaskId $taskId -Filter $null -BatchContext $context
 
 	Assert-AreEqual $count $nodeFiles.Length
@@ -128,7 +128,7 @@ function Test-ListNodeFileByTaskPipeline
 {
 	param([string]$accountName, [string]$jobId, [string]$taskId, [string]$count)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 
 	# Get Task into Get Node File
 	$nodeFiles = Get-AzureBatchTask_ST -JobId $jobId -Id $taskId -BatchContext $context | Get-AzureBatchNodeFile_ST -BatchContext $context
@@ -147,7 +147,7 @@ function Test-GetNodeFileContentByTaskByName
 {
 	param([string]$accountName, [string]$jobId, [string]$taskId, [string]$nodeFileName, [string]$fileContent)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$stream = New-Object System.IO.MemoryStream 
 
 	try
@@ -179,7 +179,7 @@ function Test-GetNodeFileContentByTaskPipeline
 {
 	param([string]$accountName, [string]$jobId, [string]$taskId, [string]$nodeFileName, [string]$fileContent)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$stream = New-Object System.IO.MemoryStream 
 
 	try
@@ -212,7 +212,7 @@ function Test-GetNodeFileByComputeNodeByName
 {
 	param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$nodeFileName)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$nodeFile = Get-AzureBatchNodeFile_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Name $nodeFileName -BatchContext $context
 
 	Assert-AreEqual $nodeFileName $nodeFile.Name
@@ -231,7 +231,7 @@ function Test-ListNodeFilesByComputeNodeByFilter
 {
 	param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$nodeFilePrefix, [string]$matches)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$filter = "startswith(name,'" + "$nodeFilePrefix" + "')"
 
 	$nodeFiles = Get-AzureBatchNodeFile_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Filter $filter -BatchContext $context
@@ -261,7 +261,7 @@ function Test-ListNodeFilesByComputeNodeWithMaxCount
 {
 	param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$maxCount)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$nodeFiles = Get-AzureBatchNodeFile_ST -PoolId $poolId -ComputeNodeId $computeNodeId -MaxCount $maxCount -BatchContext $context
 
 	Assert-AreEqual $maxCount $nodeFiles.Length
@@ -281,7 +281,7 @@ function Test-ListNodeFilesByComputeNodeRecursive
 {
 	param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$startupFolder, [string]$recursiveCount)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$filter = "startswith(name,'" + "$startupFolder" + "')"
 	$nodeFiles = Get-AzureBatchNodeFile_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Filter $filter -BatchContext $context
 
@@ -305,7 +305,7 @@ function Test-ListAllNodeFilesByComputeNode
 {
 	param([string]$accountName, [string]$poolId, [string] $computeNodeId, [string]$count)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$nodeFiles = Get-AzureBatchNodeFile_ST -PoolId $poolId -ComputeNodeId $computeNodeId -BatchContext $context
 
 	Assert-AreEqual $count $nodeFiles.Length
@@ -325,7 +325,7 @@ function Test-ListNodeFileByComputeNodePipeline
 {
 	param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$count)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 
 	# Get Compute Node into Get Node File
 	$nodeFiles = Get-AzureBatchComputeNode_ST -PoolId $poolId -Id $computeNodeId -BatchContext $context | Get-AzureBatchNodeFile_ST -BatchContext $context
@@ -340,7 +340,7 @@ function Test-GetNodeFileContentByComputeNodeByName
 {
 	param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$nodeFileName, [string]$fileContent)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$stream = New-Object System.IO.MemoryStream 
 
 	try
@@ -394,7 +394,7 @@ function Test-GetNodeFileContentByComputeNodePipeline
 {
 	param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$nodeFileName, [string]$fileContent)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$stream = New-Object System.IO.MemoryStream 
 
 	try
@@ -427,7 +427,7 @@ function Test-GetRDPFileById
 {
 	param([string]$accountName, [string]$poolId, [string]$computeNodeId)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$stream = New-Object System.IO.MemoryStream 
 	$rdpContents = "full address"
 
@@ -482,7 +482,7 @@ function Test-GetRDPFilePipeline
 {
 	param([string]$accountName, [string]$poolId, [string]$computeNodeId)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$stream = New-Object System.IO.MemoryStream 
 	$rdpContents = "full address"
 

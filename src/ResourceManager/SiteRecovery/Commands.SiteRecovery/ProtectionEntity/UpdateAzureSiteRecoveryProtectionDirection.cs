@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// <summary>
     /// Used to initiate a recovery protection operation.
     /// </summary>
-    [Cmdlet(VerbsData.Update, "AzureRMSiteRecoveryProtectionDirection", DefaultParameterSetName = ASRParameterSets.ByPEObject)]
+    [Cmdlet(VerbsData.Update, "AzureRmSiteRecoveryProtectionDirection", DefaultParameterSetName = ASRParameterSets.ByPEObject)]
     [OutputType(typeof(ASRJob))]
     public class UpdateAzureSiteRecoveryProtection : SiteRecoveryCmdletBase
     {

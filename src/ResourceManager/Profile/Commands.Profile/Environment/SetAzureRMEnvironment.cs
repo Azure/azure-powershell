@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Profile
     /// <summary>
     /// Cmdlet to set Azure Environment in Profile.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRMEnvironment")]
+    [Cmdlet(VerbsCommon.Set, "AzureRmEnvironment")]
     [OutputType(typeof(PSAzureEnvironment))]
     public class SetAzureRMEnvironmentCommand : AzureRMCmdlet
     {

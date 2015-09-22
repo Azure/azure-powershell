@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using Microsoft.WindowsAzure.Commands.Common.Storage;
 
       
-    [Cmdlet(VerbsData.Backup, "AzureRMApiManagement"), OutputType(typeof(PsApiManagement))]
+    [Cmdlet(VerbsData.Backup, "AzureRmApiManagement"), OutputType(typeof(PsApiManagement))]
     public class BackupAzureApiManagement : AzureApiManagementCmdletBase
     {
         [Parameter(

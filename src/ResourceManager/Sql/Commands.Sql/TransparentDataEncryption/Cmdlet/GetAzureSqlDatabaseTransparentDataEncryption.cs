@@ -19,9 +19,9 @@ using Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model;
 namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureRMSqlDatabaseTransparentDataEncryption cmdlet
+    /// Defines the Get-AzureRmSqlDatabaseTransparentDataEncryption cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMSqlDatabaseTransparentDataEncryption", ConfirmImpact = ConfirmImpact.None)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseTransparentDataEncryption", ConfirmImpact = ConfirmImpact.None)]
     public class GetAzureSqlDatabaseTransparentDataEncryption : AzureSqlDatabaseTransparentDataEncryptionCmdletBase
     {
         /// <summary>

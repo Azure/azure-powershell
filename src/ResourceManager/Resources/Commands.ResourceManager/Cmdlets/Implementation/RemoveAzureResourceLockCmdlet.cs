@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// The remove azure resource lock cmdlet.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRMResourceLock", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmResourceLock", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
     public class RemoveAzureResourceLockCmdlet : ResourceLockManagementCmdletBase 
     {
         /// <summary>

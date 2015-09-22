@@ -49,10 +49,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         // NOTE: To save time on setup and compute node allocation when recording, many tests assume the following:
         //     - A Batch account named 'pstests' exists under the subscription being used for recording.
         //     - The following commands were run to create a pool, and all 3 compute nodes are allocated:
-        //          $context = Get-AzureRMBatchAccountKeys "pstests"
+        //          $context = Get-AzureRmBatchAccountKeys "pstests"
         //          $startTask = New-Object Microsoft.Azure.Commands.Batch.Models.PSStartTask
         //          $startTask.CommandLine = "cmd /c echo hello"
-        //          New-AzureRMBatchPool -Id "testPool" -VirtualMachineSize "small" -OSFamily "4" -TargetOSVersion "*" -TargetDedicated 3 -StartTask $startTask -BatchContext $context
+        //          New-AzureRmBatchPool -Id "testPool" -VirtualMachineSize "small" -OSFamily "4" -TargetOSVersion "*" -TargetDedicated 3 -StartTask $startTask -BatchContext $context
         internal const string SharedAccount = "pstests";
         internal const string SharedPool = "testPool";
         internal const string SharedPoolStartTaskStdOut = "startup\\stdout.txt";

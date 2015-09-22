@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.Sql.ElasticPool.Model;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRMSqlElasticPoolDatabase", 
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlElasticPoolDatabase", 
         ConfirmImpact = ConfirmImpact.None)]
     public class GetAzureSqlElasticPoolDatabase : AzureSqlElasticPoolCmdletBase
     {

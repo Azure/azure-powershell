@@ -3,7 +3,7 @@
   <!-- Updatable Help Version 1.0.0.0 -->
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>Add-AzureRMTrafficManagerEndpointConfig</command:name>
+      <command:name>Add-AzureRmTrafficManagerEndpointConfig</command:name>
       <maml:description>
         <maml:para>Adds an endpoint to an Azure Traffic Manager profile. </maml:para>
       </maml:description>
@@ -15,12 +15,12 @@
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Add-AzureRMTrafficManagerEndpointConfig cmdlet adds an endpoint to a local Azure Traffic Manager profile object. You can get a profile by using the New-AzureRMTrafficManagerProfile or Get-AzureRMTrafficManagerProfile cmdlets. </maml:para>
-      <maml:para>This cmdlet operates on the local profile object. Commit your changes to the profile for Traffic Manager by using the Set-AzureRMTrafficManagerProfile cmdlet.</maml:para>
+      <maml:para>The Add-AzureRmTrafficManagerEndpointConfig cmdlet adds an endpoint to a local Azure Traffic Manager profile object. You can get a profile by using the New-AzureRmTrafficManagerProfile or Get-AzureRmTrafficManagerProfile cmdlets. </maml:para>
+      <maml:para>This cmdlet operates on the local profile object. Commit your changes to the profile for Traffic Manager by using the Set-AzureRmTrafficManagerProfile cmdlet.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Add-AzureRMTrafficManagerEndpointConfig</maml:name>
+        <maml:name>Add-AzureRmTrafficManagerEndpointConfig</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>EndpointLocation</maml:name>
           <maml:description>
@@ -264,12 +264,12 @@
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$TrafficManagerProfile = Get-AzureRMTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11"
-PS C:\&gt; Add-AzureRMTrafficManagerEndpointConfig -EndpointName "contoso" -EndpointStatus Enabled -Target "www.contoso.com" -TrafficManagerProfile $TrafficManagerProfile -Type ExternalEndpoints -EndpointLocation "North Europe" -Priority 1 -Weight 10
-PS C:\&gt; Set-AzureRMTrafficManagerProfile -TrafficManagerProfile $TrafficManagerProfile
+        <dev:code>PS C:\&gt;$TrafficManagerProfile = Get-AzureRmTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11"
+PS C:\&gt; Add-AzureRmTrafficManagerEndpointConfig -EndpointName "contoso" -EndpointStatus Enabled -Target "www.contoso.com" -TrafficManagerProfile $TrafficManagerProfile -Type ExternalEndpoints -EndpointLocation "North Europe" -Priority 1 -Weight 10
+PS C:\&gt; Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $TrafficManagerProfile
 </dev:code>
         <dev:remarks>
-          <maml:para>The first command gets an Azure Traffic Manager profile by using the Get-AzureRMTrafficManagerProfile cmdlet. The command stores the local profile in the $TrafficManagerProfile variable. </maml:para>
+          <maml:para>The first command gets an Azure Traffic Manager profile by using the Get-AzureRmTrafficManagerProfile cmdlet. The command stores the local profile in the $TrafficManagerProfile variable. </maml:para>
           <maml:para>The second command adds an endpoint named contoso to the profile stored in $TrafficManagerProfile. The command includes configuration data for the endpoint. This command changes only the local object.</maml:para>
           <maml:para>The final command updates the Traffic Manager profile named ContosoProfile to match the local value in $TrafficManagerProfile.</maml:para>
           <maml:para />
@@ -284,22 +284,22 @@ PS C:\&gt; Set-AzureRMTrafficManagerProfile -TrafficManagerProfile $TrafficManag
     </command:examples>
     <maml:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Remove-AzureRMTrafficManagerEndpointConfig</maml:linkText>
+        <maml:linkText>Remove-AzureRmTrafficManagerEndpointConfig</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureRMTrafficManagerProfile</maml:linkText>
+        <maml:linkText>Get-AzureRmTrafficManagerProfile</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Set-AzureRMTrafficManagerProfile</maml:linkText>
+        <maml:linkText>Set-AzureRmTrafficManagerProfile</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>Get-AzureRMTrafficManagerProfile</command:name>
+      <command:name>Get-AzureRmTrafficManagerProfile</command:name>
       <maml:description>
         <maml:para>Gets an Azure Traffic Manager profile.</maml:para>
       </maml:description>
@@ -311,11 +311,11 @@ PS C:\&gt; Set-AzureRMTrafficManagerProfile -TrafficManagerProfile $TrafficManag
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Get-AzureRMTrafficManagerProfile cmdlet gets a Traffic Manager profile from Azure Traffic Manager, and returns an object that represents that profile. You can modify the local object, and then apply changes to the profile by using the Set-AzureRMTrafficManagerProfile cmdlet.</maml:para>
+      <maml:para>The Get-AzureRmTrafficManagerProfile cmdlet gets a Traffic Manager profile from Azure Traffic Manager, and returns an object that represents that profile. You can modify the local object, and then apply changes to the profile by using the Set-AzureRmTrafficManagerProfile cmdlet.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Get-AzureRMTrafficManagerProfile</maml:name>
+        <maml:name>Get-AzureRmTrafficManagerProfile</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Profile</maml:name>
           <maml:description>
@@ -405,7 +405,7 @@ PS C:\&gt; Set-AzureRMTrafficManagerProfile -TrafficManagerProfile $TrafficManag
           </maml:description>
         </dev:type>
         <maml:description>
-          <maml:para>This cmdlet returns a TrafficManagerProfile object. You can modify this object, and then apply changes to Traffic Manager by using Set-AzureRMTrafficManagerProfile. </maml:para>
+          <maml:para>This cmdlet returns a TrafficManagerProfile object. You can modify this object, and then apply changes to Traffic Manager by using Set-AzureRmTrafficManagerProfile. </maml:para>
         </maml:description>
       </command:returnValue>
     </command:returnValues>
@@ -418,7 +418,7 @@ PS C:\&gt; Set-AzureRMTrafficManagerProfile -TrafficManagerProfile $TrafficManag
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRMTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11" 
+        <dev:code>PS C:\&gt;Get-AzureRmTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11" 
 </dev:code>
         <dev:remarks>
           <maml:para>This command gets the profile named ContosoProfile in ResourceGroup11. </maml:para>
@@ -434,22 +434,22 @@ PS C:\&gt; Set-AzureRMTrafficManagerProfile -TrafficManagerProfile $TrafficManag
     </command:examples>
     <maml:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>New-AzureRMTrafficManagerProfile</maml:linkText>
+        <maml:linkText>New-AzureRmTrafficManagerProfile</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Remove-AzureRMTrafficManagerProfile</maml:linkText>
+        <maml:linkText>Remove-AzureRmTrafficManagerProfile</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Set-AzureRMTrafficManagerProfile</maml:linkText>
+        <maml:linkText>Set-AzureRmTrafficManagerProfile</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>New-AzureRMTrafficManagerProfile</command:name>
+      <command:name>New-AzureRmTrafficManagerProfile</command:name>
       <maml:description>
         <maml:para>Creates an Azure Traffic Manager profile.</maml:para>
       </maml:description>
@@ -461,12 +461,12 @@ PS C:\&gt; Set-AzureRMTrafficManagerProfile -TrafficManagerProfile $TrafficManag
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The New-AzureRMTrafficManagerProfile cmdlet creates an Azure Traffic Manager profile. Specify a name and required settings. This cmdlet returns a local object that represents the new profile.</maml:para>
-      <maml:para>This cmdlet does not configure Traffic Manager endpoints. Update the local profile object by using the Add-AzureRMTrafficManagerEndpointConfig cmdlet. Then upload changes to Traffic Manager by using the Set-AzureRMTrafficManagerProfile cmdlet. </maml:para>
+      <maml:para>The New-AzureRmTrafficManagerProfile cmdlet creates an Azure Traffic Manager profile. Specify a name and required settings. This cmdlet returns a local object that represents the new profile.</maml:para>
+      <maml:para>This cmdlet does not configure Traffic Manager endpoints. Update the local profile object by using the Add-AzureRmTrafficManagerEndpointConfig cmdlet. Then upload changes to Traffic Manager by using the Set-AzureRmTrafficManagerProfile cmdlet. </maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>New-AzureRMTrafficManagerProfile</maml:name>
+        <maml:name>New-AzureRmTrafficManagerProfile</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Profile</maml:name>
           <maml:description>
@@ -704,7 +704,7 @@ PS C:\&gt; Set-AzureRMTrafficManagerProfile -TrafficManagerProfile $TrafficManag
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;New-AzureRMTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11" -ProfileStatus Enabled -TrafficRoutingMethod Performance -RelativeDnsName "contosoapp" -TTL 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/default.aspx" 
+        <dev:code>PS C:\&gt;New-AzureRmTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11" -ProfileStatus Enabled -TrafficRoutingMethod Performance -RelativeDnsName "contosoapp" -TTL 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/default.aspx" 
 </dev:code>
         <dev:remarks>
           <maml:para>This command creates an Azure Traffic Manager profile named ContosoProfile in resource group ResourceGroup11. The DNS FQDN is contosoapp.trafficmanager.net.</maml:para>
@@ -720,26 +720,26 @@ PS C:\&gt; Set-AzureRMTrafficManagerProfile -TrafficManagerProfile $TrafficManag
     </command:examples>
     <maml:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureRMTrafficManagerProfile</maml:linkText>
+        <maml:linkText>Get-AzureRmTrafficManagerProfile</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Remove-AzureRMTrafficManagerProfile</maml:linkText>
+        <maml:linkText>Remove-AzureRmTrafficManagerProfile</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Set-AzureRMTrafficManagerProfile</maml:linkText>
+        <maml:linkText>Set-AzureRmTrafficManagerProfile</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Add-AzureRMTrafficManagerEndpointConfig</maml:linkText>
+        <maml:linkText>Add-AzureRmTrafficManagerEndpointConfig</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>Remove-AzureRMTrafficManagerEndpointConfig</command:name>
+      <command:name>Remove-AzureRmTrafficManagerEndpointConfig</command:name>
       <maml:description>
         <maml:para>Removes an endpoint from an Azure Traffic Manager profile. </maml:para>
       </maml:description>
@@ -751,12 +751,12 @@ PS C:\&gt; Set-AzureRMTrafficManagerProfile -TrafficManagerProfile $TrafficManag
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Remove-AzureRMTrafficManagerEndpointConfig cmdlet removes an endpoint from a local Azure Traffic Manager profile object. You can get a profile by using the New-AzureRMTrafficManagerProfile or Get-AzureRMTrafficManagerProfile cmdlets. </maml:para>
-      <maml:para>This cmdlet operates on the local profile object. Commit your changes to the profile for Traffic Manager by using the Set-AzureRMTrafficManagerProfile cmdlet.</maml:para>
+      <maml:para>The Remove-AzureRmTrafficManagerEndpointConfig cmdlet removes an endpoint from a local Azure Traffic Manager profile object. You can get a profile by using the New-AzureRmTrafficManagerProfile or Get-AzureRmTrafficManagerProfile cmdlets. </maml:para>
+      <maml:para>This cmdlet operates on the local profile object. Commit your changes to the profile for Traffic Manager by using the Set-AzureRmTrafficManagerProfile cmdlet.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Remove-AzureRMTrafficManagerEndpointConfig</maml:name>
+        <maml:name>Remove-AzureRmTrafficManagerEndpointConfig</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Profile</maml:name>
           <maml:description>
@@ -857,12 +857,12 @@ PS C:\&gt; Set-AzureRMTrafficManagerProfile -TrafficManagerProfile $TrafficManag
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$TrafficManagerProfile = Get-AzureRMTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11"
-PS C:\&gt; Remove-AzureRMTrafficManagerEndpointConfig -EndpointName "contoso" -TrafficManagerProfile $TrafficManagerProfile 
-PS C:\&gt; Set-AzureRMTrafficManagerProfile -TrafficManagerProfile $TrafficManagerProfile 
+        <dev:code>PS C:\&gt;$TrafficManagerProfile = Get-AzureRmTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11"
+PS C:\&gt; Remove-AzureRmTrafficManagerEndpointConfig -EndpointName "contoso" -TrafficManagerProfile $TrafficManagerProfile 
+PS C:\&gt; Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $TrafficManagerProfile 
 </dev:code>
         <dev:remarks>
-          <maml:para>The first command gets an Azure Traffic Manager profile by using the Get-AzureRMTrafficManagerProfile cmdlet. The command stores the local profile in the $TrafficManagerProfile variable. </maml:para>
+          <maml:para>The first command gets an Azure Traffic Manager profile by using the Get-AzureRmTrafficManagerProfile cmdlet. The command stores the local profile in the $TrafficManagerProfile variable. </maml:para>
           <maml:para>The second command removes an endpoint named contoso from the profile stored in $TrafficManagerProfile. This command changes only the local object.</maml:para>
           <maml:para>The final command updates the Traffic Manager profile named ContosoProfile to match the local value in $TrafficManagerProfile.</maml:para>
           <maml:para />
@@ -880,10 +880,10 @@ PS C:\&gt; Set-AzureRMTrafficManagerProfile -TrafficManagerProfile $TrafficManag
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRMTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11" | Remove-AzureRMTrafficManagerEndpointConfig -EndpointName "contoso" | Set-AzureRMTrafficManagerProfile
+        <dev:code>PS C:\&gt;Get-AzureRmTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11" | Remove-AzureRmTrafficManagerEndpointConfig -EndpointName "contoso" | Set-AzureRmTrafficManagerProfile
 </dev:code>
         <dev:remarks>
-          <maml:para>This command gets a profile, and then passes the local profile to Remove-AzureRMTrafficManagerEndpointConfig by using the pipeline operator. That cmdlet removes an endpoint named contoso from that profile, and then passes the result to Set-AzureRMTrafficManagerProfile. The final cmdlet updates the Traffic Manager profile to match the local value.</maml:para>
+          <maml:para>This command gets a profile, and then passes the local profile to Remove-AzureRmTrafficManagerEndpointConfig by using the pipeline operator. That cmdlet removes an endpoint named contoso from that profile, and then passes the result to Set-AzureRmTrafficManagerProfile. The final cmdlet updates the Traffic Manager profile to match the local value.</maml:para>
           <maml:para />
           <maml:para />
         </dev:remarks>
@@ -896,22 +896,22 @@ PS C:\&gt; Set-AzureRMTrafficManagerProfile -TrafficManagerProfile $TrafficManag
     </command:examples>
     <maml:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Add-AzureRMTrafficManagerEndpointConfig</maml:linkText>
+        <maml:linkText>Add-AzureRmTrafficManagerEndpointConfig</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureRMTrafficManagerProfile</maml:linkText>
+        <maml:linkText>Get-AzureRmTrafficManagerProfile</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Set-AzureRMTrafficManagerProfile</maml:linkText>
+        <maml:linkText>Set-AzureRmTrafficManagerProfile</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>Remove-AzureRMTrafficManagerProfile</command:name>
+      <command:name>Remove-AzureRmTrafficManagerProfile</command:name>
       <maml:description>
         <maml:para>Deletes an Azure Traffic Manager profile.</maml:para>
       </maml:description>
@@ -923,11 +923,11 @@ PS C:\&gt; Set-AzureRMTrafficManagerProfile -TrafficManagerProfile $TrafficManag
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Remove-AzureRMTrafficManagerProfile cmdlet deletes an Azure Traffic Manager profile. You can specify a profile to delete by name, or you can specify a profile object. You can delete a profile object from Traffic Manager by using the pipeline or as a parameter value.</maml:para>
+      <maml:para>The Remove-AzureRmTrafficManagerProfile cmdlet deletes an Azure Traffic Manager profile. You can specify a profile to delete by name, or you can specify a profile object. You can delete a profile object from Traffic Manager by using the pipeline or as a parameter value.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Remove-AzureRMTrafficManagerProfile</maml:name>
+        <maml:name>Remove-AzureRmTrafficManagerProfile</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Force</maml:name>
           <maml:description>
@@ -957,7 +957,7 @@ PS C:\&gt; Set-AzureRMTrafficManagerProfile -TrafficManagerProfile $TrafficManag
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
-        <maml:name>Remove-AzureRMTrafficManagerProfile</maml:name>
+        <maml:name>Remove-AzureRmTrafficManagerProfile</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Force</maml:name>
           <maml:description>
@@ -1081,7 +1081,7 @@ PS C:\&gt; Set-AzureRMTrafficManagerProfile -TrafficManagerProfile $TrafficManag
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Remove-AzureRMTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11" 
+        <dev:code>PS C:\&gt;Remove-AzureRmTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11" 
 </dev:code>
         <dev:remarks>
           <maml:para>This command deletes the profile named ContosoProfile in ResourceGroup11. </maml:para>
@@ -1100,7 +1100,7 @@ PS C:\&gt; Set-AzureRMTrafficManagerProfile -TrafficManagerProfile $TrafficManag
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRMTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11" | Remove-AzureRMTrafficManagerProfile 
+        <dev:code>PS C:\&gt;Get-AzureRmTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11" | Remove-AzureRmTrafficManagerProfile 
 </dev:code>
         <dev:remarks>
           <maml:para>This command gets the profile named ContosoProfile in ResourceGroup11, and then passes that profile to the current cmdlet by using the pipeline operator. The current command deletes that profile. </maml:para>
@@ -1116,22 +1116,22 @@ PS C:\&gt; Set-AzureRMTrafficManagerProfile -TrafficManagerProfile $TrafficManag
     </command:examples>
     <maml:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureRMTrafficManagerProfile</maml:linkText>
+        <maml:linkText>Get-AzureRmTrafficManagerProfile</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>New-AzureRMTrafficManagerProfile</maml:linkText>
+        <maml:linkText>New-AzureRmTrafficManagerProfile</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Set-AzureRMTrafficManagerProfile</maml:linkText>
+        <maml:linkText>Set-AzureRmTrafficManagerProfile</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>Set-AzureRMTrafficManagerProfile</command:name>
+      <command:name>Set-AzureRmTrafficManagerProfile</command:name>
       <maml:description>
         <maml:para>Updates an Azure Traffic Manager profile. </maml:para>
       </maml:description>
@@ -1143,11 +1143,11 @@ PS C:\&gt; Set-AzureRMTrafficManagerProfile -TrafficManagerProfile $TrafficManag
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Set-AzureRMTrafficManagerProfile cmdlet updates an Azure Traffic Manager profile. This cmdlet updates the settings of the profile from a local profile object. You can pass a profile object to Traffic Manager by using the pipeline or as a parameter value.</maml:para>
+      <maml:para>The Set-AzureRmTrafficManagerProfile cmdlet updates an Azure Traffic Manager profile. This cmdlet updates the settings of the profile from a local profile object. You can pass a profile object to Traffic Manager by using the pipeline or as a parameter value.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Set-AzureRMTrafficManagerProfile</maml:name>
+        <maml:name>Set-AzureRmTrafficManagerProfile</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Profile</maml:name>
           <maml:description>
@@ -1229,11 +1229,11 @@ PS C:\&gt; Set-AzureRMTrafficManagerProfile -TrafficManagerProfile $TrafficManag
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;$TrafficManagerProfile = Get-AzureRMTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11"
-PS C:\&gt; Set-AzureRMTrafficManagerProfile -TrafficManagerProfile $TrafficManagerProfile 
+        <dev:code>PS C:\&gt;$TrafficManagerProfile = Get-AzureRmTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11"
+PS C:\&gt; Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $TrafficManagerProfile 
 </dev:code>
         <dev:remarks>
-          <maml:para>The first command gets an Azure Traffic Manager profile by using the Get-AzureRMTrafficManagerProfile cmdlet. The command stores the profile locally in the $TrafficManagerProfile variable. After you get that profile, you can change it locally.</maml:para>
+          <maml:para>The first command gets an Azure Traffic Manager profile by using the Get-AzureRmTrafficManagerProfile cmdlet. The command stores the profile locally in the $TrafficManagerProfile variable. After you get that profile, you can change it locally.</maml:para>
           <maml:para>The second command updates the Traffic Manager profile named ContosoProfile to match the local value in $TrafficManagerProfile.</maml:para>
           <maml:para />
           <maml:para />
@@ -1247,15 +1247,15 @@ PS C:\&gt; Set-AzureRMTrafficManagerProfile -TrafficManagerProfile $TrafficManag
     </command:examples>
     <maml:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureRMTrafficManagerProfile</maml:linkText>
+        <maml:linkText>Get-AzureRmTrafficManagerProfile</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>New-AzureRMTrafficManagerProfile</maml:linkText>
+        <maml:linkText>New-AzureRmTrafficManagerProfile</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Remove-AzureRMTrafficManagerProfile</maml:linkText>
+        <maml:linkText>Remove-AzureRmTrafficManagerProfile</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
