@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.RedisCache
     using SkuStrings = Microsoft.Azure.Management.Redis.Models.SkuName;
     using Hyak.Common;
     using System.Collections;
+    using System;
 
     [Cmdlet(VerbsCommon.New, "AzureRMRedisCache"), OutputType(typeof(RedisCacheAttributesWithAccessKeys))]
     public class NewAzureRedisCache : RedisCacheCmdletBase
@@ -70,7 +71,7 @@ namespace Microsoft.Azure.Commands.RedisCache
 
             if (!string.IsNullOrEmpty(MaxMemoryPolicy))
             {
-                throw new CloudException(Resources.MaxMemoryPolicyException);
+                throw new ArgumentException(Resources.MaxMemoryPolicyException);
             }
 
             string skuFamily;

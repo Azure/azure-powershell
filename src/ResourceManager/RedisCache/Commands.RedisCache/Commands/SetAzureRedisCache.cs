@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.RedisCache
     using System.Management.Automation;
     using SkuStrings = Microsoft.Azure.Management.Redis.Models.SkuName;
     using Hyak.Common;
+    using System;
         
     [Cmdlet(VerbsCommon.Set, "AzureRMRedisCache", DefaultParameterSetName = MaxMemoryParameterSetName), OutputType(typeof(RedisCacheAttributesWithAccessKeys))]
     public class SetAzureRedisCache : RedisCacheCmdletBase
@@ -57,7 +58,7 @@ namespace Microsoft.Azure.Commands.RedisCache
         {
             if (!string.IsNullOrEmpty(MaxMemoryPolicy))
             {
-                throw new CloudException(Resources.MaxMemoryPolicyException);
+                throw new ArgumentException(Resources.MaxMemoryPolicyException);
             }
 
             RedisGetResponse response = CacheClient.GetCache(ResourceGroupName, Name);
