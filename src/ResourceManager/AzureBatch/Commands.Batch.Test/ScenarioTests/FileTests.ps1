@@ -21,7 +21,7 @@ function Test-GetNodeFileByTaskByName
 	param([string]$accountName, [string]$jobId, [string]$taskId, [string]$nodeFileName)
 
 	$context = Get-AzureRMBatchAccountKeys -Name $accountName
-	$nodeFile = Get-AzureRMBatchNodeFile_ST -JobId $jobId -TaskId $taskId -Name $nodeFileName -BatchContext $context
+	$nodeFile = Get-AzureBatchNodeFile_ST -JobId $jobId -TaskId $taskId -Name $nodeFileName -BatchContext $context
 
 	Assert-AreEqual $nodeFileName $nodeFile.Name
 }
@@ -37,7 +37,7 @@ function Test-ListNodeFilesByTaskByFilter
 	$context = Get-AzureRMBatchAccountKeys -Name $accountName
 	$filter = "startswith(name,'" + "$nodeFilePrefix" + "')"
 
-	$nodeFiles = Get-AzureRMBatchNodeFile_ST -JobId $jobId -TaskId $taskId -Filter $filter -BatchContext $context
+	$nodeFiles = Get-AzureBatchNodeFile_ST -JobId $jobId -TaskId $taskId -Filter $filter -BatchContext $context
 
 	Assert-AreEqual $matches $nodeFiles.Length
 	foreach($nodeFile in $nodeFiles)
@@ -46,8 +46,8 @@ function Test-ListNodeFilesByTaskByFilter
 	}
 
 	# Verify parent object parameter set also works
-	$task = Get-AzureRMBatchTask_ST $jobId $taskId -BatchContext $context
-	$nodeFiles = Get-AzureRMBatchNodeFile_ST -Task $task -Filter $filter -BatchContext $context
+	$task = Get-AzureBatchTask_ST $jobId $taskId -BatchContext $context
+	$nodeFiles = Get-AzureBatchNodeFile_ST -Task $task -Filter $filter -BatchContext $context
 
 	Assert-AreEqual $matches $nodeFiles.Length
 	foreach($nodeFile in $nodeFiles)
@@ -65,13 +65,13 @@ function Test-ListNodeFilesByTaskWithMaxCount
 	param([string]$accountName, [string]$jobId, [string]$taskId, [string]$maxCount)
 
 	$context = Get-AzureRMBatchAccountKeys -Name $accountName
-	$nodeFiles = Get-AzureRMBatchNodeFile_ST -JobId $jobId -TaskId $taskId -MaxCount $maxCount -BatchContext $context
+	$nodeFiles = Get-AzureBatchNodeFile_ST -JobId $jobId -TaskId $taskId -MaxCount $maxCount -BatchContext $context
 
 	Assert-AreEqual $maxCount $nodeFiles.Length
 
 	# Verify parent object parameter set also works
-	$task = Get-AzureRMBatchTask_ST $jobId $taskId -BatchContext $context
-	$nodeFiles = Get-AzureRMBatchNodeFile_ST -Task $task -MaxCount $maxCount -BatchContext $context
+	$task = Get-AzureBatchTask_ST $jobId $taskId -BatchContext $context
+	$nodeFiles = Get-AzureBatchNodeFile_ST -Task $task -MaxCount $maxCount -BatchContext $context
 
 	Assert-AreEqual $maxCount $nodeFiles.Length
 }
@@ -86,14 +86,14 @@ function Test-ListNodeFilesByTaskRecursive
 
 	$context = Get-AzureRMBatchAccountKeys -Name $accountName
 	$filter = "startswith(name,'wd')"
-	$nodeFiles = Get-AzureRMBatchNodeFile_ST -JobId $jobId -TaskId $taskId -Filter $filter -BatchContext $context
+	$nodeFiles = Get-AzureBatchNodeFile_ST -JobId $jobId -TaskId $taskId -Filter $filter -BatchContext $context
 
 	# Only the directory itself is returned
 	Assert-AreEqual 1 $nodeFiles.Length
 	Assert-True { $nodeFiles[0].IsDirectory }
 
 	# Verify the new file is returned when using the Recursive switch
-	$nodeFiles = Get-AzureRMBatchNodeFile_ST -JobId $jobId -TaskId $taskId -Filter $filter -Recursive -BatchContext $context
+	$nodeFiles = Get-AzureBatchNodeFile_ST -JobId $jobId -TaskId $taskId -Filter $filter -Recursive -BatchContext $context
 
 	Assert-AreEqual 2 $nodeFiles.Length
 	$file = $nodeFiles | Where-Object { $_.IsDirectory -eq $false }
@@ -109,13 +109,13 @@ function Test-ListAllNodeFilesByTask
 	param([string]$accountName, [string] $jobId, [string]$taskId, [string]$count)
 
 	$context = Get-AzureRMBatchAccountKeys -Name $accountName
-	$nodeFiles = Get-AzureRMBatchNodeFile_ST -JobId $jobId -TaskId $taskId -Filter $null -BatchContext $context
+	$nodeFiles = Get-AzureBatchNodeFile_ST -JobId $jobId -TaskId $taskId -Filter $null -BatchContext $context
 
 	Assert-AreEqual $count $nodeFiles.Length
 
 	# Verify parent object parameter set also works
-	$task = Get-AzureRMBatchTask_ST $jobId $taskId -BatchContext $context
-	$nodeFiles = Get-AzureRMBatchNodeFile_ST -Task $task -BatchContext $context
+	$task = Get-AzureBatchTask_ST $jobId $taskId -BatchContext $context
+	$nodeFiles = Get-AzureBatchNodeFile_ST -Task $task -BatchContext $context
 
 	Assert-AreEqual $count $nodeFiles.Length
 }
@@ -131,11 +131,11 @@ function Test-ListNodeFileByTaskPipeline
 	$context = Get-AzureRMBatchAccountKeys -Name $accountName
 
 	# Get Task into Get Node File
-	$nodeFiles = Get-AzureRMBatchTask_ST -JobId $jobId -Id $taskId -BatchContext $context | Get-AzureRMBatchNodeFile_ST -BatchContext $context
+	$nodeFiles = Get-AzureBatchTask_ST -JobId $jobId -Id $taskId -BatchContext $context | Get-AzureBatchNodeFile_ST -BatchContext $context
 	Assert-AreEqual $count $nodeFiles.Length
 
 	# Get Job into Get Task into Get Node file
-	$nodeFiles = Get-AzureRMBatchJob_ST $jobId -BatchContext $context | Get-AzureRMBatchTask_ST -BatchContext $context | Get-AzureRMBatchNodeFile_ST -BatchContext $context
+	$nodeFiles = Get-AzureBatchJob_ST $jobId -BatchContext $context | Get-AzureBatchTask_ST -BatchContext $context | Get-AzureBatchNodeFile_ST -BatchContext $context
 	Assert-AreEqual $count $nodeFiles.Length
 }
 
@@ -152,7 +152,7 @@ function Test-GetNodeFileContentByTaskByName
 
 	try
 	{
-		Get-AzureRMBatchNodeFileContent_ST -JobId $jobId -TaskId $taskId -Name $nodeFileName -BatchContext $context -DestinationStream $stream
+		Get-AzureBatchNodeFileContent_ST -JobId $jobId -TaskId $taskId -Name $nodeFileName -BatchContext $context -DestinationStream $stream
 		
 		$stream.Position = 0
 		$sr = New-Object System.IO.StreamReader $stream
@@ -184,8 +184,8 @@ function Test-GetNodeFileContentByTaskPipeline
 
 	try
 	{
-		$nodeFile = Get-AzureRMBatchNodeFile_ST -JobId $jobId -TaskId $taskId -Name $nodeFileName -BatchContext $context
-		$nodeFile | Get-AzureRMBatchNodeFileContent_ST -BatchContext $context -DestinationStream $stream
+		$nodeFile = Get-AzureBatchNodeFile_ST -JobId $jobId -TaskId $taskId -Name $nodeFileName -BatchContext $context
+		$nodeFile | Get-AzureBatchNodeFileContent_ST -BatchContext $context -DestinationStream $stream
 		
 		$stream.Position = 0
 		$sr = New-Object System.IO.StreamReader $stream
@@ -213,12 +213,12 @@ function Test-GetNodeFileByComputeNodeByName
 	param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$nodeFileName)
 
 	$context = Get-AzureRMBatchAccountKeys -Name $accountName
-	$nodeFile = Get-AzureRMBatchNodeFile_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Name $nodeFileName -BatchContext $context
+	$nodeFile = Get-AzureBatchNodeFile_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Name $nodeFileName -BatchContext $context
 
 	Assert-AreEqual $nodeFileName $nodeFile.Name
 
 	# Verify positional parameters also work
-	$nodeFile = Get-AzureRMBatchNodeFile_ST $poolId $computeNodeId $nodeFileName -BatchContext $context
+	$nodeFile = Get-AzureBatchNodeFile_ST $poolId $computeNodeId $nodeFileName -BatchContext $context
 
 	Assert-AreEqual $nodeFileName $nodeFile.Name
 }
@@ -234,7 +234,7 @@ function Test-ListNodeFilesByComputeNodeByFilter
 	$context = Get-AzureRMBatchAccountKeys -Name $accountName
 	$filter = "startswith(name,'" + "$nodeFilePrefix" + "')"
 
-	$nodeFiles = Get-AzureRMBatchNodeFile_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Filter $filter -BatchContext $context
+	$nodeFiles = Get-AzureBatchNodeFile_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Filter $filter -BatchContext $context
 
 	Assert-AreEqual $matches $nodeFiles.Length
 	foreach($nodeFile in $nodeFiles)
@@ -243,8 +243,8 @@ function Test-ListNodeFilesByComputeNodeByFilter
 	}
 
 	# Verify parent object parameter set also works
-	$computeNode = Get-AzureRMBatchComputeNode_ST $poolId $computeNodeId -BatchContext $context
-	$nodeFiles = Get-AzureRMBatchNodeFile_ST -ComputeNode $computeNode -Filter $filter -BatchContext $context
+	$computeNode = Get-AzureBatchComputeNode_ST $poolId $computeNodeId -BatchContext $context
+	$nodeFiles = Get-AzureBatchNodeFile_ST -ComputeNode $computeNode -Filter $filter -BatchContext $context
 
 	Assert-AreEqual $matches $nodeFiles.Length
 	foreach($nodeFile in $nodeFiles)
@@ -262,13 +262,13 @@ function Test-ListNodeFilesByComputeNodeWithMaxCount
 	param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$maxCount)
 
 	$context = Get-AzureRMBatchAccountKeys -Name $accountName
-	$nodeFiles = Get-AzureRMBatchNodeFile_ST -PoolId $poolId -ComputeNodeId $computeNodeId -MaxCount $maxCount -BatchContext $context
+	$nodeFiles = Get-AzureBatchNodeFile_ST -PoolId $poolId -ComputeNodeId $computeNodeId -MaxCount $maxCount -BatchContext $context
 
 	Assert-AreEqual $maxCount $nodeFiles.Length
 
 	# Verify parent object parameter set also works
-	$computeNode = Get-AzureRMBatchComputeNode_ST $poolId $computeNodeId -BatchContext $context
-	$nodeFiles = Get-AzureRMBatchNodeFile_ST -ComputeNode $computeNode -MaxCount $maxCount -BatchContext $context
+	$computeNode = Get-AzureBatchComputeNode_ST $poolId $computeNodeId -BatchContext $context
+	$nodeFiles = Get-AzureBatchNodeFile_ST -ComputeNode $computeNode -MaxCount $maxCount -BatchContext $context
 
 	Assert-AreEqual $maxCount $nodeFiles.Length
 }
@@ -283,14 +283,14 @@ function Test-ListNodeFilesByComputeNodeRecursive
 
 	$context = Get-AzureRMBatchAccountKeys -Name $accountName
 	$filter = "startswith(name,'" + "$startupFolder" + "')"
-	$nodeFiles = Get-AzureRMBatchNodeFile_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Filter $filter -BatchContext $context
+	$nodeFiles = Get-AzureBatchNodeFile_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Filter $filter -BatchContext $context
 
 	# Only the directory itself is returned
 	Assert-AreEqual 1 $nodeFiles.Length
 	Assert-True { $nodeFiles[0].IsDirectory }
 
 	# Verify the start task node files are returned when using the Recursive switch
-	$nodeFiles = Get-AzureRMBatchNodeFile_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Filter $filter -Recursive -BatchContext $context
+	$nodeFiles = Get-AzureBatchNodeFile_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Filter $filter -Recursive -BatchContext $context
 
 	Assert-AreEqual $recursiveCount $nodeFiles.Length 
 	$files = $nodeFiles | Where-Object { $_.Name.StartsWith("startup\st") -eq $true }
@@ -306,13 +306,13 @@ function Test-ListAllNodeFilesByComputeNode
 	param([string]$accountName, [string]$poolId, [string] $computeNodeId, [string]$count)
 
 	$context = Get-AzureRMBatchAccountKeys -Name $accountName
-	$nodeFiles = Get-AzureRMBatchNodeFile_ST -PoolId $poolId -ComputeNodeId $computeNodeId -BatchContext $context
+	$nodeFiles = Get-AzureBatchNodeFile_ST -PoolId $poolId -ComputeNodeId $computeNodeId -BatchContext $context
 
 	Assert-AreEqual $count $nodeFiles.Length
 
 	# Verify parent object parameter set also works
-	$computeNode = Get-AzureRMBatchComputeNode_ST $poolId $computeNodeId -BatchContext $context
-	$nodeFiles = Get-AzureRMBatchNodeFile_ST -ComputeNode $computeNode -BatchContext $context
+	$computeNode = Get-AzureBatchComputeNode_ST $poolId $computeNodeId -BatchContext $context
+	$nodeFiles = Get-AzureBatchNodeFile_ST -ComputeNode $computeNode -BatchContext $context
 
 	Assert-AreEqual $count $nodeFiles.Length
 }
@@ -328,7 +328,7 @@ function Test-ListNodeFileByComputeNodePipeline
 	$context = Get-AzureRMBatchAccountKeys -Name $accountName
 
 	# Get Compute Node into Get Node File
-	$nodeFiles = Get-AzureRMBatchComputeNode_ST -PoolId $poolId -Id $computeNodeId -BatchContext $context | Get-AzureRMBatchNodeFile_ST -BatchContext $context
+	$nodeFiles = Get-AzureBatchComputeNode_ST -PoolId $poolId -Id $computeNodeId -BatchContext $context | Get-AzureBatchNodeFile_ST -BatchContext $context
 	Assert-AreEqual $count $nodeFiles.Length
 }
 
@@ -345,7 +345,7 @@ function Test-GetNodeFileContentByComputeNodeByName
 
 	try
 	{
-		Get-AzureRMBatchNodeFileContent_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Name $nodeFileName -BatchContext $context -DestinationStream $stream
+		Get-AzureBatchNodeFileContent_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Name $nodeFileName -BatchContext $context -DestinationStream $stream
 		
 		$stream.Position = 0
 		$sr = New-Object System.IO.StreamReader $stream
@@ -367,7 +367,7 @@ function Test-GetNodeFileContentByComputeNodeByName
 	$stream = New-Object System.IO.MemoryStream 
 	try
 	{
-		Get-AzureRMBatchNodeFileContent_ST $poolId $computeNodeId $nodeFileName -BatchContext $context -DestinationStream $stream
+		Get-AzureBatchNodeFileContent_ST $poolId $computeNodeId $nodeFileName -BatchContext $context -DestinationStream $stream
 
 		$stream.Position = 0
 		$sr = New-Object System.IO.StreamReader $stream
@@ -399,8 +399,8 @@ function Test-GetNodeFileContentByComputeNodePipeline
 
 	try
 	{
-		$nodeFile = Get-AzureRMBatchNodeFile_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Name $nodeFileName -BatchContext $context
-		$nodeFile | Get-AzureRMBatchNodeFileContent_ST -BatchContext $context -DestinationStream $stream
+		$nodeFile = Get-AzureBatchNodeFile_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Name $nodeFileName -BatchContext $context
+		$nodeFile | Get-AzureBatchNodeFileContent_ST -BatchContext $context -DestinationStream $stream
 		
 		$stream.Position = 0
 		$sr = New-Object System.IO.StreamReader $stream
@@ -433,7 +433,7 @@ function Test-GetRDPFileById
 
 	try
 	{
-		Get-AzureRMBatchRemoteDesktopProtocolFile_ST -PoolId $poolId -ComputeNodeId $computeNodeId -BatchContext $context -DestinationStream $stream
+		Get-AzureBatchRemoteDesktopProtocolFile_ST -PoolId $poolId -ComputeNodeId $computeNodeId -BatchContext $context -DestinationStream $stream
 		
 		$stream.Position = 0
 		$sr = New-Object System.IO.StreamReader $stream
@@ -455,7 +455,7 @@ function Test-GetRDPFileById
 	$stream = New-Object System.IO.MemoryStream 
 	try
 	{
-		Get-AzureRMBatchRemoteDesktopProtocolFile_ST $poolId $computeNodeId -BatchContext $context -DestinationStream $stream
+		Get-AzureBatchRemoteDesktopProtocolFile_ST $poolId $computeNodeId -BatchContext $context -DestinationStream $stream
 
 		$stream.Position = 0
 		$sr = New-Object System.IO.StreamReader $stream
@@ -488,8 +488,8 @@ function Test-GetRDPFilePipeline
 
 	try
 	{
-		$computeNode = Get-AzureRMBatchComputeNode_ST -PoolId $poolId -Id $computeNodeId -BatchContext $context
-		$computeNode | Get-AzureRMBatchRemoteDesktopProtocolFile_ST -BatchContext $context -DestinationStream $stream
+		$computeNode = Get-AzureBatchComputeNode_ST -PoolId $poolId -Id $computeNodeId -BatchContext $context
+		$computeNode | Get-AzureBatchRemoteDesktopProtocolFile_ST -BatchContext $context -DestinationStream $stream
 		
 		$stream.Position = 0
 		$sr = New-Object System.IO.StreamReader $stream

@@ -129,7 +129,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
             Assert.Equal("test with no extension", FileUtilities.DataStore.ReadFileAsText(expectedOutput));
         }
 
-        [Fact]
+        [Fact(Skip = "Flaky test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SaveAzureWebsiteLogWithSlotTest()
         {

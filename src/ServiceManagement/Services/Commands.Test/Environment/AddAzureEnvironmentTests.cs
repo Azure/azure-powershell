@@ -226,7 +226,6 @@ namespace Microsoft.WindowsAzure.Commands.Test.Environment
             Assert.Equal(env.Name, cmdlet.Name);
         }
 
-
         public void Dispose()
         {
             Cleanup();

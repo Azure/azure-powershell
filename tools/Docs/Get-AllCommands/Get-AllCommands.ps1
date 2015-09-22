@@ -265,7 +265,7 @@ function Split-HelpFiles {
             {
                $xml = $cmdlet.node.outerxml
                $cmdletName = (($xml | select-xml -namespace $namespace -XPath "//command:name").node.innerxml).trim()   
-               Set-content –value $xml –path $OutputPath\$CmdletName.xml -Encoding ASCII           
+               Set-content -value $xml -path $OutputPath\$CmdletName.xml -Encoding ASCII           
             }
         }    
         else { "Error 101: The input file does not contain cmdlet help topics. For help, send e-mail to PSHuddle." }
@@ -514,8 +514,8 @@ function Get-ScriptDirectory
     Split-Path $Invocation.MyCommand.Path
 }
 
-$asmPath = Join-Path (Get-ScriptDirectory) "..\..\..\src\Package\Release\ServiceManagement\Azure\Azure.psd1"
-$armPath = Join-Path (Get-ScriptDirectory) "..\..\..\src\Package\Release\ResourceManager\AzureResourceManager\AzureResourceManager.psd1"
+$asmPath = Join-Path (Get-ScriptDirectory) "..\..\..\src\Package\Debug\ServiceManagement\Azure\Azure.psd1"
+$armPath = Join-Path (Get-ScriptDirectory) "..\..\..\src\Package\Debug\ResourceManager\AzureResourceManager\AzureResourceManager.psd1"
 
 
 Get-AllBuildServerCommands -OutputPath ".\Output\asm" -ManifestFullName $asmPath

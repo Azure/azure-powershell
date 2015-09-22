@@ -412,6 +412,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No Set Options were provided.
+        /// </summary>
+        internal static string SetSecondaryNoOptionProvided {
+            get {
+                return ResourceManager.GetString("SetSecondaryNoOptionProvided", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm.
         /// </summary>
         public static string ShouldProcessCaption {
