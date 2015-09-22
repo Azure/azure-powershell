@@ -21,14 +21,14 @@ function Test-GetComputeNodeById
 	param([string]$accountName, [string]$poolId)
 
 	$context = Get-AzureRMBatchAccountKeys -Name $accountName
-	$computeNodeId = (Get-AzureRMBatchComputeNode_ST -PoolId $poolId -BatchContext $context)[0].Id
+	$computeNodeId = (Get-AzureBatchComputeNode_ST -PoolId $poolId -BatchContext $context)[0].Id
 
-	$computeNode = Get-AzureRMBatchComputeNode_ST -PoolId $poolId -Id $computeNodeId -BatchContext $context
+	$computeNode = Get-AzureBatchComputeNode_ST -PoolId $poolId -Id $computeNodeId -BatchContext $context
 
 	Assert-AreEqual $computeNodeId $computeNode.Id
 
 	# Verify positional parameters also work
-	$computeNode = Get-AzureRMBatchComputeNode_ST $poolId $computeNodeId -BatchContext $context
+	$computeNode = Get-AzureBatchComputeNode_ST $poolId $computeNodeId -BatchContext $context
 
 	Assert-AreEqual $computeNodeId $computeNode.Id
 }
@@ -44,7 +44,7 @@ function Test-ListComputeNodesByFilter
 	$context = Get-AzureRMBatchAccountKeys -Name $accountName
 	$filter = "state eq '" + "$state" + "'"
 
-	$computeNodes = Get-AzureRMBatchComputeNode_ST -PoolId $poolId -Filter $filter -BatchContext $context
+	$computeNodes = Get-AzureBatchComputeNode_ST -PoolId $poolId -Filter $filter -BatchContext $context
 
 	Assert-AreEqual $matches $computeNodes.Length
 	foreach($node in $computeNodes)
@@ -53,8 +53,8 @@ function Test-ListComputeNodesByFilter
 	}
 
 	# Verify parent object parameter set also works
-	$pool = Get-AzureRMBatchPool_ST $poolId -BatchContext $context
-	$computeNodes = Get-AzureRMBatchComputeNode_ST -Pool $pool -Filter $filter -BatchContext $context
+	$pool = Get-AzureBatchPool_ST $poolId -BatchContext $context
+	$computeNodes = Get-AzureBatchComputeNode_ST -Pool $pool -Filter $filter -BatchContext $context
 
 	Assert-AreEqual $matches $computeNodes.Length
 	foreach($node in $computeNodes)
@@ -72,13 +72,13 @@ function Test-ListComputeNodesWithMaxCount
 	param([string]$accountName, [string]$poolId, [string]$maxCount)
 
 	$context = Get-AzureRMBatchAccountKeys -Name $accountName
-	$computeNodes = Get-AzureRMBatchComputeNode_ST -PoolId $poolId -MaxCount $maxCount -BatchContext $context
+	$computeNodes = Get-AzureBatchComputeNode_ST -PoolId $poolId -MaxCount $maxCount -BatchContext $context
 
 	Assert-AreEqual $maxCount $computeNodes.Length
 
 	# Verify parent object parameter set also works
-	$pool = Get-AzureRMBatchPool_ST $poolId -BatchContext $context
-	$computeNodes = Get-AzureRMBatchComputeNode_ST -Pool $pool -MaxCount $maxCount -BatchContext $context
+	$pool = Get-AzureBatchPool_ST $poolId -BatchContext $context
+	$computeNodes = Get-AzureBatchComputeNode_ST -Pool $pool -MaxCount $maxCount -BatchContext $context
 
 	Assert-AreEqual $maxCount $computeNodes.Length
 }
@@ -92,27 +92,27 @@ function Test-ListAllComputeNodes
 	param([string]$accountName, [string]$poolId, [string]$count)
 
 	$context = Get-AzureRMBatchAccountKeys -Name $accountName
-	$computeNodes = Get-AzureRMBatchComputeNode_ST -PoolId $poolId -BatchContext $context
+	$computeNodes = Get-AzureBatchComputeNode_ST -PoolId $poolId -BatchContext $context
 
 	Assert-AreEqual $count $computeNodes.Length
 
 	# Verify parent object parameter set also works
-	$pool = Get-AzureRMBatchPool_ST $poolId -BatchContext $context
-	$computeNodes = Get-AzureRMBatchComputeNode_ST -Pool $pool -BatchContext $context
+	$pool = Get-AzureBatchPool_ST $poolId -BatchContext $context
+	$computeNodes = Get-AzureBatchComputeNode_ST -Pool $pool -BatchContext $context
 
 	Assert-AreEqual $count $computeNodes.Length
 }
 
 <#
 .SYNOPSIS
-Tests piping Get-AzureRMBatchPool into Get-AzureRMBatchComputeNode
+Tests piping Get-AzureBatchPool into Get-AzureBatchComputeNode
 #>
 function Test-ListComputeNodePipeline
 {
 	param([string]$accountName, [string]$poolId, [string]$count)
 
 	$context = Get-AzureRMBatchAccountKeys -Name $accountName
-	$computeNodes = Get-AzureRMBatchPool_ST -Id $poolId -BatchContext $context | Get-AzureRMBatchComputeNode_ST -BatchContext $context
+	$computeNodes = Get-AzureBatchPool_ST -Id $poolId -BatchContext $context | Get-AzureBatchComputeNode_ST -BatchContext $context
 
 	Assert-AreEqual $count $computeNodes.Count
 }
@@ -131,14 +131,14 @@ function Test-RebootComputeNode
 
 	if ($usePipeline -eq '1')
 	{
-	    Get-AzureRMBatchComputeNode_ST $poolId $computeNodeId -BatchContext $context | Restart-AzureRMBatchComputeNode_ST -RebootOption $rebootOption -BatchContext $context
+	    Get-AzureBatchComputeNode_ST $poolId $computeNodeId -BatchContext $context | Restart-AzureBatchComputeNode_ST -RebootOption $rebootOption -BatchContext $context
 	}
 	else
 	{
-	    Restart-AzureRMBatchComputeNode_ST $poolId $computeNodeId -RebootOption $rebootOption -BatchContext $context
+	    Restart-AzureBatchComputeNode_ST $poolId $computeNodeId -RebootOption $rebootOption -BatchContext $context
 	}
 
-	$computeNode = Get-AzureRMBatchComputeNode_ST -PoolId $poolId -Filter "id eq '$computeNodeId'" -BatchContext $context
+	$computeNode = Get-AzureBatchComputeNode_ST -PoolId $poolId -Filter "id eq '$computeNodeId'" -BatchContext $context
 
 	Assert-AreEqual 'Rebooting' $computeNode.State
 }
@@ -157,14 +157,14 @@ function Test-ReimageComputeNode
 
 	if ($usePipeline -eq '1')
 	{
-	    Get-AzureRMBatchComputeNode_ST $poolId $computeNodeId -BatchContext $context | Reset-AzureRMBatchComputeNode_ST -ReimageOption $reimageOption -BatchContext $context
+	    Get-AzureBatchComputeNode_ST $poolId $computeNodeId -BatchContext $context | Reset-AzureBatchComputeNode_ST -ReimageOption $reimageOption -BatchContext $context
 	}
 	else
 	{
-	    Reset-AzureRMBatchComputeNode_ST $poolId $computeNodeId -ReimageOption $reimageOption -BatchContext $context
+	    Reset-AzureBatchComputeNode_ST $poolId $computeNodeId -ReimageOption $reimageOption -BatchContext $context
 	}
 
-	$computeNode = Get-AzureRMBatchComputeNode_ST -PoolId $poolId -Filter "id eq '$computeNodeId'" -BatchContext $context
+	$computeNode = Get-AzureBatchComputeNode_ST -PoolId $poolId -Filter "id eq '$computeNodeId'" -BatchContext $context
 
 	Assert-AreEqual 'Reimaging' $computeNode.State
 }
