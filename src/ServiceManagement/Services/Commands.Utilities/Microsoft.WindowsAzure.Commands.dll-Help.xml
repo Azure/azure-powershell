@@ -933,10 +933,7 @@
           <maml:name>GalleryEndpoint</maml:name>
           <maml:description>
             <maml:para>
-              Specifies the endpoint for the Azure Resource Manager gallery, which stores resource group gallery templates. For more information about Azure resource groups and gallery templates, see the help topic for <maml:navigationLink>
-                <maml:linkText>Get-AzureResourceGroupGalleryTemplate</maml:linkText>
-                <maml:uri></maml:uri>
-              </maml:navigationLink>.
+              Specifies the endpoint for the Azure Resource Manager gallery, which stores resource group gallery templates.
             </maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -961,10 +958,7 @@
         <maml:name>GalleryEndpoint</maml:name>
         <maml:description>
           <maml:para>
-            Specifies the endpoint for the Azure Resource Manager gallery, which stores resource group gallery templates. For more information about Azure resource groups and gallery templates, see the help topic for <maml:navigationLink>
-              <maml:linkText>Get-AzureResourceGroupGalleryTemplate</maml:linkText>
-              <maml:uri></maml:uri>
-            </maml:navigationLink>.
+            Specifies the endpoint for the Azure Resource Manager gallery, which stores resource group gallery templates.
           </maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1244,10 +1238,7 @@
           <maml:name>GalleryEndpoint</maml:name>
           <maml:description>
             <maml:para>
-              Changes the endpoint for the Azure Resource Manager gallery to the specified value. The gallery endpoint is the location for resource group gallery templates. For more information about Azure resource groups and gallery templates, see the help topic for <maml:navigationLink>
-                <maml:linkText>Get-AzureResourceGroupGalleryTemplate</maml:linkText>
-                <maml:uri></maml:uri>
-              </maml:navigationLink>.
+              Changes the endpoint for the Azure Resource Manager gallery to the specified value. The gallery endpoint is the location for resource group gallery templates.
             </maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1272,10 +1263,7 @@
         <maml:name>GalleryEndpoint</maml:name>
         <maml:description>
           <maml:para>
-            Changes the endpoint for the Azure Resource Manager gallery to the specified value. The gallery endpoint is the location for resource group gallery templates. For more information about Azure resource groups and gallery templates, see the help topic for <maml:navigationLink>
-              <maml:linkText>Get-AzureResourceGroupGalleryTemplate</maml:linkText>
-              <maml:uri></maml:uri>
-            </maml:navigationLink>.
+            Changes the endpoint for the Azure Resource Manager gallery to the specified value. The gallery endpoint is the location for resource group gallery templates.
           </maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -27916,15 +27904,5 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-  </command:command>
-  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-    <command:details>
-      <command:name>New-AzureDataFactory</command:name>
-      <maml:description>
-        <maml:para>You must be in AzureResourceManager mode to run Azure Data Factory cmdlets. To switch to AzureResourceManager mode, run Switch-AzureMode AzureResourceManager.</maml:para>
-      </maml:description>
-      <command:verb>New</command:verb>
-      <command:noun>AzureDataFactory</command:noun>
-    </command:details>
   </command:command>
 </helpItems>

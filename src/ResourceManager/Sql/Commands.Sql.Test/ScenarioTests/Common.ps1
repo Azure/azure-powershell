@@ -61,9 +61,9 @@ Creates the test environment needed to perform the Sql auditing tests
 #>
 function Create-TestEnvironmentWithParams ($params)
 {
-	Azure\New-AzureRMStorageAccount -StorageAccountName $params.storageAccount -Location "West US" 
 	New-AzureRMResourceGroup -Name $params.rgname -Location "West US" 
 	New-AzureRMResourceGroupDeployment -ResourceGroupName $params.rgname -TemplateFile ".\Templates\sql-audit-test-env-setup.json" -serverName $params.serverName -databaseName $params.databaseName -EnvLocation "West US" -Force
+	New-AzureRMStorageAccount -Name $params.storageAccount -Location "West US" -ResourceGroupName $params.rgname -Type "Standard_GRS"
 }
 
 <#
