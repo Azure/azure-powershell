@@ -89,16 +89,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string ResourceType { get; set; }
 
         /// <summary>
-        /// Gets or sets the subscription id parameter.
-        /// </summary>
-        [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.ResourceGroupResourceLevelLock, Mandatory = false, ValueFromPipeline = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The subscription to use.")]
-        [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.ResourceGroupLevelLock, Mandatory = false, ValueFromPipeline = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The subscription to use.")]
-        [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.SubscriptionLevelLock, Mandatory = false, ValueFromPipeline = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The subscription to use.")]
-        [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.SubscriptionResourceLevelLock, Mandatory = false, ValueFromPipeline = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The subscription to use.")]
-        [ValidateNotNullOrEmpty]
-        public Guid? SubscriptionId { get; set; }
-
-        /// <summary>
         /// Gets or sets the resource group name parameter.
         /// </summary>
         [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.ResourceGroupResourceLevelLock, Mandatory = true, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource group name.")]
@@ -118,22 +108,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.LockIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The Id of the lock.")]
         [ValidateNotNullOrEmpty]
         public string LockId { get; set; }
-
-        /// <summary>
-        /// Initializes the default subscription id if needed.
-        /// </summary>
-        protected override void OnProcessRecord()
-        {
-            if (string.IsNullOrWhiteSpace(this.LockId) && 
-                string.IsNullOrWhiteSpace(this.Scope) && 
-                this.SubscriptionId == null && 
-                !this.TenantLevel)
-            {
-                this.SubscriptionId = DefaultContext.Subscription.Id;
-            }
-
-            base.OnProcessRecord();
-        }
 
         /// <summary> 
         /// Gets the resource Id from the supplied PowerShell parameters. 
@@ -155,14 +129,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
                 throw new InvalidOperationException(string.Format("The Id '{0}' does not belong to a lock.", this.LockId));
             }
-
+            
             return !string.IsNullOrWhiteSpace(this.Scope)
                 ? ResourceIdUtility.GetResourceId(
                     resourceId: this.Scope,
                     extensionResourceType: Constants.MicrosoftAuthorizationLocksType,
                     extensionResourceName: lockName)
                 : ResourceIdUtility.GetResourceId(
-                    subscriptionId: this.SubscriptionId,
+                    subscriptionId: this.DefaultContext.Subscription.Id,
                     resourceGroupName: this.ResourceGroupName,
                     resourceType: this.ResourceType,
                     resourceName: this.ResourceName,
