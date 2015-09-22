@@ -11,16 +11,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Profile.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common.Models;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Profile
 {
     [Cmdlet(VerbsCommon.Get, "AzureRMSubscription", DefaultParameterSetName = ListInTenantParameterSet), 
-        OutputType(typeof(AzureSubscription))]
+        OutputType(typeof(PSAzureSubscription))]
     public class GetAzureRMSubscriptionCommand : AzureRMCmdlet
     {
         public const string ListInTenantParameterSet = "ListInTenant";
@@ -50,7 +52,7 @@ namespace Microsoft.Azure.Commands.Profile
             { 
                 try
                 {
-                    WriteObject(_client.ListSubscriptions(), enumerateCollection: true);
+                    WriteObject(_client.ListSubscriptions().Select((s) => (PSAzureSubscription)(s)), enumerateCollection: true);
                 }
                 catch (AadAuthenticationException exception)
                 {
@@ -71,7 +73,7 @@ namespace Microsoft.Azure.Commands.Profile
                         ThrowSubscriptionNotFoundError(this.Tenant, this.SubscriptionId);
                     }
 
-                    WriteObject(result);
+                    WriteObject((PSAzureSubscription)result);
                 }
                 catch (AadAuthenticationException exception)
                 {
@@ -85,7 +87,7 @@ namespace Microsoft.Azure.Commands.Profile
                 var tenant = EnsureValidTenant();
                 try
                 {
-                    WriteObject(_client.ListSubscriptions(tenant), enumerateCollection: true);
+                    WriteObject(_client.ListSubscriptions(tenant).Select((s) => (PSAzureSubscription)s), enumerateCollection: true);
                 }
                 catch (AadAuthenticationException exception)
                 {

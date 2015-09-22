@@ -26,6 +26,7 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
 using System.Management.Automation;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.ResourceManager.Common.Models;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 {

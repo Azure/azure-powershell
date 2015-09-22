@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Common.Authentication.Models;
 
-namespace Microsoft.Azure.Commands.Profile
+namespace Microsoft.Azure.Commands.ResourceManager.Common.Models
 {
     /// <summary>
     /// Settings and endpoints for management of Azure or Azure Stack services.
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Commands.Profile
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether ADFS authentication should be allowed . 
+        /// Gets or sets a value indicating whther ADFS authentication should be allowed . 
         /// Generally, this is only used in Azure Stack environments.
         /// </summary>
         public bool EnableAdfsAuthentication { get; set; }
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Commands.Profile
         public string GraphUrl { get; set; }
 
         /// <summary>
-        /// Gets or sets the domain name suffix for traffic manager services.
+        /// Gets or sets the domain name suffix for traffig manager services.
         /// </summary>
         public string TrafficManagerDnsSuffix { get; set; }
 
@@ -265,6 +265,11 @@ namespace Microsoft.Azure.Commands.Profile
         public override int GetHashCode()
         {
             return base.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return this.Name;
         }
     }
 }

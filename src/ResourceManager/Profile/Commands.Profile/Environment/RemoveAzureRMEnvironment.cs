@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.Models;
 
 namespace Microsoft.Azure.Commands.Profile
 {

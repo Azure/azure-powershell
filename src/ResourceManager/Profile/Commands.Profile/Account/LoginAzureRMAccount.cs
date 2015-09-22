@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using System.Management.Automation;
 using Microsoft.Azure.Common.Authentication.Models;
 using System.Security;
+using Microsoft.Azure.Commands.ResourceManager.Common.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
@@ -25,7 +26,7 @@ namespace Microsoft.Azure.Commands.Profile
     /// Cmdlet to log into an environment and download the subscriptions
     /// </summary>
     [Cmdlet("Login", "AzureRMAccount", DefaultParameterSetName = "User")]
-    [OutputType(typeof(AzureRMProfile))]
+    [OutputType(typeof(PSAzureProfile))]
     public class LoginAzureRMAccountCommand : AzureRMCmdlet
     {
         [Parameter(Mandatory = false, HelpMessage = "Environment containing the account to log into")]
@@ -40,8 +41,8 @@ namespace Microsoft.Azure.Commands.Profile
         public SwitchParameter ServicePrincipal { get; set; }
 
         [Parameter(ParameterSetName = "User", Mandatory = false, HelpMessage = "Optional tenant name or ID")]
-        [Parameter(ParameterSetName = "ServicePrincipal", Mandatory = true, HelpMessage = "Tenant name or ID")]
-        [Parameter(ParameterSetName = "AccessToken", Mandatory = false, HelpMessage = "Tenant name or ID")]
+        [Parameter(ParameterSetName = "ServicePrincipal", Mandatory = true, HelpMessage = "TenantId name or ID")]
+        [Parameter(ParameterSetName = "AccessToken", Mandatory = false, HelpMessage = "TenantId name or ID")]
         [ValidateNotNullOrEmpty]
         public string Tenant { get; set; }
 
@@ -106,7 +107,7 @@ namespace Microsoft.Azure.Commands.Profile
 
             var profileClient = new RMProfileClient(AzureRMCmdlet.DefaultProfile);
             
-            WriteObject(profileClient.Login(azureAccount, Environment, Tenant, SubscriptionId, password));
+            WriteObject((PSAzureProfile)profileClient.Login(azureAccount, Environment, Tenant, SubscriptionId, password));
         }
     }
 }

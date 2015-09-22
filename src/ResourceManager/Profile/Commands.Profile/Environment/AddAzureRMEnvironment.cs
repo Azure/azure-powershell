@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Common.Authentication.Models;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.Models;
 
 namespace Microsoft.Azure.Commands.Profile
 {
