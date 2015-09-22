@@ -338,7 +338,7 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>This cmdlet allows you to check whether a specified storage account name is valid or has already existed.</maml:para>
+		<maml:para>This cmdlet allows you to check whether the specified storage account name is valid or available to use.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -466,7 +466,7 @@
 	<command:details>
 		<command:name>Get-AzureRMStorageUsage</command:name>
 		<maml:description>
-			<maml:para>Get the storage resources usage of current subscription.</maml:para>
+			<maml:para>Get the storage resource usage of current subscription.</maml:para>
 		</maml:description>
 		<maml:copyright>
 			<maml:para />
@@ -476,7 +476,7 @@
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>This cmdlet allows you to get the storage resources usage of current subscription.</maml:para>
+		<maml:para>This cmdlet allows you to get the storage resource usage of current subscription.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
