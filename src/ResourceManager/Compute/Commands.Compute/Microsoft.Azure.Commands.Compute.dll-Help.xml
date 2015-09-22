@@ -724,7 +724,7 @@ PS C:\&gt; Update-AzureRMVM -ResourceGroupName "ResourceGroup11" -Name " Virtual
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Add-AzureRMVMSecret cmdlet adds a secret to a virtual machine. This value lets you add a certificate to the virtual machine. The secret needs to be stored in a Key Vault. For more information about Key Vault, see <maml:navigationLink><maml:linkText>What is Azure Key Vault?</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (https://azure.microsoft.com/en-us/documentation/articles/key-vault-whatis/) in the Azure library. For more information about the cmdlets, see <maml:navigationLink><maml:linkText>Azure Key Vault Cmdlets</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (https://msdn.microsoft.com/library/azure/dn868052.aspx) in the Microsoft Developer Network library or type Get-Help Set-AzureRMKeyVaultSecret.</maml:para>
+      <maml:para>The Add-AzureRMVMSecret cmdlet adds a secret to a virtual machine. This value lets you add a certificate to the virtual machine. The secret needs to be stored in a Key Vault. For more information about Key Vault, see <maml:navigationLink><maml:linkText>What is Azure Key Vault?</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (https://azure.microsoft.com/en-us/documentation/articles/key-vault-whatis/) in the Azure library. For more information about the cmdlets, see <maml:navigationLink><maml:linkText>Azure Key Vault Cmdlets</maml:linkText><maml:uri></maml:uri></maml:navigationLink> (https://msdn.microsoft.com/library/azure/dn868052.aspx) in the Microsoft Developer Network library or type Get-Help Set-AzureKeyVaultSecret.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
