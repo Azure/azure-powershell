@@ -51,6 +51,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                     Id = new Guid(obj.ObjectId),
                     Type = obj.ObjectType,
                     UserPrincipalName = obj.UserPrincipalName,
+                    SignInName = obj.SignInName,
                     Mail = obj.Mail
                 };
             }
@@ -65,6 +66,15 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                     Mail = group.Mail*/
                 };
 
+            }
+            else if (obj.ObjectType == typeof(ServicePrincipal).Name)
+            {
+                return new PSADServicePrincipal()
+                {
+                    DisplayName = obj.DisplayName,
+                    Id = new Guid(obj.ObjectId),
+                    Type = obj.ObjectType
+                };
             }
             else
             {

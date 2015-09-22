@@ -18,6 +18,5 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 {
     public class PSGroupRoleAssignment : PSRoleAssignment
     {
-        public string Mail { get; set; }
     }
 }
