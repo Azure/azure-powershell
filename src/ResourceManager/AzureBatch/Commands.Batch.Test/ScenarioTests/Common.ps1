@@ -36,7 +36,7 @@ Gets the location for the Batch account provider. Default to West US if none fou
 #>
 function Get-BatchAccountProviderLocation($index)
 {
-    $location = Get-AzureLocation | where {$_.Name -eq "Microsoft.Batch/batchAccounts"}
+    $location = Get-AzureRMLocation | where {$_.Name -eq "Microsoft.Batch/batchAccounts"}
     if ($location -eq $null) 
 	{
         "West US"
@@ -72,7 +72,7 @@ function Clean-BatchAccount($accountName,$resourceGroup)
 {
     if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) 
 	{
-        Remove-AzureBatchAccount -Name $accountName -ResourceGroupName $resourceGroup -Force
+        Remove-AzureRMBatchAccount -Name $accountName -ResourceGroupName $resourceGroup -Force
     }
 }
 
@@ -84,6 +84,6 @@ function Clean-ResourceGroup($resourceGroup)
 {
 	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) 
 	{
-        Remove-AzureResourceGroup -Name $resourceGroup -Force
+        Remove-AzureRMResourceGroup -Name $resourceGroup -Force
     }
 }

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// <summary>
     /// Sets the auditing policy properties for a specific database.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureSqlDatabaseAuditingPolicy"), OutputType(typeof(DatabaseAuditingPolicyModel))]
+    [Cmdlet(VerbsCommon.Set, "AzureRMSqlDatabaseAuditingPolicy"), OutputType(typeof(DatabaseAuditingPolicyModel))]
     public class SetAzureSqlDatabaseAuditingPolicy : SqlDatabaseAuditingCmdletBase
     {
         /// <summary>
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                 if ((orgAuditStateType == AuditStateType.New) && (model.RetentionInDays > 0))
                 {
                     // If retention days is greater than 0 and no audit table identifier is supplied , we throw exception giving the user hint on the recommended TableIdentifier we got from the CSM
-                    throw new Exception(string.Format(Resources.InvalidRetentionTypeSet, model.TableIdentifier));
+                    throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidRetentionTypeSet, model.TableIdentifier));
                 }
             }
             else

@@ -26,7 +26,7 @@ using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Files
 {
-    public class GetBatchRemoteDesktopProtocolFileCommandTests
+    public class GetBatchRemoteDesktopProtocolFileCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
         private GetBatchRemoteDesktopProtocolFileCommand cmdlet;
         private Mock<BatchClient> batchClientMock;

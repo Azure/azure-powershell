@@ -9,14 +9,14 @@ function Test-CrudApiManagement
 
     # Create resource group
     $resourceGroupName = Get-ResourceGroupName
-    New-AzureResourceGroup -Name $resourceGroupName -Location $location -Force
+    New-AzureRMResourceGroup -Name $resourceGroupName -Location $location -Force
 
     $apiManagementName = Get-ApiManagementServiceName
     $organization = "apimpowershellorg"
     $adminEmail = "apim@powershell.org"
 
     # Create API Management service
-    $result = New-AzureApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization $organization -AdminEmail $adminEmail
+    $result = New-AzureRMApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization $organization -AdminEmail $adminEmail
 
     Assert-AreEqual $resourceGroupName $result.ResourceGroupName
     Assert-AreEqual $apiManagementName $result.Name
@@ -25,11 +25,11 @@ function Test-CrudApiManagement
     Assert-AreEqual 1 $result.Capacity
 
     # Get SSO token
-    $token = Get-AzureApiManagementSsoToken -ResourceGroupName $resourceGroupName -Name $apiManagementName
+    $token = Get-AzureRMApiManagementSsoToken -ResourceGroupName $resourceGroupName -Name $apiManagementName
     Assert-NotNull $token
 
     # List services within the resource group
-    $apimServicesInGroup = Get-AzureApiManagement -ResourceGroupName $resourceGroupName
+    $apimServicesInGroup = Get-AzureRMApiManagement -ResourceGroupName $resourceGroupName
     Assert-True {$apimServicesInGroup.Count -ge 1}
 
     $found = 0
@@ -50,7 +50,7 @@ function Test-CrudApiManagement
 
     # Create on more group
     $secondResourceGroup = Get-ResourceGroupName
-    New-AzureResourceGroup -Name $secondResourceGroup -Location $location -Force
+    New-AzureRMResourceGroup -Name $secondResourceGroup -Location $location -Force
 
     # Create one more service
     $secondApiManagementName = Get-ApiManagementServiceName
@@ -59,7 +59,7 @@ function Test-CrudApiManagement
     $secondSku = "Standard"
     $secondSkuCapacity = 2
 
-    $secondResult = New-AzureApiManagement -ResourceGroupName $secondResourceGroup -Location $location -Name $secondApiManagementName -Organization $secondOrganization -AdminEmail $secondAdminEmail -Sku $secondSku -Capacity $secondSkuCapacity
+    $secondResult = New-AzureRMApiManagement -ResourceGroupName $secondResourceGroup -Location $location -Name $secondApiManagementName -Organization $secondOrganization -AdminEmail $secondAdminEmail -Sku $secondSku -Capacity $secondSkuCapacity
     Assert-AreEqual $secondResourceGroup $secondResult.ResourceGroupName
     Assert-AreEqual $secondApiManagementName $secondResult.Name
     Assert-AreEqual $location $secondResult.Location
@@ -67,11 +67,11 @@ function Test-CrudApiManagement
     Assert-AreEqual $secondSkuCapacity $secondResult.Capacity
 
     # Get SSO token
-    $secondToken = Get-AzureApiManagementSsoToken -ResourceGroupName $secondResourceGroup -Name $secondApiManagementName
+    $secondToken = Get-AzureRMApiManagementSsoToken -ResourceGroupName $secondResourceGroup -Name $secondApiManagementName
     Assert-NotNull $secondToken
 
     # List all services
-    $allServices = Get-AzureApiManagement
+    $allServices = Get-AzureRMApiManagement
     Assert-True {$allServices.Count -ge 2}
 
     $found = 0
@@ -100,13 +100,13 @@ function Test-CrudApiManagement
     Assert-True {$found -eq 2} "Api Management services created earlier is not found."
 
     # Delete listed services
-    Get-AzureApiManagement | Remove-AzureApiManagement -Force
+    Get-AzureRMApiManagement | Remove-AzureRMApiManagement -Force
 
-    $allServices = Get-AzureApiManagement
+    $allServices = Get-AzureRMApiManagement
     Assert-AreEqual 0 $allServices.Count
 
     # Remove resource group
-    Remove-AzureResourceGroup -Name $resourceGroupName -Force
+    Remove-AzureRMResourceGroup -Name $resourceGroupName -Force
 }
 
 <#
@@ -120,16 +120,16 @@ function Test-BackupRestoreApiManagement
 
     # Create resource group
     $resourceGroupName = Get-ResourceGroupName
-    New-AzureResourceGroup -Name $resourceGroupName -Location $location -Force
+    New-AzureRMResourceGroup -Name $resourceGroupName -Location $location -Force
 
     # Create storage account
 
     $storageLocation = Get-ProviderLocation "Microsoft.ClassicStorage/storageAccounts"
     $storageAccountName = Get-ApiManagementServiceName
-    New-AzureStorageAccount -StorageAccountName $storageAccountName -Location $storageLocation -ResourceGroupName $resourceGroupName -Type Standard_LRS
+    New-AzureRMStorageAccount -StorageAccountName $storageAccountName -Location $storageLocation -ResourceGroupName $resourceGroupName -Type Standard_LRS
 
-    $storageKey = (Get-AzureStorageAccountKey -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName).Key1
-    $storageContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageKey
+    $storageKey = (Get-AzureRMStorageAccountKey -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName).Key1
+    $storageContext = New-AzureRMStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageKey
 
     $apiManagementName = Get-ApiManagementServiceName
     $organization = "apimpowershellorg"
@@ -139,16 +139,16 @@ function Test-BackupRestoreApiManagement
     $backupName = $apiManagementName + ".apimbackup"
 
     # Create API Management service
-    $apiManagementService = New-AzureApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization $organization -AdminEmail $adminEmail
+    $apiManagementService = New-AzureRMApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization $organization -AdminEmail $adminEmail
 
     $containerName = "backups"
     $backupName = $apiManagementName + ".apimbackup"
 
     # Backup API Management service
-    Backup-AzureApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -StorageContext $storageContext -TargetContainerName $containerName -TargetBlobName $backupName
+    Backup-AzureRMApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -StorageContext $storageContext -TargetContainerName $containerName -TargetBlobName $backupName
 
     # Restore API Management service
-    $restoreResult = Restore-AzureApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -StorageContext $storageContext -SourceContainerName $containerName -SourceBlobName $backupName -PassThru
+    $restoreResult = Restore-AzureRMApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -StorageContext $storageContext -SourceContainerName $containerName -SourceBlobName $backupName -PassThru
 
     Assert-AreEqual $resourceGroupName $restoreResult.ResourceGroupName
     Assert-AreEqual $apiManagementName $restoreResult.Name
@@ -160,13 +160,13 @@ function Test-BackupRestoreApiManagement
     try
     {
         # Remove the service
-        Remove-AzureApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force
+        Remove-AzureRMApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force
 
         # Remove storage account
-        Remove-AzureStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName
+        Remove-AzureRMStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName
 
         # Remove resource group
-        Remove-AzureResourceGroup -Name $resourceGroupName -Force
+        Remove-AzureRMResourceGroup -Name $resourceGroupName -Force
     }
     catch
     {
@@ -184,7 +184,7 @@ function Test-UpdateApiManagementDeployment
 
     # Create resource group
     $resourceGroupName = Get-ResourceGroupName
-    New-AzureResourceGroup -Name $resourceGroupName -Location $location -Force
+    New-AzureRMResourceGroup -Name $resourceGroupName -Location $location -Force
 
     $apiManagementName = Get-ApiManagementServiceName
     $organization = "apimpowershellorg"
@@ -193,14 +193,14 @@ function Test-UpdateApiManagementDeployment
     $capacity = 1
 
     # Create API Management service
-    New-AzureApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization $organization -AdminEmail $adminEmail -Sku $sku -Capacity $capacity
+    New-AzureRMApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization $organization -AdminEmail $adminEmail -Sku $sku -Capacity $capacity
 
     # Get API Management and:
     #- 1) Scale master region to 'Premium' 2 units
     $sku = "Premium"
     $capacity = 2
 
-    $service = Get-AzureApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
+    $service = Get-AzureRMApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
     $service.Sku = $sku;
     $service.Capacity = $capacity
 
@@ -215,9 +215,9 @@ function Test-UpdateApiManagementDeployment
     #$region2Capacity = 3
     #$service.AddRegion($region2Location, $region2Sku, $region2Capacity)
 
-    Update-AzureApiManagementDeployment -ApiManagement $service
+    Update-AzureRMApiManagementDeployment -ApiManagement $service
 
-    $service = Get-AzureApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
+    $service = Get-AzureRMApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
 
     Assert-AreEqual $resourceGroupName $service.ResourceGroupName
     Assert-AreEqual $apiManagementName $service.Name
@@ -251,10 +251,10 @@ function Test-UpdateApiManagementDeployment
     Assert-True {$found -eq 1} "Api Management regions created earlier is not found."
 
     # Remove the service
-    Remove-AzureApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force
+    Remove-AzureRMApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force
 
     # Remove resource group
-    Remove-AzureResourceGroup -Name $resourceGroupName -Force
+    Remove-AzureRMResourceGroup -Name $resourceGroupName -Force
 }
 
 <#
@@ -268,7 +268,7 @@ function Test-UpdateApiManagementDeploymentWithHelpersAndPipline
 
     # Create resource group
     $resourceGroupName = Get-ResourceGroupName
-    New-AzureResourceGroup -Name $resourceGroupName -Location $location -Force
+    New-AzureRMResourceGroup -Name $resourceGroupName -Location $location -Force
 
     $apiManagementName = Get-ApiManagementServiceName
     $organization = "apimpowershellorg"
@@ -277,7 +277,7 @@ function Test-UpdateApiManagementDeploymentWithHelpersAndPipline
     $capacity = 1
 
     # Create API Management service
-    $service = New-AzureApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization $organization -AdminEmail $adminEmail -Sku $sku -Capacity $capacity
+    $service = New-AzureRMApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization $organization -AdminEmail $adminEmail -Sku $sku -Capacity $capacity
 
     # Get API Management and:
     #- 1) Scale master region to 'Premium' 2
@@ -293,13 +293,13 @@ function Test-UpdateApiManagementDeploymentWithHelpersAndPipline
     #$region2Sku = "Premium"
     #$region2Capacity = 3
 
-    Get-AzureApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName |
-    Update-AzureApiManagementRegion -Sku $sku -Capacity $capacity |
-    Add-AzureApiManagementRegion -Location $region1Location -Sku $region1Sku |
-    #Add-AzureApiManagementRegion -Location $region2Location -Sku $region2Sku -Capacity $region2Capacity |
-    Update-AzureApiManagementDeployment
+    Get-AzureRMApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName |
+    Update-AzureRMApiManagementRegion -Sku $sku -Capacity $capacity |
+    Add-AzureRMApiManagementRegion -Location $region1Location -Sku $region1Sku |
+    #Add-AzureRMApiManagementRegion -Location $region2Location -Sku $region2Sku -Capacity $region2Capacity |
+    Update-AzureRMApiManagementDeployment
 
-    $service = Get-AzureApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
+    $service = Get-AzureRMApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName
 
     Assert-AreEqual $resourceGroupName $service.ResourceGroupName
     Assert-AreEqual $apiManagementName $service.Name
@@ -335,10 +335,10 @@ function Test-UpdateApiManagementDeploymentWithHelpersAndPipline
 
 
     # Remove the service
-    Remove-AzureApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force
+    Remove-AzureRMApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force
 
     # Remove resource group
-    Remove-AzureResourceGroup -Name $resourceGroupName -Force
+    Remove-AzureRMResourceGroup -Name $resourceGroupName -Force
 }
 
 <#
@@ -355,7 +355,7 @@ function Test-ImportApiManagementHostnameCertificate
 
     # Create resource group
     $resourceGroupName = Get-ResourceGroupName
-    New-AzureResourceGroup -Name $resourceGroupName -Location $location -Force
+    New-AzureRMResourceGroup -Name $resourceGroupName -Location $location -Force
 
     $apiManagementName = Get-ApiManagementServiceName
     $organization = "apimpowershellorg"
@@ -364,18 +364,18 @@ function Test-ImportApiManagementHostnameCertificate
     $capacity = 1
 
     # Create API Management service
-    $result = New-AzureApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization $organization -AdminEmail $adminEmail -Sku $sku -Capacity $capacity |
-    Get-AzureApiManagement |
-    Import-AzureApiManagementHostnameCertificate -HostnameType "Proxy" -PfxPath $certFilePath -PfxPassword $certPassword -PassThru
+    $result = New-AzureRMApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization $organization -AdminEmail $adminEmail -Sku $sku -Capacity $capacity |
+    Get-AzureRMApiManagement |
+    Import-AzureRMApiManagementHostnameCertificate -HostnameType "Proxy" -PfxPath $certFilePath -PfxPassword $certPassword -PassThru
 
     Assert-AreEqual "CN=ailn.redmond.corp.microsoft.com" $result.Subject
     Assert-AreEqual "51A702569BADEDB90A75141B070F2D4B5DDFA447" $result.Thumbprint
 
     # Remove the service
-    Remove-AzureApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force
+    Remove-AzureRMApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force
 
     # Remove resource group
-    Remove-AzureResourceGroup -Name $resourceGroupName -Force
+    Remove-AzureRMResourceGroup -Name $resourceGroupName -Force
 }
 
 <#
@@ -389,7 +389,7 @@ function Test-SetApiManagementVirtualNetworks
 
     # Create resource group
     $resourceGroupName = Get-ResourceGroupName
-    New-AzureResourceGroup -Name $resourceGroupName -Location $location -Force
+    New-AzureRMResourceGroup -Name $resourceGroupName -Location $location -Force
 
     $apiManagementName = Get-ApiManagementServiceName
     $organization = "apimpowershellorg"
@@ -398,20 +398,20 @@ function Test-SetApiManagementVirtualNetworks
     $capacity = 1
 
     # Create API Management service
-    New-AzureApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization $organization -AdminEmail $adminEmail -Sku $sku -Capacity $capacity
+    New-AzureRMApiManagement -ResourceGroupName $resourceGroupName -Location $location -Name $apiManagementName -Organization $organization -AdminEmail $adminEmail -Sku $sku -Capacity $capacity
 
     $vnetLocation = "East US"
     $vnetId = "53F96AC5-9F46-46CE-BA0F-77DE89943258"
     $subnetName = "Subnet-1"
 
     $networksList = @()
-    $networksList += New-AzureApiManagementVirtualNetwork -Location $vnetLocation -VnetId $vnetId -SubnetName $subnetName
+    $networksList += New-AzureRMApiManagementVirtualNetwork -Location $vnetLocation -VnetId $vnetId -SubnetName $subnetName
 
     try
     {
         try
         {
-            Set-AzureApiManagementVirtualNetworks -ResourceGroupName $resourceGroupName -Name $apiManagementName -VirtualNetworks $networksList
+            Set-AzureRMApiManagementVirtualNetworks -ResourceGroupName $resourceGroupName -Name $apiManagementName -VirtualNetworks $networksList
         }
         catch
         {
@@ -421,9 +421,9 @@ function Test-SetApiManagementVirtualNetworks
     finally
     {
         # Remove the service
-        Remove-AzureApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force
+        Remove-AzureRMApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -Force
 
         # Remove resource group
-        Remove-AzureResourceGroup -Name $resourceGroupName -Force
+        Remove-AzureRMResourceGroup -Name $resourceGroupName -Force
     }
 }

@@ -31,6 +31,10 @@
                 <PropertyName>Etag</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>ResourceGuid</Label>
+                <PropertyName>ResourceGuid</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>ProvisioningState</Label>
                 <PropertyName>ProvisioningState</PropertyName>
               </ListItem>
@@ -135,6 +139,10 @@
                 <PropertyName>Etag</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>ResourceGuid</Label>
+                <PropertyName>ResourceGuid</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>ProvisioningState</Label>
                 <PropertyName>ProvisioningState</PropertyName>
               </ListItem>
@@ -195,6 +203,10 @@
               <ListItem>
                 <Label>Etag</Label>
                 <PropertyName>Etag</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ResourceGuid</Label>
+                <PropertyName>ResourceGuid</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>ProvisioningState</Label>
@@ -315,6 +327,10 @@
               <ListItem>
                 <Label>Etag</Label>
                 <PropertyName>Etag</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ResourceGuid</Label>
+                <PropertyName>ResourceGuid</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>ProvisioningState</Label>
@@ -439,6 +455,10 @@
               <ListItem>
                 <Label>Etag</Label>
                 <PropertyName>Etag</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ResourceGuid</Label>
+                <PropertyName>ResourceGuid</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>ProvisioningState</Label>

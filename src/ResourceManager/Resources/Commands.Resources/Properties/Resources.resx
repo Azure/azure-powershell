@@ -306,4 +306,10 @@
   <data name="DeploymentDoesntExist" xml:space="preserve">
     <value>Deployment '{0}' doesn't exist under resource group '{1}'</value>
   </data>
+  <data name="ExpandGroupsNotSupported" xml:space="preserve">
+    <value>ExpandPrincipalGroups is only supported for a User principal</value>
+  </data>
+  <data name="PrincipalNotFound" xml:space="preserve">
+    <value>Cannot find principal using the specified options</value>
+  </data>
 </root>

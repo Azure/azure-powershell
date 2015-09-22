@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Insights.Events
     /// <summary>
     /// Get the list of events for at a ResourceGroup level.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureResourceGroupLog"), OutputType(typeof(List<IPSEventData>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRMResourceGroupLog"), OutputType(typeof(List<IPSEventData>))]
     public class GetAzureResourceGroupLogCommand : EventCmdletBase
     {
         /// <summary>

@@ -26,7 +26,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
 {
-    public class ServiceComponentsTests : TestBase, IDisposable
+    public class ServiceComponentsTests : SMTestBase, IDisposable
     {
         private const string serviceName = "NodeService";
 

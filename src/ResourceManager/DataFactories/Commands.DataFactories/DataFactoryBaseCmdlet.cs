@@ -19,10 +19,11 @@ using Microsoft.Azure.Commands.DataFactories.Properties;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Hyak.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.DataFactories
 {
-    public abstract class DataFactoryBaseCmdlet : AzurePSCmdlet
+    public abstract class DataFactoryBaseCmdlet : AzureRMCmdlet
     {
         private DataFactoryClient dataFactoryClient;
 
@@ -40,7 +41,7 @@ namespace Microsoft.Azure.Commands.DataFactories
             {
                 if (this.dataFactoryClient == null)
                 {
-                    this.dataFactoryClient = new DataFactoryClient(Profile);
+                    this.dataFactoryClient = new DataFactoryClient(DefaultContext);
                 }
                 return this.dataFactoryClient;
             }

@@ -1,11 +1,11 @@
 {
     "Name": "Another tests role",
-    "Id": "/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d/providers/Microsoft.Authorization/roleDefinitions/85E460B3-89E9-48BA-9DCD-A8A99D64A674",
+    "Id": "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/85E460B3-89E9-48BA-9DCD-A8A99D64A674",
     "Description": "Test role",
     "Actions": [ 
         "Microsoft.Authorization/*/read",
         "Microsoft.Support/*"
     ],
     "NotActions": [],
-    "AssignableScopes": ["/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d"]
+    "AssignableScopes": ["/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f"]
 }

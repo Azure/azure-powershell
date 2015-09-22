@@ -21,7 +21,7 @@ using Microsoft.Azure.Management.Sql.Models;
 
 namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureSqlDatabaseUpgradeHint", ConfirmImpact = ConfirmImpact.None)]
+    [Cmdlet(VerbsCommon.Get, "AzureRMSqlDatabaseUpgradeHint", ConfirmImpact = ConfirmImpact.None)]
     public class GetAzureSqlDatabaseUpgradeHint : AzureSqlCmdletBase<IEnumerable<RecommendedDatabaseProperties>, AzureSqlServiceTierAdvisorAdapter>
     {
         /// <summary>
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Cmdlet
         /// <returns>Returns new AzureSqlServiceTierAdvisorAdapter</returns>
         protected override AzureSqlServiceTierAdvisorAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            return new AzureSqlServiceTierAdvisorAdapter(Profile, subscription);
+            return new AzureSqlServiceTierAdvisorAdapter(DefaultProfile.Context);
         }
     }
 }

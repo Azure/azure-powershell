@@ -16,7 +16,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 {
-    public abstract class ExpressRouteBaseCmdlet : AzurePSCmdlet
+    public abstract class ExpressRouteBaseCmdlet : AzureSMCmdlet
     {
         private ExpressRouteClient expressRouteClient;
 

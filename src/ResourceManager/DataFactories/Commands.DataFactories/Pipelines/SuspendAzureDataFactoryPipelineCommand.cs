@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.DataFactories
         public SwitchParameter Force { get; set; }
 
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             if (ParameterSetName == ByFactoryObject)
             {

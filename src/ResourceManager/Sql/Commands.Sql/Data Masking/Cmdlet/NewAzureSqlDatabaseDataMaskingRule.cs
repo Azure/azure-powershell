@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
     /// <summary>
     /// Returns a new data masking rule for a specific database
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureSqlDatabaseDataMaskingRule")]
+    [Cmdlet(VerbsCommon.New, "AzureRMSqlDatabaseDataMaskingRule")]
     public class NewAzureSqlDatabaseDataMaskingRule : BuildAzureSqlDatabaseDataMaskingRule
     {
         /// <summary>
@@ -79,11 +79,11 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
             
             if (!ruleIdRegex.IsMatch(RuleId)) // an invalid rule name
             {
-                return string.Format(CultureInfo.InvariantCulture, Resources.NewDataMaskingRuleIdIsNotValid, RuleId);
+                return string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.NewDataMaskingRuleIdIsNotValid, RuleId);
             }
             if(rules.Any(r=> r.RuleId == RuleId))
             {
-                return string.Format(CultureInfo.InvariantCulture, Resources.NewDataMaskingRuleIdAlreadyExistError, RuleId);
+                return string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.NewDataMaskingRuleIdAlreadyExistError, RuleId);
             }
             return null;
         }

@@ -19,9 +19,9 @@ using Microsoft.Azure.Commands.Sql.ServerUpgrade.Model;
 namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureSqlServerUpgrade cmdlet
+    /// Defines the Get-AzureRMSqlServerUpgrade cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureSqlServerUpgrade", ConfirmImpact = ConfirmImpact.None)]
+    [Cmdlet(VerbsCommon.Get, "AzureRMSqlServerUpgrade", ConfirmImpact = ConfirmImpact.None)]
     public class GetAzureSqlServerUpgrade : AzureSqlServerUpgradeCmdletBase<AzureSqlServerUpgradeModel>
     {
         /// <summary>

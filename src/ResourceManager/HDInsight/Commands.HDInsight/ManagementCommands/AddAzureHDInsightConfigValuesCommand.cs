@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             Hdfs = new Hashtable();
         }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             _configurations = Config.Configurations ?? new Dictionary<string, Hashtable>();
 

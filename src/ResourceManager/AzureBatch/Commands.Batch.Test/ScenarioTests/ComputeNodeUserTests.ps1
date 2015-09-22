@@ -20,7 +20,7 @@ function Test-CreateComputeNodeUser
 {
 	param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$userName, [string]$usePipeline)
 
-	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$context = Get-AzureRMBatchAccountKeys -Name $accountName
 	$password = "Password1234!"
 
 	# Create a user
@@ -49,7 +49,7 @@ function Test-DeleteComputeNodeUser
 {
 	param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$userName)
 
-	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$context = Get-AzureRMBatchAccountKeys -Name $accountName
 
 	Remove-AzureBatchComputeNodeUser_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -Force -BatchContext $context
 
