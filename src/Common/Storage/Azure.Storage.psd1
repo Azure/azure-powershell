@@ -55,17 +55,17 @@ ScriptsToProcess = @()
   
 # Type files (.ps1xml) to be loaded when importing this module  
 TypesToProcess = @(
-	'.\Microsoft.WindowsAzure.Commands.Storage.Types.ps1xml'
+    '.\Microsoft.WindowsAzure.Commands.Storage.Types.ps1xml'
 )
   
 # Format files (.ps1xml) to be loaded when importing this module  
 FormatsToProcess = @(
-	'.\Microsoft.WindowsAzure.Commands.Storage.format.ps1xml'
+    '.\Microsoft.WindowsAzure.Commands.Storage.format.ps1xml'
 )
   
 # Modules to import as nested modules of the module specified in ModuleToProcess  
 NestedModules = @(  
-    '.\Microsoft.WindowsAzure.Commands.Storage.dll',
+    '.\Microsoft.WindowsAzure.Commands.Storage.dll'
 )
   
 # Functions to export from this module  
@@ -79,7 +79,7 @@ VariablesToExport = '*'
   
 # Aliases to export from this module  
 AliasesToExport = @(
-	'Get-AzureRMStorageContainerAcl',  
+    'Get-AzureRMStorageContainerAcl',  
     'Start-CopyAzureStorageBlob',  
     'Stop-CopyAzureStorageBlob'
 )
