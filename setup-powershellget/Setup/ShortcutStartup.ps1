@@ -28,7 +28,6 @@ This may take some time...
 "@
 		Get-PackageProvider -Name NuGet -ForceBootstrap
 		Install-Module AzureRM.Installer
-		Install-AzureRM
 	} else {
 		cd c:\
 		$welcomeMessage = @"
