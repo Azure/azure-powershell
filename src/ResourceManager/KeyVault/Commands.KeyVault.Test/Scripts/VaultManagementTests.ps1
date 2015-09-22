@@ -232,12 +232,19 @@ Set up for control plane test
 function Initialize-VaultTest
 {    
     $suffix = Get-Date -UFormat %m%d%H%M%S
-
-    #create a resource group
-    $rg = Get-ResourceGroupName $suffix
-    New-AzureRMResourceGroup -Name $rg -Location $global:location -Force
-    $global:resourceGroupName = $rg
-
+    if($global:resourceGroupName -eq "")
+    {
+        #create a resource group
+        $rg = Get-ResourceGroupName $suffix
+        New-AzureRMResourceGroup -Name $rg -Location $global:location -Force
+        
+        $global:resourceGroupName = $rg
+    }
+    if($global:precreatedVaultName -ne "" -and $global:precreatedVaultName -ne $null)
+    {
+        Write-Host "Skipping vault creation for control plane tests since vault: $global:precreatedVaultName is already provided."
+        return;
+    }
     #create a vault using ARM    
     $vaultName = Get-VaultName $suffix
     $tenantId = (Get-AzureRMSubscription -Current).TenantId
@@ -246,7 +253,7 @@ function Initialize-VaultTest
     $vaultId = @{
         "ResourceType" = $KeyVaultResourceType;
         "ApiVersion" = $KeyVaultApiVersion;
-        "ResourceGroupName" = $rg;
+        "ResourceGroupName" = $global:resourceGroupName;
         "Name" = $vaultName;
     }
 

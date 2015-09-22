@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         }
 
         /// <summary>
-        /// Validates all Unregister-AzureResourceProvider scenarios
+        /// Validates all Unregister-AzureRMResourceProvider scenarios
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

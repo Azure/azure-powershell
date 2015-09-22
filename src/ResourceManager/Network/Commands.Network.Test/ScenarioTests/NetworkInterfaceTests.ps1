@@ -48,6 +48,7 @@ function Test-NetworkInterfaceCRUD
         Assert-AreEqual $expectedNic.ResourceGroupName $actualNic.ResourceGroupName	
         Assert-AreEqual $expectedNic.Name $actualNic.Name	
         Assert-AreEqual $expectedNic.Location $actualNic.Location
+        Assert-NotNull $expectedNic.ResourceGuid
         Assert-AreEqual "Succeeded" $expectedNic.ProvisioningState
         Assert-AreEqual $expectedNic.IpConfigurations[0].Name $actualNic.IpConfigurations[0].Name
         Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $actualNic.IpConfigurations[0].PublicIpAddress.Id
@@ -417,7 +418,7 @@ function Test-NetworkInterfaceIDns
         Assert-NotNull $expectedNic.IpConfigurations[0].PrivateIpAddress
         Assert-AreEqual "Dynamic" $expectedNic.IpConfigurations[0].PrivateIpAllocationMethod
         Assert-AreEqual "idnstest" $expectedNic.DnsSettings.InternalDnsNameLabel
-        Assert-Null $expectedNic.DnsSettings.InternalFqdn
+        Assert-NotNull $expectedNic.DnsSettings.InternalFqdn
 		
         # Delete NetworkInterface
         $delete = Remove-AzureRMNetworkInterface -ResourceGroupName $rgname -name $nicName -PassThru -Force

@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// </summary>
         protected override void ProcessRecord()
         {
-            ModelAdapter = InitModelAdapter(DefaultProfile.DefaultContext.Subscription);
+            ModelAdapter = InitModelAdapter(DefaultProfile.Context.Subscription);
 
             WriteObject(GetDatabase());
         }

@@ -25,6 +25,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Test;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -96,6 +97,10 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             string callingClassType,
             string mockName)
         {
+            Dictionary<string, string> d = new Dictionary<string, string>();
+            d.Add("Microsoft.Authorization", "2014-07-01-preview");
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
+
             using (UndoContext context = UndoContext.Current)
             {
                 context.Start(callingClassType, mockName);

@@ -3,7 +3,7 @@
   <!-- Updatable Help Version 1.0.0.0 -->
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>Get-AzureBatchAccountKeys</command:name>
+      <command:name>Get-AzureRMBatchAccountKeys</command:name>
       <maml:description>
         <maml:para>Gets the specified key of the specified Batch accounts under the current subscription.</maml:para>
       </maml:description>
@@ -11,15 +11,15 @@
         <maml:para />
       </maml:copyright>
       <command:verb>Get</command:verb>
-      <command:noun>AzureBatchAccountKeys</command:noun>
+      <command:noun>AzureRMBatchAccountKeys</command:noun>
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Get-AzureBatchAccountKeys cmdlet gets the specified key of the specified Azure Batch accounts under the current subscription.</maml:para>
+      <maml:para>The Get-AzureRMBatchAccountKeys cmdlet gets the specified key of the specified Azure Batch accounts under the current subscription.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Get-AzureBatchAccountKeys</maml:name>
+        <maml:name>Get-AzureRMBatchAccountKeys</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="Name">
           <maml:name>AccountName</maml:name>
           <maml:description>
@@ -133,7 +133,7 @@
     </command:examples>
     <maml:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>New-AzureBatchAccountKey</maml:linkText>
+        <maml:linkText>New-AzureRMBatchAccountKey</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -144,7 +144,7 @@
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>Get-AzureBatchAccount</command:name>
+      <command:name>Get-AzureRMBatchAccount</command:name>
       <maml:description>
         <maml:para>Gets a Batch account under the current subscription.</maml:para>
       </maml:description>
@@ -152,15 +152,15 @@
         <maml:para />
       </maml:copyright>
       <command:verb>Get</command:verb>
-      <command:noun>AzureBatchAccount</command:noun>
+      <command:noun>AzureRMBatchAccount</command:noun>
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Get-AzureBatchAccount cmdlet gets an Azure Batch account under the current subscription. You can use the AccountName parameter to get a single account, or you can use the ResourceGroupName parameter to get accounts under that resource group.</maml:para>
+      <maml:para>The Get-AzureRMBatchAccount cmdlet gets an Azure Batch account under the current subscription. You can use the AccountName parameter to get a single account, or you can use the ResourceGroupName parameter to get accounts under that resource group.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Get-AzureBatchAccount</maml:name>
+        <maml:name>Get-AzureRMBatchAccount</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="Name">
           <maml:name>AccountName</maml:name>
           <maml:description>
@@ -283,7 +283,7 @@
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureBatchAccount -AccountName "pfuller"
+        <dev:code>PS C:\&gt;Get-AzureRMBatchAccount -AccountName "pfuller"
 AccountName          Location        ResourceGroupName Tags               TaskTenantUrl
 -----------          --------        ----------------- ----               -------------
 pfuller              westus          CmdletExampleRG                      https://pfuller.westus.batch.azure.com                        
@@ -305,7 +305,7 @@ pfuller              westus          CmdletExampleRG                      https:
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureBatchAccount -ResourceGroupName "CmdletExampleRG"
+        <dev:code>PS C:\&gt;Get-AzureRMBatchAccount -ResourceGroupName "CmdletExampleRG"
 AccountName          Location        ResourceGroupName Tags               TaskTenantUrl
 -----------          --------        ----------------- ----               -------------
 cmdletexample        westus          CmdletExampleRG                      https://cmdletexample.westus.batch.azure.com
@@ -325,15 +325,15 @@ cmdletexample2       westus          CmdletExampleRG                      https:
     </command:examples>
     <maml:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>New-AzureBatchAccount</maml:linkText>
+        <maml:linkText>New-AzureRMBatchAccount</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Remove-AzureBatchAccount</maml:linkText>
+        <maml:linkText>Remove-AzureRMBatchAccount</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Set-AzureBatchAccount</maml:linkText>
+        <maml:linkText>Set-AzureRMBatchAccount</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -385,7 +385,7 @@ cmdletexample2       westus          CmdletExampleRG                      https:
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -423,7 +423,7 @@ cmdletexample2       westus          CmdletExampleRG                      https:
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -461,7 +461,7 @@ cmdletexample2       westus          CmdletExampleRG                      https:
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -471,7 +471,7 @@ cmdletexample2       westus          CmdletExampleRG                      https:
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         <dev:type>
@@ -613,7 +613,7 @@ CertificateReferences :
 Errors                :         
 </dev:code>
         <dev:remarks>
-          <maml:para>This command gets the compute node that has the ID tvm-2316545714_1-20150725t213220z from the pool that has the ID Pool06. Use the Get-AzureBatchAccountKeys cmdlet to assign a context to the $Context variable.</maml:para>
+          <maml:para>This command gets the compute node that has the ID tvm-2316545714_1-20150725t213220z from the pool that has the ID Pool06. Use the Get-AzureRMBatchAccountKeys cmdlet to assign a context to the $Context variable.</maml:para>
           <maml:para />
           <maml:para />
         </dev:remarks>
@@ -786,7 +786,7 @@ Errors                :
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet. </maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet. </maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -810,7 +810,7 @@ Errors                :
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet. </maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet. </maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -820,7 +820,7 @@ Errors                :
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet. </maml:para>
+          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet. </maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         <dev:type>
@@ -1064,7 +1064,7 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobsc
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -1088,7 +1088,7 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobsc
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -1126,7 +1126,7 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobsc
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -1136,7 +1136,7 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobsc
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         <dev:type>
@@ -1374,7 +1374,7 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobs/
     </command:examples>
     <maml:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureBatchAccountKeys</maml:linkText>
+        <maml:linkText>Get-AzureRMBatchAccountKeys</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -1441,7 +1441,7 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobs/
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -1465,7 +1465,7 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobs/
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -1531,7 +1531,7 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobs/
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -1576,7 +1576,7 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobs/
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -1607,7 +1607,7 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobs/
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -1638,7 +1638,7 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobs/
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -1655,7 +1655,7 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobs/
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         <dev:type>
@@ -1819,7 +1819,7 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobs/
         <dev:code>PS C:\&gt;Get-AzureBatchNodeFileContent -JobId "Job01" -TaskId "Task01" -Name "StdOut.txt" -DestinationPath "E:\PowerShell\StdOut.txt" -BatchContext $Context
 </dev:code>
         <dev:remarks>
-          <maml:para>This command gets the node file that is named StdOut.txt, and saves it to the E:\PowerShell\StdOut.txt file path on the local computer. The StdOut.txt node file is associated with task that has the ID Task01 for the job that has the ID Job01. Use the Get-AzureBatchAccountKeys cmdlet to assign a context to the $Context variable.</maml:para>
+          <maml:para>This command gets the node file that is named StdOut.txt, and saves it to the E:\PowerShell\StdOut.txt file path on the local computer. The StdOut.txt node file is associated with task that has the ID Task01 for the job that has the ID Job01. Use the Get-AzureRMBatchAccountKeys cmdlet to assign a context to the $Context variable.</maml:para>
           <maml:para />
           <maml:para />
         </dev:remarks>
@@ -1931,7 +1931,7 @@ PS C:\&gt; Get-AzureBatchNodeFileContent -PoolId "Pool01" -ComputeNodeId "Comput
     </command:examples>
     <maml:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureBatchAccountKeys</maml:linkText>
+        <maml:linkText>Get-AzureRMBatchAccountKeys</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -1994,7 +1994,7 @@ PS C:\&gt; Get-AzureBatchNodeFileContent -PoolId "Pool01" -ComputeNodeId "Comput
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -2031,7 +2031,7 @@ PS C:\&gt; Get-AzureBatchNodeFileContent -PoolId "Pool01" -ComputeNodeId "Comput
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -2069,7 +2069,7 @@ PS C:\&gt; Get-AzureBatchNodeFileContent -PoolId "Pool01" -ComputeNodeId "Comput
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -2127,7 +2127,7 @@ PS C:\&gt; Get-AzureBatchNodeFileContent -PoolId "Pool01" -ComputeNodeId "Comput
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -2178,7 +2178,7 @@ PS C:\&gt; Get-AzureBatchNodeFileContent -PoolId "Pool01" -ComputeNodeId "Comput
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -2222,7 +2222,7 @@ PS C:\&gt; Get-AzureBatchNodeFileContent -PoolId "Pool01" -ComputeNodeId "Comput
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -2232,7 +2232,7 @@ PS C:\&gt; Get-AzureBatchNodeFileContent -PoolId "Pool01" -ComputeNodeId "Comput
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         <dev:type>
@@ -2424,7 +2424,7 @@ IsDirectory Name          Properties                                      Url
 False StdOut.txt    Microsoft.Azure.Commands.Batch.Models.PSFile... https://cmdletexample.westus.Batch.contoso... 
 </dev:code>
         <dev:remarks>
-          <maml:para>This command gets the properties of the StdOut.txt node file associated with the task that has the ID Task26 in the job that has the ID Job-000001. Use the Get-AzureBatchAccountKeys cmdlet to assign a context to the $Context variable.</maml:para>
+          <maml:para>This command gets the properties of the StdOut.txt node file associated with the task that has the ID Task26 in the job that has the ID Job-000001. Use the Get-AzureRMBatchAccountKeys cmdlet to assign a context to the $Context variable.</maml:para>
           <maml:para />
           <maml:para />
         </dev:remarks>
@@ -2563,7 +2563,7 @@ True        workitems                       https://cmdletexample.westus.Batch.c
     </command:examples>
     <maml:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureBatchAccountKeys</maml:linkText>
+        <maml:linkText>Get-AzureRMBatchAccountKeys</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -2623,7 +2623,7 @@ True        workitems                       https://cmdletexample.westus.Batch.c
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -2647,7 +2647,7 @@ True        workitems                       https://cmdletexample.westus.Batch.c
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -2657,7 +2657,7 @@ True        workitems                       https://cmdletexample.westus.Batch.c
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         <dev:type>
@@ -2849,7 +2849,7 @@ VirtualMachineSize                   : small
     </command:examples>
     <maml:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureBatchAccountKeys</maml:linkText>
+        <maml:linkText>Get-AzureRMBatchAccountKeys</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -2909,7 +2909,7 @@ VirtualMachineSize                   : small
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -2947,7 +2947,7 @@ VirtualMachineSize                   : small
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -2978,7 +2978,7 @@ VirtualMachineSize                   : small
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -3009,7 +3009,7 @@ VirtualMachineSize                   : small
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -3026,7 +3026,7 @@ VirtualMachineSize                   : small
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         <dev:type>
@@ -3154,7 +3154,7 @@ VirtualMachineSize                   : small
         <dev:code>PS C:\&gt;Get-AzureBatchRemoteDesktopProtocolFile -PoolId "Pool06" -ComputeNodeId "ComputeNode01" -DestinationPath "C:\PowerShell\ComputeNode01.rdp" -BatchContext $Context
 </dev:code>
         <dev:remarks>
-          <maml:para>This command gets an RDP file from the compute node that has the ID ComputeNode01 in the pool that has the ID Pool06. The command saves the .rdp file as C:\PowerShell\MyComputeNode.rdp. Use the Get-AzureBatchAccountKeys cmdlet to assign a context to the $Context variable.</maml:para>
+          <maml:para>This command gets an RDP file from the compute node that has the ID ComputeNode01 in the pool that has the ID Pool06. The command saves the .rdp file as C:\PowerShell\MyComputeNode.rdp. Use the Get-AzureRMBatchAccountKeys cmdlet to assign a context to the $Context variable.</maml:para>
           <maml:para />
           <maml:para />
         </dev:remarks>
@@ -3207,7 +3207,7 @@ VirtualMachineSize                   : small
     </command:examples>
     <maml:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureBatchAccountKeys</maml:linkText>
+        <maml:linkText>Get-AzureRMBatchAccountKeys</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -3270,7 +3270,7 @@ VirtualMachineSize                   : small
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -3301,7 +3301,7 @@ VirtualMachineSize                   : small
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -3339,7 +3339,7 @@ VirtualMachineSize                   : small
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -3349,7 +3349,7 @@ VirtualMachineSize                   : small
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         <dev:type>
@@ -3564,7 +3564,7 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobs/
     </command:examples>
     <maml:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureBatchAccountKeys</maml:linkText>
+        <maml:linkText>Get-AzureRMBatchAccountKeys</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -3587,7 +3587,7 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobs/
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>New-AzureBatchAccountKey</command:name>
+      <command:name>New-AzureRMBatchAccountKey</command:name>
       <maml:description>
         <maml:para>Regenerates the specified key of the specified Batch account.</maml:para>
       </maml:description>
@@ -3595,15 +3595,15 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobs/
         <maml:para />
       </maml:copyright>
       <command:verb>New</command:verb>
-      <command:noun>AzureBatchAccountKey</command:noun>
+      <command:noun>AzureRMBatchAccountKey</command:noun>
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The New-AzureBatchAccountKey cmdlet regenerates the specified key of the specified Azure Batch account. The cmdlet outputs a BatchAccountContext object with its PrimaryAccountKey and SecondaryAccountKey properties populated with the latest access keys.</maml:para>
+      <maml:para>The New-AzureRMBatchAccountKey cmdlet regenerates the specified key of the specified Azure Batch account. The cmdlet outputs a BatchAccountContext object with its PrimaryAccountKey and SecondaryAccountKey properties populated with the latest access keys.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>New-AzureBatchAccountKey</maml:name>
+        <maml:name>New-AzureRMBatchAccountKey</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="Name">
           <maml:name>AccountName</maml:name>
           <maml:description>
@@ -3729,7 +3729,7 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobs/
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;New-AzureBatchAccountKey -AccountName "CmdletExample" -KeyType "Primary"
+        <dev:code>PS C:\&gt;New-AzureRMBatchAccountKey -AccountName "CmdletExample" -KeyType "Primary"
 AccountName          Location        ResourceGroupName Tags               TaskTenantUrl
 -----------          --------        ----------------- ----               -------------
 cmdletexample        westus          CmdletExample                        https://batch.core.contoso.net                        
@@ -3748,7 +3748,7 @@ cmdletexample        westus          CmdletExample                        https:
     </command:examples>
     <maml:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureBatchAccountKeys</maml:linkText>
+        <maml:linkText>Get-AzureRMBatchAccountKeys</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -3759,7 +3759,7 @@ cmdletexample        westus          CmdletExample                        https:
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>New-AzureBatchAccount</command:name>
+      <command:name>New-AzureRMBatchAccount</command:name>
       <maml:description>
         <maml:para>Creates a new Batch account.</maml:para>
       </maml:description>
@@ -3767,15 +3767,15 @@ cmdletexample        westus          CmdletExample                        https:
         <maml:para />
       </maml:copyright>
       <command:verb>New</command:verb>
-      <command:noun>AzureBatchAccount</command:noun>
+      <command:noun>AzureRMBatchAccount</command:noun>
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The New-AzureBatchAccount cmdlet creates a new Azure Batch account under the specified resource group and location.</maml:para>
+      <maml:para>The New-AzureRMBatchAccount cmdlet creates a new Azure Batch account under the specified resource group and location.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>New-AzureBatchAccount</maml:name>
+        <maml:name>New-AzureRMBatchAccount</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="Name">
           <maml:name>AccountName</maml:name>
           <maml:description>
@@ -3917,7 +3917,7 @@ cmdletexample        westus          CmdletExample                        https:
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;New-AzureBatchAccount -AccountName "cmdletexample" -ResourceGroupName "CmdletExampleRG" -Location "WestUS"
+        <dev:code>PS C:\&gt;New-AzureRMBatchAccount -AccountName "cmdletexample" -ResourceGroupName "CmdletExampleRG" -Location "WestUS"
 AccountName          Location        ResourceGroupName Tags               TaskTenantUrl
 -----------          --------        ----------------- ----               -------------
 cmdletexample       WestUS           CmdletExampleRG                      https://batch.core.contoso.net                        
@@ -3936,15 +3936,15 @@ cmdletexample       WestUS           CmdletExampleRG                      https:
     </command:examples>
     <maml:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureBatchAccount</maml:linkText>
+        <maml:linkText>Get-AzureRMBatchAccount</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Remove-AzureBatchAccount</maml:linkText>
+        <maml:linkText>Remove-AzureRMBatchAccount</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Set-AzureBatchAccount</maml:linkText>
+        <maml:linkText>Set-AzureRMBatchAccount</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -4009,7 +4009,7 @@ cmdletexample       WestUS           CmdletExampleRG                      https:
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -4060,7 +4060,7 @@ cmdletexample       WestUS           CmdletExampleRG                      https:
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -4084,7 +4084,7 @@ cmdletexample       WestUS           CmdletExampleRG                      https:
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         <dev:type>
@@ -4268,7 +4268,7 @@ cmdletexample       WestUS           CmdletExampleRG                      https:
     </command:examples>
     <maml:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureBatchAccountKeys</maml:linkText>
+        <maml:linkText>Get-AzureRMBatchAccountKeys</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -4335,7 +4335,7 @@ cmdletexample       WestUS           CmdletExampleRG                      https:
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet. </maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet. </maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -4359,7 +4359,7 @@ cmdletexample       WestUS           CmdletExampleRG                      https:
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet. </maml:para>
+          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet. </maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         <dev:type>
@@ -4493,7 +4493,7 @@ PS C:\&gt; New-AzureBatchJobSchedule -Id "JobSchedule17" -Schedule $Schedule -Jo
 </dev:code>
         <dev:remarks>
           <maml:para>This example creates a job schedule. The first five commands create and modify PSSchedule, PSJobSpecification, and PSPoolInformation objects. The commands use the New-Object cmdlet and standard Azure PowerShell syntax. The commands store these objects in the $Schedule and $JobSpecification variables.</maml:para>
-          <maml:para>The final command creates a job schedule that has the ID JobSchedule17. This schedule creates jobs with a recurrence interval of one day. The jobs run on the pool that has the ID ContosoPool06, as specified in the fifth command. Use the Get-AzureBatchAccountKeys cmdlet to assign a context to the $Context variable.</maml:para>
+          <maml:para>The final command creates a job schedule that has the ID JobSchedule17. This schedule creates jobs with a recurrence interval of one day. The jobs run on the pool that has the ID ContosoPool06, as specified in the fifth command. Use the Get-AzureRMBatchAccountKeys cmdlet to assign a context to the $Context variable.</maml:para>
           <maml:para />
           <maml:para />
         </dev:remarks>
@@ -4506,7 +4506,7 @@ PS C:\&gt; New-AzureBatchJobSchedule -Id "JobSchedule17" -Schedule $Schedule -Jo
     </command:examples>
     <maml:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureBatchAccountKeys</maml:linkText>
+        <maml:linkText>Get-AzureRMBatchAccountKeys</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -4615,7 +4615,7 @@ PS C:\&gt; New-AzureBatchJobSchedule -Id "JobSchedule17" -Schedule $Schedule -Jo
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -4632,7 +4632,7 @@ PS C:\&gt; New-AzureBatchJobSchedule -Id "JobSchedule17" -Schedule $Schedule -Jo
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         <dev:type>
@@ -4824,7 +4824,7 @@ PS C:\&gt; New-AzureBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformatio
         <dev:remarks>
           <maml:para>The first command creates a PSPoolInformation object by using the New-Object cmdlet. The command stores that object in the $PoolInformation variable. </maml:para>
           <maml:para>The second command assigns the ID Pool22 to the PoolId property of the object in $PoolInformation.</maml:para>
-          <maml:para>The final command creates a job that has the ID ContosoJob35. Tasks added to the job run on the pool that has the ID Pool22. Use the Get-AzureBatchAccountKeys cmdlet to assign a context to the $Context variable.</maml:para>
+          <maml:para>The final command creates a job that has the ID ContosoJob35. Tasks added to the job run on the pool that has the ID Pool22. Use the Get-AzureRMBatchAccountKeys cmdlet to assign a context to the $Context variable.</maml:para>
           <maml:para />
           <maml:para />
         </dev:remarks>
@@ -4837,7 +4837,7 @@ PS C:\&gt; New-AzureBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformatio
     </command:examples>
     <maml:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureBatchAccountKeys</maml:linkText>
+        <maml:linkText>Get-AzureRMBatchAccountKeys</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -4952,7 +4952,7 @@ PS C:\&gt; New-AzureBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformatio
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -5059,7 +5059,7 @@ PS C:\&gt; New-AzureBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformatio
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -5095,7 +5095,7 @@ PS C:\&gt; New-AzureBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformatio
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         <dev:type>
@@ -5351,7 +5351,7 @@ PS C:\&gt; New-AzureBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformatio
     </command:examples>
     <maml:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureBatchAccountKeys</maml:linkText>
+        <maml:linkText>Get-AzureRMBatchAccountKeys</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -5438,7 +5438,7 @@ PS C:\&gt; New-AzureBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformatio
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -5524,7 +5524,7 @@ PS C:\&gt; New-AzureBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformatio
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -5560,7 +5560,7 @@ PS C:\&gt; New-AzureBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformatio
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         <dev:type>
@@ -5768,7 +5768,7 @@ PS C:\&gt; New-AzureBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformatio
     </command:examples>
     <maml:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureBatchAccountKeys</maml:linkText>
+        <maml:linkText>Get-AzureRMBatchAccountKeys</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -5791,7 +5791,7 @@ PS C:\&gt; New-AzureBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformatio
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>Remove-AzureBatchAccount</command:name>
+      <command:name>Remove-AzureRMBatchAccount</command:name>
       <maml:description>
         <maml:para>Removes the specified  Batch account.</maml:para>
       </maml:description>
@@ -5799,15 +5799,15 @@ PS C:\&gt; New-AzureBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformatio
         <maml:para />
       </maml:copyright>
       <command:verb>Remove</command:verb>
-      <command:noun>AzureBatchAccount</command:noun>
+      <command:noun>AzureRMBatchAccount</command:noun>
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Remove-AzureBatchAccount cmdlet removes the specified Azure Batch account. You will be prompted for confirmation unless you use the Force parameter.</maml:para>
+      <maml:para>The Remove-AzureRMBatchAccount cmdlet removes the specified Azure Batch account. You will be prompted for confirmation unless you use the Force parameter.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Remove-AzureBatchAccount</maml:name>
+        <maml:name>Remove-AzureRMBatchAccount</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="Name">
           <maml:name>AccountName</maml:name>
           <maml:description>
@@ -5930,7 +5930,7 @@ PS C:\&gt; New-AzureBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformatio
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Remove-AzureBatchAccount -AccountName "cmdletexample" 
+        <dev:code>PS C:\&gt;Remove-AzureRMBatchAccount -AccountName "cmdletexample" 
 </dev:code>
         <dev:remarks>
           <maml:para>This command removes the batch account named cmdletexample. The user is prompted for confirmation before the delete operation takes place.</maml:para>
@@ -5946,15 +5946,15 @@ PS C:\&gt; New-AzureBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformatio
     </command:examples>
     <maml:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureBatchAccount</maml:linkText>
+        <maml:linkText>Get-AzureRMBatchAccount</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>New-AzureBatchAccount</maml:linkText>
+        <maml:linkText>New-AzureRMBatchAccount</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Set-AzureBatchAccount</maml:linkText>
+        <maml:linkText>Set-AzureRMBatchAccount</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -6019,7 +6019,7 @@ PS C:\&gt; New-AzureBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformatio
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -6029,7 +6029,7 @@ PS C:\&gt; New-AzureBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformatio
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         <dev:type>
@@ -6158,7 +6158,7 @@ PS C:\&gt; New-AzureBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformatio
     </command:examples>
     <maml:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureBatchAccountKeys</maml:linkText>
+        <maml:linkText>Get-AzureRMBatchAccountKeys</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -6213,7 +6213,7 @@ PS C:\&gt; New-AzureBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformatio
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet. </maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet. </maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -6223,7 +6223,7 @@ PS C:\&gt; New-AzureBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformatio
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet. </maml:para>
+          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet. </maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         <dev:type>
@@ -6315,7 +6315,7 @@ PS C:\&gt; New-AzureBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformatio
         <dev:code>PS C:\&gt;Remove-AzureBatchJobSchedule "JobSchedule17" -BatchContext $Context
 </dev:code>
         <dev:remarks>
-          <maml:para>This command deletes the job schedule that has the ID JobSchedule17. Use the Get-AzureBatchAccountKeys cmdlet to assign a context to the $Context variable. This command prompts you before it removes the schedule.</maml:para>
+          <maml:para>This command deletes the job schedule that has the ID JobSchedule17. Use the Get-AzureRMBatchAccountKeys cmdlet to assign a context to the $Context variable. This command prompts you before it removes the schedule.</maml:para>
           <maml:para />
           <maml:para />
         </dev:remarks>
@@ -6402,7 +6402,7 @@ PS C:\&gt; New-AzureBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformatio
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -6412,7 +6412,7 @@ PS C:\&gt; New-AzureBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformatio
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         <dev:type>
@@ -6536,7 +6536,7 @@ PS C:\&gt; New-AzureBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformatio
     </command:examples>
     <maml:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureBatchAccountKeys</maml:linkText>
+        <maml:linkText>Get-AzureRMBatchAccountKeys</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -6591,7 +6591,7 @@ PS C:\&gt; New-AzureBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformatio
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -6601,7 +6601,7 @@ PS C:\&gt; New-AzureBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformatio
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         <dev:type>
@@ -6733,7 +6733,7 @@ PS C:\&gt; New-AzureBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformatio
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureBatchAccountKeys</maml:linkText>
+        <maml:linkText>Get-AzureRMBatchAccountKeys</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -6791,7 +6791,7 @@ PS C:\&gt; New-AzureBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformatio
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -6821,7 +6821,7 @@ PS C:\&gt; New-AzureBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformatio
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+            <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -6831,7 +6831,7 @@ PS C:\&gt; New-AzureBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformatio
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para>
+          <maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         <dev:type>
@@ -6979,7 +6979,7 @@ PS C:\&gt; New-AzureBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformatio
     </command:examples>
     <maml:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText>Get-AzureBatchAccountKeys</maml:linkText>
+        <maml:linkText>Get-AzureRMBatchAccountKeys</maml:linkText>
         <maml:uri />
       </maml:navigationLink>
       <maml:navigationLink>
@@ -7008,9 +7008,9 @@ Switch-AzureMode AzureResourceManager</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">The following cmdlets are the Azure Batch cmdlets in the Azure module:</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Name</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Description</maml:para>
-  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Get-AzureBatchAccount</maml:para>
+  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Get-AzureRMBatchAccount</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Gets a Batch account under the current subscription.</maml:para>
-  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Get-AzureBatchAccountKeys</maml:para>
+  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Get-AzureRMBatchAccountKeys</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Gets the specified key of the specified Batch accounts under the current subscription.</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Get-AzureBatchComputeNode</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Gets Batch compute nodes from a pool.</maml:para>
@@ -7028,9 +7028,9 @@ Switch-AzureMode AzureResourceManager</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Gets an RDP file from a compute node.</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Get-AzureBatchTask</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Gets the Batch tasks for the specified job.</maml:para>
-  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">New-AzureBatchAccount</maml:para>
+  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">New-AzureRMBatchAccount</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Creates a new Batch account.</maml:para>
-  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">New-AzureBatchAccountKey</maml:para>
+  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">New-AzureRMBatchAccountKey</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Regenerates the specified key of the specified Batch account.</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">New-AzureBatchComputeNodeUser</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Creates a user account on a Batch compute node.</maml:para>
@@ -7042,7 +7042,7 @@ Switch-AzureMode AzureResourceManager</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Creates a new pool in the Batch service under the specified account.</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">New-AzureBatchTask</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Creates a new Batch task under the specified job.</maml:para>
-  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Remove-AzureBatchAccount</maml:para>
+  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Remove-AzureRMBatchAccount</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Removes the specified  Batch account.</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Remove-AzureBatchComputeNodeUser</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Deletes a user account from a  Batch compute node.</maml:para>
@@ -7054,7 +7054,7 @@ Switch-AzureMode AzureResourceManager</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Deletes the specified Batch pool.</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Remove-AzureBatchTask</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Deletes the specified Batch task.</maml:para>
-  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Set-AzureBatchAccount</maml:para>
+  <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Set-AzureRMBatchAccount</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Updates the specified Batch account.</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Start-AzureBatchPoolResize</maml:para>
   <maml:para xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">Starts to resize a pool.</maml:para>
@@ -7065,18 +7065,18 @@ Switch-AzureMode AzureResourceManager</maml:para>
     <maml:linkText>Azure Cmdlet Reference</maml:linkText>
     <maml:uri>
     </maml:uri>
-  </maml:navigationLink>Azure Resource Manager Cmdlets<maml:navigationLink xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp"><maml:linkText>Using Windows Powershell with Resource Manager</maml:linkText><maml:uri></maml:uri></maml:navigationLink><command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp"><command:details><command:name>Set-AzureBatchAccount</command:name><maml:description><maml:para>Updates the specified Batch account.</maml:para></maml:description><maml:copyright><maml:para /></maml:copyright><command:verb>Set</command:verb><command:noun>AzureBatchAccount</command:noun><dev:version /></command:details><maml:description><maml:para>The Set-AzureBatchAccount cmdlet updates the specified Azure Batch account. Currently, only tags can be updated.</maml:para></maml:description><command:syntax><command:syntaxItem><maml:name>Set-AzureBatchAccount</maml:name><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="Name"><maml:name>AccountName</maml:name><maml:description><maml:para>Specifies the name of the existing Batch account to update.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">String</command:parameterValue></command:parameter><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="2" aliases="Tags"><maml:name>Tag</maml:name><maml:description><maml:para>Specifies tags in an array of hash tables to set on the account.</maml:para></maml:description><command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>Profile</maml:name><maml:description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none"><maml:name>ResourceGroupName</maml:name><maml:description><maml:para>Specifies the resource group of the account being updated.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">String</command:parameterValue></command:parameter></command:syntaxItem></command:syntax><command:parameters><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="Name"><maml:name>AccountName</maml:name><maml:description><maml:para>Specifies the name of the existing Batch account to update.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">String</command:parameterValue><dev:type><maml:name>String</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>Profile</maml:name><maml:description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue><dev:type><maml:name>AzureProfile</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none"><maml:name>ResourceGroupName</maml:name><maml:description><maml:para>Specifies the resource group of the account being updated.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">String</command:parameterValue><dev:type><maml:name>String</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="2" aliases="Tags"><maml:name>Tag</maml:name><maml:description><maml:para>Specifies tags in an array of hash tables to set on the account.</maml:para></maml:description><command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue><dev:type><maml:name>Hashtable[]</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter></command:parameters><command:inputTypes><command:inputType><dev:type><maml:name></maml:name><maml:uri></maml:uri><maml:description><maml:para /></maml:description></dev:type><maml:description><maml:para></maml:para></maml:description></command:inputType></command:inputTypes><command:returnValues><command:returnValue><dev:type><maml:name>BatchAccountContext</maml:name><maml:uri></maml:uri><maml:description><maml:para /></maml:description></dev:type><maml:description><maml:para></maml:para></maml:description></command:returnValue></command:returnValues><command:terminatingErrors /><command:nonTerminatingErrors /><command:examples><command:example><maml:title>Example 1: Update the tags on an existing Batch account</maml:title><maml:introduction><maml:para></maml:para></maml:introduction><dev:code>PS C:\&gt;Set-AzureBatchAccount -AccountName "cmdletexample" -Tag @(@{Name = "tag1";Value = "value1"},@{Name = "tag2";Value = "value2"})
+  </maml:navigationLink>Azure Resource Manager Cmdlets<maml:navigationLink xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp"><maml:linkText>Using Windows Powershell with Resource Manager</maml:linkText><maml:uri></maml:uri></maml:navigationLink><command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp"><command:details><command:name>Set-AzureRMBatchAccount</command:name><maml:description><maml:para>Updates the specified Batch account.</maml:para></maml:description><maml:copyright><maml:para /></maml:copyright><command:verb>Set</command:verb><command:noun>AzureRMBatchAccount</command:noun><dev:version /></command:details><maml:description><maml:para>The Set-AzureRMBatchAccount cmdlet updates the specified Azure Batch account. Currently, only tags can be updated.</maml:para></maml:description><command:syntax><command:syntaxItem><maml:name>Set-AzureRMBatchAccount</maml:name><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="Name"><maml:name>AccountName</maml:name><maml:description><maml:para>Specifies the name of the existing Batch account to update.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">String</command:parameterValue></command:parameter><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="2" aliases="Tags"><maml:name>Tag</maml:name><maml:description><maml:para>Specifies tags in an array of hash tables to set on the account.</maml:para></maml:description><command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>Profile</maml:name><maml:description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none"><maml:name>ResourceGroupName</maml:name><maml:description><maml:para>Specifies the resource group of the account being updated.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">String</command:parameterValue></command:parameter></command:syntaxItem></command:syntax><command:parameters><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="Name"><maml:name>AccountName</maml:name><maml:description><maml:para>Specifies the name of the existing Batch account to update.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">String</command:parameterValue><dev:type><maml:name>String</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>Profile</maml:name><maml:description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue><dev:type><maml:name>AzureProfile</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none"><maml:name>ResourceGroupName</maml:name><maml:description><maml:para>Specifies the resource group of the account being updated.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">String</command:parameterValue><dev:type><maml:name>String</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="2" aliases="Tags"><maml:name>Tag</maml:name><maml:description><maml:para>Specifies tags in an array of hash tables to set on the account.</maml:para></maml:description><command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue><dev:type><maml:name>Hashtable[]</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter></command:parameters><command:inputTypes><command:inputType><dev:type><maml:name></maml:name><maml:uri></maml:uri><maml:description><maml:para /></maml:description></dev:type><maml:description><maml:para></maml:para></maml:description></command:inputType></command:inputTypes><command:returnValues><command:returnValue><dev:type><maml:name>BatchAccountContext</maml:name><maml:uri></maml:uri><maml:description><maml:para /></maml:description></dev:type><maml:description><maml:para></maml:para></maml:description></command:returnValue></command:returnValues><command:terminatingErrors /><command:nonTerminatingErrors /><command:examples><command:example><maml:title>Example 1: Update the tags on an existing Batch account</maml:title><maml:introduction><maml:para></maml:para></maml:introduction><dev:code>PS C:\&gt;Set-AzureRMBatchAccount -AccountName "cmdletexample" -Tag @(@{Name = "tag1";Value = "value1"},@{Name = "tag2";Value = "value2"})
 AccountName          Location        ResourceGroupName Tags               TaskTenantUrl
 -----------          --------        ----------------- ----               -------------
 cmdletexample        westus          cmdletexamplerg   {System.Collection https://cmdletexample.westus.batch.azure.com
                                                        s.Hashtable, Syste
                                                        m.Collections.Hash
                                                        table}                        
-</dev:code><dev:remarks><maml:para>This command updates the tags on the cmdletexample account.</maml:para><maml:para /><maml:para /></dev:remarks><command:commandLines><command:commandLine><command:commandText /></command:commandLine></command:commandLines></command:example></command:examples><maml:relatedLinks><maml:navigationLink><maml:linkText>Get-AzureBatchAccount</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>New-AzureBatchAccount</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>Remove-AzureBatchAccount</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>RMAzure_Batch_Cmdlets</maml:linkText><maml:uri /></maml:navigationLink></maml:relatedLinks></command:command><command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp"><command:details><command:name>Start-AzureBatchPoolResize</command:name><maml:description><maml:para>Starts to resize a pool.</maml:para></maml:description><maml:copyright><maml:para /></maml:copyright><command:verb>Start</command:verb><command:noun>AzureBatchPoolResize</command:noun><dev:version /></command:details><maml:description><maml:para>The Start-AzureBatchPoolResize cmdlet starts an Azure Batch resize operation on a pool.</maml:para></maml:description><command:syntax><command:syntaxItem><maml:name>Start-AzureBatchPoolResize</maml:name><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue,ByPropertyName)" position="1" aliases="none"><maml:name>Id</maml:name><maml:description><maml:para>Specifies the ID of the pool that this cmdlet resizes.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">String</command:parameterValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>ComputeNodeDeallocationOption</maml:name><maml:description><maml:para>Specifies a deallocation option for the resizing operation that this cmdlet starts.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">ComputeNodeDeallocationOption</command:parameterValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>Profile</maml:name><maml:description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>ResizeTimeout</maml:name><maml:description><maml:para>Specifies a time-out period for the resizing operation. If the pool does not reach the target size by this time, the resize operation stops.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">TimeSpan</command:parameterValue></command:parameter><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none"><maml:name>BatchContext</maml:name><maml:description><maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet. </maml:para></maml:description><command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue></command:parameter><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>TargetDedicated</maml:name><maml:description><maml:para>Specifies the target number of dedicated compute nodes.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">Int32</command:parameterValue></command:parameter></command:syntaxItem></command:syntax><command:parameters><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none"><maml:name>BatchContext</maml:name><maml:description><maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet. </maml:para></maml:description><command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue><dev:type><maml:name>BatchAccountContext</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>ComputeNodeDeallocationOption</maml:name><maml:description><maml:para>Specifies a deallocation option for the resizing operation that this cmdlet starts.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">ComputeNodeDeallocationOption</command:parameterValue><dev:type><maml:name>ComputeNodeDeallocationOption</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue,ByPropertyName)" position="1" aliases="none"><maml:name>Id</maml:name><maml:description><maml:para>Specifies the ID of the pool that this cmdlet resizes.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">String</command:parameterValue><dev:type><maml:name>String</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>Profile</maml:name><maml:description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue><dev:type><maml:name>AzureProfile</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>ResizeTimeout</maml:name><maml:description><maml:para>Specifies a time-out period for the resizing operation. If the pool does not reach the target size by this time, the resize operation stops.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">TimeSpan</command:parameterValue><dev:type><maml:name>TimeSpan</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>TargetDedicated</maml:name><maml:description><maml:para>Specifies the target number of dedicated compute nodes.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">Int32</command:parameterValue><dev:type><maml:name>Int32</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter></command:parameters><command:inputTypes><command:inputType><dev:type><maml:name></maml:name><maml:uri></maml:uri><maml:description><maml:para /></maml:description></dev:type><maml:description><maml:para></maml:para></maml:description></command:inputType></command:inputTypes><command:returnValues><command:returnValue><dev:type><maml:name></maml:name><maml:uri></maml:uri><maml:description><maml:para /></maml:description></dev:type><maml:description><maml:para></maml:para></maml:description></command:returnValue></command:returnValues><command:terminatingErrors /><command:nonTerminatingErrors /><command:examples><command:example><maml:title>Example 1: Resize a pool to 12 nodes</maml:title><maml:introduction><maml:para></maml:para></maml:introduction><dev:code>PS C:\&gt;Start-AzureBatchPoolResize -Id "ContosoPool06" -TargetDedicated 12 -BatchContext $Context
-</dev:code><dev:remarks><maml:para>This command starts a resize operation on the pool that has the ID ContosoPool06. The target for the operation is 12 dedicated compute nodes. Use the Get-AzureBatchAccountKeys cmdlet to assign a context to the $Context variable. </maml:para><maml:para /><maml:para /></dev:remarks><command:commandLines><command:commandLine><command:commandText /></command:commandLine></command:commandLines></command:example><command:example><maml:title>Example 2: Resize a pool using a deallocation option</maml:title><maml:introduction><maml:para></maml:para></maml:introduction><dev:code>PS C:\&gt;Get-AzureBatchPool -Id "ContosoPool06" -BatchContext $Context | Start-AzureBatchPoolResize -TargetDedicated 5 -ResizeTimeout ([TimeSpan]::FromHours(1)) -ComputeNodeDeallocationOption ([Microsoft.Azure.Batch.Common.ComputeNodeDeallocationOption]::Terminate) -BatchContext $Context
-</dev:code><dev:remarks><maml:para>This cmdlet resizes a pool to five dedicated compute nodes. The command gets the pool that has the ID ContosoPool06 by using the Get-AzureBatchPool cmdlet. The command passes that pool object to the current cmdlet by using the pipeline operator. The command starts a resize operation on the pool. The target is five dedicated compute nodes. The command specifies time-out period of one hour. The command specifies a deallocation option of Terminate.</maml:para><maml:para /><maml:para /></dev:remarks><command:commandLines><command:commandLine><command:commandText /></command:commandLine></command:commandLines></command:example></command:examples><maml:relatedLinks><maml:navigationLink><maml:linkText>Get-AzureBatchAccountKeys</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>Get-AzureBatchPool</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>Stop-AzureBatchPoolResize</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>RMAzure_Batch_Cmdlets</maml:linkText><maml:uri /></maml:navigationLink></maml:relatedLinks></command:command><command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp"><command:details><command:name>Stop-AzureBatchPoolResize</command:name><maml:description><maml:para>Stops a pool resize operation.</maml:para></maml:description><maml:copyright><maml:para /></maml:copyright><command:verb>Stop</command:verb><command:noun>AzureBatchPoolResize</command:noun><dev:version /></command:details><maml:description><maml:para>The Stop-AzureBatchPoolResize cmdlet stops an Azure Batch resize operation on a pool.</maml:para></maml:description><command:syntax><command:syntaxItem><maml:name>Stop-AzureBatchPoolResize</maml:name><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue,ByPropertyName)" position="1" aliases="none"><maml:name>Id</maml:name><maml:description><maml:para>Specifies the ID of the pool for which this cmdlet stops a resizing operation.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">String</command:parameterValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>Profile</maml:name><maml:description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue></command:parameter><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none"><maml:name>BatchContext</maml:name><maml:description><maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue></command:parameter></command:syntaxItem></command:syntax><command:parameters><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none"><maml:name>BatchContext</maml:name><maml:description><maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureBatchAccountKeys cmdlet.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue><dev:type><maml:name>BatchAccountContext</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue,ByPropertyName)" position="1" aliases="none"><maml:name>Id</maml:name><maml:description><maml:para>Specifies the ID of the pool for which this cmdlet stops a resizing operation.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">String</command:parameterValue><dev:type><maml:name>String</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>Profile</maml:name><maml:description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue><dev:type><maml:name>AzureProfile</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter></command:parameters><command:inputTypes><command:inputType><dev:type><maml:name></maml:name><maml:uri></maml:uri><maml:description><maml:para /></maml:description></dev:type><maml:description><maml:para></maml:para></maml:description></command:inputType></command:inputTypes><command:returnValues><command:returnValue><dev:type><maml:name></maml:name><maml:uri></maml:uri><maml:description><maml:para /></maml:description></dev:type><maml:description><maml:para></maml:para></maml:description></command:returnValue></command:returnValues><command:terminatingErrors /><command:nonTerminatingErrors /><command:examples><command:example><maml:title>Example 1: Stop resizing a pool</maml:title><maml:introduction><maml:para></maml:para></maml:introduction><dev:code>PS C:\&gt;Stop-AzureBatchPoolResize -Id "ContosoPool06" -BatchContext $Context 
-</dev:code><dev:remarks><maml:para>This command stops a resize operation on the pool that has the ID ContosoPool06. Use the Get-AzureBatchAccountKeys cmdlet to assign a context to the $Context variable.</maml:para><maml:para /><maml:para /></dev:remarks><command:commandLines><command:commandLine><command:commandText /></command:commandLine></command:commandLines></command:example><command:example><maml:title>Example 2: Stop resizing a pool by using the pipeline</maml:title><maml:introduction><maml:para></maml:para></maml:introduction><dev:code>PS C:\&gt;Get-AzureBatchPool -Id "ContosoPool06" -BatchContext $Context | Stop-AzureBatchPoolResize -BatchContext $Context 
-</dev:code><dev:remarks><maml:para>This example stops resizing a pool by using the pipeline operator. The command gets the pool that has the ID ContosoPool06 by using the Get-AzureBatchPool cmdlet. The command passes that pool object to the current cmdlet. The command stops the resize operation on that pool. </maml:para><maml:para /><maml:para /></dev:remarks><command:commandLines><command:commandLine><command:commandText /></command:commandLine></command:commandLines></command:example></command:examples><maml:relatedLinks><maml:navigationLink><maml:linkText>Get-AzureBatchAccountKeys</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>Get-AzureBatchPool</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>Start-AzureBatchPoolResize</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>RMAzure_Batch_Cmdlets</maml:linkText><maml:uri /></maml:navigationLink></maml:relatedLinks></command:command>
+</dev:code><dev:remarks><maml:para>This command updates the tags on the cmdletexample account.</maml:para><maml:para /><maml:para /></dev:remarks><command:commandLines><command:commandLine><command:commandText /></command:commandLine></command:commandLines></command:example></command:examples><maml:relatedLinks><maml:navigationLink><maml:linkText>Get-AzureRMBatchAccount</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>New-AzureRMBatchAccount</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>Remove-AzureRMBatchAccount</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>RMAzure_Batch_Cmdlets</maml:linkText><maml:uri /></maml:navigationLink></maml:relatedLinks></command:command><command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp"><command:details><command:name>Start-AzureBatchPoolResize</command:name><maml:description><maml:para>Starts to resize a pool.</maml:para></maml:description><maml:copyright><maml:para /></maml:copyright><command:verb>Start</command:verb><command:noun>AzureBatchPoolResize</command:noun><dev:version /></command:details><maml:description><maml:para>The Start-AzureBatchPoolResize cmdlet starts an Azure Batch resize operation on a pool.</maml:para></maml:description><command:syntax><command:syntaxItem><maml:name>Start-AzureBatchPoolResize</maml:name><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue,ByPropertyName)" position="1" aliases="none"><maml:name>Id</maml:name><maml:description><maml:para>Specifies the ID of the pool that this cmdlet resizes.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">String</command:parameterValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>ComputeNodeDeallocationOption</maml:name><maml:description><maml:para>Specifies a deallocation option for the resizing operation that this cmdlet starts.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">ComputeNodeDeallocationOption</command:parameterValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>Profile</maml:name><maml:description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>ResizeTimeout</maml:name><maml:description><maml:para>Specifies a time-out period for the resizing operation. If the pool does not reach the target size by this time, the resize operation stops.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">TimeSpan</command:parameterValue></command:parameter><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none"><maml:name>BatchContext</maml:name><maml:description><maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet. </maml:para></maml:description><command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue></command:parameter><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>TargetDedicated</maml:name><maml:description><maml:para>Specifies the target number of dedicated compute nodes.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">Int32</command:parameterValue></command:parameter></command:syntaxItem></command:syntax><command:parameters><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none"><maml:name>BatchContext</maml:name><maml:description><maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet. </maml:para></maml:description><command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue><dev:type><maml:name>BatchAccountContext</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>ComputeNodeDeallocationOption</maml:name><maml:description><maml:para>Specifies a deallocation option for the resizing operation that this cmdlet starts.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">ComputeNodeDeallocationOption</command:parameterValue><dev:type><maml:name>ComputeNodeDeallocationOption</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue,ByPropertyName)" position="1" aliases="none"><maml:name>Id</maml:name><maml:description><maml:para>Specifies the ID of the pool that this cmdlet resizes.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">String</command:parameterValue><dev:type><maml:name>String</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>Profile</maml:name><maml:description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue><dev:type><maml:name>AzureProfile</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>ResizeTimeout</maml:name><maml:description><maml:para>Specifies a time-out period for the resizing operation. If the pool does not reach the target size by this time, the resize operation stops.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">TimeSpan</command:parameterValue><dev:type><maml:name>TimeSpan</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>TargetDedicated</maml:name><maml:description><maml:para>Specifies the target number of dedicated compute nodes.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">Int32</command:parameterValue><dev:type><maml:name>Int32</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter></command:parameters><command:inputTypes><command:inputType><dev:type><maml:name></maml:name><maml:uri></maml:uri><maml:description><maml:para /></maml:description></dev:type><maml:description><maml:para></maml:para></maml:description></command:inputType></command:inputTypes><command:returnValues><command:returnValue><dev:type><maml:name></maml:name><maml:uri></maml:uri><maml:description><maml:para /></maml:description></dev:type><maml:description><maml:para></maml:para></maml:description></command:returnValue></command:returnValues><command:terminatingErrors /><command:nonTerminatingErrors /><command:examples><command:example><maml:title>Example 1: Resize a pool to 12 nodes</maml:title><maml:introduction><maml:para></maml:para></maml:introduction><dev:code>PS C:\&gt;Start-AzureBatchPoolResize -Id "ContosoPool06" -TargetDedicated 12 -BatchContext $Context
+</dev:code><dev:remarks><maml:para>This command starts a resize operation on the pool that has the ID ContosoPool06. The target for the operation is 12 dedicated compute nodes. Use the Get-AzureRMBatchAccountKeys cmdlet to assign a context to the $Context variable. </maml:para><maml:para /><maml:para /></dev:remarks><command:commandLines><command:commandLine><command:commandText /></command:commandLine></command:commandLines></command:example><command:example><maml:title>Example 2: Resize a pool using a deallocation option</maml:title><maml:introduction><maml:para></maml:para></maml:introduction><dev:code>PS C:\&gt;Get-AzureBatchPool -Id "ContosoPool06" -BatchContext $Context | Start-AzureBatchPoolResize -TargetDedicated 5 -ResizeTimeout ([TimeSpan]::FromHours(1)) -ComputeNodeDeallocationOption ([Microsoft.Azure.Batch.Common.ComputeNodeDeallocationOption]::Terminate) -BatchContext $Context
+</dev:code><dev:remarks><maml:para>This cmdlet resizes a pool to five dedicated compute nodes. The command gets the pool that has the ID ContosoPool06 by using the Get-AzureBatchPool cmdlet. The command passes that pool object to the current cmdlet by using the pipeline operator. The command starts a resize operation on the pool. The target is five dedicated compute nodes. The command specifies time-out period of one hour. The command specifies a deallocation option of Terminate.</maml:para><maml:para /><maml:para /></dev:remarks><command:commandLines><command:commandLine><command:commandText /></command:commandLine></command:commandLines></command:example></command:examples><maml:relatedLinks><maml:navigationLink><maml:linkText>Get-AzureRMBatchAccountKeys</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>Get-AzureBatchPool</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>Stop-AzureBatchPoolResize</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>RMAzure_Batch_Cmdlets</maml:linkText><maml:uri /></maml:navigationLink></maml:relatedLinks></command:command><command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp"><command:details><command:name>Stop-AzureBatchPoolResize</command:name><maml:description><maml:para>Stops a pool resize operation.</maml:para></maml:description><maml:copyright><maml:para /></maml:copyright><command:verb>Stop</command:verb><command:noun>AzureBatchPoolResize</command:noun><dev:version /></command:details><maml:description><maml:para>The Stop-AzureBatchPoolResize cmdlet stops an Azure Batch resize operation on a pool.</maml:para></maml:description><command:syntax><command:syntaxItem><maml:name>Stop-AzureBatchPoolResize</maml:name><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue,ByPropertyName)" position="1" aliases="none"><maml:name>Id</maml:name><maml:description><maml:para>Specifies the ID of the pool for which this cmdlet stops a resizing operation.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">String</command:parameterValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>Profile</maml:name><maml:description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue></command:parameter><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none"><maml:name>BatchContext</maml:name><maml:description><maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue></command:parameter></command:syntaxItem></command:syntax><command:parameters><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue)" position="named" aliases="none"><maml:name>BatchContext</maml:name><maml:description><maml:para>Specifies the BatchAccountContext instance that this cmdlet uses to interact with the Batch service. To obtain a BatchAccountContext object that contains access keys for your subscription, use the Get-AzureRMBatchAccountKeys cmdlet.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue><dev:type><maml:name>BatchAccountContext</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByValue,ByPropertyName)" position="1" aliases="none"><maml:name>Id</maml:name><maml:description><maml:para>Specifies the ID of the pool for which this cmdlet stops a resizing operation.</maml:para></maml:description><command:parameterValue required="true" variableLength="false">String</command:parameterValue><dev:type><maml:name>String</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter><command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>Profile</maml:name><maml:description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para></maml:description><command:parameterValue required="false" variableLength="false">AzureProfile</command:parameterValue><dev:type><maml:name>AzureProfile</maml:name><maml:uri /></dev:type><dev:defaultValue>none</dev:defaultValue></command:parameter></command:parameters><command:inputTypes><command:inputType><dev:type><maml:name></maml:name><maml:uri></maml:uri><maml:description><maml:para /></maml:description></dev:type><maml:description><maml:para></maml:para></maml:description></command:inputType></command:inputTypes><command:returnValues><command:returnValue><dev:type><maml:name></maml:name><maml:uri></maml:uri><maml:description><maml:para /></maml:description></dev:type><maml:description><maml:para></maml:para></maml:description></command:returnValue></command:returnValues><command:terminatingErrors /><command:nonTerminatingErrors /><command:examples><command:example><maml:title>Example 1: Stop resizing a pool</maml:title><maml:introduction><maml:para></maml:para></maml:introduction><dev:code>PS C:\&gt;Stop-AzureBatchPoolResize -Id "ContosoPool06" -BatchContext $Context 
+</dev:code><dev:remarks><maml:para>This command stops a resize operation on the pool that has the ID ContosoPool06. Use the Get-AzureRMBatchAccountKeys cmdlet to assign a context to the $Context variable.</maml:para><maml:para /><maml:para /></dev:remarks><command:commandLines><command:commandLine><command:commandText /></command:commandLine></command:commandLines></command:example><command:example><maml:title>Example 2: Stop resizing a pool by using the pipeline</maml:title><maml:introduction><maml:para></maml:para></maml:introduction><dev:code>PS C:\&gt;Get-AzureBatchPool -Id "ContosoPool06" -BatchContext $Context | Stop-AzureBatchPoolResize -BatchContext $Context 
+</dev:code><dev:remarks><maml:para>This example stops resizing a pool by using the pipeline operator. The command gets the pool that has the ID ContosoPool06 by using the Get-AzureBatchPool cmdlet. The command passes that pool object to the current cmdlet. The command stops the resize operation on that pool. </maml:para><maml:para /><maml:para /></dev:remarks><command:commandLines><command:commandLine><command:commandText /></command:commandLine></command:commandLines></command:example></command:examples><maml:relatedLinks><maml:navigationLink><maml:linkText>Get-AzureRMBatchAccountKeys</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>Get-AzureBatchPool</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>Start-AzureBatchPoolResize</maml:linkText><maml:uri /></maml:navigationLink><maml:navigationLink><maml:linkText>RMAzure_Batch_Cmdlets</maml:linkText><maml:uri /></maml:navigationLink></maml:relatedLinks></command:command>
 
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
@@ -7117,7 +7117,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -7141,7 +7141,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
 
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
@@ -7288,7 +7288,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -7312,7 +7312,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
 
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
@@ -7455,7 +7455,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -7466,7 +7466,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
 
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
@@ -7612,7 +7612,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -7636,7 +7636,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -7654,7 +7654,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
 
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
@@ -7865,7 +7865,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -7889,7 +7889,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -7907,7 +7907,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
 
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
@@ -8118,7 +8118,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -8129,7 +8129,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
 
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
@@ -8281,7 +8281,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -8292,7 +8292,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
 
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
@@ -8431,7 +8431,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -8442,7 +8442,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
 
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
@@ -8581,7 +8581,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -8592,7 +8592,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
 
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
@@ -8738,7 +8738,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -8749,7 +8749,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
 
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
@@ -8901,7 +8901,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -8912,7 +8912,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
 
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
@@ -9058,7 +9058,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -9069,7 +9069,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
 
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
@@ -9228,7 +9228,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -9245,7 +9245,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
           <maml:name>BatchContext</maml:name>
           <maml:description>
-            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+            <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>
         </command:parameter>
@@ -9256,7 +9256,7 @@ cmdletexample        westus          cmdletexamplerg   {System.Collection https:
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="named">
         <maml:name>BatchContext</maml:name>
         <maml:description>
-          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
+          <maml:para>The BatchAccountContext instance to use when interacting with the Batch service. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated.</maml:para>
 
         </maml:description>
         <command:parameterValue required="true" variableLength="false">BatchAccountContext</command:parameterValue>

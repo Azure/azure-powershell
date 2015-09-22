@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.Sql.Properties;
 namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureSqlDatabaseServer cmdlet
+    /// Defines the Get-AzureRMSqlDatabaseServer cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRMSqlServer",
         SupportsShouldProcess = true,

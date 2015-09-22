@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8531411A-0137-4E27-9C5E-49E07C245048}"
 	ProjectSection(SolutionItems) = preProject
@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED-FD57-42A0-86C3-2CF4300A4817}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ResourceManager.Common", "Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj", "{3819D8A7-C62C-4C47-8DDD-0332D9CE1252}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ResourceManager.Common", "ResourceManager\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj", "{3819D8A7-C62C-4C47-8DDD-0332D9CE1252}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Resources", "ResourceManager\Resources\Commands.Resources\Commands.Resources.csproj", "{E1F5201D-6067-430E-B303-4E367652991B}"
 EndProject
@@ -19,17 +19,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Tags", "ResourceMa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Resources.Test", "ResourceManager\Resources\Commands.Resources.Test\Commands.Resources.Test.csproj", "{4C2FE49A-09E1-4979-AD46-CD64FD04C8F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ResourceManager.Cmdlets", "ResourceManager\ResourceManager\Commands.ResourceManager\Cmdlets\Commands.ResourceManager.Cmdlets.csproj", "{8058D403-06E3-4BED-8924-D166CE303961}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Resources.Rest", "ResourceManager\Resources\Commands.ResourceManager\Cmdlets\Commands.Resources.Rest.csproj", "{8058D403-06E3-4BED-8924-D166CE303961}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ApiManagement", "ResourceManager\ApiManagement\Commands.ApiManagement\Commands.ApiManagement.csproj", "{DC0A9742-DF36-48C9-BD2F-68D01AED6257}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ResourceManagement.Automation", "ResourceManager\Automation\Commands.Automation\Commands.ResourceManagement.Automation.csproj", "{90DEF35A-F7FF-40D0-B008-F489A4C092DB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Automation", "ResourceManager\Automation\Commands.Automation\Commands.Automation.csproj", "{90DEF35A-F7FF-40D0-B008-F489A4C092DB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.AzureBackup", "ResourceManager\AzureBackup\Commands.AzureBackup\Commands.AzureBackup.csproj", "{6C8D2337-C9D1-4F52-94B3-AB63A19F3453}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Batch", "ResourceManager\AzureBatch\Commands.Batch\Commands.Batch.csproj", "{D470E50A-9607-48D6-A924-4F9F86502704}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.UsageAggregates", "ResourceManager\Commerce\Commands.UsageAggregates\Commands.UsageAggregates.csproj", "{1A131D3A-EAC4-420C-A1C0-5490ED68EF67}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.UsageAggregates", "ResourceManager\UsageAggregates\Commands.UsageAggregates\Commands.UsageAggregates.csproj", "{1A131D3A-EAC4-420C-A1C0-5490ED68EF67}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Compute", "ResourceManager\Compute\Commands.Compute\Commands.Compute.csproj", "{52643BD5-6378-49BD-9F6E-DAC9DD8A867B}"
 EndProject
@@ -57,7 +57,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Management.Storage
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.StreamAnalytics", "ResourceManager\StreamAnalytics\Commands.StreamAnalytics\Commands.StreamAnalytics.csproj", "{F49A314A-A235-47D3-A654-1EC19ACA366C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.TrafficManager2", "ResourceManager\TrafficManager\Commands.TrafficManager2\Commands.TrafficManager2.csproj", "{270CBB5F-BB8A-4E33-B35B-95698E607D97}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.TrafficManager", "ResourceManager\TrafficManager\Commands.TrafficManager2\Commands.TrafficManager.csproj", "{270CBB5F-BB8A-4E33-B35B-95698E607D97}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Websites", "ResourceManager\Websites\Commands.Websites\Commands.Websites.csproj", "{80A92297-7C92-456B-8EE7-9FB6CE30149D}"
 EndProject
@@ -65,7 +65,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Storage", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ApiManagement.Test", "ResourceManager\ApiManagement\Commands.ApiManagement.Test\Commands.ApiManagement.Test.csproj", "{BEC9ECE9-A3D6-4B24-A682-1FA890647D9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ResourceManagement.Automation.Test", "ResourceManager\Automation\Commands.Automation.Test\Commands.ResourceManagement.Automation.Test.csproj", "{59D1B5DC-9175-43EC-90C6-CBA601B3565F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Automation.Test", "ResourceManager\Automation\Commands.Automation.Test\Commands.Automation.Test.csproj", "{59D1B5DC-9175-43EC-90C6-CBA601B3565F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.AzureBackup.Test", "ResourceManager\AzureBackup\Commands.AzureBackup.Test\Commands.AzureBackup.Test.csproj", "{678AE95D-2364-47D7-888C-3FFA6D412CC8}"
 EndProject
@@ -105,19 +105,21 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Sql.Test", "Resour
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.StreamAnalytics.Test", "ResourceManager\StreamAnalytics\Commands.StreamAnalytics.Test\Commands.StreamAnalytics.Test.csproj", "{7E6683BE-ECFF-4709-89EB-1325E9E70512}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.TrafficManager2.Test", "ResourceManager\TrafficManager\Commands.TrafficManager2.Test\Commands.TrafficManager2.Test.csproj", "{5764A3A4-586C-4536-8481-13007CAC111B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.TrafficManager.Test", "ResourceManager\TrafficManager\Commands.TrafficManager2.Test\Commands.TrafficManager.Test.csproj", "{5764A3A4-586C-4536-8481-13007CAC111B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ResourceManager.Profile", "Common\Commands.ResourceManager.Profile\Commands.ResourceManager.Profile.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile", "ResourceManager\Profile\Commands.Profile\Commands.Profile.csproj", "{142D7B0B-388A-4CEB-A228-7F6D423C5C2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ResourceManager.Profile.Test", "Common\Commands.ResourceManager.Profile.Test\Commands.ResourceManager.Profile.Test.csproj", "{152D78F0-A642-4D0E-B3A8-2FC64FFA9714}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Profile.Test", "ResourceManager\Profile\Commands.Profile.Test\Commands.Profile.Test.csproj", "{152D78F0-A642-4D0E-B3A8-2FC64FFA9714}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.UsageAggregates.Test", "ResourceManager\Commerce\Commands.UsageAggregates.Test\Commands.UsageAggregates.Test.csproj", "{F220C306-29A3-4511-8518-A58A55C60D07}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.UsageAggregates.Test", "ResourceManager\UsageAggregates\Commands.UsageAggregates.Test\Commands.UsageAggregates.Test.csproj", "{F220C306-29A3-4511-8518-A58A55C60D07}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Websites.Test", "ResourceManager\Websites\Commands.Websites.Test\Commands.Websites.Test.csproj", "{13E031E4-8A43-4B87-9D72-D70180C31C11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ScenarioTests.ResourceManager.Common", "Common\Commands.ScenarioTests.ResourceManager.Common\Commands.ScenarioTests.ResourceManager.Common.csproj", "{3436A126-EDC9-4060-8952-9A1BE34CDD95}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ScenarioTests.ResourceManager.Common", "ResourceManager\Common\Commands.ScenarioTests.ResourceManager.Common\Commands.ScenarioTests.ResourceManager.Common.csproj", "{3436A126-EDC9-4060-8952-9A1BE34CDD95}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common", "Common\Commands.Common\Commands.Common.csproj", "{5EE72C53-1720-4309-B54B-5FB79703195F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Storage", "Common\Storage\Commands.Storage\Commands.Storage.csproj", "{08CF7DA7-0392-4A19-B79B-E1FF67CDB81A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -341,6 +343,10 @@ Global
 		{5EE72C53-1720-4309-B54B-5FB79703195F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EE72C53-1720-4309-B54B-5FB79703195F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EE72C53-1720-4309-B54B-5FB79703195F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08CF7DA7-0392-4A19-B79B-E1FF67CDB81A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08CF7DA7-0392-4A19-B79B-E1FF67CDB81A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08CF7DA7-0392-4A19-B79B-E1FF67CDB81A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08CF7DA7-0392-4A19-B79B-E1FF67CDB81A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -370,6 +376,5 @@ Global
 		{F220C306-29A3-4511-8518-A58A55C60D07} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{13E031E4-8A43-4B87-9D72-D70180C31C11} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 		{3436A126-EDC9-4060-8952-9A1BE34CDD95} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
-		{5EE72C53-1720-4309-B54B-5FB79703195F} = {95C16AED-FD57-42A0-86C3-2CF4300A4817}
 	EndGlobalSection
 EndGlobal

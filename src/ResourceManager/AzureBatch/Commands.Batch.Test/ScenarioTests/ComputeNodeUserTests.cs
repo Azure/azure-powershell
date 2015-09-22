@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     }
 
     // Cmdlets that use the HTTP Recorder interceptor for use with scenario tests
-    [Cmdlet(VerbsCommon.New, "AzureRMBatchComputeNodeUser_ST")]
+    [Cmdlet(VerbsCommon.New, "AzureBatchComputeNodeUser_ST")]
     public class NewBatchComputeNodeUserScenarioTestCommand : NewBatchComputeNodeUserCommand
     {
         protected override void ProcessRecord()
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
     }
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRMBatchComputeNodeUser_ST")]
+    [Cmdlet(VerbsCommon.Remove, "AzureBatchComputeNodeUser_ST")]
     public class RemoveBatchComputeNodeUserScenarioTestCommand : RemoveBatchComputeNodeUserCommand
     {
         protected override void ProcessRecord()

@@ -720,7 +720,7 @@ test-vm         ConfigureBackup  Completed       26-Aug-15 12:19:49 PM  26-Aug-1
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>Get-AzureBackupContainer -vault $v -type Windows</dev:code>
+			<dev:code>Get-AzureRMBackupContainer -vault $v -type Windows</dev:code>
 			<dev:remarks>
 				<maml:para>Gets a list of all containers of type &quot;Windows&quot; from the specified vault.</maml:para>
 				<maml:para />
@@ -743,7 +743,7 @@ SERVER2.CONTOSO.COM          Windows            Registered</maml:para>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>Get-AzureBackupContainer -vault $v -type SCDPM -name &quot;DPMSERVER.CONTOSO.COM&quot;</dev:code>
+			<dev:code>Get-AzureRMBackupContainer -vault $v -type SCDPM -name &quot;DPMSERVER.CONTOSO.COM&quot;</dev:code>
 			<dev:remarks>
 				<maml:para>Gets the container representing a specific DPM server registered to the specified vault.</maml:para>
 				<maml:para />
@@ -2031,7 +2031,7 @@ DefaultPolicy             AzureVM            Daily              26-Aug-15 12:30:
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>Get-AzureBackupVault</dev:code>
+			<dev:code>Get-AzureRMBackupVault</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -2051,7 +2051,7 @@ DefaultPolicy             AzureVM            Daily              26-Aug-15 12:30:
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>Get-AzureBackupVault | Where-Object { $_.Region -eq &quot;westus&quot; }</dev:code>
+			<dev:code>Get-AzureRMBackupVault | Where-Object { $_.Region -eq &quot;westus&quot; }</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -2071,7 +2071,7 @@ DefaultPolicy             AzureVM            Daily              26-Aug-15 12:30:
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>Get-AzureBackupVault -Name &quot;myvault&quot;</dev:code>
+			<dev:code>Get-AzureRMBackupVault -Name &quot;myvault&quot;</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -2096,7 +2096,7 @@ Storage           : GeoRedundant</maml:para>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>Get-AzureBackupVault | Where-Object { $_.Storage –match ‘LocallyRedundant’ } | Measure-Object</dev:code>
+			<dev:code>Get-AzureRMBackupVault | Where-Object { $_.Storage –match ‘LocallyRedundant’ } | Measure-Object</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -3124,7 +3124,7 @@ RetentionTimes  :</maml:para>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
-					<maml:para>Specifies the name of an existing resource group. In order to create a resource group, use the New-AzureResourceGroup commandlet. There is no requirement that the Azure ResourceGroup and the Azure Backup vault be in the same region.</maml:para>
+					<maml:para>Specifies the name of an existing resource group. In order to create a resource group, use the New-AzureRMResourceGroup commandlet. There is no requirement that the Azure ResourceGroup and the Azure Backup vault be in the same region.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -3162,7 +3162,7 @@ RetentionTimes  :</maml:para>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="0">
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
-				<maml:para>Specifies the name of an existing resource group. In order to create a resource group, use the New-AzureResourceGroup commandlet. There is no requirement that the Azure ResourceGroup and the Azure Backup vault be in the same region.</maml:para>
+				<maml:para>Specifies the name of an existing resource group. In order to create a resource group, use the New-AzureRMResourceGroup commandlet. There is no requirement that the Azure ResourceGroup and the Azure Backup vault be in the same region.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -3306,7 +3306,7 @@ Storage           : LocallyRedundant</maml:para>
 	</command:examples>
 	<maml:relatedLinks>
 		<maml:navigationLink>
-			<maml:linkText>New-AzureResourceGroup</maml:linkText>
+			<maml:linkText>New-AzureRMResourceGroup</maml:linkText>
 			<maml:uri>https://msdn.microsoft.com/en-us/library/dn654594.aspx</maml:uri>
 		</maml:navigationLink>
 		<maml:navigationLink>
@@ -3353,7 +3353,7 @@ Storage           : LocallyRedundant</maml:para>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ServiceName</maml:name>
 				<maml:description>
-					<maml:para>The cloud service name of the Azure VM to be registered. Typically the cloud service name has a suffix &quot;.cloudapp.net&quot;. Do not include the suffix as input to this commandlet! You can use the Get-AzureVM commandlet (in the AzureServiceManagement mode) to get the VM information; the service name is the DeploymentName property in the VM object.</maml:para>
+					<maml:para>The cloud service name of the Azure VM to be registered. Typically the cloud service name has a suffix &quot;.cloudapp.net&quot;. Do not include the suffix as input to this commandlet! You can use the Get-AzureRMVM commandlet (in the AzureServiceManagement mode) to get the VM information; the service name is the DeploymentName property in the VM object.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -3420,7 +3420,7 @@ Storage           : LocallyRedundant</maml:para>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			<maml:name>ServiceName</maml:name>
 			<maml:description>
-				<maml:para>The cloud service name of the Azure VM to be registered. Typically the cloud service name has a suffix &quot;.cloudapp.net&quot;. Do not include the suffix as input to this commandlet! You can use the Get-AzureVM commandlet (in the AzureServiceManagement mode) to get the VM information; the service name is the DeploymentName property in the VM object.</maml:para>
+				<maml:para>The cloud service name of the Azure VM to be registered. Typically the cloud service name has a suffix &quot;.cloudapp.net&quot;. Do not include the suffix as input to this commandlet! You can use the Get-AzureRMVM commandlet (in the AzureServiceManagement mode) to get the VM information; the service name is the DeploymentName property in the VM object.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -3523,7 +3523,7 @@ Storage           : LocallyRedundant</maml:para>
 	</command:examples>
 	<maml:relatedLinks>
 		<maml:navigationLink>
-			<maml:linkText>Get-AzureVM</maml:linkText>
+			<maml:linkText>Get-AzureRMVM</maml:linkText>
 			<maml:uri></maml:uri>
 		</maml:navigationLink>
 	</maml:relatedLinks>
@@ -3672,8 +3672,8 @@ Storage           : LocallyRedundant</maml:para>
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>The Remove-AzureBackupVault commandlet deletes the backup vault. However, before a vault can be removed, it must first be empty – it must contain no backup data or protected items or registered servers. This ensures that a vault cannot be deleted inadvertently; the deletion of a backup vault is a planned operation.</maml:para>
-		<maml:para>Use the Remove-AzureBackupContainer commandlet to clear up IaaS VM backup data from the vault, or use the Delete-RegisteredServer commandlet to clear up other registered servers and backup data.</maml:para>
+		<maml:para>The Remove-AzureRMBackupVault commandlet deletes the backup vault. However, before a vault can be removed, it must first be empty – it must contain no backup data or protected items or registered servers. This ensures that a vault cannot be deleted inadvertently; the deletion of a backup vault is a planned operation.</maml:para>
+		<maml:para>Use the Remove-AzureRMBackupContainer commandlet to clear up IaaS VM backup data from the vault, or use the Delete-RegisteredServer commandlet to clear up other registered servers and backup data.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -3758,7 +3758,7 @@ Storage           : LocallyRedundant</maml:para>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>Get-AzureBackupVault -Name &quot;myvault&quot; | Remove-AzureBackupVault</dev:code>
+			<dev:code>Get-AzureRMBackupVault -Name &quot;myvault&quot; | Remove-AzureRMBackupVault</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -4249,7 +4249,7 @@ test-vm         Restore         InProgress      26-Aug-15 1:14:01 PM   01-Jan-01
 		<dev:version />
 	</command:details>
 	<maml:description>
-		<maml:para>The Set-AzureBackupVault commandlet allows you to change the storage type of the backup vault. The other parameters like Region, Name, and ResourceGroupName are not editable.</maml:para>
+		<maml:para>The Set-AzureRMBackupVault commandlet allows you to change the storage type of the backup vault. The other parameters like Region, Name, and ResourceGroupName are not editable.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -4353,7 +4353,7 @@ test-vm         Restore         InProgress      26-Aug-15 1:14:01 PM   01-Jan-01
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>Get-AzureBackupVault –Name “myvault” | Set-AzureBackupVault –Storage LocallyRedundant</dev:code>
+			<dev:code>Get-AzureRMBackupVault –Name “myvault” | Set-AzureRMBackupVault –Storage LocallyRedundant</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -4696,10 +4696,10 @@ PS C:\&gt; Stop-AzureRMBackupJob -Vault $v -JobID $j.InstanceId</dev:code>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>$c = Get-AzureBackupContainer -vault $v -type Windows -name &quot;server1.contoso.com&quot;
-PS C:\&gt; Unregister-AzureBackupContainer -container $c[0]</dev:code>
+			<dev:code>$c = Get-AzureRMBackupContainer -vault $v -type Windows -name &quot;server1.contoso.com&quot;
+PS C:\&gt; Unregister-AzureRMBackupContainer -container $c[0]</dev:code>
 			<dev:remarks>
-				<maml:para>The user first gets the container that needs to be unregistered using the Get-AzureBackupContainer commandlet. This container object is passed to the unregister commandlet. This unregisters the specified Windows Server from the Azure Backup vault.</maml:para>
+				<maml:para>The user first gets the container that needs to be unregistered using the Get-AzureRMBackupContainer commandlet. This container object is passed to the unregister commandlet. This unregisters the specified Windows Server from the Azure Backup vault.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para>Unregister Server
@@ -4719,7 +4719,7 @@ This operation will delete all data in the backup vault that is associated with 
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>Unregister-AzureBackupContainer -container $c –force</dev:code>
+			<dev:code>Unregister-AzureRMBackupContainer -container $c –force</dev:code>
 			<dev:remarks>
 				<maml:para>The -Force option does not ask the user for confirmation before deleting the data and unregistering the server.</maml:para>
 				<maml:para />
