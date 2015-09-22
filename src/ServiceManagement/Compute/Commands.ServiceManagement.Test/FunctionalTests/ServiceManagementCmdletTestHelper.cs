@@ -33,6 +33,7 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.Paa
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PIRCmdletInfo;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.NetworkCmdletInfo;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.SubscriptionCmdletInfo;
+using Microsoft.WindowsAzure.Commands.Storage.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Network.Models;
 using Microsoft.WindowsAzure.Storage.Blob;
@@ -176,7 +177,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
         public CopyState CheckCopyBlobStatus(string destContainer, string destBlob, bool debug = false)
         {
             List<string> st = new List<string>();
-            st.Add(string.Format("Get-AzureStorageBlobCopyState -Container {0} -Blob {1}", destContainer, destBlob));
+            st.Add(string.Format("{0}-{1} -Container {2} -Blob {3}",
+                VerbsCommon.Get, StorageNouns.CopyBlobStatus, destContainer, destBlob));
 
             WindowsAzurePowershellScript azurePowershellCmdlet = new WindowsAzurePowershellScript(st);
             return (CopyState)azurePowershellCmdlet.Run(debug)[0].BaseObject;
