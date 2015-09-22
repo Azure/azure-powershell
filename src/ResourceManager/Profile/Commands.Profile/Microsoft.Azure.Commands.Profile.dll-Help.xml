@@ -70,7 +70,7 @@
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>TenantId</maml:name>
+				<maml:name>Tenant</maml:name>
 				<maml:description>
 					<maml:para>Used when logging in as a service principal. Specifies the AAD tenant the service principal is defined in. This can be either the tenant&#39;s domain name or id.</maml:para>
 				</maml:description>
@@ -135,7 +135,7 @@
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>TenantId</maml:name>
+			<maml:name>Tenant</maml:name>
 			<maml:description>
 				<maml:para>Used when logging in as a service principal. Specifies the AAD tenant the service principal is defined in. This can be either the tenant&#39;s domain name or id.</maml:para>
 			</maml:description>
@@ -261,7 +261,7 @@
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>PS C:\&gt;$credential = Get-Credential
-          PS C:\&gt;Add-AzureAccount -Credential $credential -ServicePrincipal -TenantId &quot;3EB32C56-E1E5-46A6-9410-F4A0572B3998&quot;</dev:code>
+          PS C:\&gt;Add-AzureAccount -Credential $credential -ServicePrincipal -Tenant &quot;3EB32C56-E1E5-46A6-9410-F4A0572B3998&quot;</dev:code>
 			<dev:remarks>
 				<maml:para>This command uses the Credential parameter to provide AAD authentication information of the Service Principal in the tenant 3EB32C56-E1E5-46A6-9410-F4A0572B3998.</maml:para>
 				<maml:para />
@@ -663,7 +663,7 @@
 
           ActiveDirectoryEndpoint       :
 
-          ActiveDirectoryCommonTenantIdId :
+          ActiveDirectoryCommonTenantId :
 
           StorageEndpointSuffix         :
 
@@ -1015,8 +1015,8 @@
 			<dev:code>PS C:\&gt;Get-AzureAccount
           Name                         ActiveDirectories
           ----                         -----------------
-          contosoadmin@outlook.com     {{ ActiveDirectoryTenantIdId = abcde5cd-bcc3-441a-bd86-e6a...
-          contosotest1@outlook.com     {{ ActiveDirectoryTenantIdId = aaeabcde-386c-4466-bf70-794...</dev:code>
+          contosoadmin@outlook.com     {{ ActiveDirectoryTenantId = abcde5cd-bcc3-441a-bd86-e6a...
+          contosotest1@outlook.com     {{ ActiveDirectoryTenantId = aaeabcde-386c-4466-bf70-794...</dev:code>
 			<dev:remarks>
 				<maml:para>This command gets all accounts associated with the specified user.</maml:para>
 				<maml:para />
@@ -1039,7 +1039,7 @@
 			<dev:code>PS C:\&gt;Get-AzureAccount -Name contosoadmin@outlook.com
           Name                         ActiveDirectories
           ----                         -----------------
-          contosoadmin@outlook.com     {{ ActiveDirectoryTenantIdId = abcde5cd-bcc3-441a-bd86-e6a...</dev:code>
+          contosoadmin@outlook.com     {{ ActiveDirectoryTenantId = abcde5cd-bcc3-441a-bd86-e6a...</dev:code>
 			<dev:remarks>
 				<maml:para>This command gets the ContosoAdmin account.</maml:para>
 				<maml:para />
@@ -1231,7 +1231,7 @@
 
           ActiveDirectoryEndpoint       : https://login.windows.net/
 
-          ActiveDirectoryCommonTenantIdId : common
+          ActiveDirectoryCommonTenantId : common
 
           StorageEndpointSuffix         : core.windows.net
 
@@ -2174,9 +2174,9 @@
 				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
-				<maml:name>TenantId</maml:name>
+				<maml:name>Tenant</maml:name>
 				<maml:description>
-					<maml:para>The TenantId Id for the default subscription in this Profile.</maml:para>
+					<maml:para>The Tenant Id for the default subscription in this Profile.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -2219,9 +2219,9 @@
 				<command:parameterValue required="true" variableLength="false">PSCredential</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
-				<maml:name>TenantId</maml:name>
+				<maml:name>Tenant</maml:name>
 				<maml:description>
-					<maml:para>The TenantId Id for the default subscription in this Profile.</maml:para>
+					<maml:para>The Tenant Id for the default subscription in this Profile.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -2283,7 +2283,7 @@
      [string]: The password associated with the default subscription for the Profile.  Used to acquire an Azure Active Directory User or Service credential.</maml:para>
 					<maml:para>ServicePrincipal
      [string]: The SPN associated with the default subscription for this Profile.  Used to acquire an Azure Active Directory Service credential.</maml:para>
-					<maml:para>TenantId
+					<maml:para>Tenant
      [string]: The tenant associated with the default subscription for this Profile. Used to acquire an Azure Active Directory Service credential.</maml:para>
 					<maml:para>AccountId
      [string]: The user name associated with the default subscription for this Profile.  Used to create a credential when access token is also specified.</maml:para>
@@ -2372,9 +2372,9 @@
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
-			<maml:name>TenantId</maml:name>
+			<maml:name>Tenant</maml:name>
 			<maml:description>
-				<maml:para>The TenantId Id for the default subscription in this Profile.</maml:para>
+				<maml:para>The Tenant Id for the default subscription in this Profile.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -2433,7 +2433,7 @@
      [string]: The password associated with the default subscription for the Profile.  Used to acquire an Azure Active Directory User or Service credential.</maml:para>
 				<maml:para>ServicePrincipal
      [string]: The SPN associated with the default subscription for this Profile.  Used to acquire an Azure Active Directory Service credential.</maml:para>
-				<maml:para>TenantId
+				<maml:para>Tenant
      [string]: The tenant associated with the default subscription for this Profile. Used to acquire an Azure Active Directory Service credential.</maml:para>
 				<maml:para>AccountId
      [string]: The user name associated with the default subscription for this Profile.  Used to create a credential when access token is also specified.</maml:para>
