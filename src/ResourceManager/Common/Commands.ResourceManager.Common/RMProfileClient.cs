@@ -288,7 +288,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                             {
                                 WriteWarningMessage(string.Format(
                                     "Tenant '{0}' contains more than one subscription. First one will be selected for further use. " +
-                                    "To select another subscription, use Set-AzureRMContext.",
+                                    "To select another subscription, use Set-AzureRmContext.",
                                     tenantId));
                             }
                             subscriptionFromServer = subscriptions.First();
@@ -388,7 +388,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 catch (AadAuthenticationException)
                 {
                     WriteWarningMessage(string.Format("Could not authenticate user account {0} with tenant {1}.  " +
-                       "Subscriptions in this tenant will not be listed. Please login again using Login-AzureRMAccount " +
+                       "Subscriptions in this tenant will not be listed. Please login again using Login-AzureRmAccount " +
                        "to view the subscriptions in this tenant.", _profile.Context.Account, tenant));
                 }
 

@@ -20,7 +20,7 @@ using System.Globalization;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRMKeyVaultKey", 
+    [Cmdlet(VerbsCommon.Remove, "AzureRmKeyVaultKey", 
         SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.High, 
         HelpUri = Constants.KeyVaultHelpUri)]

@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRMSqlDatabaseReplicationLink",
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseReplicationLink",
         DefaultParameterSetName = ByDatabaseName,        
         ConfirmImpact = ConfirmImpact.None)]
     public class GetAzureSqlDatabaseReplicationLink : AzureSqlDatabaseSecondaryCmdletBase

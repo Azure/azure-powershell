@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
     /// <summary>
     /// this commandlet will let you create a new Azure App service Plan using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRMAppServicePlan"), OutputType(typeof(WebHostingPlanCreateOrUpdateResponse))]
+    [Cmdlet(VerbsCommon.New, "AzureRmAppServicePlan"), OutputType(typeof(WebHostingPlanCreateOrUpdateResponse))]
     public class NewAzureAppServicePlanCmdlet : AppServicePlanBaseCmdlet
     {
 

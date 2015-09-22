@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets
     /// <summary>
     /// this commandlet will let you get a new Azure Websites using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMWebApp")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmWebApp")]
     public class GetAzureWebAppCmdlet : WebAppBaseSlotCmdlet
     {
         protected override void ProcessRecord()

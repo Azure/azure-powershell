@@ -20,9 +20,9 @@ using Microsoft.Azure.Commands.Sql.ServiceObjective.Model;
 namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureRMSqlDatabaseServer cmdlet
+    /// Defines the Get-AzureRmSqlDatabaseServer cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMSqlServerServiceObjective", ConfirmImpact = ConfirmImpact.None)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerServiceObjective", ConfirmImpact = ConfirmImpact.None)]
     public class GetAzureSqlServerServiceObjective : AzureSqlServerServiceObjectiveCmdletBase
     {
         /// <summary>

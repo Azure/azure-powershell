@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Cmdlet to get existing resources.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMResource", DefaultParameterSetName = GetAzureResourceCmdlet.ListResourcesParameterSet), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmResource", DefaultParameterSetName = GetAzureResourceCmdlet.ListResourcesParameterSet), OutputType(typeof(PSObject))]
     public sealed class GetAzureResourceCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>

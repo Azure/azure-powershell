@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
 {
 
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRMSqlDatabaseSecondary",
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseSecondary",
         ConfirmImpact = ConfirmImpact.High)]
     public class RemoveAzureSqlDatabaseSecondary : AzureSqlDatabaseSecondaryCmdletBase
     {

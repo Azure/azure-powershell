@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// <summary>
     /// Used to initiate a failover operation.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureRMSiteRecoveryPlannedFailoverJob", DefaultParameterSetName = ASRParameterSets.ByPEObject)]
+    [Cmdlet(VerbsLifecycle.Start, "AzureRmSiteRecoveryPlannedFailoverJob", DefaultParameterSetName = ASRParameterSets.ByPEObject)]
     [OutputType(typeof(ASRJob))]
     public class StartAzureSiteRecoveryPlannedFailoverJob : SiteRecoveryCmdletBase
     {

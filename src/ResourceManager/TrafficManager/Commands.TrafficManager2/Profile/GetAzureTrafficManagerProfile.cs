@@ -20,7 +20,7 @@ using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Reso
 
 namespace Microsoft.Azure.Commands.TrafficManager
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRMTrafficManagerProfile"), OutputType(typeof(TrafficManagerProfile))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmTrafficManagerProfile"), OutputType(typeof(TrafficManagerProfile))]
     public class GetAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
     {
         [Parameter(Mandatory = false, HelpMessage = "The name of the profile.")]
