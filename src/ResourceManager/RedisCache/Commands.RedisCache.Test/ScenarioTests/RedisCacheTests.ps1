@@ -273,5 +273,5 @@ function Test-MaxMemoryPolicyErrorCheck
     $location = "North Central US"
 
     # Updating Cache
-    Assert-ThrowsContains {New-AzureRMRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -MaxMemoryPolicy AllKeysRandom} "'MaxMemoryPolicy' is deprecated. Please use 'RedisConfiguration' to set MaxMemoryPolicy"
+    Assert-ThrowsContains {New-AzureRMRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -MaxMemoryPolicy AllKeysRandom} "The 'MaxMemoryPolicy' setting has been deprecated"
 }
