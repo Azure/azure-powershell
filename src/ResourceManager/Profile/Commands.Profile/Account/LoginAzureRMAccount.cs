@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Profile
     /// <summary>
     /// Cmdlet to log into an environment and download the subscriptions
     /// </summary>
-    [Cmdlet("Login", "AzureRMAccount", DefaultParameterSetName = "User")]
+    [Cmdlet("Login", "AzureRmAccount", DefaultParameterSetName = "User")]
     [OutputType(typeof(PSAzureProfile))]
     public class LoginAzureRMAccountCommand : AzureRMCmdlet
     {

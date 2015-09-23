@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets azure automation configurations for a given account.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMAutomationDscConfiguration", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmAutomationDscConfiguration", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(DscConfiguration))]
     public class GetAzureAutomationDscConfiguration : AzureAutomationBaseCmdlet
     {

@@ -12,16 +12,16 @@ function Test_RemoveKeyWithTwoConfirmations
     Write-Host "Type 'Yes' twice"
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'remove'
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
     Assert-NotNull $key
     $global:createdKeys += $keyname
     
     $cr=$global:ConfirmPreference
     $global:ConfirmPreference="High"    
-    Remove-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname
+    Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname
     $global:ConfirmPreference=$cr
     
-    Assert-Throws { Get-AzureRMKeyVaultKey  -VaultName $keyVault -Name $keyname}    
+    Assert-Throws { Get-AzureKeyVaultKey  -VaultName $keyVault -Name $keyname}    
 }
 
 <#
@@ -33,16 +33,16 @@ function Test_RemoveKeyWithOneConfirmations
     Write-Host "Type 'Yes' once"
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'remove'
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
     Assert-NotNull $key
     $global:createdKeys += $keyname
     
     $cr=$global:ConfirmPreference   
     $global:ConfirmPreference="High"     
-    Remove-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Force
+    Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Force
     $global:ConfirmPreference=$cr
 
-    Assert-Throws { Get-AzureRMKeyVaultKey  -VaultName $keyVault -Name $keyname}    
+    Assert-Throws { Get-AzureKeyVaultKey  -VaultName $keyVault -Name $keyname}    
 }
 
 <#
@@ -54,16 +54,16 @@ function Test_CancelKeyRemovalOnce
     Write-Host "Type 'No' once"
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'remove'
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
     Assert-NotNull $key
     $global:createdKeys += $keyname
     
     $cr=$global:ConfirmPreference    
     $global:ConfirmPreference="High"    
-    Remove-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname       
+    Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname       
     $global:ConfirmPreference=$cr
 
-    $key=Get-AzureRMKeyVaultKey  -VaultName $keyVault -Name $keyname
+    $key=Get-AzureKeyVaultKey  -VaultName $keyVault -Name $keyname
     Assert-NotNull $key
 }
 
@@ -76,16 +76,16 @@ function Test_ConfirmThenCancelKeyRemoval
     Write-Host "Type 'Yes' first. Then type 'No'"
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'remove'
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
     Assert-NotNull $key
     $global:createdKeys += $keyname
     
     $cr=$global:ConfirmPreference   
     $global:ConfirmPreference="High"     
-    Remove-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname
+    Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname
     $global:ConfirmPreference=$cr
 
-    $key=Get-AzureRMKeyVaultKey  -VaultName $keyVault -Name $keyname
+    $key=Get-AzureKeyVaultKey  -VaultName $keyVault -Name $keyname
     Assert-NotNull $key
 }
 
@@ -100,16 +100,16 @@ function Test_RemoveSecretWithTwoConfirmations
     Write-Host "Type 'Yes' twice"
     $keyVault = Get-KeyVault
     $secretname= Get-SecretName 'remove'  
-    $sec=Set-AzureRMKeyVaultSecret -VaultName $keyVault -Name $secretname  -SecretValue $securedata
+    $sec=Set-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname  -SecretValue $securedata
     Assert-NotNull $sec
     $global:createdSecrets += $secretname   
        
     $cr=$global:ConfirmPreference    
     $global:ConfirmPreference="High"    
-    Remove-AzureRMKeyVaultSecret -VaultName $keyVault -Name $secretname 
+    Remove-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname 
     $global:ConfirmPreference=$cr
 
-    Assert-Throws { Get-AzureRMKeyVaultSecret -VaultName $keyVault -Name $secretname }    
+    Assert-Throws { Get-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname }    
 }
 
 <#
@@ -121,16 +121,16 @@ function Test_RemoveSecretWithOneConfirmations
     Write-Host "Type 'Yes' once"
     $keyVault = Get-KeyVault
     $secretname= Get-SecretName 'remove'  
-    $sec=Set-AzureRMKeyVaultSecret -VaultName $keyVault -Name $secretname  -SecretValue $securedata
+    $sec=Set-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname  -SecretValue $securedata
     Assert-NotNull $sec
     $global:createdSecrets += $secretname   
        
     $cr=$global:ConfirmPreference   
     $global:ConfirmPreference="High"    
-    Remove-AzureRMKeyVaultSecret -VaultName $keyVault -Name $secretname  -Force
+    Remove-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname  -Force
     $global:ConfirmPreference=$cr
 
-    Assert-Throws { Get-AzureRMKeyVaultSecret -VaultName $keyVault -Name $secretname }    
+    Assert-Throws { Get-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname }    
 }
 
 <#
@@ -142,16 +142,16 @@ function Test_CancelSecretRemovalOnce
     Write-Host "Type 'No' once"
     $keyVault = Get-KeyVault
     $secretname= Get-SecretName 'remove'  
-    $sec=Set-AzureRMKeyVaultSecret -VaultName $keyVault -Name $secretname  -SecretValue $securedata
+    $sec=Set-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname  -SecretValue $securedata
     Assert-NotNull $sec
     $global:createdSecrets += $secretname   
        
     $cr=$global:ConfirmPreference    
     $global:ConfirmPreference="High"    
-    Remove-AzureRMKeyVaultSecret -VaultName $keyVault -Name $secretname
+    Remove-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname
     $global:ConfirmPreference=$cr
 
-    $sec=Get-AzureRMKeyVaultSecret -VaultName $keyVault -Name $secretname 
+    $sec=Get-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname 
     Assert-NotNull $sec
 }
 
@@ -164,16 +164,16 @@ function Test_ConfirmThenCancelSecretRemoval
     Write-Host "Type 'Yes' first. Then type 'No'"
     $keyVault = Get-KeyVault
     $secretname= Get-SecretName 'remove'  
-    $sec=Set-AzureRMKeyVaultSecret -VaultName $keyVault -Name $secretname  -SecretValue $securedata
+    $sec=Set-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname  -SecretValue $securedata
     Assert-NotNull $sec
     $global:createdSecrets += $secretname   
        
     $cr=$global:ConfirmPreference    
     $global:ConfirmPreference="High"
-    Remove-AzureRMKeyVaultSecret -VaultName $keyVault -Name $secretname  
+    Remove-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname  
     $global:ConfirmPreference=$cr
 
-    $sec=Get-AzureRMKeyVaultSecret -VaultName $keyVault -Name $secretname 
+    $sec=Get-AzureKeyVaultSecret -VaultName $keyVault -Name $secretname 
     Assert-NotNull $sec
 }
 

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// <summary>
     /// Retrieves Azure site Recovery Job.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMSiteRecoveryJob", DefaultParameterSetName = ASRParameterSets.ByParam)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSiteRecoveryJob", DefaultParameterSetName = ASRParameterSets.ByParam)]
     [OutputType(typeof(IEnumerable<ASRJob>))]
     public class GetAzureSiteRecoveryJob : SiteRecoveryCmdletBase
     {

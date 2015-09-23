@@ -303,20 +303,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
         {
             parameters.DeploymentName = GenerateDeploymentName(parameters);
             Deployment deployment = CreateBasicDeployment(parameters, parameters.DeploymentMode);
-            TemplateValidationInfo validationInfo = CheckBasicDeploymentErrors(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
-
-            if (validationInfo.Errors.Count != 0)
-            {
-                int counter = 1;
-                string errorFormat = "Error {0}: Code={1}; Message={2}\r\n";
-                StringBuilder errorsString = new StringBuilder();
-                validationInfo.Errors.ForEach(e => errorsString.AppendFormat(errorFormat, counter++, e.Code, e.Message));
-                throw new ArgumentException(errorsString.ToString());
-            }
-            else
-            {
-                WriteVerbose(ProjectResources.TemplateValid);
-            }
 
             if (!string.IsNullOrEmpty(parameters.StorageAccountName))
             {

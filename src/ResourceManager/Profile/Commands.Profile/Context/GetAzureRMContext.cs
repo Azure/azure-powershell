@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Profile
     /// <summary>
     /// Cmdlet to get current context. 
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMContext")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmContext")]
     [OutputType(typeof(PSAzureContext))]
     public class GetAzureRMContextCommand : AzureRMCmdlet
     {

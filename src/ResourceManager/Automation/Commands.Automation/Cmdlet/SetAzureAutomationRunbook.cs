@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Sets an azure automation runbook's configuration values.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRMAutomationRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByRunbookName)]
+    [Cmdlet(VerbsCommon.Set, "AzureRmAutomationRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByRunbookName)]
     [OutputType(typeof(Runbook))]
     public class SetAzureAutomationRunbook : AzureAutomationBaseCmdlet
     {

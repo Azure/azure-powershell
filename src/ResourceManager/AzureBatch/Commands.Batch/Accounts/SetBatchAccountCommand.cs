@@ -18,7 +18,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRMBatchAccount"), OutputType(typeof(BatchAccountContext))]
+    [Cmdlet(VerbsCommon.Set, Constants.AzureRMBatchAccount), OutputType(typeof(BatchAccountContext))]
     public class SetBatchAccountCommand : BatchCmdletBase
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, 

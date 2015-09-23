@@ -21,7 +21,7 @@ using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Profile
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRMSubscription", DefaultParameterSetName = ListInTenantParameterSet), 
+    [Cmdlet(VerbsCommon.Get, "AzureRmSubscription", DefaultParameterSetName = ListInTenantParameterSet), 
         OutputType(typeof(PSAzureSubscription))]
     public class GetAzureRMSubscriptionCommand : AzureRMCmdlet
     {

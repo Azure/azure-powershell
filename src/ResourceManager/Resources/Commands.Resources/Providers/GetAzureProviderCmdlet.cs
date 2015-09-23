@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Providers
     /// <summary>
     /// Get an existing resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMResourceProvider", DefaultParameterSetName = GetAzureProviderCmdlet.ListAvailableParameterSet), OutputType(typeof(PSResourceProvider))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmResourceProvider", DefaultParameterSetName = GetAzureProviderCmdlet.ListAvailableParameterSet), OutputType(typeof(PSResourceProvider))]
     public class GetAzureProviderCmdlet : ResourcesBaseCmdlet
     {
         /// <summary>

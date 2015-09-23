@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Enable Azure Backup protection
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Enable, "AzureRMBackupProtection"), OutputType(typeof(AzureRMBackupJob))]
+    [Cmdlet(VerbsLifecycle.Enable, "AzureRmBackupProtection"), OutputType(typeof(AzureRMBackupJob))]
     public class EnableAzureRMBackupProtection : AzureRMBackupItemCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.PolicyObject)]
