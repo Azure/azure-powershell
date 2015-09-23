@@ -17,54 +17,55 @@ using System.Configuration;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Common.Authentication.Utilities;
 
-namespace Microsoft.Azure.Commands.ResourceManager.Common.Models
+namespace Microsoft.Azure.Commands.Profile.Models
 {
     /// <summary>
-    /// Azure account details.
+    /// Azure subscription details.
     /// </summary>
-    public class PSAzureAccount
+    public class PSAzureTenant
     {
         /// <summary>
-        /// Convert between implementation of Azure Account metadata
+        /// Convert between formats of AzureSubscription information.
         /// </summary>
-        /// <param name="account">The account to convert.</param>
-        /// <returns>The converted account.</returns>
-        public static implicit operator PSAzureAccount(AzureAccount account)
+        /// <param name="other">The subscription to convert.</param>
+        /// <returns>The converted subscription.</returns>
+        public static implicit operator PSAzureTenant(AzureTenant other)
         {
-            return new PSAzureAccount
+            return new PSAzureTenant
             {
-                Id = account.Id,
-                AccountType = account.Type.ToString()
+                TenantId = other.Id.ToString(),
+                Domain = other.Domain,
             };
         }
 
         /// <summary>
-        /// Convert between implementation of Azure Account metadata
+        /// Convert between formats of AzureSubscription information.
         /// </summary>
-        /// <param name="account">The account to convert.</param>
-        /// <returns>The converted account.</returns>
-        public static implicit operator AzureAccount(PSAzureAccount account)
+        /// <param name="other">The subscription to convert.</param>
+        /// <returns>The converted subscription.</returns>
+        public static implicit operator AzureTenant(PSAzureTenant other)
         {
-            return new AzureAccount
+            return new AzureTenant
             {
-                Id = account.Id,
-                Type = ((AzureAccount.AccountType)Enum.Parse(typeof(AzureAccount.AccountType), 
-                    account.AccountType, true))
+                Id = Guid.Parse(other.TenantId),
+                Domain = other.Domain
             };
         }
 
         /// <summary>
-        /// The UPN or SPN for this account.
+        /// The subscription id.
         /// </summary>
-        public string Id { get; set; }
+        public string TenantId { get; set; }
+
         /// <summary>
-        /// The type of the account
+        /// The name of the subscription.
         /// </summary>
-        public string AccountType { get; set; }
+        public string Domain { get; set; }
+
 
         public override string ToString()
         {
-            return this.Id;
+            return this.TenantId;
         }
     }
 }

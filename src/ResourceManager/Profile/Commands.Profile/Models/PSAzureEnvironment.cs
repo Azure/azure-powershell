@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Common.Authentication.Models;
 
-namespace Microsoft.Azure.Commands.ResourceManager.Common.Models
+namespace Microsoft.Azure.Commands.Profile.Models
 {
     /// <summary>
     /// Settings and endpoints for management of Azure or Azure Stack services.

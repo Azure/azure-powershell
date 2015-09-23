@@ -185,18 +185,12 @@
     <Compile Include="AccessTokenExtensions.cs" />
     <Compile Include="AzureRmCmdlet.cs" />
     <Compile Include="ModelExtensions.cs" />
-    <Compile Include="Models\PSAzureAccount.cs" />
-    <Compile Include="Models\PSAzureProfile.cs" />
-    <Compile Include="Models\PSAzureContext.cs" />
-    <Compile Include="Models\PSAzureEnvironment.cs" />
-    <Compile Include="Models\PSAzureTenant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Models\PSAzureSubscription.cs" />
     <Compile Include="RMProfileClient.cs" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
