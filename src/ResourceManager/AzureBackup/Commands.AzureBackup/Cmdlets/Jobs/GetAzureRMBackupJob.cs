@@ -133,14 +133,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     To = DateTime.UtcNow;
                 }
 
-                WriteDebug(String.Format(Resources.StartTimeFilter, System.Uri.EscapeDataString(From.Value.ToString("yyyy-MM-dd hh:mm:ss tt"))));
-                WriteDebug(String.Format(Resources.EndTimeFilter, System.Uri.EscapeDataString(To.Value.ToString("yyyy-MM-dd hh:mm:ss tt"))));
+                DateTimeFormatInfo format = new CultureInfo("en-US").DateTimeFormat;
+                WriteDebug(String.Format(Resources.StartTimeFilter, System.Uri.EscapeDataString(From.Value.ToString("yyyy-MM-dd hh:mm:ss tt", format))));
+                WriteDebug(String.Format(Resources.EndTimeFilter, System.Uri.EscapeDataString(To.Value.ToString("yyyy-MM-dd hh:mm:ss tt", format))));
                 WriteDebug(String.Format(Resources.OperationFilter, Operation));
                 WriteDebug(String.Format(Resources.StatusFilter, Status));
                 WriteDebug(String.Format(Resources.TypeFilter, Type));
                 WriteDebug(String.Format(Resources.JobIdFilter, JobId));
 
-                DateTimeFormatInfo format = new CultureInfo("en-US").DateTimeFormat;
                 Mgmt.CSMJobQueryObject queryParams = new Mgmt.CSMJobQueryObject()
                 {
 
