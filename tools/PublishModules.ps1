@@ -18,7 +18,7 @@ param(
 	[Parameter(Mandatory = $false, Position = 1)]
     [string] $apiKey,
 	[Parameter(Mandatory = $false, Position = 2)]
-    [string] $repositoryLocation
+    [string] $repository
 )
 
 if ([string]::IsNullOrEmpty($buildConfig))
@@ -29,18 +29,32 @@ if ([string]::IsNullOrEmpty($buildConfig))
 
 if ([string]::IsNullOrEmpty($repositoryLocation))
 {
-	Write-Verbose "Setting repository location to 'http://psget/PSGallery/api/v2/'"
-	$repositoryLocation = 'http://psget/PSGallery/api/v2/'
+	Write-Verbose "Setting repository location to 'https://dtlgalleryint.cloudapp.net/api/v2'"
+    
+    $repository = 'https://dtlgalleryint.cloudapp.net'
 }
+
+$repositoryLocation = '$repository/api/v2/'
+$repositoryPackageLocation = '$repository/api/v2/package'
+
 
 $packageFolder = "$PSScriptRoot\..\src\Package"
 
-$repoName = $(New-Guid).ToString()
-Register-PSRepository -Name $repoName -SourceLocation $repositoryLocation -PublishLocation $repositoryLocation -InstallationPolicy Trusted
+$repo = Get-PSRepository | where { $_.SourceLocation -eq $repositoryLocation }
+if ($repo -ne $null) {
+    $repoName = $repo.Name
+} else {
+    $repoName = $(New-Guid).ToString()
+    Register-PSRepository -Name $repoName -SourceLocation $repositoryLocation -PublishLocation $repositoryPackageLocation -InstallationPolicy Trusted
+}
 $modulePath = "$packageFolder\$buildConfig\ServiceManagement\Azure"
 # Publish Azure module
 Write-Host "Publishing Azure module from $modulePath"
-Publish-Module -Path $modulePath -NuGetApiKey $apiKey -Repository $repoName
+Publish-Module -Path $modulePath -NuGetApiKey $apiKey -Repository $repoName -Tags ("Azure", "AzureRM")
+# Publish AzureRM module
+$modulePath = "$PSScriptRoot\AzureRM"
+Write-Host "Publishing AzureRM module from $modulePath"
+Publish-Module -Path $modulePath -NuGetApiKey $apiKey -Repository $repoName -Tags ("Azure", "AzureRM")
 Write-Host "Published Azure module"
 # Publish AzureRM.Profile module
 Write-Host "Publishing AzureRM.Profile module from $modulePath"
@@ -53,8 +67,7 @@ foreach ($module in $resourceManagerModules) {
 	if ($module -ne "AzureRM.Profile") {
 		$modulePath = $module.FullName
 		Write-Host "Publishing $module module from $modulePath"
-		Publish-Module -Path $modulePath -NuGetApiKey $apiKey -Repository $repoName
+        Publish-Module -Path $modulePath -NuGetApiKey $apiKey -Repository $repoName -Tags ("Azure", "AzureRM")
 		Write-Host "Published $module module"
 	}
 }
-Unregister-PSRepository -Name $repoName

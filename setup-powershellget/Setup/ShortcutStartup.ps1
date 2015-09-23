@@ -26,11 +26,11 @@ Finalizing installation of Azure PowerShell.
 Installing Azure Modules from PowerShell Gallery. 
 This may take some time...
 "@
-		Import-Module "$env:programfiles\WindowsPowerShell\Modules\PackageManagement\1.0.0.0\PackageManagement.psd1"
+		Import-Module PackageManagement
 		
 		$result = Get-PackageProvider -Name NuGet -ForceBootstrap
 
-		Import-Module "$env:programfiles\WindowsPowerShell\Modules\PowerShellGet\PowerShellGet.psd1"
+		Import-Module PowerShellGet
 
 		$NuGetPublishingSource = $env:NuGetPublishingSource
 		if ([string]::IsNullOrWhiteSpace($NuGetPublishingSource)) {
