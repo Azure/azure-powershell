@@ -20,7 +20,8 @@ function Test-CreateElasticPool
 {
     # Setup 
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg "Japan East"
+	$serverVersion = "12.0"
+	$server = Create-ServerForTest $rg $serverVersion "Australia Southeast"
 
     try
     {
@@ -59,7 +60,8 @@ function Test-UpdateElasticPool
 {
     # Setup 
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg "Japan East"
+	$serverVersion = "12.0"
+	$server = Create-ServerForTest $rg $serverVersion "Australia Southeast"
 
     $poolName = Get-ElasticPoolName
     $ep1 = New-AzureRMSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
@@ -109,7 +111,8 @@ function Test-GetElasticPool
 {
     # Setup 
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg "Japan East"
+	$serverVersion = "12.0"
+	$server = Create-ServerForTest $rg $serverVersion "Australia Southeast"
 
     $poolName = Get-ElasticPoolName
     $ep1 = New-AzureRMSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `
@@ -128,7 +131,7 @@ function Test-GetElasticPool
             -ElasticPoolName $ep1.ElasticPoolName 
         Assert-NotNull $ep1
         Assert-AreEqual 200 $ep1.Dtu 
-        Assert-AreEqual 204800 $ep1.StorageMB
+        Assert-AreEqual 409600 $ep1.StorageMB
         Assert-AreEqual Standard $ep1.Edition
         Assert-AreEqual 10 $ep1.DatabaseDtuMin
         Assert-AreEqual 100 $ep1.DatabaseDtuMax
@@ -137,7 +140,7 @@ function Test-GetElasticPool
         $gep2 = $ep2 | Get-AzureRMSqlElasticPool
         Assert-NotNull $ep2
         Assert-AreEqual 400 $ep2.Dtu 
-        Assert-AreEqual 204800 $ep2.StorageMB
+        Assert-AreEqual 409600 $ep2.StorageMB
         Assert-AreEqual Standard $ep2.Edition
         Assert-AreEqual 0 $ep2.DatabaseDtuMin
         Assert-AreEqual 100 $ep2.DatabaseDtuMax
@@ -185,7 +188,8 @@ function Test-RemoveElasticPool
 {
     # Setup 
 	$rg = Create-ResourceGroupForTest
-	$server = Create-ServerForTest $rg "Japan East"
+	$serverVersion = "12.0"
+	$server = Create-ServerForTest $rg $serverVersion "Australia Southeast"
 
     $poolName = Get-ElasticPoolName
     $ep1 = New-AzureRMSqlElasticPool  -ServerName $server.ServerName -ResourceGroupName $rg.ResourceGroupName `

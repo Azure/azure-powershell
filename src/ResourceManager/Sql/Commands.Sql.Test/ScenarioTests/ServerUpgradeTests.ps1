@@ -149,7 +149,7 @@ function Test-ServerUpgradeNegative
 #>
 function Create-ServerForServerUpgradeTest()
 {
-    $location = "West US"
+    $location = "Australia Southeast"
     $rgName = Get-ResourceGroupName
 
     $rg = New-AzureRMResourceGroup -Name $rgName -Location $location

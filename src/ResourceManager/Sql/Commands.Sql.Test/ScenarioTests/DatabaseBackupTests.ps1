@@ -19,7 +19,7 @@
 function Test-ListDatabaseRestorePoints
 {
 	# Setup
-	$location = "Japan East"
+	$location = "Australia Southeast"
 	$serverVersion = "12.0";
 	$rg = Create-ResourceGroupForTest
 

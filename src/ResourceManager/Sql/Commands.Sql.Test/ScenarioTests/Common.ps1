@@ -164,7 +164,7 @@ function Get-ElasticPoolName
 	.SYNOPSIS
 	Creates a resource group for tests
 #>
-function Create-ResourceGroupForTest ($location = "Japan East")
+function Create-ResourceGroupForTest ($location = "Australia Southeast")
 {
 	$rgName = Get-ResourceGroupName
 	
@@ -186,7 +186,7 @@ function Remove-ResourceGroupForTest ($rg)
 	.SYNOPSIS
 	Creates the test environment needed to perform the Sql server CRUD tests
 #>
-function Create-ServerForTest ($resourceGroup, $serverVersion = "12.0", $location = "Japan East")
+function Create-ServerForTest ($resourceGroup, $serverVersion = "12.0", $location = "Australia Southeast")
 {
 	$serverName = Get-ServerName
 	$serverLogin = "testusername"
