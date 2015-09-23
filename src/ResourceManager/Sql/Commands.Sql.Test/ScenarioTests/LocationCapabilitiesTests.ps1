@@ -14,24 +14,24 @@
 
 <# 
     .SYNOPSIS
-    Tests the Get-AzureRMSqlCapability cmdlet
+    Tests the Get-AzureRmSqlCapability cmdlet
 #>
 function Test-Capabilities
 {
 	$location = "North Europe"
-	$all = Get-AzureRMSqlCapability $location
+	$all = Get-AzureRmSqlCapability $location
 	Validate-Capabilities $all
 	
-	$default = Get-AzureRMSqlCapability $location -Defaults
+	$default = Get-AzureRmSqlCapability $location -Defaults
 	Validate-Capabilities $default
 	
-	$version = Get-AzureRMSqlCapability $location -ServerVersionName "12.0"
+	$version = Get-AzureRmSqlCapability $location -ServerVersionName "12.0"
 	Validate-Capabilities $default
 	
-	$edition = Get-AzureRMSqlCapability $location -EditionName "Premium"
+	$edition = Get-AzureRmSqlCapability $location -EditionName "Premium"
 	Validate-Capabilities $default
 	
-	$so = Get-AzureRMSqlCapability $location -ServiceObjectiveName "S3"
+	$so = Get-AzureRmSqlCapability $location -ServiceObjectiveName "S3"
 	Validate-Capabilities $default
 
 }

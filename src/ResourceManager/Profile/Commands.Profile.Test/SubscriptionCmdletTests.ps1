@@ -18,18 +18,18 @@ Tests each of the major parts of retrieving subscriptions in ARM mode
 #>
 function Test-GetSubscriptionsEndToEnd
 {
-	$allSubscriptions = Get-AzureRMSubscription -All
+	$allSubscriptions = Get-AzureRmSubscription -All
 	$firstSubscription = $allSubscriptions[0]
 	$id = $firstSubscription.Id
 	$tenant = $firstSubscription.GetProperty([Microsoft.Azure.Common.Authentication.Models.AzureSubscription+Property]::Tenants)
-	$subscription = Get-AzureRMSubscription -SubscriptionId $id -Tenant $tenant
+	$subscription = Get-AzureRmSubscription -SubscriptionId $id -Tenant $tenant
 	Assert-True { $subscription -ne $null }
 	Assert-AreEqual $id $subscription.Id
-	$subscription = Get-AzureRMSubscription -SubscriptionId $id
+	$subscription = Get-AzureRmSubscription -SubscriptionId $id
 	Assert-True { $subscription -ne $null }
 	Assert-AreEqual $id $subscription.Id
-	$mostSubscriptions = Get-AzureRMSubscription
+	$mostSubscriptions = Get-AzureRmSubscription
 	Assert-True {$mostSubscriptions.Count -gt 0}
-	$tenantSubscriptions = Get-AzureRMSubscription -Tenant $tenant
+	$tenantSubscriptions = Get-AzureRmSubscription -Tenant $tenant
 	Assert-True {$tenantSubscriptions.Count -gt 0}
 }

@@ -25,7 +25,7 @@ function get_vm_config_object
     $st = Write-Verbose "Creating VM Config Object - Start";
 
     $vmname = 'vm' + $rgname;
-    $p = New-AzureRMVMConfig -VMName $vmname -VMSize $vmsize;
+    $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
 
     $st = Write-Verbose "Creating VM Config Object - End";
 
@@ -44,8 +44,8 @@ function get_created_storage_account_name
 
     $st = Write-Verbose "Creating and getting storage account for '${loc}' and '${rgname}' - '${stotype}' & '${stoname}'";
 
-    $st = New-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-    $st = Get-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname;
+    $st = New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+    $st = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname;
     
     $st = Write-Verbose "Creating and getting storage account for '${loc}' and '${rgname}' - End";
 
@@ -59,14 +59,14 @@ function create_and_setup_nic_ids
 
     $st = Write-Verbose "Creating and getting NICs for '${loc}' and '${rgname}' - Start";
 
-    $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
-    $vnet = New-AzureRMVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
-    $vnet = Get-AzureRMVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+    $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+    $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -DnsServer "10.1.1.1" -Subnet $subnet;
+    $vnet = Get-AzureRmVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
     $subnetId = $vnet.Subnets[0].Id;
     $nic_ids = @($null) * 1;
-    $nic0 = New-AzureRMNetworkInterface -Force -Name ('nic0' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId;
+    $nic0 = New-AzureRmNetworkInterface -Force -Name ('nic0' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId;
     $nic_ids[0] = $nic0.Id;
-    $vmconfig = Add-AzureRMVMNetworkInterface -VM $vmconfig -Id $nic0.Id -Primary;
+    $vmconfig = Add-AzureRmVMNetworkInterface -VM $vmconfig -Id $nic0.Id -Primary;
     $st = Write-Verbose "Creating and getting NICs for '${loc}' and '${rgname}' - End";
 
     return $nic_ids;
@@ -85,7 +85,7 @@ function create_and_setup_vm_config_object
     $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
     $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
     $computerName = "cn" + $rgname;
-    $vmconfig = Set-AzureRMVMOperatingSystem -VM $vmconfig -Windows -ComputerName $computerName -Credential $cred;
+    $vmconfig = Set-AzureRmVMOperatingSystem -VM $vmconfig -Windows -ComputerName $computerName -Credential $cred;
 
     $st = Write-Verbose "Creating and setting up the VM config object for '${loc}', '${rgname}' and '${vmsize}' - End";
 
@@ -103,11 +103,11 @@ function setup_image_and_disks
     $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
     $osDiskCaching = 'ReadWrite';
 
-    $vmconfig = Set-AzureRMVMOSDisk -VM $vmconfig -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
+    $vmconfig = Set-AzureRmVMOSDisk -VM $vmconfig -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption FromImage;
 
     # Image Reference
     $imgRef = Get-DefaultCRPImage -loc $loc;
-    $vmconfig = ($imgRef | Set-AzureRMVMSourceImage -VM $vmconfig);
+    $vmconfig = ($imgRef | Set-AzureRmVMSourceImage -VM $vmconfig);
 
     # Do not add any data disks
     $vmconfig.StorageProfile.DataDisks = $null;
@@ -131,7 +131,7 @@ function ps_vm_dynamic_test_func_3_pstestrg4410
         $st = Write-Verbose "Running Test ps_vm_dynamic_test_func_3_pstestrg4410 - Start ${rgname}, ${loc} & ${vmsize}";
 
         $st = Write-Verbose 'Running Test ps_vm_dynamic_test_func_3_pstestrg4410 - Creating Resource Group';
-        $st = New-AzureRMResourceGroup -Location $loc -Name $rgname -Force;
+        $st = New-AzureRmResourceGroup -Location $loc -Name $rgname -Force;
 
         $vmconfig = create_and_setup_vm_config_object $loc $rgname $vmsize;
 
@@ -148,15 +148,15 @@ function ps_vm_dynamic_test_func_3_pstestrg4410
         $st = Write-Verbose 'Running Test ps_vm_dynamic_test_func_3_pstestrg4410 - Creating VM';
 
         $vmname = 'vm' + $rgname;
-        $st = New-AzureRMVM -ResourceGroupName $rgname -Location $loc -VM $vmconfig;
+        $st = New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $vmconfig;
 
         # Get VM
         $st = Write-Verbose 'Running Test ps_vm_dynamic_test_func_3_pstestrg4410 - Getting VM';
-        $vm1 = Get-AzureRMVM -Name $vmname -ResourceGroupName $rgname;
+        $vm1 = Get-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
 
         # Remove
         $st = Write-Verbose 'Running Test ps_vm_dynamic_test_func_3_pstestrg4410 - Removing VM';
-        $st = Remove-AzureRMVM -Name $vmname -ResourceGroupName $rgname -Force;
+        $st = Remove-AzureRmVM -Name $vmname -ResourceGroupName $rgname -Force;
 
         $st = Write-Verbose 'Running Test ps_vm_dynamic_test_func_3_pstestrg4410 - End';
     }

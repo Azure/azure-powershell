@@ -45,60 +45,60 @@ function Test-AzureBackupEndToEnd
 	Try
 	{
 	$startTime = Get-Date -format G;
-	New-AzureRMBackupVault -ResourceGroupName $ResourceGroupName -Name $ResourceName -Region $Location;
+	New-AzureRmBackupVault -ResourceGroupName $ResourceGroupName -Name $ResourceName -Region $Location;
 	$endTime = Get-Date -format G;
-	"New-AzureRMBackupVault", "Pass", $startTime, $endTime -join "," >> $ResultTxtFile;
+	"New-AzureRmBackupVault", "Pass", $startTime, $endTime -join "," >> $ResultTxtFile;
 	}
 	Catch
 	{
 		$endTime = Get-Date -format G;
-		"New-AzureRMBackupVault", "Fail", $startTime, $endTime -join "," >> $ResultTxtFile;
+		"New-AzureRmBackupVault", "Fail", $startTime, $endTime -join "," >> $ResultTxtFile;
 		$FailFlag = 1;
-		$FailedAt = $FailedAt + ("New-AzureRMBackupVault : " + $_);
+		$FailedAt = $FailedAt + ("New-AzureRmBackupVault : " + $_);
 	}
 
 	Try
 	{
 	$startTime = Get-Date -format G;
-	$vault = Get-AzureRMBackupVault -Name $ResourceName;
+	$vault = Get-AzureRmBackupVault -Name $ResourceName;
 	$endTime = Get-Date -format G;
-	"Get-AzureRMBackupVault", "Pass", $startTime, $endTime -join "," >> $ResultTxtFile;
+	"Get-AzureRmBackupVault", "Pass", $startTime, $endTime -join "," >> $ResultTxtFile;
 	}
 	Catch
 	{
 		$endTime = Get-Date -format G;
-		"Get-AzureRMBackupVault", "Fail", $startTime, $endTime -join "," >> $ResultTxtFile;
+		"Get-AzureRmBackupVault", "Fail", $startTime, $endTime -join "," >> $ResultTxtFile;
 		$FailFlag = 1;
-		$FailedAt = $FailedAt + ("Get-AzureRMBackupVault : " + $_);
+		$FailedAt = $FailedAt + ("Get-AzureRmBackupVault : " + $_);
 	}
 
 	Try
 	{
 	$startTime = Get-Date -format G;
-	$Job = Register-AzureRMBackupContainer -Vault $vault -Name $VirtualMachineName -ServiceName $VirtualMachineName;
-	Wait-AzureRMBackupJob -Job $Job;
-	$JobDetails = Get-AzureRMBackupJobDetails -Vault $vault -JobId $Job.InstanceId;
+	$Job = Register-AzureRmBackupContainer -Vault $vault -Name $VirtualMachineName -ServiceName $VirtualMachineName;
+	Wait-AzureRmBackupJob -Job $Job;
+	$JobDetails = Get-AzureRmBackupJobDetails -Vault $vault -JobId $Job.InstanceId;
 	Assert-AreEqual $JobDetails.Status "Completed";
 	$endTime = Get-Date -format G;
-	"Register-AzureRMBackupContainer", "Pass", $startTime, $endTime -join "," >> $ResultTxtFile;
+	"Register-AzureRmBackupContainer", "Pass", $startTime, $endTime -join "," >> $ResultTxtFile;
 	}
 	Catch
 	{
 		$endTime = Get-Date -format G;
-		"Register-AzureRMBackupContainer", "Fail", $startTime, $endTime -join "," >> $ResultTxtFile;
+		"Register-AzureRmBackupContainer", "Fail", $startTime, $endTime -join "," >> $ResultTxtFile;
 		$FailFlag = 1;
-		$FailedAt = $FailedAt + ("Register-AzureRMBackupContainer : " + $_);
+		$FailedAt = $FailedAt + ("Register-AzureRmBackupContainer : " + $_);
 	}
 	
 	Try
 	{
 	$startTime = Get-Date -format G;
-	$r1 = New-AzureRMBackupRetentionPolicyObject -DailyRetention -Retention 20;
-	$r2 = New-AzureRMBackupRetentionPolicyObject -WeeklyRetention -DaysOfWeek "Monday" -Retention 10;
-	$r3 = New-AzureRMBackupRetentionPolicyObject -MonthlyRetentionInDailyFormat -DaysOfMonth "10" -Retention 10;
+	$r1 = New-AzureRmBackupRetentionPolicyObject -DailyRetention -Retention 20;
+	$r2 = New-AzureRmBackupRetentionPolicyObject -WeeklyRetention -DaysOfWeek "Monday" -Retention 10;
+	$r3 = New-AzureRmBackupRetentionPolicyObject -MonthlyRetentionInDailyFormat -DaysOfMonth "10" -Retention 10;
 	$r = ($r1, $r2, $r3);
 	$backupTime = (Get-Date("17 August 2015 15:30:00")).ToUniversalTime();
-	$protectionpolicy = New-AzureRMBackupProtectionPolicy -Vault $vault -Name $ProtectionPolicyName -Type "AzureVM" -Daily -BackupTime $backupTime -RetentionPolicy $r; 
+	$protectionpolicy = New-AzureRmBackupProtectionPolicy -Vault $vault -Name $ProtectionPolicyName -Type "AzureVM" -Daily -BackupTime $backupTime -RetentionPolicy $r; 
 
 	Assert-AreEqual $protectionpolicy.Name $ProtectionPolicyName;
 	Assert-AreEqual $protectionpolicy.Type "AzureVM";
@@ -108,20 +108,20 @@ function Test-AzureBackupEndToEnd
 	Assert-AreEqual $protectionpolicy.ResourceName $ResourceName;
 	Assert-AreEqual $protectionpolicy.Location $Location;
 	$endTime = Get-Date -format G;
-	"New-AzureRMBackupProtectionPolicy", "Pass", $startTime, $endTime -join "," >> $ResultTxtFile;
+	"New-AzureRmBackupProtectionPolicy", "Pass", $startTime, $endTime -join "," >> $ResultTxtFile;
 	}
 	Catch
 	{
 		$endTime = Get-Date -format G;
-		"New-AzureRMBackupProtectionPolicy", "Fail", $startTime, $endTime -join "," >> $ResultTxtFile;
+		"New-AzureRmBackupProtectionPolicy", "Fail", $startTime, $endTime -join "," >> $ResultTxtFile;
 		$FailFlag = 1;
-		$FailedAt = $FailedAt + ("New-AzureRMBackupProtectionPolicy : " + $_);
+		$FailedAt = $FailedAt + ("New-AzureRmBackupProtectionPolicy : " + $_);
 	}		
 
 	Try
 	{
 	$startTime = Get-Date -format G;
-	$container = Get-AzureRMBackupContainer -Vault $vault -Name $VirtualMachineName -Type "AzureVM";
+	$container = Get-AzureRmBackupContainer -Vault $vault -Name $VirtualMachineName -Type "AzureVM";
 	Assert-AreEqual $container.ContainerType "AzureVM";
 	Assert-AreEqual $container.ContainerUniqueName.Contains("iaasvmcontainer") "True";
 	Assert-AreEqual $container.ContainerUniqueName.Contains($VirtualMachineName) "True";
@@ -130,22 +130,22 @@ function Test-AzureBackupEndToEnd
 	Assert-AreEqual $container.ResourceName $ResourceName;
 	Assert-AreEqual $container.Location $Location;
 	$endTime = Get-Date -format G;
-	"Get-AzureRMBackupContainer", "Pass", $startTime, $endTime -join "," >> $ResultTxtFile;
+	"Get-AzureRmBackupContainer", "Pass", $startTime, $endTime -join "," >> $ResultTxtFile;
 	}
 	Catch
 	{
 		$endTime = Get-Date -format G;
-		"Get-AzureRMBackupContainer", "Fail", $startTime, $endTime -join "," >> $ResultTxtFile;
+		"Get-AzureRmBackupContainer", "Fail", $startTime, $endTime -join "," >> $ResultTxtFile;
 		$FailFlag = 1;
-		$FailedAt = $FailedAt + ("Get-AzureRMBackupContainer : " + $_);
+		$FailedAt = $FailedAt + ("Get-AzureRmBackupContainer : " + $_);
 	}
 
 	Try
 	{
 	$startTime = Get-Date -format G;
-	$Job = Enable-AzureRMBackupProtection -Item $container[0] -Policy $protectionpolicy[0];
-	Wait-AzureRMBackupJob -Job $Job;
-	$JobDetails = Get-AzureRMBackupJobDetails -Vault $vault -JobID $Job.InstanceId;
+	$Job = Enable-AzureRmBackupProtection -Item $container[0] -Policy $protectionpolicy[0];
+	Wait-AzureRmBackupJob -Job $Job;
+	$JobDetails = Get-AzureRmBackupJobDetails -Vault $vault -JobID $Job.InstanceId;
 	Assert-AreEqual $JobDetails.Operation "ConfigureBackup";
 	Assert-AreEqual $JobDetails.Status "Completed";
 	Assert-AreEqual $JobDetails.WorkloadName $VirtualMachineName;
@@ -155,20 +155,20 @@ function Test-AzureBackupEndToEnd
 	Assert-AreEqual $JobDetails.ResourceName $ResourceName;
 	Assert-AreEqual $JobDetails.Location $Location;
 	$endTime = Get-Date -format G;
-	"Enable-AzureRMBackupProtection", "Pass", $startTime, $endTime -join "," >> $ResultTxtFile;
+	"Enable-AzureRmBackupProtection", "Pass", $startTime, $endTime -join "," >> $ResultTxtFile;
 	}
 	Catch
 	{
 		$endTime = Get-Date -format G;
-		"Enable-AzureRMBackupProtection", "Fail", $startTime, $endTime -join "," >> $ResultTxtFile;
+		"Enable-AzureRmBackupProtection", "Fail", $startTime, $endTime -join "," >> $ResultTxtFile;
 		$FailFlag = 1;
-		$FailedAt = $FailedAt + ("Enable-AzureRMBackupProtection : " + $_);
+		$FailedAt = $FailedAt + ("Enable-AzureRmBackupProtection : " + $_);
 	}
 
 	Try
 	{
 	$startTime = Get-Date -format G;
-	$item = Get-AzureRMBackupItem -Container $container[0];
+	$item = Get-AzureRmBackupItem -Container $container[0];
 	Assert-AreEqual $item.ProtectionStatus "Protected";
 	Assert-AreEqual $item.DataSourceStatus "IRPending";
 	Assert-AreEqual $item.ProtectionPolicyName  $ProtectionPolicyName;
@@ -180,22 +180,22 @@ function Test-AzureBackupEndToEnd
 	Assert-AreEqual $item.ResourceName $ResourceName;
 	Assert-AreEqual $item.Location $Location;
 	$endTime = Get-Date -format G;
-	"Get-AzureRMBackupItem", "Pass", $startTime, $endTime -join "," >> $ResultTxtFile;
+	"Get-AzureRmBackupItem", "Pass", $startTime, $endTime -join "," >> $ResultTxtFile;
 	}
 	Catch
 	{
 		$endTime = Get-Date -format G;
-		"Get-AzureRMBackupItem", "Fail", $startTime, $endTime -join "," >> $ResultTxtFile;
+		"Get-AzureRmBackupItem", "Fail", $startTime, $endTime -join "," >> $ResultTxtFile;
 		$FailFlag = 1;
-		$FailedAt = $FailedAt + ("Get-AzureRMBackupItem : " + $_);
+		$FailedAt = $FailedAt + ("Get-AzureRmBackupItem : " + $_);
 	}
 
 	Try
 	{
 	$startTime = Get-Date -format G;
-	$Job = Backup-AzureRMBackupItem -Item $item[0];
-	Wait-AzureRMBackupJob -Job $Job;
-	$JobDetails = Get-AzureRMBackupJobDetails -Vault $vault -JobID $Job.InstanceId;
+	$Job = Backup-AzureRmBackupItem -Item $item[0];
+	Wait-AzureRmBackupJob -Job $Job;
+	$JobDetails = Get-AzureRmBackupJobDetails -Vault $vault -JobID $Job.InstanceId;
 	Assert-AreEqual $JobDetails.Operation "Backup";
 	Assert-AreEqual $JobDetails.Status "Completed";
 	Assert-NotNull $JobDetails.WorkloadType;
@@ -205,20 +205,20 @@ function Test-AzureBackupEndToEnd
 	Assert-AreEqual $JobDetails.ResourceName $ResourceName;
 	Assert-AreEqual $JobDetails.Location $Location;
 	$endTime = Get-Date -format G;
-	"Backup-AzureRMBackupItem", "Pass", $startTime, $endTime -join "," >> $ResultTxtFile;
+	"Backup-AzureRmBackupItem", "Pass", $startTime, $endTime -join "," >> $ResultTxtFile;
 	}
 	Catch
 	{
 		$endTime = Get-Date -format G;
-		"Backup-AzureRMBackupItem", "Fail", $startTime, $endTime -join "," >> $ResultTxtFile;
+		"Backup-AzureRmBackupItem", "Fail", $startTime, $endTime -join "," >> $ResultTxtFile;
 		$FailFlag = 1;
-		$FailedAt = $FailedAt + ("Backup-AzureRMBackupItem : " + $_);
+		$FailedAt = $FailedAt + ("Backup-AzureRmBackupItem : " + $_);
 	}	
 
 	Try
 	{
 	$startTime = Get-Date -format G;
-	$item = Get-AzureRMBackupItem -Container $container[0];
+	$item = Get-AzureRmBackupItem -Container $container[0];
 	Assert-AreEqual $item.ProtectionStatus "Protected";
 	Assert-AreEqual $item.DataSourceStatus "Protected";
 	Assert-AreEqual $item.ProtectionPolicyName $ProtectionPolicyName;
@@ -227,20 +227,20 @@ function Test-AzureBackupEndToEnd
 	Assert-AreEqual $item.ResourceName $ResourceName;
 	Assert-AreEqual $item.Location $Location;
 	$endTime = Get-Date -format G;
-	"Get-AzureRMBackupItemPostBackup", "Pass", $startTime, $endTime -join "," >> $ResultTxtFile;
+	"Get-AzureRmBackupItemPostBackup", "Pass", $startTime, $endTime -join "," >> $ResultTxtFile;
 	}
 	Catch
 	{
 		$endTime = Get-Date -format G;
-		"Get-AzureRMBackupItemPostBackup", "Fail", $startTime, $endTime -join "," >> $ResultTxtFile;
+		"Get-AzureRmBackupItemPostBackup", "Fail", $startTime, $endTime -join "," >> $ResultTxtFile;
 		$FailFlag = 1;
-		$FailedAt = $FailedAt + ("Get-AzureRMBackupItemPostBackup : " + $_);
+		$FailedAt = $FailedAt + ("Get-AzureRmBackupItemPostBackup : " + $_);
 	}
 
 	Try
 	{
 	$startTime = Get-Date -format G;
-	$recoveryPoints = Get-AzureRMBackupRecoveryPoint -Item $item[0];
+	$recoveryPoints = Get-AzureRmBackupRecoveryPoint -Item $item[0];
 	Assert-NotNull $recoveryPoints.RecoveryPointTime;
 	Assert-NotNull $recoveryPoints.RecoveryPointName;
 	# Assert-AreEqual $recoveryPoints.RecoveryPointType "FileSystemConsistent";
@@ -248,22 +248,22 @@ function Test-AzureBackupEndToEnd
 	Assert-AreEqual $recoveryPoints.ItemName.Contains($VirtualMachineName) "True";
 	Assert-AreEqual $recoveryPoints.ItemName.Contains("iaasvmcontainer") "True";
 	$endTime = Get-Date -format G;
-	"Get-AzureRMBackupRecoveryPoint", "Pass", $startTime, $endTime -join "," >> $ResultTxtFile;
+	"Get-AzureRmBackupRecoveryPoint", "Pass", $startTime, $endTime -join "," >> $ResultTxtFile;
 	}
 	Catch
 	{
 		$endTime = Get-Date -format G;
-		"Get-AzureRMBackupRecoveryPoint", "Fail", $startTime, $endTime -join "," >> $ResultTxtFile;
+		"Get-AzureRmBackupRecoveryPoint", "Fail", $startTime, $endTime -join "," >> $ResultTxtFile;
 		$FailFlag = 1;
-		$FailedAt = $FailedAt + ("Get-AzureRMBackupRecoveryPoint : " + $_);
+		$FailedAt = $FailedAt + ("Get-AzureRmBackupRecoveryPoint : " + $_);
 	}	
 
 	Try
 	{
 	$startTime = Get-Date -format G;
-	$Job = Restore-AzureRMBackupItem -RecoveryPoint $recoveryPoints -StorageAccountName $RestoreStorageAccount;
-	Wait-AzureRMBackupJob -Job $Job;
-	$JobDetails = Get-AzureRMBackupJobDetails -Vault $vault -JobID $Job.InstanceId;
+	$Job = Restore-AzureRmBackupItem -RecoveryPoint $recoveryPoints -StorageAccountName $RestoreStorageAccount;
+	Wait-AzureRmBackupJob -Job $Job;
+	$JobDetails = Get-AzureRmBackupJobDetails -Vault $vault -JobID $Job.InstanceId;
 	Assert-AreEqual $JobDetails.Operation "Restore";
 	Assert-AreEqual $JobDetails.Status "Completed";
 	Assert-NotNull $JobDetails.WorkloadType;
@@ -274,22 +274,22 @@ function Test-AzureBackupEndToEnd
 	Assert-AreEqual $JobDetails.ResourceName $ResourceName;
 	Assert-AreEqual $JobDetails.Location $Location;
 	$endTime = Get-Date -format G;
-	"Restore-AzureRMBackupItem", "Pass", $startTime, $endTime -join "," >> $ResultTxtFile;
+	"Restore-AzureRmBackupItem", "Pass", $startTime, $endTime -join "," >> $ResultTxtFile;
 	}
 	Catch
 	{
 		$endTime = Get-Date -format G;
-		"Restore-AzureRMBackupItem", "Fail", $startTime, $endTime -join "," >> $ResultTxtFile;
+		"Restore-AzureRmBackupItem", "Fail", $startTime, $endTime -join "," >> $ResultTxtFile;
 		$FailFlag = 1;
-		$FailedAt = $FailedAt + ("Restore-AzureRMBackupItem : " + $_);
+		$FailedAt = $FailedAt + ("Restore-AzureRmBackupItem : " + $_);
 	}	
 
 	Try
 	{
 	$startTime = Get-Date -format G;
-	$Job = Disable-AzureRMBackupProtection -RemoveRecoveryPoints -Item $item[0];
-	Wait-AzureRMBackupJob -Job $Job;
-	$JobDetails = Get-AzureRMBackupJobDetails -Vault $vault -JobID $Job.InstanceId;
+	$Job = Disable-AzureRmBackupProtection -RemoveRecoveryPoints -Item $item[0];
+	Wait-AzureRmBackupJob -Job $Job;
+	$JobDetails = Get-AzureRmBackupJobDetails -Vault $vault -JobID $Job.InstanceId;
 	Assert-AreEqual $JobDetails.Operation "Unprotect";
 	Assert-AreEqual $JobDetails.Status "Completed";
 	Assert-AreEqual $JobDetails.WorkloadName $VirtualMachineName;
@@ -299,66 +299,66 @@ function Test-AzureBackupEndToEnd
 	Assert-AreEqual $JobDetails.ResourceName $ResourceName;
 	Assert-AreEqual $JobDetails.Location $Location;
 	$endTime = Get-Date -format G;
-	"Disable-AzureRMBackupProtection", "Pass", $startTime, $endTime -join "," >> $ResultTxtFile;
+	"Disable-AzureRmBackupProtection", "Pass", $startTime, $endTime -join "," >> $ResultTxtFile;
 	}
 	Catch
 	{
 		$endTime = Get-Date -format G;
-		"Disable-AzureRMBackupProtection", "Fail", $startTime, $endTime -join "," >> $ResultTxtFile;
+		"Disable-AzureRmBackupProtection", "Fail", $startTime, $endTime -join "," >> $ResultTxtFile;
 		$FailFlag = 1;
-		$FailedAt = $FailedAt + ("Disable-AzureRMBackupProtection : " + $_);
+		$FailedAt = $FailedAt + ("Disable-AzureRmBackupProtection : " + $_);
 	}	
 
 	Try
 	{
 	$startTime = Get-Date -format G;
-	$Job = Unregister-AzureRMBackupContainer -Container $container[0];
-	Wait-AzureRMBackupJob -Job $Job;
-	$JobDetails = Get-AzureRMBackupJobDetails -Vault $vault -JobId $Job.InstanceId;
+	$Job = Unregister-AzureRmBackupContainer -Container $container[0];
+	Wait-AzureRmBackupJob -Job $Job;
+	$JobDetails = Get-AzureRmBackupJobDetails -Vault $vault -JobId $Job.InstanceId;
 	Assert-AreEqual $JobDetails.Operation "UnRegister";
 	Assert-AreEqual $JobDetails.Status "Completed";
 	Assert-AreEqual $JobDetails.WorkloadName $VirtualMachineName;
 	$endTime = Get-Date -format G;
-	"Unregister-AzureRMBackupContaine", "Pass", $startTime, $endTime -join "," >> $ResultTxtFile;
+	"Unregister-AzureRmBackupContaine", "Pass", $startTime, $endTime -join "," >> $ResultTxtFile;
 	}
 	Catch
 	{
 		$endTime = Get-Date -format G;
-		"Unregister-AzureRMBackupContaine", "Fail", $startTime, $endTime -join "," >> $ResultTxtFile;
+		"Unregister-AzureRmBackupContaine", "Fail", $startTime, $endTime -join "," >> $ResultTxtFile;
 		$FailFlag = 1;
-		$FailedAt = $FailedAt + ("Unregister-AzureRMBackupContaine : " + $_);
+		$FailedAt = $FailedAt + ("Unregister-AzureRmBackupContaine : " + $_);
 	}	
 
 	Try
 	{
 	$startTime = Get-Date -format G;
-	Remove-AzureRMBackupProtectionPolicy -ProtectionPolicy $protectionpolicy;
+	Remove-AzureRmBackupProtectionPolicy -ProtectionPolicy $protectionpolicy;
 	$endTime = Get-Date -format G;
-	"Remove-AzureRMBackupProtectionPolicy", "Pass", $startTime, $endTime -join "," >> $ResultTxtFile;
+	"Remove-AzureRmBackupProtectionPolicy", "Pass", $startTime, $endTime -join "," >> $ResultTxtFile;
 	}
 	Catch
 	{
 		$endTime = Get-Date -format G;
-		"Remove-AzureRMBackupProtectionPolicy", "Fail", $startTime, $endTime -join "," >> $ResultTxtFile;
+		"Remove-AzureRmBackupProtectionPolicy", "Fail", $startTime, $endTime -join "," >> $ResultTxtFile;
 		$FailFlag = 1;
-		$FailedAt = $FailedAt + ("Remove-AzureRMBackupProtectionPolicy : " + $_);
+		$FailedAt = $FailedAt + ("Remove-AzureRmBackupProtectionPolicy : " + $_);
 	}	
 	
 	Try
 	{
 	$startTime = Get-Date -format G;
-	Remove-AzureRMBackupVault -Vault $vault;
-	$deletedVault = Get-AzureRMBackupVault -Name $ResourceName;
+	Remove-AzureRmBackupVault -Vault $vault;
+	$deletedVault = Get-AzureRmBackupVault -Name $ResourceName;
 	Assert-Null $deletedVault;
 	$endTime = Get-Date -format G;
-	"Remove-AzureRMBackupVault", "Pass", $startTime, $endTime -join "," >> $ResultTxtFile;
+	"Remove-AzureRmBackupVault", "Pass", $startTime, $endTime -join "," >> $ResultTxtFile;
 	}
 	Catch
 	{
 		$endTime = Get-Date -format G;
-		"Remove-AzureRMBackupVault", "Fail", $startTime, $endTime -join "," >> $ResultTxtFile;
+		"Remove-AzureRmBackupVault", "Fail", $startTime, $endTime -join "," >> $ResultTxtFile;
 		$FailFlag = 1;
-		$FailedAt = $FailedAt + ("Remove-AzureRMBackupVault : " + $_);
+		$FailedAt = $FailedAt + ("Remove-AzureRmBackupVault : " + $_);
 	}	
 
 	Try

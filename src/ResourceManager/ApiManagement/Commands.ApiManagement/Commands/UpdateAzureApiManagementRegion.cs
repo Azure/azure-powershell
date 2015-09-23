@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Models;
 
-    [Cmdlet(VerbsData.Update, "AzureRMApiManagementRegion"), OutputType(typeof(PsApiManagement))]
+    [Cmdlet(VerbsData.Update, "AzureRmApiManagementRegion"), OutputType(typeof(PsApiManagement))]
     public class UpdateAzureApiManagementRegion : AzureApiManagementCmdletBase
     {
         [Parameter(

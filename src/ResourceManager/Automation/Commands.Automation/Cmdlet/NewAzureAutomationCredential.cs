@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Create a new Credential for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRMAutomationCredential", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
+    [Cmdlet(VerbsCommon.New, "AzureRmAutomationCredential", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
     [OutputType(typeof(CredentialInfo))]
     public class NewAzureAutomationCredential : AzureAutomationBaseCmdlet
     {

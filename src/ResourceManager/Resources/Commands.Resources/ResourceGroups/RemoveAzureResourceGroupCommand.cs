@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Removes a new resource group.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRMResourceGroup", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmResourceGroup", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureResourceGroupCommand : ResourcesBaseCmdlet
     {
         [Alias("ResourceGroupName")]

@@ -21,9 +21,9 @@ using Microsoft.Azure.Commands.Sql.Properties;
 namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureRMSqlServer cmdlet
+    /// Defines the Get-AzureRmSqlServer cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRMSqlServer",
+    [Cmdlet(VerbsCommon.New, "AzureRmSqlServer",
         ConfirmImpact = ConfirmImpact.Low)]
     public class NewAzureSqlServer : AzureSqlServerCmdletBase
     {
