@@ -12,23 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Storage;
-using Microsoft.Azure.Test;
-using Microsoft.Azure.Graph.RBAC;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using System;
 using System.Collections.Generic;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Common.Authentication.Models;
-
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Graph.RBAC;
+using Microsoft.Azure.Management.Authorization;
+using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Sql;
+using Microsoft.Azure.Test;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.WindowsAzure.Management.Storage;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
@@ -53,6 +54,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             var resourcesClient = GetResourcesClient();
             var authorizationClient = GetAuthorizationManagementClient();
             var graphClient = GetGraphClient();
+            HttpClientHelperFactory.Instance = new TestHttpClientHelperFactory(new CSMTestEnvironmentFactory().GetTestEnvironment().Credentials as SubscriptionCloudCredentials);
             helper.SetupSomeOfManagementClients(sqlCSMClient, storageClient, resourcesClient, authorizationClient, graphClient);
         }
 
@@ -152,6 +154,61 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             }
 
             return TestBase.GetGraphServiceClient<GraphRbacManagementClient>(testFactory, tenantId);
+        }
+
+        /// <summary>
+        /// The test http client helper factory.
+        /// </summary>
+        private class TestHttpClientHelperFactory : HttpClientHelperFactory
+        {
+            /// <summary>
+            /// The subscription cloud credentials.
+            /// </summary>
+            private readonly SubscriptionCloudCredentials credential;
+
+            /// <summary>
+            /// Initializes a new instance of the <see cref="TestHttpClientHelperFactory"/> class.
+            /// </summary>
+            /// <param name="credentials"></param>
+            public TestHttpClientHelperFactory(SubscriptionCloudCredentials credentials)
+            {
+                this.credential = credentials;
+            }
+
+            /// <summary>
+            /// Creates new instances of the <see cref="HttpClientHelper"/> class.
+            /// </summary>
+            /// <param name="credentials">The credentials.</param>
+            /// <param name="headerValues">The headers.</param>
+            public override HttpClientHelper CreateHttpClientHelper(SubscriptionCloudCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues)
+            {
+                return new HttpClientHelperImpl(credentials: this.credential, headerValues: headerValues);
+            }
+
+            /// <summary>
+            /// An implementation of the <see cref="HttpClientHelper"/> abstract class.
+            /// </summary>
+            private class HttpClientHelperImpl : HttpClientHelper
+            {
+                /// <summary>
+                /// Initializes new instances of the <see cref="HttpClientHelperImpl"/> class.
+                /// </summary>
+                /// <param name="credentials">The credentials.</param>
+                /// <param name="headerValues">The headers.</param>
+                public HttpClientHelperImpl(SubscriptionCloudCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues)
+                    : base(credentials: credentials, headerValues: headerValues)
+                {
+                }
+
+                /// <summary>
+                /// Creates an <see cref="HttpClient"/>
+                /// </summary>
+                /// <param name="primaryHandlers">The handlers that will be added to the top of the chain.</param>
+                public override HttpClient CreateHttpClient(params DelegatingHandler[] primaryHandlers)
+                {
+                    return base.CreateHttpClient(HttpMockServer.CreateInstance().AsArray().Concat(primaryHandlers).ToArray());
+                }
+            }
         }
     }
 }

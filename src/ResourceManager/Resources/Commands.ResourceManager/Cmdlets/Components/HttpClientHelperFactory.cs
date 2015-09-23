@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <summary>
         /// Gets an instance of the facotry.
         /// </summary>
-        public static HttpClientHelperFactory Instance { get; internal set; }
+        public static HttpClientHelperFactory Instance { get; set; }
 
         /// <summary>
         /// Initializes static members of the <see cref="HttpClientHelperFactory"/> class.
