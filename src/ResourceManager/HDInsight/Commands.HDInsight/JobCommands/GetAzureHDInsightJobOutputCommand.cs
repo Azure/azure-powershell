@@ -28,14 +28,8 @@ namespace Microsoft.Azure.Commands.HDInsight
     {
         #region Input Parameter Definitions
 
-        [Parameter(
-            Position = 0,
-            Mandatory = true,
-            HelpMessage = "Gets or sets the name of the resource group.")]
-        public string ResourceGroupName { get; set; }
-
         [Parameter(Mandatory = true,
-            Position = 1,
+            Position = 0,
             HelpMessage = "The name of the cluster.")]
         public string ClusterName
         {
@@ -43,28 +37,28 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { _clusterName = value; }
         }
 
-        [Parameter(Position = 2,
+        [Parameter(Position = 1,
             Mandatory = true,
             HelpMessage = "The JobID of the jobDetails to stop.")]
         public string JobId { get; set; }
 
-        [Parameter(Position = 3,
+        [Parameter(Position = 2,
             Mandatory = true,
             HelpMessage = "The default container name.")]
         public string DefaultContainer { get; set; }
 
-        [Parameter(Position = 4,
+        [Parameter(Position = 3,
             Mandatory = true, 
             HelpMessage = "The default storage account name.")]
         public string DefaultStorageAccountName { get; set; }
 
-        [Parameter(Position = 5,
+        [Parameter(Position = 4,
             Mandatory = true, 
             HelpMessage = "The default storage account key.")]
         public string DefaultStorageAccountKey { get; set; }
 
         [Parameter(Mandatory = true,
-            Position = 6,
+            Position = 5,
             HelpMessage = "The credentials with which to connect to the cluster.")]
         public PSCredential ClusterCredential
         {
@@ -82,6 +76,9 @@ namespace Microsoft.Azure.Commands.HDInsight
             }
         }
 
+        [Parameter(HelpMessage = "Gets or sets the name of the resource group.")]
+        public string ResourceGroupName { get; set; }
+
         [Parameter(HelpMessage = "The type of job output.", ParameterSetName = "Display")]
         public JobDisplayOutputType DisplayOutputType { get; set; }
 
@@ -95,6 +92,10 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         protected override void ProcessRecord()
         {
+            if (ResourceGroupName == null)
+            {
+                ResourceGroupName = GetResourceGroupByAccountName(ClusterName);
+            }
             _clusterName = GetClusterConnection(ResourceGroupName, ClusterName);
 
             if (ParameterSetName == "Display")

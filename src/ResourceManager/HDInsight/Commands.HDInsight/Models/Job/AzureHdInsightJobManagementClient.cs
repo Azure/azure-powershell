@@ -107,6 +107,19 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             return HdInsightJobManagementClient.JobManagement.SubmitMapReduceStreamingJob(streamingJobParams);
         }
 
+        public virtual JobSubmissionResponse SubmitSqoopJob(AzureHDInsightSqoopJobDefinition sqoopJobDef)
+        {
+            var sqoopJobParams = new SqoopJobSubmissionParameters
+            {
+                Command = sqoopJobDef.Command,
+                File = sqoopJobDef.File,
+                Files = ConvertListToString(sqoopJobDef.Files, "file"),
+                StatusDir = sqoopJobDef.StatusFolder,
+                UserName = HdInsightJobManagementClient.Credentials.Username
+            };
+            return HdInsightJobManagementClient.JobManagement.SubmitSqoopJob(sqoopJobParams);
+        }
+
         public virtual JobGetResponse GetJob(string jobId)
         {
             return HdInsightJobManagementClient.JobManagement.GetJob(jobId);
