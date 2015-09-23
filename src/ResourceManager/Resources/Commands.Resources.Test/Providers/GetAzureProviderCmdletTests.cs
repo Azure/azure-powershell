@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 {
                     new ProviderResourceType
                     {
-                        Locations = new[] {"West US", "East US"},
+                        Locations = new[] {"West US", "East US", "South US"},
                         Name = "TestResource2"
                     }
                 }
@@ -197,6 +197,52 @@ namespace Microsoft.Azure.Commands.Resources.Test
             this.cmdlet.ExecuteCmdlet();
 
             this.VerifyGetCallPatternAndReset();
+
+            // 4. List only registered providers with location
+            this.cmdlet.Location = "South US";
+            this.cmdlet.ListAvailable = false;
+            this.cmdlet.ProviderNamespace = null;
+
+            this.commandRuntimeMock
+                .Setup(m => m.WriteObject(It.IsAny<object>()))
+                .Callback((object obj) =>
+                {
+                    Assert.IsType<PSResourceProvider[]>(obj);
+
+                    var providers = (PSResourceProvider[])obj;
+                    Assert.Equal(0, providers.Length);
+                });
+
+            this.cmdlet.ParameterSetOverride = GetAzureProviderCmdlet.ListAvailableParameterSet;
+
+            this.cmdlet.ExecuteCmdlet();
+
+            this.VerifyListCallPatternAndReset();
+
+            // 5. List all providers
+            this.cmdlet.ListAvailable = true;
+            this.cmdlet.Location = "South US";
+            this.cmdlet.ProviderNamespace = null;
+
+            this.commandRuntimeMock
+              .Setup(m => m.WriteObject(It.IsAny<object>()))
+              .Callback((object obj) =>
+              {
+                  var providers = (PSResourceProvider[])obj;
+                  Assert.Equal(0, providers.Length);
+
+                  var provider = providers.Single();
+                  Assert.Equal(UnregisteredProviderNamespace, provider.ProviderNamespace);
+
+                  Assert.Equal(1, provider.ResourceTypes.Length);
+
+                  var resourceType = provider.ResourceTypes.Single();
+                  Assert.Equal(ResourceTypeName, resourceType.ResourceTypeName);
+              });
+
+            this.cmdlet.ExecuteCmdlet();
+
+            this.VerifyListCallPatternAndReset();
         }
 
         /// <summary>
