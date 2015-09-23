@@ -73,7 +73,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                 {
                     DisplayName = obj.DisplayName,
                     Id = new Guid(obj.ObjectId),
-                    Type = obj.ObjectType
+                    Type = obj.ObjectType,
+                    ServicePrincipalName = obj.ServicePrincipalNames.FirstOrDefault()
                 };
             }
             else
@@ -103,7 +104,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                 DisplayName = user.DisplayName,
                 Id = new Guid(user.ObjectId),
                 UserPrincipalName = user.UserPrincipalName,
-                Mail = user.SignInName
+                Mail = user.SignInName,
+                SignInName = user.SignInName
             };
         }
 
