@@ -36,6 +36,7 @@
     <SetupOutputDirectory>$(PublishDirectory)\Setup</SetupOutputDirectory>
     <TestOutputDirectory>$(PublishDirectory)\TestResults</TestOutputDirectory>
     <BuildInParallel Condition="'$(BuildInParallel)' == ''">true</BuildInParallel>
+    <NuGetPublishingSource Condition=" '$(NuGetPublishingSource)' != '' ">http://psget/PSGallery/api/v2/</NuGetPublishingSource>
   </PropertyGroup>
   <ItemGroup>
     <AzureResourceManagerSln Include=".\src\ResourceManager.sln" />
@@ -115,6 +116,7 @@
     <NuGetCommand>$(MSBuildProjectDirectory)\src\.nuget\NuGet.exe</NuGetCommand>
     <NuGetRestoreConfigFile>$(MSBuildProjectDirectory)\restore.config</NuGetRestoreConfigFile>
     <NuGetRestoreConfigSwitch>-ConfigFile &quot;$(NuGetRestoreConfigFile)&quot;</NuGetRestoreConfigSwitch>
+    <PowerShellCommand>C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</PowerShellCommand>
   </PropertyGroup>
   
   <!--
@@ -284,6 +286,14 @@
          
     <!--If we are testing locally then we copy the binaries and do not submit to the code sign server-->
     <Copy SourceFiles="@(InstallersToSign)" DestinationFolder="signed" Condition="$(DelaySign)" />
+  </Target>
+  
+  <!-- Publish all packages -->
+  <Target Name="Publish" DependsOnTargets="Build">
+    <Error Condition=" '$(NuGetKey)' == '' " Text="You must provide the NuGetKey parameter to the build: /p:NuGetKey=YOUR_PUBLISHING_KEY" />
+    <Message Importance="high" Text="Publishing Cmdlets..." />
+    
+    <Exec Command="$(PowerShellCommand) -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\PublishModules.ps1 $(Configuration) $(NuGetKey) \&quot;$(NuGetPublishingSource)\&quot;&quot;"/>
   </Target>
 
   <PropertyGroup>
