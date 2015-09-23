@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Compute
         ProfileNouns.VaultSecretGroup),
     OutputType(
         typeof(PSVirtualMachine))]
-    public class NewAzureVaultSecretGroupCommand : AzurePSCmdlet
+    public class NewAzureVaultSecretGroupCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Alias("VMProfile")]
         [Parameter(
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string CertificateUrl { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             if (this.VM.OSProfile == null)
             {

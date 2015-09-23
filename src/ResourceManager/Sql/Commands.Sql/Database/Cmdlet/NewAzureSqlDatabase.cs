@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure Sql Database
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureSqlDatabase",
+    [Cmdlet(VerbsCommon.New, "AzureRmSqlDatabase",
         ConfirmImpact = ConfirmImpact.Low)]
     public class NewAzureSqlDatabase : AzureSqlDatabaseCmdletBase
     {
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 
             // The database already exists
             throw new PSArgumentException(
-                string.Format(Resources.DatabaseNameExists, this.DatabaseName, this.ServerName),
+                string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.DatabaseNameExists, this.DatabaseName, this.ServerName),
                 "DatabaseName");
         }
 

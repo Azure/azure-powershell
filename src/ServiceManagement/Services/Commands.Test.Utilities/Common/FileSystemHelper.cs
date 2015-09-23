@@ -44,7 +44,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
         /// Gets a reference to the test class using the FileSystemHelper to
         /// provide access to its logging.
         /// </summary>
-        public TestBase TestInstance { get; private set; }
+        public SMTestBase TestInstance { get; private set; }
 
         /// <summary>
         /// Monitors changes to the file system.
@@ -93,7 +93,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
         /// <param name="testInstance">
         /// Reference to the test class (to access its logging).
         /// </param>
-        public FileSystemHelper(TestBase testInstance)
+        public FileSystemHelper(SMTestBase testInstance)
             : this(testInstance, GetTemporaryDirectoryName())
         {
         }
@@ -105,7 +105,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
         /// Reference to the test class (to access its logging).
         /// </param>
         /// <param name="rootPath">The rootPath directory.</param>
-        public FileSystemHelper(TestBase testInstance, string rootPath)
+        public FileSystemHelper(SMTestBase testInstance, string rootPath)
         {
             Debug.Assert(testInstance != null);
             Debug.Assert(!string.IsNullOrEmpty(rootPath));
@@ -288,7 +288,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
             Debug.Assert(string.IsNullOrEmpty(AzureSdkPath));
 
             AzureSdkPath = CreateDirectory("AzureSdk");
-            ProfileClient client = new ProfileClient(new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
+            ProfileClient client = new ProfileClient(new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile)));
             AzureSession.DataStore.WriteFile(publishSettingsPath, File.ReadAllText(publishSettingsPath));
             client.ImportPublishSettings(publishSettingsPath, null);
             client.Profile.Save();

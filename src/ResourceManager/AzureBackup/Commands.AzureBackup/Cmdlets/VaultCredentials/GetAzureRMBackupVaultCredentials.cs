@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Command to download an azure backup vault's credentials.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMBackupVaultCredentials"), OutputType(typeof(string))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmBackupVaultCredentials"), OutputType(typeof(string))]
     public class GetAzureRMBackupVaultCredentials : AzureBackupVaultCmdletBase
     {
         [Parameter(Position = 2, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.TargetLocation)]
@@ -39,18 +39,18 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         private const int VaultCertificateExpiryInHoursForBackup = 48;
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ExecutionBlock(() =>
             {
-                base.ExecuteCmdlet();
+                base.ProcessRecord();
 
                 if (!Directory.Exists(TargetLocation))
                 {
                     throw new ArgumentException(Resources.VaultCredPathException);
                 }
 
-                string subscriptionId = Profile.DefaultSubscription.Id.ToString();
+                string subscriptionId = DefaultContext.Subscription.Id.ToString();
                 string resourceType = "BackupVault";
                 string displayName = subscriptionId + "_" + Vault.ResourceGroupName + "_" + Vault.Name;
 

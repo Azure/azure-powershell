@@ -27,14 +27,14 @@ namespace Microsoft.Azure.Commands.Compute
     public class SetAzureSqlServerExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         /// <summary>
-        /// The specific version of the SqlServer extension that Set-AzureVMSqlServerExtension will 
+        /// The specific version of the SqlServer extension that Set-AzureRmVMSqlServerExtension will 
         /// apply the settings to. 
         /// </summary>
         [Alias("HandlerVersion")]
         [Parameter(
             Position = 1,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The version of the SqlServer extension that Set-AzureVMSqlServerExtension will apply the settings to. " +
+            HelpMessage = "The version of the SqlServer extension that Set-AzureRmVMSqlServerExtension will apply the settings to. " +
                           "Allowed format N.N")]
         [ValidateNotNullOrEmpty]
         public string Version { get; set; }
@@ -85,9 +85,9 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
             var parameters = new VirtualMachineExtension
             {

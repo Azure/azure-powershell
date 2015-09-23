@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Sets an azure automation schedule.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureAutomationSchedule", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
+    [Cmdlet(VerbsCommon.Set, "AzureRmAutomationSchedule", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
     [OutputType(typeof(Schedule))]
     public class SetAzureAutomationSchedule : AzureAutomationBaseCmdlet
     {
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void AutomationExecuteCmdlet()
+        protected override void AutomationProcessRecord()
         {
             Schedule schedule = this.AutomationClient.UpdateSchedule(
                 this.ResourceGroupName, this.AutomationAccountName, this.Name, this.IsEnabled, this.Description);

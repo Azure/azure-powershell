@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Models;
 
-    [Cmdlet(VerbsData.Import, "AzureApiManagementHostnameCertificate"), OutputType(typeof(PsApiManagementHostnameCertificate))]
+    [Cmdlet(VerbsData.Import, "AzureRmApiManagementHostnameCertificate"), OutputType(typeof(PsApiManagementHostnameCertificate))]
     public class ImportAzureApiManagementHostnameCertificate : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             HelpMessage = "Sends imported PsApiManagementHostnameCertificate to pipeline if operation succeeds.")]
         public SwitchParameter PassThru { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ExecuteCmdLetWrap(() =>
                 Client.UploadCertificate(

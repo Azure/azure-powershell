@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Resources.ProviderFeatures
     /// <summary>
     /// Gets the preview features of a certain azure resource provider.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureProviderFeature", DefaultParameterSetName = GetAzureProviderFeatureCmdlet.ListAvailableParameterSet)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmProviderFeature", DefaultParameterSetName = GetAzureProviderFeatureCmdlet.ListAvailableParameterSet)]
     [OutputType(typeof(List<PSProviderFeature>))]
     public class GetAzureProviderFeatureCmdlet : AzureProviderFeatureCmdletBase
     {
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Resources.ProviderFeatures
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "When set, lists all available features including those not registered with the current subscription.", ParameterSetName = GetAzureProviderFeatureCmdlet.ListAvailableParameterSet)]
         public SwitchParameter ListAvailable { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             var parameterSetName = this.DetermineParameterSetName();
 

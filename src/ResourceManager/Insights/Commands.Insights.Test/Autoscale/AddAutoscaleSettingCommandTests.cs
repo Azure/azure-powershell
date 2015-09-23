@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             var autoscaleProfile = new List<AutoscaleProfile> {this.CreateAutoscaleProfile(autoscaleRules: autoscaleRules, fixedDate: true)};
 
             // Testing with a complete spec as parameter (Update semantics)
-            // Add-AutoscaleSetting -SettingSpec <AutoscaleSettingResource> -ResourceGroup <String> [-DisableSetting [<SwitchParameter>]] [-AutoscaleProfiles <List[AutoscaleProfile]>] [-Profile <AzureProfile>] [<CommonParameters>]
+            // Add-AutoscaleSetting -SettingSpec <AutoscaleSettingResource> -ResourceGroup <String> [-DisableSetting [<SwitchParameter>]] [-AutoscaleProfiles <List[AutoscaleProfile]>] [-Profile <AzureSMProfile>] [<CommonParameters>]
             // Add-AutoscaleSetting -SettingSpec $spec -ResourceGroup $Utilities.ResourceGroup
             // A NOP
             cmdlet.SettingSpec = spec;
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             Assert.Equal("SettingName", this.settingName);
             Assert.NotNull(this.createOrUpdatePrms);
 
-            // Add-AutoscaleSetting -SettingSpec <AutoscaleSettingResource> -ResourceGroup <String> [-DisableSetting [<SwitchParameter>]] [-AutoscaleProfiles <List[AutoscaleProfile]>] [-Profile <AzureProfile>] [<CommonParameters>]
+            // Add-AutoscaleSetting -SettingSpec <AutoscaleSettingResource> -ResourceGroup <String> [-DisableSetting [<SwitchParameter>]] [-AutoscaleProfiles <List[AutoscaleProfile]>] [-Profile <AzureSMProfile>] [<CommonParameters>]
             // Add-AutoscaleSetting -SettingSpec $spec -ResourceGroup $Utilities.ResourceGroup -DisableSetting
             // Disable the setting
             cmdlet.DisableSetting = true;
@@ -99,12 +99,12 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             Assert.Equal("SettingName", this.settingName);
             Assert.NotNull(this.createOrUpdatePrms);
 
-            // Add-AutoscaleSetting -SettingSpec <AutoscaleSettingResource> -ResourceGroup <String> [-DisableSetting [<SwitchParameter>]] [-AutoscaleProfiles <List[AutoscaleProfile]>] [-Profile <AzureProfile>] [<CommonParameters>]
+            // Add-AutoscaleSetting -SettingSpec <AutoscaleSettingResource> -ResourceGroup <String> [-DisableSetting [<SwitchParameter>]] [-AutoscaleProfiles <List[AutoscaleProfile]>] [-Profile <AzureSMProfile>] [<CommonParameters>]
             // Adding a profile
             cmdlet.AutoscaleProfiles = autoscaleProfile;
             cmdlet.ExecuteCmdlet();
 
-            // Add-AutoscaleSetting -Location <String> -Name <String> -ResourceGroup <String> [-DisableSetting [<SwitchParameter>]] [-AutoscaleProfiles <List[AutoscaleProfile]>] -TargetResourceId <String> [-Profile <AzureProfile>] [<CommonParameters>]
+            // Add-AutoscaleSetting -Location <String> -Name <String> -ResourceGroup <String> [-DisableSetting [<SwitchParameter>]] [-AutoscaleProfiles <List[AutoscaleProfile]>] -TargetResourceId <String> [-Profile <AzureSMProfile>] [<CommonParameters>]
             cmdlet.SettingSpec = null;
             cmdlet.Name = "SettingName";
             cmdlet.Location = "East US";

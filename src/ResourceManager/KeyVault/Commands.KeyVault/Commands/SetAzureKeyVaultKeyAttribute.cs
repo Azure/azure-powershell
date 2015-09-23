@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// Update attribute of a key vault key.
     /// </summary>
     [Alias("Set-AzureKeyVaultKey")]
-    [Cmdlet(VerbsCommon.Set, "AzureKeyVaultKeyAttribute", HelpUri = Constants.KeyVaultHelpUri)]
+    [Cmdlet(VerbsCommon.Set, "AzureRmKeyVaultKeyAttribute", HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(KeyBundle))]
     public class SetAzureKeyVaultKeyAttribute : KeyVaultCmdletBase
     {
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #endregion
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             var keyBundle = DataServiceClient.UpdateKey(
                 VaultName,

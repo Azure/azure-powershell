@@ -27,7 +27,7 @@ using Moq;
 namespace Microsoft.WindowsAzure.Commands.Test.MediaServices
 {
     
-    public class NewMediaServicesAccountTests : TestBase
+    public class NewMediaServicesAccountTests : SMTestBase
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

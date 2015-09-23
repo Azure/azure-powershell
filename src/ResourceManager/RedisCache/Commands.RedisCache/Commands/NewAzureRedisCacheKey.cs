@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.RedisCache
     using Microsoft.Azure.Management.Redis.Models;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.New, "AzureRedisCacheKey"), OutputType(typeof(RedisAccessKeys))]
+    [Cmdlet(VerbsCommon.New, "AzureRmRedisCacheKey"), OutputType(typeof(RedisAccessKeys))]
     public class NewAzureRedisCacheKey : RedisCacheCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under which cache exists.")]
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.RedisCache
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             RedisKeyType keyTypeToRegenerated = RedisKeyType.Primary;
             if (KeyType.Equals("Secondary"))

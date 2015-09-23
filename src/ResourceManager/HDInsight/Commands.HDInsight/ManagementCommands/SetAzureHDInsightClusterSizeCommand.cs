@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             resizeParams = new ClusterResizeParameters();
         }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             HDInsightManagementClient.ResizeCluster(ResourceGroupName, ClusterName, resizeParams);
 
