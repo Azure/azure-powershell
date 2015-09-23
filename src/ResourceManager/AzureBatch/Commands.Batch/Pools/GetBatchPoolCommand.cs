@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Batch
             set { this.maxCount = value; }
         }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ListPoolOptions options = new ListPoolOptions(this.BatchContext, this.AdditionalBehaviors)
             {

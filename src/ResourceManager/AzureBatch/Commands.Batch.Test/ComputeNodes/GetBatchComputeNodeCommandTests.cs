@@ -26,7 +26,7 @@ using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
 {
-    public class GetBatchComputeNodeCommandTests
+    public class GetBatchComputeNodeCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
         private GetBatchComputeNodeCommand cmdlet;
         private Mock<BatchClient> batchClientMock;

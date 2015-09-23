@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             BatchClient.EnableJobSchedule(this.BatchContext, this.Id, this.AdditionalBehaviors);
         }

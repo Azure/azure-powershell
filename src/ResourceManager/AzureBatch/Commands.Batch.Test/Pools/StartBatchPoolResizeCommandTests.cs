@@ -25,7 +25,7 @@ using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Pools
 {
-    public class StartBatchPoolResizeCommandTests
+    public class StartBatchPoolResizeCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
         private StartBatchPoolResizeCommand cmdlet;
         private Mock<BatchClient> batchClientMock;

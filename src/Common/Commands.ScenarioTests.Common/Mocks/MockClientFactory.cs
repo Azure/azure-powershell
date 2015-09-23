@@ -36,6 +36,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
     {
         private readonly bool throwWhenNotAvailable;
 
+        public bool MoqClients { get; set; }
+
         public List<object> ManagementClients { get; private set; }
 
         public MockClientFactory(IEnumerable<object> clients, bool throwIfClientNotSpecified = true)
@@ -55,12 +57,12 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             return client;
         }
 
-        public TClient CreateClient<TClient>(AzureProfile profile, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
+        public TClient CreateClient<TClient>(AzureSMProfile profile, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
         {
             return CreateClient<TClient>(profile, profile.Context.Subscription, endpoint);
         }
 
-        public TClient CreateClient<TClient>(AzureProfile profile, AzureSubscription subscription, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
+        public TClient CreateClient<TClient>(AzureSMProfile profile, AzureSubscription subscription, AzureEnvironment.Endpoint endpoint) where TClient : ServiceClient<TClient>
         {
             if (subscription == null)
             {
@@ -69,7 +71,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
             if (profile == null)
             {
-                profile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+                profile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
             }
 
             SubscriptionCloudCredentials creds = new TokenCloudCredentials(subscription.Id.ToString(), "fake_token");
@@ -112,10 +114,13 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             }
             else
             {
-                // Use the WithHandler method to create an extra reference to the http client
-                // this will prevent the httpClient from being disposed in a long-running test using 
-                // the same client for multiple cmdlets
-                client = client.WithHandler(new PassThroughDelegatingHandler());
+                if (!MoqClients)
+                {
+                    // Use the WithHandler method to create an extra reference to the http client
+                    // this will prevent the httpClient from being disposed in a long-running test using 
+                    // the same client for multiple cmdlets
+                    client = client.WithHandler(new PassThroughDelegatingHandler());
+                }
             }
 
             return client;
@@ -160,7 +165,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             // Do nothing
         }
 
-
         public void AddUserAgent(string productName, string productVersion)
         {
             throw new NotImplementedException();
@@ -184,7 +188,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                 return base.SendAsync(request, cancellationToken);
             }
         }
-
 
         public TClient CreateArmClient<TClient>(AzureContext context, AzureEnvironment.Endpoint endpoint) where TClient : Rest.ServiceClient<TClient>
         {

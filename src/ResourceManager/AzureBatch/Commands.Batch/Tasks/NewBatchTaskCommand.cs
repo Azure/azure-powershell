@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSTaskConstraints Constraints { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             NewTaskParameters parameters = new NewTaskParameters(this.BatchContext, this.JobId, this.Job, 
                 this.Id, this.AdditionalBehaviors)

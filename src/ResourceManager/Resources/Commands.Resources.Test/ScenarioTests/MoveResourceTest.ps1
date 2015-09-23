@@ -27,21 +27,21 @@ function Test-MoveAzureResource
     $providerNamespace = "Providers.Test"
     $resourceType = $providerNamespace + "/statefulResources"
 
-    Register-AzureProvider -ProviderNamespace $providerNamespace -Force
-    New-AzureResourceGroup -Name $sourceResourceGroupName -Location $location -Force
-    New-AzureResourceGroup -Name $destinationResourceGroupName -Location $location -Force
-    $resource1 = New-AzureResource -Name $testResourceName1 -Location $location -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $sourceResourceGroupName -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -ApiVersion $apiversion -Force
-    $resource2 = New-AzureResource -Name $testResourceName2 -Location $location -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $sourceResourceGroupName -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -ApiVersion $apiversion -Force
+    Register-AzureRMResourceProvider -ProviderNamespace $providerNamespace -Force
+    New-AzureRMResourceGroup -Name $sourceResourceGroupName -Location $location -Force
+    New-AzureRMResourceGroup -Name $destinationResourceGroupName -Location $location -Force
+    $resource1 = New-AzureRMResource -Name $testResourceName1 -Location $location -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $sourceResourceGroupName -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -ApiVersion $apiversion -Force
+    $resource2 = New-AzureRMResource -Name $testResourceName2 -Location $location -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $sourceResourceGroupName -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -ApiVersion $apiversion -Force
 
-    Get-AzureResource -ResourceGroupName $sourceResourceGroupName | Move-AzureResource -DestinationResourceGroupName $destinationResourceGroupName -Force
+    Get-AzureRMResource -ResourceGroupName $sourceResourceGroupName | Move-AzureRMResource -DestinationResourceGroupName $destinationResourceGroupName -Force
 
     $endTime = [DateTime]::UtcNow.AddMinutes(10)
 
-    while ([DateTime]::UtcNow -lt $endTime -and (@(Get-AzureResource -ResourceGroupName $sourceResourceGroupName).Length -gt 0))
+    while ([DateTime]::UtcNow -lt $endTime -and (@(Get-AzureRMResource -ResourceGroupName $sourceResourceGroupName).Length -gt 0))
     {
 		[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(1000)
     }
 
-    Assert-True { @(Get-AzureResource -ResourceGroupName $sourceResourceGroupName).Length -eq 0 }
-    Assert-True { @(Get-AzureResource -ResourceGroupName $destinationResourceGroupName).Length -eq 2 }
+    Assert-True { @(Get-AzureRMResource -ResourceGroupName $sourceResourceGroupName).Length -eq 0 }
+    Assert-True { @(Get-AzureRMResource -ResourceGroupName $destinationResourceGroupName).Length -eq 2 }
 }

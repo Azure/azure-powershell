@@ -24,23 +24,23 @@ function Test-Table
     $rglocation = Get-ProviderLocation ResourceManagement
     $dflocation = Get-ProviderLocation DataFactoryManagement
         
-    New-AzureResourceGroup -Name $rgname -Location $rglocation -Force
+    New-AzureRMResourceGroup -Name $rgname -Location $rglocation -Force
 
     try
     {
-        New-AzureDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+        New-AzureRMDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
      
-        New-AzureDataFactoryLinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService.json -Force
+        New-AzureRMDataFactoryLinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService.json -Force
    
         $datasetname = "foo2"
-        $actual = New-AzureDataFactoryDataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -File .\Resources\dataset.json -Force
-        $expected = Get-AzureDataFactoryDataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname
+        $actual = New-AzureRMDataFactoryDataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -File .\Resources\dataset.json -Force
+        $expected = Get-AzureRMDataFactoryDataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname
 
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
         Assert-AreEqual $expected.DataFactoryName $actual.DataFactoryName
         Assert-AreEqual $expected.DatasetName $actual.DatasetName
 
-        Remove-AzureDataFactoryDataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -Force
+        Remove-AzureRMDataFactoryDataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -Force
     }
     finally
     {
@@ -61,23 +61,23 @@ function Test-TableWithDataFactoryParameter
     $rglocation = Get-ProviderLocation ResourceManagement
     $dflocation = Get-ProviderLocation DataFactoryManagement
         
-    New-AzureResourceGroup -Name $rgname -Location $rglocation -Force
+    New-AzureRMResourceGroup -Name $rgname -Location $rglocation -Force
 
     try
     {
-        $df = New-AzureDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+        $df = New-AzureRMDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
      
-        New-AzureDataFactoryLinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService.json -Force
+        New-AzureRMDataFactoryLinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService.json -Force
    
         $datasetname = "foo2"
-        $actual = New-AzureDataFactoryDataset -DataFactory $df -Name $datasetname -File .\Resources\dataset.json -Force
-        $expected = Get-AzureDataFactoryDataset -DataFactory $df -Name $datasetname
+        $actual = New-AzureRMDataFactoryDataset -DataFactory $df -Name $datasetname -File .\Resources\dataset.json -Force
+        $expected = Get-AzureRMDataFactoryDataset -DataFactory $df -Name $datasetname
 
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
         Assert-AreEqual $expected.DataFactoryName $actual.DataFactoryName
         Assert-AreEqual $expected.DatasetName $actual.DatasetName
 
-        Remove-AzureDataFactoryDataset -DataFactory $df -Name $datasetname -Force
+        Remove-AzureRMDataFactoryDataset -DataFactory $df -Name $datasetname -Force
     }
     finally
     {
@@ -96,22 +96,22 @@ function Test-TablePiping
     $rglocation = Get-ProviderLocation ResourceManagement
     $dflocation = Get-ProviderLocation DataFactoryManagement
         
-    New-AzureResourceGroup -Name $rgname -Location $rglocation -Force
+    New-AzureRMResourceGroup -Name $rgname -Location $rglocation -Force
 
     try
     {
-        New-AzureDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+        New-AzureRMDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
      
-        New-AzureDataFactoryLinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService.json -Force
+        New-AzureRMDataFactoryLinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -File .\Resources\linkedService.json -Force
    
         $datasetname = "foo2"
-        New-AzureDataFactoryDataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -File .\Resources\dataset.json -Force
+        New-AzureRMDataFactoryDataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname -File .\Resources\dataset.json -Force
         
-        Get-AzureDataFactoryDataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname | Remove-AzureDataFactoryDataset -Force
+        Get-AzureRMDataFactoryDataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname | Remove-AzureRMDataFactoryDataset -Force
 
         # Test the dataset no longer exists
 		# TODO bgold09: change expected error message to "DatasetNotFound" after service error messages have been updated
-        Assert-ThrowsContains { Get-AzureDataFactoryDataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname } "TableNotFound"
+        Assert-ThrowsContains { Get-AzureRMDataFactoryDataset -ResourceGroupName $rgname -DataFactoryName $dfname -Name $datasetname } "TableNotFound"
     }
     finally
     {

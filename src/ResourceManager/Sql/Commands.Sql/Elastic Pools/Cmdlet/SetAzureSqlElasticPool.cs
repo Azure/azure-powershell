@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure Sql Database ElasticPool
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureSqlElasticPool",
+    [Cmdlet(VerbsCommon.Set, "AzureRMSqlElasticPool",
         ConfirmImpact = ConfirmImpact.Medium)]
     public class SetAzureSqlElasticPool : AzureSqlElasticPoolCmdletBase
     {
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The storage limit for the Sql Azure Elastic Pool in MB.")]
         [ValidateNotNullOrEmpty]
-        public long StorageMB { get; set; }
+        public int StorageMB { get; set; }
 
         /// <summary>
         /// Gets or sets the minimum DTU all Sql Azure Databases are guaranteed.
