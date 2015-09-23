@@ -80,5 +80,5 @@ function Test-DisableAzureBackupProtection
 	$azureBackUpItem.Type = $DataSourceType
 	$azureBackUpItem.ItemName = $itemName
 	$azureBackUpItem.Name = $POName
-	$jobId1 = Disable-AzureRMBackupProtection -Item $azureBackUpItem
+	$jobId1 = Disable-AzureRMBackupProtection -Item $azureBackUpItem -Force
 }
