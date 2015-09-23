@@ -83,7 +83,7 @@ function Test-UpdatesExistingResourceGroupViaPiping
 
     try
     {
-        New-AzureResourceGroup -Name $rgname -Location $location
+        New-AzureRMResourceGroup -Name $rgname -Location $location
         $new = Get-AzureRMResourceGroup -Name $rgname
         $actual = $new | Set-AzureRMResourceGroup -Tags @{Name = "testtag"; Value = "testval"}
         $expected = Get-AzureRMResourceGroup -Name $rgname
