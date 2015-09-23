@@ -20,30 +20,30 @@ namespace Microsoft.Azure.Commands.DataFactories
     {
         public static readonly TimeSpan DefaultSliceActivePeriodDuration = TimeSpan.FromHours(48);
 
-        public const string DataFactory = "AzureRMDataFactory";
+        public const string DataFactory = "AzureRmDataFactory";
 
-        public const string LinkedService = "AzureRMDataFactoryLinkedService";
+        public const string LinkedService = "AzureRmDataFactoryLinkedService";
 
-        public const string Gateway = "AzureRMDataFactoryGateway";
+        public const string Gateway = "AzureRmDataFactoryGateway";
 
-        public const string GatewayKey = "AzureRMDataFactoryGatewayKey";
+        public const string GatewayKey = "AzureRmDataFactoryGatewayKey";
 
-        public const string EncryptString = "AzureRMDataFactoryEncryptValue";
+        public const string EncryptString = "AzureRmDataFactoryEncryptValue";
 
-        public const string Dataset = "AzureRMDataFactoryDataset";
+        public const string Dataset = "AzureRmDataFactoryDataset";
 
-        public const string Pipeline = "AzureRMDataFactoryPipeline";
+        public const string Pipeline = "AzureRmDataFactoryPipeline";
 
-        public const string PipelineActivePeriod = "AzureRMDataFactoryPipelineActivePeriod";
+        public const string PipelineActivePeriod = "AzureRmDataFactoryPipelineActivePeriod";
 
-        public const string Run = "AzureRMDataFactoryRun";
+        public const string Run = "AzureRmDataFactoryRun";
 
-        public const string DataSlice = "AzureRMDataFactorySlice";
+        public const string DataSlice = "AzureRmDataFactorySlice";
 
-        public const string SliceStatus = "AzureRMDataFactorySliceStatus";
+        public const string SliceStatus = "AzureRmDataFactorySliceStatus";
 
-        public const string Hub = "AzureRMDataFactoryHub";
+        public const string Hub = "AzureRmDataFactoryHub";
 
-        public const string RunLog = "AzureRMDataFactoryLog";
+        public const string RunLog = "AzureRmDataFactoryLog";
     }
 }

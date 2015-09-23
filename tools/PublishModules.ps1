@@ -34,15 +34,6 @@ if ([string]::IsNullOrEmpty($repositoryLocation))
 }
 
 $packageFolder = "$PSScriptRoot\..\src\Package"
-$scriptFolder = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
-. ($scriptFolder + '.\SetupEnv.ps1')
-
-if (Test-Path $packageFolder) {
-    Remove-Item -Path $packageFolder -Recurse -Force	
-}
-
-# Build the cmdlets in debug mode
-msbuild "$env:AzurePSRoot\build.proj" /t:"BuildDebug"
 
 $repoName = $(New-Guid).ToString()
 Register-PSRepository -Name $repoName -SourceLocation $repositoryLocation -PublishLocation $repositoryLocation -InstallationPolicy Trusted

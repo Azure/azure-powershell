@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         }
 
         
-        #region New-AzureRMKeyVault        
+        #region New-AzureRmKeyVault        
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
 
         #endregion
 
-        #region Get-AzureRMKeyVault
+        #region Get-AzureRmKeyVault
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         
         #endregion  
 
-        #region Get-AzureRMKeyVault (list)
+        #region Get-AzureRmKeyVault (list)
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         }
         #endregion
         
-        #region Remove-AzureRMKeyVault 
+        #region Remove-AzureRmKeyVault 
         
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         
         #endregion
 
-        #region Set-AzureRMKeyVaultAccessPolicy & Remove-AzureRMKeyVaultAccessPolicy
+        #region Set-AzureRmKeyVaultAccessPolicy & Remove-AzureRmKeyVaultAccessPolicy
         
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

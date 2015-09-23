@@ -28,10 +28,10 @@ $ItemName = "iaasvmcontainer;hydrarecordvm;hydrarecordvm"
 
 function Test-GetAzureRMBackupJob
 {
-	$vault = Get-AzureRMBackupVault -Name $ResourceName;
+	$vault = Get-AzureRmBackupVault -Name $ResourceName;
 	$OneMonthBack = Get-Date -Date "2015-07-15 09:39:29Z";
 	$now = Get-Date -Date "2015-08-14 09:39:29Z";
-	$jobs = Get-AzureRMBackupJob -Vault $vault -From $OneMonthBack -To $now
+	$jobs = Get-AzureRmBackupJob -Vault $vault -From $OneMonthBack -To $now
 	Assert-NotNull $jobs 'Jobs list should not be null'
 	foreach($job in $jobs)
 	{
@@ -42,7 +42,7 @@ function Test-GetAzureRMBackupJob
 		Assert-NotNull $jobs.Status 'Status should not be null';
 		Assert-NotNull $jobs.Operation 'Operation should not be null';
 
-		$jobDetails = Get-AzureRMBackupJobDetails -Job $job
+		$jobDetails = Get-AzureRmBackupJobDetails -Job $job
 		Assert-NotNull $jobDetails.InstanceId 'JobID should not be null';
 		Assert-NotNull $jobDetails.StartTime 'StartTime should not be null';
 		Assert-NotNull $jobDetails.WorkloadType 'WorkloadType should not be null';
@@ -63,10 +63,10 @@ function Test-StopAzureRMBackupJob
 	$AzureRMBackupItem.Location = $Location
 	$AzureRMBackupItem.ContainerUniqueName = $ContainerName
 	$AzureRMBackupItem.ItemName = $ItemName
-	$job = Backup-AzureRMBackupItem -Item $AzureRMBackupItem
+	$job = Backup-AzureRmBackupItem -Item $AzureRMBackupItem
 
-	Stop-AzureRMBackupJob -Job $job;
-	Wait-AzureRMBackupJob -Job $job;
-	$jobDetails = Get-AzureRMBackupJobDetails -Job $job;
+	Stop-AzureRmBackupJob -Job $job;
+	Wait-AzureRmBackupJob -Job $job;
+	$jobDetails = Get-AzureRmBackupJobDetails -Job $job;
 	Assert-AreEqual 'Cancelled' $jobDetails.Status
 }

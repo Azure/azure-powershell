@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
     /// <summary>
     /// this commandlet will let you delete an Azure App Service Plan using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRMAppServicePlan"), OutputType(typeof(AzureOperationResponse))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmAppServicePlan"), OutputType(typeof(AzureOperationResponse))]
     public class RemoveAppServicePlanCmdlet : AppServicePlanBaseCmdlet
     {
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]

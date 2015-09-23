@@ -25,8 +25,8 @@ function Test-CreatesNewSimpleResourceGroup
     try 
     {
         # Test
-        $actual = New-AzureRMResourceGroup -Name $rgname -Location $location -Tags @{Name = "testtag"; Value = "testval"} 
-        $expected = Get-AzureRMResourceGroup -Name $rgname
+        $actual = New-AzureRmResourceGroup -Name $rgname -Location $location -Tags @{Name = "testtag"; Value = "testval"} 
+        $expected = Get-AzureRmResourceGroup -Name $rgname
 
         # Assert
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
@@ -52,17 +52,17 @@ function Test-UpdatesExistingResourceGroup
     try 
     {
         # Test update without tag
-        Assert-Throws { Set-AzureRMResourceGroup -Name $rgname -Tags @{"testtag" = "testval"} } "ResourceGroupNotFound: Resource group '$rgname' could not be found."
+        Assert-Throws { Set-AzureRmResourceGroup -Name $rgname -Tags @{"testtag" = "testval"} } "ResourceGroupNotFound: Resource group '$rgname' could not be found."
         
-        $new = New-AzureRMResourceGroup -Name $rgname -Location $location
+        $new = New-AzureRmResourceGroup -Name $rgname -Location $location
         
         # Test update with bad tag format
-        Assert-Throws { Set-AzureRMResourceGroup -Name $rgname -Tags @{"testtag" = "testval"} } "Invalid tag format. Expect @{Name = `"tagName`"} or @{Name = `"tagName`"; Value = `"tagValue`"}"
+        Assert-Throws { Set-AzureRmResourceGroup -Name $rgname -Tags @{"testtag" = "testval"} } "Invalid tag format. Expect @{Name = `"tagName`"} or @{Name = `"tagName`"; Value = `"tagValue`"}"
         # Test update with bad tag format
-        Assert-Throws { Set-AzureRMResourceGroup -Name $rgname -Tags @{Name = "testtag"; Value = "testval"}, @{Name = "testtag"; Value = "testval2"} } "Invalid tag format. Ensure that each tag has a unique name. Example: @{Name = `"tagName1`"; Value = `"tagValue1`"}, @{Name = `"tagName2`"; Value = `"tagValue2`"}"
+        Assert-Throws { Set-AzureRmResourceGroup -Name $rgname -Tags @{Name = "testtag"; Value = "testval"}, @{Name = "testtag"; Value = "testval2"} } "Invalid tag format. Ensure that each tag has a unique name. Example: @{Name = `"tagName1`"; Value = `"tagValue1`"}, @{Name = `"tagName2`"; Value = `"tagValue2`"}"
             
-        $actual = Set-AzureRMResourceGroup -Name $rgname -Tags @{Name = "testtag"; Value = "testval"} 
-        $expected = Get-AzureRMResourceGroup -Name $rgname
+        $actual = Set-AzureRmResourceGroup -Name $rgname -Tags @{Name = "testtag"; Value = "testval"} 
+        $expected = Get-AzureRmResourceGroup -Name $rgname
 
         # Assert
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
@@ -88,14 +88,14 @@ function Test-CreatesAndRemoveResourceGroupViaPiping
     $location = Get-ProviderLocation ResourceManagement
 
     # Test
-    New-AzureRMResourceGroup -Name $rgname1 -Location $location
-    New-AzureRMResourceGroup -Name $rgname2 -Location $location
+    New-AzureRmResourceGroup -Name $rgname1 -Location $location
+    New-AzureRmResourceGroup -Name $rgname2 -Location $location
 
-    Get-AzureRMResourceGroup | where {$_.ResourceGroupName -eq $rgname1 -or $_.ResourceGroupName -eq $rgname2} | Remove-AzureRMResourceGroup -Force
+    Get-AzureRmResourceGroup | where {$_.ResourceGroupName -eq $rgname1 -or $_.ResourceGroupName -eq $rgname2} | Remove-AzureRmResourceGroup -Force
 
     # Assert
-    Assert-Throws { Get-AzureRMResourceGroup -Name $rgname1 } "Provided resource group does not exist."
-    Assert-Throws { Get-AzureRMResourceGroup -Name $rgname2 } "Provided resource group does not exist."
+    Assert-Throws { Get-AzureRmResourceGroup -Name $rgname1 } "Provided resource group does not exist."
+    Assert-Throws { Get-AzureRmResourceGroup -Name $rgname2 } "Provided resource group does not exist."
 }
 
 <#
@@ -107,7 +107,7 @@ function Test-GetNonExistingResourceGroup
     # Setup
     $rgname = Get-ResourceGroupName
 
-    Assert-Throws { Get-AzureRMResourceGroup -Name $rgname } "Provided resource group does not exist."
+    Assert-Throws { Get-AzureRmResourceGroup -Name $rgname } "Provided resource group does not exist."
 }
 
 <#
@@ -119,7 +119,7 @@ function Test-NewResourceGroupInNonExistingLocation
     # Setup
     $rgname = Get-ResourceGroupName
 
-    Assert-Throws { New-AzureRMResourceGroup -Name $rgname -Location 'non-existing' }
+    Assert-Throws { New-AzureRmResourceGroup -Name $rgname -Location 'non-existing' }
 }
 
 <#
@@ -131,7 +131,7 @@ function Test-RemoveNonExistingResourceGroup
     # Setup
     $rgname = Get-ResourceGroupName
 
-    Assert-Throws { Remove-AzureRMResourceGroup $rgname -Force } "Provided resource group does not exist."
+    Assert-Throws { Remove-AzureRmResourceGroup $rgname -Force } "Provided resource group does not exist."
 }
 
 <#
@@ -146,41 +146,41 @@ function Test-AzureTagsEndToEnd
     Clean-Tags
 
     # Create tag without values
-    New-AzureRMTag $tag1
+    New-AzureRmTag $tag1
 
-    $tag = Get-AzureRMTag $tag1
+    $tag = Get-AzureRmTag $tag1
     Assert-AreEqual $tag1 $tag.Name
 
     # Add value to the tag (adding same value should pass)
-    New-AzureRMTag $tag1 value1
-    New-AzureRMTag $tag1 value1
-    New-AzureRMTag $tag1 value2
+    New-AzureRmTag $tag1 value1
+    New-AzureRmTag $tag1 value1
+    New-AzureRmTag $tag1 value2
 
-    $tag = Get-AzureRMTag $tag1
+    $tag = Get-AzureRmTag $tag1
     Assert-AreEqual 2 $tag.Values.Count
 
     # Create tag with values
-    New-AzureRMTag $tag2 value1
-    New-AzureRMTag $tag2 value2
-    New-AzureRMTag $tag2 value3
+    New-AzureRmTag $tag2 value1
+    New-AzureRmTag $tag2 value2
+    New-AzureRmTag $tag2 value3
 
-    $tags = Get-AzureRMTag
+    $tags = Get-AzureRmTag
     Assert-AreEqual 2 $tags.Count
 
     # Remove entire tag
-    $tag = Remove-AzureRMTag $tag1 -Force -PassThru
+    $tag = Remove-AzureRmTag $tag1 -Force -PassThru
 
-    $tags = Get-AzureRMTag
+    $tags = Get-AzureRmTag
     Assert-AreEqual $tag1 $tag.Name
 
     # Remove tag value
-    $tag = Remove-AzureRMTag $tag2 value1 -Force -PassThru
+    $tag = Remove-AzureRmTag $tag2 value1 -Force -PassThru
 
-    $tags = Get-AzureRMTag
+    $tags = Get-AzureRmTag
     Assert-AreEqual 0 $tags.Count
 
     # Get a non-existing tag
-    Assert-Throws { Get-AzureRMTag "non-existing" }
+    Assert-Throws { Get-AzureRmTag "non-existing" }
 
     Clean-Tags
 }
@@ -212,7 +212,7 @@ function Test-NewDeploymentAndProviderRegistration
         }
 
         # Test
-        $deployment = New-AzureRMResourceGroup -Name $rgname -Location $location -GalleryTemplateIdentity $template -cacheName $rname -cacheLocation $location
+        $deployment = New-AzureRmResourceGroup -Name $rgname -Location $location -GalleryTemplateIdentity $template -cacheName $rname -cacheLocation $location
 
         # Assert
         $client = New-Object Microsoft.Azure.Commands.Resources.Models.ResourcesClient $subscription
@@ -242,9 +242,9 @@ function Test-RemoveDeployment
     try
     {
         # Test
-        New-AzureRMResourceGroup -Name $rgName -Location "west us"
-        $deployment = New-AzureRMResourceGroupDeployment -ResourceGroupName $rgName -Name $deploymentName -TemplateUri $templateUri
-        Assert-True { Remove-AzureRMResourceGroupDeployment -ResourceGroupName $deployment.ResourceGroupName -Name $deployment.DeploymentName -Force -PassThru }
+        New-AzureRmResourceGroup -Name $rgName -Location "west us"
+        $deployment = New-AzureRmResourceGroupDeployment -ResourceGroupName $rgName -Name $deploymentName -TemplateUri $templateUri
+        Assert-True { Remove-AzureRmResourceGroupDeployment -ResourceGroupName $deployment.ResourceGroupName -Name $deployment.DeploymentName -Force -PassThru }
     }
     finally
     {
@@ -264,21 +264,21 @@ function Test-NewResourceGroupWithTemplateThenGetWithAndWithoutDetails
     try
     {
         # Test
-        $actual = New-AzureRMResourceGroup -Name $rgname -Location $location -TemplateFile $templateFile `
+        $actual = New-AzureRmResourceGroup -Name $rgname -Location $location -TemplateFile $templateFile `
                     -siteName $websiteName -hostingPlanName "test" -siteLocation "West US" `
                     -Tag @{ Name = "testtag"; Value = "testval" }
 
-        $expected1 = Get-AzureRMResourceGroup -Name $rgname
+        $expected1 = Get-AzureRmResourceGroup -Name $rgname
         # Assert
         Assert-AreEqual $expected1.ResourceGroupName $actual.ResourceGroupName
         Assert-AreEqual $expected1.Tags[0]["Name"] $actual.Tags[0]["Name"]
         Assert-AreEqual $expected1.Resources.Count 2
 
-        $expected2 = Get-AzureRMResourceGroup
+        $expected2 = Get-AzureRmResourceGroup
         # Assert
         Assert-AreEqual $expected2[0].Resources.Count 0
 
-        $expected3 = Get-AzureRMResourceGroup -Detailed
+        $expected3 = Get-AzureRmResourceGroup -Detailed
         $names = $expected3 | Select-Object -ExpandProperty ResourceGroupName
         $index = [Array]::IndexOf($names, $expected1.ResourceGroupName)
         # Assert

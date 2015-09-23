@@ -21,7 +21,7 @@ function Test-VirtualMachineProfile
     # VM Profile & Hardware
     $vmsize = 'Standard_A2';
     $vmname = 'pstestvm' + ((Get-Random) % 10000);
-    $p = New-AzureRMVMConfig -VMName $vmname -VMSize $vmsize;
+    $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
     Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
 
     # Network
@@ -30,19 +30,19 @@ function Test-VirtualMachineProfile
     $nicName = $ipname + 'nic1';
     $publicIPName = $ipname + 'name1';
 
-    $p = Add-AzureRMVMNetworkInterface -VM $p -Id $ipRefUri1;
+    $p = Add-AzureRmVMNetworkInterface -VM $p -Id $ipRefUri1;
 
     $ipname = 'hpfip' + ((Get-Random) % 10000);
     $ipRefUri2 = "https://test.foo.bar/$ipname";
-    $p = Add-AzureRMVMNetworkInterface -VM $p -Id $ipRefUri2;
+    $p = Add-AzureRmVMNetworkInterface -VM $p -Id $ipRefUri2;
 
     # Remove all NICs
-    $p = $p | Remove-AzureRMVMNetworkInterface;
+    $p = $p | Remove-AzureRmVMNetworkInterface;
     Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 0;
 
-    $p = Add-AzureRMVMNetworkInterface -VM $p -Id $ipRefUri1 -Primary;
-    $p = Add-AzureRMVMNetworkInterface -VM $p -Id $ipRefUri2;
-    $p = Remove-AzureRMVMNetworkInterface -VM $p -Id $ipRefUri2;
+    $p = Add-AzureRmVMNetworkInterface -VM $p -Id $ipRefUri1 -Primary;
+    $p = Add-AzureRmVMNetworkInterface -VM $p -Id $ipRefUri2;
+    $p = Remove-AzureRmVMNetworkInterface -VM $p -Id $ipRefUri2;
         
     Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
     Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $ipRefUri1;
@@ -59,13 +59,13 @@ function Test-VirtualMachineProfile
     $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
     $dataDiskVhdUri3 = "https://$stoname.blob.core.windows.net/test/data3.vhd";
 
-    $p = Set-AzureRMVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption Empty;
+    $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption Empty;
 
-    $p = Add-AzureRMVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 0 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
-    $p = Add-AzureRMVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 1 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
-    $p = Add-AzureRMVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB $null -Lun 2 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
+    $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 0 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
+    $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 1 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
+    $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB $null -Lun 2 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
     Assert-Null $p.StorageProfile.DataDisks[2].DiskSizeGB;
-    $p = Remove-AzureRMVMDataDisk -VM $p -Name 'testDataDisk3';
+    $p = Remove-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3';
         
     Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
     Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
@@ -81,11 +81,11 @@ function Test-VirtualMachineProfile
     Assert-AreEqual $p.StorageProfile.DataDisks[1].VirtualHardDisk.Uri $dataDiskVhdUri2;
 
     # Remove all data disks
-    $p = $p | Remove-AzureRMVMDataDisk;
+    $p = $p | Remove-AzureRmVMDataDisk;
     Assert-AreEqual $p.StorageProfile.DataDisks.Count 0;
 
-    $p = Add-AzureRMVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 0 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
-    $p = Add-AzureRMVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 1 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
+    $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 0 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
+    $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 1 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
 
     Assert-AreEqual $p.StorageProfile.DataDisks.Count 2;
     Assert-AreEqual $p.StorageProfile.DataDisks[0].Caching 'ReadOnly';
@@ -110,30 +110,30 @@ function Test-VirtualMachineProfile
     $custom = "echo 'Hello World'";
     $encodedCustom = "ZWNobyAnSGVsbG8gV29ybGQn";
 
-    $p = Set-AzureRMVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -CustomData $custom -WinRMHttp -WinRMHttps -WinRMCertificateUrl $winRMCertUrl -ProvisionVMAgent -EnableAutoUpdate -TimeZone $timeZone;
+    $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -CustomData $custom -WinRMHttp -WinRMHttps -WinRMCertificateUrl $winRMCertUrl -ProvisionVMAgent -EnableAutoUpdate -TimeZone $timeZone;
 
     # Image Reference
     $imgRef = Get-DefaultCRPWindowsImageOffline -loc $loc;
-    $p = ($imgRef | Set-AzureRMVMSourceImage -VM $p);
+    $p = ($imgRef | Set-AzureRmVMSourceImage -VM $p);
 
-    $subid = (Get-AzureRMSubscription -Current).SubscriptionId;
+    $subid = (Get-AzureRmSubscription -Current).SubscriptionId;
 
     $referenceUri = "/subscriptions/" + $subid + "/resourceGroups/RgTest1/providers/Microsoft.KeyVault/vaults/TestVault123";
     $certStore = "My";
     $certUrl =  "https://testvault123.vault.azure.net/secrets/Test1/514ceb769c984379a7e0230bdd703272";
-    $p = Add-AzureRMVMSecret -VM $p -SourceVaultId $referenceUri -CertificateStore $certStore -CertificateUrl $certUrl;
+    $p = Add-AzureRmVMSecret -VM $p -SourceVaultId $referenceUri -CertificateStore $certStore -CertificateUrl $certUrl;
 
     $referenceUri2 = "/subscriptions/" + $subid + "/resourceGroups/RgTest1/providers/Microsoft.KeyVault/vaults/TestVault456";
-    $p = Add-AzureRMVMSecret -VM $p -SourceVaultId $referenceUri2 -CertificateStore $certStore -CertificateUrl $certUrl;
+    $p = Add-AzureRmVMSecret -VM $p -SourceVaultId $referenceUri2 -CertificateStore $certStore -CertificateUrl $certUrl;
 
     $certStore2 = "My2";
     $certUrl2 =  "https://testvault123.vault.azure.net/secrets/Test1/514ceb769c984379a7e0230bddaaaaaa";
-    $p = Add-AzureRMVMSecret -VM $p -SourceVaultId $referenceUri -CertificateStore $certStore2 -CertificateUrl $certUrl2;
+    $p = Add-AzureRmVMSecret -VM $p -SourceVaultId $referenceUri -CertificateStore $certStore2 -CertificateUrl $certUrl2;
 
     $aucSetting = "AutoLogon";
     $aucContent = "<UserAccounts><AdministratorPassword><Value>" + $password + "</Value><PlainText>true</PlainText></AdministratorPassword></UserAccounts>";
-    $p = Add-AzureRMVMAdditionalUnattendContent -VM $p -Content $aucContent -SettingName $aucSetting;
-    $p = Add-AzureRMVMAdditionalUnattendContent -VM $p -Content $aucContent -SettingName $aucSetting;
+    $p = Add-AzureRmVMAdditionalUnattendContent -VM $p -Content $aucContent -SettingName $aucSetting;
+    $p = Add-AzureRmVMAdditionalUnattendContent -VM $p -Content $aucContent -SettingName $aucSetting;
 
     Assert-AreEqual $p.OSProfile.AdminUsername $user;
     Assert-AreEqual $p.OSProfile.ComputerName $computerName;
@@ -177,16 +177,16 @@ function Test-VirtualMachineProfile
     # Linux OS
     $img = "b4590d9e3ed742e4a1d46e5424aa335e__SUSE-Linux-Enterprise-Server-11-SP3-v206";
 
-    $p = Set-AzureRMVMOperatingSystem -VM $p -Linux -ComputerName $computerName -Credential $cred -CustomData $custom -DisablePasswordAuthentication;
+    $p = Set-AzureRmVMOperatingSystem -VM $p -Linux -ComputerName $computerName -Credential $cred -CustomData $custom -DisablePasswordAuthentication;
 
     $imgRef = Get-DefaultCRPLinuxImageOffline -loc $loc;
-    $p = ($imgRef | Set-AzureRMVMSourceImage -VM $p);
+    $p = ($imgRef | Set-AzureRmVMSourceImage -VM $p);
 
     $sshPath = "/home/pstestuser/.ssh/authorized_keys";
     $sshPublicKey = "MIIDszCCApugAwIBAgIJALBV9YJCF/tAMA0GCSqGSIb3DQEBBQUAMEUxCzAJBgNV";
-    $p = Add-AzureRMVMSshPublicKey -VM $p -KeyData $sshPublicKey -Path $sshPath;
-    $p = Add-AzureRMVMSshPublicKey -VM $p -KeyData $sshPublicKey -Path $sshPath;
-    $p = Add-AzureRMVMSecret -VM $p -SourceVaultId $referenceUri -CertificateStore $certStore -CertificateUrl $certUrl;
+    $p = Add-AzureRmVMSshPublicKey -VM $p -KeyData $sshPublicKey -Path $sshPath;
+    $p = Add-AzureRmVMSshPublicKey -VM $p -KeyData $sshPublicKey -Path $sshPath;
+    $p = Add-AzureRmVMSecret -VM $p -SourceVaultId $referenceUri -CertificateStore $certStore -CertificateUrl $certUrl;
 
     Assert-AreEqual $p.OSProfile.AdminUsername $user;
     Assert-AreEqual $p.OSProfile.ComputerName $computerName;
@@ -219,7 +219,7 @@ function Test-VirtualMachineProfileWithoutAUC
     # VM Profile & Hardware
     $vmsize = 'Standard_A2';
     $vmname = 'pstestvm' + ((Get-Random) % 10000);
-    $p = New-AzureRMVMConfig -VMName $vmname -VMSize $vmsize;
+    $p = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
     Assert-AreEqual $p.HardwareProfile.VirtualMachineSize $vmsize;
 
     # Network
@@ -228,7 +228,7 @@ function Test-VirtualMachineProfileWithoutAUC
     $nicName = $ipname + 'nic1';
     $publicIPName = $ipname + 'name1';
 
-    $p = Add-AzureRMVMNetworkInterface -VM $p -Id $ipRefUri;
+    $p = Add-AzureRmVMNetworkInterface -VM $p -Id $ipRefUri;
 
     Assert-AreEqual $p.NetworkProfile.NetworkInterfaces.Count 1;
     Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].ReferenceUri $ipRefUri;
@@ -244,12 +244,12 @@ function Test-VirtualMachineProfileWithoutAUC
     $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
     $dataDiskVhdUri3 = "https://$stoname.blob.core.windows.net/test/data3.vhd";
 
-    $p = Set-AzureRMVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption Empty;
+    $p = Set-AzureRmVMOSDisk -VM $p -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -CreateOption Empty;
 
-    $p = Add-AzureRMVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 0 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
-    $p = Add-AzureRMVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 1 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
-    $p = Add-AzureRMVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 2 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
-    $p = Remove-AzureRMVMDataDisk -VM $p -Name 'testDataDisk3';
+    $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 0 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;
+    $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk2' -Caching 'ReadOnly' -DiskSizeInGB 11 -Lun 1 -VhdUri $dataDiskVhdUri2 -CreateOption Empty;
+    $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3' -Caching 'ReadOnly' -DiskSizeInGB 12 -Lun 2 -VhdUri $dataDiskVhdUri3 -CreateOption Empty;
+    $p = Remove-AzureRmVMDataDisk -VM $p -Name 'testDataDisk3';
 
     Assert-AreEqual $p.StorageProfile.OSDisk.Caching $osDiskCaching;
     Assert-AreEqual $p.StorageProfile.OSDisk.Name $osDiskName;
@@ -278,24 +278,24 @@ function Test-VirtualMachineProfileWithoutAUC
     $custom = "echo 'Hello World'";
     $encodedCustom = "ZWNobyAnSGVsbG8gV29ybGQn";
 
-    $p = Set-AzureRMVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -CustomData $custom -WinRMHttp -WinRMHttps -WinRMCertificateUrl $winRMCertUrl -ProvisionVMAgent -EnableAutoUpdate -TimeZone $timeZone;
+    $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -CustomData $custom -WinRMHttp -WinRMHttps -WinRMCertificateUrl $winRMCertUrl -ProvisionVMAgent -EnableAutoUpdate -TimeZone $timeZone;
 
     $imgRef = Get-DefaultCRPWindowsImageOffline -loc $loc;
-    $p = ($imgRef | Set-AzureRMVMSourceImage -VM $p);
+    $p = ($imgRef | Set-AzureRmVMSourceImage -VM $p);
 
-    $subid = (Get-AzureRMSubscription -Current).SubscriptionId;
+    $subid = (Get-AzureRmSubscription -Current).SubscriptionId;
 
     $referenceUri = "/subscriptions/" + $subid + "/resourceGroups/RgTest1/providers/Microsoft.KeyVault/vaults/TestVault123";
     $certStore = "My";
     $certUrl =  "https://testvault123.vault.azure.net/secrets/Test1/514ceb769c984Assert-True379a7e0230bdd703272";
-    $p = Add-AzureRMVMSecret -VM $p -SourceVaultId $referenceUri -CertificateStore $certStore -CertificateUrl $certUrl;
+    $p = Add-AzureRmVMSecret -VM $p -SourceVaultId $referenceUri -CertificateStore $certStore -CertificateUrl $certUrl;
 
     $referenceUri2 = "/subscriptions/" + $subid + "/resourceGroups/RgTest1/providers/Microsoft.KeyVault/vaults/TestVault456";
-    $p = Add-AzureRMVMSecret -VM $p -SourceVaultId $referenceUri2 -CertificateStore $certStore -CertificateUrl $certUrl;
+    $p = Add-AzureRmVMSecret -VM $p -SourceVaultId $referenceUri2 -CertificateStore $certStore -CertificateUrl $certUrl;
 
     $certStore2 = "My2";
     $certUrl2 =  "https://testvault123.vault.azure.net/secrets/Test1/514ceb769c984379a7e0230bddaaaaaa";
-    $p = Add-AzureRMVMSecret -VM $p -SourceVaultId $referenceUri -CertificateStore $certStore2 -CertificateUrl $certUrl2;
+    $p = Add-AzureRmVMSecret -VM $p -SourceVaultId $referenceUri -CertificateStore $certStore2 -CertificateUrl $certUrl2;
 
     Assert-AreEqual $p.OSProfile.AdminUsername $user;
     Assert-AreEqual $p.OSProfile.ComputerName $computerName;

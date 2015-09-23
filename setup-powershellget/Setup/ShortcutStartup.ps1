@@ -26,9 +26,15 @@ Finalizing installation of Azure PowerShell.
 Installing Azure Modules from PowerShell Gallery. 
 This may take some time...
 "@
+		Import-Module PackageManagement
 		Get-PackageProvider -Name NuGet -ForceBootstrap
-		Install-Module AzureRM.Installer
-		Install-AzureRM
+
+		$NuGetPublishingSource = $env:NuGetPublishingSource
+		if ([string]::IsNullOrWhiteSpace($NuGetPublishingSource)) {
+			Install-Module AzureRM -Repository $NuGetPublishingSource
+		} else {
+			Install-Module AzureRM
+		}
 	} else {
 		cd c:\
 		$welcomeMessage = @"
