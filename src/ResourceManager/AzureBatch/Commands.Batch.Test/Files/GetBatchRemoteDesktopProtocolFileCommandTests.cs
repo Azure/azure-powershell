@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             cmdlet.DestinationPath = null;
 
             // Don't go to the service on a Get ComputeNode Remote Desktop call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<ComputeNodeGetRemoteDesktopParameters, ComputeNodeGetRemoteDesktopResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeGetRemoteDesktopParameters, ComputeNodeGetRemoteDesktopResponse>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             using (MemoryStream memStream = new MemoryStream())

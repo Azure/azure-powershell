@@ -178,17 +178,20 @@
     <Compile Include="BatchTestHelpers.cs" />
     <Compile Include="ComputeNodes\ResetBatchComputeNodeCommandTests.cs" />
     <Compile Include="ComputeNodes\RestartBatchComputeNodeCommandTests.cs" />
+    <Compile Include="ComputeNodeUsers\SetBatchComputeNoderUserCommandTests.cs" />
     <Compile Include="Files\GetBatchRemoteDesktopProtocolFileCommandTests.cs" />
     <Compile Include="Files\GetBatchNodeFileCommandTests.cs" />
     <Compile Include="Files\GetBatchNodeFileContentCommandTests.cs" />
     <Compile Include="JobSchedules\DisableBatchJobScheduleCommandTests.cs" />
     <Compile Include="JobSchedules\EnableBatchJobScheduleCommandTests.cs" />
+    <Compile Include="JobSchedules\SetBatchJobScheduleCommandTests.cs" />
     <Compile Include="JobSchedules\StopBatchJobScheduleCommandTests.cs" />
     <Compile Include="Jobs\DisableBatchJobCommandTests.cs" />
     <Compile Include="Jobs\EnableBatchJobCommandTests.cs" />
     <Compile Include="Jobs\GetBatchJobCommandTests.cs" />
     <Compile Include="Jobs\NewBatchJobCommandTests.cs" />
     <Compile Include="Jobs\RemoveBatchJobCommandTests.cs" />
+    <Compile Include="Jobs\SetBatchJobCommandTests.cs" />
     <Compile Include="Jobs\StopBatchJobCommandTests.cs" />
     <Compile Include="Models\BatchAccountContextTest.cs" />
     <Compile Include="Pools\DisableBatchAutoScaleCommandTests.cs" />
@@ -196,6 +199,7 @@
     <Compile Include="Pools\GetBatchPoolCommandTests.cs" />
     <Compile Include="Pools\NewBatchPoolCommandTests.cs" />
     <Compile Include="Pools\RemoveBatchPoolCommandTests.cs" />
+    <Compile Include="Pools\SetBatchPoolCommandTests.cs" />
     <Compile Include="Pools\SetBatchPoolOSVersionCommandTests.cs" />
     <Compile Include="Pools\StartBatchPoolResizeCommandTests.cs" />
     <Compile Include="Pools\StopBatchPoolResizeCommandTests.cs" />
@@ -220,6 +224,7 @@
     <Compile Include="JobSchedules\GetBatchJobScheduleCommandTests.cs" />
     <Compile Include="JobSchedules\NewBatchJobScheduleCommandTests.cs" />
     <Compile Include="JobSchedules\RemoveBatchJobScheduleCommandTests.cs" />
+    <Compile Include="Tasks\SetBatchTaskCommandTests.cs" />
     <Compile Include="Tasks\StopBatchTaskCommandTests.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -311,6 +316,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ComputeNodeUserTests\TestDeleteComputeNodeUser.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ComputeNodeUserTests\TestUpdateComputeNodeUser.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.FileTests\TestGetNodeFileByComputeNodeByName.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -395,6 +403,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobScheduleTests\TestTerminateJobSchedulePipeline.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobScheduleTests\TestUpdateJobSchedule.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobTests\TestDeleteJob.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -426,6 +437,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobTests\TestTerminateJobPipeline.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.JobTests\TestUpdateJob.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.PoolTests\TestChangeOSVersionById.json">
@@ -485,6 +499,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.PoolTests\TestStopResizePoolByPipeline.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.PoolTests\TestUpdatePool.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.TaskTests\TestCreateTask.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -510,6 +527,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.TaskTests\TestTerminateTask.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.TaskTests\TestUpdateTask.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Threading.Tasks;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Batch.Protocol.Models;
@@ -23,19 +24,19 @@ using System.Management.Automation;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
-namespace Microsoft.Azure.Commands.Batch.Test.Jobs
+namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodeUsers
 {
-    public class StopBatchJobCommandTests
+    public class SetBatchComputeNodeUserCommandTests
     {
-        private StopBatchJobCommand cmdlet;
+        private SetBatchComputeNodeUserCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public StopBatchJobCommandTests()
+        public SetBatchComputeNodeUserCommandTests()
         {
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new StopBatchJobCommand()
+            cmdlet = new SetBatchComputeNodeUserCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 BatchClient = batchClientMock.Object,
@@ -44,50 +45,59 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void StopJobParametersTest()
+        public void SetBatchComputeNodeUserParametersTest()
         {
+            // Setup cmdlet without the required parameters
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
-            cmdlet.Id = null;
 
             Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
 
-            cmdlet.Id = "testJob";
+            cmdlet.PoolId = "testPool";
+            cmdlet.ComputeNodeId = "computeNode1";
 
-            // Don't go to the service on a Terminate CloudJob call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudJobTerminateParameters, CloudJobTerminateResponse>();
+            Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
+
+            cmdlet.Name = "testUser";
+
+            // Don't go to the service on an Update ComputeNodeUser call
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeUpdateUserParameters, ComputeNodeUpdateUserResponse>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
-            // Verify no exceptions when required parameter is set
+            // Verify no exceptions when required parameters are set
             cmdlet.ExecuteCmdlet();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void StopJobRequestTest()
+        public void SetBatchComputeNodeUserRequestTest()
         {
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
+            cmdlet.PoolId = "testPool";
+            cmdlet.ComputeNodeId = "computeNode1";
+            cmdlet.Name = "testUser";
+            cmdlet.Password = "Password1234";
+            cmdlet.ExpiryTime = DateTime.Now.AddDays(1);
 
-            string terminateReason = "testing";
-            string requestTerminateReason = null;
+            string requestPassword = null;
+            DateTime requestExpiryTime = DateTime.Now;
 
-            cmdlet.Id = "testJob";
-            cmdlet.TerminateReason = terminateReason;
-
-            // Don't go to the service on a Terminate CloudJob call
-            Action<BatchRequest<CloudJobTerminateParameters, CloudJobTerminateResponse>> extractTerminateReasponAction =
+            // Don't go to the service on an Update ComputeNodeUser call
+            Action<BatchRequest<ComputeNodeUpdateUserParameters, ComputeNodeUpdateUserResponse>> extractUserUpdateParametersAction =
                 (request) =>
                 {
-                    requestTerminateReason = request.TypedParameters.TerminateReason;
+                    requestPassword = request.TypedParameters.Password;
+                    requestExpiryTime = request.TypedParameters.ExpiryTime.Value;
                 };
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor(requestAction: extractTerminateReasponAction);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor(requestAction: extractUserUpdateParametersAction);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             cmdlet.ExecuteCmdlet();
 
-            // Verify that the job terminate reason was properly set on the outgoing request
-            Assert.Equal(terminateReason, requestTerminateReason);
+            // Verify the request parameters match expectations
+            Assert.Equal(cmdlet.Password, requestPassword);
+            Assert.Equal(cmdlet.ExpiryTime, requestExpiryTime);
         }
     }
 }

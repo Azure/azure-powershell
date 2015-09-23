@@ -16,26 +16,26 @@ using System;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Batch.Protocol.Models;
+using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
-using System.Collections.Generic;
 using System.Management.Automation;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
-namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
+namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 {
-    public class NewBatchJobScheduleCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class SetBatchJobCommandTests
     {
-        private NewBatchJobScheduleCommand cmdlet;
+        private SetBatchJobCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
 
-        public NewBatchJobScheduleCommandTests()
+        public SetBatchJobCommandTests()
         {
             batchClientMock = new Mock<BatchClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new NewBatchJobScheduleCommand()
+            cmdlet = new SetBatchJobCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 BatchClient = batchClientMock.Object,
@@ -44,21 +44,20 @@ namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NewBatchJobScheduleParametersTest()
+        public void SetBatchJobParametersTest()
         {
             // Setup cmdlet without the required parameters
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
-            
+
             Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
 
-            cmdlet.Id = "testJobSchedule";
+            cmdlet.Job = new PSCloudJob(BatchTestHelpers.CreateFakeBoundJob(context));
 
-            // Don't go to the service on an Add CloudJobSchedule call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudJobScheduleAddParameters, CloudJobScheduleAddResponse>();
-            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudJobUpdateParameters, CloudJobUpdateResponse>();
+            cmdlet.AdditionalBehaviors = new BatchClientBehavior[] {interceptor};
 
-            // Verify no exceptions when required parameters are set
+            // Verify that no exceptions occur
             cmdlet.ExecuteCmdlet();
         }
     }
