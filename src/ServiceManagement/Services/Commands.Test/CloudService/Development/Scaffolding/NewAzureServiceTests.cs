@@ -26,7 +26,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Properties;
 namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Scaffolding.Cmdlet
 {
     
-    public class NewAzureServiceTests : TestBase
+    public class NewAzureServiceTests : SMTestBase
     {
         NewAzureServiceProjectCommand cmdlet;
 

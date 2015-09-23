@@ -12,23 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Batch.Properties;
 using System.Management.Automation;
+using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Get, "AzureBatchAccountKeys"), OutputType(typeof(BatchAccountContext))]
+    [Cmdlet(VerbsCommon.Get, Constants.AzureRMBatchAccountKeys), OutputType(typeof(BatchAccountContext))]
     public class GetBatchAccountKeysCommand : BatchCmdletBase
     {
-        internal const string ParameterSetContext = "Use Context";
-        internal const string ParameterSetNames = "Use Names";
-
-        [Parameter(ParameterSetName = ParameterSetNames, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the Batch service account to query keys for.")]
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, 
+            HelpMessage = "The name of the Batch service account to query keys for.")]
         [Alias("Name")]
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group of the account.")]
+        [Parameter(ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -36,7 +34,7 @@ namespace Microsoft.Azure.Commands.Batch
         /// Get the keys associated with the specified account. If only the account name is passed in, then
         /// look up its resource group and construct a new BatchAccountContext to hold everything.
         /// </summary>
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             BatchAccountContext context = BatchClient.ListKeys(this.ResourceGroupName, this.AccountName);
             WriteObject(context);

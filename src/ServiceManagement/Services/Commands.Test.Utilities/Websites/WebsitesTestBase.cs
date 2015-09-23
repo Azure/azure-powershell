@@ -24,17 +24,16 @@ using Microsoft.Azure.Common.Authentication;
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Websites
 {
     [TestClass]
-    public class WebsitesTestBase : TestBase
+    public class WebsitesTestBase : SMTestBase
     {
         protected string subscriptionId = "035B9E16-BA8E-40A3-BEEA-4998F452C203";
-        protected AzureProfile currentProfile;
 
         [TestInitialize]
         public virtual void SetupTest()
         {
             new FileSystemHelper(this).CreateAzureSdkDirectoryAndImportPublishSettings();
 
-            currentProfile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+            currentProfile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
         }
 
         [TestCleanup]
@@ -60,8 +59,8 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Websites
         protected void SetupProfile(string storageName)
         {
 
-            currentProfile = new AzureProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-            AzurePSCmdlet.CurrentProfile = currentProfile;
+            currentProfile = new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
+            AzureSMCmdlet.CurrentProfile = currentProfile;
             var subscription = new AzureSubscription { Id = new Guid(subscriptionId) };
             subscription.Properties[AzureSubscription.Property.Default] = "True";
             currentProfile.Subscriptions[new Guid(subscriptionId)] = subscription;

@@ -23,9 +23,9 @@ using Microsoft.Azure.Management.Sql.Models;
 namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
 {
     /// <summary>
-    /// Defines the Start-AzureSqlServerUpgrade cmdlet
+    /// Defines the Start-AzureRMSqlServerUpgrade cmdlet
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureSqlServerUpgrade",
+    [Cmdlet(VerbsLifecycle.Start, "AzureRMSqlServerUpgrade",
         ConfirmImpact = ConfirmImpact.Low)]
     public class StartAzureSqlServerUpgrade : AzureSqlServerUpgradeCmdletBase<AzureSqlServerUpgradeStartModel>
     {
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
             {
                 // The server upgrade is already pending
                 throw new PSArgumentException(
-                    string.Format(Resources.ServerUpgradeExists, this.ServerName),
+                    string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ServerUpgradeExists, this.ServerName),
                     "ServerName");
             }
 

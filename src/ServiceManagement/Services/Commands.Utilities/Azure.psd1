@@ -9,7 +9,7 @@
 @{
 
 # Version number of this module.
-ModuleVersion = '0.9.7'
+ModuleVersion = '0.9.9'
 
 # ID used to uniquely identify this module
 GUID = 'D48CF693-4125-4D2D-8790-1514F44CE325'
@@ -21,10 +21,10 @@ Author = 'Microsoft Corporation'
 CompanyName = 'Microsoft Corporation'
 
 # Copyright statement for this module
-Copyright = '?Microsoft Corporation. All rights reserved.'  
+Copyright = 'Microsoft Corporation. All rights reserved.'  
 
 # Description of the functionality provided by this module
-Description = ''
+Description = 'Microsoft Azure PowerShell - Service Management'
 
 # Minimum version of the Windows PowerShell engine required by this module
 PowerShellVersion = '3.0'
@@ -56,8 +56,8 @@ ScriptsToProcess = @()
 # Type files (.ps1xml) to be loaded when importing this module
 TypesToProcess = @(
     '.\Services\Microsoft.WindowsAzure.Commands.Websites.Types.ps1xml',
-    '.\Sql\Microsoft.WindowsAzure.Commands.SqlDatabase.Types.ps1xml'
-    '.\Storage\Microsoft.WindowsAzure.Commands.Storage.Types.ps1xml',
+    '.\Sql\Microsoft.WindowsAzure.Commands.SqlDatabase.Types.ps1xml',
+    '.\Azure.Storage\Microsoft.WindowsAzure.Commands.Storage.Types.ps1xml',
     '.\StorSimple\Microsoft.WindowsAzure.Commands.StorSimple.Types.ps1xml'
 )
 
@@ -67,7 +67,7 @@ FormatsToProcess = @(
     '.\Services\Microsoft.WindowsAzure.Commands.Websites.format.ps1xml',
     '.\Services\Microsoft.WindowsAzure.Commands.CloudService.format.ps1xml',
     '.\Services\Microsoft.WindowsAzure.Commands.ServiceBus.format.ps1xml',
-    '.\Storage\Microsoft.WindowsAzure.Commands.Storage.format.ps1xml',
+    '.\Azure.Storage\Microsoft.WindowsAzure.Commands.Storage.format.ps1xml',
     '.\Services\Microsoft.WindowsAzure.Commands.Store.format.ps1xml',
     '.\Services\Microsoft.WindowsAzure.Commands.Scheduler.format.ps1xml',
     '.\Compute\Microsoft.WindowsAzure.Commands.ServiceManagement.format.ps1xml',
@@ -83,7 +83,7 @@ NestedModules = '.\Services\Microsoft.WindowsAzure.Commands.dll',
                 '.\Services\Microsoft.WindowsAzure.Commands.Profile.dll',
                 '.\Compute\Microsoft.WindowsAzure.Commands.ServiceManagement.dll',
                 '.\Sql\Microsoft.WindowsAzure.Commands.SqlDatabase.dll',
-                '.\Storage\Microsoft.WindowsAzure.Commands.Storage.dll',
+                '.\Azure.Storage\Microsoft.WindowsAzure.Commands.Storage.dll',
                 '.\ManagedCache\Microsoft.Azure.Commands.ManagedCache.dll',
                 '.\HDInsight\Microsoft.WindowsAzure.Commands.HDInsight.dll',
                 '.\Networking\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.dll',

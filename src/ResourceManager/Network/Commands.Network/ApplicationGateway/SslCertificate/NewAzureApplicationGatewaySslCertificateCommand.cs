@@ -18,12 +18,12 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureApplicationGatewaySslCertificate"), OutputType(typeof(PSApplicationGatewaySslCertificate))]
+    [Cmdlet(VerbsCommon.New, "AzureRMApplicationGatewaySslCertificate"), OutputType(typeof(PSApplicationGatewaySslCertificate))]
     public class NewAzureApplicationGatewaySslCertificateCommand : AzureApplicationGatewaySslCertificateBase
     {
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
             WriteObject(base.NewObject());
         }
     }

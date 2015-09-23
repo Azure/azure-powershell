@@ -43,7 +43,7 @@ function Test-DeleteEndpoint
 
     TestSetup-AddEndpoint $endpointName $profile
 
-	Remove-AzureTrafficManagerEndpointConfig -EndpointName $endpointName -TrafficManagerProfile $profile
+	Remove-AzureRMTrafficManagerEndpointConfig -EndpointName $endpointName -TrafficManagerProfile $profile
 
 	Assert-AreEqual 0 $profile.Endpoints.Count
 }
@@ -60,7 +60,7 @@ function Test-EndpointCrud
 
 	$profile = TestSetup-CreateProfile $profileName $resourceGroup.ResourceGroupName
 
-	$endpoint = New-AzureTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName  -Type "ExternalEndpoints" -Target "www.contoso.com" -EndpointStatus "Enabled" -EndpointLocation "North Europe"
+	$endpoint = New-AzureRMTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName  -Type "ExternalEndpoints" -Target "www.contoso.com" -EndpointStatus "Enabled" -EndpointLocation "North Europe"
 
 	Assert-NotNull $endpoint
 	Assert-AreEqual $endpointName $endpoint.Name 
@@ -71,7 +71,7 @@ function Test-EndpointCrud
 	Assert-AreEqual "Enabled" $endpoint.EndpointStatus
 	<# Assert-AreEqual "North Europe" $endpoint.EndpointLocation #>
 
-    $endpoint = Get-AzureTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName  -Type "ExternalEndpoints"
+    $endpoint = Get-AzureRMTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName  -Type "ExternalEndpoints"
 
 	Assert-NotNull $endpoint
 	Assert-AreEqual $endpointName $endpoint.Name 
@@ -84,9 +84,9 @@ function Test-EndpointCrud
 
     $endpoint.EndpointStatus = "Disabled"
 
-    $endpoint = Set-AzureTrafficManagerEndpoint -TrafficManagerEndpoint $endpoint
+    $endpoint = Set-AzureRMTrafficManagerEndpoint -TrafficManagerEndpoint $endpoint
 
-    $endpoint = Get-AzureTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName  -Type "ExternalEndpoints"
+    $endpoint = Get-AzureRMTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName  -Type "ExternalEndpoints"
 
 	Assert-NotNull $endpoint
 	Assert-AreEqual $endpointName $endpoint.Name 
@@ -97,11 +97,11 @@ function Test-EndpointCrud
 	Assert-AreEqual "Disabled" $endpoint.EndpointStatus
 	<# Assert-AreEqual "North Europe" $endpoint.EndpointLocation #>
 
-	$removed = Remove-AzureTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints" -Force
+	$removed = Remove-AzureRMTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints" -Force
 
     Assert-True { $removed }
 
-    Assert-Throws { Get-AzureTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints" }
+    Assert-Throws { Get-AzureRMTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints" }
 }
 
 <#
@@ -116,7 +116,7 @@ function Test-EndpointCrudPiping
 
 	$profile = TestSetup-CreateProfile $profileName $resourceGroup.ResourceGroupName
 
-	$endpoint = New-AzureTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName  -Type "ExternalEndpoints" -Target "www.contoso.com" -EndpointStatus "Enabled" -EndpointLocation "North Europe"
+	$endpoint = New-AzureRMTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName  -Type "ExternalEndpoints" -Target "www.contoso.com" -EndpointStatus "Enabled" -EndpointLocation "North Europe"
 
 	Assert-NotNull $endpoint
 	Assert-AreEqual $endpointName $endpoint.Name 
@@ -127,11 +127,11 @@ function Test-EndpointCrudPiping
 	Assert-AreEqual "Enabled" $endpoint.EndpointStatus
 	<# Assert-AreEqual "North Europe" $endpoint.EndpointLocation #>
 
-    $removed = Get-AzureTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName  -Type "ExternalEndpoints" | Set-AzureTrafficManagerEndpoint | Remove-AzureTrafficManagerEndpoint -Force
+    $removed = Get-AzureRMTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName  -Type "ExternalEndpoints" | Set-AzureRMTrafficManagerEndpoint | Remove-AzureRMTrafficManagerEndpoint -Force
 
     Assert-True { $removed }
 
-    Assert-Throws { Get-AzureTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints" }
+    Assert-Throws { Get-AzureRMTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints" }
 }
 
 <#
@@ -146,9 +146,9 @@ function Test-CreateExistingEndpoint
 
 	$profile = TestSetup-CreateProfile $profileName $resourceGroup.ResourceGroupName
 
-	$endpoint = New-AzureTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName  -Type "ExternalEndpoints" -Target "www.contoso.com" -EndpointStatus "Enabled" -EndpointLocation "North Europe"
+	$endpoint = New-AzureRMTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName  -Type "ExternalEndpoints" -Target "www.contoso.com" -EndpointStatus "Enabled" -EndpointLocation "North Europe"
 
-    Assert-Throws { New-AzureTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName  -Type "ExternalEndpoints" -Target "www.contoso.com" -EndpointStatus "Enabled" -EndpointLocation "North Europe" }
+    Assert-Throws { New-AzureRMTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName  -Type "ExternalEndpoints" -Target "www.contoso.com" -EndpointStatus "Enabled" -EndpointLocation "North Europe" }
 }
 
 <#
@@ -161,7 +161,7 @@ function Test-CreateExistingEndpointFromNonExistingProfile
 	$profileName = getAssetname
 	$resourceGroup = TestSetup-CreateResourceGroup
 
-    Assert-Throws { New-AzureTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints" -Target "www.contoso.com" -EndpointStatus "Enabled" -EndpointLocation "North Europe" }
+    Assert-Throws { New-AzureRMTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints" -Target "www.contoso.com" -EndpointStatus "Enabled" -EndpointLocation "North Europe" }
 }
 
 <#
@@ -174,7 +174,7 @@ function Test-RemoveExistingEndpointFromNonExistingProfile
 	$profileName = getAssetname
 	$resourceGroup = TestSetup-CreateResourceGroup
 
-    Assert-Throws { Remove-AzureTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints" }
+    Assert-Throws { Remove-AzureRMTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints" }
 }
 
 <#
@@ -187,7 +187,7 @@ function Test-GetExistingEndpointFromNonExistingProfile
 	$profileName = getAssetname
 	$resourceGroup = TestSetup-CreateResourceGroup
 
-    Assert-Throws { Get-AzureTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints" }
+    Assert-Throws { Get-AzureRMTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints" }
 }
 
 <#
@@ -202,7 +202,7 @@ function Test-RemoveNonExistingEndpointFromProfile
 
     $profile = TestSetup-CreateProfile $profileName $resourceGroup.ResourceGroupName
 
-    Assert-Throws { Remove-AzureTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints" }
+    Assert-Throws { Remove-AzureRMTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints" }
 }
 
 <#
@@ -217,15 +217,15 @@ function Test-EnableEndpoint
 
 	$profile = TestSetup-CreateProfile $profileName $resourceGroup.ResourceGroupName
 
-	$endpoint = New-AzureTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints" -Target "www.contoso.com" -EndpointStatus "Disabled" -EndpointLocation "North Europe"
+	$endpoint = New-AzureRMTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints" -Target "www.contoso.com" -EndpointStatus "Disabled" -EndpointLocation "North Europe"
 
 	Assert-AreEqual "Disabled" $endpoint.EndpointStatus
 
-    $endpoint = Get-AzureTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints"
+    $endpoint = Get-AzureRMTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints"
 
-	Assert-True { Enable-AzureTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints" }
+	Assert-True { Enable-AzureRMTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints" }
 
-    $endpoint = Get-AzureTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints"
+    $endpoint = Get-AzureRMTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints"
 
 	Assert-AreEqual "Enabled" $endpoint.EndpointStatus
 }
@@ -242,15 +242,15 @@ function Test-DisableEndpoint
 
 	$profile = TestSetup-CreateProfile $profileName $resourceGroup.ResourceGroupName
 
-	$endpoint = New-AzureTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints" -Target "www.contoso.com" -EndpointStatus "Enabled" -EndpointLocation "North Europe"
+	$endpoint = New-AzureRMTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints" -Target "www.contoso.com" -EndpointStatus "Enabled" -EndpointLocation "North Europe"
 
 	Assert-AreEqual "Enabled" $endpoint.EndpointStatus
 
-    $endpoint = Get-AzureTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints"
+    $endpoint = Get-AzureRMTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints"
 
-	Assert-True { Disable-AzureTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints" -Force }
+	Assert-True { Disable-AzureRMTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints" -Force }
 
-    $endpoint = Get-AzureTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints"
+    $endpoint = Get-AzureRMTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints"
 
 	Assert-NotNull $endpoint
 	Assert-AreEqual "Disabled" $endpoint.EndpointStatus
@@ -268,15 +268,15 @@ function Test-EnableEndpointUsingPiping
 
 	$profile = TestSetup-CreateProfile $profileName $resourceGroup.ResourceGroupName
 
-	$endpoint = New-AzureTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints" -Target "www.contoso.com" -EndpointStatus "Disabled" -EndpointLocation "North Europe"
+	$endpoint = New-AzureRMTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints" -Target "www.contoso.com" -EndpointStatus "Disabled" -EndpointLocation "North Europe"
 
 	Assert-AreEqual "Disabled" $endpoint.EndpointStatus
 
-    $endpoint = Get-AzureTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints"
+    $endpoint = Get-AzureRMTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints"
 
-	Assert-True { Enable-AzureTrafficManagerEndpoint -TrafficManagerEndpoint $endpoint }
+	Assert-True { Enable-AzureRMTrafficManagerEndpoint -TrafficManagerEndpoint $endpoint }
 
-    $endpoint = Get-AzureTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints"
+    $endpoint = Get-AzureRMTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints"
 
 	Assert-AreEqual "Enabled" $endpoint.EndpointStatus
 }
@@ -293,15 +293,15 @@ function Test-DisableEndpoint
 
 	$profile = TestSetup-CreateProfile $profileName $resourceGroup.ResourceGroupName
 
-	$endpoint = New-AzureTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints" -Target "www.contoso.com" -EndpointStatus "Enabled" -EndpointLocation "North Europe"
+	$endpoint = New-AzureRMTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints" -Target "www.contoso.com" -EndpointStatus "Enabled" -EndpointLocation "North Europe"
 
 	Assert-AreEqual "Enabled" $endpoint.EndpointStatus
 
-    $endpoint = Get-AzureTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints"
+    $endpoint = Get-AzureRMTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints"
 
-	Assert-True { Disable-AzureTrafficManagerEndpoint -TrafficManagerEndpoint $endpoint -Force }
+	Assert-True { Disable-AzureRMTrafficManagerEndpoint -TrafficManagerEndpoint $endpoint -Force }
 
-    $endpoint = Get-AzureTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints"
+    $endpoint = Get-AzureRMTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints"
 
 	Assert-NotNull $endpoint
 	Assert-AreEqual "Disabled" $endpoint.EndpointStatus
@@ -319,7 +319,7 @@ function Test-EnableNonExistingEndpoint
 
 	$profile = TestSetup-CreateProfile $profileName $resourceGroup.ResourceGroupName
 
-	Assert-Throws { Enable-AzureTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints" }
+	Assert-Throws { Enable-AzureRMTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints" }
 }
 
 <#
@@ -334,5 +334,5 @@ function Test-DisableNonExistingEndpoint
 
 	$profile = TestSetup-CreateProfile $profileName $resourceGroup.ResourceGroupName
 
-	Assert-Throws { Disable-AzureTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints" }
+	Assert-Throws { Disable-AzureRMTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -Type "ExternalEndpoints" }
 }

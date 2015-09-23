@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             // Get the single task matching the specified id
             if (!string.IsNullOrEmpty(options.TaskId))
             {
-                WriteVerbose(string.Format(Resources.GBT_GetById, options.TaskId, options.JobId));
+                WriteVerbose(string.Format(Resources.GetTaskById, options.TaskId, options.JobId));
                 JobOperations jobOperations = options.Context.BatchOMClient.JobOperations;
                 CloudTask task = jobOperations.GetTask(options.JobId, options.TaskId, additionalBehaviors: options.AdditionalBehaviors);
                 PSCloudTask psTask = new PSCloudTask(task);
@@ -53,12 +53,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 string verboseLogString = null;
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
-                    verboseLogString = string.Format(Resources.GBT_GetByOData, jobId);
+                    verboseLogString = string.Format(Resources.GetTaskByOData, jobId);
                     odata = new ODATADetailLevel(filterClause: options.Filter);
                 }
                 else
                 {
-                    verboseLogString = string.Format(Resources.GBT_GetNoFilter, jobId);
+                    verboseLogString = string.Format(Resources.GetTaskNoFilter, jobId);
                 }
                 WriteVerbose(verboseLogString);
 
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 task.Constraints = parameters.Constraints.omObject;
             }
 
-            WriteVerbose(string.Format(Resources.NBT_CreatingTask, parameters.TaskId));
+            WriteVerbose(string.Format(Resources.CreatingTask, parameters.TaskId));
             if (parameters.Job != null)
             {
                 parameters.Job.omObject.AddTask(task, parameters.AdditionalBehaviors);
@@ -154,6 +154,30 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 JobOperations jobOperations = parameters.Context.BatchOMClient.JobOperations;
                 jobOperations.DeleteTask(parameters.JobId, parameters.TaskId, parameters.AdditionalBehaviors);
+            }
+        }
+
+        /// <summary>
+        /// Terminates the specified task.
+        /// </summary>
+        /// <param name="parameters">The parameters indicating which task to terminate.</param>
+        public void TerminateTask(TaskOperationParameters parameters)
+        {
+            if (parameters == null)
+            {
+                throw new ArgumentNullException("parameters");
+            }
+
+            WriteVerbose(string.Format(Resources.TerminateTask, parameters.Task == null ? parameters.TaskId : parameters.Task.Id));
+
+            if (parameters.Task != null)
+            {
+                parameters.Task.omObject.Terminate(parameters.AdditionalBehaviors);
+            }
+            else
+            {
+                JobOperations jobOperations = parameters.Context.BatchOMClient.JobOperations;
+                jobOperations.TerminateTask(parameters.JobId, parameters.TaskId, parameters.AdditionalBehaviors);
             }
         }
     }

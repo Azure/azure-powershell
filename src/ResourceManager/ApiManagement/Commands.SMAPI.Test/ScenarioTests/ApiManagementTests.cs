@@ -23,11 +23,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
     using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Test;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using WindowsAzure.Commands.Test.Utilities.Common;
     using Microsoft.WindowsAzure.Management;
     using Microsoft.WindowsAzure.Management.Storage;
     using Xunit;
 
-    public class ApiManagementTests : IUseFixture<ApiManagementTestsFixture>
+    public class ApiManagementTests : RMTestBase, IUseFixture<ApiManagementTestsFixture>
     {
         private readonly EnvironmentSetupHelper _helper;
         private ApiManagementTestsFixture _fixture;
@@ -36,6 +37,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
         {
             _helper = new EnvironmentSetupHelper();
         }
+
 
         protected void SetupManagementClients()
         {
@@ -174,16 +176,16 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
 
                 SetupManagementClients();
 
-                _helper.SetupEnvironment(AzureModule.AzureProfile);
-                _helper.SetupModules(AzureModule.AzureProfile, "ScenarioTests\\Common.ps1", "ScenarioTests\\" + GetType().Name + ".ps1");
+                _helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                _helper.SetupModules(AzureModule.AzureResourceManager, "ScenarioTests\\Common.ps1", "ScenarioTests\\" + GetType().Name + ".ps1");
 
                 _helper.RunPowerShellTest(scripts);
             }
         }
 
-        public void SetFixture(ApiManagementTestsFixture fixture)
+        public void SetFixture(ApiManagementTestsFixture data)
         {
-            _fixture = fixture;
+            this._fixture = data;
         }
     }
 }

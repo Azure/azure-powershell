@@ -18,33 +18,33 @@
 #>
 function Test-AzureProvider
 {
-    $defaultProviders = Get-AzureProvider
+    $defaultProviders = Get-AzureRMResourceProvider
 
     Assert-True { $defaultProviders.Length -gt 0 }
 
-    $allProviders = Get-AzureProvider -ListAvailable
+    $allProviders = Get-AzureRMResourceProvider -ListAvailable
 
     Assert-True { $allProviders.Length -gt $defaultProviders.Length }
 
-    Register-AzureProvider -ProviderName "Microsoft.ApiManagement" -Force
+    Register-AzureRMResourceProvider -ProviderName "Microsoft.ApiManagement" -Force
 
     $endTime = [DateTime]::UtcNow.AddMinutes(5)
 
-    while ([DateTime]::UtcNow -lt $endTime -and @(Get-AzureProvider -ProviderName "Microsoft.ApiManagement").RegistrationState -ne "Registered")
+    while ([DateTime]::UtcNow -lt $endTime -and @(Get-AzureRMResourceProvider -ProviderName "Microsoft.ApiManagement").RegistrationState -ne "Registered")
     {
         [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(1000)
     }
 
-    Assert-True { @(Get-AzureProvider -ProviderName "Microsoft.ApiManagement").RegistrationState -eq "Registered" }
+    Assert-True { @(Get-AzureRMResourceProvider -ProviderName "Microsoft.ApiManagement").RegistrationState -eq "Registered" }
 
-    Unregister-AzureProvider -ProviderName "Microsoft.ApiManagement" -Force
+    Unregister-AzureRMResourceProvider -ProviderName "Microsoft.ApiManagement" -Force
 
-    while ([DateTime]::UtcNow -lt $endTime -and @(Get-AzureProvider -ProviderName "Microsoft.ApiManagement").RegistrationState -ne "Unregistered")
+    while ([DateTime]::UtcNow -lt $endTime -and @(Get-AzureRMResourceProvider -ProviderName "Microsoft.ApiManagement").RegistrationState -ne "Unregistered")
     {
         [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(1000)
     }
 
-    Assert-True { @(Get-AzureProvider -ProviderName "Microsoft.ApiManagement").RegistrationState -eq "Unregistered" }
+    Assert-True { @(Get-AzureRMResourceProvider -ProviderName "Microsoft.ApiManagement").RegistrationState -eq "Unregistered" }
  }
 
  <#
@@ -54,11 +54,11 @@ function Test-AzureProvider
 function Test-AzureProviderOperation
 {
     # Get all actions by all providers
-    $allActions = Get-AzureProviderOperation *
+    $allActions = Get-AzureRMProviderOperation *
 	Assert-True { $allActions.Length -gt 0 }
 
 	# Get all actions of microsoft.insights provider
-	$insightsActions = Get-AzureProviderOperation Microsoft.Insights/*
+	$insightsActions = Get-AzureRMProviderOperation Microsoft.Insights/*
 	$insightsActions
 	Assert-True { $insightsActions.Length -gt 0 }
 	Assert-True { $allActions.Length -gt $insightsActions.Length }
@@ -75,7 +75,7 @@ function Test-AzureProviderOperation
 	}
 
 	# Case insenstive search
-	$insightsCaseActions = Get-AzureProviderOperation MicROsoFt.InSIghTs/*
+	$insightsCaseActions = Get-AzureRMProviderOperation MicROsoFt.InSIghTs/*
 	Assert-True { $insightsCaseActions.Length -gt 0 }
 	Assert-True { $insightsCaseActions.Length -eq $insightsActions.Length }
 	foreach ($action in $insightsCaseActions)
@@ -84,7 +84,7 @@ function Test-AzureProviderOperation
 	}
 
 	# Get all Read actions of microsoft.insights provider
-	$insightsReadActions = Get-AzureProviderOperation Microsoft.Insights/*/read
+	$insightsReadActions = Get-AzureRMProviderOperation Microsoft.Insights/*/read
 	Assert-True { $insightsReadActions.Length -gt 0 }
 	Assert-True { $insightsActions.Length -gt $insightsReadActions.Length }
 	foreach ($action in $insightsReadActions)
@@ -94,7 +94,7 @@ function Test-AzureProviderOperation
 	}
 
 	# Get all Read actions of all providers
-	$readActions = Get-AzureProviderOperation */read
+	$readActions = Get-AzureRMProviderOperation */read
 	Assert-True { $readActions.Length -gt 0 }
 	Assert-True { $readActions.Length -lt $allActions.Length }
 	Assert-True { $readActions.Length -gt $insightsReadActions.Length }
@@ -105,17 +105,17 @@ function Test-AzureProviderOperation
 	}
 
 	# Get a particular action
-	$action = Get-AzureProviderOperation Microsoft.OperationalInsights/workspaces/usages/read
+	$action = Get-AzureRMProviderOperation Microsoft.OperationalInsights/workspaces/usages/read
 	Assert-AreEqual $action.Operation.ToLower() "Microsoft.OperationalInsights/workspaces/usages/read".ToLower();
 
 	# Get an invalid action
-	$action = Get-AzureProviderOperation Microsoft.OperationalInsights/workspaces/usages/read/123
+	$action = Get-AzureRMProviderOperation Microsoft.OperationalInsights/workspaces/usages/read/123
 	Assert-True { $action.Length -eq 0 }
 
 	# Get actions for non-existing provider
 	$exceptionMessage = "ProviderNotFound: Provider NonExistentProvider not found.";
-	Assert-Throws { Get-AzureProviderOperation NonExistentProvider/* } $exceptionMessage
+	Assert-Throws { Get-AzureRMProviderOperation NonExistentProvider/* } $exceptionMessage
 
 	# Get action for non-existing provider
-	Assert-Throws { Get-AzureProviderOperation NonExistentProvider/servers/read } $exceptionMessage
+	Assert-Throws { Get-AzureRMProviderOperation NonExistentProvider/servers/read } $exceptionMessage
  }

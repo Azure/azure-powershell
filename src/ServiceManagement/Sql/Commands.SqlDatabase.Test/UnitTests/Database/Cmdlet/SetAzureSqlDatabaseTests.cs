@@ -23,7 +23,7 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cmdlet
 {
     [TestClass]
-    public class SetAzureSqlDatabaseTests : TestBase
+    public class SetAzureSqlDatabaseTests : SMTestBase
     {
         [TestInitialize]
         public void InitializeTest()

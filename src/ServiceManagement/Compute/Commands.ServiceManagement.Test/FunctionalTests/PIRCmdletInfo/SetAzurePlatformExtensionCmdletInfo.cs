@@ -12,50 +12,60 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageRepository.Model;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PowershellCore;
+using System;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests.PIRCmdletInfo
 {
     public class SetAzurePlatformExtensionCmdletInfo : CmdletsInfo
     {
-        public SetAzurePlatformExtensionCmdletInfo(string imageName, string permission, string [] locations)
+        public SetAzurePlatformExtensionCmdletInfo(
+            string extensionName, string publisher, string version,
+            string label, string description, string company,
+            string sample, string eula,  Uri privacyUri, Uri homepage, string extensionMode, string regions)
         {
-            this.cmdletName = Utilities.SetAzurePlatformExtensionCmdletName;
-            this.cmdletParams.Add(new CmdletParam("ImageName", imageName));
-            if (permission != null)
-            {
-                this.cmdletParams.Add(new CmdletParam("Permission", permission));
-            }
-            if (locations != null)
-            {
-                this.cmdletParams.Add(new CmdletParam("ReplicaLocations", locations));
-            }
-        }
+            this.cmdletName = Utilities.PublishAzurePlatformExtensionCmdletName;
 
-        public SetAzurePlatformExtensionCmdletInfo(string imageName, string permission, string[] locations, ComputeImageConfig compCfg, MarketplaceImageConfig marketCfg)
-        {
-            this.cmdletName = Utilities.SetAzurePlatformExtensionCmdletName;
-            this.cmdletParams.Add(new CmdletParam("ImageName", imageName));
+            this.cmdletParams.Add(new CmdletParam("ExtensionName", extensionName));
+            this.cmdletParams.Add(new CmdletParam("Publisher", publisher));
+            this.cmdletParams.Add(new CmdletParam("Version", version));
 
-            if (permission != null)
+            if (!string.IsNullOrEmpty(label))
             {
-                this.cmdletParams.Add(new CmdletParam("Permission", permission));
+                this.cmdletParams.Add(new CmdletParam("Label", label));
             }
-
-            if (locations != null)
+            if (!string.IsNullOrEmpty(description))
             {
-                this.cmdletParams.Add(new CmdletParam("ReplicaLocations", locations));
+                this.cmdletParams.Add(new CmdletParam("Description", description));
+            }
+            if (!string.IsNullOrEmpty(company))
+            {
+                this.cmdletParams.Add(new CmdletParam("CompanyName", company));
+            }
+            if (!string.IsNullOrEmpty(sample))
+            {
+                this.cmdletParams.Add(new CmdletParam("SampleConfig", sample));
             }
 
-            if (compCfg != null)
+            if (!string.IsNullOrEmpty(eula))
             {
-                this.cmdletParams.Add(new CmdletParam("PlatformComputeImageConfig", compCfg));
+                this.cmdletParams.Add(new CmdletParam("Eula", eula));
             }
-
-            if (marketCfg != null)
+            if (privacyUri != null)
             {
-                this.cmdletParams.Add(new CmdletParam("PlatformMarketplaceImageConfig", marketCfg));
+                this.cmdletParams.Add(new CmdletParam("PrivacyUri", privacyUri));
+            }
+            if (homepage != null)
+            {
+                this.cmdletParams.Add(new CmdletParam("HomepageUri", homepage));
+            }
+            if (!string.IsNullOrEmpty(regions))
+            {
+                this.cmdletParams.Add(new CmdletParam("Regions", regions));
+            }
+            if (!string.IsNullOrEmpty(extensionMode))
+            {
+                this.cmdletParams.Add(new CmdletParam("ExtensionMode", regions));
             }
         }
     }

@@ -19,9 +19,11 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Graph.RBAC;
+using Microsoft.Azure.Insights;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Subscriptions;
@@ -37,6 +39,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         private EnvironmentSetupHelper helper;
         private const string TenantIdKey = "TenantId";
         private const string DomainKey = "Domain";
+        private const string SubscriptionIdKey = "SubscriptionId";
 
         public GraphRbacManagementClient GraphClient { get; private set; }
 
@@ -47,9 +50,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public SubscriptionClient SubscriptionClient { get; private set; }
 
         public GalleryClient GalleryClient { get; private set; }
-
-        // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
-        //public EventsClient EventsClient { get; private set; }
+        
+        public InsightsClient InsightsClient { get; private set; }
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
@@ -142,6 +144,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             GalleryClient = GetGalleryClient();
             AuthorizationManagementClient = GetAuthorizationManagementClient();
             GraphClient = GetGraphClient();
+            InsightsClient = GetInsightsClient();
             this.FeatureClient = this.GetFeatureClient();
             HttpClientHelperFactory.Instance = new TestHttpClientHelperFactory(this.csmTestFactory.GetTestEnvironment().Credentials as SubscriptionCloudCredentials);
 
@@ -150,6 +153,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 GalleryClient,
                 AuthorizationManagementClient,
                 GraphClient,
+                InsightsClient,
                 this.FeatureClient);
         }
 
@@ -175,6 +179,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 if (HttpMockServer.Variables.ContainsKey(DomainKey))
                 {
                     UserDomain = HttpMockServer.Variables[DomainKey];
+                }
+                if (HttpMockServer.Variables.ContainsKey(SubscriptionIdKey))
+                {
+                    AzureRMCmdlet.DefaultProfile.Context.Subscription.Id = new Guid(HttpMockServer.Variables[SubscriptionIdKey]);
                 }
             }
 
@@ -204,6 +212,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         private GalleryClient GetGalleryClient()
         {
             return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
+        }
+
+        private InsightsClient GetInsightsClient()
+        {
+            return TestBase.GetServiceClient<InsightsClient>(this.csmTestFactory);
         }
 
         /// <summary>
