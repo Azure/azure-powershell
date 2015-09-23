@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets Azure automation compilation job
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMAutomationDscCompilationJob", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmAutomationDscCompilationJob", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(CompilationJob))]
     public class GetAzureAutomationDscCompilationJob : AzureAutomationBaseCmdlet
     {

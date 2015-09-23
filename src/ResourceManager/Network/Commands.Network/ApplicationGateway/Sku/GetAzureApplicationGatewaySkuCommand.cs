@@ -19,7 +19,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRMApplicationGatewaySku"), OutputType(typeof(PSApplicationGatewaySku))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmApplicationGatewaySku"), OutputType(typeof(PSApplicationGatewaySku))]
     public class GetAzureApplicationGatewaySkuCommand : NetworkBaseCmdlet
     {
         [Parameter(

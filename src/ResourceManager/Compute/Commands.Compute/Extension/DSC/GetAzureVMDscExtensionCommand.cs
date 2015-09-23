@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         [Parameter(
             Position = 2,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Name of the ARM resource that represents the extension. The Set-AzureRMVMDscExtension cmdlet sets this name to  " +
-            "'Microsoft.Powershell.DSC', which is the same value used by Get-AzureRMVMDscExtension. Specify this parameter only if you changed " +
+            HelpMessage = "Name of the ARM resource that represents the extension. The Set-AzureRmVMDscExtension cmdlet sets this name to  " +
+            "'Microsoft.Powershell.DSC', which is the same value used by Get-AzureRmVMDscExtension. Specify this parameter only if you changed " +
             "the default name in the Set cmdlet or used a different resource name in an ARM template.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }

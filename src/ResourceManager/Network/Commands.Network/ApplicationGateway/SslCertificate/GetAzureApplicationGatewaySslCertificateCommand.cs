@@ -19,7 +19,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRMApplicationGatewaySslCertificate"), 
+    [Cmdlet(VerbsCommon.Get, "AzureRmApplicationGatewaySslCertificate"), 
         OutputType(typeof(PSApplicationGatewaySslCertificate), typeof(IEnumerable<PSApplicationGatewaySslCertificate>))]
     public class GetAzureApplicationGatewaySslCertificate : NetworkBaseCmdlet
     {

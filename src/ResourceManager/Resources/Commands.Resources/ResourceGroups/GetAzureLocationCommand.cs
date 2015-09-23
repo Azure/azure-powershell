@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Get the available locations for certain resource types.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMLocation"), OutputType(typeof(List<PSResourceProviderLocationInfo>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmLocation"), OutputType(typeof(List<PSResourceProviderLocationInfo>))]
     public class GetAzureLocationCommand : ResourcesBaseCmdlet, IModuleAssemblyInitializer
     {
         protected override void ProcessRecord()

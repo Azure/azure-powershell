@@ -20,7 +20,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, "AzureRMApplicationGatewayFrontendPort"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmApplicationGatewayFrontendPort"), OutputType(typeof(PSApplicationGateway))]
     public class AddAzureApplicationGatewayFrontendPortCommand : AzureApplicationGatewayFrontendPortBase
     {
         [Parameter(

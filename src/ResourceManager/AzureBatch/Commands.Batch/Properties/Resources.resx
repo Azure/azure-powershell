@@ -268,7 +268,7 @@
     <value>Invalid tag format. Ensure that each tag has a unique name. Example: @{Name = "tagName1"; Value = "tagValue1"}, @{Name = "tagName2"; Value = "tagValue2"}</value>
   </data>
   <data name="KeyNotPresent" xml:space="preserve">
-    <value>The current KeyInUse on this BatchAccountContext is the {0} key, but this key is not populated on the BatchAccountContext object. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its keys populated.</value>
+    <value>The current KeyInUse on this BatchAccountContext is the {0} key, but this key is not populated on the BatchAccountContext object. Use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its keys populated.</value>
   </data>
   <data name="LookupAccount" xml:space="preserve">
     <value>Checking if account already exists</value>
