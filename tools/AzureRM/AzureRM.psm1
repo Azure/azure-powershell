@@ -1,3 +1,30 @@
+$AzureRMModules = (
+  "Azure.Storage",
+  "AzureRM.ApiManagement",
+  "AzureRM.Automation",
+  "AzureRM.Backup",
+  "AzureRM.Batch",
+  "AzureRM.Compute",
+  "AzureRM.DataFactories",
+  "AzureRM.Dns",
+  "AzureRM.HDInsight",
+  "AzureRM.Insights",
+  "AzureRM.KeyVault",
+  "AzureRM.Network",
+  "AzureRM.OperationalInsights",
+  "AzureRM.Profile",
+  "AzureRM.RedisCache",
+  "AzureRM.Resources",
+  "AzureRM.SiteRecovery",
+  "AzureRM.Sql",
+  "AzureRM.Storage",
+  "AzureRM.StreamAnalytics",
+  "AzureRM.Tags",
+  "AzureRM.TrafficManager",
+  "AzureRM.UsageAggregates",
+  "AzureRM.Websites"
+)
+
 <#
  .Synopsis
   Install Azure Resource Manager cmdlet modules
@@ -13,36 +40,36 @@
 #>
 function Update-AzureRM
 {
-    param(
-    [Parameter(Position=0, Mandatory = $false)]
-    [string]
-    $Repository,
+  param(
+  [Parameter(Position=0, Mandatory = $false)]
+  [string]
+  $Repository,
 
-    [Parameter(Position=1, Mandatory = $false)]
-    [ValidateSet("CurrentUser","AllUsers")]
-    [string]
-    $Scope)
+  [Parameter(Position=1, Mandatory = $false)]
+  [ValidateSet("CurrentUser","AllUsers")]
+  [string]
+  $Scope)
 
-    if ([string]::IsNullOrWhiteSpace($Scope))
-    {
-      $Scope = "AllUsers"
-    }
+  if ([string]::IsNullOrWhiteSpace($Scope))
+  {
+    $Scope = "AllUsers"
+  }
 
-    Install-Module AzureRM.Profile -Repository $Repository
-    if ([string]::IsNullOrWhiteSpace($Repository)) 
-    {
-      $modules = Find-Module -Name AzureRM.* | Where-Object {$_.Name -ne "AzureRM" -and $_.Name -ne "AzureRM.Profile"}
-    } else {
-      $modules = Find-Module -Repository $Repository | Where-Object {$_.Name -like "AzureRM.*" -and $_.Name -ne "AzureRM" -and $_.Name -ne "AzureRM.Profile"}
-    }
+  Write-Output "Installing AzureRM modules."
 
-    Write-Output "Installing $($modules.Length) AzureRM modules. This may take a few minutes."
-
-    $result = $modules | ForEach {
-        Start-Job -Name $_.Name -ScriptBlock {
-          Install-Module -Name $args[0] -Repository $args[1] -Scope $args[2]
-          Write-Output "$($args[0]) installed..."
-        } -ArgumentList $_.Name, $Repository, $Scope }
-    
-    $modules | ForEach {Get-Job -Name $_.Name | Wait-Job | Receive-Job }
+  $result = $AzureRMModules | ForEach {
+    Start-Job -Name $_ -ScriptBlock {
+      if ([string]::IsNullOrWhiteSpace($args[1])) 
+      {
+        Install-Module -Name $args[0] -Scope $args[2]
+      } else {
+        Install-Module -Name $args[0] -Repository $args[1] -Scope $args[2]
+      }
+      $v = (Get-InstalledModule -Name $args[0])[0].Version.ToString()
+      Write-Output "$($args[0]) $v installed..."
+    } -ArgumentList $_, $Repository, $Scope }
+  
+  $AzureRMModules | ForEach {Get-Job -Name $_ | Wait-Job | Receive-Job }
 }
+New-Alias -Name Install-AzureRM -Value Update-AzureRM
+Export-ModuleMember -function * -Alias *
