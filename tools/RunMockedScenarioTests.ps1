@@ -15,4 +15,4 @@
 $scriptFolder = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . ($scriptFolder + '.\SetupTestEnv.ps1')
 
-msbuild.exe $env:AzurePSRoot\build.proj /t:"BuildDebug;BeforeRunTests;MockedScenarioTests"
+msbuild.exe $env:AzurePSRoot\build.proj /t:"Build;BeforeRunTests;MockedScenarioTests"

@@ -511,7 +511,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The current KeyInUse on this BatchAccountContext is the {0} key, but this key is not populated on the BatchAccountContext object. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its keys populated..
+        ///   Looks up a localized string similar to The current KeyInUse on this BatchAccountContext is the {0} key, but this key is not populated on the BatchAccountContext object. Use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its keys populated..
         /// </summary>
         internal static string KeyNotPresent {
             get {

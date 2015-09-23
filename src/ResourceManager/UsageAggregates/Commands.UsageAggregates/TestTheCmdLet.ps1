@@ -3,9 +3,9 @@ $subscription = "<Add subscription ID>"
 
 Import-Module "<path to>"Microsoft.Azure.Commands.UsageAggregates.dll
 
-Add-AzureRMAccount 
+Add-AzureRmAccount 
 
-Set-AzureRMSubscription -SubscriptionId $subscription
+Set-AzureRmSubscription -SubscriptionId $subscription
 
 $agggregate = get-UsageAggregates -ReportedStartTime "5/2/2015" -ReportedEndTime "5/5/2015"
 

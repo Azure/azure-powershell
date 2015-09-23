@@ -23,9 +23,9 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureRMSqlCapability cmdlet
+    /// Defines the Get-AzureRmSqlCapability cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMSqlCapability", 
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlCapability", 
         ConfirmImpact = ConfirmImpact.None,
         DefaultParameterSetName = _filtered)]
     public class GetAzureSqlCapability : AzureRMCmdlet

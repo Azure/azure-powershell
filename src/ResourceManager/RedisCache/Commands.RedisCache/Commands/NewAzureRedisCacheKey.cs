@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.RedisCache
     using Microsoft.Azure.Management.Redis.Models;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.New, "AzureRMRedisCacheKey"), OutputType(typeof(RedisAccessKeys))]
+    [Cmdlet(VerbsCommon.New, "AzureRmRedisCacheKey"), OutputType(typeof(RedisAccessKeys))]
     public class NewAzureRedisCacheKey : RedisCacheCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under which cache exists.")]

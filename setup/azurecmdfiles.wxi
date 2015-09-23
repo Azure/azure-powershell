@@ -8,6 +8,9 @@
                         <File Id="fil96C82365E5F5A2F2747805236B563DF0" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureResourceManager.psd1" />
                     </Component>
                     <Directory Id="dirF9A46FF3188BA8C006D8942FCEFE5108" Name="Azure.Storage">
+                        <Component Id="cmp0761C025FCF8EF027A5BC23C72777C52" Guid="*">
+                            <File Id="fil80798000B169AC6D62DD8331A55CF6FF" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Azure.Storage\Azure.Storage.psd1" />
+                        </Component>
                         <Component Id="cmp658F4F28B5894F240AF3AE214E228C7A" Guid="*">
                             <File Id="fil73B16246DA5417876E50086E40C8A00A" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Azure.Storage\Hyak.Common.dll" />
                         </Component>
@@ -49,6 +52,15 @@
                         </Component>
                         <Component Id="cmp0988585E83E97AA4EE52B48F896BC4D6" Guid="*">
                             <File Id="filC108BC66A495B11372BC504F75ED930D" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Azure.Storage\Microsoft.Rest.ClientRuntime.dll" />
+                        </Component>
+                        <Component Id="cmp69F36166D723B9392B32D39EC1E6211B" Guid="*">
+                            <File Id="fil22618CF43BECF2A8D4086154AE0C9D10" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Azure.Storage\Microsoft.Threading.Tasks.dll" />
+                        </Component>
+                        <Component Id="cmp730C16EF37B66504F754BDD6D67DDAC4" Guid="*">
+                            <File Id="fil8D79963D3481C998803D2A1EE5B987E1" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Azure.Storage\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
+                        </Component>
+                        <Component Id="cmp980055760476A04748F82C1C37F05B0B" Guid="*">
+                            <File Id="fil86386A067D18FE2A41E70134506DD533" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Azure.Storage\Microsoft.Threading.Tasks.Extensions.dll" />
                         </Component>
                         <Component Id="cmp41A47F4D1933F9E8B67D78A48C608AE9" Guid="*">
                             <File Id="filA7F9AD2A250E5F9A07C05E1917735711" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Azure.Storage\Microsoft.WindowsAzure.Commands.Common.dll" />
@@ -108,6 +120,9 @@
                         </Component>
                         <Component Id="cmp957D146263F021CE3EF1CBADBF06D2C4" Guid="*">
                             <File Id="fil3B64A78FBE060D1999F5155A4FC7A5A6" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.ApiManagement\AutoMapper.Net4.dll" />
+                        </Component>
+                        <Component Id="cmp5FB922E1DB9224DAB3732AEA3ECC0388" Guid="*">
+                            <File Id="fil5213407D51829D166CAC13B03BB3E5D9" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.ApiManagement\AzureRM.ApiManagement.psd1" />
                         </Component>
                         <Component Id="cmp2E3A58C9336220FF001B6912E569A1C3" Guid="*">
                             <File Id="filD034D5A928D036FF53840BB6DEC0C538" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.ApiManagement\Hyak.Common.dll" />
@@ -169,6 +184,15 @@
                         <Component Id="cmpEF3D25069B4C3AB33B9C6345788FAD57" Guid="*">
                             <File Id="fil8472595BEA87FC8651B92EC66041A295" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.ApiManagement\Microsoft.Rest.ClientRuntime.dll" />
                         </Component>
+                        <Component Id="cmp34F3264606840E2866BA465FE4FA4556" Guid="*">
+                            <File Id="filAA907829CA1683DC25F783A82B7CF550" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.ApiManagement\Microsoft.Threading.Tasks.dll" />
+                        </Component>
+                        <Component Id="cmpD3604BE80CEDF33E82E21EA75E298E23" Guid="*">
+                            <File Id="filC762F9539D01C1875D09A133D1821F38" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.ApiManagement\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
+                        </Component>
+                        <Component Id="cmp23F982B5671E50FDDB5AAE1AF6A96590" Guid="*">
+                            <File Id="fil05269B3832A63B0E0EB0D570F8167813" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.ApiManagement\Microsoft.Threading.Tasks.Extensions.dll" />
+                        </Component>
                         <Component Id="cmpD8921E69F11EB13AD3A5EE06FE29CE25" Guid="*">
                             <File Id="fil6D5D132C203A81B354A8038984D72BAC" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.ApiManagement\Microsoft.WindowsAzure.Commands.Common.Storage.dll" />
                         </Component>
@@ -198,6 +222,9 @@
                         </Component>
                     </Directory>
                     <Directory Id="dirC9565C26936EFCC1E289F1FDC5331E16" Name="AzureRM.Automation">
+                        <Component Id="cmpE48A93B0493B28E942E948BA2D821B91" Guid="*">
+                            <File Id="fil6502A76962642CDBF1F41647817A0DF2" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Automation\AzureRM.Automation.psd1" />
+                        </Component>
                         <Component Id="cmp41036154EE783BC3DEFB1A4C67DC0771" Guid="*">
                             <File Id="fil92735F71CDEED7BAC406572675F7E65B" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Automation\Hyak.Common.dll" />
                         </Component>
@@ -240,6 +267,15 @@
                         <Component Id="cmp163D57A480307B928C97569C409BB374" Guid="*">
                             <File Id="fil660B66D174E9C09C193C35582228ABBE" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Automation\Microsoft.Rest.ClientRuntime.dll" />
                         </Component>
+                        <Component Id="cmpC30D7A6A20123ED9BB1C9975B2B0C601" Guid="*">
+                            <File Id="fil597664C849D4864EF3597E0C6691ED8E" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Automation\Microsoft.Threading.Tasks.dll" />
+                        </Component>
+                        <Component Id="cmp66C4A3B8AD57EF9D265C083EF21AA51F" Guid="*">
+                            <File Id="filA1EBF823DEC19586F749D445BEC25435" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Automation\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
+                        </Component>
+                        <Component Id="cmp9C75139CBCD259365FB868E8D14F31D0" Guid="*">
+                            <File Id="fil0A9FBA65F47FE2F63BA47C20F6AB9584" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Automation\Microsoft.Threading.Tasks.Extensions.dll" />
+                        </Component>
                         <Component Id="cmp1F71F8FFB04929A4274BA561BD405F05" Guid="*">
                             <File Id="fil88A13AC6E3A96F97F7DC330CA056E48F" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Automation\Newtonsoft.Json.dll" />
                         </Component>
@@ -250,152 +286,176 @@
                             <File Id="fil24DB1D24F4B0E7D054465EC9126E649B" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Automation\System.Net.Http.Primitives.dll" />
                         </Component>
                     </Directory>
-                    <Directory Id="dirC5C2CDA3BFEE9BA96F89C4429F800DAC" Name="AzureRM.AzureBackup">
-                        <Component Id="cmp88A1E3A78A45310195A926EBAD5825C9" Guid="*">
-                            <File Id="fil621A6EEDB00DAF793C2EC4DED503FFD4" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBackup\Hyak.Common.dll" />
+                    <Directory Id="dirC356D37A40B405FD605985242C6B68F1" Name="AzureRM.Backup">
+                        <Component Id="cmp235245AE05B9E5ED010EE787C63217C5" Guid="*">
+                            <File Id="fil92AEB9045BAD0D90DAA8519E8E7AA02F" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Backup\AzureRM.Backup.psd1" />
                         </Component>
-                        <Component Id="cmpB2EA120B0D54BB789095C19E267DC52A" Guid="*">
-                            <File Id="fil275784012C7D12898CAD987F0F981447" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBackup\Microsoft.ApplicationInsights.dll" />
+                        <Component Id="cmpE0B0C8ED8BBFFD0F88A2D61AB9984AB2" Guid="*">
+                            <File Id="filEB90EBDA511597D2A620D5E8A6C5E4A1" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Backup\Hyak.Common.dll" />
                         </Component>
-                        <Component Id="cmp9397048CBE896EBD19DE37ECAA73638F" Guid="*">
-                            <File Id="fil965CA687B488B28DD621AEB3B4EC9AED" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBackup\Microsoft.Azure.Commands.AzureBackup.dll" />
+                        <Component Id="cmpEFF681572AC1D462B15B14C64B555792" Guid="*">
+                            <File Id="fil6D22540E378B81D4DA15721585588C14" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Backup\Microsoft.ApplicationInsights.dll" />
                         </Component>
-                        <Component Id="cmpD5F70F1F573E3A8D4771BEE9F367522A" Guid="*">
-                            <File Id="fil197CE1ED3A8B0FE32AA8C731E8E5AC0A" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBackup\Microsoft.Azure.Commands.AzureBackup.dll-help.xml" />
+                        <Component Id="cmp2A379397CB30B376A85BCA91AC27B299" Guid="*">
+                            <File Id="fil53461DB667584E71BCAEF7C94F275634" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Backup\Microsoft.Azure.Commands.AzureBackup.dll" />
                         </Component>
-                        <Component Id="cmpD32A5BD80112767BFB7E9226B1E6BD41" Guid="*">
-                            <File Id="fil1131ACA6FA3B42AD78CC8A805B6F574A" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBackup\Microsoft.Azure.Commands.AzureBackup.format.ps1xml" />
+                        <Component Id="cmpC41F465A6E63EB7F3E8E1184B4434F51" Guid="*">
+                            <File Id="fil696D091481B5AA694136E7D807F2680F" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Backup\Microsoft.Azure.Commands.AzureBackup.dll-help.xml" />
                         </Component>
-                        <Component Id="cmp3B47AA8C0AFE73FDBDD695FB50765F92" Guid="*">
-                            <File Id="filE340D1E9B97A9886F405732EE2E85AD0" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBackup\Microsoft.Azure.Commands.ResourceManager.Common.dll" />
+                        <Component Id="cmp88D8EC51D9872B77C8335E8063852E25" Guid="*">
+                            <File Id="fil21FE9DBC840AF6B7F32D28ED50FEC7A3" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Backup\Microsoft.Azure.Commands.AzureBackup.format.ps1xml" />
                         </Component>
-                        <Component Id="cmp3580AAFB2F9217B1CB8ED2D52D6A07D1" Guid="*">
-                            <File Id="fil1FB795D8CC9766336717253C52D85B24" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBackup\Microsoft.Azure.Common.Authentication.dll" />
+                        <Component Id="cmp12F7010B33D1FFDE1CA3DEF2102C85D3" Guid="*">
+                            <File Id="fil48DC71962E8922A3C31FE88FEFBCD198" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Backup\Microsoft.Azure.Commands.ResourceManager.Common.dll" />
                         </Component>
-                        <Component Id="cmp58AF32443C9522D062F1098646CFD22B" Guid="*">
-                            <File Id="fil8983A9AE6F5C5BBB53BFB3C785ABE120" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBackup\Microsoft.Azure.Common.dll" />
+                        <Component Id="cmp569A5D26E8DEF0A41608F078D7385652" Guid="*">
+                            <File Id="fil9C72FCF5A2E975514451F04EA23B9094" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Backup\Microsoft.Azure.Common.Authentication.dll" />
                         </Component>
-                        <Component Id="cmp2AEF1B4D18C6E92CF9DF39712A2BC0EC" Guid="*">
-                            <File Id="fil7FDF6BF84EC8F056A3214D4708BA8485" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBackup\Microsoft.Azure.Common.NetFramework.dll" />
+                        <Component Id="cmpCF61952C710D15D413419F5C6EF0A298" Guid="*">
+                            <File Id="fil289F804E58254A2DAA5E994E692ADE1F" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Backup\Microsoft.Azure.Common.dll" />
                         </Component>
-                        <Component Id="cmpDC6AE93A06ED739611012AACD4BDFE14" Guid="*">
-                            <File Id="fil9EEED4B4DBE23DE4639543D8A8272AD6" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBackup\Microsoft.Azure.Management.BackupServicesManagement.dll" />
+                        <Component Id="cmpC4CA139071A1085B24F7A9A5322B2469" Guid="*">
+                            <File Id="fil737F720EC8673E284D75C2B35AC4C56E" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Backup\Microsoft.Azure.Common.NetFramework.dll" />
                         </Component>
-                        <Component Id="cmp82C69E3E3D993F9D7DEEAF7F608963D7" Guid="*">
-                            <File Id="filDF4DF8E00DFA1E89157B67D697A30E29" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBackup\Microsoft.Azure.ResourceManager.dll" />
+                        <Component Id="cmp29E1C42F46F7C10CE33DAB39DA1F59D3" Guid="*">
+                            <File Id="fil82E994AF766AA7243ED970F7FA45DD2B" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Backup\Microsoft.Azure.Management.BackupServicesManagement.dll" />
                         </Component>
-                        <Component Id="cmpE5AB1D465A8458CBDE2B3F47987669BD" Guid="*">
-                            <File Id="fil2DA692B2D3F597AFF24E40367BD9AB49" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBackup\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
+                        <Component Id="cmp9DF0F429FD1BC96DE34147A58491B160" Guid="*">
+                            <File Id="fil174FBEE43A398B350B21A82609D882F7" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Backup\Microsoft.Azure.ResourceManager.dll" />
                         </Component>
-                        <Component Id="cmp61F7DC56724630AF7EEE12162EE841CE" Guid="*">
-                            <File Id="fil25103834A4C30EDDA75AEDB5946EC9E8" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBackup\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" />
+                        <Component Id="cmpDDDAA1E6A5ED3DABD2866083D98D6900" Guid="*">
+                            <File Id="fil3A1583EC13EFD1CEDD24CC3FC7ACDB21" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Backup\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
                         </Component>
-                        <Component Id="cmp108B146E12BE78135FF10DABEE79D943" Guid="*">
-                            <File Id="fil4D26160583CF1423C0F33458BC14D381" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBackup\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll" />
+                        <Component Id="cmp20E12A023BC4373C30A14CA3BB3F47B3" Guid="*">
+                            <File Id="fil8BE29D207784ECB25A61A0E07348FC12" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Backup\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" />
                         </Component>
-                        <Component Id="cmp65C79F34A920FE98714636810F0D60D0" Guid="*">
-                            <File Id="fil0EB58C4D7DC9AA7FB2C58BD0ED8A16C6" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBackup\Microsoft.Rest.ClientRuntime.dll" />
+                        <Component Id="cmp3CCF4979B5F98643F1C9A8AE81E18C1C" Guid="*">
+                            <File Id="fil16FF5C2EB38C02A0C9B816D974A98E79" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Backup\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll" />
                         </Component>
-                        <Component Id="cmp0293748DC40685624BFE9606911D1C99" Guid="*">
-                            <File Id="filE90C83FF9EE51FEE2389FEE6F1E99669" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBackup\Microsoft.WindowsAzure.Management.Common.dll" />
+                        <Component Id="cmpEC36E4E37AF85D68DFC5A013A04EDDA5" Guid="*">
+                            <File Id="filC367AD3E17D8093BD772BB5858714778" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Backup\Microsoft.Rest.ClientRuntime.dll" />
                         </Component>
-                        <Component Id="cmp006128B13E1B91795196FF609DDE2B5B" Guid="*">
-                            <File Id="filA97BC9CB01E68E3B6D1A892FDC64CE2F" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBackup\Microsoft.WindowsAzure.Management.dll" />
+                        <Component Id="cmp661514F3F7167DCE1D81CEAD1174ACCA" Guid="*">
+                            <File Id="fil6CBE25F32F58A11B206B4396F1CAFD74" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Backup\Microsoft.Threading.Tasks.dll" />
                         </Component>
-                        <Component Id="cmp66E2BC87ECA42BAFD0D73DB3E007CC47" Guid="*">
-                            <File Id="filE096D6BFCB889F5707175C566A6E96AD" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBackup\Microsoft.WindowsAzure.Management.Scheduler.dll" />
+                        <Component Id="cmp2EB79D052C5D78876FAC42408CA2311C" Guid="*">
+                            <File Id="fil9D8FE37C5D9E235D24E76046986B4661" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Backup\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
                         </Component>
-                        <Component Id="cmp3BF8938DC4C957BEFF6F6CA8C06C13FA" Guid="*">
-                            <File Id="filDC0D1124CF7CBB9285667809D14A5B09" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBackup\Newtonsoft.Json.dll" />
+                        <Component Id="cmp892AA23EE09BA3CA8DF0144879A24249" Guid="*">
+                            <File Id="fil1313DE3330F8C3B5A0537EFCBCC86DD3" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Backup\Microsoft.Threading.Tasks.Extensions.dll" />
                         </Component>
-                        <Component Id="cmpF1FC88B7CEBA3A4D4A641A907A7EB7EB" Guid="*">
-                            <File Id="filAE52111D5854C3D2EF940FAADE6E3468" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBackup\Security.Cryptography.dll" />
+                        <Component Id="cmp14C04F53A2E2F433CBA3C652F0382F25" Guid="*">
+                            <File Id="filCF13BA3BB93B7FBCE26833CABAF3F0AA" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Backup\Microsoft.WindowsAzure.Management.Common.dll" />
                         </Component>
-                        <Component Id="cmp761C482510E16755DD97A15ED62097BD" Guid="*">
-                            <File Id="fil700FFD5EC7AB65508E232B20F87BD35C" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBackup\System.Net.Http.Extensions.dll" />
+                        <Component Id="cmpB43DB84CCEE2F257BD897E455338857B" Guid="*">
+                            <File Id="fil31FD27084F977414E220D76D71AB7350" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Backup\Microsoft.WindowsAzure.Management.dll" />
                         </Component>
-                        <Component Id="cmp79C7D6E12D967294E4D6BB5910E26D19" Guid="*">
-                            <File Id="filBA61CDEE482BEBF8C8F3E23462510B0B" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBackup\System.Net.Http.Primitives.dll" />
+                        <Component Id="cmpBF27C1D39D783AD3F86F63D014EC030F" Guid="*">
+                            <File Id="fil3AAF65384BF613DB2ECA292B9294A8F2" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Backup\Microsoft.WindowsAzure.Management.Scheduler.dll" />
+                        </Component>
+                        <Component Id="cmpC861232CFE71FF5BF213069713C2A4DD" Guid="*">
+                            <File Id="fil811EB7B03061C898D4EA41158668929F" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Backup\Newtonsoft.Json.dll" />
+                        </Component>
+                        <Component Id="cmp82364D72D38170AAF9E06D264622529B" Guid="*">
+                            <File Id="fil62D605052BCF3C729A90278150584172" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Backup\Security.Cryptography.dll" />
+                        </Component>
+                        <Component Id="cmp59CB87DAB7E8479242138B34A3971566" Guid="*">
+                            <File Id="fil980274ECA2B91DAC302A8DB0722F2021" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Backup\System.Net.Http.Extensions.dll" />
+                        </Component>
+                        <Component Id="cmp887ACC42D403DDA6F3554CE7D43E0B23" Guid="*">
+                            <File Id="fil8040F568B8E1F3889156D62BC381A415" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Backup\System.Net.Http.Primitives.dll" />
                         </Component>
                     </Directory>
-                    <Directory Id="dirE32A52F4505CCFFE3D2428CFFD803BEF" Name="AzureRM.AzureBatch">
-                        <Component Id="cmp49A6006903777EE80867954989DA883D" Guid="*">
-                            <File Id="filFB921438719ADE6BB896794175642221" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBatch\Hyak.Common.dll" />
+                    <Directory Id="dir5E7BBFED9B359415B15299518B5B8042" Name="AzureRM.Batch">
+                        <Component Id="cmp8D6E468747E93CD69A8E2A0D608759F8" Guid="*">
+                            <File Id="filEE17F3DDF5BFABA60A722D22EA85B73B" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Batch\AzureRM.Batch.psd1" />
                         </Component>
-                        <Component Id="cmp1B306DD5D5275A1EC2822D4BC3CAF31A" Guid="*">
-                            <File Id="filED530FB7F66A18042DB2505476E4E2A9" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBatch\Microsoft.ApplicationInsights.dll" />
+                        <Component Id="cmp6F14BB2DCB8DCC909D5FEA84EB6E7301" Guid="*">
+                            <File Id="fil557C1294418461564FC95ADE506F4C11" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Batch\Hyak.Common.dll" />
                         </Component>
-                        <Component Id="cmpBD2C6D21CD9F882104652000A4954718" Guid="*">
-                            <File Id="filB900410D004D19912B5C3E8D19EAF673" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBatch\Microsoft.Azure.Batch.dll" />
+                        <Component Id="cmp82B66E00C3F3370F9A364A749F497883" Guid="*">
+                            <File Id="fil4E3C74B6A57C1705E26DD11FC8B33F62" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Batch\Microsoft.ApplicationInsights.dll" />
                         </Component>
-                        <Component Id="cmp1E9C0FFC87B8EC3F3AFD3FE398BB77E0" Guid="*">
-                            <File Id="fil00E0747F74DF9C0709F6FF01902FDC77" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBatch\Microsoft.Azure.Commands.Batch.dll" />
+                        <Component Id="cmpFF226ED5701894F77AC9E8912B83AB67" Guid="*">
+                            <File Id="fil31DFEFC0E559E0A72981F6C67FFBAF03" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Batch\Microsoft.Azure.Batch.dll" />
                         </Component>
-                        <Component Id="cmp43FE3D9EFF4E87164C1997044C55B993" Guid="*">
-                            <File Id="fil972CA02E5A05DA45D64E90BF85D3F2B6" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBatch\Microsoft.Azure.Commands.Batch.dll-Help.xml" />
+                        <Component Id="cmp5C8DB854624DF2950D61BA179C5FD373" Guid="*">
+                            <File Id="fil6123DF040D2BAF074E0B9438510D4B38" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Batch\Microsoft.Azure.Commands.Batch.dll" />
                         </Component>
-                        <Component Id="cmp6AC5866D915A129A8BF816F868B16986" Guid="*">
-                            <File Id="fil738ECC876A07F3452D2E49A336866F0B" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBatch\Microsoft.Azure.Commands.Batch.format.ps1xml" />
+                        <Component Id="cmpF722AB88CF534C159376B90D3352E735" Guid="*">
+                            <File Id="fil6EB8E6AD29E97402F5B573762082652D" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Batch\Microsoft.Azure.Commands.Batch.dll-Help.xml" />
                         </Component>
-                        <Component Id="cmpA05F86ECC5ACB0F57F3E1F23CF50155C" Guid="*">
-                            <File Id="filDC66E0781F7C408D811FEF8EF8A30ED9" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBatch\Microsoft.Azure.Commands.ResourceManager.Common.dll" />
+                        <Component Id="cmpA2DFBBC7C1D2551CE1820D4BFE68DD25" Guid="*">
+                            <File Id="fil268AD608D66E72195028252C834DB7B6" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Batch\Microsoft.Azure.Commands.Batch.format.ps1xml" />
                         </Component>
-                        <Component Id="cmpC3800538B48CB5761ABA2B08C6266195" Guid="*">
-                            <File Id="fil6B707FEE1FE9F4A6BA88ABD0E280B185" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBatch\Microsoft.Azure.Common.Authentication.dll" />
+                        <Component Id="cmp863C865281BE4875E207BF573BB434C8" Guid="*">
+                            <File Id="fil9E3CC2E27FE4D70FB938AE8D2471AEC7" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Batch\Microsoft.Azure.Commands.ResourceManager.Common.dll" />
                         </Component>
-                        <Component Id="cmp8F84BED5B7A4A6323076C03FF964254D" Guid="*">
-                            <File Id="filA2EC27BC0F8D49EB284FBC2F8BB2CFDD" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBatch\Microsoft.Azure.Common.dll" />
+                        <Component Id="cmpD23F8CB641E890A83A492A99686505AF" Guid="*">
+                            <File Id="fil2CB626F0174CC0CCEB1A1DC305232FB2" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Batch\Microsoft.Azure.Common.Authentication.dll" />
                         </Component>
-                        <Component Id="cmpADDEDD8B7784C288E3EEB2B9BD52C681" Guid="*">
-                            <File Id="filB384972168FE7D633BE8A91562FB5B45" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBatch\Microsoft.Azure.Common.NetFramework.dll" />
+                        <Component Id="cmpB0584BB55D8714E4CF5E60167B55282E" Guid="*">
+                            <File Id="fil820D4808A2FE70C63A6AD7FF9EEB7134" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Batch\Microsoft.Azure.Common.dll" />
                         </Component>
-                        <Component Id="cmp2C161133AD117883C99C7A9A66F7BD88" Guid="*">
-                            <File Id="fil48C0FA51FEAB419EC8CFD2E5968431B7" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBatch\Microsoft.Azure.Management.Batch.dll" />
+                        <Component Id="cmpC964B4550D9D1C104A224E22B19599BF" Guid="*">
+                            <File Id="filA06EE818F6153FBDA14765A9579B69B8" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Batch\Microsoft.Azure.Common.NetFramework.dll" />
                         </Component>
-                        <Component Id="cmp79CF7D125BE29579A8FF53372941FA18" Guid="*">
-                            <File Id="fil5D01AB2D30691F2013B1E71EBB926CFB" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBatch\Microsoft.Azure.ResourceManager.dll" />
+                        <Component Id="cmp557AD28EA410808B3805EFE4AA73C977" Guid="*">
+                            <File Id="fil17BDDBDDD5EA9206DCF1499F2AF621D9" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Batch\Microsoft.Azure.Management.Batch.dll" />
                         </Component>
-                        <Component Id="cmpBCA447722E6E9C0B11B114BE969AEBCE" Guid="*">
-                            <File Id="filDC9FB37ADFB70C95E3859584233F00FF" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBatch\Microsoft.Data.Edm.dll" />
+                        <Component Id="cmp4B5A611FF761BA928A53E0E56FB58D78" Guid="*">
+                            <File Id="filC0B34604D99CDA8D27ABE83B32E7EC4F" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Batch\Microsoft.Azure.ResourceManager.dll" />
                         </Component>
-                        <Component Id="cmp6DB18D2E830EF36430D8D4CEBBE1EA9B" Guid="*">
-                            <File Id="filB6B353D534CC0A07B929463DB1809A4C" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBatch\Microsoft.Data.OData.dll" />
+                        <Component Id="cmpAA90187095E5AA5387ECB19F691F5BB3" Guid="*">
+                            <File Id="fil35E846093D2F7E71B72D899F4C691DC6" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Batch\Microsoft.Data.Edm.dll" />
                         </Component>
-                        <Component Id="cmp3BF3982C09F0F7161D1891F31D0CA888" Guid="*">
-                            <File Id="fil3F682B3F09A9415EA70CCE029C7E9140" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBatch\Microsoft.Data.Services.Client.dll" />
+                        <Component Id="cmp21A3A51E9F4CEE163E61AAB46ECC1AA4" Guid="*">
+                            <File Id="fil56735A30757F600A1227FFEC41D7E470" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Batch\Microsoft.Data.OData.dll" />
                         </Component>
-                        <Component Id="cmpABE736B5093E725752A14BD9ED20C673" Guid="*">
-                            <File Id="fil70077CE47FB8CC31B111326968096BE3" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBatch\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
+                        <Component Id="cmp910CAC5301CCF2C18FB054DA61B50348" Guid="*">
+                            <File Id="fil4AE7A06E433E850F1DFCFA72F18E8498" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Batch\Microsoft.Data.Services.Client.dll" />
                         </Component>
-                        <Component Id="cmp65280D25251AB1551AC1D373FBB6B744" Guid="*">
-                            <File Id="fil72A902DDBDE230EB5221A7BB55E1A3E4" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBatch\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" />
+                        <Component Id="cmpD762051962F7D3051FBC9CF971AE9325" Guid="*">
+                            <File Id="filD170B3D4C2E8B2B0B678728E72F55510" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Batch\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
                         </Component>
-                        <Component Id="cmp6D26D7AF98A68BEE425B84DECCE9D958" Guid="*">
-                            <File Id="filE5BD352BFDD4FB41EBE65EDC5B501223" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBatch\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll" />
+                        <Component Id="cmpB11D8DF03DCC6DF2571C30776714A652" Guid="*">
+                            <File Id="filD1E38937FAD0BF9F8C83E17423D75A0F" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Batch\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" />
                         </Component>
-                        <Component Id="cmp268537B1CCC4C6889F6C33301B40446F" Guid="*">
-                            <File Id="filECB78752A0E10FD7EB4EEADA111772FE" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBatch\Microsoft.Rest.ClientRuntime.dll" />
+                        <Component Id="cmpEC720F6E3871A33FE098F6CEB7617D8F" Guid="*">
+                            <File Id="filE5E777BDF09D8E3E09A887286A7FBFCB" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Batch\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll" />
                         </Component>
-                        <Component Id="cmp2749E86987B432CF904F36F3A170B502" Guid="*">
-                            <File Id="filFB4729C1F78264EAD0DE6F81F1B6F271" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBatch\Microsoft.WindowsAzure.Configuration.dll" />
+                        <Component Id="cmp5D544D73B729F9669498812ECF7BF3E1" Guid="*">
+                            <File Id="filBC5BF331E6C0917A1886357E3ED64497" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Batch\Microsoft.Rest.ClientRuntime.dll" />
                         </Component>
-                        <Component Id="cmp90D3ED0C461C3616F333C8A747338F6F" Guid="*">
-                            <File Id="filCBDAA6FE14EFA34D80C413F5E518875F" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBatch\Microsoft.WindowsAzure.Management.dll" />
+                        <Component Id="cmpB1E3E66F5FC40C4E26A9CC895B89DA63" Guid="*">
+                            <File Id="filE88BF180533A1856233619378BB8C80B" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Batch\Microsoft.Threading.Tasks.dll" />
                         </Component>
-                        <Component Id="cmp579B44168387DC58EF366894A2C0456E" Guid="*">
-                            <File Id="filEA10F42A3ADD4DF9377C91C4435DB2E5" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBatch\Microsoft.WindowsAzure.Storage.dll" />
+                        <Component Id="cmp35BA09F11D618680F9850F73564F9F47" Guid="*">
+                            <File Id="fil03F93B19704264FB2D235B9B8FE9EA33" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Batch\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
                         </Component>
-                        <Component Id="cmp17DDD4882F6FC90D3AA2337F8B2661B8" Guid="*">
-                            <File Id="fil8402433F646AEC840C5ECBF8F235BD8D" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBatch\Newtonsoft.Json.dll" />
+                        <Component Id="cmp862B5049F9B72B316F08E73DD02A2B21" Guid="*">
+                            <File Id="fil35FC457B357A30BCFA218CA53023C6BD" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Batch\Microsoft.Threading.Tasks.Extensions.dll" />
                         </Component>
-                        <Component Id="cmp5C584744F3ED8956CD259836EAD0B4BA" Guid="*">
-                            <File Id="fil55E2A8228A9611E7953B12B593C9C1B5" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBatch\System.Net.Http.Extensions.dll" />
+                        <Component Id="cmp6A672FDA34EFE3B049235DEDFE185D9E" Guid="*">
+                            <File Id="fil311E3792C0C3EB8FADC87BB42D7F2A93" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Batch\Microsoft.WindowsAzure.Configuration.dll" />
                         </Component>
-                        <Component Id="cmp7DC47DE2CD308057EA0CFEDF56397BF9" Guid="*">
-                            <File Id="fil548DDC44C91AB34859AD367A1D0A7225" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBatch\System.Net.Http.Primitives.dll" />
+                        <Component Id="cmp40F8ED57752822AA87E94F51D4B1800D" Guid="*">
+                            <File Id="fil72F3E77AF60FA293F5C7855EE9A418C6" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Batch\Microsoft.WindowsAzure.Management.dll" />
                         </Component>
-                        <Component Id="cmpF9CF09E826B0D4075271ACE56AEC7B88" Guid="*">
-                            <File Id="filB9AC0FE0A52186E4BE0B4305DECD69D9" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.AzureBatch\System.Spatial.dll" />
+                        <Component Id="cmp5B9EB91263904E62D14890B60994B360" Guid="*">
+                            <File Id="fil6BBB4675048EE200DE786D7F20E6E62A" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Batch\Microsoft.WindowsAzure.Storage.dll" />
+                        </Component>
+                        <Component Id="cmpA40100685EA12B2F4CDF9DB3B025157F" Guid="*">
+                            <File Id="fil1F9521F1134261103439C13EE914626E" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Batch\Newtonsoft.Json.dll" />
+                        </Component>
+                        <Component Id="cmp8E6B2CBC9EF2E6C9012C5090F2932C68" Guid="*">
+                            <File Id="filACA92EA900B2F34CE49481BF19D3B0B6" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Batch\System.Net.Http.Extensions.dll" />
+                        </Component>
+                        <Component Id="cmp30F0EC1B207C0F4C59F81099974C18E3" Guid="*">
+                            <File Id="fil7B3408F754CB582CBA7A965DD8E20EC2" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Batch\System.Net.Http.Primitives.dll" />
+                        </Component>
+                        <Component Id="cmp22BC5873E0018F5801CD486C6CBCE0C5" Guid="*">
+                            <File Id="fil9D065E8E5B3E5AF98B57D1F44F6C8698" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Batch\System.Spatial.dll" />
                         </Component>
                     </Directory>
                     <Directory Id="dir470D08462380F56397F9D0288EEA2E52" Name="AzureRM.Compute">
@@ -404,6 +464,21 @@
                         </Component>
                         <Component Id="cmpD288F9671FEAE346EF3A1FAF2D98C7EC" Guid="*">
                             <File Id="filE254185AB3866CEF5D2C5C3A835C029A" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Compute\AzureResourceManager.psd1" />
+                        </Component>
+                        <Component Id="cmp594709EB2E69BD7173BC8833BE2061B4" Guid="*">
+                            <File Id="filEF7117E1317C1E3E14DF115DF4490BA3" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Compute\AzureRM.Compute.psd1" />
+                        </Component>
+                        <Component Id="cmp62338AF9F953CEE8318F8EF07FDDF6AD" Guid="*">
+                            <File Id="fil39CFA24E6EDADA1695E744DFC66ED1C2" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Compute\AzureRM.Network.psd1" />
+                        </Component>
+                        <Component Id="cmp4F1B147652795AAF834377CCD9CAF2A7" Guid="*">
+                            <File Id="fil7BE9FD1B89B50D33752D678E66FE8F0F" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Compute\AzureRM.Resources.psd1" />
+                        </Component>
+                        <Component Id="cmp9FDC7E987C84705E62A1E3E6958A7A34" Guid="*">
+                            <File Id="filE5BCEBB31C52D77D25E394F16AD431F4" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Compute\AzureRM.Storage.psd1" />
+                        </Component>
+                        <Component Id="cmp0BDDC10BCAFF9EC25710B20367203609" Guid="*">
+                            <File Id="fil1B9798D9FA9E8F9FC7A4235BCFAB93E4" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Compute\AzureRM.Tags.psd1" />
                         </Component>
                         <Component Id="cmpCC409403AF670A9E0538AC743C61BD66" Guid="*">
                             <File Id="fil68CB35902CE5A11BE50C9DE228B61D12" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Compute\Hyak.Common.dll" />
@@ -528,6 +603,15 @@
                         <Component Id="cmp8ECDEA22C0E5F05DDBFD04588509AA21" Guid="*">
                             <File Id="fil1D14D8E7C825D2BD455555795EFE6561" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Compute\Microsoft.Rest.ClientRuntime.dll" />
                         </Component>
+                        <Component Id="cmpC7651407AC5E8A64F827FC2A7DEF30E6" Guid="*">
+                            <File Id="fil67503A7B7C12A9EE1E399A9B28295D83" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Compute\Microsoft.Threading.Tasks.dll" />
+                        </Component>
+                        <Component Id="cmpD844318ECE3D0A693D753D7748D987A4" Guid="*">
+                            <File Id="fil5F9E66CE14699A21B37F00696D424189" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Compute\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
+                        </Component>
+                        <Component Id="cmp0D6600BAD7850E6EDAC1B411E34F7972" Guid="*">
+                            <File Id="fil041A868E3DB0D8153A7F795BAD78C287" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Compute\Microsoft.Threading.Tasks.Extensions.dll" />
+                        </Component>
                         <Component Id="cmpBDC7654A24B5F2AD98D1FDC4C592F83D" Guid="*">
                             <File Id="fil9BC4CDA0798E9F349F326785A4DD8E7E" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Compute\Microsoft.WindowsAzure.Commands.Common.Storage.dll" />
                         </Component>
@@ -560,6 +644,9 @@
                         </Component>
                     </Directory>
                     <Directory Id="dir92B779C59BDF2780C6B4FC5F744D2EF5" Name="AzureRM.DataFactories">
+                        <Component Id="cmp75C3D72B9C46E1B9D3F51CE3D29F6F00" Guid="*">
+                            <File Id="fil5CCF53246801A602FA558B5E387C8477" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.DataFactories\AzureRM.DataFactories.psd1" />
+                        </Component>
                         <Component Id="cmpEEBCE6D5D00306CCD759CE5B7793B164" Guid="*">
                             <File Id="fil75D801F6F3218A4C6EC391F60B15E13D" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.DataFactories\Hyak.Common.dll" />
                         </Component>
@@ -620,6 +707,15 @@
                         <Component Id="cmp9104713A9DBFAC762D0E26E0AAC1BC5D" Guid="*">
                             <File Id="filEC302CD2509B90A9E627609D27C4E780" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.DataFactories\Microsoft.Rest.ClientRuntime.dll" />
                         </Component>
+                        <Component Id="cmpAAB5CE95F8022876A9833748C8E4598C" Guid="*">
+                            <File Id="fil1CD4BCC99147E853E5943097C3785D55" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.DataFactories\Microsoft.Threading.Tasks.dll" />
+                        </Component>
+                        <Component Id="cmp0D9FBCBFCA23ACE0964A231F49309A42" Guid="*">
+                            <File Id="fil6438DB53ABB49ABF9BB17D0FBEEEC803" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.DataFactories\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
+                        </Component>
+                        <Component Id="cmp53F8AF52A024EFBFC8567F675D1E7186" Guid="*">
+                            <File Id="filC89309CDAB5E674614E023953BCC028A" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.DataFactories\Microsoft.Threading.Tasks.Extensions.dll" />
+                        </Component>
                         <Component Id="cmp78323CAD7EE8FDBEBFEA1D4175BAA50B" Guid="*">
                             <File Id="fil49AE8CA8CF10B798A6304F15F3890134" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.DataFactories\Microsoft.WindowsAzure.Management.dll" />
                         </Component>
@@ -640,6 +736,12 @@
                         </Component>
                     </Directory>
                     <Directory Id="dirBE5D077687887D44002EBDDC946075AC" Name="AzureRM.Dns">
+                        <Component Id="cmp0DA8E094A737664DAD35F560902CC483" Guid="*">
+                            <File Id="fil9D4CF65AE0F85154DEC1518543311735" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Dns\AzureRM.Dns.psd1" />
+                        </Component>
+                        <Component Id="cmp9AADE49B40AE34E78613184F68A0C602" Guid="*">
+                            <File Id="fil5AFFA067445601F0E5824F4B710AB29C" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Dns\AzureRM.Tags.psd1" />
+                        </Component>
                         <Component Id="cmp6739EA963462CB23B33E80066E3DDCF1" Guid="*">
                             <File Id="fil3F7357EEDD5CC0978F038B8EC634A479" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Dns\Hyak.Common.dll" />
                         </Component>
@@ -700,6 +802,9 @@
                         <Component Id="cmpBA345C2F015DD9066F6ACA7FAC093AC9" Guid="*">
                             <File Id="filD30AA643F551885E866713DCDCF087A2" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Dns\Microsoft.Rest.ClientRuntime.dll" />
                         </Component>
+                        <Component Id="cmp2CA94DB16E3E3D9F1DAF0CAFE9A13542" Guid="*">
+                            <File Id="fil833841169E8A2BE6F14E01557A6D1A45" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Dns\Microsoft.Threading.Tasks.dll" />
+                        </Component>
                         <Component Id="cmp1EF453FBA41501E23AAA6802E73E9233" Guid="*">
                             <File Id="fil762200DF863A9FB5AA3EEFCCB07F2AD4" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Dns\Newtonsoft.Json.dll" />
                         </Component>
@@ -714,6 +819,9 @@
                         </Component>
                     </Directory>
                     <Directory Id="dir875FB1A75D2DE0680E79C9DE6850ECDB" Name="AzureRM.HDInsight">
+                        <Component Id="cmp9D190B38C7D3A893B21DFAB4A757C98B" Guid="*">
+                            <File Id="fil6D6A1AC9F4C45D3DCD408FC684D49FCB" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.HDInsight\AzureRM.HDInsight.psd1" />
+                        </Component>
                         <Component Id="cmp04AE56BE6D07E336F237E3D542B1F69D" Guid="*">
                             <File Id="fil49F3436E8B3C323C5F8F216BD1A6924D" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.HDInsight\Hyak.Common.dll" />
                         </Component>
@@ -771,6 +879,15 @@
                         <Component Id="cmp0EE4DF89EE2AD9E7CFD2A58C17B67AC6" Guid="*">
                             <File Id="fil46A2D5A3D2BAD0FF77256251FB1D89EC" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.HDInsight\Microsoft.Rest.ClientRuntime.dll" />
                         </Component>
+                        <Component Id="cmp0C261034A6E6C2E4DACB359E938154CE" Guid="*">
+                            <File Id="filBBB0FA956BDE33E578ACB81C2D22688D" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.HDInsight\Microsoft.Threading.Tasks.dll" />
+                        </Component>
+                        <Component Id="cmpA355BB9BD11C68FB98B54E29E074178C" Guid="*">
+                            <File Id="fil7AD8E6F0CCDE4047D9D7A0C022655F7D" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.HDInsight\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
+                        </Component>
+                        <Component Id="cmp98765E0337FD9BB57B3447C6E3C4DC96" Guid="*">
+                            <File Id="filD2F44D488313F9CA0843590A7667831F" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.HDInsight\Microsoft.Threading.Tasks.Extensions.dll" />
+                        </Component>
                         <Component Id="cmp3E4180140A2FCDDB58ABB9CE2216BDE4" Guid="*">
                             <File Id="fil57A4505BC0D75D7081E82A9ABAA6A861" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.HDInsight\Microsoft.WindowsAzure.Configuration.dll" />
                         </Component>
@@ -785,6 +902,9 @@
                         </Component>
                     </Directory>
                     <Directory Id="dir70022A6DA4B0F7D6288C5058AE89CA43" Name="AzureRM.Insights">
+                        <Component Id="cmp46D2B2B0B3583E9D988E8822E4019690" Guid="*">
+                            <File Id="fil5087BEC8443CA1E4FF406E6BA37FA080" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Insights\AzureRM.Insights.psd1" />
+                        </Component>
                         <Component Id="cmpBAC33A5E24A63A1AA3FA603EC25BA196" Guid="*">
                             <File Id="fil67DF23056261AFE0ED5D75CFE59309B0" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Insights\Hyak.Common.dll" />
                         </Component>
@@ -852,6 +972,15 @@
                     <Directory Id="dirA5BF4C5FC88CC5FD4E43A0FA840806C7" Name="AzureRM.KeyVault">
                         <Component Id="cmpFEE86D031CEC182D160B80C5EC00914F" Guid="*">
                             <File Id="fil6DABB515D371B3CE610505D7BF92C2F4" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.KeyVault\AzureResourceManager.psd1" />
+                        </Component>
+                        <Component Id="cmpAB04FC1EEE889CA90013762F64086BFF" Guid="*">
+                            <File Id="fil83ACE69C51FD4368547AE421E6E1E09A" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.KeyVault\AzureRM.KeyVault.psd1" />
+                        </Component>
+                        <Component Id="cmp4714276292444ADF7D34F509F31C8102" Guid="*">
+                            <File Id="fil0A52BAEF5A3E1A79D70ABDB643623F37" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.KeyVault\AzureRM.Resources.psd1" />
+                        </Component>
+                        <Component Id="cmp007494D6DDD084F46271414EDBAE4A28" Guid="*">
+                            <File Id="fil695AE425CF97129CE83CA33285F0759E" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.KeyVault\AzureRM.Tags.psd1" />
                         </Component>
                         <Component Id="cmpF892ECD9E56A470DCBCDFB5721EFD871" Guid="*">
                             <File Id="filF2D6D4D9B900B65C391B70657FBF2B18" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.KeyVault\Hyak.Common.dll" />
@@ -937,6 +1066,15 @@
                         <Component Id="cmp370190EEE330714319D11416B45E3C02" Guid="*">
                             <File Id="filE93C6A3EF09F54E650F69B71329F2EA1" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.KeyVault\Microsoft.Rest.ClientRuntime.dll" />
                         </Component>
+                        <Component Id="cmp1C4ECEEE37C1624BEF2F3B0C35FC7651" Guid="*">
+                            <File Id="fil1959ECDCFDEA1479A136B1B1DC014A3F" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.KeyVault\Microsoft.Threading.Tasks.dll" />
+                        </Component>
+                        <Component Id="cmpEE3A05DF233EC58219BE11EB7C8F69DF" Guid="*">
+                            <File Id="fil9573F1920E95F7CCCD5F7F954A8FE1A6" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.KeyVault\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
+                        </Component>
+                        <Component Id="cmp845AC7B6253AAE4CD7A01C03B01AB6BE" Guid="*">
+                            <File Id="fil861223E1AABAF87F152D4803D7B6C325" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.KeyVault\Microsoft.Threading.Tasks.Extensions.dll" />
+                        </Component>
                         <Component Id="cmp900AFC3C39C5D962887982DDE8510E26" Guid="*">
                             <File Id="fil30612785299582C3F63C7BE30C45AA6C" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.KeyVault\Microsoft.WindowsAzure.Management.dll" />
                         </Component>
@@ -962,6 +1100,15 @@
                         </Component>
                         <Component Id="cmp92653399A1E9659661E74CA982C1D16A" Guid="*">
                             <File Id="fil992649F341AABCD20ED06A605644123C" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Network\AzureResourceManager.psd1" />
+                        </Component>
+                        <Component Id="cmp6E3EAD7F12BD99ACB19E0249804739D9" Guid="*">
+                            <File Id="fil073D08239CE53D9BDD13AB4040BF2180" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Network\AzureRM.Network.psd1" />
+                        </Component>
+                        <Component Id="cmp9F97686A6D38F8B72B2FB1D62529AF0F" Guid="*">
+                            <File Id="filC2BC370237A32AAC88220FE337C473B3" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Network\AzureRM.Resources.psd1" />
+                        </Component>
+                        <Component Id="cmpA398972142ABD0AC819F613EE832B65C" Guid="*">
+                            <File Id="fil64E3E1B543CB7B7FD4B465DD3C025088" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Network\AzureRM.Tags.psd1" />
                         </Component>
                         <Component Id="cmp02E49F28BB0FA3174A478847B857A4D0" Guid="*">
                             <File Id="fil379E46A4E79152D00FBBBF3BF85A0BA2" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Network\Hyak.Common.dll" />
@@ -1050,6 +1197,15 @@
                         <Component Id="cmpB69DD31582993D319EB909D5DEB4004E" Guid="*">
                             <File Id="filFB0DABB41FC6B134654589CEDDE107CF" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Network\Microsoft.Rest.ClientRuntime.dll" />
                         </Component>
+                        <Component Id="cmpDAA3E1FBD7B784DD8FBDB88D7CCFEFE8" Guid="*">
+                            <File Id="fil48C110030FA57D5D6B0E3848C7B10977" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Network\Microsoft.Threading.Tasks.dll" />
+                        </Component>
+                        <Component Id="cmpB1CC3831A4FB6A26C143DA8B6606425B" Guid="*">
+                            <File Id="fil0B27B3B9AE4EB92AEA0C38FCDB32A112" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Network\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
+                        </Component>
+                        <Component Id="cmp915E6351383D1760B6CB025667A99E49" Guid="*">
+                            <File Id="fil53AF887CE6EB6CF71EAAF7841E2B49CE" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Network\Microsoft.Threading.Tasks.Extensions.dll" />
+                        </Component>
                         <Component Id="cmpD9E00CF36A1BF106BD49E9368F96A1EE" Guid="*">
                             <File Id="fil20EB538DE607DDE13AB3D2D42016F54D" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Network\Microsoft.WindowsAzure.Storage.dll" />
                         </Component>
@@ -1070,6 +1226,9 @@
                         </Component>
                     </Directory>
                     <Directory Id="dir295D717AB187C005AAA1BD05D9EE7671" Name="AzureRM.OperationalInsights">
+                        <Component Id="cmp17459EC3296F82D03FEF8C426C8DA7EA" Guid="*">
+                            <File Id="filF30732FD3174ABEC7D2103467F25E8E5" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.OperationalInsights\AzureRM.OperationalInsights.psd1" />
+                        </Component>
                         <Component Id="cmp7CE9821E11931CE1140ACA06CF2D38B4" Guid="*">
                             <File Id="filD490745C6F4007A53448F93D7655F3D4" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.OperationalInsights\Hyak.Common.dll" />
                         </Component>
@@ -1115,6 +1274,15 @@
                         <Component Id="cmp2D0BEFEBE21F0CDAD25ED9593B820286" Guid="*">
                             <File Id="filC9C16DE9592F52463D77991C661D9969" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.OperationalInsights\Microsoft.Rest.ClientRuntime.dll" />
                         </Component>
+                        <Component Id="cmp0F88458A8B08E9C5A9DB05A868EB9706" Guid="*">
+                            <File Id="fil0E95D417848C321473BC35CD0BF016BB" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.OperationalInsights\Microsoft.Threading.Tasks.dll" />
+                        </Component>
+                        <Component Id="cmp6D717DF110AAD1FEF613A15A046375F7" Guid="*">
+                            <File Id="fil87C91C0DC49E186D4903358CE89E0CA8" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.OperationalInsights\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
+                        </Component>
+                        <Component Id="cmp1E3AF44CC7606B0FD61E209B7B814355" Guid="*">
+                            <File Id="fil7E4236F612C50E4ECEEBB485C9ACEB8D" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.OperationalInsights\Microsoft.Threading.Tasks.Extensions.dll" />
+                        </Component>
                         <Component Id="cmpF98A2CCD736EDBCB2C21E170C3EB8FC9" Guid="*">
                             <File Id="fil911C2119C2C8EDF87795C391496B0275" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.OperationalInsights\Microsoft.WindowsAzure.Management.dll" />
                         </Component>
@@ -1129,6 +1297,9 @@
                         </Component>
                     </Directory>
                     <Directory Id="dir4395B471E6DFAD4EF5810AAA6A09D202" Name="AzureRM.Profile">
+                        <Component Id="cmpCDBCF0967EA30044FF3F4478A30C1D5B" Guid="*">
+                            <File Id="fil3DAF3370A0C8515C0D6D1D2B587FC47D" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1" />
+                        </Component>
                         <Component Id="cmpD738842B230F04E64FD98E3E850E6338" Guid="*">
                             <File Id="fil73F9971478A8661859398F414D5BDE00" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Profile\Hyak.Common.dll" />
                         </Component>
@@ -1171,6 +1342,15 @@
                         <Component Id="cmp61D87C757ACDE206CC79A5B19CE403B2" Guid="*">
                             <File Id="fil6B03B342A31437287A1683D279F4EA01" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Profile\Microsoft.Rest.ClientRuntime.dll" />
                         </Component>
+                        <Component Id="cmpFEED527FE38FC11823CA6DF27008AD75" Guid="*">
+                            <File Id="fil874ACD8FA1CBA452A36EDE68FE7B6010" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Profile\Microsoft.Threading.Tasks.dll" />
+                        </Component>
+                        <Component Id="cmpC7B3E3214E7ED8708906D8F3E0F9F476" Guid="*">
+                            <File Id="filEB14A5ED31EA6ECBB5C94D0CEE82B8E8" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Profile\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
+                        </Component>
+                        <Component Id="cmp8D637393B06DDB4E95F9C9DE02FBDC88" Guid="*">
+                            <File Id="fil2E0A33EC74AA6C08679F32E280E41EC3" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Profile\Microsoft.Threading.Tasks.Extensions.dll" />
+                        </Component>
                         <Component Id="cmp3F9778895366D6C753CEDF6DC18F265D" Guid="*">
                             <File Id="fil8C0665193B93834C9C0B36E8DD5B003B" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Profile\Microsoft.WindowsAzure.Management.dll" />
                         </Component>
@@ -1185,6 +1365,9 @@
                         </Component>
                     </Directory>
                     <Directory Id="dir81EE6B6C66E21DBFAFE07FA058F415D6" Name="AzureRM.RedisCache">
+                        <Component Id="cmp301F9E8FA547D7C9A0DF4FF20F87815D" Guid="*">
+                            <File Id="fil1A611C57F01D0929B21DD9483DAF7EE0" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RedisCache\AzureRM.RedisCache.psd1" />
+                        </Component>
                         <Component Id="cmp5EF3051C386C8DAA602E772A7C258726" Guid="*">
                             <File Id="filD9819C68A365E06BAE135F69762CECD5" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RedisCache\Hyak.Common.dll" />
                         </Component>
@@ -1230,6 +1413,15 @@
                         <Component Id="cmpDE6C92AC2ECEED1C03C8D6728B42EA70" Guid="*">
                             <File Id="filB8103ADF161FDE5CAC0F8629BB53738D" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RedisCache\Microsoft.Rest.ClientRuntime.dll" />
                         </Component>
+                        <Component Id="cmpC601580257AEA8DA8522AD7F32FE545C" Guid="*">
+                            <File Id="filA76AAD118554269E2FFD19D754414876" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RedisCache\Microsoft.Threading.Tasks.dll" />
+                        </Component>
+                        <Component Id="cmp1BF396A297DE4BB9EFCE53AA38D5EF41" Guid="*">
+                            <File Id="fil165A2751A563D825410A775AD4E12246" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RedisCache\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
+                        </Component>
+                        <Component Id="cmpCD22DDF0DFFCD87EFE8CB3AEAD7B2D10" Guid="*">
+                            <File Id="fil6D178D0896D119BE2ED7B4A33A50D19B" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RedisCache\Microsoft.Threading.Tasks.Extensions.dll" />
+                        </Component>
                         <Component Id="cmpA3F0584F49B26E431792BDDA23CA5844" Guid="*">
                             <File Id="filE0B28C51A17B5758F64068F08B6EE7F7" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.RedisCache\Microsoft.WindowsAzure.Management.dll" />
                         </Component>
@@ -1244,6 +1436,12 @@
                         </Component>
                     </Directory>
                     <Directory Id="dir5A96CDDC32336B058D325B4B67756080" Name="AzureRM.Resources">
+                        <Component Id="cmp4DDC11D6580AB2CC03CADEDD62194BDA" Guid="*">
+                            <File Id="fil18CFCEC425A013C7495F980DCB8E0C9F" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1" />
+                        </Component>
+                        <Component Id="cmpE3F8AFED4B05B18FC4A7CAB87B1CB417" Guid="*">
+                            <File Id="fil89D429F47E4E159AC3690771E112BF11" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Tags.psd1" />
+                        </Component>
                         <Component Id="cmpB3DCE82FE478526DDF1700692DBA9623" Guid="*">
                             <File Id="fil56D69E31585C3BFC03017901E6F3751B" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Resources\Hyak.Common.dll" />
                         </Component>
@@ -1310,6 +1508,15 @@
                         <Component Id="cmp94F1754099FE50A85549D11C0CC21916" Guid="*">
                             <File Id="fil3706C2532C80DA4057EB1E1283486AEB" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Resources\Microsoft.Rest.ClientRuntime.dll" />
                         </Component>
+                        <Component Id="cmpB42192A5F8420BF74FAD5D5078C21D04" Guid="*">
+                            <File Id="fil8B02A8F767C4BB123CA4EDEB6F4ED2AF" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Resources\Microsoft.Threading.Tasks.dll" />
+                        </Component>
+                        <Component Id="cmpD7ED9ECDF7DC36204C769003AC1C92D1" Guid="*">
+                            <File Id="fil370FE8969380961FF7796A3618823CDD" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Resources\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
+                        </Component>
+                        <Component Id="cmp621C5472569E9B7988C8A084D8656B22" Guid="*">
+                            <File Id="fil59D3D72179CDDEEFCE31796A4D8669D4" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Resources\Microsoft.Threading.Tasks.Extensions.dll" />
+                        </Component>
                         <Component Id="cmpD80193A27EAF0B72702BBA3F066DD099" Guid="*">
                             <File Id="fil96661A2BEA2D23EDA32D79BAC8514E50" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Resources\Microsoft.WindowsAzure.Management.dll" />
                         </Component>
@@ -1330,6 +1537,9 @@
                         </Component>
                     </Directory>
                     <Directory Id="dirC63F4F2C0F6AE7B19B68616D946C4B21" Name="AzureRM.SiteRecovery">
+                        <Component Id="cmpE1FBC775E0C4E8ECA1EB6C0F338FEDFA" Guid="*">
+                            <File Id="fil23111926C8CD47148FFAC879CF352381" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.SiteRecovery\AzureRM.SiteRecovery.psd1" />
+                        </Component>
                         <Component Id="cmp02DCD4998B3C2CF365F95C5A38848DB3" Guid="*">
                             <File Id="filE4201A82491CB56C78D5CD69110836F3" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.SiteRecovery\Hyak.Common.dll" />
                         </Component>
@@ -1372,6 +1582,15 @@
                         <Component Id="cmp3690E2A0F23C88463E67FA00A8CFB465" Guid="*">
                             <File Id="fil14BC7E048F47A883A0609FDB7C119499" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.SiteRecovery\Microsoft.Rest.ClientRuntime.dll" />
                         </Component>
+                        <Component Id="cmp4DCADEC0DAC1C1DA9D1D352E4A417A2D" Guid="*">
+                            <File Id="fil7CDC3D0D7A22A72FB796A9AE34AC66BB" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.SiteRecovery\Microsoft.Threading.Tasks.dll" />
+                        </Component>
+                        <Component Id="cmpDF9D174F5DD3373F4E7447C5E34B1348" Guid="*">
+                            <File Id="filFBB3CA498CB74BAA3C0A6AAD0BA3CDE0" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.SiteRecovery\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
+                        </Component>
+                        <Component Id="cmpC66BD3D99AF61BAD98BC08FDEDF8A276" Guid="*">
+                            <File Id="filD6742C37F368B8953C63E85D81F0534B" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.SiteRecovery\Microsoft.Threading.Tasks.Extensions.dll" />
+                        </Component>
                         <Component Id="cmp368F7AA272349F8911057739DF9BDC14" Guid="*">
                             <File Id="fil06B77E3D79B460118F38A9C875F746D5" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.SiteRecovery\Microsoft.WindowsAzure.Management.Scheduler.dll" />
                         </Component>
@@ -1391,6 +1610,15 @@
                     <Directory Id="dirBA80E9DB8E2152CE322690719CF18460" Name="AzureRM.Sql">
                         <Component Id="cmpABAF8D1829695B54EE167D137802FE49" Guid="*">
                             <File Id="filDAC4590B1C55DF4558E19F4A6EEB8A22" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Sql\AzureResourceManager.psd1" />
+                        </Component>
+                        <Component Id="cmpDD0209B9F15287C06AF2A301A6DA9C67" Guid="*">
+                            <File Id="filCA0336774210FEEAEDD1EA24F1465699" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Sql\AzureRM.Resources.psd1" />
+                        </Component>
+                        <Component Id="cmpB904935B70928974D5ABC88308A90047" Guid="*">
+                            <File Id="fil9212435846ED517F48D364021050D526" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Sql\AzureRM.Sql.psd1" />
+                        </Component>
+                        <Component Id="cmp5C61554BD83089367CC25D6B8087BA72" Guid="*">
+                            <File Id="filD5C0E93A081B06910B6A92666C0F0015" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Sql\AzureRM.Tags.psd1" />
                         </Component>
                         <Component Id="cmp3C9C507DDA08AF33411AE879EDD0A4F2" Guid="*">
                             <File Id="fil1DE24B7291B8224F71A972C8F4B92FBA" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Sql\Hyak.Common.dll" />
@@ -1482,6 +1710,9 @@
                         <Component Id="cmp41B6BA33AAAFB39382ABF2B08ADD9EE2" Guid="*">
                             <File Id="fil66F931BD0199B5FBA773825EC7CF08EE" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Sql\Microsoft.Rest.ClientRuntime.dll" />
                         </Component>
+                        <Component Id="cmpB6FDBA85455DA6EBED174F6D69F6554F" Guid="*">
+                            <File Id="fil02A5045A2BA480C98CA4D2A5F276BEF4" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Sql\Microsoft.Threading.Tasks.dll" />
+                        </Component>
                         <Component Id="cmp72CD8D3AE95F7E6039ACC556939748D1" Guid="*">
                             <File Id="fil444F0B1E59B620C66CA069C2A8395E9D" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Sql\Microsoft.WindowsAzure.Configuration.dll" />
                         </Component>
@@ -1510,99 +1741,120 @@
                             <File Id="fil87CC35FCE77DA46C95ADC61350F33AF0" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Sql\System.Spatial.dll" />
                         </Component>
                     </Directory>
-                    <Directory Id="dir04075F3A659473D44F92E3F692D21D98" Name="AzureRM.StorageManagement">
-                        <Component Id="cmpAB73A292CB35271F6F4846DE380590E9" Guid="*">
-                            <File Id="filF3E714559976B51FD52C94C1120BD5EC" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.StorageManagement\AzureResourceManager.psd1" />
+                    <Directory Id="dir0F79C72718C45BA510EC2F8CB9AE064F" Name="AzureRM.Storage">
+                        <Component Id="cmp3D2A9D83FC8C994C373CE6ED8587BDFB" Guid="*">
+                            <File Id="fil248B3C493A709553BC8A9F07EBC95E8A" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\AzureResourceManager.psd1" />
                         </Component>
-                        <Component Id="cmp8A018BDE7E702A23D2972894F5468A9B" Guid="*">
-                            <File Id="filAD4840CC41B6467865D36FD24D2A02A3" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.StorageManagement\Hyak.Common.dll" />
+                        <Component Id="cmp60521804CF648610DFEE8873C98DF6FE" Guid="*">
+                            <File Id="filFC489F6B6166573995DC7230724FFC47" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\AzureRM.Resources.psd1" />
                         </Component>
-                        <Component Id="cmpEE91695065D2C0CC7BE1F5F8C2F17401" Guid="*">
-                            <File Id="fil9B26D0C157D3A03F4548D54C56CDDCEC" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.StorageManagement\Microsoft.ApplicationInsights.dll" />
+                        <Component Id="cmp4AFA8C6EDE02E2B9FC026EFD116FAFA7" Guid="*">
+                            <File Id="fil672A78A252FB3BBCC74C7739E5F7A75E" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\AzureRM.Storage.psd1" />
                         </Component>
-                        <Component Id="cmp07323E3D8954734949E10A6B67CF606D" Guid="*">
-                            <File Id="fil3BF3D86FD9998779CEB68296CF34C1E9" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.StorageManagement\Microsoft.Azure.Commands.Management.Storage.dll" />
+                        <Component Id="cmp926FBB377170F25C198A076240F70BB6" Guid="*">
+                            <File Id="fil86F44ED2D5DDF21D04100689B8B278E8" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\AzureRM.Tags.psd1" />
                         </Component>
-                        <Component Id="cmp86DED8D5DC1B60F713165E5B7A3A7807" Guid="*">
-                            <File Id="fil449CDB60392365714E94EAB46D0209CA" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.StorageManagement\Microsoft.Azure.Commands.Management.Storage.dll-Help.psd1" />
+                        <Component Id="cmp59441725CC89648B8BF9D5D4B503100A" Guid="*">
+                            <File Id="filBBE725164A1B7199005BA384E6A1BC26" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\Hyak.Common.dll" />
                         </Component>
-                        <Component Id="cmp16039F03EE573F76672CF2EB92819EB2" Guid="*">
-                            <File Id="fil50E1BB479463F648E24F3256FBCA5433" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.StorageManagement\Microsoft.Azure.Commands.Management.Storage.dll-Help.xml" />
+                        <Component Id="cmpBCE3E3885799B8A3163ACE2AE0F576E9" Guid="*">
+                            <File Id="fil2B34CCDBB93731F35A30FBAF6EF61196" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\Microsoft.ApplicationInsights.dll" />
                         </Component>
-                        <Component Id="cmp31422BFD3DA564E2FDD4D43DEA405BEC" Guid="*">
-                            <File Id="fil5522683889ED03995137994402BC586B" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.StorageManagement\Microsoft.Azure.Commands.Management.Storage.format.ps1xml" />
+                        <Component Id="cmpBAC1299B16CA8EF80BEAB5FF71CBABAE" Guid="*">
+                            <File Id="fil757DCAE68E4B9D2FB036814046E80B42" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\Microsoft.Azure.Commands.Management.Storage.dll" />
                         </Component>
-                        <Component Id="cmpB109935AB8D34E4AB1DF5D7C06E55F1C" Guid="*">
-                            <File Id="filDE6C2E8610B7E2E3445E4DF6BF344B3C" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.StorageManagement\Microsoft.Azure.Commands.ResourceManager.Common.dll" />
+                        <Component Id="cmp7BE376774A950E9B6D7E678D3D277018" Guid="*">
+                            <File Id="fil65146629F74575407AFC87E7413F3C42" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\Microsoft.Azure.Commands.Management.Storage.dll-Help.psd1" />
                         </Component>
-                        <Component Id="cmp167D0BD5E883378DEFC3A6C16E90DC8F" Guid="*">
-                            <File Id="filC7666B64BB1375B2EBFA69F227540871" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.StorageManagement\Microsoft.Azure.Commands.Resources.dll" />
+                        <Component Id="cmp424E120D40F4D297C20CCA3E2790FAF7" Guid="*">
+                            <File Id="filAD991B20087F6A0B9BC9BD090D86AB73" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\Microsoft.Azure.Commands.Management.Storage.dll-Help.xml" />
                         </Component>
-                        <Component Id="cmp791EA170A11BFA931253436A01E56C35" Guid="*">
-                            <File Id="fil8CACAC3748E88EC0138EE6F7E9864786" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.StorageManagement\Microsoft.Azure.Commands.Resources.dll-Help.xml" />
+                        <Component Id="cmp0861FE5479F2A5D5C40F2BB01ECB8CC9" Guid="*">
+                            <File Id="filDAFF1D92F7115705B14F052724DF2414" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\Microsoft.Azure.Commands.Management.Storage.format.ps1xml" />
                         </Component>
-                        <Component Id="cmp526A292F73F0AD989F9EF26F033847B8" Guid="*">
-                            <File Id="fil0C75A099410161843D206E9B3147F466" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.StorageManagement\Microsoft.Azure.Commands.Resources.format.ps1xml" />
+                        <Component Id="cmp2907887CFFF5B6110AB0097013514BE4" Guid="*">
+                            <File Id="fil5F1A67FDD660330F8A4ED196533F8266" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\Microsoft.Azure.Commands.ResourceManager.Common.dll" />
                         </Component>
-                        <Component Id="cmp74C71F73C924B15A36D215FAFDD52C39" Guid="*">
-                            <File Id="fil7CC0D74F7199DCC4E7BB6C15E1F8C958" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.StorageManagement\Microsoft.Azure.Commands.Tags.dll" />
+                        <Component Id="cmp9E425050A0DE99DE8E3AF4B7D9C1CFD7" Guid="*">
+                            <File Id="filAA029E2E281A0195F0CAEBB6280C8E32" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\Microsoft.Azure.Commands.Resources.dll" />
                         </Component>
-                        <Component Id="cmp978B119DEB75B7DC1685098BC73FB4A4" Guid="*">
-                            <File Id="fil2E582C18DDC01401BEE91314EC1BE845" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.StorageManagement\Microsoft.Azure.Commands.Tags.dll-help.xml" />
+                        <Component Id="cmpF15E2D2C885C287DCD2CB46EACB2AC46" Guid="*">
+                            <File Id="filBD644C7704C47B7DC5471E0917D1D7F3" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\Microsoft.Azure.Commands.Resources.dll-Help.xml" />
                         </Component>
-                        <Component Id="cmp74B694D958192185BA257DF20B9E43DB" Guid="*">
-                            <File Id="fil4B790DB6085D760916284CFE0D552284" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.StorageManagement\Microsoft.Azure.Commands.Tags.format.ps1xml" />
+                        <Component Id="cmp975EFC6A92D92C5C5B4153547CD20282" Guid="*">
+                            <File Id="filF9BF5BE1BA9537AAB953B5A191AE64D0" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\Microsoft.Azure.Commands.Resources.format.ps1xml" />
                         </Component>
-                        <Component Id="cmpF47A0851A531708616C7C7EEA487B759" Guid="*">
-                            <File Id="fil8CDABF53C219B05F18D2F631CA06D2FB" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.StorageManagement\Microsoft.Azure.Common.Authentication.dll" />
+                        <Component Id="cmp3FC34086BA28215892E4708013DDBDB2" Guid="*">
+                            <File Id="filEB8038F796171A580CBAEEA2181D28BB" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\Microsoft.Azure.Commands.Tags.dll" />
                         </Component>
-                        <Component Id="cmpB8730612E16E29299072F61206DD74BB" Guid="*">
-                            <File Id="fil038AB315B6946C582DEEF969A65B982D" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.StorageManagement\Microsoft.Azure.Common.dll" />
+                        <Component Id="cmp9370342F2A1F4546D93361C26E8A5EFE" Guid="*">
+                            <File Id="fil1D266CFE85125C7881CCAB692FB82655" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\Microsoft.Azure.Commands.Tags.dll-help.xml" />
                         </Component>
-                        <Component Id="cmp9B885D410272077B30F451BDCCD2BF20" Guid="*">
-                            <File Id="fil3B3922B73A373CCA5434B247F925B546" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.StorageManagement\Microsoft.Azure.Common.NetFramework.dll" />
+                        <Component Id="cmp6BDCE40E4D709D742E59EE0C2C9DF5F5" Guid="*">
+                            <File Id="filF27AEA57291F4458AAFDFD6878A7D4EF" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\Microsoft.Azure.Commands.Tags.format.ps1xml" />
                         </Component>
-                        <Component Id="cmp0ED13C74F08CD14584996A339AAFC596" Guid="*">
-                            <File Id="fil9B0536A8076315B753B0BF41C4366EEC" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.StorageManagement\Microsoft.Azure.Gallery.dll" />
+                        <Component Id="cmp8F4AA05745FF79CBB4E6B78CED246603" Guid="*">
+                            <File Id="fil2CD8B06C6F3D1D772621C28F17F417C6" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\Microsoft.Azure.Common.Authentication.dll" />
                         </Component>
-                        <Component Id="cmpAC76DBAB332886BAD0198F513FE3BEF2" Guid="*">
-                            <File Id="fil67CC3DBFA4257DF893E5E0F077137F59" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.StorageManagement\Microsoft.Azure.Graph.RBAC.dll" />
+                        <Component Id="cmp690CA9176375AC212E2BC1B116D980EC" Guid="*">
+                            <File Id="fil8111ABA1B7AD95DEB6D21A344C7DE050" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\Microsoft.Azure.Common.dll" />
                         </Component>
-                        <Component Id="cmp604E152B8D286CDF588762A5D4F11A5D" Guid="*">
-                            <File Id="fil9EC624F27C9380AAE3A858E1F47FE9FC" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.StorageManagement\Microsoft.Azure.Management.Authorization.dll" />
+                        <Component Id="cmp083D1E0049B5BB205A2E5C92CB909BEF" Guid="*">
+                            <File Id="fil095A8C68A031FAFAD00BC53667C911FE" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\Microsoft.Azure.Common.NetFramework.dll" />
                         </Component>
-                        <Component Id="cmp2A28FDEA5DE69758ADA4940DF86A2BEB" Guid="*">
-                            <File Id="filF1FF2C818886642AC55F7653069A1A79" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.StorageManagement\Microsoft.Azure.Management.Storage.dll" />
+                        <Component Id="cmp5F6AA34B6EFDC5C0AA644FDA3DCD3AE5" Guid="*">
+                            <File Id="fil7DEE6FBCE933E93D11818C66F75CEC08" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\Microsoft.Azure.Gallery.dll" />
                         </Component>
-                        <Component Id="cmpAA1873A0424C1C272A156FE55723A432" Guid="*">
-                            <File Id="filEB9FD87A8A0B4E862382111DE471D0DC" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.StorageManagement\Microsoft.Azure.ResourceManager.dll" />
+                        <Component Id="cmp2E31F2A1731BEF5A04B4A7BB5CA00126" Guid="*">
+                            <File Id="fil36D359D0399A0B92D736035A786C1ECE" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\Microsoft.Azure.Graph.RBAC.dll" />
                         </Component>
-                        <Component Id="cmpB16C798C1C6E871244C9E0BDD33966AD" Guid="*">
-                            <File Id="fil2FEBC19AA33D9EB4A380A717C940D547" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.StorageManagement\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
+                        <Component Id="cmp00BBC94DC75846DE95B7DD06CCBCBBF9" Guid="*">
+                            <File Id="filA8D7F838278AA94277AA04C1E3DCBE0D" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\Microsoft.Azure.Management.Authorization.dll" />
                         </Component>
-                        <Component Id="cmpC5B83E06C9AAFF41E4ADF1130D582395" Guid="*">
-                            <File Id="filD45405E7313DACB0EFF99050FDD1620A" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.StorageManagement\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" />
+                        <Component Id="cmp410839696897F016B1DAF2FE7A911D2D" Guid="*">
+                            <File Id="fil636BF8BB4ED284798AEEC5A075F80245" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\Microsoft.Azure.Management.Storage.dll" />
                         </Component>
-                        <Component Id="cmp3065324CB5C5745DF07EFF2D4C2F73B7" Guid="*">
-                            <File Id="filE2000C85DBFAC0BDDB1F6C9EA6FADB51" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.StorageManagement\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll" />
+                        <Component Id="cmp8DF5908875AF35BB00B232C7412C20AD" Guid="*">
+                            <File Id="fil365C745FF39926F4A233C8386A60F373" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\Microsoft.Azure.ResourceManager.dll" />
                         </Component>
-                        <Component Id="cmp32597465309DB4C6111145F7F9386998" Guid="*">
-                            <File Id="fil1BC77CDB4F327B3625A63E3BBACC40BE" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.StorageManagement\Microsoft.Rest.ClientRuntime.dll" />
+                        <Component Id="cmp4EA5A818E3BE7C67C27B69ADABCE5CBF" Guid="*">
+                            <File Id="fil2F316F5C60CAB52EC8085103AFB48BED" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
                         </Component>
-                        <Component Id="cmpA3269F8E5D09F797DC9AAE938BB01F7E" Guid="*">
-                            <File Id="filAF5247D575A77B9BFD9F6C0A2643C838" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.StorageManagement\Newtonsoft.Json.dll" />
+                        <Component Id="cmpBF600E80A7D04977AF21CAA07A79254C" Guid="*">
+                            <File Id="fil268C340106972934A818431882ED879E" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" />
                         </Component>
-                        <Component Id="cmpA8A1BA779FDC8D490A9D712030B27451" Guid="*">
-                            <File Id="fil037F23164C7588C31CF587870C13CE11" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.StorageManagement\ResourceManagerStartup.ps1" />
+                        <Component Id="cmpA2A4B67ACC8738C88A82A9576BD82026" Guid="*">
+                            <File Id="fil2E6EA8F5997FA6DBE29FCE3A58F051DF" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll" />
                         </Component>
-                        <Component Id="cmpB0F5842BF4CBFAAB314E384FEEC4638E" Guid="*">
-                            <File Id="filD0B0BE90F73F6C8EAEC447C82B44670B" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.StorageManagement\System.Net.Http.Extensions.dll" />
+                        <Component Id="cmpE56C0006C325EFBAD7984DBBCF689FD2" Guid="*">
+                            <File Id="filDAF92272D69F4A127139311912333F8B" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\Microsoft.Rest.ClientRuntime.dll" />
                         </Component>
-                        <Component Id="cmp8DF361EA3C81A9115940DFEDBA84F47F" Guid="*">
-                            <File Id="filF5A964479DB2F0CF2620D2A2E9C3268D" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.StorageManagement\System.Net.Http.Primitives.dll" />
+                        <Component Id="cmpA94FD747C692B4A9A45D9DE5D869DE53" Guid="*">
+                            <File Id="filB2846096C72A6A86AAD4642C669500E7" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\Microsoft.Threading.Tasks.dll" />
+                        </Component>
+                        <Component Id="cmp7F0D9683DB4D431F6A1A42EBCAD0E4E3" Guid="*">
+                            <File Id="fil5B4AFF3CC471F9B0884379823E957252" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
+                        </Component>
+                        <Component Id="cmp162D3E5C118EE77EBC4C6FA0525B7470" Guid="*">
+                            <File Id="fil427D416FAAC67D473DDB84F669E4D81D" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\Microsoft.Threading.Tasks.Extensions.dll" />
+                        </Component>
+                        <Component Id="cmpF1E11922E5C06DD2E1F4F20A684C6DEE" Guid="*">
+                            <File Id="filEB1D7511773D496D80BCE3745A1903D1" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\Newtonsoft.Json.dll" />
+                        </Component>
+                        <Component Id="cmp672C835EB29D98EC5EA0805F5895926A" Guid="*">
+                            <File Id="filE7C630017AA536EBA444A59E5198AC22" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\ResourceManagerStartup.ps1" />
+                        </Component>
+                        <Component Id="cmp388D2A53C01E1A6A4159B3664AA8CB58" Guid="*">
+                            <File Id="fil25776E7CABACBC7895EDBBBED2DE9277" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\System.Net.Http.Extensions.dll" />
+                        </Component>
+                        <Component Id="cmpFC0CB80997A65B711715114CE05F5352" Guid="*">
+                            <File Id="filFFD4A765BF43C3815C580FC27F64FE3A" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Storage\System.Net.Http.Primitives.dll" />
                         </Component>
                     </Directory>
                     <Directory Id="dirFA7C9A5A635BE139BB5B3424EB99DACF" Name="AzureRM.StreamAnalytics">
+                        <Component Id="cmpF7A753E4CAACA8F93A7BC91300781563" Guid="*">
+                            <File Id="filBA239D3586C32D78054EE2EED159ECB3" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.StreamAnalytics\AzureRM.StreamAnalytics.psd1" />
+                        </Component>
                         <Component Id="cmp223561C7CC398B710983BE7DCFDD0621" Guid="*">
                             <File Id="fil2D77DA88393EF1F68925D8865B2A931C" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.StreamAnalytics\Hyak.Common.dll" />
                         </Component>
@@ -1680,6 +1932,9 @@
                         </Component>
                     </Directory>
                     <Directory Id="dir5E4172107485B8B2594EA4C60F4FBEAF" Name="AzureRM.Tags">
+                        <Component Id="cmp5168A1A0C7C08B622BF4A720457790F9" Guid="*">
+                            <File Id="fil9469135FCCEBC992935929FB977729C9" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Tags\AzureRM.Tags.psd1" />
+                        </Component>
                         <Component Id="cmpFB7D307E2ABB67721699BB2C4E1F7929" Guid="*">
                             <File Id="filCDA42DFBE443BEE042162ED8E285A8AB" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Tags\Hyak.Common.dll" />
                         </Component>
@@ -1722,8 +1977,14 @@
                         <Component Id="cmp870F3852316FF981A05181FC2CA8FC87" Guid="*">
                             <File Id="fil73CA6153837D2E00B11C074E7D084A51" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Tags\Microsoft.Rest.ClientRuntime.dll" />
                         </Component>
+                        <Component Id="cmpC7A69E0CAF79A399713E570A0117B34B" Guid="*">
+                            <File Id="filA9175C9E9A27DA0E0F87FCCFF3F199B7" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Tags\Microsoft.Threading.Tasks.dll" />
+                        </Component>
                         <Component Id="cmp872790A9D04A11F34AD1AFA30E9E9AB4" Guid="*">
                             <File Id="fil76D3917606BAE536B208D3205FDD0FD1" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Tags\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
+                        </Component>
+                        <Component Id="cmpCEA34C1D4FCE6A300D1FBF63D7E498E4" Guid="*">
+                            <File Id="fil8D7B256905B460D50FD7EE2FE4D163E4" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Tags\Microsoft.Threading.Tasks.Extensions.dll" />
                         </Component>
                         <Component Id="cmp3A9B1C71BAB473309BC45D2A1003D04B" Guid="*">
                             <File Id="filA8EE1D0A01CA185715082D3F4E34ADBD" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Tags\Microsoft.WindowsAzure.Management.dll" />
@@ -1739,6 +2000,12 @@
                         </Component>
                     </Directory>
                     <Directory Id="dirA2BBB30C55F8371F3CB3139AFDC5E5C0" Name="AzureRM.TrafficManager">
+                        <Component Id="cmp9985A42F73AEC37B96446426793628DB" Guid="*">
+                            <File Id="fil3648C8960F8A88E9FE261EE7D5D3886D" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.TrafficManager\AzureRM.Tags.psd1" />
+                        </Component>
+                        <Component Id="cmp641EC0122CB44D4F55DA2B5F3FD4F52F" Guid="*">
+                            <File Id="filE7FF9BABF537F953B6058C0EE41D7FB3" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.TrafficManager\AzureRM.TrafficManager.psd1" />
+                        </Component>
                         <Component Id="cmpD187CB7739FF6519F37560880EF37715" Guid="*">
                             <File Id="filA8B3E7A4F8FB599805B62F4F7FA15899" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.TrafficManager\Hyak.Common.dll" />
                         </Component>
@@ -1792,6 +2059,9 @@
                         </Component>
                     </Directory>
                     <Directory Id="dir51D4370DCE16E82FCBD6D82C440B45CC" Name="AzureRM.UsageAggregates">
+                        <Component Id="cmp9C5D0681FD5D35967C2ADB2CC83EFE07" Guid="*">
+                            <File Id="fil89772EC43EA302DF92E4F84172C1244B" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.UsageAggregates\AzureRM.UsageAggregates.psd1" />
+                        </Component>
                         <Component Id="cmp6279AD933DA3E295B2543496D844DAAB" Guid="*">
                             <File Id="filF42CE350E43A0B2D0244C7799F72A972" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.UsageAggregates\Hyak.Common.dll" />
                         </Component>
@@ -1837,11 +2107,23 @@
                         <Component Id="cmp882DFDCDF5B641E85EA5053D90331FF3" Guid="*">
                             <File Id="fil605D6D716F2FF4A5D4A9B141D61F5E1D" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.UsageAggregates\Microsoft.Rest.ClientRuntime.dll" />
                         </Component>
+                        <Component Id="cmp8149DA54BAD5138C724AA9531F6EF1DB" Guid="*">
+                            <File Id="filF8BB8462264563749CB18C753FEE57A9" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.UsageAggregates\Microsoft.Threading.Tasks.dll" />
+                        </Component>
+                        <Component Id="cmpB71BC78C7C4F1B1778042F4F4B4F2F08" Guid="*">
+                            <File Id="filCB601CA948D1A83C2729140607307124" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.UsageAggregates\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
+                        </Component>
+                        <Component Id="cmp3AD5835A28E94C8EB2904782C63B95B4" Guid="*">
+                            <File Id="fil2C7D6E61CD8D60E48E6B5FDF88F73C13" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.UsageAggregates\Microsoft.Threading.Tasks.Extensions.dll" />
+                        </Component>
                         <Component Id="cmp8162A7134D4C9EB5D49EC45591995C2B" Guid="*">
                             <File Id="fil2F1C46C950D3C820BCB2F05E026556D4" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.UsageAggregates\Newtonsoft.Json.dll" />
                         </Component>
                     </Directory>
                     <Directory Id="dir71903E152B1EC7360B3834768786084D" Name="AzureRM.Websites">
+                        <Component Id="cmpF679AA745A78D9232AFA533AC5A06B55" Guid="*">
+                            <File Id="fil2BCD1C222604E8D245E834F1092DE5F3" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Websites\AzureRM.Websites.psd1" />
+                        </Component>
                         <Component Id="cmpD0FB9F1837C72A913A5A221811D836CC" Guid="*">
                             <File Id="fil3B2BC62F59229D89CDE5D2AE6360BC51" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Websites\Hyak.Common.dll" />
                         </Component>
@@ -1892,6 +2174,15 @@
                         </Component>
                         <Component Id="cmp3B20078612586B038701E00BEBC1B530" Guid="*">
                             <File Id="filED5E7D89FC671B96C355B0DAB2C29A64" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Websites\Microsoft.Rest.ClientRuntime.dll" />
+                        </Component>
+                        <Component Id="cmp67582164B4932A904A1460B50A37A58C" Guid="*">
+                            <File Id="filE58BF78BDEC55B3FE4344E44035C1D18" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Websites\Microsoft.Threading.Tasks.dll" />
+                        </Component>
+                        <Component Id="cmp4D574386F62E94034679F22808B3F1F1" Guid="*">
+                            <File Id="fil9B33CDD4068D824AFE47A6DB31109980" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Websites\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
+                        </Component>
+                        <Component Id="cmp46DF6CA6BD8BD194F1866E74A694CCB3" Guid="*">
+                            <File Id="filE558460C2956A94782E01AFF9D2CC6C2" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Websites\Microsoft.Threading.Tasks.Extensions.dll" />
                         </Component>
                         <Component Id="cmpA92D5F5096D59A79F7091CC1C2C30665" Guid="*">
                             <File Id="fil2CA9E361B3AEA86B4593C79C9C1DFC65" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Websites\Microsoft.WindowsAzure.Commands.WebSites.format.ps1xml" />
@@ -1953,6 +2244,15 @@
                         <Component Id="cmp5E17A45D8307918755ABE0263B53FB64" Guid="*">
                             <File Id="filE2A131EF1D43B8D3BBAAE162D2CC6F57" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Automation\Microsoft.Rest.ClientRuntime.dll" />
                         </Component>
+                        <Component Id="cmp69914982EC2B4590B0A7EB3CFBAB4E06" Guid="*">
+                            <File Id="fil1A4D5BE1B165197AF53CC39445361AE0" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Automation\Microsoft.Threading.Tasks.dll" />
+                        </Component>
+                        <Component Id="cmpCE16EF6388EB7390B5991F43E5609278" Guid="*">
+                            <File Id="fil245E33492EC1D0CF1EEE147138B96D5D" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Automation\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
+                        </Component>
+                        <Component Id="cmp043C277BDC681C299BAA6E5E03E5960E" Guid="*">
+                            <File Id="fil791CAF6963FFA10E4B92F8657AC1769C" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Automation\Microsoft.Threading.Tasks.Extensions.dll" />
+                        </Component>
                         <Component Id="cmp2AC34B496C31586E724E662B247950AF" Guid="*">
                             <File Id="fil75C80AFB99C723F07FE74AA1C3858CED" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Automation\Microsoft.WindowsAzure.Commands.Common.dll" />
                         </Component>
@@ -1976,6 +2276,9 @@
                         </Component>
                     </Directory>
                     <Directory Id="dirFD9072CFA7164ADE86F4E7179D23C495" Name="Azure.Storage">
+                        <Component Id="cmpA4896332D2E9278A5CFFC76462E3D397" Guid="*">
+                            <File Id="filB992523DF0C46B6B6E8C09B1BB31B817" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Azure.Storage\Azure.Storage.psd1" />
+                        </Component>
                         <Component Id="cmp1D11794D4DE13CD2849C407A7736B398" Guid="*">
                             <File Id="fil96E9CABBEC4A47800C1290A56CCB4839" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Azure.Storage\Hyak.Common.dll" />
                         </Component>
@@ -2017,6 +2320,15 @@
                         </Component>
                         <Component Id="cmp8EC20237359661B8797E8212106ED979" Guid="*">
                             <File Id="filA0292F9F206CAD9095937C1E5F70CBEA" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Azure.Storage\Microsoft.Rest.ClientRuntime.dll" />
+                        </Component>
+                        <Component Id="cmp1C6AB9477B39261BB22E390834DB9819" Guid="*">
+                            <File Id="fil3A330173342D864D40CFD4262462228F" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Azure.Storage\Microsoft.Threading.Tasks.dll" />
+                        </Component>
+                        <Component Id="cmp54FD37872B3ACB0F71CB290CD146A1B6" Guid="*">
+                            <File Id="filDA5C921E0352440B3946BA7A564F403C" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Azure.Storage\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
+                        </Component>
+                        <Component Id="cmp4E6558FB9681C732D667D9ECAC69C2C0" Guid="*">
+                            <File Id="fil11928CF7727B0BE21DAC92DDE60D9828" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Azure.Storage\Microsoft.Threading.Tasks.Extensions.dll" />
                         </Component>
                         <Component Id="cmpF3579C1AA9FC948DD8F64FE6891AC873" Guid="*">
                             <File Id="filE5DFD629EAA9401AF8E0FE6AF71F166E" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Azure.Storage\Microsoft.WindowsAzure.Commands.Common.dll" />
@@ -2124,6 +2436,15 @@
                         </Component>
                         <Component Id="cmp4305AC8141F9492E6C050EF12BD727D7" Guid="*">
                             <File Id="fil2E050B0E23ED4505A69C8B578413256D" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Compute\Microsoft.ServiceBus.dll" />
+                        </Component>
+                        <Component Id="cmpD3DE395231435F48A6F7DF9C1D608B76" Guid="*">
+                            <File Id="fil38E749CE8CAA20BCD5141A1545BAF9E2" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Compute\Microsoft.Threading.Tasks.dll" />
+                        </Component>
+                        <Component Id="cmp93F20DACAFBC092E0D2A5B04417BA424" Guid="*">
+                            <File Id="filD815F775F5B2536CC947C04C2EE7E203" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Compute\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
+                        </Component>
+                        <Component Id="cmp522D512305D9188F54B6A183D2BD575C" Guid="*">
+                            <File Id="fil8035ED58A13AA7C583944E376E1B4C29" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Compute\Microsoft.Threading.Tasks.Extensions.dll" />
                         </Component>
                         <Component Id="cmpE414847AC21B8E9A582B483372F2F07B" Guid="*">
                             <File Id="fil084ED0B7AA033D49DE804C6DFF97B8F2" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Compute\Microsoft.WindowsAzure.Commands.CloudService.format.ps1xml" />
@@ -2283,6 +2604,15 @@
                         <Component Id="cmpE467247EA0AD8FE96CAB1B79B10EFC95" Guid="*">
                             <File Id="fil3645342160DE8628EEBD2DE37E89B6BE" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\ExpressRoute\Microsoft.Rest.ClientRuntime.dll" />
                         </Component>
+                        <Component Id="cmp879BD0BC9A650B649F03FB5CB2BDAD35" Guid="*">
+                            <File Id="fil20AB5EC5C67E83E2DB4F4206B0886256" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\ExpressRoute\Microsoft.Threading.Tasks.dll" />
+                        </Component>
+                        <Component Id="cmp610C6F4AE10BA5FCFF3E45DB2251D7DE" Guid="*">
+                            <File Id="fil6BC2CD3287C20A739137B0C59C823E1A" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\ExpressRoute\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
+                        </Component>
+                        <Component Id="cmp3716AB11CCDF90299D759FC5D3BE3236" Guid="*">
+                            <File Id="fil67C2CF700FBD24A58697D927A28DA599" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\ExpressRoute\Microsoft.Threading.Tasks.Extensions.dll" />
+                        </Component>
                         <Component Id="cmpF09C98DF697A29CBA316DD5245BDDC02" Guid="*">
                             <File Id="fil6375B62978DC770AEA65DC1D8B3EA5B2" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\ExpressRoute\Microsoft.WindowsAzure.Commands.Common.dll" />
                         </Component>
@@ -2362,6 +2692,15 @@
                         </Component>
                         <Component Id="cmp59970FF048B3C972960AEE60AA1F8FE3" Guid="*">
                             <File Id="filE0D01C8EF5FCE5E40801A24B24E93231" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\HDInsight\Microsoft.Rest.ClientRuntime.dll" />
+                        </Component>
+                        <Component Id="cmp782FEB356FFCB15735D07328D702229F" Guid="*">
+                            <File Id="filAEBA74E1947D8831C350FD1F7A9C42E5" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\HDInsight\Microsoft.Threading.Tasks.dll" />
+                        </Component>
+                        <Component Id="cmpFF20878511DEDB222F358AC792EFFB3F" Guid="*">
+                            <File Id="fil169018317E67FE1765206317AFB7002F" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\HDInsight\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
+                        </Component>
+                        <Component Id="cmp0CA5748BCE15AD73DC944B1BAB7BC573" Guid="*">
+                            <File Id="filF2465D018D0C3D9B4A5154C51D98E750" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\HDInsight\Microsoft.Threading.Tasks.Extensions.dll" />
                         </Component>
                         <Component Id="cmp52970C387B6EDD9B1B22CF2EE2955A66" Guid="*">
                             <File Id="fil6CD68433017FC74C3AB990475B71D51B" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\HDInsight\Microsoft.WindowsAzure.Commands.Common.dll" />
@@ -2466,6 +2805,15 @@
                         </Component>
                         <Component Id="cmp06E6AFD97482DFA712D00C7ECA81B36D" Guid="*">
                             <File Id="fil6574B135626777FBA33DD0E5B7CD881B" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\ManagedCache\Microsoft.ServiceBus.dll" />
+                        </Component>
+                        <Component Id="cmp9C83EC0FF5D7B629A521FB7AA8A1AB60" Guid="*">
+                            <File Id="fil45295A35FC4F5E9D009C349C944100C1" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\ManagedCache\Microsoft.Threading.Tasks.dll" />
+                        </Component>
+                        <Component Id="cmpA78E0F369EE349F346EFCDE35D0DC860" Guid="*">
+                            <File Id="fil4FF02C10F87E55E8754BE2BBB6B663D7" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\ManagedCache\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
+                        </Component>
+                        <Component Id="cmp8ACC6D21713A556B30013C4492E5B1EA" Guid="*">
+                            <File Id="fil0B8CBDAEA3F508F8310D1B5F1F816CBB" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\ManagedCache\Microsoft.Threading.Tasks.Extensions.dll" />
                         </Component>
                         <Component Id="cmp183BD36DB2EFF7F0321541C992A560B4" Guid="*">
                             <File Id="fil8F927593FA8C9377A92BFD66FA47F3E4" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\ManagedCache\Microsoft.WindowsAzure.Commands.CloudService.format.ps1xml" />
@@ -2606,6 +2954,9 @@
                         </Component>
                         <Component Id="cmpE80EABD6EF9DE4FECC94920EA9D3E4F6" Guid="*">
                             <File Id="fil8781CB55787FA22C6722E340617A5DF1" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Networking\Microsoft.ServiceBus.dll" />
+                        </Component>
+                        <Component Id="cmp11D8AE054E42041FD6A79F71AA9066AA" Guid="*">
+                            <File Id="filF798C4CF93471F51594702CA0DFA1165" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Networking\Microsoft.Threading.Tasks.dll" />
                         </Component>
                         <Component Id="cmp7727B7EAE3E44EDAFEDB87CB6710CA94" Guid="*">
                             <File Id="fil23339FCE60BD41495EF3C0C8AD78F410" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Networking\Microsoft.WindowsAzure.Commands.CloudService.format.ps1xml" />
@@ -2966,6 +3317,15 @@
                         <Component Id="cmp0BD000F60811AD3BEE76103087B46B8B" Guid="*">
                             <File Id="fil23B7E7FC3C6E672896B5749942190DB6" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\RecoveryServices\Microsoft.Rest.ClientRuntime.dll" />
                         </Component>
+                        <Component Id="cmp4A98D12853680B70EA13B558FF5B66BE" Guid="*">
+                            <File Id="fil1F34AF5202BC985B0AB504C8C5EC7CD0" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\RecoveryServices\Microsoft.Threading.Tasks.dll" />
+                        </Component>
+                        <Component Id="cmpFFEE4D9645AEA846AF41897FD2135E02" Guid="*">
+                            <File Id="fil3A2F7D5870DF95F7C639D35F6B82B96F" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\RecoveryServices\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
+                        </Component>
+                        <Component Id="cmp2F6E4C6B8006898EFE87C88921C1B6BA" Guid="*">
+                            <File Id="fil81DB522582833564DCD9B09361ED93CF" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\RecoveryServices\Microsoft.Threading.Tasks.Extensions.dll" />
+                        </Component>
                         <Component Id="cmp8CDB44BA783FF24C94CDFC5D12066BB1" Guid="*">
                             <File Id="fil2C73256F76E79B695523A2B3C4C845E9" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\RecoveryServices\Microsoft.WindowsAzure.Commands.Common.dll" />
                         </Component>
@@ -3038,6 +3398,15 @@
                         </Component>
                         <Component Id="cmpA4A58C94EE47090F62EFE436AC816A2B" Guid="*">
                             <File Id="fil77FF118B750C7184FFAC6AB833CE185E" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\RemoteApp\Microsoft.Rest.ClientRuntime.dll" />
+                        </Component>
+                        <Component Id="cmpF6A31E71E73261E256FB53289879CAC6" Guid="*">
+                            <File Id="filB43C04EDB705D1968040C62BE7385426" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\RemoteApp\Microsoft.Threading.Tasks.dll" />
+                        </Component>
+                        <Component Id="cmp24E45E80EDFF6AFB35BDC3BDF5B8CDD8" Guid="*">
+                            <File Id="filBD3B9725212B207BA71ACFEFCE499952" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\RemoteApp\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
+                        </Component>
+                        <Component Id="cmpC6E9F874597250F8F9018EE96BD563C1" Guid="*">
+                            <File Id="filD702F499B490185A0B37C88201372218" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\RemoteApp\Microsoft.Threading.Tasks.Extensions.dll" />
                         </Component>
                         <Component Id="cmp834EB592C6925B045C8B0510B26AF6B9" Guid="*">
                             <File Id="filEE9E830711213A45933A4822FB584B57" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\RemoteApp\Microsoft.WindowsAzure.Commands.Common.dll" />
@@ -3136,6 +3505,15 @@
                         </Component>
                         <Component Id="cmp9F74CE881F871E4C03EE7704F879FE99" Guid="*">
                             <File Id="fil521A1992DB6487091605B49728F25C62" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Microsoft.ServiceBus.dll" />
+                        </Component>
+                        <Component Id="cmp5EDC14153ABE12E6F8AC7CE138325ED3" Guid="*">
+                            <File Id="fil1B623AF4CA2501B26CFDAAD276C46DC4" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Microsoft.Threading.Tasks.dll" />
+                        </Component>
+                        <Component Id="cmp884EDD6200BC33660CA506614BF1514B" Guid="*">
+                            <File Id="filB467A9F8A0D933AECCAB72DF8E550DAC" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
+                        </Component>
+                        <Component Id="cmp451DD4F87C87FD099EB3BB15B08BFC23" Guid="*">
+                            <File Id="fil480DA73913A49F2F8CB977D342E69D00" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Microsoft.Threading.Tasks.Extensions.dll" />
                         </Component>
                         <Component Id="cmp3A0F63A65EACD6FAA15281A901A5411F" Guid="*">
                             <File Id="fil8805822A9FD5F5677C582177D7B2C8A0" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Services\Microsoft.WindowsAzure.Commands.CloudService.format.ps1xml" />
@@ -3463,6 +3841,9 @@
                         <Component Id="cmp221C334CE6510BD95538F285D482251F" Guid="*">
                             <File Id="fil0CA12B2E4C52E4FBA985D8D4F838390D" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Sql\Azure.psd1" />
                         </Component>
+                        <Component Id="cmp74B0B7D2461EE67BC1B2C706CD41372F" Guid="*">
+                            <File Id="filD84EC14AB325E2924B8FFE3A4D3D018A" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Sql\Azure.Storage.psd1" />
+                        </Component>
                         <Component Id="cmpD8BD7D4C976FE7FE527348B4E7F85B8D" Guid="*">
                             <File Id="filA1C13EA190ADD849F77BDADF0A1A0638" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Sql\Hyak.Common.dll" />
                         </Component>
@@ -3504,6 +3885,15 @@
                         </Component>
                         <Component Id="cmp8EC68FBCACE90470433761E36E3D76DB" Guid="*">
                             <File Id="filF150AB23C6EB726A447B26C5B133441B" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Sql\Microsoft.ServiceBus.dll" />
+                        </Component>
+                        <Component Id="cmp9B904F11D256CCFD904E1BB77447E4A4" Guid="*">
+                            <File Id="fil479F27EA04A46A594F6A613E7A31896E" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Sql\Microsoft.Threading.Tasks.dll" />
+                        </Component>
+                        <Component Id="cmp71530FA712EAD3B1A8C2567DB3B9DC17" Guid="*">
+                            <File Id="fil125F24B9366F55DB3D98DA60DD2D5F42" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Sql\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
+                        </Component>
+                        <Component Id="cmp3343A6EBDBAC93AE47AF05414FB13AA1" Guid="*">
+                            <File Id="fil833F2120AB1A13B6A5A41E3F5A46B9FB" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Sql\Microsoft.Threading.Tasks.Extensions.dll" />
                         </Component>
                         <Component Id="cmpA3762B9D05951822E7D0B1F5781081FB" Guid="*">
                             <File Id="filA48134769770D3FC56D01DA335125967" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\Sql\Microsoft.WindowsAzure.Commands.CloudService.format.ps1xml" />
@@ -3654,6 +4044,15 @@
                         <Component Id="cmp9092536B3DD830DBDD28650EDA07EF47" Guid="*">
                             <File Id="fil571B0BAFC9D3DF43BE1CF061726CE7C1" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\StorSimple\Microsoft.Rest.ClientRuntime.dll" />
                         </Component>
+                        <Component Id="cmpB48F1BD4D2E8307615F7E22174FF4E6D" Guid="*">
+                            <File Id="filE9A07FBA81EEB890FE59DA47B42BB22A" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\StorSimple\Microsoft.Threading.Tasks.dll" />
+                        </Component>
+                        <Component Id="cmpA0956C90D2B044403B89552A999810D4" Guid="*">
+                            <File Id="filDE3B5DAEAE94CC1EB5507C5B32B99762" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\StorSimple\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
+                        </Component>
+                        <Component Id="cmpA198033EEE9BFFF6B11B5703D4B4C591" Guid="*">
+                            <File Id="filF698B30EC40CF5E1B0DBE3D1ECD80C2D" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\StorSimple\Microsoft.Threading.Tasks.Extensions.dll" />
+                        </Component>
                         <Component Id="cmp2A4B259F8FE4D228DE8EC6FF05D891DA" Guid="*">
                             <File Id="fil62B923AF38650AFAA88867B9728BB661" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\StorSimple\Microsoft.WindowsAzure.Commands.Common.dll" />
                         </Component>
@@ -3731,6 +4130,15 @@
                         <Component Id="cmp8BF21722A2AAC5DC97A809331056D418" Guid="*">
                             <File Id="filB551843D1092F67E7301A483365E3B49" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\TrafficManager\Microsoft.Rest.ClientRuntime.dll" />
                         </Component>
+                        <Component Id="cmp97A66DAD787E411E099CAE60D763FA0F" Guid="*">
+                            <File Id="fil9F90EAE3BA944C193BD68E4B807EE656" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\TrafficManager\Microsoft.Threading.Tasks.dll" />
+                        </Component>
+                        <Component Id="cmp59F4193EE3E7AD5444762EB83F818011" Guid="*">
+                            <File Id="fil2F2301F727742607FF39739875A616F4" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\TrafficManager\Microsoft.Threading.Tasks.Extensions.Desktop.dll" />
+                        </Component>
+                        <Component Id="cmpE381DAC024A6EBB8BA87820C8FC46E50" Guid="*">
+                            <File Id="filE86697F117A6C2BA01DA115F9B67572A" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\TrafficManager\Microsoft.Threading.Tasks.Extensions.dll" />
+                        </Component>
                         <Component Id="cmp3F7857712675184BDC6966B98CB82631" Guid="*">
                             <File Id="fil61FCBE4820456DCE9234833D79D7557D" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\TrafficManager\Microsoft.WindowsAzure.Commands.Common.dll" />
                         </Component>
@@ -3772,6 +4180,7 @@
     <Fragment>
         <ComponentGroup Id="azurecmdfiles">
             <ComponentRef Id="cmp96F13C307DA6E4AAC35F3D147F21553F" />
+            <ComponentRef Id="cmp0761C025FCF8EF027A5BC23C72777C52" />
             <ComponentRef Id="cmp658F4F28B5894F240AF3AE214E228C7A" />
             <ComponentRef Id="cmpBE01F246267602912E7BB7FAC7C89B62" />
             <ComponentRef Id="cmp12AAE81384B3AF67B8D558AB9941F111" />
@@ -3786,6 +4195,9 @@
             <ComponentRef Id="cmp1DAC8B6AC49104F3A66B1B27F2CA8133" />
             <ComponentRef Id="cmpE1B312E84CCEC9470BD026712EEF2C4D" />
             <ComponentRef Id="cmp0988585E83E97AA4EE52B48F896BC4D6" />
+            <ComponentRef Id="cmp69F36166D723B9392B32D39EC1E6211B" />
+            <ComponentRef Id="cmp730C16EF37B66504F754BDD6D67DDAC4" />
+            <ComponentRef Id="cmp980055760476A04748F82C1C37F05B0B" />
             <ComponentRef Id="cmp41A47F4D1933F9E8B67D78A48C608AE9" />
             <ComponentRef Id="cmp58DD150BDCD8BFC5A2B8D95FD2E20F4D" />
             <ComponentRef Id="cmpDFEBB9FE6A4D8002D8D1A6A1E77DEC2D" />
@@ -3805,6 +4217,7 @@
             <ComponentRef Id="cmpA240B57B90B30C2B9584DD438EF2D149" />
             <ComponentRef Id="cmpBEA6E3263480C18705DC2E3B15E3C1CF" />
             <ComponentRef Id="cmp957D146263F021CE3EF1CBADBF06D2C4" />
+            <ComponentRef Id="cmp5FB922E1DB9224DAB3732AEA3ECC0388" />
             <ComponentRef Id="cmp2E3A58C9336220FF001B6912E569A1C3" />
             <ComponentRef Id="cmp1C7906F849294A53D53A70383F55445E" />
             <ComponentRef Id="cmp0BCF22C3D0BA8A6CA8E81B13EC58698F" />
@@ -3825,6 +4238,9 @@
             <ComponentRef Id="cmp0AD7AC47F592B3B2F4EA336DEADA6A61" />
             <ComponentRef Id="cmp7BB8B4BEF9CF38EA074C821111BC962A" />
             <ComponentRef Id="cmpEF3D25069B4C3AB33B9C6345788FAD57" />
+            <ComponentRef Id="cmp34F3264606840E2866BA465FE4FA4556" />
+            <ComponentRef Id="cmpD3604BE80CEDF33E82E21EA75E298E23" />
+            <ComponentRef Id="cmp23F982B5671E50FDDB5AAE1AF6A96590" />
             <ComponentRef Id="cmpD8921E69F11EB13AD3A5EE06FE29CE25" />
             <ComponentRef Id="cmpFD19089BFBE7CCB611C8A8D1FD1404AB" />
             <ComponentRef Id="cmp3CFE67A2BC48DB6383B879822C4149E9" />
@@ -3834,6 +4250,7 @@
             <ComponentRef Id="cmp905F9DF7496ED79C29FFDF87BA6CC145" />
             <ComponentRef Id="cmpA341B5B54A0B03448E139EDB9A586B96" />
             <ComponentRef Id="cmpCACCECAB9F530A76B2AD3660C5BF8E74" />
+            <ComponentRef Id="cmpE48A93B0493B28E942E948BA2D821B91" />
             <ComponentRef Id="cmp41036154EE783BC3DEFB1A4C67DC0771" />
             <ComponentRef Id="cmp698928A59E1578478BA71B24902667A3" />
             <ComponentRef Id="cmp46AB67763AA4CB2288EC5BCF65A0B426" />
@@ -3848,59 +4265,75 @@
             <ComponentRef Id="cmpF85231D838D0B75EEA3AF2894C1E67CF" />
             <ComponentRef Id="cmpB481B2105752ED298422494E6E7192D9" />
             <ComponentRef Id="cmp163D57A480307B928C97569C409BB374" />
+            <ComponentRef Id="cmpC30D7A6A20123ED9BB1C9975B2B0C601" />
+            <ComponentRef Id="cmp66C4A3B8AD57EF9D265C083EF21AA51F" />
+            <ComponentRef Id="cmp9C75139CBCD259365FB868E8D14F31D0" />
             <ComponentRef Id="cmp1F71F8FFB04929A4274BA561BD405F05" />
             <ComponentRef Id="cmpB3AF7287C2319FB3890DCA0EC93AE342" />
             <ComponentRef Id="cmpDB96969C9372FD180F11522277C12D95" />
-            <ComponentRef Id="cmp88A1E3A78A45310195A926EBAD5825C9" />
-            <ComponentRef Id="cmpB2EA120B0D54BB789095C19E267DC52A" />
-            <ComponentRef Id="cmp9397048CBE896EBD19DE37ECAA73638F" />
-            <ComponentRef Id="cmpD5F70F1F573E3A8D4771BEE9F367522A" />
-            <ComponentRef Id="cmpD32A5BD80112767BFB7E9226B1E6BD41" />
-            <ComponentRef Id="cmp3B47AA8C0AFE73FDBDD695FB50765F92" />
-            <ComponentRef Id="cmp3580AAFB2F9217B1CB8ED2D52D6A07D1" />
-            <ComponentRef Id="cmp58AF32443C9522D062F1098646CFD22B" />
-            <ComponentRef Id="cmp2AEF1B4D18C6E92CF9DF39712A2BC0EC" />
-            <ComponentRef Id="cmpDC6AE93A06ED739611012AACD4BDFE14" />
-            <ComponentRef Id="cmp82C69E3E3D993F9D7DEEAF7F608963D7" />
-            <ComponentRef Id="cmpE5AB1D465A8458CBDE2B3F47987669BD" />
-            <ComponentRef Id="cmp61F7DC56724630AF7EEE12162EE841CE" />
-            <ComponentRef Id="cmp108B146E12BE78135FF10DABEE79D943" />
-            <ComponentRef Id="cmp65C79F34A920FE98714636810F0D60D0" />
-            <ComponentRef Id="cmp0293748DC40685624BFE9606911D1C99" />
-            <ComponentRef Id="cmp006128B13E1B91795196FF609DDE2B5B" />
-            <ComponentRef Id="cmp66E2BC87ECA42BAFD0D73DB3E007CC47" />
-            <ComponentRef Id="cmp3BF8938DC4C957BEFF6F6CA8C06C13FA" />
-            <ComponentRef Id="cmpF1FC88B7CEBA3A4D4A641A907A7EB7EB" />
-            <ComponentRef Id="cmp761C482510E16755DD97A15ED62097BD" />
-            <ComponentRef Id="cmp79C7D6E12D967294E4D6BB5910E26D19" />
-            <ComponentRef Id="cmp49A6006903777EE80867954989DA883D" />
-            <ComponentRef Id="cmp1B306DD5D5275A1EC2822D4BC3CAF31A" />
-            <ComponentRef Id="cmpBD2C6D21CD9F882104652000A4954718" />
-            <ComponentRef Id="cmp1E9C0FFC87B8EC3F3AFD3FE398BB77E0" />
-            <ComponentRef Id="cmp43FE3D9EFF4E87164C1997044C55B993" />
-            <ComponentRef Id="cmp6AC5866D915A129A8BF816F868B16986" />
-            <ComponentRef Id="cmpA05F86ECC5ACB0F57F3E1F23CF50155C" />
-            <ComponentRef Id="cmpC3800538B48CB5761ABA2B08C6266195" />
-            <ComponentRef Id="cmp8F84BED5B7A4A6323076C03FF964254D" />
-            <ComponentRef Id="cmpADDEDD8B7784C288E3EEB2B9BD52C681" />
-            <ComponentRef Id="cmp2C161133AD117883C99C7A9A66F7BD88" />
-            <ComponentRef Id="cmp79CF7D125BE29579A8FF53372941FA18" />
-            <ComponentRef Id="cmpBCA447722E6E9C0B11B114BE969AEBCE" />
-            <ComponentRef Id="cmp6DB18D2E830EF36430D8D4CEBBE1EA9B" />
-            <ComponentRef Id="cmp3BF3982C09F0F7161D1891F31D0CA888" />
-            <ComponentRef Id="cmpABE736B5093E725752A14BD9ED20C673" />
-            <ComponentRef Id="cmp65280D25251AB1551AC1D373FBB6B744" />
-            <ComponentRef Id="cmp6D26D7AF98A68BEE425B84DECCE9D958" />
-            <ComponentRef Id="cmp268537B1CCC4C6889F6C33301B40446F" />
-            <ComponentRef Id="cmp2749E86987B432CF904F36F3A170B502" />
-            <ComponentRef Id="cmp90D3ED0C461C3616F333C8A747338F6F" />
-            <ComponentRef Id="cmp579B44168387DC58EF366894A2C0456E" />
-            <ComponentRef Id="cmp17DDD4882F6FC90D3AA2337F8B2661B8" />
-            <ComponentRef Id="cmp5C584744F3ED8956CD259836EAD0B4BA" />
-            <ComponentRef Id="cmp7DC47DE2CD308057EA0CFEDF56397BF9" />
-            <ComponentRef Id="cmpF9CF09E826B0D4075271ACE56AEC7B88" />
+            <ComponentRef Id="cmp235245AE05B9E5ED010EE787C63217C5" />
+            <ComponentRef Id="cmpE0B0C8ED8BBFFD0F88A2D61AB9984AB2" />
+            <ComponentRef Id="cmpEFF681572AC1D462B15B14C64B555792" />
+            <ComponentRef Id="cmp2A379397CB30B376A85BCA91AC27B299" />
+            <ComponentRef Id="cmpC41F465A6E63EB7F3E8E1184B4434F51" />
+            <ComponentRef Id="cmp88D8EC51D9872B77C8335E8063852E25" />
+            <ComponentRef Id="cmp12F7010B33D1FFDE1CA3DEF2102C85D3" />
+            <ComponentRef Id="cmp569A5D26E8DEF0A41608F078D7385652" />
+            <ComponentRef Id="cmpCF61952C710D15D413419F5C6EF0A298" />
+            <ComponentRef Id="cmpC4CA139071A1085B24F7A9A5322B2469" />
+            <ComponentRef Id="cmp29E1C42F46F7C10CE33DAB39DA1F59D3" />
+            <ComponentRef Id="cmp9DF0F429FD1BC96DE34147A58491B160" />
+            <ComponentRef Id="cmpDDDAA1E6A5ED3DABD2866083D98D6900" />
+            <ComponentRef Id="cmp20E12A023BC4373C30A14CA3BB3F47B3" />
+            <ComponentRef Id="cmp3CCF4979B5F98643F1C9A8AE81E18C1C" />
+            <ComponentRef Id="cmpEC36E4E37AF85D68DFC5A013A04EDDA5" />
+            <ComponentRef Id="cmp661514F3F7167DCE1D81CEAD1174ACCA" />
+            <ComponentRef Id="cmp2EB79D052C5D78876FAC42408CA2311C" />
+            <ComponentRef Id="cmp892AA23EE09BA3CA8DF0144879A24249" />
+            <ComponentRef Id="cmp14C04F53A2E2F433CBA3C652F0382F25" />
+            <ComponentRef Id="cmpB43DB84CCEE2F257BD897E455338857B" />
+            <ComponentRef Id="cmpBF27C1D39D783AD3F86F63D014EC030F" />
+            <ComponentRef Id="cmpC861232CFE71FF5BF213069713C2A4DD" />
+            <ComponentRef Id="cmp82364D72D38170AAF9E06D264622529B" />
+            <ComponentRef Id="cmp59CB87DAB7E8479242138B34A3971566" />
+            <ComponentRef Id="cmp887ACC42D403DDA6F3554CE7D43E0B23" />
+            <ComponentRef Id="cmp8D6E468747E93CD69A8E2A0D608759F8" />
+            <ComponentRef Id="cmp6F14BB2DCB8DCC909D5FEA84EB6E7301" />
+            <ComponentRef Id="cmp82B66E00C3F3370F9A364A749F497883" />
+            <ComponentRef Id="cmpFF226ED5701894F77AC9E8912B83AB67" />
+            <ComponentRef Id="cmp5C8DB854624DF2950D61BA179C5FD373" />
+            <ComponentRef Id="cmpF722AB88CF534C159376B90D3352E735" />
+            <ComponentRef Id="cmpA2DFBBC7C1D2551CE1820D4BFE68DD25" />
+            <ComponentRef Id="cmp863C865281BE4875E207BF573BB434C8" />
+            <ComponentRef Id="cmpD23F8CB641E890A83A492A99686505AF" />
+            <ComponentRef Id="cmpB0584BB55D8714E4CF5E60167B55282E" />
+            <ComponentRef Id="cmpC964B4550D9D1C104A224E22B19599BF" />
+            <ComponentRef Id="cmp557AD28EA410808B3805EFE4AA73C977" />
+            <ComponentRef Id="cmp4B5A611FF761BA928A53E0E56FB58D78" />
+            <ComponentRef Id="cmpAA90187095E5AA5387ECB19F691F5BB3" />
+            <ComponentRef Id="cmp21A3A51E9F4CEE163E61AAB46ECC1AA4" />
+            <ComponentRef Id="cmp910CAC5301CCF2C18FB054DA61B50348" />
+            <ComponentRef Id="cmpD762051962F7D3051FBC9CF971AE9325" />
+            <ComponentRef Id="cmpB11D8DF03DCC6DF2571C30776714A652" />
+            <ComponentRef Id="cmpEC720F6E3871A33FE098F6CEB7617D8F" />
+            <ComponentRef Id="cmp5D544D73B729F9669498812ECF7BF3E1" />
+            <ComponentRef Id="cmpB1E3E66F5FC40C4E26A9CC895B89DA63" />
+            <ComponentRef Id="cmp35BA09F11D618680F9850F73564F9F47" />
+            <ComponentRef Id="cmp862B5049F9B72B316F08E73DD02A2B21" />
+            <ComponentRef Id="cmp6A672FDA34EFE3B049235DEDFE185D9E" />
+            <ComponentRef Id="cmp40F8ED57752822AA87E94F51D4B1800D" />
+            <ComponentRef Id="cmp5B9EB91263904E62D14890B60994B360" />
+            <ComponentRef Id="cmpA40100685EA12B2F4CDF9DB3B025157F" />
+            <ComponentRef Id="cmp8E6B2CBC9EF2E6C9012C5090F2932C68" />
+            <ComponentRef Id="cmp30F0EC1B207C0F4C59F81099974C18E3" />
+            <ComponentRef Id="cmp22BC5873E0018F5801CD486C6CBCE0C5" />
             <ComponentRef Id="cmpD2516E302D41812368A84BD6010FB066" />
             <ComponentRef Id="cmpD288F9671FEAE346EF3A1FAF2D98C7EC" />
+            <ComponentRef Id="cmp594709EB2E69BD7173BC8833BE2061B4" />
+            <ComponentRef Id="cmp62338AF9F953CEE8318F8EF07FDDF6AD" />
+            <ComponentRef Id="cmp4F1B147652795AAF834377CCD9CAF2A7" />
+            <ComponentRef Id="cmp9FDC7E987C84705E62A1E3E6958A7A34" />
+            <ComponentRef Id="cmp0BDDC10BCAFF9EC25710B20367203609" />
             <ComponentRef Id="cmpCC409403AF670A9E0538AC743C61BD66" />
             <ComponentRef Id="cmp8F649774D57C8E90EC765D8FCE36E32A" />
             <ComponentRef Id="cmpFBB75A5451448B356C97E62D2C6C10A0" />
@@ -3942,6 +4375,9 @@
             <ComponentRef Id="cmp3602F125A1435ADA621E6C5DF5B70546" />
             <ComponentRef Id="cmp445592B9F172DAE872410DC369380437" />
             <ComponentRef Id="cmp8ECDEA22C0E5F05DDBFD04588509AA21" />
+            <ComponentRef Id="cmpC7651407AC5E8A64F827FC2A7DEF30E6" />
+            <ComponentRef Id="cmpD844318ECE3D0A693D753D7748D987A4" />
+            <ComponentRef Id="cmp0D6600BAD7850E6EDAC1B411E34F7972" />
             <ComponentRef Id="cmpBDC7654A24B5F2AD98D1FDC4C592F83D" />
             <ComponentRef Id="cmp06D66F4876C19BD4D7F80FEDF2F4DC50" />
             <ComponentRef Id="cmpD4FC875D52979CCFC725DF3B9352CE43" />
@@ -3952,6 +4388,7 @@
             <ComponentRef Id="cmpD971A9A271757FD9B35B0AA9E0C18E24" />
             <ComponentRef Id="cmp22C16EA85B773C14B7E6439621F10355" />
             <ComponentRef Id="cmp8BCA174B740D6FE9FE610DDF340C002E" />
+            <ComponentRef Id="cmp75C3D72B9C46E1B9D3F51CE3D29F6F00" />
             <ComponentRef Id="cmpEEBCE6D5D00306CCD759CE5B7793B164" />
             <ComponentRef Id="cmpEA6F740D378DB99E31F7433B8C57865A" />
             <ComponentRef Id="cmp7426DB42CCB21FE78D19972725B67108" />
@@ -3972,12 +4409,17 @@
             <ComponentRef Id="cmp208B9EC33E14BE3EA8F8B56B42387967" />
             <ComponentRef Id="cmp8EA6B9AFC06794DB134FEE4AE95709DC" />
             <ComponentRef Id="cmp9104713A9DBFAC762D0E26E0AAC1BC5D" />
+            <ComponentRef Id="cmpAAB5CE95F8022876A9833748C8E4598C" />
+            <ComponentRef Id="cmp0D9FBCBFCA23ACE0964A231F49309A42" />
+            <ComponentRef Id="cmp53F8AF52A024EFBFC8567F675D1E7186" />
             <ComponentRef Id="cmp78323CAD7EE8FDBEBFEA1D4175BAA50B" />
             <ComponentRef Id="cmp9EEA592CD3AAAC7A119506E05E9251B7" />
             <ComponentRef Id="cmp53B10418B2C087F17C073584A81C6F8D" />
             <ComponentRef Id="cmp616B1458C5E4D10254E5051C0263C5ED" />
             <ComponentRef Id="cmp9E138A369DBE819C972D9BBF4BEC7A7D" />
             <ComponentRef Id="cmpFFD632DFF203CC929CB0CACD3AAE8AE3" />
+            <ComponentRef Id="cmp0DA8E094A737664DAD35F560902CC483" />
+            <ComponentRef Id="cmp9AADE49B40AE34E78613184F68A0C602" />
             <ComponentRef Id="cmp6739EA963462CB23B33E80066E3DDCF1" />
             <ComponentRef Id="cmp7EAAC8C6FB9DA70F1A7DFE4D980EA958" />
             <ComponentRef Id="cmp4A6F5276FA9D06F16F5CD389241BFB30" />
@@ -3998,10 +4440,12 @@
             <ComponentRef Id="cmp24741C738CAC6E0595C4035CF8FE190A" />
             <ComponentRef Id="cmpB21325D18CF34CB53A2C33585CE3C81B" />
             <ComponentRef Id="cmpBA345C2F015DD9066F6ACA7FAC093AC9" />
+            <ComponentRef Id="cmp2CA94DB16E3E3D9F1DAF0CAFE9A13542" />
             <ComponentRef Id="cmp1EF453FBA41501E23AAA6802E73E9233" />
             <ComponentRef Id="cmp0808A2318368CE9A17D91C37E59D1104" />
             <ComponentRef Id="cmp5CA8859F1C394CC8A63A4EB72FC74FC5" />
             <ComponentRef Id="cmp1C6E67BF7E6A2932D8205DEE8EEBD5BD" />
+            <ComponentRef Id="cmp9D190B38C7D3A893B21DFAB4A757C98B" />
             <ComponentRef Id="cmp04AE56BE6D07E336F237E3D542B1F69D" />
             <ComponentRef Id="cmp6808C337F61F07015FF34B00DDA3D4E7" />
             <ComponentRef Id="cmp46A49A4018A91E57DC174499B96727A1" />
@@ -4021,10 +4465,14 @@
             <ComponentRef Id="cmp089B9222CC31A3FA461B378E3AA5A317" />
             <ComponentRef Id="cmpE2283490C2528650107F21E5322CC45F" />
             <ComponentRef Id="cmp0EE4DF89EE2AD9E7CFD2A58C17B67AC6" />
+            <ComponentRef Id="cmp0C261034A6E6C2E4DACB359E938154CE" />
+            <ComponentRef Id="cmpA355BB9BD11C68FB98B54E29E074178C" />
+            <ComponentRef Id="cmp98765E0337FD9BB57B3447C6E3C4DC96" />
             <ComponentRef Id="cmp3E4180140A2FCDDB58ABB9CE2216BDE4" />
             <ComponentRef Id="cmp3F2670FE66DA907C67EE06E8665B976C" />
             <ComponentRef Id="cmp64D2198150FEFD8799857912AC427831" />
             <ComponentRef Id="cmpBBB7C495123829980FBE79A9D2EB53A3" />
+            <ComponentRef Id="cmp46D2B2B0B3583E9D988E8822E4019690" />
             <ComponentRef Id="cmpBAC33A5E24A63A1AA3FA603EC25BA196" />
             <ComponentRef Id="cmp183CE3EAEAA01DB989815CD9E22E1975" />
             <ComponentRef Id="cmp20A05509BD755C1EF519D072611A0E0F" />
@@ -4047,6 +4495,9 @@
             <ComponentRef Id="cmp7781002FCC3D1B3F0519A286C3E916E9" />
             <ComponentRef Id="cmp09C89A8B21C5D2C4595F1D35C982F73B" />
             <ComponentRef Id="cmpFEE86D031CEC182D160B80C5EC00914F" />
+            <ComponentRef Id="cmpAB04FC1EEE889CA90013762F64086BFF" />
+            <ComponentRef Id="cmp4714276292444ADF7D34F509F31C8102" />
+            <ComponentRef Id="cmp007494D6DDD084F46271414EDBAE4A28" />
             <ComponentRef Id="cmpF892ECD9E56A470DCBCDFB5721EFD871" />
             <ComponentRef Id="cmp8B8A7BBF33AC8748C36AF2D0F867CC3B" />
             <ComponentRef Id="cmpDBE0EFA9AB2C3936D498914505FD59BD" />
@@ -4075,6 +4526,9 @@
             <ComponentRef Id="cmp0EE8FCFA5508960593F3537443DACD4E" />
             <ComponentRef Id="cmp6D51C798EDF35CEA322D396B85FB8E18" />
             <ComponentRef Id="cmp370190EEE330714319D11416B45E3C02" />
+            <ComponentRef Id="cmp1C4ECEEE37C1624BEF2F3B0C35FC7651" />
+            <ComponentRef Id="cmpEE3A05DF233EC58219BE11EB7C8F69DF" />
+            <ComponentRef Id="cmp845AC7B6253AAE4CD7A01C03B01AB6BE" />
             <ComponentRef Id="cmp900AFC3C39C5D962887982DDE8510E26" />
             <ComponentRef Id="cmp4A17FF96D4C943BD33A6BCCD68324436" />
             <ComponentRef Id="cmp8F99791178CB394FC285BF5F9DA21047" />
@@ -4083,6 +4537,9 @@
             <ComponentRef Id="cmp33F39A22183184A6B41F85DF085BAD29" />
             <ComponentRef Id="cmp70B60DBD32D61BCA5715AB2D64131358" />
             <ComponentRef Id="cmp92653399A1E9659661E74CA982C1D16A" />
+            <ComponentRef Id="cmp6E3EAD7F12BD99ACB19E0249804739D9" />
+            <ComponentRef Id="cmp9F97686A6D38F8B72B2FB1D62529AF0F" />
+            <ComponentRef Id="cmpA398972142ABD0AC819F613EE832B65C" />
             <ComponentRef Id="cmp02E49F28BB0FA3174A478847B857A4D0" />
             <ComponentRef Id="cmp53B7AE5C484C188098FEE906B381461C" />
             <ComponentRef Id="cmpFCCC1C3A49857F9109FEB6AE04888D08" />
@@ -4112,12 +4569,16 @@
             <ComponentRef Id="cmp7DA1E70725BB433588D7BDC0E029C0A0" />
             <ComponentRef Id="cmpC56452777A4C55825BB8DC3B1A79C0E9" />
             <ComponentRef Id="cmpB69DD31582993D319EB909D5DEB4004E" />
+            <ComponentRef Id="cmpDAA3E1FBD7B784DD8FBDB88D7CCFEFE8" />
+            <ComponentRef Id="cmpB1CC3831A4FB6A26C143DA8B6606425B" />
+            <ComponentRef Id="cmp915E6351383D1760B6CB025667A99E49" />
             <ComponentRef Id="cmpD9E00CF36A1BF106BD49E9368F96A1EE" />
             <ComponentRef Id="cmpA96B1B72C5D8449B6A78CEE7B3D8003A" />
             <ComponentRef Id="cmp1DE03E3ABD3F489833110639A13322DB" />
             <ComponentRef Id="cmp22A4A30D24CDED6264D46F12597014F5" />
             <ComponentRef Id="cmp999479ACC191E94DE3C836F45E40CC5D" />
             <ComponentRef Id="cmpFA5D7F947B235DF25AF77E5C80F17A7F" />
+            <ComponentRef Id="cmp17459EC3296F82D03FEF8C426C8DA7EA" />
             <ComponentRef Id="cmp7CE9821E11931CE1140ACA06CF2D38B4" />
             <ComponentRef Id="cmp6D68CAF3787D43356F3C2CB592699D2D" />
             <ComponentRef Id="cmp200DDA39E5F438CD8F080DA375764D0C" />
@@ -4133,10 +4594,14 @@
             <ComponentRef Id="cmp6B67C5A0D82352497A5B5AA9D487948B" />
             <ComponentRef Id="cmpF411CAC473128EFE8ED630DC665525B6" />
             <ComponentRef Id="cmp2D0BEFEBE21F0CDAD25ED9593B820286" />
+            <ComponentRef Id="cmp0F88458A8B08E9C5A9DB05A868EB9706" />
+            <ComponentRef Id="cmp6D717DF110AAD1FEF613A15A046375F7" />
+            <ComponentRef Id="cmp1E3AF44CC7606B0FD61E209B7B814355" />
             <ComponentRef Id="cmpF98A2CCD736EDBCB2C21E170C3EB8FC9" />
             <ComponentRef Id="cmpFD405A18E2A1C755986CD15E7976CCD9" />
             <ComponentRef Id="cmpD895804B1147D0DB74C81C5C228D8CFA" />
             <ComponentRef Id="cmpBBEEE168902DFD205E35F47468881929" />
+            <ComponentRef Id="cmpCDBCF0967EA30044FF3F4478A30C1D5B" />
             <ComponentRef Id="cmpD738842B230F04E64FD98E3E850E6338" />
             <ComponentRef Id="cmp2BE62623A92CD0986F0915CB16373E90" />
             <ComponentRef Id="cmpCBBCCDE16C2F179A9160E366F5449CF4" />
@@ -4151,10 +4616,14 @@
             <ComponentRef Id="cmp95697C7A2E29A43F7195D799D68E138B" />
             <ComponentRef Id="cmp3BEF3C9459257F053CAAC956B7CFA10D" />
             <ComponentRef Id="cmp61D87C757ACDE206CC79A5B19CE403B2" />
+            <ComponentRef Id="cmpFEED527FE38FC11823CA6DF27008AD75" />
+            <ComponentRef Id="cmpC7B3E3214E7ED8708906D8F3E0F9F476" />
+            <ComponentRef Id="cmp8D637393B06DDB4E95F9C9DE02FBDC88" />
             <ComponentRef Id="cmp3F9778895366D6C753CEDF6DC18F265D" />
             <ComponentRef Id="cmpEBB62AC41F55737CBA5B67CD38320203" />
             <ComponentRef Id="cmpAB89DA9A645E197D78DE69AEF963C260" />
             <ComponentRef Id="cmp103ACA9079CDD574094214F46E76D71B" />
+            <ComponentRef Id="cmp301F9E8FA547D7C9A0DF4FF20F87815D" />
             <ComponentRef Id="cmp5EF3051C386C8DAA602E772A7C258726" />
             <ComponentRef Id="cmpD143AF1A4E05D7D8425777ECA2F5440D" />
             <ComponentRef Id="cmpC546D62FCE2A69288747825E8944417D" />
@@ -4170,10 +4639,15 @@
             <ComponentRef Id="cmp6DCD11F46E1DCE998C423CD0BC09CD15" />
             <ComponentRef Id="cmp97DCE18753534AD69AF7E7D8D9E44502" />
             <ComponentRef Id="cmpDE6C92AC2ECEED1C03C8D6728B42EA70" />
+            <ComponentRef Id="cmpC601580257AEA8DA8522AD7F32FE545C" />
+            <ComponentRef Id="cmp1BF396A297DE4BB9EFCE53AA38D5EF41" />
+            <ComponentRef Id="cmpCD22DDF0DFFCD87EFE8CB3AEAD7B2D10" />
             <ComponentRef Id="cmpA3F0584F49B26E431792BDDA23CA5844" />
             <ComponentRef Id="cmpA29B2E41943B2D8BB993F59ADA816E87" />
             <ComponentRef Id="cmp4E9B33C40EDE71B61567265DDE41AA40" />
             <ComponentRef Id="cmpC71AD037C10F73FFA59A6255D98190D4" />
+            <ComponentRef Id="cmp4DDC11D6580AB2CC03CADEDD62194BDA" />
+            <ComponentRef Id="cmpE3F8AFED4B05B18FC4A7CAB87B1CB417" />
             <ComponentRef Id="cmpB3DCE82FE478526DDF1700692DBA9623" />
             <ComponentRef Id="cmpA83327F7CCE4FB576DFC29FAB7F39D59" />
             <ComponentRef Id="cmp0C4C37E15F9F4671DEFA34F55D2FC9A8" />
@@ -4196,12 +4670,16 @@
             <ComponentRef Id="cmpDA205E78D24A30F1E22084DC3F929F6B" />
             <ComponentRef Id="cmp45FA4FB4D2F9B67E7380E7CD8680BBD8" />
             <ComponentRef Id="cmp94F1754099FE50A85549D11C0CC21916" />
+            <ComponentRef Id="cmpB42192A5F8420BF74FAD5D5078C21D04" />
+            <ComponentRef Id="cmpD7ED9ECDF7DC36204C769003AC1C92D1" />
+            <ComponentRef Id="cmp621C5472569E9B7988C8A084D8656B22" />
             <ComponentRef Id="cmpD80193A27EAF0B72702BBA3F066DD099" />
             <ComponentRef Id="cmp2BE59FD587F7E44466F41BF3189A9262" />
             <ComponentRef Id="cmp44074831AFB81C156E7ED6A30C9965D5" />
             <ComponentRef Id="cmp3BB1527FA803EB75EB5EC78C281B3212" />
             <ComponentRef Id="cmpA534986DA2E43D7E50E9A6E219478266" />
             <ComponentRef Id="cmp6D34FB8F9A9678D4511D4BB8E0800104" />
+            <ComponentRef Id="cmpE1FBC775E0C4E8ECA1EB6C0F338FEDFA" />
             <ComponentRef Id="cmp02DCD4998B3C2CF365F95C5A38848DB3" />
             <ComponentRef Id="cmpCF891519A685521085AC294E4B891DD2" />
             <ComponentRef Id="cmp0FD8A30BE2A6216F0F741F6A28419061" />
@@ -4216,12 +4694,18 @@
             <ComponentRef Id="cmpFA0D75D8CA8A655DF7355F8982D6D1E1" />
             <ComponentRef Id="cmp6EEC16C6468A4F3D696B0B42A3B398D5" />
             <ComponentRef Id="cmp3690E2A0F23C88463E67FA00A8CFB465" />
+            <ComponentRef Id="cmp4DCADEC0DAC1C1DA9D1D352E4A417A2D" />
+            <ComponentRef Id="cmpDF9D174F5DD3373F4E7447C5E34B1348" />
+            <ComponentRef Id="cmpC66BD3D99AF61BAD98BC08FDEDF8A276" />
             <ComponentRef Id="cmp368F7AA272349F8911057739DF9BDC14" />
             <ComponentRef Id="cmpC08F41DE6169E9495E44714AEDA50D7D" />
             <ComponentRef Id="cmp273975FE717E0BB68232E0CD3E70AA82" />
             <ComponentRef Id="cmpC49EFF5B153B832A1B30B31544E0C17E" />
             <ComponentRef Id="cmpD67A45515144EEB5AF6F9DD0C4B2BFDA" />
             <ComponentRef Id="cmpABAF8D1829695B54EE167D137802FE49" />
+            <ComponentRef Id="cmpDD0209B9F15287C06AF2A301A6DA9C67" />
+            <ComponentRef Id="cmpB904935B70928974D5ABC88308A90047" />
+            <ComponentRef Id="cmp5C61554BD83089367CC25D6B8087BA72" />
             <ComponentRef Id="cmp3C9C507DDA08AF33411AE879EDD0A4F2" />
             <ComponentRef Id="cmp1F33CAEBDF996E2FAB3DB353F78D07B4" />
             <ComponentRef Id="cmp96672414191DFAC6E5AA290880707F57" />
@@ -4252,6 +4736,7 @@
             <ComponentRef Id="cmpB8E39688D9A40711889B60B4C6DDCE34" />
             <ComponentRef Id="cmp1C5BB5A903996F67B72EE9AF30E24A24" />
             <ComponentRef Id="cmp41B6BA33AAAFB39382ABF2B08ADD9EE2" />
+            <ComponentRef Id="cmpB6FDBA85455DA6EBED174F6D69F6554F" />
             <ComponentRef Id="cmp72CD8D3AE95F7E6039ACC556939748D1" />
             <ComponentRef Id="cmp33EF3DD9770D5283E9D1C5C379F275F4" />
             <ComponentRef Id="cmp8F0F58A2009D1E11C8CC461AEA150722" />
@@ -4261,36 +4746,43 @@
             <ComponentRef Id="cmp56F9151EB19BE7D5CE2655D19ADF5C9A" />
             <ComponentRef Id="cmp39A46C3BD11947E08479BBD49CB20104" />
             <ComponentRef Id="cmpC1352E11D4D3526DFA43840F587B64D9" />
-            <ComponentRef Id="cmpAB73A292CB35271F6F4846DE380590E9" />
-            <ComponentRef Id="cmp8A018BDE7E702A23D2972894F5468A9B" />
-            <ComponentRef Id="cmpEE91695065D2C0CC7BE1F5F8C2F17401" />
-            <ComponentRef Id="cmp07323E3D8954734949E10A6B67CF606D" />
-            <ComponentRef Id="cmp86DED8D5DC1B60F713165E5B7A3A7807" />
-            <ComponentRef Id="cmp16039F03EE573F76672CF2EB92819EB2" />
-            <ComponentRef Id="cmp31422BFD3DA564E2FDD4D43DEA405BEC" />
-            <ComponentRef Id="cmpB109935AB8D34E4AB1DF5D7C06E55F1C" />
-            <ComponentRef Id="cmp167D0BD5E883378DEFC3A6C16E90DC8F" />
-            <ComponentRef Id="cmp791EA170A11BFA931253436A01E56C35" />
-            <ComponentRef Id="cmp526A292F73F0AD989F9EF26F033847B8" />
-            <ComponentRef Id="cmp74C71F73C924B15A36D215FAFDD52C39" />
-            <ComponentRef Id="cmp978B119DEB75B7DC1685098BC73FB4A4" />
-            <ComponentRef Id="cmp74B694D958192185BA257DF20B9E43DB" />
-            <ComponentRef Id="cmpF47A0851A531708616C7C7EEA487B759" />
-            <ComponentRef Id="cmpB8730612E16E29299072F61206DD74BB" />
-            <ComponentRef Id="cmp9B885D410272077B30F451BDCCD2BF20" />
-            <ComponentRef Id="cmp0ED13C74F08CD14584996A339AAFC596" />
-            <ComponentRef Id="cmpAC76DBAB332886BAD0198F513FE3BEF2" />
-            <ComponentRef Id="cmp604E152B8D286CDF588762A5D4F11A5D" />
-            <ComponentRef Id="cmp2A28FDEA5DE69758ADA4940DF86A2BEB" />
-            <ComponentRef Id="cmpAA1873A0424C1C272A156FE55723A432" />
-            <ComponentRef Id="cmpB16C798C1C6E871244C9E0BDD33966AD" />
-            <ComponentRef Id="cmpC5B83E06C9AAFF41E4ADF1130D582395" />
-            <ComponentRef Id="cmp3065324CB5C5745DF07EFF2D4C2F73B7" />
-            <ComponentRef Id="cmp32597465309DB4C6111145F7F9386998" />
-            <ComponentRef Id="cmpA3269F8E5D09F797DC9AAE938BB01F7E" />
-            <ComponentRef Id="cmpA8A1BA779FDC8D490A9D712030B27451" />
-            <ComponentRef Id="cmpB0F5842BF4CBFAAB314E384FEEC4638E" />
-            <ComponentRef Id="cmp8DF361EA3C81A9115940DFEDBA84F47F" />
+            <ComponentRef Id="cmp3D2A9D83FC8C994C373CE6ED8587BDFB" />
+            <ComponentRef Id="cmp60521804CF648610DFEE8873C98DF6FE" />
+            <ComponentRef Id="cmp4AFA8C6EDE02E2B9FC026EFD116FAFA7" />
+            <ComponentRef Id="cmp926FBB377170F25C198A076240F70BB6" />
+            <ComponentRef Id="cmp59441725CC89648B8BF9D5D4B503100A" />
+            <ComponentRef Id="cmpBCE3E3885799B8A3163ACE2AE0F576E9" />
+            <ComponentRef Id="cmpBAC1299B16CA8EF80BEAB5FF71CBABAE" />
+            <ComponentRef Id="cmp7BE376774A950E9B6D7E678D3D277018" />
+            <ComponentRef Id="cmp424E120D40F4D297C20CCA3E2790FAF7" />
+            <ComponentRef Id="cmp0861FE5479F2A5D5C40F2BB01ECB8CC9" />
+            <ComponentRef Id="cmp2907887CFFF5B6110AB0097013514BE4" />
+            <ComponentRef Id="cmp9E425050A0DE99DE8E3AF4B7D9C1CFD7" />
+            <ComponentRef Id="cmpF15E2D2C885C287DCD2CB46EACB2AC46" />
+            <ComponentRef Id="cmp975EFC6A92D92C5C5B4153547CD20282" />
+            <ComponentRef Id="cmp3FC34086BA28215892E4708013DDBDB2" />
+            <ComponentRef Id="cmp9370342F2A1F4546D93361C26E8A5EFE" />
+            <ComponentRef Id="cmp6BDCE40E4D709D742E59EE0C2C9DF5F5" />
+            <ComponentRef Id="cmp8F4AA05745FF79CBB4E6B78CED246603" />
+            <ComponentRef Id="cmp690CA9176375AC212E2BC1B116D980EC" />
+            <ComponentRef Id="cmp083D1E0049B5BB205A2E5C92CB909BEF" />
+            <ComponentRef Id="cmp5F6AA34B6EFDC5C0AA644FDA3DCD3AE5" />
+            <ComponentRef Id="cmp2E31F2A1731BEF5A04B4A7BB5CA00126" />
+            <ComponentRef Id="cmp00BBC94DC75846DE95B7DD06CCBCBBF9" />
+            <ComponentRef Id="cmp410839696897F016B1DAF2FE7A911D2D" />
+            <ComponentRef Id="cmp8DF5908875AF35BB00B232C7412C20AD" />
+            <ComponentRef Id="cmp4EA5A818E3BE7C67C27B69ADABCE5CBF" />
+            <ComponentRef Id="cmpBF600E80A7D04977AF21CAA07A79254C" />
+            <ComponentRef Id="cmpA2A4B67ACC8738C88A82A9576BD82026" />
+            <ComponentRef Id="cmpE56C0006C325EFBAD7984DBBCF689FD2" />
+            <ComponentRef Id="cmpA94FD747C692B4A9A45D9DE5D869DE53" />
+            <ComponentRef Id="cmp7F0D9683DB4D431F6A1A42EBCAD0E4E3" />
+            <ComponentRef Id="cmp162D3E5C118EE77EBC4C6FA0525B7470" />
+            <ComponentRef Id="cmpF1E11922E5C06DD2E1F4F20A684C6DEE" />
+            <ComponentRef Id="cmp672C835EB29D98EC5EA0805F5895926A" />
+            <ComponentRef Id="cmp388D2A53C01E1A6A4159B3664AA8CB58" />
+            <ComponentRef Id="cmpFC0CB80997A65B711715114CE05F5352" />
+            <ComponentRef Id="cmpF7A753E4CAACA8F93A7BC91300781563" />
             <ComponentRef Id="cmp223561C7CC398B710983BE7DCFDD0621" />
             <ComponentRef Id="cmp6C9E8BA5E4A256E3565E960C30CA3B76" />
             <ComponentRef Id="cmpB012037C5A1730BCC2B222B4E4992061" />
@@ -4316,6 +4808,7 @@
             <ComponentRef Id="cmp460296800F8D71B7CA765C43124FE73A" />
             <ComponentRef Id="cmp3A7AB9C2550B12DEC90621B47176788A" />
             <ComponentRef Id="cmpF69128DBF9C6F7F630E779CA78490603" />
+            <ComponentRef Id="cmp5168A1A0C7C08B622BF4A720457790F9" />
             <ComponentRef Id="cmpFB7D307E2ABB67721699BB2C4E1F7929" />
             <ComponentRef Id="cmp998D637BBC9D088BD222D2124DF81103" />
             <ComponentRef Id="cmpE3C9C1D8471F7F52CD4CC8F7B1906EDD" />
@@ -4330,11 +4823,15 @@
             <ComponentRef Id="cmp501CEFFFC5B60B2C10D8D23CC4C08DE3" />
             <ComponentRef Id="cmp8A52C173BBEBDEC34D477EB1CA7CDF8C" />
             <ComponentRef Id="cmp870F3852316FF981A05181FC2CA8FC87" />
+            <ComponentRef Id="cmpC7A69E0CAF79A399713E570A0117B34B" />
             <ComponentRef Id="cmp872790A9D04A11F34AD1AFA30E9E9AB4" />
+            <ComponentRef Id="cmpCEA34C1D4FCE6A300D1FBF63D7E498E4" />
             <ComponentRef Id="cmp3A9B1C71BAB473309BC45D2A1003D04B" />
             <ComponentRef Id="cmp08631148288A521D5D684D09A61D4A4D" />
             <ComponentRef Id="cmpC48D8407E95C9BAB531B376F0AAF17FA" />
             <ComponentRef Id="cmp4BFEB32A5496B145F0763FF85A757536" />
+            <ComponentRef Id="cmp9985A42F73AEC37B96446426793628DB" />
+            <ComponentRef Id="cmp641EC0122CB44D4F55DA2B5F3FD4F52F" />
             <ComponentRef Id="cmpD187CB7739FF6519F37560880EF37715" />
             <ComponentRef Id="cmp177B59B29632862B4A45CBD4F9540106" />
             <ComponentRef Id="cmpF1B630C29BBECB7A9DC1CF6AA8DF9693" />
@@ -4352,6 +4849,7 @@
             <ComponentRef Id="cmp0B1B9759F05962598D9DF41CD5E530AC" />
             <ComponentRef Id="cmp405460D4FD582F744D638158BA9A100F" />
             <ComponentRef Id="cmp99CD149FABD9A57A814EF84BA2BA5C85" />
+            <ComponentRef Id="cmp9C5D0681FD5D35967C2ADB2CC83EFE07" />
             <ComponentRef Id="cmp6279AD933DA3E295B2543496D844DAAB" />
             <ComponentRef Id="cmp6CD2ABFA6CEC41AEA1795367E4CB5554" />
             <ComponentRef Id="cmpD7F32F8CD627E4B41877A3E7B5E4B9FE" />
@@ -4367,7 +4865,11 @@
             <ComponentRef Id="cmpE28B18BAD586716CB3755F1C33A92033" />
             <ComponentRef Id="cmp64D686046B0EFB675C39C9D16F082A81" />
             <ComponentRef Id="cmp882DFDCDF5B641E85EA5053D90331FF3" />
+            <ComponentRef Id="cmp8149DA54BAD5138C724AA9531F6EF1DB" />
+            <ComponentRef Id="cmpB71BC78C7C4F1B1778042F4F4B4F2F08" />
+            <ComponentRef Id="cmp3AD5835A28E94C8EB2904782C63B95B4" />
             <ComponentRef Id="cmp8162A7134D4C9EB5D49EC45591995C2B" />
+            <ComponentRef Id="cmpF679AA745A78D9232AFA533AC5A06B55" />
             <ComponentRef Id="cmpD0FB9F1837C72A913A5A221811D836CC" />
             <ComponentRef Id="cmpC5759F38821AA48E1C9BD8673AED9C0E" />
             <ComponentRef Id="cmp9476B9E28FEBB017468E192B45CA0750" />
@@ -4385,6 +4887,9 @@
             <ComponentRef Id="cmpDD166FFA65677744E2C3EFC05FC744AC" />
             <ComponentRef Id="cmp0ED267E119A5519DB38DCF6D42002072" />
             <ComponentRef Id="cmp3B20078612586B038701E00BEBC1B530" />
+            <ComponentRef Id="cmp67582164B4932A904A1460B50A37A58C" />
+            <ComponentRef Id="cmp4D574386F62E94034679F22808B3F1F1" />
+            <ComponentRef Id="cmp46DF6CA6BD8BD194F1866E74A694CCB3" />
             <ComponentRef Id="cmpA92D5F5096D59A79F7091CC1C2C30665" />
             <ComponentRef Id="cmpA9C343968C686DDFF0EE4DA174AB8B6F" />
             <ComponentRef Id="cmpCE729F12E833A20E504BF7420712FA49" />
@@ -4403,6 +4908,9 @@
             <ComponentRef Id="cmpAAA3BFC9B04B6FC095AE39235747D692" />
             <ComponentRef Id="cmp943BE22219944ACF01DF1BA02B72AB11" />
             <ComponentRef Id="cmp5E17A45D8307918755ABE0263B53FB64" />
+            <ComponentRef Id="cmp69914982EC2B4590B0A7EB3CFBAB4E06" />
+            <ComponentRef Id="cmpCE16EF6388EB7390B5991F43E5609278" />
+            <ComponentRef Id="cmp043C277BDC681C299BAA6E5E03E5960E" />
             <ComponentRef Id="cmp2AC34B496C31586E724E662B247950AF" />
             <ComponentRef Id="cmp72C8C02E06862525059DA2F6A04D5FE4" />
             <ComponentRef Id="cmp79ECBE22B99E0C170107AAF0FE1ADE25" />
@@ -4410,6 +4918,7 @@
             <ComponentRef Id="cmpB6773EA3F58057B9F419BA6DBF13CBED" />
             <ComponentRef Id="cmp01E003A3FA26FB81C6B89817FE7250BE" />
             <ComponentRef Id="cmp5E7A927FFF2CD1AC2D9A4D4746132F63" />
+            <ComponentRef Id="cmpA4896332D2E9278A5CFFC76462E3D397" />
             <ComponentRef Id="cmp1D11794D4DE13CD2849C407A7736B398" />
             <ComponentRef Id="cmpCCBFA5B04DFD985227AF6B654A18F375" />
             <ComponentRef Id="cmp9F56F57F285139F1E6B4A645E24EA274" />
@@ -4424,6 +4933,9 @@
             <ComponentRef Id="cmp899DB53F94CD216DB9B46BD8B0FAC48E" />
             <ComponentRef Id="cmp0F900EC0B298471E3C7456D6075A1FE5" />
             <ComponentRef Id="cmp8EC20237359661B8797E8212106ED979" />
+            <ComponentRef Id="cmp1C6AB9477B39261BB22E390834DB9819" />
+            <ComponentRef Id="cmp54FD37872B3ACB0F71CB290CD146A1B6" />
+            <ComponentRef Id="cmp4E6558FB9681C732D667D9ECAC69C2C0" />
             <ComponentRef Id="cmpF3579C1AA9FC948DD8F64FE6891AC873" />
             <ComponentRef Id="cmpD03FDD05426B9F868F09554DC1A27DAC" />
             <ComponentRef Id="cmpFFB85727F2E00E7859828646DB0346A4" />
@@ -4459,6 +4971,9 @@
             <ComponentRef Id="cmpE8837BAFFAC6966C28843965B8814CF4" />
             <ComponentRef Id="cmpDC73FAD5D1773A5B838346B8484EE04B" />
             <ComponentRef Id="cmp4305AC8141F9492E6C050EF12BD727D7" />
+            <ComponentRef Id="cmpD3DE395231435F48A6F7DF9C1D608B76" />
+            <ComponentRef Id="cmp93F20DACAFBC092E0D2A5B04417BA424" />
+            <ComponentRef Id="cmp522D512305D9188F54B6A183D2BD575C" />
             <ComponentRef Id="cmpE414847AC21B8E9A582B483372F2F07B" />
             <ComponentRef Id="cmp4E9C25E24595E39CD2761CFD8070E6D6" />
             <ComponentRef Id="cmp6C8488CFB60AC37A37F888FBD49AC005" />
@@ -4511,6 +5026,9 @@
             <ComponentRef Id="cmpB26C40E6728D8FCE39AF2F238B63B96A" />
             <ComponentRef Id="cmp2EA52D327226E3AC73091852952F79F7" />
             <ComponentRef Id="cmpE467247EA0AD8FE96CAB1B79B10EFC95" />
+            <ComponentRef Id="cmp879BD0BC9A650B649F03FB5CB2BDAD35" />
+            <ComponentRef Id="cmp610C6F4AE10BA5FCFF3E45DB2251D7DE" />
+            <ComponentRef Id="cmp3716AB11CCDF90299D759FC5D3BE3236" />
             <ComponentRef Id="cmpF09C98DF697A29CBA316DD5245BDDC02" />
             <ComponentRef Id="cmp9D415E1A42FBCE635C54A154726252E2" />
             <ComponentRef Id="cmpC642A2E254CCF6203F9C18C833CB1133" />
@@ -4537,6 +5055,9 @@
             <ComponentRef Id="cmp0FD7185B5962ADB6A6F0097A65E17DEE" />
             <ComponentRef Id="cmp5B258978B493AAECDCA3A04444A496C0" />
             <ComponentRef Id="cmp59970FF048B3C972960AEE60AA1F8FE3" />
+            <ComponentRef Id="cmp782FEB356FFCB15735D07328D702229F" />
+            <ComponentRef Id="cmpFF20878511DEDB222F358AC792EFFB3F" />
+            <ComponentRef Id="cmp0CA5748BCE15AD73DC944B1BAB7BC573" />
             <ComponentRef Id="cmp52970C387B6EDD9B1B22CF2EE2955A66" />
             <ComponentRef Id="cmpABADAAE7C460C98E47F138F021526C7D" />
             <ComponentRef Id="cmp24781B5A7277266012861E8A479FFD83" />
@@ -4571,6 +5092,9 @@
             <ComponentRef Id="cmpCB56FA3168A825E2E637AADB54A2FF85" />
             <ComponentRef Id="cmpEB4A14396219D0BD8241D88876B20C40" />
             <ComponentRef Id="cmp06E6AFD97482DFA712D00C7ECA81B36D" />
+            <ComponentRef Id="cmp9C83EC0FF5D7B629A521FB7AA8A1AB60" />
+            <ComponentRef Id="cmpA78E0F369EE349F346EFCDE35D0DC860" />
+            <ComponentRef Id="cmp8ACC6D21713A556B30013C4492E5B1EA" />
             <ComponentRef Id="cmp183BD36DB2EFF7F0321541C992A560B4" />
             <ComponentRef Id="cmpFB241DABDB737DAC9015FB56A2D3D05D" />
             <ComponentRef Id="cmpE30AD96B63CB38CFF636E5367DD7FF74" />
@@ -4617,6 +5141,7 @@
             <ComponentRef Id="cmp0D1527ECDFE9784350CC5B3A5C8C2FCB" />
             <ComponentRef Id="cmp7AC582EF35D965837195B618F294E908" />
             <ComponentRef Id="cmpE80EABD6EF9DE4FECC94920EA9D3E4F6" />
+            <ComponentRef Id="cmp11D8AE054E42041FD6A79F71AA9066AA" />
             <ComponentRef Id="cmp7727B7EAE3E44EDAFEDB87CB6710CA94" />
             <ComponentRef Id="cmp8787ED67AAB3B40AA9EB4B04A67BE711" />
             <ComponentRef Id="cmpFDE5E018C2BC186398CFBBAE350D5F4D" />
@@ -4726,6 +5251,9 @@
             <ComponentRef Id="cmp40656E6618791EDE585B3999346E292F" />
             <ComponentRef Id="cmp9996F19F79C3A9E0CA3EBCA4EB2AE81B" />
             <ComponentRef Id="cmp0BD000F60811AD3BEE76103087B46B8B" />
+            <ComponentRef Id="cmp4A98D12853680B70EA13B558FF5B66BE" />
+            <ComponentRef Id="cmpFFEE4D9645AEA846AF41897FD2135E02" />
+            <ComponentRef Id="cmp2F6E4C6B8006898EFE87C88921C1B6BA" />
             <ComponentRef Id="cmp8CDB44BA783FF24C94CDFC5D12066BB1" />
             <ComponentRef Id="cmpD7A9F76B2346156CA8F83F41A302B714" />
             <ComponentRef Id="cmp4D3E383B38EF4392E70E981B7CA033D7" />
@@ -4749,6 +5277,9 @@
             <ComponentRef Id="cmp36C4A4A2FC1D0869C13C8C1B787310CC" />
             <ComponentRef Id="cmp0A8941117B39B5A0CA1C90919DFF2E78" />
             <ComponentRef Id="cmpA4A58C94EE47090F62EFE436AC816A2B" />
+            <ComponentRef Id="cmpF6A31E71E73261E256FB53289879CAC6" />
+            <ComponentRef Id="cmp24E45E80EDFF6AFB35BDC3BDF5B8CDD8" />
+            <ComponentRef Id="cmpC6E9F874597250F8F9018EE96BD563C1" />
             <ComponentRef Id="cmp834EB592C6925B045C8B0510B26AF6B9" />
             <ComponentRef Id="cmp52FF148EB192D51478E0DB900FEBCD2E" />
             <ComponentRef Id="cmpC5E3FEA322C85A119AAD3B33E914D775" />
@@ -4781,6 +5312,9 @@
             <ComponentRef Id="cmp919EA80656B815EE075AC147C6D3586C" />
             <ComponentRef Id="cmp587C3DC1815CE6353E33B526A1B34B70" />
             <ComponentRef Id="cmp9F74CE881F871E4C03EE7704F879FE99" />
+            <ComponentRef Id="cmp5EDC14153ABE12E6F8AC7CE138325ED3" />
+            <ComponentRef Id="cmp884EDD6200BC33660CA506614BF1514B" />
+            <ComponentRef Id="cmp451DD4F87C87FD099EB3BB15B08BFC23" />
             <ComponentRef Id="cmp3A0F63A65EACD6FAA15281A901A5411F" />
             <ComponentRef Id="cmp14E519C8556B22CEE7645282DC1CA794" />
             <ComponentRef Id="cmpC84FEC97B5C1FA0D12CD177A8BA56D61" />
@@ -4879,6 +5413,7 @@
             <ComponentRef Id="cmp5C3F4FE4E92F090F22B371444CEFA7FB" />
             <ComponentRef Id="cmp65991ADC169007028A31A4F049E069EF" />
             <ComponentRef Id="cmp221C334CE6510BD95538F285D482251F" />
+            <ComponentRef Id="cmp74B0B7D2461EE67BC1B2C706CD41372F" />
             <ComponentRef Id="cmpD8BD7D4C976FE7FE527348B4E7F85B8D" />
             <ComponentRef Id="cmpD5A2C7B5CF9A37015F3B71F2DC61EC0B" />
             <ComponentRef Id="cmp4C01FCB6C2D2D2591BAEDBA0D9284C3C" />
@@ -4893,6 +5428,9 @@
             <ComponentRef Id="cmp0054EC217A498A21D41DDF0F2EC13790" />
             <ComponentRef Id="cmpEEE6F767030FA4D848B953CD6314782F" />
             <ComponentRef Id="cmp8EC68FBCACE90470433761E36E3D76DB" />
+            <ComponentRef Id="cmp9B904F11D256CCFD904E1BB77447E4A4" />
+            <ComponentRef Id="cmp71530FA712EAD3B1A8C2567DB3B9DC17" />
+            <ComponentRef Id="cmp3343A6EBDBAC93AE47AF05414FB13AA1" />
             <ComponentRef Id="cmpA3762B9D05951822E7D0B1F5781081FB" />
             <ComponentRef Id="cmpEC41D4628A7B6741574439307F61E978" />
             <ComponentRef Id="cmp28730E85118C3DEFFFF222870AB95F58" />
@@ -4942,6 +5480,9 @@
             <ComponentRef Id="cmpEC794DBE4822765C546A06D80EAA3292" />
             <ComponentRef Id="cmpCC3658D30C8A840368108F9916685F52" />
             <ComponentRef Id="cmp9092536B3DD830DBDD28650EDA07EF47" />
+            <ComponentRef Id="cmpB48F1BD4D2E8307615F7E22174FF4E6D" />
+            <ComponentRef Id="cmpA0956C90D2B044403B89552A999810D4" />
+            <ComponentRef Id="cmpA198033EEE9BFFF6B11B5703D4B4C591" />
             <ComponentRef Id="cmp2A4B259F8FE4D228DE8EC6FF05D891DA" />
             <ComponentRef Id="cmpCD982CBC7CFC44B49F7A30F6D9C7CCC3" />
             <ComponentRef Id="cmp96B7E859E6B1867E3949455DEEB4E6FE" />
@@ -4967,6 +5508,9 @@
             <ComponentRef Id="cmpFE6FBB91E9CD50DF93CD91D34D39E1CD" />
             <ComponentRef Id="cmp49D41D961F1729298835FA55BF445BBC" />
             <ComponentRef Id="cmp8BF21722A2AAC5DC97A809331056D418" />
+            <ComponentRef Id="cmp97A66DAD787E411E099CAE60D763FA0F" />
+            <ComponentRef Id="cmp59F4193EE3E7AD5444762EB83F818011" />
+            <ComponentRef Id="cmpE381DAC024A6EBB8BA87820C8FC46E50" />
             <ComponentRef Id="cmp3F7857712675184BDC6966B98CB82631" />
             <ComponentRef Id="cmp80C2FE158E4667163D975F0E2A47D181" />
             <ComponentRef Id="cmp5689F438A3FAD6E4DBA31707F735F0EC" />

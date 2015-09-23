@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Sets a Module for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRMAutomationModule", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
+    [Cmdlet(VerbsCommon.Set, "AzureRmAutomationModule", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
     [OutputType(typeof(Module))]
      public class SetAzureAutomationModule : AzureAutomationBaseCmdlet
     {
