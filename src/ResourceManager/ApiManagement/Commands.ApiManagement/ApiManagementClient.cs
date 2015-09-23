@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.ApiManagement
 
             var longrunningResponse = Client.ResourceProvider.BeginCreatingOrUpdating(resourceGroupName, serviceName, parameters);
             AdjustRetryAfter(longrunningResponse, _client.LongRunningOperationInitialTimeout);
-            return ApiManagementLongRunningOperation.CreateLongRunningOperation("New-AzureRMApiManagement", longrunningResponse);
+            return ApiManagementLongRunningOperation.CreateLongRunningOperation("New-AzureRmApiManagement", longrunningResponse);
         }
 
         public ApiManagementLongRunningOperation BeginBackupApiManagement(
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.ApiManagement
 
             var longrunningResponse = Client.ResourceProvider.BeginBackup(resourceGroupName, serviceName, parameters);
             AdjustRetryAfter(longrunningResponse, _client.LongRunningOperationInitialTimeout);
-            return ApiManagementLongRunningOperation.CreateLongRunningOperation("Backup-AzureRMApiManagement", longrunningResponse);
+            return ApiManagementLongRunningOperation.CreateLongRunningOperation("Backup-AzureRmApiManagement", longrunningResponse);
         }
 
         public bool DeleteApiManagement(string resourceGroupName, string serviceName)
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.ApiManagement
 
             var longrunningResponse = Client.ResourceProvider.BeginRestoring(resourceGroupName, serviceName, parameters);
             AdjustRetryAfter(longrunningResponse, _client.LongRunningOperationInitialTimeout);
-            return ApiManagementLongRunningOperation.CreateLongRunningOperation("Restore-AzureRMApiManagement", longrunningResponse);
+            return ApiManagementLongRunningOperation.CreateLongRunningOperation("Restore-AzureRmApiManagement", longrunningResponse);
         }
 
         public ApiManagementLongRunningOperation BeginUpdateDeployments(
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Commands.ApiManagement
 
             var longrunningResponse = Client.ResourceProvider.BeginManagingDeployments(resourceGroupName, serviceName, parameters);
             AdjustRetryAfter(longrunningResponse, _client.LongRunningOperationInitialTimeout);
-            return ApiManagementLongRunningOperation.CreateLongRunningOperation("Update-AzureRMApiManagementDeployment", longrunningResponse);
+            return ApiManagementLongRunningOperation.CreateLongRunningOperation("Update-AzureRmApiManagementDeployment", longrunningResponse);
         }
 
         public PsApiManagementHostnameCertificate UploadCertificate(
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Commands.ApiManagement
 
             var longrunningResponse = Client.ResourceProvider.BeginUpdatingHostname(resourceGroupName, serviceName, parameters);
             AdjustRetryAfter(longrunningResponse, _client.LongRunningOperationInitialTimeout);
-            return ApiManagementLongRunningOperation.CreateLongRunningOperation("Set-AzureRMApiManagementHostnames", longrunningResponse);
+            return ApiManagementLongRunningOperation.CreateLongRunningOperation("Set-AzureRmApiManagementHostnames", longrunningResponse);
         }
 
         public string GetSsoToken(string resourceGroupName, string serviceName)
@@ -270,7 +270,7 @@ namespace Microsoft.Azure.Commands.ApiManagement
 
             var longrunningResponse = Client.ResourceProvider.BeginManagingVirtualNetworks(resourceGroupName, serviceName, parameters);
             AdjustRetryAfter(longrunningResponse, _client.LongRunningOperationInitialTimeout);
-            return ApiManagementLongRunningOperation.CreateLongRunningOperation("Set-AzureRMApiManagementVirtualNetworks", longrunningResponse);
+            return ApiManagementLongRunningOperation.CreateLongRunningOperation("Set-AzureRmApiManagementVirtualNetworks", longrunningResponse);
         }
 
         internal ApiManagementLongRunningOperation GetLongRunningOperationStatus(ApiManagementLongRunningOperation longRunningOperation)

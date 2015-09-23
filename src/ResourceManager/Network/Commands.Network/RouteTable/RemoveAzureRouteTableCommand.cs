@@ -18,7 +18,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-     [Cmdlet(VerbsCommon.Remove, "AzureRMRouteTable")]
+     [Cmdlet(VerbsCommon.Remove, "AzureRmRouteTable")]
     public class RemoveAzureRouteTableCommand : RouteTableBaseCmdlet
     {
         [Alias("ResourceName")]

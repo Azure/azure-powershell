@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRMRouteConfig"), OutputType(typeof(PSRouteTable))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmRouteConfig"), OutputType(typeof(PSRouteTable))]
     public class RemoveAzurReouteConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(

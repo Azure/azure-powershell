@@ -51,8 +51,8 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
            Position = 2,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "Name of the ARM resource that represents the extension. The Set-AzureRMVMSqlServerExtension cmdlet sets this name to  " +
-           "'Microsoft.SqlServer.Management.SqlIaaSAgent', which is the same value used by Get-AzureRMVMSqlServerExtension. Specify this parameter only if you changed " +
+           HelpMessage = "Name of the ARM resource that represents the extension. The Set-AzureRmVMSqlServerExtension cmdlet sets this name to  " +
+           "'Microsoft.SqlServer.Management.SqlIaaSAgent', which is the same value used by Get-AzureRmVMSqlServerExtension. Specify this parameter only if you changed " +
            "the default name in the Set cmdlet or used a different resource name in an ARM template.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }

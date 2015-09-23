@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Backup Azue Backup Item
     /// </summary>
-    [Cmdlet(VerbsData.Backup, "AzureRMBackupItem"), OutputType(typeof(AzureRMBackupJob))]
+    [Cmdlet(VerbsData.Backup, "AzureRmBackupItem"), OutputType(typeof(AzureRMBackupJob))]
     public class BackupAzureRMBackupItem : AzureRMBackupDSCmdletBase
     {
         protected override void ProcessRecord()
