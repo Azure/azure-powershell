@@ -43,6 +43,21 @@ function Test-CreateComputeNodeUser
 
 <#
 .SYNOPSIS
+Tests updating a compute node user
+#>
+function Test-UpdateComputeNodeUser
+{
+	param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$userName)
+
+	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+
+	# Basically just validating that we can set the parameters and execute the cmdlet without error. 
+	# If a Get user API is added, we can validate that the properties were actually updated.
+	Set-AzureBatchComputeNodeUser_ST $poolId $computeNodeId $userName "Abcdefghijk1234!" -ExpiryTime ([DateTime]::Now.AddDays(5)) -BatchContext $context
+}
+
+<#
+.SYNOPSIS
 Tests deleting a compute node user
 #>
 function Test-DeleteComputeNodeUser

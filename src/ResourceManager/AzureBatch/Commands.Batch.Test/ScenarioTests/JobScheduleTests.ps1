@@ -330,6 +330,252 @@ function Test-ListAllJobSchedules
 
 <#
 .SYNOPSIS
+Tests updating a job schedule
+#>
+function Test-UpdateJobSchedule
+{
+	param([string]$accountName, [string]$jobScheduleId)
+
+	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+
+	$jobSchedule = Get-AzureBatchJobSchedule_ST $jobScheduleId -BatchContext $context
+	
+	# Define new Schedule properties
+	$schedule = New-Object Microsoft.Azure.Commands.Batch.Models.PSSchedule
+	$schedule.DoNotRunUntil = $doNotRunUntil = New-Object DateTime -ArgumentList @(2020,01,01,12,0,0)
+	$schedule.DoNotRunAfter = $doNotRunAfter = New-Object DateTime -ArgumentList @(2025,01,01,12,0,0)
+	$schedule.StartWindow = $startWindow = [TimeSpan]::FromHours(1)
+	$schedule.RecurrenceInterval = $recurrence = [TimeSpan]::FromDays(1)
+
+	# Define new JobSpecification properties
+
+	$startTask = New-Object Microsoft.Azure.Commands.Batch.Models.PSStartTask
+	$startTaskCmd = "cmd /c dir /s"
+	$startTask.CommandLine = $startTaskCmd
+
+	$poolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolSpecification
+	$poolSpec.TargetDedicated = $targetDedicated = 3
+	$poolSpec.VirtualMachineSize = $vmSize = "small"
+	$poolSpec.OSFamily = $osFamily = "4"
+	$poolSpec.TargetOSVersion = $targetOS = "*"
+	$poolSpec.StartTask = $startTask
+
+	$poolSpec.CertificateReferences = new-object System.Collections.Generic.List``1[Microsoft.Azure.Commands.Batch.Models.PSCertificateReference]
+	$certRef = New-Object Microsoft.Azure.Commands.Batch.Models.PSCertificateReference
+	$certRef.StoreLocation = $storeLocation = ([Microsoft.Azure.Batch.Common.CertStoreLocation]::LocalMachine)
+	$certRef.StoreName = $storeName = "certStore"
+	$certRef.Thumbprint = $thumbprint = "0123456789ABCDEF"
+	$certRef.ThumbprintAlgorithm = $thumbprintAlgorithm = "sha1"
+	$certRef.Visibility = $visibility = ([Microsoft.Azure.Batch.Common.CertificateVisibility]::StartTask)
+	$poolSpec.CertificateReferences.Add($certRef)
+	$certRefCount = $poolSpec.CertificateReferences.Count
+
+	$autoPoolSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSAutoPoolSpecification
+	$autoPoolSpec.PoolSpecification = $poolSpec
+	$autoPoolSpec.AutoPoolIdPrefix = $autoPoolIdPrefix = "TestSpecPrefix"
+	$autoPoolSpec.KeepAlive = $keepAlive = $false
+	$autoPoolSpec.PoolLifeTimeOption = $poolLifeTime = ([Microsoft.Azure.Batch.Common.PoolLifeTimeOption]::JobSchedule)
+
+	$poolInfo = New-Object Microsoft.Azure.Commands.Batch.Models.PSPoolInformation
+	$poolInfo.AutoPoolSpecification = $autoPoolSpec
+
+	$jobMgr = New-Object Microsoft.Azure.Commands.Batch.Models.PSJobManagerTask
+	$jobMgr.CommandLine = $jobMgrCmd = "cmd /c dir /s"
+	$jobMgr.EnvironmentSettings = New-Object System.Collections.Generic.List``1[Microsoft.Azure.Commands.Batch.Models.PSEnvironmentSetting]
+	$env1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSEnvironmentSetting -ArgumentList "name1","value1"
+	$env2 = New-Object Microsoft.Azure.Commands.Batch.Models.PSEnvironmentSetting -ArgumentList "name2","value2"
+	$env1Name = $env1.Name
+	$env1Value = $env1.Value
+	$env2Name = $env2.Name
+	$env2Value = $env2.Value
+	$jobMgr.EnvironmentSettings.Add($env1)
+	$jobMgr.EnvironmentSettings.Add($env2)
+	$envCount = $jobMgr.EnvironmentSettings.Count
+	$jobMgr.ResourceFiles = new-object System.Collections.Generic.List``1[Microsoft.Azure.Commands.Batch.Models.PSResourceFile]
+	$r1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSResourceFile -ArgumentList "https://testacct.blob.core.windows.net/","filePath"
+	$blobSource = $r1.BlobSource
+	$filePath = $r1.FilePath
+	$jobMgr.ResourceFiles.Add($r1)
+	$resourceFileCount = $jobMgr.ResourceFiles.Count
+	$jobMgr.KillJobOnCompletion = $killOnCompletion = $false
+	$jobMgr.Id = $jobMgrId = "jobManager"
+	$jobMgr.DisplayName = $jobMgrDisplay = "jobManagerDisplay"
+	$jobMgr.RunElevated = $runElevated = $false
+	$jobMgrMaxWallClockTime = [TimeSpan]::FromHours(1)
+	$jobMgr.Constraints = New-Object Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints -ArgumentList @($jobMgrMaxWallClockTime,$null,$null)
+
+	$jobPrep = New-Object Microsoft.Azure.Commands.Batch.Models.PSJobPreparationTask
+	$jobPrep.CommandLine = $jobPrepCmd = "cmd /c dir /s"
+	$jobPrep.EnvironmentSettings = New-Object System.Collections.Generic.List``1[Microsoft.Azure.Commands.Batch.Models.PSEnvironmentSetting]
+	$jobPrepEnv1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSEnvironmentSetting -ArgumentList "jobPrepName1","jobPrepValue1"
+	$jobPrepEnv2 = New-Object Microsoft.Azure.Commands.Batch.Models.PSEnvironmentSetting -ArgumentList "jobPrepName2","jobPrepValue2"
+	$jobPrepEnv1Name = $jobPrepEnv1.Name
+	$jobPrepEnv1Value = $jobPrepEnv1.Value
+	$jobPrepEnv2Name = $jobPrepEnv2.Name
+	$jobPrepEnv2Value = $jobPrepEnv2.Value
+	$jobPrep.EnvironmentSettings.Add($jobPrepEnv1)
+	$jobPrep.EnvironmentSettings.Add($jobPrepEnv2)
+	$jobPrepEnvCount = $jobPrep.EnvironmentSettings.Count
+	$jobPrep.ResourceFiles = new-object System.Collections.Generic.List``1[Microsoft.Azure.Commands.Batch.Models.PSResourceFile]
+	$jobPrepR1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSResourceFile -ArgumentList "https://testacct.blob.core.windows.net/","jobPrepFilePath"
+	$jobPrepBlobSource = $jobPrepR1.BlobSource
+	$jobPrepFilePath = $jobPrepR1.FilePath
+	$jobPrep.ResourceFiles.Add($jobPrepR1)
+	$jobPrepResourceFileCount = $jobPrep.ResourceFiles.Count
+	$jobPrep.Id = $jobPrepId = "jobPrep"
+	$jobPrep.RunElevated = $jobPrepRunElevated = $false
+	$jobPrepRetryCount = 2
+	$jobPrep.Constraints = New-Object Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints -ArgumentList @($null,$null,$jobPrepRetryCount)
+
+	$jobRelease = New-Object Microsoft.Azure.Commands.Batch.Models.PSJobReleaseTask
+	$jobRelease.CommandLine = $jobReleaseCmd = "cmd /c dir /s"
+	$jobRelease.EnvironmentSettings = New-Object System.Collections.Generic.List``1[Microsoft.Azure.Commands.Batch.Models.PSEnvironmentSetting]
+	$jobReleaseEnv1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSEnvironmentSetting -ArgumentList "jobReleaseName1","jobReleaseValue1"
+	$jobReleaseEnv2 = New-Object Microsoft.Azure.Commands.Batch.Models.PSEnvironmentSetting -ArgumentList "jobReleaseName2","jobReleaseValue2"
+	$jobReleaseEnv1Name = $jobReleaseEnv1.Name
+	$jobReleaseEnv1Value = $jobReleaseEnv1.Value
+	$jobReleaseEnv2Name = $jobReleaseEnv2.Name
+	$jobReleaseEnv2Value = $jobReleaseEnv2.Value
+	$jobRelease.EnvironmentSettings.Add($jobReleaseEnv1)
+	$jobRelease.EnvironmentSettings.Add($jobReleaseEnv2)
+	$jobReleaseEnvCount = $jobRelease.EnvironmentSettings.Count
+	$jobRelease.ResourceFiles = new-object System.Collections.Generic.List``1[Microsoft.Azure.Commands.Batch.Models.PSResourceFile]
+	$jobReleaseR1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSResourceFile -ArgumentList "https://testacct.blob.core.windows.net/","jobReleaseFilePath"
+	$jobReleaseBlobSource = $jobReleaseR1.BlobSource
+	$jobReleaseFilePath = $jobReleaseR1.FilePath
+	$jobRelease.ResourceFiles.Add($jobReleaseR1)
+	$jobReleaseResourceFileCount = $jobRelease.ResourceFiles.Count
+	$jobRelease.Id = $jobReleaseId = "jobRelease"
+	$jobRelease.RunElevated = $jobReleaseRunElevated = $false
+
+	$jobConstraints = New-Object Microsoft.Azure.Commands.Batch.Models.PSJobConstraints -ArgumentList @([TimeSpan]::FromDays(1),5)
+	$maxWallClockTime = $jobConstraints.MaxWallClockTime
+	$maxTaskRetry = $jobConstraints.MaxTaskRetryCount
+
+	$jobSpec = New-Object Microsoft.Azure.Commands.Batch.Models.PSJobSpecification
+	$jobSpec.JobManagerTask = $jobMgr
+	$jobSpec.JobPreparationTask = $jobPrep
+	$jobSpec.JobReleaseTask = $jobRelease
+	$jobSpec.Constraints = $jobConstraints
+	$jobSpec.PoolInformation = $poolInfo
+	$jobSpec.CommonEnvironmentSettings = New-Object System.Collections.Generic.List``1[Microsoft.Azure.Commands.Batch.Models.PSEnvironmentSetting]
+	$commonEnv1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSEnvironmentSetting -ArgumentList "commonName1","commonValue1"
+	$commonEnv2 = New-Object Microsoft.Azure.Commands.Batch.Models.PSEnvironmentSetting -ArgumentList "commonName2","commonValue2"
+	$commonEnv1Name = $commonEnv1.Name
+	$commonEnv1Value = $commonEnv1.Value
+	$commonEnv2Name = $commonEnv2.Name
+	$commonEnv2Value = $commonEnv2.Value
+	$jobSpec.CommonEnvironmentSettings.Add($commonEnv1)
+	$jobSpec.CommonEnvironmentSettings.Add($commonEnv2)
+	$commonEnvCount = $jobSpec.CommonEnvironmentSettings.Count
+	$jobSpec.DisplayName = $jobSpecDisplayName = "jobSpecDisplayName"
+	$jobSpec.Priority = $jobSpecPri = 1
+	$jobSpec.Metadata = New-Object System.Collections.Generic.List``1[Microsoft.Azure.Commands.Batch.Models.PSMetadataItem]
+	$jobSpecMeta1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSMetadataItem -ArgumentList "specMeta1","specMetaValue1"
+	$jobSpecMeta2 = New-Object Microsoft.Azure.Commands.Batch.Models.PSMetadataItem -ArgumentList "specMeta2","specMetaValue2"
+	$jobSpecMeta1Name = $jobSpecMeta1.Name
+	$jobSpecMeta1Value = $jobSpecMeta1.Value
+	$jobSpecMeta2Name = $jobSpecMeta2.Name
+	$jobSpecMeta2Value = $jobSpecMeta2.Value
+	$jobSpec.Metadata.Add($jobSpecMeta1)
+	$jobSpec.Metadata.Add($jobSpecMeta2)
+	$jobSpecMetaCount = $jobSpec.Metadata.Count
+
+	# Define new metadata
+	$metadata = New-Object System.Collections.Generic.List``1[Microsoft.Azure.Commands.Batch.Models.PSMetadataItem]
+	$metadataItem1 =  New-Object Microsoft.Azure.Commands.Batch.Models.PSMetadataItem -ArgumentList "jobScheduleMeta1","jobScheduleValue1"
+	$metadata.Add($metadataItem1)
+
+	# Update job schedule
+	$jobSchedule.Schedule = $schedule
+	$jobSchedule.JobSpecification = $jobSpec
+	$jobSchedule.Metadata = $metadata
+
+	$jobSchedule | Set-AzureBatchJobSchedule_ST -BatchContext $context
+
+	# Refresh the job schedule to verify it was updated
+	$jobSchedule = Get-AzureBatchJobSchedule_ST -BatchContext $context
+
+	# Verify Schedule was updated
+	Assert-AreEqual $doNotRunUntil $jobSchedule.Schedule.DoNotRunUntil
+	Assert-AreEqual $doNotRunAfter $jobSchedule.Schedule.DoNotRunAfter
+	Assert-AreEqual $recurrence $jobSchedule.Schedule.RecurrenceInterval
+	Assert-AreEqual $startWindow $jobSchedule.Schedule.StartWindow
+
+	Assert-AreEqual $autoPoolIdPrefix $jobSchedule.JobSpecification.PoolInformation.AutoPoolSpecification.AutoPoolIdPrefix
+	Assert-AreEqual $keepAlive $jobSchedule.JobSpecification.PoolInformation.AutoPoolSpecification.KeepAlive
+	Assert-AreEqual $poolLifeTime $jobSchedule.JobSpecification.PoolInformation.AutoPoolSpecification.PoolLifeTimeOption
+	Assert-AreEqual $targetDedicated $jobSchedule.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.TargetDedicated
+	Assert-AreEqual $vmSize $jobSchedule.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.VirtualMachineSize
+	Assert-AreEqual $osFamily $jobSchedule.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.OSFamily
+	Assert-AreEqual $targetOS $jobSchedule.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.TargetOSVersion
+	Assert-AreEqual $certRefCount $jobSchedule.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.CertificateReferences.Count
+	Assert-AreEqual $storeLocation $jobSchedule.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.CertificateReferences[0].StoreLocation
+	Assert-AreEqual $storeName $jobSchedule.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.CertificateReferences[0].StoreName
+	Assert-AreEqual $thumbprint $jobSchedule.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.CertificateReferences[0].Thumbprint
+	Assert-AreEqual $thumbprintAlgorithm $jobSchedule.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.CertificateReferences[0].ThumbprintAlgorithm
+	Assert-AreEqual $visibility $jobSchedule.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.CertificateReferences[0].Visibility
+	Assert-AreEqual $startTaskCmd $jobSchedule.JobSpecification.PoolInformation.AutoPoolSpecification.PoolSpecification.StartTask.CommandLine
+	Assert-AreEqual $commonEnvCount $jobSchedule.JobSpecification.CommonEnvironmentSettings.Count
+	Assert-AreEqual $commonEnv1Name $jobSchedule.JobSpecification.CommonEnvironmentSettings[0].Name
+	Assert-AreEqual $commonEnv1Value $jobSchedule.JobSpecification.CommonEnvironmentSettings[0].Value
+	Assert-AreEqual $commonEnv2Name $jobSchedule.JobSpecification.CommonEnvironmentSettings[1].Name
+	Assert-AreEqual $commonEnv2Value $jobSchedule.JobSpecification.CommonEnvironmentSettings[1].Value
+	Assert-AreEqual $jobSpecDisplayName $jobSchedule.JobSpecification.DisplayName
+	Assert-AreEqual $jobMgrCmd $jobSchedule.JobSpecification.JobManagerTask.CommandLine
+	Assert-AreEqual $envCount $jobSchedule.JobSpecification.JobManagerTask.EnvironmentSettings.Count
+	Assert-AreEqual $env1Name $jobSchedule.JobSpecification.JobManagerTask.EnvironmentSettings[0].Name
+	Assert-AreEqual $env1Value $jobSchedule.JobSpecification.JobManagerTask.EnvironmentSettings[0].Value
+	Assert-AreEqual $env2Name $jobSchedule.JobSpecification.JobManagerTask.EnvironmentSettings[1].Name
+	Assert-AreEqual $env2Value $jobSchedule.JobSpecification.JobManagerTask.EnvironmentSettings[1].Value
+	Assert-AreEqual $resourceFileCount $jobSchedule.JobSpecification.JobManagerTask.ResourceFiles.Count
+	Assert-AreEqual $blobSource $jobSchedule.JobSpecification.JobManagerTask.ResourceFiles[0].BlobSource
+	Assert-AreEqual $filePath $jobSchedule.JobSpecification.JobManagerTask.ResourceFiles[0].FilePath
+	Assert-AreEqual $killOnCompletion $jobSchedule.JobSpecification.JobManagerTask.KillJobOnCompletion
+	Assert-AreEqual $jobMgrId $jobSchedule.JobSpecification.JobManagerTask.Id
+	Assert-AreEqual $jobMgrDisplay $jobSchedule.JobSpecification.JobManagerTask.DisplayName
+	Assert-AreEqual $runElevated $jobSchedule.JobSpecification.JobManagerTask.RunElevated
+	Assert-AreEqual $jobMgrMaxWallClockTime $jobSchedule.JobSpecification.JobManagerTask.Constraints.MaxWallClockTime
+	Assert-AreEqual $jobPrepCmd $jobSchedule.JobSpecification.JobPreparationTask.CommandLine
+	Assert-AreEqual $jobPrepEnvCount $jobSchedule.JobSpecification.JobPreparationTask.EnvironmentSettings.Count
+	Assert-AreEqual $jobPrepEnv1Name $jobSchedule.JobSpecification.JobPreparationTask.EnvironmentSettings[0].Name
+	Assert-AreEqual $jobPrepEnv1Value $jobSchedule.JobSpecification.JobPreparationTask.EnvironmentSettings[0].Value
+	Assert-AreEqual $jobPrepEnv2Name $jobSchedule.JobSpecification.JobPreparationTask.EnvironmentSettings[1].Name
+	Assert-AreEqual $jobPrepEnv2Value $jobSchedule.JobSpecification.JobPreparationTask.EnvironmentSettings[1].Value
+	Assert-AreEqual $jobPrepResourceFileCount $jobSchedule.JobSpecification.JobPreparationTask.ResourceFiles.Count
+	Assert-AreEqual $jobPrepBlobSource $jobSchedule.JobSpecification.JobPreparationTask.ResourceFiles[0].BlobSource
+	Assert-AreEqual $jobPrepFilePath $jobSchedule.JobSpecification.JobPreparationTask.ResourceFiles[0].FilePath
+	Assert-AreEqual $jobPrepId $jobSchedule.JobSpecification.JobPreparationTask.Id
+	Assert-AreEqual $jobPrepRunElevated $jobSchedule.JobSpecification.JobPreparationTask.RunElevated
+	Assert-AreEqual $jobPrepRetryCount $jobSchedule.JobSpecification.JobPreparationTask.Constraints.MaxTaskRetryCount
+	Assert-AreEqual $jobReleaseCmd $jobSchedule.JobSpecification.JobReleaseTask.CommandLine
+	Assert-AreEqual $jobReleaseEnvCount $jobSchedule.JobSpecification.JobReleaseTask.EnvironmentSettings.Count
+	Assert-AreEqual $jobReleaseEnv1Name $jobSchedule.JobSpecification.JobReleaseTask.EnvironmentSettings[0].Name
+	Assert-AreEqual $jobReleaseEnv1Value $jobSchedule.JobSpecification.JobReleaseTask.EnvironmentSettings[0].Value
+	Assert-AreEqual $jobReleaseEnv2Name $jobSchedule.JobSpecification.JobReleaseTask.EnvironmentSettings[1].Name
+	Assert-AreEqual $jobReleaseEnv2Value $jobSchedule.JobSpecification.JobReleaseTask.EnvironmentSettings[1].Value
+	Assert-AreEqual $jobReleaseResourceFileCount $jobSchedule.JobSpecification.JobReleaseTask.ResourceFiles.Count
+	Assert-AreEqual $jobReleaseBlobSource $jobSchedule.JobSpecification.JobReleaseTask.ResourceFiles[0].BlobSource
+	Assert-AreEqual $jobReleaseFilePath $jobSchedule.JobSpecification.JobReleaseTask.ResourceFiles[0].FilePath
+	Assert-AreEqual $jobReleaseId $jobSchedule.JobSpecification.JobReleaseTask.Id
+	Assert-AreEqual $jobReleaseRunElevated $jobSchedule.JobSpecification.JobReleaseTask.RunElevated
+	Assert-AreEqual $maxTaskRetry $jobSchedule.JobSpecification.Constraints.MaxTaskRetryCount
+	Assert-AreEqual $maxWallClockTime $jobSchedule.JobSpecification.Constraints.MaxWallClockTime
+	Assert-AreEqual $jobSpecMetaCount $jobSchedule.JobSpecification.Metadata.Count
+	Assert-AreEqual $jobSpecMeta1Name $jobSchedule.JobSpecification.Metadata[0].Name
+	Assert-AreEqual $jobSpecMeta1Value $jobSchedule.JobSpecification.Metadata[0].Value
+	Assert-AreEqual $jobSpecMeta2Name $jobSchedule.JobSpecification.Metadata[1].Name
+	Assert-AreEqual $jobSpecMeta2Value $jobSchedule.JobSpecification.Metadata[1].Value
+	Assert-AreEqual $jobSpecPri $jobSchedule.JobSpecification.Priority
+
+	# Verify Metadata was updated
+	Assert-AreEqual $metadata.Count $jobSchedule.Metadata.Count
+	Assert-AreEqual $metadata[0].Name $jobSchedule.Metadata[0].Name
+	Assert-AreEqual $metadata[0].Value $jobSchedule.Metadata[0].Value
+}
+
+<#
+.SYNOPSIS
 Tests deleting a job schedule
 #>
 function Test-DeleteJobSchedule
