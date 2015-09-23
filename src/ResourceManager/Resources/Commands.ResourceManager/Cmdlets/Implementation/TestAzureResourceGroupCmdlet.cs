@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Cmdlet to check if a resource group exists or not
     /// </summary>
-    [Cmdlet(VerbsDiagnostic.Test, "AzureRMResourceGroup"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsDiagnostic.Test, "AzureRmResourceGroup"), OutputType(typeof(bool))]
     public sealed class TestAzureResoruceGroupCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>

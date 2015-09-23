@@ -20,7 +20,7 @@ using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Reso
 
 namespace Microsoft.Azure.Commands.TrafficManager
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRMTrafficManagerEndpoint"), OutputType(typeof(TrafficManagerEndpoint))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmTrafficManagerEndpoint"), OutputType(typeof(TrafficManagerEndpoint))]
     public class SetAzureTrafficManagerEndpoint : TrafficManagerBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The endpoint.")]

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Profile
     /// <summary>
     /// Cmdlet to remove Azure Environment from Profile.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRMEnvironment")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmEnvironment")]
     [OutputType(typeof(PSAzureEnvironment))]
     public class RemoveAzureRMEnvironmentCommand : AzureRMCmdlet
     {

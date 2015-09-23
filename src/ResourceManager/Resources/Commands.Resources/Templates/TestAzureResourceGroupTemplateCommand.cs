@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroupDeployments
     /// <summary>
     /// Validate a template to see whether it's using the right syntax, resource providers, resource types, etc.
     /// </summary>
-    [Cmdlet(VerbsDiagnostic.Test, "AzureRMResourceGroupTemplate", DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(List<PSResourceManagerError>))]
+    [Cmdlet(VerbsDiagnostic.Test, "AzureRmResourceGroupTemplate", DefaultParameterSetName = ParameterlessTemplateFileParameterSetName), OutputType(typeof(List<PSResourceManagerError>))]
     public class TestAzureResourceGroupTemplateCommand : ResourceWithParameterBaseCmdlet, IDynamicParameters
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]

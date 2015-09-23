@@ -168,7 +168,7 @@ function Create-ResourceGroupForTest ($location = "Australia Southeast")
 {
 	$rgName = Get-ResourceGroupName
 	
-	$rg = New-AzureRMResourceGroup -Name $rgName -Location $location
+	$rg = New-AzureRmResourceGroup -Name $rgName -Location $location
 
 	return $rg
 }
@@ -179,7 +179,7 @@ function Create-ResourceGroupForTest ($location = "Australia Southeast")
 	#>
 function Remove-ResourceGroupForTest ($rg)
 {
-	Remove-AzureRMResourceGroup -Name $rg.ResourceGroupName -Force
+	Remove-AzureRmResourceGroup -Name $rg.ResourceGroupName -Force
 }
 
 <#
@@ -193,7 +193,7 @@ function Create-ServerForTest ($resourceGroup, $serverVersion = "12.0", $locatio
 	$serverPassword = "t357ingP@s5w0rd!"
 	$credentials = new-object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
 	
-	$server = New-AzureRMSqlServer -ResourceGroupName  $resourceGroup.ResourceGroupName -ServerName $serverName -Location $location -ServerVersion $serverVersion -SqlAdministratorCredentials $credentials
+	$server = New-AzureRmSqlServer -ResourceGroupName  $resourceGroup.ResourceGroupName -ServerName $serverName -Location $location -ServerVersion $serverVersion -SqlAdministratorCredentials $credentials
 	return $server
 }
 
@@ -203,7 +203,7 @@ function Create-ServerForTest ($resourceGroup, $serverVersion = "12.0", $locatio
 #>
 function Remove-ServerForTest ($server)
 {
-	$server | Remove-AzureRMSqlServer -Force
+	$server | Remove-AzureRmSqlServer -Force
 }
 
 <#
@@ -215,7 +215,7 @@ function Remove-TestEnvironment ($testSuffix)
 	try
 	{
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
-	Azure\Remove-AzureRMStorageAccount -StorageAccountName $params.storageAccount
+	Azure\Remove-AzureRmStorageAccount -StorageAccountName $params.storageAccount
 	}
 	catch
 	{
