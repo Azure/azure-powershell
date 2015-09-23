@@ -67,9 +67,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 {
                     psAssignments.Add(new PSRoleAssignment()
                     {
-                        RoleAssignmentId = assignment.Name.ToString(),
+                        RoleAssignmentId = assignment.Id,
                         DisplayName = adObject.DisplayName,
-                        RoleDefinitionId = roleDefinition.Id, //*****check 
+                        RoleDefinitionId = roleDefinition.Id.GuidFromFullyQualifiedId(),
                         RoleDefinitionName = roleDefinition.Name,
                         Scope = assignment.Properties.Scope,
                         SignInName = ((PSADUser)adObject).SignInName,
@@ -81,9 +81,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 {
                     psAssignments.Add(new PSRoleAssignment()
                     {
-                        RoleAssignmentId = assignment.Name.ToString(),
+                        RoleAssignmentId = assignment.Id,
                         DisplayName = adObject.DisplayName,
-                        RoleDefinitionId = roleDefinition.Id, //*****check 
+                        RoleDefinitionId = roleDefinition.Id.GuidFromFullyQualifiedId(),
                         RoleDefinitionName = roleDefinition.Name,
                         Scope = assignment.Properties.Scope,
                         ObjectId = adObject.Id,
@@ -94,9 +94,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 {
                     psAssignments.Add(new PSRoleAssignment()
                     {
-                        RoleAssignmentId = assignment.Name.ToString(),
+                        RoleAssignmentId = assignment.Id,
                         DisplayName = adObject.DisplayName,
-                        RoleDefinitionId = roleDefinition.Id, //*****check 
+                        RoleDefinitionId = roleDefinition.Id.GuidFromFullyQualifiedId(),
                         RoleDefinitionName = roleDefinition.Name,
                         Scope = assignment.Properties.Scope,
                         ObjectId = adObject.Id,
@@ -107,9 +107,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 {
                     psAssignments.Add(new PSRoleAssignment()
                     {
-                        RoleAssignmentId = assignment.Name.ToString(),
+                        RoleAssignmentId = assignment.Id,
                         DisplayName = adObject.DisplayName,
-                        RoleDefinitionId = roleDefinition.Id, //*****check 
+                        RoleDefinitionId = roleDefinition.Id.GuidFromFullyQualifiedId(),
                         RoleDefinitionName = roleDefinition.Name,
                         Scope = assignment.Properties.Scope,
                         ObjectId = adObject.Id,
@@ -129,8 +129,13 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 RoleDefinitionName = classicAdministrator.Properties.Role,
                 DisplayName = classicAdministrator.Properties.EmailAddress,
                 Scope = "/subscriptions/" + currentSubscriptionId,
-                Actions = new List<string>() {"*"}
+                ObjectType = "User"
             };
+        }
+
+        private static string GuidFromFullyQualifiedId(this string Id)
+        {
+            return Id.TrimEnd('/').Substring(Id.LastIndexOf('/') + 1);
         }
     }
 }

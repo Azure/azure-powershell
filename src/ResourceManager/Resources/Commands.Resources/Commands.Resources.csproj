@@ -165,9 +165,6 @@
     <Compile Include="Models.Authorization\FilterRoleAssignmentsOptions.cs" />
     <Compile Include="Models.ActiveDirectory\ActiveDirectoryClient.cs" />
     <Compile Include="Models.Authorization\AuthorizationClientExtensions.cs" />
-    <Compile Include="Models.Authorization\PSGroupRoleAssignment.cs" />
-    <Compile Include="Models.Authorization\PSServiceRoleAssignment.cs" />
-    <Compile Include="Models.Authorization\PSUserRoleAssignment.cs" />
     <Compile Include="Models.Authorization\PSRoleAssignment.cs" />
     <Compile Include="Models.Authorization\PSRoleDefinition.cs" />
     <Compile Include="Models.Authorization\PSPermission.cs" />
