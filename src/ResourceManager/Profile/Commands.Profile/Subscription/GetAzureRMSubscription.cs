@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Profile
         public string SubscriptionId { get; set; }
 
         [Parameter(ParameterSetName = ListInTenantParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = false)]
-        public string Tenant { get; set; }
+        public string TenantId { get; set; }
 
         [Parameter(ParameterSetName = ListAllParameterSet, Mandatory = true)]
         public SwitchParameter All { get; set; }
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Profile
                 {
                     if (!this._client.TryGetSubscription(tenant, this.SubscriptionId, out result))
                     {
-                        ThrowSubscriptionNotFoundError(this.Tenant, this.SubscriptionId);
+                        ThrowSubscriptionNotFoundError(this.TenantId, this.SubscriptionId);
                     }
 
                     WriteObject((PSAzureSubscription)result);
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Profile
 
         private string EnsureValidTenant()
         {
-            var tenant = this.Tenant;
+            var tenant = this.TenantId;
             if (string.IsNullOrWhiteSpace(tenant) && (DefaultContext.Tenant == null ||
                 DefaultContext.Tenant.Id == null))
             {

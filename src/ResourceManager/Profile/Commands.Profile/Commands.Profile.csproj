@@ -143,7 +143,7 @@
     <Compile Include="Models\PSAzureSubscription.cs" />
     <Compile Include="Models\PSAzureTenant.cs" />
     <Compile Include="Subscription\GetAzureRMSubscription.cs" />
-    <Compile Include="Account\LoginAzureRMAccount.cs" />
+    <Compile Include="Account\AddAzureRmAccount.cs" />
     <Compile Include="Context\GetAzureRMContext.cs" />
     <Compile Include="Context\SetAzureRMContext.cs" />
     <Compile Include="Profile\SelectAzureRMProfile.cs" />
@@ -163,6 +163,9 @@
     </Content>
     <None Include="..\AzureRM.Profile.psd1">
       <Link>AzureRM.Profile.psd1</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AzureRmProfileStartup.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="MSSharedLibKey.snk" />
