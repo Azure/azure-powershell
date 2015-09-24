@@ -129,7 +129,7 @@ function Test-BackupRestoreApiManagement
     New-AzureRmStorageAccount -StorageAccountName $storageAccountName -Location $storageLocation -ResourceGroupName $resourceGroupName -Type Standard_LRS
 
     $storageKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName).Key1
-    $storageContext = New-AzureRmStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageKey
+    $storageContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageKey
 
     $apiManagementName = Get-ApiManagementServiceName
     $organization = "apimpowershellorg"

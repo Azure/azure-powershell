@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.OSFamily = "4";
 
             // Don't go to the service on an Add CloudPool call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudPoolAddParameters, CloudPoolAddResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudPoolAddParameters, CloudPoolAddResponse>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameters are set

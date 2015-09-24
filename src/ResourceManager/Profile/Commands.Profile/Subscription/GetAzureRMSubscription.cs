@@ -19,19 +19,24 @@ using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.Profile
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSubscription", DefaultParameterSetName = ListInTenantParameterSet), 
+    [Cmdlet(VerbsCommon.Get, "AzureRmSubscription", DefaultParameterSetName = ListByIdInTenantParameterSet), 
         OutputType(typeof(AzureSubscription))]
     public class GetAzureRMSubscriptionCommand : AzureRMCmdlet
     {
-        public const string ListInTenantParameterSet = "ListInTenant";
+        public const string ListByIdInTenantParameterSet = "ListByIdInTenant";
+        public const string ListByNameInTenantParameterSet = "ListByNameInTenant";
         public const string ListAllParameterSet = "ListAll";
 
         private RMProfileClient _client;
 
-        [Parameter(ParameterSetName= ListInTenantParameterSet, ValueFromPipelineByPropertyName = true, Mandatory=false)]
+        [Parameter(ParameterSetName= ListByIdInTenantParameterSet, ValueFromPipelineByPropertyName = true, Mandatory=false)]
         public string SubscriptionId { get; set; }
 
-        [Parameter(ParameterSetName = ListInTenantParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = false)]
+        [Parameter(ParameterSetName = ListByNameInTenantParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = false)]
+        public string SubscriptionName { get; set; }
+
+        [Parameter(ParameterSetName = ListByIdInTenantParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = false)]
+        [Parameter(ParameterSetName = ListByNameInTenantParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = false)]
         public string Tenant { get; set; }
 
         [Parameter(ParameterSetName = ListAllParameterSet, Mandatory = true)]
@@ -59,6 +64,26 @@ namespace Microsoft.Azure.Commands.Profile
                         : DefaultContext.Account.Id;
                     throw new PSInvalidOperationException(string.Format(Resources.CommonTenantAuthFailed, account), exception);
                 }
+            }
+            else if (!string.IsNullOrWhiteSpace(this.SubscriptionName))
+            {
+                var tenant = EnsureValidTenant();
+                AzureSubscription result;
+                try
+                {
+                    if (!this._client.TryGetSubscriptionByName(tenant, this.SubscriptionName, out result))
+                    {
+                        ThrowSubscriptionNotFoundError(this.Tenant, this.SubscriptionName);
+                    }
+
+                    WriteObject(result);
+                }
+                catch (AadAuthenticationException exception)
+                {
+                    ThrowTenantAuthenticationError(tenant, exception);
+                    throw;
+                }
+
             }
             else if (!string.IsNullOrWhiteSpace(this.SubscriptionId))
             {
