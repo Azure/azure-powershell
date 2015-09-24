@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
 
             // Build a NodeFile instead of querying the service on a List NodeFile call
             NodeFileListResponse response = BatchTestHelpers.CreateNodeFileListResponse(new string[] {cmdlet.Name});
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<NodeFileListParameters, NodeFileListResponse>(response);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<NodeFileListParameters, NodeFileListResponse>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             Assert.Throws<ArgumentException>(() => cmdlet.ExecuteCmdlet());
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
 
             // Build a NodeFile instead of querying the service on a Get NodeFile Properties call
             NodeFileGetPropertiesResponse response = BatchTestHelpers.CreateNodeFileGetPropertiesResponse(cmdlet.Name);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<NodeFileGetPropertiesParameters, NodeFileGetPropertiesResponse>(response);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<NodeFileGetPropertiesParameters, NodeFileGetPropertiesResponse>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
 
             // Build some NodeFiles instead of querying the service on a List NodeFiles call
             NodeFileListResponse response = BatchTestHelpers.CreateNodeFileListResponse(namesOfConstructedNodeFiles);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<NodeFileListParameters, NodeFileListResponse>(response);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<NodeFileListParameters, NodeFileListResponse>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
 
             // Build some NodeFiles instead of querying the service on a List NodeFiles call
             NodeFileListResponse response = BatchTestHelpers.CreateNodeFileListResponse(namesOfConstructedNodeFiles);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<NodeFileListParameters, NodeFileListResponse>(response);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<NodeFileListParameters, NodeFileListResponse>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
 
             // Build some NodeFiles instead of querying the service on a List NodeFiles call
             NodeFileListResponse response = BatchTestHelpers.CreateNodeFileListResponse(namesOfConstructedNodeFiles);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<NodeFileListParameters, NodeFileListResponse>(response);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<NodeFileListParameters, NodeFileListResponse>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -240,7 +240,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
 
             // Build a NodeFile instead of querying the service on a List NodeFile call
             NodeFileListResponse response = BatchTestHelpers.CreateNodeFileListResponse(new string[] {cmdlet.Name});
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<NodeFileListParameters, NodeFileListResponse>(response);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<NodeFileListParameters, NodeFileListResponse>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             Assert.Throws<ArgumentException>(() => cmdlet.ExecuteCmdlet());
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
 
             // Build a NodeFile instead of querying the service on a Get NodeFile Properties call
             NodeFileGetPropertiesResponse response = BatchTestHelpers.CreateNodeFileGetPropertiesResponse(cmdlet.Name);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<NodeFileGetPropertiesParameters, NodeFileGetPropertiesResponse>(response);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<NodeFileGetPropertiesParameters, NodeFileGetPropertiesResponse>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
 
             // Build some NodeFiles instead of querying the service on a List NodeFiles call
             NodeFileListResponse response = BatchTestHelpers.CreateNodeFileListResponse(namesOfConstructedNodeFiles);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<NodeFileListParameters, NodeFileListResponse>(response);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<NodeFileListParameters, NodeFileListResponse>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -334,7 +334,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
 
             // Build some NodeFiles instead of querying the service on a List NodeFiles call
             NodeFileListResponse response = BatchTestHelpers.CreateNodeFileListResponse(namesOfConstructedNodeFiles);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<NodeFileListParameters, NodeFileListResponse>(response);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<NodeFileListParameters, NodeFileListResponse>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -377,7 +377,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
 
             // Build some NodeFiles instead of querying the service on a List NodeFiles call
             NodeFileListResponse response = BatchTestHelpers.CreateNodeFileListResponse(namesOfConstructedNodeFiles);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<NodeFileListParameters, NodeFileListResponse>(response);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<NodeFileListParameters, NodeFileListResponse>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later

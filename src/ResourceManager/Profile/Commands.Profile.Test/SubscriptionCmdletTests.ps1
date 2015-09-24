@@ -28,6 +28,15 @@ function Test-GetSubscriptionsEndToEnd
 	$subscription = Get-AzureRmSubscription -SubscriptionId $id
 	Assert-True { $subscription -ne $null }
 	Assert-AreEqual $id $subscription.SubscriptionId
+	$subscription = Get-AzureRmSubscription -SubscriptionName $name -Tenant $tenant
+	Assert-True { $subscription -ne $null }
+	Assert-AreEqual $name $subscription.Name
+	$subscription = Get-AzureRmSubscription -SubscriptionName $name
+	Assert-True { $subscription -ne $null }
+	Assert-AreEqual $name $subscription.Name
+	$subscription = Get-AzureRmSubscription -SubscriptionName $name.ToUpper()
+	Assert-True { $subscription -ne $null }
+	Assert-AreEqual $name $subscription.Name
 	$mostSubscriptions = Get-AzureRmSubscription
 	Assert-True {$mostSubscriptions.Count -gt 0}
 	$tenantSubscriptions = Get-AzureRmSubscription -Tenant $tenant

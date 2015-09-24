@@ -177,6 +177,35 @@ function Test-ListTaskPipeline
 
 <#
 .SYNOPSIS
+Tests updating a task
+#>
+function Test-UpdateTask
+{
+	param([string]$accountName, [string]$jobId, [string]$taskId)
+
+	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+
+	$task = Get-AzureBatchTask_ST $jobId $taskId -BatchContext $context
+
+	# Define new task constraints
+	$constraints = New-Object Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints -ArgumentList @([TimeSpan]::FromDays(10),[TimeSpan]::FromDays(2),5)
+	$maxWallClockTime = $constraints.MaxWallClockTime
+	$retentionTime = $constraints.RetentionTime
+	$maxRetryCount = $constraints.MaxRetryCount
+
+	# Update and refresh task
+	$task.Constraints = $constraints
+	$task | Set-AzureBatchTask_ST -BatchContext $context
+	$task = Get-AzureBatchTask_ST $jobId $taskId -BatchContext $context
+
+	# Verify task was updated
+	Assert-AreEqual $maxWallClockTime $task.Constraints.MaxWallClockTime
+	Assert-AreEqual $retentionTime $task.Constraints.RetentionTime
+	Assert-AreEqual $maxRetryCount $constraints.MaxRetryCount
+}
+
+<#
+.SYNOPSIS
 Tests deleting a task
 #>
 function Test-DeleteTask

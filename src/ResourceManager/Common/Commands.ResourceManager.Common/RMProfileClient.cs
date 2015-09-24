@@ -151,6 +151,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 tenantId, subscriptionId, out subscription, out tenant);
         }
 
+        public bool TryGetSubscriptionByName(string tenantId, string subscriptionName, out AzureSubscription subscription)
+        {
+            if (string.IsNullOrWhiteSpace(tenantId))
+            {
+                throw new ArgumentNullException("Please provide a valid tenant Id.");
+            }
+
+            IEnumerable<AzureSubscription> subscriptionList = ListSubscriptions(tenantId);
+            subscription = subscriptionList.FirstOrDefault(s => s.Name.Equals(subscriptionName, StringComparison.OrdinalIgnoreCase));
+
+            return subscription != null;
+        }
+
         public AzureEnvironment AddOrSetEnvironment(AzureEnvironment environment)
         {
             if (environment == null)
