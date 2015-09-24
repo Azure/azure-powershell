@@ -22,6 +22,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System.Linq;
 using Xunit;
 using System;
+using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
@@ -54,8 +55,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 
             // Verify
             Assert.True(commandRuntimeMock.OutputPipeline.Count == 1);
-            var context = (AzureContext) commandRuntimeMock.OutputPipeline[0];
-            Assert.Equal("test", context.Subscription.Name);
+            var context = (PSAzureContext) commandRuntimeMock.OutputPipeline[0];
+            Assert.Equal("test", context.Subscription.SubscriptionName);
         }
 
         [Fact]
@@ -66,7 +67,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.SubscriptionId = "db1ab6f0-4769-4b27-930e-01e2ef9c123c";
-            cmdlt.Tenant = "72f988bf-86f1-41af-91ab-2d7cd011db47";
+            cmdlt.TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
 
             // Act
             cmdlt.InvokeBeginProcessing();
@@ -75,9 +76,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 
             // Verify
             Assert.True(commandRuntimeMock.OutputPipeline.Count == 1);
-            var context = (AzureContext)commandRuntimeMock.OutputPipeline[0];
-            Assert.Equal("db1ab6f0-4769-4b27-930e-01e2ef9c123c", context.Subscription.Id.ToString());
-            Assert.Equal("72f988bf-86f1-41af-91ab-2d7cd011db47", context.Tenant.Id.ToString());
+            var context = (PSAzureContext)commandRuntimeMock.OutputPipeline[0];
+            Assert.Equal("db1ab6f0-4769-4b27-930e-01e2ef9c123c", context.Subscription.SubscriptionId);
+            Assert.Equal("72f988bf-86f1-41af-91ab-2d7cd011db47", context.Tenant.TenantId);
         }
 
         [Fact]
@@ -96,8 +97,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 
             // Verify
             Assert.True(commandRuntimeMock.OutputPipeline.Count == 1);
-            var context = (AzureContext)commandRuntimeMock.OutputPipeline[0];
-            Assert.Equal("db1ab6f0-4769-4b27-930e-01e2ef9c123c", context.Subscription.Id.ToString());
+            var context = (PSAzureContext)commandRuntimeMock.OutputPipeline[0];
+            Assert.Equal("db1ab6f0-4769-4b27-930e-01e2ef9c123c", context.Subscription.SubscriptionId);
         }
 
         [Fact]
@@ -107,7 +108,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             var cmdlt = new SetAzureRMContextCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.Tenant = "72f988bf-86f1-41af-91ab-2d7cd011db47";
+            cmdlt.TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
 
             // Act
             cmdlt.InvokeBeginProcessing();
@@ -116,8 +117,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 
             // Verify
             Assert.True(commandRuntimeMock.OutputPipeline.Count == 1);
-            var context = (AzureContext)commandRuntimeMock.OutputPipeline[0];
-            Assert.Equal("72f988bf-86f1-41af-91ab-2d7cd011db47", context.Tenant.Id.ToString());
+            var context = (PSAzureContext)commandRuntimeMock.OutputPipeline[0];
+            Assert.Equal("72f988bf-86f1-41af-91ab-2d7cd011db47", context.Tenant.TenantId);
         }
 
         [Fact]
@@ -135,7 +136,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 
             // Verify
             Assert.True(commandRuntimeMock.OutputPipeline.Count == 1);
-            var context = (AzureContext)commandRuntimeMock.OutputPipeline[0];
+            var context = (PSAzureContext)commandRuntimeMock.OutputPipeline[0];
             Assert.NotNull(context);
         }
     }

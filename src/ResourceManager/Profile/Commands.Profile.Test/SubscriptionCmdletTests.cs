@@ -12,20 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Commands.Profile;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System.Linq;
-using Xunit;
-using System;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Hyak.Common;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Resources.Test.ScenarioTests;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {

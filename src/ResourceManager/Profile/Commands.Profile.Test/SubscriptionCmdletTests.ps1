@@ -20,15 +20,15 @@ function Test-GetSubscriptionsEndToEnd
 {
 	$allSubscriptions = Get-AzureRmSubscription -All
 	$firstSubscription = $allSubscriptions[0]
-	$id = $firstSubscription.Id
-	$name = $firstSubscription.Name
-	$tenant = $firstSubscription.GetProperty([Microsoft.Azure.Common.Authentication.Models.AzureSubscription+Property]::Tenants)
-	$subscription = Get-AzureRmSubscription -SubscriptionId $id -Tenant $tenant
+	$id = $firstSubscription.SubscriptionId
+	$tenant = $firstSubscription.TenantId
+	$name = $firstSubscription.SubscriptionName
+	$subscription = $firstSubscription | Get-AzureRmSubscription
 	Assert-True { $subscription -ne $null }
-	Assert-AreEqual $id $subscription.Id
+	Assert-AreEqual $id $subscription.SubscriptionId
 	$subscription = Get-AzureRmSubscription -SubscriptionId $id
 	Assert-True { $subscription -ne $null }
-	Assert-AreEqual $id $subscription.Id
+	Assert-AreEqual $id $subscription.SubscriptionId
 	$subscription = Get-AzureRmSubscription -SubscriptionName $name -Tenant $tenant
 	Assert-True { $subscription -ne $null }
 	Assert-AreEqual $name $subscription.Name
