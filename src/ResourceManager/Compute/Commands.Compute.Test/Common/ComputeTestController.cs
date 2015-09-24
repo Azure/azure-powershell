@@ -26,6 +26,7 @@ using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Test;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -121,9 +122,17 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                                         .Last();
                 helper.SetupModules(
                     AzureModule.AzureResourceManager,
+                    false,
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\ComputeTestCommon.ps1",
-                    "ScenarioTests\\" + callingClassName + ".ps1");
+                    "ScenarioTests\\" + callingClassName + ".ps1",
+                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1"),
+                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1"),
+                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Compute\AzureRM.Compute.psd1"),
+                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\Azure.Storage\Azure.Storage.psd1"),
+                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Storage\AzureRM.Storage.psd1"),
+                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Network\AzureRM.Network.psd1")
+                    );
 
                 try
                 {

@@ -237,8 +237,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             this.modules.Add("Assert.ps1");
             this.modules.Add("Common.ps1");
             this.modules.AddRange(modules);
-            this.modules.Add(Path.Combine(PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1"));
-            this.modules.Add(Path.Combine(PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Backup\AzureRM.Backup.psd1"));
         }
 
         public void SetupModulesFromCommon(AzureModule mode, params string[] modules)

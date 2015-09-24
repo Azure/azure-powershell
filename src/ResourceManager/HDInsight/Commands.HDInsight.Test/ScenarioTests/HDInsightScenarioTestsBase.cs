@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.IO;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Management.HDInsight;
 using Microsoft.Azure.Test;
@@ -48,7 +49,12 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
 
             helper.SetupEnvironment(AzureModule.AzureResourceManager);
             helper.SetupModules(AzureModule.AzureResourceManager, //"ScenarioTests\\Common.ps1",
-                "ScenarioTests\\" + this.GetType().Name + ".ps1");
+                false,
+                "ScenarioTests\\" + this.GetType().Name + ".ps1",
+                Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1"),
+                Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1"),
+                Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.HDInsight\AzureRM.HDInsight.psd1")
+            );
 
             helper.RunPowerShellTest(scripts);
         }

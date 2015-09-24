@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -111,9 +112,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
                 helper.SetupModules(
-                    AzureModule.AzureResourceManager, 
+                    AzureModule.AzureResourceManager,
+                    false,
                     "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + callingClassName + ".ps1");
+                    "ScenarioTests\\" + callingClassName + ".ps1",
+                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1"),
+                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1")
+
+                    );
 
                 try
                 {

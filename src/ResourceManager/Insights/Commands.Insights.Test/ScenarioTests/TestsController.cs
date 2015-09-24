@@ -18,6 +18,7 @@ using Microsoft.Azure.Management.Insights;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.Azure.Test;
 using System;
+using System.IO;
 using System.Linq;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
@@ -88,8 +89,12 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
                                         .Last();
                 helper.SetupModules(
                     AzureModule.AzureResourceManager, 
+                    false,
                     "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + callingClassName + ".ps1");
+                    "ScenarioTests\\" + callingClassName + ".ps1",
+                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1"),
+                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Insights\AzureRM.Insights.psd1")
+                    );
 
                 try
                 {

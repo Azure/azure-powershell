@@ -14,6 +14,7 @@
 
 using System;
 using System.Linq;
+using System.IO;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Network;
@@ -98,8 +99,13 @@ namespace Commands.Network.Test
                                         .Last();
                 helper.SetupModules(
                     AzureModule.AzureResourceManager, 
+                    false,
                     "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + callingClassName + ".ps1");
+                    "ScenarioTests\\" + callingClassName + ".ps1",
+                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1"),
+                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1"),
+                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Network\AzureRM.Network.psd1")
+                );
 
                 try
                 {

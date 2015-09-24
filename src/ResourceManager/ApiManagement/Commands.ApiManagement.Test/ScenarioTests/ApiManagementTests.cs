@@ -17,6 +17,7 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 {
     using System;
+    using System.IO;
     using Microsoft.Azure.Common.Authentication;
     using Microsoft.Azure.Gallery;
     using Microsoft.Azure.Management.Authorization;
@@ -159,7 +160,14 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
                 SetupManagementClients();
 
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                _helper.SetupModules(AzureModule.AzureResourceManager, "ScenarioTests\\Common.ps1", "ScenarioTests\\" + GetType().Name + ".ps1");
+                _helper.SetupModules(AzureModule.AzureResourceManager, 
+                    false, 
+                    "ScenarioTests\\Common.ps1", "ScenarioTests\\" + GetType().Name + ".ps1",
+                    Path.Combine(_helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1"),
+                    Path.Combine(_helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1"),
+                    Path.Combine(_helper.PackageDirectory, @"ResourceManager\AzureResourceManager\Azure.Storage\Azure.Storage.psd1"),
+                    Path.Combine(_helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Storage\AzureRM.Storage.psd1"),
+                    Path.Combine(_helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.ApiManagement\AzureRM.ApiManagement.psd1"));
 
                 _helper.RunPowerShellTest(scripts);
             }

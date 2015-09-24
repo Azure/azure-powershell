@@ -307,7 +307,7 @@
   <Import Project="$(MSBuildThisFileDirectory)AzurePowershell.test.targets"/>
   
   <!-- Run checkin tests for each pull request -->
-  <Target Name="Test" DependsOnTargets="Build;BeforeRunTests">
+  <Target Name="Test" DependsOnTargets="BeforeRunTests">
     <Message Importance="high" Text="Running check in tests..." />
     <CallTarget Targets="InvokeXUnit"/>
   </Target>

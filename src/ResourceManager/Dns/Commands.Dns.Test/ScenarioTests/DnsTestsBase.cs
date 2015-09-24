@@ -18,6 +18,7 @@ using Microsoft.Azure.Test.HttpRecorder;
 namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 {
     using System;
+    using System.IO;
     using System.Linq;
     using Microsoft.Azure.Common.Authentication;
     using Microsoft.Azure.Gallery;
@@ -141,9 +142,13 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 
                 this.helper.SetupModules( 
                     AzureModule.AzureResourceManager, 
+                    false,
                     "ScenarioTests\\Common.ps1", 
-                    "ScenarioTests\\" + callingClassName + ".ps1"); 
-
+                    "ScenarioTests\\" + callingClassName + ".ps1",
+                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1"),
+                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1"),
+                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Dns\AzureRM.Dns.psd1")
+                ); 
 
                 try 
                 { 
