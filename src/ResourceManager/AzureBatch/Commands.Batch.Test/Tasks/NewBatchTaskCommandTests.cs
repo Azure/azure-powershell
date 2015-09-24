@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             cmdlet.Id = "testTask";
 
             // Don't go to the service on an Add CloudTask call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudTaskAddParameters, CloudTaskAddResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudTaskAddParameters, CloudTaskAddResponse>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameters are set

@@ -136,6 +136,24 @@ namespace Microsoft.Azure.Commands.Batch.Models
         }
 
         /// <summary>
+        /// Commits changes to a PSCloudTask object to the Batch Service.
+        /// </summary>
+        /// <param name="context">The account to use.</param>
+        /// <param name="task">The PSCloudTask object representing the task to update.</param>
+        /// <param name="additionBehaviors">Additional client behaviors to perform.</param>
+        public void UpdateTask(BatchAccountContext context, PSCloudTask task, IEnumerable<BatchClientBehavior> additionBehaviors = null)
+        {
+            if (task == null)
+            {
+                throw new ArgumentNullException("task");
+            }
+
+            WriteVerbose(string.Format(Resources.UpdatingTask, task.Id));
+
+            task.omObject.Commit(additionBehaviors);
+        }
+
+        /// <summary>
         /// Deletes the specified task.
         /// </summary>
         /// <param name="parameters">The parameters indicating which task to delete.</param>
