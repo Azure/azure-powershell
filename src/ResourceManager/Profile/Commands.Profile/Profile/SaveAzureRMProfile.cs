@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Profile
     /// <summary>
     /// Saves Microsoft Azure profile.
     /// </summary>
-    [Cmdlet(VerbsData.Save, "AzureRMProfile"), OutputType(typeof(AzureRMProfile))]
+    [Cmdlet(VerbsData.Save, "AzureRmProfile"), OutputType(typeof(AzureRMProfile))]
     public class SaveAzureRMProfileCommand : AzureRMCmdlet
     {
         [Parameter(Mandatory = false, Position = 0, ValueFromPipelineByPropertyName = true)]

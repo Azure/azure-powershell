@@ -880,96 +880,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NewResourceGroupFailsWithInvalidDeployment()
-        {
-            Uri templateUri = new Uri("http://templateuri.microsoft.com");
-            Deployment deploymentFromGet = new Deployment();
-            Deployment deploymentFromValidate = new Deployment();
-            CreatePSResourceGroupParameters parameters = new CreatePSResourceGroupParameters()
-            {
-                ResourceGroupName = resourceGroupName,
-                Location = resourceGroupLocation,
-                DeploymentName = deploymentName,
-                TemplateFile = templateFile,
-                StorageAccountName = storageAccountName,
-                ConfirmAction = ConfirmAction
-            };
-            resourceGroupMock.Setup(f => f.CheckExistenceAsync(parameters.ResourceGroupName, new CancellationToken()))
-                .Returns(Task.Factory.StartNew(() => new ResourceGroupExistsResult
-                {
-                    Exists = false
-                }));
-
-            resourceGroupMock.Setup(f => f.CreateOrUpdateAsync(
-                parameters.ResourceGroupName,
-                It.IsAny<ResourceGroup>(),
-                new CancellationToken()))
-                    .Returns(Task.Factory.StartNew(() => new ResourceGroupCreateOrUpdateResult
-                    {
-                        ResourceGroup = new ResourceGroupExtended() { Name = parameters.ResourceGroupName, Location = parameters.Location }
-                    }));
-            resourceGroupMock.Setup(f => f.GetAsync(resourceGroupName, new CancellationToken()))
-                .Returns(Task.Factory.StartNew(() => new ResourceGroupGetResult
-                {
-                    ResourceGroup = new ResourceGroupExtended() { Location = resourceGroupLocation }
-                }));
-            deploymentsMock.Setup(f => f.CreateOrUpdateAsync(resourceGroupName, deploymentName, It.IsAny<Deployment>(), new CancellationToken()))
-                .Returns(Task.Factory.StartNew(() => new DeploymentOperationsCreateResult
-                {
-                    RequestId = requestId
-                }))
-                .Callback((string name, string dName, Deployment bDeploy, CancellationToken token) => { deploymentFromGet = bDeploy; });
-            deploymentsMock.Setup(f => f.GetAsync(resourceGroupName, deploymentName, new CancellationToken()))
-                .Returns(Task.Factory.StartNew(() => new DeploymentGetResult
-                {
-                    Deployment = new DeploymentExtended()
-                        {
-                            Name = deploymentName,
-                            Properties = new DeploymentPropertiesExtended()
-                            {
-                                Mode = DeploymentMode.Incremental,
-                                ProvisioningState = ProvisioningState.Succeeded
-                            },
-                        }
-                }));
-            deploymentsMock.Setup(f => f.ValidateAsync(resourceGroupName, It.IsAny<string>(), It.IsAny<Deployment>(), new CancellationToken()))
-                .Returns(Task.Factory.StartNew(() => new DeploymentValidateResponse
-                {
-                    Error = new ResourceManagementErrorWithDetails()
-                        {
-                            Code = "404",
-                            Message = "Awesome error message",
-                            Target = "Bad deployment"
-                        }
-                }))
-                .Callback((string rg, string dn, Deployment d, CancellationToken c) => { deploymentFromValidate = d; });
-            SetupListForResourceGroupAsync(parameters.ResourceGroupName, new List<GenericResourceExtended>() { new GenericResourceExtended() { Name = "website" } });
-            deploymentOperationsMock.Setup(f => f.ListAsync(resourceGroupName, deploymentName, null, new CancellationToken()))
-                .Returns(Task.Factory.StartNew(() => new DeploymentOperationsListResult
-                {
-                    Operations = new List<DeploymentOperation>()
-                    {
-                        new DeploymentOperation()
-                        {
-                            OperationId = Guid.NewGuid().ToString(),
-                            Properties = new DeploymentOperationProperties()
-                            {
-                                ProvisioningState = ProvisioningState.Succeeded,
-                                TargetResource = new TargetResource()
-                                {
-                                    ResourceName = resourceName,
-                                    ResourceType = "Microsoft.Website"
-                                }
-                            }
-                        }
-                    }
-                }));
-
-            Assert.Throws<ArgumentException>(() => resourcesClient.CreatePSResourceGroup(parameters));
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTemplateShowsErrorMessage()
         {
             Uri templateUri = new Uri("http://templateuri.microsoft.com");
@@ -1304,9 +1214,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Assert.Equal(DeploymentMode.Incremental, deploymentFromGet.Properties.Mode);
             Assert.NotNull(deploymentFromGet.Properties.Template);
 
-            Assert.Equal(DeploymentMode.Incremental, deploymentFromValidate.Properties.Mode);
-            Assert.NotNull(deploymentFromValidate.Properties.Template);
-
             progressLoggerMock.Verify(
                 f => f(string.Format("Resource {0} '{1}' provisioning status is {2}",
                         "Microsoft.Website",
@@ -1417,8 +1324,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             // Skip: Test produces different outputs since hashtable order is not guaranteed.
             //EqualsIgnoreWhitespace(File.ReadAllText(templateParameterFile), deploymentFromGet.Parameters);
 
-            Assert.Equal(DeploymentMode.Incremental, deploymentFromValidate.Properties.Mode);
-            Assert.NotNull(deploymentFromValidate.Properties.Template);
             // Skip: Test produces different outputs since hashtable order is not guaranteed.
             //EqualsIgnoreWhitespace(File.ReadAllText(templateParameterFile), deploymentFromValidate.Parameters);
 
@@ -1524,9 +1429,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Assert.Equal(DeploymentMode.Incremental, deploymentFromGet.Properties.Mode);
             Assert.NotNull(deploymentFromGet.Properties.Template);
 
-            Assert.Equal(DeploymentMode.Incremental, deploymentFromValidate.Properties.Mode);
-            Assert.NotNull(deploymentFromValidate.Properties.Template);
-
             errorLoggerMock.Verify(
                 f => f(string.Format("Resource {0} '{1}' failed with message '{2}'",
                         "Microsoft.Website",
@@ -1631,9 +1533,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
             Assert.Equal(DeploymentMode.Incremental, deploymentFromGet.Properties.Mode);
             Assert.NotNull(deploymentFromGet.Properties.Template);
-
-            Assert.Equal(DeploymentMode.Incremental, deploymentFromValidate.Properties.Mode);
-            Assert.NotNull(deploymentFromValidate.Properties.Template);
 
             errorLoggerMock.Verify(
                 f => f(string.Format("Resource {0} '{1}' failed with message '{2}'",

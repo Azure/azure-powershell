@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRMLoadBalancerProbeConfig"), OutputType(typeof(PSLoadBalancer))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmLoadBalancerProbeConfig"), OutputType(typeof(PSLoadBalancer))]
     public class RemoveAzureLoadBalancerProbeCommand : NetworkBaseCmdlet
     {
         [Parameter(

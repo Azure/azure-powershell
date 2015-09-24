@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Profile
     /// <summary>
     /// Cmdlet to change current Azure context. 
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRMContext")]
+    [Cmdlet(VerbsCommon.Set, "AzureRmContext")]
     [OutputType(typeof(AzureContext))]
     public class SetAzureRMContextCommand : AzureRMCmdlet
     {

@@ -20,7 +20,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRMPublicIpAddress")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmPublicIpAddress")]
     public class RemoveAzurePublicIpAddressCommand : PublicIpAddressBaseCmdlet
     {
         [Alias("ResourceName")]

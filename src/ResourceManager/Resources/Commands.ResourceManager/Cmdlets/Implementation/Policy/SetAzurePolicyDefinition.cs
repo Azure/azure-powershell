@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Sets the policy definition.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRMPolicyDefinition", DefaultParameterSetName = SetAzurePolicyDefinitionCmdlet.PolicyDefinitionNameParameterSet), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmPolicyDefinition", DefaultParameterSetName = SetAzurePolicyDefinitionCmdlet.PolicyDefinitionNameParameterSet), OutputType(typeof(PSObject))]
     public class SetAzurePolicyDefinitionCmdlet : PolicyDefinitionCmdletBase
     {
         /// <summary>

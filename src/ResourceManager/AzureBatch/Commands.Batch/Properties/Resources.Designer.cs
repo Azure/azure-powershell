@@ -511,7 +511,7 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The current KeyInUse on this BatchAccountContext is the {0} key, but this key is not populated on the BatchAccountContext object. Use the Get-AzureRMBatchAccountKeys cmdlet to get a BatchAccountContext object with its keys populated..
+        ///   Looks up a localized string similar to The current KeyInUse on this BatchAccountContext is the {0} key, but this key is not populated on the BatchAccountContext object. Use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its keys populated..
         /// </summary>
         internal static string KeyNotPresent {
             get {
@@ -822,6 +822,51 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
         internal static string UpdatingAccount {
             get {
                 return ResourceManager.GetString("UpdatingAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating compute node user {0}..
+        /// </summary>
+        internal static string UpdatingComputeNodeUser {
+            get {
+                return ResourceManager.GetString("UpdatingComputeNodeUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating job {0}..
+        /// </summary>
+        internal static string UpdatingJob {
+            get {
+                return ResourceManager.GetString("UpdatingJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating job schedule {0}..
+        /// </summary>
+        internal static string UpdatingJobSchedule {
+            get {
+                return ResourceManager.GetString("UpdatingJobSchedule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating pool {0}..
+        /// </summary>
+        internal static string UpdatingPool {
+            get {
+                return ResourceManager.GetString("UpdatingPool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating task {0}..
+        /// </summary>
+        internal static string UpdatingTask {
+            get {
+                return ResourceManager.GetString("UpdatingTask", resourceCulture);
             }
         }
     }

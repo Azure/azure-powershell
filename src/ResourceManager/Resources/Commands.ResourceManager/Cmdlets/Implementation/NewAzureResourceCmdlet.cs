@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// A cmdlet that creates a new azure resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRMResource", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.ResourceIdParameterSet), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.New, "AzureRmResource", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.ResourceIdParameterSet), OutputType(typeof(PSObject))]
     public sealed class NewAzureResourceCmdlet : ResourceManipulationCmdletBase
     {
         /// <summary>

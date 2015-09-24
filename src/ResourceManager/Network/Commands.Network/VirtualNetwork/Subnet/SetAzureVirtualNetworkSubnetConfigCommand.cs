@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRMVirtualNetworkSubnetConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSVirtualNetwork))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmVirtualNetworkSubnetConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSVirtualNetwork))]
     public class SetAzureVirtualNetworkSubnetConfigCommand : AzureVirtualNetworkSubnetConfigBase
     {
         [Parameter(

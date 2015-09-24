@@ -21,7 +21,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, "AzureRMLoadBalancerRuleConfig"), OutputType(typeof(PSLoadBalancer))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmLoadBalancerRuleConfig"), OutputType(typeof(PSLoadBalancer))]
     public class AddAzureLoadBalancerRuleConfigCommand : AzureLoadBalancerRuleConfigBase
     {
         [Parameter(

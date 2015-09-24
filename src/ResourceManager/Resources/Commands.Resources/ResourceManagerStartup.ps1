@@ -14,22 +14,22 @@
 
 @{
     # Sql aliases
-    "Get-AzureRMSqlDatabaseServerAuditingPolicy" = "Get-AzureRMSqlServerAuditingPolicy";
-    "Remove-AzureRMSqlDatabaseServerAuditing" = "Remove-AzureRMSqlServerAuditing";
-    "Set-AzureRMSqlDatabaseServerAuditingPolicy" = "Set-AzureRMSqlServerAuditingPolicy";
-    "Use-AzureRMSqlDatabaseServerAuditingPolicy" = "Use-AzureRMSqlServerAuditingPolicy";
+    "Get-AzureRmSqlDatabaseServerAuditingPolicy" = "Get-AzureRmSqlServerAuditingPolicy";
+    "Remove-AzureRmSqlDatabaseServerAuditing" = "Remove-AzureRmSqlServerAuditing";
+    "Set-AzureRmSqlDatabaseServerAuditingPolicy" = "Set-AzureRmSqlServerAuditingPolicy";
+    "Use-AzureRmSqlDatabaseServerAuditingPolicy" = "Use-AzureRmSqlServerAuditingPolicy";
 
     # Storage aliases
-    "Get-AzureRMStorageContainerAcl" = "Get-AzureRMStorageContainer";
-    "Start-CopyAzureStorageBlob" = "Start-AzureRMStorageBlobCopy";
-    "Stop-CopyAzureStorageBlob" = "Stop-AzureRMStorageBlobCopy";
+    "Get-AzureRmStorageContainerAcl" = "Get-AzureRmStorageContainer";
+    "Start-CopyAzureStorageBlob" = "Start-AzureRmStorageBlobCopy";
+    "Stop-CopyAzureStorageBlob" = "Stop-AzureRmStorageBlobCopy";
 }.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | New-Alias -Description "AzureAlias"
 
 
 # Authorization script commandlet that builds on top of existing Insights comandlets. 
-# This commandlet gets all events for the "Microsoft.Authorization" resource provider by calling the "Get-AzureRMResourceProviderLog" commandlet
+# This commandlet gets all events for the "Microsoft.Authorization" resource provider by calling the "Get-AzureRmResourceProviderLog" commandlet
 
-function Get-AzureRMAuthorizationChangeLog { 
+function Get-AzureRmAuthorizationChangeLog { 
     [CmdletBinding()] 
     param(  
         [parameter(Mandatory=$false, ValueFromPipelineByPropertyName=$true, HelpMessage = "The start time. Optional
@@ -42,7 +42,7 @@ function Get-AzureRMAuthorizationChangeLog {
     ) 
     PROCESS { 
          # Get all events for the "Microsoft.Authorization" provider by calling the Insights commandlet
-         $events = Get-AzureRMResourceProviderLog -ResourceProvider "Microsoft.Authorization" -DetailedOutput -StartTime $StartTime -EndTime $EndTime
+         $events = Get-AzureRmResourceProviderLog -ResourceProvider "Microsoft.Authorization" -DetailedOutput -StartTime $StartTime -EndTime $EndTime
              
          $startEvents = @{}
          $endEvents = @{}
@@ -59,7 +59,7 @@ function Get-AzureRMAuthorizationChangeLog {
 
          # Get all role definitions once from the service and cache to use for all 'startevents'
          $azureRoleDefinitionCache = @{}
-         Get-AzureRMRoleDefinition | % { $azureRoleDefinitionCache[$_.Id] = $_ }
+         Get-AzureRmRoleDefinition | % { $azureRoleDefinitionCache[$_.Id] = $_ }
 
          $principalDetailsCache = @{}
 
@@ -104,17 +104,17 @@ function Get-AzureRMAuthorizationChangeLog {
                     $principalDetails = $principalDetailsCache[$principalId]
                 } else { # not in cache
 		            $principalDetails = "" | select Name, Type
-                    $user = Get-AzureRMADUser -ObjectId $principalId
+                    $user = Get-AzureRmADUser -ObjectId $principalId
                     if ($user) {
                         $principalDetails.Name = $user.DisplayName
                         $principalDetails.Type = "User"    
                     } else {
-                        $group = Get-AzureRMADGroup -ObjectId $principalId
+                        $group = Get-AzureRmADGroup -ObjectId $principalId
                         if ($group) {
                             $principalDetails.Name = $group.DisplayName
                             $principalDetails.Type = "Group"        
                         } else {
-                            $servicePrincipal = Get-AzureRMADServicePrincipal -objectId $principalId
+                            $servicePrincipal = Get-AzureRmADServicePrincipal -objectId $principalId
                             if ($servicePrincipal) {
                                 $principalDetails.Name = $servicePrincipal.DisplayName
                                 $principalDetails.Type = "Service Principal"                        

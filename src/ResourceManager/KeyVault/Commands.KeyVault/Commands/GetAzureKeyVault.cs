@@ -22,7 +22,7 @@ using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRMKeyVault", HelpUri = Constants.KeyVaultHelpUri)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmKeyVault", HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(PSKeyVaultModels.PSVault), typeof(List<PSKeyVaultModels.PSVaultIdentityItem>))]
     public class GetAzureKeyVault : KeyVaultManagementCmdletBase
     {

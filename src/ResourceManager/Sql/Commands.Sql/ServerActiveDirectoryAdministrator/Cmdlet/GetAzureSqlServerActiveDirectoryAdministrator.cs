@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Model;
 
 namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRMSqlServerActiveDirectoryAdministrator", 
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerActiveDirectoryAdministrator", 
         ConfirmImpact = ConfirmImpact.None)]
     public class GetAzureSqlServerActiveDirectoryAdministrator : AzureSqlServerActiveDirectoryAdministratorCmdletBase
     {
