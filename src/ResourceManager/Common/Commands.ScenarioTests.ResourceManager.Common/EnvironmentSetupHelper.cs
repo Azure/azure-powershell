@@ -43,7 +43,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         private AzureAccount testAccount;
 
         private const string PackageDirectoryFromCommon = @"..\..\..\..\Package\Debug";
-        private const string PackageDirectory = @"..\..\..\..\..\Package\Debug";
+        public string PackageDirectory = @"..\..\..\..\..\Package\Debug";
 
         protected List<string> modules;
 
@@ -211,7 +211,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
         }
 
-        public void SetupModules(AzureModule mode, params string[] modules)
+        public void SetupModules(AzureModule mode, bool loadArmPsd1, params string[] modules)
         {
             this.modules = new List<string>();
             if (mode == AzureModule.AzureProfile)
@@ -225,7 +225,10 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
             else if (mode == AzureModule.AzureResourceManager)
             {
-                this.modules.Add(Path.Combine(PackageDirectory, @"ResourceManager\AzureResourceManager\AzureResourceManager.psd1"));
+                if (loadArmPsd1)
+                {
+                    this.modules.Add(Path.Combine(PackageDirectory, @"ResourceManager\AzureResourceManager\AzureResourceManager.psd1"));
+                }
             }
             else
             {
@@ -234,6 +237,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             this.modules.Add("Assert.ps1");
             this.modules.Add("Common.ps1");
             this.modules.AddRange(modules);
+            this.modules.Add(Path.Combine(PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1"));
+            this.modules.Add(Path.Combine(PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Backup\AzureRM.Backup.psd1"));
         }
 
         public void SetupModulesFromCommon(AzureModule mode, params string[] modules)

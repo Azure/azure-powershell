@@ -39,7 +39,9 @@
     <NuGetPublishingSource Condition=" '$(NuGetPublishingSource)' != '' ">http://psget/PSGallery/api/v2/</NuGetPublishingSource>
   </PropertyGroup>
   <ItemGroup>
-    <AzureResourceManagerSln Include=".\src\ResourceManager.sln" />
+    <AzureResourceManagerSln Include=".\src\ResourceManager.sln" Condition=" '$(Scope)' == '' "/>
+    <!--TODO: do wildcard matching???-->
+    <AzureResourceManagerSln Include=".\src\$(Scope).sln" Condition=" '$(Scope)' != '' "/>
     <AzureServiceManagementSln Include=".\src\ServiceManagement.sln" />
     <SetupSln Include=".\setup\azurepowershell.sln" />
     <SetupPowershellGetSln Include=".\setup-powershellget\powershellget.sln" />
