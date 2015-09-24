@@ -92,8 +92,9 @@ function Test-SetAzureBackupProtectionPolicyTests
 
 function Test-RemoveAzureBackupProtectionPolicyTests
 {	
+
 	$vault = Get-AzureRmBackupVault -Name $ResourceName;
 	$protectionPolicy = Get-AzureRmBackupProtectionPolicy -vault $vault -Name $PolicyName
 	
-	Remove-AzureRmBackupProtectionPolicy -ProtectionPolicy $protectionPolicy
+	Remove-AzureRmBackupProtectionPolicy -ProtectionPolicy $protectionPolicy -Force
 }
