@@ -23,6 +23,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics.Test
 {
@@ -59,7 +60,11 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Test
                 SetupManagementClients();
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                helper.SetupModules(AzureModule.AzureResourceManager, "ScenarioTests\\" + this.GetType().Name + ".ps1");
+                helper.SetupModules(AzureModule.AzureResourceManager, 
+                    false,
+                    "ScenarioTests\\" + this.GetType().Name + ".ps1",
+                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1"),
+                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.StreamAnalytics\AzureRM.StreamAnalytics.psd1"));
 
                 helper.RunPowerShellTest(scripts);
             }

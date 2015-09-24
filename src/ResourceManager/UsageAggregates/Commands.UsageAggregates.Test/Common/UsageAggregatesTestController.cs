@@ -15,6 +15,7 @@
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.Azure.Test;
 using System;
+using System.IO;
 using System.Linq;
 using Microsoft.Azure.Commerce.UsageAggregates;
 using Microsoft.Azure.Common.Authentication;
@@ -81,7 +82,11 @@ namespace Microsoft.Azure.Commands.UsageAggregates.Test.ScenarioTests
                                         .Last();
                 helper.SetupModules(
                     AzureModule.AzureResourceManager,
-                    "ScenarioTests\\" + callingClassName + ".ps1");
+                    false,
+                    "ScenarioTests\\" + callingClassName + ".ps1",
+                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1"),
+                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.UsageAggregates\AzureRM.UsageAggregates.psd1")
+                   );
 
                 try
                 {

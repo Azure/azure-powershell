@@ -21,6 +21,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Test;
 using System;
+using System.IO;
 using System.Linq;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Graph.RBAC;
@@ -109,8 +110,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
                                         .Last();
                 helper.SetupModules(
                     AzureModule.AzureResourceManager,
+                    false,
                     "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + callingClassName + ".ps1");
+                    "ScenarioTests\\" + callingClassName + ".ps1",
+                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1"),
+                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1"),
+                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.KeyVault\AzureRM.KeyVault.psd1")
+                );
 
                 try
                 {

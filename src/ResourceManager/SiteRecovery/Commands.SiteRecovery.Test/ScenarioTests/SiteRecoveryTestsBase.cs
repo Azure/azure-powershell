@@ -104,8 +104,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 helper.SetupModules(AzureModule.AzureResourceManager,
-                    "ScenarioTests\\" + this.GetType().Name + ".ps1");
-
+                    false,
+                    "ScenarioTests\\" + this.GetType().Name + ".ps1",
+                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1"),
+                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.SiteRecovery\AzureRM.SiteRecovery.psd1")
+                );
                 helper.RunPowerShellTest(scripts);
             }
         }

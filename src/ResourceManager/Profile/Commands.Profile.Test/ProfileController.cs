@@ -95,7 +95,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     .Last();
                 helper.SetupModules(
                     AzureModule.AzureResourceManager,
-                    callingClassName + ".ps1");
+                    false,
+                    callingClassName + ".ps1",
+                    System.IO.Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1")
+                );
 
                 try
                 {

@@ -25,6 +25,7 @@ using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Common.Authentication.Models;
@@ -72,8 +73,17 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
                 helper.SetupEnvironment();
 
-                helper.SetupModules(AzureModule.AzureResourceManager, "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + this.GetType().Name + ".ps1");
+                helper.SetupModules(AzureModule.AzureResourceManager, 
+                    false,
+                    "ScenarioTests\\Common.ps1",
+                    "ScenarioTests\\" + this.GetType().Name + ".ps1",
+                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1"),
+                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1"),
+                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\Azure.Storage\Azure.Storage.psd1"),
+                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Storage\AzureRM.Storage.psd1"),
+                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Insights\AzureRM.Insights.psd1"),
+                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Sql\AzureRM.Sql.psd1")
+                    );
 
                 helper.RunPowerShellTest(scripts);
             }
