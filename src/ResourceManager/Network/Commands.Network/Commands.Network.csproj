@@ -234,6 +234,9 @@
     <Compile Include="ExpressRouteCircuit\Authorization\NewAzureExpressRouteCircuitAuthorizationConfigCommand.cs" />
     <Compile Include="ExpressRouteCircuit\Authorization\RemoveAzureExpressRouteCircuitAuthorizationConfigCommand.cs" />
     <Compile Include="ExpressRouteCircuit\Authorization\SetAzureExpressRouteCircuitAuthorizationConfigCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\GetAzureExpressRouteCircuitArpTableCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\GetAzureExpressRouteCircuitRoutesTableCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\GetAzureExpressRouteCircuitStatsCommand.cs" />
     <Compile Include="ExpressRouteCircuit\GetAzureExpressRouteCircuitCommand.cs" />
     <Compile Include="ExpressRouteCircuit\NewAzureExpressRouteCircuitCommand.cs" />
     <Compile Include="ExpressRouteCircuit\Peering\AddAzureExpressRouteCircuitPeeringConfigCommand.cs" />

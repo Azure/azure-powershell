@@ -58,13 +58,13 @@ namespace Microsoft.Azure.Commands.Network
         {
             var circuitGetResponse = this.ExpressRouteCircuitClient.Get(resourceGroupName, name);
 
-            var ExpressRouteCircuit = Mapper.Map<PSExpressRouteCircuit>(circuitGetResponse.ExpressRouteCircuit);
-            ExpressRouteCircuit.ResourceGroupName = resourceGroupName;
+            var expressRouteCircuit = Mapper.Map<PSExpressRouteCircuit>(circuitGetResponse.ExpressRouteCircuit);
+            expressRouteCircuit.ResourceGroupName = resourceGroupName;
 
-            ExpressRouteCircuit.Tag =
+            expressRouteCircuit.Tag =
                 TagsConversionHelper.CreateTagHashtable(circuitGetResponse.ExpressRouteCircuit.Tags);
             
-            return ExpressRouteCircuit;
+            return expressRouteCircuit;
         }
 
         public PSExpressRouteCircuit ToPsExpressRouteCircuit(ExpressRouteCircuit circuit)
