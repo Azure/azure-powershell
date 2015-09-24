@@ -13,9 +13,9 @@
 # ----------------------------------------------------------------------------------
 
 $ResourceGroupName = "backuprg"
-$ResourceName = "backuprn"
+$ResourceName = "backuprn2"
 $DataSourceType = "VM"
-$Location = "SouthEast Asia"
+$Location = "westus"
 $PolicyName = "Policy10";
 $PolicyId = "c87bbada-6e1b-4db2-b76c-9062d28959a4";
 $POName = "iaasvmcontainer;hydrarecordvm;hydrarecordvm"
