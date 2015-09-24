@@ -240,6 +240,17 @@
     <Compile Include="Models\PSApplicationGatewayRequestRoutingRule.cs" />
     <Compile Include="Models\PSApplicationGatewaySku.cs" />
     <Compile Include="Models\PSApplicationGatewaySslCertificate.cs" />
+    <Compile Include="Models\PSExpressRouteCircuitArpTable.cs" />
+    <Compile Include="Models\PSExpressRouteCircuitRoutesTable.cs" />
+    <Compile Include="Models\PSExpressRouteServiceProviderBandwidthsOffered.cs" />
+    <Compile Include="Models\PSExpressRouteServiceProvider.cs" />
+    <Compile Include="Models\PSServiceProviderProperties.cs" />
+    <Compile Include="Models\PSPeering.cs" />
+    <Compile Include="Models\PSPeeringConfig.cs" />
+    <Compile Include="Models\PSExpressRouteCircuitSku.cs" />
+    <Compile Include="Models\PSPeeringStats.cs" />
+    <Compile Include="Models\PSExpressRouteCircuitAuthorization.cs" />
+    <Compile Include="Models\PSExpressRouteCircuit.cs" />
     <Compile Include="PublicIpAddress\GetAzurePublicIpAddressCommand.cs" />
     <Compile Include="PublicIpAddress\NewAzurePublicIpAddressCommand.cs" />
     <Compile Include="PublicIpAddress\PublicIpAddressBaseCmdlet.cs" />
