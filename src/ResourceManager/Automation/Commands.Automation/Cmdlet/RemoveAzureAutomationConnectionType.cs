@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Removes a Connection type for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureAutomationConnectionType", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRMAutomationConnectionType", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
     public class RemoveAzureAutomationConnectionType : AzureAutomationBaseCmdlet
     {
         /// <summary>
