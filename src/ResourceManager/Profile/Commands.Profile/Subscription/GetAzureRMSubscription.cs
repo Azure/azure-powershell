@@ -11,16 +11,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common;
+using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Profile.Models;
+using Microsoft.Azure.Commands.Profile.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.Profile
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmSubscription", DefaultParameterSetName = ListByIdInTenantParameterSet), 
-        OutputType(typeof(AzureSubscription))]
+        OutputType(typeof(PSAzureSubscription))]
     public class GetAzureRMSubscriptionCommand : AzureRMCmdlet
     {
         public const string ListByIdInTenantParameterSet = "ListByIdInTenant";
@@ -37,7 +39,7 @@ namespace Microsoft.Azure.Commands.Profile
 
         [Parameter(ParameterSetName = ListByIdInTenantParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = false)]
         [Parameter(ParameterSetName = ListByNameInTenantParameterSet, ValueFromPipelineByPropertyName = true, Mandatory = false)]
-        public string Tenant { get; set; }
+        public string TenantId { get; set; }
 
         [Parameter(ParameterSetName = ListAllParameterSet, Mandatory = true)]
         public SwitchParameter All { get; set; }
@@ -55,7 +57,7 @@ namespace Microsoft.Azure.Commands.Profile
             { 
                 try
                 {
-                    WriteObject(_client.ListSubscriptions(), enumerateCollection: true);
+                    WriteObject(_client.ListSubscriptions().Select((s) => (PSAzureSubscription)(s)), enumerateCollection: true);
                 }
                 catch (AadAuthenticationException exception)
                 {
@@ -73,7 +75,7 @@ namespace Microsoft.Azure.Commands.Profile
                 {
                     if (!this._client.TryGetSubscriptionByName(tenant, this.SubscriptionName, out result))
                     {
-                        ThrowSubscriptionNotFoundError(this.Tenant, this.SubscriptionName);
+                        ThrowSubscriptionNotFoundError(this.TenantId, this.SubscriptionName);
                     }
 
                     WriteObject(result);
@@ -93,10 +95,10 @@ namespace Microsoft.Azure.Commands.Profile
                 {
                     if (!this._client.TryGetSubscription(tenant, this.SubscriptionId, out result))
                     {
-                        ThrowSubscriptionNotFoundError(this.Tenant, this.SubscriptionId);
+                        ThrowSubscriptionNotFoundError(this.TenantId, this.SubscriptionId);
                     }
 
-                    WriteObject(result);
+                    WriteObject((PSAzureSubscription)result);
                 }
                 catch (AadAuthenticationException exception)
                 {
@@ -110,7 +112,7 @@ namespace Microsoft.Azure.Commands.Profile
                 var tenant = EnsureValidTenant();
                 try
                 {
-                    WriteObject(_client.ListSubscriptions(tenant), enumerateCollection: true);
+                    WriteObject(_client.ListSubscriptions(tenant).Select((s) => (PSAzureSubscription)s), enumerateCollection: true);
                 }
                 catch (AadAuthenticationException exception)
                 {
@@ -132,7 +134,7 @@ namespace Microsoft.Azure.Commands.Profile
 
         private string EnsureValidTenant()
         {
-            var tenant = this.Tenant;
+            var tenant = this.TenantId;
             if (string.IsNullOrWhiteSpace(tenant) && (DefaultContext.Tenant == null ||
                 DefaultContext.Tenant.Id == null))
             {
