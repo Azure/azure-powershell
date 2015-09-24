@@ -287,7 +287,7 @@ function Test-AzureBackupEndToEnd
 	Try
 	{
 	$startTime = Get-Date -format G;
-	$Job = Disable-AzureRmBackupProtection -RemoveRecoveryPoints -Item $item[0];
+	$Job = Disable-AzureRmBackupProtection -RemoveRecoveryPoints -Item $item[0] -Force;
 	Wait-AzureRmBackupJob -Job $Job;
 	$JobDetails = Get-AzureRmBackupJobDetails -Vault $vault -JobID $Job.InstanceId;
 	Assert-AreEqual $JobDetails.Operation "Unprotect";
@@ -332,7 +332,7 @@ function Test-AzureBackupEndToEnd
 	Try
 	{
 	$startTime = Get-Date -format G;
-	Remove-AzureRmBackupProtectionPolicy -ProtectionPolicy $protectionpolicy;
+	Remove-AzureRmBackupProtectionPolicy -ProtectionPolicy $protectionpolicy -Force;
 	$endTime = Get-Date -format G;
 	"Remove-AzureRmBackupProtectionPolicy", "Pass", $startTime, $endTime -join "," >> $ResultTxtFile;
 	}
