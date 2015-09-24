@@ -71,11 +71,11 @@
       Targets="Clean"
       Properties="Configuration=$(Configuration);Platform=Any CPU"
       ContinueOnError="false" />
-    <MSBuild
+    <!--<MSBuild
       Projects="@(AzureServiceManagementSln)"
       Targets="Clean"
       Properties="Configuration=$(Configuration);Platform=Any CPU"
-      ContinueOnError="false" />
+      ContinueOnError="false" />-->
     <MSBuild
       Projects="@(SetupSln)"
       Targets="Clean"
@@ -157,16 +157,16 @@
       Targets="Build"
       Properties="Configuration=$(Configuration);Platform=Any CPU"
       BuildInParallel="$(BuildInParallel)" ContinueOnError="false" />
-    <MSBuild
+    <!--<MSBuild
       Projects="@(AzureServiceManagementSln)"
       Targets="Build"
       Properties="Configuration=$(Configuration);Platform=Any CPU"
-      BuildInParallel="$(BuildInParallel)" ContinueOnError="false" />
+      BuildInParallel="$(BuildInParallel)" ContinueOnError="false" />-->
       
     <CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " />
     
     <Message Importance="high" Text="Building Setup..." />
-    <MSBuild
+    <!--<MSBuild
       Projects="@(SetupPowershellGetSln)"
       Targets="Build"
       Properties="Configuration=$(Configuration);Platform=Any CPU"
@@ -175,7 +175,7 @@
       Projects="@(SetupSln)"
       Targets="Build"
       Properties="Configuration=$(Configuration);Platform=Any CPU"
-      ContinueOnError="false" />
+      ContinueOnError="false" />-->
     
     <CallTarget Targets="CodeSignInstaller" Condition=" '$(CodeSign)' == 'true' " />    
   </Target>
