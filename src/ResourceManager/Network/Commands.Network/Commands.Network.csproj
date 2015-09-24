@@ -76,9 +76,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.1.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Network, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.2.0.10-preview\lib\net40\Microsoft.Azure.Management.Network.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Network">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.2.0.12-preview\lib\net40\Microsoft.Azure.Management.Network.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -229,6 +228,23 @@
     <Compile Include="Common\NetworkBaseCmdlet.cs" />
     <Compile Include="Common\NetworkClient.cs" />
     <Compile Include="Common\NetworkResourceManagerProfile.cs" />
+    <Compile Include="ExpressRouteCircuit\Authorization\AddAzureExpressRouteCircuitAuthorizationConfigCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\Authorization\AzureExpressRouteCircuitAuthorizationConfigBase.cs" />
+    <Compile Include="ExpressRouteCircuit\Authorization\GetAzureExpressRouteCircuitAuthorizationConfigCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\Authorization\NewAzureExpressRouteCircuitAuthorizationConfigCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\Authorization\RemoveAzureExpressRouteCircuitAuthorizationConfigCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\Authorization\SetAzureExpressRouteCircuitAuthorizationConfigCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\GetAzureExpressRouteCircuitCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\NewAzureExpressRouteCircuitCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\Peering\AddAzureExpressRouteCircuitPeeringConfigCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\Peering\AzureExpressRouteCircuitPeeringConfigBase.cs" />
+    <Compile Include="ExpressRouteCircuit\Peering\GetAzureExpressRouteCircuitPeeringConfigCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\Peering\NewAzureExpressRouteCircuitPeeringConfigCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\Peering\RemoveAzureExpressRouteCircuitPeeringConfigCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\Peering\SetAzureExpressRouteCircuitPeeringConfigCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\RemoveAzureExpressRouteCircuitCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\SetAzureExpressRouteCircuitCommand.cs" />
+    <Compile Include="ExpressRouteCircuit\ExpressRouteCircuitBaseCmdlet.cs" />
     <Compile Include="Models\PSApplicationGateway.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendAddress.cs" />
     <Compile Include="Models\PSApplicationGatewayBackendAddressPool.cs" />
