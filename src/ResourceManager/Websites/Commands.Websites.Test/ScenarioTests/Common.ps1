@@ -45,7 +45,7 @@ Gets the location for the Website. Default to West US if none found.
 #>
 function Get-Location
 {
-    $location = Get-AzureRMLocation | where {$_.Name -eq "Microsoft.Web/sites"}
+    $location = Get-AzureRmLocation | where {$_.Name -eq "Microsoft.Web/sites"}
 	if ($location -eq $null) 
 	{
 		return "West US"
@@ -64,6 +64,6 @@ function Clean-Website($resourceGroup, $websiteName)
 {
     if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback) 
 	{
-		$result = Remove-AzureRMWebsite -ResourceGroupName $resourceGroup.ToString() -WebsiteName $websiteName.ToString() -Force
+		$result = Remove-AzureRmWebsite -ResourceGroupName $resourceGroup.ToString() -WebsiteName $websiteName.ToString() -Force
     }
 }

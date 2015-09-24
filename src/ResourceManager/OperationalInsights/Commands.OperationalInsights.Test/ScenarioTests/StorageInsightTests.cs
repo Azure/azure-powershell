@@ -19,14 +19,14 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
 {
     public class StorageInsightTests : OperationalInsightsScenarioTestBase
     {
-        [Fact(Skip = "PSGet Migration: TODO: Get-AzureRMSubscription")]
+        [Fact(Skip = "PSGet Migration: TODO: Get-AzureRmSubscription")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStorageInsightCreateUpdateDelete()
         {
             RunPowerShellTest("Test-StorageInsightCreateUpdateDelete");
         }
 
-        [Fact(Skip = "PSGet Migration: TODO: Get-AzureRMSubscription")]
+        [Fact(Skip = "PSGet Migration: TODO: Get-AzureRmSubscription")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStorageInsightCreateFailsWithoutWorkspace()
         {

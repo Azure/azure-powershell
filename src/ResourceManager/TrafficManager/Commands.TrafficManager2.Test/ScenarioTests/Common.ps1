@@ -36,7 +36,7 @@ Gets the default location for a provider
 #>
 function Get-ProviderLocation($provider)
 {
-    $location = Get-AzureRMLocation | where {[string]::Compare($_.Name, $provider, $True) -eq $True}
+    $location = Get-AzureRmLocation | where {[string]::Compare($_.Name, $provider, $True) -eq $True}
     if ($location -eq $null) {
         "West US"
     } else {
@@ -52,7 +52,7 @@ function TestSetup-CreateResourceGroup
 {
     $resourceGroupName = getAssetName
 	$rglocation = Get-ProviderLocation "North Europe"
-    $resourceGroup = New-AzureRMResourceGroup -Name $resourceGroupName -location $rglocation -Force
+    $resourceGroup = New-AzureRmResourceGroup -Name $resourceGroupName -location $rglocation -Force
 	return $resourceGroup
 }
 
@@ -64,7 +64,7 @@ function TestSetup-CreateProfile($profileName, $resourceGroupName)
 {
 	$relativeName = getAssetName
 
-	$profile = New-AzureRMTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroupName -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
+	$profile = New-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroupName -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" 
 
 	return $profile
 }
@@ -75,7 +75,7 @@ Creates a resource group to use in tests
 #>
 function TestSetup-AddEndpoint($endpointName, $profile)
 {
-	$profile = Add-AzureRMTrafficManagerEndpointConfig -EndpointName $endpointName -TrafficManagerProfile $profile -Type "ExternalEndpoints" -Target "www.contoso.com" -EndpointStatus "Enabled" -EndpointLocation "North Europe"
+	$profile = Add-AzureRmTrafficManagerEndpointConfig -EndpointName $endpointName -TrafficManagerProfile $profile -Type "ExternalEndpoints" -Target "www.contoso.com" -EndpointStatus "Enabled" -EndpointLocation "North Europe"
 
 	return $profile
 }

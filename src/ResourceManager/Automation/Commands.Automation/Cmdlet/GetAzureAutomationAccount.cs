@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets azure automation accounts, filterd by automation account name and location.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMAutomationAccount", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmAutomationAccount", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(AutomationAccount))]
     public class GetAzureAutomationAccount : ResourceManager.Common.AzureRMCmdlet
     {

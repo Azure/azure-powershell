@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.Sql.Database.Services;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRMSqlDatabaseExpanded", 
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseExpanded", 
         ConfirmImpact = ConfirmImpact.None)]
     public class GetAzureSqlDatabaseExpanded : AzureSqlCmdletBase<IEnumerable<AzureSqlDatabaseModelExpanded>, AzureSqlDatabaseAdapter>
     {

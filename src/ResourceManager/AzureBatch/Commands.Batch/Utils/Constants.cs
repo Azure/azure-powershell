@@ -19,9 +19,9 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         public const int DefaultMaxCount = 1000;
 
         // ARM cmdlet nouns
-        public const string AzureRMBatchAccount = "AzureRMBatchAccount";
-        public const string AzureRMBatchAccountKey = "AzureRMBatchAccountKey";
-        public const string AzureRMBatchAccountKeys = "AzureRMBatchAccountKeys";
+        public const string AzureRMBatchAccount = "AzureRmBatchAccount";
+        public const string AzureRMBatchAccountKey = "AzureRmBatchAccountKey";
+        public const string AzureRMBatchAccountKeys = "AzureRmBatchAccountKeys";
 
         // Batch Service cmdlet nouns
         public const string AzureBatchPool = "AzureBatchPool";

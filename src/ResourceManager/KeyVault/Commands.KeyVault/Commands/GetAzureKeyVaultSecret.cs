@@ -21,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRMKeyVaultSecret",
+    [Cmdlet(VerbsCommon.Get, "AzureRmKeyVaultSecret",
         DefaultParameterSetName = ByVaultNameParameterSet, 
         HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(List<SecretIdentityItem>), typeof(Secret))]

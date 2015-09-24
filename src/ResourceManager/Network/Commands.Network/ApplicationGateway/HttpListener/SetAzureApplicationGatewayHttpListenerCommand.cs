@@ -20,7 +20,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRMApplicationGatewayHttpListener"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmApplicationGatewayHttpListener"), OutputType(typeof(PSApplicationGateway))]
     public class SetAzureApplicationGatewayHttpListenerCommand : AzureApplicationGatewayHttpListenerBase
     {
         [Parameter(

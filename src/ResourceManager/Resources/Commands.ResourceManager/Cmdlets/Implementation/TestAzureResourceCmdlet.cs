@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Cmdlet to check if a resource exists or not
     /// </summary>
-    [Cmdlet(VerbsDiagnostic.Test, "AzureRMResource", DefaultParameterSetName = TestAzureResoruceCmdlet.GetTenantResourceParameterSet), OutputType(typeof(bool))]
+    [Cmdlet(VerbsDiagnostic.Test, "AzureRmResource", DefaultParameterSetName = TestAzureResoruceCmdlet.GetTenantResourceParameterSet), OutputType(typeof(bool))]
     public sealed class TestAzureResoruceCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
