@@ -128,6 +128,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             {
                 RoleDefinitionName = classicAdministrator.Properties.Role,
                 DisplayName = classicAdministrator.Properties.EmailAddress,
+                SignInName = classicAdministrator.Properties.EmailAddress,
                 Scope = "/subscriptions/" + currentSubscriptionId,
                 ObjectType = "User"
             };
