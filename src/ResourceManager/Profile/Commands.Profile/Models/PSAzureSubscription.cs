@@ -33,9 +33,9 @@ namespace Microsoft.Azure.Commands.Profile.Models
         {
             return new PSAzureSubscription
             {
-                SubscriptionId = other.Id.ToString(),
-                SubscriptionName = other.Name,
-                TenantId = other.IsPropertySet(AzureSubscription.Property.Tenants)? 
+                SubscriptionId = other != null? other.Id.ToString() : null,
+                SubscriptionName = other != null? other.Name : null,
+                TenantId = other != null && other.IsPropertySet(AzureSubscription.Property.Tenants)? 
                 other.GetProperty(AzureSubscription.Property.Tenants) : null
             };
         }
@@ -47,16 +47,30 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <returns>The converted subscription.</returns>
         public static implicit operator AzureSubscription(PSAzureSubscription other)
         {
+            if (other == null)
+            {
+                return null;
+            }
+
             var result = new AzureSubscription
             {
-                Id = Guid.Parse(other.SubscriptionId),
                 Name = other.SubscriptionName
             };
+
+            if (other.SubscriptionId != null)
+            {
+                Guid subscriptionId;
+                if (Guid.TryParse(other.SubscriptionId, out subscriptionId))
+                {
+                    result.Id = subscriptionId;
+                }
+            }
 
             if (other.TenantId != null)
             {
                 result.Properties.SetProperty(AzureSubscription.Property.Tenants, other.TenantId);
             }
+
             return result;
         }
 

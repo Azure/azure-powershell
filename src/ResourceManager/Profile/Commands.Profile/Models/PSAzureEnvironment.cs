@@ -28,6 +28,11 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <returns>The internal representation of the Azure environment, as used by .Net authentication libraries.</returns>
         public static implicit operator AzureEnvironment(PSAzureEnvironment environment)
         {
+            if (environment == null)
+            {
+                return null;
+            }
+
             var newEnvironment = new AzureEnvironment
             {
                 Name = environment.Name,
@@ -62,6 +67,11 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <returns>The PowerShell;-friendly representation of the environment.</returns>
         public static implicit operator PSAzureEnvironment(AzureEnvironment environment)
         {
+            if (environment == null)
+            {
+                return null;
+            }
+
             return new PSAzureEnvironment(environment);
         }
 

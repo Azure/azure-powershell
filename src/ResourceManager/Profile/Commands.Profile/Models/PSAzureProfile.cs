@@ -23,6 +23,11 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <returns>The converted profile.</returns>
         public static implicit operator PSAzureProfile(AzureRMProfile profile)
         {
+            if (profile == null)
+            {
+                return null;
+            }
+
             var result =  new PSAzureProfile
             {
                 Context = profile.Context
@@ -40,6 +45,11 @@ namespace Microsoft.Azure.Commands.Profile.Models
        /// <returns>The converted profile.</returns>
        public static implicit operator AzureRMProfile(PSAzureProfile profile)
         {
+           if (profile == null)
+           {
+               return null;
+           }
+
             var result = new AzureRMProfile
             {
                 Context = profile.Context

@@ -22,6 +22,7 @@ function Test-GetSubscriptionsEndToEnd
 	$firstSubscription = $allSubscriptions[0]
 	$id = $firstSubscription.SubscriptionId
 	$tenant = $firstSubscription.TenantId
+	$name = $firstSubscription.SubscriptionName
 	$subscription = $firstSubscription | Get-AzureRmSubscription
 	Assert-True { $subscription -ne $null }
 	Assert-AreEqual $id $subscription.SubscriptionId

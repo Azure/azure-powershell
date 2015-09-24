@@ -33,8 +33,8 @@ namespace Microsoft.Azure.Commands.Profile.Models
         {
             return new PSAzureTenant
             {
-                TenantId = other.Id.ToString(),
-                Domain = other.Domain,
+                TenantId = other != null? other.Id.ToString() : null,
+                Domain = other != null? other.Domain : null
             };
         }
 
@@ -45,11 +45,26 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <returns>The converted subscription.</returns>
         public static implicit operator AzureTenant(PSAzureTenant other)
         {
-            return new AzureTenant
+            if (other == null)
             {
-                Id = Guid.Parse(other.TenantId),
+                return null;
+            }
+
+            var result = new AzureTenant
+            {
                 Domain = other.Domain
             };
+
+            if (other.TenantId != null)
+            {
+                Guid tenantId;
+                if (Guid.TryParse(other.TenantId, out tenantId))
+                {
+                    result.Id = tenantId;
+                }
+            }
+
+            return result;
         }
 
         /// <summary>

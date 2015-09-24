@@ -33,8 +33,8 @@ namespace Microsoft.Azure.Commands.Profile.Models
         {
             return new PSAzureAccount
             {
-                Id = account.Id,
-                AccountType = account.Type.ToString()
+                Id = account != null ? account.Id : null,
+                AccountType = account != null? account.Type.ToString() : null
             };
         }
 
@@ -47,9 +47,9 @@ namespace Microsoft.Azure.Commands.Profile.Models
         {
             return new AzureAccount
             {
-                Id = account.Id,
-                Type = ((AzureAccount.AccountType)Enum.Parse(typeof(AzureAccount.AccountType), 
-                    account.AccountType, true))
+                Id = account != null? account.Id : null,
+                Type = account != null? ((AzureAccount.AccountType)Enum.Parse(typeof(AzureAccount.AccountType), 
+                    account.AccountType, true)) : AzureAccount.AccountType.User
             };
         }
 
