@@ -20,7 +20,7 @@ function Test-NewJob
 {
 	param([string]$accountName)
 
-	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	
 	$jobId1 = "simple"
 	$jobId2 = "complex"
@@ -235,7 +235,7 @@ function Test-GetJobById
 {
 	param([string]$accountName, [string]$jobId)
 
-	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$job = Get-AzureBatchJob_ST -Id $jobId -BatchContext $context
 
 	Assert-AreEqual $jobId $job.Id
@@ -254,7 +254,7 @@ function Test-ListJobsByFilter
 {
 	param([string]$accountName, [string]$state, [string]$matches)
 
-	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$filter = "state eq'" + "$state" + "'"
 
 	$jobs = Get-AzureBatchJob_ST -Filter $filter -BatchContext $context
@@ -274,7 +274,7 @@ function Test-ListJobsWithMaxCount
 {
 	param([string]$accountName, [string]$maxCount)
 
-	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$jobs = Get-AzureBatchJob_ST -MaxCount $maxCount -BatchContext $context
 
 	Assert-AreEqual $maxCount $jobs.Length
@@ -288,7 +288,7 @@ function Test-ListAllJobs
 {
 	param([string]$accountName, [string]$count)
 
-	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$jobs = Get-AzureBatchJob_ST -BatchContext $context
 
 	Assert-AreEqual $count $jobs.Length
@@ -302,7 +302,7 @@ function Test-ListJobsUnderSchedule
 {
 	param([string]$accountName, [string]$jobScheduleId, [string]$jobId, [string]$count)
 
-	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$jobSchedule = Get-AzureBatchJobSchedule_ST -Id $jobScheduleId -BatchContext $context
 
 	# Verify that listing jobs works
@@ -333,7 +333,7 @@ function Test-DeleteJob
 {
 	param([string]$accountName, [string]$jobId, [string]$usePipeline)
 
-	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 
 	# Verify the job exists
 	$jobs = Get-AzureBatchJob_ST -BatchContext $context
@@ -351,4 +351,66 @@ function Test-DeleteJob
 	# Verify the job was deleted
 	$jobs = Get-AzureBatchJob_ST -BatchContext $context
 	Assert-True { $jobs -eq $null -or $jobs[0].State.ToString().ToLower() -eq 'deleting' }
+}
+
+<#
+.SYNOPSIS
+Tests disabling and enabling a job
+#>
+function Test-DisableAndEnableJob
+{
+	param([string]$accountName, [string]$jobId)
+
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
+
+	# Verify the job is Active
+	$job = Get-AzureBatchJob_ST $jobId -BatchContext $context
+	Assert-AreEqual 'Active' $job.State
+
+	Disable-AzureBatchJob_ST $jobId Terminate -BatchContext $context
+
+	# Verify the job was Disabled
+	$job = Get-AzureBatchJob_ST $jobId -BatchContext $context
+	Assert-AreEqual 'Disabled' $job.State
+
+	Enable-AzureBatchJob_ST $jobId -BatchContext $context
+
+	# Verify the job is again active
+	$job = Get-AzureBatchJob_ST -Filter "id eq '$jobId'" -BatchContext $context
+	Assert-AreEqual 'Active' $job.State
+
+	# Verify using the pipeline
+	$job | Disable-AzureBatchJob_ST -DisableJobOption Terminate -BatchContext $context
+	$job = Get-AzureBatchJob_ST $jobId -BatchContext $context
+	Assert-AreEqual 'Disabled' $job.State
+
+	$job | Enable-AzureBatchJob_ST -BatchContext $context
+	$job = Get-AzureBatchJob_ST -Filter "id eq '$jobId'" -BatchContext $context
+	Assert-AreEqual 'Active' $job.State
+}
+
+<#
+.SYNOPSIS
+Tests terminating a job
+#>
+function Test-TerminateJob
+{
+	param([string]$accountName, [string]$jobId, [string]$usePipeline)
+
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
+	$terminateReason = "test"
+
+	if ($usePipeline -eq '1')
+	{
+		Get-AzureBatchJob_ST -Id $jobId -BatchContext $context | Stop-AzureBatchJob_ST -TerminateReason $terminateReason -BatchContext $context
+	}
+	else
+	{
+		Stop-AzureBatchJob_ST $jobId $terminateReason -BatchContext $context
+	}
+
+	# Verify the job was terminated and that the terminate reason was set
+	$job = Get-AzureBatchJob_ST $jobId -BatchContext $context
+	Assert-True { ($job.State.ToString().ToLower() -eq 'terminating') -or ($job.State.ToString().ToLower() -eq 'completed') }
+	Assert-AreEqual $terminateReason $job.ExecutionInformation.TerminateReason
 }

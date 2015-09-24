@@ -20,7 +20,7 @@ function Test-GetComputeNodeById
 {
 	param([string]$accountName, [string]$poolId)
 
-	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$computeNodeId = (Get-AzureBatchComputeNode_ST -PoolId $poolId -BatchContext $context)[0].Id
 
 	$computeNode = Get-AzureBatchComputeNode_ST -PoolId $poolId -Id $computeNodeId -BatchContext $context
@@ -41,7 +41,7 @@ function Test-ListComputeNodesByFilter
 {
 	param([string]$accountName, [string]$poolId, [string]$state, [string]$matches)
 
-	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$filter = "state eq '" + "$state" + "'"
 
 	$computeNodes = Get-AzureBatchComputeNode_ST -PoolId $poolId -Filter $filter -BatchContext $context
@@ -71,7 +71,7 @@ function Test-ListComputeNodesWithMaxCount
 {
 	param([string]$accountName, [string]$poolId, [string]$maxCount)
 
-	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$computeNodes = Get-AzureBatchComputeNode_ST -PoolId $poolId -MaxCount $maxCount -BatchContext $context
 
 	Assert-AreEqual $maxCount $computeNodes.Length
@@ -91,7 +91,7 @@ function Test-ListAllComputeNodes
 {
 	param([string]$accountName, [string]$poolId, [string]$count)
 
-	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$computeNodes = Get-AzureBatchComputeNode_ST -PoolId $poolId -BatchContext $context
 
 	Assert-AreEqual $count $computeNodes.Length
@@ -111,8 +111,60 @@ function Test-ListComputeNodePipeline
 {
 	param([string]$accountName, [string]$poolId, [string]$count)
 
-	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$computeNodes = Get-AzureBatchPool_ST -Id $poolId -BatchContext $context | Get-AzureBatchComputeNode_ST -BatchContext $context
 
 	Assert-AreEqual $count $computeNodes.Count
+}
+
+<#
+.SYNOPSIS
+Tests rebooting a compute node
+#>
+function Test-RebootComputeNode
+{
+	param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$usePipeline)
+
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
+
+	$rebootOption = ([Microsoft.Azure.Batch.Common.ComputeNodeRebootOption]::Terminate)
+
+	if ($usePipeline -eq '1')
+	{
+	    Get-AzureBatchComputeNode_ST $poolId $computeNodeId -BatchContext $context | Restart-AzureBatchComputeNode_ST -RebootOption $rebootOption -BatchContext $context
+	}
+	else
+	{
+	    Restart-AzureBatchComputeNode_ST $poolId $computeNodeId -RebootOption $rebootOption -BatchContext $context
+	}
+
+	$computeNode = Get-AzureBatchComputeNode_ST -PoolId $poolId -Filter "id eq '$computeNodeId'" -BatchContext $context
+
+	Assert-AreEqual 'Rebooting' $computeNode.State
+}
+
+<#
+.SYNOPSIS
+Tests reimaging a compute node
+#>
+function Test-ReimageComputeNode
+{
+	param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$usePipeline)
+
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
+
+	$reimageOption = ([Microsoft.Azure.Batch.Common.ComputeNodeReimageOption]::Terminate)
+
+	if ($usePipeline -eq '1')
+	{
+	    Get-AzureBatchComputeNode_ST $poolId $computeNodeId -BatchContext $context | Reset-AzureBatchComputeNode_ST -ReimageOption $reimageOption -BatchContext $context
+	}
+	else
+	{
+	    Reset-AzureBatchComputeNode_ST $poolId $computeNodeId -ReimageOption $reimageOption -BatchContext $context
+	}
+
+	$computeNode = Get-AzureBatchComputeNode_ST -PoolId $poolId -Filter "id eq '$computeNodeId'" -BatchContext $context
+
+	Assert-AreEqual 'Reimaging' $computeNode.State
 }

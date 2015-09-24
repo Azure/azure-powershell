@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets a Credential for automation.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Resume, "AzureAutomationJob")]
+    [Cmdlet(VerbsLifecycle.Resume, "AzureRmAutomationJob")]
     public class ResumeAzureAutomationJob : AzureAutomationBaseCmdlet
     {
         /// <summary> 
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Execute this cmdlet. 
         /// </summary> 
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")] 
-        protected override void AutomationExecuteCmdlet() 
+        protected override void AutomationProcessRecord() 
         {
             this.AutomationClient.ResumeJob(this.ResourceGroupName, this.AutomationAccountName, this.Id); 
         } 

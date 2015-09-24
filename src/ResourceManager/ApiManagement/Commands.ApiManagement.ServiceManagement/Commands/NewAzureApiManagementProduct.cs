@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Text.RegularExpressions;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.New, "AzureApiManagementProduct")]
+    [Cmdlet(VerbsCommon.New, "AzureRmApiManagementProduct")]
     [OutputType(typeof(PsApiManagementProduct))]
     public class NewAzureApiManagementProduct : AzureApiManagementCmdletBase
     {

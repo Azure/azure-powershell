@@ -24,15 +24,17 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsLifecycle.Enable, Constants.AzureBatchAutoScale)]
     public class EnableBatchAutoScaleCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "The id of the pool to enable automatic scaling on.")]
+        [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, 
+            Mandatory = true, HelpMessage = "The id of the pool to enable automatic scaling on.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The formula for the desired number of compute nodes in the pool.")]
+        [Parameter(Position = 1, Mandatory = true, 
+            HelpMessage = "The formula for the desired number of compute nodes in the pool.")]
         [ValidateNotNullOrEmpty]
         public string AutoScaleFormula { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             AutoScaleParameters parameters = new AutoScaleParameters(this.BatchContext, this.Id, null,
                 this.AutoScaleFormula, this.AdditionalBehaviors);

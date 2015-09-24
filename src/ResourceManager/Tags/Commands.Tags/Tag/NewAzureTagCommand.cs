@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Tags.Tag
     /// <summary>
     /// Creates a new tag with the specified values
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureTag"), OutputType(typeof(PSTag))]
+    [Cmdlet(VerbsCommon.New, "AzureRmTag"), OutputType(typeof(PSTag))]
     public class NewAzureTagCommand : TagBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Name of the tag. If the tag name doesn't exist, create the tag name. Otherwise, add the value to the existing tag name.")]
@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Tags.Tag
         [ValidateNotNullOrEmpty]
         public string Value { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             WriteObject(TagsClient.CreateTag(Name, Value != null ? new List<string> { Value } : null));
         }

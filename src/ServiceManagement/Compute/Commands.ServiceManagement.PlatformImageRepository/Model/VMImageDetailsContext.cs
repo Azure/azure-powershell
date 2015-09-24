@@ -17,5 +17,8 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
     public class VMImageDetailsContext : OSImageDetailsContext
     {
         public string SharingStatus { get; set; }
+        public string Offer { get; set; }
+        public string Sku { get; set; }
+        public string Version { get; set; }
     }
 }

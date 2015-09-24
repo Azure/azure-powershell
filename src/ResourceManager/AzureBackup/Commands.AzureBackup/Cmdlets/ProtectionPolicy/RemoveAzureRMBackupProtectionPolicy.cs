@@ -26,14 +26,14 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Remove a protection policy
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRMBackupProtectionPolicy")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmBackupProtectionPolicy")]
     public class RemoveAzureRMBackupProtectionPolicy : AzureBackupPolicyCmdletBase
     {
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ExecutionBlock(() =>
             {
-                base.ExecuteCmdlet();
+                base.ProcessRecord();
 
                 WriteDebug(Resources.MakingClientCall);
 
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 }
                 else
                 {
-                    var exception = new ArgumentException(string.Format(Resources.PolicyNotFound, policyInfo.Name));
+                    var exception = new ArgumentException(string.Format(Resources.PolicyNotFound, ProtectionPolicy.Name));
                     throw exception;                    
                 }
             });

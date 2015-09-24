@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Resources.ResourceGroupDeployments;
 using Microsoft.Azure.Management.Resources.Models;
 using Moq;
 using Xunit;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Resources
 {

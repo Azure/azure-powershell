@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Get full details of a job
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMBackupJobDetails", DefaultParameterSetName = "JobsFiltersSet"), OutputType(typeof(AzureRMBackupJobDetails))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmBackupJobDetails", DefaultParameterSetName = "JobsFiltersSet"), OutputType(typeof(AzureRMBackupJobDetails))]
     public class GetAzureRMBackupJobDetils : AzureBackupCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.Vault, ParameterSetName = "IdFiltersSet")]
@@ -35,13 +35,13 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
         [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.JobDetailsFilterJobIdHelpMessage, ParameterSetName = "IdFiltersSet")]
         [ValidateNotNullOrEmpty]
-        public string JobID { get; set; }
+        public string JobId { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.JobDetailsFilterJobHelpMessage, ParameterSetName = "JobsFiltersSet", ValueFromPipeline = true)]
         [ValidateNotNull]
         public AzureRMBackupJob Job { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             if (Job != null)
             {
@@ -53,12 +53,12 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             {
                 if (Job != null)
                 {
-                    JobID = Job.InstanceId;
+                    JobId = Job.InstanceId;
                 }
 
-                WriteDebug(String.Format(Resources.JobIdFilter, JobID));
+                WriteDebug(String.Format(Resources.JobIdFilter, JobId));
 
-                Mgmt.CSMJobDetailsResponse serviceJobProperties = AzureBackupClient.GetJobDetails(Vault.ResourceGroupName, Vault.Name, JobID);
+                Mgmt.CSMJobDetailsResponse serviceJobProperties = AzureBackupClient.GetJobDetails(Vault.ResourceGroupName, Vault.Name, JobId);
                 AzureRMBackupJobDetails jobDetails = new AzureRMBackupJobDetails(Vault, serviceJobProperties.JobDetailedProperties, serviceJobProperties.Name);
 
                 WriteDebug(Resources.JobResponse);

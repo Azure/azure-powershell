@@ -19,11 +19,18 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public partial class VirtualMachineTests
     {
-        [Fact]
+        [Fact(Skip = "PSGet Migration: TODO: Get-AzureRmSubscription")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachine()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachine");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachinePiping()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachinePiping");
         }
 
         [Fact]
@@ -73,6 +80,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestVirtualMachineDataDisk()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineDataDisk");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineDataDiskNegative()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineDataDiskNegative");
         }
 
         [Fact]

@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
     public class AzureBackupScenarioTests : AzureBackupTestsBase
     {
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        //[Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AzureBackupEndToEndTests()
         {
             //this.RunPowerShellTest("Test-AzureBackupEndToEnd");

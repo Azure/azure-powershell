@@ -23,16 +23,18 @@ using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Management.Scheduler;
 using Microsoft.Azure.Management.RecoveryServices;
 using Microsoft.Azure.Management.SiteRecovery;
 using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Common.Authentication;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
 {
-    public abstract class SiteRecoveryTestsBase
+    public abstract class SiteRecoveryTestsBase : RMTestBase
     {
         private CSMTestEnvironmentFactory armTestFactory;
         private EnvironmentSetupHelper helper;
@@ -41,6 +43,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
 
         public SiteRecoveryManagementClient SiteRecoveryMgmtClient { get; private set; }
         public RecoveryServicesManagementClient RecoveryServicesMgmtClient { get; private set; }
+        public CloudServiceManagementClient CloudServiceManagementClient { get; private set; }
 
         protected SiteRecoveryTestsBase()
         {
@@ -82,10 +85,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
 
         protected void SetupManagementClients()
         {
+            CloudServiceManagementClient = GetCloudServicesManagementClient();
             RecoveryServicesMgmtClient = GetRecoveryServicesManagementClient();
             SiteRecoveryMgmtClient = GetSiteRecoveryManagementClient();
 
-            helper.SetupManagementClients(RecoveryServicesMgmtClient, SiteRecoveryMgmtClient);
+            helper.SetupManagementClients(CloudServiceManagementClient, RecoveryServicesMgmtClient, SiteRecoveryMgmtClient);
         }
 
         protected void RunPowerShellTest(params string[] scripts)
@@ -98,7 +102,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
 
                 SetupManagementClients();
 
-                helper.SetupEnvironment(AzureModule.AzureServiceManagement);
+                helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\" + this.GetType().Name + ".ps1");
 
@@ -106,9 +110,17 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
             }
         }
 
+        private CloudServiceManagementClient GetCloudServicesManagementClient()
+        {
+            return TestBase.GetServiceClient<CloudServiceManagementClient>(this.armTestFactory);
+        }
+
         private RecoveryServicesManagementClient GetRecoveryServicesManagementClient()
         {
-            return TestBase.GetServiceClient<RecoveryServicesManagementClient>(this.armTestFactory);
+            return new RecoveryServicesManagementClient(
+                "Microsoft.SiteRecovery",
+                CloudServiceManagementClient.Credentials,
+                CloudServiceManagementClient.BaseUri).WithHandler(HttpMockServer.CreateInstance());
         }
 
         private SiteRecoveryManagementClient GetSiteRecoveryManagementClient()
@@ -122,11 +134,11 @@ namespace Microsoft.Azure.Commands.SiteRecovery.Test.ScenarioTests
             }
 
             return new SiteRecoveryManagementClient(
-                asrVaultCreds.ResourceGroupName,
                 asrVaultCreds.ResourceName,
                 asrVaultCreds.ResourceGroupName,
-                RecoveryServicesMgmtClient.Credentials,
-                RecoveryServicesMgmtClient.BaseUri).WithHandler(HttpMockServer.CreateInstance());
+                "Microsoft.SiteRecovery",
+                CloudServiceManagementClient.Credentials,
+                CloudServiceManagementClient.BaseUri).WithHandler(HttpMockServer.CreateInstance());
         }
 
         private static bool IgnoreCertificateErrorHandler

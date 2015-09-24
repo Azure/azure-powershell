@@ -16,6 +16,6 @@ namespace Microsoft.Azure.Commands.Compute
 {
     public class VMAccessExtensionPrivateSettings
     {
-        public string password;
+        public string Password;
     }
 }

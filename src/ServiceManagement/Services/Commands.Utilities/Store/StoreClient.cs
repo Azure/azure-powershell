@@ -139,7 +139,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Store
         /// Creates new instance from the store client.
         /// </summary>
         /// <param name="subscription">The Microsoft Azure subscription</param>
-        public StoreClient(AzureProfile profile, AzureSubscription subscription)
+        public StoreClient(AzureSMProfile profile, AzureSubscription subscription)
             : this(
                 subscription,
                 AzureSession.ClientFactory.CreateClient<ComputeManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement),

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets a Job object for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureAutomationJob", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmAutomationJob", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(Microsoft.Azure.Commands.Automation.Model.Job))]
     public class GetAzureAutomationJob : AzureAutomationBaseCmdlet
     {
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void AutomationExecuteCmdlet()
+        protected override void AutomationProcessRecord()
         {
             IEnumerable<Microsoft.Azure.Commands.Automation.Model.Job> jobs = null; 
  

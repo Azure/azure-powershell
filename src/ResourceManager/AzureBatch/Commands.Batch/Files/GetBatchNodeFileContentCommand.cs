@@ -29,27 +29,36 @@ namespace Microsoft.Azure.Commands.Batch
         internal const string ComputeNodeAndIdAndPathParameterSet = "ComputeNode_Id_Path";
         internal const string ComputeNodeAndIdAndStreamParameterSet = "ComputeNode_Id_Stream";
 
-        [Parameter(ParameterSetName = TaskAndIdAndPathParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the job containing the target task.")]
-        [Parameter(ParameterSetName = TaskAndIdAndStreamParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = TaskAndIdAndPathParameterSet, Mandatory = true, 
+            ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the job containing the target task.")]
+        [Parameter(ParameterSetName = TaskAndIdAndStreamParameterSet, Mandatory = true, 
+            ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string JobId { get; set; }
 
-        [Parameter(ParameterSetName = TaskAndIdAndPathParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the task.")]
-        [Parameter(ParameterSetName = TaskAndIdAndStreamParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = TaskAndIdAndPathParameterSet, Mandatory = true, 
+            ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the task.")]
+        [Parameter(ParameterSetName = TaskAndIdAndStreamParameterSet, Mandatory = true, 
+            ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string TaskId { get; set; }
 
-        [Parameter(Position = 0, ParameterSetName = ComputeNodeAndIdAndPathParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the pool containing the compute node.")]
-        [Parameter(Position = 0, ParameterSetName = ComputeNodeAndIdAndStreamParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 0, ParameterSetName = ComputeNodeAndIdAndPathParameterSet, Mandatory = true, 
+            ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the pool containing the compute node.")]
+        [Parameter(Position = 0, ParameterSetName = ComputeNodeAndIdAndStreamParameterSet, Mandatory = true, 
+            ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string PoolId { get; set; }
 
-        [Parameter(Position = 1, ParameterSetName = ComputeNodeAndIdAndPathParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the compute node.")]
-        [Parameter(Position = 1, ParameterSetName = ComputeNodeAndIdAndStreamParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 1, ParameterSetName = ComputeNodeAndIdAndPathParameterSet, Mandatory = true, 
+            ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the compute node.")]
+        [Parameter(Position = 1, ParameterSetName = ComputeNodeAndIdAndStreamParameterSet, Mandatory = true, 
+            ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ComputeNodeId { get; set; }
 
-        [Parameter(Position = 2, ParameterSetName = ComputeNodeAndIdAndPathParameterSet, Mandatory = true, HelpMessage = "The name of the node file to download.")]
+        [Parameter(Position = 2, ParameterSetName = ComputeNodeAndIdAndPathParameterSet, Mandatory = true, 
+            HelpMessage = "The name of the node file to download.")]
         [Parameter(Position = 2, ParameterSetName = ComputeNodeAndIdAndStreamParameterSet, Mandatory = true)]
         [Parameter(ParameterSetName = TaskAndIdAndPathParameterSet, Mandatory = true)]
         [Parameter(ParameterSetName = TaskAndIdAndStreamParameterSet, Mandatory = true)]
@@ -61,19 +70,21 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSNodeFile InputObject { get; set; }
 
-        [Parameter(ParameterSetName = ComputeNodeAndIdAndPathParameterSet, Mandatory = true, HelpMessage = "The file path where the node file will be downloaded.")]
+        [Parameter(ParameterSetName = ComputeNodeAndIdAndPathParameterSet, Mandatory = true, 
+            HelpMessage = "The file path where the node file will be downloaded.")]
         [Parameter(ParameterSetName = TaskAndIdAndPathParameterSet, Mandatory = true)]
         [Parameter(ParameterSetName = Constants.InputObjectAndPathParameterSet, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string DestinationPath { get; set; }
 
-        [Parameter(ParameterSetName = ComputeNodeAndIdAndStreamParameterSet, Mandatory = true, HelpMessage = "The Stream into which the node file contents will be written. This stream will not be closed or rewound by this call.")]
+        [Parameter(ParameterSetName = ComputeNodeAndIdAndStreamParameterSet, Mandatory = true, 
+            HelpMessage = "The Stream into which the node file contents will be written. This stream will not be closed or rewound by this call.")]
         [Parameter(ParameterSetName = TaskAndIdAndStreamParameterSet, Mandatory = true)]
         [Parameter(ParameterSetName = Constants.InputObjectAndStreamParameterSet, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public Stream DestinationStream { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             DownloadNodeFileOptions options = new DownloadNodeFileOptions(this.BatchContext, this.JobId, this.TaskId, this.PoolId, 
                 this.ComputeNodeId, this.Name, this.InputObject, this.DestinationPath, this.DestinationStream, this.AdditionalBehaviors);

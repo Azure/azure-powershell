@@ -59,9 +59,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
         public GalleryTemplatesClient GalleryTemplatesClient { get; set; }
 
-        // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
-        //public IEventsClient EventsClient { get; set; }
-
         public Action<string> VerboseLogger { get; set; }
 
         public Action<string> ErrorLogger { get; set; }
@@ -71,14 +68,12 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// <summary>
         /// Creates new ResourceManagementClient
         /// </summary>
-        /// <param name="profile">Profile containing resources to manipulate</param>
-        public ResourcesClient(AzureProfile profile)
+        /// <param name="context">Profile containing resources to manipulate</param>
+        public ResourcesClient(AzureContext context)
             : this(
-                AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(profile, AzureEnvironment.Endpoint.ResourceManager),
-                new GalleryTemplatesClient(profile.Context),
-                // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
-                //AzureSession.ClientFactory.CreateClient<EventsClient>(context, AzureEnvironment.Endpoint.ResourceManager),
-                AzureSession.ClientFactory.CreateClient<AuthorizationManagementClient>(profile.Context, AzureEnvironment.Endpoint.ResourceManager))
+                AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
+                new GalleryTemplatesClient(context),
+                AzureSession.ClientFactory.CreateClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
 
         }
@@ -92,13 +87,9 @@ namespace Microsoft.Azure.Commands.Resources.Models
         public ResourcesClient(
             IResourceManagementClient resourceManagementClient,
             GalleryTemplatesClient galleryTemplatesClient,
-            // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
-            //IEventsClient eventsClient,
             IAuthorizationManagementClient authorizationManagementClient)
         {
             GalleryTemplatesClient = galleryTemplatesClient;
-            // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
-            //EventsClient = eventsClient;
             AuthorizationManagementClient = authorizationManagementClient;
             this.ResourceManagementClient = resourceManagementClient;
         }
@@ -329,11 +320,40 @@ namespace Microsoft.Azure.Commands.Resources.Models
             Deployment deployment = new Deployment
             {
                 Properties = new DeploymentProperties {
-                    Mode = deploymentMode,
-                    Template = GetTemplate(parameters.TemplateFile, parameters.GalleryTemplateIdentity),
-                    Parameters = GetDeploymentParameters(parameters.TemplateParameterObject)
+                    Mode = deploymentMode
                 }
             };
+
+            if (Uri.IsWellFormedUriString(parameters.TemplateFile, UriKind.Absolute))
+            {
+                deployment.Properties.TemplateLink = new TemplateLink
+                {
+                    Uri = new Uri(parameters.TemplateFile)
+                };
+            }
+            else if (!string.IsNullOrEmpty(parameters.GalleryTemplateIdentity))
+            {
+                deployment.Properties.TemplateLink = new TemplateLink
+                {
+                    Uri = new Uri(GalleryTemplatesClient.GetGalleryTemplateFile(parameters.GalleryTemplateIdentity))
+                };
+            }
+            else
+            {
+                deployment.Properties.Template = FileUtilities.DataStore.ReadFileAsText(parameters.TemplateFile);
+            }
+
+            if (Uri.IsWellFormedUriString(parameters.ParameterUri, UriKind.Absolute))
+            {
+                deployment.Properties.ParametersLink = new ParametersLink
+                {
+                    Uri = new Uri(parameters.ParameterUri)
+                };
+            }
+            else
+            {
+                deployment.Properties.Parameters = GetDeploymentParameters(parameters.TemplateParameterObject);
+            }
 
             return deployment;
         }

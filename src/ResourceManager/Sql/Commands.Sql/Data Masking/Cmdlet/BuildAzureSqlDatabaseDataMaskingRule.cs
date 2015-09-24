@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         {
             if (rules.Any(r => r.TableName == TableName && r.ColumnName == ColumnName && r.RuleId != RuleId))
             {
-                return string.Format(CultureInfo.InvariantCulture, Resources.DataMaskingTableAndColumnUsedError, TableName, ColumnName);
+                return string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.DataMaskingTableAndColumnUsedError, TableName, ColumnName);
             }
             return null;
         }
@@ -127,9 +127,21 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         /// <returns>An updated rule model</returns>
         protected DatabaseDataMaskingRuleModel UpdateRule(DatabaseDataMaskingRuleModel rule)
         {
-            rule.SchemaName = SchemaName;
-            rule.TableName = TableName;
-            rule.ColumnName = ColumnName;
+            if (!string.IsNullOrEmpty(SchemaName)) // only update if the user provided this value
+            {
+                rule.SchemaName = SchemaName;
+            }
+
+            if (!string.IsNullOrEmpty(TableName)) // only update if the user provided this value
+            {
+                rule.TableName = TableName;
+            }
+
+            if (!string.IsNullOrEmpty(ColumnName)) // only update if the user provided this value
+            {
+                rule.ColumnName = ColumnName;
+            }
+
             if(!string.IsNullOrEmpty(MaskingFunction)) // only update if the user provided this value
             {
                 rule.MaskingFunction = ModelizeMaskingFunction();
@@ -192,7 +204,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
 
                 if(rule.NumberFrom > rule.NumberTo)
                 {
-                    throw new Exception(string.Format(CultureInfo.InvariantCulture, Resources.DataMaskingNumberRuleIntervalDefinitionError));
+                    throw new Exception(string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.DataMaskingNumberRuleIntervalDefinitionError));
                 }
             }
             return rule;

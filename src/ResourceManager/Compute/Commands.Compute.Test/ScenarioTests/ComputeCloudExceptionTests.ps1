@@ -20,13 +20,13 @@ function Run-ComputeCloudExceptionTests
     try
     {
         # Common
-        $loc = 'West US';
-        New-AzureResourceGroup -Name $rgname -Location $loc -Force;
+        $loc = Get-ComputeVMLocation;
+        New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
         $compare = "Resource*NotFound*OperationID : `'*`'";
-        Assert-ThrowsLike { $s1 = Get-AzureVM -ResourceGroupName $rgname -Name 'test' } $compare;
-        Assert-ThrowsLike { $s2 = Get-AzureVM -ResourceGroupName 'foo' -Name 'bar' } $compare;
-        Assert-ThrowsLike { $s3 = Get-AzureAvailabilitySet -ResourceGroupName $rgname -Name 'test' } $compare;
+        Assert-ThrowsLike { $s1 = Get-AzureRmVM -ResourceGroupName $rgname -Name 'test' } $compare;
+        Assert-ThrowsLike { $s2 = Get-AzureRmVM -ResourceGroupName 'foo' -Name 'bar' } $compare;
+        Assert-ThrowsLike { $s3 = Get-AzureRmAvailabilitySet -ResourceGroupName $rgname -Name 'test' } $compare;
     }
     finally
     {

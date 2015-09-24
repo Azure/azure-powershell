@@ -18,6 +18,7 @@ using System.Runtime.Serialization;
 using System.Threading;
 using System.Xml;
 using Hyak.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.RecoveryServices;
 using Microsoft.Azure.Management.RecoveryServices.Models;
 using Microsoft.Azure.Management.SiteRecovery;
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// <summary>
     /// The base class for all Windows Azure Recovery Services commands
     /// </summary>
-    public abstract class SiteRecoveryCmdletBase : AzurePSCmdlet
+    public abstract class SiteRecoveryCmdletBase : AzureRMCmdlet
     {
         /// <summary>
         /// Recovery Services client.
@@ -51,7 +52,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
             {
                 if (this.recoveryServicesClient == null)
                 {
-                    this.recoveryServicesClient = new PSRecoveryServicesClient(Profile, Profile.Context.Subscription);
+                    this.recoveryServicesClient = new PSRecoveryServicesClient(DefaultProfile);
                 }
 
                 return this.recoveryServicesClient;
@@ -187,6 +188,29 @@ namespace Microsoft.Azure.Commands.SiteRecovery
                     Properties.Resources.IDBasedParamUsageNotSupportedFromNextRelease,
                     paramName));
             }
+        }
+
+        /// <summary>
+        /// Gets the current vault location.
+        /// </summary>
+        /// <returns>The current vault location.</returns>
+        protected string GetCurrentValutLocation()
+        {
+            string location = string.Empty;
+
+            VaultListResponse vaultListResponse =
+                RecoveryServicesClient.GetVaultsInResouceGroup(PSRecoveryServicesClient.asrVaultCreds.ResourceGroupName);
+
+            foreach (Vault vault in vaultListResponse.Vaults)
+            {
+                if (0 == string.Compare(PSRecoveryServicesClient.asrVaultCreds.ResourceName, vault.Name, true))
+                {
+                    location = vault.Location;
+                    break;
+                }
+            }
+
+            return location;
         }
     }
 }

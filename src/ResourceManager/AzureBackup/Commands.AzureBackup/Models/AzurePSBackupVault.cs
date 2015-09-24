@@ -30,7 +30,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
 
         public string Region { get; set; }
 
-        // public Hashtable[] Tags { get; protected set; }
+        // TODO: Add support for tags
+        //public Hashtable[] Tags { get; set; }
 
         public string Storage { get; set; }
 
