@@ -20,7 +20,7 @@ function Test-NewPool
 {
 	param([string]$accountName)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	
 	$poolId1 = "simple"
 	$poolId2 = "complex"
@@ -33,8 +33,8 @@ function Test-NewPool
 		$targetDedicated = 1
 		$resizeTimeout = ([TimeSpan]::FromMinutes(10))
 		$vmSize = "small"
-		New-AzureRMBatchPool_ST $poolId1 -OSFamily $osFamily -TargetOSVersion $targetOSVersion -TargetDedicated $targetDedicated -VirtualMachineSize $vmSize -ResizeTimeout $resizeTimeout -BatchContext $context
-		$pool1 = Get-AzureRMBatchPool_ST -Id $poolId1 -BatchContext $context
+		New-AzureBatchPool_ST $poolId1 -OSFamily $osFamily -TargetOSVersion $targetOSVersion -TargetDedicated $targetDedicated -VirtualMachineSize $vmSize -ResizeTimeout $resizeTimeout -BatchContext $context
+		$pool1 = Get-AzureBatchPool_ST -Id $poolId1 -BatchContext $context
 
 		# Verify created pool matches expectations
 		Assert-AreEqual $poolId1 $pool1.Id
@@ -69,9 +69,9 @@ function Test-NewPool
 		
 		$displayName = "displayName"
 
-		New-AzureRMBatchPool_ST -Id $poolId2 -VirtualMachineSize $vmSize -OSFamily $osFamily -TargetOSVersion $targetOSVersion -DisplayName $displayName -MaxTasksPerComputeNode $maxTasksPerComputeNode -AutoScaleFormula $autoScaleFormula -StartTask $startTask -TaskSchedulingPolicy $schedulingPolicy -InterComputeNodeCommunicationEnabled -Metadata $metadata -BatchContext $context
+		New-AzureBatchPool_ST -Id $poolId2 -VirtualMachineSize $vmSize -OSFamily $osFamily -TargetOSVersion $targetOSVersion -DisplayName $displayName -MaxTasksPerComputeNode $maxTasksPerComputeNode -AutoScaleFormula $autoScaleFormula -StartTask $startTask -TaskSchedulingPolicy $schedulingPolicy -InterComputeNodeCommunicationEnabled -Metadata $metadata -BatchContext $context
 		
-		$pool2 = Get-AzureRMBatchPool_ST -Id $poolId2 -BatchContext $context
+		$pool2 = Get-AzureBatchPool_ST -Id $poolId2 -BatchContext $context
 		
 		# Verify created pool matches expectations
 		Assert-AreEqual $poolId2 $pool2.Id
@@ -98,8 +98,8 @@ function Test-NewPool
 	}
 	finally
 	{
-		Remove-AzureRMBatchPool_ST -Id $poolId1 -Force -BatchContext $context
-		Remove-AzureRMBatchPool_ST -Id $poolId2 -Force -BatchContext $context
+		Remove-AzureBatchPool_ST -Id $poolId1 -Force -BatchContext $context
+		Remove-AzureBatchPool_ST -Id $poolId2 -Force -BatchContext $context
 	}
 }
 
@@ -111,8 +111,8 @@ function Test-GetPoolById
 {
 	param([string]$accountName, [string]$poolId)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
-	$pool = Get-AzureRMBatchPool_ST $poolId -BatchContext $context
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
+	$pool = Get-AzureBatchPool_ST $poolId -BatchContext $context
 
 	Assert-AreEqual $poolId $pool.Id
 }
@@ -125,9 +125,9 @@ function Test-ListPoolsByFilter
 {
 	param([string]$accountName, [string]$poolPrefix, [string]$matches)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$poolFilter = "startswith(id,'" + "$poolPrefix" + "')"
-	$pools = Get-AzureRMBatchPool_ST -Filter $poolFilter -BatchContext $context
+	$pools = Get-AzureBatchPool_ST -Filter $poolFilter -BatchContext $context
 
 	Assert-AreEqual $matches $pools.Length
 	foreach($pool in $pools)
@@ -144,8 +144,8 @@ function Test-ListPoolsWithMaxCount
 {
 	param([string]$accountName, [string]$maxCount)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
-	$pools = Get-AzureRMBatchPool_ST -MaxCount $maxCount -BatchContext $context
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
+	$pools = Get-AzureBatchPool_ST -MaxCount $maxCount -BatchContext $context
 
 	Assert-AreEqual $maxCount $pools.Length
 }
@@ -158,10 +158,71 @@ function Test-ListAllPools
 {
 	param([string]$accountName, [string]$count)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
-	$pools = Get-AzureRMBatchPool_ST -BatchContext $context
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
+	$pools = Get-AzureBatchPool_ST -BatchContext $context
 
 	Assert-AreEqual $count $pools.Length
+}
+
+<#
+.SYNOPSIS
+Tests updating a pool
+#>
+function Test-UpdatePool
+{
+	param([string]$accountName, [string]$poolId)
+
+	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+
+	$pool = Get-AzureBatchPool_ST $poolId -BatchContext $context
+
+	# Define new Start Task
+	$startTask = New-Object Microsoft.Azure.Commands.Batch.Models.PSStartTask
+	$startTaskCmd = "cmd /c dir /s"
+	$startTask.CommandLine = $startTaskCmd
+	$startTask.ResourceFiles = New-Object System.Collections.Generic.List``1[Microsoft.Azure.Commands.Batch.Models.PSResourceFile]
+	$blobSource1 = "https://testacct1.blob.core.windows.net/"
+	$filePath1 = "filePath1"
+	$blobSource2 = "https://testacct2.blob.core.windows.net/"
+	$filePath2 = "filePath2"
+	$r1 = New-Object Microsoft.Azure.Commands.Batch.Models.PSResourceFile -ArgumentList @($blobSource1,$filePath1)
+	$r2 = New-Object Microsoft.Azure.Commands.Batch.Models.PSResourceFile -ArgumentList @($blobSource2,$filePath2)
+	$startTask.ResourceFiles.Add($r1)
+	$startTask.ResourceFiles.Add($r2)
+	$resourceFileCount = $startTask.ResourceFiles.Count
+	$startTask.EnvironmentSettings = New-Object System.Collections.Generic.List``1[Microsoft.Azure.Commands.Batch.Models.PSEnvironmentSetting]
+	$envSetting = New-Object Microsoft.Azure.Commands.Batch.Models.PSEnvironmentSetting -ArgumentList "envName","envVal"
+	$startTask.EnvironmentSettings.Add($envSetting)
+
+	# Define new Metadata
+	$metadata = New-Object System.Collections.Generic.List``1[Microsoft.Azure.Commands.Batch.Models.PSMetadataItem]
+	$metadataItem =  New-Object Microsoft.Azure.Commands.Batch.Models.PSMetadataItem -ArgumentList "poolMetaName","poolMetaValue"
+	$metadata.Add($metadataItem)
+
+	# TODO: Also set cert refs when the cert cmdlets are implemented
+
+	# Update and refresh pool
+	$pool.StartTask = $startTask
+	$pool.Metadata = $metadata
+
+	$pool | Set-AzureBatchPool_ST -BatchContext $context
+	$pool = Get-AzureBatchPool_ST $poolId -BatchContext $context
+
+	# Verify Start Task was updated
+	Assert-AreEqual $startTaskCmd $pool.StartTask.CommandLine
+	Assert-AreEqual $resourceFileCount $pool.StartTask.ResourceFiles.Count
+	Assert-AreEqual $blobSource1 $pool.StartTask.ResourceFiles[0].BlobSource
+	Assert-AreEqual $filePath1 $pool.StartTask.ResourceFiles[0].FilePath
+	Assert-AreEqual $blobSource2 $pool.StartTask.ResourceFiles[1].BlobSource
+	Assert-AreEqual $filePath2 $pool.StartTask.ResourceFiles[1].FilePath
+	Assert-AreEqual 1 $pool.StartTask.EnvironmentSettings.Count
+	Assert-AreEqual $envSetting.Name $pool.StartTask.EnvironmentSettings[0].Name
+	Assert-AreEqual $envSetting.Value $pool.StartTask.EnvironmentSettings[0].Value
+
+	# Verify Metadata was updated
+	Assert-AreEqual 1 $pool.Metadata.Count
+	Assert-AreEqual $metadataItem.Name $pool.Metadata[0].Name
+	Assert-AreEqual $metadataItem.Value $pool.Metadata[0].Value
 }
 
 <#
@@ -172,24 +233,24 @@ function Test-DeletePool
 {
 	param([string]$accountName, [string]$poolId, [string]$usePipeline)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 
 	# Verify the pool exists
-	$pool = Get-AzureRMBatchPool_ST $poolId -BatchContext $context
+	$pool = Get-AzureBatchPool_ST $poolId -BatchContext $context
 	Assert-AreEqual $poolId $pool.Id
 
 	if ($usePipeline -eq '1')
 	{
-		Get-AzureRMBatchPool_ST -Id $poolId -BatchContext $context | Remove-AzureRMBatchPool_ST -Force -BatchContext $context
+		Get-AzureBatchPool_ST -Id $poolId -BatchContext $context | Remove-AzureBatchPool_ST -Force -BatchContext $context
 	}
 	else
 	{
-		Remove-AzureRMBatchPool_ST -Id $poolId -Force -BatchContext $context
+		Remove-AzureBatchPool_ST -Id $poolId -Force -BatchContext $context
 	}
 
 	# Verify the pool was deleted. Use the OData filter since the GetPool API will cause a 404 if the pool isn't found.
 	$filter = "id eq '" + $poolId + "'"
-	$pool = Get-AzureRMBatchPool_ST -Filter $filter -BatchContext $context
+	$pool = Get-AzureBatchPool_ST -Filter $filter -BatchContext $context
 	
 	Assert-True { $pool -eq $null -or $pool.State.ToString().ToLower() -eq 'deleting' }
 }
@@ -202,17 +263,17 @@ function Test-ResizePoolById
 {
 	param([string]$accountName, [string]$poolId)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 
 	# Get the initial TargetDedicated count
-	$pool = Get-AzureRMBatchPool_ST -Id $poolId -BatchContext $context
+	$pool = Get-AzureBatchPool_ST -Id $poolId -BatchContext $context
 	$initialTargetDedicated = $pool.TargetDedicated
 
 	$newTargetDedicated = $initialTargetDedicated + 1
-	Start-AzureRMBatchPoolResize_ST -Id $poolId -TargetDedicated $newTargetDedicated -BatchContext $context
+	Start-AzureBatchPoolResize_ST -Id $poolId -TargetDedicated $newTargetDedicated -BatchContext $context
 
 	# Verify the TargetDedicated property was updated
-	$pool = Get-AzureRMBatchPool_ST -Id $poolId -BatchContext $context
+	$pool = Get-AzureBatchPool_ST -Id $poolId -BatchContext $context
 	Assert-AreEqual $newTargetDedicated $pool.TargetDedicated
 }
 
@@ -224,17 +285,17 @@ function Test-ResizePoolByPipeline
 {
 	param([string]$accountName, [string]$poolId)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 
 	# Get the initial TargetDedicated count
-	$pool = Get-AzureRMBatchPool_ST -Id $poolId -BatchContext $context
+	$pool = Get-AzureBatchPool_ST -Id $poolId -BatchContext $context
 	$initialTargetDedicated = $pool.TargetDedicated
 
 	$newTargetDedicated = $initialTargetDedicated - 1
-	$pool | Start-AzureRMBatchPoolResize_ST -TargetDedicated $newTargetDedicated -ResizeTimeout ([TimeSpan]::FromHours(1)) -ComputeNodeDeallocationOption ([Microsoft.Azure.Batch.Common.ComputeNodeDeallocationOption]::Terminate) -BatchContext $context
+	$pool | Start-AzureBatchPoolResize_ST -TargetDedicated $newTargetDedicated -ResizeTimeout ([TimeSpan]::FromHours(1)) -ComputeNodeDeallocationOption ([Microsoft.Azure.Batch.Common.ComputeNodeDeallocationOption]::Terminate) -BatchContext $context
 
 	# Verify the TargetDedicated property was updated
-	$pool = Get-AzureRMBatchPool_ST -Id $poolId -BatchContext $context
+	$pool = Get-AzureBatchPool_ST -Id $poolId -BatchContext $context
 	Assert-AreEqual $newTargetDedicated $pool.TargetDedicated
 }
 
@@ -246,18 +307,18 @@ function Test-StopResizePoolById
 {
 	param([string]$accountName, [string]$poolId)
 
-	$context = Get-AzureRMBatchAccountKeys $accountName
+	$context = Get-AzureRmBatchAccountKeys $accountName
 
 	# Start a resize and then stop it
-	$pool = Get-AzureRMBatchPool_ST -Id $poolId -BatchContext $context
+	$pool = Get-AzureBatchPool_ST -Id $poolId -BatchContext $context
 	$initialTargetDedicated = $pool.TargetDedicated
 
 	$newTargetDedicated = $initialTargetDedicated + 2
-	Start-AzureRMBatchPoolResize_ST -Id $poolId -TargetDedicated $newTargetDedicated -BatchContext $context
-	Stop-AzureRMBatchPoolResize_ST -Id $poolId -BatchContext $context
+	Start-AzureBatchPoolResize_ST -Id $poolId -TargetDedicated $newTargetDedicated -BatchContext $context
+	Stop-AzureBatchPoolResize_ST -Id $poolId -BatchContext $context
 
 	# Verify the AllocationState changed to Stopping
-	$pool = Get-AzureRMBatchPool_ST -Id $poolId -BatchContext $context
+	$pool = Get-AzureBatchPool_ST -Id $poolId -BatchContext $context
 	Assert-AreEqual 'Stopping' $pool.AllocationState
 }
 
@@ -269,18 +330,18 @@ function Test-StopResizePoolByPipeline
 {
 	param([string]$accountName, [string]$poolId)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 
 	# Start a resize and then stop it
-	$pool = Get-AzureRMBatchPool_ST -Id $poolId -BatchContext $context
+	$pool = Get-AzureBatchPool_ST -Id $poolId -BatchContext $context
 	$initialTargetDedicated = $pool.TargetDedicated
 
 	$newTargetDedicated = $initialTargetDedicated + 2
-	$pool | Start-AzureRMBatchPoolResize_ST -TargetDedicated $newTargetDedicated -BatchContext $context
-	$pool | Stop-AzureRMBatchPoolResize_ST -BatchContext $context
+	$pool | Start-AzureBatchPoolResize_ST -TargetDedicated $newTargetDedicated -BatchContext $context
+	$pool | Stop-AzureBatchPoolResize_ST -BatchContext $context
 
 	# Verify the AllocationState changed to Stopping
-	$pool = Get-AzureRMBatchPool_ST -Id $poolId -BatchContext $context
+	$pool = Get-AzureBatchPool_ST -Id $poolId -BatchContext $context
 	Assert-AreEqual 'Stopping' $pool.AllocationState
 }
 
@@ -292,26 +353,26 @@ function Test-EnableAutoScale
 {
 	param([string]$accountName, [string]$poolId, [string]$usePipeline)
 
-	$context = Get-AzureRMBatchAccountKeys $accountName
+	$context = Get-AzureRmBatchAccountKeys $accountName
 
 	$formula = '$TargetDedicated=2'
 
 	# Verify pool starts with autoscale disabled
-	$pool = Get-AzureRMBatchPool_ST $poolId -BatchContext $context
+	$pool = Get-AzureBatchPool_ST $poolId -BatchContext $context
 	Assert-False { $pool.AutoScaleEnabled }
 
 	if ($usePipeline -eq '1')
 	{
-		Get-AzureRMBatchPool_ST -Id $poolId -BatchContext $context | Enable-AzureRMBatchAutoScale_ST -AutoScaleFormula $formula -BatchContext $context
+		Get-AzureBatchPool_ST -Id $poolId -BatchContext $context | Enable-AzureBatchAutoScale_ST -AutoScaleFormula $formula -BatchContext $context
 	}
 	else
 	{
-		Enable-AzureRMBatchAutoScale_ST $poolId $formula -BatchContext $context
+		Enable-AzureBatchAutoScale_ST $poolId $formula -BatchContext $context
 	}
 
 	# Verify that autoscale was enabled. 
 	# Use a filter because it seems that the recorder sometimes gets confused when two identical URLs are sent too close together
-	$pool = Get-AzureRMBatchPool_ST -Filter "id eq '$poolId'" -BatchContext $context
+	$pool = Get-AzureBatchPool_ST -Filter "id eq '$poolId'" -BatchContext $context
 	Assert-True { $pool.AutoScaleEnabled }
 }
 
@@ -323,24 +384,24 @@ function Test-DisableAutoScale
 {
 	param([string]$accountName, [string]$poolId, [string]$usePipeline)
 
-	$context = Get-AzureRMBatchAccountKeys $accountName
+	$context = Get-AzureRmBatchAccountKeys $accountName
 
 	# Verify pool starts with autoscale enabled
-	$pool = Get-AzureRMBatchPool_ST $poolId -BatchContext $context
+	$pool = Get-AzureBatchPool_ST $poolId -BatchContext $context
 	Assert-True { $pool.AutoScaleEnabled }
 
 	if ($usePipeline -eq '1')
 	{
-		Get-AzureRMBatchPool_ST -Id $poolId -BatchContext $context | Disable-AzureRMBatchAutoScale_ST -BatchContext $context
+		Get-AzureBatchPool_ST -Id $poolId -BatchContext $context | Disable-AzureBatchAutoScale_ST -BatchContext $context
 	}
 	else
 	{
-		Disable-AzureRMBatchAutoScale_ST $poolId -BatchContext $context
+		Disable-AzureBatchAutoScale_ST $poolId -BatchContext $context
 	}
 
 	# Verify that autoscale was disabled
 	# Use a filter because it seems that the recorder sometimes gets confused when two identical URLs are sent too close together
-	$pool = Get-AzureRMBatchPool_ST -Filter "id eq '$poolId'" -BatchContext $context
+	$pool = Get-AzureBatchPool_ST -Filter "id eq '$poolId'" -BatchContext $context
 	Assert-False { $pool.AutoScaleEnabled }
 }
 
@@ -352,21 +413,21 @@ function Test-EvaluateAutoScale
 {
 	param([string]$accountName, [string]$poolId, [string]$usePipeline)
 
-	$context = Get-AzureRMBatchAccountKeys $accountName
+	$context = Get-AzureRmBatchAccountKeys $accountName
 
 	$formula = '$TargetDedicated=2'
 
 	# Verify pool starts with autoscale enabled
-	$pool = Get-AzureRMBatchPool_ST $poolId -BatchContext $context
+	$pool = Get-AzureBatchPool_ST $poolId -BatchContext $context
 	Assert-True { $pool.AutoScaleEnabled }
 
 	if ($usePipeline -eq '1')
 	{
-		$evalResult = Get-AzureRMBatchPool_ST -Id $poolId -BatchContext $context | Test-AzureRMBatchAutoScale_ST -AutoScaleFormula $formula -BatchContext $context
+		$evalResult = Get-AzureBatchPool_ST -Id $poolId -BatchContext $context | Test-AzureBatchAutoScale_ST -AutoScaleFormula $formula -BatchContext $context
 	}
 	else
 	{
-		$evalResult = Test-AzureRMBatchAutoScale_ST $poolId $formula -BatchContext $context
+		$evalResult = Test-AzureBatchAutoScale_ST $poolId $formula -BatchContext $context
 	}
 
 	# Verify that the evaluation result matches expectation
@@ -381,21 +442,21 @@ function Test-ChangeOSVersion
 {
 	param([string]$accountName, [string]$poolId, [string]$targetOSVersion, [string]$usePipeline)
 
-	$context = Get-AzureRMBatchAccountKeys $accountName
+	$context = Get-AzureRmBatchAccountKeys $accountName
 
 	# Verify that we start with a different target OS
-	$pool = Get-AzureRMBatchPool_ST $poolId -BatchContext $context
+	$pool = Get-AzureBatchPool_ST $poolId -BatchContext $context
 	Assert-AreNotEqual $targetOSVersion $pool.TargetOSVersion
 
 	if ($usePipeline -eq '1')
 	{
-	    Get-AzureRMBatchPool_ST -Filter "id eq '$poolId'" -BatchContext $context | Set-AzureRMBatchPoolOSVersion_ST -TargetOSVersion $targetOSVersion -BatchContext $context
+	    Get-AzureBatchPool_ST -Filter "id eq '$poolId'" -BatchContext $context | Set-AzureBatchPoolOSVersion_ST -TargetOSVersion $targetOSVersion -BatchContext $context
 	}
 	else
 	{
-	    Set-AzureRMBatchPoolOSVersion_ST $poolId $targetOSVersion -BatchContext $context
+	    Set-AzureBatchPoolOSVersion_ST $poolId $targetOSVersion -BatchContext $context
 	}
 
-	$pool = Get-AzureRMBatchPool_ST $poolId -BatchContext $context
+	$pool = Get-AzureBatchPool_ST $poolId -BatchContext $context
 	Assert-AreEqual $targetOSVersion $pool.TargetOSVersion
 }

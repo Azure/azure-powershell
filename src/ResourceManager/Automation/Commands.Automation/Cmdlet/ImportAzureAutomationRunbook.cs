@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Sets an azure automation runbook definition.
     /// </summary>
-    [Cmdlet(VerbsData.Import, "AzureRMAutomationRunbook")]
+    [Cmdlet(VerbsData.Import, "AzureRmAutomationRunbook")]
     [OutputType(typeof(Runbook))]
     public class ImportAzureAutomationRunbook : AzureAutomationBaseCmdlet
     {

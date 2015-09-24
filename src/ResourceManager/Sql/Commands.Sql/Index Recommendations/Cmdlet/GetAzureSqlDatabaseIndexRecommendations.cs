@@ -23,9 +23,9 @@ using Microsoft.Azure.Common.Authentication.Models;
 namespace Microsoft.Azure.Commands.Sql.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureRMSqlDatabaseIndexRecommendations cmdlet
+    /// Defines the Get-AzureRmSqlDatabaseIndexRecommendations cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMSqlDatabaseIndexRecommendations", ConfirmImpact = ConfirmImpact.None)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseIndexRecommendations", ConfirmImpact = ConfirmImpact.None)]
     public class GetAzureSqlDatabaseIndexRecommendations : AzureSqlCmdletBase<IEnumerable<IndexRecommendation>, AzureSqlDatabaseIndexRecommendationAdapter>
     {
         /// <summary>

@@ -36,7 +36,7 @@ Gets a valid storage account resource id
 #>
 function Get-StorageResourceId($rgname, $resourcename)
 {
-    $subscription = (Get-AzureRMSubscription -Default).SubscriptionId
+    $subscription = (Get-AzureRmSubscription -Default).SubscriptionId
     return "/subscriptions/$subscription/resourcegroups/$rgname/providers/microsoft.storage/storageaccounts/$resourcename"
 }
 
@@ -46,7 +46,7 @@ Gets the default location for Operational Insights
 #>
 function Get-ProviderLocation()
 {
-    $location = Get-AzureRMLocation | where {$_.Name -eq "Microsoft.OperationalInsights\workspaces"}
+    $location = Get-AzureRmLocation | where {$_.Name -eq "Microsoft.OperationalInsights\workspaces"}
     if ($location -eq $null) {
         "East US"
     } else {

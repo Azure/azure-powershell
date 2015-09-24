@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets configuration script for given configuration name and account name.
     /// </summary>
-    [Cmdlet(VerbsData.Export, "AzureRMAutomationDscConfiguration", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet(VerbsData.Export, "AzureRmAutomationDscConfiguration", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(DirectoryInfo))]
     public class ExportAzureAutomationDscConfiguration : AzureAutomationBaseCmdlet
     {

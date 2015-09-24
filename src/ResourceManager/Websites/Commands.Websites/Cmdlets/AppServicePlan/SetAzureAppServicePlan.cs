@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
     /// <summary>
     /// this commandlet will let you set Azure App Service Plan using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRMAppServicePlan"), OutputType(typeof(WebHostingPlanCreateOrUpdateResponse))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmAppServicePlan"), OutputType(typeof(WebHostingPlanCreateOrUpdateResponse))]
     public class SetAzureAppServicePlanCmdlet : AppServicePlanBaseCmdlet
     {
 

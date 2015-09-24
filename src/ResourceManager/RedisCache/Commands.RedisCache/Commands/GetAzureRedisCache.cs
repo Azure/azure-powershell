@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.RedisCache
     using System.Collections.Generic;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRMRedisCache", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(List<RedisCacheAttributes>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmRedisCache", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(List<RedisCacheAttributes>))]
     public class GetAzureRedisCache : RedisCacheCmdletBase
     {
         internal const string BaseParameterSetName = "All In Subscription";

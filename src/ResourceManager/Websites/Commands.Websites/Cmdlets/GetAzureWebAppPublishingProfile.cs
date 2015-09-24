@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets
     /// <summary>
     /// this commandlet will get the publishing creds of the given Azure Web app using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMWebAppPublishingProfile")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmWebAppPublishingProfile")]
     public class GetAzureWebAppPublishingProfileCmdlet : WebAppBaseSlotCmdlet
     {
         protected override void ProcessRecord()

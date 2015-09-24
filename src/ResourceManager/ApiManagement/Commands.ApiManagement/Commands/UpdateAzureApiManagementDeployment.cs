@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Models;
 
-    [Cmdlet(VerbsData.Update, "AzureRMApiManagementDeployment", DefaultParameterSetName = DefaultParameterSetName), OutputType(typeof(PsApiManagement))]
+    [Cmdlet(VerbsData.Update, "AzureRmApiManagementDeployment", DefaultParameterSetName = DefaultParameterSetName), OutputType(typeof(PsApiManagement))]
     public class UpdateAzureApiManagementDeployment : AzureApiManagementCmdletBase
     {
         internal const string FromPsApiManagementInstanceSetName = "Update from PsApiManagement instance";
