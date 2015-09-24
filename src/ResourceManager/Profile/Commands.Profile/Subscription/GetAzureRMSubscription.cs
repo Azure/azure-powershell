@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Profile
                 {
                     if (!this._client.TryGetSubscriptionByName(tenant, this.SubscriptionName, out result))
                     {
-                        ThrowSubscriptionNotFoundError(this.Tenant, this.SubscriptionName);
+                        ThrowSubscriptionNotFoundError(this.TenantId, this.SubscriptionName);
                     }
 
                     WriteObject(result);
