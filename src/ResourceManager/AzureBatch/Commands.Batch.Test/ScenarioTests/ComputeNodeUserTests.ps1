@@ -49,7 +49,7 @@ function Test-UpdateComputeNodeUser
 {
 	param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$userName)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 
 	# Basically just validating that we can set the parameters and execute the cmdlet without error. 
 	# If a Get user API is added, we can validate that the properties were actually updated.

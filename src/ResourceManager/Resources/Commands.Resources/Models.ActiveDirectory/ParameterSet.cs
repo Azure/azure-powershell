@@ -22,37 +22,33 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
 
         public const string SPN = "SPNParameterSet";
 
+        public const string SignInName = "SignInNameParameterSet";
+
         public const string SearchString = "SearchStringParameterSet";
 
         public const string ObjectId = "ObjectIdParameterSet";
 
         public const string Scope = "ScopeParameterSet";
 
-        public const string ScopeWithMail = "ScopeWithMailParameterSet";
-
-        public const string ScopeWithUPN = "ScopeWithUPNParameterSet";
-
         public const string ScopeWithSPN = "ScopeWithSPNParameterSet";
+
+        public const string ScopeWithSignInName = "ScopeWithSignInNameParameterSet";
 
         public const string ScopeWithObjectId = "ScopeWithObjectIdParameterSet";
 
         public const string ResourceGroup = "ResourceGroupParameterSet";
 
-        public const string ResourceGroupWithMail = "ResourceGroupWithMailParameterSet";
-
-        public const string ResourceGroupWithUPN = "ResourceGroupWithUPNParameterSet";
-
         public const string ResourceGroupWithSPN = "ResourceGroupWithSPNParameterSet";
 
         public const string ResourceGroupWithObjectId = "ResourceGroupWithObjectIdParameterSet";
 
+        public const string ResourceGroupWithSignInName = "ResourceGroupWithSignInNameParameterSet";
+
         public const string Resource = "ResourceParameterSet";
 
-        public const string ResourceWithMail = "ResourceWithMailParameterSet";
-
-        public const string ResourceWithUPN = "ResourceWithUPNParameterSet";
-
         public const string ResourceWithSPN = "ResourceWithSPNParameterSet";
+
+        public const string ResourceWithSignInName = "ResourceWithSignInNameParameterSet";
 
         public const string ResourceWithObjectId = "ResourceWithObjectIdParameterSet";
 

@@ -183,7 +183,7 @@ function Test-UpdateTask
 {
 	param([string]$accountName, [string]$jobId, [string]$taskId)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 
 	$task = Get-AzureBatchTask_ST $jobId $taskId -BatchContext $context
 
