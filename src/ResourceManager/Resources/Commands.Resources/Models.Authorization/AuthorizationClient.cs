@@ -68,6 +68,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
         /// <summary>
         /// Filters the existing role Definitions.
+        /// If name is not provided, all role definitions are fetched.
         /// </summary>
         /// <param name="name">The role name</param>
         /// <returns>The matched role Definitions</returns>
@@ -122,7 +123,11 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             };
 
             AuthorizationManagementClient.RoleAssignments.Create(parameters.Scope, roleAssignmentId, createParameters);
-            return AuthorizationManagementClient.RoleAssignments.Get(parameters.Scope, roleAssignmentId).RoleAssignment.ToPSRoleAssignment(this, ActiveDirectoryClient);
+
+            RoleAssignment assignment = AuthorizationManagementClient.RoleAssignments.Get(parameters.Scope, roleAssignmentId).RoleAssignment;
+            IEnumerable<RoleAssignment> assignments = new List<RoleAssignment>() { assignment };
+
+            return assignments.ToPSRoleAssignments(this, ActiveDirectoryClient).FirstOrDefault();
         }
 
         /// <summary>
@@ -159,9 +164,10 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 {
                     parameters.PrincipalId = string.IsNullOrEmpty(options.ADObjectFilter.Id) ? adObject.Id : Guid.Parse(options.ADObjectFilter.Id);
                 }
-                
+
                 result.AddRange(AuthorizationManagementClient.RoleAssignments.List(parameters)
-                    .RoleAssignments.Select(r => r.ToPSRoleAssignment(this, ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals)).Where(r => r != null));
+                    .RoleAssignments.ToPSRoleAssignments(this, ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals));
+
 
                 // Filter out by scope
                 if (!string.IsNullOrEmpty(options.Scope))
@@ -173,13 +179,14 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             {
                 // Filter by scope and above directly
                 parameters.AtScope = true;
+
                 result.AddRange(AuthorizationManagementClient.RoleAssignments.ListForScope(options.Scope, parameters)
-                    .RoleAssignments.Select(r => r.ToPSRoleAssignment(this, ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals)).Where(r => r != null));
+                    .RoleAssignments.ToPSRoleAssignments(this, ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals));
             }
             else
             {
                 result.AddRange(AuthorizationManagementClient.RoleAssignments.List(parameters)
-                    .RoleAssignments.Select(r => r.ToPSRoleAssignment(this, ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals)).Where(r => r != null));
+                    .RoleAssignments.ToPSRoleAssignments(this, ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals));
             }
 
             if (!string.IsNullOrEmpty(options.RoleDefinition))
@@ -204,7 +211,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                     var userObject = adObject as PSADUser;
                     classicAdministratorsAssignments = classicAdministratorsAssignments.Where(c =>
                            c.DisplayName.Equals(userObject.UserPrincipalName, StringComparison.OrdinalIgnoreCase) ||
-                           c.DisplayName.Equals(userObject.Mail, StringComparison.OrdinalIgnoreCase)).ToList();
+                           c.DisplayName.Equals(userObject.Mail, StringComparison.OrdinalIgnoreCase) ||
+                           c.DisplayName.Equals(userObject.SignInName, StringComparison.OrdinalIgnoreCase)).ToList();
                 }
                 
                 result.AddRange(classicAdministratorsAssignments);
