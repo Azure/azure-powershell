@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Storage.Utilities.Common;
+
 namespace Microsoft.WindowsAzure.Commands.Storage.Common
 {
     using System.ServiceModel;

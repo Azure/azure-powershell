@@ -25,6 +25,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Storage.File;
 using Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel;
+using Microsoft.WindowsAzure.Commands.Storage.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
@@ -191,13 +192,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             else
             {
                 CloudStorageAccount account = null;
-                bool shouldInitChannel = ShouldInitServiceChannel();
-
+                string storageAccount;
                 try
                 {
-                    if (shouldInitChannel)
+                    if (TryGetStorageAccount(RMProfile, out storageAccount))
                     {
-                        account = GetStorageAccountFromSubscription();
+                        account = GetStorageAccountFromArm(storageAccount);
+                    }
+                    else if (TryGetStorageAccount(SMProfile, out storageAccount))
+                    {
+                        account = GetStorageAccountFromSubscription(storageAccount);
                     }
                     else
                     {
@@ -242,18 +246,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// Whether should init the service channel or not
         /// </summary>
         /// <returns>True if it need to init the service channel, otherwise false</returns>
-        internal virtual bool ShouldInitServiceChannel()
+        internal virtual bool TryGetStorageAccount(IAzureProfile profile, out string account)
         {
+            account = null;
+            bool result = false;
             //Storage Context is empty and have already set the current storage account in subscription
-            if (Context == null && Profile.Context.Subscription != null && Profile.Context.Subscription != null &&
-                !String.IsNullOrEmpty(Profile.Context.Subscription.GetProperty(AzureSubscription.Property.StorageAccount)))
+            if (Context == null && profile.Context.Subscription != null && profile.Context.Subscription != null)
             {
-                return true;
+                account = profile.Context.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
+                result = !string.IsNullOrWhiteSpace(account);
             }
-            else
-            {
-                return false;
-            }
+
+            return result;
         }
 
         /// <summary>
@@ -309,38 +313,41 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// Get current storage account from azure subscription
         /// </summary>
         /// <returns>A storage account</returns>
-        private CloudStorageAccount GetStorageAccountFromSubscription()
+        private CloudStorageAccount GetStorageAccountFromArm(string account)
         {
-            string CurrentStorageAccountName = Profile.Context.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
+            WriteDebugLog(String.Format(Resources.UseCurrentStorageAccountFromSubscription, account, RMProfile.Context.Subscription.Name));
 
-            if (string.IsNullOrEmpty(CurrentStorageAccountName))
+            //The service channel initialized by subscription
+            return RMProfile.Context.GetCloudStorageAccount(account);
+        }
+
+        /// <summary>
+        /// Get current storage account from azure subscription
+        /// </summary>
+        /// <returns>A storage account</returns>
+        private CloudStorageAccount GetStorageAccountFromSubscription(string currentStorageAccountName)
+        {
+            WriteDebugLog(String.Format(Resources.UseCurrentStorageAccountFromSubscription, currentStorageAccountName, SMProfile.Context.Subscription.Name));
+
+            try
             {
-                throw new ArgumentException(Resources.DefaultStorageCredentialsNotFound);
+                //The service channel initialized by subscription
+                return SMProfile.Context.Subscription.GetCloudStorageAccount(SMProfile);
             }
-            else
+            catch (System.ServiceModel.CommunicationException e)
             {
-                WriteDebugLog(String.Format(Resources.UseCurrentStorageAccountFromSubscription, CurrentStorageAccountName, Profile.Context.Subscription.Name));
+                WriteVerboseWithTimestamp(Resources.CannotGetSotrageAccountFromSubscription);
 
-                try
+                if (e.IsNotFoundException())
                 {
-                    //The service channel initialized by subscription
-                    return Profile.Context.Subscription.GetCloudStorageAccount(Profile);
+                    //Repack the 404 error
+                    string errorMessage = String.Format(Resources.CurrentStorageAccountNotFoundOnAzure, currentStorageAccountName, SMProfile.Context.Subscription.Name);
+                    System.ServiceModel.CommunicationException exception = new System.ServiceModel.CommunicationException(errorMessage, e);
+                    throw exception;
                 }
-                catch (System.ServiceModel.CommunicationException e)
+                else
                 {
-                    WriteVerboseWithTimestamp(Resources.CannotGetSotrageAccountFromSubscription);
-
-                    if (e.IsNotFoundException())
-                    {
-                        //Repack the 404 error
-                        string errorMessage = String.Format(Resources.CurrentStorageAccountNotFoundOnAzure, CurrentStorageAccountName, Profile.Context.Subscription.Name);
-                        System.ServiceModel.CommunicationException exception = new System.ServiceModel.CommunicationException(errorMessage, e);
-                        throw exception;
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    throw;
                 }
             }
         }

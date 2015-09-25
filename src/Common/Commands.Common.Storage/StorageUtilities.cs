@@ -1,4 +1,6 @@
 ﻿
+using Microsoft.Azure.Management.Storage;
+
 namespace Microsoft.WindowsAzure.Commands.Common.Storage
 {
     using System;
@@ -8,6 +10,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
     using Microsoft.WindowsAzure.Storage.Auth;
     using Microsoft.WindowsAzure.Storage.Blob;
     using Microsoft.WindowsAzure.Storage.Table;
+    using  Arm = Microsoft.Azure.Management.Storage;
 
     public class StorageUtilities
     {
@@ -24,6 +27,24 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
                 UriFormat.UriEscaped);
 
             return new Uri(endpoint);
+        }
+
+        public static CloudStorageAccount GenerateCloudStorageAccount(Arm.StorageManagementClient storageClient, string resourceGroupName, string accountName)
+        {
+            var storageServiceResponse = storageClient.StorageAccounts.GetProperties(resourceGroupName, accountName);
+            var storageKeysResponse = storageClient.StorageAccounts.ListKeys(resourceGroupName, accountName);
+
+            Uri blobEndpoint = storageServiceResponse.StorageAccount.PrimaryEndpoints.Blob;
+            Uri queueEndpoint = storageServiceResponse.StorageAccount.PrimaryEndpoints.Queue;
+            Uri tableEndpoint = storageServiceResponse.StorageAccount.PrimaryEndpoints.Table;
+
+            
+
+            return new CloudStorageAccount(
+                new StorageCredentials(storageServiceResponse.StorageAccount.Name, storageKeysResponse.StorageAccountKeys.Key1),
+                blobEndpoint,
+                queueEndpoint,
+                tableEndpoint, null);
         }
 
         public static CloudStorageAccount GenerateCloudStorageAccount(StorageManagementClient storageClient, string accountName)
