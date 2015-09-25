@@ -763,7 +763,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
             foreach (string DayOfMonth in DaysOfMonth)
             {
                 Day day = new Day();
-                if (string.Compare(DayOfMonth,"IsLast", true) == 0)
+                if (string.Compare(DayOfMonth, LastDayOfTheMonth, true) == 0)
                 {
                     day.IsLast = true;
                 }
