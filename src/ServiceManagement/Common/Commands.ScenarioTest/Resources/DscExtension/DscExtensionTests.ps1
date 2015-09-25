@@ -65,7 +65,12 @@ function Test-GetAzureVMDscExtension
 		$vm = Get-AzureVM -ServiceName $svcName -Name $vmName
 		$extension = Get-AzureVMDscExtension -VM $vm -Verbose 
 		Assert-NotNull $extension
-
+		Assert-NotNull $extension.ExtensionName
+		Assert-NotNull $extension.Publisher
+		Assert-NotNull $extension.Version
+		Assert-NotNull $extension.ModulesUrl
+		Assert-NotNull $extension.ConfigurationFunction
+		
 		# Remove Extension
 		Remove-AzureVMDscExtension -VM $vm -Verbose 
 	}

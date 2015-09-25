@@ -68,16 +68,6 @@ function Test-GetAzureRmVMDscExtension
         $imgRef = Get-DefaultCRPWindowsImageOffline;
         $p = ($imgRef | Set-AzureRmVMSourceImage -VM $p);
 
-        Assert-AreEqual $p.OSProfile.AdminUsername $user;
-        Assert-AreEqual $p.OSProfile.ComputerName $computerName;
-        Assert-AreEqual $p.OSProfile.AdminPassword $password;
-        Assert-AreEqual $p.OSProfile.WindowsConfiguration.ProvisionVMAgent $true;
-
-        Assert-AreEqual $p.StorageProfile.ImageReference.Offer $imgRef.Offer;
-        Assert-AreEqual $p.StorageProfile.ImageReference.Publisher $imgRef.PublisherName;
-        Assert-AreEqual $p.StorageProfile.ImageReference.Sku $imgRef.Skus;
-        Assert-AreEqual $p.StorageProfile.ImageReference.Version $imgRef.Version;
-
         # Virtual Machine
         New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
 
@@ -94,10 +84,22 @@ function Test-GetAzureRmVMDscExtension
 
         $extension = Get-AzureRmVMDscExtension -ResourceGroupName $rgname -VMName $vmname 
 		Assert-NotNull $extension
+		Assert-AreEqual $extension.ResourceGroupName $rgname
+		Assert-AreEqual $extension.Name "Microsoft.Powershell.DSC"
+		Assert-AreEqual $extension.Publisher "Microsoft.Powershell"
+		Assert-AreEqual $extension.ExtensionType "DSC"
+		Assert-AreEqual $extension.TypeHandlerVersion $version
+		Assert-AreEqual $extension.Location $loc
+		Assert-NotNull $extension.ProvisioningState
 
 		$status = Get-AzureRmVMDscExtensionStatus -ResourceGroupName $rgname -VMName $vmname 
 		Assert-NotNull $status
-
+		Assert-AreEqual $status.ResourceGroupName $rgname
+		Assert-AreEqual $status.VmName $vmname 
+		Assert-AreEqual $status.Version $version
+		Assert-NotNull $status.Status 
+		Assert-NotNull $status.Timestamp 
+		
         # Remove Extension
         Remove-AzureRmVMDscExtension -ResourceGroupName $rgname -VMName $vmname
     }
