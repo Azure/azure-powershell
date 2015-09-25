@@ -12,11 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Common.Authentication.Models;
 using System;
 using System.Globalization;
 using System.Management.Automation;
+using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Profile.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.Profile
 {

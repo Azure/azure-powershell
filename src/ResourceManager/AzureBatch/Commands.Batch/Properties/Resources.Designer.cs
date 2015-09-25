@@ -824,5 +824,50 @@ namespace Microsoft.Azure.Commands.Batch.Properties {
                 return ResourceManager.GetString("UpdatingAccount", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating compute node user {0}..
+        /// </summary>
+        internal static string UpdatingComputeNodeUser {
+            get {
+                return ResourceManager.GetString("UpdatingComputeNodeUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating job {0}..
+        /// </summary>
+        internal static string UpdatingJob {
+            get {
+                return ResourceManager.GetString("UpdatingJob", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating job schedule {0}..
+        /// </summary>
+        internal static string UpdatingJobSchedule {
+            get {
+                return ResourceManager.GetString("UpdatingJobSchedule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating pool {0}..
+        /// </summary>
+        internal static string UpdatingPool {
+            get {
+                return ResourceManager.GetString("UpdatingPool", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updating task {0}..
+        /// </summary>
+        internal static string UpdatingTask {
+            get {
+                return ResourceManager.GetString("UpdatingTask", resourceCulture);
+            }
+        }
     }
 }

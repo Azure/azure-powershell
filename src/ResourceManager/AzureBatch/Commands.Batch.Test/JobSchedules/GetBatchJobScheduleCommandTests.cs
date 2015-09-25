@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
 
             // Build a CloudJobSchedule instead of querying the service on a Get CloudJobSchedule call
             CloudJobScheduleGetResponse response = BatchTestHelpers.CreateCloudJobScheduleGetResponse(cmdlet.Id);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudJobScheduleGetParameters, CloudJobScheduleGetResponse>(response);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudJobScheduleGetParameters, CloudJobScheduleGetResponse>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
 
             // Build some CloudJobSchedules instead of querying the service on a List CloudJobSchedules call
             CloudJobScheduleListResponse response = BatchTestHelpers.CreateCloudJobScheduleListResponse(idsOfConstructedJobSchedules);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudJobScheduleListParameters, CloudJobScheduleListResponse>(response);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudJobScheduleListParameters, CloudJobScheduleListResponse>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
 
             // Build some CloudJobSchedules instead of querying the service on a List CloudJobSchedules call
             CloudJobScheduleListResponse response = BatchTestHelpers.CreateCloudJobScheduleListResponse(idsOfConstructedJobSchedules);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudJobScheduleListParameters, CloudJobScheduleListResponse>(response);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudJobScheduleListParameters, CloudJobScheduleListResponse>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.JobSchedules
 
             // Build some CloudJobSchedules instead of querying the service on a List CloudJobSchedules call
             CloudJobScheduleListResponse response = BatchTestHelpers.CreateCloudJobScheduleListResponse(idsOfConstructedJobSchedules);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudJobScheduleListParameters, CloudJobScheduleListResponse>(response);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudJobScheduleListParameters, CloudJobScheduleListResponse>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
