@@ -11,7 +11,7 @@ function Test-RedisCache
     $location = "North Central US"
 
     # Creating Cache
-    $cacheCreated = New-AzureRMRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size 250MB -Sku Basic
+    $cacheCreated = New-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size 250MB -Sku Basic
     
     Assert-AreEqual $cacheName $cacheCreated.Name
     Assert-AreEqual $location $cacheCreated.Location
@@ -32,7 +32,7 @@ function Test-RedisCache
     for ($i = 0; $i -le 60; $i++)
     {
         [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
-        $cacheGet = Get-AzureRMRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
+        $cacheGet = Get-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
         if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
         {
             Assert-AreEqual $cacheName $cacheGet[0].Name
@@ -52,7 +52,7 @@ function Test-RedisCache
     }
 
     # Updating Cache
-    $cacheUpdated = Set-AzureRMRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -RedisConfiguration @{"maxmemory-policy" = "allkeys-lru"} -EnableNonSslPort $true
+    $cacheUpdated = Set-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -RedisConfiguration @{"maxmemory-policy" = "allkeys-lru"} -EnableNonSslPort $true
     
     Assert-AreEqual $cacheName $cacheUpdated.Name
     Assert-AreEqual $location $cacheUpdated.Location
@@ -72,7 +72,7 @@ function Test-RedisCache
     Assert-NotNull $cacheUpdated.SecondaryKey "SecondaryKey do not exists"
 
     # List all cache in resource group
-    $cachesInResourceGroup = Get-AzureRMRedisCache -ResourceGroupName $resourceGroupName
+    $cachesInResourceGroup = Get-AzureRmRedisCache -ResourceGroupName $resourceGroupName
     Assert-True {$cachesInResourceGroup.Count -ge 1}
     
     $found = 0
@@ -97,7 +97,7 @@ function Test-RedisCache
     Assert-True {$found -eq 1} "Cache created earlier is not found."
 
     # List all cache in subscription
-    $cachesInSubscription = Get-AzureRMRedisCache
+    $cachesInSubscription = Get-AzureRmRedisCache
     Assert-True {$cachesInSubscription.Count -ge 1}
     Assert-True {$cachesInSubscription.Count -ge $cachesInResourceGroup.Count}
     
@@ -123,17 +123,17 @@ function Test-RedisCache
     Assert-True {$found -eq 1} "Cache created earlier is not found."
 
     # Get cache keys
-    $cacheKeysBeforeUpdate = Get-AzureRMRedisCacheKey -ResourceGroupName $resourceGroupName -Name $cacheName 
+    $cacheKeysBeforeUpdate = Get-AzureRmRedisCacheKey -ResourceGroupName $resourceGroupName -Name $cacheName 
     Assert-NotNull $cacheKeysBeforeUpdate.PrimaryKey "PrimaryKey do not exists"
     Assert-NotNull $cacheKeysBeforeUpdate.SecondaryKey "SecondaryKey do not exists"
 
     # Regenerate primary key
-    $cacheKeysAfterUpdate = New-AzureRMRedisCacheKey -ResourceGroupName $resourceGroupName -Name $cacheName -KeyType Primary -Force
+    $cacheKeysAfterUpdate = New-AzureRmRedisCacheKey -ResourceGroupName $resourceGroupName -Name $cacheName -KeyType Primary -Force
     Assert-AreEqual $cacheKeysBeforeUpdate.SecondaryKey $cacheKeysAfterUpdate.SecondaryKey
     Assert-AreNotEqual $cacheKeysBeforeUpdate.PrimaryKey $cacheKeysAfterUpdate.PrimaryKey
 
     # Delete cache
-    Assert-True {Remove-AzureRMRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Force -PassThru} "Remove cache failed."
+    Assert-True {Remove-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Force -PassThru} "Remove cache failed."
 }
 
 
@@ -150,7 +150,7 @@ function Test-SetNonExistingRedisCacheTest
     $location = "North Central US"
 
     # Creating Cache
-    Assert-Throws {Set-AzureRMRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"} }
+    Assert-Throws {Set-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"} }
 }
 
 <#
@@ -166,7 +166,7 @@ function Test-RedisCachePipeline
     $location = "North Central US"
 
     # Creating Cache
-    $cacheCreated = New-AzureRMRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size 250MB -Sku Basic -EnableNonSslPort $true
+    $cacheCreated = New-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -Size 250MB -Sku Basic -EnableNonSslPort $true
     
     Assert-AreEqual $cacheName $cacheCreated.Name
     Assert-AreEqual $location $cacheCreated.Location
@@ -188,7 +188,7 @@ function Test-RedisCachePipeline
     for ($i = 0; $i -le 60; $i++)
     {
         [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
-        $cacheGet = Get-AzureRMRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
+        $cacheGet = Get-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName
         if ([string]::Compare("succeeded", $cacheGet[0].ProvisioningState, $True) -eq 0)
         {
             Assert-AreEqual $cacheName $cacheGet[0].Name
@@ -208,8 +208,8 @@ function Test-RedisCachePipeline
     }
 
     # Updating Cache using pipeline
-    Get-AzureRMRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName | Set-AzureRMRedisCache -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"} -EnableNonSslPort $false
-    $cacheUpdatedPiped = Get-AzureRMRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName 
+    Get-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName | Set-AzureRmRedisCache -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"} -EnableNonSslPort $false
+    $cacheUpdatedPiped = Get-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName 
     
     Assert-AreEqual $cacheName $cacheUpdatedPiped.Name
     Assert-AreEqual $location $cacheUpdatedPiped.Location
@@ -226,17 +226,17 @@ function Test-RedisCachePipeline
     Assert-False  { $cacheUpdatedPiped.EnableNonSslPort } 
     
     # Get cache keys
-    $cacheKeysBeforeUpdate = Get-AzureRMRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName | Get-AzureRMRedisCacheKey
+    $cacheKeysBeforeUpdate = Get-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName | Get-AzureRmRedisCacheKey
     Assert-NotNull $cacheKeysBeforeUpdate.PrimaryKey "PrimaryKey do not exists"
     Assert-NotNull $cacheKeysBeforeUpdate.SecondaryKey "SecondaryKey do not exists"
 
     # Regenerate primary key
-    $cacheKeysAfterUpdate = Get-AzureRMRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName | New-AzureRMRedisCacheKey -KeyType Primary -Force
+    $cacheKeysAfterUpdate = Get-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName | New-AzureRmRedisCacheKey -KeyType Primary -Force
     Assert-AreEqual $cacheKeysBeforeUpdate.SecondaryKey $cacheKeysAfterUpdate.SecondaryKey
     Assert-AreNotEqual $cacheKeysBeforeUpdate.PrimaryKey $cacheKeysAfterUpdate.PrimaryKey
 
     # Delete cache
-    Assert-True {Get-AzureRMRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName | Remove-AzureRMRedisCache -Force -PassThru} "Remove cache failed."
+    Assert-True {Get-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName | Remove-AzureRmRedisCache -Force -PassThru} "Remove cache failed."
 }
 
 <#
@@ -252,10 +252,10 @@ function Test-SetRedisCacheBugFixTest
     $location = "North Central US"
 
     # Updating Cache
-    $cacheUpdated = Set-AzureRMRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -EnableNonSslPort $true
+    $cacheUpdated = Set-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -EnableNonSslPort $true
     Assert-True  { $cacheUpdated.EnableNonSslPort }
 
-    $cacheUpdated2 = Set-AzureRMRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -RedisConfiguration @{"maxmemory-policy" = "allkeys-lru"} 
+    $cacheUpdated2 = Set-AzureRmRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -RedisConfiguration @{"maxmemory-policy" = "allkeys-lru"} 
     Assert-AreEqual "allkeys-lru" $cacheUpdated2.RedisConfiguration.Item("maxmemory-policy")
     Assert-True  { $cacheUpdated2.EnableNonSslPort }
 }

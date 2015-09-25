@@ -102,7 +102,7 @@
     <CustomAction Id="SetCustomActionDataValue" Return="check" Property="UpdatePSShortcut"
                      Value="ShortcutPath=[AzureSdkMenu]Microsoft Azure PowerShell.lnk;DefaultShortcutPath=[ProgramMenuFolder]System Tools\Windows PowerShell.lnk" />
     <CustomAction Id="SetExecutionPolicy" Property="POWERSHELLEXE" ExeCommand="-NoLogo -NoProfile -Command &quot;Set-ExecutionPolicy RemoteSigned -Force&quot;" Execute="deferred" Impersonate="no" Return="check"/>
-    <CustomAction Id="RunModuleInstallScript" Property="POWERSHELLEXE" ExeCommand="-NoLogo -NoProfile -Command &quot;\&quot;[PowerShellFolder]\ShortcutStartup.ps1 -Install\&quot;&quot;" Execute="deferred" Impersonate="no" Return="check"/>
+    <CustomAction Id="RunModuleInstallScript" Property="POWERSHELLEXE" ExeCommand="-NoLogo -NoProfile -Command &quot;. \&quot;[PowerShellFolder]\ShortcutStartup.ps1\&quot; -Install&quot;" Execute="deferred" Impersonate="no" Return="check"/>
 
     <InstallExecuteSequence>
       <Custom Action="SetCustomActionDataValue" After="CreateShortcuts">NOT Installed</Custom>

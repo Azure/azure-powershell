@@ -79,10 +79,10 @@ VariablesToExport = '*'
   
 # Aliases to export from this module  
 AliasesToExport = @(
-	'Get-AzureRMSqlDatabaseServerAuditingPolicy',  
-    'Remove-AzureRMSqlDatabaseServerAuditing',  
-    'Set-AzureRMSqlDatabaseServerAuditingPolicy',  
-    'Use-AzureRMSqlDatabaseServerAuditingPolicy'
+	'Get-AzureRmSqlDatabaseServerAuditingPolicy',  
+    'Remove-AzureRmSqlDatabaseServerAuditing',  
+    'Set-AzureRmSqlDatabaseServerAuditingPolicy',  
+    'Use-AzureRmSqlDatabaseServerAuditingPolicy'
 )
   
 # List of all modules packaged with this module  

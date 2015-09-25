@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets
     /// <summary>
     /// this commandlet will let you Start an Azure Web app
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureRMWebApp")]
+    [Cmdlet(VerbsLifecycle.Start, "AzureRmWebApp")]
     public class StartAzureWebAppCmdlet : WebAppBaseCmdlet
     {    
         protected override void ProcessRecord()

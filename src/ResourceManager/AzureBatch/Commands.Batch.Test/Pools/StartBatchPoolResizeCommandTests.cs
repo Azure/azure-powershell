@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.Id = "testPool";
 
             // Don't go to the service on a Resize CloudPool call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudPoolResizeParameters, CloudPoolResizeResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudPoolResizeParameters, CloudPoolResizeResponse>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set

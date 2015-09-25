@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Get list of jobs pertaining to the filters specified. Gets list of all jobs created in the last 24 hours if no filters are specified.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMBackupJob", DefaultParameterSetName = "FiltersSet"), OutputType(typeof(List<AzureRMBackupJob>), typeof(AzureRMBackupJob))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmBackupJob", DefaultParameterSetName = "FiltersSet"), OutputType(typeof(List<AzureRMBackupJob>), typeof(AzureRMBackupJob))]
     public class GetAzureRMBackupJob : AzureBackupCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.Vault, ParameterSetName = "FiltersSet", ValueFromPipeline = true)]

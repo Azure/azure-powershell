@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
         private void Login(string subscriptionId, string tenantId)
         {
-            var cmdlt = new LoginAzureRMAccountCommand();
+            var cmdlt = new AddAzureRMAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.SubscriptionId = subscriptionId;

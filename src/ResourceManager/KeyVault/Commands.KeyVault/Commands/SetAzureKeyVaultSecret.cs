@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRMKeyVaultSecret", HelpUri = Constants.KeyVaultHelpUri)]
+    [Cmdlet(VerbsCommon.Set, "AzureRmKeyVaultSecret", HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(Secret))]
     public class SetAzureKeyVaultSecret : KeyVaultCmdletBase
     {

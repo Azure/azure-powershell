@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure Sql Database ElasticPool
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRMSqlElasticPool",
+    [Cmdlet(VerbsCommon.Set, "AzureRmSqlElasticPool",
         ConfirmImpact = ConfirmImpact.Medium)]
     public class SetAzureSqlElasticPool : AzureSqlElasticPoolCmdletBase
     {

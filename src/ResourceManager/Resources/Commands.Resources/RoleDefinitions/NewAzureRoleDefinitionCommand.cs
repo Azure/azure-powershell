@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Creates a new role definition.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRMRoleDefinition"), OutputType(typeof(PSRoleDefinition))]
+    [Cmdlet(VerbsCommon.New, "AzureRmRoleDefinition"), OutputType(typeof(PSRoleDefinition))]
     public class NewAzureRoleDefinitionCommand : ResourcesBaseCmdlet
     {
         [ValidateNotNullOrEmpty]

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Creates a new service principal.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRMADServicePrincipal"), OutputType(typeof(PSADServicePrincipal))]
+    [Cmdlet(VerbsCommon.New, "AzureRmADServicePrincipal"), OutputType(typeof(PSADServicePrincipal))]
     public class NewAzureADServicePrincipalCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The application id for which service principal is created.")]

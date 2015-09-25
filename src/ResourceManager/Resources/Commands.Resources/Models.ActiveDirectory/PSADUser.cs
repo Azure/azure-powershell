@@ -19,5 +19,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
         public string UserPrincipalName { get; set; }
 
         public string Mail { get; set; }
+
+        public string SignInName { get; set; }
     }
 }

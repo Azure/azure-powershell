@@ -12,21 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Common.Authentication.Models;
-using System;
 using System.Linq;
-using System.Collections.Generic;
-using System.Globalization;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Profile.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.Profile
 {
     /// <summary>
     /// Cmdlet to get current Azure Environment from Profile.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMEnvironment")]
-    [OutputType(typeof(List<PSAzureEnvironment>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmEnvironment")]
+    [OutputType(typeof(PSAzureEnvironment))]
     public class GetAzureRMEnvironmentCommand : AzureRMCmdlet
     {
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The environment name")]
