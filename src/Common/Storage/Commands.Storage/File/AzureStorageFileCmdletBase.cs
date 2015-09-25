@@ -34,7 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
             ValueFromPipeline = true,
             ParameterSetName = Constants.SpecificParameterSetName,
             HelpMessage = "Azure Storage Context Object")]
-        public new AzureStorageContext Context { get; set; }
+        public override AzureStorageContext Context { get; set; }
 
         protected FileRequestOptions RequestOptions
         {

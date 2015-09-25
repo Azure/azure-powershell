@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using Microsoft.Azure.Commands.ApiManagement.Models;
     using Microsoft.WindowsAzure.Commands.Common.Storage;
 
-    [Cmdlet(VerbsData.Restore, "AzureRMApiManagement"), OutputType(typeof (PsApiManagement))]
+    [Cmdlet(VerbsData.Restore, "AzureRmApiManagement"), OutputType(typeof (PsApiManagement))]
     public class RestoreAzureApiManagement : AzureApiManagementCmdletBase
     {
         [Parameter(

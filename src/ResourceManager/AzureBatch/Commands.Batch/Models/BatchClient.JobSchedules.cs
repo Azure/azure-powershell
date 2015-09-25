@@ -112,6 +112,25 @@ namespace Microsoft.Azure.Commands.Batch.Models
         }
 
         /// <summary>
+        /// Commits changes to a PSCloudJobSchedule object to the Batch Service.
+        /// </summary>
+        /// <param name="context">The account to use.</param>
+        /// <param name="jobSchedule">The PSCloudJobSchedule object representing the job schedule to update.</param>
+        /// <param name="additionBehaviors">Additional client behaviors to perform.</param>
+        public void UpdateJobSchedule(BatchAccountContext context, PSCloudJobSchedule jobSchedule, IEnumerable<BatchClientBehavior> additionBehaviors = null)
+        {
+            if (jobSchedule == null)
+            {
+                throw new ArgumentNullException("jobSchedule");
+            }
+
+            WriteVerbose(string.Format(Resources.UpdatingJobSchedule, jobSchedule.Id));
+
+            Utils.Utils.BoundJobScheduleSyncCollections(jobSchedule);
+            jobSchedule.omObject.Commit(additionBehaviors);
+        }
+
+        /// <summary>
         /// Deletes the specified job schedule.
         /// </summary>
         /// <param name="context">The account to use.</param>

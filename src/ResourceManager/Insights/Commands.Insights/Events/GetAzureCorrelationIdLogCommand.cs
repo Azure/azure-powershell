@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Insights.Events
     /// <summary>
     /// Get the list of events for at a CorrelationId level.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMCorrelationIdLog"), OutputType(typeof(List<IPSEventData>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmCorrelationIdLog"), OutputType(typeof(List<IPSEventData>))]
     public class GetAzureCorrelationIdLogCommand : EventCmdletBase
     {
         /// <summary>

@@ -121,7 +121,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             ValueFromPipeline = true,
             HelpMessage = "Azure Storage Context Object",
             ParameterSetName = NameSasPolicyParmeterSet)]
-        public new AzureStorageContext Context { get; set; }
+        public override AzureStorageContext Context { get; set; }
 
         /// <summary>
         /// Execute command

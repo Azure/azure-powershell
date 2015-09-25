@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not find your azure storage credential. Please specify an storage context using the -StorageContext parameter, or set the current storage account using &quot;Set-AzureRMSubscription&quot;, or set the &quot;AZURE_STORAGE_CONNECTION_STRING&quot; environment variable..
+        ///   Looks up a localized string similar to Can not find your azure storage credential. Please specify an storage context using the -StorageContext parameter, or set the current storage account using &quot;Set-AzureRmSubscription&quot;, or set the &quot;AZURE_STORAGE_CONNECTION_STRING&quot; environment variable..
         /// </summary>
         public static string AzureVMDscDefaultStorageCredentialsNotFound {
             get {
@@ -252,7 +252,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A data disk, {0}, is not currently assigned for this VM. Use Add-AzureRMVMDataDisk to add it..
+        ///   Looks up a localized string similar to A data disk, {0}, is not currently assigned for this VM. Use Add-AzureRmVMDataDisk to add it..
         /// </summary>
         public static string DataDiskNotAssignedForVM {
             get {
@@ -779,7 +779,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No current subscription has been designated. Use Select-AzureRMSubscription -Current &lt;subscriptionName&gt; to set the current subscription..
+        ///   Looks up a localized string similar to No current subscription has been designated. Use Select-AzureRmSubscription -Current &lt;subscriptionName&gt; to set the current subscription..
         /// </summary>
         public static string StorageCredentialsFactoryCurrentSubscriptionNotSet {
             get {

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Moves existing resources to a new resource group or subscription.
     /// </summary>
-    [Cmdlet(VerbsCommon.Move, "AzureRMResource", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Move, "AzureRmResource", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class MoveAzureResourceCommand : ResourceManagerCmdletBase
     {
         /// <summary>
@@ -58,12 +58,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value that indicates if the operation should wait for completion before returning the result. If set, the cmdlet will return as soon as the request is accepted.
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Do not wait for operation to complete.")]
-        public SwitchParameter NoWait { get; set; }
 
         /// <summary>
         /// Gets or sets the ids of the resources to move.
@@ -101,10 +95,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private void RunCmdlet()
         {
-            if(this.NoWait.IsPresent)
-            {
-                this.WriteWarning("The NoWait parameter is obsolete and will be removed in future releases.");
-            }
             var resourceIdsToUse = this.resourceIds
                 .Concat(this.ResourceId)
                 .DistinctArray(StringComparer.InvariantCultureIgnoreCase);
@@ -161,28 +151,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             cancellationToken: this.CancellationToken.Value)
                         .Result;
 
-                    if(!this.NoWait)
-                    {
-                        var managementUri = this.GetResourcesClient()
-                        .GetResourceManagementRequestUri(
-                            resourceId: destinationResourceGroup,
-                            apiVersion: apiVersion,
-                            action: Constants.MoveResources);
+                    var managementUri = this.GetResourcesClient()
+                    .GetResourceManagementRequestUri(
+                        resourceId: destinationResourceGroup,
+                        apiVersion: apiVersion,
+                        action: Constants.MoveResources);
 
-                        var activity = string.Format("POST {0}", managementUri.PathAndQuery);
+                    var activity = string.Format("POST {0}", managementUri.PathAndQuery);
 
-                        var result = this
-                            .GetLongRunningOperationTracker(
-                                activityName: activity,
-                                isResourceCreateOrUpdate: false)
-                            .WaitOnOperation(operationResult: operationResult);
+                    var result = this
+                        .GetLongRunningOperationTracker(
+                            activityName: activity,
+                            isResourceCreateOrUpdate: false)
+                        .WaitOnOperation(operationResult: operationResult);
 
-                        this.TryConvertAndWriteObject(result, ResourceObjectFormat.New);
-                    }
-                    else
-                    {
-                        this.WriteObject(operationResult);
-                    }
+                    this.TryConvertAndWriteObject(result, ResourceObjectFormat.New);
                 });
         }
     }

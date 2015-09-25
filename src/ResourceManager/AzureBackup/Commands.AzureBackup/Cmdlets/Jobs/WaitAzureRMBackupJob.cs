@@ -23,7 +23,7 @@ using Microsoft.Azure.Commands.AzureBackup.Properties;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
-    [Cmdlet("Wait", "AzureRMBackupJob"), OutputType(typeof(List<AzureRMBackupJob>), typeof(AzureRMBackupJob))]
+    [Cmdlet("Wait", "AzureRmBackupJob"), OutputType(typeof(List<AzureRMBackupJob>), typeof(AzureRMBackupJob))]
     public class WaitAzureRMBackupJob : AzureBackupCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.WaitJobFilterJobHelpMessage, ValueFromPipeline = true)]
