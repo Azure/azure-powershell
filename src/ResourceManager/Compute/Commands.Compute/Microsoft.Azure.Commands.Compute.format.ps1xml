@@ -19,6 +19,10 @@
                 <PropertyName>Name</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>BootDiagnostics</Label>
+                <PropertyName>BootDiagnosticsText</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>Disks</Label>
                 <PropertyName>DisksText</PropertyName>
               </ListItem>

@@ -41,6 +41,11 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VMNetworkInterfaceID = "The virtual machine network interface's ID.";
         public const string VMPublicIPAddressName = "The virtual machine public IP address's name.";
         public const string VMPublicIPAddressReferenceUri = "The virtual machine public IP address's reference Uri.";
+
+        public const string VMBootDiagnosticsEnable = "Enable boot diagnostics data of the virtual machine";
+        public const string VMBootDiagnosticsDisable = "Disable boot diagnostics data of the virtual machine";
+        public const string VMBootDiagnosticsResourceGroupName = "Resource group name for storage account";
+        public const string VMBootDiagnosticsStorageAccountName = "Storage account name for boot diagnostics data";
     }
 
     public static class ValidateSetValues
@@ -64,6 +69,8 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string DataDisk = "AzureRMVMDataDisk";
         public const string OSDisk = "AzureRMVMOSDisk";
         public const string SourceImage = "AzureRMVMSourceImage";
+        public const string BootDiagnostics = "AzureRMVMBootDiagnostics";
+        public const string BootDiagnosticsData = "AzureRMVMBootDiagnosticsData";
 
         public const string NetworkInterface = "AzureRMVMNetworkInterface";
 

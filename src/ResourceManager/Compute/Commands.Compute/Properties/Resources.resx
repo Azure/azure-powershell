@@ -434,4 +434,10 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
     <value>Configuration file '{0}' not found.</value>
     <comment>0 = path to the configuration file</comment>
   </data>
+  <data name="PremiumStorageAccountForBootDiagnostics" xml:space="preserve">
+    <value>Storage account, {0}, is a premium account.  You cannot specify a premium storage account for boot diagnostics</value>
+  </data>
+  <data name="BootDiagnosticsNoStorageAccountError" xml:space="preserve">
+    <value>Storage account name for boot diagnostics is not given.</value>
+  </data>
 </root>

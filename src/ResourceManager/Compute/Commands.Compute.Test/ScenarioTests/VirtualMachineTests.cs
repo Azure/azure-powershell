@@ -137,5 +137,34 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineListWithPaging");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineBootDiagnostics()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineBootDiagnostics");
+        }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineBootDiagnosticsPremium()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineBootDiagnosticsPremium");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestLinuxVirtualMachineBootDiagnostics()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-LinuxVirtualMachineBootDiagnostics");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineBootDiagnosticsSet()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineBootDiagnosticsSet");
+        }
     }
 }
