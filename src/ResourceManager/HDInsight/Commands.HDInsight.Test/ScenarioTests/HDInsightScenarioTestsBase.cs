@@ -12,11 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.IO;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Management.HDInsight;
 using Microsoft.Azure.Test;
-using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 

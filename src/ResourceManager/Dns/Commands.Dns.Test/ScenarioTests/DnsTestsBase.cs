@@ -18,7 +18,6 @@ using Microsoft.Azure.Test.HttpRecorder;
 namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 {
     using System;
-    using System.IO;
     using System.Linq;
     using Microsoft.Azure.Common.Authentication;
     using Microsoft.Azure.Gallery;
@@ -29,8 +28,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
     using Microsoft.Azure.Management.Dns;
     using Microsoft.Azure.Subscriptions;
     using WindowsAzure.Commands.Test.Utilities.Common;
-    using Dns.Models;
-    
+
     public class DnsTestsBase : RMTestBase
     { 
         private CSMTestEnvironmentFactory csmTestFactory; 

@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.IO;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
@@ -22,7 +21,6 @@ using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;

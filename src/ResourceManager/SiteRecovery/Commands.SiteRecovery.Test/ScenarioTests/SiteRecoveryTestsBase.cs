@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.IO;
 using System.Net;
 using System.Net.Security;
@@ -20,15 +19,11 @@ using System.Runtime.Serialization;
 using System.Xml;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
-using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Scheduler;
 using Microsoft.Azure.Management.RecoveryServices;
 using Microsoft.Azure.Management.SiteRecovery;
 using Microsoft.Azure.Test;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 

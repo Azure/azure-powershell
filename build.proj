@@ -39,10 +39,8 @@
     <NuGetPublishingSource Condition=" '$(NuGetPublishingSource)' != '' ">http://psget/PSGallery/api/v2/</NuGetPublishingSource>
   </PropertyGroup>
   <ItemGroup>
-    <AzureResourceManagerSln Include=".\src\ResourceManager.sln" Condition=" '$(Scope)' == '' "/>
-    <!--TODO: do wildcard matching???-->
-    <AzureResourceManagerSln Include=".\src\$(Scope).sln" Condition=" '$(Scope)' != '' "/>
-    <AzureServiceManagementSln Include=".\src\ServiceManagement.sln" />
+    <CmdletSolutionsToBuild Include=".\src\ResourceManager.sln;.\src\ServiceManagement.sln" Condition=" '$(Scope)' == '' "/>
+    <CmdletSolutionsToBuild Include=".\src\$(Scope).sln" Condition=" '$(Scope)' != '' "/>
     <SetupSln Include=".\setup\azurepowershell.sln" />
     <SetupPowershellGetSln Include=".\setup-powershellget\powershellget.sln" />
   </ItemGroup>
@@ -66,28 +64,19 @@
   
   <!-- Clean the build in all configurations -->
   <Target Name="Clean">
-    <!-- Clean the solutions -->
     <Message Importance="high" Text="Cleaning Cmdlets..." ContinueOnError="false" />
     <MSBuild
-      Projects="@(AzureResourceManagerSln)"
+      Projects="@(CmdletSolutionsToBuild)"
       Targets="Clean"
       Properties="Configuration=$(Configuration);Platform=Any CPU"
       ContinueOnError="false" />
-    <!--<MSBuild
-      Projects="@(AzureServiceManagementSln)"
-      Targets="Clean"
-      Properties="Configuration=$(Configuration);Platform=Any CPU"
-      ContinueOnError="false" />-->
-    <MSBuild
-      Projects="@(SetupSln)"
-      Targets="Clean"
-      Properties="Configuration=$(Configuration);Platform=Any CPU"
-      ContinueOnError="false" />
+    
     <MSBuild
       Projects="@(SetupPowershellGetSln)"
       Targets="Clean"
       Properties="Configuration=$(Configuration);Platform=Any CPU"
-      ContinueOnError="false" />
+      ContinueOnError="false" 
+      Condition=" '$(Scope)' == '' "/>
       
     <!-- Delete the publish files -->
     <Message Importance="high" Text="Cleaning publish files..." ContinueOnError="false" />
@@ -147,7 +136,7 @@
     <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\src\ServiceManagement.sln $(NuGetRestoreConfigSwitch)" ContinueOnError="false"
           Condition="$(Scope) == ''"  />
     <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\src\$(Scope).sln $(NuGetRestoreConfigSwitch)" ContinueOnError="false"
-       Condition="$(Scope) != ''"  />
+          Condition="$(Scope) != ''"  />
     
     <!--Restore the xunit runner needed to run unit tests-->
     <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\packages.config -PackagesDirectory $(MSBuildProjectDirectory)\packages" />
@@ -159,31 +148,31 @@
   <Target Name="Build" DependsOnTargets="RestoreNugetPackages;BuildMsBuildTask">
     <Message Importance="high" Text="Building Cmdlets..." />
     <MSBuild
-      Projects="@(AzureResourceManagerSln)"
+      Projects="@(CmdletSolutionsToBuild)"
       Targets="Build"
       Properties="Configuration=$(Configuration);Platform=Any CPU"
-      BuildInParallel="$(BuildInParallel)" ContinueOnError="false" />
-    <!--<MSBuild
-      Projects="@(AzureServiceManagementSln)"
-      Targets="Build"
-      Properties="Configuration=$(Configuration);Platform=Any CPU"
-      BuildInParallel="$(BuildInParallel)" ContinueOnError="false" />-->
+      BuildInParallel="$(BuildInParallel)" 
+      ContinueOnError="false" />
       
     <CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " />
     
     <Message Importance="high" Text="Building Setup..." />
-    <!--<MSBuild
+    <MSBuild
       Projects="@(SetupPowershellGetSln)"
       Targets="Build"
       Properties="Configuration=$(Configuration);Platform=Any CPU"
-      ContinueOnError="false" />
+      ContinueOnError="false" 
+      Condition=" '$(Scope)' == '' "/>
+    
     <MSBuild
       Projects="@(SetupSln)"
       Targets="Build"
       Properties="Configuration=$(Configuration);Platform=Any CPU"
-      ContinueOnError="false" />-->
+      ContinueOnError="false" 
+      Condition=" '$(Scope)' == '' "/>
     
-    <CallTarget Targets="CodeSignInstaller" Condition=" '$(CodeSign)' == 'true' " />    
+    <CallTarget Targets="CodeSignInstaller" 
+                Condition=" '$(CodeSign)' == 'true' and '$(Scope)' == ''" />    
   </Target>
   
   <!-- Do everything possible -->

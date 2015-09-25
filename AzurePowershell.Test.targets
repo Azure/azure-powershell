@@ -52,6 +52,16 @@
   </Target>
   
   <Target Name="InvokeXUnit">
+    <ItemGroup>
+      <AsmXUnitTests Include=".\src\ServiceManagement\Common\Commands.Common.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Common.Test.dll"/>
+      <AsmXUnitTests Include=".\src\ServiceManagement\Services\Commands.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Test.dll"/>
+      <AsmXUnitTests Include=".\src\ServiceManagement\StorSimple\Commands.StorSimple.Test\bin\Debug\Microsoft.WindowsAzure.Commands.StorSimple.Test.dll"/>
+      <AsmXUnitTests Include=".\src\ServiceManagement\ManagedCache\Commands.ManagedCache.Test\bin\Debug\Microsoft.Azure.Commands.ManagedCache.Test.dll"/>
+      <AsmXUnitTests Include=".\src\ServiceManagement\RemoteApp\Commands.RemoteApp.Test\bin\Debug\Microsoft.Azure.Commands.RemoteApp.Tests.dll"/>
+      <AsmXUnitTests Include=".\src\ServiceManagement\Common\Commands.ScenarioTest\bin\Debug\Microsoft.WindowsAzure.Commands.ScenarioTest.dll"/>
+      <AsmXUnitTests Include=".\src\ServiceManagement\RecoveryServices\Commands.RecoveryServices.Test\bin\Debug\Microsoft.Azure.Commands.RecoveryServices.Test.dll"/>
+      <AsmXUnitTests Include=".\src\ServiceManagement\Network\Commands.Network.Test\bin\Debug\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.dll"/>
+    </ItemGroup>
     <ItemGroup Condition=" '$(scope)' == '' ">
       <XUnitTests Include=".\src\ResourceManager\SiteRecovery\Commands.SiteRecovery.Test\bin\Debug\Microsoft.Azure.Commands.SiteRecovery.Test.dll"/> 
       <XUnitTests Include=".\src\ResourceManager\Sql\Commands.Sql.Test\bin\Debug\Microsoft.Azure.Commands.Sql.Test.dll"/>
@@ -70,18 +80,15 @@
       <XUnitTests Include=".\src\ResourceManager\ApiManagement\Commands.ApiManagement.Test\bin\Debug\Microsoft.Azure.Commands.ApiManagement.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\Profile\Commands.Profile.Test\bin\Debug\Microsoft.Azure.Commands.Profile.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\AzureBackup\Commands.AzureBackup.Test\bin\Debug\Microsoft.Azure.Commands.AzureBackup.Test.dll"/>
-      <XUnitTests Include=".\src\ServiceManagement\Common\Commands.Common.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Common.Test.dll"/>
-      <XUnitTests Include=".\src\ServiceManagement\Services\Commands.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Test.dll"/>
-      <XUnitTests Include=".\src\ServiceManagement\StorSimple\Commands.StorSimple.Test\bin\Debug\Microsoft.WindowsAzure.Commands.StorSimple.Test.dll"/>
-      <XUnitTests Include=".\src\ServiceManagement\ManagedCache\Commands.ManagedCache.Test\bin\Debug\Microsoft.Azure.Commands.ManagedCache.Test.dll"/>
-      <XUnitTests Include=".\src\ServiceManagement\RemoteApp\Commands.RemoteApp.Test\bin\Debug\Microsoft.Azure.Commands.RemoteApp.Tests.dll"/>
-      <XUnitTests Include=".\src\ServiceManagement\Common\Commands.ScenarioTest\bin\Debug\Microsoft.WindowsAzure.Commands.ScenarioTest.dll"/>
-      <XUnitTests Include=".\src\ServiceManagement\RecoveryServices\Commands.RecoveryServices.Test\bin\Debug\Microsoft.Azure.Commands.RecoveryServices.Test.dll"/>
-      <XUnitTests Include=".\src\ServiceManagement\Network\Commands.Network.Test\bin\Debug\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.dll"/>    
+      <XUnitTests Include="@(AsmXUnitTests)"/>
     </ItemGroup>
-    <ItemGroup Condition=" '$(scope)' != '' ">
+    <ItemGroup Condition=" '$(scope)' == 'ServiceManagement' ">
+      <XUnitTests Include="@(AsmXUnitTests)"/>
+    </ItemGroup>
+    <ItemGroup Condition=" '$(scope)' !='' and '$(scope)' != 'ServiceManagement' ">
       <XUnitTests Include="$(MSBuildProjectDirectory)\src\ResourceManager\$(scope)\*\bin\Debug\*.Test.dll"/>
-    </ItemGroup>    
+    </ItemGroup>
+    
     <Message Importance="high" Text="Running XUnit tests" />
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
     <Exec 

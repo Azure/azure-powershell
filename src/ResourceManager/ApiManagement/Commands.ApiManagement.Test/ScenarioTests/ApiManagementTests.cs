@@ -16,8 +16,6 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 {
-    using System;
-    using System.IO;
     using Microsoft.Azure.Common.Authentication;
     using Microsoft.Azure.Gallery;
     using Microsoft.Azure.Management.Authorization;

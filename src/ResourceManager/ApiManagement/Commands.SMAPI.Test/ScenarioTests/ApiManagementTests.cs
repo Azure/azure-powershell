@@ -14,9 +14,6 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.ScenarioTests
 {
-    using System;
-    using System.IO;
-    using System.Management.Automation;
     using Microsoft.Azure.Common.Authentication;
     using Microsoft.Azure.Gallery;
     using Microsoft.Azure.Management.ApiManagement;

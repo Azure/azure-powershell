@@ -15,7 +15,6 @@
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.Azure.Test;
 using System;
-using System.IO;
 using System.Linq;
 using Microsoft.Azure.Commerce.UsageAggregates;
 using Microsoft.Azure.Common.Authentication;

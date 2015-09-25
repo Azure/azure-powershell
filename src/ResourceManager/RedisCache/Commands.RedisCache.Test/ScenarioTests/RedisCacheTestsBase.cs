@@ -15,9 +15,7 @@
 namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
 {
     using System;
-    using System.IO;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Microsoft.Azure.Test;
     using Microsoft.Azure.Management.Redis;
     using Microsoft.Azure.Common.Authentication;

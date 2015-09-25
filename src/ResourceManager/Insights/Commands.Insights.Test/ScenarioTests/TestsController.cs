@@ -18,7 +18,6 @@ using Microsoft.Azure.Management.Insights;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.Azure.Test;
 using System;
-using System.IO;
 using System.Linq;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 

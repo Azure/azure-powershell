@@ -18,16 +18,13 @@ using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Test;
 using System;
-using System.IO;
 using System.Linq;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Management.KeyVault;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test
 {

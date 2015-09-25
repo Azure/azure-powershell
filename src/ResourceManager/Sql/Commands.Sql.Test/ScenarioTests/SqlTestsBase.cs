@@ -16,19 +16,15 @@ using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Common.Authentication.Models;
 
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
