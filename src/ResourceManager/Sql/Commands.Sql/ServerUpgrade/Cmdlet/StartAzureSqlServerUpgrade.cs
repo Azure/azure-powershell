@@ -23,9 +23,9 @@ using Microsoft.Azure.Management.Sql.Models;
 namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
 {
     /// <summary>
-    /// Defines the Start-AzureRMSqlServerUpgrade cmdlet
+    /// Defines the Start-AzureRmSqlServerUpgrade cmdlet
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureRMSqlServerUpgrade",
+    [Cmdlet(VerbsLifecycle.Start, "AzureRmSqlServerUpgrade",
         ConfirmImpact = ConfirmImpact.Low)]
     public class StartAzureSqlServerUpgrade : AzureSqlServerUpgradeCmdletBase<AzureSqlServerUpgradeStartModel>
     {

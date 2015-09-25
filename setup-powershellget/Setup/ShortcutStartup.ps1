@@ -17,11 +17,36 @@ Param(
 [switch]$Install
 )
 
-cd c:\
-$welcomeMessage = @"
+$error.clear()
+try {
+	if ($Install.IsPresent) {
+		Write-Output @"
+
+Finalizing installation of Azure PowerShell. 
+Installing Azure Modules from PowerShell Gallery. 
+This may take some time...
+"@
+		Import-Module PackageManagement
+		Get-PackageProvider -Name NuGet -ForceBootstrap
+
+		$NuGetPublishingSource = $env:NuGetPublishingSource
+		if ([string]::IsNullOrWhiteSpace($NuGetPublishingSource)) {
+			Install-Module AzureRM -Repository $NuGetPublishingSource
+		} else {
+			Install-Module AzureRM
+		}
+	} else {
+		cd c:\
+		$welcomeMessage = @"
 For a list of all Azure cmdlets type 'help azure'.
 For a list of Azure Pack cmdlets type 'Get-Command *wapack*'.
 "@
-Write-Output $welcomeMessage
+		Write-Output $welcomeMessage
 
-$VerbosePreference = "Continue"
+		$VerbosePreference = "Continue"
+	}
+}
+catch { Write-Output $error }
+if ($error) {
+	Read-Host -Prompt "An error occured during installation. Press any key..."
+}

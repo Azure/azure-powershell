@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Updates configuration on the dsc node.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRMAutomationDscNode")]
+    [Cmdlet(VerbsCommon.Set, "AzureRmAutomationDscNode")]
     [OutputType(typeof(DscNode))]
     public class SetAzureAutomationDscNode : AzureAutomationBaseCmdlet
     {

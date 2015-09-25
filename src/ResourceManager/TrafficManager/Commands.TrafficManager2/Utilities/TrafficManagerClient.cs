@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                     }
                 });
 
-            return TrafficManagerClient.GetPowershellTrafficManagerEndpoint(resourceGroupName, profileName, endpointType, endpointName, response.Endpoint.Properties);
+            return TrafficManagerClient.GetPowershellTrafficManagerEndpoint(response.Endpoint.Id, resourceGroupName, profileName, endpointType, endpointName, response.Endpoint.Properties);
         }
 
         public TrafficManagerProfile GetTrafficManagerProfile(string resourceGroupName, string profileName)
@@ -120,6 +120,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
             EndpointGetResponse response = this.TrafficManagerManagementClient.Endpoints.Get(resourceGroupName, profileName, endpointType, endpointName);
 
             return TrafficManagerClient.GetPowershellTrafficManagerEndpoint(
+                response.Endpoint.Id,
                 resourceGroupName, 
                 profileName, 
                 endpointType, 
@@ -171,6 +172,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                 parameters);
 
             return TrafficManagerClient.GetPowershellTrafficManagerEndpoint(
+                endpoint.Id,
                 endpoint.ResourceGroupName, 
                 endpoint.ProfileName,
                 endpoint.Type, 
@@ -285,10 +287,11 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
             return id.Split('/')[4];
         }
 
-        private static TrafficManagerEndpoint GetPowershellTrafficManagerEndpoint(string resourceGroupName, string profileName, string endpointType, string endpointName, EndpointProperties mamlEndpointProperties)
+        private static TrafficManagerEndpoint GetPowershellTrafficManagerEndpoint(string id, string resourceGroupName, string profileName, string endpointType, string endpointName, EndpointProperties mamlEndpointProperties)
         {
             return new TrafficManagerEndpoint
             {
+                Id = id,
                 ResourceGroupName = resourceGroupName,
                 ProfileName = profileName,
                 Name = endpointName,
