@@ -68,6 +68,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
         /// <summary>
         /// Filters the existing role Definitions.
+        /// If name is not provided, all role definitions are fetched.
         /// </summary>
         /// <param name="name">The role name</param>
         /// <returns>The matched role Definitions</returns>
@@ -122,7 +123,11 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             };
 
             AuthorizationManagementClient.RoleAssignments.Create(parameters.Scope, roleAssignmentId, createParameters);
-            return AuthorizationManagementClient.RoleAssignments.Get(parameters.Scope, roleAssignmentId).RoleAssignment.ToPSRoleAssignment(this, ActiveDirectoryClient);
+
+            RoleAssignment assignment = AuthorizationManagementClient.RoleAssignments.Get(parameters.Scope, roleAssignmentId).RoleAssignment;
+            IEnumerable<RoleAssignment> assignments = new List<RoleAssignment>() { assignment };
+
+            return assignments.ToPSRoleAssignments(this, ActiveDirectoryClient).FirstOrDefault();
         }
 
         /// <summary>
@@ -136,17 +141,18 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             List<PSRoleAssignment> result = new List<PSRoleAssignment>();
             ListAssignmentsFilterParameters parameters = new ListAssignmentsFilterParameters();
 
+            PSADObject adObject = null;
             if (options.ADObjectFilter.HasFilter)
             {
+                adObject = ActiveDirectoryClient.GetADObject(options.ADObjectFilter);
+                if (adObject == null)
+                {
+                    throw new KeyNotFoundException(ProjectResources.PrincipalNotFound);
+                }
+
                 // Filter first by principal
                 if (options.ExpandPrincipalGroups)
                 {
-                    PSADObject adObject = ActiveDirectoryClient.GetADObject(options.ADObjectFilter);
-                    if (adObject == null)
-                    {
-                        throw new KeyNotFoundException(ProjectResources.PrincipalNotFound);
-                    }
-
                     if (!(adObject is PSADUser))
                     {
                         throw new InvalidOperationException(ProjectResources.ExpandGroupsNotSupported);
@@ -156,11 +162,12 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 }
                 else
                 {
-                    parameters.PrincipalId = string.IsNullOrEmpty(options.ADObjectFilter.Id) ? ActiveDirectoryClient.GetObjectId(options.ADObjectFilter) : Guid.Parse(options.ADObjectFilter.Id);
+                    parameters.PrincipalId = string.IsNullOrEmpty(options.ADObjectFilter.Id) ? adObject.Id : Guid.Parse(options.ADObjectFilter.Id);
                 }
-                
+
                 result.AddRange(AuthorizationManagementClient.RoleAssignments.List(parameters)
-                    .RoleAssignments.Select(r => r.ToPSRoleAssignment(this, ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals)).Where(r => r != null));
+                    .RoleAssignments.ToPSRoleAssignments(this, ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals));
+
 
                 // Filter out by scope
                 if (!string.IsNullOrEmpty(options.Scope))
@@ -172,13 +179,14 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             {
                 // Filter by scope and above directly
                 parameters.AtScope = true;
+
                 result.AddRange(AuthorizationManagementClient.RoleAssignments.ListForScope(options.Scope, parameters)
-                    .RoleAssignments.Select(r => r.ToPSRoleAssignment(this, ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals)).Where(r => r != null));
+                    .RoleAssignments.ToPSRoleAssignments(this, ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals));
             }
             else
             {
                 result.AddRange(AuthorizationManagementClient.RoleAssignments.List(parameters)
-                    .RoleAssignments.Select(r => r.ToPSRoleAssignment(this, ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals)).Where(r => r != null));
+                    .RoleAssignments.ToPSRoleAssignments(this, ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals));
             }
 
             if (!string.IsNullOrEmpty(options.RoleDefinition))
@@ -190,7 +198,23 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             {
                 // Get classic administrator access assignments 
                 List<ClassicAdministrator> classicAdministrators = AuthorizationManagementClient.ClassicAdministrators.List().ClassicAdministrators.ToList(); 
-                List<PSRoleAssignment> classicAdministratorsAssignments = classicAdministrators.Select(a => a.ToPSRoleAssignment(currentSubscription)).ToList(); 
+                List<PSRoleAssignment> classicAdministratorsAssignments = classicAdministrators.Select(a => a.ToPSRoleAssignment(currentSubscription)).ToList();
+
+                // Filter by principal if provided
+                if (options.ADObjectFilter.HasFilter)
+                {
+                    if (!(adObject is PSADUser))
+                    {
+                        throw new InvalidOperationException(ProjectResources.IncludeClassicAdminsNotSupported);
+                    }
+
+                    var userObject = adObject as PSADUser;
+                    classicAdministratorsAssignments = classicAdministratorsAssignments.Where(c =>
+                           c.DisplayName.Equals(userObject.UserPrincipalName, StringComparison.OrdinalIgnoreCase) ||
+                           c.DisplayName.Equals(userObject.Mail, StringComparison.OrdinalIgnoreCase) ||
+                           c.DisplayName.Equals(userObject.SignInName, StringComparison.OrdinalIgnoreCase)).ToList();
+                }
+                
                 result.AddRange(classicAdministratorsAssignments);
             }
 
