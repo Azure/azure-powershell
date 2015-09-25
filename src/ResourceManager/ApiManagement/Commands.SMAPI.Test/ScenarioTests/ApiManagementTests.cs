@@ -14,8 +14,6 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.ScenarioTests
 {
-    using System;
-    using System.Management.Automation;
     using Microsoft.Azure.Common.Authentication;
     using Microsoft.Azure.Gallery;
     using Microsoft.Azure.Management.ApiManagement;
@@ -177,7 +175,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
                 SetupManagementClients();
 
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                _helper.SetupModules(AzureModule.AzureResourceManager, "ScenarioTests\\Common.ps1", "ScenarioTests\\" + GetType().Name + ".ps1");
+                _helper.SetupModules(AzureModule.AzureResourceManager, 
+                    "ScenarioTests\\Common.ps1", 
+                    "ScenarioTests\\" + GetType().Name + ".ps1", 
+                    _helper.RMProfileModule, 
+                    _helper.GetRMModulePath(@"AzureRM.ApiManagement.psd1"));
 
                 _helper.RunPowerShellTest(scripts);
             }
