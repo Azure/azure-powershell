@@ -1,3 +1,5 @@
+$AzureRMProfileVersion = "0.9.8";
+
 $AzureRMModules = @{
   "Azure.Storage" = "0.9.8";
   "AzureRM.ApiManagement" = "0.9.8";
@@ -56,18 +58,31 @@ function Update-AzureRM
   }
 
   Write-Output "Installing AzureRM modules."
+  $minVer = $AzureRMProfileVersion
+  $maxVer = "$($args[1].Split(".")[0]).9999.0"
+  if ([string]::IsNullOrWhiteSpace($Repository)) 
+  {
+    Install-Module -Name AzureRM.Profile -Scope $Scope -MinimumVersion $minVer -MaximumVersion $maxVer
+  } else {
+    Install-Module -Name AzureRM.Profile -Repository $Repository -Scope $Scope -MinimumVersion $minVer -MaximumVersion $maxVer
+  } 
+  $v = (Get-InstalledModule -Name AzureRM.Profile)[0].Version.ToString()
+  Write-Output "AzureRM.Profile $v installed..." 
 
-  $result = $AzureRMModules | ForEach {
+  $result = $AzureRMModules.Keys | ForEach {
     Start-Job -Name $_ -ScriptBlock {
-      if ([string]::IsNullOrWhiteSpace($args[1])) 
+      $minVer = $args[1]
+      $maxVer = "$($args[1].Split(".")[0]).9999.0"
+
+      if ([string]::IsNullOrWhiteSpace($args[2])) 
       {
-        Install-Module -Name $args[0] -Scope $args[2]
+        Install-Module -Name $args[0] -Scope $args[3] -MinimumVersion $minVer -MaximumVersion $maxVer
       } else {
-        Install-Module -Name $args[0] -Repository $args[1] -Scope $args[2]
+        Install-Module -Name $args[0] -Repository $args[2] -Scope $args[3] -MinimumVersion $minVer -MaximumVersion $maxVer
       }
       $v = (Get-InstalledModule -Name $args[0])[0].Version.ToString()
       Write-Output "$($args[0]) $v installed..."
-    } -ArgumentList $_; $Repository; $Scope }
+    } -ArgumentList $_; $AzureRMModules[$_]; $Repository; $Scope }
   
   $AzureRMModules | ForEach {Get-Job -Name $_ | Wait-Job | Receive-Job }
 }
