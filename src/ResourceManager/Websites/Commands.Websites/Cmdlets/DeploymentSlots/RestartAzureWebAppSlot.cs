@@ -1,4 +1,5 @@
-﻿// ----------------------------------------------------------------------------------
+﻿
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,20 +13,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+
 using System.Management.Automation;
-using Microsoft.Azure.Commands.WebApp.Models;
+using Microsoft.Azure.Commands.WebApps.Utilities;
 
-namespace Microsoft.Azure.Commands.WebApp
+
+namespace Microsoft.Azure.Commands.WebApps.Cmdlets
 {
-    public class WebAppBaseNotMandatoryCmdlet : WebAppBaseClientCmdLet
+    /// <summary>
+    /// this commandlet will let you restart an Azure Web app slot 
+    /// </summary>
+    [Cmdlet(VerbsLifecycle.Restart, "AzureRMWebAppSlot")]
+    public class RestartAzureWebAppSlotCmdlet : WebAppSlotBaseCmdlet
     {
-        [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.")]
-        [ValidateNotNullOrEmptyAttribute]
-        public string ResourceGroup { get; set; }
-
-        [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the website.")]
-        [ValidateNotNullOrEmptyAttribute]
-        public string Name { get; set; }
+        protected override void ProcessRecord()
+        {
+            base.ProcessRecord();
+            WriteObject(WebsitesClient.RestartWebApp(ResourceGroupName, Name, Slot));
+        }
     }
 }
+
+
+
 

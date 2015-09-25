@@ -19,14 +19,11 @@ using Microsoft.Azure.Management.WebSites.Models;
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets
 {
     /// <summary>
-    /// this commandlet will let you create a new Azure Web app using ARM APIs
+    /// this commandlet will let you create a new Azure Web app slot using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRMWebApp")]
-    public class NewAzureWebAppCmdlet : WebAppBaseCmdlet
+    [Cmdlet(VerbsCommon.New, "AzureRMWebAppSlot")]
+    public class NewAzureWebAppSlotCmdlet : WebAppSlotBaseCmdlet
     {
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = "The Location of the web app eg: West US.")]
-        public string Location { get; set; }
-
         [Parameter(Position = 3, Mandatory = false, HelpMessage = "The name of the app service plan eg: Default1.")]
         public string AppServicePlan { get; set; }
 
@@ -40,6 +37,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets
        
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             if (SourceWebApp != null)
             {
                 if (CloningInfo == null)
@@ -50,9 +48,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets
                 CloningInfo.SourceWebAppId = SourceWebApp.Id;
             }
 
-            WriteObject(WebsitesClient.CreateWebApp(ResourceGroupName, Name, null, Location, AppServicePlan, CloningInfo));
+            var webApp = WebsitesClient.GetWebApp(ResourceGroupName, Name, null);
+
+            WriteObject(WebsitesClient.CreateWebApp(ResourceGroupName, Name, Slot, webApp.Location, AppServicePlan, CloningInfo));
         }
-        
     }
 }
 

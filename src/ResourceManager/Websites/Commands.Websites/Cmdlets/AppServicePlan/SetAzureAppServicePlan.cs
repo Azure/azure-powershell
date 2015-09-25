@@ -13,11 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-using Microsoft.Azure.Commands.WebApp.Utilities;
+using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Commands.Websites.Validations;
 using Microsoft.Azure.Management.WebSites.Models;
 
-namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
+namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlan
 {
     /// <summary>
     /// this commandlet will let you set Azure App Service Plan using ARM APIs
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
             switch (ParameterSetName)
             {
                 case RolledOutServerFarmParameterSetName:
-                    ServerFarm = WebsitesClient.GetAppServicePlan(ResourceGroup, Name);
+                    ServerFarm = WebsitesClient.GetAppServicePlan(ResourceGroupName, Name);
                     ServerFarm.Sku.Tier = string.IsNullOrWhiteSpace(Tier) ? ServerFarm.Sku.Tier : Tier;
                     ServerFarm.Sku.Capacity = NumberofWorkers > 0 ? NumberofWorkers : ServerFarm.Sku.Capacity;
                     var workerSizeAsNumber = int.Parse(ServerFarm.Sku.Name.Substring(1, ServerFarm.Sku.Name.Length - 1));
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
             ServerFarm.Sku.Size = ServerFarm.Sku.Name;
             ServerFarm.Sku.Family = ServerFarm.Sku.Name.Substring(0, 1);
 
-            WriteObject(WebsitesClient.CreateAppServicePlan(ResourceGroup, Name, ServerFarm.Location, AdminSiteName, ServerFarm.Sku), true);
+            WriteObject(WebsitesClient.CreateAppServicePlan(ResourceGroupName, Name, ServerFarm.Location, AdminSiteName, ServerFarm.Sku), true);
         }
     }
 }

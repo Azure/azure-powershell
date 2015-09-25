@@ -15,32 +15,35 @@
 
 
 using System.Management.Automation;
+using Microsoft.Azure.Commands.WebApps.Utilities;
+
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets
 {
     /// <summary>
-    /// this commandlet will get the publishing creds of the given Azure Web app using ARM APIs
+    /// this commandlet will get the publishing creds of the given Azure Web app slot using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMWebAppPublishingProfile")]
-    public class GetAzureWebAppPublishingProfileCmdlet : WebAppBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRMWebAppSlotPublishingProfile")]
+    public class GetAzureWebAppSlotPublishingProfileCmdlet : WebAppSlotBaseCmdlet
     {
         private const string DefaultFormat = "WebDeploy";
 
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = "The file the publishing profile will we saved as")]
+        [Parameter(Position = 3, Mandatory = true, HelpMessage = "The file the publishing profile will we saved as")]
         public string OutputFile { get; set; }
 
-        [Parameter(Position = 3, Mandatory = false, HelpMessage = "The format of the profile. Allowed values are [WebDeploy|FileZilla3|Ftp]. Default value is WebDeploy")]
-        [ValidateSet("WebDeploy", "FileZilla3", "Ftp", IgnoreCase = true)]
+        [Parameter(Position = 4, Mandatory = false, HelpMessage = "The format of the profile. Allowed values are [WebDeploy|FileZilla3|Ftp]. Default value is WebDeploy")]
+        [ValidateSet("WebDeploy", "FileZilla3","Ftp", IgnoreCase = true)]
         public string Format { get; set; }
 
-        public GetAzureWebAppPublishingProfileCmdlet()
+        public GetAzureWebAppSlotPublishingProfileCmdlet()
         {
             Format = Format ?? DefaultFormat;
         }
 
         protected override void ProcessRecord()
         {
-            WriteObject(WebsitesClient.GetWebAppPublishingProfile(ResourceGroupName, Name, null, OutputFile, Format));
+            base.ProcessRecord();
+            WriteObject(WebsitesClient.GetWebAppPublishingProfile(ResourceGroupName, Name, Slot, OutputFile, Format));
         }
 
     }

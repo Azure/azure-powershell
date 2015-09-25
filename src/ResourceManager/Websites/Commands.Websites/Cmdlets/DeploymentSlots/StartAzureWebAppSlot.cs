@@ -1,4 +1,5 @@
-﻿// ----------------------------------------------------------------------------------
+﻿
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,21 +13,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Websites.Models;
+
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Websites.Models.Websites;
+using Microsoft.Azure.Commands.WebApps.Utilities;
 
-namespace Microsoft.Azure.Commands.Websites
+
+namespace Microsoft.Azure.Commands.WebApps.Cmdlets
 {
-    public abstract class WebHostingPlanBaseCmdlet : WebsitesBaseClient
-    {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
-        [ValidateNotNullOrEmptyAttribute]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the web hosting plan.")]
-        [ValidateNotNullOrEmptyAttribute]
-        public string Name { get; set; }
-
+    /// <summary>
+    /// this commandlet will let you Start an Azure Web app slot
+    /// </summary>
+    [Cmdlet(VerbsLifecycle.Start, "AzureRMWebAppSlot")]
+    public class StartAzureWebAppSlotCmdlet : WebAppSlotBaseCmdlet
+    {    
+        protected override void ProcessRecord()
+        {
+            base.ProcessRecord();
+            WriteObject(WebsitesClient.StartWebApp(ResourceGroupName, Name, Slot));
+        }
     }
 }
+
+
+

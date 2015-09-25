@@ -15,21 +15,27 @@
 
 
 using System.Management.Automation;
+using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets
 {
     /// <summary>
-    /// this commandlet will let you stop an Azure Web app
+    /// this commandlet will let you get a new Azure Web app slot using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Stop, "AzureRMWebApp")]
-    public class StopAzureWebAppCmdlet : WebAppBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRMWebAppSlot")]
+    public class GetAzureWebAppSlotCmdlet : WebAppSlotBaseCmdlet
     {
         protected override void ProcessRecord()
         {
-            WriteObject(WebsitesClient.StopWebApp(ResourceGroupName, Name, null));
+            base.ProcessRecord();
+            if (string.IsNullOrWhiteSpace(Slot))
+            {
+                WriteObject(WebsitesClient.ListWebApps(ResourceGroupName, Name).Value);
+            }
+            else
+            {
+                WriteObject(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot));
+            }
         }
     }
 }
-
-
-

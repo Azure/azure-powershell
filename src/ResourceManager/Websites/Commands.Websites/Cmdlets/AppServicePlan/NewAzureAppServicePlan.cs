@@ -13,13 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 
-using System;
 using System.Management.Automation;
-using System.Text.RegularExpressions;
-using Microsoft.Azure.Commands.WebApp.Utilities;
+using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
 
-namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
+namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlan
 {
     /// <summary>
     /// this commandlet will let you create a new Azure App service Plan using ARM APIs
@@ -28,19 +26,19 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
     public class NewAzureAppServicePlanCmdlet : AppServicePlanBaseCmdlet
     {
         [Parameter(Position = 2, Mandatory = true, HelpMessage = "The location of the app service plan.")]
-        [ValidateNotNullOrEmptyAttribute]
+        [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         [Parameter(Position = 3, Mandatory = false, HelpMessage = "The App Service plan tier. Allowed values are [Free|Shared|Basic|Standard|Premium]")]
-        [ValidateSetAttribute("Free", "Shared", "Basic", "Standard", "Premium", IgnoreCase = true)]
+        [ValidateSet("Free", "Shared", "Basic", "Standard", "Premium", IgnoreCase = true)]
         public string Tier { get; set; }
 
         [Parameter(Position = 4, Mandatory = false, HelpMessage = "Number of Workers to be allocated.")]
-        [ValidateNotNullOrEmptyAttribute]
+        [ValidateNotNullOrEmpty]
         public int NumberofWorkers { get; set; }
 
         [Parameter(Position = 5, Mandatory = false, HelpMessage = "Size of workers to be allocated. Allowed values are [Small|Medium|Large|ExtraLarge]")]
-        [ValidateSetAttribute("Small", "Medium", "Large", "ExtraLarge", IgnoreCase = true)]
+        [ValidateSet("Small", "Medium", "Large", "ExtraLarge", IgnoreCase = true)]
         public string WorkerSize { get; set; }
 
         protected override void ProcessRecord()
@@ -48,6 +46,11 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
             if (string.IsNullOrWhiteSpace(Tier))
             {
                 Tier = "Free";
+            }
+
+            if (string.IsNullOrWhiteSpace(WorkerSize))
+            {
+                WorkerSize = "Small";
             }
 
             var capacity = NumberofWorkers < 1 ? 1 : NumberofWorkers;
@@ -60,7 +63,7 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
                 Capacity = capacity
             };
 
-            WriteObject(WebsitesClient.CreateAppServicePlan(ResourceGroup, Name, Location, null, sku));
+            WriteObject(WebsitesClient.CreateAppServicePlan(ResourceGroupName, Name, Location, null, sku), true);
         }
     }
 }

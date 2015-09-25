@@ -1,4 +1,5 @@
-﻿// ----------------------------------------------------------------------------------
+﻿
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,20 +13,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+
 using System.Management.Automation;
-using Microsoft.Azure.Commands.WebApp.Models;
 
-namespace Microsoft.Azure.Commands.WebApp
+namespace Microsoft.Azure.Commands.WebApps.Cmdlets
 {
-    public abstract class WebHostingPlanBaseNotMandatoryCmdlet : WebAppBaseClientCmdLet
+    /// <summary>
+    /// this commandlet will let you stop an Azure Web app slot
+    /// </summary>
+    [Cmdlet(VerbsLifecycle.Stop, "AzureRMWebAppSlot")]
+    public class StopAzureWebAppSlotCmdlet : WebAppSlotBaseCmdlet
     {
-        [Parameter(Position = 0, Mandatory = false, HelpMessage = "The name of the resource group.")]
-        [ValidateNotNullOrEmptyAttribute]
-        public string ResourceGroup { get; set; }
-
-        [Parameter(Position = 1, Mandatory = false, HelpMessage = "The name of the app service plan.")]
-        [ValidateNotNullOrEmptyAttribute]
-        public string Name { get; set; }
-
+        protected override void ProcessRecord()
+        {
+            base.ProcessRecord();
+            WriteObject(WebsitesClient.StopWebApp(ResourceGroupName, Name, Slot));
+        }
     }
 }
+
+
+

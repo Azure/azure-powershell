@@ -1,4 +1,5 @@
-﻿// ----------------------------------------------------------------------------------
+﻿
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,21 +13,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Websites.Models;
+
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Websites.Models.Websites;
 
-namespace Microsoft.Azure.Commands.Websites
+namespace Microsoft.Azure.Commands.WebApps.Cmdlets
 {
-    public class WebsiteBaseCmdlet : WebsitesBaseClient
+    /// <summary>
+    /// This commandlet resets the publishing creds of the given Azure Web app slot
+    /// </summary>
+    [Cmdlet(VerbsCommon.Reset, "AzureRMWebAppSlotPublishingProfile")]
+    public class ResetAzureWebAppPSlotublishingProfileCmdlet : WebAppSlotBaseCmdlet
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
-        [ValidateNotNullOrEmptyAttribute]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the website.")]
-        [ValidateNotNullOrEmptyAttribute]
-        public string Name { get; set; }
+        protected override void ProcessRecord()
+        {
+            base.ProcessRecord();
+            WriteObject(WebsitesClient.ResetWebAppPublishingCredentials(ResourceGroupName, Name, Slot));
+        }
     }
 }
-

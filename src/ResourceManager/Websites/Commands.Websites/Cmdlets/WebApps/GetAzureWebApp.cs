@@ -1,5 +1,4 @@
-﻿
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,12 +17,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.WebApp.Models;
-using Microsoft.Azure.Commands.WebApp.Utilities;
+using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Management.WebSites.Models;
 using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
 
-namespace Microsoft.Azure.Commands.WebApp.Cmdlets
+namespace Microsoft.Azure.Commands.WebApps.Cmdlets
 {
     /// <summary>
     /// this commandlet will let you get a new Azure Websites using ARM APIs
@@ -37,7 +35,7 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets
 
         [Parameter(ParameterSetName = ParameterSet1, Position = 0, Mandatory = false, HelpMessage = "The name of the resource group.", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroup { get; set; }
+        public string ResourceGroupName { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet1, Position = 1, Mandatory = false, HelpMessage = "The name of the web app.", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
@@ -56,23 +54,17 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets
             switch (ParameterSetName)
             {
                 case ParameterSet1:
-                    if (!string.IsNullOrWhiteSpace(ResourceGroup) && !string.IsNullOrWhiteSpace(Name))
+                    if (!string.IsNullOrWhiteSpace(ResourceGroupName) && !string.IsNullOrWhiteSpace(Name))
                     {
-                        if (!WebsitesClient.IsDeploymentSlot(Name))
-                        {
-                            WriteObject(WebsitesClient.GetWebApp(ResourceGroup, Name, null));
-                        }
+                        WriteObject(WebsitesClient.GetWebApp(ResourceGroupName, Name, null));
                     }
-                    else if (!string.IsNullOrWhiteSpace(ResourceGroup))
+                    else if (!string.IsNullOrWhiteSpace(ResourceGroupName))
                     {
                         GetByResourceGroup();
                     }
                     else if (!string.IsNullOrWhiteSpace(Name))
                     {
-                        if (!WebsitesClient.IsDeploymentSlot(Name))
-                        {
-                            GetByWebAppName();
-                        }
+                        GetByWebAppName();
                     }
                     else
                     {
@@ -121,12 +113,19 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets
         private void GetByResourceGroup()
         {
             var list = new List<Site>();
-            var result = WebsitesClient.ListWebApps(ResourceGroup, null);
-            if (result != null && result.Value != null)
+            try
             {
-                list.AddRange(result.Value);
+                var result = WebsitesClient.ListWebApps(ResourceGroupName, null);
+                if (result != null && result.Value != null)
+                {
+                    list.AddRange(result.Value);
+                }
             }
-
+            catch (Exception e)
+            {
+                WriteExceptionError(e);
+            }
+            
             WriteObject(list);
         }
 
@@ -151,12 +150,19 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets
             for (var i = 0; i < resourceGroups.Length; i++)
             {
                 var rg = resourceGroups[i];
-                var result = WebsitesClient.ListWebApps(rg, null);
-                if (result != null && result.Value != null)
+                try
                 {
-                    list.AddRange(result.Value);
+                    var result = WebsitesClient.ListWebApps(rg, null);
+                    if (result != null && result.Value != null)
+                    {
+                        list.AddRange(result.Value);
+                    }
                 }
-
+                catch (Exception e)
+                {
+                    WriteExceptionError(e);
+                }
+                
                 progressRecord.CurrentOperation = string.Format(progressCurrentOperationFormat, rg);
                 progressRecord.StatusDescription = string.Format(progressDescriptionFormat, i + 1, resourceGroups.Length);
                 progressRecord.PercentComplete = (100 * (i + 1)) / resourceGroups.Length;
@@ -176,18 +182,25 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets
             var sites = this.ResourcesClient.FilterPSResources(new PSResourceManagerModels.BasePSResourceParameters()
             {
                 ResourceType = "Microsoft.Web/Sites"
-            }).Where(s => string.Equals(s.Location, Location, StringComparison.OrdinalIgnoreCase)).ToArray();
+            }).Where(s => string.Equals(s.Location, Location.Replace(" ", string.Empty), StringComparison.OrdinalIgnoreCase)).ToArray();
 
             var list = new List<Site>();
             for (var i = 0; i < sites.Length; i++)
             {
-                var sf = sites[i];
-                var result = WebsitesClient.GetWebApp(sf.ResourceGroupName, sf.Name, null);
-                if (result != null)
+                try
                 {
-                    list.Add(result);
+                    var sf = sites[i];
+                    var result = WebsitesClient.GetWebApp(sf.ResourceGroupName, sf.Name, null);
+                    if (result != null)
+                    {
+                        list.Add(result);
+                    }
                 }
-
+                catch (Exception e)
+                {
+                    WriteExceptionError(e);
+                }
+                
                 progressRecord.StatusDescription = string.Format(progressDescriptionFormat, i + 1, sites.Length);
                 progressRecord.PercentComplete = (100 * (i + 1)) / sites.Length;
                 WriteProgress(progressRecord);

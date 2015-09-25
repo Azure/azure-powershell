@@ -15,9 +15,9 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
-using Microsoft.Azure.Commands.WebApp.Utilities;
+using Microsoft.Azure.Commands.WebApps.Utilities;
 
-namespace Microsoft.Azure.Commands.WebApp.Models
+namespace Microsoft.Azure.Commands.WebApps.Models
 {
     public abstract class WebAppBaseClientCmdLet : AzureRMCmdlet
     {
@@ -28,7 +28,12 @@ namespace Microsoft.Azure.Commands.WebApp.Models
             {
                 if (_resourcesClient == null)
                 {
-                    _resourcesClient = new PSResourceManagerModels.ResourcesClient(DefaultProfile.Context);
+                    _resourcesClient = new PSResourceManagerModels.ResourcesClient(DefaultProfile.Context)
+                    {
+                        VerboseLogger = WriteVerboseWithTimestamp,
+                        ErrorLogger = WriteErrorWithTimestamp,
+                        WarningLogger = WriteWarningWithTimestamp
+                    };
                 }
                 return _resourcesClient;
             }
@@ -42,7 +47,12 @@ namespace Microsoft.Azure.Commands.WebApp.Models
             {
                 if (_websitesClient == null)
                 {
-                    _websitesClient = new WebsitesClient(DefaultProfile.Context);
+                    _websitesClient = new WebsitesClient(DefaultProfile.Context)
+                    {
+                        VerboseLogger = WriteVerboseWithTimestamp,
+                        ErrorLogger = WriteErrorWithTimestamp,
+                        WarningLogger = WriteWarningWithTimestamp
+                    };
                 }
                 return _websitesClient;
             }
