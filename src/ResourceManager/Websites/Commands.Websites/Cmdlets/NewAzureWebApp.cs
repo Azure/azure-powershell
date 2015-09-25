@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets
     /// <summary>
     /// this commandlet will let you create a new Azure Web app using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRMWebApp")]
+    [Cmdlet(VerbsCommon.New, "AzureRmWebApp")]
     public class NewAzureWebAppCmdlet : WebAppBaseCmdlet
     {
 

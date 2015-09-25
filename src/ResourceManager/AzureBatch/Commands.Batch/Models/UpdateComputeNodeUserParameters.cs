@@ -12,14 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using Microsoft.Azure.Batch;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.Resources.Models.Authorization
+namespace Microsoft.Azure.Commands.Batch.Models
 {
-    public class PSUserRoleAssignment : PSRoleAssignment
+    public class UpdateComputeNodeUserParameters : ComputeNodeUserOperationParameters
     {
-        public string UserPrincipalName { get; set; }
+        public UpdateComputeNodeUserParameters(BatchAccountContext context, string poolId, string computeNodeId, string computeNodeUserName,
+            IEnumerable<BatchClientBehavior> additionalBehaviors = null)
+            : base(context, poolId, computeNodeId, computeNodeUserName, additionalBehaviors)
+        { }
 
-        public string Mail { get; set; }
+        /// <summary>
+        /// The account password.
+        /// </summary>
+        public string Password { get; set; }
+
+        /// <summary>
+        /// The expiry time.
+        /// </summary>
+        public DateTime ExpiryTime { get; set; }
     }
 }

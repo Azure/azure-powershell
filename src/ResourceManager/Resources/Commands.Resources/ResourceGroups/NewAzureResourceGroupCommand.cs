@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Creates a new resource group.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRMResourceGroup", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(PSResourceGroup))]
+    [Cmdlet(VerbsCommon.New, "AzureRmResourceGroup", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(PSResourceGroup))]
     public class NewAzureResourceGroupCommand : ResourceWithParameterBaseCmdlet, IDynamicParameters
     {
         [Alias("ResourceGroupName")]
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Resources
             if(!string.IsNullOrEmpty(DeploymentName) || !string.IsNullOrEmpty(GalleryTemplateIdentity) || !string.IsNullOrEmpty(TemplateFile)
                 || !string.IsNullOrEmpty(TemplateVersion) || TemplateParameterObject != null || !string.IsNullOrEmpty(StorageAccountName))
             {
-                WriteWarning("The deployment parameters in New-AzureRMResourceGroup cmdlet is being deprecated and will be removed in a future release. Please use New-AzureRMResourceGroupDeployment to submit deployments.");
+                WriteWarning("The deployment parameters in New-AzureRmResourceGroup cmdlet is being deprecated and will be removed in a future release. Please use New-AzureRmResourceGroupDeployment to submit deployments.");
             }
             WriteWarning("The output object of this cmdlet will be modified in a future release.");
             WriteObject(ResourcesClient.CreatePSResourceGroup(parameters));

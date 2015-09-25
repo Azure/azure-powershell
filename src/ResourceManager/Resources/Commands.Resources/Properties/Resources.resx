@@ -312,4 +312,7 @@
   <data name="PrincipalNotFound" xml:space="preserve">
     <value>Cannot find principal using the specified options</value>
   </data>
+  <data name="IncludeClassicAdminsNotSupported" xml:space="preserve">
+    <value>IncludeClassicAdministrators is only supported for a User principal</value>
+  </data>
 </root>

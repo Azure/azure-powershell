@@ -20,6 +20,8 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
 
     public class TrafficManagerEndpoint
     {
+        public string Id { get; set; }
+
         public string Name { get; set; }
 
         public string ProfileName { get; set; }
@@ -46,16 +48,17 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
         {
             return new Endpoint
             {
+                Id = this.Id,
                 Name = this.Name,
                 Type = TrafficManagerEndpoint.ToSDKEndpointType(this.Type),
-                Id = this.TargetResourceId,
                 Properties = new EndpointProperties
                 {
                     Target = this.Target,
                     EndpointStatus = this.EndpointStatus,
                     Weight = this.Weight,
                     Priority = this.Priority,
-                    EndpointLocation = this.Location
+                    EndpointLocation = this.Location,
+                    TargetResourceId = this.TargetResourceId
                 }
             };
         }

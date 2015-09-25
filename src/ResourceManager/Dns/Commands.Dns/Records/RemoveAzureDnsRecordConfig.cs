@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Dns
     /// <summary>
     /// Removes a record from a record set object.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRMDnsRecordConfig"), OutputType(typeof(DnsRecordSet))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmDnsRecordConfig"), OutputType(typeof(DnsRecordSet))]
     public class RemoveAzureDnsRecordConfig : DnsBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The record set from which to remove the record.")]

@@ -18,7 +18,7 @@ Tests querying for a Batch account that does not exist throws
 #>
 function Test-GetNonExistingBatchAccount
 {
-    Assert-Throws { Get-AzureRMBatchAccount -Name "accountthatdoesnotexist" }
+    Assert-Throws { Get-AzureRmBatchAccount -Name "accountthatdoesnotexist" }
 }
 
 <#
@@ -34,11 +34,11 @@ function Test-CreatesNewBatchAccount
 
     try 
     {
-        New-AzureRMResourceGroup -Name $resourceGroup -Location $location
+        New-AzureRmResourceGroup -Name $resourceGroup -Location $location
 
         # Test
-        $actual = New-AzureRMBatchAccount -Name $account -ResourceGroupName $resourceGroup -Location $location -Tag @{Name = "testtag"; Value = "testval"} 
-        $expected = Get-AzureRMBatchAccount -Name $account -ResourceGroupName $resourceGroup
+        $actual = New-AzureRmBatchAccount -Name $account -ResourceGroupName $resourceGroup -Location $location -Tag @{Name = "testtag"; Value = "testval"} 
+        $expected = Get-AzureRmBatchAccount -Name $account -ResourceGroupName $resourceGroup
 
         # Assert
 		Assert-AreEqual $expected.AccountName $actual.AccountName
@@ -67,12 +67,12 @@ function Test-CreateExistingBatchAccount
 
     try 
     {
-        New-AzureRMResourceGroup -Name $resourceGroup -Location $location
+        New-AzureRmResourceGroup -Name $resourceGroup -Location $location
 
         # Test
-        New-AzureRMBatchAccount -Name $account -ResourceGroupName $resourceGroup -Location $location -Tag @{Name = "testtag"; Value = "testval"} 
+        New-AzureRmBatchAccount -Name $account -ResourceGroupName $resourceGroup -Location $location -Tag @{Name = "testtag"; Value = "testval"} 
 
-        Assert-Throws { New-AzureRMBatchAccount -Name $account -ResourceGroupName $resourceGroup -Location $location }
+        Assert-Throws { New-AzureRmBatchAccount -Name $account -ResourceGroupName $resourceGroup -Location $location }
     }
     finally
     {
@@ -99,15 +99,15 @@ function Test-UpdatesExistingBatchAccount
 
     try 
     {
-        New-AzureRMResourceGroup -Name $resourceGroup -Location $location
+        New-AzureRmResourceGroup -Name $resourceGroup -Location $location
 
 		#Test
-        $new = New-AzureRMBatchAccount -Name $account -ResourceGroupName $resourceGroup -Location $location  -Tag @{Name = $tagName1; Value = $tagValue1} 
+        $new = New-AzureRmBatchAccount -Name $account -ResourceGroupName $resourceGroup -Location $location  -Tag @{Name = $tagName1; Value = $tagValue1} 
 		Assert-AreEqual 1 $new.Tags.Count
 
 		# Update Tag
-        $actual = Set-AzureRMBatchAccount -Name $account -ResourceGroupName $resourceGroup -Tag @{Name = $tagName2; Value = $tagValue2} 
-        $expected = Get-AzureRMBatchAccount -Name $account -ResourceGroupName $resourceGroup
+        $actual = Set-AzureRmBatchAccount -Name $account -ResourceGroupName $resourceGroup -Tag @{Name = $tagName2; Value = $tagValue2} 
+        $expected = Get-AzureRmBatchAccount -Name $account -ResourceGroupName $resourceGroup
 
         # Assert
 		Assert-AreEqual $expected.AccountName $actual.AccountName
@@ -144,15 +144,15 @@ function Test-GetBatchAccountsUnderResourceGroups
 
     try 
     {
-        New-AzureRMResourceGroup -Name $resourceGroup1 -Location $location1
-		New-AzureRMResourceGroup -Name $resourceGroup2 -Location $location1
-		New-AzureRMBatchAccount -Name $account11 -ResourceGroupName $resourceGroup1 -Location $location1 
-		New-AzureRMBatchAccount -Name $account12 -ResourceGroupName $resourceGroup1 -Location $location2 
-		New-AzureRMBatchAccount -Name $account21 -ResourceGroupName $resourceGroup2 -Location $location3
+        New-AzureRmResourceGroup -Name $resourceGroup1 -Location $location1
+		New-AzureRmResourceGroup -Name $resourceGroup2 -Location $location1
+		New-AzureRmBatchAccount -Name $account11 -ResourceGroupName $resourceGroup1 -Location $location1 
+		New-AzureRmBatchAccount -Name $account12 -ResourceGroupName $resourceGroup1 -Location $location2 
+		New-AzureRmBatchAccount -Name $account21 -ResourceGroupName $resourceGroup2 -Location $location3
 
         # Test
-		$allAccounts = Get-AzureRMBatchAccount | Where-Object {$_.ResourceGroupName -eq $resourceGroup1 -or $_.ResourceGroupName -eq $resourceGroup2}
-		$resourceGroup1Accounts = Get-AzureRMBatchAccount -ResourceGroupName $resourceGroup1
+		$allAccounts = Get-AzureRmBatchAccount | Where-Object {$_.ResourceGroupName -eq $resourceGroup1 -or $_.ResourceGroupName -eq $resourceGroup2}
+		$resourceGroup1Accounts = Get-AzureRmBatchAccount -ResourceGroupName $resourceGroup1
 
 		# Assert
 		Assert-AreEqual 3 $allAccounts.Count
@@ -184,16 +184,16 @@ function Test-CreateAndRemoveBatchAccountViaPiping
 
 	try
 	{
-		New-AzureRMResourceGroup -Name $resourceGroup -Location $location1
+		New-AzureRmResourceGroup -Name $resourceGroup -Location $location1
 
 		# Test
-		New-AzureRMBatchAccount -Name $account1 -ResourceGroupName $resourceGroup -Location $location1
-		New-AzureRMBatchAccount -Name $account2 -ResourceGroupName $resourceGroup -Location $location2
-		Get-AzureRMBatchAccount | where {$_.AccountName -eq $account1 -or $_.AccountName -eq $account2} | Remove-AzureRMBatchAccount -Force
+		New-AzureRmBatchAccount -Name $account1 -ResourceGroupName $resourceGroup -Location $location1
+		New-AzureRmBatchAccount -Name $account2 -ResourceGroupName $resourceGroup -Location $location2
+		Get-AzureRmBatchAccount | where {$_.AccountName -eq $account1 -or $_.AccountName -eq $account2} | Remove-AzureRmBatchAccount -Force
 
 		# Assert
-		Assert-Throws { Get-AzureRMBatchAccount -Name $account1 } 
-		Assert-Throws { Get-AzureRMBatchAccount -Name $account2 } 
+		Assert-Throws { Get-AzureRmBatchAccount -Name $account1 } 
+		Assert-Throws { Get-AzureRmBatchAccount -Name $account2 } 
 	}
 	finally
 	{
@@ -214,17 +214,17 @@ function Test-BatchAccountKeys
 
     try 
     {
-        New-AzureRMResourceGroup -Name $resourceGroup -Location $location
+        New-AzureRmResourceGroup -Name $resourceGroup -Location $location
 
         # Test
-        $new = New-AzureRMBatchAccount -Name $account -ResourceGroupName $resourceGroup -Location $location -Tag @{Name = "testtag"; Value = "testval"} 
-		$originalKeys =  Get-AzureRMBatchAccountKeys -Name $account -ResourceGroupName $resourceGroup
+        $new = New-AzureRmBatchAccount -Name $account -ResourceGroupName $resourceGroup -Location $location -Tag @{Name = "testtag"; Value = "testval"} 
+		$originalKeys =  Get-AzureRmBatchAccountKeys -Name $account -ResourceGroupName $resourceGroup
 		$originalPrimaryKey = $originalKeys.PrimaryAccountKey
 		$originalSecondaryKey = $originalKeys.SecondaryAccountKey
-		$newPrimary = New-AzureRMBatchAccountKey -Name $account -ResourceGroupName $resourceGroup -KeyType Primary
-		$newSecondary = New-AzureRMBatchAccountKey -Name $account -ResourceGroupName $resourceGroup -KeyType Secondary
-        $finalKeys = Get-AzureRMBatchAccountKeys -Name $account -ResourceGroupName $resourceGroup
-		$getAccountResult = Get-AzureRMBatchAccount -Name $account -ResourceGroupName $resourceGroup
+		$newPrimary = New-AzureRmBatchAccountKey -Name $account -ResourceGroupName $resourceGroup -KeyType Primary
+		$newSecondary = New-AzureRmBatchAccountKey -Name $account -ResourceGroupName $resourceGroup -KeyType Secondary
+        $finalKeys = Get-AzureRmBatchAccountKeys -Name $account -ResourceGroupName $resourceGroup
+		$getAccountResult = Get-AzureRmBatchAccount -Name $account -ResourceGroupName $resourceGroup
 
         # Assert
 		Assert-AreEqual $null $new.PrimaryAccountKey
