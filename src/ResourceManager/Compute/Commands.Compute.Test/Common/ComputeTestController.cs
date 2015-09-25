@@ -21,7 +21,6 @@ using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Test;
 using System;
@@ -119,11 +118,16 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
-                helper.SetupModules(
-                    AzureModule.AzureResourceManager,
-                    "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\ComputeTestCommon.ps1",
-                    "ScenarioTests\\" + callingClassName + ".ps1");
+                helper.SetupModules(AzureModule.AzureResourceManager, 
+                    "ScenarioTests\\Common.ps1", 
+                    "ScenarioTests\\ComputeTestCommon.ps1", 
+                    "ScenarioTests\\" + callingClassName + ".ps1", 
+                    helper.RMProfileModule,
+                    helper.RMResourceModule,
+                    helper.RMStorageDataPlaneModule,
+                    helper.RMStorageModule,
+                    helper.GetRMModulePath("AzureRM.Compute.psd1"),
+                    helper.GetRMModulePath("AzureRM.Network.psd1"));
 
                 try
                 {

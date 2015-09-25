@@ -39,8 +39,8 @@
     <NuGetPublishingSource Condition=" '$(NuGetPublishingSource)' != '' ">http://psget/PSGallery/api/v2/</NuGetPublishingSource>
   </PropertyGroup>
   <ItemGroup>
-    <AzureResourceManagerSln Include=".\src\ResourceManager.sln" />
-    <AzureServiceManagementSln Include=".\src\ServiceManagement.sln" />
+    <CmdletSolutionsToBuild Include=".\src\ResourceManager.sln;.\src\ServiceManagement.sln" Condition=" '$(Scope)' == '' "/>
+    <CmdletSolutionsToBuild Include=".\src\$(Scope).sln" Condition=" '$(Scope)' != '' "/>
     <SetupSln Include=".\setup\azurepowershell.sln" />
     <SetupPowershellGetSln Include=".\setup-powershellget\powershellget.sln" />
   </ItemGroup>
@@ -64,28 +64,19 @@
   
   <!-- Clean the build in all configurations -->
   <Target Name="Clean">
-    <!-- Clean the solutions -->
     <Message Importance="high" Text="Cleaning Cmdlets..." ContinueOnError="false" />
     <MSBuild
-      Projects="@(AzureResourceManagerSln)"
+      Projects="@(CmdletSolutionsToBuild)"
       Targets="Clean"
       Properties="Configuration=$(Configuration);Platform=Any CPU"
       ContinueOnError="false" />
-    <MSBuild
-      Projects="@(AzureServiceManagementSln)"
-      Targets="Clean"
-      Properties="Configuration=$(Configuration);Platform=Any CPU"
-      ContinueOnError="false" />
-    <MSBuild
-      Projects="@(SetupSln)"
-      Targets="Clean"
-      Properties="Configuration=$(Configuration);Platform=Any CPU"
-      ContinueOnError="false" />
+    
     <MSBuild
       Projects="@(SetupPowershellGetSln)"
       Targets="Clean"
       Properties="Configuration=$(Configuration);Platform=Any CPU"
-      ContinueOnError="false" />
+      ContinueOnError="false" 
+      Condition=" '$(Scope)' == '' "/>
       
     <!-- Delete the publish files -->
     <Message Importance="high" Text="Cleaning publish files..." ContinueOnError="false" />
@@ -140,8 +131,12 @@
     <Exec Command="$(NuGetCommand) sources add -Name LocalFeed -Source &quot;$(MSBuildProjectDirectory)\tools\LocalFeed&quot; $(NuGetRestoreConfigSwitch)"/>
 
     <!-- Restore packages -->
-    <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\src\ResourceManager.sln $(NuGetRestoreConfigSwitch)" ContinueOnError="false" />
-    <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\src\ServiceManagement.sln $(NuGetRestoreConfigSwitch)" ContinueOnError="false" />
+    <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\src\ResourceManager.sln $(NuGetRestoreConfigSwitch)" ContinueOnError="false" 
+          Condition="$(Scope) == ''"  />
+    <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\src\ServiceManagement.sln $(NuGetRestoreConfigSwitch)" ContinueOnError="false"
+          Condition="$(Scope) == ''"  />
+    <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\src\$(Scope).sln $(NuGetRestoreConfigSwitch)" ContinueOnError="false"
+          Condition="$(Scope) != ''"  />
     
     <!--Restore the xunit runner needed to run unit tests-->
     <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\packages.config -PackagesDirectory $(MSBuildProjectDirectory)\packages" />
@@ -153,15 +148,11 @@
   <Target Name="Build" DependsOnTargets="RestoreNugetPackages;BuildMsBuildTask">
     <Message Importance="high" Text="Building Cmdlets..." />
     <MSBuild
-      Projects="@(AzureResourceManagerSln)"
+      Projects="@(CmdletSolutionsToBuild)"
       Targets="Build"
       Properties="Configuration=$(Configuration);Platform=Any CPU"
-      BuildInParallel="$(BuildInParallel)" ContinueOnError="false" />
-    <MSBuild
-      Projects="@(AzureServiceManagementSln)"
-      Targets="Build"
-      Properties="Configuration=$(Configuration);Platform=Any CPU"
-      BuildInParallel="$(BuildInParallel)" ContinueOnError="false" />
+      BuildInParallel="$(BuildInParallel)" 
+      ContinueOnError="false" />
       
     <CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " />
     
@@ -170,14 +161,18 @@
       Projects="@(SetupPowershellGetSln)"
       Targets="Build"
       Properties="Configuration=$(Configuration);Platform=Any CPU"
-      ContinueOnError="false" />
+      ContinueOnError="false" 
+      Condition=" '$(Scope)' == '' "/>
+    
     <MSBuild
       Projects="@(SetupSln)"
       Targets="Build"
       Properties="Configuration=$(Configuration);Platform=Any CPU"
-      ContinueOnError="false" />
+      ContinueOnError="false" 
+      Condition=" '$(Scope)' == '' "/>
     
-    <CallTarget Targets="CodeSignInstaller" Condition=" '$(CodeSign)' == 'true' " />    
+    <CallTarget Targets="CodeSignInstaller" 
+                Condition=" '$(CodeSign)' == 'true' and '$(Scope)' == ''" />    
   </Target>
   
   <!-- Do everything possible -->
@@ -305,7 +300,7 @@
   <Import Project="$(MSBuildThisFileDirectory)AzurePowershell.test.targets"/>
   
   <!-- Run checkin tests for each pull request -->
-  <Target Name="Test" DependsOnTargets="Build;BeforeRunTests">
+  <Target Name="Test" DependsOnTargets="BeforeRunTests">
     <Message Importance="high" Text="Running check in tests..." />
     <CallTarget Targets="InvokeXUnit"/>
   </Target>
