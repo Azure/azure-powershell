@@ -1,29 +1,29 @@
-$AzureRMModules = (
-  "Azure.Storage",
-  "AzureRM.ApiManagement",
-  "AzureRM.Automation",
-  "AzureRM.Backup",
-  "AzureRM.Batch",
-  "AzureRM.Compute",
-  "AzureRM.DataFactories",
-  "AzureRM.Dns",
-  "AzureRM.HDInsight",
-  "AzureRM.Insights",
-  "AzureRM.KeyVault",
-  "AzureRM.Network",
-  "AzureRM.OperationalInsights",
-  "AzureRM.Profile",
-  "AzureRM.RedisCache",
-  "AzureRM.Resources",
-  "AzureRM.SiteRecovery",
-  "AzureRM.Sql",
-  "AzureRM.Storage",
-  "AzureRM.StreamAnalytics",
-  "AzureRM.Tags",
-  "AzureRM.TrafficManager",
-  "AzureRM.UsageAggregates",
-  "AzureRM.Websites"
-)
+$AzureRMModules = @{
+  "Azure.Storage" = "0.9.8";
+  "AzureRM.ApiManagement" = "0.9.8";
+  "AzureRM.Automation" = "0.9.8";
+  "AzureRM.Backup" = "0.9.8";
+  "AzureRM.Batch" = "0.9.8";
+  "AzureRM.Compute" = "0.9.8";
+  "AzureRM.DataFactories" = "0.9.8";
+  "AzureRM.Dns" = "0.9.8";
+  "AzureRM.HDInsight" = "0.9.8";
+  "AzureRM.Insights" = "0.9.8";
+  "AzureRM.KeyVault" = "0.9.8";
+  "AzureRM.Network" = "0.9.8";
+  "AzureRM.OperationalInsights" = "0.9.8";
+  "AzureRM.Profile" = "0.9.8";
+  "AzureRM.RedisCache" = "0.9.8";
+  "AzureRM.Resources" = "0.9.8";
+  "AzureRM.SiteRecovery" = "0.9.8";
+  "AzureRM.Sql" = "0.9.8";
+  "AzureRM.Storage" = "0.9.8";
+  "AzureRM.StreamAnalytics" = "0.9.8";
+  "AzureRM.Tags" = "0.9.8";
+  "AzureRM.TrafficManager" = "0.9.8";
+  "AzureRM.UsageAggregates" = "0.9.8";
+  "AzureRM.Websites" = "0.9.8"
+}
 
 <#
  .Synopsis
@@ -41,12 +41,12 @@ $AzureRMModules = (
 function Update-AzureRM
 {
   param(
-  [Parameter(Position=0, Mandatory = $false)]
+  [Parameter(Position=0; Mandatory = $false)]
   [string]
-  $Repository,
+  $Repository;
 
-  [Parameter(Position=1, Mandatory = $false)]
-  [ValidateSet("CurrentUser","AllUsers")]
+  [Parameter(Position=1; Mandatory = $false)]
+  [ValidateSet("CurrentUser";"AllUsers")]
   [string]
   $Scope)
 
@@ -67,7 +67,7 @@ function Update-AzureRM
       }
       $v = (Get-InstalledModule -Name $args[0])[0].Version.ToString()
       Write-Output "$($args[0]) $v installed..."
-    } -ArgumentList $_, $Repository, $Scope }
+    } -ArgumentList $_; $Repository; $Scope }
   
   $AzureRMModules | ForEach {Get-Job -Name $_ | Wait-Job | Receive-Job }
 }

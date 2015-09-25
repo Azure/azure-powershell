@@ -34,8 +34,6 @@ This may take some time...
 
 		Import-Module PowerShellGet
 
-		Install-Module Azure
-		Write-Output "Azure $((Get-InstalledModule -Name Azure)[0].Version) installed..."
 		Install-Module AzureRM
 		Write-Output "AzureRM $((Get-InstalledModule -Name AzureRM)[0].Version) installed..."
 		Update-AzureRM
@@ -44,6 +42,9 @@ This may take some time...
 		$welcomeMessage = @"
 For a list of all Azure cmdlets type 'help azure'.
 For a list of Azure Pack cmdlets type 'Get-Command *wapack*'.
+
+To use Azure Service Management cmdlets please execute the following cmdlet:
+  Install-Module Azure
 "@
 		Write-Output $welcomeMessage
 
