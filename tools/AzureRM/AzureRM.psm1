@@ -1,3 +1,5 @@
+#Requires -RunAsAdministrator
+
 $AzureRMProfileVersion = "0.9.8";
 
 $AzureRMModules = @{
@@ -27,12 +29,31 @@ $AzureRMModules = @{
   "AzureRM.Websites" = "0.9.8"
 }
 
+function Import-ModuleWithVersionCheck([string]$Name,[string]$MinimumVersion,[string]$Repository,[string]$Scope)
+{
+  $minVer = $MinimumVersion
+  $maxVer = "$($minVer.Split(".")[0]).9999.0"
+  try {
+    if ([string]::IsNullOrWhiteSpace($Repository)) 
+    {
+      Install-Module -Name $Name -Scope $Scope -MinimumVersion $minVer -MaximumVersion $maxVer -ErrorAction Stop
+    } else {
+      Install-Module -Name $Name -Repository $Repository -Scope $Scope -MinimumVersion $minVer -MaximumVersion $maxVer -ErrorAction Stop
+    } 
+    $v = (Get-InstalledModule -Name $Name)[0].Version.ToString()
+    Write-Output "$Name $v installed..." 
+  } catch {
+    Write-Warning "Skipping $Name package..."
+    Write-Warning $_
+  }
+}
+
 <#
  .Synopsis
   Install Azure Resource Manager cmdlet modules
 
  .Description
-  Installs all the available Azure Resource Manager cmdlet modules that start with "AzureRM".
+  Installs all the available Azure Resource Manager cmdlet modules.
 
  .Parameter Repository
   Limit the search for "AzureRM" cmdlets in a specific repository.
@@ -43,12 +64,11 @@ $AzureRMModules = @{
 function Update-AzureRM
 {
   param(
-  [Parameter(Position=0; Mandatory = $false)]
+  [Parameter(Position=0, Mandatory = $false)]
   [string]
-  $Repository;
-
-  [Parameter(Position=1; Mandatory = $false)]
-  [ValidateSet("CurrentUser";"AllUsers")]
+  $Repository,
+  [Parameter(Position=1, Mandatory = $false)]
+  [ValidateSet("CurrentUser","AllUsers")]
   [string]
   $Scope)
 
@@ -58,33 +78,48 @@ function Update-AzureRM
   }
 
   Write-Output "Installing AzureRM modules."
-  $minVer = $AzureRMProfileVersion
-  $maxVer = "$($args[1].Split(".")[0]).9999.0"
-  if ([string]::IsNullOrWhiteSpace($Repository)) 
-  {
-    Install-Module -Name AzureRM.Profile -Scope $Scope -MinimumVersion $minVer -MaximumVersion $maxVer
-  } else {
-    Install-Module -Name AzureRM.Profile -Repository $Repository -Scope $Scope -MinimumVersion $minVer -MaximumVersion $maxVer
-  } 
-  $v = (Get-InstalledModule -Name AzureRM.Profile)[0].Version.ToString()
-  Write-Output "AzureRM.Profile $v installed..." 
+
+  Import-ModuleWithVersionCheck "AzureRM.Profile" $AzureRMProfileVersion $Repository $Scope
 
   $result = $AzureRMModules.Keys | ForEach {
     Start-Job -Name $_ -ScriptBlock {
-      $minVer = $args[1]
-      $maxVer = "$($args[1].Split(".")[0]).9999.0"
-
-      if ([string]::IsNullOrWhiteSpace($args[2])) 
-      {
-        Install-Module -Name $args[0] -Scope $args[3] -MinimumVersion $minVer -MaximumVersion $maxVer
-      } else {
-        Install-Module -Name $args[0] -Repository $args[2] -Scope $args[3] -MinimumVersion $minVer -MaximumVersion $maxVer
-      }
-      $v = (Get-InstalledModule -Name $args[0])[0].Version.ToString()
-      Write-Output "$($args[0]) $v installed..."
-    } -ArgumentList $_; $AzureRMModules[$_]; $Repository; $Scope }
+      Import-ModuleWithVersionCheck $args[0] $args[1] $args[2] $args[3]
+    } -ArgumentList $_, $AzureRMModules[$_], $Repository, $Scope }
   
-  $AzureRMModules | ForEach {Get-Job -Name $_ | Wait-Job | Receive-Job }
+  $AzureRMModules.Keys | ForEach {Get-Job -Name $_ | Wait-Job | Receive-Job }
 }
+
+<#
+ .Synopsis
+  Remove Azure Resource Manager cmdlet modules
+
+ .Description
+  Removes all installed Azure Resource Manager cmdlet modules.
+#>
+function Uninstall-AzureRM
+{
+  param(
+  [Parameter(Position=0, Mandatory = $false)]
+  [string]
+  $Repository)
+
+  Write-Output "Uninstalling AzureRM modules."
+
+  $installedModules = Get-InstalledModule
+
+  $AzureRMModules.Keys | ForEach {
+    $moduleName = $_
+    if (($installedModules | where {$_.Name -eq $moduleName}) -ne $null) {
+      Uninstall-Module -Name $_ -ErrorAction Stop
+      Write-Output "$moduleName uninstalled..." 
+    }
+  }
+
+  if (($installedModules | where {"AzureRM.Profile" -eq $moduleName}) -ne $null) {
+    Uninstall-Module -Name "AzureRM.Profile" -ErrorAction Stop
+    Write-Output "AzureRM.Profile uninstalled..." 
+  }
+}
+
 New-Alias -Name Install-AzureRM -Value Update-AzureRM
 Export-ModuleMember -function * -Alias *
