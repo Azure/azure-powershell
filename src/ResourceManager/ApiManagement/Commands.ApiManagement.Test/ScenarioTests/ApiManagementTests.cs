@@ -161,13 +161,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 _helper.SetupModules(AzureModule.AzureResourceManager, 
-                    false, 
-                    "ScenarioTests\\Common.ps1", "ScenarioTests\\" + GetType().Name + ".ps1",
-                    Path.Combine(_helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1"),
-                    Path.Combine(_helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1"),
-                    Path.Combine(_helper.PackageDirectory, @"ResourceManager\AzureResourceManager\Azure.Storage\Azure.Storage.psd1"),
-                    Path.Combine(_helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Storage\AzureRM.Storage.psd1"),
-                    Path.Combine(_helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.ApiManagement\AzureRM.ApiManagement.psd1"));
+                    "ScenarioTests\\Common.ps1", 
+                    "ScenarioTests\\" + GetType().Name + ".ps1", 
+                    _helper.RMProfileModule,
+                    _helper.RMResourceModule, 
+                    _helper.RMStorageDataPlaneModule, 
+                    _helper.RMStorageModule, 
+                    _helper.GetRMModulePath("AzureRM.ApiManagement.psd1"));
 
                 _helper.RunPowerShellTest(scripts);
             }

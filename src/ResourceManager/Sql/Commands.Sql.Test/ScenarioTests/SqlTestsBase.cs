@@ -74,16 +74,14 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                 helper.SetupEnvironment();
 
                 helper.SetupModules(AzureModule.AzureResourceManager, 
-                    false,
-                    "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + this.GetType().Name + ".ps1",
-                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1"),
-                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1"),
-                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\Azure.Storage\Azure.Storage.psd1"),
-                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Storage\AzureRM.Storage.psd1"),
-                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Insights\AzureRM.Insights.psd1"),
-                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Sql\AzureRM.Sql.psd1")
-                    );
+                    "ScenarioTests\\Common.ps1", 
+                    "ScenarioTests\\" + this.GetType().Name + ".ps1", 
+                    helper.RMProfileModule, 
+                    helper.RMResourceModule, 
+                    helper.RMStorageDataPlaneModule, 
+                    helper.RMStorageModule, 
+                    helper.GetRMModulePath(@"AzureRM.Insights.psd1"), 
+                    helper.GetRMModulePath(@"AzureRM.Sql.psd1"));
 
                 helper.RunPowerShellTest(scripts);
             }

@@ -76,6 +76,49 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
         }
 
+        public string RMProfileModule
+        {
+            get
+            {
+                return Path.Combine(this.PackageDirectory, 
+                                    @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1");
+            }
+        }
+
+        public string RMResourceModule
+        {
+            get
+            {
+                return Path.Combine(this.PackageDirectory,
+                                    @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1");
+            }
+        }
+
+        public string RMStorageModule
+        {
+            get
+            {
+                return Path.Combine(this.PackageDirectory, 
+                                    @"ResourceManager\AzureResourceManager\AzureRM.Storage\AzureRM.Storage.psd1");
+            }
+        }
+
+        //TODO: clarify (data plane should not be under ARM folder)
+        public string RMStorageDataPlaneModule
+        {
+            get
+            {
+                return Path.Combine(this.PackageDirectory,
+                                     @"ResourceManager\AzureResourceManager\Azure.Storage\Azure.Storage.psd1");
+            }
+        }
+
+        public string GetRMModulePath(string psd1FileName)
+        {
+            string basename = Path.GetFileNameWithoutExtension(psd1FileName);
+            return Path.Combine(this.PackageDirectory, 
+                                 @"ResourceManager\AzureResourceManager\" + basename + @"\" + psd1FileName); 
+        }
         /// <summary>
         /// Loads DummyManagementClientHelper with clients and throws exception if any client is missing.
         /// </summary>
@@ -211,7 +254,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             }
         }
 
-        public void SetupModules(AzureModule mode, bool loadArmPsd1, params string[] modules)
+        public void SetupModules(AzureModule mode, params string[] modules)
         {
             this.modules = new List<string>();
             if (mode == AzureModule.AzureProfile)
@@ -223,17 +266,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             {
                 this.modules.Add(Path.Combine(PackageDirectory, @"ServiceManagement\Azure\Azure.psd1"));
             }
-            else if (mode == AzureModule.AzureResourceManager)
-            {
-                if (loadArmPsd1)
-                {
-                    this.modules.Add(Path.Combine(PackageDirectory, @"ResourceManager\AzureResourceManager\AzureResourceManager.psd1"));
-                }
-            }
-            else
-            {
-                throw new ArgumentException("Unknown command type for testing");
-            }
+            
             this.modules.Add("Assert.ps1");
             this.modules.Add("Common.ps1");
             this.modules.AddRange(modules);

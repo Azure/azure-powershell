@@ -93,12 +93,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 var callingClassName = callingClassType
                     .Split(new[] {"."}, StringSplitOptions.RemoveEmptyEntries)
                     .Last();
-                helper.SetupModules(
-                    AzureModule.AzureResourceManager,
-                    false,
-                    callingClassName + ".ps1",
-                    System.IO.Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1")
-                );
+                helper.SetupModules(AzureModule.AzureResourceManager, 
+                    callingClassName + ".ps1", 
+                    helper.RMProfileModule);
 
                 try
                 {

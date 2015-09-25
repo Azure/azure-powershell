@@ -137,18 +137,13 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 
                 string callingClassName = callingClassType 
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries) 
-                                        .Last(); 
+                                        .Last();
 
 
-                this.helper.SetupModules( 
-                    AzureModule.AzureResourceManager, 
-                    false,
-                    "ScenarioTests\\Common.ps1", 
-                    "ScenarioTests\\" + callingClassName + ".ps1",
-                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1"),
-                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1"),
-                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Dns\AzureRM.Dns.psd1")
-                ); 
+                this.helper.SetupModules(AzureModule.AzureResourceManager, "ScenarioTests\\Common.ps1", "ScenarioTests\\" + callingClassName + ".ps1", 
+                    helper.RMProfileModule,
+                    helper.RMResourceModule,
+                    helper.GetRMModulePath("AzureRM.Dns.psd1")); 
 
                 try 
                 { 

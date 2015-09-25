@@ -61,10 +61,9 @@ namespace Microsoft.Azure.Commands.StreamAnalytics.Test
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 helper.SetupModules(AzureModule.AzureResourceManager, 
-                    false,
-                    "ScenarioTests\\" + this.GetType().Name + ".ps1",
-                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1"),
-                    Path.Combine(helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.StreamAnalytics\AzureRM.StreamAnalytics.psd1"));
+                    "ScenarioTests\\" + this.GetType().Name + ".ps1", 
+                    helper.RMProfileModule, 
+                    helper.GetRMModulePath(@"AzureRM.StreamAnalytics.psd1"));
 
                 helper.RunPowerShellTest(scripts);
             }

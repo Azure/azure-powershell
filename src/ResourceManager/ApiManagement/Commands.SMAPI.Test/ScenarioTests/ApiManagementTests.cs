@@ -179,11 +179,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
 
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 _helper.SetupModules(AzureModule.AzureResourceManager, 
-                    false, 
-                    "ScenarioTests\\Common.ps1", "ScenarioTests\\" + GetType().Name + ".ps1",
-                    Path.Combine(_helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1"),
-                    Path.Combine(_helper.PackageDirectory, @"ResourceManager\AzureResourceManager\AzureRM.ApiManagement\AzureRM.ApiManagement.psd1")
-                );
+                    "ScenarioTests\\Common.ps1", 
+                    "ScenarioTests\\" + GetType().Name + ".ps1", 
+                    _helper.RMProfileModule, 
+                    _helper.GetRMModulePath(@"AzureRM.ApiManagement.psd1"));
 
                 _helper.RunPowerShellTest(scripts);
             }
