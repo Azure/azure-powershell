@@ -1,4 +1,8 @@
-﻿## 2015.09.03 version 0.9.8
+﻿## 2015.09.024 version 0.9.9
+* Azure UsageAggregates cmdlet
+  * Update to use the latest changes from Nuget package
+
+## 2015.09.03 version 0.9.8
 * Azure Redis Cache cmdlets 
   * New-AzureRMRedisCache - 'RedisVersion' parameter is deprecated.
 * Azure Compute (ARM) Cmdlets
