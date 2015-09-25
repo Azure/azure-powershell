@@ -20,7 +20,6 @@ using Microsoft.Azure.Common.Authentication.Models;
 namespace Microsoft.Azure.Commands.UsageAggregates
 {
     using Commerce.UsageAggregates.Models;
-    using WindowsAzure.Commands.Utilities.Common;
     using System;
     using System.Management.Automation;
     using ResourceManager.Common;
