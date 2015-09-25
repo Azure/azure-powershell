@@ -75,10 +75,12 @@
     <Compile Include="Models\Management\AzureHDInsightCluster.cs" />
     <Compile Include="Models\Management\AzureHDInsightConfig.cs" />
     <Compile Include="Models\Job\AzureHdInsightJobManagementClient.cs" />
+    <Compile Include="Models\Management\AzureHDInsightDefaultStorageAccount.cs" />
     <Compile Include="Models\Management\AzureHdInsightManagementClient.cs" />
     <Compile Include="Models\Management\AzureHDInsightMetastoreType.cs" />
     <Compile Include="Models\Management\AzureHDInsightMetastore.cs" />
     <Compile Include="ManagementCommands\NewAzureHDInsightClusterCommand.cs" />
+    <Compile Include="ClusterConfigurationUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -90,7 +92,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="MSSharedLibKey.snk" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Hyak.Common">
