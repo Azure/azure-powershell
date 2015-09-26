@@ -24,6 +24,14 @@ namespace Microsoft.Azure.Commands.Compute.Models
 
         public string Name { get; set; }
 
+        public BootDiagnosticsInstanceView BootDiagnostics { get; set; }
+
+        [JsonIgnore]
+        public string BootDiagnosticsText
+        {
+            get { return JsonConvert.SerializeObject(BootDiagnostics, Formatting.Indented); }
+        }
+
         public IList<DiskInstanceView> Disks { get; set; }
 
         [JsonIgnore]
@@ -74,6 +82,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
             {
                 ResourceGroupName = resourceGroupName,
                 Name = vmName,
+                BootDiagnostics = virtualMachineInstanceView.BootDiagnostics,
                 Disks = virtualMachineInstanceView.Disks,
                 Extensions = virtualMachineInstanceView.Extensions,
                 Statuses = virtualMachineInstanceView.Statuses,

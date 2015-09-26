@@ -12,13 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System.Collections;
+using System.Globalization;
+using System.Linq;
 using System.Management.Automation;
+using System.Security.Cryptography;
+using System.Text;
+using Microsoft.Azure.Commands.Management.Storage;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -46,10 +57,28 @@ namespace Microsoft.Azure.Commands.Compute
         {
             base.ProcessRecord();
 
+            if (this.VM.DiagnosticsProfile == null)
+            {
+                var storageUri = GetStorageAccountForBootDiagnostics();
+
+                if (storageUri != null)
+                {
+                    this.VM.DiagnosticsProfile = new DiagnosticsProfile
+                    {
+                        BootDiagnostics = new BootDiagnostics
+                        {
+                            Enabled = true,
+                            StorageUri = storageUri,
+                        }
+                    };
+                }
+            }
+
             ExecuteClientAction(() =>
             {
                 var parameters = new VirtualMachine
                 {
+                    DiagnosticsProfile       = this.VM.DiagnosticsProfile,
                     HardwareProfile          = this.VM.HardwareProfile,
                     StorageProfile           = this.VM.StorageProfile,
                     NetworkProfile           = this.VM.NetworkProfile,
@@ -65,6 +94,142 @@ namespace Microsoft.Azure.Commands.Compute
                 var result = Mapper.Map<PSComputeLongRunningOperation>(op);
                 WriteObject(result);
             });
+        }
+
+        private Uri GetStorageAccountForBootDiagnostics()
+        {                        
+            var storageAccountName = GetStorageAccountNameFromStorageProfile();
+            var storageClient =
+                    AzureSession.ClientFactory.CreateClient<StorageManagementClient>(DefaultProfile.Context,
+                        AzureEnvironment.Endpoint.ResourceManager);
+
+            if (! string.IsNullOrEmpty(storageAccountName))
+            {
+                var storageAccountResponse = storageClient.StorageAccounts.GetProperties(this.ResourceGroupName, storageAccountName);
+
+                if (! storageAccountResponse.StorageAccount.AccountType.Equals(AccountType.PremiumLRS))
+                {
+                    return storageAccountResponse.StorageAccount.PrimaryEndpoints.Blob;
+                }
+            }
+
+            var storageAccount = TryToChooseExistingStandardStorageAccount(storageClient);
+
+            return (storageAccount == null)
+                ? CreateStandardStorageAccount(storageClient)
+                : storageAccount.PrimaryEndpoints.Blob;
+        }
+
+        private string GetStorageAccountNameFromStorageProfile()
+        {
+            if (this.VM == null
+                || this.VM.StorageProfile == null
+                || this.VM.StorageProfile.OSDisk == null
+                || this.VM.StorageProfile.OSDisk.VirtualHardDisk == null
+                || this.VM.StorageProfile.OSDisk.VirtualHardDisk.Uri == null)
+            {
+                return null;
+            }
+
+            return GetStorageAccountNameFromUriString(this.VM.StorageProfile.OSDisk.VirtualHardDisk.Uri);
+        }
+
+        private StorageAccount TryToChooseExistingStandardStorageAccount(StorageManagementClient client)
+        {
+            var storageAccountList = client.StorageAccounts.ListByResourceGroup(this.ResourceGroupName);
+            if (storageAccountList == null)
+            {
+                return null;
+            }
+
+            try
+            {
+                return storageAccountList.StorageAccounts.First(
+                e => e.AccountType.HasValue && !e.AccountType.Value.Equals(AccountType.PremiumLRS));
+            }
+            catch (InvalidOperationException e)
+            {
+                if (e.Message.Contains("Sequence contains no matching element"))
+                {
+                    return null;
+                }
+                throw;
+            }
+        }
+        
+        private Uri CreateStandardStorageAccount(StorageManagementClient client)
+        {
+            string storageAccountName;
+
+            var i = 0;
+
+            
+            do
+            {
+                storageAccountName = GetRandomStorageAccountName(i);
+                i++;
+            }
+            while (i < 10 && ! client.StorageAccounts.CheckNameAvailability(storageAccountName).NameAvailable);
+
+
+            StorageAccountCreateParameters storaeAccountParameter = new StorageAccountCreateParameters
+            {
+                AccountType = AccountType.StandardGRS,
+                Location = this.Location ?? this.VM.Location,
+            };
+
+            try
+            {
+                client.StorageAccounts.Create(this.ResourceGroupName, storageAccountName, storaeAccountParameter);
+
+                var getresponse = client.StorageAccounts.GetProperties(this.ResourceGroupName, storageAccountName);
+
+                return getresponse.StorageAccount.PrimaryEndpoints.Blob;
+
+            }
+            catch (Exception e)
+            {
+                // Failed to create a storage account for boot diagnostics.
+                WriteWarning(string.Format(Properties.Resources.ErrorDuringCreatingStorageAccountForBootDiagnostics, e));
+                return null;
+            }
+        }
+
+        private string GetRandomStorageAccountName(int interation)
+        {
+            const int maxResLength = 6;
+            const int maxSubLength = 5;
+
+            var subscriptionName = GetTruncatedStr(this.DefaultContext.Subscription.Name, maxSubLength);
+            var resourcename = GetTruncatedStr(this.ResourceGroupName, maxResLength);
+            var datetimestr = DateTime.Now.ToString("yyyyMMddHHmm");
+
+            string output = subscriptionName + resourcename + datetimestr + interation;
+
+            output = new string((from c in output where char.IsLetterOrDigit(c) select c).ToArray());
+
+            return output.ToLowerInvariant();
+        }
+
+        private string GetTruncatedStr(string inputStr, int maxLength)
+        {
+            return (inputStr.Length > maxLength)
+                ? inputStr.Substring(0, maxLength)
+                : inputStr;
+        }
+
+        private string GetStorageAccountNameFromUriString(string uriStr)
+        {
+            Uri uri;
+
+            if (!Uri.TryCreate(uriStr, UriKind.RelativeOrAbsolute, out uri))
+            {
+                return null;
+            }
+
+            var storageUri = uri.Authority;
+            var index = storageUri.IndexOf('.');
+            return storageUri.Substring(0, index);
         }
     }
 }
