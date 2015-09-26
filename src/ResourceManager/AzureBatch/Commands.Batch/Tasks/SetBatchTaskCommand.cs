@@ -12,12 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using Microsoft.Azure.Commands.Batch.Models;
+using System.Management.Automation;
+using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
-namespace Microsoft.Azure.Commands.Resources.Models.Authorization
+namespace Microsoft.Azure.Commands.Batch
 {
-    public class PSGroupRoleAssignment : PSRoleAssignment
+    [Cmdlet(VerbsCommon.Set, Constants.AzureBatchTask)]
+    public class SetBatchTaskCommand : BatchObjectModelCmdletBase
     {
-        public string Mail { get; set; }
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true,
+            HelpMessage = "The PSCloudTask object with changes to commit to the Batch Service.")]
+        [ValidateNotNullOrEmpty]
+        public PSCloudTask Task { get; set; }
+
+        protected override void ProcessRecord()
+        {
+            this.BatchClient.UpdateTask(this.BatchContext, this.Task, this.AdditionalBehaviors);
+        }
     }
 }

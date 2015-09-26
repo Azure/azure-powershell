@@ -151,6 +151,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 tenantId, subscriptionId, out subscription, out tenant);
         }
 
+        public bool TryGetSubscriptionByName(string tenantId, string subscriptionName, out AzureSubscription subscription)
+        {
+            if (string.IsNullOrWhiteSpace(tenantId))
+            {
+                throw new ArgumentNullException("Please provide a valid tenant Id.");
+            }
+
+            IEnumerable<AzureSubscription> subscriptionList = ListSubscriptions(tenantId);
+            subscription = subscriptionList.FirstOrDefault(s => s.Name.Equals(subscriptionName, StringComparison.OrdinalIgnoreCase));
+
+            return subscription != null;
+        }
+
         public AzureEnvironment AddOrSetEnvironment(AzureEnvironment environment)
         {
             if (environment == null)
@@ -288,7 +301,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                             {
                                 WriteWarningMessage(string.Format(
                                     "Tenant '{0}' contains more than one subscription. First one will be selected for further use. " +
-                                    "To select another subscription, use Set-AzureRMContext.",
+                                    "To select another subscription, use Set-AzureRmContext.",
                                     tenantId));
                             }
                             subscriptionFromServer = subscriptions.First();
@@ -388,7 +401,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 catch (AadAuthenticationException)
                 {
                     WriteWarningMessage(string.Format("Could not authenticate user account {0} with tenant {1}.  " +
-                       "Subscriptions in this tenant will not be listed. Please login again using Login-AzureRMAccount " +
+                       "Subscriptions in this tenant will not be listed. Please login again using Login-AzureRmAccount " +
                        "to view the subscriptions in this tenant.", _profile.Context.Account, tenant));
                 }
 

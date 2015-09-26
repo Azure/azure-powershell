@@ -17,11 +17,41 @@ Param(
 [switch]$Install
 )
 
-cd c:\
-$welcomeMessage = @"
+$error.clear()
+try {
+	if ($Install.IsPresent) {
+		Write-Output @"
+
+Finalizing installation of Azure PowerShell. 
+Installing Azure Modules from PowerShell Gallery. 
+This may take some time...
+"@
+		$env:PSModulePath = "$env:HOME\Documents\WindowsPowerShell\Modules;$env:ProgramFiles\WindowsPowerShell\Modules;$env:SystemRoot\system32\WindowsPowerShell\v1.0\Modules\"
+
+		Import-Module PackageManagement
+		
+		$result = Get-PackageProvider -Name NuGet -ForceBootstrap
+
+		Import-Module PowerShellGet
+
+		Install-Module AzureRM
+		Write-Output "AzureRM $((Get-InstalledModule -Name AzureRM)[0].Version) installed..."
+		Update-AzureRM
+	} else {
+		cd c:\
+		$welcomeMessage = @"
 For a list of all Azure cmdlets type 'help azure'.
 For a list of Azure Pack cmdlets type 'Get-Command *wapack*'.
-"@
-Write-Output $welcomeMessage
 
-$VerbosePreference = "Continue"
+To use Azure Service Management cmdlets please execute the following cmdlet:
+  Install-Module Azure
+"@
+		Write-Output $welcomeMessage
+
+		$VerbosePreference = "Continue"
+	}
+}
+catch { Write-Output $error }
+if ($error) {
+	Read-Host -Prompt "An error occured during installation. Press any key..."
+}

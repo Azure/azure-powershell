@@ -13,9 +13,9 @@
 # ----------------------------------------------------------------------------------
 
 $ResourceGroupName = "backuprg"
-$ResourceName = "backuprn"
+$ResourceName = "backuprn2"
 $DataSourceType = "VM"
-$Location = "SouthEast Asia"
+$Location = "westus"
 $PolicyName = "Policy10";
 $PolicyId = "c87bbada-6e1b-4db2-b76c-9062d28959a4";
 $POName = "iaasvmcontainer;hydrarecordvm;hydrarecordvm"
@@ -33,8 +33,8 @@ Tests creating new resource group and a simple resource.
 #>
 function Test-GetAzureBackupProtectionPolicyTests
 {
-	$vault = Get-AzureRMBackupVault -Name $ResourceName;
-	$protectionPolicies = Get-AzureRMBackupProtectionPolicy -vault $vault
+	$vault = Get-AzureRmBackupVault -Name $ResourceName;
+	$protectionPolicies = Get-AzureRmBackupProtectionPolicy -vault $vault
 	Assert-NotNull $protectionPolicies 'Protection Policies should not be null'
 	foreach($protectionPolicy in $protectionPolicies)
 	{
@@ -50,8 +50,8 @@ function Test-GetAzureBackupProtectionPolicyTests
 
 function Test-GetAzureBackupProtectionPolicyByNameTests
 {
-	$vault = Get-AzureRMBackupVault -Name $ResourceName;
-	$protectionPolicy = Get-AzureRMBackupProtectionPolicy -vault $vault -Name $PolicyName
+	$vault = Get-AzureRmBackupVault -Name $ResourceName;
+	$protectionPolicy = Get-AzureRmBackupProtectionPolicy -vault $vault -Name $PolicyName
 	
 	Assert-NotNull $protectionPolicy.Name 'Name should not be null'
 	Assert-NotNull $protectionPolicy.Type 'Type should not be null'
@@ -65,12 +65,12 @@ function Test-GetAzureBackupProtectionPolicyByNameTests
 
 function Test-NewAzureBackupProtectionPolicyTests
 {	
-	$vault = Get-AzureRMBackupVault -Name $ResourceName;
-	$r1 = New-AzureRMBackupRetentionPolicyObject -DailyRetention -Retention 20
-	$r2 = New-AzureRMBackupRetentionPolicyObject -WeeklyRetention -DaysOfWeek "Monday" -Retention 10
+	$vault = Get-AzureRmBackupVault -Name $ResourceName;
+	$r1 = New-AzureRmBackupRetentionPolicyObject -DailyRetention -Retention 20
+	$r2 = New-AzureRmBackupRetentionPolicyObject -WeeklyRetention -DaysOfWeek "Monday" -Retention 10
 	$r = ($r1, $r2)
 
-	$protectionPolicy = New-AzureRMBackupProtectionPolicy -vault $vault -Name $PolicyName -Type $Type -Daily -RetentionPolicy $r -BackupTime $BackupTime
+	$protectionPolicy = New-AzureRmBackupProtectionPolicy -vault $vault -Name $PolicyName -Type $Type -Daily -RetentionPolicy $r -BackupTime $BackupTime
 	
 	Assert-NotNull $protectionPolicy.Name 'Name should not be null'
 	Assert-NotNull $protectionPolicy.Type 'Type should not be null'
@@ -83,17 +83,18 @@ function Test-NewAzureBackupProtectionPolicyTests
 
 function Test-SetAzureBackupProtectionPolicyTests
 {	
-	$vault = Get-AzureRMBackupVault -Name $ResourceName;
-	$protectionPolicy = Get-AzureRMBackupProtectionPolicy -vault $vault -Name $PolicyName
+	$vault = Get-AzureRmBackupVault -Name $ResourceName;
+	$protectionPolicy = Get-AzureRmBackupProtectionPolicy -vault $vault -Name $PolicyName
 	$policyNewName = "policy09-new"
 	
-	Set-AzureRMBackupProtectionPolicy -ProtectionPolicy $protectionPolicy -NewName $policyNewName	
+	Set-AzureRmBackupProtectionPolicy -ProtectionPolicy $protectionPolicy -NewName $policyNewName	
 }
 
 function Test-RemoveAzureBackupProtectionPolicyTests
 {	
-	$vault = Get-AzureRMBackupVault -Name $ResourceName;
-	$protectionPolicy = Get-AzureRMBackupProtectionPolicy -vault $vault -Name $PolicyName
+
+	$vault = Get-AzureRmBackupVault -Name $ResourceName;
+	$protectionPolicy = Get-AzureRmBackupProtectionPolicy -vault $vault -Name $PolicyName
 	
-	Remove-AzureRMBackupProtectionPolicy -ProtectionPolicy $protectionPolicy
+	Remove-AzureRmBackupProtectionPolicy -ProtectionPolicy $protectionPolicy -Force
 }

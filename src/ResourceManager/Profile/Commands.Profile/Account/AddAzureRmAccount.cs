@@ -12,21 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common;
+using System.IO;
 using System.Management.Automation;
-using Microsoft.Azure.Common.Authentication.Models;
+using System.Reflection;
 using System.Security;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Profile.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.Profile
 {
     /// <summary>
     /// Cmdlet to log into an environment and download the subscriptions
     /// </summary>
-    [Cmdlet("Login", "AzureRMAccount", DefaultParameterSetName = "User")]
-    [OutputType(typeof(AzureRMProfile))]
-    public class LoginAzureRMAccountCommand : AzureRMCmdlet
+    [Cmdlet("Add", "AzureRmAccount", DefaultParameterSetName = "User")]
+    [Alias("Login-AzureRmAccount")]
+    [OutputType(typeof(PSAzureProfile))]
+    public class AddAzureRMAccountCommand : AzureRMCmdlet , IModuleAssemblyInitializer
     {
         [Parameter(Mandatory = false, HelpMessage = "Environment containing the account to log into")]
         [ValidateNotNullOrEmpty]
@@ -40,8 +43,8 @@ namespace Microsoft.Azure.Commands.Profile
         public SwitchParameter ServicePrincipal { get; set; }
 
         [Parameter(ParameterSetName = "User", Mandatory = false, HelpMessage = "Optional tenant name or ID")]
-        [Parameter(ParameterSetName = "ServicePrincipal", Mandatory = true, HelpMessage = "Tenant name or ID")]
-        [Parameter(ParameterSetName = "AccessToken", Mandatory = false, HelpMessage = "Tenant name or ID")]
+        [Parameter(ParameterSetName = "ServicePrincipal", Mandatory = true, HelpMessage = "TenantId name or ID")]
+        [Parameter(ParameterSetName = "AccessToken", Mandatory = false, HelpMessage = "TenantId name or ID")]
         [ValidateNotNullOrEmpty]
         public string Tenant { get; set; }
 
@@ -106,7 +109,28 @@ namespace Microsoft.Azure.Commands.Profile
 
             var profileClient = new RMProfileClient(AzureRMCmdlet.DefaultProfile);
             
-            WriteObject(profileClient.Login(azureAccount, Environment, Tenant, SubscriptionId, password));
+            WriteObject((PSAzureProfile)profileClient.Login(azureAccount, Environment, Tenant, SubscriptionId, password));
         }
+
+        /// <summary>
+        /// Load global aliases for ARM
+        /// </summary>
+        public void OnImport()
+        {
+            try
+            {
+                System.Management.Automation.PowerShell invoker = null;
+                invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
+                invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
+                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                    "AzureRmProfileStartup.ps1")));
+                invoker.Invoke();
+            }
+            catch
+            {
+                // This will throw exception for tests, ignore.
+            }
+        }
+
     }
 }

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Get AD users.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMADUser", DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(List<PSADUser>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmADUser", DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(List<PSADUser>))]
     public class GetAzureADUserCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SearchString,

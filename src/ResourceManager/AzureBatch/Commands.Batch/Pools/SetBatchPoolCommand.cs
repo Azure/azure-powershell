@@ -12,18 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
+using Microsoft.Azure.Commands.Batch.Models;
+using System.Management.Automation;
+using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
-namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.Batch
 {
-    public class AzureBackupScenarioTests : AzureBackupTestsBase
+    [Cmdlet(VerbsCommon.Set, Constants.AzureBatchPool)]
+    public class SetBatchPoolCommand : BatchObjectModelCmdletBase
     {
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void AzureBackupEndToEndTests()
+        [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true,
+            HelpMessage = "The PSCloudPool object with changes to commit to the Batch Service.")]
+        [ValidateNotNullOrEmpty]
+        public PSCloudPool Pool { get; set; }
+
+        protected override void ProcessRecord()
         {
-            //this.RunPowerShellTest("Test-AzureBackupEndToEnd");
+            this.BatchClient.UpdatePool(this.BatchContext, this.Pool, this.AdditionalBehaviors);
         }
     }
 }

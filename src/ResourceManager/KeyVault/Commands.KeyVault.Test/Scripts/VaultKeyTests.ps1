@@ -39,7 +39,7 @@ function BulkCreateSoftKeys ($vault, $prefix, $total)
     for ($i=0;$i -lt $total; $i++) 
     { 
         $name = $prefix+$i; 
-        $k=Add-AzureRMKeyVaultKey -VaultName $Vault -Name $name -Destination 'Software'
+        $k=Add-AzureKeyVaultKey -VaultName $Vault -Name $name -Destination 'Software'
         Assert-NotNull $k
         $global:createdKeys += $name
     }
@@ -49,7 +49,7 @@ function BulkCreateSoftKeyVersions ($vault, $name, $total)
 {
     for ($i=0;$i -lt $total; $i++) 
     { 
-        $k=Add-AzureRMKeyVaultKey -VaultName $Vault -Name $name -Destination 'Software'
+        $k=Add-AzureKeyVaultKey -VaultName $Vault -Name $name -Destination 'Software'
         Assert-NotNull $k       
     }
     $global:createdKeys += $name
@@ -64,7 +64,7 @@ function Test_CreateSoftwareKeyWithDefaultAttributes
 {
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'soft'
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software' 
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software' 
     Assert-NotNull $key
     $global:createdKeys += $keyname
     Assert-KeyAttributes $key.Attributes 'RSA' $true $null $null $null $null
@@ -79,7 +79,7 @@ function Test_CreateSoftwareKeyWithCustomAttributes
 {
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'attr'    
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software' -Expires $expires -NotBefore $nbf -KeyOps $ops -Disable -Tags $tags
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software' -Expires $expires -NotBefore $nbf -KeyOps $ops -Disable -Tags $tags
     Assert-NotNull $key
     $global:createdKeys += $keyname
     Assert-KeyAttributes $key.Attributes 'RSA' $false $expires $nbf $ops $tags
@@ -93,7 +93,7 @@ function Test_CreateHsmKeyWithDefaultAttributes
 {
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'hsm'
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'HSM'
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'HSM'
     Assert-NotNull $key
     $global:createdKeys += $keyname
     Assert-KeyAttributes $key.Attributes 'RSA-HSM' $true $null $null $null $null
@@ -108,7 +108,7 @@ function Test_CreateHsmKeyWithCustomAttributes
 {
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'attrhsm'
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'HSM' -Expires $expires -NotBefore $nbf -KeyOps $ops -Disable -Tags $tags
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'HSM' -Expires $expires -NotBefore $nbf -KeyOps $ops -Disable -Tags $tags
     Assert-NotNull $key
     $global:createdKeys += $keyname
     Assert-KeyAttributes $key.Attributes 'RSA-HSM' $false $expires $nbf $ops $tags
@@ -123,7 +123,7 @@ function Test_ImportPfxWithDefaultAttributes
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'pfx'
     $pfxpath = Get-ImportKeyFile 'pfx'
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -KeyFilePath $pfxpath -KeyFilePassword $securepfxpwd
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -KeyFilePath $pfxpath -KeyFilePassword $securepfxpwd
     Assert-NotNull $key
     $global:createdKeys += $keyname
     Assert-KeyAttributes $key.Attributes 'RSA' $true $null $null $null $null
@@ -139,7 +139,7 @@ function Test_ImportPfxWith1024BitKey
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'pfx1024'
     $pfxpath = Get-ImportKeyFile1024 'pfx'
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -KeyFilePath $pfxpath -KeyFilePassword $securepfxpwd
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -KeyFilePath $pfxpath -KeyFilePassword $securepfxpwd
     Assert-NotNull $key
     $global:createdKeys += $keyname
     Assert-KeyAttributes $key.Attributes 'RSA' $true $null $null $null $null
@@ -155,7 +155,7 @@ function Test_ImportPfxWithCustomAttributes
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'attrpfx'   
     $pfxpath = Get-ImportKeyFile 'pfx'
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software' -KeyFilePath $pfxpath -KeyFilePassword $securepfxpwd -Expires $expires -NotBefore $nbf -KeyOps $ops -Disable -Tags $tags
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software' -KeyFilePath $pfxpath -KeyFilePassword $securepfxpwd -Expires $expires -NotBefore $nbf -KeyOps $ops -Disable -Tags $tags
     Assert-NotNull $key
     $global:createdKeys += $keyname
     Assert-KeyAttributes $key.Attributes 'RSA' $false $expires $nbf $ops $tags
@@ -170,7 +170,7 @@ function Test_ImportPfxAsHsmWithDefaultAttributes
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'pfxashsm'   
     $pfxpath = Get-ImportKeyFile 'pfx'
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'HSM' -KeyFilePath $pfxpath -KeyFilePassword $securepfxpwd
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'HSM' -KeyFilePath $pfxpath -KeyFilePassword $securepfxpwd
     Assert-NotNull $key           
     $global:createdKeys += $keyname
     Assert-KeyAttributes $key.Attributes 'RSA-HSM' $true $null $null $null $null
@@ -185,7 +185,7 @@ function Test_ImportPfxAsHsmWithCustomAttributes
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'attrpfxashsm'   
     $pfxpath = Get-ImportKeyFile 'pfx'
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'HSM' -KeyFilePath $pfxpath -KeyFilePassword $securepfxpwd -Expires $expires -NotBefore $nbf -KeyOps $ops -Disable -Tags $tags
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'HSM' -KeyFilePath $pfxpath -KeyFilePassword $securepfxpwd -Expires $expires -NotBefore $nbf -KeyOps $ops -Disable -Tags $tags
     Assert-NotNull $key
     $global:createdKeys += $keyname
     Assert-KeyAttributes $key.Attributes 'RSA-HSM' $false $expires $nbf $ops $tags
@@ -200,7 +200,7 @@ function Test_ImportByokWithDefaultAttributes
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'byok'   
     $byokpath = Get-ImportKeyFile 'byok'
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -KeyFilePath $byokpath
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -KeyFilePath $byokpath
     Assert-NotNull $key
     $global:createdKeys += $keyname
     Assert-KeyAttributes $key.Attributes 'RSA-HSM' $true $null $null $null $null
@@ -216,7 +216,7 @@ function Test_ImportByokWith1024BitKey
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'byok1024'   
     $byokpath = Get-ImportKeyFile1024 'byok'
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -KeyFilePath $byokpath
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -KeyFilePath $byokpath
     Assert-NotNull $key
     $global:createdKeys += $keyname
     Assert-KeyAttributes $key.Attributes 'RSA-HSM' $true $null $null $null $null
@@ -232,7 +232,7 @@ function Test_ImportByokWithCustomAttributes
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'attrbyok'   
     $byokpath = Get-ImportKeyFile 'byok'
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'HSM' -KeyFilePath $byokpath -Expires $expires -NotBefore $nbf -KeyOps $ops -Disable -Tags $tags
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'HSM' -KeyFilePath $byokpath -Expires $expires -NotBefore $nbf -KeyOps $ops -Disable -Tags $tags
     Assert-NotNull $key                 
     $global:createdKeys += $keyname
     Assert-KeyAttributes $key.Attributes 'RSA-HSM' $false $expires $nbf $ops $tags
@@ -240,26 +240,26 @@ function Test_ImportByokWithCustomAttributes
 
 <#
 .SYNOPSIS
-Tests Add-AzureRMKeyVaultKey with positionalParameter
+Tests Add-AzureKeyVaultKey with positionalParameter
 #>
 function Test_AddKeyPositionalParameter
 {
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'positional'   
-    $key=Add-AzureRMKeyVaultKey $keyVault $keyname -Destination 'Software'
+    $key=Add-AzureKeyVaultKey $keyVault $keyname -Destination 'Software'
     Assert-NotNull $key                 
     $global:createdKeys += $keyname    
 }
 
 <#
 .SYNOPSIS
-Tests Add-AzureRMKeyVaultKey with parameter alias
+Tests Add-AzureKeyVaultKey with parameter alias
 #>
 function Test_AddKeyAliasParameter
 {
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'alias'   
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -KeyName $keyname -Destination 'Software'
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname -Destination 'Software'
     Assert-NotNull $key                 
     $global:createdKeys += $keyname    
 }
@@ -274,7 +274,7 @@ function Test_ImportNonExistPfxFile
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'nonexistpfx'   
     $nonexistpfx = Get-ImportKeyFile 'pfx' $false
-    Assert-Throws {Add-AzureRMKeyVaultKey -VaultName $keyVault -KeyName $keyname -KeyFilePath $nonexistpfx -KeyFilePassword $securepfxpwd}
+    Assert-Throws {Add-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname -KeyFilePath $nonexistpfx -KeyFilePassword $securepfxpwd}
 }
 
 <#
@@ -287,7 +287,7 @@ function Test_ImportPfxFileWithIncorrectPassword
     $keyname=Get-KeyName 'wrongpwdpfx'   
     $pfxpath = Get-ImportKeyFile 'pfx'     
     $wrongpwd= 'foo' | ConvertTo-SecureString -AsPlainText -Force
-    Assert-Throws {Add-AzureRMKeyVaultKey -VaultName $keyVault -KeyName $keyname -Name $keyname -KeyFilePath $pfxpath -KeyFilePassword $wrongpwd}
+    Assert-Throws {Add-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname -Name $keyname -KeyFilePath $pfxpath -KeyFilePassword $wrongpwd}
 }
 
 <#
@@ -299,7 +299,7 @@ function Test_ImportNonExistByokFile
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'nonexistbyok'   
     $nonexistbyok = Get-ImportKeyFile 'byok' $false
-    Assert-Throws {Add-AzureRMKeyVaultKey -VaultName $keyVault -KeyName $keyname -KeyFilePath $nonexistbyok}
+    Assert-Throws {Add-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname -KeyFilePath $nonexistbyok}
 }
 
 <#
@@ -310,7 +310,7 @@ function Test_CreateKeyInNonExistVault
 {
     $keyVault = 'notexistvault'
     $keyname= 'notexitkey'
-    Assert-Throws {Add-AzureRMKeyVaultKey -VaultName $keyVault -KeyName $keyname -Destination 'Software'}
+    Assert-Throws {Add-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname -Destination 'Software'}
 }
 
 <#
@@ -321,7 +321,7 @@ function Test_ImportByokAsSoftwareKey
 {
     $keyVault = Get-KeyVault
     $keyname= Get-KeyName 'byokassoftware'
-    Assert-Throws {Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software' -KeyFilePath $byokpath}
+    Assert-Throws {Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software' -KeyFilePath $byokpath}
 }
 
 <#
@@ -332,7 +332,7 @@ function Test_CreateKeyInNoPermissionVault
 {
     $keyVault = Get-KeyVault $false
     $keyname= Get-KeyName 'nopermission'
-        Assert-Throws {Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'}
+        Assert-Throws {Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'}
 }
 
 
@@ -345,38 +345,38 @@ function Test_UpdateIndividualKeyAttributes
     # Create a software key for updating
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'updatesoft'
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software' -Expires $expires -NotBefore $nbf -KeyOps $ops -Disable -Tags $tags
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software' -Expires $expires -NotBefore $nbf -KeyOps $ops -Disable -Tags $tags
     Assert-NotNull $key
     $global:createdKeys += $keyname
     Assert-KeyAttributes $key.Attributes 'RSA' $false $expires $nbf $ops $tags
 
     # Update Expires
-    $key=Set-AzureRMKeyVaultKeyAttribute -VaultName $keyVault -Name $keyname -Expires $newexpires -PassThru
+    $key=Set-AzureKeyVaultKeyAttribute -VaultName $keyVault -Name $keyname -Expires $newexpires -PassThru
     Assert-NotNull $key
     Assert-KeyAttributes $key.Attributes 'RSA' $false $newexpires $nbf $ops $tags
 
     # Update NotBefore
-    $key=Set-AzureRMKeyVaultKeyAttribute -VaultName $keyVault -Name $keyname -NotBefore $newnbf -PassThru
+    $key=Set-AzureKeyVaultKeyAttribute -VaultName $keyVault -Name $keyname -NotBefore $newnbf -PassThru
     Assert-NotNull $key
     Assert-KeyAttributes $key.Attributes 'RSA' $false $newexpires $newnbf $ops $tags
 
     # Update KeyOps
-    $key=Set-AzureRMKeyVaultKeyAttribute -VaultName $keyVault -Name $keyname -KeyOps $newops -PassThru
+    $key=Set-AzureKeyVaultKeyAttribute -VaultName $keyVault -Name $keyname -KeyOps $newops -PassThru
     Assert-NotNull $key
     Assert-KeyAttributes $key.Attributes 'RSA' $false $newexpires $newnbf $newops $tags
 
     # Update Enable
-    $key=Set-AzureRMKeyVaultKeyAttribute -VaultName $keyVault -Name $keyname -Enable $true -PassThru
+    $key=Set-AzureKeyVaultKeyAttribute -VaultName $keyVault -Name $keyname -Enable $true -PassThru
     Assert-NotNull $key
     Assert-KeyAttributes $key.Attributes 'RSA' $true $newexpires $newnbf $newops $tags
     
     # Update Tags
-    $key=Set-AzureRMKeyVaultKeyAttribute -VaultName $keyVault -Name $keyname -Tags $newtags -PassThru
+    $key=Set-AzureKeyVaultKeyAttribute -VaultName $keyVault -Name $keyname -Tags $newtags -PassThru
     Assert-NotNull $key
     Assert-KeyAttributes $key.Attributes 'RSA' $true $newexpires $newnbf $newops $newtags
     
     # Clean Tags
-    $key=Set-AzureRMKeyVaultKeyAttribute -VaultName $keyVault -Name $keyname -Tags $emptytags -PassThru
+    $key=Set-AzureKeyVaultKeyAttribute -VaultName $keyVault -Name $keyname -Tags $emptytags -PassThru
     Assert-NotNull $key
     Assert-KeyAttributes $key.Attributes 'RSA' $true $newexpires $newnbf $newops $emptytags    
 }
@@ -390,13 +390,13 @@ function Test_UpdateKeyWithNoChange
     # Create a software key for updating
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'updatesoftnochange'
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software' -Expires $expires -NotBefore $nbf -KeyOps $ops -Tags $tags
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software' -Expires $expires -NotBefore $nbf -KeyOps $ops -Tags $tags
     Assert-NotNull $key
     $global:createdKeys += $keyname
     Assert-KeyAttributes $key.Attributes 'RSA' $true $expires $nbf $ops $tags
 
     # No change
-    $key=Set-AzureRMKeyVaultKeyAttribute -VaultName $keyVault -Name $keyname -PassThru
+    $key=Set-AzureKeyVaultKeyAttribute -VaultName $keyVault -Name $keyname -PassThru
     Assert-NotNull $key
     Assert-KeyAttributes $key.Attributes 'RSA' $true $expires $nbf $ops $tags
 }
@@ -410,61 +410,61 @@ function Test_UpdateAllEditableKeyAttributes
     # Create a software key for updating
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'usoft'
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software' -Expires $expires -NotBefore $nbf -KeyOps $ops -Disable -Tags $tags
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software' -Expires $expires -NotBefore $nbf -KeyOps $ops -Disable -Tags $tags
     Assert-NotNull $key
     $global:createdKeys += $keyname
     Assert-KeyAttributes $key.Attributes 'RSA' $false $expires $nbf $ops $tags
 
     # Update all attributes
-    $key=Set-AzureRMKeyVaultKeyAttribute -VaultName $keyVault -Name $keyname -Expires $newexpires  -NotBefore $newnbf -KeyOps $newops -Enable $true -Tags $newtags -PassThru   
+    $key=Set-AzureKeyVaultKeyAttribute -VaultName $keyVault -Name $keyname -Expires $newexpires  -NotBefore $newnbf -KeyOps $newops -Enable $true -Tags $newtags -PassThru   
     Assert-KeyAttributes $key.Attributes 'RSA' $true $newexpires $newnbf $newops $newtags
 
      # Create a hsm key for updating
     $keyname=Get-KeyName 'uhsm'
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'HSM' -Expires $expires -NotBefore $nbf -KeyOps $ops -Disable -Tags $tags
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'HSM' -Expires $expires -NotBefore $nbf -KeyOps $ops -Disable -Tags $tags
     Assert-NotNull $key
     $global:createdKeys += $keyname
     Assert-KeyAttributes $key.Attributes 'RSA-HSM' $false $expires $nbf $ops $tags
 
     # Update all attributes
-    $key=Set-AzureRMKeyVaultKeyAttribute -VaultName $keyVault -Name $keyname -Expires $newexpires  -NotBefore $newnbf -KeyOps $newops -Enable $true -Tags $newtags -PassThru   
+    $key=Set-AzureKeyVaultKeyAttribute -VaultName $keyVault -Name $keyname -Expires $newexpires  -NotBefore $newnbf -KeyOps $newops -Enable $true -Tags $newtags -PassThru   
     Assert-KeyAttributes $key.Attributes 'RSA-HSM' $true $newexpires $newnbf $newops $newtags
 }
 
 
 <#
 .SYNOPSIS
-Tests Set-AzureRMKeyVaultKeyAttribute with positionalParameter
+Tests Set-AzureKeyVaultKeyAttribute with positionalParameter
 #>
 function Test_SetKeyPositionalParameter
 {
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'positional'   
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software' 
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software' 
     Assert-NotNull $key                 
     $global:createdKeys += $keyname    
 
-    Set-AzureRMKeyVaultKeyAttribute $keyVault $keyname -Expires $newexpires  -NotBefore $newnbf -Enable $true -PassThru   
+    Set-AzureKeyVaultKeyAttribute $keyVault $keyname -Expires $newexpires  -NotBefore $newnbf -Enable $true -PassThru   
 }
 
 <#
 .SYNOPSIS
-Tests Set-AzureRMKeyVaultKeyAttribute with parameter alias
+Tests Set-AzureKeyVaultKeyAttribute with parameter alias
 #>
 function Test_SetKeyAliasParameter
 {
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'alias'   
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
     Assert-NotNull $key                 
     $global:createdKeys += $keyname    
 
-    Set-AzureRMKeyVaultKeyAttribute -VaultName $keyVault -KeyName $keyname -Expires $newexpires  -NotBefore $newnbf -Enable $true  -PassThru  
+    Set-AzureKeyVaultKeyAttribute -VaultName $keyVault -KeyName $keyname -Expires $newexpires  -NotBefore $newnbf -Enable $true  -PassThru  
 }
 
 <#
 .SYNOPSIS
-Tests Set-AzureRMKeyVaultKeyAttribute with version
+Tests Set-AzureKeyVaultKeyAttribute with version
 #>
 function Test_SetKeyVersion
 {
@@ -472,39 +472,39 @@ function Test_SetKeyVersion
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'version'   
     
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software' -Expires $expires -NotBefore $nbf -KeyOps $ops -Disable -Tags $tags
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software' -Expires $expires -NotBefore $nbf -KeyOps $ops -Disable -Tags $tags
     Assert-NotNull $key        
     $v1=$key.Version
     $global:createdKeys += $keyname
     Assert-KeyAttributes $key.Attributes 'RSA' $false $expires $nbf $ops $tags
     
     # create a new version
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software' -Expires $expires -NotBefore $nbf -KeyOps $ops -Disable -Tags $tags
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software' -Expires $expires -NotBefore $nbf -KeyOps $ops -Disable -Tags $tags
     Assert-NotNull $key   
     $v2=$key.Version    
     Assert-KeyAttributes $key.Attributes 'RSA' $false $expires $nbf $ops $tags
          
     # Update old version
-    Set-AzureRMKeyVaultKeyAttribute -VaultName $keyVault -Name $keyname -Version $v1 -Expires $newexpires  -NotBefore $newnbf -KeyOps $newops -Enable $true -Tags $newtags  -PassThru
+    Set-AzureKeyVaultKeyAttribute -VaultName $keyVault -Name $keyname -Version $v1 -Expires $newexpires  -NotBefore $newnbf -KeyOps $newops -Enable $true -Tags $newtags  -PassThru
     
     # Verify old Version changed
-    $key=Get-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Version $v1
+    $key=Get-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Version $v1
     Assert-NotNull $key
     Assert-KeyAttributes $key.Attributes 'RSA' $true $newexpires $newnbf $newops $newtags
             
     # Verify new Version not changed
-    $key=Get-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Version $v2
+    $key=Get-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Version $v2
     Assert-NotNull $key
     Assert-KeyAttributes $key.Attributes 'RSA' $false $expires $nbf $ops $tags
     
     # Verify current Version not changed
-    $key=Get-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname
+    $key=Get-AzureKeyVaultKey -VaultName $keyVault -Name $keyname
     Assert-NotNull $key
     Assert-KeyAttributes $key.Attributes 'RSA' $false $expires $nbf $ops $tags  
     
     # Update old version using positional parameter
-    Set-AzureRMKeyVaultKeyAttribute $keyVault $keyname $v1 -Expires $expires -NotBefore $nbf -KeyOps $ops -Enable $false -Tags $tags -PassThru
-    $key=Get-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Version $v1
+    Set-AzureKeyVaultKeyAttribute $keyVault $keyname $v1 -Expires $expires -NotBefore $nbf -KeyOps $ops -Enable $false -Tags $tags -PassThru
+    $key=Get-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Version $v1
     Assert-NotNull $key
     Assert-KeyAttributes $key.Attributes 'RSA' $false $expires $nbf $ops $tags    
 }
@@ -518,7 +518,7 @@ function Test_SetKeyInNonExistVault
 {
     $keyVault = 'notexistvault'
     $keyname=Get-KeyName 'nonexist'   
-    Assert-Throws {Set-AzureRMKeyVaultKeyAttribute -VaultName $keyVault -KeyName $keyname -Enable $true}
+    Assert-Throws {Set-AzureKeyVaultKeyAttribute -VaultName $keyVault -KeyName $keyname -Enable $true}
 }
 
 <#
@@ -529,7 +529,7 @@ function Test_SetNonExistKey
 {
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'nonexist'   
-    Assert-Throws {Set-AzureRMKeyVaultKeyAttribute -VaultName $keyVault -KeyName $keyname -Enable $true}
+    Assert-Throws {Set-AzureKeyVaultKeyAttribute -VaultName $keyVault -KeyName $keyname -Enable $true}
 }
 
 <#
@@ -540,11 +540,11 @@ function Test_SetInvalidKeyAttributes
 {
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'invalidattr'   
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
     Assert-NotNull $key                 
     $global:createdKeys += $keyname    
 
-    Assert-Throws {Set-AzureRMKeyVaultKeyAttribute -VaultName $keyVault -KeyName $keyname -Expires $nbf  -NotBefore $expires }    
+    Assert-Throws {Set-AzureKeyVaultKeyAttribute -VaultName $keyVault -KeyName $keyname -Expires $nbf  -NotBefore $expires }    
     
 }
 
@@ -556,7 +556,7 @@ function Test_SetKeyInNoPermissionVault
 {
     $keyVault = Get-KeyVault $false
     $keyname= Get-KeyName 'nopermission'
-    Assert-Throws {Set-AzureRMKeyVaultKeyAttribute -VaultName $keyVault -Name $keyname -Enable $true}
+    Assert-Throws {Set-AzureKeyVaultKeyAttribute -VaultName $keyVault -Name $keyname -Enable $true}
 }
 
 
@@ -569,12 +569,12 @@ function Test_GetOneKey
 {
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'getone'
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
     Assert-NotNull $key
     $global:createdKeys += $keyname
     Assert-KeyAttributes $key.Attributes 'RSA' $true $null $null $null
 
-    $key=Get-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname
+    $key=Get-AzureKeyVaultKey -VaultName $keyVault -Name $keyname
     Assert-KeyAttributes $key.Attributes 'RSA' $true $null $null $null
 }
 
@@ -598,7 +598,7 @@ function Test_GetAllKeys
       $i++
     } while ($i -le $run)
         
-    $keys=Get-AzureRMKeyVaultKey -VaultName $keyVault 
+    $keys=Get-AzureKeyVaultKey -VaultName $keyVault 
     Assert-True { $keys.Count -ge $total }
 }
 
@@ -613,18 +613,18 @@ function Test_GetPreviousVersionOfKey
 
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'getversion'
-    $key1=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software' -Disable -NotBefore $nbf -Expires $expires -KeyOps $ops 
+    $key1=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software' -Disable -NotBefore $nbf -Expires $expires -KeyOps $ops 
 
     $global:createdKeys += $keyname 
     Assert-KeyAttributes -keyAttr $key1.Attributes -keytype 'RSA' -keyenable $false -keyexp $expires -keynbf $nbf -keyops $ops 
 
-    $key2=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
+    $key2=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
     Assert-KeyAttributes $key2.Attributes 'RSA' $true $null $null $null
 
-    $key3=Get-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Version $key1.Version
+    $key3=Get-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Version $key1.Version
     Assert-KeyAttributes -keyAttr $key3.Attributes -keytype 'RSA' -keyenable $false -keyexp $expires -keynbf $nbf -keyops $ops 
     
-    $key4=Get-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Version $key2.Version
+    $key4=Get-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Version $key2.Version
     Assert-KeyAttributes $key4.Attributes 'RSA' $true $null $null $null
 }
 
@@ -648,39 +648,39 @@ function Test_GetKeyVersions
       $i++
     } while ($i -le $run)
            
-    $keys=Get-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -IncludeVersions
+    $keys=Get-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -IncludeVersions
     Assert-True { $keys.Count -ge $total*$run }
 }
 
 <#
 .SYNOPSIS
-Tests Get-AzureRMKeyVaultKey with positional Parameter
+Tests Get-AzureKeyVaultKey with positional Parameter
 #>
 function Test_GetKeyPositionalParameter
 {
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'positional'   
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
     Assert-NotNull $key                 
     $global:createdKeys += $keyname    
 
-    $key=Get-AzureRMKeyVaultKey $keyVault $keyname
+    $key=Get-AzureKeyVaultKey $keyVault $keyname
     Assert-NotNull $key                     
 }
 
 <#
 .SYNOPSIS
-Tests Get-AzureRMKeyVaultKey with parameter alias
+Tests Get-AzureKeyVaultKey with parameter alias
 #>
 function Test_GetKeyAliasParameter
 {
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'alias'   
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
     Assert-NotNull $key                 
     $global:createdKeys += $keyname    
 
-    $key=Get-AzureRMKeyVaultKey -VaultName $keyVault -KeyName $keyname 
+    $key=Get-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname 
     Assert-NotNull $key     
 }
 
@@ -691,7 +691,7 @@ Tests get a key from non-exist key vault
 function Test_GetKeysInNonExistVault
 {
     $keyVault = 'notexistvault'
-    Assert-Throws {Get-AzureRMKeyVaultKey -VaultName $keyVault}
+    Assert-Throws {Get-AzureKeyVaultKey -VaultName $keyVault}
 }
 
 <#
@@ -702,7 +702,7 @@ function Test_GetNonExistKey
 {
     $keyVault = Get-KeyVault
     $keyname = 'notexist'
-    Assert-Throws {Get-AzureRMKeyVaultKey -VaultName $keyVault -KeyName $keyname}
+    Assert-Throws {Get-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname}
 }
 
 <#
@@ -712,7 +712,7 @@ Tests get key in a vault not have permission
 function Test_GetKeyInNoPermissionVault
 {
     $keyVault = Get-KeyVault $false
-    Assert-Throws {Get-AzureRMKeyVaultKey -VaultName $keyVault}
+    Assert-Throws {Get-AzureKeyVaultKey -VaultName $keyVault}
 }
 
 
@@ -724,66 +724,66 @@ function Test_RemoveKeyWithoutPrompt
 {
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'remove'
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
     Assert-NotNull $key
     $global:createdKeys += $keyname
     
-    $key=Remove-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Force -Confirm:$false -PassThru
+    $key=Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Force -Confirm:$false -PassThru
     Assert-NotNull $key
     
-    Assert-Throws { Get-AzureRMKeyVaultKey  -VaultName $keyVault -Name $keyname}    
+    Assert-Throws { Get-AzureKeyVaultKey  -VaultName $keyVault -Name $keyname}    
 }
 
 <#
 .SYNOPSIS
-Tests Remove-AzureRMKeyVaultKey with whatif option
+Tests Remove-AzureKeyVaultKey with whatif option
 #>
 function Test_RemoveKeyWhatIf
 {
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'whatif'
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
     Assert-NotNull $key
     $global:createdKeys += $keyname
     
-    Remove-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname  -WhatIf -Force
+    Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname  -WhatIf -Force
     
-    $key=Get-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname
+    $key=Get-AzureKeyVaultKey -VaultName $keyVault -Name $keyname
     Assert-NotNull $key    
 }
 
 <#
 .SYNOPSIS
-Tests Remove-AzureRMKeyVaultKey with positional Parameter
+Tests Remove-AzureKeyVaultKey with positional Parameter
 #>
 function Test_RemoveKeyPositionalParameter
 {
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'positional'   
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
     Assert-NotNull $key                 
     $global:createdKeys += $keyname    
 
-    Remove-AzureRMKeyVaultKey $keyVault $keyname -Force -Confirm:$false      
+    Remove-AzureKeyVaultKey $keyVault $keyname -Force -Confirm:$false      
     
-    Assert-Throws { Get-AzureRMKeyVaultKey  -VaultName $keyVault -Name $keyname}                    
+    Assert-Throws { Get-AzureKeyVaultKey  -VaultName $keyVault -Name $keyname}                    
 }
 
 <#
 .SYNOPSIS
-Tests Remove-AzureRMKeyVaultKey with parameter alias
+Tests Remove-AzureKeyVaultKey with parameter alias
 #>
 function Test_RemoveKeyAliasParameter
 {
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'alias'   
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
     Assert-NotNull $key                 
     $global:createdKeys += $keyname    
 
-    Remove-AzureRMKeyVaultKey -VaultName $keyVault -KeyName $keyname  -Force -Confirm:$false                
+    Remove-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname  -Force -Confirm:$false                
 
-    Assert-Throws { Get-AzureRMKeyVaultKey  -VaultName $keyVault -Name $keyname} 
+    Assert-Throws { Get-AzureKeyVaultKey  -VaultName $keyVault -Name $keyname} 
 }
 
 <#
@@ -794,7 +794,7 @@ function Test_RemoveKeyInNonExistVault
 {
     $keyVault = 'notexistvault'
     $keyname = 'notexist'
-    Assert-Throws {Remove-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Force -Confirm:$false}
+    Assert-Throws {Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Force -Confirm:$false}
 }
 
 <#
@@ -805,7 +805,7 @@ function Test_RemoveNonExistKey
 {
     $keyVault = Get-KeyVault
     $keyname = 'notexist'
-    Assert-Throws {Remove-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Force -Confirm:$false}
+    Assert-Throws {Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Force -Confirm:$false}
 }
 
 <#
@@ -816,7 +816,7 @@ function Test_RemoveKeyInNoPermissionVault
 {
     $keyVault = Get-KeyVault $false
     $keyname= Get-KeyName 'nopermission'
-    Assert-Throws {Remove-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Enable $true -Force -Confirm:$false}
+    Assert-Throws {Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Enable $true -Force -Confirm:$false}
 }
 
 <#
@@ -827,13 +827,13 @@ function Test_BackupRestoreKey
 {
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'backuprestore'   
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
     Assert-NotNull $key                 
     $global:createdKeys += $keyname
 
-    $backupblob = Backup-AzureRMKeyVaultKey -VaultName $keyVault -KeyName $keyname       
-    Remove-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Force -Confirm:$false
-    $restoredKey = Restore-AzureRMKeyVaultKey -VaultName $keyVault -InputFile $backupblob
+    $backupblob = Backup-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname       
+    Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Force -Confirm:$false
+    $restoredKey = Restore-AzureKeyVaultKey -VaultName $keyVault -InputFile $backupblob
     Assert-KeyAttributes $restoredKey.Attributes 'RSA' $true $null $null $null
 }
 
@@ -846,7 +846,7 @@ function Test_BackupNonExisitingKey
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'backupnonexisting'
 
-    Assert-Throws { Backup-AzureRMKeyVaultKey -VaultName $keyVault -KeyName $keyname }
+    Assert-Throws { Backup-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname }
 }
 
 <#
@@ -857,15 +857,15 @@ function Test_BackupToANamedFile
 {
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'backupnamedfile'
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
     Assert-NotNull $key                 
     $global:createdKeys += $keyname
   
     $backupfile='.\backup' + ([GUID]::NewGuid()).GUID.ToString() + '.blob'
  
-    Backup-AzureRMKeyVaultKey -VaultName $keyVault -KeyName $keyname -OutputFile $backupfile    
-    Remove-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Force -Confirm:$false
-    $restoredKey = Restore-AzureRMKeyVaultKey -VaultName $keyVault -InputFile $backupfile
+    Backup-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname -OutputFile $backupfile    
+    Remove-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Force -Confirm:$false
+    $restoredKey = Restore-AzureKeyVaultKey -VaultName $keyVault -InputFile $backupfile
     Assert-KeyAttributes $restoredKey.Attributes 'RSA' $true $null $null $null
 }
 
@@ -877,14 +877,14 @@ function Test_BackupToExistingFile
 {
     $keyVault = Get-KeyVault
     $keyname=Get-KeyName 'backupexistingfile'
-    $key=Add-AzureRMKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
+    $key=Add-AzureKeyVaultKey -VaultName $keyVault -Name $keyname -Destination 'Software'
     Assert-NotNull $key                 
     $global:createdKeys += $keyname
   
     $backupfile='.\backup' + ([GUID]::NewGuid()).GUID.ToString() + '.blob'
  
-    Backup-AzureRMKeyVaultKey -VaultName $keyVault -KeyName $keyname -OutputFile $backupfile        
-    Assert-Throws { Backup-AzureRMKeyVaultKey -VaultName $keyVault -KeyName $keyname -OutputFile $backupfile }
+    Backup-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname -OutputFile $backupfile        
+    Assert-Throws { Backup-AzureKeyVaultKey -VaultName $keyVault -KeyName $keyname -OutputFile $backupfile }
 }
 
 
@@ -896,7 +896,7 @@ function Test_RestoreFromNonExistingFile
 {
     $keyVault = Get-KeyVault
 
-    Assert-Throws { Restore-AzureRMKeyVaultKey -VaultName $keyVault -InputFile c:\nonexisting.blob }
+    Assert-Throws { Restore-AzureKeyVaultKey -VaultName $keyVault -InputFile c:\nonexisting.blob }
 }
 
 <#
@@ -911,9 +911,9 @@ function Test_PipelineUpdateKeys
     $total=2
     BulkCreateSoftKeys $keyVault $keypartialname $total  
     
-    Get-AzureRMKeyVaultKey $keyVault |  Where-Object {$_.KeyName -like $keypartialname+'*'}  | Set-AzureRMKeyVaultKeyAttribute -Enable $false	
+    Get-AzureKeyVaultKey $keyVault |  Where-Object {$_.KeyName -like $keypartialname+'*'}  | Set-AzureKeyVaultKeyAttribute -Enable $false	
 
-    Get-AzureRMKeyVaultKey $keyVault |  Where-Object {$_.KeyName -like $keypartialname+'*'}  |  ForEach-Object {  Assert-False { return $_.Enabled } }
+    Get-AzureKeyVaultKey $keyVault |  Where-Object {$_.KeyName -like $keypartialname+'*'}  |  ForEach-Object {  Assert-False { return $_.Enabled } }
  }
  
  <#
@@ -928,11 +928,11 @@ function Test_PipelineUpdateKeyVersions
     $total=2    
     BulkCreateSoftKeyVersions $keyVault $keyname $total
     
-    Get-AzureRMKeyVaultKey $keyVault $keyname -IncludeVersions | Set-AzureRMKeyVaultKeyAttribute -Enable $false
-    Get-AzureRMKeyVaultKey $keyVault $keyname -IncludeVersions |  ForEach-Object {  Assert-False { return $_.Enabled } }
+    Get-AzureKeyVaultKey $keyVault $keyname -IncludeVersions | Set-AzureKeyVaultKeyAttribute -Enable $false
+    Get-AzureKeyVaultKey $keyVault $keyname -IncludeVersions |  ForEach-Object {  Assert-False { return $_.Enabled } }
     
-    Get-AzureRMKeyVaultKey $keyVault $keyname -IncludeVersions | Set-AzureRMKeyVaultKeyAttribute -Tags $newtags
-    Get-AzureRMKeyVaultKey $keyVault $keyname -IncludeVersions |  ForEach-Object {  Assert-True { return $_.Tags.Count -eq $newtags.Count } }
+    Get-AzureKeyVaultKey $keyVault $keyname -IncludeVersions | Set-AzureKeyVaultKeyAttribute -Tags $newtags
+    Get-AzureKeyVaultKey $keyVault $keyname -IncludeVersions |  ForEach-Object {  Assert-True { return $_.Tags.Count -eq $newtags.Count } }
  }
 
 
@@ -948,8 +948,8 @@ function Test_PipelineRemoveKeys
     $total=2
     BulkCreateSoftKeys $keyVault $keypartialname $total   
 
-    Get-AzureRMKeyVaultKey $keyVault |  Where-Object {$_.KeyName -like $keypartialname+'*'}  | Remove-AzureRMKeyVaultKey -Force -Confirm:$false
+    Get-AzureKeyVaultKey $keyVault |  Where-Object {$_.KeyName -like $keypartialname+'*'}  | Remove-AzureKeyVaultKey -Force -Confirm:$false
 
-    $keys = Get-AzureRMKeyVaultKey $keyVault |  Where-Object {$_.KeyName -like $keypartialname+'*'} 
+    $keys = Get-AzureKeyVaultKey $keyVault |  Where-Object {$_.KeyName -like $keypartialname+'*'} 
     Assert-AreEqual $keys.Count 0     
 }

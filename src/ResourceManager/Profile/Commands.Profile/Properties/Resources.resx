@@ -121,18 +121,18 @@
     <value>Selected profile must not be null.</value>
   </data>
   <data name="CommonTenantAuthFailed" xml:space="preserve">
-    <value>Could not authenticate your user account {0} with the common tenant. Please login again using Login-AzureRMAccount.</value>
+    <value>Could not authenticate your user account {0} with the common tenant. Please login again using Login-AzureRmAccount.</value>
   </data>
   <data name="NoAccountProvided" xml:space="preserve">
     <value>(no account provided)</value>
   </data>
   <data name="NoValidTenant" xml:space="preserve">
-    <value>Please provide a valid tenant Id on the command line or execute Login-AzureRMAccount.</value>
+    <value>Please provide a valid tenant Id on the command line or execute Login-AzureRmAccount.</value>
   </data>
   <data name="SubscriptionNotFoundError" xml:space="preserve">
     <value>Subscription {0} was not found in tenant {1}. Please verify that the subscription exists in this tenant.</value>
   </data>
   <data name="TenantAuthFailed" xml:space="preserve">
-    <value>Could not authenticate with tenant {0}. Please ensure that your account has access to this tenant and log in with Login-AzureRMAccount</value>
+    <value>Could not authenticate with tenant {0}. Please ensure that your account has access to this tenant and log in with Login-AzureRmAccount</value>
   </data>
 </root>

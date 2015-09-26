@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// <summary>
     /// Retrieves Azure Site Recovery Protection Entity.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMSiteRecoveryProtectionEntity", DefaultParameterSetName = ASRParameterSets.ByObject)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSiteRecoveryProtectionEntity", DefaultParameterSetName = ASRParameterSets.ByObject)]
     [OutputType(typeof(IEnumerable<ASRProtectionEntity>))]
     public class GetAzureSiteRecoveryProtectionEntity : SiteRecoveryCmdletBase
     {

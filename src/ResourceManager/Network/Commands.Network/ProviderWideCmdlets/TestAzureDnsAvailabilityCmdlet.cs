@@ -17,7 +17,7 @@ using Microsoft.Azure.Management.Network;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsDiagnostic.Test, "AzureRMDnsAvailability"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsDiagnostic.Test, "AzureRmDnsAvailability"), OutputType(typeof(bool))]
     public class TestAzureDnsAvailabilityCmdlet : NetworkBaseCmdlet
     {
         [Parameter(

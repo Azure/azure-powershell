@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.Id = "computeNode1";
 
             // Don't go to the service on a Reimage ComputeNode call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<ComputeNodeReimageParameters, ComputeNodeReimageResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeReimageParameters, ComputeNodeReimageResponse>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set

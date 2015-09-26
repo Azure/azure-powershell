@@ -22,7 +22,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.HDInsight\Microsoft.Azure.Commands.HDInsight.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -75,10 +74,12 @@
     <Compile Include="Models\Management\AzureHDInsightCluster.cs" />
     <Compile Include="Models\Management\AzureHDInsightConfig.cs" />
     <Compile Include="Models\Job\AzureHdInsightJobManagementClient.cs" />
+    <Compile Include="Models\Management\AzureHDInsightDefaultStorageAccount.cs" />
     <Compile Include="Models\Management\AzureHdInsightManagementClient.cs" />
     <Compile Include="Models\Management\AzureHDInsightMetastoreType.cs" />
     <Compile Include="Models\Management\AzureHDInsightMetastore.cs" />
     <Compile Include="ManagementCommands\NewAzureHDInsightClusterCommand.cs" />
+    <Compile Include="ClusterConfigurationUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -90,7 +91,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="MSSharedLibKey.snk" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Hyak.Common">
@@ -100,7 +103,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.Authentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.3.0-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.3.1-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework">
@@ -182,6 +185,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
+      <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
+      <Name>Commands.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
       <Name>Commands.ResourceManager.Common</Name>

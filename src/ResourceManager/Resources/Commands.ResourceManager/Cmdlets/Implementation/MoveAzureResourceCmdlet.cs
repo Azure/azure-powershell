@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Moves existing resources to a new resource group or subscription.
     /// </summary>
-    [Cmdlet(VerbsCommon.Move, "AzureRMResource", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Move, "AzureRmResource", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class MoveAzureResourceCommand : ResourceManagerCmdletBase
     {
         /// <summary>
