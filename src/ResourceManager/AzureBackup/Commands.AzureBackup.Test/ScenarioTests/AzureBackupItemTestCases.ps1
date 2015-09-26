@@ -13,16 +13,16 @@
 # ----------------------------------------------------------------------------------
 
 $ResourceGroupName = "backuprg"
-$ResourceName = "backuprn"
-$ContainerName = "iaasvmcontainer;hydrarecordvm;hydrarecordvm"
+$ResourceName = "backuprn2"
+$ContainerName = "iaasvmcontainer;powershellbvt1;powershellbvt1"
 $ContainerType = "IaasVMContainer"
 $DataSourceType = "IaasVM"
 $DataSourceId = "17593283453810"
-$Location = "SouthEast Asia"
+$Location = "westus"
 $PolicyName = "ProtPolicy01";
-$PolicyId = "/subscriptions/f5303a0b-fae4-4cdb-b44d-0e4c032dde26/resourceGroups/backuprg/providers/Microsoft.Backup/BackupVault/backuprn/protectionPolicies/DefaultPolicy";
-$POName = "hydrarecordvm"
-$itemName = "iaasvmcontainer;hydrarecordvm;hydrarecordvm"
+$PolicyId = "/subscriptions/f5303a0b-fae4-4cdb-b44d-0e4c032dde26/resourceGroups/backuprg/providers/Microsoft.Backup/BackupVault/backuprn2/protectionPolicies/DefaultPolicy";
+$POName = "powershellbvt1"
+$itemName = "iaasvmcontainer;powershellbvt1;powershellbvt1"
 
 
 function Test-GetAzureBackupItemTests
@@ -80,5 +80,5 @@ function Test-DisableAzureBackupProtection
 	$azureBackUpItem.Type = $DataSourceType
 	$azureBackUpItem.ItemName = $itemName
 	$azureBackUpItem.Name = $POName
-	$jobId1 = Disable-AzureRmBackupProtection -Item $azureBackUpItem
+	$jobId1 = Disable-AzureRmBackupProtection -Item $azureBackUpItem -Force
 }
