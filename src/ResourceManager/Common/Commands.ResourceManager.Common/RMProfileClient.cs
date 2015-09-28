@@ -78,7 +78,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
             if (newSubscription == null)
             {
-                throw new PSInvalidOperationException(String.Format(Properties.Resources.NoSubscriptionFound, account.Id));
+                if (subscriptionId != null)
+                {
+                    throw new PSInvalidOperationException(String.Format(Properties.Resources.SubscriptionIdNotFound, account.Id, subscriptionId));
+                }
+                else
+                {
+                    throw new PSInvalidOperationException(String.Format(Properties.Resources.NoSubscriptionFound, account.Id));
+                }
             }
 
             _profile.Context = new AzureContext(newSubscription, account, environment, newTenant);
