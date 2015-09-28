@@ -20,7 +20,6 @@ using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Common.Authentication;
 
@@ -96,10 +95,12 @@ namespace Commands.Network.Test
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
-                helper.SetupModules(
-                    AzureModule.AzureResourceManager, 
-                    "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + callingClassName + ".ps1");
+                helper.SetupModules(AzureModule.AzureResourceManager, 
+                    "ScenarioTests\\Common.ps1", 
+                    "ScenarioTests\\" + callingClassName + ".ps1", 
+                    helper.RMProfileModule, 
+                    helper.RMResourceModule, 
+                    helper.GetRMModulePath("AzureRM.Network.psd1"));
 
                 try
                 {

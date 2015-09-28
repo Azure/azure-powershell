@@ -43,7 +43,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         private AzureAccount testAccount;
 
         private const string PackageDirectoryFromCommon = @"..\..\..\..\Package\Debug";
-        private const string PackageDirectory = @"..\..\..\..\..\Package\Debug";
+        public string PackageDirectory = @"..\..\..\..\..\Package\Debug";
 
         protected List<string> modules;
 
@@ -69,6 +69,49 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             TestMockSupport.RunningMocked = HttpMockServer.GetCurrentMode() == HttpRecorderMode.Playback;
         }
 
+        public string RMProfileModule
+        {
+            get
+            {
+                return Path.Combine(this.PackageDirectory, 
+                                    @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1");
+            }
+        }
+
+        public string RMResourceModule
+        {
+            get
+            {
+                return Path.Combine(this.PackageDirectory,
+                                    @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1");
+            }
+        }
+
+        public string RMStorageModule
+        {
+            get
+            {
+                return Path.Combine(this.PackageDirectory, 
+                                    @"ResourceManager\AzureResourceManager\AzureRM.Storage\AzureRM.Storage.psd1");
+            }
+        }
+
+        //TODO: clarify (data plane should not be under ARM folder)
+        public string RMStorageDataPlaneModule
+        {
+            get
+            {
+                return Path.Combine(this.PackageDirectory,
+                                     @"ResourceManager\AzureResourceManager\Azure.Storage\Azure.Storage.psd1");
+            }
+        }
+
+        public string GetRMModulePath(string psd1FileName)
+        {
+            string basename = Path.GetFileNameWithoutExtension(psd1FileName);
+            return Path.Combine(this.PackageDirectory, 
+                                 @"ResourceManager\AzureResourceManager\" + basename + @"\" + psd1FileName); 
+        }
         /// <summary>
         /// Loads DummyManagementClientHelper with clients and throws exception if any client is missing.
         /// </summary>
@@ -198,14 +241,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             {
                 this.modules.Add(Path.Combine(PackageDirectory, @"ServiceManagement\Azure\Azure.psd1"));
             }
-            else if (mode == AzureModule.AzureResourceManager)
-            {
-                this.modules.Add(Path.Combine(PackageDirectory, @"ResourceManager\AzureResourceManager\AzureResourceManager.psd1"));
-            }
-            else
-            {
-                throw new ArgumentException("Unknown command type for testing");
-            }
+            
             this.modules.Add("Assert.ps1");
             this.modules.Add("Common.ps1");
             this.modules.AddRange(modules);
