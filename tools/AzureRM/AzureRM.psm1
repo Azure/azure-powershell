@@ -1,9 +1,6 @@
-#Requires -RunAsAdministrator
-
 $AzureRMProfileVersion = "0.9.8";
 
 $AzureRMModules = @{
-  "Azure.Storage" = "0.9.8";
   "AzureRM.ApiManagement" = "0.9.8";
   "AzureRM.Automation" = "0.9.8";
   "AzureRM.Backup" = "0.9.8";
@@ -16,7 +13,6 @@ $AzureRMModules = @{
   "AzureRM.KeyVault" = "0.9.8";
   "AzureRM.Network" = "0.9.8";
   "AzureRM.OperationalInsights" = "0.9.8";
-  "AzureRM.Profile" = "0.9.8";
   "AzureRM.RedisCache" = "0.9.8";
   "AzureRM.Resources" = "0.9.8";
   "AzureRM.SiteRecovery" = "0.9.8";
@@ -27,6 +23,19 @@ $AzureRMModules = @{
   "AzureRM.TrafficManager" = "0.9.8";
   "AzureRM.UsageAggregates" = "0.9.8";
   "AzureRM.Websites" = "0.9.8"
+}
+
+function Validate-AdminRights([string]$Scope)
+{
+  if ($Scope -ne "CurrentUser")
+  {
+    $user = [Security.Principal.WindowsIdentity]::GetCurrent();
+    $isAdmin = (New-Object Security.Principal.WindowsPrincipal $user).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)  
+    if($isAdmin -eq $false)
+    {
+      throw "Administrator rights are required to install Microsoft Azure modules"
+    }
+  }
 }
 
 function Import-ModuleWithVersionCheck([string]$Name,[string]$MinimumVersion,[string]$Repository,[string]$Scope)
@@ -77,6 +86,8 @@ function Update-AzureRM
     $Scope = "AllUsers"
   }
 
+  Validate-AdminRights $Scope
+
   Write-Output "Installing AzureRM modules."
 
   Import-ModuleWithVersionCheck "AzureRM.Profile" $AzureRMProfileVersion $Repository $Scope
@@ -103,18 +114,24 @@ function Uninstall-AzureRM
   [string]
   $Repository)
 
+  Validate-AdminRights "AllUsers"
+
   Write-Output "Uninstalling AzureRM modules."
 
   $AzureRMModules.Keys | ForEach {
     $moduleName = $_
     if ((Get-InstalledModule | where {$_.Name -eq $moduleName}) -ne $null) {
-      Uninstall-Module -Name $_ -ErrorAction Stop
+      $minVer = $AzureRMModules[$_]
+      $maxVer = "$($minVer.Split(".")[0]).9999.0"
+      Uninstall-Module -Name $_ -MinimumVersion $minVer -MaximumVersion $maxVer -ErrorAction Stop
       Write-Output "$moduleName uninstalled..." 
     }
   }
 
-  if ((Get-InstalledModule | where {"AzureRM.Profile" -eq $moduleName}) -ne $null) {
-    Uninstall-Module -Name "AzureRM.Profile" -ErrorAction Stop
+  if ((Get-InstalledModule | where {$_.Name -eq "AzureRM.Profile"}) -ne $null) {
+    $minVer = $AzureRMProfileVersion
+    $maxVer = "$($minVer.Split(".")[0]).9999.0"
+    Uninstall-Module -Name "AzureRM.Profile" -MinimumVersion $minVer -MaximumVersion $maxVer -ErrorAction Stop
     Write-Output "AzureRM.Profile uninstalled..." 
   }
 }
