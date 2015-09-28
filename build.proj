@@ -18,7 +18,12 @@
 
   /p:CodeSign=True;DelaySign=True
     Test the code sign workflow locally. 
-  
+
+  /p:Scope
+    'Azure': service management
+    'AzureStorage': storage data plane cmdlets
+    'Subfolder under src\ResourceManager': An individual cmdlet module
+    By default, it builds all
   -->  
 
   <!-- Define build properties -->
@@ -41,7 +46,8 @@
   <ItemGroup>
     <CmdletSolutionsToBuild Include=".\src\ResourceManager\**\*.sln;.\src\ServiceManagement\ServiceManagement.sln" Condition=" '$(Scope)' == '' "/>
     <CmdletSolutionsToBuild Include=".\src\ResourceManager\$(Scope)\*.sln" Condition=" '$(Scope)' != '' and '$(Scope)' != 'ServiceManagement' "/>
-    <CmdletSolutionsToBuild Include=".\src\ServiceManagement\ServiceManagement.sln" Condition=" '$(Scope)' != '' and '$(Scope)' == 'ServiceManagement' "/>
+    <CmdletSolutionsToBuild Include=".\src\ServiceManagement\ServiceManagement.sln"
+                            Condition=" '$(Scope)' != '' and ('$(Scope)' == 'ServiceManagement' or '$(Scope)' == 'AzureStorage') "/>
     <SetupSln Include=".\setup\azurepowershell.sln" />
     <SetupPowershellGetSln Include=".\setup-powershellget\powershellget.sln" />
   </ItemGroup>
@@ -292,8 +298,7 @@
   <Target Name="Publish" DependsOnTargets="Build">
     <Error Condition=" '$(NuGetKey)' == '' " Text="You must provide the NuGetKey parameter to the build: /p:NuGetKey=YOUR_PUBLISHING_KEY" />
     <Message Importance="high" Text="Publishing Cmdlets..." />
-    
-    <Exec Command="$(PowerShellCommand) -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\PublishModules.ps1 $(Configuration) $(Scope) $(NuGetKey) \&quot;$(NuGetPublishingSource)\&quot; &quot;"/>
+    <Exec Command="$(PowerShellCommand) -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\PublishModules.ps1 $(Configuration) $(Scope) $(NuGetKey) \&quot;$(NuGetPublishingSource)\&quot; &quot;"/>
   </Target>
 
   <PropertyGroup>
