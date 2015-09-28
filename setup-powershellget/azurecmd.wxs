@@ -1,6 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-
+  
+  <?if $(var.Platform) != x86 ?>
+  <?define System32Dir = "System64Folder" ?>
+  <?else?>
+  <?define System32Dir = "SystemFolder" ?>
+  <?endif ?>
+  
   <?define productName="Microsoft Azure PowerShell - October 2015" ?>
   <?define sourceDir="$(var.SolutionDir)..\src\Package\$(var.Configuration)" ?>
   <?define caSourceDir="$(var.SolutionDir)setup\bin\$(var.Configuration)" ?>
@@ -28,7 +34,7 @@
     <Property Id="ALLUSERS" Value="1" />
     <!-- per machine install-->
     
-    <Property Id="POWERSHELLEXE"><![CDATA[C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe]]></Property>
+    <Property Id="POWERSHELLEXE"><![CDATA[[SystemFolder]\WindowsPowerShell\v1.0\powershell.exe]]></Property>
 
     <Property Id="PSCOMPATIBLEVERSION">
       <RegistrySearch Id="PSCOMPATIBLEVERSION" Root="HKLM" Key="SOFTWARE\Microsoft\PowerShell\3\PowerShellEngine" Name="PSCompatibleVersion" Type="raw" />
@@ -71,7 +77,7 @@
       <Component Id="PSModulePath.System" Guid="273525B9-7AAB-421A-90C8-8E50A1840B8D">
         <CreateFolder />
         <!-- Work around bug that PowerShell does not always consider default module paths. -->
-        <Environment Id="PSModulePath.SystemAppRoot" Action="set" Name="PSMODULEPATH" Part="last" Value="[PowerShellFolder]ServiceManagement" System="yes" />
+        <!--<Environment Id="PSModulePath.SystemAppRoot" Action="set" Name="PSMODULEPATH" Part="last" Value="[PowerShellFolder]ServiceManagement" System="yes" />-->
       </Component>
       <Component Id="AzureSdkShortcutScript" Guid="3d0d589a-b34c-4c48-9a4c-df78f286c6a3">
           <File Id="AzureSdkShortcutScriptFile" KeyPath="yes" Source="$(var.SolutionDir)\Setup\ShortcutStartup.ps1" />

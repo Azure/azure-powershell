@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 if (DefaultProfile == null || DefaultProfile.Context == null)
                 {
-                    throw new PSInvalidOperationException("Run Login-AzureRMAccount to login.");
+                    throw new PSInvalidOperationException("Run Login-AzureRmAccount to login.");
                 }
 
                 return DefaultProfile.Context;

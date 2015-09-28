@@ -25,14 +25,14 @@ function Test-AddVhd
     {
         # Common
         $loc = Get-ComputeVMLocation;
-        New-AzureRMResourceGroup -Name $rgname -Location $loc -Force;
+        New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
         # Storage Account (SA)
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        New-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-        $stoaccount = Get-AzureRMStorageAccount -ResourceGroupName $rgname -Name $stoname;
-        $storageKey = Get-AzureRMStorageAccountKey -ResourceGroupName $rgname -Name $stoname;
+        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname;
+        $storageKey = Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname;
         $vhdContainerName = 'vhds';
 
         $path = (get-item -path ".\").FullName;
@@ -48,7 +48,7 @@ function Test-AddVhd
               $vhdDestUri = [System.String]::Format("{0}{1}/{2}{3}.vhd", $stoaccount.PrimaryEndpoints.Blob.AbsoluteUri, $vhdContainerName, $vhdName, $rgname);
               Write-Output ("Start Uploading... : " + $testItem.vhdName);
 
-              $vhdUploadContext = Add-AzureRMVhd -ResourceGroupName $rgname -Destination $vhdDestUri -LocalFilePath $vhdLocalPath -NumberOfUploaderThreads 1;
+              $vhdUploadContext = Add-AzureRmVhd -ResourceGroupName $rgname -Destination $vhdDestUri -LocalFilePath $vhdLocalPath -NumberOfUploaderThreads 1;
               Start-Sleep -s 5;
 
               Write-Output ("Destination Uri :" + $vhdUploadContext.DestinationUri);

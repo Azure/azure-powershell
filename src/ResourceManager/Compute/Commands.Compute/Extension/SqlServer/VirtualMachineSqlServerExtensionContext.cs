@@ -20,7 +20,7 @@ using System.Collections;
 namespace Microsoft.Azure.Commands.Compute
 {
     /// <summary>
-    /// SQL VM Extension's context object used by Get-AzureRMVMSqlServerExtension
+    /// SQL VM Extension's context object used by Get-AzureRmVMSqlServerExtension
     /// </summary>
     public class VirtualMachineSqlServerExtensionContext : PSVirtualMachineExtension
     {

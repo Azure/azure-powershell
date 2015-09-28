@@ -12,19 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Common.Authentication.Models;
-using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Profile.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.Profile
 {    
     /// <summary>
     /// Cmdlet to get user tenant information. 
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMTenant")]
-    [Alias("Get-AzureRMDomain")]
-    [OutputType(typeof(List<AzureTenant>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmTenant")]
+    [Alias("Get-AzureRmDomain")]
+    [OutputType(typeof(PSAzureTenant))]
     public class GetAzureRMTenantCommand : AzureRMCmdlet
     {
         [Parameter(Mandatory = false, Position = 0, ValueFromPipelineByPropertyName = true)]
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Profile
         {
             var profileClient = new RMProfileClient(AzureRMCmdlet.DefaultProfile);
             
-            WriteObject(profileClient.ListTenants(Tenant), enumerateCollection: true);
+            WriteObject(profileClient.ListTenants(Tenant).Select((t) => (PSAzureTenant)t), enumerateCollection: true);
         }
     }
 }

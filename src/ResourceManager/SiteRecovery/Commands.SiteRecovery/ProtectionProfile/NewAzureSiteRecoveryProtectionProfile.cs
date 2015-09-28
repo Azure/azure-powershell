@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// <summary>
     /// Creates Azure Site Recovery Protection Profile object in memory.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRMSiteRecoveryProtectionProfile", DefaultParameterSetName = ASRParameterSets.EnterpriseToAzure)]
+    [Cmdlet(VerbsCommon.New, "AzureRmSiteRecoveryProtectionProfile", DefaultParameterSetName = ASRParameterSets.EnterpriseToAzure)]
     public class NewAzureSiteRecoveryProtectionProfile : SiteRecoveryCmdletBase
     {
         /// <summary>
