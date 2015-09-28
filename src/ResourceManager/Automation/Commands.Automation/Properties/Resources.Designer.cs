@@ -142,6 +142,15 @@ namespace Microsoft.Azure.Commands.Automation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ConfigurationData cannot be part of the job parameters. You can specify the ConfigurationData using the {0} switch.
+        /// </summary>
+        internal static string ConfigurationDataShouldNotBeInJobParameters {
+            get {
+                return ResourceManager.GetString("ConfigurationDataShouldNotBeInJobParameters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Configuration content can not be in edit/draft mode in current preview. Use the Published option..
         /// </summary>
         internal static string ConfigurationDraftMode {

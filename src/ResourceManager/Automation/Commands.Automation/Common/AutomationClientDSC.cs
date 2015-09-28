@@ -1015,7 +1015,7 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
             }
         }
 
-        public Model.CompilationJob StartCompilationJob(string resourceGroupName, string automationAccountName, string configurationName, IDictionary parameters)
+        public CompilationJob StartCompilationJob(string resourceGroupName, string automationAccountName, string configurationName, IDictionary parameters, IDictionary configurationData)
         {
             using (var request = new RequestSettings(this.automationManagementClient))
             {
@@ -1027,7 +1027,7 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
                         {
                             Name = configurationName
                         },
-                        Parameters = this.ProcessConfigurationParameters(resourceGroupName, automationAccountName, configurationName, parameters)
+                        Parameters = this.ProcessConfigurationParameters(parameters, configurationData)
                     }
                 };
 
@@ -1477,15 +1477,19 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
             return string.Format(CultureInfo.InvariantCulture, "{0:O}", dateTime.ToUniversalTime());
         }
 
-        private IDictionary<string, string> ProcessConfigurationParameters(string resourceGroupName, string automationAccountName, string configurationName, IDictionary parameters)
+        private IDictionary<string, string> ProcessConfigurationParameters(IDictionary parameters, IDictionary configurationData)
         {
             parameters = parameters ?? new Dictionary<string, string>();
             var filteredParameters = new Dictionary<string,string>();
+            if (configurationData != null)
+            {
+                filteredParameters.Add("ConfigurationData", JsonConvert.SerializeObject(configurationData));
+            }
             foreach (var key in parameters.Keys)
             {                
                 try
                 {
-                    filteredParameters.Add(key.ToString(), Newtonsoft.Json.JsonConvert.SerializeObject(parameters[key]));
+                    filteredParameters.Add(key.ToString(), JsonConvert.SerializeObject(parameters[key]));
                 }
                 catch (JsonSerializationException)
                 {

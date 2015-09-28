@@ -12,12 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
+using Microsoft.Azure.Commands.Automation.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
@@ -55,12 +58,15 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         protected override void AutomationExecuteCmdlet()
         {
             CompilationJob job = null;
-
-            if (this.ConfigurationData != null)
+            if (this.Parameters != null && this.Parameters.Contains("ConfigurationData"))
             {
-                Parameters.Add("ConfigurationData", this.ConfigurationData);
+                throw new ArgumentException(
+                                          string.Format(
+                                              CultureInfo.CurrentCulture,
+                                              Resources.ConfigurationDataShouldNotBeInJobParameters, "-ConfigurationData"));
             }
-            job = this.AutomationClient.StartCompilationJob(this.ResourceGroupName, this.AutomationAccountName, this.ConfigurationName, this.Parameters);
+
+            job = this.AutomationClient.StartCompilationJob(this.ResourceGroupName, this.AutomationAccountName, this.ConfigurationName, this.Parameters, this.ConfigurationData);
 
             this.WriteObject(job);
         }
