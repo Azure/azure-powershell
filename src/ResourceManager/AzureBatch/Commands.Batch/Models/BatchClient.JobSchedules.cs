@@ -37,24 +37,25 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException("options");
             }
 
+            ODATADetailLevel odata = new ODATADetailLevel(selectClause: options.Select, expandClause: options.Expand);
+
             // Get the single job schedule matching the specified id
             if (!string.IsNullOrWhiteSpace(options.JobScheduleId))
             {
                 WriteVerbose(string.Format(Resources.GetJobScheduleById, options.JobScheduleId));
                 JobScheduleOperations jobScheduleOperations = options.Context.BatchOMClient.JobScheduleOperations;
-                CloudJobSchedule jobSchedule = jobScheduleOperations.GetJobSchedule(options.JobScheduleId, additionalBehaviors: options.AdditionalBehaviors);
+                CloudJobSchedule jobSchedule = jobScheduleOperations.GetJobSchedule(options.JobScheduleId, detailLevel: odata, additionalBehaviors: options.AdditionalBehaviors);
                 PSCloudJobSchedule psJobSchedule = new PSCloudJobSchedule(jobSchedule);
                 return new PSCloudJobSchedule[] { psJobSchedule };
             }
             // List job schedules using the specified filter
             else
             {
-                ODATADetailLevel odata = null;
                 string verboseLogString = null;
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
                     verboseLogString = Resources.GetJobScheduleByOData;
-                    odata = new ODATADetailLevel(filterClause: options.Filter);
+                    odata.FilterClause = options.Filter;
                 }
                 else
                 {

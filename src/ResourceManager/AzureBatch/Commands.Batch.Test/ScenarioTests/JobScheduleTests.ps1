@@ -302,6 +302,37 @@ function Test-ListJobSchedulesByFilter
 
 <#
 .SYNOPSIS
+Tests querying for Batch job schedules using a select clause
+#>
+function Test-GetAndListJobSchedulesWithSelect
+{
+	param([string]$accountName, [string]$jobScheduleId)
+
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
+	$filter = "id eq '$jobScheduleId'"
+	$selectClause = "id,state"
+
+	# Test with Get job schedule API
+	$jobSchedule = Get-AzureBatchJobSchedule_ST $jobScheduleId -BatchContext $context
+	Assert-AreNotEqual $null $jobSchedule.ExecutionInformation
+	Assert-AreEqual $jobScheduleId $jobSchedule.Id
+
+	$jobSchedule = Get-AzureBatchJobSchedule_ST $jobScheduleId -Select $selectClause -BatchContext $context
+	Assert-AreEqual $null $jobSchedule.ExecutionInformation
+	Assert-AreEqual $jobScheduleId $jobSchedule.Id
+
+	# Test with List job schedules API
+	$jobSchedule = Get-AzureBatchJobSchedule_ST -Filter $filter -BatchContext $context
+	Assert-AreNotEqual $null $jobSchedule.ExecutionInformation
+	Assert-AreEqual $jobScheduleId $jobSchedule.Id
+
+	$jobSchedule = Get-AzureBatchJobSchedule_ST -Filter $filter -Select $selectClause -BatchContext $context
+	Assert-AreEqual $null $jobSchedule.ExecutionInformation
+	Assert-AreEqual $jobScheduleId $jobSchedule.Id
+}
+
+<#
+.SYNOPSIS
 Tests querying for Batch job schedules and supplying a max count
 #>
 function Test-ListJobSchedulesWithMaxCount
