@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Tags", "..\Tags\Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Dns.Test", "Commands.Dns.Test\Commands.Dns.Test.csproj", "{133561EC-99AF-4ADC-AF41-39C4D3AD323B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common", "..\..\Common\Commands.Common\Commands.Common.csproj", "{5EE72C53-1720-4309-B54B-5FB79703195F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +60,10 @@ Global
 		{133561EC-99AF-4ADC-AF41-39C4D3AD323B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{133561EC-99AF-4ADC-AF41-39C4D3AD323B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{133561EC-99AF-4ADC-AF41-39C4D3AD323B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EE72C53-1720-4309-B54B-5FB79703195F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EE72C53-1720-4309-B54B-5FB79703195F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EE72C53-1720-4309-B54B-5FB79703195F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EE72C53-1720-4309-B54B-5FB79703195F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
