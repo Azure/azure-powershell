@@ -65,8 +65,7 @@
                     Name="ApplicationBase" />
     </Property>
 
-    <Property Id="POWERSHELLEXE" />
-    <SetProperty Id="POWERSHELLEXE" Value="[POWERSHELLPATH]\powershell.exe" Before="AppSearch"/>
+    <SetProperty Id="POWERSHELLEXE" Value="[WindowsFolder]System32\WindowsPowerShell\v1.0\powershell.exe" Before="AppSearch"/>
 
     <DirectoryRef Id="PowerShellFolder">
       <Component Id="AzureSdkShortcutScript" Guid="3d0d589a-b34c-4c48-9a4c-df78f286c6a3">
@@ -79,7 +78,7 @@
         <Shortcut Id="AzureSdkStartMenuShortcut"
                   Name="Microsoft Azure PowerShell"
                   Description="Microsoft PowerShell cmdlets"
-                  Target="[POWERSHELLPATH]\powershell.exe"
+                  Target="[POWERSHELLEXE]"
                   Arguments="-NoExit -ExecutionPolicy Bypass -File &quot;[PowerShellFolder]\ShortcutStartup.ps1&quot;"/>
         <RemoveFolder Id="AzureSdkMenu" On="uninstall"/>
         <RemoveFile Id="RemoveStaleFiles" Directory="StaleAzureSdkMenu" Name="Windows Azure PowerShell.lnk" On="both"/>
