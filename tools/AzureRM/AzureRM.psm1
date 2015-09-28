@@ -105,17 +105,15 @@ function Uninstall-AzureRM
 
   Write-Output "Uninstalling AzureRM modules."
 
-  $installedModules = Get-InstalledModule
-
   $AzureRMModules.Keys | ForEach {
     $moduleName = $_
-    if (($installedModules | where {$_.Name -eq $moduleName}) -ne $null) {
+    if ((Get-InstalledModule | where {$_.Name -eq $moduleName}) -ne $null) {
       Uninstall-Module -Name $_ -ErrorAction Stop
       Write-Output "$moduleName uninstalled..." 
     }
   }
 
-  if (($installedModules | where {"AzureRM.Profile" -eq $moduleName}) -ne $null) {
+  if ((Get-InstalledModule | where {"AzureRM.Profile" -eq $moduleName}) -ne $null) {
     Uninstall-Module -Name "AzureRM.Profile" -ErrorAction Stop
     Write-Output "AzureRM.Profile uninstalled..." 
   }
