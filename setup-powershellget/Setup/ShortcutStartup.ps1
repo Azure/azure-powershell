@@ -26,7 +26,7 @@ Finalizing installation of Azure PowerShell.
 Installing Azure Modules from PowerShell Gallery. 
 This may take some time...
 "@
-		$env:PSModulePath = "$env:HOME\Documents\WindowsPowerShell\Modules;$env:ProgramFiles\WindowsPowerShell\Modules;$env:SystemRoot\system32\WindowsPowerShell\v1.0\Modules\"
+		$env:PSModulePath = "$env:USERPROFILE\Documents\WindowsPowerShell\Modules;$env:ProgramFiles\WindowsPowerShell\Modules;$env:SystemRoot\system32\WindowsPowerShell\v1.0\Modules\"
 
 		Import-Module PackageManagement
 		
