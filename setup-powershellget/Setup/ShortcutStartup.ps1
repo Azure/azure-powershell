@@ -51,7 +51,10 @@ To use Azure Service Management cmdlets please execute the following cmdlet:
 		$VerbosePreference = "Continue"
 	}
 }
-catch { Write-Output $error }
-if ($error) {
-	Read-Host -Prompt "An error occured during installation. Press any key..."
+catch 
+{ 
+Write-Output "An error occured during installation."
+Write-Output $error 
+Write-Output "Press any key..."
+$host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 }
