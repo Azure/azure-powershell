@@ -1,5 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
-//
+﻿//
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,18 +11,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Xunit;
-
-namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.HDInsight.Models
 {
-    public class AzureBackupScenarioTests : AzureBackupTestsBase
+    public class AzureHDInsightDefaultStorageAccount
     {
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void AzureBackupEndToEndTests()
-        {
-            //this.RunPowerShellTest("Test-AzureBackupEndToEnd");
-        }
+        public string StorageAccountName { get; set; }
+
+        public string StorageAccountKey { get; set; }
+
+        public string StorageContainerName { get; set; }
     }
 }
