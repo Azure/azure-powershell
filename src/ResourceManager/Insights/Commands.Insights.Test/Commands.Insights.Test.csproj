@@ -150,11 +150,7 @@
     <Compile Include="Autoscale\NewAutoscaleProfileCommandTests.cs" />
     <Compile Include="Autoscale\NewAutoscaleRuleCommandTests.cs" />
     <Compile Include="Autoscale\RemoveAutoscaleSettingCommandTests.cs" />
-    <Compile Include="Events\GetAzureCorrelationIdLogCommandTests.cs" />
-    <Compile Include="Events\GetAzureResourceLogCommandTests.cs" />
-    <Compile Include="Events\GetAzureResourceProviderLogCommandTests.cs" />
-    <Compile Include="Events\GetAzureSubscriptionIdLogCommandTests.cs" />
-    <Compile Include="Events\GetAzureResourceGroupLogCommandTests.cs" />
+    <Compile Include="Events\GetAzureRmLogCommandTests.cs" />
     <Compile Include="Metrics\FormatMetricsAsTableCommandTests.cs" />
     <Compile Include="Metrics\GetMetricDefinitionsCommandTests.cs" />
     <Compile Include="Metrics\GetMetricsCommandTests.cs" />
