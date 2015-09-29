@@ -88,7 +88,7 @@ $resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Direct
 if ($scope -eq 'All') {  
     foreach ($module in $resourceManagerModules) {
         # filter out AzureRM.Profile which always gets published first 
-		# And "Azure.Storage" which is built out as test dependencies  
+        # And "Azure.Storage" which is built out as test dependencies  
         if (($module.Name -ne "AzureRM.Profile") -and ($module.Name -ne "Azure.Storage")) {
             $modulePath = $module.FullName
             Write-Host "Publishing $module module from $modulePath"
