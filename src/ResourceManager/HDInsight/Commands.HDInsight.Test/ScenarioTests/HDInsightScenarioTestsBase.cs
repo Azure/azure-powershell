@@ -15,7 +15,6 @@
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Management.HDInsight;
 using Microsoft.Azure.Test;
-using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
@@ -47,8 +46,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
             SetupManagementClients();
 
             helper.SetupEnvironment(AzureModule.AzureResourceManager);
-            helper.SetupModules(AzureModule.AzureResourceManager, //"ScenarioTests\\Common.ps1",
-                "ScenarioTests\\" + this.GetType().Name + ".ps1");
+            helper.SetupModules(AzureModule.AzureResourceManager, 
+                "ScenarioTests\\" + this.GetType().Name + ".ps1", 
+                helper.RMProfileModule,
+                helper.RMResourceModule,
+                helper.GetRMModulePath("AzureRM.HDInsight.psd1"));
 
             helper.RunPowerShellTest(scripts);
         }
