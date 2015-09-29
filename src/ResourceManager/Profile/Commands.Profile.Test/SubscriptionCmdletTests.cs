@@ -12,20 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Commands.Profile;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System.Linq;
-using Xunit;
-using System;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Hyak.Common;
-using System.Management.Automation;
 using Microsoft.Azure.Commands.Resources.Test.ScenarioTests;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
@@ -35,7 +24,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AllParameterSetsSucceed()
         {
-            ProfileController.NewInstance.RunPsTest("72f988bf-86f1-41af-91ab-2d7cd011db47", "Test-GetSubscriptionsEndToEnd");
+            ProfileController.NewInstance.RunPsTest("db1ab6f0-4769-4b27-930e-01e2ef9c123c", "Test-GetSubscriptionsEndToEnd");
         }
     }
 }

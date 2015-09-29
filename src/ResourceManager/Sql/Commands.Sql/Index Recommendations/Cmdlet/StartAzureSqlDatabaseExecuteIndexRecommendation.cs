@@ -19,9 +19,9 @@ using Microsoft.Azure.Commands.Sql.Model;
 namespace Microsoft.Azure.Commands.Sql.Cmdlet
 {
     /// <summary>
-    /// Defines the Start-AzureRMSqlDatabaseExecuteIndexRecommendation cmdlet
+    /// Defines the Start-AzureRmSqlDatabaseExecuteIndexRecommendation cmdlet
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureRMSqlDatabaseExecuteIndexRecommendation",
+    [Cmdlet(VerbsLifecycle.Start, "AzureRmSqlDatabaseExecuteIndexRecommendation",
         ConfirmImpact = ConfirmImpact.Low)]
     public class StartAzureSqlDatabaseExecuteIndexRecommendation : AzureSqlDatabaseExecuteIndexRecommendationCmdletBase
     {

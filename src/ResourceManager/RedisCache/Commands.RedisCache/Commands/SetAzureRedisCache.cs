@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.RedisCache
     using Hyak.Common;
     using System;
         
-    [Cmdlet(VerbsCommon.Set, "AzureRMRedisCache", DefaultParameterSetName = MaxMemoryParameterSetName), OutputType(typeof(RedisCacheAttributesWithAccessKeys))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmRedisCache", DefaultParameterSetName = MaxMemoryParameterSetName), OutputType(typeof(RedisCacheAttributesWithAccessKeys))]
     public class SetAzureRedisCache : RedisCacheCmdletBase
     {
         internal const string MaxMemoryParameterSetName = "Only MaxMemoryPolicy";

@@ -34,37 +34,37 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
         /// <summary>
         /// Cmdlet name for storage context.
         /// </summary>
-        public const string StorageContextCmdletName = "AzureRMStorageContext";
+        public const string StorageContextCmdletName = "AzureStorageContext";
 
         /// <summary>
         /// Cmdlet name for file share.
         /// </summary>
-        public const string ShareCmdletName = "AzureRMStorageShare";
+        public const string ShareCmdletName = "AzureStorageShare";
 
         /// <summary>
         /// Cmdlet name for file directory.
         /// </summary>
-        public const string FileDirectoryCmdletName = "AzureRMStorageDirectory";
+        public const string FileDirectoryCmdletName = "AzureStorageDirectory";
 
         /// <summary>
         /// Cmdlet name for file.
         /// </summary>
-        public const string FileCmdletName = "AzureRMStorageFile";
+        public const string FileCmdletName = "AzureStorageFile";
 
         /// <summary>
         /// Cmdlet name for file content.
         /// </summary>
-        public const string FileContentCmdletName = "AzureRMStorageFileContent";
+        public const string FileContentCmdletName = "AzureStorageFileContent";
 
         /// <summary>
         /// Cmdlet name for file copy.
         /// </summary>
-        public const string FileCopyCmdletName = "AzureRMStorageFileCopy";
+        public const string FileCopyCmdletName = "AzureStorageFileCopy";
 
         /// <summary>
         /// Cmdlet name for file copy state.
         /// </summary>
-        public const string FileCopyCmdletStateName = "AzureRMStorageFileCopyState";
+        public const string FileCopyCmdletStateName = "AzureStorageFileCopyState";
 
         /// <summary>
         /// Stores the default endpoint suffix for storage accounts.

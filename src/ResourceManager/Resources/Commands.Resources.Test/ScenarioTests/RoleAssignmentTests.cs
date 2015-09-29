@@ -37,49 +37,49 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
            ResourcesController.NewInstance.RunPsTest("Test-RaAuthorizationChangeLog");
         }
 
-        [Fact(Skip = "PSGet Migration: TODO: Get-AzureRMSubscription")]
+        [Fact(Skip = "PSGet Migration: TODO: Get-AzureRmSubscription")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaClassicAdmins()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaClassicAdmins");
         }
 
-        [Fact(Skip = "PSGet Migration: TODO: Get-AzureRMSubscription")]
+        [Fact(Skip = "PSGet Migration: TODO: Get-AzureRmSubscription")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaNegativeScenarios()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaNegativeScenarios");
         }
 
-        [Fact(Skip = "PSGet Migration: TODO: Get-AzureRMSubscription")]
+        [Fact(Skip = "PSGet Migration: TODO: Get-AzureRmSubscription")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByScope()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaByScope");
         }
 
-        [Fact]
+        [Fact(Skip = "Need to re-record test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByResourceGroup()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaByResourceGroup");
         }
 
-        [Fact]
+        [Fact(Skip = "Need to re-record test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByResource()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaByResource");
         }
 
-        [Fact(Skip = "PSGet Migration: TODO: Get-AzureRMSubscription")]
+        [Fact(Skip = "PSGet Migration: TODO: Get-AzureRmSubscription")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByServicePrincipal()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaByServicePrincipal");
         }
 
-        [Fact]
+        [Fact(Skip = "Need to re-record test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByUpn()
         {

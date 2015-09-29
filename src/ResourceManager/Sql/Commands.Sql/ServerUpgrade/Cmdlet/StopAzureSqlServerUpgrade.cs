@@ -21,9 +21,9 @@ using Microsoft.Azure.Commands.Sql.ServerUpgrade.Model;
 namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureRMSqlDatabaseServer cmdlet
+    /// Defines the Get-AzureRmSqlDatabaseServer cmdlet
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Stop, "AzureRMSqlServerUpgrade",
+    [Cmdlet(VerbsLifecycle.Stop, "AzureRmSqlServerUpgrade",
         SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.High)]
     public class StopAzureSqlServerUpgrade : AzureSqlServerUpgradeCmdletBase<AzureSqlServerUpgradeModel>

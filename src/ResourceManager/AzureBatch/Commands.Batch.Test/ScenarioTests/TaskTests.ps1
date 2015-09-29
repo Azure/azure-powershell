@@ -20,7 +20,7 @@ function Test-CreateTask
 {
 	param([string]$accountName, [string]$jobId)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 
 	$taskId1 = "simple"
 	$taskId2= "complex"
@@ -79,7 +79,7 @@ function Test-GetTaskById
 {
 	param([string]$accountName, [string]$jobId, [string]$taskId)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$task = Get-AzureBatchTask_ST -JobId $jobId -Id $taskId -BatchContext $context
 
 	Assert-AreEqual $taskId $task.Id
@@ -98,7 +98,7 @@ function Test-ListTasksByFilter
 {
 	param([string]$accountName, [string]$jobId, [string]$taskPrefix, [string]$matches)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$filter = "startswith(id,'" + "$taskPrefix" + "')"
 
 	$tasks = Get-AzureBatchTask_ST -JobId $jobId -Filter $filter -BatchContext $context
@@ -128,7 +128,7 @@ function Test-ListTasksWithMaxCount
 {
 	param([string]$accountName, [string]$jobId, [string]$maxCount)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$tasks = Get-AzureBatchTask_ST -JobId $jobId -MaxCount $maxCount -BatchContext $context
 
 	Assert-AreEqual $maxCount $tasks.Length
@@ -148,7 +148,7 @@ function Test-ListAllTasks
 {
 	param([string]$accountName, [string] $jobId, [string]$count)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$tasks = Get-AzureBatchTask_ST -JobId $jobId -BatchContext $context
 
 	Assert-AreEqual $count $tasks.Length
@@ -168,11 +168,40 @@ function Test-ListTaskPipeline
 {
 	param([string]$accountName, [string]$jobId, [string]$taskId)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 
 	# Get Job into Get Task
 	$task = Get-AzureBatchJob_ST -Id $jobId -BatchContext $context | Get-AzureBatchTask_ST -BatchContext $context
 	Assert-AreEqual $taskId $task.Id
+}
+
+<#
+.SYNOPSIS
+Tests updating a task
+#>
+function Test-UpdateTask
+{
+	param([string]$accountName, [string]$jobId, [string]$taskId)
+
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
+
+	$task = Get-AzureBatchTask_ST $jobId $taskId -BatchContext $context
+
+	# Define new task constraints
+	$constraints = New-Object Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints -ArgumentList @([TimeSpan]::FromDays(10),[TimeSpan]::FromDays(2),5)
+	$maxWallClockTime = $constraints.MaxWallClockTime
+	$retentionTime = $constraints.RetentionTime
+	$maxRetryCount = $constraints.MaxRetryCount
+
+	# Update and refresh task
+	$task.Constraints = $constraints
+	$task | Set-AzureBatchTask_ST -BatchContext $context
+	$task = Get-AzureBatchTask_ST $jobId $taskId -BatchContext $context
+
+	# Verify task was updated
+	Assert-AreEqual $maxWallClockTime $task.Constraints.MaxWallClockTime
+	Assert-AreEqual $retentionTime $task.Constraints.RetentionTime
+	Assert-AreEqual $maxRetryCount $constraints.MaxRetryCount
 }
 
 <#
@@ -183,7 +212,7 @@ function Test-DeleteTask
 {
 	param([string]$accountName, [string]$jobId, [string]$taskId, [string]$usePipeline)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 
 	# Verify the task exists
 	$tasks = Get-AzureBatchTask_ST -JobId $jobId -BatchContext $context
@@ -211,7 +240,7 @@ function Test-TerminateTask
 {
 	param([string]$accountName, [string]$jobId, [string]$taskId1, [string]$taskId2)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 
 	Stop-AzureBatchTask_ST $jobId $taskId1 -BatchContext $context
 	Get-AzureBatchTask_ST $jobId $taskId2 -BatchContext $context | Stop-AzureBatchTask_ST -BatchContext $context

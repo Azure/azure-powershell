@@ -12,30 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.Azure.Batch;
-using Microsoft.Azure.Batch.Auth;
 using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Batch.Protocol;
-using Microsoft.Azure.Batch.Protocol.Models;
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Batch.Models;
 using System;
-using System.Reflection;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Azure.Test.HttpRecorder;
-using Moq;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
@@ -49,10 +39,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         // NOTE: To save time on setup and compute node allocation when recording, many tests assume the following:
         //     - A Batch account named 'pstests' exists under the subscription being used for recording.
         //     - The following commands were run to create a pool, and all 3 compute nodes are allocated:
-        //          $context = Get-AzureRMBatchAccountKeys "pstests"
+        //          $context = Get-AzureRmBatchAccountKeys "pstests"
         //          $startTask = New-Object Microsoft.Azure.Commands.Batch.Models.PSStartTask
         //          $startTask.CommandLine = "cmd /c echo hello"
-        //          New-AzureRMBatchPool -Id "testPool" -VirtualMachineSize "small" -OSFamily "4" -TargetOSVersion "*" -TargetDedicated 3 -StartTask $startTask -BatchContext $context
+        //          New-AzureRmBatchPool -Id "testPool" -VirtualMachineSize "small" -OSFamily "4" -TargetOSVersion "*" -TargetDedicated 3 -StartTask $startTask -BatchContext $context
         internal const string SharedAccount = "pstests";
         internal const string SharedPool = "testPool";
         internal const string SharedPoolStartTaskStdOut = "startup\\stdout.txt";
@@ -428,7 +418,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Creates a test user for use in Scenario tests.
+        /// Creates a compute node user for use in Scenario tests.
         /// </summary>
         public static void CreateComputeNodeUser(BatchController controller, BatchAccountContext context, string poolId, string computeNodeId, string computeNodeUserName)
         {
@@ -444,6 +434,21 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
             client.CreateComputeNodeUser(parameters);
         }
+
+        /// <summary>
+        /// Deletes a compute node user for use in Scenario tests.
+        /// </summary>
+        public static void DeleteComputeNodeUser(BatchController controller, BatchAccountContext context, string poolId, string computeNodeId, string computeNodeUserName)
+        {
+            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
+            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            ComputeNodeUserOperationParameters parameters = new ComputeNodeUserOperationParameters(context, poolId, computeNodeId, computeNodeUserName, behaviors);
+
+            client.DeleteComputeNodeUser(parameters);
+        }
+
 
         /// <summary>
         /// Creates an interceptor that can be used to support the HTTP recorder scenario tests.

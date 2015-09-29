@@ -18,7 +18,12 @@
 
   /p:CodeSign=True;DelaySign=True
     Test the code sign workflow locally. 
-  
+
+  /p:Scope
+    'Azure': service management
+    'AzureStorage': storage data plane cmdlets
+    'Subfolder under src\ResourceManager': An individual cmdlet module
+    By default, it builds all
   -->  
 
   <!-- Define build properties -->
@@ -36,10 +41,13 @@
     <SetupOutputDirectory>$(PublishDirectory)\Setup</SetupOutputDirectory>
     <TestOutputDirectory>$(PublishDirectory)\TestResults</TestOutputDirectory>
     <BuildInParallel Condition="'$(BuildInParallel)' == ''">true</BuildInParallel>
+    <NuGetPublishingSource Condition=" '$(NuGetPublishingSource)' == '' ">http://psget/PSGallery/api/v2/</NuGetPublishingSource>
   </PropertyGroup>
   <ItemGroup>
-    <AzureResourceManagerSln Include=".\src\ResourceManager.sln" />
-    <AzureServiceManagementSln Include=".\src\ServiceManagement.sln" />
+    <CmdletSolutionsToBuild Include=".\src\ResourceManager\**\*.sln;.\src\ServiceManagement\ServiceManagement.sln" Condition=" '$(Scope)' == '' "/>
+    <CmdletSolutionsToBuild Include=".\src\ResourceManager\$(Scope)\*.sln" Condition=" '$(Scope)' != '' and '$(Scope)' != 'ServiceManagement' "/>
+    <CmdletSolutionsToBuild Include=".\src\ServiceManagement\ServiceManagement.sln"
+                            Condition=" '$(Scope)' != '' and ('$(Scope)' == 'ServiceManagement' or '$(Scope)' == 'AzureStorage') "/>
     <SetupSln Include=".\setup\azurepowershell.sln" />
     <SetupPowershellGetSln Include=".\setup-powershellget\powershellget.sln" />
   </ItemGroup>
@@ -63,28 +71,19 @@
   
   <!-- Clean the build in all configurations -->
   <Target Name="Clean">
-    <!-- Clean the solutions -->
     <Message Importance="high" Text="Cleaning Cmdlets..." ContinueOnError="false" />
     <MSBuild
-      Projects="@(AzureResourceManagerSln)"
+      Projects="@(CmdletSolutionsToBuild)"
       Targets="Clean"
       Properties="Configuration=$(Configuration);Platform=Any CPU"
       ContinueOnError="false" />
-    <MSBuild
-      Projects="@(AzureServiceManagementSln)"
-      Targets="Clean"
-      Properties="Configuration=$(Configuration);Platform=Any CPU"
-      ContinueOnError="false" />
-    <MSBuild
-      Projects="@(SetupSln)"
-      Targets="Clean"
-      Properties="Configuration=$(Configuration);Platform=Any CPU"
-      ContinueOnError="false" />
+    
     <MSBuild
       Projects="@(SetupPowershellGetSln)"
       Targets="Clean"
       Properties="Configuration=$(Configuration);Platform=Any CPU"
-      ContinueOnError="false" />
+      ContinueOnError="false" 
+      Condition=" '$(Scope)' == '' "/>
       
     <!-- Delete the publish files -->
     <Message Importance="high" Text="Cleaning publish files..." ContinueOnError="false" />
@@ -112,9 +111,10 @@
   </Target>
   
   <PropertyGroup>
-    <NuGetCommand>$(MSBuildProjectDirectory)\src\.nuget\NuGet.exe</NuGetCommand>
+    <NuGetCommand>$(MSBuildProjectDirectory)\tools\NuGet.exe</NuGetCommand>
     <NuGetRestoreConfigFile>$(MSBuildProjectDirectory)\restore.config</NuGetRestoreConfigFile>
     <NuGetRestoreConfigSwitch>-ConfigFile &quot;$(NuGetRestoreConfigFile)&quot;</NuGetRestoreConfigSwitch>
+    <PowerShellCommand>C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</PowerShellCommand>
   </PropertyGroup>
   
   <!--
@@ -138,9 +138,9 @@
     <Exec Command="$(NuGetCommand) sources add -Name LocalFeed -Source &quot;$(MSBuildProjectDirectory)\tools\LocalFeed&quot; $(NuGetRestoreConfigSwitch)"/>
 
     <!-- Restore packages -->
-    <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\src\ResourceManager.sln $(NuGetRestoreConfigSwitch)" ContinueOnError="false" />
-    <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\src\ServiceManagement.sln $(NuGetRestoreConfigSwitch)" ContinueOnError="false" />
-    
+    <Exec Command="$(NuGetCommand) restore %(CmdletSolutionsToBuild.FullPath) $(NuGetRestoreConfigSwitch)" 
+          ContinueOnError="false" />
+
     <!--Restore the xunit runner needed to run unit tests-->
     <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\packages.config -PackagesDirectory $(MSBuildProjectDirectory)\packages" />
     
@@ -151,15 +151,11 @@
   <Target Name="Build" DependsOnTargets="RestoreNugetPackages;BuildMsBuildTask">
     <Message Importance="high" Text="Building Cmdlets..." />
     <MSBuild
-      Projects="@(AzureResourceManagerSln)"
+      Projects="@(CmdletSolutionsToBuild)"
       Targets="Build"
       Properties="Configuration=$(Configuration);Platform=Any CPU"
-      BuildInParallel="$(BuildInParallel)" ContinueOnError="false" />
-    <MSBuild
-      Projects="@(AzureServiceManagementSln)"
-      Targets="Build"
-      Properties="Configuration=$(Configuration);Platform=Any CPU"
-      BuildInParallel="$(BuildInParallel)" ContinueOnError="false" />
+      BuildInParallel="$(BuildInParallel)" 
+      ContinueOnError="false" />
       
     <CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " />
     
@@ -168,14 +164,18 @@
       Projects="@(SetupPowershellGetSln)"
       Targets="Build"
       Properties="Configuration=$(Configuration);Platform=Any CPU"
-      ContinueOnError="false" />
+      ContinueOnError="false" 
+      Condition=" '$(Scope)' == '' "/>
+    
     <MSBuild
       Projects="@(SetupSln)"
       Targets="Build"
       Properties="Configuration=$(Configuration);Platform=Any CPU"
-      ContinueOnError="false" />
+      ContinueOnError="false" 
+      Condition=" '$(Scope)' == '' "/>
     
-    <CallTarget Targets="CodeSignInstaller" Condition=" '$(CodeSign)' == 'true' " />    
+    <CallTarget Targets="CodeSignInstaller" 
+                Condition=" '$(CodeSign)' == 'true' and '$(Scope)' == ''" />    
   </Target>
   
   <!-- Do everything possible -->
@@ -202,6 +202,10 @@
 
     <!-- Copying shortcut to be signed -->
     <Copy SourceFiles="$(LibraryRoot)setup-powershellget\Setup\ShortcutStartup.ps1" 
+      DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
+    <Copy SourceFiles="$(LibraryRoot)tools\AzureRM\AzureRM.psd1" 
+      DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
+    <Copy SourceFiles="$(LibraryRoot)tools\AzureRM\AzureRM.psm1" 
       DestinationFolder="$(LibrarySourceFolder)\Package\$(Configuration)" />
     
     <ItemGroup>
@@ -254,6 +258,10 @@
     <!-- Copying signed shortcut back -->
     <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\ShortcutStartup.ps1" 
       DestinationFolder="$(LibraryRoot)setup-powershellget\Setup" />
+    <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.psd1" 
+      DestinationFolder="$(LibraryRoot)tools\AzureRM" />
+    <Copy SourceFiles="$(LibrarySourceFolder)\Package\$(Configuration)\AzureRM.psm1" 
+      DestinationFolder="$(LibraryRoot)tools\AzureRM" />
   </Target>
   
   <Target Name="CodeSignInstaller">
@@ -285,6 +293,13 @@
     <!--If we are testing locally then we copy the binaries and do not submit to the code sign server-->
     <Copy SourceFiles="@(InstallersToSign)" DestinationFolder="signed" Condition="$(DelaySign)" />
   </Target>
+  
+  <!-- Publish all packages -->
+  <Target Name="Publish" DependsOnTargets="Build">
+    <Error Condition=" '$(NuGetKey)' == '' " Text="You must provide the NuGetKey parameter to the build: /p:NuGetKey=YOUR_PUBLISHING_KEY" />
+    <Message Importance="high" Text="Publishing Cmdlets..." />
+    <Exec Command="$(PowerShellCommand) -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\PublishModules.ps1 $(Configuration) $(Scope) $(NuGetKey) \&quot;$(NuGetPublishingSource)\&quot; &quot;"/>
+  </Target>
 
   <PropertyGroup>
     <RunTestLive Condition="'$(RunTestLive)' == ''">false</RunTestLive>
@@ -295,7 +310,7 @@
   <Import Project="$(MSBuildThisFileDirectory)AzurePowershell.test.targets"/>
   
   <!-- Run checkin tests for each pull request -->
-  <Target Name="Test" DependsOnTargets="Build;BeforeRunTests">
+  <Target Name="Test" DependsOnTargets="BeforeRunTests">
     <Message Importance="high" Text="Running check in tests..." />
     <CallTarget Targets="InvokeXUnit"/>
   </Target>

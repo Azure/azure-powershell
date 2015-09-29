@@ -119,5 +119,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
         {
             return new Microsoft.Rest.TokenCredentials(Token.AccessToken);
         }
+
+
+        public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context, AzureEnvironment.Endpoint targetEndpoint)
+        {
+            return new AccessTokenCredential(context.Subscription.Id, Token);
+        }
     }
 }
