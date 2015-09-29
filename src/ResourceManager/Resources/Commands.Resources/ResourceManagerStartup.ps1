@@ -40,7 +40,7 @@ Maximum duration that can be queried is 15 days (going back up to past 90 days).
 
 .DESCRIPTION
 
-The Get-AzureRMAuthorizationChangeLog produces a report of who granted (or revoked) what role to whom at what scope within the subscription for the specified time range. 
+The Get-AzureRmAuthorizationChangeLog produces a report of who granted (or revoked) what role to whom at what scope within the subscription for the specified time range. 
 
 The command queries all role assignment events from the Insights resource provider of Azure Resource Manager. Specifying the time range is optional. If both StartTime and EndTime parameters are not specified, the default query interval is the past 1 hour. Maximum duration that can be queried is 15 days (going back up to past 90 days).
 
@@ -57,14 +57,14 @@ End time of the query. Optional
 
 .EXAMPLE 
 
-Get-AzureRMAuthorizationChangeLog
+Get-AzureRmAuthorizationChangeLog
 
 Gets the access change logs for the past hour.
 
 
 .EXAMPLE   
 
-Get-AzureRMAuthorizationChangeLog -StartTime "09/20/2015 15:00" -EndTime "09/24/2015 15:00"
+Get-AzureRmAuthorizationChangeLog -StartTime "09/20/2015 15:00" -EndTime "09/24/2015 15:00"
 
 Gets all access change logs between the specified dates
 
@@ -77,13 +77,13 @@ PrincipalType    : User
 Scope            : /subscriptions/9004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/testresource
 ScopeName        : testresource
 ScopeType        : Resource
-RoleDefinitionId : /subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c
+RoleDefinitionId : /subscriptions/9004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c
 RoleName         : Contributor
 
 
 .EXAMPLE 
 
-Get-AzureRMAuthorizationChangeLog  -StartTime ([DateTime]::Now - [TimeSpan]::FromDays(5)) -EndTime ([DateTime]::Now) | FT Caller, Action, RoleName, PrincipalName, ScopeType
+Get-AzureRmAuthorizationChangeLog  -StartTime ([DateTime]::Now - [TimeSpan]::FromDays(5)) -EndTime ([DateTime]::Now) | FT Caller, Action, RoleName, PrincipalName, ScopeType
 
 Gets access change logs for the past 5 days and format the output
 
