@@ -65,8 +65,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Test.ScenarioTests
                 SetupManagementClients();
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                helper.SetupModules(AzureModule.AzureResourceManager, "ScenarioTests\\" + this.GetType().Name + ".ps1");
-
+                helper.SetupModules(AzureModule.AzureResourceManager, 
+                    "ScenarioTests\\" + this.GetType().Name + ".ps1",
+                    helper.RMProfileModule,
+                    helper.GetRMModulePath("AzureRM.Backup.psd1")
+                    );
                 helper.RunPowerShellTest(scripts);
             }
         }

@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             cmdlet.Id = "testTask";
 
             // Don't go to the service on a Terminate CloudTask call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudTaskTerminateParameters, CloudTaskTerminateResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudTaskTerminateParameters, CloudTaskTerminateResponse>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameters are set

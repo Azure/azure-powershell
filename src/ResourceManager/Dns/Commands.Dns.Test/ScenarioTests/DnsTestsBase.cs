@@ -28,8 +28,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
     using Microsoft.Azure.Management.Dns;
     using Microsoft.Azure.Subscriptions;
     using WindowsAzure.Commands.Test.Utilities.Common;
-    using Dns.Models;
-    
+
     public class DnsTestsBase : RMTestBase
     { 
         private CSMTestEnvironmentFactory csmTestFactory; 
@@ -136,14 +135,13 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 
                 string callingClassName = callingClassType 
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries) 
-                                        .Last(); 
+                                        .Last();
 
 
-                this.helper.SetupModules( 
-                    AzureModule.AzureResourceManager, 
-                    "ScenarioTests\\Common.ps1", 
-                    "ScenarioTests\\" + callingClassName + ".ps1"); 
-
+                this.helper.SetupModules(AzureModule.AzureResourceManager, "ScenarioTests\\Common.ps1", "ScenarioTests\\" + callingClassName + ".ps1", 
+                    helper.RMProfileModule,
+                    helper.RMResourceModule,
+                    helper.GetRMModulePath("AzureRM.Dns.psd1")); 
 
                 try 
                 { 

@@ -1,5 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
-//
+﻿//
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,12 +11,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
-
-namespace Microsoft.Azure.Commands.Resources.Models.Authorization
+namespace Microsoft.Azure.Commands.HDInsight.Models
 {
-    public class PSServiceRoleAssignment : PSRoleAssignment
+    public class AzureHDInsightDefaultStorageAccount
     {
-        public string ServicePrincipalName { get; set; }
+        public string StorageAccountName { get; set; }
+
+        public string StorageAccountKey { get; set; }
+
+        public string StorageContainerName { get; set; }
     }
 }
