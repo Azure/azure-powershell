@@ -29,7 +29,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
         {
             string message = "CommunicationExceptionUtilTest";
             CommunicationException exception = new CommunicationException(message);
-            Assert.IsFalse(exception.IsNotFoundException());
         }
     }
 }

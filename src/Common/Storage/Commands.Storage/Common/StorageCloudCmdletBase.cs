@@ -39,7 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     /// <summary>
     /// Base cmdlet for all storage cmdlet that works with cloud
     /// </summary>
-    public abstract class StorageCloudCmdletBase<T> : AzureDataCmdlet
+    public class StorageCloudCmdletBase<T> : AzureDataCmdlet
         where T : class
     {
         [Parameter(HelpMessage = "Azure Storage Context Object",
@@ -106,12 +106,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
         }
 
+        public virtual void ExecuteCmdlet()
+        {
+        }
+
+
         protected override void ProcessRecord()
         {
             Validate.ValidateInternetConnection();
             InitChannelCurrentSubscription();
-            base.ProcessRecord();
-        }
+            ExecuteCmdlet();
+       }
+
 
         /// <summary>
         /// Gets or sets a flag indicating whether CreateChannel should share
@@ -120,7 +126,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// </summary>
         public bool ShareChannel { get; set; }
 
-        protected abstract T CreateChannel();
+        protected virtual T CreateChannel()
+        {
+            return null;
+        }
 
         /// <summary>
         /// Cancellation Token Source
@@ -294,7 +303,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             account = null;
             bool result = false;
             //Storage Context is empty and have already set the current storage account in subscription
-            if (Context == null && profile.Context.Subscription != null && profile.Context.Subscription != null)
+            if (Context == null && profile != null && profile.Context != null && profile.Context.Subscription != null && profile.Context.Subscription != null)
             {
                 account = profile.Context.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
                 result = !string.IsNullOrWhiteSpace(account);

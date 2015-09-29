@@ -52,10 +52,22 @@ namespace Microsoft.WindowsAzure.Commands.Common
             get { return AzureRmProfileProvider.Instance.Profile; }
         }
 
-        public virtual void ExecuteCmdlet()
+        public static void ClearCurrentStorageAccount()
         {
-            ProcessRecord();
+            var RMProfile = AzureRmProfileProvider.Instance.Profile;
+            if (RMProfile != null && RMProfile.Context != null && 
+                RMProfile.Context.Subscription != null)
+            {
+                RMProfile.Context.Subscription.SetProperty(AzureSubscription.Property.StorageAccount, null);
+            }
+
+            var SMProfile = AzureSMProfileProvider.Instance.Profile;
+            if (SMProfile != null && SMProfile.Context != null && SMProfile.Context.Subscription != null)
+            {
+                SMProfile.Context.Subscription.SetProperty(AzureSubscription.Property.StorageAccount, null);
+            }
         }
+
         protected override void SaveDataCollectionProfile()
         {
         }

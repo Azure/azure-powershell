@@ -17,9 +17,11 @@ using System.Collections.Generic;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
-using Microsoft.Azure.Management.Storage;
+using ArmStorage = Microsoft.Azure.Management.Storage;
+using SmStorage = Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.Azure.Common.Authentication;
+using Microsoft.WindowsAzure.Storage.Auth;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
@@ -27,19 +29,30 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
     {
         private static Dictionary<Guid, CloudStorageAccount> storageAccountCache = new Dictionary<Guid,CloudStorageAccount>();
 
-        public static CloudStorageAccount GetCloudStorageAccount(this AzureContext context, string accountId)
+        public static CloudStorageAccount GetCloudStorageAccount(this AzureContext context, string connectionString)
         {
-            if (accountId == null)
+            if (connectionString == null)
             {
                 return null;
             }
+            return CloudStorageAccount.Parse(connectionString);
+        }
 
-            StorageIdentity identity = new StorageIdentity(accountId);
-
-            using (var storageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
+        public static void SetCurrentStorageAccount(this AzureContext context, string connectionString)
+        {
+            if (context.Subscription != null)
             {
-                return StorageUtilities.GenerateCloudStorageAccount(storageClient, identity.ResourceGroupName, identity.StorageAccountName);
+                context.Subscription.SetProperty(AzureSubscription.Property.StorageAccount, connectionString);
             }
         }
+
+        public static void SetCurrentStorageAccount(this AzureContext context, IStorageContextProvider account)
+        {
+            if (context.Subscription != null && account != null && account.Context != null && account.Context.StorageAccount != null)
+            {
+                context.SetCurrentStorageAccount(account.Context.StorageAccount.ToString(true));
+            }
+        }
+
     }
 }
