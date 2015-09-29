@@ -418,4 +418,7 @@
     <value>Invalid node configuration name. Please specify in the format &lt;config name&gt;.&lt;node name&gt;</value>
     <comment>Automation</comment>
   </data>
+  <data name="ConfigurationDataShouldNotBeInJobParameters" xml:space="preserve">
+    <value>ConfigurationData cannot be part of the job parameters. You can specify the ConfigurationData using the {0} switch</value>
+  </data>
 </root>
