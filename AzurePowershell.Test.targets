@@ -85,7 +85,7 @@
     <ItemGroup Condition=" '$(scope)' == 'ServiceManagement' ">
       <XUnitTests Include="@(AsmXUnitTests)"/>
     </ItemGroup>
-    <ItemGroup Condition=" '$(scope)' != 'all' and '$(scope)' != 'ServiceManagement' and $(scope)' != 'AzureStorage' ">
+    <ItemGroup Condition=" '$(scope)' != 'all' and '$(scope)' != 'ServiceManagement' and '$(scope)' != 'AzureStorage' ">
       <XUnitTests Include="$(MSBuildProjectDirectory)\src\ResourceManager\$(scope)\*\bin\Debug\*.Test.dll"/>
     </ItemGroup>
     

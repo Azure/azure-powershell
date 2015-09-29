@@ -53,10 +53,19 @@ if ($repo -ne $null) {
     Register-PSRepository -Name $repoName -SourceLocation $repositoryLocation -PublishLocation $repositoryLocation/package -InstallationPolicy Trusted
 }
 
+$resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager\AzureResourceManager"
+
+if ($scope -eq 'All') {
+    # Publish AzureRM.Profile first which is the common dependency
+    Write-Host "Publishing profile module"
+    Publish-Module -Path "$resourceManagerRootFolder\AzureRM.Profile" -NuGetApiKey $apiKey -Repository $repoName
+    Write-Host "Published profile module"
+}
+
 if (($scope -eq 'All') -or ($scope -eq 'ServiceManagement')) {
     $modulePath = "$packageFolder\$buildConfig\ServiceManagement\Azure"
     # Publish Azure module
-    Write-Host "Publishing Azure module from $modulePath"
+    Write-Host "Publishing ServiceManagement(aka Azure) module from $modulePath"
     Publish-Module -Path $modulePath -NuGetApiKey $apiKey -Repository $repoName
 } 
 
@@ -75,17 +84,12 @@ if ($scope -eq 'AzureRM') {
     Write-Host "Published Azure module"
 } 
 
-$resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager\AzureResourceManager"
 $resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory
 if ($scope -eq 'All') {  
-    # Publish AzureRM.Profile first
-    Write-Host "Publishing profile module"
-    Publish-Module -Path "$resourceManagerRootFolder\AzureRM.Profile" -NuGetApiKey $apiKey -Repository $repoName
-    Write-Host "Published profile module"
-
     foreach ($module in $resourceManagerModules) {
-        # Make sure to filter out AzureRM.Profile
-        if ($module -ne "AzureRM.Profile") {
+        # filter out AzureRM.Profile which always gets published first 
+		# And "Azure.Storage" which is built out as test dependencies  
+        if (($module.Name -ne "AzureRM.Profile") -and ($module.Name -ne "Azure.Storage")) {
             $modulePath = $module.FullName
             Write-Host "Publishing $module module from $modulePath"
             Publish-Module -Path $modulePath -NuGetApiKey $apiKey -Repository $repoName
