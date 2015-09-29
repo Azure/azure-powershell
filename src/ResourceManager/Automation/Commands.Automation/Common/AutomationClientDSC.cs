@@ -264,7 +264,7 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
            string nodeName)
         {
             string configurationContent = "Configuration {0} { Node {1} { } } ";
-            configurationContent = string.Format(configurationContent,configrationName,nodeName);
+            configurationContent = string.Format(configurationContent, configrationName, nodeName);
 
             using (var request = new RequestSettings(this.automationManagementClient))
             {
@@ -1196,7 +1196,8 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
                 if (File.Exists(Path.GetFullPath(sourcePath)))
                 {
                     fileContent = System.IO.File.ReadAllText(sourcePath);
-                    nodeConfigurationName = configurationName + "." + System.IO.Path.GetFileNameWithoutExtension(sourcePath);
+                    nodeName = System.IO.Path.GetFileNameWithoutExtension(sourcePath);
+                    nodeConfigurationName = configurationName + "." + nodeName;
                 }
                 else
                 {
