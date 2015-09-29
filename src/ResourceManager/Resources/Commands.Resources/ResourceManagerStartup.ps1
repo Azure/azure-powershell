@@ -119,7 +119,7 @@ Remove-AzureRmRoleAssignment
     ) 
     PROCESS { 
          # Get all events for the "Microsoft.Authorization" provider by calling the Insights commandlet
-         $events = Get-AzureRmResourceProviderLog -ResourceProvider "Microsoft.Authorization" -DetailedOutput -StartTime $StartTime -EndTime $EndTime
+         $events = Get-AzureRmLog -ResourceProvider "Microsoft.Authorization" -DetailedOutput -StartTime $StartTime -EndTime $EndTime
              
          $startEvents = @{}
          $endEvents = @{}
