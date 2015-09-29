@@ -20,25 +20,40 @@ function Test-CreateComputeNodeUser
 {
 	param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$userName, [string]$usePipeline)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$password = "Password1234!"
 
 	# Create a user
 	if ($usePipeline -eq '1')
 	{
 		$expiryTime = New-Object DateTime -ArgumentList @(2020,01,01)
-		$computeNode = Get-AzureRMBatchComputeNode_ST $poolId $computeNodeId -BatchContext $context
-		$computeNode | New-AzureRMBatchComputeNodeUser_ST -Name $userName -Password $password -ExpiryTime $expiryTime -IsAdmin -BatchContext $context
+		$computeNode = Get-AzureBatchComputeNode_ST $poolId $computeNodeId -BatchContext $context
+		$computeNode | New-AzureBatchComputeNodeUser_ST -Name $userName -Password $password -ExpiryTime $expiryTime -IsAdmin -BatchContext $context
 	}
 	else
 	{
-		New-AzureRMBatchComputeNodeUser_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -Password $password -BatchContext $context
+		New-AzureBatchComputeNodeUser_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -Password $password -BatchContext $context
 	}
 
 	# Verify that a user was created 
 	# There is currently no Get/List user API, so verify by calling the delete operation. 
 	# If the user account was created, it will succeed; otherwsie, it will throw a 404 error.
-	Remove-AzureRMBatchComputeNodeUser_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -Force -BatchContext $context
+	Remove-AzureBatchComputeNodeUser_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -Force -BatchContext $context
+}
+
+<#
+.SYNOPSIS
+Tests updating a compute node user
+#>
+function Test-UpdateComputeNodeUser
+{
+	param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$userName)
+
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
+
+	# Basically just validating that we can set the parameters and execute the cmdlet without error. 
+	# If a Get user API is added, we can validate that the properties were actually updated.
+	Set-AzureBatchComputeNodeUser_ST $poolId $computeNodeId $userName "Abcdefghijk1234!" -ExpiryTime ([DateTime]::Now.AddDays(5)) -BatchContext $context
 }
 
 <#
@@ -49,11 +64,11 @@ function Test-DeleteComputeNodeUser
 {
 	param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$userName)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 
-	Remove-AzureRMBatchComputeNodeUser_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -Force -BatchContext $context
+	Remove-AzureBatchComputeNodeUser_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -Force -BatchContext $context
 
 	# Verify the user was deleted
 	# There is currently no Get/List user API, so try to delete the user again and verify that it fails.
-	Assert-Throws { Remove-AzureRMBatchComputeNodeUser_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -Force -BatchContext $context }
+	Assert-Throws { Remove-AzureBatchComputeNodeUser_ST -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -Force -BatchContext $context }
 }

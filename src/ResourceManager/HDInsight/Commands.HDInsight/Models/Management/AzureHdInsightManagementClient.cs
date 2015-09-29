@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
                 var getresponse = Get(resourceGroupName, clusterName);
                 if (getresponse != null)
                 {
-                    result.Add(getresponse.Cluster);   
+                    result.Add(getresponse.Cluster);
                 }
             }
             return result;
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
 
         public virtual ClusterListResponse ListClusters(string resourceGroupName)
         {
-            return HdInsightManagementClient.Clusters.ListByResourceGroup(resourceGroupName);   
+            return HdInsightManagementClient.Clusters.ListByResourceGroup(resourceGroupName);
         }
 
         public virtual ClusterGetResponse Get(string resourceGroupName, string clusterName)
@@ -108,6 +108,23 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         public virtual CapabilitiesResponse GetCapabilities(string location)
         {
             return HdInsightManagementClient.Clusters.GetCapabilities(location);
+        }
+
+        public virtual IDictionary<string, string> GetClusterConfigurations(string resourceGroupName, string clusterName, string configurationName)
+        {
+            Dictionary<string, string> properties = new Dictionary<string, string>();
+
+            if (string.IsNullOrWhiteSpace(resourceGroupName) ||
+                string.IsNullOrWhiteSpace(clusterName) ||
+                string.IsNullOrWhiteSpace(configurationName))
+            {
+                return properties;
+            }
+
+            return HdInsightManagementClient.Clusters.GetClusterConfigurations(
+                resourceGroupName,
+                clusterName,
+                configurationName).Configuration;
         }
     }
 }

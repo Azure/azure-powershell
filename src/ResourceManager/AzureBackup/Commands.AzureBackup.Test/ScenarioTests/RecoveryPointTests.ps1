@@ -34,7 +34,7 @@ function Test-GetAzureRecoveryPoints
 	$azureBackUpItem.Location = $Location
 	$azureBackUpItem.ContainerUniqueName = $ContainerName
 	$azureBackUpItem.ItemName = $ItemName
-	$recoveryPoints = Get-AzureRMBackupRecoveryPoint -Item $azureBackUpItem
+	$recoveryPoints = Get-AzureRmBackupRecoveryPoint -Item $azureBackUpItem
 	if (!($recoveryPoints -eq $null))
 	{
 		foreach($recoveryPoint in $recoveryPoints)
@@ -54,7 +54,7 @@ function Test-GetAzureRecoveryPoint
 	$azureBackUpItem.Location = $Location
 	$azureBackUpItem.ContainerUniqueName = $ContainerName
 	$azureBackUpItem.ItemName = $ItemName
-	$recoveryPoint = Get-AzureRMBackupRecoveryPoint -Item $azureBackUpItem -RecoveryPointId $RecoveryPointName
+	$recoveryPoint = Get-AzureRmBackupRecoveryPoint -Item $azureBackUpItem -RecoveryPointId $RecoveryPointName
 	if (!($recoveryPoint -eq $null))
 	{
 		Assert-NotNull $recoveryPoint.RecoveryPointTime 'RecoveryPointTime should not be null'

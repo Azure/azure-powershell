@@ -1,0 +1,58 @@
+<!--
+
+This file describes the configuration schema for the iisnode IIS module.
+
+To install this schema:
+
+1. This file must be saved to %windir%\system32\inetsrv\config\schema. 
+2. The following entry must be added to %windir%\system32\inetsrv\config\applicationhost.config:
+
+      <configSections>
+      ...
+      <sectionGroup name="system.webServer">
+      <section name="iisnode" overrideModeDefault="Allow"/>
+      ...    
+      </sectionGroup>
+      </configSections>
+
+Following installation, the iisnode module can be configured using the web.config file specific to the application:
+
+      <system.webServer>
+          <iisnode ... />
+      </system.webServer>
+
+Details at http://learn.iis.net/page.aspx/241/configuration-extensibility/
+
+-->
+
+<configSchema>
+  <sectionSchema name="system.webServer/iisnode">
+    <attribute name="node_env" type="string" expanded="true" defaultValue="%node_env%"/>
+    <attribute name="asyncCompletionThreadCount" type="uint" defaultValue="0"/>
+    <attribute name="nodeProcessCountPerApplication" type="uint" defaultValue="1"/>
+    <attribute name="nodeProcessCommandLine" type="string" expanded="true" defaultValue="&quot;%programfiles%\nodejs\node.exe&quot;"/>
+    <attribute name="maxConcurrentRequestsPerProcess" type="uint" allowInfitnite="true" defaultValue="1024"/>
+    <attribute name="maxNamedPipeConnectionRetry" type="uint" defaultValue="24"/>
+    <attribute name="namedPipeConnectionRetryDelay" type="uint" defaultValue="250"/>
+    <attribute name="maxNamedPipeConnectionPoolSize" type="uint" defaultValue="512"/>
+    <attribute name="maxNamedPipePooledConnectionAge" type="uint" defaultValue="30000"/>    
+    <attribute name="initialRequestBufferSize" type="uint" defaultValue="4096"/>
+    <attribute name="maxRequestBufferSize" type="uint" defaultValue="65536"/>
+    <attribute name="uncFileChangesPollingInterval" type="uint" defaultValue="5000"/>
+    <attribute name="gracefulShutdownTimeout" type="uint" defaultValue="60000"/>
+    <attribute name="logDirectoryNameSuffix" type="string" expanded="true" defaultValue="logs"/>
+    <attribute name="debuggingEnabled" type="bool" defaultValue="true"/>
+    <attribute name="debuggerPathSegment" type="string" expanded="true" defaultValue="debug"/>
+    <attribute name="debuggerPortRange" type="string" expanded="true" defaultValue="5058-6058"/>
+    <attribute name="logFileFlushInterval" type="uint" defaultValue="5000"/>
+    <attribute name="maxLogFileSizeInKB" type="uint" defaultValue="128"/>
+    <attribute name="loggingEnabled" type="bool" defaultValue="true"/>
+    <attribute name="appendToExistingLog" type="bool" defaultValue="false"/>
+    <attribute name="devErrorsEnabled" type="bool" defaultValue="true"/>
+    <attribute name="flushResponse" type="bool" defaultValue="false"/>
+    <attribute name="watchedFiles" type="string" expanded="true" defaultValue="*.js;iisnode.yml"/>
+    <attribute name="enableXFF" type="bool" defaultValue="false"/>
+    <attribute name="promoteServerVars" type="string" defaultValue=""/>
+    <attribute name="configOverrides" type="string" expanded="true" defaultValue="iisnode.yml"/>
+  </sectionSchema>
+</configSchema>

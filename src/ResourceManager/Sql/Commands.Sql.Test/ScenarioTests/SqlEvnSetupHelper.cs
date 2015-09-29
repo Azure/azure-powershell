@@ -86,6 +86,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                     };
 
                     AzureRMCmdlet.DefaultProfile.Context.Subscription.Name = testSubscription.Name;
+                    AzureRMCmdlet.DefaultProfile.Context.Subscription.Id = testSubscription.Id;
                     AzureRMCmdlet.DefaultProfile.Context.Subscription.Account = testSubscription.Account;
 
                     var environment = AzureRMCmdlet.DefaultProfile.Environments[AzureRMCmdlet.DefaultProfile.Context.Subscription.Environment];

@@ -51,7 +51,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             string accountName = "automation";
             string connectionName = "connection";
             string connectionTypeName = "connectiontype";
-            string password = "password";
             string description = "desc";
 
             this.mockAutomationClient.Setup(
