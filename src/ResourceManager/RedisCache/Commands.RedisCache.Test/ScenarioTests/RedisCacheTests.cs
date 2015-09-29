@@ -47,5 +47,12 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
         {
             RunPowerShellTest("Test-SetRedisCacheBugFixTest");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMaxMemoryPolicyErrorCheck()
+        {
+            RunPowerShellTest("Test-MaxMemoryPolicyErrorCheck");
+        }
     }
 }

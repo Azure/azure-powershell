@@ -12,43 +12,44 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Resources.Models
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources
 {
-    using System;
-    using System.Linq;
+    using Newtonsoft.Json;
 
     /// <summary>
-    /// Definition of a resource provider and its registration state
+    /// The resource sku object.
     /// </summary>
-    public class PSResourceProvider
+    public class ResourceSku
     {
         /// <summary>
-        /// Gets or sets the namespace of the provider.
+        /// Gets or sets the <c>sku</c> name.
         /// </summary>
-        public string ProviderNamespace { get; set; }
+        [JsonProperty(Required = Required.Always)]
+        public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the registration state of the provider.
+        /// Gets or sets the <c>sku</c> tier.
         /// </summary>
-        public string RegistrationState { get; set; }
+        [JsonProperty(Required = Required.Default)]
+        public string Tier { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource types belonging to this provider.
+        /// Gets or sets the <c>sku</c> size.
         /// </summary>
-        public PSResourceProviderResourceType[] ResourceTypes { get; set; }
+        [JsonProperty(Required = Required.Default)]
+        public string Size { get; set; }
 
         /// <summary>
-        /// Gets the locations for the provider.
+        /// Gets or sets the <c>sku</c> family.
         /// </summary>
-        public string[] Locations
-        {
-            get
-            {
-                return this.ResourceTypes
-                    .SelectMany(type => type.Locations)
-                    .Distinct(StringComparer.InvariantCultureIgnoreCase)
-                    .ToArray();
-            }
-        }
+        [JsonProperty(Required = Required.Default)]
+        public string Family { get; set; }
+
+        /// <summary>
+        /// Gets or sets the <c>sku</c> capacity.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public int? Capacity { get; set; }
     }
 }
+
