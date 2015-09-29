@@ -22,7 +22,7 @@ using System.Security.Cryptography.X509Certificates;
 using Hyak.Common;
 using Microsoft.Azure.Common.Authentication.Factories;
 using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Common.Authentication.Properties;
+using Microsoft.WindowsAzure.Commands.Common.Properties;
 using Microsoft.WindowsAzure.Subscriptions;
 
 namespace Microsoft.Azure.Common.Authentication

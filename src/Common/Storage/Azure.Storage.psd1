@@ -79,7 +79,7 @@ VariablesToExport = '*'
   
 # Aliases to export from this module  
 AliasesToExport = @(
-    'Get-AzureRMStorageContainerAcl',  
+    'Get-AzureStorageContainerAcl',  
     'Start-CopyAzureStorageBlob',  
     'Stop-CopyAzureStorageBlob'
 )

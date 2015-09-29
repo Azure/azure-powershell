@@ -59,6 +59,26 @@ namespace Microsoft.Azure.Commands.Batch.Models
         }
 
         /// <summary>
+        /// Updates a compute node user account
+        /// </summary>
+        /// <param name="parameters">The parameters specifying the compute node user to update and the changes to make</param>
+        public void UpdateComputeNodeUser(UpdateComputeNodeUserParameters parameters)
+        {
+            if (parameters == null)
+            {
+                throw new ArgumentNullException("parameters");
+            }
+
+            WriteVerbose(string.Format(Resources.UpdatingComputeNodeUser, parameters.ComputeNodeUserName));
+
+            ComputeNodeUser computeNodeUser = new ComputeNodeUser(parameters.Context.BatchOMClient.PoolOperations, parameters.PoolId, parameters.ComputeNodeId);
+            computeNodeUser.Name = parameters.ComputeNodeUserName;
+            computeNodeUser.Password = parameters.Password;
+            computeNodeUser.ExpiryTime = parameters.ExpiryTime;
+            computeNodeUser.Commit(ComputeNodeUserCommitSemantics.UpdateUser, parameters.AdditionalBehaviors);
+        }
+
+        /// <summary>
         /// Deletes the specified compute node user.
         /// </summary>
         /// <param name="parameters">The parameters indicating which compute node user to delete.</param>
