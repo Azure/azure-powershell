@@ -12,7 +12,11 @@ function Test-GetAzureVMDscExtension
 
 	# Publish DSC Configuration
 	$configPath = '.\Resources\DscExtension\DummyConfig.ps1'
-	Publish-AzureVMDscConfiguration $configPath -Force -Verbose
+	$StorageAccountName = "dscextensiontest"
+
+	$StorageAccountKey = Get-AzureStorageKey -StorageAccountName $StorageAccountName
+    $Ctx = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey.Primary
+	Publish-AzureVMDscConfiguration -ConfigurationPath $configPath -StorageContext $Ctx -Force -Verbose
 
 	# Setup
 	$location = Get-DefaultLocation
@@ -38,7 +42,7 @@ function Test-GetAzureVMDscExtension
 		$vm | Update-AzureVM -Verbose
 	
 		# Call Get-AzureVMDscExtensionStatus to check the status of the installation
-		[TimeSpan] $timeout = [TimeSpan]::FromMinutes(30)
+		[TimeSpan] $timeout = [TimeSpan]::FromMinutes(60)
 		$maxTime = [datetime]::Now + $timeout
 		$status = Get-AzureVMDscExtensionStatus -VM $vm 
 
@@ -77,8 +81,7 @@ function Test-GetAzureVMDscExtension
     finally
     {
         # Cleanup
-        Cleanup-CloudService $svcName
-
-		Remove-AzureStorageAccount -StorageAccountName $storageName -ErrorAction SilentlyContinue
+        Remove-AzureStorageAccount -StorageAccountName $storageName -ErrorAction SilentlyContinue
+		Cleanup-CloudService $svcName
     }
 }

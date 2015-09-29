@@ -56,10 +56,16 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
                                                       {
                                                           using (dwr)
                                                           {
-                                                              var md5HashOfDataChunk = GetBase64EncodedMd5Hash(dwr.Data, (int) dwr.Range.Length);
                                                               using (var stream = new MemoryStream(dwr.Data, 0, (int)dwr.Range.Length))
                                                               {
-                                                                  b.Properties.ContentMD5 = md5HashOfDataChunk;
+                                                                  // HTTPS provides transport level security that renders 
+                                                                  // MD5 checking redundant
+                                                                  if (blob.Uri.Scheme != Uri.UriSchemeHttps)
+                                                                  {
+                                                                      var md5HashOfDataChunk = GetBase64EncodedMd5Hash(dwr.Data, (int)dwr.Range.Length);
+                                                                      b.Properties.ContentMD5 = md5HashOfDataChunk;
+                                                                  }
+
                                                                   b.WritePages(stream, dwr.Range.StartIndex);
                                                               }
                                                           }
@@ -78,7 +84,11 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
                 {
                     using(var bdms = new BlobMetaDataScope(new CloudPageBlob(blob.Uri, blob.ServiceClient.Credentials)))
                     {
-                        bdms.Current.SetBlobMd5Hash(md5Hash);
+                        if (this.md5Hash != null && this.md5Hash.Length != 0)
+                        {
+                            bdms.Current.SetBlobMd5Hash(md5Hash);
+                        }
+
                         bdms.Current.CleanUpUploadMetaData();
                         bdms.Complete();
                     }
