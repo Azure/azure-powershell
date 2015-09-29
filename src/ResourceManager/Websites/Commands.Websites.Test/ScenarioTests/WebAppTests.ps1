@@ -29,13 +29,13 @@ function Test-CreatesNewSimpleWebApp
 	try
 	{
 		#Setup
-		New-AzureResourceGroup -Name $rgname -Location $location
-		New-AzureAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location
+		New-AzureRmResourceGroup -Name $rgname -Location $location
+		New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location
 
 		# Test
-		$actual = New-AzureWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName 
-		$result = Get-AzureWebApp -ResourceGroupName $rgname -Name $wname
-		$slotCreate = New-AzureWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -SlotName Dev
+		$actual = New-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName 
+		$result = Get-AzureRmWebApp -ResourceGroupName $rgname -Name $wname
+		$slotCreate = New-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -SlotName Dev
 
 
 		# Assert
@@ -46,9 +46,9 @@ function Test-CreatesNewSimpleWebApp
     finally
 	{
 		# Cleanup
-		Remove-AzureWebApp -ResourceGroupName $rgname -Name $wname -Force
-		Remove-AzureAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
-		Remove-AzureResourceGroup -Name $rgname -Force
+		Remove-AzureRmWebApp -ResourceGroupName $rgname -Name $wname -Force
+		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Force
     }
 }
 
@@ -66,10 +66,10 @@ function Test-CreatesNewAppServicePlan
 	try
 	{
 		#Setup
-		New-AzureResourceGroup -Name $rgname -Location $location
+		New-AzureRmResourceGroup -Name $rgname -Location $location
 		# Test
-		$actual = New-AzureAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location 
-		$result = Get-AzureAppServicePlan -ResourceGroupName $rgname -Name  $whpName
+		$actual = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location 
+		$result = Get-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName
 		# Assert
 		Assert-AreEqual $whpName $result.WebHostingPlan.Name
 		Assert-AreEqual 1 $result.WebHostingPlan.Properties.NumberOfWorkers
@@ -79,8 +79,8 @@ function Test-CreatesNewAppServicePlan
     finally
     {
 		# Cleanup
-		Remove-AzureAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
-		Remove-AzureResourceGroup -Name $rgname -Force
+		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Force
     }
 }
 
@@ -98,10 +98,10 @@ function Test-SetNewAppServicePlan
 	try
 	{
 		#Setup
-		New-AzureResourceGroup -Name $rgname -Location $location
+		New-AzureRmResourceGroup -Name $rgname -Location $location
 		# Test
-		$actual = New-AzureAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location 
-		$result = Get-AzureAppServicePlan -ResourceGroupName $rgname -Name  $whpName
+		$actual = New-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Location  $location 
+		$result = Get-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName
 		# Assert
 		Assert-AreEqual $whpName $result.WebHostingPlan.Name
 		Assert-AreEqual 1 $result.WebHostingPlan.Properties.NumberOfWorkers
@@ -109,9 +109,9 @@ function Test-SetNewAppServicePlan
 		Assert-AreEqual "Small" $result.WebHostingPlan.Properties.WorkerSize
 
 		# Test setting the created service plan
-		$newresult = Set-AzureAppServicePlan  -ResourceGroupName $rgname -Name  $whpName -Location  $location -Sku Premium -NumberofWorkers 12 -WorkerSize Medium
+		$newresult = Set-AzureRmAppServicePlan  -ResourceGroupName $rgname -Name  $whpName -Location  $location -Sku Premium -NumberofWorkers 12 -WorkerSize Medium
 		# due to a bug Set and New are not returning the appropriate object so need to get.
-		$newresult = Get-AzureAppServicePlan -ResourceGroupName $rgname -Name  $whpName
+		$newresult = Get-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName
 
 		# Assert
 		Assert-AreEqual $whpName $result.WebHostingPlan.Name
@@ -122,7 +122,7 @@ function Test-SetNewAppServicePlan
     finally
     {
 		# Cleanup
-		Remove-AzureAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
-		Remove-AzureResourceGroup -Name $rgname -Force
+		Remove-AzureRmAppServicePlan -ResourceGroupName $rgname -Name  $whpName -Force
+		Remove-AzureRmResourceGroup -Name $rgname -Force
     }
 }

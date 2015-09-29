@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Filters role assignments
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRoleAssignment", DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(List<PSRoleAssignment>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmRoleAssignment", DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(List<PSRoleAssignment>))]
     public class GetAzureRoleAssignmentCommand : ResourcesBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId,
@@ -39,28 +39,17 @@ namespace Microsoft.Azure.Commands.Resources
         [Alias("Id", "PrincipalId")]
         public Guid ObjectId { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Mail,
-            HelpMessage = "The user email address.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithMail,
-            HelpMessage = "The user email address.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithMail,
-            HelpMessage = "The user email address.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithMail,
-            HelpMessage = "The user email address.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithSignInName,
+            HelpMessage = "The user SignInName.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithSignInName,
+            HelpMessage = "The user SignInName.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSignInName,
+            HelpMessage = "The user SignInName.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SignInName,
+            HelpMessage = "The user SignInName.")]
         [ValidateNotNullOrEmpty]
-        public string Mail { get; set; }
-
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithUPN,
-            HelpMessage = "The user UPN.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithUPN,
-            HelpMessage = "The user UPN.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithUPN,
-            HelpMessage = "The user UPN.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.UPN,
-            HelpMessage = "The user UPN.")]
-        [ValidateNotNullOrEmpty]
-        [Alias("UPN")]
-        public string UserPrincipalName { get; set; }
+        [Alias("Email", "UserPrincipalName")]
+        public string SignInName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithSPN,
             HelpMessage = "The app SPN.")]
@@ -82,13 +71,9 @@ namespace Microsoft.Azure.Commands.Resources
             HelpMessage = "Resource group to assign the role to.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithObjectId,
             HelpMessage = "Resource group to assign the role to.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithMail,
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithSignInName,
             HelpMessage = "Resource group to assign the role to.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithMail,
-            HelpMessage = "Resource group to assign the role to.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithUPN,
-            HelpMessage = "Resource group to assign the role to.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithUPN,
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithSignInName,
             HelpMessage = "Resource group to assign the role to.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithSPN,
             HelpMessage = "Resource group to assign the role to.")]
@@ -101,9 +86,7 @@ namespace Microsoft.Azure.Commands.Resources
             HelpMessage = "Resource to assign the role to.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithObjectId,
             HelpMessage = "Resource to assign the role to.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithMail,
-            HelpMessage = "Resource to assign the role to.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithUPN,
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithSignInName,
             HelpMessage = "Resource to assign the role to.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithSPN,
             HelpMessage = "Resource to assign the role to.")]
@@ -114,9 +97,7 @@ namespace Microsoft.Azure.Commands.Resources
             HelpMessage = "Type of the resource to assign the role to.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithObjectId,
             HelpMessage = "Type of the resource to assign the role to.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithMail,
-            HelpMessage = "Type of the resource to assign the role to.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithUPN,
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithSignInName,
             HelpMessage = "Type of the resource to assign the role to.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithSPN,
             HelpMessage = "Type of the resource to assign the role to.")]
@@ -127,9 +108,7 @@ namespace Microsoft.Azure.Commands.Resources
             HelpMessage = "Parent resource of the resource to assign the role to, if there is any.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithObjectId,
             HelpMessage = "Parent resource of the resource to assign the role to, if there is any.")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithMail,
-            HelpMessage = "Parent resource of the resource to assign the role to, if there is any.")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithUPN,
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithSignInName,
             HelpMessage = "Parent resource of the resource to assign the role to, if there is any.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithSPN,
             HelpMessage = "Parent resource of the resource to assign the role to, if there is any.")]
@@ -138,41 +117,33 @@ namespace Microsoft.Azure.Commands.Resources
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Empty,
             HelpMessage = "Role to assign the principals with.")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Mail,
-            HelpMessage = "Role to assign the principals with.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId,
             HelpMessage = "Role to assign the principals with.")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.UPN,
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SignInName,
             HelpMessage = "Role to assign the principals with.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SPN,
             HelpMessage = "Role to assign the principals with.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Scope,
             HelpMessage = "Role to assign the principals with.")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithMail,
-            HelpMessage = "Role to assign the principals with.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithObjectId,
             HelpMessage = "Role to assign the principals with.")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithUPN,
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSignInName,
             HelpMessage = "Role to assign the principals with.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSPN,
             HelpMessage = "Role to assign the principals with.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroup,
             HelpMessage = "Role to assign the principals with.")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithMail,
-            HelpMessage = "Role to assign the principals with.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithObjectId,
             HelpMessage = "Role to assign the principals with.")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithUPN,
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithSignInName,
             HelpMessage = "Role to assign the principals with.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithSPN,
             HelpMessage = "Role to assign the principals with.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Resource,
             HelpMessage = "Role to assign the principals with.")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithMail,
-            HelpMessage = "Role to assign the principals with.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithObjectId,
             HelpMessage = "Role to assign the principals with.")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithUPN,
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithSignInName,
             HelpMessage = "Role to assign the principals with.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceWithSPN,
             HelpMessage = "Role to assign the principals with.")]
@@ -183,16 +154,54 @@ namespace Microsoft.Azure.Commands.Resources
             HelpMessage = "Scope of the role assignment. In the format of relative URI.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithObjectId,
             HelpMessage = "Scope of the role assignment. In the format of relative URI.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithMail,
-            HelpMessage = "Scope of the role assignment. In the format of relative URI.")]
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithUPN,
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSignInName,
             HelpMessage = "Scope of the role assignment. In the format of relative URI.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSPN,
             HelpMessage = "Scope of the role assignment. In the format of relative URI.")]
         [ValidateNotNullOrEmpty]
         public string Scope { get; set; }
 
-        public override void ExecuteCmdlet()
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ObjectId,
+            HelpMessage = "If specified, returns role assignments directly assigned to the principal as well as assignments to the principal's groups (transitive). Supported only for User Principals.")]
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.SignInName,
+            HelpMessage = "If specified, returns role assignments directly assigned to the principal as well as assignments to the principal's groups (transitive). Supported only for User Principals.")]
+        public SwitchParameter ExpandPrincipalGroups { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.Empty, 
+            HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ObjectId, 
+            HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.SignInName, 
+            HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.SPN, 
+            HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.Scope, 
+            HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ScopeWithObjectId, 
+            HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ScopeWithSignInName, 
+            HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ScopeWithSPN, 
+            HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ResourceGroup, 
+            HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ResourceGroupWithObjectId, 
+            HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ResourceGroupWithSignInName, 
+            HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ResourceGroupWithSPN, 
+            HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.Resource, 
+            HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ResourceWithObjectId, 
+            HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ResourceWithSignInName, 
+            HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
+        [Parameter(Mandatory = false, ParameterSetName = ParameterSet.ResourceWithSPN, 
+            HelpMessage = "If specified, also returns the subscription classic administrators as role assignments.")]
+        public SwitchParameter IncludeClassicAdministrators { get; set; }
+
+        protected override void ProcessRecord()
         {
             FilterRoleAssignmentsOptions options = new FilterRoleAssignmentsOptions()
             {
@@ -200,8 +209,7 @@ namespace Microsoft.Azure.Commands.Resources
                 RoleDefinition = RoleDefinitionName,
                 ADObjectFilter = new ADObjectFilterOptions
                 {
-                    Mail = Mail,
-                    UPN = UserPrincipalName,
+                    SignInName = SignInName,
                     SPN = ServicePrincipalName,
                     Id = ObjectId == Guid.Empty ? null : ObjectId.ToString(),
                 },
@@ -211,11 +219,14 @@ namespace Microsoft.Azure.Commands.Resources
                     ResourceGroupName = ResourceGroupName,
                     ResourceName = ResourceName,
                     ResourceType = ResourceType,
-                    Subscription = string.IsNullOrEmpty(ResourceGroupName) ? null : Profile.Context.Subscription.Id.ToString()
-                }
+                    Subscription = string.IsNullOrEmpty(ResourceGroupName) ? null : DefaultProfile.Context.Subscription.Id.ToString()
+                },
+                ExpandPrincipalGroups = ExpandPrincipalGroups.IsPresent,
+                IncludeClassicAdministrators = IncludeClassicAdministrators.IsPresent,
+                ExcludeAssignmentsForDeletedPrincipals = true
             };
 
-            WriteObject(PoliciesClient.FilterRoleAssignments(options), true);
+            WriteObject(PoliciesClient.FilterRoleAssignments(options, DefaultProfile.Context.Subscription.Id.ToString()), enumerateCollection: true);
         }
     }
 }

@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// 4 .Create a HSM or software key by importing key material with given key 
     /// attributes
     /// </summary>
-    [Cmdlet(VerbsCommon.Add, "AzureKeyVaultKey",
+    [Cmdlet(VerbsCommon.Add, "AzureRmKeyVaultKey",
         DefaultParameterSetName = CreateParameterSet, 
         HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(KeyBundle))]
@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #endregion
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             KeyBundle keyBundle;
             switch (ParameterSetName)

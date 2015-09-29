@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// <summary>
         /// Execute the cmdlet
         /// </summary>
-        protected override void ExecuteCmdletInternal()
+        protected override void ProcessRecordInternal()
         {
             AzureOperationResponse result = this.InsightsManagementClient.AlertOperations.DeleteRuleAsync(resourceGroupName: this.ResourceGroup, ruleName: this.Name).Result;
             WriteObject(result);

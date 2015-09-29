@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// <summary>
     /// Creates a new service principal.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureADServicePrincipal"), OutputType(typeof(PSADServicePrincipal))]
+    [Cmdlet(VerbsCommon.New, "AzureRmADServicePrincipal"), OutputType(typeof(PSADServicePrincipal))]
     public class NewAzureADServicePrincipalCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The application id for which service principal is created.")]
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = false, HelpMessage = "Create the service principal with account disabled.")]
         public SwitchParameter DisableAccount { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             CreatePSServicePrincipalParameters createParameters = new CreatePSServicePrincipalParameters
             {

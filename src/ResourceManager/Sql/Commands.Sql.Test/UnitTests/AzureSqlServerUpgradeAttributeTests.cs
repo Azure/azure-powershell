@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
     public class AzureSqlServerUpgradeAttributeTests
     {
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void StartAzureSqlServerUpgradeAttributes()
         {
             Type type = typeof(StartAzureSqlServerUpgrade);
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void StopAzureSqlServerUpgradeAttributes()
         {
             Type type = typeof(StopAzureSqlServerUpgrade);
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.UnitTests
         }
 
         [Fact]
-        [Trait(Category.Sql, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureSqlServerUpgradeAttributes()
         {
             Type type = typeof(GetAzureSqlServerUpgrade);

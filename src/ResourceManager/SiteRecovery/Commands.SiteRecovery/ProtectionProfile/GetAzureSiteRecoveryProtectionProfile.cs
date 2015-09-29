@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
     /// <summary>
     /// Retrieves Azure Site Recovery Server.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureSiteRecoveryProtectionProfile", DefaultParameterSetName = ASRParameterSets.Default)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmSiteRecoveryProtectionProfile", DefaultParameterSetName = ASRParameterSets.Default)]
     [OutputType(typeof(IEnumerable<ASRProtectionProfile>))]
     public class GetAzureSiteRecoveryProtectionProfile : SiteRecoveryCmdletBase
     {
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         /// <summary>
         /// ProcessRecord of the command.
         /// </summary>
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             try
             {
@@ -77,14 +77,26 @@ namespace Microsoft.Azure.Commands.SiteRecovery
         {
             ProtectionProfileListResponse profileListResponse =
                 RecoveryServicesClient.GetAzureSiteRecoveryProtectionProfile();
+            bool found = false;
 
             foreach (ProtectionProfile profile in profileListResponse.ProtectionProfiles)
             {
                 if (0 == string.Compare(this.FriendlyName, profile.CustomData.FriendlyName, true))
                 {
                     this.WriteProfile(profile);
+                    found = true;
                 }
             }
+
+            if (!found)
+            {
+                throw new InvalidOperationException(
+                    string.Format(
+                    Properties.Resources.ProtectionProfileNotFound,
+                    this.FriendlyName,
+                    PSRecoveryServicesClient.asrVaultCreds.ResourceName));
+            }
+
         }
 
         /// <summary>

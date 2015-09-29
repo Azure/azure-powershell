@@ -1,3 +1,87 @@
+﻿## 2015.09.03 version 0.9.8
+* Azure Redis Cache cmdlets 
+  * New-AzureRMRedisCache - 'RedisVersion' parameter is deprecated.
+* Azure Compute (ARM) Cmdlets
+  * Added -Launch parameter for Get-AzureRemoteDesktopFile cmdlet
+  * Added Id parameter for VM cmdlets to support piping scenario without ResourceGroupName parameter
+  * Added Set-AzureVMDataDisk cmdlet
+  * Added Add-AzureVhd cmdlet
+  * Changed the output format of Get image cmdlets as a table
+  * Fixed Set-AzureVMAccessExtension cmdlet
+* Azure Compute (Service Management) cmdlets
+  * Exposed ComputeImageConfig in Get-AzurePlatformVMImage cmdlet
+  * Fixed Publish-AzurePlatformExtension and Set-AzurePlatformExtension cmdlets
+* Azure Backup - added the following cmdlets
+  * Backup-AzureRMBackupItem
+  * Register-AzureRMBackupContainer
+  * Disable-AzureRMBackupProtection
+  * Enable-AzureRMBackupProtection
+  * Get-AzureRMBackupItem
+  * Get-AzureRMBackupJob
+  * Get-AzureRMBackupJobDetails
+  * Stop-AzureRMBackupJob
+  * Wait-AzureRMBackupJob
+  * Get-AzureRMBackupProtectionPolicy
+  * New-AzureRMBackupProtectionPolicy
+  * New-AzureRMBackupRetentionPolicyObject
+  * Remove-AzureRMBackupProtectionPolicy
+  * Set-AzureRMBackupProtectionPolicy
+  * Get-AzureRMBackupRecoveryPoint
+  * Restore-AzureRMBackupItem
+* Azure Batch - added the following cmdlets
+  * Enable-AzureBatchJob
+  * Disable-AzureBatchJob
+  * Enable-AzureBatchJobSchedule
+  * Disable-AzureBatchJobSchedule
+  * Stop-AzureBatchJob
+  * Stop-AzureBatchJobSchedule
+  * Stop-AzureBatchTask
+* Azure Data Factory
+  * Update SDK reference to 3.0.0 to use API version 2015-09-01
+    * Imposes message size limits for all authoring types. Pipelines must be 200 KB or less in size and all others must be 30 KB or less. 
+    * TeradataLinkedService no longer accepts the obsolete properties "database" and "schema". 
+    * Obsolete copy-related properties are no longer returned from the service. 
+* Azure Sql (ARM) Cmdlets - added the following cmdlets
+  * Get-AzureSqlServerActiveDirectoryAdministrator
+  * Set-AzureSqlServerActiveDirectoryAdministrator
+  * Remove-AzureSqlServerActiveDirectoryAdministrator
+* SQL Server VM cmdlets (ARM)
+  * New-AzureVMSqlServerAutoPatchingConfig
+  * New-AzureVMSqlServerAutoBackupConfig
+  * Set-AzureVMSqlServerExtension
+  * Get-AzureVMSqlServerExtension
+  * Remove-AzureVMSqlServerExtension
+	
+## 2015.08.17 version 0.9.7
+* Azure Profile cmdlets
+  * New-AzureProfile
+    * Added parameter set for empty profile
+    * Fixed issues with AAD aithentication when constructing profile
+    * Enabled passing results of Add-AzureEnvironment to New-AzureProfile -Environment parameter
+* Azure ResourceManager cmdlets
+  * New-AzureResourceGroupDeployment: Added Mode (deployment mode) and Force parameters 
+  * Get-AzureProviderOperation: API changes to improve performance
+* Azure Compute (ARM) Cmdlets
+  * Fixes for Set-AzureDeployment with -ExtensionConfiguration
+  * Fixes for Set-AzureVMCustomExtension cmdlets
+  * Deprecated cmdlets Get-AzureVMImageDetail and Get-AzureVMExtentionImageDetail
+* Azure Compute (Service Management) cmdlets
+  * Publish-AzureVMDSCConfiguration: Added additional configuration parameters
+* Azure Network (ARM) cmdlets
+  * Added help for Route Table cmdlets
+* Azure Storage cmdlets
+  * Added support for downloading, uploading, and copying append blob
+  * Added support for asynchronous copying to and from cloud file
+  * Added azure service CORS management
+* Azure Sql (ARM) Cmdlets
+  * Fixed issues with ElascitPool cmdlets
+* AzureBatch cmdlets
+  * Added Batch autoscale cmdlets Enable-AzureBatchAutoScale, Disable-AzureBatchAutoScale
+* RemoteApp cmdlets
+  * Added Restart-AzureRemoteAppVm cmdlet
+* Azure HDInsight cmdlets
+  * Added cmdlet help
+
 ## 2015.08.07 version 0.9.6
 * Azure Batch cmdlets
     * Cmdlets updated to use the general availability API. See http://blogs.technet.com/b/windowshpc/archive/2015/07/10/what-39-s-new-in-azure-batch-july-release-general-availability.aspx
@@ -15,7 +99,6 @@
     * Fix Publish Extension cmdlets.
     * Update CustomScript cmdlet for SAS Uri.
     * Update help file.
-    * Get, Set and Remove Azure Powershell commandlets for IaaS V2 VM.
 * Azure Data Factory
     * Rename Table to Dataset.
 * Azure SQL

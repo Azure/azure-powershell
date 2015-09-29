@@ -37,11 +37,15 @@ namespace Microsoft.WindowsAzure.Commands.RemoteApp.Test
         }
     }
 
-    public abstract class RemoteAppClientTest : TestBase
+    public abstract class RemoteAppClientTest : SMTestBase
     {
         protected const string subscriptionId = "foo";
 
         protected const string collectionName = "test1";
+
+        protected const string vmName = "testVm";
+
+        protected const string loggedInUserUpn = "test@somedomain.com";
 
         protected const string templateName = "Fake_Windows.vhd";
 

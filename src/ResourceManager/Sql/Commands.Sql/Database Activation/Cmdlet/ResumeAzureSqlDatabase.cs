@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.DatabaseActivation.Cmdlet
     /// <summary>
     /// Cmdlet to resume a paused Azure SQL Data Warehouse database.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Resume, "AzureSqlDatabase",
+    [Cmdlet(VerbsLifecycle.Resume, "AzureRmSqlDatabase",
         ConfirmImpact = ConfirmImpact.Medium)]
     public class ResumeAzureSqlDatabase : AzureSqlDatabaseActivationCmdletBase
     {

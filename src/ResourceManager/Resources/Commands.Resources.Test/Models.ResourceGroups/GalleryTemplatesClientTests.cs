@@ -21,17 +21,17 @@ using System.Security;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.Azure.Common.OData;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Gallery.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
 using Xunit;
-using Microsoft.Azure.Common.OData;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Models
 {
-    public class GalleryTemplatesClientTests : TestBase
+    public class GalleryTemplatesClientTests : RMTestBase
     {
         private GalleryTemplatesClient galleryTemplatesClient;
 

@@ -19,9 +19,10 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.UnitTests
     using Microsoft.Azure.Commands.TrafficManager;
     using Microsoft.Azure.Commands.TrafficManager.Models;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using WindowsAzure.Commands.Test.Utilities.Common;
     using Xunit;
 
-    public class RemoveAzureTrafficManagerEndpointConfigTests
+    public class RemoveAzureTrafficManagerEndpointConfigTests : RMTestBase
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

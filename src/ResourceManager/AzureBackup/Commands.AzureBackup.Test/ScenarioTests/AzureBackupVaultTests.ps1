@@ -13,34 +13,34 @@
 # ----------------------------------------------------------------------------------
 
 $ResourceGroupName = "backuprg"
-$ResourceName = "backuprn1"
-$Location = "westus"
+$ResourceName = "backuprn"
+$Location = "southeastasia"
 $CertTargetLocation = (Get-Item -Path ".\" -Verbose).FullName;
 
 function Test-AzureBackupVaultScenario
 {
-	$vault = New-AzureBackupVault -ResourceGroupName $ResourceGroupName -Name $ResourceName -Region $Location -Storage "LocallyRedundant";
+	$vault = New-AzureRmBackupVault -ResourceGroupName $ResourceGroupName -Name $ResourceName -Region $Location -Storage "LocallyRedundant";
 	Assert-AreEqual $vault.Name $ResourceName;
 	Assert-AreEqual $vault.ResourceGroupName $ResourceGroupName;
 	Assert-AreEqual $vault.Region $Location;
 	Assert-AreEqual $vault.Storage "LocallyRedundant";
 
-	$vault = Get-AzureBackupVault -ResourceGroupName $ResourceGroupName -Name $ResourceName
+	$vault = Get-AzureRmBackupVault -ResourceGroupName $ResourceGroupName -Name $ResourceName
 	Assert-AreEqual $vault.Name $ResourceName;
 	Assert-AreEqual $vault.ResourceGroupName $ResourceGroupName;
 	Assert-AreEqual $vault.Region $Location;
 	Assert-AreEqual $vault.Storage "LocallyRedundant";
 	
-	$fileName = Get-AzureBackupVaultCredentials -vault $vault -TargetLocation $CertTargetLocation
+	$fileName = Get-AzureRmBackupVaultCredentials -vault $vault -TargetLocation $CertTargetLocation
 	Assert-NotNull $fileName 'File name should not be null';
 	$certFileFullPath = [io.path]::combine($CertTargetLocation, $fileName);
 	Assert-True {{ Test-Path $certFileFullPath }}
 
-	$vault = Set-AzureBackupVault -vault $vault -Storage "GeoRedundant";
+	$vault = Set-AzureRmBackupVault -vault $vault -Storage "GeoRedundant";
 	Assert-AreEqual $vault.Name $ResourceName;
 	Assert-AreEqual $vault.ResourceGroupName $ResourceGroupName;
 	Assert-AreEqual $vault.Region $Location;
 	Assert-AreEqual $vault.Storage "GeoRedundant";
 
-	Remove-AzureBackupVault -Vault $vault;	
+	Remove-AzureRmBackupVault -Vault $vault;	
 }

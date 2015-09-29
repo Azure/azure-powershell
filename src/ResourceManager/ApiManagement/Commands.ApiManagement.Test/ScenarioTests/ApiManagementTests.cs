@@ -12,9 +12,10 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+using System.Collections.Generic;
+
 namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 {
-    using System;
     using Microsoft.Azure.Common.Authentication;
     using Microsoft.Azure.Gallery;
     using Microsoft.Azure.Management.Authorization;
@@ -22,11 +23,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
     using Microsoft.Azure.Test;
     using Microsoft.Azure.Test.HttpRecorder;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using WindowsAzure.Commands.Test.Utilities.Common;
     using Microsoft.WindowsAzure.Management;
     using Microsoft.WindowsAzure.Management.Storage;
     using Xunit;
 
-    public class ApiManagementTests
+    public class ApiManagementTests : RMTestBase
     {
         private readonly EnvironmentSetupHelper _helper;
 
@@ -51,7 +53,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
                 galaryClient,
                 authorizationManagementClient,
                 managementClient,
-                //storageManagementClient,
                 armStorageManagementClient);
         }
 
@@ -146,6 +147,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
             //    "TEST_ORGID_AUTHENTICATION",
             //    "SubscriptionId=;Environment=");
 #endif
+            Dictionary<string, string> d = new Dictionary<string, string>();
+            d.Add("Microsoft.Authorization", "2014-07-01-preview");
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
 
             using (var context = UndoContext.Current)
             {
@@ -153,8 +157,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 
                 SetupManagementClients();
 
-                _helper.SetupEnvironment(AzureModule.AzureProfile);
-                _helper.SetupModules(AzureModule.AzureProfile, "ScenarioTests\\Common.ps1", "ScenarioTests\\" + GetType().Name + ".ps1");
+                _helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                _helper.SetupModules(AzureModule.AzureResourceManager, 
+                    "ScenarioTests\\Common.ps1", 
+                    "ScenarioTests\\" + GetType().Name + ".ps1", 
+                    _helper.RMProfileModule,
+                    _helper.RMResourceModule, 
+                    _helper.RMStorageDataPlaneModule, 
+                    _helper.RMStorageModule, 
+                    _helper.GetRMModulePath("AzureRM.ApiManagement.psd1"));
 
                 _helper.RunPowerShellTest(scripts);
             }
