@@ -18,7 +18,12 @@
 
   /p:CodeSign=True;DelaySign=True
     Test the code sign workflow locally. 
-  
+
+  /p:Scope
+    'ServiceManagement': service management
+    'AzureStorage': storage data plane cmdlets
+    'Subfolder under src\ResourceManager': An individual cmdlet module
+    By default, it builds all
   -->  
 
   <!-- Define build properties -->
@@ -37,11 +42,14 @@
     <TestOutputDirectory>$(PublishDirectory)\TestResults</TestOutputDirectory>
     <BuildInParallel Condition="'$(BuildInParallel)' == ''">true</BuildInParallel>
     <NuGetPublishingSource Condition=" '$(NuGetPublishingSource)' == '' ">http://psget/PSGallery/api/v2/</NuGetPublishingSource>
+    <Scope Condition=" $(Scope) == '' " >all</Scope>
   </PropertyGroup>
   <ItemGroup>
-    <CmdletSolutionsToBuild Include=".\src\ResourceManager\**\*.sln;.\src\ServiceManagement\ServiceManagement.sln" Condition=" '$(Scope)' == '' "/>
-    <CmdletSolutionsToBuild Include=".\src\ResourceManager\$(Scope)\*.sln" Condition=" '$(Scope)' != '' and '$(Scope)' != 'ServiceManagement' "/>
-    <CmdletSolutionsToBuild Include=".\src\ServiceManagement\ServiceManagement.sln" Condition=" '$(Scope)' != '' and '$(Scope)' == 'ServiceManagement' "/>
+    <CmdletSolutionsToBuild Include=".\src\ResourceManager\**\*.sln;.\src\ServiceManagement\ServiceManagement.sln" Condition=" '$(Scope)' == 'all' "/>
+    <CmdletSolutionsToBuild Include=".\src\ResourceManager\$(Scope)\*.sln" 
+                            Condition=" '$(Scope)' != 'all' and '$(Scope)' != 'ServiceManagement' and '$(Scope)' != 'AzureStorage' "/>
+    <CmdletSolutionsToBuild Include=".\src\ServiceManagement\ServiceManagement.sln"
+                            Condition=" '$(Scope)' == 'ServiceManagement' or '$(Scope)' == 'AzureStorage' "/>
     <SetupSln Include=".\setup\azurepowershell.sln" />
     <SetupPowershellGetSln Include=".\setup-powershellget\powershellget.sln" />
   </ItemGroup>
@@ -77,7 +85,7 @@
       Targets="Clean"
       Properties="Configuration=$(Configuration);Platform=Any CPU"
       ContinueOnError="false" 
-      Condition=" '$(Scope)' == '' "/>
+      Condition=" '$(Scope)' == 'all' "/>
       
     <!-- Delete the publish files -->
     <Message Importance="high" Text="Cleaning publish files..." ContinueOnError="false" />
@@ -159,17 +167,17 @@
       Targets="Build"
       Properties="Configuration=$(Configuration);Platform=Any CPU"
       ContinueOnError="false" 
-      Condition=" '$(Scope)' == '' "/>
+      Condition=" '$(Scope)' == 'all' "/>
     
     <MSBuild
       Projects="@(SetupSln)"
       Targets="Build"
       Properties="Configuration=$(Configuration);Platform=Any CPU"
       ContinueOnError="false" 
-      Condition=" '$(Scope)' == '' "/>
+      Condition=" '$(Scope)' == 'all' "/>
     
     <CallTarget Targets="CodeSignInstaller" 
-                Condition=" '$(CodeSign)' == 'true' and '$(Scope)' == ''" />    
+                Condition=" '$(CodeSign)' == 'true' and '$(Scope)' == 'all'" />    
   </Target>
   
   <!-- Do everything possible -->
@@ -289,11 +297,10 @@
   </Target>
   
   <!-- Publish all packages -->
-  <Target Name="Publish" DependsOnTargets="Build">
+  <Target Name="Publish">
     <Error Condition=" '$(NuGetKey)' == '' " Text="You must provide the NuGetKey parameter to the build: /p:NuGetKey=YOUR_PUBLISHING_KEY" />
     <Message Importance="high" Text="Publishing Cmdlets..." />
-    
-    <Exec Command="$(PowerShellCommand) -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\PublishModules.ps1 $(Configuration) $(Scope) $(NuGetKey) \&quot;$(NuGetPublishingSource)\&quot; &quot;"/>
+    <Exec Command="$(PowerShellCommand) -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\PublishModules.ps1 $(Configuration) $(Scope) $(NuGetKey) \&quot;$(NuGetPublishingSource)\&quot; &quot;"/>
   </Target>
 
   <PropertyGroup>
