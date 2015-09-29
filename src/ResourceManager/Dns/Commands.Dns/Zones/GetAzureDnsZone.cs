@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Dns
     /// <summary>
     /// Gets one or more existing zones.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureDnsZone"), OutputType(typeof(DnsZone))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmDnsZone"), OutputType(typeof(DnsZone))]
     public class GetAzureDnsZone : DnsBaseCmdlet
     {
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The full name of the zone (without a terminating dot).")]
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Dns
         [ValidateNotNullOrEmpty]
         public string EndsWith { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             if (this.Name != null && this.EndsWith != null)
             {

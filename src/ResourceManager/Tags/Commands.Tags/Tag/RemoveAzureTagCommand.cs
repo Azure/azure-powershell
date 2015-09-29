@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Tags.Tag
     /// <summary>
     /// Creates a new tag with the specified values
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureTag"), OutputType(typeof(PSTag))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmTag"), OutputType(typeof(PSTag))]
     public class RemoveAzureTagCommand : TagBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Name of the tag to remove.")]
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Tags.Tag
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Return object if specified.")]
         public SwitchParameter PassThru { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             PSTag tag = null;
 

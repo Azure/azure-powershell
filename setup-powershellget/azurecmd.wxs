@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+ 
+  <?define productName="Microsoft Azure PowerShell - October 2015" ?>
+  <?define sourceDir="$(var.SolutionDir)..\src\Package\$(var.Configuration)" ?>
+  <?define caSourceDir="$(var.SolutionDir)setup\bin\$(var.Configuration)" ?>
+
+  <?define version="0.10.0" ?>
+  <?define versionedStartMenuFolder="Microsoft Azure" ?>
+  <?define staleStartMenuFolder="Windows Azure" ?>
+
+  <Product Id="*"
+           Name="$(var.productName)"
+           Language="1033"
+           Version="$(var.version)"
+           Manufacturer="Microsoft Corporation"
+           UpgradeCode="EBC1AD5E-1BBE-45B5-9E8D-ACFC8951C252">
+
+    <Package InstallerVersion="200" Compressed="yes" Platform="x86" />
+
+    <Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
+
+    <MajorUpgrade AllowSameVersionUpgrades="yes"
+                  DowngradeErrorMessage="A later version of Microsoft Azure PowerShell is already installed. Setup will now exit." />
+
+    <Icon Id="icon.ico" SourceFile="media\WAIcon.ico"/>
+    <Property Id="ARPPRODUCTICON" Value="icon.ico" />
+    <Property Id="ALLUSERS" Value="1" />
+    <!-- per machine install-->
+    
+    <Property Id="PSCOMPATIBLEVERSION">
+      <RegistrySearch Id="PSCOMPATIBLEVERSION" Root="HKLM" Key="SOFTWARE\Microsoft\PowerShell\3\PowerShellEngine" Name="PSCompatibleVersion" Type="raw" />
+    </Property>
+    
+    <Condition Message="This setup requires the Windows PowerShell 5.0 or compatible version to be installed.">
+      <!-- This condition will break if PowerShell has version x3.0 and it is not compatible with 3.0 -->
+      <![CDATA[Installed or (PSCOMPATIBLEVERSION >< "5.0")]]>
+    </Condition>
+
+    <PropertyRef Id="NETFRAMEWORK40FULL" />
+    <PropertyRef Id="NETFRAMEWORK40CLIENT" />
+    <Condition Message="This setup requires the .NET Framework 4.0 or higher to be installed.">
+      Installed OR NETFRAMEWORK40FULL OR NETFRAMEWORK40CLIENT
+    </Condition>
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="MicrosoftSdkFolder" Name="Microsoft SDKs">
+          <Directory Id="AzureSdkFolder" Name="Azure">
+            <Directory Id="PowerShellFolder" Name="PowerShell"/>
+          </Directory>
+        </Directory>
+      </Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="AzureSdkMenu" Name="$(var.versionedStartMenuFolder)"/>
+        <Directory Id="StaleAzureSdkMenu" Name="$(var.staleStartMenuFolder)"/>
+      </Directory>
+    </Directory>
+
+    <Property Id="POWERSHELLPATH">
+      <RegistrySearch Id="POWERSHELLPATH"
+                    Type="raw"
+                    Root="HKLM"
+                    Key="SOFTWARE\Microsoft\PowerShell\3\PowerShellEngine"
+                    Name="ApplicationBase" />
+    </Property>
+
+    <SetProperty Id="POWERSHELLEXE" Value="[WindowsFolder]System32\WindowsPowerShell\v1.0\powershell.exe" Before="AppSearch"/>
+
+    <DirectoryRef Id="PowerShellFolder">
+      <Component Id="AzureSdkShortcutScript" Guid="3d0d589a-b34c-4c48-9a4c-df78f286c6a3">
+          <File Id="AzureSdkShortcutScriptFile" KeyPath="yes" Source="$(var.SolutionDir)\Setup\ShortcutStartup.ps1" />
+      </Component>
+    </DirectoryRef>
+    
+    <DirectoryRef Id="AzureSdkMenu">
+      <Component Id="AzureSdkShortcut" Guid="A9B58A22-F746-451D-8840-F887D8014C3C">
+        <Shortcut Id="AzureSdkStartMenuShortcut"
+                  Name="Microsoft Azure PowerShell"
+                  Description="Microsoft PowerShell cmdlets"
+                  Target="[POWERSHELLEXE]"
+                  Arguments="-NoExit -ExecutionPolicy Bypass -File &quot;[PowerShellFolder]\ShortcutStartup.ps1&quot;"/>
+        <RemoveFolder Id="AzureSdkMenu" On="uninstall"/>
+        <RemoveFile Id="RemoveStaleFiles" Directory="StaleAzureSdkMenu" Name="Windows Azure PowerShell.lnk" On="both"/>
+        <RegistryValue Root="HKCU" Key="SOFTWARE\Microsoft\Microsoft SDKs\WindowsAzure\$(var.version)" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+
+    <Feature Id="azurecmd" Title="Microsoft Azure PowerShell" Level="1" Description="Windows PowerShell commandlets">
+      <ComponentRef Id="AzureSdkShortcut" />
+      <ComponentRef Id="AzureSdkShortcutScript" />
+    </Feature>
+
+    <Binary Id="CustomActions" SourceFile="$(var.caSourceDir)\Microsoft.WindowsAzure.Setup.CA.dll"/>
+    <CustomAction Id="SetCustomActionDataValue" Return="check" Property="UpdatePSShortcut"
+                     Value="ShortcutPath=[AzureSdkMenu]Microsoft Azure PowerShell.lnk;DefaultShortcutPath=[ProgramMenuFolder]System Tools\Windows PowerShell.lnk" />
+    <CustomAction Id="UpdatePSShortcut" BinaryKey="CustomActions" DllEntry="UpdatePSShortcut" Execute ="deferred" Impersonate="no"/>
+    <CustomAction Id="SetExecutionPolicy" Property="POWERSHELLEXE" ExeCommand="-NoLogo -NoProfile -Command &quot;Set-ExecutionPolicy RemoteSigned -Force&quot;" Execute="deferred" Impersonate="no" Return="check"/>
+    <CustomAction Id="RunModuleInstallScript" Property="POWERSHELLEXE" ExeCommand="-NoLogo -NoProfile -Command &quot;. \&quot;[PowerShellFolder]\ShortcutStartup.ps1\&quot; -Install&quot;" Execute="deferred" Impersonate="no" Return="check"/>
+
+    <InstallExecuteSequence>
+      <Custom Action="SetCustomActionDataValue" After="CreateShortcuts">NOT Installed</Custom>
+      <Custom Action="UpdatePSShortcut" After="SetCustomActionDataValue">NOT Installed</Custom>
+      <Custom Action="SetExecutionPolicy" After="UpdatePSShortcut">NOT Installed</Custom>
+      <Custom Action="RunModuleInstallScript" After="SetExecutionPolicy">NOT Installed</Custom>
+    </InstallExecuteSequence>
+
+    <WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectDir)\media\License.rtf" />
+    <UIRef Id="WixUI_Minimal" />
+    <WixVariable Id="WixUIBannerBmp" Value="media\bannrbmp.bmp" />
+    <WixVariable Id="WixUIDialogBmp" Value="media\dlgbmp.bmp" />
+  </Product>
+</Wix>

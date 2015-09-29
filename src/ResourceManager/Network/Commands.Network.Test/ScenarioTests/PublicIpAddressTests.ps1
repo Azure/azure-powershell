@@ -29,20 +29,21 @@ function Test-PublicIpAddressCRUD
     try 
      {
       # Create the resource group
-      $resourceGroup = New-AzureResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
+      $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
       
       # Create publicIpAddres
-      $actual = New-AzurePublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
-      $expected = Get-AzurePublicIpAddress -ResourceGroupName $rgname -name $rname
+      $actual = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+      $expected = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $expected.Name $actual.Name	
       Assert-AreEqual $expected.Location $actual.Location
       Assert-AreEqual "Dynamic" $expected.PublicIpAllocationMethod
+      Assert-NotNull $expected.ResourceGuid
       Assert-AreEqual "Succeeded" $expected.ProvisioningState
       Assert-AreEqual $domainNameLabel $expected.DnsSettings.DomainNameLabel
       
       # list
-      $list = Get-AzurePublicIpAddress -ResourceGroupName $rgname
+      $list = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname
       Assert-AreEqual 1 @($list).Count
       Assert-AreEqual $list[0].ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $list[0].Name $actual.Name	
@@ -52,10 +53,10 @@ function Test-PublicIpAddressCRUD
       Assert-AreEqual $domainNameLabel $list[0].DnsSettings.DomainNameLabel
       
       # delete
-      $delete = Remove-AzurePublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
+      $delete = Remove-AzureRmPublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
       Assert-AreEqual true $delete
       
-      $list = Get-AzurePublicIpAddress -ResourceGroupName $actual.ResourceGroupName
+      $list = Get-AzureRmPublicIpAddress -ResourceGroupName $actual.ResourceGroupName
       Assert-AreEqual 0 @($list).Count
     }
     finally
@@ -82,11 +83,11 @@ function Test-PublicIpAddressCRUD-NoDomainNameLabel
     try 
      {
       # Create the resource group
-      $resourceGroup = New-AzureResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
+      $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
       
       # Create publicIpAddres
-      $actual = New-AzurePublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Dynamic
-      $expected = Get-AzurePublicIpAddress -ResourceGroupName $rgname -name $rname
+      $actual = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Dynamic
+      $expected = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $expected.Name $actual.Name	
       Assert-AreEqual $expected.Location $actual.Location
@@ -94,7 +95,7 @@ function Test-PublicIpAddressCRUD-NoDomainNameLabel
       Assert-AreEqual "Succeeded" $expected.ProvisioningState
 
       # list
-      $list = Get-AzurePublicIpAddress -ResourceGroupName $rgname
+      $list = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname
       Assert-AreEqual 1 @($list).Count
       Assert-AreEqual $list[0].ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $list[0].Name $actual.Name	
@@ -103,10 +104,10 @@ function Test-PublicIpAddressCRUD-NoDomainNameLabel
       Assert-AreEqual "Succeeded" $list[0].ProvisioningState
 
       # delete
-      $delete = Remove-AzurePublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
+      $delete = Remove-AzureRmPublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
       Assert-AreEqual true $delete
       
-      $list = Get-AzurePublicIpAddress -ResourceGroupName $actual.ResourceGroupName
+      $list = Get-AzureRmPublicIpAddress -ResourceGroupName $actual.ResourceGroupName
       Assert-AreEqual 0 @($list).Count
     }
     finally
@@ -133,11 +134,11 @@ function Test-PublicIpAddressCRUD-StaticAllocation
     try 
      {
       # Create the resource group
-      $resourceGroup = New-AzureResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
+      $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
       
       # Create publicIpAddres
-      $actual = New-AzurePublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Static
-      $expected = Get-AzurePublicIpAddress -ResourceGroupName $rgname -name $rname
+      $actual = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Static
+      $expected = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $expected.Name $actual.Name	
       Assert-AreEqual $expected.Location $actual.Location
@@ -146,7 +147,7 @@ function Test-PublicIpAddressCRUD-StaticAllocation
       Assert-AreEqual "Succeeded" $expected.ProvisioningState
 
       # list
-      $list = Get-AzurePublicIpAddress -ResourceGroupName $rgname
+      $list = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname
       Assert-AreEqual 1 @($list).Count
       Assert-AreEqual $list[0].ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $list[0].Name $actual.Name	
@@ -156,10 +157,10 @@ function Test-PublicIpAddressCRUD-StaticAllocation
       Assert-AreEqual "Succeeded" $list[0].ProvisioningState
 
       # delete
-      $delete = Remove-AzurePublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
+      $delete = Remove-AzureRmPublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
       Assert-AreEqual true $delete
       
-      $list = Get-AzurePublicIpAddress -ResourceGroupName $actual.ResourceGroupName
+      $list = Get-AzureRmPublicIpAddress -ResourceGroupName $actual.ResourceGroupName
       Assert-AreEqual 0 @($list).Count
     }
     finally
@@ -187,11 +188,11 @@ function Test-PublicIpAddressCRUD-EditDomainNameLavel
     try 
      {
       # Create the resource group
-      $resourceGroup = New-AzureResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
+      $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
       
       # Create publicIpAddres
-      $actual = New-AzurePublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
-      $publicip = Get-AzurePublicIpAddress -ResourceGroupName $rgname -name $rname
+      $actual = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+      $publicip = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $publicip.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $publicip.Name $actual.Name	
       Assert-AreEqual $publicip.Location $actual.Location
@@ -202,16 +203,16 @@ function Test-PublicIpAddressCRUD-EditDomainNameLavel
       $publicip.DnsSettings.DomainNameLabel = $newDomainNameLabel
 
       # Set publicIpAddress
-      $publicip | Set-AzurePublicIpAddress
+      $publicip | Set-AzureRmPublicIpAddress
 
-      $publicip = Get-AzurePublicIpAddress -ResourceGroupName $rgname -name $rname
+      $publicip = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $newDomainNameLabel $publicip.DnsSettings.DomainNameLabel
       
       # delete
-      $delete = Remove-AzurePublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
+      $delete = Remove-AzureRmPublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
       Assert-AreEqual true $delete
       
-      $list = Get-AzurePublicIpAddress -ResourceGroupName $actual.ResourceGroupName
+      $list = Get-AzureRmPublicIpAddress -ResourceGroupName $actual.ResourceGroupName
       Assert-AreEqual 0 @($list).Count
     }
     finally
@@ -238,11 +239,11 @@ function Test-PublicIpAddressCRUD-ReverseFqdn
     try 
      {
       # Create the resource group
-      $resourceGroup = New-AzureResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
+      $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
       
       # Create publicIpAddres
-      $actual = New-AzurePublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
-      $publicip = Get-AzurePublicIpAddress -ResourceGroupName $rgname -name $rname
+      $actual = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+      $publicip = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $publicip.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $publicip.Name $actual.Name	
       Assert-AreEqual $publicip.Location $actual.Location
@@ -253,16 +254,16 @@ function Test-PublicIpAddressCRUD-ReverseFqdn
       $publicip.DnsSettings.ReverseFqdn = $publicip.DnsSettings.Fqdn
 
       # Set publicIpAddress
-      $publicip | Set-AzurePublicIpAddress
+      $publicip | Set-AzureRmPublicIpAddress
 
-      $publicip = Get-AzurePublicIpAddress -ResourceGroupName $rgname -name $rname
+      $publicip = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $publicip.DnsSettings.Fqdn $publicip.DnsSettings.ReverseFqdn
       
       # delete
-      $delete = Remove-AzurePublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
+      $delete = Remove-AzureRmPublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
       Assert-AreEqual true $delete
       
-      $list = Get-AzurePublicIpAddress -ResourceGroupName $actual.ResourceGroupName
+      $list = Get-AzureRmPublicIpAddress -ResourceGroupName $actual.ResourceGroupName
       Assert-AreEqual 0 @($list).Count
     }
     finally

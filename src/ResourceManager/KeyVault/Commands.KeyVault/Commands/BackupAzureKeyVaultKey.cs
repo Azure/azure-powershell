@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Requests that a backup of the specified key be downloaded and stored to a file
     /// </summary>
-    [Cmdlet(VerbsData.Backup, "AzureKeyVaultKey", HelpUri = Constants.KeyVaultHelpUri)]
+    [Cmdlet(VerbsData.Backup, "AzureRmKeyVaultKey", HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(String))]
     public class BackupAzureKeyVaultKey : KeyVaultCmdletBase
     {
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #endregion Input Parameter Definition
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             if (string.IsNullOrEmpty(OutputFile))
             {

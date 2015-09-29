@@ -24,7 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Server.Cmdl
     /// These tests prevent regression in parameter validation attributes.
     /// </summary>
     [TestClass]
-    public class ServerCmdletAttributionTests : TestBase
+    public class ServerCmdletAttributionTests : SMTestBase
     {
         [TestInitialize]
         public void SetupTest()

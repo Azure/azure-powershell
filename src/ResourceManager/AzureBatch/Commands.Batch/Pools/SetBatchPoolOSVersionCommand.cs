@@ -24,15 +24,17 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.Set, Constants.AzureBatchPoolOSVersion)]
     public class SetBatchPoolOSVersionCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "The id of the pool.")]
+        [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, 
+            Mandatory = true, HelpMessage = "The id of the pool.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The Azure Guest OS version to be installed on the virtual machines in the pool.")]
+        [Parameter(Position = 1, Mandatory = true, 
+            HelpMessage = "The Azure Guest OS version to be installed on the virtual machines in the pool.")]
         [ValidateNotNullOrEmpty]
         public string TargetOSVersion { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ChangeOSVersionParameters parameters = new ChangeOSVersionParameters(this.BatchContext, this.Id, null,
                 this.TargetOSVersion, this.AdditionalBehaviors);

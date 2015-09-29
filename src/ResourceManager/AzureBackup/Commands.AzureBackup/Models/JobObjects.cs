@@ -19,7 +19,6 @@ using System.Xml;
 using System.Linq;
 using System.Web;
 using Microsoft.Azure.Management.BackupServices;
-using Microsoft.Azure.Management.BackupServices;
 using Mgmt = Microsoft.Azure.Management.BackupServices.Models;
 using Microsoft.Azure.Commands.AzureBackup.Cmdlets;
 

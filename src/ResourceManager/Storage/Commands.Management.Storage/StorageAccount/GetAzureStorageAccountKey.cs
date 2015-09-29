@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
             var listKeyResponse = this.StorageClient.StorageAccounts.ListKeys(
                  this.ResourceGroupName,

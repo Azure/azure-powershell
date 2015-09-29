@@ -25,12 +25,13 @@ namespace Microsoft.Azure.Commands.Resources.Test
     using Microsoft.Azure.Management.Resources.Models;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Moq;
+    using WindowsAzure.Commands.Test.Utilities.Common;
     using Xunit;
 
     /// <summary>
     /// Tests the AzureProvider cmdlets
     /// </summary>
-    public class UnregisterAzureProviderCmdletTests
+    public class UnregisterAzureProviderCmdletTests : RMTestBase
     {
         /// <summary>
         /// An instance of the cmdlet
@@ -76,7 +77,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         }
 
         /// <summary>
-        /// Validates all Unregister-AzureResourceProvider scenarios
+        /// Validates all Unregister-AzureRmResourceProvider scenarios
         /// </summary>
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.Sql.Database.Model;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureSqlDatabaseRestorePoints",
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseRestorePoints",
         ConfirmImpact = ConfirmImpact.None)]
     public class GetAzureSqlDatabaseRestorePoints : AzureSqlDatabaseRestorePointCmdletBase
     {

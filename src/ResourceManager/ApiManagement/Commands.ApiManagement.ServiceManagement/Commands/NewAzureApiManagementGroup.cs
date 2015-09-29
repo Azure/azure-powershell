@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.New, "AzureApiManagementGroup")]
+    [Cmdlet(VerbsCommon.New, "AzureRmApiManagementGroup")]
     [OutputType(typeof(PsApiManagementGroup))]
     public class NewAzureApiManagementGroup : AzureApiManagementCmdletBase
     {

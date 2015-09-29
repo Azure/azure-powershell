@@ -21,9 +21,9 @@ using Microsoft.Azure.Commands.Sql.Properties;
 namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureSqlServerFirewallRule cmdlet
+    /// Defines the Get-AzureRmSqlServerFirewallRule cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureSqlServerFirewallRule", ConfirmImpact = ConfirmImpact.Low)]
+    [Cmdlet(VerbsCommon.New, "AzureRmSqlServerFirewallRule", ConfirmImpact = ConfirmImpact.Low)]
     public class NewAzureSqlServerFirewallRule : AzureSqlServerFirewallRuleCmdletBase
     {
         #region Private 
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
 
             // The server already exists
             throw new PSArgumentException(
-                string.Format(Resources.ServerFirewallRuleNameExists, this.FirewallRuleName, this.ServerName),
+                string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ServerFirewallRuleNameExists, this.FirewallRuleName, this.ServerName),
                 "FirewallRule");
         }
 

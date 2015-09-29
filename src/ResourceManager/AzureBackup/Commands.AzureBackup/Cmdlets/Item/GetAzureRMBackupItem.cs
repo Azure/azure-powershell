@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Get list of azure backup items
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMBackupItem"), OutputType(typeof(AzureRMBackupItem), typeof(List<AzureRMBackupItem>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmBackupItem"), OutputType(typeof(AzureRMBackupItem), typeof(List<AzureRMBackupItem>))]
     public class GetAzureRMBackupItem : AzureBackupContainerCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ProtectionStatus)]
@@ -44,11 +44,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         [ValidateSet("AzureVM")]
         public string Type { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ExecutionBlock(() =>
             {
-                base.ExecuteCmdlet();
+                base.ProcessRecord();
 
                 List<CSMProtectedItemResponse> azureBackupDatasourceObjects = null;
                 List<CSMItemResponse> azureBackupPOObjects = null;

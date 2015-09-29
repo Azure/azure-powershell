@@ -256,7 +256,7 @@ Removes all current subscriptions.
 #>
 function Remove-AllSubscriptions
 {
-    Get-AzureSubscription | Remove-AzureSubscription -Force
+    Get-AzureRmSubscription | Remove-AzureRmSubscription -Force
 }
 
 <#

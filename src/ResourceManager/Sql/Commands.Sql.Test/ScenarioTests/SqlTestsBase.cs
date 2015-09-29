@@ -16,18 +16,20 @@ using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Storage;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using System;
+using System.Collections.Generic;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
-    public class SqlTestsBase
+    public class SqlTestsBase : RMTestBase
     {
         protected SqlEvnSetupHelper helper;
 
@@ -53,7 +55,10 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
         protected void RunPowerShellTest(params string[] scripts)
         {
-            HttpMockServer.Matcher = new PermissiveRecordMatcher();
+            //HttpMockServer.Matcher = new PermissiveRecordMatcher();
+            Dictionary<string, string> d = new Dictionary<string, string>();
+            d.Add("Microsoft.Authorization", "2014-07-01-preview");
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
             // Enable undo functionality as well as mock recording
             using (UndoContext context = UndoContext.Current)
             {
@@ -64,8 +69,15 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
                 helper.SetupEnvironment();
 
-                helper.SetupModules(AzureModule.AzureProfile, "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + this.GetType().Name + ".ps1");
+                helper.SetupModules(AzureModule.AzureResourceManager, 
+                    "ScenarioTests\\Common.ps1", 
+                    "ScenarioTests\\" + this.GetType().Name + ".ps1", 
+                    helper.RMProfileModule, 
+                    helper.RMResourceModule, 
+                    helper.RMStorageDataPlaneModule, 
+                    helper.RMStorageModule, 
+                    helper.GetRMModulePath(@"AzureRM.Insights.psd1"), 
+                    helper.GetRMModulePath(@"AzureRM.Sql.psd1"));
 
                 helper.RunPowerShellTest(scripts);
             }
@@ -134,10 +146,12 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                 if (HttpMockServer.Variables.ContainsKey(TenantIdKey))
                 {
                     tenantId = HttpMockServer.Variables[TenantIdKey];
+                    AzureRMCmdlet.DefaultProfile.Context.Tenant.Id = new Guid(tenantId);
                 }
                 if (HttpMockServer.Variables.ContainsKey(DomainKey))
                 {
                     UserDomain = HttpMockServer.Variables[DomainKey];
+                    AzureRMCmdlet.DefaultProfile.Context.Tenant.Domain = UserDomain;
                 }
             }
 

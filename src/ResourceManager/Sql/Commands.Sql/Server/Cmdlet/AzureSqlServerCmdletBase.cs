@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         /// <returns>The server adapter</returns>
         protected override AzureSqlServerAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            return new AzureSqlServerAdapter(Profile, subscription);
+            return new AzureSqlServerAdapter(DefaultProfile.Context);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Models;
 
-    [Cmdlet(VerbsCommon.New, "AzureApiManagement"), OutputType(typeof (PsApiManagement))]
+    [Cmdlet(VerbsCommon.New, "AzureRmApiManagement"), OutputType(typeof (PsApiManagement))]
     public class NewAzureApiManagement : AzureApiManagementCmdletBase
     {
         [Parameter(
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             HelpMessage = "Tags dictionary.")]
         public Dictionary<string, string> Tags { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ExecuteLongRunningCmdletWrap(
                 () => Client.BeginCreateApiManagementService(

@@ -17,7 +17,6 @@ using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Newtonsoft.Json;
-using System;
 using System.Collections;
 using System.Management.Automation;
 
@@ -28,8 +27,8 @@ namespace Microsoft.Azure.Commands.Compute
         ProfileNouns.VirtualMachineAccessExtension)]
     public class SetAzureVMAccessExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
-        private const string userNameKey = "userName";
-        private const string passwordKey = "password";
+        private const string userNameKey = "UserName";
+        private const string passwordKey = "Password";
 
         [Parameter(
            Mandatory = true,
@@ -87,10 +86,9 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
             ExecuteClientAction(() =>
             {
