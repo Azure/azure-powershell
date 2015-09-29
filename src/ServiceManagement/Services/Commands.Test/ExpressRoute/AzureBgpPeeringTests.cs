@@ -30,7 +30,7 @@ using Microsoft.Azure;
 namespace Microsoft.WindowsAzure.Commands.Test.ExpressRoute
 {
     
-    public class AzureBgpPeeringTests : TestBase
+    public class AzureBgpPeeringTests : SMTestBase
     {
         private const string SubscriptionId = "foo";
 

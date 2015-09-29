@@ -18,24 +18,12 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsCommon.Set, ProfileNouns.VirtualMachine, DefaultParameterSetName = GeneralizeVirtualMachineParamSet)]
+    [Cmdlet(VerbsCommon.Set, ProfileNouns.VirtualMachine, DefaultParameterSetName = ResourceGroupNameParameterSet)]
     [OutputType(typeof(AzureOperationResponse))]
-    public class SetAzureVMCommand : VirtualMachineBaseCmdlet
+    public class SetAzureVMCommand : VirtualMachineActionBaseCmdlet
     {
-        protected const string GeneralizeVirtualMachineParamSet = "GeneralizeVirtualMachineParamSet";
-
         [Parameter(
            Mandatory = true,
-           ParameterSetName = GeneralizeVirtualMachineParamSet,
-           Position = 0,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(
-           Mandatory = true,
-           ParameterSetName = GeneralizeVirtualMachineParamSet,
            Position = 1,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The virtual machine name.")]
@@ -44,16 +32,15 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
             Mandatory = true,
-            ParameterSetName = GeneralizeVirtualMachineParamSet,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "To generalize virtual machine.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter Generalized { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
             ExecuteClientAction(() =>
             {

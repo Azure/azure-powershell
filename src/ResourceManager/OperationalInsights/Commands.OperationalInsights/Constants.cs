@@ -16,16 +16,16 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 {
     internal static class Constants
     {
-        public const string LinkTargets = "AzureOperationalInsightsLinkTargets";
+        public const string LinkTargets = "AzureRmOperationalInsightsLinkTargets";
 
-        public const string Workspace = "AzureOperationalInsightsWorkspace";
+        public const string Workspace = "AzureRmOperationalInsightsWorkspace";
 
-        public const string WorkspaceSharedKeys = "AzureOperationalInsightsWorkspaceSharedKeys";
+        public const string WorkspaceSharedKeys = "AzureRmOperationalInsightsWorkspaceSharedKeys";
 
-        public const string WorkspaceManagementGroups = "AzureOperationalInsightsWorkspaceManagementGroups";
+        public const string WorkspaceManagementGroups = "AzureRmOperationalInsightsWorkspaceManagementGroups";
 
-        public const string WorkspaceUsage = "AzureOperationalInsightsWorkspaceUsage";
+        public const string WorkspaceUsage = "AzureRmOperationalInsightsWorkspaceUsage";
 
-        public const string StorageInsight = "AzureOperationalInsightsStorageInsight";
+        public const string StorageInsight = "AzureRmOperationalInsightsStorageInsight";
     }
 }

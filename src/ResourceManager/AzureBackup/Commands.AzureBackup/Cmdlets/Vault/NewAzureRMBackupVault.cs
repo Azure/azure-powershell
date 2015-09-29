@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Command to create an azure backup vault in a subscription
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRMBackupVault"), OutputType(typeof(AzureRMBackupVault))]
+    [Cmdlet(VerbsCommon.New, "AzureRmBackupVault"), OutputType(typeof(AzureRMBackupVault))]
     public class NewAzureRMBackupVault : AzureBackupCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.ResourceGroupName)]
@@ -46,11 +46,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         //[Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ResourceTags)]
         //public Hashtable[] Tag { get; set; }        
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ExecutionBlock(() =>
             {
-                base.ExecuteCmdlet();
+                base.ProcessRecord();
                 InitializeAzureBackupCmdlet(ResourceGroupName, Name);
 
                 WriteDebug(String.Format(Resources.CreatingBackupVault, ResourceGroupName, Name));

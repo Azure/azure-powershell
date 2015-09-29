@@ -22,7 +22,8 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Get, Constants.AzureBatchNodeFile, DefaultParameterSetName = ComputeNodeAndIdParameterSet), OutputType(typeof(PSNodeFile))]
+    [Cmdlet(VerbsCommon.Get, Constants.AzureBatchNodeFile, DefaultParameterSetName = ComputeNodeAndIdParameterSet), 
+        OutputType(typeof(PSNodeFile))]
     public class GetBatchNodeFileCommand : BatchObjectModelCmdletBase
     {
         internal const string TaskAndIdParameterSet = "Task_Id";
@@ -34,13 +35,17 @@ namespace Microsoft.Azure.Commands.Batch
 
         private int maxCount = Constants.DefaultMaxCount;
 
-        [Parameter(ParameterSetName = TaskAndIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the job containing the specified target task.")]
-        [Parameter(ParameterSetName = TaskAndODataParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = TaskAndIdParameterSet, Mandatory = true, 
+            ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the job containing the specified target task.")]
+        [Parameter(ParameterSetName = TaskAndODataParameterSet, Mandatory = true, 
+            ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string JobId { get; set; }
 
-        [Parameter(ParameterSetName = TaskAndIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the task.")]
-        [Parameter(ParameterSetName = TaskAndODataParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = TaskAndIdParameterSet, Mandatory = true, 
+            ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the task.")]
+        [Parameter(ParameterSetName = TaskAndODataParameterSet, Mandatory = true, 
+            ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string TaskId { get; set; }
 
@@ -48,13 +53,17 @@ namespace Microsoft.Azure.Commands.Batch
         [ValidateNotNullOrEmpty]
         public PSCloudTask Task { get; set; }
 
-        [Parameter(Position = 0, ParameterSetName = ComputeNodeAndIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the pool which contains the specified target compute node.")]
-        [Parameter(Position = 0, ParameterSetName = ComputeNodeAndODataParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 0, ParameterSetName = ComputeNodeAndIdParameterSet, Mandatory = true, 
+            ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the pool which contains the specified target compute node.")]
+        [Parameter(Position = 0, ParameterSetName = ComputeNodeAndODataParameterSet, Mandatory = true, 
+            ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string PoolId { get; set; }
 
-        [Parameter(Position = 1, ParameterSetName = ComputeNodeAndIdParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the compute node.")]
-        [Parameter(Position = 1, ParameterSetName = ComputeNodeAndODataParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 1, ParameterSetName = ComputeNodeAndIdParameterSet, Mandatory = true, 
+            ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the compute node.")]
+        [Parameter(Position = 1, ParameterSetName = ComputeNodeAndODataParameterSet, Mandatory = true, 
+            ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ComputeNodeId { get; set; }
 
@@ -89,7 +98,7 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(ParameterSetName = ParentComputeNodeObjectParameterSet)]
         public SwitchParameter Recursive { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ListNodeFileOptions options = new ListNodeFileOptions(this.BatchContext, this.JobId, this.TaskId, this.Task, this.PoolId,
                 this.ComputeNodeId, this.ComputeNode, this.AdditionalBehaviors)

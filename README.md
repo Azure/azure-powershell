@@ -69,6 +69,7 @@ This repository contains a set of PowerShell cmdlets for developers and administ
   * PowerShell remoting
   * Manage extension
     * BG Info
+    * Chef
     * Puppet
     * Custom Script
     * Access

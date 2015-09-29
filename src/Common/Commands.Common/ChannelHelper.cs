@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
@@ -29,6 +27,8 @@ using System.ServiceModel.Web;
 using System.Text;
 using System.Threading;
 using System.Xml;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {

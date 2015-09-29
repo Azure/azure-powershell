@@ -27,7 +27,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
     {
         private static Dictionary<Guid, CloudStorageAccount> storageAccountCache = new Dictionary<Guid,CloudStorageAccount>();
 
-        public static CloudStorageAccount GetCloudStorageAccount(this AzureSubscription subscription, AzureProfile profile)
+        public static CloudStorageAccount GetCloudStorageAccount(this AzureSubscription subscription, AzureSMProfile profile)
         {
             if (subscription == null)
             {

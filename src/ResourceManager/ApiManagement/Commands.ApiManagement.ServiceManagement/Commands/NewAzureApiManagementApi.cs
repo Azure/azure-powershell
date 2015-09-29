@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.New, "AzureApiManagementApi")]
+    [Cmdlet(VerbsCommon.New, "AzureRmApiManagementApi")]
     [OutputType(typeof(PsApiManagementApi))]
     public class NewAzureApiManagementApi : AzureApiManagementCmdletBase
     {
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
             if (ProductIds != null && ProductIds.Any())
             {
-                WriteProgress(new ProgressRecord(0, "New-AzureApiManagementApi", "New API created. Adding to products..."));
+                WriteProgress(new ProgressRecord(0, "New-AzureRmApiManagementApi", "New API created. Adding to products..."));
 
                 foreach (var productId in ProductIds)
                 {
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                         WriteProgress(
                             new ProgressRecord(
                                 0,
-                                "New-AzureApiManagementApi",
+                                "New-AzureRmApiManagementApi",
                                 string.Format("... Added to product {0}", productId))
                             );
                     }
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                         WriteProgress(
                             new ProgressRecord(
                                 0,
-                                "New-AzureApiManagementApi",
+                                "New-AzureRmApiManagementApi",
                                 string.Format("... Failed to add to product {0} due to: {1}", productId, ex))
                             );
                     }

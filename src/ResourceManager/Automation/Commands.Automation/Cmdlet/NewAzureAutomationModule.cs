@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Create a new Module for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureAutomationModule")]
+    [Cmdlet(VerbsCommon.New, "AzureRmAutomationModule")]
     [OutputType(typeof(Module))]
     public class NewAzureAutomationModule : AzureAutomationBaseCmdlet
     {
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void AutomationExecuteCmdlet()
+        protected override void AutomationProcessRecord()
         {
             var createdModule = this.AutomationClient.CreateModule(this.ResourceGroupName, this.AutomationAccountName, ContentLink, Name);
             this.WriteObject(createdModule);

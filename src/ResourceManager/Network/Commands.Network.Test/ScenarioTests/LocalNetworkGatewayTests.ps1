@@ -28,11 +28,11 @@ function Test-LocalNetworkGatewayCRUD
     try 
      {
       # Create the resource group
-      $resourceGroup = New-AzureResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"}             
+      $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"}             
 
       # Create & Get LocalNetworkGateway      
-      $actual = New-AzureLocalNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -AddressPrefix 192.168.0.0/16 -GatewayIpAddress 192.168.3.4
-      $expected = Get-AzureLocalNetworkGateway -ResourceGroupName $rgname -name $rname
+      $actual = New-AzureRmLocalNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -AddressPrefix 192.168.0.0/16 -GatewayIpAddress 192.168.3.4
+      $expected = Get-AzureRmLocalNetworkGateway -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $expected.Name $actual.Name	
       Assert-AreEqual "192.168.3.4" $expected.GatewayIpAddress
@@ -40,7 +40,7 @@ function Test-LocalNetworkGatewayCRUD
       $expected.Location = $location
 
       # List LocalNetworkGateways
-      $list = Get-AzureLocalNetworkGateway -ResourceGroupName $rgname
+      $list = Get-AzureRmLocalNetworkGateway -ResourceGroupName $rgname
       Assert-AreEqual 1 @($list).Count
       Assert-AreEqual $list[0].ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $list[0].Name $actual.Name	
@@ -48,15 +48,15 @@ function Test-LocalNetworkGatewayCRUD
       Assert-AreEqual "192.168.3.4" $list[0].GatewayIpAddress
       
       # Set/Update LocalNetworkGateway
-      $actual = Set-AzureLocalNetworkGateway -LocalNetworkGateway $expected -AddressPrefix "200.168.0.0/16"
-      $expected = Get-AzureLocalNetworkGateway -ResourceGroupName $rgname -name $rname    
+      $actual = Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $expected -AddressPrefix "200.168.0.0/16"
+      $expected = Get-AzureRmLocalNetworkGateway -ResourceGroupName $rgname -name $rname    
       Assert-AreEqual "200.168.0.0/16" $expected.LocalNetworkAddressSpace.AddressPrefixes[0]
 
       # Delete LocalNetworkGateway
-      $delete = Remove-AzureLocalNetworkGateway -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
+      $delete = Remove-AzureRmLocalNetworkGateway -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
       Assert-AreEqual true $delete
       
-      $list = Get-AzureLocalNetworkGateway -ResourceGroupName $actual.ResourceGroupName
+      $list = Get-AzureRmLocalNetworkGateway -ResourceGroupName $actual.ResourceGroupName
       Assert-AreEqual 0 @($list).Count
      }
      finally

@@ -31,7 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Database.Cmdlet
     /// </summary>
     [Cmdlet(VerbsLifecycle.Start, "AzureSqlDatabaseCopy", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.Low)]
-    public class StartAzureSqlDatabaseCopy : AzurePSCmdlet
+    public class StartAzureSqlDatabaseCopy : AzureSMCmdlet
     {
         #region ParameterSets
 

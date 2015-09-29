@@ -24,7 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceBus
     /// Lists all service bus locations available for a subscription.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureSBLocation"), OutputType(typeof(List<ServiceBusLocation>))]
-    public class GetAzureSBLocationCommand : AzurePSCmdlet
+    public class GetAzureSBLocationCommand : AzureSMCmdlet
     {
         internal ServiceBusClientExtensions Client { get; set; }
 

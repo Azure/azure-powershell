@@ -22,18 +22,18 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Get list of protection policies
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMBackupProtectionPolicy"), OutputType(typeof(AzureRMBackupProtectionPolicy), typeof(List<AzureRMBackupProtectionPolicy>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmBackupProtectionPolicy"), OutputType(typeof(AzureRMBackupProtectionPolicy), typeof(List<AzureRMBackupProtectionPolicy>))]
     public class GetAzureRMBackupProtectionPolicy : AzureBackupVaultCmdletBase
     {
         [Parameter(Position = 1, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.PolicyName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ExecutionBlock(() =>
             {
-                base.ExecuteCmdlet();
+                base.ProcessRecord();
 
                 if (Name != null)
                 {

@@ -29,7 +29,7 @@ using Microsoft.Azure.Common.Authentication;
 namespace Microsoft.WindowsAzure.Commands.Test.ServiceBus
 {
     
-    public class GetAzureSBNamespaceTests : TestBase
+    public class GetAzureSBNamespaceTests : SMTestBase
     {
         Mock<ServiceBusClientExtensions> client;
         MockCommandRuntime mockCommandRuntime;

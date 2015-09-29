@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                                 job.Reducer == reducer && job.Defines.Count == defines.Count)));
         }
 
-        [Fact]
+        [Fact(Skip = "Test requires setting env variable, TODO remove that constraint")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void StartJob()
         {

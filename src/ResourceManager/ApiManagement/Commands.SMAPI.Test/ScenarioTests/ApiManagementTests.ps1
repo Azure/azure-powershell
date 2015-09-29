@@ -6,10 +6,10 @@ function Api-CrudTest
 {
 Param($resourceGroupName, $serviceName)
 
-    $context = New-AzureApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
+    $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
 
     # get all apis
-    $apis = Get-AzureApiManagementApi -Context $context
+    $apis = Get-AzureRmApiManagementApi -Context $context
 
     # there should be one API
     Assert-AreEqual 1 $apis.Count
@@ -28,7 +28,7 @@ Param($resourceGroupName, $serviceName)
     # get by ID
     $apiId = $apis[0].ApiId
 
-    $api = Get-AzureApiManagementApi -Context $context -ApiId $apiId
+    $api = Get-AzureRmApiManagementApi -Context $context -ApiId $apiId
 
     Assert-AreEqual $apiId $api.ApiId
     Assert-AreEqual "Echo API" $api.Name
@@ -45,7 +45,7 @@ Param($resourceGroupName, $serviceName)
     # get by Name
     $apiName = $apis[0].Name
 
-    $apis = Get-AzureApiManagementApi -Context $context -Name $apiName
+    $apis = Get-AzureRmApiManagementApi -Context $context -Name $apiName
 
     Assert-AreEqual 1 $apis.Count
     Assert-NotNull $apis[0].ApiId
@@ -71,7 +71,7 @@ Param($resourceGroupName, $serviceName)
         $subscriptionKeyParametersHeader = getAssetName
         $subscriptionKeyQueryStringParamName = getAssetName
 
-        $newApi = New-AzureApiManagementApi -Context $context -ApiId $newApiId -Name $newApiName -Description $newApiDescription `
+        $newApi = New-AzureRmApiManagementApi -Context $context -ApiId $newApiId -Name $newApiName -Description $newApiDescription `
         -Protocols @("http", "https") -Path $newApiPath -ServiceUrl $newApiServiceUrl `
         -SubscriptionKeyHeaderName $subscriptionKeyParametersHeader -SubscriptionKeyQueryParamName $subscriptionKeyQueryStringParamName
 
@@ -96,7 +96,7 @@ Param($resourceGroupName, $serviceName)
         $subscriptionKeyParametersHeader = getAssetName
         $subscriptionKeyQueryStringParamName = getAssetName
 
-        $newApi = Set-AzureApiManagementApi -Context $context -ApiId $newApiId -Name $newApiName -Description $newApiDescription `
+        $newApi = Set-AzureRmApiManagementApi -Context $context -ApiId $newApiId -Name $newApiName -Description $newApiDescription `
         -Protocols @("https") -Path $newApiPath -ServiceUrl $newApiServiceUrl `
         -SubscriptionKeyHeaderName $subscriptionKeyParametersHeader -SubscriptionKeyQueryParamName $subscriptionKeyQueryStringParamName `
         -PassThru
@@ -113,12 +113,12 @@ Param($resourceGroupName, $serviceName)
         Assert-AreEqual $subscriptionKeyParametersHeader $newApi.SubscriptionKeyHeaderName
         Assert-AreEqual $subscriptionKeyQueryStringParamName $newApi.SubscriptionKeyQueryParamName
 
-        $product = Get-AzureApiManagementProduct -Context $context | Select -First 1
-        Add-AzureApiManagementApiToProduct -Context $context -ApiId $newApiId -ProductId $product.ProductId
+        $product = Get-AzureRmApiManagementProduct -Context $context | Select -First 1
+        Add-AzureRmApiManagementApiToProduct -Context $context -ApiId $newApiId -ProductId $product.ProductId
 
         #get by product id
         $found = 0
-        $apis = Get-AzureApiManagementApi -Context $context -ProductId $product.ProductId
+        $apis = Get-AzureRmApiManagementApi -Context $context -ProductId $product.ProductId
         for ($i = 0; $i -lt $apis.Count; $i++)
         {
             if($apis[$i].ApiId -eq $newApiId)
@@ -128,9 +128,9 @@ Param($resourceGroupName, $serviceName)
         }
         Assert-AreEqual 1 $found
 
-        Remove-AzureApiManagementApiFromProduct -Context $context -ApiId $newApiId -ProductId $product.ProductId
+        Remove-AzureRmApiManagementApiFromProduct -Context $context -ApiId $newApiId -ProductId $product.ProductId
         $found = 0
-        $apis = Get-AzureApiManagementApi -Context $context -ProductId $product.ProductId
+        $apis = Get-AzureRmApiManagementApi -Context $context -ProductId $product.ProductId
         for ($i = 0; $i -lt $apis.Count; $i++)
         {
             if($apis[$i].ApiId -eq $newApiId)
@@ -143,7 +143,7 @@ Param($resourceGroupName, $serviceName)
     finally
     {
         # remove created api
-        $removed = Remove-AzureApiManagementApi -Context $context -ApiId $newApiId -PassThru -Force
+        $removed = Remove-AzureRmApiManagementApi -Context $context -ApiId $newApiId -PassThru -Force
         Assert-True {$removed}
     }
 }
@@ -156,7 +156,7 @@ function Api-ImportExportTest
 {
 Param($resourceGroupName, $serviceName)
 
-    $context = New-AzureApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
+    $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
 
     $wadlPath = "./Resources/WADLYahoo.xml"
     $path = "wadlapi"
@@ -165,20 +165,20 @@ Param($resourceGroupName, $serviceName)
     try
     {
         # import api from file
-        $api = Import-AzureApiManagementApi -Context $context -ApiId $wadlApiId -SpecificationPath $wadlPath -SpecificationFormat Wadl -Path $path
+        $api = Import-AzureRmApiManagementApi -Context $context -ApiId $wadlApiId -SpecificationPath $wadlPath -SpecificationFormat Wadl -Path $path
 
         Assert-AreEqual $wadlApiId $api.ApiId
         Assert-AreEqual $path $api.Path
 
         # export api to pipline
-        $result = Export-AzureApiManagementApi -Context $context -ApiId $wadlApiId -SpecificationFormat Wadl
+        $result = Export-AzureRmApiManagementApi -Context $context -ApiId $wadlApiId -SpecificationFormat Wadl
 
         Assert-True {$result -like '*<doc title="Yahoo News Search">Yahoo News Search API</doc>*'}
     }
     finally
     {
         # remove created api
-        $removed = Remove-AzureApiManagementApi -Context $context -ApiId $wadlApiId -PassThru -Force
+        $removed = Remove-AzureRmApiManagementApi -Context $context -ApiId $wadlApiId -PassThru -Force
         Assert-True {$removed}
     }
 }
@@ -191,20 +191,20 @@ function Operations-CrudTest
 {
 Param($resourceGroupName, $serviceName)
 
-    $context = New-AzureApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
+    $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
 
     # get api
-    $api = Get-AzureApiManagementApi -Context $context -Name 'Echo API'| Select -First 1
+    $api = Get-AzureRmApiManagementApi -Context $context -Name 'Echo API'| Select -First 1
 
     # get all api operations
-    $operations = Get-AzureApiManagementOperation -Context $context -ApiId $api.ApiId
+    $operations = Get-AzureRmApiManagementOperation -Context $context -ApiId $api.ApiId
 
     Assert-AreEqual 6 $operations.Count
     for ($i = 0; $i -lt $operations.Count; $i++)
     {
         Assert-AreEqual $api.ApiId $operations[$i].ApiId
 
-        $operation = Get-AzureApiManagementOperation -Context $context -ApiId $api.ApiId -OperationId $operations[$i].OperationId
+        $operation = Get-AzureRmApiManagementOperation -Context $context -ApiId $api.ApiId -OperationId $operations[$i].OperationId
 
         Assert-AreEqual $api.ApiId $operation.ApiId
         Assert-AreEqual $operations[$i].OperationId $operation.OperationId
@@ -296,7 +296,7 @@ Param($resourceGroupName, $serviceName)
         $responseRepresentation.Sample = $newOperationResponseRepresentationSample
         $response.Representations = @($responseRepresentation)
 
-        $newOperation = New-AzureApiManagementOperation –Context $context –ApiId $api.ApiId –OperationId $newOperationId –Name $newOperationName `
+        $newOperation = New-AzureRmApiManagementOperation –Context $context –ApiId $api.ApiId –OperationId $newOperationId –Name $newOperationName `
          –Method $newOperationMethod –UrlTemplate $newperationUrlTemplate –Description $newOperationDescription –TemplateParameters @($rid, $query) –Request $request –Responses @($response)
 
         Assert-AreEqual $api.ApiId $newOperation.ApiId
@@ -421,7 +421,7 @@ Param($resourceGroupName, $serviceName)
         $responseRepresentation.Sample = $newOperationResponseRepresentationSample
         $response.Representations = @($responseRepresentation)
 
-        $newOperation = Set-AzureApiManagementOperation –Context $context –ApiId $api.ApiId –OperationId $newOperationId –Name $newOperationName `
+        $newOperation = Set-AzureRmApiManagementOperation –Context $context –ApiId $api.ApiId –OperationId $newOperationId –Name $newOperationName `
          –Method $newOperationMethod –UrlTemplate $newperationUrlTemplate –Description $newOperationDescription –TemplateParameters @($rid, $query) –Request $request –Responses @($response) -PassThru
 
         Assert-AreEqual $api.ApiId $newOperation.ApiId
@@ -469,14 +469,14 @@ Param($resourceGroupName, $serviceName)
     finally
     {
         #remove created operation
-        $removed = Remove-AzureApiManagementOperation -Context $context -ApiId $api.ApiId -OperationId $newOperationId -Force -PassThru
+        $removed = Remove-AzureRmApiManagementOperation -Context $context -ApiId $api.ApiId -OperationId $newOperationId -Force -PassThru
         Assert-True {$removed}
 
         $operation = $null
         try
         {
             # check it was removed
-            $operation = Get-AzureApiManagementOperation -Context $context -ApiId $api.ApiId -OperationId $newOperationId
+            $operation = Get-AzureRmApiManagementOperation -Context $context -ApiId $api.ApiId -OperationId $newOperationId
         }
         catch
         {
@@ -494,10 +494,10 @@ function Product-CrudTest
 {
 Param($resourceGroupName, $serviceName)
 
-    $context = New-AzureApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
+    $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
 
     # get all products
-    $products = Get-AzureApiManagementProduct -Context $context
+    $products = Get-AzureRmApiManagementProduct -Context $context
 
     # there should be 2 products
     Assert-AreEqual 2 $products.Count
@@ -535,7 +535,7 @@ Param($resourceGroupName, $serviceName)
         $productSubscriptionsLimit = 10
         $productTerms = getAssetName
 
-        $newProduct = New-AzureApiManagementProduct -Context $context –ProductId $productId –Title $productName –Description $productDescription `
+        $newProduct = New-AzureRmApiManagementProduct -Context $context –ProductId $productId –Title $productName –Description $productDescription `
             –LegalTerms $productTerms –NotificationPeriod $notificationPeriod –SubscriptionPeriod $subscriptionPeriod –SubscriptionRequired $productSubscriptionRequired `
             –ApprovalRequired $productApprovalRequired –State $productState -SubscriptionsLimit $productSubscriptionsLimit
 
@@ -551,12 +551,12 @@ Param($resourceGroupName, $serviceName)
         Assert-AreEqual $productTerms $newProduct.LegalTerms
 
         #add api to product
-        $apis = Get-AzureApiManagementApi -Context $context -ProductId $productId
+        $apis = Get-AzureRmApiManagementApi -Context $context -ProductId $productId
         Assert-AreEqual 0 $apis.Count
 
-        Get-AzureApiManagementApi -Context $context | Add-AzureApiManagementApiToProduct -Context $context -ProductId $productId
+        Get-AzureRmApiManagementApi -Context $context | Add-AzureRmApiManagementApiToProduct -Context $context -ProductId $productId
 
-        $apis = Get-AzureApiManagementApi -Context $context -ProductId $productId
+        $apis = Get-AzureRmApiManagementApi -Context $context -ProductId $productId
         Assert-AreEqual 1 $apis.Count
 
         #modify product
@@ -570,7 +570,7 @@ Param($resourceGroupName, $serviceName)
         $productSubscriptionsLimit = 20
         $productTerms = getAssetName
 
-        $newProduct = Set-AzureApiManagementProduct -Context $context –ProductId $productId –Title $productName –Description $productDescription `
+        $newProduct = Set-AzureRmApiManagementProduct -Context $context –ProductId $productId –Title $productName –Description $productDescription `
             –LegalTerms $productTerms –NotificationPeriod $notificationPeriod –SubscriptionPeriod $subscriptionPeriod -ApprovalRequired $productApprovalRequired `
              –SubscriptionRequired $TRUE –State $productState -SubscriptionsLimit $productSubscriptionsLimit -PassThru
 
@@ -586,15 +586,15 @@ Param($resourceGroupName, $serviceName)
         Assert-AreEqual $productTerms $newProduct.LegalTerms
 
         #remove api from product
-        Get-AzureApiManagementApi -Context $context | Remove-AzureApiManagementApiFromProduct -Context $context -ProductId $productId
+        Get-AzureRmApiManagementApi -Context $context | Remove-AzureRmApiManagementApiFromProduct -Context $context -ProductId $productId
 
-        $apis = Get-AzureApiManagementApi -Context $context -ProductId $productId
+        $apis = Get-AzureRmApiManagementApi -Context $context -ProductId $productId
         Assert-AreEqual 0 $apis.Count
     } 
     finally
     {
         # remove created product
-        $removed = Remove-AzureApiManagementProduct -Context $context -ProductId $productId -DeleteSubscriptions -PassThru -Force
+        $removed = Remove-AzureRmApiManagementProduct -Context $context -ProductId $productId -DeleteSubscriptions -PassThru -Force
         Assert-True {$removed}
     }
 }
@@ -607,10 +607,10 @@ function Subscription-CrudTest
 {
 Param($resourceGroupName, $serviceName)
 
-    $context = New-AzureApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
+    $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
 
     # get all subscriptions
-    $subs = Get-AzureApiManagementSubscription -Context $context
+    $subs = Get-AzureRmApiManagementSubscription -Context $context
 
     Assert-AreEqual 2 $subs.Count
     for($i = 0; $i -lt $subs.Count; $i++)
@@ -625,7 +625,7 @@ Param($resourceGroupName, $serviceName)
         Assert-NotNull $subs[$i].SecondaryKey
 
         # get by id
-        $sub = Get-AzureApiManagementSubscription -Context $context -SubscriptionId $subs[$i].SubscriptionId
+        $sub = Get-AzureRmApiManagementSubscription -Context $context -SubscriptionId $subs[$i].SubscriptionId
 
         Assert-AreEqual $subs[$i].SubscriptionId $sub.SubscriptionId
         Assert-AreEqual $subs[$i].UserId $sub.UserId
@@ -637,7 +637,7 @@ Param($resourceGroupName, $serviceName)
     }
 
     # update product to accept unlimited number or subscriptions
-    Set-AzureApiManagementProduct -Context $context -ProductId $subs[0].ProductId -SubscriptionsLimit 100
+    Set-AzureRmApiManagementProduct -Context $context -ProductId $subs[0].ProductId -SubscriptionsLimit 100
 
     # add new subscription
     $newSubscriptionId = getAssetName
@@ -648,7 +648,7 @@ Param($resourceGroupName, $serviceName)
         $newSubscriptionSk = getAssetName
         $newSubscriptionState = "Active"
 
-        $sub = New-AzureApiManagementSubscription -Context $context -SubscriptionId $newSubscriptionId -UserId $subs[0].UserId `
+        $sub = New-AzureRmApiManagementSubscription -Context $context -SubscriptionId $newSubscriptionId -UserId $subs[0].UserId `
             -ProductId $subs[0].ProductId -Name $newSubscriptionName -PrimaryKey $newSubscriptionPk -SecondaryKey $newSubscriptionSk `
             -State $newSubscriptionState
 
@@ -664,7 +664,7 @@ Param($resourceGroupName, $serviceName)
         $patchedSk = getAssetName
         $patchedExpirationDate = [DateTime]::Parse('2025-7-20')
 
-        $sub = Set-AzureApiManagementSubscription -Context $context -SubscriptionId $newSubscriptionId -Name $patchedName `
+        $sub = Set-AzureRmApiManagementSubscription -Context $context -SubscriptionId $newSubscriptionId -Name $patchedName `
             -PrimaryKey $patchedPk -SecondaryKey $patchedSk -ExpiresOn $patchedExpirationDate -PassThru
 
         Assert-AreEqual $newSubscriptionId $sub.SubscriptionId
@@ -677,14 +677,14 @@ Param($resourceGroupName, $serviceName)
     finally
     {
         # remove created subscription
-        $removed = Remove-AzureApiManagementSubscription -Context $context -SubscriptionId $newSubscriptionId -Force -PassThru
+        $removed = Remove-AzureRmApiManagementSubscription -Context $context -SubscriptionId $newSubscriptionId -Force -PassThru
         Assert-True {$removed}
 
         $sub = $null
         try
         {
             # check it was removed
-            $sub = Get-AzureApiManagementSubscripiton -Context $context -SubscriptionId $newSubscriptionId
+            $sub = Get-AzureRmApiManagementSubscripiton -Context $context -SubscriptionId $newSubscriptionId
         }
         catch
         {
@@ -702,10 +702,10 @@ function User-CrudTest
 {
 Param($resourceGroupName, $serviceName)
 
-    $context = New-AzureApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
+    $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
 
     # get all users
-    $users = Get-AzureApiManagementUser -Context $context
+    $users = Get-AzureRmApiManagementUser -Context $context
 
     Assert-AreEqual 1 $users.Count
     Assert-NotNull $users[0].UserId
@@ -716,7 +716,7 @@ Param($resourceGroupName, $serviceName)
     Assert-NotNull $users[0].RegistrationDate
 
     # get by id
-    $user = Get-AzureApiManagementUser -Context $context -UserId $users[0].UserId
+    $user = Get-AzureRmApiManagementUser -Context $context -UserId $users[0].UserId
 
     Assert-AreEqual $users[0].UserId $user.UserId
     Assert-AreEqual $users[0].FirstName $user.FirstName
@@ -736,7 +736,7 @@ Param($resourceGroupName, $serviceName)
         $userNote = getAssetName
         $userSate = "Active"
 
-        $user = New-AzureApiManagementUser -Context $context -UserId $userId -FirstName $userFirstName -LastName $userLastName `
+        $user = New-AzureRmApiManagementUser -Context $context -UserId $userId -FirstName $userFirstName -LastName $userLastName `
             -Password $userPassword -State $userSate -Note $userNote -Email $userEmail
 
         Assert-AreEqual $userId $user.UserId
@@ -754,7 +754,7 @@ Param($resourceGroupName, $serviceName)
         $userNote = getAssetName
         $userSate = "Active"
 
-        $user = Set-AzureApiManagementUser -Context $context -UserId $userId -FirstName $userFirstName -LastName $userLastName `
+        $user = Set-AzureRmApiManagementUser -Context $context -UserId $userId -FirstName $userFirstName -LastName $userLastName `
             -Password $userPassword -State $userSate -Note $userNote -PassThru -Email $userEmail
 
         Assert-AreEqual $userId $user.UserId
@@ -765,7 +765,7 @@ Param($resourceGroupName, $serviceName)
         Assert-AreEqual $userSate $user.State
 
         #generate SSO URL for the user
-        $ssoUrl = Get-AzureApiManagementUserSsoUrl -Context $context -UserId $userId
+        $ssoUrl = Get-AzureRmApiManagementUserSsoUrl -Context $context -UserId $userId
 
         Assert-NotNull $ssoUrl
         Assert-AreEqual $true [System.Uri]::IsWellFormedUriString($ssoUrl, 'Absolute')
@@ -773,14 +773,14 @@ Param($resourceGroupName, $serviceName)
     finally
     {
         # remove created user
-        $removed = Remove-AzureApiManagementUser -Context $context -UserId $userId -DeleteSubscriptions -Force -PassThru
+        $removed = Remove-AzureRmApiManagementUser -Context $context -UserId $userId -DeleteSubscriptions -Force -PassThru
         Assert-True {$removed}
 
         $user = $null
         try
         {
             # check it was removed
-            $user = Get-AzureApiManagementUser -Context $context -UserId $userId
+            $user = Get-AzureRmApiManagementUser -Context $context -UserId $userId
         }
         catch
         {
@@ -798,10 +798,10 @@ function Group-CrudTest
 {
 Param($resourceGroupName, $serviceName)
 
-    $context = New-AzureApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
+    $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
 
     # get all groups
-    $groups = Get-AzureApiManagementGroup -Context $context
+    $groups = Get-AzureRmApiManagementGroup -Context $context
 
     Assert-AreEqual 3 $groups.Count
     for($i = 0; $i -lt 3; $i++)
@@ -813,7 +813,7 @@ Param($resourceGroupName, $serviceName)
         Assert-NotNull $groups[$i].Type
         
         # get by id
-        $group = Get-AzureApiManagementGroup -Context $context -GroupId $groups[$i].GroupId
+        $group = Get-AzureRmApiManagementGroup -Context $context -GroupId $groups[$i].GroupId
 
         Assert-AreEqual $group.GroupId $groups[$i].GroupId
         Assert-AreEqual $group.Name $groups[$i].Name
@@ -829,7 +829,7 @@ Param($resourceGroupName, $serviceName)
         $newGroupName = getAssetName
         $newGroupDescription = getAssetName
 
-        $group = New-AzureApiManagementGroup -GroupId $groupId -Context $context -Name $newGroupName -Description $newGroupDescription
+        $group = New-AzureRmApiManagementGroup -GroupId $groupId -Context $context -Name $newGroupName -Description $newGroupDescription
 
         Assert-AreEqual $groupId $group.GroupId
         Assert-AreEqual $newGroupName $group.Name
@@ -841,7 +841,7 @@ Param($resourceGroupName, $serviceName)
         $newGroupName = getAssetName
         $newGroupDescription = getAssetName
 
-        $group = Set-AzureApiManagementGroup -Context $context -GroupId $groupId -Name $newGroupName -Description $newGroupDescription -PassThru
+        $group = Set-AzureRmApiManagementGroup -Context $context -GroupId $groupId -Name $newGroupName -Description $newGroupDescription -PassThru
 
         Assert-AreEqual $groupId $group.GroupId
         Assert-AreEqual $newGroupName $group.Name
@@ -850,43 +850,43 @@ Param($resourceGroupName, $serviceName)
         Assert-AreEqual 'Custom' $group.Type
 
         # add Product to Group
-        $product = Get-AzureApiManagementProduct -Context $context | Select -First 1
-        Add-AzureApiManagementProductToGroup -Context $context -GroupId $groupId -ProductId $product.ProductId
+        $product = Get-AzureRmApiManagementProduct -Context $context | Select -First 1
+        Add-AzureRmApiManagementProductToGroup -Context $context -GroupId $groupId -ProductId $product.ProductId
 
         #check group products
-        $groups = Get-AzureApiManagementGroup -Context $context -ProductId $product.ProductId
+        $groups = Get-AzureRmApiManagementGroup -Context $context -ProductId $product.ProductId
         Assert-AreEqual 4 $groups.Count
 
         # remove Product to Group
-        Remove-AzureApiManagementProductFromGroup -Context $context -GroupId $groupId -ProductId $product.ProductId
+        Remove-AzureRmApiManagementProductFromGroup -Context $context -GroupId $groupId -ProductId $product.ProductId
 
         #check group products
-        $groups = Get-AzureApiManagementGroup -Context $context -ProductId $product.ProductId
+        $groups = Get-AzureRmApiManagementGroup -Context $context -ProductId $product.ProductId
         Assert-AreEqual 3 $groups.Count
 
         # add User to Group
-        $user = Get-AzureApiManagementUser -Context $context | Select -First 1
-        Add-AzureApiManagementUserToGroup -Context $context -GroupId $groupId -UserId $user.UserId
+        $user = Get-AzureRmApiManagementUser -Context $context | Select -First 1
+        Add-AzureRmApiManagementUserToGroup -Context $context -GroupId $groupId -UserId $user.UserId
 
-        $groups = Get-AzureApiManagementGroup -Context $context -UserId $user.UserId
+        $groups = Get-AzureRmApiManagementGroup -Context $context -UserId $user.UserId
         Assert-AreEqual 3 $groups.Count
 
         #remove user from group
-        Remove-AzureApiManagementUserFromGroup -Context $context -GroupId $groupId -UserId $user.UserId
-        $groups = Get-AzureApiManagementGroup -Context $context -UserId $user.UserId
+        Remove-AzureRmApiManagementUserFromGroup -Context $context -GroupId $groupId -UserId $user.UserId
+        $groups = Get-AzureRmApiManagementGroup -Context $context -UserId $user.UserId
         Assert-AreEqual 2 $groups.Count
     }
     finally
     {
         # remove created group
-        $removed = Remove-AzureApiManagementGroup -Context $context -GroupId $groupId -Force -PassThru
+        $removed = Remove-AzureRmApiManagementGroup -Context $context -GroupId $groupId -Force -PassThru
         Assert-True {$removed}
 
         $group = $null
         try
         {
             # check it was removed
-            $group = Get-AzureApiManagementGroup -Context $context -GroupId $groupId
+            $group = Get-AzureRmApiManagementGroup -Context $context -GroupId $groupId
         }
         catch
         {
@@ -911,86 +911,86 @@ Param($resourceGroupName, $serviceName)
     $apiValidPath = "./Resources/ApiValidPolicy.xml"
     $operationValidPath = "./Resources/OperationValidPolicy.xml"
 
-    $context = New-AzureApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
+    $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
 
     # test tenant policy
     try
     {
-        $set = Set-AzureApiManagementPolicy -Context $context  -PolicyFilePath $tenantValidPath -PassThru
+        $set = Set-AzureRmApiManagementPolicy -Context $context  -PolicyFilePath $tenantValidPath -PassThru
         Assert-AreEqual $true $set
 
-        $policy = Get-AzureApiManagementPolicy -Context $context 
+        $policy = Get-AzureRmApiManagementPolicy -Context $context 
         Assert-NotNull $policy
         Assert-True {$policy -like '*<find-and-replace from="aaa" to="BBB" />*'}
     }
     finally
     {
-        $removed = Remove-AzureApiManagementPolicy -Context $context -PassThru -Force
+        $removed = Remove-AzureRmApiManagementPolicy -Context $context -PassThru -Force
         Assert-AreEqual $true $removed
 
-        $policy = Get-AzureApiManagementPolicy -Context $context 
+        $policy = Get-AzureRmApiManagementPolicy -Context $context 
         Assert-Null $policy
     }
 
     # test product policy
-    $product = Get-AzureApiManagementProduct -Context $context -Title 'Unlimited' | Select -First 1
+    $product = Get-AzureRmApiManagementProduct -Context $context -Title 'Unlimited' | Select -First 1
     try
     {
-        $set = Set-AzureApiManagementPolicy -Context $context  -PolicyFilePath $productValidPath -ProductId $product.ProductId -PassThru
+        $set = Set-AzureRmApiManagementPolicy -Context $context  -PolicyFilePath $productValidPath -ProductId $product.ProductId -PassThru
         Assert-AreEqual $true $set
 
-        $policy = Get-AzureApiManagementPolicy -Context $context  -ProductId $product.ProductId
+        $policy = Get-AzureRmApiManagementPolicy -Context $context  -ProductId $product.ProductId
         Assert-NotNull $policy
         Assert-True {$policy -like '*<rate-limit calls="5" renewal-period="60" />*'}
     }
     finally
     {
-        $removed = Remove-AzureApiManagementPolicy -Context $context -ProductId $product.ProductId -PassThru -Force
+        $removed = Remove-AzureRmApiManagementPolicy -Context $context -ProductId $product.ProductId -PassThru -Force
         Assert-AreEqual $true $removed
 
-        $policy = Get-AzureApiManagementPolicy -Context $context  -ProductId $product.ProductId
+        $policy = Get-AzureRmApiManagementPolicy -Context $context  -ProductId $product.ProductId
         Assert-Null $policy
     }
 
     # test api policy
-    $api = Get-AzureApiManagementApi -Context $context | Select -First 1
+    $api = Get-AzureRmApiManagementApi -Context $context | Select -First 1
     try
     {
-        $set = Set-AzureApiManagementPolicy -Context $context  -PolicyFilePath $apiValidPath -ApiId $api.ApiId -PassThru
+        $set = Set-AzureRmApiManagementPolicy -Context $context  -PolicyFilePath $apiValidPath -ApiId $api.ApiId -PassThru
         Assert-AreEqual $true $set
 
-        $policy = Get-AzureApiManagementPolicy -Context $context  -ApiId $api.ApiId
+        $policy = Get-AzureRmApiManagementPolicy -Context $context  -ApiId $api.ApiId
         Assert-NotNull $policy
         Assert-True {$policy -like '*<cache-lookup vary-by-developer="false" vary-by-developer-groups="false" downstream-caching-type="none">*'}
     }
     finally
     {
-        $removed = Remove-AzureApiManagementPolicy -Context $context -ApiId $api.ApiId -PassThru -Force
+        $removed = Remove-AzureRmApiManagementPolicy -Context $context -ApiId $api.ApiId -PassThru -Force
         Assert-AreEqual $true $removed
 
-        $policy = Get-AzureApiManagementPolicy -Context $context  -ApiId $api.ApiId
+        $policy = Get-AzureRmApiManagementPolicy -Context $context  -ApiId $api.ApiId
         Assert-Null $policy
     }
 
     # test operation policy
-    $api = Get-AzureApiManagementApi -Context $context | Select -First 1
-    $operation = Get-AzureApiManagementOperation -Context $context -ApiId $api.ApiId | Select -First 1
+    $api = Get-AzureRmApiManagementApi -Context $context | Select -First 1
+    $operation = Get-AzureRmApiManagementOperation -Context $context -ApiId $api.ApiId | Select -First 1
     try
     {
-        $set = Set-AzureApiManagementPolicy -Context $context  -PolicyFilePath $operationValidPath -ApiId $api.ApiId `
+        $set = Set-AzureRmApiManagementPolicy -Context $context  -PolicyFilePath $operationValidPath -ApiId $api.ApiId `
             -OperationId $operation.OperationId -PassThru
         Assert-AreEqual $true $set
 
-        $policy = Get-AzureApiManagementPolicy -Context $context  -ApiId $api.ApiId -OperationId $operation.OperationId
+        $policy = Get-AzureRmApiManagementPolicy -Context $context  -ApiId $api.ApiId -OperationId $operation.OperationId
         Assert-NotNull $policy
         Assert-True {$policy -like '*<rewrite-uri template="/resource" />*'}
     }
     finally
     {
-        $removed = Remove-AzureApiManagementPolicy -Context $context -ApiId $api.ApiId -OperationId $operation.OperationId -PassThru -Force
+        $removed = Remove-AzureRmApiManagementPolicy -Context $context -ApiId $api.ApiId -OperationId $operation.OperationId -PassThru -Force
         Assert-AreEqual $true $removed
 
-        $policy = Get-AzureApiManagementPolicy -Context $context  -ApiId $api.ApiId -OperationId $operation.OperationId
+        $policy = Get-AzureRmApiManagementPolicy -Context $context  -ApiId $api.ApiId -OperationId $operation.OperationId
         Assert-Null $policy
     }
 
@@ -1000,42 +1000,42 @@ Param($resourceGroupName, $serviceName)
     $tenantValid = '<policies><inbound><find-and-replace from="aaa" to="BBB" /><set-header name="ETag" exists-action="skip"><value>bbyby</value><!-- for multiple headers with the same name add additional value elements --></set-header><set-query-parameter name="additional" exists-action="append"><value>xxbbcczc</value><!-- for multiple parameters with the same name add additional value elements --></set-query-parameter><cross-domain /></inbound><outbound /></policies>'
     try
     {
-        $set = Set-AzureApiManagementPolicy -Context $context  -Policy $tenantValid -PassThru
+        $set = Set-AzureRmApiManagementPolicy -Context $context  -Policy $tenantValid -PassThru
         Assert-AreEqual $true $set
 
-        Get-AzureApiManagementPolicy -Context $context  -SaveAs 'TenantPolicy.xml' -Force
+        Get-AzureRmApiManagementPolicy -Context $context  -SaveAs 'TenantPolicy.xml' -Force
         $exists = [System.IO.File]::Exists('TenantPolicy.xml')
         $policy = gc 'TenantPolicy.xml'
         Assert-True {$policy -like '*<find-and-replace from="aaa" to="BBB" />*'}
     }
     finally
     {
-        $removed = Remove-AzureApiManagementPolicy -Context $context -PassThru -Force
+        $removed = Remove-AzureRmApiManagementPolicy -Context $context -PassThru -Force
         Assert-AreEqual $true $removed
 
-        $policy = Get-AzureApiManagementPolicy -Context $context 
+        $policy = Get-AzureRmApiManagementPolicy -Context $context 
         Assert-Null $policy
     }
 
     # test product policy
     $productValid = '<policies><inbound><rate-limit calls="5" renewal-period="60" /><quota calls="100" renewal-period="604800" /><base /></inbound><outbound><base /></outbound></policies>'
-    $product = Get-AzureApiManagementProduct -Context $context -Title 'Unlimited' | Select -First 1
+    $product = Get-AzureRmApiManagementProduct -Context $context -Title 'Unlimited' | Select -First 1
     try
     {
-        $set = Set-AzureApiManagementPolicy -Context $context  -Policy $productValid -ProductId $product.ProductId -PassThru
+        $set = Set-AzureRmApiManagementPolicy -Context $context  -Policy $productValid -ProductId $product.ProductId -PassThru
         Assert-AreEqual $true $set
 
-        Get-AzureApiManagementPolicy -Context $context  -ProductId $product.ProductId -SaveAs 'ProductPolicy.xml' -Force
+        Get-AzureRmApiManagementPolicy -Context $context  -ProductId $product.ProductId -SaveAs 'ProductPolicy.xml' -Force
         $exists = [System.IO.File]::Exists('ProductPolicy.xml')
         $policy = gc 'ProductPolicy.xml'
         Assert-True {$policy -like '*<rate-limit calls="5" renewal-period="60" />*'}
     }
     finally
     {
-        $removed = Remove-AzureApiManagementPolicy -Context $context -ProductId $product.ProductId -PassThru -Force
+        $removed = Remove-AzureRmApiManagementPolicy -Context $context -ProductId $product.ProductId -PassThru -Force
         Assert-AreEqual $true $removed
 
-        $policy = Get-AzureApiManagementPolicy -Context $context  -ProductId $product.ProductId
+        $policy = Get-AzureRmApiManagementPolicy -Context $context  -ProductId $product.ProductId
         Assert-Null $policy
 
         try
@@ -1047,23 +1047,23 @@ Param($resourceGroupName, $serviceName)
 
     # test api policy
     $apiValid = '<policies><inbound><base /><cache-lookup vary-by-developer="false" vary-by-developer-groups="false" downstream-caching-type="none"><vary-by-query-parameter>version</vary-by-query-parameter><vary-by-header>Accept</vary-by-header><vary-by-header>Accept-Charset</vary-by-header></cache-lookup></inbound><outbound><cache-store duration="10" /><base /></outbound></policies>'
-    $api = Get-AzureApiManagementApi -Context $context | Select -First 1
+    $api = Get-AzureRmApiManagementApi -Context $context | Select -First 1
     try
     {
-        $set = Set-AzureApiManagementPolicy -Context $context  -Policy $apiValid -ApiId $api.ApiId -PassThru
+        $set = Set-AzureRmApiManagementPolicy -Context $context  -Policy $apiValid -ApiId $api.ApiId -PassThru
         Assert-AreEqual $true $set
 
-        $policy = Get-AzureApiManagementPolicy -Context $context  -ApiId $api.ApiId -SaveAs 'ApiPolicy.xml'
+        $policy = Get-AzureRmApiManagementPolicy -Context $context  -ApiId $api.ApiId -SaveAs 'ApiPolicy.xml'
         $exists = [System.IO.File]::Exists('ApiPolicy.xml')
         $policy = gc 'ApiPolicy.xml'
         Assert-True {$policy -like '*<cache-lookup vary-by-developer="false" vary-by-developer-groups="false" downstream-caching-type="none">*'}
     }
     finally
     {
-        $removed = Remove-AzureApiManagementPolicy -Context $context -ApiId $api.ApiId -PassThru -Force
+        $removed = Remove-AzureRmApiManagementPolicy -Context $context -ApiId $api.ApiId -PassThru -Force
         Assert-AreEqual $true $removed
 
-        $policy = Get-AzureApiManagementPolicy -Context $context  -ApiId $api.ApiId
+        $policy = Get-AzureRmApiManagementPolicy -Context $context  -ApiId $api.ApiId
         Assert-Null $policy
 
         try
@@ -1075,15 +1075,15 @@ Param($resourceGroupName, $serviceName)
 
     # test operation policy
     $operationValid = '<policies><inbound><base /><rewrite-uri template="/resource" /></inbound><outbound><base /></outbound></policies>'
-    $api = Get-AzureApiManagementApi -Context $context | Select -First 1
-    $operation = Get-AzureApiManagementOperation -Context $context -ApiId $api.ApiId | Select -First 1
+    $api = Get-AzureRmApiManagementApi -Context $context | Select -First 1
+    $operation = Get-AzureRmApiManagementOperation -Context $context -ApiId $api.ApiId | Select -First 1
     try
     {
-        $set = Set-AzureApiManagementPolicy -Context $context  -Policy $operationValid -ApiId $api.ApiId `
+        $set = Set-AzureRmApiManagementPolicy -Context $context  -Policy $operationValid -ApiId $api.ApiId `
             -OperationId $operation.OperationId -PassThru
         Assert-AreEqual $true $set
 
-        $policy = Get-AzureApiManagementPolicy -Context $context  -ApiId $api.ApiId -OperationId $operation.OperationId `
+        $policy = Get-AzureRmApiManagementPolicy -Context $context  -ApiId $api.ApiId -OperationId $operation.OperationId `
             -SaveAs 'OperationPolicy.xml'
         $exists = [System.IO.File]::Exists('OperationPolicy.xml')
         $policy = gc 'OperationPolicy.xml'
@@ -1091,10 +1091,10 @@ Param($resourceGroupName, $serviceName)
     }
     finally
     {
-        $removed = Remove-AzureApiManagementPolicy -Context $context -ApiId $api.ApiId -OperationId $operation.OperationId -PassThru -Force
+        $removed = Remove-AzureRmApiManagementPolicy -Context $context -ApiId $api.ApiId -OperationId $operation.OperationId -PassThru -Force
         Assert-AreEqual $true $removed
 
-        $policy = Get-AzureApiManagementPolicy -Context $context  -ApiId $api.ApiId -OperationId $operation.OperationId
+        $policy = Get-AzureRmApiManagementPolicy -Context $context  -ApiId $api.ApiId -OperationId $operation.OperationId
         Assert-Null $policy
 
         try
@@ -1113,10 +1113,10 @@ function Certificate-CrudTest
 {
 Param($resourceGroupName, $serviceName)
 
-    $context = New-AzureApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
+    $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
 
     # get all certificates
-    $certificates = Get-AzureApiManagementCertificate -Context $context
+    $certificates = Get-AzureRmApiManagementCertificate -Context $context
 
     Assert-AreEqual 0 $certificates.Count
 
@@ -1129,28 +1129,28 @@ Param($resourceGroupName, $serviceName)
     try
     {
         # upload certificate
-        $cert = New-AzureApiManagementCertificate -Context $context -CertificateId $certId -PfxFilePath $certPath -PfxPassword $certPassword
+        $cert = New-AzureRmApiManagementCertificate -Context $context -CertificateId $certId -PfxFilePath $certPath -PfxPassword $certPassword
 
         Assert-AreEqual $certId $cert.CertificateId
         Assert-AreEqual $certThumbprint $cert.Thumbprint
         Assert-AreEqual $certSubject $cert.Subject
 
         # get certificate
-        $cert = Get-AzureApiManagementCertificate -Context $context -CertificateId $certId
+        $cert = Get-AzureRmApiManagementCertificate -Context $context -CertificateId $certId
 
         Assert-AreEqual $certId $cert.CertificateId
         Assert-AreEqual $certThumbprint $cert.Thumbprint
         Assert-AreEqual $certSubject $cert.Subject
 
         # update certificate
-        $cert = Set-AzureApiManagementCertificate -Context $context -CertificateId $certId -PfxFilePath $certPath -PfxPassword $certPassword -PassThru
+        $cert = Set-AzureRmApiManagementCertificate -Context $context -CertificateId $certId -PfxFilePath $certPath -PfxPassword $certPassword -PassThru
 
         Assert-AreEqual $certId $cert.CertificateId
         Assert-AreEqual $certThumbprint $cert.Thumbprint
         Assert-AreEqual $certSubject $cert.Subject
 
         # list certificates
-        $certificates = Get-AzureApiManagementCertificate -Context $context
+        $certificates = Get-AzureRmApiManagementCertificate -Context $context
         Assert-AreEqual 1 $certificates.Count
 
         Assert-AreEqual $certId $certificates[0].CertificateId
@@ -1160,14 +1160,14 @@ Param($resourceGroupName, $serviceName)
     finally
     {
         # remove uploaded certificate
-        $removed = Remove-AzureApiManagementCertificate -Context $context -CertificateId $certId -Force -PassThru
+        $removed = Remove-AzureRmApiManagementCertificate -Context $context -CertificateId $certId -Force -PassThru
         Assert-True {$removed}
 
         $cert = $null
         try
         {
             # check it was removed
-            $cert = Get-AzureApiManagementCertificate -Context $context -CertificateId $certId
+            $cert = Get-AzureRmApiManagementCertificate -Context $context -CertificateId $certId
         }
         catch
         {
@@ -1185,10 +1185,10 @@ function AuthorizationServer-CrudTest
 {
 Param($resourceGroupName, $serviceName)
 
-    $context = New-AzureApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
+    $context = New-AzureRmApiManagementContext -ResourceGroupName $resourceGroupName -ServiceName $serviceName
 
     # get all authoriaztion servers
-    $servers = Get-AzureApiManagementAuthorizationServer -Context $context
+    $servers = Get-AzureRmApiManagementAuthorizationServer -Context $context
 
     Assert-AreEqual 0 $servers.Count
 
@@ -1213,7 +1213,7 @@ Param($resourceGroupName, $serviceName)
         $supportState = $true
         $tokenBodyParameters = @{'tokenname'='tokenvalue'}
 
-        $server = New-AzureApiManagementAuthorizationServer -Context $context -ServerId $serverId -Name $name -Description $description `
+        $server = New-AzureRmApiManagementAuthorizationServer -Context $context -ServerId $serverId -Name $name -Description $description `
             -ClientRegistrationPageUrl $clientRegistrationEndpoint -AuthorizationEndpointUrl $authorizationEndpoint `
             -TokenEndpointUrl $tokenEndpoint -ClientId $clientId -ClientSecret $clientSecret -AuthorizationRequestMethods $authorizationMethods `
             -GrantTypes $grantTypes -ClientAuthenticationMethods $clientAuthenticationMethods -TokenBodyParameters $tokenBodyParameters `
@@ -1246,7 +1246,7 @@ Param($resourceGroupName, $serviceName)
         Assert-AreEqual $supportState $server.SupportState
         Assert-AreEqual $tokenBodyParameters.Count $server.TokenBodyParameters.Count
 
-        $server = Get-AzureApiManagementAuthorizationServer -Context $context -ServerId $serverId
+        $server = Get-AzureRmApiManagementAuthorizationServer -Context $context -ServerId $serverId
 
         Assert-AreEqual $serverId $server.ServerId
         Assert-AreEqual $name $server.Name
@@ -1290,7 +1290,7 @@ Param($resourceGroupName, $serviceName)
         $supportState = $false
         $tokenBodyParameters = @{'tokenname1'='tokenvalue1'}
 
-        $server = Set-AzureApiManagementAuthorizationServer -Context $context -ServerId $serverId -Name $name -Description $description `
+        $server = Set-AzureRmApiManagementAuthorizationServer -Context $context -ServerId $serverId -Name $name -Description $description `
             -ClientRegistrationPageUrl $clientRegistrationEndpoint -AuthorizationEndpointUrl $authorizationEndpoint `
             -TokenEndpointUrl $tokenEndpoint -ClientId $clientId -ClientSecret $clientSecret -AuthorizationRequestMethods $authorizationMethods `
             -GrantTypes $grantTypes -ClientAuthenticationMethods $clientAuthenticationMethods -TokenBodyParameters $tokenBodyParameters `
@@ -1320,7 +1320,7 @@ Param($resourceGroupName, $serviceName)
         Assert-AreEqual $supportState $server.SupportState
         Assert-AreEqual $tokenBodyParameters.Count $server.TokenBodyParameters.Count
 
-        $server = Get-AzureApiManagementAuthorizationServer -Context $context -ServerId $serverId
+        $server = Get-AzureRmApiManagementAuthorizationServer -Context $context -ServerId $serverId
 
         Assert-AreEqual $serverId $server.ServerId
         Assert-AreEqual $name $server.Name
@@ -1351,14 +1351,14 @@ Param($resourceGroupName, $serviceName)
     finally
     {
         # remove created server
-        $removed = Remove-AzureApiManagementAuthorizationServer -Context $context -ServerId $serverId -Force -PassThru
+        $removed = Remove-AzureRmApiManagementAuthorizationServer -Context $context -ServerId $serverId -Force -PassThru
         Assert-True {$removed}
 
         $server = $null
         try
         {
             # check it was removed
-            $server = Get-AzureApiManagementAuthorizationServer -Context $context -ServerId $serverId
+            $server = Get-AzureRmApiManagementAuthorizationServer -Context $context -ServerId $serverId
         }
         catch
         {

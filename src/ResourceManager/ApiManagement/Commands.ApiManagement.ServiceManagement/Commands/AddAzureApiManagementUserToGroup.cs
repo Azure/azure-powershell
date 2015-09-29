@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.Add, "AzureApiManagementUserToGroup")]
+    [Cmdlet(VerbsCommon.Add, "AzureRmApiManagementUserToGroup")]
     [OutputType(typeof(bool))]
     public class AddAzureApiManagementUserToGroup : AzureApiManagementCmdletBase
     {

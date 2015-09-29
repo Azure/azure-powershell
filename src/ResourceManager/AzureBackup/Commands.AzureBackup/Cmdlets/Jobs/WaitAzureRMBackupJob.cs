@@ -23,7 +23,7 @@ using Microsoft.Azure.Commands.AzureBackup.Properties;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
-    [Cmdlet("Wait", "AzureRMBackupJob"), OutputType(typeof(List<AzureRMBackupJob>), typeof(AzureRMBackupJob))]
+    [Cmdlet("Wait", "AzureRmBackupJob"), OutputType(typeof(List<AzureRMBackupJob>), typeof(AzureRMBackupJob))]
     public class WaitAzureRMBackupJob : AzureBackupCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.WaitJobFilterJobHelpMessage, ValueFromPipeline = true)]
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         [ValidateRange(1, Int64.MaxValue)]
         public long? TimeOut { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             List<string> specifiedJobs = new List<string>();
             AzureRMBackupVault Vault = null;

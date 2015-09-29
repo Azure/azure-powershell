@@ -24,7 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceBus
     /// Creates new service bus namespace.
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureSBNamespace"), OutputType(typeof(ServiceBusNamespace))]
-    public class NewAzureSBNamespaceCommand : AzurePSCmdlet
+    public class NewAzureSBNamespaceCommand : AzureSMCmdlet
     {
         internal ServiceBusClientExtensions Client { get; set; }
 

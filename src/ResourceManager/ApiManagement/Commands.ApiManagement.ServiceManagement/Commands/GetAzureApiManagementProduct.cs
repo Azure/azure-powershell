@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.Get, "AzureApiManagementProduct", DefaultParameterSetName = GetAllProducts)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmApiManagementProduct", DefaultParameterSetName = GetAllProducts)]
     [OutputType(typeof(IList<PsApiManagementProduct>))]
     public class GetAzureApiManagementProduct : AzureApiManagementCmdletBase
     {
