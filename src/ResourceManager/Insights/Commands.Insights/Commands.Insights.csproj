@@ -128,7 +128,7 @@
     <Compile Include="Autoscale\GetAutoscaleSettingCommand.cs" />
     <Compile Include="Autoscale\RemoveAutoscaleSettingCommand.cs" />
     <Compile Include="EventCmdletBase.cs" />
-    <Compile Include="Events\GetAzureLogCommand.cs" />
+    <Compile Include="Events\GetAzureRmLogCommand.cs" />
     <Compile Include="InsightsClientCmdletBase.cs" />
     <Compile Include="InsightsCmdletBase.cs" />
     <Compile Include="ManagementCmdletBase.cs" />

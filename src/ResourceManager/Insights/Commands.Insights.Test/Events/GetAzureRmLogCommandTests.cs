@@ -25,9 +25,9 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Insights.Test.Events
 {
-    public class GetAzureLogCommandTests
+    public class GetAzureRmLogCommandTests
     {
-        private readonly GetAzureLogCommand cmdlet;
+        private readonly GetAzureRmLogCommand cmdlet;
         private readonly Mock<InsightsClient> insightsClientMock;
         private readonly Mock<IEventOperations> insightsEventOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
@@ -35,12 +35,12 @@ namespace Microsoft.Azure.Commands.Insights.Test.Events
         private string filter;
         private string selected;
 
-        public GetAzureLogCommandTests()
+        public GetAzureRmLogCommandTests()
         {
             insightsEventOperationsMock = new Mock<IEventOperations>();
             insightsClientMock = new Mock<InsightsClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new GetAzureLogCommand()
+            cmdlet = new GetAzureRmLogCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 InsightsClient = insightsClientMock.Object

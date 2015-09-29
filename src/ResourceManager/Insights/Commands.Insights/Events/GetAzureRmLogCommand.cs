@@ -22,8 +22,8 @@ namespace Microsoft.Azure.Commands.Insights.Events
     /// <summary>
     /// Get the list of events for at a subscription level.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureLog"), OutputType(typeof(List<IPSEventData>))]
-    public class GetAzureLogCommand : EventCmdletBase
+    [Cmdlet(VerbsCommon.Get, "AzureRmLog"), OutputType(typeof(List<IPSEventData>))]
+    public class GetAzureRmLogCommand : EventCmdletBase
     {
         /// <summary>
         /// Gets or sets the starttime parameter of the cmdlet
