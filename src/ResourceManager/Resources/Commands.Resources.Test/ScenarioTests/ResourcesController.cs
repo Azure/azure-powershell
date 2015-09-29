@@ -110,10 +110,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
-                helper.SetupModules(
-                    AzureModule.AzureResourceManager, 
-                    "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + callingClassName + ".ps1");
+                helper.SetupModules(AzureModule.AzureResourceManager, 
+                    "ScenarioTests\\Common.ps1", 
+                    "ScenarioTests\\" + callingClassName + ".ps1", 
+                    helper.RMProfileModule, 
+                    helper.RMResourceModule);
 
                 try
                 {

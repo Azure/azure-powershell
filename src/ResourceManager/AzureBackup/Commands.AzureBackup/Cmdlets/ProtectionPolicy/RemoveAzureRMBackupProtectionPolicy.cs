@@ -29,26 +29,37 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     [Cmdlet(VerbsCommon.Remove, "AzureRmBackupProtectionPolicy")]
     public class RemoveAzureRMBackupProtectionPolicy : AzureBackupPolicyCmdletBase
     {
+        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
+        public SwitchParameter Force { get; set; }    
+
         protected override void ProcessRecord()
         {
-            ExecutionBlock(() =>
-            {
-                base.ProcessRecord();
+            ConfirmAction(
+               Force.IsPresent,
+               string.Format(Resources.RemoveProtectionPolicyWarning, ProtectionPolicy.Name),
+               Resources.RemoveProtectionPolicyMessage,
+               ProtectionPolicy.Name, () =>
+               {
+                   ExecutionBlock(() =>
+                   {
+                       base.ProcessRecord();
 
-                WriteDebug(Resources.MakingClientCall);
+                       WriteDebug(Resources.MakingClientCall);
 
-                var policyInfo = AzureBackupClient.GetProtectionPolicyByName(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, ProtectionPolicy.Name);
-                if (policyInfo != null)
-                {
-                    AzureBackupClient.DeleteProtectionPolicy(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, policyInfo.Name);
-                    WriteDebug(Resources.ProtectionPolicyDeleted);
-                }
-                else
-                {
-                    var exception = new ArgumentException(string.Format(Resources.PolicyNotFound, ProtectionPolicy.Name));
-                    throw exception;                    
-                }
-            });
+                       var policyInfo = AzureBackupClient.GetProtectionPolicyByName(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, ProtectionPolicy.Name);
+                       if (policyInfo != null)
+                       {
+                           AzureBackupClient.DeleteProtectionPolicy(ProtectionPolicy.ResourceGroupName, ProtectionPolicy.ResourceName, policyInfo.Name);
+                           WriteDebug(Resources.ProtectionPolicyDeleted);
+                       }
+                       else
+                       {
+                           var exception = new ArgumentException(string.Format(Resources.PolicyNotFound, ProtectionPolicy.Name));
+                           throw exception;
+                       }
+                   });
+
+               });            
         }        
     }
 }
