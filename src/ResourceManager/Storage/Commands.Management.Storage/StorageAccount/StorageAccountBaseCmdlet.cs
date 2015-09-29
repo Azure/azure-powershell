@@ -36,9 +36,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
         protected const string StorageAccountTypeAlias = "StorageAccountType";
         protected const string AccountTypeAlias = "AccountType";
 
-        protected const string StorageAccountNameAvailabilityStr = "AzureRMStorageAccountNameAvailability";
+        protected const string StorageAccountNameAvailabilityStr = "AzureRmStorageAccountNameAvailability";
 
-        protected const string StorageUsageNounStr = "AzureRMStorageUsage";
+        protected const string StorageUsageNounStr = "AzureRmStorageUsage";
 
         protected struct AccountTypeString
         {
