@@ -50,8 +50,8 @@
       Command="MSTest.exe /testcontainer:$(_testAssembly) /testsettings:$(_testSettings) /category:$(_testFilter) /resultsfile:$(_testResult)"
       ContinueOnError="false" />
   </Target>
-  
-  <Target Name="InvokeXUnit">
+
+  <Target Name="DeclareXunitTests">
     <ItemGroup>
       <AsmXUnitTests Include=".\src\ServiceManagement\Common\Commands.Common.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Common.Test.dll"/>
       <AsmXUnitTests Include=".\src\ServiceManagement\Services\Commands.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Test.dll"/>
@@ -88,7 +88,9 @@
     <ItemGroup Condition=" '$(scope)' !='' and '$(scope)' != 'ServiceManagement' ">
       <XUnitTests Include="$(MSBuildProjectDirectory)\src\ResourceManager\$(scope)\*\bin\Debug\*.Test.dll"/>
     </ItemGroup>
-    
+  </Target>
+  
+  <Target Name="InvokeXUnit" DependsOnTargets="DeclareXunitTests">
     <Message Importance="high" Text="Running XUnit tests" />
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
     <Exec 
@@ -97,7 +99,7 @@
     <OnError ExecuteTargets="TimeoutErrorHandler"/>
   </Target>
   
-  <Target Name="InvokeXUnitAll">
+  <Target Name="InvokeXUnitAll" DependsOnTargets="DeclareXunitTests">
     <Message Importance="high" Text="Running XUnit tests" />
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
     <Exec 
