@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients
         private static Task<string> GetErrorMessage(HttpRequestMessage request, HttpResponseMessage response, ErrorResponseMessage errorResponse)
         {
             return errorResponse != null
-                 ? Task.FromResult(errorResponse.ToFormattedJson())
+                 ? Task.FromResult(string.Format("{0} : {1}", errorResponse.Error.Code, errorResponse.Error.Message))
                  : response.Content.ReadAsStringAsync();
         }
 
