@@ -17,16 +17,32 @@ Param(
 [switch]$Install
 )
 
+function EnsureRegistryPath
+{
+	$originalpaths = (Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PSModulePath).PSModulePath
+	if($originalpaths.Contains("$env:ProgramFiles\WindowsPowerShell\Modules") -eq $false)
+	{
+		Write-Output "Fixing PSModulePath"
+		$newPath = "$originalpaths;$env:ProgramFiles\WindowsPowerShell\Modules"
+		Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PSModulePath –Value $newPath
+	}
+	else
+	{
+		Write-Output "PSModulePath successfuly validated"
+	}
+}
+
 $error.clear()
 try {
 	if ($Install.IsPresent) {
+		EnsureRegistryPath
 		Write-Output @"
 
 Finalizing installation of Azure PowerShell. 
 Installing Azure Modules from PowerShell Gallery. 
 This may take some time...
 "@
-		$env:PSModulePath = "$env:HOME\Documents\WindowsPowerShell\Modules;$env:ProgramFiles\WindowsPowerShell\Modules;$env:SystemRoot\system32\WindowsPowerShell\v1.0\Modules\"
+		$env:PSModulePath = "$env:USERPROFILE\Documents\WindowsPowerShell\Modules;$env:ProgramFiles\WindowsPowerShell\Modules;$env:SystemRoot\system32\WindowsPowerShell\v1.0\Modules\"
 
 		Import-Module PackageManagement
 		
@@ -51,7 +67,11 @@ To use Azure Service Management cmdlets please execute the following cmdlet:
 		$VerbosePreference = "Continue"
 	}
 }
-catch { Write-Output $error }
-if ($error) {
-	Read-Host -Prompt "An error occured during installation. Press any key..."
+catch 
+{ 
+Write-Output "An error occured during installation."
+Write-Output $error 
+Write-Output "Press any key..."
+$host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 }
+
