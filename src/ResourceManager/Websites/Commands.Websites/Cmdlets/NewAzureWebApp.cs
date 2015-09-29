@@ -13,23 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Management.Automation;
-using Microsoft.Azure.Management.WebSites.Models;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Commands.Utilities.CloudService;
-using Microsoft.Azure.Commands.WebApp;
-using Microsoft.Azure.Management.WebSites;
-using System.Net.Http;
-using System.Threading;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using System.Net;
-using Microsoft.Azure;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.WebApp.Utilities;
 
 
@@ -38,7 +22,7 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets
     /// <summary>
     /// this commandlet will let you create a new Azure Web app using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureWebApp")]
+    [Cmdlet(VerbsCommon.New, "AzureRmWebApp")]
     public class NewAzureWebAppCmdlet : WebAppBaseCmdlet
     {
 
@@ -52,7 +36,7 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets
         [Parameter(Position = 4, Mandatory = true, HelpMessage = "The name of the app service plan eg: Default1.")]
         public string AppServicePlan { get; set; }
        
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             WriteObject(WebsitesClient.CreateWebsite(ResourceGroupName, Name, SlotName, Location, AppServicePlan));
             

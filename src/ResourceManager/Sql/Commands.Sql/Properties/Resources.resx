@@ -117,14 +117,65 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ADGroupMoreThanOneFound" xml:space="preserve">
+    <value>More than one Active Directory group with the display name '{0}' was found. Please provide an Azure Active Directory object id to select the correct group. To get the object id use Get-AzureRmADGroup -SearchString "{0}"</value>
+  </data>
+  <data name="ADObjectNotFound" xml:space="preserve">
+    <value>Cannot find the Azure Active Directory object '{0}'. Please make sure that the user or group you are authorizing is registered in the current subscription's Azure Active directory. To get a list of Azure Active Directory groups use Get-AzureRmADGroup, or to get a list of Azure Active Directory users use Get-AzureRmADUser.</value>
+  </data>
+  <data name="ADUserMoreThanOneFound" xml:space="preserve">
+    <value>More than one Azure Active Directory user with the display name '{0}' was found. Please provide an Azure Active Directory object id to select the correct user. To get the object id use Get-AzureRmADUser -SearchString "{0}"</value>
+  </data>
+  <data name="DatabaseNameExists" xml:space="preserve">
+    <value>Database with name: '{0}' already exists in server '{1}'.</value>
+  </data>
+  <data name="DatabaseNotInServiceTierForAuditingPolicy" xml:space="preserve">
+    <value>Auditing cannot be enabled . Upgrade to Basic, Standard or Premium Service Tier to enable auditing on your database(s)</value>
+  </data>
+  <data name="DataMaskingAliasAlreadyUsedError" xml:space="preserve">
+    <value>A data masking rule for alias '{0}' is already exists</value>
+  </data>
+  <data name="DataMaskingNumberRuleIntervalDefinitionError" xml:space="preserve">
+    <value>Cannot set a lower bound which is larger than the higher bound</value>
+  </data>
+  <data name="DataMaskingRuleDoesNotExist" xml:space="preserve">
+    <value>The rule {0} does not exist</value>
+  </data>
+  <data name="DataMaskingTableAndColumnUsedError" xml:space="preserve">
+    <value>A data masking rule for the table '{0}' and column '{1}' already exists</value>
+  </data>
+  <data name="DeprecatedCmdletUsageWarning" xml:space="preserve">
+    <value>The {0} cmdlet is deprecated and will be removed in a future release.</value>
+  </data>
+  <data name="ElasticPoolNameExists" xml:space="preserve">
+    <value>Elastic Pool with name: '{0}' already exists in server '{1}'.</value>
+  </data>
   <data name="EnterPassword" xml:space="preserve">
     <value>{your_password_here}</value>
   </data>
   <data name="EnterUserId" xml:space="preserve">
     <value>{your_user_id_here}</value>
   </data>
+  <data name="InvalidADGroupNotSecurity" xml:space="preserve">
+    <value>The Active Directory Group '{0}' is not security enabled. Only Azure Active Directory Security Enabled Groups are supported.</value>
+  </data>
   <data name="InvalidEventTypeSet" xml:space="preserve">
     <value>Cannot use the '{0}' option with other event types.</value>
+  </data>
+  <data name="InvalidGraphEndpoint" xml:space="preserve">
+    <value>Please use Set-AzureRmEnvironment to set a valid GraphEndpoint for the current AzureEnvironment.</value>
+  </data>
+  <data name="InvalidRetentionTypeSet" xml:space="preserve">
+    <value>Cannot use audit table retention without specifying TableIdentifier. You may want to use '{0}'.</value>
+  </data>
+  <data name="InvalidTenantId" xml:space="preserve">
+    <value>Please set a valid tenant id in the AzureEnvironment.</value>
+  </data>
+  <data name="NewDataMaskingRuleIdAlreadyExistError" xml:space="preserve">
+    <value>A data masking rule with the id '{0}' already exist</value>
+  </data>
+  <data name="NewDataMaskingRuleIdIsNotValid" xml:space="preserve">
+    <value>Rule Id cannot contain '&lt;,&gt;,+,=,#,*,%,&amp;,\,/,?' and cannot end with a '.'</value>
   </data>
   <data name="NoStorageAccountWhenConfiguringAuditingPolicy" xml:space="preserve">
     <value>Cannot set auditing policy without a storage account name.</value>
@@ -135,71 +186,8 @@
   <data name="PhpConnectionError" xml:space="preserve">
     <value>Error connecting to SQL Server</value>
   </data>
-  <data name="sqlSampleTitle" xml:space="preserve">
-    <value>SQL Server Extension Sample Code:</value>
-  </data>
-  <data name="StorageAccountNotFound" xml:space="preserve">
-    <value>Cannot find a storage account with the name '{0}'. It either does not exist, associated with a different subscription or you do not have the appropriate credentials to access it.</value>
-  </data>
-  <data name="UseServerWithoutStorageAccount" xml:space="preserve">
-    <value>Cannot use a server's auditing policy before it is configured.</value>
-  </data>
-  <data name="RemoveDatabaseDataMaskingRuleDescription" xml:space="preserve">
-    <value>Removing firewall rule "{0}" for Microsoft Azure Sql Database "{1}".</value>
-  </data>
-  <data name="RemoveDatabaseDataMaskingRuleWarning" xml:space="preserve">
-    <value>Are you sure you want to remove the data masking rule "{0}" for Microsoft Azure Sql Database "{1}"?</value>
-  </data>
-  <data name="ShouldProcessCaption" xml:space="preserve">
-    <value>Confirm</value>
-  </data>
-  <data name="DataMaskingAliasAlreadyUsedError" xml:space="preserve">
-    <value>A data masking rule for alias '{0}' is already exists</value>
-  </data>
-  <data name="DataMaskingTableAndColumnUsedError" xml:space="preserve">
-    <value>A data masking rule for the table '{0}' and column '{1}' already exists</value>
-  </data>
-  <data name="NewDataMaskingRuleIdAlreadyExistError" xml:space="preserve">
-    <value>A data masking rule with the id '{0}' already exist</value>
-  </data>
-  <data name="SetDataMaskingRuleIdDoesNotExistError" xml:space="preserve">
-    <value>A data masking rule with the id '{0}' does not exist</value>
-  </data>
-  <data name="DataMaskingNumberRuleIntervalDefinitionError" xml:space="preserve">
-    <value>Cannot set a lower bound which is larger than the higher bound</value>
-  </data>
-  <data name="DataMaskingRuleDoesNotExist" xml:space="preserve">
-    <value>The rule {0} does not exist</value>
-  </data>
-  <data name="RemoveAzureSqlServerDescription" xml:space="preserve">
-    <value>Permanently removing Azure Sql Database Server '{0}'.</value>
-  </data>
-  <data name="RemoveAzureSqlServerWarning" xml:space="preserve">
-    <value>Are you sure you want to remove the Azure Sql Database Server '{0}'?</value>
-  </data>
-  <data name="ServerNameExists" xml:space="preserve">
-    <value>Server with name: '{0}' already exists.</value>
-  </data>
-  <data name="DatabaseNameExists" xml:space="preserve">
-    <value>Database with name: '{0}' already exists in server '{1}'.</value>
-  </data>
   <data name="RemoveAzureSqlDatabaseDescription" xml:space="preserve">
     <value>Permanently removing Azure Sql Database '{0}' on server '{1}'.</value>
-  </data>
-  <data name="RemoveAzureSqlDatabaseWarning" xml:space="preserve">
-    <value>Are you sure you want to remove the Azure Sql Database '{0}' on server '{1}'?</value>
-  </data>
-  <data name="ServerFirewallRuleNameExists" xml:space="preserve">
-    <value>Firewall Rule with name: '{0}' already exists for server '{1}'.</value>
-  </data>
-  <data name="RemoveAzureSqlServerFirewallRuleDescription" xml:space="preserve">
-    <value>Permanently removing Firewall Rule '{0}' for Azure Sql Database Server '{1}'.</value>
-  </data>
-  <data name="RemoveAzureSqlServerFirewallRuleWarning" xml:space="preserve">
-    <value>Are you sure you want to remove the Firewall Rule '{0}' for Azure Sql Database Server  '{1}'?</value>
-  </data>
-  <data name="ElasticPoolNameExists" xml:space="preserve">
-    <value>Elastic Pool with name: '{0}' already exists in server '{1}'.</value>
   </data>
   <data name="RemoveAzureSqlDatabaseElasticPoolDescription" xml:space="preserve">
     <value>Permanently removing Azure Sql Database Elastic Pool '{0}' on server '{1}'.</value>
@@ -207,28 +195,67 @@
   <data name="RemoveAzureSqlDatabaseElasticPoolWarning" xml:space="preserve">
     <value>Are you sure you want to remove the Azure Sql Database Elastic Pool '{0}' on server '{1}'?</value>
   </data>
-  <data name="InvalidRetentionTypeSet" xml:space="preserve">
-    <value>Cannot use audit table retention without specifying TableIdentifier. You may want to use '{0}'.</value>
+  <data name="RemoveAzureSqlDatabaseWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Azure Sql Database '{0}' on server '{1}'?</value>
+  </data>
+  <data name="RemoveAzureSqlServerActiveDirectoryAdministratorDescription" xml:space="preserve">
+    <value>Removing Azure Sql Server Active Directory Administrator on server '{0}'.</value>
+  </data>
+  <data name="RemoveAzureSqlServerActiveDirectoryAdministratorWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Azure Sql Server Active Directory Administrator on server '{0}'?</value>
+  </data>
+  <data name="RemoveAzureSqlServerDescription" xml:space="preserve">
+    <value>Permanently removing Azure Sql Database Server '{0}'.</value>
+  </data>
+  <data name="RemoveAzureSqlServerFirewallRuleDescription" xml:space="preserve">
+    <value>Permanently removing Firewall Rule '{0}' for Azure Sql Database Server '{1}'.</value>
+  </data>
+  <data name="RemoveAzureSqlServerFirewallRuleWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Firewall Rule '{0}' for Azure Sql Database Server  '{1}'?</value>
+  </data>
+  <data name="RemoveAzureSqlServerWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the Azure Sql Database Server '{0}'?</value>
+  </data>
+  <data name="RemoveDatabaseDataMaskingRuleDescription" xml:space="preserve">
+    <value>Removing firewall rule "{0}" for Microsoft Azure Sql Database "{1}".</value>
+  </data>
+  <data name="RemoveDatabaseDataMaskingRuleWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the data masking rule "{0}" for Microsoft Azure Sql Database "{1}"?</value>
+  </data>
+  <data name="ServerFirewallRuleNameExists" xml:space="preserve">
+    <value>Firewall Rule with name: '{0}' already exists for server '{1}'.</value>
+  </data>
+  <data name="ServerNameExists" xml:space="preserve">
+    <value>Server with name: '{0}' already exists.</value>
   </data>
   <data name="ServerUpgradeExists" xml:space="preserve">
     <value>Request for upgrade of server '{0}' already exists.</value>
   </data>
-  <data name="StopAzureSqlServerUpgradeWarning" xml:space="preserve">
-    <value>Are you sure you want to stop the upgrade for Azure Sql Database Server '{0}'?</value>
+  <data name="SetDataMaskingRuleIdDoesNotExistError" xml:space="preserve">
+    <value>A data masking rule with the id '{0}' does not exist</value>
   </data>
-  <data name="StopAzureSqlServerUpgradeDescription" xml:space="preserve">
-    <value>Stopping upgrade for Azure Sql Database Server '{0}'.</value>
+  <data name="ShouldProcessCaption" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="sqlSampleTitle" xml:space="preserve">
+    <value>SQL Server Extension Sample Code:</value>
   </data>
   <data name="StandaloneDatabaseActivityNotSupported" xml:space="preserve">
     <value>Azure Sql Database Elastic Pool name is required for this operation</value>
   </data>
-  <data name="DeprecatedCmdletUsageWarning" xml:space="preserve">
-    <value>The {0} cmdlet is deprecated and will be removed in a future release.</value>
+  <data name="StopAzureSqlServerUpgradeDescription" xml:space="preserve">
+    <value>Stopping upgrade for Azure Sql Database Server '{0}'.</value>
   </data>
-  <data name="NewDataMaskingRuleIdIsNotValid" xml:space="preserve">
-    <value>Rule Id cannot contain '&lt;,&gt;,+,=,#,*,%,&amp;,\,/,?' and cannot end with a '.'</value>
+  <data name="StopAzureSqlServerUpgradeWarning" xml:space="preserve">
+    <value>Are you sure you want to stop the upgrade for Azure Sql Database Server '{0}'?</value>
   </data>
-  <data name="DatabaseNotInServiceTierForAuditingPolicy" xml:space="preserve">
-    <value>Auditing cannot be enabled . Upgrade to Basic, Standard or Premium Service Tier to enable auditing on your database(s)</value>
+  <data name="StorageAccountNotFound" xml:space="preserve">
+    <value>Cannot find a storage account with the name '{0}'. It either does not exist, associated with a different subscription or you do not have the appropriate credentials to access it.</value>
+  </data>
+  <data name="UseServerWithoutStorageAccount" xml:space="preserve">
+    <value>Cannot use a server's auditing policy before it is configured.</value>
+  </data>
+  <data name="SetSecondaryNoOptionProvided" xml:space="preserve">
+    <value>No Set Options were provided</value>
   </data>
 </root>

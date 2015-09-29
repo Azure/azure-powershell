@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication.Properties;
 using System;
 using System.IO;
 using System.Net.Http.Headers;
+using Microsoft.Azure.Common.Authentication.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
@@ -27,9 +27,9 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         public const string AssemblyCopyright = "Copyright © Microsoft";
 
-        public const string AssemblyVersion = "0.9.4";
+        public const string AssemblyVersion = "0.9.9";
 
-        public const string AssemblyFileVersion = "0.9.4";
+        public const string AssemblyFileVersion = "0.9.9";
 
         public const string ProfileFile = "AzureProfile.json";
 

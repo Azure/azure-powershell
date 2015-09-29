@@ -35,16 +35,25 @@ namespace Microsoft.Azure.Commands.DataFactories
             return new PSDataFactory(response.DataFactory) { ResourceGroupName = resourceGroupName };
         }
 
-        public virtual List<PSDataFactory> ListDataFactories(string resourceGroupName)
+        public virtual List<PSDataFactory> ListDataFactories(DataFactoryFilterOptions filterOptions)
         {
             List<PSDataFactory> dataFactories = new List<PSDataFactory>();
 
-            var response = DataPipelineManagementClient.DataFactories.List(resourceGroupName);
+            DataFactoryListResponse response;
+            if (filterOptions.NextLink.IsNextPageLink())
+            {
+                response = DataPipelineManagementClient.DataFactories.ListNext(filterOptions.NextLink);
+            }
+            else
+            {
+                response = DataPipelineManagementClient.DataFactories.List(filterOptions.ResourceGroupName);
+            }
+            filterOptions.NextLink = response != null ? response.NextLink : null;
 
             if (response != null && response.DataFactories != null)
             {
                 response.DataFactories.ForEach(
-                    df => dataFactories.Add(new PSDataFactory(df) { ResourceGroupName = resourceGroupName }));
+                    df => dataFactories.Add(new PSDataFactory(df) { ResourceGroupName = filterOptions.ResourceGroupName }));
             }
 
             return dataFactories;
@@ -71,8 +80,7 @@ namespace Microsoft.Azure.Commands.DataFactories
             }
             else
             {
-                // ToDo: Filter list results by Tag
-                dataFactories.AddRange(ListDataFactories(filterOptions.ResourceGroupName));
+                dataFactories.AddRange(ListDataFactories(filterOptions));
             }
 
             return dataFactories;

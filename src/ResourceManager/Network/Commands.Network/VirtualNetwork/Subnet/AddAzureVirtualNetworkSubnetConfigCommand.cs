@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, "AzureVirtualNetworkSubnetConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSVirtualNetwork))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmVirtualNetworkSubnetConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSVirtualNetwork))]
     public class AddAzureVirtualNetworkSubnetConfigCommand : AzureVirtualNetworkSubnetConfigBase
     {
         [Parameter(
@@ -34,9 +34,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The virtualNetwork")]
         public PSVirtualNetwork VirtualNetwork { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
             // Verify if the subnet exists in the VirtualNetwork
             var subnet = this.VirtualNetwork.Subnets.SingleOrDefault(resource => string.Equals(resource.Name, this.Name, System.StringComparison.CurrentCultureIgnoreCase));
@@ -52,6 +52,11 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     this.NetworkSecurityGroupId = this.NetworkSecurityGroup.Id;
                 }
+
+                if (this.RouteTable != null)
+                {
+                    this.RouteTableId = this.RouteTable.Id;
+                }
             }
 
             subnet = new PSSubnet();
@@ -63,6 +68,12 @@ namespace Microsoft.Azure.Commands.Network
             {
                 subnet.NetworkSecurityGroup = new PSResourceId();
                 subnet.NetworkSecurityGroup.Id = this.NetworkSecurityGroupId;
+            }
+
+            if (!string.IsNullOrEmpty(this.RouteTableId))
+            {
+                subnet.RouteTable = new PSResourceId();
+                subnet.RouteTable.Id = this.RouteTableId;
             }
 
             this.VirtualNetwork.Subnets.Add(subnet);

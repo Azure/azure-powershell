@@ -57,10 +57,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
         {
         }
 
-        public AutomationClient(AzureProfile profile, AzureSubscription subscription)
-            : this(subscription,
-                AzureSession.ClientFactory.CreateClient<AutomationManagement.AutomationManagementClient>(profile,
-                    subscription, AzureEnvironment.Endpoint.ResourceManager))
+        public AutomationClient(AzureContext context)
+            : this(context.Subscription,
+                AzureSession.ClientFactory.CreateClient<AutomationManagement.AutomationManagementClient>(context,
+                    AzureEnvironment.Endpoint.ResourceManager))
         {
         }
 

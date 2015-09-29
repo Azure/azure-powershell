@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.DataFactories
         }
 
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             if (ParameterSetName == ByFactoryObject)
             {
@@ -59,18 +59,27 @@ namespace Microsoft.Azure.Commands.DataFactories
                 ResourceGroupName = DataFactory.ResourceGroupName;
             }
 
-            var dataSlices = DataFactoryClient.ListDataSlices(
-                ResourceGroupName, DataFactoryName, TableName, StartDateTime,
-                EndDateTime);
-
-            if (dataSlices == null || dataSlices.Count == 0)
+            DataSliceFilterOptions filterOptions = new DataSliceFilterOptions()
             {
-                WriteWarning(string.Format(
-                     CultureInfo.InvariantCulture,
-                     Resources.NoDataSliceFound));
-            }
+                ResourceGroupName = ResourceGroupName,
+                DataFactoryName = DataFactoryName,
+                DatasetName = this.DatasetName,
+                DataSliceRangeStartTime = StartDateTime,
+                DataSliceRangeEndTime = EndDateTime
+            };
 
-            WriteObject(dataSlices, true);
+            int totalDataSlices = 0;
+            do
+            {
+                var dataSlices = DataFactoryClient.ListDataSlices(filterOptions);
+                totalDataSlices += dataSlices.Count;
+                WriteObject(dataSlices, true);    
+            } while (filterOptions.NextLink.IsNextPageLink());
+
+            if (totalDataSlices == 0)
+            {
+                WriteWarning(string.Format(CultureInfo.InvariantCulture, Resources.NoDataSliceFound));
+            }
         }
     }
 }

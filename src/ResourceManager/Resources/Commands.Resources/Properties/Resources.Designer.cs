@@ -88,11 +88,47 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete the deployment &apos;{0}&apos;?.
+        /// </summary>
+        internal static string DeleteResourceGroupDeployment {
+            get {
+                return ResourceManager.GetString("DeleteResourceGroupDeployment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting the deployment ....
+        /// </summary>
+        internal static string DeleteResourceGroupDeploymentMessage {
+            get {
+                return ResourceManager.GetString("DeleteResourceGroupDeploymentMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deployment &apos;{0}&apos; doesn&apos;t exist under resource group &apos;{1}&apos;.
+        /// </summary>
+        internal static string DeploymentDoesntExist {
+            get {
+                return ResourceManager.GetString("DeploymentDoesntExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot find a deployment with name &apos;{0}&apos;..
         /// </summary>
         internal static string DeploymentWithNameNotFound {
             get {
                 return ResourceManager.GetString("DeploymentWithNameNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ExpandPrincipalGroups is only supported for a User principal.
+        /// </summary>
+        internal static string ExpandGroupsNotSupported {
+            get {
+                return ResourceManager.GetString("ExpandGroupsNotSupported", resourceCulture);
             }
         }
         
@@ -138,6 +174,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string FileAlreadyExists {
             get {
                 return ResourceManager.GetString("FileAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IncludeClassicAdministrators is only supported for a User principal.
+        /// </summary>
+        internal static string IncludeClassicAdminsNotSupported {
+            get {
+                return ResourceManager.GetString("IncludeClassicAdminsNotSupported", resourceCulture);
             }
         }
         
@@ -291,6 +336,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string OverrdingFile {
             get {
                 return ResourceManager.GetString("OverrdingFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find principal using the specified options.
+        /// </summary>
+        internal static string PrincipalNotFound {
+            get {
+                return ResourceManager.GetString("PrincipalNotFound", resourceCulture);
             }
         }
         

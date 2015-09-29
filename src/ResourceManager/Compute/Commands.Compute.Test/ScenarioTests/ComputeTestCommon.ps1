@@ -94,10 +94,22 @@ function Get-ComputeTestLocation
     return $env:AZURE_COMPUTE_TEST_LOCATION;
 }
 
+# Get Compute Default Test Location
+function Get-ComputeDefaultLocation
+{
+    $test_location = Get-ComputeTestLocation;
+    if ($test_location -eq '' -or $test_location -eq $null)
+    {
+        $test_location = 'westus';
+    }
+
+    return $test_location;
+}
+
 # Cleans the created resource group
 function Clean-ResourceGroup($rgname)
 {
-    Remove-AzureResourceGroup -Name $rgname -Force;
+    Remove-AzureRmResourceGroup -Name $rgname -Force;
 }
 
 # Get Compute Test Tag
@@ -184,7 +196,7 @@ function Get-DefaultVMSize
 {
     param([string] $location = "westus")
 
-    $vmSizes = Get-AzureVMSize -Location $location | where { $_.NumberOfCores -ge 4 -and $_.MaxDataDiskCount -ge 8 };
+    $vmSizes = Get-AzureRmVMSize -Location $location | where { $_.NumberOfCores -ge 4 -and $_.MaxDataDiskCount -ge 8 };
 
     foreach ($sz in $vmSizes)
     {
@@ -197,6 +209,36 @@ function Get-DefaultVMSize
     return $vmSizes[0].Name;
 }
 
+
+<#
+.SYNOPSIS
+Gets default RDFE Image
+#>
+function Get-DefaultRDFEImage
+{
+    param([string] $loca = "East Asia", [string] $query = '*Windows*Data*Center*')
+
+    $d = (Azure\Get-AzureRmVMImage | where {$_.ImageName -like $query -and ($_.Location -like "*;$loca;*" -or $_.Location -like "$loca;*" -or $_.Location -like "*;$loca" -or $_.Location -eq "$loca")});
+
+    if ($d -eq $null)
+    {
+        return $null;
+    }
+    else
+    {
+        return $d[-1].ImageName;
+    }
+}
+
+<#
+.SYNOPSIS
+Gets default storage type string
+#>
+function Get-DefaultStorageType
+{
+    return 'Standard_GRS';
+}
+
 <#
 .SYNOPSIS
 Gets default CRP Image
@@ -205,7 +247,7 @@ function Get-DefaultCRPImage
 {
     param([string] $loc = "westus", [string] $query = '*Microsoft*Windows*Server')
 
-    $result = (Get-AzureVMImagePublisher -Location $loc) | select -ExpandProperty PublisherName | where { $_ -like $query };
+    $result = (Get-AzureRmVMImagePublisher -Location $loc) | select -ExpandProperty PublisherName | where { $_ -like $query };
     if ($result.Count -eq 1)
     {
         $defaultPublisher = $result;
@@ -215,7 +257,7 @@ function Get-DefaultCRPImage
         $defaultPublisher = $result[0];
     }
 
-    $result = (Get-AzureVMImageOffer -Location $loc -PublisherName $defaultPublisher) | select -ExpandProperty Offer | where { $_ -like '*Windows*' };
+    $result = (Get-AzureRmVMImageOffer -Location $loc -PublisherName $defaultPublisher) | select -ExpandProperty Offer | where { $_ -like '*Windows*' };
     if ($result.Count -eq 1)
     {
         $defaultOffer = $result;
@@ -225,7 +267,7 @@ function Get-DefaultCRPImage
         $defaultOffer = $result[0];
     }
 
-    $result = (Get-AzureVMImageSku -Location $loc -PublisherName $defaultPublisher -Offer $defaultOffer) | select -ExpandProperty Skus;
+    $result = (Get-AzureRmVMImageSku -Location $loc -PublisherName $defaultPublisher -Offer $defaultOffer) | select -ExpandProperty Skus;
     if ($result.Count -eq 1)
     {
         $defaultSku = $result;
@@ -235,7 +277,7 @@ function Get-DefaultCRPImage
         $defaultSku = $result[0];
     }
 
-    $result = (Get-AzureVMImage -Location $loc -Offer $defaultOffer -PublisherName $defaultPublisher -Skus $defaultSku) | select -ExpandProperty Version;
+    $result = (Get-AzureRmVMImage -Location $loc -Offer $defaultOffer -PublisherName $defaultPublisher -Skus $defaultSku) | select -ExpandProperty Version;
     if ($result.Count -eq 1)
     {
         $defaultVersion = $result;
@@ -245,7 +287,7 @@ function Get-DefaultCRPImage
         $defaultVersion = $result[0];
     }
     
-    $vmimg = Get-AzureVMImage -Location $loc -Offer $defaultOffer -PublisherName $defaultPublisher -Skus $defaultSku -Version $defaultVersion;
+    $vmimg = Get-AzureRmVMImage -Location $loc -Offer $defaultOffer -PublisherName $defaultPublisher -Skus $defaultSku -Version $defaultVersion;
 
     return $vmimg;
 }
@@ -284,7 +326,7 @@ function Get-MarketplaceImage
 {
     param([string] $location = "westus", [string] $pubFilter = '*', [string] $offerFilter = '*')
 
-    $imgs = Get-AzureVMImagePublisher -Location $location | where { $_.PublisherName -like $pubFilter } | Get-AzureVMImageOffer | where { $_.Offer -like $offerFilter } | Get-AzureVMImageSku | Get-AzureVMImage | Get-AzureVMImageDetail | where { $_.PurchasePlan -ne $null };
+    $imgs = Get-AzureRmVMImagePublisher -Location $location | where { $_.PublisherName -like $pubFilter } | Get-AzureRmVMImageOffer | where { $_.Offer -like $offerFilter } | Get-AzureRmVMImageSku | Get-AzureRmVMImage | Get-AzureRmVMImage | where { $_.PurchasePlan -ne $null };
 
     return $imgs;
 }
@@ -301,7 +343,7 @@ function Get-DefaultVMConfig
     $vmsize = Get-DefaultVMSize $location;
     $vmname = Get-RandomItemName 'crptestps';
 
-    $vm = New-AzureVMConfig -VMName $vmname -VMSize $vmsize;
+    $vm = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
 
     return $vm;
 }
@@ -332,4 +374,95 @@ function Assert-OutputContains
         Assert-True { $output.Contains($str) }
         $st = Write-Verbose "Found.";
     }
+}
+
+
+# Create a SAS Uri
+function Get-SasUri
+{
+    param ([string] $storageAccount, [string] $storageKey, [string] $container, [string] $file, [TimeSpan] $duration, [Microsoft.WindowsAzure.Storage.Blob.SharedAccessBlobPermissions] $type)
+
+	$uri = [string]::Format("https://{0}.blob.core.windows.net/{1}/{2}", $storageAccount, $container, $file);
+
+	$destUri = New-Object -TypeName System.Uri($uri);
+	$cred = New-Object -TypeName Microsoft.WindowsAzure.Storage.Auth.StorageCredentials($storageAccount, $storageKey);
+	$destBlob = New-Object -TypeName Microsoft.WindowsAzure.Storage.Blob.CloudPageBlob($destUri, $cred);
+	$policy = New-Object Microsoft.WindowsAzure.Storage.Blob.SharedAccessBlobPolicy;
+	$policy.Permissions = $type;
+	$policy.SharedAccessExpiryTime = [DateTime]::UtcNow.Add($duration);
+	$uri += $destBlob.GetSharedAccessSignature($policy);
+
+	return $uri;
+}
+
+# Get a Location according to resource provider.
+function Get-ResourceProviderLocation
+{
+    param ([string] $name, [string] $default = "westus", [bool] $canonical = $true)
+
+	$loc = Get-AzureRmLocation | where { $_.Name.Equals($name) };
+
+	if ($loc -eq $null)
+	{
+	    throw 'There is no available locations with given parameters';
+	}
+
+	if ($loc.LocationsString.ToLowerInvariant().Replace(" ", "").Contains($default.ToLowerInvariant().Replace(" ","")))
+	{
+	    return $default;
+	}
+
+	if ($canonical)
+	{
+	    return $loc.Locations[0].ToLowerInvariant().Replace(" ", "");
+	}
+	else
+	{
+	    return $loc.Locations[0];
+    }
+}
+
+function Get-ComputeVMLocation
+{
+     Get-ResourceProviderLocation "Microsoft.Compute/virtualMachines";
+}
+
+function Get-ComputeAvailabilitySetLocation
+{
+     Get-ResourceProviderLocation "Microsoft.Compute/availabilitySets";
+}
+
+function Get-ComputeVMExtensionLocation
+{
+     Get-ResourceProviderLocation "Microsoft.Compute/virtualMachines/extensions";
+}
+
+function Get-ComputeVMDiagnosticSettingLocation
+{
+     Get-ResourceProviderLocation "Microsoft.Compute/virtualMachines/diagnosticSettings";
+}
+
+function Get-ComputeVMMetricDefinitionLocation
+{
+     Get-ResourceProviderLocation "Microsoft.Compute/virtualMachines/metricDefinitions";
+}
+
+function Get-ComputeOperationLocation
+{
+     Get-ResourceProviderLocation "Microsoft.Compute/locations/operations";
+}
+
+function Get-ComputeVMSizeLocation
+{
+     Get-ResourceProviderLocation "Microsoft.Compute/locations/vmSizes";
+}
+
+function Get-ComputeUsageLocation
+{
+     Get-ResourceProviderLocation "Microsoft.Compute/locations/usages";
+}
+
+function Get-ComputePublisherLocation
+{
+     Get-ResourceProviderLocation "Microsoft.Compute/locations/publishers";
 }

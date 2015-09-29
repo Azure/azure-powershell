@@ -58,11 +58,21 @@ namespace Microsoft.Azure.Commands.DataFactories
             };
         }
 
-        public virtual List<PSLinkedService> ListLinkedServices(string resourceGroupName, string dataFactoryName)
+        public virtual List<PSLinkedService> ListLinkedServices(LinkedServiceFilterOptions filterOptions)
         {
             List<PSLinkedService> linkedServices = new List<PSLinkedService>();
 
-            var response = DataPipelineManagementClient.LinkedServices.List(resourceGroupName, dataFactoryName);
+            LinkedServiceListResponse response;
+            if (filterOptions.NextLink.IsNextPageLink())
+            {
+                response = DataPipelineManagementClient.LinkedServices.ListNext(filterOptions.NextLink);
+            }
+            else
+            {
+                response = DataPipelineManagementClient.LinkedServices.List(filterOptions.ResourceGroupName,
+                    filterOptions.DataFactoryName);
+            }
+            filterOptions.NextLink = response != null ? response.NextLink : null;
 
             if (response != null && response.LinkedServices != null)
             {
@@ -71,8 +81,8 @@ namespace Microsoft.Azure.Commands.DataFactories
                     linkedServices.Add(
                         new PSLinkedService(linkedService)
                         {
-                            ResourceGroupName = resourceGroupName,
-                            DataFactoryName = dataFactoryName
+                            ResourceGroupName = filterOptions.ResourceGroupName,
+                            DataFactoryName = filterOptions.DataFactoryName
                         });
                 }
             }
@@ -109,8 +119,7 @@ namespace Microsoft.Azure.Commands.DataFactories
             }
             else
             {
-                linkedServices.AddRange(ListLinkedServices(filterOptions.ResourceGroupName,
-                    filterOptions.DataFactoryName));
+                linkedServices.AddRange(ListLinkedServices(filterOptions));
             }
 
             return linkedServices;

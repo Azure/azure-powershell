@@ -21,9 +21,9 @@ using Microsoft.Azure.Commands.Sql.ServerUpgrade.Model;
 namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
 {
     /// <summary>
-    /// Defines the Get-AzureSqlDatabaseServer cmdlet
+    /// Defines the Get-AzureRmSqlDatabaseServer cmdlet
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Stop, "AzureSqlServerUpgrade",
+    [Cmdlet(VerbsLifecycle.Stop, "AzureRmSqlServerUpgrade",
         SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.High)]
     public class StopAzureSqlServerUpgrade : AzureSqlServerUpgradeCmdletBase<AzureSqlServerUpgradeModel>
@@ -63,9 +63,9 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
         protected override IEnumerable<AzureSqlServerUpgradeModel> PersistChanges(IEnumerable<AzureSqlServerUpgradeModel> entity)
         {
             if (!Force.IsPresent && !ShouldProcess(
-                string.Format(CultureInfo.InvariantCulture, Resources.StopAzureSqlServerUpgradeDescription, this.ServerName),
-                string.Format(CultureInfo.InvariantCulture, Resources.StopAzureSqlServerUpgradeWarning, this.ServerName),
-                Resources.ShouldProcessCaption))
+                string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.StopAzureSqlServerUpgradeDescription, this.ServerName),
+                string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.StopAzureSqlServerUpgradeWarning, this.ServerName),
+                Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
             {
                 return null;
             }

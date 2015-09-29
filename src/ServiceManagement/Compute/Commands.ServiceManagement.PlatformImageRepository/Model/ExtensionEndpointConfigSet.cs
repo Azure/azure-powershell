@@ -19,6 +19,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.PlatformImageReposit
     public class ExtensionEndpointConfigSet
     {
         public List<ExtensionInputEndpoint> InputEndpoints { get; set; }
+        public List<ExtensionInstanceInputEndpoint> InstanceInputEndpoints { get; set; }
         public List<ExtensionInternalEndpoint> InternalEndpoints { get; set; }
     }
 }

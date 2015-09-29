@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
     /// <summary>
     /// Cmdlet to create a new Azure Sql ElasticPool
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureSqlElasticPool",
+    [Cmdlet(VerbsCommon.New, "AzureRmSqlElasticPool",
         ConfirmImpact = ConfirmImpact.Low)]
     public class NewAzureSqlElasticPool : AzureSqlElasticPoolCmdletBase
     {
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The storage limit for the Sql Azure Elastic Pool in MB.")]
         [ValidateNotNullOrEmpty]
-        public long StorageMB { get; set; }
+        public int StorageMB { get; set; }
 
         /// <summary>
         /// Gets or sets the minimum DTU all Sql Azure Databases are guaranteed.
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 
             // The database already exists
             throw new PSArgumentException(
-                string.Format(Resources.ElasticPoolNameExists, this.ElasticPoolName, this.ServerName),
+                string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.ElasticPoolNameExists, this.ElasticPoolName, this.ServerName),
                 "ElasticPoolName");
         }
 
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
                     DatabaseDtuMin = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMin") ? (int?)DatabaseDtuMin : null,
                     Dtu = MyInvocation.BoundParameters.ContainsKey("Dtu") ? (int?)Dtu : null,
                     Edition = MyInvocation.BoundParameters.ContainsKey("Edition") ? (DatabaseEdition?)Edition : null,
-                    StorageMB = MyInvocation.BoundParameters.ContainsKey("StorageMB") ? (long?)StorageMB : null,
+                    StorageMB = MyInvocation.BoundParameters.ContainsKey("StorageMB") ? (int?)StorageMB : null,
                 });
             return newEntity;
         }

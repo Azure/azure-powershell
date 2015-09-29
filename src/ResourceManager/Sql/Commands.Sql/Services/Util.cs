@@ -15,8 +15,8 @@
 using System;
 using System.Globalization;
 using System.Linq;
-using Microsoft.Azure.Commands.Sql.Security.Services;
 using Microsoft.Azure.Commands.Sql.Properties;
+using Microsoft.Azure.Commands.Sql.Common;
 
 namespace Microsoft.Azure.Commands.Sql.Services
 {
@@ -78,11 +78,11 @@ namespace Microsoft.Azure.Commands.Sql.Services
             {
                 if (eventTypes.Contains(SecurityConstants.All))
                 {
-                    throw new Exception(string.Format(Resources.InvalidEventTypeSet, SecurityConstants.All));
+                    throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidEventTypeSet, SecurityConstants.All));
                 }
                 if (eventTypes.Contains(SecurityConstants.None))
                 {
-                    throw new Exception(string.Format(Resources.InvalidEventTypeSet, SecurityConstants.None));
+                    throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.InvalidEventTypeSet, SecurityConstants.None));
                 }
             }
             return eventTypes;

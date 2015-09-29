@@ -3,7 +3,7 @@
 <helpItems xmlns="http://msh" schema="maml">
     <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
         <command:details>
-            <command:name>Get-AzureDataFactory</command:name>
+            <command:name>Get-AzureRmDataFactory</command:name>
             <maml:description>
                 <maml:para>Gets information about Data Factory.</maml:para>
             </maml:description>
@@ -15,12 +15,12 @@
             <dev:version />
         </command:details>
         <maml:description>
-            <maml:para>The Get-AzureDataFactory cmdlet gets information about data factories in an Azure resource group. If you specify the name of a data factory, this cmdlet gets information about that data factory. If you do not specify a name, this cmdlet gets information about all of the data factories in an Azure resource group.</maml:para>
+            <maml:para>The Get-AzureRmDataFactory cmdlet gets information about data factories in an Azure resource group. If you specify the name of a data factory, this cmdlet gets information about that data factory. If you do not specify a name, this cmdlet gets information about all of the data factories in an Azure resource group.</maml:para>
             <maml:para>You must be in AzureResourceManager mode to run Azure Data Factory cmdlets. To switch to AzureResourceManager mode, type Switch-AzureMode AzureResourceManager.</maml:para>
         </maml:description>
         <command:syntax>
             <command:syntaxItem>
-                <maml:name>Get-AzureDataFactory</maml:name>
+                <maml:name>Get-AzureRmDataFactory</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>ResourceGroupName</maml:name>
                     <maml:description>
@@ -96,7 +96,7 @@
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; Get-AzureDataFactory -ResourceGroupName "ADF"
+                    PS C:\&gt; Get-AzureRmDataFactory -ResourceGroupName "ADF"
                     DataFactoryName   : WikiADF
                     ResourceGroupName : ADF
                     Location          : WestUS
@@ -124,7 +124,7 @@
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; $DataFactory = Get-AzureDataFactory -ResourceGroupName "ADF" -Name "WikiADF"
+                    PS C:\&gt; $DataFactory = Get-AzureRmDataFactory -ResourceGroupName "ADF" -Name "WikiADF"
                     DataFactoryName   : WikiADF
                     ResourceGroupName : ADF
                     Location          : westus
@@ -143,18 +143,18 @@
         </command:examples>
         <maml:relatedLinks>
             <maml:navigationLink>
-                <maml:linkText>New-AzureDataFactory</maml:linkText>
+                <maml:linkText>New-AzureRmDataFactory</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Remove-AzureDataFactory</maml:linkText>
+                <maml:linkText>Remove-AzureRmDataFactory</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
         </maml:relatedLinks>
     </command:command>
     <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
         <command:details>
-            <command:name>Get-AzureDataFactoryGateway</command:name>
+            <command:name>Get-AzureRmDataFactoryGateway</command:name>
             <maml:description>
                 <maml:para>Gets information about logical gateways in Data Factory.</maml:para>
             </maml:description>
@@ -166,13 +166,13 @@
             <dev:version />
         </command:details>
         <maml:description>
-            <maml:para>The Get-AzureDataFactoryGateway cmdlet gets information about logical gateways in Azure Data Factory. If you specify the name of a gateway, this cmdlet gets information about that gateway. If you do not specify a name, this cmdlet gets information about all gateways for a data factory.</maml:para>
+            <maml:para>The Get-AzureRmDataFactoryGateway cmdlet gets information about logical gateways in Azure Data Factory. If you specify the name of a gateway, this cmdlet gets information about that gateway. If you do not specify a name, this cmdlet gets information about all gateways for a data factory.</maml:para>
             <maml:para>If you want to add an on-premises MicrosoftSQL Server as a linked service to a data factory, you must install a gateway on your on-premises computer.</maml:para>
             <maml:para>You must be in AzureResourceManager mode to run Azure Data Factory cmdlets. To switch to AzureResourceManager mode, type Switch-AzureMode AzureResourceManager.</maml:para>
         </maml:description>
         <command:syntax>
             <command:syntaxItem>
-                <maml:name>Get-AzureDataFactoryGateway</maml:name>
+                <maml:name>Get-AzureRmDataFactoryGateway</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>ResourceGroupName</maml:name>
                     <maml:description>
@@ -196,7 +196,7 @@
                 </command:parameter>
             </command:syntaxItem>
             <command:syntaxItem>
-                <maml:name>Get-AzureDataFactoryGateway</maml:name>
+                <maml:name>Get-AzureRmDataFactoryGateway</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>DataFactory</maml:name>
                     <maml:description>
@@ -296,7 +296,7 @@
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; Get-AzureDataFactoryGateway -ResourceGroupName "ADF" -DataFactoryName "WikiADF"
+                    PS C:\&gt; Get-AzureRmDataFactoryGateway -ResourceGroupName "ADF" -DataFactoryName "WikiADF"
                     Name            : gateway1
                     Description     :
                     Version         : 1.3.5338.1
@@ -332,7 +332,7 @@
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; Get-AzureDataFactoryGateway -ResourceGroupName "ADF" -Name "Gateway01" -DataFactoryName "WikiADF"
+                    PS C:\&gt; Get-AzureRmDataFactoryGateway -ResourceGroupName "ADF" -Name "Gateway01" -DataFactoryName "WikiADF"
                     Name            : Gateway01
                     Description     :
                     Version         : 1.3.5338.1
@@ -355,22 +355,22 @@
         </command:examples>
         <maml:relatedLinks>
             <maml:navigationLink>
-                <maml:linkText>New-AzureDataFactoryGateway</maml:linkText>
+                <maml:linkText>New-AzureRmDataFactoryGateway</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Remove-AzureDataFactoryGateway</maml:linkText>
+                <maml:linkText>Remove-AzureRmDataFactoryGateway</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Set-AzureDataFactoryGateway</maml:linkText>
+                <maml:linkText>Set-AzureRmDataFactoryGateway</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
         </maml:relatedLinks>
     </command:command>
     <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
         <command:details>
-            <command:name>Get-AzureDataFactoryHub</command:name>
+            <command:name>Get-AzureRmDataFactoryHub</command:name>
             <maml:description>
                 <maml:para>Gets information about hubs in Data Factory.</maml:para>
             </maml:description>
@@ -382,12 +382,12 @@
             <dev:version />
         </command:details>
         <maml:description>
-            <maml:para>The Get-AzureDataFactoryHub cmdlet gets information about hubs in Azure Data Factory. If you specify the name of a hub, this cmdlet gets information about that hub. If you do not specify a name, this cmdlet gets information about all of the hubs in a data factory.</maml:para>
+            <maml:para>The Get-AzureRmDataFactoryHub cmdlet gets information about hubs in Azure Data Factory. If you specify the name of a hub, this cmdlet gets information about that hub. If you do not specify a name, this cmdlet gets information about all of the hubs in a data factory.</maml:para>
             <maml:para>You must be in AzureResourceManager mode to run Azure Data Factory cmdlets. To switch to AzureResourceManager mode, type Switch-AzureMode AzureResourceManager.</maml:para>
         </maml:description>
         <command:syntax>
             <command:syntaxItem>
-                <maml:name>Get-AzureDataFactoryHub</maml:name>
+                <maml:name>Get-AzureRmDataFactoryHub</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>ResourceGroupName</maml:name>
                     <maml:description>
@@ -411,7 +411,7 @@
                 </command:parameter>
             </command:syntaxItem>
             <command:syntaxItem>
-                <maml:name>Get-AzureDataFactoryHub</maml:name>
+                <maml:name>Get-AzureRmDataFactoryHub</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>DataFactory</maml:name>
                     <maml:description>
@@ -515,7 +515,7 @@
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt;Get-AzureDataFactoryHub -ResourceGroupName "ADFResourceGroup" -DataFactoryName "ADFDataFactory"
+                    PS C:\&gt;Get-AzureRmDataFactoryHub -ResourceGroupName "ADFResourceGroup" -DataFactoryName "ADFDataFactory"
 
                 </dev:code>
                 <dev:remarks>
@@ -533,7 +533,7 @@
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt;Get-AzureDataFactoryHub -ResourceGroupName "ADFResourceGroup" -DataFactoryName "ADFDataFactory" -Name "MyDataHub"
+                    PS C:\&gt;Get-AzureRmDataFactoryHub -ResourceGroupName "ADFResourceGroup" -DataFactoryName "ADFDataFactory" -Name "MyDataHub"
 
                 </dev:code>
                 <dev:remarks>
@@ -553,18 +553,18 @@
                 <maml:uri></maml:uri>
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>New-AzureDataFactoryHub</maml:linkText>
+                <maml:linkText>New-AzureRmDataFactoryHub</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Remove-AzureDataFactoryHub</maml:linkText>
+                <maml:linkText>Remove-AzureRmDataFactoryHub</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
         </maml:relatedLinks>
     </command:command>
     <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
         <command:details>
-            <command:name>Get-AzureDataFactoryLinkedService</command:name>
+            <command:name>Get-AzureRmDataFactoryLinkedService</command:name>
             <maml:description>
                 <maml:para>Gets information about linked services in Data Factory.</maml:para>
             </maml:description>
@@ -576,12 +576,12 @@
             <dev:version />
         </command:details>
         <maml:description>
-            <maml:para>The Get-AzureDataFactoryLinkedService cmdlet gets information about linked services in Azure Data Factory. If you specify the name of a linked service, this cmdlet gets information about that linked service. If you do not specify a name, this cmdlet gets information about all the linked services in the data factory.</maml:para>
+            <maml:para>The Get-AzureRmDataFactoryLinkedService cmdlet gets information about linked services in Azure Data Factory. If you specify the name of a linked service, this cmdlet gets information about that linked service. If you do not specify a name, this cmdlet gets information about all the linked services in the data factory.</maml:para>
             <maml:para>You must be in AzureResourceManager mode to run Azure Data Factory cmdlets. To switch to AzureResourceManager mode, type Switch-AzureMode AzureResourceManager.</maml:para>
         </maml:description>
         <command:syntax>
             <command:syntaxItem>
-                <maml:name>Get-AzureDataFactoryLinkedService</maml:name>
+                <maml:name>Get-AzureRmDataFactoryLinkedService</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>ResourceGroupName</maml:name>
                     <maml:description>
@@ -605,7 +605,7 @@
                 </command:parameter>
             </command:syntaxItem>
             <command:syntaxItem>
-                <maml:name>Get-AzureDataFactoryLinkedService</maml:name>
+                <maml:name>Get-AzureRmDataFactoryLinkedService</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>DataFactory</maml:name>
                     <maml:description>
@@ -705,10 +705,10 @@
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; Get-AzureDataFactoryLinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" | Format-List
+                    PS C:\&gt; Get-AzureRmDataFactoryLinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" | Format-List
                 </dev:code>
                 <dev:code>
-                    PS C:\&gt;$df = Get-AzureDataFactory -ResourceGroupName ADF -Name WikiADFGet-AzureDataFactoryLinkedService -DataFactory $df | format-list
+                    PS C:\&gt;$df = Get-AzureRmDataFactory -ResourceGroupName ADF -Name WikiADFGet-AzureRmDataFactoryLinkedService -DataFactory $df | format-list
                     LinkedServiceName : HDILinkedService
                     ResourceGroupName : ADF
                     DataFactoryName   : WikiADF
@@ -750,7 +750,7 @@
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; Get-AzureDataFactoryLinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "HDILinkedService"
+                    PS C:\&gt; Get-AzureRmDataFactoryLinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "HDILinkedService"
                     LinkedServiceName   ResourceGroupName     DataFactoryName              Properties
                     -----------------   -----------------     ---------------              ----------
                     HDILinkedService    ADF                   WikiADF                      Microsoft.DataFactories.HDInsightBYOCAsset
@@ -770,11 +770,11 @@
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt;$DataFactory = Get-AzureDataFactory -ResourceGroupName "ADF" -Name "ContosoFactory"PS C:\&gt; Get-AzureDataFactoryLinkedService -DataFactory $DataFactory | Format-Table -Property LinkedServiceName, DataFactoryName, ResourceGroupName
+                    PS C:\&gt;$DataFactory = Get-AzureRmDataFactory -ResourceGroupName "ADF" -Name "ContosoFactory"PS C:\&gt; Get-AzureRmDataFactoryLinkedService -DataFactory $DataFactory | Format-Table -Property LinkedServiceName, DataFactoryName, ResourceGroupName
                 </dev:code>
                 <dev:remarks>
-                    <maml:para>The first command uses the Get-AzureDataFactory cmdlet to get the data factory named ContosoFactory, and then stores it in the $DataFactory variable. </maml:para>
-                    <maml:para>The second command gets information about the linked service for the data factory stored in $DataFactory, and then passes that information to the Format-Table cmdlet by using the pipeline operator. The Format-Table cmdlet formats the output as a table with the specified properties as table columns.</maml:para>
+                    <maml:para>The first command uses the Get-AzureRmDataFactory cmdlet to get the data factory named ContosoFactory, and then stores it in the $DataFactory variable. </maml:para>
+                    <maml:para>The second command gets information about the linked service for the data factory stored in $DataFactory, and then passes that information to the Format-Table cmdlet by using the pipeline operator. The Format-Table cmdlet formats the output as a dataset with the specified properties as dataset columns.</maml:para>
                 </dev:remarks>
                 <command:commandLines>
                     <command:commandLine>
@@ -785,18 +785,18 @@
         </command:examples>
         <maml:relatedLinks>
             <maml:navigationLink>
-                <maml:linkText>New-AzureDataFactoryLinkedService</maml:linkText>
+                <maml:linkText>New-AzureRmDataFactoryLinkedService</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Remove-AzureDataFactoryLinkedService</maml:linkText>
+                <maml:linkText>Remove-AzureRmDataFactoryLinkedService</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
         </maml:relatedLinks>
     </command:command>
     <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
         <command:details>
-            <command:name>Get-AzureDataFactoryPipeline</command:name>
+            <command:name>Get-AzureRmDataFactoryPipeline</command:name>
             <maml:description>
                 <maml:para>Gets information about pipelines in Data Factory.</maml:para>
             </maml:description>
@@ -808,12 +808,12 @@
             <dev:version />
         </command:details>
         <maml:description>
-            <maml:para>The Get-AzureDataFactoryPipeline cmdlet gets information about pipelines in Azure Data Factory. If you specify the name of a pipeline, this cmdlet gets information about that pipeline. If you do not specify a name, this cmdlet gets information about all the pipelines in the data factory.</maml:para>
+            <maml:para>The Get-AzureRmDataFactoryPipeline cmdlet gets information about pipelines in Azure Data Factory. If you specify the name of a pipeline, this cmdlet gets information about that pipeline. If you do not specify a name, this cmdlet gets information about all the pipelines in the data factory.</maml:para>
             <maml:para>You must be in AzureResourceManager mode to run Azure Data Factory cmdlets. To switch to AzureResourceManager mode, type Switch-AzureMode AzureResourceManager.</maml:para>
         </maml:description>
         <command:syntax>
             <command:syntaxItem>
-                <maml:name>Get-AzureDataFactoryPipeline</maml:name>
+                <maml:name>Get-AzureRmDataFactoryPipeline</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>ResourceGroupName</maml:name>
                     <maml:description>
@@ -837,7 +837,7 @@
                 </command:parameter>
             </command:syntaxItem>
             <command:syntaxItem>
-                <maml:name>Get-AzureDataFactoryPipeline</maml:name>
+                <maml:name>Get-AzureRmDataFactoryPipeline</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>DataFactory</maml:name>
                     <maml:description>
@@ -937,10 +937,10 @@
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; Get-AzureDataFactoryPipeline -ResourceGroupName "ADF" -DataFactoryName "WikiADF"
+                    PS C:\&gt; Get-AzureRmDataFactoryPipeline -ResourceGroupName "ADF" -DataFactoryName "WikiADF"
                 </dev:code>
                 <dev:code>
-                    PS C:\&gt;$df = Get-AzureDataFactory -ResourceGroupName ADF -Name WikiADFGet-AzureDataFactoryPipeline -DataFactory $df
+                    PS C:\&gt;$df = Get-AzureRmDataFactory -ResourceGroupName ADF -Name WikiADFGet-AzureRmDataFactoryPipeline -DataFactory $df
                     PipelineName        ResourceGroupName      DataFactoryName             Properties
                     ------------        -----------------      ---------------             ----------
                     DPWikisample        ADF                    WikiADF                     Microsoft.DataFactories.PipelineProperties
@@ -961,7 +961,7 @@
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; Get-AzureDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF" | Format-List
+                    PS C:\&gt; Get-AzureRmDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF" | Format-List
                     PipelineName      : DPWikisample
                     ResourceGroupName : ADF
                     DataFactoryName   : WikiADF
@@ -982,7 +982,7 @@
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; (Get-AzureDataFactoryPipeline -ResourceGroupName "ADF" -Name DPWikisample -DataFactoryName "WikiADF").Properties
+                    PS C:\&gt; (Get-AzureRmDataFactoryPipeline -ResourceGroupName "ADF" -Name DPWikisample -DataFactoryName "WikiADF").Properties
                     Activities  : {WikiHiveActivity, BlobToSqlCopyActivity}
                     Description : DP Wikipedia Sample Pipelines
                     End         : 6/6/2014 8:00:00 AM
@@ -1005,7 +1005,7 @@
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; (Get-AzureDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF").Properties.Activities
+                    PS C:\&gt; (Get-AzureRmDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF").Properties.Activities
                     Transformation    : Microsoft.DataFactories.HDInsightActivityProperties
                     Description       :
                     Inputs            : {DAWikipediaClickEvents}
@@ -1037,7 +1037,7 @@
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; (Get-AzureDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF").Properties.RuntimeInfo
+                    PS C:\&gt; (Get-AzureRmDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF").Properties.RuntimeInfo
                     DeploymentTime
                     --------------
                     6/5/2014 10:36:46 PM
@@ -1057,7 +1057,7 @@
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; (Get-AzureDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF11").Properties.Activities[0].Inputs | Format-List
+                    PS C:\&gt; (Get-AzureRmDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF11").Properties.Activities[0].Inputs | Format-List
                     EndTime   :
                     Length    :
                     Name      : DAWikipediaClickEvents
@@ -1075,32 +1075,32 @@
         </command:examples>
         <maml:relatedLinks>
             <maml:navigationLink>
-                <maml:linkText>New-AzureDataFactoryPipeline</maml:linkText>
+                <maml:linkText>New-AzureRmDataFactoryPipeline</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Remove-AzureDataFactoryPipeline</maml:linkText>
+                <maml:linkText>Remove-AzureRmDataFactoryPipeline</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Resume-AzureDataFactoryPipeline</maml:linkText>
+                <maml:linkText>Resume-AzureRmDataFactoryPipeline</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Set-AzureDataFactoryPipelineActivePeriod</maml:linkText>
+                <maml:linkText>Set-AzureRmDataFactoryPipelineActivePeriod</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Suspend-AzureDataFactoryPipeline</maml:linkText>
+                <maml:linkText>Suspend-AzureRmDataFactoryPipeline</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
         </maml:relatedLinks>
     </command:command>
     <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
         <command:details>
-            <command:name>Get-AzureDataFactoryRun</command:name>
+            <command:name>Get-AzureRmDataFactoryRun</command:name>
             <maml:description>
-                <maml:para>Gets runs for a data slice of a table in Data Factory.</maml:para>
+                <maml:para>Gets runs for a data slice of a dataset in Data Factory.</maml:para>
             </maml:description>
             <maml:copyright>
                 <maml:para />
@@ -1110,13 +1110,13 @@
             <dev:version />
         </command:details>
         <maml:description>
-            <maml:para>The Get-AzureDataFactoryRun cmdlet gets the runs for a data slice of a table in Azure Data Factory. A table in a data factory is composed of slices over the time axis. The width of a slice is determined by the schedule, either hourly or daily. A run is a unit of processing for a slice. There could be one or more runs for a slice in case of retries or in case you rerun your slice due to failures. A slice is identified by its start time. To obtain the start time of a slice, use the Get-AzureDataFactorySlice cmdlet. </maml:para>
+            <maml:para>The Get-AzureRmDataFactoryRun cmdlet gets the runs for a data slice of a dataset in Azure Data Factory. A dataset in a data factory is composed of slices over the time axis. The width of a slice is determined by the schedule, either hourly or daily. A run is a unit of processing for a slice. There could be one or more runs for a slice in case of retries or in case you rerun your slice due to failures. A slice is identified by its start time. To obtain the start time of a slice, use the Get-AzureRmDataFactorySlice cmdlet. </maml:para>
             <maml:para>
                 For example, to get a run for the following slice, use the start time 2015-04-02T20:00:00.
 
                 ResourceGroupName  : ADF
                 DataFactoryName : SPDataFactory0924
-                TableName : MarketingCampaignEffectivenessBlobTable
+                DatasetName : MarketingCampaignEffectivenessBlobDataset
                 Start : 5/2/2014 8:00:00 PM
                 End : 5/3/2014 8:00:00 PM
                 RetryCount : 0
@@ -1127,7 +1127,7 @@
         </maml:description>
         <command:syntax>
             <command:syntaxItem>
-                <maml:name>Get-AzureDataFactoryRun</maml:name>
+                <maml:name>Get-AzureRmDataFactoryRun</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>ResourceGroupName</maml:name>
                     <maml:description>
@@ -1143,9 +1143,9 @@
                     <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 </command:parameter>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
-                    <maml:name>TableName</maml:name>
+                    <maml:name>DatasetName</maml:name>
                     <maml:description>
-                        <maml:para>Specifies the name of the table. This cmdlet gets runs for slices that belong to the table that this parameter specifies.</maml:para>
+                        <maml:para>Specifies the name of the dataset. This cmdlet gets runs for slices that belong to the dataset that this parameter specifies.</maml:para>
                     </maml:description>
                     <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 </command:parameter>
@@ -1161,7 +1161,7 @@
                 </command:parameter>
             </command:syntaxItem>
             <command:syntaxItem>
-                <maml:name>Get-AzureDataFactoryRun</maml:name>
+                <maml:name>Get-AzureRmDataFactoryRun</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>DataFactory</maml:name>
                     <maml:description>
@@ -1170,9 +1170,9 @@
                     <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
                 </command:parameter>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
-                    <maml:name>TableName</maml:name>
+                    <maml:name>DatasetName</maml:name>
                     <maml:description>
-                        <maml:para>Specifies the name of the table. This cmdlet gets runs for slices that belong to the table that this parameter specifies.</maml:para>
+                        <maml:para>Specifies the name of the dataset. This cmdlet gets runs for slices that belong to the dataset that this parameter specifies.</maml:para>
                     </maml:description>
                     <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 </command:parameter>
@@ -1241,9 +1241,9 @@
                 <dev:defaultValue></dev:defaultValue>
             </command:parameter>
             <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
-                <maml:name>TableName</maml:name>
+                <maml:name>DatasetName</maml:name>
                 <maml:description>
-                    <maml:para>Specifies the name of the table. This cmdlet gets runs for slices that belong to the table that this parameter specifies.</maml:para>
+                    <maml:para>Specifies the name of the dataset. This cmdlet gets runs for slices that belong to the dataset that this parameter specifies.</maml:para>
                 </maml:description>
                 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 <dev:type>
@@ -1281,17 +1281,17 @@
         <command:nonTerminatingErrors />
         <command:examples>
             <command:example>
-                <maml:title>Example 1: Get a table</maml:title>
+                <maml:title>Example 1: Get a dataset</maml:title>
                 <maml:introduction>
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; Get-AzureDataFactoryRun -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -TableName "DAWikiAggregatedData" -StartDateTime 2014-05-21T16:00:00Z
+                    PS C:\&gt; Get-AzureRmDataFactoryRun -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -DatasetName "DAWikiAggregatedData" -StartDateTime 2014-05-21T16:00:00Z
 
                     Id                  : a7c4913c-9623-49b3-ae1e-3e45e2b68819
                     ResourceGroupName   : ADF
                     DataFactoryName     : WikiADF
-                    TableName           : DAWikiAggregatedData
+                    DatasetName           : DAWikiAggregatedData
                     PipelineName        : 249ea141-ca00-8597-fad9-a148e5e7bdba
                     ActivityId          : fcefe2bd-39b1-2d7a-7b35-bcc2b0432300
                     ResumptionToken     : a7c4913c-9623-49b3-ae1e-3e45e2b68819
@@ -1308,7 +1308,7 @@
                     ErrorMessage        :
                 </dev:code>
                 <dev:remarks>
-                    <maml:para>This command gets all runs for slices of the table named DAWikiAggregatedData in the data factory named WikiADF that start from 4 PM GMT on 05/21/2014.</maml:para>
+                    <maml:para>This command gets all runs for slices of the dataset named DAWikiAggregatedData in the data factory named WikiADF that start from 4 PM GMT on 05/21/2014.</maml:para>
                 </dev:remarks>
                 <command:commandLines>
                     <command:commandLine>
@@ -1319,16 +1319,16 @@
         </command:examples>
         <maml:relatedLinks>
             <maml:navigationLink>
-                <maml:linkText>Get-AzureDataFactorySlice</maml:linkText>
+                <maml:linkText>Get-AzureRmDataFactorySlice</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
         </maml:relatedLinks>
     </command:command>
     <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
         <command:details>
-            <command:name>Get-AzureDataFactorySlice</command:name>
+            <command:name>Get-AzureRmDataFactorySlice</command:name>
             <maml:description>
-                <maml:para>Gets data slices for a table in Data Factory.</maml:para>
+                <maml:para>Gets data slices for a dataset in Data Factory.</maml:para>
             </maml:description>
             <maml:copyright>
                 <maml:para />
@@ -1338,7 +1338,7 @@
             <dev:version />
         </command:details>
         <maml:description>
-            <maml:para>The Get-AzureDataFactorySlice cmdlet gets data slices for a table in Azure Data Factory. Specify a start time and an end time to define a range of data slices to view. </maml:para>
+            <maml:para>The Get-AzureRmDataFactorySlice cmdlet gets data slices for a dataset in Azure Data Factory. Specify a start time and an end time to define a range of data slices to view. </maml:para>
             <maml:para>
                 The status of a data slice is one of the following values:
 
@@ -1353,12 +1353,12 @@
                 -- Retry Validation. Data Factory retries the validation of the slice.
                 -- Failed Validation. Validation of the slice failed.
             </maml:para>
-            <maml:para>For each of the slices, you can see more information about the run that produces the slice by using the Get-AzureDataFactoryRun cmdlet. </maml:para>
+            <maml:para>For each of the slices, you can see more information about the run that produces the slice by using the Get-AzureRmDataFactoryRun cmdlet. </maml:para>
             <maml:para>You must be in AzureResourceManager mode to run Azure Data Factory cmdlets. To switch to AzureResourceManager mode, type Switch-AzureMode AzureResourceManager.</maml:para>
         </maml:description>
         <command:syntax>
             <command:syntaxItem>
-                <maml:name>Get-AzureDataFactorySlice</maml:name>
+                <maml:name>Get-AzureRmDataFactorySlice</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>ResourceGroupName</maml:name>
                     <maml:description>
@@ -1374,10 +1374,10 @@
                     <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 </command:parameter>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
-                    <maml:name>TableName</maml:name>
+                    <maml:name>DatasetName</maml:name>
                     <maml:description>
                         <maml:para>
-                            Specifies the name of the table for which this cmdlet gets slices.
+                            Specifies the name of the dataset for which this cmdlet gets slices.
                         </maml:para>
                     </maml:description>
                     <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1402,7 +1402,7 @@
                 </command:parameter>
             </command:syntaxItem>
             <command:syntaxItem>
-                <maml:name>Get-AzureDataFactorySlice</maml:name>
+                <maml:name>Get-AzureRmDataFactorySlice</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>DataFactory</maml:name>
                     <maml:description>
@@ -1411,10 +1411,10 @@
                     <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
                 </command:parameter>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
-                    <maml:name>TableName</maml:name>
+                    <maml:name>DatasetName</maml:name>
                     <maml:description>
                         <maml:para>
-                            Specifies the name of the table for which this cmdlet gets slices.
+                            Specifies the name of the dataset for which this cmdlet gets slices.
                         </maml:para>
                     </maml:description>
                     <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1505,10 +1505,10 @@
                 <dev:defaultValue></dev:defaultValue>
             </command:parameter>
             <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
-                <maml:name>TableName</maml:name>
+                <maml:name>DatasetName</maml:name>
                 <maml:description>
                     <maml:para>
-                        Specifies the name of the table for which this cmdlet gets slices.
+                        Specifies the name of the dataset for which this cmdlet gets slices.
                     </maml:para>
                 </maml:description>
                 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -1547,16 +1547,16 @@
         <command:nonTerminatingErrors />
         <command:examples>
             <command:example>
-                <maml:title>Example 1: Get data slices for a table</maml:title>
+                <maml:title>Example 1: Get data slices for a dataset</maml:title>
                 <maml:introduction>
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; Get-AzureDataFactorySlice -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -TableName "DAWikiAggregatedData" -StartDateTime 2014-05-20T10:00:00Z
+                    PS C:\&gt; Get-AzureRmDataFactorySlice -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -DatasetName "DAWikiAggregatedData" -StartDateTime 2014-05-20T10:00:00Z
 
                     ResourceGroupName : ADF
                     DataFactoryName   : WikiADF
-                    TableName         : DAWikiAggregatedData
+                    DatasetName         : DAWikiAggregatedData
                     Start             : 5/21/2014 1:00:00 AM
                     End               : 5/21/2014 2:00:00 AM
                     RetryCount        : 0
@@ -1564,7 +1564,7 @@
 
                     ResourceGroupName : ADF
                     DataFactoryName   : WikiADF
-                    TableName         : DAWikiAggregatedData
+                    DatasetName         : DAWikiAggregatedData
                     Start             : 5/21/2014 2:00:00 AM
                     End               : 5/21/2014 3:00:00 AM
                     RetryCount        : 0
@@ -1574,7 +1574,7 @@
 
                     ResourceGroupName : ADF
                     DataFactoryName   : WikiADF
-                    TableName         : DAWikiAggregatedData
+                    DatasetName         : DAWikiAggregatedData
                     Start             : 5/21/2014 8:00:00 PM
                     End               : 5/21/2014 9:00:00 PM
                     RetryCount        : 0
@@ -1582,7 +1582,7 @@
 
                     ResourceGroupName : ADF
                     DataFactoryName   : WikiADF
-                    TableName         : DAWikiAggregatedData
+                    DatasetName         : DAWikiAggregatedData
                     Start             : 5/21/2014 9:00:00 PM
                     End               : 5/21/2014 10:00:00 PM
                     RetryCount        : 0
@@ -1592,7 +1592,7 @@
                 </dev:code>
                 <dev:remarks>
                     <maml:para>
-                        This command gets all the data slices for the table named WikiAggregatedData in the data factory named WikiADF. The command gets slices produced after the time that the StartDateTime parameter specifies. The following example code sets the availability for this table every hour in the JavaScript Object Notation (JSON) file.
+                        This command gets all the data slices for the dataset named WikiAggregatedData in the data factory named WikiADF. The command gets slices produced after the time that the StartDateTime parameter specifies. The following example code sets the availability for this dataset every hour in the JavaScript Object Notation (JSON) file.
 
                         availability:
                         {
@@ -1600,7 +1600,7 @@
                         periodMultiplier: 1
                         }
                     </maml:para>
-                    <maml:para>Some of the results are Ready and others are PendingExecution. Ready slices have already run. The pending slices are waiting to run at the end of each hour in the interval that the Set-AzureDataFactoryPipelineActivePeriod cmdlet specifies. In this example, both start and end periods for the pipeline and the slice have a value of one day (24 hours). </maml:para>
+                    <maml:para>Some of the results are Ready and others are PendingExecution. Ready slices have already run. The pending slices are waiting to run at the end of each hour in the interval that the Set-AzureRmDataFactoryPipelineActivePeriod cmdlet specifies. In this example, both start and end periods for the pipeline and the slice have a value of one day (24 hours). </maml:para>
                 </dev:remarks>
                 <command:commandLines>
                     <command:commandLine>
@@ -1611,74 +1611,74 @@
         </command:examples>
         <maml:relatedLinks>
             <maml:navigationLink>
-                <maml:linkText>Set-AzureDataFactorySliceStatus</maml:linkText>
+                <maml:linkText>Set-AzureRmDataFactorySliceStatus</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Get-AzureDataFactoryRun</maml:linkText>
+                <maml:linkText>Get-AzureRmDataFactoryRun</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Set-AzureDataFactoryPipelineActivePeriod</maml:linkText>
+                <maml:linkText>Set-AzureRmDataFactoryPipelineActivePeriod</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
         </maml:relatedLinks>
     </command:command>
     <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
         <command:details>
-            <command:name>Get-AzureDataFactoryTable</command:name>
+            <command:name>Get-AzureRmDataFactoryDataset</command:name>
             <maml:description>
-                <maml:para>Gets information about tables in Data Factory.</maml:para>
+                <maml:para>Gets information about datasets in Data Factory.</maml:para>
             </maml:description>
             <maml:copyright>
                 <maml:para />
             </maml:copyright>
             <command:verb>Get</command:verb>
-            <command:noun>AzureDataFactoryTable</command:noun>
+            <command:noun>AzureDataFactoryDataset</command:noun>
             <dev:version />
         </command:details>
         <maml:description>
-            <maml:para>The Get-AzureDataFactoryTable cmdlet gets information about tables in Azure Data Factory. If you specify the name of a table, this cmdlet gets information about that table. If you do not specify a name, this cmdlet gets information about all the tables in the data factory.</maml:para>
+            <maml:para>The Get-AzureRmDataFactoryDataset cmdlet gets information about datasets in Azure Data Factory. If you specify the name of a dataset, this cmdlet gets information about that dataset. If you do not specify a name, this cmdlet gets information about all the datasets in the data factory.</maml:para>
             <maml:para>You must be in AzureResourceManager mode to run Azure Data Factory cmdlets. To switch to AzureResourceManager mode, type Switch-AzureMode AzureResourceManager.</maml:para>
         </maml:description>
         <command:syntax>
             <command:syntaxItem>
-                <maml:name>Get-AzureDataFactoryTable</maml:name>
+                <maml:name>Get-AzureRmDataFactoryDataset</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>ResourceGroupName</maml:name>
                     <maml:description>
-                        <maml:para>Specifies the name of an Azure resource group. This cmdlet gets tables that belong to the group that this parameter specifies.</maml:para>
+                        <maml:para>Specifies the name of an Azure resource group. This cmdlet gets datasets that belong to the group that this parameter specifies.</maml:para>
                     </maml:description>
                     <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 </command:parameter>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
                     <maml:name>DataFactoryName</maml:name>
                     <maml:description>
-                        <maml:para>Specifies the name of a data factory. This cmdlet gets tables that belong to the data factory that this parameter specifies.</maml:para>
+                        <maml:para>Specifies the name of a data factory. This cmdlet gets datasets that belong to the data factory that this parameter specifies.</maml:para>
                     </maml:description>
                     <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 </command:parameter>
                 <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
                     <maml:name>Name</maml:name>
                     <maml:description>
-                        <maml:para>Specifies the name of the table about which to get information.</maml:para>
+                        <maml:para>Specifies the name of the dataset about which to get information.</maml:para>
                     </maml:description>
                     <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 </command:parameter>
             </command:syntaxItem>
             <command:syntaxItem>
-                <maml:name>Get-AzureDataFactoryTable</maml:name>
+                <maml:name>Get-AzureRmDataFactoryDataset</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>DataFactory</maml:name>
                     <maml:description>
-                        <maml:para>Specifies a PSDataFactory object. This cmdlet gets tables that belong to the data factory that this parameter specifies.</maml:para>
+                        <maml:para>Specifies a PSDataFactory object. This cmdlet gets datasets that belong to the data factory that this parameter specifies.</maml:para>
                     </maml:description>
                     <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
                 </command:parameter>
                 <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
                     <maml:name>Name</maml:name>
                     <maml:description>
-                        <maml:para>Specifies the name of the table about which to get information.</maml:para>
+                        <maml:para>Specifies the name of the dataset about which to get information.</maml:para>
                     </maml:description>
                     <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 </command:parameter>
@@ -1688,7 +1688,7 @@
             <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                 <maml:name>DataFactory</maml:name>
                 <maml:description>
-                    <maml:para>Specifies a PSDataFactory object. This cmdlet gets tables that belong to the data factory that this parameter specifies.</maml:para>
+                    <maml:para>Specifies a PSDataFactory object. This cmdlet gets datasets that belong to the data factory that this parameter specifies.</maml:para>
                 </maml:description>
                 <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
                 <dev:type>
@@ -1700,7 +1700,7 @@
             <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
                 <maml:name>DataFactoryName</maml:name>
                 <maml:description>
-                    <maml:para>Specifies the name of a data factory. This cmdlet gets tables that belong to the data factory that this parameter specifies.</maml:para>
+                    <maml:para>Specifies the name of a data factory. This cmdlet gets datasets that belong to the data factory that this parameter specifies.</maml:para>
                 </maml:description>
                 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 <dev:type>
@@ -1712,7 +1712,7 @@
             <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
                 <maml:name>Name</maml:name>
                 <maml:description>
-                    <maml:para>Specifies the name of the table about which to get information.</maml:para>
+                    <maml:para>Specifies the name of the dataset about which to get information.</maml:para>
                 </maml:description>
                 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 <dev:type>
@@ -1724,7 +1724,7 @@
             <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                 <maml:name>ResourceGroupName</maml:name>
                 <maml:description>
-                    <maml:para>Specifies the name of an Azure resource group. This cmdlet gets tables that belong to the group that this parameter specifies.</maml:para>
+                    <maml:para>Specifies the name of an Azure resource group. This cmdlet gets datasets that belong to the group that this parameter specifies.</maml:para>
                 </maml:description>
                 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 <dev:type>
@@ -1749,7 +1749,7 @@
         <command:returnValues>
             <command:returnValue>
                 <dev:type>
-                    <maml:name>System.Collections.Generic.List`1[[Microsoft.WindowsAzure.Commands.Utilities.PSTable, Microsoft.WindowsAzure.Commands.Utilities, Version=0.8.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]] Microsoft.WindowsAzure.Commands.Utilities.PSTable </maml:name>
+                    <maml:name>System.Collections.Generic.List`1[[Microsoft.WindowsAzure.Commands.Utilities.PSDataset, Microsoft.WindowsAzure.Commands.Utilities, Version=0.8.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]] Microsoft.WindowsAzure.Commands.Utilities.PSDataset </maml:name>
                     <maml:uri></maml:uri>
                     <maml:description>
                         <maml:para />
@@ -1762,41 +1762,38 @@
         <command:nonTerminatingErrors />
         <command:examples>
             <command:example>
-                <maml:title>Example 1: Get information about all tables</maml:title>
+                <maml:title>Example 1: Get information about all datasets</maml:title>
                 <maml:introduction>
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; Get-AzureDataFactoryTable -ResourceGroupName "ADF" -DataFactoryName "WikiADF"
-                    TableName         : DACuratedWikiData
+                    PS C:\&gt; Get-AzureRmDataFactoryDataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF"
+                    DatasetName         : DACuratedWikiData
                     ResourceGroupName : ADF
                     DataFactoryName   : WikiADF
                     Availability      : Microsoft.DataFactories.Availability
                     Location          :
                     Policy            :
                     Structure         : {}
-                    Published         : False
 
-                    TableName         : DAWikipediaClickEvents
+                    DatasetName         : DAWikipediaClickEvents
                     ResourceGroupName : ADF
                     DataFactoryName   : WikiADF
                     Availability      : Microsoft.DataFactories.Availability
                     Location          :
                     Policy            :
                     Structure         : {}
-                    Published         : False
 
-                    TableName         : DAWikiAggregatedData
+                    DatasetName         : DAWikiAggregatedData
                     ResourceGroupName : ADF
                     DataFactoryName   : WikiADF
                     Availability      : Microsoft.DataFactories.Availability
                     Location          :
                     Policy            :
                     Structure         : {}
-                    Published         : False
                 </dev:code>
                 <dev:remarks>
-                    <maml:para>This command gets information about all tables in the data factory named WikiADF. </maml:para>
+                    <maml:para>This command gets information about all datasets in the data factory named WikiADF. </maml:para>
                 </dev:remarks>
                 <command:commandLines>
                     <command:commandLine>
@@ -1805,23 +1802,22 @@
                 </command:commandLines>
             </command:example>
             <command:example>
-                <maml:title>Example 2: Get information about a specific table</maml:title>
+                <maml:title>Example 2: Get information about a specific dataset</maml:title>
                 <maml:introduction>
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; Get-AzureDataFactoryTable -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents"
-                    TableName         : DAWikipediaClickEvents
+                    PS C:\&gt; Get-AzureRmDataFactoryDataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents"
+                    DatasetName         : DAWikipediaClickEvents
                     ResourceGroupName : ADF
                     DataFactoryName   : WikiADF
                     Availability      : Microsoft.DataFactories.Availability
                     Location          : Microsoft.DataFactories.AzureBlobLocation
                     Policy            : Microsoft.DataFactories.Policy
                     Structure         : {}
-                    Published         : False
                 </dev:code>
                 <dev:remarks>
-                    <maml:para>This command gets information about the table named DAWikipediaClickEvents in the data factory named WikiADF.</maml:para>
+                    <maml:para>This command gets information about the dataset named DAWikipediaClickEvents in the data factory named WikiADF.</maml:para>
                 </dev:remarks>
                 <command:commandLines>
                     <command:commandLine>
@@ -1830,12 +1826,12 @@
                 </command:commandLines>
             </command:example>
             <command:example>
-                <maml:title>Example 3: Get the location for a specific table</maml:title>
+                <maml:title>Example 3: Get the location for a specific dataset</maml:title>
                 <maml:introduction>
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; (Get-AzureDataFactoryTable -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents").Location
+                    PS C:\&gt; (Get-AzureRmDataFactoryDataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents").Location
                     BlobPath          : wikidatagateway/wikisampledatain/
                     FilenamePrefix    :
                     Format            :
@@ -1843,7 +1839,7 @@
                     PartitionBy       : {}
                 </dev:code>
                 <dev:remarks>
-                    <maml:para>This command gets information for the table named DAWikipediaClickEvents in the data factory named WikiADF, and then uses standard dot notation to view the Location associated with that table. Alternatively, assign the output of the Get-AzureDataFactoryTable cmdlet to a variable, and then use dot notation to view the Location property associated with the table object stored in that variable.  </maml:para>
+                    <maml:para>This command gets information for the dataset named DAWikipediaClickEvents in the data factory named WikiADF, and then uses standard dot notation to view the Location associated with that dataset. Alternatively, assign the output of the Get-AzureRmDataFactoryDataset cmdlet to a variable, and then use dot notation to view the Location property associated with the dataset object stored in that variable.  </maml:para>
                 </dev:remarks>
                 <command:commandLines>
                     <command:commandLine>
@@ -1854,18 +1850,18 @@
         </command:examples>
         <maml:relatedLinks>
             <maml:navigationLink>
-                <maml:linkText>New-AzureDataFactoryTable</maml:linkText>
+                <maml:linkText>New-AzureRmDataFactoryDataset</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Remove-AzureDataFactoryTable</maml:linkText>
+                <maml:linkText>Remove-AzureRmDataFactoryDataset</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
         </maml:relatedLinks>
     </command:command>
     <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
         <command:details>
-            <command:name>New-AzureDataFactory</command:name>
+            <command:name>New-AzureRmDataFactory</command:name>
             <maml:description>
                 <maml:para>Creates a data factory.</maml:para>
             </maml:description>
@@ -1877,20 +1873,20 @@
             <dev:version />
         </command:details>
         <maml:description>
-            <maml:para>The New-AzureDataFactory cmdlet creates a data factory with the specified resource group name and location. </maml:para>
+            <maml:para>The New-AzureRmDataFactory cmdlet creates a data factory with the specified resource group name and location. </maml:para>
             <maml:para>
                 Perform these operations in the following order:
 
                 -- Create a data factory.
                 -- Create linked services.
-                -- Create tables.
+                -- Create datasets.
                 -- Create a pipeline.
             </maml:para>
             <maml:para>You must be in AzureResourceManager mode to run Azure Data Factory cmdlets. To switch to AzureResourceManager mode, type Switch-AzureMode AzureResourceManager.</maml:para>
         </maml:description>
         <command:syntax>
             <command:syntaxItem>
-                <maml:name>New-AzureDataFactory</maml:name>
+                <maml:name>New-AzureRmDataFactory</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>ResourceGroupName</maml:name>
                     <maml:description>
@@ -2030,7 +2026,7 @@
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; New-AzureDataFactory -ResourceGroupName "ADF" -Name "WikiADF" -Location "WestUS"
+                    PS C:\&gt; New-AzureRmDataFactory -ResourceGroupName "ADF" -Name "WikiADF" -Location "WestUS"
                     DataFactoryName   : WikiADF
                     ResourceGroupName : ADF
                     Location          : WestUS
@@ -2049,18 +2045,18 @@
         </command:examples>
         <maml:relatedLinks>
             <maml:navigationLink>
-                <maml:linkText>Get-AzureDataFactory</maml:linkText>
+                <maml:linkText>Get-AzureRmDataFactory</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Remove-AzureDataFactory</maml:linkText>
+                <maml:linkText>Remove-AzureRmDataFactory</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
         </maml:relatedLinks>
     </command:command>
     <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
         <command:details>
-            <command:name>New-AzureDataFactoryEncryptValue</command:name>
+            <command:name>New-AzureRmDataFactoryEncryptValue</command:name>
             <maml:description>
                 <maml:para>Encrypts sensitive data.</maml:para>
             </maml:description>
@@ -2072,12 +2068,12 @@
             <dev:version />
         </command:details>
         <maml:description>
-            <maml:para>The New-AzureDataFactoryEncryptValue cmdlet encrypts sensitive data, such as a password or a MicrosoftSQL Server connection string, and returns an encrypted value.</maml:para>
+            <maml:para>The New-AzureRmDataFactoryEncryptValue cmdlet encrypts sensitive data, such as a password or a MicrosoftSQL Server connection string, and returns an encrypted value.</maml:para>
             <maml:para>You must be in AzureResourceManager mode to run Azure Data Factory cmdlets. To switch to AzureResourceManager mode, type Switch-AzureMode AzureResourceManager.</maml:para>
         </maml:description>
         <command:syntax>
             <command:syntaxItem>
-                <maml:name>New-AzureDataFactoryEncryptValue</maml:name>
+                <maml:name>New-AzureRmDataFactoryEncryptValue</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>ResourceGroupName</maml:name>
                     <maml:description>
@@ -2150,7 +2146,7 @@
                 </command:parameter>
             </command:syntaxItem>
             <command:syntaxItem>
-                <maml:name>New-AzureDataFactoryEncryptValue</maml:name>
+                <maml:name>New-AzureRmDataFactoryEncryptValue</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>DataFactory</maml:name>
                     <maml:description>
@@ -2386,7 +2382,7 @@
                     PS C:\&gt;$Value = ConvertTo-SecureString 'Data Source=ContosoServer;Initial Catalog=catelog;user id =user123;password=password123' -AsPlainText -Force
                 </dev:code>
                 <dev:code>
-                    PS C:\&gt;New-AzureDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayName "WikiGateway" -ResourceGroupName "ADF" -Value $Value -Type OnPremisesSqlLinkedService
+                    PS C:\&gt;New-AzureRmDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayName "WikiGateway" -ResourceGroupName "ADF" -Value $Value -Type OnPremisesSqlLinkedService
                     data source=ContosoServer;initial catalog=catelog;EncryptedCredential=KAAAAAABAAAQAAAAQUU5MUVBNzY4QkFCQkI3MEUwRTMxOUNFNkM0MjRDOTVDNDk3RTcyRi8XAXyE/H+f3JydTkdg5t2g1eC/VtyF3NAD3idYnhrAphPJmO0pCaG5nH2IY48L3XJi7wabrlrGF+ieiWh1bwdgdxrW+t2jWPnLvT/ENUXtcevpx/dmTGKagH8TU9HLcoL1CAanb7Vkpga1B/uzRxBnVdsdtfvBzxG2M810tj1WzL8lFzA1mO5GbB0+ge116y0scL1vxjerjl5Muv0r0scG3lhj+IF0sXUMITFvhQwOIqweR052E6JlfJu+mTNFLCCkpw1iV+rhRhKqJF752dBuWjzI1EoyQUE17oK4OevkquuhUbfJmzj9BhGKQ+VkndAZiSw19FEGSC7JzoUe/XWEs/FJYrQCCXIeNS94J9/VzN6KPYJR1pzAYCtnhq+p8Q==
                 </dev:code>
                 <dev:remarks>
@@ -2411,7 +2407,7 @@
                     PS C:\&gt;$Credential = Get-Credential
                 </dev:code>
                 <dev:code>
-                    PS C:\&gt;New-AzureDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayName "WikiGateway" -ResourceGroupName "ADF" -Value $Value -Credential $Credential -Type OnPremisesSqlLinkedService
+                    PS C:\&gt;New-AzureRmDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayName "WikiGateway" -ResourceGroupName "ADF" -Value $Value -Credential $Credential -Type OnPremisesSqlLinkedService
                     data source=ContosoServer;initial catalog=catelog;EncryptedCredential=KAAAAAABAAAQAAAAQUU5MUVBNzY4QkFCQkI3MEUwRTMxOUNFNkM0MjRDOTVDNDk3RTcyRi8XAXyE/H+f3JydTkdg5t2g1eC/VtyF3NAD3idYnhrAphPJmO0pCaG5nH2IY48L3XJi7wabrlrGF+ieiWh1bwdgdxrW+t2jWPnLvT/ENUXtcevpx/dmTGKagH8TU9HLcoL1CAanb7Vkpga1B/uzRxBnVdsdtfvBzxG2M810tj1WzL8lFzA1mO5GbB0+ge116y0scL1vxjerjl5Muv0r0scG3lhj+IF0sXUMITFvhQwOIqweR052E6JlfJu+mTNFLCCkpw1iV+rhRhKqJF752dBuWjzI1EoyQUE17oK4OevkquuhUbfJmzj9BhGKQ+VkndAZiw19FEGSC7JzoUe/XWEs/FJYrQCCXIeNS94J9/VzN6KPYJR1pzAYCtnhq+p8Q==
                 </dev:code>
                 <dev:remarks>
@@ -2433,7 +2429,7 @@
                 <dev:code>
                     PS C:\&gt; $Value = ConvertTo-SecureString '\\servername' -AsPlainText -Force
                     PS C:\&gt; $Credential = Get-Credential
-                    PS C:\&gt; New-AzureDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayName "WikiGateway" -ResourceGroupName "ADF" -Value $Value -Credential $Credential -Type OnPremisesFileSystemLinkedService
+                    PS C:\&gt; New-AzureRmDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayName "WikiGateway" -ResourceGroupName "ADF" -Value $Value -Credential $Credential -Type OnPremisesFileSystemLinkedService
                     KAAAAAABAAAQAAAAQUU5MUVBNzY4QkFCQkI3MEUwRTMxOUNFNkM0MjRDOTVDNDk3RTcyRi8XAXyE/H+f3JydTkdg5t2g1eC/VtyF3NAD3idYnhrAphPJmO0pCaG5nH2IY48L3XJi7wabrlrGF+ieiWh1bwdgdxrW+t2jWPnLvT/ENUXtcevpx/dmTGKagH8TU9HLcoL1CAanb7Vkpga1B/uzRxBnVdsdtfvBzxG2M810tj1WzL8lFzA1mO5GbB0+ge116y0scL1vxjerjl5Muv0r0scG3lhj+IF0sXUMITFvhQwOIqweR052E6JlfJu+mTNFLCCkpw1iV+rhRhKqJF752dBuWjzI1EoyQUE17oK4OevkquuhUbfJmzj9BhGKQ+VkndAZiSw19FEGSC7JzoUe/XWEs/FJYrQCCXIeNS94J9/VzN6KPYJR1pzAYCtnhq+p8Q==
                 </dev:code>
                 <dev:remarks>
@@ -2456,7 +2452,7 @@
                     PS C:\&gt;$Value = ConvertTo-SecureString 'UID=user123;PWD=password123;AuthMode=mode1;Token=token1' -AsPlainText -Force
                 </dev:code>
                 <dev:code>
-                    PS C:\&gt;New-AzureDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayName "WikiGateway" -ResourceGroupName "ADF" -Value $Value -Type OnPremisesOdbcLinkedService -nonCredentialValue "Driver=CustomizedDriver;Server=ContosoServer;Database=ContosoDatabase;" -AuthenticationType "Basic"
+                    PS C:\&gt;New-AzureRmDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayName "WikiGateway" -ResourceGroupName "ADF" -Value $Value -Type OnPremisesOdbcLinkedService -nonCredentialValue "Driver=CustomizedDriver;Server=ContosoServer;Database=ContosoDatabase;" -AuthenticationType "Basic"
                     Driver=CustomizedDriver;Server=ContosoServer;Database=ContosoDatabase;EncryptedCredential=KAAAAAABAAAQAAAAQUU5MUVBNzY4QkFCQkI3MEUwRTMxOUNFNkM0MjRDOTVDNDk3RTcyRi8XAXyE/H+f3JydTkdg5t2g1eC/VtyF3NAD3idYnhrAphPJmO0pCaG5nH2IY48L3XJi7wabrlrGF+ieiWh1bwdgdxrW+t2jWPnLvT/ENUXtcevpx/dmTGKagH8TU9HLcoL1CAanb7Vkpga1B/uzRxBnVdsdtfvBzxG2M810tj1WzL8lFzA1mO5GbB0+ge116y0scL1vxjerjl5Muv0r0scG3lhj+IF0sXUMITFvhQwOIqweR052E6JlfJu+mTNFLCCkpw1iV+rhRhKqJF752dBuWjzI1EoyQUE17oK4OevkquuhUbfJmzj9BhGKQ+VkndAZiSw19FEGSC7JzoUe/XWEs/FJYrQCCXIeNS94J9/VzN6KPYJR1pzAYCtnhq+p8Q==
                 </dev:code>
                 <dev:remarks>
@@ -2481,7 +2477,7 @@
                     PS C:\&gt;$Credential = Get-Credential
                 </dev:code>
                 <dev:code>
-                    PS C:\&gt;New-AzureDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayName "WikiGateway" -ResourceGroupName "ADF" -Value $Value -Credential $Credential -Type OnPremisesOdbcLinkedService -nonCredentialValue "Driver=CustomizedDriver;Server=ContosoServer;Database=ContosoDatabase;" -AuthenticationType "Windows"
+                    PS C:\&gt;New-AzureRmDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayName "WikiGateway" -ResourceGroupName "ADF" -Value $Value -Credential $Credential -Type OnPremisesOdbcLinkedService -nonCredentialValue "Driver=CustomizedDriver;Server=ContosoServer;Database=ContosoDatabase;" -AuthenticationType "Windows"
                     Driver=CustomizedDriver;Server=ContosoServer;Database=ContosoDatabase;EncryptedCredential=KAAAAAABAAAQAAAAQUU5MUVBNzY4QkFCQkI3MEUwRTMxOUNFNkM0MjRDOTVDNDk3RTcyRi8XAXyE/H+f3JydTkdg5t2g1eC/VtyF3NAD3idYnhrAphPJmO0pCaG5nH2IY48L3XJi7wabrlrGF+ieiWh1bwdgdxrW+t2jWPnLvT/ENUXtcevpx/dmTGKagH8TU9HLcoL1CAanb7Vkpga1B/uzRxBnVdsdtfvBzxG2M810tj1WzL8lFzA1mO5GbB0+ge116y0scL1vxjerjl5Muv0r0scG3lhj+IF0sXUMITFvhQwOIqweR052E6JlfJu+mTNFLCCkpw1iV+rhRhKqJF752dBuWjzI1EoyQUE17oK4OevkquuhUbfJmzj9BhGKQ+VkndAZiw19FEGSC7JzoUe/XWEs/FJYrQCCXIeNS94J9/VzN6KPYJR1pzAYCtnhq+p8Q==
                 </dev:code>
                 <dev:remarks>
@@ -2504,7 +2500,7 @@
                     PS C:\&gt;$Credential = Get-Credential
                 </dev:code>
                 <dev:code>
-                    PS C:\&gt;New-AzureDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayName "WikiGateway" -ResourceGroupName "ADF" -Value $Value -Credential $Credential -Type OnPremisesPostgreSqlLinkedService -AuthenticationType "Windows" -Server "ContosoServer" -Database "ContosoDatabase"
+                    PS C:\&gt;New-AzureRmDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayName "WikiGateway" -ResourceGroupName "ADF" -Value $Value -Credential $Credential -Type OnPremisesPostgreSqlLinkedService -AuthenticationType "Windows" -Server "ContosoServer" -Database "ContosoDatabase"
                     KAAAAAABAAAQAAAAQUU5MUVBNzY4QkFCQkI3MEUwRTMxOUNFNkM0MjRDOTVDNDk3RTcyRi8XA==
                 </dev:code>
                 <dev:remarks>
@@ -2527,7 +2523,7 @@
     </command:command>
     <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
         <command:details>
-            <command:name>New-AzureDataFactoryGateway</command:name>
+            <command:name>New-AzureRmDataFactoryGateway</command:name>
             <maml:description>
                 <maml:para>Creates a gateway for Data Factory.</maml:para>
             </maml:description>
@@ -2539,12 +2535,12 @@
             <dev:version />
         </command:details>
         <maml:description>
-            <maml:para>The New-AzureDataFactoryGateway cmdlet creates a gateway in Azure Data Factory. </maml:para>
+            <maml:para>The New-AzureRmDataFactoryGateway cmdlet creates a gateway in Azure Data Factory. </maml:para>
             <maml:para>You must be in AzureResourceManager mode to run Azure Data Factory cmdlets. To switch to AzureResourceManager mode, type Switch-AzureMode AzureResourceManager.</maml:para>
         </maml:description>
         <command:syntax>
             <command:syntaxItem>
-                <maml:name>New-AzureDataFactoryGateway</maml:name>
+                <maml:name>New-AzureRmDataFactoryGateway</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>ResourceGroupName</maml:name>
                     <maml:description>
@@ -2575,7 +2571,7 @@
                 </command:parameter>
             </command:syntaxItem>
             <command:syntaxItem>
-                <maml:name>New-AzureDataFactoryGateway</maml:name>
+                <maml:name>New-AzureRmDataFactoryGateway</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>DataFactory</maml:name>
                     <maml:description>
@@ -2694,7 +2690,7 @@
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; New-AzureDataFactoryGateway -ResourceGroupName "ADF" -Name "ContosoGateway" -DataFactoryName "WikiADF" -Description "my gateway"
+                    PS C:\&gt; New-AzureRmDataFactoryGateway -ResourceGroupName "ADF" -Name "ContosoGateway" -DataFactoryName "WikiADF" -Description "my gateway"
                     Name            : ContosoGateway
                     Description     : my gateway
                     Version         :
@@ -2717,18 +2713,18 @@
         </command:examples>
         <maml:relatedLinks>
             <maml:navigationLink>
-                <maml:linkText>Remove-AzureDataFactoryGateway</maml:linkText>
+                <maml:linkText>Remove-AzureRmDataFactoryGateway</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Set-AzureDataFactoryGateway</maml:linkText>
+                <maml:linkText>Set-AzureRmDataFactoryGateway</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
         </maml:relatedLinks>
     </command:command>
     <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
         <command:details>
-            <command:name>New-AzureDataFactoryGatewayKey</command:name>
+            <command:name>New-AzureRmDataFactoryGatewayKey</command:name>
             <maml:description>
                 <maml:para>Creates a gateway key for Data Factory.</maml:para>
             </maml:description>
@@ -2741,13 +2737,13 @@
         </command:details>
         <maml:description>
             <maml:para>
-                The New-AzureDataFactoryGatewayKey cmdlet creates a gateway key for a specified Azure Data Factory gateway. You register the gateway with a cloud service by using this key.
+                The New-AzureRmDataFactoryGatewayKey cmdlet creates a gateway key for a specified Azure Data Factory gateway. You register the gateway with a cloud service by using this key.
             </maml:para>
             <maml:para>You must be in AzureResourceManager mode to run Azure Data Factory cmdlets. To switch to AzureResourceManager mode, type Switch-AzureMode AzureResourceManager.</maml:para>
         </maml:description>
         <command:syntax>
             <command:syntaxItem>
-                <maml:name>New-AzureDataFactoryGatewayKey</maml:name>
+                <maml:name>New-AzureRmDataFactoryGatewayKey</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>ResourceGroupName</maml:name>
                     <maml:description>
@@ -2773,7 +2769,7 @@
                 </command:parameter>
             </command:syntaxItem>
             <command:syntaxItem>
-                <maml:name>New-AzureDataFactoryGatewayKey</maml:name>
+                <maml:name>New-AzureRmDataFactoryGatewayKey</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>DataFactory</maml:name>
                     <maml:description>
@@ -2877,7 +2873,7 @@
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; New-AzureDataFactoryGatewayKey -ResourceGroupName "ADF" -GatewayName "ContosoGateway" -DataFactoryName "WikiADF" | Format-List
+                    PS C:\&gt; New-AzureRmDataFactoryGatewayKey -ResourceGroupName "ADF" -GatewayName "ContosoGateway" -DataFactoryName "WikiADF" | Format-List
                     Gateway Key : ADF#40cbb3d9-2736-4794-a8a6-e6b839b4894f@a2d875ce-c9d7-4b8b-ad65-dd3ebbb9a940@8c0d1801-e863-44af-82e6-fb2f0c00f2ae@xz#Y9R0NhAeH3u7wgnrJyiWj4Y/QIhH4fFilIdzZgwsVQA=
                 </dev:code>
                 <dev:remarks>
@@ -2893,14 +2889,14 @@
         </command:examples>
         <maml:relatedLinks>
             <maml:navigationLink>
-                <maml:linkText>New-AzureDataFactoryGateway</maml:linkText>
+                <maml:linkText>New-AzureRmDataFactoryGateway</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
         </maml:relatedLinks>
     </command:command>
     <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
         <command:details>
-            <command:name>New-AzureDataFactoryHub</command:name>
+            <command:name>New-AzureRmDataFactoryHub</command:name>
             <maml:description>
                 <maml:para>Creates a hub for Data Factory.</maml:para>
             </maml:description>
@@ -2912,12 +2908,12 @@
             <dev:version />
         </command:details>
         <maml:description>
-            <maml:para>The New-AzureDataFactoryHub cmdlet creates a hub for Azure Data Factory in the specified Azure resource group and in the specified data factory with the specified file definition. After you create the hub, you can use it to store and manage linked services in a group, and you can add pipelines to the hub.</maml:para>
+            <maml:para>The New-AzureRmDataFactoryHub cmdlet creates a hub for Azure Data Factory in the specified Azure resource group and in the specified data factory with the specified file definition. After you create the hub, you can use it to store and manage linked services in a group, and you can add pipelines to the hub.</maml:para>
             <maml:para>You must be in AzureResourceManager mode to run Azure Data Factory cmdlets. To switch to AzureResourceManager mode, type Switch-AzureMode AzureResourceManager.</maml:para>
         </maml:description>
         <command:syntax>
             <command:syntaxItem>
-                <maml:name>New-AzureDataFactoryHub</maml:name>
+                <maml:name>New-AzureRmDataFactoryHub</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>ResourceGroupName</maml:name>
                     <maml:description>
@@ -2954,7 +2950,7 @@
                 </command:parameter>
             </command:syntaxItem>
             <command:syntaxItem>
-                <maml:name>New-AzureDataFactoryHub</maml:name>
+                <maml:name>New-AzureRmDataFactoryHub</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>DataFactory</maml:name>
                     <maml:description>
@@ -3095,7 +3091,7 @@
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt;New-AzureDataFactoryHub -ResourceGroupName "ADFResourceGroup" -DataFactoryName "ADFDataFactory" -Name "ContosoDataHub" -File "C:\Hub.json"
+                    PS C:\&gt;New-AzureRmDataFactoryHub -ResourceGroupName "ADFResourceGroup" -DataFactoryName "ADFDataFactory" -Name "ContosoDataHub" -File "C:\Hub.json"
 
                 </dev:code>
                 <dev:remarks>
@@ -3114,18 +3110,18 @@
                 <maml:uri></maml:uri>
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Get-AzureDataFactoryHub</maml:linkText>
+                <maml:linkText>Get-AzureRmDataFactoryHub</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Remove-AzureDataFactoryHub</maml:linkText>
+                <maml:linkText>Remove-AzureRmDataFactoryHub</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
         </maml:relatedLinks>
     </command:command>
     <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
         <command:details>
-            <command:name>New-AzureDataFactoryLinkedService</command:name>
+            <command:name>New-AzureRmDataFactoryLinkedService</command:name>
             <maml:description>
                 <maml:para>Links a data store or a cloud service to Data Factory.</maml:para>
             </maml:description>
@@ -3137,20 +3133,20 @@
             <dev:version />
         </command:details>
         <maml:description>
-            <maml:para>The New-AzureDataFactoryLinkedService cmdlet links a data store or a cloud service to Azure Data Factory. If you specify a name for a linked service that already exists, this cmdlet prompts you for confirmation before it replaces the linked service. If you specify the Force parameter, the cmdlet replaces the existing linked service without confirmation. </maml:para>
+            <maml:para>The New-AzureRmDataFactoryLinkedService cmdlet links a data store or a cloud service to Azure Data Factory. If you specify a name for a linked service that already exists, this cmdlet prompts you for confirmation before it replaces the linked service. If you specify the Force parameter, the cmdlet replaces the existing linked service without confirmation. </maml:para>
             <maml:para>
                 Perform these operations in the following order:
 
                 -- Create a data factory.
                 -- Create linked services.
-                -- Create tables.
+                -- Create datasets.
                 -- Create a pipeline.
             </maml:para>
             <maml:para>You must be in AzureResourceManager mode to run Azure Data Factory cmdlets. To switch to AzureResourceManager mode, type Switch-AzureMode AzureResourceManager.</maml:para>
         </maml:description>
         <command:syntax>
             <command:syntaxItem>
-                <maml:name>New-AzureDataFactoryLinkedService</maml:name>
+                <maml:name>New-AzureRmDataFactoryLinkedService</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>ResourceGroupName</maml:name>
                     <maml:description>
@@ -3189,7 +3185,7 @@
                 </command:parameter>
             </command:syntaxItem>
             <command:syntaxItem>
-                <maml:name>New-AzureDataFactoryLinkedService</maml:name>
+                <maml:name>New-AzureRmDataFactoryLinkedService</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>DataFactory</maml:name>
                     <maml:description>
@@ -3328,7 +3324,7 @@
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; New-AzureDataFactoryLinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "LinkedServiceCuratedWikiData" -File "C:\\samples\\WikiSample\\LinkedServiceCuratedWikiData.json" | Format-List
+                    PS C:\&gt; New-AzureRmDataFactoryLinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "LinkedServiceCuratedWikiData" -File "C:\\samples\\WikiSample\\LinkedServiceCuratedWikiData.json" | Format-List
                     LinkedServiceName : LinkedServiceCuratedWikiData
                     ResourceGroupName : ADF
                     DataFactoryName   : WikiADF
@@ -3346,18 +3342,18 @@
         </command:examples>
         <maml:relatedLinks>
             <maml:navigationLink>
-                <maml:linkText>Get-AzureDataFactoryLinkedService</maml:linkText>
+                <maml:linkText>Get-AzureRmDataFactoryLinkedService</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Remove-AzureDataFactoryLinkedService</maml:linkText>
+                <maml:linkText>Remove-AzureRmDataFactoryLinkedService</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
         </maml:relatedLinks>
     </command:command>
     <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
         <command:details>
-            <command:name>New-AzureDataFactoryPipeline</command:name>
+            <command:name>New-AzureRmDataFactoryPipeline</command:name>
             <maml:description>
                 <maml:para>Creates a pipeline in Data Factory.</maml:para>
             </maml:description>
@@ -3369,13 +3365,13 @@
             <dev:version />
         </command:details>
         <maml:description>
-            <maml:para>The New-AzureDataFactoryPipeline cmdlet creates a pipeline in Azure Data Factory. If you specify a name for a pipeline that already exists, the cmdlet prompts you for confirmation before it replaces the pipeline. If you specify the Force parameter, the cmdlet replaces the existing pipeline without confirmation. </maml:para>
+            <maml:para>The New-AzureRmDataFactoryPipeline cmdlet creates a pipeline in Azure Data Factory. If you specify a name for a pipeline that already exists, the cmdlet prompts you for confirmation before it replaces the pipeline. If you specify the Force parameter, the cmdlet replaces the existing pipeline without confirmation. </maml:para>
             <maml:para>
                 Perform these operations in the following order:
 
                 -- Create a data factory.
                 -- Create linked services.
-                -- Create tables.
+                -- Create datasets.
                 -- Create a pipeline.
             </maml:para>
             <maml:para>If a pipeline with the same name already exists in the data factory, this cmdlet prompts you to confirm whether to overwrite the existing pipeline with the new pipeline. If you confirm to overwrite the existing pipeline, the pipeline definition is also replaced.</maml:para>
@@ -3383,7 +3379,7 @@
         </maml:description>
         <command:syntax>
             <command:syntaxItem>
-                <maml:name>New-AzureDataFactoryPipeline</maml:name>
+                <maml:name>New-AzureRmDataFactoryPipeline</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>ResourceGroupName</maml:name>
                     <maml:description>
@@ -3424,7 +3420,7 @@
                 </command:parameter>
             </command:syntaxItem>
             <command:syntaxItem>
-                <maml:name>New-AzureDataFactoryPipeline</maml:name>
+                <maml:name>New-AzureRmDataFactoryPipeline</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>DataFactory</maml:name>
                     <maml:description>
@@ -3567,7 +3563,7 @@
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; New-AzureDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF" -File "C:\DPWikisample.json"
+                    PS C:\&gt; New-AzureRmDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF" -File "C:\DPWikisample.json"
                     PipelineName      : DPWikisample
                     ResourceGroupName : ADF
                     DataFactoryName   : WikiADF11
@@ -3585,118 +3581,118 @@
         </command:examples>
         <maml:relatedLinks>
             <maml:navigationLink>
-                <maml:linkText>Get-AzureDataFactoryPipeline</maml:linkText>
+                <maml:linkText>Get-AzureRmDataFactoryPipeline</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Remove-AzureDataFactoryPipeline</maml:linkText>
+                <maml:linkText>Remove-AzureRmDataFactoryPipeline</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Resume-AzureDataFactoryPipeline</maml:linkText>
+                <maml:linkText>Resume-AzureRmDataFactoryPipeline</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Set-AzureDataFactoryPipelineActivePeriod</maml:linkText>
+                <maml:linkText>Set-AzureRmDataFactoryPipelineActivePeriod</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Suspend-AzureDataFactoryPipeline</maml:linkText>
+                <maml:linkText>Suspend-AzureRmDataFactoryPipeline</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
         </maml:relatedLinks>
     </command:command>
     <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
         <command:details>
-            <command:name>New-AzureDataFactoryTable</command:name>
+            <command:name>New-AzureRmDataFactoryDataset</command:name>
             <maml:description>
-                <maml:para>Creates a table in Data Factory.</maml:para>
+                <maml:para>Creates a dataset in Data Factory.</maml:para>
             </maml:description>
             <maml:copyright>
                 <maml:para />
             </maml:copyright>
             <command:verb>New</command:verb>
-            <command:noun>AzureDataFactoryTable</command:noun>
+            <command:noun>AzureDataFactoryDataset</command:noun>
             <dev:version />
         </command:details>
         <maml:description>
-            <maml:para>The New-AzureDataFactoryTable cmdlet creates a table in Azure Data Factory. If you specify a name for a table that already exists, this cmdlet prompts you for confirmation before it replaces the table. If you specify the Force parameter, the cmdlet replaces the existing table without confirmation.</maml:para>
+            <maml:para>The New-AzureRmDataFactoryDataset cmdlet creates a dataset in Azure Data Factory. If you specify a name for a dataset that already exists, this cmdlet prompts you for confirmation before it replaces the dataset. If you specify the Force parameter, the cmdlet replaces the existing dataset without confirmation.</maml:para>
             <maml:para>
                 Perform these operations in the following order:
 
                 -- Create a data factory.
                 -- Create linked services.
-                -- Create tables.
+                -- Create datasets.
                 -- Create a pipeline.
             </maml:para>
-            <maml:para>If a table with the same name already exists in the data factory, this cmdlet prompts you to confirm whether to overwrite the existing table with the new table. If you confirm to overwrite the existing table, the table definition is also replaced.</maml:para>
+            <maml:para>If a dataset with the same name already exists in the data factory, this cmdlet prompts you to confirm whether to overwrite the existing dataset with the new dataset. If you confirm to overwrite the existing dataset, the dataset definition is also replaced.</maml:para>
             <maml:para>You must be in AzureResourceManager mode to run Azure Data Factory cmdlets. To switch to AzureResourceManager mode, type Switch-AzureMode AzureResourceManager.</maml:para>
         </maml:description>
         <command:syntax>
             <command:syntaxItem>
-                <maml:name>New-AzureDataFactoryTable</maml:name>
+                <maml:name>New-AzureRmDataFactoryDataset</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>ResourceGroupName</maml:name>
                     <maml:description>
-                        <maml:para>Specifies the name of an Azure resource group. This cmdlet creates a table in the group that this parameter specifies.</maml:para>
+                        <maml:para>Specifies the name of an Azure resource group. This cmdlet creates a dataset in the group that this parameter specifies.</maml:para>
                     </maml:description>
                     <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 </command:parameter>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
                     <maml:name>DataFactoryName</maml:name>
                     <maml:description>
-                        <maml:para>Specifies the name of a data factory. This cmdlet creates a table in the data factory that this parameter specifies.</maml:para>
+                        <maml:para>Specifies the name of a data factory. This cmdlet creates a dataset in the data factory that this parameter specifies.</maml:para>
                     </maml:description>
                     <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 </command:parameter>
                 <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
                     <maml:name>Name</maml:name>
                     <maml:description>
-                        <maml:para>Specifies the name of the table to create.</maml:para>
+                        <maml:para>Specifies the name of the dataset to create.</maml:para>
                     </maml:description>
                     <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 </command:parameter>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4" aliases="">
                     <maml:name>File</maml:name>
                     <maml:description>
-                        <maml:para>Specifies the full path of the JavaScript Object Notation (JSON) file that contains the description of the table.</maml:para>
+                        <maml:para>Specifies the full path of the JavaScript Object Notation (JSON) file that contains the description of the dataset.</maml:para>
                     </maml:description>
                     <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 </command:parameter>
                 <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
                     <maml:name>Force</maml:name>
                     <maml:description>
-                        <maml:para>Indicates that this cmdlet replaces an existing table without prompting you for confirmation.</maml:para>
+                        <maml:para>Indicates that this cmdlet replaces an existing dataset without prompting you for confirmation.</maml:para>
                     </maml:description>
                 </command:parameter>
             </command:syntaxItem>
             <command:syntaxItem>
-                <maml:name>New-AzureDataFactoryTable</maml:name>
+                <maml:name>New-AzureRmDataFactoryDataset</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>DataFactory</maml:name>
                     <maml:description>
-                        <maml:para>Specifies a PSDataFactory object. This cmdlet creates a table in the data factory that this parameter specifies.</maml:para>
+                        <maml:para>Specifies a PSDataFactory object. This cmdlet creates a dataset in the data factory that this parameter specifies.</maml:para>
                     </maml:description>
                     <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
                 </command:parameter>
                 <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
                     <maml:name>Name</maml:name>
                     <maml:description>
-                        <maml:para>Specifies the name of the table to create.</maml:para>
+                        <maml:para>Specifies the name of the dataset to create.</maml:para>
                     </maml:description>
                     <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 </command:parameter>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4" aliases="">
                     <maml:name>File</maml:name>
                     <maml:description>
-                        <maml:para>Specifies the full path of the JavaScript Object Notation (JSON) file that contains the description of the table.</maml:para>
+                        <maml:para>Specifies the full path of the JavaScript Object Notation (JSON) file that contains the description of the dataset.</maml:para>
                     </maml:description>
                     <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 </command:parameter>
                 <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
                     <maml:name>Force</maml:name>
                     <maml:description>
-                        <maml:para>Indicates that this cmdlet replaces an existing table without prompting you for confirmation.</maml:para>
+                        <maml:para>Indicates that this cmdlet replaces an existing dataset without prompting you for confirmation.</maml:para>
                     </maml:description>
                 </command:parameter>
             </command:syntaxItem>
@@ -3705,7 +3701,7 @@
             <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                 <maml:name>DataFactory</maml:name>
                 <maml:description>
-                    <maml:para>Specifies a PSDataFactory object. This cmdlet creates a table in the data factory that this parameter specifies.</maml:para>
+                    <maml:para>Specifies a PSDataFactory object. This cmdlet creates a dataset in the data factory that this parameter specifies.</maml:para>
                 </maml:description>
                 <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
                 <dev:type>
@@ -3717,7 +3713,7 @@
             <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
                 <maml:name>DataFactoryName</maml:name>
                 <maml:description>
-                    <maml:para>Specifies the name of a data factory. This cmdlet creates a table in the data factory that this parameter specifies.</maml:para>
+                    <maml:para>Specifies the name of a data factory. This cmdlet creates a dataset in the data factory that this parameter specifies.</maml:para>
                 </maml:description>
                 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 <dev:type>
@@ -3729,7 +3725,7 @@
             <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4" aliases="">
                 <maml:name>File</maml:name>
                 <maml:description>
-                    <maml:para>Specifies the full path of the JavaScript Object Notation (JSON) file that contains the description of the table.</maml:para>
+                    <maml:para>Specifies the full path of the JavaScript Object Notation (JSON) file that contains the description of the dataset.</maml:para>
                 </maml:description>
                 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 <dev:type>
@@ -3741,7 +3737,7 @@
             <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
                 <maml:name>Force</maml:name>
                 <maml:description>
-                    <maml:para>Indicates that this cmdlet replaces an existing table without prompting you for confirmation.</maml:para>
+                    <maml:para>Indicates that this cmdlet replaces an existing dataset without prompting you for confirmation.</maml:para>
                 </maml:description>
                 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
                 <dev:type>
@@ -3753,7 +3749,7 @@
             <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
                 <maml:name>Name</maml:name>
                 <maml:description>
-                    <maml:para>Specifies the name of the table to create.</maml:para>
+                    <maml:para>Specifies the name of the dataset to create.</maml:para>
                 </maml:description>
                 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 <dev:type>
@@ -3765,7 +3761,7 @@
             <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                 <maml:name>ResourceGroupName</maml:name>
                 <maml:description>
-                    <maml:para>Specifies the name of an Azure resource group. This cmdlet creates a table in the group that this parameter specifies.</maml:para>
+                    <maml:para>Specifies the name of an Azure resource group. This cmdlet creates a dataset in the group that this parameter specifies.</maml:para>
                 </maml:description>
                 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 <dev:type>
@@ -3790,7 +3786,7 @@
         <command:returnValues>
             <command:returnValue>
                 <dev:type>
-                    <maml:name>Microsoft.WindowsAzure.Commands.Utilities.PSTable </maml:name>
+                    <maml:name>Microsoft.WindowsAzure.Commands.Utilities.PSDataset </maml:name>
                     <maml:uri></maml:uri>
                     <maml:description>
                         <maml:para />
@@ -3803,23 +3799,22 @@
         <command:nonTerminatingErrors />
         <command:examples>
             <command:example>
-                <maml:title>Example 1: Create a table</maml:title>
+                <maml:title>Example 1: Create a dataset</maml:title>
                 <maml:introduction>
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; New-AzureDataFactoryTable -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" -File "C:\\samples\\WikiSample\\DA_WikipediaClickEvents.json"
-                    TableName         : DAWikipediaClickEvents
+                    PS C:\&gt; New-AzureRmDataFactoryDataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" -File "C:\\samples\\WikiSample\\DA_WikipediaClickEvents.json"
+                    DatasetName         : DAWikipediaClickEvents
                     ResourceGroupName : ADF
                     DataFactoryName   : WikiADF
                     Availability      : Microsoft.DataFactories.Availability
                     Location          : Microsoft.DataFactories.AzureBlobLocation
                     Policy            : Microsoft.DataFactories.Policy
                     Structure         : {}
-                    Published         : False
                 </dev:code>
                 <dev:remarks>
-                    <maml:para>This command creates a table named DA_WikipediaClickEvents in the data factory named WikiADF. The command bases the table on information in the DAWikipediaClickEvents.json file. </maml:para>
+                    <maml:para>This command creates a dataset named DA_WikipediaClickEvents in the data factory named WikiADF. The command bases the dataset on information in the DAWikipediaClickEvents.json file. </maml:para>
                 </dev:remarks>
                 <command:commandLines>
                     <command:commandLine>
@@ -3828,12 +3823,12 @@
                 </command:commandLines>
             </command:example>
             <command:example>
-                <maml:title>Example 2: View availability for a new table</maml:title>
+                <maml:title>Example 2: View availability for a new dataset</maml:title>
                 <maml:introduction>
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; $Table = New-AzureDataFactoryTable -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" -File "C:\\samples\\WikiSample\\DA_WikipediaClickEvents.json"PS C:\&gt; $Table.Availability
+                    PS C:\&gt; $Dataset = New-AzureRmDataFactoryDataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" -File "C:\\samples\\WikiSample\\DA_WikipediaClickEvents.json"PS C:\&gt; $Dataset.Availability
                     AnchorDateTime :
                     Frequency      : Hour
                     Interval       : 1
@@ -3841,8 +3836,8 @@
                     WaitOnExternal : Microsoft.DataFactories.WaitOnExternal
                 </dev:code>
                 <dev:remarks>
-                    <maml:para>The first command creates a table named DA_WikipediaClickEvents, as in a previous example, and then assigns that table to the $Table variable. </maml:para>
-                    <maml:para>The second command uses standard dot notation to display details about the Availability property of the table.</maml:para>
+                    <maml:para>The first command creates a dataset named DA_WikipediaClickEvents, as in a previous example, and then assigns that dataset to the $Dataset variable. </maml:para>
+                    <maml:para>The second command uses standard dot notation to display details about the Availability property of the dataset.</maml:para>
                 </dev:remarks>
                 <command:commandLines>
                     <command:commandLine>
@@ -3851,12 +3846,12 @@
                 </command:commandLines>
             </command:example>
             <command:example>
-                <maml:title>Example 3: View location for a new table</maml:title>
+                <maml:title>Example 3: View location for a new dataset</maml:title>
                 <maml:introduction>
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; $Table = New-AzureDataFactoryTable -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" -File "C:\\samples\\WikiSample\\DA_WikipediaClickEvents.json"PS C:\&gt; $Table.Location
+                    PS C:\&gt; $Dataset = New-AzureRmDataFactoryDataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" -File "C:\\samples\\WikiSample\\DA_WikipediaClickEvents.json"PS C:\&gt; $Dataset.Location
                     BlobPath          : wikidatagateway/wikisampledatain/
                     FilenamePrefix    :
                     Format            :
@@ -3864,8 +3859,8 @@
                     PartitionBy       : {}
                 </dev:code>
                 <dev:remarks>
-                    <maml:para>The first command creates a table named DA_WikipediaClickEvents, as in a previous example, and then assigns that table to the $Table variable.</maml:para>
-                    <maml:para>The second command displays details about the Location property of the table. </maml:para>
+                    <maml:para>The first command creates a dataset named DA_WikipediaClickEvents, as in a previous example, and then assigns that dataset to the $Dataset variable.</maml:para>
+                    <maml:para>The second command displays details about the Location property of the dataset. </maml:para>
                 </dev:remarks>
                 <command:commandLines>
                     <command:commandLine>
@@ -3874,12 +3869,12 @@
                 </command:commandLines>
             </command:example>
             <command:example>
-                <maml:title>Example 4: View validation rules for a new table</maml:title>
+                <maml:title>Example 4: View validation rules for a new dataset</maml:title>
                 <maml:introduction>
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; $Table = New-AzureDataFactoryTable -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" -File "C:\\samples\\WikiSample\\DA_WikipediaClickEvents.json"PS C:\&gt; $Table.Policy.Validation | Format-List $table.Location
+                    PS C:\&gt; $Dataset = New-AzureRmDataFactoryDataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikipediaClickEvents" -File "C:\\samples\\WikiSample\\DA_WikipediaClickEvents.json"PS C:\&gt; $Dataset.Policy.Validation | Format-List $dataset.Location
 
                     BlobPath          : wikidatagateway/wikisampledatain/
                     FilenamePrefix    :
@@ -3891,8 +3886,8 @@
                     MinimumSizeMB : 1
                 </dev:code>
                 <dev:remarks>
-                    <maml:para>The first command creates a table named DA_WikipediaClickEvents, as in a previous example, and then assigns that table to the $Table variable.</maml:para>
-                    <maml:para>The second command gets details about the validation rules for the table, and then passes them to the Format-List cmdlet by using the pipeline operator. That Windows PowerShell cmdlet formats the results. For more information, type Get-Help Format-List. </maml:para>
+                    <maml:para>The first command creates a dataset named DA_WikipediaClickEvents, as in a previous example, and then assigns that dataset to the $Dataset variable.</maml:para>
+                    <maml:para>The second command gets details about the validation rules for the dataset, and then passes them to the Format-List cmdlet by using the pipeline operator. That Windows PowerShell cmdlet formats the results. For more information, type Get-Help Format-List. </maml:para>
                 </dev:remarks>
                 <command:commandLines>
                     <command:commandLine>
@@ -3903,18 +3898,18 @@
         </command:examples>
         <maml:relatedLinks>
             <maml:navigationLink>
-                <maml:linkText>Get-AzureDataFactoryTable</maml:linkText>
+                <maml:linkText>Get-AzureRmDataFactoryDataset</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Remove-AzureDataFactoryTable</maml:linkText>
+                <maml:linkText>Remove-AzureRmDataFactoryDataset</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
         </maml:relatedLinks>
     </command:command>
     <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
         <command:details>
-            <command:name>Remove-AzureDataFactory</command:name>
+            <command:name>Remove-AzureRmDataFactory</command:name>
             <maml:description>
                 <maml:para>Removes a data factory.</maml:para>
             </maml:description>
@@ -3926,12 +3921,12 @@
             <dev:version />
         </command:details>
         <maml:description>
-            <maml:para>The Remove-AzureDataFactory cmdlet removes a data factory. </maml:para>
+            <maml:para>The Remove-AzureRmDataFactory cmdlet removes a data factory. </maml:para>
             <maml:para>You must be in AzureResourceManager mode to run Azure Data Factory cmdlets. To switch to AzureResourceManager mode, type Switch-AzureMode AzureResourceManager.</maml:para>
         </maml:description>
         <command:syntax>
             <command:syntaxItem>
-                <maml:name>Remove-AzureDataFactory</maml:name>
+                <maml:name>Remove-AzureRmDataFactory</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>ResourceGroupName</maml:name>
                     <maml:description>
@@ -3956,7 +3951,7 @@
                 </command:parameter>
             </command:syntaxItem>
             <command:syntaxItem>
-                <maml:name>Remove-AzureDataFactory</maml:name>
+                <maml:name>Remove-AzureRmDataFactory</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>DataFactory</maml:name>
                     <maml:description>
@@ -4057,7 +4052,7 @@
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; Remove-AzureDataFactory -Name "WikiADF" -ResourceGroupName "ADF"
+                    PS C:\&gt; Remove-AzureRmDataFactory -Name "WikiADF" -ResourceGroupName "ADF"
                     Confirm
                     Are you sure you want to remove data factory 'WikiADF' in resource group 'ADF'?
                     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
@@ -4075,18 +4070,18 @@
         </command:examples>
         <maml:relatedLinks>
             <maml:navigationLink>
-                <maml:linkText>Get-AzureDataFactory</maml:linkText>
+                <maml:linkText>Get-AzureRmDataFactory</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>New-AzureDataFactory</maml:linkText>
+                <maml:linkText>New-AzureRmDataFactory</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
         </maml:relatedLinks>
     </command:command>
     <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
         <command:details>
-            <command:name>Remove-AzureDataFactoryGateway</command:name>
+            <command:name>Remove-AzureRmDataFactoryGateway</command:name>
             <maml:description>
                 <maml:para>Removes a gateway from Data Factory.</maml:para>
             </maml:description>
@@ -4098,12 +4093,12 @@
             <dev:version />
         </command:details>
         <maml:description>
-            <maml:para>The Remove-AzureDataFactoryGateway cmdlet removes the specified gateway from Azure Data Factory.</maml:para>
+            <maml:para>The Remove-AzureRmDataFactoryGateway cmdlet removes the specified gateway from Azure Data Factory.</maml:para>
             <maml:para>You must be in AzureResourceManager mode to run Azure Data Factory cmdlets. To switch to AzureResourceManager mode, type Switch-AzureMode AzureResourceManager.</maml:para>
         </maml:description>
         <command:syntax>
             <command:syntaxItem>
-                <maml:name>Remove-AzureDataFactoryGateway</maml:name>
+                <maml:name>Remove-AzureRmDataFactoryGateway</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>ResourceGroupName</maml:name>
                     <maml:description>
@@ -4133,7 +4128,7 @@
                 </command:parameter>
             </command:syntaxItem>
             <command:syntaxItem>
-                <maml:name>Remove-AzureDataFactoryGateway</maml:name>
+                <maml:name>Remove-AzureRmDataFactoryGateway</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>DataFactory</maml:name>
                     <maml:description>
@@ -4251,7 +4246,7 @@
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; Remove-AzureDataFactoryGateway -Name "ContosoGateway" -DataFactoryName "WikiADF" -ResourceGroupName "ADF"
+                    PS C:\&gt; Remove-AzureRmDataFactoryGateway -Name "ContosoGateway" -DataFactoryName "WikiADF" -ResourceGroupName "ADF"
                     Confirm
                     Are you sure you want to remove gateway 'ContosoGateway' in data factory 'WikiADF'?
                     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is Y): Y
@@ -4269,22 +4264,22 @@
         </command:examples>
         <maml:relatedLinks>
             <maml:navigationLink>
-                <maml:linkText>Get-AzureDataFactoryGateway</maml:linkText>
+                <maml:linkText>Get-AzureRmDataFactoryGateway</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>New-AzureDataFactoryGateway</maml:linkText>
+                <maml:linkText>New-AzureRmDataFactoryGateway</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Set-AzureDataFactoryGateway</maml:linkText>
+                <maml:linkText>Set-AzureRmDataFactoryGateway</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
         </maml:relatedLinks>
     </command:command>
     <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
         <command:details>
-            <command:name>Remove-AzureDataFactoryHub</command:name>
+            <command:name>Remove-AzureRmDataFactoryHub</command:name>
             <maml:description>
                 <maml:para>Removes a hub from Data Factory.</maml:para>
             </maml:description>
@@ -4296,12 +4291,12 @@
             <dev:version />
         </command:details>
         <maml:description>
-            <maml:para>The Remove-AzureDataFactoryHub cmdlet removes a hub from Azure Data Factory in the specified Azure resource group and in the specified data factory. If you remove a hub, all linked services and pipelines in the hub are also removed.</maml:para>
+            <maml:para>The Remove-AzureRmDataFactoryHub cmdlet removes a hub from Azure Data Factory in the specified Azure resource group and in the specified data factory. If you remove a hub, all linked services and pipelines in the hub are also removed.</maml:para>
             <maml:para>You must be in AzureResourceManager mode to run Azure Data Factory cmdlets. To switch to AzureResourceManager mode, type Switch-AzureMode AzureResourceManager.</maml:para>
         </maml:description>
         <command:syntax>
             <command:syntaxItem>
-                <maml:name>Remove-AzureDataFactoryHub</maml:name>
+                <maml:name>Remove-AzureRmDataFactoryHub</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>ResourceGroupName</maml:name>
                     <maml:description>
@@ -4331,7 +4326,7 @@
                 </command:parameter>
             </command:syntaxItem>
             <command:syntaxItem>
-                <maml:name>Remove-AzureDataFactoryHub</maml:name>
+                <maml:name>Remove-AzureRmDataFactoryHub</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>DataFactory</maml:name>
                     <maml:description>
@@ -4453,7 +4448,7 @@
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt;Remove-AzureDataFactoryHub -ResourceGroupName "ADFResourceGroup" -DataFactoryName "ADFDataFactory" -Name "ContosoDataHub"
+                    PS C:\&gt;Remove-AzureRmDataFactoryHub -ResourceGroupName "ADFResourceGroup" -DataFactoryName "ADFDataFactory" -Name "ContosoDataHub"
 
                 </dev:code>
                 <dev:remarks>
@@ -4472,18 +4467,18 @@
                 <maml:uri></maml:uri>
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>New-AzureDataFactoryHub</maml:linkText>
+                <maml:linkText>New-AzureRmDataFactoryHub</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Get-AzureDataFactoryHub</maml:linkText>
+                <maml:linkText>Get-AzureRmDataFactoryHub</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
         </maml:relatedLinks>
     </command:command>
     <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
         <command:details>
-            <command:name>Remove-AzureDataFactoryLinkedService</command:name>
+            <command:name>Remove-AzureRmDataFactoryLinkedService</command:name>
             <maml:description>
                 <maml:para>Removes a linked service from Data Factory.</maml:para>
             </maml:description>
@@ -4495,12 +4490,12 @@
             <dev:version />
         </command:details>
         <maml:description>
-            <maml:para>The Remove-AzureDataFactoryLinkedService cmdlet removes a linked service from Azure Data Factory. </maml:para>
+            <maml:para>The Remove-AzureRmDataFactoryLinkedService cmdlet removes a linked service from Azure Data Factory. </maml:para>
             <maml:para>You must be in AzureResourceManager mode to run Azure Data Factory cmdlets. To switch to AzureResourceManager mode, type Switch-AzureMode AzureResourceManager.</maml:para>
         </maml:description>
         <command:syntax>
             <command:syntaxItem>
-                <maml:name>Remove-AzureDataFactoryLinkedService</maml:name>
+                <maml:name>Remove-AzureRmDataFactoryLinkedService</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>ResourceGroupName</maml:name>
                     <maml:description>
@@ -4532,7 +4527,7 @@
                 </command:parameter>
             </command:syntaxItem>
             <command:syntaxItem>
-                <maml:name>Remove-AzureDataFactoryLinkedService</maml:name>
+                <maml:name>Remove-AzureRmDataFactoryLinkedService</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>DataFactory</maml:name>
                     <maml:description>
@@ -4654,7 +4649,7 @@
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; Remove-AzureDataFactoryLinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "LinkedServiceTest"
+                    PS C:\&gt; Remove-AzureRmDataFactoryLinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "LinkedServiceTest"
                     Confirm
                     Are you sure you want to remove linked service 'LinkedServiceTest' in data factory 'WikiADF'?
                     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
@@ -4672,18 +4667,18 @@
         </command:examples>
         <maml:relatedLinks>
             <maml:navigationLink>
-                <maml:linkText>Get-AzureDataFactoryLinkedService</maml:linkText>
+                <maml:linkText>Get-AzureRmDataFactoryLinkedService</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>New-AzureDataFactoryLinkedService</maml:linkText>
+                <maml:linkText>New-AzureRmDataFactoryLinkedService</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
         </maml:relatedLinks>
     </command:command>
     <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
         <command:details>
-            <command:name>Remove-AzureDataFactoryPipeline</command:name>
+            <command:name>Remove-AzureRmDataFactoryPipeline</command:name>
             <maml:description>
                 <maml:para>Removes a pipeline from Data Factory.</maml:para>
             </maml:description>
@@ -4695,12 +4690,12 @@
             <dev:version />
         </command:details>
         <maml:description>
-            <maml:para>The Remove-AzureDataFactoryPipeline cmdlet removes a pipeline from Azure Data Factory. </maml:para>
+            <maml:para>The Remove-AzureRmDataFactoryPipeline cmdlet removes a pipeline from Azure Data Factory. </maml:para>
             <maml:para>You must be in AzureResourceManager mode to run Azure Data Factory cmdlets. To switch to AzureResourceManager mode, type Switch-AzureMode AzureResourceManager.</maml:para>
         </maml:description>
         <command:syntax>
             <command:syntaxItem>
-                <maml:name>Remove-AzureDataFactoryPipeline</maml:name>
+                <maml:name>Remove-AzureRmDataFactoryPipeline</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>ResourceGroupName</maml:name>
                     <maml:description>
@@ -4730,7 +4725,7 @@
                 </command:parameter>
             </command:syntaxItem>
             <command:syntaxItem>
-                <maml:name>Remove-AzureDataFactoryPipeline</maml:name>
+                <maml:name>Remove-AzureRmDataFactoryPipeline</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>DataFactory</maml:name>
                     <maml:description>
@@ -4848,7 +4843,7 @@
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; Remove-AzureDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF"
+                    PS C:\&gt; Remove-AzureRmDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF"
                     Confirm
                     Are you sure you want to remove pipeline 'DPWikisample' in data factory 'WikiADF'?
                     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
@@ -4866,95 +4861,95 @@
         </command:examples>
         <maml:relatedLinks>
             <maml:navigationLink>
-                <maml:linkText>Get-AzureDataFactoryPipeline</maml:linkText>
+                <maml:linkText>Get-AzureRmDataFactoryPipeline</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>New-AzureDataFactoryPipeline</maml:linkText>
+                <maml:linkText>New-AzureRmDataFactoryPipeline</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Resume-AzureDataFactoryPipeline</maml:linkText>
+                <maml:linkText>Resume-AzureRmDataFactoryPipeline</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Set-AzureDataFactoryPipelineActivePeriod</maml:linkText>
+                <maml:linkText>Set-AzureRmDataFactoryPipelineActivePeriod</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Suspend-AzureDataFactoryPipeline</maml:linkText>
+                <maml:linkText>Suspend-AzureRmDataFactoryPipeline</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
         </maml:relatedLinks>
     </command:command>
     <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
         <command:details>
-            <command:name>Remove-AzureDataFactoryTable</command:name>
+            <command:name>Remove-AzureRmDataFactoryDataset</command:name>
             <maml:description>
-                <maml:para>Removes a table from Data Factory.</maml:para>
+                <maml:para>Removes a dataset from Data Factory.</maml:para>
             </maml:description>
             <maml:copyright>
                 <maml:para />
             </maml:copyright>
             <command:verb>Remove</command:verb>
-            <command:noun>AzureDataFactoryTable</command:noun>
+            <command:noun>AzureDataFactoryDataset</command:noun>
             <dev:version />
         </command:details>
         <maml:description>
-            <maml:para>The Remove-AzureDataFactoryTable cmdlet removes a table from Azure Data Factory. </maml:para>
+            <maml:para>The Remove-AzureRmDataFactoryDataset cmdlet removes a dataset from Azure Data Factory. </maml:para>
             <maml:para>You must be in AzureResourceManager mode to run Azure Data Factory cmdlets. To switch to AzureResourceManager mode, type Switch-AzureMode AzureResourceManager.</maml:para>
         </maml:description>
         <command:syntax>
             <command:syntaxItem>
-                <maml:name>Remove-AzureDataFactoryTable</maml:name>
+                <maml:name>Remove-AzureRmDataFactoryDataset</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>ResourceGroupName</maml:name>
                     <maml:description>
-                        <maml:para>Specifies the name of an Azure resource group. This cmdlet removes a table from the group that this parameter specifies.</maml:para>
+                        <maml:para>Specifies the name of an Azure resource group. This cmdlet removes a dataset from the group that this parameter specifies.</maml:para>
                     </maml:description>
                     <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 </command:parameter>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
                     <maml:name>DataFactoryName</maml:name>
                     <maml:description>
-                        <maml:para>Specifies the name of a data factory. This cmdlet removes a table from the data factory that this parameter specifies.</maml:para>
+                        <maml:para>Specifies the name of a data factory. This cmdlet removes a dataset from the data factory that this parameter specifies.</maml:para>
                     </maml:description>
                     <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 </command:parameter>
-                <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="TableName">
+                <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="DatasetName">
                     <maml:name>Name</maml:name>
                     <maml:description>
-                        <maml:para>Specifies the name of the table to remove.</maml:para>
+                        <maml:para>Specifies the name of the dataset to remove.</maml:para>
                     </maml:description>
                     <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 </command:parameter>
                 <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
                     <maml:name>Force</maml:name>
                     <maml:description>
-                        <maml:para>Indicates that this cmdlet removes a table without prompting you for confirmation.</maml:para>
+                        <maml:para>Indicates that this cmdlet removes a dataset without prompting you for confirmation.</maml:para>
                     </maml:description>
                 </command:parameter>
             </command:syntaxItem>
             <command:syntaxItem>
-                <maml:name>Remove-AzureDataFactoryTable</maml:name>
+                <maml:name>Remove-AzureRmDataFactoryDataset</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>DataFactory</maml:name>
                     <maml:description>
-                        <maml:para>Specifies a PSDataFactory object. This cmdlet removes a table from the data factory that this parameter specifies.</maml:para>
+                        <maml:para>Specifies a PSDataFactory object. This cmdlet removes a dataset from the data factory that this parameter specifies.</maml:para>
                     </maml:description>
                     <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
                 </command:parameter>
-                <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="TableName">
+                <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="DatasetName">
                     <maml:name>Name</maml:name>
                     <maml:description>
-                        <maml:para>Specifies the name of the table to remove.</maml:para>
+                        <maml:para>Specifies the name of the dataset to remove.</maml:para>
                     </maml:description>
                     <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 </command:parameter>
                 <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
                     <maml:name>Force</maml:name>
                     <maml:description>
-                        <maml:para>Indicates that this cmdlet removes a table without prompting you for confirmation.</maml:para>
+                        <maml:para>Indicates that this cmdlet removes a dataset without prompting you for confirmation.</maml:para>
                     </maml:description>
                 </command:parameter>
             </command:syntaxItem>
@@ -4963,7 +4958,7 @@
             <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                 <maml:name>DataFactory</maml:name>
                 <maml:description>
-                    <maml:para>Specifies a PSDataFactory object. This cmdlet removes a table from the data factory that this parameter specifies.</maml:para>
+                    <maml:para>Specifies a PSDataFactory object. This cmdlet removes a dataset from the data factory that this parameter specifies.</maml:para>
                 </maml:description>
                 <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
                 <dev:type>
@@ -4975,7 +4970,7 @@
             <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
                 <maml:name>DataFactoryName</maml:name>
                 <maml:description>
-                    <maml:para>Specifies the name of a data factory. This cmdlet removes a table from the data factory that this parameter specifies.</maml:para>
+                    <maml:para>Specifies the name of a data factory. This cmdlet removes a dataset from the data factory that this parameter specifies.</maml:para>
                 </maml:description>
                 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 <dev:type>
@@ -4987,7 +4982,7 @@
             <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
                 <maml:name>Force</maml:name>
                 <maml:description>
-                    <maml:para>Indicates that this cmdlet removes a table without prompting you for confirmation.</maml:para>
+                    <maml:para>Indicates that this cmdlet removes a dataset without prompting you for confirmation.</maml:para>
                 </maml:description>
                 <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
                 <dev:type>
@@ -4996,10 +4991,10 @@
                 </dev:type>
                 <dev:defaultValue></dev:defaultValue>
             </command:parameter>
-            <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="TableName">
+            <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="DatasetName">
                 <maml:name>Name</maml:name>
                 <maml:description>
-                    <maml:para>Specifies the name of the table to remove.</maml:para>
+                    <maml:para>Specifies the name of the dataset to remove.</maml:para>
                 </maml:description>
                 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 <dev:type>
@@ -5011,7 +5006,7 @@
             <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                 <maml:name>ResourceGroupName</maml:name>
                 <maml:description>
-                    <maml:para>Specifies the name of an Azure resource group. This cmdlet removes a table from the group that this parameter specifies.</maml:para>
+                    <maml:para>Specifies the name of an Azure resource group. This cmdlet removes a dataset from the group that this parameter specifies.</maml:para>
                 </maml:description>
                 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 <dev:type>
@@ -5049,19 +5044,19 @@
         <command:nonTerminatingErrors />
         <command:examples>
             <command:example>
-                <maml:title>Example 1: Remove a table</maml:title>
+                <maml:title>Example 1: Remove a dataset</maml:title>
                 <maml:introduction>
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; Remove-AzureDataFactoryTable -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikiAggregatedData"
+                    PS C:\&gt; Remove-AzureRmDataFactoryDataset -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "DAWikiAggregatedData"
                     Confirm
-                    Are you sure you want to remove table 'DAWikiAggregatedData' in data factory 'WikiADF'?
+                    Are you sure you want to remove dataset 'DAWikiAggregatedData' in data factory 'WikiADF'?
                     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
                     True
                 </dev:code>
                 <dev:remarks>
-                    <maml:para>This command removes the table named DAWikiAggregatedData from the data factory named WikiADF. The command returns a value of $True.</maml:para>
+                    <maml:para>This command removes the dataset named DAWikiAggregatedData from the data factory named WikiADF. The command returns a value of $True.</maml:para>
                 </dev:remarks>
                 <command:commandLines>
                     <command:commandLine>
@@ -5072,18 +5067,18 @@
         </command:examples>
         <maml:relatedLinks>
             <maml:navigationLink>
-                <maml:linkText>Get-AzureDataFactoryTable</maml:linkText>
+                <maml:linkText>Get-AzureRmDataFactoryDataset</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>New-AzureDataFactoryTable</maml:linkText>
+                <maml:linkText>New-AzureRmDataFactoryDataset</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
         </maml:relatedLinks>
     </command:command>
     <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
         <command:details>
-            <command:name>Resume-AzureDataFactoryPipeline</command:name>
+            <command:name>Resume-AzureRmDataFactoryPipeline</command:name>
             <maml:description>
                 <maml:para>Resumes a suspended pipeline in Data Factory.</maml:para>
             </maml:description>
@@ -5095,12 +5090,12 @@
             <dev:version />
         </command:details>
         <maml:description>
-            <maml:para>The Resume-AzureDataFactoryPipeline cmdlet resumes a suspended pipeline in Azure Data Factory. </maml:para>
+            <maml:para>The Resume-AzureRmDataFactoryPipeline cmdlet resumes a suspended pipeline in Azure Data Factory. </maml:para>
             <maml:para>You must be in AzureResourceManager mode to run Azure Data Factory cmdlets. To switch to AzureResourceManager mode, type Switch-AzureMode AzureResourceManager.</maml:para>
         </maml:description>
         <command:syntax>
             <command:syntaxItem>
-                <maml:name>Resume-AzureDataFactoryPipeline</maml:name>
+                <maml:name>Resume-AzureRmDataFactoryPipeline</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>ResourceGroupName</maml:name>
                     <maml:description>
@@ -5130,7 +5125,7 @@
                 </command:parameter>
             </command:syntaxItem>
             <command:syntaxItem>
-                <maml:name>Resume-AzureDataFactoryPipeline</maml:name>
+                <maml:name>Resume-AzureRmDataFactoryPipeline</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>DataFactory</maml:name>
                     <maml:description>
@@ -5248,14 +5243,14 @@
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; Resume-AzureDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF"
+                    PS C:\&gt; Resume-AzureRmDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF"
                     Confirm
                     Are you sure you want to resume pipeline 'DPWikisample' in data factory 'WikiADF'?
                     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
                     True
                 </dev:code>
                 <dev:remarks>
-                    <maml:para>This command resumes the pipeline named DPWikisample in the data factory named WikiADF. Use the Suspend-AzureDataFactoryPipeline cmdlet to suspend a pipeline. The command returns a value of $True.</maml:para>
+                    <maml:para>This command resumes the pipeline named DPWikisample in the data factory named WikiADF. Use the Suspend-AzureRmDataFactoryPipeline cmdlet to suspend a pipeline. The command returns a value of $True.</maml:para>
                 </dev:remarks>
                 <command:commandLines>
                     <command:commandLine>
@@ -5266,30 +5261,30 @@
         </command:examples>
         <maml:relatedLinks>
             <maml:navigationLink>
-                <maml:linkText>Get-AzureDataFactoryPipeline</maml:linkText>
+                <maml:linkText>Get-AzureRmDataFactoryPipeline</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>New-AzureDataFactoryPipeline</maml:linkText>
+                <maml:linkText>New-AzureRmDataFactoryPipeline</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Remove-AzureDataFactoryPipeline</maml:linkText>
+                <maml:linkText>Remove-AzureRmDataFactoryPipeline</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Set-AzureDataFactoryPipelineActivePeriod</maml:linkText>
+                <maml:linkText>Set-AzureRmDataFactoryPipelineActivePeriod</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Suspend-AzureDataFactoryPipeline</maml:linkText>
+                <maml:linkText>Suspend-AzureRmDataFactoryPipeline</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
         </maml:relatedLinks>
     </command:command>
     <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
         <command:details>
-            <command:name>Save-AzureDataFactoryLog</command:name>
+            <command:name>Save-AzureRmDataFactoryLog</command:name>
             <maml:description>
                 <maml:para>Downloads log files from HDInsight processing.</maml:para>
             </maml:description>
@@ -5302,14 +5297,14 @@
         </command:details>
         <maml:description>
             <maml:para>You must be in AzureResourceManager mode to run Azure Data Factory cmdlets. To switch to AzureResourceManager mode, type Switch-AzureMode AzureResourceManager.</maml:para>
-            <maml:para>The Save-AzureDataFactoryLog cmdlet downloads log files associated with Azure HDInsight processing of Pig or Hive projects or for custom activities to your local hard drive. You first run the Get-AzureDataFactoryRun cmdlet to get an ID for an activity run for a data slice, and then use that ID to retrieve log files from the binary large object (BLOB) storage associated with the HDInsight cluster. </maml:para>
+            <maml:para>The Save-AzureRmDataFactoryLog cmdlet downloads log files associated with Azure HDInsight processing of Pig or Hive projects or for custom activities to your local hard drive. You first run the Get-AzureRmDataFactoryRun cmdlet to get an ID for an activity run for a data slice, and then use that ID to retrieve log files from the binary large object (BLOB) storage associated with the HDInsight cluster. </maml:para>
             <maml:para>If you do not specify –DownloadLogs parameter, the cmdlet just returns the location of log files. </maml:para>
             <maml:para>If you specify –DownloadLogs parameter without specifying an output directory (-Output parameter), the log files are downloaded to the default Documents folder. </maml:para>
             <maml:para>If you specify –DownloadLogs parameter along with an output folder (-Output), the log files are downloaded to the specified folder. </maml:para>
         </maml:description>
         <command:syntax>
             <command:syntaxItem>
-                <maml:name>Save-AzureDataFactoryLog</maml:name>
+                <maml:name>Save-AzureRmDataFactoryLog</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>DataFactory</maml:name>
                     <maml:description>
@@ -5320,7 +5315,7 @@
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
                     <maml:name>Id</maml:name>
                     <maml:description>
-                        <maml:para>Specifies the ID of the activity run for the data slice. Use the Get-AzureDataFactoryRun cmdlet to get an ID. </maml:para>
+                        <maml:para>Specifies the ID of the activity run for the data slice. Use the Get-AzureRmDataFactoryRun cmdlet to get an ID. </maml:para>
                     </maml:description>
                     <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 </command:parameter>
@@ -5339,7 +5334,7 @@
                 </command:parameter>
             </command:syntaxItem>
             <command:syntaxItem>
-                <maml:name>Save-AzureDataFactoryLog</maml:name>
+                <maml:name>Save-AzureRmDataFactoryLog</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>ResourceGroupName</maml:name>
                     <maml:description>
@@ -5357,7 +5352,7 @@
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
                     <maml:name>Id</maml:name>
                     <maml:description>
-                        <maml:para>Specifies the ID of the activity run for the data slice. Use the Get-AzureDataFactoryRun cmdlet to get an ID. </maml:para>
+                        <maml:para>Specifies the ID of the activity run for the data slice. Use the Get-AzureRmDataFactoryRun cmdlet to get an ID. </maml:para>
                     </maml:description>
                     <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 </command:parameter>
@@ -5416,7 +5411,7 @@
             <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="2" aliases="">
                 <maml:name>Id</maml:name>
                 <maml:description>
-                    <maml:para>Specifies the ID of the activity run for the data slice. Use the Get-AzureDataFactoryRun cmdlet to get an ID. </maml:para>
+                    <maml:para>Specifies the ID of the activity run for the data slice. Use the Get-AzureRmDataFactoryRun cmdlet to get an ID. </maml:para>
                 </maml:description>
                 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 <dev:type>
@@ -5487,7 +5482,7 @@
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt;Save-AzureDataFactoryLog -ResourceGroupName "ADF" -DataFactoryName "LogProcessingFactory" -Id "841b77c9-d56c-48d1-99a3-8c16c3e77d39" -DownloadLogs -Output "C:\Test"
+                    PS C:\&gt;Save-AzureRmDataFactoryLog -ResourceGroupName "ADF" -DataFactoryName "LogProcessingFactory" -Id "841b77c9-d56c-48d1-99a3-8c16c3e77d39" -DownloadLogs -Output "C:\Test"
 
                 </dev:code>
                 <dev:remarks>
@@ -5505,7 +5500,7 @@
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt;Save-AzureDataFactoryLog -ResourceGroupName "ADF" -DataFactoryName "LogProcessingFactory" -Id "841b77c9-d56c-48d1-99a3-8c16c3e77d39" -DownloadLogs
+                    PS C:\&gt;Save-AzureRmDataFactoryLog -ResourceGroupName "ADF" -DataFactoryName "LogProcessingFactory" -Id "841b77c9-d56c-48d1-99a3-8c16c3e77d39" -DownloadLogs
 
                 </dev:code>
                 <dev:remarks>
@@ -5523,7 +5518,7 @@
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt;Save-AzureDataFactoryLog -ResourceGroupName "ADF" -DataFactoryName "LogProcessingFactory" -Id "841b77c9-d56c-48d1-99a3-8c16c3e77d39"
+                    PS C:\&gt;Save-AzureRmDataFactoryLog -ResourceGroupName "ADF" -DataFactoryName "LogProcessingFactory" -Id "841b77c9-d56c-48d1-99a3-8c16c3e77d39"
 
                 </dev:code>
                 <dev:remarks>
@@ -5542,34 +5537,34 @@
                 <maml:uri></maml:uri>
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Get-AzureDataFactoryRun</maml:linkText>
+                <maml:linkText>Get-AzureRmDataFactoryRun</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Get-AzureDataFactoryPipeline</maml:linkText>
+                <maml:linkText>Get-AzureRmDataFactoryPipeline</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>New-AzureDataFactoryPipeline</maml:linkText>
+                <maml:linkText>New-AzureRmDataFactoryPipeline</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Remove-AzureDataFactoryPipeline</maml:linkText>
+                <maml:linkText>Remove-AzureRmDataFactoryPipeline</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Set-AzureDataFactoryPipelineActivePeriod</maml:linkText>
+                <maml:linkText>Set-AzureRmDataFactoryPipelineActivePeriod</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Suspend-AzureDataFactoryPipeline</maml:linkText>
+                <maml:linkText>Suspend-AzureRmDataFactoryPipeline</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
         </maml:relatedLinks>
     </command:command>
     <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
         <command:details>
-            <command:name>Set-AzureDataFactoryGateway</command:name>
+            <command:name>Set-AzureRmDataFactoryGateway</command:name>
             <maml:description>
                 <maml:para>Sets the description for a gateway in Data Factory.</maml:para>
             </maml:description>
@@ -5581,12 +5576,12 @@
             <dev:version />
         </command:details>
         <maml:description>
-            <maml:para>The Set-AzureDataFactoryGateway cmdlet sets the description for the specified gateway in Azure Data Factory.</maml:para>
+            <maml:para>The Set-AzureRmDataFactoryGateway cmdlet sets the description for the specified gateway in Azure Data Factory.</maml:para>
             <maml:para>You must be in AzureResourceManager mode to run Azure Data Factory cmdlets. To switch to AzureResourceManager mode, type Switch-AzureMode AzureResourceManager.</maml:para>
         </maml:description>
         <command:syntax>
             <command:syntaxItem>
-                <maml:name>Set-AzureDataFactoryGateway</maml:name>
+                <maml:name>Set-AzureRmDataFactoryGateway</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>ResourceGroupName</maml:name>
                     <maml:description>
@@ -5617,7 +5612,7 @@
                 </command:parameter>
             </command:syntaxItem>
             <command:syntaxItem>
-                <maml:name>Set-AzureDataFactoryGateway</maml:name>
+                <maml:name>Set-AzureRmDataFactoryGateway</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>DataFactory</maml:name>
                     <maml:description>
@@ -5736,7 +5731,7 @@
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; Set-AzureDataFactoryGateway -ResourceGroupName "ADF" -Name "ContosoGateway" -DataFactoryName "WikiADF" -Description "my gateway"
+                    PS C:\&gt; Set-AzureRmDataFactoryGateway -ResourceGroupName "ADF" -Name "ContosoGateway" -DataFactoryName "WikiADF" -Description "my gateway"
                     Name            : ContosoGateway
                     Description     : my gateway
                     Version         : 1.3.5338.1
@@ -5760,22 +5755,22 @@
         </command:examples>
         <maml:relatedLinks>
             <maml:navigationLink>
-                <maml:linkText>Get-AzureDataFactoryGateway</maml:linkText>
+                <maml:linkText>Get-AzureRmDataFactoryGateway</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>New-AzureDataFactoryGateway</maml:linkText>
+                <maml:linkText>New-AzureRmDataFactoryGateway</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Remove-AzureDataFactoryGateway</maml:linkText>
+                <maml:linkText>Remove-AzureRmDataFactoryGateway</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
         </maml:relatedLinks>
     </command:command>
     <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
         <command:details>
-            <command:name>Set-AzureDataFactoryPipelineActivePeriod</command:name>
+            <command:name>Set-AzureRmDataFactoryPipelineActivePeriod</command:name>
             <maml:description>
                 <maml:para>Configures the active period for data slices.</maml:para>
             </maml:description>
@@ -5787,13 +5782,13 @@
             <dev:version />
         </command:details>
         <maml:description>
-            <maml:para>The Set-AzureDataFactoryPipelineActivePeriod cmdlet configures the active period for the data slices that are processed by a pipeline in Azure Data Factory. If you use the Set-AzureDataFactorySliceStatus cmdlet to modify the status of slices for a table, make sure that the start time and end time for a slice are in the active period of the pipeline.</maml:para>
-            <maml:para>After you create a pipeline, you can specify the period in which data processing occurs. Specifying the active period for a pipeline defines the time duration in which the data slices are processed based on the Availability properties that were defined for each Data Factory table. </maml:para>
+            <maml:para>The Set-AzureRmDataFactoryPipelineActivePeriod cmdlet configures the active period for the data slices that are processed by a pipeline in Azure Data Factory. If you use the Set-AzureRmDataFactorySliceStatus cmdlet to modify the status of slices for a dataset, make sure that the start time and end time for a slice are in the active period of the pipeline.</maml:para>
+            <maml:para>After you create a pipeline, you can specify the period in which data processing occurs. Specifying the active period for a pipeline defines the time duration in which the data slices are processed based on the Availability properties that were defined for each Data Factory dataset. </maml:para>
             <maml:para>You must be in AzureResourceManager mode to run Azure Data Factory cmdlets. To switch to AzureResourceManager mode, type Switch-AzureMode AzureResourceManager.</maml:para>
         </maml:description>
         <command:syntax>
             <command:syntaxItem>
-                <maml:name>Set-AzureDataFactoryPipelineActivePeriod</maml:name>
+                <maml:name>Set-AzureRmDataFactoryPipelineActivePeriod</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>ResourceGroupName</maml:name>
                     <maml:description>
@@ -5855,7 +5850,7 @@
                 </command:parameter>
             </command:syntaxItem>
             <command:syntaxItem>
-                <maml:name>Set-AzureDataFactoryPipelineActivePeriod</maml:name>
+                <maml:name>Set-AzureRmDataFactoryPipelineActivePeriod</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>DataFactory</maml:name>
                     <maml:description>
@@ -6057,7 +6052,7 @@
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; Set-AzureDataFactoryPipelineActivePeriod -ResourceGroupName "ADF" -PipelineName "DPWikisample" -DataFactoryName "WikiADF" -StartDateTime 2014-05-21T16:00:00Z -EndDateTime 2014-05-22T16:00:00Z
+                    PS C:\&gt; Set-AzureRmDataFactoryPipelineActivePeriod -ResourceGroupName "ADF" -PipelineName "DPWikisample" -DataFactoryName "WikiADF" -StartDateTime 2014-05-21T16:00:00Z -EndDateTime 2014-05-22T16:00:00Z
 
                     Confirm
                     Are you sure you want to set pipeline 'DPWikisample' active period from '05/21/2014 16:00:00' to
@@ -6077,20 +6072,20 @@
         </command:examples>
         <maml:relatedLinks>
             <maml:navigationLink>
-                <maml:linkText>New-AzureDataFactoryPipeline</maml:linkText>
+                <maml:linkText>New-AzureRmDataFactoryPipeline</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Set-AzureDataFactorySliceStatus</maml:linkText>
+                <maml:linkText>Set-AzureRmDataFactorySliceStatus</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
         </maml:relatedLinks>
     </command:command>
     <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
         <command:details>
-            <command:name>Set-AzureDataFactorySliceStatus</command:name>
+            <command:name>Set-AzureRmDataFactorySliceStatus</command:name>
             <maml:description>
-                <maml:para>Sets the status of slices for a table in Data Factory.</maml:para>
+                <maml:para>Sets the status of slices for a dataset in Data Factory.</maml:para>
             </maml:description>
             <maml:copyright>
                 <maml:para />
@@ -6100,12 +6095,12 @@
             <dev:version />
         </command:details>
         <maml:description>
-            <maml:para>The Set-AzureDataFactorySliceStatus cmdlet sets the status of slices for a table in Azure Data Factory.</maml:para>
+            <maml:para>The Set-AzureRmDataFactorySliceStatus cmdlet sets the status of slices for a dataset in Azure Data Factory.</maml:para>
             <maml:para>You must be in AzureResourceManager mode to run Azure Data Factory cmdlets. To switch to AzureResourceManager mode, type Switch-AzureMode AzureResourceManager.</maml:para>
         </maml:description>
         <command:syntax>
             <command:syntaxItem>
-                <maml:name>Set-AzureDataFactorySliceStatus</maml:name>
+                <maml:name>Set-AzureRmDataFactorySliceStatus</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>ResourceGroupName</maml:name>
                     <maml:description>
@@ -6121,9 +6116,9 @@
                     <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 </command:parameter>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
-                    <maml:name>TableName</maml:name>
+                    <maml:name>DatasetName</maml:name>
                     <maml:description>
-                        <maml:para>Specifies the name of the table for which this cmdlet modifies slices.</maml:para>
+                        <maml:para>Specifies the name of the dataset for which this cmdlet modifies slices.</maml:para>
                     </maml:description>
                     <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 </command:parameter>
@@ -6165,15 +6160,15 @@
                         <maml:para>
                             Specifies the type of update to the slice. Valid values are:
 
-                            -- Individual. Sets the status of each slice for the table in the specified time range.
-                            -- UpstreamInPipeline. Sets the status of each slice for the table and all the dependent tables, which are used as input tables for activities in the pipeline.
+                            -- Individual. Sets the status of each slice for the dataset in the specified time range.
+                            -- UpstreamInPipeline. Sets the status of each slice for the dataset and all the dependent datasets, which are used as input datasets for activities in the pipeline.
                         </maml:para>
                     </maml:description>
                     <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 </command:parameter>
             </command:syntaxItem>
             <command:syntaxItem>
-                <maml:name>Set-AzureDataFactorySliceStatus</maml:name>
+                <maml:name>Set-AzureRmDataFactorySliceStatus</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>DataFactory</maml:name>
                     <maml:description>
@@ -6182,9 +6177,9 @@
                     <command:parameterValue required="true" variableLength="false">PSDataFactory</command:parameterValue>
                 </command:parameter>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
-                    <maml:name>TableName</maml:name>
+                    <maml:name>DatasetName</maml:name>
                     <maml:description>
-                        <maml:para>Specifies the name of the table for which this cmdlet modifies slices.</maml:para>
+                        <maml:para>Specifies the name of the dataset for which this cmdlet modifies slices.</maml:para>
                     </maml:description>
                     <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 </command:parameter>
@@ -6226,8 +6221,8 @@
                         <maml:para>
                             Specifies the type of update to the slice. Valid values are:
 
-                            -- Individual. Sets the status of each slice for the table in the specified time range.
-                            -- UpstreamInPipeline. Sets the status of each slice for the table and all the dependent tables, which are used as input tables for activities in the pipeline.
+                            -- Individual. Sets the status of each slice for the dataset in the specified time range.
+                            -- UpstreamInPipeline. Sets the status of each slice for the dataset and all the dependent datasets, which are used as input datasets for activities in the pipeline.
                         </maml:para>
                     </maml:description>
                     <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -6319,9 +6314,9 @@
                 <dev:defaultValue></dev:defaultValue>
             </command:parameter>
             <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="3" aliases="">
-                <maml:name>TableName</maml:name>
+                <maml:name>DatasetName</maml:name>
                 <maml:description>
-                    <maml:para>Specifies the name of the table for which this cmdlet modifies slices.</maml:para>
+                    <maml:para>Specifies the name of the dataset for which this cmdlet modifies slices.</maml:para>
                 </maml:description>
                 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
                 <dev:type>
@@ -6336,8 +6331,8 @@
                     <maml:para>
                         Specifies the type of update to the slice. Valid values are:
 
-                        -- Individual. Sets the status of each slice for the table in the specified time range.
-                        -- UpstreamInPipeline. Sets the status of each slice for the table and all the dependent tables, which are used as input tables for activities in the pipeline.
+                        -- Individual. Sets the status of each slice for the dataset in the specified time range.
+                        -- UpstreamInPipeline. Sets the status of each slice for the dataset and all the dependent datasets, which are used as input datasets for activities in the pipeline.
                     </maml:para>
                 </maml:description>
                 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
@@ -6381,11 +6376,11 @@
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; Set-AzureDataFactorySliceStatus -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -TableName "DAWikiAggregatedData" -StartDateTime 2014-05-21T16:00:00Z -EndDateTime 2014-05-21T20:00:00Z -Status "PendingExecution" -UpdateType "UpstreamInPipeline"
+                    PS C:\&gt; Set-AzureRmDataFactorySliceStatus -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -DatasetName "DAWikiAggregatedData" -StartDateTime 2014-05-21T16:00:00Z -EndDateTime 2014-05-21T20:00:00Z -Status "PendingExecution" -UpdateType "UpstreamInPipeline"
                     True
                 </dev:code>
                 <dev:remarks>
-                    <maml:para>This command sets the status of all slices for the table named DAWikiAggregatedData to PendingExecution in the data factory named WikiADF. The UpdateType parameter has a value of UpstreamInPipeline, and so the command sets the status of each slice for the table and all dependent tables. Dependent tables are used as input tables for activities in the pipeline. This command returns a value of $True.</maml:para>
+                    <maml:para>This command sets the status of all slices for the dataset named DAWikiAggregatedData to PendingExecution in the data factory named WikiADF. The UpdateType parameter has a value of UpstreamInPipeline, and so the command sets the status of each slice for the dataset and all dependent datasets. Dependent datasets are used as input datasets for activities in the pipeline. This command returns a value of $True.</maml:para>
                 </dev:remarks>
                 <command:commandLines>
                     <command:commandLine>
@@ -6396,14 +6391,14 @@
         </command:examples>
         <maml:relatedLinks>
             <maml:navigationLink>
-                <maml:linkText>Get-AzureDataFactorySlice</maml:linkText>
+                <maml:linkText>Get-AzureRmDataFactorySlice</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
         </maml:relatedLinks>
     </command:command>
     <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
         <command:details>
-            <command:name>Suspend-AzureDataFactoryPipeline</command:name>
+            <command:name>Suspend-AzureRmDataFactoryPipeline</command:name>
             <maml:description>
                 <maml:para>Suspends a pipeline in Data Factory.</maml:para>
             </maml:description>
@@ -6415,12 +6410,12 @@
             <dev:version />
         </command:details>
         <maml:description>
-            <maml:para>The Suspend-AzureDataFactoryPipeline cmdlet suspends a pipeline in Azure Data Factory. You can resume the pipeline by using the Resume-AzureDataFactoryPipeline cmdlet. </maml:para>
+            <maml:para>The Suspend-AzureRmDataFactoryPipeline cmdlet suspends a pipeline in Azure Data Factory. You can resume the pipeline by using the Resume-AzureRmDataFactoryPipeline cmdlet. </maml:para>
             <maml:para>You must be in AzureResourceManager mode to run Azure Data Factory cmdlets. To switch to AzureResourceManager mode, type Switch-AzureMode AzureResourceManager.</maml:para>
         </maml:description>
         <command:syntax>
             <command:syntaxItem>
-                <maml:name>Suspend-AzureDataFactoryPipeline</maml:name>
+                <maml:name>Suspend-AzureRmDataFactoryPipeline</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>ResourceGroupName</maml:name>
                     <maml:description>
@@ -6450,7 +6445,7 @@
                 </command:parameter>
             </command:syntaxItem>
             <command:syntaxItem>
-                <maml:name>Suspend-AzureDataFactoryPipeline</maml:name>
+                <maml:name>Suspend-AzureRmDataFactoryPipeline</maml:name>
                 <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
                     <maml:name>DataFactory</maml:name>
                     <maml:description>
@@ -6568,7 +6563,7 @@
                     <maml:para></maml:para>
                 </maml:introduction>
                 <dev:code>
-                    PS C:\&gt; Suspend-AzureDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikiSample" -DataFactoryName "WikiADF"
+                    PS C:\&gt; Suspend-AzureRmDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikiSample" -DataFactoryName "WikiADF"
                     Confirm
                     Are you sure you want to suspend pipeline 'DPWikisample' in data factory 'WikiADF'?
                     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
@@ -6586,23 +6581,23 @@
         </command:examples>
         <maml:relatedLinks>
             <maml:navigationLink>
-                <maml:linkText>Get-AzureDataFactoryPipeline</maml:linkText>
+                <maml:linkText>Get-AzureRmDataFactoryPipeline</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>New-AzureDataFactoryPipeline</maml:linkText>
+                <maml:linkText>New-AzureRmDataFactoryPipeline</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Remove-AzureDataFactoryPipeline</maml:linkText>
+                <maml:linkText>Remove-AzureRmDataFactoryPipeline</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Resume-AzureDataFactoryPipeline</maml:linkText>
+                <maml:linkText>Resume-AzureRmDataFactoryPipeline</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>
-                <maml:linkText>Set-AzureDataFactoryPipelineActivePeriod</maml:linkText>
+                <maml:linkText>Set-AzureRmDataFactoryPipelineActivePeriod</maml:linkText>
                 <maml:uri />
             </maml:navigationLink>
             <maml:navigationLink>

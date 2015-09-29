@@ -3,7 +3,7 @@ $tagValue = "testvalue"
 $KeyVaultResourceType = "Microsoft.KeyVault/vaults";
 $KeyVaultApiVersion = "2015-06-01";
 
-#------------------------------New-AzureKeyVault--------------------------------------
+#------------------------------New-AzureRmKeyVault--------------------------------------
 function Test_CreateNewVault
 {    
     Test-CreateNewVault $global:resourceGroupName $global:location $tagName $tagValue
@@ -31,7 +31,7 @@ function Test_CreateVaultPositionalParams
 
 #-------------------------------------------------------------------------------------
 
-#------------------------------Get-AzureKeyVault--------------------------------------
+#------------------------------Get-AzureRmKeyVault--------------------------------------
 
 function Test_GetVaultByNameAndResourceGroup
 {
@@ -81,7 +81,7 @@ function Test_ListVaultsByUnknownResourceGroupFails
 
 #-------------------------------------------------------------------------------------
 
-#------------------------------Remove-AzureKeyVault-----------------------------------
+#------------------------------Remove-AzureRmKeyVault-----------------------------------
 function Test_DeleteVaultByName
 {
     Test-DeleteVaultByName $global:resourceGroupName $global:location
@@ -94,10 +94,10 @@ function Test_DeleteUnknownVaultFails
 
 #-------------------------------------------------------------------------------------
 
-#------------------------------Set-AzureKeyVaultAccessPolicy--------------------------
+#------------------------------Set-AzureRmKeyVaultAccessPolicy--------------------------
 function Test_SetRemoveAccessPolicyByUPN
 {
-    $user = (Get-AzureSubscription -Current).DefaultAccount 
+    $user = (Get-AzureRmSubscription -Current).DefaultAccount 
     Reset-PreCreatedVault
     Test-SetRemoveAccessPolicyByUPN $global:precreatedVaultName $global:resourceGroupName $user
 }
@@ -109,8 +109,8 @@ function Test_SetRemoveAccessPolicyBySPN
     #Create an app and service principal
     $appName = [Guid]::NewGuid().ToString("N")
     $uri = 'http://localhost:8080/'+$appName
-    $app = New-AzureADApplication -DisplayName $appName -HomePage 'http://contoso.com' -IdentifierUris $uri -Password $appName
-    $sp = New-AzureADServicePrincipal -ApplicationId $app.ApplicationId
+    $app = New-AzureRmADApplication -DisplayName $appName -HomePage 'http://contoso.com' -IdentifierUris $uri -Password $appName
+    $sp = New-AzureRmADServicePrincipal -ApplicationId $app.ApplicationId
 
     try
     {
@@ -118,14 +118,14 @@ function Test_SetRemoveAccessPolicyBySPN
     }
     finally
     {
-        Remove-AzureADApplication -ApplicationObjectId $app.ApplicationObjectId -Force
+        Remove-AzureRmADApplication -ApplicationObjectId $app.ApplicationObjectId -Force
     }
 
 }
 
 function Test_SetRemoveAccessPolicyByObjectId
 {
-    $user = (Get-AzureSubscription -Current).DefaultAccount 
+    $user = (Get-AzureRmSubscription -Current).DefaultAccount 
     Reset-PreCreatedVault
     Test-SetRemoveAccessPolicyByObjectId $global:precreatedVaultName $global:resourceGroupName $user
 }
@@ -133,7 +133,7 @@ function Test_SetRemoveAccessPolicyByObjectId
 
 function Test_SetRemoveAccessPolicyByCompoundId
 {
-    $user = (Get-AzureSubscription -Current).DefaultAccount 
+    $user = (Get-AzureRmSubscription -Current).DefaultAccount 
     $appId = [System.Guid]::NewGuid()
     Reset-PreCreatedVault
     Test-SetRemoveAccessPolicyByCompoundId $global:precreatedVaultName $global:resourceGroupName $user $appId
@@ -141,7 +141,7 @@ function Test_SetRemoveAccessPolicyByCompoundId
 
 function Test_RemoveAccessPolicyWithCompoundIdPolicies
 {
-    $user = (Get-AzureSubscription -Current).DefaultAccount 
+    $user = (Get-AzureRmSubscription -Current).DefaultAccount 
     $appId1 = [System.Guid]::NewGuid()
     $appId2 = [System.Guid]::NewGuid()
     Reset-PreCreatedVault
@@ -150,7 +150,7 @@ function Test_RemoveAccessPolicyWithCompoundIdPolicies
 
 function Test_SetCompoundIdAccessPolicy
 {
-    $user = (Get-AzureSubscription -Current).DefaultAccount 
+    $user = (Get-AzureRmSubscription -Current).DefaultAccount 
     $appId = [System.Guid]::NewGuid()
     Reset-PreCreatedVault
     Test-SetCompoundIdAccessPolicy $global:precreatedVaultName $global:resourceGroupName $user $appId
@@ -158,21 +158,21 @@ function Test_SetCompoundIdAccessPolicy
 
 function Test_ModifyAccessPolicy
 {
-    $user = (Get-AzureSubscription -Current).DefaultAccount 
+    $user = (Get-AzureRmSubscription -Current).DefaultAccount 
     Reset-PreCreatedVault
     Test-ModifyAccessPolicy $global:precreatedVaultName $global:resourceGroupName $user
 }
 
 function Test_ModifyAccessPolicyEnabledForDeployment
 {
-    $user = (Get-AzureSubscription -Current).DefaultAccount 
+    $user = (Get-AzureRmSubscription -Current).DefaultAccount 
     Reset-PreCreatedVault
     Test-ModifyAccessPolicyEnabledForDeployment $global:precreatedVaultName $global:resourceGroupName $user
 }
 
 function Test_ModifyAccessPolicyNegativeCases
 {
-    $user = (Get-AzureSubscription -Current).DefaultAccount 
+    $user = (Get-AzureRmSubscription -Current).DefaultAccount 
     Reset-PreCreatedVault
     Test-ModifyAccessPolicyNegativeCases $global:precreatedVaultName $global:resourceGroupName $user
 }
@@ -180,7 +180,7 @@ function Test_ModifyAccessPolicyNegativeCases
 
 function Test_RemoveNonExistentAccessPolicyDoesNotThrow
 {
-    $user = (Get-AzureSubscription -Current).DefaultAccount 
+    $user = (Get-AzureRmSubscription -Current).DefaultAccount 
     Reset-PreCreatedVault
     Test-RemoveNonExistentAccessPolicyDoesNotThrow $global:precreatedVaultName $global:resourceGroupName $user
 }
@@ -232,21 +232,28 @@ Set up for control plane test
 function Initialize-VaultTest
 {    
     $suffix = Get-Date -UFormat %m%d%H%M%S
-
-    #create a resource group
-    $rg = Get-ResourceGroupName $suffix
-    New-AzureResourceGroup -Name $rg -Location $global:location -Force
-    $global:resourceGroupName = $rg
-
+    if($global:resourceGroupName -eq "")
+    {
+        #create a resource group
+        $rg = Get-ResourceGroupName $suffix
+        New-AzureRmResourceGroup -Name $rg -Location $global:location -Force
+        
+        $global:resourceGroupName = $rg
+    }
+    if($global:precreatedVaultName -ne "" -and $global:precreatedVaultName -ne $null)
+    {
+        Write-Host "Skipping vault creation for control plane tests since vault: $global:precreatedVaultName is already provided."
+        return;
+    }
     #create a vault using ARM    
     $vaultName = Get-VaultName $suffix
-    $tenantId = (Get-AzureSubscription -Current).TenantId
+    $tenantId = (Get-AzureRmSubscription -Current).TenantId
     $tagName = "testtag"
     $tagValue = "testvalue"
     $vaultId = @{
         "ResourceType" = $KeyVaultResourceType;
         "ApiVersion" = $KeyVaultApiVersion;
-        "ResourceGroupName" = $rg;
+        "ResourceGroupName" = $global:resourceGroupName;
         "Name" = $vaultName;
     }
 
@@ -260,7 +267,7 @@ function Initialize-VaultTest
         }
         "accessPolicies" = @();
     }    
-    $keyVault = New-AzureResource @vaultId `
+    $keyVault = New-AzureRmResource @vaultId `
                 -PropertyObject $vaultProperties `
                 -Location $global:location `
                 -Tag  @{Name = $tagName; Value = $tagValue} `
@@ -284,7 +291,7 @@ function Reset-PreCreatedVault
 { 
     $tagName = "testtag"
     $tagValue = "testvalue"
-    $tenantId = (Get-AzureSubscription -Current).TenantId
+    $tenantId = (Get-AzureRmSubscription -Current).TenantId
     $vaultProperties = @{
         "enabledForDeployment" = $false;
         "tenantId" = $tenantId;
@@ -296,7 +303,7 @@ function Reset-PreCreatedVault
         "accessPolicies" = @();
     } 
 
-    Set-AzureResource -ApiVersion $KeyVaultApiVersion `
+    Set-AzureRmResource -ApiVersion $KeyVaultApiVersion `
                     -ResourceType $KeyVaultResourceType `
                     -ResourceName $global:precreatedVaultName `
                     -ResourceGroupName $global:resourceGroupName `
@@ -312,7 +319,7 @@ Removes the resource group under which all resources for vault tests were create
 #>
 function Cleanup-VaultTest
 {
-    Remove-AzureResourceGroup -Name $global:resourceGroupname -Force -Confirm:$false
+    Remove-AzureRmResourceGroup -Name $global:resourceGroupname -Force -Confirm:$false
     $global:resourceGroupname = ''
 }
 #-------------------------------------------------------------------------------------

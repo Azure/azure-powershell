@@ -31,7 +31,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Server.Cmdlet
 {
     [TestClass]
-    public class ServerCmdletTests : TestBase
+    public class ServerCmdletTests : SMTestBase
     {
         // String ID for server version 2.
         public const string ServerVersion2 = "2.0";

@@ -1346,7 +1346,7 @@ use and privacy statement at &lt;url&gt; and (c) agree to sharing my contact inf
     <value>Cannot find storage account '{0}' please type the name of an existing storage account.</value>
   </data>
   <data name="StorageEmulatorExe" xml:space="preserve">
-    <value>WAStorageEmulator.exe</value>
+    <value>AzureStorageEmulator.exe</value>
   </data>
   <data name="StorageEmulatorInstallPathRegistryKeyValue" xml:space="preserve">
     <value>InstallPath</value>

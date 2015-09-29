@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Compute
         ProfileNouns.AdditionalUnattendContent),
     OutputType(
         typeof(PSVirtualMachine))]
-    public class NewAzureAdditionalUnattendContentCommand : AzurePSCmdlet
+    public class NewAzureAdditionalUnattendContentCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         private const string defaultComponentName = "Microsoft-Windows-Shell-Setup";
         private const string defaultPassName = "oobeSystem";
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string SettingName { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             if (this.VM.OSProfile == null)
             {
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Compute
             }
             else if (this.VM.OSProfile.WindowsConfiguration == null && this.VM.OSProfile.LinuxConfiguration != null)
             {
-                throw new ArgumentException(Properties.Resources.BothWindowsAndLinuxConfigurationsSpecified);
+                throw new ArgumentException(Microsoft.Azure.Commands.Compute.Properties.Resources.BothWindowsAndLinuxConfigurationsSpecified);
             }
 
             if (this.VM.OSProfile.WindowsConfiguration.AdditionalUnattendContents == null)

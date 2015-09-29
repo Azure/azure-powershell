@@ -20,23 +20,37 @@ using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Reso
 
 namespace Microsoft.Azure.Commands.TrafficManager
 {
-    [Cmdlet(VerbsCommon.Get, "AzureTrafficManagerProfile"), OutputType(typeof(TrafficManagerProfile))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmTrafficManagerProfile"), OutputType(typeof(TrafficManagerProfile))]
     public class GetAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
     {
-        [Parameter(Mandatory = true, HelpMessage = "The name of the profile.")]
+        [Parameter(Mandatory = false, HelpMessage = "The name of the profile.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "The resource group to which the profile belongs.")]
+        [Parameter(Mandatory = false, HelpMessage = "The resource group to which the profile belongs.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            TrafficManagerProfile profile = this.TrafficManagerClient.GetTrafficManagerProfile(this.ResourceGroupName, this.Name);
+            if (this.ResourceGroupName == null && this.Name != null)
+            {
+                // Throw an error
+            }
+            else if (this.ResourceGroupName != null && this.Name != null)
+            {
+                TrafficManagerProfile profile = this.TrafficManagerClient.GetTrafficManagerProfile(this.ResourceGroupName, this.Name);
 
-            this.WriteVerbose(ProjectResources.Success);
-            this.WriteObject(profile);
+                this.WriteVerbose(ProjectResources.Success);
+                this.WriteObject(profile);
+            }
+            else
+            {
+                TrafficManagerProfile[] profiles = this.TrafficManagerClient.ListTrafficManagerProfiles(this.ResourceGroupName);
+
+                this.WriteVerbose(ProjectResources.Success);
+                this.WriteObject(profiles);
+            }
         }
     }
 }

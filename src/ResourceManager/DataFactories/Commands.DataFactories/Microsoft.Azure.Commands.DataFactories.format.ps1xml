@@ -36,17 +36,17 @@
       </ListControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Commands.DataFactories.Models.PSTable</Name>
+      <Name>Microsoft.Azure.Commands.DataFactories.Models.PSDataset</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.DataFactories.Models.PSTable</TypeName>
+        <TypeName>Microsoft.Azure.Commands.DataFactories.Models.PSDataset</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
           <ListEntry>
             <ListItems>
               <ListItem>
-                <Label>TableName</Label>
-                <PropertyName>TableName</PropertyName>
+                <Label>DatasetName</Label>
+                <PropertyName>DatasetName</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>ResourceGroupName</Label>
@@ -71,10 +71,6 @@
               <ListItem>
                 <Label>Structure</Label>
                 <PropertyName>Structure</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Published</Label>
-                <PropertyName>Published</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Properties</Label>

@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
 
             Debug.Assert(options != null);
 
-            if (IsSet(options.Mail, options.UPN, options.Id))
+            if (IsSet(options.SignInName, options.Mail, options.UPN, options.Id))
             {
                 result = FilterUsers(options).FirstOrDefault();
             }
@@ -163,11 +163,11 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
                     users.Add(user.ToPSADUser());
                 }
             }
-            else if (!string.IsNullOrEmpty(options.Mail))
+            else if (!string.IsNullOrEmpty(options.Mail) || !string.IsNullOrEmpty(options.SignInName))
             {
                 try
                 {
-                    user = GraphClient.User.GetBySignInName(options.Mail).Users.FirstOrDefault();
+                    user = GraphClient.User.GetBySignInName(Normalize(options.Mail) ?? Normalize(options.SignInName)).Users.FirstOrDefault();
                 }
                 catch {  /* The user does not exist, ignore the exception. */ }
 
@@ -222,6 +222,14 @@ namespace Microsoft.Azure.Commands.Resources.Models.ActiveDirectory
             var groupsResult = GraphClient.Objects.GetObjectsByObjectIds(new GetObjectsParameters { Ids = groupsIds });
             result.AddRange(groupsResult.AADObject.Select(g => g.ToPSADGroup()));
 
+            return result;
+        }
+
+        public List<PSADObject> GetObjectsByObjectId(List<string> objectIds)
+        {
+            List<PSADObject> result = new List<PSADObject>();
+            var adObjects = GraphClient.Objects.GetObjectsByObjectIds(new GetObjectsParameters { Ids = objectIds }).AADObject;
+            result.AddRange(adObjects.Select(o => o.ToPSADObject()));
             return result;
         }
 

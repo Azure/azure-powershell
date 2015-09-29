@@ -20,10 +20,11 @@ using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Reso
 
 namespace Microsoft.Azure.Commands.TrafficManager
 {
+    using System.Collections;
     using System.Net;
     using Hyak.Common;
 
-    [Cmdlet(VerbsCommon.New, "AzureTrafficManagerProfile"), OutputType(typeof(TrafficManagerProfile))]
+    [Cmdlet(VerbsCommon.New, "AzureRmTrafficManagerProfile"), OutputType(typeof(TrafficManagerProfile))]
     public class NewAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the profile.")]
@@ -33,6 +34,11 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [Parameter(Mandatory = true, HelpMessage = "The resource group to which the profile belongs.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The status of the profile.")]
+        [ValidateSet(Constants.StatusEnabled, Constants.StatusDisabled, IgnoreCase = false)]
+        [ValidateNotNullOrEmpty]
+        public string ProfileStatus { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "The relative name of the profile.")]
         [ValidateNotNullOrEmpty]
@@ -60,7 +66,11 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateNotNullOrEmpty]
         public string MonitorPath { get; set; }
 
-        public override void ExecuteCmdlet()
+        [Alias("Tags")]
+        [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource tags.")]
+        public Hashtable[] Tag { get; set; }
+
+        protected override void ProcessRecord()
         {
             // We are not supporting etags yet, NewAzureTrafficManagerProfile should not overwrite any existing profile.
             // Since our create operation is implemented using PUT, it will overwrite by default.
@@ -78,12 +88,14 @@ namespace Microsoft.Azure.Commands.TrafficManager
                     TrafficManagerProfile profile = this.TrafficManagerClient.CreateTrafficManagerProfile(
                     this.ResourceGroupName,
                     this.Name,
+                    this.ProfileStatus,
                     this.TrafficRoutingMethod,
                     this.RelativeDnsName,
                     this.Ttl,
                     this.MonitorProtocol,
                     this.MonitorPort,
-                    this.MonitorPath);
+                    this.MonitorPath,
+                    this.Tag);
 
                     this.WriteVerbose(ProjectResources.Success);
                     this.WriteObject(profile);

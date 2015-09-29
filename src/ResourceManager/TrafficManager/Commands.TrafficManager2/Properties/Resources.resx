@@ -117,11 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Confirm_DisableEndpoint" xml:space="preserve">
+    <value>Are you sure you want to disable endpoint '{0}' of Profile '{1}'?</value>
+  </data>
+  <data name="Confirm_DisableProfile" xml:space="preserve">
+    <value>Are you sure you want to disable profile '{0}'?</value>
+  </data>
+  <data name="Confirm_RemoveEndpoint" xml:space="preserve">
+    <value>Are you sure you want to permanently remove endpoint '{0}' from profile '{1}' in resource group '{2}'?</value>
+  </data>
   <data name="Confirm_RemoveProfile" xml:space="preserve">
     <value>Are you sure you want to permanently remove profile '{0}'?</value>
   </data>
   <data name="Error_AddExistingEndpoint" xml:space="preserve">
     <value>There is already an existing endpoint with name '{0}'.</value>
+  </data>
+  <data name="Error_CreateExistingEndpoint" xml:space="preserve">
+    <value>There is already an existing endpoint with name '{0}' in the profile '{1}' and resource group '{2}'</value>
   </data>
   <data name="Error_CreateExistingProfile" xml:space="preserve">
     <value>There is already an existing profile with name '{0}' in the resource group '{1}'</value>
@@ -129,11 +141,35 @@
   <data name="Error_EndpointNotFound" xml:space="preserve">
     <value>The profile provided does not have any endpoints with name '{0}'.</value>
   </data>
+  <data name="Progress_DisablingEndpoint" xml:space="preserve">
+    <value>Disabling endpoint ...</value>
+  </data>
+  <data name="Progress_DisablingProfile" xml:space="preserve">
+    <value>Disabling profile ...</value>
+  </data>
+  <data name="Progress_RemovingEndpoint" xml:space="preserve">
+    <value>Removing endpoint ...</value>
+  </data>
   <data name="Progress_RemovingProfile" xml:space="preserve">
     <value>Removing profile ...</value>
   </data>
   <data name="Success" xml:space="preserve">
     <value>Success!</value>
+  </data>
+  <data name="Success_DisableEndpoint" xml:space="preserve">
+    <value>Endpoint '{0}' of Profile '{1}' from resource group '{2}' was disabled successfully.</value>
+  </data>
+  <data name="Success_DisableProfile" xml:space="preserve">
+    <value>Profile '{0}' from resource group '{1}' was disabled successfully.</value>
+  </data>
+  <data name="Success_EnableEndpoint" xml:space="preserve">
+    <value>Endpoint '{0}' of Profile '{1}' from resource group '{2}' was enabled successfully.</value>
+  </data>
+  <data name="Success_EnableProfile" xml:space="preserve">
+    <value>Profile '{0}' from resource group '{1}' was enabled successfully.</value>
+  </data>
+  <data name="Success_RemoveEndpoint" xml:space="preserve">
+    <value>Endpoint '{0}' was removed from profile '{1}' in resource group '{2}'.</value>
   </data>
   <data name="Success_RemoveProfile" xml:space="preserve">
     <value>Profile '{0}' was removed from resource group '{1}'.</value>

@@ -24,22 +24,22 @@ function Test-LinkedService
     $rglocation = Get-ProviderLocation ResourceManagement
     $dflocation = Get-ProviderLocation DataFactoryManagement
         
-    New-AzureResourceGroup -Name $rgname -Location $rglocation -Force
+    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
 
     try
     {
-        New-AzureDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+        New-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
      
         $lsname = "foo"
    
-        $actual = New-AzureDataFactoryLinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -Name $lsname -File .\Resources\linkedService.json -Force
-        $expected = Get-AzureDataFactoryLinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -Name $lsname
+        $actual = New-AzureRmDataFactoryLinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -Name $lsname -File .\Resources\linkedService.json -Force
+        $expected = Get-AzureRmDataFactoryLinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -Name $lsname
 
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
         Assert-AreEqual $expected.DataFactoryName $actual.DataFactoryName
         Assert-AreEqual $expected.LinkedServiceName $actual.LinkedServiceName
 
-        Remove-AzureDataFactoryLinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -Name $lsname -Force
+        Remove-AzureRmDataFactoryLinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -Name $lsname -Force
     }
     finally
     {
@@ -60,22 +60,22 @@ function Test-LinkedServiceWithDataFactoryParameter
     $rglocation = Get-ProviderLocation ResourceManagement
     $dflocation = Get-ProviderLocation DataFactoryManagement
         
-    New-AzureResourceGroup -Name $rgname -Location $rglocation -Force
+    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
 
     try
     {
-        $df = New-AzureDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+        $df = New-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
      
         $lsname = "foo"
    
-        $actual = New-AzureDataFactoryLinkedService -DataFactory $df -Name $lsname -File .\Resources\linkedService.json -Force
-        $expected = Get-AzureDataFactoryLinkedService -DataFactory $df -Name $lsname
+        $actual = New-AzureRmDataFactoryLinkedService -DataFactory $df -Name $lsname -File .\Resources\linkedService.json -Force
+        $expected = Get-AzureRmDataFactoryLinkedService -DataFactory $df -Name $lsname
 
         Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
         Assert-AreEqual $expected.DataFactoryName $actual.DataFactoryName
         Assert-AreEqual $expected.LinkedServiceName $actual.LinkedServiceName
 
-        Remove-AzureDataFactoryLinkedService -DataFactory $df -Name $lsname -Force
+        Remove-AzureRmDataFactoryLinkedService -DataFactory $df -Name $lsname -Force
     }
     finally
     {
@@ -94,20 +94,20 @@ function Test-LinkedServicePiping
     $rglocation = Get-ProviderLocation ResourceManagement
     $dflocation = Get-ProviderLocation DataFactoryManagement
         
-    New-AzureResourceGroup -Name $rgname -Location $rglocation -Force
+    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
 
     try
     {
-        New-AzureDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+        New-AzureRmDataFactory -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
      
         $lsname = "foo"
    
-        New-AzureDataFactoryLinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -Name $lsname -File .\Resources\linkedService.json -Force
+        New-AzureRmDataFactoryLinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -Name $lsname -File .\Resources\linkedService.json -Force
         
-        Get-AzureDataFactoryLinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -Name $lsname | Remove-AzureDataFactoryLinkedService -Force
+        Get-AzureRmDataFactoryLinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -Name $lsname | Remove-AzureRmDataFactoryLinkedService -Force
                 
         # Test the linked service no longer exists
-        Assert-ThrowsContains { Get-AzureDataFactoryLinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -Name $lsname } "LinkedServiceNotFound"
+        Assert-ThrowsContains { Get-AzureRmDataFactoryLinkedService -ResourceGroupName $rgname -DataFactoryName $dfname -Name $lsname } "LinkedServiceNotFound"
     }
     finally
     {

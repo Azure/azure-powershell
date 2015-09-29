@@ -246,7 +246,7 @@ validation_client_name 	\""{1}\""
                 }
                 else
                 {
-                    this.PublicConfiguration = string.Format("{{{0},{1},{2},{3},{4}}",
+                    this.PublicConfiguration = string.Format("{{{0},{1},{2},{3},{4}}}",
                          string.Format(AutoUpdateTemplate, AutoUpdateChefClient),
                          string.Format(DeleteChefConfigTemplate, DeleteChefConfig),
                          string.Format(ClientRbTemplate, ClientConfig),
