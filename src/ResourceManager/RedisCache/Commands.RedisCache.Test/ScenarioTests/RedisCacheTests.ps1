@@ -259,3 +259,19 @@ function Test-SetRedisCacheBugFixTest
     Assert-AreEqual "allkeys-lru" $cacheUpdated2.RedisConfiguration.Item("maxmemory-policy")
     Assert-True  { $cacheUpdated2.EnableNonSslPort }
 }
+
+<#
+.SYNOPSIS
+Tests MaxMemoryPolicy error check
+#>
+function Test-MaxMemoryPolicyErrorCheck
+{
+    # Setup
+    # resource group should exists
+    $resourceGroupName = "DummyResourceGroup"
+    $cacheName = "dummycache"
+    $location = "North Central US"
+
+    # Updating Cache
+    Assert-ThrowsContains {New-AzureRMRedisCache -ResourceGroupName $resourceGroupName -Name $cacheName -Location $location -MaxMemoryPolicy AllKeysRandom} "The 'MaxMemoryPolicy' setting has been deprecated"
+}
