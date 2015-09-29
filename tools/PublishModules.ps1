@@ -77,13 +77,20 @@ if ($scope -eq 'AzureRM') {
 
 $resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager\AzureResourceManager"
 $resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory
-if ($scope -eq 'All') {
-    # Publish AzureRM modules
+if ($scope -eq 'All') {  
+    # Publish AzureRM.Profile first
+    Write-Host "Publishing profile module"
+    Publish-Module -Path "$resourceManagerRootFolder\AzureRM.Profile" -NuGetApiKey $apiKey -Repository $repoName
+    Write-Host "Published profile module"
+
     foreach ($module in $resourceManagerModules) {
-        $modulePath = $module.FullName
-        Write-Host "Publishing $module module from $modulePath"
-        Publish-Module -Path $modulePath -NuGetApiKey $apiKey -Repository $repoName
-        Write-Host "Published $module module"
+        # Make sure to filter out AzureRM.Profile
+        if ($module -ne "AzureRM.Profile") {
+            $modulePath = $module.FullName
+            Write-Host "Publishing $module module from $modulePath"
+            Publish-Module -Path $modulePath -NuGetApiKey $apiKey -Repository $repoName
+            Write-Host "Published $module module"
+        }
     }
 } else {
     $modulePath = Join-Path $resourceManagerRootFolder "AzureRM.$scope"
