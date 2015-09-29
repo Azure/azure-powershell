@@ -149,7 +149,11 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             {
                 context.ModulesUrl = extensionPublicSettings.ModulesUrl;
                 context.ConfigurationFunction = extensionPublicSettings.ConfigurationFunction;
-                context.Properties = new Hashtable(extensionPublicSettings.Properties.ToDictionary(x => x.Name, x => x.Value));
+                if (extensionPublicSettings.Properties != null)
+                {
+                    context.Properties =
+                        new Hashtable(extensionPublicSettings.Properties.ToDictionary(x => x.Name, x => x.Value));
+                }
             }
 
             return context;
