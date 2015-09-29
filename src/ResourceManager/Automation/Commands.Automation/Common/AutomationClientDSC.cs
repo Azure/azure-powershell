@@ -263,8 +263,9 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
            string configrationName,
            string nodeName)
         {
-            string configurationContent = "Configuration {0} { Node {1} { } } ";
-            configurationContent = string.Format(configurationContent,configrationName,nodeName);
+            string configurationContent = "Configuration #configrationName# { Node #nodeName# { } } ";
+            configurationContent = configurationContent.Replace("#configrationName#", configrationName);
+            configurationContent = configurationContent.Replace("#nodeName#", nodeName);
 
             using (var request = new RequestSettings(this.automationManagementClient))
             {
@@ -1163,7 +1164,7 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
                 var nodeConfigurations = new List<Model.NodeConfiguration>();
                 foreach (var nodeConfiguration in nodeConfigModels)
                 {
-                    string computedRollupStatus = GetRollupStatus(resourceGroupName, automationAccountName, nodeConfiguration.Name);
+                    string computedRollupStatus = GetRollupStatus(resourceGroupName, automationAccountName, nodeConfiguration.Configuration.Name);
 
                     if (string.IsNullOrEmpty(rollupStatus) || (rollupStatus != null && computedRollupStatus.Equals(rollupStatus)))
                     {
@@ -1196,7 +1197,8 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
                 if (File.Exists(Path.GetFullPath(sourcePath)))
                 {
                     fileContent = System.IO.File.ReadAllText(sourcePath);
-                    nodeConfigurationName = configurationName + "." + System.IO.Path.GetFileNameWithoutExtension(sourcePath);
+                    nodeName = System.IO.Path.GetFileNameWithoutExtension(sourcePath);
+                    nodeConfigurationName = configurationName + "." + nodeName;
                 }
                 else
                 {
