@@ -23,6 +23,8 @@ $AzureRMModules = @(
   "AzureRM.Websites"
 )
 
+$AvailableModules = @()
+
 function CheckVersions {
     $profile = GetModuleInfo("AzureRM.Profile")
     if (-not $profile)
@@ -48,7 +50,12 @@ function GetModuleInfo {
 	[string]
 	$ModuleName)
 
-    return Get-Module -ListAvailable `
+    if ($global:AvailableModules.Length -eq 0)
+    {
+        $global:AvailableModules = Get-Module -ListAvailable
+    }
+
+    return $global:AvailableModules `
         | Where-Object { $_.Name -eq $ModuleName} `
         | Select-Object -first 1
 }
