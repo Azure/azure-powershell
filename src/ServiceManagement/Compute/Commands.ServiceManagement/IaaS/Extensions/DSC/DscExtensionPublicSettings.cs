@@ -96,5 +96,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
         /// Version of the protocol (DscExtensionPublicSettings and DscExtensionPrivateSettings mostly).
         /// </summary>
         public Version ProtocolVersion { get; set; }
+
+        /// <summary>
+        /// Specifies the version of the Windows Management Framework (WMF) to install 
+        /// on the VM.
+        /// </summary>
+        public string WmfVersion { get; set; }
     }
 }
