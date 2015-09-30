@@ -64,13 +64,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string ResourceType { get; set; }
 
         /// <summary>
-        /// Gets or sets the deprecated parent resource parameter.
-        /// </summary>
-        [Parameter(ParameterSetName = ResourceManipulationCmdletBase.SubscriptionLevelResoruceParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The parent resource type. e.g. Servers/myServer.")]
-        [ValidateNotNullOrEmpty]
-        public string ParentResource { get; set; }
-
-        /// <summary>
         /// Gets or sets the extension resource name parameter.
         /// </summary>
         [Parameter(ParameterSetName = ResourceManipulationCmdletBase.SubscriptionLevelResoruceParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The extension resource name. e.g. to specify a database MyServer/MyDatabase.")]
@@ -94,13 +87,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string ODataQuery { get; set; }
 
         /// <summary>
-        /// Gets or sets the subscription id parameter.
-        /// </summary>
-        [Parameter(ParameterSetName = ResourceManipulationCmdletBase.SubscriptionLevelResoruceParameterSet, Mandatory = false, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The subscription to use.")]
-        [ValidateNotNullOrEmpty]
-        public Guid? SubscriptionId { get; set; }
-
-        /// <summary>
         /// Gets or sets the resource group name parameter.
         /// </summary>
         [Parameter(ParameterSetName = ResourceManipulationCmdletBase.SubscriptionLevelResoruceParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
@@ -120,23 +106,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public SwitchParameter Force { get; set; }
 
         /// <summary>
+        /// Gets or sets the subscription id.
+        /// </summary>
+        public Guid SubscriptionId { get; set; }
+
+        /// <summary>
         /// Initializes the default subscription id if needed.
         /// </summary>
-        protected override void OnProcessRecord()
+        public ResourceManipulationCmdletBase()
         {
-            if(this.SubscriptionId != null)
-            {
-                this.WriteWarning("The SubscriptionId parameter is obsolete and will be removed in future releases.");
-            }
-            if (!string.IsNullOrEmpty(this.ParentResource))
-            {
-                this.WriteWarning("The ParentResource parameter is obsolete and will be removed in future releases. Please use the -ResourceType and -ResourceName parameters instead.");
-            }
-            if (string.IsNullOrWhiteSpace(this.ResourceId) && !this.TenantLevel && this.SubscriptionId == null)
+            if (string.IsNullOrEmpty(this.ResourceId))
             {
                 this.SubscriptionId = DefaultContext.Subscription.Id;
             }
+        }
 
+        protected override void OnProcessRecord()
+        {
             base.OnProcessRecord();
         }
 
@@ -149,9 +135,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             return !string.IsNullOrWhiteSpace(this.ResourceId)
                 ? this.ResourceId
-                : !this.TenantLevel || string.IsNullOrWhiteSpace(this.ParentResource)
-                ? this.GetResourceIdWithoutParentResource()
-                : this.GetResourceIdWithParentResource();
+                : this.GetResourceIdWithoutParentResource();
 
 #pragma warning restore 618
         }
@@ -168,23 +152,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 resourceName: this.ResourceName,
                 extensionResourceType: this.ExtensionResourceType,
                 extensionResourceName: this.ExtensionResourceName);
-        }
-
-        /// <summary>
-        /// Gets the resource Id using the <c>ParentResource</c>.
-        /// </summary>
-        private string GetResourceIdWithParentResource()
-        {
-#pragma warning disable 618
-
-            return ResourceIdUtility.GetResourceId(
-                subscriptionId: this.SubscriptionId.Value,
-                resourceGroupName: this.ResourceGroupName,
-                parentResource: this.ParentResource,
-                resourceType: this.ResourceType,
-                resourceName: this.ResourceName);
-
-#pragma warning restore 618
         }
     }
 }

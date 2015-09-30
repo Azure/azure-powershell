@@ -146,6 +146,29 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateJobSchedule()
+        {
+            BatchController controller = BatchController.NewInstance;
+            string jobScheduleId = "testUpdateJobSchedule";
+
+            BatchAccountContext context = null;
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-UpdateJobSchedule '{0}' '{1}'", accountName, jobScheduleId) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    ScenarioTestHelpers.CreateTestJobSchedule(controller, context, jobScheduleId, null);
+                },
+                () =>
+                {
+                    ScenarioTestHelpers.DeleteJobSchedule(controller, context, jobScheduleId);
+                },
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDeleteJobSchedule()
         {
             BatchController controller = BatchController.NewInstance;
@@ -243,7 +266,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     }
 
     // Cmdlets that use the HTTP Recorder interceptor for use with scenario tests
-    [Cmdlet(VerbsCommon.Get, "AzureRMBatchJobSchedule_ST", DefaultParameterSetName = Constants.ODataFilterParameterSet)]
+    [Cmdlet(VerbsCommon.Get, "AzureBatchJobSchedule_ST", DefaultParameterSetName = Constants.ODataFilterParameterSet)]
     public class GetBatchJobScheduleScenarioTestCommand : GetBatchJobScheduleCommand
     {
         protected override void ProcessRecord()
@@ -253,7 +276,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
     }
 
-    [Cmdlet(VerbsCommon.New, "AzureRMBatchJobSchedule_ST")]
+    [Cmdlet(VerbsCommon.New, "AzureBatchJobSchedule_ST")]
     public class NewBatchJobScheduleScenarioTestCommand : NewBatchJobScheduleCommand
     {
         protected override void ProcessRecord()
@@ -263,7 +286,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
     }
 
-    [Cmdlet(VerbsCommon.Remove, "AzureRMBatchJobSchedule_ST")]
+    [Cmdlet(VerbsCommon.Remove, "AzureBatchJobSchedule_ST")]
     public class RemoveBatchJobScheduleScenarioTestCommand : RemoveBatchJobScheduleCommand
     {
         protected override void ProcessRecord()
@@ -273,7 +296,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
     }
 
-    [Cmdlet(VerbsLifecycle.Enable, "AzureRMBatchJobSchedule_ST")]
+    [Cmdlet(VerbsLifecycle.Enable, "AzureBatchJobSchedule_ST")]
     public class EnableBatchJobScheduleScenarioTestCommand : EnableBatchJobScheduleCommand
     {
         protected override void ProcessRecord()
@@ -283,7 +306,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
     }
 
-    [Cmdlet(VerbsLifecycle.Disable, "AzureRMBatchJobSchedule_ST")]
+    [Cmdlet(VerbsLifecycle.Disable, "AzureBatchJobSchedule_ST")]
     public class DisableBatchJobScheduleScenarioTestCommand : DisableBatchJobScheduleCommand
     {
         protected override void ProcessRecord()
@@ -293,8 +316,18 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
     }
 
-    [Cmdlet(VerbsLifecycle.Stop, "AzureRMBatchJobSchedule_ST")]
+    [Cmdlet(VerbsLifecycle.Stop, "AzureBatchJobSchedule_ST")]
     public class StopBatchJobScheduleScenarioTestCommand : StopBatchJobScheduleCommand
+    {
+        protected override void ProcessRecord()
+        {
+            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
+            base.ProcessRecord();
+        }
+    }
+
+    [Cmdlet(VerbsCommon.Set, "AzureBatchJobSchedule_ST")]
+    public class SetBatchJobScheduleScenarioTestCommand : SetBatchJobScheduleCommand
     {
         protected override void ProcessRecord()
         {

@@ -71,6 +71,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         // Run Type
         public const string RunType = "RunType";
         public const string LiveOnly = "LiveOnly";
+        public const string Manual = "Manual";
         //Uncomment when we need to tag on only run under mock
         //public const string MockedOnly = "MockedOnly";
        

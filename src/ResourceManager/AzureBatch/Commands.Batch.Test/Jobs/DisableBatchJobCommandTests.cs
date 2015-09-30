@@ -21,7 +21,6 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Collections.Generic;
 using System.Management.Automation;
-using System.Threading.Tasks;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
@@ -58,7 +57,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             cmdlet.DisableJobOption = DisableJobOption.Terminate;
 
             // Don't go to the service on a Disable CloudJob call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudJobDisableParameters, CloudJobDisableResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudJobDisableParameters, CloudJobDisableResponse>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set
@@ -78,22 +77,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             cmdlet.Id = "testJob";
             cmdlet.DisableJobOption = disableOption;
 
-            // Don't go to the service on an Enable AutoScale call
-            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
-            {
-                BatchRequest<CloudJobDisableParameters, CloudJobDisableResponse> request =
-                (BatchRequest<CloudJobDisableParameters, CloudJobDisableResponse>)baseRequest;
-
-                // Grab the disable option off the outgoing request.
-                requestDisableOption = request.TypedParameters.DisableJobOption;
-
-                request.ServiceRequestFunc = (cancellationToken) =>
+            // Don't go to the service on a Disable CloudJob call
+            Action<BatchRequest<CloudJobDisableParameters, CloudJobDisableResponse>> extractDisableOptionAction =
+                (request) =>
                 {
-                    CloudJobDisableResponse response = new CloudJobDisableResponse();
-                    Task<CloudJobDisableResponse> task = Task.FromResult(response);
-                    return task;
+                    requestDisableOption = request.TypedParameters.DisableJobOption;
                 };
-            });
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor(requestAction: extractDisableOptionAction);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             cmdlet.ExecuteCmdlet();

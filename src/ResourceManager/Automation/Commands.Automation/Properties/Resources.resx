@@ -403,4 +403,22 @@
     <value>Runbook file already exists. Specify the force switch switch overwrite. Runbook file name: {0}</value>
     <comment>Automation</comment>
   </data>
+  <data name="FileNameRunbookNameMismatch" xml:space="preserve">
+    <value>File name and runbook name must be the same for PowerShell Workflow runbooks.</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="ConnectionTypeNotFound" xml:space="preserve">
+    <value>The connection type was not found. ConnectionType name: {0}.</value>
+  </data>
+  <data name="RemoveConnectionTypeThatHasConnectionWarning" xml:space="preserve">
+    <value>This connection type has connections associated with it. If you delete this connection type, all connections associated with it will be unusable and should be removed, unless you create a new connection type with the same name that has the same field definitions as the deleted connection type. However, it can have additional fields as well. Are you sure you want to remove the Azure Automation {0} ?</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="NodeConfigurationNameInvalid" xml:space="preserve">
+    <value>Invalid node configuration name. Please specify in the format &lt;config name&gt;.&lt;node name&gt;</value>
+    <comment>Automation</comment>
+  </data>
+  <data name="ConfigurationDataShouldNotBeInJobParameters" xml:space="preserve">
+    <value>ConfigurationData cannot be part of the job parameters. You can specify the ConfigurationData using the {0} switch</value>
+  </data>
 </root>

@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             cmdlet.Id = "testTask";
 
             // Don't go to the service on a Delete CloudTask call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudTaskDeleteParameters, CloudTaskDeleteResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudTaskDeleteParameters, CloudTaskDeleteResponse>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameters are set

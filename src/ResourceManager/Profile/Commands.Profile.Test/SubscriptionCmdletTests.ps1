@@ -18,18 +18,28 @@ Tests each of the major parts of retrieving subscriptions in ARM mode
 #>
 function Test-GetSubscriptionsEndToEnd
 {
-	$allSubscriptions = Get-AzureRMSubscription -All
+	$allSubscriptions = Get-AzureRmSubscription -All
 	$firstSubscription = $allSubscriptions[0]
-	$id = $firstSubscription.Id
-	$tenant = $firstSubscription.GetProperty([Microsoft.Azure.Common.Authentication.Models.AzureSubscription+Property]::Tenants)
-	$subscription = Get-AzureRMSubscription -SubscriptionId $id -Tenant $tenant
+	$id = $firstSubscription.SubscriptionId
+	$tenant = $firstSubscription.TenantId
+	$name = $firstSubscription.SubscriptionName
+	$subscription = $firstSubscription | Get-AzureRmSubscription
 	Assert-True { $subscription -ne $null }
-	Assert-AreEqual $id $subscription.Id
-	$subscription = Get-AzureRMSubscription -SubscriptionId $id
+	Assert-AreEqual $id $subscription.SubscriptionId
+	$subscription = Get-AzureRmSubscription -SubscriptionId $id
 	Assert-True { $subscription -ne $null }
-	Assert-AreEqual $id $subscription.Id
-	$mostSubscriptions = Get-AzureRMSubscription
+	Assert-AreEqual $id $subscription.SubscriptionId
+	$subscription = Get-AzureRmSubscription -SubscriptionName $name -Tenant $tenant
+	Assert-True { $subscription -ne $null }
+	Assert-AreEqual $name $subscription.Name
+	$subscription = Get-AzureRmSubscription -SubscriptionName $name
+	Assert-True { $subscription -ne $null }
+	Assert-AreEqual $name $subscription.Name
+	$subscription = Get-AzureRmSubscription -SubscriptionName $name.ToUpper()
+	Assert-True { $subscription -ne $null }
+	Assert-AreEqual $name $subscription.Name
+	$mostSubscriptions = Get-AzureRmSubscription
 	Assert-True {$mostSubscriptions.Count -gt 0}
-	$tenantSubscriptions = Get-AzureRMSubscription -Tenant $tenant
+	$tenantSubscriptions = Get-AzureRmSubscription -Tenant $tenant
 	Assert-True {$tenantSubscriptions.Count -gt 0}
 }

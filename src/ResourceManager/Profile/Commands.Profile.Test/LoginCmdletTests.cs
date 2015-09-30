@@ -42,10 +42,10 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.Manual)]
         public void LoginWithSubscriptionAndTenant()
         {
-            var cmdlt = new LoginAzureRMAccountCommand();
+            var cmdlt = new AddAzureRMAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.SubscriptionId = "2c224e7e-3ef5-431d-a57b-e71f4662e3a6";
@@ -61,10 +61,10 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.Manual)]
         public void LoginWithInvalidSubscriptionAndTenantThrowsCloudException()
         {
-            var cmdlt = new LoginAzureRMAccountCommand();
+            var cmdlt = new AddAzureRMAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.SubscriptionId = "2c224e7e-3ef5-431d-a57b-e71f4662e3a5";
@@ -77,10 +77,10 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.Manual)]
         public void LoginWithSubscriptionAndNoTenant()
         {
-            var cmdlt = new LoginAzureRMAccountCommand();
+            var cmdlt = new AddAzureRMAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.SubscriptionId = "2c224e7e-3ef5-431d-a57b-e71f4662e3a6";
@@ -95,10 +95,10 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
         
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.Manual)]
         public void LoginWithNoSubscriptionAndNoTenant()
         {
-            var cmdlt = new LoginAzureRMAccountCommand();
+            var cmdlt = new AddAzureRMAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
 
@@ -112,10 +112,10 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.Manual)]
         public void LoginWithNoSubscriptionAndTenant()
         {
-            var cmdlt = new LoginAzureRMAccountCommand();
+            var cmdlt = new AddAzureRMAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.Tenant = "72f988bf-86f1-41af-91ab-2d7cd011db47";

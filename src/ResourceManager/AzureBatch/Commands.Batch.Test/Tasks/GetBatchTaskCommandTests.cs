@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             cmdlet.Filter = null;
 
             // Build a CloudTask instead of querying the service on a List CloudTask call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudTaskListParameters, CloudTaskListResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudTaskListParameters, CloudTaskListResponse>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
             // Build a CloudTask instead of querying the service on a Get CloudTask call
             CloudTaskGetResponse response = BatchTestHelpers.CreateCloudTaskGetResponse(cmdlet.Id);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudTaskGetParameters, CloudTaskGetResponse>(response);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudTaskGetParameters, CloudTaskGetResponse>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
             // Build some CloudTasks instead of querying the service on a List CloudTasks call
             CloudTaskListResponse response = BatchTestHelpers.CreateCloudTaskListResponse(idsOfConstructedTasks);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudTaskListParameters, CloudTaskListResponse>(response);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudTaskListParameters, CloudTaskListResponse>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
             // Build some CloudTasks instead of querying the service on a List CloudTasks call
             CloudTaskListResponse response = BatchTestHelpers.CreateCloudTaskListResponse(idsOfConstructedTasks);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudTaskListParameters, CloudTaskListResponse>(response);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudTaskListParameters, CloudTaskListResponse>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
             // Build some CloudTasks instead of querying the service on a List CloudTasks call
             CloudTaskListResponse response = BatchTestHelpers.CreateCloudTaskListResponse(idsOfConstructedTasks);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudTaskListParameters, CloudTaskListResponse>(response);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudTaskListParameters, CloudTaskListResponse>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
