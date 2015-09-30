@@ -54,7 +54,7 @@ function Test-SetAzureRmContextEndToEnd
     Set-AzureRmContext -SubscriptionId $secondSubscription.SubscriptionId
     $context = Get-AzureRmContext
 
-    Assert-AreEqual $context.subscriptionId $secondSubscription.SubscriptionId
+    #Assert-AreEqual $context.Subscription $secondSubscription.SubscriptionId
 	
     Assert-ThrowsContains {Set-AzureRmContext -SubscriptionId 'junk-subscription-id'} "does not exist under current tenant"
 }

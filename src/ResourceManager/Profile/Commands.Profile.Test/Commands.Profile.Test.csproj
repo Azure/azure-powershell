@@ -193,7 +193,8 @@
     </Content>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.SubscriptionCmdletTests\AllParameterSetsSucceed.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.SubscriptionCmdletTests\AllParameterSetsSucceed.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.SubscriptionCmdletTests\SetAzureRmContextWorks.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
