@@ -26,5 +26,12 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             ProfileController.NewInstance.RunPsTest("db1ab6f0-4769-4b27-930e-01e2ef9c123c", "Test-GetSubscriptionsEndToEnd");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SetAzureRmContextWorks()
+        {
+            ProfileController.NewInstance.RunPsTest("db1ab6f0-4769-4b27-930e-01e2ef9c123c", "Test-SetAzureRmContextEndToEnd");
+        }
     }
 }
