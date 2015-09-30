@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.Manual)]
         public void GetTenantWithTenantParameter()
         {
             var cmdlt = new GetAzureRMTenantCommand();
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
         
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.Manual)]
         public void GetTenantWithDomainParameter()
         {
             var cmdlt = new GetAzureRMTenantCommand();
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
         
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.Manual)]
         public void GetTenantWithoutParameters()
         {
             var cmdlt = new GetAzureRMTenantCommand();
@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
         private void Login(string subscriptionId, string tenantId)
         {
-            var cmdlt = new LoginAzureRMAccountCommand();
+            var cmdlt = new AddAzureRMAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.SubscriptionId = subscriptionId;

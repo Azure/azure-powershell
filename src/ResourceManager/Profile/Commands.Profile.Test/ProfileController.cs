@@ -13,16 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test;
-using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
@@ -93,9 +87,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 var callingClassName = callingClassType
                     .Split(new[] {"."}, StringSplitOptions.RemoveEmptyEntries)
                     .Last();
-                helper.SetupModules(
-                    AzureModule.AzureResourceManager,
-                    callingClassName + ".ps1");
+                helper.SetupModules(AzureModule.AzureResourceManager, 
+                    callingClassName + ".ps1", 
+                    helper.RMProfileModule);
 
                 try
                 {
