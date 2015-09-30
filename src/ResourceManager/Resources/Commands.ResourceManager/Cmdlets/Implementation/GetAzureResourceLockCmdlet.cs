@@ -30,12 +30,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets the extension resource name parameter.
         /// </summary>
         [Alias("ExtensionResourceName")]
-        [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.ResourceGroupLevelLock, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The name of the lock.")]
-        [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.ResourceGroupResourceLevelLock, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The name of the lock.")]
-        [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.ScopeLevelLock, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The name of the lock.")]
-        [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.SubscriptionLevelLock, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The name of the lock.")]
-        [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.SubscriptionResourceLevelLock, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The name of the lock.")]
-        [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.TenantResourceLevelLock, Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The name of the lock.")]
+        [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.ResourceGroupLevelLock, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the lock.")]
+        [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.ResourceGroupResourceLevelLock, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the lock.")]
+        [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.ScopeLevelLock, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the lock.")]
+        [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.SubscriptionLevelLock, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the lock.")]
+        [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.SubscriptionResourceLevelLock, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the lock.")]
+        [Parameter(ParameterSetName = ResourceLockManagementCmdletBase.TenantResourceLevelLock, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the lock.")]
         [ValidateNotNullOrEmpty]
         public string LockName { get; set; }
 

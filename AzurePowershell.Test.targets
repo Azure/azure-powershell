@@ -50,8 +50,8 @@
       Command="MSTest.exe /testcontainer:$(_testAssembly) /testsettings:$(_testSettings) /category:$(_testFilter) /resultsfile:$(_testResult)"
       ContinueOnError="false" />
   </Target>
-  
-  <Target Name="InvokeXUnit">
+
+  <Target Name="DeclareXunitTests">
     <ItemGroup>
       <AsmXUnitTests Include=".\src\ServiceManagement\Common\Commands.Common.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Common.Test.dll"/>
       <AsmXUnitTests Include=".\src\ServiceManagement\Services\Commands.Test\bin\Debug\Microsoft.WindowsAzure.Commands.Test.dll"/>
@@ -62,7 +62,7 @@
       <AsmXUnitTests Include=".\src\ServiceManagement\RecoveryServices\Commands.RecoveryServices.Test\bin\Debug\Microsoft.Azure.Commands.RecoveryServices.Test.dll"/>
       <AsmXUnitTests Include=".\src\ServiceManagement\Network\Commands.Network.Test\bin\Debug\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.dll"/>
     </ItemGroup>
-    <ItemGroup Condition=" '$(scope)' == '' ">
+    <ItemGroup Condition=" '$(scope)' == 'all' ">
       <XUnitTests Include=".\src\ResourceManager\SiteRecovery\Commands.SiteRecovery.Test\bin\Debug\Microsoft.Azure.Commands.SiteRecovery.Test.dll"/> 
       <XUnitTests Include=".\src\ResourceManager\Sql\Commands.Sql.Test\bin\Debug\Microsoft.Azure.Commands.Sql.Test.dll"/>
       <XUnitTests Include=".\src\ResourceManager\Resources\Commands.Resources.Test\bin\Debug\Microsoft.Azure.Commands.Resources.Test.dll"/>
@@ -85,10 +85,12 @@
     <ItemGroup Condition=" '$(scope)' == 'ServiceManagement' ">
       <XUnitTests Include="@(AsmXUnitTests)"/>
     </ItemGroup>
-    <ItemGroup Condition=" '$(scope)' !='' and '$(scope)' != 'ServiceManagement' ">
+    <ItemGroup Condition=" '$(scope)' != 'all' and '$(scope)' != 'ServiceManagement' and '$(scope)' != 'AzureStorage' ">
       <XUnitTests Include="$(MSBuildProjectDirectory)\src\ResourceManager\$(scope)\*\bin\Debug\*.Test.dll"/>
     </ItemGroup>
-    
+  </Target>
+  
+  <Target Name="InvokeXUnit" DependsOnTargets="DeclareXunitTests">
     <Message Importance="high" Text="Running XUnit tests" />
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
     <Exec 
@@ -97,7 +99,7 @@
     <OnError ExecuteTargets="TimeoutErrorHandler"/>
   </Target>
   
-  <Target Name="InvokeXUnitAll">
+  <Target Name="InvokeXUnitAll" DependsOnTargets="DeclareXunitTests">
     <Message Importance="high" Text="Running XUnit tests" />
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
     <Exec 

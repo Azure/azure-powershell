@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 
@@ -60,6 +62,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
+        [Parameter(
+            Position = 4,
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Storage Account Tags.")]
+        [ValidateNotNull]
+        public Hashtable[] Tags { get; set; }
+
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
@@ -67,7 +77,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
             StorageAccountCreateParameters createParameters = new StorageAccountCreateParameters()
             {
                 Location = this.Location,
-                AccountType = ParseAccountType(this.Type)
+                AccountType = ParseAccountType(this.Type),
+                Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true)
             };
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(

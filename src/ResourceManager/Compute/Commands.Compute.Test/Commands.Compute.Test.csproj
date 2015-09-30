@@ -71,8 +71,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Network, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.2.0.10-preview\lib\net40\Microsoft.Azure.Management.Network.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.2.0.11-preview\lib\net40\Microsoft.Azure.Management.Network.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.2.4.0-preview\lib\net40\Microsoft.Azure.Management.Storage.dll</HintPath>
@@ -156,6 +156,7 @@
     <Compile Include="Common\ComputeTestController.cs" />
     <Compile Include="ScenarioTests\AddVhdTests.cs" />
     <Compile Include="ScenarioTests\ComputeCloudExceptionTests.cs" />
+    <Compile Include="ScenarioTests\DscExtensionTests.cs" />
     <Compile Include="ScenarioTests\VMDynamicTests.cs" />
     <Compile Include="ScenarioTests\VirtualMachineProfileTests.cs" />
     <Compile Include="ScenarioTests\AvailabilitySetTests.cs" />
@@ -207,6 +208,12 @@
     <None Include="ScenarioTests\ComputeCloudExceptionTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\DscExtensionTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\DummyConfig.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\Generated\VirtualMachineDynamicTest1.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -246,6 +253,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.ComputeCloudExceptionTests\RunComputeCloudExceptionTests.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.DscExtensionTests\TestGetAzureRmVMDscExtension.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Compute.Test.ScenarioTests.VirtualMachineExtensionTests\TestVirtualMachineAccessExtension.json">
