@@ -281,7 +281,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             var blobAccessPolicy = new SharedAccessBlobPolicy
             {
                 SharedAccessExpiryTime =
-                    DateTime.UtcNow.AddHours(1),
+                    DateTime.UtcNow.AddHours(2),
                 Permissions = SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Delete
             };
 

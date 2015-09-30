@@ -36,12 +36,12 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
         public const string SubscriptionIdKey = ConnectionStringFields.SubscriptionId;
 
         /// <summary>
-        /// The key inside the connection string for the subscription identifier
+        /// The key inside the connection string for the AAD user ID
         /// </summary>
         public const string AADUserIdKey = ConnectionStringFields.UserId;
 
         /// <summary>
-        /// The key inside the connection string for the subscription identifier
+        /// The key inside the connection string for the AAD password
         /// </summary>
         public const string AADPasswordKey = ConnectionStringFields.Password;
 
@@ -51,7 +51,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
         public const string BaseUriKey = ConnectionStringFields.BaseUri;
 
         /// <summary>
-        /// The key inside the connection string for the AAD client ID"
+        /// The key inside the connection string for the AAD client ID
         /// </summary>
         public const string ClientID = ConnectionStringFields.AADClientId;
         public const string ClientIdDefault = "1950a258-227b-4e31-a9cf-717495945fc2";
@@ -70,7 +70,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
         public const string StorageAccountKey = "AZURE_STORAGE_ACCOUNT";
 
         /// <summary>
-        /// A raw token to be used for authentication with the give subscription ID
+        /// A raw token to be used for authentication with the given subscription ID
         /// </summary>
         public const string RawToken = ConnectionStringFields.RawToken;
 
@@ -84,9 +84,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
         protected abstract TestEnvironment GetTestEnvironmentFromContext();
 
         /// <summary>
-        /// Return test credentials and URI using AAD auth for an OrgID account.  Use this emthod with causion, it may take a dependency on ADAL
+        /// Return test credentials and URI using AAD auth for an OrgID account.  Use this method with caution - it may take a dependency on ADAL.
         /// </summary>
-        /// <returns>The test credentials, or null if nthe appropriate environment variablke is not set.</returns>
+        /// <returns>The test credentials, or null if the appropriate environment variable is not set.</returns>
         protected virtual TestEnvironment GetOrgIdTestEnvironment(string orgIdVariable)
         {
             TestEnvironment orgIdEnvironment = null;
@@ -181,7 +181,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
         /// <returns>A dictionary of keys and values from the connection string</returns>
         public static IDictionary<string, string> ParseConnectionString(string connectionString)
         {
-            // hacky connection string parser.  We should replace with more robust connection strign parsing
+            // hacky connection string parser.  We should replace with more robust connection string parsing
             IDictionary<string, string> settings = new Dictionary<string, string>();
             string[] pairs = connectionString.Split(new char[] { ';' });
             foreach (string pair in pairs)

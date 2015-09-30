@@ -30,6 +30,14 @@ using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Storage;
+using Microsoft.Azure.Test;
+using Microsoft.Azure.Graph.RBAC;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Management.Authorization;
+using System;
+using System.Collections.Generic;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
@@ -74,8 +82,15 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
                 helper.SetupEnvironment();
 
-                helper.SetupModules(AzureModule.AzureResourceManager, "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + this.GetType().Name + ".ps1");
+                helper.SetupModules(AzureModule.AzureResourceManager, 
+                    "ScenarioTests\\Common.ps1", 
+                    "ScenarioTests\\" + this.GetType().Name + ".ps1", 
+                    helper.RMProfileModule, 
+                    helper.RMResourceModule, 
+                    helper.RMStorageDataPlaneModule, 
+                    helper.RMStorageModule, 
+                    helper.GetRMModulePath(@"AzureRM.Insights.psd1"), 
+                    helper.GetRMModulePath(@"AzureRM.Sql.psd1"));
 
                 helper.RunPowerShellTest(scripts);
             }
