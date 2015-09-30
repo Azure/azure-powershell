@@ -37,6 +37,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy
         /// The policy rule.
         /// </summary>
         [JsonProperty(Required = Required.Always)]
-        public string PolicyRule { get; set; }
+        public PolicyRule PolicyRule { get; set; }
     }
 }
