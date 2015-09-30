@@ -32,8 +32,8 @@ namespace Microsoft.Azure.Commands.Profile
         private const string TenantIdAndSubscriptionIdParameterSet = "TenantIdAndSubscriptionId";
         private const string TenantAndSubscriptionParameterSet = "TenantAndSubscription";
 
-        [Parameter(ParameterSetName = TenantIdParameterSet, Mandatory = true, HelpMessage = "TenantId name or ID", ValueFromPipelineByPropertyName=true)]
-        [Parameter(ParameterSetName = TenantIdAndSubscriptionIdParameterSet, Mandatory = true, HelpMessage = "TenantId name or ID", ValueFromPipelineByPropertyName=true)]
+        [Parameter(ParameterSetName = TenantIdParameterSet, Mandatory = false, HelpMessage = "TenantId name or ID", ValueFromPipelineByPropertyName=true)]
+        [Parameter(ParameterSetName = TenantIdAndSubscriptionIdParameterSet, Mandatory = false, HelpMessage = "TenantId name or ID", ValueFromPipelineByPropertyName=true)]
         [ValidateNotNullOrEmpty]
         public string TenantId { get; set; }
 
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Profile
         [ValidateNotNullOrEmpty]
         public string SubscriptionId { get; set; }
 
-        [Parameter(ParameterSetName = TenantAndSubscriptionParameterSet, Mandatory = true, HelpMessage = "TenantId name or ID", ValueFromPipelineByPropertyName=true)]
+        [Parameter(ParameterSetName = TenantAndSubscriptionParameterSet, Mandatory = false, HelpMessage = "TenantId name or ID", ValueFromPipelineByPropertyName=true)]
         public AzureTenant Tenant { get; set; }
 
         [Parameter(ParameterSetName = TenantAndSubscriptionParameterSet, Mandatory = true, HelpMessage = "Subscription", ValueFromPipelineByPropertyName=true)]
