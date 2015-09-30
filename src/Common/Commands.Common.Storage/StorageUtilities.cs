@@ -29,17 +29,20 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
             return new Uri(endpoint);
         }
 
+        /// <summary>
+        /// Create a cloud storage account using an ARM storage management client
+        /// </summary>
+        /// <param name="storageClient">The client to use to get storage account details.</param>
+        /// <param name="resourceGroupName">The resource group contining the storage account.</param>
+        /// <param name="accountName">The name of the storage account.</param>
+        /// <returns>A CloudStorageAccount that can be used by windows azure storage library to manipulate objects in the storage account.</returns>
         public static CloudStorageAccount GenerateCloudStorageAccount(Arm.StorageManagementClient storageClient, string resourceGroupName, string accountName)
         {
             var storageServiceResponse = storageClient.StorageAccounts.GetProperties(resourceGroupName, accountName);
             var storageKeysResponse = storageClient.StorageAccounts.ListKeys(resourceGroupName, accountName);
-
             Uri blobEndpoint = storageServiceResponse.StorageAccount.PrimaryEndpoints.Blob;
             Uri queueEndpoint = storageServiceResponse.StorageAccount.PrimaryEndpoints.Queue;
             Uri tableEndpoint = storageServiceResponse.StorageAccount.PrimaryEndpoints.Table;
-
-            
-
             return new CloudStorageAccount(
                 new StorageCredentials(storageServiceResponse.StorageAccount.Name, storageKeysResponse.StorageAccountKeys.Key1),
                 blobEndpoint,
@@ -47,6 +50,12 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
                 tableEndpoint, null);
         }
 
+        /// <summary>
+        /// Create a cloud storage account using a service management storage client
+        /// </summary>
+        /// <param name="storageClient">The client to use to get storage account details.</param>
+        /// <param name="accountName">The name of the storage account.</param>
+        /// <returns>A CloudStorageAccount that can be used by windows azure storage library to manipulate objects in the storage account.</returns>
         public static CloudStorageAccount GenerateCloudStorageAccount(StorageManagementClient storageClient, string accountName)
         {
             var storageServiceResponse = storageClient.StorageAccounts.Get(accountName);

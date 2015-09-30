@@ -295,7 +295,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         }
 
         /// <summary>
-        /// Whether should init the service channel or not
+        /// Get the current storage account
         /// </summary>
         /// <returns>True if it need to init the service channel, otherwise false</returns>
         internal virtual bool TryGetStorageAccount(IAzureProfile profile, out string account)
