@@ -121,7 +121,7 @@
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>PS C:\&gt; #Get one storage account
-          Get-AzureRmStorageAccount -ResourceGroupName &quot;RG1&quot; -AccountName &quot;myStorageAccount&quot;</dev:code>
+          Get-AzureRmStorageAccount -ResourceGroupName &quot;rg1&quot; -AccountName &quot;mystorageaccount&quot;</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -304,7 +304,7 @@
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>#Get keys
-          Get-AzureRmStorageAccountKey -ResourceGroupName &quot;RG1&quot; -AccountName &quot;myStorageAccount&quot;</dev:code>
+          Get-AzureRmStorageAccountKey -ResourceGroupName &quot;rg1&quot; -AccountName &quot;mystorageaccount&quot;</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -375,6 +375,13 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+				<maml:name>Tags</maml:name>
+				<maml:description>
+					<maml:para>Tags to set on the storage account.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Profile</maml:name>
 				<maml:description>
@@ -437,6 +444,18 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+			<maml:name>Tags</maml:name>
+			<maml:description>
+				<maml:para>Tags to set on the storage account.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+			<dev:type>
+				<maml:name>Hashtable[]</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Profile</maml:name>
 			<maml:description>
@@ -490,7 +509,7 @@
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>New-AzureRmStorageAccount -ResourceGroupName &quot;myResourceGroup&quot; -AccountName &quot;myStorageAccount&quot; -Location &quot;US West&quot; -Type &quot;Standard_GRS&quot;</dev:code>
+			<dev:code>New-AzureRmStorageAccount -ResourceGroupName &quot;myresourcegroup&quot; -AccountName &quot;mystorageaccount&quot; -Location &quot;US West&quot; -Type &quot;Standard_GRS&quot;</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -654,7 +673,7 @@
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>#Regenerate a key
-New-AzureRmStorageKey -ResourceGroupName &quot;myResourceGroup&quot; -AccountName &quot;myStorageAccount&quot; -keyName &quot;key1&quot;</dev:code>
+New-AzureRmStorageKey -ResourceGroupName &quot;myresourcegroup&quot; -AccountName &quot;mystorageaccount&quot; -keyName &quot;key1&quot;</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -794,7 +813,7 @@ New-AzureRmStorageKey -ResourceGroupName &quot;myResourceGroup&quot; -AccountNam
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt; Remove-AzureRmStorageAccount -ResourceGroupName &quot;RG1&quot; -AccountName &quot;myStorageAccount&quot;</dev:code>
+			<dev:code>PS C:\&gt; Remove-AzureRmStorageAccount -ResourceGroupName &quot;rg1&quot; -AccountName &quot;mystorageaccount&quot;</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -894,7 +913,7 @@ New-AzureRmStorageKey -ResourceGroupName &quot;myResourceGroup&quot; -AccountNam
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
 				<maml:name>UseSubDomain</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether indirect CName validation is enabled.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[Boolean]</command:parameterValue>
 			</command:parameter>
@@ -925,7 +944,7 @@ New-AzureRmStorageKey -ResourceGroupName &quot;myResourceGroup&quot; -AccountNam
 			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
 				<maml:name>Tags</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Tags to set on the storage account.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
 			</command:parameter>
@@ -1008,7 +1027,7 @@ New-AzureRmStorageKey -ResourceGroupName &quot;myResourceGroup&quot; -AccountNam
 		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
 			<maml:name>UseSubDomain</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether indirect CName validation is enabled.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[Boolean]</command:parameterValue>
 			<dev:type>
@@ -1020,23 +1039,11 @@ New-AzureRmStorageKey -ResourceGroupName &quot;myResourceGroup&quot; -AccountNam
 		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
 			<maml:name>Tags</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Tags to set on the storage account.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
 			<dev:type>
 				<maml:name>Hashtable[]</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="3">
-			<maml:name>UseSubDomainName</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">nullable`1[boolean]</command:parameterValue>
-			<dev:type>
-				<maml:name>nullable`1[boolean]</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -1083,7 +1090,7 @@ New-AzureRmStorageKey -ResourceGroupName &quot;myResourceGroup&quot; -AccountNam
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>PS C:\&gt; # Set account type
-          Set-AzureRmStorageAccount -ResourceGroupName &quot;myResourceGroup&quot; -AccountName &quot;myStorageAccount&quot; -Type &quot;Standard_RAGRS&quot;</dev:code>
+          Set-AzureRmStorageAccount -ResourceGroupName &quot;myresourcegroup&quot; -AccountName &quot;mystorageaccount&quot; -Type &quot;Standard_RAGRS&quot;</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -1104,7 +1111,7 @@ New-AzureRmStorageKey -ResourceGroupName &quot;myResourceGroup&quot; -AccountNam
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>PS C:\&gt; #Set custom domain
-          Set-AzureRmStorageAccount -ResourceGroupName &quot;myResourceGroup&quot; -AccountName &quot;myStorageAccount&quot; -CustomDomainName &quot;domain name&quot; –UseSubDomain “true”</dev:code>
+          Set-AzureRmStorageAccount -ResourceGroupName &quot;myresourcegroup&quot; -AccountName &quot;mystorageaccount&quot; -CustomDomainName &quot;www.domainname.com&quot; –UseSubDomain $true</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
