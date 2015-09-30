@@ -19,7 +19,6 @@ Tests Policy definition CRUD operations
 function Test-PolicyDefinitionCRUD
 {
 	# Setup
-	$rgname = Get-ResourceGroupName
 	$policyName = Get-ResourceName
 
 	# Test
@@ -39,6 +38,43 @@ function Test-PolicyDefinitionCRUD
 	Assert-AreEqual 2 @($list).Count
 
 	$remove = Remove-AzureRMPolicyDefinition -Name $policyName -Force
+	Assert-AreEqual True $remove
+
+}
+
+<#
+.SYNOPSIS
+Tests Policy assignment CRUD operations
+#>
+function Test-PolicyAssignmentCRUD
+{
+	# Setup
+	$rgname = Get-ResourceGroupName
+	$policyName = Get-ResourceName
+
+	# Test
+	$rg = New-AzureRMResourceGroup -Name $rgname -Location "west us"
+	$policy = New-AzureRMPolicyDefinition -Name $policyName -Policy SamplePolicyDefinition.json
+	$actual = New-AzureRMPolicyAssignment -Name testPA -PolicyDefinition $policy -Scope $rg.ResourceId
+	$expected = Get-AzureRMPolicyAssignment -Name testPA -Scope $rg.ResourceId
+
+	Assert-AreEqual $expected.Name $actual.Name
+	Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
+	Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
+	Assert-AreEqual $expected.Properties.PolicyDefinitionId $policy.PolicyDefinitionId
+	Assert-AreEqual $expected.Properties.Scope $rg.ResourceId
+
+	$actualId = Get-AzureRMPolicyAssignment -Id $actual.ResourceId
+	Assert-AreEqual $actual.ResourceId $actualId.ResourceId
+
+	$set = Set-AzureRMPolicyAssignment -Id $actualId.ResourceId -DisplayName testDisplay
+	Assert-AreEqual testDisplay $set.Properties.DisplayName
+
+	New-AzureRMPolicyAssignment -Name test2 -Scope $rg.ResourceId -PolicyDefinition $policy
+	$list = Get-AzureRMPolicyAssignment
+	Assert-AreEqual 2 @($list).Count
+
+	$remove = Remove-AzureRMPolicyAssignment -Name test2 -Scope $rg.ResourceId -Force
 	Assert-AreEqual True $remove
 
 }
