@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.Sql.Models;
 
 namespace Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRMSqlElasticPoolRecommendation", 
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlElasticPoolRecommendation", 
         ConfirmImpact = ConfirmImpact.None)]
     public class GetAzureSqlElasticPoolRecommendation : AzureSqlCmdletBase<IEnumerable<UpgradeRecommendedElasticPoolProperties>, AzureSqlElasticPoolRecommendationAdapter>
     {

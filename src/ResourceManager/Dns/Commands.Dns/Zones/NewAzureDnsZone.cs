@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Dns
     /// <summary>
     /// Creates a new zone.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRMDnsZone"), OutputType(typeof(DnsZone))]
+    [Cmdlet(VerbsCommon.New, "AzureRmDnsZone"), OutputType(typeof(DnsZone))]
     public class NewAzureDnsZone : DnsBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The full name of the zone (without a terminating dot).")]

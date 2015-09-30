@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
     /// <summary>
     /// Disable Azure Backup protection
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Disable, "AzureRMBackupProtection"), OutputType(typeof(AzureRMBackupJob))]
+    [Cmdlet(VerbsLifecycle.Disable, "AzureRmBackupProtection"), OutputType(typeof(AzureRMBackupJob))]
     public class DisableAzureRMBackupProtection : AzureRMBackupDSCmdletBase
     {
         [Parameter(Position = 1, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.RemoveProtectionOption)]
@@ -38,41 +38,52 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
             get { return DeleteBackupData; }
             set { DeleteBackupData = value; }
         }
+
+        [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
+        public SwitchParameter Force { get; set; }   
+
         private bool DeleteBackupData;
 
         protected override void ProcessRecord()
         {
-            ExecutionBlock(() =>
-            {
-                base.ProcessRecord();
-                Guid operationId = Guid.Empty;
-                WriteDebug(Resources.MakingClientCall);
-
-                if (!this.DeleteBackupData)
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Resources.DisableProtectionWarning, Item.Name),
+                Resources.DisableProtectionMessage,
+                Item.Name, () =>
                 {
-                    //Calling update protection with policy Id as empty.
-                    CSMUpdateProtectionRequest input = new CSMUpdateProtectionRequest()
+                    ExecutionBlock(() =>
                     {
-                        Properties = new CSMUpdateProtectionRequestProperties(string.Empty)
-                    };
+                        base.ProcessRecord();
+                        Guid operationId = Guid.Empty;
+                        WriteDebug(Resources.MakingClientCall);
 
-                    operationId = AzureBackupClient.UpdateProtection(Item.ResourceGroupName, Item.ResourceName, Item.ContainerUniqueName, Item.ItemName, input);
-                }
+                        if (!this.DeleteBackupData)
+                        {
+                            //Calling update protection with policy Id as empty.
+                            CSMUpdateProtectionRequest input = new CSMUpdateProtectionRequest()
+                            {
+                                Properties = new CSMUpdateProtectionRequestProperties(string.Empty)
+                            };
 
-                else
-                {
-                    //Calling disable protection
-                    operationId = AzureBackupClient.DisableProtection(Item.ResourceGroupName, Item.ResourceName, Item.ContainerUniqueName, Item.ItemName);
-                }
+                            operationId = AzureBackupClient.UpdateProtection(Item.ResourceGroupName, Item.ResourceName, Item.ContainerUniqueName, Item.ItemName, input);
+                        }
+
+                        else
+                        {
+                            //Calling disable protection
+                            operationId = AzureBackupClient.DisableProtection(Item.ResourceGroupName, Item.ResourceName, Item.ContainerUniqueName, Item.ItemName);
+                        }
 
 
-                WriteDebug(Resources.DisableAzureBackupProtection);
-                var operationStatus = TrackOperation(Item.ResourceGroupName, Item.ResourceName, operationId);
-                this.WriteObject(GetCreatedJobs(Item.ResourceGroupName, 
-                    Item.ResourceName, 
-                    new Models.AzureRMBackupVault(Item.ResourceGroupName, Item.ResourceName, Item.Location), 
-                    operationStatus.JobList).FirstOrDefault());
-            });
+                        WriteDebug(Resources.DisableAzureBackupProtection);
+                        var operationStatus = TrackOperation(Item.ResourceGroupName, Item.ResourceName, operationId);
+                        this.WriteObject(GetCreatedJobs(Item.ResourceGroupName,
+                            Item.ResourceName,
+                            new Models.AzureRMBackupVault(Item.ResourceGroupName, Item.ResourceName, Item.Location),
+                            operationStatus.JobList).FirstOrDefault());
+                    });
+                });            
         }
     }
 }

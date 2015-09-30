@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// A cmdlet that creates a new azure resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRMResource", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.ResourceIdParameterSet), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmResource", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.ResourceIdParameterSet), OutputType(typeof(PSObject))]
     public sealed class SetAzureResourceCmdlet : ResourceManipulationCmdletBase
     {
         /// <summary>
@@ -52,6 +52,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents resource plan properties.")]
         [ValidateNotNullOrEmpty]
         public Hashtable Plan { get; set; }
+
+        /// <summary>  
+        /// Gets or sets the plan object.  
+        /// </summary>  
+        [Alias("SkuObject")]  
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents sku properties.")]  
+        [ValidateNotNullOrEmpty]  
+        public Hashtable Sku { get; set; }  
+
 
         /// <summary>
         /// Gets or sets the tags.
@@ -87,7 +96,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
             if(!string.IsNullOrEmpty(this.ODataQuery))
             {
-                this.WriteWarning("The ODataQuery parameter is being deprecated in Set-AzureRMResource cmdlet and will be removed in a future release.");
+                this.WriteWarning("The ODataQuery parameter is being deprecated in Set-AzureRmResource cmdlet and will be removed in a future release.");
             }
 
             var resourceId = this.GetResourceId();
@@ -165,6 +174,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     {
                         Kind = this.Kind,
                         Plan = this.Plan.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourcePlan>(),
+                        Sku = this.Sku.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourceSku>(),
                         Tags = TagsHelper.GetTagsDictionary(this.Tag),
                         Properties = this.Properties.ToResourcePropertiesBody(),
                     }.ToJToken();
@@ -176,6 +186,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     {
                         Kind = this.Kind ?? resource.Kind,
                         Plan = this.Plan.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourcePlan>() ?? resource.Plan,
+                        Sku = this.Sku.ToDictionary(addValueLayer: false).ToJson().FromJson<ResourceSku>() ?? resource.Sku,
                         Tags = TagsHelper.GetTagsDictionary(this.Tag) ?? resource.Tags,
                         Location = resource.Location,
                         Properties = this.Properties == null ? resource.Properties : this.Properties.ToResourcePropertiesBody(),
@@ -194,7 +205,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private bool ShouldUsePatchSemantics()
         {
-            return this.UsePatchSemantics || (this.Tag != null && this.Plan == null && this.Properties == null && this.Kind == null);
+            return this.UsePatchSemantics || ((this.Tag != null || this.Sku != null) && this.Plan == null && this.Properties == null && this.Kind == null);
         }
 
         /// <summary>

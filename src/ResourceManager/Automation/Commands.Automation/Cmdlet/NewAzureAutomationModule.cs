@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Create a new Module for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRMAutomationModule")]
+    [Cmdlet(VerbsCommon.New, "AzureRmAutomationModule")]
     [OutputType(typeof(Module))]
     public class NewAzureAutomationModule : AzureAutomationBaseCmdlet
     {

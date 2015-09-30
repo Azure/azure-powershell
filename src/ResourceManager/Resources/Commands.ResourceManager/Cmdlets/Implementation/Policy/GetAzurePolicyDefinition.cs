@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Gets the policy definition.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMPolicyDefinition", DefaultParameterSetName = GetAzurePolicyDefinitionCmdlet.ParameterlessSet), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmPolicyDefinition", DefaultParameterSetName = GetAzurePolicyDefinitionCmdlet.ParameterlessSet), OutputType(typeof(PSObject))]
     public class GetAzurePolicyDefinitionCmdlet : PolicyDefinitionCmdletBase
     {
         /// <summary>
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 .DetermineApiVersion(resourceId: resourceId)
                 .ConfigureAwait(continueOnCapturedContext: false);
 
-            if (!string.IsNullOrEmpty(ResourceIdUtility.GetResourceGroupName(resourceId)))
+            if (!string.IsNullOrEmpty(ResourceIdUtility.GetResourceName(resourceId)))
             {
                 var resource = await this
                     .GetResourcesClient()

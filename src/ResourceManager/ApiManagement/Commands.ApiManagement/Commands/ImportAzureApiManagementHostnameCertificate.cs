@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Models;
 
-    [Cmdlet(VerbsData.Import, "AzureRMApiManagementHostnameCertificate"), OutputType(typeof(PsApiManagementHostnameCertificate))]
+    [Cmdlet(VerbsData.Import, "AzureRmApiManagementHostnameCertificate"), OutputType(typeof(PsApiManagementHostnameCertificate))]
     public class ImportAzureApiManagementHostnameCertificate : AzureApiManagementCmdletBase
     {
         [Parameter(

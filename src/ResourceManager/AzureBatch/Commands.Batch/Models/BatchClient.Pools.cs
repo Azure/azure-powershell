@@ -131,6 +131,25 @@ namespace Microsoft.Azure.Commands.Batch.Models
         }
 
         /// <summary>
+        /// Commits changes to a PSCloudPool object to the Batch Service.
+        /// </summary>
+        /// <param name="context">The account to use.</param>
+        /// <param name="pool">The PSCloudPool object representing the pool to update.</param>
+        /// <param name="additionBehaviors">Additional client behaviors to perform.</param>
+        public void UpdatePool(BatchAccountContext context, PSCloudPool pool, IEnumerable<BatchClientBehavior> additionBehaviors = null)
+        {
+            if (pool == null)
+            {
+                throw new ArgumentNullException("pool");
+            }
+
+            WriteVerbose(string.Format(Resources.UpdatingPool, pool.Id));
+
+            Utils.Utils.BoundPoolSyncCollections(pool);
+            pool.omObject.Commit(additionBehaviors);
+        }
+
+        /// <summary>
         /// Deletes the specified pool.
         /// </summary>
         /// <param name="context">The account to use.</param>

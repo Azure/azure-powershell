@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.Sql.Properties;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRMSqlDatabase",
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabase",
         SupportsShouldProcess = true, 
         ConfirmImpact = ConfirmImpact.High)]
     public class RemoveAzureSqlDatabase : AzureSqlDatabaseCmdletBase

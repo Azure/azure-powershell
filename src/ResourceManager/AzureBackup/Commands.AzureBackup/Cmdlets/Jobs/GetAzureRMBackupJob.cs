@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Globalization;
 using System.Management.Automation;
 using System.Collections.Generic;
 using System.Xml;
@@ -28,7 +29,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Get list of jobs pertaining to the filters specified. Gets list of all jobs created in the last 24 hours if no filters are specified.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMBackupJob", DefaultParameterSetName = "FiltersSet"), OutputType(typeof(List<AzureRMBackupJob>), typeof(AzureRMBackupJob))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmBackupJob", DefaultParameterSetName = "FiltersSet"), OutputType(typeof(List<AzureRMBackupJob>), typeof(AzureRMBackupJob))]
     public class GetAzureRMBackupJob : AzureBackupCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.Vault, ParameterSetName = "FiltersSet", ValueFromPipeline = true)]
@@ -132,8 +133,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     To = DateTime.UtcNow;
                 }
 
-                WriteDebug(String.Format(Resources.StartTimeFilter, System.Uri.EscapeDataString(From.Value.ToString("yyyy-MM-dd hh:mm:ss tt"))));
-                WriteDebug(String.Format(Resources.EndTimeFilter, System.Uri.EscapeDataString(To.Value.ToString("yyyy-MM-dd hh:mm:ss tt"))));
+                DateTimeFormatInfo format = new CultureInfo("en-US").DateTimeFormat;
+                WriteDebug(String.Format(Resources.StartTimeFilter, System.Uri.EscapeDataString(From.Value.ToString("yyyy-MM-dd hh:mm:ss tt", format))));
+                WriteDebug(String.Format(Resources.EndTimeFilter, System.Uri.EscapeDataString(To.Value.ToString("yyyy-MM-dd hh:mm:ss tt", format))));
                 WriteDebug(String.Format(Resources.OperationFilter, Operation));
                 WriteDebug(String.Format(Resources.StatusFilter, Status));
                 WriteDebug(String.Format(Resources.TypeFilter, Type));
@@ -141,8 +143,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 Mgmt.CSMJobQueryObject queryParams = new Mgmt.CSMJobQueryObject()
                 {
-                    StartTime = From.Value.ToString("yyyy-MM-dd hh:mm:ss tt"),
-                    EndTime = To.Value.ToString("yyyy-MM-dd hh:mm:ss tt"),
+
+                    StartTime = From.Value.ToString("yyyy-MM-dd hh:mm:ss tt", format),
+                    EndTime = To.Value.ToString("yyyy-MM-dd hh:mm:ss tt", format),
                     Operation = Operation,
                     Status = Status,
                     WorkloadType = Type,
