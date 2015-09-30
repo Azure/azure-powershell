@@ -29,6 +29,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
@@ -58,7 +59,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             rmprofile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
             rmprofile.Context = new AzureContext(new AzureSubscription(), new AzureAccount(), rmprofile.Environments["foo"], new AzureTenant());
             rmprofile.Context.Subscription.Environment = "foo";
-            AzureRMCmdlet.DefaultProfile = rmprofile;
+            AzureRmProfileProvider.Instance.Profile = rmprofile;
             AzureSession.DataStore = datastore;
             ProfileClient = new ProfileClient(profile);
 

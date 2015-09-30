@@ -28,6 +28,7 @@ using Microsoft.Azure.Management.KeyVault;
 using Microsoft.Azure.Common.Authentication.Models;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test
 {
@@ -49,8 +50,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
                 var testSubscription = new AzureSubscription()
                 {
                     Id = new Guid(csmEnvironment.SubscriptionId),
-                    Name = AzureRMCmdlet.DefaultProfile.Context.Subscription.Name,
-                    Environment = AzureRMCmdlet.DefaultProfile.Context.Environment.Name,
+                    Name = AzureRmProfileProvider.Instance.Profile.Context.Subscription.Name,
+                    Environment = AzureRmProfileProvider.Instance.Profile.Context.Environment.Name,
                     Account = user,
                     Properties = new Dictionary<AzureSubscription.Property, string>
                     {
@@ -73,7 +74,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
                     }
                 };
 
-                AzureRMCmdlet.DefaultProfile.Context = new AzureContext(testSubscription, testAccount, AzureRMCmdlet.DefaultProfile.Context.Environment, new AzureTenant { Id = new Guid(tenantId) });
+                AzureRmProfileProvider.Instance.Profile.Context = new AzureContext(testSubscription, testAccount, AzureRmProfileProvider.Instance.Profile.Context.Environment, new AzureTenant { Id = new Guid(tenantId) });
             }
         }
 

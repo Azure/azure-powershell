@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 
             if (StorageCredentialsFactory.IsChannelRequired(Destination))
             {
-                storageCredentialsFactory = new StorageCredentialsFactory(this.ResourceGroupName, storageClient, AzureRMCmdlet.DefaultProfile.Context.Subscription);
+                storageCredentialsFactory = new StorageCredentialsFactory(this.ResourceGroupName, storageClient, DefaultContext.Subscription);
             }
             else
             {

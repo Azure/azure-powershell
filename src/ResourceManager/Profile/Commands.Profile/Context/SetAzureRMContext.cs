@@ -16,6 +16,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -51,16 +52,16 @@ namespace Microsoft.Azure.Commands.Profile
 
         protected override void ProcessRecord()
         {
-            var profileClient = new RMProfileClient(AzureRMCmdlet.DefaultProfile);
+            var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
             if (ParameterSetName == TenantAndSubscriptionParameterSet)
             {
                 SubscriptionId = Subscription.Id.ToString();
                 TenantId = (Tenant == null )? null : Tenant.Id.ToString();
             }
 
-            AzureRMCmdlet.DefaultProfile.Context = profileClient.SetCurrentContext(SubscriptionId, TenantId);
+            AzureRmProfileProvider.Instance.Profile.Context = profileClient.SetCurrentContext(SubscriptionId, TenantId);
 
-            WriteObject((PSAzureContext)AzureRMCmdlet.DefaultProfile.Context);
+            WriteObject((PSAzureContext)AzureRmProfileProvider.Instance.Profile.Context);
         }
     }
 }
