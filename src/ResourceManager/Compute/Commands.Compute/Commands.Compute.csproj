@@ -213,6 +213,7 @@
     <Compile Include="Extension\Diagnostics\GetAzureVMDiagnosticsExtension.cs" />
     <Compile Include="Extension\Diagnostics\RemoveAzureVMDiagnosticsExtension.cs" />
     <Compile Include="Extension\Diagnostics\SetAzureVMDiagnosticsExtension.cs" />
+    <Compile Include="Extension\DSC\GetAzureVMDscExtensionStatusCommand.cs" />
     <Compile Include="Extension\DSC\GetDscResourceException.cs" />
     <Compile Include="Extension\DSC\DscExtensionPublishCmdletCommonBase.cs" />
     <Compile Include="Extension\DSC\DscExtensionCmdletCommonBase.cs" />
@@ -221,6 +222,7 @@
     <Compile Include="Extension\DSC\SetAzureVMDscExtensionCommand.cs" />
     <Compile Include="Extension\DSC\VirtualMachineDscExtensionContext.cs" />
     <Compile Include="Extension\DSC\GetAzureVMDscExtensionCommand.cs" />
+    <Compile Include="Extension\DSC\VirtualMachineDscExtensionStatusContext.cs" />
     <Compile Include="Extension\SetAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\RemoveAzureVMExtensionCommand.cs" />
     <Compile Include="Extension\GetAzureVMExtensionCommand.cs" />
@@ -379,23 +381,5 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-  </Target>
   <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

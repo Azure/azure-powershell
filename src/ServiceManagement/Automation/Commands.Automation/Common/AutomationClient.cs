@@ -1421,6 +1421,28 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #endregion
 
+        #region ConnectionType
+
+        public void DeleteConnectionType(string automationAccountName, string name)
+        {
+            try
+            {
+                this.automationManagementClient.ConnectionTypes.Delete(automationAccountName, name);
+            }
+            catch (CloudException cloudException)
+            {
+                if (cloudException.Response.StatusCode == HttpStatusCode.NoContent)
+                {
+                    throw new ResourceNotFoundException(typeof(ConnectionType),
+                        string.Format(CultureInfo.CurrentCulture, Resources.ConnectionTypeNotFound, name));
+                }
+
+                throw;
+            }
+        }
+
+        #endregion
+
         #region Private Methods
 
         private Schedule CreateScheduleFromScheduleModel(string automationAccountName, AutomationManagement.Models.Schedule schedule)

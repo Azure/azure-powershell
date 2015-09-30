@@ -79,9 +79,10 @@ namespace Microsoft.Azure.Commands.UsageAggregates.Test.ScenarioTests
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
-                helper.SetupModules(
-                    AzureModule.AzureResourceManager,
-                    "ScenarioTests\\" + callingClassName + ".ps1");
+                helper.SetupModules(AzureModule.AzureResourceManager, 
+                    "ScenarioTests\\" + callingClassName + ".ps1", 
+                    helper.RMProfileModule, 
+                    helper.GetRMModulePath(@"AzureRM.UsageAggregates.psd1"));
 
                 try
                 {

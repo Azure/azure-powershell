@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
             };
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId] =
                 environment.ActiveDirectoryServiceEndpointResourceId;
+            newEnvironment.Endpoints[AzureEnvironment.Endpoint.ActiveDirectory] = environment.ActiveDirectoryAuthority;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.AdTenant] = environment.AdTenant;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.Gallery] = environment.GalleryUrl;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.ManagementPortalUrl] = environment.ManagementPortalUrl;

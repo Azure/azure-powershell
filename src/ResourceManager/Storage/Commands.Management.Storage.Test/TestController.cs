@@ -102,9 +102,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
-                helper.SetupModules(
-                    AzureModule.AzureResourceManager,
-                    "ScenarioTests\\Common.ps1",
+                helper.SetupModules(AzureModule.AzureResourceManager, 
+                    helper.RMProfileModule, 
+                    helper.RMResourceModule, 
+                    helper.RMStorageDataPlaneModule,
+                    helper.RMStorageModule,
+                    "ScenarioTests\\Common.ps1", 
                     "ScenarioTests\\" + callingClassName + ".ps1");
 
                 try

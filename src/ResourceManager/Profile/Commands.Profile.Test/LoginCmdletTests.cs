@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.Manual)]
         public void LoginWithSubscriptionAndTenant()
         {
             var cmdlt = new AddAzureRMAccountCommand();
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.Manual)]
         public void LoginWithInvalidSubscriptionAndTenantThrowsCloudException()
         {
             var cmdlt = new AddAzureRMAccountCommand();
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.Manual)]
         public void LoginWithSubscriptionAndNoTenant()
         {
             var cmdlt = new AddAzureRMAccountCommand();
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
         
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.Manual)]
         public void LoginWithNoSubscriptionAndNoTenant()
         {
             var cmdlt = new AddAzureRMAccountCommand();
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.Manual)]
         public void LoginWithNoSubscriptionAndTenant()
         {
             var cmdlt = new AddAzureRMAccountCommand();

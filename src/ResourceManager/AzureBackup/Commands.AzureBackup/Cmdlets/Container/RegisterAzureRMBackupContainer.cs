@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             else
             {
                 //We can have multiple container with same friendly name. 
-                container = containers.Where(c => ContainerHelpers.GetRGNameFromId(c.Properties.ParentContainerId).Equals(rgName.ToLower())).FirstOrDefault(); //TODO need to change.
+                container = containers.Where(c => ContainerHelpers.GetRGNameFromId(c.Properties.ParentContainerId).Equals(rgName, StringComparison.OrdinalIgnoreCase)).FirstOrDefault(); 
                 if (container == null)
                 {
                     //Container is not in list of registered container

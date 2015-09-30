@@ -336,7 +336,7 @@ function Test-UpdateJobSchedule
 {
 	param([string]$accountName, [string]$jobScheduleId)
 
-	$context = Get-AzureRMBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 
 	$jobSchedule = Get-AzureBatchJobSchedule_ST $jobScheduleId -BatchContext $context
 	
