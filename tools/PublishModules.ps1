@@ -76,7 +76,7 @@ if (($scope -eq 'All') -or ($scope -eq 'AzureStorage')) {
     Publish-Module -Path $modulePath -NuGetApiKey $apiKey -Repository $repoName
 } 
 
-if ($scope -eq 'AzureRM') {
+if (($scope -eq 'All') -or ($scope -eq 'AzureRM')) {
     # Publish AzureRM module    
     $modulePath = "$PSScriptRoot\AzureRM"
     Write-Host "Publishing AzureRM module from $modulePath"
@@ -96,7 +96,7 @@ if ($scope -eq 'All') {
             Write-Host "Published $module module"
         }
     }
-} else {
+} elseif ($scope -ne 'AzureRM') {
     $modulePath = Join-Path $resourceManagerRootFolder "AzureRM.$scope"
     if (Test-Path $modulePath) {
         Write-Host "Publishing $scope module from $modulePath"
