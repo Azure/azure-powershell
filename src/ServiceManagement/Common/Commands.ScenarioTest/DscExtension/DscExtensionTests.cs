@@ -30,7 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
     {
         private EnvironmentSetupHelper helper = new EnvironmentSetupHelper();
 
-        [Fact(Skip = "TODO: Need to be fixed")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestGetAzureVMDscExtension()

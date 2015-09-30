@@ -21,16 +21,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14996"
+          "14993"
         ],
         "x-ms-request-id": [
-          "c1fe2b8b-5247-4999-8c0c-314814c08c9f"
+          "ab943300-b07d-4c1a-a9f8-4b4fad185921"
         ],
         "x-ms-correlation-request-id": [
-          "c1fe2b8b-5247-4999-8c0c-314814c08c9f"
+          "ab943300-b07d-4c1a-a9f8-4b4fad185921"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150930T060122Z:c1fe2b8b-5247-4999-8c0c-314814c08c9f"
+          "WESTUS:20150930T215038Z:ab943300-b07d-4c1a-a9f8-4b4fad185921"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -39,28 +39,28 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 30 Sep 2015 06:01:22 GMT"
+          "Wed, 30 Sep 2015 21:50:38 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/23a4074d-cca6-4cd3-878f-7f4c2116918d/providers/Microsoft.Authorization/policydefinitions/onesdk6186?api-version=2015-10-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjNhNDA3NGQtY2NhNi00Y2QzLTg3OGYtN2Y0YzIxMTY5MThkL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy9vbmVzZGs2MTg2P2FwaS12ZXJzaW9uPTIwMTUtMTAtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/23a4074d-cca6-4cd3-878f-7f4c2116918d/providers/Microsoft.Authorization/policydefinitions/onesdk434?api-version=2015-10-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjNhNDA3NGQtY2NhNi00Y2QzLTg3OGYtN2Y0YzIxMTY5MThkL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy9vbmVzZGs0MzQ/YXBpLXZlcnNpb249MjAxNS0xMC0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"source\": \"action\",\r\n        \"equals\": \"Microsoft.Resources/Subscriptions/ResourceGroups/write\"\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deny\"\r\n      }\r\n    }\r\n  },\r\n  \"name\": \"onesdk6186\"\r\n}",
+      "RequestBody": "{\r\n  \"name\": \"onesdk434\",\r\n  \"properties\": {\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"source\": \"action\",\r\n        \"equals\": \"Microsoft.Resources/Subscriptions/ResourceGroups/write\"\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deny\"\r\n      }\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "263"
+          "262"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"source\": \"action\",\r\n        \"equals\": \"Microsoft.Resources/Subscriptions/ResourceGroups/write\"\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deny\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/23a4074d-cca6-4cd3-878f-7f4c2116918d/providers/Microsoft.Authorization/policyDefinitions/onesdk6186\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"onesdk6186\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"source\": \"action\",\r\n        \"equals\": \"Microsoft.Resources/Subscriptions/ResourceGroups/write\"\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deny\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/23a4074d-cca6-4cd3-878f-7f4c2116918d/providers/Microsoft.Authorization/policyDefinitions/onesdk434\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"onesdk434\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "362"
+          "360"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -72,16 +72,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus:bd1d9efa-abc4-49a3-bfd6-2a5e1c710028"
+          "westus:c0da6101-3aa9-4b96-ae6f-9bed7d64ba49"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1197"
         ],
         "x-ms-correlation-request-id": [
-          "fd97b45b-214a-4b4e-9c7c-a7b9df227e57"
+          "84581ed4-dbeb-4335-bcf0-a226b7dea332"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150930T060124Z:fd97b45b-214a-4b4e-9c7c-a7b9df227e57"
+          "WESTUS:20150930T215039Z:84581ed4-dbeb-4335-bcf0-a226b7dea332"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -90,28 +90,28 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 30 Sep 2015 06:01:23 GMT"
+          "Wed, 30 Sep 2015 21:50:38 GMT"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/23a4074d-cca6-4cd3-878f-7f4c2116918d/providers/Microsoft.Authorization/policydefinitions/onesdk6186?api-version=2015-10-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjNhNDA3NGQtY2NhNi00Y2QzLTg3OGYtN2Y0YzIxMTY5MThkL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy9vbmVzZGs2MTg2P2FwaS12ZXJzaW9uPTIwMTUtMTAtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/23a4074d-cca6-4cd3-878f-7f4c2116918d/providers/Microsoft.Authorization/policydefinitions/onesdk434?api-version=2015-10-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjNhNDA3NGQtY2NhNi00Y2QzLTg3OGYtN2Y0YzIxMTY5MThkL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy9vbmVzZGs0MzQ/YXBpLXZlcnNpb249MjAxNS0xMC0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"description\": \"testDescription\",\r\n    \"displayName\": \"testDisplay\",\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"source\": \"action\",\r\n        \"equals\": \"Microsoft.Resources/Subscriptions/ResourceGroups/write\"\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deny\"\r\n      }\r\n    }\r\n  },\r\n  \"name\": \"onesdk6186\"\r\n}",
+      "RequestBody": "{\r\n  \"name\": \"onesdk434\",\r\n  \"properties\": {\r\n    \"description\": \"testDescription\",\r\n    \"displayName\": \"testDisplay\",\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"source\": \"action\",\r\n        \"equals\": \"Microsoft.Resources/Subscriptions/ResourceGroups/write\"\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deny\"\r\n      }\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "337"
+          "336"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"testDisplay\",\r\n    \"policyType\": \"Custom\",\r\n    \"description\": \"testDescription\",\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"source\": \"action\",\r\n        \"equals\": \"Microsoft.Resources/Subscriptions/ResourceGroups/write\"\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deny\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/23a4074d-cca6-4cd3-878f-7f4c2116918d/providers/Microsoft.Authorization/policyDefinitions/onesdk6186\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"onesdk6186\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"testDisplay\",\r\n    \"policyType\": \"Custom\",\r\n    \"description\": \"testDescription\",\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"source\": \"action\",\r\n        \"equals\": \"Microsoft.Resources/Subscriptions/ResourceGroups/write\"\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deny\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/23a4074d-cca6-4cd3-878f-7f4c2116918d/providers/Microsoft.Authorization/policyDefinitions/onesdk434\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"onesdk434\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "422"
+          "420"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -123,16 +123,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus:0978c634-5c73-4517-b9aa-f6a224c0428d"
+          "westus:31ce8248-f9df-483b-b58e-90f1ca824311"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
+          "1195"
         ],
         "x-ms-correlation-request-id": [
-          "f5dd746f-bd31-4333-99c1-3e179a7d44ad"
+          "cf71327e-3b79-4fd0-9667-8fd23ab32925"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150930T060125Z:f5dd746f-bd31-4333-99c1-3e179a7d44ad"
+          "WESTUS:20150930T215041Z:cf71327e-3b79-4fd0-9667-8fd23ab32925"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -141,21 +141,21 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 30 Sep 2015 06:01:25 GMT"
+          "Wed, 30 Sep 2015 21:50:41 GMT"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/23a4074d-cca6-4cd3-878f-7f4c2116918d/providers/Microsoft.Authorization/policydefinitions/onesdk6186?api-version=2015-10-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjNhNDA3NGQtY2NhNi00Y2QzLTg3OGYtN2Y0YzIxMTY5MThkL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy9vbmVzZGs2MTg2P2FwaS12ZXJzaW9uPTIwMTUtMTAtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/23a4074d-cca6-4cd3-878f-7f4c2116918d/providers/Microsoft.Authorization/policydefinitions/onesdk434?api-version=2015-10-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjNhNDA3NGQtY2NhNi00Y2QzLTg3OGYtN2Y0YzIxMTY5MThkL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy9vbmVzZGs0MzQ/YXBpLXZlcnNpb249MjAxNS0xMC0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {},
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"source\": \"action\",\r\n        \"equals\": \"Microsoft.Resources/Subscriptions/ResourceGroups/write\"\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deny\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/23a4074d-cca6-4cd3-878f-7f4c2116918d/providers/Microsoft.Authorization/policyDefinitions/onesdk6186\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"onesdk6186\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"source\": \"action\",\r\n        \"equals\": \"Microsoft.Resources/Subscriptions/ResourceGroups/write\"\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deny\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/23a4074d-cca6-4cd3-878f-7f4c2116918d/providers/Microsoft.Authorization/policyDefinitions/onesdk434\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"onesdk434\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "362"
+          "360"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -170,110 +170,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus:572238be-e458-4432-9283-9f7e056dd01b"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14997"
-        ],
-        "x-ms-correlation-request-id": [
-          "0dae70ec-dc24-4058-b2f9-e7f1e5566965"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20150930T060125Z:0dae70ec-dc24-4058-b2f9-e7f1e5566965"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 30 Sep 2015 06:01:25 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/23a4074d-cca6-4cd3-878f-7f4c2116918d/providers/Microsoft.Authorization/policydefinitions/onesdk6186?api-version=2015-10-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjNhNDA3NGQtY2NhNi00Y2QzLTg3OGYtN2Y0YzIxMTY5MThkL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy9vbmVzZGs2MTg2P2FwaS12ZXJzaW9uPTIwMTUtMTAtMDEtcHJldmlldw==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {},
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"source\": \"action\",\r\n        \"equals\": \"Microsoft.Resources/Subscriptions/ResourceGroups/write\"\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deny\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/23a4074d-cca6-4cd3-878f-7f4c2116918d/providers/Microsoft.Authorization/policyDefinitions/onesdk6186\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"onesdk6186\"\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "362"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Vary": [
-          "Accept-Encoding"
-        ],
-        "x-ms-request-id": [
-          "westus:aef7cd56-b19e-4cac-9cde-1b8c94bbbd8f"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14995"
-        ],
-        "x-ms-correlation-request-id": [
-          "d3295dd8-a163-4d9e-b093-67a6e8d23d7b"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20150930T060125Z:d3295dd8-a163-4d9e-b093-67a6e8d23d7b"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 30 Sep 2015 06:01:24 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/23a4074d-cca6-4cd3-878f-7f4c2116918d/providers/Microsoft.Authorization/policydefinitions/onesdk6186?api-version=2015-10-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjNhNDA3NGQtY2NhNi00Y2QzLTg3OGYtN2Y0YzIxMTY5MThkL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy9vbmVzZGs2MTg2P2FwaS12ZXJzaW9uPTIwMTUtMTAtMDEtcHJldmlldw==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {},
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"testDisplay\",\r\n    \"policyType\": \"Custom\",\r\n    \"description\": \"testDescription\",\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"source\": \"action\",\r\n        \"equals\": \"Microsoft.Resources/Subscriptions/ResourceGroups/write\"\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deny\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/23a4074d-cca6-4cd3-878f-7f4c2116918d/providers/Microsoft.Authorization/policyDefinitions/onesdk6186\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"onesdk6186\"\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "422"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Vary": [
-          "Accept-Encoding"
-        ],
-        "x-ms-request-id": [
-          "westus:d940bd81-8632-462c-b12a-5b8129749b17"
+          "westus:cd424475-4e90-40c4-9eed-f028bdb1affc"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "14996"
         ],
         "x-ms-correlation-request-id": [
-          "66d7cf0b-3417-4667-91d8-4235eedb658b"
+          "f4a6eb8d-e10d-4754-9a4e-beeec094dfd0"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150930T060126Z:66d7cf0b-3417-4667-91d8-4235eedb658b"
+          "WESTUS:20150930T215040Z:f4a6eb8d-e10d-4754-9a4e-beeec094dfd0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -282,7 +188,101 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 30 Sep 2015 06:01:26 GMT"
+          "Wed, 30 Sep 2015 21:50:39 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/23a4074d-cca6-4cd3-878f-7f4c2116918d/providers/Microsoft.Authorization/policydefinitions/onesdk434?api-version=2015-10-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjNhNDA3NGQtY2NhNi00Y2QzLTg3OGYtN2Y0YzIxMTY5MThkL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy9vbmVzZGs0MzQ/YXBpLXZlcnNpb249MjAxNS0xMC0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {},
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"source\": \"action\",\r\n        \"equals\": \"Microsoft.Resources/Subscriptions/ResourceGroups/write\"\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deny\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/23a4074d-cca6-4cd3-878f-7f4c2116918d/providers/Microsoft.Authorization/policyDefinitions/onesdk434\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"onesdk434\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "360"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "westus:d02c294b-f42b-404a-a96d-3e566fe6562f"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14991"
+        ],
+        "x-ms-correlation-request-id": [
+          "3244fa17-54f0-4d81-88f3-16317358f66b"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20150930T215041Z:3244fa17-54f0-4d81-88f3-16317358f66b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 30 Sep 2015 21:50:40 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/23a4074d-cca6-4cd3-878f-7f4c2116918d/providers/Microsoft.Authorization/policydefinitions/onesdk434?api-version=2015-10-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjNhNDA3NGQtY2NhNi00Y2QzLTg3OGYtN2Y0YzIxMTY5MThkL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy9vbmVzZGs0MzQ/YXBpLXZlcnNpb249MjAxNS0xMC0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {},
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"testDisplay\",\r\n    \"policyType\": \"Custom\",\r\n    \"description\": \"testDescription\",\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"source\": \"action\",\r\n        \"equals\": \"Microsoft.Resources/Subscriptions/ResourceGroups/write\"\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deny\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/23a4074d-cca6-4cd3-878f-7f4c2116918d/providers/Microsoft.Authorization/policyDefinitions/onesdk434\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"onesdk434\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "420"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-request-id": [
+          "westus:ebae2485-c784-4116-a6f1-d1a7b3bd0cbd"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14995"
+        ],
+        "x-ms-correlation-request-id": [
+          "66f19c39-ddab-420a-a9f7-801167b8d53a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20150930T215043Z:66f19c39-ddab-420a-a9f7-801167b8d53a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 30 Sep 2015 21:50:42 GMT"
         ]
       },
       "StatusCode": 200
@@ -291,7 +291,7 @@
       "RequestUri": "/subscriptions/23a4074d-cca6-4cd3-878f-7f4c2116918d/providers/Microsoft.Authorization/policydefinitions/test2?api-version=2015-10-01-preview",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjNhNDA3NGQtY2NhNi00Y2QzLTg3OGYtN2Y0YzIxMTY5MThkL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy90ZXN0Mj9hcGktdmVyc2lvbj0yMDE1LTEwLTAxLXByZXZpZXc=",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"source\": \"action\",\r\n        \"equals\": \"blah\"\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deny\"\r\n      }\r\n    }\r\n  },\r\n  \"name\": \"test2\"\r\n}",
+      "RequestBody": "{\r\n  \"name\": \"test2\",\r\n  \"properties\": {\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"source\": \"action\",\r\n        \"equals\": \"blah\"\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deny\"\r\n      }\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -315,16 +315,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus:f97b5f4e-3669-4c76-8275-18e4e1e3277c"
+          "westus:52a49a53-c43a-43d3-b03c-cb4b565176d7"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1195"
+          "1192"
         ],
         "x-ms-correlation-request-id": [
-          "eb628ed4-3a18-4a18-9e79-287357e7deb7"
+          "47391a08-448c-478d-b634-b461544ef310"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150930T060127Z:eb628ed4-3a18-4a18-9e79-287357e7deb7"
+          "WESTUS:20150930T215043Z:47391a08-448c-478d-b634-b461544ef310"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -333,7 +333,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 30 Sep 2015 06:01:26 GMT"
+          "Wed, 30 Sep 2015 21:50:43 GMT"
         ]
       },
       "StatusCode": 201
@@ -344,10 +344,10 @@
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {},
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"displayName\": \"testDisplay\",\r\n        \"policyType\": \"Custom\",\r\n        \"description\": \"testDescription\",\r\n        \"policyRule\": {\r\n          \"if\": {\r\n            \"source\": \"action\",\r\n            \"equals\": \"Microsoft.Resources/Subscriptions/ResourceGroups/write\"\r\n          },\r\n          \"then\": {\r\n            \"effect\": \"deny\"\r\n          }\r\n        }\r\n      },\r\n      \"id\": \"/subscriptions/23a4074d-cca6-4cd3-878f-7f4c2116918d/providers/Microsoft.Authorization/policyDefinitions/onesdk6186\",\r\n      \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n      \"name\": \"onesdk6186\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"policyType\": \"Custom\",\r\n        \"policyRule\": {\r\n          \"if\": {\r\n            \"source\": \"action\",\r\n            \"equals\": \"blah\"\r\n          },\r\n          \"then\": {\r\n            \"effect\": \"deny\"\r\n          }\r\n        }\r\n      },\r\n      \"id\": \"/subscriptions/23a4074d-cca6-4cd3-878f-7f4c2116918d/providers/Microsoft.Authorization/policyDefinitions/test2\",\r\n      \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n      \"name\": \"test2\"\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"displayName\": \"testDisplay\",\r\n        \"policyType\": \"Custom\",\r\n        \"description\": \"testDescription\",\r\n        \"policyRule\": {\r\n          \"if\": {\r\n            \"source\": \"action\",\r\n            \"equals\": \"Microsoft.Resources/Subscriptions/ResourceGroups/write\"\r\n          },\r\n          \"then\": {\r\n            \"effect\": \"deny\"\r\n          }\r\n        }\r\n      },\r\n      \"id\": \"/subscriptions/23a4074d-cca6-4cd3-878f-7f4c2116918d/providers/Microsoft.Authorization/policyDefinitions/onesdk434\",\r\n      \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n      \"name\": \"onesdk434\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"policyType\": \"Custom\",\r\n        \"policyRule\": {\r\n          \"if\": {\r\n            \"source\": \"action\",\r\n            \"equals\": \"blah\"\r\n          },\r\n          \"then\": {\r\n            \"effect\": \"deny\"\r\n          }\r\n        }\r\n      },\r\n      \"id\": \"/subscriptions/23a4074d-cca6-4cd3-878f-7f4c2116918d/providers/Microsoft.Authorization/policyDefinitions/test2\",\r\n      \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n      \"name\": \"test2\"\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "737"
+          "735"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -362,16 +362,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus:e69135d0-5995-435f-b310-38878df220fa"
+          "westus:bbb02408-f5af-4a20-8f8e-59f7b9d4316e"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14995"
+          "14992"
         ],
         "x-ms-correlation-request-id": [
-          "aa79fd5a-4ca9-4c4f-85a4-899693dfeddb"
+          "b74296d2-f742-4542-aa09-f05acfb8d983"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150930T060127Z:aa79fd5a-4ca9-4c4f-85a4-899693dfeddb"
+          "WESTUS:20150930T215043Z:b74296d2-f742-4542-aa09-f05acfb8d983"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -380,21 +380,21 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 30 Sep 2015 06:01:26 GMT"
+          "Wed, 30 Sep 2015 21:50:43 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/23a4074d-cca6-4cd3-878f-7f4c2116918d/providers/Microsoft.Authorization/policydefinitions/onesdk6186?api-version=2015-10-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjNhNDA3NGQtY2NhNi00Y2QzLTg3OGYtN2Y0YzIxMTY5MThkL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy9vbmVzZGs2MTg2P2FwaS12ZXJzaW9uPTIwMTUtMTAtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/23a4074d-cca6-4cd3-878f-7f4c2116918d/providers/Microsoft.Authorization/policydefinitions/onesdk434?api-version=2015-10-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjNhNDA3NGQtY2NhNi00Y2QzLTg3OGYtN2Y0YzIxMTY5MThkL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy9vbmVzZGs0MzQ/YXBpLXZlcnNpb249MjAxNS0xMC0wMS1wcmV2aWV3",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {},
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"testDisplay\",\r\n    \"policyType\": \"Custom\",\r\n    \"description\": \"testDescription\",\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"source\": \"action\",\r\n        \"equals\": \"Microsoft.Resources/Subscriptions/ResourceGroups/write\"\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deny\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/23a4074d-cca6-4cd3-878f-7f4c2116918d/providers/Microsoft.Authorization/policyDefinitions/onesdk6186\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"onesdk6186\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"testDisplay\",\r\n    \"policyType\": \"Custom\",\r\n    \"description\": \"testDescription\",\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"source\": \"action\",\r\n        \"equals\": \"Microsoft.Resources/Subscriptions/ResourceGroups/write\"\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deny\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/23a4074d-cca6-4cd3-878f-7f4c2116918d/providers/Microsoft.Authorization/policyDefinitions/onesdk434\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"onesdk434\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "422"
+          "420"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -409,16 +409,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus:08cc49b7-ab45-4ca3-a41b-9bedd55b8fc3"
+          "westus:fcb054aa-2244-4e3d-9370-8f538fbb992c"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
+          "1195"
         ],
         "x-ms-correlation-request-id": [
-          "76af3620-8980-4e61-ad3b-3bdea3b79068"
+          "aa12b304-b1c6-43cd-8d17-2b5e5400e0c2"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150930T060127Z:76af3620-8980-4e61-ad3b-3bdea3b79068"
+          "WESTUS:20150930T215044Z:aa12b304-b1c6-43cd-8d17-2b5e5400e0c2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -427,7 +427,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 30 Sep 2015 06:01:27 GMT"
+          "Wed, 30 Sep 2015 21:50:43 GMT"
         ]
       },
       "StatusCode": 200
@@ -435,8 +435,7 @@
   ],
   "Names": {
     "Test-PolicyDefinitionCRUD": [
-      "onesdk7109",
-      "onesdk6186"
+      "onesdk434"
     ]
   },
   "Variables": {
