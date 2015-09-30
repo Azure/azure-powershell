@@ -75,11 +75,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         public static readonly string MicrosoftAuthorizationPolicyDefinitionType = Constants.MicrosoftAuthorizationNamespace + "/policydefinitions";
 
         /// <summary>
-        /// The policy assignment resource type.
-        /// </summary>
-        public static readonly string MicrosoftAuthorizationPolicyAssignmentType = Constants.MicrosoftAuthorizationNamespace + "/policyassignments";
-
-        /// <summary>
         /// The type name of the generic resource.
         /// </summary>
         public static readonly string MicrosoftAzureResource = "Microsoft.Azure.Resource";
