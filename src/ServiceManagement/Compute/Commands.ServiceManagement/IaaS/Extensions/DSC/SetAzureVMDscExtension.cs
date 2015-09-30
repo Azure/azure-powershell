@@ -381,14 +381,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
             var publicSettings = new DscExtensionPublicSettings();
             var privateSettings = new DscExtensionPrivateSettings();
 
-            if (string.IsNullOrEmpty(WmfVersion))
-            {
-                publicSettings.WmfVersion = "latest";
-            }
-            else
-            {
-                publicSettings.WmfVersion = WmfVersion;
-            }
+            publicSettings.WmfVersion = string.IsNullOrEmpty(WmfVersion) ? "latest" : WmfVersion;
 
             if (!string.IsNullOrEmpty(ConfigurationArchive))
             {
