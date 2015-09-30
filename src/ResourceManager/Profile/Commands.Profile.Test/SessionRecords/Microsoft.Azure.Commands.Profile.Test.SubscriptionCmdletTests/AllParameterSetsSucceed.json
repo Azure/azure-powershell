@@ -25,256 +25,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "14997"
-        ],
-        "x-ms-request-id": [
-          "38c034fe-957b-4c62-831d-fffaa3c2d24f"
-        ],
-        "x-ms-correlation-request-id": [
-          "38c034fe-957b-4c62-831d-fffaa3c2d24f"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20150930T202114Z:38c034fe-957b-4c62-831d-fffaa3c2d24f"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 30 Sep 2015 20:21:14 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnM/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Subscriptions.SubscriptionClient/2.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d\",\r\n      \"subscriptionId\": \"00977cdb-163f-435f-9c32-39ec8ae61f4d\",\r\n      \"displayName\": \"node\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/06a62a53-a85a-4767-bd74-82f3429d998c\",\r\n      \"subscriptionId\": \"06a62a53-a85a-4767-bd74-82f3429d998c\",\r\n      \"displayName\": \"Visual Studio Ultimate with MSDN\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Public_2014-09-01\",\r\n        \"quotaId\": \"MSDN_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6\",\r\n      \"subscriptionId\": \"2c224e7e-3ef5-431d-a57b-e71f4662e3a6\",\r\n      \"displayName\": \"Node CLI Test\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8\",\r\n      \"subscriptionId\": \"9ed7cca5-c306-4f66-9d1c-2766e67013d8\",\r\n      \"displayName\": \"FISMA Pen Testing Subscription\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb\",\r\n      \"subscriptionId\": \"c9cbd920-c00c-427c-852b-8aaf38badaeb\",\r\n      \"displayName\": \"Azure SDK Powershell Test\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/d1e52cbc-b073-42e2-a0a0-c2f547118a6e\",\r\n      \"subscriptionId\": \"d1e52cbc-b073-42e2-a0a0-c2f547118a6e\",\r\n      \"displayName\": \"Test Subscription 1 for Migration\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c\",\r\n      \"subscriptionId\": \"db1ab6f0-4769-4b27-930e-01e2ef9c123c\",\r\n      \"displayName\": \"Azure SDK sandbox\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/d03b04c7-d1d4-467b-aaaa-87b6fcb38b38\",\r\n      \"subscriptionId\": \"d03b04c7-d1d4-467b-aaaa-87b6fcb38b38\",\r\n      \"displayName\": \"AppInsight Test\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/b6b78feb-3074-4129-8748-42cee6c73020\",\r\n      \"subscriptionId\": \"b6b78feb-3074-4129-8748-42cee6c73020\",\r\n      \"displayName\": \"XFD Data Systems - Public\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    }\r\n  ]\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "2476"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-tenant-reads": [
-          "14996"
-        ],
-        "x-ms-request-id": [
-          "de94d527-8c15-497d-ac94-6b52919c55ad"
-        ],
-        "x-ms-correlation-request-id": [
-          "de94d527-8c15-497d-ac94-6b52919c55ad"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20150930T202115Z:de94d527-8c15-497d-ac94-6b52919c55ad"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 30 Sep 2015 20:21:15 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnM/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Subscriptions.SubscriptionClient/2.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d\",\r\n      \"subscriptionId\": \"00977cdb-163f-435f-9c32-39ec8ae61f4d\",\r\n      \"displayName\": \"node\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/06a62a53-a85a-4767-bd74-82f3429d998c\",\r\n      \"subscriptionId\": \"06a62a53-a85a-4767-bd74-82f3429d998c\",\r\n      \"displayName\": \"Visual Studio Ultimate with MSDN\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Public_2014-09-01\",\r\n        \"quotaId\": \"MSDN_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6\",\r\n      \"subscriptionId\": \"2c224e7e-3ef5-431d-a57b-e71f4662e3a6\",\r\n      \"displayName\": \"Node CLI Test\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8\",\r\n      \"subscriptionId\": \"9ed7cca5-c306-4f66-9d1c-2766e67013d8\",\r\n      \"displayName\": \"FISMA Pen Testing Subscription\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb\",\r\n      \"subscriptionId\": \"c9cbd920-c00c-427c-852b-8aaf38badaeb\",\r\n      \"displayName\": \"Azure SDK Powershell Test\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/d1e52cbc-b073-42e2-a0a0-c2f547118a6e\",\r\n      \"subscriptionId\": \"d1e52cbc-b073-42e2-a0a0-c2f547118a6e\",\r\n      \"displayName\": \"Test Subscription 1 for Migration\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c\",\r\n      \"subscriptionId\": \"db1ab6f0-4769-4b27-930e-01e2ef9c123c\",\r\n      \"displayName\": \"Azure SDK sandbox\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/d03b04c7-d1d4-467b-aaaa-87b6fcb38b38\",\r\n      \"subscriptionId\": \"d03b04c7-d1d4-467b-aaaa-87b6fcb38b38\",\r\n      \"displayName\": \"AppInsight Test\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/b6b78feb-3074-4129-8748-42cee6c73020\",\r\n      \"subscriptionId\": \"b6b78feb-3074-4129-8748-42cee6c73020\",\r\n      \"displayName\": \"XFD Data Systems - Public\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    }\r\n  ]\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "2476"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-tenant-reads": [
-          "14995"
-        ],
-        "x-ms-request-id": [
-          "95c06515-c6c6-4be6-a3f0-dd5fc5b5b864"
-        ],
-        "x-ms-correlation-request-id": [
-          "95c06515-c6c6-4be6-a3f0-dd5fc5b5b864"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20150930T202115Z:95c06515-c6c6-4be6-a3f0-dd5fc5b5b864"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 30 Sep 2015 20:21:15 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnM/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Subscriptions.SubscriptionClient/2.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d\",\r\n      \"subscriptionId\": \"00977cdb-163f-435f-9c32-39ec8ae61f4d\",\r\n      \"displayName\": \"node\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/06a62a53-a85a-4767-bd74-82f3429d998c\",\r\n      \"subscriptionId\": \"06a62a53-a85a-4767-bd74-82f3429d998c\",\r\n      \"displayName\": \"Visual Studio Ultimate with MSDN\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Public_2014-09-01\",\r\n        \"quotaId\": \"MSDN_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6\",\r\n      \"subscriptionId\": \"2c224e7e-3ef5-431d-a57b-e71f4662e3a6\",\r\n      \"displayName\": \"Node CLI Test\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8\",\r\n      \"subscriptionId\": \"9ed7cca5-c306-4f66-9d1c-2766e67013d8\",\r\n      \"displayName\": \"FISMA Pen Testing Subscription\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb\",\r\n      \"subscriptionId\": \"c9cbd920-c00c-427c-852b-8aaf38badaeb\",\r\n      \"displayName\": \"Azure SDK Powershell Test\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/d1e52cbc-b073-42e2-a0a0-c2f547118a6e\",\r\n      \"subscriptionId\": \"d1e52cbc-b073-42e2-a0a0-c2f547118a6e\",\r\n      \"displayName\": \"Test Subscription 1 for Migration\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c\",\r\n      \"subscriptionId\": \"db1ab6f0-4769-4b27-930e-01e2ef9c123c\",\r\n      \"displayName\": \"Azure SDK sandbox\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/d03b04c7-d1d4-467b-aaaa-87b6fcb38b38\",\r\n      \"subscriptionId\": \"d03b04c7-d1d4-467b-aaaa-87b6fcb38b38\",\r\n      \"displayName\": \"AppInsight Test\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/b6b78feb-3074-4129-8748-42cee6c73020\",\r\n      \"subscriptionId\": \"b6b78feb-3074-4129-8748-42cee6c73020\",\r\n      \"displayName\": \"XFD Data Systems - Public\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    }\r\n  ]\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "2476"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-tenant-reads": [
-          "14994"
-        ],
-        "x-ms-request-id": [
-          "a60e6473-9754-4a98-8a3a-09e7510eb450"
-        ],
-        "x-ms-correlation-request-id": [
-          "a60e6473-9754-4a98-8a3a-09e7510eb450"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20150930T202115Z:a60e6473-9754-4a98-8a3a-09e7510eb450"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 30 Sep 2015 20:21:15 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnM/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Subscriptions.SubscriptionClient/2.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d\",\r\n      \"subscriptionId\": \"00977cdb-163f-435f-9c32-39ec8ae61f4d\",\r\n      \"displayName\": \"node\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/06a62a53-a85a-4767-bd74-82f3429d998c\",\r\n      \"subscriptionId\": \"06a62a53-a85a-4767-bd74-82f3429d998c\",\r\n      \"displayName\": \"Visual Studio Ultimate with MSDN\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Public_2014-09-01\",\r\n        \"quotaId\": \"MSDN_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6\",\r\n      \"subscriptionId\": \"2c224e7e-3ef5-431d-a57b-e71f4662e3a6\",\r\n      \"displayName\": \"Node CLI Test\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8\",\r\n      \"subscriptionId\": \"9ed7cca5-c306-4f66-9d1c-2766e67013d8\",\r\n      \"displayName\": \"FISMA Pen Testing Subscription\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb\",\r\n      \"subscriptionId\": \"c9cbd920-c00c-427c-852b-8aaf38badaeb\",\r\n      \"displayName\": \"Azure SDK Powershell Test\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/d1e52cbc-b073-42e2-a0a0-c2f547118a6e\",\r\n      \"subscriptionId\": \"d1e52cbc-b073-42e2-a0a0-c2f547118a6e\",\r\n      \"displayName\": \"Test Subscription 1 for Migration\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c\",\r\n      \"subscriptionId\": \"db1ab6f0-4769-4b27-930e-01e2ef9c123c\",\r\n      \"displayName\": \"Azure SDK sandbox\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/d03b04c7-d1d4-467b-aaaa-87b6fcb38b38\",\r\n      \"subscriptionId\": \"d03b04c7-d1d4-467b-aaaa-87b6fcb38b38\",\r\n      \"displayName\": \"AppInsight Test\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/b6b78feb-3074-4129-8748-42cee6c73020\",\r\n      \"subscriptionId\": \"b6b78feb-3074-4129-8748-42cee6c73020\",\r\n      \"displayName\": \"XFD Data Systems - Public\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    }\r\n  ]\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "2476"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-tenant-reads": [
-          "14993"
-        ],
-        "x-ms-request-id": [
-          "aedc25f7-18b0-401f-89c5-33abe7a51477"
-        ],
-        "x-ms-correlation-request-id": [
-          "aedc25f7-18b0-401f-89c5-33abe7a51477"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20150930T202116Z:aedc25f7-18b0-401f-89c5-33abe7a51477"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Wed, 30 Sep 2015 20:21:15 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnM/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Subscriptions.SubscriptionClient/2.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d\",\r\n      \"subscriptionId\": \"00977cdb-163f-435f-9c32-39ec8ae61f4d\",\r\n      \"displayName\": \"node\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/06a62a53-a85a-4767-bd74-82f3429d998c\",\r\n      \"subscriptionId\": \"06a62a53-a85a-4767-bd74-82f3429d998c\",\r\n      \"displayName\": \"Visual Studio Ultimate with MSDN\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Public_2014-09-01\",\r\n        \"quotaId\": \"MSDN_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6\",\r\n      \"subscriptionId\": \"2c224e7e-3ef5-431d-a57b-e71f4662e3a6\",\r\n      \"displayName\": \"Node CLI Test\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8\",\r\n      \"subscriptionId\": \"9ed7cca5-c306-4f66-9d1c-2766e67013d8\",\r\n      \"displayName\": \"FISMA Pen Testing Subscription\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb\",\r\n      \"subscriptionId\": \"c9cbd920-c00c-427c-852b-8aaf38badaeb\",\r\n      \"displayName\": \"Azure SDK Powershell Test\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/d1e52cbc-b073-42e2-a0a0-c2f547118a6e\",\r\n      \"subscriptionId\": \"d1e52cbc-b073-42e2-a0a0-c2f547118a6e\",\r\n      \"displayName\": \"Test Subscription 1 for Migration\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c\",\r\n      \"subscriptionId\": \"db1ab6f0-4769-4b27-930e-01e2ef9c123c\",\r\n      \"displayName\": \"Azure SDK sandbox\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/d03b04c7-d1d4-467b-aaaa-87b6fcb38b38\",\r\n      \"subscriptionId\": \"d03b04c7-d1d4-467b-aaaa-87b6fcb38b38\",\r\n      \"displayName\": \"AppInsight Test\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/b6b78feb-3074-4129-8748-42cee6c73020\",\r\n      \"subscriptionId\": \"b6b78feb-3074-4129-8748-42cee6c73020\",\r\n      \"displayName\": \"XFD Data Systems - Public\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    }\r\n  ]\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "2476"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-tenant-reads": [
           "14992"
         ],
         "x-ms-request-id": [
-          "e3583040-589d-4e97-a42b-ebeafbff2d4f"
+          "4a45025b-2bda-4262-aade-21ce60d28736"
         ],
         "x-ms-correlation-request-id": [
-          "e3583040-589d-4e97-a42b-ebeafbff2d4f"
+          "4a45025b-2bda-4262-aade-21ce60d28736"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150930T202116Z:e3583040-589d-4e97-a42b-ebeafbff2d4f"
+          "WESTUS:20150930T204628Z:4a45025b-2bda-4262-aade-21ce60d28736"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -283,7 +43,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 30 Sep 2015 20:21:16 GMT"
+          "Wed, 30 Sep 2015 20:46:27 GMT"
         ]
       },
       "StatusCode": 200
@@ -316,13 +76,13 @@
           "14991"
         ],
         "x-ms-request-id": [
-          "521b1d95-2c7b-49d0-aa26-be4aa5c22279"
+          "5fde1ea4-15b1-45b8-94fc-55a09f2dab8f"
         ],
         "x-ms-correlation-request-id": [
-          "521b1d95-2c7b-49d0-aa26-be4aa5c22279"
+          "5fde1ea4-15b1-45b8-94fc-55a09f2dab8f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150930T202116Z:521b1d95-2c7b-49d0-aa26-be4aa5c22279"
+          "WESTUS:20150930T204629Z:5fde1ea4-15b1-45b8-94fc-55a09f2dab8f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -331,7 +91,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 30 Sep 2015 20:21:16 GMT"
+          "Wed, 30 Sep 2015 20:46:28 GMT"
         ]
       },
       "StatusCode": 200
@@ -364,13 +124,13 @@
           "14990"
         ],
         "x-ms-request-id": [
-          "856a79ce-7fda-4d0a-a908-7cb21e5619c7"
+          "6991eaf4-2e8e-45bc-a087-ab6854c9176f"
         ],
         "x-ms-correlation-request-id": [
-          "856a79ce-7fda-4d0a-a908-7cb21e5619c7"
+          "6991eaf4-2e8e-45bc-a087-ab6854c9176f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150930T202117Z:856a79ce-7fda-4d0a-a908-7cb21e5619c7"
+          "WESTUS:20150930T204629Z:6991eaf4-2e8e-45bc-a087-ab6854c9176f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -379,7 +139,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 30 Sep 2015 20:21:16 GMT"
+          "Wed, 30 Sep 2015 20:46:29 GMT"
         ]
       },
       "StatusCode": 200
@@ -412,13 +172,13 @@
           "14989"
         ],
         "x-ms-request-id": [
-          "f130a45a-d107-4e6f-8a5c-118310bb9d2d"
+          "9b79f8bf-a185-49de-b427-0bd2c52ee4dc"
         ],
         "x-ms-correlation-request-id": [
-          "f130a45a-d107-4e6f-8a5c-118310bb9d2d"
+          "9b79f8bf-a185-49de-b427-0bd2c52ee4dc"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150930T202117Z:f130a45a-d107-4e6f-8a5c-118310bb9d2d"
+          "WESTUS:20150930T204630Z:9b79f8bf-a185-49de-b427-0bd2c52ee4dc"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -427,7 +187,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 30 Sep 2015 20:21:17 GMT"
+          "Wed, 30 Sep 2015 20:46:29 GMT"
         ]
       },
       "StatusCode": 200
@@ -460,13 +220,13 @@
           "14988"
         ],
         "x-ms-request-id": [
-          "83073fda-d6e7-47c0-b1fa-1844fb91597f"
+          "2509305e-85a7-4b13-ad07-5aa0291f990e"
         ],
         "x-ms-correlation-request-id": [
-          "83073fda-d6e7-47c0-b1fa-1844fb91597f"
+          "2509305e-85a7-4b13-ad07-5aa0291f990e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150930T202117Z:83073fda-d6e7-47c0-b1fa-1844fb91597f"
+          "WESTUS:20150930T204630Z:2509305e-85a7-4b13-ad07-5aa0291f990e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -475,7 +235,247 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 30 Sep 2015 20:21:17 GMT"
+          "Wed, 30 Sep 2015 20:46:29 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnM/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Subscriptions.SubscriptionClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d\",\r\n      \"subscriptionId\": \"00977cdb-163f-435f-9c32-39ec8ae61f4d\",\r\n      \"displayName\": \"node\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/06a62a53-a85a-4767-bd74-82f3429d998c\",\r\n      \"subscriptionId\": \"06a62a53-a85a-4767-bd74-82f3429d998c\",\r\n      \"displayName\": \"Visual Studio Ultimate with MSDN\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Public_2014-09-01\",\r\n        \"quotaId\": \"MSDN_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6\",\r\n      \"subscriptionId\": \"2c224e7e-3ef5-431d-a57b-e71f4662e3a6\",\r\n      \"displayName\": \"Node CLI Test\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8\",\r\n      \"subscriptionId\": \"9ed7cca5-c306-4f66-9d1c-2766e67013d8\",\r\n      \"displayName\": \"FISMA Pen Testing Subscription\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb\",\r\n      \"subscriptionId\": \"c9cbd920-c00c-427c-852b-8aaf38badaeb\",\r\n      \"displayName\": \"Azure SDK Powershell Test\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/d1e52cbc-b073-42e2-a0a0-c2f547118a6e\",\r\n      \"subscriptionId\": \"d1e52cbc-b073-42e2-a0a0-c2f547118a6e\",\r\n      \"displayName\": \"Test Subscription 1 for Migration\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c\",\r\n      \"subscriptionId\": \"db1ab6f0-4769-4b27-930e-01e2ef9c123c\",\r\n      \"displayName\": \"Azure SDK sandbox\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/d03b04c7-d1d4-467b-aaaa-87b6fcb38b38\",\r\n      \"subscriptionId\": \"d03b04c7-d1d4-467b-aaaa-87b6fcb38b38\",\r\n      \"displayName\": \"AppInsight Test\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/b6b78feb-3074-4129-8748-42cee6c73020\",\r\n      \"subscriptionId\": \"b6b78feb-3074-4129-8748-42cee6c73020\",\r\n      \"displayName\": \"XFD Data Systems - Public\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2476"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "14987"
+        ],
+        "x-ms-request-id": [
+          "544f21ea-8f37-4c56-866c-bbb5fcb4adb7"
+        ],
+        "x-ms-correlation-request-id": [
+          "544f21ea-8f37-4c56-866c-bbb5fcb4adb7"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20150930T204630Z:544f21ea-8f37-4c56-866c-bbb5fcb4adb7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 30 Sep 2015 20:46:29 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnM/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Subscriptions.SubscriptionClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d\",\r\n      \"subscriptionId\": \"00977cdb-163f-435f-9c32-39ec8ae61f4d\",\r\n      \"displayName\": \"node\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/06a62a53-a85a-4767-bd74-82f3429d998c\",\r\n      \"subscriptionId\": \"06a62a53-a85a-4767-bd74-82f3429d998c\",\r\n      \"displayName\": \"Visual Studio Ultimate with MSDN\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Public_2014-09-01\",\r\n        \"quotaId\": \"MSDN_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6\",\r\n      \"subscriptionId\": \"2c224e7e-3ef5-431d-a57b-e71f4662e3a6\",\r\n      \"displayName\": \"Node CLI Test\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8\",\r\n      \"subscriptionId\": \"9ed7cca5-c306-4f66-9d1c-2766e67013d8\",\r\n      \"displayName\": \"FISMA Pen Testing Subscription\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb\",\r\n      \"subscriptionId\": \"c9cbd920-c00c-427c-852b-8aaf38badaeb\",\r\n      \"displayName\": \"Azure SDK Powershell Test\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/d1e52cbc-b073-42e2-a0a0-c2f547118a6e\",\r\n      \"subscriptionId\": \"d1e52cbc-b073-42e2-a0a0-c2f547118a6e\",\r\n      \"displayName\": \"Test Subscription 1 for Migration\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c\",\r\n      \"subscriptionId\": \"db1ab6f0-4769-4b27-930e-01e2ef9c123c\",\r\n      \"displayName\": \"Azure SDK sandbox\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/d03b04c7-d1d4-467b-aaaa-87b6fcb38b38\",\r\n      \"subscriptionId\": \"d03b04c7-d1d4-467b-aaaa-87b6fcb38b38\",\r\n      \"displayName\": \"AppInsight Test\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/b6b78feb-3074-4129-8748-42cee6c73020\",\r\n      \"subscriptionId\": \"b6b78feb-3074-4129-8748-42cee6c73020\",\r\n      \"displayName\": \"XFD Data Systems - Public\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2476"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "14986"
+        ],
+        "x-ms-request-id": [
+          "74e6f8b7-0a13-4c0a-91fb-48aa52640d5a"
+        ],
+        "x-ms-correlation-request-id": [
+          "74e6f8b7-0a13-4c0a-91fb-48aa52640d5a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20150930T204631Z:74e6f8b7-0a13-4c0a-91fb-48aa52640d5a"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 30 Sep 2015 20:46:30 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnM/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Subscriptions.SubscriptionClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d\",\r\n      \"subscriptionId\": \"00977cdb-163f-435f-9c32-39ec8ae61f4d\",\r\n      \"displayName\": \"node\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/06a62a53-a85a-4767-bd74-82f3429d998c\",\r\n      \"subscriptionId\": \"06a62a53-a85a-4767-bd74-82f3429d998c\",\r\n      \"displayName\": \"Visual Studio Ultimate with MSDN\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Public_2014-09-01\",\r\n        \"quotaId\": \"MSDN_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6\",\r\n      \"subscriptionId\": \"2c224e7e-3ef5-431d-a57b-e71f4662e3a6\",\r\n      \"displayName\": \"Node CLI Test\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8\",\r\n      \"subscriptionId\": \"9ed7cca5-c306-4f66-9d1c-2766e67013d8\",\r\n      \"displayName\": \"FISMA Pen Testing Subscription\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb\",\r\n      \"subscriptionId\": \"c9cbd920-c00c-427c-852b-8aaf38badaeb\",\r\n      \"displayName\": \"Azure SDK Powershell Test\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/d1e52cbc-b073-42e2-a0a0-c2f547118a6e\",\r\n      \"subscriptionId\": \"d1e52cbc-b073-42e2-a0a0-c2f547118a6e\",\r\n      \"displayName\": \"Test Subscription 1 for Migration\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c\",\r\n      \"subscriptionId\": \"db1ab6f0-4769-4b27-930e-01e2ef9c123c\",\r\n      \"displayName\": \"Azure SDK sandbox\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/d03b04c7-d1d4-467b-aaaa-87b6fcb38b38\",\r\n      \"subscriptionId\": \"d03b04c7-d1d4-467b-aaaa-87b6fcb38b38\",\r\n      \"displayName\": \"AppInsight Test\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/b6b78feb-3074-4129-8748-42cee6c73020\",\r\n      \"subscriptionId\": \"b6b78feb-3074-4129-8748-42cee6c73020\",\r\n      \"displayName\": \"XFD Data Systems - Public\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2476"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "14985"
+        ],
+        "x-ms-request-id": [
+          "6b524d5c-f1ce-4e9e-8ae5-862e3f4c9d54"
+        ],
+        "x-ms-correlation-request-id": [
+          "6b524d5c-f1ce-4e9e-8ae5-862e3f4c9d54"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20150930T204632Z:6b524d5c-f1ce-4e9e-8ae5-862e3f4c9d54"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 30 Sep 2015 20:46:31 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnM/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Subscriptions.SubscriptionClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d\",\r\n      \"subscriptionId\": \"00977cdb-163f-435f-9c32-39ec8ae61f4d\",\r\n      \"displayName\": \"node\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/06a62a53-a85a-4767-bd74-82f3429d998c\",\r\n      \"subscriptionId\": \"06a62a53-a85a-4767-bd74-82f3429d998c\",\r\n      \"displayName\": \"Visual Studio Ultimate with MSDN\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Public_2014-09-01\",\r\n        \"quotaId\": \"MSDN_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6\",\r\n      \"subscriptionId\": \"2c224e7e-3ef5-431d-a57b-e71f4662e3a6\",\r\n      \"displayName\": \"Node CLI Test\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8\",\r\n      \"subscriptionId\": \"9ed7cca5-c306-4f66-9d1c-2766e67013d8\",\r\n      \"displayName\": \"FISMA Pen Testing Subscription\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb\",\r\n      \"subscriptionId\": \"c9cbd920-c00c-427c-852b-8aaf38badaeb\",\r\n      \"displayName\": \"Azure SDK Powershell Test\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/d1e52cbc-b073-42e2-a0a0-c2f547118a6e\",\r\n      \"subscriptionId\": \"d1e52cbc-b073-42e2-a0a0-c2f547118a6e\",\r\n      \"displayName\": \"Test Subscription 1 for Migration\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c\",\r\n      \"subscriptionId\": \"db1ab6f0-4769-4b27-930e-01e2ef9c123c\",\r\n      \"displayName\": \"Azure SDK sandbox\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/d03b04c7-d1d4-467b-aaaa-87b6fcb38b38\",\r\n      \"subscriptionId\": \"d03b04c7-d1d4-467b-aaaa-87b6fcb38b38\",\r\n      \"displayName\": \"AppInsight Test\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/b6b78feb-3074-4129-8748-42cee6c73020\",\r\n      \"subscriptionId\": \"b6b78feb-3074-4129-8748-42cee6c73020\",\r\n      \"displayName\": \"XFD Data Systems - Public\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2476"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "14984"
+        ],
+        "x-ms-request-id": [
+          "c2d01bfe-bb7e-4dcd-8f4e-86288c6656b7"
+        ],
+        "x-ms-correlation-request-id": [
+          "c2d01bfe-bb7e-4dcd-8f4e-86288c6656b7"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20150930T204633Z:c2d01bfe-bb7e-4dcd-8f4e-86288c6656b7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 30 Sep 2015 20:46:32 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnM/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Subscriptions.SubscriptionClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d\",\r\n      \"subscriptionId\": \"00977cdb-163f-435f-9c32-39ec8ae61f4d\",\r\n      \"displayName\": \"node\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/06a62a53-a85a-4767-bd74-82f3429d998c\",\r\n      \"subscriptionId\": \"06a62a53-a85a-4767-bd74-82f3429d998c\",\r\n      \"displayName\": \"Visual Studio Ultimate with MSDN\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Public_2014-09-01\",\r\n        \"quotaId\": \"MSDN_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6\",\r\n      \"subscriptionId\": \"2c224e7e-3ef5-431d-a57b-e71f4662e3a6\",\r\n      \"displayName\": \"Node CLI Test\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/9ed7cca5-c306-4f66-9d1c-2766e67013d8\",\r\n      \"subscriptionId\": \"9ed7cca5-c306-4f66-9d1c-2766e67013d8\",\r\n      \"displayName\": \"FISMA Pen Testing Subscription\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb\",\r\n      \"subscriptionId\": \"c9cbd920-c00c-427c-852b-8aaf38badaeb\",\r\n      \"displayName\": \"Azure SDK Powershell Test\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/d1e52cbc-b073-42e2-a0a0-c2f547118a6e\",\r\n      \"subscriptionId\": \"d1e52cbc-b073-42e2-a0a0-c2f547118a6e\",\r\n      \"displayName\": \"Test Subscription 1 for Migration\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c\",\r\n      \"subscriptionId\": \"db1ab6f0-4769-4b27-930e-01e2ef9c123c\",\r\n      \"displayName\": \"Azure SDK sandbox\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/d03b04c7-d1d4-467b-aaaa-87b6fcb38b38\",\r\n      \"subscriptionId\": \"d03b04c7-d1d4-467b-aaaa-87b6fcb38b38\",\r\n      \"displayName\": \"AppInsight Test\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/b6b78feb-3074-4129-8748-42cee6c73020\",\r\n      \"subscriptionId\": \"b6b78feb-3074-4129-8748-42cee6c73020\",\r\n      \"displayName\": \"XFD Data Systems - Public\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2476"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "14983"
+        ],
+        "x-ms-request-id": [
+          "7f854420-8135-46a3-8670-b5f51b5c5ef3"
+        ],
+        "x-ms-correlation-request-id": [
+          "7f854420-8135-46a3-8670-b5f51b5c5ef3"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20150930T204633Z:7f854420-8135-46a3-8670-b5f51b5c5ef3"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 30 Sep 2015 20:46:33 GMT"
         ]
       },
       "StatusCode": 200
@@ -508,13 +508,13 @@
           "14999"
         ],
         "x-ms-request-id": [
-          "7d977d68-1f24-4f04-9802-fd2c31fc5a2e"
+          "f83bcffb-fbbc-49e7-b988-1261d826940c"
         ],
         "x-ms-correlation-request-id": [
-          "7d977d68-1f24-4f04-9802-fd2c31fc5a2e"
+          "f83bcffb-fbbc-49e7-b988-1261d826940c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150930T202116Z:7d977d68-1f24-4f04-9802-fd2c31fc5a2e"
+          "WESTUS:20150930T204630Z:f83bcffb-fbbc-49e7-b988-1261d826940c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -523,7 +523,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 30 Sep 2015 20:21:16 GMT"
+          "Wed, 30 Sep 2015 20:46:29 GMT"
         ]
       },
       "StatusCode": 200
@@ -556,13 +556,13 @@
           "14998"
         ],
         "x-ms-request-id": [
-          "f0edda44-475e-408c-985a-dff1460a638c"
+          "e991d938-5876-452f-8a95-74f1c4441aa8"
         ],
         "x-ms-correlation-request-id": [
-          "f0edda44-475e-408c-985a-dff1460a638c"
+          "e991d938-5876-452f-8a95-74f1c4441aa8"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20150930T202116Z:f0edda44-475e-408c-985a-dff1460a638c"
+          "WESTUS:20150930T204630Z:e991d938-5876-452f-8a95-74f1c4441aa8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -571,7 +571,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 30 Sep 2015 20:21:16 GMT"
+          "Wed, 30 Sep 2015 20:46:29 GMT"
         ]
       },
       "StatusCode": 200
