@@ -52,11 +52,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or sets the policy parameter
+        /// Gets or sets the policy rule parameter
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The rule for policy definition. This can either be a path to a file name containing the rule, or the rule as string.")]
         [ValidateNotNullOrEmpty]
-        public string Policy { get; set; }
+        public string PolicyRule { get; set; }
 
         /// <summary>
         /// Executes the cmdlet.
@@ -85,7 +85,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var activity = string.Format("PUT {0}", managementUri.PathAndQuery);
             var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
                 .WaitOnOperation(operationResult: operationResult);
-            this.WriteObject(this.GetOutputObjects(JObject.Parse(result)), enumerateCollection: true);
+
+            this.WriteObject(this.GetOutputObjects(result.ToJToken()), enumerateCollection: true);
         }
 
         /// <summary>
@@ -107,14 +108,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             var policyDefinitionObject = new PolicyDefinition
             {
-                Name = this.Name,
                 Properties = new PolicyDefinitionProperties
                 {
                     Description = this.Description ?? null,
                     DisplayName = this.DisplayName ?? null,
-                    PolicyRule =  File.Exists(this.Policy) 
-                        ? FileUtilities.DataStore.ReadFileAsText(this.TryResolvePath(this.Policy))
-                        : this.Policy
+                    PolicyRule = new PolicyRule
+                    {
+                        Rule = File.Exists(this.PolicyRule)
+                            ? FileUtilities.DataStore.ReadFileAsText(this.TryResolvePath(this.PolicyRule))
+                            : this.PolicyRule
+                    }
                 }
             };
 
