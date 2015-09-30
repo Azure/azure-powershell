@@ -211,6 +211,10 @@ namespace Microsoft.Azure.Commands.HDInsight
                 {
                     result.Configurations.Add(val.Key, DictionaryToHashtable(val.Value));
                 }
+                foreach (var action in parameters.ScriptActions.Where(action => result.ScriptActions.ContainsKey(action.Key)))
+                {
+                    result.ScriptActions.Add(action.Key, action.Value);
+                }
                 return result;
             }
             set
@@ -233,6 +237,10 @@ namespace Microsoft.Azure.Commands.HDInsight
                 foreach (var val in value.Configurations.Where(val => !parameters.Configurations.ContainsKey(val.Key)))
                 {
                     parameters.Configurations.Add(val.Key, HashtableToDictionary(val.Value));
+                }
+                foreach (var action in value.ScriptActions.Where(action => parameters.ScriptActions.ContainsKey(action.Key)))
+                {
+                    parameters.ScriptActions.Add(action.Key, action.Value);
                 }
             } 
         }
