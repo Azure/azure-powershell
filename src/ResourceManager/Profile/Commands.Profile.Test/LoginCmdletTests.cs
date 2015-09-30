@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Manual)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void LoginWithSubscriptionAndTenant()
         {
             var cmdlt = new AddAzureRMAccountCommand();
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Manual)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void LoginWithInvalidSubscriptionAndTenantThrowsCloudException()
         {
             var cmdlt = new AddAzureRMAccountCommand();
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Manual)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void LoginWithSubscriptionAndNoTenant()
         {
             var cmdlt = new AddAzureRMAccountCommand();
@@ -93,9 +93,9 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.NotNull(AzureRMCmdlet.DefaultProfile.Context);
             Assert.Equal("microsoft.com", AzureRMCmdlet.DefaultProfile.Context.Tenant.Domain);
         }
-        
+
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Manual)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void LoginWithNoSubscriptionAndNoTenant()
         {
             var cmdlt = new AddAzureRMAccountCommand();
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Manual)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void LoginWithNoSubscriptionAndTenant()
         {
             var cmdlt = new AddAzureRMAccountCommand();
