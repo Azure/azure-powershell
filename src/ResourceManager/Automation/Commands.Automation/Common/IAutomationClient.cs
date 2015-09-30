@@ -16,6 +16,7 @@ using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Security;
 using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Common.Authentication.Models;
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         IEnumerable<CompilationJob> ListCompilationJobs(string resourceGroupName, string automationAccountName, DateTimeOffset? startTime, DateTimeOffset? endTime, string jobStatus);
 
-        CompilationJob StartCompilationJob(string resourceGroupName, string automationAccountName, string configurationName, IDictionary parameters);
+        CompilationJob StartCompilationJob(string resourceGroupName, string automationAccountName, string configurationName, IDictionary parameters, IDictionary configurationData);
 
         IEnumerable<JobStream> GetDscCompilationJobStream(string resourceGroupName, string automationAccountname, Guid jobId, DateTimeOffset? time, string streamType);
         #endregion
@@ -59,6 +60,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
         IEnumerable<NodeConfiguration> ListNodeConfigurationsByConfigurationName(string resourceGroupName, string automationAccountName, string configurationName, string rollupStatus);
 
         IEnumerable<NodeConfiguration> ListNodeConfigurations(string resourceGroupName, string automationAccountName, string rollupStatus);
+
+        NodeConfiguration CreateNodeConfiguration(string resourceGroupName, string automationAccountName, string sourcePath, string nodeConfiguraionName, bool overWrite);
         #endregion
 
         #region Configurations
@@ -139,13 +142,13 @@ namespace Microsoft.Azure.Commands.Automation.Common
             string runbookName,
             bool isEnabled,
             DateTimeOffset expiryTime,
-            Hashtable parameters);
+            IDictionary parameters);
 
         Model.Webhook GetWebhook(string resourceGroupName, string automationAccountName, string name);
 
         IEnumerable<Model.Webhook> ListWebhooks(string resourceGroupName, string automationAccountName, string runbooName, ref string nextLink);
 
-        Model.Webhook UpdateWebhook(string resourceGroupName, string automationAccountName, string name, Hashtable parameters, bool? isEnabled);
+        Model.Webhook UpdateWebhook(string resourceGroupName, string automationAccountName, string name, IDictionary parameters, bool? isEnabled);
 
         void DeleteWebhook(string resourceGroupName, string automationAccountName, string name);
 
@@ -187,7 +190,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         Runbook CreateRunbookByName(string resourceGroupName, string automationAccountName, string runbookName, string description, IDictionary tags, string type, bool? logProgress, bool? logVerbose, bool overwrite);
 
-        Runbook ImportRunbook(string resourceGroupName, string automationAccountName, string runbookPath, string description, IDictionary tags, string type, bool? logProgress, bool? logVerbose, bool published, bool overwrite);
+        Runbook ImportRunbook(string resourceGroupName, string automationAccountName, string runbookPath, string description, IDictionary tags, string type, bool? logProgress, bool? logVerbose, bool published, bool overwrite, string runbookName);
 
         void DeleteRunbook(string resourceGroupName, string automationAccountName, string runbookName);
 
@@ -282,6 +285,12 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         void UnregisterScheduledRunbook(string resourceGroupName, string automationAccountName, string runbookName, string scheduleName);
 
+
+        #endregion
+
+        #region ConnectionType
+
+        void DeleteConnectionType(string resourceGroupName, string automationAccountName, string name);
 
         #endregion
     }
