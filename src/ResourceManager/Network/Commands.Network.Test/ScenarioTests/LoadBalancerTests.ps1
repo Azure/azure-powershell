@@ -1140,67 +1140,67 @@ function Test-LoadBalancerInboundNatPoolConfigCRUD-InternalLB
     try 
     {
         # Create the resource group
-        $resourceGroup = New-AzureRMResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
         
         # Create the Virtual Network
-        $subnet = New-AzureRMVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzureRMvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
         
         # Create the publicip
-        $publicip = New-AzureRMPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+        $publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
 
-        $frontend = New-AzureRMLoadBalancerFrontendIpConfig -Name $frontendName -SubnetId $vnet.Subnets[0].Id
-        New-AzureRMLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend 
+        $frontend = New-AzureRmLoadBalancerFrontendIpConfig -Name $frontendName -SubnetId $vnet.Subnets[0].Id
+        New-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend 
         
-        $lb = Get-AzureRMLoadBalancer -Name $lbName -ResourceGroupName $rgname
+        $lb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname
 
-		# Test InboundNatPool cmdlets
-		$inboundNatPoolName = Get-ResourceName
-		$lb = Get-AzureRMLoadBalancer -Name $lbName -ResourceGroupName $rgname 
-		$lb = $lb | Add-AzureRMLoadBalancerInboundNatPoolConfig -Name $inboundNatPoolName -FrontendIPConfigurationId $lb.FrontendIPConfigurations[0].Id -Protocol Tcp -FrontendPortRangeStart 3360 -FrontendPortRangeEnd 3362 -BackendPort 3370 | Set-AzureRMLoadBalancer
+        # Test InboundNatPool cmdlets
+        $inboundNatPoolName = Get-ResourceName
+        $lb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname 
+        $lb = $lb | Add-AzureRmLoadBalancerInboundNatPoolConfig -Name $inboundNatPoolName -FrontendIPConfigurationId $lb.FrontendIPConfigurations[0].Id -Protocol Tcp -FrontendPortRangeStart 3360 -FrontendPortRangeEnd 3362 -BackendPort 3370 | Set-AzureRmLoadBalancer
 
         Assert-AreEqual 1 @($lb.InboundNatPools).Count
         Assert-AreEqual $inboundNatPoolName $lb.InboundNatPools[0].Name
         Assert-AreEqual 3360 $lb.InboundNatPools[0].FrontendPortRangeStart
-		Assert-AreEqual 3362 $lb.InboundNatPools[0].FrontendPortRangeEnd
+        Assert-AreEqual 3362 $lb.InboundNatPools[0].FrontendPortRangeEnd
         Assert-AreEqual 3370 $lb.InboundNatPools[0].BackendPort
         Assert-AreEqual Tcp $lb.InboundNatPools[0].Protocol
 
         $inboundNatPoolName2 = Get-ResourceName
-        $lb = Get-AzureRMLoadBalancer -Name $lbName -ResourceGroupName $rgname | Add-AzureRMLoadBalancerInboundNatPoolConfig -Name $inboundNatPoolName2 -FrontendIPConfigurationId $lb.FrontendIPConfigurations[0].Id -Protocol Udp -FrontendPortRangeStart 3366 -FrontendPortRangeEnd 3368 -BackendPort 3376 | Set-AzureRMLoadBalancer
+        $lb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname | Add-AzureRmLoadBalancerInboundNatPoolConfig -Name $inboundNatPoolName2 -FrontendIPConfigurationId $lb.FrontendIPConfigurations[0].Id -Protocol Udp -FrontendPortRangeStart 3366 -FrontendPortRangeEnd 3368 -BackendPort 3376 | Set-AzureRmLoadBalancer
         
         Assert-AreEqual 2 @($lb.InboundNatPools).Count
         Assert-AreEqual $inboundNatPoolName2 $lb.InboundNatPools[1].Name
         Assert-AreEqual 3366 $lb.InboundNatPools[1].FrontendPortRangeStart
-		Assert-AreEqual 3368 $lb.InboundNatPools[1].FrontendPortRangeEnd
+        Assert-AreEqual 3368 $lb.InboundNatPools[1].FrontendPortRangeEnd
         Assert-AreEqual 3376 $lb.InboundNatPools[1].BackendPort
         Assert-AreEqual Udp $lb.InboundNatPools[1].Protocol
 
-        $lb = Get-AzureRMLoadBalancer -Name $lbName -ResourceGroupName $rgname | Set-AzureRMLoadBalancerInboundNatPoolConfig -Name $inboundNatPoolName2 -FrontendIPConfigurationId $lb.FrontendIPConfigurations[0].Id -Protocol Tcp -FrontendPortRangeStart 3363 -FrontendPortRangeEnd 3364 -BackendPort 3373 | Set-AzureRMLoadBalancer
+        $lb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname | Set-AzureRmLoadBalancerInboundNatPoolConfig -Name $inboundNatPoolName2 -FrontendIPConfigurationId $lb.FrontendIPConfigurations[0].Id -Protocol Tcp -FrontendPortRangeStart 3363 -FrontendPortRangeEnd 3364 -BackendPort 3373 | Set-AzureRmLoadBalancer
         Assert-AreEqual 2 @($lb.InboundNatPools).Count
         Assert-AreEqual $inboundNatPoolName2 $lb.InboundNatPools[1].Name
         Assert-AreEqual 3363 $lb.InboundNatPools[1].FrontendPortRangeStart
-		Assert-AreEqual 3364 $lb.InboundNatPools[1].FrontendPortRangeEnd
+        Assert-AreEqual 3364 $lb.InboundNatPools[1].FrontendPortRangeEnd
         Assert-AreEqual 3373 $lb.InboundNatPools[1].BackendPort
         Assert-AreEqual Tcp $lb.InboundNatPools[1].Protocol
 
 
-        $inboundNatPoolConfig = Get-AzureRMLoadBalancer -Name $lbName -ResourceGroupName $rgname | Get-AzureRMLoadBalancerInboundNatPoolConfig -Name $inboundNatPoolName2
-        $inboundNatPoolConfigList = Get-AzureRMLoadBalancer -Name $lbName -ResourceGroupName $rgname | Get-AzureRMLoadBalancerInboundNatPoolConfig
+        $inboundNatPoolConfig = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname | Get-AzureRmLoadBalancerInboundNatPoolConfig -Name $inboundNatPoolName2
+        $inboundNatPoolConfigList = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname | Get-AzureRmLoadBalancerInboundNatPoolConfig
         Assert-AreEqual 2 @($inboundNatPoolConfigList).Count
         Assert-AreEqual $inboundNatPoolName $inboundNatPoolConfigList[0].Name
         Assert-AreEqual $inboundNatPoolName2 $inboundNatPoolConfigList[1].Name
         Assert-AreEqual $inboundNatPoolConfig.Name $inboundNatPoolConfigList[1].Name
 
-        $lb =  Get-AzureRMLoadBalancer -Name $lbName -ResourceGroupName $rgname | Remove-AzureRMLoadBalancerInboundNatPoolConfig -Name $inboundNatPoolName2 | Set-AzureRMLoadBalancer
+        $lb =  Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname | Remove-AzureRmLoadBalancerInboundNatPoolConfig -Name $inboundNatPoolName2 | Set-AzureRmLoadBalancer
         Assert-AreEqual 1 @($lb.InboundNatPools).Count
         Assert-AreEqual $inboundNatPoolName $lb.InboundNatPools[0].Name
 
         # Delete
-        $deleteLb = $lb | Remove-AzureRMLoadBalancer -PassThru -Force
+        $deleteLb = $lb | Remove-AzureRmLoadBalancer -PassThru -Force
         Assert-AreEqual true $deleteLb
         
-        $list = Get-AzureRMLoadBalancer -ResourceGroupName $rgname
+        $list = Get-AzureRmLoadBalancer -ResourceGroupName $rgname
         Assert-AreEqual 0 @($list).Count
     }
     finally
@@ -1232,17 +1232,17 @@ function Test-LoadBalancerInboundNatPoolConfigCRUD-PublicLB
     try 
     {
         # Create the resource group
-        $resourceGroup = New-AzureRMResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
+        $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} 
         
         # Create the publicip
-        $publicip = New-AzureRMPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+        $publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
 
         # Create LoadBalancer with one Inbound NAT Pool
-        $frontend = New-AzureRMLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $publicip
-        $inboundNatPool = New-AzureRMLoadBalancerInboundNatPoolConfig -Name $inboundNatPoolName -FrontendIPConfigurationId $frontend.Id -Protocol Tcp -FrontendPortRangeStart 3360 -FrontendPortRangeEnd 3362 -BackendPort 3370 
-		$actualLb = New-AzureRMLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend -InboundNatPool $inboundNatPool
+        $frontend = New-AzureRmLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $publicip
+        $inboundNatPool = New-AzureRmLoadBalancerInboundNatPoolConfig -Name $inboundNatPoolName -FrontendIPConfigurationId $frontend.Id -Protocol Tcp -FrontendPortRangeStart 3360 -FrontendPortRangeEnd 3362 -BackendPort 3370 
+        $actualLb = New-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend -InboundNatPool $inboundNatPool
         
-        $expectedLb = Get-AzureRMLoadBalancer -Name $lbName -ResourceGroupName $rgname
+        $expectedLb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname
 
         # LB Verifications
         Assert-AreEqual $expectedLb.ResourceGroupName $actualLb.ResourceGroupName
@@ -1252,50 +1252,50 @@ function Test-LoadBalancerInboundNatPoolConfigCRUD-PublicLB
         Assert-NotNull $expectedLb.ResourceGuid
         Assert-AreEqual 1 @($expectedLb.FrontendIPConfigurations).Count
         
-		Assert-AreEqual 1 @($expectedLb.InboundNatPools).Count
+        Assert-AreEqual 1 @($expectedLb.InboundNatPools).Count
         Assert-AreEqual $inboundNatPoolName $expectedLb.InboundNatPools[0].Name
         Assert-AreEqual 3360 $expectedLb.InboundNatPools[0].FrontendPortRangeStart
-		Assert-AreEqual 3362 $expectedLb.InboundNatPools[0].FrontendPortRangeEnd
+        Assert-AreEqual 3362 $expectedLb.InboundNatPools[0].FrontendPortRangeEnd
         Assert-AreEqual 3370 $expectedLb.InboundNatPools[0].BackendPort
         Assert-AreEqual Tcp $expectedLb.InboundNatPools[0].Protocol
         Assert-AreEqual $expectedLb.FrontendIPConfigurations[0].Id $expectedLb.InboundNatPools[0].FrontendIPConfiguration.Id
 
-		# Test InboundNatPool cmdlets
+        # Test InboundNatPool cmdlets
         $inboundNatPoolName2 = Get-ResourceName
-		$lb = Get-AzureRMLoadBalancer -Name $lbName -ResourceGroupName $rgname 
-        $lb = Add-AzureRMLoadBalancerInboundNatPoolConfig -LoadBalancer $lb -Name $inboundNatPoolName2 -FrontendIPConfiguration $lb.FrontendIPConfigurations[0] -Protocol Udp -FrontendPortRangeStart 3366 -FrontendPortRangeEnd 3368 -BackendPort 3376 | Set-AzureRMLoadBalancer
+        $lb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname 
+        $lb = Add-AzureRmLoadBalancerInboundNatPoolConfig -LoadBalancer $lb -Name $inboundNatPoolName2 -FrontendIPConfiguration $lb.FrontendIPConfigurations[0] -Protocol Udp -FrontendPortRangeStart 3366 -FrontendPortRangeEnd 3368 -BackendPort 3376 | Set-AzureRmLoadBalancer
         
         Assert-AreEqual 2 @($lb.InboundNatPools).Count
         Assert-AreEqual $inboundNatPoolName2 $lb.InboundNatPools[1].Name
         Assert-AreEqual 3366 $lb.InboundNatPools[1].FrontendPortRangeStart
-		Assert-AreEqual 3368 $lb.InboundNatPools[1].FrontendPortRangeEnd
+        Assert-AreEqual 3368 $lb.InboundNatPools[1].FrontendPortRangeEnd
         Assert-AreEqual 3376 $lb.InboundNatPools[1].BackendPort
         Assert-AreEqual Udp $lb.InboundNatPools[1].Protocol
 
-        $lb = Get-AzureRMLoadBalancer -Name $lbName -ResourceGroupName $rgname | Set-AzureRMLoadBalancerInboundNatPoolConfig -Name $inboundNatPoolName2 -FrontendIPConfigurationId $lb.FrontendIPConfigurations[0].Id -Protocol Tcp -FrontendPortRangeStart 3363 -FrontendPortRangeEnd 3364 -BackendPort 3373 | Set-AzureRMLoadBalancer
+        $lb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname | Set-AzureRmLoadBalancerInboundNatPoolConfig -Name $inboundNatPoolName2 -FrontendIPConfigurationId $lb.FrontendIPConfigurations[0].Id -Protocol Tcp -FrontendPortRangeStart 3363 -FrontendPortRangeEnd 3364 -BackendPort 3373 | Set-AzureRmLoadBalancer
         Assert-AreEqual 2 @($lb.InboundNatPools).Count
         Assert-AreEqual $inboundNatPoolName2 $lb.InboundNatPools[1].Name
         Assert-AreEqual 3363 $lb.InboundNatPools[1].FrontendPortRangeStart
-		Assert-AreEqual 3364 $lb.InboundNatPools[1].FrontendPortRangeEnd
+        Assert-AreEqual 3364 $lb.InboundNatPools[1].FrontendPortRangeEnd
         Assert-AreEqual 3373 $lb.InboundNatPools[1].BackendPort
         Assert-AreEqual Tcp $lb.InboundNatPools[1].Protocol
 
-        $inboundNatPoolConfig = Get-AzureRMLoadBalancer -Name $lbName -ResourceGroupName $rgname | Get-AzureRMLoadBalancerInboundNatPoolConfig -Name $inboundNatPoolName2
-        $inboundNatPoolConfigList = Get-AzureRMLoadBalancer -Name $lbName -ResourceGroupName $rgname | Get-AzureRMLoadBalancerInboundNatPoolConfig
+        $inboundNatPoolConfig = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname | Get-AzureRmLoadBalancerInboundNatPoolConfig -Name $inboundNatPoolName2
+        $inboundNatPoolConfigList = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname | Get-AzureRmLoadBalancerInboundNatPoolConfig
         Assert-AreEqual 2 @($inboundNatPoolConfigList).Count
         Assert-AreEqual $inboundNatPoolName $inboundNatPoolConfigList[0].Name
         Assert-AreEqual $inboundNatPoolName2 $inboundNatPoolConfigList[1].Name
         Assert-AreEqual $inboundNatPoolConfig.Name $inboundNatPoolConfigList[1].Name
 
-        $lb =  Get-AzureRMLoadBalancer -Name $lbName -ResourceGroupName $rgname | Remove-AzureRMLoadBalancerInboundNatPoolConfig -Name $inboundNatPoolName2 | Set-AzureRMLoadBalancer
+        $lb =  Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname | Remove-AzureRmLoadBalancerInboundNatPoolConfig -Name $inboundNatPoolName2 | Set-AzureRmLoadBalancer
         Assert-AreEqual 1 @($lb.InboundNatPools).Count
         Assert-AreEqual $inboundNatPoolName $lb.InboundNatPools[0].Name
 
         # Delete LB
-        $deleteLb = Remove-AzureRMLoadBalancer -Name $lbName -ResourceGroupName $rgname -PassThru -Force
+        $deleteLb = Remove-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $rgname -PassThru -Force
         Assert-AreEqual true $deleteLb
         
-        $list = Get-AzureRMLoadBalancer -ResourceGroupName $rgname
+        $list = Get-AzureRmLoadBalancer -ResourceGroupName $rgname
         Assert-AreEqual 0 @($list).Count
     }
     finally

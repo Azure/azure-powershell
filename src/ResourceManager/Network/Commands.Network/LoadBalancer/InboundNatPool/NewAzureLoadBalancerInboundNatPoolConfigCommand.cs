@@ -19,7 +19,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRMLoadBalancerInboundNatPoolConfig"), OutputType(typeof(PSInboundNatPool))]
+    [Cmdlet(VerbsCommon.New, "AzureRmLoadBalancerInboundNatPoolConfig"), OutputType(typeof(PSInboundNatPool))]
     public class NewAzureLoadBalancerInboundNatPoolConfigCommand : AzureLoadBalancerInboundNatPoolConfigBase
     {
         [Parameter(
