@@ -310,7 +310,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                         {
                             if (subscriptionName != null)
                             {
-                                subscriptionFromServer = subscriptions.First(s => s.DisplayName.Equals(subscriptionName, StringComparison.OrdinalIgnoreCase));
+                                subscriptionFromServer = subscriptions.FirstOrDefault(s => s.DisplayName.Equals(subscriptionName, StringComparison.OrdinalIgnoreCase));
                             }
                             else
                             {
