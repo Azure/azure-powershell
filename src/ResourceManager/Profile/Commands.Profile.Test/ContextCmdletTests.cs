@@ -61,48 +61,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void SelectAzureContextWithSubscriptionAndTenant()
-        {
-            var cmdlt = new SetAzureRMContextCommand();
-            // Setup
-            cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.SubscriptionId = "db1ab6f0-4769-4b27-930e-01e2ef9c123c";
-            cmdlt.TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
-
-            // Act
-            cmdlt.InvokeBeginProcessing();
-            cmdlt.ExecuteCmdlet();
-            cmdlt.InvokeEndProcessing();
-
-            // Verify
-            Assert.True(commandRuntimeMock.OutputPipeline.Count == 1);
-            var context = (PSAzureContext)commandRuntimeMock.OutputPipeline[0];
-            Assert.Equal("db1ab6f0-4769-4b27-930e-01e2ef9c123c", context.Subscription.SubscriptionId);
-            Assert.Equal("72f988bf-86f1-41af-91ab-2d7cd011db47", context.Tenant.TenantId);
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void SelectAzureContextWithSubscriptionAndNoTenant()
-        {
-            var cmdlt = new SetAzureRMContextCommand();
-            // Setup
-            cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.SubscriptionId = "db1ab6f0-4769-4b27-930e-01e2ef9c123c";
-
-            // Act
-            cmdlt.InvokeBeginProcessing();
-            cmdlt.ExecuteCmdlet();
-            cmdlt.InvokeEndProcessing();
-
-            // Verify
-            Assert.True(commandRuntimeMock.OutputPipeline.Count == 1);
-            var context = (PSAzureContext)commandRuntimeMock.OutputPipeline[0];
-            Assert.Equal("db1ab6f0-4769-4b27-930e-01e2ef9c123c", context.Subscription.SubscriptionId);
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SelectAzureContextWithNoSubscriptionAndTenant()
         {
             var cmdlt = new SetAzureRMContextCommand();
