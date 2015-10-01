@@ -60,6 +60,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 {
                     case AzureBackupContainerType.Windows:
                     case AzureBackupContainerType.SCDPM:
+                    case AzureBackupContainerType.AzureBackupServer:
+                    case AzureBackupContainerType.Other:
                         containers.AddRange(GetMachineContainers(Vault.ResourceGroupName, Vault.Name));
                         break;
                     case AzureBackupContainerType.AzureVM:
