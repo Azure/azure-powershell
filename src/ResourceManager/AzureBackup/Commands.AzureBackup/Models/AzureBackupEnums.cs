@@ -25,6 +25,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Models
         Windows = 1,
         SCDPM,
         AzureVM,
+        AzureBackupServer,
+        Other,
     }
 
     public enum DataSourceType
