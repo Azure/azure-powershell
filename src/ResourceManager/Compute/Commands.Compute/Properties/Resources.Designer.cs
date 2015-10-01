@@ -252,6 +252,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Since the VM is created using premium storage, new standard storage account, {0}, is created for boot diagnostics..
+        /// </summary>
+        public static string CreatingStorageAccountForBootDiagnostics {
+            get {
+                return ResourceManager.GetString("CreatingStorageAccountForBootDiagnostics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No Run File has been assigned, and the Custom Script extension will try to use the first specified File Name as the Run File..
         /// </summary>
         public static string CustomScriptExtensionTryToUseTheFirstSpecifiedFileAsRunScript {
@@ -811,6 +820,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string StorageCredentialsFactoryCurrentSubscriptionNotSet {
             get {
                 return ResourceManager.GetString("StorageCredentialsFactoryCurrentSubscriptionNotSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Since the VM is created using premium storage, existing standard storage account, {0}, is used for boot diagnostics..
+        /// </summary>
+        public static string UsingExistingStorageAccountForBootDiagnostics {
+            get {
+                return ResourceManager.GetString("UsingExistingStorageAccountForBootDiagnostics", resourceCulture);
             }
         }
         
