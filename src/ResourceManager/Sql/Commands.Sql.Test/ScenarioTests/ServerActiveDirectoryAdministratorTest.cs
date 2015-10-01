@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
     public class ServerActiveDirectoryAdministratorTest : SqlTestsBase
     {
-        [Fact]
+        [Fact(Skip = "TODO: Need different credentials to record this test.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerActiveDirectoryAdministratorCRUD()
         {
