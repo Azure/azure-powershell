@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void GetTenantWithTenantParameter()
         {
             var cmdlt = new GetAzureRMTenantCommand();
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
         
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void GetTenantWithDomainParameter()
         {
             var cmdlt = new GetAzureRMTenantCommand();
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
         
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void GetTenantWithoutParameters()
         {
             var cmdlt = new GetAzureRMTenantCommand();

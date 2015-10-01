@@ -69,6 +69,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
             string fileFullPath = Path.Combine(AzureSession.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
             var contents = JsonConvert.SerializeObject(_dataCollectionProfile);
+            if (!AzureSession.DataStore.DirectoryExists(AzureSession.ProfileDirectory))
+            {
+                AzureSession.DataStore.CreateDirectory(AzureSession.ProfileDirectory);
+            }
             AzureSession.DataStore.WriteFile(fileFullPath, contents);
             WriteWarning(string.Format(Resources.DataCollectionSaveFileInformation, fileFullPath));
         }

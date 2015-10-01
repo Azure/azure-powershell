@@ -19,8 +19,8 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
 {
     public class BlobCreator : BlobCreatorBase
     {
-        public BlobCreator(FileInfo localVhd, BlobUri destination, ICloudPageBlobObjectFactory blobObjectFactory, bool overWrite) :
-            base(localVhd, destination, blobObjectFactory, overWrite)
+        public BlobCreator(FileInfo localVhd, BlobUri destination, ICloudPageBlobObjectFactory blobObjectFactory, bool overWrite, bool skipMd5 = false) :
+            base(localVhd, destination, blobObjectFactory, overWrite, skipMd5)
         {
         }
 

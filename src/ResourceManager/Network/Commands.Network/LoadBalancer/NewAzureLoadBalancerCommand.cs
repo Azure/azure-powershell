@@ -59,25 +59,25 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "The list of frontend Ip config")]
+             HelpMessage = "The list of backend address pool")]
         public List<PSBackendAddressPool> BackendAddressPool { get; set; }
 
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "The list of frontend Ip config")]
+             HelpMessage = "The list of probe")]
         public List<PSProbe> Probe { get; set; }
 
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "The list of frontend Ip config")]
+             HelpMessage = "The list of inbound NAT rule")]
         public List<PSInboundNatRule> InboundNatRule { get; set; }
 
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "The list of frontend Ip config")]
+             HelpMessage = "The list of load balancing rule")]
         public List<PSLoadBalancingRule> LoadBalancingRule { get; set; }
 
         [Parameter(
@@ -85,6 +85,12 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "An array of hashtables which represents resource tags.")]
         public Hashtable[] Tag { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "The list of inbound NAT pools")]
+        public List<PSInboundNatPool> InboundNatPool { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -149,6 +155,12 @@ namespace Microsoft.Azure.Commands.Network
             {
                 loadBalancer.LoadBalancingRules = new List<PSLoadBalancingRule>();
                 loadBalancer.LoadBalancingRules = this.LoadBalancingRule;
+            }
+
+            if (this.InboundNatPool != null)
+            {
+                loadBalancer.InboundNatPools = new List<PSInboundNatPool>();
+                loadBalancer.InboundNatPools = this.InboundNatPool;
             }
 
             // Normalize the IDs

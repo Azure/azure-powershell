@@ -14,6 +14,9 @@
 
 namespace Microsoft.Azure.Commands.Resources.Models
 {
+    using System;
+    using System.Linq;
+
     /// <summary>
     /// Definition of a resource provider and its registration state
     /// </summary>
@@ -33,5 +36,19 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// Gets or sets the resource types belonging to this provider.
         /// </summary>
         public PSResourceProviderResourceType[] ResourceTypes { get; set; }
+
+        /// <summary>
+        /// Gets the locations for the provider.
+        /// </summary>
+        public string[] Locations
+        {
+            get
+            {
+                return this.ResourceTypes
+                    .SelectMany(type => type.Locations)
+                    .Distinct(StringComparer.InvariantCultureIgnoreCase)
+                    .ToArray();
+            }
+        }
     }
 }

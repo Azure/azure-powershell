@@ -68,7 +68,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(
             ValueFromPipeline = true,
             HelpMessage = "Azure Storage Context Object")]
-        public new AzureStorageContext Context { get; set; }
+        public override AzureStorageContext Context { get; set; }
 
         // Overwrite the useless parameter
         public override int? ServerTimeoutPerRequest { get; set; }
