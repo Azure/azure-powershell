@@ -58,8 +58,10 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             rmprofile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
             rmprofile.Context = new AzureContext(new AzureSubscription(), new AzureAccount(), rmprofile.Environments["foo"], new AzureTenant());
             rmprofile.Context.Subscription.Environment = "foo";
-            AzureRMCmdlet.DefaultProfile = rmprofile;
-            AzureSession.DataStore = datastore;
+            if (AzureRMCmdlet.DefaultProfile == null)
+            {
+                AzureRMCmdlet.DefaultProfile = rmprofile;
+            }
             ProfileClient = new ProfileClient(profile);
 
             // Ignore SSL errors
@@ -168,6 +170,11 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 ProfileClient.AddOrSetEnvironment(environment);
             }
 
+            if (!AzureRMCmdlet.DefaultProfile.Environments.ContainsKey(testEnvironmentName))
+            {
+                AzureRMCmdlet.DefaultProfile.Environments[testEnvironmentName] = environment;
+            }
+
             if (currentEnvironment.SubscriptionId != null)
             {
                 testSubscription = new AzureSubscription()
@@ -199,6 +206,17 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 ProfileClient.Profile.Subscriptions[testSubscription.Id] = testSubscription;
                 ProfileClient.Profile.Accounts[testAccount.Id] = testAccount;
                 ProfileClient.SetSubscriptionAsDefault(testSubscription.Name, testSubscription.Account);
+
+                var testTenant = new AzureTenant() { Id = Guid.NewGuid() };
+                if (!string.IsNullOrEmpty(currentEnvironment.Tenant))
+                {
+                    Guid tenant;
+                    if (Guid.TryParse(currentEnvironment.Tenant, out tenant))
+                    {
+                        testTenant.Id = tenant;
+                    }
+                }
+                AzureRMCmdlet.DefaultProfile.Context = new AzureContext(testSubscription, testAccount, environment, testTenant);
             }
         }
 
