@@ -123,6 +123,24 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
+            // Normalize InboundNatPool
+            if (loadBalancer.InboundNatPools != null)
+            {
+                foreach (var inboundNatPool in loadBalancer.InboundNatPools)
+                {
+                    inboundNatPool.Id = string.Empty;
+
+                    if (inboundNatPool.FrontendIPConfiguration != null)
+                    {
+                        inboundNatPool.FrontendIPConfiguration.Id =
+                            NormalizeLoadBalancerChildResourceIds(
+                                inboundNatPool.FrontendIPConfiguration.Id,
+                                loadBalancer.ResourceGroupName,
+                                loadBalancer.Name);
+                    }
+                }
+            }
+
             // Normalize FrontendIpconfig
             if (loadBalancer.FrontendIpConfigurations != null)
             {

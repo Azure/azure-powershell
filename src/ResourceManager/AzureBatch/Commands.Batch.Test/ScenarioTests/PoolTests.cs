@@ -90,6 +90,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAndListPoolsWithSelect()
+        {
+            BatchController controller = BatchController.NewInstance;
+            controller.RunPsTest(string.Format("Test-GetAndListPoolsWithSelect '{0}' '{1}'", commonAccountName, testPoolId));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListPoolsWithMaxCount()
         {
             BatchController controller = BatchController.NewInstance;
