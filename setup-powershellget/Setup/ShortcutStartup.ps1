@@ -17,9 +17,25 @@ Param(
 [switch]$Install
 )
 
+function EnsureRegistryPath
+{
+	$originalpaths = (Get-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PSModulePath).PSModulePath
+	if($originalpaths.Contains("$env:ProgramFiles\WindowsPowerShell\Modules") -eq $false)
+	{
+		Write-Output "Fixing PSModulePath"
+		$newPath = "$originalpaths;$env:ProgramFiles\WindowsPowerShell\Modules"
+		Set-ItemProperty -Path 'Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment' -Name PSModulePath –Value $newPath
+	}
+	else
+	{
+		Write-Output "PSModulePath successfuly validated"
+	}
+}
+
 $error.clear()
 try {
 	if ($Install.IsPresent) {
+		EnsureRegistryPath
 		Write-Output @"
 
 Finalizing installation of Azure PowerShell. 
@@ -58,3 +74,4 @@ Write-Output $error
 Write-Output "Press any key..."
 $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 }
+
