@@ -34,6 +34,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
         public string Filter { get; set; }
 
         /// <summary>
+        /// The OData select clause to use.
+        /// </summary>
+        public string Select { get; set; }
+
+        /// <summary>
         /// The maximum number of compute nodes to return.
         /// </summary>
         public int MaxCount { get; set; }

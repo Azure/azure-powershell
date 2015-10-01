@@ -369,6 +369,13 @@ cmdletexample2       westus          CmdletExampleRG                      https:
           <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Select</maml:name>
+          <maml:description>
+            <maml:para>Specifies an OData select clause. Used to retrieve only specific properties instead of all object properties.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>MaxCount</maml:name>
           <maml:description>
             <maml:para>Specifies the maximum number of compute nodes to return. If you specify a value of zero (0) or less, the cmdlet does not use an upper limit. The default value is 1000.</maml:para>
@@ -414,6 +421,13 @@ cmdletexample2       westus          CmdletExampleRG                      https:
           <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Select</maml:name>
+          <maml:description>
+            <maml:para>Specifies an OData select clause. Used to retrieve only specific properties instead of all object properties.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Profile</maml:name>
           <maml:description>
             <maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para>
@@ -441,6 +455,13 @@ cmdletexample2       westus          CmdletExampleRG                      https:
           <maml:name>Filter</maml:name>
           <maml:description>
             <maml:para>Specifies an OData filter clause. This cmdlet returns compute nodes that match the filter that this parameter specifies. If you do not specify a filter, this cmdlet returns all compute nodes for the pool. </maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Select</maml:name>
+          <maml:description>
+            <maml:para>Specifies an OData select clause. Used to retrieve only specific properties instead of all object properties.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -484,6 +505,18 @@ cmdletexample2       westus          CmdletExampleRG                      https:
         <maml:name>Filter</maml:name>
         <maml:description>
           <maml:para>Specifies an OData filter clause. This cmdlet returns compute nodes that match the filter that this parameter specifies. If you do not specify a filter, this cmdlet returns all compute nodes for the pool. </maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>Select</maml:name>
+        <maml:description>
+          <maml:para>Specifies an OData select clause. Used to retrieve only specific properties instead of all object properties.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -770,6 +803,20 @@ Errors                :
           <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Select</maml:name>
+          <maml:description>
+            <maml:para>Specifies an OData select clause. Used to retrieve only specific properties instead of all object properties.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Expand</maml:name>
+          <maml:description>
+            <maml:para>Specifies an OData expand clause. Used to retrieve associated entities of the main entity being retrieved.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>MaxCount</maml:name>
           <maml:description>
             <maml:para>Specifies the maximum number of job schedules to return. If you specify a value of zero (0) or less, the cmdlet does not use an upper limit. The default value is 1000. </maml:para>
@@ -797,6 +844,20 @@ Errors                :
           <maml:name>Id</maml:name>
           <maml:description>
             <maml:para>Specifies the ID of the job schedule that this cmdlet gets. You cannot specify wildcard characters.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Select</maml:name>
+          <maml:description>
+            <maml:para>Specifies an OData select clause. Used to retrieve only specific properties instead of all object properties.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Expand</maml:name>
+          <maml:description>
+            <maml:para>Specifies an OData expand clause. Used to retrieve associated entities of the main entity being retrieved.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -833,6 +894,30 @@ Errors                :
         <maml:name>Filter</maml:name>
         <maml:description>
           <maml:para>Specifies an OData filter clause. This cmdlet returns job schedules that match the filter that this parameter specifies. If you do not specify a filter, this cmdlet returns all job schedules for the Batch context. </maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>Select</maml:name>
+        <maml:description>
+          <maml:para>Specifies an OData select clause. Used to retrieve only specific properties instead of all object properties.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>Expand</maml:name>
+        <maml:description>
+          <maml:para>Specifies an OData expand clause. Used to retrieve associated entities of the main entity being retrieved.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -1040,6 +1125,20 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobsc
           </maml:description>
           <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Select</maml:name>
+          <maml:description>
+            <maml:para>Specifies an OData select clause. Used to retrieve only specific properties instead of all object properties.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Expand</maml:name>
+          <maml:description>
+            <maml:para>Specifies an OData expand clause. Used to retrieve associated entities of the main entity being retrieved.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
           <maml:name>JobScheduleId</maml:name>
           <maml:description>
@@ -1079,6 +1178,20 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobsc
           <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Select</maml:name>
+          <maml:description>
+            <maml:para>Specifies an OData select clause. Used to retrieve only specific properties instead of all object properties.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Expand</maml:name>
+          <maml:description>
+            <maml:para>Specifies an OData expand clause. Used to retrieve associated entities of the main entity being retrieved.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Profile</maml:name>
           <maml:description>
             <maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para>
@@ -1106,6 +1219,20 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobsc
           <maml:name>Filter</maml:name>
           <maml:description>
             <maml:para>Specifies the OData filter clause to use when querying for jobs. If you do not specify a filter, and if you do not specify a job schedule, then all jobs under the Batch account will be returned.  If not filter is specified, but a job schedule is specified, then all jobs under that job schedule will be returned.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Select</maml:name>
+          <maml:description>
+            <maml:para>Specifies an OData select clause. Used to retrieve only specific properties instead of all object properties.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Expand</maml:name>
+          <maml:description>
+            <maml:para>Specifies an OData expand clause. Used to retrieve associated entities of the main entity being retrieved.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -1149,6 +1276,30 @@ Url                         : https://cmdletexample.westus.batch.azure.com/jobsc
         <maml:name>Filter</maml:name>
         <maml:description>
           <maml:para>Specifies the OData filter clause to use when querying for jobs. If you do not specify a filter, and if you do not specify a job schedule, then all jobs under the Batch account will be returned.  If not filter is specified, but a job schedule is specified, then all jobs under that job schedule will be returned.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>Select</maml:name>
+        <maml:description>
+          <maml:para>Specifies an OData select clause. Used to retrieve only specific properties instead of all object properties.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>Expand</maml:name>
+        <maml:description>
+          <maml:para>Specifies an OData expand clause. Used to retrieve associated entities of the main entity being retrieved.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -2607,6 +2758,20 @@ True        workitems                       https://cmdletexample.westus.Batch.c
           <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Select</maml:name>
+          <maml:description>
+            <maml:para>Specifies an OData select clause. Used to retrieve only specific properties instead of all object properties.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Expand</maml:name>
+          <maml:description>
+            <maml:para>Specifies an OData expand clause. Used to retrieve associated entities of the main entity being retrieved.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>MaxCount</maml:name>
           <maml:description>
             <maml:para>Specifies the maximum number of pools to return. If you specify a value of zero (0) or less, the cmdlet does not use an upper limit. The default value is 1000.</maml:para>
@@ -2634,6 +2799,20 @@ True        workitems                       https://cmdletexample.westus.Batch.c
           <maml:name>Id</maml:name>
           <maml:description>
             <maml:para>Specifies the ID of the pool to retrieve. You cannot specify wildcard characters.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Select</maml:name>
+          <maml:description>
+            <maml:para>Specifies an OData select clause. Used to retrieve only specific properties instead of all object properties.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Expand</maml:name>
+          <maml:description>
+            <maml:para>Specifies an OData expand clause. Used to retrieve associated entities of the main entity being retrieved.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -2670,6 +2849,30 @@ True        workitems                       https://cmdletexample.westus.Batch.c
         <maml:name>Filter</maml:name>
         <maml:description>
           <maml:para>Specifies the OData filter clause to use when querying for pools. If you do not specify a filter, all pools under the Batch account specified with the BatchContext parameter are returned.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>Select</maml:name>
+        <maml:description>
+          <maml:para>Specifies an OData select clause. Used to retrieve only specific properties instead of all object properties.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>Expand</maml:name>
+        <maml:description>
+          <maml:para>Specifies an OData expand clause. Used to retrieve associated entities of the main entity being retrieved.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -3254,6 +3457,20 @@ VirtualMachineSize                   : small
           <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Select</maml:name>
+          <maml:description>
+            <maml:para>Specifies an OData select clause. Used to retrieve only specific properties instead of all object properties.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Expand</maml:name>
+          <maml:description>
+            <maml:para>Specifies an OData expand clause. Used to retrieve associated entities of the main entity being retrieved.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>MaxCount</maml:name>
           <maml:description>
             <maml:para>Specifies the maximum number of tasks to return. If you specify a value of zero (0) or less, the cmdlet does not use an upper limit. The default value is 1000.</maml:para>
@@ -3292,6 +3509,20 @@ VirtualMachineSize                   : small
           <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Select</maml:name>
+          <maml:description>
+            <maml:para>Specifies an OData select clause. Used to retrieve only specific properties instead of all object properties.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Expand</maml:name>
+          <maml:description>
+            <maml:para>Specifies an OData expand clause. Used to retrieve associated entities of the main entity being retrieved.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
           <maml:name>Profile</maml:name>
           <maml:description>
             <maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para>
@@ -3319,6 +3550,20 @@ VirtualMachineSize                   : small
           <maml:name>Filter</maml:name>
           <maml:description>
             <maml:para>Specifies the OData filter clause to use when querying for tasks. If you do not specify a filter, then all tasks under the job specified with either the JobId parameter or the Job parameter will be returned.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Select</maml:name>
+          <maml:description>
+            <maml:para>Specifies an OData select clause. Used to retrieve only specific properties instead of all object properties.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Expand</maml:name>
+          <maml:description>
+            <maml:para>Specifies an OData expand clause. Used to retrieve associated entities of the main entity being retrieved.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -3362,6 +3607,30 @@ VirtualMachineSize                   : small
         <maml:name>Filter</maml:name>
         <maml:description>
           <maml:para>Specifies the OData filter clause to use when querying for tasks. If you do not specify a filter, then all tasks under the job specified with either the JobId parameter or the Job parameter will be returned.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>Select</maml:name>
+        <maml:description>
+          <maml:para>Specifies an OData select clause. Used to retrieve only specific properties instead of all object properties.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>none</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+        <maml:name>Expand</maml:name>
+        <maml:description>
+          <maml:para>Specifies an OData expand clause. Used to retrieve associated entities of the main entity being retrieved.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">String</command:parameterValue>
         <dev:type>
