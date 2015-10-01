@@ -122,6 +122,38 @@ function Test-ListTasksByFilter
 
 <#
 .SYNOPSIS
+Tests querying for tasks using a select clause
+#>
+function Test-GetAndListTasksWithSelect
+{
+	param([string]$accountName, [string]$jobId, [string]$taskId)
+
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
+	$filter = "id eq '$taskId'"
+	$selectClause = "id,state"
+
+	# Test with Get task API
+	$task = Get-AzureBatchTask_ST $jobId $taskId -BatchContext $context
+	Assert-AreNotEqual $null $task.CommandLine
+	Assert-AreEqual $taskId $task.Id
+
+	$task = Get-AzureBatchTask_ST $jobId $taskId -Select $selectClause -BatchContext $context
+	Assert-AreEqual $null $task.CommandLine
+	Assert-AreEqual $taskId $task.Id
+
+	# Test with List tasks API
+	$job = Get-AzureBatchJob_ST $jobId -BatchContext $context
+	$task = $job | Get-AzureBatchTask_ST -Filter $filter -BatchContext $context
+	Assert-AreNotEqual $null $task.CommandLine
+	Assert-AreEqual $taskId $task.Id
+
+	$task = $job | Get-AzureBatchTask_ST -Filter $filter -Select $selectClause -BatchContext $context
+	Assert-AreEqual $null $task.CommandLine
+	Assert-AreEqual $taskId $task.Id
+}
+
+<#
+.SYNOPSIS
 Tests querying for Batch tasks and supplying a max count
 #>
 function Test-ListTasksWithMaxCount

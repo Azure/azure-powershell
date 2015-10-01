@@ -35,6 +35,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException("options");
             }
 
+            ODATADetailLevel odata = new ODATADetailLevel(selectClause: options.Select);
+
             string poolId = options.Pool == null ? options.PoolId : options.Pool.Id;
 
             // Get the single compute node matching the specified id
@@ -42,19 +44,18 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 WriteVerbose(string.Format(Resources.GetComputeNodeById, options.ComputeNodeId, poolId));
                 PoolOperations poolOperations = options.Context.BatchOMClient.PoolOperations;
-                ComputeNode computeNode = poolOperations.GetComputeNode(poolId, options.ComputeNodeId, additionalBehaviors: options.AdditionalBehaviors);
+                ComputeNode computeNode = poolOperations.GetComputeNode(poolId, options.ComputeNodeId, detailLevel: odata, additionalBehaviors: options.AdditionalBehaviors);
                 PSComputeNode psComputeNode = new PSComputeNode(computeNode);
                 return new PSComputeNode[] { psComputeNode };
             }
             // List compute nodes using the specified filter
             else
             {
-                ODATADetailLevel odata = null;
                 string verboseLogString = null;
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
                     verboseLogString = string.Format(Resources.GetComputeNodeByOData, poolId);
-                    odata = new ODATADetailLevel(filterClause: options.Filter);
+                    odata.FilterClause = options.Filter;
                 }
                 else
                 {
