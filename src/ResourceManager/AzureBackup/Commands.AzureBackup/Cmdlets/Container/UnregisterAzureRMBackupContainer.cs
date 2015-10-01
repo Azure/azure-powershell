@@ -47,6 +47,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 {
                     case AzureBackupContainerType.Windows:
                     case AzureBackupContainerType.SCDPM:
+                    case AzureBackupContainerType.AzureBackupServer:
                         DeleteServer();
                         break;
                     case AzureBackupContainerType.AzureVM:

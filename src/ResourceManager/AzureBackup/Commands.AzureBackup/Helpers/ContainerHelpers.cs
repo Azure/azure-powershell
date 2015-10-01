@@ -38,21 +38,37 @@ namespace Microsoft.Azure.Commands.AzureBackup.Helpers
     {
         private static readonly Regex ResourceGroupRegex = new Regex(@"/subscriptions/(?<subscriptionsId>.+)/resourceGroups/(?<resourceGroupName>.+)/providers/(?<providersName>.+)/BackupVault/(?<BackupVaultName>.+)/containers/(?<containersName>.+)", RegexOptions.Compiled);
 
-        internal static AzureBackupContainerType GetContainerType(string customerType)
+        internal static AzureBackupContainerType GetContainerType(string customerTypeString)
         {
             AzureBackupContainerType containerType = 0;
+            CustomerType customerType = CustomerType.Invalid;
 
-            if (string.Compare(customerType, CustomerType.DPM.ToString()) == 0)
+            if (Enum.TryParse<CustomerType>(customerTypeString, out customerType))
             {
-                containerType = AzureBackupContainerType.SCDPM;
+                switch (customerType)
+                {
+                    case CustomerType.DPM:
+                        containerType = AzureBackupContainerType.SCDPM;
+                        break;
+                    case CustomerType.OBS:
+                        containerType = AzureBackupContainerType.Windows;
+                        break;
+                    case CustomerType.SBS:
+                        containerType = AzureBackupContainerType.Windows;
+                        break;
+                    case CustomerType.DPMVenus:
+                        containerType = AzureBackupContainerType.AzureBackupServer;
+                        break;
+                    case CustomerType.Invalid:
+                        break;
+                    default:
+                        containerType = AzureBackupContainerType.Other;
+                        break;
+                }
             }
-            else if (string.Compare(customerType, CustomerType.OBS.ToString()) == 0)
+            else if (!string.IsNullOrEmpty(customerTypeString))
             {
-                containerType = AzureBackupContainerType.Windows;
-            }
-            else if (string.Compare(customerType, CustomerType.SBS.ToString()) == 0)
-            {
-                containerType = AzureBackupContainerType.Windows;
+                containerType = AzureBackupContainerType.Other;
             }
 
             return containerType;
