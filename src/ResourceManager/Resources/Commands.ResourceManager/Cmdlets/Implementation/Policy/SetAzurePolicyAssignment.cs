@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Sets the policy assignment.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRMPolicyAssignment", DefaultParameterSetName = SetAzurePolicyAssignmentCmdlet.PolicyAssignmentNameParameterSet), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmPolicyAssignment", DefaultParameterSetName = SetAzurePolicyAssignmentCmdlet.PolicyAssignmentNameParameterSet), OutputType(typeof(PSObject))]
     public class SetAzurePolicyAssignmentCmdlet : PolicyAssignmentCmdletBase
     {
         /// <summary>
