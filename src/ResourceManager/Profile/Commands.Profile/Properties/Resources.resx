@@ -120,8 +120,14 @@
   <data name="AzureProfileMustNotBeNull" xml:space="preserve">
     <value>Selected profile must not be null.</value>
   </data>
+  <data name="BothSubscriptionIdAndNameProvided" xml:space="preserve">
+    <value>Please provide either a subscription ID or a subscription name.</value>
+  </data>
   <data name="CommonTenantAuthFailed" xml:space="preserve">
     <value>Could not authenticate your user account {0} with the common tenant. Please login again using Login-AzureRmAccount.</value>
+  </data>
+  <data name="InvalidSubscriptionId" xml:space="preserve">
+    <value>The provided subscription ID "{0}" is not a valid Guid.</value>
   </data>
   <data name="NoAccountProvided" xml:space="preserve">
     <value>(no account provided)</value>

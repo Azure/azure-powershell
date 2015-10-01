@@ -22,6 +22,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy
     public class PolicyDefinition
     {
         /// <summary>
+        /// The policy definition name.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public string Name { get; set; }
+
+        /// <summary>
         /// The policy definition properties.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
