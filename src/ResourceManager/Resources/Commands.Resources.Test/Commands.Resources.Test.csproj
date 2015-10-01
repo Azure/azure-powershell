@@ -187,7 +187,6 @@
     <Compile Include="Providers\RegisterResourceProviderCmdletTests.cs" />
     <Compile Include="Providers\UnregisterResourceProviderCmdletTests.cs" />
     <Compile Include="ResourceGroupDeployments\RemoveAzureResourceGroupDeploymentCommandTests.cs" />
-    <Compile Include="ResourceGroups\GetAzureLocationCommandTests.cs" />
     <Compile Include="ResourceGroups\SetAzureResourceGroupCommandTests.cs" />
     <Compile Include="ScenarioTests\ActiveDirectoryTests.cs" />
     <Compile Include="ScenarioTests\AuthorizationTests.cs" />

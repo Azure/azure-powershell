@@ -36,12 +36,20 @@ Gets the default location for a provider
 #>
 function Get-ProviderLocation($provider)
 {
-    $location = Get-AzureRmLocation | where {$_.Name -eq $provider}
-    if ($location -eq $null) {
-        "West US"
-    } else {
-        $location.Locations[0]
-    }
+	$namespace = $provider.Split("/")[0]
+	if($provider.Contains("/"))
+	{
+		$type = $provider.Substring($namespace.Length + 1)
+		$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
+	
+		if ($location -eq $null) {
+			"West US"
+		} else {
+			$location.Locations[0]
+		}
+	} else {
+		"West US"
+	}
 }
 
 <#
