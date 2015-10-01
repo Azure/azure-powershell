@@ -12,7 +12,7 @@
 ModuleToProcess = '..\..\..\Package\Debug\ServiceManagement\Azure\ExpressRoute\Microsoft.WindowsAzure.Commands.ExpressRoute.dll'
 
 # Version number of this module.
-ModuleVersion = '0.8.8'
+ModuleVersion = '0.9.10'
 
 # ID used to uniquely identify this module
 GUID = 'e5b10573-30da-456a-9319-4c0a5f8bed4a'
@@ -24,7 +24,7 @@ Author = 'Microsoft Corporation'
 CompanyName = 'Microsoft Corporation'
 
 # Copyright statement for this module
-Copyright = '© Microsoft Corporation. All rights reserved.'
+Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
 Description = ''
