@@ -16,6 +16,8 @@ using Microsoft.Azure.Commands.Automation.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Automation.Model
 {
@@ -65,7 +67,20 @@ namespace Microsoft.Azure.Commands.Automation.Model
                 if (0 != String.Compare(kvp.Key, Constants.JobStartedByParameterName, CultureInfo.InvariantCulture, CompareOptions.IgnoreCase) && 
                     0 != String.Compare(kvp.Key, Constants.JobRunOnParameterName, CultureInfo.InvariantCulture, CompareOptions.IgnoreCase))
                 {
-                    this.JobParameters.Add(kvp.Key, (object)PowerShellJsonConverter.Deserialize(kvp.Value));
+                    object paramValue;
+                    try
+                    {
+                        paramValue = ((object) PowerShellJsonConverter.Deserialize(kvp.Value));
+                    }
+                    catch (CmdletInvocationException exception)
+                    {
+                        if (!exception.Message.Contains("Invalid JSON primitive"))
+                            throw;
+                        
+                        paramValue = kvp.Value;
+                    }
+                    this.JobParameters.Add(kvp.Key, paramValue);
+                   
                 }
             }
         }
