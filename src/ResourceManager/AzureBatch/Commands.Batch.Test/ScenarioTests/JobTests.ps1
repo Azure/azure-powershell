@@ -268,6 +268,37 @@ function Test-ListJobsByFilter
 
 <#
 .SYNOPSIS
+Tests querying for Batch job using a select clause
+#>
+function Test-GetAndListJobsWithSelect
+{
+	param([string]$accountName, [string]$jobId)
+
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
+	$filter = "id eq '$jobId'"
+	$selectClause = "id,state"
+
+	# Test with Get job API
+	$job = Get-AzureBatchJob_ST $jobId -BatchContext $context
+	Assert-AreNotEqual $null $job.ExecutionInformation
+	Assert-AreEqual $jobId $job.Id
+
+	$job = Get-AzureBatchJob_ST $jobId -Select $selectClause -BatchContext $context
+	Assert-AreEqual $null $job.ExecutionInformation
+	Assert-AreEqual $jobId $job.Id
+
+	# Test with List jobs API
+	$job = Get-AzureBatchJob_ST -Filter $filter -BatchContext $context
+	Assert-AreNotEqual $null $job.ExecutionInformation
+	Assert-AreEqual $jobId $job.Id
+
+	$job = Get-AzureBatchJob_ST -Filter $filter -Select $selectClause -BatchContext $context
+	Assert-AreEqual $null $job.ExecutionInformation
+	Assert-AreEqual $jobId $job.Id
+}
+
+<#
+.SYNOPSIS
 Tests querying for Batch jobs and supplying a max count
 #>
 function Test-ListJobsWithMaxCount

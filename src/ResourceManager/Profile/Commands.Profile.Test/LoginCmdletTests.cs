@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void LoginWithSubscriptionAndTenant()
         {
             var cmdlt = new AddAzureRMAccountCommand();
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void LoginWithInvalidSubscriptionAndTenantThrowsCloudException()
         {
             var cmdlt = new AddAzureRMAccountCommand();
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void LoginWithSubscriptionAndNoTenant()
         {
             var cmdlt = new AddAzureRMAccountCommand();
@@ -93,9 +93,9 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.NotNull(AzureRMCmdlet.DefaultProfile.Context);
             Assert.Equal("microsoft.com", AzureRMCmdlet.DefaultProfile.Context.Tenant.Domain);
         }
-        
+
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void LoginWithNoSubscriptionAndNoTenant()
         {
             var cmdlt = new AddAzureRMAccountCommand();
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void LoginWithNoSubscriptionAndTenant()
         {
             var cmdlt = new AddAzureRMAccountCommand();
@@ -127,6 +127,42 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
             Assert.NotNull(AzureRMCmdlet.DefaultProfile.Context);
             Assert.Equal("microsoft.com", AzureRMCmdlet.DefaultProfile.Context.Tenant.Domain);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void LoginWithSubscriptionname()
+        {
+            var cmdlt = new AddAzureRMAccountCommand();
+            // Setup
+            cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.Tenant = "72f988bf-86f1-41af-91ab-2d7cd011db47";
+            cmdlt.SubscriptionName = "Node CLI Test";
+
+            // Act
+            cmdlt.InvokeBeginProcessing();
+            cmdlt.ExecuteCmdlet();
+            cmdlt.InvokeEndProcessing();
+
+            Assert.NotNull(AzureRMCmdlet.DefaultProfile.Context);
+            Assert.Equal("microsoft.com", AzureRMCmdlet.DefaultProfile.Context.Tenant.Domain);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void LoginWithBothSubscriptionIdAndNameThrowsCloudException()
+        {
+            var cmdlt = new AddAzureRMAccountCommand();
+            // Setup
+            cmdlt.CommandRuntime = commandRuntimeMock;
+            cmdlt.Tenant = "72f988bf-86f1-41af-91ab-2d7cd011db47";
+            cmdlt.SubscriptionName = "Node CLI Test";
+            cmdlt.SubscriptionId = "2c224e7e-3ef5-431d-a57b-e71f4662e3a6";
+
+            // Act
+            cmdlt.InvokeBeginProcessing();
+            Assert.Throws<PSInvalidOperationException>(() => cmdlt.ExecuteCmdlet());
+            cmdlt.InvokeEndProcessing();
         }
     }
 }

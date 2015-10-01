@@ -36,24 +36,25 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException("options");
             }
 
+            ODATADetailLevel odata = new ODATADetailLevel(selectClause: options.Select, expandClause: options.Expand);
+
             // Get the single pool matching the specified id
             if (!string.IsNullOrWhiteSpace(options.PoolId))
             {
                 WriteVerbose(string.Format(Resources.GetPoolById, options.PoolId));
                 PoolOperations poolOperations = options.Context.BatchOMClient.PoolOperations;
-                CloudPool pool = poolOperations.GetPool(options.PoolId, additionalBehaviors: options.AdditionalBehaviors);
+                CloudPool pool = poolOperations.GetPool(options.PoolId, detailLevel: odata, additionalBehaviors: options.AdditionalBehaviors);
                 PSCloudPool psPool = new PSCloudPool(pool);
                 return new PSCloudPool[] { psPool };
             }
             // List pools using the specified filter
             else
             {
-                ODATADetailLevel odata = null;
                 string verboseLogString = null;
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
                     verboseLogString = Resources.GetPoolByOData;
-                    odata = new ODATADetailLevel(filterClause: options.Filter);
+                    odata.FilterClause = options.Filter;
                 }
                 else
                 {

@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Sql.Cmdlet
             }
 
             // If table property is set keep only indexes on corresponding table
-            if (MyInvocation.BoundParameters.ContainsKey("Table"))
+            if (MyInvocation.BoundParameters.ContainsKey("TableName"))
             {
                 results = results.Where(i => i.Table == TableName).ToList();
             }

@@ -21,6 +21,7 @@ using Moq;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Threading.Tasks;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
@@ -71,39 +72,69 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ListBatchJobsByODataFilterTest()
+        public void GetBatchJobODataTest()
         {
-            // Setup cmdlet to list jobs using an OData filter. Use JobScheduleId input.
+            // Setup cmdlet to get a single job
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
-            cmdlet.JobScheduleId = "jobSchedule";
-            cmdlet.Id = null;
-            cmdlet.Filter = "state -eq 'active'";
+            cmdlet.Id = "testJob";
+            cmdlet.Select = "id,state";
+            cmdlet.Expand = "stats";
 
-            string[] idsOfConstructedJobs = new[] { "job-1", "job-2" };
+            string requestSelect = null;
+            string requestExpand = null;
 
-            // Build some CloudJobs instead of querying the service on a List CloudJobs call
-            CloudJobListResponse response = BatchTestHelpers.CreateCloudJobListResponse(idsOfConstructedJobs);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudJobListParameters, CloudJobListResponse>(response);
-            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+            // Fetch the OData clauses off the request. The OData clauses are applied after user provided RequestInterceptors, so a ResponseInterceptor is used.
+            CloudJobGetResponse getResponse = BatchTestHelpers.CreateCloudJobGetResponse(cmdlet.Id);
+            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudJobGetParameters, CloudJobGetResponse>(getResponse);
+            ResponseInterceptor responseInterceptor = new ResponseInterceptor((response, request) =>
+            {
+                requestSelect = request.Parameters.DetailLevel.SelectClause;
+                requestExpand = request.Parameters.DetailLevel.ExpandClause;
 
-            // Setup the cmdlet to write pipeline output to a list that can be examined later
-            List<PSCloudJob> pipeline = new List<PSCloudJob>();
-            commandRuntimeMock.Setup(r =>
-                r.WriteObject(It.IsAny<PSCloudJob>()))
-                .Callback<object>(j => pipeline.Add((PSCloudJob)j));
+                return Task.FromResult(response);
+            });
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { requestInterceptor, responseInterceptor };
 
             cmdlet.ExecuteCmdlet();
 
-            // Verify that the cmdlet wrote the constructed jobs to the pipeline
-            Assert.Equal(2, pipeline.Count);
-            int jobCount = 0;
-            foreach (PSCloudJob j in pipeline)
+            Assert.Equal(cmdlet.Select, requestSelect);
+            Assert.Equal(cmdlet.Expand, requestExpand);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ListBatchJobsODataTest()
+        {
+            // Setup cmdlet to list job using an OData filter
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+            cmdlet.Id = null;
+            cmdlet.Filter = "startswith(id,'test')";
+            cmdlet.Select = "id,state";
+            cmdlet.Expand = "stats";
+
+            string requestFilter = null;
+            string requestSelect = null;
+            string requestExpand = null;
+
+            // Fetch the OData clauses off the request. The OData clauses are applied after user provided RequestInterceptors, so a ResponseInterceptor is used.
+            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudJobListParameters, CloudJobListResponse>();
+            ResponseInterceptor responseInterceptor = new ResponseInterceptor((response, request) =>
             {
-                Assert.True(idsOfConstructedJobs.Contains(j.Id));
-                jobCount++;
-            }
-            Assert.Equal(idsOfConstructedJobs.Length, jobCount);
+                requestFilter = request.Parameters.DetailLevel.FilterClause;
+                requestSelect = request.Parameters.DetailLevel.SelectClause;
+                requestExpand = request.Parameters.DetailLevel.ExpandClause;
+
+                return Task.FromResult(response);
+            });
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { requestInterceptor, responseInterceptor };
+
+            cmdlet.ExecuteCmdlet();
+
+            Assert.Equal(cmdlet.Filter, requestFilter);
+            Assert.Equal(cmdlet.Select, requestSelect);
+            Assert.Equal(cmdlet.Expand, requestExpand);
         }
 
         [Fact]
