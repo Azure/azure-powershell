@@ -31,13 +31,21 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <returns>The converted subscription.</returns>
         public static implicit operator PSAzureSubscription(AzureSubscription other)
         {
-            return new PSAzureSubscription
+            var subscription= new PSAzureSubscription
             {
                 SubscriptionId = other != null? other.Id.ToString() : null,
                 SubscriptionName = other != null? other.Name : null,
                 TenantId = other != null && other.IsPropertySet(AzureSubscription.Property.Tenants)? 
                 other.GetProperty(AzureSubscription.Property.Tenants) : null
             };
+
+            if (other.IsPropertySet(AzureSubscription.Property.StorageAccount))
+            {
+                subscription.CurrentStorageAccount = other.GetProperty(AzureSubscription.Property.StorageAccount);
+                subscription.CurrentStorageAccountName = GetAccountName(subscription.CurrentStorageAccount);
+            }
+
+            return subscription;
         }
 
         /// <summary>
@@ -71,6 +79,11 @@ namespace Microsoft.Azure.Commands.Profile.Models
                 result.Properties.SetProperty(AzureSubscription.Property.Tenants, other.TenantId);
             }
 
+            if (other.CurrentStorageAccount != null)
+            {
+                result.Properties.SetProperty(AzureSubscription.Property.StorageAccount, other.CurrentStorageAccount);
+            }
+
             return result;
         }
 
@@ -89,9 +102,40 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// </summary>
         public string TenantId { get; set; }
 
+        public string CurrentStorageAccountName { get; set; }
+
+        private string CurrentStorageAccount { get; set; }
+
         public override string ToString()
         {
             return this.SubscriptionId;
+        }
+
+        public static string GetAccountName(string connectionString)
+        {
+            var result = connectionString;
+            if (!string.IsNullOrWhiteSpace(result))
+            {
+                try
+                {
+                    var pairs = result.Split(new char[]{';'}, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (var pair in pairs)
+                    {
+                        var sides = pair.Split(new char[] {'='}, 2, StringSplitOptions.RemoveEmptyEntries);
+                        if (string.Equals("AccountName", sides[0].Trim(), StringComparison.OrdinalIgnoreCase))
+                        {
+                            result = sides[1].Trim();
+                            break;
+                        }
+                    }
+                }
+                catch
+                {
+                    // if there are any errors, return the unchanged account name
+                }
+            }
+
+            return result;
         }
     }
 }
