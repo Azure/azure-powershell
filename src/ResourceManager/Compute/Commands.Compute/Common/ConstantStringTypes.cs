@@ -47,6 +47,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
     {
         public const string ReadOnly = "ReadOnly";
         public const string ReadWrite = "ReadWrite";
+        public const string None = "None";
     }
 
     public static class ProfileNouns

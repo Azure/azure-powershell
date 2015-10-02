@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute;
@@ -22,7 +22,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsData.Update, ProfileNouns.VirtualMachine, DefaultParameterSetName = ResourceGroupNameParameterSet)]    
+    [Cmdlet(VerbsData.Update, ProfileNouns.VirtualMachine, DefaultParameterSetName = ResourceGroupNameParameterSet)]
+    [OutputType(typeof(PSComputeLongRunningOperation))]
     public class UpdateAzureVMCommand : VirtualMachineActionBaseCmdlet
     {
         [Alias("VMProfile")]
@@ -53,7 +54,8 @@ namespace Microsoft.Azure.Commands.Compute
                 };
 
                 var op = this.VirtualMachineClient.CreateOrUpdate(this.ResourceGroupName, parameters);
-                WriteObject(op);
+                var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+                WriteObject(result);
             });
         }
     }
