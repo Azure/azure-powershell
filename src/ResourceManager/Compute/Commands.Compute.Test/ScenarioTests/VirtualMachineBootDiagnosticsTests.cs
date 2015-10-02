@@ -19,8 +19,8 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public partial class VirtualMachineBootDiagnosticsTests
     {
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact(Skip = "TODO: only works for live mode")]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void TestVirtualMachineBootDiagnostics()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineBootDiagnostics");
