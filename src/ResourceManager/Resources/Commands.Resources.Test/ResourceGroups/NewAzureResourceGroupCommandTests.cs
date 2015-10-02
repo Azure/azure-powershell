@@ -62,5 +62,42 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 }
             };
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void CreatesNewPSResourceGroup()
+        {
+            CreatePSResourceGroupParameters expectedParameters = new CreatePSResourceGroupParameters()
+            {
+                ResourceGroupName = resourceGroupName,
+                Location = resourceGroupLocation,
+                TemplateFile = templateFile,
+                DeploymentName = deploymentName,
+                Tag = tags
+            };
+            CreatePSResourceGroupParameters actualParameters = new CreatePSResourceGroupParameters();
+            PSResourceGroup expected = new PSResourceGroup()
+            {
+                Location = expectedParameters.Location,
+                ResourceGroupName = expectedParameters.ResourceGroupName,
+                Resources = new List<PSResource>() { new PSResource() { Name = "resource1" } },
+                Tags = expectedParameters.Tag
+            };
+            resourcesClientMock.Setup(f => f.CreatePSResourceGroup(It.IsAny<CreatePSResourceGroupParameters>()))
+                .Returns(expected)
+                .Callback((CreatePSResourceGroupParameters p) => { actualParameters = p; });
+
+            cmdlet.Name = expectedParameters.ResourceGroupName;
+            cmdlet.Location = expectedParameters.Location;
+            cmdlet.Tag = expectedParameters.Tag;
+
+            cmdlet.ExecuteCmdlet();
+
+            Assert.Equal(expectedParameters.ResourceGroupName, actualParameters.ResourceGroupName);
+            Assert.Equal(expectedParameters.Location, actualParameters.Location);
+            Assert.Equal(expectedParameters.Tag, actualParameters.Tag);
+
+            commandRuntimeMock.Verify(f => f.WriteObject(expected), Times.Once());
+        }
     }
 }
