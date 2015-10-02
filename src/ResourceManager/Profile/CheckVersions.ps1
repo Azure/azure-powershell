@@ -23,7 +23,7 @@ $AzureRMModules = @(
   "AzureRM.Websites"
 )
 
-$AvailableModules = @()
+$global:AvailableModules = @()
 
 function CheckVersions {
     $profile = GetModuleInfo("AzureRM.Profile")

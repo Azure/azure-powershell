@@ -14,15 +14,20 @@
 
 <#
 .SYNOPSIS
-Tests each of the major parts of retrieving subscriptions in ARM mode
+Tests warning gets printed on incompatible modules with profile
 #>
 function Test-LoadProfileModule
 {
+    # Push current profile module
+    $global:pushedProfileModule = $(Get-Module AzureRM.Profile).Path 
+    Remove-Module AzureRM.Profile
     try {
         Register-PSRepository -Name "ProfileModuleTest" -SourceLocation (Resolve-Path .\).Path -InstallationPolicy Trusted
         try {
             Install-Module AzureRM.ApiManagement -Scope CurrentUser -Repository ProfileModuleTest -RequiredVersion 998.9.8
-            $buffer = Import-Module AzureRM.Profile 2>&1 3>&1 | Out-String
+            $global:buffer = Import-Module $global:pushedProfileModule 2>&1 3>&1 | Out-String
+            Write-Warning $global:buffer
+            Assert-True { $global:buffer -Like "*AzureRM.ApiManagement 998.9.8 is not compatible with AzureRM.Profile*" }
         } finally {
             Uninstall-Module AzureRM.ApiManagement -ErrorAction Ignore
             Uninstall-Module AzureRM.Profile -ErrorAction Ignore
@@ -30,5 +35,4 @@ function Test-LoadProfileModule
     } finally {
         Unregister-PSRepository -Name "ProfileModuleTest"
     }
-    Assert-True { $buffer -Like "*AzureRM.ApiManagement 998.9.8 is not compatible with AzureRM.Profile*" }
 }

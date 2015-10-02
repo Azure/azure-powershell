@@ -194,10 +194,10 @@
     </Content>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
-    <None Include="ProfileModuleTestRepo\AzureRM.ApiManagement.998.9.8.nupkg">
+    <None Include="FakeModuleRepo\AzureRM.ApiManagement.998.9.8.nupkg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="ProfileModuleTestRepo\AzureRM.Profile.999.9.8.nupkg">
+    <None Include="FakeModuleRepo\AzureRM.Profile.999.9.8.nupkg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.SubscriptionCmdletTests\AllParameterSetsSucceed.json">
