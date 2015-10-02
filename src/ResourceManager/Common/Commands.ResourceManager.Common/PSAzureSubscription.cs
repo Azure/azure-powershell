@@ -31,11 +31,16 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <returns>The converted subscription.</returns>
         public static implicit operator PSAzureSubscription(AzureSubscription other)
         {
+            if (other == null)
+            {
+                return null;
+            }
+
             var subscription= new PSAzureSubscription
             {
-                SubscriptionId = other != null? other.Id.ToString() : null,
-                SubscriptionName = other != null? other.Name : null,
-                TenantId = other != null && other.IsPropertySet(AzureSubscription.Property.Tenants)? 
+                SubscriptionId = other.Id.ToString(),
+                SubscriptionName = other.Name ,
+                TenantId = other.IsPropertySet(AzureSubscription.Property.Tenants)? 
                 other.GetProperty(AzureSubscription.Property.Tenants) : null
             };
 
@@ -104,7 +109,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
 
         public string CurrentStorageAccountName { get; set; }
 
-        private string CurrentStorageAccount { get; set; }
+        internal string CurrentStorageAccount { get; set; }
 
         public override string ToString()
         {

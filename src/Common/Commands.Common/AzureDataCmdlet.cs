@@ -14,11 +14,18 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Management.Automation;
+using System.Management.Automation.Host;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Newtonsoft.Json;
+using Microsoft.WindowsAzure.Commands.Common.Properties;
 
 namespace Microsoft.WindowsAzure.Commands.Common
 {
@@ -56,13 +63,13 @@ namespace Microsoft.WindowsAzure.Commands.Common
         {
             var RMProfile = AzureRmProfileProvider.Instance.Profile;
             if (RMProfile != null && RMProfile.Context != null && 
-                RMProfile.Context.Subscription != null)
+                RMProfile.Context.Subscription != null && RMProfile.Context.Subscription.IsPropertySet(AzureSubscription.Property.StorageAccount))
             {
                 RMProfile.Context.Subscription.SetProperty(AzureSubscription.Property.StorageAccount, null);
             }
 
             var SMProfile = AzureSMProfileProvider.Instance.Profile;
-            if (SMProfile != null && SMProfile.Context != null && SMProfile.Context.Subscription != null)
+            if (SMProfile != null && SMProfile.Context != null && SMProfile.Context.Subscription != null && SMProfile.Context.Subscription.IsPropertySet(AzureSubscription.Property.StorageAccount))
             {
                 SMProfile.Context.Subscription.SetProperty(AzureSubscription.Property.StorageAccount, null);
             }
@@ -70,10 +77,63 @@ namespace Microsoft.WindowsAzure.Commands.Common
 
         protected override void SaveDataCollectionProfile()
         {
-        }
+             if (_dataCollectionProfile == null)
+            {
+                InitializeDataCollectionProfile();
+            }
+
+            string fileFullPath = Path.Combine(AzureSession.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
+            var contents = JsonConvert.SerializeObject(_dataCollectionProfile);
+            if (!AzureSession.DataStore.DirectoryExists(AzureSession.ProfileDirectory))
+            {
+                AzureSession.DataStore.CreateDirectory(AzureSession.ProfileDirectory);
+            }
+            AzureSession.DataStore.WriteFile(fileFullPath, contents);
+            WriteWarning(string.Format(Resources.DataCollectionSaveFileInformation, fileFullPath));
+       }
 
         protected override void PromptForDataCollectionProfileIfNotExists()
         {
+            // Initialize it from the environment variable or profile file.
+            InitializeDataCollectionProfile();
+
+            if (!_dataCollectionProfile.EnableAzureDataCollection.HasValue && CheckIfInteractive())
+            {
+                WriteWarning(Resources.DataCollectionPrompt);
+
+                const double timeToWaitInSeconds = 60;
+                var status = string.Format(Resources.DataCollectionConfirmTime, timeToWaitInSeconds);
+                ProgressRecord record = new ProgressRecord(0, Resources.DataCollectionActivity, status);
+
+                var startTime = DateTime.Now;
+                var endTime = DateTime.Now;
+                double elapsedSeconds = 0;
+
+                while (!this.Host.UI.RawUI.KeyAvailable && elapsedSeconds < timeToWaitInSeconds)
+                {
+                    Thread.Sleep(TimeSpan.FromMilliseconds(10));
+                    endTime = DateTime.Now;
+
+                    elapsedSeconds = (endTime - startTime).TotalSeconds;
+                    record.PercentComplete = ((int) elapsedSeconds*100/(int) timeToWaitInSeconds);
+                    WriteProgress(record);
+                }
+
+                bool enabled = false;
+                if (this.Host.UI.RawUI.KeyAvailable)
+                {
+                    KeyInfo keyInfo =
+                        this.Host.UI.RawUI.ReadKey(ReadKeyOptions.NoEcho | ReadKeyOptions.AllowCtrlC |
+                                                   ReadKeyOptions.IncludeKeyDown);
+                    enabled = (keyInfo.Character == 'Y' || keyInfo.Character == 'y');
+                }
+
+                _dataCollectionProfile.EnableAzureDataCollection = enabled;
+
+                WriteWarning(enabled ? Resources.DataCollectionConfirmYes : Resources.DataCollectionConfirmNo);
+
+                SaveDataCollectionProfile();
+            }
         }
 
         protected override void InitializeQosEvent()

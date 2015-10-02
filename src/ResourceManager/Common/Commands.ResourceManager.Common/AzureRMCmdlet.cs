@@ -36,7 +36,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         /// </summary>
         static AzureRMCmdlet()
         {
-            AzureSession.DataStore = new DiskDataStore();
+            if (AzureSession.DataStore == null)
+            {
+                AzureSession.DataStore = new DiskDataStore();
+            }
         }
 
         /// <summary>

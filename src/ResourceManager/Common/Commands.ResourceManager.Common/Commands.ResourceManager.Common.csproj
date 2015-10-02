@@ -149,7 +149,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="PSAzureAccount.cs" />
+    <Compile Include="PSAzureRmAccount.cs" />
     <Compile Include="PSAzureContext.cs" />
     <Compile Include="PSAzureEnvironment.cs" />
     <Compile Include="PSAzureProfile.cs" />
