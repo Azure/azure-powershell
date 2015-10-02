@@ -179,7 +179,7 @@ function Test-VirtualMachine
         Assert-NotNull $aset;
         Assert-AreEqual $asetName $aset.Name;
 
-        $asetId = ('/subscriptions/' + (Get-AzureRmSubscription -Current).SubscriptionId + '/resourceGroups/' + $rgname + '/providers/Microsoft.Compute/availabilitySets/' + $asetName);
+        $asetId = ('/subscriptions/' + (Get-AzureRmContext).Subscription.SubscriptionId + '/resourceGroups/' + $rgname + '/providers/Microsoft.Compute/availabilitySets/' + $asetName);
         $vmname2 = $vmname + '2';
         $p2 = New-AzureRmVMConfig -VMName $vmname2 -VMSize $vmsize -AvailabilitySetId $asetId;
         $p2.HardwareProfile = $p.HardwareProfile;

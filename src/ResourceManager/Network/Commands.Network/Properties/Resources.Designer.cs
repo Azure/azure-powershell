@@ -103,7 +103,8 @@ namespace Microsoft.Azure.Commands.Network.Properties {
             get {
                 return ResourceManager.GetString("ApplicationGatewayFrontendPortName", resourceCulture);
             }
-        }        
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to httpListeners.
         /// </summary>
@@ -182,6 +183,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         public static string LoadBalancerFrontendIpConfigName {
             get {
                 return ResourceManager.GetString("LoadBalancerFrontendIpConfigName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to inboundNatPools.
+        /// </summary>
+        public static string LoadBalancerInboundNatPoolsName {
+            get {
+                return ResourceManager.GetString("LoadBalancerInboundNatPoolsName", resourceCulture);
             }
         }
         
@@ -338,14 +348,6 @@ namespace Microsoft.Azure.Commands.Network.Properties {
             }
         }
         
-        /// <summary>        ///   Looks up a localized string similar to SetByResource.
-        /// </summary>
-        public static string SetByResource {
-            get {
-                return ResourceManager.GetString("SetByResource", resourceCulture);
-            }
-        }
-        
         /// <summary>
         ///   Looks up a localized string similar to SetByFqdn.
         /// </summary>
@@ -361,6 +363,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         public static string SetByIP {
             get {
                 return ResourceManager.GetString("SetByIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SetByResource.
+        /// </summary>
+        public static string SetByResource {
+            get {
+                return ResourceManager.GetString("SetByResource", resourceCulture);
             }
         }
         

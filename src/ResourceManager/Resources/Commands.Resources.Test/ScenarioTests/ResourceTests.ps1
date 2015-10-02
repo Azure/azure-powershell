@@ -27,9 +27,9 @@ function Test-CreatesNewSimpleResource
 	$resourceType = "Microsoft.Sql/servers"
 
 	# Test
-	New-AzureRMResourceGroup -Name $rgname -Location $rglocation
-    $actual = New-AzureRMResource -Name $rname -Location $location -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion 
-	$expected = Get-AzureRMResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceType -ApiVersion $apiversion
+	New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+    $actual = New-AzureRmResource -Name $rname -Location $location -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"administratorLogin" = "adminuser"; "administratorLoginPassword" = "P@ssword1"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion 
+	$expected = Get-AzureRmResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceType -ApiVersion $apiversion
 	
 	$list = Get-AzureRmResource -ResourceGroupName $rgname
 
@@ -259,10 +259,10 @@ function Test-SetAResource
 	$resourceType = "Providers.Test/statefulResources"
 
 	# Test
-	New-AzureRMResourceGroup -Name $rgname -Location $rglocation
-	$resource = New-AzureRMResource -Name $rname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
-	Set-AzureRMResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -Properties @{"key2" = "value2"} -Force
-	Set-AzureRMResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -SkuObject @{ Name = "A1" }  -Force 
+	New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+	$resource = New-AzureRmResource -Name $rname -Location $rglocation -Tags @{Name = "testtag"; Value = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+	Set-AzureRmResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -Properties @{"key2" = "value2"} -Force
+	Set-AzureRmResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType -SkuObject @{ Name = "A1" }  -Force 
 
 	$modifiedResource = Get-AzureRmResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType
 

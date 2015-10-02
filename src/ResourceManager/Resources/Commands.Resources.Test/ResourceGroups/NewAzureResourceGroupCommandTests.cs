@@ -73,8 +73,6 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 Location = resourceGroupLocation,
                 TemplateFile = templateFile,
                 DeploymentName = deploymentName,
-                StorageAccountName = storageAccountName,
-                TemplateVersion = "1.0",
                 Tag = tags
             };
             CreatePSResourceGroupParameters actualParameters = new CreatePSResourceGroupParameters();
@@ -93,7 +91,6 @@ namespace Microsoft.Azure.Commands.Resources.Test
             cmdlet.Location = expectedParameters.Location;
             cmdlet.TemplateFile = expectedParameters.TemplateFile;
             cmdlet.DeploymentName = expectedParameters.DeploymentName;
-            cmdlet.TemplateVersion = expectedParameters.TemplateVersion;
             cmdlet.Tag = expectedParameters.Tag;
 
             cmdlet.ExecuteCmdlet();
@@ -101,56 +98,9 @@ namespace Microsoft.Azure.Commands.Resources.Test
             Assert.Equal(expectedParameters.ResourceGroupName, actualParameters.ResourceGroupName);
             Assert.Equal(expectedParameters.Location, actualParameters.Location);
             Assert.Equal(expectedParameters.DeploymentName, actualParameters.DeploymentName);
-            Assert.Equal(expectedParameters.GalleryTemplateIdentity, actualParameters.GalleryTemplateIdentity);
             Assert.Equal(expectedParameters.TemplateFile, actualParameters.TemplateFile);
             Assert.NotNull(actualParameters.TemplateParameterObject);
-            Assert.Equal(expectedParameters.TemplateVersion, actualParameters.TemplateVersion);
-            Assert.Equal(null, actualParameters.StorageAccountName);
             Assert.Equal(expectedParameters.Tag, actualParameters.Tag);
-
-            commandRuntimeMock.Verify(f => f.WriteObject(expected), Times.Once());
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void CreatesNewPSResourceGroupWithGalleryTemplate()
-        {
-            CreatePSResourceGroupParameters expectedParameters = new CreatePSResourceGroupParameters()
-            {
-                ResourceGroupName = resourceGroupName,
-                Location = resourceGroupLocation,
-                GalleryTemplateIdentity = "sqlServer",
-                DeploymentName = deploymentName,
-                StorageAccountName = storageAccountName,
-                TemplateVersion = "1.0"
-            };
-            CreatePSResourceGroupParameters actualParameters = new CreatePSResourceGroupParameters();
-            PSResourceGroup expected = new PSResourceGroup()
-            {
-                Location = expectedParameters.Location,
-                ResourceGroupName = expectedParameters.ResourceGroupName,
-                Resources = new List<PSResource>() { new PSResource() { Name = "resource1" } }
-            };
-            resourcesClientMock.Setup(f => f.CreatePSResourceGroup(It.IsAny<CreatePSResourceGroupParameters>()))
-                .Returns(expected)
-                .Callback((CreatePSResourceGroupParameters p) => { actualParameters = p; });
-
-            cmdlet.Name = expectedParameters.ResourceGroupName;
-            cmdlet.Location = expectedParameters.Location;
-            cmdlet.GalleryTemplateIdentity = expectedParameters.GalleryTemplateIdentity;
-            cmdlet.DeploymentName = expectedParameters.DeploymentName;
-            cmdlet.TemplateVersion = expectedParameters.TemplateVersion;
-
-            cmdlet.ExecuteCmdlet();
-
-            Assert.Equal(expectedParameters.ResourceGroupName, actualParameters.ResourceGroupName);
-            Assert.Equal(expectedParameters.Location, actualParameters.Location);
-            Assert.Equal(expectedParameters.DeploymentName, actualParameters.DeploymentName);
-            Assert.Equal(expectedParameters.GalleryTemplateIdentity, actualParameters.GalleryTemplateIdentity);
-            Assert.Equal(expectedParameters.TemplateFile, actualParameters.TemplateFile);
-            Assert.NotNull(actualParameters.TemplateParameterObject);
-            Assert.Equal(expectedParameters.TemplateVersion, actualParameters.TemplateVersion);
-            Assert.Equal(null, actualParameters.StorageAccountName);
 
             commandRuntimeMock.Verify(f => f.WriteObject(expected), Times.Once());
         }
