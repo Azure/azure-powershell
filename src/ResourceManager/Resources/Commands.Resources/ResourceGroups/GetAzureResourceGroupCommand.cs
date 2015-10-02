@@ -13,12 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Resources.Models;
-using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Resources
 {
+    using System.Linq;
+
     /// <summary>
     /// Filters resource groups.
     /// </summary>
@@ -26,29 +27,29 @@ namespace Microsoft.Azure.Commands.Resources
     public class GetAzureResourceGroupCommand : ResourcesBaseCmdlet
     {
         [Alias("ResourceGroupName")]
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = "GetSingle")]
+        [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = "GetSingle")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = "GetMultiple")]
-        public Hashtable Tag { get; set; }
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group location.")]
+        [ValidateNotNullOrEmpty]
+        public string Location { get; set; }
 
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = "GetMultiple")]
-        public SwitchParameter Detailed { get; set; }
+        [Alias("ResourceGroupId", "ResourceId")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group Id.")]
+        [ValidateNotNullOrEmpty]
+        public string Id { get; set; }
         
         protected override void ProcessRecord()
         {
-            if(this.Tag != null)
-            {
-                WriteWarning("The Tag parameter is being deprecated and will be removed in a future release.");
-            }
-            if(this.Detailed.IsPresent)
-            {
-                WriteWarning("The Detailed switch parameter is being deprecated and will be removed in a future release.");
-            }
             WriteWarning("The output object of this cmdlet will be modified in a future release.");
-            var detailed = Detailed.IsPresent || !string.IsNullOrEmpty(Name);
-            WriteObject(ResourcesClient.FilterResourceGroups(Name, Tag, detailed), true);
+            Name = string.IsNullOrEmpty(Name) && !string.IsNullOrEmpty(Id)
+                ? Id.Split('/').Last()
+                : Name;
+
+            this.WriteObject(
+                ResourcesClient.FilterResourceGroups(name: this.Name, tag: null, detailed: false, location: this.Location),
+                true);
         }
     }
 }
