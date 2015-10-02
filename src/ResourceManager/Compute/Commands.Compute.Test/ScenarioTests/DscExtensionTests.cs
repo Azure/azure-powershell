@@ -5,7 +5,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public class DscExtensionTests
     {
-        [Fact(Skip = "PSGet Migration: TODO: Get-AzureRmSubscription")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureRmVMDscExtension()
         {

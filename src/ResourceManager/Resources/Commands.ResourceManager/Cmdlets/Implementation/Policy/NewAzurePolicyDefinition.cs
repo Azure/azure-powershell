@@ -52,11 +52,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or sets the policy rule parameter
+        /// Gets or sets the policy parameter
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The rule for policy definition. This can either be a path to a file name containing the rule, or the rule as string.")]
         [ValidateNotNullOrEmpty]
-        public string PolicyRule { get; set; }
+        public string Policy { get; set; }
 
         /// <summary>
         /// Executes the cmdlet.
@@ -85,8 +85,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var activity = string.Format("PUT {0}", managementUri.PathAndQuery);
             var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
                 .WaitOnOperation(operationResult: operationResult);
-
-            this.WriteObject(this.GetOutputObjects(result.ToJToken()), enumerateCollection: true);
+            this.WriteObject(this.GetOutputObjects(JObject.Parse(result)), enumerateCollection: true);
         }
 
         /// <summary>
@@ -108,20 +107,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             var policyDefinitionObject = new PolicyDefinition
             {
+                Name = this.Name,
                 Properties = new PolicyDefinitionProperties
                 {
                     Description = this.Description ?? null,
                     DisplayName = this.DisplayName ?? null,
-                    PolicyRule = new PolicyRule
-                    {
-                        Rule = File.Exists(this.PolicyRule)
-                            ? FileUtilities.DataStore.ReadFileAsText(this.TryResolvePath(this.PolicyRule))
-                            : this.PolicyRule
-                    }
+                    PolicyRule = JObject.Parse(GetPolicyRuleObject().ToString())
                 }
             };
 
             return policyDefinitionObject.ToJToken();
+        }
+
+        /// <summary>
+        /// Gets the policy rule object
+        /// </summary>
+        private JToken GetPolicyRuleObject()
+        {
+            return File.Exists(this.Policy)
+                ? JToken.FromObject(FileUtilities.DataStore.ReadFileAsText(this.TryResolvePath(this.Policy)))
+                : JToken.FromObject(this.Policy);
         }
     }
 }

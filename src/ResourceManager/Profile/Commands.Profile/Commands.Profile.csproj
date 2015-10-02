@@ -132,6 +132,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataCollection\DisableAzureRMDataCollection.cs" />
+    <Compile Include="DataCollection\EnableAzureRMDataCollection.cs" />
     <Compile Include="Environment\RemoveAzureRMEnvironment.cs" />
     <Compile Include="Environment\GetAzureRMEnvironment.cs" />
     <Compile Include="Environment\SetAzureRMEnvironment.cs" />
