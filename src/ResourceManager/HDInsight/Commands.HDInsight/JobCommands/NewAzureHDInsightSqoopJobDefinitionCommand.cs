@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet(
         VerbsCommon.New,
-        Constants.JobDefinitions.AzureHDInsightHiveJobDefinition),
+        Constants.JobDefinitions.AzureHDInsightSqoopJobDefinition),
     OutputType(
         typeof(AzureHDInsightSqoopJobDefinition))]
     public class NewAzureHDInsightSqoopJobDefinitionCommand : HDInsightCmdletBase
