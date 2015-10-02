@@ -382,11 +382,6 @@ function Get-AllBuildServerCommands {
 		$OutputPath = $OutputPath.Substring(0,$OutputPath.Length - 1)
 	}
 
-
-	#Get Folder Date
-	$Date = Get-Date -UFormat "%Y-%m-%d.%H_%M_%S"
-	$OutputPath += "\" + $Date
-
 	#Find the Template XML
 	$GettAllCommandsDirectory = ".\Templates"
 
@@ -410,9 +405,11 @@ function Get-AllBuildServerCommands {
 	#loop through each Nested Dll
 	Foreach($NestedFile in $ManifestNestedModules)
 	{
-		Write-Host "-----------------------------------------------" -ForegroundColor White
+		
 		$ModuleOutputPath = $OutputPath + "\" + $NestedFile.Name
-		$ModuleOutputPath = (Get-Location).Path + $ModuleOutputPath.Substring(1,$ModuleOutputPath.Length - 1)    
+		$ModuleOutputPath = (Get-Location).Path + $ModuleOutputPath.Substring(1,$ModuleOutputPath.Length - 1)
+		Write-Host "Module Output Path " $ModuleOutputPath   
+		Write-Host "-----------------------------------------------" -ForegroundColor White
 
 		New-Item -ItemType Directory -Path $ModuleOutputPath -ErrorAction SilentlyContinue | Out-Null
 
@@ -422,7 +419,7 @@ function Get-AllBuildServerCommands {
 
 		#Get the MAML, Split and Place it in the PSMAML directory
 		$MamlOutPutPath = $ModuleOutputPath + "\MAML"
-		$NestedFile | Add-Member -MemberType NoteProperty -Name "HelpXmlPath" -Value ($NestedFile.Path + "-help.xml")
+		$NestedFile | Add-Member -MemberType NoteProperty -Name "HelpXmlPath" -Value ($NestedFile.Path + "-help.xml") -Force
 		New-Item -ItemType Directory -Path $MamlOutPutPath | Out-Null
 		if(Test-Path -Path $NestedFile.HelpXmlPath)
 		{
@@ -676,9 +673,11 @@ function Get-AllBuildServerCommands {
 
 }
 
+rm .\Output -Recurse -Force -ErrorAction SilentlyContinue
+
 #Comment these lines to selectivly build the output for either Service Management or Resource Manager
 Get-AllBuildServerCommands -OutputPath ".\Output" -ManifestFullName "..\..\..\src\Package\Debug\ServiceManagement\Azure\Azure.psd1"
-Get-AllBuildServerCommands -OutputPath ".\Output" -ManifestFullName "..\..\..\tools\AzureRM\AzureRM.psd1"
+Get-AllBuildServerCommands -OutputPath ".\Output" -ManifestFullName "..\..\AzureRM\AzureRM.psd1"
 
 $modules = (Get-ChildItem "..\..\..\src\Package\Debug\ResourceManager" -Recurse -Include "*.psd1" -Exclude "*dll-help.psd1", "AzureResourceManager.psd1") | sort -Unique -Property Name
 $modules | Foreach { Get-AllBuildServerCommands -OutputPath ".\Output" -ManifestFullName $_.FullName }
