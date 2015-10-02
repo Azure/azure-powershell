@@ -31,6 +31,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
          public List<PSInboundNatRule> InboundNatRules { get; set; }
 
+         public List<PSInboundNatPool> InboundNatPools { get; set; }
+
          public string ProvisioningState { get; set; }
 
          [JsonIgnore]
@@ -61,6 +63,12 @@ namespace Microsoft.Azure.Commands.Network.Models
          public string InboundNatRulesText
          {
              get { return JsonConvert.SerializeObject(InboundNatRules, Formatting.Indented); }
+         }
+
+         [JsonIgnore]
+         public string InboundNatPoolsText
+         {
+             get { return JsonConvert.SerializeObject(InboundNatPools, Formatting.Indented); }
          }
      }
 }

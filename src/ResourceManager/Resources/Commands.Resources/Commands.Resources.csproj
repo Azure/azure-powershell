@@ -209,7 +209,7 @@
     <Compile Include="RoleDefinitions\NewAzureRoleDefinitionCommand.cs" />
     <Compile Include="RoleDefinitions\SetAzureRoleDefinitionCommand.cs" />
     <Compile Include="RoleDefinitions\RemoveAzureRoleDefinitionCommand.cs" />
-    <Compile Include="Templates\TestAzureResourceGroupTemplateCommand.cs" />
+    <Compile Include="ResourceGroupDeployments\TestAzureResourceGroupDeploymentCommand.cs" />
     <Compile Include="Models.ResourceGroups\CreatePSResourceParameters.cs" />
     <Compile Include="Models.ResourceGroups\PSResource.cs" />
     <Compile Include="Models.ResourceGroups\DeploymentVariable.cs" />

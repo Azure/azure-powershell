@@ -19,17 +19,17 @@
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Get-AzureRmStorageAccount</maml:name>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="0">
-				<maml:name>ResourceGroupStorageAccountName</maml:name>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
-					<maml:para>StorageAccountName of the Resource Group</maml:para>
+					<maml:para>Name of the Resource Group</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="1">
-				<maml:name>StorageAccountName</maml:name>
+			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para>StorageAccountName of the Storage Account</maml:para>
+					<maml:para>Name of the Storage Account</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -43,10 +43,10 @@
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="0">
-			<maml:name>ResourceGroupStorageAccountName</maml:name>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
-				<maml:para>StorageAccountName of the Resource Group</maml:para>
+				<maml:para>Name of the Resource Group</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -55,10 +55,10 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="1">
-			<maml:name>StorageAccountName</maml:name>
+		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para>StorageAccountName of the Storage Account</maml:para>
+				<maml:para>Name of the Storage Account</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -121,7 +121,7 @@
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>PS C:\&gt; #Get one storage account
-          Get-AzureRmStorageAccount -ResourceGroupStorageAccountName &quot;RG1&quot; -AccountStorageAccountName &quot;myStorageAccount&quot;</dev:code>
+          Get-AzureRmStorageAccount -ResourceGroupName &quot;rg1&quot; -AccountName &quot;mystorageaccount&quot;</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -142,7 +142,7 @@
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>PS C:\&gt; # Get all Storage Accounts in a Resource Group
-          Get-AzureRmStorageAccount -ResourceGroupStorageAccountName &quot;RG1&quot;</dev:code>
+          Get-AzureRmStorageAccount -ResourceGroupName &quot;RG1&quot;</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -202,17 +202,17 @@
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Get-AzureRmStorageAccountKey</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="0">
-				<maml:name>ResourceGroupStorageAccountName</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
-					<maml:para>StorageAccountName of the Resource Group</maml:para>
+					<maml:para>Name of the Resource Group</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="1">
-				<maml:name>StorageAccountName</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para>StorageAccountName of the Storage Account</maml:para>
+					<maml:para>Name of the Storage Account</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -226,10 +226,10 @@
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="0">
-			<maml:name>ResourceGroupStorageAccountName</maml:name>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
-				<maml:para>StorageAccountName of the Resource Group</maml:para>
+				<maml:para>Name of the Resource Group</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -238,10 +238,10 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="1">
-			<maml:name>StorageAccountName</maml:name>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para>StorageAccountName of the Storage Account</maml:para>
+				<maml:para>Name of the Storage Account</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -304,7 +304,7 @@
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>#Get keys
-          Get-AzureRmStorageAccountKey -ResourceGroupStorageAccountName &quot;RG1&quot; -AccountStorageAccountName &quot;myStorageAccount&quot;</dev:code>
+          Get-AzureRmStorageAccountKey -ResourceGroupName &quot;rg1&quot; -AccountName &quot;mystorageaccount&quot;</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -343,21 +343,21 @@
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>New-AzureRmStorageAccount</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="0">
-				<maml:name>ResourceGroupStorageAccountName</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
-					<maml:para>StorageAccountName of the Resource Group</maml:para>
+					<maml:para>Name of the Resource Group</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="1">
-				<maml:name>StorageAccountName</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para>StorageAccountName of the Storage Account</maml:para>
+					<maml:para>Name of the Storage Account</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="2">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
 				<maml:name>Type</maml:name>
 				<maml:description>
 					<maml:para>Type of Storage Account. Valid values are 
@@ -368,12 +368,19 @@
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="3">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
 				<maml:name>Location</maml:name>
 				<maml:description>
 					<maml:para>Location of the Storage Account</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+			</command:parameter>
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+				<maml:name>Tags</maml:name>
+				<maml:description>
+					<maml:para>Tags to set on the storage account.</maml:para>
+				</maml:description>
+				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Profile</maml:name>
@@ -385,10 +392,10 @@
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="0">
-			<maml:name>ResourceGroupStorageAccountName</maml:name>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
-				<maml:para>StorageAccountName of the Resource Group</maml:para>
+				<maml:para>Name of the Resource Group</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -397,10 +404,10 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="1">
-			<maml:name>StorageAccountName</maml:name>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para>StorageAccountName of the Storage Account</maml:para>
+				<maml:para>Name of the Storage Account</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -409,7 +416,7 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="2">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
 			<maml:name>Type</maml:name>
 			<maml:description>
 				<maml:para>Type of Storage Account. Valid values are 
@@ -425,7 +432,7 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="3">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
 			<maml:name>Location</maml:name>
 			<maml:description>
 				<maml:para>Location of the Storage Account</maml:para>
@@ -433,6 +440,18 @@
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
 				<maml:name>String</maml:name>
+				<maml:uri/>
+			</dev:type>
+			<dev:defaultValue></dev:defaultValue>
+		</command:parameter>
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+			<maml:name>Tags</maml:name>
+			<maml:description>
+				<maml:para>Tags to set on the storage account.</maml:para>
+			</maml:description>
+			<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
+			<dev:type>
+				<maml:name>Hashtable[]</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -490,7 +509,7 @@
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>New-AzureRmStorageAccount -ResourceGroupStorageAccountName &quot;myResourceGroup&quot; -AccountStorageAccountName &quot;myStorageAccount&quot; -Location &quot;US West&quot; -Type &quot;Standard_GRS&quot;</dev:code>
+			<dev:code>New-AzureRmStorageAccount -ResourceGroupName &quot;myresourcegroup&quot; -AccountName &quot;mystorageaccount&quot; -Location &quot;US West&quot; -Type &quot;Standard_GRS&quot;</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -529,22 +548,22 @@
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>New-AzureRmStorageAccountKey</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="0">
-				<maml:name>ResourceGroupStorageAccountName</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
-					<maml:para>StorageAccountName of the Resource Group the storage account is in</maml:para>
+					<maml:para>Name of the Resource Group the storage account is in</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="1">
-				<maml:name>StorageAccountName</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para>StorageAccountName of the Storage Account</maml:para>
+					<maml:para>Name of the Storage Account</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="2">
-				<maml:name>KeyStorageAccountName</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+				<maml:name>KeyName</maml:name>
 				<maml:description>
 					<maml:para>Specifies which key to regenerate. Supported value set:
 - “key1”
@@ -562,10 +581,10 @@
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="0">
-			<maml:name>ResourceGroupStorageAccountName</maml:name>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
-				<maml:para>StorageAccountName of the Resource Group the storage account is in</maml:para>
+				<maml:para>Name of the Resource Group the storage account is in</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -574,10 +593,10 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="1">
-			<maml:name>StorageAccountName</maml:name>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para>StorageAccountName of the Storage Account</maml:para>
+				<maml:para>Name of the Storage Account</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -586,8 +605,8 @@
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="2">
-			<maml:name>KeyStorageAccountName</maml:name>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+			<maml:name>KeyName</maml:name>
 			<maml:description>
 				<maml:para>Specifies which key to regenerate. Supported value set:
 - “key1”
@@ -654,7 +673,7 @@
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>#Regenerate a key
-New-AzureRmStorageKey -ResourceGroupStorageAccountName &quot;myResourceGroup&quot; -AccountStorageAccountName &quot;myStorageAccount&quot; -keyStorageAccountName &quot;key1&quot;</dev:code>
+New-AzureRmStorageKey -ResourceGroupName &quot;myresourcegroup&quot; -AccountName &quot;mystorageaccount&quot; -keyName &quot;key1&quot;</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -693,17 +712,17 @@ New-AzureRmStorageKey -ResourceGroupStorageAccountName &quot;myResourceGroup&quo
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Remove-AzureRmStorageAccount</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="0">
-				<maml:name>ResourceGroupStorageAccountName</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
-					<maml:para>StorageAccountName of the Resource Group</maml:para>
+					<maml:para>Name of the Resource Group</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="1">
-				<maml:name>StorageAccountName</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para>StorageAccountName of the VM</maml:para>
+					<maml:para>Name of the VM</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -717,10 +736,10 @@ New-AzureRmStorageKey -ResourceGroupStorageAccountName &quot;myResourceGroup&quo
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="0">
-			<maml:name>ResourceGroupStorageAccountName</maml:name>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
-				<maml:para>StorageAccountName of the Resource Group</maml:para>
+				<maml:para>Name of the Resource Group</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -729,10 +748,10 @@ New-AzureRmStorageKey -ResourceGroupStorageAccountName &quot;myResourceGroup&quo
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="1">
-			<maml:name>StorageAccountName</maml:name>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para>StorageAccountName of the VM</maml:para>
+				<maml:para>Name of the VM</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -794,7 +813,7 @@ New-AzureRmStorageKey -ResourceGroupStorageAccountName &quot;myResourceGroup&quo
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt; Remove-AzureRmStorageAccount -ResourceGroupStorageAccountName &quot;RG1&quot; -AccountStorageAccountName &quot;myStorageAccount&quot;</dev:code>
+			<dev:code>PS C:\&gt; Remove-AzureRmStorageAccount -ResourceGroupName &quot;rg1&quot; -AccountName &quot;mystorageaccount&quot;</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -833,21 +852,21 @@ New-AzureRmStorageKey -ResourceGroupStorageAccountName &quot;myResourceGroup&quo
 	<command:syntax>
 		<command:syntaxItem>
 			<maml:name>Set-AzureRmStorageAccount</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="0">
-				<maml:name>ResourceGroupStorageAccountName</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
-					<maml:para>StorageAccountName of the Resource Group</maml:para>
+					<maml:para>Name of the Resource Group</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="1">
-				<maml:name>StorageAccountName</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para>StorageAccountName of the Storage Account</maml:para>
+					<maml:para>Name of the Storage Account</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="2">
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
 				<maml:name>Type</maml:name>
 				<maml:description>
 					<maml:para>Specifies the account type of the storage account. One of four options:
@@ -870,31 +889,31 @@ New-AzureRmStorageKey -ResourceGroupStorageAccountName &quot;myResourceGroup&quo
 		</command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>Set-AzureRmStorageAccount</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="0">
-				<maml:name>ResourceGroupStorageAccountName</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
-					<maml:para>StorageAccountName of the Resource Group</maml:para>
+					<maml:para>Name of the Resource Group</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="1">
-				<maml:name>StorageAccountName</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para>StorageAccountName of the Storage Account</maml:para>
+					<maml:para>Name of the Storage Account</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="2">
-				<maml:name>CustomDomainStorageAccountName</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+				<maml:name>CustomDomainName</maml:name>
 				<maml:description>
 					<maml:para>The name of the custom domain.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="3">
+			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
 				<maml:name>UseSubDomain</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Indicates whether indirect CName validation is enabled.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Nullable`1[Boolean]</command:parameterValue>
 			</command:parameter>
@@ -908,24 +927,24 @@ New-AzureRmStorageKey -ResourceGroupStorageAccountName &quot;myResourceGroup&quo
 		</command:syntaxItem>
 		<command:syntaxItem>
 			<maml:name>Set-AzureRmStorageAccount</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="0">
-				<maml:name>ResourceGroupStorageAccountName</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
-					<maml:para>StorageAccountName of the Resource Group</maml:para>
+					<maml:para>Name of the Resource Group</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="1">
-				<maml:name>StorageAccountName</maml:name>
+			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+				<maml:name>Name</maml:name>
 				<maml:description>
-					<maml:para>StorageAccountName of the Storage Account</maml:para>
+					<maml:para>Name of the Storage Account</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="2">
+			<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
 				<maml:name>Tags</maml:name>
 				<maml:description>
-					<maml:para />
+					<maml:para>Tags to set on the storage account.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
 			</command:parameter>
@@ -939,10 +958,10 @@ New-AzureRmStorageKey -ResourceGroupStorageAccountName &quot;myResourceGroup&quo
 		</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="0">
-			<maml:name>ResourceGroupStorageAccountName</maml:name>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
-				<maml:para>StorageAccountName of the Resource Group</maml:para>
+				<maml:para>Name of the Resource Group</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -951,10 +970,10 @@ New-AzureRmStorageKey -ResourceGroupStorageAccountName &quot;myResourceGroup&quo
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="1">
-			<maml:name>StorageAccountName</maml:name>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+			<maml:name>Name</maml:name>
 			<maml:description>
-				<maml:para>StorageAccountName of the Storage Account</maml:para>
+				<maml:para>Name of the Storage Account</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -963,7 +982,7 @@ New-AzureRmStorageKey -ResourceGroupStorageAccountName &quot;myResourceGroup&quo
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="2">
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
 			<maml:name>Type</maml:name>
 			<maml:description>
 				<maml:para>Specifies the account type of the storage account. One of four options:
@@ -993,8 +1012,8 @@ New-AzureRmStorageKey -ResourceGroupStorageAccountName &quot;myResourceGroup&quo
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="2">
-			<maml:name>CustomDomainStorageAccountName</maml:name>
+		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+			<maml:name>CustomDomainName</maml:name>
 			<maml:description>
 				<maml:para>The name of the custom domain.</maml:para>
 			</maml:description>
@@ -1005,10 +1024,10 @@ New-AzureRmStorageKey -ResourceGroupStorageAccountName &quot;myResourceGroup&quo
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="3">
+		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
 			<maml:name>UseSubDomain</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Indicates whether indirect CName validation is enabled.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Nullable`1[Boolean]</command:parameterValue>
 			<dev:type>
@@ -1017,26 +1036,14 @@ New-AzureRmStorageKey -ResourceGroupStorageAccountName &quot;myResourceGroup&quo
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyStorageAccountName)" position="2">
+		<command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
 			<maml:name>Tags</maml:name>
 			<maml:description>
-				<maml:para />
+				<maml:para>Tags to set on the storage account.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
 			<dev:type>
 				<maml:name>Hashtable[]</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyStorageAccountName)" position="3">
-			<maml:name>UseSubDomainStorageAccountName</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">nullable`1[boolean]</command:parameterValue>
-			<dev:type>
-				<maml:name>nullable`1[boolean]</maml:name>
 				<maml:uri/>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
@@ -1083,7 +1090,7 @@ New-AzureRmStorageKey -ResourceGroupStorageAccountName &quot;myResourceGroup&quo
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>PS C:\&gt; # Set account type
-          Set-AzureRmStorageAccount -ResourceGroupStorageAccountName &quot;myResourceGroup&quot; -AccountStorageAccountName &quot;myStorageAccount&quot; -Type &quot;Standard_RAGRS&quot;</dev:code>
+          Set-AzureRmStorageAccount -ResourceGroupName &quot;myresourcegroup&quot; -AccountName &quot;mystorageaccount&quot; -Type &quot;Standard_RAGRS&quot;</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />
@@ -1104,7 +1111,7 @@ New-AzureRmStorageKey -ResourceGroupStorageAccountName &quot;myResourceGroup&quo
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
 			<dev:code>PS C:\&gt; #Set custom domain
-          Set-AzureRmStorageAccount -ResourceGroupStorageAccountName &quot;myResourceGroup&quot; -AccountStorageAccountName &quot;myStorageAccount&quot; -CustomDomainStorageAccountName &quot;domain name&quot; –UseSubDomain “true”</dev:code>
+          Set-AzureRmStorageAccount -ResourceGroupName &quot;myresourcegroup&quot; -AccountName &quot;mystorageaccount&quot; -CustomDomainName &quot;www.domainname.com&quot; –UseSubDomain $true</dev:code>
 			<dev:remarks>
 				<maml:para />
 				<maml:para />

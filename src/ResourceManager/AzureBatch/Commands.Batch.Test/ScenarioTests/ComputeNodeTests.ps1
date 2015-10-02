@@ -65,6 +65,38 @@ function Test-ListComputeNodesByFilter
 
 <#
 .SYNOPSIS
+Tests querying for compute nodes using a select clause
+#>
+function Test-GetAndListComputeNodesWithSelect
+{
+	param([string]$accountName, [string]$poolId, [string]$computeNodeId)
+
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
+	$filter = "id eq '$computeNodeId'"
+	$selectClause = "id,state"
+
+	# Test with Get compute node API
+	$computeNode = Get-AzureBatchComputeNode_ST $poolId $computeNodeId -BatchContext $context
+	Assert-AreNotEqual $null $computeNode.IPAddress
+	Assert-AreEqual $computeNodeId $computeNode.Id
+
+	$computeNode = Get-AzureBatchComputeNode_ST $poolId $computeNodeId -Select $selectClause -BatchContext $context
+	Assert-AreEqual $null $computeNode.IPAddress
+	Assert-AreEqual $computeNodeId $computeNode.Id
+
+	# Test with List compute nodes API
+	$pool = Get-AzureBatchPool_ST $poolId -BatchContext $context
+	$computeNode = $pool | Get-AzureBatchComputeNode_ST -Filter $filter -BatchContext $context
+	Assert-AreNotEqual $null $computeNode.IPAddress
+	Assert-AreEqual $computeNodeId $computeNode.Id
+
+	$computeNode = $pool | Get-AzureBatchComputeNode_ST -Filter $filter -Select $selectClause -BatchContext $context
+	Assert-AreEqual $null $computeNode.IPAddress
+	Assert-AreEqual $computeNodeId $computeNode.Id
+}
+
+<#
+.SYNOPSIS
 Tests querying for Batch compute nodes and supplying a max count
 #>
 function Test-ListComputeNodesWithMaxCount

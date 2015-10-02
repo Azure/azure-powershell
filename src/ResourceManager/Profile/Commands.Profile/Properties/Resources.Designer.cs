@@ -70,11 +70,29 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please provide either a subscription ID or a subscription name..
+        /// </summary>
+        internal static string BothSubscriptionIdAndNameProvided {
+            get {
+                return ResourceManager.GetString("BothSubscriptionIdAndNameProvided", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not authenticate your user account {0} with the common tenant. Please login again using Login-AzureRmAccount..
         /// </summary>
         internal static string CommonTenantAuthFailed {
             get {
                 return ResourceManager.GetString("CommonTenantAuthFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The provided subscription ID &quot;{0}&quot; is not a valid Guid..
+        /// </summary>
+        internal static string InvalidSubscriptionId {
+            get {
+                return ResourceManager.GetString("InvalidSubscriptionId", resourceCulture);
             }
         }
         

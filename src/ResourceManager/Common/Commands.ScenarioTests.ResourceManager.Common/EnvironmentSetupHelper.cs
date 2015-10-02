@@ -59,9 +59,11 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             rmprofile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
             rmprofile.Context = new AzureContext(new AzureSubscription(), new AzureAccount(), rmprofile.Environments["foo"], new AzureTenant());
             rmprofile.Context.Subscription.Environment = "foo";
-            AzureRmProfileProvider.Instance.Profile = rmprofile;
-            AzureSession.DataStore = datastore;
-            ProfileClient = new ProfileClient(profile);
+            if (AzureRmProfileProvider.Instance.Profile == null)
+            {
+                AzureRmProfileProvider.Instance.Profile = rmprofile;            }
+
+            AzureSession.DataStore = datastore;            ProfileClient = new ProfileClient(profile);
 
             // Ignore SSL errors
             System.Net.ServicePointManager.ServerCertificateValidationCallback += (se, cert, chain, sslerror) => true;
@@ -163,10 +165,16 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             environment.Endpoints[AzureEnvironment.Endpoint.ActiveDirectory] = currentEnvironment.Endpoints.AADAuthUri.AbsoluteUri;
             environment.Endpoints[AzureEnvironment.Endpoint.Gallery] = currentEnvironment.Endpoints.GalleryUri.AbsoluteUri;
             environment.Endpoints[AzureEnvironment.Endpoint.ServiceManagement] = currentEnvironment.BaseUri.AbsoluteUri;
+            environment.Endpoints[AzureEnvironment.Endpoint.ResourceManager] = currentEnvironment.Endpoints.ResourceManagementUri.AbsoluteUri;
 
             if (!ProfileClient.Profile.Environments.ContainsKey(testEnvironmentName))
             {
                 ProfileClient.AddOrSetEnvironment(environment);
+            }
+
+            if (!AzureRmProfileProvider.Instance.Profile.Environments.ContainsKey(testEnvironmentName))
+            {
+                AzureRmProfileProvider.Instance.Profile.Environments[testEnvironmentName] = environment;
             }
 
             if (currentEnvironment.SubscriptionId != null)
@@ -200,6 +208,17 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 ProfileClient.Profile.Subscriptions[testSubscription.Id] = testSubscription;
                 ProfileClient.Profile.Accounts[testAccount.Id] = testAccount;
                 ProfileClient.SetSubscriptionAsDefault(testSubscription.Name, testSubscription.Account);
+
+                var testTenant = new AzureTenant() { Id = Guid.NewGuid() };
+                if (!string.IsNullOrEmpty(currentEnvironment.Tenant))
+                {
+                    Guid tenant;
+                    if (Guid.TryParse(currentEnvironment.Tenant, out tenant))
+                    {
+                        testTenant.Id = tenant;
+                    }
+                }
+                AzureRmProfileProvider.Instance.Profile.Context = new AzureContext(testSubscription, testAccount, environment, testTenant);
             }
         }
 

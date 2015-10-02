@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The rule for policy definition. This can either be a path to a file name containing the rule, or the rule as string.")]
         [ValidateNotNullOrEmpty]
-        public string PolicyRule { get; set; }
+        public string Policy { get; set; }
 
         /// <summary>
         /// Executes the cmdlet.
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
                 .WaitOnOperation(operationResult: operationResult);
 
-            this.WriteObject(this.GetOutputObjects(result.ToJToken()), enumerateCollection: true);
+            this.WriteObject(this.GetOutputObjects(JObject.Parse(result)), enumerateCollection: true);
         }
 
         /// <summary>
@@ -113,30 +113,27 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private JToken GetResource(string resourceId, string apiVersion)
         {
             var resource = this.GetExistingResource(resourceId, apiVersion).Result.ToResource();
-            var policyProperties = JsonUtilities.DeserializeJson(resource.Properties.ToString());
+            
             var policyDefinitionObject = new PolicyDefinition
             {
+                Name = this.Name ?? ResourceIdUtility.GetResourceName(this.Id),
                 Properties = new PolicyDefinitionProperties
                 {
-                    Description = this.Description ?? policyProperties["Description"].ToString(),
-                    DisplayName = this.DisplayName ?? policyProperties["DisplayName"].ToString(),
-                    PolicyRule = new PolicyRule
-                    {
-                        Rule = File.Exists(this.PolicyRule)
-                            ? FileUtilities.DataStore.ReadFileAsText(this.TryResolvePath(this.PolicyRule))
-                            : this.PolicyRule
-                    }
+                    Description = this.Description ?? (resource.Properties["description"] != null 
+                        ? resource.Properties["description"].ToString()
+                        : null),
+                    DisplayName = this.DisplayName ?? (resource.Properties["displayName"] != null
+                        ? resource.Properties["displayName"].ToString()
+                        : null)
                 }
             };
-            if(!string.IsNullOrEmpty(this.PolicyRule))
+            if(!string.IsNullOrEmpty(this.Policy))
             {
-                policyDefinitionObject.Properties.PolicyRule.Rule = File.Exists(this.PolicyRule)
-                    ? FileUtilities.DataStore.ReadFileAsText(this.TryResolvePath(this.PolicyRule))
-                    : this.PolicyRule;
+                policyDefinitionObject.Properties.PolicyRule = JObject.Parse(GetPolicyRuleObject().ToString());
             }
             else
             {
-                policyDefinitionObject.Properties.PolicyRule.Rule = (policyProperties["PolicyRule"] as PolicyRule).Rule;
+                policyDefinitionObject.Properties.PolicyRule = JObject.Parse(resource.Properties["policyRule"].ToString());
             }
 
             return policyDefinitionObject.ToJToken();
@@ -166,6 +163,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 subscriptionId.ToString(),
                 Constants.MicrosoftAuthorizationPolicyDefinitionType,
                 this.Name);
+        }
+
+        /// <summary>
+        /// Gets the policy rule object
+        /// </summary>
+        protected JToken GetPolicyRuleObject()
+        {
+            return File.Exists(this.Policy)
+                ? JToken.FromObject(FileUtilities.DataStore.ReadFileAsText(this.TryResolvePath(this.Policy)))
+                : JToken.FromObject(this.Policy);
         }
     }
 }

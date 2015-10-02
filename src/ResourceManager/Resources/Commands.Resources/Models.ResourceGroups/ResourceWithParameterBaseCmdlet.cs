@@ -30,9 +30,6 @@ namespace Microsoft.Azure.Commands.Resources
     public abstract class ResourceWithParameterBaseCmdlet : ResourcesBaseCmdlet
     {
         protected const string BaseParameterSetName = "Default";
-        protected const string GalleryTemplateParameterObjectParameterSetName = "Deployment via Gallery and template parameters object";
-        protected const string GalleryTemplateParameterFileParameterSetName = "Deployment via Gallery and template parameters file";
-        protected const string GalleryTemplateParameterUriParameterSetName = "Deployment via Gallery and template parameters uri";
         protected const string TemplateFileParameterObjectParameterSetName = "Deployment via template file and template parameters object";
         protected const string TemplateFileParameterFileParameterSetName = "Deployment via template file and template parameters file";
         protected const string TemplateFileParameterUriParameterSetName = "Deployment via template file template parameters uri";
@@ -45,8 +42,6 @@ namespace Microsoft.Azure.Commands.Resources
         
         protected RuntimeDefinedParameterDictionary dynamicParameters;
 
-        private string galleryTemplateName;
-
         private string templateFile;
 
         private string templateUri;
@@ -54,19 +49,14 @@ namespace Microsoft.Azure.Commands.Resources
         protected ResourceWithParameterBaseCmdlet()
         {
             dynamicParameters = new RuntimeDefinedParameterDictionary();
-            galleryTemplateName = null;
         }
 
-        [Parameter(ParameterSetName = GalleryTemplateParameterObjectParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents the parameters.")]
         [Parameter(ParameterSetName = TemplateFileParameterObjectParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents the parameters.")]
         [Parameter(ParameterSetName = TemplateUriParameterObjectParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents the parameters.")]
         public Hashtable TemplateParameterObject { get; set; }
 
-        [Parameter(ParameterSetName = GalleryTemplateParameterFileParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A file that has the template parameters.")]
         [Parameter(ParameterSetName = TemplateFileParameterFileParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "A file that has the template parameters.")]
         [Parameter(ParameterSetName = TemplateUriParameterFileParameterSetName,
@@ -74,25 +64,12 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateNotNullOrEmpty]
         public string TemplateParameterFile { get; set; }
 
-        [Parameter(ParameterSetName = GalleryTemplateParameterUriParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Uri to the template parameter file.")]
         [Parameter(ParameterSetName = TemplateFileParameterUriParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Uri to the template parameter file.")]
         [Parameter(ParameterSetName = TemplateUriParameterUriParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Uri to the template parameter file.")]
         [ValidateNotNullOrEmpty]
         public string TemplateParameterUri { get; set; }
-
-        [Parameter(ParameterSetName = GalleryTemplateParameterObjectParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Name of the template in the gallery.")]
-        [Parameter(ParameterSetName = GalleryTemplateParameterFileParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Name of the template in the gallery.")]
-        [Parameter(ParameterSetName = GalleryTemplateParameterUriParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Name of the template in the gallery.")]
-        [Parameter(ParameterSetName = ParameterlessGalleryTemplateParameterSetName,
-            Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Name of the template in the gallery.")]
-        [ValidateNotNullOrEmpty]
-        public string GalleryTemplateIdentity { get; set; }
 
         [Parameter(ParameterSetName = TemplateFileParameterObjectParameterSetName,
             Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Local path to the template file.")]
@@ -116,69 +93,9 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateNotNullOrEmpty]
         public string TemplateUri { get; set; }
 
-        [Parameter(ParameterSetName = TemplateFileParameterObjectParameterSetName,
-            Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The storage account which the cmdlet should use to upload the template file to. If not specified, the current storage account of the subscription will be used.")]
-        [Parameter(ParameterSetName = TemplateFileParameterFileParameterSetName,
-            Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The storage account which the cmdlet should use to upload the template file to. If not specified, the current storage account of the subscription will be used.")]
-        [Parameter(ParameterSetName = TemplateFileParameterUriParameterSetName,
-            Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The storage account which the cmdlet should use to upload the template file to. If not specified, the current storage account of the subscription will be used.")]
-        [Parameter(ParameterSetName = ParameterlessTemplateFileParameterSetName,
-            Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The storage account which the cmdlet should use to upload the template file to. If not specified, the current storage account of the subscription will be used.")]
-        [ValidateNotNullOrEmpty]
-        public string StorageAccountName { get; set; }
-
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The expect content version of the template.")]
-        [ValidateNotNullOrEmpty]
-        public string TemplateVersion { get; set; }
-
         public object GetDynamicParameters()
         {
-            if (!string.IsNullOrEmpty(GalleryTemplateIdentity))
-            {
-                List<PSGalleryItem> galleryItems = new List<PSGalleryItem>();
-                try
-                {
-                    galleryItems = GalleryTemplatesClient.FilterGalleryTemplates(new FilterGalleryTemplatesOptions() { Identity = GalleryTemplateIdentity });
-                }
-                catch (CloudException)
-                {
-                    // we could not find a template with that identity
-                }
-
-                if (galleryItems.Count == 0)
-                {
-                    galleryItems = GalleryTemplatesClient.FilterGalleryTemplates(new FilterGalleryTemplatesOptions() { ApplicationName = GalleryTemplateIdentity, AllVersions = false });
-                    if (galleryItems == null || galleryItems.Count == 0)
-                    {
-                        throw new ArgumentException(string.Format(Properties.Resources.InvalidTemplateIdentity, GalleryTemplateIdentity));
-                    }
-
-                    GalleryTemplateIdentity = galleryItems[0].Identity;
-                }
-            }
-
-            if (!string.IsNullOrEmpty(GalleryTemplateIdentity) &&
-                !GalleryTemplateIdentity.Equals(galleryTemplateName, StringComparison.OrdinalIgnoreCase))
-            {
-                galleryTemplateName = GalleryTemplateIdentity;
-                if(string.IsNullOrEmpty(TemplateParameterUri))
-                {
-                    dynamicParameters = GalleryTemplatesClient.GetTemplateParametersFromGallery(
-                        GalleryTemplateIdentity,
-                        TemplateParameterObject,
-                        this.TryResolvePath(TemplateParameterFile),
-                        MyInvocation.MyCommand.Parameters.Keys.ToArray());
-                }
-                else
-                {
-                    dynamicParameters = GalleryTemplatesClient.GetTemplateParametersFromGallery(
-                        GalleryTemplateIdentity,
-                        TemplateParameterObject,
-                        TemplateParameterUri,
-                        MyInvocation.MyCommand.Parameters.Keys.ToArray());
-                }
-            }
-            else if (!string.IsNullOrEmpty(TemplateFile) &&
+            if (!string.IsNullOrEmpty(TemplateFile) &&
                 !TemplateFile.Equals(templateFile, StringComparison.OrdinalIgnoreCase))
             {
                 templateFile = TemplateFile;

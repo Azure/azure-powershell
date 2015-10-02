@@ -21,6 +21,8 @@ using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.WindowsAzure.Commands.Common;
+using System;
+using Microsoft.Azure.Commands.Profile.Properties;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -57,6 +59,10 @@ namespace Microsoft.Azure.Commands.Profile
         [ValidateNotNullOrEmpty]
         public string SubscriptionId { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Subscription")]
+        [ValidateNotNullOrEmpty]
+        public string SubscriptionName { get; set; }
+
         protected override AzureContext DefaultContext
         {
             get
@@ -76,6 +82,17 @@ namespace Microsoft.Azure.Commands.Profile
 
         protected override void ProcessRecord()
         {
+            if (SubscriptionId != null && SubscriptionName != null)
+            {
+                throw new PSInvalidOperationException(Resources.BothSubscriptionIdAndNameProvided);
+            }
+
+            Guid subscrptionIdGuid;
+            if (SubscriptionId != null && !Guid.TryParse(SubscriptionId, out subscrptionIdGuid))
+            {
+                throw new PSInvalidOperationException(Resources.InvalidSubscriptionId);
+            }
+
             AzureAccount azureAccount = new AzureAccount();
 
             if (!string.IsNullOrEmpty(AccessToken))
@@ -110,7 +127,7 @@ namespace Microsoft.Azure.Commands.Profile
 
             var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
             
-            WriteObject((PSAzureProfile)profileClient.Login(azureAccount, Environment, Tenant, SubscriptionId, password));
+            WriteObject((PSAzureProfile)profileClient.Login(azureAccount, Environment, Tenant, SubscriptionId, SubscriptionName, password));
         }
 
         /// <summary>

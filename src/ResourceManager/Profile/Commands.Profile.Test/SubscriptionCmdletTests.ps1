@@ -51,7 +51,7 @@ function Test-PipingWithContext
 	$id = $firstSubscription.SubscriptionId
 	$name = $firstSubscription.SubscriptionName
 	$nameContext = Get-AzureRmSubscription -SubscriptionName $name | Set-AzureRmContext
-	$idContext = get-AzureRmSubscription -SubscriptionId $id | Set-AzureRmContext
+	$idContext = Get-AzureRmSubscription -SubscriptionId $id | Set-AzureRmContext
 	Assert-True { $nameContext -ne $null }
 	Assert-True { $nameContext.Subscription -ne $null }
 	Assert-True { $nameContext.Subscription.SubscriptionId -ne $null }
@@ -62,4 +62,17 @@ function Test-PipingWithContext
 	Assert-True { $idContext.Subscription.SubscriptionName -ne $null }
 	Assert-AreEqual $idContext.Subscription.SubscriptionId  $nameContext.Subscription.SubscriptionId
 	Assert-AreEqual $idContext.Subscription.SubscriptionName  $nameContext.Subscription.SubscriptionName
+}
+
+function Test-SetAzureRmContextEndToEnd
+{
+    # This test requires that the tenant contains atleast two subscriptions
+	$allSubscriptions = Get-AzureRmSubscription
+    $secondSubscription = $allSubscriptions[1]
+    Assert-True { $allSubscriptions[0] -ne $null }
+	Assert-True { $secondSubscription -ne $null }
+    Set-AzureRmContext -SubscriptionId $secondSubscription.SubscriptionId
+    $context = Get-AzureRmContext
+    Assert-AreEqual $context.Subscription.SubscriptionId $secondSubscription.SubscriptionId
+    Assert-ThrowsContains {Set-AzureRmContext -SubscriptionId 'junk-subscription-id'} "does not exist under current tenant"
 }

@@ -41,7 +41,7 @@ if ([string]::IsNullOrEmpty($scope))
     $scope = 'All'  
 }
 
-Write-Host "Publishing $scope package(s)" 
+Write-Host "Publishing $scope package(and its dependencies)" 
 
 $packageFolder = "$PSScriptRoot\..\src\Package"
 
@@ -54,9 +54,9 @@ if ($repo -ne $null) {
 }
 
 $resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager\AzureResourceManager"
-
-if ($scope -eq 'All') {
-    # Publish AzureRM.Profile first which is the common dependency
+$publishToLocal = test-path $repositoryLocation
+if (($scope -eq 'All') -or $publishToLocal ) {
+    # If we publish 'All' or to local folder, publish AzureRM.Profile first, becasue it is the common dependency
     Write-Host "Publishing profile module"
     Publish-Module -Path "$resourceManagerRootFolder\AzureRM.Profile" -NuGetApiKey $apiKey -Repository $repoName
     Write-Host "Published profile module"
@@ -76,7 +76,7 @@ if (($scope -eq 'All') -or ($scope -eq 'AzureStorage')) {
     Publish-Module -Path $modulePath -NuGetApiKey $apiKey -Repository $repoName
 } 
 
-if ($scope -eq 'AzureRM') {
+if (($scope -eq 'All') -or ($scope -eq 'AzureRM')) {
     # Publish AzureRM module    
     $modulePath = "$PSScriptRoot\AzureRM"
     Write-Host "Publishing AzureRM module from $modulePath"
@@ -96,7 +96,7 @@ if ($scope -eq 'All') {
             Write-Host "Published $module module"
         }
     }
-} else {
+} elseif ($scope -ne 'AzureRM') {
     $modulePath = Join-Path $resourceManagerRootFolder "AzureRM.$scope"
     if (Test-Path $modulePath) {
         Write-Host "Publishing $scope module from $modulePath"
