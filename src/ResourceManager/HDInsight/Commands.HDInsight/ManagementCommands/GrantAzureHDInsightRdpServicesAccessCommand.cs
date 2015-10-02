@@ -28,29 +28,26 @@ namespace Microsoft.Azure.Commands.HDInsight
     public class GrantAzureHDInsightRdpServicesAccessCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
-
+        
         [Parameter(
             Position = 0,
-            Mandatory = true,
-            HelpMessage = "Gets or sets the name of the resource group.")]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(
-            Position = 1,
             Mandatory = true,
             HelpMessage = "Gets or sets the name of the cluster.")]
         public string ClusterName { get; set; }
 
-        [Parameter(Position = 2,
+        [Parameter(Position = 1,
             Mandatory = true,
             HelpMessage = "Gets or sets the credential for RDP access to the cluster.")]
         public PSCredential RdpCredential { get; set; }
 
-        [Parameter(Position = 3,
+        [Parameter(Position = 2,
             Mandatory = true,
             HelpMessage = "Gets or sets the expiry DateTime for RDP access on the cluster.")]
         public DateTime RdpAccessExpiry { get; set; }
 
+        [Parameter(HelpMessage = "Gets or sets the name of the resource group.")]
+        public string ResourceGroupName { get; set; }
+        
         #endregion
 
         protected override void ProcessRecord()
@@ -70,6 +67,11 @@ namespace Microsoft.Azure.Commands.HDInsight
                     }
                 }
             };
+
+            if (ResourceGroupName == null)
+            {
+                ResourceGroupName = GetResourceGroupByAccountName(ClusterName);
+            }
 
             HDInsightManagementClient.ConfigureRdp(ResourceGroupName, ClusterName, rdpParams);
         }
