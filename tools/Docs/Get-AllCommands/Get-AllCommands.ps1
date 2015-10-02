@@ -430,7 +430,7 @@ function Get-AllBuildServerCommands {
 			Copy-Item -Path $NestedFile.HelpXmlPath -Destination $ModuleOutputPath
 			$CommandsMissing = $false
 			$MissingCommandsList = ""
-			Get-Command -Module $NestedFile.Name | ForEach-Object 
+			Get-Command -Module $NestedFile.Name | ForEach-Object `
 			{
 				if(!(Test-Path -Path ($ModuleOutputPath + "\PSMAML\" + $_.name + ".xml")))
 				{
@@ -466,7 +466,7 @@ function Get-AllBuildServerCommands {
 
 		#add in cmdlet names found in the module
 		get-content $FileFullName | `
-		Foreach 
+		Foreach `
 		{
 			$Cmdlet = $_.Trim()
 			if ($Cmdlet.Contains("-") -eq $true -and $Cmdlet.Contains("--") -eq $false) 
@@ -581,7 +581,7 @@ function Get-AllBuildServerCommands {
 
 		#write out individual xml files into main file
 		Get-ChildItem -Path $ModuleOutputPath -Name -Include "*.xml" -Exclude 'PSProject_Writer.xml','*help.xml'  |
-		ForEach-Object 
+		ForEach-Object `
 		{
 			[System.XML.XMLDocument] $docCmdlet = New-Object System.XML.XMLDocument
 			$docCmdlet.Load((Join-Path -Path $ModuleOutputPath -ChildPath $_))
@@ -677,5 +677,9 @@ function Get-AllBuildServerCommands {
 }
 
 #Comment these lines to selectivly build the output for either Service Management or Resource Manager
-Get-AllBuildServerCommands -OutputPath ".\Output" -ManifestFullName "C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Azure.psd1"
-Get-AllBuildServerCommands -OutputPath ".\Output" -ManifestFullName "C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ResourceManager\AzureResourceManager\AzureResourceManager.psd1"
+Get-AllBuildServerCommands -OutputPath ".\Output" -ManifestFullName "..\..\..\src\Package\Debug\ServiceManagement\Azure\Azure.psd1"
+Get-AllBuildServerCommands -OutputPath ".\Output" -ManifestFullName "..\..\..\tools\AzureRM\AzureRM.psd1"
+
+$modules = (Get-ChildItem "..\..\..\src\Package\Debug\ResourceManager" -Recurse -Include "*.psd1" -Exclude "*dll-help.psd1", "AzureResourceManager.psd1") | sort -Unique -Property Name
+$modules | Foreach { Get-AllBuildServerCommands -OutputPath ".\Output" -ManifestFullName $_.FullName }
+
