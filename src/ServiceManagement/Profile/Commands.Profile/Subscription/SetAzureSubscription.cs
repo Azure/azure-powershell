@@ -157,17 +157,21 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                 throw new ArgumentException("Certificate is required for creating a new subscription.");
             }
 
-            if (!string.IsNullOrEmpty(CurrentStorageAccountName))
+            if (!string.IsNullOrEmpty(CurrentStorageAccountName) || Context != null)
             {
-                var client = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(DefaultContext,
-                    AzureEnvironment.Endpoint.ServiceManagement);
-                var account = StorageUtilities.GenerateCloudStorageAccount(client, CurrentStorageAccountName);
-                AzureDataCmdlet.ClearCurrentStorageAccount();
-                DefaultContext.SetCurrentStorageAccount(account.ToString(true));
-            }
-            else if (Context != null)
-            {
-                DefaultContext.SetCurrentStorageAccount(this);
+                ProfileClient.GetAccount(subscription.Account);
+                var context = new AzureContext(subscription, ProfileClient.GetAccount(subscription.Account), ProfileClient.GetEnvironmentOrDefault(subscription.Environment));
+                if (Context != null)
+                {
+                    context.SetCurrentStorageAccount(this);
+                }
+                else
+                {
+                    var client = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(context,
+                        AzureEnvironment.Endpoint.ServiceManagement);
+                    var account = StorageUtilities.GenerateCloudStorageAccount(client, CurrentStorageAccountName);
+                    context.SetCurrentStorageAccount(account.ToString(true));
+                }
             }
 
             subscription = ProfileClient.AddOrSetSubscription(subscription);

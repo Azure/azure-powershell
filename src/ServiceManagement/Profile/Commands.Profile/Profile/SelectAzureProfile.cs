@@ -64,6 +64,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                 throw new ArgumentException(Resources.AzureProfileMustNotBeNull);
             }
 
+            AzureSMProfileProvider.Instance.Profile = Profile;
             WriteObject(Profile);
         }
     }

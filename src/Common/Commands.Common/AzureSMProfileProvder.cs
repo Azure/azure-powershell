@@ -32,7 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
         }
         private AzureSMProfileProvider()
         {
-
+            _defaultDiskTokenCache = TokenCache.DefaultShared;
         }
 
         public static AzureSMProfileProvider Instance { get; private set; }
@@ -52,7 +52,6 @@ namespace Microsoft.WindowsAzure.Commands.Common
                     returnValue = _defaultProfile;
                 }
 
-                SetTokenCacheForProfile(returnValue);
                 return returnValue;
             }
             set { SetProfileValue(value); }
