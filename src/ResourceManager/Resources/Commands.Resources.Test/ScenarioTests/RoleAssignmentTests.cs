@@ -37,21 +37,21 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
            ResourcesController.NewInstance.RunPsTest("Test-RaAuthorizationChangeLog");
         }
 
-        [Fact(Skip = "PSGet Migration: TODO: Get-AzureRmSubscription")]
+        [Fact(Skip = "Need to re-record test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaClassicAdmins()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaClassicAdmins");
         }
 
-        [Fact(Skip = "PSGet Migration: TODO: Get-AzureRmSubscription")]
+        [Fact(Skip = "Need to re-record test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaNegativeScenarios()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaNegativeScenarios");
         }
 
-        [Fact(Skip = "PSGet Migration: TODO: Get-AzureRmSubscription")]
+        [Fact(Skip = "Need to re-record test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByScope()
         {

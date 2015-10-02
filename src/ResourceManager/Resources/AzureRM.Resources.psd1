@@ -9,7 +9,7 @@
 @{  
   
 # Version number of this module.  
-ModuleVersion = '0.9.8'  
+ModuleVersion = '0.9.10'  
   
 # ID used to uniquely identify this module  
 GUID = 'ab3ca893-26fe-44b0-bd3c-8933df144d7b'  
@@ -21,7 +21,7 @@ Author = 'Microsoft Corporation'
 CompanyName = 'Microsoft Corporation'  
   
 # Copyright statement for this module  
-Copyright = '© Microsoft Corporation. All rights reserved.'    
+Copyright = 'Microsoft Corporation. All rights reserved.'    
   
 # Description of the functionality provided by this module  
 Description = 'Microsoft Azure PowerShell - Resources'  
@@ -45,7 +45,7 @@ CLRVersion='4.0'
 ProcessorArchitecture = 'None'  
   
 # Modules that must be imported into the global environment prior to importing this module  
-RequiredModules = @( @{ ModuleName = 'AzureRM.Profile'; ModuleVersion = '0.9.8' })
+RequiredModules = @( @{ ModuleName = 'AzureRM.Profile'; ModuleVersion = '0.9.10' })
   
 # Assemblies that must be loaded prior to importing this module  
 RequiredAssemblies = @()  

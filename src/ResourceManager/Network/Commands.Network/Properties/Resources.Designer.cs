@@ -196,6 +196,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to inboundNatPools.
+        /// </summary>
+        public static string LoadBalancerInboundNatPoolsName {
+            get {
+                return ResourceManager.GetString("LoadBalancerInboundNatPoolsName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to inboundNatRules.
         /// </summary>
         public static string LoadBalancerInBoundNatRuleName {

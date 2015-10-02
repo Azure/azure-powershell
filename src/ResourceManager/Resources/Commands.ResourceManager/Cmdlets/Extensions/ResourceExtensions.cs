@@ -61,6 +61,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
                 { "CreatedTime", resource.CreatedTime },
                 { "ChangedTime", resource.ChangedTime },
                 { "ETag", resource.ETag },
+                { "Sku", resource.Sku.ToJToken().ToPsObject(objectFormat) },
             };
 
             var resourceTypeName = resourceType == null && extensionResourceType == null

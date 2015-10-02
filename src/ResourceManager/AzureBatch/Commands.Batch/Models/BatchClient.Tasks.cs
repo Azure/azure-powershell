@@ -36,12 +36,14 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException("options");
             }
 
+            ODATADetailLevel odata = new ODATADetailLevel(selectClause: options.Select, expandClause: options.Expand);
+
             // Get the single task matching the specified id
             if (!string.IsNullOrEmpty(options.TaskId))
             {
                 WriteVerbose(string.Format(Resources.GetTaskById, options.TaskId, options.JobId));
                 JobOperations jobOperations = options.Context.BatchOMClient.JobOperations;
-                CloudTask task = jobOperations.GetTask(options.JobId, options.TaskId, additionalBehaviors: options.AdditionalBehaviors);
+                CloudTask task = jobOperations.GetTask(options.JobId, options.TaskId, detailLevel: odata, additionalBehaviors: options.AdditionalBehaviors);
                 PSCloudTask psTask = new PSCloudTask(task);
                 return new PSCloudTask[] { psTask };
             }
@@ -49,12 +51,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             else
             {
                 string jobId = options.Job == null ? options.JobId : options.Job.Id;
-                ODATADetailLevel odata = null;
                 string verboseLogString = null;
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
                     verboseLogString = string.Format(Resources.GetTaskByOData, jobId);
-                    odata = new ODATADetailLevel(filterClause: options.Filter);
+                    odata.FilterClause = options.Filter;
                 }
                 else
                 {

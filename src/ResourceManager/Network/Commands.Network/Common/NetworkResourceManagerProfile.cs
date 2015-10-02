@@ -151,6 +151,13 @@ namespace Microsoft.Azure.Commands.Network
             // MNM to CNM
             Mapper.CreateMap<MNM.InboundNatRule, CNM.PSInboundNatRule>();
 
+            // InboundNatPools
+            // CNM to MNM
+            Mapper.CreateMap<CNM.PSInboundNatPool, MNM.InboundNatPool>();
+
+            // MNM to CNM
+            Mapper.CreateMap<MNM.InboundNatPool, CNM.PSInboundNatPool>();
+
             // NetworkSecurityGroups
             // CNM to MNM
             Mapper.CreateMap<CNM.PSNetworkSecurityGroup, MNM.NetworkSecurityGroup>();

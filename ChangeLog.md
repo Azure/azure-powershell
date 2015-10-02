@@ -51,6 +51,13 @@
   * Set-AzureVMSqlServerExtension
   * Get-AzureVMSqlServerExtension
   * Remove-AzureVMSqlServerExtension
+* Azure SQL Database Index Recommendation Cmdlets
+  * Get-AzureSqlDatabaseIndexRecommendations
+  * Start-AzureSqlDatabaseExecuteIndexRecommendation
+  * Stop-AzureSqlDatabaseExecuteIndexRecommendation
+* Azure SQL Database and Server Upgrade Hints Cmdlets
+  * Get-AzureSqlDatabaseUpgradeHint
+  * Get-AzureSqlServerUpgradeHint
 	
 ## 2015.08.17 version 0.9.7
 * Azure Profile cmdlets
