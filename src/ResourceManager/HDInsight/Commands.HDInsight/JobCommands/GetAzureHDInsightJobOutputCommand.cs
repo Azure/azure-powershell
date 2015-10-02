@@ -60,7 +60,8 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(Mandatory = true,
             Position = 5,
             HelpMessage = "The credentials with which to connect to the cluster.")]
-        public PSCredential ClusterCredential
+        [Alias("ClusterCredential")]
+        public PSCredential HttpCredential
         {
             get
             {

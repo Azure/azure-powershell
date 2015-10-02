@@ -43,7 +43,8 @@ namespace Microsoft.Azure.Commands.HDInsight
         [Parameter(Mandatory = true,
             Position = 1,
             HelpMessage = "The credentials with which to connect to the cluster.")]
-        public PSCredential ClusterCredential
+       [Alias("ClusterCredential")]
+       public PSCredential HttpCredential
         {
             get
             {
@@ -76,7 +77,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             var httpEndpoint = GetClusterConnection(ResourceGroupName, ClusterName);
 
             SessionState.PSVariable.Set(ClusterEndpoint, httpEndpoint);
-            SessionState.PSVariable.Set(ClusterCred, ClusterCredential);
+            SessionState.PSVariable.Set(ClusterCred, HttpCredential);
             SessionState.PSVariable.Set(CurrentResourceGroup, ResourceGroupName);
 
             WriteObject(string.Format("Successfully connected to cluster {0} in resource group {1}", ClusterName,

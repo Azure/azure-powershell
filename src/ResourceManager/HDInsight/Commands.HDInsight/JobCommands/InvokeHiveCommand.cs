@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             //get variables from session
             var clusterConnection = SessionState.PSVariable.Get(UseAzureHDInsightClusterCommand.ClusterEndpoint).Value.ToString();
             var clusterCred =
-                (PSCredential) SessionState.PSVariable.Get(UseAzureHDInsightClusterCommand.ClusterCred).Value;
+                (PSCredential)SessionState.PSVariable.Get(UseAzureHDInsightClusterCommand.ClusterCred).Value;
             var resourceGroup =
                 SessionState.PSVariable.Get(UseAzureHDInsightClusterCommand.CurrentResourceGroup).Value.ToString();
 
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 ClusterName = clusterConnection,
                 ResourceGroupName = resourceGroup,
                 JobDefinition = hivejob,
-                ClusterCredential = clusterCred
+                HttpCredential = clusterCred
             };
 
             var jobCreationResult = startJobCommand.SubmitJob();
@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             WriteProgress(new ProgressRecord(0, "Waiting for job to complete", "In Progress"));
             var waitJobCommand = new WaitAzureHDInsightJobCommand
             {
-                ClusterCredential = clusterCred,
+                HttpCredential = clusterCred,
                 ResourceGroupName = resourceGroup,
                 ClusterName = clusterConnection,
                 JobId = jobid
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.HDInsight
                 //get job output
                 var getOutputCommand = new GetAzureHDInsightJobOutputCommand
                 {
-                    ClusterCredential = clusterCred,
+                    HttpCredential = clusterCred,
                     ResourceGroupName = resourceGroup,
                     ClusterName = clusterConnection,
                     DefaultContainer = DefaultContainer,
