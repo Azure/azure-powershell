@@ -111,6 +111,8 @@
     <Compile Include="Entities\Locks\LockLevel.cs" />
     <Compile Include="Entities\Locks\LockProperties.cs" />
     <Compile Include="Entities\Operations\AzureAsyncOperationResource.cs" />
+    <Compile Include="Entities\Policy\PolicyAssignment.cs" />
+    <Compile Include="Entities\Policy\PolicyAssignmentProperties.cs" />
     <Compile Include="Entities\Policy\PolicyDefinition.cs" />
     <Compile Include="Entities\Policy\PolicyDefinitionProperties.cs" />
     <Compile Include="Entities\Policy\PolicyRule.cs" />
@@ -140,10 +142,15 @@
     <Compile Include="Implementation\InvokeAzureResourceActionCmdlet.cs" />
     <Compile Include="Implementation\MoveAzureResourceCmdlet.cs" />
     <Compile Include="Implementation\NewAzureResourceLockCmdlet.cs" />
+    <Compile Include="Implementation\Policy\GetAzurePolicyAssignment.cs" />
     <Compile Include="Implementation\Policy\GetAzurePolicyDefinition.cs" />
+    <Compile Include="Implementation\Policy\NewAzurePolicyAssignment.cs" />
     <Compile Include="Implementation\Policy\NewAzurePolicyDefinition.cs" />
+    <Compile Include="Implementation\Policy\PolicyAssignmentCmdletBase.cs" />
     <Compile Include="Implementation\Policy\PolicyDefinitionCmdletBase.cs" />
+    <Compile Include="Implementation\Policy\RemoveAzurePolicyAssignment.cs" />
     <Compile Include="Implementation\Policy\RemoveAzurePolicyDefinition.cs" />
+    <Compile Include="Implementation\Policy\SetAzurePolicyAssignment.cs" />
     <Compile Include="Implementation\Policy\SetAzurePolicyDefinition.cs" />
     <Compile Include="Implementation\RemoveAzureResourceCmdlet.cs" />
     <Compile Include="Implementation\RemoveAzureResourceLockCmdlet.cs" />
