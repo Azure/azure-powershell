@@ -38,9 +38,6 @@ namespace Microsoft.Azure.Commands.Resources
 
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
-
-        [Parameter(Mandatory = false)]
-        public SwitchParameter PassThru { get; set; }
         
         protected override void ProcessRecord()
         {
@@ -54,12 +51,6 @@ namespace Microsoft.Azure.Commands.Resources
                 ProjectResources.RemoveResourceGroupMessage,
                 Name,
                 () => ResourcesClient.DeleteResourceGroup(Name));
-
-            if (PassThru)
-            {
-                WriteWarning("The PassThru switch parameter is being deprecated and will be removed in a future release.");
-                WriteObject(true);
-            }
         }
     }
 }

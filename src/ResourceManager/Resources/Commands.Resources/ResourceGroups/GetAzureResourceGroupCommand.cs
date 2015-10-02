@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Resources
     public class GetAzureResourceGroupCommand : ResourcesBaseCmdlet
     {
         [Alias("ResourceGroupName")]
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = "GetSingle")]
+        [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = "GetSingle")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -39,24 +39,16 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group Id.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
-
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = "GetMultiple")]
-        public SwitchParameter Detailed { get; set; }
         
         protected override void ProcessRecord()
         {
-            if(this.Detailed.IsPresent)
-            {
-                WriteWarning("The Detailed switch parameter is being deprecated and will be removed in a future release.");
-            }
             WriteWarning("The output object of this cmdlet will be modified in a future release.");
-            var detailed = Detailed.IsPresent || !string.IsNullOrEmpty(Name);
             Name = string.IsNullOrEmpty(Name) && !string.IsNullOrEmpty(Id)
                 ? Id.Split('/').Last()
                 : Name;
 
             this.WriteObject(
-                ResourcesClient.FilterResourceGroups(name: this.Name, tag: null, detailed: detailed, location: this.Location),
+                ResourcesClient.FilterResourceGroups(name: this.Name, tag: null, detailed: false, location: this.Location),
                 true);
         }
     }
