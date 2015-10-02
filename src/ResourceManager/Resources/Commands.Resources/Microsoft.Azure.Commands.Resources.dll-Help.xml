@@ -2067,7 +2067,7 @@ ContosoLabsRG                       WordPress.WordPress                     Succ
 	</command:details>
 	<maml:description>
 		<maml:para>This is the Description section</maml:para>
-		<maml:para>The Get-AzureRmResourceGroupGalleryTemplate cmdlet gets resource group gallery templates from the template gallery that Azure hosts. To save a gallery template as a JSON file, use the Save-AzureRmResourceGroupGalleryTemplate cmdlet.A resource group template is a JSON string that defines a resource group for a complex entity, such as a web portal, a blog, a photo gallery, a commerce site, or a wiki. The template defines the resources that are typically needed for the entity, such as web sites, database servers, databases and storage accounts, and includes parameters for user-defined values, such as the names and properties of the resources. To create a resource group with a template, just identify the template and provide values for its parameters.You can create your own templates or use the Get-AzureRmResourceGroupGalleryTemplate get a template from the template gallery that Azure hosts. You can also create templates by editing the gallery templates. If you create or edit a template, be sure to use the Test-AzureResourceGroupTemplate cmdlet to verify that your template and its parameters are valid.To create a resource group with a custom or gallery template, use the New-AzureRmResourceGroup or New-AzureRmResourceGroupDeployment cmdlets.By default the cmdlet gets only the latest version of the template. To get all versions, use the -AllVersions parameter flag.</maml:para>
+		<maml:para>The Get-AzureRmResourceGroupGalleryTemplate cmdlet gets resource group gallery templates from the template gallery that Azure hosts. To save a gallery template as a JSON file, use the Save-AzureRmResourceGroupGalleryTemplate cmdlet.A resource group template is a JSON string that defines a resource group for a complex entity, such as a web portal, a blog, a photo gallery, a commerce site, or a wiki. The template defines the resources that are typically needed for the entity, such as web sites, database servers, databases and storage accounts, and includes parameters for user-defined values, such as the names and properties of the resources. To create a resource group with a template, just identify the template and provide values for its parameters.You can create your own templates or use the Get-AzureRmResourceGroupGalleryTemplate get a template from the template gallery that Azure hosts. You can also create templates by editing the gallery templates. If you create or edit a template, be sure to use the Test-AzureResourceGroupDeployment cmdlet to verify that your template and its parameters are valid.To create a resource group with a custom or gallery template, use the New-AzureRmResourceGroup or New-AzureRmResourceGroupDeployment cmdlets.By default the cmdlet gets only the latest version of the template. To get all versions, use the -AllVersions parameter flag.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -8311,7 +8311,7 @@ c. ResourceName, ResourceType, ResourceGroupName and (optionally) ParentResource
 	</command:details>
 	<maml:description>
 		<maml:para>This is the Description section</maml:para>
-		<maml:para>The Save-AzureRmResourceGroupGalleryTemplate cmdlet saves a template from the Azure template gallery as a JSON file on disk and returns the path to the saved file. You can to use the template to create Azure resource groups and deploymentsA resource is a user-managed entity, such as a website, database server, or database. A resource group is a collection of resources that are deployed as a unit. You can create resources individually and add them to resource groups. However, typically, you create a resource group by using a template.A template is a JSON string that defines a resource group for a complex entity, such as a web hosting site or web portal. The template defines the resources that are typically needed for the entity, such as websites, databases, and storage accounts, and includes parameters for user-defined values, such as the names and properties of the resources. To get a resource group template, use the Get-AzureRmResourceGroupGalleryTemplate cmdlet to get a gallery template and then use the Save-AzureRmResourceGroupGalleryTemplate cmdlet to save the template as a JSON file. Or, you can create your own templates, either from scratch or by editing a gallery template. To verify the syntax of a template, use the Test-AzureResourceGroupTemplate cmdlet.To use a template to create a resource group, use the New-AzureRmResourceGroup or New-AzureRmResourceGroupDeployment cmdlets. Just identify the template and provide values for its parameters.</maml:para>
+		<maml:para>The Save-AzureRmResourceGroupGalleryTemplate cmdlet saves a template from the Azure template gallery as a JSON file on disk and returns the path to the saved file. You can to use the template to create Azure resource groups and deploymentsA resource is a user-managed entity, such as a website, database server, or database. A resource group is a collection of resources that are deployed as a unit. You can create resources individually and add them to resource groups. However, typically, you create a resource group by using a template.A template is a JSON string that defines a resource group for a complex entity, such as a web hosting site or web portal. The template defines the resources that are typically needed for the entity, such as websites, databases, and storage accounts, and includes parameters for user-defined values, such as the names and properties of the resources. To get a resource group template, use the Get-AzureRmResourceGroupGalleryTemplate cmdlet to get a gallery template and then use the Save-AzureRmResourceGroupGalleryTemplate cmdlet to save the template as a JSON file. Or, you can create your own templates, either from scratch or by editing a gallery template. To verify the syntax of a template, use the Test-AzureResourceGroupDeployment cmdlet.To use a template to create a resource group, use the New-AzureRmResourceGroup or New-AzureRmResourceGroupDeployment cmdlets. Just identify the template and provide values for its parameters.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
@@ -9143,7 +9143,7 @@ True</dev:code>
 <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
 <!--Generated by PS Cmdlet Help Editor-->
 	<command:details>
-		<command:name>Test-AzureResourceGroupTemplate</command:name>
+		<command:name>Test-AzureResourceGroupDeployment</command:name>
 		<maml:description>
 			<maml:para>Detects errors in a resource group template or template parameters</maml:para>
 		</maml:description>
@@ -9156,11 +9156,11 @@ True</dev:code>
 	</command:details>
 	<maml:description>
 		<maml:para>This is the Description section</maml:para>
-		<maml:para>The Test-AzureResourceGroupTemplate cmdlet verifies the validity of a resource group template, its parameters, and parameter values. It returns errors that it finds. Otherwise, it does not return any output.To specify a template, use the GalleryTemplateIdentity or TemplateFile parameters. To specify the template parameter values, use the TemplateParameterFile or TemplateParameterObject parameters, or use the template parameters that are added to the command dynamically when you specify the template. To get the parameters, just type a minus sign (-) to indicate a parameter name and press the TAB key to trigger tab-completion. If you miss a required parameter, the cmdlet prompts you for the value. Parameter values typed at the command line take precedence over values in a template parameter object or file.A resource group template is a JSON-based model of a resource group for a complex cloud-based service, such as a web portal. You can use a resource group template to create a resource group or resource group deployment. The template includes parameter (placeholders) for configurable property values, likes names and sizes. You can find many templates in the Azure template gallery (Get-AzureRmResourceGroupGalleryTemplate) and you can create your own templates.</maml:para>
+		<maml:para>The Test-AzureResourceGroupDeployment cmdlet verifies the validity of a resource group template, its parameters, and parameter values. It returns errors that it finds. Otherwise, it does not return any output.To specify a template, use the GalleryTemplateIdentity or TemplateFile parameters. To specify the template parameter values, use the TemplateParameterFile or TemplateParameterObject parameters, or use the template parameters that are added to the command dynamically when you specify the template. To get the parameters, just type a minus sign (-) to indicate a parameter name and press the TAB key to trigger tab-completion. If you miss a required parameter, the cmdlet prompts you for the value. Parameter values typed at the command line take precedence over values in a template parameter object or file.A resource group template is a JSON-based model of a resource group for a complex cloud-based service, such as a web portal. You can use a resource group template to create a resource group or resource group deployment. The template includes parameter (placeholders) for configurable property values, likes names and sizes. You can find many templates in the Azure template gallery (Get-AzureRmResourceGroupGalleryTemplate) and you can create your own templates.</maml:para>
 	</maml:description>
 	<command:syntax>
 		<command:syntaxItem>
-			<maml:name>Test-AzureResourceGroupTemplate</maml:name>
+			<maml:name>Test-AzureResourceGroupDeployment</maml:name>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
@@ -9175,20 +9175,6 @@ True</dev:code>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>StorageAccountName</maml:name>
-				<maml:description>
-					<maml:para>Specifies the name of a storage account in the subscription. Test-AzureResourceGroupGalleryTemplate saves the contents of local template files in  the storage account. This parameter is optional, but a storage account is required when you use the TemplateFile parameter.The default value is the current storage account in the subscription. If you do not specify a storage account and the subscription does not have a storage account that it designated as &quot;current,&quot; the command fails.To create a storage account, use the Switch-AzureMode cmdlet to switch to the Azure module, and then use the New-AzureRmStorageAccount cmdlet. To make the a storage account the &quot;current storage account&quot; for the subscription, use the CurrentStorageAccountName parameter of the Set-AzureRmSubscription cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateVersion</maml:name>
-				<maml:description>
-					<maml:para>Specifies a particular version of the gallery or custom template. Enter the API version number, such as &quot;2014-04-01-preview&quot;. This parameter is optional. If you specify this parameter, Test-AzureResourceGroupGalleryTemplate verifies that the specified template has the matching version and fails if it does not.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Profile</maml:name>
 				<maml:description>
@@ -9198,7 +9184,7 @@ True</dev:code>
 			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
-			<maml:name>Test-AzureResourceGroupTemplate</maml:name>
+			<maml:name>Test-AzureResourceGroupDeployment</maml:name>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
@@ -9220,13 +9206,6 @@ True</dev:code>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateVersion</maml:name>
-				<maml:description>
-					<maml:para>Specifies a particular version of the gallery or custom template. Enter the API version number, such as &quot;2014-04-01-preview&quot;. This parameter is optional. If you specify this parameter, Test-AzureResourceGroupGalleryTemplate verifies that the specified template has the matching version and fails if it does not.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Profile</maml:name>
 				<maml:description>
@@ -9236,7 +9215,7 @@ True</dev:code>
 			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
-			<maml:name>Test-AzureResourceGroupTemplate</maml:name>
+			<maml:name>Test-AzureResourceGroupDeployment</maml:name>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
@@ -9258,20 +9237,6 @@ True</dev:code>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>StorageAccountName</maml:name>
-				<maml:description>
-					<maml:para>Specifies the name of a storage account in the subscription. Test-AzureResourceGroupGalleryTemplate saves the contents of local template files in  the storage account. This parameter is optional, but a storage account is required when you use the TemplateFile parameter.The default value is the current storage account in the subscription. If you do not specify a storage account and the subscription does not have a storage account that it designated as &quot;current,&quot; the command fails.To create a storage account, use the Switch-AzureMode cmdlet to switch to the Azure module, and then use the New-AzureRmStorageAccount cmdlet. To make the a storage account the &quot;current storage account&quot; for the subscription, use the CurrentStorageAccountName parameter of the Set-AzureRmSubscription cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateVersion</maml:name>
-				<maml:description>
-					<maml:para>Specifies a particular version of the gallery or custom template. Enter the API version number, such as &quot;2014-04-01-preview&quot;. This parameter is optional. If you specify this parameter, Test-AzureResourceGroupGalleryTemplate verifies that the specified template has the matching version and fails if it does not.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Profile</maml:name>
 				<maml:description>
@@ -9281,7 +9246,7 @@ True</dev:code>
 			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
-			<maml:name>Test-AzureResourceGroupTemplate</maml:name>
+			<maml:name>Test-AzureResourceGroupDeployment</maml:name>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
@@ -9296,20 +9261,6 @@ True</dev:code>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>GalleryTemplateIdentity</maml:name>
-				<maml:description>
-					<maml:para>Specifies the identity of the gallery template to test. Enter an Identity value not a file name. Wildcards are not permitted.To get the identity of a gallery template, use the Get-AzureRmResourceGroupGalleryTemplate cmdlet. To test a gallery template that is saved as a JSON file on disk, use the TemplateFile parameter.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateVersion</maml:name>
-				<maml:description>
-					<maml:para>Specifies a particular version of the gallery or custom template. Enter the API version number, such as &quot;2014-04-01-preview&quot;. This parameter is optional. If you specify this parameter, Test-AzureResourceGroupGalleryTemplate verifies that the specified template has the matching version and fails if it does not.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Profile</maml:name>
 				<maml:description>
@@ -9319,7 +9270,7 @@ True</dev:code>
 			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
-			<maml:name>Test-AzureResourceGroupTemplate</maml:name>
+			<maml:name>Test-AzureResourceGroupDeployment</maml:name>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
@@ -9334,20 +9285,6 @@ True</dev:code>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>GalleryTemplateIdentity</maml:name>
-				<maml:description>
-					<maml:para>Specifies the identity of the gallery template to test. Enter an Identity value not a file name. Wildcards are not permitted.To get the identity of a gallery template, use the Get-AzureRmResourceGroupGalleryTemplate cmdlet. To test a gallery template that is saved as a JSON file on disk, use the TemplateFile parameter.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateVersion</maml:name>
-				<maml:description>
-					<maml:para>Specifies a particular version of the gallery or custom template. Enter the API version number, such as &quot;2014-04-01-preview&quot;. This parameter is optional. If you specify this parameter, Test-AzureResourceGroupGalleryTemplate verifies that the specified template has the matching version and fails if it does not.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Profile</maml:name>
 				<maml:description>
@@ -9357,7 +9294,7 @@ True</dev:code>
 			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
-			<maml:name>Test-AzureResourceGroupTemplate</maml:name>
+			<maml:name>Test-AzureResourceGroupDeployment</maml:name>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
@@ -9379,13 +9316,6 @@ True</dev:code>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateVersion</maml:name>
-				<maml:description>
-					<maml:para>Specifies a particular version of the gallery or custom template. Enter the API version number, such as &quot;2014-04-01-preview&quot;. This parameter is optional. If you specify this parameter, Test-AzureResourceGroupGalleryTemplate verifies that the specified template has the matching version and fails if it does not.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Profile</maml:name>
 				<maml:description>
@@ -9395,7 +9325,7 @@ True</dev:code>
 			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
-			<maml:name>Test-AzureResourceGroupTemplate</maml:name>
+			<maml:name>Test-AzureResourceGroupDeployment</maml:name>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
@@ -9417,20 +9347,6 @@ True</dev:code>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>StorageAccountName</maml:name>
-				<maml:description>
-					<maml:para>Specifies the name of a storage account in the subscription. Test-AzureResourceGroupGalleryTemplate saves the contents of local template files in  the storage account. This parameter is optional, but a storage account is required when you use the TemplateFile parameter.The default value is the current storage account in the subscription. If you do not specify a storage account and the subscription does not have a storage account that it designated as &quot;current,&quot; the command fails.To create a storage account, use the Switch-AzureMode cmdlet to switch to the Azure module, and then use the New-AzureRmStorageAccount cmdlet. To make the a storage account the &quot;current storage account&quot; for the subscription, use the CurrentStorageAccountName parameter of the Set-AzureRmSubscription cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateVersion</maml:name>
-				<maml:description>
-					<maml:para>Specifies a particular version of the gallery or custom template. Enter the API version number, such as &quot;2014-04-01-preview&quot;. This parameter is optional. If you specify this parameter, Test-AzureResourceGroupGalleryTemplate verifies that the specified template has the matching version and fails if it does not.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Profile</maml:name>
 				<maml:description>
@@ -9440,7 +9356,7 @@ True</dev:code>
 			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
-			<maml:name>Test-AzureResourceGroupTemplate</maml:name>
+			<maml:name>Test-AzureResourceGroupDeployment</maml:name>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
@@ -9448,20 +9364,6 @@ True</dev:code>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>GalleryTemplateIdentity</maml:name>
-				<maml:description>
-					<maml:para>Specifies the identity of the gallery template to test. Enter an Identity value not a file name. Wildcards are not permitted.To get the identity of a gallery template, use the Get-AzureRmResourceGroupGalleryTemplate cmdlet. To test a gallery template that is saved as a JSON file on disk, use the TemplateFile parameter.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateVersion</maml:name>
-				<maml:description>
-					<maml:para>Specifies a particular version of the gallery or custom template. Enter the API version number, such as &quot;2014-04-01-preview&quot;. This parameter is optional. If you specify this parameter, Test-AzureResourceGroupGalleryTemplate verifies that the specified template has the matching version and fails if it does not.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Profile</maml:name>
 				<maml:description>
@@ -9471,7 +9373,7 @@ True</dev:code>
 			</command:parameter>
 		</command:syntaxItem>
 		<command:syntaxItem>
-			<maml:name>Test-AzureResourceGroupTemplate</maml:name>
+			<maml:name>Test-AzureResourceGroupDeployment</maml:name>
 			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
@@ -9483,13 +9385,6 @@ True</dev:code>
 				<maml:name>TemplateUri</maml:name>
 				<maml:description>
 					<maml:para>Specifies the URI of a JSON template file. This file can be a custom template or a gallery template that is saved as a JSON file, such as by using the Save-AzureRmResourceGroupGalleryTemplate cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateVersion</maml:name>
-				<maml:description>
-					<maml:para>Specifies a particular version of the gallery or custom template. Enter the API version number, such as &quot;2014-04-01-preview&quot;. This parameter is optional. If you specify this parameter, Test-AzureResourceGroupGalleryTemplate verifies that the specified template has the matching version and fails if it does not.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -9527,30 +9422,6 @@ True</dev:code>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>StorageAccountName</maml:name>
-			<maml:description>
-				<maml:para>Specifies the name of a storage account in the subscription. Test-AzureResourceGroupGalleryTemplate saves the contents of local template files in  the storage account. This parameter is optional, but a storage account is required when you use the TemplateFile parameter.The default value is the current storage account in the subscription. If you do not specify a storage account and the subscription does not have a storage account that it designated as &quot;current,&quot; the command fails.To create a storage account, use the Switch-AzureMode cmdlet to switch to the Azure module, and then use the New-AzureRmStorageAccount cmdlet. To make the a storage account the &quot;current storage account&quot; for the subscription, use the CurrentStorageAccountName parameter of the Set-AzureRmSubscription cmdlet.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>TemplateVersion</maml:name>
-			<maml:description>
-				<maml:para>Specifies a particular version of the gallery or custom template. Enter the API version number, such as &quot;2014-04-01-preview&quot;. This parameter is optional. If you specify this parameter, Test-AzureResourceGroupGalleryTemplate verifies that the specified template has the matching version and fails if it does not.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Profile</maml:name>
 			<maml:description>
@@ -9579,18 +9450,6 @@ True</dev:code>
 			<maml:name>TemplateUri</maml:name>
 			<maml:description>
 				<maml:para>Specifies the URI of a JSON template file. This file can be a custom template or a gallery template that is saved as a JSON file, such as by using the Save-AzureRmResourceGroupGalleryTemplate cmdlet.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>GalleryTemplateIdentity</maml:name>
-			<maml:description>
-				<maml:para>Specifies the identity of the gallery template to test. Enter an Identity value not a file name. Wildcards are not permitted.To get the identity of a gallery template, use the Get-AzureRmResourceGroupGalleryTemplate cmdlet. To test a gallery template that is saved as a JSON file on disk, use the TemplateFile parameter.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -9652,7 +9511,7 @@ True</dev:code>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt;Test-AzureResourceGroupTemplate -ResourceGroupName ContosoLabsRG -TemplateFile $home\Documents\Azure\Templates\CustomHostingPlan.json -TemplateParameterFile $home\Documents\Azure\Templates\HostingPlanParms.jsonPS C:&gt;</dev:code>
+			<dev:code>PS C:\&gt;Test-AzureResourceGroupDeployment -ResourceGroupName ContosoLabsRG -TemplateFile $home\Documents\Azure\Templates\CustomHostingPlan.json -TemplateParameterFile $home\Documents\Azure\Templates\HostingPlanParms.jsonPS C:&gt;</dev:code>
 			<dev:remarks>
 				<maml:para>This command tests a custom template file, CustomHostingPlan.json, and a template parameter file, HostingPlanParms.json. Because the cmdlet does not find any errors, it does not return any output.</maml:para>
 				<maml:para />
@@ -9668,35 +9527,13 @@ True</dev:code>
 			</command:commandLines>
 		</command:example>
 		<command:example>
-			<maml:title>--------------------------  Example 2: Test a parameter object for a gallery template  --------------------------</maml:title>
-			<maml:introduction>
-				<maml:paragraph>PS C:\&gt;</maml:paragraph>
-			</maml:introduction>
-			<dev:code>PS C:\&gt;Test-AzureResourceGroupTemplate -ResourceGroupName ContosoLabsRG -GalleryTemplateIdentity Microsoft.WebSite.0.1.0-preview1 -TemplateParameterObject @{siteName = &quot;ContosoSite&quot;;hostingPlanName=&quot;ContosoHosting&quot;;siteMode=&quot;Limited&quot;;computeMode=&quot;Shared&quot;;subscriptionID=&apos;9b14a38b-4b93-4554-8bb0-3cefb47a4e1f&apos;;resourceGroup=&apos;ContosoLabsRG&apos;}cmdlet Test-AzureResourceGroupTemplate at command pipeline position 1Supply values for the following parameters:(Type !? for Help.)siteLocation:&quot;South Central US&quot;Code    : InvalidTemplateMessage : Deployment template validation failed: &apos;The template parameters &apos;subscriptionID&apos; are not valid; they are not present in the original template and can therefore not be provided at deployment time. The only supportedparameters for this template are &apos;siteName, hostingPlanName, siteMode, computeMode, siteLocation, subscriptionId, resourceGroup&apos;.&apos;.a
-                       
-PS C:\&gt;Test-AzureResourceGroupTemplate -ResourceGroupName ContosoLabsRG -GalleryTemplateIdentity Microsoft.WebSite.0.1.0-preview1 -TemplateParameterObject @{siteName = &quot;ContosoSite&quot;;hostingPlanName=&quot;ContosoHosting&quot;;siteMode=&quot;Limited&quot;;computeMode=&quot;Shared&quot;;subscriptionId=&apos;9b14a38b-4b93-4554-8bb0-3cefb47a4e1f&apos;;resourceGroup=&apos;ContosoLabsRG&apos;;siteLocation=&apos;South Central US&apos;}</dev:code>
-			<dev:remarks>
-				<maml:para>This command tests gallery template and a hash table of parameter names and values. The command uses the GalleryTemplateIdentity parameter to specify the identity of the gallery template. It uses the TemplateParameterObject cmdlet to specify the template parameters and their values.</maml:para>
-				<maml:para />
-				<maml:para />
-				<maml:para>In this case, the template parameter hash table is missing the siteLocation parameter. The cmdlet recognizes the omission and prompts for a value. However, the cmdlet still returns an error, because the subscriptionId parameter in hash table is misspelled as &quot;subscriptionID&quot;.In the second command, the errors are corrected, and the cmdlet does not return any output.</maml:para>
-			</dev:remarks>
-			<command:commandLines>
-				<command:commandLine>
-					<command:commandText>
-						<maml:para />
-					</command:commandText>
-				</command:commandLine>
-			</command:commandLines>
-		</command:example>
-		<command:example>
 			<maml:title>--------------------------  Example 3: Test a template with dynamic parameter values  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt;Test-AzureResourceGroupTemplate -ResourceGroupName ContosoLabsRG -TemplateFile C:\Users\juneb\Documents\Azure\Templates\NewHostingPlan.json -siteName ContosoDev -siteMode Limited -computeMode Shared -siteLocation &apos;South Central US&apos; -sku FreeCode    : InvalidTemplateMessage : Deployment template validation failed: &apos;The template parameter &apos;hostingPlanName&apos; is not valid.&apos;.</dev:code>
+			<dev:code>PS C:\&gt;Test-AzureResourceGroupDeployment -ResourceGroupName ContosoLabsRG -TemplateFile C:\Users\juneb\Documents\Azure\Templates\NewHostingPlan.json -siteName ContosoDev -siteMode Limited -computeMode Shared -siteLocation &apos;South Central US&apos; -sku FreeCode    : InvalidTemplateMessage : Deployment template validation failed: &apos;The template parameter &apos;hostingPlanName&apos; is not valid.&apos;.</dev:code>
 			<dev:remarks>
-				<maml:para>This command uses the Test-AzureResourceGroupTemplate cmdlet to test a custom template. Instead of providing the template parameter names, we used the feature that adds the template parameters to command dynamically.</maml:para>
+				<maml:para>This command uses the Test-AzureResourceGroupDeployment cmdlet to test a custom template. Instead of providing the template parameter names, we used the feature that adds the template parameters to command dynamically.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para>To use the dynamic parameters, type a minus sign (-) to indicate a parameter name and press the TAB key. The tab-completion feature supplies parameter name. To cycle through all of the parameter names, press the TAB key repeatedly. In this case, we used the dynamic parameters to specify all of the parameter names at the command line.In this case, even though the template parameter names and values are correct, the Parameters section in the custom template is missing the hostingPlan parameter that is specified in the Resource section of the template. The cmdlet detects and reports this error.</maml:para>
