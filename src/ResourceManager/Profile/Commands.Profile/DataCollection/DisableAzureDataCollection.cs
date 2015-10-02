@@ -12,25 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy
+using System.Management.Automation;
+using Microsoft.Azure.Commands.Profile.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using System.Security.Permissions;
+
+namespace Microsoft.Azure.Commands.Profile
 {
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// The policy definition object.
-    /// </summary>
-    public class PolicyDefinition
+    [Cmdlet(VerbsLifecycle.Disable, "AzureDataCollection")]
+    public class DisableAzureDataCollectionCommand : EnableAzureDataCollectionCommand
     {
-        /// <summary>
-        /// The policy definition name.
-        /// </summary>
-        [JsonProperty(Required = Required.Default)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// The policy definition properties.
-        /// </summary>
-        [JsonProperty(Required = Required.Default)]
-        public PolicyDefinitionProperties Properties { get; set; }
+        protected override void ProcessRecord()
+        {
+            SetDataCollectionProfile(false);
+        }
     }
 }

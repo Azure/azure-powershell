@@ -12,44 +12,31 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Newtonsoft.Json;
-
-namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources
+namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy
 {
+    using Newtonsoft.Json;
+
     /// <summary>
-    /// The resource sku object.
+    /// The policy assignment properties.
     /// </summary>
-    public class ResourceSku
+    public class PolicyAssignmentProperties
     {
         /// <summary>
-        /// Gets or sets the <c>sku</c> name.
+        /// The scope.
         /// </summary>
         [JsonProperty(Required = Required.Always)]
-        public string Name { get; set; }
+        public string Scope { get; set; }
 
         /// <summary>
-        /// Gets or sets the <c>sku</c> tier.
+        /// The display name.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
-        public string Tier { get; set; }
+        public string DisplayName { get; set; }
 
         /// <summary>
-        /// Gets or sets the <c>sku</c> size.
+        /// The policy definition id.
         /// </summary>
-        [JsonProperty(Required = Required.Default)]
-        public string Size { get; set; }
-
-        /// <summary>
-        /// Gets or sets the <c>sku</c> family.
-        /// </summary>
-        [JsonProperty(Required = Required.Default)]
-        public string Family { get; set; }
-
-        /// <summary>
-        /// Gets or sets the <c>sku</c> capacity.
-        /// </summary>
-        [JsonProperty(Required = Required.Default)]
-        public int? Capacity { get; set; }
+        [JsonProperty(Required = Required.Always)]
+        public string PolicyDefinitionId { get; set; }
     }
 }
-

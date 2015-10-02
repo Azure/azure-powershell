@@ -53,21 +53,24 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         
         public string GetMatchingKey(RecordEntry recordEntry)
         {
-            var encodedPath = recordEntry.EncodedRequestUri;
-            if (recordEntry.RequestUri.Contains("?&"))
+            string path = recordEntry.RequestUri;
+            if(!string.IsNullOrEmpty(recordEntry.EncodedRequestUri))
             {
-                var updatedPath = recordEntry.RequestUri.Replace("?&", "?");
-
-
-                string version;
-                if (ContainsIgnoredProvider(updatedPath, out version))
-                {
-                    updatedPath = RemoveOrReplaceApiVersion(updatedPath, version);
-                }
-
-                encodedPath = Convert.ToBase64String(Encoding.UTF8.GetBytes(updatedPath));
+                path = Encoding.UTF8.GetString(Convert.FromBase64String(recordEntry.EncodedRequestUri));
             }
 
+            if (path.Contains("?&"))
+            {
+                path = path.Replace("?&", "?");
+            }
+
+            string version;
+            if (ContainsIgnoredProvider(path, out version))
+            {
+                path = RemoveOrReplaceApiVersion(path, version);
+            }
+            
+            var encodedPath = Convert.ToBase64String(Encoding.UTF8.GetBytes(path));
             return string.Format("{0} {1}", recordEntry.RequestMethod, encodedPath);
         }
 

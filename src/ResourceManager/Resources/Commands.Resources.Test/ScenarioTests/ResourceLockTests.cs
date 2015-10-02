@@ -12,25 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy
+
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Xunit;
+
+namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// The policy definition object.
-    /// </summary>
-    public class PolicyDefinition
+    public class ResourceLockTests : RMTestBase
     {
-        /// <summary>
-        /// The policy definition name.
-        /// </summary>
-        [JsonProperty(Required = Required.Default)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// The policy definition properties.
-        /// </summary>
-        [JsonProperty(Required = Required.Default)]
-        public PolicyDefinitionProperties Properties { get; set; }
+        [Fact]
+        public void TestResourceLockCRUDTest()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-ResourceLockCRUD");
+        }
     }
 }

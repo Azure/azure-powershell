@@ -65,6 +65,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                             cancellationToken: this.CancellationToken.Value)
                         .Result;
 
+                    if(operationResult.HttpStatusCode == System.Net.HttpStatusCode.NoContent)
+                    {
+                        throw new PSInvalidOperationException(string.Format("The resource lock '{0}' could not be found.", resourceId));
+                    }
+
                     var managementUri = this.GetResourcesClient()
                         .GetResourceManagementRequestUri(
                             resourceId: resourceId,
@@ -75,7 +80,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: false)
                         .WaitOnOperation(operationResult: operationResult);
 
-                    this.WriteObject(this.GetOutputObjects(result.ToJToken()), enumerateCollection: true);
+                    this.WriteObject(true);
                 });
         }
     }
