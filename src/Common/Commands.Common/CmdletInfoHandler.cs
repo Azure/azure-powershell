@@ -23,8 +23,15 @@ namespace Microsoft.WindowsAzure.Commands.Common
     /// </summary>
     public class CmdletInfoHandler : DelegatingHandler
     {
-        private string _cmdlet;
-        private string _parameterSet;
+        /// <summary>
+        /// The name of the cmdlet.
+        /// </summary>
+        public string Cmdlet { get; private set; }
+
+        /// <summary>
+        /// The name of the parameter set specified by user.
+        /// </summary>
+        public string ParameterSet { get; private set; }
 
         /// <summary>
         /// Initializes an instance of a CmdletInfoHandler with the name of the cmdlet and the parameter set.
@@ -33,14 +40,20 @@ namespace Microsoft.WindowsAzure.Commands.Common
         /// <param name="parameterSet">the name of the parameter set specified by user</param>
         public CmdletInfoHandler(string cmdlet, string parameterSet)
         {
-            this._cmdlet = cmdlet;
-            this._parameterSet = parameterSet;
+            this.Cmdlet = cmdlet;
+            this.ParameterSet = parameterSet;
         }
         
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            request.Headers.Add("CommandName", _cmdlet);
-            request.Headers.Add("ParameterSetName", _parameterSet);
+            if (Cmdlet != null)
+            {
+                request.Headers.Add("CommandName", Cmdlet);
+            }
+            if (ParameterSet != null)
+            {
+                request.Headers.Add("ParameterSetName", ParameterSet);
+            }
             return base.SendAsync(request, cancellationToken);
         }
     }
