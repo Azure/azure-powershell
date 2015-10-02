@@ -16,7 +16,7 @@
 	.SYNOPSIS
 	Tests creating a database
 #>
-function Test-ServerActiveDirectoryAdministrator ($location = "North Europe")
+function Test-ServerActiveDirectoryAdministrator ($location = "Australia Southeast")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest

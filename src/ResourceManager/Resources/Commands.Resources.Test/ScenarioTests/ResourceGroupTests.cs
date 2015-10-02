@@ -36,6 +36,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdatesExistingResourceGroupViaPiping()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-UpdatesExistingResourceGroupViaPiping");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatesAndRemoveResourceGroupViaPiping()
         {
             ResourcesController.NewInstance.RunPsTest("Test-CreatesAndRemoveResourceGroupViaPiping");

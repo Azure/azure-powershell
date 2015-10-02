@@ -19,7 +19,7 @@
 function Test-DatabasePauseResume
 {
 	# Setup
-	$location = "Southeast Asia"
+	$location = "Australia Southeast"
 	$serverVersion = "12.0";
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $serverVersion $location
@@ -64,7 +64,7 @@ function Test-DatabasePauseResume
 function Test-DatabasePauseResumePiped
 {
 	# Setup
-	$location = "Japan East"
+	$location = "Australia Southeast"
 	$serverVersion = "12.0";
 	$rg = Create-ResourceGroupForTest
 

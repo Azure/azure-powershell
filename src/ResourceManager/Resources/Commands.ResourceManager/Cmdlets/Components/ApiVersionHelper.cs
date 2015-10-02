@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
 
             var providers = PaginatedResponseHelper.Enumerate(
                 getFirstPage: () => resourceManagerClient
-                    .ListObjectColleciton<ResourceProviderDefinition>(
+                    .ListObjectCollection<ResourceProviderDefinition>(
                         resourceCollectionId: resourceCollectionId,
                         apiVersion:Constants.DefaultApiVersion,
                         cancellationToken: cancellationToken),

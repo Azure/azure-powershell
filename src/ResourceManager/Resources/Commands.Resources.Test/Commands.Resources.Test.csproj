@@ -188,7 +188,6 @@
     <Compile Include="Providers\UnregisterResourceProviderCmdletTests.cs" />
     <Compile Include="ResourceGroupDeployments\RemoveAzureResourceGroupDeploymentCommandTests.cs" />
     <Compile Include="ResourceGroups\GetAzureLocationCommandTests.cs" />
-    <Compile Include="ResourceGroups\SetAzureResourceGroupCommandTests.cs" />
     <Compile Include="ScenarioTests\ActiveDirectoryTests.cs" />
     <Compile Include="ScenarioTests\AuthorizationTests.cs" />
     <Content Include="ScenarioTests\ProviderFeatureTests.ps1">
@@ -219,9 +218,6 @@
     <Compile Include="ResourceGroupDeployments\StopAzureResourceGroupDeploymentCommandTests.cs" />
     <Compile Include="ResourceGroupDeployments\GetAzureResourceGroupDeploymentCommandTests.cs" />
     <Compile Include="ResourceGroupDeployments\NewAzureResourceGroupDeploymentCommandTests.cs" />
-    <Compile Include="ResourceGroups\RemoveAzureResourceGroupCommandTests.cs" />
-    <Compile Include="ResourceGroups\GetAzureResourceGroupCommandTests.cs" />
-    <Compile Include="ResourceGroups\NewAzureResourceGroupCommandTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">

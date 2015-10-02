@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients
         /// <param name="apiVersion">The API version to use.</param>
         /// <param name="cancellationToken">The <see cref="CancellationToken"/> used to cancel the request.</param>
         /// <param name="odataQuery">The OData query.</param> 
-        public Task<ResponseWithContinuation<TType[]>> ListObjectColleciton<TType>(
+        public Task<ResponseWithContinuation<TType[]>> ListObjectCollection<TType>(
             string resourceCollectionId,
             string apiVersion,
             CancellationToken cancellationToken,

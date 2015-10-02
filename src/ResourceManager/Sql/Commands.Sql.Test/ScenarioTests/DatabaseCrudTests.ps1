@@ -18,7 +18,7 @@
 #>
 function Test-CreateDatabase
 {
-	Test-CreateDatabaseInternal "12.0" "Southeast Asia"
+	Test-CreateDatabaseInternal "12.0" "Australia Southeast"
 }
 
 <#
@@ -34,7 +34,7 @@ function Test-CreateDatabaseV2
 	.SYNOPSIS
 	Tests creating a database
 #>
-function Test-CreateDatabaseInternal ($serverVersion, $location = "Japan East")
+function Test-CreateDatabaseInternal ($serverVersion, $location = "Australia Southeast")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
@@ -107,7 +107,7 @@ function Test-CreateDatabaseInternal ($serverVersion, $location = "Japan East")
 #>
 function Test-UpdateDatabase
 {
-	Test-UpdateDatabaseInternal "12.0" "Southeast Asia"
+	Test-UpdateDatabaseInternal "12.0" "Australia Southeast"
 }
 
 <#
@@ -123,7 +123,7 @@ function Test-UpdateDatabaseV2
 	.SYNOPSIS
 	Tests updating a database
 #>
-function Test-UpdateDatabaseInternal ($serverVersion, $location = "Japan East")
+function Test-UpdateDatabaseInternal ($serverVersion, $location = "Australia Southeast")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
@@ -205,7 +205,7 @@ function Test-UpdateDatabaseInternal ($serverVersion, $location = "Japan East")
 #>
 function Test-GetDatabase
 {
-	Test-GetDatabaseInternal "12.0" "Southeast Asia"
+	Test-GetDatabaseInternal "12.0" "Australia Southeast"
 }
 
 <#
@@ -221,7 +221,7 @@ function Test-GetDatabaseV2
 	.SYNOPSIS
 	Tests Getting a database
 #>
-function Test-GetDatabaseInternal  ($serverVersion, $location = "Japan East")
+function Test-GetDatabaseInternal  ($serverVersion, $location = "Australia Southeast")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest
@@ -291,7 +291,7 @@ function Test-GetDatabaseInternal  ($serverVersion, $location = "Japan East")
 #>
 function Test-RemoveDatabase
 {
-	Test-RemoveDatabaseInternal "12.0" "Southeast Asia"
+	Test-RemoveDatabaseInternal "12.0" "Australia Southeast"
 }
 
 <#
@@ -307,7 +307,7 @@ function Test-RemoveDatabaseV2
 	.SYNOPSIS
 	Tests Deleting a database
 #>
-function Test-RemoveDatabaseInternal  ($serverVersion, $location = "Japan East")
+function Test-RemoveDatabaseInternal  ($serverVersion, $location = "Australia Southeast")
 {
 	# Setup
 	$rg = Create-ResourceGroupForTest

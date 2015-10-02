@@ -201,7 +201,6 @@
     <Compile Include="Providers\UnregisterAzureProviderCmdlet.cs" />
     <Compile Include="ResourceGroupDeployments\RemoveAzureResourceGroupDeploymentCommand.cs" />
     <Compile Include="ResourceGroups\GetAzureLocationCommand.cs" />
-    <Compile Include="ResourceGroups\SetAzureResourceGroupCommand.cs" />
     <Compile Include="RoleAssignments\RemoveAzureRoleAssignmentCommand.cs" />
     <Compile Include="RoleAssignments\GetAzureRoleAssignmentCommand.cs" />
     <Compile Include="RoleAssignments\NewAzureRoleAssignmentCommand.cs" />
@@ -228,9 +227,6 @@
     <Compile Include="ResourceGroupDeployments\GetAzureResourceGroupDeploymentCommand.cs" />
     <Compile Include="ResourceGroupDeployments\NewAzureResourceGroupDeploymentCommand.cs" />
     <Compile Include="Models.ResourceGroups\PSResourceGroupDeployment.cs" />
-    <Compile Include="ResourceGroups\RemoveAzureResourceGroupCommand.cs" />
-    <Compile Include="ResourceGroups\GetAzureResourceGroupCommand.cs" />
-    <Compile Include="ResourceGroups\NewAzureResourceGroupCommand.cs" />
     <Compile Include="Models.ResourceGroups\ResourceWithParameterBaseCmdlet.cs" />
     <Compile Include="Models.ResourceGroups\ResourceClient.cs" />
   </ItemGroup>
