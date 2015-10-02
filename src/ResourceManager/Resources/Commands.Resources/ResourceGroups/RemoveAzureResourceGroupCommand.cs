@@ -18,6 +18,8 @@ using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources
 
 namespace Microsoft.Azure.Commands.Resources
 {
+    using System.Linq;
+
     /// <summary>
     /// Removes a new resource group.
     /// </summary>
@@ -29,6 +31,11 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateNotNullOrEmpty]
         public string Name {get; set;}
 
+        [Alias("ResourceGroupId", "ResourceId")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource group Id.")]
+        [ValidateNotNullOrEmpty]
+        public string Id { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
@@ -37,6 +44,10 @@ namespace Microsoft.Azure.Commands.Resources
         
         protected override void ProcessRecord()
         {
+            Name = string.IsNullOrEmpty(Name) && !string.IsNullOrEmpty(Id)
+                ? Id.Split('/').Last()
+                : Name;
+
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(ProjectResources.RemovingResourceGroup, Name),
