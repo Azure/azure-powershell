@@ -150,6 +150,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="RMProfileClient.cs" />
+    <Compile Include="RPRegistrationDelegatingHandler.cs" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
