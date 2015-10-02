@@ -20,6 +20,7 @@ using System.Security.Permissions;
 namespace Microsoft.Azure.Commands.Profile
 {
     [Cmdlet(VerbsLifecycle.Disable, "AzureRmDataCollection")]
+    [Alias("Disable-AzureDataCollection")]
     public class DisableAzureRmDataCollectionCommand : EnableAzureRmDataCollectionCommand
     {
         protected override void ProcessRecord()
