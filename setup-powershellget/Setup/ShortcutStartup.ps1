@@ -35,7 +35,6 @@ function EnsureRegistryPath
 $error.clear()
 try {
 	if ($Install.IsPresent) {
-		EnsureRegistryPath
 		Write-Output @"
 
 Finalizing installation of Azure PowerShell. 
@@ -56,8 +55,10 @@ This may take some time...
 	} else {
 		cd c:\
 		$welcomeMessage = @"
-For a list of all Azure cmdlets type 'help azure'.
-For a list of Azure Pack cmdlets type 'Get-Command *wapack*'.
+For a list of all Azure RM cmdlets type 'help azurerm'.
+
+To start using Azure RM login via Login-AzureRmAccount cmdlet.
+To switch between subscriptions use Set-AzureRmContext.
 
 To use Azure Service Management cmdlets please execute the following cmdlet:
   Install-Module Azure

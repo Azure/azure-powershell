@@ -116,7 +116,7 @@ function Test-VirtualMachineProfile
     $imgRef = Get-DefaultCRPWindowsImageOffline -loc $loc;
     $p = ($imgRef | Set-AzureRmVMSourceImage -VM $p);
 
-    $subid = (Get-AzureRmSubscription -Current).SubscriptionId;
+    $subid = (Get-AzureRmContext).Subscription.SubscriptionId;
 
     $referenceUri = "/subscriptions/" + $subid + "/resourceGroups/RgTest1/providers/Microsoft.KeyVault/vaults/TestVault123";
     $certStore = "My";
@@ -283,7 +283,7 @@ function Test-VirtualMachineProfileWithoutAUC
     $imgRef = Get-DefaultCRPWindowsImageOffline -loc $loc;
     $p = ($imgRef | Set-AzureRmVMSourceImage -VM $p);
 
-    $subid = (Get-AzureRmSubscription -Current).SubscriptionId;
+    $subid = (Get-AzureRmContext).Subscription.SubscriptionId;
 
     $referenceUri = "/subscriptions/" + $subid + "/resourceGroups/RgTest1/providers/Microsoft.KeyVault/vaults/TestVault123";
     $certStore = "My";

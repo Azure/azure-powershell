@@ -18,6 +18,8 @@ using Microsoft.Azure.Commands.Resources.Models;
 
 namespace Microsoft.Azure.Commands.Resources
 {
+    using System.Linq;
+
     /// <summary>
     /// Updates an existing resource group.
     /// </summary>
@@ -33,12 +35,19 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, HelpMessage = "An array of hashtables which represents resource tags.")]
         public Hashtable[] Tag { get; set; }
 
+        [Alias("ResourceGroupId", "ResourceId")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource group Id.")]
+        [ValidateNotNullOrEmpty]
+        public string Id { get; set; }
+
         protected override void ProcessRecord()
         {
             UpdatePSResourceGroupParameters parameters = new UpdatePSResourceGroupParameters
             {
-                ResourceGroupName = Name,
-                Tag = Tag
+                ResourceGroupName = string.IsNullOrEmpty(Name) && !string.IsNullOrEmpty(Id)
+                    ? Id.Split('/').Last()
+                    : Name,
+                Tag = Tag,
             };
             WriteWarning("The output object of this cmdlet will be modified in a future release.");
             WriteObject(ResourcesClient.UpdatePSResourceGroup(parameters));

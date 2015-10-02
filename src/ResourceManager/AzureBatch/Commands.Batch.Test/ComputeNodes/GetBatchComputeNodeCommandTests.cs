@@ -21,6 +21,7 @@ using Moq;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Threading.Tasks;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
@@ -72,39 +73,63 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodes
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ListBatchComputeNodesByODataFilterTest()
+        public void GetBatchComputeNodeODataTest()
         {
-            // Setup cmdlet to list vms using an OData filter.
+            // Setup cmdlet to get a single compute node
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
-            cmdlet.PoolId = "pool";
-            cmdlet.Id = null;
-            cmdlet.Filter = "state -eq 'idle'";
+            cmdlet.PoolId = "testPool";
+            cmdlet.Id = "computeNode1";
+            cmdlet.Select = "id,state";
 
-            string[] idsOfConstructedComputeNodes = new[] { "computeNode1", "computeNode2" };
+            string requestSelect = null;
 
-            // Build some compute nodes instead of querying the service on a List ComputeNodes call
-            ComputeNodeListResponse response = BatchTestHelpers.CreateComputeNodeListResponse(idsOfConstructedComputeNodes);
-            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeListParameters, ComputeNodeListResponse>(response);
-            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
+            // Fetch the OData clauses off the request. The OData clauses are applied after user provided RequestInterceptors, so a ResponseInterceptor is used.
+            ComputeNodeGetResponse getResponse = BatchTestHelpers.CreateComputeNodeGetResponse(cmdlet.Id);
+            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeGetParameters, ComputeNodeGetResponse>(getResponse);
+            ResponseInterceptor responseInterceptor = new ResponseInterceptor((response, request) =>
+            {
+                requestSelect = request.Parameters.DetailLevel.SelectClause;
 
-            // Setup the cmdlet to write pipeline output to a list that can be examined later
-            List<PSComputeNode> pipeline = new List<PSComputeNode>();
-            commandRuntimeMock.Setup(r =>
-                r.WriteObject(It.IsAny<PSComputeNode>()))
-                .Callback<object>(c => pipeline.Add((PSComputeNode)c));
+                return Task.FromResult(response);
+            });
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { requestInterceptor, responseInterceptor };
 
             cmdlet.ExecuteCmdlet();
 
-            // Verify that the cmdlet wrote the constructed compute nodes to the pipeline
-            Assert.Equal(2, pipeline.Count);
-            int computeNodeCount = 0;
-            foreach (PSComputeNode c in pipeline)
+            Assert.Equal(cmdlet.Select, requestSelect);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ListBatchComputeNodesODataTest()
+        {
+            // Setup cmdlet to list compute nodes using an OData filter
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+            cmdlet.PoolId = "testPool";
+            cmdlet.Id = null;
+            cmdlet.Filter = "startswith(id,'test')";
+            cmdlet.Select = "id,state";
+
+            string requestFilter = null;
+            string requestSelect = null;
+
+            // Fetch the OData clauses off the request. The OData clauses are applied after user provided RequestInterceptors, so a ResponseInterceptor is used.
+            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeListParameters, ComputeNodeListResponse>();
+            ResponseInterceptor responseInterceptor = new ResponseInterceptor((response, request) =>
             {
-                Assert.True(idsOfConstructedComputeNodes.Contains(c.Id));
-                computeNodeCount++;
-            }
-            Assert.Equal(idsOfConstructedComputeNodes.Length, computeNodeCount);
+                requestFilter = request.Parameters.DetailLevel.FilterClause;
+                requestSelect = request.Parameters.DetailLevel.SelectClause;
+
+                return Task.FromResult(response);
+            });
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { requestInterceptor, responseInterceptor };
+
+            cmdlet.ExecuteCmdlet();
+
+            Assert.Equal(cmdlet.Filter, requestFilter);
+            Assert.Equal(cmdlet.Select, requestSelect);
         }
 
         [Fact]

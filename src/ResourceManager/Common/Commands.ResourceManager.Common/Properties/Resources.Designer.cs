@@ -136,6 +136,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The provided account {0} does not have access to subscription ID &quot;{1}&quot;. Please try logging in with different credentials not a different subscription ID..
+        /// </summary>
+        public static string SubscriptionIdNotFound {
+            get {
+                return ResourceManager.GetString("SubscriptionIdNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SubscriptionIdNotFound	The provided account {0} does not have access to subscription name &quot;{1}&quot;. Please try logging in with different credentials not a different subscription name..
+        /// </summary>
+        public static string SubscriptionNameNotFound {
+            get {
+                return ResourceManager.GetString("SubscriptionNameNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tenant &apos;{0}&apos; was not found. Please verify that your account has access to this tenant..
         /// </summary>
         public static string TenantNotFound {

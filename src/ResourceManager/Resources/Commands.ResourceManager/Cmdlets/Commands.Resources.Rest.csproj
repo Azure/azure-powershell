@@ -54,9 +54,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Common.Authentication">
-      <HintPath>..\..\..\..\packages\Microsoft.Azure.Common.Authentication.1.3.1-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.Azure.Common.Authentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\packages\Microsoft.Azure.Common.Authentication.1.3.2-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.18.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.18.206251556\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
@@ -111,6 +111,8 @@
     <Compile Include="Entities\Locks\LockLevel.cs" />
     <Compile Include="Entities\Locks\LockProperties.cs" />
     <Compile Include="Entities\Operations\AzureAsyncOperationResource.cs" />
+    <Compile Include="Entities\Policy\PolicyAssignment.cs" />
+    <Compile Include="Entities\Policy\PolicyAssignmentProperties.cs" />
     <Compile Include="Entities\Policy\PolicyDefinition.cs" />
     <Compile Include="Entities\Policy\PolicyDefinitionProperties.cs" />
     <Compile Include="Entities\Policy\PolicyRule.cs" />
@@ -140,10 +142,15 @@
     <Compile Include="Implementation\InvokeAzureResourceActionCmdlet.cs" />
     <Compile Include="Implementation\MoveAzureResourceCmdlet.cs" />
     <Compile Include="Implementation\NewAzureResourceLockCmdlet.cs" />
+    <Compile Include="Implementation\Policy\GetAzurePolicyAssignment.cs" />
     <Compile Include="Implementation\Policy\GetAzurePolicyDefinition.cs" />
+    <Compile Include="Implementation\Policy\NewAzurePolicyAssignment.cs" />
     <Compile Include="Implementation\Policy\NewAzurePolicyDefinition.cs" />
+    <Compile Include="Implementation\Policy\PolicyAssignmentCmdletBase.cs" />
     <Compile Include="Implementation\Policy\PolicyDefinitionCmdletBase.cs" />
+    <Compile Include="Implementation\Policy\RemoveAzurePolicyAssignment.cs" />
     <Compile Include="Implementation\Policy\RemoveAzurePolicyDefinition.cs" />
+    <Compile Include="Implementation\Policy\SetAzurePolicyAssignment.cs" />
     <Compile Include="Implementation\Policy\SetAzurePolicyDefinition.cs" />
     <Compile Include="Implementation\RemoveAzureResourceCmdlet.cs" />
     <Compile Include="Implementation\RemoveAzureResourceLockCmdlet.cs" />

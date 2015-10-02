@@ -40,6 +40,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSResourceId> LoadBalancingRules { get; set; }
 
         [JsonProperty(Order = 1)]
+        public List<PSResourceId> InboundNatPools { get; set; }
+
+        [JsonProperty(Order = 1)]
         public string ProvisioningState { get; set; }
 
         [JsonIgnore]
@@ -65,5 +68,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get { return JsonConvert.SerializeObject(LoadBalancingRules, Formatting.Indented); }
         }
+
+        [JsonIgnore]
+        public string InboundNatPoolsText
+        {
+            get { return JsonConvert.SerializeObject(InboundNatPools, Formatting.Indented); }
+        }
+
     }
 }

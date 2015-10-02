@@ -43,3 +43,18 @@ function Test-GetSubscriptionsEndToEnd
 	$tenantSubscriptions = Get-AzureRmSubscription -Tenant $tenant
 	Assert-True {$tenantSubscriptions.Count -gt 0}
 }
+
+function Test-SetAzureRmContextEndToEnd
+{
+    # This test requires that the tenant contains atleast two subscriptions
+	$allSubscriptions = Get-AzureRmSubscription
+    $secondSubscription = $allSubscriptions[1]
+    Assert-True { $allSubscriptions[0] -ne $null }
+	Assert-True { $secondSubscription -ne $null }
+    Set-AzureRmContext -SubscriptionId $secondSubscription.SubscriptionId
+    $context = Get-AzureRmContext
+
+    #Assert-AreEqual $context.Subscription $secondSubscription.SubscriptionId
+	
+    Assert-ThrowsContains {Set-AzureRmContext -SubscriptionId 'junk-subscription-id'} "does not exist under current tenant"
+}
