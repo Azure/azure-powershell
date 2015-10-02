@@ -12,23 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Management.Automation;
-using MNM = Microsoft.Azure.Management.Network.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
 
-namespace Microsoft.Azure.Commands.Network
+namespace Commands.Network.Test.ScenarioTests
 {
-    public class AzureExpressRouteCircuitAuthorizationConfigBase : NetworkBaseCmdlet
+    public class ExpressRouteCircuitTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The name of the authorization")]
-        [ValidateNotNullOrEmpty]
-        public virtual string Name { get; set; }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestExpressRouteCircuitCRUD()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteCircuitCRUD");
+        }
 
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The AuthorizationKey")]
-        [ValidateNotNullOrEmpty]
-        public string AuthorizationKey { get; set; }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestExpressRouteCircuitPeeringCRUD()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteCircuitPeeringCRUD");
+        }
     }
 }

@@ -24,8 +24,6 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string ServiceProviderProvisioningState { get; set; }
 
-        public List<PSExpressRouteCircuitAuthorization> Authorizations { get; set; }
-
         public List<PSPeering> Peerings { get; set; }
 
         public string ServiceKey { get; set; }
@@ -49,13 +47,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get { return JsonConvert.SerializeObject(ServiceProviderProperties, Formatting.Indented); }
         }
-
-        [JsonIgnore]
-        public string AuthorizationsText
-        {
-            get { return JsonConvert.SerializeObject(Authorizations, Formatting.Indented); }
-        }
-
+        
         [JsonIgnore]
         public string PeeringsText
         {

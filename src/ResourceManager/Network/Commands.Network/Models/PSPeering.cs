@@ -24,15 +24,18 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [JsonProperty(Order = 1)]
         public string State { get; set; }
+        
+        [JsonProperty(Order = 1)]
+        public int AzureASN { get; set; }
 
         [JsonProperty(Order = 1)]
-        public string PeerASN { get; set; }
+        public int PeerASN { get; set; }
 
         [JsonProperty(Order = 1)]
-        public string PrimaryPeerSubnet { get; set; }
+        public string PrimaryPeerAddressPrefix { get; set; }
 
         [JsonProperty(Order = 1)]
-        public string SecondaryPeerSubnet { get; set; }
+        public string SecondaryPeerAddressPrefix { get; set; }
 
         [JsonProperty(Order = 1)]
         public string PrimaryAzurePort { get; set; }
@@ -44,20 +47,11 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string SharedKey { get; set; }
 
         [JsonProperty(Order = 1)]
-        public string VlanId { get; set; }
+        public int VlanId { get; set; }
 
         [JsonProperty(Order = 1)]
         public PSPeeringConfig MicrosoftPeeringConfig { get; set; }
-
-        [JsonProperty(Order = 1)]
-        public PSPeeringStats Stats { get; set; }
-
-        [JsonProperty(Order = 1)]
-        public string AuthorizationKey { get; set; }
-
-        [JsonProperty(Order = 1)]
-        public string AuthorizationUseStatus { get; set; }
-
+        
         [JsonProperty(Order = 1)]
         public string ProvisioningState { get; set; }
 
@@ -65,12 +59,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string MicrosoftPeeringConfigText
         {
             get { return JsonConvert.SerializeObject(MicrosoftPeeringConfig, Formatting.Indented); }
-        }
-
-        [JsonIgnore]
-        public string StatsText
-        {
-            get { return JsonConvert.SerializeObject(Stats, Formatting.Indented); }
         }
     }
 }

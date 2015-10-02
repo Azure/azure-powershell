@@ -179,6 +179,28 @@ namespace Microsoft.Azure.Commands.Network
             // MNM to CNM
             Mapper.CreateMap<MNM.Route, CNM.PSRoute>();
 
+            // ExpressRouteCircuit
+            // CNM to MNM
+            Mapper.CreateMap<CNM.PSExpressRouteCircuit, MNM.ExpressRouteCircuit>();
+            Mapper.CreateMap<CNM.PSServiceProviderProperties, MNM.ExpressRouteCircuitServiceProviderProperties>();
+            Mapper.CreateMap<CNM.PSExpressRouteCircuitSku, MNM.ExpressRouteCircuitSku>();
+            Mapper.CreateMap<CNM.PSPeering, MNM.ExpressRouteCircuitPeering>();
+
+            // MNM to CNM
+            Mapper.CreateMap<MNM.ExpressRouteCircuit, CNM.PSExpressRouteCircuit>();
+            Mapper.CreateMap<MNM.ExpressRouteCircuitServiceProviderProperties, CNM.PSServiceProviderProperties>();
+            Mapper.CreateMap<MNM.ExpressRouteCircuitSku, CNM.PSExpressRouteCircuitSku>();
+            Mapper.CreateMap<MNM.ExpressRouteCircuitPeering, CNM.PSPeering>();
+
+            // ExpressRouteCircuitPeering
+            // CNM to MNM
+            Mapper.CreateMap<CNM.PSPeering, MNM.ExpressRouteCircuitPeering>();
+            Mapper.CreateMap<CNM.PSPeeringConfig, MNM.ExpressRouteCircuitPeeringConfig>();
+            
+            // MNM to CNM
+            Mapper.CreateMap<MNM.ExpressRouteCircuitPeering, CNM.PSPeering>();
+            Mapper.CreateMap<MNM.ExpressRouteCircuitPeeringConfig, CNM.PSPeeringConfig>();
+            
             // Gateways
             // CNM to MNM
             Mapper.CreateMap<CNM.PSVirtualNetworkGateway, MNM.VirtualNetworkGateway>();
@@ -196,8 +218,8 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<MNM.VirtualNetworkGatewayConnection, CNM.PSVirtualNetworkGatewayConnection>();
             Mapper.CreateMap<MNM.VirtualNetworkGatewayIpConfiguration, CNM.PSVirtualNetworkGatewayIpConfiguration>();
 
-            //Application Gateways
-            //CNM to MNM
+            // Application Gateways
+            // CNM to MNM
             Mapper.CreateMap<CNM.PSApplicationGateway, MNM.ApplicationGateway>();
             Mapper.CreateMap<CNM.PSApplicationGatewaySku, MNM.ApplicationGatewaySku>();
             Mapper.CreateMap<CNM.PSApplicationGatewayBackendAddress, MNM.ApplicationGatewayBackendAddress>();
@@ -211,7 +233,7 @@ namespace Microsoft.Azure.Commands.Network
             Mapper.CreateMap<CNM.PSApplicationGatewaySslCertificate, MNM.ApplicationGatewaySslCertificate>();
             Mapper.CreateMap<CNM.PSBackendAddressPool, MNM.BackendAddressPool>();
 
-            //MNM to CNM
+            // MNM to CNM
             Mapper.CreateMap<MNM.ApplicationGateway, CNM.PSApplicationGateway>();
             Mapper.CreateMap<MNM.ApplicationGatewaySku, CNM.PSApplicationGatewaySku>();
             Mapper.CreateMap<MNM.ApplicationGatewayBackendAddress, CNM.PSApplicationGatewayBackendAddress>();

@@ -36,17 +36,19 @@ namespace Microsoft.Azure.Commands.Network
 
             peering.Name = this.Name;
             peering.PeeringType = this.PeeringType;
-            peering.PrimaryPeerSubnet = this.PrimaryPeerAddressPrefix;
-            peering.SecondaryPeerSubnet = this.SecondaryPeerAddressPrefix;
+            peering.PrimaryPeerAddressPrefix = this.PrimaryPeerAddressPrefix;
+            peering.SecondaryPeerAddressPrefix = this.SecondaryPeerAddressPrefix;
+            peering.AzureASN = this.AzureASN;
             peering.PeerASN = this.PeerASN;
             peering.VlanId = this.VlanId;
 
-            if (this.MircosoftConfigAdvertisedpublicprefixes != null
-                && this.MircosoftConfigAdvertisedpublicprefixes.Any())
+            if (this.MircosoftConfigAdvertisedPublicPrefixes != null
+                && this.MircosoftConfigAdvertisedPublicPrefixes.Any())
             {
                 peering.MicrosoftPeeringConfig = new PSPeeringConfig();
-                peering.MicrosoftPeeringConfig.AdvertisedPublicPrefixes = this.MircosoftConfigAdvertisedpublicprefixes;
-                peering.MicrosoftPeeringConfig.CustomerAsn = this.MircosoftConfigCustomerAsn;
+                peering.MicrosoftPeeringConfig.AdvertisedPublicPrefixes = this.MircosoftConfigAdvertisedPublicPrefixes;
+                peering.MicrosoftPeeringConfig.CustomerASN = this.MircosoftConfigCustomerAsn;
+                peering.MicrosoftPeeringConfig.RoutingRegistryName = this.MircosoftConfigRoutingRegistryName;
             }
 
             WriteObject(peering);

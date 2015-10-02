@@ -58,9 +58,10 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
        Mandatory = false,
        ValueFromPipelineByPropertyName = true,
-       HelpMessage = "The type of this virtual network gateway: Vpn")]
+       HelpMessage = "The type of this virtual network gateway: Vpn, ExoressRoute")]
         [ValidateSet(
         MNM.VirtualNetworkGatewayType.Vpn,
+        MNM.VirtualNetworkGatewayType.ExpressRoute,
         IgnoreCase = true)]
         public string GatewayType { get; set; }
 

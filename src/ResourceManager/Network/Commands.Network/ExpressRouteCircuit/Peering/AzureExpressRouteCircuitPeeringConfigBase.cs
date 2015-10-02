@@ -31,13 +31,24 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The PeeringType")]
         [ValidateNotNullOrEmpty]
+        [ValidateSet(
+           MNM.ExpressRouteCircuitPeeringType.AzurePrivatePeering,
+           MNM.ExpressRouteCircuitPeeringType.AzurePublicPeering,
+           MNM.ExpressRouteCircuitPeeringType.MicrosoftPeering,
+           IgnoreCase = true)]
         public string PeeringType { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The PeerAsn")]
         [ValidateNotNullOrEmpty]
-        public string PeerASN { get; set; }
+        public int PeerASN { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The AzureASN")]
+        [ValidateNotNullOrEmpty]
+        public int AzureASN { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -55,23 +66,26 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The vlanId")]
         [ValidateNotNullOrEmpty]
-        public string VlanId { get; set; }
+        public int VlanId { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            HelpMessage = "The MircosoftConfigAdvertisedpublicprefixes")]
+            Mandatory = false,
+            HelpMessage = "The MircosoftConfigAdvertisedPublicPrefixes",
+            ParameterSetName = "MicrosoftPeeringConfig")]
         [ValidateNotNullOrEmpty]
-        public List<string> MircosoftConfigAdvertisedpublicprefixes { get; set; }
+        public List<string> MircosoftConfigAdvertisedPublicPrefixes { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            HelpMessage = "The customerAsn")]
+            Mandatory = false,
+            HelpMessage = "The customerAsn",
+            ParameterSetName = "MicrosoftPeeringConfig")]
         [ValidateNotNullOrEmpty]
-        public string MircosoftConfigCustomerAsn { get; set; }
+        public int MircosoftConfigCustomerAsn { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            HelpMessage = "The MircosoftConfigRoutingRegistryName")]
+            Mandatory = false,
+            HelpMessage = "The MircosoftConfigRoutingRegistryName",
+            ParameterSetName = "MicrosoftPeeringConfig")]
         [ValidateNotNullOrEmpty]
         public string MircosoftConfigRoutingRegistryName { get; set; }
 

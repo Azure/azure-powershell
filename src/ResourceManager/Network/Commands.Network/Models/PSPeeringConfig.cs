@@ -24,13 +24,13 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<string> AdvertisedPublicPrefixes { get; set; }
 
         [JsonProperty(Order = 1)]
-        public string AdvertisedPublicPrefixState { get; set; }
+        public string AdvertisedPublicPrefixesState { get; set; }
 
         [JsonProperty(Order = 1)]
-        public string CustomerAsn { get; set; }
+        public int CustomerASN { get; set; }
 
         [JsonProperty(Order = 1)]
-        public string RoutingIRRName { get; set; }
+        public string RoutingRegistryName { get; set; }
 
         [JsonIgnore]
         public string AdvertisedPublicPrefixesSText

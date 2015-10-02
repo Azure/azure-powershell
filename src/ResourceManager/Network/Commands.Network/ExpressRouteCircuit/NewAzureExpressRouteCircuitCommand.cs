@@ -58,11 +58,19 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true)]
+        [ValidateSet(
+            MNM.ExpressRouteCircuitSkuTier.Standard,
+            MNM.ExpressRouteCircuitSkuTier.Premium,
+            IgnoreCase = true)]
         public string SkuTier { get; set; }
 
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true)]
+        [ValidateSet(
+            MNM.ExpressRouteCircuitSkuFamily.MeteredData,
+            MNM.ExpressRouteCircuitSkuFamily.UnlimitedData,
+            IgnoreCase = true)]
         public string SkuFamily { get; set; }
 
         [Parameter(
@@ -85,12 +93,6 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public List<PSPeering> Peering { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public List<PSExpressRouteCircuitAuthorization> Authorization { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -153,9 +155,6 @@ namespace Microsoft.Azure.Commands.Network
 
             circuit.Peerings = new List<PSPeering>();
             circuit.Peerings = this.Peering;
-
-            circuit.Authorizations = new List<PSExpressRouteCircuitAuthorization>();
-            circuit.Authorizations = this.Authorization;
 
             // Map to the sdk object
             var circuitModel = Mapper.Map<MNM.ExpressRouteCircuit>(circuit);
