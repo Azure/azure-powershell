@@ -299,6 +299,9 @@
     <Content Include="Resources\DSC\DSC Resource Kit Wave 6 08282014.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="SessionRecords\Microsoft.WindowsAzure.Commands.Common.Test.Common.PSCmdletTests\CmdletNameAndParameterSetInHeader.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\invalidsubscriptions.xml" />
