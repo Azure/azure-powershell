@@ -250,6 +250,7 @@
     <Compile Include="Models\PSApplicationGatewayRequestRoutingRule.cs" />
     <Compile Include="Models\PSApplicationGatewaySku.cs" />
     <Compile Include="Models\PSApplicationGatewaySslCertificate.cs" />
+    <Compile Include="Models\PSExpressRouteServiveProvider.cs" />
     <Compile Include="Models\PSExpressRouteCircuitArpTable.cs" />
     <Compile Include="Models\PSExpressRouteCircuitRoutesTable.cs" />
     <Compile Include="Models\PSExpressRouteServiceProviderBandwidthsOffered.cs" />

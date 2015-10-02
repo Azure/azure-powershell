@@ -200,7 +200,16 @@ namespace Microsoft.Azure.Commands.Network
             // MNM to CNM
             Mapper.CreateMap<MNM.ExpressRouteCircuitPeering, CNM.PSPeering>();
             Mapper.CreateMap<MNM.ExpressRouteCircuitPeeringConfig, CNM.PSPeeringConfig>();
-            
+
+            // ExpressRouteServiceProvider
+            // CNM to MNM
+            Mapper.CreateMap<CNM.PSExpressRouteServiceProvider, MNM.ExpressRouteResourceProvider>();
+            Mapper.CreateMap<CNM.PSExpressRouteServiceProviderBandwidthsOffered, MNM.ExpressRouteServiceProviderBandwidthsOffered>();
+
+            // MNM to CNM
+            Mapper.CreateMap<MNM.ExpressRouteResourceProvider, CNM.PSExpressRouteServiceProvider>();
+            Mapper.CreateMap<MNM.ExpressRouteServiceProviderBandwidthsOffered, CNM.PSExpressRouteServiceProviderBandwidthsOffered>();
+
             // Gateways
             // CNM to MNM
             Mapper.CreateMap<CNM.PSVirtualNetworkGateway, MNM.VirtualNetworkGateway>();
