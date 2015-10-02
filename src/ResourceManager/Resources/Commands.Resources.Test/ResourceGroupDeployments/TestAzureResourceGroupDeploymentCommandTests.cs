@@ -23,9 +23,9 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.Resources.Test.Resources
 {
-    public class TestAzureResourceGroupTemplateCommandTests
+    public class TestAzureResourceGroupDeploymentCommandTests
     {
-        private TestAzureResourceGroupTemplateCommand cmdlet;
+        private TestAzureResourceGroupDeploymentCommand cmdlet;
 
         private Mock<ResourcesClient> resourcesClientMock;
 
@@ -35,13 +35,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
 
         private string templateFile = @"Resources\sampleTemplateFile.json";
 
-        private string storageAccountName = "myStorageAccount";
-
-        public TestAzureResourceGroupTemplateCommandTests()
+        public TestAzureResourceGroupDeploymentCommandTests()
         {
             resourcesClientMock = new Mock<ResourcesClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new TestAzureResourceGroupTemplateCommand()
+            cmdlet = new TestAzureResourceGroupDeploymentCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 ResourcesClient = resourcesClientMock.Object
@@ -53,9 +51,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
         {
             ValidatePSResourceGroupDeploymentParameters expectedParameters = new ValidatePSResourceGroupDeploymentParameters()
             {
-                TemplateFile = templateFile,
-                StorageAccountName = storageAccountName,
-                TemplateVersion = "1.0"
+                TemplateFile = templateFile
             };
             ValidatePSResourceGroupDeploymentParameters actualParameters = new ValidatePSResourceGroupDeploymentParameters();
             List<PSResourceManagerError> expected = new List<PSResourceManagerError>()
@@ -83,63 +79,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
 
             cmdlet.ResourceGroupName = resourceGroupName;
             cmdlet.TemplateFile = expectedParameters.TemplateFile;
-            cmdlet.TemplateVersion = expectedParameters.TemplateVersion;
 
             cmdlet.ExecuteCmdlet();
 
-            Assert.Equal(expectedParameters.GalleryTemplateIdentity, actualParameters.GalleryTemplateIdentity);
             Assert.Equal(expectedParameters.TemplateFile, actualParameters.TemplateFile);
             Assert.NotNull(actualParameters.TemplateParameterObject);
-            Assert.Equal(expectedParameters.TemplateVersion, actualParameters.TemplateVersion);
-            Assert.Equal(null, actualParameters.StorageAccountName);
-
-            commandRuntimeMock.Verify(f => f.WriteObject(expected), Times.Once());
-        }
-
-        [Fact]
-        public void ValidatesPSResourceGroupDeploymentWithGalleryTemplate()
-        {
-            ValidatePSResourceGroupDeploymentParameters expectedParameters = new ValidatePSResourceGroupDeploymentParameters()
-            {
-                GalleryTemplateIdentity = "sqlServer",
-                StorageAccountName = storageAccountName,
-                TemplateVersion = "1.0"
-            };
-            ValidatePSResourceGroupDeploymentParameters actualParameters = new ValidatePSResourceGroupDeploymentParameters();
-            List<PSResourceManagerError> expected = new List<PSResourceManagerError>()
-            {
-                new PSResourceManagerError()
-                {
-                    Code = "202",
-                    Message = "bad input",
-                },
-                new PSResourceManagerError()
-                {
-                    Code = "203",
-                    Message = "bad input 2",
-                },
-                new PSResourceManagerError()
-                {
-                    Code = "203",
-                    Message = "bad input 3",
-                }
-            };
-            resourcesClientMock.Setup(f => f.ValidatePSResourceGroupDeployment(
-                It.IsAny<ValidatePSResourceGroupDeploymentParameters>(), DeploymentMode.Incremental))
-                .Returns(expected)
-                .Callback((ValidatePSResourceGroupDeploymentParameters p, DeploymentMode m) => { actualParameters = p; m = DeploymentMode.Incremental; });
-
-            cmdlet.ResourceGroupName = resourceGroupName;
-            cmdlet.GalleryTemplateIdentity = expectedParameters.GalleryTemplateIdentity;
-            cmdlet.TemplateVersion = expectedParameters.TemplateVersion;
-
-            cmdlet.ExecuteCmdlet();
-
-            Assert.Equal(expectedParameters.GalleryTemplateIdentity, actualParameters.GalleryTemplateIdentity);
-            Assert.Equal(expectedParameters.TemplateFile, actualParameters.TemplateFile);
-            Assert.NotNull(actualParameters.TemplateParameterObject);
-            Assert.Equal(expectedParameters.TemplateVersion, actualParameters.TemplateVersion);
-            Assert.Equal(null, actualParameters.StorageAccountName);
 
             commandRuntimeMock.Verify(f => f.WriteObject(expected), Times.Once());
         }

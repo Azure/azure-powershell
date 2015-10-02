@@ -19,8 +19,8 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.Profile
 {
-    [Cmdlet(VerbsLifecycle.Enable, "AzureDataCollection")]
-    public class EnableAzureDataCollectionCommand : AzureRMCmdlet
+    [Cmdlet(VerbsLifecycle.Enable, "AzureRmDataCollection")]
+    public class EnableAzureRmDataCollectionCommand : AzureRMCmdlet
     {
         protected override void ProcessRecord()
         {
