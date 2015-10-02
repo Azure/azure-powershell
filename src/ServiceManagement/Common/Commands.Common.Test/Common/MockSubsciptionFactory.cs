@@ -66,6 +66,16 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             throw new NotImplementedException();
         }
 
+        public void AddHandler(DelegatingHandler handler)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveHandler(Type handlerType)
+        {
+            throw new NotImplementedException();
+        }
+
         public void AddUserAgent(string productName, string productVersion)
         {
             throw new NotImplementedException();
