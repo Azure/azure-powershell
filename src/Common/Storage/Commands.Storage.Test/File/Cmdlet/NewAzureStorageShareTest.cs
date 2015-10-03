@@ -12,8 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Storage.File;
 using Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet;
@@ -73,20 +76,38 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
             this.NewShareAndValidate("&LOv=\\ji1eJgg% -SY;m", "ArgumentException");
         }
 
-        private void NewShareAndValidate(string name, string expectedErrorId = null)
+        private void NewShareAndValidate(string name)
         {
             this.CmdletInstance.RunCmdlet(
                 Constants.ShareNameParameterSetName,
                 new KeyValuePair<string, object>("Name", name));
+            this.MockCmdRunTime.OutputPipeline.Cast<CloudFileShare>().AssertSingleObject(x => x.Name == name);
+        }
 
-            if (expectedErrorId == null)
+        private void NewShareAndValidate(string name, string expectedErrorId)
+        {
+            try
             {
-                this.MockCmdRunTime.OutputPipeline.Cast<CloudFileShare>().AssertSingleObject(x => x.Name == name);
+                this.CmdletInstance.RunCmdlet(
+                    Constants.ShareNameParameterSetName,
+                    new KeyValuePair<string, object>("Name", name));
             }
-            else
+            catch (TargetInvocationException exception)
             {
-                this.MockCmdRunTime.ErrorStream.AssertSingleObject(x => x.FullyQualifiedErrorId == expectedErrorId);
+                Trace.WriteLine(string.Format("Creating a share with name '{0}'", name));
+                if (exception.InnerException != null)
+                {
+                    Trace.WriteLine(string.Format("Exception:"));
+                    Trace.WriteLine(string.Format("{0}: {1}", exception.InnerException.GetType(), exception.InnerException.Message));
+                    if (exception.InnerException.GetType().ToString().Contains(expectedErrorId))
+                    {
+                        return;
+                    }
+                }
+
             }
+
+            throw new InvalidOperationException("Did not receive expected exception");
         }
     }
 }
