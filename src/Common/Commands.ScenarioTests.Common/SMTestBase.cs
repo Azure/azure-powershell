@@ -58,7 +58,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
                             {AzureAccount.Property.Subscriptions, newGuid.ToString()}
                         }
                     });
-                client.SetSubscriptionAsDefault(newGuid, "test")
+                client.SetSubscriptionAsDefault(newGuid, "test");
                 client.AddOrSetSubscription( new AzureSubscription { Id = newGuid, Name = "test", Environment = EnvironmentName.AzureCloud, Account = "test" });
            }
             AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
