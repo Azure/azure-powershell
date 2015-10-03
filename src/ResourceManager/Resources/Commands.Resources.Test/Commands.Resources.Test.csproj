@@ -246,7 +246,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="SamplePolicyDefinition.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
