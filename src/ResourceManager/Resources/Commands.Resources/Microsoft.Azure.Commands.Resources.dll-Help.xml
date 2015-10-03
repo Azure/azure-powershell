@@ -1831,6 +1831,13 @@ Tags:
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)">
+        <maml:name>Id</maml:name>
+        <maml:description>
+          <maml:para>The fully qualified deployment id. Example: /subscriptions/{subId}/resourcegroups/{rgName}/providers/Microsoft.Resources/deployments/{deploymentName}</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+      </command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Profile</maml:name>
 				<maml:description>
@@ -1865,6 +1872,13 @@ Tags:
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)">
+        <maml:name>Id</maml:name>
+        <maml:description>
+          <maml:para>The fully qualified deployment id. Example: /subscriptions/{subId}/resourcegroups/{rgName}/providers/Microsoft.Resources/deployments/{deploymentName}</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+      </command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
 			<maml:name>ProvisioningState</maml:name>
 			<maml:description>
@@ -2043,6 +2057,28 @@ ContosoLabsRG                       WordPress.WordPress                     Succ
 				</command:commandLine>
 			</command:commandLines>
 		</command:example>
+    <command:example>
+      <maml:title>--------------------------  Example 4: Get the deployment by Id  --------------------------</maml:title>
+      <maml:introduction>
+        <maml:paragraph>PS C:\&gt;</maml:paragraph>
+      </maml:introduction>
+      <dev:code>
+        PS C:\&gt;Get-AzureRmResourceGroupDeployment -Id /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/testgroup/providers/Microsoft.Resources/deployments/mydeployment
+      </dev:code>
+      <dev:remarks>
+        <maml:para>Gets the deployment by Id</maml:para>
+        <maml:para />
+        <maml:para />
+        <maml:para></maml:para>
+      </dev:remarks>
+      <command:commandLines>
+        <command:commandLine>
+          <command:commandText>
+            <maml:para />
+          </command:commandText>
+        </command:commandLine>
+      </command:commandLines>
+    </command:example>
 	</command:examples>
 	<maml:relatedLinks>
 		<maml:navigationLink>
@@ -8979,6 +9015,13 @@ PS C:\&gt; New-AzureRmRoleDefinition -Role $roleDef</dev:code>
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)">
+        <maml:name>Id</maml:name>
+        <maml:description>
+          <maml:para>The fully qualified deployment id. Example: /subscriptions/{subId}/resourcegroups/{rgName}/providers/Microsoft.Resources/deployments/{deploymentName}</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+      </command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Profile</maml:name>
 				<maml:description>
@@ -9037,6 +9080,13 @@ PS C:\&gt; New-AzureRmRoleDefinition -Role $roleDef</dev:code>
 			</dev:type>
 			<dev:defaultValue></dev:defaultValue>
 		</command:parameter>
+    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)">
+      <maml:name>Id</maml:name>
+      <maml:description>
+        <maml:para>The fully qualified deployment id. Example: /subscriptions/{subId}/resourcegroups/{rgName}/providers/Microsoft.Resources/deployments/{deploymentName}</maml:para>
+      </maml:description>
+      <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+    </command:parameter>
 		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			<maml:name>Profile</maml:name>
 			<maml:description>
