@@ -91,6 +91,7 @@
       <Link>AzureRM.HDInsight.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="app.config" />
     <None Include="Microsoft.Azure.Commands.HDInsight.dll-help.psd1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -115,7 +116,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.HDInsight.1.0.6-preview\lib\net40\Microsoft.Azure.Management.HDInsight.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.HDInsight.1.0.7-preview\lib\net40\Microsoft.Azure.Management.HDInsight.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.HDInsight.Job, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
