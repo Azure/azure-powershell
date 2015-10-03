@@ -82,9 +82,10 @@
         <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
         <dev:type>
           <maml:name>DateTime</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ReportedEndTime</maml:name>
@@ -94,9 +95,10 @@
         <command:parameterValue required="true" variableLength="false">DateTime</command:parameterValue>
         <dev:type>
           <maml:name>DateTime</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>AggregationGranularity</maml:name>
@@ -106,9 +108,10 @@
         <command:parameterValue required="true" variableLength="false">AggregationGranularity</command:parameterValue>
         <dev:type>
           <maml:name>AggregationGranularity</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ShowDetails</maml:name>
@@ -118,9 +121,10 @@
         <command:parameterValue required="false" variableLength="false">Boolean</command:parameterValue>
         <dev:type>
           <maml:name>Boolean</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ContinuationToken</maml:name>
@@ -130,9 +134,10 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>Profile</maml:name>
@@ -142,17 +147,20 @@
         <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
         <dev:type>
           <maml:name>AzureProfile</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
     </command:parameters>
     <command:inputTypes>
       <command:inputType>
         <dev:type>
-          <maml:name></maml:name>
-          <maml:uri></maml:uri>
-          <maml:description/>
+          <maml:name>
+          </maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description />
         </dev:type>
         <maml:description>
           <maml:para>
@@ -163,9 +171,11 @@
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name></maml:name>
-          <maml:uri></maml:uri>
-          <maml:description/>
+          <maml:name>
+          </maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description />
         </dev:type>
         <maml:description>
           <maml:para>
@@ -173,12 +183,16 @@
         </maml:description>
       </command:returnValue>
     </command:returnValues>
-    <command:terminatingErrors></command:terminatingErrors>
-    <command:nonTerminatingErrors></command:nonTerminatingErrors>
+    <command:terminatingErrors>
+    </command:terminatingErrors>
+    <command:nonTerminatingErrors>
+    </command:nonTerminatingErrors>
     <maml:alertSet>
-      <maml:title></maml:title>
+      <maml:title>
+      </maml:title>
       <maml:alert>
         <maml:para />
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, usage, billing, aggregate</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -187,12 +201,13 @@
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-UsageAggregates -ReportedStartTime &quot;5/2/2015&quot; -ReportedEndTime &quot;5/5/2015&quot;</dev:code>
+        <dev:code>PS C:\&gt;Get-UsageAggregates -ReportedStartTime "5/2/2015" -ReportedEndTime "5/5/2015"</dev:code>
         <dev:remarks>
           <maml:para>The final command retrieves the reported usage data for the subscription between the specified dates of 5/2/2015 and 5/5/2015.</maml:para>
           <maml:para />
           <maml:para />
-          <maml:para></maml:para>
+          <maml:para>
+          </maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>
