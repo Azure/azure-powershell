@@ -30,8 +30,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
     public abstract class AzureSMCmdlet : AzurePSCmdlet
     {
-        protected static AzureSMProfile _currentProfile = null;
-
         [Parameter(Mandatory = false, HelpMessage = "In-memory profile.")]
         public AzureSMProfile Profile { get; set; }
 
@@ -51,8 +49,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 AzureSMProfileProvider.Instance.Profile = value;
             }
         }
-
-        protected static TokenCache DefaultDiskTokenCache { get; set; }
 
         protected override AzureContext DefaultContext { get { return CurrentProfile.Context; } }
 
