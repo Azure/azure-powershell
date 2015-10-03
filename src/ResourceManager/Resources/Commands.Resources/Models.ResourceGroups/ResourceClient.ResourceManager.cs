@@ -342,10 +342,12 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// <param name="name">The resource group name.</param>
         /// <param name="tag">The resource group tag.</param>
         /// <param name="detailed">Whether the  return is detailed or not.</param>
+        /// <param name="location">The resource group location.</param>
         /// <returns>The filtered resource groups</returns>
-        public virtual List<PSResourceGroup> FilterResourceGroups(string name, Hashtable tag, bool detailed)
+        public virtual List<PSResourceGroup> FilterResourceGroups(string name, Hashtable tag, bool detailed, string location = null)
         {
             List<PSResourceGroup> result = new List<PSResourceGroup>();
+            
             if (string.IsNullOrEmpty(name))
             {
                 var response = ResourceManagementClient.ResourceGroups.List(null);
@@ -355,6 +357,10 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 {
                     resourceGroups.AddRange(response.ResourceGroups);
                 }
+
+                resourceGroups = !string.IsNullOrEmpty(location)
+                    ? resourceGroups.Where(resourceGroup => this.NormalizeLetterOrDigitToUpperInvariant(resourceGroup.Location).Equals(this.NormalizeLetterOrDigitToUpperInvariant(location))).ToList()
+                    : resourceGroups;
 
                 // TODO: Replace with server side filtering when available
                 if (tag != null && tag.Count >= 1)

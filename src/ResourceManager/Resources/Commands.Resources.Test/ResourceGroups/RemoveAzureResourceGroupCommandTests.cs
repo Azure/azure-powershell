@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         private Mock<ICommandRuntime> commandRuntimeMock;
 
         private string resourceGroupName = "myResourceGroup";
+        private string resourceGroupId = "/subscriptions/subId/resourceGroups/myResourceGroup";
 
         public RemoveAzureResourceGroupCommandTests()
         {
@@ -50,13 +51,26 @@ namespace Microsoft.Azure.Commands.Resources.Test
             resourcesClientMock.Setup(f => f.DeleteResourceGroup(resourceGroupName));
 
             cmdlet.Name = resourceGroupName;
-            cmdlet.PassThru = true;
             cmdlet.Force = true;
 
             cmdlet.ExecuteCmdlet();
 
             resourcesClientMock.Verify(f => f.DeleteResourceGroup(resourceGroupName), Times.Once());
-            commandRuntimeMock.Verify(f => f.WriteObject(true), Times.Once());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RemovesResourceGroupFromId()
+        {
+            commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
+            resourcesClientMock.Setup(f => f.DeleteResourceGroup(resourceGroupName));
+
+            cmdlet.Id = resourceGroupId;
+            cmdlet.Force = true;
+
+            cmdlet.ExecuteCmdlet();
+
+            resourcesClientMock.Verify(f => f.DeleteResourceGroup(resourceGroupName), Times.Once());
         }
     }
 }

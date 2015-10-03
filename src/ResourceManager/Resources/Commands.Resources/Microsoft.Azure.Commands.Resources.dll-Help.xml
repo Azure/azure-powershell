@@ -5094,13 +5094,6 @@ Resources         :
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateVersion</maml:name>
-				<maml:description>
-					<maml:para>Specifies a particular version of the gallery or custom template. Enter the version number, such as &quot;2014-04-01-preview&quot;. This parameter is optional. If you specify this parameter, New-AzureRmResourceGroupDeployment verifies that the specified template has the matching version and fails if it does not.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Profile</maml:name>
 				<maml:description>
@@ -5136,13 +5129,6 @@ Resources         :
 				<maml:name>TemplateUri</maml:name>
 				<maml:description>
 					<maml:para>Specifies the URI of a JSON template file. This file can be a custom template or a gallery template that is saved as a JSON file, such as by using the Save-AzureRmResourceGroupGalleryTemplate cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateVersion</maml:name>
-				<maml:description>
-					<maml:para>Specifies a particular version of the gallery or custom template. Enter the version number, such as &quot;2014-04-01-preview&quot;. This parameter is optional. If you specify this parameter, New-AzureRmResourceGroupDeployment verifies that the specified template has the matching version and fails if it does not.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -5184,20 +5170,6 @@ Resources         :
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>StorageAccountName</maml:name>
-				<maml:description>
-					<maml:para>Specifies the name of a storage account in the subscription. New-AzureRmResourceGroupDeployment saves the contents of template files in  the storage account. This parameter is optional, but a storage account is required when you use the TemplateFile parameter.The default value is the current storage account in the subscription. If you do not specify a storage account and the subscription does not have a current storage account, the command fails.To create a storage account, use the Switch-AzureMode cmdlet to switch to the Azure module, and then use the New-AzureRmStorageAccount cmdlet. To make the a storage account the &quot;current storage account&quot; for the subscription, use the CurrentStorageAccountName parameter of the Set-AzureRmSubscription cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateVersion</maml:name>
-				<maml:description>
-					<maml:para>Specifies a particular version of the gallery or custom template. Enter the version number, such as &quot;2014-04-01-preview&quot;. This parameter is optional. If you specify this parameter, New-AzureRmResourceGroupDeployment verifies that the specified template has the matching version and fails if it does not.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Profile</maml:name>
 				<maml:description>
@@ -5229,20 +5201,6 @@ Resources         :
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>GalleryTemplateIdentity</maml:name>
-				<maml:description>
-					<maml:para>Specifies the identity of a template in the Azure gallery. To find gallery templates, use the Get-AzureRmResourceGroupGalleryTemplate cmdlet. The value of the Identity property of each gallery item is displayed by default.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateVersion</maml:name>
-				<maml:description>
-					<maml:para>Specifies a particular version of the gallery or custom template. Enter the version number, such as &quot;2014-04-01-preview&quot;. This parameter is optional. If you specify this parameter, New-AzureRmResourceGroupDeployment verifies that the specified template has the matching version and fails if it does not.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Profile</maml:name>
 				<maml:description>
@@ -5271,20 +5229,6 @@ Resources         :
 				<maml:name>TemplateParameterFile</maml:name>
 				<maml:description>
 					<maml:para>Specifies the path and name of a JSON file with the names and values of the template parameters. This parameter is optional.If a template has parameters, you must specify parameter values, but you can use this parameter or the TemplateParameterObject parameter. Also, the template parameters are added to the command dynamically when you specify a template. To use the dynamic parameters, just type them in the command, or type a minus sign to indicate a parameter name (-) and then press the TAB key repeatedly to cycle through the available parameters. If you miss a required parameter, the cmdlet prompts you for the value.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>GalleryTemplateIdentity</maml:name>
-				<maml:description>
-					<maml:para>Specifies the identity of a template in the Azure gallery. To find gallery templates, use the Get-AzureRmResourceGroupGalleryTemplate cmdlet. The value of the Identity property of each gallery item is displayed by default.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateVersion</maml:name>
-				<maml:description>
-					<maml:para>Specifies a particular version of the gallery or custom template. Enter the version number, such as &quot;2014-04-01-preview&quot;. This parameter is optional. If you specify this parameter, New-AzureRmResourceGroupDeployment verifies that the specified template has the matching version and fails if it does not.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -5326,13 +5270,6 @@ Resources         :
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateVersion</maml:name>
-				<maml:description>
-					<maml:para>Specifies a particular version of the gallery or custom template. Enter the version number, such as &quot;2014-04-01-preview&quot;. This parameter is optional. If you specify this parameter, New-AzureRmResourceGroupDeployment verifies that the specified template has the matching version and fails if it does not.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Profile</maml:name>
 				<maml:description>
@@ -5371,20 +5308,6 @@ Resources         :
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>StorageAccountName</maml:name>
-				<maml:description>
-					<maml:para>Specifies the name of a storage account in the subscription. New-AzureRmResourceGroupDeployment saves the contents of template files in  the storage account. This parameter is optional, but a storage account is required when you use the TemplateFile parameter.The default value is the current storage account in the subscription. If you do not specify a storage account and the subscription does not have a current storage account, the command fails.To create a storage account, use the Switch-AzureMode cmdlet to switch to the Azure module, and then use the New-AzureRmStorageAccount cmdlet. To make the a storage account the &quot;current storage account&quot; for the subscription, use the CurrentStorageAccountName parameter of the Set-AzureRmSubscription cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateVersion</maml:name>
-				<maml:description>
-					<maml:para>Specifies a particular version of the gallery or custom template. Enter the version number, such as &quot;2014-04-01-preview&quot;. This parameter is optional. If you specify this parameter, New-AzureRmResourceGroupDeployment verifies that the specified template has the matching version and fails if it does not.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Profile</maml:name>
 				<maml:description>
@@ -5406,20 +5329,6 @@ Resources         :
 				<maml:name>ResourceGroupName</maml:name>
 				<maml:description>
 					<maml:para>Specifies the name of the resource group to which this deployment is added. This parameter is required. If the resource group does not exist, the command fails.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>GalleryTemplateIdentity</maml:name>
-				<maml:description>
-					<maml:para>Specifies the identity of a template in the Azure gallery. To find gallery templates, use the Get-AzureRmResourceGroupGalleryTemplate cmdlet. The value of the Identity property of each gallery item is displayed by default.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateVersion</maml:name>
-				<maml:description>
-					<maml:para>Specifies a particular version of the gallery or custom template. Enter the version number, such as &quot;2014-04-01-preview&quot;. This parameter is optional. If you specify this parameter, New-AzureRmResourceGroupDeployment verifies that the specified template has the matching version and fails if it does not.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -5454,20 +5363,6 @@ Resources         :
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>StorageAccountName</maml:name>
-				<maml:description>
-					<maml:para>Specifies the name of a storage account in the subscription. New-AzureRmResourceGroupDeployment saves the contents of template files in  the storage account. This parameter is optional, but a storage account is required when you use the TemplateFile parameter.The default value is the current storage account in the subscription. If you do not specify a storage account and the subscription does not have a current storage account, the command fails.To create a storage account, use the Switch-AzureMode cmdlet to switch to the Azure module, and then use the New-AzureRmStorageAccount cmdlet. To make the a storage account the &quot;current storage account&quot; for the subscription, use the CurrentStorageAccountName parameter of the Set-AzureRmSubscription cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateVersion</maml:name>
-				<maml:description>
-					<maml:para>Specifies a particular version of the gallery or custom template. Enter the version number, such as &quot;2014-04-01-preview&quot;. This parameter is optional. If you specify this parameter, New-AzureRmResourceGroupDeployment verifies that the specified template has the matching version and fails if it does not.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Profile</maml:name>
 				<maml:description>
@@ -5496,13 +5391,6 @@ Resources         :
 				<maml:name>TemplateUri</maml:name>
 				<maml:description>
 					<maml:para>Specifies the URI of a JSON template file. This file can be a custom template or a gallery template that is saved as a JSON file, such as by using the Save-AzureRmResourceGroupGalleryTemplate cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateVersion</maml:name>
-				<maml:description>
-					<maml:para>Specifies a particular version of the gallery or custom template. Enter the version number, such as &quot;2014-04-01-preview&quot;. This parameter is optional. If you specify this parameter, New-AzureRmResourceGroupDeployment verifies that the specified template has the matching version and fails if it does not.</maml:para>
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
@@ -5532,18 +5420,6 @@ Resources         :
 			<maml:name>ResourceGroupName</maml:name>
 			<maml:description>
 				<maml:para>Specifies the name of the resource group to which this deployment is added. This parameter is required. If the resource group does not exist, the command fails.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>TemplateVersion</maml:name>
-			<maml:description>
-				<maml:para>Specifies a particular version of the gallery or custom template. Enter the version number, such as &quot;2014-04-01-preview&quot;. This parameter is optional. If you specify this parameter, New-AzureRmResourceGroupDeployment verifies that the specified template has the matching version and fails if it does not.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -5592,30 +5468,6 @@ Resources         :
 			<maml:name>TemplateFile</maml:name>
 			<maml:description>
 				<maml:para>Specifies the path and file name of a JSON template file on disk. This can be a custom template or a gallery template that is saved to disk as a JSON file, such as by using the Save-AzureRmResourceGroupGalleryTemplate cmdlet.To use this parameter, the subscription must include a storage account where the cmdlet can save the template. By default, this cmdlet uses the current storage account in the subscription, but you can use the StorageAccountName parameter to specify an alternate storage account. If you do not specify a storage account and the subscription does not have a storage account that is designated as &quot;current,&quot; the command fails.To create a storage account, use the Switch-AzureMode cmdlet to switch to the Azure module, and then use the New-AzureRmStorageAccount cmdlet. To make the a storage account the &quot;current storage account&quot; for the subscription, use the CurrentStorageAccountName parameter of the Set-AzureRmSubscription cmdlet.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>StorageAccountName</maml:name>
-			<maml:description>
-				<maml:para>Specifies the name of a storage account in the subscription. New-AzureRmResourceGroupDeployment saves the contents of template files in  the storage account. This parameter is optional, but a storage account is required when you use the TemplateFile parameter.The default value is the current storage account in the subscription. If you do not specify a storage account and the subscription does not have a current storage account, the command fails.To create a storage account, use the Switch-AzureMode cmdlet to switch to the Azure module, and then use the New-AzureRmStorageAccount cmdlet. To make the a storage account the &quot;current storage account&quot; for the subscription, use the CurrentStorageAccountName parameter of the Set-AzureRmSubscription cmdlet.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>GalleryTemplateIdentity</maml:name>
-			<maml:description>
-				<maml:para>Specifies the identity of a template in the Azure gallery. To find gallery templates, use the Get-AzureRmResourceGroupGalleryTemplate cmdlet. The value of the Identity property of each gallery item is displayed by default.</maml:para>
 			</maml:description>
 			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			<dev:type>
@@ -5673,83 +5525,13 @@ Resources         :
 	</maml:alertSet>
 	<command:examples>
 		<command:example>
-			<maml:title>--------------------------  Create a deployment with a gallery template  --------------------------</maml:title>
+			<maml:title>--------------------------  Example 1: Use a custom template and parameter file  --------------------------</maml:title>
 			<maml:introduction>
 				<maml:paragraph>PS C:\&gt;</maml:paragraph>
 			</maml:introduction>
-			<dev:code>PS C:\&gt;New-AzureRmResourceGroupDeployment -New-AzureRmResourceGroupDeployment -ResourceGroupName ContosoRG01 -GalleryTemplateIdentity Microsoft.WebSite.0.1.0-preview1 -Name WebDeploy01 -siteName ContosoWeb -hostingPlanName ContosoHosting -siteMode Limited -computeMode Dedicated -siteLocation &quot;North Europe&quot; -subscriptionID &quot;9b14a38b-4b93-4554-8bb0-3cefb47abcde&quot; -resourceGroup ContosoRG01
-DeploymentName    : WebDeploy01
-ResourceGroupName : ContosoRG01
-ProvisioningState : Succeeded
-Timestamp         : 3/26/2014 1:56:55 AM
-Mode              : Incremental
-TemplateLink      : 
-                    Uri            : https://gallerystoreprodch.blob.core.windows.net/prod-microsoft-
-                    ContentVersion : 1.0.0.0
-
-
-Parameters        : 
-                    Name             Type                       Value
-                    ===============  =========================  ==========
-                    siteName         String                     ContosoWeb
-                    hostingPlanName  String                     ContosoHosting
-                    siteMode         String                     Limited
-                    computeMode      String                     Dedicated
-                    siteLocation     String                     North Europe
-                    subscriptionId   String                     9b14a38b-4b93-4554-8bb0-3cefb47abcde
-                    resourceGroup    String                     ContosoRG01</dev:code>
+			<dev:code>PS C:\&gt;New-AzureRmResourceGroupDeployment -ResourceGroupName ContosoEngineering -TemplateFile D:\Azure\Templates\EngineeringSite.json -TemplateParameterFile D:\Azure\Templates\EngSiteParms.json -TemplateVersion &quot;2.1&quot; </dev:code>
 			<dev:remarks>
-				<maml:para>This example shows how to create a resource group deployment from a gallery template and use the parameters that are added to the command dynamically to provide the template parameter values.</maml:para>
-				<maml:para />
-				<maml:para />
-				<maml:para>This command uses the New-AzureRmResourceGroupDeployment cmdlet to create a new deployment in the ContosoRG01 resource group. It uses the GalleryTemplateIdentity parameter to specify the gallery template. In this scenario, you don&apos;t need to save the gallery template to disk.Instead of using a template parameter file or a template parameter object, we&apos;ll just use the parameters that are added to the command dynamically when you specify the template.After typing the Name parameter and its value, type a minus sign (to indicate a parameter name) and then press the TAB key to trigger tab-completion. The cmdlet adds a parameter, such as siteMode. Type the parameter value, type a minus sign, press TAB, and it adds another parameter. To cycle through the parameter names, press TAB repeatedly. If you miss a mandatory template parameter, the cmdlet prompts you for the value.</maml:para>
-			</dev:remarks>
-			<command:commandLines>
-				<command:commandLine>
-					<command:commandText>
-						<maml:para />
-					</command:commandText>
-				</command:commandLine>
-			</command:commandLines>
-		</command:example>
-		<command:example>
-			<maml:title>--------------------------  Example 2: Use a custom template and parameter file  --------------------------</maml:title>
-			<maml:introduction>
-				<maml:paragraph>PS C:\&gt;</maml:paragraph>
-			</maml:introduction>
-			<dev:code>PS C:\&gt;New-AzureRmResourceGroupDeployment -ResourceGroupName ContosoEngineering -TemplateFile D:\Azure\Templates\EngineeringSite.json -TemplateParameterFile D:\Azure\Templates\EngSiteParms.json -TemplateVersion &quot;2.1&quot; -StorageAccountName contosostorage</dev:code>
-			<dev:remarks>
-				<maml:para>This command creates a new deployment by using a custom template and a template file on disk. The command uses the TemplateFile parameter to specify the template and the TemplateParameterFile to specify a file of parameters and parameter values. It uses the TemplateVersion parameter to specify a particular version of the template. Because the template files are stored in a storage account of the subscription, the cmdlet uses the StorageAccountName to specify the storage account to use.</maml:para>
-				<maml:para />
-				<maml:para />
-				<maml:para></maml:para>
-			</dev:remarks>
-			<command:commandLines>
-				<command:commandLine>
-					<command:commandText>
-						<maml:para />
-					</command:commandText>
-				</command:commandLine>
-			</command:commandLines>
-		</command:example>
-		<command:example>
-			<maml:title>--------------------------  Example 3: Use a saved gallery template and parameter object  --------------------------</maml:title>
-			<maml:introduction>
-				<maml:paragraph>PS C:\&gt;</maml:paragraph>
-			</maml:introduction>
-			<dev:code>PS C:\&gt; The first command uses the Save-AzureRmResourceGroupGalleryTemplate cmdlet to save the WordPress gallery template as a JSON file on disk.
-PS C:\&gt;Save-AzureRmResourceGroupGalleryTemplate -Identity WordPress.WordPress.0.1.0-preview1 -Path D:\Azure\Templates
-Path: 
-D:\Azure\Templates\WordPress.WordPress.0.1.0-preview1.json
-
-The second command saves a hash table of the template parameter values in the $params variable.
-PS C:\&gt; $params = @{siteName=&quot;ContosoBlog&quot;;hostingPlanName=&quot;ContosoHosting&quot;;siteMode=&quot;Limited&quot;;computeMode=&quot;Shared&quot;;siteLocation=&quot;North Europe&quot;;sku=&quot;Shared&quot;;workerSize=&quot;0&quot;;databaseName=contosodb1;databaseLocation=&quot;South Central US&quot;;databaseSku=&quot;Free&quot;;subscriptionId=&quot;7363c612-d678-4171-a715-585c237abcde&quot;;resourceGroup=&quot;ContosoRG01&quot;;dbSubscriptionId=&quot;7363c612-d678-4171-a715-585c237abcde&quot;;dbResourceGroup=&quot;ContosoRG01&quot;}
-
-
-The third command uses New-AzureRmResourceGroupDeployment cmdlet to add the new deployment to the ContosoRG01 resource group.The command uses the TemplateFile parameter to specify the saved gallery template file and the TemplateParameterObject to specify the hash table of parameters and parameter values in the $params variable. Because the template files are stored in a storage account of the subscription, the cmdlet uses the StorageAccountName to specify the storage account to use.
-PS C:\&gt;New-AzureRmResourceGroupDeployment -ResourceGroupName ContosoRG01 -TemplateFile D:\Azure\Templates\WordPress.WordPress.0.1.0-preview1.json -TemplateParameterObject $params -StorageAccountName contosostorage</dev:code>
-			<dev:remarks>
-				<maml:para>This command creates a new deployment by using a gallery template that is saved to disk as a JSON file and a hash table of parameter values.</maml:para>
+				<maml:para>This command creates a new deployment by using a custom template and a template file on disk. The command uses the TemplateFile parameter to specify the template and the TemplateParameterFile to specify a file of parameters and parameter values. It uses the TemplateVersion parameter to specify a particular version of the template.</maml:para>
 				<maml:para />
 				<maml:para />
 				<maml:para></maml:para>
@@ -9085,53 +8867,6 @@ PS C:\&gt; New-AzureRmRoleDefinition -Role $roleDef</dev:code>
 		</maml:alert>
 	</maml:alertSet>
 	<command:examples>
-		<command:example>
-			<maml:title>--------------------------  Example 1: Stop a resource group deployment  --------------------------</maml:title>
-			<maml:introduction>
-				<maml:paragraph>PS C:\&gt;</maml:paragraph>
-			</maml:introduction>
-			<dev:code>PS C:\&gt;New-AzureRmResourceGroup -ResourceGroupName ContosoRG01 -GalleryTemplateName WebHosting -TemplateParameterFile .\HostingTemplateValues
- 
-PS C:\&gt;Stop-AzureRmResourceGroupDeployment -ResourceGroupName ContosoRG01 -Force</dev:code>
-			<dev:remarks>
-				<maml:para>This example shows how to use the Stop-AzureRmResourceGroupDeployment command to stop a deployment in progress. The first command uses the New-AzureRmResourceGroup cmdlet to create and deploy a new resource group.</maml:para>
-				<maml:para />
-				<maml:para />
-				<maml:para>Immediately after pressing enter, you remember that you need to get manager approval before deploying new resources. The second command uses the Stop-AzureRmResourceGroupDeployment cmdlet to stop the deployment before it completes. The command uses the ResourceGroupName parameter to identify the deployment. It also uses the Force parameter to suppress the confirmation prompt.</maml:para>
-			</dev:remarks>
-			<command:commandLines>
-				<command:commandLine>
-					<command:commandText>
-						<maml:para />
-					</command:commandText>
-				</command:commandLine>
-			</command:commandLines>
-		</command:example>
-		<command:example>
-			<maml:title>--------------------------  Example 2: Stop a resource group deployment by deployment name  --------------------------</maml:title>
-			<maml:introduction>
-				<maml:paragraph>PS C:\&gt;</maml:paragraph>
-			</maml:introduction>
-			<dev:code>PS C:\&gt;New-AzureRmResourceGroup -ResourceGroupName ContosoRG01 -GalleryTemplateName WebHosting -TemplateParameterFile .\HostingTemplateValues -DeploymentName DeployHost
- 
-PS C:\&gt;New-AzureRmResourceGroupDeployment -ResourceGroupName ContosoRG01 -TemplateParameterFile .\PortalTemplateValues -GalleryTemplateName WebPortal -DeploymentName DeployPortal
-
-PS C:\&gt;Stop-AzureRmResourceGroupDeployment -ResourceGroupName ContosoRG01 -Name DeployPortal -Passthru
-True</dev:code>
-			<dev:remarks>
-				<maml:para>This example shows how to use the Name (alias DeploymentName) parameter of the Stop-AzureRmResourceGroupDeployment command to stop a deployment in progress.</maml:para>
-				<maml:para />
-				<maml:para />
-				<maml:para>The first command uses the New-AzureRmResourceGroup cmdlet to create and deploy a new &quot;ContosoRG01&quot; resource group with a &quot;DeployHost&quot; deployment. The second command uses the New-AzureRmResourceGroupDeployment to add the &quot;DeployPortal&quot; deployment to the &quot;ContosoRG01&quot; resource group.The third command uses the Stop-AzureRmResourceGroupDeployment cmdlet to stop the &quot;DeployPortal&quot; deployment before it completes. The command uses the ResourceGroupName parameter to identify the resource group and the Name parameter to specify the deployment name. Because the command include the Passthru parameter, the cmdlet returns a value of True ($True) to indicate that the deployment stopped.</maml:para>
-			</dev:remarks>
-			<command:commandLines>
-				<command:commandLine>
-					<command:commandText>
-						<maml:para />
-					</command:commandText>
-				</command:commandLine>
-			</command:commandLines>
-		</command:example>
 	</command:examples>
 	<maml:relatedLinks>
 		<maml:navigationLink>

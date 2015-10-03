@@ -82,7 +82,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         {
             try
             {
-                this.WriteWarning(AzureHdInsightPowerShellConstants.AsmWarning);
+                this.WriteWarning(string.Format(AzureHdInsightPowerShellConstants.AsmWarning, "Add-AzureRmHDInsightStorage"));
                 this.command.EndProcessing().Wait();
                 foreach (AzureHDInsightConfig output in this.command.Output)
                 {

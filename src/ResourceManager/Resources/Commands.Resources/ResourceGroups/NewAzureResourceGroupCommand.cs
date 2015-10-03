@@ -15,15 +15,16 @@
 using System.Collections;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Resources.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 
 namespace Microsoft.Azure.Commands.Resources
 {
+
     /// <summary>
     /// Creates a new resource group.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmResourceGroup", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(PSResourceGroup))]
-    public class NewAzureResourceGroupCommand : ResourceWithParameterBaseCmdlet, IDynamicParameters
+    [Cmdlet(VerbsCommon.New, "AzureRmResourceGroup", DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(PSResourceGroup))]
+    public class NewAzureResourceGroupCommand : ResourcesBaseCmdlet
     {
         [Alias("ResourceGroupName")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
@@ -33,11 +34,6 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group location.")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
-
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, 
-            HelpMessage = "The name of the deployment it's going to create. Only valid when a template is used. When a template is used, if the user doesn't specify a deployment name, use the current time, like \"20131223140835\".")]
-        [ValidateNotNullOrEmpty]
-        public string DeploymentName { get; set; }
 
         [Alias("Tags")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "An array of hashtables which represents resource tags.")]
@@ -52,18 +48,11 @@ namespace Microsoft.Azure.Commands.Resources
             {
                 ResourceGroupName = Name,
                 Location = Location,
-                DeploymentName = DeploymentName,
-                TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
-                TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
                 Force = Force.IsPresent,
                 Tag = Tag,
                 ConfirmAction = ConfirmAction
             };
-            if(!string.IsNullOrEmpty(DeploymentName) || !string.IsNullOrEmpty(TemplateFile)
-                || TemplateParameterObject != null)
-            {
-                WriteWarning("The deployment parameters in New-AzureRmResourceGroup cmdlet is being deprecated and will be removed in a future release. Please use New-AzureRmResourceGroupDeployment to submit deployments.");
-            }
+
             WriteWarning("The output object of this cmdlet will be modified in a future release.");
             WriteObject(ResourcesClient.CreatePSResourceGroup(parameters));
         }

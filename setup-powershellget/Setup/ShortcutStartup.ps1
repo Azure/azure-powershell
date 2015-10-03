@@ -35,7 +35,6 @@ function EnsureRegistryPath
 $error.clear()
 try {
 	if ($Install.IsPresent) {
-		EnsureRegistryPath
 		Write-Output @"
 
 Finalizing installation of Azure PowerShell. 
