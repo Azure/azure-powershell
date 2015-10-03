@@ -1702,7 +1702,7 @@ function Test-VMImageCmdletOutputFormat
 # Test Get VM Size from All Locations
 function Test-GetVMSizeFromAllLocations
 {
-    $locations = Get-AzureRmLocation | where { $_.Name -like 'Microsoft.Compute/virtualMachines' } | select -ExpandProperty Locations;
+    $locations = get_all_vm_locations;
     foreach ($loc in $locations)
     {
         $vmsizes = Get-AzureRmVMSize -Location $loc;
@@ -1711,6 +1711,26 @@ function Test-GetVMSizeFromAllLocations
 
         Write-Output ('Found VM Size Standard_A3 in Location: ' + $loc);
     }
+}
+
+function get_all_vm_locations
+{
+	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+	{
+		$namespace = "Microsoft.Compute" 
+		$type = "virtualMachines" 
+		$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
+  
+		if ($location -eq $null) 
+		{  
+			return @("West US", "East US")
+		} else 
+		{  
+			return $location.Locations  
+		}  
+	}
+
+	return @("West US", "East US")
 }
 
 <#
