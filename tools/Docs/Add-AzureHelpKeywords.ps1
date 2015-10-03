@@ -79,6 +79,11 @@ $ns = @{
 	cmd = "http://schemas.microsoft.com/maml/dev/command/2004/10"
 }
 
+$totalNumberOfFiles = ($Pairs | foreach { $_[1].Keys.count } | Measure -Sum).Sum
+$numProcessed = 0
+
+write-progress -activity "Writing Keywords to help.xml files" -status "0 % Complete:" -percentcomplete 0;
+
 $Pairs | foreach {
 	$defaults = $_[0]
 	$files = $_[1]
@@ -116,8 +121,12 @@ $Pairs | foreach {
 			# finally append the para to the alert to end the process
 			$alert[0].Node.AppendChild($para) | Out-Null
 		}
-
+		
 		# write the file back to where we read it from
 		$xml.Save($filePath);
+		
+		$numProcessed++
+		$percentComplete = ($numProcessed / $totalNumberOfFiles)
+		write-progress -activity "Writing Keywords to help.xml files" -status ("{0:P0} Complete" -f $percentComplete) -percentcomplete ($percentComplete * 100);
 	}
 }
