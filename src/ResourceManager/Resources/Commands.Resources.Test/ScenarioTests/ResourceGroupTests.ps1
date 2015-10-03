@@ -251,7 +251,12 @@ function Test-RemoveDeployment
         # Cleanup
         Clean-ResourceGroup $rgName
     }
+}
 
+<#
+.SYNOPSIS
+Tests find resource group command
+#>
 function Test-FindResourceGroup
 {
     # Setup
