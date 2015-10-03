@@ -23,6 +23,7 @@ using System;
 using System.Threading;
 using System.Management.Automation.Host;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Management.Resources;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
@@ -37,6 +38,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         static AzureRMCmdlet()
         {
             AzureSession.DataStore = new DiskDataStore();
+        }
+
+        public AzureRMCmdlet()
+        {
+            AzureSession.ClientFactory.RemoveHandler(typeof(RPRegistrationDelegatingHandler));
+            AzureSession.ClientFactory.AddHandler(new RPRegistrationDelegatingHandler(
+                () => AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager),
+                s => _debugMessages.Enqueue(s)));
         }
 
         /// <summary>

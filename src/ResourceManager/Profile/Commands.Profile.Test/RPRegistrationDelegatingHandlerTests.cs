@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 }
             };
             List<string> msgs = new List<string>();
-            RPRegistrationDelegatingHandler rpHandler = new RPRegistrationDelegatingHandler(new MockClientFactory(new List<object> { mockClient.Object }) { MoqClients = true }, AzureRMCmdlet.DefaultProfile.Context, s => msgs.Add(s))
+            RPRegistrationDelegatingHandler rpHandler = new RPRegistrationDelegatingHandler(() => mockClient.Object, s => msgs.Add(s))
             {
                 InnerHandler = new MockResponseDelegatingHandler(mapping)
             };
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 }
             };
             List<string> msgs = new List<string>();
-            RPRegistrationDelegatingHandler rpHandler = new RPRegistrationDelegatingHandler(new MockClientFactory(new List<object> { mockClient.Object }) { MoqClients = true }, AzureRMCmdlet.DefaultProfile.Context, s => msgs.Add(s))
+            RPRegistrationDelegatingHandler rpHandler = new RPRegistrationDelegatingHandler(() => mockClient.Object, s => msgs.Add(s))
             {
                 InnerHandler = new MockResponseDelegatingHandler(mapping)
             };
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 }
             };
             List<string> msgs = new List<string>();
-            RPRegistrationDelegatingHandler rpHandler = new RPRegistrationDelegatingHandler(new MockClientFactory(new List<object> { mockClient.Object }) { MoqClients = true }, AzureRMCmdlet.DefaultProfile.Context, s => msgs.Add(s))
+            RPRegistrationDelegatingHandler rpHandler = new RPRegistrationDelegatingHandler(() => mockClient.Object, s => msgs.Add(s))
             {
                 InnerHandler = new MockResponseDelegatingHandler(mapping)
             };
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 }
             };
             List<string> msgs = new List<string>();
-            RPRegistrationDelegatingHandler rpHandler = new RPRegistrationDelegatingHandler(new MockClientFactory(new List<object> { mockClient.Object }) { MoqClients = true }, AzureRMCmdlet.DefaultProfile.Context, s => msgs.Add(s))
+            RPRegistrationDelegatingHandler rpHandler = new RPRegistrationDelegatingHandler(() => mockClient.Object, s => msgs.Add(s))
             {
                 InnerHandler = new MockResponseDelegatingHandler(mapping)
             };

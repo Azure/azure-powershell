@@ -22,6 +22,7 @@ using System.Threading.Tasks;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Resources.Models;
 
 namespace Microsoft.Azure.Common.Authentication.Models
 {
@@ -32,19 +33,24 @@ namespace Microsoft.Azure.Common.Authentication.Models
         /// </summary>
         private HashSet<string> registeredProviders;
 
-        private ResourceManagementClient client;
+        private Func<ResourceManagementClient> createClient;
 
         private Action<string> writeVerbose;
 
-        public RPRegistrationDelegatingHandler(IClientFactory clientFactory, AzureContext context, Action<string> writeVerbose)
+
+        public ResourceManagementClient ResourceManagementClient { get; set; }
+
+        public RPRegistrationDelegatingHandler(Func<ResourceManagementClient> createClient, Action<string> writeVerbose)
         {
-            client = clientFactory.CreateClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
             registeredProviders = new HashSet<string>();
             this.writeVerbose = writeVerbose;
+            this.createClient = createClient;
         }
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
+            ResourceManagementClient = createClient();
+
             HttpResponseMessage responseMessage = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
             if (IsProviderNotRegistereError(responseMessage))
             {
@@ -55,8 +61,12 @@ namespace Microsoft.Azure.Common.Authentication.Models
                     try
                     {
                         writeVerbose(string.Format("Attempting to register resource provider '{0}'", providerName));
-                        // Assume registration is instantanuous.
-                        client.Providers.Register(providerName);
+                        ResourceManagementClient.Providers.Register(providerName);
+                        Provider provider = null;
+                        do
+                        {
+                            provider = ResourceManagementClient.Providers.Get(providerName).Provider;
+                        } while (provider.RegistrationState != RegistrationState.Registered.ToString());
                         writeVerbose(string.Format("Succeeded to register resource provider '{0}'", providerName));
                     }
                     catch
