@@ -322,7 +322,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests
 
             client.AddOrSetAccount(account);
             client.AddOrSetSubscription(subscription);
-            client.SetSubscriptionAsDefault(UnitTestSubscriptionName, account.Id);
+            client.SetSubscriptionAsDefault(subscriptionId, account.Id);
             client.Profile.Save();
 
             return subscription;
