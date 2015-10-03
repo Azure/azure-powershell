@@ -25,6 +25,7 @@ using Xunit;
 using System.Linq;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Management.Resources.Models;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
@@ -41,6 +42,20 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Mock<ResourceManagementClient> mockClient = new Mock<ResourceManagementClient>();
             Mock<IProviderOperations> mockProvidersOperations = new Mock<IProviderOperations>();
             mockClient.Setup(f => f.Providers).Returns(mockProvidersOperations.Object);
+            mockProvidersOperations.Setup(f => f.GetAsync(It.IsAny<string>(), It.IsAny<CancellationToken>())).Returns(
+                (string rp, CancellationToken token) =>
+                {
+                    ProviderGetResult r = new ProviderGetResult
+                    {
+                        Provider = new Provider
+                        {
+                            RegistrationState = RegistrationState.Registered.ToString()
+                        }
+                    };
+
+                    return Task.FromResult(r);
+                }
+                );
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, compatibleUri);
             Dictionary<HttpRequestMessage, List<HttpResponseMessage>> mapping = new Dictionary<HttpRequestMessage, List<HttpResponseMessage>>
             {
