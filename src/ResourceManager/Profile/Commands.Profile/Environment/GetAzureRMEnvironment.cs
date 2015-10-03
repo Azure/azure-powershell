@@ -30,6 +30,12 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The environment name")]
         public string Name { get; set; }
 
+        protected override void BeginProcessing()
+        {
+            // do not call begin processing there is no context needed for this cmdlet
+        }
+
+
         protected override void ProcessRecord()
         {
             var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);

@@ -33,6 +33,12 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(Position = 1, HelpMessage = "Do not confirm deletion of subscription")]
         public SwitchParameter Force { get; set; }
 
+        protected override void BeginProcessing()
+        {
+            // do not call begin processing there is no context needed for this cmdlet
+        }
+
+
         protected override void ProcessRecord()
         {
             var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);

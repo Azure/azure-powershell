@@ -92,6 +92,12 @@ namespace Microsoft.Azure.Commands.Profile
            HelpMessage = "The default tenant for this environment.")]
         public string AdTenant { get; set; }
 
+        protected override void BeginProcessing()
+        {
+            // do not call begin processing there is no context needed for this cmdlet
+        }
+
+
         protected override void ProcessRecord()
         {
             var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
