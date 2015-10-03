@@ -19,6 +19,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
+using Microsoft.Azure.Commands.HDInsight.Models.Management;
 using Microsoft.Azure.Management.HDInsight.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 
@@ -103,7 +104,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         public Dictionary<string, Dictionary<string, string>> Configurations { get; private set; }
 
         [Parameter(HelpMessage = "Gets config actions for the cluster.")]
-        public Dictionary<ClusterNodeType, List<ScriptAction>> ScriptActions { get; private set; }
+        public Dictionary<ClusterNodeType, List<AzureHDInsightScriptAction>> ScriptActions { get; private set; }
 
         [Parameter(HelpMessage = "Gets or sets the StorageContainer for the default Azure Storage Account.")]
         public string DefaultStorageContainer
@@ -211,6 +212,10 @@ namespace Microsoft.Azure.Commands.HDInsight
                 {
                     result.Configurations.Add(val.Key, DictionaryToHashtable(val.Value));
                 }
+                foreach (var action in parameters.ScriptActions.Where(action => !result.ScriptActions.ContainsKey(action.Key)))
+                {
+                    result.ScriptActions.Add(action.Key, action.Value.Select(a => new AzureHDInsightScriptAction(a)).ToList());
+                }
                 return result;
             }
             set
@@ -234,6 +239,10 @@ namespace Microsoft.Azure.Commands.HDInsight
                 {
                     parameters.Configurations.Add(val.Key, HashtableToDictionary(val.Value));
                 }
+                foreach (var action in value.ScriptActions.Where(action => !parameters.ScriptActions.ContainsKey(action.Key)))
+                {
+                    parameters.ScriptActions.Add(action.Key, action.Value.Select(a => a.GetScriptActionFromPSModel()).ToList());
+                }
             } 
         }
 
@@ -245,7 +254,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             parameters = new ClusterCreateParameters();
             AdditionalStorageAccounts = new Dictionary<string, string>();
             Configurations = new Dictionary<string, Dictionary<string, string>>();
-            ScriptActions = new Dictionary<ClusterNodeType, List<ScriptAction>>();
+            ScriptActions = new Dictionary<ClusterNodeType, List<AzureHDInsightScriptAction>>();
         }
 
         protected override void ProcessRecord()
@@ -285,7 +294,8 @@ namespace Microsoft.Azure.Commands.HDInsight
             }
             foreach (var action in ScriptActions.Where(action => parameters.ScriptActions.ContainsKey(action.Key)))
             {
-                parameters.ScriptActions.Add(action.Key, action.Value);
+                parameters.ScriptActions.Add(action.Key,
+                    action.Value.Select(a => a.GetScriptActionFromPSModel()).ToList());
             }
             if (OozieMetastore != null)
             {
