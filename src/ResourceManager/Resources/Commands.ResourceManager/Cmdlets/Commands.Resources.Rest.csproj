@@ -136,6 +136,7 @@
     <Compile Include="Handlers\AuthenticationHandler.cs" />
     <Compile Include="Handlers\RetryHandler.cs" />
     <Compile Include="Handlers\TracingHandler.cs" />
+    <Compile Include="Handlers\CmdletInfoHandler.cs" />
     <Compile Include="Handlers\UserAgentHandler.cs" />
     <Compile Include="Implementation\GetAzureResourceGroupDeploymentOperationCmdlet.cs" />
     <Compile Include="Implementation\Lock\GetAzureResourceLockCmdlet.cs" />

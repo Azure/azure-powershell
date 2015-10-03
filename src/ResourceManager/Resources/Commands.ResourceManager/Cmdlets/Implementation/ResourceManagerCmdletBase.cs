@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Common;
     using Microsoft.Azure.Common.Authentication;
     using Microsoft.Azure.Common.Authentication.Models;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Newtonsoft.Json.Linq;
+    using System.Collections.Generic;
 
     /// <summary>
     /// The base class for resource manager cmdlets.
@@ -212,10 +212,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             return string.IsNullOrWhiteSpace(this.ApiVersion)
                 ? ApiVersionHelper.DetermineApiVersion(
-                    DefaultContext,
+                    context: DefaultContext,
                     resourceId: resourceId,
                     cancellationToken: this.CancellationToken.Value,
-                    pre: pre ?? this.Pre)
+                    pre: pre ?? this.Pre,
+                    cmdletHeaderValues: this.GetCmdletHeaders())
                 : Task.FromResult(this.ApiVersion);
         }
 
@@ -233,7 +234,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     providerNamespace: providerNamespace,
                     resourceType: resourceType,
                     cancellationToken: this.CancellationToken.Value,
-                    pre: pre ?? this.Pre)
+                    pre: pre ?? this.Pre,
+                    cmdletHeaderValues: this.GetCmdletHeaders())
                 : Task.FromResult(this.ApiVersion);
         }
 
@@ -257,7 +259,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 httpClientHelper: HttpClientHelperFactory.Instance
                 .CreateHttpClientHelper(
                         credentials: AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(DefaultContext),
-                        headerValues: AzureSession.ClientFactory.UserAgents));
+                        headerValues: AzureSession.ClientFactory.UserAgents,
+                        cmdletHeaderValues: this.GetCmdletHeaders()));
+        }
+
+        private Dictionary<string, string> GetCmdletHeaders()
+        {
+            return new Dictionary<string, string>
+            {
+                {"ParameterSetName", this.ParameterSetName },
+                {"CommandName", this.CommandRuntime.ToString() }
+            };
         }
 
         /// <summary>
