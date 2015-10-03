@@ -27,14 +27,8 @@ namespace Microsoft.Azure.Commands.HDInsight
     {
         #region Input Parameter Definitions
 
-        [Parameter(
-            Position = 0,
-            Mandatory = true,
-            HelpMessage = "Gets or sets the name of the resource group.")]
-        public string ResourceGroupName { get; set; }
-
         [Parameter(Mandatory = true,
-            Position = 1,
+            Position = 0,
             HelpMessage = "The name of the cluster.")]
         public string ClusterName
         {
@@ -43,15 +37,16 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
 
         [Parameter(Mandatory = true,
-            Position = 2,
+            Position = 1,
             HelpMessage = "The JobID of the jobDetails to stop.",
             ValueFromPipeline = true)]
         public string JobId { get; set; }
 
         [Parameter(Mandatory = true,
-            Position = 1,
+            Position = 2,
             HelpMessage = "The credentials with which to connect to the cluster.")]
-        public PSCredential ClusterCredential
+        [Alias("ClusterCredential")]
+        public PSCredential HttpCredential
         {
             get
             {
@@ -66,11 +61,18 @@ namespace Microsoft.Azure.Commands.HDInsight
                 };
             }
         }
-       
+
+        [Parameter(HelpMessage = "Gets or sets the name of the resource group.")]
+        public string ResourceGroupName { get; set; }
+
         #endregion
 
         protected override void ProcessRecord()
         {
+            if (ResourceGroupName == null)
+            {
+                ResourceGroupName = GetResourceGroupByAccountName(ClusterName);
+            }
             _clusterName = GetClusterConnection(ResourceGroupName, ClusterName);
             HDInsightJobClient.StopJob(JobId);
         }

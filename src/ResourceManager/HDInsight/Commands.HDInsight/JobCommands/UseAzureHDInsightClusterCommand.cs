@@ -31,24 +31,20 @@ namespace Microsoft.Azure.Commands.HDInsight
         internal const string ClusterEndpoint = "CurrentHDInsightClusterEndpoint";
         internal const string ClusterCred = "CurrentHDInsightClusterCredential";
         internal const string CurrentResourceGroup = "CurrentHDInsightResourceGroup";
+
         #region Input Parameter Definitions
 
-        [Parameter(
+       [Parameter(
             Position = 0,
-            Mandatory = true,
-            HelpMessage = "Gets or sets the name of the resource group.")]
-        public string ResourceGroupName { get; set; }
-
-        [Parameter(
-            Position = 1,
             Mandatory = true,
             HelpMessage = "Gets or sets the name of the cluster.")]
         public string ClusterName { get; set; }
 
         [Parameter(Mandatory = true,
-            Position = 2,
+            Position = 1,
             HelpMessage = "The credentials with which to connect to the cluster.")]
-        public PSCredential ClusterCredential
+       [Alias("ClusterCredential")]
+       public PSCredential HttpCredential
         {
             get
             {
@@ -66,14 +62,22 @@ namespace Microsoft.Azure.Commands.HDInsight
             }
         }
 
+        [Parameter(HelpMessage = "Gets or sets the name of the resource group.")]
+        public string ResourceGroupName { get; set; }
+
         #endregion
 
         protected override void ProcessRecord()
         {
+            if (ResourceGroupName == null)
+            {
+                ResourceGroupName = GetResourceGroupByAccountName(ClusterName);
+            }
+
             var httpEndpoint = GetClusterConnection(ResourceGroupName, ClusterName);
 
             SessionState.PSVariable.Set(ClusterEndpoint, httpEndpoint);
-            SessionState.PSVariable.Set(ClusterCred, ClusterCredential);
+            SessionState.PSVariable.Set(ClusterCred, HttpCredential);
             SessionState.PSVariable.Set(CurrentResourceGroup, ResourceGroupName);
 
             WriteObject(string.Format("Successfully connected to cluster {0} in resource group {1}", ClusterName,

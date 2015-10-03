@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             var httpEndpoint =
                 cluster.Properties.ConnectivityEndpoints.FirstOrDefault(c => c.Name.Equals("HTTPS", StringComparison.OrdinalIgnoreCase));
             HttpEndpoint = httpEndpoint != null ? httpEndpoint.Location : null;
-
+            Error = cluster.Properties.ErrorInfos.Select(s => s.Message).FirstOrDefault();
             ResourceGroup = ClusterConfigurationUtils.GetResourceGroupFromClusterId(cluster.Id);
         }
 
@@ -98,6 +98,11 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// The endpoint with which to connect to the cluster.
         /// </summary>
         public string HttpEndpoint { get; set; }
+
+        /// <summary>
+        /// The error (if any).
+        /// </summary>
+        public string Error { get; set; }
 
         /// <summary>
         /// Default storage account for this cluster.

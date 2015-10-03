@@ -49,30 +49,9 @@
 				  <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			  </command:parameter>
 			  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				  <maml:name>TagName</maml:name>
-				  <maml:description>
-					  <maml:para>The name of the tag to query by.</maml:para>
-				  </maml:description>
-				  <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			  </command:parameter>
-			  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				  <maml:name>TagValue</maml:name>
-				  <maml:description>
-					  <maml:para>The value of the tag to query by.</maml:para>
-				  </maml:description>
-				  <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			  </command:parameter>
-			  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				  <maml:name>ExpandProperties</maml:name>
 				  <maml:description>
 					  <maml:para>When specified, expands the properties of the resource.</maml:para>
-				  </maml:description>
-				  <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			  </command:parameter>
-			  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				  <maml:name>ExpandPermissions</maml:name>
-				  <maml:description>
-					  <maml:para>When specified, expands the permissions on the resource.</maml:para>
 				  </maml:description>
 				  <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			  </command:parameter>
@@ -96,13 +75,6 @@
 					  <maml:para>An OData style filter which will be appended to the request in addition to any other filters.</maml:para>
 				  </maml:description>
 				  <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			  </command:parameter>
-			  <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
-				  <maml:name>SubscriptionId</maml:name>
-				  <maml:description>
-					  <maml:para>The subscription to use.</maml:para>
-				  </maml:description>
-				  <command:parameterValue required="true" variableLength="true">Guid[]</command:parameterValue>
 			  </command:parameter>
 			  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				  <maml:name>ResourceGroupName</maml:name>
@@ -167,13 +139,6 @@
 				  <maml:name>ExpandProperties</maml:name>
 				  <maml:description>
 					  <maml:para>When specified, expands the properties of the resource.</maml:para>
-				  </maml:description>
-				  <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			  </command:parameter>
-			  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				  <maml:name>ExpandPermissions</maml:name>
-				  <maml:description>
-					  <maml:para>When specified, expands the permissions on the resource.</maml:para>
 				  </maml:description>
 				  <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			  </command:parameter>
@@ -261,13 +226,6 @@
 				  <maml:name>ExpandProperties</maml:name>
 				  <maml:description>
 					  <maml:para>When specified, expands the properties of the resource.</maml:para>
-				  </maml:description>
-				  <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			  </command:parameter>
-			  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				  <maml:name>ExpandPermissions</maml:name>
-				  <maml:description>
-					  <maml:para>When specified, expands the permissions on the resource.</maml:para>
 				  </maml:description>
 				  <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			  </command:parameter>
@@ -366,30 +324,9 @@
 				  <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			  </command:parameter>
 			  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				  <maml:name>TagName</maml:name>
-				  <maml:description>
-					  <maml:para>The name of the tag to query by.</maml:para>
-				  </maml:description>
-				  <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			  </command:parameter>
-			  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				  <maml:name>TagValue</maml:name>
-				  <maml:description>
-					  <maml:para>The value of the tag to query by.</maml:para>
-				  </maml:description>
-				  <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			  </command:parameter>
-			  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				  <maml:name>ExpandProperties</maml:name>
 				  <maml:description>
 					  <maml:para>When specified, expands the properties of the resource.</maml:para>
-				  </maml:description>
-				  <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			  </command:parameter>
-			  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				  <maml:name>ExpandPermissions</maml:name>
-				  <maml:description>
-					  <maml:para>When specified, expands the permissions on the resource.</maml:para>
 				  </maml:description>
 				  <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			  </command:parameter>
@@ -413,13 +350,6 @@
 					  <maml:para>An OData style filter which will be appended to the request in addition to any other filters.</maml:para>
 				  </maml:description>
 				  <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			  </command:parameter>
-			  <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
-				  <maml:name>SubscriptionId</maml:name>
-				  <maml:description>
-					  <maml:para>The subscription to use.</maml:para>
-				  </maml:description>
-				  <command:parameterValue required="true" variableLength="true">Guid[]</command:parameterValue>
 			  </command:parameter>
 			  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				  <maml:name>ResourceGroupName</maml:name>
@@ -516,13 +446,6 @@
 				  <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			  </command:parameter>
 			  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				  <maml:name>ExpandPermissions</maml:name>
-				  <maml:description>
-					  <maml:para>When specified, expands the permissions on the resource.</maml:para>
-				  </maml:description>
-				  <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			  </command:parameter>
-			  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				  <maml:name>IsCollection</maml:name>
 				  <maml:description>
 					  <maml:para>When specified, ensures that the query is run against a collection instead of a resource.</maml:para>
@@ -536,14 +459,7 @@
 				  </maml:description>
 				  <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			  </command:parameter>
-			  <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
-				  <maml:name>SubscriptionId</maml:name>
-				  <maml:description>
-					  <maml:para>The subscription to use.</maml:para>
-				  </maml:description>
-				  <command:parameterValue required="true" variableLength="true">Guid[]</command:parameterValue>
-			  </command:parameter>
-			  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				  <maml:name>ResourceGroupName</maml:name>
 				  <maml:description>
 					  <maml:para>The resource group name.</maml:para>
@@ -627,13 +543,6 @@
 				  <maml:name>ExpandProperties</maml:name>
 				  <maml:description>
 					  <maml:para>When specified, expands the properties of the resource.</maml:para>
-				  </maml:description>
-				  <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			  </command:parameter>
-			  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				  <maml:name>ExpandPermissions</maml:name>
-				  <maml:description>
-					  <maml:para>When specified, expands the permissions on the resource.</maml:para>
 				  </maml:description>
 				  <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			  </command:parameter>
@@ -759,45 +668,9 @@
 			  <dev:defaultValue></dev:defaultValue>
 		  </command:parameter>
 		  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			  <maml:name>TagName</maml:name>
-			  <maml:description>
-				  <maml:para>The name of the tag to query by.</maml:para>
-			  </maml:description>
-			  <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			  <dev:type>
-				  <maml:name>String</maml:name>
-				  <maml:uri/>
-			  </dev:type>
-			  <dev:defaultValue></dev:defaultValue>
-		  </command:parameter>
-		  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			  <maml:name>TagValue</maml:name>
-			  <maml:description>
-				  <maml:para>The value of the tag to query by.</maml:para>
-			  </maml:description>
-			  <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			  <dev:type>
-				  <maml:name>String</maml:name>
-				  <maml:uri/>
-			  </dev:type>
-			  <dev:defaultValue></dev:defaultValue>
-		  </command:parameter>
-		  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 			  <maml:name>ExpandProperties</maml:name>
 			  <maml:description>
 				  <maml:para>When specified, expands the properties of the resource.</maml:para>
-			  </maml:description>
-			  <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			  <dev:type>
-				  <maml:name>SwitchParameter</maml:name>
-				  <maml:uri/>
-			  </dev:type>
-			  <dev:defaultValue></dev:defaultValue>
-		  </command:parameter>
-		  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			  <maml:name>ExpandPermissions</maml:name>
-			  <maml:description>
-				  <maml:para>When specified, expands the permissions on the resource.</maml:para>
 			  </maml:description>
 			  <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			  <dev:type>
@@ -838,18 +711,6 @@
 			  <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			  <dev:type>
 				  <maml:name>String</maml:name>
-				  <maml:uri/>
-			  </dev:type>
-			  <dev:defaultValue></dev:defaultValue>
-		  </command:parameter>
-		  <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
-			  <maml:name>SubscriptionId</maml:name>
-			  <maml:description>
-				  <maml:para>The subscription to use.</maml:para>
-			  </maml:description>
-			  <command:parameterValue required="true" variableLength="true">Guid[]</command:parameterValue>
-			  <dev:type>
-				  <maml:name>Guid[]</maml:name>
 				  <maml:uri/>
 			  </dev:type>
 			  <dev:defaultValue></dev:defaultValue>
@@ -1948,13 +1809,6 @@
 				  </maml:description>
 				  <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			  </command:parameter>
-			  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				  <maml:name>NoWait</maml:name>
-				  <maml:description>
-					  <maml:para>Do not wait for operation to complete.</maml:para>
-				  </maml:description>
-				  <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			  </command:parameter>
 			  <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
 				  <maml:name>ResourceId</maml:name>
 				  <maml:description>
@@ -2042,18 +1896,6 @@
 			  <maml:name>Force</maml:name>
 			  <maml:description>
 				  <maml:para>Do not ask for confirmation.</maml:para>
-			  </maml:description>
-			  <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			  <dev:type>
-				  <maml:name>SwitchParameter</maml:name>
-				  <maml:uri/>
-			  </dev:type>
-			  <dev:defaultValue></dev:defaultValue>
-		  </command:parameter>
-		  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			  <maml:name>NoWait</maml:name>
-			  <maml:description>
-				  <maml:para>Do not wait for operation to complete.</maml:para>
 			  </maml:description>
 			  <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			  <dev:type>
@@ -2424,13 +2266,6 @@
 				  </maml:description>
 				  <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			  </command:parameter>
-			  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				  <maml:name>ParentResource</maml:name>
-				  <maml:description>
-					  <maml:para>The parent resource type. e.g. Servers/myServer.</maml:para>
-				  </maml:description>
-				  <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			  </command:parameter>
 			  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				  <maml:name>ExtensionResourceName</maml:name>
 				  <maml:description>
@@ -2451,13 +2286,6 @@
 					  <maml:para>An OData style filter which will be appended to the request in addition to any other filters.</maml:para>
 				  </maml:description>
 				  <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			  </command:parameter>
-			  <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
-				  <maml:name>SubscriptionId</maml:name>
-				  <maml:description>
-					  <maml:para>The subscription to use.</maml:para>
-				  </maml:description>
-				  <command:parameterValue required="true" variableLength="true">Nullable`1[Guid]</command:parameterValue>
 			  </command:parameter>
 			  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				  <maml:name>ResourceGroupName</maml:name>
@@ -2903,18 +2731,6 @@
 			  </dev:type>
 			  <dev:defaultValue></dev:defaultValue>
 		  </command:parameter>
-		  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			  <maml:name>ParentResource</maml:name>
-			  <maml:description>
-				  <maml:para>The parent resource type. e.g. Servers/myServer.</maml:para>
-			  </maml:description>
-			  <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			  <dev:type>
-				  <maml:name>String</maml:name>
-				  <maml:uri/>
-			  </dev:type>
-			  <dev:defaultValue></dev:defaultValue>
-		  </command:parameter>
 		  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			  <maml:name>ExtensionResourceName</maml:name>
 			  <maml:description>
@@ -2935,18 +2751,6 @@
 			  <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			  <dev:type>
 				  <maml:name>String</maml:name>
-				  <maml:uri/>
-			  </dev:type>
-			  <dev:defaultValue></dev:defaultValue>
-		  </command:parameter>
-		  <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
-			  <maml:name>SubscriptionId</maml:name>
-			  <maml:description>
-				  <maml:para>The subscription to use.</maml:para>
-			  </maml:description>
-			  <command:parameterValue required="true" variableLength="true">Nullable`1[Guid]</command:parameterValue>
-			  <dev:type>
-				  <maml:name>Nullable`1[Guid]</maml:name>
 				  <maml:uri/>
 			  </dev:type>
 			  <dev:defaultValue></dev:defaultValue>
@@ -3976,13 +3780,6 @@
 				  </maml:description>
 				  <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			  </command:parameter>
-			  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				  <maml:name>ParentResource</maml:name>
-				  <maml:description>
-					  <maml:para>The parent resource type. e.g. Servers/myServer.</maml:para>
-				  </maml:description>
-				  <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			  </command:parameter>
 			  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				  <maml:name>ExtensionResourceName</maml:name>
 				  <maml:description>
@@ -4003,13 +3800,6 @@
 					  <maml:para>An OData style filter which will be appended to the request in addition to any other filters.</maml:para>
 				  </maml:description>
 				  <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			  </command:parameter>
-			  <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
-				  <maml:name>SubscriptionId</maml:name>
-				  <maml:description>
-					  <maml:para>The subscription to use.</maml:para>
-				  </maml:description>
-				  <command:parameterValue required="true" variableLength="true">Nullable`1[Guid]</command:parameterValue>
 			  </command:parameter>
 			  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				  <maml:name>ResourceGroupName</maml:name>
@@ -4322,18 +4112,6 @@
 			  </dev:type>
 			  <dev:defaultValue></dev:defaultValue>
 		  </command:parameter>
-		  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			  <maml:name>ParentResource</maml:name>
-			  <maml:description>
-				  <maml:para>The parent resource type. e.g. Servers/myServer.</maml:para>
-			  </maml:description>
-			  <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			  <dev:type>
-				  <maml:name>String</maml:name>
-				  <maml:uri/>
-			  </dev:type>
-			  <dev:defaultValue></dev:defaultValue>
-		  </command:parameter>
 		  <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 			  <maml:name>ExtensionResourceName</maml:name>
 			  <maml:description>
@@ -4354,18 +4132,6 @@
 			  <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			  <dev:type>
 				  <maml:name>String</maml:name>
-				  <maml:uri/>
-			  </dev:type>
-			  <dev:defaultValue></dev:defaultValue>
-		  </command:parameter>
-		  <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
-			  <maml:name>SubscriptionId</maml:name>
-			  <maml:description>
-				  <maml:para>The subscription to use.</maml:para>
-			  </maml:description>
-			  <command:parameterValue required="true" variableLength="true">Nullable`1[Guid]</command:parameterValue>
-			  <dev:type>
-				  <maml:name>Nullable`1[Guid]</maml:name>
 				  <maml:uri/>
 			  </dev:type>
 			  <dev:defaultValue></dev:defaultValue>
@@ -5223,13 +4989,6 @@
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>ParentResource</maml:name>
-          <maml:description>
-            <maml:para>The parent resource type. e.g. Servers/myServer.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
           <maml:name>ExtensionResourceName</maml:name>
           <maml:description>
@@ -5250,13 +5009,6 @@
             <maml:para>An OData style filter which will be appended to the request in addition to any other filters.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
-          <maml:name>SubscriptionId</maml:name>
-          <maml:description>
-            <maml:para>The subscription to use.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="true">Nullable`1[Guid]</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
           <maml:name>ResourceGroupName</maml:name>
@@ -5683,18 +5435,6 @@
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>ParentResource</maml:name>
-        <maml:description>
-          <maml:para>The parent resource type. e.g. Servers/myServer.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>ExtensionResourceName</maml:name>
         <maml:description>
@@ -5715,18 +5455,6 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="named">
-        <maml:name>SubscriptionId</maml:name>
-        <maml:description>
-          <maml:para>The subscription to use.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="true">Nullable`1[Guid]</command:parameterValue>
-        <dev:type>
-          <maml:name>Nullable`1[Guid]</maml:name>
           <maml:uri/>
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
@@ -6625,6 +6353,895 @@
         <dev:code>Set-AzureRmResourceLock -LockName test -ResourceName myResource -ResourceType microsoft.web/sites -ResourceGroupName myResourceGroup -LockLevel CanNotDelete -LockNotes &quot;Updated note&quot;</dev:code>
         <dev:remarks>
           <maml:para>Updates existing resource lock</maml:para>
+          <maml:para />
+          <maml:para />
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText>
+              <maml:para />
+            </command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <!--Generated by PS Cmdlet Help Editor-->
+    <command:details>
+      <command:name>Find-AzureRmResource</command:name>
+      <maml:description>
+        <maml:para>Searches for resources using the specified parameters.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Find</command:verb>
+      <command:noun>AzureRmResource</command:noun>
+      <dev:version />
+    </command:details>
+    <maml:description>
+      <maml:para>Searches for resources using the specified parameters.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Find-AzureRmResource</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>ResourceNameContains</maml:name>
+          <maml:description>
+            <maml:para>The resource name substring. e.g. if the resource name is 'testResource', you can specify 'test'.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>ResourceType</maml:name>
+          <maml:description>
+            <maml:para>The resource type. e.g. Microsoft.Sql/Servers/Databases.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>ExtensionResourceName</maml:name>
+          <maml:description>
+            <maml:para>The extension resource name. e.g. to specify a database MyServer/MyDatabase.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>ExtensionResourceType</maml:name>
+          <maml:description>
+            <maml:para>The extension resource type. e.g. Microsoft.Sql/Servers/Databases.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>TagName</maml:name>
+          <maml:description>
+            <maml:para>The name of the tag to query by.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>TagValue</maml:name>
+          <maml:description>
+            <maml:para>The value of the tag to query by.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ExpandProperties</maml:name>
+          <maml:description>
+            <maml:para>When specified, expands the properties of the resource.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Top</maml:name>
+          <maml:description>
+            <maml:para>The number of resources to retrieve.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ODataQuery</maml:name>
+          <maml:description>
+            <maml:para>An OData style filter which will be appended to the request in addition to any other filters.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>ResourceGroupNameContains</maml:name>
+          <maml:description>
+            <maml:para>The resource group name substring.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>OutputObjectFormat</maml:name>
+          <maml:description>
+            <maml:para>The output format of the resource properties.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ResourceObjectFormat</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ApiVersion</maml:name>
+          <maml:description>
+            <maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Pre</maml:name>
+          <maml:description>
+            <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Profile</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>InformationAction</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>InformationVariable</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Find-AzureRmResource</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ExpandProperties</maml:name>
+          <maml:description>
+            <maml:para>When specified, expands the properties of the resource.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ODataQuery</maml:name>
+          <maml:description>
+            <maml:para>An OData style filter which will be appended to the request in addition to any other filters.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>OutputObjectFormat</maml:name>
+          <maml:description>
+            <maml:para>The output format of the resource properties.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ResourceObjectFormat</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ApiVersion</maml:name>
+          <maml:description>
+            <maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Pre</maml:name>
+          <maml:description>
+            <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Profile</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>InformationAction</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>InformationVariable</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Find-AzureRmResource</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>ResourceNameContains</maml:name>
+          <maml:description>
+            <maml:para>The resource name substring. e.g. if the resource name is 'testResource', you can specify 'test'.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>ResourceType</maml:name>
+          <maml:description>
+            <maml:para>The resource type. e.g. Microsoft.Sql/Servers/Databases.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>ExtensionResourceName</maml:name>
+          <maml:description>
+            <maml:para>The extension resource name. e.g. to specify a database MyServer/MyDatabase.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>ExtensionResourceType</maml:name>
+          <maml:description>
+            <maml:para>The extension resource type. e.g. Microsoft.Sql/Servers/Databases.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ExpandProperties</maml:name>
+          <maml:description>
+            <maml:para>When specified, expands the properties of the resource.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ODataQuery</maml:name>
+          <maml:description>
+            <maml:para>An OData style filter which will be appended to the request in addition to any other filters.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>TenantLevel</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>OutputObjectFormat</maml:name>
+          <maml:description>
+            <maml:para>The output format of the resource properties.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ResourceObjectFormat</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ApiVersion</maml:name>
+          <maml:description>
+            <maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Pre</maml:name>
+          <maml:description>
+            <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Profile</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>InformationAction</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>InformationVariable</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Find-AzureRmResource</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>ResourceNameContains</maml:name>
+          <maml:description>
+            <maml:para>The resource name substring. e.g. if the resource name is 'testResource', you can specify 'test'.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>ResourceType</maml:name>
+          <maml:description>
+            <maml:para>The resource type. e.g. Microsoft.Sql/Servers/Databases.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>ExtensionResourceName</maml:name>
+          <maml:description>
+            <maml:para>The extension resource name. e.g. to specify a database MyServer/MyDatabase.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>ExtensionResourceType</maml:name>
+          <maml:description>
+            <maml:para>The extension resource type. e.g. Microsoft.Sql/Servers/Databases.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>TagName</maml:name>
+          <maml:description>
+            <maml:para>The name of the tag to query by.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>TagValue</maml:name>
+          <maml:description>
+            <maml:para>The value of the tag to query by.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ExpandProperties</maml:name>
+          <maml:description>
+            <maml:para>When specified, expands the properties of the resource.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Top</maml:name>
+          <maml:description>
+            <maml:para>The number of resources to retrieve.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ODataQuery</maml:name>
+          <maml:description>
+            <maml:para>An OData style filter which will be appended to the request in addition to any other filters.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>ResourceGroupNameContains</maml:name>
+          <maml:description>
+            <maml:para>The resource group name substring.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>OutputObjectFormat</maml:name>
+          <maml:description>
+            <maml:para>The output format of the resource properties.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ResourceObjectFormat</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ApiVersion</maml:name>
+          <maml:description>
+            <maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Pre</maml:name>
+          <maml:description>
+            <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Profile</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>InformationAction</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>InformationVariable</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Find-AzureRmResource</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>ResourceName</maml:name>
+          <maml:description>
+            <maml:para>The resource name substring. e.g. if the resource name is 'testResource', you can specify 'test'.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>ResourceType</maml:name>
+          <maml:description>
+            <maml:para>The resource type. e.g. Microsoft.Sql/Servers/Databases.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ParentResource</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>ExtensionResourceName</maml:name>
+          <maml:description>
+            <maml:para>The extension resource name. e.g. to specify a database MyServer/MyDatabase.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>ExtensionResourceType</maml:name>
+          <maml:description>
+            <maml:para>The extension resource type. e.g. Microsoft.Sql/Servers/Databases.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ExpandProperties</maml:name>
+          <maml:description>
+            <maml:para>When specified, expands the properties of the resource.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ODataQuery</maml:name>
+          <maml:description>
+            <maml:para>An OData style filter which will be appended to the request in addition to any other filters.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>ResourceGroupNameContains</maml:name>
+          <maml:description>
+            <maml:para>The resource group name substring.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>OutputObjectFormat</maml:name>
+          <maml:description>
+            <maml:para>The output format of the resource properties.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ResourceObjectFormat</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ApiVersion</maml:name>
+          <maml:description>
+            <maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Pre</maml:name>
+          <maml:description>
+            <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Profile</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>InformationAction</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>InformationVariable</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Find-AzureRmResource</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>ResourceNameContains</maml:name>
+          <maml:description>
+            <maml:para>The resource name substring. e.g. if the resource name is 'testResource', you can specify 'test'.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>ResourceType</maml:name>
+          <maml:description>
+            <maml:para>The resource type. e.g. Microsoft.Sql/Servers/Databases.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>ExtensionResourceName</maml:name>
+          <maml:description>
+            <maml:para>The extension resource name. e.g. to specify a database MyServer/MyDatabase.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>ExtensionResourceType</maml:name>
+          <maml:description>
+            <maml:para>The extension resource type. e.g. Microsoft.Sql/Servers/Databases.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ExpandProperties</maml:name>
+          <maml:description>
+            <maml:para>When specified, expands the properties of the resource.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Top</maml:name>
+          <maml:description>
+            <maml:para>The number of resources to retrieve.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ODataQuery</maml:name>
+          <maml:description>
+            <maml:para>An OData style filter which will be appended to the request in addition to any other filters.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>TenantLevel</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>OutputObjectFormat</maml:name>
+          <maml:description>
+            <maml:para>The output format of the resource properties.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ResourceObjectFormat</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ApiVersion</maml:name>
+          <maml:description>
+            <maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Pre</maml:name>
+          <maml:description>
+            <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Profile</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>InformationAction</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>InformationVariable</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>ResourceNameContains</maml:name>
+        <maml:description>
+          <maml:para>The resource name substring. e.g. if the resource name is 'testResource', you can specify 'test'.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>ResourceType</maml:name>
+        <maml:description>
+          <maml:para>The resource type. e.g. Microsoft.Sql/Servers/Databases.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>ExtensionResourceName</maml:name>
+        <maml:description>
+          <maml:para>The extension resource name. e.g. to specify a database MyServer/MyDatabase.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>ExtensionResourceType</maml:name>
+        <maml:description>
+          <maml:para>The extension resource type. e.g. Microsoft.Sql/Servers/Databases.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>TagName</maml:name>
+        <maml:description>
+          <maml:para>The name of the tag to query by.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>TagValue</maml:name>
+        <maml:description>
+          <maml:para>The value of the tag to query by.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ExpandProperties</maml:name>
+        <maml:description>
+          <maml:para>When specified, expands the properties of the resource.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Top</maml:name>
+        <maml:description>
+          <maml:para>The number of resources to retrieve.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="true">Nullable`1[Int32]</command:parameterValue>
+        <dev:type>
+          <maml:name>Nullable`1[Int32]</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ODataQuery</maml:name>
+        <maml:description>
+          <maml:para>An OData style filter which will be appended to the request in addition to any other filters.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>ResourceGroupNameContains</maml:name>
+        <maml:description>
+          <maml:para>The resource group name substring.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>OutputObjectFormat</maml:name>
+        <maml:description>
+          <maml:para>The output format of the resource properties.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">ResourceObjectFormat</command:parameterValue>
+        <dev:type>
+          <maml:name>ResourceObjectFormat</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ApiVersion</maml:name>
+        <maml:description>
+          <maml:para>When set, indicates the version of the resource provider API to use. If not specified, the API version is automatically determined as the latest available.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Pre</maml:name>
+        <maml:description>
+          <maml:para>When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Profile</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+        <dev:type>
+          <maml:name>AzureProfile</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>InformationAction</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+        <dev:type>
+          <maml:name>ActionPreference</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>InformationVariable</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>TenantLevel</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri/>
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri></maml:uri>
+          <maml:description/>
+        </dev:type>
+        <maml:description>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri></maml:uri>
+          <maml:description/>
+        </dev:type>
+        <maml:description>
+          <maml:para>
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors></command:terminatingErrors>
+    <command:nonTerminatingErrors></command:nonTerminatingErrors>
+    <maml:alertSet>
+      <maml:title></maml:title>
+      <maml:alert>
+        <maml:para />
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>--------------------------  FindByType  --------------------------</maml:title>
+        <maml:introduction>
+          <maml:paragraph>PS C:\&gt;</maml:paragraph>
+        </maml:introduction>
+        <dev:code>Find-AzureRmResource -ResourceType microsoft.web/sites -ResourceGroupNameContains resourceGroup</dev:code>
+        <dev:remarks>
+          <maml:para>Finds resources of type microsoft.web/sites under resource groups that match the string 'resourceGroup'</maml:para>
+          <maml:para />
+          <maml:para />
+          <maml:para></maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText>
+              <maml:para />
+            </command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>--------------------------  FindByType2  --------------------------</maml:title>
+        <maml:introduction>
+          <maml:paragraph>PS C:\&gt;</maml:paragraph>
+        </maml:introduction>
+        <dev:code>Find-AzureRmResource -ResourceType microsoft.web/sites -ResourceNameContains test</dev:code>
+        <dev:remarks>
+          <maml:para>Finds all resources of type microsoft.web/sites whose resource name contains 'test'</maml:para>
           <maml:para />
           <maml:para />
           <maml:para></maml:para>
