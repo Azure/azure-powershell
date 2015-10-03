@@ -165,7 +165,7 @@
     <Compile Include="Extensions\ResourceExtensions.cs" />
     <Compile Include="Extensions\JTokenExtensions.cs" />
     <Compile Include="Implementation\ResourceManagerCmdletBase.cs" />
-    <Compile Include="Implementation\SetAzureResourceLockCmdlet.cs" />
+    <Compile Include="Implementation\Lock\SetAzureResourceLockCmdlet.cs" />
     <Compile Include="Json\CamelCasePropertyNamesWithOverridesContractResolver.cs" />
     <Compile Include="Json\JsonPreserveCaseDictionaryAttribute.cs" />
     <Compile Include="Json\TimeSpanConverter.cs" />
