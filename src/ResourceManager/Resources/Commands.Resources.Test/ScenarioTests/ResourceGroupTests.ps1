@@ -131,7 +131,7 @@ function Test-RemoveNonExistingResourceGroup
     # Setup
     $rgname = Get-ResourceGroupName
 
-    Assert-Throws { Remove-AzureRmResourceGroup $rgname -Force } "Provided resource group does not exist."
+    Assert-Throws { Remove-AzureRmResourceGroup -Name $rgname -Force } "Provided resource group does not exist."
 }
 
 <#
@@ -250,5 +250,59 @@ function Test-RemoveDeployment
     {
         # Cleanup
         Clean-ResourceGroup $rgName
+    }
+}
+
+<#
+.SYNOPSIS
+Tests find resource group command
+#>
+function Test-FindResourceGroup
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+	$rgname2 = Get-ResourceGroupName
+    $location = Get-ProviderLocation ResourceManagement
+	$originalResorcrGroups = Find-AzureRmResourceGroup
+	$originalCount = @($originalResorcrGroups).Count 
+
+    try
+    {
+        # Test
+        $actual = New-AzureRmResourceGroup -Name $rgname -Location $location -Tag @{ Name = "testtag"; Value = "testval" }
+        $actual2 = New-AzureRmResourceGroup -Name $rgname2 -Location $location -Tag @{ Name = "testtag"; Value = "testval2" }
+
+        $expected1 = Get-AzureRmResourceGroup -Name $rgname
+        # Assert
+        Assert-AreEqual $expected1.ResourceGroupName $actual.ResourceGroupName
+        Assert-AreEqual $expected1.Tags[0]["Name"] $actual.Tags[0]["Name"]
+
+		$expected2 = Get-AzureRmResourceGroup -Name $rgname2
+        # Assert
+        Assert-AreEqual $expected2.ResourceGroupName $actual2.ResourceGroupName
+        Assert-AreEqual $expected2.Tags[0]["Name"] $actual2.Tags[0]["Name"]
+
+		$expected3 = Find-AzureRmResourceGroup
+		$expectedCount = $originalCount + 2
+		# Assert
+		Assert-AreEqual @($expected3).Count $expectedCount
+
+		$expected4 = Find-AzureRmResourceGroup -Tag @{ Name = "testtag";}
+        # Assert
+        Assert-AreEqual @($expected4).Count 2
+
+		$expected5 = Find-AzureRmResourceGroup -Tag @{ Name = "testtag"; Value = "testval" }
+        # Assert
+        Assert-AreEqual @($expected5).Count 1
+
+		$expected6 = Find-AzureRmResourceGroup -Tag @{ Name = "testtag2"}
+        # Assert
+        Assert-AreEqual @($expected6).Count 0
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+        Clean-ResourceGroup $rgname2
     }
 }
