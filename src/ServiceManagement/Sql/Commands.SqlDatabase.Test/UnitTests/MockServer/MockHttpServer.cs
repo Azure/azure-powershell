@@ -177,14 +177,7 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.MockServer
             AzureSession.DataStore = new MemoryDataStore();
             AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
             ProfileClient client = new ProfileClient(profile);
-            client.Profile.Subscriptions[newGuid] = new AzureSubscription
-            {
-                Id = newGuid,
-                Name = "test",
-                Environment = EnvironmentName.AzureCloud,
-                Account = "test"
-            };
-            client.Profile.Accounts["test"] = new AzureAccount
+            client.AddOrSetAccount( new AzureAccount
             {
                 Id = "test",
                 Type = AzureAccount.AccountType.User,
@@ -192,8 +185,8 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.MockServer
                         {
                             {AzureAccount.Property.Subscriptions, newGuid.ToString()}
                         }
-            };
-            client.Profile.Accounts[UnitTestHelper.GetUnitTestClientCertificate().Thumbprint] = new AzureAccount
+            });
+            client.AddOrSetAccount( new AzureAccount
             {
                 Id = UnitTestHelper.GetUnitTestClientCertificate().Thumbprint,
                 Type = AzureAccount.AccountType.Certificate,
@@ -201,8 +194,8 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.MockServer
                         {
                             {AzureAccount.Property.Subscriptions, newGuid.ToString()}
                         }
-            };
-            client.Profile.Accounts[UnitTestHelper.GetUnitTestSSLCertificate().Thumbprint] = new AzureAccount
+            });
+            client.AddOrSetAccount( new AzureAccount
             {
                 Id = UnitTestHelper.GetUnitTestSSLCertificate().Thumbprint,
                 Type = AzureAccount.AccountType.Certificate,
@@ -210,7 +203,15 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.MockServer
                         {
                             {AzureAccount.Property.Subscriptions, newGuid.ToString()}
                         }
-            };
+            });
+            client.AddOrSetSubscription(new AzureSubscription
+            {
+                Id = newGuid,
+                Name = "test",
+                Environment = EnvironmentName.AzureCloud,
+                Account = "test"
+            });
+
             client.SetSubscriptionAsDefault(newGuid, "test");
             client.Profile.Save();
 
