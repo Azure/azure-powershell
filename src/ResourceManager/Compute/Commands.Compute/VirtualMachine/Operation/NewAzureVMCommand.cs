@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             if (this.VM.DiagnosticsProfile == null)
             {
-                var storageUri = GetStorageAccountForBootDiagnostics();
+                var storageUri = GetOrCreateStorageAccountForBootDiagnostics();
 
                 if (storageUri != null)
                 {
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Compute
             });
         }
 
-        private Uri GetStorageAccountForBootDiagnostics()
+        private Uri GetOrCreateStorageAccountForBootDiagnostics()
         {                        
             var storageAccountName = GetStorageAccountNameFromStorageProfile();
             var storageClient =
