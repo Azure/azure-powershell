@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void LoginWithSubscriptionname()
         {
             var cmdlt = new AddAzureRMAccountCommand();
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void LoginWithBothSubscriptionIdAndNameThrowsCloudException()
         {
             var cmdlt = new AddAzureRMAccountCommand();
