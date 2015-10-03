@@ -196,9 +196,9 @@ namespace Microsoft.Azure.Commands.Compute
             const int maxResLength = 6;
             const int maxVMLength = 4;
 
-            var subscriptionName = GetTruncatedStr(this.DefaultContext.Subscription.Name, maxSubLength);
-            var resourcename = GetTruncatedStr(this.ResourceGroupName, maxResLength);
-            var vmname = GetTruncatedStr(this.VM.Name, maxVMLength);
+            var subscriptionName = VirtualMachineCmdletHelper.GetTruncatedStr(this.DefaultContext.Subscription.Name, maxSubLength);
+            var resourcename = VirtualMachineCmdletHelper.GetTruncatedStr(this.ResourceGroupName, maxResLength);
+            var vmname = VirtualMachineCmdletHelper.GetTruncatedStr(this.VM.Name, maxVMLength);
             var datetimestr = DateTime.Now.ToString("MMddHHmm");
 
             var output = subscriptionName + resourcename + vmname + datetimestr + interation;
@@ -206,14 +206,6 @@ namespace Microsoft.Azure.Commands.Compute
             output = new string((from c in output where char.IsLetterOrDigit(c) select c).ToArray());
 
             return output.ToLowerInvariant();
-        }
-
-        private static string GetTruncatedStr(string inputStr, int maxLength)
-        {
-            if (inputStr == null) return string.Empty;
-            return (inputStr.Length > maxLength)
-                ? inputStr.Substring(0, maxLength)
-                : inputStr;
         }
 
         private static string GetStorageAccountNameFromUriString(string uriStr)

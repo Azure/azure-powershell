@@ -46,11 +46,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             HelpMessage = "Key of the storage account")]
         [ValidateNotNullOrEmpty]
         [Alias("sk")]
-        public string StorageKey
-        {
-            get;
-            set;
-        }
+        public string StorageKey  { get; set; }
 
         [Parameter(
             Position = 1,
@@ -58,12 +54,8 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Uri to blob")]
         [ValidateNotNullOrEmpty]
-        [Alias("src")]
-        public Uri Source
-        {
-            get;
-            set;
-        }
+        [Alias("src", "Source")]
+        public Uri SourceUri  { get; set; }
 
         [Parameter(
             Position = 2,
@@ -71,11 +63,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             HelpMessage = "Local path of the vhd file")]
         [ValidateNotNullOrEmpty]
         [Alias("lf")]
-        public FileInfo LocalFilePath
-        {
-            get;
-            set;
-        }
+        public FileInfo LocalFilePath  { get; set; }
 
         private int numberOfThreads = DefaultNumberOfUploaderThreads;
 
@@ -98,17 +86,13 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             HelpMessage = "Delete the local file if already exists")]
         [ValidateNotNullOrEmpty]
         [Alias("o")]
-        public SwitchParameter OverWrite
-        {
-            get;
-            set;
-        }
+        public SwitchParameter OverWrite  { get; set; }
 
         protected override void ProcessRecord()
         {
             var result = DownloadFromBlobUri(
                 this,
-                this.Source,
+                this.SourceUri,
                 this.LocalFilePath,
                 this.StorageKey,
                 this.ResourceGroupName,

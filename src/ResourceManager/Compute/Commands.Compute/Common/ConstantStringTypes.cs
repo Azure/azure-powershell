@@ -69,8 +69,8 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string DataDisk = "AzureRmVMDataDisk";
         public const string OSDisk = "AzureRmVMOSDisk";
         public const string SourceImage = "AzureRmVMSourceImage";
-        public const string BootDiagnostics = "AzureRMVMBootDiagnostics";
-        public const string BootDiagnosticsData = "AzureRMVMBootDiagnosticsData";
+        public const string BootDiagnostics = "AzureRmVMBootDiagnostics";
+        public const string BootDiagnosticsData = "AzureRmVMBootDiagnosticsData";
 
         public const string NetworkInterface = "AzureRmVMNetworkInterface";
 
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VirtualMachineCustomScriptExtension = "AzureRmVMCustomScriptExtension";
         public const string VirtualMachineAccessExtension = "AzureRmVMAccessExtension";
         public const string VirtualMachineDiagnosticsExtension = "AzureRmVMDiagnosticsExtension";
-        public const string VirtualMachineExtensionImage = "AzureRmVMExtensionImage";
+        public const string VirtualMachineExtensionImage = "AzureRmVmExtensionImage";
         public const string VirtualMachineExtensionImageVersion = "AzureRmVMExtensionImageVersion";
         public const string VirtualMachineExtensionImageType = "AzureRmVMExtensionImageType";
 

@@ -67,13 +67,13 @@ function Test-AddVhd
 
               $vhdDownloadPath = $vhdLocalPath + "-download.vhd";
 
-              $vhdDownloadContext = Save-AzureRmVhd -ResourceGroupName $rgname -Source $vhdDestUri -LocalFilePath $vhdDownloadPath;
+              $vhdDownloadContext = Save-AzureRmVhd -ResourceGroupName $rgname -SourceUri $vhdDestUri -LocalFilePath $vhdDownloadPath;
               Write-Output ("Source :" +$vhdDownloadContext.Source);
               Write-Output ("LocalFilePath :" +$vhdDownloadContext.LocalFilePath);
               Assert-AreEqual $vhdDestUri $vhdDownloadContext.Source;
               Assert-AreEqual $vhdDownloadPath $vhdDownloadContext.LocalFilePath;
 
-              $vhdDownloadContext = Save-AzureRmVhd -ResourceGroupName $rgname -Source $vhdDestUri -LocalFilePath $vhdDownloadPath -Overwrite;
+              $vhdDownloadContext = Save-AzureRmVhd -ResourceGroupName $rgname -SourceUri $vhdDestUri -LocalFilePath $vhdDownloadPath -Overwrite;
               Assert-AreEqual $vhdDestUri $vhdDownloadContext.Source;
               Assert-AreEqual $vhdDownloadPath $vhdDownloadContext.LocalFilePath;
         }

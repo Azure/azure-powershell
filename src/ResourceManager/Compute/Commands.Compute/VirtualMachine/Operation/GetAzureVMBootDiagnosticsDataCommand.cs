@@ -85,7 +85,6 @@ namespace Microsoft.Azure.Commands.Compute
             ExecuteClientAction(() =>
             {
                 var result = this.VirtualMachineClient.GetWithInstanceView(this.ResourceGroupName, this.Name);
-                var output = new VhdDownloadContext();
                 if (result == null || result.VirtualMachine == null)
                 {
                     ThrowTerminatingError
@@ -153,7 +152,6 @@ namespace Microsoft.Azure.Commands.Compute
 
                     WriteObject(sb.ToString());
                 }
-                WriteObject(output);
             });
         }
 

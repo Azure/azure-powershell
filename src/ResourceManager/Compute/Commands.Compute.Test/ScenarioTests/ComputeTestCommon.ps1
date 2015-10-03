@@ -475,8 +475,9 @@ function Get-SubscriptionIdFromResourceGroup
 
 	  $rgid = $rg.ResourceId;
 
+	  # ResouceId is a form of "/subscriptions/<subId>/resourceGroups/<resourgGroupName>"
+	  # So return the second part to get subscription Id
 	  $first = $rgid.IndexOf('/', 1);
 	  $last = $rgid.IndexOf('/', $first + 1);
-
 	  return $rgid.Substring($first + 1, $last - $first - 1);
 }

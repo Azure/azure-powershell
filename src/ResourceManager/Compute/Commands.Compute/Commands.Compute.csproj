@@ -310,6 +310,7 @@
     <Compile Include="VirtualMachine\Config\SetAzureVMOperatingSystemCommand.cs" />
     <Compile Include="VirtualMachine\Config\AddAzureVMDataDiskCommand.cs" />
     <Compile Include="VirtualMachine\Config\AddAzureVMNetworkInterfaceCommand.cs" />
+    <Compile Include="VirtualMachine\VirtualMachineCmdletHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Storage\Commands.Common.Storage.csproj">
