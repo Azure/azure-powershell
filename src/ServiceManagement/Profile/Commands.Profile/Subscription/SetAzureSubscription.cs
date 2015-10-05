@@ -18,8 +18,11 @@ using System.Management.Automation;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Profile;
+using Microsoft.WindowsAzure.Management.Storage;
 
 namespace Microsoft.WindowsAzure.Commands.Profile
 {
@@ -29,7 +32,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
     /// Sets an azure subscription.
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureSubscription"), OutputType(typeof(AzureSubscription))]
-    public class SetAzureSubscriptionCommand : SubscriptionCmdletBase
+    public class SetAzureSubscriptionCommand : SubscriptionCmdletBase, IStorageContextProvider
     {
         private const string UpdateSubscriptionByIdParameterSet = "UpdateSubscriptionByIdParameterSetName";
 
@@ -72,6 +75,10 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         [Parameter(HelpMessage = "Current storage account name.")]
         [ValidateNotNullOrEmpty]
         public string CurrentStorageAccountName { get; set; }
+
+        [Parameter(HelpMessage = "Current storage account connection details.", ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public AzureStorageContext Context { get; set; }
 
         [Parameter(HelpMessage = "Environment name.")]
         [ValidateNotNullOrEmpty]
@@ -150,9 +157,26 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                 throw new ArgumentException("Certificate is required for creating a new subscription.");
             }
 
-            if (!string.IsNullOrEmpty(CurrentStorageAccountName))
+            if (!string.IsNullOrEmpty(CurrentStorageAccountName) || Context != null)
             {
-                subscription.Properties[AzureSubscription.Property.StorageAccount] = CurrentStorageAccountName;
+                ProfileClient.GetAccount(subscription.Account);
+                if (Profile.Context != null && Profile.Context.Subscription != null &&
+                    Profile.Context.Subscription.Id == subscription.Id)
+                {
+                    GeneralUtilities.ClearCurrentStorageAccount();
+                }
+                var context = new AzureContext(subscription, ProfileClient.GetAccount(subscription.Account), ProfileClient.GetEnvironmentOrDefault(subscription.Environment));
+                if (Context != null)
+                {
+                    context.SetCurrentStorageAccount(this);
+                }
+                else
+                {
+                    var client = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(context,
+                        AzureEnvironment.Endpoint.ServiceManagement);
+                    var account = StorageUtilities.GenerateCloudStorageAccount(client, CurrentStorageAccountName);
+                    context.SetCurrentStorageAccount(account.ToString(true));
+                }
             }
 
             subscription = ProfileClient.AddOrSetSubscription(subscription);

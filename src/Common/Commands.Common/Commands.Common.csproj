@@ -142,10 +142,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AzureDataCmdlet.cs" />
     <Compile Include="AzurePSCmdlet.cs" />
     <Compile Include="AzurePSDataCollectionProfile.cs" />
     <Compile Include="AzurePowerShell.cs" />
+    <Compile Include="AzureRmProfileProvider.cs" />
+    <Compile Include="AzureSMProfileProvder.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="ContextExtensions.cs" />
+    <Compile Include="IProfileProvider.cs" />
     <Compile Include="ProfileClient.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

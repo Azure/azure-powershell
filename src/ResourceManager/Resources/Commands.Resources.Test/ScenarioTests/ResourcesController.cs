@@ -29,6 +29,7 @@ using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
@@ -183,7 +184,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 }
                 if (HttpMockServer.Variables.ContainsKey(SubscriptionIdKey))
                 {
-                    AzureRMCmdlet.DefaultProfile.Context.Subscription.Id = new Guid(HttpMockServer.Variables[SubscriptionIdKey]);
+                    AzureRmProfileProvider.Instance.Profile.Context.Subscription.Id = new Guid(HttpMockServer.Variables[SubscriptionIdKey]);
                 }
             }
 
