@@ -309,6 +309,11 @@ PS C:\&gt; $AppGw = Add-AzureRmApplicationGatewayBackendAddressPool -Application
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -525,6 +530,11 @@ PS C:\&gt; $appgw = Add-AzureRmApplicationGatewayBackendHttpSettings -Applicatio
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -883,6 +893,11 @@ PS C:\&gt; $AppGw = Add-AzureRmApplicationGatewayFrontendIPConfig -ApplicationGa
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -1054,6 +1069,11 @@ PS C:\&gt; $appgw = Add-AzureRmApplicationGatewayFrontendPort -ApplicationGatewa
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -1435,6 +1455,11 @@ PS C:\&gt; $AppGw = Add-AzureRmApplicationGatewayHttpListener -ApplicationGatewa
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -1665,6 +1690,11 @@ PS C:\&gt; $AppGw = Add-AzureRmApplicationGatewayIPConfiguration -ApplicationGat
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -2017,6 +2047,11 @@ PS C:\&gt; $Appgw = Add- AzureApplicationGatewayRequestRoutingRule -ApplicationG
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -2206,6 +2241,11 @@ PS C:\&gt; $AppGW = Add-AzureRmApplicationGatewaySslCertificate -ApplicationGate
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -2366,6 +2406,11 @@ PS C:\&gt; $AppGW = Add-AzureRmApplicationGatewaySslCertificate -ApplicationGate
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -2697,6 +2742,11 @@ PS C:\&gt; Get-AzureRmLoadBalancer -Name "myLB" -ResourceGroupName "NrpTest" | A
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -3059,6 +3109,11 @@ PS C:\&gt; $Lb | Add-AzureRmLoadBalancerInboundNatRuleConfig -Name "natRule" -Fr
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -3317,6 +3372,11 @@ PS C:\&gt; $Lb | Add-AzureRmLoadBalancerInboundNatRuleConfig -Name "natRule" -Fr
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -3781,6 +3841,11 @@ PS C:\&gt; $LoadBalancer | Add-AzureRmLoadBalancerRuleConfig -Name "LbRuleConfig
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -4155,6 +4220,11 @@ PS C:\&gt; $LoadBalancer | Add-AzureRmLoadBalancerRuleConfig -Name "LbRuleConfig
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -4457,6 +4527,11 @@ Subnets           : []
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -4742,6 +4817,11 @@ Subnets           : []
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -4927,6 +5007,11 @@ PS C:\&gt; $BackendPools = Get-AzureRmApplicationGatewayBackendAddressPool -Appl
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -5112,6 +5197,11 @@ PS C:\&gt; $SettingsList  = Get-AzureRmApplicationGatewayBackendHttpSettings -Ap
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -5297,6 +5387,11 @@ PS C:\&gt; $FrontEndIPs= Get-AzureRmApplicationGatewayFrontendIPConfig  -Applica
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -5482,6 +5577,11 @@ PS C:\&gt; $FrontEndPorts = Get-AzureRmApplicationGatewayFrontendIPort  -Applica
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -5666,6 +5766,11 @@ PS C:\&gt; $Listeners = Get-AzureRmApplicationGatewayHttpListener -ApplicationGa
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -5851,6 +5956,11 @@ PS C:\&gt; $GatewaySubnets = Get-AzureRmApplicationGatewayIPConfiguration -Appli
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -6034,6 +6144,11 @@ PS C:\&gt; $Rules = Get-AzureRmApplicationGatewayRequestRoutingRule -Application
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -6159,6 +6274,11 @@ PS C:\&gt; $SKU = Get-AzureRmApplicationGatewaySku -ApplicationGateway $AppGW
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -6342,6 +6462,11 @@ PS C:\&gt; $Certs = Get-AzureRmApplicationGatewaySslCertificate -ApplicationGate
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -6530,6 +6655,11 @@ PS C:\&gt; $Certs = Get-AzureRmApplicationGatewaySslCertificate -ApplicationGate
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -6681,6 +6811,11 @@ PS C:\&gt; $Certs = Get-AzureRmApplicationGatewaySslCertificate -ApplicationGate
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -6836,6 +6971,11 @@ PS C:\&gt; $Certs = Get-AzureRmApplicationGatewaySslCertificate -ApplicationGate
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -6991,6 +7131,11 @@ PS C:\&gt; $Certs = Get-AzureRmApplicationGatewaySslCertificate -ApplicationGate
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -7146,6 +7291,11 @@ PS C:\&gt; $Certs = Get-AzureRmApplicationGatewaySslCertificate -ApplicationGate
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -7301,6 +7451,11 @@ PS C:\&gt; $Certs = Get-AzureRmApplicationGatewaySslCertificate -ApplicationGate
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -7452,6 +7607,11 @@ PS C:\&gt; $Certs = Get-AzureRmApplicationGatewaySslCertificate -ApplicationGate
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -7583,6 +7743,11 @@ PS C:\&gt; $Certs = Get-AzureRmApplicationGatewaySslCertificate -ApplicationGate
     </command:examples>
     <maml:relatedLinks>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -7734,6 +7899,11 @@ PS C:\&gt; $Certs = Get-AzureRmApplicationGatewaySslCertificate -ApplicationGate
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -7885,6 +8055,11 @@ PS C:\&gt; $Certs = Get-AzureRmApplicationGatewaySslCertificate -ApplicationGate
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -8058,6 +8233,11 @@ PS C:\&gt; $Certs = Get-AzureRmApplicationGatewaySslCertificate -ApplicationGate
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -8209,6 +8389,11 @@ PS C:\&gt; $Certs = Get-AzureRmApplicationGatewaySslCertificate -ApplicationGate
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -8377,6 +8562,11 @@ NextHopIpAddress  :
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -8550,6 +8740,11 @@ Subnets           : []
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -8681,6 +8876,11 @@ Subnets           : []
     </command:examples>
     <maml:relatedLinks>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -8812,6 +9012,11 @@ Subnets           : []
     </command:examples>
     <maml:relatedLinks>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -8943,6 +9148,11 @@ Subnets           : []
     </command:examples>
     <maml:relatedLinks>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -9098,6 +9308,11 @@ Subnets           : []
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -9249,6 +9464,11 @@ Subnets           : []
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -9490,6 +9710,11 @@ Subnets           : []
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -9681,6 +9906,11 @@ Subnets           : []
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -10008,6 +10238,11 @@ PS C:\&gt; $FrontEnd = New-AzureRmApplicationGatewayFrontendIPConfig -Applicatio
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -10158,6 +10393,11 @@ PS C:\&gt; $FrontEnd = New-AzureRmApplicationGatewayFrontendIPConfig -Applicatio
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -10507,6 +10747,11 @@ PS C:\&gt; $FrontEnd = New-AzureRmApplicationGatewayFrontendIPConfig -Applicatio
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -10713,6 +10958,11 @@ PS C:\ $GatewayIpConfig = New-AzureRmApplicationGatewayIPConfiguration -Name "Ap
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -11037,6 +11287,11 @@ PS C:\ $GatewayIpConfig = New-AzureRmApplicationGatewayIPConfiguration -Name "Ap
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -11202,6 +11457,11 @@ PS C:\ $GatewayIpConfig = New-AzureRmApplicationGatewayIPConfiguration -Name "Ap
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -11371,6 +11631,11 @@ PS C:\ $GatewayIpConfig = New-AzureRmApplicationGatewayIPConfiguration -Name "Ap
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -11807,6 +12072,11 @@ PS C:\&gt; $Gateway = New-AzureRmApplicationGateway -Name "AppGateway01" -Resour
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -11939,6 +12209,11 @@ PS C:\&gt; $Gateway = New-AzureRmApplicationGateway -Name "AppGateway01" -Resour
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -12194,6 +12469,11 @@ PS C:\&gt; $Gateway = New-AzureRmApplicationGateway -Name "AppGateway01" -Resour
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -12519,6 +12799,11 @@ PS C:\&gt; $Gateway = New-AzureRmApplicationGateway -Name "AppGateway01" -Resour
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -12753,6 +13038,11 @@ PS C:\&gt; $Gateway = New-AzureRmApplicationGateway -Name "AppGateway01" -Resour
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -13188,6 +13478,11 @@ PS C:\&gt; $Gateway = New-AzureRmApplicationGateway -Name "AppGateway01" -Resour
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -13490,6 +13785,11 @@ PS C:\&gt; $Gateway = New-AzureRmApplicationGateway -Name "AppGateway01" -Resour
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -13705,6 +14005,11 @@ PS C:\&gt; $Gateway = New-AzureRmApplicationGateway -Name "AppGateway01" -Resour
     </command:examples>
     <maml:relatedLinks>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -14280,6 +14585,11 @@ PS C:\&gt; $Gateway = New-AzureRmApplicationGateway -Name "AppGateway01" -Resour
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -14506,6 +14816,11 @@ PS C:\&gt; $Gateway = New-AzureRmApplicationGateway -Name "AppGateway01" -Resour
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -14869,6 +15184,11 @@ PS C:\&gt; $Gateway = New-AzureRmApplicationGateway -Name "AppGateway01" -Resour
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -15155,6 +15475,11 @@ PS C:\&gt; $Gateway = New-AzureRmApplicationGateway -Name "AppGateway01" -Resour
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -15376,6 +15701,11 @@ NextHopIpAddress  :
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -15630,6 +15960,11 @@ Subnets           : []
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -15918,6 +16253,11 @@ Subnets           : []
     </command:examples>
     <maml:relatedLinks>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -16138,6 +16478,11 @@ Subnets           : []
     </command:examples>
     <maml:relatedLinks>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -16390,6 +16735,11 @@ Subnets           : []
     </command:examples>
     <maml:relatedLinks>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -16649,6 +16999,11 @@ Subnets           : []
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -16913,6 +17268,11 @@ Subnets           : []
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -17065,6 +17425,11 @@ PS C:\&gt; Remove-AzureRmApplicationGatewayBackendAddressPool -ApplicationGatewa
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -17218,6 +17583,11 @@ PS C:\&gt; Remove-AzureRmApplicationGatewayBackendHttpSettings -ApplicationGatew
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -17371,6 +17741,11 @@ PS C:\&gt; Remove-AzureRmApplicationGatewayFrontendIPConfig -ApplicationGateway 
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -17524,6 +17899,11 @@ PS C:\&gt; Remove-AzureRmApplicationGatewayFrontendPort -ApplicationGateway $ Ap
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -17677,6 +18057,11 @@ PS C:\&gt; Remove-AzureRmApplicationGatewayHttpListener -ApplicationGateway $App
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -17830,6 +18215,11 @@ PS C:\&gt; Remove-AzureRmApplicationGatewayIPConfiguration -ApplicationGateway $
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -17983,6 +18373,11 @@ PS C:\&gt; Remove-AzureRmApplicationGatewayRequestRoutingRule -ApplicationGatewa
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -18135,6 +18530,11 @@ PS C:\&gt; Remove-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $A
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -18310,6 +18710,11 @@ PS C:\&gt; Remove-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $A
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -18461,6 +18866,11 @@ PS C:\&gt; Remove-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $A
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -18616,6 +19026,11 @@ PS C:\&gt; Remove-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $A
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -18771,6 +19186,11 @@ PS C:\&gt; Remove-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $A
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -18926,6 +19346,11 @@ PS C:\&gt; Remove-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $A
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -19081,6 +19506,11 @@ PS C:\&gt; Remove-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $A
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -19268,6 +19698,11 @@ PS C:\&gt; Remove-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $A
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -19431,6 +19866,11 @@ PS C:\&gt; Remove-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $A
     </command:examples>
     <maml:relatedLinks>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -19618,6 +20058,11 @@ PS C:\&gt; Remove-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $A
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -19805,6 +20250,11 @@ PS C:\&gt; Remove-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $A
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -19960,6 +20410,11 @@ PS C:\&gt; Remove-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $A
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -20147,6 +20602,11 @@ PS C:\&gt; Remove-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $A
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -20325,6 +20785,11 @@ Subnets           : []
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -20516,6 +20981,11 @@ Are you sure you want to remove resource 'routetable01'
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -20679,6 +21149,11 @@ Are you sure you want to remove resource 'routetable01'
     </command:examples>
     <maml:relatedLinks>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -20842,6 +21317,11 @@ Are you sure you want to remove resource 'routetable01'
     </command:examples>
     <maml:relatedLinks>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -20995,6 +21475,11 @@ Are you sure you want to remove resource 'routetable01'
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -21182,6 +21667,11 @@ Are you sure you want to remove resource 'routetable01'
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -21346,6 +21836,11 @@ Are you sure you want to remove resource 'routetable01'
     </command:examples>
     <maml:relatedLinks>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -21460,6 +21955,11 @@ Are you sure you want to remove resource 'routetable01'
     </command:examples>
     <maml:relatedLinks>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -21771,6 +22271,11 @@ PS C:\&gt; $AppGw = Set-AzureRmApplicationGatewayBackendAddressPool -Application
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -21985,6 +22490,11 @@ PS C:\&gt; $AppGw = Set-AzureRmApplicationGatewayBackendHttpSettings -Applicatio
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -22344,6 +22854,11 @@ PS C:\&gt; $AppGw = Set-AzureRmApplicationGatewayFrontendIPConfig -ApplicationGa
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -22518,6 +23033,11 @@ C:\&gt; $ AppGw = Set-AzureRmApplicationGatewayFrontendPort -ApplicationGateway 
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -22876,6 +23396,11 @@ PS C:\&gt; $AppGw = Set-AzureRmApplicationGatewayHttpListener -ApplicationGatewa
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -23107,6 +23632,11 @@ PS C:\&gt; $AppGw = Set-AzureRmApplicationGatewayIPConfiguration -ApplicationGat
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -23459,6 +23989,11 @@ PS C:\&gt; $AppGw = Set-AzureRmApplicationGatewayRequestRoutingRule -Application
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -23645,6 +24180,11 @@ PS C:\&gt; $AppGw = Set-AzureRmApplicationGatewaySku –ApplicationGateway $AppG
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -23834,6 +24374,11 @@ PS C:\&gt; $Cert = Set-AzureRmApplicationGatewaySslCertificate –ApplicationGat
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -23955,6 +24500,11 @@ PS C:\&gt; $Cert = Set-AzureRmApplicationGatewaySslCertificate –ApplicationGat
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -24236,6 +24786,11 @@ PS C:\&gt; $Cert = Set-AzureRmApplicationGatewaySslCertificate –ApplicationGat
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -24587,6 +25142,11 @@ PS C:\&gt; $Cert = Set-AzureRmApplicationGatewaySslCertificate –ApplicationGat
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -24840,6 +25400,11 @@ PS C:\&gt; $Cert = Set-AzureRmApplicationGatewaySslCertificate –ApplicationGat
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -25301,6 +25866,11 @@ PS C:\&gt; $Cert = Set-AzureRmApplicationGatewaySslCertificate –ApplicationGat
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -25433,6 +26003,11 @@ PS C:\&gt; $Cert = Set-AzureRmApplicationGatewaySslCertificate –ApplicationGat
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -25564,6 +26139,11 @@ PS C:\&gt; $Cert = Set-AzureRmApplicationGatewaySslCertificate –ApplicationGat
     </command:examples>
     <maml:relatedLinks>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -25696,6 +26276,11 @@ PS C:\&gt; $Cert = Set-AzureRmApplicationGatewaySslCertificate –ApplicationGat
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -25828,6 +26413,11 @@ PS C:\&gt; $Cert = Set-AzureRmApplicationGatewaySslCertificate –ApplicationGat
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -26210,6 +26800,11 @@ PS C:\&gt; $Cert = Set-AzureRmApplicationGatewaySslCertificate –ApplicationGat
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -26342,6 +26937,11 @@ PS C:\&gt; $Cert = Set-AzureRmApplicationGatewaySslCertificate –ApplicationGat
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -26613,6 +27213,11 @@ Subnets           : []
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -26791,6 +27396,11 @@ Subnets           : []
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -26955,6 +27565,11 @@ Subnets           : []
     </command:examples>
     <maml:relatedLinks>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -27085,6 +27700,11 @@ Subnets           : []
     </command:examples>
     <maml:relatedLinks>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -27370,6 +27990,11 @@ Subnets           : []
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -27502,6 +28127,11 @@ Subnets           : []
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -27622,6 +28252,11 @@ Subnets           : []
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -27737,6 +28372,11 @@ Subnets           : []
     </command:examples>
     <maml:relatedLinks>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -27868,6 +28508,10 @@ Subnets           : []
     </command:examples>
     <maml:relatedLinks>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, network, networking</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
-
 </helpItems>

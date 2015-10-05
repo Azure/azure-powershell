@@ -126,9 +126,35 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         /// <summary>
         /// The DNS endpoint suffix for all storage services, e.g. "core.windows.net".
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The Storage Endpoint Suffix.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, 
+            HelpMessage = "The Storage Endpoint Suffix.")]
         [ValidateNotNullOrEmpty]
         public string StorageEndpointSuffix { get; set; }
+
+        /// <summary>
+        /// Specifies the version of the Windows Management Framework (WMF) to install 
+        /// on the VM.
+        ///
+        /// The DSC Azure Extension depends on DSC features that are only available in 
+        /// the WMF updates. This parameter specifies which version of the update to 
+        /// install on the VM. The possible values are "4.0","latest" and "5.0PP".  
+        /// 
+        /// A value of "4.0" will install KB3000850 
+        /// (http://support.microsoft.com/kb/3000850) on Windows 8.1 or Windows Server 
+        /// 2012 R2, or WMF 4.0 
+        /// (http://www.microsoft.com/en-us/download/details.aspx?id=40855) on other 
+        /// versions of Windows if a newer version isnt already installed.
+        /// 
+        /// A value of "5.0PP" will install the latest release of WMF 5.0PP 
+        /// (http://go.microsoft.com/fwlink/?LinkId=398175).
+        /// 
+        /// A value of "latest" will install the latest WMF, currently WMF 5.0PP
+        /// 
+        /// The default value is "latest"
+        /// </summary>
+        [Parameter(ValueFromPipelineByPropertyName = true)]
+        [ValidateSetAttribute(new[] { "4.0", "latest", "5.0PP" })]
+        public string WmfVersion { get; set; }
 
         /// <summary>
         /// Credentials used to access Azure Storage
@@ -354,7 +380,9 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         {
             var publicSettings = new DscExtensionPublicSettings();
             var privateSettings = new DscExtensionPrivateSettings();
-            
+
+            publicSettings.WmfVersion = string.IsNullOrEmpty(WmfVersion) ? "latest" : WmfVersion;
+
             if (!string.IsNullOrEmpty(ConfigurationArchive))
             {
                 ConfigurationUris configurationUris = UploadConfigurationDataToBlob();

@@ -136,12 +136,15 @@
     <Compile Include="Handlers\AuthenticationHandler.cs" />
     <Compile Include="Handlers\RetryHandler.cs" />
     <Compile Include="Handlers\TracingHandler.cs" />
+    <Compile Include="Handlers\CmdletInfoHandler.cs" />
     <Compile Include="Handlers\UserAgentHandler.cs" />
+    <Compile Include="Implementation\FindAzureResourceGroupCmdlet.cs" />
     <Compile Include="Implementation\GetAzureResourceGroupDeploymentOperationCmdlet.cs" />
-    <Compile Include="Implementation\GetAzureResourceLockCmdlet.cs" />
+    <Compile Include="Implementation\Lock\GetAzureResourceLockCmdlet.cs" />
     <Compile Include="Implementation\InvokeAzureResourceActionCmdlet.cs" />
-    <Compile Include="Implementation\MoveAzureResourceCmdlet.cs" />
-    <Compile Include="Implementation\NewAzureResourceLockCmdlet.cs" />
+    <Compile Include="Implementation\Resource\FindAzureResourceCmdlet.cs" />
+    <Compile Include="Implementation\Resource\MoveAzureResourceCmdlet.cs" />
+    <Compile Include="Implementation\Lock\NewAzureResourceLockCmdlet.cs" />
     <Compile Include="Implementation\Policy\GetAzurePolicyAssignment.cs" />
     <Compile Include="Implementation\Policy\GetAzurePolicyDefinition.cs" />
     <Compile Include="Implementation\Policy\NewAzurePolicyAssignment.cs" />
@@ -152,11 +155,11 @@
     <Compile Include="Implementation\Policy\RemoveAzurePolicyDefinition.cs" />
     <Compile Include="Implementation\Policy\SetAzurePolicyAssignment.cs" />
     <Compile Include="Implementation\Policy\SetAzurePolicyDefinition.cs" />
-    <Compile Include="Implementation\RemoveAzureResourceCmdlet.cs" />
-    <Compile Include="Implementation\RemoveAzureResourceLockCmdlet.cs" />
-    <Compile Include="Implementation\ResourceLockManagementCmdletBase.cs" />
-    <Compile Include="Implementation\SetAzureResourceCmdlet.cs" />
-    <Compile Include="Implementation\NewAzureResourceCmdlet.cs" />
+    <Compile Include="Implementation\Resource\RemoveAzureResourceCmdlet.cs" />
+    <Compile Include="Implementation\Lock\RemoveAzureResourceLockCmdlet.cs" />
+    <Compile Include="Implementation\Lock\ResourceLockManagementCmdletBase.cs" />
+    <Compile Include="Implementation\Resource\SetAzureResourceCmdlet.cs" />
+    <Compile Include="Implementation\Resource\NewAzureResourceCmdlet.cs" />
     <Compile Include="Implementation\ResourceManipulationCmdletBase.cs" />
     <Compile Include="Components\ApiVersionHelper.cs" />
     <Compile Include="Extensions\ErrorResponseMessageExceptionExtensions.cs" />
@@ -164,14 +167,14 @@
     <Compile Include="Extensions\ResourceExtensions.cs" />
     <Compile Include="Extensions\JTokenExtensions.cs" />
     <Compile Include="Implementation\ResourceManagerCmdletBase.cs" />
-    <Compile Include="Implementation\SetAzureResourceLockCmdlet.cs" />
-    <Compile Include="Implementation\TestAzureResourceCmdlet.cs" />
+    <Compile Include="Implementation\Lock\SetAzureResourceLockCmdlet.cs" />
+    <Compile Include="Implementation\Resource\TestAzureResourceCmdlet.cs" />
     <Compile Include="Implementation\TestAzureResourceGroupCmdlet.cs" />
     <Compile Include="Json\CamelCasePropertyNamesWithOverridesContractResolver.cs" />
     <Compile Include="Json\JsonPreserveCaseDictionaryAttribute.cs" />
     <Compile Include="Json\TimeSpanConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Implementation\GetAzureResourceCmdlet.cs" />
+    <Compile Include="Implementation\Resource\GetAzureResourceCmdlet.cs" />
     <Compile Include="RestClients\ResourceManagerRestClientBase.cs" />
     <Compile Include="RestClients\ResourceManagerRestRestClient.cs" />
     <Compile Include="Utilities\HttpUtility.cs" />
@@ -197,6 +200,10 @@
     <ProjectReference Include="..\..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
       <Name>Commands.ResourceManager.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Tags\Commands.Tags\Commands.Tags.csproj">
+      <Project>{2493A8F7-1949-4F29-8D53-9D459046C3B8}</Project>
+      <Name>Commands.Tags</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

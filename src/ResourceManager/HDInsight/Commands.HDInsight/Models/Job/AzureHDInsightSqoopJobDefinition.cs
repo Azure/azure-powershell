@@ -1,4 +1,4 @@
-﻿﻿// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,24 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.WindowsAzure.Commands.Storage.Common
-{
-    using System.ServiceModel;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System.Collections.Generic;
 
+namespace Microsoft.Azure.Commands.HDInsight.Models
+{
     /// <summary>
-    /// Communication exception utility
+    /// Provides creation details for a new Hive jobDetails.
     /// </summary>
-    public static class CommunicationExceptionUtil
+    public class AzureHDInsightSqoopJobDefinition : AzureHDInsightJobDefinition
     {
         /// <summary>
-        /// is not found communication exception
+        /// Gets or sets the command to use for a sqoop job.
         /// </summary>
-        /// <param name="exception">Communication Exception</param>
-        /// <returns>true if exception caused by resource not found, otherwise, false</returns>
-        public static bool IsNotFoundException(this CommunicationException exception)
-        {
-            return ErrorHelper.IsNotFoundCommunicationException(exception);
-        }
+        public string Command { get; set; }
+
+        /// <summary>
+        /// Gets or sets the query file to use for a hive jobDetails.
+        /// </summary>
+        public string File { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the jobDetails.
+        /// </summary>
+        public string JobName { get; set; }
     }
 }

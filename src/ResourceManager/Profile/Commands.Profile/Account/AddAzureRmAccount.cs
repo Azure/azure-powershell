@@ -20,6 +20,7 @@ using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Common.Authentication;
+using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using Microsoft.Azure.Commands.Profile.Properties;
 
@@ -119,12 +120,12 @@ namespace Microsoft.Azure.Commands.Profile
                 azureAccount.SetProperty(AzureAccount.Property.Tenants, new[] { Tenant });
             }
 
-            if( AzureRMCmdlet.DefaultProfile == null)
+            if( AzureRmProfileProvider.Instance.Profile == null)
             {
-                AzureRMCmdlet.DefaultProfile = new AzureRMProfile();
+                AzureRmProfileProvider.Instance.Profile = new AzureRMProfile();
             }
 
-            var profileClient = new RMProfileClient(AzureRMCmdlet.DefaultProfile);
+            var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
             
             WriteObject((PSAzureProfile)profileClient.Login(azureAccount, Environment, Tenant, SubscriptionId, SubscriptionName, password));
         }

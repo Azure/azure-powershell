@@ -210,11 +210,11 @@ namespace Microsoft.Azure.Commands.Network
 
             // ExpressRouteServiceProvider
             // CNM to MNM
-            Mapper.CreateMap<CNM.PSExpressRouteServiceProvider, MNM.ExpressRouteResourceProvider>();
+            Mapper.CreateMap<CNM.PSExpressRouteServiceProvider, MNM.ExpressRouteServiceProvider>();
             Mapper.CreateMap<CNM.PSExpressRouteServiceProviderBandwidthsOffered, MNM.ExpressRouteServiceProviderBandwidthsOffered>();
 
             // MNM to CNM
-            Mapper.CreateMap<MNM.ExpressRouteResourceProvider, CNM.PSExpressRouteServiceProvider>();
+            Mapper.CreateMap<MNM.ExpressRouteServiceProvider, CNM.PSExpressRouteServiceProvider>();
             Mapper.CreateMap<MNM.ExpressRouteServiceProviderBandwidthsOffered, CNM.PSExpressRouteServiceProviderBandwidthsOffered>();
 
             // Gateways

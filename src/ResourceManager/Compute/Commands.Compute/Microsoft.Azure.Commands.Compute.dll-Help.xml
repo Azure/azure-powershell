@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-
+﻿<?xml version="1.0" encoding="utf-8"?>
 <helpItems xmlns="http://msh" schema="maml">
   <!-- Updatable Help Version 1.0.0.0 -->
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
@@ -188,6 +187,11 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMAdditionalUnattendContent -VM $Virtual
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -514,6 +518,11 @@ PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualM
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -709,6 +718,11 @@ PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name " Virtual
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -915,6 +929,11 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSecret -VM $VirtualMachine -SourceVaul
     </command:examples>
     <maml:relatedLinks>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -1080,6 +1099,11 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -1247,6 +1271,11 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -1402,6 +1431,11 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
     </command:examples>
     <maml:relatedLinks>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -1610,6 +1644,11 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -1818,6 +1857,11 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -2000,6 +2044,11 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
     </command:examples>
     <maml:relatedLinks>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -2144,6 +2193,11 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -2359,6 +2413,11 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -2563,6 +2622,11 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -2745,6 +2809,11 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
     </command:examples>
     <maml:relatedLinks>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -2901,6 +2970,11 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -3038,6 +3112,11 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -3213,6 +3292,11 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -3485,6 +3569,11 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -3731,6 +3820,11 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -3852,6 +3946,11 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
     </command:examples>
     <maml:relatedLinks>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -4148,6 +4247,11 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -4353,6 +4457,11 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -4530,6 +4639,11 @@ PS C:\&gt; $VirtualMachine = New-AzureRmVMConfig -VMName "VirtualMachine07" -VMS
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -4825,6 +4939,11 @@ New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $Vir
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -4991,6 +5110,11 @@ New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $Vir
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -5177,6 +5301,11 @@ New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $Vir
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -5359,6 +5488,11 @@ New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $Vir
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -5511,6 +5645,11 @@ PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualM
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -5696,6 +5835,11 @@ PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualM
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -5833,6 +5977,11 @@ PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualM
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -6015,6 +6164,11 @@ PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualM
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -6179,6 +6333,11 @@ PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualM
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -6398,6 +6557,11 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName "ResourceGroup11" -VMName "Vir
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -6649,6 +6813,11 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName "ResourceGroup11" -VMName "Vir
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -7065,6 +7234,11 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName "ResourceGroup11" -VMName "Vir
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -7424,7 +7598,7 @@ PS C:\&gt; $ProtectedSettings = @{"storageAccountName" = $stoname; "storageAccou
 PS C:\&gt; Set-AzureRmVMExtension -ResourceGroupName "ResourceGroup11" -Location "West US" -VMName "VirtualMachine22" -Name "ContosoTest" -Publisher "Contoso.Compute" -Type "CustomScriptExtension" -TypeHandlerVersion "1.1" -Settings $Settings -ProtectedSettings $ProtectedSettings;
 </dev:code>
         <dev:remarks>
-          <maml:para>The first two commands use standard Windows PowerShell® syntax to create hash tables, and then stores those hash tables in the $Settings and $ProtectedSettings variables. For more information, type Get-Help about_Hash_Tables. The second command includes two values previously created and stored in variables. </maml:para>
+          <maml:para>The first two commands use standard Windows PowerShellÂ® syntax to create hash tables, and then stores those hash tables in the $Settings and $ProtectedSettings variables. For more information, type Get-Help about_Hash_Tables. The second command includes two values previously created and stored in variables. </maml:para>
           <maml:para>The final command modifies an extension of the virtual machine named VirtualMachine22 in ResourceGroup11 according to the contents of $Settings and $ProtectedSettings. The command specifies other required information that includes the publisher and the extension type.</maml:para>
           <maml:para />
           <maml:para />
@@ -7468,6 +7642,11 @@ PS C:\&gt; Set-AzureRmVMExtension -ResourceGroupName "ResourceGroup11" -Location
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -7869,6 +8048,11 @@ PS C:\&gt; $VirtualMachine = Set-AzureRmVMOperatingSystem -VM $$VirtualMachine -
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -8248,6 +8432,11 @@ PS C:\&gt; Set-AzureRmVMOSDisk -VM $VirtualMachine -Name "OsDisk02" -VhdUri "os.
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -8534,6 +8723,11 @@ PS C:\&gt; $VirtualMachine07 = Set-AzureRmVMSourceImage -VM $VirtualMachine07 -I
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -8696,6 +8890,11 @@ PS C:\&gt; $VirtualMachine07 = Set-AzureRmVMSourceImage -VM $VirtualMachine07 -I
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -8860,6 +9059,11 @@ PS C:\&gt; $VirtualMachine07 = Set-AzureRmVMSourceImage -VM $VirtualMachine07 -I
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -9060,6 +9264,11 @@ PS C:\&gt; $VirtualMachine07 = Set-AzureRmVMSourceImage -VM $VirtualMachine07 -I
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -9268,10 +9477,14 @@ PS C:\&gt; $VirtualMachine07 = Set-AzureRmVMSourceImage -VM $VirtualMachine07 -I
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+    </maml:alertSet>
   </command:command>
-
-<!-- DSC Extension cmdlets help -->
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <!-- DSC Extension cmdlets help -->
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <!--Generated by PS Cmdlet Help Editor-->
     <command:details>
       <command:name>Remove-AzureRmVMDscExtension</command:name>
@@ -9323,9 +9536,10 @@ PS C:\&gt; $VirtualMachine07 = Set-AzureRmVMSourceImage -VM $VirtualMachine07 -I
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
         <maml:name>VMName</maml:name>
@@ -9335,9 +9549,10 @@ PS C:\&gt; $VirtualMachine07 = Set-AzureRmVMSourceImage -VM $VirtualMachine07 -I
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
         <maml:name>Name</maml:name>
@@ -9347,17 +9562,20 @@ PS C:\&gt; $VirtualMachine07 = Set-AzureRmVMSourceImage -VM $VirtualMachine07 -I
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
     </command:parameters>
     <command:inputTypes>
       <command:inputType>
         <dev:type>
-          <maml:name></maml:name>
-          <maml:uri></maml:uri>
-          <maml:description/>
+          <maml:name>
+          </maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description />
         </dev:type>
         <maml:description>
           <maml:para>
@@ -9368,9 +9586,11 @@ PS C:\&gt; $VirtualMachine07 = Set-AzureRmVMSourceImage -VM $VirtualMachine07 -I
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name></maml:name>
-          <maml:uri></maml:uri>
-          <maml:description/>
+          <maml:name>
+          </maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description />
         </dev:type>
         <maml:description>
           <maml:para>
@@ -9378,12 +9598,16 @@ PS C:\&gt; $VirtualMachine07 = Set-AzureRmVMSourceImage -VM $VirtualMachine07 -I
         </maml:description>
       </command:returnValue>
     </command:returnValues>
-    <command:terminatingErrors></command:terminatingErrors>
-    <command:nonTerminatingErrors></command:nonTerminatingErrors>
+    <command:terminatingErrors>
+    </command:terminatingErrors>
+    <command:nonTerminatingErrors>
+    </command:nonTerminatingErrors>
     <maml:alertSet>
-      <maml:title></maml:title>
+      <maml:title>
+      </maml:title>
       <maml:alert>
         <maml:para />
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -9392,15 +9616,19 @@ PS C:\&gt; $VirtualMachine07 = Set-AzureRmVMSourceImage -VM $VirtualMachine07 -I
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
-        <dev:code>PS C:\&gt; Remove-AzureRmVMDscExtension â€“ResouceGroupName Name -VMName VM -Name DSC</dev:code>
+        <dev:code>PS C:\&gt; Remove-AzureRmVMDscExtension Ã¢â‚¬â€œResouceGroupName Name -VMName VM -Name DSC</dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
           <maml:para>-----------</maml:para>
           <maml:para>Removes the extension (Name - 'DSC') on virtual machine 'VM'. Specify Name parameter only when you changed its default value 'Microsoft.Powershell.DSC' to something else ('DSC' in this case) either through Set-AzureRmVMDscExtension cmdlet or an ARM template.</maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
+          <maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>
@@ -9414,192 +9642,203 @@ PS C:\&gt; $VirtualMachine07 = Set-AzureRmVMSourceImage -VM $VirtualMachine07 -I
     <maml:relatedLinks>
     </maml:relatedLinks>
   </command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
-	<command:details>
-		<command:name>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>
                    Get-AzureRmVMDscExtension
 		</command:name>
-		<maml:description>
-			<maml:para>Gets the settings of the DSC extension on a particular VM</maml:para>
-		</maml:description>
-		<maml:copyright>
-			<maml:para></maml:para>
-		</maml:copyright>
-		<command:verb>Get</command:verb>
-		<command:noun>AzureVMDscExtension</command:noun>
-		<dev:version></dev:version>
-	</command:details>
-	<maml:description>
-		<maml:para>Gets the settings of the DSC extension on a particular VM.</maml:para>
-	</maml:description>
-	<!-- Cmdlet syntax section-->
-	<command:syntax>
-		<command:syntaxItem>
-			<maml:name>Get-AzureRmVMDscExtension</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-				<maml:name>ResourceGroupName</maml:name>
-				<maml:description>
-					<maml:para>The resource group name.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
-				<maml:name>VMName</maml:name>
-				<maml:description>
-					<maml:para>The virtual machine name</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
+      <maml:description>
+        <maml:para>Gets the settings of the DSC extension on a particular VM</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para>
+        </maml:para>
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>AzureVMDscExtension</command:noun>
+      <dev:version>
+      </dev:version>
+    </command:details>
+    <maml:description>
+      <maml:para>Gets the settings of the DSC extension on a particular VM.</maml:para>
+    </maml:description>
+    <!-- Cmdlet syntax section-->
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-AzureRmVMDscExtension</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+          <maml:name>ResourceGroupName</maml:name>
+          <maml:description>
+            <maml:para>The resource group name.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+          <maml:name>VMName</maml:name>
+          <maml:description>
+            <maml:para>The virtual machine name</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>Name of the ARM resource that represents the extension. The Set-AzureRmVMDscExtension cmdlet sets this name to 'Microsoft.Powershell.DSC', which is the same value used by Get-AzureRmVMDscExtension. Specify this parameter only if you changed the default name in the Set cmdlet or used a different resource name in an ARM template.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>Status</maml:name>
+          <maml:description>
+            <maml:para>Output shows status when the switch is present</maml:para>
+          </maml:description>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <!-- Cmdlet parameter section  -->
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+        <maml:name>ResourceGroupName</maml:name>
+        <maml:description>
+          <maml:para>The resource group name.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+        <maml:name>VMName</maml:name>
+        <maml:description>
+          <maml:para>The virtual machine name</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
         <maml:name>Name</maml:name>
         <maml:description>
           <maml:para>Name of the ARM resource that represents the extension. The Set-AzureRmVMDscExtension cmdlet sets this name to 'Microsoft.Powershell.DSC', which is the same value used by Get-AzureRmVMDscExtension. Specify this parameter only if you changed the default name in the Set cmdlet or used a different resource name in an ARM template.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Status</maml:name>
-				<maml:description>
-					<maml:para>Output shows status when the switch is present</maml:para>
-				</maml:description>
-			</command:parameter>
-		</command:syntaxItem>
-	</command:syntax>
-	<!-- Cmdlet parameter section  -->
-	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-			<maml:name>ResourceGroupName</maml:name>
-			<maml:description>
-				<maml:para>The resource group name.</maml:para>
-								
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-    <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
-      <maml:name>VMName</maml:name>
-      <maml:description>
-        <maml:para>The virtual machine name</maml:para>
-
-      </maml:description>
-      <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-      <dev:type>
-        <maml:name>string</maml:name>
-        <maml:uri/>
-      </dev:type>
-      <dev:defaultValue></dev:defaultValue>
-    </command:parameter>
-    <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
-      <maml:name>Name</maml:name>
-      <maml:description>
-        <maml:para>Name of the ARM resource that represents the extension. The Set-AzureRmVMDscExtension cmdlet sets this name to 'Microsoft.Powershell.DSC', which is the same value used by Get-AzureRmVMDscExtension. Specify this parameter only if you changed the default name in the Set cmdlet or used a different resource name in an ARM template.</maml:para>
-      </maml:description>
-      <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-      <dev:type>
-        <maml:name>String</maml:name>
-        <maml:uri/>
-      </dev:type>
-      <dev:defaultValue></dev:defaultValue>
-    </command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>Status</maml:name>
-			<maml:description>
-				<maml:para>Output shows status when the switch is present</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-	</command:parameters>
-	<!-- Input - Output section-->
-	<command:inputTypes>
-		<command:inputType>
-			<dev:type>
-				<maml:name></maml:name>
-				<maml:uri/>
-				<maml:description />
-			</dev:type>
-			<maml:description>
-				<maml:para>
-					<!-- description  -->
-					
-				</maml:para>
-			</maml:description>
-		</command:inputType>
-	</command:inputTypes>
-	<command:returnValues>
-		<command:returnValue>
-			<dev:type>
-				<maml:name>Microsoft.Azure.Commands.Compute.Extension.DSC.VirtualMachineDscExtensionContext</maml:name>
-				<maml:uri />
-				<maml:description />
-			</dev:type>   
-			<maml:description>
-				<maml:para>
-					<!-- description  -->
-					
-				</maml:para>
-			</maml:description> 
-		</command:returnValue>
-	</command:returnValues>
-	<!-- Error section-->
-	<command:terminatingErrors />
-	<command:nonTerminatingErrors />
-		<!-- Notes section  -->
-	<maml:alertSet>
-		<maml:title></maml:title>
-		<maml:alert>
-			<maml:para>
-                          
-                        </maml:para>
-		</maml:alert>
-		<maml:alert>
-			<maml:para></maml:para>
-		</maml:alert>
-	</maml:alertSet>
-	<!-- Example section  --> 
-	<command:examples>
-    <command:example>
-			<maml:title>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>Status</maml:name>
+        <maml:description>
+          <maml:para>Output shows status when the switch is present</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <!-- Input - Output section-->
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>
+          </maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>Microsoft.Azure.Commands.Compute.Extension.DSC.VirtualMachineDscExtensionContext</maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <!-- Error section-->
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+    <maml:alertSet>
+      <maml:title>
+      </maml:title>
+      <maml:alert>
+        <maml:para>
+        </maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+      <maml:alert>
+        <maml:para>
+        </maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <!-- Example section  -->
+    <command:examples>
+      <command:example>
+        <maml:title>
 				-------------------------- EXAMPLE 1 --------------------------
-			</maml:title> 
-			<maml:introduction>
-				<maml:para>C:\PS&gt;</maml:para>
-			</maml:introduction> 
-  			<dev:code>
+			</maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
 Get-AzureRmVMDscExtension -ResourceGroupName Name -VMName VM -Name 'DSC' </dev:code>
-       			<dev:remarks>
-                                <maml:para>Description</maml:para>
-                                <maml:para>-----------</maml:para>
-  			        <maml:para>Retrieves the settings of extension (Name - 'DSC') on virtual machine 'VM'. Specify Name parameter only when you changed its default value 'Microsoft.Powershell.DSC' to something else ('DSC' in this case) either through Set-AzureRmVMDscExtension cmdlet or an ARM template.</maml:para>
-	                        <maml:para></maml:para>
-	                        <maml:para></maml:para>
-	                        <maml:para></maml:para>
-	                        <maml:para></maml:para>
-  			</dev:remarks>
-			<command:commandLines>
-				<command:commandLine>
-					<command:commandText></command:commandText>
-				</command:commandLine>
-			</command:commandLines>
-		</command:example>
-	</command:examples>
-	<!-- Link section  -->
-	<maml:relatedLinks>
-		<maml:navigationLink>
-			<maml:linkText></maml:linkText>
-			<maml:uri/>
-		</maml:navigationLink>
-	</maml:relatedLinks>
-</command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>Retrieves the settings of extension (Name - 'DSC') on virtual machine 'VM'. Specify Name parameter only when you changed its default value 'Microsoft.Powershell.DSC' to something else ('DSC' in this case) either through Set-AzureRmVMDscExtension cmdlet or an ARM template.</maml:para>
+          <maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText>
+            </command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <!-- Link section  -->
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>
+        </maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>
         Set-AzureRmVMDSCExtension
@@ -9608,11 +9847,13 @@ Get-AzureRmVMDscExtension -ResourceGroupName Name -VMName VM -Name 'DSC' </dev:c
         <maml:para>Configure the Windows PowerShell Desired State Configuration extension on a VM.</maml:para>
       </maml:description>
       <maml:copyright>
-        <maml:para></maml:para>
+        <maml:para>
+        </maml:para>
       </maml:copyright>
       <command:verb>Set</command:verb>
       <command:noun>AzureVMDscExtension</command:noun>
-      <dev:version></dev:version>
+      <dev:version>
+      </dev:version>
     </command:details>
     <maml:description>
       <maml:para>Configure the Windows PowerShell Desired State Configuration extension on a VM in a resource group</maml:para>
@@ -9736,6 +9977,17 @@ Get-AzureRmVMDscExtension -ResourceGroupName Name -VMName VM -Name 'DSC' </dev:c
             <maml:para>Describes what would happen if you executed the command without actually executing the command.</maml:para>
           </maml:description>
         </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>WmfVersion</maml:name>
+          <maml:description>
+            <maml:para>
+              Specifies the version of the Windows Management Framework (WMF) to install on the VM. The DSC Azure Extension depends on DSC features that are only available in the WMF updates. This parameter specifies which version of the update to install on the VM. The possible values are "4.0","latest" and "5.0PP".
+              A value of "4.0" will install KB3000850 (http://support.microsoft.com/kb/3000850) on Windows 8.1 or Windows Server 2012 R2, or WMF 4.0 (http://www.microsoft.com/en-us/download/details.aspx?id=40855) on other versions of Windows if a newer version isnt already installed.
+              A value of "5.0PP" will install the latest release of WMF 5.0PP (http://go.microsoft.com/fwlink/?LinkId=398175). A value of "latest" will install the latest WMF, currently WMF 5.0PP. The default value is "latest"
+            </maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <!-- Cmdlet parameter section  -->
@@ -9748,9 +10000,10 @@ Get-AzureRmVMDscExtension -ResourceGroupName Name -VMName VM -Name 'DSC' </dev:c
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         <dev:type>
           <maml:name>string</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>ConfigurationArgument</maml:name>
@@ -9760,9 +10013,10 @@ Get-AzureRmVMDscExtension -ResourceGroupName Name -VMName VM -Name 'DSC' </dev:c
         <command:parameterValue required="true" variableLength="false">hashtable</command:parameterValue>
         <dev:type>
           <maml:name>hashtable</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>ConfigurationData</maml:name>
@@ -9772,9 +10026,10 @@ Get-AzureRmVMDscExtension -ResourceGroupName Name -VMName VM -Name 'DSC' </dev:c
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         <dev:type>
           <maml:name>string</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>ConfigurationName</maml:name>
@@ -9784,9 +10039,10 @@ Get-AzureRmVMDscExtension -ResourceGroupName Name -VMName VM -Name 'DSC' </dev:c
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         <dev:type>
           <maml:name>string</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>ArchiveContainerName</maml:name>
@@ -9796,9 +10052,10 @@ Get-AzureRmVMDscExtension -ResourceGroupName Name -VMName VM -Name 'DSC' </dev:c
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         <dev:type>
           <maml:name>string</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>Force</maml:name>
@@ -9808,9 +10065,10 @@ Get-AzureRmVMDscExtension -ResourceGroupName Name -VMName VM -Name 'DSC' </dev:c
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>Location</maml:name>
@@ -9820,9 +10078,10 @@ Get-AzureRmVMDscExtension -ResourceGroupName Name -VMName VM -Name 'DSC' </dev:c
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         <dev:type>
           <maml:name>string</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>Name</maml:name>
@@ -9832,9 +10091,10 @@ Get-AzureRmVMDscExtension -ResourceGroupName Name -VMName VM -Name 'DSC' </dev:c
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         <dev:type>
           <maml:name>string</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
         <maml:name>ResourceGroupName</maml:name>
@@ -9844,9 +10104,10 @@ Get-AzureRmVMDscExtension -ResourceGroupName Name -VMName VM -Name 'DSC' </dev:c
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         <dev:type>
           <maml:name>string</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>ArchiveResourceGroupName</maml:name>
@@ -9856,9 +10117,10 @@ Get-AzureRmVMDscExtension -ResourceGroupName Name -VMName VM -Name 'DSC' </dev:c
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         <dev:type>
           <maml:name>string</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="false" position="4">
         <maml:name>ArchiveStorageAccountName</maml:name>
@@ -9868,9 +10130,10 @@ Get-AzureRmVMDscExtension -ResourceGroupName Name -VMName VM -Name 'DSC' </dev:c
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         <dev:type>
           <maml:name>string</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>ArchiveStorageEndpointSuffix</maml:name>
@@ -9880,9 +10143,10 @@ Get-AzureRmVMDscExtension -ResourceGroupName Name -VMName VM -Name 'DSC' </dev:c
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         <dev:type>
           <maml:name>string</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
         <maml:name>Version</maml:name>
@@ -9892,9 +10156,10 @@ Get-AzureRmVMDscExtension -ResourceGroupName Name -VMName VM -Name 'DSC' </dev:c
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         <dev:type>
           <maml:name>string</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
         <maml:name>VMName</maml:name>
@@ -9904,22 +10169,501 @@ Get-AzureRmVMDscExtension -ResourceGroupName Name -VMName VM -Name 'DSC' </dev:c
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         <dev:type>
           <maml:name>string</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>AutoUpdate</maml:name>
         <maml:description>
           <maml:para>We install the extension handler version specified by the -version param. By default extension handler is not autoupdated. Use -AutoUpdate to enable auto update of extension handler to the latest version as and when it is available.</maml:para>
-
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Confirm</maml:name>
+        <maml:description>
+          <maml:para>Prompts you for confirmation before executing the command.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue />
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+        <maml:name>WhatIf</maml:name>
+        <maml:description>
+          <maml:para>Describes what would happen if you executed the command without actually executing the command.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue />
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>WmfVersion</maml:name>
+        <maml:description>
+          <maml:para>
+            Specifies the version of the Windows Management Framework (WMF) to install on the VM. The DSC Azure Extension depends on DSC features that are only available in the WMF updates. This parameter specifies which version of the update to install on the VM. The possible values are "4.0","latest" and "5.0PP".
+            A value of "4.0" will install KB3000850 (http://support.microsoft.com/kb/3000850) on Windows 8.1 or Windows Server 2012 R2, or WMF 4.0 (http://www.microsoft.com/en-us/download/details.aspx?id=40855) on other versions of Windows if a newer version isnt already installed.
+            A value of "5.0PP" will install the latest release of WMF 5.0PP (http://go.microsoft.com/fwlink/?LinkId=398175). A value of "latest" will install the latest WMF, currently WMF 5.0PP. The default value is "latest"
+          </maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>latest</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <!-- Input - Output section-->
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>
+          </maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+          </maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>
+          </maml:name>
+          <maml:uri />
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para>
+            <!-- description  -->
+          </maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <!-- Error section-->
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <!-- Notes section  -->
+    <maml:alertSet>
+      <maml:title>
+      </maml:title>
+      <maml:alert>
+        <maml:para>
+        </maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
+      <maml:alert>
+        <maml:para>
+        </maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <!-- Example section  -->
+    <command:examples>
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 1 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          Set-AzureRmVMDscExtension -ResourceGroupName Name -VMName VM -ArchiveBlobName Sample.ps1.zip -ArchiveStorageAccountName Stg -ConfigurationName ConfigName -Version 1.10 -Location 'West US'
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>
+            Sets the extension on the 'VM' to download Sample.ps1.zip (from the 'Stg' storage account and the default container 'windows-powershell-dsc') that was previously uploaded using Publish-AzureRmVMDscConfiguration cmdlet and invokes configuration 'ConfigName'.</maml:para>
+          <maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText>
+            </command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 2 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          Set-AzureRmVMDscExtension -ResourceGroupName Name -VMName vm -ArchiveBlobName Sample.ps1.zip -ArchiveStorageAccountName Stg -ConfigurationName ConfigName -ConfigurationArgument @{arg="val"} -ArchiveContainerName WindowsPowerShellDSC -ConfigurationData SampleData.psd1 -Version 1.10 -Location 'West US'
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>Sets the extension on the VM to download Sample.ps1.zip (from the 'Stg' storage account and container 'WindowsPowerShellDSC' ) that was previously uploaded using Publish-AzureRmVMDscConfiguration cmdlet and invokes configuration 'ConfigName' with configuration data and arguments.</maml:para>
+          <maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText>
+            </command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>
+          -------------------------- EXAMPLE 3 --------------------------
+        </maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+          Set-AzureRmVMDscExtension -ResourceGroupName Name -VMName vm -ArchiveBlobName Sample.ps1.zip -ArchiveStorageAccountName Stg -ConfigurationName ConfigName -ConfigurationArgument @{arg="val"} -ArchiveContainerName WindowsPowerShellDSC -ConfigurationData SampleData.psd1 -Version 1.10 -Location 'West US' -AutoUpdate
+        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>Sets the extension on the VM to download Sample.ps1.zip (from the 'Stg' storage account and container 'WindowsPowerShellDSC' ) that was previously uploaded using Publish-AzureRmVMDscConfiguration cmdlet and invokes configuration 'ConfigName' with configuration data and arguments. Also, enables auto update of extension handler to the latest version as and when it is available.</maml:para>
+          <maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText>
+            </command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <!-- Link section  -->
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>
+        </maml:linkText>
+        <maml:uri />
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>
+                   Publish-AzureRmVMDscConfiguration
+		</command:name>
+      <maml:description>
+        <maml:para>Uploads a Desired State Configuration script to Azure blob storage, which later can be applied to Azure Virtual Machines using the Set-AzureRmVMDscExtension cmdlet.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para>
+        </maml:para>
+      </maml:copyright>
+      <command:verb>Publish</command:verb>
+      <command:noun>AzureVMDscConfiguration</command:noun>
+      <dev:version>
+      </dev:version>
+    </command:details>
+    <maml:description>
+      <maml:para>Uploads a Desired State Configuration script to Azure blob storage, which later can be applied to Azure Virtual Machines using the Set-AzureRmVMDscExtension cmdlet.</maml:para>
+    </maml:description>
+    <!-- Cmdlet syntax section-->
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Publish-AzureRmVMDscConfiguration</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="2">
+          <maml:name>ConfigurationPath</maml:name>
+          <maml:description>
+            <maml:para>Path to a file containing one or more configurations. The file can be a PowerShell script (.ps1 file), module (.psm1 file).</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+          <maml:name>OutputArchivePath</maml:name>
+          <maml:description>
+            <maml:para>Path to a local ZIP file to write the configuration archive to. When this parameter is used, the configuration script is not uploaded to Azure blob storage.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+          <maml:name>AdditionalPath</maml:name>
+          <maml:description>
+            <maml:para>Path to a file or a directory to include in the configuration archive. It gets downloaded to the VM along with the configuration</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>ConfigurationDataPath</maml:name>
+          <maml:description>
+            <maml:para>Path to a .psd1 file that specifies the data for the Configuration. This is added to the configuration archive and then passed to the configuration function. It gets overwritten by the configuration data path provided through the Set-AzureRmVMDscExtension cmdlet</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Force</maml:name>
+          <maml:description>
+            <maml:para>By default Publish-AzureRmVMDscConfiguration will not overwrite any existing blobs or files. Use -Force to overwrite them.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>SkipDependencyDetection</maml:name>
+          <maml:description>
+            <maml:para>Excludes DSC resource dependencies from the configuration archive.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Confirm</maml:name>
+          <maml:description>
+            <maml:para>Prompts you for confirmation before executing the command.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+          <maml:name>WhatIf</maml:name>
+          <maml:description>
+            <maml:para>Describes what would happen if you executed the command without actually executing the command.</maml:para>
+          </maml:description>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Publish-AzureRmVMDscConfiguration</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="2">
+          <maml:name>ConfigurationPath</maml:name>
+          <maml:description>
+            <maml:para>Path to a file containing one or more configurations. The file can be a PowerShell script (.ps1 file), module (.psm1 file).</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+          <maml:name>ResourceGroupName</maml:name>
+          <maml:description>
+            <maml:para>The name of the resource group that contains the storage account</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+          <maml:name>StorageAccountName</maml:name>
+          <maml:description>
+            <maml:para>The Azure Storage Account name used to upload the configuration script to the container specified by ContainerName</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
+          <maml:name>ContainerName</maml:name>
+          <maml:description>
+            <maml:para>Name of the Azure Storage Container the configuration is uploaded to. </maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+          <maml:name>AdditionalPath</maml:name>
+          <maml:description>
+            <maml:para>Path to a file or a directory to include in the configuration archive. It gets downloaded to the VM along with the configuration</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>ConfigurationDataPath</maml:name>
+          <maml:description>
+            <maml:para>Path to a .psd1 file that specifies the data for the Configuration. This is added to the configuration archive and then passed to the configuration function. It gets overwritten by the configuration data path provided through the Set-AzureRmVMDscExtension cmdlet</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Force</maml:name>
+          <maml:description>
+            <maml:para>By default Publish-AzureRmVMDscConfiguration will not overwrite any existing blobs or files. Use -Force to overwrite them.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>SkipDependencyDetection</maml:name>
+          <maml:description>
+            <maml:para>Excludes DSC resource dependencies from the configuration archive.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>StorageEndpointSuffix</maml:name>
+          <maml:description>
+            <maml:para>Suffix for the storage end point, e.g. core.windows.net</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Confirm</maml:name>
+          <maml:description>
+            <maml:para>Prompts you for confirmation before executing the command.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+          <maml:name>WhatIf</maml:name>
+          <maml:description>
+            <maml:para>Describes what would happen if you executed the command without actually executing the command.</maml:para>
+          </maml:description>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <!-- Cmdlet parameter section  -->
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+        <maml:name>AdditionalPath</maml:name>
+        <maml:description>
+          <maml:para>Path to a file or a directory to include in the configuration archive. It gets downloaded to the VM along with the configuration</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
+        <dev:type>
+          <maml:name>string[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>ConfigurationDataPath</maml:name>
+        <maml:description>
+          <maml:para>Path to a .psd1 file that specifies the data for the Configuration. This is added to the configuration archive and then passed to the configuration function. It gets overwritten by the configuration data path provided through the Set-AzureRmVMDscExtension cmdlet</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="2">
+        <maml:name>ConfigurationPath</maml:name>
+        <maml:description>
+          <maml:para>Path to a file containing one or more configurations. The file can be a PowerShell script (.ps1 file), module (.psm1 file).</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
+        <maml:name>ContainerName</maml:name>
+        <maml:description>
+          <maml:para>Name of the Azure Storage Container the configuration is uploaded to. </maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Force</maml:name>
+        <maml:description>
+          <maml:para>By default Publish-AzureRmVMDscConfiguration will not overwrite any existing blobs or files. Use -Force to overwrite them.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+        <maml:name>OutputArchivePath</maml:name>
+        <maml:description>
+          <maml:para>Path to a local ZIP file to write the configuration archive to. When this parameter is used, the configuration script is not uploaded to Azure blob storage.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
+        <maml:name>ResourceGroupName</maml:name>
+        <maml:description>
+          <maml:para>The name of the resource group that contains the storage account</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>SkipDependencyDetection</maml:name>
+        <maml:description>
+          <maml:para>Excludes DSC resource dependencies from the configuration archive.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
+        <maml:name>StorageAccountName</maml:name>
+        <maml:description>
+          <maml:para>The Azure Storage Account name used to upload the configuration script to the container specified by ContainerName</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>StorageEndpointSuffix</maml:name>
+        <maml:description>
+          <maml:para>Suffix for the storage end point, e.g. core.windows.net</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        <dev:type>
+          <maml:name>string</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
         <maml:name>Confirm</maml:name>
@@ -9950,8 +10694,9 @@ Get-AzureRmVMDscExtension -ResourceGroupName Name -VMName VM -Name 'DSC' </dev:c
     <command:inputTypes>
       <command:inputType>
         <dev:type>
-          <maml:name></maml:name>
-          <maml:uri/>
+          <maml:name>
+          </maml:name>
+          <maml:uri />
           <maml:description />
         </dev:type>
         <maml:description>
@@ -9964,7 +10709,8 @@ Get-AzureRmVMDscExtension -ResourceGroupName Name -VMName VM -Name 'DSC' </dev:c
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name></maml:name>
+          <maml:name>
+          </maml:name>
           <maml:uri />
           <maml:description />
         </dev:type>
@@ -9980,93 +10726,162 @@ Get-AzureRmVMDscExtension -ResourceGroupName Name -VMName VM -Name 'DSC' </dev:c
     <command:nonTerminatingErrors />
     <!-- Notes section  -->
     <maml:alertSet>
-      <maml:title></maml:title>
+      <maml:title>
+      </maml:title>
+      <maml:alert>
+        <maml:para>
+        </maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
+      </maml:alert>
       <maml:alert>
         <maml:para>
         </maml:para>
       </maml:alert>
-      <maml:alert>
-        <maml:para></maml:para>
-      </maml:alert>
     </maml:alertSet>
     <!-- Example section  -->
     <command:examples>
-
       <command:example>
         <maml:title>
-          -------------------------- EXAMPLE 1 --------------------------
-        </maml:title>
+				-------------------------- EXAMPLE 1 --------------------------
+			</maml:title>
         <maml:introduction>
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Set-AzureRmVMDscExtension -ResourceGroupName Name -VMName VM -ArchiveBlobName Sample.ps1.zip -ArchiveStorageAccountName Stg -ConfigurationName ConfigName -Version 1.10 -Location 'West US'
-        </dev:code>
+Publish-AzureRmVMDscConfiguration .\MyConfiguration.ps1                        </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
           <maml:para>-----------</maml:para>
+          <maml:para>Creates a ZIP package for the given script and any dependent resource modules and uploads it to Azure Storage.</maml:para>
           <maml:para>
-            Sets the extension on the 'VM' to download Sample.ps1.zip (from the 'Stg' storage account and the default container 'windows-powershell-dsc') that was previously uploaded using Publish-AzureRmVMDscConfiguration cmdlet and invokes configuration 'ConfigName'.</maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>
-            <command:commandText></command:commandText>
+            <command:commandText>
+            </command:commandText>
           </command:commandLine>
         </command:commandLines>
       </command:example>
-
       <command:example>
         <maml:title>
-          -------------------------- EXAMPLE 2 --------------------------
-        </maml:title>
+				-------------------------- EXAMPLE 2 --------------------------
+			</maml:title>
         <maml:introduction>
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Set-AzureRmVMDscExtension -ResourceGroupName Name -VMName vm -ArchiveBlobName Sample.ps1.zip -ArchiveStorageAccountName Stg -ConfigurationName ConfigName -ConfigurationArgument @{arg=&quot;val&quot;} -ArchiveContainerName WindowsPowerShellDSC -ConfigurationData SampleData.psd1 -Version 1.10 -Location 'West US'
-        </dev:code>
+Publish-AzureRmVMDscConfiguration .\MyConfiguration.ps1 -OutputArchivePath .\MyConfiguration.ps1.zip                        </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
           <maml:para>-----------</maml:para>
-          <maml:para>Sets the extension on the VM to download Sample.ps1.zip (from the 'Stg' storage account and container 'WindowsPowerShellDSC' ) that was previously uploaded using Publish-AzureRmVMDscConfiguration cmdlet and invokes configuration 'ConfigName' with configuration data and arguments.</maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
+          <maml:para>Creates a ZIP package for the given script and any dependent resource modules and stores it in the local file .\MyConfiguration.ps1.zip.</maml:para>
+          <maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>
-            <command:commandText></command:commandText>
+            <command:commandText>
+            </command:commandText>
           </command:commandLine>
         </command:commandLines>
       </command:example>
-
       <command:example>
         <maml:title>
-          -------------------------- EXAMPLE 3 --------------------------
-        </maml:title>
+				-------------------------- EXAMPLE 3 --------------------------
+			</maml:title>
         <maml:introduction>
           <maml:para>C:\PS&gt;</maml:para>
         </maml:introduction>
         <dev:code>
-          Set-AzureRmVMDscExtension -ResourceGroupName Name -VMName vm -ArchiveBlobName Sample.ps1.zip -ArchiveStorageAccountName Stg -ConfigurationName ConfigName -ConfigurationArgument @{arg=&quot;val&quot;} -ArchiveContainerName WindowsPowerShellDSC -ConfigurationData SampleData.psd1 -Version 1.10 -Location 'West US' -AutoUpdate
-        </dev:code>
+Publish-AzureRmVMDscConfiguration -ConfigurationPath 'C:\Sample.ps1 -SkipDependencyDetection                        </dev:code>
         <dev:remarks>
           <maml:para>Description</maml:para>
           <maml:para>-----------</maml:para>
-          <maml:para>Sets the extension on the VM to download Sample.ps1.zip (from the 'Stg' storage account and container 'WindowsPowerShellDSC' ) that was previously uploaded using Publish-AzureRmVMDscConfiguration cmdlet and invokes configuration 'ConfigName' with configuration data and arguments. Also, enables auto update of extension handler to the latest version as and when it is available.</maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
-          <maml:para></maml:para>
+          <maml:para>Adds configuration 'Sample.ps1' to the configuration archive to upload to Azure storage and skips dependent resource modules.</maml:para>
+          <maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>
-            <command:commandText></command:commandText>
+            <command:commandText>
+            </command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>
+				-------------------------- EXAMPLE 4 --------------------------
+			</maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+Publish-AzureRmVMDscConfiguration -ConfigurationPath C:\Sample.ps1 -ConfigurationDataPath 'C:\SampleData.psd1'                        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>Adds configuration 'Sample.ps1' and configuration data 'SampleData.psd1' to the configuration archive to upload to Azure storage.</maml:para>
+          <maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText>
+            </command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>
+				-------------------------- EXAMPLE 5 --------------------------
+			</maml:title>
+        <maml:introduction>
+          <maml:para>C:\PS&gt;</maml:para>
+        </maml:introduction>
+        <dev:code>
+Publish-AzureRmVMDscConfiguration -ConfigurationPath "C:\Sample.ps1" -AdditionalPath @("C:\ContentDir1", "C:\File.txt") -ConfigurationDataPath "C:\SampleData.psd1"                        </dev:code>
+        <dev:remarks>
+          <maml:para>Description</maml:para>
+          <maml:para>-----------</maml:para>
+          <maml:para>Adds configuration 'Sample.ps1', configuration data 'SampleData.psd1' and additional content (files or directories referenced by the configuration) to configuration archive to upload to Azure storage.</maml:para>
+          <maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
+          <maml:para>
+          </maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText>
+            </command:commandText>
           </command:commandLine>
         </command:commandLines>
       </command:example>
@@ -10074,493 +10889,13 @@ Get-AzureRmVMDscExtension -ResourceGroupName Name -VMName VM -Name 'DSC' </dev:c
     <!-- Link section  -->
     <maml:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText></maml:linkText>
-        <maml:uri/>
+        <maml:linkText>
+        </maml:linkText>
+        <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
   </command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
-	<command:details>
-		<command:name>
-                   Publish-AzureRmVMDscConfiguration
-		</command:name>
-		<maml:description>
-			<maml:para>Uploads a Desired State Configuration script to Azure blob storage, which later can be applied to Azure Virtual Machines using the Set-AzureRmVMDscExtension cmdlet.</maml:para>
-		</maml:description>
-		<maml:copyright>
-			<maml:para></maml:para>
-		</maml:copyright>
-		<command:verb>Publish</command:verb>
-		<command:noun>AzureVMDscConfiguration</command:noun>
-		<dev:version></dev:version>
-	</command:details>
-	<maml:description>
-		<maml:para>Uploads a Desired State Configuration script to Azure blob storage, which later can be applied to Azure Virtual Machines using the Set-AzureRmVMDscExtension cmdlet.</maml:para>
-	</maml:description>
-	<!-- Cmdlet syntax section-->
-	<command:syntax>
-		<command:syntaxItem>
-			<maml:name>Publish-AzureRmVMDscConfiguration</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="2">
-				<maml:name>ConfigurationPath</maml:name>
-				<maml:description>
-					<maml:para>Path to a file containing one or more configurations. The file can be a PowerShell script (.ps1 file), module (.psm1 file).</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-				<maml:name>OutputArchivePath</maml:name>
-				<maml:description>
-					<maml:para>Path to a local ZIP file to write the configuration archive to. When this parameter is used, the configuration script is not uploaded to Azure blob storage.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
-				<maml:name>AdditionalPath</maml:name>
-				<maml:description>
-					<maml:para>Path to a file or a directory to include in the configuration archive. It gets downloaded to the VM along with the configuration</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>ConfigurationDataPath</maml:name>
-				<maml:description>
-					<maml:para>Path to a .psd1 file that specifies the data for the Configuration. This is added to the configuration archive and then passed to the configuration function. It gets overwritten by the configuration data path provided through the Set-AzureRmVMDscExtension cmdlet</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>By default Publish-AzureRmVMDscConfiguration will not overwrite any existing blobs or files. Use -Force to overwrite them.</maml:para>
-				</maml:description>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>SkipDependencyDetection</maml:name>
-				<maml:description>
-					<maml:para>Excludes DSC resource dependencies from the configuration archive.</maml:para>
-				</maml:description>
-			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
-   			 <maml:name>Confirm</maml:name>
-    			<maml:description>
-				<maml:para>Prompts you for confirmation before executing the command.</maml:para>
-    			</maml:description>
-			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
-   			 <maml:name>WhatIf</maml:name>
-    			<maml:description>
-				<maml:para>Describes what would happen if you executed the command without actually executing the command.</maml:para>
-    			</maml:description>
-			</command:parameter>
-		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>Publish-AzureRmVMDscConfiguration</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="2">
-				<maml:name>ConfigurationPath</maml:name>
-				<maml:description>
-					<maml:para>Path to a file containing one or more configurations. The file can be a PowerShell script (.ps1 file), module (.psm1 file).</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-				<maml:name>ResourceGroupName</maml:name>
-				<maml:description>
-					<maml:para>The name of the resource group that contains the storage account</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
-				<maml:name>StorageAccountName</maml:name>
-				<maml:description>
-					<maml:para>The Azure Storage Account name used to upload the configuration script to the container specified by ContainerName</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
-				<maml:name>ContainerName</maml:name>
-				<maml:description>
-					<maml:para>Name of the Azure Storage Container the configuration is uploaded to. </maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
-				<maml:name>AdditionalPath</maml:name>
-				<maml:description>
-					<maml:para>Path to a file or a directory to include in the configuration archive. It gets downloaded to the VM along with the configuration</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>ConfigurationDataPath</maml:name>
-				<maml:description>
-					<maml:para>Path to a .psd1 file that specifies the data for the Configuration. This is added to the configuration archive and then passed to the configuration function. It gets overwritten by the configuration data path provided through the Set-AzureRmVMDscExtension cmdlet</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>By default Publish-AzureRmVMDscConfiguration will not overwrite any existing blobs or files. Use -Force to overwrite them.</maml:para>
-				</maml:description>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>SkipDependencyDetection</maml:name>
-				<maml:description>
-					<maml:para>Excludes DSC resource dependencies from the configuration archive.</maml:para>
-				</maml:description>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>StorageEndpointSuffix</maml:name>
-				<maml:description>
-					<maml:para>Suffix for the storage end point, e.g. core.windows.net</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
-   			 <maml:name>Confirm</maml:name>
-    			<maml:description>
-				<maml:para>Prompts you for confirmation before executing the command.</maml:para>
-    			</maml:description>
-			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
-   			 <maml:name>WhatIf</maml:name>
-    			<maml:description>
-				<maml:para>Describes what would happen if you executed the command without actually executing the command.</maml:para>
-    			</maml:description>
-			</command:parameter>
-		</command:syntaxItem>
-	</command:syntax>
-	<!-- Cmdlet parameter section  -->
-	<command:parameters>
-		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
-			<maml:name>AdditionalPath</maml:name>
-			<maml:description>
-				<maml:para>Path to a file or a directory to include in the configuration archive. It gets downloaded to the VM along with the configuration</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="true">string[]</command:parameterValue>
-			<dev:type>
-				<maml:name>string[]</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>ConfigurationDataPath</maml:name>
-			<maml:description>
-				<maml:para>Path to a .psd1 file that specifies the data for the Configuration. This is added to the configuration archive and then passed to the configuration function. It gets overwritten by the configuration data path provided through the Set-AzureRmVMDscExtension cmdlet</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue, ByPropertyName)" position="2">
-			<maml:name>ConfigurationPath</maml:name>
-			<maml:description>
-				<maml:para>Path to a file containing one or more configurations. The file can be a PowerShell script (.ps1 file), module (.psm1 file).</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="5">
-			<maml:name>ContainerName</maml:name>
-			<maml:description>
-				<maml:para>Name of the Azure Storage Container the configuration is uploaded to. </maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>By default Publish-AzureRmVMDscConfiguration will not overwrite any existing blobs or files. Use -Force to overwrite them.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-			<maml:name>OutputArchivePath</maml:name>
-			<maml:description>
-				<maml:para>Path to a local ZIP file to write the configuration archive to. When this parameter is used, the configuration script is not uploaded to Azure blob storage.</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-			<maml:name>ResourceGroupName</maml:name>
-			<maml:description>
-				<maml:para>The name of the resource group that contains the storage account</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>SkipDependencyDetection</maml:name>
-			<maml:description>
-				<maml:para>Excludes DSC resource dependencies from the configuration archive.</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="4">
-			<maml:name>StorageAccountName</maml:name>
-			<maml:description>
-				<maml:para>The Azure Storage Account name used to upload the configuration script to the container specified by ContainerName</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>StorageEndpointSuffix</maml:name>
-			<maml:description>
-				<maml:para>Suffix for the storage end point, e.g. core.windows.net</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-			<dev:type>
-				<maml:name>string</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
-   			 <maml:name>Confirm</maml:name>
-    			<maml:description>
-				<maml:para>Prompts you for confirmation before executing the command.</maml:para>
-    			</maml:description>
-    			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>	
-				<dev:type>
-  				<maml:name>SwitchParameter</maml:name> 
-					<maml:uri /> 
-					</dev:type>
- 			<dev:defaultValue /> 
-			</command:parameter>
-		<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
-   			 <maml:name>WhatIf</maml:name>
-    			<maml:description>
-				<maml:para>Describes what would happen if you executed the command without actually executing the command.</maml:para>
-    			</maml:description>
-    			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>	
-				<dev:type>
-  				<maml:name>SwitchParameter</maml:name> 
-					<maml:uri /> 
-					</dev:type>
- 			<dev:defaultValue /> 
-			</command:parameter>
-	</command:parameters>
-	<!-- Input - Output section-->
-	<command:inputTypes>
-		<command:inputType>
-			<dev:type>
-				<maml:name></maml:name>
-				<maml:uri/>
-				<maml:description />
-			</dev:type>
-			<maml:description>
-				<maml:para>
-					<!-- description  -->
-					
-				</maml:para>
-			</maml:description>
-		</command:inputType>
-	</command:inputTypes>
-	<command:returnValues>
-		<command:returnValue>
-			<dev:type>
-				<maml:name></maml:name>
-				<maml:uri />
-				<maml:description />
-			</dev:type>   
-			<maml:description>
-				<maml:para>
-					<!-- description  -->
-					
-				</maml:para>
-			</maml:description> 
-		</command:returnValue>
-	</command:returnValues>
-	<!-- Error section-->
-	<command:terminatingErrors />
-	<command:nonTerminatingErrors />
-		<!-- Notes section  -->
-	<maml:alertSet>
-		<maml:title></maml:title>
-		<maml:alert>
-			<maml:para>
-                          
-                        </maml:para>
-		</maml:alert>
-		<maml:alert>
-			<maml:para></maml:para>
-		</maml:alert>
-	</maml:alertSet>
-	<!-- Example section  --> 
-	<command:examples>
-
-		<command:example>
-			<maml:title>
-				-------------------------- EXAMPLE 1 --------------------------
-			</maml:title> 
-			<maml:introduction>
-				<maml:para>C:\PS&gt;</maml:para>
-			</maml:introduction> 
-  			<dev:code>
-Publish-AzureRmVMDscConfiguration .\MyConfiguration.ps1                        </dev:code>
-       			<dev:remarks>
-                                <maml:para>Description</maml:para>
-                                <maml:para>-----------</maml:para>
-  			        <maml:para>Creates a ZIP package for the given script and any dependent resource modules and uploads it to Azure Storage.</maml:para>
-	                        <maml:para></maml:para>
-	                        <maml:para></maml:para>
-	                        <maml:para></maml:para>
-	                        <maml:para></maml:para>
-  			</dev:remarks>
-			<command:commandLines>
-				<command:commandLine>
-					<command:commandText></command:commandText>
-				</command:commandLine>
-			</command:commandLines>
-		</command:example>
-
-		<command:example>
-			<maml:title>
-				-------------------------- EXAMPLE 2 --------------------------
-			</maml:title> 
-			<maml:introduction>
-				<maml:para>C:\PS&gt;</maml:para>
-			</maml:introduction> 
-  			<dev:code>
-Publish-AzureRmVMDscConfiguration .\MyConfiguration.ps1 -OutputArchivePath .\MyConfiguration.ps1.zip                        </dev:code>
-       			<dev:remarks>
-                                <maml:para>Description</maml:para>
-                                <maml:para>-----------</maml:para>
-  			        <maml:para>Creates a ZIP package for the given script and any dependent resource modules and stores it in the local file .\MyConfiguration.ps1.zip.</maml:para>
-	                        <maml:para></maml:para>
-	                        <maml:para></maml:para>
-	                        <maml:para></maml:para>
-	                        <maml:para></maml:para>
-  			</dev:remarks>
-			<command:commandLines>
-				<command:commandLine>
-					<command:commandText></command:commandText>
-				</command:commandLine>
-			</command:commandLines>
-		</command:example>
-
-		<command:example>
-			<maml:title>
-				-------------------------- EXAMPLE 3 --------------------------
-			</maml:title> 
-			<maml:introduction>
-				<maml:para>C:\PS&gt;</maml:para>
-			</maml:introduction> 
-  			<dev:code>
-Publish-AzureRmVMDscConfiguration -ConfigurationPath 'C:\Sample.ps1 -SkipDependencyDetection                        </dev:code>
-       			<dev:remarks>
-                                <maml:para>Description</maml:para>
-                                <maml:para>-----------</maml:para>
-  			        <maml:para>Adds configuration 'Sample.ps1' to the configuration archive to upload to Azure storage and skips dependent resource modules.</maml:para>
-	                        <maml:para></maml:para>
-	                        <maml:para></maml:para>
-	                        <maml:para></maml:para>
-	                        <maml:para></maml:para>
-  			</dev:remarks>
-			<command:commandLines>
-				<command:commandLine>
-					<command:commandText></command:commandText>
-				</command:commandLine>
-			</command:commandLines>
-		</command:example>
-
-		<command:example>
-			<maml:title>
-				-------------------------- EXAMPLE 4 --------------------------
-			</maml:title> 
-			<maml:introduction>
-				<maml:para>C:\PS&gt;</maml:para>
-			</maml:introduction> 
-  			<dev:code>
-Publish-AzureRmVMDscConfiguration -ConfigurationPath C:\Sample.ps1 -ConfigurationDataPath 'C:\SampleData.psd1'                        </dev:code>
-       			<dev:remarks>
-                                <maml:para>Description</maml:para>
-                                <maml:para>-----------</maml:para>
-  			        <maml:para>Adds configuration 'Sample.ps1' and configuration data 'SampleData.psd1' to the configuration archive to upload to Azure storage.</maml:para>
-	                        <maml:para></maml:para>
-	                        <maml:para></maml:para>
-	                        <maml:para></maml:para>
-	                        <maml:para></maml:para>
-  			</dev:remarks>
-			<command:commandLines>
-				<command:commandLine>
-					<command:commandText></command:commandText>
-				</command:commandLine>
-			</command:commandLines>
-		</command:example>
-
-		<command:example>
-			<maml:title>
-				-------------------------- EXAMPLE 5 --------------------------
-			</maml:title> 
-			<maml:introduction>
-				<maml:para>C:\PS&gt;</maml:para>
-			</maml:introduction> 
-  			<dev:code>
-Publish-AzureRmVMDscConfiguration -ConfigurationPath &quot;C:\Sample.ps1&quot; -AdditionalPath @(&quot;C:\ContentDir1&quot;, &quot;C:\File.txt&quot;) -ConfigurationDataPath &quot;C:\SampleData.psd1&quot;                        </dev:code>
-       			<dev:remarks>
-                                <maml:para>Description</maml:para>
-                                <maml:para>-----------</maml:para>
-  			        <maml:para>Adds configuration 'Sample.ps1', configuration data 'SampleData.psd1' and additional content (files or directories referenced by the configuration) to configuration archive to upload to Azure storage.</maml:para>
-	                        <maml:para></maml:para>
-	                        <maml:para></maml:para>
-	                        <maml:para></maml:para>
-	                        <maml:para></maml:para>
-  			</dev:remarks>
-			<command:commandLines>
-				<command:commandLine>
-					<command:commandText></command:commandText>
-				</command:commandLine>
-			</command:commandLines>
-		</command:example>
-	</command:examples>
-	<!-- Link section  -->
-	<maml:relatedLinks>
-		<maml:navigationLink>
-			<maml:linkText></maml:linkText>
-			<maml:uri/>
-		</maml:navigationLink>
-	</maml:relatedLinks>
-</command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
       <command:name>
         Get-AzureRmVMDscExtensionStatus
@@ -10569,14 +10904,17 @@ Publish-AzureRmVMDscConfiguration -ConfigurationPath &quot;C:\Sample.ps1&quot; -
         <maml:para>Used to get the status of the DSC extension handler for a VM in a resource group. When a configuration is applied this cmdlet produces output consistent with Start-DscConfiguration. </maml:para>
       </maml:description>
       <maml:copyright>
-        <maml:para></maml:para>
+        <maml:para>
+        </maml:para>
       </maml:copyright>
       <command:verb>Get</command:verb>
       <command:noun>AzureRmVMDscExtensionStatus</command:noun>
-      <dev:version></dev:version>
+      <dev:version>
+      </dev:version>
     </command:details>
     <maml:description>
-      <maml:para></maml:para>
+      <maml:para>
+      </maml:para>
     </maml:description>
     <!-- Cmdlet syntax section-->
     <command:syntax>
@@ -10611,54 +10949,54 @@ Publish-AzureRmVMDscConfiguration -ConfigurationPath &quot;C:\Sample.ps1&quot; -
         <maml:name>Name</maml:name>
         <maml:description>
           <maml:para>Name of the ARM resource that represents the extension. The Set-AzureRmVMDscExtension cmdlet sets this name to 'Microsoft.Powershell.DSC', which is the same value used by Get-AzureRmVMDscExtensionStatus. Specify this parameter only if you changed the default name in the Set cmdlet or used a different resource name in an ARM template.</maml:para>
-
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         <dev:type>
           <maml:name>string</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
         <maml:name>ResourceGroupName</maml:name>
         <maml:description>
           <maml:para>The resource group name.</maml:para>
-
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         <dev:type>
           <maml:name>string</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="2">
         <maml:name>VMName</maml:name>
         <maml:description>
           <maml:para>The virtual machine name</maml:para>
-
         </maml:description>
         <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         <dev:type>
           <maml:name>string</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
     </command:parameters>
     <!-- Input - Output section-->
     <command:inputTypes>
       <command:inputType>
         <dev:type>
-          <maml:name></maml:name>
-          <maml:uri/>
+          <maml:name>
+          </maml:name>
+          <maml:uri />
           <maml:description />
         </dev:type>
         <maml:description>
           <maml:para>
             <!-- description  -->
-
           </maml:para>
         </maml:description>
       </command:inputType>
@@ -10666,14 +11004,14 @@ Publish-AzureRmVMDscConfiguration -ConfigurationPath &quot;C:\Sample.ps1&quot; -
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name></maml:name>
+          <maml:name>
+          </maml:name>
           <maml:uri />
           <maml:description />
         </dev:type>
         <maml:description>
           <maml:para>
             <!-- description  -->
-
           </maml:para>
         </maml:description>
       </command:returnValue>
@@ -10683,14 +11021,16 @@ Publish-AzureRmVMDscConfiguration -ConfigurationPath &quot;C:\Sample.ps1&quot; -
     <command:nonTerminatingErrors />
     <!-- Notes section  -->
     <maml:alertSet>
-      <maml:title></maml:title>
+      <maml:title>
+      </maml:title>
       <maml:alert>
         <maml:para>
-
         </maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
       </maml:alert>
       <maml:alert>
-        <maml:para></maml:para>
+        <maml:para>
+        </maml:para>
       </maml:alert>
     </maml:alertSet>
     <!-- Example section  -->
@@ -10699,10 +11039,10 @@ Publish-AzureRmVMDscConfiguration -ConfigurationPath &quot;C:\Sample.ps1&quot; -
     <!-- Link section  -->
     <maml:relatedLinks>
       <maml:navigationLink>
-        <maml:linkText></maml:linkText>
-        <maml:uri/>
+        <maml:linkText>
+        </maml:linkText>
+        <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
   </command:command>
-
 </helpItems>
