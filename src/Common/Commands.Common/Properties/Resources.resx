@@ -1541,4 +1541,7 @@ Select Y to enable data collection [Y/N]:</value>
   <data name="UserNameNeedsToBeSpecified" xml:space="preserve">
     <value>User name needs to be specified.</value>
   </data>
+  <data name="NoCurrentContextForDataCmdlet" xml:space="preserve">
+    <value>"There is no current context, please log in using Login-AzureRmAccount for Azure Resource Manager or Add-AzureAccount for Azure Service Management."</value>
+  </data>
 </root>

@@ -33,7 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
 {
     public class PSCmdletTests
     {
-        [Fact]
+        [Fact(Skip="TODO: Fix state machine issues with delegating handler.")]
         [Trait(Category.Service, Category.ServiceManagement)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.AcceptanceType, Category.BVT)]
