@@ -17,6 +17,7 @@
 using Microsoft.Azure.Management.Compute.Models;
 using Newtonsoft.Json;
 using System;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.Compute.Models
 {
@@ -27,6 +28,8 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public string RequestId { get; set; }
 
         public ComputeOperationStatus Status { get; set; }
+
+        public HttpStatusCode StatusCode { get; set; }
 
         public string Output { get; set; }
 
