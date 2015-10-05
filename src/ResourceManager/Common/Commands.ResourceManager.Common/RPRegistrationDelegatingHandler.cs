@@ -19,15 +19,19 @@ using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Common.Authentication.Models
 {
-    public class RPRegistrationDelegatingHandler : DelegatingHandler
+    public class RPRegistrationDelegatingHandler : DelegatingHandler, ICloneable
     {
+        private const short RetryCount = 3;
+
         /// <summary>
         /// Contains all providers we have attempted to register 
         /// </summary>
@@ -35,15 +39,14 @@ namespace Microsoft.Azure.Common.Authentication.Models
 
         private Func<ResourceManagementClient> createClient;
 
-        private Action<string> writeVerbose;
-
+        private Action<string> writeDebug;
 
         public ResourceManagementClient ResourceManagementClient { get; set; }
 
-        public RPRegistrationDelegatingHandler(Func<ResourceManagementClient> createClient, Action<string> writeVerbose)
+        public RPRegistrationDelegatingHandler(Func<ResourceManagementClient> createClient, Action<string> writeDebug)
         {
             registeredProviders = new HashSet<string>();
-            this.writeVerbose = writeVerbose;
+            this.writeDebug = writeDebug;
             this.createClient = createClient;
         }
 
@@ -57,21 +60,29 @@ namespace Microsoft.Azure.Common.Authentication.Models
                 var providerName = GetProviderName(request.RequestUri);
                 if (!string.IsNullOrEmpty(providerName) && !registeredProviders.Contains(providerName))
                 {
+                    // Force dispose for response messages to reclaim the used socket connection.
+                    responseMessage.Dispose();
                     registeredProviders.Add(providerName);
                     try
                     {
-                        writeVerbose(string.Format("Attempting to register resource provider '{0}'", providerName));
+                        writeDebug(string.Format(Resources.ResourceProviderRegisterAttempt, providerName));
                         ResourceManagementClient.Providers.Register(providerName);
                         Provider provider = null;
+                        short retryCount = 0;
                         do
                         {
+                            if (retryCount++ > RetryCount)
+                            {
+                                throw new TimeoutException();
+                            }
                             provider = ResourceManagementClient.Providers.Get(providerName).Provider;
+                            TestMockSupport.Delay(1000);
                         } while (provider.RegistrationState != RegistrationState.Registered.ToString());
-                        writeVerbose(string.Format("Succeeded to register resource provider '{0}'", providerName));
+                        writeDebug(string.Format(Resources.ResourceProviderRegisterSuccessful, providerName));
                     }
-                    catch
+                    catch (Exception e)
                     {
-                        writeVerbose(string.Format("Failed to register resource provider '{0}'", providerName));
+                        writeDebug(string.Format(Resources.ResourceProviderRegisterFailure, providerName, e.Message));
                         // Ignore RP registration errors.
                     }
 
@@ -98,6 +109,11 @@ namespace Microsoft.Azure.Common.Authentication.Models
         {
             return (requestUri.Segments.Length > 7 && requestUri.Segments[5].ToLower() == "providers/") ?
                 requestUri.Segments[6].ToLower().Trim('/') : null;
+        }
+
+        public object Clone()
+        {
+            return new RPRegistrationDelegatingHandler(createClient, writeDebug);
         }
     }
 }

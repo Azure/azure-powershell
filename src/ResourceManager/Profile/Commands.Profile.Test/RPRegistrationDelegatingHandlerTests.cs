@@ -181,15 +181,67 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.Equal(response.StatusCode, HttpStatusCode.Conflict);
             Assert.Equal(response.Content.ReadAsStringAsync().Result, "registered to use namespace");
         }
+
+        [Fact]
+        public void DoesNotHangForLongRegistrationCalls()
+        {
+            // Setup
+            Mock<ResourceManagementClient> mockClient = new Mock<ResourceManagementClient>();
+            Mock<IProviderOperations> mockProvidersOperations = new Mock<IProviderOperations>();
+            mockClient.Setup(f => f.Providers).Returns(mockProvidersOperations.Object);
+            mockProvidersOperations.Setup(f => f.GetAsync(It.IsAny<string>(), It.IsAny<CancellationToken>())).Returns(
+                (string rp, CancellationToken token) =>
+                {
+                    ProviderGetResult r = new ProviderGetResult
+                    {
+                        Provider = new Provider
+                        {
+                            RegistrationState = RegistrationState.Pending.ToString()
+                        }
+                    };
+
+                    return Task.FromResult(r);
+                }
+                );
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, compatibleUri);
+            Dictionary<HttpRequestMessage, List<HttpResponseMessage>> mapping = new Dictionary<HttpRequestMessage, List<HttpResponseMessage>>
+            {
+                {
+                    request, new List<HttpResponseMessage>
+                    {
+                        new HttpResponseMessage(HttpStatusCode.Conflict) { Content = new StringContent("registered to use namespace") },
+                        new HttpResponseMessage(HttpStatusCode.Conflict) { Content = new StringContent("registered to use namespace") }
+                    }
+                }
+            };
+            List<string> msgs = new List<string>();
+            RPRegistrationDelegatingHandler rpHandler = new RPRegistrationDelegatingHandler(() => mockClient.Object, s => msgs.Add(s))
+            {
+                InnerHandler = new MockResponseDelegatingHandler(mapping)
+            };
+            HttpClient httpClient = new HttpClient(rpHandler);
+
+            // Test
+            HttpResponseMessage response = httpClient.SendAsync(request).Result;
+
+            // Assert
+            Assert.True(msgs.Any(s => s.Equals("Failed to register resource provider 'microsoft.compute'.Details: 'The operation has timed out.'")));
+            Assert.Equal(response.StatusCode, HttpStatusCode.Conflict);
+            Assert.Equal(response.Content.ReadAsStringAsync().Result, "registered to use namespace");
+            mockProvidersOperations.Verify(f => f.RegisterAsync("microsoft.compute", It.IsAny<CancellationToken>()), Times.AtMost(4));
+        }
     }
 
     public class MockResponseDelegatingHandler : DelegatingHandler
     {
         Dictionary<HttpRequestMessage, List<HttpResponseMessage>> mapping;
 
+        public int RequestsCount { get; set; }
+
         public MockResponseDelegatingHandler(Dictionary<HttpRequestMessage, List<HttpResponseMessage>> mapping)
         {
             this.mapping = mapping;
+            this.RequestsCount = 0;
         }
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
@@ -198,9 +250,9 @@ namespace Microsoft.Azure.Commands.Profile.Test
             {
                 var response = mapping[request].First();
                 mapping[request].Remove(response);
+                RequestsCount++;
                 return response;
             });
         }
-
     }
 }
