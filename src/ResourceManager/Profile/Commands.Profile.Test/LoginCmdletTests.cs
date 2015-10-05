@@ -25,6 +25,7 @@ using System;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Hyak.Common;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
@@ -38,7 +39,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             dataStore = new MemoryDataStore();
             AzureSession.DataStore = dataStore;
             commandRuntimeMock = new MockCommandRuntime();
-            AzureRMCmdlet.DefaultProfile = new AzureRMProfile();
+            AzureRmProfileProvider.Instance.Profile = new AzureRMProfile();
         }
 
         [Fact]
@@ -56,8 +57,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.NotNull(AzureRMCmdlet.DefaultProfile.Context);
-            Assert.Equal("microsoft.com", AzureRMCmdlet.DefaultProfile.Context.Tenant.Domain);
+            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context);
+            Assert.Equal("microsoft.com", AzureRmProfileProvider.Instance.Profile.Context.Tenant.Domain);
         }
 
         [Fact]
@@ -90,8 +91,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.NotNull(AzureRMCmdlet.DefaultProfile.Context);
-            Assert.Equal("microsoft.com", AzureRMCmdlet.DefaultProfile.Context.Tenant.Domain);
+            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context);
+            Assert.Equal("microsoft.com", AzureRmProfileProvider.Instance.Profile.Context.Tenant.Domain);
         }
 
         [Fact]
@@ -107,8 +108,8 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.NotNull(AzureRMCmdlet.DefaultProfile.Context);
-            Assert.Equal("microsoft.com", AzureRMCmdlet.DefaultProfile.Context.Tenant.Domain);
+            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context);
+            Assert.Equal("microsoft.com", AzureRmProfileProvider.Instance.Profile.Context.Tenant.Domain);
         }
 
         [Fact]
@@ -125,12 +126,12 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.NotNull(AzureRMCmdlet.DefaultProfile.Context);
-            Assert.Equal("microsoft.com", AzureRMCmdlet.DefaultProfile.Context.Tenant.Domain);
+            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context);
+            Assert.Equal("microsoft.com", AzureRmProfileProvider.Instance.Profile.Context.Tenant.Domain);
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void LoginWithSubscriptionname()
         {
             var cmdlt = new AddAzureRMAccountCommand();
@@ -144,12 +145,12 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.NotNull(AzureRMCmdlet.DefaultProfile.Context);
-            Assert.Equal("microsoft.com", AzureRMCmdlet.DefaultProfile.Context.Tenant.Domain);
+            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context);
+            Assert.Equal("microsoft.com", AzureRmProfileProvider.Instance.Profile.Context.Tenant.Domain);
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void LoginWithBothSubscriptionIdAndNameThrowsCloudException()
         {
             var cmdlt = new AddAzureRMAccountCommand();

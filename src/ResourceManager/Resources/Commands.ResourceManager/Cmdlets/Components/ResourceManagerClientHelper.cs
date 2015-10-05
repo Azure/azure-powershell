@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients;
     using Microsoft.Azure.Common.Authentication;
     using Microsoft.Azure.Common.Authentication.Models;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Helper class for constructing <see cref="ResourceManagerRestRestClient"/>.
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// Gets a new instance of the <see cref="ResourceManagerRestRestClient"/>.
         /// </summary>
         /// <param name="context">The azure profile.</param>
-        internal static ResourceManagerRestRestClient GetResourceManagerClient(AzureContext context)
+        internal static ResourceManagerRestRestClient GetResourceManagerClient(AzureContext context, Dictionary<string, string> cmdletHeaderValues = null)
         {
             var endpoint = context.Environment.GetEndpoint(AzureEnvironment.Endpoint.ResourceManager);
 
@@ -46,7 +47,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                 httpClientHelper: HttpClientHelperFactory.Instance
                 .CreateHttpClientHelper(
                         credentials: AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context),
-                        headerValues: AzureSession.ClientFactory.UserAgents));
+                        headerValues: AzureSession.ClientFactory.UserAgents,
+                        cmdletHeaderValues: cmdletHeaderValues));
         }
     }
 }

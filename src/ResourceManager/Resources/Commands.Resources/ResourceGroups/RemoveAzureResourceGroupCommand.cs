@@ -23,16 +23,26 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Removes a new resource group.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmResourceGroup", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmResourceGroup", SupportsShouldProcess = true, DefaultParameterSetName = ResourceGroupNameParameterSet), OutputType(typeof(bool))]
     public class RemoveAzureResourceGroupCommand : ResourcesBaseCmdlet
     {
+        /// <summary>
+        /// List resources group by name parameter set.
+        /// </summary>
+        internal const string ResourceGroupNameParameterSet = "Lists the resource group based in the name.";
+
+        /// <summary>
+        /// List resources group by Id parameter set.
+        /// </summary>
+        internal const string ResourceGroupIdParameterSet = "Lists the resource group based in the Id.";
+
         [Alias("ResourceGroupName")]
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.")]
+        [Parameter(Mandatory = true, ParameterSetName = ResourceGroupNameParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.")]
         [ValidateNotNullOrEmpty]
         public string Name {get; set;}
 
         [Alias("ResourceGroupId", "ResourceId")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource group Id.")]
+        [Parameter(Mandatory = true, ParameterSetName = ResourceGroupIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group Id.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
@@ -41,9 +51,7 @@ namespace Microsoft.Azure.Commands.Resources
         
         protected override void ProcessRecord()
         {
-            Name = string.IsNullOrEmpty(Name) && !string.IsNullOrEmpty(Id)
-                ? Id.Split('/').Last()
-                : Name;
+            Name = Name ?? ResourceIdentifier.FromResourceGroupIdentifier(this.Id).ResourceGroupName;
 
             ConfirmAction(
                 Force.IsPresent,
