@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
             string mockName)
         {
             Dictionary<string, string> d = new Dictionary<string, string>();
-            d.Add("Microsoft.Authorization", "2014-07-01-preview");
+            d.Add("Microsoft.Authorization", null);
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
 
             using (UndoContext context = UndoContext.Current)
@@ -103,6 +103,10 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
                 helper.SetupModules(AzureModule.AzureResourceManager, 
+                    helper.RMProfileModule, 
+                    helper.RMResourceModule, 
+                    helper.RMStorageDataPlaneModule,
+                    helper.RMStorageModule,
                     "ScenarioTests\\Common.ps1", 
                     "ScenarioTests\\" + callingClassName + ".ps1");
 

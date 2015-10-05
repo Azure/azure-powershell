@@ -120,8 +120,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
             if (!string.IsNullOrWhiteSpace(subscriptionId))
             {
-                if (ListSubscriptions(_profile.Context.Tenant.Id.ToString()).FirstOrDefault(s =>
-                    String.Compare(s.Id.ToString(), subscriptionId, StringComparison.OrdinalIgnoreCase) == 0) == null)
+                if (!ListSubscriptions(_profile.Context.Tenant.Id.ToString()).Any(s =>
+                    string.Equals(s.Id.ToString(), subscriptionId, StringComparison.OrdinalIgnoreCase) ) )
                 {
                     throw new ArgumentException(string.Format(
                         "Provided subscription {0} does not exist under current tenant {1}", subscriptionId, _profile.Context.Tenant.Id));

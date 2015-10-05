@@ -1875,6 +1875,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &quot;There is no current context, please log in using Login-AzureRmAccount for Azure Resource Manager or Add-AzureAccount for Azure Service Management.&quot;.
+        /// </summary>
+        public static string NoCurrentContextForDataCmdlet {
+            get {
+                return ResourceManager.GetString("NoCurrentContextForDataCmdlet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to nodejs.
         /// </summary>
         public static string NodeDirectory {

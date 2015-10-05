@@ -177,6 +177,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AzureRmProfileTests.cs" />
+    <Compile Include="CommonDataCmdletTests.cs" />
     <Compile Include="EnvironmentCmdletTests.cs" />
     <Compile Include="MockSubscriptionClientFactory.cs" />
     <Compile Include="ProfileController.cs" />
@@ -186,6 +187,7 @@
     <Compile Include="ContextCmdletTests.cs" />
     <Compile Include="ProfileCmdletTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TypeConversionTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="SubscriptionCmdletTests.ps1">
@@ -194,6 +196,9 @@
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.SubscriptionCmdletTests\AllParameterSetsSucceed.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.SubscriptionCmdletTests\PipingWithRmContextWorks.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.SubscriptionCmdletTests\SetAzureRmContextWorks.json">

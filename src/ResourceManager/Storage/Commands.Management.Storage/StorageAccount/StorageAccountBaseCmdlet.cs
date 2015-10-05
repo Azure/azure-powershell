@@ -98,13 +98,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         protected void WriteStorageAccount(StorageAccount storageAccount)
         {
-            WriteObject(new PSStorageAccount(storageAccount));
+            WriteObject(PSStorageAccount.Create(storageAccount, this.StorageClient));
         }
 
         protected void WriteStorageAccountList(IList<StorageAccount> storageAccounts)
         {
             List<PSStorageAccount> output = new List<PSStorageAccount>();
-            storageAccounts.ForEach(storageAccount => output.Add(new PSStorageAccount(storageAccount)));
+            storageAccounts.ForEach(storageAccount => output.Add(PSStorageAccount.Create(storageAccount, this.StorageClient)));
             WriteObject(output, true);
         }
     }

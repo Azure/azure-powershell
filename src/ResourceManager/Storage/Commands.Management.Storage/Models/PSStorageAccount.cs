@@ -14,16 +14,19 @@
 
 using System;
 using System.Collections.Generic;
+using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
+using Microsoft.WindowsAzure.Commands.Common.Storage;
+using Microsoft.WindowsAzure.Storage;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Models
 {
-    class PSStorageAccount
+    class PSStorageAccount : IStorageContextProvider
     {
         public PSStorageAccount(StorageAccount storageAccount)
         {
             this.ResourceGroupName = ParseResourceGroupFromId(storageAccount.Id);
-            this.Name = storageAccount.Name;
+            this.StorageAccountName = storageAccount.Name;
             this.Id = storageAccount.Id;
             this.Location = storageAccount.Location;
             this.AccountType = storageAccount.AccountType;
@@ -42,7 +45,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public string ResourceGroupName { get; set; }
 
-        public string Name { get; set; }
+        public string StorageAccountName { get; set; }
 
         public string Id { get; set; }
 
@@ -72,6 +75,16 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public IDictionary<string, string> Tags { get; set; }
 
+        public static PSStorageAccount Create(StorageAccount storageAccount, IStorageManagementClient client)
+        {
+            var result = new PSStorageAccount(storageAccount);
+            var credentials = StorageUtilities.GenerateStorageCredentials(client, result.ResourceGroupName, result.StorageAccountName);
+            CloudStorageAccount account = new CloudStorageAccount(credentials,
+                storageAccount.PrimaryEndpoints.Blob, storageAccount.PrimaryEndpoints.Queue, storageAccount.PrimaryEndpoints.Table, null);
+            result.Context = new AzureStorageContext(account);
+            return result;
+        }
+
         private static string ParseResourceGroupFromId(string idFromServer)
         {
             if (!string.IsNullOrEmpty(idFromServer))
@@ -83,5 +96,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
             return null;
         }
+
+        public AzureStorageContext Context { get; private set; }
     }
 }

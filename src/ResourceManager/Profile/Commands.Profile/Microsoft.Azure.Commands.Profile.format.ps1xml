@@ -26,6 +26,10 @@
                 <Label>Subscription</Label>
                 <ScriptBlock>$_.Context.Subscription.ToString()</ScriptBlock>
               </ListItem>
+              <ListItem>
+                <Label>CurrentStorageAccount</Label>
+                <ScriptBlock>if ($_.Context.Subscription -ne $null -and $_.Context.Subscription.CurrentStorageAccountName -ne $null) {$_.Context.Subscription.CurrentStorageAccountName} else {$null} </ScriptBlock>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -51,6 +55,10 @@
               </ListItem>
               <ListItem>
                 <PropertyName>Subscription</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>CurrentStorageAccount</Label>
+                <ScriptBlock>if ($_.Subscription -ne $null -and $_.Subscription.CurrentStorageAccountName -ne $null) {$_.Subscription.CurrentStorageAccountName} else {$null} </ScriptBlock>
               </ListItem>
             </ListItems>
           </ListEntry>
