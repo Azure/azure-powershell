@@ -200,7 +200,6 @@
     <Compile Include="Providers\RegisterAzureProviderCmdlet.cs" />
     <Compile Include="Providers\UnregisterAzureProviderCmdlet.cs" />
     <Compile Include="ResourceGroupDeployments\RemoveAzureResourceGroupDeploymentCommand.cs" />
-    <Compile Include="ResourceGroups\GetAzureLocationCommand.cs" />
     <Compile Include="ResourceGroups\SetAzureResourceGroupCommand.cs" />
     <Compile Include="RoleAssignments\RemoveAzureRoleAssignmentCommand.cs" />
     <Compile Include="RoleAssignments\GetAzureRoleAssignmentCommand.cs" />

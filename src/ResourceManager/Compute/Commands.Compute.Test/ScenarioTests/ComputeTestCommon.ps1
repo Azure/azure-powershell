@@ -398,28 +398,27 @@ function Get-SasUri
 # Get a Location according to resource provider.
 function Get-ResourceProviderLocation
 {
-    param ([string] $name, [string] $default = "westus", [bool] $canonical = $true)
-
-	$loc = Get-AzureRmLocation | where { $_.Name.Equals($name) };
-
-	if ($loc -eq $null)
+	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
 	{
-	    throw 'There is no available locations with given parameters';
+			$namespace = $provider.Split("/")[0]  
+		if($provider.Contains("/"))  
+		{  
+			$type = $provider.Substring($namespace.Length + 1)  
+			$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
+  
+			if ($location -eq $null) 
+			{  
+				return "West US"  
+			} else 
+			{  
+				return $location.Locations[0]  
+			}  
+		}
+		
+		return "West US"
 	}
 
-	if ($loc.LocationsString.ToLowerInvariant().Replace(" ", "").Contains($default.ToLowerInvariant().Replace(" ","")))
-	{
-	    return $default;
-	}
-
-	if ($canonical)
-	{
-	    return $loc.Locations[0].ToLowerInvariant().Replace(" ", "");
-	}
-	else
-	{
-	    return $loc.Locations[0];
-    }
+	return "WestUS"
 }
 
 function Get-ComputeVMLocation
