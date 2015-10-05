@@ -200,6 +200,9 @@
     <None Include="FakeModuleRepo\AzureRM.Profile.999.9.8.nupkg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.ProfileModuleTests\WarningOnIncompatibleVersions.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.SubscriptionCmdletTests\AllParameterSetsSucceed.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
