@@ -187,7 +187,6 @@
     <Compile Include="Providers\RegisterResourceProviderCmdletTests.cs" />
     <Compile Include="Providers\UnregisterResourceProviderCmdletTests.cs" />
     <Compile Include="ResourceGroupDeployments\RemoveAzureResourceGroupDeploymentCommandTests.cs" />
-    <Compile Include="ResourceGroups\GetAzureLocationCommandTests.cs" />
     <Compile Include="ResourceGroups\SetAzureResourceGroupCommandTests.cs" />
     <Compile Include="ScenarioTests\ActiveDirectoryTests.cs" />
     <Compile Include="ScenarioTests\AuthorizationTests.cs" />
@@ -317,6 +316,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ActiveDirectoryTests\TestGetADUserWithMail.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.DeploymentTests\TestNewDeploymentFromTemplateFile.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.MoveResourceTest\TestMoveAzureResource.json">
@@ -529,6 +531,12 @@
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.RoleDefinitionTests\RoleDefinitionCreateTests.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="sampleTemplate.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="sampleTemplateParams.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>

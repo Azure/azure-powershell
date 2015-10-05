@@ -1615,7 +1615,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="3" aliases="none">
           <maml:name>Location</maml:name>
           <maml:description>
-            <maml:para>Specifies the Azure region in which to create the key vault. Use the command Get-AzureRmLocation to see your choices. For more information, type Get-Help Get-AzureRmLocation.</maml:para>
+            <maml:para>Specifies the Azure region in which to create the key vault. Use the command Get-AzureRmResourceProvider with the ProviderNamespace parameter to see your choices.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -1667,7 +1667,7 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="3" aliases="none">
         <maml:name>Location</maml:name>
         <maml:description>
-          <maml:para>Specifies the Azure region in which to create the key vault. Use the command Get-AzureRmLocation to see your choices. For more information, type Get-Help Get-AzureRmLocation.</maml:para>
+          <maml:para>Specifies the Azure region in which to create the key vault. Use the command Get-AzureRmResourceProvider with the ProviderNamespace parameter to see your choices.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>

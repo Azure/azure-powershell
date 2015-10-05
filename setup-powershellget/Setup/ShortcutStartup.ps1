@@ -59,6 +59,7 @@ For a list of all Azure RM cmdlets type 'help azurerm'.
 
 To start using Azure RM login via Login-AzureRmAccount cmdlet.
 To switch between subscriptions use Set-AzureRmContext.
+For more details, see http://aka.ms/azps-getting-started.
 
 To use Azure Service Management cmdlets please execute the following cmdlet:
   Install-Module Azure
