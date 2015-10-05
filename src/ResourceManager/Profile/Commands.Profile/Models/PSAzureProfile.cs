@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
 
         public override string ToString()
         {
-            return Context.ToString();
+            return Context!= null? Context.ToString() : null;
         }
     }
 }

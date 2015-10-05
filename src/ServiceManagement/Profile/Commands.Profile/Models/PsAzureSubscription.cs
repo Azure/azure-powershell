@@ -12,9 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel.Description;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Web.Deployment;
 
 namespace Microsoft.WindowsAzure.Commands.Profile.Models
 {
@@ -34,6 +38,8 @@ namespace Microsoft.WindowsAzure.Commands.Profile.Models
             TenantId = subscription.GetPropertyAsArray(AzureSubscription.Property.Tenants).FirstOrDefault();
         }
 
+
+
         public string SubscriptionId { get; set; }
         
         public string SubscriptionName { get; set; }
@@ -51,5 +57,32 @@ namespace Microsoft.WindowsAzure.Commands.Profile.Models
         public string CurrentStorageAccountName { get; set; }
         
         public string TenantId { get; set; }
+
+        public string GetAccountName()
+        {
+            var result = CurrentStorageAccountName;
+            if (!string.IsNullOrWhiteSpace(result))
+            {
+                try
+                {
+                    var pairs = result.Split(new char[]{';'}, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (var pair in pairs)
+                    {
+                        var sides = pair.Split(new char[] {'='}, 2, StringSplitOptions.RemoveEmptyEntries);
+                        if (string.Equals("AccountName", sides[0].Trim(), StringComparison.OrdinalIgnoreCase))
+                        {
+                            result = sides[1].Trim();
+                            break;
+                        }
+                    }
+                }
+                catch
+                {
+                    // if there are any errors, return the unchanged account name
+                }
+            }
+
+            return result;
+        }
     }
 }

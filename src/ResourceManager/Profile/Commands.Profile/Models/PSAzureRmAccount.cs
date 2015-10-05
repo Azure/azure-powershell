@@ -22,19 +22,24 @@ namespace Microsoft.Azure.Commands.Profile.Models
     /// <summary>
     /// Azure account details.
     /// </summary>
-    public class PSAzureAccount
+    public class PSAzureRmAccount
     {
         /// <summary>
         /// Convert between implementation of Azure Account metadata
         /// </summary>
         /// <param name="account">The account to convert.</param>
         /// <returns>The converted account.</returns>
-        public static implicit operator PSAzureAccount(AzureAccount account)
+        public static implicit operator PSAzureRmAccount(AzureAccount account)
         {
-            return new PSAzureAccount
+            if (account == null)
             {
-                Id = account != null ? account.Id : null,
-                AccountType = account != null? account.Type.ToString() : null
+                return null;
+            }
+
+            return new PSAzureRmAccount
+            {
+                Id = account.Id,
+                AccountType = account.Type.ToString()
             };
         }
 
@@ -43,14 +48,24 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// </summary>
         /// <param name="account">The account to convert.</param>
         /// <returns>The converted account.</returns>
-        public static implicit operator AzureAccount(PSAzureAccount account)
+        public static implicit operator AzureAccount(PSAzureRmAccount account)
         {
-            return new AzureAccount
+            if (account == null)
             {
-                Id = account != null? account.Id : null,
-                Type = account != null? ((AzureAccount.AccountType)Enum.Parse(typeof(AzureAccount.AccountType), 
-                    account.AccountType, true)) : AzureAccount.AccountType.User
+                return null;
+            }
+
+            var result = new AzureAccount
+            {
+                Id = account.Id,
             };
+            AzureAccount.AccountType accountType;
+            if (Enum.TryParse(account.AccountType, out accountType))
+            {
+                result.Type = accountType;
+            }
+
+            return result;
         }
 
         /// <summary>

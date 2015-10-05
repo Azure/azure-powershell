@@ -138,10 +138,10 @@
     <Compile Include="Environment\GetAzureRMEnvironment.cs" />
     <Compile Include="Environment\SetAzureRMEnvironment.cs" />
     <Compile Include="Environment\AddAzureRMEnvironment.cs" />
-    <Compile Include="Models\PSAzureAccount.cs" />
     <Compile Include="Models\PSAzureContext.cs" />
     <Compile Include="Models\PSAzureEnvironment.cs" />
     <Compile Include="Models\PSAzureProfile.cs" />
+    <Compile Include="Models\PSAzureRmAccount.cs" />
     <Compile Include="Models\PSAzureSubscription.cs" />
     <Compile Include="Models\PSAzureTenant.cs" />
     <Compile Include="Subscription\GetAzureRMSubscription.cs" />

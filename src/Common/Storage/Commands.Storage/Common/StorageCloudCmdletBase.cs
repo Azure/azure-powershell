@@ -20,6 +20,7 @@ using System.Management.Automation;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
@@ -38,7 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     /// <summary>
     /// Base cmdlet for all storage cmdlet that works with cloud
     /// </summary>
-    public class StorageCloudCmdletBase<T> : CloudBaseCmdlet<T>
+    public class StorageCloudCmdletBase<T> : AzureDataCmdlet
         where T : class
     {
         [Parameter(HelpMessage = "Azure Storage Context Object",
@@ -74,6 +75,60 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                     concurrentTaskCount = count;
                 }
             }
+        }
+
+                public T Channel
+        {
+            get;
+            set;
+        }
+
+        protected void InitChannelCurrentSubscription()
+        {
+            InitChannelCurrentSubscription(false);
+        }
+
+        protected void DoInitChannelCurrentSubscription(bool force)
+        {
+            if (DefaultContext.Subscription == null)
+            {
+                throw new ArgumentException("No default subscription was specified please log in to Azure and try again.");
+            }
+
+            if (DefaultContext.Account == null)
+            {
+                throw new ArgumentException("No account was specified.  Please log in to Azure and try again.");
+            }
+
+            if (Channel == null || force)
+            {
+                Channel = CreateChannel();
+            }
+        }
+
+        public virtual void ExecuteCmdlet()
+        {
+        }
+
+
+        protected override void ProcessRecord()
+        {
+            Validate.ValidateInternetConnection();
+            InitChannelCurrentSubscription();
+            ExecuteCmdlet();
+       }
+
+
+        /// <summary>
+        /// Gets or sets a flag indicating whether CreateChannel should share
+        /// the command's current Channel when asking for a new one.  This is
+        /// only used for testing.
+        /// </summary>
+        public bool ShareChannel { get; set; }
+
+        protected virtual T CreateChannel()
+        {
+            return null;
         }
 
         /// <summary>
@@ -191,17 +246,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             else
             {
                 CloudStorageAccount account = null;
-                bool shouldInitChannel = ShouldInitServiceChannel();
-
+                string storageAccount;
                 try
                 {
-                    if (shouldInitChannel)
+                    if (TryGetStorageAccount(RMProfile, out storageAccount)
+                        || TryGetStorageAccount(SMProfile, out storageAccount)
+                        || TryGetStorageAccountFromEnvironmentVariable(out storageAccount))
                     {
-                        account = GetStorageAccountFromSubscription();
+                        account = GetStorageAccountFromConnectionString(storageAccount);
                     }
                     else
                     {
-                        account = GetStorageAccountFromEnvironmentVariable();
+                        throw new InvalidOperationException("Could not get the storage context.  Please pass in a storage context or set the current storage context.");
                     }
                 }
                 catch (Exception e)
@@ -232,28 +288,28 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// Init channel with or without subscription in storage cmdlet
         /// </summary>
         /// <param name="force">Force to create a new channel</param>
-        protected override void InitChannelCurrentSubscription(bool force)
+        protected virtual void InitChannelCurrentSubscription(bool force)
         {
             //Create storage management channel
             CreateChannel();
         }
 
         /// <summary>
-        /// Whether should init the service channel or not
+        /// Get the current storage account
         /// </summary>
         /// <returns>True if it need to init the service channel, otherwise false</returns>
-        internal virtual bool ShouldInitServiceChannel()
+        internal virtual bool TryGetStorageAccount(IAzureProfile profile, out string account)
         {
+            account = null;
+            bool result = false;
             //Storage Context is empty and have already set the current storage account in subscription
-            if (Context == null && Profile.Context.Subscription != null && Profile.Context.Subscription != null &&
-                !String.IsNullOrEmpty(Profile.Context.Subscription.GetProperty(AzureSubscription.Property.StorageAccount)))
+            if (Context == null && profile != null && profile.Context != null && profile.Context.Subscription != null && profile.Context.Subscription != null)
             {
-                return true;
+                account = profile.Context.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
+                result = !string.IsNullOrWhiteSpace(account);
             }
-            else
-            {
-                return false;
-            }
+
+            return result;
         }
 
         /// <summary>
@@ -305,54 +361,25 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
         }
 
-        /// <summary>
-        /// Get current storage account from azure subscription
-        /// </summary>
-        /// <returns>A storage account</returns>
-        private CloudStorageAccount GetStorageAccountFromSubscription()
-        {
-            string CurrentStorageAccountName = Profile.Context.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
-
-            if (string.IsNullOrEmpty(CurrentStorageAccountName))
-            {
-                throw new ArgumentException(Resources.DefaultStorageCredentialsNotFound);
-            }
-            else
-            {
-                WriteDebugLog(String.Format(Resources.UseCurrentStorageAccountFromSubscription, CurrentStorageAccountName, Profile.Context.Subscription.Name));
-
-                try
-                {
-                    //The service channel initialized by subscription
-                    return Profile.Context.Subscription.GetCloudStorageAccount(Profile);
-                }
-                catch (System.ServiceModel.CommunicationException e)
-                {
-                    WriteVerboseWithTimestamp(Resources.CannotGetSotrageAccountFromSubscription);
-
-                    if (e.IsNotFoundException())
-                    {
-                        //Repack the 404 error
-                        string errorMessage = String.Format(Resources.CurrentStorageAccountNotFoundOnAzure, CurrentStorageAccountName, Profile.Context.Subscription.Name);
-                        System.ServiceModel.CommunicationException exception = new System.ServiceModel.CommunicationException(errorMessage, e);
-                        throw exception;
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-            }
-        }
 
         /// <summary>
-        /// Get storage account from environment variable "AZURE_STORAGE_CONNECTION_STRING"
+        /// Get storage account from a connection string
         /// </summary>
         /// <returns>Cloud storage account</returns>
-        private CloudStorageAccount GetStorageAccountFromEnvironmentVariable()
+        private bool TryGetStorageAccountFromEnvironmentVariable(out string connectionString)
         {
-            String connectionString = System.Environment.GetEnvironmentVariable(Resources.EnvConnectionString);
+            connectionString = System.Environment.GetEnvironmentVariable(Resources.EnvConnectionString);
 
+            if (String.IsNullOrEmpty(connectionString))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        private CloudStorageAccount GetStorageAccountFromConnectionString(string connectionString)
+        {
             if (String.IsNullOrEmpty(connectionString))
             {
                 throw new ArgumentException(Resources.DefaultStorageCredentialsNotFound);

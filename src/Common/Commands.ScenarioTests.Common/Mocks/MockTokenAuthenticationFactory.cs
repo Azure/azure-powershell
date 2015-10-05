@@ -108,7 +108,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context, AzureEnvironment.Endpoint targetEndpoint)
         {
-            return new TokenCloudCredentials(Token.AccessToken);
+            return new TokenCloudCredentials(context.Subscription.Id.ToString(),Token.AccessToken);
         }
     }
 }

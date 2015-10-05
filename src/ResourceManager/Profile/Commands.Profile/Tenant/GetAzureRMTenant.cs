@@ -16,6 +16,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Profile
 {    
@@ -34,7 +35,7 @@ namespace Microsoft.Azure.Commands.Profile
         
         protected override void ProcessRecord()
         {
-            var profileClient = new RMProfileClient(AzureRMCmdlet.DefaultProfile);
+            var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
             
             WriteObject(profileClient.ListTenants(Tenant).Select((t) => (PSAzureTenant)t), enumerateCollection: true);
         }
