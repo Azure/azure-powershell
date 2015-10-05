@@ -46,11 +46,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             HelpMessage = "Key of the storage account")]
         [ValidateNotNullOrEmpty]
         [Alias("sk")]
-        public string StorageKey
-        {
-            get;
-            set;
-        }
+        public string StorageKey  { get; set; }
 
         [Parameter(
             Position = 1,
@@ -58,12 +54,8 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Uri to blob")]
         [ValidateNotNullOrEmpty]
-        [Alias("src")]
-        public Uri Source
-        {
-            get;
-            set;
-        }
+        [Alias("src", "Source")]
+        public Uri SourceUri  { get; set; }
 
         [Parameter(
             Position = 2,
@@ -71,11 +63,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             HelpMessage = "Local path of the vhd file")]
         [ValidateNotNullOrEmpty]
         [Alias("lf")]
-        public FileInfo LocalFilePath
-        {
-            get;
-            set;
-        }
+        public FileInfo LocalFilePath  { get; set; }
 
         private int numberOfThreads = DefaultNumberOfUploaderThreads;
 
@@ -98,47 +86,62 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             HelpMessage = "Delete the local file if already exists")]
         [ValidateNotNullOrEmpty]
         [Alias("o")]
-        public SwitchParameter OverWrite
-        {
-            get;
-            set;
-        }
+        public SwitchParameter OverWrite  { get; set; }
 
         protected override void ProcessRecord()
         {
+            var result = DownloadFromBlobUri(
+                this,
+                this.SourceUri,
+                this.LocalFilePath,
+                this.StorageKey,
+                this.ResourceGroupName,
+                this.NumberOfThreads,
+                this.OverWrite);
+            WriteObject(result);
+        }
+
+
+        private VhdDownloadContext DownloadFromBlobUri(
+            ComputeClientBaseCmdlet cmdlet,
+            Uri sourceUri,
+            FileInfo localFileInfo,
+            string storagekey,
+            string resourceGroupName,
+            int numThreads,
+            bool overwrite)
+        {
             BlobUri blobUri;
-            if (!BlobUri.TryParseUri(Source, out blobUri))
+            if (!BlobUri.TryParseUri(sourceUri, out blobUri))
             {
-                throw new ArgumentOutOfRangeException("Source", Source.ToString());
+                throw new ArgumentOutOfRangeException("Source", sourceUri.ToString());
             }
 
-            var storageKey = this.StorageKey;
-            if (this.StorageKey == null)
+            if (storagekey == null)
             {
                 var storageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(
                         DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
 
 
-                var storageService = storageClient.StorageAccounts.GetProperties(this.ResourceGroupName, blobUri.StorageAccountName);
+                var storageService = storageClient.StorageAccounts.GetProperties(resourceGroupName, blobUri.StorageAccountName);
                 if (storageService != null)
                 {
-                    var storageKeys = storageClient.StorageAccounts.ListKeys(this.ResourceGroupName, storageService.StorageAccount.Name);
-                    storageKey = storageKeys.StorageAccountKeys.Key1;
+                    var storageKeys = storageClient.StorageAccounts.ListKeys(resourceGroupName, storageService.StorageAccount.Name);
+                    storagekey = storageKeys.StorageAccountKeys.Key1;
                 }
             }
 
             var downloaderParameters = new DownloaderParameters
             {
                 BlobUri = blobUri,
-                LocalFilePath = LocalFilePath.FullName,
-                ConnectionLimit = NumberOfThreads,
-                StorageAccountKey = storageKey,
+                LocalFilePath = localFileInfo.FullName,
+                ConnectionLimit = numThreads,
+                StorageAccountKey = storagekey,
                 ValidateFreeDiskSpace = true,
-                OverWrite = OverWrite
+                OverWrite = overwrite
             };
 
-            var vhdDownloadContext = VhdDownloaderModel.Download(downloaderParameters, this);
-            WriteObject(vhdDownloadContext);
+            return VhdDownloaderModel.Download(downloaderParameters, cmdlet);
         }
     }
 }

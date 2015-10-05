@@ -42,6 +42,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 var parameters = new VirtualMachine
                 {
+                    DiagnosticsProfile = this.VM.DiagnosticsProfile,
                     HardwareProfile = this.VM.HardwareProfile,
                     StorageProfile = this.VM.StorageProfile,
                     NetworkProfile = this.VM.NetworkProfile,

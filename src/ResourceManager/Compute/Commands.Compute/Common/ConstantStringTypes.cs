@@ -41,6 +41,11 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VMNetworkInterfaceID = "The virtual machine network interface's ID.";
         public const string VMPublicIPAddressName = "The virtual machine public IP address's name.";
         public const string VMPublicIPAddressReferenceUri = "The virtual machine public IP address's reference Uri.";
+
+        public const string VMBootDiagnosticsEnable = "Enable boot diagnostics data of the virtual machine";
+        public const string VMBootDiagnosticsDisable = "Disable boot diagnostics data of the virtual machine";
+        public const string VMBootDiagnosticsResourceGroupName = "Resource group name for storage account";
+        public const string VMBootDiagnosticsStorageAccountName = "Storage account name for boot diagnostics data";
     }
 
     public static class ValidateSetValues
@@ -64,6 +69,8 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string DataDisk = "AzureRmVMDataDisk";
         public const string OSDisk = "AzureRmVMOSDisk";
         public const string SourceImage = "AzureRmVMSourceImage";
+        public const string BootDiagnostics = "AzureRmVMBootDiagnostics";
+        public const string BootDiagnosticsData = "AzureRmVMBootDiagnosticsData";
 
         public const string NetworkInterface = "AzureRmVMNetworkInterface";
 
@@ -72,7 +79,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         public const string VirtualMachineCustomScriptExtension = "AzureRmVMCustomScriptExtension";
         public const string VirtualMachineAccessExtension = "AzureRmVMAccessExtension";
         public const string VirtualMachineDiagnosticsExtension = "AzureRmVMDiagnosticsExtension";
-        public const string VirtualMachineExtensionImage = "AzureRmVMExtensionImage";
+        public const string VirtualMachineExtensionImage = "AzureRmVmExtensionImage";
         public const string VirtualMachineExtensionImageVersion = "AzureRmVMExtensionImageVersion";
         public const string VirtualMachineExtensionImageType = "AzureRmVMExtensionImageType";
 
