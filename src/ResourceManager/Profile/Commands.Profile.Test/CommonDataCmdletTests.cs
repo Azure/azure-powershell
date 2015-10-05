@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit.Extensions;
 
 namespace Microsoft.Azure.Commands.Profile.Test
@@ -115,7 +116,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 () =>
                 {
                     Assert.Equal(expected, AzureSMProfileProvider.Instance.Profile.Context.GetCurrentStorageAccountName());
-                    AzureDataCmdlet.ClearCurrentStorageAccount();
+                    GeneralUtilities.ClearCurrentStorageAccount(true);
                     Assert.True(string.IsNullOrEmpty(AzureSMProfileProvider.Instance.Profile.Context.GetCurrentStorageAccountName()));
                 });
         }
@@ -133,7 +134,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 () =>
                 {
                     Assert.Equal(expected, AzureRmProfileProvider.Instance.Profile.Context.GetCurrentStorageAccountName());
-                    AzureDataCmdlet.ClearCurrentStorageAccount();
+                    GeneralUtilities.ClearCurrentStorageAccount();
                     Assert.True(string.IsNullOrEmpty(AzureRmProfileProvider.Instance.Profile.Context.GetCurrentStorageAccountName()));
                 });
         }
@@ -149,7 +150,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 new AzureSMProfile(), 
                 () =>
                 {
-                    AzureDataCmdlet.ClearCurrentStorageAccount();
+                    GeneralUtilities.ClearCurrentStorageAccount(true);
                     Assert.True(string.IsNullOrEmpty(AzureSMProfileProvider.Instance.Profile.Context.GetCurrentStorageAccountName()));
                 });
         }

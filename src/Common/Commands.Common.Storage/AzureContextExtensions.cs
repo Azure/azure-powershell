@@ -27,8 +27,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
     public static class AzureContextExtensions
     {
-        private static Dictionary<Guid, CloudStorageAccount> storageAccountCache = new Dictionary<Guid,CloudStorageAccount>();
-
         /// <summary>
         /// Set the current storage account using the given connection string
         /// </summary>
@@ -49,7 +47,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// <param name="account">A storage account.</param>
         public static void SetCurrentStorageAccount(this AzureContext context, IStorageContextProvider account)
         {
-            if (context.Subscription != null && account != null && account.Context != null && account.Context.StorageAccount != null)
+            if (context.Subscription != null && account != null && account.Context != null 
+                && account.Context.StorageAccount != null)
             {
                 context.SetCurrentStorageAccount(account.Context.StorageAccount.ToString(true));
             }

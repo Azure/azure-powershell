@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             }
 
             // Clear the current storage account for both SM and RM
-            AzureDataCmdlet.ClearCurrentStorageAccount();
+            GeneralUtilities.ClearCurrentStorageAccount(true);
             DefaultContext.SetCurrentStorageAccount(account.ToString(true));
             WriteObject(account.Credentials.AccountName);
         }
