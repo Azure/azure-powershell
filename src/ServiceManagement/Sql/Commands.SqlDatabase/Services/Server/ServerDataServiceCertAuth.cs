@@ -1314,19 +1314,12 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Server
         /// <param name="sqlManagementClient">The client to add the headers on.</param>
         private void AddTracingHeaders(SqlManagementClient sqlManagementClient)
         {
-            try
-            {
-                sqlManagementClient.HttpClient.DefaultRequestHeaders.Add(
-                    Constants.ClientSessionIdHeaderName,
-                    this.ClientSessionId);
-                sqlManagementClient.HttpClient.DefaultRequestHeaders.Add(
-                    Constants.ClientRequestIdHeaderName,
-                    this.ClientRequestId);
-            }
-            catch
-            {
-                // do not fail if the http client is being reused
-            }
+            sqlManagementClient.HttpClient.DefaultRequestHeaders.Add(
+                Constants.ClientSessionIdHeaderName,
+                this.ClientSessionId);
+            sqlManagementClient.HttpClient.DefaultRequestHeaders.Add(
+                Constants.ClientRequestIdHeaderName,
+                this.ClientRequestId);
         }
 
         /// <summary>
