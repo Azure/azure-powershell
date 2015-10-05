@@ -18,16 +18,24 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Resources
 {
-    using System.Linq;
-
     /// <summary>
     /// Filters resource groups.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmResourceGroup"), OutputType(typeof(List<PSResourceGroup>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmResourceGroup", DefaultParameterSetName = ResourceGroupNameParameterSet), OutputType(typeof(List<PSResourceGroup>))]
     public class GetAzureResourceGroupCommand : ResourcesBaseCmdlet
     {
+        /// <summary>
+        /// List resources group by name parameter set.
+        /// </summary>
+        internal const string ResourceGroupNameParameterSet = "Lists the resource group based in the name.";
+
+        /// <summary>
+        /// List resources group by Id parameter set.
+        /// </summary>
+        internal const string ResourceGroupIdParameterSet = "Lists the resource group based in the Id.";
+
         [Alias("ResourceGroupName")]
-        [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = "GetSingle")]
+        [Parameter(Mandatory = false, ParameterSetName = ResourceGroupNameParameterSet, ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -36,16 +44,14 @@ namespace Microsoft.Azure.Commands.Resources
         public string Location { get; set; }
 
         [Alias("ResourceGroupId", "ResourceId")]
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group Id.")]
+        [Parameter(Mandatory = false, ParameterSetName = ResourceGroupIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group Id.")]
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
         
         protected override void ProcessRecord()
         {
             WriteWarning("The output object of this cmdlet will be modified in a future release.");
-            Name = string.IsNullOrEmpty(Name) && !string.IsNullOrEmpty(Id)
-                ? Id.Split('/').Last()
-                : Name;
+            Name = Name ?? ResourceIdentifier.FromResourceGroupIdentifier(this.Id).ResourceGroupName;
 
             this.WriteObject(
                 ResourcesClient.FilterResourceGroups(name: this.Name, tag: null, detailed: false, location: this.Location),

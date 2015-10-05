@@ -337,6 +337,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ProviderTests\TestAzureProviderOperation.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ResourceGroupTests\TestFindResourceGroup.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ResourceGroupTests\TestNewDeploymentAndProviderRegistration.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -374,6 +377,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ResourceTests\TestCreatesNewSimpleResource.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ResourceTests\TestFindAResourceTest.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ResourceTests\TestGetResourceForNonExisingResource.json">

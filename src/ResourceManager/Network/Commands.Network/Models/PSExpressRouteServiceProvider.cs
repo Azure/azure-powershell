@@ -23,9 +23,15 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public string Name { get; set; }
 
+        public string Id { get; set; }
+
+        public string Type { get; set; }
+
         public List<string> PeeringLocations { get; set; }
 
-        public PSExpressRouteServiceProviderBandwidthsOffered BandwidthsOffered { get; set; }
+        public List<PSExpressRouteServiceProviderBandwidthsOffered> BandwidthsOffered { get; set; }
+
+        public string ProvisioningState { get; set; } 
 
         [JsonIgnore]
         public string BandwidthsOfferedText

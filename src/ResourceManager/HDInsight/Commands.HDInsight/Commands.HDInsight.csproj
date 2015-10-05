@@ -39,6 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="JobCommands\GetAzureHDInsightJobCommand.cs" />
+    <Compile Include="JobCommands\NewAzureHDInsightSqoopJobDefinitionCommand.cs" />
     <Compile Include="JobCommands\WaitAzureHDInsightJobCommand.cs" />
     <Compile Include="JobCommands\NewAzureHDInsightStreamingMapReduceJobDefinitionCommand.cs" />
     <Compile Include="JobCommands\NewAzureHDInsightMapReduceJobDefinitionCommand.cs" />
@@ -65,12 +66,14 @@
     <Compile Include="HDInsightCmdletBase.cs" />
     <Compile Include="ManagementCommands\GetAzureHDInsightClusterCommand.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Models\Job\AzureHDInsightSqoopJobDefinition.cs" />
     <Compile Include="Models\Job\AzureHDInsightJob.cs" />
     <Compile Include="Models\Job\AzureHDInsightMapReduceJobDefinition.cs" />
     <Compile Include="Models\Job\AzureHDInsightStreamingMapReduceJobDefinition.cs" />
     <Compile Include="Models\Job\AzureHDInsightPigJobDefinition.cs" />
     <Compile Include="Models\Job\AzureHDInsightHiveJobDefinition.cs" />
     <Compile Include="Models\Job\AzureHDInsightJobDefinition.cs" />
+    <Compile Include="Models\Job\JobDisplayOutputType.cs" />
     <Compile Include="Models\Management\AzureHDInsightCluster.cs" />
     <Compile Include="Models\Management\AzureHDInsightConfig.cs" />
     <Compile Include="Models\Job\AzureHdInsightJobManagementClient.cs" />
@@ -80,6 +83,7 @@
     <Compile Include="Models\Management\AzureHDInsightMetastore.cs" />
     <Compile Include="ManagementCommands\NewAzureHDInsightClusterCommand.cs" />
     <Compile Include="ClusterConfigurationUtils.cs" />
+    <Compile Include="Models\Management\AzureHDInsightScriptAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -111,11 +115,11 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.HDInsight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.HDInsight.1.0.5-preview\lib\net40\Microsoft.Azure.Management.HDInsight.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.HDInsight.1.0.7-preview\lib\net40\Microsoft.Azure.Management.HDInsight.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.HDInsight.Job, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.HDInsight.Job.1.0.5-preview\lib\net40\Microsoft.Azure.Management.HDInsight.Job.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.HDInsight.Job.1.0.6-preview\lib\net40\Microsoft.Azure.Management.HDInsight.Job.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

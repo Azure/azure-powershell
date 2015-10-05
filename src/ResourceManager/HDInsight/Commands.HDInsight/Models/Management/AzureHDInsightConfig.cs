@@ -14,6 +14,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.HDInsight.Models.Management;
 using Microsoft.Azure.Management.HDInsight.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight.Models
@@ -73,14 +74,14 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         /// <summary>
         /// Gets config actions for the cluster.
         /// </summary>
-        public Dictionary<ClusterNodeType, List<ScriptAction>> ScriptActions { get; private set; }
+        public Dictionary<ClusterNodeType, List<AzureHDInsightScriptAction>> ScriptActions { get; private set; }
 
         public AzureHDInsightConfig()
         {
             ClusterType = HDInsightClusterType.Hadoop;
             AdditionalStorageAccounts = new Dictionary<string, string>();
             Configurations = new Dictionary<string, Hashtable>();
-            ScriptActions = new Dictionary<ClusterNodeType, List<ScriptAction>>();
+            ScriptActions = new Dictionary<ClusterNodeType, List<AzureHDInsightScriptAction>>();
         }
     }
 }
