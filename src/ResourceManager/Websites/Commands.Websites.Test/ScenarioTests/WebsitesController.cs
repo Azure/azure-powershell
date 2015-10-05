@@ -12,12 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.WebSites;
-using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -25,6 +23,7 @@ using Microsoft.Azure.Test;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.WebApp.Test.ScenarioTests
 {
