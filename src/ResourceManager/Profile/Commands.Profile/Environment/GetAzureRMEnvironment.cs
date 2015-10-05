@@ -16,6 +16,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -29,9 +30,15 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The environment name")]
         public string Name { get; set; }
 
+        protected override void BeginProcessing()
+        {
+            // do not call begin processing there is no context needed for this cmdlet
+        }
+
+
         protected override void ProcessRecord()
         {
-            var profileClient = new RMProfileClient(AzureRMCmdlet.DefaultProfile);
+            var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
             var result = profileClient.ListEnvironments(Name).Select(s => (PSAzureEnvironment)s).ToList();
             WriteObject(result, enumerateCollection: true);
         }

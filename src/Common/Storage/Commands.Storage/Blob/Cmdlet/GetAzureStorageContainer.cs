@@ -45,7 +45,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Alias("N", "Container")]
         [Parameter(Position = 0, HelpMessage = "Container Name",
             ValueFromPipelineByPropertyName = true,
-            ValueFromPipeline = true,
             ParameterSetName = NameParameterSet)]
         public string Name { get; set; }
 

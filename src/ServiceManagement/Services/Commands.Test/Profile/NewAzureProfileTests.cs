@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Test.Profile
             ProfileTestController.NewRdfeInstance.RunPSTestWithToken((context, token) => string.Format("Test-NewAzureProfileInRDFEMode {0} {1} {2}", token, context.Account.Id, context.Subscription.Id));
         }
 
-        [Fact(Skip = "Hovsep: Move to ARM")]
+        [Fact(Skip = "PSGet Migration: TODO Move to ARM")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMakeArmCallWithCreatedProfile()
         {

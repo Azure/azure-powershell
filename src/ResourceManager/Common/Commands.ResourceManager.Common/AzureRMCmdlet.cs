@@ -36,13 +36,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         /// </summary>
         static AzureRMCmdlet()
         {
-            AzureSession.DataStore = new DiskDataStore();
+            if (AzureSession.DataStore == null)
+            {
+                AzureSession.DataStore = new DiskDataStore();
+            }
         }
 
         /// <summary>
         /// Gets or sets the global profile for ARM cmdlets.
         /// </summary>
-        public static AzureRMProfile DefaultProfile { get; set; }
+        public AzureRMProfile DefaultProfile
+        {
+            get { return AzureRmProfileProvider.Instance.Profile; }
+            set { AzureRmProfileProvider.Instance.Profile = value; }
+        }
 
         /// <summary>
         /// Gets the current default context.

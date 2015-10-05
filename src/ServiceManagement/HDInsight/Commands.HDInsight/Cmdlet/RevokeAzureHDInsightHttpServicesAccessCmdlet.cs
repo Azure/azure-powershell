@@ -129,7 +129,7 @@ namespace Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.PSCmdlets
         /// </summary>
         protected override void EndProcessing()
         {
-            this.WriteWarning(AzureHdInsightPowerShellConstants.AsmWarning);
+            this.WriteWarning(string.Format(AzureHdInsightPowerShellConstants.AsmWarning, "Revoke-AzureRmHDInsightHttpServicesAccess"));
             this.command.Enable = false;
             try
             {

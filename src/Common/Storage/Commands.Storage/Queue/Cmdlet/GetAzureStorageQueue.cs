@@ -43,7 +43,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue
 
         [Alias("N", "Queue")]
         [Parameter(Position = 0, HelpMessage = "Queue name",
-            ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = NameParameterSet)]
         public string Name { get; set; }

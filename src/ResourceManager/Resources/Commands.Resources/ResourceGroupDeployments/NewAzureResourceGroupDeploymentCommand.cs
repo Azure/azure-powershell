@@ -53,18 +53,10 @@ namespace Microsoft.Azure.Commands.Resources
                 ResourceGroupName = ResourceGroupName,
                 DeploymentName = Name,
                 DeploymentMode = Mode,
-                GalleryTemplateIdentity = GalleryTemplateIdentity,
                 TemplateFile = TemplateUri ?? this.TryResolvePath(TemplateFile),
                 TemplateParameterObject = GetTemplateParameterObject(TemplateParameterObject),
-                ParameterUri = TemplateParameterUri,
-                TemplateVersion = TemplateVersion,
-                StorageAccountName = StorageAccountName
+                ParameterUri = TemplateParameterUri
             };
-
-            if (!string.IsNullOrEmpty(TemplateVersion) || !string.IsNullOrEmpty(StorageAccountName) || !string.IsNullOrEmpty(GalleryTemplateIdentity))
-            {
-                WriteWarning("The GalleryTemplateIdentity, TemplateVersion and StorageAccountName parameters in New-AzureRmResourceGroupDeployment cmdlet is being deprecated and will be removed in a future release.");
-            }
 
             if(this.Mode == DeploymentMode.Complete)
             {

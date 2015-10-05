@@ -18,6 +18,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -91,9 +92,15 @@ namespace Microsoft.Azure.Commands.Profile
            HelpMessage = "The default tenant for this environment.")]
         public string AdTenant { get; set; }
 
+        protected override void BeginProcessing()
+        {
+            // do not call begin processing there is no context needed for this cmdlet
+        }
+
+
         protected override void ProcessRecord()
         {
-            var profileClient = new RMProfileClient(AzureRMCmdlet.DefaultProfile);
+            var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
 
 
             if ((Name == "AzureCloud") || (Name == "AzureChinaCloud"))
@@ -103,9 +110,9 @@ namespace Microsoft.Azure.Commands.Profile
             }
 
             var newEnvironment = new AzureEnvironment { Name = Name, OnPremise = EnableAdfsAuthentication };
-            if (AzureRMCmdlet.DefaultProfile.Environments.ContainsKey(Name))
+            if (AzureRmProfileProvider.Instance.Profile.Environments.ContainsKey(Name))
             {
-                newEnvironment = AzureRMCmdlet.DefaultProfile.Environments[Name];
+                newEnvironment = AzureRmProfileProvider.Instance.Profile.Environments[Name];
             }
             SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.PublishSettingsFileUrl, PublishSettingsFileUrl);
             SetEndpointIfProvided(newEnvironment, AzureEnvironment.Endpoint.ServiceManagement, ServiceEndpoint);
