@@ -45,6 +45,15 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Services.Common
         {
             string requestId;
             ErrorRecord errorRecord = RetrieveExceptionDetails(exception, out requestId);
+            if (!string.IsNullOrEmpty(exception.StackTrace))
+            {
+                cmdlet.WriteWarning(string.Format("Received exception: {0}\n    Stack trace: {1}", exception.Message, exception.StackTrace));
+                var innerException = exception.InnerException;
+                while (innerException != null)
+                {
+                    cmdlet.WriteWarning(string.Format("Inner exception: {0}\n    Stack trace: {1}", innerException.Message, innerException.StackTrace));
+                }
+            }
 
             // Write the request Id as a warning
             if (requestId != null)

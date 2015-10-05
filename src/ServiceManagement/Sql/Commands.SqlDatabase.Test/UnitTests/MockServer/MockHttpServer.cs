@@ -177,8 +177,6 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.MockServer
             AzureSMCmdlet.CurrentProfile = profile;
             AzureSession.DataStore = new MemoryDataStore();
             AzureSession.AuthenticationFactory = new MockTokenAuthenticationFactory();
-            // Use the default client factory for sql tests
-            AzureSession.ClientFactory = new ClientFactory();
             ProfileClient client = new ProfileClient(profile);
             client.AddOrSetAccount( new AzureAccount
             {
