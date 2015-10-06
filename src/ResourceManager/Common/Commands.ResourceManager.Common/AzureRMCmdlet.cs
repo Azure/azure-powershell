@@ -12,18 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.IO;
 using System.Management.Automation;
+using System.Management.Automation.Host;
+using System.Threading;
+using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System.IO;
-using Newtonsoft.Json;
-using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
-using System;
-using System.Threading;
-using System.Management.Automation.Host;
+using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Management.Resources;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {

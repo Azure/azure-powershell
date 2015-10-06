@@ -18,14 +18,16 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Moq;
 using Xunit;
 using System.Linq;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Management.Resources.Models;
+using Microsoft.Azure.Management.Internal.Resources.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Hyak.Common;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
@@ -36,6 +38,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         private const string incompatibleUri = "https://management.core.windows.net/<subscription-id>";
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void InvokeRegistrationForUnregisteredResourceProviders()
         {
             // Setup
@@ -84,6 +87,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DoesNotInvokeRegistrationForRegisteredResourceProviders()
         {
             // Setup
@@ -117,6 +121,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DoesNotInvokeRegistrationForUnrelatedStatusCode()
         {
             // Setup
@@ -150,6 +155,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DoesNotInvokeRegistrationForIncompatibleUri()
         {
             // Setup
@@ -183,6 +189,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DoesNotHangForLongRegistrationCalls()
         {
             // Setup
@@ -226,6 +233,44 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
             // Assert
             Assert.True(msgs.Any(s => s.Equals("Failed to register resource provider 'microsoft.compute'.Details: 'The operation has timed out.'")));
+            Assert.Equal(response.StatusCode, HttpStatusCode.Conflict);
+            Assert.Equal(response.Content.ReadAsStringAsync().Result, "registered to use namespace");
+            mockProvidersOperations.Verify(f => f.RegisterAsync("microsoft.compute", It.IsAny<CancellationToken>()), Times.AtMost(4));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void DoesNotThrowForFailedRegistrationCall()
+        {
+            // Setup
+            Mock<ResourceManagementClient> mockClient = new Mock<ResourceManagementClient>();
+            Mock<IProviderOperations> mockProvidersOperations = new Mock<IProviderOperations>();
+            mockClient.Setup(f => f.Providers).Returns(mockProvidersOperations.Object);
+            mockProvidersOperations.Setup(f => f.GetAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()))
+                .Throws(new CloudException("PR reg failed"));
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, compatibleUri);
+            Dictionary<HttpRequestMessage, List<HttpResponseMessage>> mapping = new Dictionary<HttpRequestMessage, List<HttpResponseMessage>>
+            {
+                {
+                    request, new List<HttpResponseMessage>
+                    {
+                        new HttpResponseMessage(HttpStatusCode.Conflict) { Content = new StringContent("registered to use namespace") },
+                        new HttpResponseMessage(HttpStatusCode.Conflict) { Content = new StringContent("registered to use namespace") }
+                    }
+                }
+            };
+            List<string> msgs = new List<string>();
+            RPRegistrationDelegatingHandler rpHandler = new RPRegistrationDelegatingHandler(() => mockClient.Object, s => msgs.Add(s))
+            {
+                InnerHandler = new MockResponseDelegatingHandler(mapping)
+            };
+            HttpClient httpClient = new HttpClient(rpHandler);
+
+            // Test
+            HttpResponseMessage response = httpClient.SendAsync(request).Result;
+
+            // Assert
+            Assert.True(msgs.Any(s => s.Equals("Failed to register resource provider 'microsoft.compute'.Details: 'PR reg failed'")));
             Assert.Equal(response.StatusCode, HttpStatusCode.Conflict);
             Assert.Equal(response.Content.ReadAsStringAsync().Result, "registered to use namespace");
             mockProvidersOperations.Verify(f => f.RegisterAsync("microsoft.compute", It.IsAny<CancellationToken>()), Times.AtMost(4));

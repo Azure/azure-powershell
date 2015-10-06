@@ -18,10 +18,9 @@ using Microsoft.Azure.Subscriptions.Models;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
-    public static class ModelExtensions
+    internal static class ModelExtensions
     {
-
-        public static AzureSubscription ToAzureSubscription(this Subscription other, AzureContext context)
+        internal static AzureSubscription ToAzureSubscription(this Subscription other, AzureContext context)
         {
             var subscription = new AzureSubscription();
             subscription.Account = context.Account != null ? context.Account.Id : null;
