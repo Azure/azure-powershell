@@ -97,12 +97,14 @@
     <CustomAction Id="UpdatePSShortcut" BinaryKey="CustomActions" DllEntry="UpdatePSShortcut" Execute ="deferred" Impersonate="no"/>
     <CustomAction Id="SetExecutionPolicy" Property="POWERSHELLEXE" ExeCommand="-NoLogo -NoProfile -Command &quot;Set-ExecutionPolicy RemoteSigned -Force&quot;" Execute="deferred" Impersonate="no" Return="check"/>
     <CustomAction Id="RunModuleInstallScript" Property="POWERSHELLEXE" ExeCommand="-NoLogo -NoProfile -Command &quot;. \&quot;[PowerShellFolder]\ShortcutStartup.ps1\&quot; -Install&quot;" Execute="deferred" Impersonate="no" Return="check"/>
+    <CustomAction Id="RunModuleUninstallScript" Property="POWERSHELLEXE" ExeCommand="-NoLogo -NoProfile -Command &quot;. \&quot;[PowerShellFolder]\ShortcutStartup.ps1\&quot; -Uninstall&quot;" Execute="deferred" Impersonate="no" Return="check"/>
 
     <InstallExecuteSequence>
       <Custom Action="SetCustomActionDataValue" After="CreateShortcuts">NOT Installed</Custom>
       <Custom Action="UpdatePSShortcut" After="SetCustomActionDataValue">NOT Installed</Custom>
       <Custom Action="SetExecutionPolicy" After="UpdatePSShortcut">NOT Installed</Custom>
       <Custom Action="RunModuleInstallScript" After="SetExecutionPolicy">NOT Installed</Custom>
+      <Custom Action="RunModuleUninstallScript" After="InstallInitialize">(NOT UPGRADINGPRODUCTCODE) AND (REMOVE="ALL")</Custom>
     </InstallExecuteSequence>
 
     <WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectDir)\media\License.rtf" />
