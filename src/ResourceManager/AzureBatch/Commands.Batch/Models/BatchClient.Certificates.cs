@@ -35,15 +35,14 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException("options");
             }
 
-            ODATADetailLevel odata = new ODATADetailLevel(selectClause: options.Select);
-
             // Get the single certificate matching the specified thumbprint
             if (!string.IsNullOrWhiteSpace(options.Thumbprint))
             {
                 WriteVerbose(string.Format(Resources.GetCertificateByThumbprint, options.Thumbprint));
                 CertificateOperations certOperations = options.Context.BatchOMClient.CertificateOperations;
-                Certificate certificate = certOperations.GetCertificate(options.ThumbprintAlgorithm, options.Thumbprint, 
-                    detailLevel: odata, additionalBehaviors: options.AdditionalBehaviors);
+                ODATADetailLevel getDetailLevel = new ODATADetailLevel(selectClause: options.Select);
+                Certificate certificate = certOperations.GetCertificate(options.ThumbprintAlgorithm, options.Thumbprint,
+                    detailLevel: getDetailLevel, additionalBehaviors: options.AdditionalBehaviors);
                 PSCertificate psCertificate = new PSCertificate(certificate);
                 return new PSCertificate[] { psCertificate };
             }
@@ -51,10 +50,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             else
             {
                 string verboseLogString = null;
+                ODATADetailLevel listDetailLevel = new ODATADetailLevel(selectClause: options.Select);
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
                     verboseLogString = Resources.GetCertificatesByFilter;
-                    odata.FilterClause = options.Filter;
+                    listDetailLevel.FilterClause = options.Filter;
                 }
                 else
                 {
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 WriteVerbose(verboseLogString);
 
                 CertificateOperations certOperations = options.Context.BatchOMClient.CertificateOperations;
-                IPagedEnumerable<Certificate> certificates = certOperations.ListCertificates(odata, options.AdditionalBehaviors);
+                IPagedEnumerable<Certificate> certificates = certOperations.ListCertificates(listDetailLevel, options.AdditionalBehaviors);
                 Func<Certificate, PSCertificate> mappingFunction = c => { return new PSCertificate(c); };
                 return PSPagedEnumerable<PSCertificate, Certificate>.CreateWithMaxCount(
                     certificates, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
 
             CertificateOperations certOperations = parameters.Context.BatchOMClient.CertificateOperations;
-            Certificate unboundCert = null;
+            Certificate unboundCert;
 
             if (!string.IsNullOrWhiteSpace(parameters.FilePath))
             {
