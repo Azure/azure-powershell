@@ -19,6 +19,7 @@ Tests warning gets printed on incompatible modules with profile
 function Test-LoadProfileModule
 {
     # Push current profile module
+    Get-PackageProvider -Name NuGet -ForceBootstrap
     $global:pushedProfileModule = $(Get-Module AzureRM.Profile).Path 
     Remove-Module AzureRM.Profile
     try {
