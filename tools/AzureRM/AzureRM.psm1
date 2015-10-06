@@ -33,7 +33,7 @@ function Test-AdminRights([string]$Scope)
     $isAdmin = (New-Object Security.Principal.WindowsPrincipal $user).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)  
     if($isAdmin -eq $false)
     {
-      throw "Administrator rights are required to install Microsoft Azure modules"
+      throw "Administrator rights are required to install or uninstall Microsoft Azure modules"
     }
   }
 }
