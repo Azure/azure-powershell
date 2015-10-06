@@ -11,10 +11,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
-[CmdletBinding()]
+[CmdletBinding(DefaultParametersetName="none")]
 Param(
-[Parameter(Mandatory=$False, HelpMessage="Use Install parameter to install Azure modules from PowerShell Gallery.")]
-[switch]$Install
+[Parameter(Mandatory=$True, HelpMessage="Use Install parameter to install Azure modules from PowerShell Gallery.", ParameterSetName="install")]
+[switch]$Install,
+[Parameter(Mandatory=$True, HelpMessage="Use Uninstall parameter to uninstall Azure modules from PowerShell Gallery.", ParameterSetName="uninstall")]
+[switch]$Uninstall
 )
 
 function EnsureRegistryPath
@@ -38,7 +40,7 @@ try {
 		Write-Output @"
 
 Finalizing installation of Azure PowerShell. 
-Installing Azure Modules from PowerShell Gallery. 
+Installing AzureRM Modules from PowerShell Gallery. 
 This may take some time...
 "@
 		$env:PSModulePath = "$env:USERPROFILE\Documents\WindowsPowerShell\Modules;$env:ProgramFiles\WindowsPowerShell\Modules;$env:SystemRoot\system32\WindowsPowerShell\v1.0\Modules\"
@@ -59,7 +61,20 @@ This may take some time...
 		Write-Output "AzureRM $((Get-InstalledModule -Name AzureRM)[0].Version) installed..."
 
 		Update-AzureRM -Repository $DefaultPSRepository
-	} else {
+	}
+	elseif ($Uninstall.IsPresent) 
+	{
+		Write-Output @"
+
+Finalizing uninstallation of Azure PowerShell. 
+This may take some time...
+"@
+		$env:PSModulePath = "$env:USERPROFILE\Documents\WindowsPowerShell\Modules;$env:ProgramFiles\WindowsPowerShell\Modules;$env:SystemRoot\system32\WindowsPowerShell\v1.0\Modules\"
+
+		Uninstall-AzureRM
+	} 
+	else 
+	{
 		cd c:\
 		$welcomeMessage = @"
 For a list of all Azure RM cmdlets type 'help azurerm'.
