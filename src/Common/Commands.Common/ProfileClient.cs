@@ -23,6 +23,7 @@ using Hyak.Common;
 using Microsoft.Azure.Common.Authentication.Factories;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Properties;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Subscriptions;
 
 namespace Microsoft.Azure.Common.Authentication
@@ -650,6 +651,11 @@ namespace Microsoft.Azure.Common.Authentication
 
             if (subscription != null)
             {
+                if (subscription.IsPropertySet(AzureSubscription.Property.StorageAccount))
+                {
+                    GeneralUtilities.ClearCurrentStorageAccount();
+                }
+
                 Profile.DefaultSubscription = subscription;
                 Profile.DefaultSubscription.Account = accountName;
             }

@@ -50,21 +50,19 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
         protected CloudPageBlob destinationBlob;
         protected BlobRequestOptions requestOptions;
         protected bool overWrite;
-        protected bool skipMd5;
         private readonly TimeSpan delayBetweenRetries = TimeSpan.FromSeconds(10);
 
         private const int MegaByte = 1024 * 1024;
         private const int PageSizeInBytes = 2 * MegaByte;
         private const int MaxBufferSize = 20 * MegaByte;
 
-        protected BlobCreatorBase(FileInfo localVhd, BlobUri blobDestination, ICloudPageBlobObjectFactory blobObjectFactory, bool overWrite, bool skipMd5 = false)
+        protected BlobCreatorBase(FileInfo localVhd, BlobUri blobDestination, ICloudPageBlobObjectFactory blobObjectFactory, bool overWrite)
         {
             this.localVhd = localVhd;
             this.blobObjectFactory = blobObjectFactory;
             this.destination = new Uri(blobDestination.BlobPath);
             this.blobDestination = blobDestination;
             this.overWrite = overWrite;
-            this.skipMd5 = skipMd5;
 
             this.destinationBlob = blobObjectFactory.Create(blobDestination);
             this.requestOptions = this.blobObjectFactory.CreateRequestOptions();
@@ -81,7 +79,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
                 {
                     this.operationMetaData = new LocalMetaData
                     {
-                        FileMetaData = FileMetaData.Create(localVhd.FullName, skipMd5),
+                        FileMetaData = FileMetaData.Create(localVhd.FullName),
                         SystemInformation = SystemInformation.Create()
                     };
                 }

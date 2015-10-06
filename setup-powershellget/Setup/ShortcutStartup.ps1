@@ -11,10 +11,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ----------------------------------------------------------------------------------
-[CmdletBinding()]
+[CmdletBinding(DefaultParametersetName="none")]
 Param(
-[Parameter(Mandatory=$False, HelpMessage="Use Install parameter to install Azure modules from PowerShell Gallery.")]
-[switch]$Install
+[Parameter(Mandatory=$True, HelpMessage="Use Install parameter to install Azure modules from PowerShell Gallery.", ParameterSetName="install")]
+[switch]$Install,
+[Parameter(Mandatory=$True, HelpMessage="Use Uninstall parameter to uninstall Azure modules from PowerShell Gallery.", ParameterSetName="uninstall")]
+[switch]$Uninstall
 )
 
 function EnsureRegistryPath
@@ -35,11 +37,10 @@ function EnsureRegistryPath
 $error.clear()
 try {
 	if ($Install.IsPresent) {
-		EnsureRegistryPath
 		Write-Output @"
 
 Finalizing installation of Azure PowerShell. 
-Installing Azure Modules from PowerShell Gallery. 
+Installing AzureRM Modules from PowerShell Gallery. 
 This may take some time...
 "@
 		$env:PSModulePath = "$env:USERPROFILE\Documents\WindowsPowerShell\Modules;$env:ProgramFiles\WindowsPowerShell\Modules;$env:SystemRoot\system32\WindowsPowerShell\v1.0\Modules\"
@@ -50,16 +51,37 @@ This may take some time...
 
 		Import-Module PowerShellGet
 
-		Install-Module AzureRM
+		$DefaultPSRepository = $env:DefaultPSRepository
+		if ([string]::IsNullOrWhiteSpace($DefaultPSRepository)) 
+		{
+			$DefaultPSRepository = "PSGallery"
+		}
+
+		Install-Module AzureRM -Repository $DefaultPSRepository
 		Write-Output "AzureRM $((Get-InstalledModule -Name AzureRM)[0].Version) installed..."
-		Update-AzureRM
-	} else {
+
+		Update-AzureRM -Repository $DefaultPSRepository
+	}
+	elseif ($Uninstall.IsPresent) 
+	{
+		Write-Output @"
+
+Finalizing uninstallation of Azure PowerShell. 
+This may take some time...
+"@
+		$env:PSModulePath = "$env:USERPROFILE\Documents\WindowsPowerShell\Modules;$env:ProgramFiles\WindowsPowerShell\Modules;$env:SystemRoot\system32\WindowsPowerShell\v1.0\Modules\"
+
+		Uninstall-AzureRM
+	} 
+	else 
+	{
 		cd c:\
 		$welcomeMessage = @"
 For a list of all Azure RM cmdlets type 'help azurerm'.
 
 To start using Azure RM login via Login-AzureRmAccount cmdlet.
 To switch between subscriptions use Set-AzureRmContext.
+For more details, see http://aka.ms/azps-getting-started.
 
 To use Azure Service Management cmdlets please execute the following cmdlet:
   Install-Module Azure
@@ -74,6 +96,6 @@ catch
 Write-Output "An error occured during installation."
 Write-Output $error 
 Write-Output "Press any key..."
-$host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+$key = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 }
 

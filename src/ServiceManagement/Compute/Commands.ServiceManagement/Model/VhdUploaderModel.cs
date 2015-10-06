@@ -30,7 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
             }
             else
             {
-                blobCreator = new BlobCreator(uploadParameters.LocalFilePath, uploadParameters.DestinationUri, uploadParameters.BlobObjectFactory, uploadParameters.OverWrite, uploadParameters.SkipMd5);
+                blobCreator = new BlobCreator(uploadParameters.LocalFilePath, uploadParameters.DestinationUri, uploadParameters.BlobObjectFactory, uploadParameters.OverWrite);
             }
 
             using (var uploadContext = blobCreator.Create())

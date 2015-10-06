@@ -165,6 +165,16 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             // Do nothing
         }
 
+        public void AddHandler<T>(T handler) where T : DelegatingHandler, ICloneable
+        {
+            // Do nothing
+        }
+
+        public void RemoveHandler(Type handlerType)
+        {
+            // Do nothing
+        }
+
         public void AddUserAgent(string productName, string productVersion)
         {
             throw new NotImplementedException();

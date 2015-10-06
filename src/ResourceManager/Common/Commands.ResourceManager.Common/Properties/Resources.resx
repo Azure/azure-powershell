@@ -151,6 +151,15 @@ Select Y to enable data collection [Y/N]:</value>
   <data name="NoSubscriptionFound" xml:space="preserve">
     <value>The provided account {0} does not have access to any subscriptions. Please try logging in with different credentials.</value>
   </data>
+  <data name="ResourceProviderRegisterAttempt" xml:space="preserve">
+    <value>Attempting to register resource provider '{0}'</value>
+  </data>
+  <data name="ResourceProviderRegisterFailure" xml:space="preserve">
+    <value>Failed to register resource provider '{0}'.Details: '{1}'</value>
+  </data>
+  <data name="ResourceProviderRegisterSuccessful" xml:space="preserve">
+    <value>Succeeded to register resource provider '{0}'</value>
+  </data>
   <data name="SubscriptionIdNotFound" xml:space="preserve">
     <value>The provided account {0} does not have access to subscription ID "{1}". Please try logging in with different credentials not a different subscription ID.</value>
   </data>

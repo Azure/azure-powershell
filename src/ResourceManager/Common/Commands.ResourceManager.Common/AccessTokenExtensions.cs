@@ -1,9 +1,6 @@
-﻿using Microsoft.Azure.Common.Authentication;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
