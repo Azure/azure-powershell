@@ -40,12 +40,22 @@ function Test-AdminRights([string]$Scope)
 
 function Install-ModuleWithVersionCheck([string]$Name,[string]$MajorVersion,[string]$Repository,[string]$Scope)
 {
-  $minVer = "$MajorVersion.0.0.0"
-  $maxVer = "$MajorVersion.9999.9999.9999"
+  $_MinVer = "$MajorVersion.0.0.0"
+  $_MaxVer = "$MajorVersion.9999.9999.9999"
   try {
-    Install-Module -Name $Name -Repository $Repository -Scope $Scope -MinimumVersion $minVer -MaximumVersion $maxVer -Confirm:$false -Force -ErrorAction Stop
+    $_ExistingModule = Get-Module -ListAvailable -Name $Name
+    $_ModuleAction = "installed"
+    if ($_ExistingModule -ne $null)
+    {
+      Update-Module -Name $Name -MaximumVersion $_MaxVer -ErrorAction Stop
+      $_ModuleAction = "updated"
+    }
+    else 
+    {
+      Install-Module -Name $Name -Repository $Repository -Scope $Scope -MinimumVersion $_MinVer -MaximumVersion $_MaxVer -ErrorAction Stop
+    }
     $v = (Get-InstalledModule -Name $Name -ErrorAction Ignore)[0].Version.ToString()
-    Write-Output "$Name $v installed..." 
+    Write-Output "$Name $v $_ModuleAction..." 
   } catch {
     Write-Warning "Skipping $Name package..."
     Write-Warning $_
@@ -86,22 +96,30 @@ function Update-AzureRM
 
   Write-Output "Installing AzureRM modules."
 
-  Install-ModuleWithVersionCheck "AzureRM.Profile" $MajorVersion $Repository $Scope
+  $_InstallationPolicy = (Get-PSRepository -Name PSGallery).InstallationPolicy
 
-  # Stop and remove any previous jobs
-  $AzureRMModules | ForEach {Get-Job -Name "*$_"} | Stop-Job | Remove-Job
+  try 
+  {
+    Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
 
-  # Start new job
-  $result = $AzureRMModules | ForEach {
-    Start-Job -Name $_ -ScriptBlock {
-      Install-ModuleWithVersionCheck $args[0] $args[1] $args[2] $args[3]
-    } -ArgumentList $_, $MajorVersion, $Repository, $Scope }
-  
-  # Get results from the jobs
-  $AzureRMModules | ForEach {Get-Job -Name $_ | Wait-Job | Receive-Job }
+    Install-ModuleWithVersionCheck "AzureRM.Profile" $MajorVersion $Repository $Scope
 
-  # Clean up
-  $AzureRMModules | ForEach {Get-Job -Name $_ | Remove-Job}
+    # Stop and remove any previous jobs
+    $AzureRMModules | ForEach {Get-Job -Name "*$_"} | Stop-Job | Remove-Job
+
+    # Start new job
+    $result = $AzureRMModules | ForEach {
+      Start-Job -Name $_ -ScriptBlock {
+        Install-ModuleWithVersionCheck $args[0] $args[1] $args[2] $args[3]
+      } -ArgumentList $_, $MajorVersion, $Repository, $Scope }
+    
+    # Get results from the jobs
+    $AzureRMModules | ForEach {Get-Job -Name $_ | Wait-Job | Receive-Job }
+  } finally {
+    # Clean up
+    Set-PSRepository -Name PSGallery -InstallationPolicy $_InstallationPolicy
+    $AzureRMModules | ForEach {Get-Job -Name $_ | Remove-Job}
+  }
 }
 
 <#
@@ -123,12 +141,12 @@ function Import-AzureRM
 
   Write-Output "Importing AzureRM modules."
 
-  $minVer = "$MajorVersion.0.0.0"
-  $maxVer = "$MajorVersion.9999.9999.9999"
+  $_MinVer = "$MajorVersion.0.0.0"
+  $_MaxVer = "$MajorVersion.9999.9999.9999"
 
   $AzureRMModules | ForEach {
     $moduleName = $_
-    $matchedModule = Get-InstalledModule -Name $moduleName -MinimumVersion $minVer -MaximumVersion $maxVer -ErrorAction Ignore | where {$_.Name -eq $moduleName}
+    $matchedModule = Get-InstalledModule -Name $moduleName -MinimumVersion $_MinVer -MaximumVersion $_MaxVer -ErrorAction Ignore | where {$_.Name -eq $moduleName}
     if ($matchedModule -ne $null) {
       try {
         Import-Module -Name $matchedModule.Name -RequiredVersion $matchedModule.Version -ErrorAction Stop
@@ -143,10 +161,10 @@ function Import-AzureRM
 
 function Uninstall-ModuleWithVersionCheck([string]$Name,[string]$MajorVersion)
 {
-  $minVer = "$MajorVersion.0.0.0"
-  $maxVer = "$MajorVersion.9999.9999.9999"
+  $_MinVer = "$MajorVersion.0.0.0"
+  $_MaxVer = "$MajorVersion.9999.9999.9999"
   # This is a workaround for a bug in PowerShellGet that uses "start with" matching for module name
-  $matchedModule = Get-InstalledModule -Name $Name -MinimumVersion $minVer -MaximumVersion $maxVer -ErrorAction Ignore | where {$_.Name -eq $Name}
+  $matchedModule = Get-InstalledModule -Name $Name -MinimumVersion $_MinVer -MaximumVersion $_MaxVer -ErrorAction Ignore | where {$_.Name -eq $Name}
   if ($matchedModule -ne $null) {
     try {
       Remove-Module -Name $matchedModule.Name -Force -ErrorAction Ignore
