@@ -66,7 +66,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             throw new NotImplementedException();
         }
 
-        public void AddHandler(DelegatingHandler handler)
+        public void AddHandler<T>(T handler) where T : DelegatingHandler, ICloneable
         {
             throw new NotImplementedException();
         }

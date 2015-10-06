@@ -49,9 +49,16 @@ This may take some time...
 
 		Import-Module PowerShellGet
 
-		Install-Module AzureRM
+		$DefaultPSRepository = $env:DefaultPSRepository
+		if ([string]::IsNullOrWhiteSpace($DefaultPSRepository)) 
+		{
+			$DefaultPSRepository = "PSGallery"
+		}
+
+		Install-Module AzureRM -Repository $DefaultPSRepository
 		Write-Output "AzureRM $((Get-InstalledModule -Name AzureRM)[0].Version) installed..."
-		Update-AzureRM
+
+		Update-AzureRM -Repository $DefaultPSRepository
 	} else {
 		cd c:\
 		$welcomeMessage = @"
@@ -74,6 +81,6 @@ catch
 Write-Output "An error occured during installation."
 Write-Output $error 
 Write-Output "Press any key..."
-$host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+$key = $host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 }
 
