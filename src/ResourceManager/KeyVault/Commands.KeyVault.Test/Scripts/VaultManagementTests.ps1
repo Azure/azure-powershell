@@ -97,7 +97,7 @@ function Test_DeleteUnknownVaultFails
 #------------------------------Set-AzureRmKeyVaultAccessPolicy--------------------------
 function Test_SetRemoveAccessPolicyByUPN
 {
-    $user = (Get-AzureRmSubscription -Current).DefaultAccount 
+    $user = (Get-AzureRmSubscription)[0].Account
     Reset-PreCreatedVault
     Test-SetRemoveAccessPolicyByUPN $global:precreatedVaultName $global:resourceGroupName $user
 }
@@ -125,7 +125,7 @@ function Test_SetRemoveAccessPolicyBySPN
 
 function Test_SetRemoveAccessPolicyByObjectId
 {
-    $user = (Get-AzureRmSubscription -Current).DefaultAccount 
+    $user = (Get-AzureRmSubscription)[0].Account
     Reset-PreCreatedVault
     Test-SetRemoveAccessPolicyByObjectId $global:precreatedVaultName $global:resourceGroupName $user
 }
@@ -133,7 +133,7 @@ function Test_SetRemoveAccessPolicyByObjectId
 
 function Test_SetRemoveAccessPolicyByCompoundId
 {
-    $user = (Get-AzureRmSubscription -Current).DefaultAccount 
+    $user = (Get-AzureRmSubscription)[0].Account 
     $appId = [System.Guid]::NewGuid()
     Reset-PreCreatedVault
     Test-SetRemoveAccessPolicyByCompoundId $global:precreatedVaultName $global:resourceGroupName $user $appId
@@ -141,7 +141,7 @@ function Test_SetRemoveAccessPolicyByCompoundId
 
 function Test_RemoveAccessPolicyWithCompoundIdPolicies
 {
-    $user = (Get-AzureRmSubscription -Current).DefaultAccount 
+    $user = (Get-AzureRmSubscription)[0].Account
     $appId1 = [System.Guid]::NewGuid()
     $appId2 = [System.Guid]::NewGuid()
     Reset-PreCreatedVault
@@ -150,7 +150,7 @@ function Test_RemoveAccessPolicyWithCompoundIdPolicies
 
 function Test_SetCompoundIdAccessPolicy
 {
-    $user = (Get-AzureRmSubscription -Current).DefaultAccount 
+    $user = (Get-AzureRmSubscription)[0].Account
     $appId = [System.Guid]::NewGuid()
     Reset-PreCreatedVault
     Test-SetCompoundIdAccessPolicy $global:precreatedVaultName $global:resourceGroupName $user $appId
@@ -158,21 +158,21 @@ function Test_SetCompoundIdAccessPolicy
 
 function Test_ModifyAccessPolicy
 {
-    $user = (Get-AzureRmSubscription -Current).DefaultAccount 
+    $user = (Get-AzureRmSubscription)[0].Account
     Reset-PreCreatedVault
     Test-ModifyAccessPolicy $global:precreatedVaultName $global:resourceGroupName $user
 }
 
 function Test_ModifyAccessPolicyEnabledForDeployment
 {
-    $user = (Get-AzureRmSubscription -Current).DefaultAccount 
+    $user = (Get-AzureRmSubscription)[0].Account
     Reset-PreCreatedVault
     Test-ModifyAccessPolicyEnabledForDeployment $global:precreatedVaultName $global:resourceGroupName $user
 }
 
 function Test_ModifyAccessPolicyNegativeCases
 {
-    $user = (Get-AzureRmSubscription -Current).DefaultAccount 
+    $user = (Get-AzureRmSubscription)[0].Account
     Reset-PreCreatedVault
     Test-ModifyAccessPolicyNegativeCases $global:precreatedVaultName $global:resourceGroupName $user
 }
@@ -180,7 +180,7 @@ function Test_ModifyAccessPolicyNegativeCases
 
 function Test_RemoveNonExistentAccessPolicyDoesNotThrow
 {
-    $user = (Get-AzureRmSubscription -Current).DefaultAccount 
+    $user = (Get-AzureRmSubscription)[0].Account
     Reset-PreCreatedVault
     Test-RemoveNonExistentAccessPolicyDoesNotThrow $global:precreatedVaultName $global:resourceGroupName $user
 }
@@ -240,14 +240,10 @@ function Initialize-VaultTest
         
         $global:resourceGroupName = $rg
     }
-    if($global:precreatedVaultName -ne "" -and $global:precreatedVaultName -ne $null)
-    {
-        Write-Host "Skipping vault creation for control plane tests since vault: $global:precreatedVaultName is already provided."
-        return;
-    }
+
     #create a vault using ARM    
     $vaultName = Get-VaultName $suffix
-    $tenantId = (Get-AzureRmSubscription -Current).TenantId
+    $tenantId = (Get-AzureRMSubscription)[0].Properties["Tenants"]
     $tagName = "testtag"
     $tagValue = "testvalue"
     $vaultId = @{
@@ -291,7 +287,7 @@ function Reset-PreCreatedVault
 { 
     $tagName = "testtag"
     $tagValue = "testvalue"
-    $tenantId = (Get-AzureRmSubscription -Current).TenantId
+    $tenantId = (Get-AzureRMSubscription)[0].Properties["Tenants"]
     $vaultProperties = @{
         "enabledForDeployment" = $false;
         "tenantId" = $tenantId;
