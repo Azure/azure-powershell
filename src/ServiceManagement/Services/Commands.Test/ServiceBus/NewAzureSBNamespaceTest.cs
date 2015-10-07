@@ -27,7 +27,7 @@ using Moq;
 namespace Microsoft.WindowsAzure.Commands.Test.ServiceBus
 {
     
-    public class NewAzureSBNamespaceTests : TestBase
+    public class NewAzureSBNamespaceTests : SMTestBase
     {
         public NewAzureSBNamespaceTests()
         {

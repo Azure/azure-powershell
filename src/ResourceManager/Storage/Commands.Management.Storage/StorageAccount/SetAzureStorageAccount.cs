@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Resource Group Name.")]
+            HelpMessage = "Resource Group StorageAccountName.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Position = 1,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Storage Account Name.")]
+            HelpMessage = "Storage Account StorageAccountName.")]
         [Alias(StorageAccountNameAlias, AccountNameAlias)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -68,15 +68,16 @@ namespace Microsoft.Azure.Commands.Management.Storage
             Mandatory = true,
             ParameterSetName = UpdateCustomDomainParamSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Storage Account Custom Domain Name.")]
-        [ValidateNotNullOrEmpty]
+            HelpMessage = "Storage Account Custom Domain StorageAccountName.")]
+        [AllowEmptyString]
+        [ValidateNotNull]
         public string CustomDomainName { get; set; }
 
         [Parameter(
             Position = 3,
             ParameterSetName = UpdateCustomDomainParamSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "To Use Sub Domain Name.")]
+            HelpMessage = "To Use Sub Domain StorageAccountName.")]
         [ValidateNotNullOrEmpty]
         public bool? UseSubDomain { get; set; }
 
@@ -86,12 +87,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
             ParameterSetName = UpdateTagsParamSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Tags.")]
-        [ValidateNotNullOrEmpty]
+        [AllowEmptyCollection]
+        [ValidateNotNull]
         public Hashtable[] Tags { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
             Dictionary<string, string> tagDictionary = null;
             StorageAccountUpdateParameters updateParameters = null;
@@ -120,7 +122,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
                 updateParameters = new StorageAccountUpdateParameters
                     {
-                        Tags = tagDictionary
+                        Tags = tagDictionary ?? new Dictionary<string, string>()
                     };
             }
 

@@ -12,30 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.Azure.Batch;
-using Microsoft.Azure.Batch.Auth;
 using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Batch.Protocol;
-using Microsoft.Azure.Batch.Protocol.Models;
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Batch.Models;
-using System;
-using System.Reflection;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using Microsoft.Azure.Test.HttpRecorder;
-using Moq;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Threading;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
@@ -49,7 +39,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         // NOTE: To save time on setup and compute node allocation when recording, many tests assume the following:
         //     - A Batch account named 'pstests' exists under the subscription being used for recording.
         //     - The following commands were run to create a pool, and all 3 compute nodes are allocated:
-        //          $context = Get-AzureBatchAccountKeys "pstests"
+        //          $context = Get-AzureRmBatchAccountKeys "pstests"
         //          $startTask = New-Object Microsoft.Azure.Commands.Batch.Models.PSStartTask
         //          $startTask.CommandLine = "cmd /c echo hello"
         //          New-AzureBatchPool -Id "testPool" -VirtualMachineSize "small" -OSFamily "4" -TargetOSVersion "*" -TargetDedicated 3 -StartTask $startTask -BatchContext $context
@@ -373,14 +363,16 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
         /// <summary>
         /// Terminates a job
-        /// TODO: Replace with terminate Job client method when it exists.
         /// </summary>
-        public static void TerminateJob(BatchAccountContext context, string jobId)
+        public static void TerminateJob(BatchController controller, BatchAccountContext context, string jobId)
         {
             RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
             BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
-            context.BatchOMClient.JobOperations.TerminateJob(jobId, additionalBehaviors: behaviors);
+            TerminateJobParameters parameters = new TerminateJobParameters(context, jobId, null, behaviors);
+
+            client.TerminateJob(parameters);
         }
 
         /// <summary>
@@ -426,7 +418,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Creates a test user for use in Scenario tests.
+        /// Creates a compute node user for use in Scenario tests.
         /// </summary>
         public static void CreateComputeNodeUser(BatchController controller, BatchAccountContext context, string poolId, string computeNodeId, string computeNodeUserName)
         {
@@ -444,11 +436,24 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         /// <summary>
+        /// Deletes a compute node user for use in Scenario tests.
+        /// </summary>
+        public static void DeleteComputeNodeUser(BatchController controller, BatchAccountContext context, string poolId, string computeNodeId, string computeNodeUserName)
+        {
+            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
+            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            ComputeNodeUserOperationParameters parameters = new ComputeNodeUserOperationParameters(context, poolId, computeNodeId, computeNodeUserName, behaviors);
+
+            client.DeleteComputeNodeUser(parameters);
+        }
+
+
+        /// <summary>
         /// Creates an interceptor that can be used to support the HTTP recorder scenario tests.
-        /// This behavior grabs the outgoing Protocol request, converts it to an HttpRequestMessage compatible with the 
-        /// HTTP recorder, sends the request through the HTTP recorder, and converts the response to an HttpWebResponse
-        /// for serialization by the Protocol Layer.
-        /// NOTE: This is a temporary behavior that should no longer be needed when the Batch OM switches to Hyak.
+        /// Since the BatchRestClient is not generated from the test infrastructure, the HTTP
+        /// recording delegate must be explicitly added.
         /// </summary>
         public static RequestInterceptor CreateHttpRecordingInterceptor()
         {

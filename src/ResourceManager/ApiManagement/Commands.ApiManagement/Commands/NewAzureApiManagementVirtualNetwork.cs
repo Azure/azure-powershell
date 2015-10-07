@@ -18,10 +18,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Models;
+    using ResourceManager.Common;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
-    [Cmdlet(VerbsCommon.New, "AzureApiManagementVirtualNetwork"), OutputType(typeof(PsApiManagementVirtualNetwork))]
-    public class NewAzureApiManagementVirtualNetwork : AzurePSCmdlet
+    [Cmdlet(VerbsCommon.New, "AzureRmApiManagementVirtualNetwork"), OutputType(typeof(PsApiManagementVirtualNetwork))]
+    public class NewAzureApiManagementVirtualNetwork : AzureRMCmdlet
     {
         [Parameter(
             ValueFromPipelineByPropertyName = false, 
@@ -49,7 +50,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [ValidateNotNullOrEmpty]
         public Guid VnetId { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             WriteObject(
                 new PsApiManagementVirtualNetwork

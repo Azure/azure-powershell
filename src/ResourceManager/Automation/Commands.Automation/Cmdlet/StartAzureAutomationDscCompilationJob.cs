@@ -12,12 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Management.Automation;
 using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
+using Microsoft.Azure.Commands.Automation.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
@@ -25,7 +28,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// starts azure automation compilation job
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureAutomationDscCompilationJob")]
+    [Cmdlet(VerbsLifecycle.Start, "AzureRmAutomationDscCompilationJob")]
     [OutputType(typeof(CompilationJob))]
     public class StartAzureAutomationDscCompilationJob : AzureAutomationBaseCmdlet
     {
@@ -43,14 +46,28 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public IDictionary Parameters { get; set; }
 
         /// <summary>
+        /// Gets or sets the configuration data.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The compilation job configuration data.")]
+        public IDictionary ConfigurationData { get; set; }
+
+        /// <summary>
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void AutomationExecuteCmdlet()
+        protected override void AutomationProcessRecord()
         {
             CompilationJob job = null;
 
-            job = this.AutomationClient.StartCompilationJob(this.ResourceGroupName, this.AutomationAccountName, this.ConfigurationName, this.Parameters);
+            if (this.Parameters != null && this.Parameters.Contains("ConfigurationData"))
+            {
+                throw new ArgumentException(
+                                          string.Format(
+                                              CultureInfo.CurrentCulture,
+                                              Resources.ConfigurationDataShouldNotBeInJobParameters, "-ConfigurationData"));
+            }
+
+            job = this.AutomationClient.StartCompilationJob(this.ResourceGroupName, this.AutomationAccountName, this.ConfigurationName, this.Parameters, this.ConfigurationData);
 
             this.WriteObject(job);
         }

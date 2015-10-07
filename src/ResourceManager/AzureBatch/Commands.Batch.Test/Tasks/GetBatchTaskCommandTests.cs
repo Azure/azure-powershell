@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Batch.Protocol.Models;
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -57,18 +57,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             cmdlet.Filter = null;
 
             // Build a CloudTask instead of querying the service on a List CloudTask call
-            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
-            {
-                BatchRequest<CloudTaskListParameters, CloudTaskListResponse> request =
-                (BatchRequest<CloudTaskListParameters, CloudTaskListResponse>)baseRequest;
-
-                request.ServiceRequestFunc = (cancellationToken) =>
-                {
-                    CloudTaskListResponse response = BatchTestHelpers.CreateCloudTaskListResponse(new string[] {cmdlet.Id});
-                    Task<CloudTaskListResponse> task = Task.FromResult(response);
-                    return task;
-                };
-            });
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudTaskListParameters, CloudTaskListResponse>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             Assert.Throws<ArgumentNullException>(() => cmdlet.ExecuteCmdlet());
@@ -91,18 +80,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             cmdlet.Filter = null;
 
             // Build a CloudTask instead of querying the service on a Get CloudTask call
-            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
-            {
-                BatchRequest<CloudTaskGetParameters, CloudTaskGetResponse> request =
-                (BatchRequest<CloudTaskGetParameters, CloudTaskGetResponse>)baseRequest;
-
-                request.ServiceRequestFunc = (cancellationToken) =>
-                {
-                    CloudTaskGetResponse response = BatchTestHelpers.CreateCloudTaskGetResponse(cmdlet.Id);
-                    Task<CloudTaskGetResponse> task = Task.FromResult(response);
-                    return task;
-                };
-            });
+            CloudTaskGetResponse response = BatchTestHelpers.CreateCloudTaskGetResponse(cmdlet.Id);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudTaskGetParameters, CloudTaskGetResponse>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -118,49 +97,71 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void ListBatchTasksByODataFilterTest()
+        public void GetBatchTaskODataTest()
         {
-            // Setup cmdlet to list tasks using an OData filter.
+            // Setup cmdlet to get a single task
             BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
             cmdlet.BatchContext = context;
-            cmdlet.JobId = "job-1";
-            cmdlet.Id = null;
-            cmdlet.Filter = "startswith(id,'test')";
+            cmdlet.JobId = "testJob";
+            cmdlet.Id = "testTask1";
+            cmdlet.Select = "id,state";
+            cmdlet.Expand = "stats";
 
-            string[] idsOfConstructedTasks = new[] { "testTask1", "testTask2" };
+            string requestSelect = null;
+            string requestExpand = null;
 
-            // Build some CloudTasks instead of querying the service on a List CloudTasks call
-            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
+            // Fetch the OData clauses off the request. The OData clauses are applied after user provided RequestInterceptors, so a ResponseInterceptor is used.
+            CloudTaskGetResponse getResponse = BatchTestHelpers.CreateCloudTaskGetResponse(cmdlet.Id);
+            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudTaskGetParameters, CloudTaskGetResponse>(getResponse);
+            ResponseInterceptor responseInterceptor = new ResponseInterceptor((response, request) =>
             {
-                BatchRequest<CloudTaskListParameters, CloudTaskListResponse> request =
-                (BatchRequest<CloudTaskListParameters, CloudTaskListResponse>)baseRequest;
+                requestSelect = request.Parameters.DetailLevel.SelectClause;
+                requestExpand = request.Parameters.DetailLevel.ExpandClause;
 
-                request.ServiceRequestFunc = (cancellationToken) =>
-                {
-                    CloudTaskListResponse response = BatchTestHelpers.CreateCloudTaskListResponse(idsOfConstructedTasks);
-                    Task<CloudTaskListResponse> task = Task.FromResult(response);
-                    return task;
-                };
+                return Task.FromResult(response);
             });
-            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
-
-            // Setup the cmdlet to write pipeline output to a list that can be examined later
-            List<PSCloudTask> pipeline = new List<PSCloudTask>();
-            commandRuntimeMock.Setup(r =>
-                r.WriteObject(It.IsAny<PSCloudTask>()))
-                .Callback<object>(t => pipeline.Add((PSCloudTask)t));
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { requestInterceptor, responseInterceptor };
 
             cmdlet.ExecuteCmdlet();
 
-            // Verify that the cmdlet wrote the constructed tasks to the pipeline
-            Assert.Equal(2, pipeline.Count);
-            int taskCount = 0;
-            foreach (PSCloudTask t in pipeline)
+            Assert.Equal(cmdlet.Select, requestSelect);
+            Assert.Equal(cmdlet.Expand, requestExpand);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ListBatchTasksODataTest()
+        {
+            // Setup cmdlet to list tasks using an OData filter
+            BatchAccountContext context = BatchTestHelpers.CreateBatchContextWithKeys();
+            cmdlet.BatchContext = context;
+            cmdlet.JobId = "testJob";
+            cmdlet.Id = null;
+            cmdlet.Filter = "startswith(id,'test')";
+            cmdlet.Select = "id,state";
+            cmdlet.Expand = "stats";
+
+            string requestFilter = null;
+            string requestSelect = null;
+            string requestExpand = null;
+
+            // Fetch the OData clauses off the request. The OData clauses are applied after user provided RequestInterceptors, so a ResponseInterceptor is used.
+            RequestInterceptor requestInterceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudTaskListParameters, CloudTaskListResponse>();
+            ResponseInterceptor responseInterceptor = new ResponseInterceptor((response, request) =>
             {
-                Assert.True(idsOfConstructedTasks.Contains(t.Id));
-                taskCount++;
-            }
-            Assert.Equal(idsOfConstructedTasks.Length, taskCount);
+                requestFilter = request.Parameters.DetailLevel.FilterClause;
+                requestSelect = request.Parameters.DetailLevel.SelectClause;
+                requestExpand = request.Parameters.DetailLevel.ExpandClause;
+
+                return Task.FromResult(response);
+            });
+            cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { requestInterceptor, responseInterceptor };
+
+            cmdlet.ExecuteCmdlet();
+
+            Assert.Equal(cmdlet.Filter, requestFilter);
+            Assert.Equal(cmdlet.Select, requestSelect);
+            Assert.Equal(cmdlet.Expand, requestExpand);
         }
 
         [Fact]
@@ -177,18 +178,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             string[] idsOfConstructedTasks = new[] { "testTask1", "testTask2", "testTask3" };
 
             // Build some CloudTasks instead of querying the service on a List CloudTasks call
-            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
-            {
-                BatchRequest<CloudTaskListParameters, CloudTaskListResponse> request =
-                (BatchRequest<CloudTaskListParameters, CloudTaskListResponse>)baseRequest;
-
-                request.ServiceRequestFunc = (cancellationToken) =>
-                {
-                    CloudTaskListResponse response = BatchTestHelpers.CreateCloudTaskListResponse(idsOfConstructedTasks);
-                    Task<CloudTaskListResponse> task = Task.FromResult(response);
-                    return task;
-                };
-            });
+            CloudTaskListResponse response = BatchTestHelpers.CreateCloudTaskListResponse(idsOfConstructedTasks);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudTaskListParameters, CloudTaskListResponse>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later
@@ -229,18 +220,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Tasks
             string[] idsOfConstructedTasks = new[] { "testTask1", "testTask2", "testTask3" };
 
             // Build some CloudTasks instead of querying the service on a List CloudTasks call
-            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
-            {
-                BatchRequest<CloudTaskListParameters, CloudTaskListResponse> request =
-                (BatchRequest<CloudTaskListParameters, CloudTaskListResponse>)baseRequest;
-
-                request.ServiceRequestFunc = (cancellationToken) =>
-                {
-                    CloudTaskListResponse response = BatchTestHelpers.CreateCloudTaskListResponse(idsOfConstructedTasks);
-                    Task<CloudTaskListResponse> task = Task.FromResult(response);
-                    return task;
-                };
-            });
+            CloudTaskListResponse response = BatchTestHelpers.CreateCloudTaskListResponse(idsOfConstructedTasks);
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudTaskListParameters, CloudTaskListResponse>(response);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Setup the cmdlet to write pipeline output to a list that can be examined later

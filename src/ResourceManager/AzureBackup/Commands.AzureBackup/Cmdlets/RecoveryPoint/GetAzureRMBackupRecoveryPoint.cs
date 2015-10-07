@@ -26,16 +26,16 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Get list of Azure Recovery Points
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRMBackupRecoveryPoint"), OutputType(typeof(AzureRMBackupRecoveryPoint), typeof(List<AzureRMBackupRecoveryPoint>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmBackupRecoveryPoint"), OutputType(typeof(AzureRMBackupRecoveryPoint), typeof(List<AzureRMBackupRecoveryPoint>))]
     public class GetAzureRMBackupRecoveryPoint : AzureRMBackupDSCmdletBase
     {
         [Parameter(Position = 1, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.RecoveryPointId)]
         [ValidateNotNullOrEmpty]
         public string RecoveryPointId { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
             ExecutionBlock(() =>
             {

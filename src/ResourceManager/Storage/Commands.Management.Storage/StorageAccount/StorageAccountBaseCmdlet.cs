@@ -15,17 +15,18 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Management.Storage.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    public abstract class StorageAccountBaseCmdlet : AzurePSCmdlet
+    public abstract class StorageAccountBaseCmdlet : AzureRMCmdlet
     {
         private StorageManagementClientWrapper storageClientWrapper;
         
-        protected const string StorageAccountNounStr = "AzureStorageAccount";
+        protected const string StorageAccountNounStr = "AzureRmStorageAccount";
         protected const string StorageAccountKeyNounStr = StorageAccountNounStr + "Key";
 
         protected const string StorageAccountNameAlias = "StorageAccountName";
@@ -49,7 +50,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 if (storageClientWrapper == null)
                 {
-                    storageClientWrapper = new StorageManagementClientWrapper(Profile.Context)
+                    storageClientWrapper = new StorageManagementClientWrapper(DefaultProfile.Context)
                     {
                         VerboseLogger = WriteVerboseWithTimestamp,
                         ErrorLogger = WriteErrorWithTimestamp
@@ -66,13 +67,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
         {
             get
             {
-                return Profile.Context.Subscription.Id.ToString();
+                return DefaultProfile.Context.Subscription.Id.ToString();
             }
-        }
-
-        public override void ExecuteCmdlet()
-        {
-            base.ExecuteCmdlet();
         }
 
         protected static AccountType ParseAccountType(string accountType)
@@ -102,13 +98,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         protected void WriteStorageAccount(StorageAccount storageAccount)
         {
-            WriteObject(new PSStorageAccount(storageAccount));
+            WriteObject(PSStorageAccount.Create(storageAccount, this.StorageClient));
         }
 
         protected void WriteStorageAccountList(IList<StorageAccount> storageAccounts)
         {
             List<PSStorageAccount> output = new List<PSStorageAccount>();
-            storageAccounts.ForEach(storageAccount => output.Add(new PSStorageAccount(storageAccount)));
+            storageAccounts.ForEach(storageAccount => output.Add(PSStorageAccount.Create(storageAccount, this.StorageClient)));
             WriteObject(output, true);
         }
     }

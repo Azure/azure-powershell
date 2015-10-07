@@ -24,15 +24,18 @@ namespace Microsoft.Azure.Commands.Batch
     [Cmdlet(VerbsCommon.New, Constants.AzureBatchComputeNodeUser)]
     public class NewBatchComputeNodeUserCommand : BatchObjectModelCmdletBase
     {
-        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true, HelpMessage = "The id of the pool containing the compute node to create the user on.")]
+        [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true, 
+            HelpMessage = "The id of the pool containing the compute node to create the user on.")]
         [ValidateNotNullOrEmpty]
         public string PoolId { get; set; }
 
-        [Parameter(Position = 1, ParameterSetName = Constants.IdParameterSet, Mandatory = true, HelpMessage = "The id of the compute node to create the user on.")]
+        [Parameter(Position = 1, ParameterSetName = Constants.IdParameterSet, Mandatory = true, 
+            HelpMessage = "The id of the compute node to create the user on.")]
         [ValidateNotNullOrEmpty]
         public string ComputeNodeId { get; set; }
 
-        [Parameter(Position = 0, ParameterSetName = Constants.ParentObjectParameterSet, ValueFromPipeline = true)]
+        [Parameter(Position = 0, ParameterSetName = Constants.ParentObjectParameterSet, 
+            ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public PSComputeNode ComputeNode { get; set; }
 
@@ -51,7 +54,7 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter]
         public SwitchParameter IsAdmin { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             NewComputeNodeUserParameters parameters = new NewComputeNodeUserParameters(this.BatchContext, this.PoolId, this.ComputeNodeId,
                 this.ComputeNode, this.AdditionalBehaviors)

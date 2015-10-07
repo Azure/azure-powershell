@@ -13,61 +13,73 @@
 // ----------------------------------------------------------------------------------
 
 
+using System;
+using System.Linq;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Graph.RBAC.Models;
 using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.Authorization.Models;
 using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
-using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.Azure.Test;
-using System;
-using System.Linq;
-using System.Threading;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class RoleAssignmentTests
+    public class RoleAssignmentTests : RMTestBase
     {
-        [Fact]
+        [Fact(Skip = "http://vstfrd:8080/Azure/RD/_workitems/edit/4616537")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaAuthorizationChangeLog()
+        {
+           ResourcesController.NewInstance.RunPsTest("Test-RaAuthorizationChangeLog");
+        }
+
+        [Fact(Skip = "Need to re-record test")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaClassicAdmins()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RaClassicAdmins");
+        }
+
+        [Fact(Skip = "Need to re-record test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaNegativeScenarios()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaNegativeScenarios");
         }
 
-        [Fact]
+        [Fact(Skip = "Need to re-record test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByScope()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaByScope");
         }
 
-        [Fact]
+        [Fact(Skip = "Need to re-record test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByResourceGroup()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaByResourceGroup");
         }
 
-        [Fact]
+        [Fact(Skip = "Need to re-record test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByResource()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaByResource");
         }
 
-        [Fact]
+        [Fact(Skip = "PSGet Migration: TODO: Get-AzureRmSubscription")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByServicePrincipal()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaByServicePrincipal");
         }
 
-        [Fact]
+        [Fact(Skip = "Need to re-record test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByUpn()
         {

@@ -12,14 +12,52 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using AutoMapper;
 using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.Azure.Commands.Compute.Models;
+using Microsoft.Azure.Management.Compute;
+using Microsoft.Azure.Management.Compute.Models;
+using System.Collections;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsData.Update, ProfileNouns.VirtualMachine)]
-    public class UpdateAzureVMCommand : NewAzureVMCommand
+    [Cmdlet(VerbsData.Update, ProfileNouns.VirtualMachine, DefaultParameterSetName = ResourceGroupNameParameterSet)]
+    [OutputType(typeof(PSComputeLongRunningOperation))]
+    public class UpdateAzureVMCommand : VirtualMachineActionBaseCmdlet
     {
-        public new string Location { get; set; }
+        [Alias("VMProfile")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public PSVirtualMachine VM { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true)]
+        public Hashtable[] Tags { get; set; }
+
+        protected override void ProcessRecord()
+        {
+            base.ProcessRecord();
+
+            ExecuteClientAction(() =>
+            {
+                var parameters = new VirtualMachine
+                {
+                    DiagnosticsProfile = this.VM.DiagnosticsProfile,
+                    HardwareProfile = this.VM.HardwareProfile,
+                    StorageProfile = this.VM.StorageProfile,
+                    NetworkProfile = this.VM.NetworkProfile,
+                    OSProfile = this.VM.OSProfile,
+                    Plan = this.VM.Plan,
+                    AvailabilitySetReference = this.VM.AvailabilitySetReference,
+                    Location = this.VM.Location,
+                    Name = this.VM.Name,
+                    Tags = this.Tags != null ? this.Tags.ToDictionary() : this.VM.Tags
+                };
+
+                var op = this.VirtualMachineClient.CreateOrUpdate(this.ResourceGroupName, parameters);
+                var result = Mapper.Map<PSComputeLongRunningOperation>(op);
+                WriteObject(result);
+            });
+        }
     }
 }

@@ -303,20 +303,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
         {
             parameters.DeploymentName = GenerateDeploymentName(parameters);
             Deployment deployment = CreateBasicDeployment(parameters, parameters.DeploymentMode);
-            TemplateValidationInfo validationInfo = CheckBasicDeploymentErrors(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
-
-            if (validationInfo.Errors.Count != 0)
-            {
-                int counter = 1;
-                string errorFormat = "Error {0}: Code={1}; Message={2}\r\n";
-                StringBuilder errorsString = new StringBuilder();
-                validationInfo.Errors.ForEach(e => errorsString.AppendFormat(errorFormat, counter++, e.Code, e.Message));
-                throw new ArgumentException(errorsString.ToString());
-            }
-            else
-            {
-                WriteVerbose(ProjectResources.TemplateValid);
-            }
 
             if (!string.IsNullOrEmpty(parameters.StorageAccountName))
             {
@@ -356,10 +342,12 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// <param name="name">The resource group name.</param>
         /// <param name="tag">The resource group tag.</param>
         /// <param name="detailed">Whether the  return is detailed or not.</param>
+        /// <param name="location">The resource group location.</param>
         /// <returns>The filtered resource groups</returns>
-        public virtual List<PSResourceGroup> FilterResourceGroups(string name, Hashtable tag, bool detailed)
+        public virtual List<PSResourceGroup> FilterResourceGroups(string name, Hashtable tag, bool detailed, string location = null)
         {
             List<PSResourceGroup> result = new List<PSResourceGroup>();
+            
             if (string.IsNullOrEmpty(name))
             {
                 var response = ResourceManagementClient.ResourceGroups.List(null);
@@ -369,6 +357,10 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 {
                     resourceGroups.AddRange(response.ResourceGroups);
                 }
+
+                resourceGroups = !string.IsNullOrEmpty(location)
+                    ? resourceGroups.Where(resourceGroup => this.NormalizeLetterOrDigitToUpperInvariant(resourceGroup.Location).Equals(this.NormalizeLetterOrDigitToUpperInvariant(location))).ToList()
+                    : resourceGroups;
 
                 // TODO: Replace with server side filtering when available
                 if (tag != null && tag.Count >= 1)

@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
         {
         }
 
-        public AutomationClient(AzureProfile profile, AzureSubscription subscription)
+        public AutomationClient(AzureSMProfile profile, AzureSubscription subscription)
             : this(subscription,
             AzureSession.ClientFactory.CreateClient<AutomationManagement.AutomationManagementClient>(profile, subscription, AzureEnvironment.Endpoint.ServiceManagement))
         {
@@ -1416,6 +1416,28 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 throw new ResourceNotFoundException(typeof(Schedule),
                         string.Format(CultureInfo.CurrentCulture, Resources.JobScheduleNotFound, runbookName, scheduleName));
+            }
+        }
+
+        #endregion
+
+        #region ConnectionType
+
+        public void DeleteConnectionType(string automationAccountName, string name)
+        {
+            try
+            {
+                this.automationManagementClient.ConnectionTypes.Delete(automationAccountName, name);
+            }
+            catch (CloudException cloudException)
+            {
+                if (cloudException.Response.StatusCode == HttpStatusCode.NoContent)
+                {
+                    throw new ResourceNotFoundException(typeof(ConnectionType),
+                        string.Format(CultureInfo.CurrentCulture, Resources.ConnectionTypeNotFound, name));
+                }
+
+                throw;
             }
         }
 

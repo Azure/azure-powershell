@@ -124,6 +124,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ExpandPrincipalGroups is only supported for a User principal.
+        /// </summary>
+        internal static string ExpandGroupsNotSupported {
+            get {
+                return ResourceManager.GetString("ExpandGroupsNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot parse {0} &apos;{1}&apos;.
         /// </summary>
         internal static string FailedToParseProperty {
@@ -169,6 +178,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to IncludeClassicAdministrators is only supported for a User principal.
+        /// </summary>
+        internal static string IncludeClassicAdminsNotSupported {
+            get {
+                return ResourceManager.GetString("IncludeClassicAdminsNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid value for Actions.
         /// </summary>
         internal static string InvalidActions {
@@ -183,6 +201,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string InvalidAssignableScopes {
             get {
                 return ResourceManager.GetString("InvalidAssignableScopes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid format of the resource group identifier. Expected &apos;subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}&apos;..
+        /// </summary>
+        internal static string InvalidFormatOfResourceGroupId {
+            get {
+                return ResourceManager.GetString("InvalidFormatOfResourceGroupId", resourceCulture);
             }
         }
         
@@ -318,6 +345,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string OverrdingFile {
             get {
                 return ResourceManager.GetString("OverrdingFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find principal using the specified options.
+        /// </summary>
+        internal static string PrincipalNotFound {
+            get {
+                return ResourceManager.GetString("PrincipalNotFound", resourceCulture);
             }
         }
         

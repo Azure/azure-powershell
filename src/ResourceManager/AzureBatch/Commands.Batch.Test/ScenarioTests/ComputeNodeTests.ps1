@@ -20,7 +20,7 @@ function Test-GetComputeNodeById
 {
 	param([string]$accountName, [string]$poolId)
 
-	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$computeNodeId = (Get-AzureBatchComputeNode_ST -PoolId $poolId -BatchContext $context)[0].Id
 
 	$computeNode = Get-AzureBatchComputeNode_ST -PoolId $poolId -Id $computeNodeId -BatchContext $context
@@ -41,7 +41,7 @@ function Test-ListComputeNodesByFilter
 {
 	param([string]$accountName, [string]$poolId, [string]$state, [string]$matches)
 
-	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$filter = "state eq '" + "$state" + "'"
 
 	$computeNodes = Get-AzureBatchComputeNode_ST -PoolId $poolId -Filter $filter -BatchContext $context
@@ -65,13 +65,45 @@ function Test-ListComputeNodesByFilter
 
 <#
 .SYNOPSIS
+Tests querying for compute nodes using a select clause
+#>
+function Test-GetAndListComputeNodesWithSelect
+{
+	param([string]$accountName, [string]$poolId, [string]$computeNodeId)
+
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
+	$filter = "id eq '$computeNodeId'"
+	$selectClause = "id,state"
+
+	# Test with Get compute node API
+	$computeNode = Get-AzureBatchComputeNode_ST $poolId $computeNodeId -BatchContext $context
+	Assert-AreNotEqual $null $computeNode.IPAddress
+	Assert-AreEqual $computeNodeId $computeNode.Id
+
+	$computeNode = Get-AzureBatchComputeNode_ST $poolId $computeNodeId -Select $selectClause -BatchContext $context
+	Assert-AreEqual $null $computeNode.IPAddress
+	Assert-AreEqual $computeNodeId $computeNode.Id
+
+	# Test with List compute nodes API
+	$pool = Get-AzureBatchPool_ST $poolId -BatchContext $context
+	$computeNode = $pool | Get-AzureBatchComputeNode_ST -Filter $filter -BatchContext $context
+	Assert-AreNotEqual $null $computeNode.IPAddress
+	Assert-AreEqual $computeNodeId $computeNode.Id
+
+	$computeNode = $pool | Get-AzureBatchComputeNode_ST -Filter $filter -Select $selectClause -BatchContext $context
+	Assert-AreEqual $null $computeNode.IPAddress
+	Assert-AreEqual $computeNodeId $computeNode.Id
+}
+
+<#
+.SYNOPSIS
 Tests querying for Batch compute nodes and supplying a max count
 #>
 function Test-ListComputeNodesWithMaxCount
 {
 	param([string]$accountName, [string]$poolId, [string]$maxCount)
 
-	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$computeNodes = Get-AzureBatchComputeNode_ST -PoolId $poolId -MaxCount $maxCount -BatchContext $context
 
 	Assert-AreEqual $maxCount $computeNodes.Length
@@ -91,7 +123,7 @@ function Test-ListAllComputeNodes
 {
 	param([string]$accountName, [string]$poolId, [string]$count)
 
-	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$computeNodes = Get-AzureBatchComputeNode_ST -PoolId $poolId -BatchContext $context
 
 	Assert-AreEqual $count $computeNodes.Length
@@ -111,7 +143,7 @@ function Test-ListComputeNodePipeline
 {
 	param([string]$accountName, [string]$poolId, [string]$count)
 
-	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 	$computeNodes = Get-AzureBatchPool_ST -Id $poolId -BatchContext $context | Get-AzureBatchComputeNode_ST -BatchContext $context
 
 	Assert-AreEqual $count $computeNodes.Count
@@ -125,7 +157,7 @@ function Test-RebootComputeNode
 {
 	param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$usePipeline)
 
-	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 
 	$rebootOption = ([Microsoft.Azure.Batch.Common.ComputeNodeRebootOption]::Terminate)
 
@@ -151,7 +183,7 @@ function Test-ReimageComputeNode
 {
 	param([string]$accountName, [string]$poolId, [string]$computeNodeId, [string]$usePipeline)
 
-	$context = Get-AzureBatchAccountKeys -Name $accountName
+	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 
 	$reimageOption = ([Microsoft.Azure.Batch.Common.ComputeNodeReimageOption]::Terminate)
 

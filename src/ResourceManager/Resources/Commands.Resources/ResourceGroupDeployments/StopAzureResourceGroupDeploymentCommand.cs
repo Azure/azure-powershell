@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.Resources.Models;
 using System.Management.Automation;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
@@ -21,26 +22,46 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroups
     /// <summary>
     /// Cancel a running deployment.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Stop, "AzureResourceGroupDeployment"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsLifecycle.Stop, "AzureRmResourceGroupDeployment", DefaultParameterSetName = StopAzureResourceGroupDeploymentCommand.DeploymentNameParameterSet), OutputType(typeof(bool))]
     public class StopAzureResourceGroupDeploymentCommand : ResourcesBaseCmdlet
     {
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.")]
+        /// <summary>
+        /// The deployment Id parameter set.
+        /// </summary>
+        internal const string DeploymentIdParameterSet = "The deployment Id parameter set.";
+
+        /// <summary>
+        /// The deployment name parameter set.
+        /// </summary>
+        internal const string DeploymentNameParameterSet = "The deployment name parameter set.";
+
+        [Parameter(Position = 0, ParameterSetName = StopAzureResourceGroupDeploymentCommand.DeploymentNameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Alias("DeploymentName")]
-        [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the deployment.")]
+        [Parameter(Position = 1, ParameterSetName = StopAzureResourceGroupDeploymentCommand.DeploymentNameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the deployment.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Do not confirm the stop.")]
+        [Alias("DeploymentId", "ResourceId")]
+        [Parameter(ParameterSetName = StopAzureResourceGroupDeploymentCommand.DeploymentIdParameterSet, Mandatory = true, HelpMessage = "The fully qualified resource Id of the deployment. example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/deployments/{deploymentName}")]
+        [ValidateNotNullOrEmpty]
+        public string Id { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Do not confirm the stop.")]
         public SwitchParameter Force { get; set; }
 
-        [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "True if succeed, false otherwise.")]
+        [Parameter(Mandatory = false, HelpMessage = "True if succeed, false otherwise.")]
         public SwitchParameter PassThru { get; set; }
         
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
+            if (string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Name))
+            {
+                ResourceGroupName = ResourceIdUtility.GetResourceGroupName(Id);
+                Name = ResourceIdUtility.GetResourceName(Id);
+            }
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(ProjectResources.CancelResourceGroupDeployment, ResourceGroupName),
@@ -50,6 +71,7 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroups
 
             if (PassThru)
             {
+                WriteWarning("The output object of this cmdlet will be modified in a future release.");
                 WriteObject(true);
             }
         }

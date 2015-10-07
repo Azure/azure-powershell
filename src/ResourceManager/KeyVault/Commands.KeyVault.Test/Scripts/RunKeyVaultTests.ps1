@@ -7,7 +7,9 @@
   [Parameter(Mandatory=$false,Position=2)]   
   [string]$Location = 'eastus2',
   [Parameter(Mandatory=$false, Position=3)]
-  [string]$Vault = ""
+  [string]$Vault = "",
+  [Parameter(Mandatory=$false, Position=3)]
+  [string]$ResourceGroup = ""
 )
 
 $invocationPath = Split-Path $MyInvocation.MyCommand.Definition;
@@ -29,6 +31,7 @@ $global:testEnv = 'PROD';
 $global:testns = $TestRunNameSpace
 $global:location = $location
 $global:testVault = $Vault
+$global:resourceGroupName = $ResourceGroup
 
 function Run-TestProtected
 {
@@ -72,14 +75,14 @@ function Run-AllControlPlaneTests
 {
     try
     {        
-        #New-AzureKeyVault tests
+        #New-AzureRmKeyVault tests
         Run-TestProtected { Run-VaultTest { Test_CreateNewVault } "Test_CreateNewVault" } "Test_CreateNewVault"
         Run-TestProtected { Run-VaultTest { Test_CreateNewPremiumVaultEnabledForDeployment } "Test_CreateNewPremiumVaultEnabledForDeployment" } "Test_CreateNewPremiumVaultEnabledForDeployment"
         Run-TestProtected { Run-VaultTest { Test_RecreateVaultFails } "Test_RecreateVaultFails" } "Test_RecreateVaultFails"
         Run-TestProtected { Run-VaultTest { Test_CreateVaultInUnknownResGrpFails } "Test_CreateVaultInUnknownResGrpFails" } "Test_CreateVaultInUnknownResGrpFails"
         Run-TestProtected { Run-VaultTest { Test_CreateVaultPositionalParams } "Test_CreateVaultPositionalParams" } "Test_CreateVaultPositionalParams"
 
-        #Get-AzureKeyVault tests
+        #Get-AzureRmKeyVault tests
         Run-TestProtected { Run-VaultTest { Test_GetVaultByNameAndResourceGroup } "Test_GetVaultByNameAndResourceGroup" } "Test_GetVaultByNameAndResourceGroup"
         Run-TestProtected { Run-VaultTest { Test_GetVaultByNameAndResourceGroupPositionalParams } "Test_GetVaultByNameAndResourceGroupPositionalParams" } "Test_GetVaultByNameAndResourceGroupPositionalParams"
         Run-TestProtected { Run-VaultTest { Test_GetVaultByName } "Test_GetVaultByName" } "Test_GetVaultByName"
@@ -90,11 +93,11 @@ function Run-AllControlPlaneTests
         Run-TestProtected { Run-VaultTest { Test_ListVaultsByTag } "Test_ListVaultsByTag" } "Test_ListVaultsByTag"
         Run-TestProtected { Run-VaultTest { Test_ListVaultsByUnknownResourceGroupFails } "Test_ListVaultsByUnknownResourceGroupFails" } "Test_ListVaultsByUnknownResourceGroupFails"
 
-        #Remove-AzureKeyVault tests
+        #Remove-AzureRmKeyVault tests
         Run-TestProtected { Run-VaultTest { Test_DeleteVaultByName } "Test_DeleteVaultByName" } "Test_DeleteVaultByName"
         Run-TestProtected { Run-VaultTest { Test_DeleteUnknownVaultFails } "Test_DeleteUnknownVaultFails" } "Test_DeleteUnknownVaultFails"
 
-        #Set-AzureKeyVaultAccessPolicy & Remove-AzureKeyVaultAccessPolicy tests
+        #Set-AzureRmKeyVaultAccessPolicy & Remove-AzureRmKeyVaultAccessPolicy tests
         Run-TestProtected { Run-VaultTest { Test_SetRemoveAccessPolicyByUPN } "Test_SetRemoveAccessPolicyByUPN" } "Test_SetRemoveAccessPolicyByUPN"
         Run-TestProtected { Run-VaultTest { Test_SetRemoveAccessPolicyBySPN } "Test_SetRemoveAccessPolicyBySPN" } "Test_SetRemoveAccessPolicyBySPN"
         Run-TestProtected { Run-VaultTest { Test_SetRemoveAccessPolicyByObjectId } "Test_SetRemoveAccessPolicyByObjectId" } "Test_SetRemoveAccessPolicyByObjectId"
@@ -112,9 +115,13 @@ function Run-AllControlPlaneTests
     }
     finally
     {
-        Write-Host Starting clean up for vault tests. This can take upto a minute or more...
-        Cleanup-VaultTest
-        Write-Host Completed clean up for vault tests
+        if($ResourceGroup -eq "")
+        {
+            # only clean up if we created it.
+            Write-Host Starting clean up for vault tests. This can take upto a minute or more...
+            Cleanup-VaultTest
+            Write-Host Completed clean up for vault tests
+        }
     }
 }
 
@@ -181,7 +188,7 @@ function Run-AllDataPlaneTests
     Run-TestProtected { Run-KeyTest {Test_BackupToExistingFile} "Test_BackupToExistingFile" } "Test_BackupToExistingFile"
     Run-TestProtected { Run-KeyTest {Test_RestoreFromNonExistingFile} "Test_RestoreFromNonExistingFile" } "Test_RestoreFromNonExistingFile"
 
-    # *-AzureKeyVaultKey pipeline tests
+    # *-AzureRmKeyVaultKey pipeline tests
     Run-TestProtected { Run-KeyTest {Test_PipelineUpdateKeys} "Test_PipelineUpdateKeys" } "Test_PipelineUpdateKeys"
     Run-TestProtected { Run-KeyTest {Test_PipelineRemoveKeys} "Test_PipelineRemoveKeys" } "Test_PipelineRemoveKeys"
     Run-TestProtected { Run-KeyTest {Test_PipelineUpdateKeyVersions} "Test_PipelineUpdateKeyVersions" } "Test_PipelineUpdateKeyVersions"
@@ -229,7 +236,7 @@ function Run-AllDataPlaneTests
     Run-TestProtected { Run-SecretTest {Test_RemoveNonExistSecret} "Test_RemoveNonExistSecret" } "Test_RemoveNonExistSecret"
     Run-TestProtected { Run-SecretTest {Test_RemoveSecretInNoPermissionVault} "Test_RemoveSecretInNoPermissionVault" } "Test_RemoveSecretInNoPermissionVault"
 
-    # *-AzureKeyVaultKey pipeline tests
+    # *-AzureRmKeyVaultKey pipeline tests
     Run-TestProtected { Run-SecretTest {Test_PipelineUpdateSecrets} "Test_PipelineUpdateSecrets" } "Test_PipelineUpdateSecrets"
     Run-TestProtected { Run-SecretTest {Test_PipelineUpdateSecretAttributes} "Test_PipelineUpdateSecretAttributes" } "Test_PipelineUpdateSecretAttributes"
     Run-TestProtected { Run-SecretTest {Test_PipelineUpdateSecretVersions} "Test_PipelineUpdateSecretVersions" } "Test_PipelineUpdateSecretVersions"

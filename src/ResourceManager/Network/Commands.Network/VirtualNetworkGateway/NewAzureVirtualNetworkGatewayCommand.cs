@@ -24,7 +24,7 @@ using Microsoft.Azure.Commands.Tags.Model;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureVirtualNetworkGateway"), OutputType(typeof(PSVirtualNetworkGateway))]
+    [Cmdlet(VerbsCommon.New, "AzureRmVirtualNetworkGateway"), OutputType(typeof(PSVirtualNetworkGateway))]
     public class NewAzureVirtualNetworkGatewayCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -58,9 +58,10 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
        Mandatory = false,
        ValueFromPipelineByPropertyName = true,
-       HelpMessage = "The type of this virtual network gateway: Vpn")]
+       HelpMessage = "The type of this virtual network gateway: Vpn, ExoressRoute")]
         [ValidateSet(
         MNM.VirtualNetworkGatewayType.Vpn,
+        MNM.VirtualNetworkGatewayType.ExpressRoute,
         IgnoreCase = true)]
         public string GatewayType { get; set; }
 
@@ -91,9 +92,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
             if (this.IsVirtualNetworkGatewayPresent(this.ResourceGroupName, this.Name))
             {

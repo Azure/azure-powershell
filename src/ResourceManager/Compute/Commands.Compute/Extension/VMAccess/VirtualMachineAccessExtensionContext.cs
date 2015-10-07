@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
             ProtectedSettings = psExt.ProtectedSettings;
             ProvisioningState = psExt.ProvisioningState;
             Statuses = psExt.Statuses;
-            UserName = (publicSettings == null) ? null : publicSettings.userName;
+            UserName = (publicSettings == null) ? null : publicSettings.UserName;
         }
     }
 }

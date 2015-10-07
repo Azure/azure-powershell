@@ -13,19 +13,31 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Resources.Models;
 
 namespace Microsoft.Azure.Commands.Resources
 {
+
     /// <summary>
     /// Updates an existing resource group.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureResourceGroup"), OutputType(typeof(PSResourceGroup))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmResourceGroup", DefaultParameterSetName = ResourceGroupNameParameterSet), OutputType(typeof(PSResourceGroup))]
     public class SetAzureResourceGroupCommand : ResourcesBaseCmdlet
     {
+        /// <summary>
+        /// List resources group by name parameter set.
+        /// </summary>
+        internal const string ResourceGroupNameParameterSet = "Lists the resource group based in the name.";
+
+        /// <summary>
+        /// List resources group by Id parameter set.
+        /// </summary>
+        internal const string ResourceGroupIdParameterSet = "Lists the resource group based in the Id.";
+
         [Alias("ResourceGroupName")]
-        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
+        [Parameter(Mandatory = true, ParameterSetName = ResourceGroupNameParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -33,14 +45,19 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, HelpMessage = "An array of hashtables which represents resource tags.")]
         public Hashtable[] Tag { get; set; }
 
-        public override void ExecuteCmdlet()
+        [Alias("ResourceGroupId", "ResourceId")]
+        [Parameter(Mandatory = true, ParameterSetName = ResourceGroupIdParameterSet, ValueFromPipelineByPropertyName = false, HelpMessage = "The resource group Id.")]
+        [ValidateNotNullOrEmpty]
+        public string Id { get; set; }
+
+        protected override void ProcessRecord()
         {
             UpdatePSResourceGroupParameters parameters = new UpdatePSResourceGroupParameters
             {
-                ResourceGroupName = Name,
-                Tag = Tag
+                ResourceGroupName = Name ?? ResourceIdentifier.FromResourceGroupIdentifier(this.Id).ResourceGroupName,
+                Tag = Tag,
             };
-
+            WriteWarning("The output object of this cmdlet will be modified in a future release.");
             WriteObject(ResourcesClient.UpdatePSResourceGroup(parameters));
         }
     }

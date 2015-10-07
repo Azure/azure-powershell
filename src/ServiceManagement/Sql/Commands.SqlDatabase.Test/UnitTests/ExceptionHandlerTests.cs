@@ -25,7 +25,7 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Server.Cmdlet
 {
     [TestClass]
-    public class ExceptionHandlerTests : TestBase
+    public class ExceptionHandlerTests : SMTestBase
     {
         [TestMethod]
         public void ServiceResourceErrorTest()

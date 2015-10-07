@@ -18,12 +18,13 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Resources.Test
 {
-    public class SetAzureResourceGroupCommandTests
+    public class SetAzureResourceGroupCommandTests : RMTestBase
     {
         private SetAzureResourceGroupCommand cmdlet;
 
@@ -32,6 +33,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
         private Mock<ICommandRuntime> commandRuntimeMock;
 
         private string resourceGroupName = "myResourceGroup";
+        private string resourceGroupId = "/subscriptions/subId/resourceGroups/myResourceGroup";
 
         private List<Hashtable> tags;
 
@@ -73,6 +75,37 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 .Callback((UpdatePSResourceGroupParameters p) => { actualParameters = p; });
 
             cmdlet.Name = expectedParameters.ResourceGroupName;
+            cmdlet.Tag = expectedParameters.Tag;
+
+            cmdlet.ExecuteCmdlet();
+
+            Assert.Equal(expectedParameters.ResourceGroupName, actualParameters.ResourceGroupName);
+            Assert.Equal(expectedParameters.Tag, actualParameters.Tag);
+
+            commandRuntimeMock.Verify(f => f.WriteObject(expected), Times.Once());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void UpdatesSetPSResourceGroupWithTagFromId()
+        {
+            UpdatePSResourceGroupParameters expectedParameters = new UpdatePSResourceGroupParameters()
+            {
+                ResourceGroupName = resourceGroupName,
+                Tag = tags.ToArray()
+            };
+            UpdatePSResourceGroupParameters actualParameters = new UpdatePSResourceGroupParameters();
+            PSResourceGroup expected = new PSResourceGroup()
+            {
+                ResourceGroupName = expectedParameters.ResourceGroupName,
+                Resources = new List<PSResource>() { new PSResource() { Name = "resource1" } },
+                Tags = expectedParameters.Tag
+            };
+            resourcesClientMock.Setup(f => f.UpdatePSResourceGroup(It.IsAny<UpdatePSResourceGroupParameters>()))
+                .Returns(expected)
+                .Callback((UpdatePSResourceGroupParameters p) => { actualParameters = p; });
+
+            cmdlet.Id = resourceGroupId;
             cmdlet.Tag = expectedParameters.Tag;
 
             cmdlet.ExecuteCmdlet();

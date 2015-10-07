@@ -31,7 +31,8 @@ namespace Microsoft.Azure.Commands.Insights
     {
         private static readonly TimeSpan MaximumDateDifferenceAllowedInDays = TimeSpan.FromDays(15);
         private static readonly TimeSpan DefaultQueryTimeRange = TimeSpan.FromHours(1);
-        private const int MaxNumberOfReturnedRecords = 100000;
+        private const int MaxNumberOfReturnedRecords = 1000;
+        private int MaxEvents = 0;
 
         internal const string SubscriptionLevelName = "Query at subscription level";
         internal const string ResourceProviderName = "Query on ResourceProvider";
@@ -45,33 +46,33 @@ namespace Microsoft.Azure.Commands.Insights
         /// Gets or sets the starttime parameter of the cmdlet
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The startTime of the query")]
-        public DateTime? StartTime { get; set; }
+        public virtual DateTime? StartTime { get; set; }
 
         /// <summary>
         /// Gets or sets the endtime parameter of the cmdlet
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The endTime of the query")]
-        public DateTime? EndTime { get; set; }
+        public virtual DateTime? EndTime { get; set; }
 
         /// <summary>
         /// Gets or sets the status parameter of the cmdlet
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The status of the records to fetch")]
         [ValidateNotNullOrEmpty]
-        public string Status { get; set; }
+        public virtual string Status { get; set; }
 
         /// <summary>
         /// Gets or sets the caller parameter of the cmdlet
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The caller of the records to fetch")]
         [ValidateNotNullOrEmpty]
-        public string Caller { get; set; }
+        public virtual string Caller { get; set; }
 
         /// <summary>
         /// Gets or sets the detailedoutput parameter of the cmdlet
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "Return object with all the details of the records (the default is to return only some attributes, i.e. no detail)")]
-        public SwitchParameter DetailedOutput { get; set; }
+        public virtual SwitchParameter DetailedOutput { get; set; }
 
         #endregion
 
@@ -96,6 +97,17 @@ namespace Microsoft.Azure.Commands.Insights
         protected virtual TimeSpan GetDefaultQueryTimeRange()
         {
             return DefaultQueryTimeRange;
+        }
+
+        /// <summary>
+        /// Sets the max number of records to fetch
+        /// </summary>
+        protected virtual void SetMaxEventsIfPresent(string currentQueryFilter, string name, int value)
+        {
+            if (value > 0 && value <= 100000)
+            {
+                this.MaxEvents = value;
+            }
         }
 
         /// <summary>
@@ -185,12 +197,15 @@ namespace Microsoft.Azure.Commands.Insights
         /// <summary>
         /// Execute the cmdlet
         /// </summary>
-        protected override void ExecuteCmdletInternal()
+        protected override void ProcessRecordInternal()
         {
             string queryFilter = this.ProcessParameters();
 
             // Retrieve the records
             var fullDetails = this.DetailedOutput.IsPresent;
+
+            //Number of records to retrieve
+            int maxNumberOfRecords = this.MaxEvents > 0 ? this.MaxEvents : MaxNumberOfReturnedRecords;
 
             // Call the proper API methods to return a list of raw records. In the future this pattern can be extended to include DigestRecords
             // If fullDetails is present do not select fields, if not present fetch only the SelectedFieldsForQuery
@@ -199,15 +214,25 @@ namespace Microsoft.Azure.Commands.Insights
             string nextLink = response.EventDataCollection.NextLink;
 
             // Adding a safety check to stop returning records if too many have been read already.
-            while (!string.IsNullOrWhiteSpace(nextLink) && records.Count < MaxNumberOfReturnedRecords)
+            while (!string.IsNullOrWhiteSpace(nextLink) && records.Count < maxNumberOfRecords)
             {
                 response = this.InsightsClient.EventOperations.ListEventsNextAsync(nextLink: nextLink, cancellationToken: CancellationToken.None).Result;
                 records.AddRange(response.EventDataCollection.Value.Select(e => fullDetails ? (IPSEventData)new PSEventData(e) : (IPSEventData)new PSEventDataNoDetails(e)));
                 nextLink = response.EventDataCollection.NextLink;
             }
 
+            var recordsReturned = new List<IPSEventData>();
+            if (records.Count > maxNumberOfRecords)
+            {
+                recordsReturned.AddRange(records.Take(maxNumberOfRecords));
+            }
+            else
+            {
+                recordsReturned = records;
+            }
+
             // Returns an object that contains a link to the set of subsequent records or null if not more records are available, called Next, and an array of records, called Value
-            WriteObject(sendToPipeline: records, enumerateCollection: true);
+            WriteObject(sendToPipeline: recordsReturned, enumerateCollection: true);
         }
     }
 }

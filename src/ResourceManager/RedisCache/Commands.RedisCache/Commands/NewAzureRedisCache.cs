@@ -22,8 +22,9 @@ namespace Microsoft.Azure.Commands.RedisCache
     using SkuStrings = Microsoft.Azure.Management.Redis.Models.SkuName;
     using Hyak.Common;
     using System.Collections;
+    using System;
 
-    [Cmdlet(VerbsCommon.New, "AzureRedisCache"), OutputType(typeof(RedisCacheAttributesWithAccessKeys))]
+    [Cmdlet(VerbsCommon.New, "AzureRmRedisCache"), OutputType(typeof(RedisCacheAttributesWithAccessKeys))]
     public class NewAzureRedisCache : RedisCacheCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under which you want to create cache.")]
@@ -50,24 +51,32 @@ namespace Microsoft.Azure.Commands.RedisCache
         [ValidateSet(SkuStrings.Basic, SkuStrings.Standard, IgnoreCase = false)]
         public string Sku { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "MaxMemoryPolicy is deprecated. Please use RedisConfiguration instead.")]
+        public string MaxMemoryPolicy { get; set; }
+
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "A hash table which represents redis configuration properties.")]
         public Hashtable RedisConfiguration { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "EnableNonSslPort property of redis cache.")]
         public bool? EnableNonSslPort { get; set; }
 
-        private const string redisDefaultVersion = "2.8";
+        private const string redisDefaultVersion = "3.0";
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
+            if (!string.IsNullOrEmpty(RedisVersion))
+            {
+                WriteWarning("The RedisVersion parameter has been deprecated.  As such, it is no longer necessary to provide this parameter and any value specified is ignored.");
+            }
+
+            if (!string.IsNullOrEmpty(MaxMemoryPolicy))
+            {
+                throw new ArgumentException(Resources.MaxMemoryPolicyException);
+            }
+
             string skuFamily;
 
             int skuCapacity = 1;
-
-            if (string.IsNullOrEmpty(RedisVersion))
-            {
-                RedisVersion = redisDefaultVersion;
-            }
 
             if (string.IsNullOrEmpty(Size))
             {
@@ -112,7 +121,7 @@ namespace Microsoft.Azure.Commands.RedisCache
                     throw;
                 }
             }
-            WriteObject(new RedisCacheAttributesWithAccessKeys(CacheClient.CreateOrUpdateCache(ResourceGroupName, Name, Location, RedisVersion, skuFamily, skuCapacity, Sku, RedisConfiguration, EnableNonSslPort), ResourceGroupName));
+            WriteObject(new RedisCacheAttributesWithAccessKeys(CacheClient.CreateOrUpdateCache(ResourceGroupName, Name, Location, redisDefaultVersion, skuFamily, skuCapacity, Sku, RedisConfiguration, EnableNonSslPort), ResourceGroupName));
         }
     }
 }

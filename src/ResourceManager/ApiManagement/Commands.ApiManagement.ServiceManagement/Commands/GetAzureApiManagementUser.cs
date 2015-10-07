@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.Get, "AzureApiManagementUser", DefaultParameterSetName = GetAll)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmApiManagementUser", DefaultParameterSetName = GetAll)]
     [OutputType(typeof(IList<PsApiManagementUser>))]
     public class GetAzureApiManagementUser : AzureApiManagementCmdletBase
     {

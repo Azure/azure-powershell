@@ -257,6 +257,49 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
             return configuration;
         }
 
+        public Model.DscConfiguration CreateConfiguration(
+           string resourceGroupName,
+           string automationAccountName,
+           string configrationName,
+           string nodeName)
+        {
+            string configurationContent = "Configuration #configrationName# { Node #nodeName# { } } ";
+            configurationContent = configurationContent.Replace("#configrationName#", configrationName);
+            configurationContent = configurationContent.Replace("#nodeName#", nodeName);
+
+            using (var request = new RequestSettings(this.automationManagementClient))
+            {
+                
+                // location of the configuration is set to same as that of automation account
+                string location = this.GetAutomationAccount(resourceGroupName, automationAccountName).Location;
+
+                var configurationCreateParameters = new DscConfigurationCreateOrUpdateParameters()
+                {
+                    Name = configrationName,
+                    Location = location,                
+                    Properties = new DscConfigurationCreateOrUpdateProperties()
+                    {
+                        Description = String.Empty,
+                        LogVerbose = false,
+                        Source = new Microsoft.Azure.Management.Automation.Models.ContentSource()
+                        {
+                            // only embeddedContent supported for now
+                            ContentType = Model.ContentSourceType.embeddedContent.ToString(),
+                            Value = configurationContent
+                        }
+                    }
+                };
+
+                var configuration =
+                    this.automationManagementClient.Configurations.CreateOrUpdate(
+                        resourceGroupName,
+                        automationAccountName,
+                        configurationCreateParameters).Configuration;
+
+                return new Model.DscConfiguration(resourceGroupName, automationAccountName, configuration);
+            }
+        }
+
     #endregion
 
         #region DscMetaConfig Operations
@@ -751,7 +794,7 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
                 resourceGroupName,
                 automationAccountName);
 
-            // prepare the parameters to be used in New-AzureResourceGroupDeployment cmdlet
+            // prepare the parameters to be used in New-AzureRmResourceGroupDeployment cmdlet
             Hashtable templateParameters = new Hashtable();
             templateParameters.Add("vmName", azureVMName);
             templateParameters.Add("location", location);
@@ -767,10 +810,10 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
             templateParameters.Add("actionAfterReboot", actionAfterReboot);
             templateParameters.Add("allowModuleOverwrite", moduleOverwriteFlag);
 
-            // invoke the New-AzureResourceGroupDeployment cmdlet
+            // invoke the New-AzureRmResourceGroupDeployment cmdlet
             using (Pipeline pipe = Runspace.DefaultRunspace.CreateNestedPipeline())
             {
-                Command invokeCommand = new Command("New-AzureResourceGroupDeployment");
+                Command invokeCommand = new Command("New-AzureRmResourceGroupDeployment");
                 invokeCommand.Parameters.Add("Name", deploymentName);
                 invokeCommand.Parameters.Add("ResourceGroupName", azureVmResourceGroup);
                 invokeCommand.Parameters.Add("TemplateParameterObject", templateParameters);
@@ -973,7 +1016,7 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
             }
         }
 
-        public Model.CompilationJob StartCompilationJob(string resourceGroupName, string automationAccountName, string configurationName, IDictionary parameters)
+        public CompilationJob StartCompilationJob(string resourceGroupName, string automationAccountName, string configurationName, IDictionary parameters, IDictionary configurationData)
         {
             using (var request = new RequestSettings(this.automationManagementClient))
             {
@@ -985,7 +1028,7 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
                         {
                             Name = configurationName
                         },
-                        Parameters = this.ProcessConfigurationParameters(resourceGroupName, automationAccountName, configurationName, parameters)
+                        Parameters = this.ProcessConfigurationParameters(parameters, configurationData)
                     }
                 };
 
@@ -1023,6 +1066,21 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
         #endregion
 
         #region node configuration
+        public Model.NodeConfiguration TryGetNodeConfiguration(string resourceGroupName, string automationAccountName, string nodeConfigurationName, string rollupStatus)
+        {
+            using (var request = new RequestSettings(this.automationManagementClient))
+            {
+                try
+                {
+                    return GetNodeConfiguration(resourceGroupName, automationAccountName, nodeConfigurationName, rollupStatus);
+                }
+                catch (ResourceNotFoundException)
+                {
+                    return null;
+                }                
+            }
+        }
+
         public Model.NodeConfiguration GetNodeConfiguration(string resourceGroupName, string automationAccountName, string nodeConfigurationName, string rollupStatus)
         {
             using (var request = new RequestSettings(this.automationManagementClient))
@@ -1106,7 +1164,7 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
                 var nodeConfigurations = new List<Model.NodeConfiguration>();
                 foreach (var nodeConfiguration in nodeConfigModels)
                 {
-                    string computedRollupStatus = GetRollupStatus(resourceGroupName, automationAccountName, nodeConfiguration.Name);
+                    string computedRollupStatus = GetRollupStatus(resourceGroupName, automationAccountName, nodeConfiguration.Configuration.Name);
 
                     if (string.IsNullOrEmpty(rollupStatus) || (rollupStatus != null && computedRollupStatus.Equals(rollupStatus)))
                     {
@@ -1115,6 +1173,91 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
                 }
 
                 return nodeConfigurations.AsEnumerable<Model.NodeConfiguration>();
+            }
+        }
+
+        public Model.NodeConfiguration CreateNodeConfiguration(
+            string resourceGroupName,
+            string automationAccountName,
+            string sourcePath,
+            string configurationName,
+            bool overWrite)
+        {
+            using (var request = new RequestSettings(this.automationManagementClient))
+            {
+                Requires.Argument("ResourceGroupName", resourceGroupName).NotNullOrEmpty();
+                Requires.Argument("AutomationAccountName", automationAccountName).NotNullOrEmpty();
+                Requires.Argument("SourcePath", sourcePath).NotNullOrEmpty();
+                Requires.Argument("configurationName", configurationName).NotNullOrEmpty();
+
+                string fileContent = null;
+                string nodeConfigurationName = null;
+                string nodeName = null;
+
+                if (File.Exists(Path.GetFullPath(sourcePath)))
+                {
+                    fileContent = System.IO.File.ReadAllText(sourcePath);
+                    nodeName = System.IO.Path.GetFileNameWithoutExtension(sourcePath);
+                    nodeConfigurationName = configurationName + "." + nodeName;
+                }
+                else
+                {
+                    // file path not valid.
+                    throw new FileNotFoundException(
+                                        string.Format(
+                                            CultureInfo.CurrentCulture,
+                                            Resources.ConfigurationSourcePathInvalid));
+                }
+                
+                 // if node configuration already exists, ensure overwrite flag is specified
+                var nodeConfigurationModel = this.TryGetNodeConfiguration(
+                    resourceGroupName,
+                    automationAccountName,
+                    nodeConfigurationName,
+                    null);
+                if (nodeConfigurationModel != null)
+                {
+                    if (!overWrite)
+                    {
+                        throw new ResourceCommonException(typeof(Model.NodeConfiguration),
+                            string.Format(CultureInfo.CurrentCulture, Resources.NodeConfigurationAlreadyExists, nodeConfigurationName));
+                    }
+                }
+
+                // if configuration already exists, ensure overwrite flag is specified
+                var configurationModel = this.TryGetConfigurationModel(
+                    resourceGroupName,
+                    automationAccountName,
+                    configurationName);
+                if (configurationModel == null)
+                {
+                    //create empty configuration if its empty
+                    this.CreateConfiguration(resourceGroupName, automationAccountName, configurationName, nodeName);
+                }
+
+                var nodeConfigurationCreateParameters = new DscNodeConfigurationCreateOrUpdateParameters()
+                {
+                    Name = nodeConfigurationName,
+                    Source = new Microsoft.Azure.Management.Automation.Models.ContentSource()
+                    {
+                        // only embeddedContent supported for now
+                        ContentType = Model.ContentSourceType.embeddedContent.ToString(),
+                        Value = fileContent
+                    },
+                    Configuration = new DscConfigurationAssociationProperty() 
+                    {
+                        Name = configurationName
+                    }
+                };
+
+                var nodeConfiguration =
+                    this.automationManagementClient.NodeConfigurations.CreateOrUpdate(
+                        resourceGroupName,
+                        automationAccountName,
+                        nodeConfigurationCreateParameters).NodeConfiguration;
+
+
+                return new Model.NodeConfiguration(resourceGroupName, automationAccountName, nodeConfiguration, null);
             }
         }
 
@@ -1336,42 +1479,26 @@ using Job = Microsoft.Azure.Management.Automation.Models.Job;
             return string.Format(CultureInfo.InvariantCulture, "{0:O}", dateTime.ToUniversalTime());
         }
 
-        private IDictionary<string, string> ProcessConfigurationParameters(string resourceGroupName, string automationAccountName, string configurationName, IDictionary parameters)
+        private IDictionary<string, string> ProcessConfigurationParameters(IDictionary parameters, IDictionary configurationData)
         {
             parameters = parameters ?? new Dictionary<string, string>();
-            IEnumerable<KeyValuePair<string, DscConfigurationParameter>> configurationParameters = this.ListConfigurationParameters(resourceGroupName, automationAccountName, configurationName);
-            var filteredParameters = new Dictionary<string, string>();
-
-            foreach (var configParameter in configurationParameters)
+            var filteredParameters = new Dictionary<string,string>();
+            if (configurationData != null)
             {
-                if (parameters.Contains(configParameter.Key))
-                {
-                    object paramValue = parameters[configParameter.Key];
-                    try
-                    {
-                        filteredParameters.Add(configParameter.Key, paramValue.ToString());
-                    }
-                    catch (JsonSerializationException)
-                    {
-                        throw new ArgumentException(
-                        string.Format(
-                            CultureInfo.CurrentCulture, Resources.ConfigurationParameterCannotBeSerializedToJson, configParameter.Key));
-                    }
-                }
-                else if (configParameter.Value.IsMandatory)
-                {
-                    throw new ArgumentException(
-                        string.Format(
-                            CultureInfo.CurrentCulture, Resources.ConfigurationParameterValueRequired, configParameter.Key));
-                }
+                filteredParameters.Add("ConfigurationData", JsonConvert.SerializeObject(configurationData));
             }
-
-            if (filteredParameters.Count != parameters.Count)
-            {
-                throw new ArgumentException(
-                    string.Format(CultureInfo.CurrentCulture, Resources.InvalidConfigurationParameters));
+            foreach (var key in parameters.Keys)
+            {                
+                try
+                {
+                    filteredParameters.Add(key.ToString(), JsonConvert.SerializeObject(parameters[key]));
+                }
+                catch (JsonSerializationException)
+                {
+                    throw new ArgumentException(string.Format(
+                        CultureInfo.CurrentCulture, Resources.ConfigurationParameterCannotBeSerializedToJson, key.ToString()));
+                }             
             }
-
             return filteredParameters;
         }
 

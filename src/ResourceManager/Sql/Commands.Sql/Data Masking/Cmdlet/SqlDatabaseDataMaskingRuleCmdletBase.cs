@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         /// <returns>An initialized and ready to use ModelAdapter object</returns>
         protected override SqlDataMaskingAdapter InitModelAdapter(AzureSubscription subscription)
         {
-            return new SqlDataMaskingAdapter(Profile, subscription);
+            return new SqlDataMaskingAdapter(DefaultProfile.Context);
         }
     }
 }

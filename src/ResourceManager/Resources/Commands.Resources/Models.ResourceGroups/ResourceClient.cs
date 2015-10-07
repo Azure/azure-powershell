@@ -59,9 +59,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
         public GalleryTemplatesClient GalleryTemplatesClient { get; set; }
 
-        // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
-        //public IEventsClient EventsClient { get; set; }
-
         public Action<string> VerboseLogger { get; set; }
 
         public Action<string> ErrorLogger { get; set; }
@@ -71,14 +68,12 @@ namespace Microsoft.Azure.Commands.Resources.Models
         /// <summary>
         /// Creates new ResourceManagementClient
         /// </summary>
-        /// <param name="profile">Profile containing resources to manipulate</param>
-        public ResourcesClient(AzureProfile profile)
+        /// <param name="context">Profile containing resources to manipulate</param>
+        public ResourcesClient(AzureContext context)
             : this(
-                AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(profile, AzureEnvironment.Endpoint.ResourceManager),
-                new GalleryTemplatesClient(profile.Context),
-                // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
-                //AzureSession.ClientFactory.CreateClient<EventsClient>(context, AzureEnvironment.Endpoint.ResourceManager),
-                AzureSession.ClientFactory.CreateClient<AuthorizationManagementClient>(profile.Context, AzureEnvironment.Endpoint.ResourceManager))
+                AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
+                new GalleryTemplatesClient(context),
+                AzureSession.ClientFactory.CreateClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
 
         }
@@ -92,13 +87,9 @@ namespace Microsoft.Azure.Commands.Resources.Models
         public ResourcesClient(
             IResourceManagementClient resourceManagementClient,
             GalleryTemplatesClient galleryTemplatesClient,
-            // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
-            //IEventsClient eventsClient,
             IAuthorizationManagementClient authorizationManagementClient)
         {
             GalleryTemplatesClient = galleryTemplatesClient;
-            // TODO: http://vstfrd:8080/Azure/RD/_workitems#_a=edit&id=3247094
-            //EventsClient = eventsClient;
             AuthorizationManagementClient = authorizationManagementClient;
             this.ResourceManagementClient = resourceManagementClient;
         }
@@ -268,6 +259,13 @@ namespace Microsoft.Azure.Commands.Resources.Models
                         errorMessage);
 
                     WriteError(statusMessage);
+
+                    List<string> detailedMessage = ParseDetailErrorMessage(operation.Properties.StatusMessage);
+
+                    if (detailedMessage != null)
+                    {
+                        detailedMessage.ForEach(s => WriteError(s));
+                    }
                 }
             }
         }
@@ -283,6 +281,24 @@ namespace Microsoft.Azure.Commands.Resources.Models
             {
                 return error.Message;
             }
+        }
+
+        public static List<string> ParseDetailErrorMessage(string statusMessage)
+        {
+            if(!string.IsNullOrEmpty(statusMessage))
+            {
+                List<string> detailedMessage = new List<string>();
+                dynamic errorMessage = JsonConvert.DeserializeObject(statusMessage);
+                if(errorMessage.error != null && errorMessage.error.details !=null)
+                {
+                    foreach(var detail in errorMessage.error.details)
+                    {
+                        detailedMessage.Add(detail.message.ToString());
+                    }
+                }
+                return detailedMessage;
+            }
+            return null;
         }
 
         private DeploymentExtended WaitDeploymentStatus(
@@ -403,16 +419,26 @@ namespace Microsoft.Azure.Commands.Resources.Models
             return null;
         }
 
-        public virtual PSResourceProvider[] ListPSResourceProviders(string providerName = null)
+        public virtual PSResourceProvider[] ListPSResourceProviders(string providerName = null, bool listAvailable = false, string location = null)
         {
-            return this.ListResourceProviders(providerName: providerName, listAvailable: false)
-                .Select(provider => provider.ToPSResourceProvider())
-                .ToArray();
-        }
+            var providers = this.ListResourceProviders(providerName: providerName, listAvailable: listAvailable);
 
-        public virtual PSResourceProvider[] ListPSResourceProviders(bool listAvailable)
-        {
-            return this.ListResourceProviders(providerName: null, listAvailable: listAvailable)
+            if (string.IsNullOrEmpty(location))
+            {
+                return providers
+                    .Select(provider => provider.ToPSResourceProvider())
+                    .ToArray();
+            }
+
+            foreach (var provider in providers)
+            {
+                provider.ResourceTypes = provider.ResourceTypes
+                    .Where(type => !type.Locations.Any() || this.ContainsNormalizedLocation(type.Locations.ToArray(), location))
+                    .ToList();
+            }
+
+            return providers
+                .Where(provider => provider.ResourceTypes.Any())
                 .Select(provider => provider.ToPSResourceProvider())
                 .ToArray();
         }
@@ -446,6 +472,16 @@ namespace Microsoft.Azure.Commands.Resources.Models
                     ? returnList
                     : returnList.Where(this.IsProviderRegistered).ToList();
             }
+        }
+
+        private bool ContainsNormalizedLocation(string[] locations, string location)
+        {
+            return locations.Any(existingLocation => this.NormalizeLetterOrDigitToUpperInvariant(existingLocation).Equals(this.NormalizeLetterOrDigitToUpperInvariant(location)));
+        }
+
+        private string NormalizeLetterOrDigitToUpperInvariant(string value)
+        {
+            return value != null ? new string(value.Where(c => char.IsLetterOrDigit(c)).ToArray()).ToUpperInvariant() : null;
         }
 
         private bool IsProviderRegistered(Provider provider)

@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.Get, "AzureApiManagementSubscription", DefaultParameterSetName = GetAll)]
+    [Cmdlet(VerbsCommon.Get, "AzureRmApiManagementSubscription", DefaultParameterSetName = GetAll)]
     [OutputType(typeof(IList<PsApiManagementSubscription>))]
     public class GetAzureApiManagementSubscription : AzureApiManagementCmdletBase
     {

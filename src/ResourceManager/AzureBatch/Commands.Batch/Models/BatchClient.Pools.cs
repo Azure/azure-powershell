@@ -36,28 +36,29 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException("options");
             }
 
+            ODATADetailLevel odata = new ODATADetailLevel(selectClause: options.Select, expandClause: options.Expand);
+
             // Get the single pool matching the specified id
             if (!string.IsNullOrWhiteSpace(options.PoolId))
             {
-                WriteVerbose(string.Format(Resources.GBP_GetById, options.PoolId));
+                WriteVerbose(string.Format(Resources.GetPoolById, options.PoolId));
                 PoolOperations poolOperations = options.Context.BatchOMClient.PoolOperations;
-                CloudPool pool = poolOperations.GetPool(options.PoolId, additionalBehaviors: options.AdditionalBehaviors);
+                CloudPool pool = poolOperations.GetPool(options.PoolId, detailLevel: odata, additionalBehaviors: options.AdditionalBehaviors);
                 PSCloudPool psPool = new PSCloudPool(pool);
                 return new PSCloudPool[] { psPool };
             }
             // List pools using the specified filter
             else
             {
-                ODATADetailLevel odata = null;
                 string verboseLogString = null;
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
-                    verboseLogString = Resources.GBP_GetByOData;
-                    odata = new ODATADetailLevel(filterClause: options.Filter);
+                    verboseLogString = Resources.GetPoolByOData;
+                    odata.FilterClause = options.Filter;
                 }
                 else
                 {
-                    verboseLogString = Resources.GBP_NoFilter;
+                    verboseLogString = Resources.GetPoolNoFilter;
                 }
                 WriteVerbose(verboseLogString);
 
@@ -126,8 +127,27 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 }
             }
 
-            WriteVerbose(string.Format(Resources.NBP_CreatingPool, parameters.PoolId));
+            WriteVerbose(string.Format(Resources.CreatingPool, parameters.PoolId));
             pool.Commit(parameters.AdditionalBehaviors);
+        }
+
+        /// <summary>
+        /// Commits changes to a PSCloudPool object to the Batch Service.
+        /// </summary>
+        /// <param name="context">The account to use.</param>
+        /// <param name="pool">The PSCloudPool object representing the pool to update.</param>
+        /// <param name="additionBehaviors">Additional client behaviors to perform.</param>
+        public void UpdatePool(BatchAccountContext context, PSCloudPool pool, IEnumerable<BatchClientBehavior> additionBehaviors = null)
+        {
+            if (pool == null)
+            {
+                throw new ArgumentNullException("pool");
+            }
+
+            WriteVerbose(string.Format(Resources.UpdatingPool, pool.Id));
+
+            Utils.Utils.BoundPoolSyncCollections(pool);
+            pool.omObject.Commit(additionBehaviors);
         }
 
         /// <summary>
@@ -160,7 +180,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
 
             string poolId = parameters.Pool == null ? parameters.PoolId : parameters.Pool.Id;
 
-            WriteVerbose(string.Format(Resources.SBPR_ResizingPool, poolId, parameters.TargetDedicated));
+            WriteVerbose(string.Format(Resources.ResizingPool, poolId, parameters.TargetDedicated));
             PoolOperations poolOperations = parameters.Context.BatchOMClient.PoolOperations;
             poolOperations.ResizePool(poolId, parameters.TargetDedicated, parameters.ResizeTimeout, parameters.ComputeNodeDeallocationOption, parameters.AdditionalBehaviors);
         }
@@ -178,7 +198,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException("poolId");
             }
 
-            WriteVerbose(string.Format(Resources.SBPR_StopResizingPool, poolId));
+            WriteVerbose(string.Format(Resources.StopResizingPool, poolId));
             PoolOperations poolOperations = context.BatchOMClient.PoolOperations;
             poolOperations.StopResizePool(poolId, additionalBehaviors);
         }

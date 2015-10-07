@@ -27,32 +27,40 @@ namespace Microsoft.Azure.Commands.Batch
         internal const string IdAndPathParameterSet = "Id_Path";
         internal const string IdAndStreamParameterSet = "Id_Stream";
 
-        [Parameter(Position = 0, ParameterSetName = IdAndPathParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the pool which contains the compute node.")]
-        [Parameter(Position = 0, ParameterSetName = IdAndStreamParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 0, ParameterSetName = IdAndPathParameterSet, Mandatory = true, 
+            ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the pool which contains the compute node.")]
+        [Parameter(Position = 0, ParameterSetName = IdAndStreamParameterSet, Mandatory = true, 
+            ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string PoolId { get; set; }
 
-        [Parameter(Position = 1, ParameterSetName = IdAndPathParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the compute node to which the Remote Desktop Protocol file will point.")]
-        [Parameter(Position = 1, ParameterSetName = IdAndStreamParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true)]
+        [Parameter(Position = 1, ParameterSetName = IdAndPathParameterSet, Mandatory = true, 
+            ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the compute node to which the Remote Desktop Protocol file will point.")]
+        [Parameter(Position = 1, ParameterSetName = IdAndStreamParameterSet, Mandatory = true, 
+            ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ComputeNodeId { get; set; }
 
-        [Parameter(Position = 0, ParameterSetName = Constants.InputObjectAndPathParameterSet, ValueFromPipeline = true)]
-        [Parameter(Position = 0, ParameterSetName = Constants.InputObjectAndStreamParameterSet, ValueFromPipeline = true)]
+        [Parameter(Position = 0, ParameterSetName = Constants.InputObjectAndPathParameterSet, 
+            ValueFromPipeline = true)]
+        [Parameter(Position = 0, ParameterSetName = Constants.InputObjectAndStreamParameterSet, 
+            ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public PSComputeNode ComputeNode { get; set; }
 
-        [Parameter(ParameterSetName = IdAndPathParameterSet, Mandatory = true, HelpMessage = "The file path where the Remote Desktop Protocol file will be downloaded.")]
+        [Parameter(ParameterSetName = IdAndPathParameterSet, Mandatory = true, 
+            HelpMessage = "The file path where the Remote Desktop Protocol file will be downloaded.")]
         [Parameter(ParameterSetName = Constants.InputObjectAndPathParameterSet, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string DestinationPath { get; set; }
 
-        [Parameter(ParameterSetName = IdAndStreamParameterSet, Mandatory = true, HelpMessage = "The Stream into which the Remote Desktop Protocol file data will be written. This stream will not be closed or rewound by this call.")]
+        [Parameter(ParameterSetName = IdAndStreamParameterSet, Mandatory = true, 
+            HelpMessage = "The Stream into which the Remote Desktop Protocol file data will be written. This stream will not be closed or rewound by this call.")]
         [Parameter(ParameterSetName = Constants.InputObjectAndStreamParameterSet, Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public Stream DestinationStream { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             DownloadRemoteDesktopProtocolFileOptions options = new DownloadRemoteDesktopProtocolFileOptions(this.BatchContext, this.PoolId, this.ComputeNodeId,
                 this.ComputeNode, this.DestinationPath, this.DestinationStream, this.AdditionalBehaviors);

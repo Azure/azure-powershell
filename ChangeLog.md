@@ -1,3 +1,64 @@
+﻿## 2015.09.03 version 0.9.8
+* Azure Redis Cache cmdlets 
+  * New-AzureRMRedisCache - 'RedisVersion' parameter is deprecated.
+* Azure Compute (ARM) Cmdlets
+  * Added -Launch parameter for Get-AzureRemoteDesktopFile cmdlet
+  * Added Id parameter for VM cmdlets to support piping scenario without ResourceGroupName parameter
+  * Added Set-AzureVMDataDisk cmdlet
+  * Added Add-AzureVhd cmdlet
+  * Changed the output format of Get image cmdlets as a table
+  * Fixed Set-AzureVMAccessExtension cmdlet
+* Azure Compute (Service Management) cmdlets
+  * Exposed ComputeImageConfig in Get-AzurePlatformVMImage cmdlet
+  * Fixed Publish-AzurePlatformExtension and Set-AzurePlatformExtension cmdlets
+* Azure Backup - added the following cmdlets
+  * Backup-AzureRMBackupItem
+  * Register-AzureRMBackupContainer
+  * Disable-AzureRMBackupProtection
+  * Enable-AzureRMBackupProtection
+  * Get-AzureRMBackupItem
+  * Get-AzureRMBackupJob
+  * Get-AzureRMBackupJobDetails
+  * Stop-AzureRMBackupJob
+  * Wait-AzureRMBackupJob
+  * Get-AzureRMBackupProtectionPolicy
+  * New-AzureRMBackupProtectionPolicy
+  * New-AzureRMBackupRetentionPolicyObject
+  * Remove-AzureRMBackupProtectionPolicy
+  * Set-AzureRMBackupProtectionPolicy
+  * Get-AzureRMBackupRecoveryPoint
+  * Restore-AzureRMBackupItem
+* Azure Batch - added the following cmdlets
+  * Enable-AzureBatchJob
+  * Disable-AzureBatchJob
+  * Enable-AzureBatchJobSchedule
+  * Disable-AzureBatchJobSchedule
+  * Stop-AzureBatchJob
+  * Stop-AzureBatchJobSchedule
+  * Stop-AzureBatchTask
+* Azure Data Factory
+  * Update SDK reference to 3.0.0 to use API version 2015-09-01
+    * Imposes message size limits for all authoring types. Pipelines must be 200 KB or less in size and all others must be 30 KB or less. 
+    * TeradataLinkedService no longer accepts the obsolete properties "database" and "schema". 
+    * Obsolete copy-related properties are no longer returned from the service. 
+* Azure Sql (ARM) Cmdlets - added the following cmdlets
+  * Get-AzureSqlServerActiveDirectoryAdministrator
+  * Set-AzureSqlServerActiveDirectoryAdministrator
+  * Remove-AzureSqlServerActiveDirectoryAdministrator
+* SQL Server VM cmdlets (ARM)
+  * New-AzureVMSqlServerAutoPatchingConfig
+  * New-AzureVMSqlServerAutoBackupConfig
+  * Set-AzureVMSqlServerExtension
+  * Get-AzureVMSqlServerExtension
+  * Remove-AzureVMSqlServerExtension
+* Azure SQL Database Index Recommendation Cmdlets
+  * Get-AzureSqlDatabaseIndexRecommendations
+  * Start-AzureSqlDatabaseExecuteIndexRecommendation
+  * Stop-AzureSqlDatabaseExecuteIndexRecommendation
+* Azure SQL Database and Server Upgrade Hints Cmdlets
+  * Get-AzureSqlDatabaseUpgradeHint
+  * Get-AzureSqlServerUpgradeHint
+	
 ## 2015.08.17 version 0.9.7
 * Azure Profile cmdlets
   * New-AzureProfile
@@ -27,23 +88,6 @@
   * Added Restart-AzureRemoteAppVm cmdlet
 * Azure HDInsight cmdlets
   * Added cmdlet help
-* Azure Backup - added the following cmdlets
-  * Backup-AzureRMBackupItem
-  * Register-AzureRMBackupContainer
-  * Disable-AzureRMBackupProtection
-  * Enable-AzureRMBackupProtection
-  * Get-AzureRMBackupItem
-  * Get-AzureRMBackupJob
-  * Get-AzureRMBackupJobDetails
-  * Stop-AzureRMBackupJob
-  * Wait-AzureRMBackupJob
-  * Get-AzureRMBackupProtectionPolicy
-  * New-AzureRMBackupProtectionPolicy
-  * New-AzureRMBackupRetentionPolicyObject
-  * Remove-AzureRMBackupProtectionPolicy
-  * Set-AzureRMBackupProtectionPolicy
-  * Get-AzureRMBackupRecoveryPoint
-  * Restore-AzureRMBackupItem
 
 ## 2015.08.07 version 0.9.6
 * Azure Batch cmdlets
