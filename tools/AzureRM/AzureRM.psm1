@@ -1,31 +1,31 @@
-$AzureRMProfileVersion = "0.9.8";
+$AzureMajorVersion = "0";
 
-$AzureRMModules = @{
-  "AzureRM.ApiManagement" = "0.9.8";
-  "AzureRM.Automation" = "0.9.8";
-  "AzureRM.Backup" = "0.9.8";
-  "AzureRM.Batch" = "0.9.8";
-  "AzureRM.Compute" = "0.9.8";
-  "AzureRM.DataFactories" = "0.9.8";
-  "AzureRM.Dns" = "0.9.8";
-  "AzureRM.HDInsight" = "0.9.8";
-  "AzureRM.Insights" = "0.9.8";
-  "AzureRM.KeyVault" = "0.9.8";
-  "AzureRM.Network" = "0.9.8";
-  "AzureRM.OperationalInsights" = "0.9.8";
-  "AzureRM.RedisCache" = "0.9.8";
-  "AzureRM.Resources" = "0.9.8";
-  "AzureRM.SiteRecovery" = "0.9.8";
-  "AzureRM.Sql" = "0.9.8";
-  "AzureRM.Storage" = "0.9.8";
-  "AzureRM.StreamAnalytics" = "0.9.8";
-  "AzureRM.Tags" = "0.9.8";
-  "AzureRM.TrafficManager" = "0.9.8";
-  "AzureRM.UsageAggregates" = "0.9.8";
-  "AzureRM.Websites" = "0.9.8"
-}
+$AzureRMModules = @(
+  "AzureRM.ApiManagement",
+  "AzureRM.Automation",
+  "AzureRM.Backup",
+  "AzureRM.Batch",
+  "AzureRM.Compute",
+  "AzureRM.DataFactories",
+  "AzureRM.Dns",
+  "AzureRM.HDInsight",
+  "AzureRM.Insights",
+  "AzureRM.KeyVault",
+  "AzureRM.Network",
+  "AzureRM.OperationalInsights",
+  "AzureRM.RedisCache",
+  "AzureRM.Resources",
+  "AzureRM.SiteRecovery",
+  "AzureRM.Sql",
+  "AzureRM.Storage",
+  "AzureRM.StreamAnalytics",
+  "AzureRM.Tags",
+  "AzureRM.TrafficManager",
+  "AzureRM.UsageAggregates",
+  "AzureRM.Websites"
+)
 
-function Validate-AdminRights([string]$Scope)
+function Test-AdminRights([string]$Scope)
 {
   if ($Scope -ne "CurrentUser")
   {
@@ -33,24 +33,29 @@ function Validate-AdminRights([string]$Scope)
     $isAdmin = (New-Object Security.Principal.WindowsPrincipal $user).IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)  
     if($isAdmin -eq $false)
     {
-      throw "Administrator rights are required to install Microsoft Azure modules"
+      throw "Administrator rights are required to install or uninstall Microsoft Azure modules"
     }
   }
 }
 
-function Import-ModuleWithVersionCheck([string]$Name,[string]$MinimumVersion,[string]$Repository,[string]$Scope)
+function Install-ModuleWithVersionCheck([string]$Name,[string]$MajorVersion,[string]$Repository,[string]$Scope)
 {
-  $minVer = $MinimumVersion
-  $maxVer = "$($minVer.Split(".")[0]).9999.0"
+  $_MinVer = "$MajorVersion.0.0.0"
+  $_MaxVer = "$MajorVersion.9999.9999.9999"
   try {
-    if ([string]::IsNullOrWhiteSpace($Repository)) 
+    $_ExistingModule = Get-Module -ListAvailable -Name $Name
+    $_ModuleAction = "installed"
+    if ($_ExistingModule -ne $null)
     {
-      Install-Module -Name $Name -Scope $Scope -MinimumVersion $minVer -MaximumVersion $maxVer -ErrorAction Stop
-    } else {
-      Install-Module -Name $Name -Repository $Repository -Scope $Scope -MinimumVersion $minVer -MaximumVersion $maxVer -ErrorAction Stop
-    } 
-    $v = (Get-InstalledModule -Name $Name)[0].Version.ToString()
-    Write-Output "$Name $v installed..." 
+      Update-Module -Name $Name -MaximumVersion $_MaxVer -ErrorAction Stop
+      $_ModuleAction = "updated"
+    }
+    else 
+    {
+      Install-Module -Name $Name -Repository $Repository -Scope $Scope -MinimumVersion $_MinVer -MaximumVersion $_MaxVer -ErrorAction Stop
+    }
+    $v = (Get-InstalledModule -Name $Name -ErrorAction Ignore)[0].Version.ToString()
+    Write-Output "$Name $v $_ModuleAction..." 
   } catch {
     Write-Warning "Skipping $Name package..."
     Write-Warning $_
@@ -62,7 +67,10 @@ function Import-ModuleWithVersionCheck([string]$Name,[string]$MinimumVersion,[st
   Install Azure Resource Manager cmdlet modules
 
  .Description
-  Installs all the available Azure Resource Manager cmdlet modules.
+  Installs all the available Azure Resource Manager cmdlet modules that have a matching major version.
+
+ .Parameter MajorVersion
+  Specifies the major version.
 
  .Parameter Repository
   Limit the search for "AzureRM" cmdlets in a specific repository.
@@ -75,29 +83,101 @@ function Update-AzureRM
   param(
   [Parameter(Position=0, Mandatory = $false)]
   [string]
-  $Repository,
+  $MajorVersion = $AzureMajorVersion,
   [Parameter(Position=1, Mandatory = $false)]
+  [string]
+  $Repository = "PSGallery",
+  [Parameter(Position=2, Mandatory = $false)]
   [ValidateSet("CurrentUser","AllUsers")]
   [string]
-  $Scope)
+  $Scope = "AllUsers")
 
-  if ([string]::IsNullOrWhiteSpace($Scope))
-  {
-    $Scope = "AllUsers"
-  }
-
-  Validate-AdminRights $Scope
+  Test-AdminRights $Scope
 
   Write-Output "Installing AzureRM modules."
 
-  Import-ModuleWithVersionCheck "AzureRM.Profile" $AzureRMProfileVersion $Repository $Scope
+  $_InstallationPolicy = (Get-PSRepository -Name PSGallery).InstallationPolicy
 
-  $result = $AzureRMModules.Keys | ForEach {
-    Start-Job -Name $_ -ScriptBlock {
-      Import-ModuleWithVersionCheck $args[0] $args[1] $args[2] $args[3]
-    } -ArgumentList $_, $AzureRMModules[$_], $Repository, $Scope }
-  
-  $AzureRMModules.Keys | ForEach {Get-Job -Name $_ | Wait-Job | Receive-Job }
+  try 
+  {
+    Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
+
+    Install-ModuleWithVersionCheck "AzureRM.Profile" $MajorVersion $Repository $Scope
+
+    # Stop and remove any previous jobs
+    $AzureRMModules | ForEach {Get-Job -Name "*$_"} | Stop-Job | Remove-Job
+
+    # Start new job
+    $result = $AzureRMModules | ForEach {
+      Start-Job -Name $_ -ScriptBlock {
+        Install-ModuleWithVersionCheck $args[0] $args[1] $args[2] $args[3]
+      } -ArgumentList $_, $MajorVersion, $Repository, $Scope }
+    
+    # Get results from the jobs
+    $AzureRMModules | ForEach {Get-Job -Name $_ | Wait-Job | Receive-Job }
+  } finally {
+    # Clean up
+    Set-PSRepository -Name PSGallery -InstallationPolicy $_InstallationPolicy
+    $AzureRMModules | ForEach {Get-Job -Name $_ | Remove-Job}
+  }
+}
+
+<#
+ .Synopsis
+  Import Azure Resource Manager cmdlet modules
+
+ .Description
+  Imports all the Azure Resource Manager cmdlet modules that have a matching major version.
+
+ .Parameter MajorVersion
+  Specifies the major version.
+#>
+function Import-AzureRM
+{
+  param(
+  [Parameter(Position=0, Mandatory = $false)]
+  [string]
+  $MajorVersion = $AzureMajorVersion)
+
+  Write-Output "Importing AzureRM modules."
+
+  $_MinVer = "$MajorVersion.0.0.0"
+  $_MaxVer = "$MajorVersion.9999.9999.9999"
+
+  $AzureRMModules | ForEach {
+    $moduleName = $_
+    $_MatchedModule = Get-InstalledModule -Name $moduleName -MinimumVersion $_MinVer -MaximumVersion $_MaxVer -ErrorAction Ignore | where {$_.Name -eq $moduleName}
+    if ($_MatchedModule -ne $null) {
+      try {
+        Import-Module -Name $_MatchedModule.Name -RequiredVersion $_MatchedModule.Version -ErrorAction Stop
+        Write-Output "$moduleName imported..." 
+      } catch {
+        Write-Warning "Skipping $Name module..."
+        Write-Warning $_
+      }
+    }
+  }
+}
+
+function Uninstall-ModuleWithVersionCheck([string]$Name,[string]$MajorVersion)
+{
+  $_MinVer = "$MajorVersion.0.0.0"
+  $_MaxVer = "$MajorVersion.9999.9999.9999"
+  # This is a workaround for a bug in PowerShellGet that uses "start with" matching for module name
+  $_MatchedModule = Get-InstalledModule -Name $Name -MinimumVersion $_MinVer -MaximumVersion $_MaxVer -ErrorAction Ignore | where {$_.Name -eq $Name}
+  if ($_MatchedModule -ne $null) {
+    try {
+      Remove-Module -Name $_MatchedModule.Name -Force -ErrorAction Ignore
+      Uninstall-Module -Name $_MatchedModule.Name -RequiredVersion $_MatchedModule.Version -Confirm:$false -ErrorAction Stop
+      if ((Get-Module -Name $_MatchedModule.Name | where {$_.Version -eq $_MatchedModule.Version}) -eq $null)
+      {
+        Write-Output "$Name version $($_MatchedModule.Version) uninstalled..." 
+      }
+    } catch {
+      Write-Warning "Skipping $Name package..."
+      Write-Warning $_
+    }
+  }
 }
 
 <#
@@ -105,35 +185,29 @@ function Update-AzureRM
   Remove Azure Resource Manager cmdlet modules
 
  .Description
-  Removes all installed Azure Resource Manager cmdlet modules.
+  Removes all installed Azure Resource Manager cmdlet modules that have a matching major version.
+
+ .Parameter MajorVersion
+  Specifies the major version.
 #>
 function Uninstall-AzureRM
 {
   param(
   [Parameter(Position=0, Mandatory = $false)]
   [string]
-  $Repository)
+  $MajorVersion = $AzureMajorVersion)
 
-  Validate-AdminRights "AllUsers"
+  Test-AdminRights "AllUsers"
 
   Write-Output "Uninstalling AzureRM modules."
 
-  $AzureRMModules.Keys | ForEach {
+  $AzureRMModules | ForEach {
     $moduleName = $_
-    if ((Get-InstalledModule | where {$_.Name -eq $moduleName}) -ne $null) {
-      $minVer = $AzureRMModules[$_]
-      $maxVer = "$($minVer.Split(".")[0]).9999.0"
-      Uninstall-Module -Name $_ -MinimumVersion $minVer -MaximumVersion $maxVer -ErrorAction Stop
-      Write-Output "$moduleName uninstalled..." 
-    }
+    Uninstall-ModuleWithVersionCheck $_ $MajorVersion
   }
 
-  if ((Get-InstalledModule | where {$_.Name -eq "AzureRM.Profile"}) -ne $null) {
-    $minVer = $AzureRMProfileVersion
-    $maxVer = "$($minVer.Split(".")[0]).9999.0"
-    Uninstall-Module -Name "AzureRM.Profile" -MinimumVersion $minVer -MaximumVersion $maxVer -ErrorAction Stop
-    Write-Output "AzureRM.Profile uninstalled..." 
-  }
+  Uninstall-ModuleWithVersionCheck "Azure.Storage" $MajorVersion
+  Uninstall-ModuleWithVersionCheck "AzureRM.Profile" $MajorVersion
 }
 
 New-Alias -Name Install-AzureRM -Value Update-AzureRM
