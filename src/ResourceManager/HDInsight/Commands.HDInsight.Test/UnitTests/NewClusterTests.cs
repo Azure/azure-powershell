@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.HDInsight.Test
                     ClusterState = "Running",
                     ClusterDefinition = new ClusterDefinition
                     {
-                        ClusterType = "Hadoop"
+                        ClusterType = HDInsightClusterType.Hadoop
                     },
                     QuotaInfo = new QuotaInfo
                     {

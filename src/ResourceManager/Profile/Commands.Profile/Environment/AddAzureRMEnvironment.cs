@@ -82,11 +82,19 @@ namespace Microsoft.Azure.Commands.Profile
         public string SqlDatabaseDnsSuffix { get; set; }
 
         [Parameter(Position = 14, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Dns Suffix of Azure Data Lake Store FileSystem. Example: azuredatalake.net")]
+        public string AzureDataLakeStoreFileSystemEndpointSuffix { get; set; }
+
+        [Parameter(Position = 15, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Dns Suffix of Azure Data Lake Analytics job and catalog services")]
+        public string AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix { get; set; }
+
+        [Parameter(Position = 16, Mandatory = false, ValueFromPipelineByPropertyName = true,
           HelpMessage = "Enable ADFS authentication by disabling the authority validation")]
         [Alias("OnPremise")]
         public SwitchParameter EnableAdfsAuthentication { get; set; }
 
-        [Parameter(Position = 15, Mandatory = false, ValueFromPipelineByPropertyName = true,
+        [Parameter(Position = 17, Mandatory = false, ValueFromPipelineByPropertyName = true,
            HelpMessage = "The default tenant for this environment.")]
         public string AdTenant { get; set; }
 
@@ -118,6 +126,8 @@ namespace Microsoft.Azure.Commands.Profile
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.AzureKeyVaultServiceEndpointResourceId] = AzureKeyVaultServiceEndpointResourceId;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.TrafficManagerDnsSuffix] = TrafficManagerDnsSuffix;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.SqlDatabaseDnsSuffix] = SqlDatabaseDnsSuffix;
+            newEnvironment.Endpoints[AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix] = AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix;
+            newEnvironment.Endpoints[AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix] = AzureDataLakeStoreFileSystemEndpointSuffix;
             newEnvironment.Endpoints[AzureEnvironment.Endpoint.AdTenant] = AdTenant;
             WriteObject((PSAzureEnvironment)profileClient.AddOrSetEnvironment(newEnvironment));
         }

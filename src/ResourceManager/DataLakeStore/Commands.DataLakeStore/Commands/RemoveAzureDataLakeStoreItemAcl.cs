@@ -1,0 +1,75 @@
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using System.Management.Automation;
+using Microsoft.Azure.Commands.DataLakeStore.Models;
+
+namespace Microsoft.Azure.Commands.DataLakeStore
+{
+    [Cmdlet(VerbsCommon.Remove, "AzureDataLakeStoreItemAcl"), OutputType(typeof(bool))]
+    public class RemoveAzureDataLakeStoreItemAcl : DataLakeStoreFileSystemCmdletBase
+    {
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
+        [ValidateNotNullOrEmpty]
+        public string AccountName { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true, HelpMessage = "The path in the specified dataLake account that should have its ACL removed. Can be a file or folder " +
+                                                                                           "In the format 'webhdfs://<accountName>.dataLakeaccountdogfood.net/folder/file.txt', " +
+                                                                                           "where the first '/' after the DNS indicates the root of the file system.")]
+        [ValidateNotNull]
+        public DataLakeStorePathInstance Path { get; set; }
+
+         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false, HelpMessage = "Optionally indicates that the ACL to remove is the default ACL on the item. If not specified, will remove the standard ACL for the item")]
+        public SwitchParameter Default { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false, HelpMessage = "Indicates that the ACL should be removed on the file with the specified ACL without prompting.")]
+        public SwitchParameter Force { get; set; }
+
+        protected override void ProcessRecord()
+        {
+            if (!Force.IsPresent)
+            {
+                ConfirmAction(
+                    Force.IsPresent,
+                    string.Format(Properties.Resources.RemovingDataLakeStoreItemAcl,
+                        this.Default ? Properties.Resources.DefaultAclWord : string.Empty, Path.FullyQualifiedPath),
+                    string.Format(Properties.Resources.RemoveDataLakeStoreItemAcl,
+                        this.Default ? Properties.Resources.DefaultAclWord : string.Empty, Path.FullyQualifiedPath),
+                    Path.FullyQualifiedPath,
+                    () =>
+                    {
+                        if (this.Default)
+                        {
+                            DataLakeStoreFileSystemClient.RemoveDefaultAcl(Path.Path, AccountName);
+                        }
+                        else
+                        {
+                            DataLakeStoreFileSystemClient.RemoveAcl(Path.Path, AccountName);
+                        }
+                    });
+            }
+            else
+            {
+                if (this.Default)
+                {
+                    DataLakeStoreFileSystemClient.RemoveDefaultAcl(Path.Path, AccountName);
+                }
+                else
+                {
+                    DataLakeStoreFileSystemClient.RemoveAcl(Path.Path, AccountName);
+                }
+            }
+        }
+    }
+}
