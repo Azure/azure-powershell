@@ -23,5 +23,7 @@ namespace Microsoft.Azure.Common.Authentication.Models
         public string Subscriptions { get; set; }
 
         public string Tenants { get; set; }
+
+        internal string AccessToken { get; set; }
     }
 }

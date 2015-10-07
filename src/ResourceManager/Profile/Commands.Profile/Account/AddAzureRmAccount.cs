@@ -55,11 +55,15 @@ namespace Microsoft.Azure.Commands.Profile
         [ValidateNotNullOrEmpty]
         public string AccessToken { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Subscription")]
+        [Parameter(ParameterSetName = "AccessToken", Mandatory = true, HelpMessage = "Account Id for access token")]
+        [ValidateNotNullOrEmpty]
+        public string AccountId { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Subscription Id")]
         [ValidateNotNullOrEmpty]
         public string SubscriptionId { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Subscription")]
+        [Parameter(Mandatory = false, HelpMessage = "Subscription name")]
         [ValidateNotNullOrEmpty]
         public string SubscriptionName { get; set; }
 
@@ -97,7 +101,14 @@ namespace Microsoft.Azure.Commands.Profile
 
             if (!string.IsNullOrEmpty(AccessToken))
             {
+                if (string.IsNullOrWhiteSpace(AccountId) )
+                {
+                    throw new PSInvalidOperationException("Access token credentials must contain AccountId parameter.");
+                }
+
                 azureAccount.Type = AzureAccount.AccountType.AccessToken;
+                azureAccount.Id = AccountId;
+                azureAccount.SetProperty(AzureAccount.Property.AccessToken, AccessToken);
             }
             else if (ServicePrincipal.IsPresent)
             {
