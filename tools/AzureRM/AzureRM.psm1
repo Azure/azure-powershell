@@ -1,4 +1,4 @@
-$AzureMajorVersion = "0";
+$AzureMajorVersion = "0"
 
 $AzureRMModules = @(
   "AzureRM.ApiManagement",
@@ -42,12 +42,13 @@ function Install-ModuleWithVersionCheck([string]$Name,[string]$MajorVersion,[str
 {
   $_MinVer = "$MajorVersion.0.0.0"
   $_MaxVer = "$MajorVersion.9999.9999.9999"
+  $script:InstallCounter ++
   try {
     $_ExistingModule = Get-Module -ListAvailable -Name $Name
     $_ModuleAction = "installed"
     if ($_ExistingModule -ne $null)
     {
-      Update-Module -Name $Name -MaximumVersion $_MaxVer -ErrorAction Stop
+      Install-Module -Name $Name -Repository $Repository -Scope $Scope -MinimumVersion $_MinVer -MaximumVersion $_MaxVer -Force -ErrorAction Stop
       $_ModuleAction = "updated"
     }
     else 
@@ -55,7 +56,7 @@ function Install-ModuleWithVersionCheck([string]$Name,[string]$MajorVersion,[str
       Install-Module -Name $Name -Repository $Repository -Scope $Scope -MinimumVersion $_MinVer -MaximumVersion $_MaxVer -ErrorAction Stop
     }
     $v = (Get-InstalledModule -Name $Name -ErrorAction Ignore)[0].Version.ToString()
-    Write-Output "$Name $v $_ModuleAction..." 
+    Write-Output "$Name $v $_ModuleAction [$script:InstallCounter/$($AzureRMModules.Count + 1)]..." 
   } catch {
     Write-Warning "Skipping $Name package..."
     Write-Warning $_
@@ -96,29 +97,22 @@ function Update-AzureRM
 
   Write-Output "Installing AzureRM modules."
 
-  $_InstallationPolicy = (Get-PSRepository -Name PSGallery).InstallationPolicy
+  $_InstallationPolicy = (Get-PSRepository -Name $Repository).InstallationPolicy
+  $script:InstallCounter = 0
 
   try 
   {
-    Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
+    Set-PSRepository -Name $Repository -InstallationPolicy Trusted
 
     Install-ModuleWithVersionCheck "AzureRM.Profile" $MajorVersion $Repository $Scope
 
-    # Stop and remove any previous jobs
-    $AzureRMModules | ForEach {Get-Job -Name "*$_"} | Stop-Job | Remove-Job
-
     # Start new job
-    $result = $AzureRMModules | ForEach {
-      Start-Job -Name $_ -ScriptBlock {
-        Install-ModuleWithVersionCheck $args[0] $args[1] $args[2] $args[3]
-      } -ArgumentList $_, $MajorVersion, $Repository, $Scope }
-    
-    # Get results from the jobs
-    $AzureRMModules | ForEach {Get-Job -Name $_ | Wait-Job | Receive-Job }
+    $AzureRMModules | ForEach {
+      Install-ModuleWithVersionCheck $_ $MajorVersion $Repository $Scope
+    }    
   } finally {
     # Clean up
-    Set-PSRepository -Name PSGallery -InstallationPolicy $_InstallationPolicy
-    $AzureRMModules | ForEach {Get-Job -Name $_ | Remove-Job}
+    Set-PSRepository -Name $Repository -InstallationPolicy $_InstallationPolicy
   }
 }
 
@@ -167,11 +161,15 @@ function Uninstall-ModuleWithVersionCheck([string]$Name,[string]$MajorVersion)
   $_MatchedModule = Get-InstalledModule -Name $Name -MinimumVersion $_MinVer -MaximumVersion $_MaxVer -ErrorAction Ignore | where {$_.Name -eq $Name}
   if ($_MatchedModule -ne $null) {
     try {
-      Remove-Module -Name $_MatchedModule.Name -Force -ErrorAction Ignore
-      Uninstall-Module -Name $_MatchedModule.Name -RequiredVersion $_MatchedModule.Version -Confirm:$false -ErrorAction Stop
-      if ((Get-Module -Name $_MatchedModule.Name | where {$_.Version -eq $_MatchedModule.Version}) -eq $null)
+      Remove-Module -Name $Name -Force -ErrorAction Ignore
+      Uninstall-Module -Name $Name -MinimumVersion $_MinVer -MaximumVersion $_MaxVer -Confirm:$false -ErrorAction Stop
+      if ((Get-Module -Name $Name -ListAvailable) -eq $null)
       {
-        Write-Output "$Name version $($_MatchedModule.Version) uninstalled..." 
+        Write-Output "$Name uninstalled..." 
+      } 
+      else 
+      {
+        Write-Output "$Name partially uninstalled..." 
       }
     } catch {
       Write-Warning "Skipping $Name package..."

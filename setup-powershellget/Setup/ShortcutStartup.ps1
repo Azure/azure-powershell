@@ -57,10 +57,19 @@ This may take some time...
 			$DefaultPSRepository = "PSGallery"
 		}
 
-		Install-Module AzureRM -Repository $DefaultPSRepository
-		Write-Output "AzureRM $((Get-InstalledModule -Name AzureRM)[0].Version) installed..."
+		$_InstallationPolicy = (Get-PSRepository -Name $DefaultPSRepository).InstallationPolicy
+		try 
+		{
+			Set-PSRepository -Name $DefaultPSRepository -InstallationPolicy Trusted
+		
+			Install-Module AzureRM -Repository $DefaultPSRepository
+			Write-Output "AzureRM $((Get-InstalledModule -Name AzureRM)[0].Version) installed..."
 
-		Update-AzureRM -Repository $DefaultPSRepository
+			Update-AzureRM -Repository $DefaultPSRepository
+		} finally {
+			# Clean up
+			Set-PSRepository -Name $DefaultPSRepository -InstallationPolicy $_InstallationPolicy
+		}
 	}
 	elseif ($Uninstall.IsPresent) 
 	{
