@@ -195,3 +195,4 @@ FakesAssemblies/
 
 .vs/
 /tools/*.dll
+*.GhostDoc.xml
