@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                getFirstPage: () => this.GetResourceGroups(),
                getNextPage: nextLink => this.GetNextLink<JObject>(nextLink),
                cancellationToken: this.CancellationToken,
-               action: resourceGroups => this.WriteObject(sendToPipeline: resourceGroups.CoalesceEnumerable().SelectArray(resourceGroup => resourceGroup.ToPsObject(ResourceObjectFormat.New)), enumerateCollection: true));
+               action: resourceGroups => this.WriteObject(sendToPipeline: resourceGroups.CoalesceEnumerable().SelectArray(resourceGroup => resourceGroup.ToPsObject()), enumerateCollection: true));
         }
 
         /// <summary>
