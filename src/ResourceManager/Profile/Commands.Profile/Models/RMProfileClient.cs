@@ -25,6 +25,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Management.Automation;
 using System.Security;
+using Microsoft.Azure.Commands.Profile.Models;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
@@ -44,11 +45,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
         }
 
-        public AzureRMProfile Login(AzureAccount account, AzureEnvironment environment, string tenantId, string subscriptionId, string subscriptionName, SecureString password)
+        public AzureRMProfile Login(AzureAccount account, AzureEnvironment environment, string tenantId, string subscriptionId, 
+            string subscriptionName, SecureString password)
         {
             AzureSubscription newSubscription = null;
             AzureTenant newTenant = null;
-            ShowDialog promptBehavior = password == null ? ShowDialog.Always : ShowDialog.Never;
+            ShowDialog promptBehavior = (password == null && account.Type != AzureAccount.AccountType.AccessToken) 
+                ? ShowDialog.Always : ShowDialog.Never;
 
             // (tenant and subscription are present) OR
             // (tenant is present and subscription is not provided)
@@ -280,6 +283,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             SecureString password,
             ShowDialog promptBehavior)
         {
+            if (account.Type == AzureAccount.AccountType.AccessToken)
+            {
+                tenantId = tenantId ?? "Common";
+                return new SimpleAccessToken(account, tenantId);
+            }
+
             return AzureSession.AuthenticationFactory.Authenticate(
                 account,
                 environment,
