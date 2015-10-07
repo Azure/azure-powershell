@@ -12,21 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources
-{
-    /// <summary>
-    /// The resource object format
-    /// </summary>
-    public enum ResourceObjectFormat
-    {
-        /// <summary>
-        /// The legacy format.
-        /// </summary>
-        Legacy = 0,
+using Microsoft.Azure.Commands.Resources.Test.ScenarioTests;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Xunit;
 
-        /// <summary>
-        /// The new format.
-        /// </summary>
-        New = 1
+namespace Microsoft.Azure.Commands.Profile.Test
+{
+    public class ProfileModuleTests
+    {
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void WarningOnIncompatibleVersions()
+        {
+            ProfileController.NewInstance.RunPsTest("db1ab6f0-4769-4b27-930e-01e2ef9c123c", "Test-LoadProfileModule");
+        }
     }
 }

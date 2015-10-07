@@ -37,10 +37,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         /// </summary>
         static AzureRMCmdlet()
         {
-            if (AzureSession.DataStore == null)
+            if (!TestMockSupport.RunningMocked)
             {
                 AzureSession.DataStore = new DiskDataStore();
-            }
+           }
         }
 
         public AzureRMCmdlet()
