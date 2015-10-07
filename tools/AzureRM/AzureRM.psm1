@@ -47,7 +47,7 @@ function Install-ModuleWithVersionCheck([string]$Name,[string]$MajorVersion,[str
     $_ModuleAction = "installed"
     if ($_ExistingModule -ne $null)
     {
-      Update-Module -Name $Name -MaximumVersion $_MaxVer -ErrorAction Stop
+      Install-Module -Name $Name -Repository $Repository -Scope $Scope -MinimumVersion $_MinVer -MaximumVersion $_MaxVer -Force -ErrorAction Stop
       $_ModuleAction = "updated"
     }
     else 
@@ -167,11 +167,15 @@ function Uninstall-ModuleWithVersionCheck([string]$Name,[string]$MajorVersion)
   $_MatchedModule = Get-InstalledModule -Name $Name -MinimumVersion $_MinVer -MaximumVersion $_MaxVer -ErrorAction Ignore | where {$_.Name -eq $Name}
   if ($_MatchedModule -ne $null) {
     try {
-      Remove-Module -Name $_MatchedModule.Name -Force -ErrorAction Ignore
-      Uninstall-Module -Name $_MatchedModule.Name -RequiredVersion $_MatchedModule.Version -Confirm:$false -ErrorAction Stop
-      if ((Get-Module -Name $_MatchedModule.Name | where {$_.Version -eq $_MatchedModule.Version}) -eq $null)
+      Remove-Module -Name $Name -Force -ErrorAction Ignore
+      Uninstall-Module -Name $Name -MinimumVersion $_MinVer -MaximumVersion $_MaxVer -Confirm:$false -ErrorAction Stop
+      if ((Get-Module -Name $Name -ListAvailable) -eq $null)
       {
-        Write-Output "$Name version $($_MatchedModule.Version) uninstalled..." 
+        Write-Output "$Name uninstalled..." 
+      } 
+      else 
+      {
+        Write-Output "$Name partially uninstalled..." 
       }
     } catch {
       Write-Warning "Skipping $Name package..."
