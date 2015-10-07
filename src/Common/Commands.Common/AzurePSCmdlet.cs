@@ -34,7 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
     /// </summary>
     public abstract class AzurePSCmdlet : PSCmdlet, IDisposable
     {
-        private readonly ConcurrentQueue<string> _debugMessages;
+        protected readonly ConcurrentQueue<string> _debugMessages;
 
         private RecordingTracingInterceptor _httpTracingInterceptor;
 

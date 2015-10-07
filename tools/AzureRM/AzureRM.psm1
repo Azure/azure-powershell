@@ -146,10 +146,10 @@ function Import-AzureRM
 
   $AzureRMModules | ForEach {
     $moduleName = $_
-    $matchedModule = Get-InstalledModule -Name $moduleName -MinimumVersion $_MinVer -MaximumVersion $_MaxVer -ErrorAction Ignore | where {$_.Name -eq $moduleName}
-    if ($matchedModule -ne $null) {
+    $_MatchedModule = Get-InstalledModule -Name $moduleName -MinimumVersion $_MinVer -MaximumVersion $_MaxVer -ErrorAction Ignore | where {$_.Name -eq $moduleName}
+    if ($_MatchedModule -ne $null) {
       try {
-        Import-Module -Name $matchedModule.Name -RequiredVersion $matchedModule.Version -ErrorAction Stop
+        Import-Module -Name $_MatchedModule.Name -RequiredVersion $_MatchedModule.Version -ErrorAction Stop
         Write-Output "$moduleName imported..." 
       } catch {
         Write-Warning "Skipping $Name module..."
@@ -164,12 +164,15 @@ function Uninstall-ModuleWithVersionCheck([string]$Name,[string]$MajorVersion)
   $_MinVer = "$MajorVersion.0.0.0"
   $_MaxVer = "$MajorVersion.9999.9999.9999"
   # This is a workaround for a bug in PowerShellGet that uses "start with" matching for module name
-  $matchedModule = Get-InstalledModule -Name $Name -MinimumVersion $_MinVer -MaximumVersion $_MaxVer -ErrorAction Ignore | where {$_.Name -eq $Name}
-  if ($matchedModule -ne $null) {
+  $_MatchedModule = Get-InstalledModule -Name $Name -MinimumVersion $_MinVer -MaximumVersion $_MaxVer -ErrorAction Ignore | where {$_.Name -eq $Name}
+  if ($_MatchedModule -ne $null) {
     try {
-      Remove-Module -Name $matchedModule.Name -Force -ErrorAction Ignore
-      Uninstall-Module -Name $matchedModule.Name -RequiredVersion $matchedModule.Version -Confirm:$false -ErrorAction Stop
-      Write-Output "$Name uninstalled..." 
+      Remove-Module -Name $_MatchedModule.Name -Force -ErrorAction Ignore
+      Uninstall-Module -Name $_MatchedModule.Name -RequiredVersion $_MatchedModule.Version -Confirm:$false -ErrorAction Stop
+      if ((Get-Module -Name $_MatchedModule.Name | where {$_.Version -eq $_MatchedModule.Version}) -eq $null)
+      {
+        Write-Output "$Name version $($_MatchedModule.Version) uninstalled..." 
+      }
     } catch {
       Write-Warning "Skipping $Name package..."
       Write-Warning $_
@@ -203,6 +206,7 @@ function Uninstall-AzureRM
     Uninstall-ModuleWithVersionCheck $_ $MajorVersion
   }
 
+  Uninstall-ModuleWithVersionCheck "Azure.Storage" $MajorVersion
   Uninstall-ModuleWithVersionCheck "AzureRM.Profile" $MajorVersion
 }
 
