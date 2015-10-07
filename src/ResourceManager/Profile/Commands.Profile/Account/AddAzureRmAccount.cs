@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Profile
             {
                 if (string.IsNullOrWhiteSpace(AccountId) )
                 {
-                    throw new PSInvalidOperationException("Access token credentials must contain AccountId parameter.");
+                    throw new PSInvalidOperationException(Resources.AccountIdRequired);
                 }
 
                 azureAccount.Type = AzureAccount.AccountType.AccessToken;
@@ -138,7 +138,8 @@ namespace Microsoft.Azure.Commands.Profile
 
             var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
             
-            WriteObject((PSAzureProfile)profileClient.Login(azureAccount, Environment, Tenant, SubscriptionId, SubscriptionName, password));
+            WriteObject((PSAzureProfile)profileClient.Login(azureAccount, Environment, Tenant, SubscriptionId, 
+                SubscriptionName, password));
         }
 
         /// <summary>

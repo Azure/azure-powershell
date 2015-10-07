@@ -45,11 +45,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
         }
 
-        public AzureRMProfile Login(AzureAccount account, AzureEnvironment environment, string tenantId, string subscriptionId, string subscriptionName, SecureString password)
+        public AzureRMProfile Login(AzureAccount account, AzureEnvironment environment, string tenantId, string subscriptionId, 
+            string subscriptionName, SecureString password)
         {
             AzureSubscription newSubscription = null;
             AzureTenant newTenant = null;
-            ShowDialog promptBehavior = (password == null && account.Type != AzureAccount.AccountType.AccessToken) ? ShowDialog.Always : ShowDialog.Never;
+            ShowDialog promptBehavior = (password == null && account.Type != AzureAccount.AccountType.AccessToken) 
+                ? ShowDialog.Always : ShowDialog.Never;
 
             // (tenant and subscription are present) OR
             // (tenant is present and subscription is not provided)
