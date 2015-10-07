@@ -30,9 +30,10 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <summary>
         /// Create a new access token from the given account and tenant id
         /// </summary>
-        /// <param name="account">The account, containign user id, access token information</param>
+        /// <param name="account">The account, containing user id, access token information</param>
         /// <param name="tenantId">The tenant id for the given access token</param>
-        public SimpleAccessToken(AzureAccount account, string tenantId)
+        /// <param name="tokenType">The token type for the given token.</param>
+        public SimpleAccessToken(AzureAccount account, string tenantId, string tokenType = _defaultTokenType)
         {
             if (account == null)
             {
@@ -48,28 +49,42 @@ namespace Microsoft.Azure.Commands.Profile.Models
                 throw new ArgumentException(Resources.TypeNotAccessToken);
             }
             this.UserId = account.Id;
-            this._tokenType = _defaultTokenType;
+            this._tokenType = tokenType;
             this.AccessToken = account.GetProperty(AzureAccount.Property.AccessToken);
             this.TenantId = tenantId;
         }
+
+
+        /// <summary>
+        /// The access token to be applied to a request message
+        /// </summary>
         public string AccessToken { get; private set; }
 
+        /// <summary>
+        /// Authorize a request using an authorization setter function.
+        /// </summary>
+        /// <param name="authTokenSetter">The authorization token setter function.</param>
         public void AuthorizeRequest(System.Action<string, string> authTokenSetter)
         {
             authTokenSetter(_tokenType, AccessToken);
         }
 
+        /// <summary>
+        /// The login type for this token
+        /// </summary>
         public LoginType LoginType
         {
             get { return LoginType.OrgId; }
         }
 
-        public string TenantId
-        {
-            get; 
-            private set;
-        }
+        /// <summary>
+        /// The tenant Id for this token.
+        /// </summary>
+        public string TenantId { get; private set; }
 
+        /// <summary>
+        /// The User Id associated with this token.
+        /// </summary>
         public string UserId { get; private set; }
     }
 }
