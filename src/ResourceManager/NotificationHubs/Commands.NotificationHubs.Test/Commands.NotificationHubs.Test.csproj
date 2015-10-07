@@ -160,6 +160,10 @@
     <None Include="ScenarioTests\NotificationHubServiceTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.NotificatioHubs.Test.ScenarioTests.NotificationHubServiceTests\TestCRUDNamespace.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.NotificatioHubs.Test.ScenarioTests.NotificationHubServiceTests\TestCRUDNamespaceAuthorizationRules.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.NotificatioHubs.Test.ScenarioTests.NotificationHubServiceTests\TestCRUDNHAuthorizationRules.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.NotificatioHubs.Test.ScenarioTests.NotificationHubServiceTests\TestCRUDNotificationHub.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\NewNotificationHub.json">
