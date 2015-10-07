@@ -41,12 +41,12 @@ namespace Microsoft.Azure.Commands.Network
             }
             
             // Map to the sdk object
-            var vnetModel = Mapper.Map<MNM.ExpressRouteCircuit>(this.ExpressRouteCircuit);
-            vnetModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.ExpressRouteCircuitType;
-            vnetModel.Tags = TagsConversionHelper.CreateTagDictionary(this.ExpressRouteCircuit.Tag, validate: true);
+            var erModel = Mapper.Map<MNM.ExpressRouteCircuit>(this.ExpressRouteCircuit);
+            erModel.Type = Microsoft.Azure.Commands.Network.Properties.Resources.ExpressRouteCircuitType;
+            erModel.Tags = TagsConversionHelper.CreateTagDictionary(this.ExpressRouteCircuit.Tag, validate: true);
 
             // Execute the Create ExpressRouteCircuit call
-            this.ExpressRouteCircuitClient.CreateOrUpdate(this.ExpressRouteCircuit.ResourceGroupName, this.ExpressRouteCircuit.Name, vnetModel);
+            this.ExpressRouteCircuitClient.CreateOrUpdate(this.ExpressRouteCircuit.ResourceGroupName, this.ExpressRouteCircuit.Name, erModel);
 
             var getExpressRouteCircuit = this.GetExpressRouteCircuit(this.ExpressRouteCircuit.ResourceGroupName, this.ExpressRouteCircuit.Name);
             WriteObject(getExpressRouteCircuit);
