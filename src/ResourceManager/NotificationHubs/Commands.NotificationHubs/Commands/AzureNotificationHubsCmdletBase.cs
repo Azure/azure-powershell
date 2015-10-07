@@ -22,6 +22,10 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands
 
     public abstract class AzureNotificationHubsCmdletBase : AzurePSCmdlet
     {
+        public const string InputFileParameterSetName = "InputFileParameterSet";
+        public const string SASRuleParameterSetName = "SASRuleParameterSet";
+        public const string NotificationHubParameterSetName = "NotificationHubParameterSet";
+
         protected static TimeSpan LongRunningOperationDefaultTimeout = TimeSpan.FromMinutes(1);
         private NotificationHubsManagementClient _client;
 

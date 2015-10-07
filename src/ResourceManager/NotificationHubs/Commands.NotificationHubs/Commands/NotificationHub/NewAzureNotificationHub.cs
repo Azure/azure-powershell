@@ -41,12 +41,14 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
         public string NamespaceName { get; set; }
 
         [Parameter(Mandatory = true,
+            ParameterSetName = InputFileParameterSetName,
             Position = 2,
             HelpMessage = "File name containing a single NotificationHub definition.")]
         [ValidateNotNullOrEmpty]
         public string InputFile { get; set; }
 
         [Parameter(Mandatory = true,
+            ParameterSetName = NotificationHubParameterSetName,
             Position = 2,
             HelpMessage = "NotificationHub definition.")]
         [ValidateNotNullOrEmpty]

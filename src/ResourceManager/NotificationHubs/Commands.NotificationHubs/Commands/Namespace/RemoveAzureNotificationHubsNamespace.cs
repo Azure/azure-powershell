@@ -43,8 +43,9 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
             if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(NamespaceName))
             {
                 // delete a namespace 
-                var nsAttribute = Client.BeginDeleteNamespace(ResourceGroupName, NamespaceName);
-                WriteObject(nsAttribute);
+                ExecuteLongRunningCmdletWrap(
+                () => Client.BeginDeleteNamespace(ResourceGroupName, NamespaceName),
+                                passThru: true);
             }
         }
     }

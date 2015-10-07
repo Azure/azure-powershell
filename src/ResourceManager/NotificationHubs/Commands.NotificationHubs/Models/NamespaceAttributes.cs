@@ -29,17 +29,20 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Models
         public NamespaceAttributes(string resourceGroup, NamespaceResource nsResource)
             :this(nsResource)
         {
-            ResourceGroupName = resourceGroup;
-
-            if(!string.IsNullOrWhiteSpace(nsResource.Id))
+            if (nsResource != null)
             {
-                var match = ResourceGroupRegex.Match(Id);
-                if (match.Success)
+                ResourceGroupName = resourceGroup;
+
+                if (!string.IsNullOrWhiteSpace(nsResource.Id))
                 {
-                    var resourceGroupNameGroup = match.Groups["resourceGroupName"];
-                    if (resourceGroupNameGroup != null && resourceGroupNameGroup.Success)
+                    var match = ResourceGroupRegex.Match(Id);
+                    if (match.Success)
                     {
-                        ResourceGroupName = resourceGroupNameGroup.Value;
+                        var resourceGroupNameGroup = match.Groups["resourceGroupName"];
+                        if (resourceGroupNameGroup != null && resourceGroupNameGroup.Success)
+                        {
+                            ResourceGroupName = resourceGroupNameGroup.Value;
+                        }
                     }
                 }
             }
@@ -47,21 +50,24 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Models
 
         public NamespaceAttributes(NamespaceResource nsResource)
         {
-            Id = nsResource.Id;
-            Name = nsResource.Name;
-            Type = nsResource.Type;
-            Location = nsResource.Location;
-            Tags = new Dictionary<string, string>(nsResource.Tags);
-            CreatedAt = nsResource.Properties.CreatedAt;
-            Critical = nsResource.Properties.Critical;
-            Enabled = nsResource.Properties.Enabled;
-            NamespaceType = nsResource.Properties.NamespaceType;
-            ProvisioningState = nsResource.Properties.ProvisioningState;
-            Region = nsResource.Properties.Region;
-            ScaleUnit = nsResource.Properties.ScaleUnit;
-            ServiceBusEndpoint = nsResource.Properties.ServiceBusEndpoint;
-            Status = nsResource.Properties.Status;
-            SubscriptionId = nsResource.Properties.SubscriptionId;
+            if (nsResource != null)
+            {
+                Id = nsResource.Id;
+                Name = nsResource.Name;
+                Type = nsResource.Type;
+                Location = nsResource.Location;
+                Tags = new Dictionary<string, string>(nsResource.Tags);
+                CreatedAt = nsResource.Properties.CreatedAt;
+                Critical = nsResource.Properties.Critical;
+                Enabled = nsResource.Properties.Enabled;
+                NamespaceType = nsResource.Properties.NamespaceType;
+                ProvisioningState = nsResource.Properties.ProvisioningState;
+                Region = nsResource.Properties.Region;
+                ScaleUnit = nsResource.Properties.ScaleUnit;
+                ServiceBusEndpoint = nsResource.Properties.ServiceBusEndpoint;
+                Status = nsResource.Properties.Status;
+                SubscriptionId = nsResource.Properties.SubscriptionId;
+            }
         }
 
         /// <summary>

@@ -43,15 +43,17 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
 
         [Parameter(Mandatory = true,
             Position = 2,
-            HelpMessage = "Namespace AuthorizationRule Object.")]
-        [ValidateNotNullOrEmpty]
-        public SharedAccessAuthorizationRuleAttributes SASRule { get; set; }
-
-        [Parameter(Mandatory = true,
-            Position = 2,
+            ParameterSetName = InputFileParameterSetName,
             HelpMessage = "File name containing a single AuthorizationRule definition.")]
         [ValidateNotNullOrEmpty]
         public string InputFile { get; set; }
+
+        [Parameter(Mandatory = true,
+            Position = 2,
+            ParameterSetName = SASRuleParameterSetName,
+            HelpMessage = "Namespace AuthorizationRule Object.")]
+        [ValidateNotNullOrEmpty]
+        public SharedAccessAuthorizationRuleAttributes SASRule { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -82,8 +84,8 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
                 }
 
                 // Create a new namespace authorizationRule
-                var authRule = Client.CreateOrUpdateNamespaceAuthorizationRules(ResourceGroupName, NamespaceName, sasRule.Name, sasRule.Rights, 
-                                                                sasRule.PrimaryKey, sasRule.SecondaryKey);
+                var authRule = Client.CreateOrUpdateNamespaceAuthorizationRules(ResourceGroupName, NamespaceName, sasRule.Name, sasRule.Rights,
+                    sasRule.PrimaryKey, sasRule.SecondaryKey == null ? null : sasRule.SecondaryKey);
                 WriteObject(authRule);
             }
         }

@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
                 {
                     // Get all NotificationHub
                     var notificationHubsList = Client.ListNotificationHubs(ResourceGroupName, NamespaceName);
-                    WriteObject(notificationHubsList);
+                    WriteObject(notificationHubsList.ToList(), true);
                 }
             }
         }

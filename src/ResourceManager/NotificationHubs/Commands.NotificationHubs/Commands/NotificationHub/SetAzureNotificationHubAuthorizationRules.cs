@@ -49,16 +49,18 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
         public string NotificationHubName { get; set; }
 
         [Parameter(Mandatory = true,
-             Position = 3,
-             HelpMessage = "Namespace AuthorizationRule Object.")]
-        [ValidateNotNullOrEmpty]
-        public SharedAccessAuthorizationRuleAttributes SASRule { get; set; }
-
-        [Parameter(Mandatory = true,
             Position = 3,
+            ParameterSetName = InputFileParameterSetName,
             HelpMessage = "File name containing a single AuthorizationRule definition.")]
         [ValidateNotNullOrEmpty]
         public string InputFile { get; set; }
+
+        [Parameter(Mandatory = true,
+            Position = 3,
+            ParameterSetName = SASRuleParameterSetName,
+            HelpMessage = "NotificationHub AuthorizationRule Object.")]
+        [ValidateNotNullOrEmpty]
+        public SharedAccessAuthorizationRuleAttributes SASRule { get; set; }
 
         public override void ExecuteCmdlet()
         {

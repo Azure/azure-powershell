@@ -22,19 +22,22 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Models
     {
         public NotificationHubAttributes(NotificationHubResource nhResource)
         {
-            Id = nhResource.Id;
-            Name = nhResource.Name;
-            Type = nhResource.Type;
-            Location = nhResource.Location;
-            Tags = new Dictionary<string, string>(nhResource.Tags);
-            AdmCredential = nhResource.Properties.AdmCredential;
-            ApnsCredential = nhResource.Properties.ApnsCredential;
-            AuthorizationRules = new List<SharedAccessAuthorizationRuleProperties>(nhResource.Properties.AuthorizationRules);
-            BaiduCredential = nhResource.Properties.BaiduCredential;
-            GcmCredential = nhResource.Properties.GcmCredential;
-            MpnsCredential = nhResource.Properties.MpnsCredential;
-            RegistrationTtl = nhResource.Properties.RegistrationTtl;
-            WnsCredential = nhResource.Properties.WnsCredential;
+            if (nhResource != null)
+            {
+                Id = nhResource.Id;
+                Name = nhResource.Name;
+                Type = nhResource.Type;
+                Location = nhResource.Location;
+                Tags = new Dictionary<string, string>(nhResource.Tags);
+                AdmCredential = nhResource.Properties.AdmCredential;
+                ApnsCredential = nhResource.Properties.ApnsCredential;
+                AuthorizationRules = new List<SharedAccessAuthorizationRuleProperties>(nhResource.Properties.AuthorizationRules);
+                BaiduCredential = nhResource.Properties.BaiduCredential;
+                GcmCredential = nhResource.Properties.GcmCredential;
+                MpnsCredential = nhResource.Properties.MpnsCredential;
+                RegistrationTtl = nhResource.Properties.RegistrationTtl;
+                WnsCredential = nhResource.Properties.WnsCredential;
+            }
         }
 
         /// <summary>

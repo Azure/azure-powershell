@@ -47,9 +47,9 @@ namespace Microsoft.Azure.Commands.NotificatioHubs.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCRUDNotificationHubAuthorizationRules()
+        public void TestCRUDNHAuthorizationRules()
         {
-            RunPowerShellTest("Test-CRUDNotificationHubAuthorizationRules");
+            RunPowerShellTest("Test-CRUDNHAuthorizationRules");
         }
     }
 }

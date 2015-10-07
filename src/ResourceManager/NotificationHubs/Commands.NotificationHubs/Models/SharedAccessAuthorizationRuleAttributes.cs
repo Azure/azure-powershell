@@ -27,20 +27,23 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Models
 
         public SharedAccessAuthorizationRuleAttributes(SharedAccessAuthorizationRuleResource authRuleResource)
         {
-            Id = authRuleResource.Id;
-            Name = authRuleResource.Name;
-            Type = authRuleResource.Type;
-            Location = authRuleResource.Location;
-            Tags = new Dictionary<string, string>(authRuleResource.Tags);
-            PrimaryKey = authRuleResource.Properties.PrimaryKey;
-            SecondaryKey = authRuleResource.Properties.SecondaryKey;
-            ClaimType = authRuleResource.Properties.ClaimType;
-            ClaimValue = authRuleResource.Properties.ClaimValue;
-            CreatedTime = authRuleResource.Properties.CreatedTime;
-            KeyName = authRuleResource.Properties.KeyName;
-            ModifiedTime = authRuleResource.Properties.ModifiedTime;
-            Revision = authRuleResource.Properties.Revision;
-            Rights = authRuleResource.Properties.Rights.ToList();
+            if (authRuleResource != null)
+            {
+                Id = authRuleResource.Id;
+                Name = authRuleResource.Name;
+                Type = authRuleResource.Type;
+                Location = authRuleResource.Location;
+                Tags = new Dictionary<string, string>(authRuleResource.Tags);
+                PrimaryKey = authRuleResource.Properties.PrimaryKey;
+                SecondaryKey = authRuleResource.Properties.SecondaryKey;
+                ClaimType = authRuleResource.Properties.ClaimType;
+                ClaimValue = authRuleResource.Properties.ClaimValue;
+                CreatedTime = authRuleResource.Properties.CreatedTime;
+                KeyName = authRuleResource.Properties.KeyName;
+                ModifiedTime = authRuleResource.Properties.ModifiedTime;
+                Revision = authRuleResource.Properties.Revision;
+                Rights = authRuleResource.Properties.Rights.ToList();
+            }
         }
 
         /// <summary>

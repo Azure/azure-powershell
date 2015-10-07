@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
                 {
                     // Get all namespace AuthorizationRules
                     var authRuleList = Client.ListNamespaceAuthorizationRules(ResourceGroupName, NamespaceName);
-                    WriteObject(authRuleList);
+                    WriteObject(authRuleList.ToList(), true);
                 }
             }
         }

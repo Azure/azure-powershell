@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
                 {
                     // Get all notificationHub AuthorizationRules
                     var authRuleList = Client.ListNotificationHubAuthorizationRules(ResourceGroupName, NamespaceName,  NotificationHubName);
-                    WriteObject(authRuleList);
+                    WriteObject(authRuleList.ToList(), true);
                 }
             }
         }

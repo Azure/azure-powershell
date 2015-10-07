@@ -50,12 +50,6 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Models
                     : null
             };
 
-            var response = longRunningResponse as NamespaceLongRunningResponse;
-            if (response != null && response.Value != null)
-            {
-                result.NamespaceAttributes = new NamespaceAttributes(response.Value);
-            }
-
             return result;
         }
 
