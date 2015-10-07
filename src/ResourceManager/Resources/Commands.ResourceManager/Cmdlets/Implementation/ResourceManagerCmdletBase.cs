@@ -276,13 +276,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Writes the object
         /// </summary>
         /// <param name="resultString">The result as a string</param>
-        /// <param name="objectFormat">The <see cref="ResourceObjectFormat"/></param>
-        protected void TryConvertAndWriteObject(string resultString, ResourceObjectFormat objectFormat)
+        protected void TryConvertAndWriteObject(string resultString)
         {
             JToken resultJToken;
             if (resultString.TryConvertTo<JToken>(out resultJToken))
             {
-                this.WriteObject(resultJToken, objectFormat);
+                this.WriteObject(resultJToken);
             }
             else
             {
@@ -294,13 +293,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Writes the object
         /// </summary>
         /// <param name="resultString">The result as a string</param>
-        /// <param name="objectFormat">The <see cref="ResourceObjectFormat"/></param>
-        protected void TryConvertToResourceAndWriteObject(string resultString, ResourceObjectFormat objectFormat)
+        protected void TryConvertToResourceAndWriteObject(string resultString)
         {
             Resource<JToken> resultResource;
             if (resultString.TryConvertTo<Resource<JToken>>(out resultResource))
             {
-                this.WriteObject(resultResource.ToPsObject(objectFormat));
+                this.WriteObject(resultResource.ToPsObject());
             }
             else
             {
@@ -312,10 +310,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Writes a <see cref="JToken"/> object as a <see cref="PSObject"/>.
         /// </summary>
         /// <param name="result">The result of the action.</param>
-        /// <param name="objectFormat">The <see cref="ResourceObjectFormat"/></param>
-        protected void WriteObject(JToken result, ResourceObjectFormat objectFormat)
+        protected void WriteObject(JToken result)
         {
-            this.WriteObject(sendToPipeline: result.ToPsObject(objectFormat), enumerateCollection: true);
+            this.WriteObject(sendToPipeline: result.ToPsObject(), enumerateCollection: true);
         }
 
         /// <summary>
