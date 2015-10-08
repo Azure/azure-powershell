@@ -29,7 +29,9 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             ClusterVersion = cluster.Properties.ClusterVersion;
             OperatingSystemType = cluster.Properties.OperatingSystemType;
             ClusterState = cluster.Properties.ClusterState;
-            ClusterType = cluster.Properties.ClusterDefinition.ClusterType;
+            HDInsightClusterType type;
+            Enum.TryParse(cluster.Properties.ClusterDefinition.ClusterType, out type);
+            ClusterType = type;
             CoresUsed = cluster.Properties.QuotaInfo.CoresUsed;
             var httpEndpoint =
                 cluster.Properties.ConnectivityEndpoints.FirstOrDefault(c => c.Name.Equals("HTTPS", StringComparison.OrdinalIgnoreCase));
