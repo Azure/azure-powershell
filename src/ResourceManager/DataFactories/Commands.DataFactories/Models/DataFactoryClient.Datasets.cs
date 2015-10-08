@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.DataFactories
 {
     public partial class DataFactoryClient
     {
-        public virtual Table CreateOrUpdateDataset(string resourceGroupName, string dataFactoryName, string datasetName, string rawJsonContent)
+        public virtual Dataset CreateOrUpdateDataset(string resourceGroupName, string dataFactoryName, string datasetName, string rawJsonContent)
         {
             if (string.IsNullOrWhiteSpace(rawJsonContent))
             {
@@ -35,21 +35,21 @@ namespace Microsoft.Azure.Commands.DataFactories
             }
 
             // If create or update failed, the current behavior is to throw
-            var response = DataPipelineManagementClient.Tables.CreateOrUpdateWithRawJsonContent(
+            var response = DataPipelineManagementClient.Datasets.CreateOrUpdateWithRawJsonContent(
                 resourceGroupName,
                 dataFactoryName,
                 datasetName,
-                new TableCreateOrUpdateWithRawJsonContentParameters() { Content = rawJsonContent });
+                new DatasetCreateOrUpdateWithRawJsonContentParameters() { Content = rawJsonContent });
 
-            return response.Table;
+            return response.Dataset;
         }
 
         public virtual PSDataset GetDataset(string resourceGroupName, string dataFactoryName, string datasetName)
         {
-            var response = DataPipelineManagementClient.Tables.Get(
+            var response = DataPipelineManagementClient.Datasets.Get(
                 resourceGroupName, dataFactoryName, datasetName);
 
-            return new PSDataset(response.Table)
+            return new PSDataset(response.Dataset)
             {
                 ResourceGroupName = resourceGroupName,
                 DataFactoryName = dataFactoryName
@@ -60,20 +60,20 @@ namespace Microsoft.Azure.Commands.DataFactories
         {
             List<PSDataset> datasets = new List<PSDataset>();
 
-            TableListResponse response;
+            DatasetListResponse response;
             if (filterOptions.NextLink.IsNextPageLink())
             {
-                response = DataPipelineManagementClient.Tables.ListNext(filterOptions.NextLink);
+                response = DataPipelineManagementClient.Datasets.ListNext(filterOptions.NextLink);
             }
             else
             {
-                response = DataPipelineManagementClient.Tables.List(filterOptions.ResourceGroupName, filterOptions.DataFactoryName);
+                response = DataPipelineManagementClient.Datasets.List(filterOptions.ResourceGroupName, filterOptions.DataFactoryName);
             }
             filterOptions.NextLink = response != null ? response.NextLink : null;
 
-            if (response != null && response.Tables != null)
+            if (response != null && response.Datasets != null)
             {
-                foreach (var dataset in response.Tables)
+                foreach (var dataset in response.Datasets)
                 {
                     datasets.Add(
                         new PSDataset(dataset)
@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.DataFactories
 
         public virtual HttpStatusCode DeleteDataset(string resourceGroupName, string dataFactoryName, string datasetName)
         {
-            AzureOperationResponse response = DataPipelineManagementClient.Tables.Delete(resourceGroupName, dataFactoryName, datasetName);
+            AzureOperationResponse response = DataPipelineManagementClient.Datasets.Delete(resourceGroupName, dataFactoryName, datasetName);
             return response.StatusCode;
         }
 

@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
-    using System;
-    
-    
+namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties
+{
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -132,6 +132,51 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
         public static string NoSubscriptionFound {
             get {
                 return ResourceManager.GetString("NoSubscriptionFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attempting to register resource provider &apos;{0}&apos;.
+        /// </summary>
+        public static string ResourceProviderRegisterAttempt {
+            get {
+                return ResourceManager.GetString("ResourceProviderRegisterAttempt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to register resource provider &apos;{0}&apos;.Details: &apos;{1}&apos;.
+        /// </summary>
+        public static string ResourceProviderRegisterFailure {
+            get {
+                return ResourceManager.GetString("ResourceProviderRegisterFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Succeeded to register resource provider &apos;{0}&apos;.
+        /// </summary>
+        public static string ResourceProviderRegisterSuccessful {
+            get {
+                return ResourceManager.GetString("ResourceProviderRegisterSuccessful", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The provided account {0} does not have access to subscription ID &quot;{1}&quot;. Please try logging in with different credentials not a different subscription ID..
+        /// </summary>
+        public static string SubscriptionIdNotFound {
+            get {
+                return ResourceManager.GetString("SubscriptionIdNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The provided account {0} does not have access to subscription name &quot;{1}&quot;. Please try logging in with different credentials not a different subscription name..
+        /// </summary>
+        public static string SubscriptionNameNotFound {
+            get {
+                return ResourceManager.GetString("SubscriptionNameNotFound", resourceCulture);
             }
         }
         

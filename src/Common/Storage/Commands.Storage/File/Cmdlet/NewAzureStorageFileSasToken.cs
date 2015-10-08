@@ -52,12 +52,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
         [Parameter(Position = 0, Mandatory = true,
             HelpMessage = "Share Name",
-            ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = NameSasPermissionParameterSet)]
         [Parameter(Position = 0, Mandatory = true,
             HelpMessage = "Share Name",
-            ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = NameSasPolicyParmeterSet)]
         [ValidateNotNullOrEmpty]
@@ -65,12 +63,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
         [Parameter(Position = 1, Mandatory = true,
             HelpMessage = "Path to the cloud file to generate sas token against.",
-            ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = NameSasPermissionParameterSet)]
         [Parameter(Position = 1, Mandatory = true,
             HelpMessage = "Path to the cloud file to generate sas token against.",
-            ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = NameSasPolicyParmeterSet)]
         [ValidateNotNullOrEmpty]
@@ -121,7 +117,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             ValueFromPipeline = true,
             HelpMessage = "Azure Storage Context Object",
             ParameterSetName = NameSasPolicyParmeterSet)]
-        public new AzureStorageContext Context { get; set; }
+        public override AzureStorageContext Context { get; set; }
 
         /// <summary>
         /// Execute command

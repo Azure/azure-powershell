@@ -44,12 +44,22 @@ namespace Microsoft.Azure.Commands.Batch
             set { this.maxCount = value; }
         }
 
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public string Select { get; set; }
+
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public string Expand { get; set; }
+
         protected override void ProcessRecord()
         {
             ListPoolOptions options = new ListPoolOptions(this.BatchContext, this.AdditionalBehaviors)
             {
                 PoolId = this.Id,
                 Filter = this.Filter,
+                Select = this.Select,
+                Expand = this.Expand,
                 MaxCount = this.MaxCount
             };
 

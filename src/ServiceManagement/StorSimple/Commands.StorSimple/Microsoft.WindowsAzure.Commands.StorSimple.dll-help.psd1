@@ -9,7 +9,7 @@
 @{
 
 # Version number of this module.
-ModuleVersion = '0.8.13'
+ModuleVersion = '0.9.10'
 
 # ID used to uniquely identify this module
 GUID = 'd52ed268-64c7-46bd-9cf8-1814d07409f8'
@@ -21,7 +21,7 @@ Author = 'Microsoft Corporation'
 CompanyName = 'Microsoft Corporation'
 
 # Copyright statement for this module
-Copyright = '© Microsoft Corporation. All rights reserved.'  
+Copyright = 'Microsoft Corporation. All rights reserved.'  
 
 # Description of the functionality provided by this module
 Description = ''

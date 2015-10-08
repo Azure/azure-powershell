@@ -39,7 +39,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Alias("N", "Name")]
         [Parameter(Position = 0, Mandatory = true,
             HelpMessage = "Share Name",
-            ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ShareName { get; set; }
@@ -67,8 +66,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
         [Parameter(
             ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName=true,
             HelpMessage = "Azure Storage Context Object")]
-        public new AzureStorageContext Context { get; set; }
+        public override AzureStorageContext Context { get; set; }
 
         // Overwrite the useless parameter
         public override int? ServerTimeoutPerRequest { get; set; }

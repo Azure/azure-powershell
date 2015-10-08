@@ -180,8 +180,33 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         [Parameter(
             HelpMessage = "Extension handler gets auto updated to the latest version if this switch is present.")]
         public SwitchParameter AutoUpdate { get; set; }
-        //Private Variables
 
+        /// <summary>
+        /// Specifies the version of the Windows Management Framework (WMF) to install 
+        /// on the VM.
+        ///
+        /// The DSC Azure Extension depends on DSC features that are only available in 
+        /// the WMF updates. This parameter specifies which version of the update to 
+        /// install on the VM. The possible values are "4.0","latest" and "5.0PP".  
+        /// 
+        /// A value of "4.0" will install KB3000850 
+        /// (http://support.microsoft.com/kb/3000850) on Windows 8.1 or Windows Server 
+        /// 2012 R2, or WMF 4.0 
+        /// (http://www.microsoft.com/en-us/download/details.aspx?id=40855) on other 
+        /// versions of Windows if a newer version isnt already installed.
+        /// 
+        /// A value of "5.0PP" will install the latest release of WMF 5.0PP 
+        /// (http://go.microsoft.com/fwlink/?LinkId=398175).
+        /// 
+        /// A value of "latest" will install the latest WMF, currently WMF 5.0PP
+        /// 
+        /// The default value is "latest"
+        /// </summary>
+        [Parameter(ValueFromPipelineByPropertyName = true)]
+        [ValidateSetAttribute(new[] { "4.0", "latest", "5.0PP" })]
+        public string WmfVersion { get; set; }
+
+        //Private Variables
         private const string VersionRegexExpr = @"^(([0-9])\.)\d+$";
 
         /// <summary>
@@ -276,7 +301,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         {
             var publicSettings = new DscExtensionPublicSettings();
             var privateSettings = new DscExtensionPrivateSettings();
-            
+
+            publicSettings.WmfVersion = string.IsNullOrEmpty(WmfVersion) ? "latest" : WmfVersion;
+
             if (!string.IsNullOrEmpty(ArchiveBlobName))
             {
                 ConfigurationUris configurationUris = UploadConfigurationDataToBlob();

@@ -16,6 +16,7 @@ using System.IO;
 using System.Management.Automation;
 using Hyak.Common;
 using Microsoft.Azure.Commands.HDInsight.Commands;
+using Microsoft.Azure.Commands.HDInsight.Models.Job;
 using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.HDInsight
@@ -25,14 +26,10 @@ namespace Microsoft.Azure.Commands.HDInsight
     OutputType(typeof(string))]
     public class GetAzureHDInsightJobOutputCommand : HDInsightCmdletBase
     {
-        [Parameter(
-            Position = 0,
-            Mandatory = true,
-            HelpMessage = "Gets or sets the name of the resource group.")]
-        public string ResourceGroupName { get; set; }
+        #region Input Parameter Definitions
 
         [Parameter(Mandatory = true,
-            Position = 1,
+            Position = 0,
             HelpMessage = "The name of the cluster.")]
         public string ClusterName
         {
@@ -40,30 +37,31 @@ namespace Microsoft.Azure.Commands.HDInsight
             set { _clusterName = value; }
         }
 
-        [Parameter(Position = 2,
+        [Parameter(Position = 1,
             Mandatory = true,
             HelpMessage = "The JobID of the jobDetails to stop.")]
         public string JobId { get; set; }
 
-        [Parameter(Position = 3,
+        [Parameter(Position = 2,
             Mandatory = true,
             HelpMessage = "The default container name.")]
         public string DefaultContainer { get; set; }
 
-        [Parameter(Position = 4,
+        [Parameter(Position = 3,
             Mandatory = true, 
             HelpMessage = "The default storage account name.")]
         public string DefaultStorageAccountName { get; set; }
 
-        [Parameter(Position = 5,
+        [Parameter(Position = 4,
             Mandatory = true, 
             HelpMessage = "The default storage account key.")]
         public string DefaultStorageAccountKey { get; set; }
 
         [Parameter(Mandatory = true,
-            Position = 6,
+            Position = 5,
             HelpMessage = "The credentials with which to connect to the cluster.")]
-        public PSCredential ClusterCredential
+        [Alias("ClusterCredential")]
+        public PSCredential HttpCredential
         {
             get
             {
@@ -79,18 +77,78 @@ namespace Microsoft.Azure.Commands.HDInsight
             }
         }
 
+        [Parameter(HelpMessage = "Gets or sets the name of the resource group.")]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(HelpMessage = "The type of job output.", ParameterSetName = "Display")]
+        public JobDisplayOutputType DisplayOutputType { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = "The type of output to download.", ParameterSetName = "Download")]
+        public JobDownloadOutputType DownloadOutputType { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = "The folder to save the output to.", ParameterSetName = "Download")]
+        public string Folder { get; set; }
+
+        #endregion
+
         protected override void ProcessRecord()
         {
+            if (ResourceGroupName == null)
+            {
+                ResourceGroupName = GetResourceGroupByAccountName(ClusterName);
+            }
             _clusterName = GetClusterConnection(ResourceGroupName, ClusterName);
-            var output = GetJobOutput();
-            WriteObject(output);
-        }
 
-        public string GetJobOutput()
+            if (ParameterSetName == "Display")
+            {
+                string output;
+                switch (DisplayOutputType)
+                {
+                    case JobDisplayOutputType.StandardError:
+                        output = GetJobError();
+                        break;
+                    case JobDisplayOutputType.TaskSummary:
+                        output = GetJobTaskLogSummary();
+                        break;
+                    default:
+                        output = GetJobOutput();
+                        break;
+                }
+                WriteObject(output);
+            }
+            else
+            {
+                DownloadJobTaskLogs();
+            }
+        }
+        
+        internal string GetJobOutput()
         {
             var output = HDInsightJobClient.GetJobOutput(JobId, DefaultStorageAccountName, DefaultStorageAccountKey, DefaultContainer);
             var outputStr = Convert(output);
             return outputStr;
+        }
+
+        private string GetJobError()
+        {
+            var output = HDInsightJobClient.GetJobError(JobId, DefaultStorageAccountName, DefaultStorageAccountKey,
+                DefaultContainer);
+            var outputStr = Convert(output);
+            return outputStr;
+        }
+
+        private string GetJobTaskLogSummary()
+        {
+            var output = HDInsightJobClient.GetJobTaskLogSummary(JobId, DefaultStorageAccountName, DefaultStorageAccountKey,
+                DefaultContainer);
+            var outputStr = Convert(output);
+            return outputStr;
+        }
+
+        private void DownloadJobTaskLogs()
+        {
+            HDInsightJobClient.GetJobTaskLogSummary(JobId, DefaultStorageAccountName, DefaultStorageAccountKey,
+                DefaultContainer);
         }
 
         private static string Convert(Stream stream)

@@ -30,7 +30,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
     {
         [Alias("N", "Table")]
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Table name",
-            ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
         public string Name { get; set; }
 

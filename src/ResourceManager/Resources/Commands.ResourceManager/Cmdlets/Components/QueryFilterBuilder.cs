@@ -41,7 +41,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             string resourceName,
             string tagName,
             string tagValue,
-            string filter)
+            string filter,
+            string nameContains = null,
+            string resourceGroupNameContains = null)
         {
             var filterStringBuilder = new StringBuilder();
 
@@ -72,7 +74,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                 filterStringBuilder.AppendFormat("resourceGroup EQ '{0}'", resourceGroup);
             }
 
-            var remainderFilter = QueryFilterBuilder.CreateFilter(resourceType, resourceName, tagName, tagValue, filter);
+            var remainderFilter = QueryFilterBuilder.CreateFilter(resourceType, resourceName, tagName, tagValue, filter, nameContains, resourceGroupNameContains);
 
             if (filterStringBuilder.Length > 0 && !string.IsNullOrWhiteSpace(remainderFilter))
             {
@@ -92,9 +94,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// <param name="tagName">The tag name.</param>
         /// <param name="tagValue">The tag value.</param>
         /// <param name="filter">The filter.</param>
-        public static string CreateFilter(string resourceType, string resourceName, string tagName, string tagValue, string filter)
+        public static string CreateFilter(string resourceType, string resourceName, string tagName, string tagValue, string filter, string nameContains=null, string resourceGroupNameContains=null)
         {
             var filterStringBuilder = new StringBuilder();
+            var substringStringBuilder = new StringBuilder();
 
             if (!string.IsNullOrWhiteSpace(resourceType))
             {
@@ -129,6 +132,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                 }
 
                 filterStringBuilder.AppendFormat("tagValue EQ '{0}'", tagValue);
+            }
+
+            if (!string.IsNullOrWhiteSpace(nameContains))
+            {
+                if (filterStringBuilder.Length > 0)
+                {
+                    filterStringBuilder.Append(" AND ");
+                }
+
+                filterStringBuilder.AppendFormat("substringof('{0}', name)", nameContains);
+            }
+
+            if (!string.IsNullOrWhiteSpace(resourceGroupNameContains))
+            {
+                if (filterStringBuilder.Length > 0)
+                {
+                    filterStringBuilder.Append(" AND ");
+                }
+
+                filterStringBuilder.AppendFormat("substringof('{0}', resourceGroup)", resourceGroupNameContains);
             }
 
             if (!string.IsNullOrWhiteSpace(filter))
