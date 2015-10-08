@@ -223,7 +223,6 @@ If you specify a value of Enabled, Traffic Manager monitors the endpoint and the
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, traffic, trafficmanager</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -391,7 +390,6 @@ PS C:\&gt; Add-AzureTrafficManagerEndpoint -TrafficManagerProfile $TrafficManage
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, traffic, trafficmanager</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -565,7 +563,6 @@ True</dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, traffic, trafficmanager</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -720,7 +717,6 @@ True</dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, traffic, trafficmanager</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1050,7 +1046,6 @@ Valid values are:
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, traffic, trafficmanager</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1246,7 +1241,6 @@ PS C:\&gt; $Profile = Set-AzureTrafficManagerProfile</dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, traffic, trafficmanager</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1416,7 +1410,6 @@ PS C:\&gt; Remove-AzureTrafficManagerEndpoint -TrafficManagerProfile $TrafficMan
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, traffic, trafficmanager</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1712,7 +1705,6 @@ If you specify a value of Enabled, Traffic Manager monitors the endpoint and the
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, traffic, trafficmanager</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1986,7 +1978,6 @@ Valid values are:
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, traffic, trafficmanager</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2162,7 +2153,6 @@ PS C:\&gt; $Profile = Set-AzureTrafficManagerProfile</dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, traffic, trafficmanager</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>

@@ -159,11 +159,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -391,11 +386,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -604,11 +594,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -853,11 +838,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -1175,11 +1155,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -1422,11 +1397,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -1739,11 +1709,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -1991,11 +1956,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -2202,11 +2162,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -2697,11 +2652,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -2914,11 +2864,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -3102,11 +3047,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -3346,11 +3286,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -3595,11 +3530,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -3863,11 +3793,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -4188,11 +4113,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -4375,11 +4295,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -4589,11 +4504,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -4806,11 +4716,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -5022,11 +4927,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -5244,11 +5144,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -5454,11 +5349,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -5676,11 +5566,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -5979,11 +5864,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -6201,11 +6081,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -6534,11 +6409,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -6868,11 +6738,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -7095,10 +6960,5 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
 </helpItems>

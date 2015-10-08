@@ -156,7 +156,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, analytics, stream</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -394,7 +393,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, analytics, stream</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -641,7 +639,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, analytics, stream</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -823,7 +820,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, analytics, stream</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1013,7 +1009,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, analytics, stream</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1250,7 +1245,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, analytics, stream</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1519,7 +1513,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, analytics, stream</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1792,7 +1785,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, analytics, stream</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2061,7 +2053,6 @@ is already defined, the cmdlet will ask whether or not to replace it.</maml:para
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, analytics, stream</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2295,7 +2286,6 @@ is already defined, the cmdlet will ask whether or not to replace it.</maml:para
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, analytics, stream</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2498,7 +2488,6 @@ is already defined, the cmdlet will ask whether or not to replace it.</maml:para
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, analytics, stream</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2726,7 +2715,6 @@ is already defined, the cmdlet will ask whether or not to replace it.</maml:para
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, analytics, stream</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2945,7 +2933,6 @@ is already defined, the cmdlet will ask whether or not to replace it.</maml:para
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, analytics, stream</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3129,7 +3116,6 @@ is already defined, the cmdlet will ask whether or not to replace it.</maml:para
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, analytics, stream</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3333,7 +3319,6 @@ is already defined, the cmdlet will ask whether or not to replace it.</maml:para
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, analytics, stream</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3532,7 +3517,6 @@ is already defined, the cmdlet will ask whether or not to replace it.</maml:para
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, analytics, stream</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>

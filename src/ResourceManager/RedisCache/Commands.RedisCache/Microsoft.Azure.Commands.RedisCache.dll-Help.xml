@@ -97,11 +97,6 @@
     </command:returnValues>
     <command:terminatingErrors />
     <command:nonTerminatingErrors />
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website</maml:para>
-      </maml:alert>
-    </maml:alertSet>
     <command:examples>
       <command:example>
         <maml:title>Example 1: Get specific redis cache by name</maml:title>
@@ -490,11 +485,6 @@
     </command:returnValues>
     <command:terminatingErrors />
     <command:nonTerminatingErrors />
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website</maml:para>
-      </maml:alert>
-    </maml:alertSet>
     <command:examples>
       <command:example>
         <maml:title>Example 1: Create new redis cache</maml:title>
@@ -707,11 +697,6 @@
     </command:returnValues>
     <command:terminatingErrors />
     <command:nonTerminatingErrors />
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website</maml:para>
-      </maml:alert>
-    </maml:alertSet>
     <command:examples>
       <command:example>
         <maml:title>Example 1: Remove a redis cache with PassThru</maml:title>
@@ -854,11 +839,6 @@
     </command:returnValues>
     <command:terminatingErrors />
     <command:nonTerminatingErrors />
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website</maml:para>
-      </maml:alert>
-    </maml:alertSet>
     <command:examples>
       <command:example>
         <maml:title>Example 1: Get the access keys of a specific redis cache</maml:title>
@@ -1023,11 +1003,6 @@
     </command:returnValues>
     <command:terminatingErrors />
     <command:nonTerminatingErrors />
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website</maml:para>
-      </maml:alert>
-    </maml:alertSet>
     <command:examples>
       <command:example>
         <maml:title>Example 1: Regenerate primary key</maml:title>
@@ -1276,11 +1251,6 @@
     </command:returnValues>
     <command:terminatingErrors />
     <command:nonTerminatingErrors />
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website</maml:para>
-      </maml:alert>
-    </maml:alertSet>
     <command:examples>
       <command:example>
         <maml:title>Example 1: Update Max Memory Policy</maml:title>

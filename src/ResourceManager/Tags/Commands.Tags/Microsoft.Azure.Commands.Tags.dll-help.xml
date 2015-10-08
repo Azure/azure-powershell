@@ -103,7 +103,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, tag, tags, resource, group</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -336,7 +335,6 @@ Values:
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, tag, tags, resource, group</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -660,7 +658,6 @@ Tags:
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, tag, tags, resource, group</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>

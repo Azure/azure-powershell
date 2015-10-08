@@ -187,11 +187,6 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMAdditionalUnattendContent -VM $Virtual
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -518,11 +513,6 @@ PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualM
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -718,11 +708,6 @@ PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name " Virtual
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -929,11 +914,6 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSecret -VM $VirtualMachine -SourceVaul
     </command:examples>
     <maml:relatedLinks>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -1099,11 +1079,6 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -1271,11 +1246,6 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -1431,11 +1401,6 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
     </command:examples>
     <maml:relatedLinks>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -1644,11 +1609,6 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -1857,11 +1817,6 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -2044,11 +1999,6 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
     </command:examples>
     <maml:relatedLinks>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -2193,11 +2143,6 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -2413,11 +2358,6 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -2622,11 +2562,6 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -2809,11 +2744,6 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
     </command:examples>
     <maml:relatedLinks>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -2970,11 +2900,6 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -3112,11 +3037,6 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -3292,11 +3212,6 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -3569,11 +3484,6 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -3820,11 +3730,6 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -3946,11 +3851,6 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
     </command:examples>
     <maml:relatedLinks>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -4247,11 +4147,6 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -4457,11 +4352,6 @@ PS C:\&gt; $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyD
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -4639,11 +4529,6 @@ PS C:\&gt; $VirtualMachine = New-AzureRmVMConfig -VMName "VirtualMachine07" -VMS
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -4939,11 +4824,6 @@ New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $Vir
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -5110,11 +4990,6 @@ New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $Vir
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -5301,11 +5176,6 @@ New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $Vir
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -5488,11 +5358,6 @@ New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $Vir
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -5645,11 +5510,6 @@ PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualM
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -5835,11 +5695,6 @@ PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualM
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -5977,11 +5832,6 @@ PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualM
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -6164,11 +6014,6 @@ PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualM
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -6333,11 +6178,6 @@ PS C:\&gt; Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -Name "VirtualM
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -6557,11 +6397,6 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName "ResourceGroup11" -VMName "Vir
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -6813,11 +6648,6 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName "ResourceGroup11" -VMName "Vir
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -7234,11 +7064,6 @@ PS C:\&gt; Save-AzureRmVMImage -ResourceGroupName "ResourceGroup11" -VMName "Vir
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -7642,11 +7467,6 @@ PS C:\&gt; Set-AzureRmVMExtension -ResourceGroupName "ResourceGroup11" -Location
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -8048,11 +7868,6 @@ PS C:\&gt; $VirtualMachine = Set-AzureRmVMOperatingSystem -VM $$VirtualMachine -
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -8432,11 +8247,6 @@ PS C:\&gt; Set-AzureRmVMOSDisk -VM $VirtualMachine -Name "OsDisk02" -VhdUri "os.
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -8723,11 +8533,6 @@ PS C:\&gt; $VirtualMachine07 = Set-AzureRmVMSourceImage -VM $VirtualMachine07 -I
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -8890,11 +8695,6 @@ PS C:\&gt; $VirtualMachine07 = Set-AzureRmVMSourceImage -VM $VirtualMachine07 -I
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -9059,11 +8859,6 @@ PS C:\&gt; $VirtualMachine07 = Set-AzureRmVMSourceImage -VM $VirtualMachine07 -I
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -9264,11 +9059,6 @@ PS C:\&gt; $VirtualMachine07 = Set-AzureRmVMSourceImage -VM $VirtualMachine07 -I
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -9477,11 +9267,6 @@ PS C:\&gt; $VirtualMachine07 = Set-AzureRmVMSourceImage -VM $VirtualMachine07 -I
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <!-- DSC Extension cmdlets help -->
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
@@ -9607,7 +9392,6 @@ PS C:\&gt; $VirtualMachine07 = Set-AzureRmVMSourceImage -VM $VirtualMachine07 -I
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -9790,7 +9574,6 @@ PS C:\&gt; $VirtualMachine07 = Set-AzureRmVMSourceImage -VM $VirtualMachine07 -I
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -10269,7 +10052,6 @@ Get-AzureRmVMDscExtension -ResourceGroupName Name -VMName VM -Name 'DSC' </dev:c
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -10731,7 +10513,6 @@ Get-AzureRmVMDscExtension -ResourceGroupName Name -VMName VM -Name 'DSC' </dev:c
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -11026,7 +10807,6 @@ Publish-AzureRmVMDscConfiguration -ConfigurationPath "C:\Sample.ps1" -Additional
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, compute, vm, iaas</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>

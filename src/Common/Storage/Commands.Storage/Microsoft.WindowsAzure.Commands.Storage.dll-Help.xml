@@ -311,7 +311,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>SYNOPSIS</maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -825,7 +824,6 @@ echo "Total $total blobs in container $containerName"</dev:code>
       </maml:title>
       <maml:alert>
         <maml:para>If the blob name is invalid for local machine, this cmdlet will auto resovle it if it's possible.</maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1247,7 +1245,6 @@ echo "Total $total blobs in container $containerName"</dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1606,7 +1603,6 @@ echo "Total $total blobs in container $containerName"</dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1836,7 +1832,6 @@ echo "Total $total containers"</dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2025,7 +2020,6 @@ echo "Total $total containers"</dev:code>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2451,7 +2445,6 @@ echo "Total $total containers"</dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3230,7 +3223,6 @@ echo "Total $total containers"</dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3653,7 +3645,6 @@ echo "Total $total containers"</dev:code>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3857,7 +3848,6 @@ echo "Total $total containers"</dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4058,7 +4048,6 @@ echo "Total $total containers"</dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4250,7 +4239,6 @@ echo "Total $total containers"</dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4441,7 +4429,6 @@ echo "Total $total containers"</dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4749,7 +4736,6 @@ echo "Total $total containers"</dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5002,7 +4988,6 @@ echo "Total $total containers"</dev:code>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5227,7 +5212,6 @@ echo "Total $total containers"</dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5428,7 +5412,6 @@ echo "Total $total containers"</dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5864,7 +5847,6 @@ echo "Total $total containers"</dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6113,7 +6095,6 @@ New-AzureStorageBlobSASToken -Container cname -Blob bname -Permission rwd -Start
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6429,7 +6410,6 @@ New-AzureStorageBlobSASToken -Container cname -Blob bname -Permission rwd -Start
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6693,7 +6673,6 @@ New-AzureStorageBlobSASToken -Container cname -Blob bname -Permission rwd -Start
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7116,7 +7095,6 @@ New-AzureStorageBlobSASToken -Container cname -Blob bname -Permission rwd -Start
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7705,7 +7683,6 @@ $context | Get-AzureStorageBlob -Container abc</dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8278,7 +8255,6 @@ $context | Get-AzureStorageBlob -Container abc</dev:code>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8475,7 +8451,6 @@ New-AzureStorageFileSASToken -ShareName share -Path filePath -Permission rwd -St
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8776,7 +8751,6 @@ New-AzureStorageFileSASToken -ShareName share -Path filePath -Permission rwd -St
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -9022,7 +8996,6 @@ New-AzureStorageFileSASToken -ShareName share -Path filePath -Permission rwd -St
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -9326,7 +9299,6 @@ New-AzureStorageFileSASToken -ShareName share -Path filePath -Permission rwd -St
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -9639,7 +9611,6 @@ New-AzureStorageFileSASToken -ShareName share -Path filePath -Permission rwd -St
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -9973,7 +9944,6 @@ New-AzureStorageFileSASToken -ShareName share -Path filePath -Permission rwd -St
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -10147,7 +10117,6 @@ New-AzureStorageFileSASToken -ShareName share -Path filePath -Permission rwd -St
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -10556,7 +10525,6 @@ New-AzureStorageFileSASToken -ShareName share -Path filePath -Permission rwd -St
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -10820,7 +10788,6 @@ New-AzureStorageFileSASToken -ShareName share -Path filePath -Permission rwd -St
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -11345,7 +11312,6 @@ New-AzureStorageFileSASToken -ShareName share -Path filePath -Permission rwd -St
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -11693,7 +11659,6 @@ New-AzureStorageFileSASToken -ShareName share -Path filePath -Permission rwd -St
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -11924,7 +11889,6 @@ New-AzureStorageFileSASToken -ShareName share -Path filePath -Permission rwd -St
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -12122,7 +12086,6 @@ New-AzureStorageFileSASToken -ShareName share -Path filePath -Permission rwd -St
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -12684,7 +12647,6 @@ New-AzureStorageFileSASToken -ShareName share -Path filePath -Permission rwd -St
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -13338,7 +13300,6 @@ New-AzureStorageFileSASToken -ShareName share -Path filePath -Permission rwd -St
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -13597,7 +13558,6 @@ New-AzureStorageFileSASToken -ShareName share -Path filePath -Permission rwd -St
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -13864,7 +13824,6 @@ New-AzureStorageFileSASToken -ShareName share -Path filePath -Permission rwd -St
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -14134,7 +14093,6 @@ New-AzureStorageFileSASToken -ShareName share -Path filePath -Permission rwd -St
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -14597,7 +14555,6 @@ New-AzureStorageFileSASToken -ShareName share -Path filePath -Permission rwd -St
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -14915,7 +14872,6 @@ New-AzureStorageFileSASToken -ShareName share -Path filePath -Permission rwd -St
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -15173,7 +15129,6 @@ New-AzureStorageFileSASToken -ShareName share -Path filePath -Permission rwd -St
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -15440,7 +15395,6 @@ New-AzureStorageFileSASToken -ShareName share -Path filePath -Permission rwd -St
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -15948,7 +15902,6 @@ New-AzureStorageFileSASToken -ShareName share -Path filePath -Permission rwd -St
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -16283,7 +16236,6 @@ Set-AzureStorageBlobContent -File filename -Container containername -Metadata $m
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -16586,7 +16538,6 @@ Set-AzureStorageBlobContent -File filename -Container containername -Metadata $m
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -16798,7 +16749,6 @@ Set-AzureStorageBlobContent -File filename -Container containername -Metadata $m
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -17518,7 +17468,6 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -17788,7 +17737,6 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -18062,7 +18010,6 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -18350,7 +18297,6 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -18682,7 +18628,6 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -18950,7 +18895,6 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -19985,7 +19929,6 @@ PS C:\&gt; Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $corsRules</dev
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -21269,7 +21212,6 @@ Start-AzureStorageBlobCopy –Container sourcecontainer -Blob BlobName -Context 
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -21699,7 +21641,6 @@ Start-AzureStorageBlobCopy –Container sourcecontainer -Blob BlobName -Context 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -22183,7 +22124,6 @@ Start-AzureStorageBlobCopy –Container sourcecontainer -Blob BlobName -Context 
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: common, azure, services, data, storage, blob, queue, table</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>

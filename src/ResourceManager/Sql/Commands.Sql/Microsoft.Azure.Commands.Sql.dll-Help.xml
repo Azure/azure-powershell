@@ -177,7 +177,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -386,7 +385,6 @@ ExpandedDetails : Version: 12.0 (Available) -&gt; Edition: Standard (Default) -&
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -684,7 +682,6 @@ Tags                          :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -842,7 +839,6 @@ Tags                          :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1023,7 +1019,6 @@ TableIdentifier    : Server01Database01</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1233,7 +1228,6 @@ PrivilegedLogins  :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1422,7 +1416,6 @@ PrivilegedLogins  :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1598,7 +1591,6 @@ PrivilegedLogins  :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1871,7 +1863,6 @@ PrivilegedLogins  :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2009,7 +2000,6 @@ PrivilegedLogins  :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2173,7 +2163,6 @@ EarliestRestoreDate      : 8/12/2015 12:00:00 AM
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2341,7 +2330,6 @@ SecureConnectionState : Optional</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2511,7 +2499,6 @@ resourcegroup01               server01                      database01          
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2703,7 +2690,6 @@ PercentComplete   : 3.662109
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2913,7 +2899,6 @@ PercentComplete   : 3.662109
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3223,7 +3208,6 @@ Unit           : Percent</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3430,7 +3414,6 @@ Unit           : Percent</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3608,7 +3591,6 @@ Unit           : Percent</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3747,7 +3729,6 @@ Unit           : Percent</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3988,7 +3969,6 @@ Tags                     :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4139,7 +4119,6 @@ resourcegroup01   server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</m
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4314,7 +4293,6 @@ TableIdentifier    : Server01
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4521,7 +4499,6 @@ FirewallRuleName  : rule01
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4679,7 +4656,6 @@ resourcegroup01   server01   P4                                  True     False 
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4850,7 +4826,6 @@ Status                          : Queued</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5163,7 +5138,6 @@ You can also create an elastic database by setting the ElasticPoolName parameter
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5527,7 +5501,6 @@ Tags                          :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5891,7 +5864,6 @@ Tags                          :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6181,7 +6153,6 @@ Tags                          :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6456,7 +6427,6 @@ Tags                          :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6715,7 +6685,6 @@ Tags              :
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6978,7 +6947,6 @@ Tags                     :
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7215,7 +7183,6 @@ FirewallRuleName  : rule01</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7421,7 +7388,6 @@ FirewallRuleName  : rule01</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7688,7 +7654,6 @@ FirewallRuleName  : rule01</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7898,7 +7863,6 @@ FirewallRuleName  : rule01</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8091,7 +8055,6 @@ FirewallRuleName  : rule01</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8316,7 +8279,6 @@ FirewallRuleName  : rule01</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8531,7 +8493,6 @@ FirewallRuleName  : rule01</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8704,7 +8665,6 @@ resourcegroup01   server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</m
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8929,7 +8889,6 @@ resourcegroup01   server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</m
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -9106,7 +9065,6 @@ resourcegroup01   server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</m
       </maml:title>
       <maml:alert>
         <maml:para>This Resume-AzureRmSqlDatabase cmdlet works only on Azure SQL Data Warehouse databases. This operation is not supported on Azure SQL Database Basic, Standard and Premium editions.</maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -9394,7 +9352,6 @@ resourcegroup01   server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</m
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -9784,7 +9741,6 @@ Tags                          :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -10062,7 +10018,6 @@ Tags                          :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -10475,7 +10430,6 @@ Tags                          :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -10736,7 +10690,6 @@ Tags                          :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -10896,7 +10849,6 @@ Tags                          :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -11192,7 +11144,6 @@ resourcegroup01               server01                      database01          
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -11482,7 +11433,6 @@ Tags              :
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -11680,7 +11630,6 @@ Microsoft accounts, such as those in the Outllook.com, Hotmail.com, or Live.com 
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -12023,7 +11972,6 @@ resourcegroup01   server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</m
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -12271,7 +12219,6 @@ resourcegroup01   server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</m
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -12472,7 +12419,6 @@ FirewallRuleName  : rule01</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -12697,7 +12643,6 @@ FirewallRuleName  : rule01</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -12917,7 +12862,6 @@ The final command upgrades the existing server named server02 in the  resource g
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -13123,7 +13067,6 @@ The final command upgrades the existing server named server02 in the  resource g
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -13290,7 +13233,6 @@ The final command upgrades the existing server named server02 in the  resource g
       </maml:title>
       <maml:alert>
         <maml:para>This Suspend-AzureRmSqlDatabase cmdlet works only on Azure SQL Data Warehouse databases. This operation is not supported on Azure SQL Database Basic, Standard and Premium editions.</maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -13492,7 +13434,6 @@ The final command upgrades the existing server named server02 in the  resource g
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>

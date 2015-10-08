@@ -151,7 +151,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -339,7 +338,6 @@ Add-AzureRemoteAppUser -CollectionName Contoso -UserType OrgId -UserUpn user@con
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -479,7 +477,6 @@ Disconnect-AzureRemoteAppSession -CollectionName ContosoApps -UserUpn user@conto
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -735,7 +732,6 @@ Get-AzureRemoteAppCollection Finance*                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -885,7 +881,6 @@ Get-AzureRemoteAppCollection Finance*                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -972,7 +967,6 @@ Get-AzureRemoteAppCollection Finance*                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -1082,7 +1076,6 @@ Get-AzureRemoteAppCollection Finance*                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -1169,7 +1162,6 @@ Get-AzureRemoteAppCollection Finance*                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -1329,7 +1321,6 @@ Get-AzureRemoteAppCollection Finance*                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -1498,7 +1489,6 @@ VirtualPath          : %SYSTEMDRIVE%\Program Files (x86)\Contoso Finance\Finance
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -1657,7 +1647,6 @@ Get-AzureRemoteAppSession -CollectionName ContosoApps                        </d
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -1796,7 +1785,6 @@ Get-AzureRemoteAppStartMenuProgram -CollectionName ContosoApps                  
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -1984,7 +1972,6 @@ Get-AzureRemoteAppTemplateImage -ImageName ContosoApps                        </
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -2142,7 +2129,6 @@ Get-AzureRemoteAppUser -CollectionName Contoso                        </dev:code
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -2281,7 +2267,6 @@ Get-AzureRemoteAppVNet -VNetName ContosoVNet                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -2486,7 +2471,6 @@ Microsoft Corporation  {RRAS}                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -2602,7 +2586,6 @@ Get-AzureRemoteAppVpnDeviceConfigScript -VNetName ContosoVNet -Vendor "Microsoft
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -2802,7 +2785,6 @@ https://www.remoteapp.windowsazure.com/ Contoso Work Applications               
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -3259,7 +3241,6 @@ Invoke-AzureRemoteAppSessionLogoff -CollectionName ContosoApps -UserUpn user@con
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -3428,7 +3409,6 @@ Invoke-AzureRemoteAppSessionLogoff -CollectionName ContosoApps -UserUpn user@con
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -3707,7 +3687,6 @@ New-AzureRemoteAppTemplateImage -ImageName ContosoApps -Location "West Europe" -
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -3982,7 +3961,6 @@ b0ca9d1b-d1b9-4f24-9a08-5e021926587f                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -4157,7 +4135,6 @@ Publish-AzureRemoteAppProgram -CollectionName ContosoApps -StartMenuAppId a37323
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -4303,7 +4280,6 @@ Publish-AzureRemoteAppProgram -CollectionName ContosoApps -StartMenuAppId a37323
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -4502,7 +4478,6 @@ Remove-AzureRemoteAppTemplateImage -ImageName ContosoApps                       
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -4641,7 +4616,6 @@ Remove-AzureRemoteAppUser -CollectionName Contoso -Type OrgId -UserUpn user@cont
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -4801,7 +4775,6 @@ Remove-AzureRemoteAppVnet -VNetName ContosoVNet                        </dev:cod
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -4976,7 +4949,6 @@ Rename-AzureRemoteAppTemplateImage -ImageName ContosoApps -NewName ContosoFinanc
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -5155,7 +5127,6 @@ Reset-AzureRemoteAppVpnSharedKey -VNetName ContosoVNet                        </
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -5405,7 +5376,6 @@ Send-AzureRemoteAppSessionMessage -CollectionName ContosoApps -UserUpn user@cont
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -5595,7 +5565,6 @@ Send-AzureRemoteAppSessionMessage -CollectionName ContosoApps -UserUpn user@cont
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -5736,7 +5705,6 @@ Set-AzureRemoteAppVnet -VNetName ContosoVNet -DnsServerIpAddress 131.253.33.200 
         <maml:para>
                           All RemoteApp collections for a given subscription exist within a shared workspace. 
                         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -5935,7 +5903,6 @@ TrackingId
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -6120,7 +6087,6 @@ TrackingId
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>

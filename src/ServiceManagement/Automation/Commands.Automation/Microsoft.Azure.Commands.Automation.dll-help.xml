@@ -120,11 +120,6 @@
         <maml:uri>http://go.microsoft.com/fwlink/?LinkId=397902</maml:uri>
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -287,11 +282,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -499,11 +489,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -665,11 +650,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -1022,11 +1002,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -1219,11 +1194,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -1388,11 +1358,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -1545,11 +1510,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -1703,11 +1663,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -1850,11 +1805,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -2116,11 +2066,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -2266,11 +2211,6 @@ PS C:\&gt; $value = $variable.value
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -2400,11 +2340,6 @@ PS C:\&gt; $value = $variable.value
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -2614,11 +2549,6 @@ PS C:\&gt; New-AzureAutomationCertificate -AutomationAccountName "Contos17" -Nam
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -2809,11 +2739,6 @@ PS C:\&gt; New-AzureAutomationCertificate -AutomationAccountName "Contos17" -Nam
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -2988,11 +2913,6 @@ PS C:\&gt; New-AzureAutomationCredential -AutomationAccountName "Contos17" -Name
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -3169,11 +3089,6 @@ PS C:\&gt; New-AzureAutomationCredential -AutomationAccountName "Contos17" -Name
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -3408,11 +3323,6 @@ PS C:\&gt; New-AzureAutomationCredential -AutomationAccountName "Contos17" -Name
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -3749,11 +3659,6 @@ PS C:\&gt; New-AzureAutomationSchedule -AutomationAccountName "Contoso17" -Name 
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -3963,11 +3868,6 @@ PS C:\&gt; New-AzureAutomationVariable -AutomationAccountName "Contoso17" -Name 
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -4114,11 +4014,6 @@ PS C:\&gt; New-AzureAutomationVariable -AutomationAccountName "Contoso17" -Name 
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -4305,11 +4200,6 @@ PS C:\&gt; New-AzureAutomationVariable -AutomationAccountName "Contoso17" -Name 
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -4439,11 +4329,6 @@ PS C:\&gt; New-AzureAutomationVariable -AutomationAccountName "Contoso17" -Name 
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -4596,11 +4481,6 @@ PS C:\&gt; New-AzureAutomationVariable -AutomationAccountName "Contoso17" -Name 
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -4752,11 +4632,6 @@ PS C:\&gt; New-AzureAutomationVariable -AutomationAccountName "Contoso17" -Name 
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -4907,11 +4782,6 @@ PS C:\&gt; New-AzureAutomationVariable -AutomationAccountName "Contoso17" -Name 
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -5065,11 +4935,6 @@ PS C:\&gt; New-AzureAutomationVariable -AutomationAccountName "Contoso17" -Name 
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -5271,11 +5136,6 @@ PS C:\&gt; New-AzureAutomationVariable -AutomationAccountName "Contoso17" -Name 
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -5470,11 +5330,6 @@ PS C:\&gt; New-AzureAutomationVariable -AutomationAccountName "Contoso17" -Name 
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -5627,11 +5482,6 @@ PS C:\&gt; New-AzureAutomationVariable -AutomationAccountName "Contoso17" -Name 
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -5767,11 +5617,6 @@ PS C:\&gt; New-AzureAutomationVariable -AutomationAccountName "Contoso17" -Name 
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -5981,11 +5826,6 @@ PS C:\&gt; Set-AzureAutomationCertificate -AutomationAccountName "Contos17" -Nam
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -6158,11 +5998,6 @@ PS C:\&gt; Set-AzureAutomationCertificate -AutomationAccountName "Contos17" -Nam
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -6336,11 +6171,6 @@ PS C:\&gt; New-AzureAutomationCredential -AutomationAccountName "Contos17" -Name
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -6528,11 +6358,6 @@ PS C:\&gt; New-AzureAutomationCredential -AutomationAccountName "Contos17" -Name
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -6762,11 +6587,6 @@ PS C:\&gt; New-AzureAutomationCredential -AutomationAccountName "Contos17" -Name
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -6937,11 +6757,6 @@ PS C:\&gt; New-AzureAutomationCredential -AutomationAccountName "Contos17" -Name
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -7120,11 +6935,6 @@ PS C:\&gt; New-AzureAutomationCredential -AutomationAccountName "Contos17" -Name
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -7296,11 +7106,6 @@ PS C:\&gt; New-AzureAutomationCredential -AutomationAccountName "Contos17" -Name
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -7467,11 +7272,6 @@ PS C:\&gt; New-AzureAutomationCredential -AutomationAccountName "Contos17" -Name
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -7606,11 +7406,6 @@ PS C:\&gt; New-AzureAutomationCredential -AutomationAccountName "Contos17" -Name
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -7746,11 +7541,6 @@ PS C:\&gt; New-AzureAutomationCredential -AutomationAccountName "Contos17" -Name
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
@@ -7952,10 +7742,5 @@ PS C:\&gt; New-AzureAutomationCredential -AutomationAccountName "Contos17" -Name
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, automation, devops</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
 </helpItems>

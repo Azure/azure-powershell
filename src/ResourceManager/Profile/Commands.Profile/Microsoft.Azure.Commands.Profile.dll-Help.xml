@@ -299,7 +299,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, profile, common, login, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -872,7 +871,6 @@ Tenant: xxxx-xxxx-xxxx-xxxx</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, profile, common, login, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -996,7 +994,6 @@ Tenant: xxxx-xxxx-xxxx-xxxx</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, profile, common, login, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1135,7 +1132,6 @@ Tenant: xxxx-xxxx-xxxx-xxxx</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, profile, common, login, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1375,7 +1371,6 @@ Tenant: xxxx-xxxx-xxxx-xxxx</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, profile, common, login, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1600,7 +1595,6 @@ Subscription Name: Contoso Subscription 1</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, profile, common, login, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1749,7 +1743,6 @@ Subscription Name: Contoso Subscription 1</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, profile, common, login, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1898,7 +1891,6 @@ Subscription Name: Contoso Subscription 1</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, profile, common, login, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2074,7 +2066,6 @@ Subscription Name: Contoso Subscription 1</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, profile, common, login, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2328,7 +2319,6 @@ Subscription Name: Contoso Subscription 1</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, profile, common, login, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2790,7 +2780,6 @@ Tenant: yyyy-yyyy-yyyy-yyyy</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, profile, common, login, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>

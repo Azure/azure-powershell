@@ -242,7 +242,6 @@ You also can retrieve a restorable dropped database by specifying the Restorable
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -573,7 +572,6 @@ Get-AzureSqlDatabaseCopy is synchronous and blocks the application until it retu
       </maml:title>
       <maml:alert>
         <maml:para>Authentication: This cmdlet requires certificate-based authentication. For an example of how to use certificate-based authentication to set the current subscription, see the Get-Help topic for the New-AzureSqlDatabaseServerContext cmdlet.</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -793,7 +791,6 @@ PS C:\&gt;Get-AzureSqlDatabaseCopy -ServerName "lpqd0zbr8y" -DatabaseCopy $myDbC
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1016,7 +1013,6 @@ C:\PS&gt;Get-AzureSqlDatabaseImportExportStatus -Request $exportRequest</dev:cod
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1134,7 +1130,6 @@ C:\PS&gt;Get-AzureSqlDatabaseImportExportStatus -Request $exportRequest</dev:cod
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1294,7 +1289,6 @@ C:\PS&gt;Get-AzureSqlDatabaseImportExportStatus -Request $exportRequest</dev:cod
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1484,7 +1478,6 @@ C:\PS&gt;Get-AzureSqlDatabaseImportExportStatus -Request $exportRequest</dev:cod
       </maml:title>
       <maml:alert>
         <maml:para>Authentication: This cmdlet can use either SQL Server authentication or certificate-based authentication. For examples of setting up authentication, see the Get-Help topic for the New-AzureSqlDatabaseServerContext cmdlet.</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1693,7 +1686,6 @@ C:\PS&gt;Get-AzureSqlDatabaseImportExportStatus -Request $exportRequest</dev:cod
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1881,7 +1873,6 @@ C:\PS&gt;$thumbprint = &lt;Certificate Thumbprint&gt;
 C:\PS&gt;$myCert = Get-Item Cert:\CurrentUser\My\$thumbprint
 C:\PS&gt;Set-AzureSubscription -SubscriptionName "mySubscription" -SubscriptionId $subId -Certificate $myCert
 C:\PS&gt;Select-AzureSubscription -SubscriptionName "mySubscription"</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2287,7 +2278,6 @@ Business Edition values: 10, 20, 30, 40, 50, 100, or 150</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para>To delete a database that was created by New-AzureSqlDatabase, use the Remove-AzureSqlDatabase cmdlet.</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2551,7 +2541,6 @@ Business Edition values: 10, 20, 30, 40, 50, 100, or 150</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2839,7 +2828,6 @@ See the examples below of both the SQL Server and certificate-based authenticati
 C:\PS&gt;$cred = Get-Credential
 
 C:\PS&gt;$cred = New-Object -TypeName 'System.Management.Automation.PSCredential' -ArgumentList $cred.Username.Replace("\",""),$cred.Password</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3173,7 +3161,6 @@ Use the AllowAllAzureServices parameter to allow Azure connections to the SQL Da
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3549,7 +3536,6 @@ When you delete a database by specifying a SQL Database Server name, the Remove-
       </maml:title>
       <maml:alert>
         <maml:para>Because of the severity of the operation, this cmdlet prompts the user for confirmation by default.  This can be overridden by using the -Force parameter.</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3771,7 +3757,6 @@ C:\PS&gt;$database1 | Remove-AzureSqlDatabase -ServerName "lpqd0zbr8y"</dev:code
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3973,7 +3958,6 @@ C:\PS&gt;$database1 | Remove-AzureSqlDatabase -ServerName "lpqd0zbr8y"</dev:code
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4616,7 +4600,6 @@ Business Edition values: 10, 20, 30, 40, 50, 100, or 150</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4842,7 +4825,6 @@ C:\PS&gt;Set-AzureSqlDatabase -ServerName "lpqd0zbr8y" -Database $database1 -Max
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5083,7 +5065,6 @@ C:\PS&gt;Set-AzureSqlDatabase -ServerName "lpqd0zbr8y" -Database $database1 -Max
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5547,7 +5528,6 @@ Start-AzureSqlDatabaseCopy returns immediately without waiting for the completio
       </maml:title>
       <maml:alert>
         <maml:para>Authentication: This cmdlet requires certificate-based authentication. For an example of how to use certificate-based authentication to set the current subscription, see the Get-Help topic for the New-AzureSqlDatabaseServerContext cmdlet.</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5797,7 +5777,6 @@ Start-AzureSqlDatabaseCopy returns immediately without waiting for the completio
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6098,7 +6077,6 @@ C:\PS&gt;$exportRequest = Start-AzureSqlDatabaseExport -SqlConnectionContext $Sq
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6322,7 +6300,6 @@ C:\PS&gt;$thumbprint = &lt;Certificate Thumbprint&gt;
 C:\PS&gt;$myCert = Get-Item Cert:\CurrentUser\My\$thumbprint
 C:\PS&gt;Set-AzureSubscription -SubscriptionName "mySubscription" -SubscriptionId $subId -Certificate $myCert
 C:\PS&gt;Select-AzureSubscription -SubscriptionName "mySubscription"</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6727,7 +6704,6 @@ C:\PS&gt;$thumbprint = &lt;Certificate Thumbprint&gt;
 C:\PS&gt;$myCert = Get-Item Cert:\CurrentUser\My\$thumbprint
 C:\PS&gt;Set-AzureSubscription -SubscriptionName "mySubscription" -SubscriptionId $subId -Certificate $myCert
 C:\PS&gt;Select-AzureSubscription -SubscriptionName "mySubscription"</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7143,7 +7119,6 @@ A Stop-AzureSqlDatabaseCopy command can be executed on the source or replica dat
       </maml:title>
       <maml:alert>
         <maml:para>Authentication: This cmdlet requires certificate-based authentication. For an example of how to use certificate-based authentication to set the current subscription, see the Get-Help topic for the New-AzureSqlDatabaseServerContext cmdlet.</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>

@@ -251,7 +251,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -466,7 +465,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -640,7 +638,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -870,7 +867,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1122,7 +1118,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1456,7 +1451,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1671,7 +1665,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1907,7 +1900,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2161,7 +2153,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2706,7 +2697,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2909,7 +2899,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3174,7 +3163,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3431,7 +3419,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3645,7 +3632,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3851,7 +3837,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>Sqoop is a tool designed to transfer data between Hadoop clusters and relational databases. You can use Sqoop to import data from a SQL database into an Hadoop Distributed File System (HDFS), transform the data with Hadoop MapReduce, and then export the data from the HDFS back into the SQL database.</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4166,7 +4151,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4384,7 +4368,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4617,7 +4600,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4811,7 +4793,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5075,7 +5056,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5327,7 +5307,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5523,7 +5502,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5850,7 +5828,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>

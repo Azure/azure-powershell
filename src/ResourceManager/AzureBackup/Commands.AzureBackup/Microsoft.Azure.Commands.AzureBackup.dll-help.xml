@@ -103,7 +103,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>When an existing backup job is running this commandlet will fail.</maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -300,7 +299,6 @@ test-vm         Backup          Failed          26-Aug-15 12:30:30 PM  26-Aug-15
       </maml:title>
       <maml:alert>
         <maml:para>None</maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -408,7 +406,6 @@ test-vm         Backup          Failed          26-Aug-15 12:30:30 PM  26-Aug-15
       </maml:title>
       <maml:alert>
         <maml:para>None</maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -535,7 +532,6 @@ test-vm         Backup          Failed          26-Aug-15 12:30:30 PM  26-Aug-15
       </maml:title>
       <maml:alert>
         <maml:para>None</maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -763,7 +759,6 @@ test-vm         ConfigureBackup  Completed       26-Aug-15 12:19:49 PM  26-Aug-1
       </maml:title>
       <maml:alert>
         <maml:para>None</maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1007,7 +1002,6 @@ test-vm                      AzureVM            Registered</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para>For Azure VMs, there is only one item under the registered VM container.</maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1380,7 +1374,6 @@ Array of AzureRMBackupJob objects</maml:name>
       </maml:title>
       <maml:alert>
         <maml:para>None</maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1637,7 +1630,6 @@ Done!</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para>None</maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1808,7 +1800,6 @@ PS C:\&gt; $jd.ErrorDetails
       </maml:title>
       <maml:alert>
         <maml:para>None</maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1999,7 +1990,6 @@ DefaultPolicy             AzureVM            Daily              26-Aug-15 12:30:
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2148,7 +2138,6 @@ DefaultPolicy             AzureVM            Daily              26-Aug-15 12:30:
       </maml:title>
       <maml:alert>
         <maml:para>None</maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2388,7 +2377,6 @@ This section details out the type of the objects that you can pipe to the cmdlet
       </maml:title>
       <maml:alert>
         <maml:para>None</maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2734,7 +2722,6 @@ This section details out the type of the objects that you can pipe to the cmdlet
       </maml:title>
       <maml:alert>
         <maml:para>None</maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3218,7 +3205,6 @@ DailyBkp                  AzureVM            Daily              26-Aug-15 3:00:0
       </maml:title>
       <maml:alert>
         <maml:para>None</maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3440,7 +3426,6 @@ RetentionTimes  :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para>None</maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3701,7 +3686,6 @@ Storage           : LocallyRedundant</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para>None</maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3835,7 +3819,6 @@ Storage           : LocallyRedundant</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para>The policy must not have any associated Items that are protected. If you need to delete the policy, ensure that each associated item is protected with some other policy first. To associate another policy with a backup item, use the Enable-AzureRmBackupProtection commandlet.</maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3973,7 +3956,6 @@ Storage           : LocallyRedundant</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para>None</maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4143,7 +4125,6 @@ Storage           : LocallyRedundant</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para>Triggering a restore operation in PowerShell does not restore the full VM. It restores only the disk data and config information. The user has to additionally create the VM and start it after the restore operation has completed.</maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4474,7 +4455,6 @@ test-vm         Restore         InProgress      26-Aug-15 1:14:01 PM   01-Jan-01
       </maml:title>
       <maml:alert>
         <maml:para>None</maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4606,7 +4586,6 @@ test-vm         Restore         InProgress      26-Aug-15 1:14:01 PM   01-Jan-01
       </maml:title>
       <maml:alert>
         <maml:para>The storage type is locked on the registration of the first server or virtual machine, and cannot be changed afterwards.</maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4803,7 +4782,6 @@ test-vm         Restore         InProgress      26-Aug-15 1:14:01 PM   01-Jan-01
       </maml:title>
       <maml:alert>
         <maml:para>None</maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4974,7 +4952,6 @@ PS C:\&gt; Stop-AzureRmBackupJob -Vault $v -JobID $j.InstanceId</dev:code>
       </maml:title>
       <maml:alert>
         <maml:para>None</maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5151,7 +5128,6 @@ Array of AzureRMBackupJob objects</maml:name>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>

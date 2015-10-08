@@ -178,7 +178,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>The cmdlet writes updated PsApiManagement instance to pipeline.</maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apirm</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -431,7 +430,6 @@ Update-AzureRmApiManagementDeployments</dev:code>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apirm</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -608,7 +606,6 @@ Update-AzureRmApiManagementDeployments</dev:code>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apirm</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -779,7 +776,6 @@ Update-AzureRmApiManagementDeployments</dev:code>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apirm</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1009,7 +1005,6 @@ Update-AzureRmApiManagementDeployments</dev:code>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apirm</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1277,7 +1272,6 @@ Update-AzureRmApiManagementDeployments</dev:code>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apirm</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1448,7 +1442,6 @@ Update-AzureRmApiManagementDeployments</dev:code>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apirm</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1618,7 +1611,6 @@ Update-AzureRmApiManagementDeployments</dev:code>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apirm</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1810,7 +1802,6 @@ Set-AzureRmApiManagementVirtualNetworks –ResourceGroupName ContosoGroup –Nam
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apirm</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1960,7 +1951,6 @@ Set-AzureRmApiManagementVirtualNetworks –ResourceGroupName ContosoGroup –Nam
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apirm</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2212,7 +2202,6 @@ Set-AzureRmApiManagementVirtualNetworks –ResourceGroupName ContosoGroup –Nam
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apirm</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2457,7 +2446,6 @@ Set-AzureRmApiManagementVirtualNetworks –ResourceGroupName ContosoGroup –Nam
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apirm</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2672,7 +2660,6 @@ Set-AzureRmApiHostnames -Name ContosoApi -ResourceGroupName Contoso –PortalHos
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apirm</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2979,7 +2966,6 @@ Set-AzureRmApiHostnames -Name ContosoApi -ResourceGroupName Contoso –PortalHos
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apirm</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3214,7 +3200,6 @@ Update-AzureRmApiManagementDeployment –ApiManagement $apiManagement
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apirm</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>

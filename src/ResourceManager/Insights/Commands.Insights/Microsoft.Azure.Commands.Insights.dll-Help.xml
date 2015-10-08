@@ -777,7 +777,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1125,7 +1124,6 @@ If the rule exists, then it just disables it.</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1653,7 +1651,6 @@ add-autoscalesetting -Location "East US" -Name MySetting -ResourceGroup Default-
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2024,7 +2021,6 @@ add-autoscalesetting -Location "East US" -Name MySetting -ResourceGroup Default-
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2383,7 +2379,6 @@ If the rule exists, then it just disables it.</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2515,7 +2510,6 @@ The output of this Cmdlet is suitable to be processed by the Export-csv Cmdlet.<
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2756,7 +2750,6 @@ foreach($e in $s2) { Export-csv -Path ./metrics.csv -input $e -Append -NoTypeInf
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3276,7 +3269,6 @@ SubStatus            :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3581,7 +3573,6 @@ The output contains only basic information about the alert rule.</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3921,7 +3912,6 @@ SubStatus            :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4761,7 +4751,6 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5355,7 +5344,6 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5710,7 +5698,6 @@ Unit                   : Bytes</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6073,7 +6060,6 @@ Unit           : Count</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6558,7 +6544,6 @@ Unit           : Count</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7029,7 +7014,6 @@ $profile = new-autoscaleprofile -DefaultCapacity "1" -MaximumCapacity "10" -Mini
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7232,7 +7216,6 @@ Microsoft.Azure.Management.Insights.Models.MetricTrigger    Microsoft.Azure.Mana
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7415,7 +7398,6 @@ Microsoft.Azure.Management.Insights.Models.MetricTrigger    Microsoft.Azure.Mana
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>

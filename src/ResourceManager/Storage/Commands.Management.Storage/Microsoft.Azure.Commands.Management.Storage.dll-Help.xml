@@ -123,7 +123,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, storage, container, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -320,7 +319,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, storage, container, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -541,7 +539,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, storage, container, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -717,7 +714,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, storage, container, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -870,7 +866,6 @@ New-AzureRmStorageKey -ResourceGroupName "myresourcegroup" -AccountName "mystora
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, storage, container, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1162,7 +1157,6 @@ New-AzureRmStorageKey -ResourceGroupName "myresourcegroup" -AccountName "mystora
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, storage, container, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>

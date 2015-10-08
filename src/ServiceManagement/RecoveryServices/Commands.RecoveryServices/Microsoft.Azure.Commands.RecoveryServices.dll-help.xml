@@ -117,7 +117,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -320,7 +319,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -578,7 +576,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -715,7 +712,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -883,7 +879,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -1139,7 +1134,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -1361,7 +1355,6 @@ Errors           : {}                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -1624,7 +1617,6 @@ Errors           : {}                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -1780,7 +1772,6 @@ ReplicationProvider          : HyperVReplica                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -1946,7 +1937,6 @@ ReplicationProvider          : HyperVReplica                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -2171,7 +2161,6 @@ ReplicationProvider          : HyperVReplica                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -2348,7 +2337,6 @@ ReplicationProvider          : HyperVReplica                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -2551,7 +2539,6 @@ ReplicationProvider          : HyperVReplica                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -2885,7 +2872,6 @@ ReplicationProvider          : HyperVReplica                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -3740,7 +3726,6 @@ Errors           : {}
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -4146,7 +4131,6 @@ Check whether the job succeeds by using the Get-AzureSiteRecoveryJob cmdlet.
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -4424,7 +4408,6 @@ Errors           : {}                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -4816,7 +4799,6 @@ Errors           : {}                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -4991,7 +4973,6 @@ Errors           : {}                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -5152,7 +5133,6 @@ Errors           : {}                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -5461,7 +5441,6 @@ Errors           : {}                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -5633,7 +5612,6 @@ Errors           : {}                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -6099,7 +6077,6 @@ As of now, only three possible values supported.
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -6341,7 +6318,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -6728,7 +6704,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -6938,7 +6913,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -7092,7 +7066,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -7270,7 +7243,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -7440,7 +7412,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -7609,7 +7580,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -7763,7 +7733,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -7970,7 +7939,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -8234,7 +8202,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -8466,7 +8433,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -8714,7 +8680,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -8860,7 +8825,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -9112,7 +9076,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -9278,7 +9241,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -9424,7 +9386,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -9650,7 +9611,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>

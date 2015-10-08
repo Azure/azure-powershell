@@ -125,7 +125,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -521,7 +520,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -747,7 +745,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -959,7 +956,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1598,7 +1594,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -1906,7 +1901,6 @@ get-azurevm -ServiceName "mySvc" -Name "MyVM1" | Add-AzureEndpoint -Name "HttpIn
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2809,7 +2803,6 @@ On Linux, this data is passed to the VM via the ovf-env.xml file, which is copie
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3147,7 +3140,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3682,7 +3674,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -3903,7 +3894,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4043,7 +4033,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4167,7 +4156,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4317,7 +4305,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4474,7 +4461,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4665,7 +4651,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4817,7 +4802,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4977,7 +4961,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5107,7 +5090,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5238,7 +5220,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5332,7 +5313,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5457,7 +5437,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5547,7 +5526,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5697,7 +5675,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5895,7 +5872,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6027,7 +6003,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6217,7 +6192,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6384,7 +6358,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6561,7 +6534,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6737,7 +6709,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6879,7 +6850,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7114,7 +7084,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7334,7 +7303,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7510,7 +7478,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7660,7 +7627,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7774,7 +7740,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7870,7 +7835,6 @@ The default value is Production.</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para>node-dev, php-dev</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8028,7 +7992,6 @@ The default value is Production.</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para>node-dev, php-dev</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8180,7 +8143,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8319,7 +8281,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8499,7 +8460,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8707,7 +8667,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8977,7 +8936,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -9091,7 +9049,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -9209,7 +9166,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -9327,7 +9283,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -9479,7 +9434,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -9676,7 +9630,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -9790,7 +9743,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -9937,7 +9889,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -10048,7 +9999,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -10176,7 +10126,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -10290,7 +10239,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -10432,7 +10380,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -10552,7 +10499,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -10682,7 +10628,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -10792,7 +10737,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -10954,7 +10898,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -11091,7 +11034,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -11210,7 +11152,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -11320,7 +11261,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -11504,7 +11444,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -11649,7 +11588,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -11939,7 +11877,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -12106,7 +12043,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -12313,7 +12249,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -13160,7 +13095,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -13555,7 +13489,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -13830,7 +13763,6 @@ The operation will take about 30 seconds to complete, after which the VM/Service
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -14094,7 +14026,6 @@ Set-AzureReservedIPAssociation -ReservedIPName resip14 -ServiceName piptestweste
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -14326,7 +14257,6 @@ Your subscription will only be charged for extra VIPs once they are associated w
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -14634,7 +14564,6 @@ Remove-AzureVirtualIP [-ServiceName] &lt;string&gt; [-VirtualIPName] &lt;string&
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -14900,7 +14829,6 @@ Remove-AzureVirtualIP -VirtualIPName "MyVip" -ServiceName  "mySvc"              
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -15588,7 +15516,6 @@ Remove-AzureVirtualIP -VirtualIPName "MyVip" -ServiceName  "mySvc"              
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -16470,7 +16397,6 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -16815,7 +16741,6 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -17106,7 +17031,6 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -17313,7 +17237,6 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -17638,7 +17561,6 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -17787,7 +17709,6 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -18251,7 +18172,6 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -18662,7 +18582,6 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -18807,7 +18726,6 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -18958,7 +18876,6 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -19347,7 +19264,6 @@ When this parameter is used, the configuration script is not uploaded to Azure b
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -19619,7 +19535,6 @@ Publish-AzureVMDscConfiguration -ConfigurationPath "C:\Sample.ps1" -AdditionalPa
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -19744,7 +19659,6 @@ Publish-AzureVMDscConfiguration -ConfigurationPath "C:\Sample.ps1" -AdditionalPa
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -19873,7 +19787,6 @@ Publish-AzureVMDscConfiguration -ConfigurationPath "C:\Sample.ps1" -AdditionalPa
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -20006,7 +19919,6 @@ Publish-AzureVMDscConfiguration -ConfigurationPath "C:\Sample.ps1" -AdditionalPa
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -20201,7 +20113,6 @@ Publish-AzureVMDscConfiguration -ConfigurationPath "C:\Sample.ps1" -AdditionalPa
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -20399,7 +20310,6 @@ This command gets the virtual machine object with the name "MyDemoVM01" running 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -20567,7 +20477,6 @@ This command gets the virtual machine object with the name "MyDemoVM01" running 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -20764,7 +20673,6 @@ This command gets the virtual machine object with the name "MyDemoVM01" running 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -20898,7 +20806,6 @@ This command gets the virtual machine object with the name "MyDemoVM01" running 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -21014,7 +20921,6 @@ This command gets the virtual machine object with the name "MyDemoVM01" running 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -21151,7 +21057,6 @@ This command gets the virtual machine object with the name "MyDemoVM01" running 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -21285,7 +21190,6 @@ This command gets the virtual machine object with the name "MyDemoVM01" running 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -21479,7 +21383,6 @@ This command gets the virtual machine object with the name "MyDemoVM01" running 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -21703,7 +21606,6 @@ The default value is Production.</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para>This cmdlet removes only the configuration associated with the specified role. It does not uninstall or remove any already running instances of the Microsoft Antimalware extension from roles. To return these roles to a start state that does not have Microsoft Antimalware running, first remove the configuration by using this cmdlet, and then reimage or redeploy the service.</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -21933,7 +21835,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -22194,7 +22095,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -22401,7 +22301,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -22531,7 +22430,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -22629,7 +22527,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -22794,7 +22691,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -22950,7 +22846,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -23064,7 +22959,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -23178,7 +23072,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -23296,7 +23189,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -23420,7 +23312,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -23642,7 +23533,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -23792,7 +23682,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -24009,7 +23898,6 @@ Get-AzureVMImage `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -24130,7 +24018,6 @@ Get-AzureVMImage `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -24248,7 +24135,6 @@ Get-AzureVMImage `
       </maml:title>
       <maml:alert>
         <maml:para>To avoid interfering with monitoring for other applications or services, this cmdlet removes only the collection of Microsoft Antimalware events. It does not change other application configurations or the default monitoring configuration.</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -24382,7 +24268,6 @@ Get-AzureVMImage `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -24476,7 +24361,6 @@ Get-AzureVMImage `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -24601,7 +24485,6 @@ Get-AzureVMImage `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -24792,7 +24675,6 @@ Get-AzureVMImage `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -24986,7 +24868,6 @@ Get-AzureVMImage `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -25219,7 +25100,6 @@ Get-AzureVMImage `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -25474,7 +25354,6 @@ Get-AzureVMImage `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -25835,7 +25714,6 @@ Get-AzureVMImage `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -26039,7 +25917,6 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -26197,7 +26074,6 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -26401,7 +26277,6 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -26836,7 +26711,6 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -27066,7 +26940,6 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -27424,7 +27297,6 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -27674,7 +27546,6 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -28125,7 +27996,6 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -28329,7 +28199,6 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -28546,7 +28415,6 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -28768,7 +28636,6 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -28939,7 +28806,6 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -29707,7 +29573,6 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -29974,7 +29839,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -30340,7 +30204,6 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -30739,7 +30602,6 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -31084,7 +30946,6 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -31234,7 +31095,6 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -31494,7 +31354,6 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -31660,7 +31519,6 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -32003,7 +31861,6 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -32242,7 +32099,6 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -32742,7 +32598,6 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -33033,7 +32888,6 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -33397,7 +33251,6 @@ A value of "5.0PP" will install the latest release of WMF 5.0PP (http://go.micro
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -33993,7 +33846,6 @@ OperationStatus             : OK</dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -34173,7 +34025,6 @@ OperationStatus             : OK</dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -34325,7 +34176,6 @@ OperationStatus             : OK</dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -34773,7 +34623,6 @@ OperationStatus             : OK</dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -35074,7 +34923,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -35209,7 +35057,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -35345,7 +35192,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -35580,7 +35426,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -35747,7 +35592,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -35900,7 +35744,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -36060,7 +35903,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -36333,7 +36175,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -36531,7 +36372,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -36669,7 +36509,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -36834,7 +36673,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -37262,7 +37100,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -37376,7 +37213,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -37492,7 +37328,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -37630,7 +37465,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -37812,7 +37646,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -37922,7 +37755,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -38231,7 +38063,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -38475,7 +38306,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -38778,7 +38608,6 @@ KeyVaultCredentialSettings : Microsoft.WindowsAzure.Commands.ServiceManagement.I
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -39032,7 +38861,6 @@ ServicePrincipalSecret : LnT+7aXAdafy1VdSo3z8YnZ5pzGU1h3Y7prrwdlUDVc=           
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -39259,7 +39087,6 @@ ServicePrincipalSecret : LnT+7aXAdafy1VdSo3z8YnZ5pzGU1h3Y7prrwdlUDVc=           
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -39467,7 +39294,6 @@ RetentionPeriodInDays : 10                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -39695,7 +39521,6 @@ RetentionPeriodInDays : 10                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>

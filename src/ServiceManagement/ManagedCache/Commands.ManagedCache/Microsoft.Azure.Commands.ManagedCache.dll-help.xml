@@ -82,7 +82,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>Before using this cmdlet, use Add-AzureAccount or Import-AzurePublishSettingsFile to make your Azure account available to Windows PowerShell. For more information, see How to install and configure Azure PowerShell (http://azure.microsoft.com/en-us/documentation/articles/install-configure-powershell/).</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, managed, cache</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -237,7 +236,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, managed, cache</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -447,7 +445,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>Before using this cmdlet, use Add-AzureAccount or Import-AzurePublishSettingsFile to make your Azure account available to Windows PowerShell. For more information, see How to install and configure Azure PowerShell (http://azure.microsoft.com/en-us/documentation/articles/install-configure-powershell/).</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, managed, cache</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -622,7 +619,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, managed, cache</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -835,7 +831,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>Before using this cmdlet, use Add-AzureAccount or Import-AzurePublishSettingsFile to make your Azure account available to Windows PowerShell. For more information, see How to install and configure Azure PowerShell (http://azure.microsoft.com/en-us/documentation/articles/install-configure-powershell/).</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, managed, cache</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1078,7 +1073,6 @@ True</dev:code>
       </maml:title>
       <maml:alert>
         <maml:para>Before using this cmdlet, use Add-AzureAccount or Import-AzurePublishSettingsFile to make your Azure account available to Windows PowerShell. For more information, see How to install and configure Azure PowerShell (http://azure.microsoft.com/en-us/documentation/articles/install-configure-powershell/).</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, managed, cache</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1325,7 +1319,6 @@ Performing the operation "Delete" on target "contosocache".
       </maml:title>
       <maml:alert>
         <maml:para>Before using this cmdlet, use Add-AzureAccount or Import-AzurePublishSettingsFile to make your Azure account available to Windows PowerShell. For more information, see How to install and configure Azure PowerShell (http://azure.microsoft.com/en-us/documentation/articles/install-configure-powershell/).</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, managed, cache</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1588,7 +1581,6 @@ Performing the operation "Delete" on target "contosocache".
       </maml:title>
       <maml:alert>
         <maml:para>Before using this cmdlet, use Add-AzureAccount or Import-AzurePublishSettingsFile to make your Azure account available to Windows PowerShell. For more information, see How to install and configure Azure PowerShell (http://azure.microsoft.com/en-us/documentation/articles/install-configure-powershell/).</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, managed, cache</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1777,7 +1769,6 @@ Performing the operation "Delete" on target "contosocache".
       </maml:title>
       <maml:alert>
         <maml:para>Before using this cmdlet, use Add-AzureAccount or Import-AzurePublishSettingsFile to make your azure account available to Windows PowerShell. For more information, see How to install and configure Azure PowerShell (http://azure.microsoft.com/en-us/documentation/articles/install-configure-powershell/).</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, managed, cache</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1909,7 +1900,6 @@ Performing the operation "Delete" on target "contosocache".
       </maml:title>
       <maml:alert>
         <maml:para>Before using this cmdlet, use Add-AzureAccount or Import-AzurePublishSettingsFile to make your azure account available to Windows PowerShell. For more information, see How to install and configure Azure PowerShell (http://azure.microsoft.com/en-us/documentation/articles/install-configure-powershell/).</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, managed, cache</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>

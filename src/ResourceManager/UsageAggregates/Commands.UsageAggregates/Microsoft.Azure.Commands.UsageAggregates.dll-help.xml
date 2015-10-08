@@ -192,7 +192,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, usage, billing, aggregate</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
