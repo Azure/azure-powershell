@@ -90,11 +90,11 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                     additionalDataLakeAccounts.Add(defaultDataLakeAccount);
                 }
 
-                parameters.DataLakeAnalyticsAccount.Properties.DataLakeAccounts = additionalDataLakeAccounts;
+                parameters.DataLakeAnalyticsAccount.Properties.DataLakeStoreAccounts = additionalDataLakeAccounts;
             }
             else if(defaultDataLakeAccount != null)
             {
-                parameters.DataLakeAnalyticsAccount.Properties.DataLakeAccounts = new List<DataLakeStoreAccount>{defaultDataLakeAccount};
+                parameters.DataLakeAnalyticsAccount.Properties.DataLakeStoreAccounts = new List<DataLakeStoreAccount> { defaultDataLakeAccount };
             }
 
             var accountExists = false;
@@ -257,10 +257,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             account.Properties.DefaultDataLakeAccount = storageToSet.Name;
 
             if (
-                !account.Properties.DataLakeAccounts.Any(
+                !account.Properties.DataLakeStoreAccounts.Any(
                     acct => acct.Name.Equals(storageToSet.Name, StringComparison.InvariantCultureIgnoreCase)))
             {
-                account.Properties.DataLakeAccounts.Add(storageToSet);
+                account.Properties.DataLakeStoreAccounts.Add(storageToSet);
             }
 
             var updateParams = new DataLakeAnalyticsAccountCreateOrUpdateParameters
