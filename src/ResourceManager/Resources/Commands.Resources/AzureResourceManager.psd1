@@ -78,7 +78,9 @@ FormatsToProcess = @(
     '.\AzureRM.OperationalInsights\Microsoft.Azure.Commands.OperationalInsights.format.ps1xml',  
     '.\AzureRM.Backup\Microsoft.Azure.Commands.AzureBackup.format.ps1xml',
     '.\AzureRM.UsageAggregates\Microsoft.Azure.Commands.UsageAggregates.Format.ps1xml',
-    '.\AzureRM.Sql\Microsoft.Azure.Commands.Sql.format.ps1xml'
+    '.\AzureRM.Sql\Microsoft.Azure.Commands.Sql.format.ps1xml',
+	'.\AzureRM.DataLakeAnalytics\Microsoft.Azure.Commands.DataLakeAnalytics.format.ps1xml',
+	'.\AzureRM.DataLakeStore\Microsoft.Azure.Commands.DataLakeStoreFileSystem.format.ps1xml'
 )  
   
 # Modules to import as nested modules of the module specified in ModuleToProcess  
@@ -108,7 +110,9 @@ NestedModules = @(
     '.\AzureRM.HDInsight\Microsoft.Azure.Commands.HDInsight.dll',
     '.\AzureRM.ApiManagement\Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll',  
     '.\AzureRM.Backup\Microsoft.Azure.Commands.AzureBackup.dll',
-    '.\AzureRM.SiteRecovery\Microsoft.Azure.Commands.SiteRecovery.dll'
+    '.\AzureRM.SiteRecovery\Microsoft.Azure.Commands.SiteRecovery.dll',
+	'.\AzureRM.DataLakeAnalytics\Microsoft.Azure.Commands.DataLakeAnalytics.dll',
+	'.\AzureRM.DataLakeStore\Microsoft.Azure.Commands.DataLakeStore.dll'
 )  
   
 # Functions to export from this module  
