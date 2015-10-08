@@ -119,23 +119,23 @@
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\RemoveAzureDataLakeAnalyticsCatalogSecret.cs" />
-    <Compile Include="Commands\SetAzureDataLakeAnalyticsCatalogSecret.cs" />
-    <Compile Include="Commands\NewAzureDataLakeAnalyticsCatalogSecret.cs" />
-    <Compile Include="Commands\TestAzureDataLakeAnalyticsCatalogItem.cs" />
-    <Compile Include="Commands\GetAzureDataLakeAnalyticsCatalogItem.cs" />
-    <Compile Include="Commands\SetAzureDataLakeAnalyticsDataSource.cs" />
-    <Compile Include="Commands\WaitAzureDataLakeAnalyticsJob.cs" />
-    <Compile Include="Commands\TestAzureDataLakeAnalyticsAccount.cs" />
-    <Compile Include="Commands\RemoveAzureDataLakeAnalyticsDataSource.cs" />
-    <Compile Include="Commands\AddAzureDataLakeAnalyticsDataSource.cs" />
-    <Compile Include="Commands\StopAzureDataLakeAnalyticsJob.cs" />
-    <Compile Include="Commands\GetAzureDataLakeAnalyticsJob.cs" />
-    <Compile Include="Commands\GetAzureDataLakeAnalyticsAccount.cs" />
-    <Compile Include="Commands\SubmitAzureDataLakeAnalyticsJob.cs" />
-    <Compile Include="Commands\NewAzureDataLakeAnalyticsAccount.cs" />
-    <Compile Include="Commands\RemoveAzureDataLakeAnalyticsAccount.cs" />
-    <Compile Include="Commands\SetAzureDataLakeAnalyticsAccount.cs" />
+    <Compile Include="Commands\RemoveAzureRmDataLakeAnalyticsCatalogSecret.cs" />
+    <Compile Include="Commands\SetAzureRmDataLakeAnalyticsCatalogSecret.cs" />
+    <Compile Include="Commands\NewAzureRmDataLakeAnalyticsCatalogSecret.cs" />
+    <Compile Include="Commands\TestAzureRmDataLakeAnalyticsCatalogItem.cs" />
+    <Compile Include="Commands\GetAzureRmDataLakeAnalyticsCatalogItem.cs" />
+    <Compile Include="Commands\SetAzureRmDataLakeAnalyticsDataSource.cs" />
+    <Compile Include="Commands\WaitAzureRmDataLakeAnalyticsJob.cs" />
+    <Compile Include="Commands\TestAzureRmDataLakeAnalyticsAccount.cs" />
+    <Compile Include="Commands\RemoveAzureRmDataLakeAnalyticsDataSource.cs" />
+    <Compile Include="Commands\AddAzureRmDataLakeAnalyticsDataSource.cs" />
+    <Compile Include="Commands\StopAzureRmDataLakeAnalyticsJob.cs" />
+    <Compile Include="Commands\GetAzureRmDataLakeAnalyticsJob.cs" />
+    <Compile Include="Commands\GetAzureRmDataLakeAnalyticsAccount.cs" />
+    <Compile Include="Commands\SubmitAzureRmDataLakeAnalyticsJob.cs" />
+    <Compile Include="Commands\NewAzureRmDataLakeAnalyticsAccount.cs" />
+    <Compile Include="Commands\RemoveAzureRmDataLakeAnalyticsAccount.cs" />
+    <Compile Include="Commands\SetAzureRmDataLakeAnalyticsAccount.cs" />
     <Compile Include="Models\CatalogPathInstance.cs" />
     <Compile Include="Models\DataLakeAnalyticsEnums.cs" />
     <Compile Include="Models\DataLakeAnalyticsClient.cs" />
