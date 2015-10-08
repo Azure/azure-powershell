@@ -48,8 +48,6 @@ namespace Microsoft.Azure.Common.Authentication.Models
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            ResourceManagementClient = createClient();
-
             HttpResponseMessage responseMessage = await base.SendAsync(request, cancellationToken).ConfigureAwait(false);
             if (IsProviderNotRegistereError(responseMessage))
             {
@@ -61,6 +59,7 @@ namespace Microsoft.Azure.Common.Authentication.Models
                     registeredProviders.Add(providerName);
                     try
                     {
+                        ResourceManagementClient = createClient();
                         writeDebug(string.Format(Resources.ResourceProviderRegisterAttempt, providerName));
                         ResourceManagementClient.Providers.Register(providerName);
                         Provider provider = null;
