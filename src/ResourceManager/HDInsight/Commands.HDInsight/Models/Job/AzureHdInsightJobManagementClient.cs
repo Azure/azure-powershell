@@ -107,6 +107,19 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
             return HdInsightJobManagementClient.JobManagement.SubmitMapReduceStreamingJob(streamingJobParams);
         }
 
+        public virtual JobSubmissionResponse SubmitSqoopJob(AzureHDInsightSqoopJobDefinition sqoopJobDef)
+        {
+            var sqoopJobParams = new SqoopJobSubmissionParameters
+            {
+                Command = sqoopJobDef.Command,
+                File = sqoopJobDef.File,
+                Files = ConvertListToString(sqoopJobDef.Files, "file"),
+                StatusDir = sqoopJobDef.StatusFolder,
+                UserName = HdInsightJobManagementClient.Credentials.Username
+            };
+            return HdInsightJobManagementClient.JobManagement.SubmitSqoopJob(sqoopJobParams);
+        }
+
         public virtual JobGetResponse GetJob(string jobId)
         {
             return HdInsightJobManagementClient.JobManagement.GetJob(jobId);
@@ -132,6 +145,18 @@ namespace Microsoft.Azure.Commands.HDInsight.Models
         {
             var joboutput = HdInsightJobManagementClient.JobManagement.GetJobErrorLogs(jobid, storageAccountName, storageAccountKey, containerName);
             return joboutput;
+        }
+
+        public Stream GetJobTaskLogSummary(string jobid, string storageAccountName, string storageAccountKey, string containerName)
+        {
+            var joboutput = HdInsightJobManagementClient.JobManagement.GetJobTaskLogSummary(jobid, storageAccountName, storageAccountKey, containerName);
+            return joboutput;
+        }
+
+        public void DownloadJobTaskLogs(string jobid, string targetDirectory, string storageAccountName,
+            string storageAccountKey, string containerName)
+        {
+            HdInsightJobManagementClient.JobManagement.DownloadJobTaskLogs(jobid, targetDirectory, storageAccountName, storageAccountKey, containerName);
         }
 
         public static string ConvertDefinesToString(IDictionary<string, string> defines)

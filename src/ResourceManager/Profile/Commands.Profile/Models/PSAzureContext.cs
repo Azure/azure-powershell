@@ -20,13 +20,18 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <returns>The converted context.</returns>
         public static implicit operator PSAzureContext(AzureContext context)
         {
+            if (context == null)
+            {
+                return null;
+            }
+
             return new PSAzureContext
             {
-                Account = context != null ? context.Account : null,
-                Environment = context != null ? context.Environment : null,
-                Subscription = context != null ? context.Subscription : null,
-                Tenant = context != null ? context.Tenant : null,
-                TokenCache = context != null ? context.TokenCache : null
+                Account = context.Account,
+                Environment = context.Environment,
+                Subscription = context.Subscription,
+                Tenant = context.Tenant,
+                TokenCache = context.TokenCache
             };
         }
 
@@ -37,16 +42,21 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <returns>The converted context.</returns>
         public static implicit operator AzureContext(PSAzureContext context)
         {
-            var result= new AzureContext(context != null ? context.Subscription : null, context != null ? context.Account : null, 
-                context != null ? context.Environment : null, context != null ? context.Tenant : null);
-            result.TokenCache = context!= null? context.TokenCache : null;
+            if (context == null)
+            {
+                return null;
+            }
+
+            var result = new AzureContext(context.Subscription, context.Account, 
+                context.Environment, context.Tenant);
+            result.TokenCache = context.TokenCache;
             return result;
         }
 
         /// <summary>
         /// The account used to connect to Azure.
         /// </summary>
-        public PSAzureAccount Account { get; set; }
+        public PSAzureRmAccount Account { get; set; }
 
         /// <summary>
         /// The endpoint and connection metadata for the targeted instance of the Azure cloud.

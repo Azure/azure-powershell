@@ -58,7 +58,7 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
             set { this.InternalLastModifiedDateUtc = value.ToString(DateTimeFormatInfo.InvariantInfo); }
         }
 
-        public static FileMetaData Create(string filePath, bool skipMd5 = false)
+        public static FileMetaData Create(string filePath)
         {
             var fileInfo = new FileInfo(filePath);
             if(!fileInfo.Exists)
@@ -75,14 +75,14 @@ namespace Microsoft.WindowsAzure.Commands.Sync.Upload
                     LastModifiedDateUtc = DateTime.SpecifyKind(fileInfo.LastWriteTimeUtc, DateTimeKind.Utc),
                     Size = fileInfo.Length,
                     VhdSize = stream.Length,
-                    MD5Hash = skipMd5 ? new byte[0] : CalculateMd5Hash(stream, filePath)
+                    MD5Hash = CalculateMd5Hash(stream, filePath)
                 };
             }
         }
 
         private static byte[] CalculateMd5Hash(Stream stream, string filePath)
         {
-            using (var md5 = MD5.Create())
+            using(var md5 = MD5.Create())
             {
                 using (var swrp = new StreamWithReadProgress(stream, TimeSpan.FromSeconds(1)))
                 {

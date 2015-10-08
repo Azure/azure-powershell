@@ -21,14 +21,14 @@ namespace Microsoft.Azure.Commands.DataFactories.Models
 {
     public class PSDataset
     {
-        private Table dataset;
+        private Dataset dataset;
 
         public PSDataset()
         {
-            this.dataset = new Table() {Properties = new TableProperties()};
+            this.dataset = new Dataset() { Properties = new DatasetProperties() };
         }
 
-        public PSDataset(Table dataset)
+        public PSDataset(Dataset dataset)
         {
             if (dataset == null)
             {
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Models
 
             if (dataset.Properties == null)
             {
-                dataset.Properties = new TableProperties();
+                dataset.Properties = new DatasetProperties();
             }
 
             this.dataset = dataset;
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Models
             }
         }
 
-        public TableTypeProperties Location
+        public DatasetTypeProperties Location
         {
             get
             {
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Models
             }
         }
 
-        public TableProperties Properties
+        public DatasetProperties Properties
         {
             get
             {

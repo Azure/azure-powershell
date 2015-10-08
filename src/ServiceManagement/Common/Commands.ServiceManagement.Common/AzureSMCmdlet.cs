@@ -30,8 +30,6 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
     public abstract class AzureSMCmdlet : AzurePSCmdlet
     {
-        protected static AzureSMProfile _currentProfile = null;
-
         [Parameter(Mandatory = false, HelpMessage = "In-memory profile.")]
         public AzureSMProfile Profile { get; set; }
 
@@ -43,25 +41,14 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             private get
             {
-                if (_currentProfile == null)
-                {
-                    _currentProfile = InitializeDefaultProfile();
-                    SetTokenCacheForProfile(_currentProfile);
-                }
-
-                return _currentProfile;
+                return AzureSMProfileProvider.Instance.Profile;
             }
 
             set
             {
-                SetTokenCacheForProfile(value);
-                _currentProfile = value;
+                AzureSMProfileProvider.Instance.Profile = value;
             }
         }
-
-        protected static TokenCache DefaultDiskTokenCache { get; set; }
-
-        protected static TokenCache DefaultMemoryTokenCache { get; set; }
 
         protected override AzureContext DefaultContext { get { return CurrentProfile.Context; } }
 
@@ -70,69 +57,11 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             if (!TestMockSupport.RunningMocked)
             {
                 AzureSession.ClientFactory.AddAction(new RPRegistrationAction());
-            }
-
-            if (!TestMockSupport.RunningMocked)
-            {
-                InitializeTokenCaches();
                 AzureSession.DataStore = new DiskDataStore();
-                SetTokenCacheForProfile(CurrentProfile);
-            }
+           }
         }
 
-        /// <summary>
-        /// Create the default profile, based on the default profile path
-        /// </summary>
-        /// <returns>The default profile, serialized from the default location on disk</returns>
-        protected static AzureSMProfile InitializeDefaultProfile()
-        {
-            if (!string.IsNullOrEmpty(AzureSession.ProfileDirectory) && !string.IsNullOrEmpty(AzureSession.ProfileFile))
-            {
-                try
-                {
-                   GeneralUtilities.EnsureDefaultProfileDirectoryExists();
-                   return new AzureSMProfile(Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile));
-                }
-                catch
-                {
-                    // swallow exceptions in creating the profile from disk
-                }
-            }
 
-            return new AzureSMProfile();
-        }
-
-        protected static void InitializeTokenCaches()
-        {
-            DefaultMemoryTokenCache = TokenCache.DefaultShared;
-            if (!string.IsNullOrWhiteSpace(AzureSession.ProfileDirectory) &&
-                !string.IsNullOrWhiteSpace(AzureSession.TokenCacheFile))
-            {
-                GeneralUtilities.EnsureDefaultProfileDirectoryExists();
-                DefaultDiskTokenCache = new ProtectedFileTokenCache(Path.Combine(AzureSession.ProfileDirectory, AzureSession.TokenCacheFile));
-            }
-            else
-            {
-                DefaultDiskTokenCache = DefaultMemoryTokenCache;
-            }
-        }
-
-        /// <summary>
-        /// Update the token cache when setting the profile
-        /// </summary>
-        /// <param name="profile"></param>
-        protected static void SetTokenCacheForProfile(AzureSMProfile profile)
-        {
-            var defaultProfilePath = Path.Combine(AzureSession.ProfileDirectory, AzureSession.ProfileFile);
-            if (string.Equals(profile.ProfilePath, defaultProfilePath, StringComparison.OrdinalIgnoreCase))
-            {
-                AzureSession.TokenCache = DefaultDiskTokenCache;
-            }
-            else
-            {
-                AzureSession.TokenCache = DefaultMemoryTokenCache;
-            }
-        }
 
         protected override void SaveDataCollectionProfile()
         {
@@ -224,10 +153,12 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             if (Profile == null)
             {
-                Profile = AzureSMCmdlet.CurrentProfile;
+                Profile = AzureSMProfileProvider.Instance.Profile;
             }
-
-            SetTokenCacheForProfile(Profile);
+            else
+            {
+                AzureSMProfileProvider.Instance.SetTokenCacheForProfile(Profile);
+            }
         }
 
         public virtual void ExecuteCmdlet()

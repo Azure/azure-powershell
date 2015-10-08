@@ -78,15 +78,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.StorageServices
             set;
         }
 
-        [Parameter(Position = 6, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = "Vhd", HelpMessage = "Skip computation of MD5 checksum")]
-        [ValidateNotNullOrEmpty]
-        [Alias("sm")]
-        public SwitchParameter SkipMd5
-        {
-            get;
-            set;
-        }
-
         public UploadParameters ValidateParameters()
         {
             BlobUri destinationUri;
@@ -115,7 +106,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.StorageServices
             PathIntrinsics currentPath = SessionState.Path;
             var filePath = new FileInfo(currentPath.GetUnresolvedProviderPathFromPSPath(LocalFilePath.ToString()));
 
-            var parameters = new UploadParameters(destinationUri, baseImageUri, filePath, OverWrite.IsPresent, SkipMd5.IsPresent, NumberOfUploaderThreads)
+            var parameters = new UploadParameters(destinationUri, baseImageUri, filePath, OverWrite.IsPresent, NumberOfUploaderThreads)
             {
                 Cmdlet = this,
                 BlobObjectFactory = new CloudPageBlobObjectFactory(storageCredentialsFactory, TimeSpan.FromMinutes(1))

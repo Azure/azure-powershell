@@ -45,11 +45,25 @@ function Test-NewDeploymentFromTemplateFile
 	$rglocation = Get-ProviderLocation ResourceManagement
 	$location = Get-ProviderLocation "Microsoft.Web/sites"
 
-	# Test
-	New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+	try
+	{
+		# Test
+		New-AzureRmResourceGroup -Name $rgname -Location $rglocation
 		
-	$deployment = New-AzureRmResourceGroupDeployment -ResourceGroupName $rgname -TemplateFile Build2014_Website_App.json -siteName $rname -hostingPlanName $rname -siteLocation $location -sku Free -workerSize 0
+		$deployment = New-AzureRmResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleTemplate.json -TemplateParameterFile sampleTemplateParams.json
 
-	# Assert
-	Assert-AreEqual Succeeded $deployment.ProvisioningStatelean-ResourceGroup $rgname
+		# Assert
+		Assert-AreEqual Succeeded $deployment.ProvisioningState
+
+		$subId = (Get-AzureRmContext).Subscription.SubscriptionId
+		$deploymentId = "/subscriptions/$subId/resourcegroups/$rgname/providers/Microsoft.Resources/deployments/$rname"
+		$getById = Get-AzureRmResourceGroupDeployment -Id $deploymentId
+		Assert-AreEqual $getById.DeploymentName $deployment.DeploymentName
+	}
+	
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
 }

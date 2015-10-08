@@ -45,15 +45,22 @@ Gets the location for the Website. Default to West US if none found.
 #>
 function Get-Location
 {
-    $location = Get-AzureRmLocation | where {$_.Name -eq "Microsoft.Web/sites"}
-	if ($location -eq $null) 
+	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
 	{
-		return "West US"
-	} 
-	else 
-	{
-        $location.Locations[0]
+		$namespace = "Microsoft.Web"
+		$type = "sites"
+		$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
+  
+		if ($location -eq $null) 
+		{  
+			return "West US"  
+		} else 
+		{  
+			return $location.Locations[0]  
+		}
 	}
+
+	return "WestUS"
 }
 
 <#

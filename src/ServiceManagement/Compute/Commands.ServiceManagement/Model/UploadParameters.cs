@@ -21,13 +21,12 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
 {
     public class UploadParameters
     {
-        public UploadParameters(BlobUri destinationUri, BlobUri baseImageUri, FileInfo localFilePath, bool overWrite, bool skipMd5, int numberOfUploaderThreads)
+        public UploadParameters(BlobUri destinationUri, BlobUri baseImageUri, FileInfo localFilePath, bool overWrite, int numberOfUploaderThreads)
         {
             DestinationUri = destinationUri;
             BaseImageUri = baseImageUri;
             LocalFilePath = localFilePath;
             OverWrite = overWrite;
-            SkipMd5 = skipMd5;
             NumberOfUploaderThreads = numberOfUploaderThreads;
         }
 
@@ -38,8 +37,6 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
         public FileInfo LocalFilePath { get; private set; }
 
         public bool OverWrite { get; private set; }
-
-        public bool SkipMd5 { get; private set; }
 
         public int NumberOfUploaderThreads { get; private set; }
 
