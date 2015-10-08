@@ -6,6 +6,7 @@
       <command:name>Add-AzureRmApiManagementApiToProduct</command:name>
       <maml:description>
         <maml:para>Adds existing API to existing Product.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -162,7 +163,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -197,6 +197,7 @@
       <command:name>Add-AzureRmApiManagementProductToGroup</command:name>
       <maml:description>
         <maml:para>Adds existing product to existing group. In other words assigns a group to a product.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -353,7 +354,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -388,6 +388,7 @@
       <command:name>Add-AzureRmApiManagementUserToGroup</command:name>
       <maml:description>
         <maml:para>Adds existing user to existing group.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -544,7 +545,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -579,6 +579,7 @@
       <command:name>Export-AzureRmApiManagementApi</command:name>
       <maml:description>
         <maml:para>Export API to file in one of the supported formats.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -817,7 +818,6 @@ true/false</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -852,6 +852,7 @@ true/false</maml:para>
       <command:name>Get-AzureRmApiManagementApi</command:name>
       <maml:description>
         <maml:para>Gets a list or a particular API description.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1069,7 +1070,6 @@ true/false</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1146,6 +1146,7 @@ true/false</maml:para>
       <command:name>Get-AzureRmApiManagementAuthorizationServer</command:name>
       <maml:description>
         <maml:para>Gets all or specific authorization servers.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1272,7 +1273,6 @@ true/false</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1328,6 +1328,7 @@ true/false</maml:para>
       <command:name>Get-AzureRmApiManagementCertificate</command:name>
       <maml:description>
         <maml:para>Gets all or specific certificates.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1461,7 +1462,6 @@ true/false</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1517,6 +1517,7 @@ true/false</maml:para>
       <command:name>Get-AzureRmApiManagementGroup</command:name>
       <maml:description>
         <maml:para>Gets all or specific groups.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1775,7 +1776,6 @@ true/false</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1873,6 +1873,7 @@ true/false</maml:para>
       <command:name>Get-AzureRmApiManagementOperation</command:name>
       <maml:description>
         <maml:para>Gets a list or a particular API Operation.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2045,7 +2046,6 @@ true/false</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2101,6 +2101,7 @@ true/false</maml:para>
       <command:name>Get-AzureRmApiManagementPolicy</command:name>
       <maml:description>
         <maml:para>Gets specified scope policy.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2448,7 +2449,6 @@ true/false</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2546,6 +2546,7 @@ true/false</maml:para>
       <command:name>Get-AzureRmApiManagementProduct</command:name>
       <maml:description>
         <maml:para>Gets a list or a particular Product.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2728,7 +2729,6 @@ true/false</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2784,6 +2784,7 @@ true/false</maml:para>
       <command:name>Get-AzureRmApiManagementSubscription</command:name>
       <maml:description>
         <maml:para>Gets all or specific subscriptions.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3001,7 +3002,6 @@ true/false</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3099,6 +3099,7 @@ true/false</maml:para>
       <command:name>Get-AzureRmApiManagementUser</command:name>
       <maml:description>
         <maml:para>Gets all or specific user.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3359,7 +3360,6 @@ true/false</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3478,6 +3478,7 @@ true/false</maml:para>
       <command:name>Get-AzureRmApiManagementUserSsoUrl</command:name>
       <maml:description>
         <maml:para>Generates SSO URL for the user.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3594,7 +3595,6 @@ true/false</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3629,6 +3629,7 @@ true/false</maml:para>
       <command:name>Import-AzureRmApiManagementApi</command:name>
       <maml:description>
         <maml:para>Imports API from file or URL in one of the supported formats.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3863,7 +3864,6 @@ Imported API</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3940,6 +3940,7 @@ Imported API</maml:para>
       <command:name>New-AzureRmApiManagementApi</command:name>
       <maml:description>
         <maml:para>Creates new API.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4249,7 +4250,6 @@ Imported API</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4284,6 +4284,7 @@ Imported API</maml:para>
       <command:name>New-AzureRmApiManagementAuthorizationServer</command:name>
       <maml:description>
         <maml:para>Creates new authorization server.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4720,7 +4721,6 @@ Imported API</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4755,6 +4755,7 @@ Imported API</maml:para>
       <command:name>New-AzureRmApiManagementCertificate</command:name>
       <maml:description>
         <maml:para>Creates new certificate.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4962,7 +4963,6 @@ Imported API</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4997,6 +4997,7 @@ Imported API</maml:para>
       <command:name>New-AzureRmApiManagementContext</command:name>
       <maml:description>
         <maml:para>Create PsAzureApiManagementContext.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5113,7 +5114,6 @@ Imported API</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5148,6 +5148,7 @@ Imported API</maml:para>
       <command:name>New-AzureRmApiManagementGroup</command:name>
       <maml:description>
         <maml:para>Creates new group.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5304,7 +5305,6 @@ Imported API</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5339,6 +5339,7 @@ Imported API</maml:para>
       <command:name>New-AzureRmApiManagementOperation</command:name>
       <maml:description>
         <maml:para>Create new API Operation.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5615,7 +5616,6 @@ Imported API</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5702,6 +5702,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       <command:name>New-AzureRmApiManagementProduct</command:name>
       <maml:description>
         <maml:para>Creates new product.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5998,7 +5999,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6054,6 +6054,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       <command:name>New-AzureRmApiManagementSubscription</command:name>
       <maml:description>
         <maml:para>Creates new subscription.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6290,7 +6291,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6325,6 +6325,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       <command:name>New-AzureRmApiManagementUser</command:name>
       <maml:description>
         <maml:para>Register new user.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6561,7 +6562,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6596,6 +6596,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       <command:name>Remove-AzureRmApiManagementApi</command:name>
       <maml:description>
         <maml:para>Remove existing API.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6752,7 +6753,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6787,6 +6787,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       <command:name>Remove-AzureRmApiManagementApiFromProduct</command:name>
       <maml:description>
         <maml:para>Removes existing API from existing Product.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6943,7 +6944,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6978,6 +6978,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       <command:name>Remove-AzureRmApiManagementAuthorizationServer</command:name>
       <maml:description>
         <maml:para>Deletes existing authorization server.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7134,7 +7135,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7170,6 +7170,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       <command:name>Remove-AzureRmApiManagementCertificate</command:name>
       <maml:description>
         <maml:para>Deletes existing certificate.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7326,7 +7327,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7361,6 +7361,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       <command:name>Remove-AzureRmApiManagementGroup</command:name>
       <maml:description>
         <maml:para>Deletes existing group.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7517,7 +7518,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7552,6 +7552,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       <command:name>Remove-AzureRmApiManagementOperation</command:name>
       <maml:description>
         <maml:para>Remove existing operation.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7728,7 +7729,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7763,6 +7763,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       <command:name>Remove-AzureRmApiManagementPolicy</command:name>
       <maml:description>
         <maml:para>Removes policy from specified scope.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8059,7 +8060,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8157,6 +8157,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       <command:name>Remove-AzureRmApiManagementProduct</command:name>
       <maml:description>
         <maml:para>Remove existing product.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8333,7 +8334,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8368,6 +8368,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       <command:name>Remove-AzureRmApiManagementProductFromGroup</command:name>
       <maml:description>
         <maml:para>Removes existing product from existing group.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8525,7 +8526,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8560,6 +8560,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       <command:name>Remove-AzureRmApiManagementSubscription</command:name>
       <maml:description>
         <maml:para>Deletes existing subscription.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8716,7 +8717,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8751,6 +8751,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       <command:name>Remove-AzureRmApiManagementUser</command:name>
       <maml:description>
         <maml:para>Deletes existing user.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8927,7 +8928,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8962,6 +8962,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       <command:name>Remove-AzureRmApiManagementUserFromGroup</command:name>
       <maml:description>
         <maml:para>Removes existing user from existing group. </maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -9119,7 +9120,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -9154,6 +9154,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       <command:name>Set-AzureRmApiManagementApi</command:name>
       <maml:description>
         <maml:para>Set API details.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -9470,7 +9471,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -9505,6 +9505,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       <command:name>Set-AzureRmApiManagementAuthorizationServer</command:name>
       <maml:description>
         <maml:para>Sets authorization server details.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -9961,7 +9962,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -9996,6 +9996,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       <command:name>Set-AzureRmApiManagementCertificate</command:name>
       <maml:description>
         <maml:para>Sets certificate data.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -10230,7 +10231,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -10265,6 +10265,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       <command:name>Set-AzureRmApiManagementGroup</command:name>
       <maml:description>
         <maml:para>Sets existing group details.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -10441,7 +10442,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -10476,6 +10476,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       <command:name>Set-AzureRmApiManagementOperation</command:name>
       <maml:description>
         <maml:para>Set API Operation details.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -10772,7 +10773,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -10807,6 +10807,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       <command:name>Set-AzureRmApiManagementPolicy</command:name>
       <maml:description>
         <maml:para>Set specified scope policy.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -11185,7 +11186,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -11283,6 +11283,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       <command:name>Set-AzureRmApiManagementProduct</command:name>
       <maml:description>
         <maml:para>Sets Product details.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -11599,7 +11600,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -11634,6 +11634,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       <command:name>Set-AzureRmApiManagementSubscription</command:name>
       <maml:description>
         <maml:para>Sets existing subscription details.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -11890,7 +11891,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -11925,6 +11925,7 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       <command:name>Set-AzureRmApiManagementUser</command:name>
       <maml:description>
         <maml:para>Sets user details.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -12181,7 +12182,6 @@ New-AzureRmApiManagementOperation –Context $apimContext –ApiId $apiId –Ope
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apism</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>

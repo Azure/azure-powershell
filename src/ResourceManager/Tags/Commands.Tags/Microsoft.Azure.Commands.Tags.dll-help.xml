@@ -6,6 +6,7 @@
       <command:name>Get-AzureRmTag</command:name>
       <maml:description>
         <maml:para>Gets predefined Azure tags</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, tag, tags, resource, group</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -103,7 +104,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, tag, tags, resource, group</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -239,6 +239,7 @@ Values:
       <command:name>New-AzureRmTag</command:name>
       <maml:description>
         <maml:para>Creates a predefined Azure tag or adds values to an existing tag</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, tag, tags, resource, group</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -336,7 +337,6 @@ Values:
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, tag, tags, resource, group</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -523,6 +523,7 @@ Tags:
       <command:name>Remove-AzureRmTag</command:name>
       <maml:description>
         <maml:para>Deletes predefined Azure tags or values</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, tag, tags, resource, group</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -660,7 +661,6 @@ Tags:
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, tag, tags, resource, group</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>

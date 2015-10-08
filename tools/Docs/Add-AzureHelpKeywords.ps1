@@ -91,35 +91,20 @@ $Pairs | foreach {
 		$key = $_
 		$filePath = Resolve-Path ("..\..\src\" + $key)
 		$xml = [xml](Get-Content $filePath)
-		Select-Xml -Xml $xml -XPath '//cmd:command/maml:alertSet/maml:alert/maml:para[starts-with(text(),"Keywords:")]' -Namespace $ns | foreach {
-			# all the commands in the help-xml that does have an alert para element that starts with Keywords
-			$_.Node.RemoveAll()
+		Select-Xml -Xml $xml -XPath '//cmd:command/cmd:details/maml:description/maml:para[starts-with(text(),"Keywords:")]' -Namespace $ns | foreach {
+			# all the commands in the help-xml that does have a description para element that starts with Keywords
+			$_.Node.RemoveAll() | Out-Null
 			# just remove the text node and replace with the latest keywords
-			$_.Node.AppendChild($xml.CreateTextNode("Keywords: " + (($defaults + $files[$key]) -join ', ')))  | Out-Null
+			$_.Node.AppendChild($xml.CreateTextNode("Keywords: " + (($defaults + $files[$key]) -join ', '))) | Out-Null
 		}
 
-		Select-Xml -Xml $xml -XPath '//cmd:command[not(maml:alertSet/maml:alert/maml:para[starts-with(text(),"Keywords:")])]' -Namespace $ns | foreach {
+		Select-Xml -Xml $xml -XPath '//cmd:command/cmd:details/maml:description[not(maml:para[starts-with(text(),"Keywords:")])]' -Namespace $ns | foreach {
 			# all the commands in the help-xml that do not have an alert para element that starts with Keywords
-			$para = $xml.CreateElement("maml:para", $ns["maml"])
+			$para = $xml.CreateElement("maml:para", $ns["maml"]) | Out-Null
 			# build the para keywords
 			$para.AppendChild($xml.CreateTextNode("Keywords: " + (($defaults + $files[$key]) -join ', ')))  | Out-Null
-
-			# check for an alertSet and build one if needed
-			$alertSet = ($_ | Select-Xml -XPath "maml:alertSet" -Namespace $ns)
-			if($alertSet.count -le 0){
-				$_.Node.AppendChild($xml.CreateElement("maml:alertSet", $ns["maml"]))  | Out-Null
-				$alertSet = ($_ | Select-Xml -XPath "maml:alertSet" -Namespace $ns)
-			}
-
-			# check for an alert element and build if needed
-			$alert = ($alertSet[0] | Select-Xml -XPath "maml:alert" -Namespace $ns)
-			if($alert.count -le 0){
-				$alertSet[0].Node.AppendChild($xml.CreateElement("maml:alert", $ns["maml"])) | Out-Null
-				$alert = ($alertSet[0] | Select-Xml -XPath "maml:alert" -Namespace $ns)
-			}
-
-			# finally append the para to the alert to end the process
-			$alert[0].Node.AppendChild($para) | Out-Null
+			#append the child to the description
+			$_.Node.AppendChild($para) | Out-Null
 		}
 		
 		# write the file back to where we read it from

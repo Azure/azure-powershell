@@ -6,6 +6,7 @@
       <command:name>Add-AzureCertificate</command:name>
       <maml:description>
         <maml:para>Uploads a service certificate for the specified cloud service.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -125,7 +126,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -200,6 +200,7 @@
       <command:name>Add-AzureDataDisk</command:name>
       <maml:description>
         <maml:para>Adds a new data disk to a virtual machine object.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -521,7 +522,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -609,6 +609,7 @@
       <command:name>Add-AzureDisk</command:name>
       <maml:description>
         <maml:para>Adds a new disk to the Microsoft Azure disk repository.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -747,7 +748,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -827,6 +827,7 @@
       <command:name>Add-AzureDns</command:name>
       <maml:description>
         <maml:para>Adds a DNS server to an existing cloud service.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -959,7 +960,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -996,6 +996,7 @@
 		</command:name>
       <maml:description>
         <maml:para>Add endpoint to the persistent VM object.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -1598,7 +1599,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -1714,6 +1714,7 @@ get-azurevm -ServiceName "mySvc" -Name "MyVM1" | Add-AzureEndpoint -Name "HttpIn
           Add-AzureInternalLoadBalancer [-InternalLoadBalancerName] &lt;string&gt; [-ServiceName] &lt;string&gt; [-SubnetName] &lt;string&gt; [&lt;CommonParameters&gt;]
 
           Add-AzureInternalLoadBalancer [-InternalLoadBalancerName] &lt;string&gt; [-ServiceName] &lt;string&gt; [-SubnetName] &lt;string&gt; [-StaticVNetIPAddress] &lt;ipaddress&gt; [&lt;CommonParameters&gt;]</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1906,7 +1907,6 @@ get-azurevm -ServiceName "mySvc" -Name "MyVM1" | Add-AzureEndpoint -Name "HttpIn
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1973,6 +1973,7 @@ get-azurevm -ServiceName "mySvc" -Name "MyVM1" | Add-AzureEndpoint -Name "HttpIn
       <command:name>Add-AzureProvisioningConfig</command:name>
       <maml:description>
         <maml:para>Adds the provisioning configuration to a Microsoft Azure virtual machine.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2809,7 +2810,6 @@ On Linux, this data is passed to the VM via the ovf-env.xml file, which is copie
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2974,6 +2974,7 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <command:name>Add-AzureVhd</command:name>
       <maml:description>
         <maml:para>Uploads a VHD file from an on premise machine to a blob in a cloud storage account in Microsoft Azure</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3147,7 +3148,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3231,6 +3231,7 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       </command:name>
       <maml:description>
         <maml:para>The Add-AzureVMImage cmdlet adds a new operating system (OS) image  or a new VM Image to the image repository. The image should be a sysprep'd or generalized image.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -3682,7 +3683,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -3782,6 +3782,7 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <command:name>Export-AzureVM</command:name>
       <maml:description>
         <maml:para>Exports a Microsoft Azure virtual machine state to a file.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3903,7 +3904,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3944,6 +3944,7 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <command:name>Get-AzureAclConfig</command:name>
       <maml:description>
         <maml:para>Gets the ACL configuration object from an existing Azure VM.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4043,7 +4044,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4089,6 +4089,7 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <command:name>Get-AzureAffinityGroup</command:name>
       <maml:description>
         <maml:para>Returns an object that represents a Microsoft Azure affinity group.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4167,7 +4168,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4198,6 +4198,7 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <command:name>Get-AzureCertificate</command:name>
       <maml:description>
         <maml:para>Gets a certificate object from the specified Microsoft Azure service.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4317,7 +4318,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4375,6 +4375,7 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <command:name>Get-AzureDataDisk</command:name>
       <maml:description>
         <maml:para>Gets a Microsoft Azure data disk object.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4474,7 +4475,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4561,6 +4561,7 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:description>
         <maml:para>
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4665,7 +4666,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4738,6 +4738,7 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <command:name>Get-AzureDisk</command:name>
       <maml:description>
         <maml:para>Gets an object with information on disks in the Microsoft Azure disk repository.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4817,7 +4818,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4898,6 +4898,7 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <command:name>Get-AzureDns</command:name>
       <maml:description>
         <maml:para>Gets an object with the DNS settings for the Microsoft Azure deployment.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4977,7 +4978,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5008,6 +5008,7 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <command:name>Get-AzureEndpoint</command:name>
       <maml:description>
         <maml:para>Gets an object with information about the endpoints assigned to a Microsoft Azure virtual machine.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5107,7 +5108,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5158,6 +5158,7 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <command:name>Get-AzureInternalLoadBalancer</command:name>
       <maml:description>
         <maml:para>Get-AzureInternalLoadBalancer [-ServiceName] &lt;string&gt; [&lt;CommonParameters&gt;]</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5238,7 +5239,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5273,6 +5273,7 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <command:name>Get-AzureLocation</command:name>
       <maml:description>
         <maml:para>Gets the available data center locations for the current Microsoft Azure subscription.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5332,7 +5333,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5378,6 +5378,7 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <command:name>Get-AzureOSDisk</command:name>
       <maml:description>
         <maml:para>Gets the operating system disk object for the specified Microsoft Azure virtual machine.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5457,7 +5458,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5488,6 +5488,7 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <command:name>Get-AzureOSVersion</command:name>
       <maml:description>
         <maml:para>Returns an object with all the available Microsoft Azure guest operating systems.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5547,7 +5548,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5595,6 +5595,7 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <command:name>Get-AzurePublicIP</command:name>
       <maml:description>
         <maml:para>Get-AzurePublicIP [[-PublicIPName] &lt;string&gt;] -VM &lt;IPersistentVM&gt; [&lt;CommonParameters&gt;]</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5697,7 +5698,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5732,6 +5732,7 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <command:name>Get-AzureRemoteDesktopFile</command:name>
       <maml:description>
         <maml:para>Gets a remote desktop connection file (.RDP) for the specified Microsoft Azure virtual machine.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5895,7 +5896,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5948,6 +5948,7 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <command:name>Get-AzureReservedIP</command:name>
       <maml:description>
         <maml:para>Get the Reserved IP by its name or lists all the Reserved IPs in the subscription.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6027,7 +6028,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6078,6 +6078,7 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <command:name>Get-AzureRole</command:name>
       <maml:description>
         <maml:para>Returns a list of roles in your Microsoft Azure service.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6217,7 +6218,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6305,6 +6305,7 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <command:name>Get-AzureRoleSize</command:name>
       <maml:description>
         <maml:para>Get the role size information for the current subscription.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6384,7 +6385,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6483,6 +6483,7 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <command:name>Get-AzureService</command:name>
       <maml:description>
         <maml:para>Returns an object with information about the cloud services for the current subscription.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6561,7 +6562,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6636,6 +6636,7 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <command:name>Get-AzureServiceADDomainExtension</command:name>
       <maml:description>
         <maml:para>This cmdlet gets the cloud service AD domain extension applied on all roles or named roles at a certain deployment slot.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6737,7 +6738,6 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6772,6 +6772,7 @@ New-AzureVMConfig -Name "MyNonDomainVM" -InstanceSize Small -ImageName $img `
       <command:name>Get-AzureServiceAntimalwareConfig</command:name>
       <maml:description>
         <maml:para>Gets configuration details for the Microsoft Antimalware extension for a service.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6879,7 +6880,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6941,6 +6941,7 @@ The default value is Production.</maml:para>
       <command:name>Get-AzureServiceAvailableExtension</command:name>
       <maml:description>
         <maml:para>Get information for the latest available extensions for hosted services.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7114,7 +7115,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7235,6 +7235,7 @@ The default value is Production.</maml:para>
       <command:name>Get-AzureServiceDiagnosticsExtension</command:name>
       <maml:description>
         <maml:para>This cmdlet gets the cloud service diagnostics extension applied on all roles or named roles at a certain deployment slot.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7334,7 +7335,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7369,6 +7369,7 @@ The default value is Production.</maml:para>
       <command:name>Get-AzureServiceExtension</command:name>
       <maml:description>
         <maml:para>This cmdlet gets existing cloud service extensions that are applied on a deployment.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7510,7 +7511,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7561,6 +7561,7 @@ The default value is Production.</maml:para>
       <command:name>Get-AzureServiceRemoteDesktopExtension</command:name>
       <maml:description>
         <maml:para>This cmdlet gets the cloud service remote desktop extension applied on all roles or named roles at a certain deployment slot.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7660,7 +7661,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7695,6 +7695,7 @@ The default value is Production.</maml:para>
       <command:name>Get-AzureStaticVNetIP</command:name>
       <maml:description>
         <maml:para>Get the static VNet IP address information from a VM object, if any.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7774,7 +7775,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7793,6 +7793,7 @@ The default value is Production.</maml:para>
       <command:name>Get-AzureStorageAccount</command:name>
       <maml:description>
         <maml:para>Gets the storage accounts for the current Microsoft Azure subscription.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7870,7 +7871,6 @@ The default value is Production.</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para>node-dev, php-dev</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7950,6 +7950,7 @@ The default value is Production.</maml:para>
       <command:name>Get-AzureStorageKey</command:name>
       <maml:description>
         <maml:para>Returns the primary and secondary storage account keys for a Microsoft Azure storage account.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8028,7 +8029,6 @@ The default value is Production.</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para>node-dev, php-dev</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8101,6 +8101,7 @@ The default value is Production.</maml:para>
       <command:name>Get-AzureSubnet</command:name>
       <maml:description>
         <maml:para>Gets a list of subnets associated with the specified Microsoft Azure virtual machine.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8180,7 +8181,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8217,6 +8217,7 @@ The default value is Production.</maml:para>
       <command:name>Get-AzureVM</command:name>
       <maml:description>
         <maml:para>Retrieves information from one or more Microsoft Azure virtual machines.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8319,7 +8320,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8420,6 +8420,7 @@ The default value is Production.</maml:para>
       <command:name>Get-AzureVMAccessExtension</command:name>
       <maml:description>
         <maml:para>This cmdlet gets the VMAccess extension (if any) applied on the VM.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8499,7 +8500,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8534,6 +8534,7 @@ The default value is Production.</maml:para>
       <command:name>Get-AzureVMAvailableExtension</command:name>
       <maml:description>
         <maml:para>Get information for the latest available extensions for VMs.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8707,7 +8708,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8898,6 +8898,7 @@ The default value is Production.</maml:para>
       <command:name>Get-AzureVMBGInfoExtension</command:name>
       <maml:description>
         <maml:para>This cmdlet gets the BGInfo extension (if any) applied on the VM.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8977,7 +8978,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -9012,6 +9012,7 @@ The default value is Production.</maml:para>
       <command:name>Get-AzureVMCustomScriptExtension</command:name>
       <maml:description>
         <maml:para>Get Azure VM Custom Script Extension Information.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -9091,7 +9092,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -9127,6 +9127,7 @@ The default value is Production.</maml:para>
       <maml:description>
         <maml:para>
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -9209,7 +9210,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -9225,6 +9225,7 @@ The default value is Production.</maml:para>
 		</command:name>
       <maml:description>
         <maml:para>Gets the settings of the DSC extension on a particular VM.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -9327,7 +9328,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -9354,6 +9354,7 @@ The default value is Production.</maml:para>
 		</command:name>
       <maml:description>
         <maml:para>Get the DSC Extension status for all the vm's deployed in a cloud service or for a particular vm in the service.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -9479,7 +9480,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -9504,6 +9504,7 @@ The default value is Production.</maml:para>
       <command:name>Get-AzureVMExtension</command:name>
       <maml:description>
         <maml:para>This cmdlet gets resource extensions applied on VMs.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -9676,7 +9677,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -9711,6 +9711,7 @@ The default value is Production.</maml:para>
       <command:name>Get-AzureVMImage</command:name>
       <maml:description>
         <maml:para>The Get-AzureVMImage cmdlet gets the properties on one or a list of OS or VM image in the image repository.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -9790,7 +9791,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -9859,6 +9859,7 @@ The default value is Production.</maml:para>
       <command:name>Get-AzureVMImageDiskConfigSet</command:name>
       <maml:description>
         <maml:para>This cmdlet returns an object for disk configuration set, which is from the input image context.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -9937,7 +9938,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -9972,6 +9972,7 @@ The default value is Production.</maml:para>
       <command:name>Get-AzureVMMicrosoftAntimalwareExtension</command:name>
       <maml:description>
         <maml:para>Gets the Microsoft Antimalware extension details for a virtual machine.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -10048,7 +10049,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -10097,6 +10097,7 @@ The default value is Production.</maml:para>
       <command:name>Get-AzureVMPuppetExtension</command:name>
       <maml:description>
         <maml:para>This cmdlet gets the Puppet extension (if any) applied on the VM.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -10176,7 +10177,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -10211,6 +10211,7 @@ The default value is Production.</maml:para>
       <command:name>Get-AzureVNetConfig</command:name>
       <maml:description>
         <maml:para>Gets the Microsoft Azure virtual network configuration from the current subscription.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -10290,7 +10291,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -10353,6 +10353,7 @@ The default value is Production.</maml:para>
       <command:name>Get-AzureVNetConnection</command:name>
       <maml:description>
         <maml:para>Returns an object with all of the virtual network connections to the specified Microsoft Azure virtual network.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -10432,7 +10433,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -10473,6 +10473,7 @@ The default value is Production.</maml:para>
       <command:name>Get-AzureVNetGateway</command:name>
       <maml:description>
         <maml:para>Retrieves an object with information about a Microsoft Azure virtual network gateway.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -10552,7 +10553,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -10583,6 +10583,7 @@ The default value is Production.</maml:para>
       <command:name>Get-AzureVNetGatewayKey</command:name>
       <maml:description>
         <maml:para>Returns a shared key that can be used to configure a VPN device.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -10682,7 +10683,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -10713,6 +10713,7 @@ The default value is Production.</maml:para>
       <command:name>Get-AzureVNetSite</command:name>
       <maml:description>
         <maml:para>Returns an object describing Microsoft Azure virtual networks.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -10792,7 +10793,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -10855,6 +10855,7 @@ The default value is Production.</maml:para>
       <command:name>Get-AzureWinRMUri</command:name>
       <maml:description>
         <maml:para>Retrieves the uri to WinRM https listener to a VM or a list of VMs in a hosted service.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -10954,7 +10955,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -11010,6 +11010,7 @@ The default value is Production.</maml:para>
       <command:name>Import-AzureVM</command:name>
       <maml:description>
         <maml:para>Imports a Microsoft Azure virtual machine state from a file.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -11091,7 +11092,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -11132,6 +11132,7 @@ The default value is Production.</maml:para>
       <command:name>Move-AzureDeployment</command:name>
       <maml:description>
         <maml:para>Swaps the deployments in production and staging.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -11210,7 +11211,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -11261,6 +11261,7 @@ The default value is Production.</maml:para>
       <command:name>New-AzureAclConfig</command:name>
       <maml:description>
         <maml:para>Creates a new empty ACL configuration object.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -11320,7 +11321,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -11366,6 +11366,7 @@ The default value is Production.</maml:para>
       <command:name>New-AzureAffinityGroup</command:name>
       <maml:description>
         <maml:para>Creates a new affinity group for the current Microsoft Azure subscription.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -11504,7 +11505,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -11550,6 +11550,7 @@ The default value is Production.</maml:para>
       <command:name>New-AzureCertificateSetting</command:name>
       <maml:description>
         <maml:para>Creates a setting object to insert an existing certificate into new Microsoft Azure virtual machines.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -11649,7 +11650,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -11701,6 +11701,7 @@ The default value is Production.</maml:para>
       <command:name>New-AzureDeployment</command:name>
       <maml:description>
         <maml:para>Creates a new deployment from a service comprising web roles and worker roles.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -11939,7 +11940,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -12007,6 +12007,7 @@ The default value is Production.</maml:para>
       <command:name>New-AzureDns</command:name>
       <maml:description>
         <maml:para>Creates a DNS settings object to be used when creating a Microsoft Azure deployment.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -12106,7 +12107,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -12159,6 +12159,7 @@ The default value is Production.</maml:para>
           New-AzureInternalLoadBalancerConfig [-InternalLoadBalancerName] &lt;string&gt; [-SubnetName] &lt;string&gt; [-StaticVNetIPAddress] &lt;ipaddress&gt; [&lt;CommonParameters&gt;]
 
           New-AzureInternalLoadBalancerConfig [-InternalLoadBalancerName] &lt;string&gt; [-SubnetName] &lt;string&gt; [&lt;CommonParameters&gt;]</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -12313,7 +12314,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -12351,6 +12351,7 @@ The default value is Production.</maml:para>
       <maml:description>
         <maml:para>
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -13160,7 +13161,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -13348,6 +13348,7 @@ The default value is Production.</maml:para>
                </command:name>
       <maml:description>
         <maml:para>Create a Reserved IP.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -13555,7 +13556,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -13642,6 +13642,7 @@ New-AzureReservedIP -ReservedIPName resip14 -Location "West Europe" -ServiceName
       <maml:description>
         <maml:para>This cmdlet associates a Reserved IP Address to an existing VM's or a cloud service's VIP (Virtual IP).  ReservedIPName is the name of the reserved IP in the subscription. It has to be a free IP, (i.e. not in use). 
 </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -13830,7 +13831,6 @@ The operation will take about 30 seconds to complete, after which the VM/Service
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -13885,6 +13885,7 @@ Set-AzureReservedIPAssociation -ReservedIPName resip14 -ServiceName piptestweste
                </command:name>
       <maml:description>
         <maml:para>This cmdlet removes the association of the Reserved IP Address from the VM/Cloud Service. </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -14094,7 +14095,6 @@ Set-AzureReservedIPAssociation -ReservedIPName resip14 -ServiceName piptestweste
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -14151,6 +14151,7 @@ Remove-AzureReservedIPAssociation -ReservedIPName resip14 -ServiceName piptestwe
         <maml:para>Add a virtual IP to your Cloud Service.
 Add-AzureVirtualIP [-ServiceName] &lt;string&gt; [-VirtualIPName] &lt;string&gt; [-Profile &lt;AzureProfile&gt;] [&lt;CommonParameters&gt;]
 </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -14326,7 +14327,6 @@ Your subscription will only be charged for extra VIPs once they are associated w
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -14388,6 +14388,7 @@ Add-AzureVirtualIP   4bd7b638-d2e7-216f-ba38-5221233d70ce Succeeded             
         <maml:para>Deletes a virtual IP from your Cloud Service.
 Remove-AzureVirtualIP [-ServiceName] &lt;string&gt; [-VirtualIPName] &lt;string&gt; [-Force] [-Profile &lt;AzureProfile&gt;] [&lt;CommonParameters&gt;]
 </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -14634,7 +14635,6 @@ Remove-AzureVirtualIP [-ServiceName] &lt;string&gt; [-VirtualIPName] &lt;string&
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -14688,6 +14688,7 @@ Remove-AzureVirtualIP -VirtualIPName "MyVip" -ServiceName  "mySvc"              
       <command:name>New-AzureService</command:name>
       <maml:description>
         <maml:para>Creates a new Microsoft Azure service.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -14900,7 +14901,6 @@ Remove-AzureVirtualIP -VirtualIPName "MyVip" -ServiceName  "mySvc"              
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -14963,6 +14963,7 @@ Remove-AzureVirtualIP -VirtualIPName "MyVip" -ServiceName  "mySvc"              
       <command:name>New-AzureServiceADDomainExtensionConfig</command:name>
       <maml:description>
         <maml:para>This cmdlet generates the configuration for AD Domain extension for cloud services.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -15588,7 +15589,6 @@ Remove-AzureVirtualIP -VirtualIPName "MyVip" -ServiceName  "mySvc"              
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -15625,6 +15625,7 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
       <command:name>New-AzureServiceDiagnosticsExtensionConfig</command:name>
       <maml:description>
         <maml:para>This cmdlet generates configuration of diagnostics extension for specified role(s) or all roles.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -16470,7 +16471,6 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -16521,6 +16521,7 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
       <command:name>New-AzureServiceExtensionConfig</command:name>
       <maml:description>
         <maml:para>This cmdlet creates a cloud service extension configuration for a deployment.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -16815,7 +16816,6 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -16866,6 +16866,7 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
       <command:name>New-AzureServiceRemoteDesktopExtensionConfig</command:name>
       <maml:description>
         <maml:para>This cmdlets generates configuration of remote desktop extension for any deployment.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -17106,7 +17107,6 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -17157,6 +17157,7 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
       <command:name>New-AzureSSHKey</command:name>
       <maml:description>
         <maml:para>Creates a SSH Key object to insert an existing certificate into new Linux-based Microsoft Azure virtual machines.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -17313,7 +17314,6 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -17385,6 +17385,7 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
       <command:name>New-AzureStorageAccount</command:name>
       <maml:description>
         <maml:para>Creates a new storage account in a Microsoft Azure subscription.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -17638,7 +17639,6 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -17689,6 +17689,7 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
       <command:name>New-AzureStorageKey</command:name>
       <maml:description>
         <maml:para>Regenerates storage keys for a Microsoft Azure storage account.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -17787,7 +17788,6 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -17835,6 +17835,7 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
       <command:name>New-AzureVM</command:name>
       <maml:description>
         <maml:para>Creates a new Microsoft Azure virtual machine.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -18251,7 +18252,6 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -18347,6 +18347,7 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
       </command:name>
       <maml:description>
         <maml:para>Creates a new Windows Azure virtual machine configuration object.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -18662,7 +18663,6 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -18749,6 +18749,7 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
       <command:name>New-AzureVMImageDiskConfigSet</command:name>
       <maml:description>
         <maml:para>This cmdlet returns a new object for disk configuration set, which would be passed to the image update cmdlet. It encapsulates the OSDiskConfig and the DataDiskConfig object. Use the Set-AzureVMImageOSDiskConfig and Set-AzureVMImageDataDiskConfig cmdlets to set the OS Disk and Data Disk properties for the VM Image.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -18807,7 +18808,6 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -18857,6 +18857,7 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
       <command:name>New-AzureVNetGateway</command:name>
       <maml:description>
         <maml:para>Creates a new Microsoft Azure Virtual Network Gateway to the specified Microsoft Azure virtual network.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -18958,7 +18959,6 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -18992,6 +18992,7 @@ New-AzureDeployment -ServiceName $cloudSvc -Slot Production -Package $pkg -Confi
 		</command:name>
       <maml:description>
         <maml:para>Uploads a Desired State Configuration script to Azure blob storage, which later can be applied to Azure Virtual Machines using the Set-AzureVMDscExtension cmdlet.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -19347,7 +19348,6 @@ When this parameter is used, the configuration script is not uploaded to Azure b
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -19520,6 +19520,7 @@ Publish-AzureVMDscConfiguration -ConfigurationPath "C:\Sample.ps1" -AdditionalPa
       <command:name>Remove-AzureAclConfig</command:name>
       <maml:description>
         <maml:para>Remove the ACL configuration object from an existing Azure VM configuration.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -19619,7 +19620,6 @@ Publish-AzureVMDscConfiguration -ConfigurationPath "C:\Sample.ps1" -AdditionalPa
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -19665,6 +19665,7 @@ Publish-AzureVMDscConfiguration -ConfigurationPath "C:\Sample.ps1" -AdditionalPa
       <command:name>Remove-AzureAffinityGroup</command:name>
       <maml:description>
         <maml:para>Deletes an affinity group in the specified subscription.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -19744,7 +19745,6 @@ Publish-AzureVMDscConfiguration -ConfigurationPath "C:\Sample.ps1" -AdditionalPa
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -19791,6 +19791,7 @@ Publish-AzureVMDscConfiguration -ConfigurationPath "C:\Sample.ps1" -AdditionalPa
       <maml:description>
         <maml:para>
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -19873,7 +19874,6 @@ Publish-AzureVMDscConfiguration -ConfigurationPath "C:\Sample.ps1" -AdditionalPa
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -19887,6 +19887,7 @@ Publish-AzureVMDscConfiguration -ConfigurationPath "C:\Sample.ps1" -AdditionalPa
       <command:name>Remove-AzureCertificate</command:name>
       <maml:description>
         <maml:para>Deletes the specified certificate from the Microsoft Azure service.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -20006,7 +20007,6 @@ Publish-AzureVMDscConfiguration -ConfigurationPath "C:\Sample.ps1" -AdditionalPa
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -20082,6 +20082,7 @@ Publish-AzureVMDscConfiguration -ConfigurationPath "C:\Sample.ps1" -AdditionalPa
       <command:name>Remove-AzureDataDisk</command:name>
       <maml:description>
         <maml:para>Removes a data disk from a virtual machine object.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -20201,7 +20202,6 @@ Publish-AzureVMDscConfiguration -ConfigurationPath "C:\Sample.ps1" -AdditionalPa
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -20259,6 +20259,7 @@ This command gets the virtual machine object with the name "MyDemoVM01" running 
       <command:name>Remove-AzureDeployment</command:name>
       <maml:description>
         <maml:para>Deletes the specified deployment of a Microsoft Azure service.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -20399,7 +20400,6 @@ This command gets the virtual machine object with the name "MyDemoVM01" running 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -20467,6 +20467,7 @@ This command gets the virtual machine object with the name "MyDemoVM01" running 
       <command:name>Remove-AzureDisk</command:name>
       <maml:description>
         <maml:para>Removes a disk from the Microsoft Azure disk repository.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -20567,7 +20568,6 @@ This command gets the virtual machine object with the name "MyDemoVM01" running 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -20630,6 +20630,7 @@ This command gets the virtual machine object with the name "MyDemoVM01" running 
       <command:name>Remove-AzureDns</command:name>
       <maml:description>
         <maml:para>Removes a DNS server to an existing cloud service.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -20764,7 +20765,6 @@ This command gets the virtual machine object with the name "MyDemoVM01" running 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -20799,6 +20799,7 @@ This command gets the virtual machine object with the name "MyDemoVM01" running 
       <command:name>Remove-AzureEndpoint</command:name>
       <maml:description>
         <maml:para>Deletes an endpoint from a Microsoft Azure virtual machine object.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -20898,7 +20899,6 @@ This command gets the virtual machine object with the name "MyDemoVM01" running 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -20934,6 +20934,7 @@ This command gets the virtual machine object with the name "MyDemoVM01" running 
       <command:name>Remove-AzureInternalLoadBalancer</command:name>
       <maml:description>
         <maml:para>Remove-AzureInternalLoadBalancer [-ServiceName] &lt;string&gt; [&lt;CommonParameters&gt;]</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -21014,7 +21015,6 @@ This command gets the virtual machine object with the name "MyDemoVM01" running 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -21049,6 +21049,7 @@ This command gets the virtual machine object with the name "MyDemoVM01" running 
       <command:name>Remove-AzurePublicIP</command:name>
       <maml:description>
         <maml:para>Remove-AzurePublicIP [[-PublicIPName] &lt;string&gt;] -VM &lt;IPersistentVM&gt; [&lt;CommonParameters&gt;]</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -21151,7 +21152,6 @@ This command gets the virtual machine object with the name "MyDemoVM01" running 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -21186,6 +21186,7 @@ This command gets the virtual machine object with the name "MyDemoVM01" running 
       <command:name>Remove-AzureReservedIP</command:name>
       <maml:description>
         <maml:para>Remove the Reserved IP by its name.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -21285,7 +21286,6 @@ This command gets the virtual machine object with the name "MyDemoVM01" running 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -21320,6 +21320,7 @@ This command gets the virtual machine object with the name "MyDemoVM01" running 
       <command:name>Remove-AzureServiceADDomainExtension</command:name>
       <maml:description>
         <maml:para>This cmdlet removes the cloud service AD domain extension applied on all roles or named roles at a certain deployment slot.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -21479,7 +21480,6 @@ This command gets the virtual machine object with the name "MyDemoVM01" running 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -21530,6 +21530,7 @@ This command gets the virtual machine object with the name "MyDemoVM01" running 
       <command:name>Remove-AzureServiceAntimalwareExtension</command:name>
       <maml:description>
         <maml:para>Removes the antimalware configuration from a cloud service.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -21703,7 +21704,6 @@ The default value is Production.</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para>This cmdlet removes only the configuration associated with the specified role. It does not uninstall or remove any already running instances of the Microsoft Antimalware extension from roles. To return these roles to a start state that does not have Microsoft Antimalware running, first remove the configuration by using this cmdlet, and then reimage or redeploy the service.</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -21777,6 +21777,7 @@ The default value is Production.</maml:para>
       <command:name>Remove-AzureServiceDiagnosticsExtension</command:name>
       <maml:description>
         <maml:para>This cmdlet removes the cloud service diagnostics extension applied on all roles or named roles at a certain deployment slot.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -21933,7 +21934,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -21984,6 +21984,7 @@ The default value is Production.</maml:para>
       <command:name>Remove-AzureServiceExtension</command:name>
       <maml:description>
         <maml:para>This cmdlet removes given cloud service extensions that are applied on a deployment.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -22194,7 +22195,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -22245,6 +22245,7 @@ The default value is Production.</maml:para>
       <command:name>Remove-AzureServiceRemoteDesktopExtension</command:name>
       <maml:description>
         <maml:para>This cmdlet removes the cloud service remote desktop extension applied on all roles or named roles at a certain deployment slot.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -22401,7 +22402,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -22452,6 +22452,7 @@ The default value is Production.</maml:para>
       <command:name>Remove-AzureStaticVNetIP</command:name>
       <maml:description>
         <maml:para>Remove the static VNet IP address information from a VM object, if any.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -22531,7 +22532,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -22550,6 +22550,7 @@ The default value is Production.</maml:para>
       <command:name>Remove-AzureStorageAccount</command:name>
       <maml:description>
         <maml:para>Deletes the specified storage account from a subscription.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -22629,7 +22630,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -22675,6 +22675,7 @@ The default value is Production.</maml:para>
       <command:name>Remove-AzureVM</command:name>
       <maml:description>
         <maml:para>Removes a Microsoft Azure virtual machine.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -22794,7 +22795,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -22871,6 +22871,7 @@ The default value is Production.</maml:para>
       <command:name>Remove-AzureVMAccessExtension</command:name>
       <maml:description>
         <maml:para>This cmdlet removes the VMAcess extension (if any) applied on the VM.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -22950,7 +22951,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -22985,6 +22985,7 @@ The default value is Production.</maml:para>
       <command:name>Remove-AzureVMBGInfoExtension</command:name>
       <maml:description>
         <maml:para>This cmdlet removes the BGInfo extension (if any) applied on the VM.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -23064,7 +23065,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -23099,6 +23099,7 @@ The default value is Production.</maml:para>
       <command:name>Remove-AzureVMCustomScriptExtension</command:name>
       <maml:description>
         <maml:para>Remove Azure VM Custom Script Extension from a VM.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -23178,7 +23179,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -23214,6 +23214,7 @@ The default value is Production.</maml:para>
       <maml:description>
         <maml:para>
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -23296,7 +23297,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -23312,6 +23312,7 @@ The default value is Production.</maml:para>
 		</command:name>
       <maml:description>
         <maml:para>Removes DSC extension handler from a given virtual machine(s) in a cloud service. Output of this cmdlet needs to be piped to Update-AzureVM cmdlet. To get detailed output -Verbose flag need to be specified. </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -23420,7 +23421,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -23459,6 +23459,7 @@ The default value is Production.</maml:para>
       <command:name>Remove-AzureVMExtension</command:name>
       <maml:description>
         <maml:para>This cmdlet removes resource extensions from VMs.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -23642,7 +23643,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -23693,6 +23693,7 @@ The default value is Production.</maml:para>
       <command:name>Remove-AzureVMImage</command:name>
       <maml:description>
         <maml:para>Removes an OS or VM image from the Image Repository.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -23792,7 +23793,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -23873,6 +23873,7 @@ Get-AzureVMImage `
       <command:name>Remove-AzureVMImageDataDiskConfig</command:name>
       <maml:description>
         <maml:para>This cmdlet removes the Data Disk Config from the DiskConfigSet object</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -24009,7 +24010,6 @@ Get-AzureVMImage `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -24051,6 +24051,7 @@ Get-AzureVMImage `
       <command:name>Remove-AzureVMImageOSDiskConfig</command:name>
       <maml:description>
         <maml:para>This cmdlet removes the OS Disk Config from the DiskConfigSet object</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -24130,7 +24131,6 @@ Get-AzureVMImage `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -24172,6 +24172,7 @@ Get-AzureVMImage `
       <command:name>Remove-AzureVMMicrosoftAntimalwareExtension</command:name>
       <maml:description>
         <maml:para>Removes the Microsoft Antimalware extension from a virtual machine.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -24248,7 +24249,6 @@ Get-AzureVMImage `
       </maml:title>
       <maml:alert>
         <maml:para>To avoid interfering with monitoring for other applications or services, this cmdlet removes only the collection of Microsoft Antimalware events. It does not change other application configurations or the default monitoring configuration.</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -24303,6 +24303,7 @@ Get-AzureVMImage `
       <command:name>Remove-AzureVMPuppetExtension</command:name>
       <maml:description>
         <maml:para>This cmdlet removes the Puppet extension (if any) applied on the VM.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -24382,7 +24383,6 @@ Get-AzureVMImage `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -24417,6 +24417,7 @@ Get-AzureVMImage `
       <command:name>Remove-AzureVNetConfig</command:name>
       <maml:description>
         <maml:para>Deletes the network configuration from the current Microsoft Azure subscription.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -24476,7 +24477,6 @@ Get-AzureVMImage `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -24522,6 +24522,7 @@ Get-AzureVMImage `
       <command:name>Remove-AzureVNetGateway</command:name>
       <maml:description>
         <maml:para>Removes the Microsoft Azure virtual network gateway to the specified virtual network.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -24601,7 +24602,6 @@ Get-AzureVMImage `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -24632,6 +24632,7 @@ Get-AzureVMImage `
       <command:name>Reset-AzureRoleInstance</command:name>
       <maml:description>
         <maml:para>Requests a reboot or reimage of a single role instance or all role instances of a specific role.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -24792,7 +24793,6 @@ Get-AzureVMImage `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -24857,6 +24857,7 @@ Get-AzureVMImage `
       <command:name>Restart-AzureVM</command:name>
       <maml:description>
         <maml:para>Restarts a Microsoft Azure virtual machine.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -24986,7 +24987,6 @@ Get-AzureVMImage `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -25060,6 +25060,7 @@ Get-AzureVMImage `
       <maml:description>
         <maml:para>
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -25219,7 +25220,6 @@ Get-AzureVMImage `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -25302,6 +25302,7 @@ Get-AzureVMImage `
       <command:name>Save-AzureVMImage</command:name>
       <maml:description>
         <maml:para>Save OS or VM images from existing VMs. For capturing a VM Image, use the -OSState parameter.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -25474,7 +25475,6 @@ Get-AzureVMImage `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -25541,6 +25541,7 @@ Get-AzureVMImage `
       <command:name>Set-AzureAclConfig</command:name>
       <maml:description>
         <maml:para>Sets the ACL configuration object on an existing Azure VM configuration.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -25835,7 +25836,6 @@ Get-AzureVMImage `
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -25920,6 +25920,7 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <command:name>Set-AzureAffinityGroup</command:name>
       <maml:description>
         <maml:para>Updates the properties of a Microsoft Azure affinity group.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -26039,7 +26040,6 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -26085,6 +26085,7 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <command:name>Set-AzureAvailabilitySet</command:name>
       <maml:description>
         <maml:para>Sets the availability set name of an Azure VM after deployment.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -26197,7 +26198,6 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -26232,6 +26232,7 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <command:name>Set-AzureDataDisk</command:name>
       <maml:description>
         <maml:para>Sets the host-cache mode on an existing data disk object.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -26401,7 +26402,6 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -26468,6 +26468,7 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <command:name>Set-AzureDeployment</command:name>
       <maml:description>
         <maml:para>Sets status, upgrade mode, and configuration settings of a Microsoft Azure deployment.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -26836,7 +26837,6 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -26934,6 +26934,7 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <command:name>Set-AzureDns</command:name>
       <maml:description>
         <maml:para>Updates the IP Address of the specified DNS server.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -27066,7 +27067,6 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -27103,6 +27103,7 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       </command:name>
       <maml:description>
         <maml:para>The Set-AzureInputEndpoint cmdlet updates an existing endpoint assigned to a virtual machine. You can specify updates to an endpoint that is not load balanced, which only a single virtual machine uses.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -27424,7 +27425,6 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -27480,6 +27480,7 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <maml:description>
         <maml:para>
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -27674,7 +27675,6 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -27690,6 +27690,7 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       </command:name>
       <maml:description>
         <maml:para>Updates all of the endpoints in a given load balancer set within a Windows Azure Service.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -28125,7 +28126,6 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -28210,6 +28210,7 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <command:name>Set-AzureOSDisk</command:name>
       <maml:description>
         <maml:para>Updates the host-cache mode of a Microsoft Azure virtual machine operating system disk.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -28329,7 +28330,6 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -28403,6 +28403,7 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <command:name>Set-AzurePublicIP</command:name>
       <maml:description>
         <maml:para>Set-AzurePublicIP [-PublicIPName] &lt;string&gt; [[-IdleTimeoutInMinutes] &lt;int&gt;] [[-DomainNameLabel] &lt;string&gt;] -VM &lt;IPersistentVM&gt; [&lt;CommonParameters&gt;]</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -28546,7 +28547,6 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -28629,6 +28629,7 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <command:name>Set-AzureRole</command:name>
       <maml:description>
         <maml:para>Sets the number of instances of a Microsoft Azure role to run.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -28768,7 +28769,6 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -28799,6 +28799,7 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <command:name>Set-AzureService</command:name>
       <maml:description>
         <maml:para>Sets or updates the label and description of the specified Microsoft Azure service.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -28939,7 +28940,6 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -28985,6 +28985,7 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <command:name>Set-AzureServiceADDomainExtension</command:name>
       <maml:description>
         <maml:para>Set AD Domain Extension for Cloud Service</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -29707,7 +29708,6 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -29726,6 +29726,7 @@ C:\PS&gt; Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Set-AzureEndpoint 
       <command:name>Set-AzureServiceAntimalwareExtension</command:name>
       <maml:description>
         <maml:para>Configures the Microsoft Antimalware extension for cloud services.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -29974,7 +29975,6 @@ The default value is Production.</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -30064,6 +30064,7 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
       <command:name>Set-AzureServiceDiagnosticsExtension</command:name>
       <maml:description>
         <maml:para>This cmdlet enables diagnostics extension on specified role(s) or all roles on a deployed service or at deployment.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -30340,7 +30341,6 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -30391,6 +30391,7 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
       <command:name>Set-AzureServiceExtension</command:name>
       <maml:description>
         <maml:para>This cmdlet adds a cloud service extension to a deployment.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -30739,7 +30740,6 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -30790,6 +30790,7 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
       <command:name>Set-AzureServiceRemoteDesktopExtension</command:name>
       <maml:description>
         <maml:para>This cmdlet enables remote desktop extension on specified role(s) or all roles on a deployed service or at deployment.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -31084,7 +31085,6 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -31135,6 +31135,7 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
       <command:name>Set-AzureStaticVNetIP</command:name>
       <maml:description>
         <maml:para>Set the static VNet IP address information to a VM object.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -31234,7 +31235,6 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -31275,6 +31275,7 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
       <command:name>Set-AzureStorageAccount</command:name>
       <maml:description>
         <maml:para>Updates the properties of a storage account in a Microsoft Azure subscription.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -31494,7 +31495,6 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -31561,6 +31561,7 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
       <command:name>Set-AzureSubnet</command:name>
       <maml:description>
         <maml:para>Defines the subnet list for a Microsoft Azure virtual machine.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -31660,7 +31661,6 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -31704,6 +31704,7 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
       <command:name>Set-AzureVMAccessExtension</command:name>
       <maml:description>
         <maml:para>This cmdlet sets the VMAccess extension for the VM.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -32003,7 +32004,6 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -32040,6 +32040,7 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
         <maml:para>This cmdlet sets the BGInfo extension for the VM.
 
           This is a user-defined string that can be used to refer to an extension. It is specified when the extension is added to the VM for the first time. For subsequent updates, user should specify the previously used reference name while updating the extension. The ReferenceName assigned to an extension will be returned using the Get-AzureVM cmdlet.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -32242,7 +32243,6 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -32277,6 +32277,7 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
       <command:name>Set-AzureVMCustomScriptExtension</command:name>
       <maml:description>
         <maml:para>Set Azure VM Custom Script Extension Information.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -32742,7 +32743,6 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -32798,6 +32798,7 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
       <maml:description>
         <maml:para>
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -33033,7 +33034,6 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -33047,6 +33047,7 @@ PS C:\&gt; Set-AzureServiceAntimalwareExtension -ServiceName "ContosoService03" 
       <command:name>Set-AzureVMDscExtension</command:name>
       <maml:description>
         <maml:para>Configure the Windows PowerShell Desired State Configuration extension on a VM.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -33397,7 +33398,6 @@ A value of "5.0PP" will install the latest release of WMF 5.0PP (http://go.micro
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -33507,6 +33507,7 @@ OperationStatus             : OK</dev:code>
       <command:name>Set-AzureVMExtension</command:name>
       <maml:description>
         <maml:para>This cmdlet sets resource extensions for VMs.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -33993,7 +33994,6 @@ OperationStatus             : OK</dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -34028,6 +34028,7 @@ OperationStatus             : OK</dev:code>
       <command:name>Set-AzureVMImageDataDiskConfig</command:name>
       <maml:description>
         <maml:para>Allows you to update the Data Disk properties on the VM Image</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -34173,7 +34174,6 @@ OperationStatus             : OK</dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -34222,6 +34222,7 @@ OperationStatus             : OK</dev:code>
       <command:name>Set-AzureVMImageOSDiskConfig</command:name>
       <maml:description>
         <maml:para>Allows you to update the OS Disk properties on the VM Image</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -34325,7 +34326,6 @@ OperationStatus             : OK</dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -34374,6 +34374,7 @@ OperationStatus             : OK</dev:code>
       <command:name>Set-AzureVMMicrosoftAntimalwareExtension</command:name>
       <maml:description>
         <maml:para>Configures the Microsoft Antimalware extension for a virtual machine.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -34773,7 +34774,6 @@ OperationStatus             : OK</dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -34898,6 +34898,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <command:name>Set-AzureVMPuppetExtension</command:name>
       <maml:description>
         <maml:para>This cmdlet sets the Puppet extension for the VM.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -35074,7 +35075,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -35109,6 +35109,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <command:name>Set-AzureVMSize</command:name>
       <maml:description>
         <maml:para>Sets the size of a Microsoft Azure virtual machine.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -35209,7 +35210,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -35266,6 +35266,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <command:name>Set-AzureVNetConfig</command:name>
       <maml:description>
         <maml:para>Updates the virtual network settings for a Microsoft Azure cloud service.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -35345,7 +35346,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -35410,6 +35410,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <command:name>Set-AzureVNetGateway</command:name>
       <maml:description>
         <maml:para>Enables or disables a Microsoft Azure Virtual Network Gateway.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -35580,7 +35581,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -35628,6 +35628,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <command:name>Set-AzureVNetGatewayKey</command:name>
       <maml:description>
         <maml:para>Sets the IPsec/IKE pre-shared key for the cross premises site-to-site VPN tunnel between the Azure virtual network and your on-premises local site.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -35747,7 +35748,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -35782,6 +35782,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <command:name>Set-AzureWalkUpgradeDomain</command:name>
       <maml:description>
         <maml:para>Walks the specified upgrade domain.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -35900,7 +35901,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -35931,6 +35931,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <command:name>Start-AzureVM</command:name>
       <maml:description>
         <maml:para>Starts a Microsoft Azure virtual machine.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -36060,7 +36061,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -36133,6 +36133,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <command:name>Stop-AzureVM</command:name>
       <maml:description>
         <maml:para>Shuts down a Microsoft Azure virtual machine.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -36333,7 +36334,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -36432,6 +36432,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <command:name>Test-AzureStaticVNetIP</command:name>
       <maml:description>
         <maml:para>Test the availability of a static virtual network IP address, and get a list of suggestion if the queried one not available.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -36531,7 +36532,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -36550,6 +36550,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <command:name>Update-AzureDisk</command:name>
       <maml:description>
         <maml:para>Updates the label of a disk in the Microsoft Azure disk repository.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -36669,7 +36670,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -36715,6 +36715,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <command:name>Update-AzureVM</command:name>
       <maml:description>
         <maml:para>Modifies the configuration of a Microsoft Azure virtual machine.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -36834,7 +36835,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -36926,6 +36926,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <command:name>Update-AzureVMImage</command:name>
       <maml:description>
         <maml:para>The Update-AzureVMImage cmdlet updates the properties on an OS or VM image in the image repository. It returns an image object with information about the updated image.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -37262,7 +37263,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -37314,6 +37314,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:description>
         <maml:para>
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -37376,7 +37377,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -37431,6 +37431,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <command:name>Get-AzureServiceExtensionImage</command:name>
       <maml:description>
         <maml:para>Get information for the latest available hosted service extension images.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -37492,7 +37493,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -37547,6 +37547,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
     </command:name>
       <maml:description>
         <maml:para>This cmdlet deletes the Chef extension applied on the VM.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -37630,7 +37631,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -37687,6 +37687,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
 		</command:name>
       <maml:description>
         <maml:para>The Get-AzureDeploymentEvent cmdlet retrieves information regarding Azure-initiated events that impact virtual machines and cloud services, including planned maintenance events, in the provided time window. It returns a list of events that identify the Role Instance or Virtual Machine impacted, the reason for the impact, and the start time of the event.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -37812,7 +37813,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -37838,6 +37838,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
     </command:name>
       <maml:description>
         <maml:para>This cmdlet gets the Chef extension (if any) applied on the VM.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -37922,7 +37923,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -37978,6 +37978,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
     </command:name>
       <maml:description>
         <maml:para>This cmdlet adds the Chef extension to the VM.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -38231,7 +38232,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -38372,6 +38372,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
 		</command:name>
       <maml:description>
         <maml:para>Gets the settings of the SQL Server extension on a particular VM.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -38475,7 +38476,6 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService03" -Name "ContosoVM22" | Set
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -38616,6 +38616,7 @@ KeyVaultCredentialSettings : Microsoft.WindowsAzure.Commands.ServiceManagement.I
 		</command:name>
       <maml:description>
         <maml:para>Creates configuration object for SQL Server Azure Key Vault credential</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -38778,7 +38779,6 @@ KeyVaultCredentialSettings : Microsoft.WindowsAzure.Commands.ServiceManagement.I
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -38874,6 +38874,7 @@ ServicePrincipalSecret : LnT+7aXAdafy1VdSo3z8YnZ5pzGU1h3Y7prrwdlUDVc=           
       </command:name>
       <maml:description>
         <maml:para>Creates configuration object for virtual machine automatic patching </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -39032,7 +39033,6 @@ ServicePrincipalSecret : LnT+7aXAdafy1VdSo3z8YnZ5pzGU1h3Y7prrwdlUDVc=           
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -39097,6 +39097,7 @@ ServicePrincipalSecret : LnT+7aXAdafy1VdSo3z8YnZ5pzGU1h3Y7prrwdlUDVc=           
         </command:name>
       <maml:description>
         <maml:para>Creates configuration object for SQL Server Automatic Backup </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -39259,7 +39260,6 @@ ServicePrincipalSecret : LnT+7aXAdafy1VdSo3z8YnZ5pzGU1h3Y7prrwdlUDVc=           
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -39384,6 +39384,7 @@ RetentionPeriodInDays : 10                        </dev:code>
       </command:name>
       <maml:description>
         <maml:para>Remove Azure VM Sql Server extension from a VM object.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -39467,7 +39468,6 @@ RetentionPeriodInDays : 10                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -39494,6 +39494,7 @@ RetentionPeriodInDays : 10                        </dev:code>
 		</command:name>
       <maml:description>
         <maml:para>Configure the Sql Server extension on a VM.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -39695,7 +39696,6 @@ RetentionPeriodInDays : 10                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, svc, mgmt, service</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>

@@ -6,6 +6,7 @@
       <command:name>Add-AzureHDInsightConfigValues</command:name>
       <maml:description>
         <maml:para>Adds a Hadoop configuration value customization and/or a Hive shared library customization to the Microsoft Azure HDInsight cluster configuration.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -251,7 +252,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -307,6 +307,7 @@
       <command:name>Add-AzureHDInsightMetastore</command:name>
       <maml:description>
         <maml:para>Adds a SQL Database account to the Microsoft Azure HDInsight cluster configuration.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -466,7 +467,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -519,6 +519,7 @@
       <command:name>Add-AzureHDInsightStorage</command:name>
       <maml:description>
         <maml:para>Adds a Microsoft Azure Blob Storage account entry to a target HDInsight configuration.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -640,7 +641,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -711,6 +711,7 @@
       <command:name>Get-AzureHDInsightCluster</command:name>
       <maml:description>
         <maml:para>Retrieves and lists all of the Microsoft Azure HDInsight clusters associated with the current subscription or retrieves a specific named cluster.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -870,7 +871,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -906,6 +906,7 @@
       <command:name>Get-AzureHDInsightJob</command:name>
       <maml:description>
         <maml:para>Retrieves the Azure HDInsight jobs from a cluster and lists them in reverse chronological order.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1122,7 +1123,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1177,6 +1177,7 @@
       <command:name>Get-AzureHDInsightJobOutput</command:name>
       <maml:description>
         <maml:para>Retrieves the log output for a job from the storage account associated with a specified cluster.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1456,7 +1457,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1492,6 +1492,7 @@
       <command:name>Get-AzureHDInsightProperties</command:name>
       <maml:description>
         <maml:para>Retrieves properties specific to a Microsoft Azure HDInsight service.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1671,7 +1672,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1708,6 +1708,7 @@
       <command:name>Grant-AzureHDInsightHttpServicesAccess</command:name>
       <maml:description>
         <maml:para>Grants HTTP access to the cluster.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1907,7 +1908,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1962,6 +1962,7 @@
       <command:name>Invoke-AzureHDInsightHiveJob</command:name>
       <maml:description>
         <maml:para>Submits Hive queries to the HDInsight cluster, shows progress of the query execution, and retrieves query results in one operation.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2161,7 +2162,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2198,6 +2198,7 @@
       <command:name>New-AzureHDInsightCluster</command:name>
       <maml:description>
         <maml:para>Creates a new Microsoft Azure HDInsight cluster for the current subscription.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2706,7 +2707,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2742,6 +2742,7 @@
       <command:name>New-AzureHDInsightClusterConfig</command:name>
       <maml:description>
         <maml:para>Creates a non-persisted configuration that describes a Microsoft Azure HDInsight cluster configuration.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2909,7 +2910,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2975,6 +2975,7 @@
       <command:name>New-AzureHDInsightHiveJobDefinition</command:name>
       <maml:description>
         <maml:para>Defines a hive job for an Azure HDInsight service.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3174,7 +3175,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3210,6 +3210,7 @@
       <command:name>New-AzureHDInsightMapReduceJobDefinition</command:name>
       <maml:description>
         <maml:para>Defines a new Map Reduce job.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3431,7 +3432,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3486,6 +3486,7 @@
       <command:name>New-AzureHDInsightPigJobDefinition</command:name>
       <maml:description>
         <maml:para>Defines a new pig job for an Azure HDInsight service.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3645,7 +3646,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3713,6 +3713,7 @@
       <command:name>New-AzureHDInsightSqoopJobDefinition</command:name>
       <maml:description>
         <maml:para>Defines a new Sqoop job.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3851,7 +3852,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>Sqoop is a tool designed to transfer data between Hadoop clusters and relational databases. You can use Sqoop to import data from a SQL database into an Hadoop Distributed File System (HDFS), transform the data with Hadoop MapReduce, and then export the data from the HDFS back into the SQL database.</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3887,6 +3887,7 @@
       <command:name>New-AzureHDInsightStreamingMapReduceJobDefinition</command:name>
       <maml:description>
         <maml:para>Defines a new streaming Map Reduce job.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4166,7 +4167,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4225,6 +4225,7 @@
       <command:name>Remove-AzureHDInsightCluster</command:name>
       <maml:description>
         <maml:para>Deletes the specified HDInsight cluster from your Microsoft Azure subscription.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4384,7 +4385,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4438,6 +4438,7 @@
       <command:name>Revoke-AzureHDInsightHttpServicesAccess</command:name>
       <maml:description>
         <maml:para>Disables HTTP access to the cluster.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4617,7 +4618,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4672,6 +4672,7 @@
       <command:name>Set-AzureHDInsightDefaultStorage</command:name>
       <maml:description>
         <maml:para>Sets default storage account setting in the HDInsight cluster configuration object.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4811,7 +4812,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4859,6 +4859,7 @@
       <command:name>Start-AzureHDInsightJob</command:name>
       <maml:description>
         <maml:para>Starts an Azure HDInsight job on a specified cluster.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5075,7 +5076,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5111,6 +5111,7 @@
       <command:name>Stop-AzureHDInsightJob</command:name>
       <maml:description>
         <maml:para>Stops running an Azure HDInsight job on a specified cluster.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5327,7 +5328,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5364,6 +5364,7 @@
       <command:name>Use-AzureHDInsightCluster</command:name>
       <maml:description>
         <maml:para>Selects Azure HDInsight cluster that will be used by the Invoke-Hive cmdlet for job submission.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5523,7 +5524,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5560,6 +5560,7 @@
       <command:name>Wait-AzureHDInsightJob</command:name>
       <maml:description>
         <maml:para>Awaits the completion or failure of the HDInsight job and shows its progress.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5850,7 +5851,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, hadoop, hdinsight, hd, insight</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>

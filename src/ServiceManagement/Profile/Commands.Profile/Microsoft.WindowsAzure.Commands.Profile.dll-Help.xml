@@ -6,6 +6,7 @@
       <command:name>Add-AzureAccount</command:name>
       <maml:description>
         <maml:para>Adds the Azure account to Windows PowerShell</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -202,7 +203,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>Add-AzureAccount (and the Azure AD authentication method) takes precedence over Import-AzurePublishSettings (and the management certificate method). If you use Add-AzureAccount even once on your account, the Azure AD authentication method is used and the management certificate is ignored. To remove the Azure AD token and restore the management certificate method, use the Remove-AzureAccount cmdlet. For more information, type: Get-Help Remove-AzureAccount.</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -352,6 +352,7 @@
       <command:name>Add-AzureEnvironment</command:name>
       <maml:description>
         <maml:para>Creates an Azure environment</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -683,7 +684,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -781,6 +781,7 @@
       <command:name>Clear-AzureProfile</command:name>
       <maml:description>
         <maml:para>Clears an Azure profile</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -890,7 +891,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -966,6 +966,7 @@
       <command:name>Get-AzureAccount</command:name>
       <maml:description>
         <maml:para>Gets Azure accounts that are available to Azure PowerShell.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1075,7 +1076,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1162,6 +1162,7 @@
       <command:name>Get-AzureEnvironment</command:name>
       <maml:description>
         <maml:para>Gets Azure environments</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1271,7 +1272,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1409,6 +1409,7 @@
       <command:name>Get-AzurePublishSettingsFile</command:name>
       <maml:description>
         <maml:para>Downloads the publish settings file for an Azure subscription.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1558,7 +1559,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1628,6 +1628,7 @@
       <command:name>Get-AzureSubscription</command:name>
       <maml:description>
         <maml:para>Gets  Azure subscriptions in Azure account.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1868,7 +1869,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>Get-AzureSubscription gets data from the subscription data file that the Add-AzureAccount and Import-PublishSettingsFile cmdlets create.</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2016,6 +2016,7 @@
       <command:name>Import-AzurePublishSettingsFile</command:name>
       <maml:description>
         <maml:para>Imports a publish settings file that lets you manage your Azure accounts in Windows PowerShell.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2145,7 +2146,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>A "publish settings file" is an XML file with a .publishsettings file name extension. The file contains an encoded certificate that provides management credentials for your Azure subscriptions. After you import this file, delete it to avoid security risks.</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2240,6 +2240,7 @@
       <command:name>New-AzureProfile</command:name>
       <maml:description>
         <maml:para>Create a new credential profile for Microsoft Azure PowerShell cmdlets in the current PowerShell session.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2649,7 +2650,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2722,6 +2722,7 @@
       <command:name>Remove-AzureAccount</command:name>
       <maml:description>
         <maml:para>Deletes an Azure account from Windows PowerShell.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2910,7 +2911,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2959,6 +2959,7 @@
       <command:name>Remove-AzureEnvironment</command:name>
       <maml:description>
         <maml:para>Deletes an Azure environment from Windows PowerShell</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3101,7 +3102,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3176,6 +3176,7 @@
       <command:name>Remove-AzureSubscription</command:name>
       <maml:description>
         <maml:para>Deletes an Azure subscription from Windows PowerShell.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3420,7 +3421,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3520,6 +3520,7 @@
       <command:name>Select-AzureProfile</command:name>
       <maml:description>
         <maml:para>Select the active profile for the current PowerShell session.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3621,7 +3622,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3635,6 +3635,7 @@
       <command:name>Select-AzureSubscription</command:name>
       <maml:description>
         <maml:para>Changes the current and default Azure subscriptions</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4033,7 +4034,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4129,6 +4129,7 @@
       <command:name>Set-AzureEnvironment</command:name>
       <maml:description>
         <maml:para>Changes the properties of an Azure environment</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4458,7 +4459,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4512,6 +4512,7 @@
       <command:name>Set-AzureSubscription</command:name>
       <maml:description>
         <maml:para>Creates or changes an Azure subscription</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4880,7 +4881,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5031,6 +5031,7 @@
       <command:name>Switch-AzureMode</command:name>
       <maml:description>
         <maml:para>Switches between the Azure and Azure Resource Manager modules</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5147,7 +5148,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>

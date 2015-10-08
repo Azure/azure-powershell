@@ -6,6 +6,7 @@
       <command:name>Add-AzureRmDnsRecordConfig</command:name>
       <maml:description>
         <maml:para>Adds a DNS record to a record set.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -592,17 +593,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureRmDnsRecordSet</command:name>
       <maml:description>
         <maml:para>Gets a DNS record set.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -925,17 +922,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureRmDnsZone</command:name>
       <maml:description>
         <maml:para>Gets a DNS zone.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1116,17 +1109,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>New-AzureRmDnsRecordSet</command:name>
       <maml:description>
         <maml:para>Creates a DNS record set.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1510,17 +1499,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>New-AzureRmDnsZone</command:name>
       <maml:description>
         <maml:para>Creates a new DNS zone.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1687,17 +1672,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Remove-AzureRmDnsRecordConfig</command:name>
       <maml:description>
         <maml:para>Removes a DNS record from a record set.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2189,17 +2170,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Remove-AzureRmDnsRecordSet</command:name>
       <maml:description>
         <maml:para>Deletes a record set.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2586,17 +2563,13 @@ PS C:\&gt; Remove-AzureRmDnsRecordSet -RecordSet $RecordSet
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Remove-AzureRmDnsZone</command:name>
       <maml:description>
         <maml:para>Removes a DNS zone from a resource group.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2838,17 +2811,13 @@ PS C:\&gt; Remove-AzureRmDnsRecordSet -RecordSet $RecordSet
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Set-AzureRmDnsRecordSet</command:name>
       <maml:description>
         <maml:para>Updates a DNS record set.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3020,17 +2989,13 @@ PS C:\&gt; Set-AzureRmDnsRecordSet -RecordSet $RecordSet
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Set-AzureRmDnsZone</command:name>
       <maml:description>
         <maml:para>Updates a DNS zone.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3267,10 +3232,5 @@ PS C:\&gt; $Zone | Set-AzureRmDnsZone
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
 </helpItems>

@@ -7,6 +7,7 @@
       </command:name>
       <maml:description>
         <maml:para>Creates a new Route Table in the specified region (location).</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -170,7 +171,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -202,6 +202,7 @@
 
           Get-AzureEffectiveRouteTable [-ServiceName] &lt;string&gt; [[-Slot] &lt;string&gt;] [-RoleInstanceName] &lt;string&gt; [[-NetworkInterfaceName] &lt;string&gt;] [-Profile &lt;AzureProfile&gt;] [&lt;CommonParameters&gt;]
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -426,7 +427,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -490,6 +490,7 @@
 
           Get-AzureNetworkSecurityGroupAssociation [-ServiceName] &lt;string&gt; [[-Slot] &lt;string&gt;] [-RoleName] &lt;string&gt; [[-NetworkInterfaceName] &lt;string&gt;] [-Detailed] [-Profile &lt;AzureProfile&gt;] [&lt;CommonParameters&gt;]
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -805,7 +806,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -861,6 +861,7 @@
       <maml:description>
         <maml:para>
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -965,7 +966,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -980,6 +980,7 @@
       <maml:description>
         <maml:para>
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1106,7 +1107,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1121,6 +1121,7 @@
       </command:name>
       <maml:description>
         <maml:para>Returns the Route Table object. Use the -Detailed flag to list the routes in the route table</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -1263,7 +1264,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -1323,6 +1323,7 @@
       </command:name>
       <maml:description>
         <maml:para>Returns the route table associated with the subnet</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -1487,7 +1488,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -1547,6 +1547,7 @@
       <maml:description>
         <maml:para>
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1629,7 +1630,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1643,6 +1643,7 @@
       <command:name>Get-AzureVNetGateway</command:name>
       <maml:description>
         <maml:para>Get the current status of an existing virtual network gateway.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1724,7 +1725,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1738,6 +1738,7 @@
       <command:name>Get-AzureVNetGatewayDiagnostics</command:name>
       <maml:description>
         <maml:para>Get the current state and (if it exists) the url of the blob where the most recent diagnostics session was saved.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1819,7 +1820,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1833,6 +1833,7 @@
       <command:name>Get-AzureVNetGatewayIPsecParameters</command:name>
       <maml:description>
         <maml:para>Get the current IPsec parameters that have been set on the connection between the provided virtual network gateway and local network site.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1936,7 +1937,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1950,6 +1950,7 @@
       <command:name>Get-AzureVNetGatewayKey</command:name>
       <maml:description>
         <maml:para>Get the pre-shared key for the connection between the provided virtual network gateway and local network site.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2053,7 +2054,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2068,6 +2068,7 @@
       <maml:description>
         <maml:para>
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2194,7 +2195,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2208,6 +2208,7 @@
       <command:name>New-AzureVNetGateway</command:name>
       <maml:description>
         <maml:para>Create a new virtual network gateway in the provided virtual network.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2333,7 +2334,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2356,6 +2356,7 @@
 
           Remove-AzureNetworkSecurityGroupAssociation [-Name] &lt;string&gt; [-ServiceName] &lt;string&gt; [[-Slot] &lt;string&gt;] [-RoleName] &lt;string&gt; [[-NetworkInterfaceName] &lt;string&gt;] [-Force] [-PassThru] [-Profile &lt;AzureProfile&gt;] [&lt;CommonParameters&gt;]
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -2738,7 +2739,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -2794,6 +2794,7 @@
       <maml:description>
         <maml:para>
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2920,7 +2921,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2935,6 +2935,7 @@
       <maml:description>
         <maml:para>
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3105,7 +3106,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3120,6 +3120,7 @@
       <maml:description>
         <maml:para>
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3246,7 +3247,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3261,6 +3261,7 @@
       </command:name>
       <maml:description>
         <maml:para>Removes the route from the route table</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -3424,7 +3425,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -3489,6 +3489,7 @@
       </command:name>
       <maml:description>
         <maml:para>Removes the Route Table from the subscription.  The route table cannot be removed if it is in use. </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -3650,7 +3651,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -3707,6 +3707,7 @@
       </command:name>
       <maml:description>
         <maml:para>Removes the route table association from the subnet</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -3888,7 +3889,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -3943,6 +3943,7 @@
       <command:name>Remove-AzureVNetGateway</command:name>
       <maml:description>
         <maml:para>Delete an existing virtual network gateway.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4024,7 +4025,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4039,6 +4039,7 @@
       <maml:description>
         <maml:para>
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4121,7 +4122,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4135,6 +4135,7 @@
       <command:name>Reset-AzureVNetGateway</command:name>
       <maml:description>
         <maml:para>Reset the provided virtual network gateway.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4216,7 +4217,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4230,6 +4230,7 @@
       <command:name>Resize-AzureVNetGateway</command:name>
       <maml:description>
         <maml:para>Resize the provided virtual network gateway to a different SKU.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4333,7 +4334,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4356,6 +4356,7 @@
 
           Set-AzureNetworkSecurityGroupAssociation [-Name] &lt;string&gt; [-ServiceName] &lt;string&gt; [[-Slot] &lt;string&gt;] [-RoleName] &lt;string&gt; [[-NetworkInterfaceName] &lt;string&gt;] [-Force] [-PassThru] [-Profile &lt;AzureProfile&gt;] [&lt;CommonParameters&gt;]
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -4738,7 +4739,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -4794,6 +4794,7 @@
       <maml:description>
         <maml:para>
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4964,7 +4965,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4979,6 +4979,7 @@
       <maml:description>
         <maml:para>
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5259,7 +5260,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5274,6 +5274,7 @@
       </command:name>
       <maml:description>
         <maml:para>Creates  a new route in the specified route table. </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -5493,7 +5494,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -5587,6 +5587,7 @@
       </command:name>
       <maml:description>
         <maml:para>Associates a route table to the subnet</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -5769,7 +5770,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -5825,6 +5825,7 @@
       <maml:description>
         <maml:para>
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5992,7 +5993,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6007,6 +6007,7 @@
       <maml:description>
         <maml:para>
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6111,7 +6112,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6125,6 +6125,7 @@
       <command:name>Set-AzureVNetGatewayIPsecParameters</command:name>
       <maml:description>
         <maml:para>Set the IPsec parameters that will be used for the connection between the provided virtual network gateway and local network site.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6320,7 +6321,6 @@ PfsGroup:       (PFS1, None)</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6334,6 +6334,7 @@ PfsGroup:       (PFS1, None)</maml:para>
       <command:name>Set-AzureVNetGatewayKey</command:name>
       <maml:description>
         <maml:para>Set the pre-shared key that will be used in this virtual network gateway's connection to the provided local network site.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6459,7 +6460,6 @@ PfsGroup:       (PFS1, None)</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6473,6 +6473,7 @@ PfsGroup:       (PFS1, None)</maml:para>
       <command:name>Start-AzureVNetGatewayDiagnostics</command:name>
       <maml:description>
         <maml:para>Start a new gateway diagnostics session for the provided virtual network gateway.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6620,7 +6621,6 @@ PfsGroup:       (PFS1, None)</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6634,6 +6634,7 @@ PfsGroup:       (PFS1, None)</maml:para>
       <command:name>Stop-AzureVNetGatewayDiagnostics</command:name>
       <maml:description>
         <maml:para>Stop a currently running diagnostics session.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6715,7 +6716,6 @@ PfsGroup:       (PFS1, None)</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6729,6 +6729,7 @@ PfsGroup:       (PFS1, None)</maml:para>
       <command:name>Add-AzureApplicationGatewaySslCertificate</command:name>
       <maml:description>
         <maml:para>Adds ssl certificate to application gateway</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6866,7 +6867,6 @@ PfsGroup:       (PFS1, None)</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6925,6 +6925,7 @@ PfsGroup:       (PFS1, None)</maml:para>
 
           Set-AzureIPForwarding [-ServiceName] &lt;string&gt; [[-Slot] &lt;string&gt;] [-RoleName] &lt;string&gt; [[-NetworkInterfaceName] &lt;string&gt;] -Disable [-PassThru] [-Profile &lt;AzureProfile&gt;] [&lt;CommonParameters&gt;]
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -7267,7 +7268,6 @@ PfsGroup:       (PFS1, None)</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -7359,6 +7359,7 @@ PfsGroup:       (PFS1, None)</maml:para>
 
           Get-AzureIPForwarding [-ServiceName] &lt;string&gt; [[-Slot] &lt;string&gt;] [-RoleName] &lt;string&gt; [[-NetworkInterfaceName] &lt;string&gt;] [-Profile &lt;AzureProfile&gt;] [&lt;CommonParameters&gt;]
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -7583,7 +7584,6 @@ PfsGroup:       (PFS1, None)</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -7634,6 +7634,7 @@ PfsGroup:       (PFS1, None)</maml:para>
       <command:name>Get-AzureApplicationGateway</command:name>
       <maml:description>
         <maml:para>Gets the existing application gateway </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7716,7 +7717,6 @@ PfsGroup:       (PFS1, None)</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7781,6 +7781,7 @@ PfsGroup:       (PFS1, None)</maml:para>
       <command:name>Get-AzureApplicationGatewaySslCertificate</command:name>
       <maml:description>
         <maml:para>Gets Application Gateway certificate</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7881,7 +7882,6 @@ PfsGroup:       (PFS1, None)</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7929,6 +7929,7 @@ PfsGroup:       (PFS1, None)</maml:para>
       <command:name>Get-AzureApplicationGatewayConfig</command:name>
       <maml:description>
         <maml:para>Gets application gateway configuration</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8026,7 +8027,6 @@ PfsGroup:       (PFS1, None)</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8058,6 +8058,7 @@ PfsGroup:       (PFS1, None)</maml:para>
       <command:name>New-AzureApplicationGateway</command:name>
       <maml:description>
         <maml:para>Creates new application gateway</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8235,7 +8236,6 @@ PfsGroup:       (PFS1, None)</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8267,6 +8267,7 @@ PfsGroup:       (PFS1, None)</maml:para>
       <command:name>Remove-AzureApplicationGateway</command:name>
       <maml:description>
         <maml:para>Removes application gateway</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8344,7 +8345,6 @@ PfsGroup:       (PFS1, None)</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8376,6 +8376,7 @@ PfsGroup:       (PFS1, None)</maml:para>
       <command:name>Remove-AzureApplicationGatewaySslCertificate</command:name>
       <maml:description>
         <maml:para>Removes ssl certificate from application gateway</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8473,7 +8474,6 @@ PfsGroup:       (PFS1, None)</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8505,6 +8505,7 @@ PfsGroup:       (PFS1, None)</maml:para>
       <command:name>Set-AzureApplicationGatewayConfig</command:name>
       <maml:description>
         <maml:para>Sets application gateway configuration </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8635,7 +8636,6 @@ PfsGroup:       (PFS1, None)</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8707,6 +8707,7 @@ PfsGroup:       (PFS1, None)</maml:para>
       <command:name>Start-AzureApplicationGateway</command:name>
       <maml:description>
         <maml:para>Starts application gateway</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8784,7 +8785,6 @@ PfsGroup:       (PFS1, None)</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8816,6 +8816,7 @@ PfsGroup:       (PFS1, None)</maml:para>
       <command:name>Stop-AzureApplicationGateway</command:name>
       <maml:description>
         <maml:para>Stops application gateway</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8895,7 +8896,6 @@ PfsGroup:       (PFS1, None)</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8927,6 +8927,7 @@ PfsGroup:       (PFS1, None)</maml:para>
       <command:name>Update-AzureApplicationGateway</command:name>
       <maml:description>
         <maml:para>Updates existing application gateway</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -9104,7 +9105,6 @@ PfsGroup:       (PFS1, None)</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, network, networking</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>

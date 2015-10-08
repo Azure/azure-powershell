@@ -6,6 +6,7 @@
       <command:name>Get-AzureRmResource</command:name>
       <maml:description>
         <maml:para>Gets existing resources.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -893,7 +894,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -949,6 +949,7 @@
       <command:name>Get-AzureRmResourceGroupDeploymentOperation</command:name>
       <maml:description>
         <maml:para>Gets the resource group deployment operation</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1166,7 +1167,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1201,6 +1201,7 @@
       <command:name>Get-AzureRmResourceLock</command:name>
       <maml:description>
         <maml:para>Gets the azure resource lock.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1806,7 +1807,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1841,6 +1841,7 @@
       <command:name>Move-AzureRmResource</command:name>
       <maml:description>
         <maml:para>Moves existing resources to a new resource group or subscription.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2118,7 +2119,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2154,6 +2154,7 @@
       <command:name>New-AzureRmResource</command:name>
       <maml:description>
         <maml:para>Create a new azure resource.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2929,7 +2930,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2964,6 +2964,7 @@
       <command:name>New-AzureRmResourceLock</command:name>
       <maml:description>
         <maml:para>Create a new resource lock.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3789,7 +3790,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3824,6 +3824,7 @@
       <command:name>Remove-AzureRmResource</command:name>
       <maml:description>
         <maml:para>Removes the azure resource.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4361,7 +4362,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4396,6 +4396,7 @@
       <command:name>Remove-AzureRmResourceLock</command:name>
       <maml:description>
         <maml:para>Removes the azure resource lock.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4966,7 +4967,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5001,6 +5001,7 @@
       <command:name>Set-AzureRmResource</command:name>
       <maml:description>
         <maml:para>Updates an existing azure resource.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5742,7 +5743,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5781,6 +5781,7 @@
       <command:name>Set-AzureRmResourceLock</command:name>
       <maml:description>
         <maml:para>Updates an existing resource lock.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6593,7 +6594,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6628,6 +6628,7 @@
       <command:name>Find-AzureRmResource</command:name>
       <maml:description>
         <maml:para>Searches for resources using the specified parameters.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7488,7 +7489,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7538,12 +7538,13 @@
     <maml:relatedLinks>
     </maml:relatedLinks>
   </command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <!--Generated by PS Cmdlet Help Editor-->
     <command:details>
       <command:name>Find-AzureRmResourceGroup</command:name>
       <maml:description>
         <maml:para>Searches for resource group using the specified parameters.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7576,17 +7577,20 @@
         <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
         <dev:type>
           <maml:name>Hashtable</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
     </command:parameters>
     <command:inputTypes>
       <command:inputType>
         <dev:type>
-          <maml:name></maml:name>
-          <maml:uri></maml:uri>
-          <maml:description/>
+          <maml:name>
+          </maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description />
         </dev:type>
         <maml:description>
           <maml:para>
@@ -7597,9 +7601,11 @@
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name></maml:name>
-          <maml:uri></maml:uri>
-          <maml:description/>
+          <maml:name>
+          </maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description />
         </dev:type>
         <maml:description>
           <maml:para>
@@ -7607,10 +7613,13 @@
         </maml:description>
       </command:returnValue>
     </command:returnValues>
-    <command:terminatingErrors></command:terminatingErrors>
-    <command:nonTerminatingErrors></command:nonTerminatingErrors>
+    <command:terminatingErrors>
+    </command:terminatingErrors>
+    <command:nonTerminatingErrors>
+    </command:nonTerminatingErrors>
     <maml:alertSet>
-      <maml:title></maml:title>
+      <maml:title>
+      </maml:title>
       <maml:alert>
         <maml:para />
       </maml:alert>
@@ -7626,7 +7635,8 @@
           <maml:para>Finds all resource group.</maml:para>
           <maml:para />
           <maml:para />
-          <maml:para></maml:para>
+          <maml:para>
+          </maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>
@@ -7646,7 +7656,8 @@
           <maml:para>Finds all resource group with a tag with name 'testtag'.</maml:para>
           <maml:para />
           <maml:para />
-          <maml:para></maml:para>
+          <maml:para>
+          </maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>
@@ -7666,7 +7677,8 @@
           <maml:para>Finds all resource group with a tag with name 'testtag' and value 'testval'.</maml:para>
           <maml:para />
           <maml:para />
-          <maml:para></maml:para>
+          <maml:para>
+          </maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>
@@ -7686,6 +7698,7 @@
       <command:name>Get-AzureRmPolicyAssignment</command:name>
       <maml:description>
         <maml:para>Gets a list of all policy assignments or a particular assignment identified by name and scope or by Id</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7836,9 +7849,10 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>Pre</maml:name>
@@ -7848,9 +7862,10 @@
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>InformationAction</maml:name>
@@ -7860,9 +7875,10 @@
         <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
         <dev:type>
           <maml:name>ActionPreference</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>InformationVariable</maml:name>
@@ -7872,9 +7888,10 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>Name</maml:name>
@@ -7884,9 +7901,10 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>Scope</maml:name>
@@ -7896,9 +7914,10 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>PolicyDefinitionId</maml:name>
@@ -7908,9 +7927,10 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>Id</maml:name>
@@ -7920,17 +7940,20 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
     </command:parameters>
     <command:inputTypes>
       <command:inputType>
         <dev:type>
-          <maml:name></maml:name>
-          <maml:uri></maml:uri>
-          <maml:description/>
+          <maml:name>
+          </maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description />
         </dev:type>
         <maml:description>
           <maml:para />
@@ -7940,19 +7963,24 @@
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name></maml:name>
-          <maml:uri></maml:uri>
-          <maml:description/>
+          <maml:name>
+          </maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description />
         </dev:type>
         <maml:description>
           <maml:para />
         </maml:description>
       </command:returnValue>
     </command:returnValues>
-    <command:terminatingErrors></command:terminatingErrors>
-    <command:nonTerminatingErrors></command:nonTerminatingErrors>
+    <command:terminatingErrors>
+    </command:terminatingErrors>
+    <command:nonTerminatingErrors>
+    </command:nonTerminatingErrors>
     <maml:alertSet>
-      <maml:title></maml:title>
+      <maml:title>
+      </maml:title>
       <maml:alert>
         <maml:para />
       </maml:alert>
@@ -7968,7 +7996,8 @@
           <maml:para>Gets all the policy assignments</maml:para>
           <maml:para />
           <maml:para />
-          <maml:para></maml:para>
+          <maml:para>
+          </maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>
@@ -7991,7 +8020,8 @@
           <maml:para>Gets a specific policy assignment identified by name and scope at which it is applied</maml:para>
           <maml:para />
           <maml:para />
-          <maml:para></maml:para>
+          <maml:para>
+          </maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>
@@ -8011,6 +8041,7 @@
       <command:name>Get-AzureRmPolicyDefinition</command:name>
       <maml:description>
         <maml:para>Gets a list of all the policy definitions or a specific policy definition identified by Name</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8140,9 +8171,10 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>Pre</maml:name>
@@ -8152,9 +8184,10 @@
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>InformationAction</maml:name>
@@ -8164,9 +8197,10 @@
         <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
         <dev:type>
           <maml:name>ActionPreference</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>InformationVariable</maml:name>
@@ -8176,9 +8210,10 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>Name</maml:name>
@@ -8188,9 +8223,10 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>Id</maml:name>
@@ -8200,17 +8236,20 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
     </command:parameters>
     <command:inputTypes>
       <command:inputType>
         <dev:type>
-          <maml:name></maml:name>
-          <maml:uri></maml:uri>
-          <maml:description/>
+          <maml:name>
+          </maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description />
         </dev:type>
         <maml:description>
           <maml:para />
@@ -8220,19 +8259,24 @@
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name></maml:name>
-          <maml:uri></maml:uri>
-          <maml:description/>
+          <maml:name>
+          </maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description />
         </dev:type>
         <maml:description>
           <maml:para />
         </maml:description>
       </command:returnValue>
     </command:returnValues>
-    <command:terminatingErrors></command:terminatingErrors>
-    <command:nonTerminatingErrors></command:nonTerminatingErrors>
+    <command:terminatingErrors>
+    </command:terminatingErrors>
+    <command:nonTerminatingErrors>
+    </command:nonTerminatingErrors>
     <maml:alertSet>
-      <maml:title></maml:title>
+      <maml:title>
+      </maml:title>
       <maml:alert>
         <maml:para />
       </maml:alert>
@@ -8248,7 +8292,8 @@
           <maml:para>Gets all the policy definitions</maml:para>
           <maml:para />
           <maml:para />
-          <maml:para></maml:para>
+          <maml:para>
+          </maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>
@@ -8268,7 +8313,8 @@
           <maml:para />
           <maml:para />
           <maml:para />
-          <maml:para></maml:para>
+          <maml:para>
+          </maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>
@@ -8288,6 +8334,7 @@
       <command:name>New-AzureRmPolicyAssignment</command:name>
       <maml:description>
         <maml:para>Creates a new policy assignment</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8369,9 +8416,10 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>Scope</maml:name>
@@ -8381,9 +8429,10 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>DisplayName</maml:name>
@@ -8393,9 +8442,10 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>PolicyDefinition</maml:name>
@@ -8405,9 +8455,10 @@
         <command:parameterValue required="true" variableLength="false">PSObject</command:parameterValue>
         <dev:type>
           <maml:name>PSObject</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApiVersion</maml:name>
@@ -8417,9 +8468,10 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>Pre</maml:name>
@@ -8429,9 +8481,10 @@
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>InformationAction</maml:name>
@@ -8441,9 +8494,10 @@
         <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
         <dev:type>
           <maml:name>ActionPreference</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>InformationVariable</maml:name>
@@ -8453,17 +8507,20 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
     </command:parameters>
     <command:inputTypes>
       <command:inputType>
         <dev:type>
-          <maml:name></maml:name>
-          <maml:uri></maml:uri>
-          <maml:description/>
+          <maml:name>
+          </maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description />
         </dev:type>
         <maml:description>
           <maml:para />
@@ -8473,19 +8530,24 @@
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name></maml:name>
-          <maml:uri></maml:uri>
-          <maml:description/>
+          <maml:name>
+          </maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description />
         </dev:type>
         <maml:description>
           <maml:para />
         </maml:description>
       </command:returnValue>
     </command:returnValues>
-    <command:terminatingErrors></command:terminatingErrors>
-    <command:nonTerminatingErrors></command:nonTerminatingErrors>
+    <command:terminatingErrors>
+    </command:terminatingErrors>
+    <command:nonTerminatingErrors>
+    </command:nonTerminatingErrors>
     <maml:alertSet>
-      <maml:title></maml:title>
+      <maml:title>
+      </maml:title>
       <maml:alert>
         <maml:para />
       </maml:alert>
@@ -8505,7 +8567,8 @@
           <maml:para>Puts a policy assignment at the specified resource group level</maml:para>
           <maml:para />
           <maml:para />
-          <maml:para></maml:para>
+          <maml:para>
+          </maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>
@@ -8525,6 +8588,7 @@
       <command:name>New-AzureRmPolicyDefinition</command:name>
       <maml:description>
         <maml:para>Creates a new policy definition</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8606,9 +8670,10 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>DisplayName</maml:name>
@@ -8618,9 +8683,10 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>Description</maml:name>
@@ -8630,9 +8696,10 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>Policy</maml:name>
@@ -8642,9 +8709,10 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApiVersion</maml:name>
@@ -8654,9 +8722,10 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>Pre</maml:name>
@@ -8666,9 +8735,10 @@
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>InformationAction</maml:name>
@@ -8678,9 +8748,10 @@
         <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
         <dev:type>
           <maml:name>ActionPreference</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>InformationVariable</maml:name>
@@ -8690,17 +8761,20 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
     </command:parameters>
     <command:inputTypes>
       <command:inputType>
         <dev:type>
-          <maml:name></maml:name>
-          <maml:uri></maml:uri>
-          <maml:description/>
+          <maml:name>
+          </maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description />
         </dev:type>
         <maml:description>
           <maml:para />
@@ -8710,19 +8784,24 @@
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name></maml:name>
-          <maml:uri></maml:uri>
-          <maml:description/>
+          <maml:name>
+          </maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description />
         </dev:type>
         <maml:description>
           <maml:para />
         </maml:description>
       </command:returnValue>
     </command:returnValues>
-    <command:terminatingErrors></command:terminatingErrors>
-    <command:nonTerminatingErrors></command:nonTerminatingErrors>
+    <command:terminatingErrors>
+    </command:terminatingErrors>
+    <command:nonTerminatingErrors>
+    </command:nonTerminatingErrors>
     <maml:alertSet>
-      <maml:title></maml:title>
+      <maml:title>
+      </maml:title>
       <maml:alert>
         <maml:para />
       </maml:alert>
@@ -8735,10 +8814,11 @@
         </maml:introduction>
         <dev:code>New-AzureRmPolicyDefinition -Name testDefinition -Policy C:\SamplePolicy.json</dev:code>
         <dev:remarks>
-          <maml:para>This will create a new policy definition &#39;testDefinition&#39; with policy rule specified in C:\SamplePolicy.json file</maml:para>
+          <maml:para>This will create a new policy definition 'testDefinition' with policy rule specified in C:\SamplePolicy.json file</maml:para>
           <maml:para />
           <maml:para />
-          <maml:para></maml:para>
+          <maml:para>
+          </maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>
@@ -8753,12 +8833,13 @@
         <maml:introduction>
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
-        <dev:code>New-AzureRmPolicyDefinition -Name testDefinition -DisplayName &quot;Test policy&quot; -Policy &quot;{&quot;&quot;if&quot;&quot;:{&quot;&quot;source&quot;&quot;:&quot;&quot;action&quot;&quot;,&quot;&quot;equals&quot;&quot;:&quot;&quot;Microsoft.Compute/virtualMachines/write&quot;&quot;},&quot;&quot;then&quot;&quot;:{&quot;&quot;effect&quot;&quot;:&quot;&quot;deny&quot;&quot;}}&quot;</dev:code>
+        <dev:code>New-AzureRmPolicyDefinition -Name testDefinition -DisplayName "Test policy" -Policy "{""if"":{""source"":""action"",""equals"":""Microsoft.Compute/virtualMachines/write""},""then"":{""effect"":""deny""}}"</dev:code>
         <dev:remarks>
-          <maml:para>Creates a new policy definition &#39;testDefinition&#39; with the specified policy</maml:para>
+          <maml:para>Creates a new policy definition 'testDefinition' with the specified policy</maml:para>
           <maml:para />
           <maml:para />
-          <maml:para></maml:para>
+          <maml:para>
+          </maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>
@@ -8778,6 +8859,7 @@
       <command:name>Set-AzureRmPolicyAssignment</command:name>
       <maml:description>
         <maml:para>Updates existing policy assignment</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8897,9 +8979,10 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>Scope</maml:name>
@@ -8909,9 +8992,10 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>DisplayName</maml:name>
@@ -8921,9 +9005,10 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApiVersion</maml:name>
@@ -8933,9 +9018,10 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>Pre</maml:name>
@@ -8945,9 +9031,10 @@
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>InformationAction</maml:name>
@@ -8957,9 +9044,10 @@
         <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
         <dev:type>
           <maml:name>ActionPreference</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>InformationVariable</maml:name>
@@ -8969,9 +9057,10 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>Id</maml:name>
@@ -8981,17 +9070,20 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
     </command:parameters>
     <command:inputTypes>
       <command:inputType>
         <dev:type>
-          <maml:name></maml:name>
-          <maml:uri></maml:uri>
-          <maml:description/>
+          <maml:name>
+          </maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description />
         </dev:type>
         <maml:description>
           <maml:para />
@@ -9001,19 +9093,24 @@
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name></maml:name>
-          <maml:uri></maml:uri>
-          <maml:description/>
+          <maml:name>
+          </maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description />
         </dev:type>
         <maml:description>
           <maml:para />
         </maml:description>
       </command:returnValue>
     </command:returnValues>
-    <command:terminatingErrors></command:terminatingErrors>
-    <command:nonTerminatingErrors></command:nonTerminatingErrors>
+    <command:terminatingErrors>
+    </command:terminatingErrors>
+    <command:nonTerminatingErrors>
+    </command:nonTerminatingErrors>
     <maml:alertSet>
-      <maml:title></maml:title>
+      <maml:title>
+      </maml:title>
       <maml:alert>
         <maml:para />
       </maml:alert>
@@ -9027,13 +9124,14 @@
         <dev:code>
           $rg = Get-AzureRmResourceGroup -Name testGroup
           $policyAssignment = Get-AzureRmPolicyAssignment -Name myPolicyAssignment -Scope $rg.ResourceId
-          Set-AzureRmPolicyAssignment -Id $policyAssignment.ResourceId -DisplayName &quot;Do not allow VM creation&quot;
+          Set-AzureRmPolicyAssignment -Id $policyAssignment.ResourceId -DisplayName "Do not allow VM creation"
         </dev:code>
         <dev:remarks>
           <maml:para>Updates the display name on an existing policy assignment</maml:para>
           <maml:para />
           <maml:para />
-          <maml:para></maml:para>
+          <maml:para>
+          </maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>
@@ -9053,6 +9151,7 @@
       <command:name>Set-AzureRmPolicyDefinition</command:name>
       <maml:description>
         <maml:para>Updates an existing policy definition</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -9193,9 +9292,10 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>DisplayName</maml:name>
@@ -9205,9 +9305,10 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>Description</maml:name>
@@ -9217,9 +9318,10 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>Policy</maml:name>
@@ -9229,9 +9331,10 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>ApiVersion</maml:name>
@@ -9241,9 +9344,10 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>Pre</maml:name>
@@ -9253,9 +9357,10 @@
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>InformationAction</maml:name>
@@ -9265,9 +9370,10 @@
         <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
         <dev:type>
           <maml:name>ActionPreference</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
         <maml:name>InformationVariable</maml:name>
@@ -9277,9 +9383,10 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>Id</maml:name>
@@ -9289,17 +9396,20 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
+          <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
     </command:parameters>
     <command:inputTypes>
       <command:inputType>
         <dev:type>
-          <maml:name></maml:name>
-          <maml:uri></maml:uri>
-          <maml:description/>
+          <maml:name>
+          </maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description />
         </dev:type>
         <maml:description>
           <maml:para />
@@ -9309,19 +9419,24 @@
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name></maml:name>
-          <maml:uri></maml:uri>
-          <maml:description/>
+          <maml:name>
+          </maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description />
         </dev:type>
         <maml:description>
           <maml:para />
         </maml:description>
       </command:returnValue>
     </command:returnValues>
-    <command:terminatingErrors></command:terminatingErrors>
-    <command:nonTerminatingErrors></command:nonTerminatingErrors>
+    <command:terminatingErrors>
+    </command:terminatingErrors>
+    <command:nonTerminatingErrors>
+    </command:nonTerminatingErrors>
     <maml:alertSet>
-      <maml:title></maml:title>
+      <maml:title>
+      </maml:title>
       <maml:alert>
         <maml:para />
       </maml:alert>
@@ -9334,13 +9449,14 @@
         </maml:introduction>
         <dev:code>
           $policy = Get-AzureRmPolicyDefinition -Name myPolicyDefinition
-          Set-AzureRmPolicyDefinition -Id $policy.ResourceId -Description &quot;Updated policy to not allow VM creations&quot;
+          Set-AzureRmPolicyDefinition -Id $policy.ResourceId -Description "Updated policy to not allow VM creations"
         </dev:code>
         <dev:remarks>
           <maml:para>Updates the description on an existing policy definition</maml:para>
           <maml:para />
           <maml:para />
-          <maml:para></maml:para>
+          <maml:para>
+          </maml:para>
         </dev:remarks>
         <command:commandLines>
           <command:commandLine>
@@ -9355,570 +9471,605 @@
     </maml:relatedLinks>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<!--Generated by PS Cmdlet Help Editor-->
-	<command:details>
-		<command:name>Remove-AzureRmPolicyAssignment</command:name>
-		<maml:description>
-			<maml:para>Removes the specified policy assignment</maml:para>
-		</maml:description>
-		<maml:copyright>
-			<maml:para />
-		</maml:copyright>
-		<command:verb>Remove</command:verb>
-		<command:noun>AzureRmPolicyAssignment</command:noun>
-		<dev:version />
-	</command:details>
-	<maml:description>
-		<maml:para>Removes the specified policy assignment</maml:para>
-	</maml:description>
-	<command:syntax>
-		<command:syntaxItem>
-			<maml:name>Remove-AzureRmPolicyAssignment</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Name</maml:name>
-				<maml:description>
-					<maml:para>The policy assignment name</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Scope</maml:name>
-				<maml:description>
-					<maml:para>The scope at which the policy assignment is applied</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Do not ask for confirmation</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>ApiVersion</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Pre</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>Remove-AzureRmPolicyAssignment</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Id</maml:name>
-				<maml:description>
-					<maml:para>The fully qualified resource Id for the policy assignment</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Do not ask for confirmation</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>ApiVersion</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Pre</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-	</command:syntax>
-	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>Name</maml:name>
-			<maml:description>
-				<maml:para>The policy assignment name</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>Scope</maml:name>
-			<maml:description>
-				<maml:para>The scope at which the policy assignment is applied</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>Do not ask for confirmation</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>ApiVersion</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Pre</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			<dev:type>
-				<maml:name>ActionPreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>Id</maml:name>
-			<maml:description>
-				<maml:para>The fully qualified resource Id for the policy assignment</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-	</command:parameters>
-	<command:inputTypes>
-		<command:inputType>
-			<dev:type>
-				<maml:name></maml:name>
-				<maml:uri></maml:uri>
-				<maml:description/>
-			</dev:type>
-			<maml:description>
-<maml:para />
-			</maml:description>
-		</command:inputType>
-	</command:inputTypes>
-	<command:returnValues>
-		<command:returnValue>
-			<dev:type>
-				<maml:name></maml:name>
-				<maml:uri></maml:uri>
-				<maml:description/>
-			</dev:type>
-			<maml:description>
-<maml:para />
-			</maml:description>
-		</command:returnValue>
-	</command:returnValues>
-	<command:terminatingErrors></command:terminatingErrors>
-	<command:nonTerminatingErrors></command:nonTerminatingErrors>
-	<maml:alertSet>
-		<maml:title></maml:title>
-		<maml:alert>
-			<maml:para />
-		</maml:alert>
-	</maml:alertSet>
-	<command:examples>
-		<command:example>
-			<maml:title>--------------------------  Remove policy assignment by name and scope  --------------------------</maml:title>
-			<maml:introduction>
-				<maml:paragraph>PS C:\&gt;</maml:paragraph>
-			</maml:introduction>
-			<dev:code>$rg = Get-AzureRmResourceGroup -Name testGroup
+    <!--Generated by PS Cmdlet Help Editor-->
+    <command:details>
+      <command:name>Remove-AzureRmPolicyAssignment</command:name>
+      <maml:description>
+        <maml:para>Removes the specified policy assignment</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Remove</command:verb>
+      <command:noun>AzureRmPolicyAssignment</command:noun>
+      <dev:version />
+    </command:details>
+    <maml:description>
+      <maml:para>Removes the specified policy assignment</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Remove-AzureRmPolicyAssignment</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>The policy assignment name</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>Scope</maml:name>
+          <maml:description>
+            <maml:para>The scope at which the policy assignment is applied</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Force</maml:name>
+          <maml:description>
+            <maml:para>Do not ask for confirmation</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ApiVersion</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Pre</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>InformationAction</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>InformationVariable</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Remove-AzureRmPolicyAssignment</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>Id</maml:name>
+          <maml:description>
+            <maml:para>The fully qualified resource Id for the policy assignment</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Force</maml:name>
+          <maml:description>
+            <maml:para>Do not ask for confirmation</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ApiVersion</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Pre</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>InformationAction</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>InformationVariable</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>The policy assignment name</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>Scope</maml:name>
+        <maml:description>
+          <maml:para>The scope at which the policy assignment is applied</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Force</maml:name>
+        <maml:description>
+          <maml:para>Do not ask for confirmation</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ApiVersion</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Pre</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>InformationAction</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+        <dev:type>
+          <maml:name>ActionPreference</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>InformationVariable</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>Id</maml:name>
+        <maml:description>
+          <maml:para>The fully qualified resource Id for the policy assignment</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>
+          </maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>
+          </maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors>
+    </command:terminatingErrors>
+    <command:nonTerminatingErrors>
+    </command:nonTerminatingErrors>
+    <maml:alertSet>
+      <maml:title>
+      </maml:title>
+      <maml:alert>
+        <maml:para />
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>--------------------------  Remove policy assignment by name and scope  --------------------------</maml:title>
+        <maml:introduction>
+          <maml:paragraph>PS C:\&gt;</maml:paragraph>
+        </maml:introduction>
+        <dev:code>$rg = Get-AzureRmResourceGroup -Name testGroup
 Remove-AzureRmPolicyAssignment -Name myPolicyAssignment -Scope $rg.ResourceId -Force</dev:code>
-			<dev:remarks>
-				<maml:para>Removes the policy assignment &#39;myPolicyAssignment&#39; assigned at the specified resource group level scope</maml:para>
-				<maml:para />
-				<maml:para />
-				<maml:para></maml:para>
-			</dev:remarks>
-			<command:commandLines>
-				<command:commandLine>
-					<command:commandText>
-						<maml:para />
-					</command:commandText>
-				</command:commandLine>
-			</command:commandLines>
-		</command:example>
-		<command:example>
-			<maml:title>--------------------------  Remove policy assignment by Id  --------------------------</maml:title>
-			<maml:introduction>
-				<maml:paragraph>PS C:\&gt;</maml:paragraph>
-			</maml:introduction>
-			<dev:code>$rg = Get-AzureRmResourceGroup -Name testGroup
-$policyAssignment = Get-AzureRmPolicyAssignment -Name &apos;myAssignment&apos; -Scope $rg.ResourceId
+        <dev:remarks>
+          <maml:para>Removes the policy assignment 'myPolicyAssignment' assigned at the specified resource group level scope</maml:para>
+          <maml:para />
+          <maml:para />
+          <maml:para>
+          </maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText>
+              <maml:para />
+            </command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>--------------------------  Remove policy assignment by Id  --------------------------</maml:title>
+        <maml:introduction>
+          <maml:paragraph>PS C:\&gt;</maml:paragraph>
+        </maml:introduction>
+        <dev:code>$rg = Get-AzureRmResourceGroup -Name testGroup
+$policyAssignment = Get-AzureRmPolicyAssignment -Name 'myAssignment' -Scope $rg.ResourceId
 Remove-AzureRmPolicyAssignment -Id $policyAssignment.ResourceId -Force</dev:code>
-			<dev:remarks>
-				<maml:para>Removes the policy assignment identified by the Id</maml:para>
-				<maml:para />
-				<maml:para />
-				<maml:para></maml:para>
-			</dev:remarks>
-			<command:commandLines>
-				<command:commandLine>
-					<command:commandText>
-						<maml:para />
-					</command:commandText>
-				</command:commandLine>
-			</command:commandLines>
-		</command:example>
-	</command:examples>
-	<maml:relatedLinks>
-	</maml:relatedLinks>
-</command:command>
-<command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
-<!--Generated by PS Cmdlet Help Editor-->
-	<command:details>
-		<command:name>Remove-AzureRmPolicyDefinition</command:name>
-		<maml:description>
-			<maml:para>Removes the policy definition</maml:para>
-		</maml:description>
-		<maml:copyright>
-			<maml:para />
-		</maml:copyright>
-		<command:verb>Remove</command:verb>
-		<command:noun>AzureRmPolicyDefinition</command:noun>
-		<dev:version />
-	</command:details>
-	<maml:description>
-		<maml:para>Removes the policy definition</maml:para>
-	</maml:description>
-	<command:syntax>
-		<command:syntaxItem>
-			<maml:name>Remove-AzureRmPolicyDefinition</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Name</maml:name>
-				<maml:description>
-					<maml:para>The policy definition name</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Do not ask for confirmation</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>ApiVersion</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Pre</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>Remove-AzureRmPolicyDefinition</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Id</maml:name>
-				<maml:description>
-					<maml:para>The fully qualified resource Id for the policy definition</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Do not ask for confirmation</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>ApiVersion</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Pre</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationAction</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>InformationVariable</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-	</command:syntax>
-	<command:parameters>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>Name</maml:name>
-			<maml:description>
-				<maml:para>The policy definition name</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Force</maml:name>
-			<maml:description>
-				<maml:para>Do not ask for confirmation</maml:para>
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>ApiVersion</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>Pre</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			<dev:type>
-				<maml:name>SwitchParameter</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationAction</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
-			<dev:type>
-				<maml:name>ActionPreference</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-			<maml:name>InformationVariable</maml:name>
-			<maml:description>
-				<maml:para />
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-			<maml:name>Id</maml:name>
-			<maml:description>
-				<maml:para>The fully qualified resource Id for the policy definition</maml:para>
-			</maml:description>
-			<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			<dev:type>
-				<maml:name>String</maml:name>
-				<maml:uri/>
-			</dev:type>
-			<dev:defaultValue></dev:defaultValue>
-		</command:parameter>
-	</command:parameters>
-	<command:inputTypes>
-		<command:inputType>
-			<dev:type>
-				<maml:name></maml:name>
-				<maml:uri></maml:uri>
-				<maml:description/>
-			</dev:type>
-			<maml:description>
-<maml:para />
-			</maml:description>
-		</command:inputType>
-	</command:inputTypes>
-	<command:returnValues>
-		<command:returnValue>
-			<dev:type>
-				<maml:name></maml:name>
-				<maml:uri></maml:uri>
-				<maml:description/>
-			</dev:type>
-			<maml:description>
-<maml:para />
-			</maml:description>
-		</command:returnValue>
-	</command:returnValues>
-	<command:terminatingErrors></command:terminatingErrors>
-	<command:nonTerminatingErrors></command:nonTerminatingErrors>
-	<maml:alertSet>
-		<maml:title></maml:title>
-		<maml:alert>
-			<maml:para />
-		</maml:alert>
-	</maml:alertSet>
-	<command:examples>
-		<command:example>
-			<maml:title>--------------------------  Remove the policy definition by name  --------------------------</maml:title>
-			<maml:introduction>
-				<maml:paragraph>PS C:\&gt;</maml:paragraph>
-			</maml:introduction>
-			<dev:code>Remove-AzureRmPolicyDefinition -Name &apos;myPolicyDefinition&apos;</dev:code>
-			<dev:remarks>
-				<maml:para>Removes the specified policy definition</maml:para>
-				<maml:para />
-				<maml:para />
-				<maml:para></maml:para>
-			</dev:remarks>
-			<command:commandLines>
-				<command:commandLine>
-					<command:commandText>
-						<maml:para />
-					</command:commandText>
-				</command:commandLine>
-			</command:commandLines>
-		</command:example>
-		<command:example>
-			<maml:title>--------------------------  Remove policy definition by Id  --------------------------</maml:title>
-			<maml:introduction>
-				<maml:paragraph>PS C:\&gt;</maml:paragraph>
-			</maml:introduction>
-			<dev:code>$policyDefinition = Get-AzureRmPolicyDefinition -Name myPolicyDefinition
+        <dev:remarks>
+          <maml:para>Removes the policy assignment identified by the Id</maml:para>
+          <maml:para />
+          <maml:para />
+          <maml:para>
+          </maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText>
+              <maml:para />
+            </command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <!--Generated by PS Cmdlet Help Editor-->
+    <command:details>
+      <command:name>Remove-AzureRmPolicyDefinition</command:name>
+      <maml:description>
+        <maml:para>Removes the policy definition</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Remove</command:verb>
+      <command:noun>AzureRmPolicyDefinition</command:noun>
+      <dev:version />
+    </command:details>
+    <maml:description>
+      <maml:para>Removes the policy definition</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Remove-AzureRmPolicyDefinition</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para>The policy definition name</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Force</maml:name>
+          <maml:description>
+            <maml:para>Do not ask for confirmation</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ApiVersion</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Pre</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>InformationAction</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>InformationVariable</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Remove-AzureRmPolicyDefinition</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+          <maml:name>Id</maml:name>
+          <maml:description>
+            <maml:para>The fully qualified resource Id for the policy definition</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Force</maml:name>
+          <maml:description>
+            <maml:para>Do not ask for confirmation</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>ApiVersion</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Pre</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>InformationAction</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>InformationVariable</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para>The policy definition name</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Force</maml:name>
+        <maml:description>
+          <maml:para>Do not ask for confirmation</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>ApiVersion</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Pre</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>InformationAction</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+        <dev:type>
+          <maml:name>ActionPreference</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+        <maml:name>InformationVariable</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
+        <maml:name>Id</maml:name>
+        <maml:description>
+          <maml:para>The fully qualified resource Id for the policy definition</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>
+          </maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>
+          </maml:name>
+          <maml:uri>
+          </maml:uri>
+          <maml:description />
+        </dev:type>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors>
+    </command:terminatingErrors>
+    <command:nonTerminatingErrors>
+    </command:nonTerminatingErrors>
+    <maml:alertSet>
+      <maml:title>
+      </maml:title>
+      <maml:alert>
+        <maml:para />
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>--------------------------  Remove the policy definition by name  --------------------------</maml:title>
+        <maml:introduction>
+          <maml:paragraph>PS C:\&gt;</maml:paragraph>
+        </maml:introduction>
+        <dev:code>Remove-AzureRmPolicyDefinition -Name 'myPolicyDefinition'</dev:code>
+        <dev:remarks>
+          <maml:para>Removes the specified policy definition</maml:para>
+          <maml:para />
+          <maml:para />
+          <maml:para>
+          </maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText>
+              <maml:para />
+            </command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>--------------------------  Remove policy definition by Id  --------------------------</maml:title>
+        <maml:introduction>
+          <maml:paragraph>PS C:\&gt;</maml:paragraph>
+        </maml:introduction>
+        <dev:code>$policyDefinition = Get-AzureRmPolicyDefinition -Name myPolicyDefinition
 Remove-AzureRmPolicyDefinition -Id $policyDefinition.ResourceId -Force</dev:code>
-			<dev:remarks>
-				<maml:para>Removes the policy definition identified by its resource Id</maml:para>
-				<maml:para />
-				<maml:para />
-				<maml:para></maml:para>
-			</dev:remarks>
-			<command:commandLines>
-				<command:commandLine>
-					<command:commandText>
-						<maml:para />
-					</command:commandText>
-				</command:commandLine>
-			</command:commandLines>
-		</command:example>
-	</command:examples>
-	<maml:relatedLinks>
-	</maml:relatedLinks>
-</command:command>
+        <dev:remarks>
+          <maml:para>Removes the policy definition identified by its resource Id</maml:para>
+          <maml:para />
+          <maml:para />
+          <maml:para>
+          </maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText>
+              <maml:para />
+            </command:commandText>
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+    </maml:relatedLinks>
+  </command:command>
 </helpItems>

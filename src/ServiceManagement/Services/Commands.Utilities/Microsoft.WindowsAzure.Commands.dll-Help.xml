@@ -5,6 +5,7 @@
       <command:name>Add-AzureAccount</command:name>
       <maml:description>
         <maml:para>Adds the Azure account to Windows PowerShell</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -136,7 +137,6 @@
       <maml:title />
       <maml:alert>
         <maml:para>Add-AzureAccount (and the Azure AD authentication method) takes precedence over Import-AzurePublishSettings (and the management certificate method). If you use Add-AzureAccount even once on your account, the Azure AD authentication method is used and the management certificate is ignored. To remove the Azure AD token and restore the management certificate method, use the Remove-AzureAccount cmdlet. For more information, type: Get-Help Remove-AzureAccount.</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>The error, "Your credentials have expired. Please use Add-AzureAccount to log in again." indicates that your access token is expired and Windows PowerShell cannot access your Azure account. To restore access to your account, run Add-AzureAccount again.</maml:para>
@@ -253,6 +253,7 @@
       <command:name>Get-AzureAccount</command:name>
       <maml:description>
         <maml:para>Gets Azure accounts that are available to Azure PowerShell.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -412,17 +413,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Remove-AzureAccount</command:name>
       <maml:description>
         <maml:para>Deletes an Azure account from Windows PowerShell.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -625,17 +622,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureEnvironment</command:name>
       <maml:description>
         <maml:para>Gets Azure environments</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -842,17 +835,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Add-AzureEnvironment</command:name>
       <maml:description>
         <maml:para>Creates an Azure environment</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1139,17 +1128,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Set-AzureEnvironment</command:name>
       <maml:description>
         <maml:para>Changes the properties of an Azure environment</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1412,17 +1397,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Remove-AzureEnvironment</command:name>
       <maml:description>
         <maml:para>Deletes an Azure environment from Windows PowerShell</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1574,17 +1555,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzurePublishSettingsFile</command:name>
       <maml:description>
         <maml:para>Downloads the publish-settings file for a Microsoft Azure subscription</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1675,7 +1652,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>node-dev, php-dev</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1712,6 +1688,7 @@
       <command:name>Get-AzureSubscription</command:name>
       <maml:description>
         <maml:para>Gets  Azure subscriptions in the user accounts.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2036,17 +2013,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Import-AzurePublishSettingsFile</command:name>
       <maml:description>
         <maml:para>Imports a publish-settings file with a certificate to connect to your Microsoft Azure account.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2147,7 +2120,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>node-dev, php-dev</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2216,6 +2188,7 @@
       <command:name>Remove-AzureSubscription</command:name>
       <maml:description>
         <maml:para>Deletes an Azure subscription from Windows PowerShell.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2459,17 +2432,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Select-AzureSubscription</command:name>
       <maml:description>
         <maml:para>Changes the current and default Azure subscriptions</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2773,17 +2742,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Set-AzureSubscription</command:name>
       <maml:description>
         <maml:para>Creates or changes an Azure subscription</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3156,11 +3121,6 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <!--Generated by Help Cmdlet Editor-->
@@ -3168,6 +3128,7 @@
       <command:name>Add-AzureCacheWorkerRole</command:name>
       <maml:description>
         <maml:para>Add a dedicated cache worker role to the current service</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3268,7 +3229,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>node-dev, php-dev</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3321,6 +3281,7 @@
       <command:name>Add-AzureNodeWebRole</command:name>
       <maml:description>
         <maml:para>Creates scaffolding for a Node.js application which will be hosted in the cloud via IIS</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3419,7 +3380,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>node-dev</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3522,6 +3482,7 @@
       <command:name>Add-AzureNodeWorkerRole</command:name>
       <maml:description>
         <maml:para>Creates scaffolding for a Node.js application which will be hosted in the cloud via node.exe</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3620,7 +3581,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>node-dev</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3723,6 +3683,7 @@
       <command:name>Add-AzurePHPWebRole</command:name>
       <maml:description>
         <maml:para>Creates scaffolding for a PHP application which will be hosted in the cloud via IIS</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3821,7 +3782,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>php-dev</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3924,6 +3884,7 @@
       <command:name>Add-AzurePHPWorkerRole</command:name>
       <maml:description>
         <maml:para>Creates scaffolding for a PHP application which will be hosted in the cloud via php.exe</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4022,7 +3983,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>php-dev</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4125,6 +4085,7 @@
       <command:name>Disable-AzureServiceProjectRemoteDesktop</command:name>
       <maml:description>
         <maml:para>Disables remote desktop access to a hosted service</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4185,7 +4146,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>node-dev, php-dev</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4207,6 +4167,7 @@
       <command:name>Enable-AzureMemcacheRole</command:name>
       <maml:description>
         <maml:para>Enable memcached for the specified web role, configured to communicate with the specified dedicated cache role</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4328,7 +4289,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4435,6 +4395,7 @@
       <command:name>Enable-AzureServiceProjectRemoteDesktop</command:name>
       <maml:description>
         <maml:para>Enables remote desktop access to a hosted service</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4536,7 +4497,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>node-dev, php-dev</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4558,6 +4518,7 @@
       <command:name>Get-AzureServiceProjectRoleRuntime</command:name>
       <maml:description>
         <maml:para>Get the runtimes available to install in a role</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4644,7 +4605,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>node-dev, php-dev</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4674,6 +4634,7 @@
       <command:name>New-AzureServiceProject</command:name>
       <maml:description>
         <maml:para>Creates scaffolding for a new service</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4754,7 +4715,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>node-dev, php-dev</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4811,6 +4771,7 @@
       <command:name>Publish-AzureServiceProject</command:name>
       <maml:description>
         <maml:para>Publish the current service to the cloud</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5033,7 +4994,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>node-dev, php-dev</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5090,6 +5050,7 @@
       <command:name>Remove-AzureService</command:name>
       <maml:description>
         <maml:para>Removes the current hosted service</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5220,7 +5181,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>node-dev, php-dev</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5246,6 +5206,7 @@
       <command:name>Set-AzureServiceProject</command:name>
       <maml:description>
         <maml:para>Sets default location, subscription, slot, and storage account for the current service</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5386,7 +5347,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>node-dev, php-dev</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5449,6 +5409,7 @@
       <command:name>Set-AzureServiceProjectRole</command:name>
       <maml:description>
         <maml:para>Set the number of instances, vm size or the runtime version of a role</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5629,7 +5590,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>node-dev, php-dev</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5767,6 +5727,7 @@
       <command:name>Start-AzureEmulator</command:name>
       <maml:description>
         <maml:para>Starts both the compute and storage emulators and hosts the current service in the compute emulator</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5864,7 +5825,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>node-dev, php-dev</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5910,6 +5870,7 @@
       <command:name>Start-AzureService</command:name>
       <maml:description>
         <maml:para>Starts the specified hosted service in Azure</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6030,7 +5991,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>node-dev, php-dev</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6056,6 +6016,7 @@
       <command:name>Stop-AzureEmulator</command:name>
       <maml:description>
         <maml:para>Stops the compute emulator</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6136,7 +6097,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>node-dev, php-dev</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6154,6 +6114,7 @@
       <command:name>Stop-AzureService</command:name>
       <maml:description>
         <maml:para>Stops the current hosted service</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6274,7 +6235,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>node-dev, php-dev</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6295,6 +6255,7 @@
       <command:name>Test-AzureName</command:name>
       <maml:description>
         <maml:para>Tests whether a Microsoft Azure cloud service name, storage service name or service bus namespace name exists or not.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6468,7 +6429,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>node-dev, php-dev</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6541,6 +6501,7 @@
       <command:name>Save-AzureServiceProjectPackage</command:name>
       <maml:description>
         <maml:para>Packages the service project into Microsoft Azure cloud package (*.cspkg).</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6596,7 +6557,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>node-dev, php-dev</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6630,6 +6590,7 @@
       <command:name>Add-AzureWebRole</command:name>
       <maml:description>
         <maml:para>Creates scaffolding for a custom web role</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6747,7 +6708,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>node-dev, php-dev</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6877,6 +6837,7 @@
       <command:name>Add-AzureWorkerRole</command:name>
       <maml:description>
         <maml:para>Creates scaffolding for a custom worker role</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6994,7 +6955,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>node-dev, php-dev</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7124,6 +7084,7 @@
       <command:name>New-AzureRoleTemplate</command:name>
       <maml:description>
         <maml:para>Creates azure web and worker role template</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7237,7 +7198,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>node-dev, php-dev</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7344,6 +7304,7 @@
       <command:name>Get-AzureSBLocation</command:name>
       <maml:description>
         <maml:para>Get the Microsoft Azure regions that may be used to create new Microsoft Azure ServiceBus namespaces</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7405,7 +7366,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7431,6 +7391,7 @@
       <command:name>Get-AzureSBNamespace</command:name>
       <maml:description>
         <maml:para>Get information about existing Microsoft Azure ServiceBus namespaces</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7512,7 +7473,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7592,6 +7552,7 @@
       <command:name>New-AzureSBNamespace</command:name>
       <maml:description>
         <maml:para>Create a new Microsoft Azure ServiceBus namespace</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7733,7 +7694,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7759,6 +7719,7 @@
       <command:name>Remove-AzureSBNamespace</command:name>
       <maml:description>
         <maml:para>Delete a WindowsAzure ServiceBus namespace and all associated objects</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7840,7 +7801,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7866,6 +7826,7 @@
       <command:name>New-AzureSBAuthorizationRule</command:name>
       <maml:description>
         <maml:para>Creates new Service Bus authorization rule</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8025,7 +7986,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8089,6 +8049,7 @@
       <command:name>Set-AzureSBAuthorizationRule</command:name>
       <maml:description>
         <maml:para>Updates existing Service Bus authorization rule</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8248,7 +8209,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8312,6 +8272,7 @@
       <command:name>Remove-AzureSBAuthorizationRule</command:name>
       <maml:description>
         <maml:para>Removes existing Service Bus authorization rule</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8429,7 +8390,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8493,6 +8453,7 @@
       <command:name>Get-AzureSBAuthorizationRule</command:name>
       <maml:description>
         <maml:para>Gets Service bus authorization rules</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8648,7 +8609,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8750,6 +8710,7 @@
       <command:name>Get-AzureStoreAddOn</command:name>
       <maml:description>
         <maml:para>Gets all the available Microsoft Azure Store Add-Ons for purchasing or the existing add-on instances on the current subscription</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8871,7 +8832,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8991,6 +8951,7 @@
       <command:name>New-AzureStoreAddOn</command:name>
       <maml:description>
         <maml:para>Purchases a new add-on instance from Microsoft Azure Store</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -9122,7 +9083,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -9188,6 +9148,7 @@
       <command:name>Set-AzureStoreAddOn</command:name>
       <maml:description>
         <maml:para>Updates an existing add-on instance from current subscription</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -9305,7 +9266,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -9371,6 +9331,7 @@
       <command:name>Remove-AzureStoreAddOn</command:name>
       <maml:description>
         <maml:para>Removes an existing add-on instance</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -9477,17 +9438,13 @@
         </command:commandLines>
       </command:example>
     </command:examples>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureWebsite</command:name>
       <maml:description>
         <maml:para>Gets Azure websites in the current subscription.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -9732,17 +9689,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureWebsiteMetric</command:name>
       <maml:description>
         <maml:para>Gets metrics for Azure website in the current subscription.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -9882,17 +9835,13 @@
         </command:commandLines>
       </command:example>
     </command:examples>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureWebHostingPlan</command:name>
       <maml:description>
         <maml:para>Gets Azure web hosting plan in the current subscription.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -10024,17 +9973,13 @@
         </command:commandLines>
       </command:example>
     </command:examples>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureWebHostingPlanMetric</command:name>
       <maml:description>
         <maml:para>Gets metrics for web hsoting plan.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -10178,11 +10123,6 @@
         </command:commandLines>
       </command:example>
     </command:examples>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <!--Generated by Help Cmdlet Editor-->
@@ -10190,6 +10130,7 @@
       <command:name>Get-AzureWebsiteDeployment</command:name>
       <maml:description>
         <maml:para>List the deployments for an Azure website</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -10343,7 +10284,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -10419,6 +10359,7 @@
       <command:name>Get-AzureWebsiteLocation</command:name>
       <maml:description>
         <maml:para>Get the website locations available to the current subscription</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -10480,7 +10421,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -10529,6 +10469,7 @@
       <command:name>New-AzureWebsite</command:name>
       <maml:description>
         <maml:para>Create an Azure website</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -10760,7 +10701,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -10828,6 +10768,7 @@
       <command:name>Remove-AzureWebsite</command:name>
       <maml:description>
         <maml:para>Remove the specified azure website</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -10953,7 +10894,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -11064,6 +11004,7 @@
       <command:name>Switch-AzureWebsiteSlot</command:name>
       <maml:description>
         <maml:para>Swaps the production slot for a website with another slot. This works on websites with two slots only</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -11159,7 +11100,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -11216,6 +11156,7 @@
       <command:name>Update-AzureWebsiteRepository</command:name>
       <maml:description>
         <maml:para> Update the remote repositories of a local git repository for all the slots</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -11311,7 +11252,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -11368,6 +11308,7 @@
       <command:name>Restart-AzureWebsite</command:name>
       <maml:description>
         <maml:para>Stop and then restart the specified Azure website</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -11463,7 +11404,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -11493,6 +11433,7 @@
       <command:name>Restore-AzureWebsiteDeployment</command:name>
       <maml:description>
         <maml:para>Redeploy a previous deployment for an Azure website</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -11640,7 +11581,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -11685,6 +11625,7 @@
       <command:name>Save-AzureWebsiteLog</command:name>
       <maml:description>
         <maml:para>Download logs for the specified website</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -11800,7 +11741,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -11849,6 +11789,7 @@
       <command:name>Set-AzureWebsite</command:name>
       <maml:description>
         <maml:para>Configure a Microsoft Azure website</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -12274,7 +12215,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -12409,6 +12349,7 @@
       <command:name>Show-AzurePortal</command:name>
       <maml:description>
         <maml:para>Show the Azure management portal</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -12523,7 +12464,6 @@
       </maml:title>
       <maml:alert>
         <maml:para>websites, website</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -12568,6 +12508,7 @@
       <command:name>Show-AzureWebsite</command:name>
       <maml:description>
         <maml:para>Open a browser on the website</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -12663,7 +12604,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -12681,6 +12621,7 @@
       <command:name>Start-AzureWebsite</command:name>
       <maml:description>
         <maml:para>Start the specified Azure website</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -12776,7 +12717,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -12810,6 +12750,7 @@
       <command:name>Stop-AzureWebsite</command:name>
       <maml:description>
         <maml:para>Stop the specified Azure website</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -12905,7 +12846,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -12939,6 +12879,7 @@
       <command:name>Restart-AzureWebsite</command:name>
       <maml:description>
         <maml:para>Stop and then restart the specified Azure website</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -13034,7 +12975,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -13064,6 +13004,7 @@
       <command:name>Get-AzureWebsiteLog</command:name>
       <maml:description>
         <maml:para>Gets log for the specified website</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -13209,7 +13150,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -13347,6 +13287,7 @@
       <command:name>Enable-AzureWebsiteApplicationDiagnostic</command:name>
       <maml:description>
         <maml:para>Enables the website's application diagnostics</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -13506,7 +13447,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -13594,6 +13534,7 @@
       <command:name>Disable-AzureWebsiteApplicationDiagnostic</command:name>
       <maml:description>
         <maml:para>Disables the website's application diagnostics</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -13725,7 +13666,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -13813,6 +13753,7 @@
       <command:name>Enable-AzureWebsiteDebug</command:name>
       <maml:description>
         <maml:para>Enables the website's debug</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -13930,7 +13871,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -13991,6 +13931,7 @@
       <command:name>Disable-AzureWebsiteDebug</command:name>
       <maml:description>
         <maml:para>Disables the website's debugging</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -14094,7 +14035,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -14155,6 +14095,7 @@
       <command:name>Get-AzureWebsiteJob</command:name>
       <maml:description>
         <maml:para>Gets the web jobs associated with a website</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -14272,7 +14213,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -14386,6 +14326,7 @@
       <command:name>New-AzureWebsiteJob</command:name>
       <maml:description>
         <maml:para>Creates new web job for a website</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -14514,7 +14455,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -14574,6 +14514,7 @@
       <command:name>Remove-AzureWebsiteJob</command:name>
       <maml:description>
         <maml:para>Removes an existing web job for a website</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -14688,7 +14629,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -14748,6 +14688,7 @@
       <command:name>Stop-AzureWebsiteJob</command:name>
       <maml:description>
         <maml:para>Stops a web job for a website</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -14862,7 +14803,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -14922,6 +14862,7 @@
       <command:name>Start-AzureWebsiteJob</command:name>
       <maml:description>
         <maml:para>Starts a web job for a website</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -15050,7 +14991,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -15110,6 +15050,7 @@
       <command:name>Get-AzureWebsiteJobHistory</command:name>
       <maml:description>
         <maml:para>Gets a web job history</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -15238,7 +15179,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -15352,6 +15292,7 @@
       <command:name>Get-AzureMediaServicesAccount</command:name>
       <maml:description>
         <maml:para>Gets an Azure Media Services account.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -15418,7 +15359,6 @@
       <maml:title />
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -15465,6 +15405,7 @@
       <command:name>New-AzureMediaServicesAccount</command:name>
       <maml:description>
         <maml:para>Creates new Azure Media Services account.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -15559,7 +15500,6 @@
       <maml:title />
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -15591,6 +15531,7 @@
       <command:name>New-AzureMediaServicesKey</command:name>
       <maml:description>
         <maml:para>Resets an Azure Media Services key.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -15685,7 +15626,6 @@
       <maml:title />
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -15717,6 +15657,7 @@
       <command:name>Remove-AzureMediaServicesAccount</command:name>
       <maml:description>
         <maml:para>Removes an Azure Media Services account.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -15797,7 +15738,6 @@
       <maml:title />
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -15831,6 +15771,7 @@
       </command:name>
       <maml:description>
         <maml:para>Publish a Visual Studio web project to a Microsoft Azure web site using WebDeploy.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -16037,7 +15978,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -16222,6 +16162,7 @@
       <command:name>Get-AzureSchedulerLocation</command:name>
       <maml:description>
         <maml:para>Get available scheduler locations</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -16266,7 +16207,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -16304,6 +16244,7 @@
       <command:name>Get-AzureSchedulerJobCollection</command:name>
       <maml:description>
         <maml:para>Get a list of scheduler job collections or a particular scheduler job collection</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -16362,7 +16303,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -16454,6 +16394,7 @@
       <command:name>Get-AzureSchedulerJob</command:name>
       <maml:description>
         <maml:para>Get a list of scheduler jobs or a particular scheduler job under a job collection and location</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -16526,7 +16467,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -16618,6 +16558,7 @@
       <command:name>Get-AzureSchedulerJobHistory</command:name>
       <maml:description>
         <maml:para>Get history for a scheduler job</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -16690,7 +16631,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -16755,6 +16695,7 @@
       <command:name>Remove-AzureSchedulerJobCollection</command:name>
       <maml:description>
         <maml:para>Deletes a scheduler job collection and the job(s) under it</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -16813,7 +16754,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -16878,6 +16818,7 @@
       <command:name>Remove-AzureSchedulerJob</command:name>
       <maml:description>
         <maml:para>Deletes a scheduler job</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -16943,7 +16884,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -16981,6 +16921,7 @@
       <command:name>New-AzureSchedulerStorageQueueJob</command:name>
       <maml:description>
         <maml:para>Create a scheduler job with a storage action</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -17179,7 +17120,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -17244,6 +17184,7 @@
       <command:name>New-AzureSchedulerHttpJob</command:name>
       <maml:description>
         <maml:para>Create a scheduler job with an Http action</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -17435,7 +17376,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -17500,6 +17440,7 @@
       <command:name>New-AzureSchedulerJobCollection</command:name>
       <maml:description>
         <maml:para>Create a scheduler job collection</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -17586,7 +17527,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -17651,6 +17591,7 @@
       <command:name>Set-AzureSchedulerJobCollection</command:name>
       <maml:description>
         <maml:para>Update a scheduler job collection</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -17737,7 +17678,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -17775,6 +17715,7 @@
       <command:name>Set-AzureSchedulerHttpJob</command:name>
       <maml:description>
         <maml:para>Update a scheduler job with an Http action</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -17966,7 +17907,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -18031,6 +17971,7 @@
       <command:name>Set-AzureSchedulerStorageQueueJob</command:name>
       <maml:description>
         <maml:para>Update a scheduler job with a storage action</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -18229,7 +18170,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -18294,6 +18234,7 @@
       <command:name>Get-WAPackVM</command:name>
       <maml:description>
         <maml:para>Gets virtual machine objects. </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -18483,17 +18424,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-WAPackVMOSDisk</command:name>
       <maml:description>
         <maml:para>Gets operating system disk objects for virtual machines. </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -18650,17 +18587,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-WAPackVMSizeProfile</command:name>
       <maml:description>
         <maml:para>Gets size profile objects.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -18816,17 +18749,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-WAPackVMTemplate</command:name>
       <maml:description>
         <maml:para>Gets virtual machine templates.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -18982,17 +18911,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-WAPackVNet</command:name>
       <maml:description>
         <maml:para>Gets virtual networks.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -19148,17 +19073,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>New-WAPackQuickVM</command:name>
       <maml:description>
         <maml:para>Creates a virtual machine based on a template.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -19313,17 +19234,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>New-WAPackVM</command:name>
       <maml:description>
         <maml:para>Creates a virtual machine.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -19738,17 +19655,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Remove-WAPackVM</command:name>
       <maml:description>
         <maml:para>Removes virtual machine objects.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -19969,17 +19882,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Restart-WAPackVM</command:name>
       <maml:description>
         <maml:para>Restarts virtual machines.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -20124,17 +20033,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Resume-WAPackVM</command:name>
       <maml:description>
         <maml:para>Resumes paused virtual machines.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -20279,17 +20184,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Set-WAPackVM</command:name>
       <maml:description>
         <maml:para>Changes the size properties of a virtual machine. </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -20459,17 +20360,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Start-WAPackVM</command:name>
       <maml:description>
         <maml:para>Starts a virtual machine.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -20614,17 +20511,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Stop-WAPackVM</command:name>
       <maml:description>
         <maml:para>Stops a virtual machine.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -20798,17 +20691,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Suspend-WAPackVM</command:name>
       <maml:description>
         <maml:para>Suspends a virtual machine.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -20963,17 +20852,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-WAPackLogicalNetwork</command:name>
       <maml:description>
         <maml:para>Gets logical network objects. </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -21088,17 +20973,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-WAPackStaticIPAddressPool</command:name>
       <maml:description>
         <maml:para>Gets static ip address pool objects. </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -21240,17 +21121,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-WAPackVMSubnet</command:name>
       <maml:description>
         <maml:para>Gets virtual machine subnet objects. </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -21435,17 +21312,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-WAPackCloudService</command:name>
       <maml:description>
         <maml:para>Gets cloud service objects. </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -21564,17 +21437,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-WAPackVMRole</command:name>
       <maml:description>
         <maml:para>Gets virtual machine role objects. </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -21740,17 +21609,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>New-WAPackStaticIPAddressPool</command:name>
       <maml:description>
         <maml:para>Creates a static ip address pool.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -21915,17 +21780,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>New-WAPackVMSubnet</command:name>
       <maml:description>
         <maml:para>Creates a virtual machine subnet.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -22068,17 +21929,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>New-WAPackVNet</command:name>
       <maml:description>
         <maml:para>Creates a virtualized network.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -22221,17 +22078,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>New-WAPackCloudService</command:name>
       <maml:description>
         <maml:para>Creates a cloud service.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -22352,17 +22205,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>New-WAPackVMRole</command:name>
       <maml:description>
         <maml:para>Creates a virtual machine role.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -22527,17 +22376,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Remove-WAPackStaticIPAddressPool</command:name>
       <maml:description>
         <maml:para>Removes static ip address pool objects.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -22734,17 +22579,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Remove-WAPackVMSubnet</command:name>
       <maml:description>
         <maml:para>Removes virtual machine subnet objects.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -22941,17 +22782,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Remove-WAPackVNet</command:name>
       <maml:description>
         <maml:para>Removes virtualized network.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -23148,17 +22985,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Remove-WAPackCloudService</command:name>
       <maml:description>
         <maml:para>Removes cloud service objects.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -23355,17 +23188,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Remove-WAPackVMRole</command:name>
       <maml:description>
         <maml:para>Removes virtual machine role objects.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -23588,17 +23417,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Set-WAPackVMRole</command:name>
       <maml:description>
         <maml:para>Changes the instance count property of a virtual machine role. </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -23725,17 +23550,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Invoke-AzureHDInsightHiveJob</command:name>
       <maml:description>
         <maml:para>Submits Hive queries to the HDInsight cluster, shows progress of the query execution, and retrieves query results in one operation.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -23960,17 +23781,13 @@
         </maml:uri>
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>New-AzureHDInsightSqoopJobDefinition</command:name>
       <maml:description>
         <maml:para>Defines a new Sqoop job.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -24114,7 +23931,6 @@
       <maml:title />
       <maml:alert>
         <maml:para>Sqoop is a tool designed to transfer data between Hadoop clusters and relational databases. You can use Sqoop to import data from a SQL database into an Hadoop Distributed File System (HDFS), transform the data with Hadoop MapReduce, and then export the data from the HDFS back into the SQL database.</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -24151,6 +23967,7 @@
       <command:name>Get-AzureAutomationAccount</command:name>
       <maml:description>
         <maml:para>Gets Azure Automation accounts.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -24265,17 +24082,13 @@
         <maml:uri>http://go.microsoft.com/fwlink/?LinkId=397902</maml:uri>
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureAutomationJob</command:name>
       <maml:description>
         <maml:para>Gets one or more Azure Automation runbook jobs.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -24536,17 +24349,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureAutomationJobOutput</command:name>
       <maml:description>
         <maml:para>Gets the output of an Azure Automation job.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -24735,17 +24544,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureAutomationRunbook</command:name>
       <maml:description>
         <maml:para>Gets a runbook.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -24949,17 +24754,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureAutomationRunbookDefinition</command:name>
       <maml:description>
         <maml:para>Gets a runbook definition.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -25189,17 +24990,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureAutomationSchedule</command:name>
       <maml:description>
         <maml:para>Gets an Azure Automation schedule.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -25365,17 +25162,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>New-AzureAutomationRunbook</command:name>
       <maml:description>
         <maml:para>Creates a new runbook.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -25592,17 +25385,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>New-AzureAutomationSchedule</command:name>
       <maml:description>
         <maml:para>Creates an Azure Automation schedule.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -25858,17 +25647,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Publish-AzureAutomationRunbook</command:name>
       <maml:description>
         <maml:para>Publishes a runbook.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -26032,17 +25817,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Register-AzureAutomationScheduledRunbook</command:name>
       <maml:description>
         <maml:para>Associates a runbook with a schedule.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -26246,17 +26027,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Remove-AzureAutomationRunbook</command:name>
       <maml:description>
         <maml:para>Removes a runbook.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -26492,17 +26269,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Remove-AzureAutomationSchedule</command:name>
       <maml:description>
         <maml:para>Deletes an Azure Automation schedule.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -26730,17 +26503,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Resume-AzureAutomationJob</command:name>
       <maml:description>
         <maml:para>Resumes a suspended Azure Automation job.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -26868,17 +26637,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Set-AzureAutomationRunbook</command:name>
       <maml:description>
         <maml:para>Modifies the configuration of a runbook.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -27172,17 +26937,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Set-AzureAutomationRunbookDefinition</command:name>
       <maml:description>
         <maml:para>Updates the draft definition of a runbook.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -27380,17 +27141,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Set-AzureAutomationSchedule</command:name>
       <maml:description>
         <maml:para>Modifies an Azure Automation schedule.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -27572,17 +27329,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Start-AzureAutomationRunbook</command:name>
       <maml:description>
         <maml:para>Starts a runbook job.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -27772,17 +27525,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Stop-AzureAutomationJob</command:name>
       <maml:description>
         <maml:para>Stops an Azure Automation job.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -27909,17 +27658,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Suspend-AzureAutomationJob</command:name>
       <maml:description>
         <maml:para>Suspends an Azure Automation job.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -28047,17 +27792,13 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Unregister-AzureAutomationScheduledRunbook</command:name>
       <maml:description>
         <maml:para>Removes an association between a runbook and a schedule.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -28231,10 +27972,5 @@
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, utilities</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
 </helpItems>

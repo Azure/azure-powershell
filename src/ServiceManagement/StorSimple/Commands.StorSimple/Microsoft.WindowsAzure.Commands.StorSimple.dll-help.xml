@@ -5,6 +5,7 @@
       <command:name>Confirm-AzureStorSimpleLegacyVolumeContainerStatus</command:name>
       <maml:description>
         <maml:para>Initiates the commit or rollback of the volume containers that are migrated.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -279,17 +280,13 @@ Please check the commit/discard status using Get-AzureStorSimpleLegacyVolumeCont
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureStorSimpleAccessControlRecord</command:name>
       <maml:description>
         <maml:para>Gets access control records in a service configuration.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -458,17 +455,13 @@ VERBOSE: Access Control Record with given name Acr11 is found!
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureStorSimpleDeviceBackupPolicy</command:name>
       <maml:description>
         <maml:para>Gets backup policies.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -667,17 +660,13 @@ cda96e83-3b38-4345-a56d-c8a96a0e57b3 Snapshot_vg-all                    1       
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureStorSimpleDeviceBackup</command:name>
       <maml:description>
         <maml:para>Gets backups from a device.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1447,17 +1436,13 @@ VERBOSE: No more backup sets are present for your query!
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureStorSimpleDeviceConnectedInitiator</command:name>
       <maml:description>
         <maml:para>Gets the iSCSI connections available for a StorSimple device.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1634,17 +1619,13 @@ VERBOSE: 1 Iscsi Connection found!
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureStorSimpleDeviceVolumeContainer</command:name>
       <maml:description>
         <maml:para>Gets volume containers on a device.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1837,17 +1818,13 @@ VERBOSE: Volume container with name: Container03 is found.
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureStorSimpleDeviceVolume</command:name>
       <maml:description>
         <maml:para>Gets volumes on a device.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2114,17 +2091,13 @@ VSN                    : SS-VOL-c75e9636-1dcf-43db-92df-3af1ecf3f18a
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureStorSimpleDevice</command:name>
       <maml:description>
         <maml:para>Gets devices attached to the resource.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2507,17 +2480,13 @@ WebProxy                       : Microsoft.WindowsAzure.Management.StorSimple.Mo
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureStorSimpleFailoverVolumeContainers</command:name>
       <maml:description>
         <maml:para>Gets the volume container groups for device failover.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2675,17 +2644,13 @@ DCGroup                    IneligibilityMessage          IsDCGroupEligibleForDR
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureStorSimpleJob</command:name>
       <maml:description>
         <maml:para>Gets StorSimple jobs. </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3107,17 +3072,13 @@ PS C:\&gt;Get-AzureStorSimpleJob -DeviceName "Device07" -From $StartTime -To $En
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureStorSimpleLegacyVolumeContainerConfirmStatus</command:name>
       <maml:description>
         <maml:para>Gets the status of a commit or rollback operation.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3310,17 +3271,13 @@ CommitOrRollbackNotStarted : None
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureStorSimpleLegacyVolumeContainerMigrationPlan</command:name>
       <maml:description>
         <maml:para>Gets migration plans for legacy containers.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3502,17 +3459,13 @@ LegacyConfigId                                              DeviceName
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureStorSimpleLegacyVolumeContainerStatus</command:name>
       <maml:description>
         <maml:para>Gets the migration status of the volume containers.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3721,17 +3674,13 @@ MigrationFailed      : No Cloud Configuration(s) are found to be in Failed state
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureStorSimpleResourceContext</command:name>
       <maml:description>
         <maml:para>Gets the current resource context.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3859,17 +3808,13 @@ Select-AzureStorSimpleResource -ResourceName &lt;&lt;name&gt;&gt; to set
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureStorSimpleResource</command:name>
       <maml:description>
         <maml:para>Gets all resources that you created.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4050,17 +3995,13 @@ VERBOSE: Invalid input : Could not find a resource named Contoso64-Tsqa in your 
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureStorSimpleStorageAccountCredential</command:name>
       <maml:description>
         <maml:para>Gets credentials for storage accounts.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4224,17 +4165,13 @@ VolumeCount                      : 0
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureStorSimpleTask</command:name>
       <maml:description>
         <maml:para>Gets status of a task on a StorSimple device. </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4367,17 +4304,13 @@ RequestId                 : e9174990825750bba69383748f23019c
     </command:examples>
     <maml:relatedLinks>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Import-AzureStorSimpleLegacyApplianceConfig</command:name>
       <maml:description>
         <maml:para>Imports a configuration file.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4549,17 +4482,13 @@ Save the legacy config id and cloud configuration(s) for future reference.
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Import-AzureStorSimpleLegacyVolumeContainer</command:name>
       <maml:description>
         <maml:para>Starts the migration of volume containers.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4804,17 +4733,13 @@ Import started, Please check status with Get-AzureStorSimpleLegacyVolumeContaine
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>New-AzureStorSimpleAccessControlRecord</command:name>
       <maml:description>
         <maml:para>Creates an access control record.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5009,17 +4934,13 @@ VERBOSE: The create job is submitted successfully. Please use the command Get-Az
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>New-AzureStorSimpleDeviceBackupPolicy</command:name>
       <maml:description>
         <maml:para>Creates a backup policy.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5274,17 +5195,13 @@ OperationInProgress      : None
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>New-AzureStorSimpleDeviceBackupScheduleAddConfig</command:name>
       <maml:description>
         <maml:para>Creates a backup schedule configuration object.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5526,17 +5443,13 @@ Status         : Enabled
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>New-AzureStorSimpleDeviceBackupScheduleUpdateConfig</command:name>
       <maml:description>
         <maml:para>Creates a backup schedule update configuration object.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5798,17 +5711,13 @@ Status         : Enabled
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>New-AzureStorSimpleDeviceVolumeContainer</command:name>
       <maml:description>
         <maml:para>Creates a volume container.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6059,17 +5968,13 @@ VERBOSE: The create task is submitted successfully. Please use the command Get-A
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>New-AzureStorSimpleDeviceVolume</command:name>
       <maml:description>
         <maml:para>Creates a volume in a specified volume container.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6447,17 +6352,13 @@ VERBOSE: Volume container with name: VolumeContainer01 is found.
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>New-AzureStorSimpleInlineStorageAccountCredential</command:name>
       <maml:description>
         <maml:para>Creates an inline storage account credential.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6665,17 +6566,13 @@ VolumeCount                     : 0
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>New-AzureStorSimpleNetworkConfig</command:name>
       <maml:description>
         <maml:para>Prepares a network configuration object.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7069,17 +6966,13 @@ VERBOSE: Successfully updated configuration for device newDeviceName with id 865
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>New-AzureStorSimpleStorageAccountCredential</command:name>
       <maml:description>
         <maml:para>Adds an Azure storage access credential.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7418,17 +7311,13 @@ VolumeCount                     : 0
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>New-AzureStorSimpleVirtualDevice</command:name>
       <maml:description>
         <maml:para>Creates a virtual StorSimple device. </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7713,17 +7602,13 @@ VERBOSE: The create job is triggered successfully. Please use the command Get-Az
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Remove-AzureStorSimpleAccessControlRecord</command:name>
       <maml:description>
         <maml:para>Deletes an access control record from the service configuration.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7976,17 +7861,13 @@ VERBOSE: The delete task is submitted successfully. Please use the command Get-A
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Remove-AzureStorSimpleDeviceBackupPolicy</command:name>
       <maml:description>
         <maml:para>Removes an existing backup policy.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8290,17 +8171,13 @@ VERBOSE: BackupPolicy with id bfe0bf8a-2d09-4690-93da-38a4f24e9f4f found!
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Remove-AzureStorSimpleDeviceBackup</command:name>
       <maml:description>
         <maml:para>Deletes a backup object.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8580,17 +8457,13 @@ RequestId  : e1753f3bf68e6e44ab719436b5111e41
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Remove-AzureStorSimpleDeviceVolumeContainer</command:name>
       <maml:description>
         <maml:para>Removes a volume container from a StorSimple device.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8776,17 +8649,13 @@ VERBOSE: Volume container with name: Container08 is found.
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Remove-AzureStorSimpleDeviceVolume</command:name>
       <maml:description>
         <maml:para>Removes a volume from a StorSimple device.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -9059,17 +8928,13 @@ VERBOSE: The delete task is submitted successfully. Please use the command Get-A
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Remove-AzureStorSimpleStorageAccountCredential</command:name>
       <maml:description>
         <maml:para>Deletes an existing storage account credential.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -9306,17 +9171,13 @@ VERBOSE: Your delete operation completed successfully!
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Select-AzureStorSimpleResource</command:name>
       <maml:description>
         <maml:para>Sets a resource as the current resource.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -9510,17 +9371,13 @@ ResourceId           ResourceName
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Set-AzureStorSimpleAccessControlRecord</command:name>
       <maml:description>
         <maml:para>Updates the IQN of an access control record.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -9723,17 +9580,13 @@ VolumeCount         : 0
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Set-AzureStorSimpleDeviceBackupPolicy</command:name>
       <maml:description>
         <maml:para>Updates an existing backup policy.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -10074,17 +9927,13 @@ RequestId  : d2e10d44e699b371a84db44d19daf1c3
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Set-AzureStorSimpleDeviceVolume</command:name>
       <maml:description>
         <maml:para>Updates the properties of an existing volume.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -10464,17 +10313,13 @@ aa977225-af78-4c93-b754-72704afc928f for tracking the task's status
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Set-AzureStorSimpleDevice</command:name>
       <maml:description>
         <maml:para>Changes the device configuration for a device.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -10811,17 +10656,13 @@ VERBOSE: Successfully updated configuration for device Device22 with id 865e68f6
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Set-AzureStorSimpleStorageAccountCredential</command:name>
       <maml:description>
         <maml:para>Updates an Azure storage access credential. </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -11049,17 +10890,13 @@ VolumeCount                      : 0
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Set-AzureStorSimpleVirtualDevice</command:name>
       <maml:description>
         <maml:para>Creates or updates the device configuration of a StorSimple virtual device.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -11313,17 +11150,13 @@ VERBOSE: Successfully updated configuration for device Contoso23 with id d369ebb
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Start-AzureStorSimpleBackupCloneJob</command:name>
       <maml:description>
         <maml:para>Starts a job that clones a backup on a device.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -11798,17 +11631,13 @@ VERBOSE: Access Control Record with given name acr11 is found!
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Start-AzureStorSimpleDeviceBackupJob</command:name>
       <maml:description>
         <maml:para>Starts a new job that creates a backup from an existing backup policy.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -12052,17 +11881,13 @@ RequestId  : f28ecf6cf75a7f128ca18e6ae14f9003
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Start-AzureStorSimpleDeviceBackupRestoreJob</command:name>
       <maml:description>
         <maml:para>Starts a job that restores a backup on a StorSimple device.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -12329,17 +12154,13 @@ The start job is submitted successfully. Please use the command Get-AzureStorSim
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Start-AzureStorSimpleDeviceFailoverJob</command:name>
       <maml:description>
         <maml:para>Initiates a failover operation of volume container groups. </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -12617,17 +12438,13 @@ a3d902be-8ffb-42a4-bbf8-0a1b30db71b2_0ee59ae9-0293-46e2-ae56-bc308c8e5520
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Start-AzureStorSimpleLegacyVolumeContainerMigrationPlan</command:name>
       <maml:description>
         <maml:para>Starts the creation of a migration plan.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -12819,17 +12636,13 @@ Successfully started estimating the Migration Plan. Please check details with Ge
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Stop-AzureStorSimpleJob</command:name>
       <maml:description>
         <maml:para>Stops a StorSimple job. </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -12985,10 +12798,5 @@ Successfully started estimating the Migration Plan. Please check details with Ge
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, store, storsimple</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
 </helpItems>

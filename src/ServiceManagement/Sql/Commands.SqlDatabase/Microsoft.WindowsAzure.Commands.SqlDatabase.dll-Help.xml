@@ -6,6 +6,7 @@
       <command:name>Get-AzureSqlDatabase</command:name>
       <maml:description>
         <maml:para>Returns an Azure SQL Database from the specified SQL Database Server.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -242,7 +243,6 @@ You also can retrieve a restorable dropped database by specifying the Restorable
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -361,6 +361,7 @@ You also can retrieve a restorable dropped database by specifying the Restorable
       <command:name>Get-AzureSqlDatabaseCopy</command:name>
       <maml:description>
         <maml:para>Checks the status of one or more copy relationships that are active on a specified server. This cmdlet is supported on both the source and target servers.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -573,7 +574,6 @@ Get-AzureSqlDatabaseCopy is synchronous and blocks the application until it retu
       </maml:title>
       <maml:alert>
         <maml:para>Authentication: This cmdlet requires certificate-based authentication. For an example of how to use certificate-based authentication to set the current subscription, see the Get-Help topic for the New-AzureSqlDatabaseServerContext cmdlet.</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -632,6 +632,7 @@ PS C:\&gt;Get-AzureSqlDatabaseCopy -ServerName "lpqd0zbr8y" -DatabaseCopy $myDbC
       <command:name>Get-AzureSqlDatabaseImportExportStatus</command:name>
       <maml:description>
         <maml:para>Returns the status of an import or export operation between Azure blob storage and an Azure SQL Database.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -793,7 +794,6 @@ PS C:\&gt;Get-AzureSqlDatabaseCopy -ServerName "lpqd0zbr8y" -DatabaseCopy $myDbC
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -835,6 +835,7 @@ C:\PS&gt;Get-AzureSqlDatabaseImportExportStatus -Request $exportRequest</dev:cod
       <command:name>Get-AzureSqlDatabaseOperation</command:name>
       <maml:description>
         <maml:para>Returns the status of database operations on the specified Azure SQL Database Server.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1016,7 +1017,6 @@ C:\PS&gt;Get-AzureSqlDatabaseImportExportStatus -Request $exportRequest</dev:cod
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1057,6 +1057,7 @@ C:\PS&gt;Get-AzureSqlDatabaseImportExportStatus -Request $exportRequest</dev:cod
       <command:name>Get-AzureSqlDatabaseServer</command:name>
       <maml:description>
         <maml:para>Returns information about the Azure SQL Database Servers in the current subscription.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1134,7 +1135,6 @@ C:\PS&gt;Get-AzureSqlDatabaseImportExportStatus -Request $exportRequest</dev:cod
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1197,6 +1197,7 @@ C:\PS&gt;Get-AzureSqlDatabaseImportExportStatus -Request $exportRequest</dev:cod
       <command:name>Get-AzureSqlDatabaseServerFirewallRule</command:name>
       <maml:description>
         <maml:para>Returns firewall rules in the specified Azure SQL Database Server in the current subscription.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1294,7 +1295,6 @@ C:\PS&gt;Get-AzureSqlDatabaseImportExportStatus -Request $exportRequest</dev:cod
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1357,6 +1357,7 @@ C:\PS&gt;Get-AzureSqlDatabaseImportExportStatus -Request $exportRequest</dev:cod
       <command:name>Get-AzureSqlDatabaseServerQuota</command:name>
       <maml:description>
         <maml:para>Returns the quota information for a specified Azure SQL Database Server.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1484,7 +1485,6 @@ C:\PS&gt;Get-AzureSqlDatabaseImportExportStatus -Request $exportRequest</dev:cod
       </maml:title>
       <maml:alert>
         <maml:para>Authentication: This cmdlet can use either SQL Server authentication or certificate-based authentication. For examples of setting up authentication, see the Get-Help topic for the New-AzureSqlDatabaseServerContext cmdlet.</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1537,6 +1537,7 @@ C:\PS&gt;Get-AzureSqlDatabaseImportExportStatus -Request $exportRequest</dev:cod
       <command:name>Get-AzureSqlDatabaseServiceObjective</command:name>
       <maml:description>
         <maml:para>Returns a service objective for the specified Azure SQL Database Server.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1693,7 +1694,6 @@ C:\PS&gt;Get-AzureSqlDatabaseImportExportStatus -Request $exportRequest</dev:cod
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1746,6 +1746,7 @@ C:\PS&gt;Get-AzureSqlDatabaseImportExportStatus -Request $exportRequest</dev:cod
       <command:name>Get-AzureSqlRecoverableDatabase</command:name>
       <maml:description>
         <maml:para>Gets a list of databases that can be recovered.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1881,7 +1882,6 @@ C:\PS&gt;$thumbprint = &lt;Certificate Thumbprint&gt;
 C:\PS&gt;$myCert = Get-Item Cert:\CurrentUser\My\$thumbprint
 C:\PS&gt;Set-AzureSubscription -SubscriptionName "mySubscription" -SubscriptionId $subId -Certificate $myCert
 C:\PS&gt;Select-AzureSubscription -SubscriptionName "mySubscription"</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1936,6 +1936,7 @@ PS C:\&gt;$mydb = $mydb | Get-AzureSqlRecoverableDatabase</dev:code>
       <command:name>New-AzureSqlDatabase</command:name>
       <maml:description>
         <maml:para>Creates a new Azure SQL Database in the specified SQL Database Server.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2287,7 +2288,6 @@ Business Edition values: 10, 20, 30, 40, 50, 100, or 150</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para>To delete a database that was created by New-AzureSqlDatabase, use the Remove-AzureSqlDatabase cmdlet.</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2355,6 +2355,7 @@ Business Edition values: 10, 20, 30, 40, 50, 100, or 150</maml:para>
       <command:name>New-AzureSqlDatabaseServer</command:name>
       <maml:description>
         <maml:para>Creates a new Azure SQL Database Server in the current subscription.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2551,7 +2552,6 @@ Business Edition values: 10, 20, 30, 40, 50, 100, or 150</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2597,6 +2597,7 @@ Business Edition values: 10, 20, 30, 40, 50, 100, or 150</maml:para>
       <command:name>New-AzureSqlDatabaseServerContext</command:name>
       <maml:description>
         <maml:para>Creates a new connection context to the specified SQL Database Server by using SQL Server authentication or certificate-based authentication.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2839,7 +2840,6 @@ See the examples below of both the SQL Server and certificate-based authenticati
 C:\PS&gt;$cred = Get-Credential
 
 C:\PS&gt;$cred = New-Object -TypeName 'System.Management.Automation.PSCredential' -ArgumentList $cred.Username.Replace("\",""),$cred.Password</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2917,6 +2917,7 @@ The rest of the commands select the subscription "mySubscription" to be designat
       <command:name>New-AzureSqlDatabaseServerFirewallRule</command:name>
       <maml:description>
         <maml:para>Creates a new firewall rule in the specified Azure SQL Database Server in the current subscription.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3173,7 +3174,6 @@ Use the AllowAllAzureServices parameter to allow Azure connections to the SQL Da
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3253,6 +3253,7 @@ Use the AllowAllAzureServices parameter to allow Azure connections to the SQL Da
       <command:name>Remove-AzureSqlDatabase</command:name>
       <maml:description>
         <maml:para>Deletes a Azure SQL Database from the specified SQL Database Server connection context or SQL Database Server.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3549,7 +3550,6 @@ When you delete a database by specifying a SQL Database Server name, the Remove-
       </maml:title>
       <maml:alert>
         <maml:para>Because of the severity of the operation, this cmdlet prompts the user for confirmation by default.  This can be overridden by using the -Force parameter.</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3635,6 +3635,7 @@ C:\PS&gt;$database1 | Remove-AzureSqlDatabase -ServerName "lpqd0zbr8y"</dev:code
       <command:name>Remove-AzureSqlDatabaseServer</command:name>
       <maml:description>
         <maml:para>Deletes the specified Azure SQL Database Server from the current subscription.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3771,7 +3772,6 @@ C:\PS&gt;$database1 | Remove-AzureSqlDatabase -ServerName "lpqd0zbr8y"</dev:code
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3817,6 +3817,7 @@ C:\PS&gt;$database1 | Remove-AzureSqlDatabase -ServerName "lpqd0zbr8y"</dev:code
       <command:name>Remove-AzureSqlDatabaseServerFirewallRule</command:name>
       <maml:description>
         <maml:para>Deletes a firewall rule from the specified Azure SQL Database Server in the current subscription.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3973,7 +3974,6 @@ C:\PS&gt;$database1 | Remove-AzureSqlDatabase -ServerName "lpqd0zbr8y"</dev:code
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4019,6 +4019,7 @@ C:\PS&gt;$database1 | Remove-AzureSqlDatabase -ServerName "lpqd0zbr8y"</dev:code
       <command:name>Set-AzureSqlDatabase</command:name>
       <maml:description>
         <maml:para>Sets properties for a specified Azure SQL Database.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4616,7 +4617,6 @@ Business Edition values: 10, 20, 30, 40, 50, 100, or 150</maml:para>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4686,6 +4686,7 @@ C:\PS&gt;Set-AzureSqlDatabase -ServerName "lpqd0zbr8y" -Database $database1 -Max
       <command:name>Set-AzureSqlDatabaseServer</command:name>
       <maml:description>
         <maml:para>Updates the properties of the specified Azure SQL Database Server in the current subscription.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4842,7 +4843,6 @@ C:\PS&gt;Set-AzureSqlDatabase -ServerName "lpqd0zbr8y" -Database $database1 -Max
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4888,6 +4888,7 @@ C:\PS&gt;Set-AzureSqlDatabase -ServerName "lpqd0zbr8y" -Database $database1 -Max
       <command:name>Set-AzureSqlDatabaseServerFirewallRule</command:name>
       <maml:description>
         <maml:para>Updates the properties of an existing firewall rule in the specified Azure SQL Database Server.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5083,7 +5084,6 @@ C:\PS&gt;Set-AzureSqlDatabase -ServerName "lpqd0zbr8y" -Database $database1 -Max
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5129,6 +5129,7 @@ C:\PS&gt;Set-AzureSqlDatabase -ServerName "lpqd0zbr8y" -Database $database1 -Max
       <command:name>Start-AzureSqlDatabaseCopy</command:name>
       <maml:description>
         <maml:para>Creates a one-time copy or a continuous copy (a "replica database") of a specified Azure SQL database (the "source database"). For a one-time copy, the source and partner databases must reside on the same server. For a continuous copy, the source and replica databases must reside on different servers, which typically reside in different regions.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5547,7 +5548,6 @@ Start-AzureSqlDatabaseCopy returns immediately without waiting for the completio
       </maml:title>
       <maml:alert>
         <maml:para>Authentication: This cmdlet requires certificate-based authentication. For an example of how to use certificate-based authentication to set the current subscription, see the Get-Help topic for the New-AzureSqlDatabaseServerContext cmdlet.</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5595,6 +5595,7 @@ Start-AzureSqlDatabaseCopy returns immediately without waiting for the completio
       <command:name>Start-AzureSqlDatabaseExport</command:name>
       <maml:description>
         <maml:para>Initiates an export operation from an Azure SQL Database to Azure Blob storage.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5797,7 +5798,6 @@ Start-AzureSqlDatabaseCopy returns immediately without waiting for the completio
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5842,6 +5842,7 @@ C:\PS&gt;$exportRequest = Start-AzureSqlDatabaseExport -SqlConnectionContext $Sq
       <command:name>Start-AzureSqlDatabaseImport</command:name>
       <maml:description>
         <maml:para>Initiates an import operation from Azure Blob storage to an Azure SQL Database.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6098,7 +6099,6 @@ C:\PS&gt;$exportRequest = Start-AzureSqlDatabaseExport -SqlConnectionContext $Sq
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6143,6 +6143,7 @@ C:\PS&gt;$importRequest = Start-AzureSqlDatabaseImport -SqlConnectionContext $Sq
       <command:name>Start-AzureSqlDatabaseRecovery</command:name>
       <maml:description>
         <maml:para>Submits a recover database request for a live or dropped database.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6322,7 +6323,6 @@ C:\PS&gt;$thumbprint = &lt;Certificate Thumbprint&gt;
 C:\PS&gt;$myCert = Get-Item Cert:\CurrentUser\My\$thumbprint
 C:\PS&gt;Set-AzureSubscription -SubscriptionName "mySubscription" -SubscriptionId $subId -Certificate $myCert
 C:\PS&gt;Select-AzureSubscription -SubscriptionName "mySubscription"</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6382,6 +6382,7 @@ PS C:\&gt;$operation = Start-AzureSqlDatabaseRecovery -SourceDatabase $mydb -Tar
       <command:name>Start-AzureSqlDatabaseRestore</command:name>
       <maml:description>
         <maml:para>Submits a restore request for a live or dropped database.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6727,7 +6728,6 @@ C:\PS&gt;$thumbprint = &lt;Certificate Thumbprint&gt;
 C:\PS&gt;$myCert = Get-Item Cert:\CurrentUser\My\$thumbprint
 C:\PS&gt;Set-AzureSubscription -SubscriptionName "mySubscription" -SubscriptionId $subId -Certificate $myCert
 C:\PS&gt;Select-AzureSubscription -SubscriptionName "mySubscription"</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6797,6 +6797,7 @@ C:\PS&gt;Select-AzureSubscription -SubscriptionName "mySubscription"</maml:para>
       <command:name>Stop-AzureSqlDatabaseCopy</command:name>
       <maml:description>
         <maml:para>Terminates a continuous copy relationship. There are two modes of termination: termination and forced termination (with possible data loss).</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7143,7 +7144,6 @@ A Stop-AzureSqlDatabaseCopy command can be executed on the source or replica dat
       </maml:title>
       <maml:alert>
         <maml:para>Authentication: This cmdlet requires certificate-based authentication. For an example of how to use certificate-based authentication to set the current subscription, see the Get-Help topic for the New-AzureSqlDatabaseServerContext cmdlet.</maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>

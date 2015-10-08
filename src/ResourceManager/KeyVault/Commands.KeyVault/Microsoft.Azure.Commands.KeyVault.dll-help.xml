@@ -6,6 +6,7 @@
       <command:name>Add-AzureKeyVaultKey</command:name>
       <maml:description>
         <maml:para>Creates a key in a vault or imports a key into a vault. </maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -556,17 +557,13 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Backup-AzureKeyVaultKey</command:name>
       <maml:description>
         <maml:para>Backs up a key in a vault. </maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -763,17 +760,13 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureKeyVaultKey</command:name>
       <maml:description>
         <maml:para>Gets the keys in a vault. </maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1052,17 +1045,13 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureKeyVaultSecret</command:name>
       <maml:description>
         <maml:para>Gets the secrets in a vault. </maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1337,17 +1326,13 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureRmKeyVault</command:name>
       <maml:description>
         <maml:para>Gets Azure Key Vault instances.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1573,17 +1558,13 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>New-AzureRmKeyVault</command:name>
       <maml:description>
         <maml:para>Creates an Azure Key Vault instance.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1825,17 +1806,13 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Remove-AzureRmKeyVaultAccessPolicy</command:name>
       <maml:description>
         <maml:para>Removes all permissions for a user or application from the Azure Key Vault.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2209,17 +2186,13 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Remove-AzureKeyVaultKey</command:name>
       <maml:description>
         <maml:para>Deletes a key in a vault. </maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2441,17 +2414,13 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Remove-AzureKeyVaultSecret</command:name>
       <maml:description>
         <maml:para>Deletes a secret in a vault. </maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2650,17 +2619,13 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Remove-AzureRmKeyVault</command:name>
       <maml:description>
         <maml:para>Deletes an Azure Key Vault instance.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2844,17 +2809,13 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Restore-AzureKeyVaultKey</command:name>
       <maml:description>
         <maml:para>Creates a key in in a vault from a backed-up key.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3010,17 +2971,13 @@ PS C:\&gt; Add-AzureKeyVaultKey -VaultName "Contoso" -Name "ITPfxToHSM" -Destina
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Set-AzureRmKeyVaultAccessPolicy</command:name>
       <maml:description>
         <maml:para>Grants or modifies existing permissions for a user or application to perform operations with the Azure Key Vault. </maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3653,17 +3610,13 @@ PS C:\&gt; Set-AzureRmKeyVaultAccessPolicy -VaultName "Contoso03Vault" -UserPrin
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Set-AzureKeyVaultKeyAttribute</command:name>
       <maml:description>
         <maml:para>Updates the attributes of a key in a vault. </maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3988,17 +3941,13 @@ PS C:\&gt; Set-AzureKeyVaultKeyAttribute -VaultName "Contoso" -Name "ITSoftware"
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Set-AzureKeyVaultSecretAttribute</command:name>
       <maml:description>
         <maml:para>Updates attributes of a secret in a vault.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4353,17 +4302,13 @@ PS C:\&gt; Get-AzureKeyVaultKey -VaultName $VaultName -Name $Name -IncludeVersio
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Set-AzureKeyVaultSecret</command:name>
       <maml:description>
         <maml:para>Creates or updates a secret in a vault. </maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4649,10 +4594,5 @@ PS C:\&gt; Set-AzureKeyVaultSecret -VaultName "Contoso" -Name "ITSecret" -Secret
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, keyvalut, key, secrets, certificates, password, vault</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
 </helpItems>

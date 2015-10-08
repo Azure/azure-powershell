@@ -6,6 +6,7 @@
       <command:name>Add-AzureRmTrafficManagerEndpointConfig</command:name>
       <maml:description>
         <maml:para>Adds an endpoint to an Azure Traffic Manager profile. </maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, traffic, trafficmanager</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -296,17 +297,13 @@ PS C:\&gt; Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $TrafficManag
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, traffic, trafficmanager</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Get-AzureRmTrafficManagerProfile</command:name>
       <maml:description>
         <maml:para>Gets an Azure Traffic Manager profile.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, traffic, trafficmanager</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -451,17 +448,13 @@ PS C:\&gt; Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $TrafficManag
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, traffic, trafficmanager</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>New-AzureRmTrafficManagerProfile</command:name>
       <maml:description>
         <maml:para>Creates an Azure Traffic Manager profile.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, traffic, trafficmanager</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -746,17 +739,13 @@ PS C:\&gt; Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $TrafficManag
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, traffic, trafficmanager</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Remove-AzureRmTrafficManagerEndpointConfig</command:name>
       <maml:description>
         <maml:para>Removes an endpoint from an Azure Traffic Manager profile. </maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, traffic, trafficmanager</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -923,17 +912,13 @@ PS C:\&gt; Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $TrafficManag
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, traffic, trafficmanager</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Remove-AzureRmTrafficManagerProfile</command:name>
       <maml:description>
         <maml:para>Deletes an Azure Traffic Manager profile.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, traffic, trafficmanager</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1148,17 +1133,13 @@ PS C:\&gt; Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $TrafficManag
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, traffic, trafficmanager</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
       <command:name>Set-AzureRmTrafficManagerProfile</command:name>
       <maml:description>
         <maml:para>Updates an Azure Traffic Manager profile. </maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, traffic, trafficmanager</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1284,10 +1265,5 @@ PS C:\&gt; Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $TrafficManag
         <maml:uri />
       </maml:navigationLink>
     </maml:relatedLinks>
-    <maml:alertSet>
-      <maml:alert>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, traffic, trafficmanager</maml:para>
-      </maml:alert>
-    </maml:alertSet>
   </command:command>
 </helpItems>

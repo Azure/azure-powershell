@@ -8,6 +8,7 @@
       </command:name>
       <maml:description>
         <maml:para>Get information about Azure Site Recovery Server for current Azure Site Recovery vault</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -117,7 +118,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -187,6 +187,7 @@
       </command:name>
       <maml:description>
         <maml:para>Get-AzureSiteRecoveryRecoveryPlanFile download the recovery plan in an XML format. This file can be updated and used to upload the updated Recovery Plan.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -320,7 +321,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -378,6 +378,7 @@
       </command:name>
       <maml:description>
         <maml:para>Get information about Virtual Machines managed in Azure Site Recovery</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -578,7 +579,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -652,6 +652,7 @@
       </command:name>
       <maml:description>
         <maml:para>Gets Azure Site Recovery Vault settings information</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -715,7 +716,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -777,6 +777,7 @@
       </command:name>
       <maml:description>
         <maml:para>The Get-AzureSiteRecoveryProtectionContainer cmdlet gets protected containers for the current Microsoft Azure Site Recovery vault. A protected container is a logical container for protected objects such as virtual machines. Azure Site Recovery configures replication settings for protected containers</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -883,7 +884,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -950,6 +950,7 @@
 		</command:name>
       <maml:description>
         <maml:para>The Get-AzureSiteRecoveryJob cmdlet gets Microsoft Azure Site Recovery jobs. You can use this cmdlet to view the information of the operation for current Azure Site Recovery vault.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -1139,7 +1140,6 @@
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -1252,6 +1252,7 @@ Errors           : {}                        </dev:code>
       </command:name>
       <maml:description>
         <maml:para>Get information of the Recovery Plan for current Azure Site Recovery Vault</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -1361,7 +1362,6 @@ Errors           : {}                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -1424,6 +1424,7 @@ Errors           : {}                        </dev:code>
 		</command:name>
       <maml:description>
         <maml:para>The Get-AzureSiteRecoveryProtectionEntity cmdlet gets protected objects in Microsoft Azure Site Recovery, such as virtual machines. </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -1624,7 +1625,6 @@ Errors           : {}                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -1697,6 +1697,7 @@ ReplicationProvider          : HyperVReplica                        </dev:code>
       </command:name>
       <maml:description>
         <maml:para>Imports a Azure site Recovery Vault Settings file to able to connect to Azure site Recovery Vault</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -1780,7 +1781,6 @@ ReplicationProvider          : HyperVReplica                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -1844,6 +1844,7 @@ ReplicationProvider          : HyperVReplica                        </dev:code>
       </command:name>
       <maml:description>
         <maml:para>Adds a Recovery Plan in to a current Azure Site Recovery Vault</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -1946,7 +1947,6 @@ ReplicationProvider          : HyperVReplica                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -2015,6 +2015,7 @@ ReplicationProvider          : HyperVReplica                        </dev:code>
       </command:name>
       <maml:description>
         <maml:para>Remove a Recovery Plan from the current Azure Site Recovery Vault</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -2171,7 +2172,6 @@ ReplicationProvider          : HyperVReplica                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -2240,6 +2240,7 @@ ReplicationProvider          : HyperVReplica                        </dev:code>
       </command:name>
       <maml:description>
         <maml:para>Restarts the Operation in Azure Site Recovery </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -2348,7 +2349,6 @@ ReplicationProvider          : HyperVReplica                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -2418,6 +2418,7 @@ ReplicationProvider          : HyperVReplica                        </dev:code>
       </command:name>
       <maml:description>
         <maml:para>Resumes a suspended job in Azure Site Recovery</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -2551,7 +2552,6 @@ ReplicationProvider          : HyperVReplica                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -2622,6 +2622,7 @@ ReplicationProvider          : HyperVReplica                        </dev:code>
 		</command:name>
       <maml:description>
         <maml:para>Sets the Protection on a protection entity for Azure Site Recovery</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -2885,7 +2886,6 @@ ReplicationProvider          : HyperVReplica                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -2959,6 +2959,7 @@ Errors           : {}
       </command:name>
       <maml:description>
         <maml:para>The Start-AzureSiteRecoveryTestFailoverJob cmdlet starts the test failover for a protection entity or for a recovery plan in Microsoft Azure Site Recovery. Check whether the job succeeds by using the Get-AzureSiteRecoveryJob cmdlet.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -3740,7 +3741,6 @@ Errors           : {}
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -3859,6 +3859,7 @@ Errors           : {}
         <maml:para>The Start-AzureSiteRecoveryUnplannedFailoverJob cmdlet starts the unplanned failover for a protectioned entity or for a recovery plan in Microsoft Azure Site Recovery. 
 Check whether the job succeeds by using the Get-AzureSiteRecoveryJob cmdlet.
 </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -4146,7 +4147,6 @@ Check whether the job succeeds by using the Get-AzureSiteRecoveryJob cmdlet.
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -4215,6 +4215,7 @@ Errors           : {}                        </dev:code>
       </command:name>
       <maml:description>
         <maml:para>Start the commit failover of the Azure Site Recovery object after failover</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -4424,7 +4425,6 @@ Errors           : {}                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -4495,6 +4495,7 @@ Errors           : {}                        </dev:code>
       </command:name>
       <maml:description>
         <maml:para>Start the Planned Failover operation for a Protection Entity or Recovery Plan under Azure  Site Recovery</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -4816,7 +4817,6 @@ Errors           : {}                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -4885,6 +4885,7 @@ Errors           : {}                        </dev:code>
       </command:name>
       <maml:description>
         <maml:para>Stops the Azure Site Recovery Job. Specify a running Job only.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>Stops the Azure Site Recovery Job. This cmdlet is applicable on a running Job only. To know the allowed actions look for Allowedactions property of Job object</maml:para>
@@ -4991,7 +4992,6 @@ Errors           : {}                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -5050,6 +5050,7 @@ Errors           : {}                        </dev:code>
       </command:name>
       <maml:description>
         <maml:para>Update-AzureSiteRecoveryRecoveryPlan cmdlet allows to  change an existing Recovery Plan structure and Publish the updated one </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -5152,7 +5153,6 @@ Errors           : {}                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -5211,6 +5211,7 @@ Errors           : {}                        </dev:code>
       </command:name>
       <maml:description>
         <maml:para>Update the source and target server for the protection (Reverse Replicate) for Azure Site recovery Object after the commitfailover is completed </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -5461,7 +5462,6 @@ Errors           : {}                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -5531,6 +5531,7 @@ Errors           : {}                        </dev:code>
       </command:name>
       <maml:description>
         <maml:para>Updates the property of Azure Site Recovery Protection Entity like virtual machine owner information. Supported only for VMM to VMM protected protection entities</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -5633,7 +5634,6 @@ Errors           : {}                        </dev:code>
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -5703,6 +5703,7 @@ Errors           : {}                        </dev:code>
     </command:name>
       <maml:description>
         <maml:para>Creates a Protection profile object . This is an in memory object to be further supplied for Protection Profile related operations.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -6099,7 +6100,6 @@ As of now, only three possible values supported.
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -6201,6 +6201,7 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       </command:name>
       <maml:description>
         <maml:para>Starts the Protection profile association job.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -6341,7 +6342,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -6411,6 +6411,7 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       <maml:description>
         <maml:para>
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -6728,7 +6729,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -6798,6 +6798,7 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       </command:name>
       <maml:description>
         <maml:para>Initiates a dissociation job on the protection profile associated with protection containers.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -6938,7 +6939,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -7009,6 +7009,7 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       </command:name>
       <maml:description>
         <maml:para>Get information about Storages managed under current Azure Site Recovery Vault</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -7092,7 +7093,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -7167,6 +7167,7 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       </command:name>
       <maml:description>
         <maml:para>Get information about Azure Site Recovery Storage mappings for current Azure Site Recovery Vault</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -7270,7 +7271,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -7337,6 +7337,7 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       </command:name>
       <maml:description>
         <maml:para>Creates a mapping between two Storages</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -7440,7 +7441,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -7526,6 +7526,7 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       </command:name>
       <maml:description>
         <maml:para>Removes a Storage mapping form current Azure Site Recovery Vault</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -7609,7 +7610,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -7680,6 +7680,7 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       </command:name>
       <maml:description>
         <maml:para>Get information about Networks managed by Azure Site Recovery for the current Azure Site Recovery Vault.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -7763,7 +7764,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -7838,6 +7838,7 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       </command:name>
       <maml:description>
         <maml:para>Get information about Azure Site Recovery Network mappings for current Azure Site Recovery Vault</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -7970,7 +7971,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -8079,6 +8079,7 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       </command:name>
       <maml:description>
         <maml:para>Creates a mapping between two Networks</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -8234,7 +8235,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -8383,6 +8383,7 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       </command:name>
       <maml:description>
         <maml:para>Removes a Network mapping for current Azure Site Recovery Vault</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -8466,7 +8467,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -8611,6 +8611,7 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       </command:name>
       <maml:description>
         <maml:para>Creates a new Azure Site Recovery Vault</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -8714,7 +8715,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -8777,6 +8777,7 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       </command:name>
       <maml:description>
         <maml:para>Retrieves the information of the active Azure Site Recovery Vault</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -8860,7 +8861,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -8926,6 +8926,7 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       </command:name>
       <maml:description>
         <maml:para>Allows user to download the Azure Site Recovery Vault Settings File</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -9112,7 +9113,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -9175,6 +9175,7 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       </command:name>
       <maml:description>
         <maml:para>Creates a new Azure Site Recovery Vault</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -9278,7 +9279,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -9341,6 +9341,7 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       </command:name>
       <maml:description>
         <maml:para>Retrieves the list of sites from the Azure Site Recovery vault.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -9424,7 +9425,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>
@@ -9487,6 +9487,7 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       </command:name>
       <maml:description>
         <maml:para>Allows the update on a protected Virtual Machine for onprem-Azure scenarios</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -9650,7 +9651,6 @@ HyperVReplicaAzureProviderSettingsObject : Microsoft.Azure.Portal.RecoveryServic
       <maml:alert>
         <maml:para>
         </maml:para>
-        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, site, recovery</maml:para>
       </maml:alert>
       <maml:alert>
         <maml:para>

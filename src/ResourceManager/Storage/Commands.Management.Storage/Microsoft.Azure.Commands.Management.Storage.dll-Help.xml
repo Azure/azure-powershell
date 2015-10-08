@@ -6,6 +6,7 @@
       <command:name>Get-AzureRmStorageAccount</command:name>
       <maml:description>
         <maml:para>Get the properties of a Storage Account</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, storage, container, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -123,7 +124,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, storage, container, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -203,6 +203,7 @@
       <command:name>Get-AzureRmStorageAccountKey</command:name>
       <maml:description>
         <maml:para>Get the access keys for an Azure storage account</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, storage, container, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -320,7 +321,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, storage, container, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -356,6 +356,7 @@
       <command:name>New-AzureRmStorageAccount</command:name>
       <maml:description>
         <maml:para>Allows you to create a new Storage Account</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, storage, container, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -541,7 +542,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, storage, container, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -576,6 +576,7 @@
       <command:name>New-AzureRmStorageAccountKey</command:name>
       <maml:description>
         <maml:para>Regenerates a storage key for an Azure storage account.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, storage, container, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -717,7 +718,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, storage, container, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -753,6 +753,7 @@ New-AzureRmStorageKey -ResourceGroupName "myresourcegroup" -AccountName "mystora
       <command:name>Remove-AzureRmStorageAccount</command:name>
       <maml:description>
         <maml:para>Remove Storage Account from Azure</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, storage, container, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -870,7 +871,6 @@ New-AzureRmStorageKey -ResourceGroupName "myresourcegroup" -AccountName "mystora
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, storage, container, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -905,6 +905,7 @@ New-AzureRmStorageKey -ResourceGroupName "myresourcegroup" -AccountName "mystora
       <command:name>Set-AzureRmStorageAccount</command:name>
       <maml:description>
         <maml:para>Update the Storage Account properties</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, storage, container, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1162,7 +1163,6 @@ New-AzureRmStorageKey -ResourceGroupName "myresourcegroup" -AccountName "mystora
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, storage, container, account</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>

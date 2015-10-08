@@ -6,6 +6,7 @@
       <command:name>Get-AzureRmSqlCapability</command:name>
       <maml:description>
         <maml:para>Gets SQL Database capabilities for the current subscription.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -177,7 +178,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -263,6 +263,7 @@ ExpandedDetails : Version: 12.0 (Available) -&gt; Edition: Standard (Default) -&
       <command:name>Get-AzureRmSqlDatabase</command:name>
       <maml:description>
         <maml:para>Gets one or more Azure SQL databases.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -386,7 +387,6 @@ ExpandedDetails : Version: 12.0 (Available) -&gt; Edition: Standard (Default) -&
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -523,6 +523,7 @@ Tags                          :</maml:para>
       <command:name>Get-AzureRmSqlDatabaseActivity</command:name>
       <maml:description>
         <maml:para>Gets the status of moving elastic databases.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -684,7 +685,6 @@ Tags                          :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -719,6 +719,7 @@ Tags                          :</maml:para>
       <command:name>Get-AzureRmSqlDatabaseAuditingPolicy</command:name>
       <maml:description>
         <maml:para>Gets the auditing policy of an Azure SQL database.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -842,7 +843,6 @@ Tags                          :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -900,6 +900,7 @@ TableIdentifier    : Server01Database01</maml:para>
       <command:name>Get-AzureRmSqlDatabaseDataMaskingPolicy</command:name>
       <maml:description>
         <maml:para>Gets the data masking policy for an Azure SQL database.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1023,7 +1024,6 @@ TableIdentifier    : Server01Database01</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1091,6 +1091,7 @@ PrivilegedLogins  :</maml:para>
       <command:name>Get-AzureRmSqlDatabaseDataMaskingRule</command:name>
       <maml:description>
         <maml:para>Gets the data masking rules from an Azure SQL database.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1233,7 +1234,6 @@ PrivilegedLogins  :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1298,6 +1298,7 @@ PrivilegedLogins  :</maml:para>
       <command:name>Get-AzureRmSqlDatabaseExpanded</command:name>
       <maml:description>
         <maml:para />
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1422,7 +1423,6 @@ PrivilegedLogins  :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1436,6 +1436,7 @@ PrivilegedLogins  :</maml:para>
       <command:name>Get-AzureRmSqlDatabaseIndexRecommendations</command:name>
       <maml:description>
         <maml:para>Gets the recommended index operations for a server or database.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1598,7 +1599,6 @@ PrivilegedLogins  :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1685,6 +1685,7 @@ PrivilegedLogins  :</maml:para>
       <command:name>Get-AzureRmSqlDatabaseReplicationLink</command:name>
       <maml:description>
         <maml:para>Gets the geo-replication links between an Azure SQL Database and the specified Azure Resource Group or Azure SQL Server.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1871,7 +1872,6 @@ PrivilegedLogins  :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1885,6 +1885,7 @@ PrivilegedLogins  :</maml:para>
       <command:name>Get-AzureRmSqlDatabaseRestorePoints</command:name>
       <maml:description>
         <maml:para />
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2009,7 +2010,6 @@ PrivilegedLogins  :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2050,6 +2050,7 @@ EarliestRestoreDate      : 8/12/2015 12:00:00 AM
       <command:name>Get-AzureRmSqlDatabaseSecureConnectionPolicy</command:name>
       <maml:description>
         <maml:para>Gets the secure connection policy of an Azure SQL database.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2173,7 +2174,6 @@ EarliestRestoreDate      : 8/12/2015 12:00:00 AM
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2218,6 +2218,7 @@ SecureConnectionState : Optional</maml:para>
       <command:name>Get-AzureRmSqlDatabaseTransparentDataEncryption</command:name>
       <maml:description>
         <maml:para>Gets the TPE state for an Azure SQL database.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2341,7 +2342,6 @@ SecureConnectionState : Optional</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2388,6 +2388,7 @@ resourcegroup01               server01                      database01          
       <command:name>Get-AzureRmSqlDatabaseTransparentDataEncryptionActivity</command:name>
       <maml:description>
         <maml:para>Gets the progress of a TDE scan of an Azure SQL database.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2511,7 +2512,6 @@ resourcegroup01               server01                      database01          
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2560,6 +2560,7 @@ PercentComplete   : 3.662109
       <command:name>Get-AzureRmSqlDatabaseUpgradeHint</command:name>
       <maml:description>
         <maml:para>Gets pricing tier hints for a database for upgrading SQL Database.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2703,7 +2704,6 @@ PercentComplete   : 3.662109
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2790,6 +2790,7 @@ PercentComplete   : 3.662109
       <command:name>Get-AzureRmSqlElasticPool</command:name>
       <maml:description>
         <maml:para>Gets elastic pools and their property values in an Azure SQL Database.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2913,7 +2914,6 @@ PercentComplete   : 3.662109
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3100,6 +3100,7 @@ Unit           : Percent</maml:para>
       <command:name>Get-AzureRmSqlElasticPoolActivity</command:name>
       <maml:description>
         <maml:para>Gets the status of operations on an elastic pool.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3223,7 +3224,6 @@ Unit           : Percent</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3288,6 +3288,7 @@ Unit           : Percent</maml:para>
       <command:name>Get-AzureRmSqlElasticPoolDatabase</command:name>
       <maml:description>
         <maml:para>Gets elastic databases in an elastic pool and their property values.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3430,7 +3431,6 @@ Unit           : Percent</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3495,6 +3495,7 @@ Unit           : Percent</maml:para>
       <command:name>Get-AzureRmSqlElasticPoolRecommendation</command:name>
       <maml:description>
         <maml:para>Gets elastic pool recommendations.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3608,7 +3609,6 @@ Unit           : Percent</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3643,6 +3643,7 @@ Unit           : Percent</maml:para>
       <command:name>Get-AzureRmSqlServer</command:name>
       <maml:description>
         <maml:para>Returns information about Azure SQL Database servers.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3747,7 +3748,6 @@ Unit           : Percent</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -3884,6 +3884,7 @@ Tags                     :</maml:para>
       <command:name>Get-AzureRmSqlServerActiveDirectoryAdministrator</command:name>
       <maml:description>
         <maml:para>Gets information about an Azure AD administrator for SQL Server.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3988,7 +3989,6 @@ Tags                     :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4035,6 +4035,7 @@ resourcegroup01   server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</m
       <command:name>Get-AzureRmSqlServerAuditingPolicy</command:name>
       <maml:description>
         <maml:para>Gets the auditing policy of an Azure SQL server.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4139,7 +4140,6 @@ resourcegroup01   server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</m
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4191,6 +4191,7 @@ TableIdentifier    : Server01
       <command:name>Get-AzureRmSqlServerFirewallRule</command:name>
       <maml:description>
         <maml:para>Gets firewall rules for an Azure SQL Database server.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4314,7 +4315,6 @@ TableIdentifier    : Server01
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4379,6 +4379,7 @@ FirewallRuleName  : rule01
       <command:name>Get-AzureRmSqlServerServiceObjective</command:name>
       <maml:description>
         <maml:para>Gets service objectives for an Azure SQL Database server.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4521,7 +4522,6 @@ FirewallRuleName  : rule01
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4575,6 +4575,7 @@ resourcegroup01   server01   P4                                  True     False 
       <command:name>Get-AzureRmSqlServerUpgrade</command:name>
       <maml:description>
         <maml:para>Gets the status of an Azure SQL Database server upgrade.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4679,7 +4680,6 @@ resourcegroup01   server01   P4                                  True     False 
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4726,6 +4726,7 @@ Status                          : Queued</maml:para>
       <command:name>Get-AzureRmSqlServerUpgradeHint</command:name>
       <maml:description>
         <maml:para>Gets pricing tier hints for upgrading a SQL Database server.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4850,7 +4851,6 @@ Status                          : Queued</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -4896,6 +4896,7 @@ Status                          : Queued</maml:para>
       <command:name>New-AzureRmSqlDatabase</command:name>
       <maml:description>
         <maml:para>Creates an Azure SQL database or an elastic database.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5163,7 +5164,6 @@ You can also create an elastic database by setting the ElasticPoolName parameter
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5291,6 +5291,7 @@ Tags                          :</maml:para>
       <command:name>New-AzureRmSqlDatabaseCopy</command:name>
       <maml:description>
         <maml:para>Creates a copy of an existing Azure SQL Database using the snapshot of the data at the time of the call.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5527,7 +5528,6 @@ Tags                          :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5541,6 +5541,7 @@ Tags                          :</maml:para>
       <command:name>New-AzureRmSqlDatabaseDataMaskingRule</command:name>
       <maml:description>
         <maml:para>Creates a data masking rule for an Azure SQL database.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5891,7 +5892,6 @@ Tags                          :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -5946,6 +5946,7 @@ Tags                          :</maml:para>
       <command:name>New-AzureRmSqlDatabaseSecondary</command:name>
       <maml:description>
         <maml:para>Creates a new secondary database for an existing Azure SQL Database and starts data replication.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6181,7 +6182,6 @@ Tags                          :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6195,6 +6195,7 @@ Tags                          :</maml:para>
       <command:name>New-AzureRmSqlElasticPool</command:name>
       <maml:description>
         <maml:para>Creates an elastic database pool in Azure SQL Database.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6456,7 +6457,6 @@ Tags                          :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6533,6 +6533,7 @@ Tags              :
       <command:name>New-AzureRmSqlServer</command:name>
       <maml:description>
         <maml:para>Creates an Azure SQL Database server.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6715,7 +6716,6 @@ Tags              :
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -6781,6 +6781,7 @@ Tags                     :
       <command:name>New-AzureRmSqlServerFirewallRule</command:name>
       <maml:description>
         <maml:para>Creates a firewall rule for an Azure SQL Database server.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6978,7 +6979,6 @@ Tags                     :
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7036,6 +7036,7 @@ FirewallRuleName  : rule01</maml:para>
       <command:name>Remove-AzureRmSqlDatabase</command:name>
       <maml:description>
         <maml:para>Removes an Azure SQL database.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7215,7 +7216,6 @@ FirewallRuleName  : rule01</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7280,6 +7280,7 @@ FirewallRuleName  : rule01</maml:para>
       <command:name>Remove-AzureRmSqlDatabaseAuditing</command:name>
       <maml:description>
         <maml:para>Removes auditing of an Azure SQL database.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7421,7 +7422,6 @@ FirewallRuleName  : rule01</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7471,6 +7471,7 @@ FirewallRuleName  : rule01</maml:para>
       <command:name>Remove-AzureRmSqlDatabaseDataMaskingRule</command:name>
       <maml:description>
         <maml:para>Removes a data masking rule from an Azure SQL database.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7688,7 +7689,6 @@ FirewallRuleName  : rule01</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7743,6 +7743,7 @@ FirewallRuleName  : rule01</maml:para>
       <command:name>Remove-AzureRmSqlDatabaseSecondary</command:name>
       <maml:description>
         <maml:para>Terminates data replication between an Azure SQL Database and the specified secondary database.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7898,7 +7899,6 @@ FirewallRuleName  : rule01</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -7912,6 +7912,7 @@ FirewallRuleName  : rule01</maml:para>
       <command:name>Remove-AzureRmSqlElasticPool</command:name>
       <maml:description>
         <maml:para>Deletes an elastic database pool.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8091,7 +8092,6 @@ FirewallRuleName  : rule01</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8156,6 +8156,7 @@ FirewallRuleName  : rule01</maml:para>
       <command:name>Remove-AzureRmSqlServer</command:name>
       <maml:description>
         <maml:para>Removes an Azure SQL Database server.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8316,7 +8317,6 @@ FirewallRuleName  : rule01</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8371,6 +8371,7 @@ FirewallRuleName  : rule01</maml:para>
       <command:name>Remove-AzureRmSqlServerActiveDirectoryAdministrator</command:name>
       <maml:description>
         <maml:para>Removes an Azure AD administrator for SQL Server.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8531,7 +8532,6 @@ FirewallRuleName  : rule01</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8582,6 +8582,7 @@ resourcegroup01   server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</m
       <command:name>Remove-AzureRmSqlServerAuditing</command:name>
       <maml:description>
         <maml:para>Removes auditing of an Azure SQL server.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8704,7 +8705,6 @@ resourcegroup01   server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</m
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8749,6 +8749,7 @@ resourcegroup01   server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</m
       <command:name>Remove-AzureRmSqlServerFirewallRule</command:name>
       <maml:description>
         <maml:para>Deletes a firewall rule from an Azure SQL Database server.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8929,7 +8930,6 @@ resourcegroup01   server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</m
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -8984,6 +8984,7 @@ resourcegroup01   server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</m
       <command:name>Resume-AzureRmSqlDatabase</command:name>
       <maml:description>
         <maml:para>Resumes an Azure SQL Data Warehouse database.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -9106,7 +9107,6 @@ resourcegroup01   server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</m
       </maml:title>
       <maml:alert>
         <maml:para>This Resume-AzureRmSqlDatabase cmdlet works only on Azure SQL Data Warehouse databases. This operation is not supported on Azure SQL Database Basic, Standard and Premium editions.</maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -9166,6 +9166,7 @@ resourcegroup01   server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</m
       <command:name>Set-AzureRmSqlDatabase</command:name>
       <maml:description>
         <maml:para>Sets properties for an Azure SQL database, or moves an existing database into an elastic pool.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -9394,7 +9395,6 @@ resourcegroup01   server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</m
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -9513,6 +9513,7 @@ Tags                          :</maml:para>
       <command:name>Set-AzureRmSqlDatabaseAuditingPolicy</command:name>
       <maml:description>
         <maml:para>Sets the auditing policy for an Azure SQL database.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -9784,7 +9785,6 @@ Tags                          :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -9876,6 +9876,7 @@ Tags                          :</maml:para>
       <command:name>Set-AzureRmSqlDatabaseDataMaskingPolicy</command:name>
       <maml:description>
         <maml:para>Sets data masking for an Azure SQL database.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -10062,7 +10063,6 @@ Tags                          :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -10127,6 +10127,7 @@ Tags                          :</maml:para>
       <command:name>Set-AzureRmSqlDatabaseDataMaskingRule</command:name>
       <maml:description>
         <maml:para>Sets the properties of a data masking rule in an Azure SQL database.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -10475,7 +10476,6 @@ Tags                          :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -10530,6 +10530,7 @@ Tags                          :</maml:para>
       <command:name>Set-AzureRmSqlDatabaseSecondary</command:name>
       <maml:description>
         <maml:para>Switches a secondary Azure SQL Database to the primary in order to failover.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -10736,7 +10737,6 @@ Tags                          :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -10750,6 +10750,7 @@ Tags                          :</maml:para>
       <command:name>Set-AzureRmSqlDatabaseTransparentDataEncryption</command:name>
       <maml:description>
         <maml:para>Modifies TPE for an Azure SQL database.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -10896,7 +10897,6 @@ Tags                          :</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -10943,6 +10943,7 @@ resourcegroup01               server01                      database01          
       <command:name>Set-AzureRmSqlElasticPool</command:name>
       <maml:description>
         <maml:para>Modifies properties for an elastic database pool in Azure SQL Database.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -11192,7 +11193,6 @@ resourcegroup01               server01                      database01          
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -11264,6 +11264,7 @@ Tags              :
       <command:name>Set-AzureRmSqlServer</command:name>
       <maml:description>
         <maml:para>Modifies properties of an Azure SQL Database server.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -11482,7 +11483,6 @@ Tags              :
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -11529,6 +11529,7 @@ Tags                     :</maml:para>
       <command:name>Set-AzureRmSqlServerActiveDirectoryAdministrator</command:name>
       <maml:description>
         <maml:para>Provisions an Azure AD administrator for SQL Server.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -11680,7 +11681,6 @@ Microsoft accounts, such as those in the Outllook.com, Hotmail.com, or Live.com 
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -11773,6 +11773,7 @@ resourcegroup01   server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</m
       <command:name>Set-AzureRmSqlServerAuditingPolicy</command:name>
       <maml:description>
         <maml:para>Changes the auditing policy of an Azure SQL server.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -12023,7 +12024,6 @@ resourcegroup01   server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</m
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -12110,6 +12110,7 @@ resourcegroup01   server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</m
       <command:name>Set-AzureRmSqlServerFirewallRule</command:name>
       <maml:description>
         <maml:para>Modifies a firewall rule in Azure SQL Database server.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -12271,7 +12272,6 @@ resourcegroup01   server01   DBAs        40b79501-b343-44ed-9ce7-da4c8cc7353b</m
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -12329,6 +12329,7 @@ FirewallRuleName  : rule01</maml:para>
       <command:name>Start-AzureRmSqlDatabaseExecuteIndexRecommendation</command:name>
       <maml:description>
         <maml:para>Starts the workflow that runs a recommended index operation.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -12472,7 +12473,6 @@ FirewallRuleName  : rule01</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -12517,6 +12517,7 @@ FirewallRuleName  : rule01</maml:para>
       <command:name>Start-AzureRmSqlServerUpgrade</command:name>
       <maml:description>
         <maml:para>Starts the upgrade of an Azure SQL Database server.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -12697,7 +12698,6 @@ FirewallRuleName  : rule01</maml:para>
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -12774,6 +12774,7 @@ The final command upgrades the existing server named server02 in the  resource g
       <command:name>Stop-AzureRmSqlDatabaseExecuteIndexRecommendation</command:name>
       <maml:description>
         <maml:para>Stops the workflow that runs a recommended index operation.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -12917,7 +12918,6 @@ The final command upgrades the existing server named server02 in the  resource g
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -12962,6 +12962,7 @@ The final command upgrades the existing server named server02 in the  resource g
       <command:name>Stop-AzureRmSqlServerUpgrade</command:name>
       <maml:description>
         <maml:para>Stops the upgrade of an Azure SQL Database server.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -13123,7 +13124,6 @@ The final command upgrades the existing server named server02 in the  resource g
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -13168,6 +13168,7 @@ The final command upgrades the existing server named server02 in the  resource g
       <command:name>Suspend-AzureRmSqlDatabase</command:name>
       <maml:description>
         <maml:para>Suspends an Azure SQL Data Warehouse database.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -13290,7 +13291,6 @@ The final command upgrades the existing server named server02 in the  resource g
       </maml:title>
       <maml:alert>
         <maml:para>This Suspend-AzureRmSqlDatabase cmdlet works only on Azure SQL Data Warehouse databases. This operation is not supported on Azure SQL Database Basic, Standard and Premium editions.</maml:para>
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -13350,6 +13350,7 @@ The final command upgrades the existing server named server02 in the  resource g
       <command:name>Use-AzureRmSqlServerAuditingPolicy</command:name>
       <maml:description>
         <maml:para>Specifies that a database uses the auditing policy of its hosting server.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -13492,7 +13493,6 @@ The final command upgrades the existing server named server02 in the  resource g
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>

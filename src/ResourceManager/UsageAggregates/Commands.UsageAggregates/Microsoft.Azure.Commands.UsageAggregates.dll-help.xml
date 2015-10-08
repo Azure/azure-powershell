@@ -6,6 +6,7 @@
       <command:name>Get-UsageAggregates</command:name>
       <maml:description>
         <maml:para>Enables you to query aggregated Azure subscription consumption data based on when the data was reported.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, usage, billing, aggregate</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -192,7 +193,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, usage, billing, aggregate</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>

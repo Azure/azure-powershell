@@ -6,6 +6,7 @@
       <command:name>Get-AzureRmAppServicePlan</command:name>
       <maml:description>
         <maml:para>Gets Azure app service plan in the given resource group.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, webapp, website, kudu, paas</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -123,7 +124,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, webapp, website, kudu, paas</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -158,6 +158,7 @@
       <command:name>Get-AzureRmAppServicePlanMetrics</command:name>
       <maml:description>
         <maml:para />
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, webapp, website, kudu, paas</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -395,7 +396,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, webapp, website, kudu, paas</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -409,6 +409,7 @@
       <command:name>Get-AzureRmWebApp</command:name>
       <maml:description>
         <maml:para>Gets Azure web apps in the specified resource group</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, webapp, website, kudu, paas</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -546,7 +547,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, webapp, website, kudu, paas</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -581,6 +581,7 @@
       <command:name>Get-AzureRmWebAppMetrics</command:name>
       <maml:description>
         <maml:para />
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, webapp, website, kudu, paas</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -836,7 +837,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, webapp, website, kudu, paas</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -850,6 +850,7 @@
       <command:name>Get-AzureRmWebAppPublishingProfile</command:name>
       <maml:description>
         <maml:para>Get the web app publishing profile.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, webapp, website, kudu, paas</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -987,7 +988,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, webapp, website, kudu, paas</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1001,6 +1001,7 @@
       <command:name>New-AzureRmAppServicePlan</command:name>
       <maml:description>
         <maml:para>Creates a new app service plan in a given Geo location.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, webapp, website, kudu, paas</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1198,7 +1199,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, webapp, website, kudu, paas</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1233,6 +1233,7 @@
       <command:name>New-AzureRmWebApp</command:name>
       <maml:description>
         <maml:para>Create an Azure Web app</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, webapp, website, kudu, paas</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1410,7 +1411,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, webapp, website, kudu, paas</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1445,6 +1445,7 @@
       <command:name>Remove-AzureRmAppServicePlan</command:name>
       <maml:description>
         <maml:para>Remove an Azure app service plan</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, webapp, website, kudu, paas</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1582,7 +1583,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, webapp, website, kudu, paas</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1617,6 +1617,7 @@
       <command:name>Remove-AzureRmWebApp</command:name>
       <maml:description>
         <maml:para>Remove an Azure web app</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, webapp, website, kudu, paas</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1754,7 +1755,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, webapp, website, kudu, paas</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1789,6 +1789,7 @@
       <command:name>Restart-AzureRmWebApp</command:name>
       <maml:description>
         <maml:para>Stop and start an Azure web app.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, webapp, website, kudu, paas</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1926,7 +1927,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, webapp, website, kudu, paas</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -1961,6 +1961,7 @@
       <command:name>Set-AzureRmAppServicePlan</command:name>
       <maml:description>
         <maml:para>Sets the app service plan</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, webapp, website, kudu, paas</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2158,7 +2159,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, webapp, website, kudu, paas</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2194,6 +2194,7 @@
       <command:name>Start-AzureRmWebApp</command:name>
       <maml:description>
         <maml:para>Start an Azure web app</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, webapp, website, kudu, paas</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2331,7 +2332,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, webapp, website, kudu, paas</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
@@ -2366,6 +2366,7 @@
       <command:name>Stop-AzureRmWebApp</command:name>
       <maml:description>
         <maml:para>Stop the web app.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, webapp, website, kudu, paas</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2503,7 +2504,6 @@
       </maml:title>
       <maml:alert>
         <maml:para />
-        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, webapp, website, kudu, paas</maml:para>
       </maml:alert>
     </maml:alertSet>
     <command:examples>
