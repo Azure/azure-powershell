@@ -6,6 +6,7 @@
       <command:name>Get-AzureRmResource</command:name>
       <maml:description>
         <maml:para>Gets existing resources.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -948,6 +949,7 @@
       <command:name>Get-AzureRmResourceGroupDeploymentOperation</command:name>
       <maml:description>
         <maml:para>Gets the resource group deployment operation</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1199,6 +1201,7 @@
       <command:name>Get-AzureRmResourceLock</command:name>
       <maml:description>
         <maml:para>Gets the azure resource lock.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1838,6 +1841,7 @@
       <command:name>Move-AzureRmResource</command:name>
       <maml:description>
         <maml:para>Moves existing resources to a new resource group or subscription.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2150,6 +2154,7 @@
       <command:name>New-AzureRmResource</command:name>
       <maml:description>
         <maml:para>Create a new azure resource.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2959,6 +2964,7 @@
       <command:name>New-AzureRmResourceLock</command:name>
       <maml:description>
         <maml:para>Create a new resource lock.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3818,6 +3824,7 @@
       <command:name>Remove-AzureRmResource</command:name>
       <maml:description>
         <maml:para>Removes the azure resource.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4389,6 +4396,7 @@
       <command:name>Remove-AzureRmResourceLock</command:name>
       <maml:description>
         <maml:para>Removes the azure resource lock.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4993,6 +5001,7 @@
       <command:name>Set-AzureRmResource</command:name>
       <maml:description>
         <maml:para>Updates an existing azure resource.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5772,6 +5781,7 @@
       <command:name>Set-AzureRmResourceLock</command:name>
       <maml:description>
         <maml:para>Updates an existing resource lock.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6618,6 +6628,7 @@
       <command:name>Find-AzureRmResource</command:name>
       <maml:description>
         <maml:para>Searches for resources using the specified parameters.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7533,6 +7544,7 @@
       <command:name>Find-AzureRmResourceGroup</command:name>
       <maml:description>
         <maml:para>Searches for resource group using the specified parameters.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7686,6 +7698,7 @@
       <command:name>Get-AzureRmPolicyAssignment</command:name>
       <maml:description>
         <maml:para>Gets a list of all policy assignments or a particular assignment identified by name and scope or by Id</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8028,6 +8041,7 @@
       <command:name>Get-AzureRmPolicyDefinition</command:name>
       <maml:description>
         <maml:para>Gets a list of all the policy definitions or a specific policy definition identified by Name</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8320,6 +8334,7 @@
       <command:name>New-AzureRmPolicyAssignment</command:name>
       <maml:description>
         <maml:para>Creates a new policy assignment</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8573,6 +8588,7 @@
       <command:name>New-AzureRmPolicyDefinition</command:name>
       <maml:description>
         <maml:para>Creates a new policy definition</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8843,6 +8859,7 @@
       <command:name>Set-AzureRmPolicyAssignment</command:name>
       <maml:description>
         <maml:para>Updates existing policy assignment</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -9134,6 +9151,7 @@
       <command:name>Set-AzureRmPolicyDefinition</command:name>
       <maml:description>
         <maml:para>Updates an existing policy definition</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -9458,6 +9476,7 @@
       <command:name>Remove-AzureRmPolicyAssignment</command:name>
       <maml:description>
         <maml:para>Removes the specified policy assignment</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -9769,6 +9788,7 @@ Remove-AzureRmPolicyAssignment -Id $policyAssignment.ResourceId -Force</dev:code
       <command:name>Remove-AzureRmPolicyDefinition</command:name>
       <maml:description>
         <maml:para>Removes the policy definition</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />

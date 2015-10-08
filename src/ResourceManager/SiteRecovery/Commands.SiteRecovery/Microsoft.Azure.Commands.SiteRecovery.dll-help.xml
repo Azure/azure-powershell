@@ -7,6 +7,7 @@
       </command:name>
       <maml:description>
         <maml:para>Get information about Azure Site Recovery Server for current Azure Site Recovery vault</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, site, recovery</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>

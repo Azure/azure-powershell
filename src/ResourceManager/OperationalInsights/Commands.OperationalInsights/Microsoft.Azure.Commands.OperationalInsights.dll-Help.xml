@@ -6,6 +6,7 @@
       <command:name>Get-AzureRmOperationalInsightsLinkTargets</command:name>
       <maml:description>
         <maml:para>Lists existing accounts that are not associated with an Azure subscription.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, operational, insights</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -96,6 +97,7 @@
       <command:name>Get-AzureRmOperationalInsightsStorageInsight</command:name>
       <maml:description>
         <maml:para>Gets information about an existing storage insight</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, operational, insights</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -283,6 +285,7 @@
       <command:name>Get-AzureRmOperationalInsightsWorkspace</command:name>
       <maml:description>
         <maml:para>Gets information about an existing workspace</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, operational, insights</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -413,6 +416,7 @@
       <command:name>Get-AzureRmOperationalInsightsWorkspaceManagementGroups</command:name>
       <maml:description>
         <maml:para>Gets information about the management groups connected to a workspace</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, operational, insights</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -543,6 +547,7 @@
       <command:name>Get-AzureRmOperationalInsightsWorkspaceSharedKeys</command:name>
       <maml:description>
         <maml:para>Gets the shared keys for a workspace</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, operational, insights</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -673,6 +678,7 @@
       <command:name>Get-AzureRmOperationalInsightsWorkspaceUsage</command:name>
       <maml:description>
         <maml:para>Gets the usage data for a workspace</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, operational, insights</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -803,6 +809,7 @@
       <command:name>New-AzureRmOperationalInsightsStorageInsight</command:name>
       <maml:description>
         <maml:para>Creates a new storage insight inside a workspace</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, operational, insights</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1125,6 +1132,7 @@
       <command:name>New-AzureRmOperationalInsightsWorkspace</command:name>
       <maml:description>
         <maml:para>Creates a new workspace</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, operational, insights</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1355,6 +1363,7 @@
       <command:name>Remove-AzureRmOperationalInsightsStorageInsight</command:name>
       <maml:description>
         <maml:para>Deletes an existing storage insight</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, operational, insights</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1569,6 +1578,7 @@
       <command:name>Remove-AzureRmOperationalInsightsWorkspace</command:name>
       <maml:description>
         <maml:para>Deletes an existing workspace</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, operational, insights</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1719,6 +1729,7 @@
       <command:name>Set-AzureRmOperationalInsightsStorageInsight</command:name>
       <maml:description>
         <maml:para>Updates an existing storage insight</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, operational, insights</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1987,6 +1998,7 @@
       <command:name>Set-AzureRmOperationalInsightsWorkspace</command:name>
       <maml:description>
         <maml:para>Updates an existing workspace</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, operational, insights</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2201,6 +2213,7 @@
       <command:name>Get-AzureRmResourceProvider</command:name>
       <maml:description>
         <maml:para />
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, operational, insights</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />

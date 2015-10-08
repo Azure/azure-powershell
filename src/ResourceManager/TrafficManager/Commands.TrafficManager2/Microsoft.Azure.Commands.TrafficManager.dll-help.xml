@@ -6,6 +6,7 @@
       <command:name>Add-AzureRmTrafficManagerEndpointConfig</command:name>
       <maml:description>
         <maml:para>Adds an endpoint to an Azure Traffic Manager profile. </maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, traffic, trafficmanager</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -302,6 +303,7 @@ PS C:\&gt; Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $TrafficManag
       <command:name>Get-AzureRmTrafficManagerProfile</command:name>
       <maml:description>
         <maml:para>Gets an Azure Traffic Manager profile.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, traffic, trafficmanager</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -452,6 +454,7 @@ PS C:\&gt; Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $TrafficManag
       <command:name>New-AzureRmTrafficManagerProfile</command:name>
       <maml:description>
         <maml:para>Creates an Azure Traffic Manager profile.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, traffic, trafficmanager</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -742,6 +745,7 @@ PS C:\&gt; Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $TrafficManag
       <command:name>Remove-AzureRmTrafficManagerEndpointConfig</command:name>
       <maml:description>
         <maml:para>Removes an endpoint from an Azure Traffic Manager profile. </maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, traffic, trafficmanager</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -914,6 +918,7 @@ PS C:\&gt; Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $TrafficManag
       <command:name>Remove-AzureRmTrafficManagerProfile</command:name>
       <maml:description>
         <maml:para>Deletes an Azure Traffic Manager profile.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, traffic, trafficmanager</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1134,6 +1139,7 @@ PS C:\&gt; Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $TrafficManag
       <command:name>Set-AzureRmTrafficManagerProfile</command:name>
       <maml:description>
         <maml:para>Updates an Azure Traffic Manager profile. </maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, traffic, trafficmanager</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />

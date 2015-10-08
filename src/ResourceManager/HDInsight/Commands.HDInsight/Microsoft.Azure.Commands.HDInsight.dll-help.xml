@@ -6,6 +6,7 @@
       <command:name>Add-AzureRmHDInsightConfigValues</command:name>
       <maml:description>
         <maml:para>Adds a Hadoop configuration value customization and/or a Hive shared library customization to the Microsoft Azure HDInsight cluster configuration.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -374,6 +375,7 @@
       <command:name>Add-AzureRmHDInsightMetastore</command:name>
       <maml:description>
         <maml:para>Adds a SQL Database account to the Microsoft Azure HDInsight cluster configuration.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -562,6 +564,7 @@
       <command:name>Add-AzureRmHDInsightScriptAction</command:name>
       <maml:description>
         <maml:para>Adds a SQL Database account to the Microsoft Azure HDInsight cluster configuration.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -750,6 +753,7 @@
       <command:name>Add-AzureRmHDInsightStorage</command:name>
       <maml:description>
         <maml:para>Adds a Microsoft Azure Blob Storage account entry to a target HDInsight configuration.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -898,6 +902,7 @@
       <command:name>Get-AzureRmHDInsightCluster</command:name>
       <maml:description>
         <maml:para>Retrieves and lists all of the Microsoft Azure HDInsight clusters associated with the current subscription or retrieves a specific named cluster.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1026,6 +1031,7 @@
       <command:name>Get-AzureRmHDInsightJob</command:name>
       <maml:description>
         <maml:para>Retrieves the Azure HDInsight jobs from a cluster and lists them in reverse chronological order.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1194,6 +1200,7 @@
       <command:name>Get-AzureRmHDInsightJobOutput</command:name>
       <maml:description>
         <maml:para>Retrieves the log output for a job from the storage account associated with a specified cluster.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1422,6 +1429,7 @@
       <command:name>Get-AzureRmHDInsightProperties</command:name>
       <maml:description>
         <maml:para>Retrieves properties specific to a Microsoft Azure HDInsight service.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1530,6 +1538,7 @@
       <command:name>Grant-AzureRmHDInsightHttpServicesAccess</command:name>
       <maml:description>
         <maml:para>Grants HTTP access to the cluster.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1678,6 +1687,7 @@
       <command:name>Grant-AzureRmHDInsightRdpServicesAccess</command:name>
       <maml:description>
         <maml:para>Grants RDP access to the cluster.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1846,6 +1856,7 @@
       <command:name>Invoke-Hive</command:name>
       <maml:description>
         <maml:para>Submits Hive queries to the HDInsight cluster, shows progress of the query execution, and retrieves query results in one operation.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2154,6 +2165,7 @@
       <command:name>New-AzureRmHDInsightCluster</command:name>
       <maml:description>
         <maml:para>Creates a new Microsoft Azure HDInsight cluster for the current subscription.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2762,6 +2774,7 @@
       <command:name>New-AzureRmHDInsightClusterConfig</command:name>
       <maml:description>
         <maml:para>Creates a non-persisted configuration that describes a Microsoft Azure HDInsight cluster configuration.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3010,6 +3023,7 @@
       <command:name>New-AzureRmHDInsightHiveJobDefinition</command:name>
       <maml:description>
         <maml:para>Defines a new Hive job.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3258,6 +3272,7 @@
       <command:name>New-AzureRmHDInsightMapReduceJobDefinition</command:name>
       <maml:description>
         <maml:para>Defines a new Map Reduce job.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3506,6 +3521,7 @@
       <command:name>New-AzureRmHDInsightPigJobDefinition</command:name>
       <maml:description>
         <maml:para>Defines a new Pig job.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3694,6 +3710,7 @@
       <command:name>New-AzureRmHDInsightStreamingMapReduceJobDefinition</command:name>
       <maml:description>
         <maml:para>Defines a new Streaming Map Reduce job.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3962,6 +3979,7 @@
       <command:name>Remove-AzureRmHDInsightCluster</command:name>
       <maml:description>
         <maml:para>Deletes the specified HDInsight cluster from your Microsoft Azure subscription.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4090,6 +4108,7 @@
       <command:name>Revoke-AzureRmHDInsightHttpServicesAccess</command:name>
       <maml:description>
         <maml:para>Disables HTTP access to the cluster.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4218,6 +4237,7 @@
       <command:name>Revoke-AzureRmHDInsightRdpServicesAccess</command:name>
       <maml:description>
         <maml:para>Disables RDP access to the cluster.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4346,6 +4366,7 @@
       <command:name>Set-AzureRmHDInsightClusterSize</command:name>
       <maml:description>
         <maml:para>Sets the size of the specified cluster to the requested size.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4494,6 +4515,7 @@
       <command:name>Set-AzureRmHDInsightDefaultStorage</command:name>
       <maml:description>
         <maml:para>Sets default storage account setting in the HDInsight cluster configuration object.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4642,6 +4664,7 @@
       <command:name>Start-AzureRmHDInsightJob</command:name>
       <maml:description>
         <maml:para>Starts an Azure HDInsight job on a specified cluster.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4810,6 +4833,7 @@
       <command:name>Stop-AzureRmHDInsightJob</command:name>
       <maml:description>
         <maml:para>Stops running an Azure HDInsight job on a specified cluster.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4978,6 +5002,7 @@
       <command:name>Use-AzureRmHDInsightCluster</command:name>
       <maml:description>
         <maml:para>Selects Azure HDInsight cluster that will be used by the Invoke-Hive cmdlet for job submission.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5126,6 +5151,7 @@
       <command:name>Wait-AzureRmHDInsightJob</command:name>
       <maml:description>
         <maml:para>Awaits the completion or failure of the HDInsight job and shows its progress.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, hadoop, hdinsight, hd, insight</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />

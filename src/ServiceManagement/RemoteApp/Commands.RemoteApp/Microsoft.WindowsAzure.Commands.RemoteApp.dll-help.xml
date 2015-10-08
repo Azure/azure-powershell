@@ -8,6 +8,7 @@
 		</command:name>
       <maml:description>
         <maml:para>This cmdlet adds a user to a Microsoft Azure RemoteApp collection.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -235,6 +236,7 @@ Add-AzureRemoteAppUser -CollectionName Contoso -UserType OrgId -UserUpn user@con
 		</command:name>
       <maml:description>
         <maml:para>This cmdlet disconnects a Microsoft Azure RemoteApp session.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -394,6 +396,7 @@ Disconnect-AzureRemoteAppSession -CollectionName ContosoApps -UserUpn user@conto
 		</command:name>
       <maml:description>
         <maml:para>This cmdlet retrieves information about a Microsoft Azure RemoteApp collection. </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -590,6 +593,7 @@ Get-AzureRemoteAppCollection Finance*                        </dev:code>
 		</command:name>
       <maml:description>
         <maml:para>This cmdlet retrieves usage details for a Microsoft Azure RemoteApp collection.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -758,6 +762,7 @@ Get-AzureRemoteAppCollection Finance*                        </dev:code>
 		</command:name>
       <maml:description>
         <maml:para>This cmdlet retrieves usage summary for a Microsoft Azure RemoteApp collection.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -907,6 +912,7 @@ Get-AzureRemoteAppCollection Finance*                        </dev:code>
 		</command:name>
       <maml:description>
         <maml:para>This cmdlet lists the locations supported by Microsoft Azure RemoteApp.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -993,6 +999,7 @@ Get-AzureRemoteAppCollection Finance*                        </dev:code>
 		</command:name>
       <maml:description>
         <maml:para>This cmdlet retrieves the RemoteApp operation result.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -1102,6 +1109,7 @@ Get-AzureRemoteAppCollection Finance*                        </dev:code>
 		</command:name>
       <maml:description>
         <maml:para>This cmdlet lists Microsoft Azure RemoteApp plans.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -1188,6 +1196,7 @@ Get-AzureRemoteAppCollection Finance*                        </dev:code>
 		</command:name>
       <maml:description>
         <maml:para>This cmdlet retrieves the properties of one or more published RemoteApp programs for the a collection.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -1386,6 +1395,7 @@ VirtualPath          : %SYSTEMDRIVE%\Program Files (x86)\Contoso Finance\Finance
 		</command:name>
       <maml:description>
         <maml:para>This cmdlet lists all active and disconnected RemoteApp sessions for a collection.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -1544,6 +1554,7 @@ Get-AzureRemoteAppSession -CollectionName ContosoApps                        </d
 		</command:name>
       <maml:description>
         <maml:para>This cmdlet lists the Start Menu programs in the template image used by a RemoteApp collection.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -1702,6 +1713,7 @@ Get-AzureRemoteAppStartMenuProgram -CollectionName ContosoApps                  
 		</command:name>
       <maml:description>
         <maml:para>This cmdlet retrieves information about Microsoft Azure RemoteApp template images in Microsoft Azure. It returns an object with information on a specific template image, or if no template image is specified, for all the template image in the current subscription.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -1869,6 +1881,7 @@ Get-AzureRemoteAppTemplateImage -ImageName ContosoApps                        </
 		</command:name>
       <maml:description>
         <maml:para>This cmdlet lists all users in a Microsoft Azure RemoteApp collection.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -2027,6 +2040,7 @@ Get-AzureRemoteAppUser -CollectionName Contoso                        </dev:code
 		</command:name>
       <maml:description>
         <maml:para>This cmdlet retrieves information about RemoteApp virtual networks in Microsoft Azure. It returns an object with information on a specific virtual network, or if no virtual network is specified, for all the virtual networks in the current subscription.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -2185,6 +2199,7 @@ Get-AzureRemoteAppVNet -VNetName ContosoVNet                        </dev:code>
 		</command:name>
       <maml:description>
         <maml:para>This cmdlet retrieves information for a Vpn device.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -2328,6 +2343,7 @@ Microsoft Corporation  {RRAS}                        </dev:code>
 		</command:name>
       <maml:description>
         <maml:para>This cmdlet retrieves the configuration script for a Microsoft Azure RemoteApp Vpn device.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -2526,6 +2542,7 @@ Get-AzureRemoteAppVpnDeviceConfigScript -VNetName ContosoVNet -Vendor "Microsoft
 		</command:name>
       <maml:description>
         <maml:para>This cmdlet retrieves information for a Microsoft Azure RemoteApp workspace.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -2646,6 +2663,7 @@ https://www.remoteapp.windowsazure.com/ Contoso Work Applications               
 		</command:name>
       <maml:description>
         <maml:para>This cmdlet immediately logs off a remote session running in Microsoft Azure RemoteApp.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -2841,6 +2859,7 @@ Invoke-AzureRemoteAppSessionLogoff -CollectionName ContosoApps -UserUpn user@con
 		</command:name>
       <maml:description>
         <maml:para>This cmdlet creates a Microsoft Azure RemoteApp collection.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -3267,6 +3286,7 @@ Invoke-AzureRemoteAppSessionLogoff -CollectionName ContosoApps -UserUpn user@con
 		</command:name>
       <maml:description>
         <maml:para>This cmdlet uploads or imports a Microsoft Azure RemoteApp template image.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -3464,6 +3484,7 @@ New-AzureRemoteAppTemplateImage -ImageName ContosoApps -Location "West Europe" -
 		</command:name>
       <maml:description>
         <maml:para>This cmdlet creates a Microsoft Azure RemoteApp virtual network.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -3746,6 +3767,7 @@ b0ca9d1b-d1b9-4f24-9a08-5e021926587f                        </dev:code>
 		</command:name>
       <maml:description>
         <maml:para>This cmdlet publishes a RemoteApp program.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -4016,6 +4038,7 @@ Publish-AzureRemoteAppProgram -CollectionName ContosoApps -StartMenuAppId a37323
 		</command:name>
       <maml:description>
         <maml:para>This cmdlet removes a Microsoft Azure RemoteApp collection.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -4161,6 +4184,7 @@ Publish-AzureRemoteAppProgram -CollectionName ContosoApps -StartMenuAppId a37323
 		</command:name>
       <maml:description>
         <maml:para>This cmdlet deletes a Microsoft Azure RemoteApp template image.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -4335,6 +4359,7 @@ Remove-AzureRemoteAppTemplateImage -ImageName ContosoApps                       
 		</command:name>
       <maml:description>
         <maml:para>This cmdlet removes a user from a Microsoft Azure RemoteApp collection.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -4533,6 +4558,7 @@ Remove-AzureRemoteAppUser -CollectionName Contoso -Type OrgId -UserUpn user@cont
 		</command:name>
       <maml:description>
         <maml:para>This cmdlet deletes a Microsoft Azure RemoteApp virtual network.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -4672,6 +4698,7 @@ Remove-AzureRemoteAppVnet -VNetName ContosoVNet                        </dev:cod
 		</command:name>
       <maml:description>
         <maml:para>This cmdlet renames a Microsoft Azure RemoteApp template image.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -4831,6 +4858,7 @@ Rename-AzureRemoteAppTemplateImage -ImageName ContosoApps -NewName ContosoFinanc
 		</command:name>
       <maml:description>
         <maml:para>This cmdlet resets the Microsoft Azure RemoteApp VPN shared key.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -5004,6 +5032,7 @@ Reset-AzureRemoteAppVpnSharedKey -VNetName ContosoVNet                        </
 		</command:name>
       <maml:description>
         <maml:para>This cmdlet sends a message to a user.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -5183,6 +5212,7 @@ Send-AzureRemoteAppSessionMessage -CollectionName ContosoApps -UserUpn user@cont
 		</command:name>
       <maml:description>
         <maml:para>This cmdlet sets the properties of a Microsoft Azure RemoteApp collection.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -5402,6 +5432,7 @@ Send-AzureRemoteAppSessionMessage -CollectionName ContosoApps -UserUpn user@cont
 		</command:name>
       <maml:description>
         <maml:para>This cmdlet sets the properties of a Microsoft Azure RemoteApp virtual network.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -5621,6 +5652,7 @@ Set-AzureRemoteAppVnet -VNetName ContosoVNet -DnsServerIpAddress 131.253.33.200 
 		</command:name>
       <maml:description>
         <maml:para>This cmdlet sets the properties of a Microsoft Azure RemoteApp workspace.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -5764,6 +5796,7 @@ TrackingId
 		</command:name>
       <maml:description>
         <maml:para>This cmdlet unpublishes a RemoteApp program.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>
@@ -5929,6 +5962,7 @@ TrackingId
 		</command:name>
       <maml:description>
         <maml:para>This cmdlet updates the Microsoft Azure RemoteApp collection with the new template image.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, remote, app</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para>

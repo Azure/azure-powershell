@@ -6,6 +6,7 @@
       <command:name>Add-AzureRmApiManagementRegion</command:name>
       <maml:description>
         <maml:para>Adds new deployment region to PsApiManagement instance.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apirm</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -235,6 +236,7 @@ Update-AzureRmApiManagementDeployments</dev:code>
       <command:name>Backup-AzureRmApiManagement</command:name>
       <maml:description>
         <maml:para>Backs up API Management Service and places the backup to the specified Azure storage blob.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apirm</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -464,6 +466,7 @@ Update-AzureRmApiManagementDeployments</dev:code>
       <command:name>Get-AzureRmApiManagement</command:name>
       <maml:description>
         <maml:para>Gets a list or a particular API Management Service description.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apirm</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -661,6 +664,7 @@ Update-AzureRmApiManagementDeployments</dev:code>
       <command:name>Get-AzureRmApiManagementSsoToken</command:name>
       <maml:description>
         <maml:para>Gets a link with an SSO token to a deployed management portal of an API Management service.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apirm</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -810,6 +814,7 @@ Update-AzureRmApiManagementDeployments</dev:code>
       <command:name>Import-AzureRmApiManagementHostnameCertificate</command:name>
       <maml:description>
         <maml:para>Imports a certificate in a PFX format for an API Management Service.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apirm</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1039,6 +1044,7 @@ Update-AzureRmApiManagementDeployments</dev:code>
       <command:name>New-AzureRmApiManagement</command:name>
       <maml:description>
         <maml:para>Creates new API Management Service.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apirm</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1327,6 +1333,7 @@ Update-AzureRmApiManagementDeployments</dev:code>
       <command:name>New-AzureRmApiManagementHostnameConfiguration</command:name>
       <maml:description>
         <maml:para>Creates an instance of PsApiManagementHostnameConfiguration.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apirm</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1476,6 +1483,7 @@ Update-AzureRmApiManagementDeployments</dev:code>
       <command:name>New-AzureRmApiManagementVirtualNetwork</command:name>
       <maml:description>
         <maml:para>Creates an instance of PsApiManagementVirtualNetwork.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apirm</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1647,6 +1655,7 @@ Set-AzureRmApiManagementVirtualNetworks –ResourceGroupName ContosoGroup –Nam
       <command:name>Remove-AzureRmApiManagement</command:name>
       <maml:description>
         <maml:para>Removes existing API Management.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apirm</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1836,6 +1845,7 @@ Set-AzureRmApiManagementVirtualNetworks –ResourceGroupName ContosoGroup –Nam
       <command:name>Remove-AzureRmApiManagementRegion</command:name>
       <maml:description>
         <maml:para>Removes existing deployment region from PsApiManagement instance.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apirm</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2007,6 +2017,7 @@ Set-AzureRmApiManagementVirtualNetworks –ResourceGroupName ContosoGroup –Nam
       <command:name>Restore-AzureRmApiManagement</command:name>
       <maml:description>
         <maml:para>Restores an API Management Service from the specified Azure storage blob.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apirm</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2236,6 +2247,7 @@ Set-AzureRmApiManagementVirtualNetworks –ResourceGroupName ContosoGroup –Nam
       <command:name>Set-AzureRmApiManagementHostnames</command:name>
       <maml:description>
         <maml:para>Sets custom hostname configuration for an API Management service proxy and/or portal.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apirm</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2506,6 +2518,7 @@ Set-AzureRmApiHostnames -Name ContosoApi -ResourceGroupName Contoso –PortalHos
       <command:name>Set-AzureRmApiManagementVirtualNetworks</command:name>
       <maml:description>
         <maml:para>Sets VPN configuration for an API Management Service.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apirm</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2694,6 +2707,7 @@ Set-AzureRmApiHostnames -Name ContosoApi -ResourceGroupName Contoso –PortalHos
       <command:name>Update-AzureRmApiManagementDeployment</command:name>
       <maml:description>
         <maml:para>Updates deployment of an API Management Service.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apirm</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3026,6 +3040,7 @@ Update-AzureRmApiManagementDeployment –ApiManagement $apiManagement
       <command:name>Update-AzureRmApiManagementRegion</command:name>
       <maml:description>
         <maml:para>Updates existing deployment region in PsApiManagement instance.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, api, apimanagement, apimgmt, apirm</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />

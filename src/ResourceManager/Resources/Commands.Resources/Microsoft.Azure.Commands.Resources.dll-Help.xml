@@ -6,6 +6,7 @@
       <command:name>Get-AzureRmADGroup</command:name>
       <maml:description>
         <maml:para>Filters active directory groups.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -242,6 +243,7 @@
       <command:name>Get-AzureRmADGroupMember</command:name>
       <maml:description>
         <maml:para>Get a group members.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -389,6 +391,7 @@
       <command:name>Get-AzureRmADServicePrincipal</command:name>
       <maml:description>
         <maml:para>Filters active directory service principals.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -655,6 +658,7 @@
       <command:name>Get-AzureRmADUser</command:name>
       <maml:description>
         <maml:para>Filters active directory users.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -951,6 +955,7 @@
       <command:name>Get-AzureRmResourceProvider</command:name>
       <maml:description>
         <maml:para />
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1091,6 +1096,7 @@
       <command:name>Get-AzureRmProviderFeature</command:name>
       <maml:description>
         <maml:para />
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1258,6 +1264,7 @@
       <command:name>Get-AzureRmProviderOperation</command:name>
       <maml:description>
         <maml:para>Gets the operations or actions allowed by an Azure resource provider.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1432,6 +1439,7 @@ This command throws ProviderNotFound exception if an invalid resource provider i
       <command:name>Get-AzureRmResourceGroup</command:name>
       <maml:description>
         <maml:para>Gets Azure resource groups</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1713,6 +1721,7 @@ Tags:
       <command:name>Get-AzureRmResourceGroupDeployment</command:name>
       <maml:description>
         <maml:para>Gets the deployments in a resource group.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1988,6 +1997,7 @@ ContosoLabsRG                       WordPress.WordPress                     Succ
       <command:name>Get-AzureRmResourceGroupGalleryTemplate</command:name>
       <maml:description>
         <maml:para>Gets resource group templates in the gallery</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2289,6 +2299,7 @@ Summary     : Help desk and service management software that empowers you to pro
         <maml:para>Lists Azure RBAC role assignments at the specified scope. By default it lists all role assignments in the selected Azure subscription. Use respective parameters to list assignments to a specific user, or to list assignments on a specific resource group or resource.</maml:para>
         <maml:para>The Azure RBAC role that is assigned dictates what type of resources the user is allowed to manage in the scope, and what actions the user is allowed to perform on those resources. Use Get-AzureRMRoleDefinition command to list actions that a given role allows. 
 </maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3163,6 +3174,7 @@ To determine what access a particular user has in the subscription, use the Expa
       <command:name>Get-AzureRmRoleDefinition</command:name>
       <maml:description>
         <maml:para>Lists all roles that are available in Azure RBAC.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3343,6 +3355,7 @@ To determine what access a particular user has in the subscription, use the Expa
       <command:name>New-AzureRmADApplication</command:name>
       <maml:description>
         <maml:para>Creates a new azure active directory application.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3894,6 +3907,7 @@ AppPermissions          : {{
       <command:name>New-AzureRmADServicePrincipal</command:name>
       <maml:description>
         <maml:para>Creates a new azure active directory service principal.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4067,6 +4081,7 @@ NewApplication                                                61b5d8ea-fdc6-40a2
       <command:name>New-AzureRmResourceGroup</command:name>
       <maml:description>
         <maml:para>Creates an Azure resource group and its resources</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4493,6 +4508,7 @@ Resources         :
       <command:name>New-AzureRmResourceGroupDeployment</command:name>
       <maml:description>
         <maml:para>Add an Azure deployment to a resource group.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4999,6 +5015,7 @@ Resources         :
       <command:name>New-AzureRmRoleAssignment</command:name>
       <maml:description>
         <maml:para>Assigns the specified RBAC role to the specified principal, at the specified scope.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5618,6 +5635,7 @@ PS C:\&gt; New-AzureRmRoleAssignment -ObjectId 2f9d4375-cbf1-48e8-83c9-2a0be4cb3
         <maml:para>
           Creates a new custom role in Azure RBAC. It uses either a JSON role definition file or a PSRoleDefinition object as an input.
           Use the Get-AzureRmRoleDefinition command to generate a baseline role definition object and modify it properties as required. Use Get-AzureRmRoleDefinition | ConvertTo-Json command to generate a baseline json role definition file. Use the Get-AzureRmProviderOperation command to list all actions that can be secured using RBAC.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5844,6 +5862,7 @@ PS C:\&gt; New-AzureRmRoleDefinition -Role $roleDef</dev:code>
       <command:name>Register-AzureRmResourceProvider</command:name>
       <maml:description>
         <maml:para />
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5974,6 +5993,7 @@ PS C:\&gt; New-AzureRmRoleDefinition -Role $roleDef</dev:code>
       <command:name>Register-AzureRmProviderFeature</command:name>
       <maml:description>
         <maml:para />
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6124,6 +6144,7 @@ PS C:\&gt; New-AzureRmRoleDefinition -Role $roleDef</dev:code>
       <command:name>Remove-AzureRmADApplication</command:name>
       <maml:description>
         <maml:para>Deletes the azure active directory application.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6281,6 +6302,7 @@ PS C:\&gt; New-AzureRmRoleDefinition -Role $roleDef</dev:code>
       <command:name>Remove-AzureRmADServicePrincipal</command:name>
       <maml:description>
         <maml:para>Deletes the azure active directory service principal.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6463,6 +6485,7 @@ PS C:\&gt; New-AzureRmRoleDefinition -Role $roleDef</dev:code>
       <command:name>Remove-AzureRmResourceGroup</command:name>
       <maml:description>
         <maml:para>Deletes a resource group.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6667,6 +6690,7 @@ True</dev:code>
         <maml:para>Removes a role assignment to the specified principal who is assigned to a particular role at a particular scope. </maml:para>
         <maml:para>Use the Get-AzureRMRoleAssignment commandlet to retrieve assignments under the subscription
 </maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7396,6 +7420,7 @@ c. ResourceName, ResourceType, ResourceGroupName and (optionally) ParentResource
       <command:name>Remove-AzureRmRoleDefinition</command:name>
       <maml:description>
         <maml:para>Deletes an existing custom role definition in Azure RBAC. The role definition to delete is provided using the Id property of the role definition. Use Get-AzureRmRoleDefinition to determine the role definition to be deleted.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7588,6 +7613,7 @@ c. ResourceName, ResourceType, ResourceGroupName and (optionally) ParentResource
       <command:name>Save-AzureRmResourceGroupGalleryTemplate</command:name>
       <maml:description>
         <maml:para>Saves a gallery template to a JSON file</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7816,6 +7842,7 @@ PS C:\&gt;New-AzureRmResourceGroup -Name ContosoRG02 -Location 'South Central US
       <command:name>Set-AzureRmResourceGroup</command:name>
       <maml:description>
         <maml:para>Changes the properties of a resource group</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8048,6 +8075,7 @@ Tags:
         <maml:para>
           Updates a custom role in Azure RBAC. the updated role definition is provided using either a JSON role definition file or a PSRoleDefinition object as input.
           Use the Get-AzureRmRoleDefinition command to get a custom role definition object whose properties you can modify as required. Use Get-AzureRmRoleDefinition | ConvertTo-Json command to export the custom role that needs to be updated, into a JSON file, that you can modify. Use the Get-AzureRmProviderOperation command to list all actions in Azure that can be secured using RBAC.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8271,6 +8299,7 @@ PS C:\&gt; New-AzureRmRoleDefinition -Role $roleDef</dev:code>
       <command:name>Stop-AzureRmResourceGroupDeployment</command:name>
       <maml:description>
         <maml:para>Cancels a resource group deployment</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8444,6 +8473,7 @@ PS C:\&gt; New-AzureRmRoleDefinition -Role $roleDef</dev:code>
       <command:name>Test-AzureResourceGroupDeployment</command:name>
       <maml:description>
         <maml:para>Detects errors in a resource group template or template parameters</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -8870,6 +8900,7 @@ PS C:\&gt; New-AzureRmRoleDefinition -Role $roleDef</dev:code>
       <command:name>Unregister-AzureRmResourceProvider</command:name>
       <maml:description>
         <maml:para />
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -9000,6 +9031,7 @@ PS C:\&gt; New-AzureRmRoleDefinition -Role $roleDef</dev:code>
       <command:name>Connect-IscsiTarget</command:name>
       <maml:description>
         <maml:para />
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -9290,6 +9322,7 @@ PS C:\&gt; New-AzureRmRoleDefinition -Role $roleDef</dev:code>
       <command:name>Disconnect-IscsiTarget</command:name>
       <maml:description>
         <maml:para />
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -9476,6 +9509,7 @@ PS C:\&gt; New-AzureRmRoleDefinition -Role $roleDef</dev:code>
       <command:name>Get-IscsiConnection</command:name>
       <maml:description>
         <maml:para />
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -9727,6 +9761,7 @@ PS C:\&gt; New-AzureRmRoleDefinition -Role $roleDef</dev:code>
       <command:name>Get-IscsiSession</command:name>
       <maml:description>
         <maml:para />
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -9952,6 +9987,7 @@ PS C:\&gt; New-AzureRmRoleDefinition -Role $roleDef</dev:code>
       <command:name>Get-IscsiTarget</command:name>
       <maml:description>
         <maml:para />
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -10125,6 +10161,7 @@ PS C:\&gt; New-AzureRmRoleDefinition -Role $roleDef</dev:code>
       <command:name>Get-IscsiTargetPortal</command:name>
       <maml:description>
         <maml:para />
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -10350,6 +10387,7 @@ PS C:\&gt; New-AzureRmRoleDefinition -Role $roleDef</dev:code>
       <command:name>New-IscsiTargetPortal</command:name>
       <maml:description>
         <maml:para />
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -10575,6 +10613,7 @@ PS C:\&gt; New-AzureRmRoleDefinition -Role $roleDef</dev:code>
       <command:name>Register-IscsiSession</command:name>
       <maml:description>
         <maml:para />
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -10761,6 +10800,7 @@ PS C:\&gt; New-AzureRmRoleDefinition -Role $roleDef</dev:code>
       <command:name>Remove-IscsiTargetPortal</command:name>
       <maml:description>
         <maml:para />
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -10973,6 +11013,7 @@ PS C:\&gt; New-AzureRmRoleDefinition -Role $roleDef</dev:code>
       <command:name>Set-IscsiChapSecret</command:name>
       <maml:description>
         <maml:para />
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -11094,6 +11135,7 @@ PS C:\&gt; New-AzureRmRoleDefinition -Role $roleDef</dev:code>
       <command:name>Unregister-IscsiSession</command:name>
       <maml:description>
         <maml:para />
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -11241,6 +11283,7 @@ PS C:\&gt; New-AzureRmRoleDefinition -Role $roleDef</dev:code>
       <command:name>Update-IscsiTarget</command:name>
       <maml:description>
         <maml:para />
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -11440,6 +11483,7 @@ PS C:\&gt; New-AzureRmRoleDefinition -Role $roleDef</dev:code>
       <command:name>Update-IscsiTargetPortal</command:name>
       <maml:description>
         <maml:para />
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -11626,6 +11670,7 @@ PS C:\&gt; New-AzureRmRoleDefinition -Role $roleDef</dev:code>
       <command:name>Get-AzureRmResource</command:name>
       <maml:description>
         <maml:para>Gets Azure resources</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -11997,6 +12042,7 @@ Tags:
       <command:name>Move-AzureRmResource</command:name>
       <maml:description>
         <maml:para />
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -12183,6 +12229,7 @@ Tags:
       <command:name>New-AzureRmResource</command:name>
       <maml:description>
         <maml:para>Creates a new resource in a resource group</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -12483,6 +12530,7 @@ PS C:\&gt;New-AzureRmResource –Name sqldb03 –ResourceType "Microsoft.Sql/ser
       <command:name>Remove-AzureRmResource</command:name>
       <maml:description>
         <maml:para>Deletes a resource</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -12726,6 +12774,7 @@ True</dev:code>
       <command:name>Set-AzureRmResource</command:name>
       <maml:description>
         <maml:para>Changes the properties of an Azure resource.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -13026,6 +13075,7 @@ Tags:
       <command:name>Get-AzureRmResourceGroupLog</command:name>
       <maml:description>
         <maml:para>Gets the deployment log for a resource group</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, resource, group, template, deployment</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />

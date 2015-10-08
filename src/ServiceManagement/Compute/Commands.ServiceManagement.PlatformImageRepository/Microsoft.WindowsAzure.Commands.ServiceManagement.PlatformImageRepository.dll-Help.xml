@@ -6,6 +6,7 @@
       <command:name>Get-AzurePlatformVMImage</command:name>
       <maml:description>
         <maml:para>Returns an image's properties along with the replication progress status across the replica locations.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, image, vm, platform</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -120,6 +121,7 @@
       <maml:description>
         <maml:para>
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, image, vm, platform</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -282,6 +284,7 @@
       <maml:description>
         <maml:para>
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, image, vm, platform</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -356,6 +359,7 @@
       <maml:description>
         <maml:para>
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, image, vm, platform</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -429,6 +433,7 @@
       <command:name>Publish-AzurePlatformExtension</command:name>
       <maml:description>
         <maml:para>Publishes a brand new extension or publish a newer version of an existing version. Extensions can be published as external or internal using this cmdlet but a brand new version is always published as internal by default.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, image, vm, platform</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1025,6 +1030,7 @@
       <maml:description>
         <maml:para>
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, image, vm, platform</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1176,6 +1182,7 @@
       <maml:description>
         <maml:para>
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, image, vm, platform</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1293,6 +1300,7 @@
       <command:name>Remove-AzurePlatformVMImage</command:name>
       <maml:description>
         <maml:para>Deletes the replicas of the platform image from all of the replica locations.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, image, vm, platform</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1410,6 +1418,7 @@
       <command:name>Set-AzurePlatformExtension</command:name>
       <maml:description>
         <maml:para>Once an extension version is registered (as public or internal), this cmdlet allows the publisher to modify the extension properties without changing version number.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, image, vm, platform</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1743,6 +1752,7 @@
       <maml:description>
         <maml:para>
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, image, vm, platform</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1976,6 +1986,7 @@
       <maml:description>
         <maml:para>
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, image, vm, platform</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2115,6 +2126,7 @@
       <command:name>Set-AzurePlatformVMImage</command:name>
       <maml:description>
         <maml:para>Allows to replicate the image to target replica locations or allows to share/stop sharing the replicated images.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, image, vm, platform</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2319,6 +2331,7 @@
       <maml:description>
         <maml:para>
         </maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, image, vm, platform</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />

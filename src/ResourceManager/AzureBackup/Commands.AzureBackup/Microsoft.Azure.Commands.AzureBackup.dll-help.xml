@@ -6,6 +6,7 @@
       <command:name>Backup-AzureRmBackupItem</command:name>
       <maml:description>
         <maml:para>Trigger backup for a protected item</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -160,6 +161,7 @@ test-vm         Backup          Failed          26-Aug-15 12:30:30 PM  26-Aug-15
       <command:name>Disable-AzureRmBackupProtection</command:name>
       <maml:description>
         <maml:para>Disable protection for a protected item</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -312,6 +314,7 @@ test-vm         Backup          Failed          26-Aug-15 12:30:30 PM  26-Aug-15
       <command:name>Enable-AzureRmBackupContainerReregistration</command:name>
       <maml:description>
         <maml:para>Allow re-registration of the server to connect the server back to the vault and continue the backup points chain.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -419,6 +422,7 @@ test-vm         Backup          Failed          26-Aug-15 12:30:30 PM  26-Aug-15
       <command:name>Enable-AzureRmBackupProtection</command:name>
       <maml:description>
         <maml:para>Associate an item with a protection policy</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -582,6 +586,7 @@ test-vm         ConfigureBackup  Completed       26-Aug-15 12:19:49 PM  26-Aug-1
       <command:name>Get-AzureRmBackupContainer</command:name>
       <maml:description>
         <maml:para>Retrieves one or more Azure Backup containers that match the filter criteria specified.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -849,6 +854,7 @@ test-vm                      AzureVM            Registered</maml:para>
       <command:name>Get-AzureRmBackupItem</command:name>
       <maml:description>
         <maml:para>Gets the items under a container</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1094,6 +1100,7 @@ Location             : southeastasia</maml:para>
       <command:name>Get-AzureRmBackupJob</command:name>
       <maml:description>
         <maml:para>Retrieves a list of jobs or a specific job</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1486,6 +1493,7 @@ Done!</maml:para>
       <command:name>Get-AzureRmBackupJobDetails</command:name>
       <maml:description>
         <maml:para>Get the details of a job</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1687,6 +1695,7 @@ PS C:\&gt; $jd.ErrorDetails
       <command:name>Get-AzureRmBackupProtectionPolicy</command:name>
       <maml:description>
         <maml:para>Fetches the backup policies in a backup vault</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1876,6 +1885,7 @@ DefaultPolicy             AzureVM            Daily              26-Aug-15 12:30:
       <command:name>Get-AzureRmBackupRecoveryPoint</command:name>
       <maml:description>
         <maml:para>Get the recovery point(s) for a backed-up item</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2025,6 +2035,7 @@ DefaultPolicy             AzureVM            Daily              26-Aug-15 12:30:
       <command:name>Get-AzureRmBackupVault</command:name>
       <maml:description>
         <maml:para>Retrieves one or more vault objects based on the parameters that are specified.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2263,6 +2274,7 @@ Property :</maml:para>
       <command:name>Get-AzureRmBackupVaultCredentials</command:name>
       <maml:description>
         <maml:para>Downloads the Vault Credentials file to a specified location.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2390,6 +2402,7 @@ This section details out the type of the objects that you can pipe to the cmdlet
       <command:name>New-AzureRmBackupProtectionPolicy</command:name>
       <maml:description>
         <maml:para>Creates a PowerShell object that holds backup policy information</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2783,6 +2796,7 @@ DailyBkp                  AzureVM            Daily              26-Aug-15 3:00:0
       <command:name>New-AzureRmBackupRetentionPolicyObject</command:name>
       <maml:description>
         <maml:para>Creates a PowerShell object that holds retention policy information</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3273,6 +3287,7 @@ RetentionTimes  :</maml:para>
       <command:name>New-AzureRmBackupVault</command:name>
       <maml:description>
         <maml:para>Creates a new Azure Backup vault based on the parameters that are specified. A vault is the start point for all backup operations with Azure Backup.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3508,6 +3523,7 @@ Storage           : LocallyRedundant</maml:para>
       <command:name>Register-AzureRmBackupContainer</command:name>
       <maml:description>
         <maml:para>Register the container with the Azure Backup vault</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3724,6 +3740,7 @@ Storage           : LocallyRedundant</maml:para>
       <command:name>Remove-AzureRmBackupProtectionPolicy</command:name>
       <maml:description>
         <maml:para>Deletes a backup policy from the vault</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3862,6 +3879,7 @@ Storage           : LocallyRedundant</maml:para>
       <command:name>Remove-AzureRmBackupVault</command:name>
       <maml:description>
         <maml:para>Deletes the Azure Backup vault object based on the parameters that are specified.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4010,6 +4028,7 @@ Storage           : LocallyRedundant</maml:para>
       <command:name>Restore-AzureRmBackupItem</command:name>
       <maml:description>
         <maml:para>Restores the data and config for a point in time</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4161,6 +4180,7 @@ test-vm         Restore         InProgress      26-Aug-15 1:14:01 PM   01-Jan-01
       <command:name>Set-AzureRmBackupProtectionPolicy</command:name>
       <maml:description>
         <maml:para>Update an existing protection policy</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4473,6 +4493,7 @@ test-vm         Restore         InProgress      26-Aug-15 1:14:01 PM   01-Jan-01
       <command:name>Set-AzureRmBackupVault</command:name>
       <maml:description>
         <maml:para>Changes the properties of the Azure Backup vault object based on the parameters that are specified.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4635,6 +4656,7 @@ test-vm         Restore         InProgress      26-Aug-15 1:14:01 PM   01-Jan-01
       <command:name>Stop-AzureRmBackupJob</command:name>
       <maml:description>
         <maml:para>Cancels an ongoing Azure Backup job</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4838,6 +4860,7 @@ PS C:\&gt; Stop-AzureRmBackupJob -Vault $v -JobID $j.InstanceId</dev:code>
       <command:name>Unregister-AzureRmBackupContainer</command:name>
       <maml:description>
         <maml:para>Unregisters the specified Windows Server or Azure virtual machine from the Azure Backup vault.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5013,6 +5036,7 @@ This operation will delete all data in the backup vault that is associated with 
       <command:name>Wait-AzureRmBackupJob</command:name>
       <maml:description>
         <maml:para>Waits for an Azure Backup job to complete</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, backup</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />

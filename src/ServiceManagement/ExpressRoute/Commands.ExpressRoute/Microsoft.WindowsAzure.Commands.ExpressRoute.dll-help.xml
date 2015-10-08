@@ -6,6 +6,7 @@
       <command:name>Get-AzureAuthorizedDedicatedCircuit</command:name>
       <maml:description>
         <maml:para>Returns an object with authorized circuit information for a subscriptionId</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, express, route, network</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -132,6 +133,7 @@
       <command:name>Get-AzureBGPPeering</command:name>
       <maml:description>
         <maml:para>Returns an object with bgp configuration information of an ExpressRouteCircuit</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, express, route, network</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -310,6 +312,7 @@
       <command:name>Get-AzureDedicatedCircuit</command:name>
       <maml:description>
         <maml:para>Lists all ExpressRoute circuits and details of each circuit.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, express, route, network</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -485,6 +488,7 @@
       <command:name>Get-AzureDedicatedCircuitLink</command:name>
       <maml:description>
         <maml:para>Lists the link state of a particular virtual network and an ExpressRoute circuit. If a virtual network name is not specified, it lists all virtual networks linked to a particular ExpressRoute circuit.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, express, route, network</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -680,6 +684,7 @@
       <command:name>Get-AzureDedicatedCircuitLinkAuthorization</command:name>
       <maml:description>
         <maml:para>Gets details of an existing authorization</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, express, route, network</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -826,6 +831,7 @@
       <command:name>Get-AzureDedicatedCircuitServiceProvider</command:name>
       <maml:description>
         <maml:para>Lists all ExpressRoute service providers including carriers and internet exchange points offering connectivity across all regions in Microsoft Azure.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, express, route, network</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -964,6 +970,7 @@
       <command:name>New-AzureBGPPeering</command:name>
       <maml:description>
         <maml:para>Creates a new BGP peering configuration for an ExpressRoute circuit.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, express, route, network</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1248,6 +1255,7 @@
       <command:name>New-AzureDedicatedCircuit</command:name>
       <maml:description>
         <maml:para>Creates a new ExpressRoute circuit in a Microsoft Azure subscription.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, express, route, network</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1489,6 +1497,7 @@
       <command:name>New-AzureDedicatedCircuitLink</command:name>
       <maml:description>
         <maml:para>Creates a link between an ExpressRoute circuit and a virtual network in the current Microsoft Azure subscription.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, express, route, network</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1668,6 +1677,7 @@
       <command:name>New-AzureDedicatedCircuitLinkAuthorization</command:name>
       <maml:description>
         <maml:para>Creates an authorization to allow links to be created on a dedicated circuit not owned by the caller.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, express, route, network</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1837,6 +1847,7 @@
       <command:name>New-AzureDedicatedCircuitLinkAuthorizationMicrosoftIds</command:name>
       <maml:description>
         <maml:para>Adds Microsoft Ids to an existing link authorization.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, express, route, network</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1986,6 +1997,7 @@
       <command:name>Remove-AzureBGPPeering</command:name>
       <maml:description>
         <maml:para>Removes the routing configuration for an ExpressRoute circuit.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, express, route, network</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2205,6 +2217,7 @@
       <command:name>Remove-AzureDedicatedCircuit</command:name>
       <maml:description>
         <maml:para>Removes an ExpressRoute circuit.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, express, route, network</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2404,6 +2417,7 @@
       <command:name>Remove-AzureDedicatedCircuitLink</command:name>
       <maml:description>
         <maml:para>Removes the link between a Virtual Network and an ExpressRoute circuit.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, express, route, network</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2623,6 +2637,7 @@
       <command:name>Remove-AzureDedicatedCircuitLinkAuthorization</command:name>
       <maml:description>
         <maml:para>Removes an existing dedicated circuit link authorization</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, express, route, network</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2797,6 +2812,7 @@
       <command:name>Remove-AzureDedicatedCircuitLinkAuthorizationMicrosoftIds</command:name>
       <maml:description>
         <maml:para>Removes the authorization for the specified Microsoft Ids</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, express, route, network</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2946,6 +2962,7 @@
       <command:name>Set-AzureBGPPeering</command:name>
       <maml:description>
         <maml:para>Updates a BGP peering configuration for an ExpressRoute circuit.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, express, route, network</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3230,6 +3247,7 @@
       <command:name>Set-AzureDedicatedCircuitLinkAuthorization</command:name>
       <maml:description>
         <maml:para>Updates or creates a dedicated circuit link authorization</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, express, route, network</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />

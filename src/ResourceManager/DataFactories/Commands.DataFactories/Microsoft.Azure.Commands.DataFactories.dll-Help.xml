@@ -5,6 +5,7 @@
       <command:name>Get-AzureRmDataFactory</command:name>
       <maml:description>
         <maml:para>Gets information about Data Factory.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -165,6 +166,7 @@
       <command:name>Get-AzureRmDataFactoryGateway</command:name>
       <maml:description>
         <maml:para>Gets information about logical gateways in Data Factory.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -392,6 +394,7 @@
       <command:name>Get-AzureRmDataFactoryHub</command:name>
       <maml:description>
         <maml:para>Gets information about hubs in Data Factory.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -600,6 +603,7 @@
       <command:name>Get-AzureRmDataFactoryLinkedService</command:name>
       <maml:description>
         <maml:para>Gets information about linked services in Data Factory.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -844,6 +848,7 @@
       <command:name>Get-AzureRmDataFactoryPipeline</command:name>
       <maml:description>
         <maml:para>Gets information about pipelines in Data Factory.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1161,6 +1166,7 @@
       <command:name>Get-AzureRmDataFactoryRun</command:name>
       <maml:description>
         <maml:para>Gets runs for a data slice of a dataset in Data Factory.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1403,6 +1409,7 @@
       <command:name>Get-AzureRmDataFactorySlice</command:name>
       <maml:description>
         <maml:para>Gets data slices for a dataset in Data Factory.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1715,6 +1722,7 @@
       <command:name>Get-AzureRmDataFactoryDataset</command:name>
       <maml:description>
         <maml:para>Gets information about datasets in Data Factory.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1962,6 +1970,7 @@
       <command:name>New-AzureRmDataFactory</command:name>
       <maml:description>
         <maml:para>Creates a data factory.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2168,6 +2177,7 @@
       <command:name>New-AzureRmDataFactoryEncryptValue</command:name>
       <maml:description>
         <maml:para>Encrypts sensitive data.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2658,6 +2668,7 @@
       <command:name>New-AzureRmDataFactoryGateway</command:name>
       <maml:description>
         <maml:para>Creates a gateway for Data Factory.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2870,6 +2881,7 @@
       <command:name>New-AzureRmDataFactoryGatewayKey</command:name>
       <maml:description>
         <maml:para>Creates a gateway key for Data Factory.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3053,6 +3065,7 @@
       <command:name>New-AzureRmDataFactoryHub</command:name>
       <maml:description>
         <maml:para>Creates a hub for Data Factory.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3292,6 +3305,7 @@
       <command:name>New-AzureRmDataFactoryLinkedService</command:name>
       <maml:description>
         <maml:para>Links a data store or a cloud service to Data Factory.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3536,6 +3550,7 @@
       <command:name>New-AzureRmDataFactoryPipeline</command:name>
       <maml:description>
         <maml:para>Creates a pipeline in Data Factory.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3799,6 +3814,7 @@
       <command:name>New-AzureRmDataFactoryDataset</command:name>
       <maml:description>
         <maml:para>Creates a dataset in Data Factory.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4119,6 +4135,7 @@
       <command:name>Remove-AzureRmDataFactory</command:name>
       <maml:description>
         <maml:para>Removes a data factory.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4301,6 +4318,7 @@
       <command:name>Remove-AzureRmDataFactoryGateway</command:name>
       <maml:description>
         <maml:para>Removes a gateway from Data Factory.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4510,6 +4528,7 @@
       <command:name>Remove-AzureRmDataFactoryHub</command:name>
       <maml:description>
         <maml:para>Removes a hub from Data Factory.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4722,6 +4741,7 @@
       <command:name>Remove-AzureRmDataFactoryLinkedService</command:name>
       <maml:description>
         <maml:para>Removes a linked service from Data Factory.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4933,6 +4953,7 @@
       <command:name>Remove-AzureRmDataFactoryPipeline</command:name>
       <maml:description>
         <maml:para>Removes a pipeline from Data Factory.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5150,6 +5171,7 @@
       <command:name>Remove-AzureRmDataFactoryDataset</command:name>
       <maml:description>
         <maml:para>Removes a dataset from Data Factory.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5355,6 +5377,7 @@
       <command:name>Resume-AzureRmDataFactoryPipeline</command:name>
       <maml:description>
         <maml:para>Resumes a suspended pipeline in Data Factory.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5572,6 +5595,7 @@
       <command:name>Save-AzureRmDataFactoryLog</command:name>
       <maml:description>
         <maml:para>Downloads log files from HDInsight processing.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5870,6 +5894,7 @@
       <command:name>Set-AzureRmDataFactoryGateway</command:name>
       <maml:description>
         <maml:para>Sets the description for a gateway in Data Factory.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6087,6 +6112,7 @@
       <command:name>Set-AzureRmDataFactoryPipelineActivePeriod</command:name>
       <maml:description>
         <maml:para>Configures the active period for data slices.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6415,6 +6441,7 @@
       <command:name>Set-AzureRmDataFactorySliceStatus</command:name>
       <maml:description>
         <maml:para>Sets the status of slices for a dataset in Data Factory.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6744,6 +6771,7 @@
       <command:name>Suspend-AzureRmDataFactoryPipeline</command:name>
       <maml:description>
         <maml:para>Suspends a pipeline in Data Factory.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, data, factories</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />

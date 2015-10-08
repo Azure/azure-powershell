@@ -6,6 +6,7 @@
       <command:name>Add-AzureRmDnsRecordConfig</command:name>
       <maml:description>
         <maml:para>Adds a DNS record to a record set.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -598,6 +599,7 @@
       <command:name>Get-AzureRmDnsRecordSet</command:name>
       <maml:description>
         <maml:para>Gets a DNS record set.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -926,6 +928,7 @@
       <command:name>Get-AzureRmDnsZone</command:name>
       <maml:description>
         <maml:para>Gets a DNS zone.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1112,6 +1115,7 @@
       <command:name>New-AzureRmDnsRecordSet</command:name>
       <maml:description>
         <maml:para>Creates a DNS record set.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1501,6 +1505,7 @@
       <command:name>New-AzureRmDnsZone</command:name>
       <maml:description>
         <maml:para>Creates a new DNS zone.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1673,6 +1678,7 @@
       <command:name>Remove-AzureRmDnsRecordConfig</command:name>
       <maml:description>
         <maml:para>Removes a DNS record from a record set.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2170,6 +2176,7 @@
       <command:name>Remove-AzureRmDnsRecordSet</command:name>
       <maml:description>
         <maml:para>Deletes a record set.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2562,6 +2569,7 @@ PS C:\&gt; Remove-AzureRmDnsRecordSet -RecordSet $RecordSet
       <command:name>Remove-AzureRmDnsZone</command:name>
       <maml:description>
         <maml:para>Removes a DNS zone from a resource group.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2809,6 +2817,7 @@ PS C:\&gt; Remove-AzureRmDnsRecordSet -RecordSet $RecordSet
       <command:name>Set-AzureRmDnsRecordSet</command:name>
       <maml:description>
         <maml:para>Updates a DNS record set.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2986,6 +2995,7 @@ PS C:\&gt; Set-AzureRmDnsRecordSet -RecordSet $RecordSet
       <command:name>Set-AzureRmDnsZone</command:name>
       <maml:description>
         <maml:para>Updates a DNS zone.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, dns, network, networking</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />

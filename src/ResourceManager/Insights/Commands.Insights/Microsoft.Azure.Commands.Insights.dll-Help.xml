@@ -6,6 +6,7 @@
       <command:name>Add-AlertRule</command:name>
       <maml:description>
         <maml:para>Adds or updates an alert rule of either metric, event, or webtest type</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -877,6 +878,7 @@ If the rule exists, then it just disables it.</maml:para>
       <command:name>Add-AutoscaleSetting</command:name>
       <maml:description>
         <maml:para>Create an autoscale setting.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1181,6 +1183,7 @@ add-autoscalesetting -Location "East US" -Name MySetting -ResourceGroup Default-
       <command:name>Add-EventAlertRule</command:name>
       <maml:description>
         <maml:para>Adds or replaces an event alert rule</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1684,6 +1687,7 @@ add-autoscalesetting -Location "East US" -Name MySetting -ResourceGroup Default-
       <command:name>Add-MetricAlertRule</command:name>
       <maml:description>
         <maml:para>Adds or updates a metric-based alert rule.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2122,6 +2126,7 @@ If the rule exists, then it just disables it.</maml:para>
       <command:name>Add-WebtestAlertRule</command:name>
       <maml:description>
         <maml:para>Adds or updates a webtest alert rule</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2412,6 +2417,7 @@ If the rule exists, then it just disables it.</maml:para>
       <command:name>Format-MetricsAsTable</command:name>
       <maml:description>
         <maml:para>Formats the output of the Get-Metrics Cmdlet as an array of records, one for each metric value to be used by the Export-csv Cdmlet.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2553,6 +2559,7 @@ foreach($e in $s2) { Export-csv -Path ./metrics.csv -input $e -Append -NoTypeInf
       <command:name>Get-AlertHistory</command:name>
       <maml:description>
         <maml:para>Retrieves the history of alerts.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3064,6 +3071,7 @@ SubStatus            :</maml:para>
       <command:name>Get-AlertRule</command:name>
       <maml:description>
         <maml:para>Gets alert rules</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3376,6 +3384,7 @@ The output contains only basic information about the alert rule.</maml:para>
       <command:name>Get-AutoscaleHistory</command:name>
       <maml:description>
         <maml:para>Retrieves the history of autoscale.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3775,6 +3784,7 @@ SubStatus            :</maml:para>
       <command:name>Get-AutoscaleSetting</command:name>
       <maml:description>
         <maml:para>Get the autoscale settings</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4164,6 +4174,7 @@ Tags       : {[$type, Microsoft.WindowsAzure.Management.Common.Storage.CasePrese
       <command:name>Get-AzureRmLog</command:name>
       <maml:description>
         <maml:para>Gets the events associated with the current SubscriptionId or CorrelationId or Resource Group or ResourceId or Resource Provider</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5208,6 +5219,7 @@ The value must be earlier than StartTime, but not more than 15 days.</maml:para>
       <command:name>Get-MetricDefinitions</command:name>
       <maml:description>
         <maml:para>Retrieves the metric definitions.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5504,6 +5516,7 @@ Unit                   : Bytes</maml:para>
       <command:name>Get-Metrics</command:name>
       <maml:description>
         <maml:para>Retrieves the metric values of a resource.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5885,6 +5898,7 @@ Unit           : Count</maml:para>
       <command:name>Get-UsageMetrics</command:name>
       <maml:description>
         <maml:para>Retrieves the usage metric values of a resource.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6104,6 +6118,7 @@ Unit           : Count</maml:para>
       <command:name>New-AutoscaleProfile</command:name>
       <maml:description>
         <maml:para>Creates an autoscale profile.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -6697,6 +6712,7 @@ $profile = new-autoscaleprofile -DefaultCapacity "1" -MaximumCapacity "10" -Mini
       <command:name>New-AutoscaleRule</command:name>
       <maml:description>
         <maml:para>Create an autoscale rule.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7099,6 +7115,7 @@ Microsoft.Azure.Management.Insights.Models.MetricTrigger    Microsoft.Azure.Mana
       <command:name>Remove-AlertRule</command:name>
       <maml:description>
         <maml:para>Removes an alert rule.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -7281,6 +7298,7 @@ Microsoft.Azure.Management.Insights.Models.MetricTrigger    Microsoft.Azure.Mana
       <command:name>Remove-AutoscaleSetting</command:name>
       <maml:description>
         <maml:para>Removes an autoscale setting</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, insights</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />

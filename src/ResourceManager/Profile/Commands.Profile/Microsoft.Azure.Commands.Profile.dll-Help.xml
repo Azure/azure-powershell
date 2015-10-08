@@ -6,6 +6,7 @@
       <command:name>Add-AzureRmAccount</command:name>
       <maml:description>
         <maml:para>Log in to authenticate cmdlets with Azure Resource Manager.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -457,6 +458,7 @@ Tenant: xxxx-xxxx-xxxx-xxxx</maml:para>
       <command:name>Add-AzureRmEnvironment</command:name>
       <maml:description>
         <maml:para>Add endpoints and metadata for an instance of Azure Resource Manager</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -899,6 +901,7 @@ Tenant: xxxx-xxxx-xxxx-xxxx</maml:para>
       <command:name>Get-AzureRmContext</command:name>
       <maml:description>
         <maml:para>Get the current metadata used to authenticate Azure Resource Manager requests.  Includes the active directory account, Active Directory tenant, Azure subscription, and the targeted azure environemtn.  Azure Resource Manager cmdlets use these settings by default when making Azure Resource Manager Requests.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1017,6 +1020,7 @@ Tenant: xxxx-xxxx-xxxx-xxxx</maml:para>
       <command:name>Get-AzureRmEnvironment</command:name>
       <maml:description>
         <maml:para>Get endpoints and metadata for the given instance of Azure services.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1155,6 +1159,7 @@ Tenant: xxxx-xxxx-xxxx-xxxx</maml:para>
       <command:name>Get-AzureRmSubscription</command:name>
       <maml:description>
         <maml:para>Get detailed information about subscriptions the current account can access.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1480,6 +1485,7 @@ Subscription Name: Contoso Subscription 1</maml:para>
       <command:name>Get-AzureRmTenant</command:name>
       <maml:description>
         <maml:para>Get detailed information about tenants authorized for the current user</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1608,6 +1614,7 @@ Subscription Name: Contoso Subscription 1</maml:para>
       <command:name>Remove-AzureRmEnvironment</command:name>
       <maml:description>
         <maml:para>Remove endpoints and metadata information for connecting to a given Azure instance.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1756,6 +1763,7 @@ Subscription Name: Contoso Subscription 1</maml:para>
       <command:name>Save-AzureRMProfile</command:name>
       <maml:description>
         <maml:para>Save the current authentication information for use in other PowerShell sessions.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1914,6 +1922,7 @@ Subscription Name: Contoso Subscription 1</maml:para>
       <command:name>Select-AzureRMProfile</command:name>
       <maml:description>
         <maml:para>Load authentication information from the given file.  This sets the current context and azure environment metadata used by all cmdlets in the current session.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2079,6 +2088,7 @@ Subscription Name: Contoso Subscription 1</maml:para>
       <command:name>Set-AzureRMContext</command:name>
       <maml:description>
         <maml:para>Set the tenant, subscription, and environment to be used by cmdlets in this session.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2365,6 +2375,7 @@ Tenant: yyyy-yyyy-yyyy-yyyy</maml:para>
       <command:name>Set-AzureRmEnvironment</command:name>
       <maml:description>
         <maml:para>Set properties for the given Azure instance.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />

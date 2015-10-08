@@ -5,6 +5,7 @@
       <command:name>Get-AzureRmRedisCache</command:name>
       <maml:description>
         <maml:para>Gets details about a single cache or all caches in the specified resource group or all caches in the current subscription.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -257,6 +258,7 @@
       <command:name>New-AzureRmRedisCache</command:name>
       <maml:description>
         <maml:para>Creates a new redis cache.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -571,6 +573,7 @@
       <command:name>Remove-AzureRmRedisCache</command:name>
       <maml:description>
         <maml:para>Remove redis cache if exists.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -749,6 +752,7 @@
       <command:name>Get-AzureRmRedisCacheKey</command:name>
       <maml:description>
         <maml:para>Gets the accesskeys for the specified redis cache.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -875,6 +879,7 @@
       <command:name>New-AzureRmRedisCacheKey</command:name>
       <maml:description>
         <maml:para>Regenerates the access key of a redis cache.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1061,6 +1066,7 @@
       <command:name>Set-AzureRmRedisCache</command:name>
       <maml:description>
         <maml:para>Set redis cache updatable parameters.</maml:para>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />

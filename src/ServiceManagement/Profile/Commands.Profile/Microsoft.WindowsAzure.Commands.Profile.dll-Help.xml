@@ -6,6 +6,7 @@
       <command:name>Add-AzureAccount</command:name>
       <maml:description>
         <maml:para>Adds the Azure account to Windows PowerShell</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -351,6 +352,7 @@
       <command:name>Add-AzureEnvironment</command:name>
       <maml:description>
         <maml:para>Creates an Azure environment</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -779,6 +781,7 @@
       <command:name>Clear-AzureProfile</command:name>
       <maml:description>
         <maml:para>Clears an Azure profile</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -963,6 +966,7 @@
       <command:name>Get-AzureAccount</command:name>
       <maml:description>
         <maml:para>Gets Azure accounts that are available to Azure PowerShell.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1158,6 +1162,7 @@
       <command:name>Get-AzureEnvironment</command:name>
       <maml:description>
         <maml:para>Gets Azure environments</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1404,6 +1409,7 @@
       <command:name>Get-AzurePublishSettingsFile</command:name>
       <maml:description>
         <maml:para>Downloads the publish settings file for an Azure subscription.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1622,6 +1628,7 @@
       <command:name>Get-AzureSubscription</command:name>
       <maml:description>
         <maml:para>Gets  Azure subscriptions in Azure account.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2009,6 +2016,7 @@
       <command:name>Import-AzurePublishSettingsFile</command:name>
       <maml:description>
         <maml:para>Imports a publish settings file that lets you manage your Azure accounts in Windows PowerShell.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2232,6 +2240,7 @@
       <command:name>New-AzureProfile</command:name>
       <maml:description>
         <maml:para>Create a new credential profile for Microsoft Azure PowerShell cmdlets in the current PowerShell session.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2713,6 +2722,7 @@
       <command:name>Remove-AzureAccount</command:name>
       <maml:description>
         <maml:para>Deletes an Azure account from Windows PowerShell.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2949,6 +2959,7 @@
       <command:name>Remove-AzureEnvironment</command:name>
       <maml:description>
         <maml:para>Deletes an Azure environment from Windows PowerShell</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3165,6 +3176,7 @@
       <command:name>Remove-AzureSubscription</command:name>
       <maml:description>
         <maml:para>Deletes an Azure subscription from Windows PowerShell.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3508,6 +3520,7 @@
       <command:name>Select-AzureProfile</command:name>
       <maml:description>
         <maml:para>Select the active profile for the current PowerShell session.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -3622,6 +3635,7 @@
       <command:name>Select-AzureSubscription</command:name>
       <maml:description>
         <maml:para>Changes the current and default Azure subscriptions</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4115,6 +4129,7 @@
       <command:name>Set-AzureEnvironment</command:name>
       <maml:description>
         <maml:para>Changes the properties of an Azure environment</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -4497,6 +4512,7 @@
       <command:name>Set-AzureSubscription</command:name>
       <maml:description>
         <maml:para>Creates or changes an Azure subscription</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -5015,6 +5031,7 @@
       <command:name>Switch-AzureMode</command:name>
       <maml:description>
         <maml:para>Switches between the Azure and Azure Resource Manager modules</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, profile, common, login, account</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />

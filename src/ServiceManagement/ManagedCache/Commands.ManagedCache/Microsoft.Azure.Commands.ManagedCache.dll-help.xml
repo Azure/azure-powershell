@@ -6,6 +6,7 @@
       <command:name>Get-AzureManagedCache</command:name>
       <maml:description>
         <maml:para>Gets the Azure Caches in your Azure account.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, managed, cache</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -159,6 +160,7 @@
       <command:name>Get-AzureManagedCacheAccessKey</command:name>
       <maml:description>
         <maml:para>Gets the access keys for an Azure Cache</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, managed, cache</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -301,6 +303,7 @@
       <command:name>New-AzureManagedCache</command:name>
       <maml:description>
         <maml:para>Creates an Azure cache</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, managed, cache</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -522,6 +525,7 @@
       <command:name>New-AzureManagedCacheAccessKey</command:name>
       <maml:description>
         <maml:para>Creates new access keys for an Azure Cache.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, managed, cache</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -713,6 +717,7 @@
       <command:name>Remove-AzureManagedCache</command:name>
       <maml:description>
         <maml:para>Deletes an Azure Cache</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, managed, cache</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -916,6 +921,7 @@ True</dev:code>
       <command:name>Set-AzureManagedCache</command:name>
       <maml:description>
         <maml:para>Changes the properties of an Azure Cache.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, managed, cache</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1129,6 +1135,7 @@ Performing the operation "Delete" on target "contosocache".
       <command:name>New-AzureManagedCacheNamedCache</command:name>
       <maml:description>
         <maml:para>Creates a named cache in the specified Azure Managed Cache Service instance.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, managed, cache</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1371,6 +1378,7 @@ Performing the operation "Delete" on target "contosocache".
       <command:name>Set-AzureManagedCacheNamedCache</command:name>
       <maml:description>
         <maml:para>Updates a named cache in the specified Azure Managed Cache Service instance.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, managed, cache</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1633,6 +1641,7 @@ Performing the operation "Delete" on target "contosocache".
       <command:name>Remove-AzureManagedCacheNamedCache</command:name>
       <maml:description>
         <maml:para>Remove a named cache from an Azure Managed Cache Service instance</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, managed, cache</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1804,6 +1813,7 @@ Performing the operation "Delete" on target "contosocache".
       <command:name>Get-AzureManagedCacheNamedCache</command:name>
       <maml:description>
         <maml:para>Gets a specific named cache or all named caches in an Azure Managed Cache Service instance</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, managed, cache</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />

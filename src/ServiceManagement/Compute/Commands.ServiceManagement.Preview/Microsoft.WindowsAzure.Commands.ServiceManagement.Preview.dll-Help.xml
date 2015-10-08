@@ -6,6 +6,7 @@
       <command:name>Invoke-AzureComputeMethod</command:name>
       <maml:description>
         <maml:para>This cmdlet calls the client library by -MethodName.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, preview</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -193,6 +194,7 @@
       <command:name>New-AzureComputeArgumentList</command:name>
       <maml:description>
         <maml:para>This cmdlet creates new argument lists by -MethodName that can be used as input of the Invoke-AzureComputeMethod cmdlet.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, preview</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -346,6 +348,7 @@
       <command:name>New-AzureComputeParameterObject</command:name>
       <maml:description>
         <maml:para>This cmdlet creates new parameter objects by -FriendlyName or -FullName of the types.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, preview</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />

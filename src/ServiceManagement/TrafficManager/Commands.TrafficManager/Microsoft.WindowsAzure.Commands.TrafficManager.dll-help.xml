@@ -6,6 +6,7 @@
       <command:name>Add-AzureTrafficManagerEndpoint</command:name>
       <maml:description>
         <maml:para>Adds an endpoint to a Traffic Manager profile.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, traffic, trafficmanager</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -294,6 +295,7 @@ PS C:\&gt; Add-AzureTrafficManagerEndpoint -TrafficManagerProfile $TrafficManage
       <command:name>Disable-AzureTrafficManagerProfile</command:name>
       <maml:description>
         <maml:para>Disables a Traffic Manager profile.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, traffic, trafficmanager</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -467,6 +469,7 @@ True</dev:code>
       <command:name>Enable-AzureTrafficManagerProfile</command:name>
       <maml:description>
         <maml:para>Enables a Traffic Manager profile.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, traffic, trafficmanager</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -640,6 +643,7 @@ True</dev:code>
       <command:name>Get-AzureTrafficManagerProfile</command:name>
       <maml:description>
         <maml:para>Gets the details of a Traffic Manager profile.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, traffic, trafficmanager</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -815,6 +819,7 @@ True</dev:code>
       <command:name>New-AzureTrafficManagerProfile</command:name>
       <maml:description>
         <maml:para>Creates a Traffic Manager profile.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, traffic, trafficmanager</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1123,6 +1128,7 @@ PS C:\&gt; $Profile = Set-AzureTrafficManagerProfile</dev:code>
       <command:name>Remove-AzureTrafficManagerEndpoint</command:name>
       <maml:description>
         <maml:para>Removes an endpoint from a Traffic Manager profile.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, traffic, trafficmanager</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1295,6 +1301,7 @@ PS C:\&gt; Remove-AzureTrafficManagerEndpoint -TrafficManagerProfile $TrafficMan
       <command:name>Remove-AzureTrafficManagerProfile</command:name>
       <maml:description>
         <maml:para>Removes a Traffic Manager profile.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, traffic, trafficmanager</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1486,6 +1493,7 @@ PS C:\&gt; Remove-AzureTrafficManagerEndpoint -TrafficManagerProfile $TrafficMan
       <command:name>Set-AzureTrafficManagerEndpoint</command:name>
       <maml:description>
         <maml:para>Updates the properties of an endpoint in a Traffic Manager profile.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, traffic, trafficmanager</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -1759,6 +1767,7 @@ PS C:\&gt; Set-AzureTrafficManagerEndpoint -TrafficManagerProfile $TrafficManage
       <command:name>Set-AzureTrafficManagerProfile</command:name>
       <maml:description>
         <maml:para>Updates the properties of a Traffic Manager profile.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, traffic, trafficmanager</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
@@ -2072,6 +2081,7 @@ PS C:\&gt; $Profile = Set-AzureTrafficManagerProfile</dev:code>
       <command:name>Test-AzureTrafficManagerDomainName</command:name>
       <maml:description>
         <maml:para>Checks whether a domain name is available as a Traffic Manager profile.</maml:para>
+        <maml:para>Keywords: azure, azuresm, servicemanagement, management, service, traffic, trafficmanager</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
