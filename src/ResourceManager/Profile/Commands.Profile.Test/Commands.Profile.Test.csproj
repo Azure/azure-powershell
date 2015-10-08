@@ -181,6 +181,7 @@
     <Compile Include="EnvironmentCmdletTests.cs" />
     <Compile Include="MockSubscriptionClientFactory.cs" />
     <Compile Include="ProfileController.cs" />
+    <Compile Include="ProfileModuleTests.cs" />
     <Compile Include="RPRegistrationDelegatingHandlerTests.cs" />
     <Compile Include="SubscriptionCmdletTests.cs" />
     <Compile Include="TenantCmdletTests.cs" />
@@ -196,6 +197,15 @@
     </Content>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
+    <None Include="FakeModuleRepo\AzureRM.ApiManagement.998.9.8.nupkg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="FakeModuleRepo\AzureRM.Profile.999.9.8.nupkg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.ProfileModuleTests\WarningOnIncompatibleVersions.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.SubscriptionCmdletTests\AllParameterSetsSucceed.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -205,6 +215,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.SubscriptionCmdletTests\SetAzureRmContextWorks.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Content Include="ProfileModuleTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">

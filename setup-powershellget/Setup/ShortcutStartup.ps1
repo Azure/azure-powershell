@@ -81,6 +81,7 @@ This may take some time...
 		$env:PSModulePath = "$env:USERPROFILE\Documents\WindowsPowerShell\Modules;$env:ProgramFiles\WindowsPowerShell\Modules;$env:SystemRoot\system32\WindowsPowerShell\v1.0\Modules\"
 
 		Uninstall-AzureRM
+		Uninstall-Module -Name AzureRM -Confirm:$false -Force
 	} 
 	else 
 	{
