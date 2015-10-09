@@ -17,7 +17,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
 using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
@@ -27,15 +29,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         /// Set the context for the current profile, preserving token cache information
         /// </summary>
         /// <param name="profile">The profile to change the context for</param>
-        /// <param name="newContext">The new context</param>
-        public static void SetContext(this AzureRMProfile profile, AzureContext newContext)
+        /// <param name="newContext">The new context, with no token cache information.</param>
+        public static void SetContextWithCache(this AzureRMProfile profile, AzureContext newContext)
         {
-            var currentContext = profile.Context;
-            if (currentContext != null && currentContext.TokenCache != null && currentContext.TokenCache.Length > 0)
+            if (profile == null)
             {
-                newContext.TokenCache = currentContext.TokenCache;
+                throw new ArgumentNullException("profile", Resources.ProfileCannotBeNull);
             }
 
+            if (newContext == null)
+            {
+                throw new ArgumentNullException("newContext", Resources.ContextCannotBeNull);
+            }
+
+            newContext.TokenCache = TokenCache.DefaultShared.Serialize();
             profile.Context = newContext;
         }
     }

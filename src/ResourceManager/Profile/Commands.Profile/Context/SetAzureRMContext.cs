@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Profile
         {
             if (ParameterSetName == ContextParameterSet)
             {
-                AzureRmProfileProvider.Instance.Profile.SetContext(new AzureContext(Context.Subscription, Context.Account,
+                AzureRmProfileProvider.Instance.Profile.SetContextWithCache(new AzureContext(Context.Subscription, Context.Account,
                     Context.Environment, Context.Tenant));
             }
             else

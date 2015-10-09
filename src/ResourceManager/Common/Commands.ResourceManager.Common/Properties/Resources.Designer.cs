@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties
-{
-
-
+namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -57,6 +57,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Context cannot be null.  Please log in using Add-AzureRmAccount..
+        /// </summary>
+        public static string ContextCannotBeNull {
+            get {
+                return ResourceManager.GetString("ContextCannotBeNull", resourceCulture);
             }
         }
         
@@ -132,6 +141,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Properties
         public static string NoSubscriptionFound {
             get {
                 return ResourceManager.GetString("NoSubscriptionFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile cannot be null.  Please run Add-AzureRmAccount..
+        /// </summary>
+        public static string ProfileCannotBeNull {
+            get {
+                return ResourceManager.GetString("ProfileCannotBeNull", resourceCulture);
             }
         }
         

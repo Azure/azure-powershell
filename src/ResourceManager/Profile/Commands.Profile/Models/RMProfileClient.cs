@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             if (!string.IsNullOrWhiteSpace(tenantId))
             {
-                _profile.SetContext(new AzureContext(
+                _profile.SetContextWithCache(new AzureContext(
                     _profile.Context.Subscription,
                     _profile.Context.Account,
                     _profile.Context.Environment,
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     newSubscription.Name = null;
                 }
 
-                _profile.SetContext(new AzureContext(
+                _profile.SetContextWithCache(new AzureContext(
                     newSubscription,
                     _profile.Context.Account,
                     _profile.Context.Environment,
