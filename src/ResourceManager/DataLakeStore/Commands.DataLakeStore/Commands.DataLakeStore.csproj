@@ -137,7 +137,7 @@
     <Compile Include="Commands\RemoveAzureRmDataLakeStoreItem.cs" />
     <Compile Include="Commands\RemoveAzureRmDataLakeStoreItemAcl.cs" />
     <Compile Include="Commands\RemoveAzureRmDataLakeStoreItemAclEntry.cs" />
-    <Compile Include="Commands\SetAzureRmDataLakeItemAclEntry.cs" />
+    <Compile Include="Commands\SetAzureRmDataLakeStoreItemAclEntry.cs" />
     <Compile Include="Commands\SetAzureRmDataLakeStoreAccount.cs" />
     <Compile Include="Commands\SetAzureRmDataLakeStoreItemAcl.cs" />
     <Compile Include="Commands\SetAzureRmDataLakeStoreItemOwner.cs" />
