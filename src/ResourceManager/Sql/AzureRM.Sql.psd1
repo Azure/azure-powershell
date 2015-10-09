@@ -24,7 +24,7 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'    
   
 # Description of the functionality provided by this module  
-Description = 'Microsoft Azure PowerShell - Sql'  
+Description = 'Microsoft Azure PowerShell - Sql service cmdlets for Azure Resource Manager'  
   
 # Minimum version of the Windows PowerShell engine required by this module  
 PowerShellVersion = '3.0'  

@@ -131,6 +131,7 @@ function Update-AzureRM
     Set-PSRepository -Name $Repository -InstallationPolicy Trusted
 
     Install-ModuleWithVersionCheck "AzureRM.Profile" $MajorVersion $Repository $Scope
+    Install-ModuleWithVersionCheck "Azure.Storage" $MajorVersion $Repository $Scope
 
     # Start new job
     $AzureRMModules | ForEach {
