@@ -40,18 +40,18 @@ function Test-AdminRights([string]$Scope)
 
 function CheckIncompatibleVersion([bool]$Force)
 {
-    $message = "An incompatible version of Azure Resource Manager PowerShell cmdlets is installed.  Please uninstall Microsoft Azure PowerShell using the 'Control Panel' before installing these cmdlets. To install these cmdlets regardless of compatibility issues, execute 'Install-AzureRM -Force'."
-    if ( Test-Path "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\PowerShell\ResourceManager\AzureResourceManager\AzureResourceManager.psd1")
-	{
-	    if ($Force)
-		{
-		   Write-Warning $message
-		}
-		else
-		{
-	        throw $message
-		}
-	}
+  $message = "An incompatible version of Azure Resource Manager PowerShell cmdlets is installed.  Please uninstall Microsoft Azure PowerShell using the 'Control Panel' before installing these cmdlets. To install these cmdlets regardless of compatibility issues, execute 'Install-AzureRM -Force'."
+  if ( Test-Path "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\PowerShell\ResourceManager\AzureResourceManager\AzureResourceManager.psd1")
+  {
+    if ($Force)
+    {
+      Write-Warning $message
+    }
+    else
+    {
+      throw $message
+    }
+  }
 }
 
 function Install-ModuleWithVersionCheck([string]$Name,[string]$MajorVersion,[string]$Repository,[string]$Scope)
