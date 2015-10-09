@@ -104,6 +104,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             if (!string.IsNullOrEmpty(GetDefaultStorage(CredentialHelper.DefaultStorageName, CredentialHelper.Location)))
             {
                 defaultAzureSubscription = vmPowershellCmdlets.SetAzureSubscription(defaultAzureSubscription.SubscriptionName, defaultAzureSubscription.SubscriptionId, CredentialHelper.DefaultStorageName);
+                defaultAzureSubscription.CurrentStorageAccountName = CredentialHelper.DefaultStorageName;
                 vmPowershellCmdlets.SelectAzureSubscription(defaultAzureSubscription.SubscriptionName, true);
                 storageAccountKey = vmPowershellCmdlets.GetAzureStorageAccountKey(CredentialHelper.DefaultStorageName);
                 Assert.AreEqual(CredentialHelper.DefaultStorageName, storageAccountKey.StorageAccountName);
