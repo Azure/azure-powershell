@@ -18,13 +18,17 @@ Test Virtual Machines
 #>
 function Test-VirtualMachine
 {
+    param ($loc)
     # Setup
     $rgname = Get-ComputeTestResourceName
 
     try
     {
         # Common
-        $loc = Get-ComputeVMLocation;
+        if ($loc -eq $null)
+        {
+            $loc = Get-ComputeVMLocation;
+        }
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
