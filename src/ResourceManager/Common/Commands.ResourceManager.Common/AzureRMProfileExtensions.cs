@@ -13,23 +13,30 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Azure.Common.Authentication;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.Azure.Common.Authentication.Models;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
-    public static class AccessTokenExtensions
+    public static class AzureRMProfileExtensions
     {
-        public static string GetDomain(this IAccessToken token)
+        /// <summary>
+        /// Set the context for the current profile, preserving token cache information
+        /// </summary>
+        /// <param name="profile">The profile to change the context for</param>
+        /// <param name="newContext">The new context</param>
+        public static void SetContext(this AzureRMProfile profile, AzureContext newContext)
         {
-            if( token != null && token.UserId !=null && token.UserId.Contains('@'))
+            var currentContext = profile.Context;
+            if (currentContext != null && currentContext.TokenCache != null && currentContext.TokenCache.Length > 0)
             {
-                return token.UserId.Split(
-                    new[] { '@' }, 
-                    StringSplitOptions.RemoveEmptyEntries).Last();
+                newContext.TokenCache = currentContext.TokenCache;
             }
 
-            return null;
+            profile.Context = newContext;
         }
     }
 }

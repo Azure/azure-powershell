@@ -105,11 +105,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             if (!string.IsNullOrWhiteSpace(tenantId))
             {
-                _profile.Context = new AzureContext(
+                _profile.SetContext(new AzureContext(
                     _profile.Context.Subscription,
                     _profile.Context.Account,
                     _profile.Context.Environment,
-                    new AzureTenant() { Id = new Guid(tenantId) });
+                    new AzureTenant() { Id = new Guid(tenantId) }));
 
                 if (_profile.Context.Account != null)
                 {
@@ -139,11 +139,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     newSubscription.Name = null;
                 }
 
-                _profile.Context = new AzureContext(
+                _profile.SetContext(new AzureContext(
                     newSubscription,
                     _profile.Context.Account,
                     _profile.Context.Environment,
-                    _profile.Context.Tenant);
+                    _profile.Context.Tenant));
             }
 
             return _profile.Context;
