@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory=false)]
+        [Parameter(Mandatory = false)]
         public SwitchParameter Custom { get; set; }
 
         public override void ExecuteCmdlet()
