@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// </summary>
         private static readonly object ConsoleOutputLock = new object();
 
-        private const decimal MaximumBytesPerDownloadRequest = 128 * 1024 * 1024; //128MB
+        private const decimal MaximumBytesPerDownloadRequest = 32 * 1024 * 1024; //32MB
 
         private readonly DataLakeStoreFileSystemManagementClient _client;
 
