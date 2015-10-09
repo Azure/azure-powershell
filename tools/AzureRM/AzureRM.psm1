@@ -38,6 +38,22 @@ function Test-AdminRights([string]$Scope)
   }
 }
 
+function CheckIncompatibleVersion([bool]$Force)
+{
+    $message = "An incompatible version of Azure Resource Manager PowerShell cmdlets is installed.  Please uninstall Microsoft Azure PowerShell using the 'Control Panel' before installing these cmdlets. To install these cmdlets regardless of compatibility issues, execute 'Install-AzureRM -Force'."
+    if ( Test-Path "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\PowerShell\ResourceManager\AzureResourceManager\AzureResourceManager.psd1")
+	{
+	    if ($Force)
+		{
+		   Write-Warning $message
+		}
+		else
+		{
+	        throw $message
+		}
+	}
+}
+
 function Install-ModuleWithVersionCheck([string]$Name,[string]$MajorVersion,[string]$Repository,[string]$Scope)
 {
   $_MinVer = "$MajorVersion.0.0.0"
@@ -81,6 +97,7 @@ function Install-ModuleWithVersionCheck([string]$Name,[string]$MajorVersion,[str
 #>
 function Update-AzureRM
 {
+  
   param(
   [Parameter(Position=0, Mandatory = $false)]
   [string]
@@ -91,9 +108,12 @@ function Update-AzureRM
   [Parameter(Position=2, Mandatory = $false)]
   [ValidateSet("CurrentUser","AllUsers")]
   [string]
-  $Scope = "AllUsers")
+  $Scope = "AllUsers",
+  [switch]
+  $Force = $false)
 
   Test-AdminRights $Scope
+  CheckIncompatibleVersion($Force.IsPresent)
 
   Write-Output "Installing AzureRM modules."
 
@@ -132,7 +152,6 @@ function Import-AzureRM
   [Parameter(Position=0, Mandatory = $false)]
   [string]
   $MajorVersion = $AzureMajorVersion)
-
   Write-Output "Importing AzureRM modules."
 
   $_MinVer = "$MajorVersion.0.0.0"
