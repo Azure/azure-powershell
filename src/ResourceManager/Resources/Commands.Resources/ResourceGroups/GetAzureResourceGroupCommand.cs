@@ -14,7 +14,10 @@
 
 using Microsoft.Azure.Commands.Resources.Models;
 using System.Collections.Generic;
+using System.IO;
 using System.Management.Automation;
+using System.Reflection;
+using Microsoft.Azure.Common.Authentication;
 
 namespace Microsoft.Azure.Commands.Resources
 {
@@ -22,7 +25,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// Filters resource groups.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmResourceGroup", DefaultParameterSetName = ResourceGroupNameParameterSet), OutputType(typeof(List<PSResourceGroup>))]
-    public class GetAzureResourceGroupCommand : ResourcesBaseCmdlet
+    public class GetAzureResourceGroupCommand : ResourcesBaseCmdlet, IModuleAssemblyInitializer
     {
         /// <summary>
         /// List resources group by name parameter set.
@@ -56,6 +59,26 @@ namespace Microsoft.Azure.Commands.Resources
             this.WriteObject(
                 ResourcesClient.FilterResourceGroups(name: this.Name, tag: null, detailed: false, location: this.Location),
                 true);
+        }
+
+        /// <summary>
+        /// Load global aliases and script cmdlets for ARM
+        /// </summary>
+        public void OnImport()
+        {
+            try
+            {
+                System.Management.Automation.PowerShell invoker = null;
+                invoker = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace);
+                invoker.AddScript(File.ReadAllText(FileUtilities.GetContentFilePath(
+                    Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                    "ResourceManagerStartup.ps1")));
+                invoker.Invoke();
+            }
+            catch
+            {
+                // This may throw exception for tests, ignore.
+            }
         }
     }
 }

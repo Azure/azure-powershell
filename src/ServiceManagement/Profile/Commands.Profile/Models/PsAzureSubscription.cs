@@ -57,32 +57,5 @@ namespace Microsoft.WindowsAzure.Commands.Profile.Models
         public string CurrentStorageAccountName { get; set; }
         
         public string TenantId { get; set; }
-
-        public string GetAccountName()
-        {
-            var result = CurrentStorageAccountName;
-            if (!string.IsNullOrWhiteSpace(result))
-            {
-                try
-                {
-                    var pairs = result.Split(new char[]{';'}, StringSplitOptions.RemoveEmptyEntries);
-                    foreach (var pair in pairs)
-                    {
-                        var sides = pair.Split(new char[] {'='}, 2, StringSplitOptions.RemoveEmptyEntries);
-                        if (string.Equals("AccountName", sides[0].Trim(), StringComparison.OrdinalIgnoreCase))
-                        {
-                            result = sides[1].Trim();
-                            break;
-                        }
-                    }
-                }
-                catch
-                {
-                    // if there are any errors, return the unchanged account name
-                }
-            }
-
-            return result;
-        }
     }
 }
