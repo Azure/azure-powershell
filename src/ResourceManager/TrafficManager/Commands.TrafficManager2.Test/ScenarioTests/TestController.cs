@@ -24,6 +24,8 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
     using Microsoft.Azure.Subscriptions.Csm;
     using Microsoft.Azure.Test;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using System.Collections.Generic;
+    using Microsoft.Azure.Test.HttpRecorder;
 
     public class TestController
     {
@@ -92,6 +94,10 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
             string callingClassType,
             string mockName)
         {
+            Dictionary<string, string> d = new Dictionary<string, string>();
+            d.Add("Microsoft.Authorization", "2014-07-01-preview");
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
+
             using (UndoContext context = UndoContext.Current)
             {
                 context.Start(callingClassType, mockName);
