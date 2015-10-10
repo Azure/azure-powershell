@@ -18,7 +18,6 @@ using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Test;
 using System;
 using System.Linq;
@@ -26,7 +25,7 @@ using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Management.KeyVault;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test
 {
@@ -107,10 +106,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
-                helper.SetupModules(
-                    AzureModule.AzureResourceManager,
-                    "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + callingClassName + ".ps1");
+                helper.SetupModules(AzureModule.AzureResourceManager, 
+                    "ScenarioTests\\Common.ps1", 
+                    "ScenarioTests\\" + callingClassName + ".ps1", 
+                    helper.RMProfileModule, 
+                    helper.RMResourceModule, 
+                    helper.GetRMModulePath("AzureRM.KeyVault.psd1"));
 
                 try
                 {
@@ -194,12 +195,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
                 if (HttpMockServer.Variables.ContainsKey(TenantIdKey))
                 {
                     tenantId = HttpMockServer.Variables[TenantIdKey];
-                   AzureRMCmdlet.DefaultProfile.Context.Tenant.Id = new Guid(tenantId);
+                   AzureRmProfileProvider.Instance.Profile.Context.Tenant.Id = new Guid(tenantId);
                 }
                 if (HttpMockServer.Variables.ContainsKey(DomainKey))
                 {
                     UserDomain = HttpMockServer.Variables[DomainKey];
-                    AzureRMCmdlet.DefaultProfile.Context.Tenant.Domain = UserDomain;
+                    AzureRmProfileProvider.Instance.Profile.Context.Tenant.Domain = UserDomain;
                 }
 
             }

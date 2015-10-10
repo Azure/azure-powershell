@@ -12,12 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Common.Authentication.Models;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Profile.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -35,9 +33,15 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(Position = 1, HelpMessage = "Do not confirm deletion of subscription")]
         public SwitchParameter Force { get; set; }
 
+        protected override void BeginProcessing()
+        {
+            // do not call begin processing there is no context needed for this cmdlet
+        }
+
+
         protected override void ProcessRecord()
         {
-            var profileClient = new RMProfileClient(AzureRMCmdlet.DefaultProfile);
+            var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
 
             ConfirmAction(
                 Force.IsPresent,

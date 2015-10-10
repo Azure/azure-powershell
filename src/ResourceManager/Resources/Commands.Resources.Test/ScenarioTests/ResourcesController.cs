@@ -29,6 +29,7 @@ using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
@@ -110,10 +111,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
-                helper.SetupModules(
-                    AzureModule.AzureResourceManager, 
-                    "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + callingClassName + ".ps1");
+                helper.SetupModules(AzureModule.AzureResourceManager, 
+                    "ScenarioTests\\Common.ps1", 
+                    "ScenarioTests\\" + callingClassName + ".ps1", 
+                    helper.RMProfileModule, 
+                    helper.RMResourceModule);
 
                 try
                 {
@@ -182,7 +184,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 }
                 if (HttpMockServer.Variables.ContainsKey(SubscriptionIdKey))
                 {
-                    AzureRMCmdlet.DefaultProfile.Context.Subscription.Id = new Guid(HttpMockServer.Variables[SubscriptionIdKey]);
+                    AzureRmProfileProvider.Instance.Profile.Context.Subscription.Id = new Guid(HttpMockServer.Variables[SubscriptionIdKey]);
                 }
             }
 
@@ -243,9 +245,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             /// </summary>
             /// <param name="credentials">The credentials.</param>
             /// <param name="headerValues">The headers.</param>
-            public override HttpClientHelper CreateHttpClientHelper(SubscriptionCloudCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues)
+            public override HttpClientHelper CreateHttpClientHelper(SubscriptionCloudCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues, Dictionary<string, string> cmdletHeaderValues)
             {
-                return new HttpClientHelperImpl(credentials: this.credential, headerValues: headerValues);
+                return new HttpClientHelperImpl(credentials: this.credential, headerValues: headerValues, cmdletHeaderValues: cmdletHeaderValues);
             }
 
             /// <summary>
@@ -258,8 +260,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 /// </summary>
                 /// <param name="credentials">The credentials.</param>
                 /// <param name="headerValues">The headers.</param>
-                public HttpClientHelperImpl(SubscriptionCloudCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues)
-                    : base(credentials: credentials, headerValues: headerValues)
+                public HttpClientHelperImpl(SubscriptionCloudCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues, Dictionary<string, string> cmdletHeaderValues)
+                    : base(credentials: credentials, headerValues: headerValues, cmdletHeaderValues: cmdletHeaderValues)
                 {
                 }
 

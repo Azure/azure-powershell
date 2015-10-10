@@ -12,9 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Common.Authentication.Models;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.Profile.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Profile
 {    
@@ -22,12 +23,12 @@ namespace Microsoft.Azure.Commands.Profile
     /// Cmdlet to get current context. 
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmContext")]
-    [OutputType(typeof(AzureContext))]
+    [OutputType(typeof(PSAzureContext))]
     public class GetAzureRMContextCommand : AzureRMCmdlet
     {
         protected override void ProcessRecord()
         {
-            WriteObject(AzureRMCmdlet.DefaultProfile.Context);
+            WriteObject((PSAzureContext)AzureRmProfileProvider.Instance.Profile.Context);
         }
     }
 }

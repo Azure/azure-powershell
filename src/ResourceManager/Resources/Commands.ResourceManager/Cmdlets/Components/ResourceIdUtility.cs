@@ -88,6 +88,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// Processes the parameters to return a valid resource Id.
         /// </summary>
         /// <param name="subscriptionId">The subscription.</param>
+        public static string GetResourceGroupsId(Guid? subscriptionId)
+        {
+            if (subscriptionId == null)
+            {
+                throw new InvalidOperationException("A resource group cannot be specified without a subscription.");
+            }
+
+            return string.Format("/subscriptions/{0}/resourceGroups", Uri.EscapeDataString(subscriptionId.Value.ToString()));
+        }
+
+        /// <summary>
+        /// Processes the parameters to return a valid resource Id.
+        /// </summary>
+        /// <param name="subscriptionId">The subscription.</param>
         /// <param name="resourceGroupName">The resource group</param>
         /// <param name="parentResource">The parent resource in the format: '{resourceType}/{typeName}'</param>
         /// <param name="resourceType">The resource type string in the format: '{providerName}/{typeName}'</param>

@@ -493,4 +493,16 @@ Please contact Microsoft for further assistant.</value>
     <value>For a yearly retention policy specified in weeks, using the DaysOfWeek and WeekNumber parameters is mandatory</value>
     <comment>Scrubbed</comment>
   </data>
+  <data name="DisableProtectionMessage" xml:space="preserve">
+    <value>Disabling protection for the item</value>
+  </data>
+  <data name="DisableProtectionWarning" xml:space="preserve">
+    <value>Are you sure you want to disable protection for the item '{0}'</value>
+  </data>
+  <data name="RemoveProtectionPolicyMessage" xml:space="preserve">
+    <value>Removing the protection policy</value>
+  </data>
+  <data name="RemoveProtectionPolicyWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the protection policy '{0}'</value>
+  </data>
 </root>

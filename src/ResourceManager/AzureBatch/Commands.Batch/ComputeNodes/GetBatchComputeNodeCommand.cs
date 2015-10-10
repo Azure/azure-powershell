@@ -54,12 +54,17 @@ namespace Microsoft.Azure.Commands.Batch
             set { this.maxCount = value; }
         }
 
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        public string Select { get; set; }
+
         protected override void ProcessRecord()
         {
             ListComputeNodeOptions options = new ListComputeNodeOptions(this.BatchContext, this.PoolId, this.Pool, this.AdditionalBehaviors)
             {
                 ComputeNodeId = this.Id,
                 Filter = this.Filter,
+                Select = this.Select,
                 MaxCount = this.MaxCount
             };
 

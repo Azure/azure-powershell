@@ -39,6 +39,14 @@ namespace Microsoft.Azure.Commands.HDInsight
             public const string AzureHDInsightPigJobDefinition = "AzureRmHDInsightPigJobDefinition";
             public const string AzureHDInsightMapReduceJobDefinition = "AzureRmHDInsightMapReduceJobDefinition";
             public const string AzureHDInsightStreamingMapReduceJobDefinition = "AzureRmHDInsightStreamingMapReduceJobDefinition";
+            public const string AzureHDInsightSqoopJobDefinition = "AzureRmHDInsightSqoopJobDefinition";
+        }
+
+        public static class ClusterConfiguration
+        {
+            public const string DefaultStorageAccountNameKey = "fs.defaultFS";
+            public const string DefaultStorageAccountNameKeyOld = "fs.default.name";
+            public const string StorageAccountKeyPrefix = "fs.azure.account.key.";
         }
     }
 }

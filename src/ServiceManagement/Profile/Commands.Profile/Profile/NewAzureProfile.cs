@@ -140,7 +140,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         private void InitializeAzureProfile(AzureSMProfile profile, string parameterSet, AzureProfileSettings settings)
         {
             var savedCache = AzureSession.TokenCache;
-            AzureSession.TokenCache = DefaultMemoryTokenCache;
+            AzureSession.TokenCache = TokenCache.DefaultShared;
             try
             {
 

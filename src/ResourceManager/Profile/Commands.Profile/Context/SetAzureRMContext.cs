@@ -12,40 +12,62 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Common.Authentication.Models;
 using System.Management.Automation;
+using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Profile.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Profile
 {
     /// <summary>
     /// Cmdlet to change current Azure context. 
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmContext")]
-    [OutputType(typeof(AzureContext))]
+    [Cmdlet(VerbsCommon.Set, "AzureRMContext", DefaultParameterSetName =TenantIdAndSubscriptionIdParameterSet)]
+    [Alias("Select-AzureRmSubscription")]
+    [OutputType(typeof(PSAzureContext))]
     public class SetAzureRMContextCommand : AzureRMCmdlet
     {
-        private const string TenantParameterSet = "Tenant";
-        private const string SubscriptionParameterSet = "Subscription";
-        private const string TenantAndSubscriptionParameterSet = "TenantAndSubscription";
+        private const string TenantIdParameterSet = "TenantId";
+        private const string SubscriptionIdParameterSet = "Subscription";
+        private const string TenantIdAndSubscriptionIdParameterSet = "TenantIdAndSubscriptionId";
+        private const string ContextParameterSet = "Context";
 
-        [Parameter(ParameterSetName = TenantParameterSet, Mandatory = true, HelpMessage = "Tenant name or ID")]
-        [Parameter(ParameterSetName = TenantAndSubscriptionParameterSet, Mandatory = true, HelpMessage = "Tenant name or ID")]
+        [Parameter(ParameterSetName = TenantIdParameterSet, Mandatory = false, HelpMessage = "TenantId name or ID", ValueFromPipelineByPropertyName=true)]
+        [Parameter(ParameterSetName = TenantIdAndSubscriptionIdParameterSet, Mandatory = false, HelpMessage = "TenantId name or ID", ValueFromPipelineByPropertyName=true)]
         [ValidateNotNullOrEmpty]
-        public string Tenant { get; set; }
+        public string TenantId { get; set; }
 
-        [Parameter(ParameterSetName = SubscriptionParameterSet, Mandatory = true, HelpMessage = "Subscription")]
-        [Parameter(ParameterSetName = TenantAndSubscriptionParameterSet, Mandatory = true, HelpMessage = "Subscription")]
+        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = true, HelpMessage = "Subscription", ValueFromPipelineByPropertyName=true)]
+        [Parameter(ParameterSetName = TenantIdAndSubscriptionIdParameterSet, Mandatory = true, HelpMessage = "Subscription", ValueFromPipelineByPropertyName=true)]
         [ValidateNotNullOrEmpty]
         public string SubscriptionId { get; set; }
 
+        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Subscription Name", ValueFromPipelineByPropertyName=true)]
+        [Parameter(ParameterSetName = TenantIdAndSubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Subscription Name", ValueFromPipelineByPropertyName=true)]
+        [ValidateNotNullOrEmpty]
+        public string SubscriptionName{ get; set; }
+        
+        [Parameter(ParameterSetName = ContextParameterSet, Mandatory = true, HelpMessage = "Context", ValueFromPipeline=true)]
+        public PSAzureContext Context { get; set; }
+
         protected override void ProcessRecord()
         {
-            var profileClient = new RMProfileClient(AzureRMCmdlet.DefaultProfile);
-
-            AzureRMCmdlet.DefaultProfile.Context = profileClient.SetCurrentContext(SubscriptionId, Tenant);
-
-            WriteObject(AzureRMCmdlet.DefaultProfile.Context);
+            if (ParameterSetName == ContextParameterSet)
+            {
+                AzureRmProfileProvider.Instance.Profile.Context = new AzureContext(Context.Subscription, Context.Account,
+                    Context.Environment, Context.Tenant);
+            }
+            else
+            {
+                var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
+                profileClient.SetCurrentContext(SubscriptionId, TenantId);
+                if (!string.IsNullOrWhiteSpace(SubscriptionName))
+                {
+                    AzureRmProfileProvider.Instance.Profile.Context.Subscription.Name = SubscriptionName;
+                }
+            }
+            WriteObject((PSAzureContext)AzureRmProfileProvider.Instance.Profile.Context);
         }
     }
 }

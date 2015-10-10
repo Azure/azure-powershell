@@ -74,6 +74,25 @@ namespace Microsoft.Azure.Commands.Resources.Models
             }
         }
 
+        public static ResourceIdentifier FromResourceGroupIdentifier(string resourceGroupId)
+        {
+            if (!string.IsNullOrEmpty(resourceGroupId))
+            {
+                string[] tokens = resourceGroupId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                if (tokens.Length < 4)
+                {
+                    throw new ArgumentException(ProjectResources.InvalidFormatOfResourceGroupId, "resourceGroupId");
+                }
+                return new ResourceIdentifier
+                {
+                    Subscription = tokens[1],
+                    ResourceGroupName = tokens[3],
+                };
+            }
+
+            return new ResourceIdentifier();
+        }
+
         public static string GetProviderFromResourceType(string resourceType)
         {
             if (resourceType == null)
