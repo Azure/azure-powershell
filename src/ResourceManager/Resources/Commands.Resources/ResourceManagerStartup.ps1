@@ -14,15 +14,15 @@
 
 @{ 
     # Sql aliases  
-    "Get-AzureRmSqlDatabaseServerAuditingPolicy" = "Get-AzureRmSqlServerAuditingPolicy";  
-    "Remove-AzureRmSqlDatabaseServerAuditing" = "Remove-AzureRmSqlServerAuditing";  
-    "Set-AzureRmSqlDatabaseServerAuditingPolicy" = "Set-AzureRmSqlServerAuditingPolicy";  
-    "Use-AzureRmSqlDatabaseServerAuditingPolicy" = "Use-AzureRmSqlServerAuditingPolicy";  
+    "Get-AzureSqlDatabaseServerAuditingPolicy" = "Get-AzureSqlServerAuditingPolicy";  
+    "Remove-AzureSqlDatabaseServerAuditing" = "Remove-AzureSqlServerAuditing";  
+    "Set-AzureSqlDatabaseServerAuditingPolicy" = "Set-AzureSqlServerAuditingPolicy";  
+    "Use-AzureSqlDatabaseServerAuditingPolicy" = "Use-AzureSqlServerAuditingPolicy";  
   
     # Storage aliases  
-    "Get-AzureRmStorageContainerAcl" = "Get-AzureRmStorageContainer";  
-    "Start-CopyAzureStorageBlob" = "Start-AzureRmStorageBlobCopy";  
-    "Stop-CopyAzureStorageBlob" = "Stop-AzureRmStorageBlobCopy";  
+    "Get-AzureStorageContainerAcl" = "Get-AzureStorageContainer";  
+    "Start-CopyAzureStorageBlob" = "Start-AzureStorageBlobCopy";  
+    "Stop-CopyAzureStorageBlob" = "Stop-AzureStorageBlobCopy";  
 }.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | New-Alias -Description "AzureAlias"
 
 # Authorization script commandlet that builds on top of existing Insights comandlets. 
