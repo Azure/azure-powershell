@@ -43,11 +43,16 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
            }
         }
 
+        /// <summary>
+        /// Creates new instance from AzureRMCmdlet and add the RPRegistration handler.
+        /// </summary>
         public AzureRMCmdlet()
         {
             AzureSession.ClientFactory.RemoveHandler(typeof(RPRegistrationDelegatingHandler));
             AzureSession.ClientFactory.AddHandler(new RPRegistrationDelegatingHandler(
-                () => AzureSession.ClientFactory.CreateClient<ResourceManagementClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager),
+                () => new ResourceManagementClient(
+                    AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(DefaultContext, AzureEnvironment.Endpoint.ResourceManager),
+                    DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager)),
                 s => _debugMessages.Enqueue(s)));
         }
 

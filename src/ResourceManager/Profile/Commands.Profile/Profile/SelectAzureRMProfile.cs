@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Profile
     /// <summary>
     /// Selects Microsoft Azure profile.
     /// </summary>
-    [Cmdlet(VerbsCommon.Select, "AzureRMProfile"), OutputType(typeof(PSAzureProfile))]
+    [Cmdlet(VerbsCommon.Select, "AzureRmProfile"), OutputType(typeof(PSAzureProfile))]
     public class SelectAzureRMProfileCommand : AzureRMCmdlet
     {
         internal const string InMemoryProfileParameterSet = "InMemoryProfile";
