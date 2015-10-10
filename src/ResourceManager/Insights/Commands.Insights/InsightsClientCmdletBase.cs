@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Commands.Insights
             {
                 if (this.insightsClient == null)
                 {
-                    // The premise is that a command to establish a context (like Add-AzureAccount) has been called before this command in order to have a correct CurrentContext
-                    this.insightsClient = AzureSession.ClientFactory.CreateClient<InsightsClient>(Profile.Context, AzureEnvironment.Endpoint.ResourceManager);
+                    // The premise is that a command to establish a context (like Add-AzureRmAccount) has been called before this command in order to have a correct CurrentContext
+                    this.insightsClient = AzureSession.ClientFactory.CreateClient<InsightsClient>(DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
                 }
 
                 return this.insightsClient;
@@ -50,22 +50,10 @@ namespace Microsoft.Azure.Commands.Insights
         }
 
         /// <summary>
-        /// Dispose method
-        /// The implementation of IDispose follows the recommeded pattern
-        /// </summary>
-        public void Dispose()
-        {
-            this.Dispose(true);
-
-            // The class is not sealed, so this is here in case a derived class is created
-            GC.SuppressFinalize(this);
-        }
-
-        /// <summary>
         /// Dispose the resources
         /// </summary>
         /// <param name="disposing">Indicates whether the managed resources should be disposed or not</param>
-        protected virtual void Dispose(bool disposing)
+        protected override void Dispose(bool disposing)
         {
             if (!this.disposed)
             {
@@ -77,6 +65,7 @@ namespace Microsoft.Azure.Commands.Insights
 
                 this.disposed = true;
             }
+            base.Dispose(disposing);
         }
 
         #endregion

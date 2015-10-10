@@ -22,7 +22,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.Management.BackupServices.Models;
 using MBS = Microsoft.Azure.Management.BackupServices;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Model;
 using Microsoft.Azure.Commands.AzureBackup.Properties;
 using Microsoft.Azure.Commands.AzureBackup.Models;
 using Microsoft.Azure.Commands.AzureBackup.Helpers;
@@ -33,7 +32,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Get list of containers
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Register, "AzureRMBackupContainer"), OutputType(typeof(AzureRMBackupJob))]
+    [Cmdlet(VerbsLifecycle.Register, "AzureRmBackupContainer"), OutputType(typeof(AzureRMBackupJob))]
     public class RegisterAzureRMBackupContainer : AzureBackupVaultCmdletBase
     {
         internal const string V1VMParameterSet = "V1VM";
@@ -50,11 +49,11 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         public string ResourceGroupName { get; set; }
 
         
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ExecutionBlock(() =>
             {
-                base.ExecuteCmdlet();
+                base.ProcessRecord();
 
                 string vmName = String.Empty;
                 string rgName = String.Empty;
@@ -177,7 +176,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
             else
             {
                 //We can have multiple container with same friendly name. 
-                container = containers.Where(c => ContainerHelpers.GetRGNameFromId(c.Properties.ParentContainerId).Equals(rgName.ToLower())).FirstOrDefault(); //TODO need to change.
+                container = containers.Where(c => ContainerHelpers.GetRGNameFromId(c.Properties.ParentContainerId).Equals(rgName, StringComparison.OrdinalIgnoreCase)).FirstOrDefault(); 
                 if (container == null)
                 {
                     //Container is not in list of registered container

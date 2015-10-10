@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can not find your azure storage credential. Please specify an storage context using the -StorageContext parameter, or set the current storage account using &quot;Set-AzureSubscription&quot;, or set the &quot;AZURE_STORAGE_CONNECTION_STRING&quot; environment variable..
+        ///   Looks up a localized string similar to Can not find your azure storage credential. Please specify an storage context using the -StorageContext parameter, or set the current storage account using &quot;Set-AzureRmSubscription&quot;, or set the &quot;AZURE_STORAGE_CONNECTION_STRING&quot; environment variable..
         /// </summary>
         public static string AzureVMDscDefaultStorageCredentialsNotFound {
             get {
@@ -234,11 +234,29 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Storage account name for boot diagnostics is not given..
+        /// </summary>
+        public static string BootDiagnosticsNoStorageAccountError {
+            get {
+                return ResourceManager.GetString("BootDiagnosticsNoStorageAccountError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot specify both Windows and Linux configurations..
         /// </summary>
         public static string BothWindowsAndLinuxConfigurationsSpecified {
             get {
                 return ResourceManager.GetString("BothWindowsAndLinuxConfigurationsSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Since the VM is created using premium storage, new standard storage account, {0}, is created for boot diagnostics..
+        /// </summary>
+        public static string CreatingStorageAccountForBootDiagnostics {
+            get {
+                return ResourceManager.GetString("CreatingStorageAccountForBootDiagnostics", resourceCulture);
             }
         }
         
@@ -252,7 +270,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A data disk, {0}, is not currently assigned for this VM. Use Add-AzureVMDataDisk to add it..
+        ///   Looks up a localized string similar to A data disk, {0}, is not currently assigned for this VM. Use Add-AzureRmVMDataDisk to add it..
         /// </summary>
         public static string DataDiskNotAssignedForVM {
             get {
@@ -275,6 +293,24 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string DscExtensionRemovalConfirmation {
             get {
                 return ResourceManager.GetString("DscExtensionRemovalConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error occurred when creating storage account for boot diagnostics.  Keep creating a VM with disabling boot diagnostics.  : {0}.
+        /// </summary>
+        public static string ErrorDuringCreatingStorageAccountForBootDiagnostics {
+            get {
+                return ResourceManager.GetString("ErrorDuringCreatingStorageAccountForBootDiagnostics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage account, {0}, is a premium account.  You cannot specify a premium storage account for boot diagnostics.
+        /// </summary>
+        public static string PremiumStorageAccountForBootDiagnostics {
+            get {
+                return ResourceManager.GetString("PremiumStorageAccountForBootDiagnostics", resourceCulture);
             }
         }
         
@@ -495,11 +531,29 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Path &apos;{0}&apos; not found..
+        /// </summary>
+        public static string PublishVMDscExtensionAdditionalContentPathNotExist {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionAdditionalContentPathNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Configuration published to {0}.
         /// </summary>
         public static string PublishVMDscExtensionArchiveUploadedMessage {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionArchiveUploadedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Configuration published to {0}.
+        /// </summary>
+        public static string PublishVMDscExtensionArchiveUploadedMessage1 {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionArchiveUploadedMessage1", resourceCulture);
             }
         }
         
@@ -522,11 +576,29 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy &apos;{0}&apos; to &apos;{1}&apos;..
+        /// </summary>
+        public static string PublishVMDscExtensionCopyFileVerbose1 {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionCopyFileVerbose1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy the module &apos;{0}&apos; to &apos;{1}&apos;..
         /// </summary>
         public static string PublishVMDscExtensionCopyModuleVerbose {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionCopyModuleVerbose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy the module &apos;{0}&apos; to &apos;{1}&apos;..
+        /// </summary>
+        public static string PublishVMDscExtensionCopyModuleVerbose1 {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionCopyModuleVerbose1", resourceCulture);
             }
         }
         
@@ -537,6 +609,16 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string PublishVMDscExtensionCreateArchiveConfigFileInvalidExtension {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionCreateArchiveConfigFileInvalidExtension", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid configuration file: {0}.
+        ///The file needs to be a PowerShell script (.ps1 or .psm1)..
+        /// </summary>
+        public static string PublishVMDscExtensionCreateArchiveConfigFileInvalidExtension1 {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionCreateArchiveConfigFileInvalidExtension1", resourceCulture);
             }
         }
         
@@ -559,11 +641,38 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deleted &apos;{0}&apos;.
+        /// </summary>
+        public static string PublishVMDscExtensionDeletedFileMessage1 {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionDeletedFileMessage1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot delete &apos;{0}&apos;: {1}.
         /// </summary>
         public static string PublishVMDscExtensionDeleteErrorMessage {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionDeleteErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot delete &apos;{0}&apos;: {1}.
+        /// </summary>
+        public static string PublishVMDscExtensionDeleteErrorMessage1 {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionDeleteErrorMessage1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Path &apos;{0}&apos; not found..
+        /// </summary>
+        public static string PublishVMDscExtensionDirectoryNotExist {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionDirectoryNotExist", resourceCulture);
             }
         }
         
@@ -581,6 +690,19 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot get module for DscResource &apos;{0}&apos;. Possible solutions:
+        ///1) Specify -ModuleName for Import-DscResource in your configuration.
+        ///2) Unblock module that contains resource.
+        ///3) Move Import-DscResource inside Node block.
+        ///.
+        /// </summary>
+        public static string PublishVMDscExtensionGetDscResourceFailed1 {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionGetDscResourceFailed1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to List of required modules: [{0}]..
         /// </summary>
         public static string PublishVMDscExtensionRequiredModulesVerbose {
@@ -590,11 +712,29 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to List of required modules: [{0}]..
+        /// </summary>
+        public static string PublishVMDscExtensionRequiredModulesVerbose1 {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionRequiredModulesVerbose1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your current PowerShell version {1} is less then required by this cmdlet {0}. Consider download and install latest PowerShell version..
         /// </summary>
         public static string PublishVMDscExtensionRequiredPsVersion {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionRequiredPsVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your current PowerShell version {1} is less then required by this cmdlet {0}. Consider download and install latest PowerShell version..
+        /// </summary>
+        public static string PublishVMDscExtensionRequiredPsVersion1 {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionRequiredPsVersion1", resourceCulture);
             }
         }
         
@@ -609,11 +749,30 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Configuration script &apos;{0}&apos; contained parse errors:
+        ///{1}.
+        /// </summary>
+        public static string PublishVMDscExtensionStorageParserErrors1 {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionStorageParserErrors1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Temp folder &apos;{0}&apos; created..
         /// </summary>
         public static string PublishVMDscExtensionTempFolderVerbose {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionTempFolderVerbose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Temp folder &apos;{0}&apos; created..
+        /// </summary>
+        public static string PublishVMDscExtensionTempFolderVerbose1 {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionTempFolderVerbose1", resourceCulture);
             }
         }
         
@@ -628,6 +787,16 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid configuration file: {0}.
+        ///The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)..
+        /// </summary>
+        public static string PublishVMDscExtensionUploadArchiveConfigFileInvalidExtension1 {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionUploadArchiveConfigFileInvalidExtension1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Configuration file &apos;{0}&apos; not found..
         /// </summary>
         public static string PublishVMDscExtensionUploadArchiveConfigFileNotExist {
@@ -637,11 +806,29 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No current subscription has been designated. Use Select-AzureSubscription -Current &lt;subscriptionName&gt; to set the current subscription..
+        ///   Looks up a localized string similar to Configuration file &apos;{0}&apos; not found..
+        /// </summary>
+        public static string PublishVMDscExtensionUploadArchiveConfigFileNotExist1 {
+            get {
+                return ResourceManager.GetString("PublishVMDscExtensionUploadArchiveConfigFileNotExist1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No current subscription has been designated. Use Select-AzureRmSubscription -Current &lt;subscriptionName&gt; to set the current subscription..
         /// </summary>
         public static string StorageCredentialsFactoryCurrentSubscriptionNotSet {
             get {
                 return ResourceManager.GetString("StorageCredentialsFactoryCurrentSubscriptionNotSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Since the VM is created using premium storage, existing standard storage account, {0}, is used for boot diagnostics..
+        /// </summary>
+        public static string UsingExistingStorageAccountForBootDiagnostics {
+            get {
+                return ResourceManager.GetString("UsingExistingStorageAccountForBootDiagnostics", resourceCulture);
             }
         }
         

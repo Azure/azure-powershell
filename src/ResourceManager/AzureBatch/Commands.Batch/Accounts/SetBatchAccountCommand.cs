@@ -18,7 +18,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Set, Constants.AzureBatchAccount), OutputType(typeof(BatchAccountContext))]
+    [Cmdlet(VerbsCommon.Set, Constants.AzureRmBatchAccount), OutputType(typeof(BatchAccountContext))]
     public class SetBatchAccountCommand : BatchCmdletBase
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, 
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(ValueFromPipelineByPropertyName = true)]
         public string ResourceGroupName { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             BatchAccountContext context = BatchClient.UpdateAccount(this.ResourceGroupName, this.AccountName, this.Tag);
             WriteObject(context);

@@ -12,12 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Text;
+
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
 {
     public class ExtensionRole
     {
         protected const string DefaultExtensionIdPrefixStr = "Default";
-        protected const string ExtensionIdTemplate = "{0}-{1}-{2}-Ext-{3}";
+        protected const string ExtensionIdSuffixTemplate = "-{0}-{1}-Ext-{2}";
+        protected const int MaxExtensionIdLength = 60;
 
         public string RoleName { get; private set; }
         public string PrefixName { get; private set; }
@@ -57,7 +61,18 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Extensions
 
         public string GetExtensionId(string extensionName, string slot, int index)
         {
-            return string.Format(ExtensionIdTemplate, PrefixName, extensionName, slot, index);
+            var normalizedExtName = extensionName.Replace(".", string.Empty);
+
+            var suffix = new StringBuilder();
+            suffix.AppendFormat(ExtensionIdSuffixTemplate, normalizedExtName, slot, index);
+
+            int prefixSubStrLen = Math.Min(Math.Max(MaxExtensionIdLength - suffix.Length, 0), PrefixName.Length);
+
+            var result = new StringBuilder();
+            result.Append(PrefixName, 0, prefixSubStrLen);
+            result.Append(suffix);
+
+            return result.ToString();
         }
     }
 }

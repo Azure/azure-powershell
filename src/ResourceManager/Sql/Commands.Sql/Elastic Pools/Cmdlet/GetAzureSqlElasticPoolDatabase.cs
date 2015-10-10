@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.Sql.ElasticPool.Model;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureSqlElasticPoolDatabase", 
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlElasticPoolDatabase", 
         ConfirmImpact = ConfirmImpact.None)]
     public class GetAzureSqlElasticPoolDatabase : AzureSqlElasticPoolCmdletBase
     {
@@ -66,9 +66,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         /// <summary>
         /// Executes the cmdlet.
         /// </summary>
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            ModelAdapter = InitModelAdapter(Profile.Context.Subscription);
+            ModelAdapter = InitModelAdapter(DefaultProfile.Context.Subscription);
 
             WriteObject(GetDatabase());
         }

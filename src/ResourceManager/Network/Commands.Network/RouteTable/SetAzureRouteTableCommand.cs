@@ -22,7 +22,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRouteTable"), OutputType(typeof(PSRouteTable))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmRouteTable"), OutputType(typeof(PSRouteTable))]
     public class SetAzureRouteTableCommand : RouteTableBaseCmdlet
     {
         [Parameter(
@@ -31,9 +31,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The RouteTable")]
         public PSRouteTable RouteTable { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
             if (!this.IsRouteTablePresent(this.RouteTable.ResourceGroupName, this.RouteTable.Name))
             {

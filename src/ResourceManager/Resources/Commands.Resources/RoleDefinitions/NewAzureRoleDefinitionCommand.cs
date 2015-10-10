@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// <summary>
     /// Creates a new role definition.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRoleDefinition"), OutputType(typeof(PSRoleDefinition))]
+    [Cmdlet(VerbsCommon.New, "AzureRmRoleDefinition"), OutputType(typeof(PSRoleDefinition))]
     public class NewAzureRoleDefinitionCommand : ResourcesBaseCmdlet
     {
         [ValidateNotNullOrEmpty]
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = ParameterSet.RoleDefinition, HelpMessage = "Role definition.")]
         public PSRoleDefinition Role { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             PSRoleDefinition role = null;
             if (!string.IsNullOrEmpty(InputFile))

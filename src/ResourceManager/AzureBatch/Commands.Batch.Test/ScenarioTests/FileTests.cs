@@ -26,7 +26,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
-    public class FileTests
+    public class FileTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
         private const string accountName = ScenarioTestHelpers.SharedAccount;
         private const string poolId = ScenarioTestHelpers.SharedPool;
@@ -449,30 +449,30 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     [Cmdlet(VerbsCommon.Get, "AzureBatchNodeFile_ST", DefaultParameterSetName = ComputeNodeAndIdParameterSet)]
     public class GetBatchNodeFileScenarioTestCommand : GetBatchNodeFileCommand
     {
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
         }
     }
 
     [Cmdlet(VerbsCommon.Get, "AzureBatchNodeFileContent_ST")]
     public class GetBatchNodeFileContentScenarioTestCommand : GetBatchNodeFileContentCommand
     {
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
         }
     }
 
     [Cmdlet(VerbsCommon.Get, "AzureBatchRemoteDesktopProtocolFile_ST")]
     public class GetBatchRemoteDesktopProtocolFileScenarioTestCommand : GetBatchRemoteDesktopProtocolFileCommand
     {
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
         }
     }
 }

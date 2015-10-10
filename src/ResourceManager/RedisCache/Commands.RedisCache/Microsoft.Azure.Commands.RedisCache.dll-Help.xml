@@ -2,7 +2,7 @@
 <helpItems xmlns="http://msh" schema="maml">
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>Get-AzureRedisCache</command:name>
+      <command:name>Get-AzureRmRedisCache</command:name>
       <maml:description>
         <maml:para>Gets details about a single cache or all caches in the specified resource group or all caches in the current subscription.</maml:para>
       </maml:description>
@@ -14,24 +14,24 @@
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Get-AzureRedisCache cmdlet gets the details about a cache or caches depending on input parameters. If both ResourceGroupName and Name parameters are provided then Get-AzureRedisCache will return details about the specific cache name provided.</maml:para>
+      <maml:para>The Get-AzureRmRedisCache cmdlet gets the details about a cache or caches depending on input parameters. If both ResourceGroupName and Name parameters are provided then Get-AzureRmRedisCache will return details about the specific cache name provided.</maml:para>
       <maml:para>If only ResourceGroupName is provided than it will return details about all caches in the specified resource group.</maml:para>
       <maml:para>If no parameters are given than it will return details about all caches the current subscription.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Get-AzureRedisCache</maml:name>
+        <maml:name>Get-AzureRmRedisCache</maml:name>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
           <maml:name>Name</maml:name>
           <maml:description>
-            <maml:para>The name of the cache. If Name is provided along with ResourceGroupName then Get-AzureRedisCache returns the details of the specified cache.</maml:para>
+            <maml:para>The name of the cache. If Name is provided along with ResourceGroupName then Get-AzureRmRedisCache returns the details of the specified cache.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
           <maml:name>ResourceGroupName</maml:name>
           <maml:description>
-            <maml:para>The name of the resource group that contains the cache or caches. If ResourceGroupName is provided with Name then Get-AzureRedisCache returns the details of the cache specified by Name. If only the ResourceGroup parameter is provided, then details for all caches in the resource group are returned.</maml:para>
+            <maml:para>The name of the resource group that contains the cache or caches. If ResourceGroupName is provided with Name then Get-AzureRmRedisCache returns the details of the cache specified by Name. If only the ResourceGroup parameter is provided, then details for all caches in the resource group are returned.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -41,7 +41,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
         <maml:name>Name</maml:name>
         <maml:description>
-          <maml:para>The name of the cache. When this parameter is provided along with ResourceGroupName, Get-AzureRedisCache returns the details for the cache.</maml:para>
+          <maml:para>The name of the cache. When this parameter is provided along with ResourceGroupName, Get-AzureRmRedisCache returns the details for the cache.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -54,7 +54,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
         <maml:name>ResourceGroupName</maml:name>
         <maml:description>
-          <maml:para>The name of the resource group that contains the cache or caches. If ResourceGroupName is provided with Name then Get-AzureRedisCache returns the details of the cache specified by Name. If only the ResourceGroup parameter is provided, then details for all caches in the resource group are returned.</maml:para>
+          <maml:para>The name of the resource group that contains the cache or caches. If ResourceGroupName is provided with Name then Get-AzureRmRedisCache returns the details of the cache specified by Name. If only the ResourceGroup parameter is provided, then details for all caches in the resource group are returned.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -98,6 +98,9 @@
     <command:terminatingErrors />
     <command:nonTerminatingErrors />
     <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website</maml:para>
+      </maml:alert>
     </maml:alertSet>
     <command:examples>
       <command:example>
@@ -106,7 +109,7 @@
           <maml:para>
           </maml:para>
         </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRedisCache -ResourceGroupName myGroup -Name myexists
+        <dev:code>PS C:\&gt;Get-AzureRmRedisCache -ResourceGroupName myGroup -Name myexists
 
           ResourceGroupName  : myGroup
           Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myexists
@@ -140,7 +143,7 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;Get-AzureRedisCache -ResourceGroupName myGroup
+          PS C:\&gt;Get-AzureRmRedisCache -ResourceGroupName myGroup
 
           ResourceGroupName  : myGroup
           Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myexists
@@ -189,7 +192,7 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;Get-AzureRedisCache
+          PS C:\&gt;Get-AzureRmRedisCache
 
           ResourceGroupName  : myGroup
           Id                 : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/myexists
@@ -256,7 +259,7 @@
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>New-AzureRedisCache</command:name>
+      <command:name>New-AzureRmRedisCache</command:name>
       <maml:description>
         <maml:para>Creates a new redis cache.</maml:para>
       </maml:description>
@@ -268,11 +271,11 @@
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The New-AzureRedisCache cmdlet creates a new redis cache.</maml:para>
+      <maml:para>The New-AzureRmRedisCache cmdlet creates a new redis cache.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>New-AzureRedisCache</maml:name>
+        <maml:name>New-AzureRmRedisCache</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
           <maml:name>Name</maml:name>
           <maml:description>
@@ -298,7 +301,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
           <maml:name>RedisVersion</maml:name>
           <maml:description>
-            <maml:para>RedisVersion of the redis cache. If not provided, the default value is 2.8.</maml:para>
+            <maml:para>RedisVersion is deprecated and will be removed in future release.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -313,6 +316,13 @@
           <maml:name>Sku</maml:name>
           <maml:description>
             <maml:para>Sku of redis cache. The default value is Standard. Possible values are Basic and Standard.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+          <maml:name>MaxMemoryPolicy</maml:name>
+          <maml:description>
+            <maml:para>The 'MaxMemoryPolicy' setting has been deprecated. Please use 'RedisConfiguration' setting to set MaxMemoryPolicy. e.g. -RedisConfiguration @{"maxmemory-policy" = "allkeys-lru"}</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -375,7 +385,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
         <maml:name>RedisVersion</maml:name>
         <maml:description>
-          <maml:para>RedisVersion of the redis cache. The default value is 2.8.</maml:para>
+          <maml:para>RedisVersion is deprecated and will be removed in future release.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -409,6 +419,19 @@
         <dev:defaultValue>Standard</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+        <maml:name>MaxMemoryPolicy</maml:name>
+        <maml:description>
+          <maml:para>The 'MaxMemoryPolicy' setting has been deprecated. Please use 'RedisConfiguration' setting to set MaxMemoryPolicy. e.g. -RedisConfiguration @{"maxmemory-policy" = "allkeys-lru"}</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
         <maml:name>RedisConfiguration</maml:name>
         <maml:description>
           <maml:para> All Redis Configuration Settings. Few possible keys: maxmemory-delta, maxmemory-policy, notify-keyspace-events, maxmemory-samples, slowlog-log-slower-than, slowlog-max-len, list-max-ziplist-entries, list-max-ziplist-value, hash-max-ziplist-entries, hash-max-ziplist-value, set-max-intset-entries, zset-max-ziplist-entries, zset-max-ziplist-value etc. </maml:para>
@@ -418,7 +441,8 @@
           <maml:name>Hashtable</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
         <maml:name>EnableNonSslPort</maml:name>
@@ -430,7 +454,8 @@
           <maml:name>Boolean</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
     </command:parameters>
     <command:inputTypes>
@@ -466,6 +491,9 @@
     <command:terminatingErrors />
     <command:nonTerminatingErrors />
     <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website</maml:para>
+      </maml:alert>
     </maml:alertSet>
     <command:examples>
       <command:example>
@@ -475,7 +503,7 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;New-AzureRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US"
+          PS C:\&gt;New-AzureRmRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US"
 
           PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
@@ -511,7 +539,7 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;New-AzureRedisCache -ResourceGroupName mygroup -Name mycache -Location "North Central US" -RedisVersion "2.8" -Size 250MB -Sku Standard -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"} -Force
+          PS C:\&gt;New-AzureRmRedisCache -ResourceGroupName mygroup -Name mycache -Location "North Central US" -Size 250MB -Sku Standard -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"} -Force
 
           PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
@@ -550,7 +578,7 @@
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>Remove-AzureRedisCache</command:name>
+      <command:name>Remove-AzureRmRedisCache</command:name>
       <maml:description>
         <maml:para>Remove redis cache if exists.</maml:para>
       </maml:description>
@@ -562,11 +590,11 @@
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Remove-AzureRedisCache cmdlet removes a redis cache if it exists.</maml:para>
+      <maml:para>The Remove-AzureRmRedisCache cmdlet removes a redis cache if it exists.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Remove-AzureRedisCache</maml:name>
+        <maml:name>Remove-AzureRmRedisCache</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
           <maml:name>Name</maml:name>
           <maml:description>
@@ -590,7 +618,7 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
           <maml:name>PassThru</maml:name>
           <maml:description>
-            <maml:para>By default Remove-AzureRedisCache removes the cache and does not return any value. If the PassThru parameter is provided then Remove-AzureRedisCache returns a boolean value indicating the success of the operation.</maml:para>
+            <maml:para>By default Remove-AzureRmRedisCache removes the cache and does not return any value. If the PassThru parameter is provided then Remove-AzureRmRedisCache returns a boolean value indicating the success of the operation.</maml:para>
           </maml:description>
         </command:parameter>
       </command:syntaxItem>
@@ -631,18 +659,20 @@
           <maml:name>SwitchParameter</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
         <maml:name>PassThru</maml:name>
         <maml:description>
-          <maml:para>By default Remove-AzureRedisCache removes the cache and does not return any value. If the PassThru parameter is provided then Remove-AzureRedisCache returns a boolean value indicating the success of the operation.</maml:para>
+          <maml:para>By default Remove-AzureRmRedisCache removes the cache and does not return any value. If the PassThru parameter is provided then Remove-AzureRmRedisCache returns a boolean value indicating the success of the operation.</maml:para>
         </maml:description>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
     </command:parameters>
     <command:inputTypes>
@@ -678,6 +708,9 @@
     <command:terminatingErrors />
     <command:nonTerminatingErrors />
     <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website</maml:para>
+      </maml:alert>
     </maml:alertSet>
     <command:examples>
       <command:example>
@@ -687,7 +720,7 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;Remove-AzureRedisCache -ResourceGroupName myGroup -Name mycache -Force -PassThru
+          PS C:\&gt;Remove-AzureRmRedisCache -ResourceGroupName myGroup -Name mycache -Force -PassThru
           True
 
         </dev:code>
@@ -707,7 +740,7 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;Remove-AzureRedisCache -ResourceGroupName myGroup -Name mycache -Force
+          PS C:\&gt;Remove-AzureRmRedisCache -ResourceGroupName myGroup -Name mycache -Force
         </dev:code>
         <dev:remarks>
           <maml:para>This command removes a redis cache.</maml:para>
@@ -728,7 +761,7 @@
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>Get-AzureRedisCacheKey</command:name>
+      <command:name>Get-AzureRmRedisCacheKey</command:name>
       <maml:description>
         <maml:para>Gets the accesskeys for the specified redis cache.</maml:para>
       </maml:description>
@@ -740,11 +773,11 @@
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Get-AzureRedisCacheKey cmdlet gets the access keys for the specified cache.</maml:para>
+      <maml:para>The Get-AzureRmRedisCacheKey cmdlet gets the access keys for the specified cache.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Get-AzureRedisCacheKey</maml:name>
+        <maml:name>Get-AzureRmRedisCacheKey</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
           <maml:name>Name</maml:name>
           <maml:description>
@@ -822,6 +855,9 @@
     <command:terminatingErrors />
     <command:nonTerminatingErrors />
     <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website</maml:para>
+      </maml:alert>
     </maml:alertSet>
     <command:examples>
       <command:example>
@@ -831,7 +867,7 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;Get-AzureRedisCacheKey -ResourceGroupName myGroup -Name myexists
+          PS C:\&gt;Get-AzureRmRedisCacheKey -ResourceGroupName myGroup -Name myexists
 
           PrimaryKey        : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           SecondaryKey      : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
@@ -856,7 +892,7 @@
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>New-AzureRedisCacheKey</command:name>
+      <command:name>New-AzureRmRedisCacheKey</command:name>
       <maml:description>
         <maml:para>Regenerates the access key of a redis cache.</maml:para>
       </maml:description>
@@ -868,11 +904,11 @@
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The New-AzureRedisCacheKey cmdlet regenerate the access key of a redis cache.</maml:para>
+      <maml:para>The New-AzureRmRedisCacheKey cmdlet regenerate the access key of a redis cache.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>New-AzureRedisCacheKey</maml:name>
+        <maml:name>New-AzureRmRedisCacheKey</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
           <maml:name>Name</maml:name>
           <maml:description>
@@ -951,7 +987,8 @@
           <maml:name>SwitchParameter</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
     </command:parameters>
     <command:inputTypes>
@@ -987,6 +1024,9 @@
     <command:terminatingErrors />
     <command:nonTerminatingErrors />
     <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website</maml:para>
+      </maml:alert>
     </maml:alertSet>
     <command:examples>
       <command:example>
@@ -996,7 +1036,7 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;New-AzureRedisCacheKey -ResourceGroupName myGroup -Name mycache -KeyType Primary -Force
+          PS C:\&gt;New-AzureRmRedisCacheKey -ResourceGroupName myGroup -Name mycache -KeyType Primary -Force
 
           PrimaryKey        : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           SecondaryKey      : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
@@ -1018,7 +1058,7 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;New-AzureRedisCacheKey -ResourceGroupName myGroup -Name mycache -KeyType Secondary -Force
+          PS C:\&gt;New-AzureRmRedisCacheKey -ResourceGroupName myGroup -Name mycache -KeyType Secondary -Force
 
           PrimaryKey        : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           SecondaryKey      : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
@@ -1043,7 +1083,7 @@
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
     <command:details>
-      <command:name>Set-AzureRedisCache</command:name>
+      <command:name>Set-AzureRmRedisCache</command:name>
       <maml:description>
         <maml:para>Set redis cache updatable parameters.</maml:para>
       </maml:description>
@@ -1055,11 +1095,11 @@
       <dev:version />
     </command:details>
     <maml:description>
-      <maml:para>The Set-AzureRedisCache cmdlet sets redis cache parameters.</maml:para>
+      <maml:para>The Set-AzureRmRedisCache cmdlet sets redis cache parameters.</maml:para>
     </maml:description>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Set-AzureRedisCache</maml:name>
+        <maml:name>Set-AzureRmRedisCache</maml:name>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
           <maml:name>Name</maml:name>
           <maml:description>
@@ -1085,6 +1125,13 @@
           <maml:name>Sku</maml:name>
           <maml:description>
             <maml:para>Sku of redis cache. Possible values are Basic and Standard.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+          <maml:name>MaxMemoryPolicy</maml:name>
+          <maml:description>
+            <maml:para>The 'MaxMemoryPolicy' setting has been deprecated. Please use 'RedisConfiguration' setting to set MaxMemoryPolicy. e.g. -RedisConfiguration @{"maxmemory-policy" = "allkeys-lru"}</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -1141,7 +1188,8 @@
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
         <maml:name>Sku</maml:name>
@@ -1153,7 +1201,21 @@
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+        <maml:name>MaxMemoryPolicy</maml:name>
+        <maml:description>
+          <maml:para>The 'MaxMemoryPolicy' setting has been deprecated. Please use 'RedisConfiguration' setting to set MaxMemoryPolicy. e.g. -RedisConfiguration @{"maxmemory-policy" = "allkeys-lru"}</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
         <maml:name>RedisConfiguration</maml:name>
@@ -1165,7 +1227,8 @@
           <maml:name>Hashtable</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
         <maml:name>EnableNonSslPort</maml:name>
@@ -1177,7 +1240,8 @@
           <maml:name>Boolean</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
     </command:parameters>
     <command:inputTypes>
@@ -1213,6 +1277,9 @@
     <command:terminatingErrors />
     <command:nonTerminatingErrors />
     <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website</maml:para>
+      </maml:alert>
     </maml:alertSet>
     <command:examples>
       <command:example>
@@ -1222,7 +1289,7 @@
           </maml:para>
         </maml:introduction>
         <dev:code>
-          PS C:\&gt;New-AzureRedisCache -ResourceGroupName mygroup -Name mycache -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"}
+          PS C:\&gt;New-AzureRmRedisCache -ResourceGroupName mygroup -Name mycache -RedisConfiguration @{"maxmemory-policy" = "allkeys-random"}
 
           PrimaryKey         : pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=
           SecondaryKey       : sJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=

@@ -22,6 +22,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Exceptions
     public class GetDscResourceException : UnauthorizedAccessException
     {
         public GetDscResourceException(string resourceName, Exception e) :
-            base(String.Format(CultureInfo.CurrentUICulture, Properties.Resources.PublishVMDscExtensionGetDscResourceFailed, resourceName), e) { }
+            base(String.Format(CultureInfo.CurrentUICulture, Microsoft.WindowsAzure.Commands.Common.Properties.Resources.PublishVMDscExtensionGetDscResourceFailed, resourceName), e) { }
     }
 }

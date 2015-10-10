@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Dns
     /// <summary>
     /// Gets one or more existing record sets.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureDnsRecordSet"), OutputType(typeof(DnsRecordSet))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmDnsRecordSet"), OutputType(typeof(DnsRecordSet))]
     public class GetAzureDnsRecordSet : DnsBaseCmdlet
     {
         [Parameter(Mandatory = false, ParameterSetName = "Fields", ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the records inthis record set (relative to the name of the zone and without a terminating dot).")]
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Dns
         [ValidateNotNullOrEmpty]
         public string EndsWith { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             RecordType recordType = default(RecordType);
             if (this.RecordType != null && !Enum.TryParse(this.RecordType, false, out recordType))

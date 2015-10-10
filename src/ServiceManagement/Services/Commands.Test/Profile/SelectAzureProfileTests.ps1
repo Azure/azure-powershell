@@ -20,7 +20,7 @@ function Test-SelectDefaultProfile
 {
     param([string] $token, [string] $user, [string] $sub)
     $profile = $(New-AzureProfile -SubscriptionId $sub -AccessToken $token -AccountId $user)
-    Assert-AreEqual "AzureCloud" $profile.Context.Environment.Name
+    Assert-AreEqual "AzureCloud" $Profile.Context.Environment.Name
     Select-AzureProfile $profile
 	$profile2 = Select-AzureProfile -Default     
 	Assert-NotNull $($profile2.ProfilePath)
@@ -34,7 +34,7 @@ function Test-NewAzureProfileInRDFEMode
 {
     param([string] $token, [string] $user, [string] $sub)
     $profile = $(New-AzureProfile -SubscriptionId $sub -AccessToken $token -AccountId $user)
-    Assert-AreEqual "AzureCloud" $profile.Context.Environment.Name
+    Assert-AreEqual "AzureCloud" $Profile.Context.Environment.Name
     Select-AzureProfile $profile
     $locations = Get-AzureLocation
     Assert-NotNull $locations
@@ -49,7 +49,7 @@ function Test-NewAzureProfileInARMMode
 {
     param([string] $token, [string] $user, [string] $sub)
     $profile = $(New-AzureProfile -SubscriptionId $sub -AccessToken $token -AccountId $user)
-	Assert-AreEqual "AzureCloud" $($profile.Context.Environment.Name) "Expecting the azure cloud environment"
+	Assert-AreEqual "AzureCloud" $($Profile.Context.Environment.Name) "Expecting the azure cloud environment"
 	Select-AzureProfile $profile
 	$locations = Get-AzureLocation
 	Assert-NotNull $locations

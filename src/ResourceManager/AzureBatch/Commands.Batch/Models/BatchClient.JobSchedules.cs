@@ -37,24 +37,25 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException("options");
             }
 
+            ODATADetailLevel odata = new ODATADetailLevel(selectClause: options.Select, expandClause: options.Expand);
+
             // Get the single job schedule matching the specified id
             if (!string.IsNullOrWhiteSpace(options.JobScheduleId))
             {
                 WriteVerbose(string.Format(Resources.GetJobScheduleById, options.JobScheduleId));
                 JobScheduleOperations jobScheduleOperations = options.Context.BatchOMClient.JobScheduleOperations;
-                CloudJobSchedule jobSchedule = jobScheduleOperations.GetJobSchedule(options.JobScheduleId, additionalBehaviors: options.AdditionalBehaviors);
+                CloudJobSchedule jobSchedule = jobScheduleOperations.GetJobSchedule(options.JobScheduleId, detailLevel: odata, additionalBehaviors: options.AdditionalBehaviors);
                 PSCloudJobSchedule psJobSchedule = new PSCloudJobSchedule(jobSchedule);
                 return new PSCloudJobSchedule[] { psJobSchedule };
             }
             // List job schedules using the specified filter
             else
             {
-                ODATADetailLevel odata = null;
                 string verboseLogString = null;
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
                     verboseLogString = Resources.GetJobScheduleByOData;
-                    odata = new ODATADetailLevel(filterClause: options.Filter);
+                    odata.FilterClause = options.Filter;
                 }
                 else
                 {
@@ -109,6 +110,25 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
             WriteVerbose(string.Format(Resources.CreatingJobSchedule, parameters.JobScheduleId));
             jobSchedule.Commit(parameters.AdditionalBehaviors);
+        }
+
+        /// <summary>
+        /// Commits changes to a PSCloudJobSchedule object to the Batch Service.
+        /// </summary>
+        /// <param name="context">The account to use.</param>
+        /// <param name="jobSchedule">The PSCloudJobSchedule object representing the job schedule to update.</param>
+        /// <param name="additionBehaviors">Additional client behaviors to perform.</param>
+        public void UpdateJobSchedule(BatchAccountContext context, PSCloudJobSchedule jobSchedule, IEnumerable<BatchClientBehavior> additionBehaviors = null)
+        {
+            if (jobSchedule == null)
+            {
+                throw new ArgumentNullException("jobSchedule");
+            }
+
+            WriteVerbose(string.Format(Resources.UpdatingJobSchedule, jobSchedule.Id));
+
+            Utils.Utils.BoundJobScheduleSyncCollections(jobSchedule);
+            jobSchedule.omObject.Commit(additionBehaviors);
         }
 
         /// <summary>

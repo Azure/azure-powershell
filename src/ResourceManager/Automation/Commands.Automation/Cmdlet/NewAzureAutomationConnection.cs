@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Create a new Connection for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureAutomationConnection", DefaultParameterSetName = AutomationCmdletParameterSets.ByConnectionName)]
+    [Cmdlet(VerbsCommon.New, "AzureRmAutomationConnection", DefaultParameterSetName = AutomationCmdletParameterSets.ByConnectionName)]
     [OutputType(typeof(Connection))]
     public class NewAzureAutomationConnection : AzureAutomationBaseCmdlet
     {
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        protected override void AutomationExecuteCmdlet()
+        protected override void AutomationProcessRecord()
         {
 
             var createdConnection = this.AutomationClient.CreateConnection(this.ResourceGroupName, this.AutomationAccountName, this.Name, this.ConnectionTypeName, this.ConnectionFieldValues, this.Description);

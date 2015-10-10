@@ -25,7 +25,7 @@ using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodeUsers
 {
-    public class NewBatchComputeNodeUserCommandTests
+    public class NewBatchComputeNodeUserCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
         private NewBatchComputeNodeUserCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ComputeNodeUsers
             cmdlet.Password = "Password1234";
 
             // Don't go to the service on an Add ComputeNodeUser call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<ComputeNodeAddUserParameters, ComputeNodeAddUserResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeAddUserParameters, ComputeNodeAddUserResponse>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameters are set

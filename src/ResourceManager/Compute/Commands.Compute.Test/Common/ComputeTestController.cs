@@ -21,16 +21,17 @@ using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Test;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Common.Authentication;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
-    public sealed class ComputeTestController
+    public sealed class ComputeTestController : RMTestBase
     {
         bool testViaCsm = true; // Currently set to true, we will get this from Environment varialbe.
 
@@ -95,6 +96,10 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             string callingClassType,
             string mockName)
         {
+            Dictionary<string, string> d = new Dictionary<string, string>();
+            d.Add("Microsoft.Authorization", null);
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
+
             using (UndoContext context = UndoContext.Current)
             {
                 context.Start(callingClassType, mockName);
@@ -113,11 +118,16 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
-                helper.SetupModules(
-                    AzureModule.AzureResourceManager,
-                    "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\ComputeTestCommon.ps1",
-                    "ScenarioTests\\" + callingClassName + ".ps1");
+                helper.SetupModules(AzureModule.AzureResourceManager, 
+                    "ScenarioTests\\Common.ps1", 
+                    "ScenarioTests\\ComputeTestCommon.ps1", 
+                    "ScenarioTests\\" + callingClassName + ".ps1", 
+                    helper.RMProfileModule,
+                    helper.RMResourceModule,
+                    helper.RMStorageDataPlaneModule,
+                    helper.RMStorageModule,
+                    helper.GetRMModulePath("AzureRM.Compute.psd1"),
+                    helper.GetRMModulePath("AzureRM.Network.psd1"));
 
                 try
                 {

@@ -20,7 +20,6 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System.Collections.Generic;
 using System.Management.Automation;
-using System.Threading.Tasks;
 using Xunit;
 using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
@@ -56,7 +55,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             cmdlet.Id = "testJob";
 
             // Don't go to the service on a Terminate CloudJob call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudJobTerminateParameters, CloudJobTerminateResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudJobTerminateParameters, CloudJobTerminateResponse>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set
@@ -77,21 +76,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             cmdlet.TerminateReason = terminateReason;
 
             // Don't go to the service on a Terminate CloudJob call
-            RequestInterceptor interceptor = new RequestInterceptor((baseRequest) =>
-            {
-                BatchRequest<CloudJobTerminateParameters, CloudJobTerminateResponse> request =
-                (BatchRequest<CloudJobTerminateParameters, CloudJobTerminateResponse>)baseRequest;
-
-                // Grab the terminate reason off the outgoing request
-                requestTerminateReason = request.TypedParameters.TerminateReason;
-
-                request.ServiceRequestFunc = (cancellationToken) =>
+            Action<BatchRequest<CloudJobTerminateParameters, CloudJobTerminateResponse>> extractTerminateReasponAction =
+                (request) =>
                 {
-                    CloudJobTerminateResponse response = new CloudJobTerminateResponse();
-                    Task<CloudJobTerminateResponse> task = Task.FromResult(response);
-                    return task;
+                    requestTerminateReason = request.TypedParameters.TerminateReason;
                 };
-            });
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor(requestAction: extractTerminateReasponAction);
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             cmdlet.ExecuteCmdlet();

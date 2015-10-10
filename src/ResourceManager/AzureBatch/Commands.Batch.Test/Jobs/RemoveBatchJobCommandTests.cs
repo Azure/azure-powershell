@@ -25,7 +25,7 @@ using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 {
-    public class RemoveBatchJobCommandTests
+    public class RemoveBatchJobCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
         private RemoveBatchJobCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             cmdlet.Id = "job-1";
 
             // Don't go to the service on a Delete CloudJob call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudJobDeleteParameters, CloudJobDeleteResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudJobDeleteParameters, CloudJobDeleteResponse>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameters are set

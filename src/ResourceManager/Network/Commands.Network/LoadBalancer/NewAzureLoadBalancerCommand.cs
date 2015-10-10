@@ -24,7 +24,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureLoadBalancer"), OutputType(typeof(PSLoadBalancer))]
+    [Cmdlet(VerbsCommon.New, "AzureRmLoadBalancer"), OutputType(typeof(PSLoadBalancer))]
     public class NewAzureLoadBalancerCommand : LoadBalancerBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -59,25 +59,25 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "The list of frontend Ip config")]
+             HelpMessage = "The list of backend address pool")]
         public List<PSBackendAddressPool> BackendAddressPool { get; set; }
 
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "The list of frontend Ip config")]
+             HelpMessage = "The list of probe")]
         public List<PSProbe> Probe { get; set; }
 
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "The list of frontend Ip config")]
+             HelpMessage = "The list of inbound NAT rule")]
         public List<PSInboundNatRule> InboundNatRule { get; set; }
 
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "The list of frontend Ip config")]
+             HelpMessage = "The list of load balancing rule")]
         public List<PSLoadBalancingRule> LoadBalancingRule { get; set; }
 
         [Parameter(
@@ -87,13 +87,19 @@ namespace Microsoft.Azure.Commands.Network
         public Hashtable[] Tag { get; set; }
 
         [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "The list of inbound NAT pools")]
+        public List<PSInboundNatPool> InboundNatPool { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
             if (this.IsLoadBalancerPresent(this.ResourceGroupName, this.Name))
             {
@@ -149,6 +155,12 @@ namespace Microsoft.Azure.Commands.Network
             {
                 loadBalancer.LoadBalancingRules = new List<PSLoadBalancingRule>();
                 loadBalancer.LoadBalancingRules = this.LoadBalancingRule;
+            }
+
+            if (this.InboundNatPool != null)
+            {
+                loadBalancer.InboundNatPools = new List<PSInboundNatPool>();
+                loadBalancer.InboundNatPools = this.InboundNatPool;
             }
 
             // Normalize the IDs

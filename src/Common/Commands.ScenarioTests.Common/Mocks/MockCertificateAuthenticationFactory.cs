@@ -34,7 +34,13 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             Certificate = certificate;
         }
 
-        public IAccessToken Authenticate(AzureAccount account, AzureEnvironment environment, string tenant, SecureString password, ShowDialog promptBehavior,
+        public IAccessToken Authenticate(
+            AzureAccount account,
+            AzureEnvironment environment,
+            string tenant,
+            SecureString password,
+            ShowDialog promptBehavior,
+            IdentityModel.Clients.ActiveDirectory.TokenCache tokenCache,
             AzureEnvironment.Endpoint resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
             if (account.Id == null)
@@ -52,6 +58,17 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             return token;
         }
 
+        public IAccessToken Authenticate(
+            AzureAccount account,
+            AzureEnvironment environment,
+            string tenant,
+            SecureString password,
+            ShowDialog promptBehavior,
+            AzureEnvironment.Endpoint resourceId = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
+        {
+            return Authenticate(account, environment, tenant, password, promptBehavior, AzureSession.TokenCache, resourceId);
+        }
+
         public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context)
         {
             return new CertificateCloudCredentials(context.Subscription.Id.ToString(), Certificate);
@@ -59,6 +76,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
 
         public Microsoft.Rest.ServiceClientCredentials GetServiceClientCredentials(AzureContext context)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public SubscriptionCloudCredentials GetSubscriptionCloudCredentials(AzureContext context, AzureEnvironment.Endpoint targetEndpoint)
         {
             throw new System.NotImplementedException();
         }

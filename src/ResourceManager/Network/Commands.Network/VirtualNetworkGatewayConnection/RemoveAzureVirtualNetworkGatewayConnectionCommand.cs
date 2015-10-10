@@ -18,7 +18,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureVirtualNetworkGatewayConnection")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmVirtualNetworkGatewayConnection")]
     public class RemoveAzureVirtualNetworkGatewayConnectionCommand : VirtualNetworkGatewayConnectionBaseCmdlet
     {
         [Alias("ResourceName")]
@@ -44,9 +44,9 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
 
             ConfirmAction(
                 Force.IsPresent,

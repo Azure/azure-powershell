@@ -16,12 +16,12 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
 {
     using System;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Microsoft.Azure.Test;
     using Microsoft.Azure.Management.Redis;
     using Microsoft.Azure.Common.Authentication;
+    using WindowsAzure.Commands.Test.Utilities.Common;
 
-    public abstract class RedisCacheTestsBase : IDisposable
+    public abstract class RedisCacheTestsBase : RMTestBase, IDisposable
     {
         private EnvironmentSetupHelper helper;
 
@@ -45,7 +45,10 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
                 SetupManagementClients();
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                helper.SetupModules(AzureModule.AzureResourceManager, "ScenarioTests\\" + this.GetType().Name + ".ps1");
+                helper.SetupModules(AzureModule.AzureResourceManager, 
+                    "ScenarioTests\\" + this.GetType().Name + ".ps1", 
+                    helper.RMProfileModule, 
+                    helper.GetRMModulePath(@"AzureRM.RedisCache.psd1"));
 
                 helper.RunPowerShellTest(scripts);
             }

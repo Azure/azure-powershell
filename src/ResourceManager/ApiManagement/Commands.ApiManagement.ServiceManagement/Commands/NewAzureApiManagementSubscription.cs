@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Runtime.InteropServices;
     using Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models;
 
-    [Cmdlet(VerbsCommon.New, "AzureApiManagementSubscription")]
+    [Cmdlet(VerbsCommon.New, "AzureRmApiManagementSubscription")]
     [OutputType(typeof(PsApiManagementSubscription))]
     public class NewAzureApiManagementSubscription : AzureApiManagementCmdletBase
     {

@@ -35,7 +35,15 @@ namespace Microsoft.Azure.Commands.Automation
         
         public void Dispose()
         {
-            client.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
+            Dispose(true);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                client.HttpClient.DefaultRequestHeaders.Remove(Constants.ClientRequestIdHeaderName);
+            }
         }
     }
 }

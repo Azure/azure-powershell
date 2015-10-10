@@ -27,7 +27,7 @@ using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Pools
 {
-    public class RestartBatchComputeNodeCommandTests
+    public class RestartBatchComputeNodeCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
         private RestartBatchComputeNodeCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.Id = "computeNode1";
 
             // Don't go to the service on a Reboot ComputeNode call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<ComputeNodeRebootParameters, ComputeNodeRebootResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<ComputeNodeRebootParameters, ComputeNodeRebootResponse>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set

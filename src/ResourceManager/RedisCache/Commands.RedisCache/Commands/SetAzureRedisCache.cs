@@ -15,12 +15,15 @@
 namespace Microsoft.Azure.Commands.RedisCache
 {
     using Microsoft.Azure.Commands.RedisCache.Models;
+    using Microsoft.Azure.Commands.RedisCache.Properties;
     using Microsoft.Azure.Management.Redis.Models;
     using System.Collections;
     using System.Management.Automation;
     using SkuStrings = Microsoft.Azure.Management.Redis.Models.SkuName;
-    
-    [Cmdlet(VerbsCommon.Set, "AzureRedisCache", DefaultParameterSetName = MaxMemoryParameterSetName), OutputType(typeof(RedisCacheAttributesWithAccessKeys))]
+    using Hyak.Common;
+    using System;
+        
+    [Cmdlet(VerbsCommon.Set, "AzureRmRedisCache", DefaultParameterSetName = MaxMemoryParameterSetName), OutputType(typeof(RedisCacheAttributesWithAccessKeys))]
     public class SetAzureRedisCache : RedisCacheCmdletBase
     {
         internal const string MaxMemoryParameterSetName = "Only MaxMemoryPolicy";
@@ -42,14 +45,22 @@ namespace Microsoft.Azure.Commands.RedisCache
         [ValidateSet(SkuStrings.Basic, SkuStrings.Standard, IgnoreCase = false)]
         public string Sku { get; set; }
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "MaxMemoryPolicy is deprecated. Please use RedisConfiguration instead.")]
+        public string MaxMemoryPolicy { get; set; }
+
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "A hash table which represents redis configuration properties.")]
         public Hashtable RedisConfiguration { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "EnableNonSslPort property of redis cache.")]
         public bool? EnableNonSslPort { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
+            if (!string.IsNullOrEmpty(MaxMemoryPolicy))
+            {
+                throw new ArgumentException(Resources.MaxMemoryPolicyException);
+            }
+
             RedisGetResponse response = CacheClient.GetCache(ResourceGroupName, Name);
 
             string skuName;

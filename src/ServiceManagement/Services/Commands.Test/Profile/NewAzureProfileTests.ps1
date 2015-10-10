@@ -110,7 +110,7 @@ function Test-NewAzureProfileInRDFEMode
 {
     param([string] $token, [string] $user, [string] $sub)
     $profile = $(Create-Profile $token $user $sub)
-    Assert-AreEqual "AzureCloud" $profile.Context.Environment.Name
+    Assert-AreEqual "AzureCloud" $Profile.Context.Environment.Name
     Clear-AzureProfile -Force
     $locations = Get-AzureLocation -Profile $profile
     Assert-NotNull $locations
@@ -125,7 +125,7 @@ function Test-NewAzureProfileInARMMode
 {
     param([string] $token, [string] $user, [string] $sub)
     $profile = $(Create-Profile $token $user $sub)
-	Assert-AreEqual "AzureCloud" $($profile.Context.Environment.Name) "Expecting the azure cloud environment"
+	Assert-AreEqual "AzureCloud" $($Profile.Context.Environment.Name) "Expecting the azure cloud environment"
 	Clear-AzureProfile -Force
 	$locations = Get-AzureLocation -Profile $profile
 	Assert-NotNull $locations

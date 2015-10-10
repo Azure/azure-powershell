@@ -24,6 +24,7 @@ using System.Collections.ObjectModel;
 using System.Management.Automation;
 using System.Security.Principal;
 using Microsoft.Azure;
+using Microsoft.WindowsAzure.Commands.Common;
 
 
 namespace Microsoft.WindowsAzure.Management.RemoteApp.Models
@@ -48,7 +49,7 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
         public const string goldImageImport = "GoldImageImport";
     }
 
-    public abstract partial class RdsCmdlet : AzurePSCmdlet
+    public abstract partial class RdsCmdlet : AzureSMCmdlet
     {
         [ThreadStatic]
         internal static Job theJob;
@@ -81,8 +82,7 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
             set
             {
                 client = value;  // Test Hook
-                Profile = InitializeDefaultProfile();
-                SetTokenCacheForProfile(Profile);
+                AzureSMProfileProvider.Instance.ResetDefaultProfile();
             }
         }
 

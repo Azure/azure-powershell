@@ -24,7 +24,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
-    public class JobTests
+    public class JobTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
         private const string accountName = ScenarioTestHelpers.SharedAccount;
 
@@ -84,6 +84,29 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                     ScenarioTestHelpers.DeleteJob(controller, context, jobId1);
                     ScenarioTestHelpers.DeleteJob(controller, context, jobId2);
                     ScenarioTestHelpers.DeleteJob(controller, context, jobId3);
+                },
+                TestUtilities.GetCallingClass(),
+                TestUtilities.GetCurrentMethodName());
+        }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetAndListJobsWithSelect()
+        {
+            BatchController controller = BatchController.NewInstance;
+            BatchAccountContext context = null;
+            string jobId = "selectTest";
+            controller.RunPsTestWorkflow(
+                () => { return new string[] { string.Format("Test-GetAndListJobsWithSelect '{0}' '{1}'", accountName, jobId) }; },
+                () =>
+                {
+                    context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
+                    ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
+                },
+                () =>
+                {
+                    ScenarioTestHelpers.DeleteJob(controller, context, jobId);
                 },
                 TestUtilities.GetCallingClass(),
                 TestUtilities.GetCurrentMethodName());
@@ -179,6 +202,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 },
                 TestUtilities.GetCallingClass(),
                 TestUtilities.GetCurrentMethodName());
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateJob()
+        {
+            BatchController controller = BatchController.NewInstance;
+            string jobId = "updateJobTest";
+            controller.RunPsTest(string.Format("Test-UpdateJob '{0}' '{1}'", accountName, jobId));
         }
 
         [Fact]
@@ -283,60 +315,70 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     [Cmdlet(VerbsCommon.New, "AzureBatchJob_ST")]
     public class NewBatchJobScenarioTestCommand : NewBatchJobCommand
     {
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
         }
     }
 
     [Cmdlet(VerbsCommon.Get, "AzureBatchJob_ST", DefaultParameterSetName = Constants.ODataFilterParameterSet)]
     public class GetBatchJobScenarioTestCommand : GetBatchJobCommand
     {
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
+        }
+    }
+
+    [Cmdlet(VerbsCommon.Set, "AzureBatchJob_ST")]
+    public class SetBatchJobScenarioTestCommand : SetBatchJobCommand
+    {
+        protected override void ProcessRecord()
+        {
+            AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
+            base.ProcessRecord();
         }
     }
 
     [Cmdlet(VerbsCommon.Remove, "AzureBatchJob_ST")]
     public class RemoveBatchJobScenarioTestCommand : RemoveBatchJobCommand
     {
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
         }
     }
 
     [Cmdlet(VerbsLifecycle.Enable, "AzureBatchJob_ST")]
     public class EnableBatchJobScenarioTestCommand : EnableBatchJobCommand
     {
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
         }
     }
 
     [Cmdlet(VerbsLifecycle.Disable, "AzureBatchJob_ST")]
     public class DisableBatchJobScenarioTestCommand : DisableBatchJobCommand
     {
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
         }
     }
 
     [Cmdlet(VerbsLifecycle.Stop, "AzureBatchJob_ST")]
     public class StopBatchJobScenarioTestCommand : StopBatchJobCommand
     {
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             AdditionalBehaviors = new List<BatchClientBehavior>() { ScenarioTestHelpers.CreateHttpRecordingInterceptor() };
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
         }
     }
 }

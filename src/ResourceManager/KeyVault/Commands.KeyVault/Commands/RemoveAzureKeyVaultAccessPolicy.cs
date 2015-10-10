@@ -21,7 +21,7 @@ using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureKeyVaultAccessPolicy", HelpUri = Constants.KeyVaultHelpUri)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmKeyVaultAccessPolicy", HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof(PSKeyVaultModels.PSVault))]
     public class RemoveAzureKeyVaultAccessPolicy : KeyVaultManagementCmdletBase
     {
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #endregion
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(VaultName) : ResourceGroupName;
 

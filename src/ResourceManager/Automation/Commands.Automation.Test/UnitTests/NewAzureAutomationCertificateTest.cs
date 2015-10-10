@@ -12,22 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using System;
+using System.Security;
 using Microsoft.Azure.Commands.Automation.Cmdlet;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
-using System.Management.Automation;
-using System.Security;
-using System;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 {
     [TestClass]
-    public class NewAzureAutomationCertificateTest : TestBase
+    public class NewAzureAutomationCertificateTest : RMTestBase
     {
         private Mock<IAutomationClient> mockAutomationClient;
 

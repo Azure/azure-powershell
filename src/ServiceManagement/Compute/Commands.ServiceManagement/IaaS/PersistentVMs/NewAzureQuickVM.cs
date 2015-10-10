@@ -12,15 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Management.Automation;
-using System.Net;
-using System.Security.Cryptography.X509Certificates;
 using AutoMapper;
+using Hyak.Common;
+using Microsoft.Azure;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Common;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Helpers;
@@ -31,11 +25,16 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Management.Compute;
 using Microsoft.WindowsAzure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Storage;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Management.Automation;
+using System.Net;
+using System.Security.Cryptography.X509Certificates;
 using ConfigurationSet = Microsoft.WindowsAzure.Commands.ServiceManagement.Model.ConfigurationSet;
 using InputEndpoint = Microsoft.WindowsAzure.Commands.ServiceManagement.Model.InputEndpoint;
 using OSVirtualHardDisk = Microsoft.WindowsAzure.Commands.ServiceManagement.Model.OSVirtualHardDisk;
-using Microsoft.Azure;
-using Hyak.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
 {
@@ -188,11 +187,26 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
 
             bool serviceExists = DoesCloudServiceExist(this.ServiceName);
 
-            if(!string.IsNullOrEmpty(this.Location))
+            if (!string.IsNullOrEmpty(this.Location))
             {
-                if(serviceExists)
+                if (serviceExists)
                 {
-                    throw new ApplicationException(Resources.ServiceExistsLocationCanNotBeSpecified);
+                    HostedServiceGetResponse existingSvc = null;
+                    try
+                    {
+                        existingSvc = ComputeClient.HostedServices.Get(this.ServiceName);
+                    }
+                    catch
+                    {
+                        throw new ApplicationException(Resources.ServiceExistsLocationCanNotBeSpecified);
+                    }
+
+                    if (existingSvc == null ||
+                        existingSvc.Properties == null ||
+                        !this.Location.Equals(existingSvc.Properties.Location))
+                    {
+                        throw new ApplicationException(Resources.ServiceExistsLocationCanNotBeSpecified);
+                    }
                 }
             }
 
@@ -200,7 +214,22 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.PersistentVMs
             {
                 if (serviceExists)
                 {
-                    throw new ApplicationException(Resources.ServiceExistsAffinityGroupCanNotBeSpecified);
+                    HostedServiceGetResponse existingSvc = null;
+                    try
+                    {
+                        existingSvc = ComputeClient.HostedServices.Get(this.ServiceName);
+                    }
+                    catch
+                    {
+                        throw new ApplicationException(Resources.ServiceExistsAffinityGroupCanNotBeSpecified);
+                    }
+
+                    if (existingSvc == null ||
+                        existingSvc.Properties == null ||
+                        !this.AffinityGroup.Equals(existingSvc.Properties.AffinityGroup))
+                    {
+                        throw new ApplicationException(Resources.ServiceExistsAffinityGroupCanNotBeSpecified);
+                    }
                 }
             }
 

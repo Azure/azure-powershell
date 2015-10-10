@@ -44,67 +44,99 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             return roleDefinition;
         }
 
-        public static PSRoleAssignment ToPSRoleAssignment(this RoleAssignment role, AuthorizationClient policyClient, ActiveDirectoryClient activeDirectoryClient)
+        public static IEnumerable<PSRoleAssignment> ToPSRoleAssignments(this IEnumerable<RoleAssignment> assignments, AuthorizationClient policyClient, ActiveDirectoryClient activeDirectoryClient, bool excludeAssignmentsForDeletedPrincipals = true)
         {
-            PSRoleDefinition roleDefinition = policyClient.GetRoleDefinition(role.Properties.RoleDefinitionId);
-            PSADObject adObject = activeDirectoryClient.GetADObject(new ADObjectFilterOptions { Id = role.Properties.PrincipalId.ToString() }) ?? new PSADObject() { Id = role.Properties.PrincipalId };
+            List<PSRoleAssignment> psAssignments = new List<PSRoleAssignment>();
+            if(assignments ==null || !assignments.Any())
+            {
+                return psAssignments;
+            }
 
-            if (adObject is PSADUser)
+            List<string> objectIds = new List<string>();
+            objectIds.AddRange(assignments.Select(r => r.Properties.PrincipalId.ToString()));
+            List<PSADObject> adObjects = activeDirectoryClient.GetObjectsByObjectId(objectIds);
+
+            List<PSRoleDefinition> roleDefinitions = policyClient.FilterRoleDefinitions(name: null);
+
+            foreach (RoleAssignment assignment in assignments)
             {
-                return new PSUserRoleAssignment()
+                PSADObject adObject = adObjects.SingleOrDefault(o => o.Id == assignment.Properties.PrincipalId) ?? new PSADObject() { Id = assignment.Properties.PrincipalId };
+                PSRoleDefinition roleDefinition = roleDefinitions.SingleOrDefault(r => r.Id == assignment.Properties.RoleDefinitionId) ?? new PSRoleDefinition() { Id = assignment.Properties.RoleDefinitionId };
+
+                if (adObject is PSADUser)
                 {
-                    RoleAssignmentId = role.Id,
-                    DisplayName = adObject.DisplayName,
-                    Actions = roleDefinition.Actions,
-                    NotActions = roleDefinition.NotActions,
-                    RoleDefinitionName = roleDefinition.Name,
-                    Scope = role.Properties.Scope,
-                    UserPrincipalName = ((PSADUser)adObject).UserPrincipalName,
-                    Mail = ((PSADUser)adObject).Mail,
-                    ObjectId = adObject.Id
-                };
+                    psAssignments.Add(new PSRoleAssignment()
+                    {
+                        RoleAssignmentId = assignment.Id,
+                        DisplayName = adObject.DisplayName,
+                        RoleDefinitionId = roleDefinition.Id.GuidFromFullyQualifiedId(),
+                        RoleDefinitionName = roleDefinition.Name,
+                        Scope = assignment.Properties.Scope,
+                        SignInName = ((PSADUser)adObject).SignInName,
+                        ObjectId = adObject.Id,
+                        ObjectType = adObject.Type
+                    });
+                }
+                else if (adObject is PSADGroup)
+                {
+                    psAssignments.Add(new PSRoleAssignment()
+                    {
+                        RoleAssignmentId = assignment.Id,
+                        DisplayName = adObject.DisplayName,
+                        RoleDefinitionId = roleDefinition.Id.GuidFromFullyQualifiedId(),
+                        RoleDefinitionName = roleDefinition.Name,
+                        Scope = assignment.Properties.Scope,
+                        ObjectId = adObject.Id,
+                        ObjectType = adObject.Type
+                    });
+                }
+                else if (adObject is PSADServicePrincipal)
+                {
+                    psAssignments.Add(new PSRoleAssignment()
+                    {
+                        RoleAssignmentId = assignment.Id,
+                        DisplayName = adObject.DisplayName,
+                        RoleDefinitionId = roleDefinition.Id.GuidFromFullyQualifiedId(),
+                        RoleDefinitionName = roleDefinition.Name,
+                        Scope = assignment.Properties.Scope,
+                        ObjectId = adObject.Id,
+                        ObjectType = adObject.Type
+                    });
+                }
+                else if (!excludeAssignmentsForDeletedPrincipals)
+                {
+                    psAssignments.Add(new PSRoleAssignment()
+                    {
+                        RoleAssignmentId = assignment.Id,
+                        DisplayName = adObject.DisplayName,
+                        RoleDefinitionId = roleDefinition.Id.GuidFromFullyQualifiedId(),
+                        RoleDefinitionName = roleDefinition.Name,
+                        Scope = assignment.Properties.Scope,
+                        ObjectId = adObject.Id,
+                    });
+                }
+
+                // Ignore the assignment if principal does not exists and excludeAssignmentsForDeletedPrincipals is set to true
             }
-            else if (adObject is PSADGroup)
+
+            return psAssignments;
+        }
+
+        public static PSRoleAssignment ToPSRoleAssignment(this ClassicAdministrator classicAdministrator, string currentSubscriptionId)
+        {
+            return new PSRoleAssignment()
             {
-                return new PSGroupRoleAssignment()
-                {
-                    RoleAssignmentId = role.Id,
-                    DisplayName = adObject.DisplayName,
-                    Actions = roleDefinition.Actions,
-                    NotActions = roleDefinition.NotActions,
-                    RoleDefinitionName = roleDefinition.Name,
-                    Scope = role.Properties.Scope,
-                    Mail = ((PSADGroup)adObject).Mail,
-                    ObjectId = adObject.Id
-                };
-            }
-            else if (adObject is PSADServicePrincipal)
-            {
-                return new PSServiceRoleAssignment()
-                {
-                    RoleAssignmentId = role.Id,
-                    DisplayName = adObject.DisplayName,
-                    Actions = roleDefinition.Actions,
-                    NotActions = roleDefinition.NotActions,
-                    RoleDefinitionName = roleDefinition.Name,
-                    Scope = role.Properties.Scope,
-                    ServicePrincipalName = ((PSADServicePrincipal)adObject).ServicePrincipalName,
-                    ObjectId = adObject.Id
-                };
-            }
-            else
-            {
-                return new PSRoleAssignment()
-                {
-                    RoleAssignmentId = role.Id,
-                    DisplayName = adObject.DisplayName,
-                    Actions = roleDefinition.Actions,
-                    NotActions = roleDefinition.NotActions,
-                    RoleDefinitionName = roleDefinition.Name,
-                    Scope = role.Properties.Scope,
-                    ObjectId = adObject.Id
-                };
-            }
+                RoleDefinitionName = classicAdministrator.Properties.Role,
+                DisplayName = classicAdministrator.Properties.EmailAddress,
+                SignInName = classicAdministrator.Properties.EmailAddress,
+                Scope = "/subscriptions/" + currentSubscriptionId,
+                ObjectType = "User"
+            };
+        }
+
+        private static string GuidFromFullyQualifiedId(this string Id)
+        {
+            return Id.TrimEnd('/').Substring(Id.LastIndexOf('/') + 1);
         }
     }
 }

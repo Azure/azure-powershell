@@ -25,7 +25,7 @@ using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Jobs
 {
-    public class EnableBatchJobCommandTests
+    public class EnableBatchJobCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
         private EnableBatchJobCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             cmdlet.Id = "testJob";
 
             // Don't go to the service on an Enable CloudJob call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudJobEnableParameters, CloudJobEnableResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudJobEnableParameters, CloudJobEnableResponse>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameter is set

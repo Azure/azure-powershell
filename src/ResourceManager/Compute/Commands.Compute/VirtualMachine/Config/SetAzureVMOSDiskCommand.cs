@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Compute
         DefaultParameterSetName = WindowsParamSet),
     OutputType(
         typeof(PSVirtualMachine))]
-    public class SetAzureVMOSDiskCommand : AzurePSCmdlet
+    public class SetAzureVMOSDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         protected const string WindowsParamSet = "WindowsParamSet";
         protected const string LinuxParamSet = "LinuxParamSet";
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskCaching)]
         [ValidateNotNullOrEmpty]
-        [ValidateSet(ValidateSetValues.ReadOnly, ValidateSetValues.ReadWrite)]
+        [ValidateSet(ValidateSetValues.ReadOnly, ValidateSetValues.ReadWrite, ValidateSetValues.None)]
         public string Caching { get; set; }
 
         [Alias("SourceImage")]
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = HelpMessages.VMOSDiskLinuxOSType)]
         public SwitchParameter Linux { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             if (this.VM.StorageProfile == null)
             {

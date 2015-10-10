@@ -25,7 +25,7 @@ using BatchClient = Microsoft.Azure.Commands.Batch.Models.BatchClient;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Pools
 {
-    public class RemoveBatchPoolCommandTests
+    public class RemoveBatchPoolCommandTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
         private RemoveBatchPoolCommand cmdlet;
         private Mock<BatchClient> batchClientMock;
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.Id = "testPool";
 
             // Don't go to the service on a Delete CloudPool call
-            RequestInterceptor interceptor = BatchTestHelpers.CreateNoOpInterceptor<CloudPoolDeleteParameters, CloudPoolDeleteResponse>();
+            RequestInterceptor interceptor = BatchTestHelpers.CreateFakeServiceResponseInterceptor<CloudPoolDeleteParameters, CloudPoolDeleteResponse>();
             cmdlet.AdditionalBehaviors = new List<BatchClientBehavior>() { interceptor };
 
             // Verify no exceptions when required parameters are set

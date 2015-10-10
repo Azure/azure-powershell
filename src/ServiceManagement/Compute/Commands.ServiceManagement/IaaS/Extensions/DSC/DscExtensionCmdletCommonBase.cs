@@ -34,7 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
         /// Attempts to get the user's credentials from the given Storage Context or the current subscription, if the former is null. 
         /// Throws a terminating error if the credentials cannot be determined.
         /// </summary>
-        internal static StorageCredentials GetStorageCredentials(this AzurePSCmdlet cmdlet, AzureStorageContext storageContext)
+        internal static StorageCredentials GetStorageCredentials(this AzureSMCmdlet cmdlet, AzureStorageContext storageContext)
         {
             StorageCredentials credentials = null;
 
@@ -44,21 +44,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
             }
             else
             {
-                var storageAccountName = cmdlet.Profile.Context.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
-
-                var storageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(
-                        cmdlet.Profile, cmdlet.Profile.Context.Subscription, AzureEnvironment.Endpoint.ServiceManagement);
-
-                if (!string.IsNullOrEmpty(storageAccountName) && storageClient != null)
+                var storageAccount = cmdlet.Profile.Context.GetCurrentStorageAccount();
+                if (storageAccount != null)
                 {
-                    var keys = storageClient.StorageAccounts.GetKeys(storageAccountName);
-                    
-                    if (keys != null)
-                    {
-                        var storageAccountKey = string.IsNullOrEmpty(keys.PrimaryKey) ? keys.SecondaryKey : keys.PrimaryKey;
-
-                        credentials = new StorageCredentials(storageAccountName, storageAccountKey);
-                    }
+                    credentials = storageAccount.Credentials;
                 }
             }
 
@@ -80,7 +69,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
             return credentials;
         }
 
-        internal static void ThrowInvalidArgumentError(this AzurePSCmdlet cmdlet, string format, params object[] args)
+        internal static void ThrowInvalidArgumentError(this AzureSMCmdlet cmdlet, string format, params object[] args)
         {
             cmdlet.ThrowTerminatingError(
                 new ErrorRecord(

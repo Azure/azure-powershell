@@ -12,15 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.Properties;
+using Microsoft.WindowsAzure.Commands.Storage.Common;
+using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.WindowsAzure.Storage.Blob;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics;
 using System.IO;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.WindowsAzure.Commands.ServiceManagement.Test.Properties;
-using Microsoft.WindowsAzure.Storage.Auth;
-using Microsoft.WindowsAzure.Storage.Blob;
+using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 {
@@ -263,12 +265,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
             // Create a container
             try
             {
-                vmPowershellCmdlets.RunPSScript("Get-AzureStorageContainer -Name " + destContainer);
+                vmPowershellCmdlets.RunPSScript(String.Format("{0}-{1} -Name {2}",
+                    VerbsCommon.Get, StorageNouns.Container, destContainer));
             }
             catch
             {
                 // Create a container.
-                vmPowershellCmdlets.RunPSScript("New-AzureStorageContainer -Name " + destContainer);
+                vmPowershellCmdlets.RunPSScript(String.Format("{0}-{1} -Name {2}",
+                    VerbsCommon.New, StorageNouns.Container, destContainer));
             }
 
             // Make SAS Uri for the source blob.
@@ -276,12 +280,14 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Test.FunctionalTests
 
             if (string.IsNullOrEmpty(destBlob))
             {
-                vmPowershellCmdlets.RunPSScript(string.Format("Start-AzureStorageBlobCopy -SrcContainer {0} -SrcBlob {1} -DestContainer {2} -Force", srcContainer, srcBlob, destContainer));
+                vmPowershellCmdlets.RunPSScript(string.Format("{0}-{1} -SrcContainer {2} -SrcBlob {3} -DestContainer {4} -Force",
+                    VerbsLifecycle.Start, StorageNouns.CopyBlob, srcContainer, srcBlob, destContainer));
                 destBlob = srcBlob;
             }
             else
             {
-                vmPowershellCmdlets.RunPSScript(string.Format("Start-AzureStorageBlobCopy -SrcUri \"{0}\" -DestContainer {1} -DestBlob {2} -Force", srcSasUri, destContainer, destBlob));
+                vmPowershellCmdlets.RunPSScript(string.Format("{0}-{1} -SrcUri \"{2}\" -DestContainer {3} -DestBlob {4} -Force",
+                    VerbsLifecycle.Start, StorageNouns.CopyBlob, srcSasUri, destContainer, destBlob));
             }
 
             for (int i = 0; i < 60; i++)

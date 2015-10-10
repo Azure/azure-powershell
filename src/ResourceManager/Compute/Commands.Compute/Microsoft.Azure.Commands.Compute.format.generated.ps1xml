@@ -183,6 +183,10 @@
                 <PropertyName>AvailabilitySetReferenceText</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>DiagnosticsProfile</Label>
+                <PropertyName>DiagnosticsProfileText</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>Extensions</Label>
                 <PropertyName>ExtensionsText</PropertyName>
               </ListItem>

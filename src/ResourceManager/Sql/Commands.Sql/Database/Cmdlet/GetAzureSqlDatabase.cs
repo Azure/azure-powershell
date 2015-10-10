@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.Sql.Database.Model;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Get, "AzureSqlDatabase", 
+    [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabase", 
         ConfirmImpact = ConfirmImpact.None)]
     public class GetAzureSqlDatabase : AzureSqlDatabaseCmdletBase
     {

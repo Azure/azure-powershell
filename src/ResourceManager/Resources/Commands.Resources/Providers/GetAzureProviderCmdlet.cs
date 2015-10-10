@@ -15,13 +15,14 @@
 namespace Microsoft.Azure.Commands.Providers
 {
     using System;
+    using System.Linq;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.Resources.Models;
 
     /// <summary>
     /// Get an existing resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureProvider", DefaultParameterSetName = GetAzureProviderCmdlet.ListAvailableParameterSet), OutputType(typeof(PSResourceProvider))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmResourceProvider", DefaultParameterSetName = GetAzureProviderCmdlet.ListAvailableParameterSet), OutputType(typeof(PSResourceProvider))]
     public class GetAzureProviderCmdlet : ResourcesBaseCmdlet
     {
         /// <summary>
@@ -42,6 +43,13 @@ namespace Microsoft.Azure.Commands.Providers
         public string ProviderNamespace { get; set; }
 
         /// <summary>
+        /// Gets or sets the provider namespace
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "The location to look for provider namespace.")]
+        [ValidateNotNullOrEmpty]
+        public string Location { get; set; }
+
+        /// <summary>
         /// Gets or sets a value indicating if unregistered providers should be included in the listing
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = false, HelpMessage = "When specified, lists all the resource providers available, including those not registered with the current subscription.", ParameterSetName = GetAzureProviderCmdlet.ListAvailableParameterSet)]
@@ -50,22 +58,36 @@ namespace Microsoft.Azure.Commands.Providers
         /// <summary>
         /// Executes the cmdlet
         /// </summary>
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            var parameterSetName = this.DetermineParameterSetName();
+            var providers = this.ResourcesClient.ListPSResourceProviders(providerName: this.ProviderNamespace, listAvailable: this.ListAvailable, location: this.Location);
 
-            switch (parameterSetName)
+            if (!string.IsNullOrEmpty(this.ProviderNamespace))
             {
-                case GetAzureProviderCmdlet.IndividualProviderParameterSet:
-                    this.WriteObject(this.ResourcesClient.ListPSResourceProviders(providerName: this.ProviderNamespace), enumerateCollection: true);
-                    break;
+                var expandedProviders = providers
+                    .SelectMany(provider =>
+                        provider.ResourceTypes
+                            .Select(type =>
+                                new PSResourceProvider
+                                {
+                                    ProviderNamespace = provider.ProviderNamespace,
+                                    RegistrationState = provider.RegistrationState,
+                                    ResourceTypes = new[]
+                                    {
+                                        new PSResourceProviderResourceType
+                                        {
+                                            ResourceTypeName = type.ResourceTypeName,
+                                            Locations = type.Locations,
+                                            ApiVersions = type.ApiVersions,
+                                        }
+                                    }
+                                }));
 
-                case GetAzureProviderCmdlet.ListAvailableParameterSet:
-                    this.WriteObject(this.ResourcesClient.ListPSResourceProviders(listAvailable: this.ListAvailable), enumerateCollection: true);
-                    break;
-
-                default:
-                    throw new ApplicationException(string.Format("Unknown parameter set encountered: '{0}'", this.ParameterSetName));
+                this.WriteObject(expandedProviders, enumerateCollection: true);
+            }
+            else
+            {
+                this.WriteObject(providers, enumerateCollection: true);
             }
         }
     }

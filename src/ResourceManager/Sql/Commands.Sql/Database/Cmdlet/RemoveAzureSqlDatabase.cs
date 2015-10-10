@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.Sql.Properties;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureSqlDatabase",
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabase",
         SupportsShouldProcess = true, 
         ConfirmImpact = ConfirmImpact.High)]
     public class RemoveAzureSqlDatabase : AzureSqlDatabaseCmdletBase
@@ -76,17 +76,17 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <summary>
         /// Entry point for the cmdlet
         /// </summary>
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
             if (!Force.IsPresent && !ShouldProcess(
-               string.Format(CultureInfo.InvariantCulture, Resources.RemoveAzureSqlDatabaseDescription, this.DatabaseName, this.ServerName),
-               string.Format(CultureInfo.InvariantCulture, Resources.RemoveAzureSqlDatabaseWarning, this.DatabaseName, this.ServerName),
-               Resources.ShouldProcessCaption))
+               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlDatabaseDescription, this.DatabaseName, this.ServerName),
+               string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.RemoveAzureSqlDatabaseWarning, this.DatabaseName, this.ServerName),
+               Microsoft.Azure.Commands.Sql.Properties.Resources.ShouldProcessCaption))
             {
                 return;
             }
 
-            base.ExecuteCmdlet();
+            base.ProcessRecord();
         }
     }
 }

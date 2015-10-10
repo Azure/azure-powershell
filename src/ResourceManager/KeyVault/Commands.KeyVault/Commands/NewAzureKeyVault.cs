@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Create a new key vault. 
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureKeyVault", HelpUri = Constants.KeyVaultHelpUri)]
+    [Cmdlet(VerbsCommon.New, "AzureRmKeyVault", HelpUri = Constants.KeyVaultHelpUri)]
     [OutputType(typeof (PSKeyVaultModels.PSVault))]
     public class NewAzureKeyVault : KeyVaultManagementCmdletBase
     {
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Specifies the Azure region in which to create the key vault. Use the command Get-AzureLocation to see your choices. For more information, type Get-Help Get-AzureLocation.")]
+            HelpMessage = "Specifies the Azure region in which to create the key vault. Use the command Get-AzureRmResourceProvider with the ProviderNamespace parameter to see your choices.")]
         [ValidateNotNullOrEmpty()]
         public string Location { get; set; }
 
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #endregion
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {            
             if (VaultExistsInCurrentSubscription(this.VaultName))
             {
