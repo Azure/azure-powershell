@@ -52,9 +52,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
 
         protected void RunPowerShellTest(params string[] scripts)
         {
-            Dictionary<string, string> d = new Dictionary<string, string>();
-            d.Add("Microsoft.Authorization", "2014-07-01-preview");
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
+            HttpMockServer.Matcher = new PermissiveRecordMatcher();
 
             using (UndoContext context = UndoContext.Current)
             {
