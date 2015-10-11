@@ -114,8 +114,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 helper.SetupModules(
                     AzureModule.AzureResourceManager, 
                     "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + callingClassName + ".ps1",
-                    "ResourceManagerStartup.ps1");
+                    "ScenarioTests\\" + callingClassName + ".ps1");
 
                 try
                 {
