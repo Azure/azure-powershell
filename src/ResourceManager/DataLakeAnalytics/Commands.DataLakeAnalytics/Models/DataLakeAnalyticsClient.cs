@@ -260,8 +260,13 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 !account.Properties.DataLakeStoreAccounts.Any(
                     acct => acct.Name.Equals(storageToSet.Name, StringComparison.InvariantCultureIgnoreCase)))
             {
-                account.Properties.DataLakeStoreAccounts.Add(storageToSet);
+                _accountClient.DataLakeAnalyticsAccount.AddDataLakeStoreAccount(resourceGroupName, accountName,
+                    storageToSet.Name, null);
             }
+
+            // null out values that cannot be updated
+            account.Properties.DataLakeStoreAccounts = null;
+            account.Properties.StorageAccounts = null;
 
             var updateParams = new DataLakeAnalyticsAccountCreateOrUpdateParameters
             {
