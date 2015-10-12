@@ -191,17 +191,17 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return site;
         }
 
-        public SiteCollection ListWebApps(string resourceGroupName, string webSiteName)
+        public IList<Site> ListWebApps(string resourceGroupName, string webSiteName)
         {
             SiteCollection sites = null;
             sites = !string.IsNullOrWhiteSpace(webSiteName) ? WrappedWebsitesClient.Sites.GetSiteSlots(resourceGroupName, webSiteName) : WrappedWebsitesClient.Sites.GetSites(resourceGroupName);
 
-            return sites;
+            return sites.Value;
         }
 
-        public IEnumerable<Site> ListWebAppsForAppServicePlan(string resourceGroupName, string appServicePlanName)
+        public IList<Site> ListWebAppsForAppServicePlan(string resourceGroupName, string appServicePlanName)
         {
-            return WrappedWebsitesClient.ServerFarms.GetServerFarmSites(resourceGroupName, appServicePlanName);
+            return WrappedWebsitesClient.ServerFarms.GetServerFarmSites(resourceGroupName, appServicePlanName).Value;
         }
 
         public string GetWebAppPublishingProfile(string resourceGroupName, string webSiteName, string slotName, string outputFile, string format)
@@ -234,14 +234,14 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return HttpStatusCode.OK;
         }
 
-        public XDocument GetWebAppUsageMetrics(string resourceGroupName, string webSiteName, string slotName, IReadOnlyList<string> metricNames,
+        public ResourceMetricCollection GetWebAppUsageMetrics(string resourceGroupName, string webSiteName, string slotName, IReadOnlyList<string> metricNames,
     DateTime? startTime, DateTime? endTime, string timeGrain, bool instanceDetails)
         {
             string qualifiedSiteName;
             var usageMetrics = ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName) ?
                 WrappedWebsitesClient.Sites.GetSiteMetricsSlot(resourceGroupName, webSiteName, slotName, instanceDetails, BuildMetricFilter(startTime, endTime ?? DateTime.Now, timeGrain, metricNames)) :
                 WrappedWebsitesClient.Sites.GetSiteMetrics(resourceGroupName, webSiteName, instanceDetails, BuildMetricFilter(startTime, endTime ?? DateTime.Now, timeGrain, metricNames));
-            return XDocument.Load(usageMetrics, LoadOptions.None);
+            return usageMetrics;
         }
 
         public ServerFarmWithRichSku CreateAppServicePlan(string resourceGroupName, string appServicePlanName, string location, string adminSiteName, SkuDescription sku)
@@ -273,7 +273,7 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
             return WrappedWebsitesClient.ServerFarms.GetServerFarms(resourceGroupName);
         }
 
-        public MetricResponseCollection GetAppServicePlanHistoricalUsageMetrics(string resourceGroupName, string appServicePlanName, IReadOnlyList<string> metricNames,
+        public ResourceMetricCollection GetAppServicePlanHistoricalUsageMetrics(string resourceGroupName, string appServicePlanName, IReadOnlyList<string> metricNames,
     DateTime? startTime, DateTime? endTime, string timeGrain, bool instanceDetails)
         {
             var response = WrappedWebsitesClient.ServerFarms.GetServerFarmMetrics(resourceGroupName, appServicePlanName, instanceDetails, BuildMetricFilter(startTime, endTime, timeGrain, metricNames));

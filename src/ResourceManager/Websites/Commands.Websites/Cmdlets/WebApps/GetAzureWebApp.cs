@@ -116,9 +116,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets
             try
             {
                 var result = WebsitesClient.ListWebApps(ResourceGroupName, null);
-                if (result != null && result.Value != null)
+                if (result != null)
                 {
-                    list.AddRange(result.Value);
+                    list.AddRange(result);
                 }
             }
             catch (Exception e)
@@ -153,9 +153,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets
                 try
                 {
                     var result = WebsitesClient.ListWebApps(rg, null);
-                    if (result != null && result.Value != null)
+                    if (result != null)
                     {
-                        list.AddRange(result.Value);
+                        list.AddRange(result);
                     }
                 }
                 catch (Exception e)

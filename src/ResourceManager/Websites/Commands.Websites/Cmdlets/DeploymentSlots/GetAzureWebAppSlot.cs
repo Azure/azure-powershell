@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets
             base.ProcessRecord();
             if (string.IsNullOrWhiteSpace(Slot))
             {
-                WriteObject(WebsitesClient.ListWebApps(ResourceGroupName, Name).Value);
+                WriteObject(WebsitesClient.ListWebApps(ResourceGroupName, Name));
             }
             else
             {
