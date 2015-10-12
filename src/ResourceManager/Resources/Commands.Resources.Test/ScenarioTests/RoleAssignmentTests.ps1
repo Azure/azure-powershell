@@ -25,17 +25,17 @@ function Test-RaNegativeScenarios
 
 	# Bad OID does not throw when getting a non-existing role assignment
 	$badOid = 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
-	$badOidResult = Get-AzureRoleAssignment -ObjectId $badOid
-	Assert-Null $badOidResult
+	$badOidException = "Cannot find principal using the specified options"
+	Assert-Throws { Get-AzureRoleAssignment -ObjectId $badOid } $badOidException
 
 	# Bad UPN
 	$badUpn = 'nonexistent@provider.com'
-	$badUpnException = "The provided information does not map to an AD object id."
+	$badUpnException = "Cannot find principal using the specified options"
 	Assert-Throws { Get-AzureRoleAssignment -UserPrincipalName $badUpn } $badUpnException
 	
 	# Bad SPN
 	$badSpn = 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb'
-	$badSpnException = "The provided information does not map to an AD object id."
+	$badSpnException = "Cannot find principal using the specified options"
 	Assert-Throws { Get-AzureRoleAssignment -ServicePrincipalName $badSpn } $badSpnException
 	
 	# Bad Scope
@@ -124,7 +124,9 @@ function Test-RaByResource
 	$definitionName = 'Owner'
 	$groups = Get-AzureADGroup | Select-Object -Last 1 -Wait
 	Assert-AreEqual 1 $groups.Count "There should be at least one group to run the test."
-	$resource = Get-AzureResource -ResourceGroupName 'csmrg8120'
+	$resourceGroups = Get-AzureResourceGroup | Select-Object -First 1 -Wait
+	Assert-AreEqual 1 $resourceGroups.Count "There should be at least one resource group to run the test."
+	$resource = Get-AzureResource -ResourceGroupName $resourceGroups[0].ResourceGroupName | Select-Object -First 1 -Wait
 	Assert-NotNull $resource "Cannot find any resource to continue test execution."
 
 	# Test
@@ -132,7 +134,7 @@ function Test-RaByResource
 	$newAssignment = New-AzureRoleAssignment `
                         -ObjectId $groups[0].Id.Guid `
                         -RoleDefinitionName $definitionName `
-                        -ResourceGroupName 'csmrg8120' `
+                        -ResourceGroupName $resourceGroups[0].ResourceGroupName`
                         -ResourceType $resource.ResourceType `
                         -ResourceName $resource.Name
 	
@@ -201,7 +203,7 @@ function Test-RaByUpn
 	# Test
 	[Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("7A750D57-9D92-4BE1-AD66-F099CECFFC01")
 	$newAssignment = New-AzureRoleAssignment `
-                        -UPN $users[0].Mail `
+                        -SignInName $users[0].Mail `
                         -RoleDefinitionName $definitionName `
                         -ResourceGroupName $resourceGroups[0].ResourceGroupName
 	

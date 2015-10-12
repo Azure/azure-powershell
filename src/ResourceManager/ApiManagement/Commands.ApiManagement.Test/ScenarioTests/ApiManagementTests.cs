@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
     using Microsoft.WindowsAzure.Management;
     using Microsoft.WindowsAzure.Management.Storage;
     using Xunit;
+    using System.Collections.Generic;
 
     public class ApiManagementTests
     {
@@ -146,6 +147,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
             //    "TEST_ORGID_AUTHENTICATION",
             //    "SubscriptionId=;Environment=");
 #endif
+            Dictionary<string, string> d = new Dictionary<string, string>();
+            d.Add("Microsoft.Authorization", "2014-07-01-preview");
+            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);  
 
             using (var context = UndoContext.Current)
             {

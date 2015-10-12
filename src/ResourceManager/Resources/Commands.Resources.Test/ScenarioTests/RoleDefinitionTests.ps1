@@ -33,7 +33,7 @@ function Test-RoleDefinitionCreateTests
 	Assert-AreEqual "Microsoft.Authorization/*/read" $rd.Actions[0]
 	Assert-AreEqual "Microsoft.Support/*" $rd.Actions[1]
 	Assert-NotNull $rd.AssignableScopes
-	Assert-AreEqual "/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d" $rd.AssignableScopes[0]
+	Assert-AreEqual "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f" $rd.AssignableScopes[0]
 
 	# Basic positive case - read from object
 	$roleDef = Get-AzureRoleDefinition -Name "Virtual Machine Contributor"
@@ -41,7 +41,7 @@ function Test-RoleDefinitionCreateTests
 	$roleDef.Name = "Virtual machine admins"
 	$roleDef.Actions.Add("Microsoft.ClassicCompute/virtualMachines/restart/action")
 	$roleDef.Description = "Can monitor and restart virtual machines"
-    $roleDef.AssignableScopes[0] = "/subscriptions/0f3992f2-ec70-4614-bdb3-70addf19069d"
+    $roleDef.AssignableScopes[0] = "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f"
 
     [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("032F61D2-ED09-40C9-8657-26A273DA7BAE")
 	New-AzureRoleDefinition -Role $roleDef
@@ -70,8 +70,8 @@ function Test-RdNegativeScenarios
     $rdNull = Get-AzureRoleDefinition -Name $rdName
     Assert-Null $rdNull
 
-    $rdId = '85E460B3-89E9-48BA-9DCD-A8A99D64A674'
-    $badIdException = "RoleDefinitionNotFound: The role definition '" + $rdId + "' could not be found."
+    $rdId = '85e460b3-89e9-48ba-9dcd-a8a99d64a674'
+    $badIdException = "RoleDefinitionDoesNotExist: The specified role definition with ID '" + $rdId + "' does not exist."
 
     # Throws on trying to update the a role that does not exist
     Assert-Throws { Set-AzureRoleDefinition -InputFile .\Resources\RoleDefinition.json } $badIdException

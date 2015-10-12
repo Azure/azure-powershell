@@ -21,16 +21,18 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
     {
         public string RoleAssignmentId { get; set; }
 
+        public string Scope { get; set; }
+
         public string DisplayName { get; set; }
+
+        public string SignInName { get; set; }
 
         public string RoleDefinitionName { get; set; }
 
-        public List<string> Actions { get; set; }
-
-        public List<string> NotActions { get; set; }
-
-        public string Scope { get; set; }
+        public string RoleDefinitionId { get; set; }
 
         public Guid ObjectId { get; set; }
+
+        public string ObjectType { get; set; }
     }
 }

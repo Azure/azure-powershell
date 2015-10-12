@@ -132,6 +132,7 @@
     <Compile Include="Mocks\MockClientFactory.cs" />
     <Compile Include="Mocks\MockTokenAuthenticationFactory.cs" />
     <Compile Include="PermissiveRecordMatcher.cs" />
+    <Compile Include="PermissiveRecordMatcherWithApiExclusion.cs" />
     <Compile Include="PowerShellExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
