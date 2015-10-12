@@ -92,7 +92,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             throw new NotImplementedException();
         }
 
-        List<ProductInfoHeaderValue> IClientFactory.UserAgents
+        HashSet<ProductInfoHeaderValue> IClientFactory.UserAgents
         {
             get
             {
