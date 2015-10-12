@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\..\packages\xunit.runner.visualstudio.2.0.0\build\net20\xunit.runner.visualstudio.props" Condition="Exists('..\..\packages\xunit.runner.visualstudio.2.0.0\build\net20\xunit.runner.visualstudio.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -166,7 +166,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\AuthenticationFactoryTests.cs" />
+    <Compile Include="Common\ClientFactoryTests.cs" />
     <Compile Include="Common\MockSubsciptionFactory.cs" />
+    <Compile Include="Common\NullClient.cs" />
     <Compile Include="Common\ServicePrincipalStoreTests.cs" />
     <Compile Include="Common\GeneralUtilitiesTests.cs" />
     <Compile Include="Common\Data.cs" />

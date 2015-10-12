@@ -66,21 +66,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
             throw new NotImplementedException();
         }
 
-        public void AddUserAgent(string productName, string productVersion)
+        void IClientFactory.AddUserAgent(string productName, string productVersion)
         {
             throw new NotImplementedException();
         }
 
-        public void AddUserAgent(string productName)
+        void IClientFactory.AddUserAgent(string productName)
         {
             throw new NotImplementedException();
         }
-
-        public HashSet<ProductInfoHeaderValue> UserAgents
-        {
-            get { throw new NotImplementedException(); }
-        }
-
 
         public TClient CreateArmClient<TClient>(Azure.Common.Authentication.Models.AzureContext context, Azure.Common.Authentication.Models.AzureEnvironment.Endpoint endpoint) where TClient : Microsoft.Rest.ServiceClient<TClient>
         {
