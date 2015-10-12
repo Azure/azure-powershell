@@ -23,7 +23,7 @@
     "Get-AzureStorageContainerAcl" = "Get-AzureStorageContainer";
     "Start-CopyAzureStorageBlob" = "Start-AzureStorageBlobCopy";
     "Stop-CopyAzureStorageBlob" = "Stop-AzureStorageBlobCopy";
-}.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | New-Alias -Description "AzureAlias"
+}.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | Where-Object {!(Test-Path ("alias:" + $_.Name))} | New-Alias -Description "AzureAlias"
 
 
 # Authorization script commandlet that builds on top of existing Insights comandlets. 
