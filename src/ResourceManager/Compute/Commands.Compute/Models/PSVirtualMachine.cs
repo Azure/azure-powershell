@@ -70,6 +70,15 @@ namespace Microsoft.Azure.Commands.Compute.Models
             get { return JsonConvert.SerializeObject(AvailabilitySetReference, Formatting.Indented); }
         }
 
+        // Gets or sets the diagnostics profile.
+        public DiagnosticsProfile DiagnosticsProfile { get; set; }
+
+        [JsonIgnore]
+        public string DiagnosticsProfileText
+        {
+            get { return JsonConvert.SerializeObject(DiagnosticsProfile, Formatting.Indented); }
+        }
+
         // Gets the virtual machine child extension resources.
         public IList<VirtualMachineExtension> Extensions { get; set; }
 

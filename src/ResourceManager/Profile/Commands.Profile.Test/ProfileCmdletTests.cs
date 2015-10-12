@@ -22,6 +22,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System.Linq;
 using Xunit;
 using System;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
@@ -56,7 +57,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            Assert.True(AzureRMCmdlet.DefaultProfile.Environments.ContainsKey("foo"));
+            Assert.True(AzureRmProfileProvider.Instance.Profile.Environments.ContainsKey("foo"));
         }
 
         [Fact]
@@ -91,7 +92,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            Assert.True(AzureRMCmdlet.DefaultProfile.Environments.ContainsKey("foo"));
+            Assert.True(AzureRmProfileProvider.Instance.Profile.Environments.ContainsKey("foo"));
         }
 
         [Fact]
@@ -123,7 +124,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         {
             SaveAzureRMProfileCommand cmdlt = new SaveAzureRMProfileCommand();
             // Setup
-            AzureRMCmdlet.DefaultProfile = null;
+            AzureRmProfileProvider.Instance.Profile = null;
             cmdlt.Path = "X:\\foo.json";
             cmdlt.CommandRuntime = commandRuntimeMock;
 
@@ -138,7 +139,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             var profile = new AzureRMProfile();
             profile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
             profile.Context = new AzureContext(new AzureSubscription(), new AzureAccount(), profile.Environments["foo"]);
-            AzureRMCmdlet.DefaultProfile = profile;
+            AzureRmProfileProvider.Instance.Profile = profile;
             SaveAzureRMProfileCommand cmdlt = new SaveAzureRMProfileCommand();
             // Setup
             cmdlt.Path = "X:\\foo.json";

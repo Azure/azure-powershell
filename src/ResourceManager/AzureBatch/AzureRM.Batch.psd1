@@ -9,7 +9,7 @@
 @{  
   
 # Version number of this module.  
-ModuleVersion = '0.9.10'  
+ModuleVersion = '0.10.0' 
   
 # ID used to uniquely identify this module  
 GUID = 'a8f00f40-1c1a-49b5-9db3-24076b75c3cf'  
@@ -24,7 +24,7 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'    
   
 # Description of the functionality provided by this module  
-Description = 'Microsoft Azure PowerShell - Batch'  
+Description = 'Microsoft Azure PowerShell - Batch service cmdlets for Azure Resource Manager'  
   
 # Minimum version of the Windows PowerShell engine required by this module  
 PowerShellVersion = '3.0'  
@@ -45,7 +45,7 @@ CLRVersion='4.0'
 ProcessorArchitecture = 'None'  
   
 # Modules that must be imported into the global environment prior to importing this module  
-RequiredModules = @( @{ ModuleName = 'AzureRM.Profile'; ModuleVersion = '0.9.10' })
+RequiredModules = @( @{ ModuleName = 'AzureRM.Profile'; ModuleVersion = '0.10.0'})
   
 # Assemblies that must be loaded prior to importing this module  
 RequiredAssemblies = @()  

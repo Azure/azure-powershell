@@ -29,6 +29,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
@@ -58,11 +59,11 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             rmprofile.Environments.Add("foo", AzureEnvironment.PublicEnvironments.Values.FirstOrDefault());
             rmprofile.Context = new AzureContext(new AzureSubscription(), new AzureAccount(), rmprofile.Environments["foo"], new AzureTenant());
             rmprofile.Context.Subscription.Environment = "foo";
-            if (AzureRMCmdlet.DefaultProfile == null)
+            if (AzureRmProfileProvider.Instance.Profile == null)
             {
-                AzureRMCmdlet.DefaultProfile = rmprofile;
-            }
-            ProfileClient = new ProfileClient(profile);
+                AzureRmProfileProvider.Instance.Profile = rmprofile;            }
+
+            AzureSession.DataStore = datastore;            ProfileClient = new ProfileClient(profile);
 
             // Ignore SSL errors
             System.Net.ServicePointManager.ServerCertificateValidationCallback += (se, cert, chain, sslerror) => true;
@@ -171,9 +172,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 ProfileClient.AddOrSetEnvironment(environment);
             }
 
-            if (!AzureRMCmdlet.DefaultProfile.Environments.ContainsKey(testEnvironmentName))
+            if (!AzureRmProfileProvider.Instance.Profile.Environments.ContainsKey(testEnvironmentName))
             {
-                AzureRMCmdlet.DefaultProfile.Environments[testEnvironmentName] = environment;
+                AzureRmProfileProvider.Instance.Profile.Environments[testEnvironmentName] = environment;
             }
 
             if (currentEnvironment.SubscriptionId != null)
@@ -217,7 +218,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                         testTenant.Id = tenant;
                     }
                 }
-                AzureRMCmdlet.DefaultProfile.Context = new AzureContext(testSubscription, testAccount, environment, testTenant);
+                AzureRmProfileProvider.Instance.Profile.Context = new AzureContext(testSubscription, testAccount, environment, testTenant);
             }
         }
 

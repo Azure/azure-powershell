@@ -36,22 +36,27 @@ Gets the location for the Batch account provider. Default to West US if none fou
 #>
 function Get-BatchAccountProviderLocation($index)
 {
-    $location = Get-AzureRmLocation | where {$_.Name -eq "Microsoft.Batch/batchAccounts"}
-    if ($location -eq $null) 
+	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
 	{
-        "West US"
-    } 
-	else 
-	{
-	    if ($index -eq $null)
-		{
-			$location.Locations[0]
+		$namespace = $provider.Split("/")[0]  
+		if($provider.Contains("/"))  
+		{  
+			$type = $provider.Substring($namespace.Length + 1)  
+			$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
+  
+			if ($location -eq $null) 
+			{  
+				return "West US"  
+			} else 
+			{  
+				return $location.Locations[0]  
+			}  
 		}
-		else
-		{
-			$location.Locations[$index]
-		}
-    }
+		
+		return "West US"
+	}
+
+	return "WestUS"
 }
 
 <#

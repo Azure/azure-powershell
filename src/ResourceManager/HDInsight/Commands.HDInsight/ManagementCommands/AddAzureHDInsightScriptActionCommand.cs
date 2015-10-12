@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.HDInsight.Commands;
 using Microsoft.Azure.Commands.HDInsight.Models;
+using Microsoft.Azure.Commands.HDInsight.Models.Management;
 using Microsoft.Azure.Management.HDInsight.Models;
 
 namespace Microsoft.Azure.Commands.HDInsight
@@ -27,7 +28,7 @@ namespace Microsoft.Azure.Commands.HDInsight
     OutputType(typeof(AzureHDInsightConfig))]
     public class AddAzureHDInsightScriptActionCommand : HDInsightCmdletBase
     {
-        private ScriptAction _action;
+        private AzureHDInsightScriptAction _action;
         #region Input Parameter Definitions
 
         [Parameter(Position = 0,
@@ -55,12 +56,11 @@ namespace Microsoft.Azure.Commands.HDInsight
             HelpMessage = "The name of the action.")]
         public string Name
         {
-            get { return _action.Name; }
-            set { _action.Name = value; }
+            get { return _action.ActionName; }
+            set { _action.ActionName = value; }
         }
 
         [Parameter(Position = 4,
-            Mandatory = true,
             HelpMessage = "The parameters for the action.")]
         public string Parameters
         {
@@ -72,12 +72,12 @@ namespace Microsoft.Azure.Commands.HDInsight
 
         public AddAzureHDInsightScriptActionCommand()
         {
-            _action = new ScriptAction();
+            _action = new AzureHDInsightScriptAction();
         }
         
         protected override void ProcessRecord()
         {
-            List<ScriptAction> actions;
+            List<AzureHDInsightScriptAction> actions;
 
             if (Config.ScriptActions.TryGetValue(NodeType, out actions))
             {
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             }
             else
             {
-                Config.ScriptActions.Add(NodeType, new List<ScriptAction> {_action});
+                Config.ScriptActions.Add(NodeType, new List<AzureHDInsightScriptAction> { _action });
             }
 
             WriteObject(Config);

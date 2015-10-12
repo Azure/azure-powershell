@@ -44,5 +44,45 @@
         </TableRowEntries>
       </TableControl>
     </View>
+    <View>
+      <Name>Microsoft.WindowsAzure.Commands.Profile.Models.PSAzureSubscription</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.WindowsAzure.Commands.Profile.Models.PSAzureSubscription</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>SubscriptionId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>SubscriptionName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>Environment</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>DefaultAccount</Label>
+                <PropertyName>DefaultAccount</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>IsDefault</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>IsCurrent</PropertyName>
+              </ListItem>
+              <ListItem>
+                <PropertyName>TenantId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>CurrentStorageAccountName</Label>
+                <ScriptBlock>$_.GetAccountName()</ScriptBlock>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
   </ViewDefinitions>
 </Configuration>

@@ -29,7 +29,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         [Alias("N", "Name")]
         [Parameter(Position = 0, Mandatory = true,
             HelpMessage = "Table Name",
-            ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string Table { get; set; }

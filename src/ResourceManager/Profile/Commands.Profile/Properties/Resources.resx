@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccessTokenRequiresAccount" xml:space="preserve">
+    <value>AccountId must be provided to use an AccessToken credential.</value>
+  </data>
+  <data name="AccountIdRequired" xml:space="preserve">
+    <value>Access token credentials must provide the AccountId parameter.</value>
+  </data>
   <data name="AzureProfileMustNotBeNull" xml:space="preserve">
     <value>Selected profile must not be null.</value>
   </data>
@@ -140,5 +146,8 @@
   </data>
   <data name="TenantAuthFailed" xml:space="preserve">
     <value>Could not authenticate with tenant {0}. Please ensure that your account has access to this tenant and log in with Login-AzureRmAccount</value>
+  </data>
+  <data name="TypeNotAccessToken" xml:space="preserve">
+    <value>To create an access token credential, you must provide an access token account.</value>
   </data>
 </root>

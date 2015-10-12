@@ -20,6 +20,7 @@ using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Common.Authentication;
+using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using Microsoft.Azure.Commands.Profile.Properties;
 
@@ -54,11 +55,15 @@ namespace Microsoft.Azure.Commands.Profile
         [ValidateNotNullOrEmpty]
         public string AccessToken { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Subscription")]
+        [Parameter(ParameterSetName = "AccessToken", Mandatory = true, HelpMessage = "Account Id for access token")]
+        [ValidateNotNullOrEmpty]
+        public string AccountId { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Subscription Id")]
         [ValidateNotNullOrEmpty]
         public string SubscriptionId { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Subscription")]
+        [Parameter(Mandatory = false, HelpMessage = "Subscription name")]
         [ValidateNotNullOrEmpty]
         public string SubscriptionName { get; set; }
 
@@ -96,7 +101,14 @@ namespace Microsoft.Azure.Commands.Profile
 
             if (!string.IsNullOrEmpty(AccessToken))
             {
+                if (string.IsNullOrWhiteSpace(AccountId) )
+                {
+                    throw new PSInvalidOperationException(Resources.AccountIdRequired);
+                }
+
                 azureAccount.Type = AzureAccount.AccountType.AccessToken;
+                azureAccount.Id = AccountId;
+                azureAccount.SetProperty(AzureAccount.Property.AccessToken, AccessToken);
             }
             else if (ServicePrincipal.IsPresent)
             {
@@ -119,14 +131,15 @@ namespace Microsoft.Azure.Commands.Profile
                 azureAccount.SetProperty(AzureAccount.Property.Tenants, new[] { Tenant });
             }
 
-            if( AzureRMCmdlet.DefaultProfile == null)
+            if( AzureRmProfileProvider.Instance.Profile == null)
             {
-                AzureRMCmdlet.DefaultProfile = new AzureRMProfile();
+                AzureRmProfileProvider.Instance.Profile = new AzureRMProfile();
             }
 
-            var profileClient = new RMProfileClient(AzureRMCmdlet.DefaultProfile);
+            var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
             
-            WriteObject((PSAzureProfile)profileClient.Login(azureAccount, Environment, Tenant, SubscriptionId, SubscriptionName, password));
+            WriteObject((PSAzureProfile)profileClient.Login(azureAccount, Environment, Tenant, SubscriptionId, 
+                SubscriptionName, password));
         }
 
         /// <summary>

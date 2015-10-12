@@ -12,10 +12,10 @@
 // limitations under the License. 
 // ---------------------------------------------------------------------------------- 
 
-using System; 
-using System.Collections.Generic; 
-using System.Text; 
-using System.Text.RegularExpressions; 
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Text.RegularExpressions;
 using Microsoft.Azure.Test.HttpRecorder;
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
@@ -50,27 +50,30 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             var encodedPath = Convert.ToBase64String(Encoding.UTF8.GetBytes(path));
             return string.Format("{0} {1}", request.Method, encodedPath);
         }
-        
+
         public string GetMatchingKey(RecordEntry recordEntry)
         {
-            string path = recordEntry.RequestUri;
-            if(!string.IsNullOrEmpty(recordEntry.EncodedRequestUri))
-            {
-                path = Encoding.UTF8.GetString(Convert.FromBase64String(recordEntry.EncodedRequestUri));
-            }
-
+            var encodedPath = recordEntry.EncodedRequestUri;
+            var path = recordEntry.RequestUri;
+            var changed = false;
             if (path.Contains("?&"))
             {
-                path = path.Replace("?&", "?");
+                path = recordEntry.RequestUri.Replace("?&", "?");
+                changed = true;
             }
 
             string version;
             if (ContainsIgnoredProvider(path, out version))
             {
                 path = RemoveOrReplaceApiVersion(path, version);
+                changed = true;
             }
-            
-            var encodedPath = Convert.ToBase64String(Encoding.UTF8.GetBytes(path));
+
+            if (changed)
+            {
+                encodedPath = Convert.ToBase64String(Encoding.UTF8.GetBytes(path));
+            }
+
             return string.Format("{0} {1}", recordEntry.RequestMethod, encodedPath);
         }
 
@@ -101,12 +104,13 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         {
             if (!string.IsNullOrWhiteSpace(version))
             {
-                return Regex.Replace(requestUri, @"\?api-version=[^&]+", string.Format("?api-version={0}", version));
+                return Regex.Replace(requestUri, @"([\?&])api-version=[^&]+", string.Format("$1api-version={0}", version));
             }
             else
             {
-                return Regex.Replace(requestUri, @"\?api-version=[^&]+", string.Empty);
+                var result= Regex.Replace(requestUri, @"&api-version=[^&]+", string.Empty);
+                return Regex.Replace(result, @"\?api-version=[^&]+[&]*", "?");
             }
         }
     }
-} 
+}

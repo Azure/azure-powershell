@@ -30,14 +30,8 @@ namespace Microsoft.Azure.Commands.HDInsight
     {
         #region Input Parameter Definitions
 
-        [Parameter(
-            Position = 0,
-            Mandatory = true,
-            HelpMessage = "Gets or sets the name of the resource group.")]
-        public string ResourceGroupName { get; set; }
-
         [Parameter(Mandatory = true,
-            Position = 1,
+            Position = 0,
             HelpMessage = "The name of the cluster.")]
         public string ClusterName
         {
@@ -46,15 +40,16 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
 
         [Parameter(Mandatory = true, 
-            Position = 2, 
+            Position = 1, 
             HelpMessage = "The jobDetails definition to start on the Azure HDInsight cluster.",
             ValueFromPipeline = true)]
         public AzureHDInsightJobDefinition JobDefinition { get; set; }
 
         [Parameter(Mandatory = true,
-            Position = 3,
+            Position = 2,
             HelpMessage = "The credentials with which to connect to the cluster.")]
-        public PSCredential ClusterCredential
+        [Alias("ClusterCredential")]
+        public PSCredential HttpCredential
         {
             get
             {
@@ -70,11 +65,18 @@ namespace Microsoft.Azure.Commands.HDInsight
             }
         }
 
+        [Parameter(HelpMessage = "Gets or sets the name of the resource group.")]
+        public string ResourceGroupName { get; set; }
+
         #endregion
 
 
         protected override void ProcessRecord()
         {
+            if (ResourceGroupName == null)
+            {
+                ResourceGroupName = GetResourceGroupByAccountName(ClusterName);
+            }
             WriteObject(Execute());
         }
 
@@ -104,6 +106,7 @@ namespace Microsoft.Azure.Commands.HDInsight
             var azureHiveJobDefinition = JobDefinition as AzureHDInsightHiveJobDefinition;
             var azurePigJobDefinition = JobDefinition as AzureHDInsightPigJobDefinition;
             var azureStreamingJobDefinition = JobDefinition as AzureHDInsightStreamingMapReduceJobDefinition;
+            var azureSqoopJobDefinition = JobDefinition as AzureHDInsightSqoopJobDefinition;
 
             if (azureMapReduceJobDefinition != null)
             {
@@ -120,6 +123,10 @@ namespace Microsoft.Azure.Commands.HDInsight
             else if (azureStreamingJobDefinition != null)
             {
                 jobCreationResults = HDInsightJobClient.SubmitStreamingJob(azureStreamingJobDefinition);
+            }
+            else if (azureSqoopJobDefinition != null)
+            {
+                jobCreationResults = HDInsightJobClient.SubmitSqoopJob(azureSqoopJobDefinition);
             }
             else
             {
