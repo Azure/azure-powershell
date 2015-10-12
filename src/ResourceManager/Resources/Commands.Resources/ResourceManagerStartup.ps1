@@ -12,18 +12,18 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-@{ 
-    # Sql aliases  
-    "Get-AzureSqlDatabaseServerAuditingPolicy" = "Get-AzureSqlServerAuditingPolicy";  
-    "Remove-AzureSqlDatabaseServerAuditing" = "Remove-AzureSqlServerAuditing";  
-    "Set-AzureSqlDatabaseServerAuditingPolicy" = "Set-AzureSqlServerAuditingPolicy";  
-    "Use-AzureSqlDatabaseServerAuditingPolicy" = "Use-AzureSqlServerAuditingPolicy";  
-  
-    # Storage aliases  
-    "Get-AzureStorageContainerAcl" = "Get-AzureStorageContainer";  
-    "Start-CopyAzureStorageBlob" = "Start-AzureStorageBlobCopy";  
-    "Stop-CopyAzureStorageBlob" = "Stop-AzureStorageBlobCopy";  
-}.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | New-Alias -Description "AzureAlias"
+@{
+    # Sql aliases
+    "Get-AzureSqlDatabaseServerAuditingPolicy" = "Get-AzureSqlServerAuditingPolicy";
+    "Remove-AzureSqlDatabaseServerAuditing" = "Remove-AzureSqlServerAuditing";
+    "Set-AzureSqlDatabaseServerAuditingPolicy" = "Set-AzureSqlServerAuditingPolicy";
+    "Use-AzureSqlDatabaseServerAuditingPolicy" = "Use-AzureSqlServerAuditingPolicy";
+
+    # Storage aliases
+    "Get-AzureStorageContainerAcl" = "Get-AzureStorageContainer";
+    "Start-CopyAzureStorageBlob" = "Start-AzureStorageBlobCopy";
+    "Stop-CopyAzureStorageBlob" = "Stop-AzureStorageBlobCopy";
+}.GetEnumerator() | Select @{Name='Name'; Expression={$_.Key}}, @{Name='Value'; Expression={$_.Value}} | Where-Object {!(Test-Path ("alias:" + $_.Name))} | New-Alias -Description "AzureAlias"
 
 # Authorization script commandlet that builds on top of existing Insights comandlets. 
 # This commandlet gets all events for the "Microsoft.Authorization" resource provider by calling the "Get-AzureResourceProviderLog" commandlet
