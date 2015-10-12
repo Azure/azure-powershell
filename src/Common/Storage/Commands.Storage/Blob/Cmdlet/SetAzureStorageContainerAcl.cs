@@ -33,6 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Cmdlet
     {
         [Alias("N", "Container")]
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Container Name",
+            ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
         public string Name { get; set; }
 

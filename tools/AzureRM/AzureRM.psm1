@@ -78,7 +78,7 @@ function Install-ModuleWithVersionCheck([string]$Name,[string]$MajorVersion,[str
       Install-Module -Name $Name -Repository $Repository -Scope $Scope -MinimumVersion $_MinVer -MaximumVersion $_MaxVer -ErrorAction Stop
     }
     $v = (Get-InstalledModule -Name $Name -ErrorAction Ignore)[0].Version.ToString()
-    Write-Output "$Name $v $_ModuleAction [$script:InstallCounter/$($AzureRMModules.Count + 1)]..." 
+    Write-Output "$Name $v $_ModuleAction [$script:InstallCounter/$($AzureRMModules.Count + 2)]..." 
   } catch {
     Write-Warning "Skipping $Name package..."
     Write-Warning $_
