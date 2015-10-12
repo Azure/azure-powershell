@@ -165,7 +165,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             // Do nothing
         }
 
-        public void AddHandler(DelegatingHandler handler)
+        public void AddHandler<T>(T handler) where T : DelegatingHandler, ICloneable
         {
             // Do nothing
         }

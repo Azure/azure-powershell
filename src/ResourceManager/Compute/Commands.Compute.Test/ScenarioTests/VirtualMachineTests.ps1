@@ -26,7 +26,7 @@ function Test-VirtualMachine
         # Common
         $loc = Get-ComputeVMLocation;
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
-        
+
         # VM Profile & Hardware
         $vmsize = 'Standard_A4';
         $vmname = 'vm' + $rgname;
@@ -133,6 +133,9 @@ function Test-VirtualMachine
         Assert-AreEqual $vm1.OSProfile.ComputerName $computerName;
         Assert-AreEqual $vm1.HardwareProfile.VirtualMachineSize $vmsize;
 
+        Assert-AreEqual $true $vm1.DiagnosticsProfile.BootDiagnostics.Enabled;
+        Assert-AreEqual $stoaccount.PrimaryEndpoints.Blob $vm1.DiagnosticsProfile.BootDiagnostics.StorageUri;
+
         Start-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
         Restart-AzureRmVM -Name $vmname -ResourceGroupName $rgname;
         Stop-AzureRmVM -Name $vmname -ResourceGroupName $rgname -Force -StayProvisioned;
@@ -154,6 +157,10 @@ function Test-VirtualMachine
         Assert-AreEqual $vm2.OSProfile.ComputerName $computerName;
         Assert-AreEqual $vm2.HardwareProfile.VirtualMachineSize $vmsize;
         Assert-NotNull $vm2.Location;
+
+        Assert-AreEqual $true $vm2.DiagnosticsProfile.BootDiagnostics.Enabled;
+        Assert-AreEqual $stoaccount.PrimaryEndpoints.Blob $vm2.DiagnosticsProfile.BootDiagnostics.StorageUri;
+
         
         $vms = Get-AzureRmVM -ResourceGroupName $rgname;
         Assert-AreNotEqual $vms $null;
@@ -179,7 +186,9 @@ function Test-VirtualMachine
         Assert-NotNull $aset;
         Assert-AreEqual $asetName $aset.Name;
 
-        $asetId = ('/subscriptions/' + (Get-AzureRmContext).Subscription.SubscriptionId + '/resourceGroups/' + $rgname + '/providers/Microsoft.Compute/availabilitySets/' + $asetName);
+        $subId = Get-SubscriptionIdFromResourceGroup $rgname;
+
+        $asetId = ('/subscriptions/' + $subId + '/resourceGroups/' + $rgname + '/providers/Microsoft.Compute/availabilitySets/' + $asetName);
         $vmname2 = $vmname + '2';
         $p2 = New-AzureRmVMConfig -VMName $vmname2 -VMSize $vmsize -AvailabilitySetId $asetId;
         $p2.HardwareProfile = $p.HardwareProfile;
@@ -1702,7 +1711,7 @@ function Test-VMImageCmdletOutputFormat
 # Test Get VM Size from All Locations
 function Test-GetVMSizeFromAllLocations
 {
-    $locations = Get-AzureRmLocation | where { $_.Name -like 'Microsoft.Compute/virtualMachines' } | select -ExpandProperty Locations;
+    $locations = get_all_vm_locations;
     foreach ($loc in $locations)
     {
         $vmsizes = Get-AzureRmVMSize -Location $loc;
@@ -1711,6 +1720,26 @@ function Test-GetVMSizeFromAllLocations
 
         Write-Output ('Found VM Size Standard_A3 in Location: ' + $loc);
     }
+}
+
+function get_all_vm_locations
+{
+	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+	{
+		$namespace = "Microsoft.Compute" 
+		$type = "virtualMachines" 
+		$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
+  
+		if ($location -eq $null) 
+		{  
+			return @("West US", "East US")
+		} else 
+		{  
+			return $location.Locations  
+		}  
+	}
+
+	return @("West US", "East US")
 }
 
 <#
@@ -1773,3 +1802,4 @@ function Test-VirtualMachineListWithPaging
         Clean-ResourceGroup $rgname
     }
 }
+

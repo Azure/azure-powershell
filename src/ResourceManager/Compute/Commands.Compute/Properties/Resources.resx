@@ -434,4 +434,22 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
     <value>Configuration file '{0}' not found.</value>
     <comment>0 = path to the configuration file</comment>
   </data>
+  <data name="PremiumStorageAccountForBootDiagnostics" xml:space="preserve">
+    <value>Storage account, {0}, is a premium account.  You cannot specify a premium storage account for boot diagnostics</value>
+  </data>
+  <data name="BootDiagnosticsNoStorageAccountError" xml:space="preserve">
+    <value>Storage account name for boot diagnostics is not given.</value>
+  </data>
+  <data name="CreatingStorageAccountForBootDiagnostics" xml:space="preserve">
+    <value>Since the VM is created using premium storage, new standard storage account, {0}, is created for boot diagnostics.</value>
+    <comment>{0} = new standard storage account name</comment>
+  </data>
+  <data name="ErrorDuringCreatingStorageAccountForBootDiagnostics" xml:space="preserve">
+    <value>Error occurred when creating storage account for boot diagnostics.  Keep creating a VM with disabling boot diagnostics.  : {0}</value>
+    <comment>{0} = exception</comment>
+  </data>
+  <data name="UsingExistingStorageAccountForBootDiagnostics" xml:space="preserve">
+    <value>Since the VM is created using premium storage, existing standard storage account, {0}, is used for boot diagnostics.</value>
+    <comment>{0} = existing standard storage account name</comment>
+  </data>
 </root>

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -21,7 +22,7 @@ namespace Microsoft.WindowsAzure.Commands.Common
     /// <summary>
     /// A delegating handler that writes the current cmdlet info into request headers.
     /// </summary>
-    public class CmdletInfoHandler : DelegatingHandler
+    public class CmdletInfoHandler : DelegatingHandler, ICloneable
     {
         /// <summary>
         /// The name of the cmdlet.
@@ -55,6 +56,11 @@ namespace Microsoft.WindowsAzure.Commands.Common
                 request.Headers.Add("ParameterSetName", ParameterSet);
             }
             return base.SendAsync(request, cancellationToken);
+        }
+
+        public object Clone()
+        {
+            return new CmdletInfoHandler(this.Cmdlet, this.ParameterSet);
         }
     }
 }

@@ -113,6 +113,20 @@ function Test-GetAzureRmVMDscExtension
 #helper methods for ARM 
 function Get-DefaultResourceGroupLocation
 {
-	$location = Get-AzureRmLocation | where {$_.Name -eq "Microsoft.Resources/resourceGroups"}
-	return $location.Locations[0]
+	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+	{
+		$namespace = "Microsoft.Resources" 
+		$type = "resourceGroups" 
+		$location = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}  
+  
+		if ($location -eq $null) 
+		{  
+			return "West US"  
+		} else 
+		{  
+			return $location.Locations[0]  
+		}  
+	}
+
+	return "West US"
 }

@@ -442,6 +442,5 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
                 }
             }
         }
-
     }
 }
