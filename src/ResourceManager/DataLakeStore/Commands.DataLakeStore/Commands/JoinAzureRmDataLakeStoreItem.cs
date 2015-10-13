@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using Microsoft.Azure.Management.DataLake.StoreFileSystem.Models;
@@ -44,7 +45,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         protected override void ProcessRecord()
         {
-            var pathList = new List<string>();
             FileType fileType;
             if (this.Force &&
                 DataLakeStoreFileSystemClient.TestFileOrFolderExistence(this.AccountName, Destination.FullyQualifiedPath,
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 DataLakeStoreFileSystemClient.DeleteFileOrFolder(this.AccountName, Destination.FullyQualifiedPath, false);
             }
 
-            DataLakeStoreFileSystemClient.ConcatenateFiles(Destination.Path, AccountName, pathList.ToArray());
+            DataLakeStoreFileSystemClient.ConcatenateFiles(Destination.Path, AccountName, Paths.Select(path => path.Path).ToArray());
 
             WriteObject(Destination.FullyQualifiedPath);
         }
