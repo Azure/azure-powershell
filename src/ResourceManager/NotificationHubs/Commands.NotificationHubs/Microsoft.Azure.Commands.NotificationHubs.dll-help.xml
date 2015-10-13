@@ -1696,7 +1696,7 @@
 				<maml:description>
 					<maml:para />
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Dictionary`2[String]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">System.Collections.Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Profile</maml:name>
@@ -1763,7 +1763,7 @@
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Dictionary`2[String]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">System.Collections.Hashtable</command:parameterValue>
 			<dev:type>
 				<maml:name>Dictionary`2[String]</maml:name>
 				<maml:uri/>
@@ -3198,7 +3198,7 @@
 				<maml:description>
 					<maml:para />
 				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Dictionary`2[String]</command:parameterValue>
+				<command:parameterValue required="true" variableLength="true">System.Collections.Hashtable</command:parameterValue>
 			</command:parameter>
 			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
 				<maml:name>Profile</maml:name>
@@ -3277,7 +3277,7 @@
 			<maml:description>
 				<maml:para />
 			</maml:description>
-			<command:parameterValue required="true" variableLength="true">Dictionary`2[String]</command:parameterValue>
+			<command:parameterValue required="true" variableLength="true">System.Collections.Hashtable</command:parameterValue>
 			<dev:type>
 				<maml:name>Dictionary`2[String]</maml:name>
 				<maml:uri/>
