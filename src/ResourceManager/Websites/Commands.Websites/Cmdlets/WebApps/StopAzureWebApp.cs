@@ -15,10 +15,8 @@
 
 
 using System.Management.Automation;
-using Microsoft.Azure.Commands.WebApp.Utilities;
 
-
-namespace Microsoft.Azure.Commands.WebApp.Cmdlets
+namespace Microsoft.Azure.Commands.WebApps.Cmdlets
 {
     /// <summary>
     /// this commandlet will let you stop an Azure Web app
@@ -26,16 +24,10 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets
     [Cmdlet(VerbsLifecycle.Stop, "AzureRmWebApp")]
     public class StopAzureWebAppCmdlet : WebAppBaseCmdlet
     {
-
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = "The name of the web app slot.")]
-        [ValidateNotNullOrEmptyAttribute]
-        public string SlotName { get; set; }
-
         protected override void ProcessRecord()
         {
-            WriteObject(WebsitesClient.StopWebsite(ResourceGroupName, Name, SlotName));
+            WriteObject(WebsitesClient.StopWebApp(ResourceGroupName, Name, null));
         }
-
     }
 }
 

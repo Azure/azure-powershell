@@ -13,18 +13,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
 using System.Management.Automation;
-using Microsoft.Azure.Commands.WebApp.Properties;
-using Microsoft.Azure.Commands.WebApp.Utilities;
-
-namespace Microsoft.Azure.Commands.WebApp.Cmdlets
+namespace Microsoft.Azure.Commands.WebApps.Cmdlets
 {
     /// <summary>
     /// this commandlet will let you delete an Azure web app
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmWebApp")]
-    public class RemoveAzureWebAppCmdlet : WebAppBaseNotMandatoryCmdlet
+    [Cmdlet(VerbsCommon.Remove, "AzureRMWebApp")]
+    public class RemoveAzureWebAppCmdlet : WebAppBaseCmdlet
     {
 
        //always delete the slots, 
@@ -41,17 +37,17 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets
             
         protected override void ProcessRecord()
         {
-            // Currently we delete all slots.
-            string slotName = null;
-
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Resources.RemoveWebsiteWarning, Name),
-                Resources.RemoveWebsiteMessage,
+                string.Format(Properties.Resources.RemoveWebsiteWarning, Name),
+                Properties.Resources.RemoveWebsiteMessage,
                 Name,
-                () => WebsitesClient.RemoveWebsite(ResourceGroupName, Name, slotName, deleteEmptyServerFarmByDefault, deleteMetricsByDefault, deleteSlotsByDefault));
-        }
+                () =>
+                {
+                    WebsitesClient.RemoveWebApp(ResourceGroupName, Name, null, deleteEmptyServerFarmByDefault, deleteMetricsByDefault, deleteSlotsByDefault);
+                });
 
+        }
     }
 }
 

@@ -15,30 +15,27 @@
 
 
 using System.Management.Automation;
-using Microsoft.Azure.Commands.WebApp.Utilities;
+using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
 
-
-namespace Microsoft.Azure.Commands.WebApp.Cmdlets
+namespace Microsoft.Azure.Commands.WebApps.Cmdlets
 {
     /// <summary>
-    /// this commandlet will let you restart an Azure Web app
+    /// this commandlet will let you get a new Azure Web app slot using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Restart, "AzureRmWebApp")]
-    public class RestartAzureWebAppCmdlet : WebAppBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRMWebAppSlot")]
+    public class GetAzureWebAppSlotCmdlet : WebAppSlotBaseCmdlet
     {
-
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = "The name of the web app slot.")]
-        [ValidateNotNullOrEmptyAttribute]
-        public string SlotName { get; set; }
-
         protected override void ProcessRecord()
         {
-            WriteObject(WebsitesClient.RestartWebsite(ResourceGroupName, Name, SlotName));
+            base.ProcessRecord();
+            if (string.IsNullOrWhiteSpace(Slot))
+            {
+                WriteObject(WebsitesClient.ListWebApps(ResourceGroupName, Name));
+            }
+            else
+            {
+                WriteObject(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot));
+            }
         }
-
     }
 }
-
-
-
-

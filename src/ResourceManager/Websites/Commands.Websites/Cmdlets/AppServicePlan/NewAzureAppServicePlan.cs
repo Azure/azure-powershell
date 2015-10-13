@@ -14,96 +14,56 @@
 
 
 using System.Management.Automation;
-using Microsoft.Azure.Commands.WebApp.Utilities;
+using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
 
-namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
+namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlan
 {
     /// <summary>
     /// this commandlet will let you create a new Azure App service Plan using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmAppServicePlan"), OutputType(typeof(WebHostingPlanCreateOrUpdateResponse))]
+    [Cmdlet(VerbsCommon.New, "AzureRMAppServicePlan"), OutputType(typeof(ServerFarmWithRichSku))]
     public class NewAzureAppServicePlanCmdlet : AppServicePlanBaseCmdlet
     {
-
         [Parameter(Position = 2, Mandatory = true, HelpMessage = "The location of the app service plan.")]
-        [ValidateNotNullOrEmptyAttribute]
+        [ValidateNotNullOrEmpty]
         public string Location { get; set; }
-        
-        [Parameter(Position = 3, Mandatory = false, HelpMessage = "The Sku of the Webhosting plan eg: free, shared, basic, standard.")]
+
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = "The App Service plan tier. Allowed values are [Free|Shared|Basic|Standard|Premium]")]
         [ValidateSet("Free", "Shared", "Basic", "Standard", "Premium", IgnoreCase = true)]
-        [ValidateNotNullOrEmptyAttribute]
-        public string Sku { get; set; }
+        public string Tier { get; set; }
 
         [Parameter(Position = 4, Mandatory = false, HelpMessage = "Number of Workers to be allocated.")]
-        [ValidateNotNullOrEmptyAttribute]
+        [ValidateNotNullOrEmpty]
         public int NumberofWorkers { get; set; }
 
-        [Parameter(Position = 5, Mandatory = false, HelpMessage = "The size of the workers: eg Small, Medium, Large")]
-        [ValidateNotNullOrEmptyAttribute]
-        [ValidateSet("Small", "Medium", "Large", IgnoreCase = true)]
+        [Parameter(Position = 5, Mandatory = false, HelpMessage = "Size of workers to be allocated. Allowed values are [Small|Medium|Large|ExtraLarge]")]
+        [ValidateSet("Small", "Medium", "Large", "ExtraLarge", IgnoreCase = true)]
         public string WorkerSize { get; set; }
 
         protected override void ProcessRecord()
         {
-            //for now not asking admin site name need to implement in future
-            string adminSiteName = null;
-
-            //if Sku is not specified assume default to be Standard
-            SkuOptions skuInput = SkuOptions.Standard;
-
-            //if workerSize is not specified assume default to be small
-            WorkerSizeOptions workerSizeInput = WorkerSizeOptions.Small;
-
-            //if NumberofWorkers is not specified assume default to be 1
-            if (NumberofWorkers == 0)
-                NumberofWorkers = 1;
-
-
-            if (WorkerSize != null)
+            if (string.IsNullOrWhiteSpace(Tier))
             {
-                switch (WorkerSize.ToUpper())
-                {
-                    case "SMALL":
-                        workerSizeInput = WorkerSizeOptions.Small;
-                        break;
-                    case "MEDIUM":
-                        workerSizeInput = WorkerSizeOptions.Medium;
-                        break;
-                    case "LARGE":
-                        workerSizeInput = WorkerSizeOptions.Large;
-                        break;
-                    default:
-                        workerSizeInput = WorkerSizeOptions.Large;
-                        break;
-                }
+                Tier = "Free";
             }
 
-            if (Sku != null)
+            if (string.IsNullOrWhiteSpace(WorkerSize))
             {
-                switch (Sku.ToUpper())
-                {
-                    case "FREE":
-                        skuInput = SkuOptions.Free;
-                        break;
-                    case "SHARED":
-                        skuInput = SkuOptions.Shared;
-                        break;
-                    case "BASIC":
-                        skuInput = SkuOptions.Basic;
-                        break;
-                    case "PREMIUM":
-                        skuInput = SkuOptions.Premium;
-                        break;
-                    default:
-                        skuInput = SkuOptions.Standard;
-                        break;
-                }
+                WorkerSize = "Small";
             }
 
-            WriteObject(WebsitesClient.CreateAppServicePlan(ResourceGroupName, Name, Location, adminSiteName, NumberofWorkers, skuInput, workerSizeInput));
+            var capacity = NumberofWorkers < 1 ? 1 : NumberofWorkers;
+            var skuName = WebsitesClient.GetSkuName(Tier, WorkerSize);
 
+            var sku = new SkuDescription
+            {
+                Tier = Tier,
+                Name = skuName,
+                Capacity = capacity
+            };
+
+            WriteObject(WebsitesClient.CreateAppServicePlan(ResourceGroupName, Name, Location, null, sku), true);
         }
-
     }
 }

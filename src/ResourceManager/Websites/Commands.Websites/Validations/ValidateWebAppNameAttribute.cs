@@ -12,31 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Management.Automation;
+using Microsoft.Azure.Commands.WebApps.Utilities;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Commands.Websites.Utilities;
-
-namespace Microsoft.Azure.Commands.Websites.Models.Websites
+namespace Microsoft.Azure.Commands.WebApps.Validations
 {
-    public abstract class WebsitesBaseClient : AzurePSCmdlet
+    public class ValidateWebAppNameAttribute : ValidateArgumentsAttribute
     {
-        private WebsitesClient _websitesClient;
-        public WebsitesClient WebsitesClient
+        protected override void Validate(object arguments, EngineIntrinsics engineIntrinsics)
         {
-            get
+            var webAppName = arguments as string;
+            if (WebsitesClient.IsDeploymentSlot(webAppName))
             {
-                if (_websitesClient == null)
-                {
-                    _websitesClient = new WebsitesClient(this.Profile.Context);
-                }
-                return _websitesClient;
+                throw new ValidationMetadataException(string.Format("Specified resource '{0}' is a non-production web app slot. Please use the AzureRMWebAppSlot cmdlets to manage this resource", webAppName));
             }
-            set { _websitesClient = value; }
+        }
+
+        public override string ToString()
+        {
+            return "[ValidateWebAppName]";
         }
     }
 }

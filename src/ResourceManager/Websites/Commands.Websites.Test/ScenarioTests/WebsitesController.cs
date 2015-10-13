@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Resources;
@@ -20,17 +19,17 @@ using Microsoft.Azure.Management.WebSites;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.Azure.Test;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using LegacyTest = Microsoft.Azure.Test;
 
 namespace Microsoft.Azure.Commands.WebApp.Test.ScenarioTests
 {
     public class WebsitesController
     {
-
-        private CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
         private const string TenantIdKey = "TenantId";
         private const string DomainKey = "Domain";
@@ -69,7 +68,7 @@ namespace Microsoft.Azure.Commands.WebApp.Test.ScenarioTests
             RunPsTestWorkflow(
                 () => scripts,
                 // no custom initializer
-                null,
+                // null,
                 // no custom cleanup 
                 null,
                 callingClassType,
@@ -79,7 +78,6 @@ namespace Microsoft.Azure.Commands.WebApp.Test.ScenarioTests
 
         public void RunPsTestWorkflow(
             Func<string[]> scriptBuilder,
-            Action<CSMTestEnvironmentFactory> initialize,
             Action cleanup,
             string callingClassType,
             string mockName)
@@ -88,19 +86,9 @@ namespace Microsoft.Azure.Commands.WebApp.Test.ScenarioTests
             d.Add("Microsoft.Authorization", "2014-07-01-preview");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
 
-            using (UndoContext context = UndoContext.Current)
+            using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
-                context.Start(callingClassType, mockName);
-
-                this.csmTestFactory = new CSMTestEnvironmentFactory();
-
-                if (initialize != null)
-                {
-                    initialize(this.csmTestFactory);
-                }
-
                 SetupManagementClients();
-
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
                 var callingClassName = callingClassType
@@ -154,26 +142,26 @@ namespace Microsoft.Azure.Commands.WebApp.Test.ScenarioTests
 
         private AuthorizationManagementClient GetAuthorizationManagementClient()
         {
-            return TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
+            return LegacyTest.TestBase.GetServiceClient<AuthorizationManagementClient>();
         }
 
         private ResourceManagementClient GetResourceManagementClient()
         {
-            return TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
+            return LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>();
         }
 
         private WebSiteManagementClient GetWebsitesManagementClient()
         {
-            return TestBase.GetServiceClient<WebSiteManagementClient>(this.csmTestFactory);
+            return TestBase.GetServiceClient<WebSiteManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
         private SubscriptionClient GetSubscriptionClient()
         {
-            return TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
+            return LegacyTest.TestBase.GetServiceClient<SubscriptionClient>();
         }
 
         private GalleryClient GetGalleryClient()
         {
-            return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
+            return LegacyTest.TestBase.GetServiceClient<GalleryClient>();
         }
     
     }

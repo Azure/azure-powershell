@@ -14,10 +14,9 @@
 
 
 using System.Management.Automation;
-using Microsoft.Azure.Commands.WebApp.Utilities;
+using Microsoft.Azure.Management.WebSites.Models;
 
-
-namespace Microsoft.Azure.Commands.WebApp.Cmdlets
+namespace Microsoft.Azure.Commands.WebApps.Cmdlets
 {
     /// <summary>
     /// this commandlet will let you create a new Azure Web app using ARM APIs
@@ -25,21 +24,33 @@ namespace Microsoft.Azure.Commands.WebApp.Cmdlets
     [Cmdlet(VerbsCommon.New, "AzureRmWebApp")]
     public class NewAzureWebAppCmdlet : WebAppBaseCmdlet
     {
-
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = "The name of the web app slot.")]
-        [ValidateNotNullOrEmptyAttribute]
-        public string SlotName { get; set; }
-
-        [Parameter(Position = 3, Mandatory = true, HelpMessage = "The Location of the web app eg: West US.")]
+        [Parameter(Position = 2, Mandatory = true, HelpMessage = "The Location of the web app eg: West US.")]
         public string Location { get; set; }
 
-        [Parameter(Position = 4, Mandatory = true, HelpMessage = "The name of the app service plan eg: Default1.")]
+        [Parameter(Position = 3, Mandatory = false, HelpMessage = "The name of the app service plan eg: Default1.")]
         public string AppServicePlan { get; set; }
+
+        [Parameter(Position = 4, Mandatory = false, HelpMessage = "The information needed to clone web app")]
+        [ValidateNotNullOrEmpty]
+        public Site SourceWebApp { get; set; }
+
+        [Parameter(Position = 5, Mandatory = false, HelpMessage = "The information needed to clone web app")]
+        [ValidateNotNullOrEmpty]
+        public CloningInfo CloningInfo { get; set; }
        
         protected override void ProcessRecord()
         {
-            WriteObject(WebsitesClient.CreateWebsite(ResourceGroupName, Name, SlotName, Location, AppServicePlan));
-            
+            if (SourceWebApp != null)
+            {
+                if (CloningInfo == null)
+                {
+                    CloningInfo = new CloningInfo();
+                }
+
+                CloningInfo.SourceWebAppId = SourceWebApp.Id;
+            }
+
+            WriteObject(WebsitesClient.CreateWebApp(ResourceGroupName, Name, null, Location, AppServicePlan, CloningInfo));
         }
         
     }

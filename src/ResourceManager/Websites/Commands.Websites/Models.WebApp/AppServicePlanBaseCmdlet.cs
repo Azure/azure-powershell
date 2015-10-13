@@ -12,19 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.WebApp.Models;
+using Microsoft.Azure.Commands.WebApps.Models;
 
-namespace Microsoft.Azure.Commands.WebApp
+namespace Microsoft.Azure.Commands.WebApps
 {
     public abstract class AppServicePlanBaseCmdlet : WebAppBaseClientCmdLet
     {
-        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmptyAttribute]
+        [Alias("ResourceGroup", "RG")]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the app service plan.")]
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the app service plan.", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmptyAttribute]
+        [Alias("ServerFarmWithRichSkuName")]
         public string Name { get; set; }
 
     }

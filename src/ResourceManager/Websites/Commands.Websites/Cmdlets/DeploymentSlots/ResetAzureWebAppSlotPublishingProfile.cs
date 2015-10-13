@@ -15,30 +15,19 @@
 
 
 using System.Management.Automation;
-using Microsoft.Azure.Commands.WebApp.Utilities;
 
-
-namespace Microsoft.Azure.Commands.WebApp.Cmdlets
+namespace Microsoft.Azure.Commands.WebApps.Cmdlets
 {
     /// <summary>
-    /// this commandlet will let you Start an Azure Web app
+    /// This commandlet resets the publishing creds of the given Azure Web app slot
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureRmWebApp")]
-    public class StartAzureWebAppCmdlet : WebAppBaseCmdlet
+    [Cmdlet(VerbsCommon.Reset, "AzureRMWebAppSlotPublishingProfile")]
+    public class ResetAzureWebAppPSlotublishingProfileCmdlet : WebAppSlotBaseCmdlet
     {
-
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = "The name of the web app slot.")]
-        [ValidateNotNullOrEmptyAttribute]
-        public string SlotName { get; set; }
-     
         protected override void ProcessRecord()
         {
-            WriteObject(WebsitesClient.StartWebsite(ResourceGroupName, Name, SlotName));
-            
+            base.ProcessRecord();
+            WriteObject(WebsitesClient.ResetWebAppPublishingCredentials(ResourceGroupName, Name, Slot));
         }
-        
     }
 }
-
-
-

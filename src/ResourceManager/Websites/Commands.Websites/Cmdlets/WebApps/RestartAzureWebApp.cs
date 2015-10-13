@@ -15,22 +15,23 @@
 
 
 using System.Management.Automation;
-using Microsoft.Azure.Commands.WebApp.Utilities;
 
-namespace Microsoft.Azure.Commands.WebApp.Cmdlets
+namespace Microsoft.Azure.Commands.WebApps.Cmdlets
 {
     /// <summary>
-    /// this commandlet will let you get a new Azure Websites using ARM APIs
+    /// this commandlet will let you restart an Azure Web app
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmWebApp")]
-    public class GetAzureWebAppCmdlet : WebAppBaseSlotCmdlet
+    [Cmdlet(VerbsLifecycle.Restart, "AzureRmWebApp")]
+    public class RestartAzureWebAppCmdlet : WebAppBaseCmdlet
     {
         protected override void ProcessRecord()
         {
-            WriteObject(WebsitesClient.GetWebsite(ResourceGroupName, Name, SlotName));
+            WriteObject(WebsitesClient.RestartWebApp(ResourceGroupName, Name, null));
         }
+
     }
 }
+
 
 
 

@@ -13,96 +13,58 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-using Microsoft.Azure.Commands.WebApp.Utilities;
+using Microsoft.Azure.Commands.WebApps.Utilities;
+using Microsoft.Azure.Commands.Websites.Validations;
 using Microsoft.Azure.Management.WebSites.Models;
 
-namespace Microsoft.Azure.Commands.WebApp.Cmdlets.AppServicePlan
+namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlan
 {
     /// <summary>
     /// this commandlet will let you set Azure App Service Plan using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmAppServicePlan"), OutputType(typeof(WebHostingPlanCreateOrUpdateResponse))]
+    [Cmdlet(VerbsCommon.Set, "AzureRMAppServicePlan"), OutputType(typeof(ServerFarmWithRichSku))]
     public class SetAzureAppServicePlanCmdlet : AppServicePlanBaseCmdlet
     {
+        private const string RolledOutServerFarmParameterSetName = "RolledOutServerFarm";
+        private const string ServerFarmObjectParameterSetName = "ServerFarmObject";
 
-        [Parameter(Position = 2, Mandatory = true, HelpMessage = "The location of the app service plan.")]
-        [ValidateNotNullOrEmptyAttribute]
-        public string Location { get; set; }
-        
-        [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The Sku of the app service plan eg: free, shared, basic, standard.")]
+        [Parameter(ParameterSetName = RolledOutServerFarmParameterSetName, Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the admin web app")]
+        [ValidateNotNullOrEmpty]
+        public string AdminSiteName { get; set; }
+
+        [Parameter(ParameterSetName = RolledOutServerFarmParameterSetName, Position = 3, Mandatory = false, HelpMessage = "The App Service plan tier. Allowed values are [Free|Shared|Basic|Standard|Premium]")]
         [ValidateSet("Free", "Shared", "Basic", "Standard", "Premium", IgnoreCase = true)]
-        [ValidateNotNullOrEmptyAttribute]
-        public string Sku { get; set; }
+        public string Tier { get; set; }
 
-        [Parameter(Position = 4, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Number of Workers to be allocated.")]
-        [ValidateNotNullOrEmptyAttribute]
+        [Parameter(ParameterSetName = RolledOutServerFarmParameterSetName, Position = 4, Mandatory = false, HelpMessage = "Number of Workers to be allocated.")]
         public int NumberofWorkers { get; set; }
 
-        [Parameter(Position = 5, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The size of he workers: eg Small, Medium, Large")]
-        [ValidateNotNullOrEmptyAttribute]
-        [ValidateSet("Small", "Medium", "Large", IgnoreCase = true)]
+        [Parameter(ParameterSetName = RolledOutServerFarmParameterSetName, Position = 5, Mandatory = false, HelpMessage = "Size of workers to be allocated. Allowed values are [Small|Medium|Large|ExtraLarge]")]
+        [ValidateSet("Small", "Medium", "Large", "ExtraLarge", IgnoreCase = true)]
         public string WorkerSize { get; set; }
+
+        [Parameter(ParameterSetName = ServerFarmObjectParameterSetName, Position = 2, Mandatory = false, ValueFromPipeline = true, HelpMessage = "The rich sku format of the app service plan. This sup")]
+        [ValidateServerFarm]
+        public ServerFarmWithRichSku ServerFarm { get; set; }
 
         protected override void ProcessRecord()
         {
-            //for now not asking admin site name need to implement in future
-            string adminSiteName = null;
-
-            //if Sku is not specified assume default to be Standard
-            SkuOptions skuInput = SkuOptions.Standard;
-
-            //if workerSize is not specified assume default to be small
-            WorkerSizeOptions workerSizeInput = WorkerSizeOptions.Small;
-
-            //if NumberofWorkers is not specified assume default to be 1
-            if (NumberofWorkers == 0)
-                NumberofWorkers = 1;
-
-
-            if (WorkerSize != null)
+            switch (ParameterSetName)
             {
-                switch (WorkerSize.ToUpper())
-                {
-                    case "SMALL":
-                        workerSizeInput = WorkerSizeOptions.Small;
-                        break;
-                    case "MEDIUM":
-                        workerSizeInput = WorkerSizeOptions.Medium;
-                        break;
-                    case "LARGE":
-                        workerSizeInput = WorkerSizeOptions.Large;
-                        break;
-                    default:
-                        workerSizeInput = WorkerSizeOptions.Large;
-                        break;
-                }
+                case RolledOutServerFarmParameterSetName:
+                    ServerFarm = WebsitesClient.GetAppServicePlan(ResourceGroupName, Name);
+                    ServerFarm.Sku.Tier = string.IsNullOrWhiteSpace(Tier) ? ServerFarm.Sku.Tier : Tier;
+                    ServerFarm.Sku.Capacity = NumberofWorkers > 0 ? NumberofWorkers : ServerFarm.Sku.Capacity;
+                    var workerSizeAsNumber = int.Parse(ServerFarm.Sku.Name.Substring(1, ServerFarm.Sku.Name.Length - 1));
+                    ServerFarm.Sku.Name = string.IsNullOrWhiteSpace(WorkerSize) ? WebsitesClient.GetSkuName(ServerFarm.Sku.Tier, workerSizeAsNumber) : WebsitesClient.GetSkuName(ServerFarm.Sku.Tier, WorkerSize);
+                    break;
             }
 
-            if (Sku != null)
-            {
-                switch (Sku.ToUpper())
-                {
-                    case "FREE":
-                        skuInput = SkuOptions.Free;
-                        break;
-                    case "SHARED":
-                        skuInput = SkuOptions.Shared;
-                        break;
-                    case "BASIC":
-                        skuInput = SkuOptions.Basic;
-                        break;
-                    case "PREMIUM":
-                        skuInput = SkuOptions.Premium;
-                        break;
-                    default:
-                        skuInput = SkuOptions.Standard;
-                        break;
-                }
-            }
+            // Fix Server Farm SKU description
+            ServerFarm.Sku.Size = ServerFarm.Sku.Name;
+            ServerFarm.Sku.Family = ServerFarm.Sku.Name.Substring(0, 1);
 
-            WriteObject(WebsitesClient.CreateAppServicePlan(ResourceGroupName, Name, Location, adminSiteName, NumberofWorkers, skuInput, workerSizeInput));
-
+            WriteObject(WebsitesClient.CreateAppServicePlan(ResourceGroupName, Name, ServerFarm.Location, AdminSiteName, ServerFarm.Sku), true);
         }
-
     }
 }

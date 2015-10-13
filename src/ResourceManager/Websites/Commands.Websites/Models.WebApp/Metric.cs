@@ -12,21 +12,32 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Websites.Models;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.Websites.Models.Websites;
+using System;
+using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.Websites
+namespace Microsoft.Azure.Commands.WebApps.Models.WebApp
 {
-    public class WebsiteBaseNotMandatoryCmdlet : WebsitesBaseClient
+    [Serializable]
+    public class Metric
     {
-        [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.")]
-        [ValidateNotNullOrEmptyAttribute]
-        public string ResourceGroupName { get; set; }
+        public DateTime EndTime { get; set; }
 
-        [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the website.")]
-        [ValidateNotNullOrEmptyAttribute]
-        public string Name { get; set; }
+        public DateTime StartTime { get; set; }
+
+        public string TimeGrain { get; set; }
+
+        public string Unit { get; set; }
+
+        public MetricName Name { get; set; }
+
+        public int[] Values { get; set; }
+    }
+
+    [Serializable]
+    public class MetricName
+    {
+        public string Value { get; set; }
+
+        public string LocalizedValue { get; set; }
     }
 }
-
