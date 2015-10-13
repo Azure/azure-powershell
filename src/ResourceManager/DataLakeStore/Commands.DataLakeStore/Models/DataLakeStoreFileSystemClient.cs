@@ -385,7 +385,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 };
 
                 var uploadParameters = new UploadParameters(sourcePath, destinationPath, accountName, threadCount,
-                    overwrite, resume, isBinary, null);
+                    overwrite, resume, isBinary);
                 var uploader = new DataLakeStoreUploader(uploadParameters,
                     new DataLakeStoreFrontEndAdapter(accountName, _client, cmdletCancellationToken), cmdletCancellationToken,
                     progressTracker);

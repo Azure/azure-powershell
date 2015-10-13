@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
             if (defaultDataLakeAccount != null)
             {
-                parameters.DataLakeAnalyticsAccount.Properties.DefaultDataLakeAccount = defaultDataLakeAccount.Name;
+                parameters.DataLakeAnalyticsAccount.Properties.DefaultDataLakeStoreAccount = defaultDataLakeAccount.Name;
             }
 
             if (additionalStorageAccounts != null && additionalStorageAccounts.Count > 0)
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             }
 
             var account = GetAcount(resourceGroupName, accountName);
-            account.Properties.DefaultDataLakeAccount = storageToSet.Name;
+            account.Properties.DefaultDataLakeStoreAccount = storageToSet.Name;
 
             if (
                 !account.Properties.DataLakeStoreAccounts.Any(

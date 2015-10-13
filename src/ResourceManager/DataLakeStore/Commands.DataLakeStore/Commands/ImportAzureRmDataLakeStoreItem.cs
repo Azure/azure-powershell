@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore
     [Cmdlet(VerbsData.Import, "AzureRmDataLakeStoreItem"), OutputType(typeof(string))]
     public class ImportAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
+        // default number of threads
+        private int numThreads = 10;
+
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
@@ -45,8 +48,13 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false, HelpMessage = "Indicates that the file(s) being copied should be copied with no concern for new line preservation across appends")]
         public SwitchParameter ForceBinary { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 6, Mandatory = false, HelpMessage = "Indicates the total number of threads to use for the copy")]
-        public int NumThreads { get; set; }
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 6, Mandatory = false,
+            HelpMessage = "Indicates the total number of threads to use for the copy. Default is 10")]
+        public int NumThreads
+        {
+            get { return numThreads; }
+            set { numThreads = value; }
+        }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 7, Mandatory = false, HelpMessage = "Indicates that, if the file or folder exists, it should be overwritten")]
         public SwitchParameter Force { get; set; }
