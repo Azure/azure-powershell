@@ -1,4 +1,8 @@
-﻿## 2015.09.03 version 0.9.8
+## 2015.10.13 version 0.9.8.1
+* Azure Profile cmdlets
+  * Re-enabled methods for updating user-agent headers in http requests
+  
+## 2015.09.03 version 0.9.8
 * Azure Compute (ARM) Cmdlets
   * Added -Launch parameter for Get-AzureRemoteDesktopFile cmdlet
   * Added Id parameter for VM cmdlets to support piping scenario without ResourceGroupName parameter
