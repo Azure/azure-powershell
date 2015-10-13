@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.WebApp.Test.ScenarioTests
 
             using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
-                SetupManagementClients();
+                SetupManagementClients(context);
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
                 var callingClassName = callingClassType
@@ -123,11 +123,11 @@ namespace Microsoft.Azure.Commands.WebApp.Test.ScenarioTests
             }
         }
 
-        private void SetupManagementClients()
+        private void SetupManagementClients(MockContext context)
         {
             ResourceManagementClient = GetResourceManagementClient();
             SubscriptionClient = GetSubscriptionClient();
-            WebsitesManagementClient = GetWebsitesManagementClient();
+            WebsitesManagementClient = GetWebsitesManagementClient(context);
             AuthorizationManagementClient = GetAuthorizationManagementClient();
             GalleryClient = GetGalleryClient();
 
@@ -150,9 +150,9 @@ namespace Microsoft.Azure.Commands.WebApp.Test.ScenarioTests
             return LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>();
         }
 
-        private WebSiteManagementClient GetWebsitesManagementClient()
+        private WebSiteManagementClient GetWebsitesManagementClient(MockContext context)
         {
-            return TestBase.GetServiceClient<WebSiteManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<WebSiteManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
         private SubscriptionClient GetSubscriptionClient()
         {
