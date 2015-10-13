@@ -1,7 +1,13 @@
 ## 2015.10.13 version 0.9.8.1
 * Azure Profile cmdlets
   * Re-enabled methods for updating user-agent headers in http requests
-  
+* Azure Resource Manager Authorization cmdlets
+  * Fixed display of role assignments output
+  * Added ExpandPrincipalGroups and IncludeClassicAdministrators options to Get-AzureRoleAssignment commandlet
+  * Updated all role assignment commandlets to take in a SgnInName parameter
+  * Added new Get-AzureAuthorizationChangelog command that gives access to change history for a subscription
+  * Miscellaneous bug fixes
+
 ## 2015.09.03 version 0.9.8
 * Azure Compute (ARM) Cmdlets
   * Added -Launch parameter for Get-AzureRemoteDesktopFile cmdlet
