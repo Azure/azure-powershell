@@ -53,11 +53,6 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true)]
-        public string SkuName { get; set; }
-
-        [Parameter(
-             Mandatory = false,
-             ValueFromPipelineByPropertyName = true)]
         [ValidateSet(
             MNM.ExpressRouteCircuitSkuTier.Standard,
             MNM.ExpressRouteCircuitSkuTier.Premium,
@@ -136,12 +131,12 @@ namespace Microsoft.Azure.Commands.Network
             circuit.Location = this.Location;
             
             // Construct sku
-            if (!string.IsNullOrEmpty(this.SkuName))
+            if (!string.IsNullOrEmpty(this.SkuTier))
             {
                 circuit.Sku = new PSExpressRouteCircuitSku();
-                circuit.Sku.Name = this.SkuName;
                 circuit.Sku.Tier = this.SkuTier;
                 circuit.Sku.Family = this.SkuFamily;
+                circuit.Sku.Name = this.SkuTier + "_" + this.SkuFamily;
             }
 
             // construct the service provider properties
