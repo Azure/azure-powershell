@@ -12,15 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Management.Automation;
+using System.Threading;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.Azure.Commands.NotificationHubs.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using System.IO;
+using Newtonsoft.Json;
+using Microsoft.Azure.Common.Authentication;
+using System.Collections.Generic;
+using System.Collections;    
+
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands
 {
-    using System.Management.Automation;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
-    using Microsoft.Azure.Commands.NotificationHubs.Models;
-    using System;
-    using System.Threading;
 
-    public abstract class AzureNotificationHubsCmdletBase : AzurePSCmdlet
+    public abstract class AzureNotificationHubsCmdletBase : AzureRMCmdlet
     {
         public const string InputFileParameterSetName = "InputFileParameterSet";
         public const string SASRuleParameterSetName = "SASRuleParameterSet";
@@ -35,7 +42,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands
             {
                 if (_client == null)
                 {
-                    _client = new NotificationHubsManagementClient(Profile);
+                    _client = new NotificationHubsManagementClient(DefaultContext);
                 }
                 return _client;
             }
@@ -45,7 +52,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands
             }
         }
 
-        protected void ExecuteLongRunningCmdletWrap(Func<NamespaceLongRunningOperation> func, bool passThru = false, object passThruValue = null)
+        protected void ExecuteLongRunningCmdletWrap(Func<NamespaceLongRunningOperation> func)
         {
             try
             {
@@ -56,10 +63,6 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands
                 if (!success)
                 {
                     WriteErrorWithTimestamp(longRunningOperation.Error);
-                }
-                else if (passThru)
-                {
-                    WriteObject(passThruValue ?? longRunningOperation.NamespaceAttributes);
                 }
             }
             catch (ArgumentException ex)
@@ -93,5 +96,75 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands
 
             return longRunningOperation;
         }
+
+        protected T ParseInputFile<T>(string InputFile)
+        {
+            T parsedObj;
+
+            if (!string.IsNullOrEmpty(InputFile))
+            {
+                string fileName = this.TryResolvePath(InputFile);
+                if (!(new FileInfo(fileName)).Exists)
+                {
+                    throw new PSArgumentException(string.Format("File {0} does not exist", fileName));
+                }
+
+                try
+                {
+                    parsedObj = JsonConvert.DeserializeObject<T>(File.ReadAllText(fileName));
+                    return parsedObj;
+                }
+                catch (JsonException)
+                {
+                    WriteVerbose("Deserializing the input role definition failed.");
+                    throw;
+                }
+            }
+
+            return default(T);
+        }
+
+        #region TagsHelper
+
+        public Dictionary<string, string> ConvertTagsToDictionary(Hashtable tags)
+        {
+            if (tags != null)
+            {
+
+
+                Dictionary<string, string> tagsDictionary = new Dictionary<string, string>();
+                foreach (DictionaryEntry tag in tags)
+                {
+                    string key = tag.Key as string;
+                    if (string.IsNullOrWhiteSpace(key))
+                        throw new ArgumentException("Invalid tag name");
+
+                    if (tag.Value != null && !(tag.Value is string))
+                        throw new ArgumentException("Tag has invalid value");
+                    string value = (tag.Value == null) ? string.Empty : (string)tag.Value;
+                    tagsDictionary[key] = value;
+                }
+                return tagsDictionary;
+
+            }
+
+            return null;
+        }
+
+        public Hashtable ConvertTagsToHashtable(IDictionary<string, string> tags)
+        {
+            if (tags != null)
+            {
+                Hashtable tagsHashtable = new Hashtable();
+                foreach (var tag in tags)
+                    tagsHashtable[tag.Key] = tag.Value;
+
+                return tagsHashtable;
+            }
+
+            return null;
+        }
+
+        #endregion
     }
 }

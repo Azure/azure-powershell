@@ -8,11 +8,11 @@
   <OverridePostCount>false</OverridePostCount>
   <FetchPostCount xsi:nil="true" />
   <Cmdlets>
-    <CmdletObject verb="Get" noun="AzureNotificationHub">
-      <Name>Get-AzureNotificationHub</Name>
+    <CmdletObject verb="Get" noun="AzureRmNotificationHub">
+      <Name>Get-AzureRmNotificationHub</Name>
       <GeneralHelp>
         <Synopsis>Gets a list or a particular NotificationHub description.</Synopsis>
-        <Description>Get-AzureNotificationHub cmdlet gets a list of all NotificationHubs under a Namespace or a specified NotificationHub within the namespace.</Description>
+        <Description>Get-AzureRmNotificationHub cmdlet gets a list of all NotificationHubs under a Namespace or a specified NotificationHub within the namespace.</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -22,14 +22,14 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName NamespaceName NotificationHubName Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace NotificationHub Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Get-AzureNotificationHub [-ResourceGroupName] &lt;String&gt; [-NamespaceName] &lt;String&gt; [[-NotificationHubName] &lt;String&gt;] [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Get-AzureRmNotificationHub [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [[-NotificationHub] &lt;String&gt;] [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
-          <Name>ResourceGroupName</Name>
+          <Name>ResourceGroup</Name>
           <Attributes>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -39,7 +39,7 @@
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
-          <Name>NamespaceName</Name>
+          <Name>Namespace</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
@@ -49,7 +49,7 @@
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="2" globbing="false">
-          <Name>NotificationHubName</Name>
+          <Name>NotificationHub</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
@@ -97,11 +97,11 @@
       <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
-    <CmdletObject verb="Get" noun="AzureNotificationHubAuthorizationRules">
-      <Name>Get-AzureNotificationHubAuthorizationRules</Name>
+    <CmdletObject verb="Get" noun="AzureRmNotificationHubAuthorizationRules">
+      <Name>Get-AzureRmNotificationHubAuthorizationRules</Name>
       <GeneralHelp>
         <Synopsis>Gets a list or a particular Authorization Rule description associated with the specified NotificationHub.</Synopsis>
-        <Description>Get-AzureNotificationHubAuthorizationRules cmdlet gets a list of all the Authorization Rules descriptions or a specified Authorization Rule associated with the NotificationHub specified.</Description>
+        <Description>Get-AzureRmNotificationHubAuthorizationRules cmdlet gets a list of all the Authorization Rules descriptions or a specified Authorization Rule associated with the NotificationHub specified.</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -111,14 +111,14 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName NamespaceName NotificationHubName AuthorizationRuleName Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace NotificationHub AuthorizationRule Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Get-AzureNotificationHubAuthorizationRules [-ResourceGroupName] &lt;String&gt; [-NamespaceName] &lt;String&gt; [-NotificationHubName] &lt;String&gt; [[-AuthorizationRuleName] &lt;String&gt;] [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Get-AzureRmNotificationHubAuthorizationRules [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-NotificationHub] &lt;String&gt; [[-AuthorizationRule] &lt;String&gt;] [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
-          <Name>ResourceGroupName</Name>
+          <Name>ResourceGroup</Name>
           <Attributes>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -128,7 +128,7 @@
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
-          <Name>NamespaceName</Name>
+          <Name>Namespace</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
@@ -138,7 +138,7 @@
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="2" globbing="false">
-          <Name>NotificationHubName</Name>
+          <Name>NotificationHub</Name>
           <Attributes>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -148,7 +148,7 @@
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="3" globbing="false">
-          <Name>AuthorizationRuleName</Name>
+          <Name>AuthorizationRule</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
@@ -196,11 +196,11 @@
       <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
-    <CmdletObject verb="Get" noun="AzureNotificationHubListKeys">
-      <Name>Get-AzureNotificationHubListKeys</Name>
+    <CmdletObject verb="Get" noun="AzureRmNotificationHubListKeys">
+      <Name>Get-AzureRmNotificationHubListKeys</Name>
       <GeneralHelp>
         <Synopsis>Gets the Primary and Secondary ConnectionString of a particular NotificationHub Authorization Rule.</Synopsis>
-        <Description>Get-AzureNotificationHubListKeys cmdlet gets the Primary and Secondary ConnectionString of a particular NotificationHub Authorization Rule. </Description>
+        <Description>Get-AzureRmNotificationHubListKeys cmdlet gets the Primary and Secondary ConnectionString of a particular NotificationHub Authorization Rule. </Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -210,14 +210,14 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName NamespaceName NotificationHubName AuthorizationRuleName Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace NotificationHub AuthorizationRule Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Get-AzureNotificationHubListKeys [-ResourceGroupName] &lt;String&gt; [-NamespaceName] &lt;String&gt; [-NotificationHubName] &lt;String&gt; [-AuthorizationRuleName] &lt;String&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Get-AzureRmNotificationHubListKeys [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-NotificationHub] &lt;String&gt; [-AuthorizationRule] &lt;String&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
-          <Name>ResourceGroupName</Name>
+          <Name>ResourceGroup</Name>
           <Attributes>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -227,7 +227,7 @@
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
-          <Name>NamespaceName</Name>
+          <Name>Namespace</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
@@ -237,7 +237,7 @@
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="2" globbing="false">
-          <Name>NotificationHubName</Name>
+          <Name>NotificationHub</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
@@ -247,7 +247,7 @@
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="3" globbing="false">
-          <Name>AuthorizationRuleName</Name>
+          <Name>AuthorizationRule</Name>
           <Attributes>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -296,11 +296,11 @@
       <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
-    <CmdletObject verb="Get" noun="AzureNotificationHubPNSCredentials">
-      <Name>Get-AzureNotificationHubPNSCredentials</Name>
+    <CmdletObject verb="Get" noun="AzureRmNotificationHubPNSCredentials">
+      <Name>Get-AzureRmNotificationHubPNSCredentials</Name>
       <GeneralHelp>
         <Synopsis>Gets the NotificationHub PNS credentials</Synopsis>
-        <Description>Get-AzureNotificationHubPNSCredentials cmdlet gets the PNS credentials for a particular NotificationHub.</Description>
+        <Description>Get-AzureRmNotificationHubPNSCredentials cmdlet gets the PNS credentials for a particular NotificationHub.</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -310,14 +310,14 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName NamespaceName NotificationHubName Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace NotificationHub Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Get-AzureNotificationHubPNSCredentials [-ResourceGroupName] &lt;String&gt; [-NamespaceName] &lt;String&gt; [-NotificationHubName] &lt;String&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Get-AzureRmNotificationHubPNSCredentials [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-NotificationHub] &lt;String&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
-          <Name>ResourceGroupName</Name>
+          <Name>ResourceGroup</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
@@ -327,7 +327,7 @@
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
-          <Name>NamespaceName</Name>
+          <Name>Namespace</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
@@ -337,7 +337,7 @@
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="2" globbing="false">
-          <Name>NotificationHubName</Name>
+          <Name>NotificationHub</Name>
           <Attributes>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -386,11 +386,11 @@
       <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
-    <CmdletObject verb="Get" noun="AzureNotificationHubsNamespace">
-      <Name>Get-AzureNotificationHubsNamespace</Name>
+    <CmdletObject verb="Get" noun="AzureRmNotificationHubsNamespace">
+      <Name>Get-AzureRmNotificationHubsNamespace</Name>
       <GeneralHelp>
         <Synopsis>Gets a list or a particular Namespace description. </Synopsis>
-        <Description>Get-AzureNotificationHubsNamespace cmdlet gets a list of all Namespaces of type NotificationHub under a subscription or specified resource group.</Description>
+        <Description>Get-AzureRmNotificationHubsNamespace cmdlet gets a list of all Namespaces of type NotificationHub under a subscription or specified resource group.</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -400,14 +400,14 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName NamespaceName Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Get-AzureNotificationHubsNamespace [[-ResourceGroupName] &lt;String&gt;] [[-NamespaceName] &lt;String&gt;] [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Get-AzureRmNotificationHubsNamespace [[-ResourceGroup] &lt;String&gt;] [[-Namespace] &lt;String&gt;] [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
-          <Name>ResourceGroupName</Name>
+          <Name>ResourceGroup</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
@@ -416,7 +416,7 @@
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
-          <Name>NamespaceName</Name>
+          <Name>Namespace</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
@@ -464,11 +464,11 @@
       <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
-    <CmdletObject verb="Get" noun="AzureNotificationHubsNamespaceAuthorizationRules">
-      <Name>Get-AzureNotificationHubsNamespaceAuthorizationRules</Name>
+    <CmdletObject verb="Get" noun="AzureRmNotificationHubsNamespaceAuthorizationRules">
+      <Name>Get-AzureRmNotificationHubsNamespaceAuthorizationRules</Name>
       <GeneralHelp>
         <Synopsis>Gets a list or a particular Authorization Rule description associated with the specified Namespace.</Synopsis>
-        <Description>Get-AzureNotificationHubsNamespaceAuthorizationRulescmdlet gets a list of all the Authorization Rules descriptions or a specified Authorization Rule associated with the Namespace specified.</Description>
+        <Description>Get-AzureRmNotificationHubsNamespaceAuthorizationRulescmdlet gets a list of all the Authorization Rules descriptions or a specified Authorization Rule associated with the Namespace specified.</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -478,14 +478,14 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName NamespaceName AuthorizationRuleName Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace AuthorizationRule Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Get-AzureNotificationHubsNamespaceAuthorizationRules [-ResourceGroupName] &lt;String&gt; [-NamespaceName] &lt;String&gt; [[-AuthorizationRuleName] &lt;String&gt;] [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Get-AzureRmNotificationHubsNamespaceAuthorizationRules [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [[-AuthorizationRule] &lt;String&gt;] [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
-          <Name>ResourceGroupName</Name>
+          <Name>ResourceGroup</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
@@ -495,7 +495,7 @@
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
-          <Name>NamespaceName</Name>
+          <Name>Namespace</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
@@ -505,7 +505,7 @@
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="2" globbing="false">
-          <Name>AuthorizationRuleName</Name>
+          <Name>AuthorizationRule</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
           </Attributes>
@@ -553,11 +553,11 @@
       <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
-    <CmdletObject verb="Get" noun="AzureNotificationHubsNamespaceListKeys">
-      <Name>Get-AzureNotificationHubsNamespaceListKeys</Name>
+    <CmdletObject verb="Get" noun="AzureRmNotificationHubsNamespaceListKeys">
+      <Name>Get-AzureRmNotificationHubsNamespaceListKeys</Name>
       <GeneralHelp>
         <Synopsis>Gets the Primary and Secondary ConnectionString of a particular Namespace Authorization Rule.</Synopsis>
-        <Description>Get-AzureNotificationHubListKeys cmdlet gets the Primary and Secondary ConnectionString of a particular Namespace Authorization Rule. </Description>
+        <Description>Get-AzureRmNotificationHubListKeys cmdlet gets the Primary and Secondary ConnectionString of a particular Namespace Authorization Rule. </Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -567,14 +567,14 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName NamespaceName AuthorizationRuleName Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace AuthorizationRule Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Get-AzureNotificationHubsNamespaceListKeys [-ResourceGroupName] &lt;String&gt; [-NamespaceName] &lt;String&gt; [-AuthorizationRuleName] &lt;String&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Get-AzureRmNotificationHubsNamespaceListKeys [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-AuthorizationRule] &lt;String&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
-          <Name>ResourceGroupName</Name>
+          <Name>ResourceGroup</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
@@ -584,7 +584,7 @@
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
-          <Name>NamespaceName</Name>
+          <Name>Namespace</Name>
           <Attributes>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -594,7 +594,7 @@
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="2" globbing="false">
-          <Name>AuthorizationRuleName</Name>
+          <Name>AuthorizationRule</Name>
           <Attributes>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -643,11 +643,11 @@
       <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
-    <CmdletObject verb="New" noun="AzureNotificationHub">
-      <Name>New-AzureNotificationHub</Name>
+    <CmdletObject verb="New" noun="AzureRmNotificationHub">
+      <Name>New-AzureRmNotificationHub</Name>
       <GeneralHelp>
         <Synopsis>Creates a new NotificationHub</Synopsis>
-        <Description>New-AzureNotificationHub cmdlet creates a new Namespace.</Description>
+        <Description>New-AzureRmNotificationHub cmdlet creates a new Namespace.</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -657,14 +657,14 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName NamespaceName InputFile NotificationHubObj Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace InputFile NotificationHubObj Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>New-AzureNotificationHub [-ResourceGroupName] &lt;String&gt; [[-NamespaceName] &lt;String&gt;] [-InputFile] &lt;String&gt; [-NotificationHubObj] &lt;NotificationHubAttributes&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>New-AzureRmNotificationHub [-ResourceGroup] &lt;String&gt; [[-Namespace] &lt;String&gt;] [-InputFile] &lt;String&gt; [-NotificationHubObj] &lt;NotificationHubAttributes&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
-          <Name>ResourceGroupName</Name>
+          <Name>ResourceGroup</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
@@ -674,7 +674,7 @@
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
-          <Name>NamespaceName</Name>
+          <Name>Namespace</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
@@ -743,11 +743,11 @@
       <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
-    <CmdletObject verb="New" noun="AzureNotificationHubAuthorizationRules">
-      <Name>New-AzureNotificationHubAuthorizationRules</Name>
+    <CmdletObject verb="New" noun="AzureRmNotificationHubAuthorizationRules">
+      <Name>New-AzureRmNotificationHubAuthorizationRules</Name>
       <GeneralHelp>
         <Synopsis>Creates new NotificationHub Authorization Rule</Synopsis>
-        <Description>New-AzureNotificationHubAuthorizationRules cmdlet creates a new NotificationHub Authorization Rule.</Description>
+        <Description>New-AzureRmNotificationHubAuthorizationRules cmdlet creates a new NotificationHub Authorization Rule.</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -757,14 +757,14 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName NamespaceName NotificationHubName SASRule InputFile Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace NotificationHub SASRule InputFile Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>New-AzureNotificationHubAuthorizationRules [-ResourceGroupName] &lt;String&gt; [-NamespaceName] &lt;String&gt; [[-NotificationHubName] &lt;String&gt;] [-SASRule] &lt;SharedAccessAuthorizationRuleAttributes&gt; [-InputFile] &lt;String&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>New-AzureRmNotificationHubAuthorizationRules [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [[-NotificationHub] &lt;String&gt;] [-SASRule] &lt;SharedAccessAuthorizationRuleAttributes&gt; [-InputFile] &lt;String&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
-          <Name>ResourceGroupName</Name>
+          <Name>ResourceGroup</Name>
           <Attributes>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -774,7 +774,7 @@
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
-          <Name>NamespaceName</Name>
+          <Name>Namespace</Name>
           <Attributes>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -784,7 +784,7 @@
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="2" globbing="false">
-          <Name>NotificationHubName</Name>
+          <Name>NotificationHub</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
@@ -853,11 +853,11 @@
       <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
-    <CmdletObject verb="New" noun="AzureNotificationHubsNamespace">
-      <Name>New-AzureNotificationHubsNamespace</Name>
+    <CmdletObject verb="New" noun="AzureRmNotificationHubsNamespace">
+      <Name>New-AzureRmNotificationHubsNamespace</Name>
       <GeneralHelp>
         <Synopsis>Creates a new Namespace.</Synopsis>
-        <Description>New-AzureNotificationHubsNamespace cmdlet creates a new Namespace of type NotificationHub.</Description>
+        <Description>New-AzureRmNotificationHubsNamespace cmdlet creates a new Namespace of type NotificationHub.</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -867,14 +867,14 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName NamespaceName Location Tags Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace Location Tags Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>New-AzureNotificationHubsNamespace [-ResourceGroupName] &lt;String&gt; [-NamespaceName] &lt;String&gt; [-Location] &lt;String&gt; [[-Tags] &lt;Dictionary`2[String]&gt;] [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>New-AzureRmNotificationHubsNamespace [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-Location] &lt;String&gt; [[-Tags] &lt;Dictionary`2[String]&gt;] [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
-          <Name>ResourceGroupName</Name>
+          <Name>ResourceGroup</Name>
           <Attributes>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -884,7 +884,7 @@
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
-          <Name>NamespaceName</Name>
+          <Name>Namespace</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
@@ -952,11 +952,11 @@
       <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
-    <CmdletObject verb="New" noun="AzureNotificationHubsNamespaceAuthorizationRules">
-      <Name>New-AzureNotificationHubsNamespaceAuthorizationRules</Name>
+    <CmdletObject verb="New" noun="AzureRmNotificationHubsNamespaceAuthorizationRules">
+      <Name>New-AzureRmNotificationHubsNamespaceAuthorizationRules</Name>
       <GeneralHelp>
         <Synopsis>Creates new Namespace Authorization Rule</Synopsis>
-        <Description>New-AzureNotificationHubAuthorizationRules cmdlet creates a new Namespace Authorization Rule.</Description>
+        <Description>New-AzureRmNotificationHubAuthorizationRules cmdlet creates a new Namespace Authorization Rule.</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -966,14 +966,14 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName NamespaceName SASRule InputFile Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace SASRule InputFile Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>New-AzureNotificationHubsNamespaceAuthorizationRules [-ResourceGroupName] &lt;String&gt; [-NamespaceName] &lt;String&gt; [-SASRule] &lt;SharedAccessAuthorizationRuleAttributes&gt; [-InputFile] &lt;String&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>New-AzureRmNotificationHubsNamespaceAuthorizationRules [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-SASRule] &lt;SharedAccessAuthorizationRuleAttributes&gt; [-InputFile] &lt;String&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
-          <Name>ResourceGroupName</Name>
+          <Name>ResourceGroup</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
@@ -983,7 +983,7 @@
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
-          <Name>NamespaceName</Name>
+          <Name>Namespace</Name>
           <Attributes>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -1052,11 +1052,11 @@
       <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
-    <CmdletObject verb="Remove" noun="AzureNotificationHub">
-      <Name>Remove-AzureNotificationHub</Name>
+    <CmdletObject verb="Remove" noun="AzureRmNotificationHub">
+      <Name>Remove-AzureRmNotificationHub</Name>
       <GeneralHelp>
         <Synopsis>Removes an existing NotificationHub.</Synopsis>
-        <Description>Remove-AzureNotificationHub cmdlet removes existing NotificationHub.</Description>
+        <Description>Remove-AzureRmNotificationHub cmdlet removes existing NotificationHub.</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -1066,14 +1066,14 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName NamespaceName NotificationHubName Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace NotificationHub Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Remove-AzureNotificationHub [-ResourceGroupName] &lt;String&gt; [-NamespaceName] &lt;String&gt; [[-NotificationHubName] &lt;String&gt;] [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Remove-AzureRmNotificationHub [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [[-NotificationHub] &lt;String&gt;] [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
-          <Name>ResourceGroupName</Name>
+          <Name>ResourceGroup</Name>
           <Attributes>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -1083,7 +1083,7 @@
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
-          <Name>NamespaceName</Name>
+          <Name>Namespace</Name>
           <Attributes>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -1093,7 +1093,7 @@
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="2" globbing="false">
-          <Name>NotificationHubName</Name>
+          <Name>NotificationHub</Name>
           <Attributes>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -1142,11 +1142,11 @@
       <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
-    <CmdletObject verb="Remove" noun="AzureNotificationHubAuthorizationRules">
-      <Name>Remove-AzureNotificationHubAuthorizationRules</Name>
+    <CmdletObject verb="Remove" noun="AzureRmNotificationHubAuthorizationRules">
+      <Name>Remove-AzureRmNotificationHubAuthorizationRules</Name>
       <GeneralHelp>
         <Synopsis>Removes an existing NotificationHub Authorization Rule.</Synopsis>
-        <Description>Remove-AzureNotificationHubAuthorizationRules cmdlet removes an existing NotificationHub Authorization Rule.</Description>
+        <Description>Remove-AzureRmNotificationHubAuthorizationRules cmdlet removes an existing NotificationHub Authorization Rule.</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -1156,14 +1156,14 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName NamespaceName NotificationHubName AuthorizationRuleName Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace NotificationHub AuthorizationRule Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Remove-AzureNotificationHubAuthorizationRules [-ResourceGroupName] &lt;String&gt; [-NamespaceName] &lt;String&gt; [[-NotificationHubName] &lt;String&gt;] [-AuthorizationRuleName] &lt;String&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Remove-AzureRmNotificationHubAuthorizationRules [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [[-NotificationHub] &lt;String&gt;] [-AuthorizationRule] &lt;String&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
-          <Name>ResourceGroupName</Name>
+          <Name>ResourceGroup</Name>
           <Attributes>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -1173,7 +1173,7 @@
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
-          <Name>NamespaceName</Name>
+          <Name>Namespace</Name>
           <Attributes>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -1183,7 +1183,7 @@
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="2" globbing="false">
-          <Name>NotificationHubName</Name>
+          <Name>NotificationHub</Name>
           <Attributes>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -1193,7 +1193,7 @@
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="3" globbing="false">
-          <Name>AuthorizationRuleName</Name>
+          <Name>AuthorizationRule</Name>
           <Attributes>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -1242,11 +1242,11 @@
       <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
-    <CmdletObject verb="Remove" noun="AzureNotificationHubsNamespace">
-      <Name>Remove-AzureNotificationHubsNamespace</Name>
+    <CmdletObject verb="Remove" noun="AzureRmNotificationHubsNamespace">
+      <Name>Remove-AzureRmNotificationHubsNamespace</Name>
       <GeneralHelp>
         <Synopsis>Removes an existing Namespace.</Synopsis>
-        <Description>Remove-AzureNotificationHub cmdlet removes existing Namespace of type NotificationHub.</Description>
+        <Description>Remove-AzureRmNotificationHub cmdlet removes existing Namespace of type NotificationHub.</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -1256,14 +1256,14 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName NamespaceName Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Remove-AzureNotificationHubsNamespace [-ResourceGroupName] &lt;String&gt; [-NamespaceName] &lt;String&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Remove-AzureRmNotificationHubsNamespace [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
-          <Name>ResourceGroupName</Name>
+          <Name>ResourceGroup</Name>
           <Attributes>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -1273,7 +1273,7 @@
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
-          <Name>NamespaceName</Name>
+          <Name>Namespace</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
@@ -1322,11 +1322,11 @@
       <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
-    <CmdletObject verb="Remove" noun="AzureNotificationHubsNamespaceAuthorizationRules">
-      <Name>Remove-AzureNotificationHubsNamespaceAuthorizationRules</Name>
+    <CmdletObject verb="Remove" noun="AzureRmNotificationHubsNamespaceAuthorizationRules">
+      <Name>Remove-AzureRmNotificationHubsNamespaceAuthorizationRules</Name>
       <GeneralHelp>
         <Synopsis>Removes an existing Namespace Authorization Rule.</Synopsis>
-        <Description>Remove-AzureNotificationHubsNamespaceAuthorizationRules cmdlet removes an existing Namespace Authorization Rule.</Description>
+        <Description>Remove-AzureRmNotificationHubsNamespaceAuthorizationRules cmdlet removes an existing Namespace Authorization Rule.</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -1336,14 +1336,14 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName NamespaceName AuthorizationRuleName Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace AuthorizationRule Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Remove-AzureNotificationHubsNamespaceAuthorizationRules [-ResourceGroupName] &lt;String&gt; [-NamespaceName] &lt;String&gt; [-AuthorizationRuleName] &lt;String&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Remove-AzureRmNotificationHubsNamespaceAuthorizationRules [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-AuthorizationRule] &lt;String&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
-          <Name>ResourceGroupName</Name>
+          <Name>ResourceGroup</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
@@ -1353,7 +1353,7 @@
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
-          <Name>NamespaceName</Name>
+          <Name>Namespace</Name>
           <Attributes>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -1363,7 +1363,7 @@
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="2" globbing="false">
-          <Name>AuthorizationRuleName</Name>
+          <Name>AuthorizationRule</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
@@ -1412,11 +1412,11 @@
       <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
-    <CmdletObject verb="Set" noun="AzureNotificationHub">
-      <Name>Set-AzureNotificationHub</Name>
+    <CmdletObject verb="Set" noun="AzureRmNotificationHub">
+      <Name>Set-AzureRmNotificationHub</Name>
       <GeneralHelp>
         <Synopsis>Sets the PNS credentials and other properties for a NotificationHub.</Synopsis>
-        <Description>Set-AzureNotificationHub cmdlet sets the PNS credentials and other properties for a NotificationHub.</Description>
+        <Description>Set-AzureRmNotificationHub cmdlet sets the PNS credentials and other properties for a NotificationHub.</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -1426,14 +1426,14 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName NamespaceName InputFile NotificationHubObj Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace InputFile NotificationHubObj Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Set-AzureNotificationHub [-ResourceGroupName] &lt;String&gt; [-NamespaceName] &lt;String&gt; [-InputFile] &lt;String&gt; [-NotificationHubObj] &lt;NotificationHubAttributes&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Set-AzureRmNotificationHub [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-InputFile] &lt;String&gt; [-NotificationHubObj] &lt;NotificationHubAttributes&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
-          <Name>ResourceGroupName</Name>
+          <Name>ResourceGroup</Name>
           <Attributes>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -1443,7 +1443,7 @@
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
-          <Name>NamespaceName</Name>
+          <Name>Namespace</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
@@ -1512,11 +1512,11 @@
       <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
-    <CmdletObject verb="Set" noun="AzureNotificationHubAuthorizationRules">
-      <Name>Set-AzureNotificationHubAuthorizationRules</Name>
+    <CmdletObject verb="Set" noun="AzureRmNotificationHubAuthorizationRules">
+      <Name>Set-AzureRmNotificationHubAuthorizationRules</Name>
       <GeneralHelp>
         <Synopsis>Sets the Authorization Rules for a NotificationHub.</Synopsis>
-        <Description>Set-AzureNotificationHubAuthorizationRules cmdlet sets a NotificationHub Authorization Rule.</Description>
+        <Description>Set-AzureRmNotificationHubAuthorizationRules cmdlet sets a NotificationHub Authorization Rule.</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -1526,14 +1526,14 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName NamespaceName NotificationHubName SASRule InputFile Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace NotificationHub SASRule InputFile Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Set-AzureNotificationHubAuthorizationRules [-ResourceGroupName] &lt;String&gt; [-NamespaceName] &lt;String&gt; [[-NotificationHubName] &lt;String&gt;] [-SASRule] &lt;SharedAccessAuthorizationRuleAttributes&gt; [-InputFile] &lt;String&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Set-AzureRmNotificationHubAuthorizationRules [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [[-NotificationHub] &lt;String&gt;] [-SASRule] &lt;SharedAccessAuthorizationRuleAttributes&gt; [-InputFile] &lt;String&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
-          <Name>ResourceGroupName</Name>
+          <Name>ResourceGroup</Name>
           <Attributes>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -1543,7 +1543,7 @@
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
-          <Name>NamespaceName</Name>
+          <Name>Namespace</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
@@ -1553,7 +1553,7 @@
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="false" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="2" globbing="false">
-          <Name>NotificationHubName</Name>
+          <Name>NotificationHub</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
@@ -1622,11 +1622,11 @@
       <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
-    <CmdletObject verb="Set" noun="AzureNotificationHubsNamespace">
-      <Name>Set-AzureNotificationHubsNamespace</Name>
+    <CmdletObject verb="Set" noun="AzureRmNotificationHubsNamespace">
+      <Name>Set-AzureRmNotificationHubsNamespace</Name>
       <GeneralHelp>
         <Synopsis>Sets the Namespace properties.</Synopsis>
-        <Description>Set-AzureNotificationHubsNamespace cmdlet sets the Namespace properties. This would mainly be to enable/disable a namespace and to make a namespace critical.</Description>
+        <Description>Set-AzureRmNotificationHubsNamespace cmdlet sets the Namespace properties. This would mainly be to enable/disable a namespace and to make a namespace critical.</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -1636,14 +1636,14 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName NamespaceName State Critical Tags Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace State Critical Tags Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Set-AzureNotificationHubsNamespace [-ResourceGroupName] &lt;String&gt; [-NamespaceName] &lt;String&gt; [[-State] &lt;NamespaceState&gt;] [[-Critical] &lt;Boolean&gt;] [[-Tags] &lt;Dictionary`2[String]&gt;] [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Set-AzureRmNotificationHubsNamespace [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [[-State] &lt;NamespaceState&gt;] [[-Critical] &lt;Boolean&gt;] [[-Tags] &lt;Dictionary`2[String]&gt;] [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
-          <Name>ResourceGroupName</Name>
+          <Name>ResourceGroup</Name>
           <Attributes>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -1653,7 +1653,7 @@
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
-          <Name>NamespaceName</Name>
+          <Name>Namespace</Name>
           <Attributes>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
             <string>System.Management.Automation.ParameterAttribute</string>
@@ -1729,11 +1729,11 @@
       <SupportInformation ad="false" rsat="false" ps2="false" ps3="false" ps4="false" ps5="false" wxp="false" wv="false" w7="false" w8="false" w81="false" w2k3s="false" w2k3e="false" w2k3d="false" w2k8s="false" w2k8e="false" w2k8d="false" w2k8r2s="false" w2k8r2e="false" w2k8r2d="false" w2k12s="false" w2k12d="false" w2k12r2s="false" w2k12r2d="false" />
       <Publish>false</Publish>
     </CmdletObject>
-    <CmdletObject verb="Set" noun="AzureNotificationHubsNamespaceAuthorizationRules">
-      <Name>Set-AzureNotificationHubsNamespaceAuthorizationRules</Name>
+    <CmdletObject verb="Set" noun="AzureRmNotificationHubsNamespaceAuthorizationRules">
+      <Name>Set-AzureRmNotificationHubsNamespaceAuthorizationRules</Name>
       <GeneralHelp>
         <Synopsis>Sets the Authorization Rules for a Namespace.</Synopsis>
-        <Description>Set-AzureNotificationHubAuthorizationRules cmdlet sets a NotificationHub Authorization Rule.</Description>
+        <Description>Set-AzureRmNotificationHubAuthorizationRules cmdlet sets a NotificationHub Authorization Rule.</Description>
         <Notes />
         <InputType />
         <InputUrl />
@@ -1743,14 +1743,14 @@
         <ReturnTypeDescription />
       </GeneralHelp>
       <ParamSets>
-        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroupName NamespaceName SASRule InputFile Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
+        <CommandParameterSetInfo2 Name="__AllParameterSets" Params="ResourceGroup Namespace SASRule InputFile Profile Verbose Debug ErrorAction WarningAction InformationAction ErrorVariable WarningVariable InformationVariable OutVariable OutBuffer PipelineVariable" />
       </ParamSets>
       <Syntax>
-        <string>Set-AzureNotificationHubsNamespaceAuthorizationRules [-ResourceGroupName] &lt;String&gt; [-NamespaceName] &lt;String&gt; [-SASRule] &lt;SharedAccessAuthorizationRuleAttributes&gt; [-InputFile] &lt;String&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
+        <string>Set-AzureRmNotificationHubsNamespaceAuthorizationRules [-ResourceGroup] &lt;String&gt; [-Namespace] &lt;String&gt; [-SASRule] &lt;SharedAccessAuthorizationRuleAttributes&gt; [-InputFile] &lt;String&gt; [-Profile &lt;AzureProfile&gt;] [-InformationAction &lt;ActionPreference&gt;] [-InformationVariable &lt;String&gt;]</string>
       </Syntax>
       <Parameters>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="0" globbing="false">
-          <Name>ResourceGroupName</Name>
+          <Name>ResourceGroup</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>
@@ -1760,7 +1760,7 @@
           <DefaultValue />
         </ParameterDescription>
         <ParameterDescription type="String" varLen="false" required="true" dynamic="false" pipeRemaining="false" pipe="false" pipeProp="true" isPos="true" pos="1" globbing="false">
-          <Name>NamespaceName</Name>
+          <Name>Namespace</Name>
           <Attributes>
             <string>System.Management.Automation.ParameterAttribute</string>
             <string>System.Management.Automation.ValidateNotNullOrEmptyAttribute</string>

@@ -12,16 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.NotificationHubs.Models;
+using Microsoft.Azure.Management.NotificationHubs.Models;
+using System.Collections.Generic;
+using System.Management.Automation;
 
+using System.Linq;
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 {
-    using Microsoft.Azure.Commands.NotificationHubs.Models;
-    using Microsoft.Azure.Management.NotificationHubs.Models;
-    using System.Collections.Generic;
-    using System.Management.Automation;
-    using System.Linq;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureNotificationHub")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmNotificationHub")]
     public class RemoveAzureNotificationHub : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -29,28 +29,28 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
             Position = 0,
             HelpMessage = "The name of the resource group")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
+        public string ResourceGroup { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "NotificationHub Name.")]
         [ValidateNotNullOrEmpty]
-        public string NotificationHubName { get; set; }
+        public string NotificationHub { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(NamespaceName) && !string.IsNullOrEmpty(NotificationHubName))
+            if (!string.IsNullOrEmpty(ResourceGroup) && !string.IsNullOrEmpty(Namespace) && !string.IsNullOrEmpty(NotificationHub))
             {
                 // delete a notificationHub 
-                var deleteHub = Client.DeleteNotificationHub(ResourceGroupName, NamespaceName, NotificationHubName);
+                var deleteHub = Client.DeleteNotificationHub(ResourceGroup, Namespace, NotificationHub);
                 WriteObject(deleteHub);
             }
         }

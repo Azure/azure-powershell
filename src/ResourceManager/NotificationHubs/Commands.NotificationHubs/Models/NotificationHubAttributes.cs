@@ -12,11 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.NotificationHubs.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.NotificationHubs.Models
 {
-    using Microsoft.Azure.Management.NotificationHubs.Models;
-    using System.Collections.Generic;
 
     public class NotificationHubAttributes
     {

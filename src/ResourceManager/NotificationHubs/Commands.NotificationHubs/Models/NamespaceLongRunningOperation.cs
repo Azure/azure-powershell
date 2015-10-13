@@ -12,14 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.NotificationHubs.Models;
+using System;
+
 namespace Microsoft.Azure.Commands.NotificationHubs.Models
 {
-    using Microsoft.Azure.Management.NotificationHubs.Models;
-    using System;
 
     public class NamespaceLongRunningOperation
     {
-        public const string DeleteOperation = "Remove-AzureNotificationHubsNamespace";
+        public const string DeleteOperation = "Remove-AzureRmNotificationHubsNamespace";
 
         private NamespaceLongRunningOperation()
         {
@@ -45,11 +46,9 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Models
                 OperationLink = longRunningResponse.OperationStatusLink,
                 RetryAfter = TimeSpan.FromSeconds(longRunningResponse.RetryAfter),
                 Status = longRunningResponse.Status,
-                Error = longRunningResponse.Error != null
-                    ? longRunningResponse.Error.Message
-                    : null
+                Error = (longRunningResponse.Error != null ) ? longRunningResponse.Error.Message : null
             };
-
+                        
             return result;
         }
 

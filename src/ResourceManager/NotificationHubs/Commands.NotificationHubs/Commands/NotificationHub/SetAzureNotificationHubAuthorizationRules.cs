@@ -12,19 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.NotificationHubs.Models;
+using Microsoft.Azure.Management.NotificationHubs.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Management.Automation;
+using System.Linq;
+using System.IO;    
 
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 {
-    using Microsoft.Azure.Commands.NotificationHubs.Models;
-    using Microsoft.Azure.Management.NotificationHubs.Models;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
-    using System.Collections.Generic;
-    using System.Management.Automation;
-    using System.Linq;
-    using Newtonsoft.Json;
-    using System.IO;
 
-    [Cmdlet(VerbsCommon.Set, "AzureNotificationHubAuthorizationRules"), OutputType(typeof(SharedAccessAuthorizationRuleAttributes))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmNotificationHubAuthorizationRules"), OutputType(typeof(SharedAccessAuthorizationRuleAttributes))]
     public class SetAzureNotificationHubAuthorizationRules : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -32,21 +33,21 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
             Position = 0,
             HelpMessage = "The name of the resource group")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
+        public string ResourceGroup { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "NotificationHub Name.")]
         [ValidateNotNullOrEmpty]
-        public string NotificationHubName { get; set; }
+        public string NotificationHub { get; set; }
 
         [Parameter(Mandatory = true,
             Position = 3,
@@ -62,30 +63,16 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
         [ValidateNotNullOrEmpty]
         public SharedAccessAuthorizationRuleAttributes SASRule { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(NamespaceName) && !string.IsNullOrEmpty(NotificationHubName))
+            if (!string.IsNullOrEmpty(ResourceGroup) && !string.IsNullOrEmpty(Namespace) && !string.IsNullOrEmpty(NotificationHub))
             {
-                if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(NamespaceName))
+                if (!string.IsNullOrEmpty(ResourceGroup) && !string.IsNullOrEmpty(Namespace))
                 {
                     SharedAccessAuthorizationRuleAttributes sasRule = null;
                     if (!string.IsNullOrEmpty(InputFile))
                     {
-                        string fileName = this.TryResolvePath(InputFile);
-                        if (!(new FileInfo(fileName)).Exists)
-                        {
-                            throw new PSArgumentException(string.Format("File {0} does not exist", fileName));
-                        }
-
-                        try
-                        {
-                            sasRule = JsonConvert.DeserializeObject<SharedAccessAuthorizationRuleAttributes>(File.ReadAllText(fileName));
-                        }
-                        catch (JsonException)
-                        {
-                            WriteVerbose("Deserializing the input role definition failed.");
-                            throw;
-                        }
+                        sasRule = ParseInputFile<SharedAccessAuthorizationRuleAttributes>(InputFile);
                     }
                     else
                     {
@@ -93,7 +80,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
                     }
 
                     // Update a notificationHub authorizationRule
-                    var authRule = Client.CreateOrUpdateNotificationHubAuthorizationRules(ResourceGroupName, NamespaceName, NotificationHubName,
+                    var authRule = Client.CreateOrUpdateNotificationHubAuthorizationRules(ResourceGroup, Namespace, NotificationHub,
                                                             sasRule.Name, sasRule.Rights, sasRule.PrimaryKey, sasRule.SecondaryKey);
                     WriteObject(authRule);
                 }

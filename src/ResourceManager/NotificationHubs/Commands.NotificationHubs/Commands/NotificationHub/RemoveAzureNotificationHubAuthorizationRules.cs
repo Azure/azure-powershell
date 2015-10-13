@@ -12,16 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.NotificationHubs.Models;
+using Microsoft.Azure.Management.NotificationHubs.Models;
+using System.Collections.Generic;
+using System.Management.Automation;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 {
-    using Microsoft.Azure.Commands.NotificationHubs.Models;
-    using Microsoft.Azure.Management.NotificationHubs.Models;
-    using System.Collections.Generic;
-    using System.Management.Automation;
-    using System.Linq;
 
-    [Cmdlet(VerbsCommon.Remove, "AzureNotificationHubAuthorizationRules")]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmNotificationHubAuthorizationRules")]
     public class RemoveAzureNotificationHubAuthorizationRules : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -29,36 +29,36 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
             Position = 0,
             HelpMessage = "The name of the resource group")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
+        public string ResourceGroup { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "NotificationHub Name.")]
         [ValidateNotNullOrEmpty]
-        public string NotificationHubName { get; set; }
+        public string NotificationHub { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 3,
             HelpMessage = "NotificationHub AuthorizationRule Name.")]
         [ValidateNotNullOrEmpty]
-        public string AuthorizationRuleName { get; set; }
+        public string AuthorizationRule { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(NamespaceName) && !string.IsNullOrEmpty(NotificationHubName) 
-                                && !string.IsNullOrEmpty(AuthorizationRuleName))
+            if (!string.IsNullOrEmpty(ResourceGroup) && !string.IsNullOrEmpty(Namespace) && !string.IsNullOrEmpty(NotificationHub) 
+                                && !string.IsNullOrEmpty(AuthorizationRule))
             {
                 // Delete notificationHub authorizationRule
-                var deleteAuthRule = Client.DeleteNotificationHubAuthorizationRules(ResourceGroupName, NamespaceName, NotificationHubName, AuthorizationRuleName);
+                var deleteAuthRule = Client.DeleteNotificationHubAuthorizationRules(ResourceGroup, Namespace, NotificationHub, AuthorizationRule);
                 WriteObject(deleteAuthRule);
             }
         }

@@ -16,16 +16,17 @@ namespace Microsoft.Azure.Commands.NotificatioHubs.Test.ScenarioTests
 {
     using System;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
     using Microsoft.Azure.Test;
     using Microsoft.Azure.Management.NotificationHubs;
     using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Common.Authentication;
-    using Microsoft.Azure.Management.Rdfe;
     using Microsoft.Azure.Gallery;
     using Microsoft.Azure.Management.Authorization;
     using System.Collections.Generic;
+    using Microsoft.WindowsAzure.Management;
 
-    public abstract class TestBaseClass: IDisposable
+    public abstract class TestBaseClass : RMTestBase
     {
         private EnvironmentSetupHelper helper;
 
@@ -54,15 +55,19 @@ namespace Microsoft.Azure.Commands.NotificatioHubs.Test.ScenarioTests
 
                 SetupManagementClients();
 
-                string str = Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION");
                 List<string> modules = new List<string>();
                 modules.Add("Microsoft.Azure.Commands.NotificationHubs.dll");
-                modules.Add("ScenarioTests\\" + this.GetType().Name + ".ps1");  
-
+                modules.Add("ScenarioTests\\" + this.GetType().Name + ".ps1");
+                modules.Add(helper.RMProfileModule);
+                modules.Add(helper.RMResourceModule);
+                modules.Add(helper.RMStorageDataPlaneModule);
+                modules.Add(helper.RMStorageModule);
+                modules.Add(helper.GetRMModulePath(@"AzureRM.NotificationHubs.psd1"));  
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 helper.SetupModules(AzureModule.AzureResourceManager, modules.ToArray());
                 helper.RunPowerShellTest(scripts);
+
             }
         }
 

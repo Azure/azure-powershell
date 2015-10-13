@@ -12,15 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.NotificationHubs.Models;
+using Microsoft.Azure.Management.NotificationHubs.Models;
+using System.Collections.Generic;
+using System.Management.Automation;
+using System.Linq;
+
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
 {
-    using Microsoft.Azure.Commands.NotificationHubs.Models;
-    using Microsoft.Azure.Management.NotificationHubs.Models;
-    using System.Collections.Generic;
-    using System.Management.Automation;
-    using System.Linq;
 
-    [Cmdlet(VerbsCommon.Get, "AzureNotificationHubsNamespace"), OutputType(typeof(List<NamespaceAttributes>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmNotificationHubsNamespace"), OutputType(typeof(List<NamespaceAttributes>))]
     public class GetAzureNotificationHubsNamespace : AzureNotificationHubsCmdletBase
     {
 
@@ -28,30 +29,30 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The name of the resource group")]
-        public string ResourceGroupName { get; set; }
+        public string ResourceGroup { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Namespace Name.")]
-        public string NamespaceName { get; set; }
+        public string Namespace { get; set; }
         
         /// <summary>
         /// Gets a Namespace from the service.
         /// </summary>
         /// <returns>A single Namespace</returns>
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(NamespaceName))
+            if (!string.IsNullOrEmpty(ResourceGroup) && !string.IsNullOrEmpty(Namespace))
             {
                 // Get a namespace
-                var attributes = Client.GetNamespace(ResourceGroupName, NamespaceName);
+                var attributes = Client.GetNamespace(ResourceGroup, Namespace);
                 WriteObject(attributes);
             }
-            else if (!string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(NamespaceName))
+            else if (!string.IsNullOrEmpty(ResourceGroup) && string.IsNullOrEmpty(Namespace))
             {
                 // List all namespaces in given resource group 
-                var namespaceList = Client.ListNamespaces(ResourceGroupName);
+                var namespaceList = Client.ListNamespaces(ResourceGroup);
                 WriteObject(namespaceList.ToList(), true);
             }
             else

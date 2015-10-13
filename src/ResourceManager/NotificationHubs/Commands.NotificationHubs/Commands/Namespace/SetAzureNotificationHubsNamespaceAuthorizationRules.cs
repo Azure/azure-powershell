@@ -12,16 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.NotificationHubs.Models;
+using Microsoft.Azure.Management.NotificationHubs.Models;
+using System.Collections.Generic;
+using System.Management.Automation;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
 {
-    using Microsoft.Azure.Commands.NotificationHubs.Models;
-    using Microsoft.Azure.Management.NotificationHubs.Models;
-    using System.Collections.Generic;
-    using System.Management.Automation;
-    using System.Linq;
 
-    [Cmdlet(VerbsCommon.Set, "AzureNotificationHubsNamespaceAuthorizationRules"), OutputType(typeof(SharedAccessAuthorizationRuleAttributes))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmNotificationHubsNamespaceAuthorizationRules"), OutputType(typeof(SharedAccessAuthorizationRuleAttributes))]
     public class SetAzureNotificationHubsNamespaceAuthorizationRules : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -29,14 +29,14 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
             Position = 0,
             HelpMessage = "The name of the resource group")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
+        public string ResourceGroup { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = true,
             Position = 2,
@@ -52,14 +52,26 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
         [ValidateNotNullOrEmpty]
         public SharedAccessAuthorizationRuleAttributes SASRule { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(NamespaceName) )
+            if (!string.IsNullOrEmpty(ResourceGroup) && !string.IsNullOrEmpty(Namespace))
             {
+                SharedAccessAuthorizationRuleAttributes sasRule = null;
+                if (!string.IsNullOrEmpty(InputFile))
+                {
+                    sasRule = ParseInputFile<SharedAccessAuthorizationRuleAttributes>(InputFile);
+                }
+                else
+                {
+                    sasRule = SASRule;
+                }
+
                 // Update namespace authorizationRule
-                var updateNSAuthRule = Client.CreateOrUpdateNamespaceAuthorizationRules(ResourceGroupName, NamespaceName, SASRule.Name, SASRule.Rights, SASRule.PrimaryKey, SASRule.SecondaryKey);
+                var updateNSAuthRule = Client.CreateOrUpdateNamespaceAuthorizationRules(ResourceGroup, Namespace, sasRule.Name, sasRule.Rights,
+                    sasRule.PrimaryKey, sasRule.SecondaryKey == null ? null : sasRule.SecondaryKey);
                 WriteObject(updateNSAuthRule);
             }
+
         }
     }
 }

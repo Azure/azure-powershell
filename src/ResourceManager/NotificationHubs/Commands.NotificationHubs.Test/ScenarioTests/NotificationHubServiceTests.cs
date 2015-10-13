@@ -26,8 +26,6 @@ namespace Microsoft.Azure.Commands.NotificatioHubs.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCRUDNamespace()
         {
-            string str = Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION");
-
             RunPowerShellTest("Test-CRUDNamespace");
         }
 

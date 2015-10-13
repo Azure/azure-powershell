@@ -12,18 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
-{
-    using Microsoft.Azure.Commands.NotificationHubs.Models;
-    using Microsoft.Azure.Management.NotificationHubs.Models;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
-    using System.Collections.Generic;
-    using System.Management.Automation;
-    using System.Linq;
-    using System.IO;
-    using Newtonsoft.Json;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.NotificationHubs.Models;
+using Microsoft.Azure.Management.NotificationHubs.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Management.Automation;
+using System.Linq;
+using System.IO;
+using System.Collections;
 
-    [Cmdlet(VerbsCommon.New, "AzureNotificationHub"), OutputType(typeof(NotificationHubAttributes))]
+namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
+{   
+
+    [Cmdlet(VerbsCommon.New, "AzureRmNotificationHub"), OutputType(typeof(NotificationHubAttributes))]
     public class NewAzureNotificationHub : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -31,14 +34,14 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
             Position = 0,
             HelpMessage = "The name of the resource group")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
+        public string ResourceGroup { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = true,
             ParameterSetName = InputFileParameterSetName,
@@ -54,35 +57,21 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
         [ValidateNotNullOrEmpty]
         public NotificationHubAttributes NotificationHubObj { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(NamespaceName))
+            if (!string.IsNullOrEmpty(ResourceGroup) && !string.IsNullOrEmpty(Namespace))
             {
                 NotificationHubAttributes hub = null;
                 if (!string.IsNullOrEmpty(InputFile))
                 {
-                    string fileName = this.TryResolvePath(InputFile);
-                    if (!(new FileInfo(fileName)).Exists)
-                    {
-                        throw new PSArgumentException(string.Format("File {0} does not exist", fileName));
-                    }
-
-                    try
-                    {
-                        hub = JsonConvert.DeserializeObject<NotificationHubAttributes>(File.ReadAllText(fileName));
-                    }
-                    catch (JsonException)
-                    {
-                        WriteVerbose("Deserializing the input role definition failed.");
-                        throw;
-                    }
+                    hub = ParseInputFile<NotificationHubAttributes>(InputFile);
                 }
                 else
                 {
                     hub = NotificationHubObj;
                 }
 
-                var hubAttributes = Client.CreateNotificationHub(ResourceGroupName, NamespaceName, hub);
+                var hubAttributes = Client.CreateNotificationHub(ResourceGroup, Namespace, hub);
                 WriteObject(hubAttributes);
             }
         }

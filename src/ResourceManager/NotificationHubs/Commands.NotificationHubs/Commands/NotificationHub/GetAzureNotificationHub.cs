@@ -12,15 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.NotificationHubs.Models;
+using Microsoft.Azure.Management.NotificationHubs.Models;
+using System.Collections.Generic;
+using System.Management.Automation;
+using System.Linq;
+
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 {
-    using Microsoft.Azure.Commands.NotificationHubs.Models;
-    using Microsoft.Azure.Management.NotificationHubs.Models;
-    using System.Collections.Generic;
-    using System.Management.Automation;
-    using System.Linq;
 
-    [Cmdlet(VerbsCommon.Get, "AzureNotificationHub"), OutputType(typeof(List<NotificationHubAttributes>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmNotificationHub"), OutputType(typeof(List<NotificationHubAttributes>))]
     public class GetAzureNotificationHub: AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -28,35 +29,35 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
             Position = 0,
             HelpMessage = "The name of the resource group")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
+        public string ResourceGroup { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "NotificationHub Name.")]
-        public string NotificationHubName { get; set; }
+        public string NotificationHub { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(NamespaceName))
+            if (!string.IsNullOrEmpty(ResourceGroup) && !string.IsNullOrEmpty(Namespace))
             {
-                if (!string.IsNullOrEmpty(NotificationHubName))
+                if (!string.IsNullOrEmpty(NotificationHub))
                 {
                     // Get a NotificationHub
-                    var notificationHub = Client.GetNotificationHub(ResourceGroupName, NamespaceName, NotificationHubName);
+                    var notificationHub = Client.GetNotificationHub(ResourceGroup, Namespace, NotificationHub);
                     WriteObject(notificationHub);
                 }
                 else
                 {
                     // Get all NotificationHub
-                    var notificationHubsList = Client.ListNotificationHubs(ResourceGroupName, NamespaceName);
+                    var notificationHubsList = Client.ListNotificationHubs(ResourceGroup, Namespace);
                     WriteObject(notificationHubsList.ToList(), true);
                 }
             }

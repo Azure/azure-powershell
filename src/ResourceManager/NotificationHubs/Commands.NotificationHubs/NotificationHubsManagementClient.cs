@@ -12,35 +12,37 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+using Microsoft.Azure.Commands.NotificationHubs.Models;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Management.NotificationHubs;
+using Microsoft.Azure.Management.NotificationHubs.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Management.Automation;
+using System.Net;
+using System.Security.Cryptography;
+
 namespace Microsoft.Azure.Commands.NotificationHubs
 {
-    using Microsoft.Azure.Commands.NotificationHubs.Models;
-    using Microsoft.Azure.Common.Authentication;
-    using Microsoft.Azure.Common.Authentication.Models;
-    using Microsoft.Azure.Management.NotificationHubs;
-    using Microsoft.Azure.Management.NotificationHubs.Models;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Management.Automation;
-    using System.Net;
-    using System.Security.Cryptography;
 
     public class NotificationHubsManagementClient
     {
-        private readonly AzureProfile _azureProfile;
+        private readonly AzureContext _context;
 
         private Management.NotificationHubs.NotificationHubsManagementClient _client;
 
-        public NotificationHubsManagementClient(AzureProfile azureProfile)
+        public NotificationHubsManagementClient(AzureContext azureContext)
         {
-            if (azureProfile == null)
+            if (azureContext == null)
             {
-                throw new ArgumentNullException("azureProfile");
+                throw new ArgumentNullException("azureContext");
             }
 
-            _azureProfile = azureProfile;
+            _context = azureContext;
         }
 
         private INotificationHubsManagementClient Client
@@ -51,7 +53,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs
                 {
                     _client =
                         AzureSession.ClientFactory.CreateClient<Management.NotificationHubs.NotificationHubsManagementClient>(
-                            _azureProfile,
+                            _context,
                             AzureEnvironment.Endpoint.ResourceManager);
                 }
 
@@ -354,6 +356,6 @@ namespace Microsoft.Azure.Commands.NotificationHubs
             }
 
             return Convert.ToBase64String(key256);
-        }
+        }        
     }
 }

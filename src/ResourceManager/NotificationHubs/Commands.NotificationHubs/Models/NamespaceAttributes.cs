@@ -12,12 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.NotificationHubs.Models;
+using System;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
+
 namespace Microsoft.Azure.Commands.NotificationHubs.Models
 {
-    using Microsoft.Azure.Management.NotificationHubs.Models;
-    using System;
-    using System.Collections.Generic;
-    using System.Text.RegularExpressions;
 
     /// <summary>
     /// Represents the properties of a Namespace of type NotificationHub

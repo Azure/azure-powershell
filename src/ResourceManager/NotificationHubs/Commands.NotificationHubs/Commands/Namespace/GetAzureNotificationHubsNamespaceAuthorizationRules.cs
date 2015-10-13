@@ -12,15 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.NotificationHubs.Models;
+using Microsoft.Azure.Management.NotificationHubs.Models;
+using System.Collections.Generic;
+using System.Management.Automation;
+using System.Linq;
+
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
 {
-    using Microsoft.Azure.Commands.NotificationHubs.Models;
-    using Microsoft.Azure.Management.NotificationHubs.Models;
-    using System.Collections.Generic;
-    using System.Management.Automation;
-    using System.Linq;
 
-    [Cmdlet(VerbsCommon.Get, "AzureNotificationHubsNamespaceAuthorizationRules"), OutputType(typeof(List<SharedAccessAuthorizationRuleAttributes>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmNotificationHubsNamespaceAuthorizationRules"), OutputType(typeof(List<SharedAccessAuthorizationRuleAttributes>))]
     public class GetAzureNotificationHubsNamespaceAuthorizationRules : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -28,35 +29,35 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
             Position = 0,
             HelpMessage = "The name of the resource group")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
+        public string ResourceGroup { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "Namespace AuthorizationRule Name.")]
-        public string AuthorizationRuleName { get; set; }
+        public string AuthorizationRule { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(NamespaceName))
+            if (!string.IsNullOrEmpty(ResourceGroup) && !string.IsNullOrEmpty(Namespace))
             {
-                if (!string.IsNullOrEmpty(AuthorizationRuleName))
+                if (!string.IsNullOrEmpty(AuthorizationRule))
                 {
                     // Get a namespace AuthorizationRules
-                    var authRule = Client.GetNamespaceAuthorizationRules(ResourceGroupName, NamespaceName, AuthorizationRuleName);
+                    var authRule = Client.GetNamespaceAuthorizationRules(ResourceGroup, Namespace, AuthorizationRule);
                     WriteObject(authRule);
                 }
                 else
                 {
                     // Get all namespace AuthorizationRules
-                    var authRuleList = Client.ListNamespaceAuthorizationRules(ResourceGroupName, NamespaceName);
+                    var authRuleList = Client.ListNamespaceAuthorizationRules(ResourceGroup, Namespace);
                     WriteObject(authRuleList.ToList(), true);
                 }
             }

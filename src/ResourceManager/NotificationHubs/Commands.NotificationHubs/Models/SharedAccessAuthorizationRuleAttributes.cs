@@ -12,12 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.NotificationHubs.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace Microsoft.Azure.Commands.NotificationHubs.Models
 {
-    using Microsoft.Azure.Management.NotificationHubs.Models;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
 
     public class SharedAccessAuthorizationRuleAttributes
     {

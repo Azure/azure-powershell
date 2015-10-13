@@ -12,17 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.NotificationHubs.Models;
+using Microsoft.Azure.Management.NotificationHubs.Models;
+using System.Collections.Generic;
+using System.Management.Automation;
+using System.Linq;
+using System.Collections;
 
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
 {
-    using Microsoft.Azure.Commands.NotificationHubs.Models;
-    using Microsoft.Azure.Management.NotificationHubs.Models;
-    using System.Collections.Generic;
-    using System.Management.Automation;
-    using System.Linq;
-    using System.Collections;
 
-    [Cmdlet(VerbsCommon.New, "AzureNotificationHubsNamespace"), OutputType(typeof(NamespaceAttributes))]
+    [Cmdlet(VerbsCommon.New, "AzureRmNotificationHubsNamespace"), OutputType(typeof(NamespaceAttributes))]
     public class NewAzureNotificationHubsNamespace : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -30,14 +30,14 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
             Position = 0,
             HelpMessage = "The name of the resource group")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
+        public string ResourceGroup { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -50,14 +50,14 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
             ValueFromPipelineByPropertyName = true,
             Position = 3,
             HelpMessage = "Hashtables which represents resource Tags.")]
-        public Dictionary<string, string> Tags { get; set; }
+        public Hashtable Tags { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(NamespaceName) && !string.IsNullOrEmpty(Location))
+            if (!string.IsNullOrEmpty(ResourceGroup) && !string.IsNullOrEmpty(Namespace) && !string.IsNullOrEmpty(Location))
             {
                 // Create a new namespace 
-                var nsAttribute = Client.BeginCreateNamespace(ResourceGroupName, NamespaceName, Location, Tags);
+                var nsAttribute = Client.BeginCreateNamespace(ResourceGroup, Namespace, Location, ConvertTagsToDictionary(Tags));
                 WriteObject(nsAttribute);
             }
         }

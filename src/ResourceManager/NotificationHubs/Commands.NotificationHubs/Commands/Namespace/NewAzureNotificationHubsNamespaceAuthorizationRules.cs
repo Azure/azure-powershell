@@ -12,19 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Commands.NotificationHubs.Models;
+using Microsoft.Azure.Management.NotificationHubs.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Management.Automation;
+using System.Linq;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
 {
-    using Microsoft.Azure.Commands.NotificationHubs.Models;
-    using Microsoft.Azure.Management.NotificationHubs.Models;
-    using Microsoft.WindowsAzure.Commands.Utilities.Common;
-    using System.Collections.Generic;
-    using System.Management.Automation;
-    using System.Linq;
-    using System.IO;
-    using Newtonsoft.Json;
 
-    [Cmdlet(VerbsCommon.New, "AzureNotificationHubsNamespaceAuthorizationRules"), OutputType(typeof(SharedAccessAuthorizationRuleAttributes))]
+    [Cmdlet(VerbsCommon.New, "AzureRmNotificationHubsNamespaceAuthorizationRules"), OutputType(typeof(SharedAccessAuthorizationRuleAttributes))]
     public class NewAzureNotificationHubsNamespaceAuthorizationRules : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,
@@ -32,14 +33,14 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
             Position = 0,
             HelpMessage = "The name of the resource group")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroupName { get; set; }
+        public string ResourceGroup { get; set; }
 
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "Namespace Name.")]
         [ValidateNotNullOrEmpty]
-        public string NamespaceName { get; set; }
+        public string Namespace { get; set; }
 
         [Parameter(Mandatory = true,
             Position = 2,
@@ -55,28 +56,14 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
         [ValidateNotNullOrEmpty]
         public SharedAccessAuthorizationRuleAttributes SASRule { get; set; }
 
-        public override void ExecuteCmdlet()
+        protected override void ProcessRecord()
         {
-            if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(NamespaceName))
+            if (!string.IsNullOrEmpty(ResourceGroup) && !string.IsNullOrEmpty(Namespace))
             {
                 SharedAccessAuthorizationRuleAttributes sasRule = null;
                 if (!string.IsNullOrEmpty(InputFile))
                 {
-                    string fileName = this.TryResolvePath(InputFile);
-                    if (!(new FileInfo(fileName)).Exists)
-                    {
-                        throw new PSArgumentException(string.Format("File {0} does not exist", fileName));
-                    }
-
-                    try
-                    {
-                        sasRule = JsonConvert.DeserializeObject<SharedAccessAuthorizationRuleAttributes>(File.ReadAllText(fileName));
-                    }
-                    catch (JsonException)
-                    {
-                        WriteVerbose("Deserializing the input role definition failed.");
-                        throw;
-                    }
+                    sasRule = ParseInputFile<SharedAccessAuthorizationRuleAttributes>(InputFile);
                 }
                 else
                 {
@@ -84,7 +71,7 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
                 }
 
                 // Create a new namespace authorizationRule
-                var authRule = Client.CreateOrUpdateNamespaceAuthorizationRules(ResourceGroupName, NamespaceName, sasRule.Name, sasRule.Rights,
+                var authRule = Client.CreateOrUpdateNamespaceAuthorizationRules(ResourceGroup, Namespace, sasRule.Name, sasRule.Rights,
                     sasRule.PrimaryKey, sasRule.SecondaryKey == null ? null : sasRule.SecondaryKey);
                 WriteObject(authRule);
             }
