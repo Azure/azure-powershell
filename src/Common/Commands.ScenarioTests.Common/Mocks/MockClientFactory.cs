@@ -42,7 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         public MockClientFactory(IEnumerable<object> clients, bool throwIfClientNotSpecified = true)
         {
-            UniqueUserAgents = new HashSet<ProductInfoHeaderValue>();
+            UserAgents = new HashSet<ProductInfoHeaderValue>();
             ManagementClients = clients.ToList();
             throwWhenNotAvailable = throwIfClientNotSpecified;
         }
@@ -177,15 +177,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         public void AddUserAgent(string productName, string productVersion)
         {
-            throw new NotImplementedException();
+            this.UserAgents.Add(new ProductInfoHeaderValue(productName, productVersion));
         }
 
         public void AddUserAgent(string productName)
         {
-            throw new NotImplementedException();
+            this.AddUserAgent(productName, string.Empty);
         }
 
-        public HashSet<ProductInfoHeaderValue> UniqueUserAgents { get; set; }
+        public HashSet<ProductInfoHeaderValue> UserAgents { get; set; }
 
         /// <summary>
         /// This class exists to allow adding an additional reference to the httpClient to prevent the client 
@@ -232,18 +232,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             }
 
             return client;
-        }
-
-        List<ProductInfoHeaderValue> IClientFactory.UserAgents
-        {
-            get
-            {
-                return this.UniqueUserAgents.ToList();
-            }
-            set
-            {
-                value.ForEach((v) =>  this.UniqueUserAgents.Add(v));
-            }
         }
     }
 }

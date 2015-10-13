@@ -177,12 +177,12 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 
         public void AddUserAgent(string productName, string productVersion)
         {
-            throw new NotImplementedException();
+            this.UniqueUserAgents.Add(new ProductInfoHeaderValue(productName, productVersion));
         }
 
         public void AddUserAgent(string productName)
         {
-            throw new NotImplementedException();
+            this.AddUserAgent(productName, string.Empty);
         }
 
         public HashSet<ProductInfoHeaderValue> UniqueUserAgents { get; set; }
@@ -234,15 +234,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             return client;
         }
 
-        List<ProductInfoHeaderValue> IClientFactory.UserAgents
+        HashSet<ProductInfoHeaderValue> IClientFactory.UserAgents
         {
             get
             {
-                return this.UniqueUserAgents.ToList();
+                return this.UniqueUserAgents;
             }
             set
             {
-                value.ForEach((v) =>  this.UniqueUserAgents.Add(v));
+                this.UniqueUserAgents = value;
             }
         }
     }

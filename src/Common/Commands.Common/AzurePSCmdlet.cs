@@ -235,7 +235,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             DebugStreamTraceListener.RemoveAdalTracing(_adalListener);
             FlushDebugMessages();
 
-            AzureSession.ClientFactory.UserAgents.RemoveAll(u => u.Product.Name == ModuleName);
+            AzureSession.ClientFactory.UserAgents.RemoveWhere(u => u.Product.Name == ModuleName);
             AzureSession.ClientFactory.RemoveHandler(typeof(CmdletInfoHandler));
             base.EndProcessing();
         }
