@@ -21,7 +21,7 @@ using Microsoft.WindowsAzure.Storage;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Models
 {
-    class PSStorageAccount : IStorageContextProvider
+    public class PSStorageAccount : IStorageContextProvider
     {
         public PSStorageAccount(StorageAccount storageAccount)
         {
@@ -98,5 +98,15 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         }
 
         public AzureStorageContext Context { get; private set; }
+
+        /// <summary>
+        /// Return a string representation of this storage account
+        /// </summary>
+        /// <returns>null</returns>
+        public override string ToString()
+        {
+            // Allow listing storage contents through piping
+            return null;
+        }
     }
 }
