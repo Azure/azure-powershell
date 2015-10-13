@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 .Where(resource => resource != null)
                 .SelectArray(resource =>
                 {
-                    var psobject = resource.ToResource().ToPsObject(ResourceObjectFormat.New);
+                    var psobject = resource.ToResource().ToPsObject();
                     psobject.Properties.Add(new PSNoteProperty("LockId", psobject.Properties["ResourceId"].Value));
                     return psobject;
                 });

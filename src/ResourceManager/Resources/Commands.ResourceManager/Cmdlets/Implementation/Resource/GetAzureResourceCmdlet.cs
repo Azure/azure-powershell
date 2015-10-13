@@ -174,23 +174,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public SwitchParameter TenantLevel { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource property object format.
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The output format of the resource properties.")]
-        public ResourceObjectFormat OutputObjectFormat { get; set; }
-
-        /// <summary>
         /// Gets or sets the subscription id.
         /// </summary>
         public Guid? SubscriptionId { get; set; }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GetAzureResourceCmdlet" /> class.
-        /// </summary>
-        public GetAzureResourceCmdlet()
-        {
-            this.OutputObjectFormat = ResourceObjectFormat.Legacy;
-        }
 
         /// <summary>
         /// Collects subscription ids from the pipeline.
@@ -215,11 +201,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         private void RunCmdlet()
         {
-            if(this.OutputObjectFormat == ResourceObjectFormat.Legacy)
-            {
-                this.WriteWarning("This cmdlet is using the legacy properties object format. This format is being deprecated. Please use '-OutputObjectFormat New' and update your scripts.");
-            }
-
             if (string.IsNullOrEmpty(this.ResourceId) && !this.TenantLevel)
             {
                 this.SubscriptionId = DefaultContext.Subscription.Id;
@@ -244,14 +225,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                                 items = this.GetPopulatedResource(batch).Result;
                             }
 
-                            var powerShellObjects = items.SelectArray(genericResource => genericResource.ToPsObject(this.OutputObjectFormat));
+                            var powerShellObjects = items.SelectArray(genericResource => genericResource.ToPsObject());
 
                             this.WriteObject(sendToPipeline: powerShellObjects, enumerateCollection: true);
                         }
                     }
                     else
                     {
-                        this.WriteObject(sendToPipeline: resources.CoalesceEnumerable().SelectArray(res => res.ToPsObject(this.OutputObjectFormat)), enumerateCollection: true);
+                        this.WriteObject(sendToPipeline: resources.CoalesceEnumerable().SelectArray(res => res.ToPsObject()), enumerateCollection: true);
                     }
                 });
 
