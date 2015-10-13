@@ -33,6 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(Position = 0, Mandatory = true,
             ParameterSetName = Constants.ShareNameParameterSetName,
             HelpMessage = "Share name",
+            ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string ShareName { get; set; }
