@@ -38,7 +38,7 @@ Param($rgName, $location, $tagName, $tagValue)
     Assert-AreEqual $false $actual.EnabledForDeployment
 
     # Default Access Policy
-    $upn = (Get-AzureRmSubscription)[0].Account
+    $upn = (Get-AzureSubscription -Current).DefaultAccount
     $objectId = @(Get-AzureRmADUser -Mail $upn)[0].Id
     $expectedPermsToKeys = @("get",
             "create",

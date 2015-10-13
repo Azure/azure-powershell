@@ -97,7 +97,7 @@ function Test_DeleteUnknownVaultFails
 #------------------------------Set-AzureRmKeyVaultAccessPolicy--------------------------
 function Test_SetRemoveAccessPolicyByUPN
 {
-    $user = (Get-AzureRmSubscription)[0].Account
+    $user = (Get-AzureSubscription -Current).DefaultAccount
     Reset-PreCreatedVault
     Test-SetRemoveAccessPolicyByUPN $global:precreatedVaultName $global:resourceGroupName $user
 }
@@ -125,7 +125,7 @@ function Test_SetRemoveAccessPolicyBySPN
 
 function Test_SetRemoveAccessPolicyByObjectId
 {
-    $user = (Get-AzureRmSubscription)[0].Account
+    $user = (Get-AzureSubscription -Current).DefaultAccount
     Reset-PreCreatedVault
     Test-SetRemoveAccessPolicyByObjectId $global:precreatedVaultName $global:resourceGroupName $user
 }
@@ -133,7 +133,7 @@ function Test_SetRemoveAccessPolicyByObjectId
 
 function Test_SetRemoveAccessPolicyByCompoundId
 {
-    $user = (Get-AzureRmSubscription)[0].Account 
+    $user = (Get-AzureSubscription -Current).DefaultAccount 
     $appId = [System.Guid]::NewGuid()
     Reset-PreCreatedVault
     Test-SetRemoveAccessPolicyByCompoundId $global:precreatedVaultName $global:resourceGroupName $user $appId
@@ -141,7 +141,7 @@ function Test_SetRemoveAccessPolicyByCompoundId
 
 function Test_RemoveAccessPolicyWithCompoundIdPolicies
 {
-    $user = (Get-AzureRmSubscription)[0].Account
+    $user = (Get-AzureSubscription -Current).DefaultAccount
     $appId1 = [System.Guid]::NewGuid()
     $appId2 = [System.Guid]::NewGuid()
     Reset-PreCreatedVault
@@ -150,7 +150,7 @@ function Test_RemoveAccessPolicyWithCompoundIdPolicies
 
 function Test_SetCompoundIdAccessPolicy
 {
-    $user = (Get-AzureRmSubscription)[0].Account
+    $user = (Get-AzureSubscription -Current).DefaultAccount
     $appId = [System.Guid]::NewGuid()
     Reset-PreCreatedVault
     Test-SetCompoundIdAccessPolicy $global:precreatedVaultName $global:resourceGroupName $user $appId
@@ -158,21 +158,21 @@ function Test_SetCompoundIdAccessPolicy
 
 function Test_ModifyAccessPolicy
 {
-    $user = (Get-AzureRmSubscription)[0].Account
+    $user = (Get-AzureSubscription -Current).DefaultAccount
     Reset-PreCreatedVault
     Test-ModifyAccessPolicy $global:precreatedVaultName $global:resourceGroupName $user
 }
 
 function Test_ModifyAccessPolicyEnabledForDeployment
 {
-    $user = (Get-AzureRmSubscription)[0].Account
+    $user = (Get-AzureSubscription -Current).DefaultAccount
     Reset-PreCreatedVault
     Test-ModifyAccessPolicyEnabledForDeployment $global:precreatedVaultName $global:resourceGroupName $user
 }
 
 function Test_ModifyAccessPolicyNegativeCases
 {
-    $user = (Get-AzureRmSubscription)[0].Account
+    $user = (Get-AzureSubscription -Current).DefaultAccount
     Reset-PreCreatedVault
     Test-ModifyAccessPolicyNegativeCases $global:precreatedVaultName $global:resourceGroupName $user
 }
@@ -180,7 +180,7 @@ function Test_ModifyAccessPolicyNegativeCases
 
 function Test_RemoveNonExistentAccessPolicyDoesNotThrow
 {
-    $user = (Get-AzureRmSubscription)[0].Account
+    $user = (Get-AzureSubscription -Current).DefaultAccount
     Reset-PreCreatedVault
     Test-RemoveNonExistentAccessPolicyDoesNotThrow $global:precreatedVaultName $global:resourceGroupName $user
 }
