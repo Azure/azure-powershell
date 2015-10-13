@@ -138,6 +138,7 @@
   <ItemGroup>
     <Compile Include="AccessTokenExtensions.cs" />
     <Compile Include="AzureRmCmdlet.cs" />
+    <Compile Include="AzureRMProfileExtensions.cs" />
     <Compile Include="Generated\AuthorizationClient.cs" />
     <Compile Include="Generated\AuthorizationClientExtensions.cs" />
     <Compile Include="Generated\DeploymentOperationOperations.cs" />
