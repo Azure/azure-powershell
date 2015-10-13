@@ -45,12 +45,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         protected override void ProcessRecord()
         {
             var pathList = new List<string>();
-            foreach(var path in Paths)
-            {
-                // for concat scenarios, the leading slash must be added back in.
-                pathList.Add("/" + path.Path);
-            }
-
             FileType fileType;
             if (this.Force &&
                 DataLakeStoreFileSystemClient.TestFileOrFolderExistence(this.AccountName, Destination.FullyQualifiedPath,
