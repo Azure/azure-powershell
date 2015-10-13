@@ -37,14 +37,13 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException("options");
             }
 
-            ODATADetailLevel odata = new ODATADetailLevel(selectClause: options.Select, expandClause: options.Expand);
-
             // Get the single job schedule matching the specified id
             if (!string.IsNullOrWhiteSpace(options.JobScheduleId))
             {
                 WriteVerbose(string.Format(Resources.GetJobScheduleById, options.JobScheduleId));
                 JobScheduleOperations jobScheduleOperations = options.Context.BatchOMClient.JobScheduleOperations;
-                CloudJobSchedule jobSchedule = jobScheduleOperations.GetJobSchedule(options.JobScheduleId, detailLevel: odata, additionalBehaviors: options.AdditionalBehaviors);
+                ODATADetailLevel getDetailLevel = new ODATADetailLevel(selectClause: options.Select, expandClause: options.Expand);
+                CloudJobSchedule jobSchedule = jobScheduleOperations.GetJobSchedule(options.JobScheduleId, detailLevel: getDetailLevel, additionalBehaviors: options.AdditionalBehaviors);
                 PSCloudJobSchedule psJobSchedule = new PSCloudJobSchedule(jobSchedule);
                 return new PSCloudJobSchedule[] { psJobSchedule };
             }
@@ -52,10 +51,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             else
             {
                 string verboseLogString = null;
+                ODATADetailLevel listDetailLevel = new ODATADetailLevel(selectClause: options.Select, expandClause: options.Expand);
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
                     verboseLogString = Resources.GetJobScheduleByOData;
-                    odata.FilterClause = options.Filter;
+                    listDetailLevel.FilterClause = options.Filter;
                 }
                 else
                 {
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 WriteVerbose(verboseLogString);
 
                 JobScheduleOperations jobScheduleOperations = options.Context.BatchOMClient.JobScheduleOperations;
-                IPagedEnumerable<CloudJobSchedule> workItems = jobScheduleOperations.ListJobSchedules(odata, options.AdditionalBehaviors);
+                IPagedEnumerable<CloudJobSchedule> workItems = jobScheduleOperations.ListJobSchedules(listDetailLevel, options.AdditionalBehaviors);
                 Func<CloudJobSchedule, PSCloudJobSchedule> mappingFunction = j => { return new PSCloudJobSchedule(j); };
                 return PSPagedEnumerable<PSCloudJobSchedule, CloudJobSchedule>.CreateWithMaxCount(
                     workItems, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
