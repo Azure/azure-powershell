@@ -54,6 +54,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
             SubscriptionCloudCredentials creds = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context);
             _client = AzureSession.ClientFactory.CreateCustomClient<DataLakeStoreFileSystemManagementClient>(creds, context.Environment.GetEndpoint(AzureEnvironment.Endpoint.AzureDataLakeStoreFileSystemEndpointSuffix));
+            _client.UserAgentSuffix = " - PowerShell Client";
             uniqueActivityIdGenerator = new Random();
         }
         public DataLakeStoreFileSystemClient() { }

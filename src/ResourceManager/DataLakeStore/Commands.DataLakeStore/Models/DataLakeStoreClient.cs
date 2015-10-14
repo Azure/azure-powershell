@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
             _subscriptionId = context.Subscription.Id;
             _client = AzureSession.ClientFactory.CreateClient<DataLakeStoreManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            _client.UserAgentSuffix = " - PowerShell Client";
         }
         public DataLakeStoreClient() { }
 

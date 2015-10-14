@@ -42,10 +42,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             }
 
             _accountClient = AzureSession.ClientFactory.CreateClient<DataLakeAnalyticsManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            _accountClient.UserAgentSuffix = " - PowerShell Client";
             _subscriptionId = context.Subscription.Id;
             var creds = AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(context);
             _jobClient = AzureSession.ClientFactory.CreateCustomClient<DataLakeAnalyticsJobManagementClient>(creds, context.Environment.GetEndpoint(AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix));
             _catalogClient = AzureSession.ClientFactory.CreateCustomClient<DataLakeAnalyticsCatalogManagementClient>(creds, context.Environment.GetEndpoint(AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix));
+
+            _jobClient.UserAgentSuffix = " - PowerShell Client";
+            _catalogClient.UserAgentSuffix = " - PowerShell Client";
+
         }
         public DataLakeAnalyticsClient() { }
 
