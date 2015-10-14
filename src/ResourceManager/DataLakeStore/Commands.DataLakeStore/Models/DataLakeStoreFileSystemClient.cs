@@ -321,7 +321,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             _client.FileSystem.MsConcat(destinationPath, accountName, new MemoryStream(Encoding.UTF8.GetBytes("sources=" + string.Join(",", filesToConcatenate))));
         }
         
-        public string CreateFile(string filePath, string accountName, Stream contents = null, bool overwrite = false, string permissions = null)
+        public void CreateFile(string filePath, string accountName, Stream contents = null, bool overwrite = false, string permissions = null)
         {
             var beginRequest = _client.FileSystem.BeginCreate(filePath, accountName, new FileCreateParameters
                 {
@@ -330,7 +330,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 }
                 );
 
-           return _client.FileSystem.Create(beginRequest.Location, contents).Location;
+           _client.FileSystem.Create(beginRequest.Location, contents);
         }
 
         public bool CreateDirectory(string dirPath, string accountName, string permissions = null)
