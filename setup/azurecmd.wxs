@@ -8,7 +8,12 @@
   <?define version="0.9.9" ?>
   <?define versionedStartMenuFolder="Microsoft Azure" ?>
   <?define staleStartMenuFolder="Windows Azure" ?>
-
+  <?if $(var.Platform) = x64 ?>
+    <?define PlatformProgramFilesFolder = "ProgramFiles64Folder" ?>
+  <?else ?>
+    <?define PlatformProgramFilesFolder = "ProgramFilesFolder" ?>
+  <?endif ?>
+  
   <Product Id="*"
            Name="$(var.productName)"
            Language="1033"
