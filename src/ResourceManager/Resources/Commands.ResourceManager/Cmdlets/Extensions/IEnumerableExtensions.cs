@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         /// <typeparam name="TSource">The source type/</typeparam>
         /// <param name="source">The enumerable to batch.</param>
         /// <param name="batchSize">The batch size.</param>
-        public static IEnumerable<IEnumerable<TSource>> Batch<TSource>(this IEnumerable<TSource> source, int batchSize = 3)
+        public static IEnumerable<IEnumerable<TSource>> Batch<TSource>(this IEnumerable<TSource> source, int batchSize = 10)
         {
             var batch = new List<TSource>(batchSize);
             foreach(var item in source)
