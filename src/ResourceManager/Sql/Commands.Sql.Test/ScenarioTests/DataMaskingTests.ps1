@@ -19,26 +19,41 @@ Tests  toggling of the enablement property of a data masking policy
 function Test-DatabaseDataMaskingPolicyEnablementToggling 
 {
 	# Setup
-	$testSuffix = 777
-	 $params = Create-DataMaskingTestEnvironment $testSuffix
+	$testSuffix = 77732
+	$params = Create-DataMaskingTestEnvironment $testSuffix
 
 	try
 	{
-		# Test
+		# Test create as enabled
 		Set-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -DataMaskingState "Enabled" 
 		$policy = Get-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
 	
 		# Assert
 		Assert-AreEqual $policy.DataMaskingState  "Enabled"
 
-		# Test
+		# Test update from enabled to enabled
+		Set-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -DataMaskingState "Enabled" 
+		$policy = Get-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
+	
+		# Assert
+		Assert-AreEqual $policy.DataMaskingState  "Enabled"
+
+
+		# Test update from enabled to disabled
 		Set-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -DataMaskingState "Disabled" 
 		$policy = Get-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
 	
 		# Assert
 		Assert-AreEqual $policy.DataMaskingState  "Disabled"
 
-		# Test
+		# Test update from disabled to disabled
+		Set-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -DataMaskingState "Disabled" 
+		$policy = Get-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
+	
+		# Assert
+		Assert-AreEqual $policy.DataMaskingState  "Disabled"
+
+		# Test update from disabled to enabled
 		Set-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -DataMaskingState "Enabled" 
 		$policy = Get-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
 	
@@ -59,26 +74,48 @@ function Test-DatabaseDataMaskingPrivilegedLoginsChanges
 {
 
 	# Setup
-	$testSuffix = 30371
-	 $params = Create-DataMaskingTestEnvironment $testSuffix
+	$testSuffix = 30379
+	$params = Create-DataMaskingTestEnvironment $testSuffix
 
 	try
 	{
-		# Test
+		# Test create as enabled
+		Set-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -DataMaskingState "Enabled" 
+		$policy = Get-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
+	
+		# Assert
+		Assert-AreEqual $policy.DataMaskingState  "Enabled"
+
+
+		# Test adding a privileged login
 		Set-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -PrivilegedLogins "dbo" 
 		$policy = Get-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
 	
 		# Assert
 		Assert-AreEqual $policy.PrivilegedLogins  "dbo"
 
-		# Test
+		# Test removing a privileged login while having enabled policy
+		Set-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -PrivilegedLogins "" 
+		$policy = Get-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
+	
+		# Assert
+		Assert-AreEqual $policy.PrivilegedLogins  ""
+
+		# Test disabling a policy
 		Set-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -DataMaskingState "Disabled" 
+		$policy = Get-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
+	
+		# Assert
+		Assert-AreEqual $policy.PrivilegedLogins  ""
+
+		# Test adding a privileged login while being disabled
+		Set-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -PrivilegedLogins "dbo" 
 		$policy = Get-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
 	
 		# Assert
 		Assert-AreEqual $policy.PrivilegedLogins  "dbo"
 
-		# Test
+		# Test removing a privileged login while being disabled
 		Set-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName -PrivilegedLogins ""  
 		$policy = Get-AzureRmSqlDatabaseDataMaskingPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName  -DatabaseName $params.databaseName
 	
@@ -99,9 +136,9 @@ function Test-DatabaseDataMaskingBasicRuleLifecycle
 {
 
 	# Setup
-	$testSuffix = 40222
-	 $params = Create-DataMaskingTestEnvironment $testSuffix
-	 $ruleId = "rule1"
+	$testSuffix = 40225
+	$params = Create-DataMaskingTestEnvironment $testSuffix
+	$ruleId = "rule1"
 	try
 	{
 		# Test
