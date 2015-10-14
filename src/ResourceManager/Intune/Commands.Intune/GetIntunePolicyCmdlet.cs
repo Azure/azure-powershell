@@ -26,6 +26,8 @@ namespace Commands.Intune
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Newtonsoft.Json.Linq;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
+    using Commands.Intune.Helpers;
+    using Commands.Intune.RestClient;
 
     /// <summary>
     /// Cmdlet to get existing resources.
@@ -44,19 +46,6 @@ namespace Commands.Intune
         internal const string ListPoliciesParameterSet = "Lists the policies.";
 
         /// <summary>
-        /// Caches the current subscription ids to get all subscription ids in the pipeline.
-        /// </summary>
-        private readonly List<Guid> subscriptionIds = new List<Guid>();
-
-        private string locationHostName = null;
-
-        /// <summary>
-        /// Gets or sets the expand properties property.
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "When specified, expands the properties of the resource.")]
-        public SwitchParameter ExpandProperties { get; set; }
-
-        /// <summary>
         /// Gets or sets the top parameter.
         /// </summary>
         [ValidateNotNullOrEmpty]
@@ -68,6 +57,15 @@ namespace Commands.Intune
         [Parameter(Mandatory = true, HelpMessage = "The policy kind.")]
         [ValidateNotNullOrEmpty]
         public PolicyTypeEnum Kind { get; set; }
+
+        /// <summary>
+        /// PolicyType.
+        /// </summary>
+        public enum PolicyTypeEnum
+        {
+            iOS,
+            Android
+        }
 
         /// <summary>
         /// Collects subscription ids from the pipeline.
@@ -92,35 +90,20 @@ namespace Commands.Intune
         /// </summary>
         private void RunCmdlet()
         {
-            PaginatedResponseHelper.ForEach(
-                getFirstPage: () => this.GetResources(),
-                getNextPage: nextLink => this.GetNextLink<JObject>(nextLink),
-                cancellationToken: this.CancellationToken,
-                action: resources =>
-                {
-                    Resource<JToken> resource;
-                    if (resources.CoalesceEnumerable().FirstOrDefault().TryConvertTo(out resource))
-                    {
-                        var genericResources = resources.CoalesceEnumerable().Where(res => res != null).SelectArray(res => res.ToResource());
+            var client = IntuneRPClientHelper.GetIntuneManagementClient(this.DefaultContext, "2015-01-05-alpha");
 
-                        foreach (var batch in genericResources.Batch())
-                        {
-                            var items = batch;
-                            if (this.ExpandProperties)
-                            {
-                                items = this.GetPopulatedResource(batch).Result;
-                            }
+            var resources = client.GetiOSPolicies(LocationHelper.GetLocation(client, this.DefaultContext.Tenant.Id));
 
-                            var powerShellObjects = items.SelectArray(genericResource => genericResource.ToPsObject());
+            var genericResources = resources.Value.Where(res => res != null).SelectArray(res => res.ToJToken().ToResource());
 
-                            this.WriteObject(sendToPipeline: powerShellObjects, enumerateCollection: true);
-                        }
-                    }
-                    else
-                    {
-                        this.WriteObject(sendToPipeline: resources.CoalesceEnumerable().SelectArray(res => res.ToPsObject()), enumerateCollection: true);
-                    }
-                });
+            foreach (var batch in genericResources.Batch())
+            {
+                var items = batch;
+
+                var powerShellObjects = items.SelectArray(genericResource => genericResource.ToPsObject());
+
+                this.WriteObject(sendToPipeline: powerShellObjects, enumerateCollection: true);
+            }
 
             if (this.errors.Count != 0)
             {
@@ -129,92 +112,6 @@ namespace Commands.Intune
                     this.WriteError(error);
                 }
             }
-        }
-
-        /// <summary>
-        /// Lists resources in a type collection.
-        /// </summary>
-        private async Task<ResponseWithContinuation<JObject[]>> GetResources()
-        {
-            var resourceCollectionId = string.Format(
-                "/providers/Microsoft.Intune/locations/{0}/{1}",
-                LocationHelper.GetLocation(this.GetResourcesClient(), this.CancellationToken.Value),
-                PolicyTypeEnum.Android == this.Kind ? "androidPolicies" : "iosPolicies");
-
-            var apiVersion = "2015-01-08-alpha";
-
-            return await this
-                .GetResourcesClient()
-                .ListObjectColleciton<JObject>(
-                    resourceCollectionId: resourceCollectionId,
-                    apiVersion: apiVersion,
-                    cancellationToken: this.CancellationToken.Value,
-                    odataQuery: null)
-                .ConfigureAwait(continueOnCapturedContext: false);
-        }
-
-        /// <summary>
-        /// Gets the next set of resources using the <paramref name="nextLink"/>
-        /// </summary>
-        /// <param name="nextLink">The next link.</param>
-        private Task<ResponseWithContinuation<TType[]>> GetNextLink<TType>(string nextLink)
-        {
-            return this
-                .GetResourcesClient()
-                .ListNextBatch<TType>(nextLink: nextLink, cancellationToken: this.CancellationToken.Value);
-        }
-
-        /// <summary>
-        /// Populates the properties on an array of resources.
-        /// </summary>
-        /// <param name="resources">The resource.</param>
-        private async Task<Resource<JToken>[]> GetPopulatedResource(IEnumerable<Resource<JToken>> resources)
-        {
-            return await resources
-                .Select(resource => this.GetPopulatedResource(resource))
-                .WhenAllForAwait()
-                .ConfigureAwait(continueOnCapturedContext: false);
-        }
-
-        /// <summary>
-        /// Populates the properties of a single resource.
-        /// </summary>
-        /// <param name="resource">The resource.</param>
-        private async Task<Resource<JToken>> GetPopulatedResource(Resource<JToken> resource)
-        {
-            try
-            {
-                var apiVersion = await ApiVersionHelper
-                    .DetermineApiVersion(
-                        DefaultContext,
-                        resourceId: resource.Id,
-                        cancellationToken: this.CancellationToken.Value,
-                        pre: this.Pre)
-                    .ConfigureAwait(continueOnCapturedContext: false);
-
-                return await this
-                    .GetResourcesClient()
-                    .GetResource<Resource<JToken>>(
-                        resourceId: resource.Id,
-                        apiVersion: apiVersion,
-                        cancellationToken: this.CancellationToken.Value)
-                    .ConfigureAwait(continueOnCapturedContext: false);
-            }
-            catch (Exception ex)
-            {
-                if (ex.IsFatal())
-                {
-                    throw;
-                }
-
-                ex = (ex is AggregateException)
-                    ? (ex as AggregateException).Flatten()
-                    : ex;
-
-                this.errors.Add(new ErrorRecord(ex, "ErrorExpandingProperties", ErrorCategory.CloseError, resource));
-            }
-
-            return resource;
         }
     }
 }

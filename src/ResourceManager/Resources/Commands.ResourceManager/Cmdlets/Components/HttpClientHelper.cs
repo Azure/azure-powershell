@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             {
                 new AuthenticationHandler(cloudCredentials: credentials),
                 new UserAgentHandler(headerValues: headerValues),
-                new CmdletInfoHandler(cmdletHeaderValues: cmdletHeaderValues),
+                new CmdletInfoHandler(cmdletHeaderValues: null),
                 new TracingHandler(),
                 new RetryHandler(),
             };

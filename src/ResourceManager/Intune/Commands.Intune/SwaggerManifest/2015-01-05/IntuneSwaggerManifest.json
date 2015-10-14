@@ -1,0 +1,451 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "2015-01-05",
+        "title": "IntuneResourceManagementClient",
+        "description": "Microsoft.Intune Resource provider Api features in the swagger-2.0 specification"
+    },
+    "host": "management.azure.com",
+    "schemes": [ "https" ],
+    "consumes": [ "application/json" ],
+    "produces": [ "application/json" ],
+    "paths": {
+        "/providers/Microsoft.Intune/locations": {
+            "get": {
+                "description": "Returns location for user tenant.",
+                "operationId": "GetLocations",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/ApiVersionParameter"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "location response as a collection",
+                        "schema": {
+                            "$ref": "#/definitions/LocationCollection"
+                        }
+                    }
+                },
+                "default": {
+                    "description": "unexpected error",
+                    "schema": {
+                        "$ref": "#/definitions/Error"
+                    }
+                }
+            }
+        },
+        "/providers/Microsoft.Intune/locations/hostName": {
+            "get": {
+                "description": "Returns location for given tenant.",
+                "operationId": "GetLocationByHostName",
+                "produces": [ "application/json" ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/ApiVersionParameter"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "single location response",
+                        "schema": {
+                            "$ref": "#/definitions/Location"
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/providers/Microsoft.Intune/locations/{hostName}/apps": {
+            "get": {
+                "description": "Returns Intune Manageable apps.",
+                "operationId": "GetApplications",
+                "produces": [ "application/json" ],
+                "parameters": [
+                    {
+                        "name": "hostName",
+                        "in": "path",
+                        "description": "Location hostName for the tenant",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "$ref": "#/parameters/ApiVersionParameter"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "applications as collection response",
+                        "schema": {
+                            "$ref": "#/definitions/ApplicationCollection"
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/providers/Microsoft.Intune/locations/{hostName}/iosPolicies": {
+            "get": {
+                "description": "Returns Intune iosPolicies.",
+                "operationId": "GetiOSPolicies",
+                "produces": [ "application/json" ],
+                "parameters": [
+                    {
+                        "name": "hostName",
+                        "in": "path",
+                        "description": "Location hostName for the tenant",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "$ref": "#/parameters/ApiVersionParameter"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "applications as collection response",
+                        "schema": {
+                            "$ref": "#/definitions/IOSPolicyCollection"
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyId}": {
+            "get": {
+                "description": "Returns Intune Manageable apps.",
+                "operationId": "GetiOSPolicyById",
+                "produces": [ "application/json" ],
+                "parameters": [
+                    {
+                        "name": "hostName",
+                        "in": "path",
+                        "description": "Location hostName for the tenant",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "policyId",
+                        "in": "path",
+                        "description": "policy unique Id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "$ref": "#/parameters/ApiVersionParameter"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "iosPolicy entity.",
+                        "schema": {
+                            "$ref": "#/definitions/IOSPolicy"
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Resource": {
+            "properties": {
+                "id": {
+                    "readOnly": true,
+                    "type": "string",
+                    "description": "Resource Id"
+                },
+                "name": {
+                    "readOnly": true,
+                    "type": "string",
+                    "description": "Resource name"
+                },
+                "type": {
+                    "readOnly": true,
+                    "type": "string",
+                    "description": "Resource type"
+                }
+            }
+        },
+        "Location": {
+            "properties": {
+                "properties": {
+                    "$ref": "#/definitions/LocationProperties"
+                }
+            },
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Resource"
+                }
+            ],
+            "description": "Location entity for given tenant."
+        },
+        "LocationProperties": {
+            "type": "object",
+            "required": [ "hostName" ],
+            "properties": {
+                "hostName": {
+                    "type": "string"
+                }
+            }
+        },
+        "Error": {
+            "type": "object",
+            "required": [
+                "code",
+                "message"
+            ],
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "LocationCollection": {
+            "type": "object",
+            "required": [ "value" ],
+            "properties": {
+                "value": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Location"
+                    }
+                },
+                "nextlink": {
+                    "type": "string"
+                }
+            }
+        },
+        "ApplicationCollection": {
+            "type": "object",
+            "required": [ "value" ],
+            "properties": {
+                "value": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Application"
+                    }
+                },
+                "nextlink": {
+                    "type": "string"
+                }
+            }
+        },
+        "Application": {
+            "type": "object",
+            "properties": {
+                "properties": {
+                    "$ref": "#/definitions/ApplicationProperties"
+                }
+            },
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Resource"
+                }
+            ],
+            "description": "Application entity for Intune MAM."
+        },
+        "ApplicationProperties": {
+            "type": "object",
+            "required": [
+                "friendlyName",
+                "platform"
+            ],
+            "properties": {
+                "friendlyName": {
+                    "type": "string"
+                },
+                "platform": {
+                    "type": "string",
+                    "default": "ios",
+                    "enum": [
+                        "ios",
+                        "android",
+                        "windows"
+                    ]
+                }
+            }
+        },
+        "IOSPolicyCollection": {
+            "type": "object",
+            "required": [ "value" ],
+            "properties": {
+                "value": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/IOSPolicy"
+                    }
+                },
+                "nextlink": {
+                    "type": "string"
+                }
+            }
+        },
+        "IOSPolicy": {
+            "type": "object",
+            "properties": {
+                "properties": {
+                    "$ref": "#/definitions/IOSPolicyProperties"
+                }
+            },
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Resource"
+                }
+            ],
+            "description": "iOS Policy entity for Intune MAM."
+        },
+        "IOSPolicyProperties": {
+            "type": "object",
+            "required": [
+                "friendlyName"
+            ],
+            "properties": {
+                "friendlyName": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "appSharingFromLevel": {
+                    "type": "string",
+                    "default": "none",
+                    "enum": [
+                        "none",
+                        "policyManagedApps",
+                        "allApps"
+                    ]
+                },
+                "appSharingToLevel": {
+                    "type": "string",
+                    "default": "none",
+                    "enum": [
+                        "none",
+                        "policyManagedApps",
+                        "allApps"
+                    ]
+                },
+                "authentication": {
+                    "type": "string",
+                    "default": "required",
+                    "enum": [
+                        "required",
+                        "notRequired "
+                    ]
+                },
+                "clipboardSharingLevel": {
+                    "type": "string",
+                    "default": "blocked",
+                    "enum": [
+                        "blocked",
+                        "policyManagedApps",
+                        "policyManagedAppsWithPasteIn",
+                        "allApps"
+                    ]
+                },
+                "dataBackup": {
+                    "type": "string",
+                    "default": "allow",
+                    "enum": [
+                        "allow",
+                        "block"
+                    ]
+                },
+                "fileSharingSaveAs": {
+                    "type": "string",
+                    "default": "allow",
+                    "enum": [
+                        "allow",
+                        "block"
+                    ]
+                },
+                "pin": {
+                    "type": "string",
+                    "default": "required",
+                    "enum": [
+                        "required",
+                        "notRequired "
+                    ]
+                },
+                "pinNumRetry": {
+                    "type": "integer"
+                },
+                "touchId": {
+                    "type": "string",
+                    "default": "enable",
+                    "enum": [
+                        "enable",
+                        "disable"
+                    ]
+                },
+                "deviceCompliance": {
+                    "type": "string",
+                    "default": "enable",
+                    "enum": [
+                        "enable",
+                        "disable"
+                    ]
+                },
+                "fileEncryptionLevel": {
+                    "type": "string",
+                    "default": "deviceLocked",
+                    "enum": [
+                        "deviceLocked",
+                        "deviceLockedExceptFilesOpen",
+                        "afterDeviceRestart",
+                        "useDeviceSettings"
+                    ]
+                },
+                "managedBrowser": {
+                    "type": "string",
+                    "default": "required",
+                    "enum": [
+                        "required",
+                        "notRequired"
+                    ]
+                },
+                "accessRecheckOfflineTimeout": {
+                    "type": "string",
+                    "default": "required",
+                    "enum": [
+                        "required",
+                        "notRequired"
+                    ]
+                }
+            }
+        }
+    },
+    "parameters": {
+        "ApiVersionParameter": {
+            "name": "api-version",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "description": "Service Api Version."
+        }
+    }
+}
