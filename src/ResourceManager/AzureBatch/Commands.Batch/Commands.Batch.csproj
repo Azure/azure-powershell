@@ -154,6 +154,10 @@
     <Compile Include="Accounts\NewBatchAccountCommand.cs" />
     <Compile Include="Accounts\NewBatchAccountKeyCommand.cs" />
     <Compile Include="Accounts\SetBatchAccountCommand.cs" />
+    <Compile Include="Certificates\GetBatchCertificateCommand.cs" />
+    <Compile Include="Certificates\RemoveBatchCertificateCommand.cs" />
+    <Compile Include="Certificates\NewBatchCertificateCommand.cs" />
+    <Compile Include="Certificates\StopBatchCertificateDeletionCommand.cs" />
     <Compile Include="ComputeNodes\ResetBatchComputeNodeCommand.cs" />
     <Compile Include="ComputeNodes\RestartBatchComputeNodeCommand.cs" />
     <Compile Include="ComputeNodeUsers\SetBatchComputeNodeUserCommand.cs" />
@@ -171,14 +175,19 @@
     <Compile Include="Jobs\SetBatchJobCommand.cs" />
     <Compile Include="Jobs\StopBatchJobCommand.cs" />
     <Compile Include="Models.Generated\PSAutoScaleEvaluation.cs" />
+    <Compile Include="Models.Generated\PSCertificate.cs" />
     <Compile Include="Models.Generated\PSCloudJobSchedule.cs" />
     <Compile Include="Models.Generated\PSComputeNode.cs" />
     <Compile Include="Models.Generated\PSComputeNodeError.cs" />
     <Compile Include="Models.Generated\PSComputeNodeInformation.cs" />
     <Compile Include="Models.Generated\PSComputeNodeUser.cs" />
+    <Compile Include="Models.Generated\PSDeleteCertificateError.cs" />
     <Compile Include="Models.Generated\PSJobManagerTask.cs" />
+    <Compile Include="Models.Generated\PSJobPreparationAndReleaseTaskExecutionInformation.cs" />
     <Compile Include="Models.Generated\PSJobPreparationTask.cs" />
+    <Compile Include="Models.Generated\PSJobPreparationTaskExecutionInformation.cs" />
     <Compile Include="Models.Generated\PSJobReleaseTask.cs" />
+    <Compile Include="Models.Generated\PSJobReleaseTaskExecutionInformation.cs" />
     <Compile Include="Models.Generated\PSJobScheduleExecutionInformation.cs" />
     <Compile Include="Models.Generated\PSJobScheduleStatistics.cs" />
     <Compile Include="Models.Generated\PSNodeFile.cs" />
@@ -188,6 +197,7 @@
     <Compile Include="Models.Generated\PSTaskSchedulingPolicy.cs" />
     <Compile Include="Models\AutoScaleParameters.cs" />
     <Compile Include="Models\BatchClient.Accounts.cs" />
+    <Compile Include="Models\BatchClient.Certificates.cs" />
     <Compile Include="Models\BatchClient.cs" />
     <Compile Include="BatchCmdletBase.cs" />
     <Compile Include="BatchObjectModelCmdletBase.cs" />
@@ -201,17 +211,20 @@
     <Compile Include="Models\BatchClient.ComputeNodes.cs" />
     <Compile Include="Models\BatchClient.JobSchedules.cs" />
     <Compile Include="Models\BatchClientParametersBase.cs" />
+    <Compile Include="Models\CertificateOperationParameters.cs" />
     <Compile Include="Models\ChangeOSVersionParameters.cs" />
     <Compile Include="Models\DisableJobParameters.cs" />
     <Compile Include="Models\DownloadNodeFileOptions.cs" />
     <Compile Include="Models\DownloadRemoteDesktopProtocolFileOptions.cs" />
     <Compile Include="Models\JobOperationParameters.cs" />
+    <Compile Include="Models\ListCertificateOptions.cs" />
     <Compile Include="Models\ListJobOptions.cs" />
     <Compile Include="Models\ListNodeFileOptions.cs" />
     <Compile Include="Models\ListPoolOptions.cs" />
     <Compile Include="Models\ListTaskOptions.cs" />
     <Compile Include="Models\ListComputeNodeOptions.cs" />
     <Compile Include="Models\ListJobScheduleOptions.cs" />
+    <Compile Include="Models\NewCertificateParameters.cs" />
     <Compile Include="Models\NewJobParameters.cs" />
     <Compile Include="Models\NewPoolParameters.cs" />
     <Compile Include="Models\NewTaskParameters.cs" />
@@ -326,6 +339,7 @@
       <Name>Commands.ResourceManager.Common</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
 </Project>

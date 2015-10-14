@@ -36,14 +36,13 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException("options");
             }
 
-            ODATADetailLevel odata = new ODATADetailLevel(selectClause: options.Select, expandClause: options.Expand);
-
             // Get the single task matching the specified id
             if (!string.IsNullOrEmpty(options.TaskId))
             {
                 WriteVerbose(string.Format(Resources.GetTaskById, options.TaskId, options.JobId));
                 JobOperations jobOperations = options.Context.BatchOMClient.JobOperations;
-                CloudTask task = jobOperations.GetTask(options.JobId, options.TaskId, detailLevel: odata, additionalBehaviors: options.AdditionalBehaviors);
+                ODATADetailLevel getDetailLevel = new ODATADetailLevel(selectClause: options.Select, expandClause: options.Expand);
+                CloudTask task = jobOperations.GetTask(options.JobId, options.TaskId, detailLevel: getDetailLevel, additionalBehaviors: options.AdditionalBehaviors);
                 PSCloudTask psTask = new PSCloudTask(task);
                 return new PSCloudTask[] { psTask };
             }
@@ -52,10 +51,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 string jobId = options.Job == null ? options.JobId : options.Job.Id;
                 string verboseLogString = null;
+                ODATADetailLevel listDetailLevel = new ODATADetailLevel(selectClause: options.Select, expandClause: options.Expand);
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
                     verboseLogString = string.Format(Resources.GetTaskByOData, jobId);
-                    odata.FilterClause = options.Filter;
+                    listDetailLevel.FilterClause = options.Filter;
                 }
                 else
                 {
@@ -66,12 +66,12 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 IPagedEnumerable<CloudTask> tasks = null;
                 if (options.Job != null)
                 {
-                    tasks = options.Job.omObject.ListTasks(odata, options.AdditionalBehaviors);
+                    tasks = options.Job.omObject.ListTasks(listDetailLevel, options.AdditionalBehaviors);
                 }
                 else
                 {
                     JobOperations jobOperations = options.Context.BatchOMClient.JobOperations;
-                    tasks = jobOperations.ListTasks(options.JobId, odata, options.AdditionalBehaviors);
+                    tasks = jobOperations.ListTasks(options.JobId, listDetailLevel, options.AdditionalBehaviors);
                 }
                 Func<CloudTask, PSCloudTask> mappingFunction = t => { return new PSCloudTask(t); };
                 return PSPagedEnumerable<PSCloudTask, CloudTask>.CreateWithMaxCount(
