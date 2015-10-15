@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-RaByServicePrincipal");
         }
 
-        [Fact]
+        [Fact(Skip = "Need to re-record test")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByUpn()
         {
