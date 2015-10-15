@@ -61,11 +61,19 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             AuthorizationManagementClient = AzureSession.ClientFactory.CreateClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
 
+        /// <summary>
+        /// Gets a single role definition by a fully qualified role Id
+        /// </summary>
+        /// <param name="roleId">Fully qualified roleId</param>
         public PSRoleDefinition GetRoleDefinition(string roleId)
         {
             return AuthorizationManagementClient.RoleDefinitions.GetById(roleId).RoleDefinition.ToPSRoleDefinition();
         }
 
+        /// <summary>
+        /// Gets a single role definition by the role Id guid.
+        /// </summary>
+        /// <param name="roleId">RoleId guid</param>
         public PSRoleDefinition GetRoleDefinition(Guid roleId)
         {
             return AuthorizationManagementClient.RoleDefinitions.Get(roleId).RoleDefinition.ToPSRoleDefinition();
@@ -87,6 +95,18 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
             result.AddRange(AuthorizationManagementClient.RoleDefinitions.ListWithFilters(parameters).RoleDefinitions.Select(r => r.ToPSRoleDefinition()));
 
+            return result;
+        }
+
+        /// <summary>
+        /// Fetches all existing role Definitions.
+        /// </summary>
+        /// <returns>role Definitions</returns>
+        public List<PSRoleDefinition> GetRoleDefinitions()
+        {
+            List<PSRoleDefinition> result = new List<PSRoleDefinition>();
+            result.AddRange(AuthorizationManagementClient.RoleDefinitions.List().RoleDefinitions
+                .Select(r => r.ToPSRoleDefinition()));
             return result;
         }
 
@@ -287,13 +307,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// </summary>
         /// <param name="id">The role definition id.</param>
         /// <returns>The deleted role definition.</returns>
-        public PSRoleDefinition RemoveRoleDefinition(string id, string subscriptionId)
+        public PSRoleDefinition RemoveRoleDefinition(Guid roleDefinitionId, string subscriptionId)
         {
-            Guid roleDefinitionId;
-            if (!Guid.TryParse(id, out roleDefinitionId))
-            {
-                throw new InvalidOperationException(ProjectResources.RoleDefinitionIdShouldBeAGuid);
-            }
+            string id = roleDefinitionId.ToString();
             string roleDefinitionFullyQualifiedId = AuthorizationHelper.GetRoleDefinitionFullyQualifiedId(subscriptionId, id);
 
             PSRoleDefinition roleDefinition = this.GetRoleDefinition(roleDefinitionId);
