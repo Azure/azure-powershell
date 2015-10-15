@@ -31,9 +31,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true, ParameterSetName = DataLakeParameterSetName, HelpMessage = "The name of the DataLake to add to the account.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true, ParameterSetName = DataLakeParameterSetName, HelpMessage = "The name of the DataLake Storage account to add to the account.")]
         [ValidateNotNullOrEmpty]
-        public string DataLake { get; set; }
+        public string DataLakeStore { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true, ParameterSetName = AzureBlobParameterSetName, HelpMessage = "The name of the AzureBlob to add to the account.")]
         [ValidateNotNullOrEmpty]
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             {
                 var toAdd = new DataLakeStoreAccount
                 {
-                    Name = DataLake
+                    Name = DataLakeStore
                 };
 
                 DataLakeAnalyticsClient.AddDataLakeAccount(ResourceGroupName, AccountName, toAdd);
