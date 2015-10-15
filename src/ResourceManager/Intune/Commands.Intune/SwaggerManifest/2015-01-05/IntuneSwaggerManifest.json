@@ -76,6 +76,20 @@
                     },
                     {
                         "$ref": "#/parameters/ApiVersionParameter"
+                    },
+                    {
+                        "name": "$filter",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "The filter to apply on the operation."
+                    },
+                    {
+                        "name": "$top",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
                     }
                 ],
                 "responses": {
@@ -129,7 +143,7 @@
         },
         "/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyId}": {
             "get": {
-                "description": "Returns Intune Manageable apps.",
+                "description": "Returns Intune iOS policies.",
                 "operationId": "GetiOSPolicyById",
                 "produces": [ "application/json" ],
                 "parameters": [
@@ -166,7 +180,46 @@
                     }
                 }
             }
+        },
+
+        "/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyId}": {
+            "delete": {
+                "description": "Deletes Intune iOS MAM policies.",
+                "operationId": "RemoveiOSPolicyById",
+                "produces": [ "application/json" ],
+                "parameters": [
+                    {
+                        "name": "hostName",
+                        "in": "path",
+                        "description": "Location hostName for the tenant",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "policyId",
+                        "in": "path",
+                        "description": "policy unique Id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "$ref": "#/parameters/ApiVersionParameter"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Empty content."                     
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
         }
+        
     },
     "definitions": {
         "Resource": {
