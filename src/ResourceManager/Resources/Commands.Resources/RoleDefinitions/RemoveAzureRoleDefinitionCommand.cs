@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Resources
                 string.Format(ProjectResources.RemoveRoleDefinition, Id),
                 ProjectResources.RemoveRoleDefinition,
                 Id,
-                () => roleDefinition = PoliciesClient.RemoveRoleDefinition(Id));
+                () => roleDefinition = PoliciesClient.RemoveRoleDefinition(Id, DefaultProfile.Context.Subscription.Id.ToString()));
 
             if (PassThru)
             {

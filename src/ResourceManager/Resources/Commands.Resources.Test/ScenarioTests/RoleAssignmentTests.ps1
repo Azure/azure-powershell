@@ -222,7 +222,7 @@ function Test-RaByUpn
     # Test
     [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleAssignmentNames.Enqueue("8d7dd69e-9ae2-44a1-94d8-f7bc8e12645e")
     $newAssignment = New-AzureRmRoleAssignment `
-                        -UPN $users[0].Mail `
+                        -SignInName $users[0].Mail `
                         -RoleDefinitionName $definitionName `
                         -ResourceGroupName $resourceGroups[0].ResourceGroupName
     

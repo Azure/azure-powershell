@@ -23,6 +23,16 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
     {
         public const string CustomRole = "CustomRole";
 
+        public static IEnumerable<RoleAssignment> FilterRoleAssignmentsOnRoleId(this IEnumerable<RoleAssignment> assignments, string roleId)
+        {
+            if(!string.IsNullOrEmpty(roleId))
+            {
+                return assignments.Where(a => a.Properties.RoleDefinitionId == roleId);
+            }
+
+            return assignments;
+        }
+
         public static PSRoleDefinition ToPSRoleDefinition(this RoleDefinition role)
         {
             PSRoleDefinition roleDefinition = null;
@@ -34,7 +44,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                     Name = role.Properties.RoleName,
                     Actions = new List<string>(role.Properties.Permissions.SelectMany(r => r.Actions)),
                     NotActions = new List<string>(role.Properties.Permissions.SelectMany(r => r.NotActions)),
-                    Id = role.Id,
+                    Id = role.Id.GuidFromFullyQualifiedId(),
                     AssignableScopes = role.Properties.AssignableScopes.ToList(),
                     Description = role.Properties.Description,
                     IsCustom = role.Properties.Type == CustomRole ? true : false
