@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
             var storageParams = new AddDataLakeStoreParameters
             {
-                Properties = new DataLakeStoreAccountProperties { Suffix = storageToAdd.Properties.Suffix }
+                Properties = storageToAdd.Properties
             };
 
             _accountClient.DataLakeAnalyticsAccount.AddDataLakeStoreAccount(resourceGroupName, accountName, storageToAdd.Name, storageParams);
@@ -212,11 +212,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
             var storageParams = new AddStorageAccountParameters
             {
-                Properties = new StorageAccountProperties
-                {
-                    AccessKey = storageToAdd.Properties.AccessKey,
-                    Suffix = storageToAdd.Properties.Suffix
-                }
+                Properties = storageToAdd.Properties
             };
 
             _accountClient.DataLakeAnalyticsAccount.AddStorageAccount(resourceGroupName, accountName, storageToAdd.Name, storageParams);
@@ -231,11 +227,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
             var storageParams = new AddStorageAccountParameters
             {
-                Properties = new StorageAccountProperties
-                {
-                    AccessKey = storageToSet.Properties.AccessKey,
-                    Suffix = storageToSet.Properties.Suffix
-                }
+                Properties = storageToSet.Properties
             };
 
             _accountClient.DataLakeAnalyticsAccount.UpdateStorageAccount(resourceGroupName, accountName, storageToSet.Name, storageParams);
