@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Commands.Batch.Utils
         public const string AzureBatchRemoteDesktopProtocolFile = "AzureBatchRemoteDesktopProtocolFile";
         public const string AzureBatchAutoScale = "AzureBatchAutoScale";
         public const string AzureBatchPoolOSVersion = "AzureBatchPoolOSVersion";
+        public const string AzureBatchCertificate = "AzureBatchCertificate";
+        public const string AzureBatchCertificateDeletion = "AzureBatchCertificateDeletion";
 
         // Parameter sets
         public const string IdParameterSet = "Id";
