@@ -200,29 +200,6 @@ namespace Microsoft.Azure.Commands.Sql.Common
         }
 
         /// <summary>
-        /// Gets the storage table endpoint the given storage account
-        /// </summary>
-        public string GetStorageTableEndpoint(AzureContext context, string storageAccountName)
-        {
-            try
-            {
-                List<Uri> endpoints = new List<Uri>(GetCurrentStorageClient(context).StorageAccounts.Get(storageAccountName).StorageAccount.Properties.Endpoints);
-                return endpoints.Find(u => u.AbsoluteUri.Contains(".table.")).AbsoluteUri;
-            }
-            catch
-            {
-                try
-                {
-                    return GetCurrentStorageV2Client(context).StorageAccounts.List().StorageAccounts.Where(a => a.Name == storageAccountName).First().PrimaryEndpoints.Table.AbsoluteUri;
-                }
-                catch
-                {
-                    throw new Exception(string.Format(Microsoft.Azure.Commands.Sql.Properties.Resources.StorageAccountNotFound, storageAccountName));
-                }
-            }
-        }
-
-        /// <summary>
         /// Lazy creation of a single instance of a storage client
         /// </summary>
         private Microsoft.WindowsAzure.Management.Storage.StorageManagementClient GetCurrentStorageClient(AzureContext context)
