@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
             if (assignments.Count() == 1)
             {
-                roleDefinitions = new List<PSRoleDefinition> { policyClient.GetRoleDefinition(assignments.First().Properties.RoleDefinitionId) };
+                roleDefinitions = new List<PSRoleDefinition> { policyClient.GetRoleDefinition(assignments.Single().Properties.RoleDefinitionId) };
             }
             else
             {

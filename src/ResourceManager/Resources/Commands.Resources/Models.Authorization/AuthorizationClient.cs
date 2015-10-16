@@ -258,13 +258,13 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             IEnumerable<PSRoleAssignment> roleAssignments = FilterRoleAssignments(options, currentSubscription: string.Empty)
                                                 .Where(ra => ra.Scope == options.Scope.TrimEnd('/'));
 
-            if (roleAssignments == null || roleAssignments.Count() == 0)
+            if (roleAssignments == null || !roleAssignments.Any())
             {
                 throw new KeyNotFoundException("The provided information does not map to a role assignment.");
             }
             else if (roleAssignments.Count() == 1)
             {
-                AuthorizationManagementClient.RoleAssignments.DeleteById(roleAssignments.First().RoleAssignmentId);
+                AuthorizationManagementClient.RoleAssignments.DeleteById(roleAssignments.Single().RoleAssignmentId);
             }
             else
             {
@@ -288,18 +288,18 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
         public PSRoleDefinition GetRoleRoleDefinition(string name)
         {
-            List<PSRoleDefinition> role = FilterRoleDefinitions(name);
+            List<PSRoleDefinition> roles = FilterRoleDefinitions(name);
 
-            if (role == null || role.Count == 0)
+            if (roles == null || !roles.Any())
             {
                 throw new KeyNotFoundException(string.Format(ProjectResources.RoleDefinitionNotFound, name));
             }
-            else if (role.Count > 1)
+            else if (roles.Count > 1)
             {
                 throw new InvalidOperationException(string.Format(ProjectResources.MultipleRoleDefinitionsFoundWithSameName, name));
             }
 
-            return role.First();
+            return roles.First();
         }
 
         /// <summary>

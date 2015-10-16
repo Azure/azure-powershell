@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Multiple role definitions found with name &apos;{0}&apos;. Please specify by Id instead..
+        ///   Looks up a localized string similar to Multiple role definitions found with name &apos;{0}&apos;. Specify role definition using it&apos;s Id instead..
         /// </summary>
         internal static string MultipleRoleDefinitionsFoundWithSameName {
             get {
