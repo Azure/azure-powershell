@@ -31,6 +31,11 @@ namespace Microsoft.Azure.Commands.Batch.Test
     /// </summary>
     public static class BatchTestHelpers
     {
+        internal const string TestCertificateFileName1 = "Resources\\BatchTestCert01.cer";
+        internal const string TestCertificateFileName2 = "Resources\\BatchTestCert02.cer";
+        internal const string TestCertificateAlgorithm = "sha1";
+        internal const string TestCertificatePassword = "Passw0rd";
+
         /// <summary>
         /// Builds an AccountResource object using the specified parameters
         /// </summary>
@@ -166,6 +171,44 @@ namespace Microsoft.Azure.Commands.Batch.Test
             });
 
             return interceptor;
+        }
+
+        /// <summary>
+        /// Builds a CertificateGetResponse object
+        /// </summary>
+        public static ProxyModels.CertificateGetResponse CreateCertificateGetResponse(string thumbprint)
+        {
+            ProxyModels.CertificateGetResponse response = new ProxyModels.CertificateGetResponse();
+            response.StatusCode = HttpStatusCode.OK;
+
+            ProxyModels.Certificate cert = new ProxyModels.Certificate();
+            cert.Thumbprint = thumbprint;
+
+            response.Certificate = cert;
+
+            return response;
+        }
+
+        /// <summary>
+        /// Builds a CertificateListResponse object
+        /// </summary>
+        public static ProxyModels.CertificateListResponse CreateCertificateListResponse(IEnumerable<string> certThumbprints)
+        {
+            ProxyModels.CertificateListResponse response = new ProxyModels.CertificateListResponse();
+            response.StatusCode = HttpStatusCode.OK;
+
+            List<ProxyModels.Certificate> certs = new List<ProxyModels.Certificate>();
+
+            foreach (string t in certThumbprints)
+            {
+                ProxyModels.Certificate cert = new ProxyModels.Certificate();
+                cert.Thumbprint = t;
+                certs.Add(cert);
+            }
+
+            response.Certificates = certs;
+
+            return response;
         }
 
         /// <summary>

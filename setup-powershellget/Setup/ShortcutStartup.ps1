@@ -97,8 +97,6 @@ To use Azure Service Management cmdlets please execute the following cmdlet:
   Install-Module Azure
 "@
 		Write-Output $welcomeMessage
-
-		$VerbosePreference = "Continue"
 	}
 }
 catch 
