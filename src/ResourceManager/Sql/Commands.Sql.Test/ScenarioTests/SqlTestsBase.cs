@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
                 helper.SetupEnvironment();
 
-                helper.SetupModules(AzureModule.AzureServiceManagement, 
+                helper.SetupModules(AzureModule.AzureResourceManager, 
                     "ScenarioTests\\Common.ps1", 
                     "ScenarioTests\\" + this.GetType().Name + ".ps1", 
                     helper.RMProfileModule, 
@@ -79,8 +79,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                     helper.RMStorageModule, 
                     helper.GetRMModulePath(@"AzureRM.Insights.psd1"), 
                     helper.GetRMModulePath(@"AzureRM.Sql.psd1"));
-
-                
 
                 helper.RunPowerShellTest(scripts);
             }

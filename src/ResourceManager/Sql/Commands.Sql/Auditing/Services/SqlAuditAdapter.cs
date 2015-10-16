@@ -243,22 +243,22 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// <summary>
         /// Transforms the given model to its endpoints acceptable structure and sends it to the endpoint
         /// </summary>
-        public void SetServerAuditingPolicy(ServerAuditingPolicyModel model, String clientId, string storageEndpointSuffix)
+        public void SetServerAuditingPolicy(ServerAuditingPolicyModel model, String clientId)
         {
-            ServerAuditingPolicyCreateOrUpdateParameters parameters = PolicizeServerAuditingModel(model, storageEndpointSuffix);
+            ServerAuditingPolicyCreateOrUpdateParameters parameters = PolicizeServerAuditingModel(model);
             Communicator.SetServerAuditingPolicy(model.ResourceGroupName, model.ServerName, clientId, parameters);
         }
 
         /// <summary>
         /// Transforms the given model to its endpoints acceptable structure and sends it to the endpoint
         /// </summary>
-        public void SetDatabaseAuditingPolicy(DatabaseAuditingPolicyModel model, String clientId, string storageEndpointSuffix)
+        public void SetDatabaseAuditingPolicy(DatabaseAuditingPolicyModel model, String clientId)
         {
             if (!IsDatabaseInServiceTierForPolicy(model, clientId))
             {
                 throw new Exception(Microsoft.Azure.Commands.Sql.Properties.Resources.DatabaseNotInServiceTierForAuditingPolicy);
             }
-            DatabaseAuditingPolicyCreateOrUpdateParameters parameters = PolicizeDatabaseAuditingModel(model, storageEndpointSuffix);
+            DatabaseAuditingPolicyCreateOrUpdateParameters parameters = PolicizeDatabaseAuditingModel(model);
             Communicator.SetDatabaseAuditingPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName, clientId, parameters);
         }
 
@@ -280,7 +280,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// </summary>
         /// <param name="model">The AuditingPolicy model object</param>
         /// <returns>The communication model object</returns>
-        private DatabaseAuditingPolicyCreateOrUpdateParameters PolicizeDatabaseAuditingModel(DatabaseAuditingPolicyModel model, string storageEndpointSuffix)
+        private DatabaseAuditingPolicyCreateOrUpdateParameters PolicizeDatabaseAuditingModel(DatabaseAuditingPolicyModel model)
         {
             DatabaseAuditingPolicyCreateOrUpdateParameters updateParameters = new DatabaseAuditingPolicyCreateOrUpdateParameters();
             DatabaseAuditingPolicyProperties properties = new DatabaseAuditingPolicyProperties();
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             properties.StorageAccountName = ExtractStorageAccountName(model);
             properties.StorageAccountResourceGroupName = ExtractStorageAccountResourceGroup(properties.StorageAccountName);
             properties.StorageAccountSubscriptionId = ExtractStorageAccountSubscriptionId(properties.StorageAccountName);
-            properties.StorageTableEndpoint = ExtractStorageAccountTableEndpoint(properties.StorageAccountName, storageEndpointSuffix);
+            properties.StorageTableEndpoint = ExtractStorageAccountTableEndpoint(properties.StorageAccountName);
             properties.StorageAccountKey = ExtractStorageAccountKey(properties.StorageAccountName, model, properties.StorageAccountResourceGroupName, StorageKeyKind.Primary);
             properties.StorageAccountSecondaryKey = ExtractStorageAccountKey(properties.StorageAccountName, model, properties.StorageAccountResourceGroupName, StorageKeyKind.Secondary);
             properties.EventTypesToAudit = ExtractEventTypes(model);
@@ -304,7 +304,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// </summary>
         /// <param name="model">The AuditingPolicy model object</param>
         /// <returns>The communication model object</returns>
-        private ServerAuditingPolicyCreateOrUpdateParameters PolicizeServerAuditingModel(ServerAuditingPolicyModel model, string storageEndpointSuffix)
+        private ServerAuditingPolicyCreateOrUpdateParameters PolicizeServerAuditingModel(ServerAuditingPolicyModel model)
         {
             ServerAuditingPolicyCreateOrUpdateParameters updateParameters = new ServerAuditingPolicyCreateOrUpdateParameters();
             ServerAuditingPolicyProperties properties = new ServerAuditingPolicyProperties();
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             properties.StorageAccountName = ExtractStorageAccountName(model);
             properties.StorageAccountResourceGroupName = ExtractStorageAccountResourceGroup(properties.StorageAccountName);
             properties.StorageAccountSubscriptionId = ExtractStorageAccountSubscriptionId(properties.StorageAccountName);
-            properties.StorageTableEndpoint = ExtractStorageAccountTableEndpoint(properties.StorageAccountName, storageEndpointSuffix);
+            properties.StorageTableEndpoint = ExtractStorageAccountTableEndpoint(properties.StorageAccountName);
             properties.StorageAccountKey = ExtractStorageAccountKey(properties.StorageAccountName, model, properties.StorageAccountResourceGroupName, StorageKeyKind.Primary);
             properties.StorageAccountSecondaryKey = ExtractStorageAccountKey(properties.StorageAccountName, model, properties.StorageAccountResourceGroupName, StorageKeyKind.Secondary);
             properties.EventTypesToAudit = ExtractEventTypes(model);
@@ -421,7 +421,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// <summary>
         /// Extracts the storage account endpoint
         /// </summary>
-        private string ExtractStorageAccountTableEndpoint(string storageName, string endpointSuffix)
+        private string ExtractStorageAccountTableEndpoint(string storageName)
         {
             if (IgnoreStorage)
             {
@@ -431,7 +431,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             {
                 return FetchedStorageAccountTableEndpoint;
             }
-            return string.Format("https://{0}.table.{1}", storageName, endpointSuffix);
+            return AzureCommunicator.GetStorageTableEndpoint(Context, storageName);
         }
 
         /// <summary>
