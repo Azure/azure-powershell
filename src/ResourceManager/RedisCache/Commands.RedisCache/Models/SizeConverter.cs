@@ -19,10 +19,10 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
         public const string C0 = "250MB";
         public const string C1 = "1GB";
         public const string C2 = "2.5GB";
-        public const string C3 = "6GB";
-        public const string C4 = "13GB";
-        public const string C5 = "26GB";
-        public const string C6 = "53GB";
+        public const string C3P1 = "6GB";
+        public const string C4P2 = "13GB";
+        public const string C5P3 = "26GB";
+        public const string C6P4 = "53GB";
 
         public const string C0String = "C0";
         public const string C1String = "C1";
@@ -32,7 +32,12 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
         public const string C5String = "C5";
         public const string C6String = "C6";
 
-        public static string GetSizeInRedisSpecificFormat(string actualSizeFromUser)
+        public const string P1String = "P1";
+        public const string P2String = "P2";
+        public const string P3String = "P3";
+        public const string P4String = "P4";
+        
+        public static string GetSizeInRedisSpecificFormat(string actualSizeFromUser, bool isPremiumCache)
         { 
             switch(actualSizeFromUser)
             {
@@ -43,14 +48,42 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
                     return C1String;
                 case C2:
                     return C2String;
-                case C3:
-                    return C3String;
-                case C4:
-                    return C4String;
-                case C5:
-                    return C5String;
-                case C6:
-                    return C6String;
+                case C3P1:
+                    if(isPremiumCache)
+                    {
+                        return P1String;
+                    }
+                    else
+                    {
+                        return C3String;
+                    }
+                case C4P2:
+                    if(isPremiumCache)
+                    {
+                        return P2String;
+                    }
+                    else
+                    {
+                        return C4String;
+                    }
+                case C5P3:
+                    if (isPremiumCache)
+                    {
+                        return P3String;
+                    }
+                    else
+                    {
+                        return C5String;
+                    }
+                case C6P4:
+                    if (isPremiumCache)
+                    {
+                        return P4String;
+                    }
+                    else
+                    {
+                        return C6String;
+                    }
                 // accepting C0, C1 etc.
                 case C0String:
                     return C0String;
@@ -66,6 +99,14 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
                     return C5String;
                 case C6String:
                     return C6String;
+                case P1String:
+                    return P1String;
+                case P2String:
+                    return P2String;
+                case P3String:
+                    return P3String;
+                case P4String:
+                    return P4String;
                 default:
                     return C1String;
             }
@@ -84,13 +125,21 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
                 case C2String:
                         return C2;
                 case C3String:
-                        return C3;
+                        return C3P1;
                 case C4String:
-                        return C4;
+                        return C4P2;
                 case C5String:
-                        return C5;
+                        return C5P3;
                 case C6String:
-                        return C6;
+                        return C6P4;
+                case P1String:
+                        return C3P1;
+                case P2String:
+                        return C4P2;
+                case P3String:
+                        return C5P3;
+                case P4String:
+                        return C6P4;
                 default:
                     return C1;
             }
