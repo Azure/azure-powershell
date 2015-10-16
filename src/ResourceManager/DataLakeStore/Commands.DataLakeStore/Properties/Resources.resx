@@ -178,7 +178,7 @@
     <value>Removing DataLakeStore account '{0}' ...</value>
   </data>
   <data name="RemoveDataLakeStoreItem" xml:space="preserve">
-    <value>Removing DataLake file or folder at path: '{0}' ...</value>
+    <value>Removing Data Lake file or folder at path: '{0}' ...</value>
   </data>
   <data name="RemoveDataLakeStoreItemAcl" xml:space="preserve">
     <value>Removing {0}DataLake ACL at path: '{1}' ...</value>
@@ -187,7 +187,7 @@
     <value>Are you sure you want to remove DataLakeStore account '{0}'?</value>
   </data>
   <data name="RemovingDataLakeStoreItem" xml:space="preserve">
-    <value>Are you sure you want to remove the DataLake item at path: '{0}'?</value>
+    <value>Are you sure you want to remove the Data Lake item at path: '{0}'?</value>
   </data>
   <data name="RemovingDataLakeStoreItemAcl" xml:space="preserve">
     <value>Are you sure you want to remove the {0}DataLake ACL at path: '{1}'?</value>
@@ -199,16 +199,16 @@
     <value>The destination path '{0}' already exists in the system. To overwrite this location, use the -Force parameter.</value>
   </data>
   <data name="SetDataLakeStoreItemAcl" xml:space="preserve">
-    <value>Setting the DataLake file or folder ACL at path: '{0}' ...</value>
+    <value>Setting the Data Lake file or folder ACL at path: '{0}' ...</value>
   </data>
   <data name="SetDataLakeStoreItemOwner" xml:space="preserve">
-    <value>Setting the DataLake file or folder owning group or user at path: '{0}' ...</value>
+    <value>Setting the Data Lake file or folder owning group or user at path: '{0}' ...</value>
   </data>
   <data name="SettingDataLakeStoreItemAcl" xml:space="preserve">
     <value>The entry or entries you provided may already exist in the item's ACL. Are you sure you want to overwrite the existing entry or entries at item path '{0}'?</value>
   </data>
   <data name="SettingDataLakeStoreItemOwner" xml:space="preserve">
-    <value>Are you sure you want to replace the existing owning group or user at the DataLake item at path: '{0}'?</value>
+    <value>Are you sure you want to replace the existing owning group or user at the Data Lake item at path: '{0}'?</value>
   </data>
   <data name="TaskCancelledMessage" xml:space="preserve">
     <value>The operation is being cancelled, please wait...</value>

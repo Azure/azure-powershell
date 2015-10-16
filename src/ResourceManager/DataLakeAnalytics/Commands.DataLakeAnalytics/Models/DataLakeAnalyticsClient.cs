@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         #region Account Related Operations
 
         public DataLakeAnalyticsAccount CreateOrUpdateAccount(string resourceGroupName, string accountName, string location,
-            DataLakeStoreAccount defaultDataLakeAccount = null, IList<DataLakeStoreAccount> additionalDataLakeAccounts = null, IList<StorageAccount> additionalStorageAccounts = null,
+            DataLakeStoreAccount defaultDataLakeStoreAccount = null, IList<DataLakeStoreAccount> additionalDataLakeStoreAccounts = null, IList<StorageAccount> additionalStorageAccounts = null,
             IDictionary<string, string> customTags = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
@@ -78,9 +78,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
             parameters.DataLakeAnalyticsAccount.Properties = new DataLakeAnalyticsAccountProperties();
 
-            if (defaultDataLakeAccount != null)
+            if (defaultDataLakeStoreAccount != null)
             {
-                parameters.DataLakeAnalyticsAccount.Properties.DefaultDataLakeStoreAccount = defaultDataLakeAccount.Name;
+                parameters.DataLakeAnalyticsAccount.Properties.DefaultDataLakeStoreAccount = defaultDataLakeStoreAccount.Name;
             }
 
             if (additionalStorageAccounts != null && additionalStorageAccounts.Count > 0)
@@ -88,18 +88,18 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 parameters.DataLakeAnalyticsAccount.Properties.StorageAccounts = additionalStorageAccounts;
             }
 
-            if (additionalDataLakeAccounts != null && additionalDataLakeAccounts.Count > 0)
+            if (additionalDataLakeStoreAccounts != null && additionalDataLakeStoreAccounts.Count > 0)
             {
-                if (defaultDataLakeAccount != null)
+                if (defaultDataLakeStoreAccount != null)
                 {
-                    additionalDataLakeAccounts.Add(defaultDataLakeAccount);
+                    additionalDataLakeStoreAccounts.Add(defaultDataLakeStoreAccount);
                 }
 
-                parameters.DataLakeAnalyticsAccount.Properties.DataLakeStoreAccounts = additionalDataLakeAccounts;
+                parameters.DataLakeAnalyticsAccount.Properties.DataLakeStoreAccounts = additionalDataLakeStoreAccounts;
             }
-            else if(defaultDataLakeAccount != null)
+            else if(defaultDataLakeStoreAccount != null)
             {
-                parameters.DataLakeAnalyticsAccount.Properties.DataLakeStoreAccounts = new List<DataLakeStoreAccount> { defaultDataLakeAccount };
+                parameters.DataLakeAnalyticsAccount.Properties.DataLakeStoreAccounts = new List<DataLakeStoreAccount> { defaultDataLakeStoreAccount };
             }
 
             var accountExists = false;
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             return accountList;
         }
 
-        public void AddDataLakeAccount(string resourceGroupName, string accountName, DataLakeStoreAccount storageToAdd)
+        public void AddDataLakeStoreAccount(string resourceGroupName, string accountName, DataLakeStoreAccount storageToAdd)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
@@ -193,14 +193,14 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             _accountClient.DataLakeAnalyticsAccount.AddDataLakeStoreAccount(resourceGroupName, accountName, storageToAdd.Name, storageParams);
         }
 
-        public void RemoveDataLakeAccount(string resourceGroupName, string accountName, string dataLakeAccountName)
+        public void RemoveDataLakeStoreAccount(string resourceGroupName, string accountName, string dataLakeStoreAccountName)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
                 resourceGroupName = GetResourceGroupByAccountName(accountName);
             }
 
-            _accountClient.DataLakeAnalyticsAccount.DeleteDataLakeStoreAccount(resourceGroupName, accountName, dataLakeAccountName);
+            _accountClient.DataLakeAnalyticsAccount.DeleteDataLakeStoreAccount(resourceGroupName, accountName, dataLakeStoreAccountName);
         }
 
         public void AddStorageAccount(string resourceGroupName, string accountName, StorageAccount storageToAdd)
@@ -243,7 +243,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             _accountClient.DataLakeAnalyticsAccount.DeleteStorageAccount(resourceGroupName, accountName, storageAccountName);
         }
 
-        public void SetDefaultDataLakeAccount(string resourceGroupName, string accountName, DataLakeStoreAccount storageToSet)
+        public void SetDefaultDataLakeStoreAccount(string resourceGroupName, string accountName, DataLakeStoreAccount storageToSet)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {

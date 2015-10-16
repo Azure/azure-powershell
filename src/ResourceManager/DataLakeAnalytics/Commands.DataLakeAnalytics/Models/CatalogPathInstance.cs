@@ -19,7 +19,7 @@ using Hyak.Common;
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 {
     /// <summary>
-    /// The object that is passed in and parsed for all dataLake paths.
+    /// The object that is passed in and parsed for all Data Lake paths.
     /// </summary>
     public class CatalogPathInstance
     {

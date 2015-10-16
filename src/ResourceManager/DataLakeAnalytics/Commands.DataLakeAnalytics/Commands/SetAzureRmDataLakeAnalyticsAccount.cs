@@ -27,9 +27,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = false, HelpMessage = "Name of the new DataLake account to set as the default storage for this DataLakeAnalytics account.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = false, HelpMessage = "Name of the new Data Lake account to set as the default storage for this DataLakeAnalytics account.")]
         [ValidateNotNullOrEmpty]
-        public string DefaultDataLake { get; set; }
+        public string DefaultDataLakeStore { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false, HelpMessage = "A string,string dictionary of tags associated with this account that should replace the current set of tags")]
         [ValidateNotNull]
@@ -42,11 +42,11 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         protected override void ProcessRecord()
         {
             DataLakeStoreAccount defaultAccount = null;
-            if (!string.IsNullOrEmpty(DefaultDataLake))
+            if (!string.IsNullOrEmpty(DefaultDataLakeStore))
             {
                 defaultAccount = new DataLakeStoreAccount
                 {
-                    Name = DefaultDataLake
+                    Name = DefaultDataLakeStore
                 };
             }
 

@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             "East US 2", "Japan East", "Japan West", "Brazil South", "Southeast Asia", "East Asia", "Australia East", "Australia Southeast", IgnoreCase = true)]
         public string Location { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true,  Position = 3, Mandatory = true, HelpMessage = "The default storage account name to use. This must be a DataLake storage account.")]
+        [Parameter(ValueFromPipelineByPropertyName = true,  Position = 3, Mandatory = true, HelpMessage = "The default storage account name to use. This must be a Data Lake storage account.")]
         [ValidateNotNull]
-        public string DefaultDataLake { get; set; }
+        public string DefaultDataLakeStore { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false, HelpMessage = "A string,string dictionary of tags associated with this account")]
         [ValidateNotNull]
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
             var defaultStorage = new DataLakeStoreAccount
             {
-                Name = DefaultDataLake
+                Name = DefaultDataLakeStore
             };
 
             var tags = new Dictionary<string, string>();

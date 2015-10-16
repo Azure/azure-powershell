@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true, HelpMessage = "The path in the specified dataLake account that should be appended to. Can only be a file " +
-                                                                                           "in the format 'webhdfs://<accountName>.dataLakeaccountdogfood.net/folder/file.txt', " +
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true, HelpMessage = "The path in the specified Data Lake account that should be appended to. Can only be a file " +
+                                                                                           "in the format '/folder/file.txt', " +
                                                                                            "where the first '/' after the DNS indicates the root of the file system.")]
         [ValidateNotNull]
         public DataLakeStorePathInstance Path { get; set; }

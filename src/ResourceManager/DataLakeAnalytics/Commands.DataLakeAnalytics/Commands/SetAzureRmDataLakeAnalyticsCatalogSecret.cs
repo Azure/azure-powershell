@@ -50,8 +50,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 4, Mandatory = true, HelpMessage = "The Port associated with the host for the database to connect to.")]
         public int Port { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 4, Mandatory = false, HelpMessage = "Name of resource group under which the bigAnalytics account and catalog exists.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = HostAndPortParameterSetName, Position = 5, Mandatory = false, HelpMessage = "Name of resource group under which the bigAnalytics account and catalog exists.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 4, Mandatory = false, HelpMessage = "Name of resource group under which the Data Lake Analytics account and catalog exists.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = HostAndPortParameterSetName, Position = 5, Mandatory = false, HelpMessage = "Name of resource group under which the Data Lake Analytics account and catalog exists.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

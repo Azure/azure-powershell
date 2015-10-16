@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         internal const string BaseParameterSetName = "All In Resource Group and Account";
         internal const string JobInfoParameterSetName = "Specific JobInformation";
 
-        [Parameter(ParameterSetName = BaseParameterSetName, ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "Name of the bigAnalytics account name under which want to retrieve the job information.")]
-        [Parameter(ParameterSetName = JobInfoParameterSetName, ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "Name of bigAnalytics account name under which want to to retrieve the job information.")]
+        [Parameter(ParameterSetName = BaseParameterSetName, ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "Name of the Data Lake Analytics account name under which want to retrieve the job information.")]
+        [Parameter(ParameterSetName = JobInfoParameterSetName, ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "Name of Data Lake Analytics account name under which want to to retrieve the job information.")]
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
 

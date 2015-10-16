@@ -36,10 +36,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         private int _degreeOfParallelism = 1;
         private int _priority = 1000;
 
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPath, Position = 0, Mandatory = true, HelpMessage = "Name of bigAnalytics account under which the job will be submitted.")]
-        // [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = HiveJobWithScriptPath, Mandatory = true, HelpMessage = "Name of bigAnalytics account under which the job will be submitted.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetName, Position = 0, Mandatory = true, HelpMessage = "Name of bigAnalytics account under which the job will be submitted.")]
-        // [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = HiveJobParameterSetName, Mandatory = true, HelpMessage = "Name of bigAnalytics account under which the job will be submitted.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobWithScriptPath, Position = 0, Mandatory = true, HelpMessage = "Name of Data Lake Analytics account under which the job will be submitted.")]
+        // [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = HiveJobWithScriptPath, Mandatory = true, HelpMessage = "Name of Data Lake Analytics account under which the job will be submitted.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = USqlJobParameterSetName, Position = 0, Mandatory = true, HelpMessage = "Name of Data Lake Analytics account under which the job will be submitted.")]
+        // [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = HiveJobParameterSetName, Mandatory = true, HelpMessage = "Name of Data Lake Analytics account under which the job will be submitted.")]
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
 

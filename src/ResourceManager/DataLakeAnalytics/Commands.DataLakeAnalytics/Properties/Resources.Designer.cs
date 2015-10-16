@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to At least one data source parameter must be populated in order to add or remove data sources from the bigAnalytics account..
+        ///   Looks up a localized string similar to At least one data source parameter must be populated in order to add or remove data sources from the Data Lake Analytics account..
         /// </summary>
         internal static string DataSourceNotSpecified {
             get {
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Data Lake Accounts can only be modified by indicating that they are now the Default Data Lake account. Otherwise only Add and Remove are supported for Data Lake accounts associated with a DataLake Analytics account..
+        ///   Looks up a localized string similar to Data Lake Accounts can only be modified by indicating that they are now the Default Data Lake account. Otherwise only Add and Remove are supported for Data Lake accounts associated with a Data Lake Analytics account..
         /// </summary>
         internal static string InvalidDataLakeAccountModificationAttempt {
             get {

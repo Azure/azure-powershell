@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false, HelpMessage = "Name of resource group under which the bigAnalytics account and catalog exists.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false, HelpMessage = "Name of resource group under which the Data Lake Analytics account and catalog exists.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

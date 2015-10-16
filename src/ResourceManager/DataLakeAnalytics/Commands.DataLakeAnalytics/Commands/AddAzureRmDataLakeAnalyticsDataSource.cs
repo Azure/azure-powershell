@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
     [Cmdlet(VerbsCommon.Add, "AzureRmDataLakeAnalyticsDataSource")]
     public class AddAzureDataLakeAnalyticsDataSource : DataLakeAnalyticsCmdletBase
     {
-        internal const string DataLakeParameterSetName = "Add a DataLake storage account";
+        internal const string DataLakeParameterSetName = "Add a Data Lake storage account";
         internal const string AzureBlobParameterSetName = "Add an AzureBlob storage account";
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, ParameterSetName = DataLakeParameterSetName, HelpMessage = "Name of the account to add the data source to.")]
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true, ParameterSetName = DataLakeParameterSetName, HelpMessage = "The name of the DataLake Storage account to add to the account.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true, ParameterSetName = DataLakeParameterSetName, HelpMessage = "The name of the Data Lake Storage account to add to the account.")]
         [ValidateNotNullOrEmpty]
         public string DataLakeStore { get; set; }
 
@@ -47,8 +47,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [ValidateNotNullOrEmpty]
         public SwitchParameter Default { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false, ParameterSetName = DataLakeParameterSetName, HelpMessage = "Name of resource group under which the bigAnalytics account exists to add a data source to.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false, ParameterSetName = AzureBlobParameterSetName, HelpMessage = "Name of resource group under which the bigAnalytics account exists to add a data source to.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false, ParameterSetName = DataLakeParameterSetName, HelpMessage = "Name of resource group under which the Data Lake Analytics account exists to add a data source to.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false, ParameterSetName = AzureBlobParameterSetName, HelpMessage = "Name of resource group under which the Data Lake Analytics account exists to add a data source to.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -74,11 +74,11 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                     Name = DataLakeStore
                 };
 
-                DataLakeAnalyticsClient.AddDataLakeAccount(ResourceGroupName, AccountName, toAdd);
+                DataLakeAnalyticsClient.AddDataLakeStoreAccount(ResourceGroupName, AccountName, toAdd);
 
                 if (Default)
                 {
-                    DataLakeAnalyticsClient.SetDefaultDataLakeAccount(ResourceGroupName, AccountName, toAdd);
+                    DataLakeAnalyticsClient.SetDefaultDataLakeStoreAccount(ResourceGroupName, AccountName, toAdd);
                 }
             }
             

@@ -18,10 +18,10 @@ using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsLifecycle.Stop, "AzureRmDataLakeAnalyticsJob", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsLifecycle.Stop, "AzureRmDataLakeAnalyticsJob")]
     public class StopAzureDataLakeAnalyticsJobInfo : DataLakeAnalyticsCmdletBase
     {
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "Name of the bigAnalytics account name under which want to stop the job.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "Name of the Data Lake Analytics account name under which want to stop the job.")]
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
 
@@ -42,19 +42,12 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 
         protected override void ProcessRecord()
         {
-            if (!Force.IsPresent)
-            {
-                ConfirmAction(
+            ConfirmAction(
                 Force.IsPresent,
                 string.Format(Properties.Resources.StoppingDataLakeAnalyticsJob, JobId),
                 string.Format(Properties.Resources.StopDataLakeAnalyticsJob, JobId),
                 JobId.ToString(),
                 () => DataLakeAnalyticsClient.CancelJob(ResourceGroupName, AccountName, JobId));
-            }
-            else
-            {
-                DataLakeAnalyticsClient.CancelJob(ResourceGroupName, AccountName, JobId);
-            }
 
             if (PassThru)
             {

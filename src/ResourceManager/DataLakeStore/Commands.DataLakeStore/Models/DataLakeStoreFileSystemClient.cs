@@ -375,7 +375,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                     progress.ParentActivityId = parentProgress.ActivityId;
                 }
 
-                // On update from the dataLake store uploader, capture the progress.
+                // On update from the Data Lake store uploader, capture the progress.
                 var progressTracker = new System.Progress<UploadProgress>();
                 progressTracker.ProgressChanged += (s, e) =>
                 {

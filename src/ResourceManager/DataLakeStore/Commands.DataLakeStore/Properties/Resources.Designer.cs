@@ -245,7 +245,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removing DataLake file or folder at path: &apos;{0}&apos; ....
+        ///   Looks up a localized string similar to Removing Data Lake file or folder at path: &apos;{0}&apos; ....
         /// </summary>
         internal static string RemoveDataLakeStoreItem {
             get {
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the DataLake item at path: &apos;{0}&apos;?.
+        ///   Looks up a localized string similar to Are you sure you want to remove the Data Lake item at path: &apos;{0}&apos;?.
         /// </summary>
         internal static string RemovingDataLakeStoreItem {
             get {
@@ -308,7 +308,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Setting the DataLake file or folder ACL at path: &apos;{0}&apos; ....
+        ///   Looks up a localized string similar to Setting the Data Lake file or folder ACL at path: &apos;{0}&apos; ....
         /// </summary>
         internal static string SetDataLakeStoreItemAcl {
             get {
@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Setting the DataLake file or folder owning group or user at path: &apos;{0}&apos; ....
+        ///   Looks up a localized string similar to Setting the Data Lake file or folder owning group or user at path: &apos;{0}&apos; ....
         /// </summary>
         internal static string SetDataLakeStoreItemOwner {
             get {
@@ -335,7 +335,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to replace the existing owning group or user at the DataLake item at path: &apos;{0}&apos;?.
+        ///   Looks up a localized string similar to Are you sure you want to replace the existing owning group or user at the Data Lake item at path: &apos;{0}&apos;?.
         /// </summary>
         internal static string SettingDataLakeStoreItemOwner {
             get {

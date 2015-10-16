@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         private int _waitIntervalInSeconds = 5;
         private int _timeoutInSeconds = 0; // <= 0 == never time out.
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "Name of the bigAnalytics account name under which want to stop the job.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "Name of the Data Lake Analytics account name under which want to stop the job.")]
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
 

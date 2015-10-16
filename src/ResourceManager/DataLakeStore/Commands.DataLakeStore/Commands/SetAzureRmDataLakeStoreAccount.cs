@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = false, HelpMessage = "Name of default group to use for all newly created files and folders in the datalake.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = false, HelpMessage = "Name of default group to use for all newly created files and folders in the Data Lake Store.")]
         [ValidateNotNullOrEmpty]
         public string DefaultGroup { get; set; }
 
