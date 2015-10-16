@@ -90,6 +90,13 @@
                         "required": false,
                         "type": "integer",
                         "format": "int32"
+                    },
+                    {
+                        "name": "$select",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "select specific fields in entity."
                     }
                 ],
                 "responses": {
@@ -123,6 +130,27 @@
                     },
                     {
                         "$ref": "#/parameters/ApiVersionParameter"
+                    },
+                    {
+                        "name": "$filter",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "The filter to apply on the operation."
+                    },
+                    {
+                        "name": "$top",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "$select",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "select specific fields in entity."
                     }
                 ],
                 "responses": {
@@ -141,10 +169,294 @@
                 }
             }
         },
+        "/providers/Microsoft.Intune/locations/{hostName}/androidPolicies": {
+            "get": {
+                "description": "Returns Intune android Policies.",
+                "operationId": "GetAndroidPolicies",
+                "produces": [ "application/json" ],
+                "parameters": [
+                    {
+
+                        "name": "hostName",
+                        "in": "path",
+                        "description": "Location hostName for the tenant",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "$ref": "#/parameters/ApiVersionParameter"
+                    },
+                    {
+                        "name": "$filter",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "The filter to apply on the operation."
+                    },
+                    {
+                        "name": "$top",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "$select",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "select specific fields in entity."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "android Policies response",
+                        "schema": {
+                            "$ref": "#/definitions/AndroidPolicyCollection"
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
         "/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyId}": {
             "get": {
                 "description": "Returns Intune iOS policies.",
                 "operationId": "GetiOSPolicyById",
+                "produces": [ "application/json" ],
+                "parameters": [
+                    {
+
+                        "name": "hostName",
+                        "in": "path",
+                        "description": "Location hostName for the tenant",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "policyId",
+                        "in": "path",
+                        "description": "policy unique Id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "$ref": "#/parameters/ApiVersionParameter"
+                    },
+                    {
+                        "name": "$select",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "select specific fields in entity."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "iosPolicy entity.",
+                        "schema": {
+                            "$ref": "#/definitions/IOSPolicy"
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Creates or updates iosPolicy.",
+                "operationId": "CreateOrUpdateIOSPolicy",
+                "produces": [ "application/json" ],
+                "parameters": [
+                    {
+
+                        "name": "hostName",
+                        "in": "path",
+                        "description": "Location hostName for the tenant",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "policyId",
+                        "in": "path",
+                        "description": "policy unique Id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "$ref": "#/parameters/ApiVersionParameter"
+                    },
+                    {
+                        "name": "parameters",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/IOSPolicy"
+                        },
+                        "description": "Parameters supplied to the Create or update an android policy operation."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "iosPolicy entity.",
+                        "schema": {
+                            "$ref": "#/definitions/IOSPolicy"
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete Ios Policy",
+                "operationId": "DeleteIosPolicy",
+                "produces": [ "application/json" ],
+                "parameters": [
+                    {
+
+                        "name": "hostName",
+                        "in": "path",
+                        "description": "Location hostName for the tenant",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "policyId",
+                        "in": "path",
+                        "description": "policy unique Id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "$ref": "#/parameters/ApiVersionParameter"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "No-Content."
+                    },
+                    "204": {
+                        "description": "No-Content."
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/providers/Microsoft.Intune/locations/{hostName}/androidPolicies/{policyId}": {
+            "get": {
+                "description": "Returns androidPolicy with given Id.",
+                "operationId": "GetAndroidPolicyById",
+                "produces": [ "application/json" ],
+                "parameters": [
+                    {
+
+                        "name": "hostName",
+                        "in": "path",
+                        "description": "Location hostName for the tenant",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "policyId",
+                        "in": "path",
+                        "description": "policy unique Id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "$ref": "#/parameters/ApiVersionParameter"
+                    },
+                    {
+                        "name": "$select",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "select specific fields in entity."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "iosPolicy entity.",
+                        "schema": {
+                            "$ref": "#/definitions/AndroidPolicy"
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Creates or updates androidPolicy.",
+                "operationId": "CreateOrUpdateAndroidPolicy",
+                "produces": [ "application/json" ],
+                "parameters": [
+                    {
+
+                        "name": "hostName",
+                        "in": "path",
+                        "description": "Location hostName for the tenant",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "policyId",
+                        "in": "path",
+                        "description": "policy unique Id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "$ref": "#/parameters/ApiVersionParameter"
+                    },
+                    {
+                        "name": "parameters",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AndroidPolicy"
+                        },
+                        "description": "Parameters supplied to the Create or update an android policy operation."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "android entity.",
+                        "schema": {
+                            "$ref": "#/definitions/AndroidPolicy"
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete Android Policy",
+                "operationId": "DeleteAndroidPolicy",
                 "produces": [ "application/json" ],
                 "parameters": [
                     {
@@ -167,10 +479,10 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "iosPolicy entity.",
-                        "schema": {
-                            "$ref": "#/definitions/IOSPolicy"
-                        }
+                        "description": ""
+                    },
+                    "204": {
+                        "description": ""
                     },
                     "default": {
                         "description": "unexpected error",
@@ -221,6 +533,7 @@
         }
         
     },
+
     "definitions": {
         "Resource": {
             "properties": {
@@ -340,6 +653,9 @@
                         "android",
                         "windows"
                     ]
+                },
+                "appId": {
+                    "type": "string"
                 }
             }
         },
@@ -351,6 +667,21 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/IOSPolicy"
+                    }
+                },
+                "nextlink": {
+                    "type": "string"
+                }
+            }
+        },
+        "AndroidPolicyCollection": {
+            "type": "object",
+            "required": [ "value" ],
+            "properties": {
+                "value": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/AndroidPolicy"
                     }
                 },
                 "nextlink": {
@@ -372,7 +703,21 @@
             ],
             "description": "iOS Policy entity for Intune MAM."
         },
-        "IOSPolicyProperties": {
+        "AndroidPolicy": {
+            "type": "object",
+            "properties": {
+                "properties": {
+                    "$ref": "#/definitions/AndroidPolicyProperties"
+                }
+            },
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Resource"
+                }
+            ],
+            "description": "Android Policy entity for Intune MAM."
+        },
+        "MAMPolicyProperties": {
             "type": "object",
             "required": [
                 "friendlyName"
@@ -447,30 +792,12 @@
                 "pinNumRetry": {
                     "type": "integer"
                 },
-                "touchId": {
-                    "type": "string",
-                    "default": "enable",
-                    "enum": [
-                        "enable",
-                        "disable"
-                    ]
-                },
                 "deviceCompliance": {
                     "type": "string",
                     "default": "enable",
                     "enum": [
                         "enable",
                         "disable"
-                    ]
-                },
-                "fileEncryptionLevel": {
-                    "type": "string",
-                    "default": "deviceLocked",
-                    "enum": [
-                        "deviceLocked",
-                        "deviceLockedExceptFilesOpen",
-                        "afterDeviceRestart",
-                        "useDeviceSettings"
                     ]
                 },
                 "managedBrowser": {
@@ -483,13 +810,93 @@
                 },
                 "accessRecheckOfflineTimeout": {
                     "type": "string",
+                    "format": "duration"
+                },
+                "accessRecheckOnlineTimeout": {
+                    "type": "string",
+                    "format": "duration"
+                },
+
+                "offlineWipeTimeout": {
+                    "type": "string",
+                    "format": "duration"
+                },
+                "numOfApps": {
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "groupStatus": {
+                    "readOnly": true,
+                    "type": "string",
+                    "default": "notTargeted",
+                    "enum": [
+                        "notTargeted",
+                        "targeted"
+                    ]
+                },
+                "lastModifiedTime": {
+                    "type": "string",
+                    "readOnly": true,
+                    "format": "date-time"
+                }
+            }
+
+        },
+        "IOSPolicyProperties": {
+            "type": "object",
+            "properties": {
+                "fileEncryptionLevel": {
+                    "type": "string",
+                    "default": "deviceLocked",
+                    "enum": [
+                        "deviceLocked",
+                        "deviceLockedExceptFilesOpen",
+                        "afterDeviceRestart",
+                        "useDeviceSettings"
+                    ]
+                },
+                "touchId": {
+                    "type": "string",
+                    "default": "enable",
+                    "enum": [
+                        "enable",
+                        "disable"
+                    ]
+                }
+            },
+            "allOf": [
+                {
+                    "$ref": "#/definitions/MAMPolicyProperties"
+                }
+            ],
+            "description": "Intune MAM iOS Policy Properties."
+        },
+        "AndroidPolicyProperties": {
+            "type": "object",
+            "properties": {
+                "screenCapture": {
+                    "type": "string",
+                    "default": "allow",
+                    "enum": [
+                        "allow",
+                        "block"
+                    ]
+                },
+                "fileEncryption": {
+                    "type": "string",
                     "default": "required",
                     "enum": [
                         "required",
-                        "notRequired"
+                        "notRequired "
                     ]
                 }
-            }
+            },
+            "allOf": [
+                {
+                    "$ref": "#/definitions/MAMPolicyProperties"
+                }
+            ],
+            "description": "Intune MAM iOS Policy Properties."
         }
     },
     "parameters": {

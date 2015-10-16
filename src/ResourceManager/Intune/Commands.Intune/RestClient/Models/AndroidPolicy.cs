@@ -9,14 +9,14 @@ namespace Commands.Intune.RestClient.Models
     using Microsoft.Rest.Serialization;
 
     /// <summary>
-    /// iOS Policy entity for Intune MAM.
+    /// Android Policy entity for Intune MAM.
     /// </summary>
-    public partial class IOSPolicy : Resource
+    public partial class AndroidPolicy : Resource
     {
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "properties")]
-        public IOSPolicyProperties Properties { get; set; }
+        public AndroidPolicyProperties Properties { get; set; }
 
     }
 }

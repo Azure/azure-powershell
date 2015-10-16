@@ -75,6 +75,9 @@
     <Compile Include="RestClient\IIntuneResourceManagementClient.cs" />
     <Compile Include="RestClient\IntuneResourceManagementClient.cs" />
     <Compile Include="RestClient\IntuneResourceManagementClientExtensions.cs" />
+    <Compile Include="RestClient\Models\AndroidPolicy.cs" />
+    <Compile Include="RestClient\Models\AndroidPolicyCollection.cs" />
+    <Compile Include="RestClient\Models\AndroidPolicyProperties.cs" />
     <Compile Include="RestClient\Models\Application.cs" />
     <Compile Include="RestClient\Models\ApplicationCollection.cs" />
     <Compile Include="RestClient\Models\ApplicationProperties.cs" />
@@ -86,6 +89,7 @@
     <Compile Include="RestClient\Models\LocationCollection.cs" />
     <Compile Include="RestClient\Models\LocationProperties.cs" />
     <Content Include="NewIntunePolicyCmdlet.cs" />
+    <Compile Include="RestClient\Models\MAMPolicyProperties.cs" />
     <Compile Include="RestClient\Models\Resource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="SetIntunePolicyCmdlet.cs" />

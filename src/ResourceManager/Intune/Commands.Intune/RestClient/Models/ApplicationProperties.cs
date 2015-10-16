@@ -25,6 +25,11 @@ namespace Commands.Intune.RestClient.Models
         public string Platform { get; set; }
 
         /// <summary>
+        /// </summary>
+        [JsonProperty(PropertyName = "appId")]
+        public string AppId { get; set; }
+
+        /// <summary>
         /// Validate the object. Throws ArgumentException or ArgumentNullException if validation fails.
         /// </summary>
         public virtual void Validate()

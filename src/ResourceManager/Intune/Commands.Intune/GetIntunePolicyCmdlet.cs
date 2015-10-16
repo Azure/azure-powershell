@@ -90,11 +90,18 @@ namespace Commands.Intune
         /// </summary>
         private void RunCmdlet()
         {
-            var client = IntuneRPClientHelper.GetIntuneManagementClient(this.DefaultContext, "2015-01-05-alpha");
+            var client = IntuneRPClientHelper.GetIntuneManagementClient(this.DefaultContext, "2015-01-11-alpha");
+            IList<Resource<JToken>> genericResources;
+            string asuHostName = LocationHelper.GetLocation(client, this.DefaultContext.Tenant.Id);
 
-            var resources = client.GetiOSPolicies(LocationHelper.GetLocation(client, this.DefaultContext.Tenant.Id));
-
-            var genericResources = resources.Value.Where(res => res != null).SelectArray(res => res.ToJToken().ToResource());
+            if (this.Kind == PolicyTypeEnum.iOS)
+            {
+                genericResources = client.GetiOSPolicies(asuHostName).Value.Where(res => res != null).SelectArray(res => res.ToJToken().ToResource());
+            }
+            else
+            {
+                genericResources = client.GetAndroidPolicies(asuHostName).Value.Where(res => res != null).SelectArray(res => res.ToJToken().ToResource());
+            }
 
             foreach (var batch in genericResources.Batch())
             {

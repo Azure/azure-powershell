@@ -9,28 +9,29 @@ namespace Commands.Intune.RestClient.Models
     using Microsoft.Rest.Serialization;
 
     /// <summary>
+    /// Intune MAM iOS Policy Properties.
     /// </summary>
-    public partial class IOSPolicyCollection
+    public partial class AndroidPolicyProperties : MAMPolicyProperties
     {
         /// <summary>
+        /// Possible values for this property include: 'allow', 'block'.
         /// </summary>
-        [JsonProperty(PropertyName = "value")]
-        public IList<IOSPolicy> Value { get; set; }
+        [JsonProperty(PropertyName = "screenCapture")]
+        public string ScreenCapture { get; set; }
 
         /// <summary>
+        /// Possible values for this property include: 'required',
+        /// 'notRequired '.
         /// </summary>
-        [JsonProperty(PropertyName = "nextlink")]
-        public string Nextlink { get; set; }
+        [JsonProperty(PropertyName = "fileEncryption")]
+        public string FileEncryption { get; set; }
 
         /// <summary>
         /// Validate the object. Throws ArgumentException or ArgumentNullException if validation fails.
         /// </summary>
-        public virtual void Validate()
+        public override void Validate()
         {
-            if (Value == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Value");
-            }
+            base.Validate();
         }
     }
 }

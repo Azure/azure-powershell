@@ -73,9 +73,17 @@ namespace Commands.Intune.RestClient
             /// <param name='hostName'>
             /// Location hostName for the tenant
             /// </param>
-            public static ApplicationCollection GetApplications(this IIntuneResourceManagementClient operations, string hostName)
+            /// <param name='filter'>
+            /// The filter to apply on the operation.
+            /// </param>
+            /// <param name='top'>
+            /// </param>
+            /// <param name='select'>
+            /// select specific fields in entity.
+            /// </param>
+            public static ApplicationCollection GetApplications(this IIntuneResourceManagementClient operations, string hostName, string filter = default(string), int? top = default(int?), string select = default(string))
             {
-                return Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).GetApplicationsAsync(hostName), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                return Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).GetApplicationsAsync(hostName, filter, top, select), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -87,12 +95,20 @@ namespace Commands.Intune.RestClient
             /// <param name='hostName'>
             /// Location hostName for the tenant
             /// </param>
+            /// <param name='filter'>
+            /// The filter to apply on the operation.
+            /// </param>
+            /// <param name='top'>
+            /// </param>
+            /// <param name='select'>
+            /// select specific fields in entity.
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ApplicationCollection> GetApplicationsAsync( this IIntuneResourceManagementClient operations, string hostName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ApplicationCollection> GetApplicationsAsync( this IIntuneResourceManagementClient operations, string hostName, string filter = default(string), int? top = default(int?), string select = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                HttpOperationResponse<ApplicationCollection> result = await operations.GetApplicationsWithHttpMessagesAsync(hostName, null, cancellationToken).ConfigureAwait(false);
+                HttpOperationResponse<ApplicationCollection> result = await operations.GetApplicationsWithHttpMessagesAsync(hostName, filter, top, select, null, cancellationToken).ConfigureAwait(false);
                 return result.Body;
             }
 
@@ -105,9 +121,17 @@ namespace Commands.Intune.RestClient
             /// <param name='hostName'>
             /// Location hostName for the tenant
             /// </param>
-            public static IOSPolicyCollection GetiOSPolicies(this IIntuneResourceManagementClient operations, string hostName)
+            /// <param name='filter'>
+            /// The filter to apply on the operation.
+            /// </param>
+            /// <param name='top'>
+            /// </param>
+            /// <param name='select'>
+            /// select specific fields in entity.
+            /// </param>
+            public static IOSPolicyCollection GetiOSPolicies(this IIntuneResourceManagementClient operations, string hostName, string filter = default(string), int? top = default(int?), string select = default(string))
             {
-                return Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).GetiOSPoliciesAsync(hostName), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                return Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).GetiOSPoliciesAsync(hostName, filter, top, select), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -119,17 +143,73 @@ namespace Commands.Intune.RestClient
             /// <param name='hostName'>
             /// Location hostName for the tenant
             /// </param>
+            /// <param name='filter'>
+            /// The filter to apply on the operation.
+            /// </param>
+            /// <param name='top'>
+            /// </param>
+            /// <param name='select'>
+            /// select specific fields in entity.
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IOSPolicyCollection> GetiOSPoliciesAsync( this IIntuneResourceManagementClient operations, string hostName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IOSPolicyCollection> GetiOSPoliciesAsync( this IIntuneResourceManagementClient operations, string hostName, string filter = default(string), int? top = default(int?), string select = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                HttpOperationResponse<IOSPolicyCollection> result = await operations.GetiOSPoliciesWithHttpMessagesAsync(hostName, null, cancellationToken).ConfigureAwait(false);
+                HttpOperationResponse<IOSPolicyCollection> result = await operations.GetiOSPoliciesWithHttpMessagesAsync(hostName, filter, top, select, null, cancellationToken).ConfigureAwait(false);
                 return result.Body;
             }
 
             /// <summary>
-            /// Returns Intune Manageable apps.
+            /// Returns Intune android Policies.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='hostName'>
+            /// Location hostName for the tenant
+            /// </param>
+            /// <param name='filter'>
+            /// The filter to apply on the operation.
+            /// </param>
+            /// <param name='top'>
+            /// </param>
+            /// <param name='select'>
+            /// select specific fields in entity.
+            /// </param>
+            public static AndroidPolicyCollection GetAndroidPolicies(this IIntuneResourceManagementClient operations, string hostName, string filter = default(string), int? top = default(int?), string select = default(string))
+            {
+                return Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).GetAndroidPoliciesAsync(hostName, filter, top, select), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Returns Intune android Policies.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='hostName'>
+            /// Location hostName for the tenant
+            /// </param>
+            /// <param name='filter'>
+            /// The filter to apply on the operation.
+            /// </param>
+            /// <param name='top'>
+            /// </param>
+            /// <param name='select'>
+            /// select specific fields in entity.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<AndroidPolicyCollection> GetAndroidPoliciesAsync( this IIntuneResourceManagementClient operations, string hostName, string filter = default(string), int? top = default(int?), string select = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                HttpOperationResponse<AndroidPolicyCollection> result = await operations.GetAndroidPoliciesWithHttpMessagesAsync(hostName, filter, top, select, null, cancellationToken).ConfigureAwait(false);
+                return result.Body;
+            }
+
+            /// <summary>
+            /// Deletes Intune iOS MAM policies.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -140,13 +220,13 @@ namespace Commands.Intune.RestClient
             /// <param name='policyId'>
             /// policy unique Id
             /// </param>
-            public static IOSPolicy GetiOSPolicyById(this IIntuneResourceManagementClient operations, string hostName, string policyId)
+            public static void RemoveiOSPolicyById(this IIntuneResourceManagementClient operations, string hostName, string policyId)
             {
-                return Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).GetiOSPolicyByIdAsync(hostName, policyId), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).RemoveiOSPolicyByIdAsync(hostName, policyId), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Returns Intune Manageable apps.
+            /// Deletes Intune iOS MAM policies.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -160,10 +240,134 @@ namespace Commands.Intune.RestClient
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IOSPolicy> GetiOSPolicyByIdAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task RemoveiOSPolicyByIdAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                HttpOperationResponse<IOSPolicy> result = await operations.GetiOSPolicyByIdWithHttpMessagesAsync(hostName, policyId, null, cancellationToken).ConfigureAwait(false);
+                await operations.RemoveiOSPolicyByIdWithHttpMessagesAsync(hostName, policyId, null, cancellationToken).ConfigureAwait(false);
+            }
+
+            /// <summary>
+            /// Returns androidPolicy with given Id.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='hostName'>
+            /// Location hostName for the tenant
+            /// </param>
+            /// <param name='policyId'>
+            /// policy unique Id
+            /// </param>
+            /// <param name='select'>
+            /// select specific fields in entity.
+            /// </param>
+            public static AndroidPolicy GetAndroidPolicyById(this IIntuneResourceManagementClient operations, string hostName, string policyId, string select = default(string))
+            {
+                return Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).GetAndroidPolicyByIdAsync(hostName, policyId, select), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Returns androidPolicy with given Id.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='hostName'>
+            /// Location hostName for the tenant
+            /// </param>
+            /// <param name='policyId'>
+            /// policy unique Id
+            /// </param>
+            /// <param name='select'>
+            /// select specific fields in entity.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<AndroidPolicy> GetAndroidPolicyByIdAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, string select = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                HttpOperationResponse<AndroidPolicy> result = await operations.GetAndroidPolicyByIdWithHttpMessagesAsync(hostName, policyId, select, null, cancellationToken).ConfigureAwait(false);
                 return result.Body;
+            }
+
+            /// <summary>
+            /// Creates or updates androidPolicy.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='hostName'>
+            /// Location hostName for the tenant
+            /// </param>
+            /// <param name='policyId'>
+            /// policy unique Id
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the Create or update an android policy operation.
+            /// </param>
+            public static AndroidPolicy CreateOrUpdateAndroidPolicy(this IIntuneResourceManagementClient operations, string hostName, string policyId, AndroidPolicy parameters)
+            {
+                return Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).CreateOrUpdateAndroidPolicyAsync(hostName, policyId, parameters), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Creates or updates androidPolicy.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='hostName'>
+            /// Location hostName for the tenant
+            /// </param>
+            /// <param name='policyId'>
+            /// policy unique Id
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the Create or update an android policy operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<AndroidPolicy> CreateOrUpdateAndroidPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, AndroidPolicy parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                HttpOperationResponse<AndroidPolicy> result = await operations.CreateOrUpdateAndroidPolicyWithHttpMessagesAsync(hostName, policyId, parameters, null, cancellationToken).ConfigureAwait(false);
+                return result.Body;
+            }
+
+            /// <summary>
+            /// Delete Android Policy
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='hostName'>
+            /// Location hostName for the tenant
+            /// </param>
+            /// <param name='policyId'>
+            /// policy unique Id
+            /// </param>
+            public static void DeleteAndroidPolicy(this IIntuneResourceManagementClient operations, string hostName, string policyId)
+            {
+                Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).DeleteAndroidPolicyAsync(hostName, policyId), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Delete Android Policy
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='hostName'>
+            /// Location hostName for the tenant
+            /// </param>
+            /// <param name='policyId'>
+            /// policy unique Id
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task DeleteAndroidPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                await operations.DeleteAndroidPolicyWithHttpMessagesAsync(hostName, policyId, null, cancellationToken).ConfigureAwait(false);
             }
 
     }

@@ -25,7 +25,8 @@ namespace Commands.Intune
     using Microsoft.WindowsAzure.Commands.Common;
     using Newtonsoft.Json.Linq;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
-
+    using Commands.Intune.Helpers;
+    using Commands.Intune.RestClient.Models;
     /// <summary>
     /// A cmdlet that creates a new azure resource.
     /// </summary>
@@ -50,6 +51,7 @@ namespace Commands.Intune
         /// The tenant level parameter set.
         /// </summary>
         internal const string TypeBasedParameterSet = "Create a policy.";
+        private string asuHostName;
 
         /// <summary>
         /// Gets or sets the property object.
@@ -67,6 +69,10 @@ namespace Commands.Intune
         {
             base.OnProcessRecord();
 
+            var client = IntuneRPClientHelper.GetIntuneManagementClient(this.DefaultContext, "2015-01-11-alpha");
+
+            this.asuHostName = LocationHelper.GetLocation(client, this.DefaultContext.Tenant.Id);
+
             var resourceId = this.GetPolicyResourceId();
             this.ConfirmAction(
                 this.Force,
@@ -75,27 +81,7 @@ namespace Commands.Intune
                 resourceId,
                 () =>
                 {
-                    var apiVersion = "2015-01-08-alpha";
-                    var resourceBody = this.GetResourceBody();
-
-                    var operationResult = this.GetResourcesClient()
-                        .PutResource(
-                            resourceId: resourceId,
-                            apiVersion: apiVersion,
-                            resource: resourceBody,
-                            cancellationToken: this.CancellationToken.Value,
-                            odataQuery: this.ODataQuery)
-                        .Result;
-
-                    var managementUri = this.GetResourcesClient()
-                      .GetResourceManagementRequestUri(
-                          resourceId: resourceId,
-                          apiVersion: apiVersion,
-                          odataQuery: this.ODataQuery);
-
-                    var activity = string.Format("PUT {0}", managementUri.PathAndQuery);
-                    var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
-                        .WaitOnOperation(operationResult: operationResult);
+                    var policy = new AndriodPolicy()
 
                     this.TryConvertToResourceAndWriteObject(result);
                 });
@@ -105,7 +91,7 @@ namespace Commands.Intune
         {
             return string.Format(
                 "/providers/Microsoft.Intune/locations/{0}/{1}/{2}",
-                LocationHelper.GetLocation(this.GetResourcesClient(), this.CancellationToken.Value),
+                this.asuHostName,
                 PolicyTypeEnum.Android == this.Kind ? "androidPolicies" : "iosPolicies",
                 Guid.NewGuid().ToString());
         }

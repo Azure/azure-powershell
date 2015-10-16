@@ -9,83 +9,10 @@ namespace Commands.Intune.RestClient.Models
     using Microsoft.Rest.Serialization;
 
     /// <summary>
+    /// Intune MAM iOS Policy Properties.
     /// </summary>
-    public partial class IOSPolicyProperties
+    public partial class IOSPolicyProperties : MAMPolicyProperties
     {
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "friendlyName")]
-        public string FriendlyName { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "description")]
-        public string Description { get; set; }
-
-        /// <summary>
-        /// Possible values for this property include: 'none',
-        /// 'policyManagedApps', 'allApps'.
-        /// </summary>
-        [JsonProperty(PropertyName = "appSharingFromLevel")]
-        public string AppSharingFromLevel { get; set; }
-
-        /// <summary>
-        /// Possible values for this property include: 'none',
-        /// 'policyManagedApps', 'allApps'.
-        /// </summary>
-        [JsonProperty(PropertyName = "appSharingToLevel")]
-        public string AppSharingToLevel { get; set; }
-
-        /// <summary>
-        /// Possible values for this property include: 'required',
-        /// 'notRequired '.
-        /// </summary>
-        [JsonProperty(PropertyName = "authentication")]
-        public string Authentication { get; set; }
-
-        /// <summary>
-        /// Possible values for this property include: 'blocked',
-        /// 'policyManagedApps', 'policyManagedAppsWithPasteIn', 'allApps'.
-        /// </summary>
-        [JsonProperty(PropertyName = "clipboardSharingLevel")]
-        public string ClipboardSharingLevel { get; set; }
-
-        /// <summary>
-        /// Possible values for this property include: 'allow', 'block'.
-        /// </summary>
-        [JsonProperty(PropertyName = "dataBackup")]
-        public string DataBackup { get; set; }
-
-        /// <summary>
-        /// Possible values for this property include: 'allow', 'block'.
-        /// </summary>
-        [JsonProperty(PropertyName = "fileSharingSaveAs")]
-        public string FileSharingSaveAs { get; set; }
-
-        /// <summary>
-        /// Possible values for this property include: 'required',
-        /// 'notRequired '.
-        /// </summary>
-        [JsonProperty(PropertyName = "pin")]
-        public string Pin { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "pinNumRetry")]
-        public int? PinNumRetry { get; set; }
-
-        /// <summary>
-        /// Possible values for this property include: 'enable', 'disable'.
-        /// </summary>
-        [JsonProperty(PropertyName = "touchId")]
-        public string TouchId { get; set; }
-
-        /// <summary>
-        /// Possible values for this property include: 'enable', 'disable'.
-        /// </summary>
-        [JsonProperty(PropertyName = "deviceCompliance")]
-        public string DeviceCompliance { get; set; }
-
         /// <summary>
         /// Possible values for this property include: 'deviceLocked',
         /// 'deviceLockedExceptFilesOpen', 'afterDeviceRestart',
@@ -95,28 +22,17 @@ namespace Commands.Intune.RestClient.Models
         public string FileEncryptionLevel { get; set; }
 
         /// <summary>
-        /// Possible values for this property include: 'required',
-        /// 'notRequired'.
+        /// Possible values for this property include: 'enable', 'disable'.
         /// </summary>
-        [JsonProperty(PropertyName = "managedBrowser")]
-        public string ManagedBrowser { get; set; }
-
-        /// <summary>
-        /// Possible values for this property include: 'required',
-        /// 'notRequired'.
-        /// </summary>
-        [JsonProperty(PropertyName = "accessRecheckOfflineTimeout")]
-        public string AccessRecheckOfflineTimeout { get; set; }
+        [JsonProperty(PropertyName = "touchId")]
+        public string TouchId { get; set; }
 
         /// <summary>
         /// Validate the object. Throws ArgumentException or ArgumentNullException if validation fails.
         /// </summary>
-        public virtual void Validate()
+        public override void Validate()
         {
-            if (FriendlyName == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "FriendlyName");
-            }
+            base.Validate();
         }
     }
 }

@@ -10,12 +10,12 @@ namespace Commands.Intune.RestClient.Models
 
     /// <summary>
     /// </summary>
-    public partial class IOSPolicyCollection
+    public partial class AndroidPolicyCollection
     {
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "value")]
-        public IList<IOSPolicy> Value { get; set; }
+        public IList<AndroidPolicy> Value { get; set; }
 
         /// <summary>
         /// </summary>

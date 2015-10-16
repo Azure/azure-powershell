@@ -78,9 +78,10 @@ namespace Commands.Intune
         /// </summary>
         private void RunCmdlet()
         {
-            var client = IntuneRPClientHelper.GetIntuneManagementClient(this.DefaultContext, "2015-01-05-alpha");
+            var client = IntuneRPClientHelper.GetIntuneManagementClient(this.DefaultContext, "2015-01-11-alpha");
+            string filter = this.Platform == null? null : string.Format("platform eq '{0}'", this.Platform.ToString());
 
-            var resources = client.GetApplications(LocationHelper.GetLocation(client, this.DefaultContext.Tenant.Id));
+            var resources = client.GetApplications(LocationHelper.GetLocation(client, this.DefaultContext.Tenant.Id), filter);
 
             var genericResources = resources.Value.Where(res => res != null).SelectArray(res => res.ToJToken().ToResource());
 
