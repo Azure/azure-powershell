@@ -76,17 +76,17 @@ namespace Microsoft.Azure.Commands.RedisCache
                 parameters.Properties.ShardCount = shardCount.Value;
             }
 
-            if (!string.IsNullOrEmpty(virtualNetwork))
+            if (!string.IsNullOrWhiteSpace(virtualNetwork))
             {
                 parameters.Properties.VirtualNetwork = virtualNetwork;
             }
 
-            if (!string.IsNullOrEmpty(subnet))
+            if (!string.IsNullOrWhiteSpace(subnet))
             {
                 parameters.Properties.Subnet = subnet;
             }
 
-            if (!string.IsNullOrEmpty(staticIP))
+            if (!string.IsNullOrWhiteSpace(staticIP))
             {
                 parameters.Properties.StaticIP = staticIP;
             }

@@ -40,10 +40,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
             Subnet = cache.Properties.Subnet;
             StaticIP = cache.Properties.StaticIP;
             TenantSettings = cache.Properties.TenantSettings;
-            if (cache.Properties.ShardCount.HasValue)
-            {
-                ShardCount = cache.Properties.ShardCount.Value;
-            }
+            ShardCount = cache.Properties.ShardCount;
         }
 
         public RedisCacheAttributes(RedisGetResponse cache, string resourceGroupName)

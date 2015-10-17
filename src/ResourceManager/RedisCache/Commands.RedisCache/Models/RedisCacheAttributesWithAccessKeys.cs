@@ -42,10 +42,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
             Subnet = cache.Resource.Properties.Subnet;
             StaticIP = cache.Resource.Properties.StaticIP;
             TenantSettings = cache.Resource.Properties.TenantSettings;
-            if (cache.Resource.Properties.ShardCount.HasValue)
-            {
-                ShardCount = cache.Resource.Properties.ShardCount.Value;
-            }
+            ShardCount = cache.Resource.Properties.ShardCount;
         }
 
         public string PrimaryKey { get; private set; }

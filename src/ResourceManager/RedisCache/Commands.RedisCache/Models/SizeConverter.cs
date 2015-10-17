@@ -14,15 +14,17 @@
 
 namespace Microsoft.Azure.Commands.RedisCache.Models
 {
+    using System.Collections.Generic;
+
     public static class SizeConverter
     {
-        public const string C0 = "250MB";
-        public const string C1 = "1GB";
-        public const string C2 = "2.5GB";
-        public const string C3P1 = "6GB";
-        public const string C4P2 = "13GB";
-        public const string C5P3 = "26GB";
-        public const string C6P4 = "53GB";
+        public const string MB250 = "250MB";
+        public const string GB1 = "1GB";
+        public const string GB2_5 = "2.5GB";
+        public const string GB6 = "6GB";
+        public const string GB13 = "13GB";
+        public const string GB26 = "26GB";
+        public const string GB53 = "53GB";
 
         public const string C0String = "C0";
         public const string C1String = "C1";
@@ -36,19 +38,33 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
         public const string P2String = "P2";
         public const string P3String = "P3";
         public const string P4String = "P4";
+
+        private static Dictionary<string, string> skuStringToAztualSize = new Dictionary<string, string>{
+            {C0String,MB250},
+            {C1String,GB1},
+            {C2String,GB2_5},
+            {C3String,GB6},
+            {C4String,GB13},
+            {C5String,GB26},
+            {C6String,GB53},
+            {P1String,GB6},
+            {P2String,GB13},
+            {P3String,GB26},
+            {P4String,GB53}
+        };
         
         public static string GetSizeInRedisSpecificFormat(string actualSizeFromUser, bool isPremiumCache)
         { 
             switch(actualSizeFromUser)
             {
                 // accepting actual sizes
-                case C0:
+                case MB250:
                     return C0String;
-                case C1:
+                case GB1:
                     return C1String;
-                case C2:
+                case GB2_5:
                     return C2String;
-                case C3P1:
+                case GB6:
                     if(isPremiumCache)
                     {
                         return P1String;
@@ -57,7 +73,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
                     {
                         return C3String;
                     }
-                case C4P2:
+                case GB13:
                     if(isPremiumCache)
                     {
                         return P2String;
@@ -66,7 +82,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
                     {
                         return C4String;
                     }
-                case C5P3:
+                case GB26:
                     if (isPremiumCache)
                     {
                         return P3String;
@@ -75,7 +91,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
                     {
                         return C5String;
                     }
-                case C6P4:
+                case GB53:
                     if (isPremiumCache)
                     {
                         return P4String;
@@ -85,64 +101,19 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
                         return C6String;
                     }
                 // accepting C0, C1 etc.
-                case C0String:
-                    return C0String;
-                case C1String:
-                    return C1String;
-                case C2String:
-                    return C2String;
-                case C3String:
-                    return C3String;
-                case C4String:
-                    return C4String;
-                case C5String:
-                    return C5String;
-                case C6String:
-                    return C6String;
-                case P1String:
-                    return P1String;
-                case P2String:
-                    return P2String;
-                case P3String:
-                    return P3String;
-                case P4String:
-                    return P4String;
                 default:
-                    return C1String;
+                    return actualSizeFromUser;
             }
         }
 
         public static string GetSizeInUserSpecificFormat(string skuFamily, int skuCapacity)
         {
             string sizeConstant = skuFamily + skuCapacity.ToString();
-            switch (sizeConstant)
-            {
-                // accepting C0, C1 etc.
-                case C0String:
-                        return C0;
-                case C1String:
-                        return C1;
-                case C2String:
-                        return C2;
-                case C3String:
-                        return C3P1;
-                case C4String:
-                        return C4P2;
-                case C5String:
-                        return C5P3;
-                case C6String:
-                        return C6P4;
-                case P1String:
-                        return C3P1;
-                case P2String:
-                        return C4P2;
-                case P3String:
-                        return C5P3;
-                case P4String:
-                        return C6P4;
-                default:
-                    return C1;
+            if (skuStringToAztualSize.ContainsKey(sizeConstant))
+            { 
+                return skuStringToAztualSize[sizeConstant];
             }
+            return GB1;
         }
     }
 }
