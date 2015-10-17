@@ -317,9 +317,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             _client.FileSystem.CreateSymLink(sourcePath, accountName, destinationPath, createParent);
         }
 
-        public void ConcatenateFiles(string destinationPath, string accountName, string[] filesToConcatenate)
+        public void ConcatenateFiles(string destinationPath, string accountName, string[] filesToConcatenate, bool deleteDirectory)
         {
-            _client.FileSystem.MsConcat(destinationPath, accountName, new MemoryStream(Encoding.UTF8.GetBytes("sources=" + string.Join(",", filesToConcatenate))));
+            _client.FileSystem.MsConcat(destinationPath, accountName, new MemoryStream(Encoding.UTF8.GetBytes("sources=" + string.Join(",", filesToConcatenate))), deleteDirectory);
         }
         
         public void CreateFile(string filePath, string accountName, Stream contents = null, bool overwrite = false, string permissions = null)
