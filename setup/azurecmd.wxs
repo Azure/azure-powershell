@@ -9,9 +9,9 @@
   <?define versionedStartMenuFolder="Microsoft Azure" ?>
   <?define staleStartMenuFolder="Windows Azure" ?>
   <?if $(var.Platform) = x64 ?>
-    <?define PlatformProgramFilesFolder = "ProgramFiles64Folder" ?>
+    <?define PlatformProgramFilesFolder = ProgramFiles64Folder ?>
   <?else ?>
-    <?define PlatformProgramFilesFolder = "ProgramFilesFolder" ?>
+    <?define PlatformProgramFilesFolder = ProgramFilesFolder ?>
   <?endif ?>
   
   <Product Id="*"
@@ -42,8 +42,7 @@
     </Property>
 
     <Condition Message="Azure Resource Manager Modules from the PowerShell Gallery are installed on this machine.  Please remove these modules before installing.">
-      <!-- This condition will break if PowerShell has version x3.0 and it is not compatible with 3.0 -->
-      <![CDATA[Installed or NOT (POWERSHELLGETMODULESINSTALLED = "$(var.PlatformProgramFilesFolder)AzureRM.Profile")]]>
+      Installed or NOT (POWERSHELLGETMODULESINSTALLED = "$(var.PlatformProgramFilesFolder)AzureRM.Profile")
     </Condition>
 
 
