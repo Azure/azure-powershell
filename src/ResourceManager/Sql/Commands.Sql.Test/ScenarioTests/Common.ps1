@@ -86,7 +86,7 @@ function Create-DataMaskingTestEnvironment ($testSuffix)
 {
 	$params = Get-SqlDataMaskingTestEnvironmentParameters $testSuffix
 	New-AzureRmResourceGroup -Name $params.rgname -Location "Australia East" -Force
-	New-AzureRmResourceGroupDeployment -ResourceGroupName $params.rgname -TemplateFile ".\Templates\sql-audit-test-env-setup.json" -serverName $params.serverName -databaseName $params.databaseName -EnvLocation "Australia East" -administratorLogin $params.userName -Force
+	New-AzureRmResourceGroupDeployment -ResourceGroupName $params.rgname -TemplateFile ".\Templates\sql-ddm-test-env-setup.json" -serverName $params.serverName -databaseName $params.databaseName -EnvLocation "Australia East" -administratorLogin $params.userName -Force
 	$fullServerName = $params.serverName + ".database.windows.net"
 	
 	$uid = $params.userName
