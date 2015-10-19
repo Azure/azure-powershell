@@ -32,6 +32,8 @@ Write-Verbose "The output folder is set to $output"
 $serviceManagementPath = Join-Path $output "ServiceManagement\Azure"
 $resourceManagerPath = Join-Path $output "ResourceManager\AzureResourceManager"
 
+Write-Verbose "Removing unneeded psd1 file for AzureResourceManager"
+Remove-Item -Force $resourceManagerPath\AzureResourceManager.psd1 -ErrorAction SilentlyContinue
 Write-Verbose "Removing duplicated Resources folder"
 Remove-Item -Recurse -Force $serviceManagementPath\Compute\Resources\ -ErrorAction SilentlyContinue
 Remove-Item -Recurse -Force $serviceManagementPath\Sql\Resources\ -ErrorAction SilentlyContinue
