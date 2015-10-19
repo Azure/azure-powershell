@@ -690,9 +690,9 @@ function Get-AllBuildServerCommands {
 rm .\Output -Recurse -Force -ErrorAction SilentlyContinue
 
 #Comment these lines to selectivly build the output for either Service Management or Resource Manager
-Get-AllBuildServerCommands -OutputPath ".\Output" -ManifestFullName "..\..\..\src\Package\Debug\ServiceManagement\Azure\Azure.psd1"
+Get-AllBuildServerCommands -OutputPath ".\Output" -ManifestFullName "..\..\..\src\Package\Release\ServiceManagement\Azure\Azure.psd1"
 Get-AllBuildServerCommands -OutputPath ".\Output" -ManifestFullName "..\..\AzureRM\AzureRM.psd1"
 
-$modules = (Get-ChildItem "..\..\..\src\Package\Debug\ResourceManager" -Recurse -Include "*.psd1" -Exclude "*dll-help.psd1", "AzureResourceManager.psd1") | sort -Unique -Property Name
+$modules = (Get-ChildItem "..\..\..\src\Package\Release\ResourceManager" -Recurse -Include "*.psd1" -Exclude "*dll-help.psd1", "AzureResourceManager.psd1") | sort -Unique -Property Name
 $modules | Foreach { Get-AllBuildServerCommands -OutputPath ".\Output" -ManifestFullName $_.FullName }
 
