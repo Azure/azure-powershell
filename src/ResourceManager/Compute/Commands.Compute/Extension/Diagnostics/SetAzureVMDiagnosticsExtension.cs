@@ -202,13 +202,8 @@ namespace Microsoft.Azure.Commands.Compute
 
             if (!string.IsNullOrEmpty(StorageAccountName))
             {
-                var storageAccountKeys =
-                    this.StorageClient.StorageAccounts.ListKeys(this.ResourceGroupName,
-                        this.StorageContext.StorageAccountName);
-                if (storageAccountKeys != null)
-                {
-                    storageKey = !string.IsNullOrEmpty(storageAccountKeys.StorageAccountKeys.Key1) ? storageAccountKeys.StorageAccountKeys.Key1 : storageAccountKeys.StorageAccountKeys.Key2;
-                }
+                var storageCredentials = StorageUtilities.GenerateStorageCredentials(this.StorageClient, this.ResourceGroupName, this.StorageAccountName);
+                storageKey = storageCredentials.ExportBase64EncodedKey();
             }
 
             return storageKey;
