@@ -27,7 +27,7 @@
     <Property Id="ARPPRODUCTICON" Value="icon.ico" />
     <Property Id="ALLUSERS" Value="1" />
     <!-- per machine install-->
-    <Property Id="PSGETMODULEPATH" Value="[ProgramFiles6432Folder]WindowsPowerShell\Modules" />
+    <CustomAction Id="PropertyAssign" Property="PSGETMODULEPATH" Value="[ProgramFiles6432Folder]WindowsPowerShell\Modules" />
     <Property Id="PSCOMPATIBLEVERSION">
       <RegistrySearch Id="PSCOMPATIBLEVERSION" Root="HKLM" Key="SOFTWARE\Microsoft\PowerShell\3\PowerShellEngine" Name="PSCompatibleVersion" Type="raw" />
     </Property>
