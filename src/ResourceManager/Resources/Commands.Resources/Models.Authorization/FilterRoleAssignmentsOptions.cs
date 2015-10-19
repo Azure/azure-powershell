@@ -18,7 +18,26 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 {
     public class FilterRoleAssignmentsOptions
     {
-        public string RoleDefinition { get; set; }
+        private string roleDefinitionGuid;
+
+        public string RoleDefinitionName { get; set; }
+
+        public string RoleDefinitionId
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(roleDefinitionGuid))
+                {
+                    return null;
+                }
+
+                return AuthorizationHelper.GetRoleDefinitionFullyQualifiedId(this.ResourceIdentifier.Subscription, roleDefinitionGuid);
+            }
+            set
+            {
+                roleDefinitionGuid = value;
+            }
+        }
 
         private string scope;
 
