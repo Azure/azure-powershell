@@ -39,6 +39,8 @@
       NOT VersionNT64
     </SetProperty>
 
+    <SetProperty Id="POWERSHELLEXE" Value="[WindowsFolder]System32\WindowsPowerShell\v1.0\powershell.exe" Before="AppSearch"/>
+
     <Property Id="POWERSHELLGETMODULESINSTALLED" >
       <DirectorySearch Id="PROGRAMFILESCONTAINER" Path="[BaseModulesFolder]">
         <DirectorySearch Id= "PROFILEMODULE" Path="AzureRM.Profile"/>
@@ -114,10 +116,12 @@
     <CustomAction Id="UpdatePSShortcut" BinaryKey="CustomActions" DllEntry="UpdatePSShortcut" Execute ="deferred" Impersonate="no"/>
     <CustomAction Id="SetCustomActionDataValue" Return="check" Property="UpdatePSShortcut"
                      Value="ShortcutPath=[AzureSdkMenu]Microsoft Azure PowerShell.lnk;DefaultShortcutPath=[ProgramMenuFolder]System Tools\Windows PowerShell.lnk" />
+    <CustomAction Id="SetExecutionPolicy" Property="POWERSHELLEXE" ExeCommand="-NoLogo -NoProfile -Command &quot;Set-ExecutionPolicy RemoteSigned -Scope LocalMachine -Force&quot;" Execute="deferred" Impersonate="no" Return="check"/>
 
     <InstallExecuteSequence>
       <Custom Action="SetCustomActionDataValue" After="CreateShortcuts">NOT Installed</Custom>
       <Custom Action="UpdatePSShortcut" After="SetCustomActionDataValue">NOT Installed</Custom>
+      <Custom Action="SetExecutionPolicy" After="UpdatePSShortcut">NOT Installed</Custom>
     </InstallExecuteSequence>
 
     <WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectDir)\media\License.rtf" />
