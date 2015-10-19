@@ -9,9 +9,9 @@
   <?define versionedStartMenuFolder="Microsoft Azure" ?>
   <?define staleStartMenuFolder="Windows Azure" ?>
   <?if $(var.Platform) = x64 ?>
-    <?define PlatformProgramFilesFolder = ProgramFiles64Folder ?>
+    <?define PlatformProgramFilesFolder = "$(var.ProgramFiles64Folder)" ?>
   <?else ?>
-    <?define PlatformProgramFilesFolder = ProgramFilesFolder ?>
+    <?define PlatformProgramFilesFolder = "$(var.ProgramFilesFolder)" ?>
   <?endif ?>
   
   <Product Id="*"
