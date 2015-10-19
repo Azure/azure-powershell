@@ -25,13 +25,16 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet(
         VerbsCommon.Set,
         ProfileNouns.OSDisk,
-        DefaultParameterSetName = WindowsParamSet),
+        DefaultParameterSetName = DefaultParamSet),
     OutputType(
         typeof(PSVirtualMachine))]
     public class SetAzureVMOSDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
+        protected const string DefaultParamSet = "DefaultParamSet";
         protected const string WindowsParamSet = "WindowsParamSet";
         protected const string LinuxParamSet = "LinuxParamSet";
+        protected const string WindowsDiskEncryptionParameterSet = "WindowsDiskEncryptionParameterSet";
+        protected const string LinuxDiskEncryptionParameterSet = "LinuxDiskEncryptionParameterSet";
 
         [Alias("VMProfile")]
         [Parameter(
@@ -90,6 +93,11 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskWindowsOSType)]
+        [Parameter(
+            ParameterSetName = WindowsDiskEncryptionParameterSet,
+            Position = 6,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMOSDiskWindowsOSType)]
         public SwitchParameter Windows { get; set; }
 
         [Parameter(
@@ -97,7 +105,68 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskLinuxOSType)]
+        [Parameter(
+            ParameterSetName = LinuxDiskEncryptionParameterSet,
+            Position = 6,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMOSDiskLinuxOSType)]
         public SwitchParameter Linux { get; set; }
+
+        [Parameter(
+            ParameterSetName = WindowsDiskEncryptionParameterSet,
+            Mandatory = true,
+            Position = 7,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMOSDiskLinuxOSType)]
+        [Parameter(
+            ParameterSetName = LinuxDiskEncryptionParameterSet,
+            Mandatory = true,
+            Position = 7,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMOSDiskLinuxOSType)]
+        public Uri DiskEncryptionKeyUrl { get; set; }
+
+        [Parameter(
+            ParameterSetName = WindowsDiskEncryptionParameterSet,
+            Mandatory = true,
+            Position = 8,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMOSDiskLinuxOSType)]
+        [Parameter(
+            ParameterSetName = LinuxDiskEncryptionParameterSet,
+            Mandatory = true,
+            Position = 8,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMOSDiskLinuxOSType)]
+        public string DiskEncryptionKeyVaultId { get; set; }
+
+        [Parameter(
+            ParameterSetName = WindowsDiskEncryptionParameterSet,
+            Mandatory = false,
+            Position = 9,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMOSDiskLinuxOSType)]
+        [Parameter(
+            ParameterSetName = LinuxDiskEncryptionParameterSet,
+            Mandatory = false,
+            Position = 9,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMOSDiskLinuxOSType)]
+        public Uri KeyEncryptionKeyUrl { get; set; }
+
+        [Parameter(
+            ParameterSetName = WindowsDiskEncryptionParameterSet,
+            Mandatory = false,
+            Position = 10,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMOSDiskLinuxOSType)]
+        [Parameter(
+            ParameterSetName = LinuxDiskEncryptionParameterSet,
+            Mandatory = false,
+            Position = 10,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = HelpMessages.VMOSDiskLinuxOSType)]
+        public string KeyEncryptionKeyVaultId { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -119,7 +188,31 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     Uri = this.SourceImageUri
                 },
-                CreateOption = this.CreateOption
+                CreateOption = this.CreateOption,
+                EncryptionSettings =
+                (this.ParameterSetName.Equals(WindowsDiskEncryptionParameterSet) || this.ParameterSetName.Equals(WindowsDiskEncryptionParameterSet))
+                ? new DiskEncryptionSettings
+                {
+                    DiskEncryptionKey = new KeyVaultSecretReference
+                    {
+                        SourceVault = new SourceVaultReference
+                        {
+                            ReferenceUri = this.DiskEncryptionKeyVaultId
+                        },
+                        SecretUrl = this.DiskEncryptionKeyUrl
+                    },
+                    KeyEncryptionKey = (this.KeyEncryptionKeyVaultId == null || this.KeyEncryptionKeyUrl == null)
+                    ? null
+                    : new KeyVaultKeyReference
+                    {
+                        KeyUrl = this.KeyEncryptionKeyUrl,
+                        SourceVault = new SourceVaultReference
+                        {
+                            ReferenceUri = this.KeyEncryptionKeyVaultId
+                        },
+                    }
+                }
+                : null
             };
 
             WriteObject(this.VM);
