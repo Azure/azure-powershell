@@ -8,12 +8,7 @@
   <?define version="0.9.9" ?>
   <?define versionedStartMenuFolder="Microsoft Azure" ?>
   <?define staleStartMenuFolder="Windows Azure" ?>
-  <?if $(var.Platform) = x64 ?>
-    <?define PlatformProgramFilesFolder = "$(var.ProgramFiles64Folder)" ?>
-  <?else ?>
-    <?define PlatformProgramFilesFolder = "$(var.ProgramFilesFolder)" ?>
-  <?endif ?>
-  
+   
   <Product Id="*"
            Name="$(var.productName)"
            Language="1033"
@@ -32,7 +27,7 @@
     <Property Id="ARPPRODUCTICON" Value="icon.ico" />
     <Property Id="ALLUSERS" Value="1" />
     <!-- per machine install-->
-    <Property Id="PSGETMODULEPATH" Value="$(var.PlatformProgramFilesFolder)WindowsPowerShell\Modules\" />
+    <Property Id="PSGETMODULEPATH" Value="[ProgramFiles6432Folder]WindowsPowerShell\Modules" />
     <Property Id="PSCOMPATIBLEVERSION">
       <RegistrySearch Id="PSCOMPATIBLEVERSION" Root="HKLM" Key="SOFTWARE\Microsoft\PowerShell\3\PowerShellEngine" Name="PSCompatibleVersion" Type="raw" />
     </Property>
