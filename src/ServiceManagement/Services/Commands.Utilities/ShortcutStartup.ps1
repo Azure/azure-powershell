@@ -32,5 +32,3 @@ if ($(Get-ExecutionPolicy) -eq "Restricted")
 {
     Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned -Force
 }
-
-$VerbosePreference="Continue"
