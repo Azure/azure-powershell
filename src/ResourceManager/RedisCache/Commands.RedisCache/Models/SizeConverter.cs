@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
             { 
                 return skuStringToActualSize[sizeConstant];
             }
-            return GB1;
+            return null;
         }
     }
 }
