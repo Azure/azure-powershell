@@ -129,7 +129,6 @@
       <Custom Action="SetCustomActionDataValue" After="CreateShortcuts">NOT Installed</Custom>
       <Custom Action="UpdatePSShortcut" After="SetCustomActionDataValue">NOT Installed</Custom>
       <Custom Action="SetExecutionPolicy" After="UpdatePSShortcut">NOT Installed</Custom>
-      <ScheduleReboot After="InstallFinalize" />
     </InstallExecuteSequence>
 
     <WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectDir)\media\License.rtf" />
