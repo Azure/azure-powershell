@@ -12,14 +12,13 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-Get-ExecutionPolicy -List | Where-Object {$_.ExecutionPolicy -eq "Restricted"} | 
-% {
-  try 
-  {
-    Set-ExecutionPolicy -Scope $_.Scope -ExecutionPolicy RemoteSigned -Force -ErrorAction "SilentlyContinue"
-  }
-  catch
-  {
-    # do not fail if execution policy cannot be set for this scope
-  }
+
+try 
+{
+  Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force -ErrorAction "SilentlyContinue"
 }
+catch
+{
+  # do not fail if execution policy cannot be set for this scope
+}
+
