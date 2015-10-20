@@ -21,7 +21,8 @@ using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.WindowsAzure.Management.Storage;
+using Microsoft.Azure.Commands.Management.Storage;
+using Microsoft.Azure.Management.Storage;
 using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Compute
@@ -37,7 +38,7 @@ namespace Microsoft.Azure.Commands.Compute
         private const string VirtualMachineExtension = "Microsoft.Compute/virtualMachines/extensions";
         private const string IaaSDiagnosticsExtension = "IaaSDiagnostics";
         private const string ExtensionPublisher = "Microsoft.Azure.Diagnostics";
-        private StorageManagementClient storageClient;
+        private IStorageManagementClient storageClient;
 
         [Parameter(
             Mandatory = true,
@@ -154,14 +155,14 @@ namespace Microsoft.Azure.Commands.Compute
             }
         }
 
-        public StorageManagementClient StorageClient
+        public IStorageManagementClient StorageClient
         {
             get
             {
                 if (this.storageClient == null)
                 {
                     this.storageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(
-                        DefaultProfile.Context, AzureEnvironment.Endpoint.ServiceManagement);
+                        DefaultProfile.Context, AzureEnvironment.Endpoint.ResourceManager);
                 }
 
                 return this.storageClient;
@@ -201,15 +202,8 @@ namespace Microsoft.Azure.Commands.Compute
 
             if (!string.IsNullOrEmpty(StorageAccountName))
             {
-                var storageAccount = this.StorageClient.StorageAccounts.Get(StorageAccountName);
-                if (storageAccount != null)
-                {
-                    var keys = this.StorageClient.StorageAccounts.GetKeys(StorageAccountName);
-                    if (keys != null)
-                    {
-                        storageKey = !string.IsNullOrEmpty(keys.PrimaryKey) ? keys.PrimaryKey : keys.SecondaryKey;
-                    }
-                }
+                var storageCredentials = StorageUtilities.GenerateStorageCredentials(this.StorageClient, this.ResourceGroupName, this.StorageAccountName);
+                storageKey = storageCredentials.ExportBase64EncodedKey();
             }
 
             return storageKey;

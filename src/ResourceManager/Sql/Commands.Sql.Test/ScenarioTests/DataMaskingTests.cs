@@ -21,50 +21,50 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
     public class DataMaskingTests : SqlTestsBase
     {
 
-        [Fact(Skip = "test takes more than 5 sec")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestDatabaseDataMaskingPolicyEnablementToggling()
         {
             RunPowerShellTest("Test-DatabaseDataMaskingPolicyEnablementToggling");
         }
 
-        [Fact(Skip = "test takes more than 5 sec")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestDatabaseDataMaskingPrivilegedLoginsChanges()
         {
             RunPowerShellTest("Test-DatabaseDataMaskingPrivilegedLoginsChanges");
         }
 
-        [Fact(Skip = "test takes more than 5 sec")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestDatabaseDataMaskingBasicRuleLifecycle()
         {
             RunPowerShellTest("Test-DatabaseDataMaskingBasicRuleLifecycle");
         }
 
-        [Fact(Skip = "test takes more than 5 sec")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestDatabaseDataMaskingNumberRuleLifecycle()
         {
             RunPowerShellTest("Test-DatabaseDataMaskingNumberRuleLifecycle");
         }
 
-        [Fact(Skip = "test takes more than 5 sec")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestDatabaseDataMaskingTextRuleLifecycle()
         {
             RunPowerShellTest("Test-DatabaseDataMaskingTextRuleLifecycle");
         }
 
-        [Fact(Skip = "test takes more than 5 sec")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestDatabaseDataMaskingRuleCreationFailures()
         {
             RunPowerShellTest("Test-DatabaseDataMaskingRuleCreationFailures");
         }
 
-        [Fact(Skip = "test takes more than 5 sec")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.BVT)]
         public void TestDatabaseDataMaskingRuleCreationWithoutPolicy()
         {
             RunPowerShellTest("Test-DatabaseDataMaskingRuleCreationWithoutPolicy");
