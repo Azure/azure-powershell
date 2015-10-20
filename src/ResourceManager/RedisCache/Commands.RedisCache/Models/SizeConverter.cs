@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
 {
     using System.Collections.Generic;
 
-    public static class SizeConverter
+    internal static class SizeConverter
     {
         public const string MB250 = "250MB";
         public const string GB1 = "1GB";
@@ -39,18 +39,18 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
         public const string P3String = "P3";
         public const string P4String = "P4";
 
-        private static Dictionary<string, string> skuStringToAztualSize = new Dictionary<string, string>{
-            {C0String,MB250},
-            {C1String,GB1},
-            {C2String,GB2_5},
-            {C3String,GB6},
-            {C4String,GB13},
-            {C5String,GB26},
-            {C6String,GB53},
-            {P1String,GB6},
-            {P2String,GB13},
-            {P3String,GB26},
-            {P4String,GB53}
+        private static Dictionary<string, string> skuStringToActualSize = new Dictionary<string, string>{
+            { C0String, MB250 },
+            { C1String, GB1 },
+            { C2String, GB2_5 },
+            { C3String, GB6 },
+            { C4String, GB13 },
+            { C5String, GB26 },
+            { C6String, GB53 },
+            { P1String, GB6 },
+            { P2String, GB13 },
+            { P3String, GB26 },
+            { P4String, GB53 }
         };
         
         public static string GetSizeInRedisSpecificFormat(string actualSizeFromUser, bool isPremiumCache)
@@ -109,9 +109,9 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
         public static string GetSizeInUserSpecificFormat(string skuFamily, int skuCapacity)
         {
             string sizeConstant = skuFamily + skuCapacity.ToString();
-            if (skuStringToAztualSize.ContainsKey(sizeConstant))
+            if (skuStringToActualSize.ContainsKey(sizeConstant))
             { 
-                return skuStringToAztualSize[sizeConstant];
+                return skuStringToActualSize[sizeConstant];
             }
             return GB1;
         }

@@ -305,14 +305,14 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
           <maml:name>Size</maml:name>
           <maml:description>
-            <maml:para>Size of the redis cache. The default value is 1GB or C1. Possible values are C0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2.5GB, 6GB, 13GB, 26GB, 53GB.</maml:para>
+            <maml:para>Size of the redis cache. The default value is 1GB or C1. Possible values are P1,P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2.5GB, 6GB, 13GB, 26GB, 53GB.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
           <maml:name>Sku</maml:name>
           <maml:description>
-            <maml:para>Sku of redis cache. The default value is Standard. Possible values are Basic and Standard.</maml:para>
+            <maml:para>Sku of redis cache. The default value is Standard. Possible values are Basic, Standard and Premium.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -336,6 +336,34 @@
             <maml:para>EnableNonSslPort is used by Azure Redis Cache. If no value is provided, the default value is false and the non-SSL port will be disabled. Possible values are true and false.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+          <maml:name>ShardCount</maml:name>
+          <maml:description>
+            <maml:para>The number of shards to create on a Premium Cluster Cache.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Integer</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+          <maml:name>VirtualNetwork</maml:name>
+          <maml:description>
+            <maml:para>The exact ARM resource ID of the virtual network to deploy the redis cache in. Example format: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+          <maml:name>Subnet</maml:name>
+          <maml:description>
+            <maml:para>Required when deploying a redis cache inside an existing Azure Virtual Network.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+          <maml:name>StaticIP</maml:name>
+          <maml:description>
+            <maml:para>Required when deploying a redis cache inside an existing Azure Virtual Network.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -394,7 +422,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
         <maml:name>Size</maml:name>
         <maml:description>
-          <maml:para>Size of the redis cache. The default value is 1GB or C1. Possible values are C0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2.5GB, 6GB, 13GB, 26GB, 53GB.</maml:para>
+          <maml:para>Size of the redis cache. The default value is 1GB or C1. Possible values are P1,P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2.5GB, 6GB, 13GB, 26GB, 53GB.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -406,7 +434,7 @@
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
         <maml:name>Sku</maml:name>
         <maml:description>
-          <maml:para>Sku of the redis cache. The default value is Standard. Possible values are Basic and Standard.</maml:para>
+          <maml:para>Sku of redis cache. The default value is Standard. Possible values are Basic, Standard and Premium.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -447,6 +475,54 @@
         <command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
         <dev:type>
           <maml:name>Boolean</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+        <maml:name>ShardCount</maml:name>
+        <maml:description>
+          <maml:para>The number of shards to create on a Premium Cluster Cache.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Integer</command:parameterValue>
+        <dev:type>
+          <maml:name>Integer</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+        <maml:name>VirtualNetwork</maml:name>
+        <maml:description>
+          <maml:para>The exact ARM resource ID of the virtual network to deploy the redis cache in. Example format: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+        <maml:name>Subnet</maml:name>
+        <maml:description>
+          <maml:para>Required when deploying a redis cache inside an existing Azure Virtual Network.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+        <maml:name>StaticIP</maml:name>
+        <maml:description>
+          <maml:para>Required when deploying a redis cache inside an existing Azure Virtual Network.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
@@ -1096,14 +1172,14 @@
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
           <maml:name>Size</maml:name>
           <maml:description>
-            <maml:para>Size of the redis cache. Possible values are C0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2.5GB, 6GB, 13GB, 26GB, 53GB.</maml:para>
+            <maml:para>Size of the redis cache. The default value is 1GB or C1. Possible values are P1,P2, P3, P4, C0, C1, C2, C3, C4, C5, C6, 250MB, 1GB, 2.5GB, 6GB, 13GB, 26GB, 53GB.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
           <maml:name>Sku</maml:name>
           <maml:description>
-            <maml:para>Sku of redis cache. Possible values are Basic and Standard.</maml:para>
+            <maml:para>Sku of redis cache. The default value is Standard. Possible values are Basic, Standard and Premium.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -1127,6 +1203,13 @@
             <maml:para>EnableNonSslPort is used by Azure Redis Cache. The default value is null and no change will be made to the currently configured value. Possible values are true and false.</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+          <maml:name>ShardCount</maml:name>
+          <maml:description>
+            <maml:para>The number of shards to create on a Premium Cluster Cache.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Integer</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -1213,6 +1296,18 @@
         <command:parameterValue required="true" variableLength="false">Boolean</command:parameterValue>
         <dev:type>
           <maml:name>Boolean</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+        <maml:name>ShardCount</maml:name>
+        <maml:description>
+          <maml:para>The number of shards to create on a Premium Cluster Cache.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Integer</command:parameterValue>
+        <dev:type>
+          <maml:name>Integer</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue></dev:defaultValue>

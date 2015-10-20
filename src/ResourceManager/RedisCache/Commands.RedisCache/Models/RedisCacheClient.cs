@@ -71,11 +71,8 @@ namespace Microsoft.Azure.Commands.RedisCache
                 }
             }
 
-            if (shardCount.HasValue)
-            {
-                parameters.Properties.ShardCount = shardCount.Value;
-            }
-
+            parameters.Properties.ShardCount = shardCount;
+            
             if (!string.IsNullOrWhiteSpace(virtualNetwork))
             {
                 parameters.Properties.VirtualNetwork = virtualNetwork;
