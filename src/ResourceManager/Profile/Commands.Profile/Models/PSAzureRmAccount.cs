@@ -36,11 +36,23 @@ namespace Microsoft.Azure.Commands.Profile.Models
                 return null;
             }
 
-            return new PSAzureRmAccount
+            var result = new PSAzureRmAccount
             {
                 Id = account.Id,
                 AccountType = account.Type.ToString()
             };
+
+            if (account.IsPropertySet(AzureAccount.Property.AccessToken))
+            {
+                result.AccessToken = account.GetProperty(AzureAccount.Property.AccessToken);
+            }
+
+            if (account.IsPropertySet(AzureAccount.Property.Tenants))
+            {
+                result.Tenants = account.GetProperty(AzureAccount.Property.Tenants);
+            }
+
+           return result;
         }
 
         /// <summary>
@@ -65,6 +77,16 @@ namespace Microsoft.Azure.Commands.Profile.Models
                 result.Type = accountType;
             }
 
+            if (!string.IsNullOrWhiteSpace(account.AccessToken))
+            {
+                result.SetProperty(AzureAccount.Property.AccessToken, account.AccessToken);
+            }
+
+            if (!string.IsNullOrWhiteSpace(account.Tenants))
+            {
+                result.SetProperty(AzureAccount.Property.Tenants, account.Tenants);
+            }
+
             return result;
         }
 
@@ -76,6 +98,16 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// The type of the account
         /// </summary>
         public string AccountType { get; set; }
+
+        /// <summary>
+        /// The tenant ids for the account
+        /// </summary>
+        public string Tenants { get; set; }
+
+        /// <summary>
+        /// The access token for the account (if any)
+        /// </summary>
+        public string AccessToken { get; set; }
 
         public override string ToString()
         {

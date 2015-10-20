@@ -313,6 +313,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Multiple role definitions found with name &apos;{0}&apos;. Specify role definition using it&apos;s Id instead..
+        /// </summary>
+        internal static string MultipleRoleDefinitionsFoundWithSameName {
+            get {
+                return ResourceManager.GetString("MultipleRoleDefinitionsFoundWithSameName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Replacing resource group ....
         /// </summary>
         internal static string NewResourceGroupMessage {
@@ -570,6 +579,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string ResourceTypeFormat {
             get {
                 return ResourceManager.GetString("ResourceTypeFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Role definition id should be a valid guid..
+        /// </summary>
+        internal static string RoleDefinitionIdShouldBeAGuid {
+            get {
+                return ResourceManager.GetString("RoleDefinitionIdShouldBeAGuid", resourceCulture);
             }
         }
         

@@ -76,23 +76,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public SwitchParameter UsePatchSemantics { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource property object format.
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The output format of the resource properties.")]
-        [ValidateNotNull]
-        public ResourceObjectFormat? OutputObjectFormat { get; set; }
-
-        /// <summary>
         /// Executes the cmdlet.
         /// </summary>
         protected override void OnProcessRecord()
         {
             base.OnProcessRecord();
-            this.DetermineOutputObjectFormat();
-            if (this.OutputObjectFormat == ResourceObjectFormat.Legacy)
-            {
-                this.WriteWarning("This cmdlet is using the legacy properties object format. This format is being deprecated. Please use '-OutputObjectFormat New' and update your scripts.");
-            }
 
             if(!string.IsNullOrEmpty(this.ODataQuery))
             {
@@ -138,24 +126,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
                         .WaitOnOperation(operationResult: operationResult);
 
-                    this.TryConvertToResourceAndWriteObject(result, this.OutputObjectFormat.Value);
+                    this.TryConvertToResourceAndWriteObject(result);
                 });
-        }
-
-        /// <summary>
-        /// Determines the output object format.
-        /// </summary>
-        private void DetermineOutputObjectFormat()
-        {
-            if (this.Properties != null && this.OutputObjectFormat == null && this.Properties.TypeNames.Any(typeName => typeName.EqualsInsensitively(Constants.MicrosoftAzureResource)))
-            {
-                this.OutputObjectFormat = ResourceObjectFormat.New;
-            }
-
-            if (this.OutputObjectFormat == null)
-            {
-                this.OutputObjectFormat = ResourceObjectFormat.Legacy;
-            }
         }
 
         /// <summary>

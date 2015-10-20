@@ -37,6 +37,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
         [Alias("N", "Queue")]
         [Parameter(Position = 0, Mandatory = true,
             HelpMessage = "Table Name",
+            ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }

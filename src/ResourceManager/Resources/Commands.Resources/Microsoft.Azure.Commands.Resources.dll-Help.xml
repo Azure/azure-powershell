@@ -1362,99 +1362,64 @@ This command throws ProviderNotFound exception if an invalid resource provider i
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Get-AzureRmResourceGroup</maml:name>
-        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)">
           <maml:name>Name</maml:name>
           <maml:description>
             <maml:para>Specifies the name of the resource group. Wildcards are not permitted. This parameter is optional. The default is all resource groups in the subscription</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>
+          </dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Profile</maml:name>
+        <command:parameter variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)">
+          <maml:name>Location</maml:name>
           <maml:description>
-            <maml:para />
+            <maml:para>Specifies the location of the resource group.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+          <command:parameterValue>String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>
+          </dev:defaultValue>
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
         <maml:name>Get-AzureRmResourceGroup</maml:name>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-          <maml:name>Tag</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)">
+          <maml:name>Id</maml:name>
           <maml:description>
-            <maml:para>Gets resource groups that have the specified Azure tags. Enter a hash table with a Name key or Name and Value keys. Wildcard characters are not supported.A "tag" is a name-value pair that you can apply to resources and resource groups. Use tags to categorize your resources, such as by department or cost center, or to track notes or comments about the resources. To add a tag to a resource group, use the Tag parameter of the New-AzureRmResourceGroup or Set-AzureRmResourceGroup cmdlets. To create a predefined tag, use the New-AzureRmTag cmdlet.For help with hash tables in Windows PowerShell, type: Get-Help about_Hashtables.</maml:para>
+            <maml:para>Specifies the id of the resource group. Wildcards are not permitted. This parameter is optional. The default is all resource groups in the subscription</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>
+          </dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-          <maml:name>Detailed</maml:name>
+        <command:parameter variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)">
+          <maml:name>Location</maml:name>
           <maml:description>
-            <maml:para>Return the details of each resource group if specified.</maml:para>
+            <maml:para>Specifies the location of the resource group.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Profile</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+          <command:parameterValue>String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>
+          </dev:defaultValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-        <maml:name>Name</maml:name>
-        <maml:description>
-          <maml:para>Specifies the name of the resource group. Wildcards are not permitted. This parameter is optional. The default is all resource groups in the subscription</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>Profile</maml:name>
-        <maml:description>
-          <maml:para />
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
-        <dev:type>
-          <maml:name>AzureProfile</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
-        <maml:name>Tag</maml:name>
-        <maml:description>
-          <maml:para>Gets resource groups that have the specified Azure tags. Enter a hash table with a Name key or Name and Value keys. Wildcard characters are not supported.A "tag" is a name-value pair that you can apply to resources and resource groups. Use tags to categorize your resources, such as by department or cost center, or to track notes or comments about the resources. To add a tag to a resource group, use the Tag parameter of the New-AzureRmResourceGroup or Set-AzureRmResourceGroup cmdlets. To create a predefined tag, use the New-AzureRmTag cmdlet.For help with hash tables in Windows PowerShell, type: Get-Help about_Hashtables.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
-        <dev:type>
-          <maml:name>Hashtable</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-        <maml:name>Detailed</maml:name>
-        <maml:description>
-          <maml:para>Return the details of each resource group if specified.</maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
     </command:parameters>
     <command:inputTypes>
       <command:inputType>
@@ -4049,13 +4014,6 @@ NewApplication                                                61b5d8ea-fdc6-40a2
 				</maml:description>
 				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>DeploymentName</maml:name>
-				<maml:description>
-					<maml:para>Specifies the name of the deployment project for the resource group. Because the deployment properties are defined in a template, this parameter is valid only when you specify a template. This parameter is optional. The default value is the template name without the .json file name extension.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
 			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
 				<maml:name>Tag</maml:name>
 				<maml:description>
@@ -4070,615 +4028,7 @@ NewApplication                                                61b5d8ea-fdc6-40a2
 				</maml:description>
 				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
 			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateVersion</maml:name>
-				<maml:description>
-					<maml:para>Specifies a particular version of the gallery or custom template. Enter the version number, such as &quot;2014-04-01-preview&quot;. This parameter is optional. If you specify this parameter, New-AzureRmResourceGroup verifies that the specified template has the matching version and fails if it does not.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Profile</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>New-AzureRmResourceGroup</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Name</maml:name>
-				<maml:description>
-					<maml:para>Specifies a name for the resource group. This parameter is required. The resource name must be unique in the subscription.You can use -Name or its alias, -ResourceGroupName.If a resource group with that name already exists, the command prompts you for confirmation before replacing the existing resource group. To suppress the confirmation prompt, use the Force parameter.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Location</maml:name>
-				<maml:description>
-					<maml:para>Specifies the location of the resource group. This parameter is required. Enter an Azure data center location, such as &quot;West US&quot; or &quot;Southeast Asia&quot;.You can place a resource group in any location. The resource group does not have to be in the same location your Azure subscription or the same location as its resources. Resource groups can contain resources from different locations. To determine which location support each resource type, use the Get-AzureRmResourceProvider with the ProviderNamespace parameter cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>DeploymentName</maml:name>
-				<maml:description>
-					<maml:para>Specifies the name of the deployment project for the resource group. Because the deployment properties are defined in a template, this parameter is valid only when you specify a template. This parameter is optional. The default value is the template name without the .json file name extension.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Tag</maml:name>
-				<maml:description>
-					<maml:para>Applies the specified tags to the new resource group. Enter new tags or predefined tags that you created by using the New-AzureRmTag cmdlet.A &quot;tag&quot; is a name-value pair that you can apply to resources and resource groups. Use tags to categorize your resources, such as by department or cost center, or to track notes or comments about the resources. After you assign tags to resources, you can use the Tag parameters of Get-AzureRmResource and Get-AzureRmResourceGroup to search for resources and groups by tag name or name and value.Every tag must have a Name key. It can also have an optional Value key with one value. To specify a new tag, use a hash table, such as @{Name=&quot;FY2015&quot;} or @{Name=&quot;Department&quot;;Value=&quot;IT&quot;}. To specify multiple tags, use commas to separate the hash tables, such as  -Tag @{Name=&quot;FY2015&quot;}, @{Name=&quot;Department&quot;;Value=&quot;IT&quot;}. To get your predefined tags, use the Get-AzureRmTag cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Suppresses the confirmation prompt and overwrites an existing resource group with the same name. By default, New-AzureRmResourceGroup prompts for confirmation before replacing an existing resource group.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateParameterObject</maml:name>
-				<maml:description>
-					<maml:para>Specifies a hash table of template parameter names and values. For help with hash tables in Windows PowerShell, type: Get-Help about_Hash_Tables.This parameter is optional. If a template has parameters, you must specify parameter values, but you can use the TemplateParameterObject or the TemplateParameterFile parameters. Or, you can use the template parameters are added to the command dynamically when you specify a template. To use the dynamic parameters, just type them in the command, or type a minus sign to indicate a parameter name (-) and then press the TAB key repeatedly to cycle through the available parameters. If you miss a required parameter, the cmdlet prompts you for the value.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateUri</maml:name>
-				<maml:description>
-					<maml:para>Specifies the URI of a JSON template file. This file can be a custom template or a gallery template that is saved as a JSON file, such as by using the Save-AzureRmResourceGroupGalleryTemplate cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateVersion</maml:name>
-				<maml:description>
-					<maml:para>Specifies a particular version of the gallery or custom template. Enter the version number, such as &quot;2014-04-01-preview&quot;. This parameter is optional. If you specify this parameter, New-AzureRmResourceGroup verifies that the specified template has the matching version and fails if it does not.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Profile</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>New-AzureRmResourceGroup</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Name</maml:name>
-				<maml:description>
-					<maml:para>Specifies a name for the resource group. This parameter is required. The resource name must be unique in the subscription.You can use -Name or its alias, -ResourceGroupName.If a resource group with that name already exists, the command prompts you for confirmation before replacing the existing resource group. To suppress the confirmation prompt, use the Force parameter.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Location</maml:name>
-				<maml:description>
-					<maml:para>Specifies the location of the resource group. This parameter is required. Enter an Azure data center location, such as &quot;West US&quot; or &quot;Southeast Asia&quot;.You can place a resource group in any location. The resource group does not have to be in the same location your Azure subscription or the same location as its resources. Resource groups can contain resources from different locations. To determine which location support each resource type, use the Get-AzureRmResourceProvider with the ProviderNamespace parameter cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>DeploymentName</maml:name>
-				<maml:description>
-					<maml:para>Specifies the name of the deployment project for the resource group. Because the deployment properties are defined in a template, this parameter is valid only when you specify a template. This parameter is optional. The default value is the template name without the .json file name extension.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Tag</maml:name>
-				<maml:description>
-					<maml:para>Applies the specified tags to the new resource group. Enter new tags or predefined tags that you created by using the New-AzureRmTag cmdlet.A &quot;tag&quot; is a name-value pair that you can apply to resources and resource groups. Use tags to categorize your resources, such as by department or cost center, or to track notes or comments about the resources. After you assign tags to resources, you can use the Tag parameters of Get-AzureRmResource and Get-AzureRmResourceGroup to search for resources and groups by tag name or name and value.Every tag must have a Name key. It can also have an optional Value key with one value. To specify a new tag, use a hash table, such as @{Name=&quot;FY2015&quot;} or @{Name=&quot;Department&quot;;Value=&quot;IT&quot;}. To specify multiple tags, use commas to separate the hash tables, such as  -Tag @{Name=&quot;FY2015&quot;}, @{Name=&quot;Department&quot;;Value=&quot;IT&quot;}. To get your predefined tags, use the Get-AzureRmTag cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Suppresses the confirmation prompt and overwrites an existing resource group with the same name. By default, New-AzureRmResourceGroup prompts for confirmation before replacing an existing resource group.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateParameterObject</maml:name>
-				<maml:description>
-					<maml:para>Specifies a hash table of template parameter names and values. For help with hash tables in Windows PowerShell, type: Get-Help about_Hash_Tables.This parameter is optional. If a template has parameters, you must specify parameter values, but you can use the TemplateParameterObject or the TemplateParameterFile parameters. Or, you can use the template parameters are added to the command dynamically when you specify a template. To use the dynamic parameters, just type them in the command, or type a minus sign to indicate a parameter name (-) and then press the TAB key repeatedly to cycle through the available parameters. If you miss a required parameter, the cmdlet prompts you for the value.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateFile</maml:name>
-				<maml:description>
-					<maml:para>Specifies the path and file name of a JSON template file on disk. This can be a custom template or a gallery template that is saved to disk as a JSON file, such as by using the Save-AzureRmResourceGroupGalleryTemplate cmdlet.To use this parameter, the subscription must include a storage account where the cmdlet can save the template. By default, this cmdlet uses the current storage account in the subscription, but you can use the StorageAccountName parameter to specify an alternate storage account. If you do not specify a storage account and the subscription does not have a storage account that is designated as &quot;current,&quot; the command fails.To create a storage account, use the Switch-AzureMode cmdlet to switch to the Azure module, and then use the New-AzureRmStorageAccount cmdlet. To make the a storage account the &quot;current storage account&quot; for the subscription, use the CurrentStorageAccountName parameter of the Set-AzureRmSubscription cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>StorageAccountName</maml:name>
-				<maml:description>
-					<maml:para>Specifies the name of a storage account in the subscription. New-AzureRmResourceGroup saves the contents of template files in  the storage account. This parameter is optional, but a storage account is required when you use the TemplateFile parameter.The default value is the current storage account in the subscription. If you do not specify a storage account and the subscription does not have a current storage account, the command fails.To create a storage account, use a Switch-AzureMode -Name AzureServiceManagement command to switch to the Azure module, and then use the New-AzureRmStorageAccount cmdlet. To make the a storage account the &quot;current storage account&quot; for the subscription, use the CurrentStorageAccountName parameter of the Set-AzureRmSubscription cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateVersion</maml:name>
-				<maml:description>
-					<maml:para>Specifies a particular version of the gallery or custom template. Enter the version number, such as &quot;2014-04-01-preview&quot;. This parameter is optional. If you specify this parameter, New-AzureRmResourceGroup verifies that the specified template has the matching version and fails if it does not.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Profile</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>New-AzureRmResourceGroup</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Name</maml:name>
-				<maml:description>
-					<maml:para>Specifies a name for the resource group. This parameter is required. The resource name must be unique in the subscription.You can use -Name or its alias, -ResourceGroupName.If a resource group with that name already exists, the command prompts you for confirmation before replacing the existing resource group. To suppress the confirmation prompt, use the Force parameter.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Location</maml:name>
-				<maml:description>
-					<maml:para>Specifies the location of the resource group. This parameter is required. Enter an Azure data center location, such as &quot;West US&quot; or &quot;Southeast Asia&quot;.You can place a resource group in any location. The resource group does not have to be in the same location your Azure subscription or the same location as its resources. Resource groups can contain resources from different locations. To determine which location support each resource type, use the Get-AzureRmResourceProvider with the ProviderNamespace parameter cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>DeploymentName</maml:name>
-				<maml:description>
-					<maml:para>Specifies the name of the deployment project for the resource group. Because the deployment properties are defined in a template, this parameter is valid only when you specify a template. This parameter is optional. The default value is the template name without the .json file name extension.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Tag</maml:name>
-				<maml:description>
-					<maml:para>Applies the specified tags to the new resource group. Enter new tags or predefined tags that you created by using the New-AzureRmTag cmdlet.A &quot;tag&quot; is a name-value pair that you can apply to resources and resource groups. Use tags to categorize your resources, such as by department or cost center, or to track notes or comments about the resources. After you assign tags to resources, you can use the Tag parameters of Get-AzureRmResource and Get-AzureRmResourceGroup to search for resources and groups by tag name or name and value.Every tag must have a Name key. It can also have an optional Value key with one value. To specify a new tag, use a hash table, such as @{Name=&quot;FY2015&quot;} or @{Name=&quot;Department&quot;;Value=&quot;IT&quot;}. To specify multiple tags, use commas to separate the hash tables, such as  -Tag @{Name=&quot;FY2015&quot;}, @{Name=&quot;Department&quot;;Value=&quot;IT&quot;}. To get your predefined tags, use the Get-AzureRmTag cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Suppresses the confirmation prompt and overwrites an existing resource group with the same name. By default, New-AzureRmResourceGroup prompts for confirmation before replacing an existing resource group.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateParameterObject</maml:name>
-				<maml:description>
-					<maml:para>Specifies a hash table of template parameter names and values. For help with hash tables in Windows PowerShell, type: Get-Help about_Hash_Tables.This parameter is optional. If a template has parameters, you must specify parameter values, but you can use the TemplateParameterObject or the TemplateParameterFile parameters. Or, you can use the template parameters are added to the command dynamically when you specify a template. To use the dynamic parameters, just type them in the command, or type a minus sign to indicate a parameter name (-) and then press the TAB key repeatedly to cycle through the available parameters. If you miss a required parameter, the cmdlet prompts you for the value.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>GalleryTemplateIdentity</maml:name>
-				<maml:description>
-					<maml:para>Specifies the identity of a template in the Azure gallery. To find gallery templates, use the Get-AzureRmResourceGroupGalleryTemplate cmdlet. The value of the Identity property of each gallery item is displayed by default.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateVersion</maml:name>
-				<maml:description>
-					<maml:para>Specifies a particular version of the gallery or custom template. Enter the version number, such as &quot;2014-04-01-preview&quot;. This parameter is optional. If you specify this parameter, New-AzureRmResourceGroup verifies that the specified template has the matching version and fails if it does not.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Profile</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>New-AzureRmResourceGroup</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Name</maml:name>
-				<maml:description>
-					<maml:para>Specifies a name for the resource group. This parameter is required. The resource name must be unique in the subscription.You can use -Name or its alias, -ResourceGroupName.If a resource group with that name already exists, the command prompts you for confirmation before replacing the existing resource group. To suppress the confirmation prompt, use the Force parameter.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Location</maml:name>
-				<maml:description>
-					<maml:para>Specifies the location of the resource group. This parameter is required. Enter an Azure data center location, such as &quot;West US&quot; or &quot;Southeast Asia&quot;.You can place a resource group in any location. The resource group does not have to be in the same location your Azure subscription or the same location as its resources. Resource groups can contain resources from different locations. To determine which location support each resource type, use the Get-AzureRmResourceProvider with the ProviderNamespace parameter cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>DeploymentName</maml:name>
-				<maml:description>
-					<maml:para>Specifies the name of the deployment project for the resource group. Because the deployment properties are defined in a template, this parameter is valid only when you specify a template. This parameter is optional. The default value is the template name without the .json file name extension.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Tag</maml:name>
-				<maml:description>
-					<maml:para>Applies the specified tags to the new resource group. Enter new tags or predefined tags that you created by using the New-AzureRmTag cmdlet.A &quot;tag&quot; is a name-value pair that you can apply to resources and resource groups. Use tags to categorize your resources, such as by department or cost center, or to track notes or comments about the resources. After you assign tags to resources, you can use the Tag parameters of Get-AzureRmResource and Get-AzureRmResourceGroup to search for resources and groups by tag name or name and value.Every tag must have a Name key. It can also have an optional Value key with one value. To specify a new tag, use a hash table, such as @{Name=&quot;FY2015&quot;} or @{Name=&quot;Department&quot;;Value=&quot;IT&quot;}. To specify multiple tags, use commas to separate the hash tables, such as  -Tag @{Name=&quot;FY2015&quot;}, @{Name=&quot;Department&quot;;Value=&quot;IT&quot;}. To get your predefined tags, use the Get-AzureRmTag cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Suppresses the confirmation prompt and overwrites an existing resource group with the same name. By default, New-AzureRmResourceGroup prompts for confirmation before replacing an existing resource group.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateParameterFile</maml:name>
-				<maml:description>
-					<maml:para>Specifies the path and name of a JSON file with the names and values of the template parameters. This parameter is optional. If a template has parameters, you must specify parameter values, but you can use the TemplateParameterObject or the TemplateParameterFile parameters. Or, you can use the template parameters are added to the command dynamically when you specify a template. To use the dynamic parameters, just type them in the command, or type a minus sign to indicate a parameter name (-) and then press the TAB key repeatedly to cycle through the available parameters. If you miss a required parameter, the cmdlet prompts you for the value.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>GalleryTemplateIdentity</maml:name>
-				<maml:description>
-					<maml:para>Specifies the identity of a template in the Azure gallery. To find gallery templates, use the Get-AzureRmResourceGroupGalleryTemplate cmdlet. The value of the Identity property of each gallery item is displayed by default.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateVersion</maml:name>
-				<maml:description>
-					<maml:para>Specifies a particular version of the gallery or custom template. Enter the version number, such as &quot;2014-04-01-preview&quot;. This parameter is optional. If you specify this parameter, New-AzureRmResourceGroup verifies that the specified template has the matching version and fails if it does not.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Profile</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>New-AzureRmResourceGroup</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Name</maml:name>
-				<maml:description>
-					<maml:para>Specifies a name for the resource group. This parameter is required. The resource name must be unique in the subscription.You can use -Name or its alias, -ResourceGroupName.If a resource group with that name already exists, the command prompts you for confirmation before replacing the existing resource group. To suppress the confirmation prompt, use the Force parameter.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Location</maml:name>
-				<maml:description>
-					<maml:para>Specifies the location of the resource group. This parameter is required. Enter an Azure data center location, such as &quot;West US&quot; or &quot;Southeast Asia&quot;.You can place a resource group in any location. The resource group does not have to be in the same location your Azure subscription or the same location as its resources. Resource groups can contain resources from different locations. To determine which location support each resource type, use the Get-AzureRmResourceProvider with the ProviderNamespace parameter cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>DeploymentName</maml:name>
-				<maml:description>
-					<maml:para>Specifies the name of the deployment project for the resource group. Because the deployment properties are defined in a template, this parameter is valid only when you specify a template. This parameter is optional. The default value is the template name without the .json file name extension.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Tag</maml:name>
-				<maml:description>
-					<maml:para>Applies the specified tags to the new resource group. Enter new tags or predefined tags that you created by using the New-AzureRmTag cmdlet.A &quot;tag&quot; is a name-value pair that you can apply to resources and resource groups. Use tags to categorize your resources, such as by department or cost center, or to track notes or comments about the resources. After you assign tags to resources, you can use the Tag parameters of Get-AzureRmResource and Get-AzureRmResourceGroup to search for resources and groups by tag name or name and value.Every tag must have a Name key. It can also have an optional Value key with one value. To specify a new tag, use a hash table, such as @{Name=&quot;FY2015&quot;} or @{Name=&quot;Department&quot;;Value=&quot;IT&quot;}. To specify multiple tags, use commas to separate the hash tables, such as  -Tag @{Name=&quot;FY2015&quot;}, @{Name=&quot;Department&quot;;Value=&quot;IT&quot;}. To get your predefined tags, use the Get-AzureRmTag cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Suppresses the confirmation prompt and overwrites an existing resource group with the same name. By default, New-AzureRmResourceGroup prompts for confirmation before replacing an existing resource group.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateParameterFile</maml:name>
-				<maml:description>
-					<maml:para>Specifies the path and name of a JSON file with the names and values of the template parameters. This parameter is optional. If a template has parameters, you must specify parameter values, but you can use the TemplateParameterObject or the TemplateParameterFile parameters. Or, you can use the template parameters are added to the command dynamically when you specify a template. To use the dynamic parameters, just type them in the command, or type a minus sign to indicate a parameter name (-) and then press the TAB key repeatedly to cycle through the available parameters. If you miss a required parameter, the cmdlet prompts you for the value.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateUri</maml:name>
-				<maml:description>
-					<maml:para>Specifies the URI of a JSON template file. This file can be a custom template or a gallery template that is saved as a JSON file, such as by using the Save-AzureRmResourceGroupGalleryTemplate cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateVersion</maml:name>
-				<maml:description>
-					<maml:para>Specifies a particular version of the gallery or custom template. Enter the version number, such as &quot;2014-04-01-preview&quot;. This parameter is optional. If you specify this parameter, New-AzureRmResourceGroup verifies that the specified template has the matching version and fails if it does not.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Profile</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>New-AzureRmResourceGroup</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Name</maml:name>
-				<maml:description>
-					<maml:para>Specifies a name for the resource group. This parameter is required. The resource name must be unique in the subscription.You can use -Name or its alias, -ResourceGroupName.If a resource group with that name already exists, the command prompts you for confirmation before replacing the existing resource group. To suppress the confirmation prompt, use the Force parameter.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Location</maml:name>
-				<maml:description>
-					<maml:para>Specifies the location of the resource group. This parameter is required. Enter an Azure data center location, such as &quot;West US&quot; or &quot;Southeast Asia&quot;.You can place a resource group in any location. The resource group does not have to be in the same location your Azure subscription or the same location as its resources. Resource groups can contain resources from different locations. To determine which location support each resource type, use the Get-AzureRmResourceProvider with the ProviderNamespace parameter cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>DeploymentName</maml:name>
-				<maml:description>
-					<maml:para>Specifies the name of the deployment project for the resource group. Because the deployment properties are defined in a template, this parameter is valid only when you specify a template. This parameter is optional. The default value is the template name without the .json file name extension.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Tag</maml:name>
-				<maml:description>
-					<maml:para>Applies the specified tags to the new resource group. Enter new tags or predefined tags that you created by using the New-AzureRmTag cmdlet.A &quot;tag&quot; is a name-value pair that you can apply to resources and resource groups. Use tags to categorize your resources, such as by department or cost center, or to track notes or comments about the resources. After you assign tags to resources, you can use the Tag parameters of Get-AzureRmResource and Get-AzureRmResourceGroup to search for resources and groups by tag name or name and value.Every tag must have a Name key. It can also have an optional Value key with one value. To specify a new tag, use a hash table, such as @{Name=&quot;FY2015&quot;} or @{Name=&quot;Department&quot;;Value=&quot;IT&quot;}. To specify multiple tags, use commas to separate the hash tables, such as  -Tag @{Name=&quot;FY2015&quot;}, @{Name=&quot;Department&quot;;Value=&quot;IT&quot;}. To get your predefined tags, use the Get-AzureRmTag cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Suppresses the confirmation prompt and overwrites an existing resource group with the same name. By default, New-AzureRmResourceGroup prompts for confirmation before replacing an existing resource group.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateParameterFile</maml:name>
-				<maml:description>
-					<maml:para>Specifies the path and name of a JSON file with the names and values of the template parameters. This parameter is optional. If a template has parameters, you must specify parameter values, but you can use the TemplateParameterObject or the TemplateParameterFile parameters. Or, you can use the template parameters are added to the command dynamically when you specify a template. To use the dynamic parameters, just type them in the command, or type a minus sign to indicate a parameter name (-) and then press the TAB key repeatedly to cycle through the available parameters. If you miss a required parameter, the cmdlet prompts you for the value.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateFile</maml:name>
-				<maml:description>
-					<maml:para>Specifies the path and file name of a JSON template file on disk. This can be a custom template or a gallery template that is saved to disk as a JSON file, such as by using the Save-AzureRmResourceGroupGalleryTemplate cmdlet.To use this parameter, the subscription must include a storage account where the cmdlet can save the template. By default, this cmdlet uses the current storage account in the subscription, but you can use the StorageAccountName parameter to specify an alternate storage account. If you do not specify a storage account and the subscription does not have a storage account that is designated as &quot;current,&quot; the command fails.To create a storage account, use the Switch-AzureMode cmdlet to switch to the Azure module, and then use the New-AzureRmStorageAccount cmdlet. To make the a storage account the &quot;current storage account&quot; for the subscription, use the CurrentStorageAccountName parameter of the Set-AzureRmSubscription cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>StorageAccountName</maml:name>
-				<maml:description>
-					<maml:para>Specifies the name of a storage account in the subscription. New-AzureRmResourceGroup saves the contents of template files in  the storage account. This parameter is optional, but a storage account is required when you use the TemplateFile parameter.The default value is the current storage account in the subscription. If you do not specify a storage account and the subscription does not have a current storage account, the command fails.To create a storage account, use a Switch-AzureMode -Name AzureServiceManagement command to switch to the Azure module, and then use the New-AzureRmStorageAccount cmdlet. To make the a storage account the &quot;current storage account&quot; for the subscription, use the CurrentStorageAccountName parameter of the Set-AzureRmSubscription cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateVersion</maml:name>
-				<maml:description>
-					<maml:para>Specifies a particular version of the gallery or custom template. Enter the version number, such as &quot;2014-04-01-preview&quot;. This parameter is optional. If you specify this parameter, New-AzureRmResourceGroup verifies that the specified template has the matching version and fails if it does not.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Profile</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>New-AzureRmResourceGroup</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Name</maml:name>
-				<maml:description>
-					<maml:para>Specifies a name for the resource group. This parameter is required. The resource name must be unique in the subscription.You can use -Name or its alias, -ResourceGroupName.If a resource group with that name already exists, the command prompts you for confirmation before replacing the existing resource group. To suppress the confirmation prompt, use the Force parameter.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Location</maml:name>
-				<maml:description>
-					<maml:para>Specifies the location of the resource group. This parameter is required. Enter an Azure data center location, such as &quot;West US&quot; or &quot;Southeast Asia&quot;.You can place a resource group in any location. The resource group does not have to be in the same location your Azure subscription or the same location as its resources. Resource groups can contain resources from different locations. To determine which location support each resource type, use the Get-AzureRmResourceProvider with the ProviderNamespace parameter cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>DeploymentName</maml:name>
-				<maml:description>
-					<maml:para>Specifies the name of the deployment project for the resource group. Because the deployment properties are defined in a template, this parameter is valid only when you specify a template. This parameter is optional. The default value is the template name without the .json file name extension.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Tag</maml:name>
-				<maml:description>
-					<maml:para>Applies the specified tags to the new resource group. Enter new tags or predefined tags that you created by using the New-AzureRmTag cmdlet.A &quot;tag&quot; is a name-value pair that you can apply to resources and resource groups. Use tags to categorize your resources, such as by department or cost center, or to track notes or comments about the resources. After you assign tags to resources, you can use the Tag parameters of Get-AzureRmResource and Get-AzureRmResourceGroup to search for resources and groups by tag name or name and value.Every tag must have a Name key. It can also have an optional Value key with one value. To specify a new tag, use a hash table, such as @{Name=&quot;FY2015&quot;} or @{Name=&quot;Department&quot;;Value=&quot;IT&quot;}. To specify multiple tags, use commas to separate the hash tables, such as  -Tag @{Name=&quot;FY2015&quot;}, @{Name=&quot;Department&quot;;Value=&quot;IT&quot;}. To get your predefined tags, use the Get-AzureRmTag cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Suppresses the confirmation prompt and overwrites an existing resource group with the same name. By default, New-AzureRmResourceGroup prompts for confirmation before replacing an existing resource group.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>GalleryTemplateIdentity</maml:name>
-				<maml:description>
-					<maml:para>Specifies the identity of a template in the Azure gallery. To find gallery templates, use the Get-AzureRmResourceGroupGalleryTemplate cmdlet. The value of the Identity property of each gallery item is displayed by default.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateVersion</maml:name>
-				<maml:description>
-					<maml:para>Specifies a particular version of the gallery or custom template. Enter the version number, such as &quot;2014-04-01-preview&quot;. This parameter is optional. If you specify this parameter, New-AzureRmResourceGroup verifies that the specified template has the matching version and fails if it does not.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Profile</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>New-AzureRmResourceGroup</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Name</maml:name>
-				<maml:description>
-					<maml:para>Specifies a name for the resource group. This parameter is required. The resource name must be unique in the subscription.You can use -Name or its alias, -ResourceGroupName.If a resource group with that name already exists, the command prompts you for confirmation before replacing the existing resource group. To suppress the confirmation prompt, use the Force parameter.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Location</maml:name>
-				<maml:description>
-					<maml:para>Specifies the location of the resource group. This parameter is required. Enter an Azure data center location, such as &quot;West US&quot; or &quot;Southeast Asia&quot;.You can place a resource group in any location. The resource group does not have to be in the same location your Azure subscription or the same location as its resources. Resource groups can contain resources from different locations. To determine which location support each resource type, use the Get-AzureRmResourceProvider with the ProviderNamespace parameter cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>DeploymentName</maml:name>
-				<maml:description>
-					<maml:para>Specifies the name of the deployment project for the resource group. Because the deployment properties are defined in a template, this parameter is valid only when you specify a template. This parameter is optional. The default value is the template name without the .json file name extension.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Tag</maml:name>
-				<maml:description>
-					<maml:para>Applies the specified tags to the new resource group. Enter new tags or predefined tags that you created by using the New-AzureRmTag cmdlet.A &quot;tag&quot; is a name-value pair that you can apply to resources and resource groups. Use tags to categorize your resources, such as by department or cost center, or to track notes or comments about the resources. After you assign tags to resources, you can use the Tag parameters of Get-AzureRmResource and Get-AzureRmResourceGroup to search for resources and groups by tag name or name and value.Every tag must have a Name key. It can also have an optional Value key with one value. To specify a new tag, use a hash table, such as @{Name=&quot;FY2015&quot;} or @{Name=&quot;Department&quot;;Value=&quot;IT&quot;}. To specify multiple tags, use commas to separate the hash tables, such as  -Tag @{Name=&quot;FY2015&quot;}, @{Name=&quot;Department&quot;;Value=&quot;IT&quot;}. To get your predefined tags, use the Get-AzureRmTag cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Suppresses the confirmation prompt and overwrites an existing resource group with the same name. By default, New-AzureRmResourceGroup prompts for confirmation before replacing an existing resource group.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateFile</maml:name>
-				<maml:description>
-					<maml:para>Specifies the path and file name of a JSON template file on disk. This can be a custom template or a gallery template that is saved to disk as a JSON file, such as by using the Save-AzureRmResourceGroupGalleryTemplate cmdlet.To use this parameter, the subscription must include a storage account where the cmdlet can save the template. By default, this cmdlet uses the current storage account in the subscription, but you can use the StorageAccountName parameter to specify an alternate storage account. If you do not specify a storage account and the subscription does not have a storage account that is designated as &quot;current,&quot; the command fails.To create a storage account, use the Switch-AzureMode cmdlet to switch to the Azure module, and then use the New-AzureRmStorageAccount cmdlet. To make the a storage account the &quot;current storage account&quot; for the subscription, use the CurrentStorageAccountName parameter of the Set-AzureRmSubscription cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>StorageAccountName</maml:name>
-				<maml:description>
-					<maml:para>Specifies the name of a storage account in the subscription. New-AzureRmResourceGroup saves the contents of template files in  the storage account. This parameter is optional, but a storage account is required when you use the TemplateFile parameter.The default value is the current storage account in the subscription. If you do not specify a storage account and the subscription does not have a current storage account, the command fails.To create a storage account, use a Switch-AzureMode -Name AzureServiceManagement command to switch to the Azure module, and then use the New-AzureRmStorageAccount cmdlet. To make the a storage account the &quot;current storage account&quot; for the subscription, use the CurrentStorageAccountName parameter of the Set-AzureRmSubscription cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateVersion</maml:name>
-				<maml:description>
-					<maml:para>Specifies a particular version of the gallery or custom template. Enter the version number, such as &quot;2014-04-01-preview&quot;. This parameter is optional. If you specify this parameter, New-AzureRmResourceGroup verifies that the specified template has the matching version and fails if it does not.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Profile</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
-		<command:syntaxItem>
-			<maml:name>New-AzureRmResourceGroup</maml:name>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Name</maml:name>
-				<maml:description>
-					<maml:para>Specifies a name for the resource group. This parameter is required. The resource name must be unique in the subscription.You can use -Name or its alias, -ResourceGroupName.If a resource group with that name already exists, the command prompts you for confirmation before replacing the existing resource group. To suppress the confirmation prompt, use the Force parameter.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Location</maml:name>
-				<maml:description>
-					<maml:para>Specifies the location of the resource group. This parameter is required. Enter an Azure data center location, such as &quot;West US&quot; or &quot;Southeast Asia&quot;.You can place a resource group in any location. The resource group does not have to be in the same location your Azure subscription or the same location as its resources. Resource groups can contain resources from different locations. To determine which location support each resource type, use the Get-AzureRmResourceProvider with the ProviderNamespace parameter cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>DeploymentName</maml:name>
-				<maml:description>
-					<maml:para>Specifies the name of the deployment project for the resource group. Because the deployment properties are defined in a template, this parameter is valid only when you specify a template. This parameter is optional. The default value is the template name without the .json file name extension.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>Tag</maml:name>
-				<maml:description>
-					<maml:para>Applies the specified tags to the new resource group. Enter new tags or predefined tags that you created by using the New-AzureRmTag cmdlet.A &quot;tag&quot; is a name-value pair that you can apply to resources and resource groups. Use tags to categorize your resources, such as by department or cost center, or to track notes or comments about the resources. After you assign tags to resources, you can use the Tag parameters of Get-AzureRmResource and Get-AzureRmResourceGroup to search for resources and groups by tag name or name and value.Every tag must have a Name key. It can also have an optional Value key with one value. To specify a new tag, use a hash table, such as @{Name=&quot;FY2015&quot;} or @{Name=&quot;Department&quot;;Value=&quot;IT&quot;}. To specify multiple tags, use commas to separate the hash tables, such as  -Tag @{Name=&quot;FY2015&quot;}, @{Name=&quot;Department&quot;;Value=&quot;IT&quot;}. To get your predefined tags, use the Get-AzureRmTag cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Force</maml:name>
-				<maml:description>
-					<maml:para>Suppresses the confirmation prompt and overwrites an existing resource group with the same name. By default, New-AzureRmResourceGroup prompts for confirmation before replacing an existing resource group.</maml:para>
-				</maml:description>
-				<command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateUri</maml:name>
-				<maml:description>
-					<maml:para>Specifies the URI of a JSON template file. This file can be a custom template or a gallery template that is saved as a JSON file, such as by using the Save-AzureRmResourceGroupGalleryTemplate cmdlet.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
-				<maml:name>TemplateVersion</maml:name>
-				<maml:description>
-					<maml:para>Specifies a particular version of the gallery or custom template. Enter the version number, such as &quot;2014-04-01-preview&quot;. This parameter is optional. If you specify this parameter, New-AzureRmResourceGroup verifies that the specified template has the matching version and fails if it does not.</maml:para>
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-			</command:parameter>
-			<command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-				<maml:name>Profile</maml:name>
-				<maml:description>
-					<maml:para />
-				</maml:description>
-				<command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
-			</command:parameter>
-		</command:syntaxItem>
+			</command:syntaxItem>
 	</command:syntax>
 	<command:parameters>
 		<command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
@@ -7049,31 +6399,20 @@ PS C:\&gt; New-AzureRmRoleDefinition -Role $roleDef</dev:code>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>PassThru</maml:name>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Remove-AzureRmResourceGroup</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+          <maml:name>Id</maml:name>
           <maml:description>
-            <maml:para>Returns $True if the remove operation was successful and $False if it failed. By default, this cmdlet does not return any output.</maml:para>
+            <maml:para>Specifies the Id of resource groups to delete. This parameter is required. Wildcards are not permitted.</maml:para>
           </maml:description>
-          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Profile</maml:name>
+          <maml:name>Force</maml:name>
           <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>WhatIf</maml:name>
-          <maml:description>
-            <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Confirm</maml:name>
-          <maml:description>
-            <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+            <maml:para>Suppresses the confirmation prompt. By default, Remove-AzureRmResource prompts you to confirm before deleting a resource group.</maml:para>
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         </command:parameter>
@@ -7084,6 +6423,19 @@ PS C:\&gt; New-AzureRmRoleDefinition -Role $roleDef</dev:code>
         <maml:name>Name</maml:name>
         <maml:description>
           <maml:para>Specifies the names of resource groups to delete. This parameter is required. Wildcards are not permitted.Use -Name or its alias, -ResourceGroupName.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+        <maml:name>Id</maml:name>
+        <maml:description>
+          <maml:para>Specifies the Id of resource groups to delete. This parameter is required. Wildcards are not permitted.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -7106,85 +6458,7 @@ PS C:\&gt; New-AzureRmRoleDefinition -Role $roleDef</dev:code>
         <dev:defaultValue>
         </dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>PassThru</maml:name>
-        <maml:description>
-          <maml:para>Returns $True if the remove operation was successful and $False if it failed. By default, this cmdlet does not return any output.</maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>Profile</maml:name>
-        <maml:description>
-          <maml:para />
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
-        <dev:type>
-          <maml:name>AzureProfile</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>WhatIf</maml:name>
-        <maml:description>
-          <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>false</dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>Confirm</maml:name>
-        <maml:description>
-          <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>false</dev:defaultValue>
-      </command:parameter>
     </command:parameters>
-    <command:inputTypes>
-      <command:inputType>
-        <dev:type>
-          <maml:name>None</maml:name>
-          <maml:uri>
-          </maml:uri>
-          <maml:description />
-        </dev:type>
-        <maml:description>
-          <maml:para>
-          </maml:para>
-        </maml:description>
-      </command:inputType>
-    </command:inputTypes>
-    <command:returnValues>
-      <command:returnValue>
-        <dev:type>
-          <maml:name>None or System.Boolean</maml:name>
-          <maml:uri>
-          </maml:uri>
-          <maml:description />
-        </dev:type>
-        <maml:description>
-          <maml:para>
-          </maml:para>
-        </maml:description>
-      </command:returnValue>
-    </command:returnValues>
     <command:terminatingErrors>
     </command:terminatingErrors>
     <command:nonTerminatingErrors>
@@ -8482,12 +7756,22 @@ PS C:\&gt;New-AzureRmResourceGroup -Name ContosoRG02 -Location 'South Central US
           </maml:description>
           <command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-          <maml:name>Profile</maml:name>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Set-AzureRmResourceGroup</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+          <maml:name>Id</maml:name>
           <maml:description>
-            <maml:para />
+            <maml:para>Specifies the Id of the resource group. This parameter identifies the resource group that you want to change.</maml:para>
           </maml:description>
-          <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
+          <maml:name>Tag</maml:name>
+          <maml:description>
+            <maml:para>Replaces the tags for the resource group with the specified tags. To add or change a single tag, you must replace the collection of tags for the resource group.A "tag" is a name-value pair that you can create and apply to resources and resource groups. After you assign tags to resources and groups, you can use the Tag parameters of Get-AzureRmResource and Get-AzureRmResourceGroup to search for resources and groups by tag name or name and value. Use tags to categorize your resources, such as by department or cost center, or to track notes or comments about the resources.Each tag must have a Name key. It can also have an optional Value key with one value. To specify a tag, use a hash table, such as @{Name="FY2015"} or @{Name="Department";Value="IT"}. To specify multiple tags, use commas to separate the hash tables, such as  -Tag @{Name="FY2015"}, @{Name="Department";Value="IT"}.To delete a tag, enter a hash table with all tags currently applied to the resource group (from Get-AzureRmResourceGroup), except for the tag you want to delete.  To delete all tags from a resource group, enter an empty hash table (-Tag @{}).</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -8505,6 +7789,19 @@ PS C:\&gt;New-AzureRmResourceGroup -Name ContosoRG02 -Location 'South Central US
         <dev:defaultValue>
         </dev:defaultValue>
       </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="0">
+        <maml:name>Id</maml:name>
+        <maml:description>
+          <maml:para>Specifies the Id of the resource group. This parameter identifies the resource group that you want to change.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>
+        </dev:defaultValue>
+      </command:parameter>
       <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="true (ByPropertyName)" position="1">
         <maml:name>Tag</maml:name>
         <maml:description>
@@ -8513,19 +7810,6 @@ PS C:\&gt;New-AzureRmResourceGroup -Name ContosoRG02 -Location 'South Central US
         <command:parameterValue required="true" variableLength="true">Hashtable[]</command:parameterValue>
         <dev:type>
           <maml:name>Hashtable[]</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
-        <maml:name>Profile</maml:name>
-        <maml:description>
-          <maml:para />
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">AzureProfile</command:parameterValue>
-        <dev:type>
-          <maml:name>AzureProfile</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>
