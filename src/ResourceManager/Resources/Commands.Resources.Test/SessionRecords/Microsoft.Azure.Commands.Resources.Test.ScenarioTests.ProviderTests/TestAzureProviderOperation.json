@@ -25,10 +25,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "2073f60d-4caa-4ae0-8a64-aa18782c7098"
+          "c7383a2d-d691-40c3-b775-416830533fbd"
         ],
         "x-ms-gateway-service-instanceid": [
-          "PASFE_IN_1"
+          "PASFE_IN_0"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -37,19 +37,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "14997"
+          "14996"
         ],
         "x-ms-correlation-request-id": [
-          "b354df0c-e218-470a-bf50-f65f81af30bf"
+          "db7c5cb0-41cc-4306-97ea-80851ff9d55c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151020T225039Z:b354df0c-e218-470a-bf50-f65f81af30bf"
+          "WESTUS:20151021T024630Z:db7c5cb0-41cc-4306-97ea-80851ff9d55c"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 20 Oct 2015 22:50:39 GMT"
+          "Wed, 21 Oct 2015 02:46:30 GMT"
         ],
         "Set-Cookie": [
           "x-ms-gateway-slice=productiona; path=/"
@@ -88,7 +88,133 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "2e27b409-2f6e-4113-9d8e-575c84e5a640"
+          "a498d072-c0b4-4d64-9324-74efa981e87c"
+        ],
+        "x-ms-gateway-service-instanceid": [
+          "PASFE_IN_0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "14992"
+        ],
+        "x-ms-correlation-request-id": [
+          "93587320-90ba-4039-b7b1-ef89f98e24c3"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151021T024631Z:93587320-90ba-4039-b7b1-ef89f98e24c3"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 21 Oct 2015 02:46:30 GMT"
+        ],
+        "Set-Cookie": [
+          "x-ms-gateway-slice=productiona; path=/"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Authorization/providerOperations/Microsoft.Insights?api-version=2015-07-01&$expand=resourceTypes",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wcm92aWRlck9wZXJhdGlvbnMvTWljcm9zb2Z0Lkluc2lnaHRzP2FwaS12ZXJzaW9uPTIwMTUtMDctMDEmJGV4cGFuZD1yZXNvdXJjZVR5cGVz",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"displayName\": \"Microsoft Monitoring Insights\",\r\n  \"operations\": [],\r\n  \"resourceTypes\": [\r\n    {\r\n      \"name\": \"AlertRules\",\r\n      \"displayName\": \"Alert Rules\",\r\n      \"operations\": [\r\n        {\r\n          \"name\": \"Microsoft.Insights/AlertRules/Write\",\r\n          \"displayName\": \"Alert Rule write\",\r\n          \"description\": \"Writing to an alert rule configuration\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.Insights/AlertRules/Delete\",\r\n          \"displayName\": \"Alert Rule delete\",\r\n          \"description\": \"Deleting an alert rule configuration\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.Insights/AlertRules/Read\",\r\n          \"displayName\": \"Alert Rule read\",\r\n          \"description\": \"Reading an alert rule configuration\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.Insights/AlertRules/Activated/Action\",\r\n          \"displayName\": \"Alert Rule activated\",\r\n          \"description\": \"Alert Rule activated\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.Insights/AlertRules/Resolved/Action\",\r\n          \"displayName\": \"Alert Rule resolved\",\r\n          \"description\": \"Alert Rule resolved\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"AlertRules/Incidents\",\r\n      \"displayName\": \"Alert Rules\",\r\n      \"operations\": [\r\n        {\r\n          \"name\": \"Microsoft.Insights/AlertRules/Incidents/Read\",\r\n          \"displayName\": \"Alert Rule Incidents read\",\r\n          \"description\": \"Reading an alert rule configuration\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"eventtypes/values\",\r\n      \"displayName\": \"Events\",\r\n      \"operations\": [\r\n        {\r\n          \"name\": \"Microsoft.Insights/eventtypes/values/Read\",\r\n          \"displayName\": \"Event types management values read\",\r\n          \"description\": \"Read management event type values\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"eventtypes/digestevents\",\r\n      \"displayName\": \"Digest events\",\r\n      \"operations\": [\r\n        {\r\n          \"name\": \"Microsoft.Insights/eventtypes/digestevents/Read\",\r\n          \"displayName\": \"Event types management digest read\",\r\n          \"description\": \"Read management event type digest\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"AutoscaleSettings\",\r\n      \"displayName\": \"Autoscale\",\r\n      \"operations\": [\r\n        {\r\n          \"name\": \"Microsoft.Insights/AutoscaleSettings/Write\",\r\n          \"displayName\": \"Autoscale Setting write\",\r\n          \"description\": \"Writing to an autoscale setting configuration\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.Insights/AutoscaleSettings/Delete\",\r\n          \"displayName\": \"Autoscale Setting delete\",\r\n          \"description\": \"Deleting an autoscale setting configuration\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.Insights/AutoscaleSettings/Read\",\r\n          \"displayName\": \"Autoscale Setting read\",\r\n          \"description\": \"Reading an autoscale setting configuration\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.Insights/AutoscaleSettings/Scaleup/Action\",\r\n          \"displayName\": \"Autoscale scale up operation\",\r\n          \"description\": \"Autoscale scale up operation\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.Insights/AutoscaleSettings/Scaledown/Action\",\r\n          \"displayName\": \"Autoscale scale down operation\",\r\n          \"description\": \"Autoscale scale down operation\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"id\": \"/providers/Microsoft.Authorization/providerOperations/microsoft.insights\",\r\n  \"type\": \"Microsoft.Authorization/providerOperations\",\r\n  \"name\": \"microsoft.insights\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2888"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "c76fa605-9390-4f01-bf81-dc10d8b99b52"
+        ],
+        "x-ms-gateway-service-instanceid": [
+          "PASFE_IN_0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "14995"
+        ],
+        "x-ms-correlation-request-id": [
+          "a302e149-8033-455f-9ed6-59c7e7f14ec6"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151021T024630Z:a302e149-8033-455f-9ed6-59c7e7f14ec6"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 21 Oct 2015 02:46:30 GMT"
+        ],
+        "Set-Cookie": [
+          "x-ms-gateway-slice=productiona; path=/"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Authorization/providerOperations/Microsoft.Insights?api-version=2015-07-01&$expand=resourceTypes",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wcm92aWRlck9wZXJhdGlvbnMvTWljcm9zb2Z0Lkluc2lnaHRzP2FwaS12ZXJzaW9uPTIwMTUtMDctMDEmJGV4cGFuZD1yZXNvdXJjZVR5cGVz",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"displayName\": \"Microsoft Monitoring Insights\",\r\n  \"operations\": [],\r\n  \"resourceTypes\": [\r\n    {\r\n      \"name\": \"AlertRules\",\r\n      \"displayName\": \"Alert Rules\",\r\n      \"operations\": [\r\n        {\r\n          \"name\": \"Microsoft.Insights/AlertRules/Write\",\r\n          \"displayName\": \"Alert Rule write\",\r\n          \"description\": \"Writing to an alert rule configuration\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.Insights/AlertRules/Delete\",\r\n          \"displayName\": \"Alert Rule delete\",\r\n          \"description\": \"Deleting an alert rule configuration\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.Insights/AlertRules/Read\",\r\n          \"displayName\": \"Alert Rule read\",\r\n          \"description\": \"Reading an alert rule configuration\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.Insights/AlertRules/Activated/Action\",\r\n          \"displayName\": \"Alert Rule activated\",\r\n          \"description\": \"Alert Rule activated\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.Insights/AlertRules/Resolved/Action\",\r\n          \"displayName\": \"Alert Rule resolved\",\r\n          \"description\": \"Alert Rule resolved\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"AlertRules/Incidents\",\r\n      \"displayName\": \"Alert Rules\",\r\n      \"operations\": [\r\n        {\r\n          \"name\": \"Microsoft.Insights/AlertRules/Incidents/Read\",\r\n          \"displayName\": \"Alert Rule Incidents read\",\r\n          \"description\": \"Reading an alert rule configuration\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"eventtypes/values\",\r\n      \"displayName\": \"Events\",\r\n      \"operations\": [\r\n        {\r\n          \"name\": \"Microsoft.Insights/eventtypes/values/Read\",\r\n          \"displayName\": \"Event types management values read\",\r\n          \"description\": \"Read management event type values\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"eventtypes/digestevents\",\r\n      \"displayName\": \"Digest events\",\r\n      \"operations\": [\r\n        {\r\n          \"name\": \"Microsoft.Insights/eventtypes/digestevents/Read\",\r\n          \"displayName\": \"Event types management digest read\",\r\n          \"description\": \"Read management event type digest\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"AutoscaleSettings\",\r\n      \"displayName\": \"Autoscale\",\r\n      \"operations\": [\r\n        {\r\n          \"name\": \"Microsoft.Insights/AutoscaleSettings/Write\",\r\n          \"displayName\": \"Autoscale Setting write\",\r\n          \"description\": \"Writing to an autoscale setting configuration\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.Insights/AutoscaleSettings/Delete\",\r\n          \"displayName\": \"Autoscale Setting delete\",\r\n          \"description\": \"Deleting an autoscale setting configuration\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.Insights/AutoscaleSettings/Read\",\r\n          \"displayName\": \"Autoscale Setting read\",\r\n          \"description\": \"Reading an autoscale setting configuration\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.Insights/AutoscaleSettings/Scaleup/Action\",\r\n          \"displayName\": \"Autoscale scale up operation\",\r\n          \"description\": \"Autoscale scale up operation\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.Insights/AutoscaleSettings/Scaledown/Action\",\r\n          \"displayName\": \"Autoscale scale down operation\",\r\n          \"description\": \"Autoscale scale down operation\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"id\": \"/providers/Microsoft.Authorization/providerOperations/microsoft.insights\",\r\n  \"type\": \"Microsoft.Authorization/providerOperations\",\r\n  \"name\": \"microsoft.insights\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2888"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "a13ed8a8-b6ae-4f72-8338-13ff327f3a42"
         ],
         "x-ms-gateway-service-instanceid": [
           "PASFE_IN_1"
@@ -103,142 +229,16 @@
           "14993"
         ],
         "x-ms-correlation-request-id": [
-          "c8c0f034-8920-4044-b263-9cfeabe5d294"
+          "e63b3e67-8381-407f-aa2c-3421db3e338d"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151020T225040Z:c8c0f034-8920-4044-b263-9cfeabe5d294"
+          "WESTUS:20151021T024630Z:e63b3e67-8381-407f-aa2c-3421db3e338d"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 20 Oct 2015 22:50:40 GMT"
-        ],
-        "Set-Cookie": [
-          "x-ms-gateway-slice=productiona; path=/"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.5"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/providers/Microsoft.Authorization/providerOperations/Microsoft.Insights?api-version=2015-07-01&$expand=resourceTypes",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wcm92aWRlck9wZXJhdGlvbnMvTWljcm9zb2Z0Lkluc2lnaHRzP2FwaS12ZXJzaW9uPTIwMTUtMDctMDEmJGV4cGFuZD1yZXNvdXJjZVR5cGVz",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"displayName\": \"Microsoft Monitoring Insights\",\r\n  \"operations\": [],\r\n  \"resourceTypes\": [\r\n    {\r\n      \"name\": \"AlertRules\",\r\n      \"displayName\": \"Alert Rules\",\r\n      \"operations\": [\r\n        {\r\n          \"name\": \"Microsoft.Insights/AlertRules/Write\",\r\n          \"displayName\": \"Alert Rule write\",\r\n          \"description\": \"Writing to an alert rule configuration\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.Insights/AlertRules/Delete\",\r\n          \"displayName\": \"Alert Rule delete\",\r\n          \"description\": \"Deleting an alert rule configuration\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.Insights/AlertRules/Read\",\r\n          \"displayName\": \"Alert Rule read\",\r\n          \"description\": \"Reading an alert rule configuration\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.Insights/AlertRules/Activated/Action\",\r\n          \"displayName\": \"Alert Rule activated\",\r\n          \"description\": \"Alert Rule activated\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.Insights/AlertRules/Resolved/Action\",\r\n          \"displayName\": \"Alert Rule resolved\",\r\n          \"description\": \"Alert Rule resolved\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"AlertRules/Incidents\",\r\n      \"displayName\": \"Alert Rules\",\r\n      \"operations\": [\r\n        {\r\n          \"name\": \"Microsoft.Insights/AlertRules/Incidents/Read\",\r\n          \"displayName\": \"Alert Rule Incidents read\",\r\n          \"description\": \"Reading an alert rule configuration\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"eventtypes/values\",\r\n      \"displayName\": \"Events\",\r\n      \"operations\": [\r\n        {\r\n          \"name\": \"Microsoft.Insights/eventtypes/values/Read\",\r\n          \"displayName\": \"Event types management values read\",\r\n          \"description\": \"Read management event type values\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"eventtypes/digestevents\",\r\n      \"displayName\": \"Digest events\",\r\n      \"operations\": [\r\n        {\r\n          \"name\": \"Microsoft.Insights/eventtypes/digestevents/Read\",\r\n          \"displayName\": \"Event types management digest read\",\r\n          \"description\": \"Read management event type digest\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"AutoscaleSettings\",\r\n      \"displayName\": \"Autoscale\",\r\n      \"operations\": [\r\n        {\r\n          \"name\": \"Microsoft.Insights/AutoscaleSettings/Write\",\r\n          \"displayName\": \"Autoscale Setting write\",\r\n          \"description\": \"Writing to an autoscale setting configuration\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.Insights/AutoscaleSettings/Delete\",\r\n          \"displayName\": \"Autoscale Setting delete\",\r\n          \"description\": \"Deleting an autoscale setting configuration\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.Insights/AutoscaleSettings/Read\",\r\n          \"displayName\": \"Autoscale Setting read\",\r\n          \"description\": \"Reading an autoscale setting configuration\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.Insights/AutoscaleSettings/Scaleup/Action\",\r\n          \"displayName\": \"Autoscale scale up operation\",\r\n          \"description\": \"Autoscale scale up operation\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.Insights/AutoscaleSettings/Scaledown/Action\",\r\n          \"displayName\": \"Autoscale scale down operation\",\r\n          \"description\": \"Autoscale scale down operation\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"id\": \"/providers/Microsoft.Authorization/providerOperations/microsoft.insights\",\r\n  \"type\": \"Microsoft.Authorization/providerOperations\",\r\n  \"name\": \"microsoft.insights\"\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "2888"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "97390daf-4655-45ba-bd43-d1701a00041a"
-        ],
-        "x-ms-gateway-service-instanceid": [
-          "PASFE_IN_0"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-tenant-reads": [
-          "14996"
-        ],
-        "x-ms-correlation-request-id": [
-          "586379a5-63e6-47d7-8f20-b0eaba3fcbd1"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20151020T225040Z:586379a5-63e6-47d7-8f20-b0eaba3fcbd1"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 20 Oct 2015 22:50:39 GMT"
-        ],
-        "Set-Cookie": [
-          "x-ms-gateway-slice=productiona; path=/"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.5"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/providers/Microsoft.Authorization/providerOperations/Microsoft.Insights?api-version=2015-07-01&$expand=resourceTypes",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wcm92aWRlck9wZXJhdGlvbnMvTWljcm9zb2Z0Lkluc2lnaHRzP2FwaS12ZXJzaW9uPTIwMTUtMDctMDEmJGV4cGFuZD1yZXNvdXJjZVR5cGVz",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"displayName\": \"Microsoft Monitoring Insights\",\r\n  \"operations\": [],\r\n  \"resourceTypes\": [\r\n    {\r\n      \"name\": \"AlertRules\",\r\n      \"displayName\": \"Alert Rules\",\r\n      \"operations\": [\r\n        {\r\n          \"name\": \"Microsoft.Insights/AlertRules/Write\",\r\n          \"displayName\": \"Alert Rule write\",\r\n          \"description\": \"Writing to an alert rule configuration\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.Insights/AlertRules/Delete\",\r\n          \"displayName\": \"Alert Rule delete\",\r\n          \"description\": \"Deleting an alert rule configuration\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.Insights/AlertRules/Read\",\r\n          \"displayName\": \"Alert Rule read\",\r\n          \"description\": \"Reading an alert rule configuration\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.Insights/AlertRules/Activated/Action\",\r\n          \"displayName\": \"Alert Rule activated\",\r\n          \"description\": \"Alert Rule activated\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.Insights/AlertRules/Resolved/Action\",\r\n          \"displayName\": \"Alert Rule resolved\",\r\n          \"description\": \"Alert Rule resolved\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"AlertRules/Incidents\",\r\n      \"displayName\": \"Alert Rules\",\r\n      \"operations\": [\r\n        {\r\n          \"name\": \"Microsoft.Insights/AlertRules/Incidents/Read\",\r\n          \"displayName\": \"Alert Rule Incidents read\",\r\n          \"description\": \"Reading an alert rule configuration\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"eventtypes/values\",\r\n      \"displayName\": \"Events\",\r\n      \"operations\": [\r\n        {\r\n          \"name\": \"Microsoft.Insights/eventtypes/values/Read\",\r\n          \"displayName\": \"Event types management values read\",\r\n          \"description\": \"Read management event type values\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"eventtypes/digestevents\",\r\n      \"displayName\": \"Digest events\",\r\n      \"operations\": [\r\n        {\r\n          \"name\": \"Microsoft.Insights/eventtypes/digestevents/Read\",\r\n          \"displayName\": \"Event types management digest read\",\r\n          \"description\": \"Read management event type digest\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"AutoscaleSettings\",\r\n      \"displayName\": \"Autoscale\",\r\n      \"operations\": [\r\n        {\r\n          \"name\": \"Microsoft.Insights/AutoscaleSettings/Write\",\r\n          \"displayName\": \"Autoscale Setting write\",\r\n          \"description\": \"Writing to an autoscale setting configuration\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.Insights/AutoscaleSettings/Delete\",\r\n          \"displayName\": \"Autoscale Setting delete\",\r\n          \"description\": \"Deleting an autoscale setting configuration\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.Insights/AutoscaleSettings/Read\",\r\n          \"displayName\": \"Autoscale Setting read\",\r\n          \"description\": \"Reading an autoscale setting configuration\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.Insights/AutoscaleSettings/Scaleup/Action\",\r\n          \"displayName\": \"Autoscale scale up operation\",\r\n          \"description\": \"Autoscale scale up operation\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.Insights/AutoscaleSettings/Scaledown/Action\",\r\n          \"displayName\": \"Autoscale scale down operation\",\r\n          \"description\": \"Autoscale scale down operation\",\r\n          \"origin\": null,\r\n          \"properties\": {}\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"id\": \"/providers/Microsoft.Authorization/providerOperations/microsoft.insights\",\r\n  \"type\": \"Microsoft.Authorization/providerOperations\",\r\n  \"name\": \"microsoft.insights\"\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "2888"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "3ec8e40d-aee7-4db3-978e-3de5b350e8eb"
-        ],
-        "x-ms-gateway-service-instanceid": [
-          "PASFE_IN_3"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-tenant-reads": [
-          "14994"
-        ],
-        "x-ms-correlation-request-id": [
-          "860ed830-cd27-44ab-9f2c-24dece48ac60"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20151020T225040Z:860ed830-cd27-44ab-9f2c-24dece48ac60"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 20 Oct 2015 22:50:40 GMT"
+          "Wed, 21 Oct 2015 02:46:30 GMT"
         ],
         "Set-Cookie": [
           "x-ms-gateway-slice=productiona; path=/"
@@ -277,7 +277,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "fded59ee-c1f9-4795-8885-10d6a309f27b"
+          "5e924b46-7acd-42c8-ac50-1678fe8b72de"
         ],
         "x-ms-gateway-service-instanceid": [
           "PASFE_IN_1"
@@ -289,19 +289,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "14995"
+          "14994"
         ],
         "x-ms-correlation-request-id": [
-          "3fd43807-22a2-460c-a2b2-9335723d393f"
+          "6d4a43d3-a8df-4f88-a416-69b036839967"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151020T225040Z:3fd43807-22a2-460c-a2b2-9335723d393f"
+          "WESTUS:20151021T024630Z:6d4a43d3-a8df-4f88-a416-69b036839967"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 20 Oct 2015 22:50:40 GMT"
+          "Wed, 21 Oct 2015 02:46:30 GMT"
         ],
         "Set-Cookie": [
           "x-ms-gateway-slice=productiona; path=/"
@@ -340,73 +340,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "8918d1c0-7122-48a3-acc1-24dc1af46afe"
+          "a9cadbd9-8d13-43da-b5f9-6f1c420b52e2"
         ],
         "x-ms-gateway-service-instanceid": [
-          "PASFE_IN_1"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-ratelimit-remaining-tenant-reads": [
-          "14992"
-        ],
-        "x-ms-correlation-request-id": [
-          "9f0c2a5f-e04b-49d2-bcbf-869e4afd7a13"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20151020T225041Z:9f0c2a5f-e04b-49d2-bcbf-869e4afd7a13"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 20 Oct 2015 22:50:40 GMT"
-        ],
-        "Set-Cookie": [
-          "x-ms-gateway-slice=productiona; path=/"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.5"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/providers/Microsoft.Authorization/providerOperations/Microsoft.OperationalInsights?api-version=2015-07-01&$expand=resourceTypes",
-      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wcm92aWRlck9wZXJhdGlvbnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHM/YXBpLXZlcnNpb249MjAxNS0wNy0wMSYkZXhwYW5kPXJlc291cmNlVHlwZXM=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"displayName\": \"Microsoft Operational Insights\",\r\n  \"operations\": [],\r\n  \"resourceTypes\": [\r\n    {\r\n      \"name\": \"linkTargets\",\r\n      \"displayName\": \"Unlinked Account\",\r\n      \"operations\": [\r\n        {\r\n          \"name\": \"Microsoft.OperationalInsights/linkTargets/read\",\r\n          \"displayName\": \"List Unlinked Accounts\",\r\n          \"description\": \"Lists existing accounts that are not associated with an Azure subscription. To link this Azure subscription to a workspace, use a customer id returned by this operation in the customer id property of the Create Workspace operation.\",\r\n          \"origin\": null,\r\n          \"properties\": null\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"workspaces\",\r\n      \"displayName\": \"Workspace\",\r\n      \"operations\": [\r\n        {\r\n          \"name\": \"Microsoft.OperationalInsights/workspaces/write\",\r\n          \"displayName\": \"Create Workspace\",\r\n          \"description\": \"Creates a new workspace or links to an existing workspace by providing the customer id from the existing workspace.\",\r\n          \"origin\": null,\r\n          \"properties\": null\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.OperationalInsights/workspaces/read\",\r\n          \"displayName\": \"Get Workspace\",\r\n          \"description\": \"Gets an existing workspace\",\r\n          \"origin\": null,\r\n          \"properties\": null\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.OperationalInsights/workspaces/delete\",\r\n          \"displayName\": \"Delete Workspace\",\r\n          \"description\": \"Deletes a workspace. If the workspace was linked to an existing workspace at creation time then the workspace it was linked to is not deleted.\",\r\n          \"origin\": null,\r\n          \"properties\": null\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.OperationalInsights/workspaces/generateregistrationcertificate/action\",\r\n          \"displayName\": \"Generates Registration Certificate for Workspace.\",\r\n          \"description\": \"Generates Registration Certificate for the workspace. This Certificate is used to connect Microsoft System Center Operation Manager to the workspace.\",\r\n          \"origin\": null,\r\n          \"properties\": null\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.OperationalInsights/workspaces/sharedKeys/action\",\r\n          \"displayName\": \"List Workspace Shared Keys\",\r\n          \"description\": \"Retrieves the shared keys for the workspace. These keys are used to connect Microsoft Operational Insights agents to the workspace.\",\r\n          \"origin\": null,\r\n          \"properties\": null\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.OperationalInsights/workspaces/search/action\",\r\n          \"displayName\": \"Search Workspace Data\",\r\n          \"description\": \"Executes a search query\",\r\n          \"origin\": null,\r\n          \"properties\": null\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"workspaces/managementGroups\",\r\n      \"displayName\": \"Management Group\",\r\n      \"operations\": [\r\n        {\r\n          \"name\": \"Microsoft.OperationalInsights/workspaces/managementGroups/read\",\r\n          \"displayName\": \"Get Management Groups for Workspace\",\r\n          \"description\": \"Gets the names and metadata for System Center Operations Manager management groups connected to this workspace.\",\r\n          \"origin\": null,\r\n          \"properties\": null\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"workspaces/schema\",\r\n      \"displayName\": \"Search Schema\",\r\n      \"operations\": [\r\n        {\r\n          \"name\": \"Microsoft.OperationalInsights/workspaces/schema/read\",\r\n          \"displayName\": \"Get Search Schema\",\r\n          \"description\": \"Gets the search schema for the workspace.  Search schema includes the exposed fields and their types.\",\r\n          \"origin\": null,\r\n          \"properties\": null\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"workspaces/usages\",\r\n      \"displayName\": \"Usage Metric\",\r\n      \"operations\": [\r\n        {\r\n          \"name\": \"Microsoft.OperationalInsights/workspaces/usages/read\",\r\n          \"displayName\": \"Get Usage Data for Workspace\",\r\n          \"description\": \"Gets usage data for a workspace including the amount of data read by the workspace.\",\r\n          \"origin\": null,\r\n          \"properties\": null\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"workspaces/savedSearches\",\r\n      \"displayName\": \"Saved Search\",\r\n      \"operations\": [\r\n        {\r\n          \"name\": \"Microsoft.OperationalInsights/workspaces/savedSearches/read\",\r\n          \"displayName\": \"Get Saved Search\",\r\n          \"description\": \"Gets a saved search query\",\r\n          \"origin\": null,\r\n          \"properties\": null\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.OperationalInsights/workspaces/savedSearches/write\",\r\n          \"displayName\": \"Create Saved Search\",\r\n          \"description\": \"Creates a saved search query\",\r\n          \"origin\": null,\r\n          \"properties\": null\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.OperationalInsights/workspaces/savedSearches/delete\",\r\n          \"displayName\": \"Delete Saved Search\",\r\n          \"description\": \"Deletes a saved search query\",\r\n          \"origin\": null,\r\n          \"properties\": null\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"workspaces/storageinsightconfigs\",\r\n      \"displayName\": \"Storage Insight Configuration\",\r\n      \"operations\": [\r\n        {\r\n          \"name\": \"Microsoft.OperationalInsights/workspaces/storageinsightconfigs/write\",\r\n          \"displayName\": \"Create Storage Configuration\",\r\n          \"description\": \"Creates a new storage configuration. These configurations are used to pull data from a location in an existing storage account.\",\r\n          \"origin\": null,\r\n          \"properties\": null\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.OperationalInsights/workspaces/storageinsightconfigs/read\",\r\n          \"displayName\": \"Get Storage Configuration\",\r\n          \"description\": \"Gets a storage configuration.\",\r\n          \"origin\": null,\r\n          \"properties\": null\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.OperationalInsights/workspaces/storageinsightconfigs/delete\",\r\n          \"displayName\": \"Delete Storage Configuration\",\r\n          \"description\": \"Deletes a storage configuration. This will stop Microsoft Operational Insights from reading data from the storage account.\",\r\n          \"origin\": null,\r\n          \"properties\": null\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"id\": \"/providers/Microsoft.Authorization/providerOperations/Microsoft.OperationalInsights\",\r\n  \"type\": \"Microsoft.Authorization/providerOperations\",\r\n  \"name\": \"Microsoft.OperationalInsights\"\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "4839"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "d1c1f784-2aab-4fcf-baec-af9bd68404c4"
-        ],
-        "x-ms-gateway-service-instanceid": [
-          "PASFE_IN_3"
+          "PASFE_IN_2"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -418,16 +355,79 @@
           "14991"
         ],
         "x-ms-correlation-request-id": [
-          "16d2a084-ac41-455e-8427-ea124e43a417"
+          "9f3e72ff-6ce5-4515-9c3e-fa34d315a418"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151020T225041Z:16d2a084-ac41-455e-8427-ea124e43a417"
+          "WESTUS:20151021T024631Z:9f3e72ff-6ce5-4515-9c3e-fa34d315a418"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 20 Oct 2015 22:50:40 GMT"
+          "Wed, 21 Oct 2015 02:46:31 GMT"
+        ],
+        "Set-Cookie": [
+          "x-ms-gateway-slice=productiona; path=/"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.5"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Authorization/providerOperations/Microsoft.OperationalInsights?api-version=2015-07-01&$expand=resourceTypes",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wcm92aWRlck9wZXJhdGlvbnMvTWljcm9zb2Z0Lk9wZXJhdGlvbmFsSW5zaWdodHM/YXBpLXZlcnNpb249MjAxNS0wNy0wMSYkZXhwYW5kPXJlc291cmNlVHlwZXM=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"displayName\": \"Microsoft Operational Insights\",\r\n  \"operations\": [],\r\n  \"resourceTypes\": [\r\n    {\r\n      \"name\": \"linkTargets\",\r\n      \"displayName\": \"Unlinked Account\",\r\n      \"operations\": [\r\n        {\r\n          \"name\": \"Microsoft.OperationalInsights/linkTargets/read\",\r\n          \"displayName\": \"List Unlinked Accounts\",\r\n          \"description\": \"Lists existing accounts that are not associated with an Azure subscription. To link this Azure subscription to a workspace, use a customer id returned by this operation in the customer id property of the Create Workspace operation.\",\r\n          \"origin\": null,\r\n          \"properties\": null\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"workspaces\",\r\n      \"displayName\": \"Workspace\",\r\n      \"operations\": [\r\n        {\r\n          \"name\": \"Microsoft.OperationalInsights/workspaces/write\",\r\n          \"displayName\": \"Create Workspace\",\r\n          \"description\": \"Creates a new workspace or links to an existing workspace by providing the customer id from the existing workspace.\",\r\n          \"origin\": null,\r\n          \"properties\": null\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.OperationalInsights/workspaces/read\",\r\n          \"displayName\": \"Get Workspace\",\r\n          \"description\": \"Gets an existing workspace\",\r\n          \"origin\": null,\r\n          \"properties\": null\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.OperationalInsights/workspaces/delete\",\r\n          \"displayName\": \"Delete Workspace\",\r\n          \"description\": \"Deletes a workspace. If the workspace was linked to an existing workspace at creation time then the workspace it was linked to is not deleted.\",\r\n          \"origin\": null,\r\n          \"properties\": null\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.OperationalInsights/workspaces/generateregistrationcertificate/action\",\r\n          \"displayName\": \"Generates Registration Certificate for Workspace.\",\r\n          \"description\": \"Generates Registration Certificate for the workspace. This Certificate is used to connect Microsoft System Center Operation Manager to the workspace.\",\r\n          \"origin\": null,\r\n          \"properties\": null\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.OperationalInsights/workspaces/sharedKeys/action\",\r\n          \"displayName\": \"List Workspace Shared Keys\",\r\n          \"description\": \"Retrieves the shared keys for the workspace. These keys are used to connect Microsoft Operational Insights agents to the workspace.\",\r\n          \"origin\": null,\r\n          \"properties\": null\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.OperationalInsights/workspaces/search/action\",\r\n          \"displayName\": \"Search Workspace Data\",\r\n          \"description\": \"Executes a search query\",\r\n          \"origin\": null,\r\n          \"properties\": null\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"workspaces/managementGroups\",\r\n      \"displayName\": \"Management Group\",\r\n      \"operations\": [\r\n        {\r\n          \"name\": \"Microsoft.OperationalInsights/workspaces/managementGroups/read\",\r\n          \"displayName\": \"Get Management Groups for Workspace\",\r\n          \"description\": \"Gets the names and metadata for System Center Operations Manager management groups connected to this workspace.\",\r\n          \"origin\": null,\r\n          \"properties\": null\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"workspaces/schema\",\r\n      \"displayName\": \"Search Schema\",\r\n      \"operations\": [\r\n        {\r\n          \"name\": \"Microsoft.OperationalInsights/workspaces/schema/read\",\r\n          \"displayName\": \"Get Search Schema\",\r\n          \"description\": \"Gets the search schema for the workspace.  Search schema includes the exposed fields and their types.\",\r\n          \"origin\": null,\r\n          \"properties\": null\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"workspaces/usages\",\r\n      \"displayName\": \"Usage Metric\",\r\n      \"operations\": [\r\n        {\r\n          \"name\": \"Microsoft.OperationalInsights/workspaces/usages/read\",\r\n          \"displayName\": \"Get Usage Data for Workspace\",\r\n          \"description\": \"Gets usage data for a workspace including the amount of data read by the workspace.\",\r\n          \"origin\": null,\r\n          \"properties\": null\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"workspaces/savedSearches\",\r\n      \"displayName\": \"Saved Search\",\r\n      \"operations\": [\r\n        {\r\n          \"name\": \"Microsoft.OperationalInsights/workspaces/savedSearches/read\",\r\n          \"displayName\": \"Get Saved Search\",\r\n          \"description\": \"Gets a saved search query\",\r\n          \"origin\": null,\r\n          \"properties\": null\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.OperationalInsights/workspaces/savedSearches/write\",\r\n          \"displayName\": \"Create Saved Search\",\r\n          \"description\": \"Creates a saved search query\",\r\n          \"origin\": null,\r\n          \"properties\": null\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.OperationalInsights/workspaces/savedSearches/delete\",\r\n          \"displayName\": \"Delete Saved Search\",\r\n          \"description\": \"Deletes a saved search query\",\r\n          \"origin\": null,\r\n          \"properties\": null\r\n        }\r\n      ]\r\n    },\r\n    {\r\n      \"name\": \"workspaces/storageinsightconfigs\",\r\n      \"displayName\": \"Storage Insight Configuration\",\r\n      \"operations\": [\r\n        {\r\n          \"name\": \"Microsoft.OperationalInsights/workspaces/storageinsightconfigs/write\",\r\n          \"displayName\": \"Create Storage Configuration\",\r\n          \"description\": \"Creates a new storage configuration. These configurations are used to pull data from a location in an existing storage account.\",\r\n          \"origin\": null,\r\n          \"properties\": null\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.OperationalInsights/workspaces/storageinsightconfigs/read\",\r\n          \"displayName\": \"Get Storage Configuration\",\r\n          \"description\": \"Gets a storage configuration.\",\r\n          \"origin\": null,\r\n          \"properties\": null\r\n        },\r\n        {\r\n          \"name\": \"Microsoft.OperationalInsights/workspaces/storageinsightconfigs/delete\",\r\n          \"displayName\": \"Delete Storage Configuration\",\r\n          \"description\": \"Deletes a storage configuration. This will stop Microsoft Operational Insights from reading data from the storage account.\",\r\n          \"origin\": null,\r\n          \"properties\": null\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"id\": \"/providers/Microsoft.Authorization/providerOperations/Microsoft.OperationalInsights\",\r\n  \"type\": \"Microsoft.Authorization/providerOperations\",\r\n  \"name\": \"Microsoft.OperationalInsights\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "4839"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "b21f351c-aa7b-4f99-b248-e81ec04a224f"
+        ],
+        "x-ms-gateway-service-instanceid": [
+          "PASFE_IN_0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "14990"
+        ],
+        "x-ms-correlation-request-id": [
+          "525d6c1a-10dd-4c18-97b2-bff141e5a5a1"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151021T024631Z:525d6c1a-10dd-4c18-97b2-bff141e5a5a1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 21 Oct 2015 02:46:31 GMT"
         ],
         "Set-Cookie": [
           "x-ms-gateway-slice=productiona; path=/"
@@ -466,10 +466,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "d7561270-7ec2-4603-a840-52bd11fb6790"
+          "c47c27f5-4ae8-4ac1-ac65-bc7e6b874e14"
         ],
         "x-ms-gateway-service-instanceid": [
-          "PASFE_IN_1"
+          "PASFE_IN_2"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -478,19 +478,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "14990"
+          "14989"
         ],
         "x-ms-correlation-request-id": [
-          "92d3934f-989d-412a-9585-acf7f48fc7ba"
+          "e1862110-ef32-4dbc-8932-baef58ed1a7b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151020T225041Z:92d3934f-989d-412a-9585-acf7f48fc7ba"
+          "WESTUS:20151021T024631Z:e1862110-ef32-4dbc-8932-baef58ed1a7b"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 20 Oct 2015 22:50:41 GMT"
+          "Wed, 21 Oct 2015 02:46:31 GMT"
         ],
         "Set-Cookie": [
           "x-ms-gateway-slice=productiona; path=/"
@@ -529,10 +529,10 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "893fd10a-dc19-403e-be5b-8510207eaa41"
+          "c10c8246-7dc3-454e-a7e6-bc4df7cf601c"
         ],
         "x-ms-gateway-service-instanceid": [
-          "PASFE_IN_0"
+          "PASFE_IN_2"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -541,19 +541,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "14989"
+          "14988"
         ],
         "x-ms-correlation-request-id": [
-          "e083ea6c-5423-4937-ada6-35e1e51be94c"
+          "53483487-c208-443c-8c58-34dce3a9c91b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151020T225041Z:e083ea6c-5423-4937-ada6-35e1e51be94c"
+          "WESTUS:20151021T024631Z:53483487-c208-443c-8c58-34dce3a9c91b"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 20 Oct 2015 22:50:41 GMT"
+          "Wed, 21 Oct 2015 02:46:31 GMT"
         ],
         "Set-Cookie": [
           "x-ms-gateway-slice=productiona; path=/"
