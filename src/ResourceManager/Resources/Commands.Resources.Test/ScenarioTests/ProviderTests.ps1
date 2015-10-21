@@ -53,17 +53,17 @@ function Test-AzureProvider
 #>
 function Test-AzureProviderOperation
 {
-    # Get all actions by all providers
+    # Get all operations by all providers
     $allActions = Get-AzureRmProviderOperation *
 	Assert-True { $allActions.Length -gt 0 }
 
-	# Get all actions of microsoft.insights provider
+	# Get all operations of microsoft.insights provider
 	$insightsActions = Get-AzureRmProviderOperation Microsoft.Insights/*
 	$insightsActions
 	Assert-True { $insightsActions.Length -gt 0 }
 	Assert-True { $allActions.Length -gt $insightsActions.Length }
 
-	# Filter non-Microsoft.Insights actions and match the lengths
+	# Filter non-Microsoft.Insights operations and match the lengths
 	$nonInsightsActions = $allActions | Where-Object { $_.Operation.ToLower().StartsWith("microsoft.insights/") -eq $false }
 	$actualLength = $allActions.Length - $nonInsightsActions.Length;
 	$expectedLength = $insightsActions.Length;
@@ -83,7 +83,7 @@ function Test-AzureProviderOperation
 		Assert-True { $action.Operation.ToLower().Startswith("microsoft.insights/"); }
 	}
 
-	# Get all Read actions of microsoft.insights provider
+	# Get all Read operations of microsoft.insights provider
 	$insightsReadActions = Get-AzureRmProviderOperation Microsoft.Insights/*/read
 	Assert-True { $insightsReadActions.Length -gt 0 }
 	Assert-True { $insightsActions.Length -gt $insightsReadActions.Length }
@@ -93,7 +93,7 @@ function Test-AzureProviderOperation
 		Assert-True { $action.Operation.ToLower().StartsWith("microsoft.insights/");}
 	}
 
-	# Get all Read actions of all providers
+	# Get all Read operations of all providers
 	$readActions = Get-AzureRmProviderOperation */read
 	Assert-True { $readActions.Length -gt 0 }
 	Assert-True { $readActions.Length -lt $allActions.Length }
@@ -104,18 +104,30 @@ function Test-AzureProviderOperation
 	    Assert-True { $action.Operation.ToLower().EndsWith("/read"); }
 	}
 
-	# Get a particular action
+	# Get a particular operation
 	$action = Get-AzureRmProviderOperation Microsoft.OperationalInsights/workspaces/usages/read
 	Assert-AreEqual $action.Operation.ToLower() "Microsoft.OperationalInsights/workspaces/usages/read".ToLower();
 
-	# Get an invalid action
+	# Get an invalid operation
 	$action = Get-AzureRmProviderOperation Microsoft.OperationalInsights/workspaces/usages/read/123
 	Assert-True { $action.Length -eq 0 }
 
-	# Get actions for non-existing provider
+	# Get operations for non-existing provider
 	$exceptionMessage = "ProviderNotFound: Provider NonExistentProvider not found.";
 	Assert-Throws { Get-AzureRmProviderOperation NonExistentProvider/* } $exceptionMessage
 
-	# Get action for non-existing provider
+	# Get operations for non-existing provider
 	Assert-Throws { Get-AzureRmProviderOperation NonExistentProvider/servers/read } $exceptionMessage
+
+	# Get operations with invalid search string parts
+	$exceptionMessage = "Individual parts in the search string should either equal * or not contain *.";
+	Assert-Throws {Get-AzureRmProviderOperation Microsoft.ClassicCompute/virtual*/read } $exceptionMessage
+
+	# Get operations with invalid provider name
+	$exceptionMessage = "To get all operations under Microsoft.Sql, please specify the search string as Microsoft.Sql/*.";
+	Assert-Throws {Get-AzureRmProviderOperation Microsoft.Sql } $exceptionMessage
+
+	# Get operations with ? in search string
+	$exceptionMessage = "Wildcard character ? is not supported.";
+	Assert-Throws {Get-AzureRmProviderOperation Microsoft.Sql/servers/*/rea? } $exceptionMessage
  }
