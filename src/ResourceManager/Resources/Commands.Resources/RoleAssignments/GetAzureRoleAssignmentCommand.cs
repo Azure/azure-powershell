@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Commands.Resources
             FilterRoleAssignmentsOptions options = new FilterRoleAssignmentsOptions()
             {
                 Scope = Scope,
-                RoleDefinition = RoleDefinitionName,
+                RoleDefinitionName = RoleDefinitionName,
                 ADObjectFilter = new ADObjectFilterOptions
                 {
                     SignInName = SignInName,

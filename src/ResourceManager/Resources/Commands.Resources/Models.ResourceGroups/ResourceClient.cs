@@ -259,6 +259,13 @@ namespace Microsoft.Azure.Commands.Resources.Models
                         errorMessage);
 
                     WriteError(statusMessage);
+
+                    List<string> detailedMessage = ParseDetailErrorMessage(operation.Properties.StatusMessage);
+
+                    if (detailedMessage != null)
+                    {
+                        detailedMessage.ForEach(s => WriteError(s));
+                    }
                 }
             }
         }
@@ -274,6 +281,24 @@ namespace Microsoft.Azure.Commands.Resources.Models
             {
                 return error.Message;
             }
+        }
+
+        public static List<string> ParseDetailErrorMessage(string statusMessage)
+        {
+            if(!string.IsNullOrEmpty(statusMessage))
+            {
+                List<string> detailedMessage = new List<string>();
+                dynamic errorMessage = JsonConvert.DeserializeObject(statusMessage);
+                if(errorMessage.error != null && errorMessage.error.details !=null)
+                {
+                    foreach(var detail in errorMessage.error.details)
+                    {
+                        detailedMessage.Add(detail.message.ToString());
+                    }
+                }
+                return detailedMessage;
+            }
+            return null;
         }
 
         private DeploymentExtended WaitDeploymentStatus(

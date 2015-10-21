@@ -234,11 +234,29 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Storage account name for boot diagnostics is not given..
+        /// </summary>
+        public static string BootDiagnosticsNoStorageAccountError {
+            get {
+                return ResourceManager.GetString("BootDiagnosticsNoStorageAccountError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot specify both Windows and Linux configurations..
         /// </summary>
         public static string BothWindowsAndLinuxConfigurationsSpecified {
             get {
                 return ResourceManager.GetString("BothWindowsAndLinuxConfigurationsSpecified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Since the VM is created using premium storage, new standard storage account, {0}, is created for boot diagnostics..
+        /// </summary>
+        public static string CreatingStorageAccountForBootDiagnostics {
+            get {
+                return ResourceManager.GetString("CreatingStorageAccountForBootDiagnostics", resourceCulture);
             }
         }
         
@@ -275,6 +293,24 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string DscExtensionRemovalConfirmation {
             get {
                 return ResourceManager.GetString("DscExtensionRemovalConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error occurred when creating storage account for boot diagnostics.  Keep creating a VM with disabling boot diagnostics.  : {0}.
+        /// </summary>
+        public static string ErrorDuringCreatingStorageAccountForBootDiagnostics {
+            get {
+                return ResourceManager.GetString("ErrorDuringCreatingStorageAccountForBootDiagnostics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage account, {0}, is a premium account.  You cannot specify a premium storage account for boot diagnostics.
+        /// </summary>
+        public static string PremiumStorageAccountForBootDiagnostics {
+            get {
+                return ResourceManager.GetString("PremiumStorageAccountForBootDiagnostics", resourceCulture);
             }
         }
         
@@ -784,6 +820,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string StorageCredentialsFactoryCurrentSubscriptionNotSet {
             get {
                 return ResourceManager.GetString("StorageCredentialsFactoryCurrentSubscriptionNotSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Since the VM is created using premium storage, existing standard storage account, {0}, is used for boot diagnostics..
+        /// </summary>
+        public static string UsingExistingStorageAccountForBootDiagnostics {
+            get {
+                return ResourceManager.GetString("UsingExistingStorageAccountForBootDiagnostics", resourceCulture);
             }
         }
         

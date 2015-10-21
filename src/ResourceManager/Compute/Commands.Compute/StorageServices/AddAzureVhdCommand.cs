@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
                 }
             }
 
-            var storageCredentialsFactory = CreateStorageCredentialsFactory(destinationUri);
+            var storageCredentialsFactory = CreateStorageCredentialsFactory();
 
             PathIntrinsics currentPath = SessionState.Path;
             var filePath = new FileInfo(currentPath.GetUnresolvedProviderPathFromPSPath(LocalFilePath.ToString()));
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
             return parameters;
         }
 
-        private StorageCredentialsFactory CreateStorageCredentialsFactory(BlobUri destinationUri)
+        private StorageCredentialsFactory CreateStorageCredentialsFactory()
         {
             StorageCredentialsFactory storageCredentialsFactory;
 
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 
             if (StorageCredentialsFactory.IsChannelRequired(Destination))
             {
-                storageCredentialsFactory = new StorageCredentialsFactory(this.ResourceGroupName, storageClient, AzureRMCmdlet.DefaultProfile.Context.Subscription);
+                storageCredentialsFactory = new StorageCredentialsFactory(this.ResourceGroupName, storageClient, DefaultContext.Subscription);
             }
             else
             {

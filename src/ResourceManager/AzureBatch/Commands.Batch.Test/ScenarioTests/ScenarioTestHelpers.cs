@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Security.Cryptography.X509Certificates;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Common;
 using Microsoft.Azure.Batch.Protocol;
@@ -83,13 +84,80 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Creates a test pool for use in Scenario tests.
+        /// Adds a test certificate for use in Scenario tests. Returns the thumbprint of the cert.
         /// </summary>
-        public static void CreateTestPool(BatchController controller, BatchAccountContext context, string poolId, int targetDedicated)
+        public static string AddTestCertificate(BatchController controller, BatchAccountContext context, string filePath)
         {
             RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
             BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            X509Certificate2 cert = new X509Certificate2(filePath);
+            NewCertificateParameters parameters = new NewCertificateParameters(context, null, cert.RawData, behaviors);
+
+            client.AddCertificate(parameters);
+
+            return cert.Thumbprint;
+        }
+
+        /// <summary>
+        /// Deletes a certificate.
+        /// </summary>
+        public static void DeleteTestCertificate(BatchController controller, BatchAccountContext context, string thumbprintAlgorithm, string thumbprint)
+        {
+            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
+            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            CertificateOperationParameters parameters = new CertificateOperationParameters(context, thumbprintAlgorithm,
+                thumbprint, behaviors);
+
+            client.DeleteCertificate(parameters);
+        }
+
+        /// <summary>
+        /// Deletes a certificate.
+        /// </summary>
+        public static void WaitForCertificateToFailDeletion(BatchController controller, BatchAccountContext context, string thumbprintAlgorithm, string thumbprint)
+        {
+            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
+            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            ListCertificateOptions parameters = new ListCertificateOptions(context, behaviors)
+            {
+                ThumbprintAlgorithm = BatchTestHelpers.TestCertificateAlgorithm,
+                Thumbprint = thumbprint
+            };
+
+            PSCertificate cert = client.ListCertificates(parameters).First();
+
+            DateTime timeout = DateTime.Now.AddMinutes(2);
+            while (cert.State != CertificateState.DeleteFailed)
+            {
+                if (DateTime.Now > timeout)
+                {
+                    throw new TimeoutException("Timed out waiting for failed certificate deletion");
+                }
+                Sleep(10000);
+                cert = client.ListCertificates(parameters).First();
+            }
+        }
+
+        /// <summary>
+        /// Creates a test pool for use in Scenario tests.
+        /// </summary>
+        public static void CreateTestPool(BatchController controller, BatchAccountContext context, string poolId, int targetDedicated, CertificateReference certReference = null)
+        {
+            RequestInterceptor interceptor = CreateHttpRecordingInterceptor();
+            BatchClientBehavior[] behaviors = new BatchClientBehavior[] { interceptor };
+            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+
+            PSCertificateReference[] certReferences = null;
+            if (certReference != null)
+            {
+                certReferences = new PSCertificateReference[] { new PSCertificateReference(certReference) };
+            }
 
             NewPoolParameters parameters = new NewPoolParameters(context, poolId, behaviors)
             {
@@ -97,6 +165,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 OSFamily = "4",
                 TargetOSVersion = "*",
                 TargetDedicated = targetDedicated,
+                CertificateReferences = certReferences,
             };
 
             client.CreatePool(parameters);

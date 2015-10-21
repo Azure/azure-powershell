@@ -31,7 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.New, StorageNouns.StorageContext, DefaultParameterSetName = AccountNameKeyParameterSet),
         OutputType(typeof(AzureStorageContext))]
-    public class NewAzureStorageContext : AzureSMCmdlet
+    public class NewAzureStorageContext : AzureDataCmdlet
     {
         /// <summary>
         /// Account name and key parameter set name
@@ -338,11 +338,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         {
             AzureEnvironment azureEnvironment = null;
 
-            if (null != Profile)
+            if (null != DefaultContext)
             {
-                if (string.IsNullOrEmpty(azureEnvironmentName) && (null != Profile.Context))
+                if (string.IsNullOrEmpty(azureEnvironmentName) )
                 {
-                    azureEnvironment = Profile.Context.Environment;
+                    azureEnvironment = DefaultContext.Environment;
 
                     if (null == azureEnvironment)
                     {
@@ -350,18 +350,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                     }
                 }
 
-                if (null == azureEnvironment)
-                {
-                    try
-                    {
-                        var profileClient = new ProfileClient(Profile);
-                        azureEnvironment = profileClient.GetEnvironmentOrDefault(azureEnvironmentName);
-                    }
-                    catch (ArgumentException e)
-                    {
-                        throw new ArgumentException(e.Message + " " + string.Format(CultureInfo.CurrentCulture, Resources.ValidEnvironmentName, EnvironmentName.AzureCloud, EnvironmentName.AzureChinaCloud));
-                    }
-                }
             }
 
             if (null != azureEnvironment)
@@ -393,11 +381,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
             return Resources.DefaultStorageEndPointDomain;
         }
 
+        protected override void ProcessRecord()
+        {
+            ExecuteCmdlet();
+        }
+
         /// <summary>
         /// Execute command
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
-        public override void ExecuteCmdlet()
+        public virtual void ExecuteCmdlet()
         {
             CloudStorageAccount account = null;
             bool useHttps = (StorageNouns.HTTPS.ToLower() == protocolType.ToLower());

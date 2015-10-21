@@ -19,6 +19,10 @@
                 <PropertyName>Name</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>BootDiagnostics</Label>
+                <PropertyName>BootDiagnosticsText</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>Disks</Label>
                 <PropertyName>DisksText</PropertyName>
               </ListItem>
@@ -63,6 +67,14 @@
               <ListItem>
                 <Label>Status</Label>
                 <PropertyName>Status</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>StatusCode</Label>
+                <PropertyName>StatusCode</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>RequestId </Label>
+                <PropertyName>RequestId</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Output</Label>

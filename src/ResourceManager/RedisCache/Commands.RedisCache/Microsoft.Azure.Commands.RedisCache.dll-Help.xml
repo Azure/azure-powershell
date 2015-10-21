@@ -98,6 +98,9 @@
     <command:terminatingErrors />
     <command:nonTerminatingErrors />
     <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website</maml:para>
+      </maml:alert>
     </maml:alertSet>
     <command:examples>
       <command:example>
@@ -453,7 +456,8 @@
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
         <maml:name>RedisConfiguration</maml:name>
@@ -465,7 +469,8 @@
           <maml:name>Hashtable</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
         <maml:name>EnableNonSslPort</maml:name>
@@ -477,7 +482,8 @@
           <maml:name>Boolean</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
         <maml:name>ShardCount</maml:name>
@@ -561,6 +567,9 @@
     <command:terminatingErrors />
     <command:nonTerminatingErrors />
     <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website</maml:para>
+      </maml:alert>
     </maml:alertSet>
     <command:examples>
       <command:example>
@@ -726,7 +735,8 @@
           <maml:name>SwitchParameter</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="">
         <maml:name>PassThru</maml:name>
@@ -737,7 +747,8 @@
           <maml:name>SwitchParameter</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
     </command:parameters>
     <command:inputTypes>
@@ -773,6 +784,9 @@
     <command:terminatingErrors />
     <command:nonTerminatingErrors />
     <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website</maml:para>
+      </maml:alert>
     </maml:alertSet>
     <command:examples>
       <command:example>
@@ -917,6 +931,9 @@
     <command:terminatingErrors />
     <command:nonTerminatingErrors />
     <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website</maml:para>
+      </maml:alert>
     </maml:alertSet>
     <command:examples>
       <command:example>
@@ -1046,7 +1063,8 @@
           <maml:name>SwitchParameter</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
     </command:parameters>
     <command:inputTypes>
@@ -1082,6 +1100,9 @@
     <command:terminatingErrors />
     <command:nonTerminatingErrors />
     <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website</maml:para>
+      </maml:alert>
     </maml:alertSet>
     <command:examples>
       <command:example>
@@ -1250,7 +1271,8 @@
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
         <maml:name>Sku</maml:name>
@@ -1262,7 +1284,8 @@
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
         <maml:name>MaxMemoryPolicy</maml:name>
@@ -1274,7 +1297,8 @@
           <maml:name>String</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
         <maml:name>RedisConfiguration</maml:name>
@@ -1286,7 +1310,8 @@
           <maml:name>Hashtable</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
         <maml:name>EnableNonSslPort</maml:name>
@@ -1298,7 +1323,8 @@
           <maml:name>Boolean</maml:name>
           <maml:uri />
         </dev:type>
-        <dev:defaultValue></dev:defaultValue>
+        <dev:defaultValue>
+        </dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
         <maml:name>ShardCount</maml:name>
@@ -1346,6 +1372,9 @@
     <command:terminatingErrors />
     <command:nonTerminatingErrors />
     <maml:alertSet>
+      <maml:alert>
+        <maml:para>Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website</maml:para>
+      </maml:alert>
     </maml:alertSet>
     <command:examples>
       <command:example>
