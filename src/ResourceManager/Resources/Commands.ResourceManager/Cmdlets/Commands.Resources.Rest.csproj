@@ -137,7 +137,8 @@
     <Compile Include="Handlers\TracingHandler.cs" />
     <Compile Include="Handlers\CmdletInfoHandler.cs" />
     <Compile Include="Handlers\UserAgentHandler.cs" />
-    <Compile Include="Implementation\FindAzureResourceGroupCmdlet.cs" />
+    <Compile Include="Implementation\ResourceGroup\TestAzureResourceGroupCmdlet.cs" />
+    <Compile Include="Implementation\ResourceGroup\FindAzureResourceGroupCmdlet.cs" />
     <Compile Include="Implementation\GetAzureResourceGroupDeploymentOperationCmdlet.cs" />
     <Compile Include="Implementation\Lock\GetAzureResourceLockCmdlet.cs" />
     <Compile Include="Implementation\InvokeAzureResourceActionCmdlet.cs" />
