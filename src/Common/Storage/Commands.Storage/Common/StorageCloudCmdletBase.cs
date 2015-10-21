@@ -43,7 +43,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         where T : class
     {
         [Parameter(HelpMessage = "Azure Storage Context Object",
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipeline = true, ValueFromPipelineByPropertyName = true)]
         public virtual AzureStorageContext Context { get; set; }
 
         [Parameter(HelpMessage = "The server time out for each request in seconds.")]

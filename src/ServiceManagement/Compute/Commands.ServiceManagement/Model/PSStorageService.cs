@@ -69,6 +69,16 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Model
             var cloudStorageAccount = StorageUtilities.GenerateCloudStorageAccount(client, account.StorageAccountName);
             return new PSStorageService(account, new AzureStorageContext(cloudStorageAccount));
         }
+
+        /// <summary>
+        /// String representation of this account
+        /// </summary>
+        /// <returns>null</returns>
+        public override string ToString()
+        {
+            // Allow sceanrios that list storage account contents through piping
+            return null;
+        }
     }
 }
  

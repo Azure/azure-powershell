@@ -2915,9 +2915,6 @@
                         <Component Id="cmp6DF3D322380ACA385B782FFE93501E46" Guid="*">
                             <File Id="filB160FE0B461B3EC308158442E13172D1" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\HDInsight\Microsoft.WindowsAzure.Commands.ServiceManagement.Common.dll" />
                         </Component>
-                        <Component Id="cmp55C25F2FFCB6BB9E42E3D24DFF6408D1" Guid="*">
-                            <File Id="fil6F2419C926214AD6FDCDDC4E85C4BECF" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\HDInsight\Microsoft.WindowsAzure.Configuration.dll" />
-                        </Component>
                         <Component Id="cmp708FE120047299EF93CBC3578BE490CB" Guid="*">
                             <File Id="filBEDB7E1D29614099F50AFF7FA1FE92A9" KeyPath="yes" Source="$(var.sourceDir)\ServiceManagement\Azure\HDInsight\Microsoft.WindowsAzure.Management.dll" />
                         </Component>
@@ -5375,7 +5372,6 @@
             <ComponentRef Id="cmpABADAAE7C460C98E47F138F021526C7D" />
             <ComponentRef Id="cmp24781B5A7277266012861E8A479FFD83" />
             <ComponentRef Id="cmp6DF3D322380ACA385B782FFE93501E46" />
-            <ComponentRef Id="cmp55C25F2FFCB6BB9E42E3D24DFF6408D1" />
             <ComponentRef Id="cmp708FE120047299EF93CBC3578BE490CB" />
             <ComponentRef Id="cmpA2D5A525E87DE93F9377EC39DDBDAA9B" />
             <ComponentRef Id="cmp4A2A02B7958EA069FE8057A445540979" />
