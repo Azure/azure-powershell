@@ -2973,6 +2973,62 @@ PS C:\&gt;Write-Host "Secret Value is: " $secret.SecretValueText
 -- backup
 -- restore</maml:para>
           </maml:description>
+          <command:parameterValueGroup>
+            <command:parameterValue required="false" variableLength="true">get</command:parameterValue>
+            <command:parameterValue required="false" variableLength="true">list</command:parameterValue>
+            <command:parameterValue required="false" variableLength="true">set</command:parameterValue>
+            <command:parameterValue required="false" variableLength="true">delete</command:parameterValue>
+            <command:parameterValue required="false" variableLength="true">all</command:parameterValue>
+          </command:parameterValueGroup>
+        </command:parameter>  
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>PermissionsToCertificates</maml:name>
+          <maml:description>
+            <maml:para>Specifies an array of certificate operation permissions to grant to a user or service principal. The acceptable values for this parameter are:
+
+-- Get
+-- List
+-- Set
+-- Delete 
+-- All</maml:para>
+          </maml:description>
+          <command:parameterValueGroup>
+            <command:parameterValue required="false" variableLength="true">get</command:parameterValue>
+            <command:parameterValue required="false" variableLength="true">list</command:parameterValue>
+            <command:parameterValue required="false" variableLength="true">set</command:parameterValue>
+            <command:parameterValue required="false" variableLength="true">delete</command:parameterValue>
+            <command:parameterValue required="false" variableLength="true">all</command:parameterValue>
+          </command:parameterValueGroup>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named" aliases="none">
+          <maml:name>Profile</maml:name>
+          <maml:description>
+            <maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.</maml:para>
+          </maml:description>
+          <command:parameterValue required="false" variableLength="false">Microsoft.Azure.Common.Authentication.Models.AzureProfile</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">
+          <maml:name>ObjectId</maml:name>
+          <maml:description>
+            <maml:para>Specifies the object ID of the user or service principal in Azure Active Directory for which to grant permissions.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Guid</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+      <command:syntaxItem>
+        <maml:name>Set-AzureRmKeyVaultAccessPolicy</maml:name>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="1" aliases="none">
+          <maml:name>VaultName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of a key vault. This cmdlet modifies the access policy for the key vault that this parameter specifies.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="2" aliases="none">
+          <maml:name>ResourceGroupName</maml:name>
+          <maml:description>
+            <maml:para>Specifies the name of the resource group associated with the key vault whose access policy is being modified. If not specified, this cmdlet searches for the key vault in the current subscription.</maml:para>
+          </maml:description>
           <command:parameterValue required="false" variableLength="true">String[]</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true(ByPropertyName)" position="named" aliases="none">

@@ -49,7 +49,37 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Commands\AddAzureKeyVaultCertificate.cs" />
+    <Compile Include="Commands\SetAzureKeyVaultCertificateAttribute.cs" />
+    <Compile Include="Commands\StopAzureKeyVaultCertificateOperation.cs" />
+    <Compile Include="Commands\GetAzureKeyVaultCertificateOperation.cs" />
+    <Compile Include="Commands\ImportAzureKeyVaultCertificate.cs" />
+    <Compile Include="Commands\AddAzureKeyVaultCertificateContact.cs" />
+    <Compile Include="Commands\AddAzureKeyVaultCertificateIssuer.cs" />
+    <Compile Include="Commands\GetAzureKeyVaultCertificate.cs" />
+    <Compile Include="Commands\GetAzureKeyVaultCertificateContact.cs" />
+    <Compile Include="Commands\GetAzureKeyVaultCertificateIssuer.cs" />
+    <Compile Include="Commands\GetAzureKeyVaultCertificatePolicy.cs" />
+    <Compile Include="Commands\NewAzureKeyVaultCertificateAdministratorDetails.cs" />
+    <Compile Include="Commands\NewAzureKeyVaultCertificatePolicy.cs" />
+    <Compile Include="Commands\NewAzureKeyVaultCertificateSigningRequest.cs" />
+    <Compile Include="Commands\NewAzureKeyVaultCertificateOrganizationDetails.cs" />
+    <Compile Include="Commands\RemoveAzureKeyVaultCertificate.cs" />
+    <Compile Include="Commands\RemoveAzureKeyVaultCertificateContact.cs" />
+    <Compile Include="Commands\RemoveAzureKeyVaultCertificateIssuer.cs" />
+    <Compile Include="Commands\RemoveAzureKeyVaultCertificateOperation.cs" />
+    <Compile Include="Commands\SetAzureKeyVaultCertificateIssuer.cs" />
+    <Compile Include="Commands\SetAzureKeyVaultCertificatePolicy.cs" />
+    <Compile Include="Models\CertificateIdentityItem.cs" />
     <Compile Include="Commands\Constants.cs" />
+    <Compile Include="Models\CertificateIssuerIdentityItem.cs" />
+    <Compile Include="Models\KeyVaultCertificate.cs" />
+    <Compile Include="Models\KeyVaultCertificateAdministratorDetails.cs" />
+    <Compile Include="Models\KeyVaultCertificateContact.cs" />
+    <Compile Include="Models\KeyVaultCertificateIssuer.cs" />
+    <Compile Include="Models\KeyVaultCertificateOperation.cs" />
+    <Compile Include="Models\KeyVaultCertificateOrganizationDetails.cs" />
+    <Compile Include="Models\KeyVaultCertificatePolicy.cs" />
     <Compile Include="Models\VaultManagementClient.cs" />
     <Compile Include="Models\ModelExtensions.cs" />
     <Compile Include="Models\PSVault.cs" />
@@ -126,16 +156,16 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Graph.RBAC.3.2.0-preview\lib\net45\Microsoft.Azure.Graph.RBAC.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.KeyVault, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.1.0.0\lib\net45\Microsoft.Azure.KeyVault.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.1.0.13-cert-preview\lib\net45\Microsoft.Azure.KeyVault.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Authorization">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.KeyVault, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.KeyVault.1.0.1\lib\net40\Microsoft.Azure.Management.KeyVault.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.KeyVault.1.0.2-cert-preview\lib\net40\Microsoft.Azure.Management.KeyVault.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

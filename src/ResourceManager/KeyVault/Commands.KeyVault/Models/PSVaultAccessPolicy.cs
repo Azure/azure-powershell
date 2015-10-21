@@ -21,13 +21,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public class PSVaultAccessPolicy
     {
-        public PSVaultAccessPolicy(Guid tenantId, Guid objectId, Guid? applicationId, string[] permissionsToKeys, string[] permissionsToSecrets)
+        public PSVaultAccessPolicy(Guid tenantId, Guid objectId, Guid? applicationId, string[] permissionsToKeys, string[] permissionsToSecrets, string[] permissionsToCertificates)
         {
             TenantId = tenantId;
             ObjectId = objectId;
             ApplicationId = applicationId;
             PermissionsToSecrets = permissionsToSecrets == null ? new List<string>() : new List<string>(permissionsToSecrets);
             PermissionsToKeys = permissionsToKeys == null ? new List<string>() : new List<string>(permissionsToKeys);
+            PermissionsToCertificates = permissionsToCertificates == null ? new List<string>() : new List<string>(permissionsToCertificates);
         }
         public PSVaultAccessPolicy(KeyVaultManagement.AccessPolicyEntry s, ActiveDirectoryClient adClient)
         {
@@ -38,6 +39,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             TenantName = s.TenantId.ToString();
             PermissionsToSecrets = new List<string>(s.PermissionsToSecrets);
             PermissionsToKeys = new List<string>(s.PermissionsToKeys);
+            PermissionsToCertificates = new List<string>(s.PermissionsToCertificates);
         }
 
         public Guid TenantId { get; private set; }
@@ -58,5 +60,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public List<string> PermissionsToSecrets { get; private set; }
 
         public string PermissionsToSecretsStr { get { return string.Join(", ", PermissionsToSecrets); } }
+        public List<string> PermissionsToCertificates { get; private set; }
+
+        public string PermissionsToCertificatesStr { get { return string.Join(", ", PermissionsToCertificates); } }
     }
 }

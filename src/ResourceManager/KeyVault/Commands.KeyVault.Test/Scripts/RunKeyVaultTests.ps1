@@ -46,7 +46,7 @@ param(
     [Parameter(Mandatory=$true, Position=0)]
     [string] $TestRunNameSpace,
     [Parameter(Mandatory=$false, Position=1)]
-    [ValidateSet('ControlPlane', 'DataPlane', 'All')]
+    [ValidateSet('ControlPlane','DataPlane', 'All')]
     [string] $TestMode = 'All',
     [Parameter(Mandatory=$false, Position=2)]
     [string] $Location = 'eastus2',
@@ -67,6 +67,7 @@ param(
 . (Join-Path $PSScriptRoot "Common.ps1")
 . (Join-Path $PSScriptRoot "VaultKeyTests.ps1")
 . (Join-Path $PSScriptRoot "VaultSecretTests.ps1")
+. (Join-Path $invocationPath "VaultCertificateTests.ps1");
 . (Join-Path $PSScriptRoot "VaultManagementTests.ps1")
 . (Join-Path $PSScriptRoot "ControlPlane\KeyVaultManagementTests.ps1")  # Shared between PSH scenario tests and KV-specific script based tests.
 . (Join-Path $PSScriptRoot "ControlPlane\Common.ps1")
@@ -216,6 +217,52 @@ function Run-AllControlPlaneTests
 .SYNOPSIS
 Run all of the data plane tests.
 #>
+=======
+function Run-DataPlaneCertificateTests
+{
+    # Import scenario : Add-AzureKeyVaultCertificate tests
+    Run-TestProtected { Run-CertificateTest {Test_ImportPfxAsCertificate} "Test_ImportPfxAsCertificate" } "Test_ImportPfxAsCertificate"
+    Run-TestProtected { Run-CertificateTest {Test_ImportPfxAsCertificateNonSecurePassword} "Test_ImportPfxAsCertificateNonSecurePassword" } "Test_ImportPfxAsCertificateNonSecurePassword"
+    Run-TestProtected { Run-CertificateTest {Test_ImportPfxAsCertificateWithoutPassword} "Test_ImportPfxAsCertificateWithoutPassword" } "Test_ImportPfxAsCertificateWithoutPassword"
+    Run-TestProtected { Run-CertificateTest {Test_ImportX509Certificate2CollectionAsCertificate} "Test_ImportX509Certificate2CollectionAsCertificate" } "Test_ImportX509Certificate2CollectionAsCertificate"
+    Run-TestProtected { Run-CertificateTest {Test_ImportX509Certificate2CollectionNotExportableAsCertificate} "Test_ImportX509Certificate2CollectionNotExportableAsCertificate" } "Test_ImportX509Certificate2CollectionNotExportableAsCertificate"
+    Run-TestProtected { Run-CertificateTest {Test_ImportBase64EncodedStringAsCertificate} "Test_ImportBase64EncodedStringAsCertificate" } "Test_ImportBase64EncodedStringAsCertificate"
+    Run-TestProtected { Run-CertificateTest {Test_ImportBase64EncodedStringWithoutPasswordAsCertificate} "Test_ImportBase64EncodedStringWithoutPasswordAsCertificate" } "Test_ImportBase64EncodedStringWithoutPasswordAsCertificate"
+
+    # Merge scenario : Add-AzureKeyVaultCertificate tests 
+    Run-TestProtected { Run-CertificateTest {Test_MergeCerWithNonExistantKeyPair} "Test_MergeCerWithNonExistantKeyPair" } "Test_MergeCerWithNonExistantKeyPair"
+    Run-TestProtected { Run-CertificateTest {Test_MergeCerWithMismatchKeyPair} "Test_MergeCerWithMismatchKeyPair" } "Test_MergeCerWithMismatchKeyPair"
+    
+    # Get-AzureKeyVaultCertificate tests
+    Run-TestProtected { Run-CertificateTest {Test_GetCertificate} "Test_GetCertificate" } "Test_GetCertificate"
+    Run-TestProtected { Run-CertificateTest {Test_GetCertificateNonExistant} "Test_GetCertificateNonExistant" } "Test_GetCertificateNonExistant"
+    Run-TestProtected { Run-CertificateTest {Test_ListCertificates} "Test_ListCertificates" } "Test_ListCertificates"
+    
+    # Add-AzureKeyVaultCertificateContact, Get-AzureKeyVaultCertificateContact and Remove-AzureKeyVaultCertificateContact tests
+    Run-TestProtected { Run-CertificateTest {Test_AddAndGetCertificateContacts} "Test_AddAndGetCertificateContacts" } "Test_AddAndGetCertificateContacts"
+
+    # Certificate Policy tests
+    Run-TestProtected { Run-CertificateTest {Test_GetNonExistingCertificatePolicy} "Test_GetNonExistingCertificatePolicy" } "Test_GetNonExistingCertificatePolicy"
+    Run-TestProtected { Run-CertificateTest {Test_NewCertificatePolicy} "Test_NewCertificatePolicy" } "Test_NewCertificatePolicy"
+    Run-TestProtected { Run-CertificateTest {Test_SetCertificatePolicy} "Test_SetCertificatePolicy" } "Test_SetCertificatePolicy"
+
+    # Certificate Issuer Organization Details tests
+    Run-TestProtected { Run-CertificateTest {Test_NewOrganizationDetails} "Test_NewOrganizationDetails" } "Test_NewOrganizationDetails"
+
+    # Certificate Issuer tests
+    Run-TestProtected { Run-CertificateTest {Test_CreateAndGetTestIssuer} "Test_CreateAndGetTestIssuer" } "Test_CreateAndGetTestIssuer"
+    # SSLAdmin is not enabled yet
+    #Run-TestProtected { Run-CertificateTest {Test_CreateSSLAdminIssuer} "Test_CreateSSLAdminIssuer" } "Test_CreateSSLAdminIssuer"
+
+    # CSR Request tests
+    Run-TestProtected { Run-CertificateTest {Test_New_AzureKeyVaultCertificateSigningRequest} "Test_New_AzureKeyVaultCertificateSigningRequest" } "Test_New_AzureKeyVaultCertificateSigningRequest"
+
+    # Add-AzureKeyVaultCertificate, Get-AzureKeyVaultCertificateOperation, Remove-AzureKeyVaultCertificateOperation tests
+    Run-TestProtected { Run-CertificateTest {Test_Add_AzureKeyVaultCertificate} "Test_Add_AzureKeyVaultCertificate" } "Test_Add_AzureKeyVaultCertificate"
+    Run-TestProtected { Run-CertificateTest {Test_CertificateTags} "Test_CertificateTags" } "Test_CertificateTags"
+    Run-TestProtected { Run-CertificateTest {Test_UpdateCertificateTags} "Test_UpdateCertificateTags" } "Test_UpdateCertificateTags"    
+}
+
 function Run-AllDataPlaneTests
 {
     Write-Host "Starting the data plane tests..."
@@ -349,6 +396,19 @@ function Run-AllDataPlaneTests
     Run-TestProtected { Run-SecretTest {Test_PipelineUpdateSecretAttributes} "Test_PipelineUpdateSecretAttributes" } "Test_PipelineUpdateSecretAttributes"
     Run-TestProtected { Run-SecretTest {Test_PipelineUpdateSecretVersions} "Test_PipelineUpdateSecretVersions" } "Test_PipelineUpdateSecretVersions"
     Run-TestProtected { Run-SecretTest {Test_PipelineRemoveSecrets} "Test_PipelineRemoveSecrets" } "Test_PipelineRemoveSecrets"
+
+	Run-DataPlaneCertificateTests
+}
+
+# Initialize 
+Write-Host Delete log files
+Cleanup-Log $invocationPath
+
+if (($TestMode -eq 'ControlPlane') -or ($TestMode -eq 'All'))
+{
+    Write-Host Initializing Vault Tests
+    Initialize-VaultTest
+    Write-Host The pre-created key vault for control plane test is $global:precreatedVaultName
 }
 
 # Clean up and initialize the temporary state required to run all tests, if necessary.
@@ -358,7 +418,16 @@ if (($Vault -ne "") -and (@('DataPlane', 'All') -contains $TestMode))
 {
     Cleanup-OldKeys
     Cleanup-OldSecrets
+    $testkeyVault = Get-KeyVault
+    Write-Host Test key vault for data plane test is $testKeyVault
+    Write-Host Initializing Key Tests
+    Initialize-KeyTest
+    Write-Host Initializing Secret Tests
+    Initialize-SecretTest
+    Write-Host Initializing Certificate Tests
+    Initialize-CertificateTest
 }
+
 Write-Host "Clean up and initialization completed."
 
 $global:startTime = Get-Date

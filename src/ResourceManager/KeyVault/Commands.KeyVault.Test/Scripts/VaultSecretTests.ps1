@@ -15,20 +15,6 @@ $contenttype="contenttype"
 $newcontenttype="newcontenttype"
 $emptycontenttype=""
 
-function Equal-String($left, $right)
-{
-    if (([string]::IsNullOrEmpty($left)) -and ([string]::IsNullOrEmpty($right)))
-    {
-        return $true
-    }
-    if (([string]::IsNullOrEmpty($left)) -or ([string]::IsNullOrEmpty($right)))
-    {
-        return $false
-    }    
-    
-    return $left.Equals($right)
-}
-
 function Assert-SecretAttributes($secretAttr, $secenable, $secexp, $secnbf, $seccontenttype, $sectags)
 {
     Assert-NotNull $secretAttr, "secretAttr is null."
@@ -342,6 +328,16 @@ function Test_SetSecretVersion
     #Assert-SecretAttributes $sec.Attributes $true $newexpires $newnbf $newcontenttype $newtags      
  }                  
     
+<#
+.SYNOPSIS
+Get a secret in a syntactically bad vault name
+#>
+
+function Test_GetSecretInABadVault
+{
+    $secretname = Get-SecretName 'nonexist'   
+    Assert-Throws { Get-AzureKeyVaultSecret '$vaultName' $secretname }
+}
 
 <#
 .SYNOPSIS

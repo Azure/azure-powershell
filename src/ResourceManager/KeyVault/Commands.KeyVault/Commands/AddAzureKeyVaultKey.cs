@@ -64,6 +64,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the name of the vault to which this cmdlet adds the key.")]
         [ValidateNotNullOrEmpty]
+        [ValidatePattern(Constants.VaultNameRegExString)]
         public string VaultName { get; set; }
 
         /// <summary>
@@ -78,7 +79,8 @@ namespace Microsoft.Azure.Commands.KeyVault
             Position = 1,
             HelpMessage = "Specifies the name of the key to add to the key vault.")]
         [ValidateNotNullOrEmpty]
-        [Alias("KeyName")]
+        [ValidatePattern(Constants.ObjectNameRegExString)]
+        [Alias(Constants.KeyName)]
         public string Name { get; set; }
 
         /// <summary>

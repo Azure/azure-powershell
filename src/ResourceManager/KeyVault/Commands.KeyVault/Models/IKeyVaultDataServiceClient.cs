@@ -15,12 +15,16 @@
 using Microsoft.Azure.KeyVault.WebKey;
 using System.Collections.Generic;
 using System.Security;
+using System.Security.Cryptography.X509Certificates;
+using Microsoft.Azure.KeyVault;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
     public interface IKeyVaultDataServiceClient
     {
         KeyBundle CreateKey(string vaultName, string keyName, KeyAttributes keyAttributes);
+
+        string CreateCsr(string vaultName, string certName, CertificatePolicy certPolicy, IDictionary<string, string> tags);
 
         KeyBundle ImportKey(string vaultName, string keyName, KeyAttributes keyAttributes, JsonWebKey webKey, bool? importToHsm);
 
@@ -49,5 +53,37 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         string BackupKey(string vaultName, string keyName, string outputBlobPath);
 
         KeyBundle RestoreKey(string vaultName, string inputBlobPath);
+
+        #region Certificate actions
+
+        Contacts SetCertificateContacts(string vaultName, Contacts contacts);
+        Contacts GetCertificateContacts(string vaultName);
+
+        CertificateBundle GetCertificate(string vaultName, string certName, string certificateVersion);
+        IEnumerable<CertificateIdentityItem> GetCertificates(KeyVaultObjectFilterOptions options);
+        IEnumerable<CertificateIdentityItem> GetCertificateVersions(KeyVaultObjectFilterOptions options);
+        CertificateBundle MergeCertificate(string vaultName, string certName, X509Certificate2Collection certs, IDictionary<string, string> tags);
+        CertificateBundle ImportCertificate(string vaultName, string certName, string base64CertColl, SecureString certPassword, IDictionary<string, string> tags);
+
+        CertificateBundle ImportCertificate(string vaultName, string certName, X509Certificate2Collection certificateCollection, IDictionary<string, string> tags);
+
+        CertificateBundle DeleteCertificate(string vaultName, string certName);
+
+        CertificateOperation EnrollCertificate(string vaultName, string certificateName, CertificatePolicy certificatePolicy, IDictionary<string, string> tags);
+        CertificateBundle UpdateCertificate(string vaultName, string certificateName, string certificateVersion, CertificateAttributes certificateAttributes, IDictionary<string, string> tags);
+        CertificateOperation GetCertificateOperation(string vaultName, string certificateName);
+        CertificateOperation DeleteCertificateOperation(string vaultName, string certificateName);
+        CertificateOperation CancelCertificateOperation(string vaultName, string certificateName);
+
+        CertificatePolicy GetCertificatePolicy(string vaultName, string certificateName);
+        CertificatePolicy UpdateCertificatePolicy(string vaultName, string certificateName, CertificatePolicy certificatePolicy);
+
+        Issuer GetCertificateIssuer(string vaultName, string issuerName);
+        IEnumerable<CertificateIssuerIdentityItem> GetCertificateIssuers(KeyVaultObjectFilterOptions options);
+        Issuer CreateCertificateIssuer(string vaultName, string issuerName, string issuerProvider, string accountId, SecureString apiKey, KeyVaultCertificateOrganizationDetails organizationDetails);
+        Issuer UpdateCertificateIssuer(string vaultName, string issuerName, string issuerProvider, string accountId, SecureString apiKey, KeyVaultCertificateOrganizationDetails organizationDetails);
+        Issuer DeleteCertificateIssuer(string vaultName, string issuerName);
+        
+        #endregion
     }
 }
