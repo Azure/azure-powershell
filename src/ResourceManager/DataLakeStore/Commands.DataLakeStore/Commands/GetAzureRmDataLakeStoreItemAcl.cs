@@ -17,23 +17,27 @@ using Microsoft.Azure.Commands.DataLakeStore.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreItemAcl"), OutputType(typeof(DataLakeStoreItemAcl))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreItemAcl"), OutputType(typeof (DataLakeStoreItemAcl))]
     public class GetAzureDataLakeStoreItemAcl : DataLakeStoreFileSystemCmdletBase
     {
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
+            HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
         [ValidateNotNullOrEmpty]
-        public string AccountName { get; set; }
+        [Alias("AccountName")]
+        public string Account { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true, HelpMessage = "The path in the specified Data Lake account that should have its ACL retrieved. Can be a file or folder " +
-                                                                                           "In the format '/folder/file.txt', " +
-                                                                                           "where the first '/' after the DNS indicates the root of the file system.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
+            HelpMessage =
+                "The path in the specified Data Lake account that should have its ACL retrieved. Can be a file or folder " +
+                "In the format '/folder/file.txt', " +
+                "where the first '/' after the DNS indicates the root of the file system.")]
         [ValidateNotNull]
         public DataLakeStorePathInstance Path { get; set; }
 
         protected override void ProcessRecord()
         {
             var toReturn = new DataLakeStoreItemAcl();
-            toReturn.InitializeAces(this.DataLakeStoreFileSystemClient.GetAclStatus(this.Path.Path, this.AccountName));
+            toReturn.InitializeAces(DataLakeStoreFileSystemClient.GetAclStatus(Path.Path, Account));
             WriteObject(toReturn);
         }
     }

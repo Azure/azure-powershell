@@ -15,22 +15,19 @@
 using System;
 using System.Text.RegularExpressions;
 using Hyak.Common;
+using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 {
     /// <summary>
-    /// The object that is passed in and parsed for all Data Lake paths.
+    ///     The object that is passed in and parsed for all Data Lake paths.
     /// </summary>
     public class CatalogPathInstance
     {
         public string DatabaseName { get; set; }
-
         public string SchemaAssemblyOrExternalDataSourceName { get; set; }
-
         public string TableOrTableValuedFunctionName { get; set; }
-
         public string TableStatisticsName { get; set; }
-
         public string FullCatalogItemPath { get; set; }
 
         public static CatalogPathInstance Parse(string path)
@@ -53,15 +50,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
             if (!regex.IsMatch(path))
             {
-                throw new CloudException(string.Format(Properties.Resources.InvalidCatalogPath, path));
+                throw new CloudException(string.Format(Resources.InvalidCatalogPath, path));
             }
 
             var splitPath = regex.Match(path);
 
-            string firstPart = GetSanitizedPath(splitPath.Groups["firstPart"].Value, path);
-            string secondPart = GetSanitizedPath(splitPath.Groups["secondPart"].Value, path);
-            string thirdPart = GetSanitizedPath(splitPath.Groups["thirdPart"].Value, path);
-            string fourthPart = GetSanitizedPath(splitPath.Groups["fourthPart"].Value, path);
+            var firstPart = GetSanitizedPath(splitPath.Groups["firstPart"].Value, path);
+            var secondPart = GetSanitizedPath(splitPath.Groups["secondPart"].Value, path);
+            var thirdPart = GetSanitizedPath(splitPath.Groups["thirdPart"].Value, path);
+            var fourthPart = GetSanitizedPath(splitPath.Groups["fourthPart"].Value, path);
 
             // only two entries
             if (string.IsNullOrEmpty(secondPart) && string.IsNullOrEmpty(thirdPart))
@@ -100,7 +97,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             {
                 return path;
             }
-            
+
             // in all other cases we will throw if there is '[]'
             if (path.StartsWith("[", StringComparison.InvariantCultureIgnoreCase) &&
                 path.EndsWith("]", StringComparison.InvariantCultureIgnoreCase))
@@ -114,7 +111,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             // after trimming and removing external braces, if the string is now empty, it was an invalid path
             if (string.IsNullOrEmpty(path))
             {
-                throw new CloudException(string.Format(Properties.Resources.InvalidCatalogPath, fullPath));
+                throw new CloudException(string.Format(Resources.InvalidCatalogPath, fullPath));
             }
 
             return path;

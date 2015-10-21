@@ -16,36 +16,49 @@ using System.IO;
 using System.Management.Automation;
 using Hyak.Common;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
+using Microsoft.Azure.Commands.DataLakeStore.Properties;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsData.Import, "AzureRmDataLakeStoreItem"), OutputType(typeof(string))]
+    [Cmdlet(VerbsData.Import, "AzureRmDataLakeStoreItem"), OutputType(typeof (string))]
     public class ImportAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
         // default number of threads
         private int numThreads = 10;
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
+            HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
         [ValidateNotNullOrEmpty]
-        public string AccountName { get; set; }
+        [Alias("AccountName")]
+        public string Account { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true, HelpMessage = "The local path to the file or folder to copy")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
+            HelpMessage = "The local path to the file or folder to copy")]
         [ValidateNotNull]
         public string Path { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true, HelpMessage = "The path in the specified Data Lake account where the file or folder should be copied to. " +
-                                                                                           "In the format '/folder/file.txt', " +
-                                                                                           "where the first '/' after the DNS indicates the root of the file system.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
+            HelpMessage = "The path in the specified Data Lake account where the file or folder should be copied to. " +
+                          "In the format '/folder/file.txt', " +
+                          "where the first '/' after the DNS indicates the root of the file system.")]
         [ValidateNotNullOrEmpty]
         public DataLakeStorePathInstance Destination { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false, HelpMessage = "Optionally indicates that this the folder being copied should be copied to DataLakeStore recursively")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
+            HelpMessage =
+                "Optionally indicates that this the folder being copied should be copied to DataLakeStore recursively")]
         public SwitchParameter Recurse { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false, HelpMessage = "Indicates that the file(s) being copied are a continuation of a previous upload. This will cause the system to attempt to resume from the last file that was not fully uploaded.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
+            HelpMessage =
+                "Indicates that the file(s) being copied are a continuation of a previous upload. This will cause the system to attempt to resume from the last file that was not fully uploaded."
+            )]
         public SwitchParameter Resume { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false, HelpMessage = "Indicates that the file(s) being copied should be copied with no concern for new line preservation across appends")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
+            HelpMessage =
+                "Indicates that the file(s) being copied should be copied with no concern for new line preservation across appends"
+            )]
         public SwitchParameter ForceBinary { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 6, Mandatory = false,
@@ -56,34 +69,32 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             set { numThreads = value; }
         }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 7, Mandatory = false, HelpMessage = "Indicates that, if the file or folder exists, it should be overwritten")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 7, Mandatory = false,
+            HelpMessage = "Indicates that, if the file or folder exists, it should be overwritten")]
         public SwitchParameter Force { get; set; }
 
         protected override void ProcessRecord()
         {
-            string powerShellSourcePath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(Path);
+            var powerShellSourcePath = SessionState.Path.GetUnresolvedProviderPathFromPSPath(Path);
 
             if (Directory.Exists(powerShellSourcePath))
             {
                 DataLakeStoreFileSystemClient.CopyDirectory(
                     Destination.Path,
-                    AccountName,
+                    Account,
                     powerShellSourcePath,
                     CmdletCancellationToken,
                     -1,
                     NumThreads,
                     Recurse,
                     Force,
-                    Resume,
-                    forceBinaryOrText: ForceBinary,
-                    isBinary: ForceBinary,
-                    cmdletRunningRequest: this);
+                    Resume, ForceBinary, ForceBinary, this);
             }
             else if (File.Exists(powerShellSourcePath))
             {
                 DataLakeStoreFileSystemClient.CopyFile(
                     Destination.Path,
-                    AccountName,
+                    Account,
                     powerShellSourcePath,
                     CmdletCancellationToken,
                     NumThreads,
@@ -94,12 +105,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             }
             else
             {
-                throw new CloudException(string.Format(Properties.Resources.FileOrFolderDoesNotExist, powerShellSourcePath));
+                throw new CloudException(string.Format(Resources.FileOrFolderDoesNotExist, powerShellSourcePath));
             }
-            
+
 
             // only attempt to write output if this cmdlet hasn't been cancelled.
-            if (!this.CmdletCancellationToken.IsCancellationRequested && !this.Stopping)
+            if (!CmdletCancellationToken.IsCancellationRequested && !Stopping)
             {
                 WriteObject(Destination.FullyQualifiedPath);
             }

@@ -20,22 +20,29 @@ using Microsoft.Azure.Management.DataLake.Analytics.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeAnalyticsAccount"), OutputType(typeof(DataLakeAnalyticsAccount))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeAnalyticsAccount"), OutputType(typeof (DataLakeAnalyticsAccount))]
     public class SetAzureDataLakeAnalyticsAccount : DataLakeAnalyticsCmdletBase
     {
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "Name of the account.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
+            HelpMessage = "Name of the account.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = false, HelpMessage = "Name of the new Data Lake account to set as the default storage for this DataLakeAnalytics account.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = false,
+            HelpMessage =
+                "Name of the new Data Lake account to set as the default storage for this DataLakeAnalytics account.")]
         [ValidateNotNullOrEmpty]
         public string DefaultDataLakeStore { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false, HelpMessage = "A string,string dictionary of tags associated with this account that should replace the current set of tags")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false,
+            HelpMessage =
+                "A string,string dictionary of tags associated with this account that should replace the current set of tags"
+            )]
         [ValidateNotNull]
         public Hashtable Tags { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false, HelpMessage = "Name of resource group under which you want to update the account.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
+            HelpMessage = "Name of resource group under which you want to update the account.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -55,10 +62,11 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             {
                 foreach (string entry in Tags.Keys)
                 {
-                    tags.Add(entry, (string)Tags[entry]);
+                    tags.Add(entry, (string) Tags[entry]);
                 }
 
-                WriteObject(DataLakeAnalyticsClient.CreateOrUpdateAccount(ResourceGroupName, Name, null, defaultAccount, null, null, tags));
+                WriteObject(DataLakeAnalyticsClient.CreateOrUpdateAccount(ResourceGroupName, Name, null, defaultAccount,
+                    null, null, tags));
             }
         }
     }

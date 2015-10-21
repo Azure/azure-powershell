@@ -15,68 +15,93 @@
 using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
+using Microsoft.Azure.Commands.DataLakeStore.Properties;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeStoreItemAclEntry", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeStoreItemAclEntry", DefaultParameterSetName = BaseParameterSetName),
+     OutputType(typeof (bool))]
     public class RemoveAzureDataLakeStoreItemAclEntry : DataLakeStoreFileSystemCmdletBase
     {
         internal const string BaseParameterSetName = "Remove ACL Entries using ACL object";
         internal const string SpecificAceParameterSetName = "Remove specific ACE";
 
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 0, Mandatory = true, HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = SpecificAceParameterSetName, Position = 0, Mandatory = true, HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 0,
+            Mandatory = true, HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = SpecificAceParameterSetName, Position = 0,
+            Mandatory = true, HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
         [ValidateNotNullOrEmpty]
-        public string AccountName { get; set; }
+        [Alias("AccountName")]
+        public string Account { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 1, Mandatory = true, HelpMessage = "The path in the specified Data Lake account that should have ACL entries removed. Can be a file or folder " +
-                                                                                           "In the format '/folder/file.txt', " +
-                                                                                           "where the first '/' after the DNS indicates the root of the file system.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = SpecificAceParameterSetName, Position = 1, Mandatory = true, HelpMessage = "The path in the specified Data Lake account that should have ACL entries removed. Can be a file or folder " +
-                                                                                           "In the format '/folder/file.txt', " +
-                                                                                           "where the first '/' after the DNS indicates the root of the file system.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 1,
+            Mandatory = true,
+            HelpMessage =
+                "The path in the specified Data Lake account that should have ACL entries removed. Can be a file or folder " +
+                "In the format '/folder/file.txt', " +
+                "where the first '/' after the DNS indicates the root of the file system.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = SpecificAceParameterSetName, Position = 1,
+            Mandatory = true,
+            HelpMessage =
+                "The path in the specified Data Lake account that should have ACL entries removed. Can be a file or folder " +
+                "In the format '/folder/file.txt', " +
+                "where the first '/' after the DNS indicates the root of the file system.")]
         [ValidateNotNull]
         public DataLakeStorePathInstance Path { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 2, Mandatory = true, HelpMessage = "The ACL spec containing the entries to remove. These entries MUST exist in the ACL spec for the file already. This can be a modified ACL from Get-AzureDataLakeStoreItemAcl or it can be the string " +
-                                                                                           " representation of an ACL as defined in the apache webhdfs specification. Note that this is only supported for named ACEs." +
-                                                                                           "This cmdlet is not to be used for setting the owner or owning group.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 2,
+            Mandatory = true,
+            HelpMessage =
+                "The ACL spec containing the entries to remove. These entries MUST exist in the ACL spec for the file already. This can be a modified ACL from Get-AzureDataLakeStoreItemAcl or it can be the string " +
+                " representation of an ACL as defined in the apache webhdfs specification. Note that this is only supported for named ACEs." +
+                "This cmdlet is not to be used for setting the owner or owning group.")]
         public DataLakeStoreItemAcl Acl { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = SpecificAceParameterSetName, Position = 2, Mandatory = true, HelpMessage = "Indicates the type of ACE to remove (user, group, mask, other)")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = SpecificAceParameterSetName, Position = 2,
+            Mandatory = true, HelpMessage = "Indicates the type of ACE to remove (user, group, mask, other)")]
         public DataLakeStoreEnums.AceType AceType { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = SpecificAceParameterSetName, Position = 3, Mandatory = false, HelpMessage = "The identity of the user or group to remove. Optional. If none is passed this will attempt to remove an unamed ACE, which is necessary for both mask and other ACEs")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = SpecificAceParameterSetName, Position = 3,
+            Mandatory = false,
+            HelpMessage =
+                "The identity of the user or group to remove. Optional. If none is passed this will attempt to remove an unamed ACE, which is necessary for both mask and other ACEs"
+            )]
         [ValidateNotNullOrEmpty]
         public Guid Id { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = SpecificAceParameterSetName, Position = 4, Mandatory = false, HelpMessage = "Indicates that the ACL entry is a default ACE to be removed.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = SpecificAceParameterSetName, Position = 4,
+            Mandatory = false, HelpMessage = "Indicates that the ACL entry is a default ACE to be removed.")]
         public SwitchParameter Default { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 3, Mandatory = false, HelpMessage = "Indicates that the ACL entries should be removed on the file with the specified ACL without prompting.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = SpecificAceParameterSetName, Position = 5, Mandatory = false, HelpMessage = "Indicates that the ACL entries should be removed on the file with the specified ACL without prompting.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 3,
+            Mandatory = false,
+            HelpMessage =
+                "Indicates that the ACL entries should be removed on the file with the specified ACL without prompting."
+            )]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = SpecificAceParameterSetName, Position = 5,
+            Mandatory = false,
+            HelpMessage =
+                "Indicates that the ACL entries should be removed on the file with the specified ACL without prompting."
+            )]
         public SwitchParameter Force { get; set; }
 
         protected override void ProcessRecord()
         {
-            var aclSpec = this.ParameterSetName.Equals(BaseParameterSetName)
-                ? this.Acl.GetAclSpec(false)
-                : string.Format("{0}{1}:{2}", this.Default ? "default:" : string.Empty, AceType, Id).ToLowerInvariant();
+            var aclSpec = ParameterSetName.Equals(BaseParameterSetName)
+                ? Acl.GetAclSpec(false)
+                : string.Format("{0}{1}:{2}", Default ? "default:" : string.Empty, AceType, Id).ToLowerInvariant();
             if (!Force.IsPresent)
             {
                 ConfirmAction(
                     Force.IsPresent,
-                    string.Format(Properties.Resources.RemovingDataLakeStoreItemAcl, string.Empty, Path.FullyQualifiedPath),
-                    string.Format(Properties.Resources.RemoveDataLakeStoreItemAcl, string.Empty, Path.FullyQualifiedPath),
+                    string.Format(Resources.RemovingDataLakeStoreItemAcl, string.Empty, Path.FullyQualifiedPath),
+                    string.Format(Resources.RemoveDataLakeStoreItemAcl, string.Empty, Path.FullyQualifiedPath),
                     Path.FullyQualifiedPath,
-                    () =>
-                    {
-                         DataLakeStoreFileSystemClient.RemoveAclEntries(Path.Path, AccountName, aclSpec);
-                    });
+                    () => { DataLakeStoreFileSystemClient.RemoveAclEntries(Path.Path, Account, aclSpec); });
             }
             else
             {
-                DataLakeStoreFileSystemClient.RemoveAclEntries(Path.Path, AccountName, aclSpec);
+                DataLakeStoreFileSystemClient.RemoveAclEntries(Path.Path, Account, aclSpec);
             }
         }
     }

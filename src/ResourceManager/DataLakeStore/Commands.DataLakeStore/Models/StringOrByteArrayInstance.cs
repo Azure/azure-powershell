@@ -17,20 +17,20 @@ using System.Text;
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
     /// <summary>
-    /// The object that is passed in and parsed for file contents.
+    ///     The object that is passed in and parsed for file contents.
     /// </summary>
     public class StringOrByteArrayInstance
     {
+        public StringOrByteArrayInstance(byte[] contents)
+        {
+            Contents = contents;
+        }
+
         public byte[] Contents { get; set; }
 
         public static StringOrByteArrayInstance Parse(string contents)
         {
             return new StringOrByteArrayInstance(Encoding.UTF8.GetBytes(contents));
-        }
-
-        public StringOrByteArrayInstance(byte[] contents)
-        {
-            Contents = contents;
         }
     }
 }

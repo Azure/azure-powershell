@@ -14,17 +14,20 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
+using Microsoft.Azure.Commands.DataLakeStore.Properties;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeStoreAccount"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeStoreAccount"), OutputType(typeof (bool))]
     public class RemoveAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
     {
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "Name of account to be removed.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
+            HelpMessage = "Name of account to be removed.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = false, HelpMessage = "Name of resource group under which the account exists.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = false,
+            HelpMessage = "Name of resource group under which the account exists.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -39,11 +42,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             if (!Force.IsPresent)
             {
                 ConfirmAction(
-                Force.IsPresent,
-                string.Format(Properties.Resources.RemovingDataLakeStoreAccount, Name),
-                string.Format(Properties.Resources.RemoveDataLakeStoreAccount, Name),
-                Name,
-                () => DataLakeStoreClient.DeleteAccount(ResourceGroupName, Name));
+                    Force.IsPresent,
+                    string.Format(Resources.RemovingDataLakeStoreAccount, Name),
+                    string.Format(Resources.RemoveDataLakeStoreAccount, Name),
+                    Name,
+                    () => DataLakeStoreClient.DeleteAccount(ResourceGroupName, Name));
             }
             else
             {

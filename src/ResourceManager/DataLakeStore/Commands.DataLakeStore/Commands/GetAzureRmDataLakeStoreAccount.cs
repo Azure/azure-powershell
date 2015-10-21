@@ -19,19 +19,24 @@ using Microsoft.Azure.Management.DataLake.Store.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreAccount", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(List<DataLakeStoreAccount>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreAccount", DefaultParameterSetName = BaseParameterSetName),
+     OutputType(typeof (List<DataLakeStoreAccount>))]
     public class GetAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
     {
         internal const string BaseParameterSetName = "All In Subscription";
         internal const string ResourceGroupParameterSetName = "All In Resource Group";
         internal const string AccountParameterSetName = "Specific Account";
 
-        [Parameter(ParameterSetName = ResourceGroupParameterSetName, Position = 0, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of resource group under which want to retrieve the account.")]
-        [Parameter(ParameterSetName = AccountParameterSetName, Position = 1, ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Name of resource group under which want to retrieve the account.")]
+        [Parameter(ParameterSetName = ResourceGroupParameterSetName, Position = 0,
+            ValueFromPipelineByPropertyName = true, Mandatory = true,
+            HelpMessage = "Name of resource group under which want to retrieve the account.")]
+        [Parameter(ParameterSetName = AccountParameterSetName, Position = 1, ValueFromPipelineByPropertyName = true,
+            Mandatory = false, HelpMessage = "Name of resource group under which want to retrieve the account.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(ParameterSetName = AccountParameterSetName, Position = 0, ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of a specific account.")]
+        [Parameter(ParameterSetName = AccountParameterSetName, Position = 0, ValueFromPipelineByPropertyName = true,
+            Mandatory = true, HelpMessage = "Name of a specific account.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

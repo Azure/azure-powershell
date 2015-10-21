@@ -13,16 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using Hyak.Common;
+using Microsoft.Azure.Commands.DataLakeStore.Properties;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
     /// <summary>
-    /// The object that is passed in and parsed for all Data Lake paths.
+    ///     The object that is passed in and parsed for all Data Lake paths.
     /// </summary>
     public class DataLakeStorePathInstance
     {
         public string Path { get; set; }
-
         public string FullyQualifiedPath { get; set; }
 
         public static DataLakeStorePathInstance Parse(string path)
@@ -30,17 +30,17 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             // reverse all slashes to the correct slash type
             path = path.Replace('\\', '/');
             var tempAccount = string.Empty;
-            
+
             // all paths must start with a slash and be account relative.
             if (!path.StartsWith("/"))
             {
-                throw new CloudException(string.Format(Properties.Resources.InvalidPath, path));
+                throw new CloudException(string.Format(Resources.InvalidPath, path));
             }
-            
+
             return new DataLakeStorePathInstance
             {
                 Path = path,
-                FullyQualifiedPath = path,
+                FullyQualifiedPath = path
             };
         }
     }

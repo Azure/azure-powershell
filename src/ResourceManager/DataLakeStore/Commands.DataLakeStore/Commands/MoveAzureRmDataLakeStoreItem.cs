@@ -15,46 +15,53 @@
 using System.Management.Automation;
 using Hyak.Common;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
+using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using Microsoft.Azure.Management.DataLake.StoreFileSystem.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Move, "AzureRmDataLakeStoreItem"), OutputType(typeof(string))]
+    [Cmdlet(VerbsCommon.Move, "AzureRmDataLakeStoreItem"), OutputType(typeof (string))]
     public class MoveAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
+            HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
         [ValidateNotNullOrEmpty]
-        public string AccountName { get; set; }
+        [Alias("AccountName")]
+        public string Account { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true, HelpMessage = "The path in the specified Data Lake account where the file or folder should be moved from. " +
-                                                                                           "In the format '/folder/file.txt', " +
-                                                                                           "where the first '/' after the DNS indicates the root of the file system.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
+            HelpMessage =
+                "The path in the specified Data Lake account where the file or folder should be moved from. " +
+                "In the format '/folder/file.txt', " +
+                "where the first '/' after the DNS indicates the root of the file system.")]
         [ValidateNotNull]
         public DataLakeStorePathInstance Path { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true, HelpMessage = "The path in the specified Data Lake account where the file or folder should be moved to. " +
-                                                                                           "In the format '/folder/file.txt', " +
-                                                                                           "where the first '/' after the DNS indicates the root of the file system.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
+            HelpMessage = "The path in the specified Data Lake account where the file or folder should be moved to. " +
+                          "In the format '/folder/file.txt', " +
+                          "where the first '/' after the DNS indicates the root of the file system.")]
         [ValidateNotNullOrEmpty]
         public DataLakeStorePathInstance Destination { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false, HelpMessage = "Indicates that, if the file or folder exists, it should be overwritten")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
+            HelpMessage = "Indicates that, if the file or folder exists, it should be overwritten")]
         public SwitchParameter Force { get; set; }
 
         protected override void ProcessRecord()
         {
             FileType fileType;
-            if (this.Force &&
-                DataLakeStoreFileSystemClient.TestFileOrFolderExistence(this.AccountName, Destination.FullyQualifiedPath,
+            if (Force &&
+                DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Account, Destination.FullyQualifiedPath,
                     out fileType))
             {
-                DataLakeStoreFileSystemClient.DeleteFileOrFolder(this.AccountName, Destination.FullyQualifiedPath, true);
+                DataLakeStoreFileSystemClient.DeleteFileOrFolder(Account, Destination.FullyQualifiedPath, true);
             }
 
-            if (!DataLakeStoreFileSystemClient.RenameFileOrDirectory(Path.Path, AccountName, Destination.Path))
+            if (!DataLakeStoreFileSystemClient.RenameFileOrDirectory(Path.Path, Account, Destination.Path))
             {
                 throw new CloudException(
-                    string.Format(Properties.Resources.MoveFailed, Path.FullyQualifiedPath, Destination.FullyQualifiedPath));
+                    string.Format(Resources.MoveFailed, Path.FullyQualifiedPath, Destination.FullyQualifiedPath));
             }
 
             WriteObject(Destination.FullyQualifiedPath);

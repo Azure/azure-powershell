@@ -17,11 +17,12 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 {
     /// <summary>
-    /// The base class for all Microsoft Azure DataLakeAnalytics Management cmdlets
+    ///     The base class for all Microsoft Azure DataLakeAnalytics Management cmdlets
     /// </summary>
     public abstract class DataLakeAnalyticsCmdletBase : AzureRMCmdlet
     {
         private DataLakeAnalyticsClient _bigAnalyticsClient;
+
         public DataLakeAnalyticsClient DataLakeAnalyticsClient
         {
             get
@@ -33,10 +34,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 return _bigAnalyticsClient;
             }
 
-            set 
-            {
-                _bigAnalyticsClient = value; 
-            }
+            set { _bigAnalyticsClient = value; }
         }
     }
 }

@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
@@ -20,40 +19,47 @@ using Microsoft.Azure.Management.DataLake.StoreFileSystem.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Join, "AzureRmDataLakeStoreItem"), OutputType(typeof(string))]
+    [Cmdlet(VerbsCommon.Join, "AzureRmDataLakeStoreItem"), OutputType(typeof (string))]
     public class JoinAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
+            HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
         [ValidateNotNullOrEmpty]
-        public string AccountName { get; set; }
+        [Alias("AccountName")]
+        public string Account { get; set; }
 
         [Alias("Path")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true, HelpMessage = "The path(s) in the specified Data Lake account that should be concatenated into one file. " +
-                                                                                           "In the format '/folder/file.txt', " +
-                                                                                           "where the first '/' after the DNS indicates the root of the file system.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
+            HelpMessage = "The path(s) in the specified Data Lake account that should be concatenated into one file. " +
+                          "In the format '/folder/file.txt', " +
+                          "where the first '/' after the DNS indicates the root of the file system.")]
         [ValidateNotNull]
         public DataLakeStorePathInstance[] Paths { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true, HelpMessage = "The path in the specified Data Lake account where the concatenation should target. " +
-                                                                                           "In the format '/folder/file.txt', " +
-                                                                                           "where the first '/' after the DNS indicates the root of the file system.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
+            HelpMessage = "The path in the specified Data Lake account where the concatenation should target. " +
+                          "In the format '/folder/file.txt', " +
+                          "where the first '/' after the DNS indicates the root of the file system.")]
         [ValidateNotNullOrEmpty]
         public DataLakeStorePathInstance Destination { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false, HelpMessage = "Indicates that, if the file or folder exists, it should be overwritten")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
+            HelpMessage = "Indicates that, if the file or folder exists, it should be overwritten")]
         public SwitchParameter Force { get; set; }
 
         protected override void ProcessRecord()
         {
             FileType fileType;
-            if (this.Force &&
-                DataLakeStoreFileSystemClient.TestFileOrFolderExistence(this.AccountName, Destination.FullyQualifiedPath,
-                    out fileType) && fileType == FileType.File) // If it is a directory you are trying to overwrite with a concatenated file, we will error out.
+            if (Force &&
+                DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Account, Destination.FullyQualifiedPath,
+                    out fileType) && fileType == FileType.File)
+                // If it is a directory you are trying to overwrite with a concatenated file, we will error out.
             {
-                DataLakeStoreFileSystemClient.DeleteFileOrFolder(this.AccountName, Destination.FullyQualifiedPath, false);
+                DataLakeStoreFileSystemClient.DeleteFileOrFolder(Account, Destination.FullyQualifiedPath, false);
             }
 
-            DataLakeStoreFileSystemClient.ConcatenateFiles(Destination.Path, AccountName, Paths.Select(path => path.Path).ToArray());
+            DataLakeStoreFileSystemClient.ConcatenateFiles(Destination.Path, Account,
+                Paths.Select(path => path.Path).ToArray());
 
             WriteObject(Destination.FullyQualifiedPath);
         }

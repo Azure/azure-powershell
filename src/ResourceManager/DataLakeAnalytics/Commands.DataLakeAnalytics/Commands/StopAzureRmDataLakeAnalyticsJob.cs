@@ -15,25 +15,31 @@
 using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
+using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet(VerbsLifecycle.Stop, "AzureRmDataLakeAnalyticsJob")]
     public class StopAzureDataLakeAnalyticsJobInfo : DataLakeAnalyticsCmdletBase
     {
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "Name of the Data Lake Analytics account name under which want to stop the job.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
+            HelpMessage = "Name of the Data Lake Analytics account name under which want to stop the job.")]
         [ValidateNotNullOrEmpty]
-        public string AccountName { get; set; }
+        [Alias("AccountName")]
+        public string Account { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, ValueFromPipeline = true, Mandatory = true, HelpMessage = "Name of the specific job to stop.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, ValueFromPipeline = true, Mandatory = true,
+            HelpMessage = "Name of the specific job to stop.")]
         [ValidateNotNullOrEmpty]
         public Guid JobId { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false, HelpMessage = "Name of resource group under which want to stop the job.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false,
+            HelpMessage = "Name of resource group under which want to stop the job.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false, HelpMessage = "Indicates that the job should be forcibly stopped.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
+            HelpMessage = "Indicates that the job should be forcibly stopped.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter Force { get; set; }
 
@@ -44,10 +50,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         {
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(Properties.Resources.StoppingDataLakeAnalyticsJob, JobId),
-                string.Format(Properties.Resources.StopDataLakeAnalyticsJob, JobId),
+                string.Format(Resources.StoppingDataLakeAnalyticsJob, JobId),
+                string.Format(Resources.StopDataLakeAnalyticsJob, JobId),
                 JobId.ToString(),
-                () => DataLakeAnalyticsClient.CancelJob(ResourceGroupName, AccountName, JobId));
+                () => DataLakeAnalyticsClient.CancelJob(ResourceGroupName, Account, JobId));
 
             if (PassThru)
             {

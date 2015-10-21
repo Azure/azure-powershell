@@ -18,32 +18,36 @@ using Microsoft.Azure.Management.DataLake.StoreFileSystem.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsDiagnostic.Test, "AzureRmDataLakeStoreItem"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsDiagnostic.Test, "AzureRmDataLakeStoreItem"), OutputType(typeof (bool))]
     public class TestAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
+            HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
         [ValidateNotNullOrEmpty]
-        public string AccountName { get; set; }
+        [Alias("AccountName")]
+        public string Account { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true, HelpMessage = "The path in the specified Data Lake account to test for the existence of the file. " +
-                                                                                           "In the format '/folder/file.txt', " +
-                                                                                           "where the first '/' after the DNS indicates the root of the file system.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
+            HelpMessage = "The path in the specified Data Lake account to test for the existence of the file. " +
+                          "In the format '/folder/file.txt', " +
+                          "where the first '/' after the DNS indicates the root of the file system.")]
         [ValidateNotNull]
         public DataLakeStorePathInstance Path { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false, HelpMessage = "Indicates the type of path expected when testing. Valid values are Any, File or Folder.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false,
+            HelpMessage = "Indicates the type of path expected when testing. Valid values are Any, File or Folder.")]
         public DataLakeStoreEnums.PathType PathType { get; set; }
 
         protected override void ProcessRecord()
         {
             FileType fileType;
-            if(DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Path.Path, AccountName, out fileType))
+            if (DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Path.Path, Account, out fileType))
             {
-                if(PathType == DataLakeStoreEnums.PathType.Any)
+                if (PathType == DataLakeStoreEnums.PathType.Any)
                 {
                     WriteObject(true);
                 }
-                else if(PathType == DataLakeStoreEnums.PathType.File && fileType == FileType.File)
+                else if (PathType == DataLakeStoreEnums.PathType.File && fileType == FileType.File)
                 {
                     WriteObject(true);
                 }

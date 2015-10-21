@@ -14,33 +14,46 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
+using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using Microsoft.Azure.Management.DataLake.StoreFileSystem.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeStoreItem"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeStoreItem"), OutputType(typeof (bool))]
     public class RemoveAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
+            HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
         [ValidateNotNullOrEmpty]
-        public string AccountName { get; set; }
+        [Alias("AccountName")]
+        public string Account { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true, HelpMessage = "The path in the specified Data Lake account to remove the file or folder. " +
-                                                                                           "In the format '/folder/file.txt', " +
-                                                                                           "where the first '/' after the DNS indicates the root of the file system.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
+            HelpMessage = "The path in the specified Data Lake account to remove the file or folder. " +
+                          "In the format '/folder/file.txt', " +
+                          "where the first '/' after the DNS indicates the root of the file system.")]
         [ValidateNotNull]
         public DataLakeStorePathInstance[] Paths { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false, HelpMessage = "Indicates the user wants a recursive delete of the folder.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false,
+            HelpMessage = "Indicates the user wants a recursive delete of the folder.")]
         public SwitchParameter Recurse { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false, HelpMessage = "Indicates the user wants to remove all of the contents of the folder, but not the folder itself")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
+            HelpMessage =
+                "Indicates the user wants to remove all of the contents of the folder, but not the folder itself")]
         public SwitchParameter Clean { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false, HelpMessage = "Indicates the delete should be immediately performed with no confirmation or prompting. Use carefully.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
+            HelpMessage =
+                "Indicates the delete should be immediately performed with no confirmation or prompting. Use carefully."
+            )]
         public SwitchParameter Force { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false, HelpMessage = "Indicates the delete should be immediately performed with no confirmation or prompting. Use carefully.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, Mandatory = false,
+            HelpMessage =
+                "Indicates the delete should be immediately performed with no confirmation or prompting. Use carefully."
+            )]
         public SwitchParameter PassThru { get; set; }
 
         protected override void ProcessRecord()
@@ -50,28 +63,30 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             {
                 FileType testClean;
                 var pathExists = DataLakeStoreFileSystemClient.TestFileOrFolderExistence(path.Path,
-                    AccountName, out testClean);
-                
+                    Account, out testClean);
+
                 if (!Force.IsPresent)
                 {
                     ConfirmAction(
                         Force.IsPresent,
-                        string.Format(Properties.Resources.RemovingDataLakeStoreItem, path.FullyQualifiedPath),
-                        string.Format(Properties.Resources.RemoveDataLakeStoreItem, path.FullyQualifiedPath),
+                        string.Format(Resources.RemovingDataLakeStoreItem, path.FullyQualifiedPath),
+                        string.Format(Resources.RemoveDataLakeStoreItem, path.FullyQualifiedPath),
                         path.FullyQualifiedPath,
                         () =>
-                            success[0] = success[0] && DataLakeStoreFileSystemClient.DeleteFileOrFolder(path.Path, AccountName,
-                                Recurse));
+                            success[0] =
+                                success[0] && DataLakeStoreFileSystemClient.DeleteFileOrFolder(path.Path, Account,
+                                    Recurse));
                 }
                 else
                 {
-                    success[0] = success[0] && DataLakeStoreFileSystemClient.DeleteFileOrFolder(path.Path, AccountName, Recurse);
+                    success[0] = success[0] &&
+                                 DataLakeStoreFileSystemClient.DeleteFileOrFolder(path.Path, Account, Recurse);
                 }
 
                 if (pathExists && testClean == FileType.Directory && Clean)
                 {
                     // recreate the directory as an empty directory if clean was specified.
-                    DataLakeStoreFileSystemClient.CreateDirectory(path.Path, AccountName);
+                    DataLakeStoreFileSystemClient.CreateDirectory(path.Path, Account);
                 }
             }
 

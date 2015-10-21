@@ -16,67 +16,78 @@ using System.IO;
 using System.Management.Automation;
 using Hyak.Common;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
+using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using Microsoft.Azure.Management.DataLake.StoreFileSystem.Models;
 using Microsoft.PowerShell.Commands;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmDataLakeStoreItem"), OutputType(typeof(string))]
+    [Cmdlet(VerbsCommon.New, "AzureRmDataLakeStoreItem"), OutputType(typeof (string))]
     public class NewAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
         private FileSystemCmdletProviderEncoding _encoding = FileSystemCmdletProviderEncoding.UTF8;
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
+            HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
         [ValidateNotNullOrEmpty]
-        public string AccountName { get; set; }
+        [Alias("AccountName")]
+        public string Account { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true, HelpMessage = "The path in the specified Data Lake account where the action should take place. " +
-                                                                                           "In the format '/folder/file.txt', " +
-                                                                                           "where the first '/' after the DNS indicates the root of the file system.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
+            HelpMessage = "The path in the specified Data Lake account where the action should take place. " +
+                          "In the format '/folder/file.txt', " +
+                          "where the first '/' after the DNS indicates the root of the file system.")]
         [ValidateNotNullOrEmpty]
         public DataLakeStorePathInstance Path { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, ValueFromPipeline = true, Mandatory = false, HelpMessage = "Optional content for the file to contain upon creation")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, ValueFromPipeline = true, Mandatory = false,
+            HelpMessage = "Optional content for the file to contain upon creation")]
         [ValidateNotNull]
         public object Value { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false, HelpMessage = "Optionally indicates the encoding for the content being uploaded as part of 'Value'. Default is UTF8")]
-        public FileSystemCmdletProviderEncoding Encoding {
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
+            HelpMessage =
+                "Optionally indicates the encoding for the content being uploaded as part of 'Value'. Default is UTF8")]
+        public FileSystemCmdletProviderEncoding Encoding
+        {
             get { return _encoding; }
-            set { _encoding = value; } 
+            set { _encoding = value; }
         }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false, HelpMessage = "Optionally indicates that this new item is a folder and not a file.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
+            HelpMessage = "Optionally indicates that this new item is a folder and not a file.")]
         public SwitchParameter Folder { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false, HelpMessage = "Indicates that, if the file or folder exists, it should be overwritten")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
+            HelpMessage = "Indicates that, if the file or folder exists, it should be overwritten")]
         public SwitchParameter Force { get; set; }
 
         protected override void ProcessRecord()
         {
             FileType ignored;
-            
-            if(DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Path.Path, AccountName, out ignored))
+
+            if (DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Path.Path, Account, out ignored))
             {
                 if (!Force)
                 {
-                    throw new CloudException(string.Format(Properties.Resources.ServerFileAlreadyExists, Path.Path));
+                    throw new CloudException(string.Format(Resources.ServerFileAlreadyExists, Path.Path));
                 }
             }
 
             string toReturn;
-            if(Folder)
+            if (Folder)
             {
-                DataLakeStoreFileSystemClient.CreateDirectory(Path.Path, AccountName);
+                DataLakeStoreFileSystemClient.CreateDirectory(Path.Path, Account);
             }
             else
             {
                 if (Path.Path.EndsWith("/"))
                 {
-                    throw new CloudException(string.Format(Properties.Resources.InvalidFilePath, Path.Path));
+                    throw new CloudException(string.Format(Resources.InvalidFilePath, Path.Path));
                 }
 
-                DataLakeStoreFileSystemClient.CreateFile(Path.Path, AccountName, Value != null ? new MemoryStream(GetBytes(Value, Encoding)) : new MemoryStream(), Force);
+                DataLakeStoreFileSystemClient.CreateFile(Path.Path, Account,
+                    Value != null ? new MemoryStream(GetBytes(Value, Encoding)) : new MemoryStream(), Force);
             }
 
             WriteObject(Path.FullyQualifiedPath);

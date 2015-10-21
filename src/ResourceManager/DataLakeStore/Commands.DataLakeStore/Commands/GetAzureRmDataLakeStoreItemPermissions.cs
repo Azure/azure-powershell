@@ -20,19 +20,25 @@ namespace Microsoft.Azure.Commands.DataLakeStore
     // [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreItemPermissions"), OutputType(typeof(DataLakeStoreItemPermissionInstance))]
     public class GetAzureDataLakeStoreItemPermissions : DataLakeStoreFileSystemCmdletBase
     {
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
+            HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
         [ValidateNotNullOrEmpty]
-        public string AccountName { get; set; }
+        [Alias("AccountName")]
+        public string Account { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true, HelpMessage = "The path in the specified Data Lake account that should have its permissions retrieved. Can be a file or folder " +
-                                                                                           "In the format '/folder/file.txt', " +
-                                                                                           "where the first '/' after the DNS indicates the root of the file system.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
+            HelpMessage =
+                "The path in the specified Data Lake account that should have its permissions retrieved. Can be a file or folder " +
+                "In the format '/folder/file.txt', " +
+                "where the first '/' after the DNS indicates the root of the file system.")]
         [ValidateNotNull]
         public DataLakeStorePathInstance Path { get; set; }
 
         protected override void ProcessRecord()
         {
-            WriteObject(DataLakeStoreItemPermissionInstance.Parse(DataLakeStoreFileSystemClient.GetFileStatus(Path.Path, AccountName).Permission));
+            WriteObject(
+                DataLakeStoreItemPermissionInstance.Parse(
+                    DataLakeStoreFileSystemClient.GetFileStatus(Path.Path, Account).Permission));
         }
     }
 }

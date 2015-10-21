@@ -14,26 +14,36 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
+using Microsoft.Azure.Commands.DataLakeStore.Properties;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeStoreItemAcl"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeStoreItemAcl"), OutputType(typeof (bool))]
     public class RemoveAzureDataLakeStoreItemAcl : DataLakeStoreFileSystemCmdletBase
     {
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
+            HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
         [ValidateNotNullOrEmpty]
-        public string AccountName { get; set; }
+        [Alias("AccountName")]
+        public string Account { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true, HelpMessage = "The path in the specified Data Lake account that should have its ACL removed. Can be a file or folder " +
-                                                                                           "In the format '/folder/file.txt', " +
-                                                                                           "where the first '/' after the DNS indicates the root of the file system.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
+            HelpMessage =
+                "The path in the specified Data Lake account that should have its ACL removed. Can be a file or folder " +
+                "In the format '/folder/file.txt', " +
+                "where the first '/' after the DNS indicates the root of the file system.")]
         [ValidateNotNull]
         public DataLakeStorePathInstance Path { get; set; }
 
-         [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false, HelpMessage = "Optionally indicates that the ACL to remove is the default ACL on the item. If not specified, will remove the standard ACL for the item")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false,
+            HelpMessage =
+                "Optionally indicates that the ACL to remove is the default ACL on the item. If not specified, will remove the standard ACL for the item"
+            )]
         public SwitchParameter Default { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false, HelpMessage = "Indicates that the ACL should be removed on the file with the specified ACL without prompting.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
+            HelpMessage =
+                "Indicates that the ACL should be removed on the file with the specified ACL without prompting.")]
         public SwitchParameter Force { get; set; }
 
         protected override void ProcessRecord()
@@ -42,32 +52,32 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             {
                 ConfirmAction(
                     Force.IsPresent,
-                    string.Format(Properties.Resources.RemovingDataLakeStoreItemAcl,
-                        this.Default ? Properties.Resources.DefaultAclWord : string.Empty, Path.FullyQualifiedPath),
-                    string.Format(Properties.Resources.RemoveDataLakeStoreItemAcl,
-                        this.Default ? Properties.Resources.DefaultAclWord : string.Empty, Path.FullyQualifiedPath),
+                    string.Format(Resources.RemovingDataLakeStoreItemAcl,
+                        Default ? Resources.DefaultAclWord : string.Empty, Path.FullyQualifiedPath),
+                    string.Format(Resources.RemoveDataLakeStoreItemAcl,
+                        Default ? Resources.DefaultAclWord : string.Empty, Path.FullyQualifiedPath),
                     Path.FullyQualifiedPath,
                     () =>
                     {
-                        if (this.Default)
+                        if (Default)
                         {
-                            DataLakeStoreFileSystemClient.RemoveDefaultAcl(Path.Path, AccountName);
+                            DataLakeStoreFileSystemClient.RemoveDefaultAcl(Path.Path, Account);
                         }
                         else
                         {
-                            DataLakeStoreFileSystemClient.RemoveAcl(Path.Path, AccountName);
+                            DataLakeStoreFileSystemClient.RemoveAcl(Path.Path, Account);
                         }
                     });
             }
             else
             {
-                if (this.Default)
+                if (Default)
                 {
-                    DataLakeStoreFileSystemClient.RemoveDefaultAcl(Path.Path, AccountName);
+                    DataLakeStoreFileSystemClient.RemoveDefaultAcl(Path.Path, Account);
                 }
                 else
                 {
-                    DataLakeStoreFileSystemClient.RemoveAcl(Path.Path, AccountName);
+                    DataLakeStoreFileSystemClient.RemoveAcl(Path.Path, Account);
                 }
             }
         }

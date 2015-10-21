@@ -16,6 +16,32 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
     public class DataLakeStoreEnums
     {
+        public enum AceType
+        {
+            User,
+            Group,
+            Mask,
+            Other
+        }
+
+        public enum Encoding
+        {
+            Ascii,
+            BigEndianUnicode,
+            Byte,
+            Default,
+            Unicode,
+            UTF32,
+            UTF7,
+            UTF8
+        }
+
+        public enum Owner
+        {
+            User,
+            Group
+        }
+
         public enum PathType
         {
             Any,
@@ -32,7 +58,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             Read = 4, // "r--"
             ReadExecute = 5, // "r-x"
             ReadWrite = 6, // "rw-"
-            All = 7, // "rwx"
+            All = 7 // "rwx"
         };
 
         public enum PermissionScope
@@ -40,32 +66,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             User,
             Group,
             Other
-        }
-
-        public enum AceType
-        {
-            User,
-            Group,
-            Mask,
-            Other
-        }
-
-        public enum Owner
-        {
-            User,
-            Group
-        }
-
-        public enum Encoding
-        {
-            Ascii,
-            BigEndianUnicode,
-            Byte,
-            Default,
-            Unicode,
-            UTF32,
-            UTF7,
-            UTF8
         }
     }
 }

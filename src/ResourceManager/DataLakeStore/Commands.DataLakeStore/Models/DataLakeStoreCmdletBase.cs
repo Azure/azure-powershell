@@ -17,11 +17,12 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
     /// <summary>
-    /// The base class for all Microsoft Azure DataLakeStore Management cmdlets
+    ///     The base class for all Microsoft Azure DataLakeStore Management cmdlets
     /// </summary>
     public abstract class DataLakeStoreCmdletBase : AzureRMCmdlet
     {
         private DataLakeStoreClient dataLakeClient;
+
         public DataLakeStoreClient DataLakeStoreClient
         {
             get
@@ -33,10 +34,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 return dataLakeClient;
             }
 
-            set 
-            {
-                dataLakeClient = value; 
-            }
+            set { dataLakeClient = value; }
         }
     }
 }

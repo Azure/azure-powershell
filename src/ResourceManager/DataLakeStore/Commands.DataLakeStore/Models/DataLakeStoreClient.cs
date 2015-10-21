@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using Hyak.Common;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
+using Microsoft.Azure.Common.Authentication.Properties;
 using Microsoft.Azure.Management.DataLake.Store;
 using Microsoft.Azure.Management.DataLake.Store.Models;
 
@@ -26,25 +27,32 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
     {
         private readonly DataLakeStoreManagementClient _client;
         private readonly Guid _subscriptionId;
+
         public DataLakeStoreClient(AzureContext context)
         {
             if (context == null)
             {
-                throw new ApplicationException(Common.Authentication.Properties.Resources.InvalidDefaultSubscription);
+                throw new ApplicationException(Resources.InvalidDefaultSubscription);
             }
 
             _subscriptionId = context.Subscription.Id;
-            _client = AzureSession.ClientFactory.CreateClient<DataLakeStoreManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            _client = AzureSession.ClientFactory.CreateClient<DataLakeStoreManagementClient>(context,
+                AzureEnvironment.Endpoint.ResourceManager);
             _client.UserAgentSuffix = " - PowerShell Client";
         }
-        public DataLakeStoreClient() { }
+
+        public DataLakeStoreClient()
+        {
+        }
 
         #region Account Related Operations
-        public DataLakeStoreAccount CreateOrUpdateAccount(string resourceGroupName, string accountName, string defaultGroup, string location, IDictionary<string, string> customTags = null)
+
+        public DataLakeStoreAccount CreateOrUpdateAccount(string resourceGroupName, string accountName,
+            string defaultGroup, string location, IDictionary<string, string> customTags = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
-                resourceGroupName = GetResourceGroupByAccountName(accountName);
+                resourceGroupName = GetResourceGroupByAccount(accountName);
             }
 
             var parameters = new DataLakeStoreAccountCreateOrUpdateParameters
@@ -64,14 +72,13 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             var accountExists = false;
             try
             {
-
                 if (GetAccount(resourceGroupName, accountName) != null)
                 {
                     accountExists = true;
                 }
             }
-            catch 
-            { 
+            catch
+            {
                 // intentionally empty since if there is any exception attempting to 
                 // get the account we know it doesn't exist and we will attempt to create it fresh.
             }
@@ -82,7 +89,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
             if (response.Status != OperationStatus.Succeeded)
             {
-                throw new CloudException(string.Format(Properties.Resources.LongRunningOperationFailed, response.Error.Code, response.Error.Message));
+                throw new CloudException(string.Format(Properties.Resources.LongRunningOperationFailed,
+                    response.Error.Code, response.Error.Message));
             }
 
             return _client.DataLakeStoreAccount.Get(resourceGroupName, accountName).DataLakeStoreAccount;
@@ -92,16 +100,17 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
-                resourceGroupName = GetResourceGroupByAccountName(accountName);
+                resourceGroupName = GetResourceGroupByAccount(accountName);
             }
 
-            var response =  _client.DataLakeStoreAccount.Delete(resourceGroupName, accountName);
-            
+            var response = _client.DataLakeStoreAccount.Delete(resourceGroupName, accountName);
+
             if (response.Status != OperationStatus.Succeeded)
             {
-                throw new CloudException(string.Format(Properties.Resources.LongRunningOperationFailed, response.Error.Code, response.Error.Message));
+                throw new CloudException(string.Format(Properties.Resources.LongRunningOperationFailed,
+                    response.Error.Code, response.Error.Message));
             }
-            
+
             return response;
         }
 
@@ -109,7 +118,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
-                resourceGroupName = GetResourceGroupByAccountName(accountName);
+                resourceGroupName = GetResourceGroupByAccount(accountName);
             }
 
             return _client.DataLakeStoreAccount.Get(resourceGroupName, accountName).DataLakeStoreAccount;
@@ -128,12 +137,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             var response = _client.DataLakeStoreAccount.List(resourceGroupName, parameters);
             accountList.AddRange(response.Value);
 
-            while(!string.IsNullOrEmpty(response.NextLink))
+            while (!string.IsNullOrEmpty(response.NextLink))
             {
                 response = ListAccountsWithNextLink(response.NextLink);
                 accountList.AddRange(response.Value);
             }
-            
+
             return accountList;
         }
 
@@ -142,18 +151,23 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             return _client.DataLakeStoreAccount.ListNext(nextLink);
         }
 
-        private string GetResourceGroupByAccountName(string accountName)
+        private string GetResourceGroupByAccount(string accountName)
         {
             try
             {
-                var acctId = ListAccounts(null, null, null, null).Find(x => x.Name.Equals(accountName, StringComparison.InvariantCultureIgnoreCase)).Id;
-                var rgStart = acctId.IndexOf("resourceGroups/", StringComparison.InvariantCultureIgnoreCase) + ("resourceGroups/".Length);
+                var acctId =
+                    ListAccounts(null, null, null, null)
+                        .Find(x => x.Name.Equals(accountName, StringComparison.InvariantCultureIgnoreCase))
+                        .Id;
+                var rgStart = acctId.IndexOf("resourceGroups/", StringComparison.InvariantCultureIgnoreCase) +
+                              ("resourceGroups/".Length);
                 var rgLength = (acctId.IndexOf("/providers/", StringComparison.InvariantCultureIgnoreCase)) - rgStart;
                 return acctId.Substring(rgStart, rgLength);
             }
             catch
             {
-                throw new CloudException(string.Format(Properties.Resources.FailedToDiscoverResourceGroup, accountName, _subscriptionId));
+                throw new CloudException(string.Format(Properties.Resources.FailedToDiscoverResourceGroup, accountName,
+                    _subscriptionId));
             }
         }
 

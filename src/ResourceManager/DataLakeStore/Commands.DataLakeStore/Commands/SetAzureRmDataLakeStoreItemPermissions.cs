@@ -20,23 +20,30 @@ namespace Microsoft.Azure.Commands.DataLakeStore
     // [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreItemPermissions"), OutputType(typeof(bool))]
     public class SetAzureDataLakeStoreItemPermissions : DataLakeStoreFileSystemCmdletBase
     {
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
+            HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
         [ValidateNotNullOrEmpty]
-        public string AccountName { get; set; }
+        [Alias("AccountName")]
+        public string Account { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true, HelpMessage = "The path in the specified Data Lake account that should have its permissions set. Can be a file or folder " +
-                                                                                           "In the format '/folder/file.txt', " +
-                                                                                           "where the first '/' after the DNS indicates the root of the file system.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
+            HelpMessage =
+                "The path in the specified Data Lake account that should have its permissions set. Can be a file or folder " +
+                "In the format '/folder/file.txt', " +
+                "where the first '/' after the DNS indicates the root of the file system.")]
         [ValidateNotNull]
         public DataLakeStorePathInstance Path { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true, HelpMessage = "The permissions to set for the file or folder. This can be expressed as an octal (e.g. '777') or as a friendly string (e.g. 'rwxrwxrwx')")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
+            HelpMessage =
+                "The permissions to set for the file or folder. This can be expressed as an octal (e.g. '777') or as a friendly string (e.g. 'rwxrwxrwx')"
+            )]
         [ValidateNotNull]
         public DataLakeStoreItemPermissionInstance Permissions { get; set; }
 
         protected override void ProcessRecord()
         {
-            DataLakeStoreFileSystemClient.SetPermission(Path.Path, AccountName, Permissions.PermissionsOctal);
+            DataLakeStoreFileSystemClient.SetPermission(Path.Path, Account, Permissions.PermissionsOctal);
             WriteObject(true);
         }
     }

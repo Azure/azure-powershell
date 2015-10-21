@@ -14,24 +14,27 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
+using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeAnalyticsAccount"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeAnalyticsAccount"), OutputType(typeof (bool))]
     public class RemoveAzureDataLakeAnalyticsAccount : DataLakeAnalyticsCmdletBase
     {
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "Name of account to be removed.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
+            HelpMessage = "Name of account to be removed.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = false, HelpMessage = "Name of resource group under which the account exists.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = false,
+            HelpMessage = "Name of resource group under which the account exists.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = false, Position = 2, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
-        [Parameter(Mandatory = false,  Position = 3)]
+        [Parameter(Mandatory = false, Position = 3)]
         public SwitchParameter PassThru { get; set; }
 
         protected override void ProcessRecord()
@@ -39,11 +42,11 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             if (!Force.IsPresent)
             {
                 ConfirmAction(
-                Force.IsPresent,
-                string.Format(Properties.Resources.RemovingDataLakeAnalyticsAccount, Name),
-                string.Format(Properties.Resources.RemoveDataLakeAnalyticsAccount, Name),
-                Name,
-                () => DataLakeAnalyticsClient.DeleteAccount(ResourceGroupName, Name));
+                    Force.IsPresent,
+                    string.Format(Resources.RemovingDataLakeAnalyticsAccount, Name),
+                    string.Format(Resources.RemoveDataLakeAnalyticsAccount, Name),
+                    Name,
+                    () => DataLakeAnalyticsClient.DeleteAccount(ResourceGroupName, Name));
             }
             else
             {

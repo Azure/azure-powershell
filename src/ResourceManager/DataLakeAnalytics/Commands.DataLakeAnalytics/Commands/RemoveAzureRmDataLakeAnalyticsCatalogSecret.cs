@@ -14,25 +14,32 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
+using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeAnalyticsCatalogSecret"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeAnalyticsCatalogSecret"), OutputType(typeof (bool))]
     public class RemoveAzureDataLakeAnalyticsSecret : DataLakeAnalyticsCmdletBase
     {
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "The account name that contains the catalog to remove the secret(s) from.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
+            HelpMessage = "The account name that contains the catalog to remove the secret(s) from.")]
         [ValidateNotNullOrEmpty]
-        public string AccountName { get; set; }
+        [Alias("AccountName")]
+        public string Account { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true, HelpMessage = "The name of the database to remove the secret(s) from.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
+            HelpMessage = "The name of the database to remove the secret(s) from.")]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false, HelpMessage = "Name of secret to be removed. If none specified, will remove all secrets in the specified database")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false,
+            HelpMessage =
+                "Name of secret to be removed. If none specified, will remove all secrets in the specified database")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false, HelpMessage = "Name of resource group under which the Data Lake Analytics account and catalog exists.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
+            HelpMessage = "Name of resource group under which the Data Lake Analytics account and catalog exists.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -47,15 +54,15 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
             if (!Force.IsPresent)
             {
                 ConfirmAction(
-                Force.IsPresent,
-                string.Format(Properties.Resources.RemovingDataLakeAnalyticsCatalogSecret, Name),
-                string.Format(Properties.Resources.RemoveDataLakeAnalyticsCatalogSecret, Name),
-                Name,
-                () => DataLakeAnalyticsClient.DeleteSecret(ResourceGroupName, AccountName, DatabaseName, Name));
+                    Force.IsPresent,
+                    string.Format(Resources.RemovingDataLakeAnalyticsCatalogSecret, Name),
+                    string.Format(Resources.RemoveDataLakeAnalyticsCatalogSecret, Name),
+                    Name,
+                    () => DataLakeAnalyticsClient.DeleteSecret(ResourceGroupName, Account, DatabaseName, Name));
             }
             else
             {
-                DataLakeAnalyticsClient.DeleteSecret(ResourceGroupName, AccountName, DatabaseName, Name);
+                DataLakeAnalyticsClient.DeleteSecret(ResourceGroupName, Account, DatabaseName, Name);
             }
 
             if (PassThru)

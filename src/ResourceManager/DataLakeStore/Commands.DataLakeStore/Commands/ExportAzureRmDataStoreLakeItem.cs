@@ -15,26 +15,32 @@
 using System.Management.Automation;
 using Hyak.Common;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
+using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using Microsoft.Azure.Management.DataLake.StoreFileSystem.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsData.Export, "AzureRmDataLakeStoreItem"), OutputType(typeof(string))]
+    [Cmdlet(VerbsData.Export, "AzureRmDataLakeStoreItem"), OutputType(typeof (string))]
     public class ExportAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
+            HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
         [ValidateNotNullOrEmpty]
-        public string AccountName { get; set; }
+        [Alias("AccountName")]
+        public string Account { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true, HelpMessage = "The path to the file or folder to download")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
+            HelpMessage = "The path to the file or folder to download")]
         [ValidateNotNull]
         public DataLakeStorePathInstance Path { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true, HelpMessage = "The local path to download the file or folder to")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
+            HelpMessage = "The local path to download the file or folder to")]
         [ValidateNotNullOrEmpty]
         public string Destination { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false, HelpMessage = "Indicates that, if the file or folder exists, it should be overwritten")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
+            HelpMessage = "Indicates that, if the file or folder exists, it should be overwritten")]
         public SwitchParameter Force { get; set; }
 
         protected override void ProcessRecord()
@@ -45,14 +51,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
             FileType type;
 
-            if (!DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Path.Path, AccountName, out type) ||
+            if (!DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Path.Path, Account, out type) ||
                 type != FileType.File)
             {
-                throw new CloudException(string.Format(Properties.Resources.InvalidExportPathType, Path.Path));
+                throw new CloudException(string.Format(Resources.InvalidExportPathType, Path.Path));
             }
 
-            DataLakeStoreFileSystemClient.DownloadFile(Path.Path, AccountName, powerShellReadyPath, this.CmdletCancellationToken, Force, this);
-            
+            DataLakeStoreFileSystemClient.DownloadFile(Path.Path, Account, powerShellReadyPath, CmdletCancellationToken,
+                Force, this);
+
             WriteObject(powerShellReadyPath);
         }
     }

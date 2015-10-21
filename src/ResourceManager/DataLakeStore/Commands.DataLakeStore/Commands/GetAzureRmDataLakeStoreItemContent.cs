@@ -19,28 +19,36 @@ using Microsoft.PowerShell.Commands;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreItemContent"), OutputType(typeof(byte[]), typeof(string))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreItemContent"), OutputType(typeof (byte[]), typeof (string))]
     public class GetAzureDataLakeStoreContent : DataLakeStoreFileSystemCmdletBase
     {
         private FileSystemCmdletProviderEncoding _encoding = FileSystemCmdletProviderEncoding.UTF8;
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
+            HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
         [ValidateNotNullOrEmpty]
-        public string AccountName { get; set; }
+        [Alias("AccountName")]
+        public string Account { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true, HelpMessage = "The path in the specified Data Lake account that should be read from. Can only be a file " +
-                                                                                           "in the format '/folder/file.txt', " +
-                                                                                           "where the first '/' after the DNS indicates the root of the file system.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
+            HelpMessage = "The path in the specified Data Lake account that should be read from. Can only be a file " +
+                          "in the format '/folder/file.txt', " +
+                          "where the first '/' after the DNS indicates the root of the file system.")]
         [ValidateNotNull]
         public DataLakeStorePathInstance Path { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false, HelpMessage = "Where in the file to begin reading from. This value is specified in bytes from the beginning of the file.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false,
+            HelpMessage =
+                "Where in the file to begin reading from. This value is specified in bytes from the beginning of the file."
+            )]
         public long Offset { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = true, HelpMessage = "The number of bytes to read from the file.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = true,
+            HelpMessage = "The number of bytes to read from the file.")]
         public long Length { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false, HelpMessage = "Optionally indicates the encoding for the content being downloaded. Default is UTF8")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
+            HelpMessage = "Optionally indicates the encoding for the content being downloaded. Default is UTF8")]
         public FileSystemCmdletProviderEncoding Encoding
         {
             get { return _encoding; }
@@ -50,8 +58,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         protected override void ProcessRecord()
         {
             byte[] byteArray;
-            using (var memStream = ((MemoryStream) DataLakeStoreFileSystemClient.PreviewFile(Path.Path, AccountName, Length,
-                this.CmdletCancellationToken, this)))
+            using (var memStream = ((MemoryStream) DataLakeStoreFileSystemClient.PreviewFile(Path.Path, Account, Length,
+                CmdletCancellationToken, this)))
             {
                 byteArray = memStream.ToArray();
             }
@@ -64,7 +72,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             {
                 WriteObject(BytesToString(byteArray, Encoding));
             }
-
         }
     }
 }

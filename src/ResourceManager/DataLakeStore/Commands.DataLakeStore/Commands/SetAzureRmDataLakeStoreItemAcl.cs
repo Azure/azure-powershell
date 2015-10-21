@@ -14,28 +14,37 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
+using Microsoft.Azure.Commands.DataLakeStore.Properties;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreItemAcl"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeStoreItemAcl"), OutputType(typeof (bool))]
     public class SetAzureDataLakeStoreItemAcl : DataLakeStoreFileSystemCmdletBase
     {
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
+            HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
         [ValidateNotNullOrEmpty]
-        public string AccountName { get; set; }
+        [Alias("AccountName")]
+        public string Account { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true, HelpMessage = "The path in the specified Data Lake account that should have its ACL set. Can be a file or folder " +
-                                                                                           "In the format '/folder/file.txt', " +
-                                                                                           "where the first '/' after the DNS indicates the root of the file system.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
+            HelpMessage =
+                "The path in the specified Data Lake account that should have its ACL set. Can be a file or folder " +
+                "In the format '/folder/file.txt', " +
+                "where the first '/' after the DNS indicates the root of the file system.")]
         [ValidateNotNull]
         public DataLakeStorePathInstance Path { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true, HelpMessage = "The ACL to set. This can be a modified ACL from Get-AzureDataLakeStoreItemAcl or it can be the string " +
-                                                                                           " representation of an ACL as defined in the apache webhdfs specification. Note that this is only supported for named ACEs." +
-                                                                                           "This cmdlet is not to be used for setting the owner or owning group.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
+            HelpMessage =
+                "The ACL to set. This can be a modified ACL from Get-AzureDataLakeStoreItemAcl or it can be the string " +
+                " representation of an ACL as defined in the apache webhdfs specification. Note that this is only supported for named ACEs." +
+                "This cmdlet is not to be used for setting the owner or owning group.")]
         public DataLakeStoreItemAcl Acl { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false, HelpMessage = "Indicates that the ACL should be replaced on the file with the specified ACL without prompting.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
+            HelpMessage =
+                "Indicates that the ACL should be replaced on the file with the specified ACL without prompting.")]
         public SwitchParameter Force { get; set; }
 
         protected override void ProcessRecord()
@@ -44,17 +53,17 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             {
                 ConfirmAction(
                     Force.IsPresent,
-                    string.Format(Properties.Resources.SettingDataLakeStoreItemAcl, Path.FullyQualifiedPath),
-                    string.Format(Properties.Resources.SetDataLakeStoreItemAcl, Path.FullyQualifiedPath),
+                    string.Format(Resources.SettingDataLakeStoreItemAcl, Path.FullyQualifiedPath),
+                    string.Format(Resources.SetDataLakeStoreItemAcl, Path.FullyQualifiedPath),
                     Path.FullyQualifiedPath,
                     () =>
-                        DataLakeStoreFileSystemClient.SetAcl(Path.Path, AccountName,
+                        DataLakeStoreFileSystemClient.SetAcl(Path.Path, Account,
                             Acl.GetAclSpec()));
             }
             else
             {
-                DataLakeStoreFileSystemClient.SetAcl(Path.Path, AccountName,
-                            Acl.GetAclSpec());
+                DataLakeStoreFileSystemClient.SetAcl(Path.Path, Account,
+                    Acl.GetAclSpec());
             }
         }
     }

@@ -17,14 +17,16 @@ using Microsoft.Azure.Commands.DataLakeStore.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsDiagnostic.Test, "AzureRmDataLakeStoreAccount"), OutputType(typeof(bool))]
+    [Cmdlet(VerbsDiagnostic.Test, "AzureRmDataLakeStoreAccount"), OutputType(typeof (bool))]
     public class TestAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
     {
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "Name of a specific account.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
+            HelpMessage = "Name of a specific account.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-        
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = false, HelpMessage = "Name of resource group under which want to test the account.")]
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = false,
+            HelpMessage = "Name of resource group under which want to test the account.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 

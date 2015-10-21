@@ -16,14 +16,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 {
     public class DataLakeAnalyticsEnums
     {
-        public enum ExtendedJobData
-        {
-            None,
-            All,
-            DebugInfo,
-            Statistics
-        };
-
         public enum CatalogItemType
         {
             Database,
@@ -40,5 +32,13 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         {
             Secret
         }
+
+        public enum ExtendedJobData
+        {
+            None,
+            All,
+            DebugInfo,
+            Statistics
+        };
     }
 }

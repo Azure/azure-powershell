@@ -19,30 +19,36 @@ using Microsoft.Azure.Management.DataLake.AnalyticsCatalog.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeAnalyticsCatalogItem"), OutputType(typeof(List<CatalogItem>), typeof(CatalogItem))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeAnalyticsCatalogItem"),
+     OutputType(typeof (List<CatalogItem>), typeof (CatalogItem))]
     public class GetAzureDataLakeAnalyticsCatalogItem : DataLakeAnalyticsCmdletBase
     {
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "The account name to retrieve the catalog item(s) from.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
+            HelpMessage = "The account name to retrieve the catalog item(s) from.")]
         [ValidateNotNullOrEmpty]
-        public string AccountName { get; set; }
+        [Alias("AccountName")]
+        public string Account { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true, HelpMessage = "The type of the catalog item(s) to retrieve.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
+            HelpMessage = "The type of the catalog item(s) to retrieve.")]
         [ValidateNotNullOrEmpty]
         public DataLakeAnalyticsEnums.CatalogItemType ItemType { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false, HelpMessage = "The catalog item path to search within, in the format:" +
-                                                                                           "'DatabaseName.<optionalSecondPart>.<optionalThirdPart>.<optionalTableStatsName>'." +
-                                                                                           "This is required for all catalog item types except database list")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false,
+            HelpMessage = "The catalog item path to search within, in the format:" +
+                          "'DatabaseName.<optionalSecondPart>.<optionalThirdPart>.<optionalTableStatsName>'." +
+                          "This is required for all catalog item types except database list")]
         [ValidateNotNullOrEmpty]
         public CatalogPathInstance Path { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false, HelpMessage = "Name of resource group under which the Data Lake Analytics account and catalog exists.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
+            HelpMessage = "Name of resource group under which the Data Lake Analytics account and catalog exists.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         protected override void ProcessRecord()
         {
-            var itemList = DataLakeAnalyticsClient.GetCatalogItem(ResourceGroupName, AccountName, Path, ItemType);
+            var itemList = DataLakeAnalyticsClient.GetCatalogItem(ResourceGroupName, Account, Path, ItemType);
             if (itemList.Count == 1)
             {
                 WriteObject(itemList[0]);

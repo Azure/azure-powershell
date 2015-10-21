@@ -16,12 +16,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Hyak.Common;
+using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using Microsoft.Azure.Management.DataLake.StoreFileSystem.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
     /// <summary>
-    /// The object that is used to manage permissions for files and folders.
+    ///     The object that is used to manage permissions for files and folders.
     /// </summary>
     public class DataLakeStoreItemAcl
     {
@@ -31,29 +32,18 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         }
 
         public Hashtable GroupAces { get; set; }
-
         public Hashtable UserAces { get; set; }
-
         public Hashtable DefaultGroupAces { get; set; }
-
         public Hashtable DefaultUserAces { get; set; }
-
         public string OwnerPermission { get; set; }
-
         public string OwningGroupPermission { get; set; }
-
         public string DefaultOwnerPermission { get; set; }
-
         public string DefaultOwningGroupPermission { get; set; }
-
         public string MaskPermission { get; set; }
-
         public string OtherPermission { get; set; }
-
         public string DefaultMaskPermission { get; set; }
-
         public string DefaultOtherPermission { get; set; }
-
+        internal bool IsInitialized { get; set; }
 
         public static DataLakeStoreItemAcl Parse(string aceString)
         {
@@ -82,7 +72,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 }
                 else if (singleSpec.Length != 3)
                 {
-                    throw new CloudException(string.Format(Properties.Resources.InvalidAce, ace));
+                    throw new CloudException(string.Format(Resources.InvalidAce, ace));
                 }
 
                 switch (singleSpec[typeIndex].ToLowerInvariant())
@@ -152,7 +142,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                         }
                         break;
                     default:
-                        throw new CloudException(string.Format(Properties.Resources.InvalidParseAce, ace));
+                        throw new CloudException(string.Format(Resources.InvalidParseAce, ace));
                 }
             }
 
@@ -170,15 +160,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 OwnerPermission = ownerPermissions,
                 OwningGroupPermission = owningGroupPermissions,
                 DefaultOwnerPermission = defaultOwnerPermissions,
-                DefaultOwningGroupPermission = defaultOwningGroupPermissions,
+                DefaultOwningGroupPermission = defaultOwningGroupPermissions
             };
         }
 
-        internal bool IsInitialized { get; set; }
-
         internal string GetAclSpec(bool includePermissions = true)
         {
-
             List<string> toReturn;
             if (includePermissions)
             {
@@ -187,13 +174,13 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                         .ToList();
 
                 toReturn.AddRange(from object entry in UserAces.Keys
-                                  select string.Format("user:{0}:{1}", entry, UserAces[entry]));
+                    select string.Format("user:{0}:{1}", entry, UserAces[entry]));
 
                 toReturn.AddRange(from object entry in DefaultUserAces.Keys
-                                  select string.Format("default:user:{0}:{1}", entry, DefaultUserAces[entry]));
+                    select string.Format("default:user:{0}:{1}", entry, DefaultUserAces[entry]));
 
                 toReturn.AddRange(from object entry in DefaultGroupAces.Keys
-                                  select string.Format("default:group:{0}:{1}", entry, DefaultGroupAces[entry]));
+                    select string.Format("default:group:{0}:{1}", entry, DefaultGroupAces[entry]));
 
                 if (!string.IsNullOrEmpty(MaskPermission))
                 {
@@ -242,13 +229,13 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                         .ToList();
 
                 toReturn.AddRange(from object entry in UserAces.Keys
-                                  select string.Format("user:{0}", entry));
+                    select string.Format("user:{0}", entry));
 
                 toReturn.AddRange(from object entry in DefaultUserAces.Keys
-                                  select string.Format("default:user:{0}", entry));
+                    select string.Format("default:user:{0}", entry));
 
                 toReturn.AddRange(from object entry in DefaultGroupAces.Keys
-                                  select string.Format("default:group:{0}", entry));
+                    select string.Format("default:group:{0}", entry));
             }
 
             return string.Join(",", toReturn);
@@ -256,10 +243,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         internal void InitializeAces(AclStatus aclStatus)
         {
-            this.GroupAces = new Hashtable();
-            this.UserAces = new Hashtable();
-            this.DefaultGroupAces = new Hashtable();
-            this.DefaultUserAces = new Hashtable();
+            GroupAces = new Hashtable();
+            UserAces = new Hashtable();
+            DefaultGroupAces = new Hashtable();
+            DefaultUserAces = new Hashtable();
 
             foreach (var entry in aclStatus.Entries)
             {
@@ -273,7 +260,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 }
                 else if (singleSpec.Length != 3)
                 {
-                    throw new CloudException(string.Format(Properties.Resources.InvalidAce, entry));
+                    throw new CloudException(string.Format(Resources.InvalidAce, entry));
                 }
 
                 switch (singleSpec[typeIndex].ToLowerInvariant())
@@ -287,49 +274,49 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                         else if (isDefaultAce && string.IsNullOrEmpty(singleSpec[typeIndex + 1]))
                         {
                             // default owning group permissions
-                            this.DefaultOwningGroupPermission = singleSpec[typeIndex + 2];
+                            DefaultOwningGroupPermission = singleSpec[typeIndex + 2];
                         }
-                        else if(!isDefaultAce && string.IsNullOrEmpty(singleSpec[typeIndex + 1]))
+                        else if (!isDefaultAce && string.IsNullOrEmpty(singleSpec[typeIndex + 1]))
                         {
                             // owning group permissions
-                            this.OwningGroupPermission = singleSpec[typeIndex + 2];
+                            OwningGroupPermission = singleSpec[typeIndex + 2];
                         }
                         else
                         {
                             // regular groups
-                            this.GroupAces.Add(singleSpec[typeIndex + 1], singleSpec[typeIndex + 2]);
+                            GroupAces.Add(singleSpec[typeIndex + 1], singleSpec[typeIndex + 2]);
                         }
                         break;
                     case "user":
                         if (isDefaultAce && !string.IsNullOrEmpty(singleSpec[typeIndex + 1]))
                         {
                             // default users
-                            this.DefaultUserAces.Add(singleSpec[typeIndex + 1], singleSpec[typeIndex + 2]);
+                            DefaultUserAces.Add(singleSpec[typeIndex + 1], singleSpec[typeIndex + 2]);
                         }
                         else if (isDefaultAce && string.IsNullOrEmpty(singleSpec[typeIndex + 1]))
                         {
                             // default owner permissions
-                            this.DefaultOwnerPermission = singleSpec[typeIndex + 2];
+                            DefaultOwnerPermission = singleSpec[typeIndex + 2];
                         }
                         else if (!isDefaultAce && string.IsNullOrEmpty(singleSpec[typeIndex + 1]))
                         {
                             // owner permissions
-                            this.OwnerPermission = singleSpec[typeIndex + 2];
+                            OwnerPermission = singleSpec[typeIndex + 2];
                         }
                         else
                         {
                             // user aces
-                            this.UserAces.Add(singleSpec[typeIndex + 1], singleSpec[typeIndex + 2]);
+                            UserAces.Add(singleSpec[typeIndex + 1], singleSpec[typeIndex + 2]);
                         }
                         break;
                     case "mask":
-                        this.MaskPermission = singleSpec[typeIndex + 2];
+                        MaskPermission = singleSpec[typeIndex + 2];
                         break;
                     case "other":
-                        this.OtherPermission = singleSpec[typeIndex + 2];
+                        OtherPermission = singleSpec[typeIndex + 2];
                         break;
                     default:
-                        throw new CloudException(string.Format(Properties.Resources.InvalidAce, entry));
+                        throw new CloudException(string.Format(Resources.InvalidAce, entry));
                 }
             }
 

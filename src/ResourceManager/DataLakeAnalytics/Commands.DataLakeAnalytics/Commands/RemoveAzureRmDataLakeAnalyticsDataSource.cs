@@ -13,10 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
-using Microsoft.Azure.Management.DataLake.Analytics.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
@@ -24,38 +22,50 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
     public class RemoveAzureDataLakeAnalyticsDataSource : DataLakeAnalyticsCmdletBase
     {
         internal const string DataLakeParameterSetName = "Remove a Data Lake storage account";
-        internal const string AzureBlobParameterSetName = "Remove an AzureBlob storage account";
+        internal const string BlobParameterSetName = "Remove a Blob storage account";
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, ParameterSetName = DataLakeParameterSetName, HelpMessage = "Name of the account to add the data source to.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, ParameterSetName = AzureBlobParameterSetName, HelpMessage = "Name of the account to add the data source to.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
+            ParameterSetName = DataLakeParameterSetName, HelpMessage = "Name of the account to add the data source to.")
+        ]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
+            ParameterSetName = BlobParameterSetName, HelpMessage = "Name of the account to add the data source to.")]
         [ValidateNotNullOrEmpty]
-        public string AccountName { get; set; }
+        [Alias("AccountName")]
+        public string Account { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true, ParameterSetName = DataLakeParameterSetName, HelpMessage = "The name of the Data Lake Store to add to the account.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
+            ParameterSetName = DataLakeParameterSetName,
+            HelpMessage = "The name of the Data Lake Store to add to the account.")]
         [ValidateNotNullOrEmpty]
         public string DataLakeStore { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true, ParameterSetName = AzureBlobParameterSetName, HelpMessage = "The name of the AzureBlob to add to the account.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
+            ParameterSetName = BlobParameterSetName, HelpMessage = "The name of the Blob to add to the account.")]
         [ValidateNotNullOrEmpty]
-        public string AzureBlob { get; set; }
+        [Alias("AzureBlob")]
+        public string Blob { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false, ParameterSetName = DataLakeParameterSetName, HelpMessage = "Name of resource group under which the Data Lake Analytics account exists to add a data source to.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false, ParameterSetName = AzureBlobParameterSetName, HelpMessage = "Name of resource group under which the Data Lake Analytics account exists to add a data source to.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false,
+            ParameterSetName = DataLakeParameterSetName,
+            HelpMessage =
+                "Name of resource group under which the Data Lake Analytics account exists to add a data source to.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = false,
+            ParameterSetName = BlobParameterSetName,
+            HelpMessage =
+                "Name of resource group under which the Data Lake Analytics account exists to add a data source to.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         protected override void ProcessRecord()
         {
-            if(ParameterSetName.Equals(DataLakeParameterSetName, StringComparison.InvariantCultureIgnoreCase))
+            if (ParameterSetName.Equals(DataLakeParameterSetName, StringComparison.InvariantCultureIgnoreCase))
             {
-                DataLakeAnalyticsClient.RemoveStorageAccount(ResourceGroupName, AccountName, AzureBlob);
+                DataLakeAnalyticsClient.RemoveStorageAccount(ResourceGroupName, Account, Blob);
             }
             else
             {
-                DataLakeAnalyticsClient.RemoveDataLakeStoreAccount(ResourceGroupName, AccountName, DataLakeStore);    
+                DataLakeAnalyticsClient.RemoveDataLakeStoreAccount(ResourceGroupName, Account, DataLakeStore);
             }
-
-            
         }
     }
 }

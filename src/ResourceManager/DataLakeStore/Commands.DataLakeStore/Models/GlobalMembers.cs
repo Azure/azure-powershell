@@ -17,53 +17,53 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
     /// <summary>
-    /// A Static class containing global members for these cmdlets.
+    ///     A Static class containing global members for these cmdlets.
     /// </summary>
     public static class GlobalMembers
     {
         /// <summary>
-        /// The binary file extension list
+        ///     The binary file extension list
         /// </summary>
         public static readonly HashSet<string> BinaryFileExtension = new HashSet<string>
-                                                                          {
-                                                                              ".exe",
-                                                                              ".dll",
-                                                                              ".bin",
-                                                                              ".rtf",
-                                                                              ".7z",
-                                                                              ".7zip",
-                                                                              ".doc",
-                                                                              ".chm",
-                                                                              ".docx",
-                                                                              ".bmp",
-                                                                              ".emf",
-                                                                              ".wmf",
-                                                                              ".jpg",
-                                                                              ".jpeg",
-                                                                              ".mp3",
-                                                                              ".mp4",
-                                                                              ".avi",
-                                                                              ".wma",
-                                                                              ".png",
-                                                                              ".gif",
-                                                                              ".pdb",
-                                                                              ".baja",
-                                                                              ".ico",
-                                                                              ".wixlib",
-                                                                              ".cub",
-                                                                              ".com",
-                                                                              ".obj",
-                                                                              ".cab",
-                                                                              ".gz",
-                                                                              ".gzip",
-                                                                              ".rar",
-                                                                              ".iso",
-                                                                              ".vhd",
-                                                                              ".ost",
-                                                                              ".pst",
-                                                                              ".msg",
-                                                                              ".lib",
-                                                                              ".xml"
-                                                                          };
+        {
+            ".exe",
+            ".dll",
+            ".bin",
+            ".rtf",
+            ".7z",
+            ".7zip",
+            ".doc",
+            ".chm",
+            ".docx",
+            ".bmp",
+            ".emf",
+            ".wmf",
+            ".jpg",
+            ".jpeg",
+            ".mp3",
+            ".mp4",
+            ".avi",
+            ".wma",
+            ".png",
+            ".gif",
+            ".pdb",
+            ".baja",
+            ".ico",
+            ".wixlib",
+            ".cub",
+            ".com",
+            ".obj",
+            ".cab",
+            ".gz",
+            ".gzip",
+            ".rar",
+            ".iso",
+            ".vhd",
+            ".ost",
+            ".pst",
+            ".msg",
+            ".lib",
+            ".xml"
+        };
     }
 }

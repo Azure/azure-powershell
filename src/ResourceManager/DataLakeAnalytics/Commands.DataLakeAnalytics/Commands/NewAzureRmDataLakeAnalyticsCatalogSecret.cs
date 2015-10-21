@@ -15,56 +15,71 @@
 using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
+using Microsoft.Azure.Commands.DataLakeAnalytics.Properties;
 using Microsoft.Azure.Management.DataLake.AnalyticsCatalog.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmDataLakeAnalyticsCatalogSecret"), OutputType(typeof(USqlSecret))]
+    [Cmdlet(VerbsCommon.New, "AzureRmDataLakeAnalyticsCatalogSecret"), OutputType(typeof (USqlSecret))]
     public class NewAzureDataLakeAnalyticsCatalogSecret : DataLakeAnalyticsCmdletBase
     {
         internal const string BaseParameterSetName = "Specify full URI";
         internal const string HostAndPortParameterSetName = "Specify host name and port";
 
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 0, Mandatory = true, HelpMessage = "The account name that contains the catalog to create the secret in.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = HostAndPortParameterSetName, Position = 0, Mandatory = true, HelpMessage = "The account name that contains the catalog to create the secret in.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 0,
+            Mandatory = true, HelpMessage = "The account name that contains the catalog to create the secret in.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = HostAndPortParameterSetName, Position = 0,
+            Mandatory = true, HelpMessage = "The account name that contains the catalog to create the secret in.")]
         [ValidateNotNullOrEmpty]
-        public string AccountName { get; set; }
+        [Alias("AccountName")]
+        public string Account { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName,  Position = 1, Mandatory = true, HelpMessage = "The name of the database to create the secret in.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = HostAndPortParameterSetName, Position = 1, Mandatory = true, HelpMessage = "The name of the database to create the secret in.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 1,
+            Mandatory = true, HelpMessage = "The name of the database to create the secret in.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = HostAndPortParameterSetName, Position = 1,
+            Mandatory = true, HelpMessage = "The name of the database to create the secret in.")]
         [ValidateNotNullOrEmpty]
         public string DatabaseName { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 2, Mandatory = true, HelpMessage = "The secret to create")]
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = HostAndPortParameterSetName, Position = 2, Mandatory = true, HelpMessage = "The secret to create")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 2,
+            Mandatory = true, HelpMessage = "The secret to create")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = HostAndPortParameterSetName, Position = 2,
+            Mandatory = true, HelpMessage = "The secret to create")]
         [ValidateNotNullOrEmpty]
         public PSCredential Secret { get; set; }
 
-
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = HostAndPortParameterSetName, Position = 3, Mandatory = true, HelpMessage = "The URI of the database to connect to.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = HostAndPortParameterSetName, Position = 3,
+            Mandatory = true, HelpMessage = "The URI of the database to connect to.")]
         public Uri Uri { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 3, Mandatory = true, HelpMessage = "The host of the database to connect to in the format 'myhost.dns.com'.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 3,
+            Mandatory = true, HelpMessage = "The host of the database to connect to in the format 'myhost.dns.com'.")]
         public string Host { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 4, Mandatory = true, HelpMessage = "The Port associated with the host for the database to connect to.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 4,
+            Mandatory = true, HelpMessage = "The Port associated with the host for the database to connect to.")]
         public int Port { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 4, Mandatory = false, HelpMessage = "Name of resource group under which the Data Lake Analytics account and catalog exists.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = HostAndPortParameterSetName, Position = 5, Mandatory = false, HelpMessage = "Name of resource group under which the Data Lake Analytics account and catalog exists.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = BaseParameterSetName, Position = 4,
+            Mandatory = false,
+            HelpMessage = "Name of resource group under which the Data Lake Analytics account and catalog exists.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, ParameterSetName = HostAndPortParameterSetName, Position = 5,
+            Mandatory = false,
+            HelpMessage = "Name of resource group under which the Data Lake Analytics account and catalog exists.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         protected override void ProcessRecord()
         {
-            if (this.Uri != null && this.Uri.Port <= 0)
+            if (Uri != null && Uri.Port <= 0)
             {
-                this.WriteWarning(string.Format(Properties.Resources.NoPortSpecified, this.Uri));
+                WriteWarning(string.Format(Resources.NoPortSpecified, Uri));
             }
 
-            var toUse = this.Uri ?? new Uri(string.Format("https://{0}:{1}", this.Host, this.Port));
+            var toUse = Uri ?? new Uri(string.Format("https://{0}:{1}", Host, Port));
 
-            WriteObject(DataLakeAnalyticsClient.CreateSecret(ResourceGroupName, AccountName, DatabaseName, Secret.UserName, Secret.GetNetworkCredential().Password, toUse.AbsoluteUri));
+            WriteObject(DataLakeAnalyticsClient.CreateSecret(ResourceGroupName, Account, DatabaseName, Secret.UserName,
+                Secret.GetNetworkCredential().Password, toUse.AbsoluteUri));
         }
     }
 }

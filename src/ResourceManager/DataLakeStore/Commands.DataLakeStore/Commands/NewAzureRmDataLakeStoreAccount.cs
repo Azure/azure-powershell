@@ -16,32 +16,42 @@ using System.Collections;
 using System.Management.Automation;
 using Hyak.Common;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
+using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using Microsoft.Azure.Management.DataLake.Store.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmDataLakeStoreAccount"), OutputType(typeof(DataLakeStoreAccount))]
+    [Cmdlet(VerbsCommon.New, "AzureRmDataLakeStoreAccount"), OutputType(typeof (DataLakeStoreAccount))]
     public class NewAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
     {
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, HelpMessage = "Name of resource group under which you want to create the account.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
+            HelpMessage = "Name of resource group under which you want to create the account.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true, HelpMessage = "Name of the account to create.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
+            HelpMessage = "Name of the account to create.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-        
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true, HelpMessage = "Azure region where the account should be created.")]
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
+            HelpMessage = "Azure region where the account should be created.")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("North Central US", "South Central US", "Central US", "West Europe", "North Europe", "West US", "East US",
-            "East US 2", "Japan East", "Japan West", "Brazil South", "Southeast Asia", "East Asia", "Australia East", "Australia Southeast", IgnoreCase = true)]
+        [ValidateSet("North Central US", "South Central US", "Central US", "West Europe", "North Europe", "West US",
+            "East US",
+            "East US 2", "Japan East", "Japan West", "Brazil South", "Southeast Asia", "East Asia", "Australia East",
+            "Australia Southeast", IgnoreCase = true)]
         public string Location { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false, HelpMessage = "Name of the default group to give permissions to for freshly created files and folders in the DataLakeStore.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
+            HelpMessage =
+                "Name of the default group to give permissions to for freshly created files and folders in the DataLakeStore."
+            )]
         [ValidateNotNullOrEmpty]
         public string DefaultGroup { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false, HelpMessage = "A string,string dictionary of tags associated with this account")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
+            HelpMessage = "A string,string dictionary of tags associated with this account")]
         [ValidateNotNull]
         public Hashtable Tags { get; set; }
 
@@ -49,24 +59,25 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         {
             try
             {
-                
                 if (DataLakeStoreClient.GetAccount(ResourceGroupName, Name) != null)
                 {
-                    throw new CloudException(string.Format(Properties.Resources.DataLakeStoreAccountExists, Name));
+                    throw new CloudException(string.Format(Resources.DataLakeStoreAccountExists, Name));
                 }
             }
             catch (CloudException ex)
             {
-                if (ex.Error != null && !string.IsNullOrEmpty(ex.Error.Code) && ex.Error.Code == "ResourceNotFound" || ex.Message.Contains("ResourceNotFound"))
+                if (ex.Error != null && !string.IsNullOrEmpty(ex.Error.Code) && ex.Error.Code == "ResourceNotFound" ||
+                    ex.Message.Contains("ResourceNotFound"))
                 {
                     // account does not exists so go ahead and create one
                 }
-                else if (ex.Error != null && !string.IsNullOrEmpty(ex.Error.Code) && ex.Error.Code == "ResourceGroupNotFound" || ex.Message.Contains("ResourceGroupNotFound"))
+                else if (ex.Error != null && !string.IsNullOrEmpty(ex.Error.Code) &&
+                         ex.Error.Code == "ResourceGroupNotFound" || ex.Message.Contains("ResourceGroupNotFound"))
                 {
                     // resource group not found, let create throw error don't throw from here
                 }
                 else
-                { 
+                {
                     // all other exceptions should be thrown
                     throw;
                 }
