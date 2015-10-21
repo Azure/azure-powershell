@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             Guid principalId = ActiveDirectoryClient.GetObjectId(parameters.ADObjectFilter);
             Guid roleAssignmentId = RoleAssignmentNames.Count == 0 ? Guid.NewGuid() : RoleAssignmentNames.Dequeue();
             string roleDefinitionId = !string.IsNullOrEmpty(parameters.RoleDefinitionName)
-                ? GetRoleRoleDefinition(parameters.RoleDefinitionName).Id
+                ? AuthorizationHelper.GetRoleDefinitionFullyQualifiedId(subscriptionId, GetRoleRoleDefinition(parameters.RoleDefinitionName).Id)
                 : parameters.RoleDefinitionId;
 
             RoleAssignmentCreateParameters createParameters = new RoleAssignmentCreateParameters
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 Properties = new RoleAssignmentProperties
                 {
                     PrincipalId = principalId,
-                    RoleDefinitionId = AuthorizationHelper.GetRoleDefinitionFullyQualifiedId(subscriptionId, roleDefinitionId)
+                    RoleDefinitionId = roleDefinitionId
                 }
             };
 
@@ -315,14 +315,24 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             PSRoleDefinition roleDefinition = this.GetRoleDefinition(roleDefinitionId);
             if (roleDefinition != null)
             {
-                AuthorizationManagementClient.RoleDefinitions.Delete(roleDefinitionFullyQualifiedId);
+                return AuthorizationManagementClient.RoleDefinitions.Delete(roleDefinitionFullyQualifiedId).RoleDefinition.ToPSRoleDefinition();
             }
             else
             {
                 throw new KeyNotFoundException(string.Format(ProjectResources.RoleDefinitionWithIdNotFound, id));
             }
+        }
 
-            return roleDefinition;
+        /// <summary>
+        /// Deletes a role definition based on the name.
+        /// </summary>
+        /// <param name="roleDefinitionName">The role definition name.</param>
+        /// <returns>The deleted role definition.</returns>
+        public PSRoleDefinition RemoveRoleDefinition(string roleDefinitionName, string subscriptionId)
+        {
+            PSRoleDefinition roleDefinition = this.GetRoleRoleDefinition(roleDefinitionName);
+            string roleDefinitionFullyQualifiedId = AuthorizationHelper.GetRoleDefinitionFullyQualifiedId(subscriptionId, roleDefinition.Id);
+            return AuthorizationManagementClient.RoleDefinitions.Delete(roleDefinitionFullyQualifiedId).RoleDefinition.ToPSRoleDefinition();
         }
 
         /// <summary>
