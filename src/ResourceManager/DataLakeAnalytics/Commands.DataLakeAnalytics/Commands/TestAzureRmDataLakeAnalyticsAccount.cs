@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using System.Net;
+using Hyak.Common;
 using Microsoft.Azure.Commands.DataLakeAnalytics.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
@@ -37,9 +39,16 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 DataLakeAnalyticsClient.GetAcount(ResourceGroupName, Name);
                 WriteObject(true);
             }
-            catch
+            catch (CloudException e)
             {
-                WriteObject(false);
+                if (e.Response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    WriteObject(false);
+                }
+                else
+                {
+                    throw;
+                }
             }
         }
     }
