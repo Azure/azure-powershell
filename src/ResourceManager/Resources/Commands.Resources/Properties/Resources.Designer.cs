@@ -349,7 +349,7 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To get all operations under {0}, please specify the search string as {0}/* ..
+        ///   Looks up a localized string similar to To get all operations under {0}, please specify the search string as {0}/*..
         /// </summary>
         internal static string OperationSearchStringInvalidProviderName {
             get {
@@ -358,7 +358,7 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Individual parts in the search string should either be * or not contain *..
+        ///   Looks up a localized string similar to Individual parts in the search string should either equal * or not contain *..
         /// </summary>
         internal static string OperationSearchStringInvalidWildcard {
             get {
@@ -381,6 +381,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string PrincipalNotFound {
             get {
                 return ResourceManager.GetString("PrincipalNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wildcard character ? is not supported..
+        /// </summary>
+        internal static string ProviderOperationUnsupportedWildcard {
+            get {
+                return ResourceManager.GetString("ProviderOperationUnsupportedWildcard", resourceCulture);
             }
         }
         

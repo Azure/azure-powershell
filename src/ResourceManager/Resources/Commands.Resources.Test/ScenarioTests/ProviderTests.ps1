@@ -120,10 +120,14 @@ function Test-AzureProviderOperation
 	Assert-Throws { Get-AzureRmProviderOperation NonExistentProvider/servers/read } $exceptionMessage
 
 	# Get operations with invalid search string parts
-	$exceptionMessage = "Individual parts in the search string should either be * or not contain *.";
+	$exceptionMessage = "Individual parts in the search string should either equal * or not contain *.";
 	Assert-Throws {Get-AzureRmProviderOperation Microsoft.ClassicCompute/virtual*/read } $exceptionMessage
 
 	# Get operations with invalid provider name
-	$exceptionMessage = "To get all operations under Microsoft.Sql, please specify the search string as Microsoft.Sql/* .";
+	$exceptionMessage = "To get all operations under Microsoft.Sql, please specify the search string as Microsoft.Sql/*.";
 	Assert-Throws {Get-AzureRmProviderOperation Microsoft.Sql } $exceptionMessage
+
+	# Get operations with ? in search string
+	$exceptionMessage = "Wildcard character ? is not supported.";
+	Assert-Throws {Get-AzureRmProviderOperation Microsoft.Sql/servers/*/rea? } $exceptionMessage
  }

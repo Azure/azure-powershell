@@ -64,6 +64,11 @@ namespace Microsoft.Azure.Commands.Resources
 
         private static void ValidateActionSearchString(string actionSearchString)
         {
+            if (actionSearchString.Contains("?"))
+            {
+                throw new ArgumentException(ProjectResources.ProviderOperationUnsupportedWildcard);
+            }
+
             string[] parts = actionSearchString.Split(Separator);
             if (parts.Any(p => p.Contains(WildCardCharacter) && p.Length != 1))
             {
