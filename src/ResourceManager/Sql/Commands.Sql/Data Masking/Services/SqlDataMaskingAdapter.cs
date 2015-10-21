@@ -109,7 +109,16 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// </summary>
         public void RemoveDatabaseDataMaskingRule(DatabaseDataMaskingRuleModel model, String clientId)
         {
-            Communicator.DeleteDataMaskingRule(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.RuleId, clientId);
+            DataMaskingRuleCreateOrUpdateParameters parameters = PolicizeDatabaseDataRuleModel(model);
+            parameters.Properties.RuleState = SecurityConstants.Disabled;
+            Communicator.SetDatabaseDataMaskingRule(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.RuleId, clientId, parameters);
+            try
+            {
+                Communicator.DeleteDataMaskingRule(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.RuleId, clientId);
+            }
+            catch
+            {
+            }
         }
 
         /// <summary>
@@ -132,6 +141,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
             properties.SuffixSize = (model.SuffixSize == null) ? null : model.SuffixSize.ToString();
             properties.NumberFrom = (model.NumberFrom == null) ? null : model.NumberFrom.ToString();
             properties.NumberTo = (model.NumberTo == null) ? null : model.NumberTo.ToString();
+            properties.RuleState = SecurityConstants.Enabled;
             return updateParameters;
         }
 

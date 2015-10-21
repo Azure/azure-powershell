@@ -318,4 +318,10 @@
   <data name="IncludeClassicAdminsNotSupported" xml:space="preserve">
     <value>IncludeClassicAdministrators is only supported for a User principal</value>
   </data>
+  <data name="MultipleRoleDefinitionsFoundWithSameName" xml:space="preserve">
+    <value>Multiple role definitions found with name '{0}'. Specify role definition using it's Id instead.</value>
+  </data>
+  <data name="RoleDefinitionIdShouldBeAGuid" xml:space="preserve">
+    <value>Role definition id should be a valid guid.</value>
+  </data>
 </root>

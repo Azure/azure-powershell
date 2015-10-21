@@ -22,7 +22,7 @@ using StorageModels = Microsoft.Azure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Models
 {
-    class PSStorageAccount : IStorageContextProvider
+    public class PSStorageAccount : IStorageContextProvider
     {
         public PSStorageAccount(StorageModels.StorageAccount storageAccount)
         {
@@ -99,5 +99,15 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         }
 
         public AzureStorageContext Context { get; private set; }
+
+        /// <summary>
+        /// Return a string representation of this storage account
+        /// </summary>
+        /// <returns>null</returns>
+        public override string ToString()
+        {
+            // Allow listing storage contents through piping
+            return null;
+        }
     }
 }

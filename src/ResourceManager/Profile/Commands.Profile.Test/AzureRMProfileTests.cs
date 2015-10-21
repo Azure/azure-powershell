@@ -19,6 +19,7 @@ using Xunit;
 using System;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using System.Collections.Generic;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
@@ -130,6 +131,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.Equal(0, client.ListSubscriptions().Count());
             AzureSubscription subValue;
             Assert.False(client.TryGetSubscription(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+      public void SetContextPreservesTokenCache()
+        {
+            AzureRMProfile profile = null;
+            AzureContext context = new AzureContext(null, null, null, null);
+            Assert.Throws<ArgumentNullException>(() =>profile.SetContextWithCache(context));
+            profile = new AzureRMProfile();
+            Assert.Throws<ArgumentNullException>(() => profile.SetContextWithCache(null));
+            profile.SetContextWithCache(context);
+            Assert.Equal(TokenCache.DefaultShared.Serialize(), profile.Context.TokenCache);
         }
     }
 }
