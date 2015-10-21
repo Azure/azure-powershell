@@ -63,7 +63,7 @@ function Create-TestEnvironmentWithParams ($params)
 {
 	New-AzureRmResourceGroup -Name $params.rgname -Location "West US" -Force
 	New-AzureRmResourceGroupDeployment -ResourceGroupName $params.rgname -TemplateFile ".\Templates\sql-audit-test-env-setup.json" -serverName $params.serverName -databaseName $params.databaseName -EnvLocation "West US" -Force
-	New-AzureRmStorageAccount -Name $params.storageAccount -Location "West US" -ResourceGroupName $params.rgname -Type "Standard_GRS"
+	Azure\New-AzureStorageAccount -Name $params.storageAccount -Location "West US" -Type "Standard_GRS"
 }
 
 <#
