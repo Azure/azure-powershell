@@ -138,6 +138,9 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   <data name="BadParameterSetName" xml:space="preserve">
     <value>Bad Parameter Set Name</value>
   </data>
+  <data name="CertificateFileNotFound" xml:space="preserve">
+    <value>Cannot find certificate file '{0}'.</value>
+  </data>
   <data name="ImportByokAsSoftkeyError" xml:space="preserve">
     <value>BYOK key can not be imported as software key</value>
   </data>
@@ -167,6 +170,9 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   </data>
   <data name="InvalidKeyName" xml:space="preserve">
     <value>Invalid key name.</value>
+  </data>
+  <data name="InvalidNumberOfCertificates" xml:space="preserve">
+    <value>Invalid number of certificates.</value>
   </data>
   <data name="InvalidKeyUri" xml:space="preserve">
     <value>Invalid key uri '{0}'.</value>
@@ -212,6 +218,18 @@ You can find the object ID using Azure Active Directory Module for Windows Power
   </data>
   <data name="PermissionsNotSpecified" xml:space="preserve">
     <value>At least one permission should be selected for key access or secret access.</value>
+  </data>
+  <data name="RemoveCertWarning" xml:space="preserve">
+    <value>Are you sure you want to remove certificate '{0}'.</value>
+  </data>
+  <data name="RemoveCertWhatIfMessage" xml:space="preserve">
+    <value>Remove certificate</value>
+  </data>
+  <data name="RemoveCsrWarning" xml:space="preserve">
+    <value>Are you sure you want to remove certificate signing request '{0}'.</value>
+  </data>
+  <data name="RemoveCsrWhatIfMessage" xml:space="preserve">
+    <value>Remove certificate signing certificate</value>
   </data>
   <data name="RemoveKeyWarning" xml:space="preserve">
     <value>Are you sure you want to remove key '{0}'.</value>

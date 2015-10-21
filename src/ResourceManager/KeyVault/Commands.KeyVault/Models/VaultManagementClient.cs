@@ -156,7 +156,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     ObjectId = a.ObjectId,
                     ApplicationId = a.ApplicationId,
                     PermissionsToKeys = a.PermissionsToKeys.ToArray(),
-                    PermissionsToSecrets = a.PermissionsToSecrets.ToArray()
+                    PermissionsToSecrets = a.PermissionsToSecrets.ToArray(),
+                    PermissionsToCertificates = a.PermissionsToCertificates.ToArray()
                 }).ToList();
 
             var response = this.KeyVaultManagementClient.Vaults.CreateOrUpdate(

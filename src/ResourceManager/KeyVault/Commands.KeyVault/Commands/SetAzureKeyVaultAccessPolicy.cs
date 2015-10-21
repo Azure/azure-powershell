@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the name of a key vault. This cmdlet modifies the access policy for the key vault that this parameter specifies.")]
         [ValidateNotNullOrEmpty]
+        [ValidatePattern(Constants.VaultNameRegExString)]
         public string VaultName { get; set; }
 
         /// <summary>
@@ -132,6 +133,24 @@ namespace Microsoft.Azure.Commands.KeyVault
         [ValidateSet("get", "list", "set", "delete", "all")]
         public string[] PermissionsToSecrets { get; set; }
 
+        /// <summary>
+        /// Permissions to Certificates
+        /// </summary>
+        [Parameter(Mandatory = false,
+            ParameterSetName = ByObjectId,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies certificate operation permissions to grant to a user or service principal.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ByServicePrincipalName,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies certificate operation permissions to grant to a user or service principal.")]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ByUserPrincipalName,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies certificate operation permissions to grant to a user or service principal.")]
+        [ValidateSet("get", "list", "set", "delete", "manageissuers", "all")]
+        public string[] PermissionsToCertificates { get; set; }
+
         [Parameter(Mandatory = false,
             ParameterSetName = ForVault,
             ValueFromPipelineByPropertyName = true,
@@ -199,9 +218,9 @@ namespace Microsoft.Azure.Commands.KeyVault
                 if (ApplicationId.HasValue && ApplicationId.Value == Guid.Empty)
                     throw new ArgumentException(PSKeyVaultProperties.Resources.InvalidApplicationId);
 
-                //Both arrays cannot be null
-                if (PermissionsToKeys == null && PermissionsToSecrets == null)
-                    throw new ArgumentException(PSKeyVaultProperties.Resources.PermissionsNotSpecified);
+                //All permission arrays cannot be null
+                if (PermissionsToKeys == null && PermissionsToSecrets == null && PermissionsToCertificates == null)
+                    throw new ArgumentException(PSKeyVaultProperties.Resources.PermissionsNotSpecified);                
                 else
                 {
                     //Validate 
@@ -209,6 +228,8 @@ namespace Microsoft.Azure.Commands.KeyVault
                         throw new ArgumentException(string.Format(PSKeyVaultProperties.Resources.PermissionSetIncludesAllPlusOthers, "keys"));
                     if (!IsMeaningfulPermissionSet(PermissionsToSecrets))
                         throw new ArgumentException(string.Format(PSKeyVaultProperties.Resources.PermissionSetIncludesAllPlusOthers, "secrets"));
+                    if (!IsMeaningfulPermissionSet(PermissionsToCertificates))
+                        throw new ArgumentException(string.Format(PSKeyVaultProperties.Resources.PermissionSetIncludesAllPlusOthers, "certificates"));
 
                     //Is there an existing policy for this policy identity?
                     var existingPolicy = vault.AccessPolicies.FirstOrDefault(ap => MatchVaultAccessPolicyIdentity(ap, objId, ApplicationId));
@@ -221,11 +242,14 @@ namespace Microsoft.Azure.Commands.KeyVault
                     var secrets = PermissionsToSecrets ?? (existingPolicy != null && existingPolicy.PermissionsToSecrets != null ?
                         existingPolicy.PermissionsToSecrets.ToArray() : null);
 
+                    var certificates = PermissionsToCertificates ?? (existingPolicy != null && existingPolicy.PermissionsToCertificates != null ?
+                        existingPolicy.PermissionsToCertificates.ToArray() : null);
+
                     //Remove old policies for this policy identity and add a new one with the right permissions, iff there were some non-empty permissions
                     updatedListOfAccessPolicies = vault.AccessPolicies.Where(ap => !MatchVaultAccessPolicyIdentity(ap, objId, this.ApplicationId)).ToArray();
-                    if ((keys != null && keys.Length > 0) || (secrets != null && secrets.Length > 0))
+                    if ((keys != null && keys.Length > 0) || (secrets != null && secrets.Length > 0) || (certificates != null && certificates.Length > 0))
                     {
-                        var policy = new PSKeyVaultModels.PSVaultAccessPolicy(vault.TenantId, objId, this.ApplicationId, keys, secrets);
+                        var policy = new PSKeyVaultModels.PSVaultAccessPolicy(vault.TenantId, objId, this.ApplicationId, keys, secrets, certificates);
                         updatedListOfAccessPolicies = updatedListOfAccessPolicies.Concat(new[] { policy }).ToArray();
                     }
 

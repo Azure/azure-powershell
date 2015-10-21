@@ -22,6 +22,9 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Security;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using System.Security.Cryptography.X509Certificates;
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
@@ -87,6 +90,119 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return new KeyBundle(keyBundle, this.vaultUriHelper);
         }
 
+        public string CreateCsr(string vaultName, string certName, CertificatePolicy certPolicy, IDictionary<string, string> tags)
+        {
+            if (string.IsNullOrEmpty(vaultName))
+                throw new ArgumentNullException("vaultName");
+            if (string.IsNullOrEmpty(certName))
+                throw new ArgumentNullException("certName");
+
+            string vaultAdress = this.vaultUriHelper.CreateVaultAddress(vaultName);
+
+            CertificateOperation certOperation;
+
+            try
+            {
+                certOperation = this.keyVaultClient.CreateCertificateAsync(vaultAdress, certName, certPolicy, null, tags).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+
+            return Convert.ToBase64String(certOperation.Csr);
+        }
+
+        public CertificateBundle MergeCertificate(string vaultName, string certName, X509Certificate2Collection certs, IDictionary<string, string> tags)
+        {
+            if (string.IsNullOrEmpty(vaultName))
+                throw new ArgumentNullException("vaultName");
+            if (string.IsNullOrEmpty(certName))
+                throw new ArgumentNullException("certName");
+            if (null == certs)
+                throw new ArgumentNullException("certs");
+
+            CertificateBundle certBundle;
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
+
+            try
+            {
+                certBundle = this.keyVaultClient.MergeCertificateAsync(vaultAddress, certName, certs, null, tags).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+
+            return certBundle;
+
+        }
+
+        public CertificateBundle ImportCertificate(string vaultName, string certName, string base64CertColl, SecureString certPassword, IDictionary<string, string> tags)
+        {
+            if (string.IsNullOrEmpty(vaultName))
+                throw new ArgumentNullException("vaultName");
+            if (string.IsNullOrEmpty(certName))
+                throw new ArgumentNullException("certName");
+            if (string.IsNullOrEmpty(base64CertColl))
+                throw new ArgumentNullException("base64CertColl");
+
+            CertificateBundle certBundle;
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
+
+            var password = (certPassword == null) ? null : certPassword.ConvertToString();
+
+
+            try
+            {
+                certBundle = this.keyVaultClient.ImportCertificateAsync(vaultAddress, certName, base64CertColl, password, new CertificatePolicy
+                {
+                    SecretProperties = new SecretProperties
+                    {
+                        ContentType = "application/x-pkcs12"
+                    }
+                }, null, tags).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+
+            return certBundle;
+        }
+
+        public CertificateBundle ImportCertificate(string vaultName, string certName, X509Certificate2Collection certificateCollection, IDictionary<string, string> tags)
+        {
+            if (string.IsNullOrEmpty(vaultName))
+                throw new ArgumentNullException("vaultName");
+            if (string.IsNullOrEmpty(certName))
+                throw new ArgumentNullException("certName");
+            if (null == certificateCollection)
+                throw new ArgumentNullException("certificateCollection");
+
+            CertificateBundle certBundle;
+            var vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
+
+            try
+            {
+                certBundle = this.keyVaultClient.ImportCertificateAsync(vaultAddress, certName, certificateCollection, new CertificatePolicy
+                {
+                    SecretProperties = new SecretProperties
+                    {
+                        ContentType = "application/x-pkcs12"
+                    }
+                }, null, tags).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+
+            return certBundle;
+        }
+
         public KeyBundle ImportKey(string vaultName, string keyName, KeyAttributes keyAttributes, JsonWebKey webKey, bool? importToHsm)
         {
             if (string.IsNullOrEmpty(vaultName))
@@ -148,6 +264,50 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return new KeyBundle(keyBundle, this.vaultUriHelper);
         }
 
+        public Contacts GetCertificateContacts(string vaultName)
+        {
+            if (string.IsNullOrEmpty(vaultName))
+                throw new ArgumentNullException("vaultName");
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
+
+            Contacts contacts;
+
+            try
+            {
+                contacts = this.keyVaultClient.GetCertificateContactsAsync(vaultAddress).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+
+            return contacts;
+        }
+
+        public CertificateBundle GetCertificate(string vaultName, string certName, string certificateVersion)
+        {
+            if (string.IsNullOrEmpty(vaultName))
+                throw new ArgumentNullException("vaultName");
+            if (string.IsNullOrEmpty(certName))
+                throw new ArgumentNullException("certName");
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
+
+            CertificateBundle certBundle;
+
+            try
+            {
+                certBundle = this.keyVaultClient.GetCertificateAsync(vaultAddress, certName, certificateVersion).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+
+            return certBundle;
+        }
+
         public KeyBundle GetKey(string vaultName, string keyName, string keyVersion)
         {
             if (string.IsNullOrEmpty(vaultName))
@@ -168,6 +328,66 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
 
             return new KeyBundle(keyBundle, this.vaultUriHelper);
+        }
+
+        public IEnumerable<CertificateIdentityItem> GetCertificates(KeyVaultObjectFilterOptions options)
+        {
+            if (options == null)
+                throw new ArgumentNullException("options");
+
+            if (string.IsNullOrEmpty(options.VaultName))
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidVaultName);
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(options.VaultName);
+
+            try
+            {
+                ListCertificatesResponseMessage result;
+
+                if (string.IsNullOrEmpty(options.NextLink))
+                    result = this.keyVaultClient.GetCertificatesAsync(vaultAddress).GetAwaiter().GetResult();
+                else
+                    result = this.keyVaultClient.GetCertificatesNextAsync(options.NextLink).GetAwaiter().GetResult();
+
+                options.NextLink = result.NextLink;
+                return (result.Value == null) ? new List<CertificateIdentityItem>() :
+                    result.Value.Select((certItem) => { return new CertificateIdentityItem(certItem, this.vaultUriHelper); });
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+        }
+
+        public IEnumerable<CertificateIdentityItem> GetCertificateVersions(KeyVaultObjectFilterOptions options)
+        {
+            if (options == null)
+                throw new ArgumentNullException("options");
+
+            if (string.IsNullOrEmpty(options.VaultName))
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidVaultName);
+
+            if (string.IsNullOrEmpty(options.Name))
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidKeyName);
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(options.VaultName);
+
+            try
+            {
+                ListCertificatesResponseMessage result;
+
+                if (string.IsNullOrEmpty(options.NextLink))
+                    result = this.keyVaultClient.GetCertificateVersionsAsync(vaultAddress, options.Name).GetAwaiter().GetResult();
+                else
+                    result = this.keyVaultClient.GetCertificateVersionsNextAsync(options.NextLink).GetAwaiter().GetResult();
+
+                options.NextLink = result.NextLink;
+                return result.Value.Select((certificateItem) => new CertificateIdentityItem(certificateItem, this.vaultUriHelper));
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
         }
 
         public IEnumerable<KeyIdentityItem> GetKeys(KeyVaultObjectFilterOptions options)
@@ -250,6 +470,29 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
 
             return new KeyBundle(keyBundle, this.vaultUriHelper);
+        }
+
+        public Contacts SetCertificateContacts(string vaultName, Contacts contacts)
+        {
+            if (string.IsNullOrEmpty(vaultName))
+                throw new ArgumentNullException("vaultName");
+            if (null == contacts)
+                throw new ArgumentNullException("contacts");
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
+
+            Contacts outputContacts;
+
+            try
+            {
+                outputContacts = this.keyVaultClient.SetCertificateContactsAsync(vaultAddress, contacts).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+
+            return outputContacts;
         }
 
         public Secret SetSecret(string vaultName, string secretName, SecureString secretValue, SecretAttributes secretAttributes)
@@ -386,6 +629,147 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
         }
 
+        public CertificateOperation EnrollCertificate(string vaultName, string certificateName, CertificatePolicy certificatePolicy, IDictionary<string, string> tags)
+        {
+            if (string.IsNullOrEmpty(vaultName))
+                throw new ArgumentNullException("vaultName");
+            if (string.IsNullOrEmpty(certificateName))
+                throw new ArgumentNullException("certificateName");
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
+
+            CertificateOperation certificateOperation;
+
+            try
+            {
+                certificateOperation = this.keyVaultClient.CreateCertificateAsync(vaultAddress, certificateName, certificatePolicy, null, tags).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+
+            return certificateOperation;
+        }
+
+        public CertificateBundle UpdateCertificate(string vaultName, string certificateName, string certificateVersion, CertificateAttributes certificateAttributes, IDictionary<string, string> tags)
+        {
+            if (string.IsNullOrEmpty(vaultName))
+                throw new ArgumentNullException("vaultName");
+            if (string.IsNullOrEmpty(certificateName))
+                throw new ArgumentNullException("certificateName");
+
+            var certificateIdentifier = new CertificateIdentifier(this.vaultUriHelper.CreateVaultAddress(vaultName), certificateName, certificateVersion);
+
+            CertificateBundle certificateBundle;
+            try
+            {
+                certificateBundle = this.keyVaultClient.UpdateCertificateAsync(
+                    certificateIdentifier.Identifier, certificateAttributes, tags).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+
+            return certificateBundle;
+        }
+
+        public CertificateBundle DeleteCertificate(string vaultName, string certName)
+        {
+            if (string.IsNullOrEmpty(vaultName))
+                throw new ArgumentNullException("vaultName");
+            if (string.IsNullOrEmpty(certName))
+                throw new ArgumentNullException("certName");
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
+
+            CertificateBundle certBundle;
+
+            try
+            {
+                certBundle = this.keyVaultClient.DeleteCertificateAsync(vaultAddress, certName).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+
+            return certBundle;
+        }
+
+        public CertificateOperation GetCertificateOperation(string vaultName, string certificateName)
+        {
+            if (string.IsNullOrEmpty(vaultName))
+                throw new ArgumentNullException("vaultName");
+            if (string.IsNullOrEmpty(certificateName))
+                throw new ArgumentNullException("certificateName");
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
+
+            CertificateOperation certificateOperation;
+
+            try
+            {
+                certificateOperation = this.keyVaultClient.GetCertificateOperationAsync(vaultAddress, certificateName).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+
+            return certificateOperation;
+        }
+
+        public CertificateOperation CancelCertificateOperation(string vaultName, string certificateName)
+        {
+            if (string.IsNullOrEmpty(vaultName))
+                throw new ArgumentNullException("vaultName");
+            if (string.IsNullOrEmpty(certificateName))
+                throw new ArgumentNullException("certificateName");
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
+
+            CertificateOperation certificateOperation;
+
+            try
+            {
+                certificateOperation = this.keyVaultClient.UpdateCertificateOperationAsync(vaultAddress, certificateName, new CertificateOperation
+                {
+                    CancellationRequested = true,
+                }).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+
+            return certificateOperation;
+        }
+
+        public CertificateOperation DeleteCertificateOperation(string vaultName, string certificateName)
+        {
+            if (string.IsNullOrEmpty(vaultName))
+                throw new ArgumentNullException("vaultName");
+            if (string.IsNullOrEmpty(certificateName))
+                throw new ArgumentNullException("certificateName");
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
+
+            CertificateOperation certificateOperation;
+
+            try
+            {
+                certificateOperation = this.keyVaultClient.DeleteCertificateOperationAsync(vaultAddress, certificateName).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+
+            return certificateOperation;
+        }
+
         public Secret DeleteSecret(string vaultName, string secretName)
         {
             if (string.IsNullOrEmpty(vaultName))
@@ -456,6 +840,218 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
 
             return new KeyBundle(keyBundle, this.vaultUriHelper);
+        }
+
+        public CertificatePolicy GetCertificatePolicy(string vaultName, string certificateName)
+        {
+            if (string.IsNullOrEmpty(vaultName))
+                throw new ArgumentNullException("vaultName");
+            if (string.IsNullOrEmpty(certificateName))
+                throw new ArgumentNullException("certificateName");
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
+
+            CertificatePolicy certificatePolicy;
+            try
+            {
+                certificatePolicy = this.keyVaultClient.GetCertificatePolicyAsync(vaultAddress, certificateName).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+
+            return certificatePolicy;
+        }
+
+        public CertificatePolicy UpdateCertificatePolicy(string vaultName, string certificateName, CertificatePolicy certificatePolicy)
+        {
+            if (string.IsNullOrEmpty(vaultName))
+                throw new ArgumentNullException("vaultName");
+            if (string.IsNullOrEmpty(certificateName))
+                throw new ArgumentNullException("certificateName");
+            if (certificatePolicy == null)
+                throw new ArgumentNullException("certificatePolicy");
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
+            CertificatePolicy resultantCertificatePolicy;
+
+            try
+            {
+                resultantCertificatePolicy = this.keyVaultClient.UpdateCertificatePolicyAsync(vaultAddress, certificateName, certificatePolicy).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+
+            return resultantCertificatePolicy;
+        }
+
+        public Issuer GetCertificateIssuer(string vaultName, string issuerName)
+        {
+            if (string.IsNullOrEmpty(vaultName))
+                throw new ArgumentNullException("vaultName");
+            if (string.IsNullOrEmpty(issuerName))
+                throw new ArgumentNullException("issuerName");
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
+
+            Issuer certificateIssuer;
+            try
+            {
+                certificateIssuer = this.keyVaultClient.GetCertificateIssuerAsync(vaultAddress, issuerName).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+
+            return certificateIssuer;
+        }
+
+        public IEnumerable<CertificateIssuerIdentityItem> GetCertificateIssuers(KeyVaultObjectFilterOptions options)
+        {
+            if (options == null)
+                throw new ArgumentNullException("options");
+
+            if (string.IsNullOrEmpty(options.VaultName))
+                throw new ArgumentException(KeyVaultProperties.Resources.InvalidVaultName);
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(options.VaultName);
+
+            try
+            {
+                ListCertificateIssuersResponseMessage result;
+
+                if (string.IsNullOrEmpty(options.NextLink))
+                    result = this.keyVaultClient.GetCertificateIssuersAsync(vaultAddress).GetAwaiter().GetResult();
+                else
+                    result = this.keyVaultClient.GetCertificateIssuersNextAsync(options.NextLink).GetAwaiter().GetResult();
+
+                options.NextLink = result.NextLink;
+                return (result.Value == null) ? new List<CertificateIssuerIdentityItem>() :
+                    result.Value.Select(issuerItem => new CertificateIssuerIdentityItem(issuerItem, this.vaultUriHelper));
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+        }
+
+        public Issuer CreateCertificateIssuer(
+            string vaultName,
+            string issuerName,
+            string issuerProvider,
+            string accountId,
+            SecureString apiKey,
+            KeyVaultCertificateOrganizationDetails organizationDetails)
+        {
+            if (string.IsNullOrEmpty(vaultName))
+                throw new ArgumentNullException("vaultName");
+            if (string.IsNullOrEmpty(issuerName))
+                throw new ArgumentNullException("issuerName");
+            if (string.IsNullOrEmpty(issuerProvider))
+                throw new ArgumentNullException("issuerProvider");
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
+            var issuer = new Issuer
+            {
+                Provider = issuerProvider,
+                OrganizationalDetails = organizationDetails == null ? null : organizationDetails.ToOrganizationDetails(),
+            };
+
+            if (!string.IsNullOrEmpty(accountId) || apiKey != null)
+            {
+                issuer.Credentials = new IssuerCredentials
+                {
+                    AccountId = accountId,
+                    Password = apiKey == null ? null : apiKey.ConvertToString(),
+                };
+            }
+
+            Issuer resultantIssuer;
+            try
+            {
+                resultantIssuer = this.keyVaultClient.SetCertificateIssuerAsync(
+                    vaultAddress,
+                    issuerName,
+                    issuer).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+
+            return resultantIssuer;
+        }
+
+        public Issuer UpdateCertificateIssuer(
+            string vaultName,
+            string issuerName,
+            string IssuerProvider,
+            string accountId,
+            SecureString apiKey,
+            KeyVaultCertificateOrganizationDetails organizationDetails)
+        {
+            if (string.IsNullOrEmpty(vaultName))
+                throw new ArgumentNullException("vaultName");
+            if (string.IsNullOrEmpty(issuerName))
+                throw new ArgumentNullException("issuerName");
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
+            var issuer = new Issuer
+            {
+                Provider = IssuerProvider,
+                OrganizationalDetails = organizationDetails == null ? null : organizationDetails.ToOrganizationDetails(),
+            };
+
+            if (!string.IsNullOrWhiteSpace(accountId) || apiKey != null)
+            {
+                issuer.Credentials = new IssuerCredentials
+                {
+                    AccountId = accountId,
+                    Password = apiKey == null ? null : apiKey.ConvertToString(),
+                };
+            }
+
+            Issuer resultantIssuer;
+            try
+            {
+                resultantIssuer = this.keyVaultClient.UpdateCertificateIssuerAsync(
+                    vaultAddress,
+                    issuerName,
+                    issuer).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+
+            return resultantIssuer;
+        }
+
+        public Issuer DeleteCertificateIssuer(string vaultName, string issuerName)
+        {
+            if (string.IsNullOrEmpty(vaultName))
+                throw new ArgumentNullException("vaultName");
+            if (string.IsNullOrEmpty(issuerName))
+                throw new ArgumentNullException("issuerName");
+
+            string vaultAddress = this.vaultUriHelper.CreateVaultAddress(vaultName);
+
+            Issuer issuer;
+
+            try
+            {
+                issuer = this.keyVaultClient.DeleteCertificateIssuerAsync(vaultAddress, issuerName).GetAwaiter().GetResult();
+            }
+            catch (Exception ex)
+            {
+                throw GetInnerException(ex);
+            }
+
+            return issuer;
         }
 
         private Exception GetInnerException(Exception exception)

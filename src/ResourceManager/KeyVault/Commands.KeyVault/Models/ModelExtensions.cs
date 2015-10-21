@@ -59,14 +59,15 @@ namespace Microsoft.Azure.Commands.KeyVault
             if (policies != null && policies.Any())
             {
                 sb.AppendLine();
-                foreach (var policy in policies)
-                {
-                    sb.AppendFormat("{0, -25}:\t{1}\r\n", "Tenant ID", policy.TenantName);
-                    sb.AppendFormat("{0, -25}:\t{1}\r\n", "Object ID", policy.ObjectId);
-                    sb.AppendFormat("{0, -25}:\t{1}\r\n", "Application ID", policy.ApplicationIdDisplayName);
-                    sb.AppendFormat("{0, -25}:\t{1}\r\n", "Display Name", policy.DisplayName);
-                    sb.AppendFormat("{0, -25}:\t{1}\r\n", "Permissions to Keys", policy.PermissionsToKeysStr);
-                    sb.AppendFormat("{0, -25}:\t{1}\r\n", "Permissions to Secrets", policy.PermissionsToSecretsStr);
+                foreach(var policy in policies)
+                {                    
+                    sb.AppendFormat("{0, -28}: {1}\r\n", "Tenant ID", policy.TenantName);
+                    sb.AppendFormat("{0, -28}: {1}\r\n", "Object ID", policy.ObjectId);
+                    sb.AppendFormat("{0, -28}: {1}\r\n", "Application ID", policy.ApplicationIdDisplayName);
+                    sb.AppendFormat("{0, -28}: {1}\r\n", "Display Name", policy.DisplayName);
+                    sb.AppendFormat("{0, -28}: {1}\r\n", "Permissions to Keys", policy.PermissionsToKeysStr);
+                    sb.AppendFormat("{0, -28}: {1}\r\n", "Permissions to Secrets", policy.PermissionsToSecretsStr);
+                    sb.AppendFormat("{0, -28}: {1}\r\n", "Permissions to Certificates", policy.PermissionsToCertificatesStr);
                     sb.AppendLine();
                 }
             }

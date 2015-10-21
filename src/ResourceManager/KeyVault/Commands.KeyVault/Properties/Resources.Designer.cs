@@ -116,7 +116,16 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
                 return ResourceManager.GetString("BadParameterSetName", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot find certificate file &apos;{0}&apos;..
+        /// </summary>
+        internal static string CertificateFileNotFound {
+            get {
+                return ResourceManager.GetString("CertificateFileNotFound", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to BYOK key can not be imported as software key.
         /// </summary>
@@ -213,6 +222,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         internal static string InvalidKeyUri {
             get {
                 return ResourceManager.GetString("InvalidKeyUri", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid number of certificates..
+        /// </summary>
+        internal static string InvalidNumberOfCertificates {
+            get {
+                return ResourceManager.GetString("InvalidNumberOfCertificates", resourceCulture);
             }
         }
         
@@ -342,6 +360,42 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove certificate &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemoveCertWarning {
+            get {
+                return ResourceManager.GetString("RemoveCertWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove certificate.
+        /// </summary>
+        internal static string RemoveCertWhatIfMessage {
+            get {
+                return ResourceManager.GetString("RemoveCertWhatIfMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove certificate signing request &apos;{0}&apos;..
+        /// </summary>
+        internal static string RemoveCsrWarning {
+            get {
+                return ResourceManager.GetString("RemoveCsrWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove certificate signing certificate.
+        /// </summary>
+        internal static string RemoveCsrWhatIfMessage {
+            get {
+                return ResourceManager.GetString("RemoveCsrWhatIfMessage", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove key &apos;{0}&apos;..
         /// </summary>

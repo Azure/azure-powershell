@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the name of the key vault. This cmdlet removes permissions for the key vault that this parameter specifies.")]
         [ValidateNotNullOrEmpty]
+        [ValidatePattern(Constants.VaultNameRegExString)]
         public string VaultName { get; set; }
 
         /// <summary>

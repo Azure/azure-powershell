@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage =
                 "Specifies a name of the key vault to create. The name can be any combination of letters, digits, or hyphens. The name must start and end with a letter or digit. The name must be universally unique."
             )]
-        [ValidatePattern("^[a-zA-Z0-9-]{3,24}$")]
+        [ValidatePattern(Constants.VaultNameRegExString)]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
@@ -119,7 +119,8 @@ namespace Microsoft.Azure.Commands.KeyVault
                     TenantId = GetTenantId(),
                     ObjectId = userObjectId,
                     PermissionsToKeys = DefaultPermissionsToKeys,
-                    PermissionsToSecrets = DefaultPermissionsToSecrets
+                    PermissionsToSecrets = DefaultPermissionsToSecrets,
+                    PermissionsToCertificates = DefaultPermissionsToCertificates,
                 };
             }
 

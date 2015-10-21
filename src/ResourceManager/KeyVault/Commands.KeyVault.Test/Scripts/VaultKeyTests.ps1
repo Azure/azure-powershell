@@ -525,6 +525,17 @@ function Test_SetKeyInNonExistVault
 
 <#
 .SYNOPSIS
+Get a key in a syntactically bad vault name
+#>
+
+function Test_GetKeyInABadVault
+{
+    $keyName = Get-CertificateName 'nonexist'
+    Assert-Throws { Get-AzureKeyVaultKey '$vaultName' $keyName }
+}
+
+<#
+.SYNOPSIS
 Tests set an not exist key
 #>
 function Test_SetNonExistKey
@@ -546,8 +557,7 @@ function Test_SetInvalidKeyAttributes
     Assert-NotNull $key                 
     $global:createdKeys += $keyname    
 
-    Assert-Throws {Set-AzureKeyVaultKeyAttribute -VaultName $keyVault -KeyName $keyname -Expires $nbf  -NotBefore $expires }    
-    
+    Assert-Throws {Set-AzureKeyVaultKeyAttribute -VaultName $keyVault -KeyName $keyname -Expires $nbf  -NotBefore $expires }
 }
 
 <#
