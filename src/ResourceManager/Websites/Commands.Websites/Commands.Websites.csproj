@@ -149,7 +149,7 @@
     <Compile Include="Cmdlets\DeploymentSlots\RemoveAzureWebAppSlot.cs" />
     <Compile Include="Cmdlets\DeploymentSlots\ResetAzureWebAppSlotPublishingProfile.cs" />
     <Compile Include="Cmdlets\DeploymentSlots\RestartAzureWebAppSlot.cs" />
-    <Compile Include="Cmdlets\DeploymentSlots\SetAzureWebAppSlotcs.cs" />
+    <Compile Include="Cmdlets\DeploymentSlots\SetAzureWebAppSlot.cs" />
     <Compile Include="Cmdlets\DeploymentSlots\StartAzureWebAppSlot.cs" />
     <Compile Include="Cmdlets\DeploymentSlots\StopAzureWebAppSlot.cs" />
     <Compile Include="Cmdlets\WebApps\GetAzureWebAppMetrics.cs" />

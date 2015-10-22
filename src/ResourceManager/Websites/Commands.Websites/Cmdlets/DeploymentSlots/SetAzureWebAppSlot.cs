@@ -18,6 +18,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
@@ -61,7 +62,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 
         [Parameter(Position = 11, Mandatory = false, HelpMessage = "Web app connection strings")]
         [ValidateNotNullOrEmpty]
-        public IDictionary<string, ConnStringValueTypePair> ConnectionStrings { get; set; }
+        public Hashtable ConnectionStrings { get; set; }
 
         [Parameter(Position = 12, Mandatory = false, HelpMessage = "Web app handler mappings")]
         [ValidateNotNullOrEmpty]
@@ -81,30 +82,61 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 
         protected override void ProcessRecord()
         {
-            var parameters = new HashSet<string>(MyInvocation.BoundParameters.Keys, StringComparer.OrdinalIgnoreCase);
-            var siteConfig = new SiteConfig
-            {
-                DefaultDocuments = parameters.Contains("DefaultDocuments") ? DefaultDocuments : null,
-                NetFrameworkVersion = parameters.Contains("NetFrameworkVersion") ? NetFrameworkVersion : null,
-                PhpVersion = parameters.Contains("PhpVersion") ? PhpVersion : null,
-                RequestTracingEnabled = parameters.Contains("RequestTracingEnabled") ? (bool?)RequestTracingEnabled : null,
-                HttpLoggingEnabled = parameters.Contains("HttpLoggingEnabled") ? (bool?)HttpLoggingEnabled : null,
-                DetailedErrorLoggingEnabled = parameters.Contains("DetailedErrorLoggingEnabled") ? (bool?)DetailedErrorLoggingEnabled : null,
-                HandlerMappings = parameters.Contains("HandlerMappings") ? HandlerMappings : null,
-                ManagedPipelineMode = parameters.Contains("ManagedPipelineMode") ? (ManagedPipelineMode?)Enum.Parse(typeof(ManagedPipelineMode), ManagedPipelineMode) : null,
-                WebSocketsEnabled = parameters.Contains("WebSocketsEnabled") ? (bool?)WebSocketsEnabled : null,
-                Use32BitWorkerProcess = parameters.Contains("Use32BitWorkerProcess") ? (bool?)Use32BitWorkerProcess : null
-            };
-
-            // Temporarily pass in no locaiton
+            base.ProcessRecord();
+            SiteConfig siteConfig = null;
             string location = null;
-
-            // Update web app slot configuration
-            WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, location, Name, Slot, siteConfig, AppSettings?.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString(), StringComparer.Ordinal), ConnectionStrings);
-
-            if (parameters.Contains("AppServicePlan"))
+            switch (ParameterSetName)
             {
-                WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, Slot, AppServicePlan);
+                case ParameterSet1Name:
+                    WebApp = WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot);
+                    location = WebApp.Location;
+                    var parameters = new HashSet<string>(MyInvocation.BoundParameters.Keys, StringComparer.OrdinalIgnoreCase);
+                    if (parameters.Any(p => CmdletHelpers.SiteConfigParameters.Contains(p)))
+                    {
+                        siteConfig = new SiteConfig
+                        {
+                            DefaultDocuments = parameters.Contains("DefaultDocuments") ? DefaultDocuments : null,
+                            NetFrameworkVersion = parameters.Contains("NetFrameworkVersion") ? NetFrameworkVersion : null,
+                            PhpVersion = parameters.Contains("PhpVersion") ? PhpVersion : null,
+                            RequestTracingEnabled =
+                                parameters.Contains("RequestTracingEnabled") ? (bool?)RequestTracingEnabled : null,
+                            HttpLoggingEnabled = parameters.Contains("HttpLoggingEnabled") ? (bool?)HttpLoggingEnabled : null,
+                            DetailedErrorLoggingEnabled =
+                                parameters.Contains("DetailedErrorLoggingEnabled") ? (bool?)DetailedErrorLoggingEnabled : null,
+                            HandlerMappings = parameters.Contains("HandlerMappings") ? HandlerMappings : null,
+                            ManagedPipelineMode =
+                                parameters.Contains("ManagedPipelineMode")
+                                    ? (ManagedPipelineMode?)Enum.Parse(typeof(ManagedPipelineMode), ManagedPipelineMode)
+                                    : null,
+                            WebSocketsEnabled = parameters.Contains("WebSocketsEnabled") ? (bool?)WebSocketsEnabled : null,
+                            Use32BitWorkerProcess =
+                                parameters.Contains("Use32BitWorkerProcess") ? (bool?)Use32BitWorkerProcess : null
+                        };
+                    }
+
+                    // Update web app configuration
+                    WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, location, Name, Slot, siteConfig, AppSettings.ConvertToStringDictionary(), ConnectionStrings.ConvertToConnectionStringDictionary());
+
+                    if (parameters.Contains("AppServicePlan"))
+                    {
+                        WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, Slot, AppServicePlan);
+                    }
+
+
+                    break;
+                case ParameterSet2Name:
+                    // Web app is direct or pipeline input
+                    string servicePlanName;
+                    string rg;
+                    location = WebApp.Location;
+                    siteConfig = WebApp.SiteConfig;
+
+                    // Update web app configuration
+                    WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, location, Name, Slot, siteConfig, WebApp.SiteConfig?.AppSettings.ToDictionary(nvp => nvp.Name, nvp => nvp.Value, StringComparer.OrdinalIgnoreCase), WebApp.SiteConfig?.ConnectionStrings.ToDictionary(nvp => nvp.Name, nvp => new ConnStringValueTypePair { Type = nvp.Type, Value = nvp.ConnectionString }, StringComparer.OrdinalIgnoreCase));
+
+                    CmdletHelpers.TryParseAppServicePlanMetadataFromResourceId(WebApp.ServerFarmId, out rg, out servicePlanName);
+                    WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, Slot, servicePlanName);
+                    break;
             }
 
             WriteObject(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot));

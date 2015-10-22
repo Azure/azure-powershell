@@ -168,9 +168,14 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.AppServicePlanTests\TestGetAppServicePlanMetrics.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.AppServicePlanTests\TestRemoveAppServicePlan.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.AppServicePlanTests\TestSetAppServicePlan.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestCloneWebAppSlot.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestCloneWebAppToSlot.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestCreateNewWebAppSlot.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestGetWebAppSlot.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestGetWebAppSlotMetrics.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestSetWebAppSlot.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestStartStopRestartWebAppSlot.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestWebAppSlotPublishingProfile.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppTests\TestCloneNewWebApp.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppTests\TestCloneNewWebAppWithNewTrafficManager.json" />
     <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppTests\TestCreateNewWebApp.json" />

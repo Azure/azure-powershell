@@ -278,8 +278,8 @@ function Test-CloneWebAppToSlot
 		$webapp = New-AzureRmWebApp -ResourceGroupName $rgname -Name $appname -Location $location -AppServicePlan $planName 
 		
 		# Assert
-		Assert-AreEqual $appname $actual.Name
-		Assert-AreEqual $serverFarm.Id $actual.ServerFarmId
+		Assert-AreEqual $appname $webapp.Name
+		Assert-AreEqual $serverFarm.Id $webapp.ServerFarmId
 
 		# Clone web app to slot
 		$slot = New-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppServicePlan $planName -SourceWebApp $webapp
@@ -354,10 +354,10 @@ function Test-CloneWebAppSlot
 		
 		# Assert
 		Assert-AreEqual $destAppName $webapp2.Name
-		Assert-AreEqual $serverFarm.Id $webapp2.ServerFarmId
+		Assert-AreEqual $serverFarm2.Id $webapp2.ServerFarmId
 
 		# Clone web app to slot
-		$slot2 = New-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $destAppName -Slot $slotname -AppServicePlan $planName -SourceWebApp $slot
+		$slot2 = New-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $destAppName -Slot $slotname -AppServicePlan $planName -SourceWebApp $slot1
 		$appWithSlotName2 = "$destAppName/$slotname"
 
 		# Assert
@@ -493,19 +493,19 @@ function Test-SetWebAppSlot
 		$appSettings = @{ "setting1" = "valueA"; "setting2" = "valueB"}
 		$connectionStrings = @{ connstring1 = @{ Type="MySql"; Value="string value 1"}; connstring2 = @{ Type = "SQLAzure"; Value="string value 2"}}
 
-		$slot = Set-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppSettings $appsettings -ConnectionStrings $connectionStrings
+		$slot = Set-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppSettings $appSettings -ConnectionStrings $connectionStrings
 
 		# Assert
 		Assert-AreEqual $appWithSlotName $slot.Name
 		Assert-AreEqual $appSettings.Keys.Count $slot.SiteConfig.AppSettings.Count
-		foreach($nvp in $webApp.SiteConfig.AppSettings)
+		foreach($nvp in $slot.SiteConfig.AppSettings)
 		{
 			Assert-True { $appSettings.Keys -contains $nvp.Name }
 			Assert-True { $appSettings[$nvp.Name] -match $nvp.Value }
 		}
 
 		Assert-AreEqual $connectionStrings.Keys.Count $slot.SiteConfig.ConnectionStrings.Count
-		foreach($connStringInfo in $webApp.SiteConfig.ConnectionStrings)
+		foreach($connStringInfo in $slot.SiteConfig.ConnectionStrings)
 		{
 			Assert-True { $connectionStrings.Keys -contains $connStringInfo.Name }
 		}

@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             WriteObject(WebsitesClient.GetWebAppUsageMetrics(ResourceGroupName, Name, Slot, Metrics, StartTime, EndTime, Granularity, InstanceDetails.IsPresent));
         }
     }
