@@ -42,14 +42,23 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(ParameterSetName = "ServicePrincipal", Mandatory = true, HelpMessage = "Credential")]
         public PSCredential Credential { get; set; }
 
+        [Parameter(ParameterSetName = "ServicePrincipalCertificate", Mandatory = true, HelpMessage = "Certificate Hash (Thumbprint)")]
+        public string CertificateThumbprint { get; set; }
+
+        [Parameter(ParameterSetName = "ServicePrincipalCertificate", Mandatory = true, HelpMessage = "SPN")]
+        public string ApplicationId { get; set; }
+
         [Parameter(ParameterSetName = "ServicePrincipal", Mandatory = true)]
+        [Parameter(ParameterSetName = "ServicePrincipalCertificate", Mandatory = true)]
         public SwitchParameter ServicePrincipal { get; set; }
 
         [Parameter(ParameterSetName = "User", Mandatory = false, HelpMessage = "Optional tenant name or ID")]
         [Parameter(ParameterSetName = "ServicePrincipal", Mandatory = true, HelpMessage = "TenantId name or ID")]
         [Parameter(ParameterSetName = "AccessToken", Mandatory = false, HelpMessage = "TenantId name or ID")]
+        [Parameter(ParameterSetName = "ServicePrincipalCertificate", Mandatory = true, HelpMessage = "TenantId name or ID")]
         [ValidateNotNullOrEmpty]
-        public string Tenant { get; set; }
+        [Alias("Tenant")]
+        public string TenantId { get; set; }
 
         [Parameter(ParameterSetName = "AccessToken", Mandatory = true, HelpMessage = "AccessToken")]
         [ValidateNotNullOrEmpty]
@@ -119,6 +128,11 @@ namespace Microsoft.Azure.Commands.Profile
                 azureAccount.Type = AzureAccount.AccountType.User;
             }
 
+            if (!string.IsNullOrEmpty(CertificateThumbprint))
+            {
+                azureAccount.SetProperty(AzureAccount.Property.CertificateThumbprint, CertificateThumbprint);
+            }
+
             SecureString password = null;
             if (Credential != null)
             {
@@ -126,9 +140,14 @@ namespace Microsoft.Azure.Commands.Profile
                 password = Credential.Password;
             }
 
-            if (!string.IsNullOrEmpty(Tenant))
+            if (!string.IsNullOrEmpty(ApplicationId))
             {
-                azureAccount.SetProperty(AzureAccount.Property.Tenants, new[] { Tenant });
+                azureAccount.Id = ApplicationId;
+            }
+
+            if (!string.IsNullOrEmpty(TenantId))
+            {
+                azureAccount.SetProperty(AzureAccount.Property.Tenants, new[] { TenantId });
             }
 
             if( AzureRmProfileProvider.Instance.Profile == null)
@@ -138,7 +157,7 @@ namespace Microsoft.Azure.Commands.Profile
 
             var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
             
-            WriteObject((PSAzureProfile)profileClient.Login(azureAccount, Environment, Tenant, SubscriptionId, 
+            WriteObject((PSAzureProfile)profileClient.Login(azureAccount, Environment, TenantId, SubscriptionId, 
                 SubscriptionName, password));
         }
 

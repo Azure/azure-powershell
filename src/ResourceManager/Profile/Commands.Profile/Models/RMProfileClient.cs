@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             AzureSubscription newSubscription = null;
             AzureTenant newTenant = null;
-            ShowDialog promptBehavior = (password == null && account.Type != AzureAccount.AccountType.AccessToken) 
+            ShowDialog promptBehavior = (password == null && account.Type != AzureAccount.AccountType.AccessToken && !account.IsPropertySet(AzureAccount.Property.CertificateThumbprint))
                 ? ShowDialog.Always : ShowDialog.Never;
 
             // (tenant and subscription are present) OR
@@ -333,7 +333,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                                 if (subscriptions.Count > 1)
                                 {
                                     WriteWarningMessage(string.Format(
-                                        "Tenant '{0}' contains more than one subscription. First one will be selected for further use. " +
+                                        "TenantId '{0}' contains more than one subscription. First one will be selected for further use. " +
                                         "To select another subscription, use Set-AzureRmContext.",
                                         tenantId));
                                 }

@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.SubscriptionId = subscriptionId;
-            cmdlt.Tenant = tenantId;
+            cmdlt.TenantId = tenantId;
 
             // Act
             cmdlt.InvokeBeginProcessing();
