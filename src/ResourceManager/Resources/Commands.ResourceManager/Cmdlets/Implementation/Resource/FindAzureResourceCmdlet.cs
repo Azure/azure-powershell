@@ -102,6 +102,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         public string ODataQuery { get; set; }
 
         /// <summary>
+        /// Gets or sets the tag name.
+        /// </summary>
+        [Parameter(ParameterSetName = FindAzureResourceCmdlet.ListResourcesParameterSet, Mandatory = false, HelpMessage = "The name of the tag to query by.")]
+        [Parameter(ParameterSetName = FindAzureResourceCmdlet.MultiSubscriptionListResourcesParameterSet, Mandatory = false, HelpMessage = "The name of the tag to query by.")]
+        [ValidateNotNullOrEmpty]
+        public string TagName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the tag value.
+        /// </summary>
+        [Parameter(ParameterSetName = FindAzureResourceCmdlet.ListResourcesParameterSet, Mandatory = false, HelpMessage = "The value of the tag to query by.")]
+        [Parameter(ParameterSetName = FindAzureResourceCmdlet.MultiSubscriptionListResourcesParameterSet, Mandatory = false, HelpMessage = "The value of the tag to query by.")]
+        [ValidateNotNullOrEmpty]
+        public string TagValue { get; set; }
+
+        /// <summary>
         /// Gets or sets the resource group name.
         /// </summary>
         [Alias("ResourceGroupName")]
@@ -237,8 +253,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var odataQuery = QueryFilterBuilder.CreateFilter(
                 resourceType: null,
                 resourceName: null,
-                tagName: null,
-                tagValue: null,
+                tagName: this.TagName,
+                tagValue: this.TagValue,
                 filter: this.ODataQuery,
                 resourceGroupNameContains: this.ResourceGroupNameContains,
                 nameContains: this.ResourceGroupNameContains);
@@ -264,8 +280,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     resourceGroup: null,
                     resourceType: this.ResourceType,
                     resourceName: null,
-                    tagName: null,
-                    tagValue: null,
+                    tagName: this.TagName,
+                    tagValue: this.TagValue,
                     filter: this.ODataQuery,
                     resourceGroupNameContains: this.ResourceGroupNameContains,
                     nameContains: this.ResourceNameContains);
@@ -293,8 +309,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 .CreateFilter(
                     resourceType: this.ResourceType,
                     resourceName: null,
-                    tagName: null,
-                    tagValue: null,
+                    tagName: this.TagName,
+                    tagValue: this.TagValue,
                     filter: this.ODataQuery,
                     resourceGroupNameContains: this.ResourceGroupNameContains,
                     nameContains: this.ResourceNameContains);
@@ -324,8 +340,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 .CreateFilter(
                     resourceType: this.ResourceType,
                     resourceName: null,
-                    tagName: null,
-                    tagValue: null,
+                    tagName: this.TagName,
+                    tagValue: this.TagValue,
                     filter: this.ODataQuery,
                     nameContains: this.ResourceNameContains);
 
@@ -466,7 +482,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             return this.SubscriptionId.HasValue &&
                 this.ResourceGroupNameContains != null &&
-                (this.ResourceType != null ||
+                (this.TagName != null ||
+                this.TagValue != null ||
+                this.ResourceType != null ||
                 this.ExtensionResourceType != null);
         }
     }
