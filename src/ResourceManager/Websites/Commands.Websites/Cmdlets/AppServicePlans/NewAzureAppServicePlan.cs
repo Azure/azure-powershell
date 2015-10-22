@@ -17,7 +17,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
 
-namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlan
+namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
 {
     /// <summary>
     /// this commandlet will let you create a new Azure App service Plan using ARM APIs
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlan
             }
 
             var capacity = NumberofWorkers < 1 ? 1 : NumberofWorkers;
-            var skuName = WebsitesClient.GetSkuName(Tier, WorkerSize);
+            var skuName = CmdletHelpers.GetSkuName(Tier, WorkerSize);
 
             var sku = new SkuDescription
             {

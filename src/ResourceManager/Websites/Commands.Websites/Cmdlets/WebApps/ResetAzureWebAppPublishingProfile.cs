@@ -16,7 +16,7 @@
 
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.WebApps.Cmdlets
+namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
     /// <summary>
     /// This commandlet resets the publishing creds of the given Azure Web app
@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets
     {
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             WriteObject(WebsitesClient.ResetWebAppPublishingCredentials(ResourceGroupName, Name, null));
         }
     }

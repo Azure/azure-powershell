@@ -17,7 +17,7 @@ using System.Management.Automation;
 using System.Text.RegularExpressions;
 using Microsoft.Azure.Management.WebSites.Models;
 
-namespace Microsoft.Azure.Commands.Websites.Validations
+namespace Microsoft.Azure.Commands.WebApps.Validations
 {
     public class ValidateServerFarmAttribute : ValidateArgumentsAttribute
     {

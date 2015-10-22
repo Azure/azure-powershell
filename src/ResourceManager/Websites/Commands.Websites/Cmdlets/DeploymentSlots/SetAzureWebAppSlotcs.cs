@@ -14,12 +14,13 @@
 
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Management.WebSites.Models;
 
-namespace Microsoft.Azure.Commands.WebApps.Cmdlets
+namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 {
     /// <summary>
     /// this commandlet will let you create a new Azure Web app using ARM APIs
@@ -56,7 +57,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets
 
         [Parameter(Position = 10, Mandatory = false, HelpMessage = "Web app settings")]
         [ValidateNotNullOrEmpty]
-        public IDictionary<string, string> AppSettings { get; set; }
+        public Hashtable AppSettings { get; set; }
 
         [Parameter(Position = 11, Mandatory = false, HelpMessage = "Web app connection strings")]
         [ValidateNotNullOrEmpty]
@@ -95,12 +96,15 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets
                 Use32BitWorkerProcess = parameters.Contains("Use32BitWorkerProcess") ? (bool?)Use32BitWorkerProcess : null
             };
 
+            // Temporarily pass in no locaiton
+            string location = null;
+
             // Update web app slot configuration
-            WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, Name, Slot, siteConfig, AppSettings, ConnectionStrings);
+            WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, location, Name, Slot, siteConfig, AppSettings?.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString(), StringComparer.Ordinal), ConnectionStrings);
 
             if (parameters.Contains("AppServicePlan"))
             {
-                WebsitesClient.UpdateWebApp(ResourceGroupName, Name, Slot, AppServicePlan);
+                WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, Slot, AppServicePlan);
             }
 
             WriteObject(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot));

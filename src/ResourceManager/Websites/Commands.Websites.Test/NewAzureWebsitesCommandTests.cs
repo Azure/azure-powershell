@@ -16,14 +16,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.WebApps.Utilities;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.Azure.Commands.WebApps.Cmdlets;
-using Microsoft.Azure.Commands.WebApp;
-using Microsoft.Azure.Commands.WebApps.Models;
+using Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps;
 using Moq;
-using Xunit;
-
 
 
 namespace Microsoft.Azure.Commands.Websites.Test

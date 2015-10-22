@@ -13,44 +13,72 @@
 // ----------------------------------------------------------------------------------
 
 
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Management.WebSites.Models;
 
-namespace Microsoft.Azure.Commands.WebApps.Cmdlets
+namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 {
     /// <summary>
     /// this commandlet will let you create a new Azure Web app slot using ARM APIs
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRMWebAppSlot")]
-    public class NewAzureWebAppSlotCmdlet : WebAppSlotBaseCmdlet
+    public class NewAzureWebAppSlotCmdlet : WebAppBaseClientCmdLet
     {
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the web app.", ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
+        [Parameter(Position = 2, Mandatory = false, HelpMessage = "The name of the web app slot.")]
+        [ValidateNotNullOrEmpty]
+        public string Slot { get; set; }
+
         [Parameter(Position = 3, Mandatory = false, HelpMessage = "The name of the app service plan eg: Default1.")]
         public string AppServicePlan { get; set; }
 
-        [Parameter(Position = 4, Mandatory = false, HelpMessage = "The information needed to clone web app")]
+        [Parameter(Position = 4, Mandatory = false, HelpMessage = "The source web app to clone", ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public Site SourceWebApp { get; set; }
 
-        [Parameter(Position = 5, Mandatory = false, HelpMessage = "The information needed to clone web app")]
+        [Parameter(Position = 6, Mandatory = false, HelpMessage = "Ignore source control on source web app")]
         [ValidateNotNullOrEmpty]
-        public CloningInfo CloningInfo { get; set; }
-       
+        public SwitchParameter IgnoreSourceControl { get; set; }
+
+        [Parameter(Position = 7, Mandatory = false, HelpMessage = "Ignore custom hostnames on source web app")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter IgnoreCustomHostNames { get; set; }
+
+        [Parameter(Position = 8, Mandatory = false, HelpMessage = "Overrides all application settings in new web app")]
+        [ValidateNotNullOrEmpty]
+        public Hashtable AppSettingsOverrides { get; set; }
+
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
+            CloningInfo cloningInfo = null;
             if (SourceWebApp != null)
             {
-                if (CloningInfo == null)
+                cloningInfo = new CloningInfo
                 {
-                    CloningInfo = new CloningInfo();
-                }
-
-                CloningInfo.SourceWebAppId = SourceWebApp.Id;
+                    SourceWebAppId = SourceWebApp.Id,
+                    CloneCustomHostNames = !IgnoreCustomHostNames.IsPresent,
+                    CloneSourceControl = !IgnoreSourceControl.IsPresent,
+                    ConfigureLoadBalancing = false,
+                    AppSettingsOverrides = AppSettingsOverrides.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString(), StringComparer.Ordinal)
+                };
             }
 
             var webApp = WebsitesClient.GetWebApp(ResourceGroupName, Name, null);
 
-            WriteObject(WebsitesClient.CreateWebApp(ResourceGroupName, Name, Slot, webApp.Location, AppServicePlan, CloningInfo));
+            WriteObject(WebsitesClient.CreateWebApp(ResourceGroupName, Name, Slot, webApp.Location, AppServicePlan, cloningInfo));
         }
     }
 }

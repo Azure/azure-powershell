@@ -16,7 +16,7 @@
 
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.WebApps.Cmdlets
+namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 {
     /// <summary>
     /// this commandlet will let you stop an Azure Web app slot
@@ -27,7 +27,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
-            WriteObject(WebsitesClient.StopWebApp(ResourceGroupName, Name, Slot));
+            WebsitesClient.StopWebApp(ResourceGroupName, Name, Slot);
+            WriteObject(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot));
         }
     }
 }

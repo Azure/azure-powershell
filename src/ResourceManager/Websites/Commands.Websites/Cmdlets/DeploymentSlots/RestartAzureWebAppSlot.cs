@@ -15,10 +15,8 @@
 
 
 using System.Management.Automation;
-using Microsoft.Azure.Commands.WebApps.Utilities;
 
-
-namespace Microsoft.Azure.Commands.WebApps.Cmdlets
+namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 {
     /// <summary>
     /// this commandlet will let you restart an Azure Web app slot 
@@ -29,7 +27,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
-            WriteObject(WebsitesClient.RestartWebApp(ResourceGroupName, Name, Slot));
+            WebsitesClient.RestartWebApp(ResourceGroupName, Name, Slot);
+            WriteObject(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot));
         }
     }
 }

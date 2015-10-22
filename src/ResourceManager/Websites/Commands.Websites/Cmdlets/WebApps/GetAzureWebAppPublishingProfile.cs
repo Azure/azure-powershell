@@ -16,7 +16,7 @@
 
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.WebApps.Cmdlets
+namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
     /// <summary>
     /// this commandlet will get the publishing creds of the given Azure Web app using ARM APIs
@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets
 
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             WriteObject(WebsitesClient.GetWebAppPublishingProfile(ResourceGroupName, Name, null, OutputFile, Format));
         }
 

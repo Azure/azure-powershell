@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.WebApps.Validations
         protected override void Validate(object arguments, EngineIntrinsics engineIntrinsics)
         {
             var webAppName = arguments as string;
-            if (WebsitesClient.IsDeploymentSlot(webAppName))
+            if (CmdletHelpers.IsDeploymentSlot(webAppName))
             {
                 throw new ValidationMetadataException(string.Format("Specified resource '{0}' is a non-production web app slot. Please use the AzureRMWebAppSlot cmdlets to manage this resource", webAppName));
             }

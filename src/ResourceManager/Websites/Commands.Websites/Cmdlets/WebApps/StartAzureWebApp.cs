@@ -14,19 +14,24 @@
 // ----------------------------------------------------------------------------------
 
 
+using System;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.WebApps.Utilities;
+using Microsoft.Azure.Management.WebSites.Models;
 
-namespace Microsoft.Azure.Commands.WebApps.Cmdlets
+namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
     /// <summary>
     /// this commandlet will let you Start an Azure Web app
     /// </summary>
     [Cmdlet(VerbsLifecycle.Start, "AzureRmWebApp")]
     public class StartAzureWebAppCmdlet : WebAppBaseCmdlet
-    {    
+    {   
         protected override void ProcessRecord()
         {
-            WriteObject(WebsitesClient.StartWebApp(ResourceGroupName, Name, null));
+            base.ProcessRecord();
+            WebsitesClient.StartWebApp(ResourceGroupName, Name, null);
+            WriteObject(WebsitesClient.GetWebApp(ResourceGroupName, Name, null));
         }
     }
 }

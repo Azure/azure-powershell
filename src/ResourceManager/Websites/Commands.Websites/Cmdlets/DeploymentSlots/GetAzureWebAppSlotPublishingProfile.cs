@@ -18,7 +18,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.WebApps.Utilities;
 
 
-namespace Microsoft.Azure.Commands.WebApps.Cmdlets
+namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 {
     /// <summary>
     /// this commandlet will get the publishing creds of the given Azure Web app slot using ARM APIs

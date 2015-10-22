@@ -15,8 +15,9 @@
 
 
 using System.Management.Automation;
+using Microsoft.Azure.Management.WebSites.Models;
 
-namespace Microsoft.Azure.Commands.WebApps.Cmdlets
+namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
     /// <summary>
     /// this commandlet will let you restart an Azure Web app
@@ -26,9 +27,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets
     {
         protected override void ProcessRecord()
         {
-            WriteObject(WebsitesClient.RestartWebApp(ResourceGroupName, Name, null));
+            base.ProcessRecord();
+            WebsitesClient.RestartWebApp(ResourceGroupName, Name, null);
+            WriteObject(WebsitesClient.GetWebApp(ResourceGroupName, Name, null));
         }
-
     }
 }
 

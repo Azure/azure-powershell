@@ -13,46 +13,84 @@
 // ----------------------------------------------------------------------------------
 
 
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Management.WebSites.Models;
+using Microsoft.PowerShell;
+using Microsoft.WindowsAzure.Commands.Common;
 
-namespace Microsoft.Azure.Commands.WebApps.Cmdlets
+namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
     /// <summary>
     /// this commandlet will let you create a new Azure Web app using ARM APIs
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmWebApp")]
-    public class NewAzureWebAppCmdlet : WebAppBaseCmdlet
+    [Cmdlet(VerbsCommon.New, "AzureRmWebApp", DefaultParameterSetName = ParameterSet1Name)]
+    public class NewAzureWebAppCmdlet : WebAppBaseClientCmdLet
     {
+        const string ParameterSet1Name = "S1";
+        const string ParameterSet2Name = "S2";
+
+        [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(Position = 1, Mandatory = true, HelpMessage = "The name of the web app.")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
         [Parameter(Position = 2, Mandatory = true, HelpMessage = "The Location of the web app eg: West US.")]
         public string Location { get; set; }
 
         [Parameter(Position = 3, Mandatory = false, HelpMessage = "The name of the app service plan eg: Default1.")]
         public string AppServicePlan { get; set; }
 
-        [Parameter(Position = 4, Mandatory = false, HelpMessage = "The information needed to clone web app")]
+        [Parameter(Position = 4, Mandatory = false, HelpMessage = "The source web app to clone", ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public Site SourceWebApp { get; set; }
 
-        [Parameter(Position = 5, Mandatory = false, HelpMessage = "The information needed to clone web app")]
+        [Parameter(ParameterSetName = ParameterSet1Name, Position = 5, Mandatory = false, HelpMessage = "Resource Id of existing traffic manager profile")]
         [ValidateNotNullOrEmpty]
-        public CloningInfo CloningInfo { get; set; }
-       
+        public string TrafficManagerProfileId { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSet2Name, Position = 5, Mandatory = false, HelpMessage = "Name of new traffic manager profile")]
+        [ValidateNotNullOrEmpty]
+        public string TrafficManagerProfileName { get; set; }
+
+        [Parameter(Position = 6, Mandatory = false, HelpMessage = "Ignore source control on source web app")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter IgnoreSourceControl { get; set; }
+
+        [Parameter(Position = 7, Mandatory = false, HelpMessage = "Ignore custom hostnames on source web app")]
+        [ValidateNotNullOrEmpty]
+        public SwitchParameter IgnoreCustomHostNames { get; set; }
+
+        [Parameter(Position = 8, Mandatory = false, HelpMessage = "Overrides all application settings in new web app")]
+        [ValidateNotNullOrEmpty]
+        public Hashtable AppSettingsOverrides { get; set; }
+
         protected override void ProcessRecord()
         {
+            CloningInfo cloningInfo = null;
             if (SourceWebApp != null)
             {
-                if (CloningInfo == null)
+                cloningInfo = new CloningInfo
                 {
-                    CloningInfo = new CloningInfo();
-                }
-
-                CloningInfo.SourceWebAppId = SourceWebApp.Id;
+                    SourceWebAppId = SourceWebApp.Id,
+                    CloneCustomHostNames = !IgnoreCustomHostNames.IsPresent,
+                    CloneSourceControl = !IgnoreSourceControl.IsPresent,
+                    TrafficManagerProfileId = TrafficManagerProfileId,
+                    TrafficManagerProfileName = TrafficManagerProfileName,
+                    ConfigureLoadBalancing = !string.IsNullOrEmpty(TrafficManagerProfileId) || !string.IsNullOrEmpty(TrafficManagerProfileName),
+                    AppSettingsOverrides = AppSettingsOverrides?.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString(), StringComparer.Ordinal)
+                };
             }
 
-            WriteObject(WebsitesClient.CreateWebApp(ResourceGroupName, Name, null, Location, AppServicePlan, CloningInfo));
+            WriteObject(WebsitesClient.CreateWebApp(ResourceGroupName, Name, null, Location, AppServicePlan, cloningInfo));
         }
-        
     }
 }
 

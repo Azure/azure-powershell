@@ -14,12 +14,18 @@
 
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.WebApps.Models;
+using Microsoft.Azure.Commands.WebApps.Utilities;
+using Microsoft.Azure.Commands.WebApps.Validations;
+using Microsoft.Azure.Internal.Subscriptions.Models;
 using Microsoft.Azure.Management.WebSites.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
-namespace Microsoft.Azure.Commands.WebApps.Cmdlets
+namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
     /// <summary>
     /// this commandlet will let you create a new Azure Web app using ARM APIs
@@ -27,50 +33,52 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets
     [Cmdlet(VerbsCommon.Set, "AzureRMWebApp")]
     public class SetAzureWebAppCmdlet : WebAppBaseCmdlet
     {
-        [Parameter(Position = 2, Mandatory = false, HelpMessage = "The name of the app service plan eg: Default1.")]
+        [Parameter(ParameterSetName = ParameterSet1Name, Position = 2, Mandatory = false, HelpMessage = "The name of the app service plan eg: Default1.")]
         public string AppServicePlan { get; set; }
 
-        [Parameter(Position = 3, Mandatory = false, HelpMessage = "Default documents for web app")]
+        [Parameter(ParameterSetName = ParameterSet1Name, Position = 3, Mandatory = false, HelpMessage = "Default documents for web app")]
         [ValidateNotNullOrEmpty]
         public string[] DefaultDocuments { get; set; }
 
-        [Parameter(Position = 4, Mandatory = false, HelpMessage = ".NET Framework version")]
+        [Parameter(ParameterSetName = ParameterSet1Name, Position = 4, Mandatory = false, HelpMessage = ".NET Framework version")]
         [ValidateNotNullOrEmpty]
         public string NetFrameworkVersion { get; set; }
 
-        [Parameter(Position = 5, Mandatory = false, HelpMessage = "PHP version")]
+        [Parameter(ParameterSetName = ParameterSet1Name, Position = 5, Mandatory = false, HelpMessage = "PHP version")]
         [ValidateNotNullOrEmpty]
         public string PhpVersion { get; set; }
 
-        [Parameter(Position = 6, Mandatory = false, HelpMessage = "Whether or not request tracing is enabled")]
+        [Parameter(ParameterSetName = ParameterSet1Name, Position = 6, Mandatory = false, HelpMessage = "Whether or not request tracing is enabled")]
         [ValidateNotNullOrEmpty]
         public bool RequestTracingEnabled { get; set; }
 
-        [Parameter(Position = 7, Mandatory = false, HelpMessage = "Whether or not http logging is enabled")]
+        [Parameter(ParameterSetName = ParameterSet1Name, Position = 7, Mandatory = false, HelpMessage = "Whether or not http logging is enabled")]
         [ValidateNotNullOrEmpty]
         public bool HttpLoggingEnabled { get; set; }
 
-        [Parameter(Position = 8, Mandatory = false, HelpMessage = "Whether or not detailed error logging is enabled")]
+        [Parameter(ParameterSetName = ParameterSet1Name, Position = 8, Mandatory = false, HelpMessage = "Whether or not detailed error logging is enabled")]
         [ValidateNotNullOrEmpty]
         public bool DetailedErrorLoggingEnabled { get; set; }
 
-        [Parameter(Position = 9, Mandatory = false, HelpMessage = "Web app settings")]
+        [Parameter(ParameterSetName = ParameterSet1Name, Position = 9, Mandatory = false, HelpMessage = "Web app settings. Example: -AppSettings @{\"setting1\" = \"ValueA\"}")]
         [ValidateNotNullOrEmpty]
-        public IDictionary<string,string> AppSettings { get; set; }
+        [ValidateStringDictionary]
+        public Hashtable AppSettings { get; set; }
 
-        [Parameter(Position = 10, Mandatory = false, HelpMessage = "Web app connection strings")]
+        [Parameter(ParameterSetName = ParameterSet1Name, Position = 10, Mandatory = false, HelpMessage = "Web app connection strings. Example: -ConnectionStrings @{ ConnectionString1 = @{ Type = \"MySql\"; Value = \"MySql Connection string\"}; ConnectionString2 = @{ Type = \"SQLAzure\"; Value = \"SqlAzure Connection string 2\"} }")]
         [ValidateNotNullOrEmpty]
-        public IDictionary<string, ConnStringValueTypePair> ConnectionStrings { get; set; }
+        [ValidateConnectionStrings]
+        public Hashtable ConnectionStrings { get; set; }
 
-        [Parameter(Position = 11, Mandatory = false, HelpMessage = "Web app handler mappings")]
+        [Parameter(ParameterSetName = ParameterSet1Name, Position = 11, Mandatory = false, HelpMessage = "Web app handler mappings")]
         [ValidateNotNullOrEmpty]
         public IList<HandlerMapping> HandlerMappings { get; set; }
 
-        [Parameter(Position = 12, Mandatory = false, HelpMessage = "Web app managed pipeline mode. Allowed Values [Classic|Integrated]")]
+        [Parameter(ParameterSetName = ParameterSet1Name, Position = 12, Mandatory = false, HelpMessage = "Web app managed pipeline mode. Allowed Values [Classic|Integrated]")]
         [ValidateSet("Classic", "Integrated")]
         public string ManagedPipelineMode { get; set; }
 
-        [Parameter(Position = 13, Mandatory = false, HelpMessage = "Whether or not detailed error logging is enabled")]
+        [Parameter(ParameterSetName = ParameterSet1Name, Position = 13, Mandatory = false, HelpMessage = "Whether or not detailed error logging is enabled")]
         [ValidateNotNullOrEmpty]
         public bool WebSocketsEnabled { get; set; }
 
@@ -78,38 +86,72 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets
         [ValidateNotNullOrEmpty]
         public bool Use32BitWorkerProcess { get; set; }
 
-        [Parameter(Position = 15, Mandatory = false, HelpMessage = "Custom hostnames associated with web app")]
+        [Parameter(ParameterSetName = ParameterSet1Name, Position = 15, Mandatory = false, HelpMessage = "Custom hostnames associated with web app")]
         [ValidateNotNullOrEmpty]
         public string[] HostNames { get; set; }
 
         protected override void ProcessRecord()
         {
-            var parameters =  new HashSet<string>(MyInvocation.BoundParameters.Keys, StringComparer.OrdinalIgnoreCase);
-            var siteConfig = new SiteConfig
+            base.ProcessRecord();
+            SiteConfig siteConfig = null;
+            string location = null;
+            switch (ParameterSetName)
             {
-                DefaultDocuments = parameters.Contains("DefaultDocuments") ? DefaultDocuments : null,
-                NetFrameworkVersion = parameters.Contains("NetFrameworkVersion") ? NetFrameworkVersion : null,
-                PhpVersion = parameters.Contains("PhpVersion") ? PhpVersion : null,
-                RequestTracingEnabled = parameters.Contains("RequestTracingEnabled") ? (bool?)RequestTracingEnabled : null,
-                HttpLoggingEnabled = parameters.Contains("HttpLoggingEnabled") ? (bool?)HttpLoggingEnabled : null,
-                DetailedErrorLoggingEnabled = parameters.Contains("DetailedErrorLoggingEnabled") ? (bool?)DetailedErrorLoggingEnabled : null,
-                HandlerMappings = parameters.Contains("HandlerMappings") ? HandlerMappings : null,
-                ManagedPipelineMode = parameters.Contains("ManagedPipelineMode") ? (ManagedPipelineMode?)Enum.Parse(typeof(ManagedPipelineMode), ManagedPipelineMode) : null,
-                WebSocketsEnabled = parameters.Contains("WebSocketsEnabled") ? (bool?)WebSocketsEnabled : null,
-                Use32BitWorkerProcess = parameters.Contains("Use32BitWorkerProcess") ? (bool?)Use32BitWorkerProcess : null
-            };
+                case ParameterSet1Name:
+                    WebApp = WebsitesClient.GetWebApp(ResourceGroupName, Name, null);
+                    location = WebApp.Location;
+                    var parameters = new HashSet<string>(MyInvocation.BoundParameters.Keys, StringComparer.OrdinalIgnoreCase);
+                    if (parameters.Any(p => CmdletHelpers.SiteConfigParameters.Contains(p)))
+                    {
+                        siteConfig = new SiteConfig
+                        {
+                            DefaultDocuments = parameters.Contains("DefaultDocuments") ? DefaultDocuments : null,
+                            NetFrameworkVersion = parameters.Contains("NetFrameworkVersion") ? NetFrameworkVersion : null,
+                            PhpVersion = parameters.Contains("PhpVersion") ? PhpVersion : null,
+                            RequestTracingEnabled =
+                                parameters.Contains("RequestTracingEnabled") ? (bool?)RequestTracingEnabled : null,
+                            HttpLoggingEnabled = parameters.Contains("HttpLoggingEnabled") ? (bool?)HttpLoggingEnabled : null,
+                            DetailedErrorLoggingEnabled =
+                                parameters.Contains("DetailedErrorLoggingEnabled") ? (bool?)DetailedErrorLoggingEnabled : null,
+                            HandlerMappings = parameters.Contains("HandlerMappings") ? HandlerMappings : null,
+                            ManagedPipelineMode =
+                                parameters.Contains("ManagedPipelineMode")
+                                    ? (ManagedPipelineMode?)Enum.Parse(typeof(ManagedPipelineMode), ManagedPipelineMode)
+                                    : null,
+                            WebSocketsEnabled = parameters.Contains("WebSocketsEnabled") ? (bool?)WebSocketsEnabled : null,
+                            Use32BitWorkerProcess =
+                                parameters.Contains("Use32BitWorkerProcess") ? (bool?)Use32BitWorkerProcess : null
+                        };
+                    }
 
-            // Update web app configuration
-            WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, Name, null, siteConfig, AppSettings, ConnectionStrings);
+                    // Update web app configuration
+                    WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, location, Name, null, siteConfig, AppSettings.ConvertToStringDictionary(), ConnectionStrings.ConvertToConnectionStringDictionary());
 
-            if (parameters.Contains("AppServicePlan"))
-            {
-                WebsitesClient.UpdateWebApp(ResourceGroupName, Name, null, AppServicePlan);
-            }
+                    if (parameters.Contains("AppServicePlan"))
+                    {
+                        WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, null, AppServicePlan);
+                    }
 
-            if (parameters.Contains("HostNames"))
-            {
-                WebsitesClient.AddCustomHostNames(ResourceGroupName, Name, HostNames);
+                    if (parameters.Contains("HostNames"))
+                    {
+                        WebsitesClient.AddCustomHostNames(ResourceGroupName, location, Name, HostNames);
+                    }
+
+                    break;
+                case ParameterSet2Name:
+                    // Web app is direct or pipeline input
+                    string servicePlanName;
+                    string rg;
+                    location = WebApp.Location;
+                    siteConfig = WebApp.SiteConfig;
+
+                    // Update web app configuration
+                    WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, location, Name, null, siteConfig, WebApp.SiteConfig?.AppSettings.ToDictionary(nvp => nvp.Name, nvp => nvp.Value, StringComparer.OrdinalIgnoreCase), WebApp.SiteConfig?.ConnectionStrings.ToDictionary(nvp => nvp.Name, nvp => new ConnStringValueTypePair { Type = nvp.Type, Value = nvp.ConnectionString }, StringComparer.OrdinalIgnoreCase));
+
+                    CmdletHelpers.TryParseAppServicePlanMetadataFromResourceId(WebApp.ServerFarmId, out rg, out servicePlanName);
+                    WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, null, servicePlanName);
+                    WebsitesClient.AddCustomHostNames(ResourceGroupName, location, Name, WebApp.HostNames.ToArray());
+                    break;
             }
 
             WriteObject(WebsitesClient.GetWebApp(ResourceGroupName, Name, null));

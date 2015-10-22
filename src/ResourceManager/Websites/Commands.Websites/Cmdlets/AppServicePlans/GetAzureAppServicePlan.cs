@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Management.WebSites.Models;
 using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
 
-namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlan
+namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
 {
     /// <summary>
     /// this commandlet will let you Get an Azure App Service Plan using ARM APIs
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlan
 
         [Parameter(ParameterSetName = ParameterSet1, Position = 0, Mandatory = false, HelpMessage = "The name of the resource group.")]
         [ValidateNotNullOrEmpty]
-        public string ResourceGroup { get; set; }
+        public string ResourceGroupName { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet1, Position = 1, Mandatory = false, HelpMessage = "The name of the app service plan.")]
         [ValidateNotNullOrEmpty]
@@ -50,11 +50,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlan
             switch (ParameterSetName)
             {
                 case ParameterSet1:
-                    if (!string.IsNullOrEmpty(ResourceGroup) && !string.IsNullOrEmpty(Name))
+                    if (!string.IsNullOrEmpty(ResourceGroupName) && !string.IsNullOrEmpty(Name))
                     {
                         GetAppServicePlan();
                     }
-                    else if (!string.IsNullOrEmpty(ResourceGroup))
+                    else if (!string.IsNullOrEmpty(ResourceGroupName))
                     {
                         GetByResourceGroup();
                     }
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlan
 
         private void GetAppServicePlan()
         {
-            WriteObject(WebsitesClient.GetAppServicePlan(ResourceGroup, Name), true);
+            WriteObject(WebsitesClient.GetAppServicePlan(ResourceGroupName, Name), true);
         }
 
         private void GetByAppServicePlanName()
@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlan
 
         private void GetByResourceGroup()
         {
-            WriteObject(WebsitesClient.ListAppServicePlans(ResourceGroup), true);
+            WriteObject(WebsitesClient.ListAppServicePlans(ResourceGroupName).Value, true);
         }
 
         private void GetBySubscription()

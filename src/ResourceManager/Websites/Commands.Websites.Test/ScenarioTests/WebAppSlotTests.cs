@@ -19,62 +19,62 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 {
-    public class WebAppTests : RMTestBase
+    public class WebAppSlotTests : RMTestBase
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateNewWebApp()
+        public void TestCreateNewWebAppSlot()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-CreateNewWebApp");
+            WebsitesController.NewInstance.RunPsTest("Test-CreateNewWebAppSlot");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetWebApp()
+        public void TestGetWebAppSlot()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-GetWebApp");
+            WebsitesController.NewInstance.RunPsTest("Test-GetWebAppSlot");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetWebAppMetrics()
+        public void TestGetWebAppSlotMetrics()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-GetWebAppMetrics");
+            WebsitesController.NewInstance.RunPsTest("Test-GetWebAppSlotMetrics");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestWebAppPublishingProfile()
+        public void TestWebAppSlotPublishingProfile()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-WebAppPublishingProfile");
+            WebsitesController.NewInstance.RunPsTest("Test-WebAppSlotPublishingProfile");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCloneNewWebApp()
+        public void TestCloneWebAppToSlot()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-CloneNewWebApp");
+            WebsitesController.NewInstance.RunPsTest("Test-CloneWebAppToSlot");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCloneNewWebAppWithNewTrafficManager()
+        public void TestCloneWebAppSlot()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-CloneNewWebAppWithTrafficManager");
+            WebsitesController.NewInstance.RunPsTest("Test-CloneWebAppSlot");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestStartStopRestartWebApp()
+        public void TestStartStopRestartWebAppSlot()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-StartStopRestartWebApp");
+            WebsitesController.NewInstance.RunPsTest("Test-StartStopRestartWebAppSlot");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetWebApp()
+        public void TestSetWebAppSlot()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-SetWebApp");
+            WebsitesController.NewInstance.RunPsTest("Test-SetWebAppSlot");
         }
     }
 }

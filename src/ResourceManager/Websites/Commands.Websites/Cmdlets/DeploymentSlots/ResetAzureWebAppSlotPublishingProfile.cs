@@ -16,7 +16,7 @@
 
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.WebApps.Cmdlets
+namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 {
     /// <summary>
     /// This commandlet resets the publishing creds of the given Azure Web app slot

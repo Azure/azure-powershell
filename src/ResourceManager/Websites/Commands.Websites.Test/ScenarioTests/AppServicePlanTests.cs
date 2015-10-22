@@ -19,62 +19,41 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 {
-    public class WebAppTests : RMTestBase
+    public class AppServicePlanTests : RMTestBase
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCreateNewWebApp()
+        public void TestCreateNewAppServicePlan()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-CreateNewWebApp");
+            WebsitesController.NewInstance.RunPsTest("Test-CreateNewAppServicePlan");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetWebApp()
+        public void TestSetAppServicePlan()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-GetWebApp");
+            WebsitesController.NewInstance.RunPsTest("Test-SetAppServicePlan");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetWebAppMetrics()
+        public void TestGetAppServicePlan()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-GetWebAppMetrics");
+            WebsitesController.NewInstance.RunPsTest("Test-GetAppServicePlan");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestWebAppPublishingProfile()
+        public void TestRemoveAppServicePlan()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-WebAppPublishingProfile");
+            WebsitesController.NewInstance.RunPsTest("Test-RemoveAppServicePlan");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCloneNewWebApp()
+        public void TestGetAppServicePlanMetrics()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-CloneNewWebApp");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestCloneNewWebAppWithNewTrafficManager()
-        {
-            WebsitesController.NewInstance.RunPsTest("Test-CloneNewWebAppWithTrafficManager");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestStartStopRestartWebApp()
-        {
-            WebsitesController.NewInstance.RunPsTest("Test-StartStopRestartWebApp");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetWebApp()
-        {
-            WebsitesController.NewInstance.RunPsTest("Test-SetWebApp");
+            WebsitesController.NewInstance.RunPsTest("Test-GetAppServicePlanMetrics");
         }
     }
 }

@@ -12,21 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Gallery;
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Management.WebSites;
-using Microsoft.Azure.Subscriptions;
-using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Gallery;
+using Microsoft.Azure.Management.Authorization;
+using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.WebSites;
+using Microsoft.Azure.Subscriptions;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using LegacyTest = Microsoft.Azure.Test;
+using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
+using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
 
-namespace Microsoft.Azure.Commands.WebApp.Test.ScenarioTests
+namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 {
     public class WebsitesController
     {
@@ -34,6 +36,7 @@ namespace Microsoft.Azure.Commands.WebApp.Test.ScenarioTests
         private EnvironmentSetupHelper helper;
         private const string TenantIdKey = "TenantId";
         private const string DomainKey = "Domain";
+        private const string AuthorizationApiVersion = "2014-07-01-preview";
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
@@ -85,7 +88,7 @@ namespace Microsoft.Azure.Commands.WebApp.Test.ScenarioTests
             string mockName)
         {
             Dictionary<string, string> d = new Dictionary<string, string>();
-            d.Add("Microsoft.Authorization", "2014-07-01-preview");
+            d.Add("Microsoft.Authorization", AuthorizationApiVersion);
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
 
             using (MockContext context = MockContext.Start(callingClassType, mockName))
@@ -137,7 +140,6 @@ namespace Microsoft.Azure.Commands.WebApp.Test.ScenarioTests
             WebsitesManagementClient = GetWebsitesManagementClient(context);
             AuthorizationManagementClient = GetAuthorizationManagementClient();
             GalleryClient = GetGalleryClient();
-
             helper.SetupManagementClients(ResourceManagementClient,
                 SubscriptionClient,
                 WebsitesManagementClient,

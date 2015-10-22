@@ -141,6 +141,7 @@
     <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cmdlets\AppServicePlans\GetAzureAppServicePlanMetrics.cs" />
     <Compile Include="Cmdlets\DeploymentSlots\GetAzureWebAppSlot.cs" />
     <Compile Include="Cmdlets\DeploymentSlots\GetAzureWebAppSlotMetrics.cs" />
     <Compile Include="Cmdlets\DeploymentSlots\GetAzureWebAppSlotPublishingProfile.cs" />
@@ -161,14 +162,15 @@
     <Compile Include="Cmdlets\WebApps\SetAzureWebApp.cs" />
     <Compile Include="Cmdlets\WebApps\StartAzureWebApp.cs" />
     <Compile Include="Cmdlets\WebApps\StopAzureWebApp.cs" />
-    <Compile Include="Cmdlets\AppServicePlan\GetAzureAppServicePlan.cs" />
-    <Compile Include="Cmdlets\AppServicePlan\SetAzureAppServicePlan.cs" />
-    <Compile Include="Cmdlets\AppServicePlan\NewAzureAppServicePlan.cs" />
-    <Compile Include="Cmdlets\AppServicePlan\RemoveAppServicePlan.cs" />
+    <Compile Include="Cmdlets\AppServicePlans\GetAzureAppServicePlan.cs" />
+    <Compile Include="Cmdlets\AppServicePlans\SetAzureAppServicePlan.cs" />
+    <Compile Include="Cmdlets\AppServicePlans\NewAzureAppServicePlan.cs" />
+    <Compile Include="Cmdlets\AppServicePlans\RemoveAppServicePlan.cs" />
     <Compile Include="Models.WebApp\AppServicePlanBaseCmdlet.cs" />
     <Compile Include="Models.WebApp\WebAppBaseCmdlet.cs" />
     <Compile Include="Models.WebApp\WebAppBaseClient.cs" />
     <Compile Include="Models.WebApp\WebAppSlotBaseCmdlet.cs" />
+    <Compile Include="Utilities\CmdletHelpers.cs" />
     <Compile Include="Utilities\WebsitesClient.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -176,18 +178,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validations\ValidateConnectionStringsAttribute.cs" />
     <Compile Include="Validations\ValidateServerFarmAttribute.cs" />
+    <Compile Include="Validations\ValidateStringDictionaryAttribute.cs" />
     <Compile Include="Validations\ValidateWebAppNameAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Microsoft.Azure.Commands.Websites.dll-Help.xml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Microsoft.WindowsAzure.Commands.WebSites.format.ps1xml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <None Include="..\AzureRM.Websites.psd1">
       <Link>AzureRM.Websites.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

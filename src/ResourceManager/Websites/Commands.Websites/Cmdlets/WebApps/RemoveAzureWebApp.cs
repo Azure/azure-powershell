@@ -14,7 +14,7 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
-namespace Microsoft.Azure.Commands.WebApps.Cmdlets
+namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 {
     /// <summary>
     /// this commandlet will let you delete an Azure web app
@@ -37,6 +37,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets
             
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(Properties.Resources.RemoveWebsiteWarning, Name),

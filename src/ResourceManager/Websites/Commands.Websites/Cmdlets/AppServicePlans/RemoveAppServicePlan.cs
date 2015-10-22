@@ -14,9 +14,12 @@
 
 
 using System.Management.Automation;
+using Microsoft.Azure.Commands.WebApps.Models;
 using Microsoft.Azure.Commands.WebApps.Utilities;
+using Microsoft.Azure.Commands.WebApps.Validations;
+using Microsoft.Azure.Management.WebSites.Models;
 
-namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlan
+namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
 {
     /// <summary>
     /// this commandlet will let you delete an Azure App Service Plan using ARM APIs
@@ -29,6 +32,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlan
 
         protected override void ProcessRecord()
         {
+            base.ProcessRecord();
+
             ConfirmAction(
                     Force.IsPresent,
                     string.Format(Properties.Resources.RemovingAppServicePlan, Name),

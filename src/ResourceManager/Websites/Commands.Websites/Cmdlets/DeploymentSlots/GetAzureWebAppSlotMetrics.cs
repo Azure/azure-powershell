@@ -18,7 +18,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.WebApps.Models;
 using PSResourceManagerModels = Microsoft.Azure.Commands.Resources.Models;
 
-namespace Microsoft.Azure.Commands.WebApps.Cmdlets
+namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 {
     /// <summary>
     /// this commandlet will let you get Azure Web App slot metrics
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets
 
         protected override void ProcessRecord()
         {
-            WriteObject(WebsitesClient.GetWebAppUsageMetrics(ResourceGroupName, Name, null, Metrics, StartTime, EndTime, Granularity, InstanceDetails.IsPresent));
+            WriteObject(WebsitesClient.GetWebAppUsageMetrics(ResourceGroupName, Name, Slot, Metrics, StartTime, EndTime, Granularity, InstanceDetails.IsPresent));
         }
     }
 }
