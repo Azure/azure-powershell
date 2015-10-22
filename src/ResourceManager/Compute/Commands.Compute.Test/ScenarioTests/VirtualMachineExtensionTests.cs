@@ -53,5 +53,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineAccessExtension");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureDiskEncryptionExtension()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-AzureDiskEncryptionExtension");
+        }
+
     }
 }
