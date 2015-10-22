@@ -127,9 +127,9 @@ namespace Microsoft.Azure.Commands.Profile
                 password = Credential.Password;
             }
 
-            if (!string.IsNullOrEmpty(Tenant))
+            if (!string.IsNullOrEmpty(TenantId))
             {
-                azureAccount.SetProperty(AzureAccount.Property.Tenants, new[] { Tenant });
+                azureAccount.SetProperty(AzureAccount.Property.Tenants, new[] { TenantId });
             }
 
             if( AzureRmProfileProvider.Instance.Profile == null)
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.Profile
 
             var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
             
-            WriteObject((PSAzureProfile)profileClient.Login(azureAccount, Environment, Tenant, SubscriptionId, 
+            WriteObject((PSAzureProfile)profileClient.Login(azureAccount, Environment, TenantId, SubscriptionId, 
                 SubscriptionName, password));
         }
 
