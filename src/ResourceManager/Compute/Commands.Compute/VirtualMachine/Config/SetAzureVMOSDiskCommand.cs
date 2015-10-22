@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 7,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskLinuxOSType)]
-        public Uri DiskEncryptionKeyUrl { get; set; }
+        public string DiskEncryptionKeyUrl { get; set; }
 
         [Parameter(
             ParameterSetName = WindowsDiskEncryptionParameterSet,
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 9,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskLinuxOSType)]
-        public Uri KeyEncryptionKeyUrl { get; set; }
+        public string KeyEncryptionKeyUrl { get; set; }
 
         [Parameter(
             ParameterSetName = WindowsDiskEncryptionParameterSet,
@@ -173,6 +173,14 @@ namespace Microsoft.Azure.Commands.Compute
             if (this.VM.StorageProfile == null)
             {
                 this.VM.StorageProfile = new StorageProfile();
+            }
+
+            if ((this.KeyEncryptionKeyVaultId == null && this.KeyEncryptionKeyUrl != null)
+                || (this.KeyEncryptionKeyVaultId != null && this.KeyEncryptionKeyUrl == null))
+            {
+                WriteError(new ErrorRecord(
+                        new Exception(Properties.Resources.VMOSDiskDiskEncryptionBothKekVaultIdAndKekUrlRequired),
+                        string.Empty, ErrorCategory.InvalidArgument, null));
             }
 
             this.VM.StorageProfile.OSDisk = new OSDisk
