@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
+    internal class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Sql.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to More than one Active Directory group with the display name &apos;{0}&apos; was found. Please provide an Azure Active Directory object id to select the correct group. To get the object id use Get-AzureRmADGroup -SearchString &quot;{0}&quot;.
         /// </summary>
-        public static string ADGroupMoreThanOneFound {
+        internal static string ADGroupMoreThanOneFound {
             get {
                 return ResourceManager.GetString("ADGroupMoreThanOneFound", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Cannot find the Azure Active Directory object &apos;{0}&apos;. Please make sure that the user or group you are authorizing is registered in the current subscription&apos;s Azure Active directory. To get a list of Azure Active Directory groups use Get-AzureRmADGroup, or to get a list of Azure Active Directory users use Get-AzureRmADUser..
         /// </summary>
-        public static string ADObjectNotFound {
+        internal static string ADObjectNotFound {
             get {
                 return ResourceManager.GetString("ADObjectNotFound", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to More than one Azure Active Directory user with the display name &apos;{0}&apos; was found. Please provide an Azure Active Directory object id to select the correct user. To get the object id use Get-AzureRmADUser -SearchString &quot;{0}&quot;.
         /// </summary>
-        public static string ADUserMoreThanOneFound {
+        internal static string ADUserMoreThanOneFound {
             get {
                 return ResourceManager.GetString("ADUserMoreThanOneFound", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Database with name: &apos;{0}&apos; already exists in server &apos;{1}&apos;..
         /// </summary>
-        public static string DatabaseNameExists {
+        internal static string DatabaseNameExists {
             get {
                 return ResourceManager.GetString("DatabaseNameExists", resourceCulture);
             }
@@ -99,52 +99,34 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Auditing cannot be enabled . Upgrade to Basic, Standard or Premium Service Tier to enable auditing on your database(s).
         /// </summary>
-        public static string DatabaseNotInServiceTierForAuditingPolicy {
+        internal static string DatabaseNotInServiceTierForAuditingPolicy {
             get {
                 return ResourceManager.GetString("DatabaseNotInServiceTierForAuditingPolicy", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A data masking rule for alias &apos;{0}&apos; is already exists.
-        /// </summary>
-        public static string DataMaskingAliasAlreadyUsedError {
-            get {
-                return ResourceManager.GetString("DataMaskingAliasAlreadyUsedError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Cannot set a lower bound which is larger than the higher bound.
         /// </summary>
-        public static string DataMaskingNumberRuleIntervalDefinitionError {
+        internal static string DataMaskingNumberRuleIntervalDefinitionError {
             get {
                 return ResourceManager.GetString("DataMaskingNumberRuleIntervalDefinitionError", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The rule {0} does not exist.
+        ///   Looks up a localized string similar to No dynamic data masking rule is defined for column: &quot;{0}&quot; table &quot;{1}&quot; schema &quot;{2}&quot; .
         /// </summary>
-        public static string DataMaskingRuleDoesNotExist {
+        internal static string DataMaskingRuleDoesNotExist {
             get {
                 return ResourceManager.GetString("DataMaskingRuleDoesNotExist", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A data masking rule for the table &apos;{0}&apos; and column &apos;{1}&apos; already exists.
-        /// </summary>
-        public static string DataMaskingTableAndColumnUsedError {
-            get {
-                return ResourceManager.GetString("DataMaskingTableAndColumnUsedError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The {0} cmdlet is deprecated and will be removed in a future release..
         /// </summary>
-        public static string DeprecatedCmdletUsageWarning {
+        internal static string DeprecatedCmdletUsageWarning {
             get {
                 return ResourceManager.GetString("DeprecatedCmdletUsageWarning", resourceCulture);
             }
@@ -153,7 +135,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Elastic Pool with name: &apos;{0}&apos; already exists in server &apos;{1}&apos;..
         /// </summary>
-        public static string ElasticPoolNameExists {
+        internal static string ElasticPoolNameExists {
             get {
                 return ResourceManager.GetString("ElasticPoolNameExists", resourceCulture);
             }
@@ -162,7 +144,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {your_password_here}.
         /// </summary>
-        public static string EnterPassword {
+        internal static string EnterPassword {
             get {
                 return ResourceManager.GetString("EnterPassword", resourceCulture);
             }
@@ -171,7 +153,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {your_user_id_here}.
         /// </summary>
-        public static string EnterUserId {
+        internal static string EnterUserId {
             get {
                 return ResourceManager.GetString("EnterUserId", resourceCulture);
             }
@@ -180,7 +162,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The Active Directory Group &apos;{0}&apos; is not security enabled. Only Azure Active Directory Security Enabled Groups are supported..
         /// </summary>
-        public static string InvalidADGroupNotSecurity {
+        internal static string InvalidADGroupNotSecurity {
             get {
                 return ResourceManager.GetString("InvalidADGroupNotSecurity", resourceCulture);
             }
@@ -189,7 +171,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Cannot use the &apos;{0}&apos; option with other event types..
         /// </summary>
-        public static string InvalidEventTypeSet {
+        internal static string InvalidEventTypeSet {
             get {
                 return ResourceManager.GetString("InvalidEventTypeSet", resourceCulture);
             }
@@ -198,7 +180,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Please use Set-AzureRmEnvironment to set a valid GraphEndpoint for the current AzureEnvironment..
         /// </summary>
-        public static string InvalidGraphEndpoint {
+        internal static string InvalidGraphEndpoint {
             get {
                 return ResourceManager.GetString("InvalidGraphEndpoint", resourceCulture);
             }
@@ -207,7 +189,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Cannot use audit table retention without specifying TableIdentifier. You may want to use &apos;{0}&apos;..
         /// </summary>
-        public static string InvalidRetentionTypeSet {
+        internal static string InvalidRetentionTypeSet {
             get {
                 return ResourceManager.GetString("InvalidRetentionTypeSet", resourceCulture);
             }
@@ -216,34 +198,25 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Please set a valid tenant id in the AzureEnvironment..
         /// </summary>
-        public static string InvalidTenantId {
+        internal static string InvalidTenantId {
             get {
                 return ResourceManager.GetString("InvalidTenantId", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A data masking rule with the id &apos;{0}&apos; already exist.
+        ///   Looks up a localized string similar to A rule that was defined on the same column already exists..
         /// </summary>
-        public static string NewDataMaskingRuleIdAlreadyExistError {
+        internal static string NewDataMaskingRuleIdAlreadyExistError {
             get {
                 return ResourceManager.GetString("NewDataMaskingRuleIdAlreadyExistError", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rule Id cannot contain &apos;&lt;,&gt;,+,=,#,*,%,&amp;,\,/,?&apos; and cannot end with a &apos;.&apos;.
-        /// </summary>
-        public static string NewDataMaskingRuleIdIsNotValid {
-            get {
-                return ResourceManager.GetString("NewDataMaskingRuleIdIsNotValid", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Cannot set auditing policy without a storage account name..
         /// </summary>
-        public static string NoStorageAccountWhenConfiguringAuditingPolicy {
+        internal static string NoStorageAccountWhenConfiguringAuditingPolicy {
             get {
                 return ResourceManager.GetString("NoStorageAccountWhenConfiguringAuditingPolicy", resourceCulture);
             }
@@ -252,7 +225,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to PHP Data Objects(PDO) Sample Code:.
         /// </summary>
-        public static string PdoTitle {
+        internal static string PdoTitle {
             get {
                 return ResourceManager.GetString("PdoTitle", resourceCulture);
             }
@@ -261,7 +234,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Error connecting to SQL Server.
         /// </summary>
-        public static string PhpConnectionError {
+        internal static string PhpConnectionError {
             get {
                 return ResourceManager.GetString("PhpConnectionError", resourceCulture);
             }
@@ -270,7 +243,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Permanently removing Azure Sql Database &apos;{0}&apos; on server &apos;{1}&apos;..
         /// </summary>
-        public static string RemoveAzureSqlDatabaseDescription {
+        internal static string RemoveAzureSqlDatabaseDescription {
             get {
                 return ResourceManager.GetString("RemoveAzureSqlDatabaseDescription", resourceCulture);
             }
@@ -279,7 +252,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Permanently removing Azure Sql Database Elastic Pool &apos;{0}&apos; on server &apos;{1}&apos;..
         /// </summary>
-        public static string RemoveAzureSqlDatabaseElasticPoolDescription {
+        internal static string RemoveAzureSqlDatabaseElasticPoolDescription {
             get {
                 return ResourceManager.GetString("RemoveAzureSqlDatabaseElasticPoolDescription", resourceCulture);
             }
@@ -288,7 +261,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Database Elastic Pool &apos;{0}&apos; on server &apos;{1}&apos;?.
         /// </summary>
-        public static string RemoveAzureSqlDatabaseElasticPoolWarning {
+        internal static string RemoveAzureSqlDatabaseElasticPoolWarning {
             get {
                 return ResourceManager.GetString("RemoveAzureSqlDatabaseElasticPoolWarning", resourceCulture);
             }
@@ -297,7 +270,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Database &apos;{0}&apos; on server &apos;{1}&apos;?.
         /// </summary>
-        public static string RemoveAzureSqlDatabaseWarning {
+        internal static string RemoveAzureSqlDatabaseWarning {
             get {
                 return ResourceManager.GetString("RemoveAzureSqlDatabaseWarning", resourceCulture);
             }
@@ -306,7 +279,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Removing Azure Sql Server Active Directory Administrator on server &apos;{0}&apos;..
         /// </summary>
-        public static string RemoveAzureSqlServerActiveDirectoryAdministratorDescription {
+        internal static string RemoveAzureSqlServerActiveDirectoryAdministratorDescription {
             get {
                 return ResourceManager.GetString("RemoveAzureSqlServerActiveDirectoryAdministratorDescription", resourceCulture);
             }
@@ -315,7 +288,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Server Active Directory Administrator on server &apos;{0}&apos;?.
         /// </summary>
-        public static string RemoveAzureSqlServerActiveDirectoryAdministratorWarning {
+        internal static string RemoveAzureSqlServerActiveDirectoryAdministratorWarning {
             get {
                 return ResourceManager.GetString("RemoveAzureSqlServerActiveDirectoryAdministratorWarning", resourceCulture);
             }
@@ -324,7 +297,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Permanently removing Azure Sql Database Server &apos;{0}&apos;..
         /// </summary>
-        public static string RemoveAzureSqlServerDescription {
+        internal static string RemoveAzureSqlServerDescription {
             get {
                 return ResourceManager.GetString("RemoveAzureSqlServerDescription", resourceCulture);
             }
@@ -333,7 +306,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Permanently removing Firewall Rule &apos;{0}&apos; for Azure Sql Database Server &apos;{1}&apos;..
         /// </summary>
-        public static string RemoveAzureSqlServerFirewallRuleDescription {
+        internal static string RemoveAzureSqlServerFirewallRuleDescription {
             get {
                 return ResourceManager.GetString("RemoveAzureSqlServerFirewallRuleDescription", resourceCulture);
             }
@@ -342,7 +315,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the Firewall Rule &apos;{0}&apos; for Azure Sql Database Server  &apos;{1}&apos;?.
         /// </summary>
-        public static string RemoveAzureSqlServerFirewallRuleWarning {
+        internal static string RemoveAzureSqlServerFirewallRuleWarning {
             get {
                 return ResourceManager.GetString("RemoveAzureSqlServerFirewallRuleWarning", resourceCulture);
             }
@@ -351,25 +324,25 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Database Server &apos;{0}&apos;?.
         /// </summary>
-        public static string RemoveAzureSqlServerWarning {
+        internal static string RemoveAzureSqlServerWarning {
             get {
                 return ResourceManager.GetString("RemoveAzureSqlServerWarning", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removing firewall rule &quot;{0}&quot; for Microsoft Azure Sql Database &quot;{1}&quot;..
+        ///   Looks up a localized string similar to Removing data masking rule for column:&quot;{0}&quot; table:&quot;{1}&quot; schema:&quot;{2}&quot;.
         /// </summary>
-        public static string RemoveDatabaseDataMaskingRuleDescription {
+        internal static string RemoveDatabaseDataMaskingRuleDescription {
             get {
                 return ResourceManager.GetString("RemoveDatabaseDataMaskingRuleDescription", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the data masking rule &quot;{0}&quot; for Microsoft Azure Sql Database &quot;{1}&quot;?.
+        ///   Looks up a localized string similar to Are you sure you want to remove the data masking rule for column:&quot;{0}&quot; table:&quot;{1}&quot; schema:&quot;{2}&quot;?.
         /// </summary>
-        public static string RemoveDatabaseDataMaskingRuleWarning {
+        internal static string RemoveDatabaseDataMaskingRuleWarning {
             get {
                 return ResourceManager.GetString("RemoveDatabaseDataMaskingRuleWarning", resourceCulture);
             }
@@ -378,7 +351,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Firewall Rule with name: &apos;{0}&apos; already exists for server &apos;{1}&apos;..
         /// </summary>
-        public static string ServerFirewallRuleNameExists {
+        internal static string ServerFirewallRuleNameExists {
             get {
                 return ResourceManager.GetString("ServerFirewallRuleNameExists", resourceCulture);
             }
@@ -387,25 +360,34 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Server with name: &apos;{0}&apos; already exists..
         /// </summary>
-        public static string ServerNameExists {
+        internal static string ServerNameExists {
             get {
                 return ResourceManager.GetString("ServerNameExists", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dynamic Data Masking is only available in the latest SQL Database Update (V12). Please upgrade to set it up on your database..
+        /// </summary>
+        internal static string ServerNotApplicableForDataMasking {
+            get {
+                return ResourceManager.GetString("ServerNotApplicableForDataMasking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Request for upgrade of server &apos;{0}&apos; already exists..
         /// </summary>
-        public static string ServerUpgradeExists {
+        internal static string ServerUpgradeExists {
             get {
                 return ResourceManager.GetString("ServerUpgradeExists", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A data masking rule with the id &apos;{0}&apos; does not exist.
+        ///   Looks up a localized string similar to A data masking rule for the column does not exist.
         /// </summary>
-        public static string SetDataMaskingRuleIdDoesNotExistError {
+        internal static string SetDataMaskingRuleIdDoesNotExistError {
             get {
                 return ResourceManager.GetString("SetDataMaskingRuleIdDoesNotExistError", resourceCulture);
             }
@@ -423,7 +405,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Confirm.
         /// </summary>
-        public static string ShouldProcessCaption {
+        internal static string ShouldProcessCaption {
             get {
                 return ResourceManager.GetString("ShouldProcessCaption", resourceCulture);
             }
@@ -432,7 +414,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to SQL Server Extension Sample Code:.
         /// </summary>
-        public static string sqlSampleTitle {
+        internal static string sqlSampleTitle {
             get {
                 return ResourceManager.GetString("sqlSampleTitle", resourceCulture);
             }
@@ -441,7 +423,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Azure Sql Database Elastic Pool name is required for this operation.
         /// </summary>
-        public static string StandaloneDatabaseActivityNotSupported {
+        internal static string StandaloneDatabaseActivityNotSupported {
             get {
                 return ResourceManager.GetString("StandaloneDatabaseActivityNotSupported", resourceCulture);
             }
@@ -450,7 +432,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Stopping upgrade for Azure Sql Database Server &apos;{0}&apos;..
         /// </summary>
-        public static string StopAzureSqlServerUpgradeDescription {
+        internal static string StopAzureSqlServerUpgradeDescription {
             get {
                 return ResourceManager.GetString("StopAzureSqlServerUpgradeDescription", resourceCulture);
             }
@@ -459,7 +441,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to stop the upgrade for Azure Sql Database Server &apos;{0}&apos;?.
         /// </summary>
-        public static string StopAzureSqlServerUpgradeWarning {
+        internal static string StopAzureSqlServerUpgradeWarning {
             get {
                 return ResourceManager.GetString("StopAzureSqlServerUpgradeWarning", resourceCulture);
             }
@@ -468,7 +450,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Cannot find a storage account with the name &apos;{0}&apos;. It either does not exist, associated with a different subscription or you do not have the appropriate credentials to access it..
         /// </summary>
-        public static string StorageAccountNotFound {
+        internal static string StorageAccountNotFound {
             get {
                 return ResourceManager.GetString("StorageAccountNotFound", resourceCulture);
             }
@@ -477,7 +459,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Cannot use a server&apos;s auditing policy before it is configured..
         /// </summary>
-        public static string UseServerWithoutStorageAccount {
+        internal static string UseServerWithoutStorageAccount {
             get {
                 return ResourceManager.GetString("UseServerWithoutStorageAccount", resourceCulture);
             }

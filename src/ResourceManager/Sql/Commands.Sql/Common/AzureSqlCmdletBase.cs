@@ -86,6 +86,16 @@ namespace Microsoft.Azure.Commands.Sql.Common
         protected abstract A InitModelAdapter(AzureSubscription subscription);
 
         /// <summary>
+        /// Transforms the given model object to be an object that is written out
+        /// </summary>
+        /// <param name="model">The about to be written model object</param>
+        /// <returns>The prepared object to be written out</returns>
+        protected virtual object TransformModelToOutputObject(M model)
+        {
+            return model;
+        }
+
+        /// <summary>
         /// Executes the cmdlet
         /// </summary>
         protected override void ProcessRecord()
@@ -99,14 +109,14 @@ namespace Microsoft.Azure.Commands.Sql.Common
             {
                 if (WriteResult())
                 {
-                    this.WriteObject(responseModel, true);
+                    this.WriteObject(TransformModelToOutputObject(responseModel), true);
                 }
             }
             else
             {
                 if (WriteResult())
                 {
-                    this.WriteObject(updatedModel);
+                    this.WriteObject(TransformModelToOutputObject(updatedModel));
                 }
             }
         }
