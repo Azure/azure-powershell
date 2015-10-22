@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Profile
 
                 if (string.IsNullOrWhiteSpace(TenantId))
                 {
-                    WriteWarning(
+                    WriteVerbose(
                     string.Format(
                         Resources.CurrentTenantInUse,
                         tenantId));

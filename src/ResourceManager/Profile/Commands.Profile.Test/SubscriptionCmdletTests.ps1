@@ -52,6 +52,7 @@ function Test-PipingWithContext
 	$name = $firstSubscription.SubscriptionName
 	$nameContext = Get-AzureRmSubscription -SubscriptionName $name | Set-AzureRmContext
 	$idContext = Get-AzureRmSubscription -SubscriptionId $id | Set-AzureRmContext
+	$contextByName = Set-AzureRmContext -SubscriptionName $name
 	Assert-True { $nameContext -ne $null }
 	Assert-True { $nameContext.Subscription -ne $null }
 	Assert-True { $nameContext.Subscription.SubscriptionId -ne $null }
@@ -62,6 +63,11 @@ function Test-PipingWithContext
 	Assert-True { $idContext.Subscription.SubscriptionName -ne $null }
 	Assert-AreEqual $idContext.Subscription.SubscriptionId  $nameContext.Subscription.SubscriptionId
 	Assert-AreEqual $idContext.Subscription.SubscriptionName  $nameContext.Subscription.SubscriptionName
+	Assert-True { $contextByName -ne $null }
+	Assert-True { $contextByName.Subscription -ne $null }
+	Assert-True { $contextByName.Subscription.SubscriptionId -ne $null }
+	Assert-True { $contextByName.Subscription.SubscriptionName -ne $null }
+	Assert-AreEqual $contextByName.Subscription.SubscriptionName  $nameContext.Subscription.SubscriptionName
 }
 
 function Test-SetAzureRmContextEndToEnd
