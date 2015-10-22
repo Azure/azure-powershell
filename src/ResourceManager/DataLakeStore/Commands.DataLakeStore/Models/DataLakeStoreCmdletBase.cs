@@ -17,7 +17,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
     /// <summary>
-    ///     The base class for all Microsoft Azure DataLakeStore Management cmdlets
+    /// The base class for all Microsoft Azure DataLakeStore Management cmdlets
     /// </summary>
     public abstract class DataLakeStoreCmdletBase : AzureRMCmdlet
     {

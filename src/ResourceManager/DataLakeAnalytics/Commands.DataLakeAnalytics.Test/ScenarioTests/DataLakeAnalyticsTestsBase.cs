@@ -12,6 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.DataLake.AnalyticsCatalog;
+using Microsoft.Azure.Management.DataLake.AnalyticsJob;
+
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
 {
     using Microsoft.Azure;
@@ -38,6 +41,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         private EnvironmentSetupHelper helper;
 
         private DataLakeAnalyticsManagementClient dataLakeAnalyticsManagementClient;
+        private DataLakeAnalyticsJobManagementClient dataLakeAnalyticsJobManagementClient;
+        private DataLakeAnalyticsCatalogManagementClient dataLakeAnalyticsCatalogManagementClient;
         private DataLakeStoreManagementClient dataLakeStoreManagementClient;
         private ResourceManagementClient resourceManagementClient;
 
@@ -45,6 +50,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         {
             helper = new EnvironmentSetupHelper();
             dataLakeAnalyticsManagementClient = GetDataLakeAnalyticsManagementClient();
+            dataLakeAnalyticsJobManagementClient = GetDataLakeAnalyticsJobManagementClient();
+            dataLakeAnalyticsCatalogManagementClient = GetDataLakeAnalyticsCatalogManagementClient();
             resourceManagementClient = GetResourceManagementClient();
             dataLakeStoreManagementClient = GetDataLakeStoreManagementClient();
             this.resourceGroupName = TestUtilities.GenerateName("abarg1");
@@ -54,7 +61,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
 
         protected void SetupManagementClients()
         {
-            helper.SetupManagementClients(dataLakeAnalyticsManagementClient, resourceManagementClient, dataLakeStoreManagementClient);
+            helper.SetupManagementClients(dataLakeAnalyticsManagementClient, dataLakeAnalyticsJobManagementClient,
+                dataLakeAnalyticsCatalogManagementClient,
+                resourceManagementClient, dataLakeStoreManagementClient);
         }
 
         protected void RunPowerShellTest(params string[] scripts)
@@ -62,23 +71,17 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
             using (UndoContext context = UndoContext.Current)
             {
                 context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
-                try
-                {
-                    SetupManagementClients();
+                SetupManagementClients();
 
-                    // Create the resource group
-                    this.TryRegisterSubscriptionForResource();
-                    this.TryCreateResourceGroup(this.resourceGroupName, resourceGroupLocation);
-                    this.TryCreateDataLakeAccount(this.resourceGroupName, this.dataLakeAccountName, resourceGroupLocation);
-                    helper.SetupEnvironment(AzureModule.AzureServiceManagement);
-                    helper.SetupModules(AzureModule.AzureServiceManagement, "ScenarioTests\\" + this.GetType().Name + ".ps1");
+                // Create the resource group
+                this.TryRegisterSubscriptionForResource();
+                this.TryCreateResourceGroup(this.resourceGroupName, resourceGroupLocation);
+                this.TryCreateDataLakeStoreAccount(this.resourceGroupName, this.dataLakeAccountName, resourceGroupLocation);
+                helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                helper.SetupModules(AzureModule.AzureResourceManager, "ScenarioTests\\" + this.GetType().Name + ".ps1",
+                    helper.RMProfileModule, helper.GetRMModulePath(@"AzureRM.DataLakeAnalytics.psd1"));
 
-                    helper.RunPowerShellTest(scripts);
-                }
-                finally
-                {
-                    context.UndoAll();
-                }
+                helper.RunPowerShellTest(scripts);
             }
         }
 
@@ -86,6 +89,16 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         protected DataLakeAnalyticsManagementClient GetDataLakeAnalyticsManagementClient()
         {
             return TestBase.GetServiceClient<DataLakeAnalyticsManagementClient>(new CSMTestEnvironmentFactory());
+        }
+
+        protected DataLakeAnalyticsJobManagementClient GetDataLakeAnalyticsJobManagementClient()
+        {
+            return GetDataLakeAnalyticsJobOrCatalogServiceClient<DataLakeAnalyticsJobManagementClient>(new CSMTestEnvironmentFactory());
+        }
+
+        protected DataLakeAnalyticsCatalogManagementClient GetDataLakeAnalyticsCatalogManagementClient()
+        {
+            return GetDataLakeAnalyticsJobOrCatalogServiceClient<DataLakeAnalyticsCatalogManagementClient>(new CSMTestEnvironmentFactory());
         }
 
         protected DataLakeStoreManagementClient GetDataLakeStoreManagementClient()
@@ -107,7 +120,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         /// <typeparam name="T"></typeparam>
         /// <param name="factory"></param>
         /// <returns></returns>
-        private static T GetDataLakeAnalyticsJobServiceClient<T>(
+        private static T GetDataLakeAnalyticsJobOrCatalogServiceClient<T>(
             TestEnvironmentFactory factory)
             where T : class
         {
@@ -123,7 +136,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
                     { 
                         currentEnvironment.Credentials as SubscriptionCloudCredentials, 
                         // Have to remove the https:// since this is a suffix
-                        currentEnvironment.Endpoints.KonaJobAndCatalogServiceUri.OriginalString.Replace("https://","") }) as T;
+                        currentEnvironment.Endpoints.DataLakeAnalyticsJobAndCatalogServiceUri.OriginalString.Replace("https://","") }) as T;
 
             return AddMockHandler<T>(ref client);
         }
@@ -153,21 +166,21 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
             ThrowIfTrue(!resourceGroupName.Equals(newlyCreatedGroup.ResourceGroup.Name), string.Format("resourceGroupName is not equal to {0}", resourceGroupName));
         }
 
-        private string TryCreateDataLakeAccount(string resourceGroupName, string dataLakeAccountName, string location)
+        private string TryCreateDataLakeStoreAccount(string resourceGroupName, string dataLakeAccountName, string location)
         {
             var dataLakeCreateParameters = new DataLakeStoreAccountCreateOrUpdateParameters
             {
                 DataLakeStoreAccount = new DataLakeStoreAccount
                 {
                     Location = location,
-                    Name = dataLakeAccountName,
+                    Name = dataLakeAccountName
                 }
             };
 
             var createResponse = dataLakeStoreManagementClient.DataLakeStoreAccount.Create(resourceGroupName, dataLakeCreateParameters);
-            ThrowIfTrue(createResponse.Status != OperationStatus.Succeeded, "dataLakeManagementClient.Account.Create did not result in a fully provisioned account");
+            ThrowIfTrue(createResponse.Status != OperationStatus.Succeeded, string.Format("Failed to provision a DataLake Store account in the success state. Actual State: {0}", createResponse.Status));
             var dataLakeAccountSuffix = dataLakeStoreManagementClient.DataLakeStoreAccount.Get(resourceGroupName, dataLakeAccountName).DataLakeStoreAccount.Properties.Endpoint.Replace(dataLakeAccountName + ".", "");
-            ThrowIfTrue(string.IsNullOrEmpty(dataLakeAccountSuffix), "dataLakeManagementClient.Account.Create did not properly populate the host property");
+            ThrowIfTrue(string.IsNullOrEmpty(dataLakeAccountSuffix), "dataLakeStoreManagementClient.DataLakeStoreAccount.Create did not properly populate the suffix property");
             return dataLakeAccountSuffix;
 
         }

@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNegativeDataLakeAnalyticsAccount()
         {
-            RunPowerShellTest(string.Format("Test-NegtaiveDataLakeAnalyticsAccount -resourceGroupName {0} -accountName {1} -dataLakeAccountName {2} -location '{3}'", this.resourceGroupName, this.dataLakeAnalyticsAccountName, this.dataLakeAccountName, DataLakeAnalyticsTestsBase.resourceGroupLocation));
+            RunPowerShellTest(string.Format("Test-NegativeDataLakeAnalyticsAccount -resourceGroupName {0} -accountName {1} -dataLakeAccountName {2} -location '{3}'", this.resourceGroupName, this.dataLakeAnalyticsAccountName, this.dataLakeAccountName, DataLakeAnalyticsTestsBase.resourceGroupLocation));
         }
 
         [Fact]

@@ -16,6 +16,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
+using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Management.DataLake.Store.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
@@ -39,7 +40,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 "A string,string dictionary of tags associated with this account that should replace the current set of tags"
             )]
         [ValidateNotNull]
-        public Hashtable Tags { get; set; }
+        public Hashtable[] Tags { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
             HelpMessage = "Name of resource group under which you want to update the account.")]
@@ -57,20 +58,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 DefaultGroup = currentAccount.Properties.DefaultGroup;
             }
 
-            var tags = new Dictionary<string, string>();
-            if (Tags != null && Tags.Count > 0)
+            if (Tags == null || Tags.Length == 0)
             {
-                foreach (string entry in Tags.Keys)
-                {
-                    tags.Add(entry, (string) Tags[entry]);
-                }
-            }
-            else
-            {
-                tags = (Dictionary<string, string>) currentAccount.Tags;
+                Tags = TagsConversionHelper.CreateTagHashtable(currentAccount.Tags);
             }
 
-            WriteObject(DataLakeStoreClient.CreateOrUpdateAccount(ResourceGroupName, Name, DefaultGroup, location, tags));
+            WriteObject(DataLakeStoreClient.CreateOrUpdateAccount(ResourceGroupName, Name, DefaultGroup, location, Tags));
         }
     }
 }

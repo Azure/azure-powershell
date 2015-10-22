@@ -24,7 +24,7 @@ using Microsoft.PowerShell.Commands;
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
     /// <summary>
-    ///     The base class for all Microsoft Azure DataLakeStoreFileSystem Management cmdlets
+    /// The base class for all Microsoft Azure DataLakeStoreFileSystem Management cmdlets
     /// </summary>
     public abstract class DataLakeStoreFileSystemCmdletBase : AzureRMCmdlet
     {
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         }
 
         /// <summary>
-        ///     Cmdlet begin process
+        /// Cmdlet begin process
         /// </summary>
         protected override void BeginProcessing()
         {
@@ -51,12 +51,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         }
 
         /// <summary>
-        ///     stop processing
-        ///     time-consuming operation should work with ShouldForceQuit
+        /// stop processing
+        /// time-consuming operation should work with ShouldForceQuit
         /// </summary>
         protected override void StopProcessing()
         {
-            //ctrl + c and etc
+            // ctrl + c and etc
             cancellationTokenSource.Cancel();
             base.StopProcessing();
         }
@@ -64,20 +64,20 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         #region cmdlet helpers from the FilesystemProvider
 
         /// <summary>
-        ///     Converts the stream type string into an Encoding
+        /// Converts the stream type string into an Encoding
         /// </summary>
         /// <param name="content">The content.</param>
         /// <param name="type">
-        ///     This is a string representation of the encoding. It can be
-        ///     "string", "unicode", "bigendianunicode", "ascii", "utf7", or "utf8"
-        ///     Note, a ToLowerInvariant is done to the type before comparison is made.
+        /// This is a string representation of the encoding. It can be
+        /// "string", "unicode", "bigendianunicode", "ascii", "utf7", or "utf8"
+        /// Note, a ToLowerInvariant is done to the type before comparison is made.
         /// </param>
         /// <returns>
-        ///     The encoding that was represented by the string
+        /// The encoding that was represented by the string
         /// </returns>
         /// <throws>
-        ///     ArgumentException if type is null, empty, or does not represent one
-        ///     of the known encoding types.
+        /// ArgumentException if type is null, empty, or does not represent one
+        /// of the known encoding types.
         /// </throws>
         private static byte[] GetBytes(string content, FileSystemCmdletProviderEncoding type)
         {
@@ -111,8 +111,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         }
 
         /// <summary>
-        ///     Gets the Byte Encoding status of the StreamType parameter.  Returns true
-        ///     if the stream was opened with "Byte" encoding, false otherwise.
+        /// Gets the Byte Encoding status of the StreamType parameter.  Returns true
+        /// if the stream was opened with "Byte" encoding, false otherwise.
         /// </summary>
         internal static bool UsingByteEncoding(FileSystemCmdletProviderEncoding encoding)
         {
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         }
 
         /// <summary>
-        ///     Cancellation Token Source
+        /// Cancellation Token Source
         /// </summary>
         private readonly CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
 

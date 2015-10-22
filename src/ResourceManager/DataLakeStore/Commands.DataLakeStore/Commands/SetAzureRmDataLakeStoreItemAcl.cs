@@ -49,22 +49,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
         protected override void ProcessRecord()
         {
-            if (!Force.IsPresent)
-            {
-                ConfirmAction(
-                    Force.IsPresent,
-                    string.Format(Resources.SettingDataLakeStoreItemAcl, Path.FullyQualifiedPath),
-                    string.Format(Resources.SetDataLakeStoreItemAcl, Path.FullyQualifiedPath),
-                    Path.FullyQualifiedPath,
-                    () =>
-                        DataLakeStoreFileSystemClient.SetAcl(Path.Path, Account,
-                            Acl.GetAclSpec()));
-            }
-            else
-            {
-                DataLakeStoreFileSystemClient.SetAcl(Path.Path, Account,
-                    Acl.GetAclSpec());
-            }
+            ConfirmAction(
+                Force.IsPresent,
+                string.Format(Resources.SettingDataLakeStoreItemAcl, Path.FullyQualifiedPath),
+                string.Format(Resources.SetDataLakeStoreItemAcl, Path.FullyQualifiedPath),
+                Path.FullyQualifiedPath,
+                () =>
+                    DataLakeStoreFileSystemClient.SetAcl(Path.Path, Account,
+                        Acl.GetAclSpec()));
+
         }
     }
 }

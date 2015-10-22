@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Management.Automation;
 using Hyak.Common;
 using Microsoft.Azure.Commands.DataLakeStore.Models;

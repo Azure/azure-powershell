@@ -17,12 +17,12 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
     /// <summary>
-    ///     A Static class containing global members for these cmdlets.
+    /// A Static class containing global members for these cmdlets.
     /// </summary>
     public static class GlobalMembers
     {
         /// <summary>
-        ///     The binary file extension list
+        /// The binary file extension list
         /// </summary>
         public static readonly HashSet<string> BinaryFileExtension = new HashSet<string>
         {

@@ -63,8 +63,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
                     this.TryRegisterSubscriptionForResource();
                     this.TryCreateResourceGroup(this.resourceGroupName, DataLakeStoreTestsBase.resourceGroupLocation);
 
-                    helper.SetupEnvironment(AzureModule.AzureServiceManagement);
-                    helper.SetupModules(AzureModule.AzureServiceManagement, "ScenarioTests\\" + this.GetType().Name + ".ps1");
+                    helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                    helper.SetupModules(AzureModule.AzureResourceManager, "ScenarioTests\\" + this.GetType().Name + ".ps1");
 
                     helper.RunPowerShellTest(scripts);
                 }

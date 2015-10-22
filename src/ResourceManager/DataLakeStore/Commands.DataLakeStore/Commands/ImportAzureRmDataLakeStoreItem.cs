@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             }
             else
             {
-                throw new CloudException(string.Format(Resources.FileOrFolderDoesNotExist, powerShellSourcePath));
+                throw new FileNotFoundException(string.Format(Resources.FileOrFolderDoesNotExist, powerShellSourcePath));
             }
 
 

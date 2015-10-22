@@ -13,7 +13,7 @@ function Test-DataLakeAnalyticsAccount
 	)
     
     # Creating Account
-    $accountCreated = New-AzureDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeAccountName $dataLakeAccountName
+    $accountCreated = New-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
     
     Assert-AreEqual $accountName $accountCreated.Name
     Assert-AreEqual $location $accountCreated.Location
@@ -24,7 +24,7 @@ function Test-DataLakeAnalyticsAccount
     for ($i = 0; $i -le 60; $i++)
     {
         [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
-		[array]$accountGet = Get-AzureDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
+		[array]$accountGet = Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
         if ($accountGet[0].Properties.ProvisioningState -like "Succeeded")
         {
             Assert-AreEqual $accountName $accountGet[0].Name
@@ -41,7 +41,7 @@ function Test-DataLakeAnalyticsAccount
 
     # Updating Account
 	$tagsToUpdate = @{"TestTag"="TestUpdate"}
-    $accountUpdated = Set-AzureDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Tags $tagsToUpdate
+    $accountUpdated = Set-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Tags $tagsToUpdate
     
     Assert-AreEqual $accountName $accountUpdated.Name
     Assert-AreEqual $location $accountUpdated.Location
@@ -52,7 +52,7 @@ function Test-DataLakeAnalyticsAccount
 	Assert-NotNull $accountUpdated.Tags["TestTag"] "The updated tag 'TestTag' does not exist"
 
     # List all accounts in resource group
-    [array]$accountsInResourceGroup = Get-AzureDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName
+    [array]$accountsInResourceGroup = Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName
     Assert-True {$accountsInResourceGroup.Count -ge 1}
     
     $found = 0
@@ -71,7 +71,7 @@ function Test-DataLakeAnalyticsAccount
     Assert-True {$found -eq 1} "Account created earlier is not found when listing all in resource group: $resourceGroupName."
 
     # List all dataLakeAnalytics accounts in subscription
-    [array]$accountsInSubscription = Get-AzureDataLakeAnalyticsAccount
+    [array]$accountsInSubscription = Get-AzureRmDataLakeAnalyticsAccount
     Assert-True {$accountsInSubscription.Count -ge 1}
     Assert-True {$accountsInSubscription.Count -ge $accountsInResourceGroup.Count}
     
@@ -91,10 +91,10 @@ function Test-DataLakeAnalyticsAccount
     Assert-True {$found -eq 1} "Account created earlier is not found when listing all in subscription."
 
     # Delete dataLakeAnalytics account
-    Assert-True {Remove-AzureDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
+    Assert-True {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
 
 	# Verify that it is gone by trying to get it again
-	Assert-Throws {Get-AzureDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName} "Remove account failed. It can still be retrieved"
+	Assert-Throws {Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName} "Remove account failed. It can still be retrieved"
 }
 
 
@@ -113,7 +113,7 @@ function Test-DataLakeAnalyticsJob
 	)
 	
     # Creating Account
-    $accountCreated = New-AzureDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeAccountName $dataLakeAccountName
+    $accountCreated = New-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
     
     Assert-AreEqual $accountName $accountCreated.Name
     Assert-AreEqual $location $accountCreated.Location
@@ -124,7 +124,7 @@ function Test-DataLakeAnalyticsJob
     for ($i = 0; $i -le 60; $i++)
     {
         [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
-		[array]$accountGet = Get-AzureDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
+		[array]$accountGet = Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
         if ($accountGet[0].Properties.ProvisioningState -like "Succeeded")
         {
             Assert-AreEqual $accountName $accountGet[0].Name
@@ -139,25 +139,25 @@ function Test-DataLakeAnalyticsJob
     # For now, all Job related tests just ensure that they have a valid response and do not throw.
 
 	# create the properties
-	$sqlipProperties = New-AzureDataLakeAnalyticsSqlipJobProperties -Script "My fake test script"
-	$jobInfo = Submit-AzureDataLakeAnalyticsJob -ResourceGroupName $resourceGroupName -AccountName $accountName -Name "TestJob" -Properties $sqlipProperties
+	$sqlipProperties = New-AzureRmDataLakeAnalyticsSqlipJobProperties -Script "My fake test script"
+	$jobInfo = Submit-AzureRmDataLakeAnalyticsJob -ResourceGroupName $resourceGroupName -AccountName $accountName -Name "TestJob" -Properties $sqlipProperties
 	Assert-NotNull {$jobInfo}
 
 	# "cancel" the fake job right away
-	Assert-NotNull {Stop-AzureDataLakeAnalyticsJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobIdentity $jobInfo.Id}
+	Assert-NotNull {Stop-AzureRmDataLakeAnalyticsJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobIdentity $jobInfo.Id}
 
 	# Get the specific job, and the list of all jobs in the resource group
-	Assert-NotNull {Get-AzureDataLakeAnalyticsJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobIdentity $jobInfo.Id}
-	Assert-NotNull {Get-AzureDataLakeAnalyticsJob -ResourceGroupName $resourceGroupName -AccountName $accountName}
+	Assert-NotNull {Get-AzureRmDataLakeAnalyticsJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobIdentity $jobInfo.Id}
+	Assert-NotNull {Get-AzureRmDataLakeAnalyticsJob -ResourceGroupName $resourceGroupName -AccountName $accountName}
 
 	# Get debug data associated with the job
-	Assert-NotNull {Get-AzureDataLakeAnalyticsJobDebugInfo -ResourceGroupName $resourceGroupName -AccountName $accountName -JobIdentity $jobInfo.Id}
+	Assert-NotNull {Get-AzureRmDataLakeAnalyticsJobDebugInfo -ResourceGroupName $resourceGroupName -AccountName $accountName -JobIdentity $jobInfo.Id}
 
     # Delete the DataLakeAnalytics account
-    Assert-True {Remove-AzureDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
+    Assert-True {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
 
 	# Verify that it is gone by trying to get it again
-	Assert-Throws {Get-AzureDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName} "Remove account failed. It can still be retrieved"
+	Assert-Throws {Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName} "Remove account failed. It can still be retrieved"
 }
 
 
@@ -177,7 +177,7 @@ function Test-NegativeDataLakeAnalyticsAccount
 	)
 	
     # Creating Account
-    $accountCreated = New-AzureDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeAccountName $dataLakeAccountName
+    $accountCreated = New-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
     
     Assert-AreEqual $accountName $accountCreated.Name
     Assert-AreEqual $location $accountCreated.Location
@@ -188,7 +188,7 @@ function Test-NegativeDataLakeAnalyticsAccount
     for ($i = 0; $i -le 60; $i++)
     {
         [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
-		[array]$accountGet = Get-AzureDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
+		[array]$accountGet = Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
         if ($accountGet[0].Properties.ProvisioningState -like "Succeeded")
         {
             Assert-AreEqual $accountName $accountGet[0].Name
@@ -201,20 +201,20 @@ function Test-NegativeDataLakeAnalyticsAccount
     }
 
     # attempt to recreate the already created account
-	Assert-Throws {New-AzureDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeAccountName $dataLakeAccountName}
+	Assert-Throws {New-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName}
 
 	# attempt to update a non-existent account
 	$tagsToUpdate = @{"TestTag"="TestUpdate"}
-    Assert-Throws {Set-AzureDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $fakeaccountName -Tags $tagsToUpdate}
+    Assert-Throws {Set-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $fakeaccountName -Tags $tagsToUpdate}
 
 	# attempt to get a non-existent account
-	Assert-Throws {Get-AzureDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $fakeaccountName}
+	Assert-Throws {Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $fakeaccountName}
 
     # Delete dataLakeAnalytics account
-    Assert-True {Remove-AzureDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
+    Assert-True {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
 
 	# Verify that it is gone by trying to get it again
-	Assert-Throws {Get-AzureDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName} "Remove account failed. It can still be retrieved"
+	Assert-Throws {Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName} "Remove account failed. It can still be retrieved"
 }
 
 
@@ -233,7 +233,7 @@ function Test-NegativeDataLakeAnalyticsJob
 	)
 	
     # Creating Account
-    $accountCreated = New-AzureDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeAccountName $dataLakeAccountName
+    $accountCreated = New-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location -DefaultDataLakeStore $dataLakeAccountName
     
     Assert-AreEqual $accountName $accountCreated.Name
     Assert-AreEqual $location $accountCreated.Location
@@ -244,7 +244,7 @@ function Test-NegativeDataLakeAnalyticsJob
     for ($i = 0; $i -le 60; $i++)
     {
         [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
-		[array]$accountGet = Get-AzureDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
+		[array]$accountGet = Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName
         if ($accountGet[0].Properties.ProvisioningState -like "Succeeded")
         {
             Assert-AreEqual $accountName $accountGet[0].Name
@@ -257,17 +257,17 @@ function Test-NegativeDataLakeAnalyticsJob
     }
 
 	# attempt to "cancel" a non-existent job
-	Assert-Throws {Stop-AzureDataLakeAnalyticsJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobIdentity [Guid]::Empty}
+	Assert-Throws {Stop-AzureRmDataLakeAnalyticsJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobIdentity [Guid]::Empty}
 
 	# Attempt to get a job that doesn't exist
-	Assert-Throws {Get-AzureDataLakeAnalyticsJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobIdentity [Guid]::Empty}
+	Assert-Throws {Get-AzureRmDataLakeAnalyticsJob -ResourceGroupName $resourceGroupName -AccountName $accountName -JobIdentity [Guid]::Empty}
 
 	# Attempt to Get debug data for a non-existent job
-	Assert-Throws {Get-AzureDataLakeAnalyticsJobDebugInfo -ResourceGroupName $resourceGroupName -AccountName $accountName -JobIdentity [Guid]::Empty}
+	Assert-Throws {Get-AzureRmDataLakeAnalyticsJobDebugInfo -ResourceGroupName $resourceGroupName -AccountName $accountName -JobIdentity [Guid]::Empty}
 
     # Delete the DataLakeAnalytics account
-    Assert-True {Remove-AzureDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
+    Assert-True {Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
 
 	# Verify that it is gone by trying to get it again
-	Assert-Throws {Get-AzureDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName} "Remove account failed. It can still be retrieved"
+	Assert-Throws {Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $accountName} "Remove account failed. It can still be retrieved"
 }

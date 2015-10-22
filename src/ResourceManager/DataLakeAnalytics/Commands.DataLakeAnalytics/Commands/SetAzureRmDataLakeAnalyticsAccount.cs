@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 "A string,string dictionary of tags associated with this account that should replace the current set of tags"
             )]
         [ValidateNotNull]
-        public Hashtable Tags { get; set; }
+        public Hashtable[] Tags { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
             HelpMessage = "Name of resource group under which you want to update the account.")]
@@ -57,17 +57,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 };
             }
 
-            var tags = new Dictionary<string, string>();
-            if (Tags != null && Tags.Count > 0)
-            {
-                foreach (string entry in Tags.Keys)
-                {
-                    tags.Add(entry, (string) Tags[entry]);
-                }
-
-                WriteObject(DataLakeAnalyticsClient.CreateOrUpdateAccount(ResourceGroupName, Name, null, defaultAccount,
-                    null, null, tags));
-            }
+            WriteObject(DataLakeAnalyticsClient.CreateOrUpdateAccount(ResourceGroupName, Name, null, defaultAccount,
+                    null, null, Tags));
         }
     }
 }

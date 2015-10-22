@@ -12,13 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Hyak.Common;
 using Microsoft.Azure.Commands.DataLakeStore.Properties;
 
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
     /// <summary>
-    ///     The object that is passed in and parsed for all Data Lake paths.
+    /// The object that is passed in and parsed for all Data Lake paths.
     /// </summary>
     public class DataLakeStorePathInstance
     {
@@ -34,7 +35,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             // all paths must start with a slash and be account relative.
             if (!path.StartsWith("/"))
             {
-                throw new CloudException(string.Format(Resources.InvalidPath, path));
+                throw new ArgumentException(string.Format(Resources.InvalidPath, path));
             }
 
             return new DataLakeStorePathInstance

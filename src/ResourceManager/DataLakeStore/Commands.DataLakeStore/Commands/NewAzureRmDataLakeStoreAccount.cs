@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
             HelpMessage = "A string,string dictionary of tags associated with this account")]
         [ValidateNotNull]
-        public Hashtable Tags { get; set; }
+        public Hashtable[] Tags { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 }
             }
 
-            WriteObject(DataLakeStoreClient.CreateOrUpdateAccount(ResourceGroupName, Name, DefaultGroup, Location));
+            WriteObject(DataLakeStoreClient.CreateOrUpdateAccount(ResourceGroupName, Name, DefaultGroup, Location, Tags));
         }
     }
 }

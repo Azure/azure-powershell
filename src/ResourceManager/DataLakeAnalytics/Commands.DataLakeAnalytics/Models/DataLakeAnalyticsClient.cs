@@ -13,9 +13,11 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Hyak.Common;
+using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Common.Authentication.Properties;
@@ -70,12 +72,14 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             DataLakeStoreAccount defaultDataLakeStoreAccount = null,
             IList<DataLakeStoreAccount> additionalDataLakeStoreAccounts = null,
             IList<StorageAccount> additionalStorageAccounts = null,
-            IDictionary<string, string> customTags = null)
+            Hashtable[] customTags = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
             {
                 resourceGroupName = GetResourceGroupByAccountName(accountName);
             }
+
+            var tags = TagsConversionHelper.CreateTagDictionary(customTags, true);
 
             var parameters = new DataLakeAnalyticsAccountCreateOrUpdateParameters
             {
@@ -83,7 +87,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 {
                     Name = accountName,
                     Location = location,
-                    Tags = customTags ?? new Dictionary<string, string>()
+                    Tags = tags ?? new Dictionary<string, string>()
                 }
             };
 

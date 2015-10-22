@@ -17,7 +17,7 @@ using System.Text;
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
     /// <summary>
-    ///     The object that is passed in and parsed for file contents.
+    /// The object that is passed in and parsed for file contents.
     /// </summary>
     public class StringOrByteArrayInstance
     {

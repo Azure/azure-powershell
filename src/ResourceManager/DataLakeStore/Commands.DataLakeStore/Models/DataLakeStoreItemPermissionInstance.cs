@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.DataLakeStore.Properties;
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
     /// <summary>
-    ///     The object that is used to manage permissions for files and folders.
+    /// The object that is used to manage permissions for files and folders.
     /// </summary>
     public class DataLakeStoreItemPermissionInstance
     {
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                     // confirm the string is valid
                     if (!permissions.ToLowerInvariant().All(characters => "rwx-".Contains(characters)))
                     {
-                        throw new CloudException(string.Format(Resources.InvalidPermissionString, permissions));
+                        throw new ArgumentException(string.Format(Resources.InvalidPermissionString, permissions));
                     }
 
                     // convert rwxrwxrwx into octal
@@ -76,15 +76,18 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 }
                 else
                 {
-                    throw new CloudException(string.Format(Resources.InvalidPermissionString, permissions));
+                    throw new ArgumentException(string.Format(Resources.InvalidPermissionString, permissions));
                 }
 
                 // Now do the conversion into a short
+                const short minSize = 0;
+                const short maxSize = 777;
+
                 var parsedShort = short.Parse(convertedPermissions);
 
-                if (parsedShort < 0 || parsedShort > 777)
+                if (parsedShort < minSize || parsedShort > maxSize)
                 {
-                    throw new CloudException(string.Format(Resources.InvalidPermissionString, permissions));
+                    throw new ArgumentException(string.Format(Resources.InvalidPermissionString, permissions));
                 }
 
                 // Create the friendly permissions list
@@ -111,9 +114,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                     Permissions = friendlyPermissions
                 };
             }
-            catch (Exception)
+            catch
             {
-                throw new CloudException(string.Format(Resources.InvalidPermissionString, permissions));
+                throw new ArgumentException(string.Format(Resources.InvalidPermissionString, permissions));
             }
         }
 
@@ -138,7 +141,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 case DataLakeStoreEnums.Permission.WriteExecute:
                     return "-wx";
                 default:
-                    throw new CloudException(string.Format(Resources.InvalidPermissionType, permission));
+                    throw new ArgumentException(string.Format(Resources.InvalidPermissionType, permission));
             }
         }
     }

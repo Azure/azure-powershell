@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
             HelpMessage = "A string,string dictionary of tags associated with this account")]
         [ValidateNotNull]
-        public Hashtable Tags { get; set; }
+        public Hashtable[] Tags { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -87,17 +87,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 Name = DefaultDataLakeStore
             };
 
-            var tags = new Dictionary<string, string>();
-            if (Tags != null && Tags.Count > 0)
-            {
-                foreach (string entry in Tags.Keys)
-                {
-                    tags.Add(entry, (string) Tags[entry]);
-                }
-            }
-
             WriteObject(DataLakeAnalyticsClient.CreateOrUpdateAccount(ResourceGroupName, Name, Location, defaultStorage,
-                customTags: tags));
+                customTags: Tags));
         }
     }
 }

@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         private const decimal MaximumBytesPerDownloadRequest = 32*1024*1024; //32MB
 
         /// <summary>
-        ///     The lock object
+        /// The lock object
         /// </summary>
         private static readonly object ConsoleOutputLock = new object();
 
@@ -703,16 +703,16 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         #region private helpers
 
         /// <summary>
-        ///     Gets the file count in directory.
+        /// Gets the file count in directory.
         /// </summary>
         /// <param name="directory">The directory.</param>
         /// <param name="recursive">
-        ///     if set to <c>true</c> gets the count of all files underneath a directory and all
-        ///     subdirectories.
+        /// if set to <c>true</c> gets the count of all files underneath a directory and all
+        /// subdirectories.
         /// </param>
         /// <param name="byteCount">The byte count.</param>
         /// <returns>
-        ///     the total number of files in a directory
+        /// the total number of files in a directory
         /// </returns>
         private int GetFileCountInDirectory(string directory, bool recursive)
         {
@@ -761,7 +761,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         }
 
         /// <summary>
-        ///     Tracks the upload progress in the PowerShell console.
+        /// Tracks the upload progress in the PowerShell console.
         /// </summary>
         /// <param name="uploadTask">The task that tracks the upload.</param>
         /// <param name="uploadProgress">The upload progress that will be displayed in the console.</param>
@@ -852,7 +852,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         }
 
         /// <summary>
-        ///     Updates the progress in a friendly way in the event that we are not running in PowerShell
+        /// Updates the progress in a friendly way in the event that we are not running in PowerShell
         /// </summary>
         /// <param name="progress">The progress record to use when sending out the update.</param>
         /// <param name="cmdletRunningRequest">The command running the request, if any</param>

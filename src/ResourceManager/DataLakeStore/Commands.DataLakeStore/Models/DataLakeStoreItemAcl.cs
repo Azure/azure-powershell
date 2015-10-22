@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.DataLake.StoreFileSystem.Models;
 namespace Microsoft.Azure.Commands.DataLakeStore.Models
 {
     /// <summary>
-    ///     The object that is used to manage permissions for files and folders.
+    /// The object that is used to manage permissions for files and folders.
     /// </summary>
     public class DataLakeStoreItemAcl
     {

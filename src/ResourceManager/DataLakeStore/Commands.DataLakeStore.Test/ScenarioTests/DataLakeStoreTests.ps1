@@ -12,7 +12,7 @@ function Test-DataLakeStoreAccount
 	)
 	
     # Creating Account
-    $accountCreated = New-AzureDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location
+    $accountCreated = New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location
     
     Assert-AreEqual $accountName $accountCreated.Name
     Assert-AreEqual $location $accountCreated.Location
@@ -23,7 +23,7 @@ function Test-DataLakeStoreAccount
     for ($i = 0; $i -le 60; $i++)
     {
         [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
-		[array]$accountGet = Get-AzureDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName
+		[array]$accountGet = Get-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName
         if ($accountGet[0].Properties.ProvisioningState -like "Succeeded")
         {
             Assert-AreEqual $accountName $accountGet[0].Name
@@ -40,7 +40,7 @@ function Test-DataLakeStoreAccount
 
     # Updating Account
 	$tagsToUpdate = @{"TestTag"="TestUpdate"}
-    $accountUpdated = Set-AzureDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Tags $tagsToUpdate
+    $accountUpdated = Set-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Tags $tagsToUpdate
     
     Assert-AreEqual $accountName $accountUpdated.Name
     Assert-AreEqual $location $accountUpdated.Location
@@ -51,7 +51,7 @@ function Test-DataLakeStoreAccount
 	Assert-NotNull $accountUpdated.Tags["TestTag"] "The updated tag 'TestTag' does not exist"
 
     # List all accounts in resource group
-    [array]$accountsInResourceGroup = Get-AzureDataLakeStoreAccount -ResourceGroupName $resourceGroupName
+    [array]$accountsInResourceGroup = Get-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName
     Assert-True {$accountsInResourceGroup.Count -ge 1}
     
     $found = 0
@@ -70,7 +70,7 @@ function Test-DataLakeStoreAccount
     Assert-True {$found -eq 1} "Account created earlier is not found when listing all in resource group: $resourceGroupName."
 
     # List all Data Lake accounts in subscription
-    [array]$accountsInSubscription = Get-AzureDataLakeStoreAccount
+    [array]$accountsInSubscription = Get-AzureRmDataLakeStoreAccount
     Assert-True {$accountsInSubscription.Count -ge 1}
     Assert-True {$accountsInSubscription.Count -ge $accountsInResourceGroup.Count}
     
@@ -90,10 +90,10 @@ function Test-DataLakeStoreAccount
     Assert-True {$found -eq 1} "Account created earlier is not found when listing all in subscription."
 
     # Delete Data Lake account
-    Assert-True {Remove-AzureDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
+    Assert-True {Remove-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
 
 	# Verify that it is gone by trying to get it again
-	Assert-Throws {Get-AzureDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName} "Remove account failed. It can still be retrieved"
+	Assert-Throws {Get-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName} "Remove account failed. It can still be retrieved"
 }
 
 <#
@@ -111,7 +111,7 @@ function Test-NegativeDataLakeStoreAccount
 	)
 	
     # Creating Account
-    $accountCreated = New-AzureDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location
+    $accountCreated = New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location
     
     Assert-AreEqual $accountName $accountCreated.Name
     Assert-AreEqual $location $accountCreated.Location
@@ -122,7 +122,7 @@ function Test-NegativeDataLakeStoreAccount
     for ($i = 0; $i -le 60; $i++)
     {
         [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
-		[array]$accountGet = Get-AzureDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName
+		[array]$accountGet = Get-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName
         if ($accountGet[0].Properties.ProvisioningState -like "Succeeded")
         {
             Assert-AreEqual $accountName $accountGet[0].Name
@@ -135,18 +135,18 @@ function Test-NegativeDataLakeStoreAccount
     }
 
     # attempt to recreate the already created account
-	Assert-Throws {New-AzureDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location}
+	Assert-Throws {New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location}
 
 	# attempt to update a non-existent account
 	$tagsToUpdate = @{"TestTag"="TestUpdate"}
-    Assert-Throws {Set-AzureDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $fakeaccountName -Tags $tagsToUpdate}
+    Assert-Throws {Set-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $fakeaccountName -Tags $tagsToUpdate}
 
 	# attempt to get a non-existent account
-	Assert-Throws {Get-AzureDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $fakeaccountName}
+	Assert-Throws {Get-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $fakeaccountName}
 
     # Delete Data Lake account
-    Assert-True {Remove-AzureDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
+    Assert-True {Remove-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
 
 	# Verify that it is gone by trying to get it again
-	Assert-Throws {Get-AzureDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName} "Remove account failed. It can still be retrieved"
+	Assert-Throws {Get-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName} "Remove account failed. It can still be retrieved"
 }

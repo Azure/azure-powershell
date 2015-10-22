@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System.Management.Automation;
+using System.Net;
+using Hyak.Common;
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
@@ -37,9 +39,16 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 DataLakeStoreClient.GetAccount(ResourceGroupName, Name);
                 WriteObject(true);
             }
-            catch
+            catch (CloudException e)
             {
-                WriteObject(false);
+                if (e.Response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    WriteObject(false);
+                }
+                else
+                {
+                    throw;
+                }
             }
         }
     }
