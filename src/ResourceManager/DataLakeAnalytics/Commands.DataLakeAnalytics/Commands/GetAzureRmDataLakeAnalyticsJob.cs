@@ -133,36 +133,36 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 var filter = new List<string>();
                 if (!string.IsNullOrEmpty(Submitter))
                 {
-                    filter.Add(string.Format("Submitter eq '{0}'", Submitter));
+                    filter.Add(string.Format("submitter eq '{0}'", Submitter));
                 }
 
                 if (SubmittedAfter.HasValue)
                 {
-                    filter.Add(string.Format("SubmitTime ge datetimeoffset'{0}'", SubmittedAfter.Value));
+                    filter.Add(string.Format("submitTime ge datetimeoffset'{0}'", SubmittedAfter.Value));
                 }
 
                 if (SubmittedBefore.HasValue)
                 {
-                    filter.Add(string.Format("SubmitTime lt datetimeoffset'{0}'", SubmittedBefore.Value));
+                    filter.Add(string.Format("submitTime lt datetimeoffset'{0}'", SubmittedBefore.Value));
                 }
 
                 if (!string.IsNullOrEmpty(Name))
                 {
-                    filter.Add(string.Format("Name eq '{0}'", Name));
+                    filter.Add(string.Format("name eq '{0}'", Name));
                 }
 
                 if (State != null && State.Length > 0)
                 {
                     filter.Add("(" +
                                string.Join(" or ",
-                                   State.Select(state => string.Format("State eq '{0}'", state)).ToArray()) + ")");
+                                   State.Select(state => string.Format("state eq '{0}'", state)).ToArray()) + ")");
                 }
 
                 if (Result != null && Result.Length > 0)
                 {
                     filter.Add("(" +
                                string.Join(" or ",
-                                   Result.Select(result => string.Format("Result eq '{0}'", result)).ToArray()) + ")");
+                                   Result.Select(result => string.Format("result eq '{0}'", result)).ToArray()) + ")");
                 }
 
                 var filterString = string.Join(" and ", filter.ToArray());

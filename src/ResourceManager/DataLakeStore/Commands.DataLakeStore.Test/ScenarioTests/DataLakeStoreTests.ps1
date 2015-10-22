@@ -22,30 +22,29 @@ function Test-DataLakeStoreAccount
     # In loop to check if account exists
     for ($i = 0; $i -le 60; $i++)
     {
-        [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
 		[array]$accountGet = Get-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName
         if ($accountGet[0].Properties.ProvisioningState -like "Succeeded")
         {
             Assert-AreEqual $accountName $accountGet[0].Name
             Assert-AreEqual $location $accountGet[0].Location
             Assert-AreEqual "Microsoft.DataLakeStore/accounts" $accountGet[0].Type
-            Assert-AreEqual $resourceGroupName $accountGet[0].ResourceGroupName
+            Assert-True {$accountGet[0].Id -like "*$resourceGroupName*"}
             break
         }
 
 		Write-Host "account not yet provisioned. current state: $($accountGet[0].Properties.ProvisioningState)"
-
+		[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
         Assert-False {$i -eq 60} " Data Lake Store account is not in succeeded state even after 30 min."
     }
 
     # Updating Account
-	$tagsToUpdate = @{"TestTag"="TestUpdate"}
+	$tagsToUpdate = @{"Name" = "TestTag"; "Value" = "TestUpdate"}
     $accountUpdated = Set-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Tags $tagsToUpdate
     
     Assert-AreEqual $accountName $accountUpdated.Name
     Assert-AreEqual $location $accountUpdated.Location
     Assert-AreEqual "Microsoft.DataLakeStore/accounts" $accountUpdated.Type
-    Assert-AreEqual $resourceGroupName $accountUpdated.ResourceGroupName
+    Assert-True {$accountUpdated.Id -like "*$resourceGroupName*"}
 	
     Assert-NotNull $accountUpdated.Tags "Tags do not exists"
 	Assert-NotNull $accountUpdated.Tags["TestTag"] "The updated tag 'TestTag' does not exist"
@@ -62,7 +61,7 @@ function Test-DataLakeStoreAccount
             $found = 1
             Assert-AreEqual $location $accountsInResourceGroup[$i].Location
             Assert-AreEqual "Microsoft.DataLakeStore/accounts" $accountsInResourceGroup[$i].Type
-            Assert-AreEqual $resourceGroupName $accountsInResourceGroup[$i].ResourceGroupName
+            Assert-True {$accountsInResourceGroup[$i].Id -like "*$resourceGroupName*"}
 
             break
         }
@@ -82,7 +81,7 @@ function Test-DataLakeStoreAccount
             $found = 1
             Assert-AreEqual $location $accountsInSubscription[$i].Location
             Assert-AreEqual "Microsoft.DataLakeStore/accounts" $accountsInSubscription[$i].Type
-            Assert-AreEqual $resourceGroupName $accountsInSubscription[$i].ResourceGroupName
+            Assert-True {$accountsInSubscription[$i].Id -like "*$resourceGroupName*"}
     
             break
         }
@@ -93,7 +92,7 @@ function Test-DataLakeStoreAccount
     Assert-True {Remove-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
 
 	# Verify that it is gone by trying to get it again
-	Assert-Throws {Get-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName} "Remove account failed. It can still be retrieved"
+	Assert-Throws {Get-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}
 }
 
 <#
@@ -121,16 +120,19 @@ function Test-NegativeDataLakeStoreAccount
     # In loop to check if account exists
     for ($i = 0; $i -le 60; $i++)
     {
-        [Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
+        
 		[array]$accountGet = Get-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName
         if ($accountGet[0].Properties.ProvisioningState -like "Succeeded")
         {
             Assert-AreEqual $accountName $accountGet[0].Name
             Assert-AreEqual $location $accountGet[0].Location
             Assert-AreEqual "Microsoft.DataLakeStore/accounts" $accountGet[0].Type
-            Assert-AreEqual $resourceGroupName $accountGet[0].ResourceGroupName
+            Assert-True {$accountGet[0].Id -like "*$resourceGroupName*"}
             break
         }
+
+		Write-Host "account not yet provisioned. current state: $($accountGet[0].Properties.ProvisioningState)"
+		[Microsoft.WindowsAzure.Commands.Utilities.Common.TestMockSupport]::Delay(30000)
         Assert-False {$i -eq 60} " Data Lake Store account not in succeeded state even after 30 min."
     }
 
@@ -138,7 +140,7 @@ function Test-NegativeDataLakeStoreAccount
 	Assert-Throws {New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Location $location}
 
 	# attempt to update a non-existent account
-	$tagsToUpdate = @{"TestTag"="TestUpdate"}
+	$tagsToUpdate = @{"Name" = "TestTag"; "Value" = "TestUpdate"}
     Assert-Throws {Set-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $fakeaccountName -Tags $tagsToUpdate}
 
 	# attempt to get a non-existent account
@@ -148,5 +150,5 @@ function Test-NegativeDataLakeStoreAccount
     Assert-True {Remove-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
 
 	# Verify that it is gone by trying to get it again
-	Assert-Throws {Get-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName} "Remove account failed. It can still be retrieved"
+	Assert-Throws {Get-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName}
 }

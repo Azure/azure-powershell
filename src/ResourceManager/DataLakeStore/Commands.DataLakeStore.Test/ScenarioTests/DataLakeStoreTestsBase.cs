@@ -12,6 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Reflection;
+using Microsoft.Azure.Management.DataLake.StoreFileSystem;
+
 namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
 {
     using System;
@@ -24,7 +27,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
     using Microsoft.Azure.Management.Resources.Models;
     using System.Net;
 
-    public abstract class DataLakeStoreTestsBase : IDisposable
+    public abstract class DataLakeStoreTestsBase : TestBase, IDisposable
     {
         internal string resourceGroupName { get; set; }
         internal string dataLakeAccountName { get; set; }
@@ -32,22 +35,25 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
 
         private EnvironmentSetupHelper helper;
 
-        private DataLakeStoreManagementClient dataLakeManagementClient;
+        private DataLakeStoreManagementClient dataLakeStoreManagementClient;
+
+        private DataLakeStoreFileSystemManagementClient dataLakeStoreFileSystemManagementClient;
 
         private ResourceManagementClient resourceManagementClient;
 
         protected DataLakeStoreTestsBase()
         {
             helper = new EnvironmentSetupHelper();
-            dataLakeManagementClient = GetDataLakeStoreManagementClient();
+            dataLakeStoreManagementClient = GetDataLakeStoreManagementClient();
+            dataLakeStoreFileSystemManagementClient = GetDataLakeStoreFileSystemManagementClient();
             resourceManagementClient = GetResourceManagementClient();
-            this.resourceGroupName = TestUtilities.GenerateName("dataLakerg1");
-            this.dataLakeAccountName = TestUtilities.GenerateName("testdataLake1");
+            this.resourceGroupName = TestUtilities.GenerateName("datalakerg1");
+            this.dataLakeAccountName = TestUtilities.GenerateName("testdatalake1");
         }
 
         protected void SetupManagementClients()
         {
-            helper.SetupManagementClients(dataLakeManagementClient, resourceManagementClient);
+            helper.SetupManagementClients(dataLakeStoreManagementClient, dataLakeStoreFileSystemManagementClient, resourceManagementClient);
         }
 
         protected void RunPowerShellTest(params string[] scripts)
@@ -64,7 +70,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
                     this.TryCreateResourceGroup(this.resourceGroupName, DataLakeStoreTestsBase.resourceGroupLocation);
 
                     helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                    helper.SetupModules(AzureModule.AzureResourceManager, "ScenarioTests\\" + this.GetType().Name + ".ps1");
+                    helper.SetupModules(AzureModule.AzureResourceManager, "ScenarioTests\\" + this.GetType().Name + ".ps1",
+                    helper.RMProfileModule, helper.GetRMModulePath(@"AzureRM.DataLakeStore.psd1"));
 
                     helper.RunPowerShellTest(scripts);
                 }
@@ -81,6 +88,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
             return TestBase.GetServiceClient<DataLakeStoreManagementClient>(new CSMTestEnvironmentFactory());
         }
 
+        protected DataLakeStoreFileSystemManagementClient GetDataLakeStoreFileSystemManagementClient()
+        {
+            return GetDataLakeStoreFileSystemServiceClient<DataLakeStoreFileSystemManagementClient>(new CSMTestEnvironmentFactory());
+        }
+
         protected ResourceManagementClient GetResourceManagementClient()
         {
             return TestBase.GetServiceClient<ResourceManagementClient>(new CSMTestEnvironmentFactory());
@@ -88,6 +100,27 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
         #endregion
 
         #region private helper methods
+        private static T GetDataLakeStoreFileSystemServiceClient<T>(
+            TestEnvironmentFactory factory)
+            where T : class
+        {
+            TestEnvironment currentEnvironment = factory.GetTestEnvironment();
+            T client = null;
+
+            ConstructorInfo constructor = typeof(T).GetConstructor(new Type[] 
+                    { 
+                        typeof(SubscriptionCloudCredentials), 
+                        typeof(string) 
+                    });
+            client = constructor.Invoke(new object[] 
+                    { 
+                        currentEnvironment.Credentials as SubscriptionCloudCredentials, 
+                        // Have to remove the https:// since this is a suffix
+                        currentEnvironment.Endpoints.DataLakeStoreServiceUri.OriginalString.Replace("https://","") }) as T;
+
+            return AddMockHandler<T>(ref client);
+        }
+
         private void TryRegisterSubscriptionForResource(string providerName = "Microsoft.DataLakeStore")
         {
             var reg = resourceManagementClient.Providers.Register(providerName);

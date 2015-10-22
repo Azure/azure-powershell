@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         #region private helper methods
 
         /// <summary>
-        /// Gets DataLakeAnalytics catalog client for the current test environment 
+        /// Gets DataLakeAnalytics catalog or job client for the current test environment 
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="factory"></param>
