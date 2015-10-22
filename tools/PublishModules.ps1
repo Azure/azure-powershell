@@ -41,7 +41,7 @@ if ([string]::IsNullOrEmpty($scope))
     $scope = 'All'  
 }
 
-Write-Host "Publishing $scope package(s)" 
+Write-Host "Publishing $scope package(and its dependencies)" 
 
 $packageFolder = "$PSScriptRoot\..\src\Package"
 
@@ -54,11 +54,11 @@ if ($repo -ne $null) {
 }
 
 $resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager\AzureResourceManager"
-
-if ($scope -eq 'All') {
-    # Publish AzureRM.Profile first which is the common dependency
+$publishToLocal = test-path $repositoryLocation
+if (($scope -eq 'All') -or $publishToLocal ) {
+    # If we publish 'All' or to local folder, publish AzureRM.Profile first, becasue it is the common dependency
     Write-Host "Publishing profile module"
-    Publish-Module -Path "$resourceManagerRootFolder\AzureRM.Profile" -NuGetApiKey $apiKey -Repository $repoName
+    Publish-Module -Path "$resourceManagerRootFolder\AzureRM.Profile" -NuGetApiKey $apiKey -Repository $repoName -Tags ("Azure") -LicenseUri "http://aka.ms/azps-license"
     Write-Host "Published profile module"
 }
 
@@ -66,21 +66,21 @@ if (($scope -eq 'All') -or ($scope -eq 'ServiceManagement')) {
     $modulePath = "$packageFolder\$buildConfig\ServiceManagement\Azure"
     # Publish Azure module
     Write-Host "Publishing ServiceManagement(aka Azure) module from $modulePath"
-    Publish-Module -Path $modulePath -NuGetApiKey $apiKey -Repository $repoName
+    Publish-Module -Path $modulePath -NuGetApiKey $apiKey -Repository $repoName -Tags ("Azure") -LicenseUri "http://aka.ms/azps-license"
 } 
 
 if (($scope -eq 'All') -or ($scope -eq 'AzureStorage')) {
     $modulePath = "$packageFolder\$buildConfig\ServiceManagement\Azure\Azure.Storage"
     # Publish AzureStorage module
     Write-Host "Publishing AzureStorage module from $modulePath"
-    Publish-Module -Path $modulePath -NuGetApiKey $apiKey -Repository $repoName
+    Publish-Module -Path $modulePath -NuGetApiKey $apiKey -Repository $repoName -Tags ("Azure") -LicenseUri "http://aka.ms/azps-license"
 } 
 
-if ($scope -eq 'AzureRM') {
+if (($scope -eq 'All') -or ($scope -eq 'AzureRM')) {
     # Publish AzureRM module    
     $modulePath = "$PSScriptRoot\AzureRM"
     Write-Host "Publishing AzureRM module from $modulePath"
-    Publish-Module -Path $modulePath -NuGetApiKey $apiKey -Repository $repoName
+    Publish-Module -Path $modulePath -NuGetApiKey $apiKey -Repository $repoName -Tags ("Azure") -LicenseUri "http://aka.ms/azps-license"
     Write-Host "Published Azure module"
 } 
 
@@ -92,15 +92,15 @@ if ($scope -eq 'All') {
         if (($module.Name -ne "AzureRM.Profile") -and ($module.Name -ne "Azure.Storage")) {
             $modulePath = $module.FullName
             Write-Host "Publishing $module module from $modulePath"
-            Publish-Module -Path $modulePath -NuGetApiKey $apiKey -Repository $repoName
+            Publish-Module -Path $modulePath -NuGetApiKey $apiKey -Repository $repoName -Tags ("Azure") -LicenseUri "http://aka.ms/azps-license"
             Write-Host "Published $module module"
         }
     }
-} else {
+} elseif ($scope -ne 'AzureRM') {
     $modulePath = Join-Path $resourceManagerRootFolder "AzureRM.$scope"
     if (Test-Path $modulePath) {
         Write-Host "Publishing $scope module from $modulePath"
-        Publish-Module -Path $modulePath -NuGetApiKey $apiKey -Repository $repoName
+        Publish-Module -Path $modulePath -NuGetApiKey $apiKey -Repository $repoName -Tags ("Azure") -LicenseUri "http://aka.ms/azps-license"
         Write-Host "Published $scope module"        
     } else {
         Write-Error "Can not find module with name $scope to publish"

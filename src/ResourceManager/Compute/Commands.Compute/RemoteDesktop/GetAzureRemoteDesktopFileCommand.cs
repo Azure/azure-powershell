@@ -181,8 +181,6 @@ namespace Microsoft.Azure.Commands.Compute
                         {
                             var writer = new StreamWriter(scriptStream);
                             writer.WriteLine("start /wait mstsc.exe " + rdpFilePath);
-                            writer.WriteLine("del " + rdpFilePath);
-                            writer.WriteLine("del " + launchRDPScript);
                             writer.Flush();
                         }
 

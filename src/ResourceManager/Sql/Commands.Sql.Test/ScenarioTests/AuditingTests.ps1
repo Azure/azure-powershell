@@ -20,7 +20,7 @@ Tests that when setting the storage account property's value in a database's aud
 function Test-AuditingDatabaseUpdatePolicyWithStorageV2
 {
 	# Setup
-	$testSuffix = 102
+	$testSuffix = 1029
 	Create-TestEnvironmentWithStorageV2 $testSuffix
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
 
@@ -215,7 +215,7 @@ Tests that when modifying the eventType property of a databases's auditing polic
 function Test-AuditingDatabaseUpdatePolicyWithEventTypes
 {
 	# Setup
-	$testSuffix = 501
+	$testSuffix = 5011
 	Create-TestEnvironment $testSuffix
 	$params = Get-SqlAuditingTestEnvironmentParameters $testSuffix
 

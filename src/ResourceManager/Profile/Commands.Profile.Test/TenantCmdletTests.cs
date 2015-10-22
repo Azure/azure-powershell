@@ -25,6 +25,7 @@ using System;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Hyak.Common;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
@@ -38,11 +39,11 @@ namespace Microsoft.Azure.Commands.Profile.Test
             dataStore = new MemoryDataStore();
             AzureSession.DataStore = dataStore;
             commandRuntimeMock = new MockCommandRuntime();
-            AzureRMCmdlet.DefaultProfile = new AzureRMProfile();
+            AzureRmProfileProvider.Instance.Profile = new AzureRMProfile();
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void GetTenantWithTenantParameter()
         {
             var cmdlt = new GetAzureRMTenantCommand();
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
         
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void GetTenantWithDomainParameter()
         {
             var cmdlt = new GetAzureRMTenantCommand();
@@ -82,7 +83,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
         
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void GetTenantWithoutParameters()
         {
             var cmdlt = new GetAzureRMTenantCommand();
@@ -113,7 +114,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.ExecuteCmdlet();
             cmdlt.InvokeEndProcessing();
 
-            Assert.NotNull(AzureRMCmdlet.DefaultProfile.Context);
+            Assert.NotNull(AzureRmProfileProvider.Instance.Profile.Context);
         }
     }
 }

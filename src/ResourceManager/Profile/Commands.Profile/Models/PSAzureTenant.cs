@@ -31,10 +31,15 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <returns>The converted subscription.</returns>
         public static implicit operator PSAzureTenant(AzureTenant other)
         {
+            if (other == null)
+            {
+                return null;
+            }
+
             return new PSAzureTenant
             {
-                TenantId = other != null? other.Id.ToString() : null,
-                Domain = other != null? other.Domain : null
+                TenantId = other.Id.ToString(),
+                Domain = other.Domain
             };
         }
 

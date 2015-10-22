@@ -12,17 +12,18 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.IO;
 using System.Management.Automation;
+using System.Management.Automation.Host;
+using System.Threading;
+using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System.IO;
-using Newtonsoft.Json;
-using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
-using System;
-using System.Threading;
-using System.Management.Automation.Host;
+using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
@@ -36,13 +37,33 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         /// </summary>
         static AzureRMCmdlet()
         {
-            AzureSession.DataStore = new DiskDataStore();
+            if (!TestMockSupport.RunningMocked)
+            {
+                AzureSession.DataStore = new DiskDataStore();
+           }
+        }
+
+        /// <summary>
+        /// Creates new instance from AzureRMCmdlet and add the RPRegistration handler.
+        /// </summary>
+        public AzureRMCmdlet()
+        {
+            AzureSession.ClientFactory.RemoveHandler(typeof(RPRegistrationDelegatingHandler));
+            AzureSession.ClientFactory.AddHandler(new RPRegistrationDelegatingHandler(
+                () => new ResourceManagementClient(
+                    AzureSession.AuthenticationFactory.GetSubscriptionCloudCredentials(DefaultContext, AzureEnvironment.Endpoint.ResourceManager),
+                    DefaultContext.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager)),
+                s => _debugMessages.Enqueue(s)));
         }
 
         /// <summary>
         /// Gets or sets the global profile for ARM cmdlets.
         /// </summary>
-        public static AzureRMProfile DefaultProfile { get; set; }
+        public AzureRMProfile DefaultProfile
+        {
+            get { return AzureRmProfileProvider.Instance.Profile; }
+            set { AzureRmProfileProvider.Instance.Profile = value; }
+        }
 
         /// <summary>
         /// Gets the current default context.
@@ -69,6 +90,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
             string fileFullPath = Path.Combine(AzureSession.ProfileDirectory, AzurePSDataCollectionProfile.DefaultFileName);
             var contents = JsonConvert.SerializeObject(_dataCollectionProfile);
+            if (!AzureSession.DataStore.DirectoryExists(AzureSession.ProfileDirectory))
+            {
+                AzureSession.DataStore.CreateDirectory(AzureSession.ProfileDirectory);
+            }
             AzureSession.DataStore.WriteFile(fileFullPath, contents);
             WriteWarning(string.Format(Resources.DataCollectionSaveFileInformation, fileFullPath));
         }

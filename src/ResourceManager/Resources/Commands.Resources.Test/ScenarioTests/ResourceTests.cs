@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-GetResourcesViaPipingFromAnotherResource");
         }
 
-        [Fact]
+        [Fact(Skip = "Need to re-record test")] 
         public void TestMoveAResourceTest()
         {
             ResourcesController.NewInstance.RunPsTest("Test-MoveAResource");
@@ -88,6 +88,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void TestSetAResourceTest()
         {
             ResourcesController.NewInstance.RunPsTest("Test-SetAResource");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFindAResourceTest()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-FindAResource");
         }
     }
 }

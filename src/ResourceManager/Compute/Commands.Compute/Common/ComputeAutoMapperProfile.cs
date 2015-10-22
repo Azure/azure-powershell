@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 
-    public class ComputeAutoMapperProfile : Profile
+    public class ComputeAutoMapperProfile : AutoMapper.Profile
     {
         private static readonly Lazy<bool> initialize;
 

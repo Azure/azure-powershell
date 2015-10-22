@@ -20,6 +20,7 @@ using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -63,8 +64,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlet.InvokeEndProcessing();
 
             commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()), Times.Once());
-            var profileClient = new RMProfileClient(AzureRMCmdlet.DefaultProfile);
-            AzureEnvironment env = AzureRMCmdlet.DefaultProfile.Environments["KaTaL"];
+            var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
+            AzureEnvironment env = AzureRmProfileProvider.Instance.Profile.Environments["KaTaL"];
             Assert.Equal(env.Name, cmdlet.Name);
             Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl], cmdlet.PublishSettingsFileUrl);
             Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.ServiceManagement], cmdlet.ServiceEndpoint);
@@ -90,7 +91,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlet.InvokeEndProcessing();
 
             commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()), Times.Once());
-            AzureEnvironment env = AzureRMCmdlet.DefaultProfile.Environments["KaTaL"];
+            AzureEnvironment env = AzureRmProfileProvider.Instance.Profile.Environments["KaTaL"];
             Assert.Equal(env.Name, cmdlet.Name);
             Assert.True(env.OnPremise);
             Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.PublishSettingsFileUrl], cmdlet.PublishSettingsFileUrl);
@@ -120,7 +121,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             // Add again
             cmdlet.Name = "kAtAl";
             cmdlet.ExecuteCmdlet();
-            AzureEnvironment env = AzureRMCmdlet.DefaultProfile.Environments["KaTaL"];
+            AzureEnvironment env = AzureRmProfileProvider.Instance.Profile.Environments["KaTaL"];
             Assert.Equal(env.Name, cmdlet.Name);
         }
 
@@ -160,7 +161,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlet.InvokeEndProcessing();
 
             commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()), Times.Once());
-            AzureEnvironment env = AzureRMCmdlet.DefaultProfile.Environments["KaTaL"];
+            AzureEnvironment env = AzureRmProfileProvider.Instance.Profile.Environments["KaTaL"];
             Assert.Equal(env.Name, cmdlet.Name);
             Assert.Equal(env.Endpoints[AzureEnvironment.Endpoint.StorageEndpointSuffix], actual.StorageEndpointSuffix);
         }
@@ -215,7 +216,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             Assert.Equal(cmdlet.SqlDatabaseDnsSuffix, actual.SqlDatabaseDnsSuffix);
             Assert.Equal( cmdlet.TrafficManagerDnsSuffix , actual.TrafficManagerDnsSuffix);
             commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()), Times.Once());
-            AzureEnvironment env = AzureRMCmdlet.DefaultProfile.Environments["KaTaL"];
+            AzureEnvironment env = AzureRmProfileProvider.Instance.Profile.Environments["KaTaL"];
             Assert.Equal(env.Name, cmdlet.Name);
         }
 
@@ -280,7 +281,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 var savedValue = AzureEnvironment.PublicEnvironments[name].GetEndpoint(AzureEnvironment.Endpoint.PublishSettingsFileUrl);
                 cmdlet.InvokeBeginProcessing();
                 Assert.Throws<InvalidOperationException>(() => cmdlet.ExecuteCmdlet());
-                var newValue = AzureRMCmdlet.DefaultProfile.Environments[name].GetEndpoint(AzureEnvironment.Endpoint.PublishSettingsFileUrl);
+                var newValue = AzureRmProfileProvider.Instance.Profile.Environments[name].GetEndpoint(AzureEnvironment.Endpoint.PublishSettingsFileUrl);
                 Assert.Equal(savedValue, newValue);
                 Assert.NotEqual(cmdlet.PublishSettingsFileUrl, newValue);
             }
@@ -294,7 +295,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             commandRuntimeMock.Setup(f => f.ShouldProcess(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
 
             const string name = "test";
-            RMProfileClient client = new RMProfileClient(AzureRMCmdlet.DefaultProfile);
+            RMProfileClient client = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
             client.AddOrSetEnvironment(new AzureEnvironment
             {
                 Name = name
@@ -311,7 +312,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
 
-            Assert.False(AzureRMCmdlet.DefaultProfile.Environments.ContainsKey(name));
+            Assert.False(AzureRmProfileProvider.Instance.Profile.Environments.ContainsKey(name));
         }
 
         [Fact]

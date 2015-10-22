@@ -1,4 +1,9 @@
 ﻿
+using System.CodeDom;
+using System.Diagnostics.Eventing.Reader;
+using System.Text;
+using Microsoft.Azure.Management.Storage;
+
 namespace Microsoft.WindowsAzure.Commands.Common.Storage
 {
     using System;
@@ -8,6 +13,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
     using Microsoft.WindowsAzure.Storage.Auth;
     using Microsoft.WindowsAzure.Storage.Blob;
     using Microsoft.WindowsAzure.Storage.Table;
+    using  Arm = Microsoft.Azure.Management.Storage;
 
     public class StorageUtilities
     {
@@ -26,38 +32,143 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
             return new Uri(endpoint);
         }
 
-        public static CloudStorageAccount GenerateCloudStorageAccount(StorageManagementClient storageClient, string accountName)
+        /// <summary>
+        /// Create a cloud storage account using an ARM storage management client
+        /// </summary>
+        /// <param name="storageClient">The client to use to get storage account details.</param>
+        /// <param name="resourceGroupName">The resource group contining the storage account.</param>
+        /// <param name="accountName">The name of the storage account.</param>
+        /// <returns>A CloudStorageAccount that can be used by windows azure storage library to manipulate objects in the storage account.</returns>
+        public static CloudStorageAccount GenerateCloudStorageAccount(Arm.IStorageManagementClient storageClient,
+            string resourceGroupName, string accountName)
         {
-            var storageServiceResponse = storageClient.StorageAccounts.Get(accountName);
-            var storageKeysResponse = storageClient.StorageAccounts.GetKeys(accountName);
-
-            Uri fileEndpoint = null;
-            Uri blobEndpoint = null;
-            Uri queueEndpoint = null;
-            Uri tableEndpoint = null;
-
-            if (storageServiceResponse.StorageAccount.Properties.Endpoints.Count >= 4)
+            if (!TestMockSupport.RunningMocked)
             {
-                fileEndpoint = StorageUtilities.CreateHttpsEndpoint(storageServiceResponse.StorageAccount.Properties.Endpoints[3].ToString());
+                var storageServiceResponse = storageClient.StorageAccounts.GetProperties(resourceGroupName, accountName);
+                Uri blobEndpoint = storageServiceResponse.StorageAccount.PrimaryEndpoints.Blob;
+                Uri queueEndpoint = storageServiceResponse.StorageAccount.PrimaryEndpoints.Queue;
+                Uri tableEndpoint = storageServiceResponse.StorageAccount.PrimaryEndpoints.Table;
+                return new CloudStorageAccount(
+                    GenerateStorageCredentials(storageClient, resourceGroupName, accountName),
+                    blobEndpoint,
+                    queueEndpoint,
+                    tableEndpoint, null);
             }
-            
-            if (storageServiceResponse.StorageAccount.Properties.Endpoints.Count >= 3)
+            else
             {
-                tableEndpoint = StorageUtilities.CreateHttpsEndpoint(storageServiceResponse.StorageAccount.Properties.Endpoints[2].ToString());
-                queueEndpoint = StorageUtilities.CreateHttpsEndpoint(storageServiceResponse.StorageAccount.Properties.Endpoints[1].ToString());
+                return new CloudStorageAccount(
+                    new StorageCredentials(accountName,
+                        Convert.ToBase64String(Encoding.UTF8.GetBytes(Guid.NewGuid().ToString()))),
+                    new Uri(string.Format("https://{0}.blob.core.windows.net", accountName)),
+                    new Uri(string.Format("https://{0}.queue.core.windows.net", accountName)),
+                    new Uri(string.Format("https://{0}.table.core.windows.net", accountName)),
+                    null);
             }
+        }
 
-            if (storageServiceResponse.StorageAccount.Properties.Endpoints.Count >= 1)
+        /// <summary>
+        /// Create a cloud storage account using a service management storage client
+        /// </summary>
+        /// <param name="storageClient">The client to use to get storage account details.</param>
+        /// <param name="accountName">The name of the storage account.</param>
+        /// <returns>A CloudStorageAccount that can be used by windows azure storage library to manipulate objects in the storage account.</returns>
+        public static CloudStorageAccount GenerateCloudStorageAccount(IStorageManagementClient storageClient, string accountName)
+        {
+            if (!TestMockSupport.RunningMocked)
             {
-                blobEndpoint = StorageUtilities.CreateHttpsEndpoint(storageServiceResponse.StorageAccount.Properties.Endpoints[0].ToString());
-            }
+                var storageServiceResponse = storageClient.StorageAccounts.Get(accountName);
 
-            return new CloudStorageAccount(
-                new StorageCredentials(storageServiceResponse.StorageAccount.Name, storageKeysResponse.PrimaryKey),
-                blobEndpoint,
-                queueEndpoint,
-                tableEndpoint,
-                fileEndpoint);
+                Uri fileEndpoint = null;
+                Uri blobEndpoint = null;
+                Uri queueEndpoint = null;
+                Uri tableEndpoint = null;
+
+                if (storageServiceResponse.StorageAccount.Properties.Endpoints.Count >= 4)
+                {
+                    fileEndpoint =
+                        StorageUtilities.CreateHttpsEndpoint(
+                            storageServiceResponse.StorageAccount.Properties.Endpoints[3].ToString());
+                }
+
+                if (storageServiceResponse.StorageAccount.Properties.Endpoints.Count >= 3)
+                {
+                    tableEndpoint =
+                        StorageUtilities.CreateHttpsEndpoint(
+                            storageServiceResponse.StorageAccount.Properties.Endpoints[2].ToString());
+                    queueEndpoint =
+                        StorageUtilities.CreateHttpsEndpoint(
+                            storageServiceResponse.StorageAccount.Properties.Endpoints[1].ToString());
+                }
+
+                if (storageServiceResponse.StorageAccount.Properties.Endpoints.Count >= 1)
+                {
+                    blobEndpoint =
+                        StorageUtilities.CreateHttpsEndpoint(
+                            storageServiceResponse.StorageAccount.Properties.Endpoints[0].ToString());
+                }
+
+                return new CloudStorageAccount(
+                    GenerateStorageCredentials(storageClient, storageServiceResponse.StorageAccount.Name),
+                    blobEndpoint,
+                    queueEndpoint,
+                    tableEndpoint,
+                    fileEndpoint);
+            }
+            else
+            {
+                return new CloudStorageAccount(
+                    new StorageCredentials(accountName,
+                        Convert.ToBase64String(Encoding.UTF8.GetBytes(Guid.NewGuid().ToString()))),
+                    new Uri(string.Format("https://{0}.blob.core.windows.net", accountName)),
+                    new Uri(string.Format("https://{0}.queue.core.windows.net", accountName)),
+                    new Uri(string.Format("https://{0}.table.core.windows.net", accountName)),
+                    new Uri(string.Format("https://{0}.file.core.windows.net", accountName)));
+            }
+       }
+
+        /// <summary>
+        /// Create storage credentials for the given account
+        /// </summary>
+        /// <param name="storageClient">The ARM storage management client.</param>
+        /// <param name="resourceGroupName">The resource group containing the storage account.</param>
+        /// <param name="accountName">The storage account name.</param>
+        /// <returns>Storage credentials for the given account.</returns>
+        public static StorageCredentials GenerateStorageCredentials(Arm.IStorageManagementClient storageClient,
+            string resourceGroupName, string accountName)
+        {
+            if (!TestMockSupport.RunningMocked)
+            {
+                var storageKeysResponse = storageClient.StorageAccounts.ListKeys(resourceGroupName, accountName);
+                return new StorageCredentials(accountName,
+                    storageKeysResponse.StorageAccountKeys.Key1);
+            }
+            else
+            {
+                return new StorageCredentials(accountName,
+                    Convert.ToBase64String(Encoding.UTF8.GetBytes(Guid.NewGuid().ToString())));
+            }
+        }
+
+        /// <summary>
+        /// Create storage credentials for the given account
+        /// </summary>
+        /// <param name="storageClient">The RDFE storage management client.</param>
+        /// <param name="accountName">The storage account name.</param>
+        /// <returns>Storage credentials for the given account.</returns>
+         public static StorageCredentials GenerateStorageCredentials(IStorageManagementClient storageClient,
+            string accountName)
+        {
+            if (!TestMockSupport.RunningMocked)
+            {
+                var storageKeysResponse = storageClient.StorageAccounts.GetKeys(accountName);
+                return new StorageCredentials(accountName,
+                    storageKeysResponse.PrimaryKey);
+            }
+            else
+            {
+                return new StorageCredentials(accountName,
+                    Convert.ToBase64String(Encoding.UTF8.GetBytes(Guid.NewGuid().ToString())));
+            }
         }
 
         public static string GenerateTableStorageSasUrl(string connectionString, string tableName, DateTime expiryTime, SharedAccessTablePermissions permissions)

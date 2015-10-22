@@ -25,6 +25,7 @@ using Microsoft.WindowsAzure.Commands.Profile.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 using System.Security.Permissions;
+using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Profile;
 
 namespace Microsoft.WindowsAzure.Commands.Profile
@@ -54,7 +55,8 @@ namespace Microsoft.WindowsAzure.Commands.Profile
         {
             if (ParameterSetName == DefaultProfileParameterSet)
             {
-                Profile = AzureSMCmdlet.InitializeDefaultProfile();
+                AzureSMProfileProvider.Instance.ResetDefaultProfile();
+                Profile = AzureSMProfileProvider.Instance.Profile;
             }
 
             if (Profile == null)
@@ -62,7 +64,7 @@ namespace Microsoft.WindowsAzure.Commands.Profile
                 throw new ArgumentException(Resources.AzureProfileMustNotBeNull);
             }
 
-            AzureSMCmdlet.CurrentProfile = Profile;
+            AzureSMProfileProvider.Instance.Profile = Profile;
             WriteObject(Profile);
         }
     }

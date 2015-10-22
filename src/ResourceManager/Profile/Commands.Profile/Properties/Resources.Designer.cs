@@ -61,6 +61,24 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to AccountId must be provided to use an AccessToken credential..
+        /// </summary>
+        internal static string AccessTokenRequiresAccount {
+            get {
+                return ResourceManager.GetString("AccessTokenRequiresAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Access token credentials must provide the AccountId parameter..
+        /// </summary>
+        internal static string AccountIdRequired {
+            get {
+                return ResourceManager.GetString("AccountIdRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Selected profile must not be null..
         /// </summary>
         internal static string AzureProfileMustNotBeNull {
@@ -70,11 +88,29 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please provide either a subscription ID or a subscription name..
+        /// </summary>
+        internal static string BothSubscriptionIdAndNameProvided {
+            get {
+                return ResourceManager.GetString("BothSubscriptionIdAndNameProvided", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not authenticate your user account {0} with the common tenant. Please login again using Login-AzureRmAccount..
         /// </summary>
         internal static string CommonTenantAuthFailed {
             get {
                 return ResourceManager.GetString("CommonTenantAuthFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The provided subscription ID &quot;{0}&quot; is not a valid Guid..
+        /// </summary>
+        internal static string InvalidSubscriptionId {
+            get {
+                return ResourceManager.GetString("InvalidSubscriptionId", resourceCulture);
             }
         }
         
@@ -111,6 +147,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string TenantAuthFailed {
             get {
                 return ResourceManager.GetString("TenantAuthFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To create an access token credential, you must provide an access token account..
+        /// </summary>
+        internal static string TypeNotAccessToken {
+            get {
+                return ResourceManager.GetString("TypeNotAccessToken", resourceCulture);
             }
         }
     }

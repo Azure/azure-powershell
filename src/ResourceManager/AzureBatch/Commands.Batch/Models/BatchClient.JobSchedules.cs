@@ -42,19 +42,20 @@ namespace Microsoft.Azure.Commands.Batch.Models
             {
                 WriteVerbose(string.Format(Resources.GetJobScheduleById, options.JobScheduleId));
                 JobScheduleOperations jobScheduleOperations = options.Context.BatchOMClient.JobScheduleOperations;
-                CloudJobSchedule jobSchedule = jobScheduleOperations.GetJobSchedule(options.JobScheduleId, additionalBehaviors: options.AdditionalBehaviors);
+                ODATADetailLevel getDetailLevel = new ODATADetailLevel(selectClause: options.Select, expandClause: options.Expand);
+                CloudJobSchedule jobSchedule = jobScheduleOperations.GetJobSchedule(options.JobScheduleId, detailLevel: getDetailLevel, additionalBehaviors: options.AdditionalBehaviors);
                 PSCloudJobSchedule psJobSchedule = new PSCloudJobSchedule(jobSchedule);
                 return new PSCloudJobSchedule[] { psJobSchedule };
             }
             // List job schedules using the specified filter
             else
             {
-                ODATADetailLevel odata = null;
                 string verboseLogString = null;
+                ODATADetailLevel listDetailLevel = new ODATADetailLevel(selectClause: options.Select, expandClause: options.Expand);
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
                     verboseLogString = Resources.GetJobScheduleByOData;
-                    odata = new ODATADetailLevel(filterClause: options.Filter);
+                    listDetailLevel.FilterClause = options.Filter;
                 }
                 else
                 {
@@ -63,7 +64,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 WriteVerbose(verboseLogString);
 
                 JobScheduleOperations jobScheduleOperations = options.Context.BatchOMClient.JobScheduleOperations;
-                IPagedEnumerable<CloudJobSchedule> workItems = jobScheduleOperations.ListJobSchedules(odata, options.AdditionalBehaviors);
+                IPagedEnumerable<CloudJobSchedule> workItems = jobScheduleOperations.ListJobSchedules(listDetailLevel, options.AdditionalBehaviors);
                 Func<CloudJobSchedule, PSCloudJobSchedule> mappingFunction = j => { return new PSCloudJobSchedule(j); };
                 return PSPagedEnumerable<PSCloudJobSchedule, CloudJobSchedule>.CreateWithMaxCount(
                     workItems, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));

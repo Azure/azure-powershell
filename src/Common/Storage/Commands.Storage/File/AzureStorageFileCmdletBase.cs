@@ -24,17 +24,20 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
     {
         [Parameter(
             ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.ShareNameParameterSetName,
             HelpMessage = "Azure Storage Context Object")]
         [Parameter(
             ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.MatchingPrefixParameterSetName,
             HelpMessage = "Azure Storage Context Object")]
         [Parameter(
             ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.SpecificParameterSetName,
             HelpMessage = "Azure Storage Context Object")]
-        public new AzureStorageContext Context { get; set; }
+        public override AzureStorageContext Context { get; set; }
 
         protected FileRequestOptions RequestOptions
         {

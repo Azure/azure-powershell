@@ -28,8 +28,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue
     {
         [Alias("N", "Queue")]
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Queue name",
-                   ValueFromPipeline = true,
-                   ValueFromPipelineByPropertyName = true)]
+             ValueFromPipeline = true,
+             ValueFromPipelineByPropertyName = true)]
         public string Name { get; set; }
 
         /// <summary>

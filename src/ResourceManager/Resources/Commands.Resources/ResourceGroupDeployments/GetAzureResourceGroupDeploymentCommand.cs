@@ -15,34 +15,50 @@
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Resources.Models;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 
 namespace Microsoft.Azure.Commands.Resources
 {
     /// <summary>
     /// Filters resource group deployments.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmResourceGroupDeployment"), OutputType(typeof(List<PSResourceGroupDeployment>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmResourceGroupDeployment", DefaultParameterSetName = GetAzureResourceGroupDeploymentCommand.DeploymentNameParameterSet), OutputType(typeof(List<PSResourceGroupDeployment>))]
     public class GetAzureResourceGroupDeploymentCommand : ResourcesBaseCmdlet
     {
-        [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.")]
+        /// <summary>
+        /// The deployment Id parameter set.
+        /// </summary>
+        internal const string DeploymentIdParameterSet = "The deployment Id parameter set.";
+
+        /// <summary>
+        /// The deployment name parameter set.
+        /// </summary>
+        internal const string DeploymentNameParameterSet = "The deployment name parameter set.";
+
+        [Parameter(Position = 0, ParameterSetName = GetAzureResourceGroupDeploymentCommand.DeploymentNameParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Alias("DeploymentName")]
-        [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group deployment.")]
+        [Parameter(Position = 1, ParameterSetName = GetAzureResourceGroupDeploymentCommand.DeploymentNameParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the resource group deployment.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The provisioning state of the resource group deployment.")]
         [ValidateNotNullOrEmpty]
         public string ProvisioningState { get; set; }
+
+        [Alias("DeploymentId", "ResourceId")]
+        [Parameter(ParameterSetName = GetAzureResourceGroupDeploymentCommand.DeploymentIdParameterSet, Mandatory = true, HelpMessage = "The fully qualified resource Id of the deployment. example: /subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/deployments/{deploymentName}")]
+        [ValidateNotNullOrEmpty]
+        public string Id { get; set; }
         
         protected override void ProcessRecord()
         {
             FilterResourceGroupDeploymentOptions options = new FilterResourceGroupDeploymentOptions()
             {
-                ResourceGroupName = ResourceGroupName,
-                DeploymentName = Name,
+                ResourceGroupName = ResourceGroupName ?? ResourceIdUtility.GetResourceGroupName(Id),
+                DeploymentName = Name ?? (string.IsNullOrEmpty(Id) ? null : ResourceIdUtility.GetResourceName(Id)),
                 ProvisioningStates = string.IsNullOrEmpty(ProvisioningState) ? new List<string>() : 
                     new List<string>() { ProvisioningState }
             };
