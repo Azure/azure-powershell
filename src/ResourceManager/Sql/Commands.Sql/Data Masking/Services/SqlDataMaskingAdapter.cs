@@ -21,6 +21,9 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using Microsoft.Azure.Commands.Sql.Common;
+using Microsoft.Azure.Commands.Sql.Database.Services;
+using Microsoft.Azure.Commands.Sql.Server.Services;
+using System.Text.RegularExpressions;
 
 namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
 {
@@ -50,12 +53,26 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
             Subscription = context.Subscription;
             Communicator = new DataMaskingEndpointsCommunicator(Context);
         }
+        
+        /// <summary>
+        ///  Checks whether the server is applicable for dynamic data masking
+        /// </summary>
+        private bool IsRightServerVersionForDataMasking(string resourceGroupName, string serverName, string clientId)
+        {
+            AzureSqlServerCommunicator dbCommunicator = new AzureSqlServerCommunicator(Context);
+            Management.Sql.Models.Server server = dbCommunicator.Get(resourceGroupName, serverName, clientId);
+            return server.Properties.Version == "12.0";
+        }
 
         /// <summary>
         /// Provides a cmdlet model representation of a specific database's data making policy
         /// </summary>
         public DatabaseDataMaskingPolicyModel GetDatabaseDataMaskingPolicy(string resourceGroup, string serverName, string databaseName, string requestId)
         {
+            if (!IsRightServerVersionForDataMasking(resourceGroup, serverName, requestId))
+            {
+                throw new Exception(Microsoft.Azure.Commands.Sql.Properties.Resources.ServerNotApplicableForDataMasking);
+            }
             DataMaskingPolicy policy = Communicator.GetDatabaseDataMaskingPolicy(resourceGroup, serverName, databaseName, requestId);
             DatabaseDataMaskingPolicyModel dbPolicyModel = ModelizeDatabaseDataMaskingPolicy(policy);
             dbPolicyModel.ResourceGroupName = resourceGroup;
@@ -69,6 +86,10 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// </summary>
         public void SetDatabaseDataMaskingPolicy(DatabaseDataMaskingPolicyModel model, String clientId)
         {
+            if (!IsRightServerVersionForDataMasking(model.ResourceGroupName,model.ServerName, clientId))
+            {
+                throw new Exception(Microsoft.Azure.Commands.Sql.Properties.Resources.ServerNotApplicableForDataMasking);
+            }
             DataMaskingPolicyCreateOrUpdateParameters parameters = PolicizeDatabaseDataMaskingModel(model);
             Communicator.SetDatabaseDataMaskingPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName, clientId, parameters);
         }
@@ -76,17 +97,11 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// <summary>
         /// Provides the data masking rule model for a specific data masking rule
         /// </summary>
-        public IList<DatabaseDataMaskingRuleModel> GetDatabaseDataMaskingRule(string resourceGroup, string serverName, string databaseName, string requestId, string ruleId = null)
+        public IList<DatabaseDataMaskingRuleModel> GetDatabaseDataMaskingRules(string resourceGroup, string serverName, string databaseName, string requestId)
         {
-            IList<DatabaseDataMaskingRuleModel> rules = 
-                (from r in Communicator.ListDataMaskingRules(resourceGroup, serverName, databaseName, requestId) 
-                where ruleId == null || r.Properties.Id == ruleId 
-                select ModelizeDatabaseDataMaskingRule(r, resourceGroup, serverName, databaseName)).ToList();
-            if(ruleId != null && rules.Count == 0)
-            {
-                throw new Exception(string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.DataMaskingRuleDoesNotExist, ruleId));
-            }
-            return rules;
+            return Communicator.ListDataMaskingRules(resourceGroup, serverName, databaseName, requestId).
+                Select(r => ModelizeDatabaseDataMaskingRule(r, resourceGroup, serverName, databaseName)).
+                ToList();
         }
 
         /// <summary>
@@ -94,6 +109,11 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// </summary>
         public void SetDatabaseDataMaskingRule(DatabaseDataMaskingRuleModel model, String clientId)
         {
+             if (!IsRightServerVersionForDataMasking(model.ResourceGroupName, model.ServerName, clientId))
+            {
+                throw new Exception(Microsoft.Azure.Commands.Sql.Properties.Resources.ServerNotApplicableForDataMasking);
+            }
+
             DatabaseDataMaskingPolicyModel policyModel = GetDatabaseDataMaskingPolicy(model.ResourceGroupName, model.ServerName, model.DatabaseName, clientId);
             if (policyModel.DataMaskingState == DataMaskingStateType.Uninitialized)
             {
@@ -101,7 +121,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
                 SetDatabaseDataMaskingPolicy(policyModel, clientId);
             }
             DataMaskingRuleCreateOrUpdateParameters parameters = PolicizeDatabaseDataRuleModel(model);
-            Communicator.SetDatabaseDataMaskingRule(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.RuleId, clientId, parameters);
+            Communicator.SetDatabaseDataMaskingRule(model.ResourceGroupName, model.ServerName, model.DatabaseName, ExtractDataMaskingRuleId(model), clientId, parameters);
         }
 
         /// <summary>
@@ -109,16 +129,28 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
         /// </summary>
         public void RemoveDatabaseDataMaskingRule(DatabaseDataMaskingRuleModel model, String clientId)
         {
+            if (!IsRightServerVersionForDataMasking(model.ResourceGroupName, model.ServerName, clientId))
+            {
+                throw new Exception(Microsoft.Azure.Commands.Sql.Properties.Resources.ServerNotApplicableForDataMasking);
+            }
             DataMaskingRuleCreateOrUpdateParameters parameters = PolicizeDatabaseDataRuleModel(model);
             parameters.Properties.RuleState = SecurityConstants.Disabled;
-            Communicator.SetDatabaseDataMaskingRule(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.RuleId, clientId, parameters);
+            string ruleId = ExtractDataMaskingRuleId(model);
+            Communicator.SetDatabaseDataMaskingRule(model.ResourceGroupName, model.ServerName, model.DatabaseName, ruleId, clientId, parameters);
             try
             {
-                Communicator.DeleteDataMaskingRule(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.RuleId, clientId);
+                Communicator.DeleteDataMaskingRule(model.ResourceGroupName, model.ServerName, model.DatabaseName, ruleId, clientId);
             }
             catch
             {
             }
+        }
+
+        private string ExtractDataMaskingRuleId(DatabaseDataMaskingRuleModel model)
+        {
+            var baseId = string.Format("{0}_{1}_{2}", model.SchemaName, model.TableName, model.ColumnName);
+            Regex rgx = new Regex("[/\\\\#+=<>*%&:?.]");
+            return rgx.Replace(baseId, "");
         }
 
         /// <summary>
@@ -131,7 +163,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
             DataMaskingRuleCreateOrUpdateParameters updateParameters = new DataMaskingRuleCreateOrUpdateParameters();
             DataMaskingRuleProperties properties = new DataMaskingRuleProperties();
             updateParameters.Properties = properties;
-            properties.Id = model.RuleId;
+            properties.Id = ExtractDataMaskingRuleId(model);
             properties.TableName = model.TableName;
             properties.SchemaName = model.SchemaName;
             properties.ColumnName = model.ColumnName;
@@ -173,7 +205,6 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Services
             dbRuleModel.ResourceGroupName = resourceGroup;
             dbRuleModel.ServerName = serverName;
             dbRuleModel.DatabaseName = databaseName;
-            dbRuleModel.RuleId = properties.Id;
             dbRuleModel.ColumnName = properties.ColumnName;
             dbRuleModel.TableName = properties.TableName;
             dbRuleModel.SchemaName = properties.SchemaName;
