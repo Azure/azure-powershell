@@ -48,8 +48,9 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(ParameterSetName = "User", Mandatory = false, HelpMessage = "Optional tenant name or ID")]
         [Parameter(ParameterSetName = "ServicePrincipal", Mandatory = true, HelpMessage = "TenantId name or ID")]
         [Parameter(ParameterSetName = "AccessToken", Mandatory = false, HelpMessage = "TenantId name or ID")]
+        [Alias("Tenant")]
         [ValidateNotNullOrEmpty]
-        public string Tenant { get; set; }
+        public string TenantId { get; set; }
 
         [Parameter(ParameterSetName = "AccessToken", Mandatory = true, HelpMessage = "AccessToken")]
         [ValidateNotNullOrEmpty]
