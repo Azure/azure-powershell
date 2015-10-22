@@ -324,4 +324,13 @@
   <data name="RoleDefinitionIdShouldBeAGuid" xml:space="preserve">
     <value>Role definition id should be a valid guid.</value>
   </data>
+  <data name="OperationSearchStringInvalidProviderName" xml:space="preserve">
+    <value>To get all operations under {0}, please specify the search string as {0}/*.</value>
+  </data>
+  <data name="OperationSearchStringInvalidWildcard" xml:space="preserve">
+    <value>Individual parts in the search string should either equal * or not contain *.</value>
+  </data>
+  <data name="ProviderOperationUnsupportedWildcard" xml:space="preserve">
+    <value>Wildcard character ? is not supported.</value>
+  </data>
 </root>

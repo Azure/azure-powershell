@@ -49,14 +49,15 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-AuditingDatabaseUpdatePolicyWithStorage");
         }
 
-        [Fact(Skip = "PSGet: TODO fix by moving SM specific logic to test setup")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingDatabaseUpdatePolicyWithStorageV2()
         {
             RunPowerShellTest("Test-AuditingDatabaseUpdatePolicyWithStorageV2");
         }
 
-        [Fact(Skip = "PSGet: TODO fix by moving SM specific logic to test setup")]        [Trait(Category.AcceptanceType, Category.Sql)]
+        [Fact(Skip = "PSGet: TODO fix by moving SM specific logic to test setup")]        
+        [Trait(Category.AcceptanceType, Category.Sql)]
         public void TestAuditingServerUpdatePolicyWithStorage()
         {
             RunPowerShellTest("Test-AuditingServerUpdatePolicyWithStorage");
