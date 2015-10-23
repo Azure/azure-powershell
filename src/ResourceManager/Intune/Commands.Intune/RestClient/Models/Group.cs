@@ -9,27 +9,23 @@ namespace Commands.Intune.RestClient.Models
     using Microsoft.Rest.Serialization;
 
     /// <summary>
+    /// Group entity for Intune MAM.
     /// </summary>
-    public partial class AndroidPolicyCollection
+    public partial class Group : Resource
     {
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "value")]
-        public IList<AndroidPolicy> Value { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "nextlink")]
-        public string Nextlink { get; set; }
+        [JsonProperty(PropertyName = "properties")]
+        public GroupProperties Properties { get; set; }
 
         /// <summary>
         /// Validate the object. Throws ArgumentException or ArgumentNullException if validation fails.
         /// </summary>
         public virtual void Validate()
         {
-            if (Value == null)
+            if (this.Properties != null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Value");
+                this.Properties.Validate();
             }
         }
     }

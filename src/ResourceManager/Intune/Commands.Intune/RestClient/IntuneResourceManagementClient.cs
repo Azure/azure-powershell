@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft Corporation.  All rights reserved.
+// Copyright (c) Microsoft Corporation. All rights reserved.
 
 namespace Commands.Intune.RestClient
 {
@@ -748,7 +748,411 @@ namespace Commands.Intune.RestClient
         }
 
         /// <summary>
-        /// Deletes Intune iOS MAM policies.
+        /// Returns Intune iOS policies.
+        /// </summary>
+        /// <param name='hostName'>
+        /// Location hostName for the tenant
+        /// </param>
+        /// <param name='policyId'>
+        /// policy unique Id
+        /// </param>
+        /// <param name='select'>
+        /// select specific fields in entity.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<HttpOperationResponse<IOSPolicy>> GetiOSPolicyByIdWithHttpMessagesAsync(string hostName, string policyId, string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (hostName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "hostName");
+            }
+            if (policyId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "policyId");
+            }
+            if (this.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.ApiVersion");
+            }
+            // Tracing
+            bool shouldTrace = ServiceClientTracing.IsEnabled;
+            string invocationId = null;
+            if (shouldTrace)
+            {
+                invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("hostName", hostName);
+                tracingParameters.Add("policyId", policyId);
+                tracingParameters.Add("select", select);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(invocationId, this, "GetiOSPolicyById", tracingParameters);
+            }
+            // Construct URL
+            var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyId}").ToString();
+            url = url.Replace("{hostName}", Uri.EscapeDataString(hostName));
+            url = url.Replace("{policyId}", Uri.EscapeDataString(policyId));
+            List<string> queryParameters = new List<string>();
+            if (this.ApiVersion != null)
+            {
+                queryParameters.Add(string.Format("api-version={0}", Uri.EscapeDataString(this.ApiVersion)));
+            }
+            if (select != null)
+            {
+                queryParameters.Add(string.Format("$select={0}", Uri.EscapeDataString(select)));
+            }
+            if (queryParameters.Count > 0)
+            {
+                url += "?" + string.Join("&", queryParameters);
+            }
+            // Create HTTP transport objects
+            HttpRequestMessage httpRequest = new HttpRequestMessage();
+            httpRequest.Method = new HttpMethod("GET");
+            httpRequest.RequestUri = new Uri(url);
+            // Set Headers
+            if (customHeaders != null)
+            {
+                foreach(var header in customHeaders)
+                {
+                    if (httpRequest.Headers.Contains(header.Key))
+                    {
+                        httpRequest.Headers.Remove(header.Key);
+                    }
+                    httpRequest.Headers.TryAddWithoutValidation(header.Key, header.Value);
+                }
+            }
+
+            // Set Credentials
+            if (this.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(invocationId, httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            HttpResponseMessage httpResponse = await this.HttpClient.SendAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            if (shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(invocationId, httpResponse);
+            }
+            HttpStatusCode statusCode = httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            if (!(statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK")))
+            {
+                var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", statusCode));
+                string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                Error errorBody = JsonConvert.DeserializeObject<Error>(responseContent, this.DeserializationSettings);
+                if (errorBody != null)
+                {
+                    ex.Body = errorBody;
+                }
+                ex.Request = httpRequest;
+                ex.Response = httpResponse;
+                if (shouldTrace)
+                {
+                    ServiceClientTracing.Error(invocationId, ex);
+                }
+                throw ex;
+            }
+            // Create Result
+            var result = new HttpOperationResponse<IOSPolicy>();
+            result.Request = httpRequest;
+            result.Response = httpResponse;
+            // Deserialize Response
+            if (statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK"))
+            {
+                string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                result.Body = JsonConvert.DeserializeObject<IOSPolicy>(responseContent, this.DeserializationSettings);
+            }
+            if (shouldTrace)
+            {
+                ServiceClientTracing.Exit(invocationId, result);
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Creates or updates iosPolicy.
+        /// </summary>
+        /// <param name='hostName'>
+        /// Location hostName for the tenant
+        /// </param>
+        /// <param name='policyId'>
+        /// policy unique Id
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to the Create or update an android policy operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<HttpOperationResponse<IOSPolicy>> CreateOrUpdateIOSPolicyWithHttpMessagesAsync(string hostName, string policyId, IOSPolicyRequestBody parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (hostName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "hostName");
+            }
+            if (policyId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "policyId");
+            }
+            if (this.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.ApiVersion");
+            }
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
+            // Tracing
+            bool shouldTrace = ServiceClientTracing.IsEnabled;
+            string invocationId = null;
+            if (shouldTrace)
+            {
+                invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("hostName", hostName);
+                tracingParameters.Add("policyId", policyId);
+                tracingParameters.Add("parameters", parameters);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(invocationId, this, "CreateOrUpdateIOSPolicy", tracingParameters);
+            }
+            // Construct URL
+            var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyId}").ToString();
+            url = url.Replace("{hostName}", Uri.EscapeDataString(hostName));
+            url = url.Replace("{policyId}", Uri.EscapeDataString(policyId));
+            List<string> queryParameters = new List<string>();
+            if (this.ApiVersion != null)
+            {
+                queryParameters.Add(string.Format("api-version={0}", Uri.EscapeDataString(this.ApiVersion)));
+            }
+            if (queryParameters.Count > 0)
+            {
+                url += "?" + string.Join("&", queryParameters);
+            }
+            // Create HTTP transport objects
+            HttpRequestMessage httpRequest = new HttpRequestMessage();
+            httpRequest.Method = new HttpMethod("PUT");
+            httpRequest.RequestUri = new Uri(url);
+            // Set Headers
+            if (customHeaders != null)
+            {
+                foreach(var header in customHeaders)
+                {
+                    if (httpRequest.Headers.Contains(header.Key))
+                    {
+                        httpRequest.Headers.Remove(header.Key);
+                    }
+                    httpRequest.Headers.TryAddWithoutValidation(header.Key, header.Value);
+                }
+            }
+
+            // Set Credentials
+            if (this.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Serialize Request
+            string requestContent = JsonConvert.SerializeObject(parameters, this.SerializationSettings);
+            httpRequest.Content = new StringContent(requestContent, Encoding.UTF8);
+            httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            // Send Request
+            if (shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(invocationId, httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            HttpResponseMessage httpResponse = await this.HttpClient.SendAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            if (shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(invocationId, httpResponse);
+            }
+            HttpStatusCode statusCode = httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            if (!(statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK")))
+            {
+                var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", statusCode));
+                string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                Error errorBody = JsonConvert.DeserializeObject<Error>(responseContent, this.DeserializationSettings);
+                if (errorBody != null)
+                {
+                    ex.Body = errorBody;
+                }
+                ex.Request = httpRequest;
+                ex.Response = httpResponse;
+                if (shouldTrace)
+                {
+                    ServiceClientTracing.Error(invocationId, ex);
+                }
+                throw ex;
+            }
+            // Create Result
+            var result = new HttpOperationResponse<IOSPolicy>();
+            result.Request = httpRequest;
+            result.Response = httpResponse;
+            // Deserialize Response
+            if (statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK"))
+            {
+                string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                result.Body = JsonConvert.DeserializeObject<IOSPolicy>(responseContent, this.DeserializationSettings);
+            }
+            if (shouldTrace)
+            {
+                ServiceClientTracing.Exit(invocationId, result);
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// patch an iosPolicy.
+        /// </summary>
+        /// <param name='hostName'>
+        /// Location hostName for the tenant
+        /// </param>
+        /// <param name='policyId'>
+        /// policy unique Id
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to the Create or update an android policy operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<HttpOperationResponse<IOSPolicy>> PatchIOSPolicyWithHttpMessagesAsync(string hostName, string policyId, IOSPolicyRequestBody parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (hostName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "hostName");
+            }
+            if (policyId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "policyId");
+            }
+            if (this.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.ApiVersion");
+            }
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
+            // Tracing
+            bool shouldTrace = ServiceClientTracing.IsEnabled;
+            string invocationId = null;
+            if (shouldTrace)
+            {
+                invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("hostName", hostName);
+                tracingParameters.Add("policyId", policyId);
+                tracingParameters.Add("parameters", parameters);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(invocationId, this, "PatchIOSPolicy", tracingParameters);
+            }
+            // Construct URL
+            var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyId}").ToString();
+            url = url.Replace("{hostName}", Uri.EscapeDataString(hostName));
+            url = url.Replace("{policyId}", Uri.EscapeDataString(policyId));
+            List<string> queryParameters = new List<string>();
+            if (this.ApiVersion != null)
+            {
+                queryParameters.Add(string.Format("api-version={0}", Uri.EscapeDataString(this.ApiVersion)));
+            }
+            if (queryParameters.Count > 0)
+            {
+                url += "?" + string.Join("&", queryParameters);
+            }
+            // Create HTTP transport objects
+            HttpRequestMessage httpRequest = new HttpRequestMessage();
+            httpRequest.Method = new HttpMethod("PATCH");
+            httpRequest.RequestUri = new Uri(url);
+            // Set Headers
+            if (customHeaders != null)
+            {
+                foreach(var header in customHeaders)
+                {
+                    if (httpRequest.Headers.Contains(header.Key))
+                    {
+                        httpRequest.Headers.Remove(header.Key);
+                    }
+                    httpRequest.Headers.TryAddWithoutValidation(header.Key, header.Value);
+                }
+            }
+
+            // Set Credentials
+            if (this.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Serialize Request
+            string requestContent = JsonConvert.SerializeObject(parameters, this.SerializationSettings);
+            httpRequest.Content = new StringContent(requestContent, Encoding.UTF8);
+            httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            // Send Request
+            if (shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(invocationId, httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            HttpResponseMessage httpResponse = await this.HttpClient.SendAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            if (shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(invocationId, httpResponse);
+            }
+            HttpStatusCode statusCode = httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            if (!(statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK")))
+            {
+                var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", statusCode));
+                string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                Error errorBody = JsonConvert.DeserializeObject<Error>(responseContent, this.DeserializationSettings);
+                if (errorBody != null)
+                {
+                    ex.Body = errorBody;
+                }
+                ex.Request = httpRequest;
+                ex.Response = httpResponse;
+                if (shouldTrace)
+                {
+                    ServiceClientTracing.Error(invocationId, ex);
+                }
+                throw ex;
+            }
+            // Create Result
+            var result = new HttpOperationResponse<IOSPolicy>();
+            result.Request = httpRequest;
+            result.Response = httpResponse;
+            // Deserialize Response
+            if (statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK"))
+            {
+                string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                result.Body = JsonConvert.DeserializeObject<IOSPolicy>(responseContent, this.DeserializationSettings);
+            }
+            if (shouldTrace)
+            {
+                ServiceClientTracing.Exit(invocationId, result);
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Delete Ios Policy
         /// </summary>
         /// <param name='hostName'>
         /// Location hostName for the tenant
@@ -762,7 +1166,7 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse> RemoveiOSPolicyByIdWithHttpMessagesAsync(string hostName, string policyId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse> DeleteIosPolicyWithHttpMessagesAsync(string hostName, string policyId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -786,7 +1190,7 @@ namespace Commands.Intune.RestClient
                 tracingParameters.Add("hostName", hostName);
                 tracingParameters.Add("policyId", policyId);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(invocationId, this, "RemoveiOSPolicyById", tracingParameters);
+                ServiceClientTracing.Enter(invocationId, this, "DeleteIosPolicy", tracingParameters);
             }
             // Construct URL
             var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyId}").ToString();
@@ -837,7 +1241,7 @@ namespace Commands.Intune.RestClient
             }
             HttpStatusCode statusCode = httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
-            if (!(statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "NoContent")))
+            if (!(statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK") || statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "NoContent")))
             {
                 var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", statusCode));
                 string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -1015,7 +1419,7 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse<AndroidPolicy>> CreateOrUpdateAndroidPolicyWithHttpMessagesAsync(string hostName, string policyId, AndroidPolicy parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<AndroidPolicy>> CreateOrUpdateAndroidPolicyWithHttpMessagesAsync(string hostName, string policyId, AndroidPolicyRequestBody parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -1134,6 +1538,142 @@ namespace Commands.Intune.RestClient
         }
 
         /// <summary>
+        /// Patch androidPolicy.
+        /// </summary>
+        /// <param name='hostName'>
+        /// Location hostName for the tenant
+        /// </param>
+        /// <param name='policyId'>
+        /// policy unique Id
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to the Create or update an android policy operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<HttpOperationResponse<AndroidPolicy>> PatchAndroidPolicyWithHttpMessagesAsync(string hostName, string policyId, AndroidPolicyRequestBody parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (hostName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "hostName");
+            }
+            if (policyId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "policyId");
+            }
+            if (this.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.ApiVersion");
+            }
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
+            // Tracing
+            bool shouldTrace = ServiceClientTracing.IsEnabled;
+            string invocationId = null;
+            if (shouldTrace)
+            {
+                invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("hostName", hostName);
+                tracingParameters.Add("policyId", policyId);
+                tracingParameters.Add("parameters", parameters);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(invocationId, this, "PatchAndroidPolicy", tracingParameters);
+            }
+            // Construct URL
+            var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/androidPolicies/{policyId}").ToString();
+            url = url.Replace("{hostName}", Uri.EscapeDataString(hostName));
+            url = url.Replace("{policyId}", Uri.EscapeDataString(policyId));
+            List<string> queryParameters = new List<string>();
+            if (this.ApiVersion != null)
+            {
+                queryParameters.Add(string.Format("api-version={0}", Uri.EscapeDataString(this.ApiVersion)));
+            }
+            if (queryParameters.Count > 0)
+            {
+                url += "?" + string.Join("&", queryParameters);
+            }
+            // Create HTTP transport objects
+            HttpRequestMessage httpRequest = new HttpRequestMessage();
+            httpRequest.Method = new HttpMethod("PATCH");
+            httpRequest.RequestUri = new Uri(url);
+            // Set Headers
+            if (customHeaders != null)
+            {
+                foreach(var header in customHeaders)
+                {
+                    if (httpRequest.Headers.Contains(header.Key))
+                    {
+                        httpRequest.Headers.Remove(header.Key);
+                    }
+                    httpRequest.Headers.TryAddWithoutValidation(header.Key, header.Value);
+                }
+            }
+
+            // Set Credentials
+            if (this.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Serialize Request
+            string requestContent = JsonConvert.SerializeObject(parameters, this.SerializationSettings);
+            httpRequest.Content = new StringContent(requestContent, Encoding.UTF8);
+            httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            // Send Request
+            if (shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(invocationId, httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            HttpResponseMessage httpResponse = await this.HttpClient.SendAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            if (shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(invocationId, httpResponse);
+            }
+            HttpStatusCode statusCode = httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            if (!(statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK")))
+            {
+                var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", statusCode));
+                string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                Error errorBody = JsonConvert.DeserializeObject<Error>(responseContent, this.DeserializationSettings);
+                if (errorBody != null)
+                {
+                    ex.Body = errorBody;
+                }
+                ex.Request = httpRequest;
+                ex.Response = httpResponse;
+                if (shouldTrace)
+                {
+                    ServiceClientTracing.Error(invocationId, ex);
+                }
+                throw ex;
+            }
+            // Create Result
+            var result = new HttpOperationResponse<AndroidPolicy>();
+            result.Request = httpRequest;
+            result.Response = httpResponse;
+            // Deserialize Response
+            if (statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK"))
+            {
+                string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                result.Body = JsonConvert.DeserializeObject<AndroidPolicy>(responseContent, this.DeserializationSettings);
+            }
+            if (shouldTrace)
+            {
+                ServiceClientTracing.Exit(invocationId, result);
+            }
+            return result;
+        }
+
+        /// <summary>
         /// Delete Android Policy
         /// </summary>
         /// <param name='hostName'>
@@ -1178,6 +1718,1337 @@ namespace Commands.Intune.RestClient
             var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/androidPolicies/{policyId}").ToString();
             url = url.Replace("{hostName}", Uri.EscapeDataString(hostName));
             url = url.Replace("{policyId}", Uri.EscapeDataString(policyId));
+            List<string> queryParameters = new List<string>();
+            if (this.ApiVersion != null)
+            {
+                queryParameters.Add(string.Format("api-version={0}", Uri.EscapeDataString(this.ApiVersion)));
+            }
+            if (queryParameters.Count > 0)
+            {
+                url += "?" + string.Join("&", queryParameters);
+            }
+            // Create HTTP transport objects
+            HttpRequestMessage httpRequest = new HttpRequestMessage();
+            httpRequest.Method = new HttpMethod("DELETE");
+            httpRequest.RequestUri = new Uri(url);
+            // Set Headers
+            if (customHeaders != null)
+            {
+                foreach(var header in customHeaders)
+                {
+                    if (httpRequest.Headers.Contains(header.Key))
+                    {
+                        httpRequest.Headers.Remove(header.Key);
+                    }
+                    httpRequest.Headers.TryAddWithoutValidation(header.Key, header.Value);
+                }
+            }
+
+            // Set Credentials
+            if (this.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(invocationId, httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            HttpResponseMessage httpResponse = await this.HttpClient.SendAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            if (shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(invocationId, httpResponse);
+            }
+            HttpStatusCode statusCode = httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            if (!(statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK") || statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "NoContent")))
+            {
+                var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", statusCode));
+                string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                Error errorBody = JsonConvert.DeserializeObject<Error>(responseContent, this.DeserializationSettings);
+                if (errorBody != null)
+                {
+                    ex.Body = errorBody;
+                }
+                ex.Request = httpRequest;
+                ex.Response = httpResponse;
+                if (shouldTrace)
+                {
+                    ServiceClientTracing.Error(invocationId, ex);
+                }
+                throw ex;
+            }
+            // Create Result
+            var result = new HttpOperationResponse();
+            result.Request = httpRequest;
+            result.Response = httpResponse;
+            if (shouldTrace)
+            {
+                ServiceClientTracing.Exit(invocationId, result);
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Add app to an iosPolicy.
+        /// </summary>
+        /// <param name='hostName'>
+        /// Location hostName for the tenant
+        /// </param>
+        /// <param name='policyId'>
+        /// policy unique Id
+        /// </param>
+        /// <param name='appId'>
+        /// application unique Id
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to add an app to an ios policy.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<HttpOperationResponse> AddAppForIOSPolicyWithHttpMessagesAsync(string hostName, string policyId, string appId, MAMPolicyAppIdOrGroupIdPayload parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (hostName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "hostName");
+            }
+            if (policyId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "policyId");
+            }
+            if (appId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "appId");
+            }
+            if (this.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.ApiVersion");
+            }
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
+            if (parameters != null)
+            {
+                parameters.Validate();
+            }
+            // Tracing
+            bool shouldTrace = ServiceClientTracing.IsEnabled;
+            string invocationId = null;
+            if (shouldTrace)
+            {
+                invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("hostName", hostName);
+                tracingParameters.Add("policyId", policyId);
+                tracingParameters.Add("appId", appId);
+                tracingParameters.Add("parameters", parameters);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(invocationId, this, "AddAppForIOSPolicy", tracingParameters);
+            }
+            // Construct URL
+            var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyId}/apps/{appId}").ToString();
+            url = url.Replace("{hostName}", Uri.EscapeDataString(hostName));
+            url = url.Replace("{policyId}", Uri.EscapeDataString(policyId));
+            url = url.Replace("{appId}", Uri.EscapeDataString(appId));
+            List<string> queryParameters = new List<string>();
+            if (this.ApiVersion != null)
+            {
+                queryParameters.Add(string.Format("api-version={0}", Uri.EscapeDataString(this.ApiVersion)));
+            }
+            if (queryParameters.Count > 0)
+            {
+                url += "?" + string.Join("&", queryParameters);
+            }
+            // Create HTTP transport objects
+            HttpRequestMessage httpRequest = new HttpRequestMessage();
+            httpRequest.Method = new HttpMethod("PUT");
+            httpRequest.RequestUri = new Uri(url);
+            // Set Headers
+            if (customHeaders != null)
+            {
+                foreach(var header in customHeaders)
+                {
+                    if (httpRequest.Headers.Contains(header.Key))
+                    {
+                        httpRequest.Headers.Remove(header.Key);
+                    }
+                    httpRequest.Headers.TryAddWithoutValidation(header.Key, header.Value);
+                }
+            }
+
+            // Set Credentials
+            if (this.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Serialize Request
+            string requestContent = JsonConvert.SerializeObject(parameters, this.SerializationSettings);
+            httpRequest.Content = new StringContent(requestContent, Encoding.UTF8);
+            httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            // Send Request
+            if (shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(invocationId, httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            HttpResponseMessage httpResponse = await this.HttpClient.SendAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            if (shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(invocationId, httpResponse);
+            }
+            HttpStatusCode statusCode = httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            if (!(statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK") || statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "NoContent")))
+            {
+                var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", statusCode));
+                string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                Error errorBody = JsonConvert.DeserializeObject<Error>(responseContent, this.DeserializationSettings);
+                if (errorBody != null)
+                {
+                    ex.Body = errorBody;
+                }
+                ex.Request = httpRequest;
+                ex.Response = httpResponse;
+                if (shouldTrace)
+                {
+                    ServiceClientTracing.Error(invocationId, ex);
+                }
+                throw ex;
+            }
+            // Create Result
+            var result = new HttpOperationResponse();
+            result.Request = httpRequest;
+            result.Response = httpResponse;
+            if (shouldTrace)
+            {
+                ServiceClientTracing.Exit(invocationId, result);
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Delete App for Ios Policy
+        /// </summary>
+        /// <param name='hostName'>
+        /// Location hostName for the tenant
+        /// </param>
+        /// <param name='policyId'>
+        /// policy unique Id
+        /// </param>
+        /// <param name='appId'>
+        /// application unique Id
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<HttpOperationResponse> DeleteAppForIosPolicyWithHttpMessagesAsync(string hostName, string policyId, string appId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (hostName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "hostName");
+            }
+            if (policyId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "policyId");
+            }
+            if (appId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "appId");
+            }
+            if (this.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.ApiVersion");
+            }
+            // Tracing
+            bool shouldTrace = ServiceClientTracing.IsEnabled;
+            string invocationId = null;
+            if (shouldTrace)
+            {
+                invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("hostName", hostName);
+                tracingParameters.Add("policyId", policyId);
+                tracingParameters.Add("appId", appId);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(invocationId, this, "DeleteAppForIosPolicy", tracingParameters);
+            }
+            // Construct URL
+            var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyId}/apps/{appId}").ToString();
+            url = url.Replace("{hostName}", Uri.EscapeDataString(hostName));
+            url = url.Replace("{policyId}", Uri.EscapeDataString(policyId));
+            url = url.Replace("{appId}", Uri.EscapeDataString(appId));
+            List<string> queryParameters = new List<string>();
+            if (this.ApiVersion != null)
+            {
+                queryParameters.Add(string.Format("api-version={0}", Uri.EscapeDataString(this.ApiVersion)));
+            }
+            if (queryParameters.Count > 0)
+            {
+                url += "?" + string.Join("&", queryParameters);
+            }
+            // Create HTTP transport objects
+            HttpRequestMessage httpRequest = new HttpRequestMessage();
+            httpRequest.Method = new HttpMethod("DELETE");
+            httpRequest.RequestUri = new Uri(url);
+            // Set Headers
+            if (customHeaders != null)
+            {
+                foreach(var header in customHeaders)
+                {
+                    if (httpRequest.Headers.Contains(header.Key))
+                    {
+                        httpRequest.Headers.Remove(header.Key);
+                    }
+                    httpRequest.Headers.TryAddWithoutValidation(header.Key, header.Value);
+                }
+            }
+
+            // Set Credentials
+            if (this.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(invocationId, httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            HttpResponseMessage httpResponse = await this.HttpClient.SendAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            if (shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(invocationId, httpResponse);
+            }
+            HttpStatusCode statusCode = httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            if (!(statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK") || statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "NoContent")))
+            {
+                var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", statusCode));
+                string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                Error errorBody = JsonConvert.DeserializeObject<Error>(responseContent, this.DeserializationSettings);
+                if (errorBody != null)
+                {
+                    ex.Body = errorBody;
+                }
+                ex.Request = httpRequest;
+                ex.Response = httpResponse;
+                if (shouldTrace)
+                {
+                    ServiceClientTracing.Error(invocationId, ex);
+                }
+                throw ex;
+            }
+            // Create Result
+            var result = new HttpOperationResponse();
+            result.Request = httpRequest;
+            result.Response = httpResponse;
+            if (shouldTrace)
+            {
+                ServiceClientTracing.Exit(invocationId, result);
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Add app to an androidPolicy.
+        /// </summary>
+        /// <param name='hostName'>
+        /// Location hostName for the tenant
+        /// </param>
+        /// <param name='policyId'>
+        /// policy unique Id
+        /// </param>
+        /// <param name='appId'>
+        /// application unique Id
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to the Create or update app to an android policy
+        /// operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<HttpOperationResponse> AddAppForAndriodPolicyWithHttpMessagesAsync(string hostName, string policyId, string appId, MAMPolicyAppIdOrGroupIdPayload parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (hostName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "hostName");
+            }
+            if (policyId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "policyId");
+            }
+            if (appId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "appId");
+            }
+            if (this.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.ApiVersion");
+            }
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
+            if (parameters != null)
+            {
+                parameters.Validate();
+            }
+            // Tracing
+            bool shouldTrace = ServiceClientTracing.IsEnabled;
+            string invocationId = null;
+            if (shouldTrace)
+            {
+                invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("hostName", hostName);
+                tracingParameters.Add("policyId", policyId);
+                tracingParameters.Add("appId", appId);
+                tracingParameters.Add("parameters", parameters);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(invocationId, this, "AddAppForAndriodPolicy", tracingParameters);
+            }
+            // Construct URL
+            var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/andriodPolicies/{policyId}/apps/{appId}").ToString();
+            url = url.Replace("{hostName}", Uri.EscapeDataString(hostName));
+            url = url.Replace("{policyId}", Uri.EscapeDataString(policyId));
+            url = url.Replace("{appId}", Uri.EscapeDataString(appId));
+            List<string> queryParameters = new List<string>();
+            if (this.ApiVersion != null)
+            {
+                queryParameters.Add(string.Format("api-version={0}", Uri.EscapeDataString(this.ApiVersion)));
+            }
+            if (queryParameters.Count > 0)
+            {
+                url += "?" + string.Join("&", queryParameters);
+            }
+            // Create HTTP transport objects
+            HttpRequestMessage httpRequest = new HttpRequestMessage();
+            httpRequest.Method = new HttpMethod("PUT");
+            httpRequest.RequestUri = new Uri(url);
+            // Set Headers
+            if (customHeaders != null)
+            {
+                foreach(var header in customHeaders)
+                {
+                    if (httpRequest.Headers.Contains(header.Key))
+                    {
+                        httpRequest.Headers.Remove(header.Key);
+                    }
+                    httpRequest.Headers.TryAddWithoutValidation(header.Key, header.Value);
+                }
+            }
+
+            // Set Credentials
+            if (this.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Serialize Request
+            string requestContent = JsonConvert.SerializeObject(parameters, this.SerializationSettings);
+            httpRequest.Content = new StringContent(requestContent, Encoding.UTF8);
+            httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            // Send Request
+            if (shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(invocationId, httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            HttpResponseMessage httpResponse = await this.HttpClient.SendAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            if (shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(invocationId, httpResponse);
+            }
+            HttpStatusCode statusCode = httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            if (!(statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK") || statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "NoContent")))
+            {
+                var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", statusCode));
+                string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                Error errorBody = JsonConvert.DeserializeObject<Error>(responseContent, this.DeserializationSettings);
+                if (errorBody != null)
+                {
+                    ex.Body = errorBody;
+                }
+                ex.Request = httpRequest;
+                ex.Response = httpResponse;
+                if (shouldTrace)
+                {
+                    ServiceClientTracing.Error(invocationId, ex);
+                }
+                throw ex;
+            }
+            // Create Result
+            var result = new HttpOperationResponse();
+            result.Request = httpRequest;
+            result.Response = httpResponse;
+            if (shouldTrace)
+            {
+                ServiceClientTracing.Exit(invocationId, result);
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Delete App for Android Policy
+        /// </summary>
+        /// <param name='hostName'>
+        /// Location hostName for the tenant
+        /// </param>
+        /// <param name='policyId'>
+        /// policy unique Id
+        /// </param>
+        /// <param name='appId'>
+        /// application unique Id
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<HttpOperationResponse> DeleteAppForAndroidPolicyWithHttpMessagesAsync(string hostName, string policyId, string appId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (hostName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "hostName");
+            }
+            if (policyId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "policyId");
+            }
+            if (appId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "appId");
+            }
+            if (this.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.ApiVersion");
+            }
+            // Tracing
+            bool shouldTrace = ServiceClientTracing.IsEnabled;
+            string invocationId = null;
+            if (shouldTrace)
+            {
+                invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("hostName", hostName);
+                tracingParameters.Add("policyId", policyId);
+                tracingParameters.Add("appId", appId);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(invocationId, this, "DeleteAppForAndroidPolicy", tracingParameters);
+            }
+            // Construct URL
+            var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/andriodPolicies/{policyId}/apps/{appId}").ToString();
+            url = url.Replace("{hostName}", Uri.EscapeDataString(hostName));
+            url = url.Replace("{policyId}", Uri.EscapeDataString(policyId));
+            url = url.Replace("{appId}", Uri.EscapeDataString(appId));
+            List<string> queryParameters = new List<string>();
+            if (this.ApiVersion != null)
+            {
+                queryParameters.Add(string.Format("api-version={0}", Uri.EscapeDataString(this.ApiVersion)));
+            }
+            if (queryParameters.Count > 0)
+            {
+                url += "?" + string.Join("&", queryParameters);
+            }
+            // Create HTTP transport objects
+            HttpRequestMessage httpRequest = new HttpRequestMessage();
+            httpRequest.Method = new HttpMethod("DELETE");
+            httpRequest.RequestUri = new Uri(url);
+            // Set Headers
+            if (customHeaders != null)
+            {
+                foreach(var header in customHeaders)
+                {
+                    if (httpRequest.Headers.Contains(header.Key))
+                    {
+                        httpRequest.Headers.Remove(header.Key);
+                    }
+                    httpRequest.Headers.TryAddWithoutValidation(header.Key, header.Value);
+                }
+            }
+
+            // Set Credentials
+            if (this.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(invocationId, httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            HttpResponseMessage httpResponse = await this.HttpClient.SendAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            if (shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(invocationId, httpResponse);
+            }
+            HttpStatusCode statusCode = httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            if (!(statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK") || statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "NoContent")))
+            {
+                var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", statusCode));
+                string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                Error errorBody = JsonConvert.DeserializeObject<Error>(responseContent, this.DeserializationSettings);
+                if (errorBody != null)
+                {
+                    ex.Body = errorBody;
+                }
+                ex.Request = httpRequest;
+                ex.Response = httpResponse;
+                if (shouldTrace)
+                {
+                    ServiceClientTracing.Error(invocationId, ex);
+                }
+                throw ex;
+            }
+            // Create Result
+            var result = new HttpOperationResponse();
+            result.Request = httpRequest;
+            result.Response = httpResponse;
+            if (shouldTrace)
+            {
+                ServiceClientTracing.Exit(invocationId, result);
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Returns groups for a given ioSPolicy.
+        /// </summary>
+        /// <param name='hostName'>
+        /// Location hostName for the tenant
+        /// </param>
+        /// <param name='policyId'>
+        /// policy id for the tenant
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<HttpOperationResponse<GroupsCollection>> GetGroupsForiOSPolicyWithHttpMessagesAsync(string hostName, string policyId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (hostName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "hostName");
+            }
+            if (policyId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "policyId");
+            }
+            if (this.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.ApiVersion");
+            }
+            // Tracing
+            bool shouldTrace = ServiceClientTracing.IsEnabled;
+            string invocationId = null;
+            if (shouldTrace)
+            {
+                invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("hostName", hostName);
+                tracingParameters.Add("policyId", policyId);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(invocationId, this, "GetGroupsForiOSPolicy", tracingParameters);
+            }
+            // Construct URL
+            var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyId}/groups").ToString();
+            url = url.Replace("{hostName}", Uri.EscapeDataString(hostName));
+            url = url.Replace("{policyId}", Uri.EscapeDataString(policyId));
+            List<string> queryParameters = new List<string>();
+            if (this.ApiVersion != null)
+            {
+                queryParameters.Add(string.Format("api-version={0}", Uri.EscapeDataString(this.ApiVersion)));
+            }
+            if (queryParameters.Count > 0)
+            {
+                url += "?" + string.Join("&", queryParameters);
+            }
+            // Create HTTP transport objects
+            HttpRequestMessage httpRequest = new HttpRequestMessage();
+            httpRequest.Method = new HttpMethod("GET");
+            httpRequest.RequestUri = new Uri(url);
+            // Set Headers
+            if (customHeaders != null)
+            {
+                foreach(var header in customHeaders)
+                {
+                    if (httpRequest.Headers.Contains(header.Key))
+                    {
+                        httpRequest.Headers.Remove(header.Key);
+                    }
+                    httpRequest.Headers.TryAddWithoutValidation(header.Key, header.Value);
+                }
+            }
+
+            // Set Credentials
+            if (this.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(invocationId, httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            HttpResponseMessage httpResponse = await this.HttpClient.SendAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            if (shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(invocationId, httpResponse);
+            }
+            HttpStatusCode statusCode = httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            if (!(statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK")))
+            {
+                var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", statusCode));
+                string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                Error errorBody = JsonConvert.DeserializeObject<Error>(responseContent, this.DeserializationSettings);
+                if (errorBody != null)
+                {
+                    ex.Body = errorBody;
+                }
+                ex.Request = httpRequest;
+                ex.Response = httpResponse;
+                if (shouldTrace)
+                {
+                    ServiceClientTracing.Error(invocationId, ex);
+                }
+                throw ex;
+            }
+            // Create Result
+            var result = new HttpOperationResponse<GroupsCollection>();
+            result.Request = httpRequest;
+            result.Response = httpResponse;
+            // Deserialize Response
+            if (statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK"))
+            {
+                string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                result.Body = JsonConvert.DeserializeObject<GroupsCollection>(responseContent, this.DeserializationSettings);
+            }
+            if (shouldTrace)
+            {
+                ServiceClientTracing.Exit(invocationId, result);
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Returns groups for a given androidPolicy.
+        /// </summary>
+        /// <param name='hostName'>
+        /// Location hostName for the tenant
+        /// </param>
+        /// <param name='policyId'>
+        /// policy id for the tenant
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<HttpOperationResponse<GroupsCollection>> GetGroupsForAndroidPolicyWithHttpMessagesAsync(string hostName, string policyId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (hostName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "hostName");
+            }
+            if (policyId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "policyId");
+            }
+            if (this.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.ApiVersion");
+            }
+            // Tracing
+            bool shouldTrace = ServiceClientTracing.IsEnabled;
+            string invocationId = null;
+            if (shouldTrace)
+            {
+                invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("hostName", hostName);
+                tracingParameters.Add("policyId", policyId);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(invocationId, this, "GetGroupsForAndroidPolicy", tracingParameters);
+            }
+            // Construct URL
+            var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/androidPolicies/{policyId}/groups").ToString();
+            url = url.Replace("{hostName}", Uri.EscapeDataString(hostName));
+            url = url.Replace("{policyId}", Uri.EscapeDataString(policyId));
+            List<string> queryParameters = new List<string>();
+            if (this.ApiVersion != null)
+            {
+                queryParameters.Add(string.Format("api-version={0}", Uri.EscapeDataString(this.ApiVersion)));
+            }
+            if (queryParameters.Count > 0)
+            {
+                url += "?" + string.Join("&", queryParameters);
+            }
+            // Create HTTP transport objects
+            HttpRequestMessage httpRequest = new HttpRequestMessage();
+            httpRequest.Method = new HttpMethod("GET");
+            httpRequest.RequestUri = new Uri(url);
+            // Set Headers
+            if (customHeaders != null)
+            {
+                foreach(var header in customHeaders)
+                {
+                    if (httpRequest.Headers.Contains(header.Key))
+                    {
+                        httpRequest.Headers.Remove(header.Key);
+                    }
+                    httpRequest.Headers.TryAddWithoutValidation(header.Key, header.Value);
+                }
+            }
+
+            // Set Credentials
+            if (this.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(invocationId, httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            HttpResponseMessage httpResponse = await this.HttpClient.SendAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            if (shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(invocationId, httpResponse);
+            }
+            HttpStatusCode statusCode = httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            if (!(statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK")))
+            {
+                var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", statusCode));
+                string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                Error errorBody = JsonConvert.DeserializeObject<Error>(responseContent, this.DeserializationSettings);
+                if (errorBody != null)
+                {
+                    ex.Body = errorBody;
+                }
+                ex.Request = httpRequest;
+                ex.Response = httpResponse;
+                if (shouldTrace)
+                {
+                    ServiceClientTracing.Error(invocationId, ex);
+                }
+                throw ex;
+            }
+            // Create Result
+            var result = new HttpOperationResponse<GroupsCollection>();
+            result.Request = httpRequest;
+            result.Response = httpResponse;
+            // Deserialize Response
+            if (statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK"))
+            {
+                string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                result.Body = JsonConvert.DeserializeObject<GroupsCollection>(responseContent, this.DeserializationSettings);
+            }
+            if (shouldTrace)
+            {
+                ServiceClientTracing.Exit(invocationId, result);
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Add group to an iosPolicy.
+        /// </summary>
+        /// <param name='hostName'>
+        /// Location hostName for the tenant
+        /// </param>
+        /// <param name='policyId'>
+        /// policy unique Id
+        /// </param>
+        /// <param name='groupId'>
+        /// group Id
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to the Create or update app to an android policy
+        /// operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<HttpOperationResponse> AddGroupForiOSPolicyWithHttpMessagesAsync(string hostName, string policyId, string groupId, MAMPolicyAppIdOrGroupIdPayload parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (hostName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "hostName");
+            }
+            if (policyId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "policyId");
+            }
+            if (groupId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "groupId");
+            }
+            if (this.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.ApiVersion");
+            }
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
+            if (parameters != null)
+            {
+                parameters.Validate();
+            }
+            // Tracing
+            bool shouldTrace = ServiceClientTracing.IsEnabled;
+            string invocationId = null;
+            if (shouldTrace)
+            {
+                invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("hostName", hostName);
+                tracingParameters.Add("policyId", policyId);
+                tracingParameters.Add("groupId", groupId);
+                tracingParameters.Add("parameters", parameters);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(invocationId, this, "AddGroupForiOSPolicy", tracingParameters);
+            }
+            // Construct URL
+            var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyId}/groups/{groupId}").ToString();
+            url = url.Replace("{hostName}", Uri.EscapeDataString(hostName));
+            url = url.Replace("{policyId}", Uri.EscapeDataString(policyId));
+            url = url.Replace("{groupId}", Uri.EscapeDataString(groupId));
+            List<string> queryParameters = new List<string>();
+            if (this.ApiVersion != null)
+            {
+                queryParameters.Add(string.Format("api-version={0}", Uri.EscapeDataString(this.ApiVersion)));
+            }
+            if (queryParameters.Count > 0)
+            {
+                url += "?" + string.Join("&", queryParameters);
+            }
+            // Create HTTP transport objects
+            HttpRequestMessage httpRequest = new HttpRequestMessage();
+            httpRequest.Method = new HttpMethod("PUT");
+            httpRequest.RequestUri = new Uri(url);
+            // Set Headers
+            if (customHeaders != null)
+            {
+                foreach(var header in customHeaders)
+                {
+                    if (httpRequest.Headers.Contains(header.Key))
+                    {
+                        httpRequest.Headers.Remove(header.Key);
+                    }
+                    httpRequest.Headers.TryAddWithoutValidation(header.Key, header.Value);
+                }
+            }
+
+            // Set Credentials
+            if (this.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Serialize Request
+            string requestContent = JsonConvert.SerializeObject(parameters, this.SerializationSettings);
+            httpRequest.Content = new StringContent(requestContent, Encoding.UTF8);
+            httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            // Send Request
+            if (shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(invocationId, httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            HttpResponseMessage httpResponse = await this.HttpClient.SendAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            if (shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(invocationId, httpResponse);
+            }
+            HttpStatusCode statusCode = httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            if (!(statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK") || statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "NoContent")))
+            {
+                var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", statusCode));
+                string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                Error errorBody = JsonConvert.DeserializeObject<Error>(responseContent, this.DeserializationSettings);
+                if (errorBody != null)
+                {
+                    ex.Body = errorBody;
+                }
+                ex.Request = httpRequest;
+                ex.Response = httpResponse;
+                if (shouldTrace)
+                {
+                    ServiceClientTracing.Error(invocationId, ex);
+                }
+                throw ex;
+            }
+            // Create Result
+            var result = new HttpOperationResponse();
+            result.Request = httpRequest;
+            result.Response = httpResponse;
+            if (shouldTrace)
+            {
+                ServiceClientTracing.Exit(invocationId, result);
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Delete Group for iOS Policy
+        /// </summary>
+        /// <param name='hostName'>
+        /// Location hostName for the tenant
+        /// </param>
+        /// <param name='policyId'>
+        /// policy unique Id
+        /// </param>
+        /// <param name='groupId'>
+        /// application unique Id
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<HttpOperationResponse> DeleteGroupForiOSPolicyWithHttpMessagesAsync(string hostName, string policyId, string groupId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (hostName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "hostName");
+            }
+            if (policyId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "policyId");
+            }
+            if (groupId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "groupId");
+            }
+            if (this.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.ApiVersion");
+            }
+            // Tracing
+            bool shouldTrace = ServiceClientTracing.IsEnabled;
+            string invocationId = null;
+            if (shouldTrace)
+            {
+                invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("hostName", hostName);
+                tracingParameters.Add("policyId", policyId);
+                tracingParameters.Add("groupId", groupId);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(invocationId, this, "DeleteGroupForiOSPolicy", tracingParameters);
+            }
+            // Construct URL
+            var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyId}/groups/{groupId}").ToString();
+            url = url.Replace("{hostName}", Uri.EscapeDataString(hostName));
+            url = url.Replace("{policyId}", Uri.EscapeDataString(policyId));
+            url = url.Replace("{groupId}", Uri.EscapeDataString(groupId));
+            List<string> queryParameters = new List<string>();
+            if (this.ApiVersion != null)
+            {
+                queryParameters.Add(string.Format("api-version={0}", Uri.EscapeDataString(this.ApiVersion)));
+            }
+            if (queryParameters.Count > 0)
+            {
+                url += "?" + string.Join("&", queryParameters);
+            }
+            // Create HTTP transport objects
+            HttpRequestMessage httpRequest = new HttpRequestMessage();
+            httpRequest.Method = new HttpMethod("DELETE");
+            httpRequest.RequestUri = new Uri(url);
+            // Set Headers
+            if (customHeaders != null)
+            {
+                foreach(var header in customHeaders)
+                {
+                    if (httpRequest.Headers.Contains(header.Key))
+                    {
+                        httpRequest.Headers.Remove(header.Key);
+                    }
+                    httpRequest.Headers.TryAddWithoutValidation(header.Key, header.Value);
+                }
+            }
+
+            // Set Credentials
+            if (this.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Send Request
+            if (shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(invocationId, httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            HttpResponseMessage httpResponse = await this.HttpClient.SendAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            if (shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(invocationId, httpResponse);
+            }
+            HttpStatusCode statusCode = httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            if (!(statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK") || statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "NoContent")))
+            {
+                var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", statusCode));
+                string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                Error errorBody = JsonConvert.DeserializeObject<Error>(responseContent, this.DeserializationSettings);
+                if (errorBody != null)
+                {
+                    ex.Body = errorBody;
+                }
+                ex.Request = httpRequest;
+                ex.Response = httpResponse;
+                if (shouldTrace)
+                {
+                    ServiceClientTracing.Error(invocationId, ex);
+                }
+                throw ex;
+            }
+            // Create Result
+            var result = new HttpOperationResponse();
+            result.Request = httpRequest;
+            result.Response = httpResponse;
+            if (shouldTrace)
+            {
+                ServiceClientTracing.Exit(invocationId, result);
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Add group to an androidPolicy.
+        /// </summary>
+        /// <param name='hostName'>
+        /// Location hostName for the tenant
+        /// </param>
+        /// <param name='policyId'>
+        /// policy unique Id
+        /// </param>
+        /// <param name='groupId'>
+        /// group Id
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to the Create or update app to an android policy
+        /// operation.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<HttpOperationResponse> AddGroupForAndriodPolicyWithHttpMessagesAsync(string hostName, string policyId, string groupId, MAMPolicyAppIdOrGroupIdPayload parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (hostName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "hostName");
+            }
+            if (policyId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "policyId");
+            }
+            if (groupId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "groupId");
+            }
+            if (this.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.ApiVersion");
+            }
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
+            if (parameters != null)
+            {
+                parameters.Validate();
+            }
+            // Tracing
+            bool shouldTrace = ServiceClientTracing.IsEnabled;
+            string invocationId = null;
+            if (shouldTrace)
+            {
+                invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("hostName", hostName);
+                tracingParameters.Add("policyId", policyId);
+                tracingParameters.Add("groupId", groupId);
+                tracingParameters.Add("parameters", parameters);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(invocationId, this, "AddGroupForAndriodPolicy", tracingParameters);
+            }
+            // Construct URL
+            var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/andriodPolicies/{policyId}/groups/{groupId}").ToString();
+            url = url.Replace("{hostName}", Uri.EscapeDataString(hostName));
+            url = url.Replace("{policyId}", Uri.EscapeDataString(policyId));
+            url = url.Replace("{groupId}", Uri.EscapeDataString(groupId));
+            List<string> queryParameters = new List<string>();
+            if (this.ApiVersion != null)
+            {
+                queryParameters.Add(string.Format("api-version={0}", Uri.EscapeDataString(this.ApiVersion)));
+            }
+            if (queryParameters.Count > 0)
+            {
+                url += "?" + string.Join("&", queryParameters);
+            }
+            // Create HTTP transport objects
+            HttpRequestMessage httpRequest = new HttpRequestMessage();
+            httpRequest.Method = new HttpMethod("PUT");
+            httpRequest.RequestUri = new Uri(url);
+            // Set Headers
+            if (customHeaders != null)
+            {
+                foreach(var header in customHeaders)
+                {
+                    if (httpRequest.Headers.Contains(header.Key))
+                    {
+                        httpRequest.Headers.Remove(header.Key);
+                    }
+                    httpRequest.Headers.TryAddWithoutValidation(header.Key, header.Value);
+                }
+            }
+
+            // Set Credentials
+            if (this.Credentials != null)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                await this.Credentials.ProcessHttpRequestAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            }
+            // Serialize Request
+            string requestContent = JsonConvert.SerializeObject(parameters, this.SerializationSettings);
+            httpRequest.Content = new StringContent(requestContent, Encoding.UTF8);
+            httpRequest.Content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
+            // Send Request
+            if (shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(invocationId, httpRequest);
+            }
+            cancellationToken.ThrowIfCancellationRequested();
+            HttpResponseMessage httpResponse = await this.HttpClient.SendAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            if (shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(invocationId, httpResponse);
+            }
+            HttpStatusCode statusCode = httpResponse.StatusCode;
+            cancellationToken.ThrowIfCancellationRequested();
+            if (!(statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK") || statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "NoContent")))
+            {
+                var ex = new HttpOperationException(string.Format("Operation returned an invalid status code '{0}'", statusCode));
+                string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                Error errorBody = JsonConvert.DeserializeObject<Error>(responseContent, this.DeserializationSettings);
+                if (errorBody != null)
+                {
+                    ex.Body = errorBody;
+                }
+                ex.Request = httpRequest;
+                ex.Response = httpResponse;
+                if (shouldTrace)
+                {
+                    ServiceClientTracing.Error(invocationId, ex);
+                }
+                throw ex;
+            }
+            // Create Result
+            var result = new HttpOperationResponse();
+            result.Request = httpRequest;
+            result.Response = httpResponse;
+            if (shouldTrace)
+            {
+                ServiceClientTracing.Exit(invocationId, result);
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Delete Group for Android Policy
+        /// </summary>
+        /// <param name='hostName'>
+        /// Location hostName for the tenant
+        /// </param>
+        /// <param name='policyId'>
+        /// policy unique Id
+        /// </param>
+        /// <param name='groupId'>
+        /// application unique Id
+        /// </param>
+        /// <param name='customHeaders'>
+        /// Headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public async Task<HttpOperationResponse> DeleteGroupForAndroidPolicyWithHttpMessagesAsync(string hostName, string policyId, string groupId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        {
+            if (hostName == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "hostName");
+            }
+            if (policyId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "policyId");
+            }
+            if (groupId == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "groupId");
+            }
+            if (this.ApiVersion == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "this.ApiVersion");
+            }
+            // Tracing
+            bool shouldTrace = ServiceClientTracing.IsEnabled;
+            string invocationId = null;
+            if (shouldTrace)
+            {
+                invocationId = ServiceClientTracing.NextInvocationId.ToString();
+                Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("hostName", hostName);
+                tracingParameters.Add("policyId", policyId);
+                tracingParameters.Add("groupId", groupId);
+                tracingParameters.Add("cancellationToken", cancellationToken);
+                ServiceClientTracing.Enter(invocationId, this, "DeleteGroupForAndroidPolicy", tracingParameters);
+            }
+            // Construct URL
+            var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/andriodPolicies/{policyId}/groups/{groupId}").ToString();
+            url = url.Replace("{hostName}", Uri.EscapeDataString(hostName));
+            url = url.Replace("{policyId}", Uri.EscapeDataString(policyId));
+            url = url.Replace("{groupId}", Uri.EscapeDataString(groupId));
             List<string> queryParameters = new List<string>();
             if (this.ApiVersion != null)
             {

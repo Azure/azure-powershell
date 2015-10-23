@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft Corporation.  All rights reserved.
+// Copyright (c) Microsoft Corporation. All rights reserved.
 
 namespace Commands.Intune.RestClient.Models
 {
@@ -21,7 +21,7 @@ namespace Commands.Intune.RestClient.Models
 
         /// <summary>
         /// Possible values for this property include: 'required',
-        /// 'notRequired '.
+        /// 'notRequired'.
         /// </summary>
         [JsonProperty(PropertyName = "fileEncryption")]
         public string FileEncryption { get; set; }

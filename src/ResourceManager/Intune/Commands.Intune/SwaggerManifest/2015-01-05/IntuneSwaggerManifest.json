@@ -299,7 +299,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/IOSPolicy"
+                            "$ref": "#/definitions/IOSPolicyRequestBody"
                         },
                         "description": "Parameters supplied to the Create or update an android policy operation."
                     }
@@ -319,6 +319,54 @@
                     }
                 }
             },
+			"patch":{
+                "description": " patch an iosPolicy.",
+                "operationId": "PatchIOSPolicy",
+                "produces": [ "application/json" ],
+                "parameters": [
+                    {
+
+                        "name": "hostName",
+                        "in": "path",
+                        "description": "Location hostName for the tenant",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "policyId",
+                        "in": "path",
+                        "description": "policy unique Id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "$ref": "#/parameters/ApiVersionParameter"
+                    },
+                    {
+                        "name": "parameters",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/IOSPolicyRequestBody"
+                        },
+                        "description": "Parameters supplied to the Create or update an android policy operation."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "iosPolicy entity.",
+                        "schema": {
+                            "$ref": "#/definitions/IOSPolicy"
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },			
             "delete": {
                 "description": "Delete Ios Policy",
                 "operationId": "DeleteIosPolicy",
@@ -434,7 +482,55 @@
                         "in": "body",
                         "required": true,
                         "schema": {
+                            "$ref": "#/definitions/AndroidPolicyRequestBody"
+                        },
+                        "description": "Parameters supplied to the Create or update an android policy operation."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "android entity.",
+                        "schema": {
                             "$ref": "#/definitions/AndroidPolicy"
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+			"patch": {
+                "description": "Patch androidPolicy.",
+                "operationId": "PatchAndroidPolicy",
+                "produces": [ "application/json" ],
+                "parameters": [
+                    {
+
+                        "name": "hostName",
+                        "in": "path",
+                        "description": "Location hostName for the tenant",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "policyId",
+                        "in": "path",
+                        "description": "policy unique Id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "$ref": "#/parameters/ApiVersionParameter"
+                    },
+                    {
+                        "name": "parameters",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AndroidPolicyRequestBody"
                         },
                         "description": "Parameters supplied to the Create or update an android policy operation."
                     }
@@ -494,13 +590,68 @@
             }
         },
 
-        "/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyId}": {
-            "delete": {
-                "description": "Deletes Intune iOS MAM policies.",
-                "operationId": "RemoveiOSPolicyById",
+        "/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyId}/apps/{appId}": {           
+            "put": {
+                "description": "Add app to an iosPolicy.",
+                "operationId": "AddAppForIOSPolicy",
                 "produces": [ "application/json" ],
                 "parameters": [
                     {
+                        "name": "hostName",
+                        "in": "path",
+                        "description": "Location hostName for the tenant",
+                        "required": true,
+                        "type": "string"
+                    },
+					{
+                        "name": "policyId",
+                        "in": "path",
+                        "description": "policy unique Id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "appId",
+                        "in": "path",
+                        "description": "application unique Id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "$ref": "#/parameters/ApiVersionParameter"
+                    },
+                    {
+                        "name": "parameters",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/MAMPolicyAppIdOrGroupIdPayload"
+                        },
+                        "description": "Parameters supplied to add an app to an ios policy."
+                    }
+                ],
+                "responses": {
+				"200": {
+                        "description": "No-Content."
+                    },
+					"204": {
+                        "description": "No-Content.",
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },			
+            "delete": {
+                "description": "Delete App for Ios Policy",
+                "operationId": "DeleteAppForIosPolicy",
+                "produces": [ "application/json" ],
+                "parameters": [
+                    {
+
                         "name": "hostName",
                         "in": "path",
                         "description": "Location hostName for the tenant",
@@ -514,13 +665,23 @@
                         "required": true,
                         "type": "string"
                     },
+					{
+                        "name": "appId",
+                        "in": "path",
+                        "description": "application unique Id",
+                        "required": true,
+                        "type": "string"
+                    },
                     {
                         "$ref": "#/parameters/ApiVersionParameter"
                     }
                 ],
                 "responses": {
+                    "200": {
+                        "description": "No-Content."
+                    },
                     "204": {
-                        "description": "Empty content."                     
+                        "description": "No-Content."
                     },
                     "default": {
                         "description": "unexpected error",
@@ -530,8 +691,393 @@
                     }
                 }
             }
-        }
-        
+        },
+		"/providers/Microsoft.Intune/locations/{hostName}/andriodPolicies/{policyId}/apps/{appId}": {           
+            "put": {
+                "description": "Add app to an androidPolicy.",
+                "operationId": "AddAppForAndriodPolicy",
+                "produces": [ "application/json" ],
+                "parameters": [
+                    {
+                        "name": "hostName",
+                        "in": "path",
+                        "description": "Location hostName for the tenant",
+                        "required": true,
+                        "type": "string"
+                    },
+					{
+                        "name": "policyId",
+                        "in": "path",
+                        "description": "policy unique Id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "appId",
+                        "in": "path",
+                        "description": "application unique Id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "$ref": "#/parameters/ApiVersionParameter"
+                    },
+                    {
+                        "name": "parameters",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/MAMPolicyAppIdOrGroupIdPayload"
+                        },
+                        "description": "Parameters supplied to the Create or update app to an android policy operation."
+                    }
+                ],
+                "responses": {
+				"200": {
+                        "description": "No-Content."
+                    },
+                    "204": {
+                        "description": "No-Content.",
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },			
+            "delete": {
+                "description": "Delete App for Android Policy",
+                "operationId": "DeleteAppForAndroidPolicy",
+                "produces": [ "application/json" ],
+                "parameters": [
+                    {
+
+                        "name": "hostName",
+                        "in": "path",
+                        "description": "Location hostName for the tenant",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "policyId",
+                        "in": "path",
+                        "description": "policy unique Id",
+                        "required": true,
+                        "type": "string"
+                    },
+					{
+                        "name": "appId",
+                        "in": "path",
+                        "description": "application unique Id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "$ref": "#/parameters/ApiVersionParameter"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "No-Content."
+                    },
+                    "204": {
+                        "description": "No-Content."
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+		"/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyId}/groups": { 
+            "get": {
+                "description": "Returns groups for a given ioSPolicy.",
+                "operationId": "GetGroupsForiOSPolicy",
+                "produces": [ "application/json" ],
+                "parameters": [
+                    {
+                        "name": "hostName",
+                        "in": "path",
+                        "description": "Location hostName for the tenant",
+                        "required": true,
+                        "type": "string"
+                    },
+					{
+                        "name": "policyId",
+                        "in": "path",
+                        "description": "policy id for the tenant",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "$ref": "#/parameters/ApiVersionParameter"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "groups as collection response",
+                        "schema": {
+                            "$ref": "#/definitions/GroupsCollection"
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+		"/providers/Microsoft.Intune/locations/{hostName}/androidPolicies/{policyId}/groups": { 
+            "get": {
+                "description": "Returns groups for a given androidPolicy.",
+                "operationId": "GetGroupsForAndroidPolicy",
+                "produces": [ "application/json" ],
+                "parameters": [
+                    {
+                        "name": "hostName",
+                        "in": "path",
+                        "description": "Location hostName for the tenant",
+                        "required": true,
+                        "type": "string"
+                    },
+					{
+                        "name": "policyId",
+                        "in": "path",
+                        "description": "policy id for the tenant",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "$ref": "#/parameters/ApiVersionParameter"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "groups as collection response",
+                        "schema": {
+                            "$ref": "#/definitions/GroupsCollection"
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },			
+		"/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyId}/groups/{groupId}": {           
+            "put": {
+                "description": "Add group to an iosPolicy.",
+                "operationId": "AddGroupForiOSPolicy",
+                "produces": [ "application/json" ],
+                "parameters": [
+                    {
+                        "name": "hostName",
+                        "in": "path",
+                        "description": "Location hostName for the tenant",
+                        "required": true,
+                        "type": "string"
+                    },
+					{
+                        "name": "policyId",
+                        "in": "path",
+                        "description": "policy unique Id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "groupId",
+                        "in": "path",
+                        "description": "group Id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "$ref": "#/parameters/ApiVersionParameter"
+                    },
+                    {
+                        "name": "parameters",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/MAMPolicyAppIdOrGroupIdPayload"
+                        },
+                        "description": "Parameters supplied to the Create or update app to an android policy operation."
+                    }
+                ],
+                "responses": {
+				"200": {
+                        "description": "No-Content."
+                    },
+                    "204": {
+                        "description": "No-Content.",
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },			
+            "delete": {
+                "description": "Delete Group for iOS Policy",
+                "operationId": "DeleteGroupForiOSPolicy",
+                "produces": [ "application/json" ],
+                "parameters": [
+                    {
+
+                        "name": "hostName",
+                        "in": "path",
+                        "description": "Location hostName for the tenant",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "policyId",
+                        "in": "path",
+                        "description": "policy unique Id",
+                        "required": true,
+                        "type": "string"
+                    },
+					{
+                        "name": "groupId",
+                        "in": "path",
+                        "description": "application unique Id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "$ref": "#/parameters/ApiVersionParameter"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "No-Content."
+                    },
+                    "204": {
+                        "description": "No-Content."
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+		"/providers/Microsoft.Intune/locations/{hostName}/andriodPolicies/{policyId}/groups/{groupId}": {           
+            "put": {
+                "description": "Add group to an androidPolicy.",
+                "operationId": "AddGroupForAndriodPolicy",
+                "produces": [ "application/json" ],
+                "parameters": [
+                    {
+                        "name": "hostName",
+                        "in": "path",
+                        "description": "Location hostName for the tenant",
+                        "required": true,
+                        "type": "string"
+                    },
+					{
+                        "name": "policyId",
+                        "in": "path",
+                        "description": "policy unique Id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "groupId",
+                        "in": "path",
+                        "description": "group Id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "$ref": "#/parameters/ApiVersionParameter"
+                    },
+                    {
+                        "name": "parameters",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/MAMPolicyAppIdOrGroupIdPayload"
+                        },
+                        "description": "Parameters supplied to the Create or update app to an android policy operation."
+                    }
+                ],
+                "responses": {
+				"200": {
+                        "description": "No-Content."
+                    },
+                    "204": {
+                        "description": "No-Content.",
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },			
+            "delete": {
+                "description": "Delete Group for Android Policy",
+                "operationId": "DeleteGroupForAndroidPolicy",
+                "produces": [ "application/json" ],
+                "parameters": [
+                    {
+
+                        "name": "hostName",
+                        "in": "path",
+                        "description": "Location hostName for the tenant",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "policyId",
+                        "in": "path",
+                        "description": "policy unique Id",
+                        "required": true,
+                        "type": "string"
+                    },
+					{
+                        "name": "groupId",
+                        "in": "path",
+                        "description": "application unique Id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "$ref": "#/parameters/ApiVersionParameter"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "No-Content."
+                    },
+                    "204": {
+                        "description": "No-Content."
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },		
     },
 
     "definitions": {
@@ -605,7 +1151,48 @@
                     "type": "string"
                 }
             }
+        },		
+        "GroupsCollection": {
+            "type": "object",
+            "required": [ "value" ],
+            "properties": {
+                "value": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Group"
+                    }
+                },
+                "nextlink": {
+                    "type": "string"
+                }
+            }
         },
+        "Group": {
+            "type": "object",
+            "properties": {
+                "properties": {
+                    "$ref": "#/definitions/GroupProperties"
+                }
+            },
+            "allOf": [
+                {
+                    "$ref": "#/definitions/Resource"
+                }
+            ],
+            "description": "Group entity for Intune MAM."
+        },
+        "GroupProperties": {
+            "type": "object",
+            "required": [
+                "friendlyName",
+                "platform"
+            ],
+            "properties": {
+                "friendlyName": {
+                    "type": "string"
+                }
+			}
+		},
         "ApplicationCollection": {
             "type": "object",
             "required": [ "value" ],
@@ -703,6 +1290,15 @@
             ],
             "description": "iOS Policy entity for Intune MAM."
         },
+		"IOSPolicyRequestBody": {
+            "type": "object",
+            "properties": {
+                "properties": {
+                    "$ref": "#/definitions/IOSPolicyProperties"
+                }
+            },
+            "description": "iOS Policy request body parameters for Intune MAM."
+        },
         "AndroidPolicy": {
             "type": "object",
             "properties": {
@@ -717,6 +1313,36 @@
             ],
             "description": "Android Policy entity for Intune MAM."
         },
+        "AndroidPolicyRequestBody": {
+            "type": "object",
+            "properties": {
+                "properties": {
+                    "$ref": "#/definitions/AndroidPolicyProperties"
+                }
+            },
+            "description": "Android Policy request body for Intune MAM."
+        },
+        "MAMPolicyAppIdOrGroupIdPayload": {
+            "type": "object",			
+            "properties": {
+                "properties": {
+                    "$ref": "#/definitions/MAMPolicyAppOrGroupIdProperties"
+                }
+            },
+            "description": "MAM Policy request body for properties Intune MAM."
+        },
+        "MAMPolicyAppOrGroupIdProperties": {
+            "type": "object",
+			"required": [
+                "url"
+            ],
+            "properties": {
+                "url": {
+                    "type": "string"
+                }
+            },
+            "description": "Android Policy request body for Intune MAM."
+        },			
         "MAMPolicyProperties": {
             "type": "object",
             "required": [
@@ -752,7 +1378,7 @@
                     "default": "required",
                     "enum": [
                         "required",
-                        "notRequired "
+                        "notRequired"
                     ]
                 },
                 "clipboardSharingLevel": {
@@ -786,7 +1412,7 @@
                     "default": "required",
                     "enum": [
                         "required",
-                        "notRequired "
+                        "notRequired"
                     ]
                 },
                 "pinNumRetry": {
@@ -887,7 +1513,7 @@
                     "default": "required",
                     "enum": [
                         "required",
-                        "notRequired "
+                        "notRequired"
                     ]
                 }
             },

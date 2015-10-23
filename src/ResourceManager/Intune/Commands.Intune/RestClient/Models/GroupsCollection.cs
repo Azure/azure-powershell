@@ -10,12 +10,12 @@ namespace Commands.Intune.RestClient.Models
 
     /// <summary>
     /// </summary>
-    public partial class AndroidPolicyCollection
+    public partial class GroupsCollection
     {
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "value")]
-        public IList<AndroidPolicy> Value { get; set; }
+        public IList<Group> Value { get; set; }
 
         /// <summary>
         /// </summary>
@@ -30,6 +30,16 @@ namespace Commands.Intune.RestClient.Models
             if (Value == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "Value");
+            }
+            if (this.Value != null)
+            {
+                foreach (var element in this.Value)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
             }
         }
     }

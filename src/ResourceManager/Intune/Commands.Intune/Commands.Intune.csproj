@@ -68,31 +68,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GetIntunePolicyCmdlet.cs" />
-    <Compile Include="GetIntuneAppsCmdlet.cs" />
-    <Compile Include="Helpers\IntuneRPClientHelper.cs" />
-    <Compile Include="Helpers\LocationHelper.cs" />
+    <Compile Include="GetIntuneAndroidMAMAppsCmdlet.cs" />
+    <Compile Include="GetIntuneAndroidMAMPolicyCmdlet.cs" />
+    <Compile Include="GetIntuneiOSMAMAppsCmdlet.cs" />
+    <Compile Include="GetIntuneiOSMAMPolicyCmdlet.cs" />
+    <Compile Include="IntuneBaseCmdlet.cs" />
+    <Compile Include="IntuneConstants.cs" />
+    <Compile Include="NewIntuneAndroidMAMPolicyCmdlet.cs" />
+    <Compile Include="NewIntuneiOSMAMPolicyCmdlet.cs" />
+    <Compile Include="SetIntuneAndroidMAMPolicyCmdlet.cs" />
+    <Compile Include="SetIntuneiOSMAMPolicyCmdlet.cs" />
     <Compile Include="RestClient\IIntuneResourceManagementClient.cs" />
     <Compile Include="RestClient\IntuneResourceManagementClient.cs" />
     <Compile Include="RestClient\IntuneResourceManagementClientExtensions.cs" />
     <Compile Include="RestClient\Models\AndroidPolicy.cs" />
     <Compile Include="RestClient\Models\AndroidPolicyCollection.cs" />
     <Compile Include="RestClient\Models\AndroidPolicyProperties.cs" />
+    <Compile Include="RestClient\Models\AndroidPolicyRequestBody.cs" />
     <Compile Include="RestClient\Models\Application.cs" />
     <Compile Include="RestClient\Models\ApplicationCollection.cs" />
     <Compile Include="RestClient\Models\ApplicationProperties.cs" />
     <Compile Include="RestClient\Models\Error.cs" />
+    <Compile Include="RestClient\Models\Group.cs" />
+    <Compile Include="RestClient\Models\GroupProperties.cs" />
+    <Compile Include="RestClient\Models\GroupsCollection.cs" />
     <Compile Include="RestClient\Models\IOSPolicy.cs" />
     <Compile Include="RestClient\Models\IOSPolicyCollection.cs" />
     <Compile Include="RestClient\Models\IOSPolicyProperties.cs" />
+    <Compile Include="RestClient\Models\IOSPolicyRequestBody.cs" />
     <Compile Include="RestClient\Models\Location.cs" />
     <Compile Include="RestClient\Models\LocationCollection.cs" />
     <Compile Include="RestClient\Models\LocationProperties.cs" />
-    <Content Include="NewIntunePolicyCmdlet.cs" />
+    <Compile Include="RestClient\Models\MAMPolicyAppIdOrGroupIdPayload.cs" />
+    <Compile Include="RestClient\Models\MAMPolicyAppIdPayload.cs" />
+    <Compile Include="RestClient\Models\MAMPolicyAppOrGroupIdProperties.cs" />
+    <Compile Include="RestClient\Models\MAMPolicyAppProperties.cs" />
     <Compile Include="RestClient\Models\MAMPolicyProperties.cs" />
     <Compile Include="RestClient\Models\Resource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Content Include="SetIntunePolicyCmdlet.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

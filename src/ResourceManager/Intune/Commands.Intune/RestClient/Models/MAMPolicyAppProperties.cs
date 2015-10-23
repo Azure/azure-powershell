@@ -9,27 +9,23 @@ namespace Commands.Intune.RestClient.Models
     using Microsoft.Rest.Serialization;
 
     /// <summary>
+    /// Android Policy request body for Intune MAM.
     /// </summary>
-    public partial class AndroidPolicyCollection
+    public partial class MAMPolicyAppProperties
     {
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "value")]
-        public IList<AndroidPolicy> Value { get; set; }
-
-        /// <summary>
-        /// </summary>
-        [JsonProperty(PropertyName = "nextlink")]
-        public string Nextlink { get; set; }
+        [JsonProperty(PropertyName = "url")]
+        public string Url { get; set; }
 
         /// <summary>
         /// Validate the object. Throws ArgumentException or ArgumentNullException if validation fails.
         /// </summary>
         public virtual void Validate()
         {
-            if (Value == null)
+            if (Url == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Value");
+                throw new ValidationException(ValidationRules.CannotBeNull, "Url");
             }
         }
     }
