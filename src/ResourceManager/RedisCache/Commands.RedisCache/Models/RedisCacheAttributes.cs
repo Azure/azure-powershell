@@ -35,26 +35,17 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
             RedisVersion = cache.Properties.RedisVersion;
             Size = SizeConverter.GetSizeInUserSpecificFormat(cache.Properties.Sku.Family, cache.Properties.Sku.Capacity);
             Sku = cache.Properties.Sku.Name;
-            ResourceGroupName = resourceGroupName;
+            ResourceGroupName = resourceGroupName; 
+            VirtualNetwork = cache.Properties.VirtualNetwork;
+            Subnet = cache.Properties.Subnet;
+            StaticIP = cache.Properties.StaticIP;
+            TenantSettings = cache.Properties.TenantSettings;
+            ShardCount = cache.Properties.ShardCount;
         }
 
         public RedisCacheAttributes(RedisGetResponse cache, string resourceGroupName)
-        {
-            Id = cache.Resource.Id;
-            Location = cache.Resource.Location;
-            Name = cache.Resource.Name;
-            Type = cache.Resource.Type;
-            HostName = cache.Resource.Properties.HostName;
-            Port = cache.Resource.Properties.Port;
-            ProvisioningState = cache.Resource.Properties.ProvisioningState;
-            SslPort = cache.Resource.Properties.SslPort;
-            RedisConfiguration = cache.Resource.Properties.RedisConfiguration;
-            EnableNonSslPort = cache.Resource.Properties.EnableNonSslPort.Value;
-            RedisVersion = cache.Resource.Properties.RedisVersion;
-            Size = SizeConverter.GetSizeInUserSpecificFormat(cache.Resource.Properties.Sku.Family, cache.Resource.Properties.Sku.Capacity);
-            Sku = cache.Resource.Properties.Sku.Name;
-            ResourceGroupName = resourceGroupName;
-        }
+            : this(cache.Resource, resourceGroupName)
+        {}
 
         public RedisCacheAttributes() { }
 
@@ -105,5 +96,15 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
         public string Size { get; protected set; }
 
         public string Sku { get; protected set; }
+
+        public IDictionary<string, string> TenantSettings { get; protected set; }
+
+        public int? ShardCount { get; protected set; }
+
+        public string VirtualNetwork { get; protected set; }
+
+        public string Subnet { get; protected set; }
+
+        public string StaticIP { get; protected set; }
     }
 }

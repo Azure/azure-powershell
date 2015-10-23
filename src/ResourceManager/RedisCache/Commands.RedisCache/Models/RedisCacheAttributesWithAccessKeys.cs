@@ -37,6 +37,12 @@ namespace Microsoft.Azure.Commands.RedisCache.Models
             PrimaryKey = cache.Resource.Properties.AccessKeys.PrimaryKey;
             SecondaryKey = cache.Resource.Properties.AccessKeys.SecondaryKey;
             ResourceGroupName = resourceGroupName;
+
+            VirtualNetwork = cache.Resource.Properties.VirtualNetwork;
+            Subnet = cache.Resource.Properties.Subnet;
+            StaticIP = cache.Resource.Properties.StaticIP;
+            TenantSettings = cache.Resource.Properties.TenantSettings;
+            ShardCount = cache.Resource.Properties.ShardCount;
         }
 
         public string PrimaryKey { get; private set; }

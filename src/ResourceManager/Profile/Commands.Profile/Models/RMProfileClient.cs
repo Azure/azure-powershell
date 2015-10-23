@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             return _profile;
         }
 
-        public AzureContext SetCurrentContext(string subscriptionId, string tenantId)
+        public AzureContext SetCurrentContext(string subscriptionId, string tenantId, bool verifySubscription = true)
         {
             if (!string.IsNullOrWhiteSpace(tenantId))
             {
@@ -123,8 +123,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
             if (!string.IsNullOrWhiteSpace(subscriptionId))
             {
-                if (!ListSubscriptions(_profile.Context.Tenant.Id.ToString()).Any(s =>
-                    string.Equals(s.Id.ToString(), subscriptionId, StringComparison.OrdinalIgnoreCase) ) )
+                var subscription = ListSubscriptions(_profile.Context.Tenant.Id.ToString())
+                                    .FirstOrDefault(s =>
+                                        string.Equals(s.Id.ToString(), subscriptionId, StringComparison.OrdinalIgnoreCase));
+
+                if (verifySubscription &&
+                    subscription == null)
                 {
                     throw new ArgumentException(string.Format(
                         "Provided subscription {0} does not exist under current tenant {1}", subscriptionId, _profile.Context.Tenant.Id));
@@ -136,7 +140,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     newSubscription.Account = _profile.Context.Subscription.Account;
                     newSubscription.Environment = _profile.Context.Subscription.Environment;
                     newSubscription.Properties = _profile.Context.Subscription.Properties;
-                    newSubscription.Name = null;
+                    newSubscription.Name = (subscription == null) ? null : subscription.Name;
                 }
 
                 _profile.SetContextWithCache(new AzureContext(
