@@ -29,25 +29,6 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
     [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseDataMaskingRule")]
     public class SetAzureSqlDatabaseDataMaskingRule : BuildAzureSqlDatabaseDataMaskingRule
     {
-
-        /// <summary>
-        /// Gets or sets the column name
-        /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The column name.")]
-        public override string ColumnName { get; set; }
-        
-        /// <summary>
-        /// Gets or sets the table name
-        /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The table name.")]
-        public override string TableName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the schema name
-        /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The schema name.")]
-        public override string SchemaName { get; set; }
-
         /// <summary>
         /// Gets or sets the masking function
         /// </summary>
@@ -62,9 +43,9 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         /// <returns>An error message or null if all is fine</returns>
         protected override string ValidateOperation(IEnumerable<DatabaseDataMaskingRuleModel> rules)
         {
-            if(!rules.Any(r=> r.RuleId == RuleId))
+            if (!rules.Any(IsModelOfRule))
             {
-                return string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.SetDataMaskingRuleIdDoesNotExistError, RuleId);
+                return string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.SetDataMaskingRuleIdDoesNotExistError, SchemaName, TableName, ColumnName);
             }
             return null;
         }
@@ -75,8 +56,8 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         /// <param name="rules">The database's data masking rules</param>
         /// <returns>A data masking rule object, initialized for the user provided rule identity</returns>
         protected override DatabaseDataMaskingRuleModel GetRule(IEnumerable<DatabaseDataMaskingRuleModel> rules)
-        { 
-            return rules.First(r=> r.RuleId == RuleId);
+        {
+            return rules.First(IsModelOfRule);
         }
 
         /// <summary>

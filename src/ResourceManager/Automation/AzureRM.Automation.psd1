@@ -9,7 +9,7 @@
 @{  
   
 # Version number of this module.  
-ModuleVersion = '0.10.0' 
+ModuleVersion = '0.10.1' 
   
 # ID used to uniquely identify this module  
 GUID = 'bcea1c70-a32b-48c3-a05c-323e1c02f4d3'  
