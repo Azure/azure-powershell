@@ -13,6 +13,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         //TODO: Replace ADETest with real name once finalized with publishing
         public const string ExtensionDefaultName = "ADETest";
         public const string ExtensionDefaultVersion = "1.2";
+        public const string VolumeTypeOS = "OS";
+        public const string VolumeTypeData = "Data";
+        public const string VolumeTypeAll = "All";
+        public const string StatusSucceeded = "Succeeded";
 
         // Extension configuration
         public string AadClientID { get; set; }

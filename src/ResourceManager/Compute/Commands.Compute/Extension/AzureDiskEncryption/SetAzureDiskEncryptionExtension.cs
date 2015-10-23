@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             Position = 10,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "KeyEncryption Algorithm used to encrypt the volume encryption key")]
-        [ValidateSet("RSA-OAEP")]
+        [ValidateSet("RSA-OAEP", "RSA1_5")]
         public string KeyEncryptionAlgorithm { get; set; }
 
         [Parameter(
@@ -230,35 +230,14 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         private ComputeLongRunningOperationResponse UpdateVmEncryptionSettings()
         {
             string statusMessage = GetExtensionStatusMessage();
+
             VirtualMachine vmParameters = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName)).VirtualMachine;
-            if (vmParameters == null)
+            if ((vmParameters == null) ||
+                (vmParameters.StorageProfile == null) ||
+                (vmParameters.StorageProfile.OSDisk == null))
             {
-                //VM should have been created by now
-                ThrowTerminatingError(new ErrorRecord(new ApplicationException(string.Format(CultureInfo.CurrentUICulture, "Set-AzureDiskEncryptionExtension can enable encryption only on a VM that was already created")),
-                                                      "InvalidResult",
-                                                      ErrorCategory.InvalidResult,
-                                                      null));
-            }
-            if (vmParameters.StorageProfile == null)
-            {
-                //VM should have had storage profile by now
-                ThrowTerminatingError(new ErrorRecord(new ApplicationException(string.Format(CultureInfo.CurrentUICulture, "Set-AzureDiskEncryptionExtension can enable encryption only on a VM that already has a storage profile")),
-                                                      "InvalidResult",
-                                                      ErrorCategory.InvalidResult,
-                                                      null));
-            }
-            if (vmParameters.StorageProfile.OSDisk == null)
-            {
-                //VM should have had OS disk by now
-                ThrowTerminatingError(new ErrorRecord(new ApplicationException(string.Format(CultureInfo.CurrentUICulture, "Set-AzureDiskEncryptionExtension can enable encryption only on a VM that already has an OS disk")),
-                                                      "InvalidResult",
-                                                      ErrorCategory.InvalidResult,
-                                                      null));
-            }
-            if (vmParameters.StorageProfile.OSDisk.EncryptionSettings != null)
-            {
-                //Changing disk encryptionSettings isn't allowed in CRP
-                ThrowTerminatingError(new ErrorRecord(new ApplicationException(string.Format(CultureInfo.CurrentUICulture, "Set-AzureDiskEncryptionExtension can not change encryption settings once they are set")),
+                //VM should have been created and have valid storageProfile and OSDisk by now
+                ThrowTerminatingError(new ErrorRecord(new ApplicationException(string.Format(CultureInfo.CurrentUICulture, "Set-AzureDiskEncryptionExtension can enable encryption only on a VM that was already created and has appropriate storageProfile and OS disk")),
                                                       "InvalidResult",
                                                       ErrorCategory.InvalidResult,
                                                       null));
