@@ -23,14 +23,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
     public abstract class AzureStorageFileCmdletBase : StorageCloudCmdletBase<IStorageFileManagement>
     {
         [Parameter(
+            ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.ShareNameParameterSetName,
             HelpMessage = "Azure Storage Context Object")]
         [Parameter(
+            ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.MatchingPrefixParameterSetName,
             HelpMessage = "Azure Storage Context Object")]
         [Parameter(
+            ValueFromPipeline = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = Constants.SpecificParameterSetName,
             HelpMessage = "Azure Storage Context Object")]

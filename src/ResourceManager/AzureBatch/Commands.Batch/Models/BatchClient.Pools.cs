@@ -36,14 +36,13 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 throw new ArgumentNullException("options");
             }
 
-            ODATADetailLevel odata = new ODATADetailLevel(selectClause: options.Select, expandClause: options.Expand);
-
             // Get the single pool matching the specified id
             if (!string.IsNullOrWhiteSpace(options.PoolId))
             {
                 WriteVerbose(string.Format(Resources.GetPoolById, options.PoolId));
                 PoolOperations poolOperations = options.Context.BatchOMClient.PoolOperations;
-                CloudPool pool = poolOperations.GetPool(options.PoolId, detailLevel: odata, additionalBehaviors: options.AdditionalBehaviors);
+                ODATADetailLevel getDetailLevel = new ODATADetailLevel(selectClause: options.Select, expandClause: options.Expand);
+                CloudPool pool = poolOperations.GetPool(options.PoolId, detailLevel: getDetailLevel, additionalBehaviors: options.AdditionalBehaviors);
                 PSCloudPool psPool = new PSCloudPool(pool);
                 return new PSCloudPool[] { psPool };
             }
@@ -51,10 +50,11 @@ namespace Microsoft.Azure.Commands.Batch.Models
             else
             {
                 string verboseLogString = null;
+                ODATADetailLevel listDetailLevel = new ODATADetailLevel(selectClause: options.Select, expandClause: options.Expand);
                 if (!string.IsNullOrEmpty(options.Filter))
                 {
                     verboseLogString = Resources.GetPoolByOData;
-                    odata.FilterClause = options.Filter;
+                    listDetailLevel.FilterClause = options.Filter;
                 }
                 else
                 {
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 WriteVerbose(verboseLogString);
 
                 PoolOperations poolOperations = options.Context.BatchOMClient.PoolOperations;
-                IPagedEnumerable<CloudPool> pools = poolOperations.ListPools(odata, options.AdditionalBehaviors);
+                IPagedEnumerable<CloudPool> pools = poolOperations.ListPools(listDetailLevel, options.AdditionalBehaviors);
                 Func<CloudPool, PSCloudPool> mappingFunction = p => { return new PSCloudPool(p); };
                 return PSPagedEnumerable<PSCloudPool, CloudPool>.CreateWithMaxCount(
                     pools, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));            

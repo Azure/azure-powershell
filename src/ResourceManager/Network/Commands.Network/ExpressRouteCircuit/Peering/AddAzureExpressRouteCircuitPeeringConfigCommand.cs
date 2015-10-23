@@ -52,7 +52,6 @@ namespace Microsoft.Azure.Commands.Network
             peering.PeeringType = this.PeeringType;
             peering.PrimaryPeerAddressPrefix = this.PrimaryPeerAddressPrefix;
             peering.SecondaryPeerAddressPrefix = this.SecondaryPeerAddressPrefix;
-            peering.AzureASN = this.AzureASN;
             peering.PeerASN = this.PeerASN;
             peering.VlanId = this.VlanId;
 
