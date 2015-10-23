@@ -1,4 +1,8 @@
-﻿## 2015.10.09 version 1.0 preview
+﻿* Azure Redis Cache
+  * Set-AzureRedisCache - Premium and vNet support for redis cache
+  * New-AzureRedisCache - Premium and vNet support for redis cache
+
+## 2015.10.09 version 1.0 preview
 * Azure Resource Manager Management Cmdlets
   * New-AzureRmResourceGroup - Removed the template deployment parameters from this cmdlet. Template deployment will now be 
   handled only through the New-AzureRmResourceGroupDeployment
