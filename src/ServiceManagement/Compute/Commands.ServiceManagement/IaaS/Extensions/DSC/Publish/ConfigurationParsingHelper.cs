@@ -73,7 +73,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
             //
             InitialSessionState initialSessionState = InitialSessionState.Create();
             var importDscResourcefunctionEntry = new SessionStateFunctionEntry(
-                "Import-DscResource", @"param($Name, $ModuleName)
+                "Import-DscResource", @"param($Name, $ModuleName, $ModuleVersion)
                 if ($ModuleName) 
                 {
                     foreach ($module in $ModuleName) {
@@ -95,7 +95,14 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC.Publish
                         }
                         else{
                             if(!$global:modules.ContainsKey($module)){
-                                $global:modules.Add($module,"""")
+                                if($ModuleVersion)
+                                {   
+                                    $global:modules.Add($module,$ModuleVersion)    
+                                }
+                                else
+                                {
+                                    $global:modules.Add($module,"""")
+                                }
                             }
                         }
                     }
