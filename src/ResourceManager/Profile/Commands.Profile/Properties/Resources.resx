@@ -132,6 +132,9 @@
   <data name="CommonTenantAuthFailed" xml:space="preserve">
     <value>Could not authenticate your user account {0} with the common tenant. Please login again using Login-AzureRmAccount.</value>
   </data>
+  <data name="CurrentTenantInUse" xml:space="preserve">
+    <value>Current tenant with Id '{0}' will be used.</value>
+  </data>
   <data name="InvalidSubscriptionId" xml:space="preserve">
     <value>The provided subscription ID "{0}" is not a valid Guid.</value>
   </data>
@@ -140,6 +143,9 @@
   </data>
   <data name="NoValidTenant" xml:space="preserve">
     <value>Please provide a valid tenant Id on the command line or execute Login-AzureRmAccount.</value>
+  </data>
+  <data name="SubscriptionNameNotFoundError" xml:space="preserve">
+    <value>Unable to find subscription with name '{0}'.</value>
   </data>
   <data name="SubscriptionNotFoundError" xml:space="preserve">
     <value>Subscription {0} was not found in tenant {1}. Please verify that the subscription exists in this tenant.</value>

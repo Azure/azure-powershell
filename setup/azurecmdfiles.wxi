@@ -4,9 +4,6 @@
         <DirectoryRef Id="PowerShellFolder">
             <Directory Id="dirB60B5B1F56FA5598EFFC960CA393FDCE" Name="ResourceManager">
                 <Directory Id="dir9E409EB63EF03736275B51044C819FD8" Name="AzureResourceManager">
-                    <Component Id="cmp96F13C307DA6E4AAC35F3D147F21553F" Guid="*">
-                        <File Id="fil96C82365E5F5A2F2747805236B563DF0" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureResourceManager.psd1" />
-                    </Component>
                     <Directory Id="dirF9A46FF3188BA8C006D8942FCEFE5108" Name="Azure.Storage">
                         <Component Id="cmp0761C025FCF8EF027A5BC23C72777C52" Guid="*">
                             <File Id="fil80798000B169AC6D62DD8331A55CF6FF" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\Azure.Storage\Azure.Storage.psd1" />
@@ -2025,6 +2022,9 @@
                         </Component>
                         <Component Id="cmpA3B81935598199F5BE6572F3D46DD2C5" Guid="*">
                             <File Id="fil8741CCFD373A03733A72E5956154D8FB" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Sql\ResourceManagerStartup.ps1" />
+                        </Component>
+                        <Component Id="cmpD50A1D50B7385232643B15A0E7CBAA57" Guid="*">
+                            <File Id="fil433065D93BBE30A527CE610D0FCF2B08" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Sql\SqlStartup.ps1" />
                         </Component>
                         <Component Id="cmp56F9151EB19BE7D5CE2655D19ADF5C9A" Guid="*">
                             <File Id="filDC634F6E7D9EEFF24385BE6034AB2EE4" KeyPath="yes" Source="$(var.sourceDir)\ResourceManager\AzureResourceManager\AzureRM.Sql\System.Net.Http.Extensions.dll" />
@@ -4591,7 +4591,6 @@
     </Fragment>
     <Fragment>
         <ComponentGroup Id="azurecmdfiles">
-            <ComponentRef Id="cmp96F13C307DA6E4AAC35F3D147F21553F" />
             <ComponentRef Id="cmp0761C025FCF8EF027A5BC23C72777C52" />
             <ComponentRef Id="cmp658F4F28B5894F240AF3AE214E228C7A" />
             <ComponentRef Id="cmpBE01F246267602912E7BB7FAC7C89B62" />
@@ -5252,6 +5251,7 @@
             <ComponentRef Id="cmp25F6948876AE28D1DB4430494E01EBB7" />
             <ComponentRef Id="cmpE4F09171FB1B25EAC4AABD90F9EFA350" />
             <ComponentRef Id="cmpA3B81935598199F5BE6572F3D46DD2C5" />
+            <ComponentRef Id="cmpD50A1D50B7385232643B15A0E7CBAA57" />
             <ComponentRef Id="cmp56F9151EB19BE7D5CE2655D19ADF5C9A" />
             <ComponentRef Id="cmp39A46C3BD11947E08479BBD49CB20104" />
             <ComponentRef Id="cmpC1352E11D4D3526DFA43840F587B64D9" />

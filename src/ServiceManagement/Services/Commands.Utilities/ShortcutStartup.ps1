@@ -29,10 +29,8 @@ if(Test-Path $resourceModulePath)
 
 cd c:\
 $welcomeMessage = @"
-For a list of all Azure cmdlets type 'help azure'.
+For a list of all Azure cmdlets type 'get-help azure'.
 For a list of Windows Azure Pack cmdlets type 'Get-Command *wapack*'.
-For Node.js cmdlets type 'help node-dev'.
-For PHP cmdlets type 'help php-dev'.
 "@
 Write-Output $welcomeMessage
 
@@ -41,5 +39,3 @@ if ($(Get-ExecutionPolicy) -eq "Restricted")
 {
     Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned -Force
 }
-
-$VerbosePreference="Continue"

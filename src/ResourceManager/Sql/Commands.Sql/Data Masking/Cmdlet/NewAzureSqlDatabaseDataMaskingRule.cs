@@ -31,27 +31,6 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
     public class NewAzureSqlDatabaseDataMaskingRule : BuildAzureSqlDatabaseDataMaskingRule
     {
         /// <summary>
-        /// Gets or sets the column name
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The column name.")]
-        [ValidateNotNullOrEmpty]
-        public override string ColumnName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the schema name
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The schema name.")]
-        [ValidateNotNullOrEmpty]
-        public override string SchemaName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the table name
-        /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The table name.")]
-        [ValidateNotNullOrEmpty]
-        public override string TableName { get; set; }
-
-        /// <summary>
         /// Gets or sets the masking function
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The type of the masking function")]
@@ -65,7 +44,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         /// <returns>A model object</returns>
         protected override IEnumerable<DatabaseDataMaskingRuleModel> GetEntity()
         {
-            return ModelAdapter.GetDatabaseDataMaskingRule(ResourceGroupName, ServerName, DatabaseName, clientRequestId);
+            return ModelAdapter.GetDatabaseDataMaskingRules(ResourceGroupName, ServerName, DatabaseName, clientRequestId);
         }
 
         /// <summary>
@@ -75,15 +54,9 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         /// <returns>An error message or null if all is fine</returns>
         protected override string ValidateOperation(IEnumerable<DatabaseDataMaskingRuleModel> rules)
         {
-            var ruleIdRegex = new Regex("^[^/\\\\#+=<>*%&:?]*[^/\\\\#+=<>*%&:?.]$");
-            
-            if (!ruleIdRegex.IsMatch(RuleId)) // an invalid rule name
+            if (rules.Any(IsModelOfRule))
             {
-                return string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.NewDataMaskingRuleIdIsNotValid, RuleId);
-            }
-            if(rules.Any(r=> r.RuleId == RuleId))
-            {
-                return string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.NewDataMaskingRuleIdAlreadyExistError, RuleId);
+                return string.Format(CultureInfo.InvariantCulture, Microsoft.Azure.Commands.Sql.Properties.Resources.NewDataMaskingRuleIdAlreadyExistError, ColumnName, TableName, SchemaName);
             }
             return null;
         }
@@ -99,7 +72,6 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
             rule.ResourceGroupName = ResourceGroupName;
             rule.ServerName = ServerName;
             rule.DatabaseName = DatabaseName;
-            rule.RuleId = RuleId;
             return rule;
         }
 
