@@ -106,6 +106,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Current tenant with Id &apos;{0}&apos; will be used..
+        /// </summary>
+        internal static string CurrentTenantInUse {
+            get {
+                return ResourceManager.GetString("CurrentTenantInUse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The provided subscription ID &quot;{0}&quot; is not a valid Guid..
         /// </summary>
         internal static string InvalidSubscriptionId {
@@ -129,6 +138,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string NoValidTenant {
             get {
                 return ResourceManager.GetString("NoValidTenant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to find subscription with name &apos;{0}&apos;..
+        /// </summary>
+        internal static string SubscriptionNameNotFoundError {
+            get {
+                return ResourceManager.GetString("SubscriptionNameNotFoundError", resourceCulture);
             }
         }
         
