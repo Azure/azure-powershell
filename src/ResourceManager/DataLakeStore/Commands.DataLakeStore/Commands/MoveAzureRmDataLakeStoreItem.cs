@@ -52,10 +52,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         {
             FileType fileType;
             if (Force &&
-                DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Account, Destination.FullyQualifiedPath,
+                DataLakeStoreFileSystemClient.TestFileOrFolderExistence(Destination.FullyQualifiedPath, Account,
                     out fileType))
             {
-                DataLakeStoreFileSystemClient.DeleteFileOrFolder(Account, Destination.FullyQualifiedPath, true);
+                DataLakeStoreFileSystemClient.DeleteFileOrFolder(Destination.FullyQualifiedPath, Account, true);
             }
 
             if (!DataLakeStoreFileSystemClient.RenameFileOrDirectory(Path.Path, Account, Destination.Path))

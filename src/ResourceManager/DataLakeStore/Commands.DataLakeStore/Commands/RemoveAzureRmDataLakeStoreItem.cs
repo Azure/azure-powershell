@@ -65,23 +65,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 var pathExists = DataLakeStoreFileSystemClient.TestFileOrFolderExistence(path.Path,
                     Account, out testClean);
 
-                if (!Force.IsPresent)
-                {
-                    ConfirmAction(
-                        Force.IsPresent,
-                        string.Format(Resources.RemovingDataLakeStoreItem, path.FullyQualifiedPath),
-                        string.Format(Resources.RemoveDataLakeStoreItem, path.FullyQualifiedPath),
-                        path.FullyQualifiedPath,
-                        () =>
-                            success[0] =
-                                success[0] && DataLakeStoreFileSystemClient.DeleteFileOrFolder(path.Path, Account,
-                                    Recurse));
-                }
-                else
-                {
-                    success[0] = success[0] &&
-                                 DataLakeStoreFileSystemClient.DeleteFileOrFolder(path.Path, Account, Recurse);
-                }
+                ConfirmAction(
+                    Force.IsPresent,
+                    string.Format(Resources.RemovingDataLakeStoreItem, path.FullyQualifiedPath),
+                    string.Format(Resources.RemoveDataLakeStoreItem, path.FullyQualifiedPath),
+                    path.FullyQualifiedPath,
+                    () =>
+                        success[0] =
+                            success[0] && DataLakeStoreFileSystemClient.DeleteFileOrFolder(path.Path, Account,
+                                Recurse));
 
                 if (pathExists && testClean == FileType.Directory && Clean)
                 {
