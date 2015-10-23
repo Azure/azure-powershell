@@ -28,7 +28,7 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
     public static class DscExtensionCmdletCommonBase
     {
         internal const string VirtualMachineDscExtensionCmdletNoun = "AzureVMDscExtension";
-        internal static readonly string DefaultExtensionVersion = "1.*";
+        internal static readonly string DefaultExtensionVersion = "2.*";
 
         /// <summary>
         /// Attempts to get the user's credentials from the given Storage Context or the current subscription, if the former is null. 
