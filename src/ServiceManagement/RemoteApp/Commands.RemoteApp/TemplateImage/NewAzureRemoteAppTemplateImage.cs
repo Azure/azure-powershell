@@ -249,8 +249,9 @@ namespace Microsoft.WindowsAzure.Management.RemoteApp.Cmdlets
             pageBlob = new CloudPageBlob(uri, credentials);
 
             accessPolicy.Permissions = SharedAccessBlobPermissions.Read;
-            accessPolicy.SharedAccessStartTime = DateTime.Now;
-            accessPolicy.SharedAccessExpiryTime = DateTime.Now.AddHours(12);
+            // Sometimes the clocks are 2-3 seconds fast and the SAS is not yet valid when the service tries to use it.
+            accessPolicy.SharedAccessStartTime = DateTime.UtcNow.AddMinutes(-5);
+            accessPolicy.SharedAccessExpiryTime = DateTime.UtcNow.AddHours(12);
 
             sas = pageBlob.GetSharedAccessSignature(accessPolicy);
 
