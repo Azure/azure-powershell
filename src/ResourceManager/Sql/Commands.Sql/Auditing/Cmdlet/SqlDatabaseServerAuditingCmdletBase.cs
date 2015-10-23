@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
         protected override ServerAuditingPolicyModel PersistChanges(ServerAuditingPolicyModel model)
         {
-            ModelAdapter.SetServerAuditingPolicy(model, clientRequestId);
+            ModelAdapter.SetServerAuditingPolicy(model, clientRequestId, DefaultContext.Environment.Endpoints[AzureEnvironment.Endpoint.StorageEndpointSuffix]);
             return null;
         }
     }
