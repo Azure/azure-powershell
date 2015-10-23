@@ -48,11 +48,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage
                 Uri blobEndpoint = storageServiceResponse.StorageAccount.PrimaryEndpoints.Blob;
                 Uri queueEndpoint = storageServiceResponse.StorageAccount.PrimaryEndpoints.Queue;
                 Uri tableEndpoint = storageServiceResponse.StorageAccount.PrimaryEndpoints.Table;
+                Uri fileEndpoint = storageServiceResponse.StorageAccount.PrimaryEndpoints.File ??
+                    new Uri(storageServiceResponse.StorageAccount.PrimaryEndpoints.Blob.AbsoluteUri.Replace("blob", "file"));
+
                 return new CloudStorageAccount(
                     GenerateStorageCredentials(storageClient, resourceGroupName, accountName),
                     blobEndpoint,
                     queueEndpoint,
-                    tableEndpoint, null);
+                    tableEndpoint, 
+                    fileEndpoint);
             }
             else
             {
