@@ -458,4 +458,7 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
   <data name="EnableAzureDiskEncryptionConfirmation" xml:space="preserve">
     <value>This cmdlet will enable encryption on the VM which may reboot the machine. Please save your work on the VM before confirming. Do you want to continue?</value>
   </data>
+  <data name="VMOSDiskDiskEncryptionBothKekVaultIdAndKekUrlRequired" xml:space="preserve">
+    <value>You have to specify either both of KeyEncryptionKeyVaultId and KeyEncryptionKeyUrl or none of them.</value>
+  </data>
 </root>
