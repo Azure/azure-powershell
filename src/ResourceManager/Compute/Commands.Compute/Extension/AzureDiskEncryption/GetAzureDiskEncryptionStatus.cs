@@ -62,10 +62,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         private bool DataVolumeInExtensionConfig(AzureDiskEncryptionExtensionContext adeExtension)
         {
-            if ((adeExtension != null) &&
-                (adeExtension.VolumeType != null))
+            if (adeExtension != null)
             {
-                if ((adeExtension.VolumeType.Equals(AzureDiskEncryptionExtensionContext.VolumeTypeData, StringComparison.InvariantCultureIgnoreCase)) ||
+                if ((string.IsNullOrWhiteSpace(adeExtension.VolumeType)) ||
+                    (adeExtension.VolumeType.Equals(AzureDiskEncryptionExtensionContext.VolumeTypeData, StringComparison.InvariantCultureIgnoreCase)) ||
                     (adeExtension.VolumeType.Equals(AzureDiskEncryptionExtensionContext.VolumeTypeAll, StringComparison.InvariantCultureIgnoreCase)))
                 {
                     return true;
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         private bool AreDataVolumesEncrypted(VirtualMachine vmParameters)
         {
-            if(vmParameters == null || vmParameters.Extensions == null)
+            if (vmParameters == null || vmParameters.Extensions == null)
             {
                 return false;
             }
