@@ -452,4 +452,7 @@ The file needs to be a PowerShell script (.ps1 or .psm1) or a ZIP archive (.zip)
     <value>Since the VM is created using premium storage, existing standard storage account, {0}, is used for boot diagnostics.</value>
     <comment>{0} = existing standard storage account name</comment>
   </data>
+  <data name="VMOSDiskDiskEncryptionBothKekVaultIdAndKekUrlRequired" xml:space="preserve">
+    <value>You have to specify either both of KeyEncryptionKeyVaultId and KeyEncryptionKeyUrl or none of them.</value>
+  </data>
 </root>
