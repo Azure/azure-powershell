@@ -33,8 +33,8 @@ namespace Microsoft.Azure.Commands.Compute
         protected const string DefaultParamSet = "DefaultParamSet";
         protected const string WindowsParamSet = "WindowsParamSet";
         protected const string LinuxParamSet = "LinuxParamSet";
-        protected const string WindowsDiskEncryptionParameterSet = "WindowsDiskEncryptionParameterSet";
-        protected const string LinuxDiskEncryptionParameterSet = "LinuxDiskEncryptionParameterSet";
+        protected const string WindowsAndDiskEncryptionParameterSet = "WindowsDiskEncryptionParameterSet";
+        protected const string LinuxAndDiskEncryptionParameterSet = "LinuxDiskEncryptionParameterSet";
 
         [Alias("VMProfile")]
         [Parameter(
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskWindowsOSType)]
         [Parameter(
-            ParameterSetName = WindowsDiskEncryptionParameterSet,
+            ParameterSetName = WindowsAndDiskEncryptionParameterSet,
             Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskWindowsOSType)]
@@ -106,66 +106,66 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskLinuxOSType)]
         [Parameter(
-            ParameterSetName = LinuxDiskEncryptionParameterSet,
+            ParameterSetName = LinuxAndDiskEncryptionParameterSet,
             Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMOSDiskLinuxOSType)]
         public SwitchParameter Linux { get; set; }
 
         [Parameter(
-            ParameterSetName = WindowsDiskEncryptionParameterSet,
+            ParameterSetName = WindowsAndDiskEncryptionParameterSet,
             Mandatory = true,
             Position = 7,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = HelpMessages.VMOSDiskLinuxOSType)]
+            HelpMessage = HelpMessages.VMOSDiskDiskEncryptionKeyUrl)]
         [Parameter(
-            ParameterSetName = LinuxDiskEncryptionParameterSet,
+            ParameterSetName = LinuxAndDiskEncryptionParameterSet,
             Mandatory = true,
             Position = 7,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = HelpMessages.VMOSDiskLinuxOSType)]
+            HelpMessage = HelpMessages.VMOSDiskDiskEncryptionKeyUrl)]
         public string DiskEncryptionKeyUrl { get; set; }
 
         [Parameter(
-            ParameterSetName = WindowsDiskEncryptionParameterSet,
+            ParameterSetName = WindowsAndDiskEncryptionParameterSet,
             Mandatory = true,
             Position = 8,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = HelpMessages.VMOSDiskLinuxOSType)]
+            HelpMessage = HelpMessages.VMOSDiskDiskEncryptionKeyVaultId)]
         [Parameter(
-            ParameterSetName = LinuxDiskEncryptionParameterSet,
+            ParameterSetName = LinuxAndDiskEncryptionParameterSet,
             Mandatory = true,
             Position = 8,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = HelpMessages.VMOSDiskLinuxOSType)]
+            HelpMessage = HelpMessages.VMOSDiskDiskEncryptionKeyVaultId)]
         public string DiskEncryptionKeyVaultId { get; set; }
 
         [Parameter(
-            ParameterSetName = WindowsDiskEncryptionParameterSet,
+            ParameterSetName = WindowsAndDiskEncryptionParameterSet,
             Mandatory = false,
             Position = 9,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = HelpMessages.VMOSDiskLinuxOSType)]
+            HelpMessage = HelpMessages.VMOSDiskKeyEncryptionKeyUrl)]
         [Parameter(
-            ParameterSetName = LinuxDiskEncryptionParameterSet,
+            ParameterSetName = LinuxAndDiskEncryptionParameterSet,
             Mandatory = false,
             Position = 9,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = HelpMessages.VMOSDiskLinuxOSType)]
+            HelpMessage = HelpMessages.VMOSDiskKeyEncryptionKeyUrl)]
         public string KeyEncryptionKeyUrl { get; set; }
 
         [Parameter(
-            ParameterSetName = WindowsDiskEncryptionParameterSet,
+            ParameterSetName = WindowsAndDiskEncryptionParameterSet,
             Mandatory = false,
             Position = 10,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = HelpMessages.VMOSDiskLinuxOSType)]
+            HelpMessage = HelpMessages.VMOSDiskKeyEncryptionKeyVaultId)]
         [Parameter(
-            ParameterSetName = LinuxDiskEncryptionParameterSet,
+            ParameterSetName = LinuxAndDiskEncryptionParameterSet,
             Mandatory = false,
             Position = 10,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = HelpMessages.VMOSDiskLinuxOSType)]
+            HelpMessage = HelpMessages.VMOSDiskKeyEncryptionKeyVaultId)]
         public string KeyEncryptionKeyVaultId { get; set; }
 
         protected override void ProcessRecord()
@@ -175,8 +175,8 @@ namespace Microsoft.Azure.Commands.Compute
                 this.VM.StorageProfile = new StorageProfile();
             }
 
-            if ((this.KeyEncryptionKeyVaultId == null && this.KeyEncryptionKeyUrl != null)
-                || (this.KeyEncryptionKeyVaultId != null && this.KeyEncryptionKeyUrl == null))
+            if ((string.IsNullOrEmpty(this.KeyEncryptionKeyVaultId) && !string.IsNullOrEmpty(this.KeyEncryptionKeyUrl))
+                || (!string.IsNullOrEmpty(this.KeyEncryptionKeyVaultId) && string.IsNullOrEmpty(this.KeyEncryptionKeyUrl)))
             {
                 WriteError(new ErrorRecord(
                         new Exception(Properties.Resources.VMOSDiskDiskEncryptionBothKekVaultIdAndKekUrlRequired),
@@ -198,7 +198,7 @@ namespace Microsoft.Azure.Commands.Compute
                 },
                 CreateOption = this.CreateOption,
                 EncryptionSettings =
-                (this.ParameterSetName.Equals(WindowsDiskEncryptionParameterSet) || this.ParameterSetName.Equals(WindowsDiskEncryptionParameterSet))
+                (this.ParameterSetName.Equals(WindowsAndDiskEncryptionParameterSet) || this.ParameterSetName.Equals(LinuxAndDiskEncryptionParameterSet))
                 ? new DiskEncryptionSettings
                 {
                     DiskEncryptionKey = new KeyVaultSecretReference
