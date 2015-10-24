@@ -90,6 +90,11 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         private bool AreDataVolumesEncrypted(VirtualMachine vmParameters)
         {
+            if(vmParameters == null || vmParameters.Extensions == null)
+            {
+                return false;
+            }
+
             foreach (VirtualMachineExtension vmExtension in vmParameters.Extensions)
             {
                 if (IsAzureDiskEncryptionExtension(vmExtension))
