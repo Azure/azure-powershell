@@ -17,38 +17,36 @@ using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Commands.Profile.Properties;
 
 namespace Microsoft.Azure.Commands.Profile
 {
     /// <summary>
     /// Cmdlet to change current Azure context. 
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmContext", DefaultParameterSetName =TenantIdAndSubscriptionIdParameterSet)]
+    [Cmdlet(VerbsCommon.Set, "AzureRmContext", DefaultParameterSetName = SubscriptionNameParameterSet)]
     [Alias("Select-AzureRmSubscription")]
     [OutputType(typeof(PSAzureContext))]
     public class SetAzureRMContextCommand : AzureRMCmdlet
     {
-        private const string TenantIdParameterSet = "TenantId";
-        private const string SubscriptionIdParameterSet = "Subscription";
-        private const string TenantIdAndSubscriptionIdParameterSet = "TenantIdAndSubscriptionId";
+        private const string SubscriptionNameParameterSet = "SubscriptionName";
+        private const string SubscriptionIdParameterSet = "SubscriptionId";
         private const string ContextParameterSet = "Context";
 
-        [Parameter(ParameterSetName = TenantIdParameterSet, Mandatory = false, HelpMessage = "TenantId name or ID", ValueFromPipelineByPropertyName=true)]
-        [Parameter(ParameterSetName = TenantIdAndSubscriptionIdParameterSet, Mandatory = false, HelpMessage = "TenantId name or ID", ValueFromPipelineByPropertyName=true)]
+        [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = false, HelpMessage = "TenantId name or ID", ValueFromPipelineByPropertyName = true)]
+        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "TenantId name or ID", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string TenantId { get; set; }
-
-        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = true, HelpMessage = "Subscription", ValueFromPipelineByPropertyName=true)]
-        [Parameter(ParameterSetName = TenantIdAndSubscriptionIdParameterSet, Mandatory = true, HelpMessage = "Subscription", ValueFromPipelineByPropertyName=true)]
+        
+        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = true, HelpMessage = "Subscription", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         public string SubscriptionId { get; set; }
 
-        [Parameter(ParameterSetName = SubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Subscription Name", ValueFromPipelineByPropertyName=true)]
-        [Parameter(ParameterSetName = TenantIdAndSubscriptionIdParameterSet, Mandatory = false, HelpMessage = "Subscription Name", ValueFromPipelineByPropertyName=true)]
+        [Parameter(ParameterSetName = SubscriptionNameParameterSet, Mandatory = true, HelpMessage = "Subscription Name", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public string SubscriptionName{ get; set; }
-        
-        [Parameter(ParameterSetName = ContextParameterSet, Mandatory = true, HelpMessage = "Context", ValueFromPipeline=true)]
+        public string SubscriptionName { get; set; }
+
+        [Parameter(ParameterSetName = ContextParameterSet, Mandatory = true, HelpMessage = "Context", ValueFromPipeline = true)]
         public PSAzureContext Context { get; set; }
 
         protected override void ProcessRecord()
@@ -58,14 +56,40 @@ namespace Microsoft.Azure.Commands.Profile
                 AzureRmProfileProvider.Instance.Profile.SetContextWithCache(new AzureContext(Context.Subscription, Context.Account,
                     Context.Environment, Context.Tenant));
             }
-            else
+            else if (ParameterSetName == SubscriptionNameParameterSet)
+            {
+                var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
+                AzureSubscription subscription = null;
+                string tenantId = AzureRmProfileProvider.Instance.Profile.Context.Tenant.Id.ToString();
+
+                if (string.IsNullOrWhiteSpace(TenantId))
+                {
+                    WriteVerbose(
+                    string.Format(
+                        Resources.CurrentTenantInUse,
+                        tenantId));
+                }
+                else
+                {
+                    tenantId = TenantId;
+                }
+
+                if (!profileClient.TryGetSubscriptionByName(
+                    tenantId,
+                    SubscriptionName,
+                    out subscription))
+                {
+                    throw new ItemNotFoundException(
+                        string.Format(Resources.SubscriptionNameNotFoundError, SubscriptionName));
+                }
+
+                profileClient.SetCurrentContext(subscription.Id.ToString(), tenantId, verifySubscription: false);
+                AzureRmProfileProvider.Instance.Profile.Context.Subscription.Name = SubscriptionName;
+            }
+            else if (ParameterSetName == SubscriptionIdParameterSet)
             {
                 var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
                 profileClient.SetCurrentContext(SubscriptionId, TenantId);
-                if (!string.IsNullOrWhiteSpace(SubscriptionName))
-                {
-                    AzureRmProfileProvider.Instance.Profile.Context.Subscription.Name = SubscriptionName;
-                }
             }
             WriteObject((PSAzureContext)AzureRmProfileProvider.Instance.Profile.Context);
         }
