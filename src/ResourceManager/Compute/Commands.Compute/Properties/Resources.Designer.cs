@@ -912,5 +912,14 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
                 return ResourceManager.GetString("VirtualMachineStoppingConfirmation", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have to specify either both of KeyEncryptionKeyVaultId and KeyEncryptionKeyUrl or none of them..
+        /// </summary>
+        public static string VMOSDiskDiskEncryptionBothKekVaultIdAndKekUrlRequired {
+            get {
+                return ResourceManager.GetString("VMOSDiskDiskEncryptionBothKekVaultIdAndKekUrlRequired", resourceCulture);
+            }
+        }
     }
 }
