@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var cmdlt = new GetAzureRMTenantCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.Tenant = "72f988bf-86f1-41af-91ab-2d7cd011db47";
+            cmdlt.TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
 
             // Act
             Login("2c224e7e-3ef5-431d-a57b-e71f4662e3a6", null);
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var cmdlt = new GetAzureRMTenantCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.Tenant = "microsoft.com";
+            cmdlt.TenantId = "microsoft.com";
 
             // Act
             Login("2c224e7e-3ef5-431d-a57b-e71f4662e3a6", null);
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.SubscriptionId = subscriptionId;
-            cmdlt.Tenant = tenantId;
+            cmdlt.TenantId = tenantId;
 
             // Act
             cmdlt.InvokeBeginProcessing();

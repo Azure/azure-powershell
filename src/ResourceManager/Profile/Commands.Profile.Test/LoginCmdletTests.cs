@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.SubscriptionId = "2c224e7e-3ef5-431d-a57b-e71f4662e3a6";
-            cmdlt.Tenant = "72f988bf-86f1-41af-91ab-2d7cd011db47";
+            cmdlt.TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
 
             // Act
             cmdlt.InvokeBeginProcessing();
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
             cmdlt.SubscriptionId = "2c224e7e-3ef5-431d-a57b-e71f4662e3a5";
-            cmdlt.Tenant = "72f988bf-86f1-41af-91ab-2d7cd011db47";
+            cmdlt.TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
 
             // Act
             cmdlt.InvokeBeginProcessing();
@@ -119,7 +119,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var cmdlt = new AddAzureRMAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.Tenant = "72f988bf-86f1-41af-91ab-2d7cd011db47";
+            cmdlt.TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
 
             // Act
             cmdlt.InvokeBeginProcessing();
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var cmdlt = new AddAzureRMAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.Tenant = "72f988bf-86f1-41af-91ab-2d7cd011db47";
+            cmdlt.TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
             cmdlt.SubscriptionName = "Node CLI Test";
 
             // Act
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var cmdlt = new AddAzureRMAccountCommand();
             // Setup
             cmdlt.CommandRuntime = commandRuntimeMock;
-            cmdlt.Tenant = "72f988bf-86f1-41af-91ab-2d7cd011db47";
+            cmdlt.TenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47";
             cmdlt.SubscriptionName = "Node CLI Test";
             cmdlt.SubscriptionId = "2c224e7e-3ef5-431d-a57b-e71f4662e3a6";
 
