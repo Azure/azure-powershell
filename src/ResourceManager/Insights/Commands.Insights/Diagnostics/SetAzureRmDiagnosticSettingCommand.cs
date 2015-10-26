@@ -27,8 +27,8 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
     /// <summary>
     /// Get the list of events for at a subscription level.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "DiagnosticSetting"), OutputType(typeof(PSServiceDiagnosticSettings))]
-    public class SetDiagnosticSettingCommand : ManagementCmdletBase
+    [Cmdlet(VerbsCommon.Set, "AzureRmDiagnosticSetting"), OutputType(typeof(PSServiceDiagnosticSettings))]
+    public class SetAzureRmDiagnosticSettingCommand : ManagementCmdletBase
     {
         #region Parameters declarations
 

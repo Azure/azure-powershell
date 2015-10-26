@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
 {
     public class GetDiagnosticSettingCommandTests
     {
-        private readonly GetDiagnosticSettingCommand cmdlet;
+        private readonly GetAzureRmDiagnosticSettingCommand cmdlet;
         private readonly Mock<InsightsManagementClient> insightsManagementClientMock;
         private readonly Mock<IServiceDiagnosticSettingsOperations> insightsDiagnosticsOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
             insightsDiagnosticsOperationsMock = new Mock<IServiceDiagnosticSettingsOperations>();
             insightsManagementClientMock = new Mock<InsightsManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
-            cmdlet = new GetDiagnosticSettingCommand()
+            cmdlet = new GetAzureRmDiagnosticSettingCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 InsightsManagementClient = insightsManagementClientMock.Object

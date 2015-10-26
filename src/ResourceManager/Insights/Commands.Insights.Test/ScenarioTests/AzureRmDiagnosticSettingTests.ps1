@@ -16,12 +16,12 @@
 .SYNOPSIS
 Tests getting diagnostic settings
 #>
-function Test-GetDiagnosticSetting
+function Test-GetAzureRmDiagnosticSetting
 {
     try 
     {
         # Test
-        $actual = Get-DiagnosticSetting -ResourceId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourcegroups/insights-integration/providers/test.shoebox/testresources2/pstest0000eastusR2
+        $actual = Get-AzureRmDiagnosticSetting -ResourceId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourcegroups/insights-integration/providers/test.shoebox/testresources2/pstest0000eastusR2
 
 		Assert-AreEqual "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470" $actual.StorageAccountId
 		Assert-AreEqual montest3470 $actual.StorageAccountName 
@@ -45,11 +45,11 @@ function Test-GetDiagnosticSetting
 .SYNOPSIS
 Tests setting diagnostics
 #>
-function Test-SetDiagnosticSetting
+function Test-SetAzureRmDiagnosticSetting
 {
     try 
     {
-	    $actual = Set-DiagnosticSetting -ResourceId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourcegroups/insights-integration/providers/test.shoebox/testresources2/pstest0000eastusR2 -StorageAccountId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470 -Enable $true
+	    $actual = Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourcegroups/insights-integration/providers/test.shoebox/testresources2/pstest0000eastusR2 -StorageAccountId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470 -Enable $true
 
 		Assert-AreEqual $actual.StorageAccountId "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470"
 		Assert-AreEqual montest3470 $actual.StorageAccountName

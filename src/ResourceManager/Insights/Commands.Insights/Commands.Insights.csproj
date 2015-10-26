@@ -127,8 +127,8 @@
     <Compile Include="Autoscale\GetAutoscaleHistoryCommand.cs" />
     <Compile Include="Autoscale\GetAutoscaleSettingCommand.cs" />
     <Compile Include="Autoscale\RemoveAutoscaleSettingCommand.cs" />
-    <Compile Include="Diagnostics\SetDiagnosticSettingCommand.cs" />
-    <Compile Include="Diagnostics\GetDiagnosticSettingCommand.cs" />
+    <Compile Include="Diagnostics\SetAzureRmDiagnosticSettingCommand.cs" />
+    <Compile Include="Diagnostics\GetAzureRmDiagnosticSettingCommand.cs" />
     <Compile Include="EventCmdletBase.cs" />
     <Compile Include="Events\GetAzureRmLogCommand.cs" />
     <Compile Include="InsightsClientCmdletBase.cs" />

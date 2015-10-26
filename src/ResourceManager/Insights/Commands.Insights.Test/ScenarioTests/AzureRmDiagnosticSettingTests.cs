@@ -18,20 +18,20 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 {
-    public class DiagnosticSettingTests : RMTestBase
+    public class AzureRmDiagnosticSettingTests : RMTestBase
     {
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetDiagnosticSetting()
+        public void TestGetAzureRmDiagnosticSetting()
         {
-            TestsController.NewInstance.RunPsTest("Test-GetDiagnosticSetting");
+            TestsController.NewInstance.RunPsTest("Test-GetAzureRmDiagnosticSetting");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetDiagnosticSetting()
+        public void TestSetAzureRmDiagnosticSetting()
         {
-            TestsController.NewInstance.RunPsTest("Test-SetDiagnosticSetting");
+            TestsController.NewInstance.RunPsTest("Test-SetAzureRmDiagnosticSetting");
         }
     }
 }
