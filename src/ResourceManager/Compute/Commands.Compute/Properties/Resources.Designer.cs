@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This cmdlet will enable encryption on the VM which may reboot the machine. Please save your work on the VM before confirming. Do you want to continue?.
+        ///   Looks up a localized string similar to This cmdlet prepares the VM and enables encryption which may reboot the machine and takes 10-15 minutes to finish. Please save your work on the VM before confirming. Do you want to continue?.
         /// </summary>
         public static string EnableAzureDiskEncryptionConfirmation {
             get {

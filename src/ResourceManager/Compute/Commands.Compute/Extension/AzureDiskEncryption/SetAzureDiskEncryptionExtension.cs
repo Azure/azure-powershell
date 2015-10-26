@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
     [Cmdlet(
         VerbsCommon.Set,
         ProfileNouns.AzureDiskEncryptionExtension,
-        DefaultParameterSetName = aadClientCertParameterSet)]
+        DefaultParameterSetName = aadClientSecretParameterSet)]
     [OutputType(typeof(PSComputeLongRunningOperation))]
     public class SetAzureDiskEncryptionExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
