@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 
-namespace Commands.Intune.RestClient
+namespace Microsoft.Azure.Commands.Intune.RestClient
 {
     using System;
     using System.Collections.Generic;
@@ -491,7 +491,7 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse<IOSPolicyCollection>> GetiOSPoliciesWithHttpMessagesAsync(string hostName, string filter = default(string), int? top = default(int?), string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<IOSMAMPolicyCollection>> GetiOSMAMPoliciesWithHttpMessagesAsync(string hostName, string filter = default(string), int? top = default(int?), string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -513,7 +513,7 @@ namespace Commands.Intune.RestClient
                 tracingParameters.Add("top", top);
                 tracingParameters.Add("select", select);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(invocationId, this, "GetiOSPolicies", tracingParameters);
+                ServiceClientTracing.Enter(invocationId, this, "GetiOSMAMPolicies", tracingParameters);
             }
             // Construct URL
             var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/iosPolicies").ToString();
@@ -593,14 +593,14 @@ namespace Commands.Intune.RestClient
                 throw ex;
             }
             // Create Result
-            var result = new HttpOperationResponse<IOSPolicyCollection>();
+            var result = new HttpOperationResponse<IOSMAMPolicyCollection>();
             result.Request = httpRequest;
             result.Response = httpResponse;
             // Deserialize Response
             if (statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK"))
             {
                 string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                result.Body = JsonConvert.DeserializeObject<IOSPolicyCollection>(responseContent, this.DeserializationSettings);
+                result.Body = JsonConvert.DeserializeObject<IOSMAMPolicyCollection>(responseContent, this.DeserializationSettings);
             }
             if (shouldTrace)
             {
@@ -629,7 +629,7 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse<AndroidPolicyCollection>> GetAndroidPoliciesWithHttpMessagesAsync(string hostName, string filter = default(string), int? top = default(int?), string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<AndroidMAMPolicyCollection>> GetAndroidMAMPoliciesWithHttpMessagesAsync(string hostName, string filter = default(string), int? top = default(int?), string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -651,7 +651,7 @@ namespace Commands.Intune.RestClient
                 tracingParameters.Add("top", top);
                 tracingParameters.Add("select", select);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(invocationId, this, "GetAndroidPolicies", tracingParameters);
+                ServiceClientTracing.Enter(invocationId, this, "GetAndroidMAMPolicies", tracingParameters);
             }
             // Construct URL
             var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/androidPolicies").ToString();
@@ -731,14 +731,14 @@ namespace Commands.Intune.RestClient
                 throw ex;
             }
             // Create Result
-            var result = new HttpOperationResponse<AndroidPolicyCollection>();
+            var result = new HttpOperationResponse<AndroidMAMPolicyCollection>();
             result.Request = httpRequest;
             result.Response = httpResponse;
             // Deserialize Response
             if (statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK"))
             {
                 string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                result.Body = JsonConvert.DeserializeObject<AndroidPolicyCollection>(responseContent, this.DeserializationSettings);
+                result.Body = JsonConvert.DeserializeObject<AndroidMAMPolicyCollection>(responseContent, this.DeserializationSettings);
             }
             if (shouldTrace)
             {
@@ -765,7 +765,7 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse<IOSPolicy>> GetiOSPolicyByIdWithHttpMessagesAsync(string hostName, string policyId, string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<IOSMAMPolicy>> GetiOSMAMPolicyByIdWithHttpMessagesAsync(string hostName, string policyId, string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -790,7 +790,7 @@ namespace Commands.Intune.RestClient
                 tracingParameters.Add("policyId", policyId);
                 tracingParameters.Add("select", select);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(invocationId, this, "GetiOSPolicyById", tracingParameters);
+                ServiceClientTracing.Enter(invocationId, this, "GetiOSMAMPolicyById", tracingParameters);
             }
             // Construct URL
             var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyId}").ToString();
@@ -863,14 +863,14 @@ namespace Commands.Intune.RestClient
                 throw ex;
             }
             // Create Result
-            var result = new HttpOperationResponse<IOSPolicy>();
+            var result = new HttpOperationResponse<IOSMAMPolicy>();
             result.Request = httpRequest;
             result.Response = httpResponse;
             // Deserialize Response
             if (statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK"))
             {
                 string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                result.Body = JsonConvert.DeserializeObject<IOSPolicy>(responseContent, this.DeserializationSettings);
+                result.Body = JsonConvert.DeserializeObject<IOSMAMPolicy>(responseContent, this.DeserializationSettings);
             }
             if (shouldTrace)
             {
@@ -880,7 +880,7 @@ namespace Commands.Intune.RestClient
         }
 
         /// <summary>
-        /// Creates or updates iosPolicy.
+        /// Creates or updates iOSMAMPolicy.
         /// </summary>
         /// <param name='hostName'>
         /// Location hostName for the tenant
@@ -897,7 +897,7 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse<IOSPolicy>> CreateOrUpdateIOSPolicyWithHttpMessagesAsync(string hostName, string policyId, IOSPolicyRequestBody parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<IOSMAMPolicy>> CreateOrUpdateiOSMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, IOSMAMPolicyRequestBody parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -926,7 +926,7 @@ namespace Commands.Intune.RestClient
                 tracingParameters.Add("policyId", policyId);
                 tracingParameters.Add("parameters", parameters);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(invocationId, this, "CreateOrUpdateIOSPolicy", tracingParameters);
+                ServiceClientTracing.Enter(invocationId, this, "CreateOrUpdateiOSMAMPolicy", tracingParameters);
             }
             // Construct URL
             var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyId}").ToString();
@@ -999,14 +999,14 @@ namespace Commands.Intune.RestClient
                 throw ex;
             }
             // Create Result
-            var result = new HttpOperationResponse<IOSPolicy>();
+            var result = new HttpOperationResponse<IOSMAMPolicy>();
             result.Request = httpRequest;
             result.Response = httpResponse;
             // Deserialize Response
             if (statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK"))
             {
                 string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                result.Body = JsonConvert.DeserializeObject<IOSPolicy>(responseContent, this.DeserializationSettings);
+                result.Body = JsonConvert.DeserializeObject<IOSMAMPolicy>(responseContent, this.DeserializationSettings);
             }
             if (shouldTrace)
             {
@@ -1016,7 +1016,7 @@ namespace Commands.Intune.RestClient
         }
 
         /// <summary>
-        /// patch an iosPolicy.
+        /// patch an iOSMAMPolicy.
         /// </summary>
         /// <param name='hostName'>
         /// Location hostName for the tenant
@@ -1033,7 +1033,7 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse<IOSPolicy>> PatchIOSPolicyWithHttpMessagesAsync(string hostName, string policyId, IOSPolicyRequestBody parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<IOSMAMPolicy>> PatchiOSMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, IOSMAMPolicyRequestBody parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -1062,7 +1062,7 @@ namespace Commands.Intune.RestClient
                 tracingParameters.Add("policyId", policyId);
                 tracingParameters.Add("parameters", parameters);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(invocationId, this, "PatchIOSPolicy", tracingParameters);
+                ServiceClientTracing.Enter(invocationId, this, "PatchiOSMAMPolicy", tracingParameters);
             }
             // Construct URL
             var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyId}").ToString();
@@ -1135,14 +1135,14 @@ namespace Commands.Intune.RestClient
                 throw ex;
             }
             // Create Result
-            var result = new HttpOperationResponse<IOSPolicy>();
+            var result = new HttpOperationResponse<IOSMAMPolicy>();
             result.Request = httpRequest;
             result.Response = httpResponse;
             // Deserialize Response
             if (statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK"))
             {
                 string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                result.Body = JsonConvert.DeserializeObject<IOSPolicy>(responseContent, this.DeserializationSettings);
+                result.Body = JsonConvert.DeserializeObject<IOSMAMPolicy>(responseContent, this.DeserializationSettings);
             }
             if (shouldTrace)
             {
@@ -1166,7 +1166,7 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse> DeleteIosPolicyWithHttpMessagesAsync(string hostName, string policyId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse> DeleteiOSMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -1190,7 +1190,7 @@ namespace Commands.Intune.RestClient
                 tracingParameters.Add("hostName", hostName);
                 tracingParameters.Add("policyId", policyId);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(invocationId, this, "DeleteIosPolicy", tracingParameters);
+                ServiceClientTracing.Enter(invocationId, this, "DeleteiOSMAMPolicy", tracingParameters);
             }
             // Construct URL
             var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyId}").ToString();
@@ -1270,7 +1270,7 @@ namespace Commands.Intune.RestClient
         }
 
         /// <summary>
-        /// Returns androidPolicy with given Id.
+        /// Returns AndroidMAMPolicy with given Id.
         /// </summary>
         /// <param name='hostName'>
         /// Location hostName for the tenant
@@ -1287,7 +1287,7 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse<AndroidPolicy>> GetAndroidPolicyByIdWithHttpMessagesAsync(string hostName, string policyId, string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<AndroidMAMPolicy>> GetAndroidMAMPolicyByIdWithHttpMessagesAsync(string hostName, string policyId, string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -1312,7 +1312,7 @@ namespace Commands.Intune.RestClient
                 tracingParameters.Add("policyId", policyId);
                 tracingParameters.Add("select", select);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(invocationId, this, "GetAndroidPolicyById", tracingParameters);
+                ServiceClientTracing.Enter(invocationId, this, "GetAndroidMAMPolicyById", tracingParameters);
             }
             // Construct URL
             var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/androidPolicies/{policyId}").ToString();
@@ -1385,14 +1385,14 @@ namespace Commands.Intune.RestClient
                 throw ex;
             }
             // Create Result
-            var result = new HttpOperationResponse<AndroidPolicy>();
+            var result = new HttpOperationResponse<AndroidMAMPolicy>();
             result.Request = httpRequest;
             result.Response = httpResponse;
             // Deserialize Response
             if (statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK"))
             {
                 string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                result.Body = JsonConvert.DeserializeObject<AndroidPolicy>(responseContent, this.DeserializationSettings);
+                result.Body = JsonConvert.DeserializeObject<AndroidMAMPolicy>(responseContent, this.DeserializationSettings);
             }
             if (shouldTrace)
             {
@@ -1402,7 +1402,7 @@ namespace Commands.Intune.RestClient
         }
 
         /// <summary>
-        /// Creates or updates androidPolicy.
+        /// Creates or updates AndroidMAMPolicy.
         /// </summary>
         /// <param name='hostName'>
         /// Location hostName for the tenant
@@ -1419,7 +1419,7 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse<AndroidPolicy>> CreateOrUpdateAndroidPolicyWithHttpMessagesAsync(string hostName, string policyId, AndroidPolicyRequestBody parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<AndroidMAMPolicy>> CreateOrUpdateAndroidMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, AndroidMAMPolicyRequestBody parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -1448,7 +1448,7 @@ namespace Commands.Intune.RestClient
                 tracingParameters.Add("policyId", policyId);
                 tracingParameters.Add("parameters", parameters);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(invocationId, this, "CreateOrUpdateAndroidPolicy", tracingParameters);
+                ServiceClientTracing.Enter(invocationId, this, "CreateOrUpdateAndroidMAMPolicy", tracingParameters);
             }
             // Construct URL
             var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/androidPolicies/{policyId}").ToString();
@@ -1521,14 +1521,14 @@ namespace Commands.Intune.RestClient
                 throw ex;
             }
             // Create Result
-            var result = new HttpOperationResponse<AndroidPolicy>();
+            var result = new HttpOperationResponse<AndroidMAMPolicy>();
             result.Request = httpRequest;
             result.Response = httpResponse;
             // Deserialize Response
             if (statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK"))
             {
                 string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                result.Body = JsonConvert.DeserializeObject<AndroidPolicy>(responseContent, this.DeserializationSettings);
+                result.Body = JsonConvert.DeserializeObject<AndroidMAMPolicy>(responseContent, this.DeserializationSettings);
             }
             if (shouldTrace)
             {
@@ -1538,7 +1538,7 @@ namespace Commands.Intune.RestClient
         }
 
         /// <summary>
-        /// Patch androidPolicy.
+        /// Patch AndroidMAMPolicy.
         /// </summary>
         /// <param name='hostName'>
         /// Location hostName for the tenant
@@ -1555,7 +1555,7 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse<AndroidPolicy>> PatchAndroidPolicyWithHttpMessagesAsync(string hostName, string policyId, AndroidPolicyRequestBody parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<AndroidMAMPolicy>> PatchAndroidMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, AndroidMAMPolicyRequestBody parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -1584,7 +1584,7 @@ namespace Commands.Intune.RestClient
                 tracingParameters.Add("policyId", policyId);
                 tracingParameters.Add("parameters", parameters);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(invocationId, this, "PatchAndroidPolicy", tracingParameters);
+                ServiceClientTracing.Enter(invocationId, this, "PatchAndroidMAMPolicy", tracingParameters);
             }
             // Construct URL
             var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/androidPolicies/{policyId}").ToString();
@@ -1657,14 +1657,14 @@ namespace Commands.Intune.RestClient
                 throw ex;
             }
             // Create Result
-            var result = new HttpOperationResponse<AndroidPolicy>();
+            var result = new HttpOperationResponse<AndroidMAMPolicy>();
             result.Request = httpRequest;
             result.Response = httpResponse;
             // Deserialize Response
             if (statusCode == (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), "OK"))
             {
                 string responseContent = await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                result.Body = JsonConvert.DeserializeObject<AndroidPolicy>(responseContent, this.DeserializationSettings);
+                result.Body = JsonConvert.DeserializeObject<AndroidMAMPolicy>(responseContent, this.DeserializationSettings);
             }
             if (shouldTrace)
             {
@@ -1688,7 +1688,7 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse> DeleteAndroidPolicyWithHttpMessagesAsync(string hostName, string policyId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse> DeleteAndroidMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -1712,7 +1712,7 @@ namespace Commands.Intune.RestClient
                 tracingParameters.Add("hostName", hostName);
                 tracingParameters.Add("policyId", policyId);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(invocationId, this, "DeleteAndroidPolicy", tracingParameters);
+                ServiceClientTracing.Enter(invocationId, this, "DeleteAndroidMAMPolicy", tracingParameters);
             }
             // Construct URL
             var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/androidPolicies/{policyId}").ToString();
@@ -1792,7 +1792,7 @@ namespace Commands.Intune.RestClient
         }
 
         /// <summary>
-        /// Add app to an iosPolicy.
+        /// Add app to an iOSMAMPolicy.
         /// </summary>
         /// <param name='hostName'>
         /// Location hostName for the tenant
@@ -1812,7 +1812,7 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse> AddAppForIOSPolicyWithHttpMessagesAsync(string hostName, string policyId, string appId, MAMPolicyAppIdOrGroupIdPayload parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse> AddAppForiOSMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, string appId, MAMPolicyAppIdOrGroupIdPayload parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -1850,7 +1850,7 @@ namespace Commands.Intune.RestClient
                 tracingParameters.Add("appId", appId);
                 tracingParameters.Add("parameters", parameters);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(invocationId, this, "AddAppForIOSPolicy", tracingParameters);
+                ServiceClientTracing.Enter(invocationId, this, "AddAppForiOSMAMPolicy", tracingParameters);
             }
             // Construct URL
             var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyId}/apps/{appId}").ToString();
@@ -1952,7 +1952,7 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse> DeleteAppForIosPolicyWithHttpMessagesAsync(string hostName, string policyId, string appId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse> DeleteAppForiOSMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, string appId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -1981,7 +1981,7 @@ namespace Commands.Intune.RestClient
                 tracingParameters.Add("policyId", policyId);
                 tracingParameters.Add("appId", appId);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(invocationId, this, "DeleteAppForIosPolicy", tracingParameters);
+                ServiceClientTracing.Enter(invocationId, this, "DeleteAppForiOSMAMPolicy", tracingParameters);
             }
             // Construct URL
             var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyId}/apps/{appId}").ToString();
@@ -2062,7 +2062,7 @@ namespace Commands.Intune.RestClient
         }
 
         /// <summary>
-        /// Add app to an androidPolicy.
+        /// Add app to an AndroidMAMPolicy.
         /// </summary>
         /// <param name='hostName'>
         /// Location hostName for the tenant
@@ -2124,7 +2124,7 @@ namespace Commands.Intune.RestClient
                 ServiceClientTracing.Enter(invocationId, this, "AddAppForAndriodPolicy", tracingParameters);
             }
             // Construct URL
-            var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/andriodPolicies/{policyId}/apps/{appId}").ToString();
+            var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/androidPolicies/{policyId}/apps/{appId}").ToString();
             url = url.Replace("{hostName}", Uri.EscapeDataString(hostName));
             url = url.Replace("{policyId}", Uri.EscapeDataString(policyId));
             url = url.Replace("{appId}", Uri.EscapeDataString(appId));
@@ -2223,7 +2223,7 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse> DeleteAppForAndroidPolicyWithHttpMessagesAsync(string hostName, string policyId, string appId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse> DeleteAppForAndroidMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, string appId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -2252,10 +2252,10 @@ namespace Commands.Intune.RestClient
                 tracingParameters.Add("policyId", policyId);
                 tracingParameters.Add("appId", appId);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(invocationId, this, "DeleteAppForAndroidPolicy", tracingParameters);
+                ServiceClientTracing.Enter(invocationId, this, "DeleteAppForAndroidMAMPolicy", tracingParameters);
             }
             // Construct URL
-            var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/andriodPolicies/{policyId}/apps/{appId}").ToString();
+            var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/androidPolicies/{policyId}/apps/{appId}").ToString();
             url = url.Replace("{hostName}", Uri.EscapeDataString(hostName));
             url = url.Replace("{policyId}", Uri.EscapeDataString(policyId));
             url = url.Replace("{appId}", Uri.EscapeDataString(appId));
@@ -2333,7 +2333,7 @@ namespace Commands.Intune.RestClient
         }
 
         /// <summary>
-        /// Returns groups for a given ioSPolicy.
+        /// Returns groups for a given iOSMAMPolicy.
         /// </summary>
         /// <param name='hostName'>
         /// Location hostName for the tenant
@@ -2347,7 +2347,7 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse<GroupsCollection>> GetGroupsForiOSPolicyWithHttpMessagesAsync(string hostName, string policyId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<GroupsCollection>> GetGroupsForiOSMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -2371,7 +2371,7 @@ namespace Commands.Intune.RestClient
                 tracingParameters.Add("hostName", hostName);
                 tracingParameters.Add("policyId", policyId);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(invocationId, this, "GetGroupsForiOSPolicy", tracingParameters);
+                ServiceClientTracing.Enter(invocationId, this, "GetGroupsForiOSMAMPolicy", tracingParameters);
             }
             // Construct URL
             var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyId}/groups").ToString();
@@ -2457,7 +2457,7 @@ namespace Commands.Intune.RestClient
         }
 
         /// <summary>
-        /// Returns groups for a given androidPolicy.
+        /// Returns groups for a given AndroidMAMPolicy.
         /// </summary>
         /// <param name='hostName'>
         /// Location hostName for the tenant
@@ -2471,7 +2471,7 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse<GroupsCollection>> GetGroupsForAndroidPolicyWithHttpMessagesAsync(string hostName, string policyId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse<GroupsCollection>> GetGroupsForAndroidMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -2495,7 +2495,7 @@ namespace Commands.Intune.RestClient
                 tracingParameters.Add("hostName", hostName);
                 tracingParameters.Add("policyId", policyId);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(invocationId, this, "GetGroupsForAndroidPolicy", tracingParameters);
+                ServiceClientTracing.Enter(invocationId, this, "GetGroupsForAndroidMAMPolicy", tracingParameters);
             }
             // Construct URL
             var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/androidPolicies/{policyId}/groups").ToString();
@@ -2581,7 +2581,7 @@ namespace Commands.Intune.RestClient
         }
 
         /// <summary>
-        /// Add group to an iosPolicy.
+        /// Add group to an iOSMAMPolicy.
         /// </summary>
         /// <param name='hostName'>
         /// Location hostName for the tenant
@@ -2602,7 +2602,7 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse> AddGroupForiOSPolicyWithHttpMessagesAsync(string hostName, string policyId, string groupId, MAMPolicyAppIdOrGroupIdPayload parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse> AddGroupForiOSMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, string groupId, MAMPolicyAppIdOrGroupIdPayload parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -2640,7 +2640,7 @@ namespace Commands.Intune.RestClient
                 tracingParameters.Add("groupId", groupId);
                 tracingParameters.Add("parameters", parameters);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(invocationId, this, "AddGroupForiOSPolicy", tracingParameters);
+                ServiceClientTracing.Enter(invocationId, this, "AddGroupForiOSMAMPolicy", tracingParameters);
             }
             // Construct URL
             var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyId}/groups/{groupId}").ToString();
@@ -2742,7 +2742,7 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse> DeleteGroupForiOSPolicyWithHttpMessagesAsync(string hostName, string policyId, string groupId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse> DeleteGroupForiOSMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, string groupId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -2771,7 +2771,7 @@ namespace Commands.Intune.RestClient
                 tracingParameters.Add("policyId", policyId);
                 tracingParameters.Add("groupId", groupId);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(invocationId, this, "DeleteGroupForiOSPolicy", tracingParameters);
+                ServiceClientTracing.Enter(invocationId, this, "DeleteGroupForiOSMAMPolicy", tracingParameters);
             }
             // Construct URL
             var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyId}/groups/{groupId}").ToString();
@@ -2852,7 +2852,7 @@ namespace Commands.Intune.RestClient
         }
 
         /// <summary>
-        /// Add group to an androidPolicy.
+        /// Add group to an AndroidMAMPolicy.
         /// </summary>
         /// <param name='hostName'>
         /// Location hostName for the tenant
@@ -2914,7 +2914,7 @@ namespace Commands.Intune.RestClient
                 ServiceClientTracing.Enter(invocationId, this, "AddGroupForAndriodPolicy", tracingParameters);
             }
             // Construct URL
-            var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/andriodPolicies/{policyId}/groups/{groupId}").ToString();
+            var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/androidPolicies/{policyId}/groups/{groupId}").ToString();
             url = url.Replace("{hostName}", Uri.EscapeDataString(hostName));
             url = url.Replace("{policyId}", Uri.EscapeDataString(policyId));
             url = url.Replace("{groupId}", Uri.EscapeDataString(groupId));
@@ -3013,7 +3013,7 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<HttpOperationResponse> DeleteGroupForAndroidPolicyWithHttpMessagesAsync(string hostName, string policyId, string groupId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<HttpOperationResponse> DeleteGroupForAndroidMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, string groupId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (hostName == null)
             {
@@ -3042,10 +3042,10 @@ namespace Commands.Intune.RestClient
                 tracingParameters.Add("policyId", policyId);
                 tracingParameters.Add("groupId", groupId);
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(invocationId, this, "DeleteGroupForAndroidPolicy", tracingParameters);
+                ServiceClientTracing.Enter(invocationId, this, "DeleteGroupForAndroidMAMPolicy", tracingParameters);
             }
             // Construct URL
-            var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/andriodPolicies/{policyId}/groups/{groupId}").ToString();
+            var url = new Uri(this.BaseUri, "/providers/Microsoft.Intune/locations/{hostName}/androidPolicies/{policyId}/groups/{groupId}").ToString();
             url = url.Replace("{hostName}", Uri.EscapeDataString(hostName));
             url = url.Replace("{policyId}", Uri.EscapeDataString(policyId));
             url = url.Replace("{groupId}", Uri.EscapeDataString(groupId));

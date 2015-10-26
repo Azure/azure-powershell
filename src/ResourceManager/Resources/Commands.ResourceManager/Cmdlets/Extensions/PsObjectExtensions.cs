@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         /// Converts a <see cref="ResourcePropertyObject"/> to <see cref="JToken"/>
         /// </summary>
         /// <param name="propertyObject">The <see cref="ResourcePropertyObject"/></param>
-        public static JToken ToResourcePropertiesBody(this PSObject propertyObject)
+        internal static JToken ToResourcePropertiesBody(this PSObject propertyObject)
         {
             return PsObjectExtensions.ToJToken(propertyObject);
         }

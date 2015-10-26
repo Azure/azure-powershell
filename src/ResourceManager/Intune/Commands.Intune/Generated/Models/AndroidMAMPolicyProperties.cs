@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 
-namespace Commands.Intune.RestClient.Models
+namespace Microsoft.Azure.Commands.Intune.RestClient.Models
 {
     using System;
     using System.Collections.Generic;
@@ -11,7 +11,7 @@ namespace Commands.Intune.RestClient.Models
     /// <summary>
     /// Intune MAM iOS Policy Properties.
     /// </summary>
-    public partial class AndroidPolicyProperties : MAMPolicyProperties
+    public partial class AndroidMAMPolicyProperties : MAMPolicyProperties
     {
         /// <summary>
         /// Possible values for this property include: 'allow', 'block'.

@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Commands.Intune
+namespace Microsoft.Azure.Commands.Intune
 {
     using System;
     using System.Collections.Generic;
@@ -28,7 +28,14 @@ namespace Commands.Intune
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmIntuneiOSMAMPolicy"), OutputType(typeof(PSObject))]
     public sealed class GetIntuneiOSMAMPolicyCmdlet : IntuneBaseCmdlet
-    {        
+    {
+        /// <summary>
+        /// Gets the policy Id
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The policy Id to fetch.")]
+        [ValidateNotNullOrEmpty]
+        public string PolicyId { get; set; }
+
         /// <summary>
         /// Contains the cmdlet's execution logic.
         /// </summary>
@@ -36,24 +43,53 @@ namespace Commands.Intune
         {
             Action action = () =>
             {
-                var iOSPolicies = this.IntuneClient.GetiOSPolicies(this.AsuHostName);
-                if (iOSPolicies != null && iOSPolicies.Value.Count > 0)
+                if (PolicyId != null)
                 {
-                    IList<Resource<JToken>> genericResources = iOSPolicies.Value.Where(res => res != null).SelectArray(res => res.ToJToken().ToResource());
-
-                    foreach (var batch in genericResources.Batch())
-                    {
-                        var powerShellObjects = batch.SelectArray(genericResource => genericResource.ToPsObject());
-                        this.WriteObject(sendToPipeline: powerShellObjects, enumerateCollection: true);
-                    }
+                    GetiOSPolicyById();
                 }
                 else
                 {
-                    this.WriteObject("0 Policies returned");
+                    GetiOSPolicies();
                 }
             };
 
             base.SafeExecutor(action);
+        }
+
+        /// <summary>
+        /// Get iOS policy by policy Id
+        /// </summary>
+        private void GetiOSPolicyById()
+        {
+            var iOSPolicy = this.IntuneClient.GetiOSMAMPolicyById(this.AsuHostName, this.PolicyId);
+            if (iOSPolicy != null)
+            {
+                this.WriteObject(iOSPolicy);
+            }
+            else
+            {
+                this.WriteObject("0 Policies returned");
+            }
+        }
+
+        /// <summary>
+        /// Get all iOS Policies
+        /// </summary>
+        private void GetiOSPolicies()
+        {
+            var iOSPolicies = this.IntuneClient.GetiOSMAMPolicies(this.AsuHostName);
+            if (iOSPolicies != null && iOSPolicies.Value.Count > 0)
+            {
+                for (int batchSize = 10, start = 0; start < iOSPolicies.Value.Count; start += batchSize)
+                {
+                    var batch = iOSPolicies.Value.Skip(start).Take(batchSize);
+                    this.WriteObject(batch, enumerateCollection: true);
+                }
+            }
+            else
+            {
+                this.WriteObject("0 Policies returned");
+            }
         }
     }
 }

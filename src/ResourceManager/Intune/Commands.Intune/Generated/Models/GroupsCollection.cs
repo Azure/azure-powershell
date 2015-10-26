@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 
-namespace Commands.Intune.RestClient.Models
+namespace Microsoft.Azure.Commands.Intune.RestClient.Models
 {
     using System;
     using System.Collections.Generic;
@@ -10,12 +10,12 @@ namespace Commands.Intune.RestClient.Models
 
     /// <summary>
     /// </summary>
-    public partial class LocationCollection
+    public partial class GroupsCollection
     {
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "value")]
-        public IList<Location> Value { get; set; }
+        public IList<Group> Value { get; set; }
 
         /// <summary>
         /// </summary>

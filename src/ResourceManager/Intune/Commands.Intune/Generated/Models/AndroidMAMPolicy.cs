@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 
-namespace Commands.Intune.RestClient.Models
+namespace Microsoft.Azure.Commands.Intune.RestClient.Models
 {
     using System;
     using System.Collections.Generic;
@@ -11,12 +11,12 @@ namespace Commands.Intune.RestClient.Models
     /// <summary>
     /// Android Policy entity for Intune MAM.
     /// </summary>
-    public partial class AndroidPolicy : Resource
+    public partial class AndroidMAMPolicy : Resource
     {
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "properties")]
-        public AndroidPolicyProperties Properties { get; set; }
+        public AndroidMAMPolicyProperties Properties { get; set; }
 
     }
 }

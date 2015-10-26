@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 
-namespace Commands.Intune.RestClient.Models
+namespace Microsoft.Azure.Commands.Intune.RestClient.Models
 {
     using System;
     using System.Collections.Generic;
@@ -9,23 +9,22 @@ namespace Commands.Intune.RestClient.Models
     using Microsoft.Rest.Serialization;
 
     /// <summary>
-    /// Android Policy request body for Intune MAM.
     /// </summary>
-    public partial class MAMPolicyAppOrGroupIdProperties
+    public partial class GroupProperties
     {
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "url")]
-        public string Url { get; set; }
+        [JsonProperty(PropertyName = "friendlyName")]
+        public string FriendlyName { get; set; }
 
         /// <summary>
         /// Validate the object. Throws ArgumentException or ArgumentNullException if validation fails.
         /// </summary>
         public virtual void Validate()
         {
-            if (Url == null)
+            if (FriendlyName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "Url");
+                throw new ValidationException(ValidationRules.CannotBeNull, "FriendlyName");
             }
         }
     }

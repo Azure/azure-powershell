@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 
-namespace Commands.Intune.RestClient.Models
+namespace Microsoft.Azure.Commands.Intune.RestClient.Models
 {
     using System;
     using System.Collections.Generic;
@@ -9,14 +9,14 @@ namespace Commands.Intune.RestClient.Models
     using Microsoft.Rest.Serialization;
 
     /// <summary>
-    /// Android Policy request body for Intune MAM.
+    /// iOS Policy request body parameters for Intune MAM.
     /// </summary>
-    public partial class AndroidPolicyRequestBody
+    public partial class IOSMAMPolicyRequestBody
     {
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "properties")]
-        public AndroidPolicyProperties Properties { get; set; }
+        public IOSMAMPolicyProperties Properties { get; set; }
 
     }
 }

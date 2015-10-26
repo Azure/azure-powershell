@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Commands.Intune
+namespace Microsoft.Azure.Commands.Intune
 {
     using System;
     using System.Management.Automation;
@@ -21,13 +21,13 @@ namespace Commands.Intune
     using System.Xml;
 
     /// <summary>
-    /// A cmdlet that creates a new Android intune MAM policy azure resource.
+    /// A cmdlet that creates a new Android Intune MAM policy Azure resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmIntuneAndroidMAMPolicy", SupportsShouldProcess = true, DefaultParameterSetName = NewIntuneAndroidMAMPolicyCmdlet.TypeBasedParameterSet), OutputType(typeof(AndroidPolicy))]
+    [Cmdlet(VerbsCommon.New, "AzureRmIntuneAndroidMAMPolicy", SupportsShouldProcess = true), OutputType(typeof(AndroidMAMPolicy))]
     public sealed class NewIntuneAndroidMAMPolicyCmdlet : IntuneBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the kind.
+        /// Gets or sets the name of policy
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "The policy friendly name.")]
         [Alias("FriendlyName"), ValidateNotNullOrEmpty]
@@ -64,7 +64,7 @@ namespace Commands.Intune
         /// <summary>
         /// The ClipboardSharingLevel of the policy
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates whether to restrict cut, copy and paste with other applicaitons.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates whether to restrict cut, copy and paste with other applications.")]
         [Alias("ClipboardSharingLevel"), ValidateNotNullOrEmpty, ValidateSet("blocked", "policyManagedApps", "policyManagedAppsWithPasteIn", "allApps"), PSDefaultValue(Value = ClipboardSharingLevelType.blocked)]
         public ClipboardSharingLevelType ClipboardSharing { get; set; }
 
@@ -144,10 +144,6 @@ namespace Commands.Intune
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates whether fingerprints are allowed instead of PIN to access the application.")]
         [ValidateNotNullOrEmpty, PSDefaultValue(Value = FilterType.allow, Help = "Defaults to 'allow'")]
         public FilterType ScreenCapture { get; set; }
-        /// <summary>
-        /// The tenant level parameter set.
-        /// </summary>
-        internal const string TypeBasedParameterSet = "Create a new Intune policy.";
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -157,12 +153,12 @@ namespace Commands.Intune
         /// </summary>
         protected override void ProcessRecord()
         {
-            InitializeDefaultValuesForParams();
-
+            InitializeDefaultValuesForParams();            
             var policyId = Guid.NewGuid().ToString();
 
             Action action = () =>
             {
+                ValidateNumericParameters();
                 this.ConfirmAction(
                     this.Force,
                     "Are you sure you want to create a new Android policy:" + this.PolicyName,
@@ -170,12 +166,27 @@ namespace Commands.Intune
                     policyId,
                     () =>
                     {
-                        var policyObj = this.IntuneClient.CreateOrUpdateAndroidPolicy(this.AsuHostName, policyId, PrepareAndroidPolicyBody());
+                        var policyObj = this.IntuneClient.CreateOrUpdateAndroidMAMPolicy(this.AsuHostName, policyId, PrepareAndroidPolicyBody());
                         this.WriteObject(policyObj);
                     });
             };
 
             base.SafeExecutor(action);
+        }
+
+        /// <summary>
+        /// Verify that numeric parameters are non negative
+        /// </summary>
+        private void ValidateNumericParameters()
+        {
+            NumericParameterValueChecker.CheckIfNegativeAndThrowException(
+                new System.Collections.Generic.Dictionary<string, int>
+                {
+                    { "PinRetries", PinRetries.Value },
+                    {"RecheckAccessOfflineGracePeriodMinutes", this.RecheckAccessOfflineGracePeriodMinutes.Value},
+                    {"RecheckAccessTimeoutMinutes", this.RecheckAccessTimeoutMinutes.Value},
+                    {"OfflineWipeIntervalDays", this.OfflineWipeIntervalDays.Value }
+                });
         }
 
         /// <summary>
@@ -195,10 +206,10 @@ namespace Commands.Intune
         /// Prepares iOS Policy body for the new policy request
         /// </summary>
         /// <returns>policy request body</returns>
-        private AndroidPolicyRequestBody PrepareAndroidPolicyBody()
+        private AndroidMAMPolicyRequestBody PrepareAndroidPolicyBody()
         {            
-            var policyBody = new AndroidPolicyRequestBody();
-            policyBody.Properties = new AndroidPolicyProperties()
+            var policyBody = new AndroidMAMPolicyRequestBody();
+            policyBody.Properties = new AndroidMAMPolicyProperties()
             {
                 FriendlyName = this.PolicyName,
                 Description = this.Description,

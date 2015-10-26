@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Commands.Intune
+namespace Microsoft.Azure.Commands.Intune
 {
     using System;
     using System.Collections.Generic;
@@ -30,29 +30,66 @@ namespace Commands.Intune
     public sealed class GetIntuneAndroidMAMPolicyCmdlet : IntuneBaseCmdlet
     {
         /// <summary>
+        /// Gets the policy Id
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "The policy Id to fetch.")]
+        [ValidateNotNullOrEmpty]
+        public string PolicyId { get; set; }
+
+        /// <summary>
         /// Contains the cmdlet's execution logic.
         /// </summary>
         protected override void ProcessRecord()
         {
             Action action = () =>
             {
-                var androidPolicies = this.IntuneClient.GetAndroidPolicies(this.AsuHostName);
-                if (androidPolicies != null && androidPolicies.Value.Count > 0)
+                if (PolicyId != null)
                 {
-                    IList<Resource<JToken>> genericResources = androidPolicies.Value.Where(res => res != null).SelectArray(res => res.ToJToken().ToResource());
-                    foreach (var batch in genericResources.Batch())
-                    {
-                        var powerShellObjects = batch.SelectArray(genericResource => genericResource.ToPsObject());
-                        this.WriteObject(sendToPipeline: powerShellObjects, enumerateCollection: true);
-                    }
+                    GetAndroidPolicyById();
                 }
                 else
                 {
-                    this.WriteObject("0 Policies returned");
+                    GetAndroidPolicies();
                 }
             };
 
             base.SafeExecutor(action);
+        }
+
+        /// <summary>
+        /// Get Android policy by policy Id
+        /// </summary>
+        private void GetAndroidPolicyById()
+        {
+            var andriodPolicy = this.IntuneClient.GetAndroidMAMPolicyById(this.AsuHostName, this.PolicyId);
+            if (andriodPolicy != null)
+            {
+                this.WriteObject(andriodPolicy);
+            }
+            else
+            {
+                this.WriteObject("0 Policies returned");
+            }
+        }
+
+        /// <summary>
+        /// Get all Android Policies
+        /// </summary>
+        private void GetAndroidPolicies()
+        {
+            var androidPolicies = this.IntuneClient.GetAndroidMAMPolicies(this.AsuHostName);
+            if (androidPolicies != null && androidPolicies.Value.Count > 0)
+            {
+                for (int batchSize = 10, start = 0; start < androidPolicies.Value.Count; start += batchSize)
+                {
+                    var batch = androidPolicies.Value.Skip(start).Take(batchSize);
+                    this.WriteObject(batch, enumerateCollection: true);
+                }
+            }
+            else
+            {
+                this.WriteObject("0 Policies returned");
+            }
         }
     }
 }

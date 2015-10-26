@@ -12,22 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Commands.Intune
+namespace Microsoft.Azure.Commands.Intune
 {
     using System;
+    using System.Collections.Generic;
     using System.Management.Automation;
     using RestClient;
     using RestClient.Models;
     using System.Xml;
 
     /// <summary>
-    /// A cmdlet that edits an existing iOS intune policy.
+    /// A cmdlet that edits an existing Android intune policy.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmIntuneAndroidMAMPolicy", SupportsShouldProcess = true, DefaultParameterSetName = SetIntuneAndroidMAMPolicyCmdlet.TypeBasedParameterSet), OutputType(typeof(AndroidPolicy))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmIntuneAndroidMAMPolicy", SupportsShouldProcess = true, DefaultParameterSetName = SetIntuneAndroidMAMPolicyCmdlet.TypeBasedParameterSet), OutputType(typeof(AndroidMAMPolicy))]
     public sealed class SetIntuneAndroidMAMPolicyCmdlet : IntuneBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the kind.
+        /// The policy Id
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "The policy id to patch.")]
         [ValidateNotNullOrEmpty]
@@ -71,7 +72,7 @@ namespace Commands.Intune
         /// <summary>
         /// The ClipboardSharingLevel of the policy
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates whether to restrict cut, copy and paste with other applicaitons.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates whether to restrict cut, copy and paste with other applications.")]
         [Alias("ClipboardSharingLevel"), ValidateNotNullOrEmpty, ValidateSet("blocked", "policyManagedApps", "policyManagedAppsWithPasteIn", "allApps")]
         public ClipboardSharingLevelType? ClipboardSharing { get; set; }
 
@@ -166,6 +167,7 @@ namespace Commands.Intune
         {
             Action action = () =>
             {
+                ValidateNumericParameters();
                 this.ConfirmAction(
                     this.Force,
                     "Are you sure you want to update the Android policy with Id:" + this.PolicyId,
@@ -173,7 +175,7 @@ namespace Commands.Intune
                     this.PolicyId,
                     () =>
                     {
-                        var policyObj = this.IntuneClient.PatchAndroidPolicy(this.AsuHostName, this.PolicyId, PrepareAndriodPolicyBody());
+                        var policyObj = this.IntuneClient.PatchAndroidMAMPolicy(this.AsuHostName, this.PolicyId, PrepareAndriodPolicyBody());
                         this.WriteObject(policyObj);
                     });
             };
@@ -182,13 +184,39 @@ namespace Commands.Intune
         }
 
         /// <summary>
+        /// Verify that numeric parameters are non negative
+        /// </summary>
+        private void ValidateNumericParameters()
+        {
+            Dictionary<string, int> paramsToValidate = new Dictionary<string, int>();
+            if(PinRetries.HasValue)
+            {
+                paramsToValidate.Add("PinRetries", PinRetries.Value);                
+            }
+            if(this.RecheckAccessOfflineGracePeriodMinutes.HasValue)
+            {
+                paramsToValidate.Add("RecheckAccessOfflineGracePeriodMinutes", this.RecheckAccessOfflineGracePeriodMinutes.Value);
+            }
+            if(this.RecheckAccessTimeoutMinutes.HasValue)
+            {
+                paramsToValidate.Add("RecheckAccessTimeoutMinutes", this.RecheckAccessTimeoutMinutes.Value);
+            }
+            if(this.OfflineWipeIntervalDays.HasValue)
+            {
+                paramsToValidate.Add("OfflineWipeIntervalDays", this.OfflineWipeIntervalDays.Value);
+            }
+
+            NumericParameterValueChecker.CheckIfNegativeAndThrowException(paramsToValidate);
+        }
+
+        /// <summary>
         /// Prepares iOS Policy body for the new policy request
         /// </summary>
         /// <returns>policy request body</returns>
-        private AndroidPolicyRequestBody PrepareAndriodPolicyBody()
+        private AndroidMAMPolicyRequestBody PrepareAndriodPolicyBody()
         {
-            var policyBody = new AndroidPolicyRequestBody();
-            policyBody.Properties = new AndroidPolicyProperties()
+            var policyBody = new AndroidMAMPolicyRequestBody();
+            policyBody.Properties = new AndroidMAMPolicyProperties()
             {
                 FriendlyName = this.PolicyName,
                 Description = this.Description,

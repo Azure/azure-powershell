@@ -118,7 +118,7 @@
         "/providers/Microsoft.Intune/locations/{hostName}/iosPolicies": {
             "get": {
                 "description": "Returns Intune iosPolicies.",
-                "operationId": "GetiOSPolicies",
+                "operationId": "GetiOSMAMPolicies",
                 "produces": [ "application/json" ],
                 "parameters": [
                     {
@@ -157,7 +157,7 @@
                     "200": {
                         "description": "applications as collection response",
                         "schema": {
-                            "$ref": "#/definitions/IOSPolicyCollection"
+                            "$ref": "#/definitions/IOSMAMPolicyCollection"
                         }
                     },
                     "default": {
@@ -172,11 +172,10 @@
         "/providers/Microsoft.Intune/locations/{hostName}/androidPolicies": {
             "get": {
                 "description": "Returns Intune android Policies.",
-                "operationId": "GetAndroidPolicies",
+                "operationId": "GetAndroidMAMPolicies",
                 "produces": [ "application/json" ],
                 "parameters": [
                     {
-
                         "name": "hostName",
                         "in": "path",
                         "description": "Location hostName for the tenant",
@@ -212,7 +211,7 @@
                     "200": {
                         "description": "android Policies response",
                         "schema": {
-                            "$ref": "#/definitions/AndroidPolicyCollection"
+                            "$ref": "#/definitions/AndroidMAMPolicyCollection"
                         }
                     },
                     "default": {
@@ -227,7 +226,7 @@
         "/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyId}": {
             "get": {
                 "description": "Returns Intune iOS policies.",
-                "operationId": "GetiOSPolicyById",
+                "operationId": "GetiOSMAMPolicyById",
                 "produces": [ "application/json" ],
                 "parameters": [
                     {
@@ -258,9 +257,9 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "iosPolicy entity.",
+                        "description": "iOSMAMPolicy entity.",
                         "schema": {
-                            "$ref": "#/definitions/IOSPolicy"
+                            "$ref": "#/definitions/iOSMAMPolicy"
                         }
                     },
                     "default": {
@@ -272,8 +271,8 @@
                 }
             },
             "put": {
-                "description": "Creates or updates iosPolicy.",
-                "operationId": "CreateOrUpdateIOSPolicy",
+                "description": "Creates or updates iOSMAMPolicy.",
+                "operationId": "CreateOrUpdateiOSMAMPolicy",
                 "produces": [ "application/json" ],
                 "parameters": [
                     {
@@ -299,16 +298,16 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/IOSPolicyRequestBody"
+                            "$ref": "#/definitions/iOSMAMPolicyRequestBody"
                         },
                         "description": "Parameters supplied to the Create or update an android policy operation."
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "iosPolicy entity.",
+                        "description": "iOSMAMPolicy entity.",
                         "schema": {
-                            "$ref": "#/definitions/IOSPolicy"
+                            "$ref": "#/definitions/iOSMAMPolicy"
                         }
                     },
                     "default": {
@@ -320,8 +319,8 @@
                 }
             },
 			"patch":{
-                "description": " patch an iosPolicy.",
-                "operationId": "PatchIOSPolicy",
+                "description": " patch an iOSMAMPolicy.",
+                "operationId": "PatchiOSMAMPolicy",
                 "produces": [ "application/json" ],
                 "parameters": [
                     {
@@ -347,16 +346,16 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/IOSPolicyRequestBody"
+                            "$ref": "#/definitions/iOSMAMPolicyRequestBody"
                         },
                         "description": "Parameters supplied to the Create or update an android policy operation."
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "iosPolicy entity.",
+                        "description": "iOSMAMPolicy entity.",
                         "schema": {
-                            "$ref": "#/definitions/IOSPolicy"
+                            "$ref": "#/definitions/iOSMAMPolicy"
                         }
                     },
                     "default": {
@@ -369,7 +368,7 @@
             },			
             "delete": {
                 "description": "Delete Ios Policy",
-                "operationId": "DeleteIosPolicy",
+                "operationId": "DeleteiOSMAMPolicy",
                 "produces": [ "application/json" ],
                 "parameters": [
                     {
@@ -409,8 +408,8 @@
         },
         "/providers/Microsoft.Intune/locations/{hostName}/androidPolicies/{policyId}": {
             "get": {
-                "description": "Returns androidPolicy with given Id.",
-                "operationId": "GetAndroidPolicyById",
+                "description": "Returns AndroidMAMPolicy with given Id.",
+                "operationId": "GetAndroidMAMPolicyById",
                 "produces": [ "application/json" ],
                 "parameters": [
                     {
@@ -441,9 +440,9 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "iosPolicy entity.",
+                        "description": "iOSMAMPolicy entity.",
                         "schema": {
-                            "$ref": "#/definitions/AndroidPolicy"
+                            "$ref": "#/definitions/AndroidMAMPolicy"
                         }
                     },
                     "default": {
@@ -455,8 +454,8 @@
                 }
             },
             "put": {
-                "description": "Creates or updates androidPolicy.",
-                "operationId": "CreateOrUpdateAndroidPolicy",
+                "description": "Creates or updates AndroidMAMPolicy.",
+                "operationId": "CreateOrUpdateAndroidMAMPolicy",
                 "produces": [ "application/json" ],
                 "parameters": [
                     {
@@ -482,7 +481,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/AndroidPolicyRequestBody"
+                            "$ref": "#/definitions/AndroidMAMPolicyRequestBody"
                         },
                         "description": "Parameters supplied to the Create or update an android policy operation."
                     }
@@ -491,7 +490,7 @@
                     "200": {
                         "description": "android entity.",
                         "schema": {
-                            "$ref": "#/definitions/AndroidPolicy"
+                            "$ref": "#/definitions/AndroidMAMPolicy"
                         }
                     },
                     "default": {
@@ -503,8 +502,8 @@
                 }
             },
 			"patch": {
-                "description": "Patch androidPolicy.",
-                "operationId": "PatchAndroidPolicy",
+                "description": "Patch AndroidMAMPolicy.",
+                "operationId": "PatchAndroidMAMPolicy",
                 "produces": [ "application/json" ],
                 "parameters": [
                     {
@@ -530,7 +529,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/AndroidPolicyRequestBody"
+                            "$ref": "#/definitions/AndroidMAMPolicyRequestBody"
                         },
                         "description": "Parameters supplied to the Create or update an android policy operation."
                     }
@@ -539,7 +538,7 @@
                     "200": {
                         "description": "android entity.",
                         "schema": {
-                            "$ref": "#/definitions/AndroidPolicy"
+                            "$ref": "#/definitions/AndroidMAMPolicy"
                         }
                     },
                     "default": {
@@ -552,7 +551,7 @@
             },
             "delete": {
                 "description": "Delete Android Policy",
-                "operationId": "DeleteAndroidPolicy",
+                "operationId": "DeleteAndroidMAMPolicy",
                 "produces": [ "application/json" ],
                 "parameters": [
                     {
@@ -592,8 +591,8 @@
 
         "/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyId}/apps/{appId}": {           
             "put": {
-                "description": "Add app to an iosPolicy.",
-                "operationId": "AddAppForIOSPolicy",
+                "description": "Add app to an iOSMAMPolicy.",
+                "operationId": "AddAppForiOSMAMPolicy",
                 "produces": [ "application/json" ],
                 "parameters": [
                     {
@@ -647,7 +646,7 @@
             },			
             "delete": {
                 "description": "Delete App for Ios Policy",
-                "operationId": "DeleteAppForIosPolicy",
+                "operationId": "DeleteAppForiOSMAMPolicy",
                 "produces": [ "application/json" ],
                 "parameters": [
                     {
@@ -692,9 +691,9 @@
                 }
             }
         },
-		"/providers/Microsoft.Intune/locations/{hostName}/andriodPolicies/{policyId}/apps/{appId}": {           
+		"/providers/Microsoft.Intune/locations/{hostName}/androidPolicies/{policyId}/apps/{appId}": {           
             "put": {
-                "description": "Add app to an androidPolicy.",
+                "description": "Add app to an AndroidMAMPolicy.",
                 "operationId": "AddAppForAndriodPolicy",
                 "produces": [ "application/json" ],
                 "parameters": [
@@ -749,7 +748,7 @@
             },			
             "delete": {
                 "description": "Delete App for Android Policy",
-                "operationId": "DeleteAppForAndroidPolicy",
+                "operationId": "DeleteAppForAndroidMAMPolicy",
                 "produces": [ "application/json" ],
                 "parameters": [
                     {
@@ -796,8 +795,8 @@
         },
 		"/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyId}/groups": { 
             "get": {
-                "description": "Returns groups for a given ioSPolicy.",
-                "operationId": "GetGroupsForiOSPolicy",
+                "description": "Returns groups for a given iOSMAMPolicy.",
+                "operationId": "GetGroupsForiOSMAMPolicy",
                 "produces": [ "application/json" ],
                 "parameters": [
                     {
@@ -836,8 +835,8 @@
         },
 		"/providers/Microsoft.Intune/locations/{hostName}/androidPolicies/{policyId}/groups": { 
             "get": {
-                "description": "Returns groups for a given androidPolicy.",
-                "operationId": "GetGroupsForAndroidPolicy",
+                "description": "Returns groups for a given AndroidMAMPolicy.",
+                "operationId": "GetGroupsForAndroidMAMPolicy",
                 "produces": [ "application/json" ],
                 "parameters": [
                     {
@@ -876,8 +875,8 @@
         },			
 		"/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyId}/groups/{groupId}": {           
             "put": {
-                "description": "Add group to an iosPolicy.",
-                "operationId": "AddGroupForiOSPolicy",
+                "description": "Add group to an iOSMAMPolicy.",
+                "operationId": "AddGroupForiOSMAMPolicy",
                 "produces": [ "application/json" ],
                 "parameters": [
                     {
@@ -931,7 +930,7 @@
             },			
             "delete": {
                 "description": "Delete Group for iOS Policy",
-                "operationId": "DeleteGroupForiOSPolicy",
+                "operationId": "DeleteGroupForiOSMAMPolicy",
                 "produces": [ "application/json" ],
                 "parameters": [
                     {
@@ -976,9 +975,9 @@
                 }
             }
         },
-		"/providers/Microsoft.Intune/locations/{hostName}/andriodPolicies/{policyId}/groups/{groupId}": {           
+		"/providers/Microsoft.Intune/locations/{hostName}/androidPolicies/{policyId}/groups/{groupId}": {           
             "put": {
-                "description": "Add group to an androidPolicy.",
+                "description": "Add group to an AndroidMAMPolicy.",
                 "operationId": "AddGroupForAndriodPolicy",
                 "produces": [ "application/json" ],
                 "parameters": [
@@ -1033,7 +1032,7 @@
             },			
             "delete": {
                 "description": "Delete Group for Android Policy",
-                "operationId": "DeleteGroupForAndroidPolicy",
+                "operationId": "DeleteGroupForAndroidMAMPolicy",
                 "produces": [ "application/json" ],
                 "parameters": [
                     {
@@ -1246,14 +1245,14 @@
                 }
             }
         },
-        "IOSPolicyCollection": {
+        "IOSMAMPolicyCollection": {
             "type": "object",
             "required": [ "value" ],
             "properties": {
                 "value": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/IOSPolicy"
+                        "$ref": "#/definitions/iOSMAMPolicy"
                     }
                 },
                 "nextlink": {
@@ -1261,14 +1260,14 @@
                 }
             }
         },
-        "AndroidPolicyCollection": {
+        "AndroidMAMPolicyCollection": {
             "type": "object",
             "required": [ "value" ],
             "properties": {
                 "value": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/AndroidPolicy"
+                        "$ref": "#/definitions/AndroidMAMPolicy"
                     }
                 },
                 "nextlink": {
@@ -1276,11 +1275,11 @@
                 }
             }
         },
-        "IOSPolicy": {
+        "iOSMAMPolicy": {
             "type": "object",
             "properties": {
                 "properties": {
-                    "$ref": "#/definitions/IOSPolicyProperties"
+                    "$ref": "#/definitions/iOSMAMPolicyProperties"
                 }
             },
             "allOf": [
@@ -1290,20 +1289,20 @@
             ],
             "description": "iOS Policy entity for Intune MAM."
         },
-		"IOSPolicyRequestBody": {
+		"iOSMAMPolicyRequestBody": {
             "type": "object",
             "properties": {
                 "properties": {
-                    "$ref": "#/definitions/IOSPolicyProperties"
+                    "$ref": "#/definitions/iOSMAMPolicyProperties"
                 }
             },
             "description": "iOS Policy request body parameters for Intune MAM."
         },
-        "AndroidPolicy": {
+        "AndroidMAMPolicy": {
             "type": "object",
             "properties": {
                 "properties": {
-                    "$ref": "#/definitions/AndroidPolicyProperties"
+                    "$ref": "#/definitions/AndroidMAMPolicyProperties"
                 }
             },
             "allOf": [
@@ -1313,11 +1312,11 @@
             ],
             "description": "Android Policy entity for Intune MAM."
         },
-        "AndroidPolicyRequestBody": {
+        "AndroidMAMPolicyRequestBody": {
             "type": "object",
             "properties": {
                 "properties": {
-                    "$ref": "#/definitions/AndroidPolicyProperties"
+                    "$ref": "#/definitions/AndroidMAMPolicyProperties"
                 }
             },
             "description": "Android Policy request body for Intune MAM."
@@ -1468,7 +1467,7 @@
             }
 
         },
-        "IOSPolicyProperties": {
+        "iOSMAMPolicyProperties": {
             "type": "object",
             "properties": {
                 "fileEncryptionLevel": {
@@ -1497,7 +1496,7 @@
             ],
             "description": "Intune MAM iOS Policy Properties."
         },
-        "AndroidPolicyProperties": {
+        "AndroidMAMPolicyProperties": {
             "type": "object",
             "properties": {
                 "screenCapture": {

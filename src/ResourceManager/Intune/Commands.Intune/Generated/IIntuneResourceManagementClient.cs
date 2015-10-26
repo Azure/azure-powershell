@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 
-namespace Commands.Intune.RestClient
+namespace Microsoft.Azure.Commands.Intune.RestClient
 {
     using System;
     using System.Collections.Generic;
@@ -108,7 +108,7 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<IOSPolicyCollection>> GetiOSPoliciesWithHttpMessagesAsync(string hostName, string filter = default(string), int? top = default(int?), string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<IOSMAMPolicyCollection>> GetiOSMAMPoliciesWithHttpMessagesAsync(string hostName, string filter = default(string), int? top = default(int?), string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Returns Intune android Policies.
@@ -130,7 +130,7 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<AndroidPolicyCollection>> GetAndroidPoliciesWithHttpMessagesAsync(string hostName, string filter = default(string), int? top = default(int?), string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<AndroidMAMPolicyCollection>> GetAndroidMAMPoliciesWithHttpMessagesAsync(string hostName, string filter = default(string), int? top = default(int?), string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Returns Intune iOS policies.
@@ -150,10 +150,10 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<IOSPolicy>> GetiOSPolicyByIdWithHttpMessagesAsync(string hostName, string policyId, string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<IOSMAMPolicy>> GetiOSMAMPolicyByIdWithHttpMessagesAsync(string hostName, string policyId, string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// Creates or updates iosPolicy.
+        /// Creates or updates iOSMAMPolicy.
         /// </summary>
         /// <param name='hostName'>
         /// Location hostName for the tenant
@@ -171,10 +171,10 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<IOSPolicy>> CreateOrUpdateIOSPolicyWithHttpMessagesAsync(string hostName, string policyId, IOSPolicyRequestBody parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<IOSMAMPolicy>> CreateOrUpdateiOSMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, IOSMAMPolicyRequestBody parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// patch an iosPolicy.
+        /// patch an iOSMAMPolicy.
         /// </summary>
         /// <param name='hostName'>
         /// Location hostName for the tenant
@@ -192,7 +192,7 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<IOSPolicy>> PatchIOSPolicyWithHttpMessagesAsync(string hostName, string policyId, IOSPolicyRequestBody parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<IOSMAMPolicy>> PatchiOSMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, IOSMAMPolicyRequestBody parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Delete Ios Policy
@@ -209,10 +209,10 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse> DeleteIosPolicyWithHttpMessagesAsync(string hostName, string policyId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse> DeleteiOSMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// Returns androidPolicy with given Id.
+        /// Returns AndroidMAMPolicy with given Id.
         /// </summary>
         /// <param name='hostName'>
         /// Location hostName for the tenant
@@ -229,10 +229,10 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<AndroidPolicy>> GetAndroidPolicyByIdWithHttpMessagesAsync(string hostName, string policyId, string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<AndroidMAMPolicy>> GetAndroidMAMPolicyByIdWithHttpMessagesAsync(string hostName, string policyId, string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// Creates or updates androidPolicy.
+        /// Creates or updates AndroidMAMPolicy.
         /// </summary>
         /// <param name='hostName'>
         /// Location hostName for the tenant
@@ -250,10 +250,10 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<AndroidPolicy>> CreateOrUpdateAndroidPolicyWithHttpMessagesAsync(string hostName, string policyId, AndroidPolicyRequestBody parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<AndroidMAMPolicy>> CreateOrUpdateAndroidMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, AndroidMAMPolicyRequestBody parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// Patch androidPolicy.
+        /// Patch AndroidMAMPolicy.
         /// </summary>
         /// <param name='hostName'>
         /// Location hostName for the tenant
@@ -271,7 +271,7 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<AndroidPolicy>> PatchAndroidPolicyWithHttpMessagesAsync(string hostName, string policyId, AndroidPolicyRequestBody parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<AndroidMAMPolicy>> PatchAndroidMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, AndroidMAMPolicyRequestBody parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Delete Android Policy
@@ -288,10 +288,10 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse> DeleteAndroidPolicyWithHttpMessagesAsync(string hostName, string policyId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse> DeleteAndroidMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// Add app to an iosPolicy.
+        /// Add app to an iOSMAMPolicy.
         /// </summary>
         /// <param name='hostName'>
         /// Location hostName for the tenant
@@ -311,7 +311,7 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse> AddAppForIOSPolicyWithHttpMessagesAsync(string hostName, string policyId, string appId, MAMPolicyAppIdOrGroupIdPayload parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse> AddAppForiOSMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, string appId, MAMPolicyAppIdOrGroupIdPayload parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Delete App for Ios Policy
@@ -331,10 +331,10 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse> DeleteAppForIosPolicyWithHttpMessagesAsync(string hostName, string policyId, string appId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse> DeleteAppForiOSMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, string appId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// Add app to an androidPolicy.
+        /// Add app to an AndroidMAMPolicy.
         /// </summary>
         /// <param name='hostName'>
         /// Location hostName for the tenant
@@ -375,10 +375,10 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse> DeleteAppForAndroidPolicyWithHttpMessagesAsync(string hostName, string policyId, string appId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse> DeleteAppForAndroidMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, string appId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// Returns groups for a given ioSPolicy.
+        /// Returns groups for a given iOSMAMPolicy.
         /// </summary>
         /// <param name='hostName'>
         /// Location hostName for the tenant
@@ -392,10 +392,10 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<GroupsCollection>> GetGroupsForiOSPolicyWithHttpMessagesAsync(string hostName, string policyId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<GroupsCollection>> GetGroupsForiOSMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// Returns groups for a given androidPolicy.
+        /// Returns groups for a given AndroidMAMPolicy.
         /// </summary>
         /// <param name='hostName'>
         /// Location hostName for the tenant
@@ -409,10 +409,10 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse<GroupsCollection>> GetGroupsForAndroidPolicyWithHttpMessagesAsync(string hostName, string policyId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse<GroupsCollection>> GetGroupsForAndroidMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// Add group to an iosPolicy.
+        /// Add group to an iOSMAMPolicy.
         /// </summary>
         /// <param name='hostName'>
         /// Location hostName for the tenant
@@ -433,7 +433,7 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse> AddGroupForiOSPolicyWithHttpMessagesAsync(string hostName, string policyId, string groupId, MAMPolicyAppIdOrGroupIdPayload parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse> AddGroupForiOSMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, string groupId, MAMPolicyAppIdOrGroupIdPayload parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Delete Group for iOS Policy
@@ -453,10 +453,10 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse> DeleteGroupForiOSPolicyWithHttpMessagesAsync(string hostName, string policyId, string groupId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse> DeleteGroupForiOSMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, string groupId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// Add group to an androidPolicy.
+        /// Add group to an AndroidMAMPolicy.
         /// </summary>
         /// <param name='hostName'>
         /// Location hostName for the tenant
@@ -497,7 +497,7 @@ namespace Commands.Intune.RestClient
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<HttpOperationResponse> DeleteGroupForAndroidPolicyWithHttpMessagesAsync(string hostName, string policyId, string groupId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<HttpOperationResponse> DeleteGroupForAndroidMAMPolicyWithHttpMessagesAsync(string hostName, string policyId, string groupId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
     }
 }

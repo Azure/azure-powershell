@@ -7,8 +7,8 @@
     <ProjectGuid>{189B40C3-7505-410A-9E55-7E7671BB2E14}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Commands.Intune</RootNamespace>
-    <AssemblyName>Commands.Intune</AssemblyName>
+    <RootNamespace>Microsoft.Azure.Commands.Intune</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.Intune</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>68f24ec9</NuGetPackageImportStamp>
@@ -68,43 +68,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GetIntuneAndroidMAMAppsCmdlet.cs" />
+    <Compile Include="Generated\IIntuneResourceManagementClient.cs" />
+    <Compile Include="Generated\IntuneResourceManagementClient.cs" />
+    <Compile Include="Generated\IntuneResourceManagementClientExtensions.cs" />
+    <Compile Include="Generated\Models\AndroidMAMPolicy.cs" />
+    <Compile Include="Generated\Models\AndroidMAMPolicyCollection.cs" />
+    <Compile Include="Generated\Models\AndroidMAMPolicyProperties.cs" />
+    <Compile Include="Generated\Models\AndroidMAMPolicyRequestBody.cs" />
+    <Compile Include="Generated\Models\Application.cs" />
+    <Compile Include="Generated\Models\ApplicationCollection.cs" />
+    <Compile Include="Generated\Models\ApplicationProperties.cs" />
+    <Compile Include="Generated\Models\Error.cs" />
+    <Compile Include="Generated\Models\Group.cs" />
+    <Compile Include="Generated\Models\GroupProperties.cs" />
+    <Compile Include="Generated\Models\GroupsCollection.cs" />
+    <Compile Include="Generated\Models\IOSMAMPolicy.cs" />
+    <Compile Include="Generated\Models\IOSMAMPolicyCollection.cs" />
+    <Compile Include="Generated\Models\IOSMAMPolicyProperties.cs" />
+    <Compile Include="Generated\Models\IOSMAMPolicyRequestBody.cs" />
+    <Compile Include="Generated\Models\Location.cs" />
+    <Compile Include="Generated\Models\LocationCollection.cs" />
+    <Compile Include="Generated\Models\LocationProperties.cs" />
+    <Compile Include="Generated\Models\MAMPolicyAppIdOrGroupIdPayload.cs" />
+    <Compile Include="Generated\Models\MAMPolicyAppOrGroupIdProperties.cs" />
+    <Compile Include="Generated\Models\MAMPolicyProperties.cs" />
+    <Compile Include="Generated\Models\Resource.cs" />
+    <Compile Include="GetIntuneAndroidMAMAppCmdlet.cs" />
     <Compile Include="GetIntuneAndroidMAMPolicyCmdlet.cs" />
-    <Compile Include="GetIntuneiOSMAMAppsCmdlet.cs" />
+    <Compile Include="GetIntuneiOSMAMAppCmdlet.cs" />
     <Compile Include="GetIntuneiOSMAMPolicyCmdlet.cs" />
     <Compile Include="IntuneBaseCmdlet.cs" />
     <Compile Include="IntuneConstants.cs" />
+    <Compile Include="NewIntuneiOSMAMPolicyAppCmdlet.cs" />
+    <Compile Include="NewIntuneAndroidMAMPolicyAppCmdlet.cs" />
     <Compile Include="NewIntuneAndroidMAMPolicyCmdlet.cs" />
     <Compile Include="NewIntuneiOSMAMPolicyCmdlet.cs" />
+    <Compile Include="NumericParameterValueChecker.cs" />
     <Compile Include="SetIntuneAndroidMAMPolicyCmdlet.cs" />
     <Compile Include="SetIntuneiOSMAMPolicyCmdlet.cs" />
-    <Compile Include="RestClient\IIntuneResourceManagementClient.cs" />
-    <Compile Include="RestClient\IntuneResourceManagementClient.cs" />
-    <Compile Include="RestClient\IntuneResourceManagementClientExtensions.cs" />
-    <Compile Include="RestClient\Models\AndroidPolicy.cs" />
-    <Compile Include="RestClient\Models\AndroidPolicyCollection.cs" />
-    <Compile Include="RestClient\Models\AndroidPolicyProperties.cs" />
-    <Compile Include="RestClient\Models\AndroidPolicyRequestBody.cs" />
-    <Compile Include="RestClient\Models\Application.cs" />
-    <Compile Include="RestClient\Models\ApplicationCollection.cs" />
-    <Compile Include="RestClient\Models\ApplicationProperties.cs" />
-    <Compile Include="RestClient\Models\Error.cs" />
-    <Compile Include="RestClient\Models\Group.cs" />
-    <Compile Include="RestClient\Models\GroupProperties.cs" />
-    <Compile Include="RestClient\Models\GroupsCollection.cs" />
-    <Compile Include="RestClient\Models\IOSPolicy.cs" />
-    <Compile Include="RestClient\Models\IOSPolicyCollection.cs" />
-    <Compile Include="RestClient\Models\IOSPolicyProperties.cs" />
-    <Compile Include="RestClient\Models\IOSPolicyRequestBody.cs" />
-    <Compile Include="RestClient\Models\Location.cs" />
-    <Compile Include="RestClient\Models\LocationCollection.cs" />
-    <Compile Include="RestClient\Models\LocationProperties.cs" />
-    <Compile Include="RestClient\Models\MAMPolicyAppIdOrGroupIdPayload.cs" />
-    <Compile Include="RestClient\Models\MAMPolicyAppIdPayload.cs" />
-    <Compile Include="RestClient\Models\MAMPolicyAppOrGroupIdProperties.cs" />
-    <Compile Include="RestClient\Models\MAMPolicyAppProperties.cs" />
-    <Compile Include="RestClient\Models\MAMPolicyProperties.cs" />
-    <Compile Include="RestClient\Models\Resource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +137,7 @@
       <Name>Commands.Resources</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -1,4 +1,17 @@
-﻿namespace Commands.Intune
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+namespace Microsoft.Azure.Commands.Intune
 {
     using System;
     using System.Net.Http;
@@ -10,43 +23,45 @@
     using System.Collections.Concurrent;
     using System.Management.Automation;
 
-    public abstract class IntuneBaseCmdlet: AzureRMCmdlet
+    /// <summary>
+    /// Base class for all commandlets. Helps create an instance of the client that commandlets can leverage. 
+    /// </summary>
+    public class IntuneBaseCmdlet: AzureRMCmdlet
     {
-                /// <summary>
+        /// <summary>
         /// Contains the errors that encountered while satisfying the request.
         /// </summary>
         internal static readonly ConcurrentBag<ErrorRecord> errors = new ConcurrentBag<ErrorRecord>();
 
-        private static IntuneResourceManagementClient _intuneClient;
+        private static IntuneResourceManagementClient intuneClient;
 
         internal IntuneResourceManagementClient IntuneClient
         {
             get
             {
-                if(_intuneClient == null)
+                if(intuneClient == null)
                 {
-                    _intuneClient = GetIntuneManagementClient(this.DefaultContext);
+                    intuneClient = GetIntuneManagementClient(this.DefaultContext);
                 }
-                return _intuneClient;
-            }
-            set
-            {
-                this.IntuneClient = value;
+                return intuneClient;
             }
         }
 
-        private string _asuHostName;
+        /// <summary>
+        /// ASU host name for the tenant
+        /// </summary>
+        private static string asuHostName;
         internal string AsuHostName
         {
             get
             {
-                if (_asuHostName == null)
+                if (asuHostName == null)
                 {
                     var location = IntuneClient.GetLocationByHostName();
-                    _asuHostName = location.Properties.HostName;                    
+                    asuHostName = location.Properties.HostName;                    
                 }
 
-                return _asuHostName;
+                return asuHostName;
             }
         }
         /// <summary>
@@ -82,7 +97,7 @@
         }
 
         /// <summary>
-        /// Writes te error records to console
+        /// Writes the error records to console
         /// </summary>
         internal void WriteErrors()
         {

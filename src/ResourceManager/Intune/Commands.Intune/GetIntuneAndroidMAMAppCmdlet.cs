@@ -12,19 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Commands.Intune
+namespace Microsoft.Azure.Commands.Intune
 {
     using System;
-    using RestClient;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using System.Linq;
     using System.Management.Automation;
-
+    using RestClient;
     /// <summary>
     /// Cmdlet to get apps for iOS platform.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneiOSMAMApps"), OutputType(typeof(PSObject))]
-    public sealed class GetIntuneiOSMAMAppsCmdlet : IntuneBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneAndroidMAMApp"), OutputType(typeof(PSObject))]
+    public sealed class GetIntuneAndroidMAMAppCmdlet : IntuneBaseCmdlet
     {
         /// <summary>
         /// Contains the cmdlet's execution logic.
@@ -33,16 +31,16 @@ namespace Commands.Intune
         {
             Action action = () =>
             {
-                string filter = string.Format("platform eq '{0}'", PlatformType.iOS.ToString().ToLower());
+                string filter = string.Format("platform eq '{0}'", PlatformType.Android.ToString().ToLower());
                 var resources = this.IntuneClient.GetApplications(this.AsuHostName, filter);
+
                 if (resources != null && resources.Value.Count > 0)
                 {
-                    var genericResources = resources.Value.Where(res => res != null).SelectArray(res => res.ToJToken().ToResource());
-                    foreach (var batch in genericResources.Batch())
+                    for(int batchSize = 10, start=0; start < resources.Value.Count; start+= batchSize)
                     {
-                        var powerShellObjects = batch.SelectArray(genericResource => genericResource.ToPsObject());
-                        this.WriteObject(sendToPipeline: powerShellObjects, enumerateCollection: true);
-                    }
+                        var batch = resources.Value.Skip(start).Take(batchSize);
+                        this.WriteObject(batch, enumerateCollection: true);
+                    }                    
                 }
                 else
                 {

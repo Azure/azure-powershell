@@ -12,18 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Commands.Intune
+namespace Microsoft.Azure.Commands.Intune
 {
     using System;
     using System.Management.Automation;
     using RestClient;
     using RestClient.Models;
     using System.Xml;
+    using System.Collections.Generic;
 
     /// <summary>
     /// A cmdlet that edits an existing iOS intune policy.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmIntuneiOSMAMPolicy", SupportsShouldProcess = true, DefaultParameterSetName = SetIntuneiOSMAMPolicyCmdlet.TypeBasedParameterSet), OutputType(typeof(IOSPolicy))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmIntuneiOSMAMPolicy", SupportsShouldProcess = true, DefaultParameterSetName = SetIntuneiOSMAMPolicyCmdlet.TypeBasedParameterSet), OutputType(typeof(IOSMAMPolicy))]
     public sealed class SetIntuneiOSMAMPolicyCmdlet : IntuneBaseCmdlet
     {
         /// <summary>
@@ -71,7 +72,7 @@ namespace Commands.Intune
         /// <summary>
         /// The ClipboardSharingLevel of the policy
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates whether to restrict cut, copy and paste with other applicaitons.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates whether to restrict cut, copy and paste with other applications.")]
         [Alias("ClipboardSharingLevel"), ValidateNotNullOrEmpty, ValidateSet("blocked", "policyManagedApps", "policyManagedAppsWithPasteIn", "allApps")]
         public ClipboardSharingLevelType? ClipboardSharing { get; set; }
 
@@ -166,6 +167,7 @@ namespace Commands.Intune
         {      
             Action action = () =>
             {
+                ValidateNumericParameters();
                 this.ConfirmAction(
                     this.Force,
                     "Are you sure you want to update the iOS policy with Id:" + this.PolicyId,
@@ -173,7 +175,7 @@ namespace Commands.Intune
                     this.PolicyId,
                     () =>
                     {
-                        var policyObj = this.IntuneClient.PatchIOSPolicy(this.AsuHostName, this.PolicyId, PrepareIOSPolicyBody());
+                        var policyObj = this.IntuneClient.PatchiOSMAMPolicy(this.AsuHostName, this.PolicyId, PrepareiOSMAMPolicyBody());
                         this.WriteObject(policyObj);
                     });
             };
@@ -182,13 +184,38 @@ namespace Commands.Intune
         }
 
         /// <summary>
+        /// Verify that numeric parameters are non negative
+        /// </summary>
+        private void ValidateNumericParameters()
+        {
+            Dictionary<string, int> paramsToValidate = new Dictionary<string, int>();
+            if (PinRetries.HasValue)
+            {
+                paramsToValidate.Add("PinRetries", PinRetries.Value);
+            }
+            if (this.RecheckAccessOfflineGracePeriodMinutes.HasValue)
+            {
+                paramsToValidate.Add("RecheckAccessOfflineGracePeriodMinutes", this.RecheckAccessOfflineGracePeriodMinutes.Value);
+            }
+            if (this.RecheckAccessTimeoutMinutes.HasValue)
+            {
+                paramsToValidate.Add("RecheckAccessTimeoutMinutes", this.RecheckAccessTimeoutMinutes.Value);
+            }
+            if (this.OfflineWipeIntervalDays.HasValue)
+            {
+                paramsToValidate.Add("OfflineWipeIntervalDays", this.OfflineWipeIntervalDays.Value);
+            }
+
+            NumericParameterValueChecker.CheckIfNegativeAndThrowException(paramsToValidate);
+        }
+        /// <summary>
         /// Prepares iOS Policy body for the new policy request
         /// </summary>
         /// <returns>policy request body</returns>
-        private IOSPolicyRequestBody PrepareIOSPolicyBody()
+        private IOSMAMPolicyRequestBody PrepareiOSMAMPolicyBody()
         {
-            var policyBody = new IOSPolicyRequestBody();
-            policyBody.Properties = new IOSPolicyProperties()
+            var policyBody = new IOSMAMPolicyRequestBody();
+            policyBody.Properties = new IOSMAMPolicyProperties()
             {
                 FriendlyName = this.PolicyName,
                 Description = this.Description,

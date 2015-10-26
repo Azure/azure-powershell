@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 
-namespace Commands.Intune.RestClient.Models
+namespace Microsoft.Azure.Commands.Intune.RestClient.Models
 {
     using System;
     using System.Collections.Generic;
@@ -9,23 +9,22 @@ namespace Commands.Intune.RestClient.Models
     using Microsoft.Rest.Serialization;
 
     /// <summary>
-    /// Location entity for given tenant.
     /// </summary>
-    public partial class Location : Resource
+    public partial class LocationProperties
     {
         /// <summary>
         /// </summary>
-        [JsonProperty(PropertyName = "properties")]
-        public LocationProperties Properties { get; set; }
+        [JsonProperty(PropertyName = "hostName")]
+        public string HostName { get; set; }
 
         /// <summary>
         /// Validate the object. Throws ArgumentException or ArgumentNullException if validation fails.
         /// </summary>
         public virtual void Validate()
         {
-            if (this.Properties != null)
+            if (HostName == null)
             {
-                this.Properties.Validate();
+                throw new ValidationException(ValidationRules.CannotBeNull, "HostName");
             }
         }
     }

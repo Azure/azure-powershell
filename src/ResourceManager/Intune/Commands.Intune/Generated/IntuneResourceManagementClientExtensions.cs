@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 
-namespace Commands.Intune.RestClient
+namespace Microsoft.Azure.Commands.Intune.RestClient
 {
     using System;
     using System.Collections;
@@ -129,9 +129,9 @@ namespace Commands.Intune.RestClient
             /// <param name='select'>
             /// select specific fields in entity.
             /// </param>
-            public static IOSPolicyCollection GetiOSPolicies(this IIntuneResourceManagementClient operations, string hostName, string filter = default(string), int? top = default(int?), string select = default(string))
+            public static IOSMAMPolicyCollection GetiOSMAMPolicies(this IIntuneResourceManagementClient operations, string hostName, string filter = default(string), int? top = default(int?), string select = default(string))
             {
-                return Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).GetiOSPoliciesAsync(hostName, filter, top, select), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                return Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).GetiOSMAMPoliciesAsync(hostName, filter, top, select), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -154,9 +154,9 @@ namespace Commands.Intune.RestClient
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IOSPolicyCollection> GetiOSPoliciesAsync( this IIntuneResourceManagementClient operations, string hostName, string filter = default(string), int? top = default(int?), string select = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IOSMAMPolicyCollection> GetiOSMAMPoliciesAsync( this IIntuneResourceManagementClient operations, string hostName, string filter = default(string), int? top = default(int?), string select = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                HttpOperationResponse<IOSPolicyCollection> result = await operations.GetiOSPoliciesWithHttpMessagesAsync(hostName, filter, top, select, null, cancellationToken).ConfigureAwait(false);
+                HttpOperationResponse<IOSMAMPolicyCollection> result = await operations.GetiOSMAMPoliciesWithHttpMessagesAsync(hostName, filter, top, select, null, cancellationToken).ConfigureAwait(false);
                 return result.Body;
             }
 
@@ -177,9 +177,9 @@ namespace Commands.Intune.RestClient
             /// <param name='select'>
             /// select specific fields in entity.
             /// </param>
-            public static AndroidPolicyCollection GetAndroidPolicies(this IIntuneResourceManagementClient operations, string hostName, string filter = default(string), int? top = default(int?), string select = default(string))
+            public static AndroidMAMPolicyCollection GetAndroidMAMPolicies(this IIntuneResourceManagementClient operations, string hostName, string filter = default(string), int? top = default(int?), string select = default(string))
             {
-                return Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).GetAndroidPoliciesAsync(hostName, filter, top, select), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                return Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).GetAndroidMAMPoliciesAsync(hostName, filter, top, select), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -202,9 +202,9 @@ namespace Commands.Intune.RestClient
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<AndroidPolicyCollection> GetAndroidPoliciesAsync( this IIntuneResourceManagementClient operations, string hostName, string filter = default(string), int? top = default(int?), string select = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<AndroidMAMPolicyCollection> GetAndroidMAMPoliciesAsync( this IIntuneResourceManagementClient operations, string hostName, string filter = default(string), int? top = default(int?), string select = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                HttpOperationResponse<AndroidPolicyCollection> result = await operations.GetAndroidPoliciesWithHttpMessagesAsync(hostName, filter, top, select, null, cancellationToken).ConfigureAwait(false);
+                HttpOperationResponse<AndroidMAMPolicyCollection> result = await operations.GetAndroidMAMPoliciesWithHttpMessagesAsync(hostName, filter, top, select, null, cancellationToken).ConfigureAwait(false);
                 return result.Body;
             }
 
@@ -223,9 +223,9 @@ namespace Commands.Intune.RestClient
             /// <param name='select'>
             /// select specific fields in entity.
             /// </param>
-            public static IOSPolicy GetiOSPolicyById(this IIntuneResourceManagementClient operations, string hostName, string policyId, string select = default(string))
+            public static IOSMAMPolicy GetiOSMAMPolicyById(this IIntuneResourceManagementClient operations, string hostName, string policyId, string select = default(string))
             {
-                return Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).GetiOSPolicyByIdAsync(hostName, policyId, select), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                return Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).GetiOSMAMPolicyByIdAsync(hostName, policyId, select), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -246,14 +246,14 @@ namespace Commands.Intune.RestClient
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IOSPolicy> GetiOSPolicyByIdAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, string select = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IOSMAMPolicy> GetiOSMAMPolicyByIdAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, string select = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                HttpOperationResponse<IOSPolicy> result = await operations.GetiOSPolicyByIdWithHttpMessagesAsync(hostName, policyId, select, null, cancellationToken).ConfigureAwait(false);
+                HttpOperationResponse<IOSMAMPolicy> result = await operations.GetiOSMAMPolicyByIdWithHttpMessagesAsync(hostName, policyId, select, null, cancellationToken).ConfigureAwait(false);
                 return result.Body;
             }
 
             /// <summary>
-            /// Creates or updates iosPolicy.
+            /// Creates or updates iOSMAMPolicy.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -267,13 +267,13 @@ namespace Commands.Intune.RestClient
             /// <param name='parameters'>
             /// Parameters supplied to the Create or update an android policy operation.
             /// </param>
-            public static IOSPolicy CreateOrUpdateIOSPolicy(this IIntuneResourceManagementClient operations, string hostName, string policyId, IOSPolicyRequestBody parameters)
+            public static IOSMAMPolicy CreateOrUpdateiOSMAMPolicy(this IIntuneResourceManagementClient operations, string hostName, string policyId, IOSMAMPolicyRequestBody parameters)
             {
-                return Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).CreateOrUpdateIOSPolicyAsync(hostName, policyId, parameters), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                return Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).CreateOrUpdateiOSMAMPolicyAsync(hostName, policyId, parameters), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Creates or updates iosPolicy.
+            /// Creates or updates iOSMAMPolicy.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -290,14 +290,14 @@ namespace Commands.Intune.RestClient
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IOSPolicy> CreateOrUpdateIOSPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, IOSPolicyRequestBody parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IOSMAMPolicy> CreateOrUpdateiOSMAMPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, IOSMAMPolicyRequestBody parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                HttpOperationResponse<IOSPolicy> result = await operations.CreateOrUpdateIOSPolicyWithHttpMessagesAsync(hostName, policyId, parameters, null, cancellationToken).ConfigureAwait(false);
+                HttpOperationResponse<IOSMAMPolicy> result = await operations.CreateOrUpdateiOSMAMPolicyWithHttpMessagesAsync(hostName, policyId, parameters, null, cancellationToken).ConfigureAwait(false);
                 return result.Body;
             }
 
             /// <summary>
-            /// patch an iosPolicy.
+            /// patch an iOSMAMPolicy.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -311,13 +311,13 @@ namespace Commands.Intune.RestClient
             /// <param name='parameters'>
             /// Parameters supplied to the Create or update an android policy operation.
             /// </param>
-            public static IOSPolicy PatchIOSPolicy(this IIntuneResourceManagementClient operations, string hostName, string policyId, IOSPolicyRequestBody parameters)
+            public static IOSMAMPolicy PatchiOSMAMPolicy(this IIntuneResourceManagementClient operations, string hostName, string policyId, IOSMAMPolicyRequestBody parameters)
             {
-                return Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).PatchIOSPolicyAsync(hostName, policyId, parameters), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                return Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).PatchiOSMAMPolicyAsync(hostName, policyId, parameters), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// patch an iosPolicy.
+            /// patch an iOSMAMPolicy.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -334,9 +334,9 @@ namespace Commands.Intune.RestClient
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IOSPolicy> PatchIOSPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, IOSPolicyRequestBody parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IOSMAMPolicy> PatchiOSMAMPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, IOSMAMPolicyRequestBody parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                HttpOperationResponse<IOSPolicy> result = await operations.PatchIOSPolicyWithHttpMessagesAsync(hostName, policyId, parameters, null, cancellationToken).ConfigureAwait(false);
+                HttpOperationResponse<IOSMAMPolicy> result = await operations.PatchiOSMAMPolicyWithHttpMessagesAsync(hostName, policyId, parameters, null, cancellationToken).ConfigureAwait(false);
                 return result.Body;
             }
 
@@ -352,9 +352,9 @@ namespace Commands.Intune.RestClient
             /// <param name='policyId'>
             /// policy unique Id
             /// </param>
-            public static void DeleteIosPolicy(this IIntuneResourceManagementClient operations, string hostName, string policyId)
+            public static void DeleteiOSMAMPolicy(this IIntuneResourceManagementClient operations, string hostName, string policyId)
             {
-                Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).DeleteIosPolicyAsync(hostName, policyId), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).DeleteiOSMAMPolicyAsync(hostName, policyId), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -372,13 +372,13 @@ namespace Commands.Intune.RestClient
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteIosPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteiOSMAMPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                await operations.DeleteIosPolicyWithHttpMessagesAsync(hostName, policyId, null, cancellationToken).ConfigureAwait(false);
+                await operations.DeleteiOSMAMPolicyWithHttpMessagesAsync(hostName, policyId, null, cancellationToken).ConfigureAwait(false);
             }
 
             /// <summary>
-            /// Returns androidPolicy with given Id.
+            /// Returns AndroidMAMPolicy with given Id.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -392,13 +392,13 @@ namespace Commands.Intune.RestClient
             /// <param name='select'>
             /// select specific fields in entity.
             /// </param>
-            public static AndroidPolicy GetAndroidPolicyById(this IIntuneResourceManagementClient operations, string hostName, string policyId, string select = default(string))
+            public static AndroidMAMPolicy GetAndroidMAMPolicyById(this IIntuneResourceManagementClient operations, string hostName, string policyId, string select = default(string))
             {
-                return Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).GetAndroidPolicyByIdAsync(hostName, policyId, select), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                return Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).GetAndroidMAMPolicyByIdAsync(hostName, policyId, select), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Returns androidPolicy with given Id.
+            /// Returns AndroidMAMPolicy with given Id.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -415,14 +415,14 @@ namespace Commands.Intune.RestClient
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<AndroidPolicy> GetAndroidPolicyByIdAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, string select = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<AndroidMAMPolicy> GetAndroidMAMPolicyByIdAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, string select = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                HttpOperationResponse<AndroidPolicy> result = await operations.GetAndroidPolicyByIdWithHttpMessagesAsync(hostName, policyId, select, null, cancellationToken).ConfigureAwait(false);
+                HttpOperationResponse<AndroidMAMPolicy> result = await operations.GetAndroidMAMPolicyByIdWithHttpMessagesAsync(hostName, policyId, select, null, cancellationToken).ConfigureAwait(false);
                 return result.Body;
             }
 
             /// <summary>
-            /// Creates or updates androidPolicy.
+            /// Creates or updates AndroidMAMPolicy.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -436,13 +436,13 @@ namespace Commands.Intune.RestClient
             /// <param name='parameters'>
             /// Parameters supplied to the Create or update an android policy operation.
             /// </param>
-            public static AndroidPolicy CreateOrUpdateAndroidPolicy(this IIntuneResourceManagementClient operations, string hostName, string policyId, AndroidPolicyRequestBody parameters)
+            public static AndroidMAMPolicy CreateOrUpdateAndroidMAMPolicy(this IIntuneResourceManagementClient operations, string hostName, string policyId, AndroidMAMPolicyRequestBody parameters)
             {
-                return Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).CreateOrUpdateAndroidPolicyAsync(hostName, policyId, parameters), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                return Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).CreateOrUpdateAndroidMAMPolicyAsync(hostName, policyId, parameters), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Creates or updates androidPolicy.
+            /// Creates or updates AndroidMAMPolicy.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -459,14 +459,14 @@ namespace Commands.Intune.RestClient
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<AndroidPolicy> CreateOrUpdateAndroidPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, AndroidPolicyRequestBody parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<AndroidMAMPolicy> CreateOrUpdateAndroidMAMPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, AndroidMAMPolicyRequestBody parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                HttpOperationResponse<AndroidPolicy> result = await operations.CreateOrUpdateAndroidPolicyWithHttpMessagesAsync(hostName, policyId, parameters, null, cancellationToken).ConfigureAwait(false);
+                HttpOperationResponse<AndroidMAMPolicy> result = await operations.CreateOrUpdateAndroidMAMPolicyWithHttpMessagesAsync(hostName, policyId, parameters, null, cancellationToken).ConfigureAwait(false);
                 return result.Body;
             }
 
             /// <summary>
-            /// Patch androidPolicy.
+            /// Patch AndroidMAMPolicy.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -480,13 +480,13 @@ namespace Commands.Intune.RestClient
             /// <param name='parameters'>
             /// Parameters supplied to the Create or update an android policy operation.
             /// </param>
-            public static AndroidPolicy PatchAndroidPolicy(this IIntuneResourceManagementClient operations, string hostName, string policyId, AndroidPolicyRequestBody parameters)
+            public static AndroidMAMPolicy PatchAndroidMAMPolicy(this IIntuneResourceManagementClient operations, string hostName, string policyId, AndroidMAMPolicyRequestBody parameters)
             {
-                return Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).PatchAndroidPolicyAsync(hostName, policyId, parameters), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                return Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).PatchAndroidMAMPolicyAsync(hostName, policyId, parameters), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Patch androidPolicy.
+            /// Patch AndroidMAMPolicy.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -503,9 +503,9 @@ namespace Commands.Intune.RestClient
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<AndroidPolicy> PatchAndroidPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, AndroidPolicyRequestBody parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<AndroidMAMPolicy> PatchAndroidMAMPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, AndroidMAMPolicyRequestBody parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                HttpOperationResponse<AndroidPolicy> result = await operations.PatchAndroidPolicyWithHttpMessagesAsync(hostName, policyId, parameters, null, cancellationToken).ConfigureAwait(false);
+                HttpOperationResponse<AndroidMAMPolicy> result = await operations.PatchAndroidMAMPolicyWithHttpMessagesAsync(hostName, policyId, parameters, null, cancellationToken).ConfigureAwait(false);
                 return result.Body;
             }
 
@@ -521,9 +521,9 @@ namespace Commands.Intune.RestClient
             /// <param name='policyId'>
             /// policy unique Id
             /// </param>
-            public static void DeleteAndroidPolicy(this IIntuneResourceManagementClient operations, string hostName, string policyId)
+            public static void DeleteAndroidMAMPolicy(this IIntuneResourceManagementClient operations, string hostName, string policyId)
             {
-                Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).DeleteAndroidPolicyAsync(hostName, policyId), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).DeleteAndroidMAMPolicyAsync(hostName, policyId), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -541,13 +541,13 @@ namespace Commands.Intune.RestClient
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAndroidPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAndroidMAMPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                await operations.DeleteAndroidPolicyWithHttpMessagesAsync(hostName, policyId, null, cancellationToken).ConfigureAwait(false);
+                await operations.DeleteAndroidMAMPolicyWithHttpMessagesAsync(hostName, policyId, null, cancellationToken).ConfigureAwait(false);
             }
 
             /// <summary>
-            /// Add app to an iosPolicy.
+            /// Add app to an iOSMAMPolicy.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -564,13 +564,13 @@ namespace Commands.Intune.RestClient
             /// <param name='parameters'>
             /// Parameters supplied to add an app to an ios policy.
             /// </param>
-            public static void AddAppForIOSPolicy(this IIntuneResourceManagementClient operations, string hostName, string policyId, string appId, MAMPolicyAppIdOrGroupIdPayload parameters)
+            public static void AddAppForiOSMAMPolicy(this IIntuneResourceManagementClient operations, string hostName, string policyId, string appId, MAMPolicyAppIdOrGroupIdPayload parameters)
             {
-                Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).AddAppForIOSPolicyAsync(hostName, policyId, appId, parameters), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).AddAppForiOSMAMPolicyAsync(hostName, policyId, appId, parameters), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Add app to an iosPolicy.
+            /// Add app to an iOSMAMPolicy.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -590,9 +590,9 @@ namespace Commands.Intune.RestClient
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task AddAppForIOSPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, string appId, MAMPolicyAppIdOrGroupIdPayload parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task AddAppForiOSMAMPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, string appId, MAMPolicyAppIdOrGroupIdPayload parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                await operations.AddAppForIOSPolicyWithHttpMessagesAsync(hostName, policyId, appId, parameters, null, cancellationToken).ConfigureAwait(false);
+                await operations.AddAppForiOSMAMPolicyWithHttpMessagesAsync(hostName, policyId, appId, parameters, null, cancellationToken).ConfigureAwait(false);
             }
 
             /// <summary>
@@ -610,9 +610,9 @@ namespace Commands.Intune.RestClient
             /// <param name='appId'>
             /// application unique Id
             /// </param>
-            public static void DeleteAppForIosPolicy(this IIntuneResourceManagementClient operations, string hostName, string policyId, string appId)
+            public static void DeleteAppForiOSMAMPolicy(this IIntuneResourceManagementClient operations, string hostName, string policyId, string appId)
             {
-                Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).DeleteAppForIosPolicyAsync(hostName, policyId, appId), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).DeleteAppForiOSMAMPolicyAsync(hostName, policyId, appId), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -633,13 +633,13 @@ namespace Commands.Intune.RestClient
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAppForIosPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, string appId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAppForiOSMAMPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, string appId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                await operations.DeleteAppForIosPolicyWithHttpMessagesAsync(hostName, policyId, appId, null, cancellationToken).ConfigureAwait(false);
+                await operations.DeleteAppForiOSMAMPolicyWithHttpMessagesAsync(hostName, policyId, appId, null, cancellationToken).ConfigureAwait(false);
             }
 
             /// <summary>
-            /// Add app to an androidPolicy.
+            /// Add app to an AndroidMAMPolicy.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -663,7 +663,7 @@ namespace Commands.Intune.RestClient
             }
 
             /// <summary>
-            /// Add app to an androidPolicy.
+            /// Add app to an AndroidMAMPolicy.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -704,9 +704,9 @@ namespace Commands.Intune.RestClient
             /// <param name='appId'>
             /// application unique Id
             /// </param>
-            public static void DeleteAppForAndroidPolicy(this IIntuneResourceManagementClient operations, string hostName, string policyId, string appId)
+            public static void DeleteAppForAndroidMAMPolicy(this IIntuneResourceManagementClient operations, string hostName, string policyId, string appId)
             {
-                Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).DeleteAppForAndroidPolicyAsync(hostName, policyId, appId), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).DeleteAppForAndroidMAMPolicyAsync(hostName, policyId, appId), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -727,13 +727,13 @@ namespace Commands.Intune.RestClient
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAppForAndroidPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, string appId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAppForAndroidMAMPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, string appId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                await operations.DeleteAppForAndroidPolicyWithHttpMessagesAsync(hostName, policyId, appId, null, cancellationToken).ConfigureAwait(false);
+                await operations.DeleteAppForAndroidMAMPolicyWithHttpMessagesAsync(hostName, policyId, appId, null, cancellationToken).ConfigureAwait(false);
             }
 
             /// <summary>
-            /// Returns groups for a given ioSPolicy.
+            /// Returns groups for a given iOSMAMPolicy.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -744,51 +744,13 @@ namespace Commands.Intune.RestClient
             /// <param name='policyId'>
             /// policy id for the tenant
             /// </param>
-            public static GroupsCollection GetGroupsForiOSPolicy(this IIntuneResourceManagementClient operations, string hostName, string policyId)
+            public static GroupsCollection GetGroupsForiOSMAMPolicy(this IIntuneResourceManagementClient operations, string hostName, string policyId)
             {
-                return Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).GetGroupsForiOSPolicyAsync(hostName, policyId), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                return Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).GetGroupsForiOSMAMPolicyAsync(hostName, policyId), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Returns groups for a given ioSPolicy.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='hostName'>
-            /// Location hostName for the tenant
-            /// </param>
-            /// <param name='policyId'>
-            /// policy id for the tenant
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<GroupsCollection> GetGroupsForiOSPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                HttpOperationResponse<GroupsCollection> result = await operations.GetGroupsForiOSPolicyWithHttpMessagesAsync(hostName, policyId, null, cancellationToken).ConfigureAwait(false);
-                return result.Body;
-            }
-
-            /// <summary>
-            /// Returns groups for a given androidPolicy.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='hostName'>
-            /// Location hostName for the tenant
-            /// </param>
-            /// <param name='policyId'>
-            /// policy id for the tenant
-            /// </param>
-            public static GroupsCollection GetGroupsForAndroidPolicy(this IIntuneResourceManagementClient operations, string hostName, string policyId)
-            {
-                return Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).GetGroupsForAndroidPolicyAsync(hostName, policyId), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Returns groups for a given androidPolicy.
+            /// Returns groups for a given iOSMAMPolicy.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -802,14 +764,52 @@ namespace Commands.Intune.RestClient
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<GroupsCollection> GetGroupsForAndroidPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<GroupsCollection> GetGroupsForiOSMAMPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                HttpOperationResponse<GroupsCollection> result = await operations.GetGroupsForAndroidPolicyWithHttpMessagesAsync(hostName, policyId, null, cancellationToken).ConfigureAwait(false);
+                HttpOperationResponse<GroupsCollection> result = await operations.GetGroupsForiOSMAMPolicyWithHttpMessagesAsync(hostName, policyId, null, cancellationToken).ConfigureAwait(false);
                 return result.Body;
             }
 
             /// <summary>
-            /// Add group to an iosPolicy.
+            /// Returns groups for a given AndroidMAMPolicy.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='hostName'>
+            /// Location hostName for the tenant
+            /// </param>
+            /// <param name='policyId'>
+            /// policy id for the tenant
+            /// </param>
+            public static GroupsCollection GetGroupsForAndroidMAMPolicy(this IIntuneResourceManagementClient operations, string hostName, string policyId)
+            {
+                return Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).GetGroupsForAndroidMAMPolicyAsync(hostName, policyId), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Returns groups for a given AndroidMAMPolicy.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='hostName'>
+            /// Location hostName for the tenant
+            /// </param>
+            /// <param name='policyId'>
+            /// policy id for the tenant
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<GroupsCollection> GetGroupsForAndroidMAMPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                HttpOperationResponse<GroupsCollection> result = await operations.GetGroupsForAndroidMAMPolicyWithHttpMessagesAsync(hostName, policyId, null, cancellationToken).ConfigureAwait(false);
+                return result.Body;
+            }
+
+            /// <summary>
+            /// Add group to an iOSMAMPolicy.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -827,13 +827,13 @@ namespace Commands.Intune.RestClient
             /// Parameters supplied to the Create or update app to an android policy
             /// operation.
             /// </param>
-            public static void AddGroupForiOSPolicy(this IIntuneResourceManagementClient operations, string hostName, string policyId, string groupId, MAMPolicyAppIdOrGroupIdPayload parameters)
+            public static void AddGroupForiOSMAMPolicy(this IIntuneResourceManagementClient operations, string hostName, string policyId, string groupId, MAMPolicyAppIdOrGroupIdPayload parameters)
             {
-                Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).AddGroupForiOSPolicyAsync(hostName, policyId, groupId, parameters), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).AddGroupForiOSMAMPolicyAsync(hostName, policyId, groupId, parameters), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Add group to an iosPolicy.
+            /// Add group to an iOSMAMPolicy.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -854,9 +854,9 @@ namespace Commands.Intune.RestClient
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task AddGroupForiOSPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, string groupId, MAMPolicyAppIdOrGroupIdPayload parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task AddGroupForiOSMAMPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, string groupId, MAMPolicyAppIdOrGroupIdPayload parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                await operations.AddGroupForiOSPolicyWithHttpMessagesAsync(hostName, policyId, groupId, parameters, null, cancellationToken).ConfigureAwait(false);
+                await operations.AddGroupForiOSMAMPolicyWithHttpMessagesAsync(hostName, policyId, groupId, parameters, null, cancellationToken).ConfigureAwait(false);
             }
 
             /// <summary>
@@ -874,9 +874,9 @@ namespace Commands.Intune.RestClient
             /// <param name='groupId'>
             /// application unique Id
             /// </param>
-            public static void DeleteGroupForiOSPolicy(this IIntuneResourceManagementClient operations, string hostName, string policyId, string groupId)
+            public static void DeleteGroupForiOSMAMPolicy(this IIntuneResourceManagementClient operations, string hostName, string policyId, string groupId)
             {
-                Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).DeleteGroupForiOSPolicyAsync(hostName, policyId, groupId), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).DeleteGroupForiOSMAMPolicyAsync(hostName, policyId, groupId), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -897,13 +897,13 @@ namespace Commands.Intune.RestClient
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteGroupForiOSPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, string groupId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteGroupForiOSMAMPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, string groupId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                await operations.DeleteGroupForiOSPolicyWithHttpMessagesAsync(hostName, policyId, groupId, null, cancellationToken).ConfigureAwait(false);
+                await operations.DeleteGroupForiOSMAMPolicyWithHttpMessagesAsync(hostName, policyId, groupId, null, cancellationToken).ConfigureAwait(false);
             }
 
             /// <summary>
-            /// Add group to an androidPolicy.
+            /// Add group to an AndroidMAMPolicy.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -927,7 +927,7 @@ namespace Commands.Intune.RestClient
             }
 
             /// <summary>
-            /// Add group to an androidPolicy.
+            /// Add group to an AndroidMAMPolicy.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -968,9 +968,9 @@ namespace Commands.Intune.RestClient
             /// <param name='groupId'>
             /// application unique Id
             /// </param>
-            public static void DeleteGroupForAndroidPolicy(this IIntuneResourceManagementClient operations, string hostName, string policyId, string groupId)
+            public static void DeleteGroupForAndroidMAMPolicy(this IIntuneResourceManagementClient operations, string hostName, string policyId, string groupId)
             {
-                Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).DeleteGroupForAndroidPolicyAsync(hostName, policyId, groupId), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+                Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).DeleteGroupForAndroidMAMPolicyAsync(hostName, policyId, groupId), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -991,9 +991,9 @@ namespace Commands.Intune.RestClient
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteGroupForAndroidPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, string groupId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteGroupForAndroidMAMPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, string groupId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                await operations.DeleteGroupForAndroidPolicyWithHttpMessagesAsync(hostName, policyId, groupId, null, cancellationToken).ConfigureAwait(false);
+                await operations.DeleteGroupForAndroidMAMPolicyWithHttpMessagesAsync(hostName, policyId, groupId, null, cancellationToken).ConfigureAwait(false);
             }
 
     }

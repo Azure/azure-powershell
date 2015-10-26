@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 
-namespace Commands.Intune.RestClient.Models
+namespace Microsoft.Azure.Commands.Intune.RestClient.Models
 {
     using System;
     using System.Collections.Generic;
@@ -38,7 +38,7 @@ namespace Commands.Intune.RestClient.Models
 
         /// <summary>
         /// Possible values for this property include: 'required',
-        /// 'notRequired '.
+        /// 'notRequired'.
         /// </summary>
         [JsonProperty(PropertyName = "authentication")]
         public string Authentication { get; set; }
@@ -64,7 +64,7 @@ namespace Commands.Intune.RestClient.Models
 
         /// <summary>
         /// Possible values for this property include: 'required',
-        /// 'notRequired '.
+        /// 'notRequired'.
         /// </summary>
         [JsonProperty(PropertyName = "pin")]
         public string Pin { get; set; }

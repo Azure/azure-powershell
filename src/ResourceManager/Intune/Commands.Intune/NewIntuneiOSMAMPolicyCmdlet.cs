@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Commands.Intune
+namespace Microsoft.Azure.Commands.Intune
 {
     using System;
     using System.Management.Automation;
@@ -23,7 +23,7 @@ namespace Commands.Intune
     /// <summary>
     /// A cmdlet that creates a new iOS intune policy azure resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmIntuneiOSMAMPolicy", SupportsShouldProcess = true, DefaultParameterSetName = NewIntuneiOSMAMPolicyCmdlet.TypeBasedParameterSet), OutputType(typeof(IOSPolicy))]
+    [Cmdlet(VerbsCommon.New, "AzureRmIntuneiOSMAMPolicy", SupportsShouldProcess = true), OutputType(typeof(IOSMAMPolicy))]
     public sealed class NewIntuneiOSMAMPolicyCmdlet : IntuneBaseCmdlet
     {
         /// <summary>
@@ -64,7 +64,7 @@ namespace Commands.Intune
         /// <summary>
         /// The ClipboardSharingLevel of the policy
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates whether to restrict cut, copy and paste with other applicaitons.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates whether to restrict cut, copy and paste with other applications.")]
         [Alias("ClipboardSharingLevel"), ValidateNotNullOrEmpty, ValidateSet("blocked", "policyManagedApps", "policyManagedAppsWithPasteIn", "allApps"), PSDefaultValue(Value = ClipboardSharingLevelType.blocked)]
         public ClipboardSharingLevelType ClipboardSharing{ get; set; }
 
@@ -144,11 +144,7 @@ namespace Commands.Intune
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates whether fingerprints are allowed instead of PIN to access the application.")]
         [Alias("TouchId"), ValidateNotNullOrEmpty, PSDefaultValue(Value = OptionType.enable, Help ="Defaults to 'enable'")]
         public OptionType AllowFingerprint { get; set; }
-        /// <summary>
-        /// The tenant level parameter set.
-        /// </summary>
-        internal const string TypeBasedParameterSet = "Create a new Intune policy.";
-
+        
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 
@@ -163,6 +159,7 @@ namespace Commands.Intune
 
             Action action = () =>
             {
+                ValidateNumericParameters();
                 this.ConfirmAction(
                     this.Force,
                     "Are you sure you want to create a new iOS policy:" + this.PolicyName,
@@ -170,7 +167,7 @@ namespace Commands.Intune
                     policyId,
                     () =>
                     {
-                        var policyObj = this.IntuneClient.CreateOrUpdateIOSPolicy(this.AsuHostName, policyId, PrepareIOSPolicyBody());
+                        var policyObj = this.IntuneClient.CreateOrUpdateiOSMAMPolicy(this.AsuHostName, policyId, PrepareIOSPolicyBody());
                         this.WriteObject(policyObj);
                     });
             };
@@ -188,17 +185,32 @@ namespace Commands.Intune
             this.RecheckAccessOfflineGracePeriodMinutes = this.RecheckAccessOfflineGracePeriodMinutes ?? IntuneConstants.DEFAULT_RECHECK_ACCESS_OFFLINE_GRACEPERIOD_MINUTES;
             this.RecheckAccessTimeoutMinutes = this.RecheckAccessTimeoutMinutes ?? IntuneConstants.DEFAULT_RECHECK_ACCESSTIMEOUT_MINUTES;
             this.OfflineWipeIntervalDays = this.OfflineWipeIntervalDays ?? IntuneConstants.DEFAULT_OFFLINE_WIPEINTERVAL_DAYS;
-            this.Description = this.Description ?? "New IOS Policy";
+            this.Description = this.Description ?? "New iOS Policy";
+        }
+
+        /// <summary>
+        /// Verify that numeric parameters are non negative
+        /// </summary>
+        private void ValidateNumericParameters()
+        {
+            NumericParameterValueChecker.CheckIfNegativeAndThrowException(
+                new System.Collections.Generic.Dictionary<string, int>
+                {
+                    { "PinRetries", PinRetries.Value },
+                    {"RecheckAccessOfflineGracePeriodMinutes", this.RecheckAccessOfflineGracePeriodMinutes.Value},
+                    {"RecheckAccessTimeoutMinutes", this.RecheckAccessTimeoutMinutes.Value},
+                    {"OfflineWipeIntervalDays", this.OfflineWipeIntervalDays.Value }
+                });            
         }
 
         /// <summary>
         /// Prepares iOS Policy body for the new policy request
         /// </summary>
         /// <returns>policy request body</returns>
-        private IOSPolicyRequestBody PrepareIOSPolicyBody()
+        private IOSMAMPolicyRequestBody PrepareIOSPolicyBody()
         {
-            var policyBody = new IOSPolicyRequestBody();
-            policyBody.Properties = new IOSPolicyProperties() {
+            var policyBody = new IOSMAMPolicyRequestBody();
+            policyBody.Properties = new IOSMAMPolicyProperties() {
                 FriendlyName = this.PolicyName,
                 Description = this.Description,
                 AppSharingFromLevel = this.AllowDataTransferToApps.ToString(),

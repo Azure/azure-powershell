@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 
-namespace Commands.Intune.RestClient.Models
+namespace Microsoft.Azure.Commands.Intune.RestClient.Models
 {
     using System;
     using System.Collections.Generic;
@@ -9,14 +9,14 @@ namespace Commands.Intune.RestClient.Models
     using Microsoft.Rest.Serialization;
 
     /// <summary>
-    /// MAM Policy request body for properties Intune MAM.
+    /// Location entity for given tenant.
     /// </summary>
-    public partial class MAMPolicyAppIdOrGroupIdPayload
+    public partial class Location : Resource
     {
         /// <summary>
         /// </summary>
         [JsonProperty(PropertyName = "properties")]
-        public MAMPolicyAppOrGroupIdProperties Properties { get; set; }
+        public LocationProperties Properties { get; set; }
 
         /// <summary>
         /// Validate the object. Throws ArgumentException or ArgumentNullException if validation fails.
