@@ -57,7 +57,7 @@ $env:path = $env:path + ";$wixInstallRoot"
 &"$env:AzurePSRoot\tools\Installer\generate.ps1" 'Debug'
 
 # Build the cmdlets and installer in debug mode
-msbuild "$env:AzurePSRoot\build.proj" /t:Build
+msbuild "$env:AzurePSRoot\build.proj" /t:BuildInstaller
 
 Write-Host "MSI file path: $env:AzurePSRoot\setup\build\Debug\AzurePowerShell.msi"
 Write-Host "MSI for PowerShell Gallery: $env:AzurePSRoot\setup-powershellget\build\Debug\AzurePowerShellGet.msi"

@@ -80,10 +80,10 @@ function Save-AzureModule
 
   try 
   {
-    Remove-Item -Recurse -Force $AzureRMPath
+    Remove-Item -Recurse -Force $AzureRMPath -ErrorAction SilentlyContinue
     New-Item -ItemType Directory -Force -Path $AzureRMPath
     
-    Remove-Item -Recurse -Force $AzureSMPath
+    Remove-Item -Recurse -Force $AzureSMPath -ErrorAction SilentlyContinue
     New-Item -ItemType Directory -Force -Path $AzureSMPath
     
     Set-PSRepository -Name $Repository -InstallationPolicy Trusted
