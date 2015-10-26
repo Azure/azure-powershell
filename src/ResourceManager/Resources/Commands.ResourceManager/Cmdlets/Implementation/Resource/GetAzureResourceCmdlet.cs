@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Cmdlet to get existing resources.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmResource", DefaultParameterSetName = GetAzureResourceCmdlet.ListResourcesParameterSet), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmResource", DefaultParameterSetName = GetAzureResourceCmdlet.ParameterlessSet), OutputType(typeof(PSObject))]
     public sealed class GetAzureResourceCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
@@ -38,14 +38,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private readonly ConcurrentBag<ErrorRecord> errors = new ConcurrentBag<ErrorRecord>();
 
         /// <summary>
-        /// The list resources parameter set.
+        /// The paramterless set
         /// </summary>
-        internal const string ListResourcesParameterSet = "Lists the resources based on the specified scope.";
-        
+        internal const string ParameterlessSet = "The list all resources parameter set.";
+
         /// <summary>
         /// The get resource parameter set.
         /// </summary>
-        internal const string GetResourceParameterSet = "Get a single resource.";
+        internal const string GetResourceByNameTypeParameterSet = "Get a resource by name and type.";
 
         /// <summary>
         /// The list tenant resources parameter set.
@@ -58,14 +58,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         internal const string GetTenantResourceParameterSet = "Get a single resource at the tenant level.";
 
         /// <summary>
-        /// The get tenant resource parameter set.
+        /// The get resource Id parameter set.
         /// </summary>
         internal const string GetResourceByIdParameterSet = "Get a single resource by its Id.";
 
         /// <summary>
-        /// The get tenant resource parameter set.
+        /// The list resources by name and resource group set.
         /// </summary>
-        internal const string MultiSubscriptionListResourcesParameterSet = "Get a resources using a multi-subscription query.";
+        internal const string GetResourceByNameGroupParameterSet = "Get resource by name and group";
+
+            /// <summary>
+        /// The list resources by name and resource group set.
+        /// </summary>
+        internal const string GetResourceByNameGroupTypeParameterSet = "Get resource by name, group and type";
 
         /// <summary>
         /// Caches the current subscription ids to get all subscription ids in the pipeline.
@@ -85,43 +90,42 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         [Alias("Name")]
         [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetTenantResourceParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource name. e.g. to specify a database MyServer/MyDatabase.")]
-        [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetResourceParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource name. e.g. to specify a database MyServer/MyDatabase.")]
-        [Parameter(ParameterSetName = GetAzureResourceCmdlet.ListResourcesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource name. e.g. to specify a database MyServer/MyDatabase.")]
         [Parameter(ParameterSetName = GetAzureResourceCmdlet.ListTenantResourcesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource name. e.g. to specify a database MyServer/MyDatabase.")]
-        [Parameter(ParameterSetName = GetAzureResourceCmdlet.MultiSubscriptionListResourcesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource name. e.g. to specify a database MyServer/MyDatabase.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetResourceByNameGroupParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource name. e.g. to specify a database MyServer/MyDatabase.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetResourceByNameTypeParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource name. e.g. to specify a database MyServer/MyDatabase.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetResourceByNameGroupTypeParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource name. e.g. to specify a database MyServer/MyDatabase.")]
         [ValidateNotNullOrEmpty]
         public string ResourceName { get; set; }
 
         /// <summary>
         /// Gets or sets the resource type parameter.
         /// </summary>
-        [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetResourceParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource type. e.g. Microsoft.Sql/Servers/Databases.")]
-        [Parameter(ParameterSetName = GetAzureResourceCmdlet.ListResourcesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource type. e.g. Microsoft.Sql/Servers/Databases.")]
         [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetTenantResourceParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource type. e.g. Microsoft.Sql/Servers/Databases.")]
-        [Parameter(ParameterSetName = GetAzureResourceCmdlet.ListTenantResourcesParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource type. e.g. Microsoft.Sql/Servers/Databases.")]
-        [Parameter(ParameterSetName = GetAzureResourceCmdlet.MultiSubscriptionListResourcesParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource type. e.g. Microsoft.Sql/Servers/Databases.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.ListTenantResourcesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource type. e.g. Microsoft.Sql/Servers/Databases.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetResourceByNameTypeParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource type. e.g. Microsoft.Sql/Servers/Databases.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetResourceByNameGroupTypeParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource type. e.g. Microsoft.Sql/Servers/Databases.")]
         [ValidateNotNullOrEmpty]
         public string ResourceType { get; set; }
 
         /// <summary>
         /// Gets or sets the extension resource name parameter.
         /// </summary>
-        [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetResourceParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The extension resource name. e.g. to specify a database MyServer/MyDatabase.")]
-        [Parameter(ParameterSetName = GetAzureResourceCmdlet.ListResourcesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The extension resource name. e.g. to specify a database MyServer/MyDatabase.")]
         [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetTenantResourceParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The extension resource name. e.g. to specify a database MyServer/MyDatabase.")]
         [Parameter(ParameterSetName = GetAzureResourceCmdlet.ListTenantResourcesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The extension resource type. e.g. Microsoft.Sql/Servers/Databases.")]
-        [Parameter(ParameterSetName = GetAzureResourceCmdlet.MultiSubscriptionListResourcesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The extension resource type. e.g. Microsoft.Sql/Servers/Databases.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetResourceByNameGroupParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The extension resource type. e.g. Microsoft.Sql/Servers/Databases.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetResourceByNameTypeParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The extension resource name. e.g. to specify a database MyServer/MyDatabase.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetResourceByNameGroupTypeParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The extension resource type. e.g. Microsoft.Sql/Servers/Databases.")]
         [ValidateNotNullOrEmpty]
         public string ExtensionResourceName { get; set; }
 
         /// <summary>
         /// Gets or sets the extension resource type.
         /// </summary>
-        [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetResourceParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The extension resource type. e.g. Microsoft.Sql/Servers/Databases.")]
-        [Parameter(ParameterSetName = GetAzureResourceCmdlet.ListResourcesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The extension resource type. e.g. Microsoft.Sql/Servers/Databases.")]
         [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetTenantResourceParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The extension resource type. e.g. Microsoft.Sql/Servers/Databases.")]
         [Parameter(ParameterSetName = GetAzureResourceCmdlet.ListTenantResourcesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The extension resource type. e.g. Microsoft.Sql/Servers/Databases.")]
-        [Parameter(ParameterSetName = GetAzureResourceCmdlet.MultiSubscriptionListResourcesParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The extension resource type. e.g. Microsoft.Sql/Servers/Databases.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetResourceByNameGroupParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The extension resource type. e.g. Microsoft.Sql/Servers/Databases.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetResourceByNameTypeParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The extension resource type. e.g. Microsoft.Sql/Servers/Databases.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetResourceByNameGroupTypeParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The extension resource type. e.g. Microsoft.Sql/Servers/Databases.")]
         [ValidateNotNullOrEmpty]
         public string ExtensionResourceType { get; set; }
 
@@ -136,17 +140,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// </summary>
         [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetTenantResourceParameterSet, Mandatory = false, HelpMessage = "When specified, ensures that the query is run against a collection instead of a resource.")]
         [Parameter(ParameterSetName = GetAzureResourceCmdlet.ListTenantResourcesParameterSet, Mandatory = false, HelpMessage = "When specified, ensures that the query is run against a collection instead of a resource.")]
-        [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetResourceParameterSet, Mandatory = false, HelpMessage = "When specified, ensures that the query is run against a collection instead of a resource.")]
-        [Parameter(ParameterSetName = GetAzureResourceCmdlet.ListResourcesParameterSet, Mandatory = false, HelpMessage = "When specified, ensures that the query is run against a collection instead of a resource.")]
-        [Parameter(ParameterSetName = GetAzureResourceCmdlet.MultiSubscriptionListResourcesParameterSet, Mandatory = false, HelpMessage = "When specified, ensures that the query is run against a collection instead of a resource.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetResourceByNameTypeParameterSet, Mandatory = false, HelpMessage = "When specified, ensures that the query is run against a collection instead of a resource.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetResourceByNameGroupParameterSet, Mandatory = false, HelpMessage = "When specified, ensures that the query is run against a collection instead of a resource.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetResourceByNameGroupTypeParameterSet, Mandatory = false, HelpMessage = "When specified, ensures that the query is run against a collection instead of a resource.")]
         public SwitchParameter IsCollection { get; set; }
 
         /// <summary>
         /// Gets or sets the top parameter.
         /// </summary>
-        [Parameter(ParameterSetName = GetAzureResourceCmdlet.ListResourcesParameterSet, Mandatory = false, HelpMessage = "The number of resources to retrieve.")]
         [Parameter(ParameterSetName = GetAzureResourceCmdlet.ListTenantResourcesParameterSet, Mandatory = false, HelpMessage = "The number of resources to retrieve.")]
-        [Parameter(ParameterSetName = GetAzureResourceCmdlet.MultiSubscriptionListResourcesParameterSet, Mandatory = false, HelpMessage = "The number of resources to retrieve.")]
         [ValidateNotNullOrEmpty]
         public int? Top { get; set; }
 
@@ -160,9 +162,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the resource group name.
         /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = GetAzureResourceCmdlet.GetResourceParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
-        [Parameter(Mandatory = false, ParameterSetName = GetAzureResourceCmdlet.ListResourcesParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
-        [Parameter(Mandatory = false, ParameterSetName = GetAzureResourceCmdlet.MultiSubscriptionListResourcesParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetResourceByNameGroupParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
+        [Parameter(ParameterSetName = GetAzureResourceCmdlet.GetResourceByNameGroupTypeParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
