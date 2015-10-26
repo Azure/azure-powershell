@@ -72,12 +72,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.18.7-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Test.Framework, Version=1.0.5715.36130, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.Azure.Test.Framework, Version=1.0.5774.40163, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Test.Framework.1.0.5715.36130-prerelease\lib\net45\Microsoft.Azure.Test.Framework.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Test.Framework.1.0.5774.40163-prerelease\lib\net45\Microsoft.Azure.Test.Framework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Test.HttpRecorder">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Test.HttpRecorder.1.0.5715.36130-prerelease\lib\net45\Microsoft.Azure.Test.HttpRecorder.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Test.HttpRecorder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Test.HttpRecorder.1.0.5774.40163-prerelease\lib\net45\Microsoft.Azure.Test.HttpRecorder.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
       <SpecificVersion>False</SpecificVersion>
@@ -101,8 +103,9 @@
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.0.9.3\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework">
-      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.TestFramework.0.9.3-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.TestFramework.dll</HintPath>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework, Version=0.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.TestFramework.0.9.4-preview\lib\net45\Microsoft.Rest.ClientRuntime.Azure.TestFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Moq">
@@ -163,27 +166,69 @@
     <None Include="ScenarioTests\WebAppTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.AppServicePlanTests\TestCreateNewAppServicePlan.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.AppServicePlanTests\TestGetAppServicePlan.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.AppServicePlanTests\TestGetAppServicePlanMetrics.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.AppServicePlanTests\TestRemoveAppServicePlan.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.AppServicePlanTests\TestSetAppServicePlan.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestCloneWebAppSlot.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestCloneWebAppToSlot.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestCreateNewWebAppSlot.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestGetWebAppSlot.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestGetWebAppSlotMetrics.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestSetWebAppSlot.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestStartStopRestartWebAppSlot.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestWebAppSlotPublishingProfile.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppTests\TestCloneNewWebApp.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppTests\TestCloneNewWebAppWithNewTrafficManager.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppTests\TestCreateNewWebApp.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppTests\TestGetWebApp.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppTests\TestGetWebAppMetrics.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppTests\TestSetWebApp.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppTests\TestStartStopRestartWebApp.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppTests\TestWebAppPublishingProfile.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.AppServicePlanTests\TestCreateNewAppServicePlan.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.AppServicePlanTests\TestGetAppServicePlan.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.AppServicePlanTests\TestGetAppServicePlanMetrics.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.AppServicePlanTests\TestRemoveAppServicePlan.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.AppServicePlanTests\TestSetAppServicePlan.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestCloneWebAppSlot.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestCloneWebAppToSlot.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestCreateNewWebAppSlot.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestGetWebAppSlot.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestGetWebAppSlotMetrics.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestSetWebAppSlot.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestStartStopRestartWebAppSlot.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppSlotTests\TestWebAppSlotPublishingProfile.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppTests\TestCloneNewWebApp.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppTests\TestCloneNewWebAppWithNewTrafficManager.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppTests\TestCreateNewWebApp.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppTests\TestGetWebApp.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppTests\TestGetWebAppMetrics.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppTests\TestSetWebApp.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppTests\TestStartStopRestartWebApp.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Websites.Test.ScenarioTests.WebAppTests\TestWebAppPublishingProfile.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
