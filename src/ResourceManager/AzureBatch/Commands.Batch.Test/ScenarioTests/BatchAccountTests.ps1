@@ -46,6 +46,9 @@ function Test-CreatesNewBatchAccount
 		Assert-AreEqual $expected.Location $actual.Location
         Assert-AreEqual $expected.Tags[0]["Name"] $actual.Tags[0]["Name"]
 		Assert-AreEqual $expected.Tags[0]["Value"] $actual.Tags[0]["Value"]
+		Assert-True { $actual.CoreQuota -gt 0 }
+		Assert-True { $actual.PoolQuota -gt 0 }
+		Assert-True { $actual.ActiveJobAndJobScheduleQuota -gt 0 }
     }
     finally
     {

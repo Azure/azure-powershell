@@ -216,10 +216,12 @@
     <Compile Include="ScenarioTests\JobTests.cs" />
     <Compile Include="ScenarioTests\PoolTests.cs" />
     <Compile Include="ScenarioTests\ScenarioTestHelpers.cs" />
+    <Compile Include="ScenarioTests\SubscriptionTests.cs" />
     <Compile Include="ScenarioTests\TaskTests.cs" />
     <Compile Include="ScenarioTests\ComputeNodeUserTests.cs" />
     <Compile Include="ScenarioTests\ComputeNodeTests.cs" />
     <Compile Include="ScenarioTests\JobScheduleTests.cs" />
+    <Compile Include="Subscriptions\GetBatchSubscriptionQuotasCommandTests.cs" />
     <Compile Include="Tasks\GetBatchTaskCommandTests.cs" />
     <Compile Include="Tasks\NewBatchTaskCommandTests.cs" />
     <Compile Include="Tasks\RemoveBatchTaskCommandTests.cs" />
@@ -269,6 +271,9 @@
     </None>
     <None Include="ScenarioTests\PoolTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\SubscriptionTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\TaskTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -619,7 +624,9 @@
   <ItemGroup>
     <Content Include="about.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.SubscriptionTests\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
 </Project>
