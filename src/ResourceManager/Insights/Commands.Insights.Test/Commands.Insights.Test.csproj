@@ -58,7 +58,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Insights">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Insights.0.7.7-preview\lib\net45\Microsoft.Azure.Insights.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Insights.0.9.1-preview\lib\net45\Microsoft.Azure.Insights.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -150,11 +150,14 @@
     <Compile Include="Autoscale\NewAutoscaleProfileCommandTests.cs" />
     <Compile Include="Autoscale\NewAutoscaleRuleCommandTests.cs" />
     <Compile Include="Autoscale\RemoveAutoscaleSettingCommandTests.cs" />
+    <Compile Include="Diagnostics\SetDiagnosticSettingCommandTests.cs" />
+    <Compile Include="Diagnostics\GetDiagnosticSettingCommandTests.cs" />
     <Compile Include="Events\GetAzureRmLogCommandTests.cs" />
     <Compile Include="Metrics\FormatMetricsAsTableCommandTests.cs" />
     <Compile Include="Metrics\GetMetricDefinitionsCommandTests.cs" />
     <Compile Include="Metrics\GetMetricsCommandTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScenarioTests\AzureRmDiagnosticSettingTests.cs" />
     <Compile Include="ScenarioTests\AlertsTests.cs" />
     <Compile Include="ScenarioTests\AutoscaleTests.cs" />
     <Compile Include="ScenarioTests\EventsTests.cs" />
@@ -185,6 +188,9 @@
   <ItemGroup>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
+    <None Include="ScenarioTests\AzureRmDiagnosticSettingTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\AlertsTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -202,6 +208,12 @@
     </None>
     <None Include="ScenarioTests\UsageMetricsTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AzureRmDiagnosticSettingTests\TestSetAzureRmDiagnosticSetting.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AzureRmDiagnosticSettingTests\TestGetAzureRmDiagnosticSetting.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Insights.Test.ScenarioTests.AlertsTests\TestAddAlertRule.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
