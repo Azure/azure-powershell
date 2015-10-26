@@ -166,7 +166,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlt.InvokeEndProcessing();
         }
 
-
         [Fact]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void LoginWithRbacTenantOnly()

@@ -85,17 +85,17 @@ function Test-SetAzureRmContextEndToEnd
 
 function Test-SetAzureRmContextWithoutSubscription
 {
-	$allSubscriptions = Get-AzureRmSubscription -All
-	$firstSubscription = $allSubscriptions[0]
-	$id = $firstSubscription.SubscriptionId
-	$tenantId = $firstSubscription.TenantId
+    $allSubscriptions = Get-AzureRmSubscription -All
+    $firstSubscription = $allSubscriptions[0]
+    $id = $firstSubscription.SubscriptionId
+    $tenantId = $firstSubscription.TenantId
 
     Assert-True { $tenantId -ne $null }
 
     Set-AzureRmContext -TenantId $tenantId
     $context = Get-AzureRmContext
 	
-	Assert-True { $context.Subscription -eq $null }
+    Assert-True { $context.Subscription -eq $null }
     Assert-True { $context.Tenant -ne $null }
     Assert-AreEqual $context.Tenant.TenantId $firstSubscription.TenantId
 }
