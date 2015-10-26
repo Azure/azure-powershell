@@ -566,6 +566,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.PoolTests\TestUpdatePool.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.SubscriptionTests\TestGetSubscriptionQuotas.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.TaskTests\TestCreateTask.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -624,9 +627,7 @@
   <ItemGroup>
     <Content Include="about.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SessionRecords\Microsoft.Azure.Commands.Batch.Test.ScenarioTests.SubscriptionTests\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
 </Project>
