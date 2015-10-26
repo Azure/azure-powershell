@@ -37,9 +37,9 @@ function Save-ModuleWithVersionCheck([string]$Name,[string]$MajorVersion,[string
   try {
     Save-Module -Name $Name -Repository $Repository -MinimumVersion $_MinVer -MaximumVersion $_MaxVer -ErrorAction Stop -Path $Path
     $versionFolder = Get-ChildItem "$Path\$Name\" | Select-Object -First 1
-	Get-ChildItem $versionFolder.FullName -Recurse | Copy-Item -Destination "$Path\$Name\"
-	Remove-Item $versionFolder.FullName -Force -Recurse
-	$v = $versionFolder.Name
+    Get-ChildItem $versionFolder.FullName | ForEach { Move-Item -Path $_.FullName -Destination "$Path\$Name\" }
+    Remove-Item $versionFolder.FullName -Recurse -Force
+    $v = $versionFolder.Name
     Write-Output "$Name $v..." 
   } catch {
     Write-Warning "Skipping $Name package..."
@@ -80,24 +80,23 @@ function Save-AzureModule
 
   try 
   {
-	Remove-Item -Recurse -Force $AzureRMPath
-	New-Item -ItemType Directory -Force -Path $AzureRMPath
-	
-	Remove-Item -Recurse -Force $AzureSMPath
-	New-Item -ItemType Directory -Force -Path $AzureSMPath
-	
+    Remove-Item -Recurse -Force $AzureRMPath
+    New-Item -ItemType Directory -Force -Path $AzureRMPath
+    
+    Remove-Item -Recurse -Force $AzureSMPath
+    New-Item -ItemType Directory -Force -Path $AzureSMPath
+    
     Set-PSRepository -Name $Repository -InstallationPolicy Trusted
-
-    Save-ModuleWithVersionCheck "Azure.Storage" $MajorVersion $Repository $AzureRMPath
-	Save-ModuleWithVersionCheck "Azure" $MajorVersion $Repository $AzureSMPath
 
     # Start new job
     $AzureRMModules | ForEach {
       Save-ModuleWithVersionCheck $_ $MajorVersion $Repository $AzureRMPath
     }
-	
-	Save-ModuleWithVersionCheck "AzureRM.Profile" $MajorVersion $Repository $AzureRMPath
-	
+
+    Save-ModuleWithVersionCheck "Azure" $MajorVersion $Repository $AzureSMPath
+    Save-ModuleWithVersionCheck "Azure.Storage" $MajorVersion $Repository $AzureRMPath
+    Save-ModuleWithVersionCheck "AzureRM.Profile" $MajorVersion $Repository $AzureRMPath
+    
   } finally {
     # Clean up
     Set-PSRepository -Name $Repository -InstallationPolicy $_InstallationPolicy
