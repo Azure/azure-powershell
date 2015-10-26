@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Profile
 
                 if (!string.IsNullOrWhiteSpace(SubscriptionName))
                 {
-                    if (profileClient.TryGetSubscriptionByName(
+                    if (!profileClient.TryGetSubscriptionByName(
                         tenantId,
                         SubscriptionName,
                         out subscription))
