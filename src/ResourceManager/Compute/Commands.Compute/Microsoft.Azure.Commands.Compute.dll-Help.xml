@@ -9933,6 +9933,13 @@ Get-AzureRmVMDscExtension -ResourceGroupName Name -VMName VM -Name 'DSC' </dev:c
           <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
+          <maml:name>DataCollection</maml:name>
+          <maml:description>
+            <maml:para>Enables or Disables Data Collection in the extension.  It is enabled if it is not specified.  The value is persisted in the extension between calls. Allowed Values are: Enable and Disable</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Force</maml:name>
           <maml:description>
             <maml:para>By default Set-AzureRmVMDscExtension will not overwrite any existing blobs. Use -Force to overwrite them</maml:para>
