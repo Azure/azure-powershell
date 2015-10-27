@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
+using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Management.Automation;
 
@@ -36,7 +37,7 @@ namespace Microsoft.Azure.Commands.Resources
             HelpMessage = "The user or group object id.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleIdWithScopeAndObjectId,
             HelpMessage = "The user or group object id.")]
-        [ValidateNotNullOrEmpty]
+        [ValidateGuidNotEmpty]
         [Alias("Id", "PrincipalId")]
         public Guid ObjectId { get; set; }
 
@@ -140,7 +141,7 @@ namespace Microsoft.Azure.Commands.Resources
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleIdWithScopeAndObjectId,
             HelpMessage = "Role Id the principal is assigned to.")]
-        [ValidateNotNullOrEmpty]
+        [ValidateGuidNotEmpty]
         public Guid RoleDefinitionId { get; set; }
 
         protected override void ProcessRecord()
