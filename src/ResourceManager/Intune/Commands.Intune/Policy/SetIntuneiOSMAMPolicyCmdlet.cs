@@ -32,14 +32,14 @@ namespace Microsoft.Azure.Commands.Intune
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "The policy name to patch.")]
         [ValidateNotNullOrEmpty]
-        public string name { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the policy name.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "The policy friendly name.")]
-        [Alias("FriendlyName"), ValidateNotNullOrEmpty]
-        public string PolicyName { get; set; }
+        [ValidateNotNullOrEmpty]
+        public string FriendlyName { get; set; }
 
         /// <summary>
         /// The description of the policy
@@ -170,12 +170,12 @@ namespace Microsoft.Azure.Commands.Intune
                 ValidateNumericParameters();
                 this.ConfirmAction(
                     this.Force,
-                    "Are you sure you want to update the iOS policy with name:" + this.name,
+                    "Are you sure you want to update the iOS policy with name:" + this.Name,
                     "Updating the iOS policy resource ",
-                    this.name,
+                    this.Name,
                     () =>
                     {
-                        var policyObj = this.IntuneClient.PatchiOSMAMPolicy(this.AsuHostName, this.name, PrepareiOSMAMPolicyBody());
+                        var policyObj = this.IntuneClient.PatchiOSMAMPolicy(this.AsuHostName, this.Name, PrepareiOSMAMPolicyBody());
                         this.WriteObject(policyObj);
                     });
             };
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Commands.Intune
             var policyBody = new IOSMAMPolicyRequestBody();
             policyBody.Properties = new IOSMAMPolicyProperties()
             {
-                FriendlyName = this.PolicyName,
+                FriendlyName = this.FriendlyName,
                 Description = this.Description,
                 AppSharingFromLevel = this.AllowDataTransferToApps.HasValue? AllowDataTransferToApps.ToString():null,
                 AppSharingToLevel = this.AllowDataTransferFromApps.HasValue?this.AllowDataTransferFromApps.ToString():null,

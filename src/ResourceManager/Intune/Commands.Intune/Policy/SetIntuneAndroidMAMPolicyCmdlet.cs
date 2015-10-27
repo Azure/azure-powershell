@@ -38,8 +38,8 @@ namespace Microsoft.Azure.Commands.Intune
         /// Gets or sets the policy name.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "The policy friendly name.")]
-        [Alias("FriendlyName"), ValidateNotNullOrEmpty]
-        public string PolicyName { get; set; }
+        [ValidateNotNullOrEmpty]
+        public string FriendlyName { get; set; }
 
         /// <summary>
         /// The description of the policy
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Commands.Intune
             var policyBody = new AndroidMAMPolicyRequestBody();
             policyBody.Properties = new AndroidMAMPolicyProperties()
             {
-                FriendlyName = this.PolicyName,
+                FriendlyName = this.FriendlyName,
                 Description = this.Description,
                 AppSharingFromLevel = this.AllowDataTransferToApps.HasValue ? AllowDataTransferToApps.ToString() : null,
                 AppSharingToLevel = this.AllowDataTransferFromApps.HasValue ? this.AllowDataTransferFromApps.ToString() : null,

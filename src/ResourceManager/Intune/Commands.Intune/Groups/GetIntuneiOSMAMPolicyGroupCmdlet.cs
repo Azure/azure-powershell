@@ -18,17 +18,16 @@ namespace Microsoft.Azure.Commands.Intune
     using System.Linq;
     using System.Management.Automation;
     using RestClient;
-
     /// <summary>
-    /// Cmdlet to get existing resources.
+    /// Cmdlet to get apps for iOS platform.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneAndroidMAMPolicyApp"), OutputType(typeof(PSObject))]
-    public sealed class GetIntuneAndroidMAMPolicyAppCmdlet : IntuneBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneiOSMAMPolicyGroup"), OutputType(typeof(PSObject))]
+    public sealed class GetIntuneiOSMAMPolicyGroupCmdlet : IntuneBaseCmdlet
     {
         /// <summary>
         /// Gets the policy Name
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The policy name for the apps to fetch.")]
+        [Parameter(Mandatory = true, HelpMessage = "The policy name to fetch for the groups.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -39,24 +38,23 @@ namespace Microsoft.Azure.Commands.Intune
         {
             Action action = () =>
             {
-                var androidAppsForPolicy = this.IntuneClient.GetAppForAndroidMAMPolicy(this.AsuHostName, Name);
-                if (androidAppsForPolicy != null && androidAppsForPolicy.Value.Count > 0)
+                var groupCollection = this.IntuneClient.GetGroupsForiOSMAMPolicy(this.AsuHostName, this.Name);
+
+                if (groupCollection != null && groupCollection.Value.Count > 0)
                 {
-                    for (int batchSize = 10, start = 0; start < androidAppsForPolicy.Value.Count; start += batchSize)
+                    for (int batchSize = 10, start = 0; start < groupCollection.Value.Count; start += batchSize)
                     {
-                        var batch = androidAppsForPolicy.Value.Skip(start).Take(batchSize);
+                        var batch = groupCollection.Value.Skip(start).Take(batchSize);
                         this.WriteObject(batch, enumerateCollection: true);
                     }
                 }
                 else
                 {
-                    this.WriteObject("0 items returned");
+                    this.WriteObject("0 groups returned");
                 }
             };
 
-            base.SafeExecutor(action);
+            this.SafeExecutor(action);
         }
-
-
     }
 }

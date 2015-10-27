@@ -22,8 +22,8 @@ namespace Microsoft.Azure.Commands.Intune
     /// <summary>
     /// Cmdlet to get existing resources.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneiOSMAMPolicyApp"), OutputType(typeof(PSObject))]
-    public sealed class GetIntuneiOSMAMPolicyAppCmdlet : IntuneBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneAndroidMAMPolicyApp"), OutputType(typeof(PSObject))]
+    public sealed class GetIntuneAndroidMAMPolicyAppCmdlet : IntuneBaseCmdlet
     {
         /// <summary>
         /// Gets the policy Name
@@ -39,12 +39,12 @@ namespace Microsoft.Azure.Commands.Intune
         {
             Action action = () =>
             {
-                var iOSAppsForPolicy = this.IntuneClient.GetAppForiOSMAMPolicy(this.AsuHostName, Name);
-                if (iOSAppsForPolicy != null && iOSAppsForPolicy.Value.Count > 0)
+                var androidAppsForPolicy = this.IntuneClient.GetAppForAndroidMAMPolicy(this.AsuHostName, Name);
+                if (androidAppsForPolicy != null && androidAppsForPolicy.Value.Count > 0)
                 {
-                    for (int batchSize = 10, start = 0; start < iOSAppsForPolicy.Value.Count; start += batchSize)
+                    for (int batchSize = 10, start = 0; start < androidAppsForPolicy.Value.Count; start += batchSize)
                     {
-                        var batch = iOSAppsForPolicy.Value.Skip(start).Take(batchSize);
+                        var batch = androidAppsForPolicy.Value.Skip(start).Take(batchSize);
                         this.WriteObject(batch, enumerateCollection: true);
                     }
                 }
@@ -56,7 +56,5 @@ namespace Microsoft.Azure.Commands.Intune
 
             base.SafeExecutor(action);
         }
-
-
     }
 }

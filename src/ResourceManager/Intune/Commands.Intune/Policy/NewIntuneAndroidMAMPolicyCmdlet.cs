@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Intune
         /// Gets or sets the name of policy
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "The policy friendly name.")]
-        [Alias("FriendlyName"), ValidateNotNullOrEmpty]
+        [ValidateNotNullOrEmpty]
         public string FriendlyName { get; set; }
 
         /// <summary>
