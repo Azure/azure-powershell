@@ -1182,8 +1182,12 @@
     </command:details>
     <maml:description>
       <maml:para>
-        The Get-AzureRmProviderOperation gets the operations exposed by Azure resource providers. Operations can be composed to create custom roles in Azure RBAC. The command takes as input an action string (with possible wildcard(*) character(s)) which determines the action details to display.
+        The Get-AzureRmProviderOperation gets the operations exposed by Azure resource providers. Operations can be composed to create custom roles in Azure RBAC. The command takes as input an operation search string (with possible wildcard(*) character(s)) which determines the operations details to display.
+      </maml:para>
+      <maml:para>
         Use Get-AzureRmProviderOperation * to get all operations for all Azure resource providers.
+      </maml:para>
+      <maml:para>
         Use Get-AzureRmProviderOperation Microsoft.Compute/* to get all operations of Microsoft.Compute resource provider.
       </maml:para>
     </maml:description>
@@ -1193,7 +1197,7 @@
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="0">
           <maml:name>OperationSearchString</maml:name>
           <maml:description>
-            <maml:para>The action string (with possible wildcard (*) characters)</maml:para>
+            <maml:para>The operation search string (with possible wildcard (*) characters)</maml:para>
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
@@ -1217,7 +1221,7 @@
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="0">
         <maml:name>OperationSearchString</maml:name>
         <maml:description>
-          <maml:para>The action string (with possible wildcard (*) characters)</maml:para>
+          <maml:para>The operation search string (with possible wildcard (*) characters)</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -1246,18 +1250,6 @@
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
           <maml:name>String</maml:name>
-          <maml:uri/>
-        </dev:type>
-        <dev:defaultValue></dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByValue)" position="0">
-        <maml:name>ActionString</maml:name>
-        <maml:description>
-          <maml:para>The action string (with possible wildcard (*) characters)</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">string</command:parameterValue>
-        <dev:type>
-          <maml:name>string</maml:name>
           <maml:uri/>
         </dev:type>
         <dev:defaultValue></dev:defaultValue>
@@ -6103,23 +6095,32 @@ Resources         :
     </command:details>
     <maml:description>
       <maml:para>The New-AzureRmRoleDefinition cmdlet creates a custom role in Azure Role-Based Access Control. Provide a role definition as an input to the command as a JSON file or a PSRoleDefinition object. </maml:para>
+      <maml:para>The input role definition MUST contain the following properties:</maml:para>
       <maml:para>
-        The input role definition MUST contain the following properties:
         1) DisplayName: the name of the custom role
+      </maml:para>
+      <maml:para>
         2) Description: a short description of the role that summarizes the access that the role grants.
+      </maml:para>
+      <maml:para>
         3) Actions: the set of operations to which the custom role grants access. Use Get-AzureRmProviderOperations to get the operation for Azure resource providers that can be secured using Azure RBAC. Following are some valid operation strings
         • “*/read” grants access to read operations of all Azure resource providers.
         • “Microsoft.Network/*/read” grants access to read operations for all resource types in the Microsoft.Network resource provider of Azure.
         • “Microsoft.Compute/virtualMachines/*” grants access to all operations of virtual machines and its child resource types.
+      </maml:para>
+      <maml:para>
         4) AssignableScopes: the set of scopes (Azure subscriptions or resource groups) in which the custom role will be available for assignment. Using AssignableScopes you can make the custom role available for assignment in only the subscriptions or resource groups that need it, and not clutter the user experience for the rest of the subscriptions or resource groups. Following are some valid assignable scopes
         • “/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e”, “/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624”: makes the role available for assignment in two subscriptions.
         • “/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e”: makes the role available for assignment in a single subscription.
         • “/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network”: makes the role available for assignment only in the Network resource group.
       </maml:para>
+      <maml:para></maml:para>
       <maml:para>
         The input role definition MAY contain the following properties:
       </maml:para>
-      <maml:para>1) NotActions: the set of operations that must be excluded from the Actions to determine the effective actions for the custom role. If there is a specific operation that you do not wish to grant access to in a custom role, it is convenient to use NotActions to exclude it, rather than specifying all operations other than that specific operation in Actions.</maml:para>
+      <maml:para>
+        1) NotActions: the set of operations that must be excluded from the Actions to determine the effective actions for the custom role. If there is a specific operation that you do not wish to grant access to in a custom role, it is convenient to use NotActions to exclude it, rather than specifying all operations other than that specific operation in Actions.
+      </maml:para>
       <maml:para>NOTE: If a user is assigned a role that specifies an operation in NotActions and also assigned another role grants access to the same operation – the user will be able to perform that operation. NotActions is not a deny rule – it is simply a convenient way to create a set of allowed operations when specific operations need to be excluded.</maml:para>
       <maml:para>
         Following is a sample json role definition that can be provided as input
