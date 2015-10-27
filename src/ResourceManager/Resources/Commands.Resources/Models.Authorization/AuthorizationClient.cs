@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             // Match role assignments at exact scope. Ideally, atmost 1 roleAssignment should match the criteria 
             // but an edge case can have multiple role assignments to the same role or multiple role assignments to different roles, with same name.
             // The FilterRoleAssignments takes care of paging internally
-            IEnumerable<PSRoleAssignment> roleAssignments = FilterRoleAssignments(options, currentSubscription: string.Empty)
+            IEnumerable<PSRoleAssignment> roleAssignments = FilterRoleAssignments(options, currentSubscription: subscriptionId)
                                                 .Where(ra => ra.Scope == options.Scope.TrimEnd('/'));
 
             if (roleAssignments == null || !roleAssignments.Any())
