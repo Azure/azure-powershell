@@ -304,11 +304,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
             parameters.DeploymentName = GenerateDeploymentName(parameters);
             Deployment deployment = CreateBasicDeployment(parameters, parameters.DeploymentMode);
 
-            if (!string.IsNullOrEmpty(parameters.StorageAccountName))
-            {
-                WriteWarning("The StorageAccountName parameter is no longer used and will be removed in a future release. Please update scripts to remove this parameter.");
-            }
-
             ResourceManagementClient.Deployments.CreateOrUpdate(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
             WriteVerbose(string.Format("Create template deployment '{0}'.", parameters.DeploymentName));
             DeploymentExtended result = ProvisionDeploymentStatus(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
