@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Batch
     public class GetBatchSubscriptionQuotasCommand : BatchCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, 
-            HelpMessage = "The region use for getting the quotas of the subscription in the Batch Service.")]
+            HelpMessage = "The region to get the quotas of the subscription in the Batch Service from.")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
