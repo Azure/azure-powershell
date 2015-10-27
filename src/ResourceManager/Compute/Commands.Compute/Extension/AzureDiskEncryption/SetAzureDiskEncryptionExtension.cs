@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         private const string aadClientIDKey = "AADClientID";
         private const string aadClientSecretKey = "AADClientSecret";
+        private const string aadClientCertThumbprintKey = "AADClientCertThumbprint";
         private const string keyVaultUrlKey = "KeyVaultURL";
         private const string keyEncryptionKeyUrlKey = "KeyEncryptionKeyURL";
         private const string keyEncryptionAlgorithmKey = "KeyEncryptionAlgorithm";
@@ -97,24 +98,16 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         public string DiskEncryptionKeyVaultId { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             Position = 7,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The location of the VM")]
-        [ValidateNotNullOrEmpty]
-        public string Location { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            Position = 8,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "KeyVault URL of the KeyEncryptionKey used to encrypt the disk encryption key")]
+            HelpMessage = "Versioned KeyVault URL of the KeyEncryptionKey used to encrypt the disk encryption key")]
         [ValidateNotNullOrEmpty]
         public string KeyEncryptionKeyUrl { get; set; }
 
         [Parameter(
             Mandatory = false,
-            Position = 9,
+            Position = 8,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "ResourceID of the KeyVault containing the KeyEncryptionKey used to encrypt the disk encryption key")]
         [ValidateNotNullOrEmpty]
@@ -122,7 +115,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         [Parameter(
             Mandatory = false,
-            Position = 10,
+            Position = 9,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "KeyEncryption Algorithm used to encrypt the volume encryption key")]
         [ValidateSet("RSA-OAEP", "RSA1_5")]
@@ -130,7 +123,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         [Parameter(
             Mandatory = false,
-            Position = 11,
+            Position = 10,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Type of the volume (OS or Data) to perform encryption operation")]
         [ValidateSet("OS", "Data", "All")]
@@ -138,7 +131,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         [Parameter(
             Mandatory = false,
-            Position = 12,
+            Position = 11,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Sequence version of encryption operation. This must be incremented to perform repeated encryption operations on the same VM")]
         [ValidateNotNullOrEmpty]
@@ -147,7 +140,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         [Alias("HandlerVersion", "Version")]
         [Parameter(
             Mandatory = false,
-            Position = 13,
+            Position = 12,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The type handler version.")]
         [ValidateNotNullOrEmpty]
@@ -181,7 +174,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         private string GetExtensionStatusMessage()
         {
             VirtualMachineExtensionGetResponse extensionResult = this.VirtualMachineExtensionClient.GetWithInstanceView(this.ResourceGroupName, this.VMName, this.Name);
-            if(extensionResult == null)
+            if (extensionResult == null)
             {
                 ThrowTerminatingError(new ErrorRecord(new ApplicationFailedException(string.Format(CultureInfo.CurrentUICulture, "Failed to retrieve extension status")),
                                                       "InvalidResult",
@@ -189,7 +182,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                                                       null));
             }
             PSVirtualMachineExtension returnedExtension = extensionResult.ToPSVirtualMachineExtension(this.ResourceGroupName);
-            if((returnedExtension == null) ||
+            if ((returnedExtension == null) ||
                 (string.IsNullOrWhiteSpace(returnedExtension.Publisher)) ||
                 (string.IsNullOrWhiteSpace(returnedExtension.ExtensionType)))
             {
@@ -202,9 +195,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 returnedExtension.ExtensionType.Equals(AzureDiskEncryptionExtensionContext.ExtensionDefaultName, StringComparison.InvariantCultureIgnoreCase))
             {
                 AzureDiskEncryptionExtensionContext context = new AzureDiskEncryptionExtensionContext(returnedExtension);
-                if ((context == null) || 
-                    (context.Statuses == null) || 
-                    (context.Statuses.Count < 1) || 
+                if ((context == null) ||
+                    (context.Statuses == null) ||
+                    (context.Statuses.Count < 1) ||
                     (string.IsNullOrWhiteSpace(context.Statuses[0].Message)))
                 {
                     ThrowTerminatingError(new ErrorRecord(new ApplicationFailedException(string.Format(CultureInfo.CurrentUICulture, "Invalid extension status")),
@@ -248,7 +241,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             encryptionSettings.DiskEncryptionKey.SourceVault = new SourceVaultReference();
             encryptionSettings.DiskEncryptionKey.SourceVault.ReferenceUri = this.DiskEncryptionKeyVaultId;
             encryptionSettings.DiskEncryptionKey.SecretUrl = statusMessage;
-            if(this.KeyEncryptionKeyUrl != null)
+            if (this.KeyEncryptionKeyUrl != null)
             {
                 encryptionSettings.KeyEncryptionKey = new KeyVaultKeyReference();
                 encryptionSettings.KeyEncryptionKey.SourceVault = new SourceVaultReference();
@@ -276,6 +269,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         {
             Hashtable publicSettings = new Hashtable();
             publicSettings.Add(aadClientIDKey, AadClientID ?? String.Empty);
+            publicSettings.Add(aadClientCertThumbprintKey, AadClientCertThumbprint ?? String.Empty);
             publicSettings.Add(keyVaultUrlKey, DiskEncryptionKeyVaultUrl ?? String.Empty);
             publicSettings.Add(keyEncryptionKeyUrlKey, KeyEncryptionKeyUrl ?? String.Empty);
             publicSettings.Add(keyEncryptionAlgorithmKey, KeyEncryptionAlgorithm ?? String.Empty);
@@ -299,9 +293,18 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             string SettingString = GetExtensionPublicSettings();
             string ProtectedSettingString = GetExtensionProtectedSettings();
 
+            VirtualMachine vmParameters = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName)).VirtualMachine;
+            if (vmParameters == null)
+            {
+                ThrowTerminatingError(new ErrorRecord(new ApplicationException(string.Format(CultureInfo.CurrentUICulture, "Set-AzureDiskEncryptionExtension can enable encryption only on a VM that was already created ")),
+                                                      "InvalidResult",
+                                                      ErrorCategory.InvalidResult,
+                                                      null));
+            }
+
             VirtualMachineExtension vmExtensionParameters = new VirtualMachineExtension
             {
-                Location = this.Location,
+                Location = vmParameters.Location,
                 Name = this.Name,
                 Type = VirtualMachineExtensionType,
                 Publisher = AzureDiskEncryptionExtensionContext.ExtensionDefaultPublisher,
