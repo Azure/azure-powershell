@@ -457,6 +457,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             List<PSResourceGroupDeployment> deployments = new List<PSResourceGroupDeployment>();
             string resourceGroup = options.ResourceGroupName;
             string name = options.DeploymentName;
+            List<string> excludedProvisioningStates = options.ExcludedProvisioningStates ?? new List<string>();
 
             if (!string.IsNullOrEmpty(resourceGroup) && !string.IsNullOrEmpty(name))
             {
@@ -475,7 +476,15 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 }
             }
 
-            return deployments;
+            if(excludedProvisioningStates.Count > 0)
+            {
+                return deployments.Where(d => excludedProvisioningStates
+                    .All(s => !s.Equals(d.ProvisioningState, StringComparison.OrdinalIgnoreCase))).ToList();
+            }
+            else
+            {
+                return deployments;
+            }
         }
 
         /// <summary>
