@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{492D2AF2-950B-4F2E-8079-8794305313FD}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <OutputPath>..\..\..\Package\$(Configuration)\ServiceManagement\Azure\RemoteApp\</OutputPath>
+    <OutputPath>..\..\..\Package\$(Configuration)\Azure\RemoteApp\</OutputPath>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.WindowsAzure.Commands.RemoteApp</RootNamespace>
     <AssemblyName>Microsoft.WindowsAzure.Commands.RemoteApp</AssemblyName>
