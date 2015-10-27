@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             Guid roleAssignmentId = RoleAssignmentNames.Count == 0 ? Guid.NewGuid() : RoleAssignmentNames.Dequeue();
             string roleDefinitionId = !string.IsNullOrEmpty(parameters.RoleDefinitionName)
                 ? AuthorizationHelper.GetRoleDefinitionFullyQualifiedId(subscriptionId, GetRoleRoleDefinition(parameters.RoleDefinitionName).Id)
-                : parameters.RoleDefinitionId;
+                : AuthorizationHelper.GetRoleDefinitionFullyQualifiedId(subscriptionId, parameters.RoleDefinitionId);
 
             RoleAssignmentCreateParameters createParameters = new RoleAssignmentCreateParameters
             {
@@ -188,13 +188,14 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 }
 
                 var tempResult = AuthorizationManagementClient.RoleAssignments.List(parameters);
-                result.AddRange(tempResult.RoleAssignments.FilterRoleAssignmentsOnRoleId(options.RoleDefinitionId)
+                result.AddRange(tempResult.RoleAssignments.FilterRoleAssignmentsOnRoleId(AuthorizationHelper.GetRoleDefinitionFullyQualifiedId(currentSubscription, options.RoleDefinitionId))
                     .ToPSRoleAssignments(this, ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals));
 
                 while (!string.IsNullOrWhiteSpace(tempResult.NextLink))
                 {
                     tempResult = AuthorizationManagementClient.RoleAssignments.ListNext(tempResult.NextLink);
-                    result.AddRange(tempResult.RoleAssignments.FilterRoleAssignmentsOnRoleId(options.RoleDefinitionId).ToPSRoleAssignments(this, ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals));
+                    result.AddRange(tempResult.RoleAssignments.FilterRoleAssignmentsOnRoleId(AuthorizationHelper.GetRoleDefinitionFullyQualifiedId(currentSubscription, options.RoleDefinitionId))
+                        .ToPSRoleAssignments(this, ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals));
                 }
 
                 // Filter out by scope
@@ -209,25 +210,29 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 parameters.AtScope = true;
 
                 var tempResult = AuthorizationManagementClient.RoleAssignments.ListForScope(options.Scope, parameters);
-                result.AddRange(tempResult.RoleAssignments.FilterRoleAssignmentsOnRoleId(options.RoleDefinitionId)
+                result.AddRange(tempResult.RoleAssignments.FilterRoleAssignmentsOnRoleId(AuthorizationHelper.GetRoleDefinitionFullyQualifiedId(currentSubscription, options.RoleDefinitionId))
                     .ToPSRoleAssignments(this, ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals));
 
                 while (!string.IsNullOrWhiteSpace(tempResult.NextLink))
                 {
                     tempResult = AuthorizationManagementClient.RoleAssignments.ListForScopeNext(tempResult.NextLink);
-                    result.AddRange(tempResult.RoleAssignments.FilterRoleAssignmentsOnRoleId(options.RoleDefinitionId)
+                    result.AddRange(tempResult.RoleAssignments.FilterRoleAssignmentsOnRoleId(AuthorizationHelper.GetRoleDefinitionFullyQualifiedId(currentSubscription, options.RoleDefinitionId))
                         .ToPSRoleAssignments(this, ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals));
                 }
             }
             else
             {
                 var tempResult = AuthorizationManagementClient.RoleAssignments.List(parameters);
-                result.AddRange(tempResult.RoleAssignments.ToPSRoleAssignments(this, ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals));
+                result.AddRange(tempResult.RoleAssignments
+                     .FilterRoleAssignmentsOnRoleId(AuthorizationHelper.GetRoleDefinitionFullyQualifiedId(currentSubscription, options.RoleDefinitionId))
+                     .ToPSRoleAssignments(this, ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals));
 
                 while (!string.IsNullOrWhiteSpace(tempResult.NextLink))
                 {
                     tempResult = AuthorizationManagementClient.RoleAssignments.ListNext(tempResult.NextLink);
-                    result.AddRange(tempResult.RoleAssignments.ToPSRoleAssignments(this, ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals));
+                      result.AddRange(tempResult.RoleAssignments
+                     .FilterRoleAssignmentsOnRoleId(AuthorizationHelper.GetRoleDefinitionFullyQualifiedId(currentSubscription, options.RoleDefinitionId))
+                     .ToPSRoleAssignments(this, ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals));
                 }
             }
 
@@ -267,8 +272,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// Deletes a role assignments based on the used options.
         /// </summary>
         /// <param name="options">The role assignment filtering options</param>
+        /// <param name="subscriptionId">Current subscription id</param>
         /// <returns>The deleted role assignments</returns>
-        public IEnumerable<PSRoleAssignment> RemoveRoleAssignment(FilterRoleAssignmentsOptions options)
+        public IEnumerable<PSRoleAssignment> RemoveRoleAssignment(FilterRoleAssignmentsOptions options, string subscriptionId)
         {
             // Match role assignments at exact scope. Ideally, atmost 1 roleAssignment should match the criteria 
             // but an edge case can have multiple role assignments to the same role or multiple role assignments to different roles, with same name.
@@ -323,7 +329,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// <summary>
         /// Deletes a role definition based on the id.
         /// </summary>
-        /// <param name="id">The role definition id.</param>
+        /// <param name="roleDefinitionId">The role definition id to delete</param>
+        /// <param name="subscriptionId">Current subscription id</param>
         /// <returns>The deleted role definition.</returns>
         public PSRoleDefinition RemoveRoleDefinition(Guid roleDefinitionId, string subscriptionId)
         {
@@ -379,6 +386,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             roleDefinition.NotActions = role.NotActions ?? roleDefinition.NotActions;
             roleDefinition.AssignableScopes = role.AssignableScopes ?? roleDefinition.AssignableScopes;
             roleDefinition.Description = role.Description ?? roleDefinition.Description;
+
+            ValidateRoleDefinition(roleDefinition);
 
             return
                 AuthorizationManagementClient.RoleDefinitions.CreateOrUpdate(
@@ -460,6 +469,11 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             if (string.IsNullOrWhiteSpace(roleDefinition.Name))
             {
                 throw new ArgumentException(ProjectResources.InvalidRoleDefinitionName);
+            }
+
+            if (string.IsNullOrWhiteSpace(roleDefinition.Description))
+            {
+                throw new ArgumentException(ProjectResources.InvalidRoleDefinitionDescription);
             }
 
             if (roleDefinition.AssignableScopes == null || !roleDefinition.AssignableScopes.Any())
