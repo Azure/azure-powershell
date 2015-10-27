@@ -457,8 +457,6 @@ namespace Microsoft.Azure.Commands.Resources.Models
             List<PSResourceGroupDeployment> deployments = new List<PSResourceGroupDeployment>();
             string resourceGroup = options.ResourceGroupName;
             string name = options.DeploymentName;
-            List<string> excludedProvisioningStates = options.ExcludedProvisioningStates ?? new List<string>();
-            List<string> provisioningStates = options.ProvisioningStates ?? new List<string>();
 
             if (!string.IsNullOrEmpty(resourceGroup) && !string.IsNullOrEmpty(name))
             {
@@ -466,14 +464,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
             }
             else if (!string.IsNullOrEmpty(resourceGroup))
             {
-                DeploymentListParameters parameters = new DeploymentListParameters();
-
-                if (provisioningStates.Count == 1)
-                {
-                    parameters.ProvisioningState = provisioningStates.First();
-                }
-
-                DeploymentListResult result = ResourceManagementClient.Deployments.List(resourceGroup, parameters);
+                DeploymentListResult result = ResourceManagementClient.Deployments.List(resourceGroup, null);
 
                 deployments.AddRange(result.Deployments.Select(d => d.ToPSResourceGroupDeployment(options.ResourceGroupName)));
 
@@ -484,20 +475,7 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 }
             }
 
-            if (provisioningStates.Count > 1)
-            {
-                return deployments.Where(d => provisioningStates
-                    .Any(s => s.Equals(d.ProvisioningState, StringComparison.OrdinalIgnoreCase))).ToList();
-            }
-            else if (provisioningStates.Count == 0 && excludedProvisioningStates.Count > 0)
-            {
-                return deployments.Where(d => excludedProvisioningStates
-                    .All(s => !s.Equals(d.ProvisioningState, StringComparison.OrdinalIgnoreCase))).ToList();
-            }
-            else
-            {
-                return deployments;
-            }
+            return deployments;
         }
 
         /// <summary>
