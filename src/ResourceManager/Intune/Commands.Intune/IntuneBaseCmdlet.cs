@@ -35,6 +35,11 @@ namespace Microsoft.Azure.Commands.Intune
 
         private static IntuneResourceManagementClient intuneClient;
 
+        /// <summary>
+        /// The default parameter set.
+        /// </summary>
+        internal const string DefaultParameterSet = "Default Parameter Set for Intune MAM Policy cmdlets.";
+
         internal IntuneResourceManagementClient IntuneClient
         {
             get

@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.Intune
     [Cmdlet(VerbsCommon.Set, "AzureRmIntuneAndroidMAMPolicy", SupportsShouldProcess = true, DefaultParameterSetName = SetIntuneAndroidMAMPolicyCmdlet.TypeBasedParameterSet), OutputType(typeof(AndroidMAMPolicy))]
     public sealed class SetIntuneAndroidMAMPolicyCmdlet : IntuneBaseCmdlet
     {
+        #region params
         /// <summary>
         /// The policy name
         /// </summary>
@@ -152,13 +153,16 @@ namespace Microsoft.Azure.Commands.Intune
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Indicates whether fingerprints are allowed instead of PIN to access the application.")]
         [ValidateNotNullOrEmpty]
         public FilterType? ScreenCapture { get; set; }
+
         /// <summary>
         /// The tenant level parameter set.
         /// </summary>
-        internal const string TypeBasedParameterSet = "Create a new Intune policy.";
+        internal const string TypeBasedParameterSet = "Parameter Set to create a new Intune policy.";
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
+
+        #endregion params
 
         /// <summary>
         /// Executes the cmdlet.
