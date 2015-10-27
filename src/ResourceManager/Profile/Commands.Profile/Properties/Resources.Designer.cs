@@ -142,6 +142,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please provide either a subscription ID, subscription name, tenant Id or domain..
+        /// </summary>
+        internal static string SetAzureRmContextNoParameterSet {
+            get {
+                return ResourceManager.GetString("SetAzureRmContextNoParameterSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to find subscription with name &apos;{0}&apos;..
         /// </summary>
         internal static string SubscriptionNameNotFoundError {

@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 using System;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Resources
 {
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Commands.Resources
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionId,
             HelpMessage = "Role definition id")]
-        [ValidateNotNullOrEmpty]
+        [ValidateGuidNotEmpty]
         public Guid Id { get; set; }
 
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionName,
@@ -47,19 +48,22 @@ namespace Microsoft.Azure.Commands.Resources
         {
             PSRoleDefinition roleDefinition = null;
             Action action = null;
+            string confirmMessage = null;
 
             if(Id != Guid.Empty)
             {
                 action = (() => roleDefinition = PoliciesClient.RemoveRoleDefinition(Id, DefaultProfile.Context.Subscription.Id.ToString()));
+                confirmMessage = string.Format(ProjectResources.RemoveRoleDefinition, Id);
             }
             else
             {
                 action = (() => roleDefinition = PoliciesClient.RemoveRoleDefinition(Name, DefaultProfile.Context.Subscription.Id.ToString()));
+                confirmMessage = string.Format(ProjectResources.RemoveRoleDefinitionWithName, Name);
             }
 
             ConfirmAction(
                 Force.IsPresent,
-                string.Format(ProjectResources.RemoveRoleDefinition, Id),
+                confirmMessage,
                 ProjectResources.RemoveRoleDefinition,
                 Id.ToString(),
                 action);
