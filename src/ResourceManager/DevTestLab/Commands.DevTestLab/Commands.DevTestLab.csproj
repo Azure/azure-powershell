@@ -126,6 +126,7 @@
   <ItemGroup>
     <Compile Include="DevTestLabManagementClient.cs" />
     <Compile Include="Environments\GetAzureDtlEnvironment.cs" />
+    <Compile Include="Environments\NewAzureDtlEnvironment.cs" />
     <Compile Include="Labs\GetAzureDtlLab .cs" />
     <Compile Include="Models\DevTestLabBaseCmdlet.cs" />
     <Compile Include="Models\DevTestLabClient.cs" />

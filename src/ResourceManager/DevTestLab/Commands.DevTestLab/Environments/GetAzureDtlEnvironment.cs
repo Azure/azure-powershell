@@ -1,15 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Management.Automation;
-using Microsoft.Azure.Management.DevTestLab.Models;
-using Microsoft.Azure.Management.DevTestLab;
-using Environment = Microsoft.Azure.Management.DevTestLab.Models.Environment;
-using Microsoft.Azure.Commands.DevTestLab.Models;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
 
-namespace DevTestLab.PS
+using Microsoft.Azure.Commands.DevTestLab.Models;
+using System;
+using System.Collections.Generic;
+using System.Management.Automation;
+using Environment = Microsoft.Azure.Management.DevTestLab.Models.Environment;
+
+namespace Microsoft.Azure.Commands.DevTestLab
 {
     [Cmdlet(VerbsCommon.Get, "AzureDtlEnvironment", DefaultParameterSetName = "FilterNone")]
     [OutputType(typeof(IEnumerable<Environment>), typeof(Environment))]
@@ -19,29 +28,20 @@ namespace DevTestLab.PS
 
         #region Optional Parameters
 
-        // We support three parameter sets:
+        // We support four parameter sets:
         // 1: No parameters: Get all environments in current subscription.
         // 2: Only ResourceGroupName specified: Gets all environments in that resource group.
         // 3: Both LabName and lab's ResourceGroupName are specified: Gets all environments in that lab.
         // 4: Both EnvironmentName and ResourceGroupName are specified: Gets the specific environment.
 
-        /// <summary>
-        /// <para type="description">@TODO</para>
-        /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = "FilterByEnvironmentName")]
         [ValidateNotNullOrEmpty]
         public string EnvironmentName { get; set; }
 
-        /// <summary>
-        /// <para type="description">@TODO</para>
-        /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = "FilterByLabName")]
         [ValidateNotNullOrEmpty]
         public string LabName { get; set; }
 
-        /// <summary>
-        /// <para type="description">@TODO</para>
-        /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = "FilterByLabName")]
         [Parameter(Mandatory = true, ParameterSetName = "FilterByEnvironmentName")]
         [Parameter(Mandatory = true, ParameterSetName = "FilterByResourceGroupName")]

@@ -12,18 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.Azure.Management.DevTestLab;
 using Microsoft.Azure.Management.DevTestLab.Models;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure;
+using System.Collections.Generic;
 using Environment = Microsoft.Azure.Management.DevTestLab.Models.Environment;
 
 namespace Microsoft.Azure.Commands.DevTestLab.Models
@@ -41,6 +34,10 @@ namespace Microsoft.Azure.Commands.DevTestLab.Models
         }
 
         public IDevTestLabManagementClient DTLManagementClient { get; set; }
+
+        ///////////////////////////////////////////////////////////////////////////////////////////
+
+        #region Labs
 
         public List<Lab> ListLabs()
         {
@@ -66,6 +63,12 @@ namespace Microsoft.Azure.Commands.DevTestLab.Models
         {
             return this.DTLManagementClient.Labs.Get(resoureGroupName, labName).Lab;
         }
+
+        #endregion // Labs
+
+        ///////////////////////////////////////////////////////////////////////////////////////////
+
+        #region Environments
 
         public List<Environment> ListEnvironments()
         {
@@ -102,6 +105,23 @@ namespace Microsoft.Azure.Commands.DevTestLab.Models
             return this.DTLManagementClient.Environments.Get(resourceGroupName, environmentName).Environment;
         }
 
+        public Environment CreateEnvironment(EnvironmentCreateParameters ecp, VMCreateParameters vcp, string resourceGroupName, string labName)
+        {
+            // Initiate the creation of the environment and wait until it completes.
+            var response = this.DTLManagementClient.Environments.Create(resourceGroupName, labName, ecp);
+
+            // Now display the newly created environment.
+            // Note: A new resource group will be created to house this new environment. The name of this 
+            // resource group will be the same as the environment. 
+            return this.DTLManagementClient.Environments.Get(ecp.Name, ecp.Name).Environment;
+        }
+
+        #endregion // Environments
+
+        ///////////////////////////////////////////////////////////////////////////////////////////
+
+        #region VMTemplates
+
         public List<VMTemplate> ListVMTemplatesByLab(string labName, string resourceGroupName)
         {
             List<VMTemplate> vmTemplates = new List<VMTemplate>();
@@ -117,5 +137,8 @@ namespace Microsoft.Azure.Commands.DevTestLab.Models
             return this.DTLManagementClient.VMTemplates.Get(resourceGroupName, labName, vmTemplateName).VMTemplate;
         }
 
+        #endregion VMTemplates
+
+        ///////////////////////////////////////////////////////////////////////////////////////////
     }
 }
