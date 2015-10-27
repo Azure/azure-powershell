@@ -207,6 +207,14 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         [ValidateSetAttribute(new[] { "4.0", "latest", "5.0PP" })]
         public string WmfVersion { get; set; }
 
+        /// <summary>
+        /// The Extension Data Collection state
+        /// </summary>
+        [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "Enables or Disables Data Collection in the extension.  It is enabled if it is not specified.  The value is persisted in the extension between calls.")]
+        [ValidateSet("Enable", "Disable")]
+        [AllowNull]
+        public string DataCollection { get; set; }
+        
         //Private Variables
         private const string VersionRegexExpr = @"^(([0-9])\.)\d+$";
 
@@ -309,6 +317,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 
                 publicSettings.SasToken = configurationUris.SasToken;
                 publicSettings.ModulesUrl = configurationUris.ModulesUrl;
+                publicSettings.DataCollection = this.DataCollection;
                 publicSettings.ConfigurationFunction = string.Format(
                     CultureInfo.InvariantCulture,
                     "{0}\\{1}",

@@ -102,5 +102,14 @@ namespace Microsoft.WindowsAzure.Commands.Common.Extensions.DSC
         /// on the VM.
         /// </summary>
         public string WmfVersion { get; set; }
+    
+        /// <summary>
+        /// String to set the state of the the extension data collection.
+        /// Enable will enable
+        /// Disable will disable
+        /// Null or empty will leave it in the last state.
+        /// The default is Enabled.
+        /// </summary>
+        public string DataCollection { get; set; }
     }
 }
