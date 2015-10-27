@@ -28,9 +28,9 @@ namespace Microsoft.Azure.Commands.Intune
         /// <summary>
         /// Gets or sets the policy id
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The Android policy Id.")]
+        [Parameter(Mandatory = true, HelpMessage = "The Android policy name.")]
         [ValidateNotNullOrEmpty]
-        public string PolicyId { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the App id
@@ -50,13 +50,13 @@ namespace Microsoft.Azure.Commands.Intune
             {
                 this.ConfirmAction(
                     this.Force,
-                    "Are you sure you want to link App with name:" + this.AppName + " to Android policy with id:" + this.PolicyId,
+                    "Are you sure you want to link App with name:" + this.AppName + " to Android policy with id:" + this.Name,
                     "Link the app with Android policy resource...",
-                    this.PolicyId,
+                    this.Name,
                     () =>
                     {
-                        this.IntuneClient.AddAppForAndriodPolicy(this.AsuHostName, this.PolicyId, this.AppName, PrepareMAMPolicyAppIdGroupIdPayload());
-                        this.WriteObject("Operation Completed Successfully");
+                        this.IntuneClient.AddAppForAndriodPolicy(this.AsuHostName, this.Name, this.AppName, PrepareMAMPolicyAppIdGroupIdPayload());
+                        this.WriteObject("Operation completed successfully");
                     });
             };
 

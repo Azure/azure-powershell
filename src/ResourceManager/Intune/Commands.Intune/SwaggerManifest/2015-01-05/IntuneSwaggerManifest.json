@@ -588,7 +588,128 @@
                 }
             }
         },
-
+        "/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyId}/apps": {           
+            "get": {
+                "description": "Get apps for an iOSMAMPolicy.",
+                "operationId": "GetAppForiOSMAMPolicy",
+                "produces": [ "application/json" ],
+                "parameters": [
+                    {
+                        "name": "hostName",
+                        "in": "path",
+                        "description": "Location hostName for the tenant",
+                        "required": true,
+                        "type": "string"
+                    },
+					{
+                        "name": "policyId",
+                        "in": "path",
+                        "description": "policy unique Id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "$ref": "#/parameters/ApiVersionParameter"
+                    },
+                    {
+                        "name": "$filter",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "The filter to apply on the operation."
+                    },
+                    {
+                        "name": "$top",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "$select",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "select specific fields in entity."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "applications as collection response",
+                        "schema": {
+                            "$ref": "#/definitions/ApplicationCollection"
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+		},		
+		"/providers/Microsoft.Intune/locations/{hostName}/AndroidPolicies/{policyId}/apps": {           
+            "get": {
+                "description": "Get apps for an AndroidMAMPolicy.",
+                "operationId": "GetAppForAndroidMAMPolicy",
+                "produces": [ "application/json" ],
+                "parameters": [
+                    {
+                        "name": "hostName",
+                        "in": "path",
+                        "description": "Location hostName for the tenant",
+                        "required": true,
+                        "type": "string"
+                    },
+					{
+                        "name": "policyId",
+                        "in": "path",
+                        "description": "policy unique Id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "$ref": "#/parameters/ApiVersionParameter"
+                    },
+                    {
+                        "name": "$filter",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "The filter to apply on the operation."
+                    },
+                    {
+                        "name": "$top",
+                        "in": "query",
+                        "required": false,
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    {
+                        "name": "$select",
+                        "in": "query",
+                        "required": false,
+                        "type": "string",
+                        "description": "select specific fields in entity."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "applications as collection response",
+                        "schema": {
+                            "$ref": "#/definitions/ApplicationCollection"
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+		},		
         "/providers/Microsoft.Intune/locations/{hostName}/iosPolicies/{policyId}/apps/{appId}": {           
             "put": {
                 "description": "Add app to an iOSMAMPolicy.",
@@ -650,7 +771,6 @@
                 "produces": [ "application/json" ],
                 "parameters": [
                     {
-
                         "name": "hostName",
                         "in": "path",
                         "description": "Location hostName for the tenant",

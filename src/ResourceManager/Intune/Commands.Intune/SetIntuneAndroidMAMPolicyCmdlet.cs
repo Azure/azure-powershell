@@ -28,11 +28,11 @@ namespace Microsoft.Azure.Commands.Intune
     public sealed class SetIntuneAndroidMAMPolicyCmdlet : IntuneBaseCmdlet
     {
         /// <summary>
-        /// The policy Id
+        /// The policy name
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The policy id to patch.")]
+        [Parameter(Mandatory = true, HelpMessage = "The policy name to patch.")]
         [ValidateNotNullOrEmpty]
-        public string PolicyId { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the policy name.
@@ -170,12 +170,12 @@ namespace Microsoft.Azure.Commands.Intune
                 ValidateNumericParameters();
                 this.ConfirmAction(
                     this.Force,
-                    "Are you sure you want to update the Android policy with Id:" + this.PolicyId,
+                    "Are you sure you want to update the Android policy with name:" + this.Name,
                     "Updating the Android policy resource ",
-                    this.PolicyId,
+                    this.Name,
                     () =>
                     {
-                        var policyObj = this.IntuneClient.PatchAndroidMAMPolicy(this.AsuHostName, this.PolicyId, PrepareAndriodPolicyBody());
+                        var policyObj = this.IntuneClient.PatchAndroidMAMPolicy(this.AsuHostName, this.Name, PrepareAndriodPolicyBody());
                         this.WriteObject(policyObj);
                     });
             };

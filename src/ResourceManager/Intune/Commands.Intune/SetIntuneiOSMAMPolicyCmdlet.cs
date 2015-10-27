@@ -30,9 +30,9 @@ namespace Microsoft.Azure.Commands.Intune
         /// <summary>
         /// Gets or sets the kind.
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The policy id to patch.")]
+        [Parameter(Mandatory = true, HelpMessage = "The policy name to patch.")]
         [ValidateNotNullOrEmpty]
-        public string PolicyId { get; set; }
+        public string name { get; set; }
 
         /// <summary>
         /// Gets or sets the policy name.
@@ -170,12 +170,12 @@ namespace Microsoft.Azure.Commands.Intune
                 ValidateNumericParameters();
                 this.ConfirmAction(
                     this.Force,
-                    "Are you sure you want to update the iOS policy with Id:" + this.PolicyId,
+                    "Are you sure you want to update the iOS policy with name:" + this.name,
                     "Updating the iOS policy resource ",
-                    this.PolicyId,
+                    this.name,
                     () =>
                     {
-                        var policyObj = this.IntuneClient.PatchiOSMAMPolicy(this.AsuHostName, this.PolicyId, PrepareiOSMAMPolicyBody());
+                        var policyObj = this.IntuneClient.PatchiOSMAMPolicy(this.AsuHostName, this.name, PrepareiOSMAMPolicyBody());
                         this.WriteObject(policyObj);
                     });
             };

@@ -15,16 +15,23 @@
 namespace Microsoft.Azure.Commands.Intune
 {
     using System;
-    using RestClient;
     using System.Linq;
     using System.Management.Automation;
+    using RestClient;
 
     /// <summary>
-    /// Cmdlet to get apps for iOS platform.
+    /// Cmdlet to get existing resources.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneiOSMAMApp"), OutputType(typeof(PSObject))]
-    public sealed class GetIntuneiOSMAMAppCmdlet : IntuneBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRmIntuneiOSMAMPolicyApp"), OutputType(typeof(PSObject))]
+    public sealed class GetIntuneiOSMAMPolicyAppCmdlet : IntuneBaseCmdlet
     {
+        /// <summary>
+        /// Gets the policy Name
+        /// </summary>
+        [Parameter(Mandatory = true, HelpMessage = "The policy name for the apps to fetch.")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
         /// <summary>
         /// Contains the cmdlet's execution logic.
         /// </summary>
@@ -32,24 +39,24 @@ namespace Microsoft.Azure.Commands.Intune
         {
             Action action = () =>
             {
-                string filter = string.Format("platform eq '{0}'", PlatformType.iOS.ToString().ToLower());
-                var resources = this.IntuneClient.GetApplications(this.AsuHostName, filter);
-                if (resources != null && resources.Value.Count > 0)
+                var iOSAppsForPolicy = this.IntuneClient.GetAppForiOSMAMPolicy(this.AsuHostName, Name);
+                if (iOSAppsForPolicy != null && iOSAppsForPolicy.Value.Count > 0)
                 {
-                    for (int batchSize = 10, start = 0; start < resources.Value.Count; start += batchSize)
+                    for (int batchSize = 10, start = 0; start < iOSAppsForPolicy.Value.Count; start += batchSize)
                     {
-                        var batch = resources.Value.Skip(start).Take(batchSize);
+                        var batch = iOSAppsForPolicy.Value.Skip(start).Take(batchSize);
                         this.WriteObject(batch, enumerateCollection: true);
                     }
                 }
                 else
                 {
-                    this.WriteObject("0 Apps returned");
+                    this.WriteObject("0 items returned");
                 }
             };
 
-            this.SafeExecutor(action);
+            base.SafeExecutor(action);
         }
+
 
     }
 }

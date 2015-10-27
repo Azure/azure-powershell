@@ -547,6 +547,114 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             }
 
             /// <summary>
+            /// Get apps for an iOSMAMPolicy.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='hostName'>
+            /// Location hostName for the tenant
+            /// </param>
+            /// <param name='policyId'>
+            /// policy unique Id
+            /// </param>
+            /// <param name='filter'>
+            /// The filter to apply on the operation.
+            /// </param>
+            /// <param name='top'>
+            /// </param>
+            /// <param name='select'>
+            /// select specific fields in entity.
+            /// </param>
+            public static ApplicationCollection GetAppForiOSMAMPolicy(this IIntuneResourceManagementClient operations, string hostName, string policyId, string filter = default(string), int? top = default(int?), string select = default(string))
+            {
+                return Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).GetAppForiOSMAMPolicyAsync(hostName, policyId, filter, top, select), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Get apps for an iOSMAMPolicy.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='hostName'>
+            /// Location hostName for the tenant
+            /// </param>
+            /// <param name='policyId'>
+            /// policy unique Id
+            /// </param>
+            /// <param name='filter'>
+            /// The filter to apply on the operation.
+            /// </param>
+            /// <param name='top'>
+            /// </param>
+            /// <param name='select'>
+            /// select specific fields in entity.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ApplicationCollection> GetAppForiOSMAMPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, string filter = default(string), int? top = default(int?), string select = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                HttpOperationResponse<ApplicationCollection> result = await operations.GetAppForiOSMAMPolicyWithHttpMessagesAsync(hostName, policyId, filter, top, select, null, cancellationToken).ConfigureAwait(false);
+                return result.Body;
+            }
+
+            /// <summary>
+            /// Get apps for an AndroidMAMPolicy.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='hostName'>
+            /// Location hostName for the tenant
+            /// </param>
+            /// <param name='policyId'>
+            /// policy unique Id
+            /// </param>
+            /// <param name='filter'>
+            /// The filter to apply on the operation.
+            /// </param>
+            /// <param name='top'>
+            /// </param>
+            /// <param name='select'>
+            /// select specific fields in entity.
+            /// </param>
+            public static ApplicationCollection GetAppForAndroidMAMPolicy(this IIntuneResourceManagementClient operations, string hostName, string policyId, string filter = default(string), int? top = default(int?), string select = default(string))
+            {
+                return Task.Factory.StartNew(s => ((IIntuneResourceManagementClient)s).GetAppForAndroidMAMPolicyAsync(hostName, policyId, filter, top, select), operations, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default).Unwrap().GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Get apps for an AndroidMAMPolicy.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='hostName'>
+            /// Location hostName for the tenant
+            /// </param>
+            /// <param name='policyId'>
+            /// policy unique Id
+            /// </param>
+            /// <param name='filter'>
+            /// The filter to apply on the operation.
+            /// </param>
+            /// <param name='top'>
+            /// </param>
+            /// <param name='select'>
+            /// select specific fields in entity.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ApplicationCollection> GetAppForAndroidMAMPolicyAsync( this IIntuneResourceManagementClient operations, string hostName, string policyId, string filter = default(string), int? top = default(int?), string select = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                HttpOperationResponse<ApplicationCollection> result = await operations.GetAppForAndroidMAMPolicyWithHttpMessagesAsync(hostName, policyId, filter, top, select, null, cancellationToken).ConfigureAwait(false);
+                return result.Body;
+            }
+
+            /// <summary>
             /// Add app to an iOSMAMPolicy.
             /// </summary>
             /// <param name='operations'>

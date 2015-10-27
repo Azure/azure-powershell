@@ -30,8 +30,8 @@ namespace Microsoft.Azure.Commands.Intune
         /// Gets or sets the kind.
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "The policy friendly name.")]
-        [Alias("FriendlyName"), ValidateNotNullOrEmpty]
-        public string PolicyName { get; set; }
+        [ValidateNotNullOrEmpty]
+        public string FriendlyName { get; set; }
 
         /// <summary>
         /// The description of the policy
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.Intune
                 ValidateNumericParameters();
                 this.ConfirmAction(
                     this.Force,
-                    "Are you sure you want to create a new iOS policy:" + this.PolicyName,
+                    "Are you sure you want to create a new iOS policy:" + this.FriendlyName,
                     "Creating the iOS policy resource...",
                     policyId,
                     () =>
@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Commands.Intune
         {
             var policyBody = new IOSMAMPolicyRequestBody();
             policyBody.Properties = new IOSMAMPolicyProperties() {
-                FriendlyName = this.PolicyName,
+                FriendlyName = this.FriendlyName,
                 Description = this.Description,
                 AppSharingFromLevel = this.AllowDataTransferToApps.ToString(),
                 AppSharingToLevel = this.AllowDataTransferFromApps.ToString(),

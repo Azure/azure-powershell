@@ -15,12 +15,8 @@
 namespace Microsoft.Azure.Commands.Intune
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Newtonsoft.Json.Linq;
     using RestClient;
 
     /// <summary>
@@ -30,11 +26,11 @@ namespace Microsoft.Azure.Commands.Intune
     public sealed class GetIntuneAndroidMAMPolicyCmdlet : IntuneBaseCmdlet
     {
         /// <summary>
-        /// Gets the policy Id
+        /// Gets the policy Name
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The policy Id to fetch.")]
+        [Parameter(Mandatory = false, HelpMessage = "The policy name to fetch.")]
         [ValidateNotNullOrEmpty]
-        public string PolicyId { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Contains the cmdlet's execution logic.
@@ -43,7 +39,7 @@ namespace Microsoft.Azure.Commands.Intune
         {
             Action action = () =>
             {
-                if (PolicyId != null)
+                if (Name != null)
                 {
                     GetAndroidPolicyById();
                 }
@@ -61,7 +57,7 @@ namespace Microsoft.Azure.Commands.Intune
         /// </summary>
         private void GetAndroidPolicyById()
         {
-            var andriodPolicy = this.IntuneClient.GetAndroidMAMPolicyById(this.AsuHostName, this.PolicyId);
+            var andriodPolicy = this.IntuneClient.GetAndroidMAMPolicyById(this.AsuHostName, this.Name);
             if (andriodPolicy != null)
             {
                 this.WriteObject(andriodPolicy);

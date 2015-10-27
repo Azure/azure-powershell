@@ -32,9 +32,9 @@ namespace Microsoft.Azure.Commands.Intune
         /// <summary>
         /// Gets the policy Id
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The policy Id to fetch.")]
+        [Parameter(Mandatory = false, HelpMessage = "The policy name to fetch.")]
         [ValidateNotNullOrEmpty]
-        public string PolicyId { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Contains the cmdlet's execution logic.
@@ -43,9 +43,9 @@ namespace Microsoft.Azure.Commands.Intune
         {
             Action action = () =>
             {
-                if (PolicyId != null)
+                if (Name != null)
                 {
-                    GetiOSPolicyById();
+                    GetiOSPolicyByName();
                 }
                 else
                 {
@@ -59,9 +59,9 @@ namespace Microsoft.Azure.Commands.Intune
         /// <summary>
         /// Get iOS policy by policy Id
         /// </summary>
-        private void GetiOSPolicyById()
+        private void GetiOSPolicyByName()
         {
-            var iOSPolicy = this.IntuneClient.GetiOSMAMPolicyById(this.AsuHostName, this.PolicyId);
+            var iOSPolicy = this.IntuneClient.GetiOSMAMPolicyById(this.AsuHostName, this.Name);
             if (iOSPolicy != null)
             {
                 this.WriteObject(iOSPolicy);
