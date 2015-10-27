@@ -93,6 +93,43 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
             X509Certificate2 cert = new X509Certificate2(filePath);
+            ListCertificateOptions getParameters = new ListCertificateOptions(context, behaviors) 
+            { 
+                ThumbprintAlgorithm = BatchTestHelpers.TestCertificateAlgorithm, 
+                Thumbprint = cert.Thumbprint,
+                Select = "thumbprint,state"
+            };
+
+            try
+            {
+                PSCertificate existingCert = client.ListCertificates(getParameters).FirstOrDefault();
+                DateTime start = DateTime.Now;
+                DateTime end = start.AddMinutes(5);
+
+                // Cert might still be deleting from other tests, so we wait for the delete to finish.
+                while (existingCert != null && existingCert.State == CertificateState.Deleting)
+                {
+                    if (DateTime.Now > end)
+                    {
+                        throw new TimeoutException("Timed out waiting for existing cert to be deleted.");
+                    }
+                    Sleep(5000);
+                    existingCert = client.ListCertificates(getParameters).FirstOrDefault();
+                }
+            }
+            catch (AggregateException ex)
+            {
+                foreach (Exception inner in ex.InnerExceptions)
+                {
+                    BatchException batchEx = inner as BatchException;
+                    // When the cert doesn't exist, we get a 404 error. For all other errors, throw.
+                    if (batchEx == null || !batchEx.Message.Contains("CertificateNotFound"))
+                    {
+                        throw;
+                    }
+                }
+            }
+
             NewCertificateParameters parameters = new NewCertificateParameters(context, null, cert.RawData, behaviors);
 
             client.AddCertificate(parameters);

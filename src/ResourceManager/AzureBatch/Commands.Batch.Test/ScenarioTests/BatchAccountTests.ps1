@@ -142,8 +142,8 @@ function Test-GetBatchAccountsUnderResourceGroups
 	$account12 = Get-BatchAccountName
 	$account21 = Get-BatchAccountName
     $location1 = Get-BatchAccountProviderLocation
-	$location2 = Get-BatchAccountProviderLocation 1
-	$location3 = Get-BatchAccountProviderLocation 2
+	$location2 = Get-BatchAccountProviderLocation 4
+	$location3 = Get-BatchAccountProviderLocation 7
 
     try 
     {
@@ -183,7 +183,7 @@ function Test-CreateAndRemoveBatchAccountViaPiping
 	$account2 = Get-BatchAccountName
     $resourceGroup = Get-ResourceGroupName
     $location1 = Get-BatchAccountProviderLocation
-	$location2 = Get-BatchAccountProviderLocation 1 
+	$location2 = Get-BatchAccountProviderLocation 4 
 
 	try
 	{

@@ -252,17 +252,17 @@ Tests querying for Batch jobs using a filter
 #>
 function Test-ListJobsByFilter
 {
-	param([string]$accountName, [string]$state, [string]$matches)
+	param([string]$accountName, [string]$prefix, [string]$matches)
 
 	$context = Get-AzureRmBatchAccountKeys -Name $accountName
-	$filter = "state eq'" + "$state" + "'"
+	$filter = "startswith(id,'$prefix')"
 
 	$jobs = Get-AzureBatchJob_ST -Filter $filter -BatchContext $context
 
 	Assert-AreEqual $matches $jobs.Length
 	foreach($job in $jobs)
 	{
-		Assert-True { $job.Id.StartsWith("$idPrefix") }
+		Assert-True { $job.Id.StartsWith("$prefix") }
 	}
 }
 
@@ -441,8 +441,8 @@ function Test-DeleteJob
 	$context = Get-AzureRmBatchAccountKeys -Name $accountName
 
 	# Verify the job exists
-	$jobs = Get-AzureBatchJob_ST -BatchContext $context
-	Assert-AreEqual 1 $jobs.Count
+	$job = Get-AzureBatchJob_ST $jobId -BatchContext $context
+	Assert-AreNotEqual $null $job
 
 	if ($usePipeline -eq '1')
 	{
@@ -454,7 +454,7 @@ function Test-DeleteJob
 	}
 
 	# Verify the job was deleted
-	$jobs = Get-AzureBatchJob_ST -BatchContext $context
+	$jobs = Get-AzureBatchJob_ST -Filter "id eq '$jobId'" -BatchContext $context
 	Assert-True { $jobs -eq $null -or $jobs[0].State.ToString().ToLower() -eq 'deleting' }
 }
 
@@ -476,7 +476,7 @@ function Test-DisableAndEnableJob
 
 	# Verify the job was Disabled
 	$job = Get-AzureBatchJob_ST $jobId -BatchContext $context
-	Assert-AreEqual 'Disabled' $job.State
+	Assert-True { ($job.State.ToString().ToLower() -eq 'disabled') -or ($job.State.ToString().ToLower() -eq 'disabling') }
 
 	Enable-AzureBatchJob_ST $jobId -BatchContext $context
 
@@ -487,7 +487,7 @@ function Test-DisableAndEnableJob
 	# Verify using the pipeline
 	$job | Disable-AzureBatchJob_ST -DisableJobOption Terminate -BatchContext $context
 	$job = Get-AzureBatchJob_ST $jobId -BatchContext $context
-	Assert-AreEqual 'Disabled' $job.State
+	Assert-True { ($job.State.ToString().ToLower() -eq 'disabled') -or ($job.State.ToString().ToLower() -eq 'disabling') }
 
 	$job | Enable-AzureBatchJob_ST -BatchContext $context
 	$job = Get-AzureBatchJob_ST -Filter "id eq '$jobId'" -BatchContext $context
