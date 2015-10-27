@@ -57,7 +57,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Common.2.1.0\lib\net45\Microsoft.Azure.Common.NetFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Insights">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Insights.0.7.7-preview\lib\net45\Microsoft.Azure.Insights.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Insights.0.9.1-preview\lib\net45\Microsoft.Azure.Insights.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -127,6 +127,8 @@
     <Compile Include="Autoscale\GetAutoscaleHistoryCommand.cs" />
     <Compile Include="Autoscale\GetAutoscaleSettingCommand.cs" />
     <Compile Include="Autoscale\RemoveAutoscaleSettingCommand.cs" />
+    <Compile Include="Diagnostics\SetAzureRmDiagnosticSettingCommand.cs" />
+    <Compile Include="Diagnostics\GetAzureRmDiagnosticSettingCommand.cs" />
     <Compile Include="EventCmdletBase.cs" />
     <Compile Include="Events\GetAzureRmLogCommand.cs" />
     <Compile Include="InsightsClientCmdletBase.cs" />
@@ -136,8 +138,12 @@
     <Compile Include="Metrics\GetMetricDefinitionsCommand.cs" />
     <Compile Include="Metrics\GetMetricsCommand.cs" />
     <Compile Include="OutputClasses\ConversionExtensions.cs" />
+    <Compile Include="OutputClasses\CustomPrinter.cs" />
     <Compile Include="OutputClasses\IPSEventData.cs" />
     <Compile Include="OutputClasses\IPSRuleCondition.cs" />
+    <Compile Include="OutputClasses\PSLogSettings.cs" />
+    <Compile Include="OutputClasses\PSMetricSettings.cs" />
+    <Compile Include="OutputClasses\PSServiceDiagnosticSettings.cs" />
     <Compile Include="OutputClasses\PSAlertRule.cs" />
     <Compile Include="OutputClasses\PSAlertRuleNoDetails.cs" />
     <Compile Include="OutputClasses\PSAlertRuleProperty.cs" />
@@ -189,6 +195,10 @@
       <Link>AzureRM.Insights.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Content Include="Microsoft.Azure.Commands.Insights.format.ps1xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
