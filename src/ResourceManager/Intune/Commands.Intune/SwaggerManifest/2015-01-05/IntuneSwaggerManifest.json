@@ -117,7 +117,7 @@
         },
         "/providers/Microsoft.Intune/locations/{hostName}/iosPolicies": {
             "get": {
-                "description": "Returns Intune iosPolicies.",
+                "description": "Returns Intune iOSPolicies.",
                 "operationId": "GetiOSMAMPolicies",
                 "produces": [ "application/json" ],
                 "parameters": [
@@ -171,7 +171,7 @@
         },
         "/providers/Microsoft.Intune/locations/{hostName}/androidPolicies": {
             "get": {
-                "description": "Returns Intune android Policies.",
+                "description": "Returns Intune Android policies.",
                 "operationId": "GetAndroidMAMPolicies",
                 "produces": [ "application/json" ],
                 "parameters": [

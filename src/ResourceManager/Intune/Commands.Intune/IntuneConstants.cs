@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Intune
         notRequired
     }
     /// <summary>
-    /// Types of clioboard sharing levels
+    /// Types of clipboard sharing levels
     /// </summary>
     public enum ClipboardSharingLevelType
     {
@@ -53,11 +53,19 @@ namespace Microsoft.Azure.Commands.Intune
         policyManagedAppsWithPasteIn,
         allApps
     }
+
+    /// <summary>
+    /// Filtering types
+    /// </summary>
     public enum FilterType
     {
         allow,
         block
     }
+
+    /// <summary>
+    /// Option types.
+    /// </summary>
     public enum OptionType
     {
         enable,
@@ -74,6 +82,10 @@ namespace Microsoft.Azure.Commands.Intune
         afterDeviceRestart,
         useDeviceSettings
     }
+
+    /// <summary>
+    /// Constants used in the project..
+    /// </summary>
     public class IntuneConstants
     {
         public static string ApiVersion = "2015-01-11-alpha";
@@ -81,6 +93,10 @@ namespace Microsoft.Azure.Commands.Intune
         public static int DEFAULT_PIN_RETRIES = 15;
         public static int DEFAULT_RECHECK_ACCESS_OFFLINE_GRACEPERIOD_MINUTES = 720;
         public static int DEFAULT_RECHECK_ACCESSTIMEOUT_MINUTES = 30;
-        public static int DEFAULT_OFFLINE_WIPEINTERVAL_DAYS = 1;        
+        public static int DEFAULT_OFFLINE_WIPEINTERVAL_DAYS = 1;
+        public static int BATCH_SIZE = 10;
+
+        public static string AppUriFormat = "https://{0}/providers/Microsoft.Intune/locations/{1}/apps/{2}";
+        public static string GroupUriFormat = "https://{0}/providers/Microsoft.Intune/locations/{1}/groups/{2}";
     }
 }

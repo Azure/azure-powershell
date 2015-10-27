@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Intune
     using System.Management.Automation;
     using RestClient;
     /// <summary>
-    /// Cmdlet to get apps for iOS platform.
+    /// Cmdlet to get apps for Android platform.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmIntuneAndroidMAMPolicyGroup"), OutputType(typeof(PSObject))]
     public sealed class GetIntuneAndroidMAMPolicyGroupCmdlet : IntuneBaseCmdlet
@@ -42,9 +42,9 @@ namespace Microsoft.Azure.Commands.Intune
 
                 if (groupCollection != null && groupCollection.Value.Count > 0)
                 {
-                    for (int batchSize = 10, start = 0; start < groupCollection.Value.Count; start += batchSize)
+                    for (int start = 0; start < groupCollection.Value.Count; start += IntuneConstants.BATCH_SIZE)
                     {
-                        var batch = groupCollection.Value.Skip(start).Take(batchSize);
+                        var batch = groupCollection.Value.Skip(start).Take(IntuneConstants.BATCH_SIZE);
                         this.WriteObject(batch, enumerateCollection: true);
                     }
                 }

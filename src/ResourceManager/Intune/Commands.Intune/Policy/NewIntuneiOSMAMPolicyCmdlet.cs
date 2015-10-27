@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Commands.Intune
             NumericParameterValueChecker.CheckIfNegativeAndThrowException(
                 new System.Collections.Generic.Dictionary<string, int>
                 {
-                    { "PinRetries", PinRetries.Value },
+                    {"PinRetries", PinRetries.Value},
                     {"RecheckAccessOfflineGracePeriodMinutes", this.RecheckAccessOfflineGracePeriodMinutes.Value},
                     {"RecheckAccessTimeoutMinutes", this.RecheckAccessTimeoutMinutes.Value},
                     {"OfflineWipeIntervalDays", this.OfflineWipeIntervalDays.Value }

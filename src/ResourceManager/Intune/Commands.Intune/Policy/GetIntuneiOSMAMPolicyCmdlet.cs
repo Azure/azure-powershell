@@ -80,9 +80,9 @@ namespace Microsoft.Azure.Commands.Intune
             var iOSPolicies = this.IntuneClient.GetiOSMAMPolicies(this.AsuHostName);
             if (iOSPolicies != null && iOSPolicies.Value.Count > 0)
             {
-                for (int batchSize = 10, start = 0; start < iOSPolicies.Value.Count; start += batchSize)
+                for (int start = 0; start < iOSPolicies.Value.Count; start += IntuneConstants.BATCH_SIZE)
                 {
-                    var batch = iOSPolicies.Value.Skip(start).Take(batchSize);
+                    var batch = iOSPolicies.Value.Skip(start).Take(IntuneConstants.BATCH_SIZE);
                     this.WriteObject(batch, enumerateCollection: true);
                 }
             }

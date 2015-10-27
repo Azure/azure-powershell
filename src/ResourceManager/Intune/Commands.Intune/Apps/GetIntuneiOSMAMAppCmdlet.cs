@@ -36,9 +36,9 @@ namespace Microsoft.Azure.Commands.Intune
                 var resources = this.IntuneClient.GetApplications(this.AsuHostName, filter);
                 if (resources != null && resources.Value.Count > 0)
                 {
-                    for (int batchSize = 10, start = 0; start < resources.Value.Count; start += batchSize)
+                    for (int start = 0; start < resources.Value.Count; start += IntuneConstants.BATCH_SIZE)
                     {
-                        var batch = resources.Value.Skip(start).Take(batchSize);
+                        var batch = resources.Value.Skip(start).Take(IntuneConstants.BATCH_SIZE);
                         this.WriteObject(batch, enumerateCollection: true);
                     }
                 }

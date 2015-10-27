@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Intune
     using RestClient;
 
     /// <summary>
-    /// A cmdlet to link an app to Android Intune MAM policy Azure resource.
+    /// A cmdlet to link a group to Android Intune MAM policy Azure resource.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmIntuneiOSMAMPolicyGroup", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
     public sealed class RemoveIntuneiOSMAMPolicyGroupCmdlet : IntuneBaseCmdlet

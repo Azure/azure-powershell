@@ -26,14 +26,14 @@ namespace Microsoft.Azure.Commands.Intune
     public sealed class NewIntuneAndroidMAMPolicyAppCmdlet : IntuneBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the policy id
+        /// Gets or sets the policy name
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "The Android policy name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the App id
+        /// Gets or sets the App name
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "The Android App name to link to.")]
         [ValidateNotNullOrEmpty]
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Intune
                 this.ConfirmAction(
                     this.Force,
                     "Are you sure you want to link App with name:" + this.AppName + " to Android policy with id:" + this.Name,
-                    "Link the app with Android policy resource...",
+                    "Link the app with Android policy resource.",
                     this.Name,
                     () =>
                     {
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Intune
 
         private MAMPolicyAppIdOrGroupIdPayload PrepareMAMPolicyAppIdGroupIdPayload()
         {
-            string appUri = string.Format("https://{0}/providers/Microsoft.Intune/locations/{1}/apps/{2}", this.IntuneClient.BaseUri.Host, this.AsuHostName, this.AppName);
+            string appUri = string.Format(IntuneConstants.AppUriFormat, this.IntuneClient.BaseUri.Host, this.AsuHostName, this.AppName);
             var appIdPayload = new MAMPolicyAppIdOrGroupIdPayload();
             appIdPayload.Properties = new MAMPolicyAppOrGroupIdProperties()
             {
