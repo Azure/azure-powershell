@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
+using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -38,7 +39,7 @@ namespace Microsoft.Azure.Commands.Resources
             HelpMessage = "The user or group object id.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleIdWithScopeAndObjectId,
             HelpMessage = "The user or group object id.")]
-        [ValidateNotNullOrEmpty]
+        [ValidateGuidNotEmpty]
         [Alias("Id", "PrincipalId")]
         public Guid ObjectId { get; set; }
 
@@ -142,7 +143,7 @@ namespace Microsoft.Azure.Commands.Resources
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleIdWithScopeAndObjectId,
             HelpMessage = "Role Id the principal is assigned to.")]
-        [ValidateNotNullOrEmpty]
+        [ValidateGuidNotEmpty]
         public Guid RoleDefinitionId { get; set; }
 
         [Parameter(Mandatory = false)]
@@ -184,7 +185,7 @@ namespace Microsoft.Azure.Commands.Resources
                 options.RoleDefinitionName ?? RoleDefinitionId.ToString()),
                 ProjectResources.RemovingRoleAssignment,
                 null,
-                () => roleAssignments = PoliciesClient.RemoveRoleAssignment(options));
+                () => roleAssignments = PoliciesClient.RemoveRoleAssignment(options, DefaultProfile.Context.Subscription.Id.ToString()));
 
             if (PassThru)
             {
