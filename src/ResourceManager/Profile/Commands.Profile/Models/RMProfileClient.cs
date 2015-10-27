@@ -197,14 +197,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         public bool TryGetSubscription(string tenantId, string subscriptionId, out AzureSubscription subscription)
         {
+            AzureTenant tenant;
+            return TryGetSubscription(tenantId, subscriptionId, out subscription, out tenant);
+        }
+
+        public bool TryGetSubscription(string tenantId, string subscriptionId, out AzureSubscription subscription, out AzureTenant tenant)
+        {
             if (string.IsNullOrWhiteSpace(tenantId))
             {
                 throw new ArgumentNullException("Please provide a valid tenant Id.");
             }
 
-            AzureTenant tenant;
             var token = AcquireAccessToken(_profile.Context.Account, _profile.Context.Environment,
                 tenantId, null, ShowDialog.Never);
+
             return TryGetTenantSubscription(token, _profile.Context.Account, _profile.Context.Environment,
                 tenantId, subscriptionId, null, out subscription, out tenant);
         }
