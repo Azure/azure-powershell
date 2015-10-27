@@ -89,7 +89,7 @@
       <Component Id="PSModulePath.System" Guid="273525B9-7AAB-421A-90C8-8E50A1840B8D">
         <CreateFolder />
         <!-- Work around bug that PowerShell does not always consider default module paths. -->
-        <Environment Id="PSModulePath.SystemAppRoot" Action="set" Name="PSMODULEPATH" Part="last" Value="[BaseModulesFolder];[PowerShellFolder]ResourceManager\AzureResourceManager;[PowerShellFolder]ServiceManagement" System="yes" />
+        <Environment Id="PSModulePath.SystemAppRoot" Action="set" Name="PSMODULEPATH" Part="last" Value="[BaseModulesFolder];[PowerShellFolder]" System="yes" />
       </Component>
     </DirectoryRef>
 
@@ -105,7 +105,7 @@
                   Name="Microsoft Azure PowerShell"
                   Description="Microsoft PowerShell cmdlets"
                   Target="[POWERSHELLPATH]\powershell.exe"
-                  Arguments="-NoExit -ExecutionPolicy Bypass -File &quot;[PowerShellFolder]ServiceManagement\Azure\Services\ShortcutStartup.ps1&quot;"/>
+                  Arguments="-NoExit -ExecutionPolicy Bypass -File &quot;[PowerShellFolder]Azure\Services\ShortcutStartup.ps1&quot;"/>
         <RemoveFolder Id="AzureSdkMenu" On="uninstall"/>
         <RemoveFile Id="RemoveStaleFiles" Directory="StaleAzureSdkMenu" Name="Windows Azure PowerShell.lnk" On="both"/>
         <RegistryValue Root="HKCU" Key="SOFTWARE\Microsoft\Microsoft SDKs\WindowsAzure\$(var.version)" Name="installed" Type="integer" Value="1" KeyPath="yes"/>

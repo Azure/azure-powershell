@@ -14,16 +14,11 @@
 
 param(
     [Parameter(Mandatory = $false, Position = 0)]
-    [string] $buildConfig
+    [string]
+    $buildConfig = "Release"
 )
 
 $VerbosePreference = 'Continue'
-
-if ([string]::IsNullOrEmpty($buildConfig))
-{
-	Write-Verbose "Setting build configuration to 'Release'"
-	$buildConfig = 'Release'
-}
 
 Write-Verbose "Build configuration is set to $buildConfig"
 
@@ -51,12 +46,12 @@ Get-ChildItem -Include $include -Exclude $exclude -Recurse -Path $output | Remov
 
 if (Get-Command "heat.exe" -ErrorAction SilentlyContinue)
 {
-	$azureFiles = Join-Path $env:AzurePSRoot 'setup\azurecmdfiles.wxi'
+    $azureFiles = Join-Path $env:AzurePSRoot 'setup\azurecmdfiles.wxi'
     heat dir $output -srd -sfrag -sreg -ag -g1 -cg azurecmdfiles -dr PowerShellFolder -var var.sourceDir -o $azureFiles
     
-	# Replace <Wix> with <Include>
-	(gc $azureFiles).replace('<Wix', '<Include') | Set-Content $azureFiles
-	(gc $azureFiles).replace('</Wix' ,'</Include') | Set-Content $azureFiles
+    # Replace <Wix> with <Include>
+    (gc $azureFiles).replace('<Wix', '<Include') | Set-Content $azureFiles
+    (gc $azureFiles).replace('</Wix' ,'</Include') | Set-Content $azureFiles
 }
 else
 {

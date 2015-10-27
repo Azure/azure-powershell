@@ -160,15 +160,14 @@
       ContinueOnError="false" />
       
     <CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " />
-    
-    <Message Importance="high" Text="Building Setup..." />
-    <CallTarget Targets="BuildInstaller" 
-                Condition=" '$(CodeSign)' == 'true' and '$(Scope)' == 'all'" />
   </Target>
   
     <!-- Build all flavors of the installers -->
-  <Target Name="BuildInstaller" DependsOnTargets="RestoreNugetPackages;BuildMsBuildTask">
-    <Message Importance="high" Text="Building Installers..." />    
+  <Target Name="BuildInstaller">
+    <Message Importance="high" Text="Building Installers..." />
+    
+    <Exec Command="$(PowerShellCommand) -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\BuildInstaller.ps1 $(Configuration) \&quot;$(NuGetPublishingSource)\&quot; &quot;"/>
+    
     <MSBuild
       Projects="@(SetupPowershellGetSln)"
       Targets="Build"
@@ -182,6 +181,10 @@
       Properties="Configuration=$(Configuration);Platform=Any CPU"
       ContinueOnError="false" 
       Condition=" '$(Scope)' == 'all' "/>
+    
+    <Message Importance="high" Text="MSI file path: setup\build\$(Configuration)\AzurePowerShell.msi" />
+    
+    <Message Importance="high" Text="MSI for PowerShell Gallery: setup-powershellget\build\$(Configuration)\AzurePowerShellGet.msi" />
     
     <CallTarget Targets="CodeSignInstaller" 
                 Condition=" '$(CodeSign)' == 'true' and '$(Scope)' == 'all'" />    
