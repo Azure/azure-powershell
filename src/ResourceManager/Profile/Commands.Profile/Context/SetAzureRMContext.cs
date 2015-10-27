@@ -57,8 +57,19 @@ namespace Microsoft.Azure.Commands.Profile
                 AzureRmProfileProvider.Instance.Profile.SetContextWithCache(new AzureContext(Context.Subscription, Context.Account,
                     Context.Environment, Context.Tenant));
             }
+            else if (ParameterSetName == SubscriptionIdParameterSet)
+            {
+                var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
+                profileClient.SetCurrentContext(SubscriptionId, TenantId);
+            }
             else if (ParameterSetName == SubscriptionNameParameterSet)
             {
+                if(string.IsNullOrWhiteSpace(TenantId) &&
+                   string.IsNullOrWhiteSpace(SubscriptionName))
+                {
+                    throw new PSInvalidOperationException(Resources.SetAzureRmContextNoParameterSet);
+                }
+
                 var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
                 AzureSubscription subscription = null;
                 string tenantId = AzureRmProfileProvider.Instance.Profile.Context.Tenant.Id.ToString();
@@ -94,14 +105,10 @@ namespace Microsoft.Azure.Commands.Profile
                 {
                     // authenticate with just tenant id
                     var accessToken = profileClient.AcureAccessToken(tenantId);
-                    profileClient.SetCurrentContext(tenantId);
+                    profileClient.SetCurrentContext(accessToken.TenantId);
                 }
             }
-            else if (ParameterSetName == SubscriptionIdParameterSet)
-            {
-                var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
-                profileClient.SetCurrentContext(SubscriptionId, TenantId);
-            }
+            
             WriteObject((PSAzureContext)AzureRmProfileProvider.Instance.Profile.Context);
         }
     }
