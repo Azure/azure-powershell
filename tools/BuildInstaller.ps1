@@ -58,16 +58,22 @@ if ($wixInstallRoot -eq $null){
 #and we just register both 3.8 & 3.5 to simplify the script
 $env:path = $env:path + ";$wixInstallRoot"
 
-$repo = Get-PSRepository | where { $_.SourceLocation -eq $RepositoryLocation }
-if ($repo -ne $null) {
-    $repoName = $repo.Name
+if ($RepositoryLocation -eq "Local") {
+    # Fetch the cmdlets from source
+    msbuild "$env:AzurePSRoot\build.proj" /t:Build /p:Configuration=$BuildConfig
 } else {
-    $repoName = $(New-Guid).ToString()
-    Register-PSRepository -Name $repoName -SourceLocation $RepositoryLocation -PublishLocation $RepositoryLocation/package -InstallationPolicy Trusted
+    # Fetch the cmdlets from gallery
+    $repo = Get-PSRepository | where { $_.SourceLocation -eq $RepositoryLocation }
+    if ($repo -ne $null) {
+        $repoName = $repo.Name
+    } else {
+        $repoName = $(New-Guid).ToString()
+        Register-PSRepository -Name $repoName -SourceLocation $RepositoryLocation -PublishLocation $RepositoryLocation/package -InstallationPolicy Trusted
+    }
+    
+    # Save Azure PowerShell packages
+    &"$env:AzurePSRoot\tools\SaveModules.ps1" $BuildConfig $repoName
 }
-
-# Save Azure PowerShell packages
-&"$env:AzurePSRoot\tools\SaveModules.ps1" $BuildConfig $repoName
 
 # Regenerate the installer files
 &"$env:AzurePSRoot\tools\Installer\generate.ps1" $BuildConfig

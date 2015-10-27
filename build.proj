@@ -41,7 +41,7 @@
     <SetupOutputDirectory>$(PublishDirectory)\Setup</SetupOutputDirectory>
     <TestOutputDirectory>$(PublishDirectory)\TestResults</TestOutputDirectory>
     <BuildInParallel Condition="'$(BuildInParallel)' == ''">true</BuildInParallel>
-    <NuGetPublishingSource Condition=" '$(NuGetPublishingSource)' == '' ">http://psget/PSGallery/api/v2/</NuGetPublishingSource>
+    <NuGetPublishingSource Condition=" '$(NuGetPublishingSource)' == '' ">https://dtlgalleryint.cloudapp.net/api/v2</NuGetPublishingSource>
     <Scope Condition=" $(Scope) == '' " >all</Scope>
   </PropertyGroup>
   <ItemGroup>
