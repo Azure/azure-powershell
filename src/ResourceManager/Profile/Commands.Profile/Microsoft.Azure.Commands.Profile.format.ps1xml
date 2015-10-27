@@ -19,11 +19,11 @@
                 <ScriptBlock>$_.Context.Account.ToString()</ScriptBlock>
               </ListItem>
               <ListItem>
-                <Label>Tenant</Label>
+                <Label>TenantId</Label>
                 <ScriptBlock>$_.Context.Tenant.ToString()</ScriptBlock>
               </ListItem>
               <ListItem>
-                <Label>Subscription</Label>
+                <Label>SubscriptionId</Label>
                 <ScriptBlock>$_.Context.Subscription.ToString()</ScriptBlock>
               </ListItem>
               <ListItem>
@@ -51,10 +51,12 @@
                 <PropertyName>Account</PropertyName>
               </ListItem>
               <ListItem>
-                <PropertyName>Tenant</PropertyName>
+                <Label>TenantId</Label>
+                <ScriptBlock>$_.Tenant.ToString()</ScriptBlock>
               </ListItem>
               <ListItem>
-                <PropertyName>Subscription</PropertyName>
+                <Label>SubscriptionId</Label>
+                <ScriptBlock>$_.Subscription.ToString()</ScriptBlock>
               </ListItem>
               <ListItem>
                 <Label>CurrentStorageAccount</Label>

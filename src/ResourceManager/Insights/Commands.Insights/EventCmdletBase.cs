@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Commands.Insights
         /// <summary>
         /// A predicate to filter in/out the records from original list of records obtained from the SDK.
         /// <para>This method is intended to allow descendants of this class to further filter the results.</para>
-        /// <para>An example of this is when the filtering is needed based on EventSource and ResourceUri at the same time. 
+        /// <para>An example of this is when the filtering is needed based on Category and ResourceUri at the same time. 
         /// The SDK does not allow these two fields to be in the query filter togheter. So the call should filter by one and then use this function to filter by the second one.</para>
         /// </summary>
         /// <param name="record">A record from the original list of records obtained from the sdk</param>
