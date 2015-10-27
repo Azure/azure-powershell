@@ -65,9 +65,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 {
                     "Resources\\DscExtension\\DscExtensionTests.ps1",
                     "Resources\\ServiceManagement\\Common.ps1",
-                    @"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Azure.psd1",
-                    @"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Compute\AzurePreview.psd1",
-                    @"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Compute\PIR.psd1"
+                    @"..\..\..\..\..\Package\Debug\Azure\Azure.psd1",
+                    @"..\..\..\..\..\Package\Debug\Azure\Compute\AzurePreview.psd1",
+                    @"..\..\..\..\..\Package\Debug\Azure\Compute\PIR.psd1"
                 };
 
                 helper.SetupEnvironment(AzureModule.AzureServiceManagement);

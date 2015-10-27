@@ -52,7 +52,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
                 List<string> modules = Directory.GetFiles("Resources\\ResourceManager", "*.ps1").ToList();
                 modules.Add("Common.ps1");
-                modules.Add(@"..\..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureResourceManager.psd1");
+                modules.Add(@"..\..\..\..\Package\Debug\AzureResourceManager.psd1");
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 helper.SetupModules(modules.ToArray());

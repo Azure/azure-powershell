@@ -39,11 +39,11 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest.Common
             this.modules = new List<string>();
             if (commandMode == AzureModule.AzureServiceManagement)
             {
-                this.modules.Add(FileUtilities.GetContentFilePath(@"ServiceManagement\Azure\Azure.psd1"));
+                this.modules.Add(FileUtilities.GetContentFilePath(@"Azure\Azure.psd1"));
             }
             else if (commandMode == AzureModule.AzureResourceManager)
             {
-                this.modules.Add(FileUtilities.GetContentFilePath(@"ResourceManager\AzureResourceManager\AzureResourceManager.psd1"));
+                this.modules.Add(FileUtilities.GetContentFilePath(@"AzureResourceManager.psd1"));
             }
             else
             {
