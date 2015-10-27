@@ -214,6 +214,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.SubscriptionCmdletTests\PipingWithRmContextWorks.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.SubscriptionCmdletTests\SetAzureRmContextWithoutSubscription.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.SubscriptionCmdletTests\SetAzureRmContextWorks.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
