@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8531411A-0137-4E27-9C5E-49E07C245048}"
 	ProjectSection(SolutionItems) = preProject
@@ -130,6 +130,7 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.DataLakeStore.Test", "ResourceManager\DataLakeStore\Commands.DataLakeStore.Test\Commands.DataLakeStore.Test.csproj", "{B0D03ECF-9F25-499A-BE25-D668E0D208AA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.DataLakeAnalytics.Test", "ResourceManager\DataLakeAnalytics\Commands.DataLakeAnalytics.Test\Commands.DataLakeAnalytics.Test.csproj", "{E6122DB1-1466-47EE-8BA0-73F9CA90F826}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.DevTestLab", "ResourceManager\DevTestLab\Commands.DevTestLab\Commands.DevTestLab.csproj", "{F2FCAC7C-AED7-42E5-B486-9168125F5A17}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -377,6 +378,10 @@ Global
 		{E6122DB1-1466-47EE-8BA0-73F9CA90F826}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6122DB1-1466-47EE-8BA0-73F9CA90F826}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6122DB1-1466-47EE-8BA0-73F9CA90F826}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2FCAC7C-AED7-42E5-B486-9168125F5A17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2FCAC7C-AED7-42E5-B486-9168125F5A17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2FCAC7C-AED7-42E5-B486-9168125F5A17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2FCAC7C-AED7-42E5-B486-9168125F5A17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
