@@ -472,7 +472,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         }
 
         /// <summary>
-        /// Returns Intune iosPolicies.
+        /// Returns Intune iOSPolicies.
         /// </summary>
         /// <param name='hostName'>
         /// Location hostName for the tenant
@@ -610,7 +610,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         }
 
         /// <summary>
-        /// Returns Intune android Policies.
+        /// Returns Intune Android policies.
         /// </summary>
         /// <param name='hostName'>
         /// Location hostName for the tenant

@@ -15,10 +15,10 @@
 namespace Microsoft.Azure.Commands.Intune
 {
     using System;
+    using System.Xml;
     using System.Management.Automation;
     using RestClient;
     using RestClient.Models;
-    using System.Xml;
 
     /// <summary>
     /// A cmdlet that creates a new Android Intune MAM policy Azure resource.

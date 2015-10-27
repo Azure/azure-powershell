@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Intune
                 this.ConfirmAction(
                     this.Force,
                     "Are you sure you want to link Group with name:" + this.GroupName + " to iOS policy with name:" + this.Name,
-                    "Link the group with iOS policy resource...",
+                    "Link the group with iOS policy resource.",
                     this.Name,
                     () =>
                     {

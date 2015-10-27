@@ -25,14 +25,14 @@ namespace Microsoft.Azure.Commands.Intune
     public sealed class RemoveIntuneiOSMAMPolicyAppCmdlet : IntuneBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the policy id
+        /// Gets or sets the policy name.
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "The iOS policy name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the App id
+        /// Gets or sets the App name
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "The iOS App Name to remove.")]
         [ValidateNotNullOrEmpty]
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Intune
                 this.ConfirmAction(
                     this.Force,
                     "Are you sure you want to remove App with name:" + this.AppName + " from iOS policy with name:" + this.Name,
-                    "Remove the app from iOS policy resource...",
+                    "Remove the app from iOS policy resource.",
                     this.Name,
                     () =>
                     {

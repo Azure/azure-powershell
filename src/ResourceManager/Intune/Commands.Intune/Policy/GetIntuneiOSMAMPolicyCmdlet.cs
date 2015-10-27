@@ -15,12 +15,8 @@
 namespace Microsoft.Azure.Commands.Intune
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Newtonsoft.Json.Linq;
     using RestClient;
 
     /// <summary>
@@ -30,7 +26,7 @@ namespace Microsoft.Azure.Commands.Intune
     public sealed class GetIntuneiOSMAMPolicyCmdlet : IntuneBaseCmdlet
     {
         /// <summary>
-        /// Gets the policy Id
+        /// Gets the policy name.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "The policy name to fetch.")]
         [ValidateNotNullOrEmpty]
@@ -57,7 +53,7 @@ namespace Microsoft.Azure.Commands.Intune
         }
 
         /// <summary>
-        /// Get iOS policy by policy Id
+        /// Get iOS policy by policy name.
         /// </summary>
         private void GetiOSPolicyByName()
         {

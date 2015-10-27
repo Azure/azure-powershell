@@ -15,11 +15,11 @@
 namespace Microsoft.Azure.Commands.Intune
 {
     using System;
+    using System.Xml;
     using System.Collections.Generic;
     using System.Management.Automation;
     using RestClient;
     using RestClient.Models;
-    using System.Xml;
 
     /// <summary>
     /// A cmdlet that edits an existing Android intune policy.

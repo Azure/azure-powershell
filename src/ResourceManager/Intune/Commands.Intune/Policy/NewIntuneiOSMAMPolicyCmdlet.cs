@@ -15,10 +15,10 @@
 namespace Microsoft.Azure.Commands.Intune
 {
     using System;
+    using System.Xml;
     using System.Management.Automation;
     using RestClient;
     using RestClient.Models;
-    using System.Xml;
 
     /// <summary>
     /// A cmdlet that creates a new iOS intune policy azure resource.
@@ -163,7 +163,7 @@ namespace Microsoft.Azure.Commands.Intune
                 this.ConfirmAction(
                     this.Force,
                     "Are you sure you want to create a new iOS policy:" + this.FriendlyName,
-                    "Creating the iOS policy resource...",
+                    "Creating the iOS policy resource.",
                     policyId,
                     () =>
                     {

@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Intune
         }
 
         /// <summary>
-        /// Get Android policy by policy Id
+        /// Get Android policy by policy name.
         /// </summary>
         private void GetAndroidPolicyById()
         {

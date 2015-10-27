@@ -15,9 +15,9 @@
 namespace Microsoft.Azure.Commands.Intune
 {
     using System;
-    using RestClient;
     using System.Linq;
     using System.Management.Automation;
+    using RestClient;
 
     /// <summary>
     /// Cmdlet to get apps for iOS platform.

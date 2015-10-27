@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         Task<HttpOperationResponse<ApplicationCollection>> GetApplicationsWithHttpMessagesAsync(string hostName, string filter = default(string), int? top = default(int?), string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// Returns Intune iosPolicies.
+        /// Returns Intune iOSPolicies.
         /// </summary>
         /// <param name='hostName'>
         /// Location hostName for the tenant
@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
         Task<HttpOperationResponse<IOSMAMPolicyCollection>> GetiOSMAMPoliciesWithHttpMessagesAsync(string hostName, string filter = default(string), int? top = default(int?), string select = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// Returns Intune android Policies.
+        /// Returns Intune Android policies.
         /// </summary>
         /// <param name='hostName'>
         /// Location hostName for the tenant
