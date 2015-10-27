@@ -60,7 +60,7 @@ TypesToProcess = @()
 FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
-NestedModules = '..\..\..\Package\Debug\ServiceManagement\Azure\HDInsight\Microsoft.WindowsAzure.Commands.HDInsight.dll'
+NestedModules = '..\..\..\Package\Debug\Azure\HDInsight\Microsoft.WindowsAzure.Commands.HDInsight.dll'
 
 # Functions to export from this module
 FunctionsToExport = '*'

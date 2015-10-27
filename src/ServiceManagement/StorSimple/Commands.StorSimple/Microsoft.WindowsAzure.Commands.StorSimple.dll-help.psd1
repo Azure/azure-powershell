@@ -61,7 +61,7 @@ FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
 NestedModules = @(
-	'..\..\..\Package\Debug\ServiceManagement\Azure\StorSimple\Microsoft.WindowsAzure.Commands.StorSimple.dll'
+	'..\..\..\Package\Debug\Azure\StorSimple\Microsoft.WindowsAzure.Commands.StorSimple.dll'
 )
 
 # Functions to export from this module

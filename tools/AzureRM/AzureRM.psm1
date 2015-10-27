@@ -47,7 +47,7 @@ function CheckIncompatibleVersion([bool]$Force)
     $path = ${env:ProgramFiles}
   }
 
-  if ( Test-Path "$path\Microsoft SDKs\Azure\PowerShell\ResourceManager\AzureResourceManager\AzureResourceManager.psd1")
+  if ( Test-Path "$path\Microsoft SDKs\Azure\PowerShell\AzureResourceManager.psd1")
   {
     if ($Force)
     {

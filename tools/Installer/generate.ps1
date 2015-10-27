@@ -24,8 +24,8 @@ Write-Verbose "Build configuration is set to $buildConfig"
 
 $output = Join-Path $env:AzurePSRoot "src\Package\$buildConfig"
 Write-Verbose "The output folder is set to $output"
-$serviceManagementPath = Join-Path $output "ServiceManagement\Azure"
-$resourceManagerPath = Join-Path $output "ResourceManager\AzureResourceManager"
+$serviceManagementPath = Join-Path $output "Azure"
+$resourceManagerPath = $output
 
 Write-Verbose "Removing unneeded psd1 file for AzureResourceManager"
 Remove-Item -Force $resourceManagerPath\AzureResourceManager.psd1 -ErrorAction SilentlyContinue

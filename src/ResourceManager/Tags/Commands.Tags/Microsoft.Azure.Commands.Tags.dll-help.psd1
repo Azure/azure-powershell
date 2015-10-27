@@ -61,7 +61,7 @@ FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
 NestedModules = @(
-    '..\..\..\Package\Debug\ResourceManager\AzureResourceManager\Tags\Microsoft.Azure.Commands.Tags.dll'
+    '..\..\..\Package\Debug\Tags\Microsoft.Azure.Commands.Tags.dll'
 )
 
 # Functions to export from this module

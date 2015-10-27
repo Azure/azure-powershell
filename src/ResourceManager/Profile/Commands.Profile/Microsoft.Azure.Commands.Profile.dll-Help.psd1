@@ -60,7 +60,7 @@ TypesToProcess = @()
 FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
-NestedModules = '..\..\Package\Debug\ServiceManagement\Azure\Services\Microsoft.WindowsAzure.Commands.Profile.dll'
+NestedModules = '..\..\Package\Debug\Azure\Services\Microsoft.WindowsAzure.Commands.Profile.dll'
 
 # Functions to export from this module
 FunctionsToExport = '*'
