@@ -255,6 +255,30 @@ function Test-RemoveDeployment
 
 <#
 .SYNOPSIS
+Tests Test-ResourceGroup cmdlet works
+#>
+function Test-TestResourceGroup
+{
+    # Setup
+    $rgName = "TestGroup"
+
+    try
+    {
+        # Test existing resource group
+        New-AzureRmResourceGroup -Name $rgName -Location "west us"
+        Assert-True { Test-AzureRmResourceGroup -ResourceGroupName $rgName }
+        # Test non-existing resource group
+        Assert-False { Test-AzureRmResourceGroup -ResourceGroupName "NonExisting" }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgName
+    }
+}
+
+<#
+.SYNOPSIS
 Tests find resource group command
 #>
 function Test-FindResourceGroup
