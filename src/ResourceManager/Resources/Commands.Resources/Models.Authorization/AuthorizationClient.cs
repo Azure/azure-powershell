@@ -187,10 +187,15 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                     parameters.PrincipalId = string.IsNullOrEmpty(options.ADObjectFilter.Id) ? adObject.Id : Guid.Parse(options.ADObjectFilter.Id);
                 }
 
-                result.AddRange(AuthorizationManagementClient.RoleAssignments.List(parameters)
-                    .RoleAssignments
-                    .FilterRoleAssignmentsOnRoleId(options.RoleDefinitionId)
+                var tempResult = AuthorizationManagementClient.RoleAssignments.List(parameters);
+                result.AddRange(tempResult.RoleAssignments.FilterRoleAssignmentsOnRoleId(options.RoleDefinitionId)
                     .ToPSRoleAssignments(this, ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals));
+
+                while (!string.IsNullOrWhiteSpace(tempResult.NextLink))
+                {
+                    tempResult = AuthorizationManagementClient.RoleAssignments.ListNext(tempResult.NextLink);
+                    result.AddRange(tempResult.RoleAssignments.FilterRoleAssignmentsOnRoleId(options.RoleDefinitionId).ToPSRoleAssignments(this, ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals));
+                }
 
                 // Filter out by scope
                 if (!string.IsNullOrEmpty(options.Scope))
@@ -203,15 +208,27 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 // Filter by scope and above directly
                 parameters.AtScope = true;
 
-                result.AddRange(AuthorizationManagementClient.RoleAssignments.ListForScope(options.Scope, parameters)
-                    .RoleAssignments
-                    .FilterRoleAssignmentsOnRoleId(options.RoleDefinitionId)
+                var tempResult = AuthorizationManagementClient.RoleAssignments.ListForScope(options.Scope, parameters);
+                result.AddRange(tempResult.RoleAssignments.FilterRoleAssignmentsOnRoleId(options.RoleDefinitionId)
                     .ToPSRoleAssignments(this, ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals));
+
+                while (!string.IsNullOrWhiteSpace(tempResult.NextLink))
+                {
+                    tempResult = AuthorizationManagementClient.RoleAssignments.ListForScopeNext(tempResult.NextLink);
+                    result.AddRange(tempResult.RoleAssignments.FilterRoleAssignmentsOnRoleId(options.RoleDefinitionId)
+                        .ToPSRoleAssignments(this, ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals));
+                }
             }
             else
             {
-                result.AddRange(AuthorizationManagementClient.RoleAssignments.List(parameters)
-                    .RoleAssignments.ToPSRoleAssignments(this, ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals));
+                var tempResult = AuthorizationManagementClient.RoleAssignments.List(parameters);
+                result.AddRange(tempResult.RoleAssignments.ToPSRoleAssignments(this, ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals));
+
+                while (!string.IsNullOrWhiteSpace(tempResult.NextLink))
+                {
+                    tempResult = AuthorizationManagementClient.RoleAssignments.ListNext(tempResult.NextLink);
+                    result.AddRange(tempResult.RoleAssignments.ToPSRoleAssignments(this, ActiveDirectoryClient, options.ExcludeAssignmentsForDeletedPrincipals));
+                }
             }
 
             if (!string.IsNullOrEmpty(options.RoleDefinitionName))
@@ -255,6 +272,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         {
             // Match role assignments at exact scope. Ideally, atmost 1 roleAssignment should match the criteria 
             // but an edge case can have multiple role assignments to the same role or multiple role assignments to different roles, with same name.
+            // The FilterRoleAssignments takes care of paging internally
             IEnumerable<PSRoleAssignment> roleAssignments = FilterRoleAssignments(options, currentSubscription: string.Empty)
                                                 .Where(ra => ra.Scope == options.Scope.TrimEnd('/'));
 
