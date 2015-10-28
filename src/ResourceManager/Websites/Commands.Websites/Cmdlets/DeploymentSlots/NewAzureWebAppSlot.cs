@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                     CloneCustomHostNames = !IgnoreCustomHostNames.IsPresent,
                     CloneSourceControl = !IgnoreSourceControl.IsPresent,
                     ConfigureLoadBalancing = false,
-                    AppSettingsOverrides = AppSettingsOverrides?.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString(), StringComparer.Ordinal)
+                    AppSettingsOverrides = AppSettingsOverrides == null ? null : AppSettingsOverrides.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString(), StringComparer.Ordinal)
                 };
             }
 

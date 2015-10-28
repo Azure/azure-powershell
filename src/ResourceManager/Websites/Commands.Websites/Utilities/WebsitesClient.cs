@@ -251,9 +251,9 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
             var publishingXml = (CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName) ? WrappedWebsitesClient.Sites.ListSitePublishingProfileXmlSlot(resourceGroupName, webSiteName, options, slotName) : WrappedWebsitesClient.Sites.ListSitePublishingProfileXml(resourceGroupName, webSiteName, options));
             var doc = XDocument.Load(publishingXml, LoadOptions.None);
-            var profile = doc.Root?.Element("publishData")?.Elements("publishProfile")
+            var profile = doc.Root == null ? null : doc.Root.Element("publishData") == null ? null : doc.Root.Element("publishData").Elements("publishProfile")
                 .Single(p => p.Attribute("publishMethod").Value == "MSDeploy");
-            return profile?.Attribute("userPWD").Value;
+            return profile == null ? null: profile.Attribute("userPWD").Value;
         }
 
         public IList<ResourceMetric> GetWebAppUsageMetrics(string resourceGroupName, string webSiteName, string slotName, IReadOnlyList<string> metricNames,

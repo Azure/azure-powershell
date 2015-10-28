@@ -38,13 +38,13 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
 
         public static Dictionary<string, string> ConvertToStringDictionary(this Hashtable hashtable)
         {
-            return hashtable?.Cast<DictionaryEntry>()
+            return hashtable == null ? null : hashtable.Cast<DictionaryEntry>()
                 .ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString(), StringComparer.Ordinal);
         }
 
         public static Dictionary<string, ConnStringValueTypePair> ConvertToConnectionStringDictionary(this Hashtable hashtable)
         {
-            return hashtable?.Cast<DictionaryEntry>()
+            return hashtable == null ? null : hashtable.Cast<DictionaryEntry>()
                 .ToDictionary(
                 kvp => kvp.Key.ToString(), kvp =>
                 {

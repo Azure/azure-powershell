@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     TrafficManagerProfileId = TrafficManagerProfileId,
                     TrafficManagerProfileName = TrafficManagerProfileName,
                     ConfigureLoadBalancing = !string.IsNullOrEmpty(TrafficManagerProfileId) || !string.IsNullOrEmpty(TrafficManagerProfileName),
-                    AppSettingsOverrides = AppSettingsOverrides?.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString(), StringComparer.Ordinal)
+                    AppSettingsOverrides = AppSettingsOverrides == null ? null: AppSettingsOverrides.Cast<DictionaryEntry>().ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value.ToString(), StringComparer.Ordinal)
                 };
             }
 
