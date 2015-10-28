@@ -104,8 +104,23 @@ namespace Microsoft.Azure.Commands.Profile
                 else
                 {
                     // authenticate with just tenant id
-                    var accessToken = profileClient.AcureAccessToken(tenantId);
-                    profileClient.SetCurrentContext(accessToken.TenantId);
+                    AzureTenant tenant;
+                    if(!profileClient.TryGetTenantAndSubscription(tenantId, null, out subscription, out tenant))
+                    {
+                        throw new ItemNotFoundException(
+                            string.Format(Resources.TenantIdNotFound, tenantId));
+                    }
+                    if (subscription == null)
+                    {
+                        profileClient.SetCurrentContext(tenant.Id.ToString());
+                    }
+                    else
+                    {
+                        profileClient.SetCurrentContext(
+                            subscription.Id.ToString(), 
+                            tenant.Id.ToString(), 
+                            verifySubscription: false);
+                    }
                 }
             }
             

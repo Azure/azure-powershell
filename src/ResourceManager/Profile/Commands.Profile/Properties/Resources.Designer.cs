@@ -178,6 +178,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to find tenant &apos;{0}&apos;..
+        /// </summary>
+        internal static string TenantIdNotFound {
+            get {
+                return ResourceManager.GetString("TenantIdNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to To create an access token credential, you must provide an access token account..
         /// </summary>
         internal static string TypeNotAccessToken {
