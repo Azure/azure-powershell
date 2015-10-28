@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Intune
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "The iOS policy name.")]
         [ValidateNotNullOrEmpty]
-        public string PolicyId { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the App name
@@ -50,12 +50,12 @@ namespace Microsoft.Azure.Commands.Intune
             {
                 this.ConfirmAction(
                     this.Force,
-                    "Are you sure you want to add App with name:" + this.AppName + " to iOS policy with id:" + this.PolicyId,
+                    "Are you sure you want to add App with name:" + this.AppName + " to iOS policy with id:" + this.Name,
                     "Link the app with iOS policy resource",
-                    this.PolicyId,
+                    this.Name,
                     () =>
                     {
-                        this.IntuneClient.AddAppForiOSMAMPolicy(this.AsuHostName, this.PolicyId, this.AppName, PrepareMAMPolicyAppIdGroupIdPayload());
+                        this.IntuneClient.AddAppForiOSMAMPolicy(this.AsuHostName, this.Name, this.AppName, PrepareMAMPolicyAppIdGroupIdPayload());
                         this.WriteObject("Operation completed successfully");
                     });
             };
