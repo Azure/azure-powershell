@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Assert.NotNull(tenant);
             Assert.Null(tenant.Domain);
             Assert.Equal(Guid.Empty.ToString(), tenant.TenantId);
-            Assert.NotNull(tenant.ToString());
+            Assert.Null(tenant.ToString());
         }
 
         [Theory, 

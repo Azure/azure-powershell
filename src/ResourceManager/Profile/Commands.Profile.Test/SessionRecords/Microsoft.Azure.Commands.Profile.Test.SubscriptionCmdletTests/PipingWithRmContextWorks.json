@@ -25,64 +25,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "14999"
-        ],
-        "x-ms-request-id": [
-          "ab8756d0-4404-4a60-ae6e-2653656c0b23"
-        ],
-        "x-ms-correlation-request-id": [
-          "ab8756d0-4404-4a60-ae6e-2653656c0b23"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20151022T180626Z:ab8756d0-4404-4a60-ae6e-2653656c0b23"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Thu, 22 Oct 2015 18:06:26 GMT"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions?api-version=2014-04-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnM/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "Microsoft.Azure.Subscriptions.SubscriptionClient/2.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d\",\r\n      \"subscriptionId\": \"00977cdb-163f-435f-9c32-39ec8ae61f4d\",\r\n      \"displayName\": \"node\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6\",\r\n      \"subscriptionId\": \"2c224e7e-3ef5-431d-a57b-e71f4662e3a6\",\r\n      \"displayName\": \"Node CLI Test\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/6b085460-5f21-477e-ba44-1035046e9101\",\r\n      \"subscriptionId\": \"6b085460-5f21-477e-ba44-1035046e9101\",\r\n      \"displayName\": \"Azure SDK Infrastructure\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c\",\r\n      \"subscriptionId\": \"db1ab6f0-4769-4b27-930e-01e2ef9c123c\",\r\n      \"displayName\": \"Azure SDK sandbox\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    }\r\n  ]\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "1081"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-tenant-reads": [
           "14998"
         ],
         "x-ms-request-id": [
-          "26b98034-05ee-4844-ac72-a8c02a305858"
+          "f43c6b67-d3cd-4cfb-a6e5-818f59e4cb1d"
         ],
         "x-ms-correlation-request-id": [
-          "26b98034-05ee-4844-ac72-a8c02a305858"
+          "f43c6b67-d3cd-4cfb-a6e5-818f59e4cb1d"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151022T180627Z:26b98034-05ee-4844-ac72-a8c02a305858"
+          "WESTUS:20151026T233322Z:f43c6b67-d3cd-4cfb-a6e5-818f59e4cb1d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -91,7 +43,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 22 Oct 2015 18:06:26 GMT"
+          "Mon, 26 Oct 2015 23:33:21 GMT"
         ]
       },
       "StatusCode": 200
@@ -124,13 +76,13 @@
           "14997"
         ],
         "x-ms-request-id": [
-          "af0e42bf-875b-4457-963e-24fa3470061e"
+          "83c4e352-6d75-4bcb-8c20-0f10ca413f38"
         ],
         "x-ms-correlation-request-id": [
-          "af0e42bf-875b-4457-963e-24fa3470061e"
+          "83c4e352-6d75-4bcb-8c20-0f10ca413f38"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151022T180627Z:af0e42bf-875b-4457-963e-24fa3470061e"
+          "WESTUS:20151026T233322Z:83c4e352-6d75-4bcb-8c20-0f10ca413f38"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -139,7 +91,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 22 Oct 2015 18:06:27 GMT"
+          "Mon, 26 Oct 2015 23:33:22 GMT"
         ]
       },
       "StatusCode": 200
@@ -172,13 +124,13 @@
           "14996"
         ],
         "x-ms-request-id": [
-          "4bc6ff63-684d-423f-87c4-ede93d0b098a"
+          "7f523dc6-e56c-4535-822e-0e155151cc6c"
         ],
         "x-ms-correlation-request-id": [
-          "4bc6ff63-684d-423f-87c4-ede93d0b098a"
+          "7f523dc6-e56c-4535-822e-0e155151cc6c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151022T180627Z:4bc6ff63-684d-423f-87c4-ede93d0b098a"
+          "WESTUS:20151026T233323Z:7f523dc6-e56c-4535-822e-0e155151cc6c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -187,7 +139,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 22 Oct 2015 18:06:27 GMT"
+          "Mon, 26 Oct 2015 23:33:23 GMT"
         ]
       },
       "StatusCode": 200
@@ -220,13 +172,13 @@
           "14995"
         ],
         "x-ms-request-id": [
-          "20764464-9863-4fc0-9228-3bacb5690b52"
+          "5b721cba-1691-4a90-a6df-40fbf2c99635"
         ],
         "x-ms-correlation-request-id": [
-          "20764464-9863-4fc0-9228-3bacb5690b52"
+          "5b721cba-1691-4a90-a6df-40fbf2c99635"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151022T180628Z:20764464-9863-4fc0-9228-3bacb5690b52"
+          "WESTUS:20151026T233324Z:5b721cba-1691-4a90-a6df-40fbf2c99635"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -235,7 +187,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 22 Oct 2015 18:06:27 GMT"
+          "Mon, 26 Oct 2015 23:33:23 GMT"
         ]
       },
       "StatusCode": 200
@@ -268,13 +220,13 @@
           "14994"
         ],
         "x-ms-request-id": [
-          "dc63ecd4-c5ee-46a4-876e-fb6ffc3ac8fe"
+          "5538ca2e-3923-4c65-b042-67c3529f6c67"
         ],
         "x-ms-correlation-request-id": [
-          "dc63ecd4-c5ee-46a4-876e-fb6ffc3ac8fe"
+          "5538ca2e-3923-4c65-b042-67c3529f6c67"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151022T180628Z:dc63ecd4-c5ee-46a4-876e-fb6ffc3ac8fe"
+          "WESTUS:20151026T233325Z:5538ca2e-3923-4c65-b042-67c3529f6c67"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -283,7 +235,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 22 Oct 2015 18:06:28 GMT"
+          "Mon, 26 Oct 2015 23:33:24 GMT"
         ]
       },
       "StatusCode": 200
@@ -316,13 +268,13 @@
           "14993"
         ],
         "x-ms-request-id": [
-          "2ee70574-ce24-40e7-81a2-d94a9f7bd48b"
+          "decc0586-de39-4dc4-95d5-d87dc1919af3"
         ],
         "x-ms-correlation-request-id": [
-          "2ee70574-ce24-40e7-81a2-d94a9f7bd48b"
+          "decc0586-de39-4dc4-95d5-d87dc1919af3"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151022T180629Z:2ee70574-ce24-40e7-81a2-d94a9f7bd48b"
+          "WESTUS:20151026T233325Z:decc0586-de39-4dc4-95d5-d87dc1919af3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -331,7 +283,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 22 Oct 2015 18:06:28 GMT"
+          "Mon, 26 Oct 2015 23:33:25 GMT"
         ]
       },
       "StatusCode": 200
@@ -364,13 +316,13 @@
           "14992"
         ],
         "x-ms-request-id": [
-          "fc489996-6e3a-42c3-9a2f-8c4d13daf330"
+          "7774a024-8a75-4124-8aa0-f35b5a6001fb"
         ],
         "x-ms-correlation-request-id": [
-          "fc489996-6e3a-42c3-9a2f-8c4d13daf330"
+          "7774a024-8a75-4124-8aa0-f35b5a6001fb"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151022T180629Z:fc489996-6e3a-42c3-9a2f-8c4d13daf330"
+          "WESTUS:20151026T233326Z:7774a024-8a75-4124-8aa0-f35b5a6001fb"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -379,7 +331,55 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 22 Oct 2015 18:06:28 GMT"
+          "Mon, 26 Oct 2015 23:33:25 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions?api-version=2014-04-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnM/YXBpLXZlcnNpb249MjAxNC0wNC0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Subscriptions.SubscriptionClient/2.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/00977cdb-163f-435f-9c32-39ec8ae61f4d\",\r\n      \"subscriptionId\": \"00977cdb-163f-435f-9c32-39ec8ae61f4d\",\r\n      \"displayName\": \"node\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/2c224e7e-3ef5-431d-a57b-e71f4662e3a6\",\r\n      \"subscriptionId\": \"2c224e7e-3ef5-431d-a57b-e71f4662e3a6\",\r\n      \"displayName\": \"Node CLI Test\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/6b085460-5f21-477e-ba44-1035046e9101\",\r\n      \"subscriptionId\": \"6b085460-5f21-477e-ba44-1035046e9101\",\r\n      \"displayName\": \"Azure SDK Infrastructure\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/db1ab6f0-4769-4b27-930e-01e2ef9c123c\",\r\n      \"subscriptionId\": \"db1ab6f0-4769-4b27-930e-01e2ef9c123c\",\r\n      \"displayName\": \"Azure SDK sandbox\",\r\n      \"state\": \"Enabled\",\r\n      \"subscriptionPolicies\": {\r\n        \"locationPlacementId\": \"Internal_2014-09-01\",\r\n        \"quotaId\": \"Internal_2014-09-01\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1081"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "14991"
+        ],
+        "x-ms-request-id": [
+          "3041f6a7-40fa-48d8-b36c-7640f5e82559"
+        ],
+        "x-ms-correlation-request-id": [
+          "3041f6a7-40fa-48d8-b36c-7640f5e82559"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20151026T233326Z:3041f6a7-40fa-48d8-b36c-7640f5e82559"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 26 Oct 2015 23:33:26 GMT"
         ]
       },
       "StatusCode": 200
@@ -412,13 +412,13 @@
           "14999"
         ],
         "x-ms-request-id": [
-          "6830d8eb-637a-4150-b016-7aa4f69013de"
+          "8ef812b2-9da5-4d2b-a000-cb830efad4e3"
         ],
         "x-ms-correlation-request-id": [
-          "6830d8eb-637a-4150-b016-7aa4f69013de"
+          "8ef812b2-9da5-4d2b-a000-cb830efad4e3"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20151022T180627Z:6830d8eb-637a-4150-b016-7aa4f69013de"
+          "WESTUS:20151026T233324Z:8ef812b2-9da5-4d2b-a000-cb830efad4e3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -427,7 +427,7 @@
           "no-cache"
         ],
         "Date": [
-          "Thu, 22 Oct 2015 18:06:27 GMT"
+          "Mon, 26 Oct 2015 23:33:23 GMT"
         ]
       },
       "StatusCode": 200
