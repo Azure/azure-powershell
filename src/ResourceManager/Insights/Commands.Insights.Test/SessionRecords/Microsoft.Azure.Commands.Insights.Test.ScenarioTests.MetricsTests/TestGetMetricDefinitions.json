@@ -1,7 +1,7 @@
 {
     "Entries": [
         {
-            "RequestUri": "/%2Fsubscriptions%2Fa93fb07c-6c93-40be-bf3b-4f0deba10f4b%2FresourceGroups%2FDefault-Web-EastUS%2Fproviders%2Fmicrosoft.web%2Fsites%2Fgaryyang1/metricDefinitions?api-version=2014-04-01&$filter=",
+            "RequestUri": "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/garyyang1/metricDefinitions?api-version=2014-04-01&$filter=",
             "RequestMethod": "GET",
             "RequestBody": "",
             "RequestHeaders": {
