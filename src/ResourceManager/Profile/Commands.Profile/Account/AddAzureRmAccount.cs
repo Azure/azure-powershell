@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(ParameterSetName = "User", Mandatory = false, HelpMessage = "Optional tenant name or ID")]
         [Parameter(ParameterSetName = "ServicePrincipal", Mandatory = true, HelpMessage = "TenantId name or ID")]
         [Parameter(ParameterSetName = "AccessToken", Mandatory = false, HelpMessage = "TenantId name or ID")]
-        [Alias("Tenant")]
+        [Alias("Domain")]
         [ValidateNotNullOrEmpty]
         public string TenantId { get; set; }
 
@@ -87,13 +87,15 @@ namespace Microsoft.Azure.Commands.Profile
 
         protected override void ProcessRecord()
         {
-            if (SubscriptionId != null && SubscriptionName != null)
+            if (!string.IsNullOrWhiteSpace(SubscriptionId) && 
+                !string.IsNullOrWhiteSpace(SubscriptionName))
             {
                 throw new PSInvalidOperationException(Resources.BothSubscriptionIdAndNameProvided);
             }
 
             Guid subscrptionIdGuid;
-            if (SubscriptionId != null && !Guid.TryParse(SubscriptionId, out subscrptionIdGuid))
+            if (!string.IsNullOrWhiteSpace(SubscriptionId) && 
+                !Guid.TryParse(SubscriptionId, out subscrptionIdGuid))
             {
                 throw new PSInvalidOperationException(Resources.InvalidSubscriptionId);
             }

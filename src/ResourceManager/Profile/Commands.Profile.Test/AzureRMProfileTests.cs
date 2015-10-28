@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var subResults = new List<AzureSubscription>(client.ListSubscriptions());
             Assert.Equal(1, subResults.Count);
             AzureSubscription subValue;
-            Assert.False(client.TryGetSubscription(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
+            Assert.True(client.TryGetSubscription(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
         }
 
         [Fact]
@@ -123,14 +123,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NoSubscriptionsInListThrows()
+        public void NoSubscriptionsInListDoesNotThrow()
         {
             var tenants = new List<string> { DefaultTenant.ToString() };
             var subscriptions = new List<string> () ;
             var client = SetupTestEnvironment(tenants, subscriptions);
             Assert.Equal(0, client.ListSubscriptions().Count());
             AzureSubscription subValue;
-            Assert.False(client.TryGetSubscription(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
+            Assert.True(client.TryGetSubscription(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
         }
 
         [Fact]
