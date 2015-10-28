@@ -1683,13 +1683,6 @@ Tags:
           </maml:description>
           <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
-          <maml:name>ProvisioningState</maml:name>
-          <maml:description>
-            <maml:para>Gets only the deployments with the specified provisioning state. Valid values include, but are not limited to: Canceled, Deprovisioning, Failed, NotProvisioned, Provisioned, Provisioning, and Succeeded. This parameter is optional. By default, Get-AzureRmResourceGroupDeployment returns all deployments for the specified resource group.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Profile</maml:name>
           <maml:description>
@@ -1717,19 +1710,6 @@ Tags:
         <maml:name>Name</maml:name>
         <maml:description>
           <maml:para>Gets only the deployment with the specified name. Wildcards are not permitted. This parameter is optional. By default, Get-AzureRmResourceGroupDeployment returns all deployments for the specified resource group.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="2">
-        <maml:name>ProvisioningState</maml:name>
-        <maml:description>
-          <maml:para>Gets only the deployments with the specified provisioning state. Valid values include, but are not limited to: Canceled, Deprovisioning, Failed, NotProvisioned, Provisioned, Provisioning, and Succeeded. This parameter is optional. By default, Get-AzureRmResourceGroupDeployment returns all deployments for the specified resource group.</maml:para>
         </maml:description>
         <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
         <dev:type>
@@ -1852,27 +1832,6 @@ Outputs           :</dev:code>
         <dev:code>PS C:\&gt;Get-AzureRmResourceGroupDeployment -ResourceGroupName ContosoLabsRG -Name DeployWebsite1</dev:code>
         <dev:remarks>
           <maml:para>This command gets the DeployWebsite1 deployment of the ContosoLabsRG resource group. You can assign a name to a deployment when you create it by using the New-AzureRmResourceGroup or New-AzureRmResourceGroupDeployment cmdlets. If you do not assign a name, the cmdlets provide a default name based on the template used to create the deployment.</maml:para>
-          <maml:para />
-          <maml:para />
-          <maml:para>
-          </maml:para>
-        </dev:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText>
-              <maml:para />
-            </command:commandText>
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-      <command:example>
-        <maml:title>--------------------------  Example 3: Get a deployment by provisioning state  --------------------------</maml:title>
-        <maml:introduction>
-          <maml:paragraph>PS C:\&gt;</maml:paragraph>
-        </maml:introduction>
-        <dev:code>PS C:\&gt;Get-AzureRmResourceGroupDeployment -ResourceGroupName ContosoLabsRG -ProvisioningState NotProvisioned</dev:code>
-        <dev:remarks>
-          <maml:para>This command gets the deployments of the ContosoLabsRG resource group that are not yet provisioned.</maml:para>
           <maml:para />
           <maml:para />
           <maml:para>
@@ -9156,13 +9115,6 @@ Tags:
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-          <maml:name>PassThru</maml:name>
-          <maml:description>
-            <maml:para>Returns $True when the stopping operation succeeds and $False when it fails. By default, this cmdlet does not generate any output.</maml:para>
-          </maml:description>
-          <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        </command:parameter>
         <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="named">
           <maml:name>Profile</maml:name>
           <maml:description>
@@ -9203,19 +9155,6 @@ Tags:
         <maml:name>Force</maml:name>
         <maml:description>
           <maml:para>Suppresses the confirmation prompt. By default, Stop-AzureRmResourceGroupDeployment prompts you before stopping a deployment.</maml:para>
-        </maml:description>
-        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="3">
-        <maml:name>PassThru</maml:name>
-        <maml:description>
-          <maml:para>Returns $True when the stopping operation succeeds and $False when it fails. By default, this cmdlet does not generate any output.</maml:para>
         </maml:description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
