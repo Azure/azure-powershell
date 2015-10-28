@@ -159,7 +159,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions
         /// <summary>
         /// The Extension Data Collection state
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "Enables or Disables Data Collection in the extension.  It is enabled if it is not specified.  The value is persisted in the extension between calls.")]
+        [Parameter(ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Enables or Disables Data Collection in the extension.  It is enabled if it is not specified.  " +
+            "The value is persisted in the extension between calls.")
+        ]
         [ValidateSet("Enable", "Disable")]
         [AllowNull]
         public string DataCollection { get; set; }

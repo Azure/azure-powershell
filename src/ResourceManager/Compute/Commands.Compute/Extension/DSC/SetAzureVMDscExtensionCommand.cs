@@ -209,7 +209,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         /// <summary>
         /// The Extension Data Collection state
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "Enables or Disables Data Collection in the extension.  It is enabled if it is not specified.  The value is persisted in the extension between calls.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, 
+            HelpMessage = "Enables or Disables Data Collection in the extension.  It is enabled if it is not specified.  " + 
+            "The value is persisted in the extension between calls.")
+        ]
         [ValidateSet("Enable", "Disable")]
         [AllowNull]
         public string DataCollection { get; set; }
@@ -318,7 +321,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 
                 publicSettings.SasToken = configurationUris.SasToken;
                 publicSettings.ModulesUrl = configurationUris.ModulesUrl;
-                publicSettings.DataCollection = this.DataCollection;
+                publicSettings.DataCollection = DataCollection;
                 publicSettings.ConfigurationFunction = string.Format(
                     CultureInfo.InvariantCulture,
                     "{0}\\{1}",
