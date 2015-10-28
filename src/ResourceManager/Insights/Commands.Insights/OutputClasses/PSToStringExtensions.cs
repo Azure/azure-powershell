@@ -12,8 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
+using System.Xml;
 using Hyak.Common;
 using Microsoft.Azure.Insights.Models;
 using Microsoft.Azure.Management.Insights.Models;
@@ -71,7 +75,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             {
                 output.AppendLine();
                 output.AddSpacesInFront(indentationTabs).AppendLine("EventName             : " + ruleEventDataSource.EventName);
-                output.AddSpacesInFront(indentationTabs).AppendLine("EventSource           : " + ruleEventDataSource.EventSource);
+                output.AddSpacesInFront(indentationTabs).AppendLine("Category              : " + ruleEventDataSource.EventSource);
                 output.AddSpacesInFront(indentationTabs).AppendLine("Level                 : " + ruleEventDataSource.Level);
                 output.AddSpacesInFront(indentationTabs).AppendLine("OperationName         : " + ruleEventDataSource.OperationName);
                 output.AddSpacesInFront(indentationTabs).AppendLine("ResourceGroupName     : " + ruleEventDataSource.ResourceGroupName);

@@ -62,7 +62,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Common.Authentication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.3.3-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Common.Authentication.1.3.4-preview\lib\net45\Microsoft.Azure.Common.Authentication.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Common.NetFramework">
       <SpecificVersion>False</SpecificVersion>
@@ -138,6 +138,7 @@
   <ItemGroup>
     <Compile Include="AccessTokenExtensions.cs" />
     <Compile Include="AzureRmCmdlet.cs" />
+    <Compile Include="AzureRMProfileExtensions.cs" />
     <Compile Include="Generated\AuthorizationClient.cs" />
     <Compile Include="Generated\AuthorizationClientExtensions.cs" />
     <Compile Include="Generated\DeploymentOperationOperations.cs" />

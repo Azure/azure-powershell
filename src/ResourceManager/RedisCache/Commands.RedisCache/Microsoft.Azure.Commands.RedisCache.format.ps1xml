@@ -66,6 +66,26 @@
                 <Label>ResourceGroupName</Label>
                 <PropertyName>ResourceGroupName</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>VirtualNetwork</Label>
+                <PropertyName>VirtualNetwork</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Subnet</Label>
+                <PropertyName>Subnet</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>StaticIP</Label>
+                <PropertyName>StaticIP</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>TenantSettings</Label>
+                <PropertyName>TenantSettings</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ShardCount</Label>
+                <PropertyName>ShardCount</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -143,6 +163,26 @@
               <ListItem>
                 <Label>SecondaryKey</Label>
                 <PropertyName>SecondaryKey</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>VirtualNetwork</Label>
+                <PropertyName>VirtualNetwork</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Subnet</Label>
+                <PropertyName>Subnet</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>StaticIP</Label>
+                <PropertyName>StaticIP</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>TenantSettings</Label>
+                <PropertyName>TenantSettings</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ShardCount</Label>
+                <PropertyName>ShardCount</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

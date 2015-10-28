@@ -94,7 +94,7 @@ function Test-RdNegativeScenarios
 
     # Throws on trying to delete a role that does not exist
     $missingSubscription = "MissingSubscription: The request did not have a provided subscription. All requests must have an associated subscription Id."
-    Assert-Throws { Remove-AzureRmRoleDefinition -Id $rdId -Force} $missingSubscription
+    Assert-Throws { Remove-AzureRmRoleDefinition -Id $rdId -Force} $badIdException
 }
 
 <#
