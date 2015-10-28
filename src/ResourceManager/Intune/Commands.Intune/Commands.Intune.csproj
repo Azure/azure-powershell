@@ -98,6 +98,7 @@
     <Compile Include="Groups\AddIntuneiOSMAMPolicyGroupCmdlet.cs" />
     <Compile Include="Groups\RemoveIntuneAndroidMAMPolicyGroupCmdlet.cs" />
     <Compile Include="Groups\RemoveIntuneiOSMAMPolicyGroupCmdlet.cs" />
+    <Compile Include="IntuneEnums.cs" />
     <Compile Include="Policy\GetIntuneAndroidMAMPolicyCmdlet.cs" />
     <Compile Include="Groups\GetIntuneAndroidMAMPolicyGroupCmdlet.cs" />
     <Compile Include="Apps\GetIntuneiOSMAMAppCmdlet.cs" />
