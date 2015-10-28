@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     _profile.Context.Subscription.Properties[AzureSubscription.Property.Tenants] = tenantId;
                 }
 
-                var newSubscription = new AzureSubscription { Id = new Guid(subscriptionId) };
+                var newSubscription = new AzureSubscription { Id = subscription.Id };
                 if (_profile.Context.Subscription != null)
                 {
                     newSubscription.Account = _profile.Context.Subscription.Account;
@@ -198,9 +198,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         public bool TryGetSubscriptionById(string tenantId, string subscriptionId, out AzureSubscription subscription)
         {
-            IEnumerable<AzureSubscription> subscriptionList = GetSubscriptions(tenantId);
-
-            subscription = subscriptionList.FirstOrDefault(s => s.Id == Guid.Parse(subscriptionId));
+            Guid subscriptionIdGuid;
+            subscription = null;
+            if (Guid.TryParse(subscriptionId, out subscriptionIdGuid)) 
+            { 
+                IEnumerable<AzureSubscription> subscriptionList = GetSubscriptions(tenantId);
+                subscription = subscriptionList.FirstOrDefault(s => s.Id == subscriptionIdGuid);
+            }
             return subscription != null;
         }
 
@@ -214,7 +218,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
         public IEnumerable<AzureSubscription> GetSubscriptions(string tenantId)
         {
-            IEnumerable<AzureSubscription> subscriptionList;
+            IEnumerable<AzureSubscription> subscriptionList= new List<AzureSubscription>();
             if (string.IsNullOrWhiteSpace(tenantId))
             {
                 subscriptionList = ListSubscriptions();
@@ -518,7 +522,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                                     environment, CreateTenantFromString(tenantId))));
                 }
 
-                return null;
+                return new List<AzureSubscription>();
             }
         }
 

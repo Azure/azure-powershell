@@ -57,24 +57,30 @@ namespace Microsoft.Azure.Commands.Profile
                 AzureRmProfileProvider.Instance.Profile.SetContextWithCache(new AzureContext(Context.Subscription, Context.Account,
                     Context.Environment, Context.Tenant));
             }
-            else
+            else if (ParameterSetName == SubscriptionNameParameterSet || ParameterSetName == SubscriptionIdParameterSet)
             {
-                if (string.IsNullOrWhiteSpace(SubscriptionId) && string.IsNullOrWhiteSpace(SubscriptionName))
+                if (string.IsNullOrWhiteSpace(SubscriptionId) 
+                    && string.IsNullOrWhiteSpace(SubscriptionName)
+                    && string.IsNullOrWhiteSpace(TenantId))
                 {
                     throw new PSInvalidOperationException(Resources.SetAzureRmContextNoParameterSet);
                 }
 
                 var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
-                if (ParameterSetName == SubscriptionIdParameterSet)
+                if (!string.IsNullOrWhiteSpace(SubscriptionId))
                 {
                     profileClient.SetCurrentContext(SubscriptionId, null, TenantId);
                 }
-                else if (ParameterSetName == SubscriptionNameParameterSet)
+                else if (!string.IsNullOrWhiteSpace(SubscriptionName))
                 {
                     profileClient.SetCurrentContext(null, SubscriptionName, TenantId);
                 }
-                WriteObject((PSAzureContext)AzureRmProfileProvider.Instance.Profile.Context);
+                else
+                {
+                    profileClient.SetCurrentContext(TenantId);
+                }
             }
+            WriteObject((PSAzureContext)AzureRmProfileProvider.Instance.Profile.Context);
         }
     }
 }
