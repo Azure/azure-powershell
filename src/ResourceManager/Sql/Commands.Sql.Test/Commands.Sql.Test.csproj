@@ -203,6 +203,7 @@
     <None Include="ScenarioTests\ServerActiveDirectoryAdministratorTest.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\ServerCommunicationLinkCrudTests.ps1" />
     <None Include="ScenarioTests\ServiceTierAdvisorTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -220,6 +221,7 @@
     </None>
     <Compile Include="ScenarioTests\LocationCapabilitiesTests.cs" />
     <Compile Include="ScenarioTests\ServerActiveDirectoryAdministratorTest.cs" />
+    <Compile Include="ScenarioTests\ServerCommunicationLinkCrudTests.cs" />
     <Compile Include="ScenarioTests\ServiceTierAdvisorTests.cs" />
     <Compile Include="ScenarioTests\RecommendedElasticPoolTests.cs" />
     <Compile Include="ScenarioTests\ElasticPoolCrudTests.cs" />

@@ -190,6 +190,14 @@
     <Compile Include="Secure Connection\Model\DatabaseSecureConnectionPolicyModel.cs" />
     <Compile Include="Secure Connection\Services\SecureConnectionEndpointsCommunicator.cs" />
     <Compile Include="Secure Connection\Services\SqlSecureConnectionAdapter.cs" />
+    <Compile Include="ServerCommunicationLink\Cmdlet\AzureSqlServerCommunicationLinkCmdletBase.cs" />
+    <Compile Include="ServerCommunicationLink\Cmdlet\GetAzureSqlServerCommunicationLink.cs" />
+    <Compile Include="ServerCommunicationLink\Cmdlet\NewAzureSqlServerCommunicationLink.cs" />
+    <Compile Include="ServerCommunicationLink\Cmdlet\RemoveAzureSqlServerCommunicationLink.cs" />
+    <Compile Include="ServerCommunicationLink\Cmdlet\SetAzureSqlServerCommunicationLink.cs" />
+    <Compile Include="ServerCommunicationLink\Model\AzureSqlServerCommunicationLinkModel.cs" />
+    <Compile Include="ServerCommunicationLink\Services\AzureSqlServerCommunicationLinkAdapter.cs" />
+    <Compile Include="ServerCommunicationLink\Services\AzureSqlServerCommunicationLinkCommunicator.cs" />
     <Compile Include="Server\Cmdlet\AzureSqlServerCmdletBase.cs" />
     <Compile Include="Server\Cmdlet\GetAzureSqlServer.cs" />
     <Compile Include="Server\Cmdlet\NewAzureSqlServer.cs" />
@@ -264,7 +272,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Sql, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.39.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.0.40.0-prerelease\lib\net40\Microsoft.Azure.Management.Sql.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
