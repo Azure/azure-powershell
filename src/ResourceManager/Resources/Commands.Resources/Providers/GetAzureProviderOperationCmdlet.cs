@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.Resources
     using System.Management.Automation;
     using Microsoft.Azure.Commands.Resources.Models;
     using Microsoft.Azure.Management.Resources.Models;
+    using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources;
 
     /// <summary>
     /// Get an existing resource.
@@ -28,13 +29,14 @@ namespace Microsoft.Azure.Commands.Resources
     public class GetAzureProviderOperationCommand : ResourcesBaseCmdlet
     {
         private const string WildCardCharacter = "*";
+        private static readonly char Separator = '/';
 
         /// <summary>
         /// Gets or sets the provider namespace
         /// </summary>
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = false, ValueFromPipeline = true, HelpMessage = "The action string.")]
         [ValidateNotNullOrEmpty]
-        public string ActionString { get; set; }
+        public string OperationSearchString { get; set; }
 
         /// <summary>
         /// Executes the cmdlet
@@ -42,34 +44,54 @@ namespace Microsoft.Azure.Commands.Resources
         protected override void ProcessRecord()
         {
             // remove leading and trailing whitespaces
-            this.ActionString = this.ActionString.Trim();
+            this.OperationSearchString = this.OperationSearchString.Trim();
 
-            List<PSResourceProviderOperation> operationsToDisplay;
+            ValidateActionSearchString(this.OperationSearchString);
+           
+            List<PSResourceProviderOperation> operationsToDisplay;                  
 
-            if (this.ActionString.Contains(WildCardCharacter))
+            if (this.OperationSearchString.Contains(WildCardCharacter))
             {
-                operationsToDisplay = this.ProcessProviderOperationsWithWildCard(ActionString);
+                operationsToDisplay = this.ProcessProviderOperationsWithWildCard(OperationSearchString);
             }
             else
             {
-                operationsToDisplay = this.ProcessProviderOperationsWithoutWildCard(ActionString);
+                operationsToDisplay = this.ProcessProviderOperationsWithoutWildCard(OperationSearchString);
             }
 
             this.WriteObject(operationsToDisplay, enumerateCollection: true);
         }
 
+        private static void ValidateActionSearchString(string actionSearchString)
+        {
+            if (actionSearchString.Contains("?"))
+            {
+                throw new ArgumentException(ProjectResources.ProviderOperationUnsupportedWildcard);
+            }
+
+            string[] parts = actionSearchString.Split(Separator);
+            if (parts.Any(p => p.Contains(WildCardCharacter) && p.Length != 1))
+            {
+                throw new ArgumentException(ProjectResources.OperationSearchStringInvalidWildcard);
+            }
+
+            if(parts.Length == 1 && parts[0] != WildCardCharacter)
+            {
+                throw new ArgumentException(string.Format(ProjectResources.OperationSearchStringInvalidProviderName, parts[0]));
+            }
+        }
+
         /// <summary>
         /// Get a list of Provider operations in the case that the Actionstring input contains a wildcard
         /// </summary>
-        private List<PSResourceProviderOperation> ProcessProviderOperationsWithWildCard(string actionString)
+        private List<PSResourceProviderOperation> ProcessProviderOperationsWithWildCard(string actionSearchString)
         {
             // Filter the list of all operation names to what matches the wildcard
-            WildcardPattern wildcard = new WildcardPattern(actionString, WildcardOptions.IgnoreCase | WildcardOptions.Compiled);
+            WildcardPattern wildcard = new WildcardPattern(actionSearchString, WildcardOptions.IgnoreCase | WildcardOptions.Compiled);
 
             List<ProviderOperationsMetadata> providers = new List<ProviderOperationsMetadata>();
-
-            string nonWildCardPrefix = GetAzureProviderOperationCommand.GetNonWildcardPrefix(actionString);
-            if (string.IsNullOrWhiteSpace(nonWildCardPrefix))
+            string provider = this.OperationSearchString.Split(Separator).First();
+            if (provider.Equals(WildCardCharacter))
             {
                 // 'Get-AzureRmProviderOperation *' or 'Get-AzureRmProviderOperation */virtualmachines/*'
                 // get operations for all providers
@@ -77,41 +99,23 @@ namespace Microsoft.Azure.Commands.Resources
             }
             else
             {
-                // Some string exists before the wild card character - potentially the full name of the provider.
-                string providerFullName = GetAzureProviderOperationCommand.GetResourceProviderFullName(nonWildCardPrefix);
-                if (!string.IsNullOrWhiteSpace(providerFullName))
-                {
-                    // we have the full name of the provider. 'Get-AzureRmProviderOperation Microsoft.Sql/servers/*'
-                    // only query for that provider
-                    providers.Add(this.ResourcesClient.GetProviderOperationsMetadata(providerFullName));
-                }
-                else
-                {
-                    // We have only a partial name of the provider, say Microsoft.*/* or Microsoft.*/*/read.
-                    // query for all providers and then do prefix match on the operations
-                    providers.AddRange(this.ResourcesClient.ListProviderOperationsMetadata());
-                }
+                // 'Get-AzureRmProviderOperation Microsoft.Compute/virtualmachines/*' or 'Get-AzureRmProviderOperation Microsoft.Sql/*'
+                providers.Add(this.ResourcesClient.GetProviderOperationsMetadata(provider));
             }
 
-            return providers.SelectMany(p => GetPSOperationsFromProviderOperationsMetadata(p)).Where(operation => wildcard.IsMatch(operation.Operation)).ToList();            
+            return providers.SelectMany(p => GetPSOperationsFromProviderOperationsMetadata(p)).Where(operation => wildcard.IsMatch(operation.Operation)).ToList();                        
         }
 
         /// <summary>
         /// Gets a list of Provider operations in the case that the Actionstring input does not contain a wildcard
         /// </summary>
-        private List<PSResourceProviderOperation> ProcessProviderOperationsWithoutWildCard(string actionString)
+        private List<PSResourceProviderOperation> ProcessProviderOperationsWithoutWildCard(string operationString)
         {
-            List<PSResourceProviderOperation> operationsToDisplay = new List<PSResourceProviderOperation>();
-            string providerFullName = GetAzureProviderOperationCommand.GetResourceProviderFullName(actionString);
-            if (!string.IsNullOrWhiteSpace(providerFullName))
-            {
-                // We have the full name of the provider. get operations metadata for this provider
-                ProviderOperationsMetadata providerOperations = this.ResourcesClient.GetProviderOperationsMetadata(providerFullName);
-                IEnumerable<PSResourceProviderOperation> flattenedProviderOperations = GetAzureProviderOperationCommand.GetPSOperationsFromProviderOperationsMetadata(providerOperations);
-                operationsToDisplay.AddRange(flattenedProviderOperations.Where(op => string.Equals(op.Operation, actionString, StringComparison.OrdinalIgnoreCase)));
-            }
+            string providerFullName = operationString.Split(Separator).First();
 
-            return operationsToDisplay;
+            ProviderOperationsMetadata providerOperations = this.ResourcesClient.GetProviderOperationsMetadata(providerFullName);
+            IEnumerable<PSResourceProviderOperation> flattenedProviderOperations = GetAzureProviderOperationCommand.GetPSOperationsFromProviderOperationsMetadata(providerOperations);
+            return flattenedProviderOperations.Where(op => string.Equals(op.Operation, operationString, StringComparison.OrdinalIgnoreCase)).ToList();          
         }
 
         private static IEnumerable<PSResourceProviderOperation> GetPSOperationsFromProviderOperationsMetadata(ProviderOperationsMetadata providerOperationsMetadata)
@@ -150,7 +154,7 @@ namespace Microsoft.Azure.Commands.Resources
         /// </summary>
         private static string GetResourceProviderFullName(string nonWildCardPrefix)
         {
-            int index = nonWildCardPrefix.IndexOf("/", 0);
+            int index = nonWildCardPrefix.IndexOf(Separator.ToString(), 0);
             return index > 0 ? nonWildCardPrefix.Substring(0, index) : string.Empty;
         }
 

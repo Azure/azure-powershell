@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
 
-  <?define productName="Microsoft Azure PowerShell - September 2015" ?>
+  <?define productName="Microsoft Azure PowerShell - October 2015" ?>
   <?define sourceDir="$(var.SolutionDir)..\src\Package\$(var.Configuration)" ?>
   <?define caSourceDir="$(var.SolutionDir)setup\bin\$(var.Configuration)" ?>
 
   <?define version="0.9.9" ?>
   <?define versionedStartMenuFolder="Microsoft Azure" ?>
   <?define staleStartMenuFolder="Windows Azure" ?>
-
+   
   <Product Id="*"
            Name="$(var.productName)"
            Language="1033"
@@ -27,10 +27,30 @@
     <Property Id="ARPPRODUCTICON" Value="icon.ico" />
     <Property Id="ALLUSERS" Value="1" />
     <!-- per machine install-->
-
     <Property Id="PSCOMPATIBLEVERSION">
       <RegistrySearch Id="PSCOMPATIBLEVERSION" Root="HKLM" Key="SOFTWARE\Microsoft\PowerShell\3\PowerShellEngine" Name="PSCompatibleVersion" Type="raw" />
     </Property>
+
+    <SetProperty Action="SetBase64" Id="BaseModulesFolder" Value="[ProgramFiles64Folder]WindowsPowerShell\Modules" Before="AppSearch">
+      VersionNT64
+    </SetProperty>
+
+    <SetProperty Action="SetBase32" Id="BaseModulesFolder" Value="[ProgramFilesFolder]WindowsPowerShell\Modules" Before="AppSearch">
+      NOT VersionNT64
+    </SetProperty>
+
+    <SetProperty Id="POWERSHELLEXE" Value="[WindowsFolder]System32\WindowsPowerShell\v1.0\powershell.exe" Before="AppSearch"/>
+
+    <Property Id="POWERSHELLGETMODULESINSTALLED" >
+      <DirectorySearch Id="PROGRAMFILESCONTAINER" Path="[BaseModulesFolder]">
+        <DirectorySearch Id= "PROFILEMODULE" Path="AzureRM.Profile"/>
+      </DirectorySearch>
+    </Property>
+
+    <Condition Message="Azure Modules from the PowerShell Gallery are installed on this machine.  Please remove these modules before installing this MSI.">
+      <![CDATA[Installed or NOT(POWERSHELLGETMODULESINSTALLED >< "AzureRM.Profile")]]>
+    </Condition>
+
 
     <Condition Message="This setup requires the Windows PowerShell 3.0 or compatible version to be installed.">
       <!-- This condition will break if PowerShell has version x3.0 and it is not compatible with 3.0 -->
@@ -69,7 +89,13 @@
       <Component Id="PSModulePath.System" Guid="273525B9-7AAB-421A-90C8-8E50A1840B8D">
         <CreateFolder />
         <!-- Work around bug that PowerShell does not always consider default module paths. -->
-        <Environment Id="PSModulePath.SystemAppRoot" Action="set" Name="PSMODULEPATH" Part="last" Value="[PowerShellFolder]ResourceManager;[PowerShellFolder]ServiceManagement" System="yes" />
+        <Environment Id="PSModulePath.SystemAppRoot" Action="set" Name="PSMODULEPATH" Part="last" Value="[BaseModulesFolder];[PowerShellFolder]ResourceManager\AzureResourceManager;[PowerShellFolder]ServiceManagement" System="yes" />
+      </Component>
+    </DirectoryRef>
+
+    <DirectoryRef Id="PowerShellFolder">
+      <Component Id="AzureSdkExecutionPolicyScript" Guid="3d0d589a-b34c-4c48-9a4c-df78f286c6a3">
+        <File Id="AzureSdkExecutionPolicyScriptFile" KeyPath="yes" Source="$(var.SolutionDir)\Setup\SetExecutionPolicy.ps1" />
       </Component>
     </DirectoryRef>
 
@@ -90,16 +116,19 @@
       <ComponentGroupRef Id="azurecmdfiles" />
       <ComponentRef Id="PSModulePath.System" />
       <ComponentRef Id="AzureSdkShortcut" />
+      <ComponentRef Id="AzureSdkExecutionPolicyScript" />
     </Feature>
 
     <Binary Id="CustomActions" SourceFile="$(var.caSourceDir)\Microsoft.WindowsAzure.Setup.CA.dll"/>
     <CustomAction Id="UpdatePSShortcut" BinaryKey="CustomActions" DllEntry="UpdatePSShortcut" Execute ="deferred" Impersonate="no"/>
     <CustomAction Id="SetCustomActionDataValue" Return="check" Property="UpdatePSShortcut"
                      Value="ShortcutPath=[AzureSdkMenu]Microsoft Azure PowerShell.lnk;DefaultShortcutPath=[ProgramMenuFolder]System Tools\Windows PowerShell.lnk" />
+    <CustomAction Id="SetExecutionPolicy" Property="POWERSHELLEXE" ExeCommand="-NoLogo -NoProfile -ExecutionPolicy Bypass -Command &quot;. \&quot;[PowerShellFolder]SetExecutionPolicy.ps1\&quot;&quot;" Execute="deferred" Impersonate="no" Return="check"/>
 
     <InstallExecuteSequence>
       <Custom Action="SetCustomActionDataValue" After="CreateShortcuts">NOT Installed</Custom>
       <Custom Action="UpdatePSShortcut" After="SetCustomActionDataValue">NOT Installed</Custom>
+      <Custom Action="SetExecutionPolicy" After="UpdatePSShortcut">NOT Installed</Custom>
     </InstallExecuteSequence>
 
     <WixVariable Id="WixUILicenseRtf" Value="$(var.ProjectDir)\media\License.rtf" />
