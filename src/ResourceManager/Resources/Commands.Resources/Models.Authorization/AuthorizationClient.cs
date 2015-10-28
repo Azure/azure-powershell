@@ -312,12 +312,11 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public PSRoleDefinition RemoveRoleDefinition(Guid roleDefinitionId, string subscriptionId)
         {
             string id = roleDefinitionId.ToString();
-            string roleDefinitionFullyQualifiedId = AuthorizationHelper.GetRoleDefinitionFullyQualifiedId(subscriptionId, id);
 
             PSRoleDefinition roleDefinition = this.GetRoleDefinition(roleDefinitionId);
             if (roleDefinition != null)
             {
-                return AuthorizationManagementClient.RoleDefinitions.Delete(roleDefinitionFullyQualifiedId).RoleDefinition.ToPSRoleDefinition();
+                return AuthorizationManagementClient.RoleDefinitions.Delete(roleDefinitionId, roleDefinition.AssignableScopes.First()).RoleDefinition.ToPSRoleDefinition();
             }
             else
             {
@@ -333,8 +332,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public PSRoleDefinition RemoveRoleDefinition(string roleDefinitionName, string subscriptionId)
         {
             PSRoleDefinition roleDefinition = this.GetRoleRoleDefinition(roleDefinitionName);
-            string roleDefinitionFullyQualifiedId = AuthorizationHelper.GetRoleDefinitionFullyQualifiedId(subscriptionId, roleDefinition.Id);
-            return AuthorizationManagementClient.RoleDefinitions.Delete(roleDefinitionFullyQualifiedId).RoleDefinition.ToPSRoleDefinition();
+            return AuthorizationManagementClient.RoleDefinitions.Delete(Guid.Parse(roleDefinition.Id), roleDefinition.AssignableScopes.First()).RoleDefinition.ToPSRoleDefinition();
         }
 
         /// <summary>
@@ -369,6 +367,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             return
                 AuthorizationManagementClient.RoleDefinitions.CreateOrUpdate(
                     roleDefinitionId,
+                    roleDefinition.AssignableScopes.First(),
                     new RoleDefinitionCreateOrUpdateParameters()
                     {
                         RoleDefinition = new RoleDefinition()
@@ -426,7 +425,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             PSRoleDefinition roleDef = null;
             try
             {
-                roleDef = AuthorizationManagementClient.RoleDefinitions.CreateOrUpdate(newRoleDefinitionId, parameters).RoleDefinition.ToPSRoleDefinition();
+                roleDef = AuthorizationManagementClient.RoleDefinitions.CreateOrUpdate(newRoleDefinitionId, roleDefinition.AssignableScopes.First(), parameters).RoleDefinition.ToPSRoleDefinition();
             }
             catch (CloudException ce)
             {
@@ -453,7 +452,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 throw new ArgumentException(ProjectResources.InvalidRoleDefinitionDescription);
             }
 
-            if (roleDefinition.AssignableScopes == null || !roleDefinition.AssignableScopes.Any())
+            if (roleDefinition.AssignableScopes == null || !roleDefinition.AssignableScopes.Any() || roleDefinition.AssignableScopes.Any(s => string.IsNullOrWhiteSpace(s)))
             {
                 throw new ArgumentException(ProjectResources.InvalidAssignableScopes);
             }
