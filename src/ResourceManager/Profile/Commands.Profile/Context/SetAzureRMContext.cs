@@ -67,13 +67,9 @@ namespace Microsoft.Azure.Commands.Profile
                 }
 
                 var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
-                if (!string.IsNullOrWhiteSpace(SubscriptionId))
+                if (!string.IsNullOrWhiteSpace(SubscriptionId) || !string.IsNullOrWhiteSpace(SubscriptionName))
                 {
-                    profileClient.SetCurrentContext(SubscriptionId, null, TenantId);
-                }
-                else if (!string.IsNullOrWhiteSpace(SubscriptionName))
-                {
-                    profileClient.SetCurrentContext(null, SubscriptionName, TenantId);
+                    profileClient.SetCurrentContext(SubscriptionId, SubscriptionName, TenantId);
                 }
                 else
                 {

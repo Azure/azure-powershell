@@ -137,18 +137,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         public AzureContext SetCurrentContext(string subscriptionId, string subscriptionName, string tenantId)
         {
             AzureSubscription subscription;
-            string subscriptionFilter = string.IsNullOrWhiteSpace(subscriptionId) ? subscriptionName : subscriptionId;
+
             if (!string.IsNullOrWhiteSpace(subscriptionId))
             {
                 TryGetSubscriptionById(tenantId, subscriptionId, out subscription);
             }
-            else
+            else if (!string.IsNullOrWhiteSpace(subscriptionName))
             {
                 TryGetSubscriptionByName(tenantId, subscriptionName, out subscription);
+            }
+            else
+            {
+                throw new ArgumentException(string.Format(
+                    "Please provide either subscriptionId or subscriptionName"));
             }
 
             if (subscription == null)
             {
+                string subscriptionFilter = string.IsNullOrWhiteSpace(subscriptionId) ? subscriptionName : subscriptionId;
                 throw new ArgumentException(string.Format(
                     "Provided subscription {0} does not exist", subscriptionFilter));
             }
