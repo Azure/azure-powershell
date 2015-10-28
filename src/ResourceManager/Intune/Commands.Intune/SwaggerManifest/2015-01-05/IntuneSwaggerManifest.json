@@ -929,7 +929,7 @@
 					{
                         "name": "policyId",
                         "in": "path",
-                        "description": "policy name. for the tenant",
+                        "description": "policy name for the tenant",
                         "required": true,
                         "type": "string"
                     },
@@ -969,7 +969,7 @@
 					{
                         "name": "policyId",
                         "in": "path",
-                        "description": "policy name. for the tenant",
+                        "description": "policy name for the tenant",
                         "required": true,
                         "type": "string"
                     },

@@ -95,7 +95,7 @@
     <Compile Include="Generated\Models\Resource.cs" />
     <Compile Include="Apps\GetIntuneAndroidMAMAppCmdlet.cs" />
     <Compile Include="Apps\GetIntuneAndroidMAMPolicyAppCmdlet.cs" />
-    <Compile Include="Groups\NewIntuneiOSMAMPolicyGroupCmdlet.cs" />
+    <Compile Include="Groups\AddIntuneiOSMAMPolicyGroupCmdlet.cs" />
     <Compile Include="Groups\RemoveIntuneAndroidMAMPolicyGroupCmdlet.cs" />
     <Compile Include="Groups\RemoveIntuneiOSMAMPolicyGroupCmdlet.cs" />
     <Compile Include="Policy\GetIntuneAndroidMAMPolicyCmdlet.cs" />
@@ -106,9 +106,9 @@
     <Compile Include="Groups\GetIntuneiOSMAMPolicyGroupCmdlet.cs" />
     <Compile Include="IntuneBaseCmdlet.cs" />
     <Compile Include="IntuneConstants.cs" />
-    <Compile Include="Groups\NewIntuneAndroidMAMPolicyGroupCmdlet.cs" />
-    <Compile Include="Apps\NewIntuneiOSMAMPolicyAppCmdlet.cs" />
-    <Compile Include="Apps\NewIntuneAndroidMAMPolicyAppCmdlet.cs" />
+    <Compile Include="Groups\AddIntuneAndroidMAMPolicyGroupCmdlet.cs" />
+    <Compile Include="Apps\AddIntuneiOSMAMPolicyAppCmdlet.cs" />
+    <Compile Include="Apps\AddIntuneAndroidMAMPolicyAppCmdlet.cs" />
     <Compile Include="Policy\NewIntuneAndroidMAMPolicyCmdlet.cs" />
     <Compile Include="Policy\NewIntuneiOSMAMPolicyCmdlet.cs" />
     <Compile Include="NumericParameterValueChecker.cs" />

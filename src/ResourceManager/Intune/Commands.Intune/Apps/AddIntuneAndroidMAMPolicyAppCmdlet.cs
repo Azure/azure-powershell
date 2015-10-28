@@ -22,8 +22,8 @@ namespace Microsoft.Azure.Commands.Intune
     /// <summary>
     /// A cmdlet to link an app to Android Intune MAM policy Azure resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmIntuneAndroidMAMPolicyApp", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
-    public sealed class NewIntuneAndroidMAMPolicyAppCmdlet : IntuneBaseCmdlet
+    [Cmdlet(VerbsCommon.Add, "AzureRmIntuneAndroidMAMPolicyApp", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
+    public sealed class AddIntuneAndroidMAMPolicyAppCmdlet : IntuneBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the policy name

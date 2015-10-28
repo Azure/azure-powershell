@@ -20,24 +20,24 @@ namespace Microsoft.Azure.Commands.Intune
     using RestClient.Models;
 
     /// <summary>
-    /// A cmdlet to link a group to Android Intune MAM policy Azure resource.
+    /// A cmdlet to link an app to iOS Intune MAM policy Azure resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmIntuneAndroidMAMPolicyGroup", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
-    public sealed class NewIntuneAndroidMAMPolicyGroupCmdlet : IntuneBaseCmdlet
+    [Cmdlet(VerbsCommon.Add, "AzureRmIntuneiOSMAMPolicyApp", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
+    public sealed class AddIntuneiOSMAMPolicyAppCmdlet : IntuneBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the policy name
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The Android policy name.")]
+        [Parameter(Mandatory = true, HelpMessage = "The iOS policy name.")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string PolicyId { get; set; }
 
         /// <summary>
-        /// Gets or sets the Group name
+        /// Gets or sets the App name
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The Android group name to link to.")]
+        [Parameter(Mandatory = true, HelpMessage = "The iOS App Name to link to.")]
         [ValidateNotNullOrEmpty]
-        public string GroupName { get; set; }
+        public string AppName { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -50,12 +50,12 @@ namespace Microsoft.Azure.Commands.Intune
             {
                 this.ConfirmAction(
                     this.Force,
-                    "Are you sure you want to link Group with name:" + this.GroupName + " to Android policy with name:" + this.Name,
-                    "Link the group with Android policy resource.",
-                    this.Name,
+                    "Are you sure you want to add App with name:" + this.AppName + " to iOS policy with id:" + this.PolicyId,
+                    "Link the app with iOS policy resource",
+                    this.PolicyId,
                     () =>
                     {
-                        this.IntuneClient.AddGroupForAndriodPolicy(this.AsuHostName, this.Name, this.GroupName, PrepareMAMPolicyAppIdGroupIdPayload());
+                        this.IntuneClient.AddAppForiOSMAMPolicy(this.AsuHostName, this.PolicyId, this.AppName, PrepareMAMPolicyAppIdGroupIdPayload());
                         this.WriteObject("Operation completed successfully");
                     });
             };
@@ -65,14 +65,14 @@ namespace Microsoft.Azure.Commands.Intune
 
         private MAMPolicyAppIdOrGroupIdPayload PrepareMAMPolicyAppIdGroupIdPayload()
         {
-            string groupUri = string.Format(IntuneConstants.GroupUriFormat, this.IntuneClient.BaseUri.Host, this.AsuHostName, this.GroupName);
-            var groupIdPayload = new MAMPolicyAppIdOrGroupIdPayload();
-            groupIdPayload.Properties = new MAMPolicyAppOrGroupIdProperties()
+            string appUri = string.Format(IntuneConstants.AppUriFormat, this.IntuneClient.BaseUri.Host, this.AsuHostName, this.AppName);
+            var appIdPayload = new MAMPolicyAppIdOrGroupIdPayload();
+            appIdPayload.Properties = new MAMPolicyAppOrGroupIdProperties()
             {
-                Url = groupUri
+                Url = appUri
             };
 
-            return groupIdPayload;
+            return appIdPayload;
         }
     }
 }
