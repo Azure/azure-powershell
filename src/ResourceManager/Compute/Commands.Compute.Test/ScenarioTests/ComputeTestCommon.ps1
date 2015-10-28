@@ -396,11 +396,11 @@ function Get-SasUri
 }
 
 # Get a Location according to resource provider.
-function Get-ResourceProviderLocation
-{
+function Get-ResourceProviderLocation($provider)
+{     
 	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
 	{
-			$namespace = $provider.Split("/")[0]  
+		$namespace = $provider.Split("/")[0]  
 		if($provider.Contains("/"))  
 		{  
 			$type = $provider.Substring($namespace.Length + 1)  
