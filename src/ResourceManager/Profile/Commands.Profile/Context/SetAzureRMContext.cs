@@ -105,7 +105,11 @@ namespace Microsoft.Azure.Commands.Profile
                 {
                     // authenticate with just tenant id
                     AzureTenant tenant;
-                    profileClient.TryGetSubscription(tenantId, null, out subscription, out tenant);
+                    if(!profileClient.TryGetTenantAndSubscription(tenantId, null, out subscription, out tenant))
+                    {
+                        throw new ItemNotFoundException(
+                            string.Format(Resources.TenantIdNotFound, tenantId));
+                    }
                     if (subscription == null)
                     {
                         profileClient.SetCurrentContext(tenant.Id.ToString());

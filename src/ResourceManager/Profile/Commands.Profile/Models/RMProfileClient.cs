@@ -198,10 +198,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         public bool TryGetSubscription(string tenantId, string subscriptionId, out AzureSubscription subscription)
         {
             AzureTenant tenant;
-            return TryGetSubscription(tenantId, subscriptionId, out subscription, out tenant);
+            return TryGetTenantAndSubscription(tenantId, subscriptionId, out subscription, out tenant);
         }
 
-        public bool TryGetSubscription(string tenantId, string subscriptionId, out AzureSubscription subscription, out AzureTenant tenant)
+        public bool TryGetTenantAndSubscription(string tenantId, string subscriptionId, out AzureSubscription subscription, out AzureTenant tenant)
         {
             if (string.IsNullOrWhiteSpace(tenantId))
             {
