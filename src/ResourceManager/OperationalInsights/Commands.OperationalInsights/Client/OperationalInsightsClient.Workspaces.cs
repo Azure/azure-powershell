@@ -254,6 +254,42 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Client
             return workspaces;
         }
 
+
+        public virtual List<PSIntelligencePack> GetIntelligencePackList(string resourceGroupName, string workspaceName)
+        {
+            List<PSIntelligencePack> intelligencePacks = new List<PSIntelligencePack>();
+            if (string.IsNullOrWhiteSpace(workspaceName) || string.IsNullOrWhiteSpace(resourceGroupName))
+            {
+                throw new ArgumentException(Resources.ResourceGroupNameCannotBeEmpty);
+            }
+
+            var listResponse = OperationalInsightsManagementClient.Workspaces.ListIntelligencePacks(resourceGroupName, workspaceName);
+            if (listResponse != null)
+            {
+                listResponse.ForEach(ip => intelligencePacks.Add(new PSIntelligencePack(ip.Name, ip.Enabled)));
+            }
+
+            return intelligencePacks;
+        }
+
+        public virtual string SetIntelligencePack(string resourceGroupName, string workspaceName, string intelligencePack, bool enabled)
+        {
+            if (string.IsNullOrWhiteSpace(workspaceName) || string.IsNullOrWhiteSpace(resourceGroupName))
+            {
+                throw new ArgumentException(Resources.ResourceGroupNameCannotBeEmpty);
+            }
+
+            if (enabled)
+            {
+                OperationalInsightsManagementClient.Workspaces.EnableIntelligencePackAsync(resourceGroupName, workspaceName, intelligencePack);
+                return "enabled";
+            }
+            else
+            {
+                OperationalInsightsManagementClient.Workspaces.DisableIntelligencePackAsync(resourceGroupName, workspaceName, intelligencePack);
+                return "disabled";
+            }
+        }
         private bool CheckWorkspaceExists(string resourceGroupName, string workspaceName)
         {
             try

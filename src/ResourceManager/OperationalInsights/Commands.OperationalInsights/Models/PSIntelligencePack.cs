@@ -12,22 +12,26 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.OperationalInsights
+using System;
+using System.Collections.Generic;
+using Microsoft.Azure.Management.OperationalInsights.Models;
+
+namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
-    internal static class Constants
+    public class PSIntelligencePack
     {
-        public const string LinkTargets = "AzureRmOperationalInsightsLinkTargets";
+        public PSIntelligencePack()
+        {
+        }
 
-        public const string Workspace = "AzureRmOperationalInsightsWorkspace";
+        public PSIntelligencePack(string name, bool enabled)
+        {
+            this.Name = name;
+            this.Enabled = enabled;
+        }
 
-        public const string WorkspaceSharedKeys = "AzureRmOperationalInsightsWorkspaceSharedKeys";
+        public string Name { get; set; }
 
-        public const string WorkspaceManagementGroups = "AzureRmOperationalInsightsWorkspaceManagementGroups";
-
-        public const string WorkspaceUsage = "AzureRmOperationalInsightsWorkspaceUsage";
-
-        public const string StorageInsight = "AzureRmOperationalInsightsStorageInsight";
-
-        public const string IntelligencePack = "AzureRmOperationalInsightsIntelligencePack";
+        public bool Enabled { get; set; }
     }
 }
