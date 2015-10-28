@@ -134,15 +134,30 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             return _profile.Context;
         }
 
-        public AzureContext SetCurrentContext(string subscriptionId, string tenantId, bool verifySubscription = true)
+        public AzureContext SetCurrentContext(string subscriptionId, string subscriptionName, string tenantId)
         {
-            if (!string.IsNullOrWhiteSpace(tenantId))
+            AzureSubscription subscription;
+            string subscriptionFilter = string.IsNullOrWhiteSpace(subscriptionId) ? subscriptionName : subscriptionId;
+            if (!string.IsNullOrWhiteSpace(subscriptionId))
             {
-                _profile.SetContextWithCache(new AzureContext(
-                    _profile.Context.Subscription,
-                    _profile.Context.Account,
-                    _profile.Context.Environment,
-                    CreateTenant(tenantId)));
+                TryGetSubscriptionById(tenantId, subscriptionId, out subscription);
+            }
+            else
+            {
+                TryGetSubscriptionByName(tenantId, subscriptionName, out subscription);
+            }
+
+            if (subscription == null)
+            {
+                throw new ArgumentException(string.Format(
+                    "Provided subscription {0} does not exist", subscriptionFilter));
+            }
+            else
+            {
+                if (string.IsNullOrWhiteSpace(tenantId))
+                {
+                    tenantId = subscription.Properties[AzureSubscription.Property.Tenants];
+                }
 
                 if (_profile.Context.Account != null)
                 {
@@ -151,20 +166,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 if (_profile.Context.Subscription != null)
                 {
                     _profile.Context.Subscription.Properties[AzureSubscription.Property.Tenants] = tenantId;
-                }
-            }
-
-            if (!string.IsNullOrWhiteSpace(subscriptionId))
-            {
-                var subscription = ListSubscriptions(_profile.Context.Tenant.Id.ToString())
-                                    .FirstOrDefault(s =>
-                                        string.Equals(s.Id.ToString(), subscriptionId, StringComparison.OrdinalIgnoreCase));
-
-                if (verifySubscription &&
-                    subscription == null)
-                {
-                    throw new ArgumentException(string.Format(
-                        "Provided subscription {0} does not exist under current tenant {1}", subscriptionId, _profile.Context.Tenant.Id));
                 }
 
                 var newSubscription = new AzureSubscription { Id = new Guid(subscriptionId) };
@@ -180,7 +181,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     newSubscription,
                     _profile.Context.Account,
                     _profile.Context.Environment,
-                    _profile.Context.Tenant));
+                    CreateTenant(tenantId)));
             }
 
             return _profile.Context;
@@ -195,31 +196,35 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 .ToList();
         }
 
-        public bool TryGetSubscription(string tenantId, string subscriptionId, out AzureSubscription subscription)
+        public bool TryGetSubscriptionById(string tenantId, string subscriptionId, out AzureSubscription subscription)
         {
-            if (string.IsNullOrWhiteSpace(tenantId))
-            {
-                throw new ArgumentNullException("Please provide a valid tenant Id.");
-            }
+            IEnumerable<AzureSubscription> subscriptionList = GetSubscriptions(tenantId);
 
-            AzureTenant tenant;
-            var token = AcquireAccessToken(_profile.Context.Account, _profile.Context.Environment,
-                tenantId, null, ShowDialog.Never);
-            return TryGetTenantSubscription(token, _profile.Context.Account, _profile.Context.Environment,
-                tenantId, subscriptionId, null, out subscription, out tenant);
+            subscription = subscriptionList.FirstOrDefault(s => s.Id == Guid.Parse(subscriptionId));
+            return subscription != null;
         }
 
         public bool TryGetSubscriptionByName(string tenantId, string subscriptionName, out AzureSubscription subscription)
         {
-            if (string.IsNullOrWhiteSpace(tenantId))
-            {
-                throw new ArgumentNullException("Please provide a valid tenant Id.");
-            }
-
-            IEnumerable<AzureSubscription> subscriptionList = ListSubscriptions(tenantId);
+            IEnumerable<AzureSubscription> subscriptionList = GetSubscriptions(tenantId);
             subscription = subscriptionList.FirstOrDefault(s => s.Name.Equals(subscriptionName, StringComparison.OrdinalIgnoreCase));
 
             return subscription != null;
+        }
+
+        public IEnumerable<AzureSubscription> GetSubscriptions(string tenantId)
+        {
+            IEnumerable<AzureSubscription> subscriptionList;
+            if (string.IsNullOrWhiteSpace(tenantId))
+            {
+                subscriptionList = ListSubscriptions();
+            }
+            else
+            {
+                subscriptionList = ListSubscriptions(tenantId);
+            }
+
+            return subscriptionList;
         }
 
         public AzureEnvironment AddOrSetEnvironment(AzureEnvironment environment)

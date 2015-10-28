@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             tenantResults = client.ListTenants(DefaultTenant.ToString());
             Assert.Equal(1, tenantResults.Count());
             AzureSubscription subValue;
-            Assert.True(client.TryGetSubscription(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
+            Assert.True(client.TryGetSubscriptionById(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
             Assert.Equal(DefaultSubscription.ToString(), subValue.Id.ToString());
         }
 
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             tenantResults = client.ListTenants(DefaultTenant.ToString());
             Assert.Equal(1, tenantResults.Count());
             AzureSubscription subValue;
-            Assert.True(client.TryGetSubscription(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
+            Assert.True(client.TryGetSubscriptionById(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
             Assert.Equal(DefaultSubscription.ToString(), subValue.Id.ToString());
         }
 
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var subResults = new List<AzureSubscription>(client.ListSubscriptions());
             Assert.Equal(1, subResults.Count);
             AzureSubscription subValue;
-            Assert.True(client.TryGetSubscription(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
+            Assert.True(client.TryGetSubscriptionById(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
         }
 
         [Fact]
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var client = SetupTestEnvironment(tenants, subscriptions);
             Assert.Equal(0, client.ListSubscriptions().Count());
             AzureSubscription subValue;
-            Assert.True(client.TryGetSubscription(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
+            Assert.True(client.TryGetSubscriptionById(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
         }
 
         [Fact]

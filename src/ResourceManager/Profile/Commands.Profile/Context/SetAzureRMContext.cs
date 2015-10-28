@@ -57,59 +57,24 @@ namespace Microsoft.Azure.Commands.Profile
                 AzureRmProfileProvider.Instance.Profile.SetContextWithCache(new AzureContext(Context.Subscription, Context.Account,
                     Context.Environment, Context.Tenant));
             }
-            else if (ParameterSetName == SubscriptionIdParameterSet)
+            else
             {
-                var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
-                profileClient.SetCurrentContext(SubscriptionId, TenantId);
-            }
-            else if (ParameterSetName == SubscriptionNameParameterSet)
-            {
-                if(string.IsNullOrWhiteSpace(TenantId) &&
-                   string.IsNullOrWhiteSpace(SubscriptionName))
+                if (string.IsNullOrWhiteSpace(SubscriptionId) && string.IsNullOrWhiteSpace(SubscriptionName))
                 {
                     throw new PSInvalidOperationException(Resources.SetAzureRmContextNoParameterSet);
                 }
 
                 var profileClient = new RMProfileClient(AzureRmProfileProvider.Instance.Profile);
-                AzureSubscription subscription = null;
-                string tenantId = AzureRmProfileProvider.Instance.Profile.Context.Tenant.Id.ToString();
-
-                if (string.IsNullOrWhiteSpace(TenantId))
+                if (ParameterSetName == SubscriptionIdParameterSet)
                 {
-                    WriteVerbose(
-                    string.Format(
-                        Resources.CurrentTenantInUse,
-                        tenantId));
+                    profileClient.SetCurrentContext(SubscriptionId, null, TenantId);
                 }
-                else
+                else if (ParameterSetName == SubscriptionNameParameterSet)
                 {
-                    tenantId = TenantId;
+                    profileClient.SetCurrentContext(null, SubscriptionName, TenantId);
                 }
-
-                if (!string.IsNullOrWhiteSpace(SubscriptionName))
-                {
-                    if (!profileClient.TryGetSubscriptionByName(
-                        tenantId,
-                        SubscriptionName,
-                        out subscription))
-                    {
-                        throw new ItemNotFoundException(
-                            string.Format(Resources.SubscriptionNameNotFoundError, SubscriptionName));
-                    }
-
-                    profileClient.SetCurrentContext(subscription.Id.ToString(), tenantId, verifySubscription: false);
-                    AzureRmProfileProvider.Instance.Profile.Context.Subscription.Name = SubscriptionName;
-                }
-                // Only tenantId was provided 
-                else
-                {
-                    // authenticate with just tenant id
-                    var accessToken = profileClient.AcureAccessToken(tenantId);
-                    profileClient.SetCurrentContext(accessToken.TenantId);
-                }
+                WriteObject((PSAzureContext)AzureRmProfileProvider.Instance.Profile.Context);
             }
-            
-            WriteObject((PSAzureContext)AzureRmProfileProvider.Instance.Profile.Context);
         }
     }
 }
