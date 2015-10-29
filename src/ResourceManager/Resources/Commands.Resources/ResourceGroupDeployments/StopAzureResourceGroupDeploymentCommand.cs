@@ -52,9 +52,6 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroups
         [Parameter(Mandatory = false, HelpMessage = "Do not confirm the stop.")]
         public SwitchParameter Force { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "True if succeed, false otherwise.")]
-        public SwitchParameter PassThru { get; set; }
-        
         protected override void ProcessRecord()
         {
             if (string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Name))
@@ -69,11 +66,8 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroups
                 ResourceGroupName,
                 () => ResourcesClient.CancelDeployment(ResourceGroupName, Name));
 
-            if (PassThru)
-            {
-                WriteWarning("The output object of this cmdlet will be modified in a future release.");
-                WriteObject(true);
-            }
+            WriteObject(true);
+
         }
     }
 }

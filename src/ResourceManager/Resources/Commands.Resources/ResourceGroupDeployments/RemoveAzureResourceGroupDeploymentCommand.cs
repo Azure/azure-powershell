@@ -52,9 +52,6 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroups
         [Parameter(Mandatory = false, HelpMessage = "Do not confirm the remove.")]
         public SwitchParameter Force { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "True if succeed, false otherwise.")]
-        public SwitchParameter PassThru { get; set; }
-        
         protected override void ProcessRecord()
         {
             if(string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Name))
@@ -69,11 +66,8 @@ namespace Microsoft.Azure.Commands.Resources.ResourceGroups
                 ResourceGroupName,
                 () => ResourcesClient.DeleteDeployment(ResourceGroupName, Name));
 
-            if (PassThru)
-            {
-                WriteWarning("The PassThru switch parameter is being deprecated and will be removed in a future release.");
-                WriteObject(true);
-            }
+            WriteObject(true);
+
         }
     }
 }

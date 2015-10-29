@@ -63,14 +63,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         public void TestListJobsByFilter()
         {
             BatchController controller = BatchController.NewInstance;
-            string jobId1 = "testId1";
-            string jobId2 = "testId2";
+            string jobId1 = "filterTestId1";
+            string jobId2 = "filterTestId2";
             string jobId3 = "thirdtestId";
-            string state = "active";
+            string prefix = "filterTest";
             int matches = 2;
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
-                () => { return new string[] { string.Format("Test-ListJobsByFilter '{0}' '{1}' '{2}'", accountName, state.ToString(), matches) }; },
+                () => { return new string[] { string.Format("Test-ListJobsByFilter '{0}' '{1}' '{2}'", accountName, prefix, matches) }; },
                 () =>
                 {
                     context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
