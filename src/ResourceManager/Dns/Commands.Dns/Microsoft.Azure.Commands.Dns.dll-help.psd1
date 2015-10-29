@@ -60,7 +60,7 @@ TypesToProcess = @()
 FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
-NestedModules = '..\..\..\Package\Debug\ResourceManager\AzureResourceManager\Dns\Microsoft.Azure.Commands.Dns.dll'
+NestedModules = '..\..\..\Package\Debug\Dns\Microsoft.Azure.Commands.Dns.dll'
 
 # Functions to export from this module
 FunctionsToExport = '*'

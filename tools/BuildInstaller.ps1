@@ -12,6 +12,14 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+param(
+  [Parameter(Position = 0, Mandatory = $false)]
+  [string]
+  $BuildConfig = "Release",
+  [Parameter(Position = 1, Mandatory = $false)]
+  [string]
+  $RepositoryLocation = "http://psget/PSGallery/api/v2/")
+
 $scriptFolder = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . ($scriptFolder + '.\SetupEnv.ps1')
 
@@ -50,11 +58,22 @@ if ($wixInstallRoot -eq $null){
 #and we just register both 3.8 & 3.5 to simplify the script
 $env:path = $env:path + ";$wixInstallRoot"
 
+if ($RepositoryLocation -eq "Local") {
+    # Fetch the cmdlets from source
+    msbuild "$env:AzurePSRoot\build.proj" /t:Build /p:Configuration=$BuildConfig
+} else {
+    # Fetch the cmdlets from gallery
+    $repo = Get-PSRepository | where { $_.SourceLocation -eq $RepositoryLocation }
+    if ($repo -ne $null) {
+        $repoName = $repo.Name
+    } else {
+        $repoName = $(New-Guid).ToString()
+        Register-PSRepository -Name $repoName -SourceLocation $RepositoryLocation -PublishLocation $RepositoryLocation/package -InstallationPolicy Trusted
+    }
+    
+    # Save Azure PowerShell packages
+    &"$env:AzurePSRoot\tools\SaveModules.ps1" $BuildConfig $repoName
+}
+
 # Regenerate the installer files
-&"$env:AzurePSRoot\tools\Installer\generate.ps1" 'Debug'
-
-# Build the cmdlets and installer in debug mode
-msbuild "$env:AzurePSRoot\build.proj" /t:Build
-
-Write-Host "MSI file path: $env:AzurePSRoot\setup\build\Debug\AzurePowerShell.msi"
-Write-Host "MSI for PowerShell Gallery: $env:AzurePSRoot\setup-powershellget\build\Debug\AzurePowerShellGet.msi"
+&"$env:AzurePSRoot\tools\Installer\generate.ps1" $BuildConfig

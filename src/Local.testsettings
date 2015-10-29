@@ -9,7 +9,7 @@
     <DeploymentItem filename="ServiceManagement\Sql\Commands.SqlDatabase.Test\TestScripts\" />
     <DeploymentItem filename="Common\Commands.ScenarioTest\Resources\" />
     <DeploymentItem filename="Common\Commands.ScenarioTest\bin\Debug\" />
-    <DeploymentItem filename="Package\Debug\ServiceManagement\Azure\Services\Resources" outputDirectory="Resources" />
+    <DeploymentItem filename="Package\Debug\Azure\Services\Resources" outputDirectory="Resources" />
   </Deployment>
   <Execution>
     <Timeouts testTimeout="3000000" />

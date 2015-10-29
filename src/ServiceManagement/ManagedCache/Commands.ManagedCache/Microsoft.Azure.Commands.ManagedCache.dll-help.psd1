@@ -60,7 +60,7 @@ TypesToProcess = @()
 FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
-NestedModules = '..\..\..\Package\Debug\ServiceManagement\Azure\ManagedCache\Microsoft.Azure.Commands.ManagedCache.dll'
+NestedModules = '..\..\..\Package\Debug\Azure\ManagedCache\Microsoft.Azure.Commands.ManagedCache.dll'
 
 # Functions to export from this module
 FunctionsToExport = '*'

@@ -14,23 +14,18 @@
 
 param(
     [Parameter(Mandatory = $false, Position = 0)]
-    [string] $buildConfig
+    [string]
+    $buildConfig = "Release"
 )
 
 $VerbosePreference = 'Continue'
-
-if ([string]::IsNullOrEmpty($buildConfig))
-{
-	Write-Verbose "Setting build configuration to 'Release'"
-	$buildConfig = 'Release'
-}
 
 Write-Verbose "Build configuration is set to $buildConfig"
 
 $output = Join-Path $env:AzurePSRoot "src\Package\$buildConfig"
 Write-Verbose "The output folder is set to $output"
-$serviceManagementPath = Join-Path $output "ServiceManagement\Azure"
-$resourceManagerPath = Join-Path $output "ResourceManager\AzureResourceManager"
+$serviceManagementPath = Join-Path $output "Azure"
+$resourceManagerPath = $output
 
 Write-Verbose "Removing unneeded psd1 file for AzureResourceManager"
 Remove-Item -Force $resourceManagerPath\AzureResourceManager.psd1 -ErrorAction SilentlyContinue
@@ -51,12 +46,12 @@ Get-ChildItem -Include $include -Exclude $exclude -Recurse -Path $output | Remov
 
 if (Get-Command "heat.exe" -ErrorAction SilentlyContinue)
 {
-	$azureFiles = Join-Path $env:AzurePSRoot 'setup\azurecmdfiles.wxi'
+    $azureFiles = Join-Path $env:AzurePSRoot 'setup\azurecmdfiles.wxi'
     heat dir $output -srd -sfrag -sreg -ag -g1 -cg azurecmdfiles -dr PowerShellFolder -var var.sourceDir -o $azureFiles
     
-	# Replace <Wix> with <Include>
-	(gc $azureFiles).replace('<Wix', '<Include') | Set-Content $azureFiles
-	(gc $azureFiles).replace('</Wix' ,'</Include') | Set-Content $azureFiles
+    # Replace <Wix> with <Include>
+    (gc $azureFiles).replace('<Wix', '<Include') | Set-Content $azureFiles
+    (gc $azureFiles).replace('</Wix' ,'</Include') | Set-Content $azureFiles
 }
 else
 {

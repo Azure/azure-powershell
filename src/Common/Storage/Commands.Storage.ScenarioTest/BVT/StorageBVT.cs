@@ -80,7 +80,7 @@ namespace Commands.Storage.ScenarioTest.BVT
             Test.Info("Clean storage context in PowerShell");
             PowerShellAgent.CleanStorageContext();
 
-            PowerShellAgent.ImportModule(@".\ServiceManagement\Azure\Storage\Microsoft.WindowsAzure.Commands.Storage.dll");
+            PowerShellAgent.ImportModule(@".\Azure\Storage\Microsoft.WindowsAzure.Commands.Storage.dll");
             
 
             // import module

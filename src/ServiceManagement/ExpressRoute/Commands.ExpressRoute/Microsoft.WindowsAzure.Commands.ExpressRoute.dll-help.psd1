@@ -9,7 +9,7 @@
 @{
 
 # Script module or binary module file associated with this manifest
-ModuleToProcess = '..\..\..\Package\Debug\ServiceManagement\Azure\ExpressRoute\Microsoft.WindowsAzure.Commands.ExpressRoute.dll'
+ModuleToProcess = '..\..\..\Package\Debug\Azure\ExpressRoute\Microsoft.WindowsAzure.Commands.ExpressRoute.dll'
 
 # Version number of this module.
 ModuleVersion = '0.9.10'

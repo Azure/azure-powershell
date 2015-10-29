@@ -184,7 +184,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
 
                 // Verify the role has been setup with forwarding, access,
                 // and certs
-                CloudServiceProject service = new CloudServiceProject(rootPath, FileUtilities.GetContentFilePath(@"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Services"));
+                CloudServiceProject service = new CloudServiceProject(rootPath, FileUtilities.GetContentFilePath(@"..\..\..\..\..\Package\Debug\Azure\Services"));
                 VerifyWebRole(service.Components.Definition.WebRole[0], true);
                 VerifyRoleSettings(service);
             }
@@ -210,7 +210,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
 
                 // Verify the roles have been setup with forwarding, access,
                 // and certs
-                CloudServiceProject service = new CloudServiceProject(rootPath, FileUtilities.GetContentFilePath(@"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Services"));
+                CloudServiceProject service = new CloudServiceProject(rootPath, FileUtilities.GetContentFilePath(@"..\..\..\..\..\Package\Debug\Azure\Services"));
                 VerifyWebRole(service.Components.Definition.WebRole[0], false);
                 VerifyWorkerRole(service.Components.Definition.WorkerRole[0], true);
                 VerifyRoleSettings(service);
@@ -247,7 +247,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
 
                 // Verify the roles have been setup with forwarding, access,
                 // and certs
-                CloudServiceProject service = new CloudServiceProject(rootPath, FileUtilities.GetContentFilePath(@"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Services"));
+                CloudServiceProject service = new CloudServiceProject(rootPath, FileUtilities.GetContentFilePath(@"..\..\..\..\..\Package\Debug\Azure\Services"));
                 VerifyWebRole(service.Components.Definition.WebRole[0], false);
                 VerifyWebRole(service.Components.Definition.WebRole[0], false);
                 VerifyWorkerRole(service.Components.Definition.WorkerRole[0], true);
@@ -281,7 +281,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
 
                 // Verify the role has been setup with forwarding, access,
                 // and certs
-                CloudServiceProject service = new CloudServiceProject(rootPath, FileUtilities.GetContentFilePath(@"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Services"));
+                CloudServiceProject service = new CloudServiceProject(rootPath, FileUtilities.GetContentFilePath(@"..\..\..\..\..\Package\Debug\Azure\Services"));
                 VerifyWebRole(service.Components.Definition.WebRole[0], true);
                 VerifyRoleSettings(service);
             }

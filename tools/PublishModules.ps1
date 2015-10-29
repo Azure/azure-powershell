@@ -63,14 +63,14 @@ if (($scope -eq 'All') -or $publishToLocal ) {
 }
 
 if (($scope -eq 'All') -or ($scope -eq 'ServiceManagement')) {
-    $modulePath = "$packageFolder\$buildConfig\ServiceManagement\Azure"
+    $modulePath = "$packageFolder\$buildConfig\Azure"
     # Publish Azure module
     Write-Host "Publishing ServiceManagement(aka Azure) module from $modulePath"
     Publish-Module -Path $modulePath -NuGetApiKey $apiKey -Repository $repoName -Tags ("Azure") -LicenseUri "http://aka.ms/azps-license"
 } 
 
 if (($scope -eq 'All') -or ($scope -eq 'AzureStorage')) {
-    $modulePath = "$packageFolder\$buildConfig\ServiceManagement\Azure\Azure.Storage"
+    $modulePath = "$packageFolder\$buildConfig\Azure.Storage"
     # Publish AzureStorage module
     Write-Host "Publishing AzureStorage module from $modulePath"
     Publish-Module -Path $modulePath -NuGetApiKey $apiKey -Repository $repoName -Tags ("Azure") -LicenseUri "http://aka.ms/azps-license"

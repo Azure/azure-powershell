@@ -77,7 +77,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             get
             {
                 return Path.Combine(this.PackageDirectory, 
-                                    @"ResourceManager\AzureResourceManager\AzureRM.Profile\AzureRM.Profile.psd1");
+                                    @"AzureRM.Profile\AzureRM.Profile.psd1");
             }
         }
 
@@ -86,7 +86,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             get
             {
                 return Path.Combine(this.PackageDirectory,
-                                    @"ResourceManager\AzureResourceManager\AzureRM.Resources\AzureRM.Resources.psd1");
+                                    @"AzureRM.Resources\AzureRM.Resources.psd1");
             }
         }
 
@@ -95,7 +95,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             get
             {
                 return Path.Combine(this.PackageDirectory, 
-                                    @"ResourceManager\AzureResourceManager\AzureRM.Storage\AzureRM.Storage.psd1");
+                                    @"AzureRM.Storage\AzureRM.Storage.psd1");
             }
         }
 
@@ -105,7 +105,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             get
             {
                 return Path.Combine(this.PackageDirectory,
-                                     @"ResourceManager\AzureResourceManager\Azure.Storage\Azure.Storage.psd1");
+                                     @"Azure.Storage\Azure.Storage.psd1");
             }
         }
 
@@ -113,7 +113,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         {
             string basename = Path.GetFileNameWithoutExtension(psd1FileName);
             return Path.Combine(this.PackageDirectory, 
-                                 @"ResourceManager\AzureResourceManager\" + basename + @"\" + psd1FileName); 
+                                 @"" + basename + @"\" + psd1FileName); 
         }
         /// <summary>
         /// Loads DummyManagementClientHelper with clients and throws exception if any client is missing.
@@ -254,12 +254,12 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             this.modules = new List<string>();
             if (mode == AzureModule.AzureProfile)
             {
-                this.modules.Add(Path.Combine(PackageDirectory, @"ServiceManagement\Azure\Azure.psd1"));
-                this.modules.Add(Path.Combine(PackageDirectory, @"ResourceManager\AzureResourceManager\AzureResourceManager.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectory, @"Azure\Azure.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectory, @"AzureResourceManager.psd1"));
             }
             else if (mode == AzureModule.AzureServiceManagement)
             {
-                this.modules.Add(Path.Combine(PackageDirectory, @"ServiceManagement\Azure\Azure.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectory, @"Azure\Azure.psd1"));
             }
             
             this.modules.Add("Assert.ps1");
@@ -272,16 +272,16 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             this.modules = new List<string>();
             if (mode == AzureModule.AzureProfile)
             {
-                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ServiceManagement\Azure\Azure.psd1"));
-                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureResourceManager.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"Azure\Azure.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"AzureResourceManager.psd1"));
             }
             else if (mode == AzureModule.AzureServiceManagement)
             {
-                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ServiceManagement\Azure\Azure.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"Azure\Azure.psd1"));
             }
             else if (mode == AzureModule.AzureResourceManager)
             {
-                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"ResourceManager\AzureResourceManager\AzureResourceManager.psd1"));
+                this.modules.Add(Path.Combine(PackageDirectoryFromCommon, @"AzureResourceManager.psd1"));
             }
             else
             {

@@ -41,7 +41,7 @@
     <SetupOutputDirectory>$(PublishDirectory)\Setup</SetupOutputDirectory>
     <TestOutputDirectory>$(PublishDirectory)\TestResults</TestOutputDirectory>
     <BuildInParallel Condition="'$(BuildInParallel)' == ''">true</BuildInParallel>
-    <NuGetPublishingSource Condition=" '$(NuGetPublishingSource)' == '' ">http://psget/PSGallery/api/v2/</NuGetPublishingSource>
+    <NuGetPublishingSource Condition=" '$(NuGetPublishingSource)' == '' ">https://dtlgalleryint.cloudapp.net/api/v2</NuGetPublishingSource>
     <Scope Condition=" $(Scope) == '' " >all</Scope>
   </PropertyGroup>
   <ItemGroup>
@@ -160,8 +160,14 @@
       ContinueOnError="false" />
       
     <CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " />
+  </Target>
+  
+    <!-- Build all flavors of the installers -->
+  <Target Name="BuildInstaller">
+    <Message Importance="high" Text="Building Installers..." />
     
-    <Message Importance="high" Text="Building Setup..." />
+    <Exec Command="$(PowerShellCommand) -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\BuildInstaller.ps1 $(Configuration) \&quot;$(NuGetPublishingSource)\&quot; &quot;"/>
+    
     <MSBuild
       Projects="@(SetupPowershellGetSln)"
       Targets="Build"
@@ -175,6 +181,10 @@
       Properties="Configuration=$(Configuration);Platform=Any CPU"
       ContinueOnError="false" 
       Condition=" '$(Scope)' == 'all' "/>
+    
+    <Message Importance="high" Text="MSI file path: setup\build\$(Configuration)\AzurePowerShell.msi" />
+    
+    <Message Importance="high" Text="MSI for PowerShell Gallery: setup-powershellget\build\$(Configuration)\AzurePowerShellGet.msi" />
     
     <CallTarget Targets="CodeSignInstaller" 
                 Condition=" '$(CodeSign)' == 'true' and '$(Scope)' == 'all'" />    

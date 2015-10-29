@@ -1,7 +1,7 @@
 $scriptFolder = Split-Path -Path $MyInvocation.MyCommand.Definition -Parent
 . ($scriptFolder + '.\SetupEnv.ps1')
 
-Import-Module "$env:AzurePSRoot\src\Package\Debug\ServiceManagement\azure\Azure.psd1"
+Import-Module "$env:AzurePSRoot\src\Package\Debug\Azure\Azure.psd1"
 
 Write-Host "***Please read. this script requires the following product***"  -ForegroundColor "Red"
 Write-Host "**Node.js for Windows (32-bits) at http://nodejs.org/download/ and Azure Node.js for Windows at http://azure.microsoft.com/en-us/downloads/" -ForegroundColor "Red"

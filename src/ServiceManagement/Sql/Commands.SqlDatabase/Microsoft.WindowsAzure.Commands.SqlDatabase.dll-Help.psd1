@@ -60,7 +60,7 @@ TypesToProcess = @()
 FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in ModuleToProcess
-NestedModules = '..\..\..\Package\Debug\ServiceManagement\Azure\Sql\Microsoft.WindowsAzure.Commands.SqlDatabase.dll'
+NestedModules = '..\..\..\Package\Debug\Azure\Sql\Microsoft.WindowsAzure.Commands.SqlDatabase.dll'
 
 # Functions to export from this module
 FunctionsToExport = '*'
