@@ -301,8 +301,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 {
                     context = ScenarioTestHelpers.GetBatchAccountContextWithKeys(controller, accountName);
                     ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
-                    ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId1);
-                    ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId2);
+                    // Make the tasks long running so they can be terminated before they finish execution
+                    ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId1, "ping -t localhost -w 60");
+                    ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId2, "ping -t localhost -w 60");
                 },
                 () =>
                 {

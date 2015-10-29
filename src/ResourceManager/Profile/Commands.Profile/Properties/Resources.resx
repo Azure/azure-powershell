@@ -156,6 +156,9 @@
   <data name="TenantAuthFailed" xml:space="preserve">
     <value>Could not authenticate with tenant {0}. Please ensure that your account has access to this tenant and log in with Login-AzureRmAccount</value>
   </data>
+  <data name="TenantIdNotFound" xml:space="preserve">
+    <value>Unable to find tenant '{0}'.</value>
+  </data>
   <data name="TypeNotAccessToken" xml:space="preserve">
     <value>To create an access token credential, you must provide an access token account.</value>
   </data>
