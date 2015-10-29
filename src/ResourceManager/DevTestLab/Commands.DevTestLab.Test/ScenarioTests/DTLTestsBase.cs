@@ -14,186 +14,56 @@
 
 using System.Collections.Generic;
 using Microsoft.Azure.Test.HttpRecorder;
+using System;
+using System.Linq;
+using Microsoft.Azure.Common.Authentication;
+using Microsoft.Azure.Gallery;
+using Microsoft.Azure.Management.Authorization;
+using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Test;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.Azure.Management.DevTestLab;
+using Microsoft.Azure.Subscriptions;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
-namespace Microsoft.Azure.Commands.ScenarioTest.DevTestLabTests
+namespace Microsoft.Azure.Commands.DevTestLab.Test.ScenarioTests
 {
-    using System;
-    using System.Linq;
-    using Microsoft.Azure.Common.Authentication;
-    using Microsoft.Azure.Gallery;
-    using Microsoft.Azure.Management.Authorization;
-    using Microsoft.Azure.Management.Resources;
-    using Microsoft.Azure.Test;
-    using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.Azure.Management.DevTestLab;
-    using Microsoft.Azure.Subscriptions;
-    using WindowsAzure.Commands.Test.Utilities.Common;
-
     public class DTLTestsBase : RMTestBase
     {
-        private CSMTestEnvironmentFactory csmTestFactory;
-
-
-        private readonly EnvironmentSetupHelper helper;
-
-
-        public ResourceManagementClient ResourceManagementClient { get; private set; }
-
-
-        public SubscriptionClient SubscriptionClient { get; private set; }
-
-
-        public GalleryClient GalleryClient { get; private set; }
-
-
-        public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
-
-
-        public DevTestLabManagementClient DtlManagementClient { get; private set; }
-
-
-        public static DTLTestsBase NewInstance
-        {
-            get
-            {
-                return new DTLTestsBase();
-            }
-        }
-
+        private EnvironmentSetupHelper helper;
 
         protected DTLTestsBase()
         {
-            this.helper = new EnvironmentSetupHelper();
+            helper = new EnvironmentSetupHelper();
         }
-
 
         protected void SetupManagementClients()
         {
-            this.ResourceManagementClient = this.GetResourceManagementClient();
-            this.SubscriptionClient = this.GetSubscriptionClient();
-            this.GalleryClient = this.GetGalleryClient();
-            this.AuthorizationManagementClient = this.GetAuthorizationManagementClient();
-            this.DtlManagementClient = this.GetFeatureClient();
-
-
-            this.helper.SetupManagementClients(
-                this.ResourceManagementClient,
-                this.SubscriptionClient,
-                this.GalleryClient,
-                this.AuthorizationManagementClient,
-                this.DtlManagementClient);
+            var dtlManagementClient = GetDtlManagementClient();
+            helper.SetupManagementClients(dtlManagementClient);
         }
 
-
-        public void RunPowerShellTest(params string[] scripts)
+        protected void RunPowerShellTest(params string[] scripts)
         {
-            string callingClassType = TestUtilities.GetCallingClass(2);
-            string mockName = TestUtilities.GetCurrentMethodName(2);
-
-
-            this.RunPsTestWorkflow(
-                () => scripts,
-                // no custom initializer 
-                null,
-                // no custom cleanup  
-                null,
-                callingClassType,
-                mockName);
-        }
-
-
-        public void RunPsTestWorkflow(
-            Func<string[]> scriptBuilder,
-            Action<CSMTestEnvironmentFactory> initialize,
-            Action cleanup,
-            string callingClassType,
-            string mockName)
-        {
-            Dictionary<string, string> d = new Dictionary<string, string>();
-            d.Add("Microsoft.Authorization", "2014-07-01-preview");
-            HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(false, d);
-
             using (UndoContext context = UndoContext.Current)
             {
-                context.Start(callingClassType, mockName);
+                context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
 
+                SetupManagementClients();
 
-                this.csmTestFactory = new CSMTestEnvironmentFactory();
-
-
-                if (initialize != null)
-                {
-                    initialize(this.csmTestFactory);
-                }
-
-
-                this.SetupManagementClients();
-
-
-                this.helper.SetupEnvironment(AzureModule.AzureResourceManager);
-
-
-                string callingClassName = callingClassType
-                                        .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
-                                        .Last();
-
-
-                this.helper.SetupModules(AzureModule.AzureResourceManager, "ScenarioTests\\Common.ps1", "ScenarioTests\\" + callingClassName + ".ps1",
+                helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                helper.SetupModules(AzureModule.AzureResourceManager,
+                    "ScenarioTests\\" + this.GetType().Name + ".ps1",
                     helper.RMProfileModule,
-                    helper.RMResourceModule,
-                    helper.GetRMModulePath("AzureRM.DevTestLab.psd1"));
+                    helper.GetRMModulePath(@"AzureRM.DevTestLab.psd1"));
 
-                try
-                {
-                    if (scriptBuilder != null)
-                    {
-                        string[] psScripts = scriptBuilder();
-
-
-                        if (psScripts != null)
-                        {
-                            this.helper.RunPowerShellTest(psScripts);
-                        }
-                    }
-                }
-                finally
-                {
-                    if (cleanup != null)
-                    {
-                        cleanup();
-                    }
-                }
+                helper.RunPowerShellTest(scripts);
             }
         }
 
-
-        protected ResourceManagementClient GetResourceManagementClient()
+        protected DevTestLabManagementClient GetDtlManagementClient()
         {
-            return TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
-        }
-
-
-        private AuthorizationManagementClient GetAuthorizationManagementClient()
-        {
-            return TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
-        }
-
-
-        private SubscriptionClient GetSubscriptionClient()
-        {
-            return TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
-        }
-
-
-        private GalleryClient GetGalleryClient()
-        {
-            return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
-        }
-
-
-        private DevTestLabManagementClient GetFeatureClient()
-        {
-            return TestBase.GetServiceClient<DevTestLabManagementClient>(this.csmTestFactory);
+            return TestBase.GetServiceClient<DevTestLabManagementClient>(new CSMTestEnvironmentFactory());
         }
     }
 }

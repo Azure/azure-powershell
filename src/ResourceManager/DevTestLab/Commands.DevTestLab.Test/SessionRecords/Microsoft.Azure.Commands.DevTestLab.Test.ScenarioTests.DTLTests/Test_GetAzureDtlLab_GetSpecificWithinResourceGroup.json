@@ -1,0 +1,71 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/fe869d2a-4f32-41a5-a22f-53ea1a952ceb/resourceGroups/HackathonLabRG/providers/Microsoft.DevTestLab/labs/HackathonLab?api-version=2015-05-21-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZmU4NjlkMmEtNGYzMi00MWE1LWEyMmYtNTNlYTFhOTUyY2ViL3Jlc291cmNlR3JvdXBzL0hhY2thdGhvbkxhYlJHL3Byb3ZpZGVycy9NaWNyb3NvZnQuRGV2VGVzdExhYi9sYWJzL0hhY2thdGhvbkxhYj9hcGktdmVyc2lvbj0yMDE1LTA1LTIxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "Microsoft.Azure.Management.DevTestLab.DevTestLabManagementClient/0.9.9.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/fe869d2a-4f32-41a5-a22f-53ea1a952ceb/resourceGroups/hackathonlabrg/providers/Microsoft.DevTestLab/labs/HackathonLab\",\r\n  \"name\": \"HackathonLab\",\r\n  \"type\": \"Microsoft.DevTestLab/labs\",\r\n  \"location\": \"East Asia\",\r\n  \"properties\": {\r\n    \"defaultStorageAccount\": \"msdtlvm1972098908\",\r\n    \"storageAccounts\": [\r\n      \"msdtlvm1972098908\"\r\n    ],\r\n    \"vaultName\": \"msdtl1020065959\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "380"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-rp-requesturi": [
+          "https://eastasia.rp1.vsdth.visualstudio.com/subscriptions/fe869d2a-4f32-41a5-a22f-53ea1a952ceb/resourceGroups/HackathonLabRG/providers/Microsoft.DevTestLab/labs/HackathonLab?api-version=2015-05-21-preview"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14998"
+        ],
+        "x-ms-request-id": [
+          "f88c4a2a-129a-47a4-b39d-697c22a199ff"
+        ],
+        "x-ms-correlation-request-id": [
+          "f88c4a2a-129a-47a4-b39d-697c22a199ff"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTEUROPE:20151029T215944Z:f88c4a2a-129a-47a4-b39d-697c22a199ff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 29 Oct 2015 21:59:43 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "fe869d2a-4f32-41a5-a22f-53ea1a952ceb"
+  }
+}
