@@ -111,10 +111,15 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 catch (Exception e)
                 {
-                    if (!e.Message.Contains("ResourceNotFound"))
+                    if (e.Message.Contains("ResourceNotFound"))
                     {
                         WriteWarning(string.Format(
-                            Properties.Resources.ErrorDuringGettingStorageAccountForBootDiagnostics, storageAccountName));
+                            Properties.Resources.StorageAccountNotFoundForBootDiagnostics, storageAccountName));
+                    }
+                    else
+                    {
+                        WriteWarning(string.Format(
+                            Properties.Resources.ErrorDuringGettingStorageAccountForBootDiagnostics, storageAccountName, e.Message));
                     }
                 }
             }
