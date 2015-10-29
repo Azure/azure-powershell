@@ -306,6 +306,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error occurred when getting storage account, {0}, for boot diagnostics: {1}.
+        /// </summary>
+        public static string ErrorDuringGettingStorageAccountForBootDiagnostics {
+            get {
+                return ResourceManager.GetString("ErrorDuringGettingStorageAccountForBootDiagnostics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Storage account, {0}, is a premium account.  You cannot specify a premium storage account for boot diagnostics.
         /// </summary>
         public static string PremiumStorageAccountForBootDiagnostics {
@@ -811,6 +820,15 @@ namespace Microsoft.Azure.Commands.Compute.Properties {
         public static string PublishVMDscExtensionUploadArchiveConfigFileNotExist1 {
             get {
                 return ResourceManager.GetString("PublishVMDscExtensionUploadArchiveConfigFileNotExist1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage account, {0}, is not found.  The OS disk may be in a different storage group..
+        /// </summary>
+        public static string StorageAccountNotFoundForBootDiagnostics {
+            get {
+                return ResourceManager.GetString("StorageAccountNotFoundForBootDiagnostics", resourceCulture);
             }
         }
         
