@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Resources.Models;
 using Microsoft.Azure.Commands.Resources.Models.ActiveDirectory;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
+using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -35,7 +36,9 @@ namespace Microsoft.Azure.Commands.Resources
             HelpMessage = "The user or group object id.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithObjectId,
             HelpMessage = "The user or group object id.")]
-        [ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleIdWithScopeAndObjectId,
+            HelpMessage = "The user or group object id.")]
+        [ValidateGuidNotEmpty]
         [Alias("Id", "PrincipalId")]
         public Guid ObjectId { get; set; }
 
@@ -150,6 +153,11 @@ namespace Microsoft.Azure.Commands.Resources
         [ValidateNotNullOrEmpty]
         public string RoleDefinitionName { get; set; }
 
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleIdWithScopeAndObjectId,
+            HelpMessage = "Role Id the principal is assigned to.")]
+        [ValidateGuidNotEmpty]
+        public Guid RoleDefinitionId { get; set; }
+
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Scope,
             HelpMessage = "Scope of the role assignment. In the format of relative URI.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithObjectId,
@@ -157,6 +165,8 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSignInName,
             HelpMessage = "Scope of the role assignment. In the format of relative URI.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ScopeWithSPN,
+            HelpMessage = "Scope of the role assignment. In the format of relative URI.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleIdWithScopeAndObjectId,
             HelpMessage = "Scope of the role assignment. In the format of relative URI.")]
         [ValidateNotNullOrEmpty]
         public string Scope { get; set; }
@@ -207,6 +217,7 @@ namespace Microsoft.Azure.Commands.Resources
             {
                 Scope = Scope,
                 RoleDefinitionName = RoleDefinitionName,
+                RoleDefinitionId = RoleDefinitionId == Guid.Empty ? null : RoleDefinitionId.ToString(),
                 ADObjectFilter = new ADObjectFilterOptions
                 {
                     SignInName = SignInName,

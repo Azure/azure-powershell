@@ -142,6 +142,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please provide either a subscription ID, subscription name, tenant Id or domain..
+        /// </summary>
+        internal static string SetAzureRmContextNoParameterSet {
+            get {
+                return ResourceManager.GetString("SetAzureRmContextNoParameterSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to find subscription with name &apos;{0}&apos;..
         /// </summary>
         internal static string SubscriptionNameNotFoundError {
@@ -165,6 +174,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string TenantAuthFailed {
             get {
                 return ResourceManager.GetString("TenantAuthFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to find tenant &apos;{0}&apos;..
+        /// </summary>
+        internal static string TenantIdNotFound {
+            get {
+                return ResourceManager.GetString("TenantIdNotFound", resourceCulture);
             }
         }
         
