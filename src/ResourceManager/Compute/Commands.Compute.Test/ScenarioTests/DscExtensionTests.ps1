@@ -108,7 +108,7 @@ function Test-GetAzureRmVMDscExtension
 		# Cleanup
 		if(Get-AzureRmResourceGroup -Name $rgname -Location $loc)
 		{
-        	Clean-ResourceGroup $rgname
+			Clean-ResourceGroup $rgname
 		}
     }
 }
