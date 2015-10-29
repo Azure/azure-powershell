@@ -2392,13 +2392,6 @@
           </maml:description>
           <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
-          <maml:name>OutputObjectFormat</maml:name>
-          <maml:description>
-            <maml:para>The output format of the resource properties.</maml:para>
-          </maml:description>
-          <command:parameterValue required="true" variableLength="true">Nullable`1[ResourceObjectFormat]</command:parameterValue>
-        </command:parameter>
         <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
           <maml:name>ResourceName</maml:name>
           <maml:description>
@@ -2573,19 +2566,6 @@
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
           <maml:name>SwitchParameter</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
-        <maml:name>OutputObjectFormat</maml:name>
-        <maml:description>
-          <maml:para>The output format of the resource properties.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="true">Nullable`1[ResourceObjectFormat]</command:parameterValue>
-        <dev:type>
-          <maml:name>Nullable`1[ResourceObjectFormat]</maml:name>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>
@@ -5370,19 +5350,6 @@
         <dev:defaultValue>
         </dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
-        <maml:name>OutputObjectFormat</maml:name>
-        <maml:description>
-          <maml:para>The output format of the resource properties.</maml:para>
-        </maml:description>
-        <command:parameterValue required="true" variableLength="true">Nullable`1[ResourceObjectFormat]</command:parameterValue>
-        <dev:type>
-          <maml:name>Nullable`1[ResourceObjectFormat]</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>
-        </dev:defaultValue>
-      </command:parameter>
       <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="true (ByPropertyName)" position="named">
         <maml:name>ResourceId</maml:name>
         <maml:description>
@@ -5641,9 +5608,9 @@
           <maml:paragraph>PS C:\&gt;</maml:paragraph>
         </maml:introduction>
         <dev:code>
-          $r = Get-AzureRmResource -ResourceType microsoft.web/sites -ResourceGroupName myResourceGroup -ResourceName mySite -OutputObjectFormat New
+          $r = Get-AzureRmResource -ResourceType microsoft.web/sites -ResourceGroupName myResourceGroup -ResourceName mySite 
           $r.Properties.Enabled = "False"
-          $r | Set-AzureRmResource -Force -OutputObjectFormat New
+          $r | Set-AzureRmResource -Force
         </dev:code>
         <dev:remarks>
           <maml:para />
@@ -9731,4 +9698,3 @@ Remove-AzureRmPolicyDefinition -Id $policyDefinition.ResourceId -Force</dev:code
 </command:command>
 </helpItems>
 
-﻿<?xml version="1.0" encoding="utf-8"?>
