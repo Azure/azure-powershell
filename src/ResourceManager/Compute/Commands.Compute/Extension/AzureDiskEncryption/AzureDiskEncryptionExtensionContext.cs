@@ -10,9 +10,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
     public class AzureDiskEncryptionExtensionContext : PSVirtualMachineExtension
     {
         public const string ExtensionDefaultPublisher = "Microsoft.Azure.Security";
-        //TODO: Replace ADETest with real name once finalized with publishing
-        public const string ExtensionDefaultName = "ADETest";
-        public const string ExtensionDefaultVersion = "1.3";
+        public const string ExtensionDefaultName = "AzureDiskEncryption";
+        public const string ExtensionDefaultVersion = "1.0";
         public const string VolumeTypeOS = "OS";
         public const string VolumeTypeData = "Data";
         public const string VolumeTypeAll = "All";
