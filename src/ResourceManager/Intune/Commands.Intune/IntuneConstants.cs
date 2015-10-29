@@ -13,67 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 namespace Microsoft.Azure.Commands.Intune
-{   
+{ 
     /// <summary>
-    /// The platforms supported
+    /// Constants used in the project..
     /// </summary>
-    public enum PlatformType
-    {
-        iOS,
-        Android,
-        Windows,
-        None
-    }
-
-    /// <summary>
-    /// The application sharing options
-    /// </summary>
-    public enum AppSharingType
-    {
-        none,
-        policyManagedApps,
-        allApps
-    }
-
-    /// <summary>
-    /// Defines choices
-    /// </summary>
-    public enum ChoiceType
-    {
-        required,
-        notRequired
-    }
-    /// <summary>
-    /// Types of clioboard sharing levels
-    /// </summary>
-    public enum ClipboardSharingLevelType
-    {
-        blocked,
-        policyManagedApps,
-        policyManagedAppsWithPasteIn,
-        allApps
-    }
-    public enum FilterType
-    {
-        allow,
-        block
-    }
-    public enum OptionType
-    {
-        enable,
-        disable
-    }
-
-    /// <summary>
-    /// Types of device locking available..
-    /// </summary>
-    public enum DeviceLockType
-    {
-        deviceLocked,
-        deviceLockedExceptFilesOpen,
-        afterDeviceRestart,
-        useDeviceSettings
-    }
     public class IntuneConstants
     {
         public static string ApiVersion = "2015-01-11-alpha";
@@ -81,6 +24,10 @@ namespace Microsoft.Azure.Commands.Intune
         public static int DEFAULT_PIN_RETRIES = 15;
         public static int DEFAULT_RECHECK_ACCESS_OFFLINE_GRACEPERIOD_MINUTES = 720;
         public static int DEFAULT_RECHECK_ACCESSTIMEOUT_MINUTES = 30;
-        public static int DEFAULT_OFFLINE_WIPEINTERVAL_DAYS = 1;        
+        public static int DEFAULT_OFFLINE_WIPEINTERVAL_DAYS = 1;
+        public static int BATCH_SIZE = 10;
+
+        public static string AppUriFormat = "https://{0}/providers/Microsoft.Intune/locations/{1}/apps/{2}";
+        public static string GroupUriFormat = "https://{0}/providers/Microsoft.Intune/locations/{1}/groups/{2}";
     }
 }

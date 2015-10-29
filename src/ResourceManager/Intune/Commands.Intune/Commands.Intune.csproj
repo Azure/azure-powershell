@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -17,18 +17,32 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Intune</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
+	<OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.Intune</OutputPath>
+	<DefineConstants>TRACE;SIGN</DefineConstants>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\Microsoft.Azure.Commands.Resources.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;$(ProgramFiles)\Microsoft Visual Studio 12.0\Team Tools\Static Analysis Tools\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;$(ProgramFiles)\Microsoft Visual Studio 12.0\Team Tools\Static Analysis Tools\FxCop\Rules</CodeAnalysisRuleDirectories>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>true</DelaySign>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Hyak.Common">
@@ -95,31 +109,28 @@
     <Compile Include="Generated\Models\Resource.cs" />
     <Compile Include="Apps\GetIntuneAndroidMAMAppCmdlet.cs" />
     <Compile Include="Apps\GetIntuneAndroidMAMPolicyAppCmdlet.cs" />
-	<Compile Include="Apps\NewIntuneiOSMAMPolicyAppCmdlet.cs" />
-    <Compile Include="Apps\NewIntuneAndroidMAMPolicyAppCmdlet.cs" />
-	<Compile Include="Apps\GetIntuneiOSMAMAppCmdlet.cs" />
-    <Compile Include="Apps\GetIntuneiOSMAMPolicyAppCmdlet.cs" />
-	<Compile Include="Apps\RemoveIntuneAndroidMAMPolicyAppCmdlet.cs" />
-    <Compile Include="Apps\RemoveIntuneiOSMAMPolicyAppCmdlet.cs" />    
-    <Compile Include="Policy\GetIntuneAndroidMAMPolicyCmdlet.cs" />
-    <Compile Include="Policy\GetIntuneiOSMAMPolicyCmdlet.cs" />
-	<Compile Include="Policy\NewIntuneAndroidMAMPolicyCmdlet.cs" />
-    <Compile Include="Policy\NewIntuneiOSMAMPolicyCmdlet.cs" />
-	<Compile Include="Policy\SetIntuneAndroidMAMPolicyCmdlet.cs" />
-    <Compile Include="Policy\SetIntuneiOSMAMPolicyCmdlet.cs" />    
-	<Compile Include="Policy\RemoveIntuneAndroidMAMPolicy.cs" />
-    <Compile Include="Policy\RemoveIntuneIOSMAMPolicy.cs" />	
-	<Compile Include="Groups\NewIntuneiOSMAMPolicyGroupCmdlet.cs" />
+    <Compile Include="Groups\AddIntuneiOSMAMPolicyGroupCmdlet.cs" />
     <Compile Include="Groups\RemoveIntuneAndroidMAMPolicyGroupCmdlet.cs" />
-    <Compile Include="Groups\RemoveIntuneiOSMAMPolicyGroupCmdlet.cs" />    
-    <Compile Include="Groups\GetIntuneAndroidMAMPolicyGroupCmdlet.cs" />    
+    <Compile Include="Groups\RemoveIntuneiOSMAMPolicyGroupCmdlet.cs" />
+    <Compile Include="IntuneEnums.cs" />
+    <Compile Include="Policy\GetIntuneAndroidMAMPolicyCmdlet.cs" />
+    <Compile Include="Groups\GetIntuneAndroidMAMPolicyGroupCmdlet.cs" />
+    <Compile Include="Apps\GetIntuneiOSMAMAppCmdlet.cs" />
+    <Compile Include="Apps\GetIntuneiOSMAMPolicyAppCmdlet.cs" />
+    <Compile Include="Policy\GetIntuneiOSMAMPolicyCmdlet.cs" />
     <Compile Include="Groups\GetIntuneiOSMAMPolicyGroupCmdlet.cs" />
     <Compile Include="IntuneBaseCmdlet.cs" />
     <Compile Include="IntuneConstants.cs" />
-    <Compile Include="Groups\NewIntuneAndroidMAMPolicyGroupCmdlet.cs" />   
+    <Compile Include="Groups\AddIntuneAndroidMAMPolicyGroupCmdlet.cs" />
+    <Compile Include="Apps\AddIntuneiOSMAMPolicyAppCmdlet.cs" />
+    <Compile Include="Apps\AddIntuneAndroidMAMPolicyAppCmdlet.cs" />
+    <Compile Include="Policy\NewIntuneAndroidMAMPolicyCmdlet.cs" />
+    <Compile Include="Policy\NewIntuneiOSMAMPolicyCmdlet.cs" />
     <Compile Include="NumericParameterValueChecker.cs" />
-    <Compile Include="SetIntuneAndroidMAMPolicyCmdlet.cs" />
-    <Compile Include="SetIntuneiOSMAMPolicyCmdlet.cs" />
+    <Compile Include="Apps\RemoveIntuneAndroidMAMPolicyAppCmdlet.cs" />
+    <Compile Include="Apps\RemoveIntuneiOSMAMPolicyAppCmdlet.cs" />
+    <Compile Include="Policy\SetIntuneAndroidMAMPolicyCmdlet.cs" />
+    <Compile Include="Policy\SetIntuneiOSMAMPolicyCmdlet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -152,7 +163,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />  
   <Import Project="..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -22,18 +22,18 @@ namespace Microsoft.Azure.Commands.Intune
     /// <summary>
     /// A cmdlet to link an app to iOS Intune MAM policy Azure resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmIntuneiOSMAMPolicyApp", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
-    public sealed class NewIntuneiOSMAMPolicyAppCmdlet : IntuneBaseCmdlet
+    [Cmdlet(VerbsCommon.Add, "AzureRmIntuneiOSMAMPolicyApp", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
+    public sealed class AddIntuneiOSMAMPolicyAppCmdlet : IntuneBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the policy id
+        /// Gets or sets the policy name
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = "The iOS policy Id.")]
+        [Parameter(Mandatory = true, HelpMessage = "The iOS policy name.")]
         [ValidateNotNullOrEmpty]
-        public string PolicyId { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the App id
+        /// Gets or sets the App name
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "The iOS App Name to link to.")]
         [ValidateNotNullOrEmpty]
@@ -50,12 +50,12 @@ namespace Microsoft.Azure.Commands.Intune
             {
                 this.ConfirmAction(
                     this.Force,
-                    "Are you sure you want to add App with name:" + this.AppName + " to iOS policy with id:" + this.PolicyId,
-                    "Link the app with iOS policy resource...",
-                    this.PolicyId,
+                    "Are you sure you want to add App with name:" + this.AppName + " to iOS policy with id:" + this.Name,
+                    "Link the app with iOS policy resource",
+                    this.Name,
                     () =>
                     {
-                        this.IntuneClient.AddAppForiOSMAMPolicy(this.AsuHostName, this.PolicyId, this.AppName, PrepareMAMPolicyAppIdGroupIdPayload());
+                        this.IntuneClient.AddAppForiOSMAMPolicy(this.AsuHostName, this.Name, this.AppName, PrepareMAMPolicyAppIdGroupIdPayload());
                         this.WriteObject("Operation completed successfully");
                     });
             };
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Intune
 
         private MAMPolicyAppIdOrGroupIdPayload PrepareMAMPolicyAppIdGroupIdPayload()
         {
-            string appUri = string.Format("https://{0}/providers/Microsoft.Intune/locations/{1}/apps/{2}", this.IntuneClient.BaseUri.Host, this.AsuHostName, this.AppName);
+            string appUri = string.Format(IntuneConstants.AppUriFormat, this.IntuneClient.BaseUri.Host, this.AsuHostName, this.AppName);
             var appIdPayload = new MAMPolicyAppIdOrGroupIdPayload();
             appIdPayload.Properties = new MAMPolicyAppOrGroupIdProperties()
             {

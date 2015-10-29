@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Intune
     /// <summary>
     /// Base class for all commandlets. Helps create an instance of the client that commandlets can leverage. 
     /// </summary>
-    public class IntuneBaseCmdlet: AzureRMCmdlet
+    public abstract class IntuneBaseCmdlet: AzureRMCmdlet
     {
         /// <summary>
         /// Contains the errors that encountered while satisfying the request.
@@ -125,10 +125,10 @@ namespace Microsoft.Azure.Commands.Intune
             {
                 action();
             }
-            catch(Exception e)
+            catch(Exception)
             {                
                 this.WriteErrors();
-                throw e;
+                throw;
             }
         }
     }

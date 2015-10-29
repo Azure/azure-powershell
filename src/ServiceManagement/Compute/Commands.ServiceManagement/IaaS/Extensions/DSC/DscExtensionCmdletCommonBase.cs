@@ -15,20 +15,17 @@
 using System;
 using System.Globalization;
 using System.Management.Automation;
-using Microsoft.Azure.Common.Authentication;
-using Microsoft.Azure.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.WindowsAzure.Commands.ServiceManagement.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.WindowsAzure.Storage.Auth;
-using Microsoft.WindowsAzure.Management.Storage;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
 {
     public static class DscExtensionCmdletCommonBase
     {
         internal const string VirtualMachineDscExtensionCmdletNoun = "AzureVMDscExtension";
-        internal static readonly string DefaultExtensionVersion = "1.*";
+        internal static readonly string DefaultExtensionVersion = "2.*";
 
         /// <summary>
         /// Attempts to get the user's credentials from the given Storage Context or the current subscription, if the former is null. 
@@ -44,21 +41,10 @@ namespace Microsoft.WindowsAzure.Commands.ServiceManagement.IaaS.Extensions.DSC
             }
             else
             {
-                var storageAccountName = cmdlet.Profile.Context.Subscription.GetProperty(AzureSubscription.Property.StorageAccount);
-
-                var storageClient = AzureSession.ClientFactory.CreateClient<StorageManagementClient>(
-                        cmdlet.Profile, cmdlet.Profile.Context.Subscription, AzureEnvironment.Endpoint.ServiceManagement);
-
-                if (!string.IsNullOrEmpty(storageAccountName) && storageClient != null)
+                var storageAccount = cmdlet.Profile.Context.GetCurrentStorageAccount();
+                if (storageAccount != null)
                 {
-                    var keys = storageClient.StorageAccounts.GetKeys(storageAccountName);
-                    
-                    if (keys != null)
-                    {
-                        var storageAccountKey = string.IsNullOrEmpty(keys.PrimaryKey) ? keys.SecondaryKey : keys.PrimaryKey;
-
-                        credentials = new StorageCredentials(storageAccountName, storageAccountKey);
-                    }
+                    credentials = storageAccount.Credentials;
                 }
             }
 

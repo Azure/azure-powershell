@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             }
 
             /// <summary>
-            /// Returns Intune iosPolicies.
+            /// Returns Intune iOSPolicies.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             }
 
             /// <summary>
-            /// Returns Intune iosPolicies.
+            /// Returns Intune iOSPolicies.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             }
 
             /// <summary>
-            /// Returns Intune android Policies.
+            /// Returns Intune Android policies.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Commands.Intune.RestClient
             }
 
             /// <summary>
-            /// Returns Intune android Policies.
+            /// Returns Intune Android policies.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.

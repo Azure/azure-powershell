@@ -19,20 +19,20 @@ namespace Microsoft.Azure.Commands.Intune
     using RestClient;
 
     /// <summary>
-    /// A cmdlet to link an app to Android Intune MAM policy Azure resource.
+    /// A cmdlet to link a group to Android Intune MAM policy Azure resource.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmIntuneAndroidMAMPolicyGroup", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
     public sealed class RemoveIntuneAndroidMAMPolicyGroupCmdlet : IntuneBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the policy id
+        /// Gets or sets the policy name.
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "The Android policy name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the App id
+        /// Gets or sets the group name
         /// </summary>
         [Parameter(Mandatory = true, HelpMessage = "The group name for Android policy to remove.")]
         [ValidateNotNullOrEmpty]
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Intune
                 this.ConfirmAction(
                     this.Force,
                     "Are you sure you want to remove group with name:" + this.GroupName + " from android policy with name:" + this.Name,
-                    "Remove the group from android policy resource...",
+                    "Remove the group from android policy resource.",
                     this.Name,
                     () =>
                     {

@@ -15,12 +15,8 @@
 namespace Microsoft.Azure.Commands.Intune
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Management.Automation;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
-    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-    using Newtonsoft.Json.Linq;
     using RestClient;
 
     /// <summary>
@@ -30,7 +26,7 @@ namespace Microsoft.Azure.Commands.Intune
     public sealed class GetIntuneiOSMAMPolicyCmdlet : IntuneBaseCmdlet
     {
         /// <summary>
-        /// Gets the policy Id
+        /// Gets the policy name.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "The policy name to fetch.")]
         [ValidateNotNullOrEmpty]
@@ -57,7 +53,7 @@ namespace Microsoft.Azure.Commands.Intune
         }
 
         /// <summary>
-        /// Get iOS policy by policy Id
+        /// Get iOS policy by policy name.
         /// </summary>
         private void GetiOSPolicyByName()
         {
@@ -80,9 +76,9 @@ namespace Microsoft.Azure.Commands.Intune
             var iOSPolicies = this.IntuneClient.GetiOSMAMPolicies(this.AsuHostName);
             if (iOSPolicies != null && iOSPolicies.Value.Count > 0)
             {
-                for (int batchSize = 10, start = 0; start < iOSPolicies.Value.Count; start += batchSize)
+                for (int start = 0; start < iOSPolicies.Value.Count; start += IntuneConstants.BATCH_SIZE)
                 {
-                    var batch = iOSPolicies.Value.Skip(start).Take(batchSize);
+                    var batch = iOSPolicies.Value.Skip(start).Take(IntuneConstants.BATCH_SIZE);
                     this.WriteObject(batch, enumerateCollection: true);
                 }
             }

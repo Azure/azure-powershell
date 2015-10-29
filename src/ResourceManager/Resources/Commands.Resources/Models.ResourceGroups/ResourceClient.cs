@@ -22,6 +22,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Hyak.Common;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.Tags.Model;
 using Microsoft.Azure.Common.Authentication;
 using Microsoft.Azure.Common.Authentication.Models;
@@ -334,6 +335,21 @@ namespace Microsoft.Azure.Commands.Resources.Models
                 if (operationWithSameIdAndProvisioningState == null)
                 {
                     newOperations.Add(operation);
+                }
+
+                //If nested deployment, get the operations under those deployments as well
+                if(operation.Properties.TargetResource.ResourceType.Equals(Constants.MicrosoftResourcesDeploymentType, StringComparison.OrdinalIgnoreCase))
+                {
+                    List<DeploymentOperation> newNestedOperations = new List<DeploymentOperation>();
+                    DeploymentOperationsListResult result;
+
+                    result = ResourceManagementClient.DeploymentOperations.List(
+                        resourceGroupName: ResourceIdUtility.GetResourceGroupName(operation.Properties.TargetResource.Id),
+                        deploymentName: operation.Properties.TargetResource.ResourceName,
+                        parameters: null);
+
+                    newNestedOperations = GetNewOperations(operations, result.Operations);
+                    newOperations.AddRange(newNestedOperations);
                 }
             }
 

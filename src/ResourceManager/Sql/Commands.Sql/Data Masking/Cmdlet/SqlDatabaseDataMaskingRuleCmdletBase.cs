@@ -28,11 +28,41 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
     public abstract class SqlDatabaseDataMaskingRuleCmdletBase : AzureSqlDatabaseCmdletBase<IEnumerable<DatabaseDataMaskingRuleModel>, SqlDataMaskingAdapter>
     {
         /// <summary>
-        /// Gets or sets the id of the rule use.
+        /// Gets or sets the schema name
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Data Masking rule Id.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The schema name.")]
         [ValidateNotNullOrEmpty]
-        public virtual string RuleId { get; set; }
+        public virtual string SchemaName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the table name
+        /// </summary>
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The table name.")]
+        [ValidateNotNullOrEmpty]
+        public virtual string TableName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the column name
+        /// </summary>
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The column name.")]
+        [ValidateNotNullOrEmpty]
+        public virtual string ColumnName { get; set; }
+
+        /// <summary>
+        ///  Checks whether the model of the current cmdlet is the same as the model of the given rule
+        /// </summary>
+        protected bool IsModelOfRule(BaseDataMaskingRuleModel rule)
+        {
+            return rule.ColumnName == ColumnName && rule.TableName == TableName && rule.SchemaName == SchemaName;
+        }
+
+        /// <summary>
+        ///  The model is a list of rules. This method would return the specific rule that was updated
+        /// </summary>
+        protected override object TransformModelToOutputObject(IEnumerable<DatabaseDataMaskingRuleModel> model)
+        {
+            return model.FirstOrDefault(IsModelOfRule);
+        }
 
         /// <summary>
         /// Provides the model element that this cmdlet operates on
@@ -40,7 +70,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         /// <returns>A model object</returns>
         protected override IEnumerable<DatabaseDataMaskingRuleModel> GetEntity()
         {
-            return ModelAdapter.GetDatabaseDataMaskingRule(ResourceGroupName, ServerName, DatabaseName, clientRequestId, RuleId);
+            return ModelAdapter.GetDatabaseDataMaskingRules(ResourceGroupName, ServerName, DatabaseName, clientRequestId);
         }
 
         /// <summary>

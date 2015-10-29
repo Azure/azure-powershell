@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Intune
         }
 
         /// <summary>
-        /// Get Android policy by policy Id
+        /// Get Android policy by policy name.
         /// </summary>
         private void GetAndroidPolicyById()
         {
@@ -76,9 +76,9 @@ namespace Microsoft.Azure.Commands.Intune
             var androidPolicies = this.IntuneClient.GetAndroidMAMPolicies(this.AsuHostName);
             if (androidPolicies != null && androidPolicies.Value.Count > 0)
             {
-                for (int batchSize = 10, start = 0; start < androidPolicies.Value.Count; start += batchSize)
+                for (int start = 0; start < androidPolicies.Value.Count; start += IntuneConstants.BATCH_SIZE)
                 {
-                    var batch = androidPolicies.Value.Skip(start).Take(batchSize);
+                    var batch = androidPolicies.Value.Skip(start).Take(IntuneConstants.BATCH_SIZE);
                     this.WriteObject(batch, enumerateCollection: true);
                 }
             }

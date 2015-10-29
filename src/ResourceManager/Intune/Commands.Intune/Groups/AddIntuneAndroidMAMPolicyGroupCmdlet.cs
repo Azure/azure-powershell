@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Commands.Intune
     using RestClient.Models;
 
     /// <summary>
-    /// A cmdlet to link an app to Android Intune MAM policy Azure resource.
+    /// A cmdlet to link a group to Android Intune MAM policy Azure resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmIntuneAndroidMAMPolicyGroup", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
-    public sealed class NewIntuneAndroidMAMPolicyGroupCmdlet : IntuneBaseCmdlet
+    [Cmdlet(VerbsCommon.Add, "AzureRmIntuneAndroidMAMPolicyGroup", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
+    public sealed class AddIntuneAndroidMAMPolicyGroupCmdlet : IntuneBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the policy name
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Intune
                 this.ConfirmAction(
                     this.Force,
                     "Are you sure you want to link Group with name:" + this.GroupName + " to Android policy with name:" + this.Name,
-                    "Link the group with Android policy resource...",
+                    "Link the group with Android policy resource.",
                     this.Name,
                     () =>
                     {
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Intune
 
         private MAMPolicyAppIdOrGroupIdPayload PrepareMAMPolicyAppIdGroupIdPayload()
         {
-            string groupUri = string.Format("https://{0}/providers/Microsoft.Intune/locations/{1}/groups/{2}", this.IntuneClient.BaseUri.Host, this.AsuHostName, this.GroupName);
+            string groupUri = string.Format(IntuneConstants.GroupUriFormat, this.IntuneClient.BaseUri.Host, this.AsuHostName, this.GroupName);
             var groupIdPayload = new MAMPolicyAppIdOrGroupIdPayload();
             groupIdPayload.Properties = new MAMPolicyAppOrGroupIdProperties()
             {
